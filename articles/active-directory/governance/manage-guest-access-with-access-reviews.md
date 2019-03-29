@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem gości za pomocą przeglądów dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Zarządzaj użytkowników-gości jako członkowie danej grupy lub przypisanych do aplikacji za pomocą przeglądów dostępu usługi Active Directory Azure
+title: Zarządzanie dostępem gości za pomocą przeglądów dostępu — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Zarządzaj użytkowników-gości jako członkowie danej grupy lub przypisanych do aplikacji za pomocą przeglądów dostępu w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881048"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576500"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą przeglądów dostępu usługi Azure AD
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
 
 
 Za pomocą usługi Azure Active Directory (Azure AD), możesz łatwo włączyć współpracy między granicami organizacji za pomocą [funkcji usługi Azure AD B2B](../b2b/what-is-b2b.md). Użytkowników-gości z innych dzierżaw może być [zaproszonych przez administratorów](../b2b/add-users-administrator.md) lub [innym użytkownikom](../b2b/what-is-b2b.md). Ta funkcja dotyczy także tożsamości społecznościowych, takich jak konta Microsoft.

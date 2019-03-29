@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/5/2019
+ms.date: 03/24/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02183abb60fe24b9ee9c769f7af696355966ab24
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551062"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577598"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr    | Wymagane/opcjonalne | Opis |
 |--------------|-------------|--------------|
 | `tenant`    | wymagane    | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).  |
-| `client_id`   | wymagane    | Identyfikator aplikacji (klienta) portalu rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) lub **rejestracje aplikacji (wersja zapoznawcza)** środowisko w witrynie Azure portal, jak przypisać aplikację.  |
+| `client_id`   | wymagane    | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji.  |
 | `response_type` | wymagane    | Musi zawierać `code` dla przepływ kodu autoryzacji.       |
 | `redirect_uri`  | Zalecane | Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | `scope`  | wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na. |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr  | Wymagane/opcjonalne | Opis     |
 |------------|-------------------|----------------|
 | `tenant`   | wymagane   | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).  |
-| `client_id` | wymagane  | Identyfikator aplikacji portalu rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) przypisanych aplikacji. |
+| `client_id` | wymagane  | Identyfikator aplikacji (klienta) [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
 | `grant_type` | wymagane   | Musi być `authorization_code` dla przepływ kodu autoryzacji.   |
 | `scope`      | wymagane   | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w pierwszy gałęzi. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `code`          | wymagane  | Authorization_code, uzyskanego w pierwszej gałęzi przepływu. |
@@ -267,7 +267,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr     |                | Opis        |
 |---------------|----------------|--------------------|
 | `tenant`        | wymagane     | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).   |
-| `client_id`     | wymagane    | **Identyfikator aplikacji (klienta)** , portalu rejestracji aplikacji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) lub **rejestracje aplikacji (wersja zapoznawcza)** środowiska w witrynie Azure portal przypisać aplikację.  |
+| `client_id`     | wymagane    | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `grant_type`    | wymagane    | Musi być `refresh_token` dla tej gałęzi przepływ kodu autoryzacji. |
 | `scope`         | wymagane    | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w oryginalnym gałęzi żądania authorization_code wymagane. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `refresh_token` | wymagane    | Refresh_token, uzyskanego w drugim nogi przepływ. |

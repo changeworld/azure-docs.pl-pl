@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361102"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577326"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -46,11 +46,13 @@ Obszar roboczy przechowuje listę obliczeniowych elementów docelowych, używany
 
 Zarejestruj się modeli z obszarem roboczym. Użyjesz zarejestrowanego modelu i oceniania skryptów do utworzenia obrazu. Następnie można wdrożyć obraz do usługi Azure Container Instances, Azure Kubernetes Service lub tablicą programowalny bramy (FPGA) jako punkt końcowy oparty na protokole REST protokołu HTTP. Można także wdrożyć obraz do urządzenia z usługi Azure IoT Edge jako moduł.
 
-Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować dostęp do niego, przypisując następujące role użytkowników:
+Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować dostęp do niego przez przypisywanie użytkowników do następujących ról:
 
 * Właściciel
 * Współautor
 * Czytelnik
+
+Aby uzyskać więcej informacji na temat tych ról, zobacz [zarządzanie dostępem do obszaru roboczego usługi Azure Machine Learning](how-to-assign-roles.md) artykułu.
 
 Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
 

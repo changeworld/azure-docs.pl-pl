@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117204"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578156"
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
 
@@ -30,10 +30,10 @@ Runbook programu PowerShell i przepływie pracy programu PowerShell w usłudze A
 
 | **Właściwość** | **Opis** |
 |:--- |:--- |
-| Type |Wymagany. Typ danych, oczekiwano wartości parametru. Przydaje się dowolnego typu platformy .NET. |
-| Name (Nazwa) |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
-| Obowiązkowy |Opcjonalny. Określa, czy należy podać wartość dla parametru. Jeśli ustawisz to  **\$true**, a następnie po uruchomieniu elementu runbook należy podać wartość. Jeśli ustawisz to  **\$false**, wartość jest opcjonalna. |
-| Wartość domyślna |Opcjonalny. Określa wartość, która jest używana dla parametru, jeśli wartość nie zostanie przekazany, po uruchomieniu elementu runbook. Wartość domyślną można ustawić dla każdego parametru i automatycznie wprowadzi parametr opcjonalny, niezależnie od ustawienia obowiązkowe. |
+| `Type` |Wymagany. Typ danych, oczekiwano wartości parametru. Przydaje się dowolnego typu platformy .NET. |
+| `Name` |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
+| `Mandatory` |Opcjonalny. Określa, czy należy podać wartość dla parametru. Jeśli ustawisz to  **\$true**, a następnie po uruchomieniu elementu runbook należy podać wartość. Jeśli ustawisz to  **\$false**, wartość jest opcjonalna. |
+| `Default value` |Opcjonalny. Określa wartość, która jest używana dla parametru, jeśli wartość nie zostanie przekazany, po uruchomieniu elementu runbook. Wartość domyślną można ustawić dla każdego parametru i automatycznie wprowadzi parametr opcjonalny, niezależnie od ustawienia obowiązkowe. |
 
 Program Windows PowerShell obsługuje więcej atrybutów parametrów wejściowych, niż te wymienione w tym miejscu, takich jak sprawdzanie poprawności, aliasy, a parametr ustawia. Usługa Azure Automation obsługuje obecnie tylko poprzedniego parametrów wejściowych.
 
@@ -94,11 +94,11 @@ Możesz użyć [ **Write-Output** ](/powershell/module/microsoft.powershell.util
 
    | **Właściwość** | **Opis** |
    |:--- |:--- |
-   | Name (Nazwa) |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
-   | Opis |Opcjonalny. Opis dotyczące przeznaczenia parametru wejściowego. |
-   | Type |Opcjonalny. Typ danych, który jest oczekiwany dla wartości parametru. Obsługiwane typy parametrów **ciąg**, **Int32**, **Int64**, **dziesiętna**, **logiczna**,  **Data i godzina**, i **obiektu**. Jeśli typem danych nie jest zaznaczone, domyślnie **ciąg**. |
-   | Obowiązkowy |Opcjonalny. Określa, czy należy podać wartość dla parametru. Jeśli wybierzesz **tak**, a następnie podać wartość po uruchomieniu elementu runbook. Jeśli wybierzesz **nie**, wartość nie jest wymagane, gdy element runbook jest uruchomiony i może zostać ustawiona wartość domyślna. |
-   | Wartość domyślna |Opcjonalny. Określa wartość, która jest używana dla parametru, jeśli wartość nie zostanie przekazany, po uruchomieniu elementu runbook. Można ustawić wartości domyślnej parametru, która nie jest obowiązkowe. Aby ustawić wartość domyślną, wybierz **niestandardowe**. Ta wartość jest używana, chyba że inna wartość zostanie podana podczas uruchamiania elementu runbook. Wybierz **Brak** Jeśli nie chcesz podać dowolną wartość domyślną. |
+   | `Name` |Wymagany. Nazwa parametru. To musi być unikatowa w obrębie elementu runbook i mogą zawierać tylko litery, cyfry lub znaki podkreślenia. Musi ona zaczynać się literą. |
+   | `Description` |Opcjonalny. Opis dotyczące przeznaczenia parametru wejściowego. |
+   | `Type` |Opcjonalny. Typ danych, który jest oczekiwany dla wartości parametru. Obsługiwane typy parametrów **ciąg**, **Int32**, **Int64**, **dziesiętna**, **logiczna**,  **Data i godzina**, i **obiektu**. Jeśli typem danych nie jest zaznaczone, domyślnie **ciąg**. |
+   | `Mandatory` |Opcjonalny. Określa, czy należy podać wartość dla parametru. Jeśli wybierzesz **tak**, a następnie podać wartość po uruchomieniu elementu runbook. Jeśli wybierzesz **nie**, wartość nie jest wymagane, gdy element runbook jest uruchomiony i może zostać ustawiona wartość domyślna. |
+   | `Default Value` |Opcjonalny. Określa wartość, która jest używana dla parametru, jeśli wartość nie zostanie przekazany, po uruchomieniu elementu runbook. Można ustawić wartości domyślnej parametru, która nie jest obowiązkowe. Aby ustawić wartość domyślną, wybierz **niestandardowe**. Ta wartość jest używana, chyba że inna wartość zostanie podana podczas uruchamiania elementu runbook. Wybierz **Brak** Jeśli nie chcesz podać dowolną wartość domyślną. |
 
     ![Dodaj nowe dane wejściowe](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. Utwórz dwa parametry, z następującymi właściwościami, które są używane przez **Get-AzureRmVm** działania:

@@ -11,18 +11,32 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: abf833cc054bfac0581506f75259e357f0ab1b38
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985754"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577057"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów
 
 Po skonfigurowaniu monitorowania klastra usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów, można napotkać problem uniemożliwia zbieranie danych i raportowania stanu. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
+
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Błąd autoryzacji podczas operacji dołączania lub aktualizacji
+Podczas włączania usługi Azure Monitor dla kontenerów lub aktualizowania klastra umożliwiają zbieranie metryk, może wystąpić błąd podobne do następujących informacji: *klienta < tożsamości użytkownika > "id"< objectId użytkownika >"z obiektem nie ma. autoryzacji do wykonania akcji "Microsoft.Authorization/roleAssignments/write" w zakresie*
+
+Podczas procesu dołączania lub aktualizacji udzielanie **wydawcy metryki monitorowania** przypisania roli zostanie podjęta w zasobie klastra. Inicjowanie procesu umożliwi użytkownikowi usługi Azure Monitor for containers lub aktualizacji do obsługi kolekcji metryki musi mieć dostęp do **Microsoft.Authorization/roleAssignments/write** uprawnień w klastrze usługi AKS Zakres zasobów. Tylko członkowie **właściciela** i **Administrator dostępu użytkowników** wbudowane role uzyskują dostęp do tego uprawnienia. Jeśli zasady zabezpieczeń wymaga, przypisywania uprawnień na poziomie szczegółowym, firma Microsoft zaleca możesz wyświetlić [ról niestandardowych](../../role-based-access-control/custom-roles.md) i przypisz je do użytkowników, którzy tego wymagają. 
+
+Można też ręcznie przyznać tej roli w witrynie Azure portal, wykonując następujące czynności:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Kubernetes**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **Azure Kubernetes**.
+3. Na liście klastrów Kubernetes wybierz ją z listy.
+2. W menu po lewej stronie kliknij **kontrola dostępu (IAM)**.
+3. Wybierz **+ Dodaj** Dodaj przypisanie roli i wybierz **wydawcy metryki monitorowania** roli i w obszarze **wybierz** wpisz **AKS** do Filtr wyników na tylko klastry usług podmiotów zabezpieczeń zdefiniowane w ramach subskrypcji. Wybierz jeden z listy, które są specyficzne dla tego klastra.
+4. Wybierz **Zapisz** zakończenie przypisanie roli. 
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Usługa Azure Monitor dla kontenerów jest włączona, ale nie zgłasza żadnych informacji
 Jeśli usługi Azure Monitor dla kontenerów została pomyślnie włączona i skonfigurowana, ale nie można wyświetlić informacje o stanie lub żadne wyniki nie są zwracane z zapytań log, można zdiagnozować problem, wykonaj następujące czynności: 

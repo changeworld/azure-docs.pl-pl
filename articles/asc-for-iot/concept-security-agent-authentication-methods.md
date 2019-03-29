@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541815"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577804"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody uwierzytelniania agenta zabezpieczeń 
 
@@ -41,10 +41,12 @@ Te dwie metody dla agenta AzureIoTSecurity w celu przeprowadzenia uwierzytelnian
 
  - **Moduł** tryb uwierzytelniania<br>
    Moduł jest uwierzytelniany niezależnie od bliźniaczej reprezentacji urządzenia.
-   Informacje o wymaganych przez ten typ uwierzytelniania jest zdefiniowany w pliku Authentication.config dla C# i LocalConfiguration.json dla języka C.
+   Użyj tego typu uwierzytelniania, jeśli chcesz, aby agent zabezpieczeń przy użyciu metody uwierzytelniania dedykowane, za pośrednictwem modułu zabezpieczeń (tylko w przypadku klucza symetrycznego).
         
  - **Urządzenie** tryb uwierzytelniania<br>
-    W przypadku tej metody Security agent najpierw uwierzytelnia urządzenie. Po uwierzytelnieniu początkowej wykonuje ASC agenta IoT **Rest** wywołania do Centrum IoT przy użyciu interfejsu API Rest przy użyciu danych uwierzytelniania urządzenia. ASC agenta IoT następnie żąda metody uwierzytelniania modułu zabezpieczeń oraz danych z usługi IoT Hub. W ostatnim kroku ASC IoT agenta wykonuje uwierzytelnianie w usłudze ASC moduł IoT.    
+    W przypadku tej metody agent zabezpieczeń najpierw uwierzytelnia się za pomocą tożsamości urządzenia. Po uwierzytelnieniu początkowej wykonuje ASC agenta IoT **REST** wywołania do Centrum IoT przy użyciu interfejsu API REST przy użyciu danych uwierzytelniania urządzenia. ASC agenta IoT następnie żąda metody uwierzytelniania modułu zabezpieczeń oraz danych z usługi IoT Hub. W ostatnim kroku ASC IoT agenta wykonuje uwierzytelnianie w usłudze ASC moduł IoT.
+    
+    Użyj tego typu uwierzytelniania, jeśli chcesz, aby agent zabezpieczeń, aby ponownie wykorzystać istniejącą metodę uwierzytelniania urządzeń (z podpisem własnym certyfikatu lub klucza symetrycznego). 
 
 Zobacz [parametry instalacji agenta zabezpieczeń](#security-agent-installation-parameters) dowiesz się, jak skonfigurować.
                                 
@@ -55,7 +57,7 @@ Zobacz [parametry instalacji agenta zabezpieczeń](#security-agent-installation-
 
 ## <a name="security-agent-installation-parameters"></a>Parametry instalacji agenta zabezpieczeń
 
-Gdy [wdrażanie agenta zabezpieczeń](select-deploy-agent.md), szczegółów uwierzytelniania musi zostać podana jako argumenty.
+Gdy [wdrażanie agenta zabezpieczeń](how-to-deploy-agent.md), szczegółów uwierzytelniania musi zostać podana jako argumenty.
 W poniższej tabeli opisano te argumenty.
 
 
@@ -111,5 +113,5 @@ Edytuj _LocalConfiguration.json_ z następującymi parametrami:
 
 ## <a name="see-also"></a>Zobacz także
 - [Omówienie czynników zabezpieczeń](security-agent-architecture.md)
-- [Wdróż agenta zabezpieczeń](select-deploy-agent.md)
+- [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)
 - [Dostęp do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)

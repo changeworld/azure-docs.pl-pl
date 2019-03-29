@@ -1,6 +1,6 @@
 ---
-title: Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeglądać dostępu do grup lub aplikacji na platformie Azure przeglądy dostępu w Active Directory.
+title: Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacjami w programie - przeglądów dostępu w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeglądać dostępu do grup lub aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,16 +15,16 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76f90a5aa3f201fa5d1578ac63526be26377aedf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731212"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576313"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
-Azure Active Directory (Azure AD) upraszcza sposób przedsiębiorstw zarządzanie dostępem do grup ani aplikacji w usłudze Azure AD i Microsoft Online Services przy użyciu funkcji brzmią przeglądów dostępu usługi Azure AD.
+Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do grup ani aplikacji w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostępu usługi Azure AD.
 
 W tym artykule opisano, jak przejrzeć swój własny dostęp do grupy lub aplikacji.
 
@@ -44,11 +44,11 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
     ![Portalu MyApps](./media/review-your-access/myapps-access-panel.png)
 
-1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla nazwę i domyślny organizacji. Jeśli więcej niż jednej z organizacji jest wymieniony, wybierz organizacji, który zażądał przeglądu dostępu.
+1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla Twoją nazwę i domyślną organizację. Jeśli na liście jest więcej niż jedna organizacja, wybierz tę, która zażądała przeglądu dostępu.
 
 1. W prawej części strony kliknij **przeglądów dostępu** Kafelek, aby wyświetlić listę przeglądów dostępu oczekujące.
 
-    Jeśli Kafelek nie jest widoczna, nie Brak sprawdzeń dostępu do przeprowadzenia tej organizacji i w tej chwili jest wymagana żadna akcja.
+    Jeśli kafelek nie jest widoczny, nie ma żadnych przeglądów dostępu do wykonania dla tej organizacji i w tej chwili jest wymagana żadna akcja.
 
     ![Lista przeglądów dostępu](./media/review-your-access/access-reviews-list.png)
 

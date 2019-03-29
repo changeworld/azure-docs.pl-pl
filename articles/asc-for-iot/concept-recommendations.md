@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 1e4582d93d1e3380ecdabdb241f27839d4da4565
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541860"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576205"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
@@ -27,12 +27,13 @@ ms.locfileid: "58541860"
 > ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Na podstawie bieżące rozwiązanie analizy, ASC IoT udostępnia następujące zalecenia w razie potrzeby, aby pomóc w udoskonaleniu i chronić urządzenia, stan operacyjny i całego środowiska usługi IoT Hub. 
+ASC IoT skanuje swoje zasoby platformy Azure i urządzeń IoT i udostępnia zalecenia dotyczące zabezpieczeń, aby zmniejszyć obszar ataków. Zalecenia dotyczące zabezpieczeń są wiarygodne i mają na celu pomóc klientom w dostosowaniu się do najlepszych rozwiązań dotyczących zabezpieczeń.
 
+W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na usługi IoT Hub i/lub urządzeń IoT.
 
-## <a name="device-recommendations"></a>Zalecenia dotyczące urządzeń
+## <a name="recommendations-for-iot-devices"></a>Zalecenia dotyczące urządzeń IoT
 
-Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie zwiększające ustawień zabezpieczeń i zachowania. 
+Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie w celu zwiększenia poziomu bezpieczeństwa urządzenia. 
 
 | Ważność | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,9 +43,9 @@ Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie
 | Medium   | Znaleziono reguły zapory ograniczające w łańcuchu danych wyjściowych    | Agent       | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP lub porty.                                                                                   |
 | Medium   | Weryfikacja linii bazowej systemu operacja nie powiodła się           | Agent       | Urządzenie nie jest zgodne z [wzorców w konfiguracji (ci) w systemie Linux](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
-### <a name="operational-recommendation"></a>Zalecenie operacyjne
+### <a name="operational-recommendations-for-iot-devices"></a>Operational zaleceń dotyczących urządzeń IoT
 
-Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększające konfiguracji agenta.
+Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększające konfiguracji agenta zabezpieczeń.
 
 | Ważność | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększaj
 | Małe      | Konflikt konfiguracji bliźniaczej reprezentacji zabezpieczeń    | Agent       | Konflikty zostały zidentyfikowane w bliźniaczej reprezentacji konfiguracji zabezpieczeń.                           |
 
 
-## <a name="iot-hub-recommendations"></a>Zalecenia dotyczące usługi IoT Hub
+## <a name="recommendations-for-iot-hub"></a>Zalecenia dotyczące usługi IoT Hub
 
 Zalecenia, alerty zapewniają szczegółowe informacje i sugestie dotyczące działań w celu zwiększenia poziomu bezpieczeństwa środowiska.  
 

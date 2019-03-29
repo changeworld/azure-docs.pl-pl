@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5a46575f6e8a0b05b65dbf49c70bddb570b514b2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497437"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577124"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
 
-A **sugestora** to konstrukcja w [indeksu usługi Azure Search](search-what-is-an-index.md) , która obsługuje środowisko "search jako — możesz type". Zawiera listę pól, dla których chcesz włączyć typeahead zapytania w danych wejściowych. Istnieją dwa warianty typeahead: *autouzupełniania* kończy termin lub frazę wpisywania *sugestie* zawiera krótką listę wyników. 
+A **sugestora** to konstrukcja w [indeksu usługi Azure Search](search-what-is-an-index.md) , która obsługuje środowisko "search jako — możesz type". Zawiera listę pól, dla których chcesz włączyć typeahead zapytania w danych wejściowych. W ramach indeksu, ten sam sugestora obsługuje jeden lub oba te dwa warianty typeahead: *autouzupełniania* kończy termin lub frazę wpisywania *sugestie* zawiera krótką listę wyników. 
 
-Na tej stronie wyszukiwania Xbox elementów autouzupełniania przejście do nowej strony wyników wyszukiwania dla tego zapytania sugestie są rzeczywiste wyniki, które przejście do strony dla tego konkretnego gry. Można ograniczyć autouzupełniania jednego elementu w pasku wyszukiwania lub Podaj listę, tak jak pokazano poniżej. Masz sugestie może pojawić się dowolnej części dokumentu, która najlepiej opisuje wynik.
+Poniższy zrzut ekranu przedstawia obie funkcje typeahead. Na tej stronie wyszukiwania Xbox elementów autouzupełniania przejście do nowej strony wyników wyszukiwania dla tego zapytania sugestie są rzeczywiste wyniki, które przejście do strony dla tego konkretnego gry. Można ograniczyć autouzupełniania jednego elementu w pasku wyszukiwania lub Podaj listę, tak jak pokazano poniżej. Masz sugestie może pojawić się dowolnej części dokumentu, która najlepiej opisuje wynik.
 
 ![Porównanie Visual Autouzupełnianie i sugerowane zapytania](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Visual porównanie Autouzupełnianie i sugerowane zapytania")
 
 Aby zaimplementować te zachowania w usłudze Azure Search, jest składnikiem indeksów i zapytań. 
 
-+ W ramach indeksu należy dodać sugestora. Portalu, interfejsu API REST lub zestawu SDK platformy .NET umożliwia tworzenie sugestora. 
++ Składnik indeksu jest sugestora. Portalu, interfejsu API REST lub zestawu SDK platformy .NET umożliwia tworzenie sugestora. 
 
-+ W zapytaniu Określ akcję sugestię lub sutocomplete. 
++ Składnik kwerendy jest akcja określona w żądaniu zapytania (Akcja sugestię lub automatycznego uzupełniania). 
 
 > [!Important]
-> Autouzupełnianie jest obecnie dostępna w wersji zapoznawczej, dostępna w wersji zapoznawczej interfejsów API REST i zestawu SDK platformy .NET i nie są obsługiwane przez aplikacje produkcyjne. 
+> Autouzupełnianie jest obecnie dostępna w wersji zapoznawczej, dostępna w wersji zapoznawczej interfejsów API REST i zestawu SDK platformy .NET. Nie jest on przeznaczony dla aplikacji produkcyjnych. 
 
 Obsługa wyszukiwania jako użytkownik typ-jest włączona na poszczególnych pól. Można zaimplementować zarówno zachowania typeahead w obrębie tego samego rozwiązania wyszukiwania, chcąc środowisko podobny do wskazanej na zrzucie ekranu. Zarówno docelowego żądania *dokumenty* kolekcji określonego indeksu i odpowiedzi są zwracane po użytkownik udostępnił co najmniej trzech wejściowy ciąg znaków.
 
@@ -77,7 +77,7 @@ Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://doc
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-W C#, zdefiniuj [klasy Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Sugestora to kolekcja, ale może potrwać tylko jeden element.
+W C#, zdefiniuj [klasy Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Sugestora jest kolekcją, która przyjmuje tylko jeden element. Pamiętaj dodać `using System.Collections.Generic;` tak, aby utworzyć listę obiektów. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,4 +137,4 @@ Używa piaskownicy usługi Azure Search i wstępnie załadowane indeksu, dzięki
 Firma Microsoft zaleca poniższy przykład, aby zobaczyć, jak są formułowane żądania.
 
 > [!div class="nextstepaction"]
-> [Przykład zapytania Autouzupełniania (wersja zapoznawcza)](search-autocomplete-tutorial.md) 
+> [Przykłady Autouzupełnianie i sugestie](search-autocomplete-tutorial.md) 

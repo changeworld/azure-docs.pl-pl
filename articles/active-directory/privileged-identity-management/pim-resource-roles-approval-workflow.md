@@ -1,5 +1,5 @@
 ---
-title: Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+title: Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak akceptują lub odrzucają żądania dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a458f62ec38503e401b3fb810dc7edc8059a7715
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5ecb55dd2798241ca0ae1754ecf95a79f8aeb134
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245579"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575117"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM
 
-Za pomocą usługi Azure AD Privileged Identity Management (PIM) skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybrać jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Osoby zatwierdzające delegowanego mają 24 godziny do żądań zatwierdzenia. Jeśli żądanie nie zostanie zatwierdzone w ciągu 24 godzin, w uprawniony użytkownik musi ponownie przesłać nowe żądanie. Nie konfiguruje się w danym przedziale czasu zatwierdzania 24-godzinnym.
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), można skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybierz jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Osoby zatwierdzające delegowanego mają 24 godziny do żądań zatwierdzenia. Jeśli żądanie nie zostanie zatwierdzone w ciągu 24 godzin, w uprawniony użytkownik musi ponownie przesłać nowe żądanie. Nie konfiguruje się w danym przedziale czasu zatwierdzania 24-godzinnym.
 
 Wykonaj kroki opisane w tym artykule, akceptują lub odrzucają żądania dla ról zasobów platformy Azure.
 
@@ -84,4 +84,4 @@ Poniżej przedstawiono niektóre informacje na temat powiadomienia dotyczące pr
 
 - [Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
 - [Powiadomienia e-mail w usłudze PIM](pim-email-notifications.md)
-- [Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)
+- [Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)

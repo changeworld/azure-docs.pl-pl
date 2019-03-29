@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować alerty zabezpieczeń dla ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172386"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577233"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w usłudze PIM
 
-Usługa Azure AD Privileged Identity Management (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczne działania w środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczne działania w środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
 
 ![Alerty zabezpieczeń PIM — zrzut ekranu](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 
-W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, oraz jak naprawiać i jak zapobiec. Ważność ma mają następujące znaczenie:
+W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról usługi Azure AD, oraz jak naprawiać i jak zapobiec. Ważność ma mają następujące znaczenie:
 
 * **Wysoka**: Wymaga natychmiastowego działania z powodu naruszenia zasad.
 * **Średnia**: Nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
@@ -130,4 +130,4 @@ Można dostosować niektóre alerty zabezpieczeń w usłudze PIM chcesz pracowa�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)

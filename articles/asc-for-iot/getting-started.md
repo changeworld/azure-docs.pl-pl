@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: a78eeda814b21d489eb957d44202b17c61d836d5
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541890"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575219"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>Rozpoczynanie pracy przy użyciu usługi Azure Security Center (ASC) dla IoT 
 
@@ -67,7 +67,7 @@ Korzystaj z usługi ASC dla IoT, ulepszone funkcje zabezpieczeń, takich jak mon
 1. Jeśli Centrum IoT Hub nie ma żadnych zarejestrowanych urządzeń [zarejestrować nowe urządzenie](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
 1. [Tworzenie modułu zabezpieczeń usługi azureiotsecurity](quickstart-create-security-twin.md) dla urządzeń.
 1. Aby zainstalować agenta na Azure symulowanego urządzenia zamiast instalować ją na rzeczywistych urządzeniach [pokrętła się nowej maszyny wirtualnej (maszyny Wirtualnej platformy Azure)](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) w strefie dostępności. 
-1. [Wdrażanie usługi ASC agenta zabezpieczeń IoT](tutorial-deploy-linux-cs.md) na urządzeniu IoT, lub Nowa maszyna wirtualna.
+1. [Wdrażanie usługi ASC agenta zabezpieczeń IoT](how-to-deploy-linux-cs.md) na urządzeniu IoT, lub Nowa maszyna wirtualna.
 1. Postępuj zgodnie z instrukcjami dotyczącymi [trigger_events](https://aka.ms/iot-security-github-trigger-events) uruchamianie symulacji ataku nieszkodliwe.
 1. Sprawdź ASC IoT alerty w odpowiedzi na atak symulowane w poprzednim kroku. 
     - Rozpocznij weryfikację pięć minut po uruchomieniu skryptu.
@@ -79,4 +79,4 @@ Korzystaj z usługi ASC dla IoT, ulepszone funkcje zabezpieczeń, takich jak mon
 - Konfigurowanie usługi [rozwiązania](quickstart-configure-your-solution.md)
 - [Tworzenie modułów zabezpieczeń](quickstart-create-security-twin.md)
 - Konfigurowanie [alerty niestandardowe](quickstart-create-custom-alerts.md)
-- [Wdróż agenta zabezpieczeń](select-deploy-agent.md)
+- [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure AD role zabezpieczeń kreatora w usłudze PIM | Dokumentacja firmy Microsoft
+title: Azure AD role zabezpieczeń kreatora w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule opisano Kreatora zabezpieczeń, który służy do przypisania roli usługi Azure AD convert stałe uprzywilejowany do kwalifikujących się przy użyciu usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66dcc834ab089f28e6bb47c2905e6a2a3907091
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 226c00dfdf651580a58a9409bc7cd22658415a56
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208762"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576364"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Azure AD role zabezpieczeń kreatora w usłudze PIM
 
-Jeśli jesteś pierwszą osobą do uruchamiania usługi Azure AD Privileged Identity Management (PIM) dla Twojej organizacji, zobaczysz za pomocą kreatora. Kreator pomoże Ci zrozumieć zagrożenia dla bezpieczeństwa uprzywilejowanych tożsamości oraz jak używać aplikacji PIM, aby ograniczyć te zagrożenia. Nie musisz wprowadzać żadnych zmian istniejących przypisań ról w kreatorze, aby zrobić to później.
+Jeśli jesteś pierwszą osobą do uruchamiania usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) dla Twojej organizacji, zobaczysz za pomocą kreatora. Kreator pomoże Ci zrozumieć zagrożenia dla bezpieczeństwa uprzywilejowanych tożsamości oraz jak używać aplikacji PIM, aby ograniczyć te zagrożenia. Nie musisz wprowadzać żadnych zmian istniejących przypisań ról w kreatorze, aby zrobić to później.
 
 ## <a name="wizard-overview"></a>Omówienie Kreatora
 
@@ -65,9 +65,9 @@ Drugiego kroku kreatora daje możliwość zmiany przypisania ról administratora
 
     ![Powiadomienia](./media/pim-security-wizard/notification-completion.png)
 
-Aby przekonwertować kwalifikujących się inne przypisania ról uprzywilejowanych, możesz Uruchom ponownie kreatora. Jeśli chcesz używać interfejsu PIM zamiast kreatora, zobacz [przypisywać ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md).
+Aby przekonwertować kwalifikujących się inne przypisania ról uprzywilejowanych, możesz Uruchom ponownie kreatora. Jeśli chcesz używać interfejsu PIM zamiast kreatora, zobacz [przypisać role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
 - [Udzielanie dostępu do innych administratorów do zarządzania usługi PIM](pim-how-to-give-access-to-pim.md)

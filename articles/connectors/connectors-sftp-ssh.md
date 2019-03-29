@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886678"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575100"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
 
@@ -27,10 +27,16 @@ Automatyzowanie zadań, które monitorowania, tworzenie, wysyłanie i odbieranie
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* w rozmiarze przez zarządzanie danymi w 50 MB elementy. W przypadku plików większych niż 1 GB, można użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
-
 Możesz użyć wyzwalaczy, które monitorowania zdarzeń na serwerze SFTP i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonywania różnych zadań na serwerze SFTP. Mogą też istnieć inne akcje w aplikacji logiki, użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać alerty e-mail dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Limity
+
+* Akcje SFTP-SSH może odczytać lub zapisywać pliki, które są *1 GB lub mniej* za zarządzanie danymi jako *50 MB fragmentów*, nie 1 GB elementy.
+
+* Dla plików *większą niż 1 GB*, można użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa SFTP-SSH wyzwalaczy nie obsługują segmentu.
+
+Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) później w następnej sekcji.
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jes
 
 Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i łącznika SFTP, w którym łącznik SFTP-SSH ma te możliwości:
 
-* Używa <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> biblioteki, która to biblioteka Secure Shell (SSH) typu open source, która obsługuje platformy .NET. 
+* Używa <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> biblioteki, która to biblioteka Secure Shell (SSH) typu open source, która obsługuje platformy .NET.
 
   > [!NOTE]
   >
   > SFTP-SSH łącznik obsługuje *tylko* te klucze prywatne, formatów, algorytmów i odcisków palców:
-  > 
+  >
   > * **Formaty klucza prywatnego**: RSA (Rivest Shamir Adleman) oraz klucze DSA (algorytmu Digital Signature Algorithm) w formacie OpenSSH i ssh.com
   > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
   > * **Odcisk palca**: MD5
 
-* Operacja odczytu lub zapisu do plików *1 GB* rozmiar w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów. W przypadku plików większych niż 1 GB, można również użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa wyzwalaczy nie obsługują segmentu.
+* Akcje może odczytać lub zapisać pliki *do 1 GB* w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów. W przypadku plików większych niż 1 GB, można również użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa SFTP-SSH wyzwalaczy nie obsługują segmentu.
 
 * Udostępnia **Utwórz folder** akcji, która tworzy folder w określonej ścieżce na serwerze SFTP.
 
 * Udostępnia **zmiany nazwy pliku** akcji, która zmienia nazwę pliku na serwerze SFTP.
 
-* Pamięci podręczne połączenie z serwerem SFTP *przez maksymalnie godzinę*, który zapewnia lepszą wydajność i zmniejsza liczbę prób połączenia z serwerem. Aby ustawić czas trwania tego zachowania buforowania, Edytuj <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> właściwości w konfiguracji SSH na serwerze SFTP. 
+* Pamięci podręczne połączenie z serwerem SFTP *przez maksymalnie godzinę*, który zapewnia lepszą wydajność i zmniejsza liczbę prób połączenia z serwerem. Aby ustawić czas trwania tego zachowania buforowania, Edytuj <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> właściwości w konfiguracji SSH na serwerze SFTP.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

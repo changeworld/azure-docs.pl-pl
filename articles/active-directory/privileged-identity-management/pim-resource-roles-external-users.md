@@ -1,6 +1,6 @@
 ---
-title: Zapraszać gości zewnętrznych i przypisywanie ról administratora usługi Azure AD — Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapraszać użytkowników-gości i przypisywanie ról administratora usługi Azure Active Directory w usłudze Azure AD Privileged Identity Management.
+title: Zapraszanie gości i przypisz role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapraszać użytkowników-gości zewnętrznych i przypisywać role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68c5e5e2ed0d3ec767a239439476a98bac73bcb4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853260"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576883"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>Zapraszanie gości i przypisz dostęp do zasobów platformy Azure w usłudze PIM
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Zapraszanie gości i przypisz role zasobów platformy Azure w usłudze PIM
 
 Usługa Azure Active Directory (Azure AD) business-to-business (B2B) to zestaw funkcji w usłudze Azure AD, która umożliwia organizacjom współpracę z zewnętrznego gościa użytkowników (gości) i dostawców przy użyciu dowolnego konta. Łącząc B2B przy użyciu usługi Azure AD Privileged Identity Management (PIM), można zastosować wymagań dotyczących zgodności i nadzoru dla gości. Na przykład można użyć tych funkcji usługi PIM dla zadań usługi Azure identity z gości:
 

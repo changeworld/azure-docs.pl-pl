@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie programami i kontrolami dla przeglądów dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć dodatkowe programy dla każdego nadzoru, zarządzania ryzykiem i zgodność inicjatywy w Twojej organizacji, aby zbierać i organizować usługi Azure Active Directory przeglądów dostępu w jako formantów.
+title: Zarządzanie programami i kontrolami dla przeglądów dostępu — w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć dodatkowe programy dla każdego nadzoru, zarządzania ryzykiem i zgodność inicjatywy w Twojej organizacji, aby zbierać i organizować, przeglądy dostępu w usłudze Azure Active Directory jako formantów.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3056976ada6c0a0287eec608dbad230e8dbb2625
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43c0f1c041bfed1b041a9926efd869d167c6f1e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895183"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577267"
 ---
-# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Zarządzanie programami i kontrolami dla przeglądów dostępu usługi Azure AD
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Zarządzanie programami i przeglądów dostępu dla formantów dla usługi Azure AD
 
 Azure Active Directory (Azure AD) obejmuje przeglądów dostępu członków grupy i dostęp do aplikacji. Te przykłady formantów upewnij się, nadzoru dla użytkowników mających dostęp do aplikacji i członkostwa w grupach w organizacji. Organizacje mogą używać tych kontrolek, aby efektywnie rozwiązać ich nadzoru, zarządzania ryzykiem i wymagań dotyczących zgodności.
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445759"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576934"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory w wersji 2.0 i przepływ OAuth 2.0 "w imieniu"
 
@@ -72,8 +72,8 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 | Parametr |  | Opis |
 | --- | --- | --- |
 | `grant_type` | Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) lub do nowej [portalu rejestracji (wersja zapoznawcza) aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) został przypisany do aplikacji. |
-| `client_secret` | Wymagane | Klucz tajny aplikacji, że wygenerowane dla aplikacji w portalu umożliwia zarejestrowanie aplikacji. |
+| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony ma przypisany do aplikacji. |
+| `client_secret` | Wymagane | Klucz tajny klienta, który został wygenerowany dla aplikacji w witrynie Azure portal — strona rejestracji aplikacji. |
 | `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
 | `scope` | Wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md). |
 | `requested_token_use` | Wymagane | Określa, jak można przetworzyć żądania. Przepływu OBO musi być równa wartości `on_behalf_of`. |
@@ -104,7 +104,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | Parametr |  | Opis |
 | --- | --- | --- |
 | `grant_type` | Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) lub do nowej [portalu rejestracji (wersja zapoznawcza) aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) został przypisany do aplikacji. |
+| `client_id` | Wymagane |  Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony ma przypisany do aplikacji. |
 | `client_assertion_type` | Wymagane | Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Wymagane | Potwierdzenie (JSON web token) należy utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenie, zobacz [certyfikatu poświadczeń](active-directory-certificate-credentials.md). |
 | `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
@@ -205,7 +205,7 @@ W tej chwili system osobistych kont Microsoft nie obsługuje połączonych zgody
 
 #### <a name="pre-authorized-applications"></a>Wstępnie autoryzowane aplikacje
 
-Nowa funkcja w wersji zapoznawczej portalu aplikacji jest "wstępnie autoryzowane aplikacje". W ten sposób zasobu może wskazywać, że zawsze danej aplikacji ma uprawnienia do odbierania określonych zakresów. Jest to głównie przydatne nawiązywanie połączeń między klientem frontonu i zaplecza zasób bezproblemowa. Zasób może zadeklarować wiele wstępnie autoryzowanych aplikacjach — takich aplikacji mogą żądać tych uprawnień w OBO przepływu i odbierać je bez użytkownika zgodę.
+Funkcja portalu aplikacji jest "wstępnie autoryzowane aplikacje". W ten sposób zasobu może wskazywać, że zawsze danej aplikacji ma uprawnienia do odbierania określonych zakresów. Jest to głównie przydatne nawiązywanie połączeń między klientem frontonu i zaplecza zasób bezproblemowa. Zasób może zadeklarować wiele wstępnie autoryzowanych aplikacjach — takich aplikacji mogą żądać tych uprawnień w OBO przepływu i odbierać je bez użytkownika zgodę.
 
 #### <a name="admin-consent"></a>zgoda administratora
 

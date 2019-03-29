@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: f06dd47a519d992e52ac0010c0ae7d81870a4842
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 601ae4a896c4e52d8a1f4022c92a22988465369c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544532"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578479"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -304,6 +304,10 @@ Po określeniu zapytania SOQL lub SQL, należy zwrócić uwagę na różnicę fo
 
 * **Przykładowe SOQL**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **Przykładowe SQL**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+
+### <a name="error-of-malformedquerytruncated"></a>Błąd MALFORMED_QUERY: obcięty
+
+Jeśli napotkasz błąd "MALFORMED_QUERY: Przycięty", zwykle jest ze względu na masz JunctionIdList typ kolumny w danych i usługa Salesforce ma ograniczenie obsługujące takich danych z dużą liczbę wierszy. Aby rozwiązać problem, spróbuj wysłać wykluczanie JunctionIdList kolumny lub ograniczyć liczbę wierszy, aby skopiować (można podzielić na wiele uruchomienia działania kopiowania).
 
 ## <a name="data-type-mapping-for-salesforce"></a>Typ danych mapowanie dla usług Salesforce
 

@@ -5,20 +5,20 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/18/2019
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: a83b8a56a8108f86d868e3420d8368c74fba308a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412227"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578199"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Samouczek: Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server
 
-Usługi Azure IoT Edge i programu SQL Server można używać do przechowywania danych i wykonywania zapytań dotyczących danych na brzegu sieci. Usługa Azure IoT Edge ma podstawowe funkcje magazynu w celu buforowania komunikatów, jeśli urządzenie przejdzie w tryb offline, a następnie przekazania ich dalej po ponownym ustanowieniu połączenia. Możesz jednak potrzebować bardziej zaawansowanych możliwości magazynu, takich jak możliwość lokalnego wykonywania zapytań o dane. Dzięki włączeniu lokalnych baz danych urządzenia usługi IoT Edge mogą wykonywać bardziej złożone obliczenia bez konieczności utrzymywania połączenia z usługą IoT Hub. Na przykład czujnik na maszynie przekazuje dane do chmury raz w miesiącu na potrzeby raportowania i udoskonalania modułu uczenia maszynowego. Jeśli jednak serwisant pracuje przy maszynie, może lokalnie uzyskać dostęp do danych czujnika z ostatnich kilku dni.
+Usługi Azure IoT Edge i programu SQL Server można używać do przechowywania danych i wykonywania zapytań dotyczących danych na brzegu sieci. Usługa Azure IoT Edge ma podstawowe funkcje magazynu w celu buforowania komunikatów, jeśli urządzenie przejdzie w tryb offline, a następnie przekazania ich dalej po ponownym ustanowieniu połączenia. Możesz jednak potrzebować bardziej zaawansowanych możliwości magazynu, takich jak możliwość lokalnego wykonywania zapytań o dane. Urządzenia usługi IoT Edge służy lokalnych baz danych do wykonywania bardziej złożonych obliczeń bez konieczności utrzymywanie połączenia z Centrum IoT Hub. 
 
 Ten artykuł zawiera instrukcje dotyczące wdrażania bazy danych programu SQL Server na urządzeniu usługi IoT Edge. Usługa Azure Functions, uruchomiona na urządzeniu usługi IoT Edge, strukturyzuje dane przychodzące, a następnie wysyła je do bazy danych. Kroki opisane w tym artykule można zastosować również do innych baz danych, które działają w kontenerach, na przykład MySQL lub PostgreSQL.
 
@@ -36,10 +36,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Urządzenie usługi Azure IoT Edge:
 
-* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
-
-  > [!NOTE]
-  > Program SQL Server obsługuje tylko kontenery systemu Linux. Jeśli chcesz przetestować ten samouczek przy użyciu urządzenia z systemem Windows jako urządzenia Edge, należy skonfigurować je tak, aby używało kontenerów systemu Linux. Zobacz temat [Instalacja środowiska uruchomieniowego usługi Azure IoT Edge w systemie Windows](how-to-install-iot-edge-windows-with-linux.md), aby zapoznać się z wymaganiami wstępnymi i krokami instalacji na potrzeby konfigurowania środowiska uruchomieniowego usługi IoT Edge dla kontenerów systemu Linux w systemie Windows.
+* Maszynę wirtualną platformy Azure można użyć jako urządzenia usługi IoT Edge, wykonując kroki opisane w przewodniku Szybki Start dla [Linux](quickstart-linux.md).
+* Program SQL Server obsługuje tylko kontenery systemu Linux. Jeśli chcesz przetestować ten samouczek przy użyciu urządzenia Windows jako urządzenia usługi IoT Edge, należy skonfigurować tak, że używa kontenerów systemu Linux. Zobacz temat [Instalacja środowiska uruchomieniowego usługi Azure IoT Edge w systemie Windows](how-to-install-iot-edge-windows.md), aby zapoznać się z wymaganiami wstępnymi i krokami instalacji na potrzeby konfigurowania środowiska uruchomieniowego usługi IoT Edge dla kontenerów systemu Linux w systemie Windows.
 
 Zasoby w chmurze:
 
@@ -52,6 +50,7 @@ Zasoby do programowania:
 * [Narzędzia usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
 * [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download). 
 * [Program Docker CE](https://docs.docker.com/install/). 
+  * Jeśli tworzysz na komputerze Windows, upewnij się, Docker jest [skonfigurowany do używania kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
@@ -98,7 +97,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    | Podaj nazwę rozwiązania | Wprowadź opisową nazwę rozwiązania, na przykład **SqlSolution**, lub zaakceptuj nazwę domyślną. |
    | Wybierz szablon modułu | Wybierz pozycję **Azure Functions — C#**. |
    | Podaj nazwę modułu | Nadaj modułowi nazwę **sqlFunction**. |
-   | Podaj repozytorium obrazów platformy Docker dla modułu | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany w ostatnim kroku. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal. Ostateczny ciąg będzie wyglądał następująco: \<nazwa rejestru\>.azurecr.io/sqlFunction. |
+   | Podaj repozytorium obrazów platformy Docker dla modułu | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany w ostatnim kroku. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal. <br><br>Ostateczny ciąg będzie wyglądał następująco: \<nazwa rejestru\>.azurecr.io/sqlFunction. |
 
    W oknie programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. 
    
@@ -119,7 +118,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 7. W eksploratorze programu VS Code otwórz plik **modules** > **sqlFunction** > **sqlFunction.cs**.
 
-8. Zastąp zawartość pliku następującym kodem:
+8. Zastąp całą zawartość pliku następującym kodem:
 
    ```csharp
    using System;
@@ -206,7 +205,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    }
    ```
 
-6. W wierszu 35 zastąp ciąg **\<sql connection string\>** następującym ciągiem. Właściwość **Data Source** odwołuje się do nazwy kontenera programu SQL Server, który zostanie utworzony z nazwą **SQL** w następnej sekcji. 
+6. W wierszu 35 zastąp ciąg **\<sql connection string\>** następującym ciągiem. **Źródła danych** właściwości odwołuje się do kontenera programu SQL Server, które jeszcze nie istnieje, ale utworzy o nazwie **SQL** w następnej sekcji. 
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
@@ -216,7 +215,7 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 8. Otwórz plik **sqlFunction.csproj**.
 
-9. Znajdź grupę odwołań pakietu i dodaj nowe odwołanie dla instrukcji include SqlClient. 
+9. Grupa odwołań do pakietów, a następnie dodaj nowy, aby uwzględnić SqlClient. 
 
    ```csproj
    <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
@@ -224,76 +223,53 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 10. Zapisz plik **sqlFunction.csproj**.
 
-## <a name="add-a-sql-server-container"></a>Dodawanie kontenera programu SQL Server
+## <a name="add-the-sql-server-container"></a>Dodaj kontener programu SQL Server
 
-[Manifest wdrożenia](module-composition.md) deklaruje moduły, które środowisko uruchomieniowe usługi IoT Edge zainstaluje na urządzeniu usługi IoT Edge. Kod na potrzeby utworzenia dostosowanego modułu funkcji został podany w poprzedniej sekcji, ale moduł programu SQL Server jest już skompilowany. Wystarczy poinstruować środowisko uruchomieniowe usługi IoT Edge, że ma dołączyć ten moduł, a następnie skonfigurować go na urządzeniu. 
+[Manifest wdrożenia](module-composition.md) deklaruje moduły, które środowisko uruchomieniowe usługi IoT Edge zainstaluje na urządzeniu usługi IoT Edge. Podany kod, aby dostosowane moduł funkcji w poprzedniej sekcji, ale moduł programu SQL Server jest już utworzone i dostępne w witrynie Azure Marketplace. Wystarczy poinstruować środowisko uruchomieniowe usługi IoT Edge, że ma dołączyć ten moduł, a następnie skonfigurować go na urządzeniu. 
 
-1. W eksploratorze programu Visual Studio Code otwórz plik **deployment.template.json**. 
+1. W programie Visual Studio Code Otwórz paletę poleceń, wybierając pozycję **widoku** > **paletę poleceń**.
 
-1. Znajdź sekcję **modules**. Powinny być w niej wyświetlane dwa moduły: moduł **tempSensor**, który generuje symulowane dane, i moduł **sqlFunction**.
+2. W palecie poleceń wpisz i uruchom polecenie **Azure IoT Edge: Dodaj moduł usługi IoT Edge**. W palecie poleceń Podaj następujące informacje, aby dodać nowy moduł: 
 
-1. Dodaj następujący kod, aby zadeklarować trzeci moduł. Dodaj przecinek po sekcji sqlFunction i wstaw:
+   | Pole | Wartość | 
+   | ----- | ----- |
+   | Wybierz plik szablonu wdrożenia | Paleta poleceń wyróżnia deployment.template.json plik w bieżącym folderze rozwiązania. Wybierz ten plik.  |
+   | Wybierz szablon modułu | Wybierz **modułu z witryny Azure Marketplace**. |
 
-   ```json
-   "sql": {
-     "version": "1.0",
-     "type": "docker",
-     "status": "running",
-     "restartPolicy": "always",
-     "env":{},
-     "settings": {
-       "image": "",
-       "createOptions": ""
-     }
-   }
-   ```
+3. W witrynie marketplace modułu usługi Azure IoT Edge, wyszukiwanie i wybieranie **modułu serwera SQL**. 
 
-   ![Dodawanie modułu programu SQL Server do manifestu](./media/tutorial-store-data-sql-server/view_json_sql.png)
+4. Zmień nazwę modułu, aby **sql**, tylko małe litery. Ta nazwa jest zgodna nazwa kontenera deklarowane w parametrach połączenia w pliku sqlFunction.cs. 
 
-1. Zaktualizuj parametry modułu **sql** za pomocą następującego kodu:
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "mcr.microsoft.com/mssql/server:latest",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
+5. Wybierz **importu** dodanie modułu do rozwiązania. 
+
+6. W folderze rozwiązania, otwórz **deployment.template.json** pliku. 
+
+7. Znajdź sekcję **modules**. Powinien zostać wyświetlony trzy moduły. Moduł *tempSensor* jest domyślnie włączone w nowych rozwiązań i zawiera dane z badań za pomocą inne moduły. Moduł *sqlFunction* jest moduł, który został pierwotnie utworzony i zaktualizowany przy użyciu nowego kodu. Na koniec modułu *sql* została zaimportowana z portalu Azure Marketplace. 
 
    >[!Tip]
-   >Za każdym razem, gdy tworzysz kontener programu SQL Server w środowisku produkcyjnym, zaleca się [zmienić domyślne hasło administratora systemu](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
+   >Moduł programu SQL Server zawiera domyślne hasło ustawione w zmiennych środowiskowych manifestu wdrażania. Za każdym razem, gdy tworzysz kontener programu SQL Server w środowisku produkcyjnym, zaleca się [zmienić domyślne hasło administratora systemu](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
 
-1. Zapisz plik **deployment.template.json**.
+8. Zamknij **deployment.template.json** pliku.
 
 ## <a name="build-your-iot-edge-solution"></a>Kompilowanie rozwiązania usługi IoT Edge
 
-W poprzednich sekcjach utworzono rozwiązanie z jednym modułem, a następnie dodano drugi do szablonu manifestu wdrożenia. Teraz musisz skompilować rozwiązanie, utworzyć obrazy kontenerów dla modułów i wypchnąć obrazy do rejestru kontenerów. 
+W poprzednich sekcjach utworzono rozwiązanie z jednym modułem, a następnie dodano drugi do szablonu manifestu wdrożenia. Moduł programu SQL Server znajduje się publicznie przez firmę Microsoft, ale musisz konteneryzowanie kodu w module funkcji. W tej sekcji Skompiluj rozwiązanie, tworzenie obrazów kontenera dla modułu sqlFunction i Wypchnij obraz do rejestru kontenerów. 
 
-1. Zaloguj się do rejestru kontenerów w programie Visual Studio Code, aby mógł on wypchnąć obrazy do rejestru. Użyj tych samych poświadczeń, które zostały dodane do pliku env. W zintegrowanym terminalu wprowadź następujące polecenie:
+1. W programie Visual Studio Code otwórz zintegrowany terminal, wybierając pozycję **Widok** > **Terminal**.  
+
+1. Zaloguj się do rejestru kontenerów w programie Visual Studio Code, aby mógł on wypchnąć obrazy do rejestru. Użyj tych samych poświadczeń usługi Azure Container Registry (ACR), które zostały dodane do pliku env. W zintegrowanym terminalu wprowadź następujące polecenie:
 
     ```csh/sh
-    docker login -u <ACR username> <ACR login server>
+    docker login -u <ACR username> -p <ACR password> <ACR login server>
     ```
     
-    Zostanie wyświetlony monit o podanie hasła. Wklej hasło w monicie (hasło jest ukryte ze względów bezpieczeństwa) i naciśnij klawisz **Enter**. 
-
-    ```csh/sh
-    Password: <paste in the ACR password and press enter>
-    Login Succeeded
-    ```
+    Może być wyświetlone ostrzeżenie o zabezpieczeniach zalecające użycie parametru--stdin hasła. Użycie tego parametru wykracza poza zakres tego artykułu, jednak zalecamy zastosowanie tego najlepszego rozwiązania. Aby uzyskać więcej informacji, zobacz [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) poleceń. 
 
 2. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **deployment.template.json** i wybierz polecenie **Skompiluj i wypchnij rozwiązanie usługi IoT Edge**. 
 
 Po wybraniu polecenia kompilowania rozwiązania w programie Visual Studio Code program najpierw pobiera informacje z szablonu wdrożenia i generuje plik deployment.json w nowym folderze **config**. Następnie uruchamia dwa polecenia w zintegrowanym terminalu: `docker build` i `docker push`. Te dwa polecenia kompilują kod, konteneryzują moduł i wypychają kod do rejestru kontenerów określonego podczas inicjowania rozwiązania. 
+
+Aby sprawdzić, czy moduł sqlFunction pomyślnie został wypchnięty do rejestru kontenerów. W witrynie Azure portal przejdź do rejestru kontenerów. Wybierz **repozytoriów** i wyszukaj **sqlFunction**. Inne dwa moduły, tempSensor i sql, nie będzie wypchnięte do rejestru kontenerów, ponieważ już one wskazuje repozytoriach w rejestrach firmy Microsoft.
 
 ## <a name="deploy-the-solution-to-a-device"></a>Wdrażanie rozwiązania na urządzeniu
 
@@ -312,6 +288,8 @@ Moduły można ustawić na urządzeniu za pomocą usługi IoT Hub, ale dostęp d
    ![Tworzenie wdrożenia dla pojedynczego urządzenia](./media/tutorial-store-data-sql-server/create-deployment.png)
 
 6. W Eksploratorze plików przejdź do folderu **config** wewnątrz rozwiązania i wybierz plik **deployment.amd64**. Kliknij pozycję **Wybierz manifest wdrożenia usługi Edge**. 
+
+   Nie należy używać pliku deployment.template.json jako manifest wdrożenia.
 
 Jeśli wdrożenie zakończy się pomyślnie, komunikat potwierdzenia zostanie wydrukowany w danych wyjściowych programu VS Code. 
 
@@ -376,9 +354,6 @@ Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować
 W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Azure utworzone podczas pracy z tym artykułem, aby uniknąć naliczania opłat. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
-[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
-
 
 
 ## <a name="next-steps"></a>Następne kroki

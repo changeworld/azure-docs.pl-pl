@@ -1,6 +1,6 @@
 ---
-title: Co to są przeglądów dostępu usługi Azure AD? | Microsoft Docs
-description: Przeglądy dostępu w Active Directory platformy Azure można kontrolować grupy członkostwa i dostęp do aplikacji do spełnienia warunków nadzoru, zarządzania ryzykiem i inicjatyw zgodności w organizacji.
+title: Co to są przeglądy dostępu? — Azure Active Directory | Microsoft Docs
+description: Korzystanie z przeglądów dostępu w usłudze Azure Active Directory, możesz kontrolować grupy członkostwa i dostęp do aplikacji do spełnienia warunków nadzoru, zarządzania ryzykiem i inicjatyw zgodności w organizacji.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845158"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576126"
 ---
-# <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądów dostępu usługi Azure AD?
+# <a name="what-are-azure-ad-access-reviews"></a>Co to są usługi Azure AD access przeglądy?
 
 Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają organizacjom efektywnie zarządzać członkostwem w grupach, dostępem do aplikacji dla przedsiębiorstw i przypisań ról. Dostęp użytkownika można przeczytać w regularnych odstępach czasu, aby upewnić się, że odpowiednie osoby mieć przedłużony dostęp.
 
@@ -42,7 +42,7 @@ Usługa Azure AD umożliwia współpracę wewnętrznie w Twojej organizacji i u�
 
 ## <a name="when-to-use-access-reviews"></a>Kiedy należy używać dostępu przeglądy?
 
-- **Zbyt wielu użytkowników pełniących uprzywilejowane role:** To dobry pomysł, aby sprawdzić, ilu użytkowników mają dostęp administracyjny, ile z nich są Administratorzy globalni i jeśli istnieją zaproszenie gości lub partnerów, które nie zostały usunięte po przypisywane do wykonywania zadań administracyjnych. Można ponownie certyfikować użytkownicy przypisania roli w [ról katalogu usługi Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takich jak Administratorzy globalni lub [role zasobów platformy Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takie jak Administrator dostępu użytkowników w [usługi Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) środowiska.
+- **Zbyt wielu użytkowników pełniących uprzywilejowane role:** To dobry pomysł, aby sprawdzić, ilu użytkowników mają dostęp administracyjny, ile z nich są Administratorzy globalni i jeśli istnieją zaproszenie gości lub partnerów, które nie zostały usunięte po przypisywane do wykonywania zadań administracyjnych. Można ponownie certyfikować użytkownicy przypisania roli w [ról usługi Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takich jak Administratorzy globalni lub [role zasobów platformy Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takie jak Administrator dostępu użytkowników w [usługi Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) środowiska.
 - **Jeśli usługa automation jest praktyce:** Można utworzyć reguły dynamicznego członkostwa w grupach zabezpieczeń lub grupach usługi Office 365, ale co zrobić, jeśli dane Kadrowe nie jest w usłudze Azure AD lub jeśli użytkownicy nadal potrzebują dostępu po opuszczeniu grupy to w opracowywaniu ich wymiany? Następnie można utworzyć przeglądu w tej grupie, aby upewnić się, że tych, którzy nadal muszą mieć dostęp powinni mieć przedłużony dostęp.
 - **Gdy grupa jest używana do nowego celu:** Jeśli masz grupę, która ma być synchronizowane z usługą Azure AD lub planowane jest umożliwienie aplikacji Salesforce dla wszystkich użytkowników w grupie zespołu sprzedaży, należałoby poproś właściciela grupy, aby przejrzeć członkostwo w grupie przed grupy używany w co różne ryzyka tości.
 - **Dostęp do najważniejszych danych biznesowych:** dla niektórych zasobów może być wymagana poprosić osoby spoza IT regularnie wylogowanie i podać uzasadnienie w Dlaczego potrzebują dostępu na potrzeby inspekcji.
@@ -52,13 +52,13 @@ Usługa Azure AD umożliwia współpracę wewnętrznie w Twojej organizacji i u�
 
 ## <a name="where-do-you-create-reviews"></a>Gdzie można utworzyć przeglądy?
 
-W zależności od tego, co chcesz przejrzeć utworzysz zapoznania się z nimi dostępu przeglądów dostępu usługi Azure AD, aplikacje dla przedsiębiorstw usługi Azure AD (w wersji zapoznawczej) lub Azure AD PIM.
+W zależności od tego, co chcesz przejrzeć, utworzy zapoznania się z nimi dostępu w usłudze Azure AD dostęp, przeglądy, aplikacje dla przedsiębiorstw usługi Azure AD (w wersji zapoznawczej) lub Azure AD PIM.
 
 | Prawa dostępu użytkowników | Recenzenci mogą być | Utworzono w Przegląd | Środowisko osoby dokonującej przeglądu |
 | --- | --- | --- | --- |
 | Członkowie grupy zabezpieczeń</br>Członkowie grupy pakietu Office | Określony osób dokonujących przeglądu</br>Właściciele grupy</br>Zapoznaj się samodzielnie | Przeglądy dostępu w usłudze Azure AD</br>Grupy usługi Azure AD | Panel dostępu |
 | Przypisane do połączonej aplikacji | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Przeglądy dostępu w usłudze Azure AD</br>Usługa Azure AD aplikacji przedsiębiorstwa (w wersji zapoznawczej) | Panel dostępu |
-| Rola katalogu usługi Azure AD | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Azure AD PIM | Azure Portal |
+| Rola usługi Azure AD | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Azure AD PIM | Azure Portal |
 | Rola zasobów platformy Azure | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Azure AD PIM | Azure Portal |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -94,7 +94,7 @@ Aby włączyć przeglądów dostępu, wykonaj następujące kroki.
 
 1. Na liście w okienku nawigacji kliknij **dołączanie** otworzyć **Dołącz przeglądy dostępu** strony.
 
-    ![Dołączanie przeglądów dostępu](./media/access-reviews-overview/onboard-button.png)
+    ![Dołączanie przeglądy dostępu](./media/access-reviews-overview/onboard-button.png)
 
 1. Kliknij przycisk **Utwórz** umożliwiając dostęp do przeglądów w bieżącym katalogu.
 

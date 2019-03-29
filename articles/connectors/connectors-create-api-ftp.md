@@ -1,21 +1,21 @@
 ---
-title: Nawiązać połączenie z serwerem FTP — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Nawiązać połączenie z serwerem FTP — Azure Logic Apps
 description: Tworzenie, monitorowanie i zarządzanie plikami na serwerze FTP za pomocą usługi Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913363"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576330"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
 
@@ -28,10 +28,11 @@ Korzystając z usługi Azure Logic Apps i łącznik FTP można utworzyć automat
 
 Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Uruchom akcje w aplikacjach logiki służy do zarządzania plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie plików z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-> [!NOTE]
-> Łącznik FTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [komunikat segmentu w akcjach](../logic-apps/logic-apps-handle-large-messages.md). Obecnie nie można używać segmentu wyzwalaczy.
->
-> Ponadto łącznik FTP obsługuje tylko jawne FTP over SSL (FTPS) i nie jest zgodny z niejawne protokołu FTPS. 
+## <a name="limits"></a>Limity
+
+* Akcje FTP obsługuje tylko pliki, które są *50 MB lub mniej* chyba że używasz [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md), umożliwiają który przekroczenia tego limitu. Obecnie usługa wyzwalaczy FTP nie obsługują segmentu.
+
+* Łącznik FTP obsługuje tylko jawne FTP over SSL (FTPS) i nie jest zgodny z niejawne protokołu FTPS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,7 +52,7 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma.
 
    — lub —
 
@@ -82,7 +83,7 @@ Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzw
 
 **Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu FTP dla nowych plików, które opisują zamówienia. Można następnie użyć akcji FTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
-Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+Podczas żądania zawartości pliku, wyzwalaczy nie można pobrać plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
 
 * Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
 
@@ -121,7 +122,7 @@ Teraz, że Twoja aplikacja logiki ma wyzwalacz, należy dodać akcje, które chc
 
 Ta akcja pobiera zawartość z pliku na serwerze FTP, gdy ten plik jest dodane lub zaktualizowane. Na przykład można dodać wyzwalacza z poprzedniego przykładu i akcji, która pobiera zawartość pliku, po dodaniu lub edytować tego pliku. 
 
-Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+Podczas żądania zawartości pliku, wyzwalaczy nie można pobrać plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
 
 * Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
 
@@ -151,7 +152,7 @@ Oto przykład, który pokazuje tę akcję: **Pobieranie zawartości**
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/ftpconnector/).
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i limity, który opisano przez łącznika interfejsu OpenAPI (dawniej Swagger) opis, przejrzyj [strona referencyjna łącznika](/connectors/ftpconnector/).
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

@@ -1,6 +1,6 @@
 ---
-title: Warunki użytkowania usługi Azure Active Directory | Microsoft Docs
-description: W tym artykule opisano, jak rozpocząć pracę, przy użyciu usługi Azure AD z warunkami użytkowania do prezentowania informacji pracowników lub gości, zanim uzyska dostęp.
+title: Warunki użytkowania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak rozpocząć pracę, przy użyciu usługi Azure Active Directory z warunkami użytkowania do prezentowania informacji pracowników lub gości, zanim uzyska dostęp.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,12 +15,12 @@ ms.subservice: compliance
 ms.date: 03/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f6ac8a693e09d0efbac080d7effc6ce21c6a094
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 25a3eb6fdfc6928e2e414dcbe799861c3b2eb999
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418979"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576177"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.

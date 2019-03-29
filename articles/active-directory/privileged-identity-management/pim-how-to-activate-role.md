@@ -1,6 +1,6 @@
 ---
-title: Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak aktywować ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Uaktywnij Moje role usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak aktywować ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,38 +14,38 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca069da1239a505b3e3686998cd29844ed80ba46
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542763"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576823"
 ---
-# <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM
+# <a name="activate-my-azure-ad-roles-in-pim"></a>Uaktywnij Moje role usługi Azure AD w usłudze PIM
 
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) upraszcza sposób przedsiębiorstw Zarządzanie uprzywilejowanego dostępu do zasobów w usłudze Azure AD i innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune.  
 
 Jeśli użytkownik wprowadzono kwalifikuje się do roli administracyjnej, oznacza to, że możesz aktywować tej roli, gdy potrzebne do wykonania uprzywilejowanych akcji. Na przykład jeśli zarządzasz od czasu do czasu funkcje usługi Office 365, Administratorzy ról uprzywilejowanych w organizacji może nie mieć możesz stałe Administrator globalny, ponieważ ta rola ma wpływ na inne usługi, za. Zamiast tego są każą kwalifikuje się do ról usługi Azure AD, takich jak Exchange Online Administrator. Możesz poprosić o aktywowanie tej roli, gdy wymagane jego uprawnienia, a następnie będziesz mieć kontroli administratora w okresie wyznaczonym czasie.
 
-Ten artykuł jest przeznaczony dla administratorów, którzy muszą aktywować swoją rolę katalogu usługi Azure AD w usłudze PIM.
+Ten artykuł jest przeznaczony dla administratorów, którzy muszą aktywować swoją rolę usługi Azure AD w usłudze PIM.
 
 ## <a name="activate-a-role"></a>Uaktywnij rolę
 
-Gdy trzeba przełączyć w roli katalogu usługi Azure AD, możesz poprosić aktywacji przy użyciu **Moje role** opcji nawigacji w usłudze PIM.
+Gdy trzeba przełączyć w roli usługi Azure AD, możesz poprosić aktywacji przy użyciu **Moje role** opcji nawigacji w usłudze PIM.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**. Aby uzyskać informacje dotyczące sposobu dodawania kafelka PIM do pulpitu nawigacyjnego, zobacz [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
-1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról katalogu usługi Azure AD.
+1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról usługi Azure AD.
 
-    ![Role katalogu usługi AD systemu Azure — Moje role](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
+    ![Role usługi Azure AD — Moje role](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
 
 1. Wyszukuje rolę, którą chcesz aktywować.
 
-    ![Role katalogu usługi AD systemu Azure — Moja lista ról](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
+    ![Role usługi Azure AD — Moja lista ról](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
 1. Kliknij przycisk **Aktywuj** aby otworzyć okienko szczegółów aktywacji roli.
 
@@ -87,11 +87,11 @@ Można wyświetlić stan Oczekujące żądania aktywowania.
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **Moje żądania** umożliwia wyświetlenie listy żądań.
 
-    ![Role katalogu usługi AD systemu Azure — Moje żądania](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
+    ![Role usługi Azure AD — Moje żądania](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
 ## <a name="deactivate-a-role"></a>Dezaktywacja roli
 
@@ -101,7 +101,7 @@ Jeśli zadania administratora zostanie ukończone przedwcześnie, można równie
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **Moje role**.
 
@@ -115,7 +115,7 @@ Jeśli nie jest wymagane uaktywnienie roli, która wymaga zatwierdzenia, możesz
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **Moje żądania**.
 

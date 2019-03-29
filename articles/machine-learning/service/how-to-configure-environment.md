@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361799"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577564"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -315,7 +315,9 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
    1. Na **bibliotek** zaznacz **ponowne uruchomienie**.
       
    Ponadto należy wziąć pod uwagę:
-   + Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty Databricks podczas instalacji. Aby uniknąć takich błędów, zainstalować pakiety zamrożenia wersji biblioteki, takie jak `pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`. 
+   + W pliku konfiguracyjnym Automl, korzystając z usługi Azure Databricks, Dodaj następujące parametry:
+    1. ```max_concurrent_iterations``` na podstawie liczby węzłów procesu roboczego w klastrze. 
+    2. ```spark_context=sc``` #databricks/spark domyślny kontekst aparatu spark. 
    + Lub, jeśli masz starszą wersję zestawu SDK, usuń zaznaczenie opcji z zainstalowanych libs klastra i przenosić do Kosza. Instalowanie nowej wersji zestawu SDK i uruchom ponownie klaster. Jeśli występuje problem, po to, odłącz i ponownie podłącz klastra.
 
 Jeśli instalacja się powiodła, zaimportowanej biblioteki powinien wyglądać podobnie jeden z nich:

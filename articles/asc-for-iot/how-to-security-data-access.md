@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: e394f6025f7898aad7dde7b1acefd9f95029a554
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541995"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576643"
 ---
 # <a name="access-your-security-data"></a>Dostęp do danych zabezpieczeń 
 
@@ -39,20 +39,20 @@ Aby skonfigurować, który obszar roboczy usługi Log Analytics jest używany:
 
 Dostęp do obszaru roboczego usługi Log Analytics po konfiguracji:
 
-1. Wybierz alert w ASC dla IoT. 
+1. Wybierz alert lub zalecenia w ASC dla IoT. 
 2. Kliknij przycisk **dalsze badanie**, następnie kliknij przycisk **urządzeń, które mają ten alert, kliknij tutaj, aby wyświetlić kolumnę DeviceId**.
 
 Aby uzyskać więcej informacji o wysyłaniu zapytań do danych z usługi Log Analytics, zobacz [wprowadzenie do zapytań w usłudze Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 
-Alerty zabezpieczeń są przechowywane w **ASCforIoT.SecurityAlert** tabeli w ramach skonfigurowanego obszaru roboczego usługi Log Analytics.
+Alerty zabezpieczeń są przechowywane w _AzureSecurityOfThings.SecurityAlert_ tabeli w obszarze roboczym usługi Log Analytics skonfigurowane dla usługi ASC dla rozwiązania IoT.
 
-Następujące zapytania podstawowego kql umożliwia rozpoczęcie eksplorowania alertów zabezpieczeń.
+Podana liczba przydatne zapytania, aby pomóc Ci rozpocząć pracę, eksplorowanie alerty zabezpieczeń zostały wykonane następujące kroki.
 
-### <a name="sample-records-query"></a>Sample records query
+### <a name="sample-records"></a>Przykładowe rekordów
 
-Aby zaznaczyć kilka rekordów w losowo wybranym momencie: 
+Wybierz kilka losowych rekordów
 
 ```
 // Select a few random records
@@ -69,17 +69,15 @@ SecurityAlert
 | take 3
 ```
 
-#### <a name="sample-query-results"></a>Przykładowe wyniki zapytania 
-
 | TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | Nazwa wyświetlana                           | Opis                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | Atak metodą ataku siłowego Wymuś na urządzeniu zakończyło się powodzeniem        |    {"Pełną Address": "[\"10.165.12.18:\"]", "Nazwy użytkownika": "[\"\"]", "DeviceId": "IoT urządzenia — Linux"}                                                                       |
 | 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | Wykryto pomyślne lokalne logowanie do urządzenia     | {"Zdalnego Address": "?", "Port zdalny": "", "Portu lokalnego": "", "Login powłoka": "/ bin/su", "Identyfikator procesu logowania": "28207", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT urządzenia — Linux"} |
 | 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Próba logowania lokalnego na urządzeniu nie powiodła się  | Została wykryta próba logowania lokalnego nie powiodło się z urządzeniem |  {"Zdalnego Address": "?", "Port zdalny": "", "Portu lokalnego": "", "Login powłoka": "/ bin/su", "Identyfikator procesu logowania": "22644", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT urządzenia — Linux"} |
 
-### <a name="device-summary-query"></a>Podsumowanie zapytania urządzeń
+### <a name="device-summary"></a>Podsumowania urządzenia
 
-Użyj tego zapytania kql, aby wybrać wiele alertów zabezpieczeń z różnych wykryty ostatni tydzień przez usługę IoT Hub, urządzenia, ważność alertu, typu alertu.
+Wybierz liczbę alertów zabezpieczeń distinct wykryty ostatni tydzień przez Centrum IoT Hub, urządzenia, ważność alertu, typu alertu.
 
 ```
 // Select number of distinct security alerts detected last week by 
@@ -94,19 +92,16 @@ SecurityAlert
     DisplayName
 ```
 
-#### <a name="device-summary-query-results"></a>Wyniki zapytania podsumowania urządzenia
-
-| IoTHubId | DeviceId| AlertSeverity| Nazwa wyświetlana | Licznik |
-|----------|---------|------------------|---------|---------|
-|/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | 9   |    
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | Nazwa wyświetlana                           | Licznik |
+|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | 9   |   
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 242 |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 31  |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | Crypto Coin Miner                     | 4   |
-|
 
-### <a name="iot-hub-summary"></a>Podsumowanie usługi IoT Hub
+### <a name="iot-hub-summary"></a>Podsumowanie usługi IoT hub
 
-Skorzystaj z tej kwerendy kql, aby wybrać wiele różnych urządzeń, które miały alertów w ostatnim tygodniu przez Centrum IoT hub, ważność alertu, typ alertu:
+Wybierz liczbę różnych urządzeń, które miały alertów w ostatnim tygodniu, przez Centrum IoT Hub, ważność alertu, typ alertu
 
 ```
 // Select number of distinct devices which had alerts in the last week, by 
@@ -121,8 +116,6 @@ SecurityAlert
     DisplayName
 ```
 
-#### <a name="iot-hub-summary-query-results"></a>Wyniki zapytania podsumowania usługi IoT Hub
-
 | IoTHubId                                                                                                       | AlertSeverity | Nazwa wyświetlana                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Atak siłowy powiodło się.           | 1          |    
@@ -130,6 +123,58 @@ SecurityAlert
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 1          |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Medium        | Crypto Coin Miner                     | 1          |
 
+## <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
+
+Zalecenia dotyczące zabezpieczeń są przechowywane w _AzureSecurityOfThings.SecurityRecommendation_ tabeli w obszarze roboczym usługi Log Analytics skonfigurowane dla usługi ASC dla rozwiązania IoT.
+
+Udostępniliśmy szereg przydatne zapytania, aby ułatwić rozpoczęcie eksplorowania zaleceń dotyczących zabezpieczeń.
+
+### <a name="sample-records"></a>Przykładowe rekordów
+
+Wybierz kilka losowych rekordów
+
+```
+// Select a few random records
+//
+SecurityRecommendation
+| project 
+    TimeGenerated, 
+    IoTHubId=AssessedResourceId, 
+    DeviceId,
+    RecommendationSeverity,
+    RecommendationState,
+    RecommendationDisplayName,
+    Description,
+    RecommendationAdditionalData
+| take 2
+```
+    
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Opis | RecommendationAdditionalData |
+|---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
+| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+
+### <a name="device-summary"></a>Podsumowania urządzenia
+
+Wybierz liczbę zalecenia dotyczące zabezpieczeń active distinct przez Centrum IoT Hub, urządzenia, zalecenie ważności i typu.
+
+```
+// Select number of distinct active security recommendations by 
+//   IoT hub, device, recommendation severity and type
+//
+SecurityRecommendation
+| extend IoTHubId=AssessedResourceId
+| summarize CurrentState=arg_max(RecommendationState, DiscoveredTimeUTC) by IoTHubId, DeviceId, RecommendationSeverity, RecommendationDisplayName
+| where CurrentState == "Active"
+| summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
+```
+
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Licznik |
+|----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 2   |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | 1 |  
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 1  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | 4   |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -137,3 +182,4 @@ SecurityAlert
 - Przeczytaj ASC, aby uzyskać IoT [— omówienie](overview.md)
 - Dowiedz się więcej o ASC IoT [architektury](architecture.md)
 - Poznawanie i eksplorowanie [ASC alertów IoT](concept-security-alerts.md)
+- Poznawanie i eksplorowanie [ASC zalecenie IoT](concept-recommendations.md)

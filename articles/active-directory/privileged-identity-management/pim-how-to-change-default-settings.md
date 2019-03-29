@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować ustawienia ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować ustawienia roli usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,34 +14,34 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162547"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576866"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM
+# <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM
 
-Administrator ról uprzywilejowanych, można dostosować usługi Azure AD Privileged Identity Management (PIM) w organizacji, w tym zmian środowiska dla użytkownika, który jest aktywacja kwalifikujące się przypisanie roli.
+Administrator ról uprzywilejowanych, można dostosować usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) w organizacji, w tym zmian środowiska dla użytkownika, który jest aktywacja kwalifikujące się przypisanie roli.
 
 ## <a name="open-role-settings"></a>Otwórz ustawienia roli
 
-Wykonaj następujące kroki, aby otworzyć ustawienia dla ról katalogu usługi Azure AD.
+Wykonaj następujące kroki, aby otworzyć ustawienia dla roli usługi Azure AD.
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij pozycję **Ustawienia**.
 
-    ![Role katalogu usługi AD systemu Azure — ustawienia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Role usługi Azure AD — ustawienia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. Kliknij przycisk **role**.
 
 1. Kliknij rolę, którego ustawienia chcesz skonfigurować.
 
-    ![Role katalogu usługi AD systemu Azure — ustawień ról](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Role usługi Azure AD — ustawień ról](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     Na stronie Ustawienia dla każdej roli istnieje kilka ustawień, które można skonfigurować. Te ustawienia mają wpływ tylko na użytkowników, którzy są **kwalifikujących się** przypisania, nie **stałe** przypisania.
 
@@ -98,13 +98,13 @@ Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następują
 
 1. Ustaw **wymagają zatwierdzenia** przełączyć się do **włączone**. Okienka rozwija się z opcjami, aby wybrać osób zatwierdzających.
 
-    ![Role katalogu usługi Azure AD - Settings - wymagają zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Role usługi Azure AD - Settings - wymagają zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Jeśli użytkownik **nie** Określ wszystkie osoby zatwierdzające, Administratorzy ról uprzywilejowanych stają się osoby zatwierdzające domyślne. Administratorzy ról uprzywilejowanych, które będą wymagane do zatwierdzenia **wszystkich** żądań aktywacji dla tej roli.
 
 1. Aby określić osób zatwierdzających, kliknij przycisk **wybierz osoby zatwierdzające**.
 
-    ![Role katalogu usługi Azure AD - Settings - wymagają zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Role usługi Azure AD - Settings - wymagają zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. Wybierz jedną lub więcej osób zatwierdzających, a następnie kliknij przycisk **wybierz**. Możesz wybrać użytkowników lub grup. Zaleca się co najmniej 2 osób zatwierdzających. Samodzielne zatwierdzanie nie jest dozwolone.
 
@@ -117,5 +117,5 @@ Jeśli ma być wymagane zatwierdzenie, aby aktywować rolę, wykonaj następują
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
-- [Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-configure-security-alerts.md)
+- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Konfigurowanie alertów zabezpieczeń dla ról usługi Azure AD w usłudze PIM](pim-how-to-configure-security-alerts.md)

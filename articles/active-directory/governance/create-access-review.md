@@ -1,6 +1,6 @@
 ---
-title: Tworzenie przeglądu dostępu, grupy lub aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
+title: Tworzenie przeglądu dostępu grup lub aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,14 +15,14 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847386"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576206"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu, grupy lub aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
 Dostęp do grupy i aplikacje dla pracowników i gości zmienia się wraz z upływem czasu. W celu zmniejszenia ryzyka związanego z przypisania starych dostępu, Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do tworzenia przeglądów dostępu dla członków grupy lub dostęp do aplikacji. Jeśli zachodzi potrzeba rutynowo Przegląd dostępu wszystkich użytkowników, można również utworzyć cyklicznego przeglądów dostępu. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [zarządzanie dostępem użytkowników](manage-user-access-with-access-reviews.md) i [zarządzanie dostępem gości](manage-guest-access-with-access-reviews.md).
 
@@ -130,7 +130,7 @@ Na podstawie dokonanego wyboru w ustawienia działań po zakończeniu, automatyc
 
 ## <a name="create-reviews-via-apis"></a>Utwórz przeglądy za pośrednictwem interfejsów API
 
-Można również utworzyć przeglądów dostępu za pomocą interfejsów API. Co zrobić, aby zarządzać dostępem do przeglądów grup i użytkowników aplikacji w witrynie Azure portal można również wykonać przy użyciu interfejsów API programu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [dokumentacja przeglądów dostępu usługi Azure AD interfejsu API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Przykładowy kod, zobacz [przykład pobierania przeglądów dostępu usługi Azure AD za pomocą programu Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Można również utworzyć przeglądów dostępu za pomocą interfejsów API. Co zrobić, aby zarządzać dostępem do przeglądów grup i użytkowników aplikacji w witrynie Azure portal można również wykonać przy użyciu interfejsów API programu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [przeglądy dostępu w usłudze Azure AD, dokumentacja interfejsu API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Przykładowy kod, zobacz [przykład pobierania dostępu usługi Azure AD, przeglądy za pomocą programu Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: f292ad5802af6765ec26df7de1aa271e1214e0e9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: a31380c8581503a340c55c374afc02c6e1fa290b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983017"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577173"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Usługa Azure Monitor, aby uzyskać przegląd kontenerów
 
@@ -31,9 +31,12 @@ Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbier
 Usługa Azure Monitor dla kontenerów zawiera kilka wstępnie zdefiniowanych widoków przedstawiających przechowywanych obciążeń kontenerów i co wpływa na kondycji wydajności monitorowanych klastra Kubernetes, aby można było przeprowadzić:  
 
 * Zidentyfikuj kontenerów AKS, które są uruchomione na węźle i ich średnie wykorzystanie procesora i pamięci. Ta wiedza może pomóc w identyfikacji wąskich gardeł zasobów.
-* Zidentyfikuj wykorzystanie procesora i pamięci grup kontenerów i ich kontenerów, hostowana w usłudze Azure Container Instances.  * Określ lokalizację kontenera w kontrolerze lub zasobnik. Ta wiedza może ułatwić wyświetlanie kontrolera lub zasobnika na ogólną wydajność.
+* Zidentyfikuj wykorzystanie procesora i pamięci grup kontenerów i ich kontenerów, hostowana w usłudze Azure Container Instances.  
+* Określ, gdzie kontenera znajduje się w kontrolerze lub zasobnik. Ta wiedza może ułatwić wyświetlanie kontrolera lub zasobnika na ogólną wydajność.
 * Sprawdź wykorzystanie zasobów obciążeń uruchomionych na hoście, które są powiązane z standardowych procesów, które obsługują zasobnik.
 * Poznanie zachowań klastra, średnia i największym obciążeniach. Ta wiedza może pomóc zidentyfikować potrzeby związane z pojemnością i określić maksymalnego obciążenia, które klaster może wytrzymać. 
+
+Można również skonfigurować alerty, aby aktywnie powiadomienie, lub zapisz go, gdy wykorzystanie Procesora i pamięci na węzłach lub kontenerów przekroczy progi usługi.  
 
 ## <a name="how-do-i-access-this-feature"></a>Jak korzystać z tej funkcji?
 Można uzyskać dostęp do usługi Azure Monitor dla kontenerów dwa sposoby: z usługi Azure Monitor lub bezpośrednio z poziomu wybranego klastra usługi AKS. Z usługi Azure Monitor, do których masz globalnego perspektywy wszystkie kontenery wdrożone, które mają być monitorowane, i które nie są, co umożliwia wyszukiwanie i filtrowanie w subskrypcji i grupy zasobów i następnie Drąż w dół usługi Azure Monitor dla kontenerów z wybranego kontener.  W przeciwnym razie po prostu korzystać z funkcji bezpośrednio z wybranych kontenerów AKS ze strony usługi AKS.  

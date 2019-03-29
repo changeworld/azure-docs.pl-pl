@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541935"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575151"
 ---
 # <a name="asc-for-iot-frequently-asked-questions"></a>ASC IoT — często zadawane pytania  
 
@@ -77,7 +77,7 @@ Szczegółowe informacje o wdrożeniu instalacji i agenta można znaleźć w wit
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Jakie są zależności i wymagania wstępne dotyczące agenta?
 
-ASC IoT obsługuje różne platformy. Zobacz [platform obsługiwanych urządzeń](select-deploy-agent.md) Aby sprawdzić, pomocy technicznej dla określonych urządzeń. 
+ASC IoT obsługuje różne platformy. Zobacz [platform obsługiwanych urządzeń](how-to-deploy-agent.md) Aby sprawdzić, pomocy technicznej dla określonych urządzeń. 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Dane, które są zbierane przez agenta?
 
@@ -97,9 +97,9 @@ Tak. Dane przesyłane agenta jest liczony limitu usługi IoT Hub.
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Co dalej? Zainstalowano agenta i nie widzisz żadnych działań lub dzienniki
 
-1. Sprawdź [pasuje do typu agenta wyznaczonego Platforma systemu operacyjnego urządzenia](select-deploy-agent.md)
+1. Sprawdź [pasuje do typu agenta wyznaczonego Platforma systemu operacyjnego urządzenia](how-to-deploy-agent.md)
 
-1. Upewnij się, [agent działa na urządzeniu](concept-agent-configuration.md).
+1. Upewnij się, [agent działa na urządzeniu](how-to-agent-configuration.md).
 
 2. Sprawdź [usługa została pomyślnie włączona](quickstart-onboard-iot-hub.md) do **zabezpieczeń** w usłudze IoT Hub. 
 

@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8eb762e8a18ea5de25413681894f692628493a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842859"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577547"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
 
 A *analizatora niestandardowego* jest określonego typu [analizatora tekstu](search-analyzers.md) składający się z kombinacji zdefiniowanych przez użytkownika istniejących tokenizatora i opcjonalne filtry. Łącząc tokenizatory i filtry na nowe sposoby, można dostosować tekst przetwarzania w aparacie wyszukiwania do osiągnięcia określonych wyników. Na przykład można utworzyć analizatora niestandardowego za pomocą *filtr char* przed tekstowe dane wejściowe są stokenizowana, Usuń kod znaczników HTML.
 
- Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Example1).
+ Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Custom-analyzer-example).
 
 ## <a name="overview"></a>Przegląd
 

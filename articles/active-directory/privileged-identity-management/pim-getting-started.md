@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie korzystania z usługi PIM — Azure | Dokumentacja firmy Microsoft
+title: Rozpoczynanie korzystania z usługi PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak włączyć i rozpoczęcie korzystania z usługi Azure AD Privileged Identity Management (PIM) w witrynie Azure portal.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 00a93b23b5967e8b6b881f5d1fe6adcd89b0f77b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546861"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576745"
 ---
 # <a name="start-using-pim"></a>Rozpoczynanie korzystania z usługi PIM
 
@@ -38,7 +38,7 @@ Aby uzyskać więcej informacji, zobacz [licencji wymagania dotyczące korzystan
 
 ## <a name="first-person-to-use-pim"></a>Pierwszą osobą, aby używać aplikacji PIM
 
-Jeśli jesteś pierwszą osobą, która można używać aplikacji PIM w katalogu, są automatycznie przypisywane [Administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ról w katalogu. Tylko administratorzy ról uprzywilejowanych mogą zarządzać przypisaniami ról użytkowników w katalogu usługi Azure AD. Ponadto możesz zdecydować się na uruchomienie [Kreator zabezpieczeń](pim-security-wizard.md) który przeprowadzi Cię przez środowisko początkowego odnajdywania i przypisywania.
+Jeśli jesteś pierwszą osobą, która można używać aplikacji PIM w katalogu, są automatycznie przypisywane [Administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ról w katalogu. Tylko administratorzy ról uprzywilejowanych mogą zarządzać przypisaniami ról użytkowników usługi Azure AD. Ponadto możesz zdecydować się na uruchomienie [Kreator zabezpieczeń](pim-security-wizard.md) który przeprowadzi Cię przez środowisko początkowego odnajdywania i przypisywania.
 
 ## <a name="enable-pim"></a>Włącz usługę PIM
 
@@ -108,7 +108,7 @@ Po skonfigurowaniu usługi PIM można wykonywać zadania związane z zarządzani
 | **Moje żądania** | Wyświetla oczekujące żądania aktywowania kwalifikujących się przypisań ról. |
 | **Zatwierdzanie żądań** | Przedstawia listę żądań aktywowania kwalifikujących się ról użytkowników w katalogu, które zostały oznaczone do zatwierdzenia. |
 | **Przegląd dostępu wszystkich użytkowników** | Wyświetla listę aktywnych przeglądów dostępu, które są przypisane do ukończenia, czy przeglądasz dostęp dla siebie lub kogoś innego. |
-| **Role usługi Azure AD** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról katalogu usługi Azure AD. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
+| **Role usługi Azure AD** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról usługi Azure AD. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
 | **Zasoby platformy Azure** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról zasobów platformy Azure. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>Dodaj Kafelek usługi PIM do pulpitu nawigacyjnego
@@ -133,5 +133,5 @@ Aby ułatwić Otwórz PIM, należy dodać Kafelek usługi PIM do pulpitu nawigac
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
 - [Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: ffc4a0c57681e877250c7be82f5160174178892a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486023"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574981"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Transferowanie danych za pomocą narzędzia AzCopy v10 (wersja zapoznawcza)
 
@@ -175,7 +175,7 @@ Polecenie synchronizacji synchronizuje zawartość katalogu źródłowego do kat
 
 > [!NOTE] 
 > Użyj `--delete-destination` flagi z rozwagą. Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkcji przed włączeniem zachowanie dotyczące usuwania synchronizację, aby zapobiec przypadkowym na Twoim koncie. 
-
+>
 > Gdy `--delete-destination` jest ustawiona na wartość true, narzędzia AzCopy spowoduje usunięcie plików, które nie istnieją w źródle z docelowego bez żadnych monitu dla użytkownika. Aby wyświetlić monit o potwierdzenie, należy użyć `--delete-destination=prompt`.
 
 Aby zsynchronizować lokalnego systemu plików na konto magazynu, użyj następującego polecenia:

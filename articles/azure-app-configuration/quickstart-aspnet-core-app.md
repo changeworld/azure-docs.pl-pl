@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487553"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578122"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -93,13 +93,15 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 
     Ten klucz tajny jest dostępny za pomocą konfiguracji interfejsu API. Dwukropek (:) działanie jest nazwa konfiguracji za pomocą interfejsu API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [konfiguracji przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Otwórz plik Program.cs i zaktualizuj `CreateWebHostBuilder` metodę, aby można było używać konfiguracji aplikacji, wywołując `config.AddAzureAppConfiguration()` metody.
+4. Otwórz *Program.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+5. Aktualizacja `CreateWebHostBuilder` metodę, aby można było używać konfiguracji aplikacji, wywołując `config.AddAzureAppConfiguration()` metody.
 
+    ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
@@ -113,7 +115,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
             .UseStartup<Startup>();
     ```
 
-5. Otwórz Index.cshtml w widokach > Strona główna katalogu i zastąp jego zawartość następującym kodem:
+6. Otwórz Index.cshtml w widokach > Strona główna katalogu i zastąp jego zawartość następującym kodem:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -139,7 +141,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
     </html>
     ```
 
-6. Otwórz _Layout.cshtml w widokach > udostępniony katalog i zastąp jego zawartość następującym kodem:
+7. Otwórz _Layout.cshtml w widokach > udostępniony katalog i zastąp jego zawartość następującym kodem:
 
     ```html
     <!DOCTYPE html>

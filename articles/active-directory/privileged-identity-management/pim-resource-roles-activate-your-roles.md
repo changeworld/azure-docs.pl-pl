@@ -1,5 +1,5 @@
 ---
-title: Uaktywnij Moje role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+title: Uaktywnij Moje role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak aktywować swoje role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 23fcba94a8f29d0f1bc458dd4779e5a2f0c06f38
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002040"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575810"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Uaktywnij Moje role zasobów platformy Azure w usłudze PIM
 
-Członkowie kwalifikowania się do roli dla zasobów platformy Azure, za pomocą usługi Azure AD Privileged Identity Management (PIM), można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów).
+Członkowie kwalifikowania się do roli dla zasobów platformy Azure, za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów).
 
 W tym artykule jest przeznaczona dla uczestników, którzy muszą aktywować swoją rolę zasobu platformy Azure w usłudze PIM.
 
@@ -38,7 +38,7 @@ Gdy zachodzi potrzeba podjęcia roli zasobów platformy Azure, możesz poprosić
 
 1. Kliknij przycisk **Moje role**.
 
-    ![Role katalogu usługi Azure AD i role zasobów platformy Azure — Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Role usługi Azure AD i role zasobów platformy Azure — Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. Kliknij przycisk **role zasobów platformy Azure** umożliwia wyświetlenie listy z ról uprawnionych zasobów platformy Azure.
 
@@ -84,7 +84,7 @@ W przypadku wszelkich opóźnień po wykonaniu aktywacji wykonaj następujące c
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról katalogu usługi Azure AD i role zasobów platformy Azure.
+1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról usługi Azure AD i role zasobów platformy Azure.
 
 1. Kliknij przycisk **role zasobów platformy Azure**.
 
@@ -100,9 +100,9 @@ Można wyświetlić stan Oczekujące żądania aktywowania.
 
 1. Otwórz program Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **Moje żądania** umożliwia wyświetlenie listy ról katalogu usługi Azure AD i rolach usługi Azure resource żądań.
+1. Kliknij przycisk **Moje żądania** umożliwia wyświetlenie listy roli usługi Azure AD i rolach usługi Azure resource żądań.
 
-    ![Role katalogu usługi Azure AD i role zasobów platformy Azure — Moje żądania](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Role usługi Azure AD i role zasobów platformy Azure — Moje żądania](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Przewiń w prawo, aby wyświetlić **stan żądania** kolumny.
 
@@ -138,4 +138,4 @@ Jeśli komunikat o błędzie, zasób platformy Azure jest zablokowany podczas pr
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
-- [Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md)
+- [Uaktywnij Moje role usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md)

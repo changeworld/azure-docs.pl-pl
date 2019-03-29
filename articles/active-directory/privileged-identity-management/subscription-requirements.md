@@ -1,5 +1,5 @@
 ---
-title: Licencja wymagania dotyczące korzystania z usługi PIM — Azure | Dokumentacja firmy Microsoft
+title: Wymagania dotyczące korzystania z usługi Azure Active Directory PIM - licencji | Dokumentacja firmy Microsoft
 description: W tym artykule opisano wymagania licencyjne, aby używać usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177258"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576160"
 ---
 # <a name="license-requirements-to-use-pim"></a>Wymagania licencyjne, aby używać aplikacji PIM
 
@@ -45,7 +45,7 @@ Każdy administrator lub użytkownik, który wchodzi w interakcję z lub otrzymu
 - Administratorzy z ról usługi Azure AD zarządzane za pomocą usługi PIM
 - Administratorzy z role zasobów platformy Azure zarządzane przy użyciu usługi PIM
 - Administratorzy przypisani do roli Administrator ról uprzywilejowanych
-- Użytkownicy przypisani jako uprawnionych do ról katalogu zarządzane przy użyciu usługi PIM
+- Użytkownicy przypisani jako kwalifikujące się role usługi Azure AD zarządzane za pomocą usługi PIM
 - Użytkownicy mogli zatwierdzanie/odrzucanie żądań w usłudze PIM
 - Użytkownicy przypisani do roli zasobów platformy Azure przy użyciu just in time lub bezpośrednich przypisań (w oparciu o czas)  
 - Użytkownicy przypisani do przeglądu dostępu

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/11/2019
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382556"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578530"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer w warstwie standardowa
 
-Usługa Azure Load Balancer umożliwia skalowanie aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
+Usługa Azure Load Balancer pozwala skalować aplikacje i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
 
 Ten artykuł koncentruje się na standardowych modułu równoważenia obciążenia.  Aby uzyskać bardziej ogólne omówienie modułu równoważenia obciążenia Azure, przejrzyj [Omówienie usługi Load Balancer](load-balancer-overview.md) także.
 
@@ -73,6 +73,9 @@ Ponadto, jeśli pula zaplecza całego [sondy w dół](load-balancer-custom-probe
 Przegląd [sondy kondycji modułu równoważenia obciążenia](load-balancer-custom-probe-overview.md) Aby uzyskać szczegółowe informacje.
 
 ### <a name="az"></a>Strefy dostępności
+
+>[!IMPORTANT]
+>Przegląd [strefy dostępności](../availability-zones/az-overview.md) uzyskać pokrewne, w tym wszelkie informacje określonego regionu.
 
 Load Balancer w warstwie standardowa obsługuje dodatkowe możliwości w regionach, w której strefy dostępności są dostępne.  Te funkcje są dodawane do wszystkich Balancer w warstwie standardowa zapewnia.  Konfiguracje strefy dostępności są dostępne dla publicznych i wewnętrznych standardowego modułu równoważenia obciążenia.
 
@@ -211,10 +214,10 @@ Standardowe moduły równoważenia obciążenia dostępnych z SLA na poziomie 99
 
 ## <a name="pricing"></a>Cennik
 
-Standardowa użycie modułu równoważenia obciążenia jest naliczana opłata.
+Usługa Load Balancer w warstwie Standardowa jest płatna.
 
-- Liczba skonfigurowane reguły równoważenia obciążenia i wychodzących (reguły dla ruchu przychodzącego translatora adresów Sieciowych nie wliczają łączna liczba reguł)
-- Ilość danych przetworzonych reguły ruchu przychodzącego i wychodzącego, niezależnie od. 
+- Liczba skonfigurowanych reguł równoważenia obciążenia i reguł dla ruchu wychodzącego (reguły NAT dla ruchu przychodzącego nie są wliczane do łącznej liczby reguł).
+- Ilość przetworzonych danych dla ruchu przychodzącego i wychodzącego niezależnie od reguły. 
 
 Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
 

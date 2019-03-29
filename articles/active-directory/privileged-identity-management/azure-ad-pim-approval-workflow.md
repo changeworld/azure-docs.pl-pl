@@ -1,6 +1,6 @@
 ---
-title: Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak akceptują lub odrzucają żądania dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak akceptują lub odrzucają żądania dla ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,32 +16,32 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 125a9864eaf53ecdf035247ba23d7c95a8daf131
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244985"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576798"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM
 
-Za pomocą usługi Azure AD Privileged Identity Management (PIM) skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybrać jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Osoby zatwierdzające delegowanego mają 24 godziny do żądań zatwierdzenia. Jeśli żądanie nie zostanie zatwierdzone w ciągu 24 godzin, w uprawniony użytkownik musi ponownie przesłać nowe żądanie. Nie konfiguruje się w danym przedziale czasu zatwierdzania 24-godzinnym.
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), można skonfigurować role, aby wymagały zatwierdzenia aktywacji i wybierz jednego lub wielu użytkowników lub grup w ramach delegowanego osób zatwierdzających. Osoby zatwierdzające delegowanego mają 24 godziny do żądań zatwierdzenia. Jeśli żądanie nie zostanie zatwierdzone w ciągu 24 godzin, w uprawniony użytkownik musi ponownie przesłać nowe żądanie. Nie konfiguruje się w danym przedziale czasu zatwierdzania 24-godzinnym.
 
-Wykonaj kroki opisane w tym artykule, akceptują lub odrzucają żądania dla ról katalogu usługi Azure AD.
+Wykonaj kroki opisane w tym artykule, akceptują lub odrzucają żądania dla ról usługi Azure AD.
 
 ## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
 
-Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomieniem po oczekujące na zatwierdzenie żądania ról katalogu usługi Azure AD. Możesz wyświetlić te oczekujących żądań w usłudze PIM.
+Jako delegowany osoby zatwierdzającej otrzymasz wiadomość e-mail z powiadomieniem, gdy żądanie roli usługi Azure AD jest oczekujące na zatwierdzenie. Możesz wyświetlić te oczekujących żądań w usłudze PIM.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **zatwierdzanie żądań**.
 
-    ![Role katalogu usługi AD PIM Azure — role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Role usługi AD PIM Azure — role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Zobaczysz listę żądań oczekujących na zatwierdzenie.
 

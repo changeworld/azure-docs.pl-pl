@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433114"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578632"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -32,7 +32,11 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 
 ## <a name="data-source-locations"></a>Lokalizacje źródeł danych
 
-Tylko publiczne adresy URL są prawidłowe dla wszystkich źródeł danych. Nie przesyłaj źródeł danych, które wymagają uwierzytelniania. Możesz pobrać plik z witryny uwierzytelniony, a następnie użyj opcji przekazywania pliku, aby wyodrębnić pytań i odpowiedzi.
+Większość lokalizacje źródeł danych muszą zapewnić publiczne adresy URL lub pliki, które nie wymagają uwierzytelniania. 
+
+[Lokalizacje źródeł danych SharePoint](../How-to/add-sharepoint-datasources.md) są dozwolone w celu zapewnienia uwierzytelnionego plików. Zasoby programu SharePoint muszą być plikami, nie stron sieci web. 
+
+Jeśli masz adres URL lub plik uwierzytelnionego alternatywnych opcji jest aby pobrać plik z witryny uwierzytelniony na komputerze lokalnym, Dodaj plik z lokalnym komputera do bazy wiedzy knowledge base. 
 
 ## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
 

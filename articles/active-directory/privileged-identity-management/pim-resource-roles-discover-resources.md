@@ -1,5 +1,5 @@
 ---
-title: Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM | Dokumentacja firmy Microsoft
+title: Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak odnajdywać zasoby platformy Azure do zarządzania w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.subservice: pim
 ms.date: 01/23/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90bd76470f5c06eb0e73615a358312b46d8be4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 717cec41f152f0ebe3120b25db76cd684f39cbe3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195400"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575015"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM
 
-Za pomocą usługi Azure AD Privileged Identity Management (PIM), możesz zwiększyć ochronę zasobów platformy Azure. Jest to przydatne, aby organizacje, które już używają do ochrony ról katalogu usługi Azure AD PIM i właściciele grupy i subskrypcji zarządzania, którzy chcą zabezpieczanie zasobów w środowisku produkcyjnym.
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), możesz zwiększyć ochronę zasobów platformy Azure. Jest to przydatne, aby organizacje, które już używają do ochrony ról usługi Azure AD PIM i właściciele grupy i subskrypcji zarządzania, którzy chcą zabezpieczanie zasobów w środowisku produkcyjnym.
 
 Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć i wybrać zasoby, które mają być chronione przez usługę PIM. Nie ma żadnego limitu liczby zasobów, którymi można zarządzać za pomocą usługi PIM. Firma Microsoft zaleca jednak począwszy od najbardziej krytycznych zasobów (produkcja).
 

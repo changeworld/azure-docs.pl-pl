@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 591000f251d384b961569f9d7ca09ae93edea617
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fa1825d6f6f6ea5e6c026791aa70dd1b37bdad90
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541670"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574748"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Szybki start: Utwórz niestandardowe alerty
 
@@ -90,4 +90,4 @@ Poniższa tabela zawiera podsumowanie alertów, które są możliwe do dostosowa
 Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć agenta zabezpieczeń...
 
 > [!div class="nextstepaction"]
-> [Wdróż agenta zabezpieczeń](select-deploy-agent.md)
+> [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)

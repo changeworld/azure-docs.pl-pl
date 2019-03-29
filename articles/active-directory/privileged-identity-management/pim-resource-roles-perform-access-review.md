@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+title: Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przeprowadzić przegląd dostępu role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a8ef3d0ff602ce4580755db0ada97fcf7cdbbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208235"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575083"
 ---
 # <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM
-Privileged Identity Management (PIM) dla zasobów platformy Azure upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
 
 Jeśli masz przypisaną rolę administracyjną, administratorem ról uprzywilejowanych Twoja organizacja może poprosić o regularnie upewnij się, nadal potrzebujesz tej roli dla zadania. Możesz otrzymać wiadomość e-mail zawierającą łącze lub możesz przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby wykonać własnym przeglądu przypisane role.
 
@@ -54,4 +54,4 @@ Wykonaj następujące kroki, aby znaleźć i zakończyć Przegląd dostępu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wykonywanie przeglądu dostępu ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
+- [Wykonywanie przeglądu dostępu Moje ról usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)

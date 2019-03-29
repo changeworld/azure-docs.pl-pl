@@ -1,5 +1,5 @@
 ---
-title: Przeglądy dostępu usługi Azure AD umożliwia zarządzanie użytkownikami wykluczone z zasad dostępu warunkowego | Dokumentacja firmy Microsoft
+title: Za pomocą przeglądów dostępu można zarządzać użytkowników wykluczone z zasad dostępu warunkowego — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarządzać użytkownikami, które zostały wykluczone z zasad dostępu warunkowego za pomocą przeglądów dostępu w usłudze Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892725"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577139"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Użyj przeglądów dostępu usługi Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
 
 W świecie idealne, wszyscy użytkownicy wykonać dostępu zasady, aby zabezpieczyć dostęp do zasobów organizacji. Jednak czasami istnieją przypadków biznesowych, które wymagają wprowadzenia wyjątków. W tym artykule opisano kilka przykładów, w którym wykluczenia mogą być wymagane, jak administrator IT, zarządzanie tego zadania, uniknąć nadzoru wyjątki od zasad i zapewnić audytorów dowód tych wyjątków są przeglądane, regularnie korzystanie z platformy Azure Przeglądy dostępu w usłudze Active Directory (Azure AD).
 
@@ -44,7 +44,7 @@ Innym przykładem mogą być, że masz zasad dostępu warunkowego, [bloki uwierz
 
 ## <a name="why-are-exclusions-challenging"></a>Wykluczenia są trudne
 
-W usłudze Azure AD można określić zakres zasad dostępu warunkowego dla zestawu użytkowników. Można również wykluczyć niektóre z tych użytkowników, wybierając ról w katalogu, poszczególnych użytkowników lub gości użytkowników. Należy pamiętać, że po skonfigurowaniu tych wyłączeń zdefiniowanie założeń zasad nie można wymusić dla tych użytkowników. Wyjątki te zostały skonfigurowane jako lista indywidualnych użytkowników lub za pośrednictwem starsze lokalne grupy zabezpieczeń, a następnie go ogranicza ich widoczność tej listy wykluczeń (użytkownicy mogą nie wiedzą, jego istnienia) i nad nim kontroli administratora IT (użytkownicy mogą dołączać Grupa zabezpieczeń do obejścia zasad). Ponadto użytkownicy, którzy kwalifikowana do wykluczenia, w tym samym czasie może nie jest już potrzebny lub kwalifikować się do jej.
+W usłudze Azure AD można określić zakres zasad dostępu warunkowego dla zestawu użytkowników. Można również wykluczyć niektóre z tych użytkowników, wybierając ról, poszczególnych użytkowników lub gości użytkowników usługi Azure AD. Należy pamiętać, że po skonfigurowaniu tych wyłączeń zdefiniowanie założeń zasad nie można wymusić dla tych użytkowników. Wyjątki te zostały skonfigurowane jako lista indywidualnych użytkowników lub za pośrednictwem starsze lokalne grupy zabezpieczeń, a następnie go ogranicza ich widoczność tej listy wykluczeń (użytkownicy mogą nie wiedzą, jego istnienia) i nad nim kontroli administratora IT (użytkownicy mogą dołączać Grupa zabezpieczeń do obejścia zasad). Ponadto użytkownicy, którzy kwalifikowana do wykluczenia, w tym samym czasie może nie jest już potrzebny lub kwalifikować się do jej.
 
 Na początku wykluczenie ma krótką listę użytkowników, którzy obejście zasad. Wraz z upływem czasu coraz więcej użytkowników są wyłączone, a lista rozwoju. W pewnym momencie istnieje potrzeba Przejrzyj listę i upewnij się, że każda z tych użytkowników powinny być nadal wyłączone. Zarządzanie listy z technicznego punktu widzenia może być stosunkowo proste, ale który sprawia, że decyzje biznesowe i jak zrobić się, że wszystkie inspekcji?
 

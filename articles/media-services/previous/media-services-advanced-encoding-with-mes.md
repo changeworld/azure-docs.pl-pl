@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850364"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576296"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Kodowanie zaawansowane, dostosowując ustawienia wstępne usługi MES 
 
@@ -27,11 +27,10 @@ ms.locfileid: "57850364"
 
 W tym temacie przedstawiono sposób Dostosowywanie ustawień wstępnych usługi Media Encoder Standard. [Kodowania za pomocą usługi Media Encoder Standard za pomocą niestandardowych ustawień wstępnych](media-services-custom-mes-presets-with-dotnet.md) temacie pokazano, jak utworzyć zadanie kodowania i zadanie, które wykonuje to zadanie za pomocą platformy .NET. Po dostosowaniu ustawienie wstępne dostarczania niestandardowych ustawień wstępnych do kodowania zadania. 
 
->[!NOTE]
->Jeśli za pomocą wstępnie ustawionych XML, upewnij się zachować kolejność elementów, jak pokazano w poniższych przykładach XML (na przykład KeyFrameInterval powinien poprzedzać SceneChangeDetection).
->
+Jeśli za pomocą wstępnie ustawionych XML, upewnij się zachować kolejność elementów, jak pokazano w poniższych przykładach XML (na przykład KeyFrameInterval powinien poprzedzać SceneChangeDetection).
 
-W tym temacie przedstawiono niestandardowych ustawień wstępnych, które wykonują następujące zadania kodowania.
+> [!NOTE] 
+> Wiele zaawansowanych usług Media Services v2 funkcji Media Encoder Standard nie są obecnie dostępne w wersji 3. Aby uzyskać więcej informacji, zobacz [funkcji luki](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Obsługa względne rozmiary
 

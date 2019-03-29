@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 39284805d9b9b5c10f5e211dc7d4c461d15cc6bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763541"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577020"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management
 
 Operacje w usłudze API Management można skonfigurować do buforowania odpowiedzi. Buforowanie odpowiedzi może znacznie zmniejszyć opóźnienie interfejsu API, zużycie przepustowości i obciążenie usługi sieci Web w przypadku danych, które nie zmieniają się często.
- 
+
 Aby uzyskać bardziej szczegółowe informacje na temat buforowania, zobacz [API Management caching policies](api-management-caching-policies.md) (Zasady buforowania w usłudze API Management) i [Custom caching in Azure API Management](api-management-sample-cache-by-key.md) (Buforowanie niestandardowe w usłudze Azure API Management).
 
 ![zasady buforowania](media/api-management-howto-cache/cache-policies.png)
@@ -59,7 +59,7 @@ W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji
 6. W górnej części ekranu wybierz kartę **Projektowanie**.
 7. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
 
-    ![edytor kodu](media/api-management-howto-cache/code-editor.png) 
+    ![edytor kodu](media/api-management-howto-cache/code-editor.png)
 
 8. W elemencie **inbound** (przychodzące) dodaj następujące zasady:
 
@@ -76,7 +76,7 @@ W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji
     **Czas trwania** określa interwał wygasania buforowanych odpowiedzi. W tym przykładzie interwał to **20** sekund.
 
 > [!TIP]
-> Jeśli używasz zewnętrznej pamięci podręcznej zgodnie z opisem w temacie [Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management](api-management-howto-cache-external.md), warto określić atrybut `cache-preference` zasad buforowania. Zobacz [Zasady buforowania usługi API Management](api-management-caching-policies.md), aby uzyskać więcej informacji.
+> Jeśli używasz zewnętrznej pamięci podręcznej zgodnie z opisem w temacie [Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management](api-management-howto-cache-external.md), warto określić atrybut `caching-type` zasad buforowania. Zobacz [Zasady buforowania usługi API Management](api-management-caching-policies.md), aby uzyskać więcej informacji.
 
 ## <a name="test-operation"> </a>Wywoływanie operacji i testowanie buforowania
 Wywołaj operację z portalu dla deweloperów, aby sprawdzić działanie buforowania.

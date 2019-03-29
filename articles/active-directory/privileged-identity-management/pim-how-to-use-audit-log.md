@@ -1,6 +1,6 @@
 ---
-title: Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlać Historia inspekcji dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Wyświetl historię inspekcji dla ról usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlać Historia inspekcji dla ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008908"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576152"
 ---
-# <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM
-Historia inspekcji Privileged Identity Management (PIM) można użyć, aby zobaczyć wszystkie przypisania użytkownika i aktywacji w danym okresie czasu dla wszystkich uprzywilejowanych ról. Jeśli chcesz wyświetlić pełną historię inspekcji aktywności w swojej dzierżawie, w tym administratora, użytkownik końcowy i działanie synchronizacji, można użyć [raportów dostępu i użycia usługi Azure Active Directory.](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Wyświetl historię inspekcji dla ról usługi Azure AD w usłudze PIM
+Historia inspekcji usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można użyć, aby zobaczyć wszystkie przypisania użytkownika i aktywacji w danym okresie czasu dla wszystkich uprzywilejowanych ról. Jeśli chcesz wyświetlić pełną historię inspekcji aktywności w swojej dzierżawie, w tym administratora, użytkownik końcowy i działanie synchronizacji, można użyć [raportów dostępu i użycia usługi Azure Active Directory.](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-audit-history"></a>Przejdź do Historia inspekcji
 Z [witryny Azure portal](https://portal.azure.com) pulpitu nawigacyjnego, wybierz opcję **usługi Azure AD Privileged Identity Management** aplikacji. W tym miejscu, dostęp do historii inspekcji, klikając **Zarządzanie rolami uprzywilejowanymi** > **Historia inspekcji** na pulpicie nawigacyjnym usługi PIM.

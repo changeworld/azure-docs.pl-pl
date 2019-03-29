@@ -1,5 +1,5 @@
 ---
-title: Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+title: Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Wyświetlanie działań i inspekcji historii dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afbbad9b956d41252ff9121c99a91669c71aaab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6fb97c416d0e34635b8aa4c19fc6b94889f566c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211737"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578139"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM
 
@@ -113,4 +113,4 @@ Moja Inspekcja umożliwia wyświetlenie swoje działania w roli osobistej.
 
 - [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
 - [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
-- [Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-use-audit-log.md)
+- [Wyświetl historię inspekcji dla ról usługi Azure AD w usłudze PIM](pim-how-to-use-audit-log.md)

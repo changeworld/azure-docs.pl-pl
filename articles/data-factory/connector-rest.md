@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 01d00b33a4575f17cffb7ba878372367046271a1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864902"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578428"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu usługi Azure Data Factory
 
@@ -76,7 +76,7 @@ Ustaw **authenticationType** właściwości **podstawowe**. Oprócz ogólne wła
 {
     "name": "RESTLinkedService",
     "properties": {
-        "type": "HttpServer",
+        "type": "RestService",
         "typeProperties": {
             "authenticationType": "Basic",
             "url" : "<REST endpoint>",
