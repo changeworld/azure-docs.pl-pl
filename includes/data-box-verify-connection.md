@@ -6,12 +6,12 @@ ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
 ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/17/2018
 ms.locfileid: "53550418"
 ---
-Wykonaj poniższe czynności, aby nawiązać połączenie z kontem magazynu i zweryfikować połączenie.
+Wykonaj poniższe czynności, aby nawiązać i zweryfikować połączenie z kontem magazynu.
 
 1. W Eksploratorze usługi Storage otwórz okno dialogowe **Połącz z usługą Azure Storage**. W oknie dialogowym **Połącz z usługą Azure Storage** wybierz pozycję **Użyj nazwy i klucza konta magazynu**.
 
