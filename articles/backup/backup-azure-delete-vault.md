@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: 94d66e28f8edbda6c41dcceaf427d7d7d869c90f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620121"
+ms.locfileid: "58652225"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
@@ -108,7 +108,7 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 
 
 3. W **Zatrzymaj tworzenie kopii zapasowej** > **wybierz jedną z opcji**, wybierz opcję **Usuń dane kopii zapasowej**.
-4. Wpisz nazwę elementu, a następnie kliknij przycisk **Zatrzymaj kopię zapasową**. 
+4. Wpisz nazwę elementu, a następnie kliknij przycisk **Zatrzymaj kopię zapasową**.
    - Sprawdza, czy chcesz usunąć element.
    - **Zatrzymaj tworzenie kopii zapasowej** przycisk aktywuje się po zweryfikowaniu.
    - Jeśli zachowania i nie należy usuwać dane, nie można usunąć magazyn.
@@ -126,7 +126,7 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 ### <a name="remove-backup-infrastructure-servers"></a>Usuń serwery infrastruktury kopii zapasowych
 
 1. W menu pulpitu nawigacyjnego magazynu kliknij **infrastruktura zapasowa**.
-2. Kliknij przycisk **serwery zarządzania kopiami zapasowymi** do wyświetlenia serwerów. 
+2. Kliknij przycisk **serwery zarządzania kopiami zapasowymi** do wyświetlenia serwerów.
 
     ![Wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -135,7 +135,7 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
     ![Wybierz typ kopii zapasowej](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. . W **Zatrzymaj tworzenie kopii zapasowej** > **wybierz jedną z opcji**, wybierz opcję **Usuń dane kopii zapasowej**.
-4. Wpisz nazwę elementu, a następnie kliknij przycisk **Zatrzymaj kopię zapasową**. 
+4. Wpisz nazwę elementu, a następnie kliknij przycisk **Zatrzymaj kopię zapasową**.
    - Sprawdza, czy chcesz usunąć element.
    - **Zatrzymaj tworzenie kopii zapasowej** przycisk aktywuje się po zweryfikowaniu.
    - Jeśli zachowania i nie należy usuwać dane, nie można usunąć magazyn.

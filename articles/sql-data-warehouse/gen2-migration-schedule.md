@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287183"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648577"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
 Firma Microsoft pomaga zwiększania kosztów klasy podstawowej obsługi magazynu danych.  Obliczeniowe niższych warstw mogą obsłużyć wymagających zapytań są teraz dostępne dla usługi Azure SQL Data Warehouse. Przeczytaj pełne ogłoszenie [małe obliczeniowych warstwy obsługi Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest dostępna w regionach wymienionych w poniższej tabeli. Obsługiwane regiony można uaktualnić istniejących magazynów danych Gen1 do Gen2 przy użyciu jednej:
 
 - **Proces automatycznego uaktualniania:** Nie uruchamiaj automatycznych uaktualnień, jak usługa jest dostępna w regionie.  Po uruchomieniu automatycznych uaktualnień w określonym regionie, poszczególne uaktualnienia magazynu danych ma miejsce podczas harmonogramu konserwacji wybrane.
-- [**Samodzielnie uaktualnienie do Gen2:**](#Self-upgrade-to-Gen2) Można kontrolować, kiedy aktualizować, wykonując uaktualnienie własnym do Gen2. Jeśli w Twoim regionie nie jest jeszcze obsługiwana, można przywrócić z punktu przywracania, który jest bezpośrednio do wystąpienia Gen2 w obsługiwanym regionie.
+- [**Samodzielnie uaktualnienie do Gen2:**](#self-upgrade-to-gen2) Można kontrolować, kiedy aktualizować, wykonując uaktualnienie własnym do Gen2. Jeśli w Twoim regionie nie jest jeszcze obsługiwana, można przywrócić z punktu przywracania, który jest bezpośrednio do wystąpienia Gen2 w obsługiwanym regionie.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Harmonogram automatycznego i regionu w tabeli Dostępność
 

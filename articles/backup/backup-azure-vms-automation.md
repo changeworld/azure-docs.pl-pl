@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578887"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629593"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -184,10 +184,18 @@ Zasady tworzenia kopii zapasowej ochrony jest skojarzony z co najmniej jedne zas
 - [New AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) polecenie cmdlet tworzy obiekt programu PowerShell, który zawiera informacje o zasadach tworzenia kopii zapasowej.
 - Obiekty zasad harmonogram i okres przechowywania są używane jako dane wejściowe do polecenia cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
 
-Poniższy przykład zasad harmonogram i zasady przechowywania są przechowywane w zmiennych. W przykładzie użyto tych zmiennych, aby zdefiniować parametry podczas tworzenia zasad ochrony *NewPolicy*.
+Domyślnie czas rozpoczęcia jest zdefiniowany w obiekcie zasad harmonogramu. Skorzystaj z następującego przykładu, aby zmienić czas rozpoczęcia na żądany czas rozpoczęcia. Czas rozpoczęcia żądanego należy również w formacie UTC. Poniższym przykładzie przyjęto założenie, czas rozpoczęcia żądanego to 01:00 czasu UTC dla codziennych kopii zapasowych.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+Poniższy przykład zasad harmonogram i zasady przechowywania są przechowywane w zmiennych. W przykładzie użyto tych zmiennych, aby zdefiniować parametry podczas tworzenia zasad ochrony *NewPolicy*.
+
+```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```

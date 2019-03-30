@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403718"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628979"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Skonfiguruj udział profilu użytkownika dla puli hosta
+# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Konfigurowanie udziału profilu użytkownika dla puli hostów
 
 Usługa Windows wirtualnego pulpitu (wersja zapoznawcza) oferuje FSLogix profilu kontenery jako rozwiązanie profilu użytkownika zalecane. Nie zaleca się przy użyciu rozwiązania dysku profilu użytkownika (UPD) i zostaną wycofane w kolejnych wersjach systemu Windows pulpitu wirtualnego.
 
-W tej sekcji opisano, jak skonfigurować udział FSLogix profilu kontener dla zestawu hostów.
+W tej sekcji opisano, jak skonfigurować udział FSLogix profilu kontener dla zestawu hostów. Ogólne dokumentację dotyczącą FSLogix, zobacz [witryny FSLogix](https://docs.fslogix.com/).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Tworzenie nowej maszyny wirtualnej, który będzie pełnił rolę udziału plików
 
@@ -48,14 +48,14 @@ Poniżej przedstawiono ogólne instrukcje o tym, jak przygotować maszynę wirtu
 6. Wyszukaj grupy zabezpieczeń, do którego dodawane maszyny wirtualne hosta sesji, a następnie upewnij się, że grupa ma **Pełna kontrola**.
 7. Po dodaniu do grupy zabezpieczeń, kliknij prawym przyciskiem myszy folder, wybierz **właściwości**, wybierz opcję **udostępniania**, następnie skopiować **ścieżkę sieciową** do użycia później.
 
-Najlepsze rozwiązania dotyczące uprawnień, zobacz następujące tematy [dokumentacji FSLogix](https://support.fslogix.com/index.php/forum-main/faqs/84-best-practices#120).
+Aby uzyskać więcej informacji o uprawnieniach, zobacz [dokumentacji FSLogix](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
 
 ## <a name="configure-the-fslogix-profile-container"></a>Konfiguruj kontener profilu FSLogix
 
 Aby skonfigurować maszyn wirtualnych z oprogramowaniem FSLogix, wykonaj następujące czynności na każdej maszynie zarejestrowany do puli hosta:
 
 1. [Łączenie z maszyną wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) przy użyciu poświadczeń dostarczonych podczas tworzenia maszyny wirtualnej.
-2. Uruchom przeglądarkę internetową i przejdź do następującego [łącze](https://go.microsoft.com/fwlink/?linkid=2084562) do pobrania agenta FSLogix. W ramach publicznej wersji zapoznawczej Windows pulpitu wirtualnego otrzymasz klucz licencji, aby aktywować oprogramowania FSLogix. Klucz jest plik LicenseKey.txt zawarte w pliku zip FSLogix agenta.
+2. Uruchom przeglądarkę internetową i przejdź do [ten link](https://go.microsoft.com/fwlink/?linkid=2084562) do pobrania agenta FSLogix. W ramach publicznej wersji zapoznawczej Windows pulpitu wirtualnego otrzymasz klucz licencji, aby aktywować oprogramowania FSLogix. Klucz jest plik LicenseKey.txt zawarte w pliku zip FSLogix agenta.
 3. Zainstaluj agenta FSLogix.
 4. Przejdź do **Program Files** > **FSLogix** > **aplikacje** Aby upewnić się, jest zainstalowany agent.
 5. Z start menu Uruchom **RegEdit** jako administrator. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\oprogramowania\\FSLogix\\profilów**

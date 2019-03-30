@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 0d2edee8f4df6a2328ec99cc4d570687c4342c8a
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540996"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662374"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP
 
@@ -58,7 +58,7 @@ ms.locfileid: "58540996"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i instalacji o wysokiej dostępności systemu SAP NetWeaver 7.50, za pomocą [usługi Azure Files NetApp](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
+W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i instalacji o wysokiej dostępności systemu SAP NetWeaver 7.50, za pomocą [plików NetApp Azure (w publicznej wersji zapoznawczej)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
 W przykładowych konfiguracji, polecenia instalacji itp., wystąpienie ASCS jest liczba 00, liczby wystąpień Wywołujących 01, wystąpienie aplikacji głównej (PAS) jest 02 i wystąpienia aplikacji (AAS) to 03. QAS identyfikator systemu SAP jest używany. 
 
 W tym artykule wyjaśniono, jak osiągnąć wysoką dostępność dla aplikacji SAP NetWeaver za pomocą usługi Azure NetApp Files. Warstwa bazy danych nie jest omówiona szczegółowo w tym artykule.

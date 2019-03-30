@@ -1,5 +1,5 @@
 ---
-title: Samouczek — udostępnianie między sesjami i urządzeniami w usłudze Azure przestrzenne zakotwiczenia i zaplecza usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Samouczek — udziału Azure przestrzenne zakotwiczenia między sesjami i urządzeniami za pomocą usługi Azure Cosmos DB do zaplecza | Dokumentacja firmy Microsoft
 description: W tym samouczku dowiesz się, jak udostępniać identyfikatory kotwic przestrzenne platformy Azure na urządzeniach z systemem Android/iOS na platformie Unity za pomocą usługi zaplecza i Azure Cosmos DB.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 17e9d19b755c1d3ac455d9fef8406e00de3a376d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286401"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628940"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Samouczek: Udostępnianie między sesjami i urządzeniami w usłudze Azure przestrzenne zakotwiczenia i zaplecza usługi Azure Cosmos DB
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Samouczek: Zaplecze udziału Azure przestrzenne zakotwiczenia między sesjami i urządzeniami za pomocą usługi Azure Cosmos DB
 
-W tym samouczku dowiesz się, jak używać [kotwic przestrzenne Azure](../overview.md) do:
-
-- Tworzyć kotwic podczas jednej sesji, a następnie zlokalizuj je w innej sesji, w tym samym urządzeniu lub na inną. Na przykład drugi sesja może być na różne dni.
-- Tworzyć kotwic, które mogą znajdować się na wielu urządzeniach, w tym samym miejscu, a w tym samym czasie.
+W tym samouczku dowiesz się, jak używać [kotwic przestrzenne Azure](../overview.md) można tworzyć kotwic podczas jednej sesji, a następnie zlokalizuj je w innej sesji, w tym samym urządzeniu lub na inną. Na przykład drugi sesja może być na różne dni. Również znajdować się te sam kotwic przez wiele urządzeń, w tym samym miejscu, a w tym samym czasie.
 
 ![Obraz GIF ilustrujące trwałość obiektów](./media/persistence.gif)
 

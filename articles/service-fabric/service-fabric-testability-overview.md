@@ -4,7 +4,7 @@ description: W tym artykule opisano usługa analizy błędów w usłudze Service
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425242"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662357"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługa analizy błędów
 Usługa analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usłudze Microsoft Azure Service Fabric. Usługa analizy błędów możesz wywołać istotne błędy i uruchamianie scenariuszy ukończenia testowej względem aplikacji. Te błędy i scenariuszy wykonywania i zweryfikować liczne Stany i przejścia, które usługa będzie wystąpić w okresie swojego istnienia, wszystko to w sposób kontrolowany, bezpieczne i zgodne.
@@ -46,9 +46,9 @@ Po zainicjowaniu scenariusz akcji lub testów odporności, polecenia są wysyła
 ## <a name="testing-distributed-systems"></a>Testowanie systemów rozproszonych
 Usługa Service Fabric sprawia, że pisanie aplikacji i zarządzaniem nimi rozproszonych skalowalne znacznie łatwiejsze. Usługa analizy błędów sprawia, że testowanie aplikacji rozproszonej podobnie łatwiejsze. Istnieją trzy główne kwestie, które muszą zostać rozwiązane podczas testowania:
 
-1. Symulowanie/generowanie błędów, które mogą wystąpić w przypadku scenariuszy w rzeczywistych warunkach: jeden z ważnymi aspektami usługi Service Fabric jest umożliwienie aplikacji rozproszonych odzyskać sprawność po awarii w różnych. Aby sprawdzić, czy aplikacja jest w stanie odzyskać z tych błędów, Potrzebujemy jednak mechanizm do symulowania/generowanie tych błędów rzeczywistych, w środowisku testowym kontrolowany.
-1. Możliwość generowania błędy skorelowane: podstawowe błędy systemu, takie jak awarie sieci i błędy maszyny są łatwe do utworzenia osobno. Generowanie znacznej liczby scenariuszy, które mogą wystąpić w rzeczywistych warunkach w wyniku interakcji z tych błędów pojedynczych jest trywialny.
-1. Ujednolicone środowisko na różnych poziomach programowania i wdrażania: istnieje wiele systemów iniekcji błędów, które mogą wykonywać różnego rodzaju błędów. Jednak środowisko we wszystkich z nich jest niska, przy przechodzeniu scenariusze dla deweloperów jednopunktowe do tego samego testów w środowiskach testowych duże, aby z nich korzystać w przypadku testów w środowisku produkcyjnym.
+1. Symulowanie generowanie błędów, które mogą wystąpić w rzeczywistych scenariuszach: Jedną z ważnymi aspektami usługi Service Fabric jest umożliwienie aplikacji rozproszonych odzyskać sprawność po awarii w różnych. Aby sprawdzić, czy aplikacja jest w stanie odzyskać z tych błędów, Potrzebujemy jednak mechanizm do symulowania/generowanie tych błędów rzeczywistych, w środowisku testowym kontrolowany.
+1. Możliwość generowania skorelowany błędów: Podstawowe błędy systemu, takie jak awarie sieci i błędy maszyny są łatwe do utworzenia osobno. Generowanie znacznej liczby scenariuszy, które mogą wystąpić w rzeczywistych warunkach w wyniku interakcji z tych błędów pojedynczych jest trywialny.
+1. Ujednolicone środowisko na różnych poziomach programowania i wdrażania: Istnieje wiele systemów iniekcji błędów, które mogą wykonywać różnego rodzaju błędów. Jednak środowisko we wszystkich z nich jest niska, przy przechodzeniu scenariusze dla deweloperów jednopunktowe do tego samego testów w środowiskach testowych duże, aby z nich korzystać w przypadku testów w środowisku produkcyjnym.
 
 Brak dostępnych jest wiele mechanizmów rozwiązywania tych problemów, system, który działa tak samo, wymagane gwarancje — od jednopunktowe deweloperów środowisku, aby przetestować w klastrach produkcyjnych —. Usługa analizy błędów pomaga programistom koncentrować się na testowanie ich logiki biznesowej. Usługa analizy błędów zapewnia wszystkie funkcje potrzebne do testowania interakcję usługi z bazowego systemu rozproszonego.
 

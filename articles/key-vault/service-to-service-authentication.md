@@ -10,12 +10,12 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: b7532dc910fae84733c04d4e16ac93a5cd0f11c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 642c30c4df233476a8f649f7b5f30d0538b0e83f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097910"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629853"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -101,7 +101,7 @@ Aby użyć wiersza polecenia platformy Azure dla wdrożenia lokalnego:
 
 Użyj `az account get-access-token` Aby zweryfikować dostęp.  Jeśli otrzymasz komunikat o błędzie, sprawdź, czy krok 1 zakończyła się pomyślnie. 
 
-Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure do domyślnego katalogu, może wystąpić błąd raporty `AzureServiceTokenProvider` nie można odnaleźć ścieżki dla wiersza polecenia platformy Azure.  Użyj **AzureCLIPath**zmiennej środowiskowej, aby określić folder instalacji wiersza polecenia platformy Azure. `AzureServiceTokenProvider` dodaje katalogu wskazanym na **AzureCLIPath** zmiennej środowiskowej, aby **ścieżki** zmiennej środowiskowej, gdy jest to konieczne.
+Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure do domyślnego katalogu, może wystąpić błąd raporty `AzureServiceTokenProvider` nie można odnaleźć ścieżki dla wiersza polecenia platformy Azure.  Użyj **AzureCLIPath** zmiennej środowiskowej, aby określić folder instalacji wiersza polecenia platformy Azure. `AzureServiceTokenProvider` dodaje katalogu wskazanym na **AzureCLIPath** zmiennej środowiskowej, aby **ścieżki** zmiennej środowiskowej, gdy jest to konieczne.
 
 Jeśli użytkownik jest zalogowany do wiersza polecenia platformy Azure przy użyciu wielu kont lub konto użytkownika ma dostęp do wielu subskrypcji, należy określić określoną subskrypcję do użycia.  Aby to zrobić, należy użyć:
 

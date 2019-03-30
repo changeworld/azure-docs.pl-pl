@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403480"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629132"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Samouczek: Łączenie, konfigurowanie i aktywowania usługi Azure Data Box Edge 
 
@@ -75,7 +75,7 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
     ![Lokalnego internetowego interfejsu użytkownika "Nazwa urządzenia" strony](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawienia sieciowe** a następnie skonfiguruj ustawienia.  
-    Na urządzenie fizyczne są sześć interfejsów sieciowych. PORT 1 i 2 portu są interfejsów sieciowych 1 GB/s. PORT 3, 4 portu, PORT 5 i 6 portu są wszystkie interfejsy sieciowe 25 GB, które może również służyć jako interfejsów sieciowych 10 GB/s. PORT 1 jest automatycznie konfigurowany jako tylko do zarządzania port i PORT 2 do 6 portu są wszystkie porty danych. **Ustawienia sieciowe** strona jest pokazany poniżej.
+    Na urządzenie fizyczne istnieje sześć interfejsów sieciowych. PORT 1 i 2 portu są interfejsów sieciowych 1 GB/s. PORT 3, 4 portu, PORT 5 i 6 portu są wszystkie interfejsy sieciowe 25 GB, które może również służyć jako interfejsów sieciowych 10 GB/s. PORT 1 jest automatycznie konfigurowany jako tylko do zarządzania port i PORT 2 do 6 portu są wszystkie porty danych. **Ustawienia sieciowe** strona jest pokazany poniżej.
     
     ![Strona "Ustawienia sieci" systemu lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
@@ -119,7 +119,14 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
 
         ![Strona "Ustawienia czasu" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. W okienku po lewej stronie wybierz **ustawienia chmury**, a następnie uaktywnić swoje urządzenia w usłudze krawędź pola danych, w witrynie Azure portal.
+5. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawienia magazynu** konfiguracji odporności magazynu na urządzeniu. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Domyślnie magazyn na urządzeniu nie jest odporne na błędy i następuje utrata danych, jeśli nastąpi awaria dysku danych na urządzeniu. Po włączeniu opcji odporne na błędy, konfiguracja magazynu na urządzeniu zostanie zmieniona, a urządzenie może wytrzymać awarii dysk z danymi bez utraty danych. Konfigurowanie magazynu jako odporne na błędy zmniejszy pojemności do wykorzystania w urządzeniu.
+
+    > [!IMPORTANT] 
+    > Odporność można skonfigurować tylko przed aktywowaniem urządzenia. 
+
+    ![Strona "Ustawienia magazynu" usługi lokalnego internetowego interfejsu użytkownika](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. W okienku po lewej stronie wybierz **ustawienia chmury**, a następnie uaktywnić swoje urządzenia w usłudze krawędź pola danych, w witrynie Azure portal.
     
     1. W **klucza aktywacji** wprowadź klucz aktywacji, która jest wyświetlana w [Pobierz klucz aktywacji](data-box-edge-deploy-prep.md#get-the-activation-key) do krawędzi ramki danych.
     2. Wybierz przycisk **Zastosuj**.
@@ -132,7 +139,7 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
 
         ![Strona "Ustawienia chmury" lokalnego internetowego interfejsu użytkownika z aktualizacji](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Może być konieczne Poczekaj kilka minut, po pomyślnym zakończeniu aktualizacji. Strona zostanie zaktualizowana, aby wskazać, że urządzenia została pomyślnie aktywowana.
+    4. Konieczne może potrwać kilka minut, po pomyślnym zakończeniu aktualizacji. Strona zostanie zaktualizowana, aby wskazać, że urządzenia została pomyślnie aktywowana.
 
         ![Strona "Ustawienia chmury" lokalnego internetowego interfejsu użytkownika z aktualizacji](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 

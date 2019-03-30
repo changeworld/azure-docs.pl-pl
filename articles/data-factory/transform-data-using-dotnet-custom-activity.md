@@ -11,14 +11,15 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855873"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652097"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-use-custom-activities.md)
 > * [Bieżąca wersja](transform-data-using-dotnet-custom-activity.md)
@@ -39,6 +40,7 @@ Zobacz następujące artykuły, jeśli jesteś nowym użytkownikiem usługi Azur
 * [Nowe AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) polecenie cmdlet do tworzenia puli usługi Azure Batch.
 
 ## <a name="azure-batch-linked-service"></a>Usługa Azure Batch połączone
+
 Następujący kod JSON definiuje przykładowej usługi Azure Batch połączone. Aby uzyskać więcej informacji, zobacz [obliczenia środowisk obsługiwanych przez usługę Azure Data Factory](compute-linked-services.md)
 
 ```json
@@ -114,7 +116,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 &#42;Właściwości `resourceLinkedService` i `folderPath` muszą być jednocześnie określone lub oba, można pominąć.
 
 > [!NOTE]
-> Jeśli przekazujesz połączone usługi jako referenceObjects w działaniu niestandardowym, jest dobrym sposobem do przekazania do usługi Azure Key Vault włączony połączonej usługi (ponieważ nie zawiera żadnych bezpiecznego ciągów) i pobierania poświadczeń przy użyciu nazwy klucza tajnego bezpośrednio z klucza Magazyn z kodu. Przykład można znaleźć [tutaj](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) odwołania AKV włączenia połączona usługa pobiera poświadczenia z usługi Key Vault, a następnie uzyskuje dostęp do magazynu w kodzie.  
+> Jeśli przekazujesz połączone usługi jako referenceObjects w działaniu niestandardowym, jest dobrym sposobem do przekazania do usługi Azure Key Vault włączony połączonej usługi (ponieważ nie zawiera żadnych bezpiecznego ciągów) i pobierania poświadczeń przy użyciu nazwy klucza tajnego bezpośrednio z klucza Magazyn z kodu. Przykład można znaleźć [tutaj](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) odwołania AKV włączenia połączona usługa pobiera poświadczenia z usługi Key Vault, a następnie uzyskuje dostęp do magazynu w kodzie.
 
 ## <a name="custom-activity-permissions"></a>Działanie niestandardowe uprawnienia
 
@@ -147,7 +149,6 @@ Może bezpośrednio wykonywać polecenia przy użyciu działania niestandardowe.
 ## <a name="passing-objects-and-properties"></a>Przekazywanie obiektów i właściwości
 
 Niniejszy przykład pokazuje, jak można użyć referenceObjects i extendedProperties do przekazania obiektów fabryki danych i właściwości zdefiniowane przez użytkownika do aplikacji niestandardowej.
-
 
 ```json
 {
@@ -191,15 +192,15 @@ Niniejszy przykład pokazuje, jak można użyć referenceObjects i extendedPrope
 
 Po wykonaniu działania referenceObjects i właściwości rozszerzone są przechowywane w następujących plików, które są wdrażane na tym samym folderze wykonywania SampleApp.exe:
 
-- activity.json
+- `activity.json`
 
   Przechowuje extendedProperties i właściwości działania niestandardowego.
 
-- linkedServices.json
+- `linkedServices.json`
 
   Magazyny tablicy połączonych usług zdefiniowane we właściwości referenceObjects.
 
-- datasets.json
+- `datasets.json`
 
   Magazyny tablicę zestawów danych zdefiniowana we właściwości referenceObjects.
 
@@ -232,12 +233,13 @@ namespace SampleApp
 
 Można zacząć przebiegu potoku przy użyciu następującego polecenia programu PowerShell:
 
-```.powershell
+```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
+
 Potok jest uruchomiona, można sprawdzić dane wyjściowe wykonania za pomocą następujących poleceń:
 
-```.powershell
+```powershell
 while ($True) {
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
@@ -265,7 +267,7 @@ $result.Error -join "`r`n"
 
 **Stdout** i **stderr** z Twoją niestandardową aplikacją są zapisywane w **adfjobs** kontenera w połączoną usługę Azure Storage określone podczas tworzenia usługi Azure Batch połączone Usługa z identyfikatorem GUID zadania. Szczegółowa ścieżka można uzyskać z uruchamiania działania danych wyjściowych, jak pokazano w poniższym fragmencie kodu:
 
-```shell
+```
 Pipeline ' MyCustomActivity' run finished. Result:
 
 ResourceGroupName : resourcegroupname
@@ -295,11 +297,12 @@ Activity Error section:
 "failureType": ""
 "target": "MyCustomActivity"
 ```
+
 Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędnego, możesz ją uzyskać ścieżkę do pliku stdout.txt w wyrażeniu "\@activity('MyCustomActivity').output.outputs [0]".
 
-  > [!IMPORTANT]
-  > - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie.
-  > - W przypadku połączonych usług, które korzystają z produktem Integration Runtime poufne informacje, takie jak klucze lub hasła są zaszyfrowane za środowiskiem Integration Runtime, aby upewnić się, pozostaje poświadczeń klientów definiowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString.
+> [!IMPORTANT]
+> - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie.
+> - W przypadku połączonych usług, które korzystają z produktem Integration Runtime poufne informacje, takie jak klucze lub hasła są zaszyfrowane za środowiskiem Integration Runtime, aby upewnić się, pozostaje poświadczeń klientów definiowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Przekaż dane wyjściowe do kolejnego działania
 
@@ -311,10 +314,10 @@ Wartości właściwości poufnych, wyznaczony jako typ *SecureString*, jak pokaz
 
 ```json
 "extendedProperties": {
-    "connectionString": {
-        "type": "SecureString",
-        "value": "aSampleSecureString"
-    }
+  "connectionString": {
+    "type": "SecureString",
+    "value": "aSampleSecureString"
+  }
 }
 ```
 
@@ -334,7 +337,6 @@ Zmiany wprowadzone w Data Factory V2 niestandardowe działanie możesz napisać 
 
 W poniższej tabeli opisano różnice między działań niestandardowych w wersji 2 fabryki danych i Data Factory w wersji 1 (niestandardowy) działania DotNet:
 
-
 |Różnice      | Działanie niestandardowe      | Wersja 1 (niestandardowy) działania DotNet      |
 | ---- | ---- | ---- |
 |Jak jest zdefiniowany w niestandardowej logiki      |Dostarczając plik wykonywalny      |Wdrażając biblioteki DLL platformy .NET      |
@@ -344,7 +346,6 @@ W poniższej tabeli opisano różnice między działań niestandardowych w wersj
 |Przekazywanie informacji z działania do logiki niestandardowej      |Za pomocą ReferenceObjects (LinkedServices i zestawów danych) i ExtendedProperties (właściwości niestandardowych)      |Przy użyciu właściwości rozszerzone (właściwości niestandardowych), dane wejściowe i wyjściowe zestawy danych      |
 |Pobieranie informacji w niestandardowej logiki      |Analizuje activity.json linkedServices.json i datasets.json przechowywane w tym samym folderze plik wykonywalny      |Za pomocą zestawu .NET SDK (ramki .NET 4.5.2)      |
 |Rejestrowanie      |Zapisuje dane bezpośrednio na STDOUT      |Implementowanie rejestrowania biblioteki dll platformy .NET      |
-
 
 Jeśli masz istniejący kod .NET napisany dla wersji 1 działania DotNet (niestandardowy), należy zmodyfikować swój kod pod kątem go do pracy z bieżącą wersją działania niestandardowe. Wykonując te wytyczne wysokiego poziomu, należy zaktualizować kod:
 
@@ -358,6 +359,7 @@ Jeśli masz istniejący kod .NET napisany dla wersji 1 działania DotNet (niesta
 Pełny przykład opisu przykładowy potok i biblioteki DLL end-to-end w usługi Data Factory w wersji 1 artykułu [używanie niestandardowych działań w potoku usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) można inaczej jako działania niestandardowego fabryki danych, zobacz [ Przykładowe działanie niestandardowe fabryki danych](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie usługi Azure Batch
+
 Możesz również utworzyć puli usługi Azure Batch przy użyciu **skalowania automatycznego** funkcji. Na przykład można utworzyć puli usługi azure batch przy użyciu 0 dedykowanych maszyn wirtualnych i formułę skalowania automatycznego na podstawie liczby oczekujących zadań.
 
 W tym miejscu wartość przykładowa formuła realizuje następujące zachowanie: Podczas tworzenia puli, rozpoczynają się one od 1 maszyna wirtualna. Metryki $PendingTasks definiuje liczbę zadań uruchamiania + aktywny (kolejki) stanu. Formuła wyszukuje średnią liczbę zadań oczekujących w ostatnich 180 sekund i ustawia odpowiednio TargetDedicated. Zapewnia, że TargetDedicated nigdy nie trafiają ponad 25 maszyn wirtualnych. Tak, ponieważ nowe zadania są przesyłane, puli automatycznie rozszerza się w i jako zadania, maszyn wirtualnych stają się bezpłatne pojedynczo, i automatyczne skalowanie zmniejsza tych maszyn wirtualnych. startingNumberOfVMs i maxNumberofVMs mogą być dostosowane do potrzeb.

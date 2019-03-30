@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować autonomiczny lub lokalnego klastra
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: c71473e975333d33406d78130ad28f417b9b967e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853340"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662333"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznego klastra Windows
 W tym artykule opisano ustawienia konfiguracji klastra usługi Azure Service Fabric autonomicznego, który można ustawić w *ClusterConfig.json* pliku. Aby podać informacje o węzłach klastra, konfiguracji zabezpieczeń, a także topologii sieci pod kątem błędów i uaktualnień będzie używać tego pliku.  Po zmianę lub dodanie ustawienia konfiguracji, można kliknąć przycisk [Tworzenie klastra autonomicznego](service-fabric-cluster-creation-for-windows-server.md) lub [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,7 +74,7 @@ Klaster usługi Service Fabric musi zawierać co najmniej trzy węzły. Możesz 
 | **Konfiguracja węzła** | **Opis** |
 | --- | --- |
 | nodeName |W węźle można nadać dowolnej przyjaznej nazwy. |
-| adres IP |Dowiedz się, adres IP węzła, otwierając okno polecenia i wpisując `ipconfig`. Zanotuj adres IPV4, a następnie przypisać ją do zmiennej adres IP. |
+| iPAddress |Dowiedz się, adres IP węzła, otwierając okno polecenia i wpisując `ipconfig`. Zanotuj adres IPV4, a następnie przypisać ją do zmiennej adres IP. |
 | elementu nodeTypeRef |Każdy węzeł może być przypisany typ innego węzła. [Typy węzłów](#node-types) są zdefiniowane w poniższej sekcji. |
 | faultDomain |Domeny błędów umożliwiają administratorom klastra do definiowania węzłów fizycznych, które może zakończyć się niepowodzeniem w tym samym czasie udostępnionego fizycznego zależności. |
 | upgradeDomain |Domen uaktualnienia opisują zestaw węzłów, które są zamykane uaktualnień usługi Service Fabric w tym samym czasie. Możesz wybrać węzły, które można przypisać do domen uaktualnienia, ponieważ nie są ograniczeni wszelkie fizyczne wymagania. |

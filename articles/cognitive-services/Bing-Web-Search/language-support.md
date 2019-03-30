@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 8f10812fc77a36bc29c8926bb7f76bceed9d7718
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cd9adfd9d882f3781f519846ce22767123da36c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857689"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652267"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu API wyszukiwania w Internecie Bing
 
 API wyszukiwania w Internecie Bing obsługuje ponad tuzina trzech krajów lub regionów, z których wiele z więcej niż jednym języku. Określanie kraj lub region z zapytaniem pomaga zawęzić wyniki wyszukiwania oparte na tym zainteresowania krajów lub regionów. Wyniki mogą być dostępne łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonego kraju/regionu lub języka.
 
-Można określić kraj lub region przy użyciu `cc` parametr zapytania. Kraj lub region jest określony, należy określić co najmniej jeden kod języka z [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Użyj [tabeli rynków](#Markets) listę języków obsługiwanych w poszczególnych segmentach rynku.
+Można określić kraj lub region przy użyciu `cc` parametr zapytania. Kraj lub region jest określony, należy określić co najmniej jeden kod języka z [ `Accept-Language` nagłówka](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Użyj [tabeli rynków](#markets) listę języków obsługiwanych w poszczególnych segmentach rynku.
 
 Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **rynków** tabeli. Określanie na rynek, jednocześnie Określa kraj lub region i język preferowany. Można jawnie ustawić język za pomocą `setLang` parametr zapytania.
 
@@ -63,7 +63,7 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
-|Wielka Brytania|GB|
+|Zjednoczone Królestwo|GB|
 |Stany Zjednoczone|USA|
 
 ## <a name="markets"></a>Rynki
@@ -107,6 +107,6 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Wielka Brytania|Polski|en-GB|
+|Zjednoczone Królestwo|Polski|en-GB|
 |Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|

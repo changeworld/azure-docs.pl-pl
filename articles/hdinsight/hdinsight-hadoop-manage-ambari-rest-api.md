@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 38d845e133b5ae1a091fd9fee698b2bf801135e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a56cc0c575a6e50a38aea91c8fc2e1855617457f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880606"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648388"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST
 
@@ -306,7 +306,7 @@ W tym przykładzie zwraca dokument JSON zawierający bieżącą konfigurację `l
    Modyfikuj, a następnie wprowadź poniższe polecenia:
 
    * Zastąp `livy2-conf` przy użyciu odpowiedniego elementu.
-   * Zastąp `INITIAL` z rzeczywistą wartością pobrane dla `tag` z [Pobierz wszystkie konfiguracje](#Get-all-configurations).
+   * Zastąp `INITIAL` z rzeczywistą wartością pobrane dla `tag` z [Pobierz wszystkie konfiguracje](#get-all-configurations).
 
      **A. Bash**  
      ```bash

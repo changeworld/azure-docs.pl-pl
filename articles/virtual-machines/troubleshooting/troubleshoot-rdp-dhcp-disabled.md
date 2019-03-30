@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213454"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652284"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nie można wykonać protokołu RDP na maszynach wirtualnych platformy Azure, ponieważ usługa klienta DHCP jest wyłączona
 
@@ -27,7 +27,6 @@ W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Objawy
-
 Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azure, ponieważ usługa klienta DHCP jest wyłączona na maszynie wirtualnej. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal, zostanie wyświetlony wykonać normalnego rozruchu maszyny Wirtualnej i czeka na poświadczenia na ekranie logowania. Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że usługa klienta DHCP nie jest uruchomiona lub nie została uruchomiona. Następujące przykładowe dziennika:
 
 **Rejestrowanie nazwy**: System </br>
@@ -98,7 +97,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 1. Połączyć się z [konsoli szeregowej](serial-console-windows.md) , a następnie otwórz wystąpienie programu PowerShell.
 2. Pobierz narzędzia Monitor procesu w systemie, uruchamiając następujący skrypt:
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 3. Spróbuj nawiązać połączenie z maszyną Wirtualną przy użyciu pulpitu zdalnego.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>Usługa klienta DHCP ulega awarii lub zawiesza się
+
 1. Jeśli stan usługi utkwiła w automatycznej **od** lub **zatrzymywanie** stanu, spróbuj zatrzymać usługę:
 
         sc stop DHCP
@@ -205,5 +205,3 @@ Aby rozwiązać ten problem, należy użyć Serial kontroli, Włącz protokół 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać problem rozwiązany.
-
-

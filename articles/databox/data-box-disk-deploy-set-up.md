@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106648"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652154"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: Rozpakowywanie, łączenie i odblokować dysku Azure Data Box
 
@@ -90,7 +90,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. Uruchom plik `DataBoxDiskUnlock.exe` i podaj klucz dostępu uzyskany w sekcji [Nawiązywanie połączenia z dyskami i uzyskiwanie klucza dostępu](#Connect-to-disks-and-get-the-passkey). Zostanie wyświetlona litera dysku przypisana do danego dysku. Poniżej pokazano przykładowe dane wyjściowe.
+6. Uruchom plik `DataBoxDiskUnlock.exe` i podaj klucz dostępu uzyskany w sekcji [Nawiązywanie połączenia z dyskami i uzyskiwanie klucza dostępu](#connect-to-disks-and-get-the-passkey). Zostanie wyświetlona litera dysku przypisana do danego dysku. Poniżej pokazano przykładowe dane wyjściowe.
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -204,7 +204,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
      OpenSSL is already installed.
      ```
 
-6. Uruchom narzędzie do odblokowywania dysków Data Box Disk. Podaj klucz dostępu z witryny Azure Portal uzyskany w sekcji [Nawiązywanie połączenia z dyskami i uzyskiwanie klucza dostępu](#Connect-to-disks-and-get-the-passkey). Opcjonalnie możesz podać listę woluminów zaszyfrowanych za pomocą funkcji BitLocker, które chcesz odblokować. Klucz dostępu i listę woluminów należy umieścić w apostrofach. 
+6. Uruchom narzędzie do odblokowywania dysków Data Box Disk. Podaj klucz dostępu z witryny Azure Portal uzyskany w sekcji [Nawiązywanie połączenia z dyskami i uzyskiwanie klucza dostępu](#connect-to-disks-and-get-the-passkey). Opcjonalnie możesz podać listę woluminów zaszyfrowanych za pomocą funkcji BitLocker, które chcesz odblokować. Klucz dostępu i listę woluminów należy umieścić w apostrofach. 
 
     Wpisz następujące polecenie.
  

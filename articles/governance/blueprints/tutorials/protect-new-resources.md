@@ -4,16 +4,16 @@ description: Informacje na temat używania blokad zasobów platformy Azure, plan
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57855767"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629231"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrona nowe zasoby za pomocą blokad zasobów platformy Azure, plany
 
@@ -40,7 +40,7 @@ Najpierw utwórz nową definicję planu.
 
 1. Z **wprowadzenie** strony po lewej stronie, wybierz opcję **Utwórz** przycisku w obszarze _Tworzenie planu_.
 
-1. Znajdź **puste przykładowe** przykładowy plan w górnej części strony i wybierz pozycję **korzystać z tej próbki**.
+1. Znajdź **pustego planu** przykładowy plan w górnej części strony i wybierz pozycję **rozpoczynać pustego planu**.
 
 1. Wprowadź _podstawy_ próbki planu:
 
@@ -81,7 +81,7 @@ Najpierw utwórz nową definicję planu.
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -182,6 +182,8 @@ Przypisanie utworzona grupa zasobów _TestingBPLocks_ i konto magazynu, wdrożon
 
    Przypisanie planu utworzone [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) w grupie zasobów wdrożonego, aby wymusić _tylko do odczytu_ tryb blokady planu. Przypisanie Odmów zapobiega osoba, która ma odpowiednie uprawnienia na _przypisań ról_ kartę możliwość podejmowania określonych działań. Wpływa na przypisanie Odmów _wszystkich podmiotów zabezpieczeń_.
 
+   Aby dowiedzieć się, jak wyłączanie podmiot zabezpieczeń z przypisania Odmów, zobacz [plany blokowania zasobów](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+
 1. Wybierz przypisanie Odmów, a następnie wybierz **odmowa uprawnień** strony po lewej stronie.
 
    Przypisanie Odmów uniemożliwia wszystkie operacje wykonywane **\*** i **akcji** konfiguracji, ale umożliwia dostęp do odczytu, z wyłączeniem  **\* /odczyt**za pośrednictwem **NotActions**.
@@ -221,9 +223,9 @@ Po zakończeniu tego samouczka, należy usunąć następujące zasoby:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat [cyklu życia strategii](../concepts/lifecycle.md)
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

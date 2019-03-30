@@ -1,6 +1,6 @@
 ---
-title: Optymalizuj środowisko programu SQL Server z usługą Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Za pomocą usługi Azure Log Analytics można użyć rozwiązania SQL Health Check do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
+title: Optymalizuj środowisko programu SQL Server z usługą Azure Monitor | Dokumentacja firmy Microsoft
+description: Dzięki usłudze Azure Monitor rozwiązania SQL Health Check można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8c06f0a3a33133c7b1595db52204d15b03d6aab
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629119"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Log Analytics
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Azure Monitor
 
 ![Sprawdzanie kondycji SQL symboli](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -40,24 +40,24 @@ Po dodaniu rozwiązania i ocena jest zakończone, podsumowanie informacje o obsz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Rozwiązanie SQL Health Check wymaga obsługiwanej wersji programu .NET Framework 4, zainstalowane na każdym komputerze, który zawiera program Microsoft Monitoring Agent (MMA) zainstalowane.  MMA agent jest używana przez System Center 2016 — Operations Manager i Operations Manager 2012 R2 oraz usługi Log Analytics.  
+* Rozwiązanie SQL Health Check wymaga obsługiwanej wersji programu .NET Framework 4, zainstalowane na każdym komputerze, który zawiera program Microsoft Monitoring Agent (MMA) zainstalowane.  MMA agent jest używana przez System Center 2016 — Operations Manager i Operations Manager 2012 R2 oraz usługi Azure Monitor.  
 * Rozwiązanie obsługuje program SQL Server w wersji 2012, 2014 i 2016.
 * Obszar roboczy usługi Log Analytics można dodać rozwiązania SQL Health Check z witryny Azure marketplace w witrynie Azure portal.  Aby zainstalować rozwiązania, musi być administratorem lub współautorem w subskrypcji platformy Azure.
 
   > [!NOTE]
-  > Po dodaniu rozwiązania pliku AdvisorAssessment.exe jest dodawane do serwerów przy użyciu agentów. Dane konfiguracji jest odczytać i następnie wysyłane do usługi Log Analytics w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
+  > Po dodaniu rozwiązania pliku AdvisorAssessment.exe jest dodawane do serwerów przy użyciu agentów. Dane konfiguracji jest odczytać i następnie wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
   >
   >
 
-Aby przeprowadzić sprawdzenie kondycji serwerów programu SQL Server, wymagają agenta i łączności z usługą Log Analytics przy użyciu jednej z następujących obsługiwanych metod:
+Aby przeprowadzić sprawdzenie kondycji serwerów programu SQL Server, wymagają agenta i łączność z usługi Azure Monitor, przy użyciu jednej z następujących obsługiwanych metod:
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Jeśli serwer nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
-2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Log Analytics jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, serwer może być wieloadresowe z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
+2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Azure Monitor jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, serwer może być wieloadresowe z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
 3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w Twoim obszarze roboczym.  
 
-Agent na serwerze SQL, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Log Analytics.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
+Agent na serwerze SQL, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Azure Monitor.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
 
-Jeśli program SQL Server jest monitorowane przez program Operations Manager, należy skonfigurować konto usługi Operations Manager uruchom jako. Zobacz [programu Operations Manager uruchom jako konta usługi Log Analytics](#operations-manager-run-as-accounts-for-log-analytics) poniżej Aby uzyskać więcej informacji.
+Jeśli program SQL Server jest monitorowane przez program Operations Manager, należy skonfigurować konto usługi Operations Manager uruchom jako. Zobacz [programu Operations Manager uruchom jako konta usługi Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) poniżej Aby uzyskać więcej informacji.
 
 ## <a name="sql-health-check-data-collection-details"></a>Sprawdzanie kondycji SQL szczegółów kolekcji danych
 Sprawdzanie kondycji SQL zbiera dane z następujących źródeł przy użyciu agenta, które mają włączone:
@@ -157,43 +157,37 @@ Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczenia zebrane przez in�
 Każdy zalecenie obejmuje wskazówki na temat ważnych. Do oceny, czy implementacja zalecenie jest odpowiednia dla Ciebie, biorąc pod uwagę rodzaj usług IT i potrzeby biznesowe Twojej organizacji, należy skorzystać z poniższych wskazówek.
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Sprawdzanie kondycji zalecenia obszar koncentracji uwagi
-W usłudze Log Analytics można korzystać z rozwiązania do oceny, musisz mieć zainstalowane oprogramowanie.  Po jego zainstalowaniu, możesz wyświetlić podsumowanie zaleceń przy użyciu SQL Health Check kafelka na stronie rozwiązania w witrynie Azure portal.
+Korzystać z rozwiązania do oceny, w usłudze Azure Monitor, musisz mieć zainstalowane oprogramowanie.  Po jego zainstalowaniu, można wyświetlić podsumowanie zalecenia za pomocą kafelka SQL Health Check na **Przegląd** strony dla usługi Azure Monitor w witrynie Azure portal.
 
 Wyświetlanie ocen zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszar koncentracji uwagi i podejmij działania naprawcze
-1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
-2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
-3. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie kliknij przycisk **Przegląd** kafelka.  
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Monitor**.
+3. W **Insights** części menu, wybierz opcję **więcej**.  
 4. Na **Przegląd** kliknij **SQL Health Check** kafelka.
 5. Na **sprawdzanie kondycji** strony, przejrzyj dane podsumowania w jednym z bloków obszaru fokus, a następnie kliknij jedną, aby wyświetlić zalecenia dla tego obszaru.
 6. Na wszystkich stronach obszar koncentracji uwagi można wyświetlać zaleceń z priorytetami wprowadzone dla danego środowiska. Kliknij przycisk rekomendacji w obszarze **wpływ na obiekty** Aby wyświetlić szczegóły dotyczące Dlaczego tworzone są zalecenia.<br><br> ![Obraz przedstawiający zalecenia SQL Health Check](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Można wykonać akcje naprawcze sugerowane w **sugerowane akcje**. Jeśli element został rozwiązany, oceny nowszych zarejestruje które zalecane akcje zostały wykonane i zwiększy ocenę zgodności. Poprawiony elementy są wyświetlane jako **obiektów przekazywane**.
 
 ## <a name="ignore-recommendations"></a>Zignoruj zalecenia
-Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który usługi Log Analytics będzie używany do zapobiegania zaleceń znajdujących się w wynikach oceny.
+Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który będzie użyć usługi Azure Monitor, aby zapobiec zaleceń znajdujących się w wynikach oceny.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować zaleceń, które będzie ignorować
-1. W witrynie Azure portal na stronie obszaru roboczego usługi Log Analytics dla wybranego obszaru roboczego kliknij **wyszukiwanie w dzienniku** kafelka.
+1. W menu usługi Azure Monitor, kliknij **dzienniki**.
 2. Użyj następującego zapytania do zaleceń listy, które nie powiodły, na komputerach w danym środowisku.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../azure-monitor/log-query/log-query-overview.md), a następnie powyższe zapytania zmienią się następujące czynności.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
-    Poniżej przedstawiono zrzut ekranu przedstawiający zapytaniu przeszukiwania dzienników:<br><br> ![zalecenia nie powiodło się](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Poniżej przedstawiono zrzut ekranu przedstawiający zapytanie dziennika:<br><br> ![zalecenia nie powiodło się](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. Wybierz zaleceń, które chcesz zignorować. Użyjesz wartości RecommendationId w następnej procedurze.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Tworzenie i używanie pliku tekstowego IgnoreRecommendations.txt
 1. Utwórz plik o nazwie IgnoreRecommendations.txt.
-2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają Log Analytics, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
-3. Umieść plik w następującym folderze na każdym komputerze, w której chcesz zignorować zalecenia w usłudze Log Analytics.
+2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają usługi Azure Monitor, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
+3. Umieść plik w następującym folderze na każdym komputerze, którego usługi Azure Monitor, aby zignorować zalecenia.
    * Na komputerach za pomocą programu Microsoft Monitoring Agent (połączenie bezpośrednio lub za pośrednictwem programu Operations Manager) - *SystemDrive*: \Program Files\Microsoft Monitoring Agent\Agent
    * Na serwerze zarządzania programu Operations Manager — *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
    * Na serwerze zarządzania programu Operations Manager 2016 - *SystemDrive*: \Program Files\Microsoft programu System Center 2016\Operations Manager\Server
@@ -203,14 +197,8 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 2. Aby wyświetlić listę wszystkich zaleceń dotyczących zignorowane, można użyć następujących zapytań przeszukiwania dzienników.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../azure-monitor/log-query/log-query-overview.md), a następnie powyższe zapytania zmienią się następujące czynności.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
 3. Jeśli użytkownik zdecyduje później chcesz wyświetlone zalecenia zignorowane, Usuń wszystkie pliki IgnoreRecommendations.txt lub RecommendationIDs można usunąć z nich.
 
 ## <a name="sql-health-check-solution-faq"></a>Rozwiązanie SQL Health Check — często zadawane pytania
@@ -263,4 +251,4 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 * Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.
+* [Zaloguj się zapytania](../log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.

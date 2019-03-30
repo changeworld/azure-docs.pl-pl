@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: c29647e4ee312302b66535ba834edabb42e4cff7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0c48b85e48153eb70400fc6da4822271f49b7fbe
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550606"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630176"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
 
@@ -24,7 +24,8 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
-- Edytor kodu, taki jak program [Visual Studio Code](https://code.visualstudio.com/download)
+- Edytor kodu, takie jak [programu Visual Studio Code](https://code.visualstudio.com/download).
+- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakietu.
 
 ## <a name="initialize-the-html-file"></a>Inicjowanie pliku HTML
 

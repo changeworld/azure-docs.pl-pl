@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/24/2018
-ms.openlocfilehash: fa681198088cd4ae13668193939474d0d501b6f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/29/2019
+ms.openlocfilehash: 79d15a46affb2a6b7159ba080d4235073c59919c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098518"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648987"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) przy użyciu usługi Azure SQL Database i Data Warehouse  
 
-Usługa Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują dostęp warunkowy Microsoft. 
+Azure [bazy danych SQL](sql-database-technical-overview.md), [wystąpienia zarządzanego](sql-database-managed-instance.md), i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują dostęp warunkowy Microsoft. 
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891437"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648524"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Koszty oprogramowania, które nie są dołączone Azure Reserved VM Instances
 
@@ -69,15 +69,15 @@ Jeśli nie masz korzyści z używania hybrydowej platformy Azure w swoich wystą
 Koszt każdego z tych liczników można uzyskać za pośrednictwem interfejsu API RateCard platformy Azure. Aby uzyskać informacje dotyczące sposobu uzyskania stawki dla mierników platformy azure, zobacz [uzyskiwanie informacji o cenach i metadanych dla zasobów używanych w subskrypcji platformy Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji dla platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacji dla platformy Azure?](billing-save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie rezerwacji dla platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 50cd5969ce02ee5eea0637c950069d684d67b5d3
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361459"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652318"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
 
@@ -351,7 +351,7 @@ Dowiedz się więcej o usługach:
 Dla każdego modelu klasyfikacji, gdy kompilujesz przy użyciu zautomatyzowanych możliwości, które usługi Azure Machine Learning uczenia maszynowego można wyświetlić następujące wykresy: 
 + [Macierz pomyłek](#confusion-matrix)
 + [Precision-Recall wykresu](#precision-recall-chart)
-+ [Odbiornik operacyjne cechy (lub ROC)](#ROC)
++ [Odbiornik operacyjne cechy (lub ROC)](#roc)
 + [Przenoszenie krzywej](#lift-curve)
 + [Krzywa zysków](#gains-curve)
 + [Wykres odwzorowania](#calibration-plot)

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 3/25/2019
+ms.date: 3/29/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: be490299d09e396e4bc589ebf777f64ce084d320
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 7f313af75e78db8a60fe6864c41cd8e6c5a3ad9b
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418724"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629950"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -81,7 +81,7 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Przenoszenie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane|Przenoszenie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane.|Obsługa tej funkcji jest w naszym harmonogramie działania. Aby przenieść zaporę do innej grupy zasobów lub subskrypcji, musisz usunąć bieżące wystąpienie i utworzyć je ponownie w nowej grupie zasobów lub subskrypcji.|
 |Zakres portów w regułach sieci i aplikacji|Porty są ograniczone do 64 000, ponieważ porty o dużych numerach są zarezerwowane do zarządzania i sprawdzania kondycji. |Pracujemy nad złagodzeniem tego ograniczenia.|
 |Może uzyskać maskowane alerty analizy zagrożeń|Reguły sieciowych z lokalizacją docelową 80/443 dla ruchu wychodzącego masek filtrowania zagrożeń analizy alertów w przypadku skonfigurowania do alertu tylko trybu.|Utwórz, filtrowanie ruchu wychodzącego dla 80/443 przy użyciu reguł aplikacji. Możesz też zmienić tryb analizy zagrożeń **alertów i odmawiać go**.|
-
+|Zapora usługi Azure używa usługi Azure DNS tylko do rozpoznawania nazw|Zaporę platformy Azure rozpoznaje tylko przy użyciu usługi Azure DNS nazwy FQDN. Niestandardowego serwera DNS nie jest obsługiwane. Ma to żadnego wpływu na rozpoznawanie nazw DNS w innych podsieciach.|Pracujemy nad złagodzeniem tego ograniczenia.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal](tutorial-firewall-deploy-portal.md)

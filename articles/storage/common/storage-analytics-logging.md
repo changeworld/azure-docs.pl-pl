@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a350576742a9bcb899405aae19c032cc9b966975
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351333"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652063"
 ---
 # <a name="azure-storage-analytics-logging"></a>Rejestrowania analizy magazynu platformy Azure
 
@@ -27,7 +27,6 @@ Usługa Storage Analytics rejestruje szczegółowe informacje na temat udane i n
 >  Rejestrowanie danych analizy magazynu jest obecnie dostępna tylko dla usług obiektów Blob, kolejek i tabel. Konto magazynu premium storage nie jest obsługiwana.
 
 ## <a name="requests-logged-in-logging"></a>Rejestrowane podczas rejestrowania żądań
-
 ### <a name="logging-authenticated-requests"></a>Uwierzytelnione rejestrowanie żądań
 
  Rejestrowane są następujące typy żądań uwierzytelnionych:
@@ -63,13 +62,13 @@ Jeśli masz duże ilości danych dziennika z wieloma plikami za każdą godzinę
 
 Większość narzędzi do przeglądania magazynu umożliwiają wyświetlanie metadanych obiektów blob; można również przeczytać te informacje przy użyciu programu PowerShell lub programowo. Poniższy fragment kodu programu PowerShell znajduje się przykład filtrowanie listy obiektów blob dziennika przez nazwę, aby określić godzinę oraz metadane, aby zidentyfikować tylko tych dzienników, które zawierają **zapisu** operacji.  
 
- ```  
+ ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
- where {  
+ Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
- foreach {  
+ ForEach-Object {  
      "{0}  {1}  {2}  {3}" –f $_.Name,   
      $_.ICloudBlob.Metadata.StartTime,   
      $_.ICloudBlob.Metadata.EndTime,   
@@ -143,24 +142,25 @@ Można określić usługi magazynu, które mają być rejestrowane i okres przec
 
  Następujące polecenie zmienia rejestrowania do odczytu, zapisu i usuwania żądań w usłudze kolejki w domyślnym kontem magazynu za pomocą pięciu dni przechowywania:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Następujące polecenie wyłącza rejestrowania w usłudze table service na koncie magazynu domyślnego:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Włącz rejestrowanie programowo Magazyn  
+
  Oprócz używania witryny Azure portal lub poleceń cmdlet programu Azure PowerShell do rejestrowania magazynu kontroli, umożliwia także jeden z interfejsów API usługi Azure Storage. Na przykład jeśli używasz języka .NET przy użyciu biblioteki klienta magazynu.  
 
  Klasy **CloudBlobClient**, **CloudQueueClient**, i **CloudTableClient** mają wszystkie metody takie jak **SetServiceProperties** i **SetServicePropertiesAsync** o **ServiceProperties** obiektu jako parametr. Możesz użyć **ServiceProperties** obiektu, aby skonfigurować rejestrowanie magazynu. Na przykład następująca C# fragment kodu przedstawia sposób zmiany, co jest rejestrowane i okres przechowywania dla rejestrowania kolejki:  
 
-```  
+```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
 var serviceProperties = queueClient.GetServiceProperties();  
@@ -190,7 +190,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
  Poniższy przykład pokazuje, jak można pobrać danych dziennika dla kolejki usługi godzin, począwszy od 09 AM, 10 AM i 11: 00 20 maja 2014 r. **/S** parametru powoduje, że narzędzia AzCopy do tworzenia struktury folderu lokalnego, na podstawie daty i godziny w nazwach plików dziennika; **/V** parametru powoduje, że narzędzia AzCopy uzyskać pełne wyniki; **/Y** parametru powoduje, że narzędzia AzCopy zastąpić wszelkie pliki lokalne. Zastąp **< yourstorageaccount\>**  nazwą konta magazynu i Zastąp **< yourstoragekey\>**  kluczem konta magazynu.  
 
-```  
+```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
 ```  
 
@@ -201,6 +201,7 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
  Po pobraniu danych dziennika można wyświetlić wpisy dziennika w plikach. Te pliki dziennika użyć format tekstu rozdzielanego tę liczbę dziennika odczytywanie narzędzi są w stanie przeanalizować, włącznie z Microsoft Message Analyzer (Aby uzyskać więcej informacji, zobacz podręcznik [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Różne narzędzia mają różne funkcje służące do formatowania, filtrowanie, sortowanie, wyszukiwanie zawartości plików dzienników usługi ad. Aby uzyskać więcej informacji na temat rejestrowania magazynu format pliku dziennika i zawartości, zobacz [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) i [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format)
 * [Usługa Storage Analytics rejestrowane komunikaty o stanie i operacje](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Metryk usługi Storage Analytics (wersja klasyczna)](storage-analytics-metrics.md)

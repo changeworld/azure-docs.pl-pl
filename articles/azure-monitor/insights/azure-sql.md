@@ -1,5 +1,5 @@
 ---
-title: Rozwiązanie SQL Analytics na platformie Azure w usłudze Log Analytics | Dokumentacja firmy Microsoft
+title: Rozwiązanie SQL Analytics na platformie Azure w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Rozwiązanie SQL Analytics na platformie Azure ułatwia zarządzanie bazami danych Azure SQL
 services: log-analytics
 ms.service: log-analytics
@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170228"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629980"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ ms.locfileid: "58170228"
 
 Funkcja analizy usługi Azure SQL jest zaawansowanych chmurze rozwiązanie do monitorowania wydajności baz danych, pul elastycznych i wystąpienia zarządzane przez usługę Azure SQL na dużą skalę i w ramach wielu subskrypcji za pomocą jedną taflę szkła do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
 
-Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Aby przedstawić dane dotyczące wszystkich usługi Azure SQL bazy danych, pul elastycznych i baz danych w wystąpieniach zarządzanych w jeden obszar roboczy usługi Log Analytics używa metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
+Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Aby przedstawić dane dotyczące wszystkich usługi Azure SQL bazy danych, pul elastycznych i baz danych w wystąpieniach zarządzanych w jeden obszar roboczy usługi Log Analytics używa metryki diagnostycznych platformy Azure wraz z widokami usługi Azure Monitor. Usługa Azure Monitor pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
 
 Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
 
@@ -32,29 +32,18 @@ Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i 
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Usługa Azure SQL Analytics to w chmurze, tylko do monitorowania rozwiązania pomocnicze przesyłania strumieniowego dane diagnostyczne i telemetryczne baz danych Azure SQL: pojedynczej puli i zarządzane wystąpienie bazy danych. Jako rozwiązanie nie używa agentów do połączenia z usługą Log Analytics, rozwiązanie nie obsługują monitorowanie programu SQL Server hostowanego lokalnie lub na maszynach wirtualnych, zobacz w poniższej tabeli zgodności.
+Usługa Azure SQL Analytics to w chmurze, tylko do monitorowania rozwiązania pomocnicze przesyłania strumieniowego dane diagnostyczne i telemetryczne baz danych Azure SQL: pojedynczej puli i zarządzane wystąpienie bazy danych. Jako rozwiązanie używa agentów do nawiązać połączenie z usługi Azure Monitor, rozwiązanie nie obsługują monitorowanie programu SQL Server hostowanego lokalnie lub na maszynach wirtualnych, zobacz w poniższej tabeli zgodności.
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Diagnostyka Azure](../platform/collect-azure-metrics-logs.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
-| [Konto usługi Azure Storage](../platform/collect-azure-metrics-logs.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
+| [Diagnostyka Azure](../platform/collect-azure-metrics-logs.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Azure Monitor dzienników bezpośrednio przez platformę Azure. |
+| [Konto usługi Azure Storage](../platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure Monitor nie odczytać danych z konta magazynu. |
 | [Agenci dla systemu Windows](../platform/agent-windows.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
 | [Agenci dla systemu Linux](../learn/quick-collect-linux-computer.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
-| [Grupa zarządzania programu System Center Operations Manager](../platform/om-agents.md) | Nie | Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest używana przez to rozwiązanie. |
+| [Grupa zarządzania programu System Center Operations Manager](../platform/om-agents.md) | Nie | Bezpośrednie połączenie agenta programu Operations Manager do usługi Azure Monitor nie jest używana przez to rozwiązanie. |
 
 ## <a name="configuration"></a>Konfigurowanie
-
-Wykonaj poniższe kroki, aby dodać rozwiązanie do usługi Azure SQL Analytics do pulpitu nawigacyjnego platformy Azure.
-
-1. Dodawanie rozwiązania do usługi Azure SQL Analytics do swojego obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
-2. W witrynie Azure portal kliknij pozycję **+ Utwórz zasób**, a następnie wyszukaj **usługi Azure SQL Analytics**.  
-    ![Monitorowanie i zarządzanie](./media/azure-sql/monitoring-management.png)
-3. Wybierz **usługi Azure SQL Analytics (wersja zapoznawcza)** z listy
-4. W **usługi Azure SQL Analytics (wersja zapoznawcza)** obszaru, kliknij przycisk **Utwórz**.  
-    ![Tworzenie](./media/azure-sql/portal-create.png)
-5. W **Utwórz nowe rozwiązanie** obszaru, Utwórz nową lub wybierz istniejący obszar roboczy, który chcesz dodać do rozwiązania, a następnie kliknij przycisk **Utwórz**.
-
-    ![Dodaj do obszaru roboczego](./media/azure-sql/add-to-workspace.png)
+Użyj procesu opisanego w [rozwiązań Dodaj usługi Azure Monitor z galerii rozwiązań](../../azure-monitor/insights/solutions.md) można dodać rozwiązania Azure SQL Analytics (wersja zapoznawcza) do obszaru roboczego usługi Log Analytics.
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Konfigurowanie baz danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę do dane diagnostyczne i telemetryczne strumienia
 
@@ -80,9 +69,9 @@ Aby wyświetlić pulpit nawigacyjny monitorowania usługi Azure SQL Analytics dl
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Wyświetlanie danych usługi Azure SQL Analytics
 
-Pulpit nawigacyjny zawiera przegląd wszystkich baz danych, które są monitorowane przy użyciu różnych perspektyw. Do pracy z różnych perspektyw należy włączyć odpowiednie metryk lub dzienników na zasobów SQL, aby być przesłana strumieniowo do obszaru roboczego usługi Azure Log Analytics.
+Pulpit nawigacyjny zawiera przegląd wszystkich baz danych, które są monitorowane przy użyciu różnych perspektyw. Do pracy z różnych perspektyw należy włączyć odpowiednie metryk lub dzienników na zasobów SQL, aby być przesłana strumieniowo do obszaru roboczego usługi Log Analytics.
 
-Należy zwrócić uwagę na to, czy w przypadku niektórych metryk lub dzienników nie są przesyłane strumieniowo do usługi Azure Log Analytics, Kafelki w rozwiązaniu nie są wypełniane przy użyciu informacje o monitorowaniu.
+Należy zwrócić uwagę na to, czy w przypadku niektórych metryk lub dzienników nie są przesyłane strumieniowo do usługi Azure Monitor, Kafelki w rozwiązaniu nie są wypełniane przy użyciu informacje o monitorowaniu.
 
 ### <a name="azure-sql-database-and-elastic-pool-view"></a>Usługa Azure SQL Database i widok puli elastycznej
 
@@ -302,6 +291,6 @@ W trakcie można używać bezpłatnie rozwiązanie ma zastosowanie użycie dane 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [wyszukiwań w dziennikach](../log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
+- Użyj [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Azure Monitor, aby wyświetlić szczegółowe dane usługi Azure SQL.
 - [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Pokazywanie danych Azure SQL.
 - [Tworzenie alertów](../platform/alerts-overview.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.

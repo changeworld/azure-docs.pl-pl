@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 607c18a67f7acc13ffe4d5c14131f20a2f94e8d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891022"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Netop Portal
 
@@ -128,7 +128,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Netop Por
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    d. Pozostaw pole **Przestrzeń nazw** puste.
+    c. W **Namespace** polu tekstowym wpisz https://secure.netop.com.
 
     d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
@@ -154,7 +154,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Netop Por
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Netop Portal
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Netop Portal**, musisz wysłać pobrany **plik XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal do [zespołu pomocy technicznej aplikacji Netop Portal](mailto:casemanager@netop.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Netop Portal** stronie musisz pobrany **XML metadanych Federacji** i adres URL logowania w witrynie Azure portal. Postępuj zgodnie z instrukcjami w kroku 3 w dokumentacji [tutaj](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) do skonfigurowania portalu NetOp uwierzytelniania usługi Azure AD.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

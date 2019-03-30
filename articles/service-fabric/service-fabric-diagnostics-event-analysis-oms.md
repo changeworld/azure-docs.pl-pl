@@ -4,7 +4,7 @@ description: Więcej informacji na temat wizualizowanie i analizowanie zdarzeń 
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246920"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662163"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor
  Dzienniki platformy Azure Monitor zbiera i analizuje dane telemetryczne z aplikacji i usług w chmurze i udostępnia narzędzia do analizy ułatwiają maksymalne wykorzystanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania kwerend w dzienniki usługi Azure Monitor do uzyskiwania szczegółowych informacji i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:

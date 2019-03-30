@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0880ad2ab02fad574f5204741b0fa03e4ef0338
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109784"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648067"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ustaw niestandardową stronę główną dla opublikowanych aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -69,9 +69,10 @@ Aby zainstalować pakiet, wykonaj następujące kroki:
 
 1. Otwórz okno programu PowerShell standardowe, a następnie uruchom następujące polecenie:
 
-    ```
+    ```powershell
      Install-Module -Name AzureAD
     ```
+
     Jeśli używasz polecenia jako użytkownik inny niż administrator, należy użyć `-scope currentuser` opcji.
 2. Podczas instalacji należy wybrać **Y** zainstalować dwa pakiety z witryny Nuget.org. Wymagane są oba pakiety. 
 
@@ -81,20 +82,22 @@ Uzyskaj identyfikator obiektu aplikacji, a następnie wyszukaj aplikację przez 
 
 1. W tym samym oknie programu PowerShell Zaimportuj moduł programu Azure AD.
 
-    ```
+    ```powershell
     Import-Module AzureAD
     ```
 
 2. Zaloguj się do modułu usługi Azure AD jako administrator dzierżawy.
 
-    ```
+    ```powershell
     Connect-AzureAD
     ```
+
 3. Znajdź aplikację, w oparciu o jego adres URL strony głównej. Adres URL można znaleźć w portalu, przechodząc do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**. W tym przykładzie użyto *sharepoint iddemo*.
 
+    ```powershell
+    Get-AzureADApplication | Where-Object { $_.Homepage -like "sharepoint-iddemo" } | Format-List DisplayName, Homepage, ObjectID
     ```
-    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
-    ```
+
 4. Powinna pojawić się wynik podobny do pokazanego poniżej. Skopiuj identyfikator GUID obiektu, do użycia w następnej sekcji.
 
     ```
@@ -109,7 +112,7 @@ Utwórz adres URL strony głównej i aktualizowanie aplikacji przy użyciu tej w
 
 1. Upewnij się, ma poprawną aplikacją i Zastąp *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* z identyfikator obiektu, który został skopiowany w poprzedniej sekcji.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
@@ -117,23 +120,25 @@ Utwórz adres URL strony głównej i aktualizowanie aplikacji przy użyciu tej w
 
 2. Utwórz obiekt pusta aplikacja do przechowywania, które chcesz wprowadzić zmiany. Ta zmienna przechowuje wartości, które chcesz zaktualizować. Nic nie jest tworzone w tym kroku.
 
-    ```
+    ```powershell
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
 3. Ustaw adres URL strony głównej na żądaną wartość. Wartość musi być ścieżką poddomeny opublikowanej aplikacji. Na przykład, jeśli zmienisz adres URL strony głównej z `https://sharepoint-iddemo.msappproxy.net/` do `https://sharepoint-iddemo.msappproxy.net/hybrid/`, użytkownicy aplikacji przejść bezpośrednio do niestandardowej strony głównej.
 
-    ```
+    ```powershell
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
+
 4. Tworzenie aktualizacji przy użyciu GUID (identyfikator obiektu), który został skopiowany w "krok 1: Znajdź identyfikator obiektu aplikacji."
 
-    ```
+    ```powershell
     Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
+
 5. Aby upewnić się, że zmiana zakończyła się pomyślnie, należy ponownie uruchomić aplikację.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 

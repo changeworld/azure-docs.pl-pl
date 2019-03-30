@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 0d23509d4efb0385770811e004bb2599c3866847
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313348"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629356"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
@@ -33,7 +33,7 @@ Przed rozpoczęciem należy [Tworzenie konta magazynu](../../storage/common/stor
 
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
-Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 2147483647. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
+Aby archiwizowanie dzienników diagnostycznych przy użyciu dowolnej z poniższych metod, należy ustawić **ustawienie diagnostyczne** dla określonego zasobu. Ustawienie diagnostyczne zasobu definiuje kategorie dzienników i metryk dane wysyłane do miejsca docelowego (konto magazynu, obszaru nazw usługi Event Hubs lub obszar roboczy usługi Log Analytics). Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń w każdej kategorii dzienników i metryk — dane przechowywane na koncie magazynu. Jeśli zasady przechowywania jest ustawiony na wartość zero, zdarzenia dla tej kategorii dziennika są przechowywane przez czas nieokreślony (to znaczy powiedzieć nieskończoność). Zasady przechowywania, w przeciwnym razie może być dowolną liczbę dni z zakresu od 1 do 2147483647. [Możesz dowiedzieć się więcej o konfiguracji ustawień diagnostyki tutaj](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. 
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.

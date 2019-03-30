@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181558"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648439"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Tworzenie maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager 
 
@@ -30,7 +30,7 @@ W tym artykule opisano wiele maszyn wirtualnych i szablonów usługi Resource Ma
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Wieloma Maszynami wirtualnymi a Maszynami wirtualnymi na jednym szablonów usługi Resource Manager
-Istnieją dwa sposoby tworzenia maszyn wirtualnych w usłudze DevTest Labs przy użyciu szablonu usługi Resource Manager: aprowizowanie zasobów Microsoft.DevTestLab/labs/virtualmachines lub aprowizowanie zasobów Microsoft.Commpute/virtualmachines. Każda jest używane w różnych scenariuszach i wymaga różnych uprawnień.
+Istnieją dwa sposoby tworzenia maszyn wirtualnych w usłudze DevTest Labs przy użyciu szablonu usługi Resource Manager: aprowizowanie zasobów Microsoft.DevTestLab/labs/virtualmachines lub aprowizowanie zasobów Microsoft.Compute/virtualmachines. Każda jest używane w różnych scenariuszach i wymaga różnych uprawnień.
 
 - Szablony usługi Resource Manager, korzystających z typu zasobu Microsoft.DevTestLab/labs/virtualmachines (ponieważ nie zadeklarowano we właściwości "resource" w szablonie) laboratorium poszczególne maszyny wirtualne można aprowizować. Każda maszyna wirtualna następnie jest wyświetlany jako pojedynczy element na liście maszyn wirtualnych laboratorium:
 

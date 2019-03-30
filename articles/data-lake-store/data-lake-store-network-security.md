@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 362129b4ccd0e46b6ffc682e7232c62c196ef334
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772912"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652133"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integracja z siecią wirtualną w usłudze Azure Data Lake Storage Gen1
 
@@ -75,7 +75,7 @@ Dostępne opcje to między innymi:
 
 - Klastry usługi HDInsight utworzone przed udostępnieniem integracji z siecią wirtualną w usłudze Data Lake Storage Gen1 należy utworzyć ponownie, aby umożliwić obsługę tej nowej funkcji.
  
-- Gdy utworzysz nowy klaster usługi HDInsight i wybierzesz konto usługi Data Lake Storage Gen1 z włączoną funkcją integracji z siecią wirtualną, proces zakończy się niepowodzeniem. Należy najpierw wyłączyć regułę sieci wirtualnej. Możesz też wybrać opcję **Zezwalaj na dostęp ze wszystkich sieci i usług** w bloku **Zapory i sieci wirtualne** na koncie usługi Data Lake Storage. Następnie utwórz klaster usługi HDInsight i na koniec ponownie włącz regułę sieci wirtualnej lub wyczyść zaznaczenie opcji **Zezwalaj na dostęp ze wszystkich sieci i usług**. Zobacz sekcję [Wyjątki](##Exceptions), aby uzyskać więcej informacji.
+- Gdy utworzysz nowy klaster usługi HDInsight i wybierzesz konto usługi Data Lake Storage Gen1 z włączoną funkcją integracji z siecią wirtualną, proces zakończy się niepowodzeniem. Należy najpierw wyłączyć regułę sieci wirtualnej. Możesz też wybrać opcję **Zezwalaj na dostęp ze wszystkich sieci i usług** w bloku **Zapory i sieci wirtualne** na koncie usługi Data Lake Storage. Następnie utwórz klaster usługi HDInsight i na koniec ponownie włącz regułę sieci wirtualnej lub wyczyść zaznaczenie opcji **Zezwalaj na dostęp ze wszystkich sieci i usług**. Zobacz sekcję [Wyjątki](#exceptions), aby uzyskać więcej informacji.
 
 - Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 nie działa z [tożsamościami zarządzanymi zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   

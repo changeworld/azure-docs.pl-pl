@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2c29d9860f1c8fc4f0f6d9f4d84c06e8ade8dee5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286979"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629477"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji HoloLens Unity, która używa kotwic przestrzenne platformy Azure
 
@@ -35,7 +35,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 
 - Potrzebny jest komputer Windows, na którym <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> lub nowszej i <a href="https://www.visualstudio.com/downloads/" target="_blank">programu Visual Studio 2017</a> lub nowszy. Instalację programu Visual Studio musi zawierać **programowania na platformę uniwersalną Windows** obciążenia. Należy również zainstalować <a href="https://git-scm.com/download/win" target="_blank">Git dla Windows</a>.
-- Potrzebujesz urządzenia HoloLens, na którym [tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) włączone. [Windows 10 października 2018 Update](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (znany także jako RS5) musi być zainstalowany na urządzeniu. Aby uaktualnić do najnowszej wersji na HoloLens, otwórz **ustawienia** aplikację, przejdź do **aktualizacja i zabezpieczenia**, a następnie wybierz pozycję **sprawdzać dostępność aktualizacji**.
+- Potrzebujesz urządzenia HoloLens, na którym [tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) włączone. [Windows 10 października 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (znany także jako RS5) musi być zainstalowany na urządzeniu. Aby uaktualnić do najnowszej wersji na HoloLens, otwórz **ustawienia** aplikację, przejdź do **aktualizacja i zabezpieczenia**, a następnie wybierz pozycję **sprawdzać dostępność aktualizacji**.
 - W aplikacji, musisz włączyć **SpatialPerception** możliwości. To ustawienie znajduje się w **ustawieniach kompilacji** > **ustawienia odtwarzacza** > **ustawień publikowania**  >   **Możliwości**.
 - W aplikacji, musisz włączyć **obsługiwane rzeczywistości wirtualnej** z **zestawu SDK systemu Windows mieszane mogą stać się rzeczywistością**. To ustawienie znajduje się w **ustawieniach kompilacji** > **ustawienia odtwarzacza** > **ustawienia XR**.
 

@@ -4,17 +4,21 @@ description: Zawiera informacje dotyczące uaktualnień dla urządzenia w usłud
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/29/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: f9f2ef25a2054d92cdcc3ab33ea9234883e352d6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7cd44318716200d665ece9ffecc45225bdfb85eb
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484512"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648677"
 ---
 # <a name="collector-appliance-updates"></a>Aktualizacje urządzenia modułu zbierającego
+
+Ten artykuł zawiera podsumowanie uaktualnienia informacji dla urządzenia modułu zbierającego w [usługi Azure Migrate](migrate-overview.md).
+
+Azure Migrate Collector to urządzenie uproszczone, które służy do odnajdywania w lokalnym środowisku vCenter do celów oceny przed migracją na platformę Azure. [Dowiedz się więcej](concepts-collector.md).
 
 ## <a name="how-to-upgrade-the-appliance"></a>Jak uaktualnić urządzenie
 
@@ -33,11 +37,19 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA p
 
 ## <a name="collector-update-release-history"></a>Historia wersji aktualizacji modułu zbierającego
 
-Ten artykuł zawiera podsumowanie uaktualnienia informacji dla urządzenia modułu zbierającego w [usługi Azure Migrate](migrate-overview.md).
-
-Azure Migrate Collector to urządzenie uproszczone, które służy do odnajdywania w lokalnym środowisku vCenter do celów oceny przed migracją na platformę Azure. [Dowiedz się więcej](concepts-collector.md).
-
 ### <a name="continuous-discovery-upgrade-versions"></a>Ciągłe odnajdywania: Uaktualnienie wersji
+
+#### <a name="version-101014-released-on-03292019"></a>Wersja 1.0.10.14 (wydane 2019-03/29)
+
+Zawiera kilka ulepszeń interfejsu użytkownika.
+
+Wartości dla uaktualnienie mieszania [pakietu 1.0.10.14](https://aka.ms/migrate/col/upgrade_10_14)
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 846b1eb29ef2806bcf388d10519d78e6
+SHA1 | 6243239fa49c6b3f5305f77e9fd4426a392d33a0
+SHA256 | fb058205c945a83cc4a31842b9377428ff79b08247f3fb8bb4ff30c125aa47ad
 
 #### <a name="version-101012-released-on-03132019"></a>Wersja 1.0.10.12 (wydane 03/13/2019 r)
 

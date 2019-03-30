@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872657"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648850"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Przeglądanie i pobieranie swoje użycie platformy Azure oraz opłaty
 
@@ -28,7 +28,7 @@ Jeśli jesteś klientem z umową EA lub mieć [umowy klienta Microsoft](#check-y
 
 Tylko niektóre role mają uprawnień do uzyskania informacji o użycie platformy Azure, takich jak konta administratora lub administratora przedsiębiorstwa. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
-Jeśli masz [umowy klienta Microsoft](#Check-your-access-to-a-Microsoft-Customer-Agreement), musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury manager, aby wyświetlać swoje użycie platformy Azure i opłaty. Aby dowiedzieć się więcej o rolach rozliczeń dla umowy klienta firmy Microsoft, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Jeśli masz [umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer-agreement), musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury manager, aby wyświetlać swoje użycie platformy Azure i opłaty. Aby dowiedzieć się więcej o rolach rozliczeń dla umowy klienta firmy Microsoft, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-usage-from-the-account-center-csv"></a>Pobierz dane użycia z Centrum kont (.csv)
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894125"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648354"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Skonfiguruj zarządzanie potencjalnymi klientami przy użyciu punktu końcowego HTTPS
 
@@ -48,8 +48,8 @@ Punkt końcowy HTTPS można użyć do obsługi portalu Azure Marketplace i AppSo
 
 7. Użyj jednej z następujących czynności do skonfigurowania **schemat JSON treści żądania**:
 
-   - Kopiuj [schematu JSON](#JSON-schema) na końcu tego artykułu w **schemat JSON treści żądania** pola tekstowego.
-   - Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**. W **wpisz lub wklej przykładowy ładunek JSON** Wklej w polu tekstowym [przykład kodu JSON](#JSON-example). Wybierz **gotowe** do utworzenia schematu.
+   - Kopiuj [schematu JSON](#json-schema) na końcu tego artykułu w **schemat JSON treści żądania** pola tekstowego.
+   - Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**. W **wpisz lub wklej przykładowy ładunek JSON** Wklej w polu tekstowym [przykład kodu JSON](#json-example). Wybierz **gotowe** do utworzenia schematu.
 
    >[!Note]
    >W tym momencie przepływu możesz połączyć się z systemem CRM lub skonfiguruj wiadomość e-mail z powiadomieniem.

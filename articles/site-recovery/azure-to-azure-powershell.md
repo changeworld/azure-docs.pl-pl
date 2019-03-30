@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869415"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652080"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell
 
@@ -163,7 +163,7 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 
 Obiekt sieci szkieletowej, w magazynie reprezentuje region platformy Azure. Do reprezentowania regionu platformy Azure, które chronione w magazynie maszyny wirtualne należą do tworzenia obiektu podstawowego sieci szkieletowej. W tym przykładzie w tym artykule chroniona maszyna wirtualna jest w regionie wschodnie stany USA.
 
-- Można utworzyć tylko jedną siecią szkieletową obiektu na region. 
+- Można utworzyć tylko jedną siecią szkieletową obiektu na region.
 - Jeśli zostało wcześniej włączone replikacji usługi Site Recovery dla maszyny Wirtualnej w witrynie Azure portal, Usługa Site Recovery automatycznie tworzy obiekt sieci szkieletowej. Jeśli istnieje obiekt sieci szkieletowej dla regionu, nie można utworzyć nowy.
 
 
@@ -588,7 +588,22 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
+## <a name="reprotect-and-failback-to-source-region"></a>Ponowne włączanie ochrony i powrotu po awarii do regionu źródłowego
+
 Po przejściu w tryb failover gdy jesteś gotowy wrócić do oryginalnego regionie, Uruchom replikację odwrotną dla chronionego elementu replikacji za pomocą polecenia cmdlet Update-AzureRmRecoveryServicesAsrProtectionDirection.
+
+```azurepowershell
+#Create Cache storage account for replication logs in the primary region
+$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+```
+
+```azurepowershell
+#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+-ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+```
+
+Po zakończeniu ponownego włączania ochrony, należy zainicjować trybu failover w zorientowanych w kierunku odwrotnym (zachodnie stany USA to wschodnie stany USA) i powrót po awarii do regionu źródłowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Widok [dokumentacja programu PowerShell odzyskiwania witryn Azure](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) Aby dowiedzieć się, jak można wykonywać inne zadania, takie jak tworzenie planów odzyskiwania i testowania pracy w trybie failover planów odzyskiwania za pomocą programu PowerShell.

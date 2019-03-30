@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 5606fb2f01a79a517279809d6da21ec865ee8b0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110141"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648337"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
 
@@ -165,7 +165,7 @@ Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonuj
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady opracowano na [scenariusza](#Scenario) opisanych w tym artykule.
+Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady opracowano na [scenariusza](#scenario) opisanych w tym artykule.
 
 1. Otwórz powłokę wiersza polecenia i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji. Jeśli nie masz jeszcze wiersza polecenia platformy Azure zainstalowany i skonfigurowany, wykonaj kroki opisane w [instalacji wiersza polecenia platformy Azure](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu i zaloguj się do subskrypcji platformy Azure, konto z `az-login` polecenia.
 

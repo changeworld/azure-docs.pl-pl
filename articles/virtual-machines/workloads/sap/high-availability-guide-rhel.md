@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 931727eff0de104ea57930abb1d3739fa086967a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b8f4fdb3ab3e1107a8753db14dcbb68c6d97a104
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226661"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652505"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux
 
@@ -231,9 +231,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <b>10.0.0.41 glust-1</b>
    <b>10.0.0.42 glust-2</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    </code></pre>
 
 1. **[A]**  Tworzenia udostępnionych katalogów
@@ -330,7 +330,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create vip_<b>NW1</b>_ASCS IPaddr2 \
-     ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
+     ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create nc_<b>NW1</b>_ASCS azure-lb port=620<b>00</b> \
@@ -355,7 +355,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[1]**  Zainstalować oprogramowanie SAP NetWeaver ASCS  
 
-   Zainstaluj oprogramowanie SAP NetWeaver ASCS jako główny urząd certyfikacji na pierwszym węźle za pomocą wirtualnego nazwę hosta, która mapuje do adresu IP z konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>nw1 ascs</b>, <b>10.0.0.11</b> i numer, który był używany przez sondy modułu równoważenia obciążenia, na przykład wystąpienia <b>00</b>.
+   Zainstaluj oprogramowanie SAP NetWeaver ASCS jako główny urząd certyfikacji na pierwszym węźle za pomocą wirtualnego nazwę hosta, która mapuje do adresu IP z konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>nw1 ascs</b>, <b>10.0.0.7</b> i numer, który był używany przez sondy modułu równoważenia obciążenia, na przykład wystąpienia <b>00</b>.
 
    Można użyć parametru sapinst SAPINST_REMOTE_ACCESS_USER zezwalający użytkownikowi użytkowników innych niż root nawiązać sapinst.
 
@@ -382,7 +382,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
     --group g-<b>NW1</b>_AERS
    
    sudo pcs resource create vip_<b>NW1</b>_AERS IPaddr2 \
-     ip=<b>10.0.0.12</b> cidr_netmask=<b>24</b> \
+     ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
     --group g-<b>NW1</b>_AERS
    
    sudo pcs resource create nc_<b>NW1</b>_AERS azure-lb port=621<b>02</b> \
@@ -411,7 +411,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[2]**  Zainstalować oprogramowanie SAP NetWeaver Wywołujących  
 
-   Zainstaluj oprogramowanie SAP NetWeaver Wywołujących jako główny urząd certyfikacji na drugi węzeł, za pomocą wirtualnego nazwę hosta, która mapuje do adresu IP z konfiguracji frontonu modułu równoważenia obciążenia dla Wywołujących, na przykład <b>nw1 aers</b>, <b>10.0.0.12</b> i numer, który był używany przez sondy modułu równoważenia obciążenia, na przykład wystąpienia <b>02</b>.
+   Zainstaluj oprogramowanie SAP NetWeaver Wywołujących jako główny urząd certyfikacji na drugi węzeł, za pomocą wirtualnego nazwę hosta, która mapuje do adresu IP z konfiguracji frontonu modułu równoważenia obciążenia dla Wywołujących, na przykład <b>nw1 aers</b>, <b>10.0.0.8</b> i numer, który był używany przez sondy modułu równoważenia obciążenia, na przykład wystąpienia <b>02</b>.
 
    Można użyć parametru sapinst SAPINST_REMOTE_ACCESS_USER zezwalający użytkownikowi użytkowników innych niż root nawiązać sapinst.
 
@@ -576,14 +576,11 @@ W poniższych krokach przyjęto założenie, zainstalować serwer aplikacji na s
    <b>10.0.0.41 glust-1</b>
    <b>10.0.0.42 glust-2</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
-   # IP address of all application servers
-   <b>10.0.0.8 nw1-di-0</b>
-   <b>10.0.0.7 nw1-di-1</b>
    </code></pre>
 
 1. Utwórz katalog sapmnt

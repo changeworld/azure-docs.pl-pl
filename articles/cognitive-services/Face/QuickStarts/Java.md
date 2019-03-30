@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b82f230c790f0615077cc96e83ece823713b0a73
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: c0c1b9c1e9afc84e9702f6c1897d372a017be868
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308982"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629895"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Java
 
@@ -30,11 +30,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-the-java-project"></a>Tworzenie projektu języka Java
 
-Utwórz nową aplikację wiersza polecenia języka Java w środowisku IDE i dodaj klasę **Main** z metodą **main**. Następnie pobierz następujące biblioteki globalne z repozytorium Maven do katalogu `lib` w swoim projekcie:
-* `org.apache.httpcomponents:httpclient:4.5.6`
-* `org.apache.httpcomponents:httpcore:4.4.10`
-* `org.json:json:20170516`
-* `commons-logging:commons-logging:1.1.2`
+1. Utwórz nową aplikację wiersza polecenia języka Java w środowisku IDE i dodaj klasę **Main** z metodą **main**.
+1. Zaimportuj poniższe biblioteki do projektu języka Java. Jeśli używasz programu Maven, współrzędne programu Maven są udostępniane w każdej bibliotece.
+   - [Klienta Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
+   - [Podstawowe Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
+   - [Biblioteka JSON](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+   - [Rejestrowanie Apache Commons](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons — rejestrowanie: commons — rejestrowanie: 1.1.2)
 
 ## <a name="add-face-detection-code"></a>Dodawanie kodu służącego do wykrywania twarzy
 
@@ -64,91 +65,95 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Dodawanie podstawowych pól
 
-Dodaj poniższe pola do klasy **Main**. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
+Zastąp **Main** klasy z następującym kodem. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
 
 Pole `faceAttributes` to po prostu lista atrybutów określonych typów. Będzie ono określać informacje dotyczące wykrytych twarzy, które mają zostać pobrane.
 
 ```Java
-// Replace <Subscription Key> with your valid subscription key.
-private static final String subscriptionKey = "<Subscription Key>";
+public class Main {
+    // Replace <Subscription Key> with your valid subscription key.
+    private static final String subscriptionKey = "<Subscription Key>";
 
-// NOTE: You must use the same region in your REST call as you used to
-// obtain your subscription keys. For example, if you obtained your
-// subscription keys from westus, replace "westcentralus" in the URL
-// below with "westus".
-//
-// Free trial subscription keys are generated in the "westus" region. If you
-// use a free trial subscription key, you shouldn't need to change this region.
-private static final String uriBase =
-    "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    // NOTE: You must use the same region in your REST call as you used to
+    // obtain your subscription keys. For example, if you obtained your
+    // subscription keys from westus, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the "westus" region. If you
+    // use a free trial subscription key, you shouldn't need to change this region.
+    private static final String uriBase =
+        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-private static final String imageWithFaces =
-    "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
+    private static final String imageWithFaces =
+        "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
 
-private static final String faceAttributes =
-    "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+    private static final String faceAttributes =
+        "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
 ### <a name="call-the-face-detection-rest-api"></a>Wywoływanie interfejsu API REST wykrywania twarzy
 
-Dodaj następującą metodę do metody **main**. Tworzy on wywołanie REST do interfejsu API rozpoznawania twarzy w celu wykrycia informacji o twarzy na obrazie zdalnym (ciąg `faceAttributes` określa, które atrybuty dotyczące twarzy mają zostać pobrane). Następnie zapisuje dane wyjściowe do ciągu JSON.
+Dodaj **głównego** metoda następującym kodem. Tworzy on wywołanie REST do interfejsu API rozpoznawania twarzy w celu wykrycia informacji o twarzy na obrazie zdalnym (ciąg `faceAttributes` określa, które atrybuty dotyczące twarzy mają zostać pobrane). Następnie zapisuje dane wyjściowe do ciągu JSON.
 
 ```Java
-HttpClient httpclient = HttpClientBuilder.create().build();
+    public static void main(String[] args) {
+        HttpClient httpclient = HttpClientBuilder.create().build();
 
-try
-{
-    URIBuilder builder = new URIBuilder(uriBase);
+        try
+        {
+            URIBuilder builder = new URIBuilder(uriBase);
 
-    // Request parameters. All of them are optional.
-    builder.setParameter("returnFaceId", "true");
-    builder.setParameter("returnFaceLandmarks", "false");
-    builder.setParameter("returnFaceAttributes", faceAttributes);
+            // Request parameters. All of them are optional.
+            builder.setParameter("returnFaceId", "true");
+            builder.setParameter("returnFaceLandmarks", "false");
+            builder.setParameter("returnFaceAttributes", faceAttributes);
 
-    // Prepare the URI for the REST API call.
-    URI uri = builder.build();
-    HttpPost request = new HttpPost(uri);
+            // Prepare the URI for the REST API call.
+            URI uri = builder.build();
+            HttpPost request = new HttpPost(uri);
 
-    // Request headers.
-    request.setHeader("Content-Type", "application/json");
-    request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            // Request headers.
+            request.setHeader("Content-Type", "application/json");
+            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-    // Request body.
-    StringEntity reqEntity = new StringEntity(imageWithFaces);
-    request.setEntity(reqEntity);
+            // Request body.
+            StringEntity reqEntity = new StringEntity(imageWithFaces);
+            request.setEntity(reqEntity);
 
-    // Execute the REST API call and get the response entity.
-    HttpResponse response = httpclient.execute(request);
-    HttpEntity entity = response.getEntity();
+            // Execute the REST API call and get the response entity.
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
 ```
 
 ### <a name="parse-the-json-response"></a>Analizowanie odpowiedzi w formacie JSON
 
-Bezpośrednio poniżej powyższego kodu dodaj następujący blok, który służy do konwertowania zwróconych danych JSON do bardziej czytelnego formatu przed wyświetleniem ich w konsoli. Na koniec zamknij blok try-catch.
+Bezpośrednio poniżej powyższego kodu dodaj następujący blok, który służy do konwertowania zwróconych danych JSON do bardziej czytelnego formatu przed wyświetleniem ich w konsoli. Na koniec zamknąć bloku try / catch **głównego** metody i **Main** klasy.
 
 ```Java
-    if (entity != null)
-    {
-        // Format and display the JSON response.
-        System.out.println("REST Response:\n");
+            if (entity != null)
+            {
+                // Format and display the JSON response.
+                System.out.println("REST Response:\n");
 
-        String jsonString = EntityUtils.toString(entity).trim();
-        if (jsonString.charAt(0) == '[') {
-            JSONArray jsonArray = new JSONArray(jsonString);
-            System.out.println(jsonArray.toString(2));
+                String jsonString = EntityUtils.toString(entity).trim();
+                if (jsonString.charAt(0) == '[') {
+                    JSONArray jsonArray = new JSONArray(jsonString);
+                    System.out.println(jsonArray.toString(2));
+                }
+                else if (jsonString.charAt(0) == '{') {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    System.out.println(jsonObject.toString(2));
+                } else {
+                    System.out.println(jsonString);
+                }
+            }
         }
-        else if (jsonString.charAt(0) == '{') {
-            JSONObject jsonObject = new JSONObject(jsonString);
-            System.out.println(jsonObject.toString(2));
-        } else {
-            System.out.println(jsonString);
+        catch (Exception e)
+        {
+            // Display error message.
+            System.out.println(e.getMessage());
         }
     }
-}
-catch (Exception e)
-{
-    // Display error message.
-    System.out.println(e.getMessage());
 }
 ```
 
@@ -246,7 +251,7 @@ Skompiluj kod i uruchom go. Odpowiedź oznaczająca powodzenie będzie zawierać
 }]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację konsolową Java, która korzysta z wywołań REST wraz z interfejsem API rozpoznawania twarzy platformy Azure do wykrywania twarzy na obrazie i zwrócenia ich atrybutów. Następnie dowiesz się, jak wykonać inne operacje za pomocą tych funkcji w aplikacji systemu Android.
 

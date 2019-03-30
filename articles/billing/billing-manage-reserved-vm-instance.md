@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: b37f198052ee927ea986d2a6046bfd93b6ee5d5e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0f6e0f3795e0e6d25f7443473c5911995597ca14
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399977"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648643"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
-Po możesz kupić rezerwację Azure, może być konieczne zastosowanie rezerwacji do innej subskrypcji, zmienić, kto może zarządzać rezerwacji lub zmienić zakres rezerwacji. Możesz również podzielić rezerwacji do dwóch rezerwacji do stosowania niektórych wystąpień, których używasz do innej subskrypcji.
+Po kupujesz rezerwacji dla platformy Azure może być konieczne zastosowanie rezerwacji do innej subskrypcji, zmienić, kto może zarządzać rezerwacji lub zmienić zakres rezerwacji. Możesz również podzielić rezerwacji do dwóch rezerwacji do stosowania niektórych wystąpień, których używasz do innej subskrypcji.
 
 Jeśli zakupiono Azure Reserved Virtual Machine Instances, możesz zmienić ustawienie optymalizacji dla rezerwacji. Rabat związany z rezerwacją można zastosować do maszyn wirtualnych w tej samej serii, lub możesz zarezerwować pojemnością centrum danych dla określonego rozmiaru maszyny Wirtualnej.
 
@@ -123,12 +123,20 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacji dla platformy Azure?](billing-save-compute-costs-reservations.md)
+
+Kup plan usługi:
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
+
+Kup plan oprogramowania:
+- [Zapłać z góry za plany oprogramowania Red Hat z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Prepay for SUSE software plans from Azure Reservations (Opłacanie planów oprogramowania SUSE z góry z poziomu usługi Azure Reservations)](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+Poznaj rabat w wysokości i użycia:
 - [Zrozumienie, jak jest stosowany rabat związany z rezerwacją maszyny Wirtualnej](billing-understand-vm-reservation-charges.md)
+- [Zrozumienie, jak jest stosowany rabat w wysokości Red Hat Enterprise Linux plan oprogramowania](../billing/billing-understand-rhel-reservation-charges.md)
 - [Zrozumienie, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise](../billing/billing-understand-suse-reservation-charges.md)
 - [Zrozumienie sposobu stosowania rabatów rezerwacji](billing-understand-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)

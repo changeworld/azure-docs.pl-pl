@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3821f6a2bad56b46bccbcca8830be09ad1e44c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579754"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648269"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe skalowania automatycznego za pomocą skalowania maszyn wirtualnych
 
@@ -98,6 +98,7 @@ Pierwszą rzeczą, jaką należy wykonać jest utworzyć konto usługi Azure Aut
 * [Uwierzytelnianie elementów Runbook przy użyciu konta Uruchom jako platformy Azure](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importowanie elementów runbook usługi Azure Automation pionowy skalowania w ramach subskrypcji
+
 Elementy runbook konieczne skalowanie w pionie Twoje zestawy skalowania maszyn wirtualnych są już opublikowany w galerii elementów Runbook automatyzacji Azure. Aby zaimportować je do subskrypcji postępuj zgodnie z instrukcjami w tym artykule:
 
 * [Galerie elementów Runbook i modułów dla usługi Azure Automation](../automation/automation-runbook-gallery.md)
@@ -111,6 +112,7 @@ Elementy runbook, które muszą zostać zaimportowane, są wyświetlane. Wybierz
 ![Galeria elementów Runbook][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook do elementu runbook
+
 Po zaimportowaniu elementów runbook, Dodaj element webhook do elementu runbook, dzięki czemu mogą być wyzwalane przez alert z zestawu skalowania maszyn wirtualnych. W tym artykule opisano szczegóły tworzenia elementu webhook dla elementu Runbook:
 
 * [Usługa Azure Automation elementów webhook](../automation/automation-webhooks.md)
@@ -121,9 +123,10 @@ Po zaimportowaniu elementów runbook, Dodaj element webhook do elementu runbook,
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Dodawanie alertu do zestawu skalowania maszyn wirtualnych
+
 Poniżej jest skrypt programu PowerShell, który pokazuje, jak dodać alert do skalowania maszyn wirtualnych z zestawu. Zapoznaj się z następującym artykułem, aby uzyskać nazwę metryki wyzwolenie alertu na: [Usługa Azure Monitor autoscaling często używane metryki](../azure-monitor/platform/autoscale-common-metrics.md).
 
-```
+```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
@@ -160,6 +163,7 @@ Aby uzyskać więcej informacji na temat tworzenia alertów zobacz następujące
 * [Przykłady szybkiego startu usługi Azure Monitor międzyplatformowego interfejsu wiersza polecenia](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Podsumowanie
+
 W tym artykule przedstawiono proste przykłady skalowanie pionowe. Przy użyciu tych bloków konstrukcyjnych — konto usługi Automation, elementami runbook, elementy webhook, alerty — możesz łączyć z wielu różnych zdarzeń za pomocą dostosowanego zestawu działań.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

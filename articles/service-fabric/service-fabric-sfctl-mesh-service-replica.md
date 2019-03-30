@@ -4,7 +4,7 @@ description: W tym artykule opisano poleceń interfejsu wiersza polecenia usług
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: bcf4b8d013783a9fbdb62bcdb8737680bfce7640
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285088"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662435"
 ---
-# <a name="sfctl-mesh-service-replica"></a>Interfejs sfctl siatki z replik usługi
+# <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 Pobierz szczegóły repliki i listy replik danej usługi, w zasobie aplikacji.
 
 ## <a name="commands"></a>Polecenia
@@ -29,7 +29,7 @@ Pobierz szczegóły repliki i listy replik danej usługi, w zasobie aplikacji.
 |Polecenie|Opis|
 | --- | --- |
 | list | Wyświetla listę wszystkich replik usług. |
-| Pokaż | Pobiera dany repliki usługi aplikacji. |
+| pokaż | Pobiera dany repliki usługi aplikacji. |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>Interfejs sfctl siatki replik usługi listy
 Wyświetla listę wszystkich replik usług.
@@ -47,8 +47,8 @@ Pobiera informacje o wszystkich replik usług. Informacje zawierają opis i inne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -70,8 +70,8 @@ Pobiera informacje o repliki usługi o podanej nazwie. Informacje zawierają opi
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

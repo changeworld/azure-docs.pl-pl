@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003245"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648560"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -43,15 +43,15 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * Usunięto usterkę występującą podczas PartitionKey wyznaczania wartości skrótu w wersji 2.
 
-### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 * Dodano obsługę złożone indeksów.
 * Usunięto usterkę występującą w Menedżerze globalny punkt końcowy, aby wymusić odświeżenie.
 * Usunięto usterkę występującą dla wykonuje operację UPSERT z warunków wstępnych w trybie bezpośredniego.
 
-### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 * Usunięto usterkę występującą w pamięci podręcznej adres bramy.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0

@@ -10,14 +10,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: f64a76fa6063ebc5681b546b53fe9d6ca7bc5037
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400394"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648660"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -77,7 +77,7 @@ Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony kom
 Zamiast przechowywać szablonów usługi Resource Manager na komputerze lokalnym, użytkownik może chcieć przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Lub można przechowywać na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji.
 
 Aby wdrożyć szablon zewnętrznego, użyj **identyfikator uri szablonu** parametru. Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z serwisu GitHub.
-   
+
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
@@ -102,7 +102,12 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
 
-Jeśli wdrożenie zakończy się niepowodzeniem, można automatycznie wdrożyć ponownie wcześniej pomyślnego wdrażania z historii wdrożenia. Aby określić ponowne wdrożenie, użyj `--rollback-on-error` parametr w poleceniu wdrożenia.
+Ta funkcja jest nazywana *wycofywania w przypadku błędu*. Jeśli wdrożenie zakończy się niepowodzeniem, można automatycznie wdrożyć ponownie wcześniej pomyślnego wdrażania z historii wdrożenia. Aby określić ponowne wdrożenie, użyj `--rollback-on-error` parametr w poleceniu wdrożenia. Ta funkcja jest przydatna, jeśli zawierają wszystko, znanego, dobrego stanu dla danego wdrożenia infrastruktury i chcesz to przywrócenie. Kilka ograniczeń i ostrzeżenia:
+
+- Ponownego wdrożenia komputera jest uruchamiany, dokładnie tak, jak została poprzednio uruchomiona z tymi samymi parametrami. Nie można zmienić parametry.
+- Poprzedniego wdrożenia zostanie uruchomiony z użyciem [w trybie](./deployment-modes.md#complete-mode). Zostaną usunięte wszystkie zasoby, które nie są uwzględnione w poprzednim wdrożeniu, a wszystkie konfiguracje zasobów są ustawione do poprzedniego stanu. Upewnij się, w pełni rozumiesz [tryby wdrażania](./deployment-modes.md).
+- Ponownego wdrożenia komputera ma wpływ tylko na zasoby, nie wpływają na zmiany danych.
+- Ta funkcja jest obsługiwana tylko we wdrożeniach grupy zasobów, nie wdrożeń poziomu subskrypcji. Aby uzyskać więcej informacji na temat wdrażania poziomu subskrypcji zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](./deploy-to-subscription.md).
 
 Aby użyć tej opcji, wdrożeń muszą mieć unikatowe nazwy, dzięki czemu można je zidentyfikować w historii. Jeśli nie masz unikatowe nazwy bieżącego wdrożenia nie powiodło się może spowodować zastąpienie wcześniej pomyślnego wdrożenia w historii. Tej opcji można używać tylko w przypadku wdrożeń poziomu głównego. Wdrożenia z szablonów zagnieżdżonych nie są dostępne dla ponownego wdrażania.
 
@@ -261,9 +266,10 @@ Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzi
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przykłady w niniejszym artykule wdrażanie zasobów w grupie zasobów w subskrypcji domyślnej. Aby użyć innej subskrypcji, zobacz [Zarządzanie wieloma subskrypcjami platformy Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
-* Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Aby uzyskać informacje o wdrażaniu szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
-* Aby bezpiecznie wdrożyć usługę do więcej niż jednym regionie, zobacz [Azure Deployment Manager](deployment-manager-overview.md).
+
+- Przykłady w niniejszym artykule wdrażanie zasobów w grupie zasobów w subskrypcji domyślnej. Aby użyć innej subskrypcji, zobacz [Zarządzanie wieloma subskrypcjami platformy Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
+- Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
+- Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- Aby uzyskać informacje o wdrażaniu szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
+- Aby bezpiecznie wdrożyć usługę do więcej niż jednym regionie, zobacz [Azure Deployment Manager](deployment-manager-overview.md).

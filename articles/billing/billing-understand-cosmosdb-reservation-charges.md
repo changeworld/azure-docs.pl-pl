@@ -6,15 +6,15 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: f6549710f90c8d59ed443ab9ae1a302a2d8278d5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899523"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648541"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Po możesz kupić pojemność usługi Azure Cosmos DB, zarezerwowane, rabat zwi�
 
 Rabat związany z rezerwacją jest stosowany do [aprowizowanej przepływności](../cosmos-db/request-units.md) pod względem jednostki żądania na sekundę (RU/s) na podstawie godzina po godzinie. Dla zasobów usługi Azure Cosmos DB, które nie korzystają z całą godzinę rabat związany z rezerwacją jest automatycznie stosowany do innych zasobów usługi Cosmos DB, które odpowiada atrybuty rezerwacji. Rabat można zastosować do zasobów usługi Azure Cosmos DB, które są uruchomione jednocześnie. Jeśli nie masz zasoby usługi Cosmos DB, uruchomione przez całą godzinę, które spełniają atrybuty rezerwacji nie uzyskasz pełni czerpać korzyści płynące z rezerwacją dla danej godziny.
 
-Rabaty są organizowane w warstwy. Rezerwacji z wyższej jednostki żądań zapewnia wyższe rabaty. 
+Rabaty są organizowane w warstwy. Rezerwacji z wyższej jednostki żądań zapewnia wyższe rabaty.
 
 Zakup rezerwacji będą dotyczyć rabaty we wszystkich regionach współczynnik odpowiednikiem ceny regionalne na żądanie. Aby rezerwacji współczynniki rabatu w każdym regionie, zobacz [rabat związany z rezerwacją regionu](#reservation-discount-per-region) dalszej części tego artykułu.
 
@@ -71,15 +71,15 @@ Rabat związany z rezerwacją jest stosowany do kosztów przepustowości godzina
 Należy wziąć pod uwagę następujące wymagania dla rezerwacji:
 
 * Wymagana przepustowość: 50 000 jednostek RU/s  
-* Regiony używane: 2 
+* Regiony używane: 2
 
-W takich przypadkach Twoje łączne opłaty na żądanie dotyczą 500 ilość miernika 100 jednostek RU/s w tych dwóch regionach. Całkowite zużycie RU/s jest 100 000 na godzinę. 
+W takich przypadkach Twoje łączne opłaty na żądanie dotyczą 500 ilość miernika 100 jednostek RU/s w tych dwóch regionach. Całkowite zużycie RU/s jest 100 000 na godzinę.
 
 **Scenariusz 1**
 
 Na przykład załóżmy, że wymagane wdrożenia usługi Azure Cosmos DB w regionach północno-środkowych stanów USA i zachodnie stany USA. W każdym regionie istnieje zużycia przepustowości z 50 000 jednostek RU/s. Zakup rezerwacji 100 000 jednostek RU/s będzie całkowicie saldo opłat na żądanie.
 
-Rabat, który obejmuje rezerwacja jest obliczana jako: zużycie przepustowości * reservation_discount_ratio_for_that_region. W regionach północno-środkowych stanów USA i zachodnie stany USA współczynnik rabat w wysokości rezerwacji jest 1. Dlatego całkowita rabatem jednostek RU/s są 100 000. Ta wartość jest obliczana jako: 50 000 * 1 + 50 000 * 1 = 100 000 jednostek RU/s. Nie trzeba płacić zwykłe stawki żadnych dodatkowych kosztów. 
+Rabat, który obejmuje rezerwacja jest obliczana jako: zużycie przepustowości * reservation_discount_ratio_for_that_region. W regionach północno-środkowych stanów USA i zachodnie stany USA współczynnik rabat w wysokości rezerwacji jest 1. Dlatego całkowita rabatem jednostek RU/s są 100 000. Ta wartość jest obliczana jako: 50 000 * 1 + 50 000 * 1 = 100 000 jednostek RU/s. Nie trzeba płacić zwykłe stawki żadnych dodatkowych kosztów.
 
 |Opis elementu miernika | Region |Użycie przepływność (RU/s) |Rabat związany z rezerwacją zastosowane do jednostek RU/s |
 |---------|---------|---------|---------|
@@ -97,25 +97,24 @@ Na przykład załóżmy, że wymagane wdrożenia usługi Azure Cosmos DB w regio
 
 Użycie jednostek 50 000 w regionie Australia Środkowa 2 odnosi się do jednostek RU/s 75,000 płatne użycie (lub użycie znormalizowanych). Ta wartość jest obliczana jako: zużycie przepustowości * reservation_discount_ratio_for_that_region. Obliczenie jest równa 75,000 jednostek RU/s użycie płatnych lub znormalizowana. Ta wartość jest obliczana jako: 50 000 * 1.5 = 75 000 jednostek RU/s.
 
-100 000 jednostek RU/s zakupu rezerwacji spowoduje przesunięcie 75,000 jednostek RU/s w Australia Środkowa 2. Pozostawia 25 000 jednostek RU/s do regionu Francja Południowa. Z pozostałych 25 000 jednostek RU/s rabat rezerwacji 15,384 jednostek RU/s jest stosowany do regionu Francja Południowa. Wartość rabatu jest obliczana jako: 25 000 / 1.625 = 15,384 jednostek RU/s. Pozostałe 34,616 jednostek RU/s w regionie, Francja Południowa są naliczane według normalnych stawek za użycie zgodnie z rzeczywistym użyciem. 
+100 000 jednostek RU/s zakupu rezerwacji spowoduje przesunięcie 75,000 jednostek RU/s w Australia Środkowa 2. Pozostawia 25 000 jednostek RU/s do regionu Francja Południowa. Z pozostałych 25 000 jednostek RU/s rabat rezerwacji 15,384 jednostek RU/s jest stosowany do regionu Francja Południowa. Wartość rabatu jest obliczana jako: 25 000 / 1.625 = 15,384 jednostek RU/s. Pozostałe 34,616 jednostek RU/s w regionie, Francja Południowa są naliczane według normalnych stawek za użycie zgodnie z rzeczywistym użyciem.
 
 Systemu rozliczeń platformy Azure spowoduje przypisanie z rezerwacji dotyczącymi rozliczeń korzyścią dla pierwszego wystąpienia, który jest przetwarzany i uwzględnia konfiguracji rezerwacji. Na przykład jest Australia Środkowa 2 w tym przypadku.
 
 Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raporty użycia, zobacz [użycia rezerwacji Understand Azure](../billing/billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-
-Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
-
-* [Co to są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)  
-* [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)  
-* [Zarządzanie rezerwacjami platformy Azure](../billing/billing-manage-reserved-vm-instance.md)  
-* [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../billing/billing-understand-reserved-instance-usage.md)  
-* [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)  
-* [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)
-
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+
+* [Co to są rezerwacji dla platformy Azure](../billing/billing-save-compute-costs-reservations.md)  
+* [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)  
+* [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)  
+* [Zarządzanie rezerwacji dla platformy Azure](../billing/billing-manage-reserved-vm-instance.md)  
+* [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../billing/billing-understand-reserved-instance-usage.md)  
+* [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)

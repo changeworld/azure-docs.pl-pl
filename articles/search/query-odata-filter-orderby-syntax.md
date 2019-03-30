@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578411"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648507"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Składnia wyrażenia OData, filtry i klauzule w klauzuli order by w usłudze Azure Search
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - `search.in` Funkcja sprawdza, czy dany ciąg znaków jest równa jeden z danej listy wartości. Jego można również w dowolnych lub wszystkich porównać jedną wartość pola kolekcji ciągu z danej listy wartości. Równość pola i każdej wartości na liście jest określana w czasie wielkość liter, taki sam sposób jak w przypadku `eq` operatora. W związku z tym, takie jak wyrażenie `search.in(myfield, 'a, b, c')` jest odpowiednikiem `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, chyba że `search.in` przyniesie znacznie lepszej wydajności. 
 
-  Pierwszy parametr `search.in` funkcja jest odwołanie do pola ciągu (lub zmiennej zakresu nad polem ciągu kolekcji, w przypadku których `search.in` jest używana wewnątrz `any` lub `all` wyrażenia). Drugi parametr jest ciąg zawierający listę wartości rozdzielonych spacjami i/lub przecinkami. Jeśli musisz użyć separatory niż spacje i przecinki, ponieważ wartości obejmują te znaki, które można określić opcjonalny trzeci parametr `search.in`. 
-
-  To trzeci parametr jest to ciąg, gdzie każdy znak w ciągu lub podzbiór ten ciąg jest traktowany jako separator podczas analizowania listy wartości w drugim parametrze.
+   Pierwszy parametr `search.in` funkcja jest odwołanie do pola ciągu (lub zmiennej zakresu nad polem ciągu kolekcji, w przypadku których `search.in` jest używana wewnątrz `any` lub `all` wyrażenia). 
+  
+   Drugi parametr jest ciąg zawierający listę wartości rozdzielonych spacjami i/lub przecinkami. 
+  
+   Trzeci parametr jest ciągiem, gdzie każdy znak w ciągu lub podzbiór ten ciąg jest traktowany jako separator podczas analizowania listy wartości w drugim parametrze. Jeśli musisz użyć separatory niż spacje i przecinki, ponieważ wartości obejmują te znaki, które można określić opcjonalny trzeci parametr `search.in`. 
 
   > [!NOTE]   
   > Niektóre scenariusze wymagają porównanie pola na dużej liczbie wartości stałych. Na przykład implementacji dostosowanie do zabezpieczeń przy użyciu filtrów może wymagać porównanie pola Identyfikator dokumentu z listą identyfikatorów, do których użytkownik zgłaszający żądanie ma uprawnienia odczytu. W scenariuszach, takich jak to zdecydowanie zaleca się przy użyciu `search.in` zamiast bardziej skomplikowanych rozłączenia wyrażeń równości. Na przykład użyć `search.in(Id, '123, 456, ...')` zamiast `Id eq 123 or Id eq 456 or ....`. 
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Znajdź wszystkie hotele o nazwie równa "motel Roach" lub "Budżetu hotel"). Zwroty zawierają spacje, który jest domyślnym ogranicznikiem. Aby określić zastąpienie ogranicznik, należy dołączyć nowy ogranicznik w pojedynczym cudzysłowie jako część wyrażenia filtru:  
+Znajdź wszystkie hotele o nazwie równa "motel Roach" lub "Budżetu hotel"). Zwroty zawierają spacje, który jest domyślnym ogranicznikiem. Możesz specicfy alternatywnych ogranicznika w pojedynczym cudzysłowie jako trzeci parametr ciągu:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -225,7 +227,7 @@ Znajdź wszystkie hotele za pomocą znacznika "sieć Wi-Fi" lub "puli":
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
-Znajdź dopasowanie w wielu tagów "podgrzewanego ręczników stojakami" ani uwzględniony hairdryer. Pamiętaj, aby określić alternatywne ogranicznik, gdy miejsca na domyślnym ogranicznikiem jest niedziałającym. 
+Znajdź dopasowanie fraz w obrębie kolekcji, takie jak "podgrzewanego ręczników stojakami" lub uwzględnione hairdryer w znacznikach. 
 
 ```
 $filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))

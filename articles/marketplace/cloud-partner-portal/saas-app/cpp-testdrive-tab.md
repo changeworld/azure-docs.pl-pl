@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993107"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649037"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta wersję testową aplikacji SaaS
 
@@ -53,7 +53,7 @@ Istnieją cztery typy wersji testowych, każdy na podstawie typu produktu, scena
 |     Azure Resource Manager               |    Usługi Azure Resource Manager testowej jest szablon wdrożenia, który zawiera wszystkie zasoby platformy Azure, wchodzące w skład rozwiązania tworzona przez wydawcę. Produkty, które Dopasuj ten typ wersji testowej są te, które korzystać tylko zasobów platformy Azure.               |       [Wersja testowa usługi Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
 |       Hostowany             |       Testowej hostowanych eliminuje złożoność konfiguracji w ramach hostingu firmy Microsoft i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji.             |         [Hostowana wersja testowa](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      Aplikacja logiki              |       Wersję testową aplikacji logiki jest szablon wdrożenia, który jest przeznaczony do uwzględniający wszystkie architektury złożonych rozwiązań. Wszystkie aplikacje Dynamics lub niestandardowych produktów należy używać tego rodzaju wersji testowej.            |      [Wersja testowa aplikacji logiki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
-|       Power BI             |         Dysk Test usługi Power BI składa się z osadzonych łącze do niestandardowej pulpitu nawigacyjnego. Produkt, który chce pokazują, że Interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej. Wszystko, czego potrzebujesz do przekazania jest osadzony adres URL do usługi Power BI.          |        [Power BI Test Drive](#Power-BI-test-drive)           |
+|       Power BI             |         Dysk Test usługi Power BI składa się z osadzonych łącze do niestandardowej pulpitu nawigacyjnego. Produkt, który chce pokazują, że Interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej. Wszystko, czego potrzebujesz do przekazania jest osadzony adres URL do usługi Power BI.          |        [Power BI Test Drive](#power-bi-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Wersja testowa programu Power BI
 
