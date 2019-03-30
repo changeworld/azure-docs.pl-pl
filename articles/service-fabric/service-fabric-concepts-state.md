@@ -4,7 +4,7 @@ description: Dowiedz się, jak Definiowanie stanu usługi i zarządzanie usługa
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 48345be959bb9bebf7c30fa71de91b7881863d66
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054961"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670357"
 ---
 # <a name="service-state"></a>Stan usługi
 **Stan usługi** odnosi się do w pamięci lub na dysku dane usługi wymaga funkcji. Obejmuje, na przykład struktury danych i zmiennych składowych, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana może to również obejmować pliki lub inne zasoby, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.

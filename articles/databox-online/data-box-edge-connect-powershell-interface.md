@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 9b0e94deda205497cda4ebf383f302c6c3bb896a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a3096729b2430adf0fd884fc03e3b051b17f5b51
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403599"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660464"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem usługi Azure Data Box Edge za pośrednictwem programu Windows PowerShell
 
@@ -43,6 +43,20 @@ W tym artykule opisano następujące procedury:
 ## <a name="upload-certificate"></a>Przekazywanie certyfikatu
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
+
+Można również przekazywać certyfikaty usługi IoT Edge w celu włączenia bezpiecznego połączenia między urządzeniem usługi IoT Edge i podrzędnym urządzenia, które może z nim połączyć. Występują trzy certyfikaty usługi IoT Edge (*PEM* format), musisz zainstalować:
+
+- Certyfikat głównego urzędu certyfikacji lub właściciela urzędu certyfikacji
+- Certyfikat dostępu Warunkowego do urządzeń
+- Klucza certyfikatu urządzenia
+
+Poniższy przykład przedstawia sposób użycia tego polecenia cmdlet, aby zainstalować certyfikaty z usługi IoT Edge:
+
+```
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+```
+
+Aby uzyskać więcej informacji na temat certyfikatów, przejdź do [certyfikaty usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [instalowanie certyfikatów na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Wyświetl informacje na urządzeniu
  

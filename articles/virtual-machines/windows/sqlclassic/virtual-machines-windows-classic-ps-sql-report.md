@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445640"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650278"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ Certyfikat z podpisem własnym został utworzony na maszynie Wirtualnej, gdy mas
    4. Wybierz **komputera lokalnego** zarządzać, a następnie kliknij przycisk **Zakończ**.
    5. Kliknij przycisk **Ok** a następnie rozwiń węzeł **certyfikaty - osobistych** węzłów, a następnie kliknij przycisk **certyfikaty**. Certyfikat jest nazwana na nazwę DNS maszyny Wirtualnej i kończy się **cloudapp.net**. Kliknij prawym przyciskiem myszy nazwę certyfikatu, a następnie kliknij przycisk **kopiowania**.
    6. Rozwiń **zaufane główne urzędy certyfikacji** węzła i klikając prawym przyciskiem myszy **certyfikaty** a następnie kliknij przycisk **Wklej**.
-   7. Aby sprawdzić, kliknij dwukrotnie nazwę certyfikatu w obszarze **zaufane główne urzędy certyfikacji** i sprawdź, czy nie ma żadnych błędów i zobacz swój certyfikat. Jeśli chcesz użyć skryptu HTTPS dołączone do tego tematu, aby skonfigurować serwer raportów, a wartość certyfikaty **odcisk palca** są wymagane jako parametru skryptu. **Aby uzyskać wartość odcisku palca**, wykonaj następujące czynności. Istnieje również przykład programu PowerShell można pobrać odcisku palca w sekcji [użyć skryptu, aby skonfigurować serwer raportów i HTTPS](#use-script-to-configure-the-report-server-and-HTTPS).
+   7. Aby sprawdzić, kliknij dwukrotnie nazwę certyfikatu w obszarze **zaufane główne urzędy certyfikacji** i sprawdź, czy nie ma żadnych błędów i zobacz swój certyfikat. Jeśli chcesz użyć skryptu HTTPS dołączone do tego tematu, aby skonfigurować serwer raportów, a wartość certyfikaty **odcisk palca** są wymagane jako parametru skryptu. **Aby uzyskać wartość odcisku palca**, wykonaj następujące czynności. Istnieje również przykład programu PowerShell można pobrać odcisku palca w sekcji [użyć skryptu, aby skonfigurować serwer raportów i HTTPS](#use-script-to-configure-the-report-server-and-https).
       
       1. Kliknij dwukrotnie nazwę certyfikatu, na przykład ssrsnativecloud.cloudapp.net.
       2. Kliknij kartę **Szczegóły** .

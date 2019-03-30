@@ -4,15 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 355d89b1fd7d7cc8c9db58122d51c6ff7dff5f3b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 33c932c36cd6de730d3768d596a214c442d74ae1
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622590"
+ms.locfileid: "58632868"
 ---
-Na platformie Unity, otwórz projekt w `Unity` folderu.
-
 Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
 
 W sekcji **Platform (Platforma)** wybierz pozycję **Android**. Zmiana **System kompilacji** do **Gradle** i wybierz **Eksportowanie projektu**.

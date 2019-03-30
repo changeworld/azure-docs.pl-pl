@@ -1,10 +1,10 @@
 ---
-title: Skrypt programu PowerShell Azure Przykładowe — wdrożenie aplikacji do klastra | Dokumentacja firmy Microsoft
-description: Skrypt programu PowerShell Azure przykładowe — wdrażanie aplikacji do klastra usługi sieć szkieletowa usług.
+title: Skrypt programu Azure PowerShell przykładowy — wdrażanie aplikacji w klastrze | Dokumentacja firmy Microsoft
+description: Skrypt programu Azure PowerShell przykładowy — wdrażanie aplikacji w klastrze usługi Service Fabric.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: c81514fb4b1c1da483ebd55deae149caf22d4b63
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: HT
+ms.openlocfilehash: e205315530b0dc89037c1253c571c72c55f00a67
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927604"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661432"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Wdrażanie aplikacji do klastra sieci szkieletowej usług
+# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Wdrażanie aplikacji w klastrze usługi Service Fabric
 
-Ten przykładowy skrypt kopiuje pakietu aplikacji do magazynu obrazu klastra, rejestruje typ aplikacji w klastrze, usuwa pakiet zbędnych aplikacji i tworzy wystąpienie aplikacji na podstawie typu aplikacji.  Jeśli wszystkie domyślne usługi zostały zdefiniowane w manifeście aplikacji typu aplikacji docelowej, te usługi są tworzone w tym momencie. Dostosuj parametry zgodnie z potrzebami. 
+Ten przykładowy skrypt kopiuje pakietu aplikacji do magazynu obrazów klastra, rejestruje typ aplikacji w klastrze, usuwa pakiet zbędnych aplikacji i tworzy wystąpienie aplikacji na podstawie typu aplikacji.  Jeśli wszystkie usługi domyślne zostały zdefiniowane w manifeście aplikacji typ aplikacji docelowej, te usługi są tworzone w tej chwili. Dostosuj parametry zgodnie z potrzebami. 
 
-Jeśli to konieczne, Zainstaluj moduł programu PowerShell usługi Service Fabric [zestawu SDK usług sieci szkieletowej](../service-fabric-get-started.md). 
+W razie potrzeby zainstaluj moduł Service Fabric programu PowerShell przy użyciu [Zestawu SDK usługi Service Fabric](../service-fabric-get-started.md). 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -34,22 +34,22 @@ Jeśli to konieczne, Zainstaluj moduł programu PowerShell usługi Service Fabri
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
 
-Po przykładowym skrypcie zostało uruchomione, skrypt w [usuwania aplikacji](service-fabric-powershell-remove-application.md) można usunąć wystąpienia aplikacji, wyrejestrowywanie typu aplikacji i usuwanie pakietu aplikacji w magazynie obrazów.
+Po wykonaniu przykładowego skryptu zostały, skrypt [usuwania aplikacji](service-fabric-powershell-remove-application.md) można usunąć wystąpienie aplikacji, wyrejestrować typ aplikacji i usunąć pakiet aplikacji z magazynu obrazów.
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń. Każde polecenie w tabeli łącza do dokumentacji określonego polecenia.
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-|[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Tworzy połączenie z klastrem usługi sieć szkieletowa usług. |
+|[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Tworzy połączenie z klastrem usługi Service Fabric. |
 |[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Przechowywanie kopii pakietu aplikacji do obrazu klastra.  |
 |[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Rejestruje typ i wersja aplikacji w klastrze. |
-|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Tworzy aplikację z typ zarejestrowanych aplikacji. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Usuwa pakiet aplikacji sieci szkieletowej usług z magazynu obrazów.|
+|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Tworzy aplikację z typem zarejestrowanej aplikacji. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Usuwa pakiet aplikacji usługi Service Fabric z magazynu obrazów.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na modułu programu PowerShell usługi Service Fabric, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Aby uzyskać więcej informacji na temat modułu Service Fabric programu PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Dodatkowe przykłady środowiska Powershell dla usługi sieć szkieletowa usług Azure można znaleźć w [przykłady programu Azure PowerShell](../service-fabric-powershell-samples.md).
+Więcej przykładów dla programu PowerShell dla usługi Azure Service Fabric można znaleźć w [przykładach programu Azure PowerShell](../service-fabric-powershell-samples.md).

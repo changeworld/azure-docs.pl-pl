@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310544"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669337"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -84,7 +84,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 - Punkty końcowe usługi są konfigurowane w podsieci sieci wirtualnej. Punkty końcowe współpracują z wystąpieniami obliczeniowymi dowolnego typu uruchomionymi w danej podsieci.
 - W podsieci można skonfigurować wiele punktów końcowych usługi dla wszystkich obsługiwanych usług platformy Azure (na przykład Azure Storage lub Azure SQL Database).
 - W przypadku usługi Azure SQL Database sieci wirtualne muszą znajdować się w tym samym regionie, co zasób usługi platformy Azure. Jeśli korzystasz z magazynów GRS i RA-GRS w usłudze Azure Storage, konto podstawowe powinno znajdować się w tym samym regionie, co sieć wirtualna. W przypadku wszystkich innych usług zasoby usługi platformy Azure mogą być chronione w sieciach wirtualnych w dowolnym regionie. 
-- Sieć wirtualna, w której konfigurowany jest punkt końcowy, może należeć do tej samej subskrypcji, co zasób usługi platformy Azure, lub innej. Aby uzyskać więcej informacji na temat uprawnień wymaganych do konfigurowania punktów końcowych i zabezpieczania usług platformy Azure, zobacz [Aprowizowanie](#Provisioning).
+- Sieć wirtualna, w której konfigurowany jest punkt końcowy, może należeć do tej samej subskrypcji, co zasób usługi platformy Azure, lub innej. Aby uzyskać więcej informacji na temat uprawnień wymaganych do konfigurowania punktów końcowych i zabezpieczania usług platformy Azure, zobacz [Aprowizowanie](#provisioning).
 - W przypadku obsługiwanych usług można zabezpieczyć nowe lub istniejące zasoby w sieciach wirtualnych za pomocą punktów końcowych usługi.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
@@ -132,7 +132,7 @@ Za korzystanie z punktów końcowych usługi nie są naliczane dodatkowe opłaty
 
 Nie ma limitu całkowitej liczby punktów końcowych usługi w sieci wirtualnej.
 
-W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) usługi mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobów. Szczegółowe informacje można znaleźć w dokumentacji dotyczącej różnych usług w sekcji [Następne kroki](#next-steps).
+Niektóre usługi platformy Azure, takimi jak konta magazynu platformy Azure, mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobów. Szczegółowe informacje można znaleźć w dokumentacji dotyczącej różnych usług w sekcji [Następne kroki](#next-steps).
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Zasady punktu końcowego usługi sieci wirtualnej 
 

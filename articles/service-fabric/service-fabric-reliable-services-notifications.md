@@ -4,7 +4,7 @@ description: Dokumentacja koncepcyjna powiadomień usług usługi Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433518"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662673"
 ---
 # <a name="reliable-services-notifications"></a>Niezawodne usługi powiadomień
 Dzięki powiadomieniom klientów śledzić zmiany wprowadzone do obiektu, który interesują Cię. Dwa typy obiektów obsługuje powiadomień: *Reliable State Manager* i *niezawodnego słownika*.
@@ -34,7 +34,7 @@ Powiadomienia są uruchamiane w ramach zastosowania operacji. Z tego powodu powi
 ## <a name="reliable-state-manager-notifications"></a>Elementy Reliable State Manager powiadomienia
 Elementy Reliable State Manager udostępnia powiadomienia dotyczące następujących zdarzeń:
 
-* Transakcji
+* Transakcja
   * Zatwierdzenie
 * Menedżer stanu
   * Ponowne kompilowanie
@@ -46,9 +46,9 @@ Elementy Reliable State Manager śledzi bieżące transakcje porządkowych. Jedy
 Elementy Reliable State Manager przechowuje kolekcję stanów niezawodne, takich jak niezawodnego słownika i niezawodna kolejka. Elementy Reliable State Manager generowane powiadomienia, gdy zmieni się tej kolekcji: niezawodne stanu jest dodawany lub usuwany lub całą kolekcję zostanie ponownie skompilowany.
 Kolekcja Reliable State Manager zostanie ponownie skompilowany w trzech przypadkach:
 
-* Odzyskiwanie: Po uruchomieniu repliki odzyskuje poprzedniego stanu z dysku. Po zakończeniu odzyskiwania używa **NotifyStateManagerChangedEventArgs** wyzwolenie zdarzenia, które zawiera zestaw odzyskane stany niezawodne.
-* Pełna kopia: przed repliki można dołączyć zestaw konfiguracji, ma zostać utworzony. Czasami wymaga to pełna kopia stanie niezawodne Menedżer stanów z repliki podstawowej, które mają być stosowane do repliki pomocniczej bezczynności. Elementy Reliable State Manager w replice pomocniczej używa **NotifyStateManagerChangedEventArgs** wywołać zdarzenie, który zawiera zestaw niezawodnych stanów, które go uzyskanych z repliką podstawową.
-* Przywracanie: W przypadku scenariuszy odzyskiwania po awarii, stan repliki można przywrócić z kopii zapasowej za pośrednictwem **RestoreAsync**. W takich przypadkach używa Reliable State Manager w replice podstawowej **NotifyStateManagerChangedEventArgs** wywołać zdarzenie, który zawiera zestaw niezawodnych stanów, które go przywrócić z kopii zapasowej.
+* Odzyskiwanie: Po uruchomieniu repliki przywraca poprzedni stan z dysku. Po zakończeniu odzyskiwania używa **NotifyStateManagerChangedEventArgs** wyzwolenie zdarzenia, które zawiera zestaw odzyskane stany niezawodne.
+* Pełna kopia: Przed repliki można dołączyć zestaw konfiguracji, musi zostać utworzony. Czasami wymaga to pełna kopia stanie niezawodne Menedżer stanów z repliki podstawowej, które mają być stosowane do repliki pomocniczej bezczynności. Elementy Reliable State Manager w replice pomocniczej używa **NotifyStateManagerChangedEventArgs** wywołać zdarzenie, który zawiera zestaw niezawodnych stanów, które go uzyskanych z repliką podstawową.
+* Przywróć: W przypadku scenariuszy odzyskiwania po awarii, można przywrócić z kopii zapasowej za pośrednictwem stan repliki **RestoreAsync**. W takich przypadkach używa Reliable State Manager w replice podstawowej **NotifyStateManagerChangedEventArgs** wywołać zdarzenie, który zawiera zestaw niezawodnych stanów, które go przywrócić z kopii zapasowej.
 
 Aby zarejestrować się na powiadomienia o transakcji i/lub powiadomienia o stanie menedżera, należy zarejestrować za pomocą **TransactionChanged** lub **StateManagerChanged** zdarzenia Reliable State Manager. Wspólnym miejscu, aby zarejestrować za pomocą tych programów obsługi zdarzeń jest konstruktor usługi stanowej. Po zarejestrowaniu się w konstruktorze, przegapi żadnych powiadomienie, które jest spowodowany przez zmianę w okresie istnienia **IReliableStateManager**.
 
@@ -84,7 +84,7 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 ```
 
 **StateManagerChanged** korzysta z programu obsługi zdarzeń **NotifyStateManagerChangedEventArgs** dostarczanie szczegółowych informacji o zdarzeniu.
-**NotifyStateManagerChangedEventArgs** ma dwa podklasy: **NotifyStateManagerRebuildEventArgs** i **NotifyStateManagerSingleEntityChangedEventArgs**.
+**NotifyStateManagerChangedEventArgs** has two subclasses: **NotifyStateManagerRebuildEventArgs** and **NotifyStateManagerSingleEntityChangedEventArgs**.
 Użyj właściwości akcji w **NotifyStateManagerChangedEventArgs** rzutowanie **NotifyStateManagerChangedEventArgs** do podklasy poprawny:
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
@@ -109,11 +109,11 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>Niezawodny słownik powiadomienia
 Niezawodnego słownika zawiera powiadomienia o następujących zdarzeń:
 
-* Rekompiluj: Wywoływane, gdy **ReliableDictionary** odzyskał jego stan z kopii zapasowej odzyskana lub skopiowany stanu lokalnego lub.
-* Wyczyść: Wywoływane, gdy stan **ReliableDictionary** został wyczyszczony za pośrednictwem **ClearAsync** metody.
+* Ponowna kompilacja: Wywoływane, gdy **ReliableDictionary** odzyskał jego stan z kopii zapasowej odzyskana lub skopiowany stanu lokalnego lub.
+* Usuń zaznaczenie: Wywoływane, gdy stan **ReliableDictionary** został wyczyszczony za pośrednictwem **ClearAsync** metody.
 * Dodaj: Wywoływane, gdy element został dodany do **ReliableDictionary**.
-* Aktualizacja: Wywołuje się, gdy element **IReliableDictionary** został zaktualizowany.
-* Usuń: Wywołuje się, gdy element **IReliableDictionary** został usunięty.
+* Aktualizacja: Wywoływane, gdy element **IReliableDictionary** został zaktualizowany.
+* Usuń: Wywoływane, gdy element **IReliableDictionary** został usunięty.
 
 Aby otrzymywać powiadomienia w niezawodnym słowniku, należy zarejestrować za pomocą **DictionaryChanged** programu obsługi zdarzeń na **IReliableDictionary**. Typowe miejscem do rejestrowania przy użyciu tych programów obsługi zdarzeń jest **ReliableStateManager.StateManagerChanged** Dodaj powiadomienie.
 Podczas rejestrowania **IReliableDictionary** jest dodawany do **IReliableStateManager** gwarantuje, że przegapi żadnych powiadomień.
@@ -163,7 +163,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 > 
 
 **DictionaryChanged** korzysta z programu obsługi zdarzeń **NotifyDictionaryChangedEventArgs** dostarczanie szczegółowych informacji o zdarzeniu.
-**NotifyDictionaryChangedEventArgs** ma pięć podklasach. Użyj właściwości akcji w **NotifyDictionaryChangedEventArgs** rzutowanie **NotifyDictionaryChangedEventArgs** do podklasy poprawny:
+**NotifyDictionaryChangedEventArgs** has five subclasses. Użyj właściwości akcji w **NotifyDictionaryChangedEventArgs** rzutowanie **NotifyDictionaryChangedEventArgs** do podklasy poprawny:
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**

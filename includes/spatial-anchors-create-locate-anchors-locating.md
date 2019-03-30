@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 430302d8b1b2a01febbbe2f11057bb331ec80c28
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 52dfbfca5f79a7f92848ea39eddc00aa10f05ff1
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57907811"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632237"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>Znajdź kotwica przestrzenne chmury
 
-Aby zlokalizować przestrzenne kotwic chmury, musisz znać ich identyfikatorów. Identyfikatory zakotwiczeń może być przechowywane w usłudze zaplecza aplikacji i dostępne dla wszystkich urządzeń, które poprawnie mógł uwierzytelniać się go. Przykładem tego zobacz [samouczka: Udostępniaj przestrzenne zakotwiczenia między urządzeniami](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
+Możliwość zlokalizować kotwica przestrzenne wcześniej przekazane chmury jest jednym z podstawowe przyczyny przy użyciu biblioteki Azure przestrzenne kotwic. Aby zlokalizować przestrzenne kotwic chmury, musisz znać ich identyfikatorów. Identyfikatory zakotwiczeń mogą być przechowywane w usłudze zaplecza aplikacji i jest dostępny dla wszystkich urządzeń, którzy mogą poprawnie uwierzytelnić się do niego. Przykładem tego zobacz [samouczka: Udostępniaj przestrzenne zakotwiczenia między urządzeniami](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
 
-Utwórz wystąpienie obiektu AnchorLocateCriteria, Ustaw identyfikatory, czego szukasz i wywoływać metodę CreateWatcher sesji, zapewniając Twojej AnchorLocateCriteria.
+Utwórz wystąpienie `AnchorLocateCriteria` obiektu, należy ustawić identyfikatorów, czego szukasz i wywoływać `CreateWatcher` metody w sesji, zapewniając Twojej `AnchorLocateCriteria`.

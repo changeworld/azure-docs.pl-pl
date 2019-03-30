@@ -4,7 +4,7 @@ description: W tym samouczku skonfigurujesz dzienniki usługi Azure Monitor do m
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: 085357e5922378d413dab75e434c932c534e135b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244237"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663166"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: Monitorowanie kontenerów Windows w usłudze Service Fabric przy użyciu dzienników usługi Azure Monitor
 

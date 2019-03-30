@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309422"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649090"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie testu automatycznego klienta w celu wstępnego zweryfikowania obrazów maszyn wirtualnych platformy Azure
 
 Skorzystaj z tego artykułu jako przewodnika tworzenia usługi klienta, który wykorzystuje interfejs API automatycznego testu. Interfejs API samodzielnie przetestować umożliwia wstępnego zweryfikowania maszynę wirtualną (VM), aby upewnić się, że spełnia on wymagania publikacji najnowsze portalu Azure Marketplace. Ta usługa klienta umożliwia przetestowanie Maszynę wirtualną, przed przesłaniem oferty do certyfikacji firmy Microsoft.
-
 
 ## <a name="development-and-testing-overview"></a>Programowanie i testowanie — omówienie
 
@@ -41,13 +40,11 @@ Dostępne są następujące ogólne kroki tworzenia samodzielnie przetestować k
 
 Po utworzeniu klienta, można je przetestować na maszynie Wirtualnej.
 
-
 ### <a name="self-test-client-authorization"></a>Samodzielnie przetestować autoryzacji klienta
 
 Na poniższym diagramie przedstawiono, jak działa autoryzacji dla wywołań usług przy użyciu poświadczeń klienta (wspólne hasło lub certyfikat).
 
 ![Proces autoryzacji klienta](./media/stclient-dev-process.png)
-
 
 ## <a name="the-self-test-client-api"></a>Samodzielnie przetestować klienta interfejsu API
 
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 W poniższej tabeli opisano pola interfejsu API.
@@ -83,11 +79,9 @@ W poniższej tabeli opisano pola interfejsu API.
 |  PortNo            |  Otwórz numer portu do nawiązywania połączenia z maszyną Wirtualną. Numer portu jest zazwyczaj `22` dla systemu Linux i `5986` for Windows.          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>Korzystanie z interfejsu API
 
 Można używać interfejsu API automatycznego testu, przy użyciu programu PowerShell lub programu cURL.
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Korzystanie z interfejsu API w systemu operacyjnego Linux przy użyciu programu PowerShell
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Poniższy zrzut ekranu przedstawia przykład wywołanie interfejsu API w programie PowerShell.
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ Aby wywołać interfejs API za pomocą programu cURL, wykonaj następujące krok
 2. Ta metoda jest Post i typem zawartości jest JSON, jak pokazano w poniższym fragmencie kodu.
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 Na poniższym ekranie przedstawiono przykład przy użyciu programu curl do wywołania interfejsu API.
 
 ![Wywołanie interfejsu API przy użyciu polecenia curl](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ Gdzie chcesz utworzyć aplikację wykonaj następujące kroki, aby wybierz dzier
    W poniższych krokach może być konieczne nazwa dzierżawy (lub nazwę katalogu) lub identyfikator dzierżawy (lub identyfikator katalogu).
 
    **Aby uzyskać informacje o dzierżawy:**
-  
+
    W **usługi Azure Active Directory — omówienie**, wyszukaj "Properties", a następnie wybierz **właściwości**. Przy użyciu poniższej zrzut ekranu przedstawia przykład:
 
    - **Nazwa** — nazwa dzierżawy lub nazwa katalogu
@@ -284,7 +278,7 @@ Wykonaj następujące kroki, aby zarejestrować aplikację klienta.
 14. Kliknij pozycję **Wybierz**.
 15. Wybierz pozycję **Done** (Gotowe).
 16. W obszarze **ustawienia**, wybierz opcję **właściwości**.
-17. W obszarze **właściwości**, przewiń w dół do **wielodostępnych**. Wybierz **tak**.  
+17. W obszarze **właściwości**, przewiń w dół do **wielodostępnych**. Wybierz **tak**.
 
     ![Konfigurowanie wielodostępnych aplikacji](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ Do tworzenia i Uzyskaj token za pomocą interfejsu API REST protokołu OAuth, mo
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 Następujące parametry są przekazywane w treści żądania:
 
 ```
@@ -364,7 +359,7 @@ Poniższy zrzut ekranu przedstawia przykład użycia polecenia curl, aby uzyska�
 
 Aby zadać Auth0 tokenów dla dowolnej autoryzowanych aplikacji, należy wykonać operacji POST [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) punkt końcowy z ładunku w następującym formacie:
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -387,7 +382,7 @@ var token = JObject.Parse(content)["access_token"];
 
 Aby zadać Auth0 tokenów dla dowolnej autoryzowanych aplikacji, należy wykonać operacji POST [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) punkt końcowy z ładunku w następującym formacie:
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>Przekazywanie tokenu aplikacji interfejsu API klienta
 
 Przekaż token do interfejsu API automatycznego testu, używając następującego kodu w nagłówku autoryzacji:
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>Testowanie klienta testu automatycznego
@@ -445,7 +438,7 @@ Poniższe fragmenty kodu pokazują wyniki testu w formacie JSON.
 
 **Wyniki testu dla maszyny Wirtualnej z systemem Windows:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ Poniższe fragmenty kodu pokazują wyniki testu w formacie JSON.
 
 **Wyniki testu dla maszyny Wirtualnej z systemem Linux:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

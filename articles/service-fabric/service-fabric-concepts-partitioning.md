@@ -3,8 +3,8 @@ title: Partycjonowanie usługi Service Fabric | Dokumentacja firmy Microsoft
 description: Opisuje sposób partycjonowania usługi Service Fabric usług stanowych. Partycje umożliwia przechowywanie danych na komputerach lokalnych danych i mocy obliczeniowej mogą być skalowane razem.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
-ms.author: msfussell
-ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: atsenthi
+ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852767"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666226"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partycjonowanie usług reliable services usługi Service Fabric
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowanie usług reliable services w usłudze Azure Service Fabric. Kodu źródłowego użytego w artykule jest dostępna również na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

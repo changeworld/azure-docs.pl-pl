@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81bf41dd183944a43d9558d0aec0c416d30620b2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 55d08ddef46c4c78452fcdbc839219b624d55c04
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202575"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666413"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory
 
-Po usunięciu grupy usługi Office 365 w usłudze Azure Active Directory (Azure AD) usunięta grupa jest zachowywana, ale nie jest widoczna przez 30 dni od daty usunięcia. Przyczyną takiego zachowania jest to, że grupy i ich zawartość można przywrócić w razie potrzeby. Ta funkcja jest ograniczona wyłącznie do grup usługi Office 365 w usłudze Azure AD. Nie jest dostępna dla grup zabezpieczeń i grup dystrybucji.
+Po usunięciu grupy usługi Office 365 w usłudze Azure Active Directory (Azure AD) usunięta grupa jest zachowywana, ale nie jest widoczna przez 30 dni od daty usunięcia. Przyczyną takiego zachowania jest to, że grupy i ich zawartość można przywrócić w razie potrzeby. Ta funkcja jest ograniczona wyłącznie do grup usługi Office 365 w usłudze Azure AD. Nie jest dostępna dla grup zabezpieczeń i grup dystrybucji. Należy pamiętać, że grupy 30-dniowego okresu przywracania nie jest możliwe do dostosowania.
 
 > [!NOTE]
 > Nie używaj opcji `Remove-MsolGroup`, ponieważ powoduje trwale wyczyszczenie grup. W celu usunięcia grupy usługi Office 365 zawsze używaj opcji `Remove-AzureADMSGroup`.

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2018
+ms.date: 03/28/2018
 ms.author: genli
-ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994177"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630464"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
 W tym artykule wymieniono typowe problemy z połączeniem punkt lokacja, które mogą wystąpić. Omówiono w nim również możliwe przyczyny i potencjalne rozwiązania tych problemów.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Błąd klienta sieci VPN: nie można odnaleźć certyfikatu
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Błąd klienta sieci VPN: Nie można odnaleźć certyfikatu
 
 ### <a name="symptom"></a>Objaw
 
@@ -41,7 +41,7 @@ Ten problem występuje, jeśli brakuje certyfikatu klienta **Certyfikaty - bież
 
 Aby rozwiązać ten problem, wykonaj następujące kroki:
 
-1. Kliknij przycisk Otwórz Menedżera certyfikatów: **Start**, typ **zarządzania certyfikatami komputera**, a następnie kliknij przycisk **zarządzania certyfikatami komputera** w wynikach wyszukiwania.
+1. Otwórz Menedżera certyfikatów: Kliknij przycisk **Start**, typ **zarządzania certyfikatami komputera**, a następnie kliknij przycisk **zarządzania certyfikatami komputera** w wynikach wyszukiwania.
 
 2. Upewnij się, że następujące certyfikaty znajdują się w poprawnej lokalizacji:
 
@@ -81,7 +81,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 1. Usuń trasę zdefiniowaną przez użytkownika w podsieci bramy. Upewnij się, że trasa zdefiniowana przez użytkownika przekazuje poprawnie cały ruch.
 2. Sprawdź stan certyfikatu głównego w witrynie Azure portal, aby zobaczyć, czy został odwołany. Jeśli nie został odwołany, spróbuj usunąć certyfikat główny i reupload. Aby uzyskać więcej informacji, zobacz [Tworzenie certyfikatów](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Błąd klienta sieci VPN: łańcuch certyfikatów przetwarzane, ale została przerwana 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Błąd klienta sieci VPN: Łańcuch certyfikatów przetwarzane, ale została przerwana 
 
 ### <a name="symptom"></a>Objaw 
 
@@ -101,7 +101,7 @@ Podczas próby nawiązania połączenia z siecią wirtualną platformy Azure, ko
 
 2. Jeśli certyfikaty znajdują się już w lokalizacji, spróbuj usunąć certyfikaty i zainstaluj je ponownie. **Azuregateway -*GUID*. cloudapp.net** certyfikat znajduje się w pakietu konfiguracyjnego klienta VPN, który został pobrany z witryny Azure portal. Archivers pliku można użyć, aby wyodrębnić pliki z pakietu.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Błąd pobierania pliku: docelowy identyfikator URI nie jest określony.
+## <a name="file-download-error-target-uri-is-not-specified"></a>Błąd pobierania pliku: Docelowy identyfikator URI nie jest określony.
 
 ### <a name="symptom"></a>Objaw
 
@@ -117,7 +117,7 @@ Ten problem występuje ze względu na typ bramy niepoprawne.
 
 Typ bramy sieci VPN musi być **VPN**, a typ sieci VPN musi być **RouteBased**.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Błąd klienta sieci VPN: sieci VPN platformy Azure niestandardowego skryptu nie powiodło się 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Błąd klienta sieci VPN: Sieć VPN niestandardowego skryptu platformy Azure nie powiodło się 
 
 ### <a name="symptom"></a>Objaw
 
@@ -150,7 +150,7 @@ Wyodrębnij pakiet konfiguracyjny klienta VPN, a następnie znajdź plik cer. Ab
 5. Uruchom ponownie komputer. 
 6. Spróbuj zainstalować klienta sieci VPN.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal błąd: nie można zapisać bramy sieci VPN, a dane są nieprawidłowe
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal błąd: Nie można zapisać bramy sieci VPN, a dane są nieprawidłowe
 
 ### <a name="symptom"></a>Objaw
 
@@ -185,7 +185,7 @@ Upewnij się, że dane w certyfikacie nie zawiera nieprawidłowe znaki, takie ja
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal błąd: nie można zapisać bramy sieci VPN, a nazwa zasobu jest nieprawidłowa
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal błąd: Nie można zapisać bramy sieci VPN, a nazwa zasobu jest nieprawidłowa
 
 ### <a name="symptom"></a>Objaw
 
@@ -197,7 +197,7 @@ Podczas próby zapisania zmiany dla bramy sieci VPN w witrynie Azure portal, poj
 
 Ten problem występuje, ponieważ nazwa certyfikatu zawiera nieprawidłowe znaki, takie jak spacja. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Błąd portalu Azure: błąd pobierania pliku pakietu sieci VPN 503
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure portal błąd: Błąd pobierania pliku pakietu sieci VPN 503
 
 ### <a name="symptom"></a>Objaw
 
@@ -209,7 +209,7 @@ Podczas próby pobrania pakietu konfiguracyjnego klienta VPN, pojawi się nastę
 
 Ten błąd może być spowodowany przez tymczasowy problem z siecią. Spróbuj ponownie za kilka minut. Pobieranie pakietu sieci VPN.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway uaktualnienia: All punktu do lokacji klientów nie są w stanie połączyć
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure uaktualniania bramy sieci VPN: Nie można nawiązać połączenia są wskazujących na klientach w lokacji
 
 ### <a name="cause"></a>Przyczyna
 
@@ -217,7 +217,7 @@ Jeśli certyfikat jest więcej niż 50% za pośrednictwem jego okres istnienia c
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, wykonaj ponowne wdrożenie punktu do lokacji pakietu na wszystkich klientach.
+Aby rozwiązać ten problem, Pobierz ponownie i Wdróż ponownie punkt do lokacji pakietu na wszystkich klientach.
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Zbyt wielu klientów sieci VPN połączony na raz
 
@@ -302,16 +302,16 @@ Ten problem może wystąpić, jeśli klient sieci VPN nie otrzymują trasy z bra
 
 Aby rozwiązać ten problem, [Resetowanie bramy Azure VPN gateway](vpn-gateway-resetgw-classic.md). Aby upewnić się, że są używane nowe trasy, klienci sieci VPN typu punkt-lokacja musi zostać ponownie pobrana po komunikacji równorzędnej sieci wirtualnych zostało pomyślnie skonfigurowane.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "Funkcja odwołania nie mógł sprawdzić odwołania, ponieważ serwer odwołań jest w trybie offline. (Błąd 0x80092013)"
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "Funkcja odwołania nie może sprawdzić odwołania, ponieważ serwer odwołań jest w trybie offline. (Błąd 0x80092013)"
 
-### <a name="causes"></a>Powoduje, że
+### <a name="causes"></a>Przyczyny
 Ten błąd występuje, jeśli klient nie może uzyskać dostępu do http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.  Sprawdzanie odwołań wymaga dostępu do tych dwóch witryn.  Ten problem zwykle odbywa się na komputerze klienckim, który został skonfigurowany serwer proxy. W niektórych środowiskach Jeśli żądania nie są kierowane za pośrednictwem serwera proxy, jego będą odrzucane na zaporze brzegowej.
 
 ### <a name="solution"></a>Rozwiązanie
 
 Sprawdź ustawienia serwera proxy, upewnij się, że ten klient uzyskuje dostęp http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.
 
-## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>Błąd klienta sieci VPN: Połączenie nie mógł ze względu na zasady skonfigurowane na serwerze RAS/sieci VPN. (Błąd 812)
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>Błąd klienta sieci VPN: Połączenie nie została uruchomiona, ze względu na zasady skonfigurowane na serwerze RAS/sieci VPN. (Błąd 812)
 
 ### <a name="cause"></a>Przyczyna
 
@@ -327,7 +327,7 @@ Upewnij się, że serwer RADIUS jest skonfigurowany prawidłowo. Aby uzyskać wi
 
 Certyfikat główny nie zostały zainstalowane. Zainstalowano certyfikat główny w kliencie programu **zaufane certyfikaty** przechowywania.
 
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Błąd klienta sieci VPN: Nie została wprowadzona połączenia zdalnego, ponieważ nie powiodła się próba tuneli sieci VPN. (Błąd 800) 
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>Błąd klienta sieci VPN: Nie można nawiązać zdalnego połączenia, ponieważ nie powiodła się próba tuneli sieci VPN. (Błąd 800) 
 
 ### <a name="cause"></a>Przyczyna
 
@@ -343,7 +343,7 @@ Aktualizacja sterownika karty Sieciowej:
 4. Jeśli Windows nie jest dostępny nowy sterownik, możesz spróbuj poszukać jeden w witrynie sieci Web producenta urządzenia i wykonaj instrukcje.
 5. Uruchom ponownie komputer i spróbuj ponownie nawiązać połączenie.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Błąd: "Błąd pobierania, który nie jest określony docelowy identyfikator URI pliku"
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Błąd: "Błąd pobierania pliku docelowego identyfikatora URI nie zostanie określony"
 
 ### <a name="cause"></a>Przyczyna
 

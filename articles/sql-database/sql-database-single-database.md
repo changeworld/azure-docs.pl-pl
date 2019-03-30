@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 03/29/2019
+ms.openlocfilehash: 19fa1797e2765a642aac19f55f0906ba9aef61a8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431119"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660293"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
 
@@ -54,6 +54,9 @@ Aby uzyskać więcej informacji, zobacz [różnice rozpoznawania języka Transac
 ## <a name="security"></a>Bezpieczeństwo
 
 SQL Database oferuje szeroką gamę [wbudowanych rozwiązań zabezpieczeń i zgodności](sql-database-security-overview.md) funkcje, aby pomóc aplikacji spełnić różne wymagania dotyczące zabezpieczeń i zgodności.
+
+> [!IMPORTANT]
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

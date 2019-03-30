@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 522f1f2f24e8c8c3f68a42569d4057a7694754d1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314844"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651077"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 
@@ -34,8 +34,8 @@ To uaktualnienie dotyczy magazyny danych warstwy obliczenia zoptymalizowane pod 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 1. Sprawdź, czy Twoje [region](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) jest obsługiwana w przypadku GEN1 GEN2 migracji. Należy pamiętać, daty automatyczną migrację. W celu uniknięcia konfliktów z zautomatyzowanego procesu, należy zaplanować migrację ręcznie przed datą rozpoczęcia zautomatyzowanego procesu.
-2. Jeśli jesteś w regionie, który nie jest jeszcze obsługiwany w dalszym ciągu Sprawdź w Twoim regionie, które mają zostać dodane lub [uaktualnienia przy użyciu funkcji przywracania](#Upgrade-from-an-Azure-geographical-region-using-restore-through-the-Azure-portal) na obsługiwany region.
-3. Jeśli swój region jest obsługiwany, [uaktualnienia w witrynie Azure portal](#Upgrade-in-a-supported-region-using-the-Azure-portal)
+2. Jeśli jesteś w regionie, który nie jest jeszcze obsługiwany w dalszym ciągu Sprawdź w Twoim regionie, które mają zostać dodane lub [uaktualnienia przy użyciu funkcji przywracania](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) na obsługiwany region.
+3. Jeśli swój region jest obsługiwany, [uaktualnienia w witrynie Azure portal](#upgrade-in-a-supported-region-using-the-azure-portal)
 4. **Wybierz poziom wydajności sugerowane** dla magazynu danych na podstawie Twój bieżący poziom wydajności w warstwie obliczenia zoptymalizowane pod kątem Gen1 przy użyciu mapowania poniżej:
 
    | Zoptymalizowane pod kątem Gen1 warstwa wystąpień obliczeniowych | Zoptymalizowane pod kątem Gen2 warstwa wystąpień obliczeniowych |

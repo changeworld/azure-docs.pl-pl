@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170704"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą IriusRisk
 
@@ -89,7 +89,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego IriusRisk](#create-a-iriusrisk-test-user)**  — aby odpowiednikiem Britta Simon w IriusRisk połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Tworzenie użytkownika testowego IriusRisk](#create-an-iriusrisk-test-user)**  — aby odpowiednikiem Britta Simon w IriusRisk połączonego z usługi Azure AD reprezentacja użytkownika.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 

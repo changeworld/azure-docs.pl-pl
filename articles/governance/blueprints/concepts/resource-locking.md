@@ -4,17 +4,17 @@ description: Informacje o opcjach blokowania, aby chronić zasoby podczas przypi
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855415"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630717"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
 
@@ -56,11 +56,56 @@ RBAC [Odmów przypisania](../../../role-based-access-control/deny-assignments.md
 > [!IMPORTANT]
 > Usługa Azure Resource Manager buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. Odmów co w efekcie przypisania odmowy Akcja zasobów planu natychmiast może nie być w pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.
 
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Wykluczanie jednostki z przypisania Odmów
+
+W niektórych scenariuszach projektu lub zabezpieczeń może być konieczne wykluczyć jednostki z [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) tworzy przypisanie planu. Odbywa się w interfejsie API REST, dodając do pięciu wartości **excludedPrincipals** tablicy w **blokad** właściwości podczas [Tworzenie przypisania](/rest/api/blueprints/assignments/createorupdate).
+Jest to przykład treści żądania, który zawiera **excludedPrincipals**:
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "location": "eastus",
+  "properties": {
+    "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+    "blueprintId": "/providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+    "locks": {
+        "mode": "AllResourcesDoNotDelete",
+        "excludedPrincipals": [
+            "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+            "38833b56-194d-420b-90ce-cff578296714"
+        ]
+    },
+    "parameters": {
+      "storageAccountType": {
+        "value": "Standard_LRS"
+      },
+      "costCenter": {
+        "value": "Contoso/Online/Shopping/Production"
+      },
+      "owners": {
+        "value": [
+          "johnDoe@contoso.com",
+          "johnsteam@contoso.com"
+        ]
+      }
+    },
+    "resourceGroups": {
+      "storageRG": {
+        "name": "defaultRG",
+        "location": "eastus"
+      }
+    }
+  }
+}
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Postępuj zgodnie z [chronić nowe zasoby](../tutorials/protect-new-resources.md) samouczka.
-- Dowiedz się więcej o [planu cyklu życia](lifecycle.md).
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](parameters.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](sequencing-order.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](../troubleshoot/general.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

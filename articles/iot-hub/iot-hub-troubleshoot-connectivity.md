@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240171"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648823"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Wykrywanie i rozwiązywanie problemów z zamknie połączenie z usługą Azure IoT Hub
 
@@ -32,7 +32,7 @@ Aby rejestrować zdarzenia połączenia urządzenia i błędy, Włącz diagnosty
 1. Wybierz **ustawień diagnostycznych**.
 1. Wybierz **Włącz diagnostykę**.
 1. Włącz **połączeń** dzienników, które mają być zbierane.
-1. Ułatwia analizowanie włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Zobacz przykład w obszarze [rozwiązać błędy związane z łącznością](#Resolve-connectivity-errors).
+1. Ułatwia analizowanie włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Zobacz przykład w obszarze [rozwiązać błędy związane z łącznością](#resolve-connectivity-errors).
 
    ![Zalecane ustawienia][2]
 
@@ -40,15 +40,14 @@ Aby dowiedzieć się więcej, zobacz [monitorowania kondycji usługi Azure IoT H
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Konfigurowanie alertów dotyczących _połączone urządzenia_ liczba metryki
 
-Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alertów dotyczących **połączone urządzenia** metryki.
+Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alertów dotyczących **połączone urządzenia (wersja zapoznawcza)** metryki.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do Centrum IoT hub.
-1. Wybierz **alerty (klasyczne)**.
-1. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)**.
-1. Wypełnij formularz i wybierz pozycję **OK**.
-
-   ![Zalecane alertu metryki][3]
+1. Wybierz **alerty**.
+1. Wybierz **Nowa reguła alertu**.
+1. Wybierz **Dodaj warunek**, następnie wybierz pozycję "Połączone urządzenia (wersja zapoznawcza)".
+1. Zakończ konfigurowanie Twojego odpowiednie progi i alerty opcje, określ poniższe informacje.
 
 Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platformie Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
 

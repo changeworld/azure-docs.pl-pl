@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/30/2018
+ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407887"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671705"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -219,7 +219,7 @@ Tak, możesz przełączyć się awaryjnie na Maszynę wirtualną z usługą Mana
 
 **Czy istnieje dowolnego wpływ migracji na maszyny wirtualne platformy Azure chronione przez usługę Azure Site Recovery za pomocą replikacji Azure – Azure?**
 
-Tak. Obecnie usługa Azure Site Recovery do platformy ochrony dla maszyn wirtualnych z usługą Managed Disks jest dostępna tylko jako usługa w publicznej wersji zapoznawczej.
+Tak. Obecnie usługa Azure lokacji odzyskiwania Azure do platformy Azure ochronę maszyn wirtualnych z usługą Managed Disks jest dostępna jako usługą Ogólnodostępną.
 
 **Można przeprowadzić migrację maszyn wirtualnych z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które są lub wcześniej zostały zaszyfrowane do usługi managed disks**
 
@@ -339,7 +339,7 @@ Tak.
 
 **Co to są największych rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
 
-Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB.
+Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB. Dysków większych, maksymalnie 32 TiB zostaną dodane wkrótce.
 
 **Co to jest zalecaną maszynę Wirtualną o rozmiarach większych rozmiarów dysków (> 4 TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 96ac8522f94a3555fe63575baca8bbfbabc272d9
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 9c0e672788858176800c04d7b2aa355d303aec1f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570457"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666175"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
@@ -48,6 +48,9 @@ mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
+
+> [!NOTE]
+> Jeśli masz problemy z uruchamianiem polecenia, zapoznaj się z tego, co `maven-archetype-plugin` wersja jest używana. Ponieważ polecenia są uruchomione w pustym katalogu bez `.pom` pliku, jego może próbować użyć wtyczki starszej wersji z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` w przypadku uaktualnienia ze starszej wersji usługi Maven. Jeśli tak, spróbuj usunąć `maven-archetype-plugin` katalogu i uruchom ponownie polecenie.
 
 ### <a name="windows"></a>Windows
 

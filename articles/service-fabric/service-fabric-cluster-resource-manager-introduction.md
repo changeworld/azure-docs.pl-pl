@@ -4,7 +4,7 @@ description: Wprowadzenie do usługi Service Fabric Menedżer zasobów klastra.
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903368"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660889"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżer zasobów klastra usługi Service Fabric
 Tradycyjnie Zarządzanie systemów informatycznych lub usługi online polegało na dedykowanym określonych fizycznych lub maszyn wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowana jako warstwy. Może to być warstwy "Internet" i "dane" lub "Magazyn" warstwy. Aplikacje będą mieć warstwa obsługi komunikatów, gdzie żądania przepływ wewnątrz i na zewnątrz, a także zestaw maszyn dedykowanego dla usługi pamięć podręczna. Każdą warstwę lub typu obciążenia ma określonych maszyn do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilka stało się bazy danych. Określonego typu obciążenie spowodowane maszyn, które było do uruchomić zbyt gorąca, a następnie dodać więcej maszyn w tej samej konfiguracji dla tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zazwyczaj spowodowałoby zastąpienie maszyn z większych maszyn. Łatwe. Maszyna nie powiodło się, część cała aplikacja był uruchamiany niższe osiągnięto maksymalną dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).

@@ -4,7 +4,7 @@ description: Omówienie konfigurowania koligacji dla usługi Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085698"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663421"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligacji usługi w usłudze Service Fabric
 Koligacja jest formant, który znajduje się przede wszystkim ułatwiają przejście większej aplikacji monolitycznych w świecie chmury i mikrousług. Jest również używany jako optymalizacji dla poprawy wydajności usługi, mimo że ten sposób można mieć skutki uboczne.

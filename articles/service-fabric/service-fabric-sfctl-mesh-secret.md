@@ -4,7 +4,7 @@ description: W tym artykule opisano poleceń wpisu tajnego siatki sfctl interfej
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e2dc9f815fc578bbe1f01b6b64327ccf23a1aebb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: acc5862a8794da4fde991025eacfcccf6e16916a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285130"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661211"
 ---
-# <a name="sfctl-mesh-secret"></a>klucz tajny siatki interfejsu sfctl
+# <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Pobierz i usunąć zasoby wpisu tajnego siatki.
 
 ## <a name="commands"></a>Polecenia
@@ -30,7 +30,7 @@ Pobierz i usunąć zasoby wpisu tajnego siatki.
 | --- | --- |
 | delete | Usuwa zasób wpisu tajnego. |
 | list | Wyświetla wszystkie zasoby, klucza tajnego. |
-| Pokaż | Pobiera wpisu tajnego zasobów o podanej nazwie. |
+| pokaż | Pobiera wpisu tajnego zasobów o podanej nazwie. |
 
 ## <a name="sfctl-mesh-secret-delete"></a>Interfejs sfctl siatki secret delete
 Usuwa zasób wpisu tajnego.
@@ -47,8 +47,8 @@ Usuwa określony zasób wpisu tajnego i wszystkie jego nazwanych wartości.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -62,8 +62,8 @@ Pobiera informacje o wszystkich zasobów wpisu tajnego w określonej grupy zasob
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -83,8 +83,8 @@ Pobiera informacje o zasobie tajny o podanej nazwie. Informacje zawierają opis 
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

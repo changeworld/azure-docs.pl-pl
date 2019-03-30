@@ -1,10 +1,10 @@
 ---
-title: Zabezpieczenia komunikacji remoting service za pomocą języka Java w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak do zabezpieczania komunikacji między usługami zdalnymi, na podstawie usługi dla usług niezawodnej Java, które są uruchomione w klastrze usługi sieć szkieletowa usług Azure.
+title: Bezpieczna komunikacja usług zdalnych usług za pomocą języka Java w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zabezpieczyć na podstawie komunikacji zdalnej komunikacji usług Java usług reliable services, które są uruchomione w klastrze usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: timlt
+manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020817"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667008"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Bezpieczna komunikacja komunikacji zdalnej usługi w usłudze Java
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Bezpieczna komunikacja usług zdalnych usług usługi Java
 > [!div class="op_single_selector"]
 > * [C# w systemie Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. W tym artykule omówiono sposób poprawiania zabezpieczeń podczas korzystania z usług zdalnych za pośrednictwem usługi języka Java. Opiera się na istniejącą [przykład](service-fabric-reliable-services-communication-remoting-java.md) który wyjaśnia, jak skonfigurować komunikację zdalną dla niezawodne usługi napisane w języku Java. 
+Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura aplikacji usług Reliable Services zawiera kilka wbudowanych komunikacji stosy i narzędzia, których można użyć w celu zwiększenia bezpieczeństwa. W tym artykule omówiono sposób poprawiania zabezpieczeń podczas korzystania z zdalna komunikacja usług usługi Java. Opiera się na istniejącą [przykład](service-fabric-reliable-services-communication-remoting-java.md) , wyjaśnia, jak skonfigurować komunikację zdalną dla usług reliable services napisaną w języku Java. 
 
-Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej usługi z usługami Java, wykonaj następujące kroki:
+Aby zabezpieczyć usługi podczas korzystania z zdalna komunikacja usług przy użyciu usługi Java, wykonaj następujące kroki:
 
-1. Tworzenie interfejsu `HelloWorldStateless`, który definiuje metody, które będą dostępne dla zdalnego wywołania procedury w usłudze. Usługa będzie używać `FabricTransportServiceRemotingListener`, która jest zadeklarowana w `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakietu. Jest to `CommunicationListener` implementację, która zapewnia możliwości komunikacji zdalnej.
+1. Utwórz interfejs `HelloWorldStateless`, który definiuje metody, które będą dostępne dla zdalnego wywołania procedury w usłudze. Usługa będzie używać `FabricTransportServiceRemotingListener`, która jest zadeklarowana w `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakietu. Jest to `CommunicationListener` implementację, która oferuje możliwości komunikacji zdalnej.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,13 +53,13 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
         }
     }
     ```
-2. Dodaj ustawienia odbiornika i poświadczeń zabezpieczeń.
+2. Dodaj ustawienia odbiornika i poświadczenia zabezpieczeń.
 
-    Upewnij się, że certyfikat, który ma być używany do zabezpieczania komunikacji usługi jest zainstalowany na wszystkich węzłach w klastrze. Dla usług uruchomionych w systemie Linux certyfikat musi być dostępny jako plik PEM formmatted; albo `.pem` plik zawierający certyfikat i klucz prywatny lub `.crt` pliku, który zawiera certyfikat oraz `.key` pliku, który zawiera klucz prywatny. Aby dowiedzieć się więcej, zobacz [lokalizacji i format certyfikatów X.509 w węzłach Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    Upewnij się, że zainstalowano certyfikat, którego chcesz użyć do zabezpieczania komunikacji usługi we wszystkich węzłach w klastrze. Dla usług działających w systemie Linux certyfikat musi być dostępna jako plik PEM formmatted; albo `.pem` plik zawierający certyfikat i klucz prywatny lub `.crt` pliku, który zawiera certyfikat oraz `.key` pliku, który zawiera klucz prywatny. Aby dowiedzieć się więcej, zobacz [lokalizacji i format certyfikatów X.509 w węzłach systemu Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
     Istnieją dwa sposoby, które można udostępniać ustawienia odbiornika i poświadczenia zabezpieczeń:
 
-   1. Podaj je za pomocą [pakietu konfiguracji](service-fabric-application-and-service-manifests.md):
+   1. Podaj je za pomocą [pakiet konfiguracji](service-fabric-application-and-service-manifests.md):
 
        Dodaj nazwane `TransportSettings` sekcji w pliku settings.xml.
 
@@ -76,7 +76,7 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
 
        ```
 
-       W takim przypadku `createServiceInstanceListeners` metoda będzie wyglądać następująco:
+       W tym przypadku `createServiceInstanceListeners` metoda będzie wyglądać następująco:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -88,7 +88,7 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
         }
        ```
 
-        Jeśli dodasz `TransportSettings` sekcji w pliku settings.xml bez żadnych prefiksów `FabricTransportListenerSettings` załaduje wszystkie ustawienia w tej sekcji ma domyślnie.
+        Jeśli dodasz `TransportSettings` sekcji w pliku settings.xml bez dowolnego prefiksu, `FabricTransportListenerSettings` zostanie załadowany w tej sekcji wszystkie ustawienia domyślne.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -96,7 +96,7 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
             ...
         </Section>
         ```
-        W takim przypadku `CreateServiceInstanceListeners` metoda będzie wyglądać następująco:
+        W tym przypadku `CreateServiceInstanceListeners` metoda będzie wyglądać następująco:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -107,9 +107,9 @@ Aby ułatwić zabezpieczanie usługi podczas korzystania z komunikacji zdalnej u
             return listeners;
         }
        ```
-3. Gdy wywoływać metod w usług zabezpieczonych przy użyciu stosu usług zdalnych, zamiast `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klasę, aby utworzyć serwer proxy usługi, użyj `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Gdy wywołujesz metody zabezpieczonej usługi przy użyciu komunikacji zdalnej stosu, zamiast `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klasy, aby utworzyć usługę serwera proxy, należy użyć `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
 
-    Jeśli kod klienta działa w ramach usługi, można załadować `FabricTransportSettings` z pliku settings.xml. Utwórz sekcję TransportSettings, która jest podobna do kodu usługi, jak pokazano wcześniej. Wprowadź następujące zmiany w kodzie klienta:
+    Jeśli kod klienta jest uruchomiony jako część usługi, możesz załadować `FabricTransportSettings` z pliku settings.xml. Utwórz sekcję TransportSettings, która jest podobna do kodu usługi, jak pokazano wcześniej. Dla kodu klienta, należy wprowadzić następujące zmiany:
 
     ```java
 

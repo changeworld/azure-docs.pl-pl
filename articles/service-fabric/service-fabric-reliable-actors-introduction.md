@@ -4,7 +4,7 @@ description: Wprowadzenie do modelu programowania w elementach Reliable Actors u
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258065"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668674"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Wprowadzenie do elementów Reliable Actors usługi Service Fabric
 Elementy Reliable Actors to struktura aplikacji usługi Service Fabric na podstawie [wirtualnego aktora](https://research.microsoft.com/en-us/projects/orleans/) wzorca. Interfejsu API programu Reliable Actors oferuje jednowątkowe model programowania oparty na skalowalność i niezawodność gwarancje udostępniane przez usługę Service Fabric.
@@ -37,7 +37,7 @@ Mimo że wzorca projektowego aktora można jest dobrą dopasować liczby system�
 * Wystąpienia aktora nie będzie blokować obiektów wywołujących nieprzewidywalne opóźnień, wysyłając operacji We/Wy.
 
 ## <a name="actors-in-service-fabric"></a>Aktorzy usługi Service Fabric
-W usłudze Service Fabric, aktorów są realizowane w ramach elementów Reliable Actors: strukturę aplikacji na podstawie wzorca aktora skompilowane na [usług Reliable Services usługi Service Fabric](service-fabric-reliable-services-introduction.md). Każda usługa Reliable Actors, którą piszesz jest faktycznie podzielonym na partycje i stanowej usługi Reliable Service.
+W usłudze Service Fabric aktorów są realizowane w ramach elementów Reliable Actors: Struktura aplikacji na podstawie wzorca aktora skompilowane na [usług Reliable Services usługi Service Fabric](service-fabric-reliable-services-introduction.md). Każda usługa Reliable Actors, którą piszesz jest faktycznie podzielonym na partycje i stanowej usługi Reliable Service.
 
 Każdego aktora jest zdefiniowany jako wystąpienie typu aktora taka sama jak sposób, w jaki obiekt .NET jest wystąpieniem typu .NET. Na przykład może to być typ aktora, który implementuje funkcje Kalkulator i może istnieć wiele podmiotów tego typu, rozproszonych w różnych węzłach w klastrze. Każdy taki aktora jest unikatowo identyfikowana przez identyfikator aktora.
 

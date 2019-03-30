@@ -4,7 +4,7 @@ description: Przykładowy skrypt wiersza polecenia usługi Service Fabric — wy
 services: service-fabric
 documentationcenter: ''
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 04/13/2018
 ms.author: aljo
 ms.custom: ''
-ms.openlocfilehash: 60cb5aaf93521a3e2f7c922949d112ad96a00180
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 8fd83190f3cf92ef0f88ff0fb2a807e03199a5c1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805641"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670289"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Wyświetlanie listy aplikacji uruchomionych w klastrze usługi Service Fabric
 
@@ -32,7 +32,7 @@ Ten przykładowy skrypt umożliwia nawiązanie połączenia z klastrem usługi S
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu wiersza polecenia usługi Service Fabric](../service-fabric-cli.md).
 

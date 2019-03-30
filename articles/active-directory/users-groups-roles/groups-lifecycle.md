@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e4585e8e1a809824e63f917fed1cc8a9cfa646a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202932"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660260"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -81,7 +81,7 @@ Po wygaśnięciu grupy Grupa została usunięta jeden dzień po dacie wygaśnię
 
 ![Powiadomienia e-mail usunięcie grupy](./media/groups-lifecycle/deletion-notification.png)
 
-Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przywracanie grupy** lub za pomocą poleceń cmdlet programu PowerShell, zgodnie z opisem w [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md).
+Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przywracanie grupy** lub za pomocą poleceń cmdlet programu PowerShell, zgodnie z opisem w [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md). Należy pamiętać, że grupy 30-dniowego okresu przywracania nie jest możliwe do dostosowania.
     
 Jeśli grupy, do której są przywracane zawiera dokumentów, witryn programu SharePoint lub inne obiekty trwałe, może upłynąć do 24 godzin potrzeba pełnego przywrócenia grupy i jego zawartość.
 

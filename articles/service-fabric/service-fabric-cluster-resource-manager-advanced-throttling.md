@@ -4,7 +4,7 @@ description: Dowiedz się skonfigurować ograniczenia podana przez usługę Serv
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b1824fc5f93bafb26650d28277054869a3659099
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731756"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669830"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Ograniczanie Menedżer zasobów klastra usługi Service Fabric
 Nawet jeśli Menedżer zasobów klastra zostały skonfigurowane poprawnie, można uzyskać zakłócone klastra. Na przykład może być jednocześnie węzła błędów domeny awarii i — co się stanie, jeśli, które wystąpiły podczas uaktualniania? Menedżer zasobów klastra zawsze próbuje naprawić wszystkie elementy, zużywają zasoby klastra próby reorganizowanie i naprawić klastra. Ograniczenia zapewniają backstop tak, aby klaster może używać zasobów w celu stabilizacji — możesz wrócić w węzłach, poprawianie partycje sieci, wdrożony poprawiony usługi bits.

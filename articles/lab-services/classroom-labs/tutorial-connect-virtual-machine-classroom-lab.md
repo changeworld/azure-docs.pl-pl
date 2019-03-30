@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5482ea720ea8d21230587dd9216bd006bf4e5a6e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775581"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650652"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Samouczek: uzyskiwanie dostępu do laboratorium w usłudze Azure Lab Services
 W tym samouczku Ty, jako osoba ucząca się, nawiążesz połączenie z maszyną wirtualną w laboratorium. 
@@ -45,8 +45,8 @@ W tym samouczku wykonasz następujące czynności:
 
     ![Łączenie z maszyną wirtualną](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Wykonaj jedną z następujących czynności: 
-    1. Aby uzyskać **Windows** maszyn wirtualnych, Zapisz **RDP** pliku na dysku twardym. Otwórz plik RDP, aby połączyć się z maszyną wirtualną. Użyj **nazwa_użytkownika** i **hasło** uzyskiwanie educator/Profesor, aby zalogować się do maszyny. 
-    3. Aby uzyskać **Linux** maszyn wirtualnych, skopiuj i Zapisz parametry połączenia SSH na **nawiązywanie połączenia z maszyną wirtualną** okno dialogowe. Użyj tych parametrów połączenia z poziomu terminalu SSH (takich jak [Putty](https://www.putty.org/)) nawiązywania połączenia z maszyną wirtualną. 
+    1. Aby uzyskać **Windows** maszyn wirtualnych, Zapisz **RDP** pliku na dysku twardym. Otwórz plik RDP, aby połączyć się z maszyną wirtualną. Użyj **nazwy użytkownika** i **hasło** uzyskiwanie educator/Profesor do logowania się na tym komputerze. 
+    3. Dla **Linux** maszyn wirtualnych, można użyć **SSH** lub **RDP** (jeśli jest włączony), aby połączyć się z nimi. Aby uzyskać więcej informacji, zobacz [Włączanie połączeń usług pulpitu zdalnego dla maszyny z systemem Linux](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku użyto linku rejestracji otrzymanego od nauczyciela w celu uzyskania dostępu do laboratorium.

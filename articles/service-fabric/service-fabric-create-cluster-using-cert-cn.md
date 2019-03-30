@@ -4,7 +4,7 @@ description: Dowiedz się, jak utworzyć klaster usługi Service Fabric przy uż
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: aljo
-ms.openlocfilehash: 5f2ba517e68dcd37de44bd26f476442e80817086
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: b9ad592ecbeb68784b19269e3ff06931989e59af
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498030"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663591"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi Service Fabric, która używa nazwy pospolitej certyfikatu zamiast odcisku palca
 Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu nazwy pospolite certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.

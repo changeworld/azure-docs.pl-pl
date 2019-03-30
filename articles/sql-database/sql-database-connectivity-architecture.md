@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 801e3b20908c3e92693e5e800428773bf5c90539
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521469"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661790"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -39,7 +39,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 >
 > Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
 > [!NOTE]
-> W tym temacie mają zastosowanie do serwerów usługi Azure SQL Database hostingu pojedynczych baz danych i elastycznych pul i baz danych SQL Data Warehouse. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> W tym temacie mają zastosowanie do serwerów usługi Azure SQL Database hostingu pojedynczych baz danych i pul elastycznych, usługa SQL Data Warehouse baz danych, — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for postgresql w warstwie. Dla uproszczenia bazy danych SQL jest używana przy odwoływaniu się do bazy danych SQL Database, SQL Data Warehouse — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 

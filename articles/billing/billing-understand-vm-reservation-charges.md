@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: e2ad086e767afc47fe72b52f934cb3bfc7cc146e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8994041d525186dd55bb4f4475f7e68036454f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849809"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649833"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do maszyn wirtualnych
 
@@ -61,15 +61,15 @@ Przy zakupie rezerwacji wystąpienia maszyny Wirtualnej, jeśli zostanie wybrana
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacji dla platformy Azure?](billing-save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
-- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
+- [Zarządzanie rezerwacji dla platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

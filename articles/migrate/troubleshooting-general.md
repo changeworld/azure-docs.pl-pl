@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 67c07169b3ff66d99ee52a0e078e0e463a42702e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482916"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652641"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -102,7 +102,7 @@ Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zi
    - Kliknij pozycję Plik > szablon OVF wdrażanie > Przejdź do OVA i ukończyć wdrażanie
 4. Jeśli wdrożenie nadal kończy się niepowodzeniem, należy się z pomocą techniczną usługi Azure Migrate.
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance"></a>Nie można wybrać platformy Azure w chmurze w urządzeniu
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>Nie można wybrać Azure chmury do urządzenia, a kończy się niepowodzeniem z powodu błędu "Zaznaczenia nie powiodło się w chmurze platformy Azure"
 
 Jest to znany problem i poprawka jest dostępna dla problemu. Pobierz [najnowsze uaktualnienie usługi bits](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) urządzenia i aktualizacji urządzenia w celu zastosowania poprawki.
 

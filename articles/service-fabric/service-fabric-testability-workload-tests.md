@@ -4,7 +4,7 @@ description: Jak zabezpieczyć usługi przed awariami łagodne i nieprawidłoweg
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051918"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667212"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
 Scenariusze testowania w usłudze Azure Service Fabric umożliwia deweloperom nie martw się o obsłudze poszczególne błędy. Istnieją scenariusze, jednak gdy jawne z przeplotem obciążenia klienta i błędy mogą być wymagane. Z przeplotem obciążenia klienta i błędy gwarantuje, że usługa wykonuje rzeczywistą operację niektóre akcje, gdy awaria. Określony poziom formant, który udostępnia możliwości testowania, mogą to być momentach dokładne wykonywania obciążenia. Ten indukowana usterek w różnych stanach w aplikacji można znaleźć błędy i poprawić jakość.
@@ -29,9 +29,9 @@ Ten test przedstawiono scenariusz, w którym przeplatają obciążeń biznesowyc
 
 Przejdźmy przykładowej usługi, który udostępnia cztery obciążeń: A, B, C i D. Każda zestawowi przepływów pracy i może być obliczeń, magazynu lub mieszane. Dla uproszczenia będzie abstrakcji obciążeń w naszym przykładzie. Są różne błędy, wykonywane na w tym przykładzie:
 
-* RestartNode: Błąd nieprawidłowego Aby zasymulować ponowne uruchomienie komputera.
-* RestartDeployedCodePackage: Nieprawidłowego błędów, aby zasymulować proces hosta usługi kończy się niepowodzeniem.
-* RemoveReplica: Łagodne błędów, aby zasymulować usuwania repliki.
+* RestartNode: Błąd nieprawidłowego do symulacji ponownego uruchomienia komputera.
+* RestartDeployedCodePackage: Błąd nieprawidłowego Aby zasymulować proces hosta usługi kończy się niepowodzeniem.
+* RemoveReplica: Łagodne błędów do symulacji usunięcia replik.
 * MovePrimary: Łagodne błędów, aby zasymulować repliki przenosi wyzwalane przez moduł równoważenia obciążenia usługi Service Fabric.
 
 ```csharp

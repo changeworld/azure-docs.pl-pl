@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 8066285e90903870937f28a62ef9fe8b2f6be55c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 04a99be40f1a89d834c560bddf3f49c2a73f34b8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005492"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650261"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
@@ -70,6 +70,8 @@ Jeśli potrzebujesz anulować bazy danych SQL zastrzeżone rezerwację zdolnośc
 
 Jeśli musisz zmienić rezerwację pojemności zarezerwowanej usługi SQL Database na inny region, typ wdrożenia, warstwę wydajności lub okres, możesz wymienić ją na inną rezerwację o takiej samej lub większej wartości. Data rozpoczęcia okresu nowej rezerwacji nie jest przenoszona z wymienionej rezerwacji. Okres 1 lub 3 lat rozpoczyna się po utworzeniu nowej rezerwacji. Aby zażądać programu exchange, przejdź do rezerwacji w witrynie Azure portal i wybierz **Exchange** do utworzenia żądania obsługi.
 
+Aby uzyskać więcej informacji na temat rezerwacji exchange lub refundacji zobacz [wymiany rezerwacji i zwroty](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+
 ## <a name="vcore-size-flexibility"></a>elastyczność rozmiaru (rdzeń wirtualny)
 
 elastyczność rozmiaru (rdzeń wirtualny) ułatwia skalowanie w górę lub w dół w ramach warstwy wydajności i region, bez utraty korzyści rezerwowanie pojemności. Wydajności bazy danych SQL zastrzeżone również zapewnia elastyczność tymczasowo przenieść gorąca bazy danych między pulami i pojedynczych baz danych w ramach normalnych operacji (w ramach tego samego regionu i wydajność warstwy) bez utraty rezerwowanie pojemności korzyści. Przechowując buforu bez zastosowanych w rezerwacji, umożliwiają wydajne zarządzanie wzrostów wydajności, nie przekraczając Twojego budżetu.
@@ -92,4 +94,3 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

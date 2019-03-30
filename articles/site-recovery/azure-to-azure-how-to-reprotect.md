@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110498"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648906"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony nie powiodło się na maszynach wirtualnych platformy Azure, do regionu podstawowego
 
@@ -22,10 +22,6 @@ Gdy możesz [w trybie Failover](site-recovery-failover.md) maszyn wirtualnych pl
 
 - Ponowne włączanie ochrony maszyn wirtualnych w regionie pomocniczym, aby rozpoczynały się na replikację do regionu podstawowego.
 - Po zakończeniu ponownego włączania ochrony, replikowania maszyn wirtualnych, można przełączać je za pośrednictwem z pomocniczej do regionu podstawowego.
-
-> [!WARNING]
-> Jeśli masz [migracji](migrate-overview.md#what-do-we-mean-by-migration) maszyn z serwera podstawowego do regionu pomocniczego, przenieść maszynę Wirtualną do innej grupy zasobów lub usunięta maszyna wirtualna platformy Azure, nie można ponownie włączyć ochronę maszyny Wirtualnej lub wykonać powrotu po awarii.
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 1. Trybu failover maszyny Wirtualnej z serwera podstawowego do regionu pomocniczego, muszą być zatwierdzone.

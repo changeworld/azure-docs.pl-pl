@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować dzienniki usługi Azure Monitor um
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ca5dd4a7c12a68a549f081ad62db1736c9c68837
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3523a2df413740f644151c548e403c39c9be1f03
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483169"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670510"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurowanie dzienników usługi Azure Monitor dla klastra
 
 Dzienniki platformy Azure Monitor to nasze zalecenie, aby monitorować zdarzenia poziomu klastra. Można skonfigurować obszar roboczy usługi Log Analytics, za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli zachowasz zaktualizowany szablon usługi Resource Manager, który wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu do skonfigurowania środowiska dzienniki usługi Azure Monitor. Wdrożenia za pośrednictwem witryny Marketplace jest łatwiejsze, jeśli masz już klaster, który został wdrożony z włączoną diagnostyką. Jeśli nie masz dostępu na poziomie subskrypcji na koncie, do której jest wdrażany z, należy wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
 
 > [!NOTE]
-> Aby skonfigurować dzienniki usługi Azure Monitor do monitorowania klastra, musisz mieć włączone, aby wyświetlić zdarzenia z poziomu klastra lub poziom platformy diagnostyki. Zapoznaj się [jak konfigurowanie diagnostyki w klastrach Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposób konfigurowania diagnostyki w klastrach systemu Linux](service-fabric-diagnostics-event-aggregation-lad.md) Aby uzyskać więcej informacji
+> Aby skonfigurować dzienniki usługi Azure Monitor do monitorowania klastra, musisz mieć włączone, aby wyświetlić zdarzenia z poziomu klastra lub poziom platformy diagnostyki. Zapoznaj się [jak konfigurowanie diagnostyki w klastrach Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposób konfigurowania diagnostyki w klastrach systemu Linux](service-fabric-diagnostics-oms-syslog.md) Aby uzyskać więcej informacji
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +49,7 @@ Jeśli chcesz dodać obszar roboczy usługi Log Analytics, po wdrożeniu klastra
 Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z dzienników usługi Azure Monitor na koncie magazynu przechowywania zdarzenia klastra. 
 
 >[!NOTE]
->Włączenie tego środowiska, w przypadku klastrów systemu Linux nie jest jeszcze dostępna. 
+>Rozwiązania analiza usługi Service Fabric jest obsługiwana tylko w przypadku klastrów Windows. W przypadku klastrów systemu Linux, zapoznaj się z artykułem na [sposób konfigurowania usługi Azure Monitor dzienników dla klastrów systemu Linux](service-fabric-diagnostics-oms-syslog.md).  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połącz obszar roboczy usługi Log Analytics z klastrem 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7e1229ceaa2ae7113c95cfb202a84c56a3e53d61
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620138"
+ms.locfileid: "58650159"
 ---
 # <a name="send-security-messages-sdk"></a>Wysyłanie komunikatów zabezpieczeń zestawu SDK
 
@@ -92,7 +92,7 @@ Wysyłanie komunikatów zabezpieczeń bez użycia usługi ASC agenta IoT za pomo
 
 Aby wysłać dane urządzenia z urządzeń do przetwarzania przez usługę ASC dla IoT, użyj jednej z poniższych interfejsów API, aby oznaczyć wiadomości dla prawidłowy routing z usługą ASC potoku przetwarzania IoT. Komunikaty wysyłane w ten sposób zostanie przetworzone i wyświetlane jako wgląd w zabezpieczenia w ramach usługi ASC dla IoT, w ramach zarówno usługi IoT Hub lub Azure Security Center. 
 
-Wszystkie dane, które są wysyłane, nawet wtedy, gdy oznaczone poprawny nagłówek muszą być zgodne z [ASC schematu komunikatów IoT](https://github.com/Azure/ASC-for-IoT-Schemas). 
+Wszystkie dane, które są wysyłane, nawet wtedy, gdy oznaczone poprawny nagłówek muszą być zgodne z [ASC schematu komunikatów IoT](https://aka.ms/iot-security-schemas). 
 
 ### <a name="send-security-message-api"></a>Zabezpieczenia komunikatów z interfejsu API wysyłania
 

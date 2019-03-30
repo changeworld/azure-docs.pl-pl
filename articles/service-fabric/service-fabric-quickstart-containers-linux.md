@@ -4,7 +4,7 @@ description: W tym przewodniku Szybki start skompilujesz obraz Docker za pomocą
 services: service-fabric
 documentationcenter: linux
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/30/2019
 ms.author: aljo,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 559b51b70c2bcb18d74d77fddaf928e0356435df
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804557"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664883"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
@@ -193,7 +193,7 @@ Po zakończeniu pracy z klastrem, możesz usunąć certyfikat ze swojego magazyn
 - Na komputerze Mac: Użyj aplikacji pęku kluczy.
 - W systemie Ubuntu: Wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start aplikacja kontenera systemu Linux została wdrożona w klastrze usługi Service Fabric na platformie Azure i przeniesiona do trybu failover oraz przeskalowano ją w klastrze. Aby dowiedzieć się więcej o pracy z kontenerami systemu Linux w usłudze Service Fabric, przejdź do samouczka dla aplikacji kontenera systemu Linux.
 

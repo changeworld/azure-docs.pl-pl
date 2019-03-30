@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593322"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651672"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 
@@ -83,17 +83,17 @@ Certyfikaty klienta są wymagane do uwierzytelniania żądań do usługi. Wybier
 3. [Aktualizowanie certyfikatu urzędu certyfikacji w pliku konfiguracji usługi](#update-ca-certificate-in-service-configuration-file)
 4. [Wystawianie certyfikatów klienta](#issue-client-certificates)
 5. [Tworzenie plików PFX certyfikatów klienta](#create-pfx-files-for-client-certificates)
-6. [Importowanie certyfikatu klienta](#Import-Client-Certificate)
+6. [Importowanie certyfikatu klienta](#import-client-certificate)
 7. [Skopiuj odciski palców certyfikatu klienta](#copy-client-certificate-thumbprints)
 8. [Konfigurowanie klientów dozwolonych w pliku konfiguracji usługi](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>Użyj istniejących certyfikatów klienta
 1. [Znajdź klucz publiczny urzędu certyfikacji](#find-ca-public-key)
-2. [Przekaż certyfikat urzędu certyfikacji do usługi w chmurze](#Upload-CA-certificate-to-cloud-service)
-3. [Aktualizowanie certyfikatu urzędu certyfikacji w pliku konfiguracji usługi](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [Skopiuj odciski palców certyfikatu klienta](#Copy-Client-Certificate-Thumbprints)
+2. [Przekaż certyfikat urzędu certyfikacji do usługi w chmurze](#upload-ca-certificate-to-cloud-service)
+3. [Aktualizowanie certyfikatu urzędu certyfikacji w pliku konfiguracji usługi](#update-ca-certificate-in-service-configuration-file)
+4. [Skopiuj odciski palców certyfikatu klienta](#copy-client-certificate-thumbprints)
 5. [Konfigurowanie klientów dozwolonych w pliku konfiguracji usługi](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurowanie sprawdzanie odwołania certyfikatu klienta](#Configure-Client-Certificate-Revocation-Check)
+6. [Konfigurowanie sprawdzanie odwołania certyfikatu klienta](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
 Dostęp do punktów końcowych usługi może być ograniczone do określonych zakresów adresów IP.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 4b4901b0323caa8eeda6b49228e65d1f28495164
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f4034a3462d7221c16464e6a2cee9aad2105a6cd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518494"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649815"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -129,7 +129,7 @@ Przywracanie w subskrypcji lub regionu/strefy. | Nieobsługiwane.
 Przywracanie do istniejącej maszyny Wirtualnej | Opcja Zastąp dysku.
 Przywracanie dysku z kontem magazynu, włączone dla szyfrowania usługi Azure Storage (SSE) | Nieobsługiwane.<br/><br/> Przywróć do konta które nie zostały włączone SSE.
 Przywracanie do kont magazynu mieszanych | Nieobsługiwane.<br/><br/> Oparte na typ konta magazynu, wszystkie przywróconych dysków będzie premium lub standardowa i nie mieszanych.
-Przywracanie do konta magazynu przy użyciu magazynu strefowo nadmiarowego (ZRS) | Nieobsługiwane.
+Przywracanie do konta magazynu przy użyciu magazynu strefowo nadmiarowego (ZRS) | Obsługiwane (dla maszyny Wirtualnej, który są kopie zapasowe po 2019 sty i gdzie [strefy dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) są dostępne)
 Przywracanie maszyny Wirtualnej bezpośrednio do zestawu dostępności | Za dyski zarządzane można przywrócić dysk i użyj opcji zestaw dostępności w szablonie.<br/><br/> Nie jest obsługiwane dla dysków niezarządzanych. W przypadku dysków niezarządzanych przywrócić dysk, a następnie utwórz Maszynę wirtualną w zestawie dostępności.
 Przywracanie kopii zapasowej niezarządzanych maszyn wirtualnych, po uaktualnieniu do zarządzania maszyny Wirtualnej| Obsługiwane.<br/><br/> Przywróć dyski i następnie utworzyć zarządzanej maszyny Wirtualnej.
 Przywracanie maszyny Wirtualnej, aby punkt przywracania, zanim maszyna wirtualna została zmigrowana do usługi managed disks | Obsługiwane.<br/><br/> Przywracanie do dysków niezarządzanych (ustawienie domyślne), Konwertuj przywróconych dysków na dyskach zarządzanych i Utwórz Maszynę wirtualną z dyskami zarządzanymi.
@@ -149,6 +149,7 @@ Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrożone w [zestawu s
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowanych przez firmę Microsoft i innych firm) |  Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane na podstawie niestandardowego obrazu (innej firmy) |   Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformie Azure  | Obsługiwane.<br/><br/> Aby utworzyć kopię zapasową maszyny Wirtualnej, musi być zainstalowany agent maszyny Wirtualnej, na zmigrowanej maszynie.
+Tworzenie kopii zapasowych maszyn wirtualnych spójności | Nieobsługiwane. <br/><br/>Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
 
 
 
@@ -165,6 +166,7 @@ Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Jeśli u
 Wykonywanie kopii zapasowych deduplikowanych dysków | Nieobsługiwane.
 Dodaj dysk do chronionej maszyny Wirtualnej | Obsługiwane.
 Zmiana rozmiaru dysku na chronionej maszynie Wirtualnej | Obsługiwane.
+Magazyn udostępniony| Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych przy użyciu pliku CSV lub serwera plików skalowalnego w poziomie. Autorzy CSV są prawdopodobnie nastąpi ich awaria.
 
 ## <a name="vm-network-support"></a>Obsługa sieci maszyny Wirtualnej
 

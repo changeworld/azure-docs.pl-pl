@@ -8,30 +8,38 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1349a05e1dd235c7b375335ae2c9fed16170a61f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401797"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649395"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
 Rezerwacje platformy Azure ułatwiają Oszczędzaj pieniądze, wstępnie płacenia za rok lub trzy lata maszyny wirtualne, bazy danych SQL obliczeniowych, pojemność przepływności usługi Azure Cosmos DB i innych zasobów platformy Azure. Wstępnie płacenia pozwala uzyskać rabat na zasoby, których używasz. Rezerwacje mogą znacznie zmniejszyć maszynę wirtualną, mocy obliczeniowej z bazy danych SQL, Azure Cosmos DB lub innego zasobu koszty do 72% przy cenach zgodnie z rzeczywistym użyciem w. Rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego zasobów.
 
-Możesz kupić rezerwację [witryny Azure portal](https://aka.ms/reservations). Aby uzyskać więcej informacji, zobacz następujące tematy:
+Możesz kupić rezerwację [witryny Azure portal](https://aka.ms/reservations). Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
-- [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
+Plany usługi:
+- [Maszyny wirtualne z wystąpień zarezerwowanych maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Wydajności rezerwowej zasobów platformy Azure Cosmos DB przy użyciu usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
+- [Zasoby obliczeniowe bazy danych SQL z usługą Azure SQL Database wydajności rezerwowej](../sql-database/sql-database-reserved-capacity.md)
 
-## <a name="why-should-i-buy-a-reservation"></a>Dlaczego należy kupić rezerwację?
+Plany oprogramowania:
+- [Red Hat plany oprogramowania z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Plany oprogramowania SUSE z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
 
-Jeśli masz maszyny wirtualne, usługi Azure Cosmos DB lub baz danych SQL, działające przez długie okresy, zakup rezerwacji zapewnia najbardziej ekonomiczna opcja. Na przykład jeśli uruchomisz stale cztery wystąpień usługi bez rezerwacji, opłaty są naliczane według stawek płatności zgodnie z rzeczywistym. Możesz kupić rezerwację dla tych zasobów, natychmiast otrzymują rabat związany z rezerwacją. Zasoby nie są naliczane według stawek płatności zgodnie z rzeczywistym.
+## <a name="why-buy-a-reservation"></a>Dlaczego warto kupić rezerwację?
 
-## <a name="what-charges-does-a-reservation-cover"></a>Opłaty za co to jest cover rezerwacji?
+Jeśli masz maszyny wirtualne, usługi Azure Cosmos DB lub baz danych SQL, działające przez długie okresy, zakup rezerwacji zapewnia najbardziej ekonomiczna opcja. Na przykład po uruchomieniu stale cztery wystąpień usługi bez rezerwacji, opłaty są naliczane według stawek zgodnie z rzeczywistym użyciem. Możesz kupić rezerwację dla tych zasobów, natychmiast otrzymują rabat związany z rezerwacją. Zasoby nie są naliczane według stawek płatności zgodnie z rzeczywistym.
+
+## <a name="charges-covered-by-reservation"></a>Opłaty za objętych rezerwacji
+
+Plany usługi:
 
 - Rezerwacja wystąpienia maszyny wirtualnej: Rezerwacja obejmuje jedynie koszty operacji obliczeniowych maszyn wirtualnych. Nie omówiono dodatkowe opłaty za oprogramowanie, sieci i magazynu.
+- Usługa Azure Cosmos DB wydajności rezerwowej: Rezerwacja obejmuje przepływnością aprowizowaną dla zasobów. Nie omówiono magazynu i są opłaty za sieć.
 - Bazy danych SQL zastrzeżone rdzeniach wirtualnych: Tylko koszty operacji obliczeniowych są dołączone do rezerwacji. Licencja jest rozliczana osobno.
 - Usługa Azure Cosmos DB wydajności rezerwowej: Rezerwacja obejmuje przepływnością aprowizowaną dla zasobów, nie omówiono opłaty za magazyn i sieć.
 
@@ -49,29 +57,36 @@ Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subsk
 
 Rezerwacja jest obciążany opłatą za metodę płatności, powiązane z subskrypcją. W przypadku subskrypcji Enterprise kosztów rezerwacji jest odejmowany od salda zobowiązania pieniężnego. Jeśli saldo zobowiązania pieniężnego nie pokrywa kosztów rezerwacji, opłaty są naliczane nadwyżkowe użycie. Jeśli masz subskrypcję płatność za rzeczywiste użycie, natychmiast rozliczany karty kredytowej, posiadane na Twoim koncie. Jeśli opłaty są naliczane za pomocą faktury, możesz zobaczyć opłaty na następnej fakturze.
 
-## <a name="how-is-the-reservation-discount-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
+## <a name="how-reservation-discount-is-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
 
 Rabat związany z rezerwacją dotyczy użycia zasobów, który odpowiada atrybuty, które możesz wybrać w przypadku dokonywania zakupu rezerwacji. Atrybuty obejmują zakres, w którym uruchamiane zgodnych maszyn wirtualnych, baz danych SQL, Azure Cosmos DB i inne zasoby. Na przykład chcąc rabat związany z rezerwacją do czterech maszyn wirtualnych standardowa D2 w regionie zachodnie stany USA, wybierz subskrypcję, w którym działają maszyny wirtualne. Jeśli maszyny wirtualne są uruchomione w różnych subskrypcjach w ramach rejestracji/konta, wybierz zakres jako udostępniony. Zakres udostępniony umożliwia rabatu związanego z rezerwacją do zastosowania w subskrypcjach. Po zakupie rezerwacji, można zmienić zakres. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
 
 Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych. Zasoby, które działają w subskrypcji przy użyciu innych typów ofert nie otrzymują rabat związany z rezerwacją.
 
-Aby lepiej zrozumieć, jak rezerwacje wpływa na rozliczeniami, zobacz następujące tematy:
+Aby lepiej zrozumieć, jak rezerwacje wpływa na rozliczeniami, zobacz następujące artykuły:
+
+Plany usługi:
 
 - [Świadomość, że Azure Reserved VM Instances rabatów](billing-understand-vm-reservation-charges.md)
 - [Zrozumienie rabat związany z rezerwacją platformy Azure](billing-understand-vm-reservation-charges.md)
 - [Omówienie usługi Azure Cosmos DB rabat związany z rezerwacją](billing-understand-cosmosdb-reservation-charges.md)
+
+Plany oprogramowania:
+
+- [Zrozumienie rabat związany z rezerwacją platformy Azure i użycia do firmy Red Hat](billing-understand-rhel-reservation-charges.md)
 - [Opis rabat związany z rezerwacją platformy Azure i użycia z systemem SUSE](billing-understand-suse-reservation-charges.md)
 
-## <a name="what-happens-when-the-reservation-term-expires"></a>Co się stanie po wygaśnięciu okresu rezerwacji?
+## <a name="when-the-reservation-term-expires"></a>Kiedy wygasa w okresie rezerwacji
 
 Po zakończeniu okresu rezerwacji rozliczeń rabat wygasa, a maszyny wirtualne, bazy danych SQL, Azure Cosmos DB lub innego zasobu jest rozliczana w cenie płatności — jako — możesz Przejdź. Azure rezerwacji nie automatycznego odnawiania. Aby kontynuować wprowadzenie rozliczeń rabat, musisz kupić nowe zastrzeżenie dla kwalifikujących się usług i oprogramowania.
 
-## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Rabat ma zastosowanie do różnych rozmiarów elastyczność rozmiaru wystąpienia
+## <a name="discount-applies-to-different-sizes"></a>Rabat ma zastosowanie do różnych rozmiarów
 
-W przypadku dokonywania zakupu rezerwacji, Rabat można stosować do innych wystąpień z atrybutów, które znajdują się w tej samej grupie rozmiarów. Elastyczność w zakresie Rabat zależy od typu rezerwacji i atrybuty, które można wybrać w przypadku dokonywania zakupu rezerwacji.
+W przypadku dokonywania zakupu rezerwacji, Rabat można stosować do innych wystąpień z atrybutów, które znajdują się w tej samej grupie rozmiarów. Ta funkcja jest nazywana elastyczność rozmiaru wystąpienia. Elastyczność w zakresie Rabat zależy od typu rezerwacji i atrybuty, które można wybrać w przypadku dokonywania zakupu rezerwacji.
 
-- Wystąpienia zarezerwowane maszyn wirtualnych: Przy zakupie rezerwacji, jeśli zostanie wybrana **zoptymalizowane pod kątem**: **wystąpienia elastyczność rozmiaru**, pokrycia Rabat zależy od rozmiaru maszyny Wirtualnej, należy wybrać. Rezerwację można zastosować do rozmiarów maszyn wirtualnych (VM) w tej samej grupie rozmiar w serii. Aby uzyskać więcej informacji, zobacz [elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SUSE Linux Enterprise software plan: Pokrycie rabatu jest zależna od procesorów wirtualnych maszyn wirtualnych, w którym jest uruchamiane oprogramowanie SUSE. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md).
+Plany usługi:
+
+- Wystąpienia zarezerwowane maszyn wirtualnych: Po kupić rezerwację i wybraniu **zoptymalizowane pod kątem**: **wystąpienia elastyczność rozmiaru**, pokrycia Rabat zależy od rozmiaru maszyny Wirtualnej, należy wybrać. Rezerwację można zastosować do rozmiarów maszyn wirtualnych (VM) w tej samej grupie rozmiar w serii. Aby uzyskać więcej informacji, zobacz [elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 - Wydajności rezerwowej bazy danych SQL: Pokrycie Rabat zależy od warstwy wydajności, które można wybrać. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak jest stosowany rabat związany z rezerwacją Azure](billing-understand-reservation-charges.md).
 - Usługa Azure Cosmos DB wydajności rezerwowej: Pokrycie Rabat zależy od aprowizowanej przepływności. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak stosowany jest rabat związany z rezerwacją usługi Azure Cosmos DB](billing-understand-cosmosdb-reservation-charges.md).
 

@@ -4,7 +4,7 @@ description: Opis i zawartość pakietu autonomicznego sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: maburlik
-manager: timlt
+manager: chackdan
 editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141615"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661619"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Zawartość pakietu autonomicznego sieci szkieletowej usługi dla systemu Windows Server
 W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Service Fabric autonomicznego, znajdziesz następujące pliki:
@@ -52,7 +52,7 @@ W [pobrane](https://go.microsoft.com/fwlink/?LinkId=730690) pakietu usługi Serv
 | ClusterConfig.gMSA.Windows.MultiMachine.json |Klaster przykładowy plik konfiguracji zawierający wszystkie ustawienia dla klastra bezpiecznego, wielu maszyny (lub maszyny wirtualnej), w tym informacje dla każdego węzła w zabezpieczonym klastrem. Klaster jest zabezpieczony za pomocą [kont usługi zarządzanych przez grupę](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Przykłady konfiguracji klastra
-Najnowsze wersje Szablony konfiguracji klastra można znaleźć na stronie usługi GitHub: [przykłady konfiguracji klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Najnowsze wersje Szablony konfiguracji klastra można znaleźć na stronie usługi GitHub: [Przykłady konfiguracji klastra autonomicznego](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Niezależnie od pakietu środowiska uruchomieniowego
 Najnowszy pakiet środowiska uruchomieniowego jest automatycznie pobierana podczas wdrażania klastra z [łącze Pobierz — środowisko uruchomieniowe usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).

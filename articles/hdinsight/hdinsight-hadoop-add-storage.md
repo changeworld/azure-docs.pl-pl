@@ -6,21 +6,30 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 03/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 833198f3b5dd07988bcb5fc85f815ae2c12f1197
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 373851c406d95a2e458c017cb311bd5cc4e5b30f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481930"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664294"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie kolejnych kont magazynu do HDInsight
 
-Dowiedz się, jak dodać konta dodatkowego magazynu usługi Azure HDInsight przy użyciu akcji skryptu. Kroki opisane w tym dokumencie Dodaj konto magazynu do istniejącego klastra HDInsight opartych na systemie Linux. Ten artykuł dotyczy [usługi Azure Storage](hdinsight-hadoop-use-blob-storage.md) i tylko dodatkowych kont magazynu (nie domyślnego klastra konta magazynu). W tym artykule nie ma zastosowania do [usługi Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) i [usługi Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Dowiedz się, jak dodać dodatkowe usługi Azure storage za pomocą akcji skryptu *kont* do HDInsight. Kroki opisane w tym dokumencie dodać magazyn *konta* do istniejącego klastra HDInsight opartych na systemie Linux. Ten artykuł dotyczy magazynu *kont* (nie domyślnego klastra konta magazynu), a nie dodatkowego magazynu, takie jak [usługi Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) i [usługi Azure Data Lake Storage Gen2 ](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
 > Informacje przedstawione w tym dokumencie jest o dodanie dodatkowego miejsca do magazynowania w klastrze, po jego utworzeniu. Aby uzyskać informacje na temat dodawania konta magazynu podczas tworzenia klastra, zobacz [konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i](hdinsight-hadoop-provision-linux-clusters.md).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Klaster Hadoop w HDInsight. Zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Nazwa konta magazynu i klucza. Zobacz [Zarządzanie ustawieniami konta magazynu w witrynie Azure portal](../storage/common/storage-account-manage.md).
+* [Nazwa klastra poprawnie z uwzględnieniem wielkości liter](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
+* Jeśli przy użyciu programu PowerShell, należy moduł AZ.  Zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+* Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* Jeśli używasz powłoki bash lub wiersza polecenia systemu windows, należy także **jq**, wiersza polecenia procesora w formacie JSON.  Zobacz [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/). Dla programu bash w systemie Ubuntu w systemie Windows 10 zobacz [podsystemu Windows dla systemu Linux instalacji Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -51,52 +60,127 @@ Podczas przetwarzania skrypt wykonuje następujące czynności:
 
 __Lokalizację skryptu__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__Wymagania dotyczące__:
-
-* Skrypt musi zostać zastosowana na __węzłami głównymi__.
+__Wymagania dotyczące__:  Skrypt musi zostać zastosowana na __węzłami głównymi__. Nie musisz oznaczyć ten skrypt jako __utrwalone__, jak bezpośrednio aktualizuje konfigurację Ambari klastra.
 
 ## <a name="to-use-the-script"></a>Aby użyć skryptu
 
-Ten skrypt może służyć z witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia do klasycznego Azure. Aby uzyskać więcej informacji, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu.
+Ten skrypt może służyć z programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub witryny Azure portal.
 
-> [!IMPORTANT]  
-> Podczas korzystania z krokami opisanymi w dokumencie dostosowywania, aby zastosować ten skrypt należy użyć następujące informacje:
->
-> * Zamień na identyfikator URI dla tego skryptu żadnych akcji skryptu przykład identyfikatora URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
-> * Wszelkie parametry przykład zastąpić nazwę konta usługi Azure storage i klucz konta magazynu, które mają zostać dodane do klastra. Jeśli przy użyciu witryny Azure portal, te parametry muszą być oddzielone spacją.
-> * Nie musisz oznaczyć ten skrypt jako __utrwalone__, jak bezpośrednio aktualizuje konfigurację Ambari klastra.
+### <a name="powershell"></a>PowerShell
+
+Za pomocą [przesłać AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction). Zastąp `CLUSTERNAME`, `ACCOUNTNAME`, i `ACCOUNTKEY` odpowiednimi wartościami.
+
+```powershell
+# Update these parameters
+$clusterName = "CLUSTERNAME"
+$parameters = "ACCOUNTNAME ACCOUNTKEY"
+
+$scriptActionName = "addStorage"
+$scriptActionUri = "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh"
+
+# Execute script
+Submit-AzHDInsightScriptAction `
+    -ClusterName $clusterName `
+    -Name $scriptActionName `
+    -Uri $scriptActionUri `
+    -NodeTypes "headnode" `
+    -Parameters $parameters
+```
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+Za pomocą [wykonywanie akcji skryptu az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).  Zastąp `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`, i `ACCOUNTKEY` odpowiednimi wartościami.
+
+```cli
+az hdinsight script-action execute ^
+    --name CLUSTERNAME ^
+    --resource-group RESOURCEGROUP ^
+    --roles headnode ^
+    --script-action-name addStorage ^
+    --script-uri "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh" ^
+    --script-parameters "ACCOUNTNAME ACCOUNTKEY"
+```
+
+### <a name="azure-portal"></a>Azure Portal
+
+Zobacz [dotyczą akcji skryptu działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
 ## <a name="known-issues"></a>Znane problemy
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Konta magazynu, które nie są wyświetlane w witrynie Azure portal lub narzędzi
 
-Podczas przeglądania klastra HDInsight w witrynie Azure portal, wybierając __kont magazynu__ wpis w __właściwości__ kont magazynu dodanego przez tę akcję skryptu nie są wyświetlane. Klasyczny interfejs wiersza polecenia platformy Azure i programu PowerShell Azure nie są wyświetlane dodatkowe konto magazynu albo.
+Podczas przeglądania klastra HDInsight w witrynie Azure portal, wybierając __kont magazynu__ wpis w __właściwości__ kont magazynu dodanego przez tę akcję skryptu nie są wyświetlane. Azure PowerShell i wiersza polecenia platformy Azure nie są wyświetlane dodatkowe konto magazynu albo.
 
 Informacje dotyczące magazynu nie jest wyświetlany, ponieważ skrypt modyfikuje tylko konfigurację core-site.xml klastra. Te informacje nie są używane podczas pobierania informacji klastra, za pomocą interfejsów API zarządzania platformy Azure.
 
 Aby wyświetlić informacje o koncie magazynu dodane do klastra przy użyciu tego skryptu, użyj interfejsu API REST Ambari. Aby pobrać te informacje dotyczące klastra, użyj następujących poleceń:
 
+### <a name="powershell"></a>PowerShell
+
+Zastąp `CLUSTERNAME` o nazwie klastra prawidłowo z uwzględnieniem wielkości liter. Wersja konfiguracji usługi używana należy najpierw zidentyfikować, wprowadzając poniższe polecenie:
+
 ```powershell
+# getting service_config_version
+$clusterName = "CLUSTERNAME"
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+```
+
+Zastąp `ACCOUNTNAME` z rzeczywistymi nazwami. Następnie zastąp `4` z rzeczywistym wersja konfiguracji usługi, a następnie wprowadź polecenie. Po wyświetleniu monitu wprowadź hasło logowania klastra.
+
+```powershell
+# Update values
+$accountName = "ACCOUNTNAME"
+$version = 4
+
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
+$respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
-> [!NOTE]  
-> Ustaw `$clusterName` na nazwę klastra HDInsight. Ustaw `$storageAccountName` do nazwy konta magazynu. Po wyświetleniu monitu wprowadź nazwę użytkownika klastra (administratora) i hasło.
+### <a name="bash"></a>Bash
+Zastąp `myCluster` o nazwie klastra prawidłowo z uwzględnieniem wielkości liter.
 
-```Bash
-curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
+```bash
+export CLUSTERNAME='myCluster'
+
+curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
 ```
 
-> [!NOTE]  
-> Ustaw `$PASSWORD` hasło do konta logowania (administratora) klastra. Ustaw `$CLUSTERNAME` na nazwę klastra HDInsight. Ustaw `$STORAGEACCOUNTNAME` do nazwy konta magazynu.
->
-> W tym przykładzie użyto [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) i [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) pobierania i analizowania danych JSON.
+Zastąp `myAccount` przy użyciu nazwy konta rzeczywistego magazynu. Następnie zastąp `4` z rzeczywistym wersja konfiguracji usługi, a następnie wprowadź polecenie:
 
-Korzystając z tego polecenia, należy zastąpić __CLUSTERNAME__ o nazwie klastra HDInsight. Zastąp __hasło__ przy użyciu protokołu HTTP hasło logowania klastra. Zastąp __STORAGEACCOUNT__ nazwą konta magazynu, dodać za pomocą akcji skryptu. Informacje zwracane z tego polecenia zostanie wyświetlony podobny do następującego tekstu:
+```bash
+export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.windows.net"'
+export VERSION='4'
+
+curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+| jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
+```
+
+### <a name="cmd"></a>cmd
+
+Zastąp `CLUSTERNAME` nazwą klastra prawidłowo z uwzględnieniem wielkości liter w obu skryptów. Wersja konfiguracji usługi używana należy najpierw zidentyfikować, wprowadzając poniższe polecenie:
+
+```cmd
+curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
+jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
+```
+
+Zastąp `ACCOUNTNAME` przy użyciu nazwy konta rzeczywistego magazynu. Następnie zastąp `4` z rzeczywistym wersja konfiguracji usługi, a następnie wprowadź polecenie:
+
+```cmd
+curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
+jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
+```
+---
+
+ Informacje zwracane z tego polecenia zostanie wyświetlony podobny do następującego tekstu:
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 
@@ -110,7 +194,7 @@ Uruchomione ponownie za pomocą akcji skryptu jest __nie__ zaktualizować klucza
 
 Aby obejść ten problem, należy usunąć istniejący wpis dla konta magazynu. Wykonaj następujące kroki, aby usunąć istniejący wpis:
 
-1. W przeglądarce sieci web Otwórz Interfejsu sieci Web Ambari klastra usługi HDInsight. Identyfikator URI jest https://CLUSTERNAME.azurehdinsight.net. Zastąp ciąg __CLUSTERNAME__ nazwą klastra.
+1. W przeglądarce sieci web Otwórz Interfejsu sieci Web Ambari klastra usługi HDInsight. Identyfikator URI jest `https://CLUSTERNAME.azurehdinsight.net`. Zastąp ciąg `CLUSTERNAME` nazwą klastra.
 
     Po wyświetleniu monitu wprowadź nazwę użytkownika logowania do protokołu HTTP i hasło dla klastra.
 
@@ -131,15 +215,9 @@ Aby obejść ten problem, należy usunąć istniejący wpis dla konta magazynu. 
 
 W przypadku konta magazynu w regionie innym niż klaster HDInsight, może wystąpić spadek wydajności. Uzyskiwanie dostępu do danych w innym regionie wysyła ruch sieciowy, poza centrum danych platformy Azure regionalnych i w publicznej sieci internet, który może prowadzić do opóźnienia.
 
-> [!WARNING]  
-> Przy użyciu konta magazynu w regionie innym niż klaster HDInsight nie jest obsługiwana.
-
 ### <a name="additional-charges"></a>Dodatkowe opłaty
 
 W przypadku konta magazynu w regionie innym niż klaster HDInsight, możesz zauważyć opłaty za dodatkowy ruch wychodzący na rozliczenia platformy Azure. Opłata za ruch wychodzący jest stosowana, gdy opuszczają one regionalnym centrum danych. Ta opłata jest stosowana nawet wtedy, gdy ruch jest kierowany do innego centrum danych platformy Azure w innym regionie.
-
-> [!WARNING]  
-> Przy użyciu konta magazynu w regionie innym niż klaster HDInsight nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

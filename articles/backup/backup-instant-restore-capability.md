@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578904"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652675"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
 > [!NOTE]
-> Na podstawie opinii użytkowników, zmieniamy **stosu kopii zapasowej maszyny Wirtualnej V2** do **natychmiastowe Przywracanie** aby wyeliminować problemy z funkcjami usługi Azure Stack.
+> Na podstawie opinii użytkowników, zmieniamy **stosu kopii zapasowej maszyny Wirtualnej V2** do **natychmiastowe Przywracanie** aby wyeliminować problemy z funkcjami usługi Azure Stack.<br/><br/> Wszyscy użytkownicy kopii zapasowej platformy Azure teraz zostały uaktualnione do **natychmiastowe Przywracanie**.
 
 Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funkcji:
 
@@ -60,15 +60,25 @@ Migawek przyrostowych znajdują się na koncie magazynu maszyny Wirtualnej, któ
 >[!NOTE]
 > Migawka przechowywania zostanie usunięty z 5 dni dla zasad co tydzień.
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
+## <a name="configure-snapshot-retention"></a>Konfigurowanie przechowywania migawek
 
-**Wszyscy użytkownicy kopii zapasowej platformy Azure teraz zostały uaktualnione do natychmiastowe Przywracanie**.
+### <a name="using-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 W witrynie Azure portal można zobaczyć pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 
 ![Możliwość natychmiastowego przywracania](./media/backup-azure-vms/instant-restore-capability.png)
 
-Aby skonfigurować przechowywanie migawki przy użyciu programu Powershell, zapoznaj się [w tym dokumencie](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention).
+### <a name="using-powershell"></a>Korzystanie z programu PowerShell
+
+>[!NOTE]
+> Za pomocą programu PowerShell Az wersji 1.6.0 lub nowszy można zaktualizować okresu przechowywania natychmiastowe Przywracanie migawki w zasadach przy użyciu programu PowerShell
+
+```powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+Przechowywania migawek domyślne dla każdej zasady jest równa 2 dni. Użytkownik może zmienić wartość co najmniej 1 i maksymalnie 5 dni. Co tydzień zasad przechowywania migawki zostanie usunięty z 5 dni.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

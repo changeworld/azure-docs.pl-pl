@@ -4,7 +4,7 @@ description: Dowiedz się więcej o konfigurowaniu stanowych usług Reliable Ser
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c131cf96f11dcddfb0de87ccf47f2d2c8a99617d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 97cf4fafb53156eec654bcc67cd8dccf3d973c32
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850806"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660701"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurowanie stanowych usług reliable services
 Istnieją dwa rodzaje ustawień konfiguracji dla usług reliable services. Jeden zestaw jest globalne dla wszystkich usług reliable services w klastrze, a drugi zestaw zależy od określonej usługi reliable service.

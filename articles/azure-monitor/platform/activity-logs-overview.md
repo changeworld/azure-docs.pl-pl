@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088676"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650295"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -35,7 +35,6 @@ Możesz pobrać zdarzenia z dziennika aktywności przy użyciu witryny Azure por
 > [!NOTE]
 > [Nowszych alertów](../../azure-monitor/platform/alerts-overview.md) oferują udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](../../azure-monitor/platform/alerts-activity-log.md).
 
-
 ## <a name="categories-in-the-activity-log"></a>Kategorie w dzienniku aktywności
 Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii [znajduje się w artykule](../../azure-monitor/platform/activity-log-schema.md). Należą do nich:
 * **Administracyjne** — ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
@@ -48,9 +47,11 @@ Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe 
 * **Zasady** — ta kategoria zawiera rekordy operacji wszystkie efekt działania wykonywane przez usługę Azure Policy. Przykłady typów zdarzeń, które powinny zostać wyświetlone tej kategorii inspekcji i Odmów. Każdej akcji podjętej przez zasady są modelowane jako operacja dotycząca zasobu.
 
 ## <a name="event-schema-per-category"></a>Schemat zdarzeń według kategorii
+
 [Zobacz ten artykuł, aby zrozumieć schemat zdarzeń dziennika aktywności dla każdej kategorii.](../../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Co można zrobić z dziennika aktywności
+
 Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 
 ![Dziennik aktywności platformy Azure](./media/activity-logs-overview/Activity_Log_Overview_v3.png)
@@ -58,12 +59,13 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 
 * Zapytania i wyświetlić ją w **witryny Azure portal**.
 * [Tworzenie alertów dotyczących zdarzenia dziennika aktywności.](../../azure-monitor/platform/activity-log-alerts.md)
-* [Stream jego **Centrum zdarzeń** ](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
-* Analizowanie ich w usłudze Power BI przy użyciu [ **pakietu zawartości usługi Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
+* [Stream jego **Centrum zdarzeń** ](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowe, takie jak Power BI.
+* Analizować je w usłudze Power BI przy użyciu [ **pakiet zawartości usługi Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Zapisać go w celu **konta magazynu** inspekcji archiwizacji lub ręcznie](../../azure-monitor/platform/archive-activity-log.md). Można określić przy użyciu czasu (w dniach) przechowywania **profilu dziennika**.
 * Wykonuje zapytania za pomocą polecenia Cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Zapytanie dziennika aktywności w witrynie Azure portal
+
 W witrynie Azure portal można wyświetlić dziennik aktywności w kilku miejscach:
 * **Dziennika aktywności** której będziesz mieć dostęp przez wyszukiwanie w dzienniku aktywności w **wszystkich usług** w okienku nawigacji po lewej stronie.
 * **Monitor** pojawia się domyślnie w okienku nawigacji po lewej stronie. Dziennik aktywności jest jedną sekcję usługi Azure Monitor.
@@ -86,6 +88,7 @@ Po zdefiniowaniu zestaw filtrów kwerendy można przypiąć do pulpitu nawigacyj
 Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [zbieranie i analizowanie dzienników aktywności rozwiązania](../../azure-monitor/platform/collect-activity-logs.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale umożliwia funkcji dzienniki usługi Azure Monitor przestawić, zapytania i wizualizować dane w sposób bardziej wydajne.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Eksportuj Dziennik aktywności, za pomocą profilu dziennika
+
 A **profilu dziennika** kontroluje sposób dziennik aktywności jest eksportowana. Przy użyciu profilu dziennika, można skonfigurować:
 
 * Gdzie mają być wysyłane dziennika aktywności (konto magazynu lub Event Hubs)
@@ -102,13 +105,14 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 >  Obecnie nie można zarchiwizować dane na koncie magazynu, który znajduje się za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieniony na JSON wierszy od 1 listopada 2018 r. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> Format danych dziennika w ramach konta magazynu zmieniony na JSON wierszy od 1 listopada 2018 r. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Te ustawienia można skonfigurować za pomocą opcji "Export" w bloku dziennika aktywności w portalu. Również mogą być konfigurowane programowo [przy użyciu interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), w przypadku poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. Subskrypcja może mieć tylko jeden profil dziennika.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurowanie profilów dziennika przy użyciu witryny Azure portal
+
 Można przesyłać strumieniowo dziennik aktywności do Centrum zdarzeń lub przechowywać je w ramach konta magazynu przy użyciu opcji "Eksportuj do Centrum zdarzeń" w witrynie Azure portal.
 
 1. Przejdź do **dziennika aktywności** za pomocą menu po lewej stronie portalu.
@@ -117,7 +121,7 @@ Można przesyłać strumieniowo dziennik aktywności do Centrum zdarzeń lub prz
 2. Kliknij przycisk **Eksportuj do Centrum zdarzeń** znajdujący się u góry bloku.
 
     ![Przycisk Eksportuj w portalu](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
-3. W wyświetlonym bloku możesz wybrać:  
+3. W wyświetlonym bloku możesz wybrać:
    * regiony, dla których chcesz eksportowanie zdarzeń
    * Konto magazynu, do której chcesz zapisać zdarzenia
    * Liczba dni, aby zachować te zdarzenia w magazynie. Ustawienie wartości 0 dni, które zawsze zachowuje dzienniki.
@@ -132,13 +136,13 @@ Można przesyłać strumieniowo dziennik aktywności do Centrum zdarzeń lub prz
 
 #### <a name="get-existing-log-profile"></a>Pobieranie istniejącego profilu dziennika
 
-```
+```powershell
 Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>Dodawanie profilu dziennika
 
-```
+```powershell
 Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
@@ -152,7 +156,8 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Kategoria |Nie |Rozdzielana przecinkami lista kategorie zdarzeń, które powinny być zbierane. Możliwe wartości to zapis, usuwanie i akcji. |
 
 #### <a name="remove-a-log-profile"></a>Usuwanie profilu dziennika
-```
+
+```powershell
 Remove-AzLogProfile -name my_log_profile
 ```
 
@@ -185,6 +190,6 @@ az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Dowiedz się więcej o dzienniku aktywności (dawniej Audit Logs)](../../azure-resource-manager/resource-group-audit.md)
 * [Stream dziennika aktywności platformy Azure do usługi Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-

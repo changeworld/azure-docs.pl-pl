@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: raynew
-ms.openlocfilehash: 0070edf007399fff1f12f483b9ca552a755b53fb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 199f9508b599e2f946404446a23e9608bb969ba7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436595"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649462"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -74,35 +74,34 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2 i 5.11<b>\*\*</b>, 6.1, 
 
 **Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
 --- | --- | --- |
+14.04 LTS | [9.23][9.23 UR] | 3.13.0-24-Generic do 3.13.0-165-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.15.0-1023-Azure do 4.15.0-1037-azure |
 14.04 LTS | [9.22][9.22 UR] | 3.13.0-24-Generic do 3.13.0-164-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1036-azure |
 14.04 LTS | [9.21][9.21 UR] | 3.13.0-24-Generic do 3.13.0-163-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1035-azure |
 14.04 LTS | [9.20][9.20 UR] | 3.13.0-24-Generic do 3.13.0-153-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.15.0-1023-Azure do 4.15.0-1025-azure |
-14.04 LTS | [9.19][9.19 UR] | 3.13.0-24-Generic do 3.13.0-153-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-131-generic |
 |||
+16.04 LTS | [9.23][9.23 UR] | 4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-45-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1037-azure|
 16.04 LTS | [9.22][9.22 UR] | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-43-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1036-azure|
 16.04 LTS | [9.21][9.21 UR] | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-42-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1035-azure|
 16.04 LTS | [9.20][9.20 UR] | 4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-38-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1025-azure|
-16.04 LTS | [9.19][9.19 UR] | 4.4.0-21-Generic do 4.4.0-131-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-30-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1019-azure|
 
 ### <a name="debian-kernel-versions"></a>Wersje jądra systemu debian
 
 
 **Obsługiwana wersja** | **Wersja usługi Azure usługę mobilności usługi Site Recovery** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | [9.19][9.19 UR],[9.20][9.20 UR],[9.21][9.21 UR], [9.22][9.22 UR]| 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.20][9.20 UR],[9.21][9.21 UR], [9.22][9.22 UR],[9.23][9.23 UR]| 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR] | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
-Debian 8 | [9.19][9.19 UR] | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.7-amd64 |
+Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR],[9.23][9.23 UR] | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12. obsługiwane wersje jądra
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.23][9.23 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.79-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.22][9.22 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.21][9.21 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.20][9.20 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.64-default |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.19][9.19 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.96-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.85-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Magazyn gościa/systemów plików systemu Linux
 
@@ -185,7 +184,7 @@ Gość/serwera wielościeżkowego (MPIO) | Nie
 
 > [!NOTE]
 > UEFI rozruchu maszyn wirtualnych VMware z systemem Windows Server 2012 lub nowszej można poddać migracji do platformy Azure. Obowiązują następujące ograniczenia:
-> 
+>
 > - Jest obsługiwana tylko migracja na platformę Azure. Powrót po awarii do lokacji programu VMware w środowisku lokalnym nie jest obsługiwane.
 > - Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.
 > - Wymagana wersja usługi mobilności 9.13 lub nowszej.
@@ -265,7 +264,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 ## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
 
 **Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
---- | --- | --- 
+--- | --- | ---
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-deploy-configuration-server.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-set-up-process-server-scale.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-process-server.md#upgrade-a-process-server).
 Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-install-mobility-service.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal).
@@ -276,6 +275,7 @@ Aby dowiedzieć się więcej na temat najnowszych funkcji, odwiedź stronę [naj
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się, jak](tutorial-prepare-azure.md) przygotować platformę Azure na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware.
 
+[9.23 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery
 [9.22 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery
 [9.21 UR]: https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery
 [9.20 UR]: https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery

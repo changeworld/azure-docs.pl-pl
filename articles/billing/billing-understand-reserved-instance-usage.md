@@ -1,5 +1,5 @@
 ---
-title: Analizy użycia rezerwacje Azure rozliczana według bieżącego użycia subskrypcji | Dokumentacja firmy Microsoft
+title: Poznawaj możliwości korzystania rezerwacje Azure rozliczana według bieżącego użycia subskrypcji | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak odczytać Twojego użycia, aby zrozumieć sposób stosowania Azure rezerwacji dla Twojej subskrypcji zgodnie z rzeczywistym użyciem.
 services: billing
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: a3bacdb19dfe16a63cf1f89ef6fb162d08cb4d32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883784"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652539"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Opis rezerwacji platformy Azure dla Twojej subskrypcji zgodnie z rzeczywistym użyciem
 
@@ -64,7 +64,7 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Użycie dla bazy danych SQL Database i Cosmos DB zastrzeżone rezerwacji wydajności
 
-Poniższe sekcje użyć usługi Azure SQL Database jako przykład do opisania raport użycia. Te same czynności można użyć, można również pobrać użycia usługi Azure Cosmos DB. 
+Poniższe sekcje użyć usługi Azure SQL Database jako przykład do opisania raport użycia. Te same czynności można użyć, można również pobrać użycia usługi Azure Cosmos DB.
 
 Załóżmy, że używasz bazy danych SQL Gen 4 w regionie wschodnim regionie USA i rezerwacji swoje informacje wygląda poniższej tabeli:
 
@@ -93,6 +93,10 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 2. **ConsumptionMeter** jest identyfikator miernika zasobu bazy danych SQL.
 3. **Identyfikator miernika** to licznik rezerwacji. Ten licznik kosztuje 0 USD. Wszystkie zasoby bazy danych SQL, które kwalifikują się do rabat związany z rezerwacją zawiera ten identyfikator miernika, w pliku CSV.
 
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
@@ -104,9 +108,3 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
-
-

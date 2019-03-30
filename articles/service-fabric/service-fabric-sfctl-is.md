@@ -4,7 +4,7 @@ description: W tym artykule opisano interfejs wiersza polecenia usługi Service 
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2039dd9222809d2c05aaeaf01f9d38c51f3b3797
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276336"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661602"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Zapytania i wysyłanie poleceń do usługi infrastruktury.
@@ -48,8 +48,8 @@ W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infra
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -71,8 +71,8 @@ W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infra
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

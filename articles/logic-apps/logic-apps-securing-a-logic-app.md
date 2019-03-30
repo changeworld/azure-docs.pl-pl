@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6baeb27855381ca03862f2632d31c628a088af39
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620618"
+ms.locfileid: "58649292"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -156,8 +156,9 @@ Aby dodać więcej protokoły autoryzacji do aplikacji logiki, należy rozważy�
 
 Aby umożliwić tylko określonych użytkowników lub grup uruchamianie operacji na aplikację logiki, można ograniczyć dostęp do zadań, takich jak zarządzanie, edytowania i wyświetlania. Usługa Logic Apps obsługuje [based kontroli dostępu (RBAC)](../role-based-access-control/role-assignments-portal.md), które można dostosować lub przypisać role wbudowane do elementów członkowskich w ramach subskrypcji, na przykład:
 
-* **Współautor aplikacji logiki**: Użytkownicy mogą przeglądać, edytować i zaktualizuj swoją aplikację logiki. Tej roli nie można usunąć aplikacji logiki lub uruchamiania operacji administratora.
-* **Operator aplikacji logiki**: Użytkownicy mogą wyświetlić swoją aplikację logiki i historii uruchamiania i włączyć lub wyłączyć aplikację logiki. Tej roli nie można edytować ani zaktualizować aplikacji logiki.
+* [Współautor aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-contributor): Użytkownicy mogą przeglądać, edytować i zaktualizuj swoją aplikację logiki. 
+
+* [Operator aplikacji logiki](../role-based-access-control/built-in-roles.md#logic-app-operator): Użytkownicy mogą wyświetlić swoją aplikację logiki i historii uruchamiania i włączyć lub wyłączyć aplikację logiki. Tej roli nie można edytować ani zaktualizować aplikacji logiki.
 
 Aby uniemożliwić innym użytkownikom zmienianie lub usuwanie aplikacji logiki, można użyć [blokady zasobu platformy Azure](../azure-resource-manager/resource-group-lock-resources.md). Ta funkcja pomaga uniemożliwić innym użytkownikom zmienianie lub usuwanie zasobów w środowisku produkcyjnym.
 

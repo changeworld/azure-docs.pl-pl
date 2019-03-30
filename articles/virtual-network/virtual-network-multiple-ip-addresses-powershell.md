@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: de2d8bcbf4ca75ad7278ec9fe47a3f55160b7910
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082657"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649653"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -196,7 +196,7 @@ Poniższe kroki wyjaśniają, jak Utwórz przykładowy maszyny Wirtualnej z wiel
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#Scenario) w tym artykule, ale nie jest to wymagane, możesz zrobić.
+Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#scenario) w tym artykule, ale nie jest to wymagane, możesz zrobić.
 
 1. Otwórz wiersz polecenia programu PowerShell i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji programu PowerShell. Jeśli nie masz jeszcze programu PowerShell, zainstalowane i skonfigurowane, wykonaj kroki [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) artykułu.
 2. Zmień nazwę karty Sieciowej, aby dodać adres IP i grupę zasobów i lokalizacji, w której karta sieciowa istnieje w "values" $Variables następujące:

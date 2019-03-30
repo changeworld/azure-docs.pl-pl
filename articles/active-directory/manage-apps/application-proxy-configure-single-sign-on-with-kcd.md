@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286588"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652522"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -82,7 +82,7 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 2. Gdy aplikacja zostanie wyświetlony na liście aplikacji dla przedsiębiorstw, zaznacz go i kliknij **logowanie jednokrotne**.
 3. Ustaw tryb logowania pojedynczego **zintegrowane uwierzytelnianie Windows**.  
 4. Wprowadź **główna nazwa usługi aplikacji wewnętrznej** serwera aplikacji. W tym przykładzie nazwy SPN dla opublikowanych aplikacji jest http/www.contoso.com. Tę nazwę SPN, musi znajdować się na liście usług, do których łącznik może przedstawiać delegowane poświadczenia. 
-5. Wybierz **delegowana tożsamość logowania** dla łącznika do używania w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnych lokalnych i tożsamości w chmurze](#Working-with-different-on-premises-and-cloud-identities)
+5. Wybierz **delegowana tożsamość logowania** dla łącznika do używania w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnych lokalnych i tożsamości w chmurze](#working-with-different-on-premises-and-cloud-identities)
 
    ![Konfiguracja zaawansowanych aplikacji](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

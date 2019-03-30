@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc718429991a7bba30739d09882c51f8baf5dc9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: fd518ad8c5ea13c4eeaa017417332744cecd328e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336273"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661228"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -47,6 +47,11 @@ Jeśli zauważysz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' die
 ## <a name="fpgas"></a>Układy FPGA
 
 Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
+
+## <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
+
+Uczenie maszynowe zautomatyzowany przepływ tensor aktualnie nie obsługuje wersji przepływu tensor 1.13. Zainstalowanie tej spowoduje, że zależności pakietów przestanie działać. Pracujemy nad rozwiązaniem tego problemu w przyszłej wersji. 
+
 
 ## <a name="databricks"></a>Databricks
 

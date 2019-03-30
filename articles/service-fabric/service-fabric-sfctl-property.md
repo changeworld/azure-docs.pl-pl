@@ -4,7 +4,7 @@ description: Opisuje właściwości polecenia sfctl interfejsu wiersza polecenia
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 78c04abeea1fdc4771f44d44b973ca0dcd2922ea
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274993"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664917"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Właściwości Store i zapytania w obszarze nazw usługi Service Fabric.
@@ -50,8 +50,8 @@ Usuwa określoną właściwość usługi Service Fabric w ramach określonej naz
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -73,8 +73,8 @@ Pobiera określoną właściwość usługi Service Fabric w ramach określonej n
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -90,15 +90,15 @@ Nazwa usługi Service Fabric może mieć co najmniej jeden nazwane właściwośc
 | --- | --- |
 | — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
 | --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| --obejmują wartości | Umożliwia określenie czy mają zostać dołączone wartości właściwości, zwracany. Wartość true, jeśli ma zostać zwrócone wartości z metadanymi; Wartość FAŁSZ, aby zwrócić tylko metadane właściwości. |
+| --include-values | Umożliwia określenie czy mają zostać dołączone wartości właściwości, zwracany. Wartość true, jeśli ma zostać zwrócone wartości z metadanymi; Wartość FAŁSZ, aby zwrócić tylko metadane właściwości. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -115,15 +115,15 @@ Tworzy lub aktualizuje określoną właściwość usługi Service Fabric w ramac
 | — Identyfikator nazwy [wymagane] | Nazwa usługi Service Fabric, bez "Service fabric\:" schemat identyfikatora URI. |
 | — [wymagane] Nazwa właściwości | Nazwa właściwości usługi Service Fabric. |
 | --Wartość [wymagane] | W tym artykule opisano wartość właściwości usługi Service Fabric. Jest to ciąg JSON. <br><br> Ciąg json ma dwa pola: "Kind" dane i "Value" dane. Wartość "Kind" musi być pierwszym elementem pojawią się w ciągu JSON i może mieć wartości "Binarny", "Int64", "Double", "String" lub "Guid". Wartość powinna być serializacji — możliwość danym typami. Należy podać wartości "Kind" i "Dane" jako ciągi. |
-| --niestandardowy identyfikator typu | Identyfikator niestandardowego typu właściwości. Używanie tej właściwości, użytkownik będzie mógł tag typu wartości właściwości. |
+| --custom-id-type | Identyfikator niestandardowego typu właściwości. Używanie tej właściwości, użytkownik będzie mógł tag typu wartości właściwości. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

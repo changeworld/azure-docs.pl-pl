@@ -4,7 +4,7 @@ description: Informacje na temat konfigurowania usługi Azure Service Fabric akt
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 224899e92684d83d33fbd61408e67d4ec11ec0a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898741"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669405"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurowanie elementów Reliable Actors — ReliableDictionaryActorStateProvider
 Domyślnej konfiguracji elementu ReliableDictionaryActorStateProvider można zmodyfikować, zmieniając plik settings.xml generowane w katalogu głównym pakietu Visual Studio w folderze konfiguracji dla określonego aktora.

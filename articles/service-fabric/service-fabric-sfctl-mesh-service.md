@@ -4,7 +4,7 @@ description: W tym artykule opisano poleceń usługi siatki sfctl interfejsu wie
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 6c40cf2340568e704a5c76ad367c07c85826943b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e8b735780f4ed3402845d9d401f8e37701b9a1a6
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284801"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667586"
 ---
-# <a name="sfctl-mesh-service"></a>Interfejs sfctl siatki usługi
+# <a name="sfctl-mesh-service"></a>sfctl mesh service
 Uzyskaj szczegółowe informacje o usłudze i Lista usług zasobu aplikacji.
 
 ## <a name="commands"></a>Polecenia
@@ -29,7 +29,7 @@ Uzyskaj szczegółowe informacje o usłudze i Lista usług zasobu aplikacji.
 |Polecenie|Opis|
 | --- | --- |
 | list | Wyświetla listę wszystkich zasobów usługi. |
-| Pokaż | Pobiera zasób usługi o podanej nazwie. |
+| pokaż | Pobiera zasób usługi o podanej nazwie. |
 
 ## <a name="sfctl-mesh-service-list"></a>Lista usług siatki interfejsu sfctl
 Wyświetla listę wszystkich zasobów usługi.
@@ -46,8 +46,8 @@ Pobiera informacje o wszystkich usług z zasobem aplikacji. Informacje zawieraj�
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -68,8 +68,8 @@ Pobiera informacje o zasobie usługi o podanej nazwie. Informacje zawierają opi
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

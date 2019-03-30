@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840821"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666796"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
@@ -129,7 +129,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>Włączanie wersji zapoznawczej zadań elastycznych w subskrypcji
 
-Aby używać zadań elastycznych, należy zarejestrować tę funkcję w subskrypcji platformy Azure, uruchamiając następujące polecenie (wystarczy zrobić to raz w każdej subskrypcji, w której mają być używane zadania elastyczne):
+Użycie elastycznych zadań, należy zarejestrować funkcji w subskrypcji platformy Azure, uruchamiając następujące polecenie. Uruchom to polecenie raz dla subskrypcji, w którym zamierzasz aprowizacji agenta elastycznych zadań. Subskrypcje, które zawierają tylko baz danych, które są cele zadania nie muszą być zarejestrowane.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql

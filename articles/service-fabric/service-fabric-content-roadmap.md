@@ -3,8 +3,8 @@ title: Dowiedz się więcej o usłudze Azure Service Fabric | Dokumentacja firmy
 description: Więcej informacji na temat podstawowych pojęć i główne obszary usługi Azure Service Fabric. Omówienie rozszerzonej usługi Service Fabric oraz sposób tworzenia mikrousług.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
-ms.author: ryanwi
-ms.openlocfilehash: 8beac9d4a84fdee4e8fa7689d60cb51c20acd671
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: atsenthi
+ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241837"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667994"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 

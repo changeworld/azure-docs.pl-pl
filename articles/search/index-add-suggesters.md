@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577124"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650465"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
 
@@ -77,7 +77,7 @@ Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://doc
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-W C#, zdefiniuj [klasy Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Sugestora jest kolekcją, która przyjmuje tylko jeden element. Pamiętaj dodać `using System.Collections.Generic;` tak, aby utworzyć listę obiektów. 
+W C#, zdefiniuj [obiektu Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` jest to kolekcja, ale może potrwać tylko jeden element. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)

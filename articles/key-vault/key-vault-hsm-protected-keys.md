@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985907"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630616"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -534,4 +534,4 @@ Jeśli przekazywanie zakończy się pomyślnie, zobaczysz wyświetlone właściw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można teraz używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz **Jeśli chcesz używać sprzętowego modułu zabezpieczeń (HSM)** sekcji [wprowadzenie do usługi Azure Key Vault](key-vault-overview.md) samouczka.
+Można teraz używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz tej funkcji i cen [porównania](https://azure.microsoft.com/pricing/details/key-vault/).

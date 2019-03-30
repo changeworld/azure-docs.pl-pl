@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076279"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649652"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
@@ -101,7 +101,7 @@ Wynikiem jest obiekt JSON, wszystkich punktów końcowych wymagających Twojego 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego do listy dozwolonych urządzeń
 
-Jak wspomniano wcześniej [wcześniej](#Overview), urządzenie tworzy połączenie wychodzące do punktu końcowego przesyłania strumieniowego usługi IoT Hub podczas strumieni urządzenia proces inicjowania. Na urządzeniu lub w jego sieci zapory muszą zezwalać na łączności wychodzącej do przesyłania strumieniowego bramy za pośrednictwem portu 443 (należy zauważyć, że komunikacja odbywa się za pośrednictwem połączenia protokołu WebSocket, który jest szyfrowana przy użyciu protokołu TLS).
+Jak wspomniano wcześniej [wcześniej](#overview), urządzenie tworzy połączenie wychodzące do punktu końcowego przesyłania strumieniowego usługi IoT Hub podczas strumieni urządzenia proces inicjowania. Na urządzeniu lub w jego sieci zapory muszą zezwalać na łączności wychodzącej do przesyłania strumieniowego bramy za pośrednictwem portu 443 (należy zauważyć, że komunikacja odbywa się za pośrednictwem połączenia protokołu WebSocket, który jest szyfrowana przy użyciu protokołu TLS).
 
 Nazwa hosta punktu końcowego przesyłania strumieniowego urządzeń można znaleźć w portalu usługi Azure IoT Hub na karcie Przegląd. ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "punktów końcowych usługi stream urządzenia")
 

@@ -4,7 +4,7 @@ description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service 
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c7f4a0774c9277606e7c7c550eaa114e2ebbccbd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4901630509eb60cb1bbe88a46b51277af244c8f8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285179"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670731"
 ---
-# <a name="sfctl-mesh"></a>Interfejs sfctl siatki
+# <a name="sfctl-mesh"></a>sfctl mesh
 Usuń, a następnie Zarządzaj aplikacjami usługi Service Fabric siatki.
 
 ## <a name="subgroups"></a>Podgrupy
 |Podgrupy|Opis|
 | --- | --- |
 | [Aplikacja](service-fabric-sfctl-mesh-app.md) | Pobieranie i usuwanie zasobów aplikacji. |
-| [dziennik w przypadku pakietu kodu](service-fabric-sfctl-mesh-code-package-log.md) | Pobierz dzienniki dla kontenera pakietu określony kod dla repliki danej usługi. |
+| [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | Pobierz dzienniki dla kontenera pakietu określony kod dla repliki danej usługi. |
 | [Wdrożenia](service-fabric-sfctl-mesh-deployment.md) | Tworzenie zasobów usługi Service Fabric siatki. |
-| [Bramy](service-fabric-sfctl-mesh-gateway.md) | Pobieranie i usuwanie zasoby bramy siatki. |
-| [Sieci](service-fabric-sfctl-mesh-network.md) | Pobieranie i usuwanie zasobów sieciowych siatki. |
+| [gateway](service-fabric-sfctl-mesh-gateway.md) | Pobieranie i usuwanie zasoby bramy siatki. |
+| [network](service-fabric-sfctl-mesh-network.md) | Pobieranie i usuwanie zasobów sieciowych siatki. |
 | [Klucz tajny](service-fabric-sfctl-mesh-secret.md) | Pobierz i usunąć zasoby wpisu tajnego siatki. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Pobieranie i usuwanie zasobów secretvalue siatki. |
-| [Usługa](service-fabric-sfctl-mesh-service.md) | Uzyskaj szczegółowe informacje o usłudze i Lista usług zasobu aplikacji. |
-| [repliki usługi](service-fabric-sfctl-mesh-service-replica.md) | Pobierz szczegóły repliki i listy replik danej usługi, w zasobie aplikacji. |
+| [service](service-fabric-sfctl-mesh-service.md) | Uzyskaj szczegółowe informacje o usłudze i Lista usług zasobu aplikacji. |
+| [service-replica](service-fabric-sfctl-mesh-service-replica.md) | Pobierz szczegóły repliki i listy replik danej usługi, w zasobie aplikacji. |
 | [Wolumin](service-fabric-sfctl-mesh-volume.md) | Pobieranie i usuwanie zasobów woluminu. |
 
 

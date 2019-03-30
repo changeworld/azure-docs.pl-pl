@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963819"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650978"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu wiersza polecenia platformy Azure
 
@@ -92,7 +92,7 @@ Parametry używane do określenia danych rekordu różnią się w zależności o
 
 W każdym przypadku pokazujemy, jak utworzyć jeden rekord. Rekord jest dodawany do istniejącego zestawu rekordów lub zestawu rekordów tworzone niejawnie. Aby uzyskać więcej informacji na temat tworzenia zestawów rekordów i rekordu Definiowanie parametru jawnie, zobacz [utworzyć zestaw rekordów DNS](#create-a-dns-record-set).
 
-Nie udostępniamy przykład, aby utworzyć zestaw rekordów SOA, ponieważ SOAs są tworzone i usunąć z każdej strefy DNS i nie można utworzyć ani usunąć oddzielnie. Jednak [SOA można modyfikować, jak pokazano w przykładzie nowsze](#to-modify-an-SOA-record).
+Nie udostępniamy przykład, aby utworzyć zestaw rekordów SOA, ponieważ SOAs są tworzone i usunąć z każdej strefy DNS i nie można utworzyć ani usunąć oddzielnie. Jednak [SOA można modyfikować, jak pokazano w przykładzie nowsze](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record"></a>Utwórz rekord AAAA
 

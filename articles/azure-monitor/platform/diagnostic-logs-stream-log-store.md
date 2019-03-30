@@ -1,6 +1,6 @@
 ---
-title: Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
-description: Dowiedz się, jak przesyłać strumieniowo dzienniki diagnostyczne platformy Azure z obszarem roboczym usługi Log Analytics.
+title: Dzienniki diagnostyczne usługi Azure Stream do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
+description: Dowiedz się, jak przesyłać strumieniowo dzienniki diagnostyczne platformy Azure z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351567"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630787"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Dzienniki diagnostyczne usługi Azure Stream do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
-**[Dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego usługą Azure Log Analytics przy użyciu portalu, poleceń cmdlet programu PowerShell lub wiersza polecenia platformy Azure.
+**[Dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor, za pomocą portalu, poleceń cmdlet programu PowerShell lub wiersza polecenia platformy Azure.
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Co można zrobić przy użyciu diagnostyki dzienników w usłudze Log Analytics
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Co można zrobić przy użyciu diagnostyki dzienników w obszarze roboczym usługi Log Analytics
 
-Usługa Azure Log Analytics jest narzędziem elastyczne dziennika analizy i wyszukiwania, która umożliwia uzyskiwanie szczegółowych danych nieprzetworzonych danych dzienników generowanych na podstawie zasobów platformy Azure. Niektóre funkcje obejmują:
+Usługa Azure Monitor zapewnia elastyczne dziennika wykonywania zapytań i analizy narzędzie, które umożliwia uzyskiwanie szczegółowych danych nieprzetworzonych danych dzienników generowanych na podstawie zasobów platformy Azure. Niektóre funkcje obejmują:
 
-* **Wyszukiwanie w dzienniku** -zapisu zaawansowanych zapytań danych dziennika, korelowanie dzienniki z różnych źródeł, a nawet Generowanie wykresów, które można przypiąć do pulpitu nawigacyjnego platformy Azure.
-* **Alerty** -Wykryj, kiedy jeden lub więcej zdarzeń pasuje do określonego zapytania i otrzymywania powiadomień za pomocą wywołania adresu e-mail lub elementu webhook.
-* **Rozwiązania** — Użyj wstępnie utworzonych widoków i pulpitów nawigacyjnych, które zapewniają natychmiastowy wgląd w dane dziennika.
+* **Zapytanie dziennika** -zapisu zaawansowanych zapytań over dane dziennika korelowanie dzienniki z różnych źródeł oraz generować wykresy, które można przypiąć do pulpitu nawigacyjnego platformy Azure.
+* **Alerty** -Wykryj, kiedy jeden lub więcej zdarzeń pasuje do określonego zapytania i otrzymywania powiadomień za pomocą wywołania adresu e-mail lub elementu webhook przy użyciu alertów usługi Azure Monitor.
 * **Advanced analytics** — stosowanie usługi machine learning i wzorca dopasowania algorytmów w celu identyfikacji możliwych problemów ujawnionych w dziennikach.
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Włączanie przesyłania strumieniowego dzienników diagnostycznych do usługi Log Analytics
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>Włączanie przesyłania strumieniowego dzienników diagnostycznych do obszaru roboczego usługi Log Analytics
 
 Aby umożliwić przesyłanie strumieniowe dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). W obu przypadkach można utworzyć ustawienie diagnostyczne, w którym należy określić obszar roboczy usługi Log Analytics i kategorie dzienników i metryk, które chcesz wysłać do tego obszaru roboczego. Diagnostyka **kategoria dziennika** jest typem dziennika, który może dostarczyć zasób.
 
@@ -42,9 +41,8 @@ Obszar roboczy usługi Log Analytics nie musi znajdować się w tej samej subskr
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Dzienniki diagnostyczne Stream przy użyciu portalu
-1. W portalu, przejdź do usługi Azure Monitor, a następnie kliknij pozycję **ustawień diagnostycznych**
+1. W portalu, przejdź do usługi Azure Monitor, a następnie kliknij pozycję **ustawień diagnostycznych** w **ustawienia** menu.
 
-    ![Monitorowanie sekcji usługi Azure Monitor](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. Opcjonalnie filtrować listę według grupy zasobów lub typ zasobu, a następnie kliknij na zasób, dla którego chcesz skonfigurować ustawienie diagnostyczne.
 
@@ -97,9 +95,9 @@ Dodatkowe kategorie można dodawać do dzienników diagnostycznych, dodając sł
 
 `--resource-group` Argument tylko jest wymagany, jeżeli `--workspace` nie jest identyfikator obiektu.
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak zapytanie danych w usłudze Log Analytics?
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Jak zapytanie dane z obszaru roboczego usługi Log Analytics?
 
-W bloku przeszukiwania dzienników w portalu lub środowisku Advanced Analytics w ramach usługi Log Analytics można badać dzienniki diagnostyczne, jako część z rozwiązaniem zarządzanie dziennikiem pod tabelą AzureDiagnostics. Dostępne są także [kilka rozwiązań dla zasobów platformy Azure](../../azure-monitor/insights/solutions.md) można zainstalować na uzyskiwanie natychmiastowego wglądu w dane dziennika są wysyłane do usługi Log Analytics.
+W bloku dzienników w portalu usługi Azure Monitor jako część z rozwiązaniem zarządzanie dziennikiem pod tabelą AzureDiagnostics można badać dzienników diagnostycznych. Dostępne są także [kilka rozwiązań do monitorowania zasobów platformy Azure](../../azure-monitor/insights/solutions.md) można zainstalować na uzyskiwanie natychmiastowego wglądu w dane dziennika są wysyłane do usługi Azure Monitor.
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Znane ograniczenia: kolumny limitu w AzureDiagnostics
 Ponieważ wiele zasobów wysyłać typy danych są wysyłane do tej samej tabeli (_AzureDiagnostics_), schemat ta tabela jest bardzo zestaw schematów typami danych zbieranych. Na przykład jeśli utworzono ustawień diagnostycznych dla kolekcji następujących typów danych, wszystkie wysyłane do tego samego obszaru roboczego:

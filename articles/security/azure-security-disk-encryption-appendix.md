@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286520"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649666"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -685,7 +685,7 @@ Przed przekazaniem wpisu tajnego do magazynu kluczy, można opcjonalnie zaszyfro
     $secretUrl = $response.id
 ```
 
-Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku zapoznać [dołączenie dysku systemu operacyjnego przy użyciu klucza KEK](#BKMK_URLKEK).
+Użyj `$KeyEncryptionKey` i `$secretUrl` w następnym kroku zapoznać [dołączenie dysku systemu operacyjnego przy użyciu klucza KEK](#bkmk_URLKEK).
 
 ##  <a name="bkmk_SecretURL"></a> Określ adres URL wpisu tajnego po dołączeniu dysku systemu operacyjnego
 

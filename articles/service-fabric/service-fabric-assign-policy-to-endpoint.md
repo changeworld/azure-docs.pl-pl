@@ -3,8 +3,8 @@ title: Przypisywanie zasad dostępu do punktów końcowych usługi Azure Service
 description: Dowiedz się, jak przypisać zabezpieczeń zasady dostępu do protokołu HTTP lub HTTPS punktów końcowych w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: dac15f0b96e9e295f92f250fe387e5b6ba9ae000
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: atsenthi
+ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567608"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670408"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych HTTP i HTTPS
 Jeśli zastosujesz zasady Uruchom jako i manifestu usługi deklaruje zasobów punkt końcowy HTTP, należy określić **SecurityAccessPolicy**.  **SecurityAccessPolicy** gwarantuje, że porty przydzielone do tych punktów końcowych poprawnie są ograniczone do konta użytkownika, który działa jako usługa. W przeciwnym razie **http.sys** ma dostęp do usługi i uzyskujesz błędy z wywołania od klienta. Poniższy przykład dotyczy punktu końcowego o nazwie konto serwer Customer1 **Nazwapunktukoncowego**, co daje pełne prawa dostępu.
@@ -48,7 +48,8 @@ Dla punktu końcowego protokołu HTTPS należy również wskazywać nazwę certy
 > Przy użyciu protokołu HTTPS, nie należy używać tych samych portów i certyfikatu dla wystąpień różne usługi (niezależnie od aplikacji), które zostały wdrożone na tym samym węźle. Uaktualnianie dwóch różnych usług za pomocą tego samego portu w różne wystąpienia aplikacji spowoduje niepowodzenia uaktualnienia. Aby uzyskać więcej informacji, zobacz [uaktualniania wielu aplikacji za pomocą punktów końcowych HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 > 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged--> Dalsze czynności przeczytaj następujące artykuły:
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+Dalsze czynności przeczytaj następujące artykuły:
 * [Informacje o modelu aplikacji](service-fabric-application-model.md)
 * [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
 * [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)

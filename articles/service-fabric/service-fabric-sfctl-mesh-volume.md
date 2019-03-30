@@ -4,7 +4,7 @@ description: W tym artykule opisano poleceń interfejsu wiersza polecenia usług
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: cbd16ca66002446b3907c1ecaa6c0b334b35dc57
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 740aec6ccb9b20cbcb8f55b2518c2b2539ef82ac
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285221"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668742"
 ---
-# <a name="sfctl-mesh-volume"></a>Interfejs sfctl siatki woluminu
+# <a name="sfctl-mesh-volume"></a>sfctl mesh volume
 Pobieranie i usuwanie zasobów woluminu.
 
 ## <a name="commands"></a>Polecenia
@@ -30,7 +30,7 @@ Pobieranie i usuwanie zasobów woluminu.
 | --- | --- |
 | delete | Usuwa zasób woluminu. |
 | list | Wyświetla listę wszystkich zasobów woluminu. |
-| Pokaż | Pobiera zasób woluminu o podanej nazwie. |
+| pokaż | Pobiera zasób woluminu o podanej nazwie. |
 
 ## <a name="sfctl-mesh-volume-delete"></a>Usuń wolumin siatki interfejsu sfctl
 Usuwa zasób woluminu.
@@ -47,8 +47,8 @@ Usuwa zasób woluminu identyfikowane przez nazwę.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -62,8 +62,8 @@ Pobiera informacje o wszystkich zasobów woluminu w danej grupy zasobów. Inform
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -83,8 +83,8 @@ Pobiera informacje o zasobie wolumin o podanej nazwie. Informacje zawierają opi
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

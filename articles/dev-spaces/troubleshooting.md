@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339588"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669780"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -316,3 +316,12 @@ configurations:
     build:
       dockerfile: Dockerfile.develop
 ```
+
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Błąd "wewnętrzny Obejrzyj nie powiodło się: Obejrzyj ENOSPC" podczas dołączania, debugowania aplikacji Node.js
+
+### <a name="reason"></a>Przyczyna
+
+Węzeł uruchomiony zasobnik z aplikacją Node.js próbujesz połączyć się za pomocą debugera przekroczyła *fs.inotify.max_user_watches* wartości. W niektórych przypadkach [wartość domyślną *fs.inotify.max_user_watches* może być zbyt mała, aby obsłużyć dołączanie debugera bezpośrednio do zasobnika](https://github.com/Azure/AKS/issues/772).
+
+### <a name="try"></a>Spróbuj
+Tymczasowe obejście tego problemu jest zwiększenie wartości *fs.inotify.max_user_watches* w każdym węźle w klastrze i ponownie uruchomić ten węzeł, aby zmiany zaczęły obowiązywać.

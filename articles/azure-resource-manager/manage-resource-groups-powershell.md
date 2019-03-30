@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6f416f1de6baca7fe79ea2a5dddfb8f8eb5f5120
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825094"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651788"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu programu Azure PowerShell
 
@@ -85,6 +85,10 @@ Aby sprawdzić poprawność wdrożenia grupy zasobów, zobacz [AzResourceGroupDe
 ## <a name="deploy-a-resource-group-and-resources"></a>Wdrażanie grupy zasobów i zasobów
 
 Można utworzyć grupę zasobów i wdrażania zasobów w grupie przy użyciu szablonu usługi Resource Manager. Aby uzyskać więcej informacji, zobacz [Tworzenie grupy zasobów i wdrażanie zasobów](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+
+## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
+
+Ta funkcja jest nazywana *wycofywania w przypadku błędu*. Aby uzyskać więcej informacji, zobacz [ponownego wdrażania w przypadku niepowodzenia wdrożenia](./resource-group-template-deploy.md#redeploy-when-deployment-fails).
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Przenieś do innej grupy zasobów lub subskrypcji
 

@@ -4,7 +4,7 @@ description: Omówienie punktów integracji między Menedżerem zasobów klastra
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a51593753cab8a6b07d99df46560808de5400047
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737930"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670323"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Klaster zasobów Menedżera Integracja z usługą zarządzania klastrem usługi Service Fabric
 Menedżer zasobów klastra usługi Service Fabric nie dysku uaktualnień w usłudze Service Fabric, ale zostało ono uwzględnione. Pierwszy sposób Menedżer zasobów klastra za pomocą funkcji zarządzania jest, śledząc żądany stan klastra i usług wewnątrz niego. Menedżer zasobów klastra wysyła raporty dotyczące kondycji, gdy go nie można wstawić klastra do pożądanej konfiguracji. Na przykład w przypadku niewystarczającej pojemności Menedżer zasobów klastra wysyła ostrzeżeń i błędów wskazujących na problem. Inny element integracji związana z działania uaktualnienia. Menedżer zasobów klastra nieco zmienia jego zachowanie podczas uaktualniania.  

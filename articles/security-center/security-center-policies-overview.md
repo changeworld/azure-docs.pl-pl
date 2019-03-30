@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 818b3e3b464ecbe8d55367ab5318436a14567263
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108767"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666498"
 ---
 # <a name="security-center-settings"></a>Ustawienia usługi Security Center
 Ten artykuł zawiera omówienie ustawienia w usłudze Security Center.
@@ -29,15 +29,15 @@ W obszarze zasady zabezpieczeń można osiągnąć następujące ustawienia:
 - **Zbieranie danych**: Określa aprowizacji agenta i [zbierania danych](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) ustawienia.
 - **Zasady zabezpieczeń**: Określa, który kontroluje monitorów Centrum zabezpieczeń i zaleca zastosowanie. Możesz edytować [zasady zabezpieczeń](tutorial-security-policy.md) w usłudze Security Center. Można również użyć [usługi Azure Policy](tutorial-security-policy.md) do utworzenia nowych definicji, zdefiniowania dodatkowych zasad i przypisywania zasad w grupach zarządzania. 
 - **Wiadomości e-mail z powiadomieniami**: Określa kontakty zabezpieczeń i [powiadomienia e-mail](security-center-provide-security-contact-details.md) ustawienia.
-- **Warstwa cenowa**: Definiuje bezpłatna lub standardowa [wybór cen](security-center-pricing.md). Wybrana warstwa określa, które funkcje usługi Security Center są dostępne dla zasobów w zakresie. Można określić warstwę dla subskrypcji, grupy zasobów i obszarów roboczych.
+- **Warstwa cenowa**: Definiuje bezpłatna lub standardowa [wybór cen](security-center-pricing.md). Wybrana warstwa określa, które funkcje usługi Security Center są dostępne dla zasobów w zakresie. Można określić warstwę dla subskrypcji i obszarów roboczych.
 
 > [!NOTE]
-> Możesz ustawić wszystkie te na subskrypcję. W przypadku obszarów roboczych można ustawić tylko zbierania danych i warstwa cenowa. Dla grup zasobów można ustawić tylko warstwa cenowa.
+> Możesz ustawić wszystkie te na subskrypcję. W przypadku obszarów roboczych można ustawić tylko zbierania danych i warstwa cenowa.
 >
 
 
 ## <a name="who-can-edit-security-policies"></a>Kto może edytować zasady zabezpieczeń?
-Usługa Security Center korzysta z opartej na rolach kontrola dostępu (RBAC), który zapewnia wbudowane role, które można przypisać do użytkowników, grup i usług na platformie Azure. Po otwarciu Centrum zabezpieczeń, widzą tylko informacje związane z zasobami, które mają dostęp do. Oznacza to, że użytkownicy są przypisani do roli z *właściciela*, *Współautor*, lub *czytnika* do subskrypcji lub grupy zasobów, której należy zasób. Oprócz tych ról istnieją dwie określone role usługi Security Center:
+Usługa Security Center korzysta z opartej na rolach kontrola dostępu (RBAC), który zapewnia wbudowane role, które można przypisać do użytkowników, grup i usług na platformie Azure. Po otwarciu Centrum zabezpieczeń, widzą tylko informacje związane z zasobami, które mają dostęp do. Oznacza to, że użytkownicy są przypisani do roli z *właściciela*, *Współautor*, lub *czytnika* subskrypcji zasób należy do. Oprócz tych ról istnieją dwie określone role usługi Security Center:
 
 - **Czytelnik zabezpieczeń**: Uprawnienia widok do usługi Security Center, który zawiera zalecenia, alerty, zasady i kondycję, ale nie mogą oni wprowadzić zmiany.
 - **Administrator zabezpieczeń**: Te same prawa widok jako *Czytelnik zabezpieczeń*, i mogą również możliwość aktualizowania zasad zabezpieczeń oraz odrzucania zaleceń i alertów.
@@ -46,7 +46,7 @@ Usługa Security Center korzysta z opartej na rolach kontrola dostępu (RBAC), k
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule omówiono zasady zabezpieczeń w usłudze Azure Security Center. Aby dowiedzieć się więcej o usłudze Azure Security Center, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md): Informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md): Informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md): Dowiedz się, jak zaleceń usługi Security Center pomóc w ochronie Twoich zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md): Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md): Informacje na temat sposobu zarządzania alertami zabezpieczeń i reagowania na nie.

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181626"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650097"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
 W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
@@ -44,14 +44,20 @@ Aby wysłać łącze rejestracji dla uczniów i studentów, użyj jednej z nast�
 Jeśli **ograniczać** jest włączona w środowisku laboratoryjnym, tylko użytkownicy na liście Użytkownicy mogą używać łącze do zarejestrowania do laboratorium. Ta opcja jest włączona domyślnie. 
 
 ### <a name="send-email-to-users"></a>Wyślij wiadomość e-mail do użytkowników
+Usługa Azure Lab Services umożliwia nauczycielom poczty e-mail laboratorium zaproszeń do wszystkich lub wybranych uczniów bez konieczności używania innego klient poczty e-mail. Nauczyciele mogą umieść kursor na indywidualnych uczniów na liście widoczna ikona wiadomości e-mail dla każdego ucznia lub wybierz co najmniej jeden studentów i używać **wysłać zaproszenia** na pasku narzędzi. Ta funkcja wysyła wiadomość e-mail z linkiem rejestracji i komunikat (jeśli istnieje) dodany przez uczniów. Po zmianie stanu zaproszenia na **zaproszenie zostało wysłane** tak, aby nauczyciele mogą zachować informacje o uczniów, które otrzymały już link rejestracji i daty, który został wysłany.
+
 1. Jeśli jeszcze nie jesteś na tej stronie, przełącz się do widoku **Użytkownicy**. 
-2. Wybierz z listy określonych lub wszystkich użytkowników. Aby wybrać określonych użytkowników, zaznacz pola wyboru w kolumnie pierwszej listy. Aby wybrać wszystkich użytkowników, zaznacz pole wyboru przed tytuł pierwszą kolumnę (**nazwa**) lub zaznacz wszystkie pola wyboru dla wszystkich użytkowników na liście.
-3. Wybierz **wysłać zaproszenia** na pasku narzędzi. Można również umieść kursor myszy nad nazwy studentów, na liście i wysłać ikonę poczty e-mail. 
+2. Wybierz z listy określonych lub wszystkich użytkowników. Aby wybrać określonych użytkowników, zaznacz pola wyboru w kolumnie pierwszej listy. Aby wybrać wszystkich użytkowników, zaznacz pole wyboru przed tytuł pierwszą kolumnę (**nazwa**) lub zaznacz wszystkie pola wyboru dla wszystkich użytkowników na liście. Można wyświetlić stan **stanu zaproszenia** na tej liście.  Na poniższej ilustracji stan zaproszenie dla wszystkich studentów jest ustawiony na **zaproszenie nie zostało wysłane**. 
+
+    ![Wybierz uczniów](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Wybierz **ikonę poczty e-mail (koperta)** na jeden z wierszy (lub) select **wysłać zaproszenia** na pasku narzędzi. Możesz również umieścić kursor myszy nazwę uczniów na liście, aby wyświetlić ikonę poczty e-mail. 
 
     ![Wyślij łącze rejestracji za pośrednictwem poczty e-mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Na **Wyślij link rejestracji za pośrednictwem poczty e-mail** strony, wykonaj następujące kroki: 
     1. Typ **opcjonalną wiadomość** , którą chcesz wysłać dla uczniów i studentów. Wiadomości e-mail automatycznie dołącza łącze rejestracji. 
-    2. Na **Wyślij link rejestracji za pośrednictwem poczty e-mail** wybierz opcję **wysyłania**. 
+    2. Na **Wyślij link rejestracji za pośrednictwem poczty e-mail** wybierz opcję **wysyłania**. Zostanie wyświetlony stan zaproszenia zmiana **wysyłanie zaproszenia** a **zaproszenie zostało wysłane**. 
+        
+        ![Zaproszenia wysłane](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="get-registration-link"></a>Uzyskaj link do rejestracji
 1. Przełącz się do **użytkowników** widoku, wybierając **użytkowników** w menu po lewej stronie. 

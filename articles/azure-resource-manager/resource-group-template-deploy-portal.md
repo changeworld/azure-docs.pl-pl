@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816909"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652454"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
@@ -134,7 +134,8 @@ Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdrażając go
    ![Zapisany szablon wdrażania](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](./resource-group-audit.md).
-* Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](./resource-manager-deployment-operations.md).
-* Aby wyeksportować szablon z wdrożenia lub grupy zasobów, zobacz [eksportu usługi Azure Resource Manager](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-* Aby bezpiecznie wdrożenia usługi w wielu regionach, zobacz [Azure Deployment Manager](./deployment-manager-overview.md).
+
+- Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](./resource-group-audit.md).
+- Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](./resource-manager-deployment-operations.md).
+- Aby wyeksportować szablon z wdrożenia lub grupy zasobów, zobacz [eksportu usługi Azure Resource Manager](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Aby bezpiecznie wdrożenia usługi w wielu regionach, zobacz [Azure Deployment Manager](./deployment-manager-overview.md).

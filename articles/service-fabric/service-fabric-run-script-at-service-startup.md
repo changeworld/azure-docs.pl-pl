@@ -3,8 +3,8 @@ title: Uruchom skrypt po uruchomieniu usługi Azure Service Fabric | Dokumentacj
 description: Dowiedz się, jak skonfigurować zasady dla punktu wejścia Instalatora usługi Service Fabric i uruchamiania skryptu na czas uruchamiania usługi.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: atsenthi
+ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838446"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660395"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Uruchamianie skryptu uruchamiania usługi za pomocą użytkownika lokalnego lub konta systemowego
 Zanim uruchamiania pliku wykonywalnego usługi Service Fabric może być konieczne uruchomienie jakąś pracę konfiguracji lub ustawień.  Na przykład Konfigurowanie zmiennych środowiskowych. Można określić skrypt do uruchomienia przed uruchamiania pliku wykonywalnego usługi w manifeście usługi dla usługi. Przez skonfigurowanie zasad RunAs dla punktu wejścia Instalatora usługi można zmienić konto, które wykonywalnego konfiguracji jest uruchamiana.  Punkt wejścia oddzielne ustawienia umożliwia uruchamianie konfiguracji wysokim poziomem uprawnień, przez krótki okres czasu, więc wykonywalnego host usługi nie ma konieczności uruchomienia z wysokim poziomem uprawnień na dłuższy czas.

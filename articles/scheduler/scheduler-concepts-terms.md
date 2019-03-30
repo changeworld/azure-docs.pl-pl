@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887055"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651273"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Pojęcia, terminologia i jednostki w usłudze Azure Scheduler
 
@@ -143,7 +143,7 @@ W obiekcie **startTime** możesz określić godzinę rozpoczęcia i przesunięci
 
 ## <a name="action"></a>action
 
-Twoje zadanie usługi Scheduler uruchamia **akcję** podstawową na podstawie określonego harmonogramu. Usługa Scheduler obsługuje akcje HTTP, akcje kolejki usługi Storage, akcje kolejki usługi Service Bus i akcje tematów usługi Service Bus. Jeśli **akcja** podstawowa zakończy się niepowodzeniem, usługa Scheduler może uruchomić pomocniczą akcję [**errorAction**](#errorAction), która obsługuje błąd. Obiekt **action** opisuje następujące elementy:
+Twoje zadanie usługi Scheduler uruchamia **akcję** podstawową na podstawie określonego harmonogramu. Usługa Scheduler obsługuje akcje HTTP, akcje kolejki usługi Storage, akcje kolejki usługi Service Bus i akcje tematów usługi Service Bus. Jeśli **akcja** podstawowa zakończy się niepowodzeniem, usługa Scheduler może uruchomić pomocniczą akcję [**errorAction**](#erroraction), która obsługuje błąd. Obiekt **action** opisuje następujące elementy:
 
 * Typ usługi akcji
 * Szczegóły akcji

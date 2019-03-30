@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078078"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660515"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu 
 
@@ -105,9 +105,9 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
    4. Użyj wartości domyślnej dla limitu przydziału. 
    5. W ramach sieci wirtualnej, kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej platformy Azure (Vnet).  Następnie wprowadź następujące informacje:
        * Wprowadź **myvnet1** jako nazwa sieci wirtualnej.
-       * Określ przestrzeń adresową, na przykład 10.7.0.0/16.
+       * Określ przestrzeń adresową dla ustawienia, na przykład 10.7.0.0/16
        * Wprowadź **myANFsubnet** jako nazwę podsieci.
-       * Określ zakres adresów podsieci, na przykład 10.7.0.0/24.
+       * Określ zakres adresów podsieci, na przykład 10.7.0.0/24. Należy pamiętać, że nie można udostępnić dedykowaną podsieć z innymi zasobami.
        * Wybierz **Microsoft.NetApp/volumes** dla celów delegacji podsieci.
        * Kliknij przycisk **OK** do tworzenia sieci wirtualnej.
    6. W podsieci, wybierz nowo utworzoną sieć wirtualną (**myvnet1**) jako podsieć delegata.

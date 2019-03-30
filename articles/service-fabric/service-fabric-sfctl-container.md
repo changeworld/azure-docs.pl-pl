@@ -4,7 +4,7 @@ description: Zawiera opis poleceń interfejsu wiersza polecenia usługi Service 
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274908"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663710"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Uruchom kontener związane z poleceń w węźle klastra.
@@ -28,7 +28,7 @@ Uruchom kontener związane z poleceń w węźle klastra.
 
 |Polecenie|Opis|
 | --- | --- |
-| wywoływanie interfejsu api | Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
+| invoke-api | Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
 | dzienniki | Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fabric dla pakietu danego kodu. |
 
 ## <a name="sfctl-container-invoke-api"></a>Interfejs sfctl kontenera wywołania interfejsów api
@@ -44,17 +44,17 @@ Wywołania interfejsu API kontenera, do kontenera wdrażane w węźle usługi Se
 | --container-api ścieżka identyfikatora uri — [wymagane] | Ścieżka identyfikatora URI interfejsu API REST kontenera, użyj "{id}" zamiast identyfikatora nazwy kontenera. |
 | — [wymagane] Nazwa węzła | Nazwa węzła. |
 | --service-manifest-name    [Required] | Nazwa manifestu usługi zarejestrowany jako część typu aplikacji w klastrze usługi Service Fabric. |
-| --container api treści | Treść żądania HTTP dla kontenera interfejsu API REST. |
+| --container-api-body | Treść żądania HTTP dla kontenera interfejsu API REST. |
 | --container-api-content-type | Typ zawartości dla kontenera interfejsu API REST, wartość domyślna to "application/json". |
-| --container-api — — zlecenie http | Czasownik HTTP dla kontenera interfejsu API REST, wartość domyślna to GET. |
+| --container-api-http-verb | Czasownik HTTP dla kontenera interfejsu API REST, wartość domyślna to GET. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -78,8 +78,8 @@ Pobiera dzienniki kontenera dla kontenera wdrażane w węźle usługi Service Fa
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

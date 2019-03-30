@@ -1,10 +1,10 @@
 ---
-title: Niezawodne dodatkowej podmiotów aktora typu serializacji | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono podstawowe wymagania dotyczące Definiowanie klas możliwych do serializacji, które mogą służyć do definiowania stanów Reliable Actors sieci szkieletowej usług i interfejsów
+title: Serializacja typów Reliable Actors dodatkowej aktora | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono podstawowe wymagania dotyczące definiowania klas możliwych do serializacji, które mogą służyć do zdefiniowania stanów elementów Reliable Actors usługi Service Fabric i interfejsy
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
 ms.service: service-fabric
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4539351738d423704961eed6e616bd8ac5d682d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209056"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667519"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Uwagi dotyczące usługi sieci szkieletowej Reliable Actors typu serializacji
-Argumenty metod wszystkie typy wyników zadań zwracane przez każda metoda w interfejsie aktora, a obiekty przechowywane w Menedżerze stanu aktora musi być [serializacji kontraktu danych](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dotyczy to również argumenty metody zdefiniowane w [interfejsów zdarzeń aktora](service-fabric-reliable-actors-events.md). (Metod interfejsu zdarzenia aktora zawsze zwracać typ void.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Uwagi dotyczące usługi Service Fabric Reliable Actors — serializacja typów
+Argumenty wszystkie metody, typy wyników zadania zwracane przez poszczególnych metod interfejsu aktora i obiekty przechowywane w Menedżer stanu aktora należy [kontraktu danych serializacji](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dotyczy to również argumenty metody zdefiniowane w [interfejsów zdarzeń aktora](service-fabric-reliable-actors-events.md). (Metod interfejsu zdarzenia aktora zawsze zwracać typ void.)
 
 ## <a name="custom-data-types"></a>Niestandardowe typy danych
-W tym przykładzie interfejsu aktora definiuje metodę, która zwraca niestandardowego typu danych o nazwie `VoicemailBox`:
+W tym przykładzie następujący interfejs aktora definiuje metodę, która zwraca niestandardowego typu danych o nazwie `VoicemailBox`:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -79,10 +79,10 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 W tym przykładzie `VoicemailBox` serializowany jest obiekt po:
 
-* Obiekt przesyłane między wystąpieniem aktora i obiekt wywołujący.
-* Obiekt zostanie zapisany menedżera stanu, gdzie jest utrwalony na dysku i replikowany do innych węzłów.
+* Obiekt są przesyłane między wystąpienia aktora, a obiekt wywołujący.
+* Obiekt zostanie zapisany w przez menedżera stanu, w którym jest utrwalony na dysku i replikowane do innych węzłów.
 
-Platforma niezawodnego aktora korzysta z serializacji DataContract. W związku z tym obiektów danych niestandardowych i ich elementy Członkowskie musi być adnotowany przy **DataContract** i **DataMember** atrybuty odpowiednio.
+Framework Reliable Actor używa schematu DataContract serializacji. W związku z tym, obiektów danych niestandardowych i ich elementów członkowskich musi być oznaczona przy użyciu **DataContract** i **DataMember** , odpowiednio, atrybutów.
 
 ```csharp
 [DataContract]
@@ -146,9 +146,9 @@ public class VoicemailBox implements Serializable
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Aktora cykl życia i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
-* [Czasomierze aktora i przypomnieniami](service-fabric-reliable-actors-timers-reminders.md)
+* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
+* [Aktor czasomierze i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
 * [Zdarzenia aktora](service-fabric-reliable-actors-events.md)
 * [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
-* [Polimorfizm aktora i wzorce projektowe zorientowane obiektowo](service-fabric-reliable-actors-polymorphism.md)
-* [Aktora Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
+* [Polimorfizm aktora i wzorce programowania obiektowego](service-fabric-reliable-actors-polymorphism.md)
+* [Aktor Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)

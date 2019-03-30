@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2219e038d3432807c81246256873a1ecb2cd9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4105fa17041c7cefd1387d1ee50c177b8c55fc9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093477"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651290"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Szybki start: Zasady nazewnictwa grup w usłudze Azure Active Directory
 
@@ -38,14 +38,18 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
 1. Otwórz aplikację Windows PowerShell jako administrator.
 2. Odinstaluj poprzednią wersję programu AzureADPreview.
   
-   ```
+
+   ```powershell
    Uninstall-Module AzureADPreview
    ```
+
 3. Zainstaluj najnowszą wersję programu AzureADPreview.
   
-   ```
+
+   ```powershell
    Install-Module AzureADPreview
    ```
+
    Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytorium, wpisz **Y**. Zainstalowanie nowego modułu może zająć kilka minut.
 
 ## <a name="set-up-naming-policy"></a>Tworzenie zasad nazewnictwa
@@ -56,10 +60,12 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
 
 2. Uruchom następujące polecenia, aby przygotować się do uruchomienia poleceń cmdlet.
   
-   ```
+
+   ```powershell
    Import-Module AzureADPreview
    Connect-AzureAD
    ```
+
    Na ekranie **Zaloguj się na swoje konto** wprowadź swoje konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz polecenie **Zaloguj**.
 
 3. Postępuj zgodnie z instrukcjami zawartymi w artykule [Azure Active Directory cmdlets for configuring group settings (Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy)](groups-settings-cmdlets.md), aby utworzyć ustawienia grupy dla tej dzierżawy.
@@ -68,35 +74,46 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
 
 1. Wyświetl bieżące ustawienia zasad nazewnictwa.
   
+
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id
    ```
-   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-   ```
+
   
 2. Wyświetl bieżące ustawienia grupy.
   
-   ```
+
+   ```powershell
    $Setting.Values
    ```
+
   
+
 ### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Krok 3: konfigurowanie zasad nazewnictwa i wszelkich niestandardowych słów zablokowanych
 
 1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby ta funkcja działała poprawnie, należy dodać element [GroupName] do ustawienia.
   
-   ```
+
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
    ```
+
   
 2. Ustaw niestandardowe słowa zablokowane. W poniższym przykładzie pokazano, jak dodać własne słowa niestandardowe.
   
-   ```
+
+   ```powershell
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
+
   
 3. Zapisz ustawienia nowych zasad, aby zaczęły obowiązywać, tak jak w poniższym przykładzie.
   
+
+   ```powershell
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
+
   
 Gotowe. Skonfigurowano zasady nazewnictwa i dodano niestandardowe słowa zablokowane.
 
@@ -104,20 +121,25 @@ Gotowe. Skonfigurowano zasady nazewnictwa i dodano niestandardowe słowa zabloko
 
 1. Usuń prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
   
-   ```
+
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
+
   
 2. Usuń niestandardowe słowa zablokowane.
   
-   ```
+
+   ```powershell
    $Setting["CustomBlockedWordsList"]=""
    ```
+
   
 3. Zapisz ustawienia.
   
-   ```
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+
+   ```powershell
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 592f2ef95935ce1d1f83db6c3327cab9c20015d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185455"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652573"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmo
 
 ## <a name="standard-optional-claims-set"></a>Zestaw standardowych opcjonalnych oświadczeń
 
-Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej. Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)poniżej. Należy pamiętać, że podczas dodawania oświadczeń **token dostępu**, zostaną zastosowane do tokenów dostępu do żądanego *dla* aplikacji (internetowego interfejsu API), nie tych *przez* aplikacji. Dzięki temu niezależnie od tego klienta, uzyskiwanie dostępu do interfejsu API, odpowiednie dane są obecne w tokenie dostępu, których używają do uwierzytelniania względem interfejsu API.
+Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje są wymienione poniżej. Aby dodać opcjonalny oświadczenia niestandardowe dla swojej aplikacji, zobacz [rozszerzenia katalogów](active-directory-optional-claims.md#configuring-custom-claims-via-directory-extensions)poniżej. Należy pamiętać, że podczas dodawania oświadczeń **token dostępu**, zostaną zastosowane do tokenów dostępu do żądanego *dla* aplikacji (internetowego interfejsu API), nie tych *przez* aplikacji. Dzięki temu niezależnie od tego klienta, uzyskiwanie dostępu do interfejsu API, odpowiednie dane są obecne w tokenie dostępu, których używają do uwierzytelniania względem interfejsu API.
 
 > [!NOTE]
 > Większość te oświadczenia mogą być dołączane w tokenów Jwt dla wersji 1.0 i tokenów w wersji 2.0, ale nie tokeny SAML, z wyjątkiem w przypadku, gdy wskazane w kolumnie Typ tokenu. Ponadto podczas opcjonalnych oświadczeń tylko obecnie są obsługiwane dla użytkowników usługi AAD, zarządzanych kont usług pomocy technicznej jest dodawany. Gdy MSA ma opcjonalnych oświadczeń obsługuje punktu końcowego v2.0, kolumna typu użytkownika określa, czy roszczenie jest dostępna dla użytkowników usługi AAD lub zarządzanych kont usług. 

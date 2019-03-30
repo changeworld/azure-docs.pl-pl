@@ -3,8 +3,8 @@ title: Scenariusze i projektowanie aplikacji | Dokumentacja firmy Microsoft
 description: Omówienie kategorie aplikacji w chmurze w usłudze Service Fabric. W tym artykule omówiono projektowania aplikacji, która używa usługi stanowe i bezstanowe.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
-ms.author: mfussell
-ms.openlocfilehash: a84d8fead42f8314decc144f01d8de1dac30bbdf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.author: atsenthi
+ms.openlocfilehash: c9b2f9ac131e71b7c6b37ed85568adc0c3978dc2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199480"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668249"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scenariusze aplikacji usługi Service Fabric
 Usługa Azure Service Fabric oferuje niezawodne i elastyczne platformy, która pozwala pisać i uruchamiać wiele rodzajów aplikacji i usług biznesowych. Te aplikacje i mikrousług może być bezstanowe lub stanowe i są one równoważenia zasobów dla maszyn wirtualnych, aby zmaksymalizować wydajność. Unikatowa Architektura usługi Service Fabric można wykonywać w pobliżu analizy danych w czasie rzeczywistym, obliczenia w pamięci, równoległych transakcji i przetwarzania zdarzeń w aplikacjach. Możesz można łatwo skalować aplikacje w górę lub w dół (naprawdę przychodzący lub wychodzący), w zależności od zmieniających wymagań dotyczących zasobów.

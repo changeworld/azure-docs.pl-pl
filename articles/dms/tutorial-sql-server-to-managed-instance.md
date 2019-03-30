@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 450d47e4c20da1d9d9760ababf58c75eef2814b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78f19fcca51bb9c14fd05013834599c3e0f12779
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182374"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662112"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Samouczek: Migrowanie programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 
@@ -152,9 +152,9 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 1. Na ekranie **Szczegóły lokalizacji docelowej migracji** określ szczegóły połączenia dla lokalizacji docelowej, czyli dla aprowizowanego wcześniej wystąpienia zarządzanego usługi Azure SQL Database, do którego jest migrowana baza danych **AdventureWorks2012**.
 
-    Jeśli jeszcze nie aprowizowano wystąpienia zarządzanego usługi Azure SQL Database, wybierz pozycję **Nie**, aby uzyskać link ułatwiający aprowizowanie wystąpienia. Możesz kontynuować tworzenie projektu i gdy wystąpienia zarządzanego usługi Azure SQL Database jest gotowy, wróć do tego określonego projektu, aby wykonać migrację.
+    Jeśli jeszcze nie aprowizowano wystąpienia zarządzanego usługi Azure SQL Database, wybierz ten [link](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started), aby aprowizować wystąpienie. Możesz kontynuować tworzenie projektu i gdy wystąpienia zarządzanego usługi Azure SQL Database jest gotowy, wróć do tego określonego projektu, aby wykonać migrację.
 
-       ![Select Target](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
+     ![Wybieranie obiektu docelowego](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
 2. Wybierz pozycję **Zapisz**.
 

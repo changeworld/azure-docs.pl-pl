@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104492"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652590"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
 
@@ -145,7 +145,7 @@ Zasady punktu końcowego usługi sieci wirtualnej zapewniają następujące korz
 - **Sieci wirtualne połączone równorzędnie, połączone sieci wirtualne lub wiele sieci wirtualnych**: aby odfiltrować ruch w połączonych równorzędnie sieciach wirtualnych, należy zastosować zasady punktu końcowego indywidualnie do tych sieci wirtualnych.
 - **Filtrowanie ruchu internetowego przy użyciu urządzeń sieciowych lub usługi Azure Firewall**: filtruj ruch w usłudze platformy Azure przy użyciu zasad w punktach końcowych oraz filtruj pozostałą część ruchu internetowego lub na platformie Azure za pośrednictwem urządzeń lub usługi Azure Firewall. 
 - **Filtrowanie ruchu w usługach platformy Azure wdrożonych w sieciach wirtualnych**: w trakcie okresu zapoznawczego zasady punktu końcowego usługi nie są obsługiwane dla żadnych zarządzanych usług platformy Azure wdrożonych w sieci wirtualnej. 
- Aby uzyskać informacje o konkretnych usługach, zobacz [ograniczenia](#Limitations).
+ Aby uzyskać informacje o konkretnych usługach, zobacz [ograniczenia](#limitations).
 - **Filtrowanie ruchu do usług platformy Azure ze środowiska lokalnego**: zasady punktu końcowego usługi mają zastosowanie tylko do ruchu z podsieci związanych z zasadami. Aby umożliwić dostęp do konkretnych zasobów usługi platformy Azure ze środowisk lokalnych, ruch należy filtrować przy użyciu wirtualnych urządzeń sieciowych lub zapór.
 
 ## <a name="logging-and-troubleshooting"></a>Rejestrowanie i rozwiązywanie problemów

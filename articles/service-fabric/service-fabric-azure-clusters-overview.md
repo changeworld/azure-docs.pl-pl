@@ -4,7 +4,7 @@ description: Klastry usługi Service Fabric z systemem Windows Server i Linux, c
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: a968b173357bf8bcb83990b891f38306895b4ca8
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967431"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670476"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Omówienie usługi Service Fabric clusters na platformie Azure
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem klastra. Klastry można skalować do tysięcy węzłów. Po dodaniu nowych węzłów do klastra usługi Service Fabric rebalances replik partycji usługi i wystąpień na większą liczbę węzłów. Ogólna zwiększa wydajność aplikacji i zmniejsza rywalizacji o dostęp do pamięci. Jeśli nie są wydajnie używane węzły w klastrze, możesz zmniejszyć liczbę węzłów w klastrze. Usługa Service Fabric ponownie rebalances replik partycji i wystąpień na obniżenie liczby węzłów, aby lepiej wykorzystać możliwości sprzętu na każdym węźle.
@@ -31,9 +31,9 @@ Klaster usługi Service Fabric na platformie Azure jest zasobem platformy Azure 
 * Maszyny wirtualne i wirtualne karty sieciowe
 * zestawy skalowania maszyn wirtualnych
 * sieci wirtualnych
-* Moduły równoważenia obciążenia
+* moduły równoważenia obciążenia
 * konta magazynu
-* Publiczne adresy IP
+* publiczne adresy IP
 
 ![Klaster usługi Service Fabric][Image]
 

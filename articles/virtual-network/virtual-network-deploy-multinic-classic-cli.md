@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ea53048819bfdad5c45e522115aa6e493dfc8bc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e47b1e548516960c6aab3c48d64255370c94a77
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953375"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650023"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-classic-cli"></a>Tworzenie maszyny Wirtualnej (klasycznej) z wieloma kartami sieciowymi przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 
@@ -30,7 +30,7 @@ ms.locfileid: "46953375"
 Można utworzyć maszyny wirtualne (VM) na platformie Azure i dołączanie wielu interfejsów sieciowych (NIC) do wszystkich maszyn wirtualnych. Wiele kart sieciowych umożliwia rozdzielenie typów ruchu między kartami sieciowymi. Na przykład jedną kartą Sieciową może komunikować się z Internetu, podczas gdy inny komunikuje się tylko z wewnętrznych zasobów, które nie jest połączony z Internetem. Do rozdzielania ruchu sieciowego między wiele kart sieciowych jest wymagany do wielu wirtualnych urządzeń sieciowych, takich jak dostarczanie aplikacji i rozwiązań Optymalizacja sieci WAN.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak wykonać te kroki przy użyciu [modelu wdrażania usługi Resource Manager](../virtual-machines/linux/multiple-nics.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak wykonać te kroki przy użyciu [modelu wdrażania usługi Resource Manager](../virtual-machines/linux/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -51,7 +51,7 @@ Maszyny wirtualne zaplecza, zależą od utworzenia następujące zasoby:
 ### <a name="step-1---start-your-script"></a>Krok 1 — Uruchom skrypt
 Możesz pobrać skrypt pełną powłoki bash używane [tutaj](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Wykonaj poniższe kroki, aby zmienić skrypt zadziałał w Twoim środowisku:
 
-1. Zmień wartości zmiennych poniżej istniejącej grupy zasobów wdrożonymi powyżej w oparciu o [wymagania wstępne](#Prerequisites).
+1. Zmień wartości zmiennych poniżej istniejącej grupy zasobów wdrożonymi powyżej w oparciu o [wymagania wstępne](#prerequisites).
 
     ```azurecli
     location="useast2"
@@ -192,4 +192,4 @@ Teraz, gdy został pobrany i zmieniony skryptów, w zależności od potrzeb, uru
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Krok 5 — Konfigurowanie routingu w ramach systemu operacyjnego maszyny Wirtualnej
 
-Usługa Azure DHCP przypisuje domyślnej bramy do pierwszego interfejsu sieciowego (podstawowy) dołączonych do maszyny wirtualnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowymi interfejsami sieciowymi mogą jednak komunikować się z zasobami poza ich podsieciami. Aby skonfigurować routing dla dodatkowych interfejsów sieciowych, zobacz [routingu w ramach systemu operacyjnego maszyny wirtualnej z wieloma interfejsami sieciowymi](virtual-network-network-interface-vm.md).
+Usługa Azure DHCP przypisuje domyślnej bramy do pierwszego interfejsu sieciowego (podstawowy) dołączonych do maszyny wirtualnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowe interfejsy sieciowe mogą jednak komunikować się z zasobami poza podsiecią. Aby skonfigurować routing dla dodatkowych interfejsów sieciowych, zobacz [routingu w ramach systemu operacyjnego maszyny wirtualnej z wieloma interfejsami sieciowymi](virtual-network-network-interface-vm.md).

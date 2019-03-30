@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369755"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650125"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -46,7 +46,7 @@ Tematy, które mają być uwzględnione w tym artykule są następujące:
 * Za pomocą [Storage Analytics](#storage-analytics) inspekcji dostępu do usługi Azure Storage
 
   W tej sekcji omówiono sposób znajdowania informacji w dziennikach analizy magazynu dla żądania. Utworzymy Przyjrzyj się analityka magazynu rzeczywistych danych dzienników i zobacz, jak rozpoznać, czy żądanie przy użyciu klucza konta magazynu przy użyciu podpisu dostęp współdzielony lub anonimowo oraz tego, czy zakończonych powodzeniem lub niepowodzeniem.
-* [Włączanie klientów oparte na przeglądarce, przy użyciu mechanizmu CORS](#Cross-Origin-Resource-Sharing-CORS)
+* [Włączanie klientów oparte na przeglądarce, przy użyciu mechanizmu CORS](#cross-origin-resource-sharing-cors)
 
   W tej sekcji opowiada, jak umożliwić współużytkowanie zasobów między źródłami (cors). Omówimy międzydomenowy dostęp i jak go obsłużyć za pomocą funkcji CORS, wbudowana w usłudze Azure Storage.
 

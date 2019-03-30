@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 98eb2574ab427f2d5727d74a077628d3a7f829bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 213b227c4ab3f97d9f8787f4e84348e36c43a6e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311465"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630508"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Szybki start: Analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzania obrazów i języka Java
 
@@ -57,8 +57,6 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) w regionie świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
    1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, który chcesz analizować.
-1. Zapisz, a następnie skompiluj projekt języka Java.
-1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
 ```java
 public class Main {
@@ -126,6 +124,25 @@ public class Main {
 }
 ```
 
+## <a name="compile-and-run-the-program"></a>Kompilowanie i uruchamianie programu
+
+1. Zapisz, a następnie skompiluj projekt języka Java.
+1. Jeśli używasz środowiska IDE, uruchom klasę `Main`.
+
+Alternatywnie Jeśli uruchamiasz program z okna wiersza polecenia, uruchom następujące polecenia. Te polecenia zakładają bibliotek znajdują się w folderze o nazwie `libs` znajdujący się w tym samym folderze co `Main.java`; Jeśli nie, musisz zastąpić `libs` ze ścieżką do biblioteki.
+
+1. Skompiluj plik `Main.java`.
+
+    ```bash
+    javac -cp ".;libs/*" Main.java
+    ```
+
+1. Uruchom program. Program wyśle żądanie do interfejsu API usługi QnA Maker, aby utworzyć bazę wiedzy, a następnie będzie sondować wyniki co 30 sekund. Każda odpowiedź jest wypisywane w oknie wiersza polecenia.
+
+    ```bash
+    java -cp ".;libs/*" Main
+    ```
+
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie konsoli, podobnie jak w poniższym przykładzie:
@@ -191,7 +208,7 @@ REST Response:
 
 Gdy projekt języka Java nie będzie już potrzebny, usuń go wraz ze skompilowaną klasą i zaimportowanymi bibliotekami.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z aplikacją w języku Java Swing, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

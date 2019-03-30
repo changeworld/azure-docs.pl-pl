@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie rezerwacje platformy Azure z rabatami | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rabat związany z rezerwacją jest stosowany do uruchamiania bazy danych SQL.
+title: Zrozumienie rabat rezerwacji dla baz danych Azure SQL | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rabat związany z rezerwacją jest stosowany do uruchamiania bazy danych SQL Azure.
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: ff31b9be0e927cca7d272e5deaa5ecf48a52580d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa4fc43efab8c168fd5351ec60def7a3d0eefada
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845468"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649445"
 ---
-# <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do bazy danych SQL
+# <a name="understand-how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do bazy danych SQL Azure
 
 Po możesz kupić pojemność usługi Azure SQL Database, zarezerwowane, rabat związany z rezerwacją jest automatycznie stosowany do bazy danych SQL, odpowiadający atrybuty i ilość rezerwacji. Rezerwacja obejmuje koszty operacji obliczeniowych, bazy danych SQL Database. Opłaty są naliczane dla oprogramowania, magazynu i sieci w normalnych stawek za użycie. Może obejmować koszty licencjonowania dla baz danych SQL za pomocą [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -54,6 +54,6 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

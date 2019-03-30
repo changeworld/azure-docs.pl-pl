@@ -3,8 +3,8 @@ title: Testowanie jednostek usług stanowych w usłudze Azure Service Fabric | D
 description: Więcej informacji na temat pojęć i rozwiązania w zakresie usług stanowych w usłudze Service Fabric testów jednostkowych.
 services: service-fabric
 documentationcenter: .net
-author: charleszipp
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
-ms.author: ryanwi
-ms.openlocfilehash: c2d98316b81b3d908ebbe6147fe40f231e94c142
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: atsenthi
+ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703766"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662571"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Testowanie jednostek usług stanowych w usłudze Service Fabric
 
@@ -50,8 +50,8 @@ Ponadto posiadanie wielu wystąpień pozwala testy, aby przełączyć role każd
 #### <a name="mock-the-state-manager"></a>Testowanie przez menedżera stanu
 Menedżer stanu należy traktowane jako zasób zdalny i w związku z tym w postaci makiet. Gdy pozorowanie przez menedżera stanu, musi istnieć niektórych podstawowych magazynu w pamięci, do śledzenia, co jest zapisywane do menedżera stanu, aby można go odczytać i zweryfikowane. Najprościej można to osiągnąć, jest tworzenie makiety wystąpień każdego z typów elementów Reliable Collections. W ramach tych mocks Użyj typu danych, pasującą ściśle zintegrowana za pomocą operacji wykonywanych względem tej kolekcji. Poniżej przedstawiono niektóre typy danych sugerowanych dla każdej kolekcji niezawodne
 
-- IReliableDictionary < TKey, TValue > -> System.Collections.Concurrent.ConcurrentDictionary < TKey, TValue >
-- IReliableQueue<T> -> klasę System.Collections.Generic.Queue<T>
+- IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
 - IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Wiele wystąpień Menedżera stanu, pojedynczy magazyn

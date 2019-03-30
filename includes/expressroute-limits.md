@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fa448975a5275e5aab4dc82b75433d188422e507
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ee987448f9f6d95e6f97317bec2f696e734cba20
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554193"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632982"
 ---
 #### <a name="expressroute-limits"></a>Limity usługi ExpressRoute
 Następujące limity dotyczą zasobów usługi Azure ExpressRoute na subskrypcję.
@@ -24,6 +24,7 @@ Następujące limity dotyczą zasobów usługi Azure ExpressRoute na subskrypcj�
 | Obwody usługi ExpressRoute na region na subskrypcję, za pomocą usługi Azure Resource Manager |10 |
 | Maksymalna liczba tras do prywatnej komunikacji równorzędnej Azure ze standardem usługi ExpressRoute |4,000 |
 | Maksymalna liczba tras do prywatnej komunikacji równorzędnej Azure dzięki dodatkowi ExpressRoute Premium |10 000 |
+| Maksymalna liczba tras do prywatnej komunikacji równorzędnej Azure z przestrzeni adresowej sieci wirtualnej dla połączenia usługi ExpressRoute |200 | 
 | Maksymalna liczba tras do komunikacji równorzędnej, Microsoft Azure ze standardem usługi ExpressRoute |200 |
 | Maksymalna liczba tras do komunikacji równorzędnej Microsoft Azure, dzięki dodatkowi ExpressRoute Premium |200 |
 | Maksymalna liczba obwodów usługi ExpressRoute, połączone z tej samej sieci wirtualnej w innej lokalizacji komunikacji równorzędnej |4 |

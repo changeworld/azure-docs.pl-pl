@@ -1,10 +1,10 @@
 ---
-title: Różnice między usługami w chmurze i sieci szkieletowej usług | Dokumentacja firmy Microsoft
-description: Omówienie pojęć dotyczących migracji z usług w chmurze aplikacjom sieci szkieletowej usług.
+title: Różnice między usługami w chmurze i usługi Service Fabric | Dokumentacja firmy Microsoft
+description: Omówienie pojęć dotyczących migracji aplikacji z usług Cloud Services w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206486"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669456"
 ---
-# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Więcej informacji na temat różnic między usługami w chmurze i sieci szkieletowej usług przed przeprowadzeniem migracji aplikacji.
-Usługi sieć szkieletowa usług Microsoft Azure to platforma aplikacji nowej generacji chmury dla aplikacji rozproszonych, skalowalnej, bardzo niezawodne. Podaj wiele nowych funkcji do tworzenia pakietów, wdrażanie, uaktualnianie i zarządzania aplikacji rozproszonej chmury. 
+# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Dowiedz się więcej o różnicach między usługami w chmurze i usługi Service Fabric przed przeprowadzeniem migracji aplikacji.
+Microsoft Azure Service Fabric to platforma aplikacji chmurze następnej generacji dla aplikacji rozproszonych, wysoce skalowalną i wysoce niezawodne. Wprowadza wiele nowych funkcji do tworzenia pakietów, wdrażanie, uaktualnianie i zarządzania aplikacji rozproszonych w chmurze. 
 
-Jest to Przewodnik wprowadzający do migracji aplikacji z usługi w chmurze sieci szkieletowej usług. On skupiono się głównie na architektury i projektu różnice między usługami w chmurze i sieci szkieletowej usług.
+Jest to Przewodnik wprowadzający do migrowania aplikacji z usług Cloud Services w usłudze Service Fabric. On koncentruje się głównie na architektury i projektowania różnice między usługami w chmurze i usługi Service Fabric.
 
-## <a name="applications-and-infrastructure"></a>Aplikacji i infrastruktury
-Główną różnicą między usługami w chmurze i sieci szkieletowej usług jest relacja między maszynami wirtualnymi, obciążeń i aplikacji. W tym miejscu obciążenia jest zdefiniowany jako kod do wykonania określonego zadania lub świadczyć usługi.
+## <a name="applications-and-infrastructure"></a>Infrastruktura i aplikacje
+Podstawowa różnica między usługami w chmurze i usługi Service Fabric jest relacja między maszynami wirtualnymi, obciążeń i aplikacji. W tym miejscu obciążenie jest zdefiniowany jako kod, który można zapisać do wykonywania określonych zadań lub świadczenia usługi.
 
-* **Usługi w chmurze jest dotyczące wdrażania aplikacji jako maszyn wirtualnych.** Kod jest ściśle powiązane wystąpienie maszyny Wirtualnej, takie jak sieci Web lub roli proces roboczy. Aby wdrożyć obciążenia usług w chmurze jest wdrożenie co najmniej jedno wystąpienie maszyny Wirtualnej z systemem obciążenia. Brak bez spacji, aplikacji i maszyn wirtualnych, a więc nie obowiązuje żadnych formalnych definicja aplikacji. Aplikację można traktować jako zestaw wystąpień sieci Web lub roli proces roboczy w ramach wdrożenia usługi w chmurze lub całego wdrożenia usługi w chmurze. W tym przykładzie aplikacja jest wyświetlana jako zestaw wystąpień roli.
+* **Usługi w chmurze dotyczy wdrażania aplikacji jako maszyny wirtualne.** Utworzony kod jest ściśle powiązany do wystąpienia maszyny Wirtualnej, takie jak sieci Web lub roli procesu roboczego. Aby wdrożyć obciążenia w usługach w chmurze jest wdrożenie wystąpienia maszyn wirtualnych, które są uruchamiane pakiety robocze. Istnieje nie rozdzielenie maszyn wirtualnych i aplikacji, a więc jest nie formalna definicja aplikacji. Aplikację można traktować jako zestaw wystąpień w sieci Web lub roli procesu roboczego w ramach wdrożenia usług Cloud Services lub całego wdrożenia usług w chmurze. W tym przykładzie aplikacja jest wyświetlana jako zestaw wystąpień roli.
 
-![Aplikacje usług w chmurze i topologię.][1]
+![Aplikacje usług w chmurze i topologii][1]
 
-* **Sieć szkieletowa usług to dotyczące wdrażania aplikacji na istniejących maszynach wirtualnych lub maszyn z sieci szkieletowej usług systemu Windows lub Linux.** Usługi zostanie zapisany są całkowicie rozdzielonymi z podstawowej infrastruktury, który jest niedostępny pobieranej przez platformę aplikacji sieci szkieletowej usług, aplikację można wdrożyć w wielu środowiskach. Obciążenia w sieci szkieletowej usług jest nazywane "Usługa", a co najmniej jednej usługi są pogrupowane w formalnie zdefiniowane przez aplikację, która działa na platformę aplikacji sieci szkieletowej usług. Wiele aplikacji można wdrażać w jednym klastrze usługi sieć szkieletowa usług.
+* **Usługa Service Fabric jest dotyczące wdrażania aplikacji na istniejących maszynach wirtualnych lub maszyn z systemem usługi Service Fabric w systemie Windows lub Linux.** Usługi, które piszesz są całkowicie odłączony od podstawowej infrastruktury, która jest natychmiast wyodrębniony przez platformę aplikacji usługi Service Fabric, aby można było wdrożyć aplikację w wielu środowiskach. Obciążenia w usłudze Service Fabric jest nazywana "Usługa", a co najmniej jednej usługi są zgrupowane w formalnie zdefiniowanych przez aplikację działającą na platformie aplikacji usługi Service Fabric. Wiele aplikacji można wdrożyć w jednym klastrze usługi Service Fabric.
 
-![Aplikacje usługi Service Fabric i topologię.][2]
+![Aplikacje usługi Service Fabric i topologii][2]
 
-Usługi sieć szkieletowa sam jest warstwa platformy aplikacji, która działa w systemie Windows lub Linux, usługi w chmurze jest system wdrażanie zarządzanych Azure maszyny wirtualne z obciążeniami dołączony.
-Model aplikacji usługi Service Fabric ma następujące korzyści:
+Usługa Service Fabric, sama jest warstwa platform aplikacji, która działa w systemie Windows lub Linux, usług w chmurze jest system wdrażania usługi Azure managed maszyn wirtualnych z obciążeniami dołączone.
+Model aplikacji usługi Service Fabric ma szereg zalet:
 
-* Czas szybkiego wdrożenia. Tworzenie wystąpień maszyn wirtualnych może zająć dużo czasu. W sieci szkieletowej usług maszyny wirtualne są wdrażane tylko po do utworzenia klastra obsługującego platforma aplikacji sieci szkieletowej usług. Od tego momentu pakietów aplikacji można wdrożyć w klastrze bardzo szybko.
-* Hosting o wysokiej gęstości. Usług w chmurze wirtualna roli proces roboczy obsługuje jeden obciążenia. W sieci szkieletowej usług aplikacje są niezależne od maszyn wirtualnych, co oznacza, że można wdrożyć wiele aplikacji dla niewielkiej liczby maszyn wirtualnych, które można obniżyć całkowity koszt w przypadku większych wdrożeń.
-* Usługi sieć szkieletowa platformy, mogą uruchamiać dowolne miejsce którego ma maszyny z systemem Windows Server lub Linux, Azure lub lokalnie. Platformy zapewnia warstwę abstrakcji za pośrednictwem podstawowej infrastruktury co aplikacja może być uruchamiane w różnych środowiskach. 
-* Zarządzanie aplikacji rozproszonej. Sieć szkieletowa usług to platforma czy nie tylko aplikacje rozproszone hostów, ale również pomaga zarządzać cyklu ich życia, niezależnie od hostingu maszyny Wirtualnej lub maszyny cyklu życia.
+* Szybkie wdrażanie razy. Tworzenie wystąpień maszyn wirtualnych może zająć dużo czasu. W usłudze Service Fabric maszyny wirtualne są wdrażane tylko wtedy, gdy do utworzenia klastra, która hostuje platformy aplikacji usługi Service Fabric. Od tego momentu pakietów aplikacji można wdrożyć w klastrze bardzo szybko.
+* Hosting o dużej gęstości. W usługach w chmurze maszyny Wirtualnej roli proces roboczy hostuje jednego obciążenia. W usłudze Service Fabric aplikacje są niezależne od maszyn wirtualnych z systemem, co oznacza, że można wdrożyć dużą liczbę aplikacji do niewielkiej liczby maszyn wirtualnych, co pozwala zmniejszyć całkowity koszt w przypadku większych wdrożeń.
+* Usługa Service Fabric, którą platformy można uruchamiać wszędzie, ma maszyny systemu Windows Server lub Linux, czy jest ono platformy Azure lub lokalnie. Ta platforma udostępnia warstwę abstrakcji za pośrednictwem podstawowej infrastruktury, aby uruchomić aplikację w różnych środowiskach. 
+* Zarządzanie aplikacji rozproszonej. Usługa Service Fabric to platforma, nie tylko aplikacje rozproszone hosty, ale również ułatwia zarządzanie ich cyklem życia, niezależnie od hostingu maszyn wirtualnych lub cyklu życia maszyny.
 
 ## <a name="application-architecture"></a>Architektura aplikacji
-Architektura aplikacji usługi w chmurze zwykle obejmuje wiele zależności zewnętrznych usług, takich jak usługi Service Bus, tabel Azure i magazynu obiektów Blob SQL, Redis i inne osoby do zarządzania, stan i dane aplikacji i komunikacji między sieci Web i Role proces roboczy w ramach wdrożenia usługi w chmurze. Przykład kompletna aplikacja usługi w chmurze może wyglądać następująco:  
+Architektura aplikacji usługi w chmurze zwykle obejmuje wiele zależności usług zewnętrznych, takich jak usługi Service Bus, Azure Table i usługi Blob Storage, SQL, Redis i inne do zarządzania, stan i dane aplikacji i komunikacji między sieci Web i Role procesów roboczych w ramach wdrożenia usług w chmurze. Przykładem kompletnej aplikacji usługi w chmurze może wyglądać następująco:  
 
 ![Architektura usług w chmurze][9]
 
-Aplikacje usługi sieć szkieletowa można również korzystać z tej samej usług zewnętrznych w kompletna aplikacja. W tym przykładzie architektury usługi w chmurze to najprostsza ścieżka migracji z usług w chmurze sieci szkieletowej usług jest Zamień tylko wdrożenia usługi w chmurze aplikacji usługi Service Fabric, utrzymywanie ogólna architektura takie same. Sieć Web i roli proces roboczy mogą być przenoszone do usługi sieć szkieletowa usług bezstanowych przy minimalnych zmianach w kodzie.
+Aplikacje usługi Service Fabric można również użyć tych samych usług zewnętrznych w kompletnej aplikacji. Korzystając z tego przykładu architektury usługi w chmurze, to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric jest zamienić tylko wdrożenia usług w chmurze za pomocą aplikacji usługi Service Fabric, utrzymywanie ogólna architektura, taka sama. Ról sieć Web i proces roboczy mogą być przenoszone do usługi bezstanowej usługi Service Fabric przy minimalnych zmianach w kodzie.
 
-![Architektura usługi Service Fabric po migracji proste][10]
+![Architektura usługi Service Fabric po migracji prosty][10]
 
-Na tym etapie system będą nadal działać, taki jak poprzednio. Korzystając z funkcji usługi sieć szkieletowa stanowych, stan zewnętrzne Magazyny można internalized, jak stateful usług, jeśli to możliwe. Jest to bardziej skomplikowane niż proste migracji sieci Web i proces roboczy do usługi sieć szkieletowa usług bezstanowych, ponieważ wymaga zapisywania usług niestandardowych, zawierających podobne funkcje do aplikacji zewnętrznych usług jak przed. Dzięki temu zalety: 
+Na tym etapie powinny nadal działać tak samo jak przed systemu. Korzystając z funkcji stanowej usługi Service Fabric, magazyny stanu zewnętrznego można internalized, usług stanowych, jeśli ma to zastosowanie. Jest to bardziej skomplikowane niż proste migrację sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric, ponieważ wymaga pisania własnych usług, które zapewniają podobne funkcje do aplikacji, jak poprzednio usług zewnętrznych. Takie postępowanie przynosi korzyści: 
 
 * Usuwanie zależności zewnętrzne 
-* Połączenie, wdrażania, zarządzania i modele aktualizacji. 
+* Widać, wdrażania, zarządzania i modele aktualizacji. 
 
-Przykład wynikowy architektura internalizing tych usług może wyglądać następująco:
+Przykład wynikowy architekturę internalizing tych usług może wyglądać następująco:
 
 ![Architektura usługi Service Fabric po pełnej migracji][11]
 
-## <a name="communication-and-workflow"></a>Przepływ pracy i komunikacji
-Większość aplikacji usługi w chmurze składa się z więcej niż jedną warstwę. Podobnie aplikacji usługi sieć szkieletowa składa się z więcej niż jedna usługa (zwykle wiele usług). Bezpośrednia komunikacja są dwa modele komunikacji typowe i za pośrednictwem trwałego magazynu zewnętrznego.
+## <a name="communication-and-workflow"></a>Komunikację i przepływ pracy
+Większość aplikacji usługi w chmurze składają się z więcej niż jedną warstwę. Podobnie aplikacji usługi Service Fabric składa się z więcej niż jednej usługi (zazwyczaj wielu usług). Dwie typowe modele komunikacji są bezpośrednią komunikację przy użyciu zewnętrznego magazynu trwałego i.
 
 ### <a name="direct-communication"></a>Bezpośrednia komunikacja
-Dzięki bezpośrednia komunikacja warstw może komunikować się bezpośrednio za pośrednictwem punktu końcowego udostępnianych przez każdej warstwy. W środowiskach bezstanowych, takich jak usługi w chmurze, to oznacza, że zaznaczenie wystąpienia roli maszyny Wirtualnej, albo losowo lub okrężnego do równoważenia obciążenia i połączenie bezpośrednio z punktu końcowego.
+Bezpośrednia komunikacja warstw może komunikować się bezpośrednio za pośrednictwem punktu końcowego uwidocznionego przez poszczególne warstwy. W środowiskach bezstanowych, takich jak usługi w chmurze, to oznacza, że wybranie wystąpienia roli maszyny Wirtualnej, albo losowo lub działanie okrężne do Równoważenie obciążenia i nawiązywania połączenia z punktem końcowym bezpośrednio.
 
-![Bezpośrednia komunikacja usługi w chmurze][5]
+![Bezpośrednia komunikacja usług w chmurze][5]
 
- Bezpośrednia komunikacja jest wspólnym modelu komunikacji w sieci szkieletowej usług. Najważniejsza różnica między usługi Service Fabric i usług w chmurze jest tym w usługi w chmurze połączenia z maszyną wirtualną, podczas gdy w sieci szkieletowej usług połączyć się z usługą. Jest to ważna różnica kilka przyczyn:
+ Bezpośrednia komunikacja jest Wspólny model komunikacji w usłudze Service Fabric. Główną różnicą między usługi Service Fabric i Cloud Services jest tego w usługi w chmurze możesz połączyć z maszyną wirtualną, natomiast w usłudze Service Fabric możesz połączyć się z usługą. Jest to ważna różnica kilka przyczyn:
 
-* Usługi w sieci szkieletowej usług nie są powiązane z maszyn wirtualnych, które hosta. usługi mogą poruszanie się w klastrze, a w rzeczywistości powinny poruszanie się z różnych powodów: zasób równoważenia, pracy awaryjnej uaktualnienia aplikacji i infrastruktury i ograniczeń umieszczania lub obciążenia. Oznacza to, że adres wystąpienie usługi można zmienić w dowolnym momencie. 
-* Maszyna wirtualna w sieci szkieletowej usług może obsługiwać wielu usług, a każda z punktami końcowymi unikatowy.
+* Usługi w usłudze Service Fabric nie są powiązane z maszyn wirtualnych, które Hostuj je; usługi może poruszać się w klastrze, a w rzeczywistości oczekuje się poruszać się z różnych powodów: Równoważenia zasobów, pracy awaryjnej, uaktualnienia aplikacji i infrastruktury i ograniczeń umieszczania lub obciążenia. Oznacza to, że adres wystąpienie usługi można zmienić w dowolnym momencie. 
+* Maszynę wirtualną w usłudze Service Fabric umożliwia hostowanie wielu usług, a każda z punktami końcowymi unikatowy.
 
-Sieć szkieletowa usług zapewnia mechanizm odnajdywania usługi, wywołuje usługę nazewnictwa, która może być używany do rozpoznania adresy punktów końcowych usług. 
+Usługa Service Fabric udostępnia mechanizm wykrywania usługi o nazwie usługi nazewnictwa, która może służyć do rozpoznawania adresów punktu końcowego usługi. 
 
-![Bezpośrednia komunikacja sieci szkieletowej usług][6]
+![Bezpośrednia komunikacja usługi Service Fabric][6]
 
 ### <a name="queues"></a>Kolejki
-Typowe mechanizm komunikacji między warstwami w środowiskach bezstanowych, takich jak usługi w chmurze jest na trwałym przechowywanie zadań służbowych z jedną warstwę do innej kolejki magazynu zewnętrznego. Typowy scenariusz obejmuje warstwa sieci web, która wysyła zadania do kolejki Azure lub usługi Service Bus, gdzie wystąpień roli procesu roboczego można usunąć z kolejki i przetwarzania zadań.
+Typowe mechanizm komunikacji między warstwami w środowiskach bezstanowych, takich jak usługi w chmurze jest trwale przechowywane zadań służbowych z jednej warstwy do innego za pomocą kolejki magazynu zewnętrznego. Typowym scenariuszem jest warstwy sieci web, która wysyła zadania do kolejki platformy Azure lub usługi Service Bus, gdzie wystąpień roli procesu roboczego mogą usuwania z kolejki i przetwarzać zadania.
 
 ![Komunikacja kolejki usług w chmurze][7]
 
-Można można użyć tego samego modelu komunikacji w sieci szkieletowej usług. Może to być przydatne podczas migracji istniejącej aplikacji usługi w chmurze sieci szkieletowej usług. 
+Tego samego modelu komunikacji może służyć w usłudze Service Fabric. Może to być przydatne podczas migrowania istniejących aplikacji usługi w chmurze w usłudze Service Fabric. 
 
-![Bezpośrednia komunikacja sieci szkieletowej usług][8]
+![Bezpośrednia komunikacja usługi Service Fabric][8]
 
 ## <a name="next-steps"></a>Następne kroki
-Jest to najprostsza ścieżka migracji z usług w chmurze sieci szkieletowej usług należy zastąpić tylko wdrożenia usługi w chmurze aplikacji usługi Service Fabric, utrzymywanie ogólna Architektura aplikacji około takie same. Artykuł zawiera także przewodnik ułatwiający konwertowanie usługi bezstanowej sieci szkieletowej usług sieci Web lub roli proces roboczy.
+Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric zastąpić tylko wdrożenie usługi w chmurze za pomocą aplikacji usługi Service Fabric, utrzymywanie ogólna Architektura aplikacji mniej więcej taka sama. Poniższy artykuł zawiera wskazówki ułatwiające przekonwertować bezstanowej usługi Service Fabric w sieci Web lub roli procesu roboczego.
 
-* [Proste migracji: konwertowanie usługi bezstanowej sieci szkieletowej usług sieci Web lub roli procesu roboczego](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+* [Proste migracji: konwertowanie sieci Web lub roli procesu roboczego usługi bezstanowej usługi Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png

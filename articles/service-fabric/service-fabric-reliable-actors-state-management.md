@@ -4,7 +4,7 @@ description: Opisano, jak stanu elementów Reliable Actors jest zarządzany, trw
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 77fa369a3085a3d11d5bf03406b4ddb885a24009
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 65dd47ab21ca4b1c50e0f17b73e7bc4eae8a96e8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847403"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665784"
 ---
 # <a name="reliable-actors-state-management"></a>Niezawodne zarządzanie stanem aktorów
 Elementy Reliable Actors są jednowątkowe obiekty, hermetyzują logiki i stanu. Ponieważ aktorów są uruchamiane na usług Reliable Services, ich niezawodne zachowują stan, przy użyciu tego samego trwałości i mechanizmów replikacji. W ten sposób Aktorzy nie strać ich stanu po awarii po ponownej aktywacji po wyrzucania elementów bezużytecznych lub po przeniesieniu ich między węzłami w klastrze z powodu równoważenia zasobów lub uaktualnień.

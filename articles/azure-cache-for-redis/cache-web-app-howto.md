@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 100d2e4cb57f2b2d0278540a0382fb845dbba53c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090478"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649020"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Szybki start: Tworzenie aplikacji internetowej platformy ASP.NET 
 
@@ -97,7 +97,7 @@ Następnie utworzysz pamięć podręczną dla aplikacji.
 
 W tej sekcji zaktualizujesz aplikację do obsługi nowego widoku, który wyświetla prosty test dla usługi Azure Cache for Redis.
 
-* [Aktualizowanie pliku web.config ustawieniem aplikacji dla pamięci podręcznej](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
+* [Aktualizowanie pliku web.config ustawieniem aplikacji dla pamięci podręcznej](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
 * Konfigurowanie aplikacji do korzystania z klienta programu StackExchange.Redis
 * Aktualizowanie plików HomeController i Layout
 * Dodawanie nowego widok RedisCache

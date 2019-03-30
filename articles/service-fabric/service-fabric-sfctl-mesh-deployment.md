@@ -4,7 +4,7 @@ description: W tym artykule opisano poleceń wdrażania siatki sfctl interfejsu 
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b25384d8f3c6e41b6c5cca723d41b79f00b17494
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285445"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668470"
 ---
-# <a name="sfctl-mesh-deployment"></a>Interfejs sfctl siatki wdrożenia
+# <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Tworzenie zasobów usługi Service Fabric siatki.
 
 ## <a name="commands"></a>Polecenia
@@ -44,8 +44,8 @@ Tworzy wdrożenie usługi Service Fabric siatki zasobów.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

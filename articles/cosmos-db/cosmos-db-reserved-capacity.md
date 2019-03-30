@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0e0d1cd98f27ef40681e37a55f7021bf102fda21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409469"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664272"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizowanie kosztów rezerwowanie pojemności w usłudze Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Usługa Azure Cosmos DB zastrzeżone wydajność pomaga zaoszczędzić płacąc 
 
 Pojemność na platformie Azure Cosmos DB zastrzeżone mogą znacznie zmniejszyć koszty usługi Cosmos DB&mdash;do 65% w normalnych cen za pomocą jednego roku lub trzech lat zobowiązań z góry. Rezerwowanie pojemności zniżki rozliczeń i nie ma wpływu na stan środowiska uruchomieniowego zasobów usługi Azure Cosmos DB.
 
-Pojemność na platformie Azure Cosmos DB zarezerwowane obejmuje przepływnością aprowizowaną dla zasobów. Nie omówiono magazynu i są opłaty za sieć. Tak szybko, jak można kupić rezerwację, opłaty za przepustowość, zgodne zastrzeżenia, których atrybuty nie są już wynoszą płatności — jako — można przejść stawki. Aby uzyskać więcej informacji na temat rezerwacji, zobacz [Azure rezerwacje](../billing/billing-save-compute-costs-reservations.md) artykułu. 
+Pojemność na platformie Azure Cosmos DB zarezerwowane obejmuje przepływnością aprowizowaną dla zasobów. Nie omówiono magazynu i są opłaty za sieć. Tak szybko, jak można kupić rezerwację, opłaty za przepustowość, zgodne zastrzeżenia, których atrybuty nie są już wynoszą płatności — jako — można przejść stawki. Aby uzyskać więcej informacji na temat rezerwacji, zobacz [Azure rezerwacje](../billing/billing-save-compute-costs-reservations.md) artykułu.
 
 Możesz kupić pojemność usługi Azure Cosmos DB, zarezerwowane z [witryny Azure portal](https://portal.azure.com). Aby kupić rezerwowanie pojemności:
 
@@ -48,7 +48,7 @@ Rozmiar rezerwacji powinna być oparta na łączną przepływność, która będ
 
 4. Wypełnij wymagane pola, zgodnie z opisem w poniższej tabeli:
 
-   ![Wypełnij formularz rezerwowanie pojemności](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
+   ![Wypełnij formularz rezerwowanie pojemności](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
 
    |Pole  |Opis  |
    |---------|---------|
@@ -61,17 +61,17 @@ Rozmiar rezerwacji powinna być oparta na łączną przepływność, która będ
 
 5. Przejrzyj rabat i cena rezerwacji w **koszty** sekcji. Cena rezerwacji ma zastosowanie do zasobów usługi Azure Cosmos DB z przepływnością aprowizowaną we wszystkich regionach.  
 
-6. Wybierz pozycję **Kup**. Zobacz następującą stronę, po pomyślnym zakupu: 
+6. Wybierz pozycję **Kup**. Zobacz następującą stronę, po pomyślnym zakupu:
 
-   ![Wypełnij formularz rezerwowanie pojemności](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png) 
+   ![Wypełnij formularz rezerwowanie pojemności](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
 
-Po użytkownik kupić rezerwację, jest stosowana od razu do żadnych istniejących zasobów usługi Azure Cosmos DB, zgodne z warunkami rezerwacji. Jeśli nie masz żadnych istniejących zasobów usługi Azure Cosmos DB rezerwacji zostaną zastosowane podczas wdrażania nowego wystąpienia usługi Cosmos DB, odpowiadający warunki rezerwacji. W obu przypadkach okres rezerwacji rozpoczyna się natychmiast po zakupie się pomyślnie. 
+Po użytkownik kupić rezerwację, jest stosowana od razu do żadnych istniejących zasobów usługi Azure Cosmos DB, zgodne z warunkami rezerwacji. Jeśli nie masz żadnych istniejących zasobów usługi Azure Cosmos DB rezerwacji zostaną zastosowane podczas wdrażania nowego wystąpienia usługi Cosmos DB, odpowiadający warunki rezerwacji. W obu przypadkach okres rezerwacji rozpoczyna się natychmiast po zakupie się pomyślnie.
 
 Po wygaśnięciu rezerwacji wystąpień usługi Azure Cosmos DB będą nadal działać i są rozliczane według stawek płatności zgodnie z rzeczywistym regularne.
 
 ## <a name="cancellation-and-exchanges"></a>Anulowanie i wymiany
 
-Aby uzyskać pomoc w identyfikacji bezpośrednio rezerwowanie pojemności, zobacz [zrozumieć, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). W przypadku, należy anulować lub wymiany rezerwacji usługi Azure Cosmos DB, skontaktuj się z zespołem usługi Azure Cosmos DB w `AskCosmosDB@microsoft.com`.
+Aby uzyskać pomoc w identyfikacji bezpośrednio rezerwowanie pojemności, zobacz [zrozumieć, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Jeśli musisz anulować lub wymiany rezerwacji usługi Azure Cosmos DB, zobacz [wymiany rezerwacji i zwroty](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -90,4 +90,3 @@ Rabat związany z rezerwacją jest automatycznie stosowane do zasobów usługi A
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

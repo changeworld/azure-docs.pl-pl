@@ -4,7 +4,7 @@ description: Użyj okresowych kopii zapasowych i przywracanie funkcji w usłudze
 services: service-fabric
 documentationcenter: .net
 author: aagup
-manager: timlt
+manager: chackdan
 editor: aagup
 ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 66df926eaaf771fdde4d2eb59772b9d38a87edf0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313232"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667178"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Przywracanie kopii zapasowej w usłudze Azure Service Fabric
 
@@ -229,7 +229,7 @@ $restoreResponse | Format-List
     ```
     
 3. **Powodzenie**, **błąd**, lub **limitu czasu**: Żądana przywracania można wykonać w dowolnej z następujących stanów. Każdy stan zawiera następujące informacje dotyczące znaczenia i odpowiedzi:
-    - **Powodzenie**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoredEpoch_ i _RestoredLSN_ stany, wraz z czasu w formacie UTC.
+    - **Success**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoredEpoch_ i _RestoredLSN_ stany, wraz z czasu w formacie UTC.
 
         ```
         RestoreState  : Success

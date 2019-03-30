@@ -8,14 +8,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c7a185e1c7f271cdca0c688ce7838f6390594da5
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116103"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650414"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault
+
 ## <a name="introduction"></a>Wprowadzenie
 W tym samouczku opisano, jak korzystać z szyfrowania magazynu po stronie klienta za pomocą usługi Azure Key Vault. Przeprowadzi Cię on jak szyfrowanie i odszyfrowywanie obiektów blob, w aplikacji konsolowej przy użyciu tych technologii.
 
@@ -26,6 +27,7 @@ Aby uzyskać informacje ogólne o usłudze Azure Key Vault, zobacz [co to jest u
 Aby uzyskać przegląd informacji o szyfrowaniu po stronie klienta dla usługi Azure Storage, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Konto usługi Azure Storage
@@ -33,6 +35,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>Omówienie szyfrowania po stronie klienta
+
 Aby uzyskać omówienie szyfrowania po stronie klienta dla usługi Azure Storage, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 Poniżej przedstawiono krótki opis sposobu działania szyfrowania po stronie klienta:
@@ -43,6 +46,7 @@ Poniżej przedstawiono krótki opis sposobu działania szyfrowania po stronie kl
 4. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage.
 
 ## <a name="set-up-your-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
+
 Aby kontynuować z tego samouczka, należy wykonać następujące kroki, które są opisane w tym samouczku [co to jest usługa Azure Key Vault?](../../key-vault/key-vault-overview.md):
 
 * Tworzenie magazynu kluczy.
@@ -55,11 +59,12 @@ Zanotuj ClientID i ClientSecret, które zostały wygenerowane podczas rejestrowa
 Utwórz oba klucze w magazynie kluczy. Przyjęto założenie, że w pozostałej części tego samouczka użyto następujących nazw: ContosoKeyVault i TestRSAKey1.
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>Tworzenie aplikacji konsolowej przy użyciu pakietów i AppSettings
+
 W programie Visual Studio Utwórz nową aplikację konsoli.
 
 Dodaj pakiety nuget niezbędne w konsoli Menedżera pakietów.
 
-```
+```powershell
 Install-Package WindowsAzure.Storage
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
@@ -93,6 +98,7 @@ using System.IO;
 ```
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Dodaj metodę, aby uzyskać token do aplikacji konsoli
+
 Poniższa metoda jest używana przez klasy usługi Key Vault, które muszą zostać uwierzytelniony na potrzeby dostępu do magazynu kluczy.
 
 ```csharp
@@ -112,6 +118,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 ```
 
 ## <a name="access-storage-and-key-vault-in-your-program"></a>Dostęp do magazynu oraz usługi Key Vault w programie
+
 W funkcji Main Dodaj następujący kod.
 
 ```csharp
@@ -141,6 +148,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>Szyfrowanie obiektów blob i przekazywanie
+
 Dodaj następujący kod do szyfrowania obiektów blob i przekaż go do konta usługi Azure storage. **ResolveKeyAsync** metodę, która jest używana funkcja zwraca klucz instrumentacji.
 
 ```csharp
@@ -167,6 +175,7 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
 > 
 
 ## <a name="decrypt-blob-and-download"></a>Odszyfrowywanie obiektów blob i pobieranie
+
 Jest tak naprawdę gdy przy użyciu klas programu rozpoznawania nazw ma sensu. Identyfikator klucza używanego do szyfrowania jest skojarzone z obiektu blob w jego metadane, więc nie ma powodu do pobierania klucza i Zapamiętaj skojarzenia między kluczem i obiektów blob. Masz upewnić się, że klucz pozostanie w usłudze Key Vault.   
 
 Klucz prywatny klucz RSA pozostaje w usłudze Key Vault, więc do odszyfrowywania wystąpią, zaszyfrowany klucz z metadane obiektu blob, który zawiera CEK są wysyłane do usługi Key Vault do odszyfrowywania.
@@ -189,6 +198,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 > 
 
 ## <a name="use-key-vault-secrets"></a>Użyj wpisy tajne usługi Key Vault
+
 Sposób używania wpisu tajnego za pomocą szyfrowania po stronie klienta jest za pośrednictwem klasy SymmetricKey, ponieważ klucz tajny jest zasadniczo klucza symetrycznego. Jednakże jak wspomniano powyżej, klucz tajny w usłudze Key Vault nie została zamapowana dokładnie SymmetricKey. Istnieje kilka rzeczy, aby zrozumieć:
 
 * Klucz w SymmetricKey musi być stałą długość: 128, 192, 256, 384 lub 512 bitów.
@@ -221,6 +231,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 Gotowe. Owocnej pracy.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby uzyskać więcej informacji na temat przy użyciu usługi Microsoft Azure Storage w języku C#, zobacz [biblioteki klienta usługi Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Aby uzyskać więcej informacji na temat interfejsu API REST obiektów Blob, zobacz [interfejsu API REST usługi Blob](https://msdn.microsoft.com/library/azure/dd135733.aspx).

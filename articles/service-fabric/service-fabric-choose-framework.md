@@ -4,7 +4,7 @@ description: 'Usługa Service Fabric oferuje dwie struktury do tworzenia usług:
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d791148e6ee023239b0a6bf49c705c2da4eea9a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881876"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665716"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Omówienie modelu programowania usługi Service Fabric
 Usługa Service Fabric oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi można używać interfejsów API usługi Service Fabric w pełni wykorzystać funkcje platformy i struktury aplikacji. Usługi mogą być także skompilowany program wykonywalny napisane w dowolnym języku lub kodu uruchamianego w kontenerze hostowanych w klastrze usługi Service Fabric.

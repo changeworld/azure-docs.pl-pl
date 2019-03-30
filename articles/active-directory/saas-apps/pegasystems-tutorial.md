@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 44a9784e47772c5a2ae1335aa048a4d3b86073eb
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 59dc9f82251e7a406e6fe1339fdb55b4880cd74d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577118"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu systemów Pega
 
@@ -207,7 +207,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z systemami Pega, wyk
 
     a. Kopiuj **identyfikacji jednostki** wartości, a następnie wklej je do **identyfikator** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
 
-    b.  Kopiuj **lokalizacji potwierdzenie konsumenta Service (ACS)** wartości, a następnie wklej je do **adres URL odpowiedzi** textbox pole tekstowe w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    b. Kopiowanie **lokalizacji potwierdzenie konsumenta Service (ACS)** wartości, a następnie wklej je do **adres URL odpowiedzi** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
 
     c. Wybierz **wyłączenie podpisywanie**.
 

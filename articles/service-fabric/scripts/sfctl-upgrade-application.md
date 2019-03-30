@@ -4,7 +4,7 @@ description: Przykładowy skrypt interfejsu wiersza polecenia usługi Service Fa
 services: service-fabric
 documentationcenter: ''
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: aljo
 ms.custom: ''
-ms.openlocfilehash: 7c6b4b6214f5fc2788827ae34aad4019dad1d8ae
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: ffc60279ae414055c893c024d0ffd98267e6655f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806967"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662945"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Dodawanie certyfikatu aplikacji do klastra usługi Service Fabric
 
@@ -32,7 +32,7 @@ Ten przykładowy skrypt przekazuje nową wersję istniejącej aplikacji, a nast�
 
 [!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu wiersza polecenia usługi Service Fabric](../service-fabric-cli.md).
 

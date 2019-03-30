@@ -4,7 +4,7 @@ description: Dowiedz się, jak na Przerzucanie certyfikatów klastra usługi Ser
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: aljo
-ms.openlocfilehash: 549c5fed02402bb17b85fe796fecc4b53b321a66
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e60eb33403b9c38972087706b9e62bc3578b97bb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497094"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663880"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przechodzą certyfikatu klastra usługi Service Fabric
 Gdy certyfikat klastra usługi Service Fabric jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [do Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat z urzędu certyfikacji z nową datę wygaśnięcia.  Certyfikaty z podpisem własnym nie są obsługiwane w środowisku produkcyjnym klastrów usługi Service Fabric, aby uwzględnić certyfikaty generowane podczas Azure portal klastra przepływ pracy tworzenia. Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 

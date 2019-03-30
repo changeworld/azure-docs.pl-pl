@@ -4,7 +4,7 @@ description: Dowiedz się więcej o komunikacji wystąpienia usługi Azure SQL D
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621553"
+ms.locfileid: "58651316"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database 
 
@@ -110,7 +110,8 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 |zarządzanie  |80, 443, 12000|TCP     |Dowolne              |AzureCloud  |Zezwalaj |
 |mi_subnet   |Dowolne           |Dowolne     |Dowolne              |MI PODSIECI *  |Zezwalaj |
 
-> Upewnij się, że istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia obsługę administracyjną przy użyciu wdrożenia ARM może zakończyć się niepowodzeniem, jeśli reguły ruchu przychodzącego i dane wyjściowe są skonfigurowane osobno dla poszczególnych portów. 
+> [!IMPORTANT]
+> Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia obsługę administracyjną przy użyciu wdrożenia ARM zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i dane wyjściowe są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
 
 \* PODSIECI wystąpienia Zarządzanego odnosi się do zakresu adresów IP dla podsieci w 10.x.x.x/y formularza. Te informacje można znaleźć w witrynie Azure portal, w oknie właściwości podsieci.
 

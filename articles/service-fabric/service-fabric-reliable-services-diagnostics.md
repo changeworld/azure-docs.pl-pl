@@ -4,7 +4,7 @@ description: Funkcja diagnostyki dla stanowych usług Reliable Services w usłud
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: c3116b42e8696ae0bb2457a3c64320cb187b7447
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890716"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664119"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Klasa Azure usługi Service Fabric stanowa niezawodnych usług StatefulServiceBase emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzenia, które mogą służyć do debugowania usługi dają wgląd w sposób operacyjnego środowiska uruchomieniowego i pomóc w rozwiązywaniu problemów.
@@ -119,8 +119,8 @@ W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest ciąg repr
 | --- | --- |
 | Liczba elementów | Liczba elementów w magazynie.|
 | Rozmiar dysku | Rozmiar całkowitego miejsca na dysku wyrażony w bajtach, plików punktu kontrolnego dla magazynu.|
-| Bajty zapisu pliku punktu kontrolnego/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
-| Skopiuj bajty transferu dysku/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
+| Zapis pliku punktu kontrolnego B/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
+| Transfer kopiowania dysku w B/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 [EventSource dostawców w PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

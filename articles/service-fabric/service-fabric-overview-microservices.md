@@ -3,8 +3,8 @@ title: Wprowadzenie do mikrousług na platformie Azure | Dokumentacja firmy Micr
 description: Omówienie tworzenia aplikacji w chmurze dzięki podejściu mikrousług jest ważna do tworzenia nowoczesnych aplikacji oraz jak usługi Azure Service Fabric udostępnia platformę można to osiągnąć.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
-ms.author: msfussell
-ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: atsenthi
+ms.openlocfilehash: 1e02e4fdf0dbe04d8756fc6355c6a9e414b27d2b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102820"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665606"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Dlaczego mikrousługi podejście do tworzenia aplikacji?
 

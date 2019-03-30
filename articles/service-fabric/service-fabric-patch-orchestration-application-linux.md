@@ -4,7 +4,7 @@ description: Aplikacja do Automatyzowanie stosowania poprawek systemu operacyjne
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285156"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668198"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Linux w klastrze usługi Service Fabric
 
@@ -41,13 +41,13 @@ Aplikacja orchestration poprawki zapewnia następujące funkcje:
 
 Aplikacji patch orchestration składa się z następujących Podskładniki:
 
-- **Usługa koordynatora**: Usługa stanowa jest odpowiedzialny za:
+- **Usługa koordynatora**: Ta usługa stanowa jest odpowiedzialny za:
     - Koordynowanie zadania aktualizacji systemu operacyjnego dla całego klastra.
     - Przechowywanie wyniku zakończone operacje aktualizacji systemu operacyjnego.
-- **Usługa agenta węzła**: tę usługę bezstanową działa we wszystkich węzłach klastra usługi Service Fabric. Usługa jest odpowiedzialna za:
+- **Usługa agenta węzła**: Tę usługę bezstanową działa we wszystkich węzłach klastra usługi Service Fabric. Usługa jest odpowiedzialna za:
     - Uruchamianie demona węzła agenta w systemie Linux.
     - Monitorowanie usługi demona.
-- **Demon agenta węzła**: Usługa demona tego systemu Linux jest uruchamiane na wyższym poziomie uprawnień (root). Z kolei Usługa agenta węzła i usługa koordynatora są uruchomione na niższym poziomie uprawnień. Usługa jest odpowiedzialny za wykonanie następujących zadań aktualizacji we wszystkich węzłach klastra:
+- **Demon agenta węzła**: Ta usługa demonów systemu Linux jest uruchamiane na wyższym poziomie uprawnień (root). Z kolei Usługa agenta węzła i usługa koordynatora są uruchomione na niższym poziomie uprawnień. Usługa jest odpowiedzialny za wykonanie następujących zadań aktualizacji we wszystkich węzłach klastra:
     - Wyłączanie automatycznej aktualizacji systemu operacyjnego w węźle.
     - Pobieranie i instalowanie aktualizacji systemu operacyjnego, zgodnie z zasadami użytkownik udostępnił.
     - Ponowne uruchamianie maszyny po instalacji aktualizacji systemu operacyjnego, jeśli to konieczne.
@@ -130,11 +130,11 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
-|TaskApprovalPolicy   |Wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
+|TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
 | UpdateOperationTimeOutInMinutes | Int <br>(Domyślnie: 180)                   | Określa limit czasu dla wszelkich operacji aktualizacji (pobieranie lub instalację). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
-| RescheduleCount      | Int <br> (Domyślne: 5).                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony systemu operacyjnego aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
-| RescheduleTimeInMinutes  | Int <br>(Domyślna: 30). | Interwał, w którym usługa zmieni ustalony systemu operacyjnego aktualizacji w przypadku, gdy błąd będzie nadal występować. |
-| UpdateFrequency           | Ciąg rozdzielony przecinkami (domyślnie: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji systemu operacyjnego w klastrze. Format i możliwe wartości to: <br>-Miesięczny, DD: mm: ss, na przykład co miesiąc, 5, 12:22:32. <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -None wskazuje, nie można wykonać tej aktualizacji.  <br><br> Wszystkie godziny są w formacie UTC.|
+| RescheduleCount      | Int <br> (Domyślnie: 5)                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony systemu operacyjnego aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
+| RescheduleTimeInMinutes  | Int <br>(Domyślnie: 30) | Interwał, w którym usługa zmieni ustalony systemu operacyjnego aktualizacji w przypadku, gdy błąd będzie nadal występować. |
+| UpdateFrequency           | Ciąg rozdzielony przecinkami (domyślne: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji systemu operacyjnego w klastrze. Format i możliwe wartości to: <br>-Miesięczny, DD: mm: ss, na przykład co miesiąc, 5, 12:22:32. <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -None wskazuje, nie można wykonać tej aktualizacji.  <br><br> Wszystkie godziny są w formacie UTC.|
 | UpdateClassification | Ciąg rozdzielony przecinkami (domyślnie: "securityupdates") | Typ aktualizacji, które należy zainstalować na węzłach klastra. Dopuszczalne wartości to securityupdates, wszystkie. <br> -securityupdates - będą instalowane tylko aktualizacje zabezpieczeń <br> z polecenia apt - Al - zainstalować wszystkie dostępne aktualizacje.|
 | ApprovedPatches | Ciąg rozdzielony przecinkami (domyślnie: "") | Jest to lista zatwierdzonych aktualizacji, które należy zainstalować na węzłach klastra. Rozdzielana przecinkami lista zawiera zatwierdzonych pakietów i opcjonalnie wybraną docelową wersję.<br> na przykład: "apt utils = 1.2.10ubuntu1, języku python3 jwt, apt https transportu < 1.2.194, libsystemd0 > = 229 4ubuntu16" <br> Powyższe zostaną zainstalowane <br> -apt utils 1.2.10ubuntu1 wersji, jeśli jest on dostępny w użyciu narzędzia apt w pamięci podręcznej. Jeśli w tej konkretnej wersji nie jest dostępna, jest pusta. <br> -Token jwt środowiska python3 jako uaktualnienia do najnowszej dostępnej wersji. Jeśli pakiet nie jest obecny, jest pusta. <br> — najwyższa wersja, która jest mniejsza niż 1.2.194 uaktualnień apt https transportu. Jeśli ta wersja nie jest obecny, jest pusta. <br> — najwyższa wersja, która jest większa niż lub równe 229 4ubuntu16 libsystemd0 uaktualnień. Jeśli takie wersji nie istnieje, jest pusta.|
 | RejectedPatches | Ciąg rozdzielony przecinkami (domyślnie: "") | To jest lista aktualizacji, które nie należy instalować na węzłach klastra <br> na przykład: "bash," sudo"" <br> Poprzedni odfiltrowuje bash, "sudo" odbieranie wszelkich aktualizacji. |
@@ -223,7 +223,7 @@ Pole | Wartości | Szczegóły
 -- | -- | --
 OperationResult | 0 — Powodzenie<br> 1 — zakończyło się pomyślnie z błędami<br> 2 — nie powiodło się<br> 3 — zostało przerwane<br> 4 — zostało przerwane z przekroczeniem limitu czasu | Wskazuje wynik ogólny operacji (zazwyczaj instalacji co najmniej jednej aktualizacji).
 ResultCode | Takie same jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla indywidualnej aktualizacji.
-Typ operacji | 1 — Instalacja<br> 0 - wyszukiwanie i pobieranie.| Instalacja jest tylko typ operacji, która będzie wyświetlana w wynikach domyślnie.
+OperationType | 1 — Instalacja<br> 0 - wyszukiwanie i pobieranie.| Instalacja jest tylko typ operacji, która będzie wyświetlana w wynikach domyślnie.
 UpdateClassification | Wartość domyślna to "securityupdates" | Typ aktualizacji, który jest instalowany podczas operacji aktualizacji
 UpdateFrequency | Wartość domyślna to "Co tydzień, Środa, 7:00:00" | Zaktualizuj częstotliwości skonfigurowana dla tej aktualizacji.
 RebootRequired | wartość true — ponowny rozruch nie jest wymagana<br> FALSE — ponowny rozruch nie jest wymagane | Wskazuje, że ponowne uruchomienie komputera nie jest wymagana do ukończenia instalacji aktualizacji.
@@ -305,7 +305,7 @@ A. Czas potrzebny przez aplikację patch orchestration przede wszystkim jest zal
 
 PYTANIE: **Jak ma patch orchestration aplikacja decyduje o aktualizacji, które są aktualizacje zabezpieczeń.**
 
-A. Patch orchestration aplikacja używa logikę specyficzną dla dystrybucji, do określenia, które aktualizacje wśród dostępne aktualizacje są aktualizacje zabezpieczeń. Na przykład: W aplikacji wyszukuje aktualizacje z archiwami $RELEASE ubuntu — zabezpieczenia, $RELEASE — aktualizacje ($RELEASE = xenial lub linux standardowego podstawowej wersji). 
+A. Patch orchestration aplikacja używa logikę specyficzną dla dystrybucji, do określenia, które aktualizacje wśród dostępne aktualizacje są aktualizacje zabezpieczeń. Na przykład: W systemie ubuntu aplikacji wyszukuje aktualizacje z archiwami $RELEASE — zabezpieczenia, $RELEASE — aktualizacje ($RELEASE = xenial lub linux standardowego podstawowej wersji). 
 
  
 PYTANIE: **Jak można zablokować do określonej wersji pakietu?**

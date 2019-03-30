@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d8790eac93b288d5d5254f188fe5c901b5d5df14
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351494"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630550"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
@@ -30,7 +30,7 @@ Ten temat zawiera krótkie omówienie koncepcji usługi Azure Media Services i z
 
 Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowania i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services i przekazać pliki cyfrowe do **zasoby**.
 
-- [Przekazywanie chmura i Magazyn](storage-account-concept.md)
+- [Przekazywanie do chmury i magazynowanie w niej](storage-account-concept.md)
 - [Koncepcja zasobów](assets-concept.md)
 
 ## <a name="encoding"></a>Kodowanie
@@ -80,19 +80,19 @@ Można użyć usługi Media Services **manifestów dynamicznych** do przesyłani
 - [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
 - [Zasady kluczy zawartości](content-key-policy-concept.md)
 - [Ochrona zawartości](content-protection-overview.md)
-- [O nazwie manifesty dynamiczne](filters-dynamic-manifest-overview.md)
+- [Manifesty dynamiczne](filters-dynamic-manifest-overview.md)
 - [Filtry](filters-concept.md)
 
 ## <a name="live-streaming"></a>Transmisja strumieniowa na żywo
 
-Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. **Wydarzeń na żywo** jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Po utworzeniu **wydarzenie na żywo**, wejściowy punkt końcowy jest tworzona, której można wysyłać sygnał na żywo z kodera zdalnego. Po przesłaniu strumienia do **wydarzenie na żywo**, można rozpocząć zdarzenie przesyłania strumieniowego, tworząc **zasobów**, **na żywo dane wyjściowe**, i **lokalizatora przesyłania strumieniowego** . **Dane wyjściowe na żywo** spowoduje zarchiwizowanie strumienia do **zasobów** i udostępnić go użytkownikom za pośrednictwem **punkt końcowy przesyłania strumieniowego**. A **wydarzenie na żywo** może być jednym z dwóch typów: **przekazywanego** i **kodowanie na żywo**.
+Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. **Wydarzenia na żywo** odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Po utworzeniu **wydarzenie na żywo**, wejściowy punkt końcowy jest tworzona, której można wysyłać sygnał na żywo z kodera zdalnego. Po przesłaniu strumienia do **wydarzenie na żywo**, można rozpocząć zdarzenie przesyłania strumieniowego, tworząc **zasobów**, **na żywo dane wyjściowe**, i **lokalizatora przesyłania strumieniowego** . **Dane wyjściowe na żywo** spowoduje zarchiwizowanie strumienia do **zasobów** i udostępnić go użytkownikom za pośrednictwem **punkt końcowy przesyłania strumieniowego**. A **wydarzenie na żywo** może być jednym z dwóch typów: **przekazywanego** i **kodowanie na żywo**.
 
 Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
 
 ![przekazywane](./media/live-streaming/pass-through.svg)
 
 - [Omówienie transmisji strumieniowej na żywo](live-streaming-overview.md)
-- [Wydarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md)
+- [Wydarzenia i dane wyjściowe na żywo](live-events-outputs-concept.md)
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -102,6 +102,11 @@ Aby wyświetlić postęp zadania, należy użyć **usługi Event Grid**. Usługa
 
 - [Obsługa zdarzeń usługi Event Grid](reacting-to-media-services-events.md)
 - [Schematy](media-services-event-schemas.md)
+
+### <a name="azure-monitor"></a>Azure Monitor
+
+Monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć, jak Twoje aplikacje działają z usługą Azure Monitor.
+
 - [Metryki i dzienniki diagnostyczne](media-services-metrics-diagnostic-logs.md)
 - [Schematy dla dzienników diagnostycznych](media-services-diagnostic-logs-schema.md)
 
@@ -113,4 +118,9 @@ Usługa Azure Media Player umożliwia odtwarzanie multimediów udostępnianych p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przekazywanie, kodowanie i przesyłanie strumieniowe przy użyciu usługi Media Services](stream-files-tutorial-with-api.md)
+* [Kodowanie pliku zdalnego i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+* [Kodowanie przekazanego pliku i strumienia wideo — .NET](stream-files-tutorial-with-api.md)
+* [Stream na żywo — .NET](stream-live-tutorial-with-api.md)
+* [Analizowanie filmu wideo — .NET](analyze-videos-tutorial-with-api.md)
+* [Szyfrowanie AES-128 - .NET](protect-with-aes128.md)
+* [Dynamiczne szyfrowanie przy użyciu technologii multi-DRM — .NET](protect-with-drm.md) 

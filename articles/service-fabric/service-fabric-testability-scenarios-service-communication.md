@@ -1,10 +1,10 @@
 ---
-title: 'Kontroli: Komunikacja usługi | Dokumentacja firmy Microsoft'
-description: Usługi do komunikacji jest punktem krytyczne integracji aplikacji sieci szkieletowej usług. W tym artykule omówiono zagadnienia dotyczące projektowania i testowania technik.
+title: 'Testowalność: Usługa Komunikacja | Dokumentacja firmy Microsoft'
+description: Komunikacja usług — jest punkt krytyczny integracji aplikacji usługi Service Fabric. W tym artykule omówiono zagadnienia dotyczące projektowania i testowania technik.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e3ea537d310d49c934cf6789184f090791cf16a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211229"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665750"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Scenariusze testowania usługi Service Fabric: komunikacji usługi
-Powierzchnia zorientowane na usługę architektury style naturalnie w sieci szkieletowej usług Azure i Mikrousług. W tych typach rozproszonej architektury mikrousługi składnikowa aplikacji zwykle składają się z wielu usług, które muszą komunikować się ze sobą. W nawet sytuacjach najprostszym zazwyczaj masz co najmniej bezstanowych usługą sieci web i usługi magazynu danych stanowe potrzebne do komunikowania się.
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Scenariusze testowania usługi Service Fabric: Komunikacja usług
+Powierzchnia stylami architektury zorientowanej na usługi w naturalny sposób w usłudze Azure Service Fabric i Mikrousług. W tego rodzaju rozproszonej architektury aplikacji mikrousług składającej składają się zazwyczaj z wielu usług, które muszą komunikować się ze sobą. W nawet najprostsza przypadków ogólnie masz co najmniej bezstanowej usługi internetowej i usługi magazynu danych stanowej, która muszą komunikować się.
 
-Usługi do komunikacji jest punktem krytyczne integracji aplikacji, ponieważ każda usługa przedstawia zdalnego interfejsu API z innymi usługami. Praca z zestawu granice interfejsu API, które zwykle obejmuje we/wy wymaga niektórych opieki z dobrym ilością testowania i weryfikacji.
+Komunikacja usług — jest punkt krytyczny integracji aplikacji, ponieważ każda usługa udostępnia zdalny interfejs API z innymi usługami. Praca z zestaw granice interfejsu API, który obejmuje operacje We/Wy zwykle wymaga niektórych opieki, dobrym ilość testowania i sprawdzania poprawności.
 
-Istnieje wiele uwagi, aby podczas granice te usługi są połączone ze sobą w rozproszonym systemie:
+Jest wiele istotnych kwestii, aby upewnić się, gdy granice te usługi są połączone ze sobą w rozproszonym systemie:
 
-* *Protokół transportu*. Maksymalnej przepływności zostanie użyty HTTP współdziałania zwiększone lub binarne protokołu niestandardowego?
-* *Obsługa błędów*. Sposób trwałe i przejściowych błędów obsługi? Co się stanie, jeśli usługa jest przenoszony do innego węzła?
-* *Limity czasu i opóźnienia*. W aplikacjach rozwiązania jak każdej warstwy usług obsłuży opóźnienia przez stos i dla użytkownika?
+* *Protokół transportowy*. Będzie używana HTTP współdziałania w ramach zwiększone lub niestandardowego protokołu binarne maksymalną przepustowość?
+* *Obsługa błędów*. Jak będą obsługiwane stałych i przejściowych błędów? Co się stanie, gdy usługa przejdzie do innego węzła?
+* *Limity czasu i opóźnienia*. W aplikacjach wielowarstwowych jak każda warstwa usługi obsłuży opóźnienie stosu i użytkownika?
 
-Czy użyć jednego ze składników komunikacji wbudowanej usługi udostępniane przez usługi sieć szkieletowa lub tworzenia, testowania interakcje między usług jest istotny dla zapewnienia odporności w aplikacji.
+Czy używasz jeden ze składników komunikacji wbudowanej usługi, które są dostarczane przez usługę Service Fabric lub kompilowania, testowania interakcje między usługami jest mają kluczowe znaczenie dla zapewnienia odporności w aplikacji.
 
-## <a name="prepare-for-services-to-move"></a>Przygotuj się do usługi, aby przenieść
-Wystąpienie usługi może poruszanie się w czasie. Jest to szczególnie istotne, skonfigurowanymi metryki dostosowane niestandardowych zasobów optymalne równoważenia obciążenia. Sieć szkieletowa usług przenosi swoich wystąpień usługi, aby zmaksymalizować ich dostępności nawet podczas uaktualnienia, praca awaryjna skalowalnego w poziomie i innych sytuacjach, które występują w okresie istnienia systemu rozproszonego.
+## <a name="prepare-for-services-to-move"></a>Przygotowanie do usług przenieść
+Wystąpienia usługi może poruszania się wraz z upływem czasu. Jest to szczególnie istotne w przypadku, gdy są skonfigurowane przy użyciu metryk dostosowane do niestandardowych wymagań optymalnego rozmieszczenia zasobów równoważenia obciążenia. Usługa Service Fabric przenosi swoich wystąpień usługi, aby zmaksymalizować ich dostępności, nawet podczas uaktualnień, pracy w trybie Failover, skalowalnego w poziomie i innych sytuacjach, które występują w okresie istnienia systemu rozproszonego.
 
-Jak usługi poruszanie się w klastrze, klientów i innych usług powinna być przygotowana do obsługi dwa scenariusze, gdy są one komunikować się z usługą:
+Ponieważ usługi poruszanie się w klastrze, klientów i innych usług powinna być przygotowana do obsługi dwa scenariusze, gdy one komunikować się z usługą:
 
-* Repliki wystąpienia lub partycji usługi zostały przeniesione od czasu ostatniego zawsze mówię można do niego. Jest to normalne część cyklu życia usług i można się spodziewać się stać się przez cały okres istnienia aplikacji.
-* Repliki wystąpienia lub partycji usługi jest w trakcie przenoszenia. Mimo że w sieci szkieletowej usług występuje bardzo szybko pracy awaryjnej usługi z jednego węzła do innego, mogą występować opóźnienia w dostępności Jeśli składnik komunikacji z usługą przebiega powoli rozpocząć.
+* Repliki wystąpienia lub partycji usługi zostały przeniesione od czasu ostatniego, których mówił do niego. Jest to normalna część cyklu życia usługi. Ponadto należy się spodziewać, do wykonania w okresie istnienia aplikacji.
+* Repliki wystąpienia lub partycji usługi jest w trakcie przenoszenia. Chociaż usługi z jednego węzła do drugiego przejścia do trybu failover bardzo szybko w usłudze Service Fabric, może wystąpić opóźnienie dostępności Jeśli składnik komunikacji z usługą odbywa się powoli, można uruchomić.
 
-Bezpiecznie obsługi tych scenariuszy jest ważna w przypadku systemu smooth uruchomiona. Aby to zrobić, należy pamiętać, że:
+Bez problemu zmieniała obsługi tych scenariuszy jest ważne dla systemu smooth działa. Aby to zrobić, należy pamiętać, że:
 
-* Każda usługa, która jest połączona z ma *adres* nasłuchującej na (na przykład HTTP lub Websocket). Przenosi wystąpienie usługi lub partycję, zmienia jego adres punktu końcowego. (Powoduje przeniesienie do innego węzła, używając innego adresu IP.) Jeśli używasz składniki komunikacji wbudowanej one obsłuży ponowne rozpoznawania adresów usługi dla Ciebie.
-* Prawdopodobnie wystąpił tymczasowy wzrost opóźnienia usługi podczas uruchamiania wystąpienia usługi się jego odbiornika ponownie. Zależy to od jak szybko usługi otwiera odbiornika po przeniesieniu wystąpienia usługi.
-* Istniejących połączeń, należy zamknąć i otworzyć ponownie po usługi zostanie otwarty w nowym węźle. Bezpieczne węzła zamknięcia lub ponownego uruchomienia umożliwia czas dla istniejących połączeń, które można bezpiecznie zamknąć.
+* Do każdej usługi, które mogą być połączone z ma *adres* który nasłuchuje (na przykład HTTP lub gniazda Websocket). Kiedy przesuwa się wystąpienie usługi lub partycję, zmienia jego adres punktu końcowego. (Przesuwa się do innego węzła z innym adresem IP.) Jeśli używasz składniki komunikacji wbudowanej obsługiwanemu ponownego rozpoznawania adresów usługi dla Ciebie.
+* Może wystąpić tymczasowy wzrost liczby opóźnienie usługi podczas uruchamiania wystąpienia usługi się jego odbiornika ponownie. Zależy to od jak szybko usługi otwiera odbiornik po przeniesieniu wystąpienia usługi.
+* Istniejące połączenia muszą być zamknięte i otwarte ponownie po usługi zostanie otwarty w nowym węźle. Węzeł łagodne zamykanie lub ponowne uruchomienie umożliwia czas prawidłowe zamknięcie istniejącego połączenia.
 
-### <a name="test-it-move-service-instances"></a>Należy przeprowadzić test: Przenieś wystąpienia usługi
-Za pomocą narzędzia do testowania usługi Service Fabric, można tworzyć scenariusza testu do przetestowania tych sytuacji na różne sposoby:
+### <a name="test-it-move-service-instances"></a>Przetestuj ją: Przenoszenie wystąpienia usługi
+Za pomocą narzędzia do testowania usługi Service Fabric, możesz tworzyć scenariusza testu, aby przetestować tych sytuacji na różne sposoby:
 
-1. Przenieś usługi stanowej repliki podstawowej.
+1. Przenieś replika podstawowa usługi stanowej.
    
-    Repliki podstawowej partycji usługi stanowej można przenieść dla dowolnej liczby powodów. Służy do docelowego repliką podstawową określonej partycji, aby zobaczyć, jak usługi reagują na przeniesienie w bardzo kontrolowany sposób.
+    Dla dowolnej liczby przyczyny można przenieść podstawową replikę partycji usługi stanowej. Użyj tego pod kątem repliką podstawową określonej partycji, aby zobaczyć, jak usługi reagować na przeniesienie w bardzo kontrolowany sposób.
    
     ```powershell
    
@@ -62,9 +62,9 @@ Za pomocą narzędzia do testowania usługi Service Fabric, można tworzyć scen
     ```
 2. Zatrzymanie węzła.
    
-    Po zatrzymaniu węzeł sieci szkieletowej usług przenosi wszystkie wystąpienia usługi lub partycje, które były w tym węźle do jednego z innych dostępnych węzłów w klastrze. Umożliwia testowanie sytuacji, gdy węzeł ma utracone z klastra i wszystkich wystąpień usługi i replik w tym węźle ma przenoszenia.
+    Po zatrzymaniu węzła usługi Service Fabric przenosi wszystkie wystąpienia usługi lub partycje, które były w tym węźle do jednej z dostępnych węzłów w klastrze. Służy do testowania w sytuacji, gdy węzeł zostanie utracony z klastra i wszystkich wystąpień usługi i replik w tym węźle się okazać konieczne przeniesienie.
    
-    Węzeł można wyłączyć przy użyciu programu PowerShell **Stop ServiceFabricNode** polecenia cmdlet:
+    Węzeł można zatrzymać za pomocą programu PowerShell **Stop-ServiceFabricNode** polecenia cmdlet:
    
     ```powershell
    
@@ -72,15 +72,15 @@ Za pomocą narzędzia do testowania usługi Service Fabric, można tworzyć scen
    
     ```
 
-## <a name="maintain-service-availability"></a>Obsługa dostępność usługi
-Jako platforma usługi sieć szkieletowa zaprojektowano w celu zapewnienia wysokiej dostępności usług. Ale w ekstremalnych przypadkach problemy związane z infrastrukturą podstawowej nadal powodują niedostępności. Należy przetestować w tych sytuacjach zbyt.
+## <a name="maintain-service-availability"></a>Obsługa dostępności usługi
+To platforma usługi Service Fabric jest zaprojektowany w celu zapewnienia wysokiej dostępności usługi. Ale w skrajnych przypadkach podstawowych problemów związanych z infrastrukturą nadal może spowodować niedostępność. Należy przetestować dla tych scenariuszy za.
 
-Usługi stanowej używać systemu kworum w celu replikowania stanu wysokiej dostępności. Oznacza to, że kworum replik musi być dostępna do wykonania operacji zapisu. W rzadkich przypadkach, takich jak awaria sprzętu powszechnie kworum replik nie mogą być dostępne. W takich przypadkach nie można wykonać operacji zapisu, ale nadal będzie mógł wykonywać operacji odczytu.
+Usługi stanowe za pomocą systemu kworum replikować stanu w celu zapewnienia wysokiej dostępności. Oznacza to, że kworum replik musi być dostępny, aby wykonać operacje zapisu. W rzadkich przypadkach, takich jak awarii sprzętu powszechne kworum replik może nie być dostępne. W takich przypadkach nie można wykonać operacji zapisu, ale nadal będzie można przeprowadzić operacji odczytu.
 
-### <a name="test-it-write-operation-unavailability"></a>Należy przeprowadzić test: niedostępności operację zapisu
-Przy użyciu narzędzia do testowania w sieci szkieletowej usług, można wstrzyknąć błędów, która powoduje utratę kworum jako test. Mimo że takiej sytuacji jest rzadko, ważne jest, klientów i usług, które są zależne od usługi stanowej są przygotowywane do obsługi sytuacji, gdy nie może podjąć żądań zapisu do niego. Ważne jest również czy samej usługi stanowej zna tej możliwości i bezpiecznie można przekazać do wywoływania.
+### <a name="test-it-write-operation-unavailability"></a>Przetestuj ją: Niedostępność operacji zapisu
+Za pomocą narzędzia do testowania w usłudze Service Fabric, należy wstrzyknąć błędów, które wywołuje utraciła kworum, która jest testem. Mimo że takiej sytuacji jest rzadkie, ważne jest, czy klientów i usług, które są zależne od usługi stanowej są przygotowywane do obsługi sytuacje, w których nie może ona podjąć, żądania zapisu do niego. Jest również zdaje sobie sprawę z tej możliwości samej usługi stanowe i bez problemu zmieniała można przekazać do obiektów wywołujących.
 
-Utrata kworum może wywołać przy użyciu programu PowerShell **Invoke ServiceFabricPartitionQuorumLoss** polecenia cmdlet:
+Utraciła kworum może wywołać przy użyciu programu PowerShell **Invoke ServiceFabricPartitionQuorumLoss** polecenia cmdlet:
 
 ```powershell
 
@@ -88,10 +88,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-W tym przykładzie ustawiliśmy `QuorumLossMode` do `QuorumReplicas` wskazująca chęć wywołać wyniku utraty kworum bez konieczności przełączania w dół wszystkich replik. W ten sposób operacje odczytu są nadal możliwe. Aby przetestować scenariusz, w którym cały partycji jest niedostępna, można ustawić ten przełącznik `AllReplicas`.
+W tym przykładzie ustawimy `QuorumLossMode` do `QuorumReplicas` do wskazania, że chcemy wywołać utraciła kworum bez konieczności wyłączania wszystkich replik. W ten sposób operacje odczytu są nadal możliwe. Aby przetestować scenariusz, w którym całą partycję jest niedostępny, można ustawić ten przełącznik `AllReplicas`.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej na temat testowania czynności](service-fabric-testability-actions.md)
+[Dowiedz się więcej na temat akcji testowalności](service-fabric-testability-actions.md)
 
-[Dowiedz się więcej o scenariuszach kontroli](service-fabric-testability-scenarios.md)
+[Dowiedz się więcej na temat scenariuszy testowalności](service-fabric-testability-scenarios.md)
 

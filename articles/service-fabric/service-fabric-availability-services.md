@@ -1,10 +1,10 @@
 ---
-title: Dostępność usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft
-description: W tym artykule opisano wykrywania błędów, trybu failover i odzyskiwania usługi
+title: Dostępność usługi Service Fabric | Dokumentacja firmy Microsoft
+description: W tym artykule opisano wykrywania usterek, pracy awaryjnej i recovery services
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
 ms.service: service-fabric
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0794c0e190ecbc4cce808e94f98bb0ac63d1075a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dd10af0d3c8a57168a27a039286ea0ec4c1dad02
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206253"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662754"
 ---
-# <a name="availability-of-service-fabric-services"></a>Dostępność usług sieci szkieletowej usług
-Ten artykuł zawiera omówienie zachowywanie dostępności usługi sieć szkieletowa usług Azure.
+# <a name="availability-of-service-fabric-services"></a>Dostępność usługi Service Fabric
+Ten artykuł zawiera omówienie sposobu usługi Azure Service Fabric obsługuje dostępności usługi.
 
-## <a name="availability-of-service-fabric-stateless-services"></a>Dostępność usług bezstanowych sieci szkieletowej usług
-Usługi sieci szkieletowej usług mogą być stanowego lub bezstanowego. Usługi bezstanowej jest usługą aplikacji, która nie ma [stanu lokalnego](service-fabric-concepts-state.md) który musi być wysoce niedostępne lub niepewne.
+## <a name="availability-of-service-fabric-stateless-services"></a>Dostępność usługi bezstanowej usługi Service Fabric
+Usługi Service Fabric może być bezstanowa lub stanowa. Usługa bezstanowa jest usługą aplikacji, która nie ma [stan lokalnego](service-fabric-concepts-state.md) , które musi być wysoce niedostępne lub niepewne.
 
-Tworzenie usługi bezstanowej wymaga zdefiniowania `InstanceCount`. Liczba wystąpień definiuje liczbę wystąpień usługi bezstanowej logiki aplikacji, która powinna być uruchomiona w klastrze. Zwiększenie liczby wystąpień jest zalecanym sposobem skalowania usługi bezstanowej.
+Tworzenie bezstanowej usługi wymaga zdefiniowania `InstanceCount`. Liczba wystąpień definiuje liczbę wystąpień usługi bezstanowej logikę aplikacji, która powinna być uruchomiona w klastrze. Zwiększenie liczby wystąpień jest zalecanym sposobem skalowania usługi bezstanowej.
 
-W przypadku awarii wystąpienia o nazwie — usługę bezstanową nowe wystąpienie jest tworzony na kwalifikujące się węzła w klastrze. Na przykład wystąpienie usługi bezstanowej może zakończyć się niepowodzeniem w węźle Node1 i zostać ponownie utworzone na komputerze Węzeł5.
+W przypadku awarii instancji o nazwie — usługę bezstanową nowe wystąpienie jest tworzona w uprawnionych węzła w klastrze. Na przykład wystąpienie usługi bezstanowej może zakończyć się niepowodzeniem w węźle Node1 i utworzona ponownie na komputerze Węzeł5.
 
-## <a name="availability-of-service-fabric-stateful-services"></a>Dostępność usług stanowych sieci szkieletowej usług
-Usługa stanowa ma stan skojarzony z nim. W sieci szkieletowej usług usługi stanowej ma formę zestawu replik. Każda replika jest uruchomione wystąpienie kodu usługi. Replika ma również kopię stan dla tej usługi. Odczyt i zapis operacje są wykonywane na jednej repliki, nazywany *głównej*. Zapisać zmiany stanu z działania są *replikowane* do innych replik w zestawie replik, nazywany *aktywne pomocnicze bazy danych*i stosowane. 
+## <a name="availability-of-service-fabric-stateful-services"></a>Dostępność usług stanowych usługi Service Fabric
+Usługa stanowa ma stan skojarzonych z nim. W usłudze Service Fabric usługa stanowa ma formę zestawu replik. Każdej repliki jest uruchomione wystąpienie kodu usługi. Replika ma również kopię stan dla tej usługi. Odczyt i zapis, operacje są wykonywane w jednej replice, o nazwie *głównej*. Zmiany stanu z zapisu operacji *replikowane* do innych replik w zestawie, o nazwie *aktywne pomocnicze bazy danych*i stosowane. 
 
-Może istnieć tylko jedna replika podstawowa, ale może istnieć wiele replik aktywnej pomocniczej. Liczba aktywnych replik pomocniczych można skonfigurować, większej liczby replik może tolerować większą liczbę jednoczesnych oprogramowania i awarie sprzętowe.
+Może istnieć tylko jedna replika podstawowa, ale może istnieć wiele replik aktywnej pomocniczej. Liczba aktywnych repliki pomocnicze można skonfigurować, większej liczby replik może tolerować większą liczbę jednoczesnych oprogramowania i awarii sprzętu.
 
-Jeśli replika podstawowa ulegnie awarii, Service Fabric sprawia, że jedną z aktywnej pomocniczej repliki nową podstawową replikę. Ta replika pomocnicza Active ma już zaktualizowaną wersję stanu, za pomocą *replikacji*, i będzie możliwe kontynuowanie, dalsze przetwarzanie operacji odczytu/zapisu. Ten proces jest nazywany *ponowna konfiguracja* i dalsze opisanych w [ponowna konfiguracja](service-fabric-concepts-reconfiguration.md) artykułu.
+Jeśli replika podstawowa ulegnie awarii, Usługa Service Fabric zapewnia jedną z aktywnej pomocniczej repliki nową podstawową replikę. Ta replika pomocnicza Active ma już zaktualizowaną wersję stanu, za pośrednictwem *replikacji*, i może kontynuować przetwarzanie dalszych operacji odczytu/zapisu. Ten proces jest nazywany *ponownej konfiguracji* i dokładniejszym opisem zawartym w [ponownej konfiguracji](service-fabric-concepts-reconfiguration.md) artykułu.
 
-Pojęcie repliki podstawowej lub dodatkowej Active, jest nazywany *roli repliki*. Te repliki są opisane dalej w [repliki i wystąpień](service-fabric-concepts-replica-lifecycle.md) artykułu. 
+Koncepcja jest podstawowej maszyny wirtualnej lub aktywnej pomocniczej repliki jest znany jako *Rola repliki*. Te repliki są dokładniejszym opisem zawartym w [repliki i wystąpienia](service-fabric-concepts-replica-lifecycle.md) artykułu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji dotyczących pojęć sieci szkieletowej usług zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat pojęć usługi Service Fabric zobacz następujące artykuły:
 
-- [Skalowanie usługi w sieci szkieletowej usług](service-fabric-concepts-scalability.md)
-- [Partycjonowanie usług sieci szkieletowej usług](service-fabric-concepts-partitioning.md)
-- [Definiowanie i stan zarządzania](service-fabric-concepts-state.md)
+- [Skalowanie usługi Service Fabric](service-fabric-concepts-scalability.md)
+- [Partycjonowanie usługi Service Fabric](service-fabric-concepts-partitioning.md)
+- [Definiowanie stanu i zarządzanie nim](service-fabric-concepts-state.md)
 - [Usługi Reliable Services](service-fabric-reliable-services-introduction.md)
 

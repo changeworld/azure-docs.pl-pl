@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385045"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649972"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrowanie z usługi Azure Container Service (ACS) do usługi Azure Kubernetes Service (AKS)
 
@@ -127,7 +127,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 Dostępne są również kilka narzędzi typu open source, które mogą pomóc w zależności od potrzeb:
 
 * [heptio/ark](https://github.com/heptio/ark) -wymaga k8s 1.7
-* [yaron2 /-kubernetes — wiersza polecenia platformy azure](https://github.com/yaron2/azure-kube-cli)
+* [yaron2/azure-kube-cli](https://github.com/yaron2/azure-kube-cli)
 * [mhausenblas/reshifter](https://github.com/mhausenblas/reshifter)
 
 ## <a name="migration-steps"></a>Kroki migracji
@@ -144,7 +144,7 @@ Wprowadzać żadnych zmian niezbędnych do definicji kodu YAML. Przykład: zamie
 
 ### <a name="3-optional-migrate-volumes"></a>3. (Opcjonalnie) Migrowanie woluminów
 
-Migrowanie woluminów z klastra usługi ACS do klastra usługi AKS. Więcej szczegółów można znaleźć w [Migrowanie woluminów trwałego](#Migrating-Persistent-Volumes) sekcji.
+Migrowanie woluminów z klastra usługi ACS do klastra usługi AKS. Więcej szczegółów można znaleźć w [Migrowanie woluminów trwałego](#migrating-persistent-volumes) sekcji.
 
 ### <a name="4-deploy-applications"></a>4. Wdrażanie aplikacji
 

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/29/2019
+ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454745"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668504"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -48,6 +48,9 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
 |Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Jednostki serwera w usłudze Azure AD (logowania)</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
+
+> [!IMPORTANT]
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższej tabeli:
 
@@ -237,5 +240,5 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).
 - Aby uzyskać szybki Start, która tworzy wystąpienie zarządzane i przywraca bazę danych z pliku kopii zapasowej, zobacz [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
 - Samouczek dotyczący korzystania z usługi Azure Database Migration Service (DMS) do migracji, zobacz [zarządzane wystąpienia migracji przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Zaawansowane monitorowanie wydajności bazy danych wystąpienia zarządzanego dzięki wbudowanym funkcjom analizy dotyczące rozwiązywania problemów, zobacz [monitora usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)
+- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitor Azure SQL Database using Azure SQL Analytics (Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics)](../azure-monitor/insights/azure-sql.md)
 - Aby uzyskać informacje o cenach, zobacz [zarządzana ceny wystąpienia usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/managed/).

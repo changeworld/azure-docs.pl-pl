@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 245683ec6c3c2d25f362e035020e162af75e1627
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169925"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650397"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik deweloperów usługi Azure Active Directory
 
@@ -204,7 +204,7 @@ Dzierżaw usługi Azure AD są tworzone/skojarzonymi z subskrypcjami platformy A
 
 ## <a name="token-endpoint"></a>punkt końcowy tokenu
 
-Jeden z punktów końcowych implementowany przez [serwera autoryzacji](#authorization-server) do działu pomocy technicznej OAuth2 [przydziałów autoryzacji](#authorization-grant). W zależności od przydział, może służyć do uzyskania [token dostępu](#access-token) (i pokrewnych tokenu "Odśwież") do [klienta](#client-application), lub [tokenu Identyfikacyjnego](#ID-token) gdy jest używane z [OpenID Połącz] [ OpenIDConnect] protokołu.
+Jeden z punktów końcowych implementowany przez [serwera autoryzacji](#authorization-server) do działu pomocy technicznej OAuth2 [przydziałów autoryzacji](#authorization-grant). W zależności od przydział, może służyć do uzyskania [token dostępu](#access-token) (i pokrewnych tokenu "Odśwież") do [klienta](#client-application), lub [tokenu Identyfikacyjnego](#id-token) gdy jest używane z [OpenID Połącz] [ OpenIDConnect] protokołu.
 
 ## <a name="user-agent-based-client"></a>Na podstawie agent użytkownika klienta
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08430f3eee858cdb6c9a7fbdfe11bd4c00ef148d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902879"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630407"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -54,10 +54,6 @@ Następujące funkcje są w prywatnej wersji zapoznawczej.
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>C# niestandardowe Deserializator dla usługi Azure Stream Analytics w usłudze IoT Edge
 
 Deweloperzy teraz wdrożyć deserializers niestandardowych w języku C# do deserializacji zdarzeń otrzymanych przez usługę Azure Stream Analytics. Przykłady formatów, które może być zdeserializowany Parquet, Protobuf, XML lub w dowolnym formacie binarnym.
-
-### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure do usługi Azure Data Lake Storage
-
-Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zarządzanych tożsamości do uwierzytelniania na podstawie zasobów platformy Azure podczas zapisywania do usługi Azure Data Lake Storage Gen1 umożliwia programowe tworzenie zadań. Aby uzyskać więcej informacji, odwiedź stronę [używaj zarządzanych tożsamości dla zasobów platformy Azure do uwierzytelniania usługi Azure Stream Analytics zadania, aby dane wyjściowe usługi Azure Data Lake Storage Gen1](stream-analytics-managed-identities-adls.md).
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Program Visual Studio Code dla usługi Azure Stream Analytics
 

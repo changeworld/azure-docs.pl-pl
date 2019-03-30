@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d62bf6c8aaf38de27594db0b51731a883a84fbe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f5ceab083077231fd856bb0f267717afdb9556d3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013498"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667059"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver
 
@@ -52,6 +52,9 @@ ms.locfileid: "58013498"
 [sap-suse-ascs-ha-setting-ha-anf]:high-availability-guide-suse-netapp-files.md#setting-up-the-azure-netapp-files-infrastructure
 [sap-suse-ascs-ha-sap-installation]:high-availability-guide-suse.md#prepare-for-sap-netweaver-installation
 [sap-suse-ascs-ha-sap-installation-anf]:high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation
+[sap-rhel-ascs-ha]:high-availability-guide-rhel.md
+[high-availability-guide-rhel-glusterfs]:high-availability-guide-rhel-glusterfs.md
+[high-availability-guide-rhel-pacemaker]:high-availability-guide-rhel-pacemaker.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -193,7 +196,7 @@ W tej serii artykułów opisano:
     > Zdecydowanie zalecamy użycie modelu wdrażania usługi Azure Resource Manager dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o usłudze Azure [modeli wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * Wysoka dostępność SAP na:
-  * ![Windows][Logo_Windows]**Windows**przy użyciu **systemu Windows Server Failover klastra (WSFC)** 
+  * ![Windows][Logo_Windows]**Windows**przy użyciu **systemu Windows Server Failover klastra (WSFC)**
   * ![Linux][Logo_Linux] **Linux**przy użyciu **Framework klastra systemu Linux**
 
 W tych artykułach dowiesz się, jak chronić pojedynczy punkt awarii (SPOF) składników, takich jak SAP Central Services (ASCS/SCS) i systemy zarządzania bazami danych (DBMS). Poznasz również nadmiarowych elementów na platformie Azure, takich jak serwer aplikacji SAP.
@@ -223,6 +226,10 @@ Artykuł dotyczy obu ![Windows][Logo_Windows] **Windows** i ![Linux][Logo_Linux]
 
 * ![Linux][Logo_Linux] [przygotować infrastrukturę platformy Azure SAP wysokiej dostępności przy użyciu framework klastra SUSE Linux Enterprise Server dla wystąpienia SAP ASCS/SCS plików NetApp platformy Azure][sap-suse-ascs-ha-setting-ha-anf]
 
+* ![RHEL][Logo_Linux] [przygotować infrastrukturę platformy Azure SAP ASCS/SCS wysokiej dostępności — Konfigurowanie GlusterFS na RHEL][high-availability-guide-rhel-glusterfs]
+
+* ![RHEL][Logo_Linux] [przygotować infrastrukturę platformy Azure SAP ASCS/SCS wysokiej dostępności — Skonfiguruj program Pacemaker w systemie RHEL ][high-availability-guide-rhel-pacemaker]
+
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Instalacja systemu o wysokiej dostępności oprogramowanie SAP NetWeaver na platformie Azure
 
 **Podsumowanie:** Artykuły wymienione w tym miejscu obecne przykłady krok po kroku instalacji i konfiguracji systemu SAP o wysokiej dostępności w klastrze systemu Windows Server Failover Clustering i framework klastra systemu Linux na platformie Azure.
@@ -236,3 +243,5 @@ Artykuł dotyczy obu ![Windows][Logo_Windows] **Windows** i ![Linux][Logo_Linux]
 * ![Linux][Logo_Linux] [wysokiej dostępności przy użyciu framework klastra SUSE Linux Enterprise Server dla wystąpienia SAP ASCS/SCS, zainstaluj oprogramowanie SAP NetWeaver][sap-suse-ascs-ha-sap-installation]
 
 * ![Linux][Logo_Linux] [zainstalować oprogramowanie SAP NetWeaver wysokiej dostępności przy użyciu framework klastra SUSE Linux Enterprise Server dla wystąpienia SAP ASCS/SCS za pomocą usługi Azure Files NetApp][sap-suse-ascs-ha-sap-installation-anf]
+
+* ![RHEL][Logo_Linux] [zainstalować oprogramowanie SAP NetWeaver ASCS/SCS w konfiguracji wysokiej dostępności w systemie RHEL][sap-rhel-ascs-ha]

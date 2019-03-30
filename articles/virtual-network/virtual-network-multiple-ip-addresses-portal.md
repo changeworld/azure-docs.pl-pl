@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 0f36ab9ab7703dd9677b6c2989eddb91593af79f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105111"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650568"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu witryny Azure portal
 
@@ -36,7 +36,7 @@ Jeśli chcesz utworzyć maszynę Wirtualną z wieloma adresami IP lub statyczny 
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#Scenario), ale nie jest to wymagane.
+Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#scenario), ale nie jest to wymagane.
 
 ### <a name="coreadd"></a>Podstawowe kroki
 

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651547"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -48,10 +48,10 @@ Jeśli używasz serwera proxy zapory opartego na adresach URL do sterowania ruch
 
 **Adres URL** | **Szczegóły**  
 --- | ---
-*.blob.core.windows.net | Wymagane, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z maszyny Wirtualnej.
+*.blob.core.windows.net | Wymagane, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z maszyny Wirtualnej. Jeśli znasz pamięci podręcznej kont magazynu dla maszyn wirtualnych, możesz umieścić na liście dozwolonych szczegółowości konta magazynu z adresów URL (np: cache1.blob.core.windows.net i cache2.blob.core.windows.net) zamiast *. blob.core.windows.net
 login.microsoftonline.com | Wymagane dla autoryzacji i uwierzytelniania do adresów URL usługi Site Recovery.
-*.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja usługi Site Recovery może wystąpić z maszyny Wirtualnej.
-*.servicebus.windows.net | Wymagane, aby Usługa Site Recovery danych monitorowania i diagnostyki mogą być zapisywane z maszyny Wirtualnej.
+*.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja usługi Site Recovery może wystąpić z maszyny Wirtualnej. Odpowiedni "Site Recovery adres IP" można użyć, jeśli Twój serwer proxy zapory obsługuje adresy IP.
+*.servicebus.windows.net | Wymagane, aby Usługa Site Recovery danych monitorowania i diagnostyki mogą być zapisywane z maszyny Wirtualnej. Odpowiedni "Site Recovery monitorowania adres IP" można użyć, jeśli Twój serwer proxy zapory obsługuje adresy IP.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 

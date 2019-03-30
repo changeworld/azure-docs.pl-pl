@@ -4,7 +4,7 @@ description: W tym artykule opisano parametry uaktualniania aplikacji usługi Se
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099196"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670621"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
 W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji usługi Azure Service Fabric. Parametry uaktualniania aplikacji kontrolować limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które można zastosować, uaktualnienie nie powiedzie się. Parametry aplikacji stosuje się do uaktualnienia przy użyciu:
@@ -94,11 +94,12 @@ Uaktualnianie aplikacji usługi Service Fabric przy użyciu interfejsu wiersza p
 
 | Parametr | Opis |
 | --- | --- |
-| Identyfikator aplikacji  |Identyfikator aplikacji, która jest uaktualniana. <br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric:" Schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "~" znakiem. Na przykład, jeśli nazwa aplikacji jest "Service fabric: / myapp/app1", tożsamość aplikacji będzie "myapp ~ app1" 6.0 + i "myapp app1" w poprzednich wersjach.|
+| Identyfikator aplikacji  |Identyfikator aplikacji, która jest uaktualniana. <br> Zazwyczaj jest to pełna nazwa aplikacji bez "Service fabric:" Schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchiczne nazwy są oddzielane za pomocą znaku "\~" znaków. Na przykład, jeśli nazwa aplikacji jest "Service fabric: / myapp/app1", tożsamość aplikacji będzie "myapp\~app1" 6.0 + i "myapp app1" w poprzednich wersjach.|
 Wersja aplikacji |Typ wersji aplikacji, które cele uaktualniania.|
 parameters  |Zastępuje kodowany w formacie JSON listę parametrów aplikacji mają być stosowane podczas uaktualniania aplikacji.|
 
 ### <a name="optional-parameters"></a>Parametry opcjonalne
+
 | Parametr | Opis |
 | --- | --- |
 service kondycji — zasady domyślne | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) zakodowane specyfikacji zasad dotyczących kondycji używany domyślnie do oceny kondycji typu usługi. Mapa jest domyślnie puste. |

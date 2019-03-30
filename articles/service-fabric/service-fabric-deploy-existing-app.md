@@ -4,7 +4,7 @@ description: Dowiedz się, jak pakiet istniejącą aplikację jako plik wykonywa
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
-ms.openlocfilehash: fa883f819c53f57a8e281069b2a3db1c55efc6c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480547"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669949"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakowanie i wdrażanie istniejącego pliku wykonywalnego do usługi Service Fabric
 Podczas pakowania istniejącego pliku wykonywalnego jako [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md), możesz wybrać użycie szablonu projektu programu Visual Studio lub [ręcznie utworzyć pakiet aplikacji](#manually). W programie Visual Studio struktury pakietu aplikacji i plików manifestu są tworzone przez nowy szablon projektu.

@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 29a0d0679adc51cf1493d241273e3b572a7fd57d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214303"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670839"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -149,11 +149,14 @@ W usłudze [SQL Database dostępne są](sql-database-automatic-tuning.md) dwa as
 
 ### <a name="adaptive-query-processing"></a>Adaptacyjne przetwarzanie zapytań
 
-Do usługi SQL Database dodajemy również rodzinę [funkcji adaptacyjnego przetwarzania zapytań](/sql/relational-databases/performance/adaptive-query-processing), takich jak przeplatane wykonywanie funkcji o wielu instrukcjach zwracających tabelę, informacja zwrotna przydziału pamięci w trybie wsadowym i adaptacyjne sprzężenia w trybie wsadowym. Każda z tych adaptacyjnych funkcji przetwarzania zapytań stosuje podobne techniki „poznaj i dostosuj” ułatwiające dalsze rozwiązywanie problemów dotyczących wydajności związanych z historycznie trudnymi do rozwiązania problemami z optymalizacją zapytań.
+Do usługi SQL Database dodajemy również rodzinę [funkcji adaptacyjnego przetwarzania zapytań](/sql/relational-databases/performance/intelligent-query-processing), takich jak przeplatane wykonywanie funkcji o wielu instrukcjach zwracających tabelę, informacja zwrotna przydziału pamięci w trybie wsadowym i adaptacyjne sprzężenia w trybie wsadowym. Każda z tych adaptacyjnych funkcji przetwarzania zapytań stosuje podobne techniki „poznaj i dostosuj” ułatwiające dalsze rozwiązywanie problemów dotyczących wydajności związanych z historycznie trudnymi do rozwiązania problemami z optymalizacją zapytań.
 
 ## <a name="advanced-security-and-compliance"></a>Zaawansowane zabezpieczenia i zgodność
 
 Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i zgodności](sql-database-security-overview.md), co ułatwia spełnienie przez aplikację różnych wymagań dotyczących zabezpieczeń i zgodności.
+
+> [!IMPORTANT]
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -242,7 +245,7 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt z zespołem inżynierów programu SQL Server
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Zadawaj pytania dotyczące administrowania bazy danych
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Zadawaj pytania dotyczące programowania
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Zadawaj pytania dotyczące programowania
 - [Fora MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Zadawaj pytania techniczne
 - [Opinie](https://aka.ms/sqlfeedback): Tworzenie raportów usterek i poprosić o dodanie funkcji
 - [Reddit](https://www.reddit.com/r/SQLServer/): Omówienie programu SQL Server

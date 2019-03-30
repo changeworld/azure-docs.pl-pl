@@ -4,7 +4,7 @@ description: Użyj funkcji kopii zapasowej i przywracania funkcji w usłudze Ser
 services: service-fabric
 documentationcenter: .net
 author: aagup
-manager: timlt
+manager: chackdan
 editor: aagup
 ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 8a276f26367e66f55b8fc10dbcba2429dc2e5450
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c80a9ac30e79607d2a255debf73f6542df7c6498
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062695"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666583"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Kopii zapasowej na żądanie w usłudze Azure Service Fabric
 
@@ -101,7 +101,7 @@ $backupResponse
   FailureError            :
   ```
 - **Powodzenie**, **błąd**, lub **limitu czasu**: Żądana kopii zapasowej na żądanie można wykonać w dowolnej z następujących stanów:
-  - **Powodzenie**: A _Powodzenie_ kopii zapasowej stan wskazuje, że stan partycji jest kopia zapasowa wykonana pomyślnie. Odpowiedź zawiera _BackupEpoch_ i _BackupLSN_ dla partycji oraz godzina w formacie UTC.
+  - **Success**: A _Powodzenie_ kopii zapasowej stan wskazuje, że stan partycji jest kopia zapasowa wykonana pomyślnie. Odpowiedź zawiera _BackupEpoch_ i _BackupLSN_ dla partycji oraz godzina w formacie UTC.
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z

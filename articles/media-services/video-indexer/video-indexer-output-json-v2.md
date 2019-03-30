@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314879"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650093"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
-
-> [!Note]
-> Interfejs API usługi Video Indexer w wersji 1 został wycofany 1 sierpnia 2018 r. Teraz należy używać interfejsu API usługi Video Indexer w wersji 2. <br/>Aby tworzyć rozwiązania za pomocą interfejsów API usługi Video Indexer w wersji 2, zapoznaj się z instrukcjami podanymi [tutaj](https://api-portal.videoindexer.ai/). 
 
 Gdy wywołujesz **uzyskać indeks wideo** interfejsu API i stan odpowiedzi jest OK, Uzyskaj szczegółowe dane wyjściowe JSON jako treść odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonym informacjom o filmie wideo. Szczegółowe informacje zawierają wymiary, takie jak: zapisy ocrs, twarzy, tematy, bloki, itp. Wymiary są wystąpienia zakresy czasu, przedstawiających podczas każdego wymiaru pojawiły się w trakcie filmu wideo.  
 
@@ -163,7 +160,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |etykiety|[Etykiety](#labels) wymiaru.|
 |zrzuty|[Zrzuty](#shots) wymiaru.|
 |marek|[Marek](#brands) wymiaru.|
-|audioEffects|[AudioEffects](#audioEffects) wymiaru.|
+|audioEffects|[AudioEffects](#audioeffects) wymiaru.|
 |tonacje|[Tonacji](#sentiments) wymiaru.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wymiaru.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) wymiaru.|
@@ -550,7 +547,7 @@ Firmy i produkt nazw marek wykryte w zamiana mowy na tekst transkrypcji i/lub op
 |SpeakerLongestMonolog|Najdłuższy produktu monolog osoby mówiącej. Jeśli osoby mówiącej silences wewnątrz produktu monolog jest dołączony. Wyciszenia na początku i końcu produktu monolog zostaną usunięte.| 
 |SpeakerTalkToListenRatio|Obliczanie opiera się na czas spędzony na produktu monolog osoby mówiącej (bez wyciszenia pomiędzy) podzielony przez łącznego czasu filmu wideo. Czas jest zaokrąglana do trzeciego punktu dziesiętnego.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Name (Nazwa)|Opis|
 |---|---|

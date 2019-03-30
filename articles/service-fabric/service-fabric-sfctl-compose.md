@@ -4,7 +4,7 @@ description: W tym artykule opisano interfejs wiersza polecenia usługi Service 
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d71b0c020fb9ceb305b56216d466bacb42ad21e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278155"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667511"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Tworzenie, usuwanie i zarządzać aplikacjami narzędzia Docker Compose.
@@ -33,8 +33,8 @@ Tworzenie, usuwanie i zarządzać aplikacjami narzędzia Docker Compose.
 | usuń | Usuwa istniejące usługi Service Fabric tworzą wdrożenia z klastra. |
 | status | Wdrożenie redagowania pobiera informacje o usłudze Service Fabric. |
 | uaktualnij | Rozpoczyna się uaktualnianie wdrożenia compose w klastrze usługi Service Fabric. |
-| Wycofywanie uaktualnienia | Wycofywanie wdrożenia compose rozpoczyna się uaktualnienie z klastra usługi Service Fabric. |
-| Stan uaktualnienia | Wdrożenie redagowania pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej usłudze Service Fabric. |
+| upgrade-rollback | Wycofywanie wdrożenia compose rozpoczyna się uaktualnienie z klastra usługi Service Fabric. |
+| upgrade-status | Wdrożenie redagowania pobiera szczegóły najnowszą aktualizację, które są wykonywane w tej usłudze Service Fabric. |
 
 ## <a name="sfctl-compose-create"></a>Interfejs sfctl compose tworzenie
 Tworzy usługi Service Fabric wdrożenia redagowania.
@@ -45,8 +45,8 @@ Tworzy usługi Service Fabric wdrożenia redagowania.
 | --- | --- |
 | — [wymagane] Nazwa wdrożenia | Nazwa wdrożenia. |
 | — Ścieżka pliku [wymagane] | Ścieżka do pliku docelowego narzędzia Docker Compose. |
-| --szyfrowane — dostęp próbny | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
-| — zawiera — dostęp próbny | Wyświetli monit o podanie hasła do rejestru kontenerów. |
+| --encrypted-pass | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
+| --has-pass | Wyświetli monit o podanie hasła do rejestru kontenerów. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 | --user | Nazwa użytkownika, aby nawiązać połączenie z rejestru kontenerów. |
 
@@ -54,8 +54,8 @@ Tworzy usługi Service Fabric wdrożenia redagowania.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -70,15 +70,15 @@ Pobiera stan o wdrożeniach compose, które zostały utworzone, lub trwa proces 
 |Argument|Opis|
 | --- | --- |
 | --token kontynuacji | Parametr tokenu kontynuacji służy do uzyskania następny zestaw wyników. Token kontynuacji o wartości niepuste znajduje się w odpowiedzi interfejsu API, gdy wyniki z systemu nie mieszczą się w jednej odpowiedzi. Jeśli ta wartość jest przekazywana do następnego wywołania interfejsu API, interfejs API zwraca następny zestaw wyników. Jeśli nie istnieją żadne dalsze wyniki, token kontynuacji nie zawiera wartości. Wartość tego parametru nie powinny być zakodowane w adresie URL. |
-| — Maksymalna liczba wyników | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
+| --max-results | Maksymalna liczba wyników do zwrócenia w ramach kwerend stronicowanych. Ten parametr określa górną granicę na liczbie zwrócone wyniki. Wyniki zwracane, może być mniejsza niż określona maksymalna liczba wyników, jeśli nie mieszczą się w komunikacie zgodnie z ograniczeniami rozmiar maksymalny komunikatu zdefiniowane w konfiguracji. Jeśli ten parametr ma wartość zero lub nie określono, stronicowane zapytanie zawiera dowolną liczbę wyników jak to możliwe, który mieści się w komunikacie zwrotu. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -99,8 +99,8 @@ Wdrożenie redagowania usuwa istniejące usługi Service Fabric.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -121,8 +121,8 @@ Zwraca stan wdrożenia compose, który został utworzony lub w trakcie tworzonyc
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -138,20 +138,20 @@ Sprawdza poprawność podanych parametrów uaktualniania i rozpoczyna uaktualnia
 | --- | --- |
 | — [wymagane] Nazwa wdrożenia | Nazwa wdrożenia. |
 | — Ścieżka pliku [wymagane] | Ścieżka do obiektu docelowego platformy Docker compose pliku. |
-| — Domyślna svc typ kondycji map | Słownik, który opisano zasad dotyczących kondycji używane do oceny kondycji usług zakodowane JSON. |
-| --szyfrowane — dostęp próbny | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
+| --default-svc-type-health-map | Słownik, który opisano zasad dotyczących kondycji używane do oceny kondycji usług zakodowane JSON. |
+| --encrypted-pass | Zamiast monitowania o hasło rejestru kontenerów, użyj już zaszyfrowane hasło. |
 | — Akcja błędu | Możliwe wartości to\: "Nieprawidłowy", "Wycofać", "Manual". |
 | --force-restart | Procesy wymuszone zostaną ponownie uruchomione podczas uaktualniania, nawet wtedy, gdy wersja kodu nie została zmieniona. <br><br> Uaktualnianie tylko zmiany konfiguracji lub danych. |
-| — zawiera — dostęp próbny | Wyświetli monit o podanie hasła do rejestru kontenerów. |
-| --ponownej próby sprawdzenia kondycji | Odstęp czasu między próbami sprawdzać kondycję, jeśli aplikacja lub klastra nie jest w dobrej kondycji. |
+| --has-pass | Wyświetli monit o podanie hasła do rejestru kontenerów. |
+| --health-check-retry | Odstęp czasu między próbami sprawdzać kondycję, jeśli aplikacja lub klastra nie jest w dobrej kondycji. |
 | --health-check-stable | Ilość czasu, aplikacji lub klastra musi pozostać dobrej kondycji przed uaktualnienia przechodzi do następnej domeny uaktualnienia. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
 | --health-check-wait | Czas oczekiwania po wykonaniu uaktualnienia domeny przed rozpoczęciem kondycji sprawdza, czy proces. |
-| — Sprawdzanie w przypadku zestawu replik | Maksymalna ilość czasu blokowania przetwarzania domeny uaktualnienia, a przed utratą dostępności w przypadku nieoczekiwanych problemów. <br><br> Po wygaśnięciu tego limitu czasu przetwarzania przez domenę uaktualnienia będzie kontynuowana bez względu na to, problemy z dostępnością utraty. Limit czasu jest resetowany na początku każdej z domen. Prawidłowe wartości należą do zakresu od 0 i 42949672925 (włącznie). |
-| -svc-typu kondycji map | Listę obiektów, które opisują zasady dotyczące kondycji używane do oceny kondycji różne typy usług zakodowane JSON. |
+| --replica-set-check | Maksymalna ilość czasu blokowania przetwarzania domeny uaktualnienia, a przed utratą dostępności w przypadku nieoczekiwanych problemów. <br><br> Po wygaśnięciu tego limitu czasu przetwarzania przez domenę uaktualnienia będzie kontynuowana bez względu na to, problemy z dostępnością utraty. Limit czasu jest resetowany na początku każdej z domen. Prawidłowe wartości należą do zakresu od 0 i 42949672925 (włącznie). |
+| --svc-type-health-map | Listę obiektów, które opisują zasady dotyczące kondycji używane do oceny kondycji różne typy usług zakodowane JSON. |
 | limit czasu — -t | Limit czasu serwera w ciągu kilku sekund.  Domyślne\: 60. |
 | --unhealthy-app | Maksymalna dozwolona wartość procentowa aplikacje w złej kondycji przed zgłoszeniem błędu. <br><br> Na przykład aby zezwolić na 10% aplikacje będącą w złej kondycji, wartość ta wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowana aplikacje, które mogą być złej kondycji, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest zachowana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest oceniane jako ostrzeżenie. To jest obliczana przez podzielenie liczby aplikacji w złej kondycji przez całkowitą liczbę wystąpień aplikacji w klastrze. |
-| — limit czasu domeny uaktualnienia | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
-| — typ uaktualnienia | Domyślne\: stopniowe. |
+| --upgrade-domain-timeout | Czas każdej z domen musi wykonać, zanim zostanie wykonany FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
+| --upgrade-kind | Domyślne\: stopniowe. |
 | --Tryb uaktualniania | Możliwe wartości to\: "Nieprawidłowy", "UnmonitoredAuto", "UnmonitoredManual", "Monitorowania".  Domyślne\: UnmonitoredAuto. |
 | — limit czasu uaktualniania | Czas ogólną uaktualnienia musi wykonać, zanim zostanie wykonany FailureAction. <br><br> Najpierw jest interpretowany jako ciąg reprezentujący czas trwania ISO 8601. Jeśli ono zawiedzie, następnie jest interpretowany jako liczba reprezentujący całkowitą liczbę milisekund. |
 | --user | Nazwa użytkownika, aby nawiązać połączenie z rejestru kontenerów. |
@@ -161,8 +161,8 @@ Sprawdza poprawność podanych parametrów uaktualniania i rozpoczyna uaktualnia
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -183,8 +183,8 @@ Wycofanie usługi Service fabric tworzą uaktualnianie wdrożenia.
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |
@@ -205,8 +205,8 @@ Zwraca informacje o stanie uaktualnianie wdrożenia compose wraz ze szczegółam
 
 |Argument|Opis|
 | --- | --- |
-| --debugowania | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
-| — Pomoc -h | Pokaż ten komunikat pomocy i zakończenia. |
+| --debug | Zwiększyć szczegółowość rejestrowania, aby pokazać, że debugowanie wszystkich dzienników. |
+| --help -h | Pokaż ten komunikat pomocy i zakończenia. |
 | --dane wyjściowe -o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, tabela, tsv.  Domyślne\: json. |
 | — zapytania | Ciąg zapytania JMESPath. Zobacz http\://jmespath.org/ uzyskać więcej informacji i przykładów. |
 | — pełne | Zwiększ poziom szczegółowości rejestrowania. Użyj parametru--debugowania dzienniki pełnego debugowania. |

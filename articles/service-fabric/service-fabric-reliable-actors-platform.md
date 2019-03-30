@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak elementy Reliable Actors przedstawiono 
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: f6594ccaa4d11361c3aacb8f774327600d3ffdde
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889254"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661177"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak elementy Reliable Actors korzystają z platformy usługi Service Fabric
 W tym artykule wyjaśniono, jak elementy Reliable Actors działają na platformie Azure Service Fabric. Elementy Reliable Actors, uruchom w strukturę, która jest hostowana w implementacji stanowej usługi reliable service o nazwie *usługa aktora*. Usługa aktora zawiera wszystkie składniki niezbędne do zarządzania cyklem życia i wiadomości, wysyła do usługi aktorów:

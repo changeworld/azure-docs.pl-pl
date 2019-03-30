@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0b6430a31f31f85f01f67994f6b6fa0f30af9575
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 20a438f4eb932596647002bf9d3072c651ac969c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879926"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630650"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-curl-in-computer-vision"></a>Szybki start: Generowanie miniatury przy użyciu interfejsu API REST i biblioteki cURL podczas przetwarzania obrazów
 
@@ -65,7 +65,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Pomyślna odpowiedź powoduje zapisanie obrazu miniatury w pliku określonym w `<thumbnailFile>`. Jeśli żądanie zakończy się niepowodzeniem, w odpowiedzi zostanie wyświetlony kod błędu oraz komunikat, który umożliwi określenie, co poszło nie tak.
+Pomyślna odpowiedź powoduje zapisanie obrazu miniatury w pliku określonym w `<thumbnailFile>`. Jeśli żądanie zakończy się niepowodzeniem, w odpowiedzi zostanie wyświetlony kod błędu oraz komunikat, który umożliwi określenie, co poszło nie tak. Jeśli żądanie jest prawdopodobnie została wykonana pomyślnie, ale utworzonego miniatury nie jest prawidłowym plikiem obrazu, może być kluczem subskrypcji nie jest prawidłowy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

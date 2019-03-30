@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4360196a33381d1a9c8316430339b9a80cb0dba3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58016487"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58633006"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -33,4 +33,4 @@ ms.locfileid: "58016487"
 | Element Runbook | 10 działania elementu runbook w grupy akcji. | Z działem pomocy technicznej. |
 | SMS | 10 akcje programu SMS w grupy akcji. Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |
 | Połączenia głosowe | 10 akcje głosu w grupy akcji. Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |
-| Webhook | 10 Akcje elementu webhook w grupy akcji. Inne limity są dostępne pod adresem [informacje specyficzne dla działania](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Z działem pomocy technicznej. |
+| Webhook | 10 Akcje elementu webhook w grupy akcji.  Maksymalna liczba wywołań elementu webhook jest 1500 na minutę na subskrypcję. Inne limity są dostępne pod adresem [informacje specyficzne dla działania](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Z działem pomocy technicznej. |

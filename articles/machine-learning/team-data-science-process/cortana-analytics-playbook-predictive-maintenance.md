@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57870150"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650482"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -31,10 +31,10 @@ Pierwsza połowa tego przewodnika opisano problemy, typowych godzin pracy, korzy
 
 | Zaczynać... | Jeśli jesteś... |
 |:---------------|:---------------|
-| [Przypadek biznesowy pod kątem konserwacji predykcyjnej](#Business-case-for-predictive-maintenance) |Osoba podejmująca decyzje biznesowe (BDM) chcących zmniejszenia przestojów i kosztów operacyjnych i poprawić wykorzystanie sprzętu |
-| [Do nauki o danych pod kątem konserwacji predykcyjnej](#Data-Science-for-predictive-maintenance) |techniczne osobą podejmującą decyzje (TDM) ocenia technologie menedżerów PdM, aby zrozumieć unikatowy przetwarzania danych i sztucznej Inteligencji wymagania dotyczące konserwacji predykcyjnej |
-| [Szablony rozwiązań do konserwacji predykcyjnej](#Solution-templates-for-predictive-maintenance)|architekt oprogramowania lub deweloper sztucznej Inteligencji, które chcą szybko paru pokaz lub Weryfikacja koncepcji |
-| [Zasoby szkoleniowe pod kątem konserwacji predykcyjnej](#Training-resources-for-predictive-maintenance) | niektóre lub wszystkie z powyższych i chcesz dowiedzieć się podstawowe pojęcia dotyczące do nauki o danych, narzędzia i techniki.
+| [Przypadek biznesowy pod kątem konserwacji predykcyjnej](#business-case-for-predictive-maintenance) |Osoba podejmująca decyzje biznesowe (BDM) chcących zmniejszenia przestojów i kosztów operacyjnych i poprawić wykorzystanie sprzętu |
+| [Do nauki o danych pod kątem konserwacji predykcyjnej](#data-science-for-predictive-maintenance) |techniczne osobą podejmującą decyzje (TDM) ocenia technologie menedżerów PdM, aby zrozumieć unikatowy przetwarzania danych i sztucznej Inteligencji wymagania dotyczące konserwacji predykcyjnej |
+| [Szablony rozwiązań do konserwacji predykcyjnej](#solution-templates-for-predictive-maintenance)|architekt oprogramowania lub deweloper sztucznej Inteligencji, które chcą szybko paru pokaz lub Weryfikacja koncepcji |
+| [Zasoby szkoleniowe pod kątem konserwacji predykcyjnej](#training-resources-for-predictive-maintenance) | niektóre lub wszystkie z powyższych i chcesz dowiedzieć się podstawowe pojęcia dotyczące do nauki o danych, narzędzia i techniki.
 
 ### <a name="prerequisite-knowledge"></a>Wymagana wiedza
 Zawartość BDM nie oczekuje czytnika mieć żadnej wiedzy do nauki o danych z poprzedniego. Dla zawartości TDM podstawową wiedzę na temat statystyk i analizy danych jest pomocne. Zaleca się wiedzę na temat danych na platformę Azure i usług sztucznej Inteligencji, Python, R, XML i JSON. Techniki sztucznej Inteligencji są implementowane w pakiety języka Python i R. Szablony rozwiązań są implementowane za pomocą usług platformy Azure, narzędzia deweloperskie i zestawy SDK.
@@ -78,7 +78,7 @@ Należy podkreślić, że nie wszystkie przypadki użycia lub problemy biznesowe
 
 - Ten problem ma się charakter; oznacza to powinien istnieć obiekt docelowy lub wynik do prognozowania. Problem powinien mieć również przejrzystą ścieżkę działania w celu uniknięcia błędów podczas ich wykrycia.
 - Problem powinien mieć rekord operacyjnej Historia sprzętu, który zawiera _wyników zarówno dobre i złe_. Zbiór działania podjęte w celu złagodzenia nieprawidłowych wyników również powinny być dostępne w ramach tych rekordów. Napraw raportów o błędach, dzienniki konserwacji spadek wydajności, i Zastąp dzienniki są równie ważne. Ponadto naprawy podejmowanych w celu ich zastąpienie rekordy i są także przydatne.
-- Historia zarejestrowane powinien być zostaną uwzględnione w _odpowiednie_ dane o _wystarczające_ wystarczająco dużo jakości obsługuje przypadek użycia. Aby uzyskać więcej informacji na temat istotności data i wynikających zobacz [wymagania dotyczące danych pod kątem konserwacji predykcyjnej](#Data-requirements-for-predictive-maintenance).
+- Historia zarejestrowane powinien być zostaną uwzględnione w _odpowiednie_ dane o _wystarczające_ wystarczająco dużo jakości obsługuje przypadek użycia. Aby uzyskać więcej informacji na temat istotności data i wynikających zobacz [wymagania dotyczące danych pod kątem konserwacji predykcyjnej](#data-requirements-for-predictive-maintenance).
 - Na koniec firmy powinny mieć eksperci domeny poczuć problemu. Powinny one być świadome wewnętrznych procesów i praktyk pomocy przez analityka, zrozumieć i zinterpretować danych. Należy je również mogą wprowadzać niezbędne zmiany istniejące procesy biznesowe, aby ułatwić zbieranie odpowiednich danych, w razie problemów, jeśli to konieczne.
 
 ## <a name="sample-pdm-use-cases"></a>Przykładowe przypadki użycia menedżerów PdM
@@ -103,10 +103,10 @@ Następna sekcja pobiera Szczegóły sposobu osiągnięcia korzyści menedżeró
 
 ## <a name="data-science-for-predictive-maintenance"></a>Do nauki o danych pod kątem konserwacji predykcyjnej
 
-Ta sekcja zawiera ogólne wytyczne dotyczące zasad do nauki o danych i praktyki dla menedżerów PdM. Jest ona przeznaczona do pomagają TDM, architekt rozwiązań lub deweloper zrozumienie wymagań wstępnych i proces tworzenia aplikacji sztucznej Inteligencji end-to-end dla menedżerów PdM. Można przeczytać tę sekcję, wraz z przeglądu pokazy i weryfikacji koncepcji szablonów wymienionych w [szablony rozwiązań do konserwacji predykcyjnej](#Solution-templates-for-predictive-maintenance). Można następnie użyć tych zasad i najlepsze rozwiązania do implementowania rozwiązania menedżerów PdM na platformie Azure.
+Ta sekcja zawiera ogólne wytyczne dotyczące zasad do nauki o danych i praktyki dla menedżerów PdM. Jest ona przeznaczona do pomagają TDM, architekt rozwiązań lub deweloper zrozumienie wymagań wstępnych i proces tworzenia aplikacji sztucznej Inteligencji end-to-end dla menedżerów PdM. Można przeczytać tę sekcję, wraz z przeglądu pokazy i weryfikacji koncepcji szablonów wymienionych w [szablony rozwiązań do konserwacji predykcyjnej](#solution-templates-for-predictive-maintenance). Można następnie użyć tych zasad i najlepsze rozwiązania do implementowania rozwiązania menedżerów PdM na platformie Azure.
 
 > [!NOTE]
-> Ten przewodnik nie jest przeznaczona do uczyć czytnik do nauki o danych. Kilka źródeł przydatne znajdują się na dalsze informacje w sekcji, aby [zasobów szkoleniowych pod kątem konserwacji predykcyjnej](#Training-resources-for-predictive-maintenance). [Szablony rozwiązań](#Solution-templates-for-predictive-maintenance) w przewodniku pokazują niektóre z tych technik sztucznej Inteligencji dla konkretnych problemów menedżerów PdM.
+> Ten przewodnik nie jest przeznaczona do uczyć czytnik do nauki o danych. Kilka źródeł przydatne znajdują się na dalsze informacje w sekcji, aby [zasobów szkoleniowych pod kątem konserwacji predykcyjnej](#training-resources-for-predictive-maintenance). [Szablony rozwiązań](#solution-templates-for-predictive-maintenance) w przewodniku pokazują niektóre z tych technik sztucznej Inteligencji dla konkretnych problemów menedżerów PdM.
 
 ## <a name="data-requirements-for-predictive-maintenance"></a>Wymagania dotyczące danych pod kątem konserwacji predykcyjnej
 
@@ -114,10 +114,10 @@ Powodzenie wszelkie learning zależy od tego, czego dotyczy przykład, (jakość
 
 ### <a name="relevant-data"></a>Odpowiednie dane
 
-Po pierwsze, dane muszą być _dotyczą problem_. Należy wziąć pod uwagę _kółka błąd_ omówione przypadek użycia powyżej - danych szkoleniowych powinna zawierać funkcje związane z operacjami koła. Jeśli ten problem był przewidywanie awarii _system rozwinięty_, ma dane szkoleniowe w celu objęcia wszystkich składników systemu rozwinięty. Pierwszy przypadek jest przeznaczony dla określonego składnika, natomiast w drugim przypadku jest przeznaczony dla awarii większych podsystemu. Ogólnie zalecane jest projektowanie systemów prognozy dotyczące określonych składników, a nie z większych podsystemów, od momentu jego będzie mieć więcej rozproszonych danych. Eksperta domeny (zobacz [kwalifikujących się problemów pod kątem konserwacji predykcyjnej](#Qualifying-problems-for-predictive-maintenance)) powinny pomóc w wyborze najbardziej istotnych podzbiór danych do analizy. Źródła danych zostały omówione bardziej szczegółowo w [przygotowywania danych pod kątem konserwacji predykcyjnej](#Data-preparation-for-predictive-maintenance).
+Po pierwsze, dane muszą być _dotyczą problem_. Należy wziąć pod uwagę _kółka błąd_ omówione przypadek użycia powyżej - danych szkoleniowych powinna zawierać funkcje związane z operacjami koła. Jeśli ten problem był przewidywanie awarii _system rozwinięty_, ma dane szkoleniowe w celu objęcia wszystkich składników systemu rozwinięty. Pierwszy przypadek jest przeznaczony dla określonego składnika, natomiast w drugim przypadku jest przeznaczony dla awarii większych podsystemu. Ogólnie zalecane jest projektowanie systemów prognozy dotyczące określonych składników, a nie z większych podsystemów, od momentu jego będzie mieć więcej rozproszonych danych. Eksperta domeny (zobacz [kwalifikujących się problemów pod kątem konserwacji predykcyjnej](#qualifying-problems-for-predictive-maintenance)) powinny pomóc w wyborze najbardziej istotnych podzbiór danych do analizy. Źródła danych zostały omówione bardziej szczegółowo w [przygotowywania danych pod kątem konserwacji predykcyjnej](#data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Ilością danych
-Często zadawane pytania dwa w odniesieniu do danych historii awarii: (1) "ile zdarzenia błędów są wymagane do nauczenia modelu"? [2] "liczbę rekordów jest uznawany za"wystarczająco dużo,"?" Nie istnieją żadne ostateczne odpowiedzi, ale tylko reguły akceptacji. (1), aby uzyskać bardziej liczba zdarzeń błędów lepiej modelu. (2) i dokładna liczba zdarzeń błędów jest zależny od danych i kontekście problem jest rozwiązany. Ale na drugiej strony, jeśli maszyna zbyt często nie powiedzie się następnie firmy spowoduje zastąpienie, któremu zostanie obniżony wystąpienia awarii. W tym miejscu ponownie wskazówki od ekspertów domeny jest ważne. Jednak istnieją metody radzenia sobie z problemem z _rzadkich zdarzenia_. Zostały one omówione w sekcji [postępowania z danymi imbalanced](#Handling-imbalanced-data).
+Często zadawane pytania dwa w odniesieniu do danych historii awarii: (1) "ile zdarzenia błędów są wymagane do nauczenia modelu"? [2] "liczbę rekordów jest uznawany za"wystarczająco dużo,"?" Nie istnieją żadne ostateczne odpowiedzi, ale tylko reguły akceptacji. (1), aby uzyskać bardziej liczba zdarzeń błędów lepiej modelu. (2) i dokładna liczba zdarzeń błędów jest zależny od danych i kontekście problem jest rozwiązany. Ale na drugiej strony, jeśli maszyna zbyt często nie powiedzie się następnie firmy spowoduje zastąpienie, któremu zostanie obniżony wystąpienia awarii. W tym miejscu ponownie wskazówki od ekspertów domeny jest ważne. Jednak istnieją metody radzenia sobie z problemem z _rzadkich zdarzenia_. Zostały one omówione w sekcji [postępowania z danymi imbalanced](#handling-imbalanced-data).
 
 ### <a name="quality-data"></a>Dane dotyczące jakości
 Jakość danych ma kluczowe znaczenie — każdy predykcyjne wartość atrybutu musi być _dokładne_ w połączeniu z wartością zawiera zmienną docelową. Dobrą jakość danych jest dobrze przebadanych obszar w statystyk i zarządzanie danymi i tym samym poziomie zakresu, w tym przewodniku.
@@ -151,7 +151,7 @@ Dane przesyłane strumieniowo czujnika na podstawie (lub innych) urządzeń w ra
 #### <a name="static-feature-data"></a>Dane funkcji statycznych
 Statyczne funkcje są metadane dotyczące urządzenia. Należą do nich Marka sprzętu, modelu, jest to data, start Data service, lokalizacji, systemu i inne specyfikacje techniczne.
 
-Przykładowe dane istotne dla [menedżerów PdM przykładowe przypadki użycia](#Sample-PdM-use-cases) są przedstawione w poniższej tabeli:
+Przykładowe dane istotne dla [menedżerów PdM przykładowe przypadki użycia](#sample-pdm-use-cases) są przedstawione w poniższej tabeli:
 
 | Przypadek użycia | Przykłady odpowiednie dane |
 |:---------|---------------------------|
@@ -186,7 +186,7 @@ W przypadku danych statycznych
 
 Inne dane, przetwarzanie wstępne kroki obejmują _obsługi brakujące wartości_ i _normalizacji_ wartości atrybutów. Szczegółowe omówienie wykracza poza zakres tego podręcznika — w następnej sekcji niektóre przydatne dane.
 
-Za pomocą powyższych wstępnie przetworzony źródeł danych w miejscu, przekształcenie końcowego przed technicznego opracowywania funkcji do dołączenia do powyższych tabel na podstawie identyfikatora zasobu i sygnatura czasowa. Tabeli wynikowej musi wartości null dla kolumny błąd, gdy komputer jest w normalnych warunkach. Te wartości null można kalkulacyjne za pomocą wskaźnika do normalnego działania. Ta kolumna niepowodzenia służy do tworzenia _etykiety dla modelu predykcyjnego_. Aby uzyskać więcej informacji, zobacz sekcję na [modelowania technik pod kątem konserwacji predykcyjnej](#Modeling-techniques-for-predictive-maintenance).
+Za pomocą powyższych wstępnie przetworzony źródeł danych w miejscu, przekształcenie końcowego przed technicznego opracowywania funkcji do dołączenia do powyższych tabel na podstawie identyfikatora zasobu i sygnatura czasowa. Tabeli wynikowej musi wartości null dla kolumny błąd, gdy komputer jest w normalnych warunkach. Te wartości null można kalkulacyjne za pomocą wskaźnika do normalnego działania. Ta kolumna niepowodzenia służy do tworzenia _etykiety dla modelu predykcyjnego_. Aby uzyskać więcej informacji, zobacz sekcję na [modelowania technik pod kątem konserwacji predykcyjnej](#modeling-techniques-for-predictive-maintenance).
 
 ## <a name="feature-engineering"></a>Inżynieria funkcji
 Inżynieria funkcji jest pierwszym krokiem przed modelowania danych. Jego rolę w procesie nauki o danych [opisany tutaj](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). A _funkcji_ jest atrybutem predykcyjnego modelu — takich jak temperatury, wykorzystanie, wibracje i tak dalej. Dla menedżerów PdM technicznego opracowywania funkcji obejmuje abstrakcyjność kondycja maszyny historycznych danych zbieranych za pośrednictwem sporej liczbie czasu trwania. W tym sensie jest inny niż jego elementów równorzędnych, takich jak zdalne monitorowanie, wykrywanie anomalii i wykrywanie awarii. 
@@ -205,7 +205,7 @@ Dla każdego rekordu zasobu okno stopniowe rozmiaru "W" jest wybierany jako licz
 
 ![Rysunek 1. Stopniowe funkcji agregującej](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) rysunek 1. Stopniowe funkcje agregujące
 
-Przykłady stopniowe agregacje w przedziale czasu to liczba, średnia, środki CUMESUM (suma zbiorczej), wartości minimalnej/maksymalnej. Ponadto odchylenie, odchylenie standardowe i liczba wartości odstających poza odchyleń standardowych N są często używane. Przykłady agregacji, które mogą być stosowane dla [przypadki użycia](#Sample-PdM-use-cases) w tym przewodniku są wymienione poniżej. 
+Przykłady stopniowe agregacje w przedziale czasu to liczba, średnia, środki CUMESUM (suma zbiorczej), wartości minimalnej/maksymalnej. Ponadto odchylenie, odchylenie standardowe i liczba wartości odstających poza odchyleń standardowych N są często używane. Przykłady agregacji, które mogą być stosowane dla [przypadki użycia](#sample-pdm-use-cases) w tym przewodniku są wymienione poniżej. 
 - _We wdrożeniu pakietu testowego opóźnienie_: liczba kodów błędów przez ostatni dzień/tydzień.
 - _Niepowodzenie część aparatu samolotu_: stopniowe oznacza, że, odchylenie standardowe i sumy w ciągu ostatniego dnia, tygodnia itp. Ta metryka powinna zostać określona wraz z eksperta domeny biznesowej.
 - _Błędy ATM_: stopniowe oznacza, że mediana, zakres, odchyleń standardowych, liczby wartości odstających ponad trzech odchyleń standardowych, górny i dolny CUMESUM.
@@ -325,7 +325,7 @@ W przypadku stałych i łatwy do przewidzenia szeregów czasowych losowych i zal
 ### <a name="time-dependent-split"></a>Podziel zależne od czasu
 W tej sekcji opisano najlepsze rozwiązania w celu zaimplementowania podziału zależne od czasu. Poniżej opisano podziału dwukierunkowe zależne od czasu między zestawy szkoleniowe i testowe.
 
-Przyjęto założenie, strumień oznaczony sygnaturą czasową zdarzenia, takie jak miar z różnymi czujników. Definiowanie funkcji i etykiety, szkolenia oraz przykłady testu za pośrednictwem ramy czasowe, które zawierają wiele zdarzeń. Na przykład dla klasyfikacji binarnej, tworzenie funkcji na podstawie ostatnich zdarzeń i utworzyć etykiety na podstawie przyszłych zdarzeń w ciągu "X" jednostki w przyszłości (znajduje się w sekcjach na [Inżynieria funkcji](#Feature-engineering) i technik modelowania). W związku z tym etykietowania przedział czasu przykładem jest dostarczany później niż przedział czasu jego funkcji.
+Przyjęto założenie, strumień oznaczony sygnaturą czasową zdarzenia, takie jak miar z różnymi czujników. Definiowanie funkcji i etykiety, szkolenia oraz przykłady testu za pośrednictwem ramy czasowe, które zawierają wiele zdarzeń. Na przykład dla klasyfikacji binarnej, tworzenie funkcji na podstawie ostatnich zdarzeń i utworzyć etykiety na podstawie przyszłych zdarzeń w ciągu "X" jednostki w przyszłości (znajduje się w sekcjach na [Inżynieria funkcji](#feature-engineering) i technik modelowania). W związku z tym etykietowania przedział czasu przykładem jest dostarczany później niż przedział czasu jego funkcji.
 
 Podział zależne od czasu, można wybrać _szkolenia odcięcia czasu T<sub>c</sub>_  jaką do nauczenia modelu, za pomocą hiperparametrów dopasowane, przy użyciu danych historycznych maksymalnie T<sub>c</sub>. Aby zapobiec wyciekom przyszłych etykiety, które wykraczają poza T<sub>c</sub> do danych szkoleniowych, wybierz ostatni czas przykłady szkolenia etykiety jako X jednostki przed T<sub>c</sub>. W tym przykładzie pokazano na rysunku 7 każdy kwadrat reprezentuje rekordu w zestawie danych, których funkcji i etykiety są obliczane zgodnie z powyższym opisem. Na ilustracji przedstawiono rekordy, które powinny przejść do szkolenia i testowania zestawów dla X = 2, a W = 3:
 
@@ -352,7 +352,7 @@ Za pomocą klasy nierównowagi danych wydajność większości standardowych alg
 - Wyniki F1
 - Koszt korygowany ROC (receiver charakterystyk operacyjnych)
 
-Aby uzyskać więcej informacji o tych wskaźnikach, zobacz [modelu oceny](#Model-evaluation).
+Aby uzyskać więcej informacji o tych wskaźnikach, zobacz [modelu oceny](#model-evaluation).
 
 Istnieją jednak niektóre metody, które pomagają rozwiązać klasy nierównowagi problem. Te dwa główne są _próbkowanie technik_ i _koszt poufnych learning_.
 

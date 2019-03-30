@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie rabat plan SUSE i użycia — rezerwacje platformy Azure | Dokumentacja firmy Microsoft
+title: Zrozumienie SUSE rezerwacją planu i użycia — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak SUSE plan rabaty dotyczą oprogramowania SUSE na maszynach wirtualnych.
 services: billing
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: a9f784d7e7ed21a5a10a2f5e16125d60e7b9667f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863478"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649260"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>Zrozumienie, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise
+# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Zrozumieć sposób zastosowania planu rezerwacją oprogramowania SUSE Linux Enterprise na platformie Azure
 
 Po możesz kupić plan SUSE Linux, rabat jest automatycznie stosowany do wdrożonej SUSE maszyn wirtualnych (VM, które odpowiadają rezerwacji). Plan SUSE Linux po awarii obejmuje koszt z uruchamiania oprogramowania SUSE na Maszynie wirtualnej platformy Azure.
 
 Aby kupić właściwego planu SUSE Linux, musisz zrozumieć, jakie maszyny wirtualne SUSE w uruchomieniu i liczba procesorów wirtualnych na tych maszynach wirtualnych. Następujące sekcje zawierają informacje ułatwiające identyfikację z pliku CSV użycia, co to jest plan zakupu.
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych za pomocą elastyczność rozmiaru wystąpienia
+## <a name="discount-applies-to-different-vm-sizes"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych
 
 Jak zarezerwowanych wystąpień maszyn wirtualnych, SUSE planu zakupów oferują elastyczność rozmiaru wystąpienia. Oznacza to, że ma zastosowanie rabat, nawet gdy wdrożysz maszynę Wirtualną wraz z liczbą różnych procesorów wirtualnych. Rabat stosuje się do różnych rozmiarów maszyn wirtualnych w ramach planu oprogramowania.
 
@@ -40,7 +40,7 @@ Na przykład możesz kupić plan dla SUSE Linux Enterprise Server for HPC — pr
 
 Współczynnik 5 lub więcej procesorów wirtualnych Vcpu jest 2.6. Dlatego Rezerwacja SUSE z maszyną Wirtualną z 5 lub więcej procesorów wirtualnych Vcpu obejmuje tylko część koszt oprogramowania, czyli około 77%.
 
-## <a name="understand-your-suse-vm-usage-before-buying-a-suse-linux-plan"></a>Omówienie użycia maszyny Wirtualnej z systemem SUSE przed zakupem plan SUSE Linux
+## <a name="understand-suse-vm-usage-before-you-buy"></a>Opis przed zakupem maszyny Wirtualnej z systemem SUSE
 
 W poniższych tabelach przedstawiono plany oprogramowania, które można kupić rezerwację dla ich użycia skojarzone liczniki i współczynniki dla każdego.
 
@@ -133,6 +133,6 @@ Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

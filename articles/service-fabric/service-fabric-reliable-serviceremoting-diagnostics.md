@@ -4,7 +4,7 @@ description: W tym artykule opisano funkcje monitorowania wydajności w środowi
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
-manager: timlt
+manager: chackdan
 editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e1dec182f09eccebfe03ab9727018dbf34128acd
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275252"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666158"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostyka i monitorowanie wydajności dla wiarygodnych zdalna komunikacja usług
 Emituje ServiceRemoting niezawodne środowisko uruchomieniowe [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w jaki sposób działa ServiceRemoting i ułatwić rozwiązywanie problemów i monitorowania wydajności.

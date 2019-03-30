@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e6913b1de0045f86667fdcea824ee4cc613c4bc3
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497673"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660973"
 ---
 # <a name="text-to-speech-rest-api"></a>Interfejs API REST zamiany tekstu na mowę
 
@@ -44,14 +44,25 @@ Przed użyciem tego interfejsu API, należy zrozumieć:
 
 | Region | Endpoint |
 |--------|----------|
-| Zachodnie stany USA | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list  |
-| Zachodnie stany USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Australia Wschodnia | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Brazylia Południowa | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kanada Środkowa | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Środkowe stany USA | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Azja Wschodnia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Wschodnie stany USA | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Wschodnie stany USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Azja Wschodnia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Azja Południowo-Wschodnia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Francja Środkowa | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Indie Środkowe | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Japonia Wschodnia | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Korea Środkowa | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Środkowo-północne stany USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Europa Północna | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Środkowo-południowe stany USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Azja Południowo-Wschodnia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Południowe Zjednoczone Królestwo | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Europa Zachodnia | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Zachodnie stany USA | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Zachodnie stany USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

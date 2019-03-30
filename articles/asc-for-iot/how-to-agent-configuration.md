@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ce6744a3a7d71f358dccb3dc29c470f3a376240
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580706"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649377"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
 
@@ -42,7 +42,7 @@ ASC obiekt konfiguracji bliźniaczej reprezentacji agenta zabezpieczeń IoT firm
 
 Te konfiguracje pomóc dostosować agenta dla każdego scenariusza wymagana. Na przykład automatycznie wyłączając niektóre zdarzenia lub utrzymywanie zużycie energii do minimalnego poziomu są możliwe, konfigurując tych właściwości.  
 
-Użyj usługi ASC konfiguracji agenta zabezpieczeń IoT [schematu](https://github.com/azure/asc-for-iot-schemas/security/module/twin) zmian.  
+Użyj usługi ASC konfiguracji agenta zabezpieczeń IoT [schematu](https://aka.ms/iot-security-github-module-schema) zmian.  
 
 ## <a name="configuration-objects"></a>Obiekty konfiguracji 
 
@@ -64,7 +64,7 @@ Agent nie zostanie uruchomiony, jeśli obiekt konfiguracji nie jest zgodny ze sc
 
 ## <a name="configuration-schema-and-validation"></a>Schemat konfiguracji i sprawdzanie poprawności 
 
-Upewnij się, że sprawdzanie poprawności konfiguracji agenta przed tym [schematu](https://github.com/Azure/asc-for-iot/schema/security_module_twin). Agent nie zostanie uruchomiony, jeśli obiekt konfiguracji nie jest zgodny ze schematem.
+Upewnij się, że sprawdzanie poprawności konfiguracji agenta przed tym [schematu](https://aka.ms/iot-security-github-module-schema). Agent nie zostanie uruchomiony, jeśli obiekt konfiguracji nie jest zgodny ze schematem.
 
  
 Jeśli agent jest uruchomiona, obiekt konfiguracji została zmieniona na nie jest ważna configuration (Konfiguracja nie jest zgodny ze schematem), agent będzie ignorować nieprawidłowej konfiguracji i będą nadal używać bieżącej konfiguracji. 

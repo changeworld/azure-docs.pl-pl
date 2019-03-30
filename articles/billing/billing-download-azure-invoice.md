@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839818"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652386"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
@@ -28,7 +28,7 @@ W przypadku większości subskrypcji, możesz pobrać fakturę z [witryny Azure 
 
 Tylko niektóre role mają uprawnienia do wyświetlania faktur, takich jak konta administratora lub administratora przedsiębiorstwa. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
-Jeśli masz [umowy klienta Microsoft](#Check-your-access-to-a-Microsoft-Customer-Agreement), musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub wystawia faktury manager można pobrać faktur. Aby dowiedzieć się więcej o rolach rozliczeń dla umowy klienta firmy Microsoft, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Jeśli masz [umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer-agreement), musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub wystawia faktury manager można pobrać faktur. Aby dowiedzieć się więcej o rolach rozliczeń dla umowy klienta firmy Microsoft, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-your-azure-invoices-pdf"></a>Pobieranie faktur platformy Azure (PDF)
 

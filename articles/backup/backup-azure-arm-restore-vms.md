@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 3b32418361b992b91aa96579a0cf1f84d8b9d312
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620414"
+ms.locfileid: "58650720"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
 
@@ -29,8 +29,8 @@ Usługa Azure Backup udostępnia wiele sposobów, aby przywrócić maszynę Wirt
 **Opcja przywracania** | **Szczegóły**
 --- | ---
 **Utwórz nową maszynę Wirtualną** | Szybko tworzy i pobiera pracę podstawowej maszyny Wirtualnej z punktu przywracania.<br/><br/> Można określić nazwę dla maszyny Wirtualnej, wybierz grupę zasobów i virtual network (VNet) w której zostaną umieszczone i określić typ magazynu.
-**Przywracanie dysku** | Przywraca dysku maszyny Wirtualnej, które następnie mogą służyć do tworzenia nowej maszyny Wirtualnej.<br/><br/> Usługa Azure Backup udostępnia szablon, aby pomóc użytkownikom w dostosowywaniu i tworzenie maszyny Wirtualnej. <br/><br/> Ta opcja powoduje skopiowanie wirtualnych dysków twardych do konta magazynu, które określisz. Zadania przywracania generuje szablon, możesz pobrać i umożliwia określenie niestandardowych ustawień maszyny Wirtualnej i tworzenie maszyny Wirtualnej.<br/><br/> — Konto magazynu powinny być w tej samej lokalizacji co magazyn. Jeśli nie masz, Utwórz konto magazynu.<br/><br/> Typ replikacji konta magazynu jest wyświetlana. Magazyn strefowo nadmiarowy (ZRS) nie jest obsługiwane.<br/><br/> Alternatywnie możesz Dołącz dysk do istniejącej maszyny Wirtualnej lub utworzyć nową maszynę Wirtualną przy użyciu programu PowerShell.<br/><br/> Ta opcja jest przydatna, jeśli chcesz dostosować maszynę Wirtualną, Dodaj ustawienia konfiguracji, które nie były dostępne w czasie wykonywania kopii zapasowej lub dodać ustawienia, które muszą być skonfigurowane przy użyciu szablonu lub programu PowerShell.
-**Zamień istniejące** | Przywracanie dysku i użyć go do wymienić dysk na istniejącej maszynie Wirtualnej.<br/><br/> Musi istnieć bieżącej maszyny Wirtualnej. Jeśli zostanie usunięta ta opcja nie może być używana.<br/><br/> Usługa Azure Backup tworzy migawkę istniejącej maszyny Wirtualnej przed zamianą na dysku. Migawki są przechowywane w lokalizacji tymczasowej, które określisz. Istniejące dyski podłączone do maszyny Wirtualnej są następnie zastąpić, korzystając z wybranego punktu przywracania. Migawki, która została wykonana jest kopiowane do magazynu i przechowywane zgodnie z zasadami przechowywania określona.<br/><br/> Zastąp istniejące jest obsługiwana dla niezaszyfrowane zarządzane maszyny wirtualne. Nie jest obsługiwana w przypadku dysków niezarządzanych [uogólniony maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), lub dla maszyn wirtualnych [utworzone za pomocą niestandardowych obrazów](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Jeśli punkt przywracania ma więcej lub mniej dysków niż bieżącej maszyny Wirtualnej, następnie liczbę dysków w punkcie przywracania będzie odzwierciedlają tylko konfiguracji maszyny Wirtualnej.
+**Przywracanie dysku** | Przywraca dysku maszyny Wirtualnej, które następnie mogą służyć do tworzenia nowej maszyny Wirtualnej.<br/><br/> Usługa Azure Backup udostępnia szablon, aby pomóc użytkownikom w dostosowywaniu i tworzenie maszyny Wirtualnej. <br/><br/> Ta opcja powoduje skopiowanie wirtualnych dysków twardych do konta magazynu, które określisz. Zadania przywracania generuje szablon, możesz pobrać i umożliwia określenie niestandardowych ustawień maszyny Wirtualnej i tworzenie maszyny Wirtualnej.<br/><br/> Konta magazynu powinna być w tej samej lokalizacji co magazyn. Jeśli nie masz, Utwórz konto magazynu.<br/><br/> Typ replikacji konta magazynu jest wyświetlana. Magazyn strefowo nadmiarowy (ZRS) nie jest obsługiwane.<br/><br/> Alternatywnie możesz Dołącz dysk do istniejącej maszyny Wirtualnej lub utworzyć nową maszynę Wirtualną przy użyciu programu PowerShell.<br/><br/> Ta opcja jest przydatna, jeśli chcesz dostosować maszynę Wirtualną, Dodaj ustawienia konfiguracji, które nie były dostępne w czasie wykonywania kopii zapasowej lub dodać ustawienia, które muszą być skonfigurowane przy użyciu szablonu lub programu PowerShell.
+**Zamień istniejące** | Przywracanie dysku i użyć go do wymienić dysk na istniejącej maszynie Wirtualnej.<br/><br/> Musi istnieć bieżącej maszyny Wirtualnej. Jeśli zostanie usunięta ta opcja nie może być używana.<br/><br/> Usługa Azure Backup tworzy migawkę istniejącej maszyny Wirtualnej przed zamianą na dysku. Migawki są przechowywane w lokalizacji tymczasowej, które określisz. Istniejące dyski podłączone do maszyny Wirtualnej są następnie zastąpić, korzystając z wybranego punktu przywracania.<br/><br/> Migawki, która została wykonana jest kopiowane do magazynu i przechowywane zgodnie z zasadami przechowywania określona. <br/><br/> Zastąp istniejące jest obsługiwana dla niezaszyfrowane zarządzane maszyny wirtualne. Nie jest obsługiwana w przypadku dysków niezarządzanych [uogólniony maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), lub dla maszyn wirtualnych [utworzone za pomocą niestandardowych obrazów](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Jeśli punkt przywracania ma więcej lub mniej dysków niż bieżącej maszyny Wirtualnej, następnie liczbę dysków w punkcie przywracania będzie odzwierciedlają tylko konfiguracji maszyny Wirtualnej.<br/><br/>
 
 > [!NOTE]
 > Można również odzyskać określonych plików i folderów na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](backup-azure-restore-files-from-vm.md).
@@ -58,7 +58,7 @@ Jeśli nie masz uprawnień, możesz to zrobić [przywracanie dysku](#restore-dis
 ## <a name="choose-a-vm-restore-configuration"></a>Wybierz konfigurację przywracania maszyny Wirtualnej
 
 1. W **przywracania konfiguracji**, wybierz opcję przywracania:
-    - **Utwórz nową**. Użyj tej opcji, jeśli chcesz utworzyć nową maszynę Wirtualną. Możesz utworzyć Maszynę wirtualną z prostymi ustawieniami, lub przywrócić dysk i tworzenia niestandardowych maszyn wirtualnych.
+    - **Utwórz nową**: Użyj tej opcji, jeśli chcesz utworzyć nową maszynę Wirtualną. Możesz utworzyć Maszynę wirtualną z prostymi ustawieniami, lub przywrócić dysk i tworzenia niestandardowych maszyn wirtualnych.
     - **Zamień istniejące**: Użyj tej opcji, jeśli chcesz zastąpić dyskami na istniejącej maszyny Wirtualnej.
 
         ![Kreator konfiguracji przywracania](./media/backup-azure-arm-restore-vms/restore-configuration.png)
@@ -95,6 +95,8 @@ Jako jeden z [opcje przywracania](#restore-options), możesz utworzyć dysk z pu
     ![Konfiguracja odzyskiwania została ukończona](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 4. W **przywracania konfiguracji**, wybierz opcję **OK**. W **przywrócić**, kliknij przycisk **przywrócić** wyzwalanie operacji przywracania.
+
+Podczas przywracania maszyny Wirtualnej usługi Azure Backup nie używa konta magazynu. Jednak w przypadku programu **Przywróć dyski** i **natychmiastowe Przywracanie**, konto magazynu jest używane do przechowywania szablonu.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Szablony umożliwiają dostosowywanie przywróconą maszyną Wirtualną.
 
@@ -142,6 +144,7 @@ Istnieje kilka typowych scenariuszy, w których konieczne może być przywracani
 **Przywracanie bez systemu operacyjnego** | Główna różnica między maszynami wirtualnymi platformy Azure i funkcji hypervisor w środowisku lokalnym jest dostępna na platformie Azure jest nie konsoli maszyny Wirtualnej. Konsola jest wymagana dla niektórych scenariuszach, takich jak odzyskiwanie za pomocą odzyskiwania zera (BMR) — typ kopii zapasowej. Przywracanie maszyny Wirtualnej z magazynu jest jednak zastępuje pełnego odzyskiwania systemu od ZERA.
 **Przywracanie maszyn wirtualnych ze specjalnymi konfiguracjami sieci** | Specjalne konfiguracje sieci obejmują maszyny wirtualne przy użyciu wewnętrzne lub zewnętrzne Równoważenie obciążenia, przy użyciu wielu kart Sieciowych lub wielu zastrzeżonych adresów IP. Przywróć te maszyny wirtualne za pomocą [przywracania dysku](#restore-disks). Ta opcja wykonuje kopię wirtualne dyski twarde do podanego konta magazynu, a następnie możesz utworzyć maszynę Wirtualną z [wewnętrzny](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) lub [zewnętrznych](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) usługi load balancer, [wiele kart Sieciowych](../virtual-machines/windows/multiple-nics.md), lub [wielu zastrzeżone adresy IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), zgodnie z konfiguracją.
 **Sieciowa grupa zabezpieczeń (NSG) w kart Sieciowych/podsieć** | Kopia zapasowa maszyny Wirtualnej platformy Azure obsługuje tworzenia kopii zapasowych i przywracania dla sieciowej grupy zabezpieczeń informacji w sieci wirtualnej, podsieci i poziomie karty Sieciowej.
+**Strefa przypięte maszyn wirtualnych** | Usługa Azure Backup obsługuje tworzenia kopii zapasowych i przywracanie nieupakowaną przypiętych maszyn wirtualnych. [Dowiedz się więcej](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Śledzenie operacji przywracania
 Po użytkownik zainicjuje operację przywracania, usługa backup tworzy zadanie śledzenia. Usługa Azure Backup Wyświetla powiadomienia dotyczące zadania w portalu. Jeśli nie są one widoczne, kliknij polecenie **powiadomienia** symbolu, aby je zobaczyć.
@@ -174,7 +177,6 @@ Istnieje kilka kwestii, które należy pamiętać, po przywróceniu maszyny Wirt
 
 - Jeśli przywróconej maszyny Wirtualnej w tej samej grupie zasobów o takiej samej nazwie co maszyna wirtualna pierwotnie kopii zapasowej, kopii zapasowych jest kontynuowane na maszynie Wirtualnej po przywróceniu.
 - Jeśli przywrócono maszyny Wirtualnej do innej grupy zasobów lub określić inną nazwę dla przywróconej maszyny Wirtualnej, należy skonfigurować kopię zapasową dla przywróconej maszyny Wirtualnej.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

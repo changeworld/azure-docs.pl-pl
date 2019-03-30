@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962829"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651127"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie laboratoriami na potrzeby zajęć w usłudze Azure Lab Services 
 W tym artykule opisano sposób tworzenia i usuwania laboratorium na potrzeby zajęć. On również dowiesz się, jak wyświetlić wszystkie laboratorium na potrzeby zajęć na koncie laboratorium. 
@@ -32,14 +32,14 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 2. Wybierz **Zaloguj**. Wybierz lub wprowadź **identyfikator użytkownika** czyli członkiem **twórca laboratorium** roli w środowisku laboratoryjnym konta, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
 3. W oknie **Nowe laboratorium** wykonaj następujące czynności: 
     1. Określ **nazwę** dla swojego laboratorium. 
-    2. Określ maksymalny **liczba maszyn wirtualnych** w środowisku laboratoryjnym. Można zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w środowisku laboratoryjnym później. 
+    2. Określ maksymalną **liczbę maszyn wirtualnych** w laboratorium. Można zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w środowisku laboratoryjnym później. 
     6. Wybierz pozycję **Zapisz**.
 
         ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stronie **Wybór specyfikacji maszyny wirtualnej** wykonaj następujące czynności:
-    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. 
+    1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. Obecnie **małych**, **średni**, **dużych**, i **procesora GPU** rozmiarów są dozwolone.
     2. Wybierz **region**, w którym mają być tworzone maszyny wirtualne. 
-    3. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. 
+    3. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. Jeśli wybierzesz obraz systemu Linux, zobaczysz opcję, aby włączyć połączenie pulpitu zdalnego dla niego. Aby uzyskać więcej informacji, zobacz [Włączanie połączeń usług pulpitu zdalnego dla systemu Linux](how-to-enable-remote-desktop-linux.md).
     4. Wybierz opcję **Dalej**.
 
         ![Określanie specyfikacji maszyny wirtualnej](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
     ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Poniższe kroki są opcjonalne w tym samouczku: 
     1. Uruchom maszynę wirtualną szablonu, wybierając pozycję **Uruchom**.
-    2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
+    2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. Jeśli szablon maszyny Wirtualnej systemu Linux, wybierz, czy chcesz nawiązać połączenie przy użyciu klienta SSH lub RDP (jeśli został włączony protokół RDP).
     3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
     4. **Zatrzymaj** maszynę wirtualną.  
     5. Wprowadź **opis** szablonu.
@@ -103,7 +103,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
     ![Wybieranie laboratorium](../media/how-to-manage-classroom-labs/select-three-dots.png)
 2. Wybierz pozycję **Usuń**. 
 
-    ![Usuwanie przycisku](../media/how-to-manage-classroom-labs/delete-button.png)
+    ![Przycisk Usuń](../media/how-to-manage-classroom-labs/delete-button.png)
 3. Na **Delete lab** okno dialogowe, wybierz opcję **Usuń**. 
 
     ![Okno dialogowe Usuwanie](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)

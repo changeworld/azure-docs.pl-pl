@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/29/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 19e94fc65ddc1719c601397adfe77f8f9445e4fa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351460"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662129"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -44,19 +44,6 @@ Usługa Media Services umożliwia tworzenie różnych przepływów pracy multime
 * Dzięki usłudze Azure Media Services oraz [interfejsom API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) możesz dodawać napisy i podpisy do filmów, aby spełnić potrzeby szerszego grona odbiorców (na przykład osób z wadami słuchu lub osób chcących jednocześnie czytać w innym języku).
 * Włącz usługę Azure CDN, aby osiągnąć wysoką skalowalność w celu zapewnienia lepszej obsługi błyskawicznego zwiększenia obciążenia (na przykład na początku wydarzenia prezentującego nowy produkt). 
 
-## <a name="v3-capabilities"></a>Możliwości wersji 3
-
-Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. 
-
-Ta wersja oferuje następujące możliwości:  
-
-* **Przekształcenia**, które pomagają definiować proste przepływy pracy zadań przetwarzania lub analizy multimediów. Przekształcenie to przepis na przetwarzanie plików audio i wideo. Następnie możesz wielokrotnie je stosować, aby przetworzyć wszystkie pliki w Twojej bibliotece zawartości, przesyłając zadania do przekształcenia.
-* **Zadania** przetwarzania (kodowania lub analizowania) Twoich plików wideo. Zawartość wejściową można określić dla zadania przy użyciu adresów URL HTTPS, adresów URL sygnatury dostępu współdzielonego lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure. Obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu przez adresy URL HTTPS.
-* **Powiadomienia** , monitorować postęp zadania, Stany lub zdarzenia na żywo zdarzeń uruchomień/zatrzymań i błędów. Powiadomienia są zintegrowane z systemem powiadomień usługi Azure Event Grid. Możesz łatwo subskrybować zdarzenia dla kilku zasobów w usłudze Azure Media Services. 
-* **Zarządzanie zasobami usługi Azure** szablony mogą być używane do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, zdarzenia na żywo i nie tylko.
-* **Kontrola dostępu oparta na rolach** można ustawić na poziomie zasobów, dzięki czemu możesz zablokować dostęp do określonych zasobów, takich jak przekształceń, zdarzenia na żywo i nie tylko.
-* **Zestawy SDK klientów** w wielu językach: .NET, .NET Core, Python, Go, Java i Node.js.
-
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
 Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, Zadania, Przekształcenia) podlegają ograniczeniom nazewnictwa usługi Azure Resource Manager. Zgodnie z zasadami usługi Azure Resource Manager nazwy zasobów są zawsze unikatowe. W związku z tym jako nazw zasobów można używać dowolnych ciągów będących unikatowymi identyfikatorami (na przykład identyfikatorów GUID). 
@@ -76,6 +63,41 @@ Przykłady obejmują:
 * niezwracanie części ciągu zapytania adresu URL (aby usunąć podpis) dla wejściowych adresów URL HTTP zadań.
 
 Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet-howto.md) (Pobieranie zasad dotyczących klucza zawartości — .NET).
+
+
+## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3? 
+
+Dowiedz się, jak Koduj i Pakuj zawartość, przesyłanie strumieniowe wideo na żądanie, prowadzić emisję na żywo, analizować filmy wideo za pomocą usługi Media Services v3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
+
+### <a name="quickstarts"></a>Przewodniki Szybki start  
+
+Szybki Start pokazano, podstawowe instrukcje 1 dzień nowi klienci będą mogli szybko wypróbować usługę Media Services.
+
+* [Pliki wideo Stream — .NET](stream-files-dotnet-quickstart.md)
+* [Pliki wideo Stream — interfejs wiersza polecenia](stream-files-cli-quickstart.md)
+* [Pliki wideo Stream — Node.js](stream-files-nodejs-quickstart.md)
+    
+### <a name="tutorials"></a>Samouczki 
+
+W samouczkach pokazano oparte na scenariuszach procedury dla niektóre z najważniejszych zadań usługi Media Services.
+
+* [Kodowanie pliku zdalnego i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+* [Kodowanie przekazanego pliku i strumienia wideo — .NET](stream-files-tutorial-with-api.md)
+* [Stream na żywo — .NET](stream-live-tutorial-with-api.md)
+* [Analizowanie filmu wideo — .NET](analyze-videos-tutorial-with-api.md)
+* [Szyfrowanie AES-128 - .NET](protect-with-aes128.md)
+    
+### <a name="how-to-guides"></a>Przewodniki z instrukcjami
+
+Artykuły zawierają przykłady kodu, które pokazują sposób wykonania zadania. W tej sekcji znajdziesz wiele przykładów, poniżej przedstawiono kilka z nich:
+
+* [Tworzenie konta — interfejs wiersza polecenia](create-account-cli-how-to.md)
+* [Dostęp do interfejsów API — interfejs wiersza polecenia](access-api-cli-how-to.md)
+* [Zacznij programować przy użyciu zestawów SDK](developers-guide.md)
+* [Kodowanie za pomocą protokołu HTTPS jako dane wejściowe — zadanie platformy .NET](job-input-from-http-how-to.md)  
+* [Monitor zdarzeń — Portal](monitor-events-portal-how-to.md)
+* [Dynamiczne szyfrowanie przy użyciu technologii multi-DRM — .NET](protect-with-drm.md) 
+* [Jak kodować z niestandardowe przekształcenia przy użyciu interfejsu wiersza polecenia](custom-preset-cli-howto.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

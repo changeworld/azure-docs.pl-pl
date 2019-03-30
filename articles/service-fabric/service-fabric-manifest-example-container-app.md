@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować aplikację i ustawienia manifestu 
 services: service-fabric
 documentationcenter: na
 author: peterpogorski
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 184a36b991fc49efad6f53efcaee430d8fea1ebc
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 622e6f7552d91cdb9ccf3668c302496c68a5920f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498115"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665988"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Przykłady manifestu wielokontenerowej aplikacji i usługi
 Poniżej przedstawiono przykłady manifestów aplikacji i usługi dla aplikacji usługi Service Fabric obsługującej wiele kontenerów. Te przykłady ma na celu Pokaż jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usługi są oparte na [przykład kontenera systemu Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) manifestów.

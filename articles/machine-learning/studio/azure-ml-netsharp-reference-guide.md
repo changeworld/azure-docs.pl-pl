@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905158"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651495"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
@@ -63,9 +63,9 @@ Architektura modele sieci neuronowych, które możesz utworzyć w usłudze Azure
 + Zdefiniować struktury łączności specjalnych, takich jak splotowi i wagi udostępnianie pakietów.
 + Określ Aktywacja innej funkcji.
 
-Aby uzyskać szczegółowe informacje o składni specyfikacja języka, zobacz [specyfikacji struktury](#Structure-specifications).
+Aby uzyskać szczegółowe informacje o składni specyfikacja języka, zobacz [specyfikacji struktury](#structure-specifications).
 
-Definiowanie sieci neuronowych dla niektórych typowych maszyny uczenia zadań, od jednostronny złożone, zobacz [przykłady](#Examples-of-Net#-usage).
+Definiowanie sieci neuronowych dla niektórych typowych maszyny uczenia zadań, od jednostronny złożone, zobacz [przykłady](#examples-of-net-usage).
 
 ## <a name="general-requirements"></a>Wymagania ogólne
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dfd0443dafbc4fcc221937f248bf6d2f292b528f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116202"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651755"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -170,7 +170,7 @@ Za pomocą **[PolyBase](https://docs.microsoft.com/sql/relational-databases/poly
 * Jeśli źródło danych znajduje się w **Azure blob Storage lub Azure Data Lake Store**i format jest zgodny z programem PolyBase, możesz bezpośrednio skopiować do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. Zobacz **[bezpośrednich kopii przy użyciu technologii PolyBase](#direct-copy-using-polybase)** ze szczegółowymi informacjami.
 * Usługi magazynu danych źródłowych i format nie jest pierwotnie obsługiwane przez program PolyBase, można użyć **[przygotowane kopiowania przy użyciu technologii PolyBase](#staged-copy-using-polybase)** są wyposażone w zamian. Zapewnia również możesz większą przepustowość przez automatyczne konwersji danych do formatu zgodnego z technologii PolyBase i przechowywanie danych w usłudze Azure Blob storage. Następnie ładuje dane do usługi SQL Data Warehouse.
 
-Ustaw `allowPolyBase` właściwości **true** jak pokazano w poniższym przykładzie dla usługi Azure Data Factory, aby skopiować dane do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. Podczas allowPolyBase jest ustawiona na wartość true, można określić właściwości określonych technologii PolyBase, za pomocą `polyBaseSettings` grupy właściwości. zobacz [SqlDWSink](#SqlDWSink) sekcji, aby uzyskać szczegółowe informacje o właściwościach, korzystających z usługi.
+Ustaw `allowPolyBase` właściwości **true** jak pokazano w poniższym przykładzie dla usługi Azure Data Factory, aby skopiować dane do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. Podczas allowPolyBase jest ustawiona na wartość true, można określić właściwości określonych technologii PolyBase, za pomocą `polyBaseSettings` grupy właściwości. zobacz [SqlDWSink](#sqldwsink) sekcji, aby uzyskać szczegółowe informacje o właściwościach, korzystających z usługi.
 
 ```JSON
 "sink": {

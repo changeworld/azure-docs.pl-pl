@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 79faab0dcf2dd4c5592fe0543fa63f2538facf36
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401133"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664016"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -43,6 +43,9 @@ Usługa Security Center jest oferowana w dwóch warstwach:
 **w warstwie bezpłatna** zapewnia wgląd w stan zabezpieczeń zasobów platformy Azure, podstawowe zasady zabezpieczeń, zaleceń dotyczących zabezpieczeń i integrację z produktów i usług zabezpieczeń oferowanych przez partnerów.
 
 **w warstwie standardowa** dodaje zaawansowanych zagrożeń możliwości wykrywania, w tym zagrożeń analizy, analizę behawioralną, wykrywanie anomalii, zdarzenia związane z bezpieczeństwem i zagrożeń: uznanie autorstwa raportów. Możesz rozpocząć bezpłatny okres próbny w warstwie standardowa. Aby przeprowadzić uaktualnienie, wybierz [warstwy cenowej](https://docs.microsoft.com/azure/security-center/security-center-pricing) w zasadach zabezpieczeń. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+
+### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Jak mogę śledzić wykonującego w mojej organizacji cen zmiany w usłudze Azure Security Center
+Zgodnie z subskrypcją platformy Azure może być przypisanych kilku administratorów z uprawnieniami, aby zmienić warstwę cenową, użytkownik może chcieć wiedzieć, kto wykonał Zmiana warstwy cenowej. Do użycia, która umożliwia korzystanie z dziennika aktywności platformy Azure. Zobacz dalsze instrukcje [tutaj](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)
 
 ## <a name="permissions"></a>Uprawnienia
 Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), która zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md), które można przypisać do użytkowników, grup i usług Azure.
@@ -116,22 +119,22 @@ Aby wybrać istniejący obszar roboczy usługi Log Analytics:
    - Wybierz **anulować** anulować operację.
 
 ### Co zrobić, jeśli program Microsoft Monitoring Agent został już zainstalowany jako rozszerzenie na maszynie Wirtualnej?<a name="mmaextensioninstalled"></a>
-Po zainstalowaniu programu Monitoring Agent jako rozszerzenie Konfiguracja rozszerzenia pozwala na zgłaszanie tylko z jednym obszarem roboczym. Usługa Security Center nie zastępuje istniejące połączenia do obszarów roboczych użytkownika. Usługa Security Center będzie przechowywać dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym, który jest już połączony, pod warunkiem, że "zabezpieczenia" lub "securityFree" rozwiązania została zainstalowana na nim. Usługa Security Center może Uaktualnij wersję rozszerzenia do najnowszej wersji w ramach tego procesu.
+Po zainstalowaniu programu Monitoring Agent jako rozszerzenie Konfiguracja rozszerzenia pozwala na zgłaszanie tylko z jednym obszarem roboczym. Usługa Security Center nie zastępuje istniejące połączenia do obszarów roboczych użytkownika. Usługa Security Center będzie przechowywać dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym, który jest już połączony, pod warunkiem, że rozwiązanie "Zabezpieczenia" lub "SecurityCenterFree" zainstalowano na nim. Usługa Security Center może Uaktualnij wersję rozszerzenia do najnowszej wersji w ramach tego procesu.
 
 Aby uzyskać więcej informacji, zobacz [automatycznej aprowizacji w przypadku istniejących instalacji agenta](security-center-enable-data-collection.md#preexisting).
 
 
-### Co zrobić, jeśli wcześniej zainstalowany Microsoft Monitoring Agent bezpośrednio na maszynie, ale nie jako rozszerzenie (Agent bezpośredni)?<a name="directagentinstalled"></a>
+### Co zrobić, jeśli użytkownik miał program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie, ale nie jako rozszerzenie (Agent bezpośredni)?<a name="directagentinstalled"></a>
 Program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), Centrum zabezpieczeń zainstaluje rozszerzenia Microsoft Monitoring Agent i mogą zostać uaktualnione do najnowszej wersji Microsoft Monitoring agent.
 Jest zainstalowany agent będzie kontynuował raportowanie do jego już skonfigurowanego obszarów roboczych, a ponadto będzie zgłaszać do obszaru roboczego skonfigurowane w usłudze Security Center (multihosting jest obsługiwane).
-Skonfigurowany obszar roboczy w przypadku obszaru roboczego użytkownika (nie Centrum zabezpieczeń domyślnego obszaru roboczego), będą musieli zainstalować "security / rozwiązania"securityFree"na nim usługi Security Center rozpocząć przetwarzanie zdarzeń z maszyn wirtualnych i komputerów raportujących do obszaru roboczego.
+Skonfigurowany obszar roboczy w przypadku obszaru roboczego użytkownika (nie Centrum zabezpieczeń domyślnego obszaru roboczego), będą musieli zainstalować "Security / rozwiązania"SecurityCenterFree"na nim usługi Security Center rozpocząć przetwarzanie zdarzeń z maszyn wirtualnych i komputerów, raportowanie, obszar roboczy.
 
 Dla istniejących maszyn w subskrypcji dołączono do usługi Security Center, przed 2019-03-17, gdy zostanie wykryty istniejącego agenta, rozszerzenia Microsoft Monitoring Agent nie zostanie zainstalowany, a komputer nie ma wpływu na. Dla tych maszyn Zobacz zalecenie "Monitorowanie problemów dotyczących kondycji agenta na maszynach Rozwiąż", aby rozwiązać problemy z instalacją agentów na tych maszynach
 
  Aby uzyskać więcej informacji, zobacz następną sekcję [co się stanie w przypadku pakietu OMS lub SCOM programu bezpośredni agent jest już zainstalowany na maszynie Wirtualnej?](#scomomsinstalled)
 
-### Co się stanie, jeśli SCOM agent jest już zainstalowany na maszynie Wirtualnej?<a name="scomomsinstalled"></a>
-Usługa Security center zostanie zainstalowany program Microsoft Monitoring Agent rozszerzenia side-by-side do istniejącego programu SCOM. Istniejącego agenta programu SCOM będą nadal normalnie raportu do serwera programu SCOM. Należy pamiętać, że SCOM agent i Microsoft Monitoring Agent współużytkują wspólne biblioteki czasu wykonywania, które zostaną zaktualizowane do wersji Najpóźniejsza podczas tego procesu.
+### Co się stanie, jeśli agent programu System Center Operations Manager (SCOM) jest już zainstalowany na maszynie Wirtualnej?<a name="scomomsinstalled"></a>
+Usługa Security center zostanie zainstalowany program Microsoft Monitoring Agent rozszerzenia side-by-side do istniejącego agenta programu System Center Operations Manager. Istniejącego agenta programu SCOM będą nadal normalnie raportu do serwera programu System Center Operations Manager. Należy pamiętać, że agent programu System Center Operations Manager i Microsoft Monitoring Agent współużytkują wspólne biblioteki czasu wykonywania, które zostaną zaktualizowane do wersji Najpóźniejsza podczas tego procesu. Uwaga — Jeśli nie zainstalowano agenta w wersji 2012, program System Center Operations Manager Włącz automatyczne aprowizowanie na (możliwości zarządzania może być w utracone, gdy serwer programu System Center Operations Manager jest również wersja 2012).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Jaki jest wpływ usunięcia tych rozszerzeń?
 Jeśli usuniesz rozszerzenie monitorowania firmy Microsoft, usługa Security Center nie jest w stanie do zbierania danych zabezpieczeń z maszyny Wirtualnej i niektóre zalecenia dotyczące zabezpieczeń i alerty są niedostępne. W ciągu 24 godzin usługa Security Center określa Brak rozszerzenia i spowoduje ponowne zainstalowanie rozszerzenia maszyny Wirtualnej.
@@ -156,7 +159,7 @@ Możesz wyłączyć automatycznej aprowizacji dla subskrypcji w ramach zasad zab
 Można zrezygnować z automatycznego inicjowania obsługi administracyjnej, jeśli stosuje się do Ciebie:
 
 - Automatyczną instalację agenta przez usługę Security Center ma zastosowanie do całej subskrypcji.  Nie można zastosować automatycznej instalacji dla podzbioru maszyn wirtualnych. W przypadku newralgicznych maszyn wirtualnych, których nie można zainstalować za pomocą programu Microsoft Monitoring Agent, należy zrezygnować z automatycznego inicjowania obsługi administracyjnej.
-- Instalowanie rozszerzenia Microsoft Monitoring Agent aktualizacji wersji agenta. Dotyczy to agent bezpośredni i agenta programu SCOM. Jeśli jest zainstalowany agent programu SCOM jest w wersji 2012 i zostanie uaktualniona, możliwości zarządzania mogą zostać utracone, gdy serwer SCOM jest również wersja 2012. Należy rozważyć rezygnacji z automatycznej aprowizacji, jeśli jest zainstalowany agent SCOM jest w wersji 2012.
+- Instalowanie rozszerzenia Microsoft Monitoring Agent (MMA) aktualizuje wersję agenta. Dotyczy to agent bezpośredni i agenta programu SCOM (w tym ostatnim SCOM i MMA Udostępnianie wspólnych bibliotek środowiska uruchomieniowego — które zostaną zaktualizowane w procesie). Jeśli jest zainstalowany agent programu SCOM jest w wersji 2012 i zostanie uaktualniona, możliwości zarządzania mogą zostać utracone, gdy serwer SCOM jest również wersja 2012. Należy rozważyć rezygnacji z automatycznej aprowizacji, jeśli jest zainstalowany agent SCOM jest w wersji 2012.
 - Jeśli masz niestandardowe zewnętrzne w stosunku do subskrypcji (scentralizowanych obszarów roboczych) obszar roboczy należy zrezygnować z automatycznego inicjowania obsługi administracyjnej. Można ręcznie zainstalować rozszerzenia Microsoft Monitoring Agent i połączyć go obszaru roboczego bez usługi Security Center zastępowanie połączenia.
 - Jeśli chcesz uniknąć tworzenia wielu obszarów roboczych na subskrypcję i masz własnego niestandardowego obszaru roboczego w ramach subskrypcji, masz dwie opcje:
 
@@ -224,9 +227,9 @@ Dane zbierane z tego agenta są przechowywane w istniejącego obszaru roboczego 
 ## Istniejące usługi Azure Monitor dzienniki klientów<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Usługa Security Center, powoduje zastąpienia istniejące połączenia między maszynami wirtualnymi i obszary robocze?
-Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agent jako rozszerzenie platformy Azure, usługa Security Center nie zastępuje istniejące połączenie z obszaru roboczego. Zamiast tego usługa Security Center korzysta z istniejącego obszaru roboczego.
+Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agent jako rozszerzenie platformy Azure, usługa Security Center nie zastępuje istniejące połączenie z obszaru roboczego. Zamiast tego usługa Security Center korzysta z istniejącego obszaru roboczego. Maszyna wirtualna będzie chroniony, pod warunkiem, że rozwiązanie "Zabezpieczenia" lub "SecurityCenterFree" został zainstalowany na obszar roboczy, który jest raportowanie do. 
 
-Rozwiązania usługi Security Center w obszarze roboczym Jeśli nie została zainstalowana już istnieje, a rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych. Po dodaniu rozwiązania, automatycznie są wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics. [Określanie wartości docelowej rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) można zastosować zakres do rozwiązania.
+Rozwiązania usługi Security Center w obszarze roboczym, który został wybrany na ekranie zbierania danych jeśli nie została zainstalowana już istnieje, a rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych. Po dodaniu rozwiązania, automatycznie są wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics. [Określanie wartości docelowej rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) można zastosować zakres do rozwiązania.
 
 Jeśli program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), usługa Security Center nie instaluje program Microsoft Monitoring Agent oraz monitorowanie zabezpieczeń jest ograniczony.
 
