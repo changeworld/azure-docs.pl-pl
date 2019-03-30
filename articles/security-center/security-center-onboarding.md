@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100074"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665495"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
 Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować standardowa jest bezpłatna. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
@@ -33,7 +33,7 @@ Security Center w warstwie standardowa obejmuje:
 ## <a name="detecting-unprotected-resources"></a>Wykrywanie niechronionych zasobach     
 Usługa Security Center automatycznie wykrywa wszelkie subskrypcje i obszary robocze platformy Azure nie włączone do standardu usługi Security Center. Obejmuje to subskrypcje platformy Azure korzystające z usługi Security Center w warstwie bezpłatnej oraz obszary robocze, które nie mają włączonego rozwiązania w zakresie zabezpieczeń.
 
-Całej subskrypcji platformy Azure można uaktualnić do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby w ramach subskrypcji, lub można zdefiniować unikatowe zasady do konkretnej grupy zasobów tylko uaktualnienia. Jeśli ustawienia zasad grupy zasobów są unikatowe, usługa Security Center nie spowoduje zastąpienia polityką cenową podczas uaktualniania subskrypcji do warstwy standardowa. Stosowanie standardowej warstwy do subskrypcji ma zastosowanie do wszystkich obsługiwanych zasobów w subskrypcji. Stosowanie standardowej warstwy do obszaru roboczego, który ma zastosowanie do wszystkich zasobów raportowania do obszaru roboczego.
+Cały subskrypcji platformy Azure można uaktualnić do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby obsługiwane w ramach subskrypcji. Stosowanie standardowej warstwy do obszaru roboczego, który ma zastosowanie do wszystkich zasobów raportowania do obszaru roboczego.
 
 > [!NOTE]
 > Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów. [Określanie celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) pozwala zastosować zakres z rozwiązaniem i wybierać docelowo podzbiorowi komputerów w obszarze roboczym.  Jeśli używasz rozwiązania przeznaczone dla usługi Security Center wyświetla listę obszaru roboczego jako niemający rozwiązania.
