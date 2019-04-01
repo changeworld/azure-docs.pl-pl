@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2121cd661f5f1c2c14dc32eb2a4cbf717c966c67
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180844"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668961"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -111,7 +111,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
     - **Typ bazy danych**: Wybierz **HANA**.
     - **Rozmiar systemu SAP**: Wprowadź liczbę protokoły SAP, których zamierza zapewnić nowego systemu. Jeśli nie masz pewności ile protokoły SAP wymaga systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
     - **Dostępność systemu**: Wybierz **HA**.
-    - **Nazwa użytkownika administratora i hasło administratora**: Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
+    - **Nazwa użytkownika administratora i hasło administratora**: Tworzony jest nowy użytkownik, który może służyć do logowania się na tym komputerze.
     - **Nowej lub istniejącej podsieci**: Określa, czy należy utworzyć nową sieć wirtualną i podsieć lub użyć istniejącej podsieci. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
     - **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**.
 
@@ -195,7 +195,7 @@ Więcej informacji na temat wymagane porty dla oprogramowania SAP HANA na ten te
 
 > [!IMPORTANT]
 > Nie należy włączać czasowe TCP na maszynach wirtualnych Azure umieszczonych za modułem równoważenia obciążenia platformy Azure. Włączenie protokołu TCP sygnatur czasowych spowoduje, że sondy kondycji nie powiedzie się. Ustaw parametr **net.ipv4.tcp_timestamps** do **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji modułu równoważenia obciążenia](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
-> Uwaga SAP [2382421](https://launchpad.support.sap.com/#/notes/2382421) obecnie zawiera sprzeczną instrukcji, można ustawić net.ipv4.tcp_timestamps 1 wniosku. Dla maszyn wirtualnych platformy Azure umieszczone za modułem równoważenia obciążenia platformy Azure, ustaw parametr **net.ipv4.tcp_timestamps** do **0**. 
+> Zobacz też SAP Uwaga [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Tworzenie klastra program Pacemaker
 
@@ -364,14 +364,14 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
    Jeśli używasz programu SAP HANA w wersji 2.0 lub MDC utworzyć bazę danych dzierżawy w systemie SAP NetWeaver. Zastąp **NW1** z identyfikatorem SID systemu SAP.
 
-   Zaloguj się jako \<hanasid > adm, a następnie wykonaj następujące polecenie:
+   Wykonaj następujące polecenie jako < hanasid\>adm:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]**  Konfigurowanie replikacji systemu na pierwszym węźle:
 
-   Zaloguj się jako \<hanasid > adm i wykonać ich kopię zapasową baz danych:
+   Tworzenie kopii zapasowych baz danych jako < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -391,7 +391,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[2]**  Konfigurowanie replikacji systemu na drugim węźle:
     
-   Zarejestruj drugi węzeł, który rozpoczyna się replikacja systemu. Zaloguj się jako \<hanasid > adm i uruchom następujące polecenie:
+   Zarejestruj drugi węzeł, który rozpoczyna się replikacja systemu. Uruchom następujące polecenie jako < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -407,7 +407,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[1]**  Tworzenie wymaganych użytkowników.
 
-   Zaloguj się jako użytkownik główny i uruchom następujące polecenie. Upewnij się zastąpić ciągi pogrubienia (identyfikator systemu HANA **HN1** i numer wystąpienia **03**) z wartościami instalację oprogramowania SAP HANA:
+   Uruchom następujące polecenie, jako katalog główny. Upewnij się zastąpić ciągi pogrubienia (identyfikator systemu HANA **HN1** i numer wystąpienia **03**) z wartościami instalację oprogramowania SAP HANA:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -417,7 +417,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[A]**  Tworzenie wpisu magazynu kluczy.
 
-   Zaloguj się jako użytkownik główny i uruchom następujące polecenie, aby utworzyć nowy wpis magazynu kluczy:
+   Jako użytkownik główny, aby utworzyć nowy wpis magazynu kluczy, uruchom następujące polecenie:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -425,7 +425,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[1]**  Utwórz kopię zapasową bazy danych.
 
-   Zaloguj się jako użytkownik główny i tworzą kopię zapasową bazy danych:
+   Tworzenie kopii zapasowej bazy danych jako użytkownik główny:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -438,7 +438,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[1]**  Konfigurowanie replikacji systemu na pierwszym węźle.
 
-   Zaloguj się jako \<hanasid > adm i Utwórz lokację główną:
+   Utwórz lokację główną jako < hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -446,7 +446,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[2]**  Konfigurowanie replikacji systemu, w węźle pomocniczym.
 
-   Zaloguj się jako \<hanasid > adm i zarejestrować lokację dodatkową:
+   Zarejestruj lokacji dodatkowej jako < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -709,7 +709,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-0:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -750,7 +750,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-1:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -791,7 +791,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-0:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -832,7 +832,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-1:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -975,7 +975,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-1:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1012,7 +1012,7 @@ UWAGA: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Uruchom następujące polecenia jako \<hanasid > adm w węźle hn1-db-1:
+   Uruchom następujące polecenia jako < hanasid\>adm w węźle hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
