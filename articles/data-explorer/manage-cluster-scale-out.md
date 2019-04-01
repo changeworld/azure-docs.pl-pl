@@ -2,18 +2,18 @@
 title: Skalowanie klastrze Eksplorator danych platformy Azure w celu uwzględnienia zmiennym obciążeniem
 description: W tym artykule opisano kroki, aby skalować w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych zależności od zmieniających się żądanie.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 8d369800bdc9817856eeb7039fe47e5b870735ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107376"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755067"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
 

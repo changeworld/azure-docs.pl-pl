@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bliźniaczą reprezentację modułu zabezpieczeń usługi ASC dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć ASC bliźniaczą reprezentację modułu IoT do użycia z usługą ASC dla IoT.
+title: Tworzenie bliźniaczą reprezentację modułu zabezpieczeń Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć wiedzy usługi Azure Security Center bliźniacza reprezentacja modułu IoT do użycia z usługą ASC dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd085333f0ddc8a9d49637a2d7156b34c6e5cc72
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 93b6aa6fe133953025cd504e0486a51c4a3d5e04
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579431"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758365"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Utwórz bliźniaczą reprezentację modułu azureiotsecurity
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ten przewodnik Szybki Start objaśnienia dotyczące sposobu tworzenia poszczególnych _azureiotsecurity_ bliźniaczych reprezentacjach modułów na nowych urządzeniach lub partii tworzenie bliźniaczych reprezentacjach modułów dla wszystkich urządzeń w usłudze IoT Hub.  
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki Start objaśnienia dotyczące sposobu tworzenia poszczegó
 
 Dla rozwiązań IoT, zbudowany na platformie Azure bliźniacze reprezentacje urządzeń odgrywają kluczową rolę zarówno w przypadku zarządzania urządzeniami, jak i automatyzację procesów. 
 
-ASC IoT oferuje pełną integrację ze swojej istniejącej IoT platforma do zarządzania urządzeniami, dzięki któremu można zarządzać stanu zabezpieczeń urządzenia oraz upewnij korzystać z istniejących możliwości kontroli urządzenia.
+Usługa Azure Security Center (ASC) dla IoT oferuje pełną integrację ze swojej istniejącej IoT platforma do zarządzania urządzeniami, dzięki któremu można zarządzać stanu zabezpieczeń urządzenia oraz upewnij korzystać z istniejących możliwości kontroli urządzenia.
 ASC integracji IoT jest osiągane dzięki wykorzystaniu usługi IoT Hub bliźniaczej reprezentacji mechanizm.  
 
 Zobacz [bliźniaczych reprezentacjach modułów usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) dowiedzieć się więcej o ogólnym założeniem bliźniaczych reprezentacjach modułów w usłudze Azure IoT Hub. 

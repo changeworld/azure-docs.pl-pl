@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi ASC rozwiązania IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować end-to-end rozwiązania IoT przy użyciu usługi ASC dla IoT.
+title: Konfigurowanie usługi Azure Security Center dla rozwiązania IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować end-to-end rozwiązania IoT przy użyciu usługi Azure Security Center dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2a24db1124ecd9c2437eafee54d856120a77e97f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0fc67f77e907bd0bc939bf95b34ed4daaab29a2d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576449"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756795"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Szybki start: Konfiguruj rozwiązanie IoT
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ten artykuł zawiera omówienie sposobu przeprowadzenia początkowej konfiguracji rozwiązania zabezpieczeń IoT za pomocą usługi ASC dla IoT. 
 
-## <a name="asc-for-iot"></a>ASC for IoT
+## <a name="azure-security-center-asc-for-iot"></a>Usługa Azure Security Center (ASC) dla IoT
 
 ASC IoT zapewnia kompleksowe zabezpieczenia end-to-end rozwiązania IoT opartych na platformie Azure.
 

@@ -1,21 +1,21 @@
 ---
-title: 'Szybki start: wizualizacja danych przy użyciu zapytania zaimportowanego do usługi Power BI'
+title: 'Szybki start: Wizualizuj dane przy użyciu zapytań, importowany do usługi Power BI'
 description: 'Z tego przewodnika Szybki start nauczysz się, jak używać jednej z trzech opcji wizualizacji danych w usłudze Power BI: importowania zapytania z usługi Azure Data Explorer.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 139b20a2390c7301bd83113c3e98be40846fab22
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: HT
+ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51858154"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756107"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Szybki start: wizualizacja danych przy użyciu zapytania zaimportowanego do usługi Power BI
+# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Szybki start: Wizualizuj dane przy użyciu zapytań, importowany do usługi Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
 
@@ -81,7 +81,7 @@ Najpierw utwórz zapytanie w aplikacji klasycznej Azure Data Explorer i wyekspor
 
 Jeśli nie potrzebujesz już raportu, który został utworzony na potrzeby tego przewodnika Szybki start, usuń plik programu Power BI Desktop (pbix).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: wizualizacja danych przy użyciu zaimportowanego zapytania w usłudze Power BI](power-bi-sql-query.md)
+> [Szybki start: Wizualizuj dane przy użyciu importowanych zapytania w usłudze Power BI](power-bi-sql-query.md)

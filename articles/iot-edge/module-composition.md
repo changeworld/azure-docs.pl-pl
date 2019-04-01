@@ -4,17 +4,17 @@ description: Dowiedz się, jak manifest wdrożenia oświadcza, które moduły do
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099974"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758081"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Dowiedz się, jak wdrażać moduły oraz określenia trasy w usługi IoT Edge
 
@@ -58,14 +58,14 @@ Manifesty wdrożenia, wykonaj tę strukturę:
                 // includes the routing information between modules, and to IoT Hub
             }
         },
-        "{module1}": {  // optional
+        "module1": {  // optional
             "properties.desired": {
-                // desired properties of {module1}
+                // desired properties of module1
             }
         },
-        "{module2}": {  // optional
+        "module2": {  // optional
             "properties.desired": {
-                // desired properties of {module2}
+                // desired properties of module2
             }
         },
         ...
@@ -75,9 +75,9 @@ Manifesty wdrożenia, wykonaj tę strukturę:
 
 ## <a name="configure-modules"></a>Konfiguruj moduły
 
-Zdefiniuj, jak środowisko uruchomieniowe usługi IoT Edge instaluje moduły w danym wdrożeniu. Agent usługi IoT Edge jest składnika środowiska uruchomieniowego, który zarządza instalacji, aktualizacje i raportowanie stanu dla urządzenia usługi IoT Edge. W związku z tym bliźniacza reprezentacja modułu $edgeAgent wymaga konfiguracji i informacji dotyczących zarządzania dla wszystkich modułów. Informacje te obejmują parametry konfiguracji dla sam agent usługi Edge. 
+Zdefiniuj, jak środowisko uruchomieniowe usługi IoT Edge instaluje moduły w danym wdrożeniu. Agent usługi IoT Edge jest składnika środowiska uruchomieniowego, który zarządza instalacji, aktualizacje i raportowanie stanu dla urządzenia usługi IoT Edge. W związku z tym bliźniacza reprezentacja modułu $edgeAgent wymaga konfiguracji i informacji dotyczących zarządzania dla wszystkich modułów. Informacje te obejmują parametry konfiguracji dla sam agent usługi IoT Edge. 
 
-Aby uzyskać pełną listę właściwości, które mogą lub muszą być włączone, zobacz [właściwości agenta usługi Edge i Centrum usługi Edge](module-edgeagent-edgehub.md).
+Aby uzyskać pełną listę właściwości, które mogą lub muszą być włączone, zobacz [właściwości agenta usługi IoT Edge i Centrum usługi IoT Edge](module-edgeagent-edgehub.md).
 
 Właściwości $edgeAgent wykonaj tę strukturę:
 
@@ -101,10 +101,10 @@ Właściwości $edgeAgent wykonaj tę strukturę:
             }
         },
         "modules": {
-            "{module1}": { // optional
+            "module1": { // optional
                 // configuration and management details
             },
-            "{module2}": { // optional
+            "module2": { // optional
                 // configuration and management details
             }
         }
@@ -122,8 +122,8 @@ Trasy są deklarowane w **$edgeHub** żądane właściwości przy użyciu nastę
 "$edgeHub": {
     "properties.desired": {
         "routes": {
-            "{route1}": "FROM <source> WHERE <condition> INTO <sink>",
-            "{route2}": "FROM <source> WHERE <condition> INTO <sink>"
+            "route1": "FROM <source> WHERE <condition> INTO <sink>",
+            "route2": "FROM <source> WHERE <condition> INTO <sink>"
         },
     }
 }
@@ -144,9 +144,9 @@ Właściwość źródło może być dowolny z następujących wartości:
 | `/twinChangeNotifications` | Każda zmiana bliźniaczych reprezentacji (zgłoszone właściwości aktualizuje) pochodzące z dowolnego urządzenia modułu lub typu liść |
 | `/messages/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez urządzenie modułu lub typu liść, niektórych lub dane wyjściowe |
 | `/messages/modules/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez moduł niektórych lub dane wyjściowe |
-| `/messages/modules/{moduleId}/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu niektórych lub dane wyjściowe |
-| `/messages/modules/{moduleId}/outputs/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu pewne dane wyjściowe |
-| `/messages/modules/{moduleId}/outputs/{output}` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu określonych danych wyjściowych |
+| `/messages/modules/<moduleId>/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu niektórych lub dane wyjściowe |
+| `/messages/modules/<moduleId>/outputs/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu pewne dane wyjściowe |
+| `/messages/modules/<moduleId>/outputs/<output>` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez określonego modułu przy użyciu określonych danych wyjściowych |
 
 ### <a name="condition"></a>Warunek
 Warunek jest opcjonalny w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty z ujścia w źródle, po prostu Opuść **gdzie** klauzuli całkowicie. Możesz też [język zapytań usługi IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) do filtrowania niektórych komunikatów lub typy komunikatów, które spełniają warunek. Trasy usługi IoT Edge nie obsługują komunikaty o filtrowaniu na podstawie tagów bliźniaczych reprezentacji lub właściwości. 
@@ -175,11 +175,11 @@ Właściwości obiektu sink może być dowolny z następujących wartości:
 | Ujście | Opis |
 | ---- | ----------- |
 | `$upstream` | Wysyła komunikat do Centrum IoT Hub |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Wysłać wiadomość do określonych danych wejściowych z określonego modułu |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Wysłać wiadomość do określonych danych wejściowych z określonego modułu |
 
-Usługa IoT Edge zapewnia gwarancji co najmniej jednokrotne. Centrum usługi Edge komunikaty są przechowywane lokalnie w przypadku, gdy trasa nie może dostarczyć komunikatu do jego ujściem. Na przykład jeśli Centrum usługi Edge nie można nawiązać połączenia usługi IoT Hub lub modułu docelowy nie jest połączony.
+Usługa IoT Edge zapewnia gwarancji co najmniej jednokrotne. Centrum usługi IoT Edge komunikaty są przechowywane lokalnie w przypadku, gdy trasa nie może dostarczyć komunikatu do jego ujściem. Na przykład jeśli Centrum usługi IoT Edge nie można nawiązać połączenia usługi IoT Hub lub modułu docelowy nie jest połączony.
 
-Centrum usługi Edge zapisuje komunikaty maksymalnie przez czas określony w `storeAndForwardConfiguration.timeToLiveSecs` właściwość [Centrum usługi Edge żądane właściwości](module-edgeagent-edgehub.md).
+Centrum usługi IoT Edge zapisuje komunikaty maksymalnie przez czas określony w `storeAndForwardConfiguration.timeToLiveSecs` właściwość [Centrum usługi IoT Edge żądane właściwości](module-edgeagent-edgehub.md).
 
 ## <a name="define-or-update-desired-properties"></a>Zdefiniuj lub aktualizowanie żądanych właściwości 
 
@@ -207,7 +207,7 @@ Poniższy przykład pokazuje, jak może wyglądać dokumentu manifestu prawidło
             "registryCredentials": {
               "ContosoRegistry": {
                 "username": "myacr",
-                "password": "{password}",
+                "password": "<password>",
                 "address": "myacr.azurecr.io"
               }
             }
@@ -273,6 +273,6 @@ Poniższy przykład pokazuje, jak może wyglądać dokumentu manifestu prawidło
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać pełną listę właściwości, które mogą lub muszą być zawarte w $edgeAgent i $edgeHub, zobacz [właściwości agenta usługi Edge i Centrum usługi Edge](module-edgeagent-edgehub.md).
+* Aby uzyskać pełną listę właściwości, które mogą lub muszą być zawarte w $edgeAgent i $edgeHub, zobacz [właściwości agenta usługi IoT Edge i Centrum usługi IoT Edge](module-edgeagent-edgehub.md).
 
 * Teraz, gdy wiesz, jak są używane moduły usługi IoT Edge, [zrozumieć wymagania i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md).
