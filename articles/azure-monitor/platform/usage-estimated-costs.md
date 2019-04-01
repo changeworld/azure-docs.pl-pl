@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480550"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754248"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
 
 > [!NOTE]
 > W tym artykule opisano sposób wyświetlania użycie i szacunkowe koszty między wiele funkcji monitorowania platformy Azure dla różnych modeli cen.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
-> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](../../azure-monitor/platform/manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
+> - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
 > - [Analizowanie użycia danych w usłudze Log Analytics](../../azure-monitor/platform/data-usage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
 > - [Zarządzanie cenami i ilością danych w usłudze Application Insights](../../azure-monitor/app/pricing.md) opisano, jak i analizowanie użycia danych w usłudze Application Insights.
 
@@ -184,7 +184,7 @@ Jeśli następnie ponownie uruchom poprzedni skrypt, który ma ``-Action listmig
 Jeśli masz wiele subskrypcji, które chcesz zmigrować, które są obsługiwane w ramach tej samej dzierżawy można utworzyć własne wariant przy użyciu fragmentów następujące skrypty:
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
@@ -204,7 +204,7 @@ Invoke-AzResourceAction `
 }
 ```
 
-Skrypt może być dostosowany dalsze poprzez utworzenie skryptu, który generuje trzech tablic. Jedna tablica będzie obejmować wszystkich subskrypcji identyfikatory mających ```isGrandFatherableSubscription``` ustawiona na wartość True, a optedInDate nie ma obecnie wartość. Druga tablica żadnych subskrypcji, obecnie w nowym modelu cen. I trzeci tablicy, wypełniony ich identyfikatorów subskrypcji w Twojej dzierżawie, które nie są uprawnione do nowego modelu cen:
+Skrypt może być dostosowany dalsze poprzez utworzenie skryptu, który generuje trzech tablic. Jedna tablica będzie obejmować subskrypcja wszystkie identyfikatory, które mają ```isGrandFatherableSubscription``` ustawiona na wartość True, a optedInDate nie ma obecnie wartość. Druga tablica żadnych subskrypcji, obecnie w nowym modelu cen. I trzeci tablicy, wypełnione tylko identyfikatory subskrypcji w ramach dzierżawy, nie są uprawnione do nowego modelu cen:
 
 ```powershell
 [System.Collections.ArrayList]$Eligible= @{}
