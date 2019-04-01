@@ -128,29 +128,64 @@ items:
       href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
     - name: Zdalne monitorowanie — często zadawane pytania
       href: iot-accelerators-faq-rm-v2.md
-- name: Połączona fabryka
+- name: Przemysłowy Internet rzeczy
   items:
   - name: Omówienie
-    href: iot-accelerators-connected-factory-features.md
     items:
-    - name: Architektura
-      href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Co to jest przemysłowy Internet rzeczy
+      href: overview-iot-industrial.md
+    - name: Bliźniacza reprezentacja OPC
+      items:
+      - name: Co to jest bliźniacza reprezentacja OPC
+        href: overview-opc-twin.md
+      - name: Architektura bliźniaczej reprezentacji OPC
+        href: overview-opc-twin-architecture.md
+    - name: Magazyn OPC
+      items:
+      - name: Co to jest magazyn OPC
+        href: overview-opc-vault.md
+    - name: Połączona fabryka
+      items:
+      - name: Omówienie połączonej fabryki
+        href: iot-accelerators-connected-factory-features.md
+      - name: Architektura połączonej fabryki
+        href: iot-accelerators-connected-factory-sample-walkthrough.md
   - name: Przewodniki Szybki start
     items:
     - name: Testowanie rozwiązania połączonej fabryki
       href: quickstart-connected-factory-deploy.md
   - name: Przewodniki z instrukcjami
     items:
-    - name: Korzystanie z pulpitu nawigacyjnego
-      href: iot-accelerators-connected-factory-dashboard.md
-    - name: Wdrażanie bramy
-      href: iot-accelerators-connected-factory-gateway-deployment.md
-    - name: Korzystanie z wydawcy OPC
-      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-    - name: Konfigurowanie akceleratora rozwiązań
-      href: iot-accelerators-connected-factory-configure.md
-    - name: Dostosowywanie akceleratora rozwiązań
-      href: iot-accelerators-connected-factory-customize.md
+    - name: Połączona fabryka
+      items:
+      - name: Korzystanie z pulpitu nawigacyjnego
+        href: iot-accelerators-connected-factory-dashboard.md
+      - name: Wdrażanie bramy
+        href: iot-accelerators-connected-factory-gateway-deployment.md
+      - name: Korzystanie z wydawcy OPC
+        href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
+      - name: Konfigurowanie akceleratora rozwiązań
+        href: iot-accelerators-connected-factory-configure.md
+      - name: Dostosowywanie akceleratora rozwiązań
+        href: iot-accelerators-connected-factory-customize.md
+    - name: Bliźniacza reprezentacja OPC
+      items:
+      - name: Wdrażanie usług bliźniaczej reprezentacji OPC
+        href: howto-opc-twin-deploy-existing.md
+      - name: Wdrażanie modułu bliźniaczej reprezentacji OPC w usłudze IoT Edge
+        href: howto-opc-twin-deploy-modules.md
+      - name: Wdrażanie samych zależności bliźniaczej reprezentacji OPC
+        href: howto-opc-twin-deploy-dependencies.md
+    - name: Magazyn OPC
+      items:
+      - name: Wdrażanie magazynu OPC w istniejącym projekcie
+        items:
+        - name: Bezpieczna komunikacja klienta OPC i sterownika OPC PLC
+          href: howto-opc-vault-deploy-existing-client-plc-communication.md
+        - name: Bezpieczna aplikacja klienta OPC UA i serwera OPC UA
+          href: howto-opc-vault-deploy-existing-client-server-communication.md
+      - name: Wdrażanie magazynu OPC od podstaw
+        href: howto-opc-vault-deploy-scratch.md
   - name: Zasoby
     items:
     - name: Repozytorium GitHub
@@ -257,9 +292,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Zdalne monitorowanie w wersji 1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 5b2067facd27e94735aba63bb1c54c15e1511c64
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 02c728f7acef1bcc1436d87dd0c0d9509db8ec97
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342041"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757201"

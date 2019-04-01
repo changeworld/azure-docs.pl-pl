@@ -28,7 +28,7 @@ items:
     href: ecommerce-retail-catalog-moderation.md
   - name: Moderowanie zawartości serwisu Facebook
     href: facebook-post-moderation.md
-  - name: Moderowanie filmów wideo i transkrypcji
+  - name: moderowanie wideo i transkrypcji
     href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Pojęcia
   items:
@@ -38,80 +38,60 @@ items:
     href: text-moderation-api.md
   - name: Moderowanie filmów wideo
     href: video-moderation-human-review.md
-  - name: Zadania i przeglądy
+  - name: Narzędzie do przeglądu
+    href: Review-Tool-User-Guide/human-in-the-loop.md
+  - name: Przeglądy, przepływy pracy i zadania
     href: review-api.md
-  - name: Przepływy
-    href: workflow-api.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Korzystanie z usług moderowania
+  - name: Moderowanie zawartości
     items:
-    - name: Interfejsy API moderowania
+    - name: Interfejs API REST
       items:
-      - name: Korzystanie z zestawu .NET SDK
-        items:
-        - name: Sprawdzanie zawartości wideo
-          href: video-moderation-api.md
-        - name: Sprawdzanie obrazów względem list niestandardowych
-          href: image-lists-quickstart-dotnet.md
-        - name: Sprawdzanie tekstu względem terminów niestandardowych
-          href: term-lists-quickstart-dotnet.md
-      - name: Korzystanie z interfejsów API REST
-        items:
-        - name: Obrazy — konsola interfejsu API
-          href: try-image-api.md
-        - name: Obrazy niestandardowe — konsola interfejsu API
-          href: try-image-list-api.md
-        - name: Tekst — konsola interfejsu API
-          href: try-text-api.md
-        - name: Warunki niestandardowe — konsola interfejsu API
-          href: try-terms-list-api.md
-  - name: Korzystanie z narzędzia do przeglądu
+      - name: Obrazy — konsola interfejsu API
+        href: try-image-api.md
+      - name: Obrazy niestandardowe — konsola interfejsu API
+        href: try-image-list-api.md
+      - name: Tekst — konsola interfejsu API
+        href: try-text-api.md
+      - name: Warunki niestandardowe — konsola interfejsu API
+        href: try-terms-list-api.md
+    - name: Zestaw SDK .NET
+      items:
+      - name: Sprawdzanie zawartości wideo
+        href: video-moderation-api.md
+      - name: Sprawdzanie obrazów względem list niestandardowych
+        href: image-lists-quickstart-dotnet.md
+      - name: Sprawdzanie tekstu względem terminów niestandardowych
+        href: term-lists-quickstart-dotnet.md
+  - name: Definiowanie i używanie przeglądów
     items:
-    - name: Przegląd interfejsów API
-      items:
-      - name: Korzystanie z zestawu .NET SDK
-        items:
-        - name: Zadania — .NET
-          href: moderation-jobs-quickstart-dotnet.md
-        - name: Przeglądy — .NET
-          href: moderation-reviews-quickstart-dotnet.md
-        - name: Przeglądy wideo — .NET
-          href: video-reviews-quickstart-dotnet.md
-        - name: Przeglądy transkrypcji wideo — .NET
-          href: video-transcript-reviews-quickstart-dotnet.md
-      - name: Korzystanie z interfejsów API REST
-        items:
-        - name: Zadania — konsola interfejsu API
-          href: try-review-api-job.md
-        - name: Przeglądy — konsola interfejsu API
-          href: try-review-api-review.md
-        - name: Przepływy pracy — konsola interfejsu API
-          href: try-review-api-workflow.md
-    - name: Omówienie narzędzia przeglądu
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: Ustawienia narzędzia przeglądu
-      href: Review-Tool-User-Guide/Configure.md
-    - name: Zarządzanie zespołem
-      href: Review-Tool-User-Guide/SubTeams.md
-    - name: Korzystanie z tagów
-      href: Review-Tool-User-Guide/Tags.md
-    - name: Przegląd obrazów
+    - name: Narzędzie do przeglądu (przeglądarka)
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: Przegląd tekstu
-      href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: Zarządzanie poświadczeniami
-      href: Review-Tool-User-Guide/Credentials.md
-    - name: Używanie łączników
-      href: Review-Tool-User-Guide/Connectors.md
-    - name: Używanie przepływów pracy
+    - name: Interfejs API REST
+      href: try-review-api-review.md
+    - name: Zestaw SDK .NET
+      href: moderation-reviews-quickstart-dotnet.md
+    - name: Przeglądy wideo (.NET)
+      href: video-reviews-quickstart-dotnet.md
+    - name: Przeglądy transkrypcji wideo (.NET)
+      href: video-transcript-reviews-quickstart-dotnet.md
+  - name: Definiowanie i używanie przepływów pracy
+    items:
+    - name: Narzędzie do przeglądu (przeglądarka)
       href: Review-Tool-User-Guide/Workflows.md
-    - name: Wyświetlanie pulpitu nawigacyjnego
-      href: Review-Tool-User-Guide/View-Dashboard.md
+    - name: Interfejs API REST
+      href: try-review-api-workflow.md
+  - name: Definiowanie i używanie zadań
+    items:
+    - name: Interfejs API REST
+      href: try-review-api-job.md
+    - name: Zestaw SDK .NET
+      href: moderation-jobs-quickstart-dotnet.md
+  - name: Konfigurowanie narzędzia do przeglądu
+    href: Review-Tool-User-Guide/Configure.md
   - name: Eksportowanie i usuwanie danych konta
     href: ./export-delete-data.md
-  - name: Seria seminariów internetowych na temat platformy Azure
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: Dokumentacja
   items:
   - name: Interfejs API pakietu Content Moderator
@@ -142,6 +122,8 @@ items:
       href: samples-rest.md
     - name: Inne przykłady dla platformy Azure
       href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
+  - name: Seria seminariów internetowych na temat platformy Azure
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
   - name: Często zadawane pytania
     href: FAQs.md
   - name: Ceny i limity
@@ -158,9 +140,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: cee9e6c585dfa65ccee5c0f4631b5efc81dde760
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8948caa31d1fa464f13295a4dd4c1174b88543f5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900713"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758152"

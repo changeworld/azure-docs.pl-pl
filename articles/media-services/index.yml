@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: abfcece2d71e456a39284ddb4cfa106bce31fb53
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519718"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670221"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services
 metadata:
@@ -30,22 +30,27 @@ sections:
     columns: 2
     items:
     - href: /azure/media-services/latest/
-      html: <p>Dowiedz się, jak kodować, przeprowadzać przesyłanie strumieniowe na żądanie, prowadzić emisje na żywo i analizować wideo za pomocą usługi Media Services v3.</p>
+      html: <p>Koduj, twórz pakiety, chroń swoją zawartość, przesyłaj strumieniowo wideo na żądanie, prowadź emisję na żywo i analizuj zawartość za pomocą usługi Media Services w wersji 3.</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure Media Services w wersji 3
     - href: /azure/media-services/video-indexer/
-      html: <p>Dowiedz się, jak wyodrębniać szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
+      html: <p>Wyodrębniaj szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
       image:
         src: media/index/AMSIcons-media_analytics.svg
       title: Indeksator wideo
     - href: /azure/media-services/previous/
-      html: <p>Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. Zapoznaj się z najnowszą wersją usługi Media Services v3.</p>
+      html: <p>Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. </p>
       image:
-        src: media/index/AMSIcons-media_servicesV2.svg
+        src: 
       title: Azure Media Services w wersji 2 (starsza wersja)
     - href: /azure/cdn/
-      html: <p>Dowiedz się, jak usługa CDN pozwala zapisywać obiekty statyczne w pamięci podręcznej i przyspieszyć zawartość dynamiczną, której nie można zapisać w pamięci podręcznej.</p>
+      html: <p>Za pomocą usługi CDN zapisuj obiekty statyczne w pamięci podręcznej i przyspieszaj zawartość dynamiczną, której nie można zapisać w pamięci podręcznej.</p>
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: CDN
+    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
+      html: <p>Odtwarzaj multimedia z usługi Microsoft Azure Media Services w wielu różnych przeglądarkach i na różnych urządzeniach.</p>
+      image:
+        src: 
+      title: Azure Media Player

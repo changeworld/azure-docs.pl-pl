@@ -32,6 +32,9 @@ items:
     href: apache-kafka-producer-consumer-api.md
   - name: 4 — Tworzenie aplikacji przy użyciu interfejsu API strumieni platformy Apache Kafka
     href: apache-kafka-streams-api.md
+  - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
+    href: ../hdinsight-cluster-availability.md
+    maintainContext: true
 - name: Pojęcia
   items:
   - name: Planowanie pojemności
@@ -268,9 +271,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 48769b08c69bb5ee397ac61ffba09e3b8a324ca1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442709"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668147"
