@@ -2,18 +2,18 @@
 title: Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 description: Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 services: container-service
-author: sozercan
+author: zr-msft
 manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
-ms.author: seozerca
-ms.openlocfilehash: 9c35dff9b9587334e7001f3653ea7e2e8a4919eb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.author: zarhoads
+ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191619"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758285"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 

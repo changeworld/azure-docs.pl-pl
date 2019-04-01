@@ -1,5 +1,5 @@
 ---
-title: Przegląd obrazów oznakowane - Content Moderator
+title: Użyj zawartości przeglądy przez narzędzie do przeglądu - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak narzędzie do przeglądu umożliwia moderatorzy ludzi zapoznać się z obrazów w portalu sieci web.
 services: cognitive-services
@@ -8,39 +8,52 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: e096e65e3016f33361f772a75ab8f71603970a5f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096609"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758484"
 ---
-# <a name="let-human-reviewers-review-images"></a>Umożliwianie ludzi recenzentom Przegląd obrazów
+# <a name="create-human-reviews"></a>Utwórz ludziom dokonywanie
 
-Po utworzył konto na potrzeby moderowania zawartości i uzyskać klucz subskrypcji, możesz wypróbować funkcje przeglądu obrazu.
+W tym przewodniku dowiesz się, jak skonfigurować [przeglądy](../review-api.md#reviews) witrynie sieci Web narzędzie do przeglądu. Przeglądy przechowywania i wyświetlania zawartości dla moderatorów ludzi do oceny. Moderatorzy mogą zmienić zastosować znaczniki i Zastosuj własne niestandardowe tagi, zgodnie z potrzebami. Po ukończeniu weryfikacji użytkownika wyniki są wysyłane do punktu końcowego określonego wywołania zwrotnego, a zawartość zostanie usunięta z lokacji.
 
-1. Otwórz [narzędzie do przeglądu przez ludzi](https://contentmoderator.cognitive.microsoft.com/) i zaloguj się. 
-2. Kliknij kartę spróbuj i przekaż niektóre obrazy, aby przejrzeć.
-3. Na karcie Przegląd, a następnie wybierz obraz.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-   ![Przeglądarka Chrome przedstawiający narzędzie do przeglądu z podświetloną opcją Przejrzyj obrazu](images/review-images-1.png)
+- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
 
-   Wyświetlanie obrazów za pomocą wszystkich etykiet, które zostały przypisane przez narzędzie do przeglądu. Podczas przeglądania ich obrazy nie są dostępne dla innych osób dokonujących przeglądu zespołu.
+## <a name="image-reviews"></a>Przeglądy obrazów
 
-4. Przesuń suwak "Przeglądów do wyświetlenia" (1), aby dostosować liczbę obrazów wyświetlanych na ekranie. Polecenie oznakowane lub nieoznakowany przyciski (2) w związku z tym Sortowanie obrazów. Kliknij tag (3), aby ją wyłączyć, lub wyłączyć.
+1. Przejdź do [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/), wybierz opcję **spróbuj** , a następnie przekaż niektóre obrazy, aby przejrzeć.
+1. Przekazane obrazy zostały wykonane przetwarzanie, przejdź do **przeglądu** kartę, a następnie wybierz pozycję **obraz**.
 
-   ![Przeglądarka Chrome przedstawiający narzędzie do przeglądu przy użyciu oznakowane obrazów do przeglądu](images/review-images-2.png)
- 
-5. Aby wyświetlić więcej informacji o pliku obrazu, kliknij wielokropek miniaturę, a następnie **wyświetlić szczegóły** opcji. Aby przypisać obraz ustalenie, wybierz **przenieść** opcji.
- 
-   ![Obraz z podświetloną opcją szczegółów widoku](images/review-images-3.png)
+    ![Przeglądarka Chrome przedstawiający narzędzie do przeglądu z podświetloną opcją Przejrzyj obrazu](images/review-images-1.png)
 
-6. Przeglądaj informacje Moderowanie obrazów, na stronie szczegółów.
+    Wyświetl obrazy wszystkich etykiet, które zostały przypisane przez proces moderowania automatyczne. Obrazy, które zostały przesłane przez narzędzie do przeglądu nie są widoczne dla innych recenzentów.
 
-   ![Obraz ze szczegółami Moderowanie wymienione w oddzielne okienko](images/review-images-4.png)
- 
-7. Po przejrzeniu i aktualizowane przypisania tagu w razie potrzeby kliknij **dalej** przesłać swoje recenzje.
+1. Opcjonalnie można przenieść **recenzji do wyświetlenia** suwak (1), aby dostosować liczbę obrazów, które są wyświetlane na ekranie. Kliknij pozycję **otagowanych** lub **nieoznakowany** przycisków (2), aby odpowiednio sortować obrazów. Kliknij panel tag (3) lub wyłącz ją wyłączyć.
 
-Po przesłaniu, około pięciu sekundach być konieczne kliknięcie pozycji **poprzedni** przycisk, aby powrócić do poprzedniego ekranu i ponownie Przejrzyj obrazy. Po tym obrazy nie są już w kolejce przesyłania i **poprzedni** przycisk nie jest już dostępna.
+    ![Przeglądarka Chrome przedstawiający narzędzie do przeglądu przy użyciu oznakowane obrazów do przeglądu](images/review-images-2.png)
+
+1. Aby uzyskać więcej informacji na obrazie, kliknij wielokropek w miniatury, a następnie wybierz pozycję **wyświetlić szczegóły**. Obraz można przypisać do ustalenie z **przenieść do** opcji (zobacz [zespołów](./configure.md#manage-team-and-subteams) sekcji, aby dowiedzieć się więcej o zespoły podrzędne).
+
+    ![Obraz z podświetloną opcją szczegółów widoku](images/review-images-3.png)
+
+1. Przeglądaj informacje Moderowanie obrazów, na stronie szczegółów.
+
+    ![Obraz ze szczegółami Moderowanie wymienione w oddzielne okienko](images/review-images-4.png)
+
+1. Po przejrzeniu i aktualizowane przypisania tagu w razie potrzeby kliknij **dalej** przesłać swoje recenzje. Po przesłaniu, około pięciu sekundach być konieczne kliknięcie pozycji **poprzedni** przycisk, aby powrócić do poprzedniego ekranu i ponownie Przejrzyj obrazy. Po tym obrazy nie są już w kolejce przesyłania i **poprzedni** przycisk nie jest już dostępna.
+
+## <a name="text-reviews"></a>Przeglądy tekstu
+
+Tekst przegląda działają podobnie jak recenzje obrazu. Zamiast przekazywania zawartości, możesz po prostu zapisać lub wklej tekst (maksymalnie 1024 znaki). Następnie pakietu Content Moderator analizuje tekst i ma zastosowanie znaczników (oprócz innych informacji Moderowanie, takich jak wulgaryzmów i danych osobowych). W przeglądy tekstu użytkownik może przełączać zastosować znaczniki i/lub zastosować znaczniki niestandardowe przed przesłaniem przeglądu.
+
+![Zrzut ekranu przedstawiający narzędzie do przeglądu oflagowane tekstu w oknie przeglądarki Chrome](../images/reviewresults_text.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+W tym przewodniku przedstawiono sposób konfigurowania i używania weryfikacje od pakietu Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com). Następnie możesz zapoznać się [Podręcznik interfejsu API REST](../try-review-api-review.md) lub [przewodnika zestawu SDK .NET](../moderation-reviews-quickstart-dotnet.md) dowiesz się, jak programowo utworzyć recenzji.

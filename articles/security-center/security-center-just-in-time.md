@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199838"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758300"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -162,9 +162,13 @@ W witrynie Azure portal podczas próby nawiązania połączenia z maszyną wirtu
 
   ![wiersz JIT](./media/security-center-just-in-time/jit-prompt.png)
 
-- Jeśli masz zasady JIT skonfigurowane na maszynie Wirtualnej, możesz kliknąć **żądania dostępu** umożliwiają dostęp zgodnie z zasadami JIT, ustaw dla maszyny Wirtualnej.
+- Jeśli masz zasady JIT skonfigurowane na maszynie Wirtualnej, możesz kliknąć **żądania dostępu** umożliwiają dostęp zgodnie z zasadami JIT, ustaw dla maszyny Wirtualnej. Żądania dostępu za pomocą następujących parametrów domyślnych:
+    - **źródłowy adres IP**: "Any" (*) (nie można zmienić)
+    - **zakres czasu**: 3 godziny (nie można zmienić)
+    - **numer portu** RDP port 3389 dla Windows / port 22 dla systemu Linux (można zmienić numer portu w **Połącz z maszyną wirtualną** okno dialogowe.)
 
-  ![Poproś o dostęp JIT](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![Poproś o dostęp JIT](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>Inspekcja aktywności dostęp JIT
 

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie usługi ASC dla modułu usługi IoT Edge | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tym, jak wdrożyć ASC agenta zabezpieczeń IoT w usłudze IoT Edge.
+title: Wdrażanie usługi Azure Security Center dla modułu usługi IoT Edge | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o tym, jak wdrożyć usługę Azure Security Center dla agenta zabezpieczeń IoT w usłudze IoT Edge.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 87094b265a0c30c0349d64e4b956224525c04f74
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 2a201fe649d52ad9604c7ac6675b26d60e7f2dd1
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580496"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754765"
 ---
 # <a name="deploy-security-module-on-your-iot-edge-device"></a>Wdrażanie zabezpieczeń modułu na urządzeniu usługi IoT Edge
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC IoT **azureiotsecurity** moduł dostarcza rozwiązanie kompleksowych funkcji zabezpieczeń urządzenia usługi IoT Edge.
+Usługa Azure Security Center (ASC) dla IoT **azureiotsecurity** moduł dostarcza rozwiązanie kompleksowych funkcji zabezpieczeń urządzenia usługi IoT Edge.
 Moduł zabezpieczeń służy do zbierania, agreguje i analizuje dane dotyczące zabezpieczeń pierwotnych z systemem operacyjnym i kontenera do zaleceń dotyczących zabezpieczeń z możliwością działania i alerty.
 Aby dowiedzieć się więcej, zobacz [modułu zabezpieczeń dla usługi IoT Edge](security-edge-architecture.md).
 

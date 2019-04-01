@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cecfd0fafd17e9c463e0c0a74f1e30290a53d82f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813895"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758200"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie narzędzia Postman dla wywołań interfejsu API REST usługi Media Services
 
@@ -89,6 +89,13 @@ Przed rozpoczęciem manipulowanie AMS v3 zasobów należy do pobierania i ustawi
 
     ![Pobieranie tokenu usługi AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="see-also"></a>Zobacz także
+
+- [Przekazywanie plików na konto usługi Media Services — REST](upload-files-rest-how-to.md)
+- [Tworzenie filtrów za pomocą usługi Media Services — REST](filters-dynamic-manifest-rest-howto.md)
+- [Interfejs API REST bazujący na usłudze Azure Resource Manager](https://github.com/Azure-Samples/media-services-v3-arm-templates)
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Stream plików z użyciem usług REST](stream-files-tutorial-with-rest.md).  
+- [Stream plików z użyciem usług REST](stream-files-tutorial-with-rest.md).  
+- [Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)

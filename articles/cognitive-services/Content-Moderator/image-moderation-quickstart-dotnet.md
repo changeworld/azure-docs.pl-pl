@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 03/20/2019
 ms.author: sajagtap
-ms.openlocfilehash: bd281191deb1a82d4b1b5247a011d9867f0c9bc4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879296"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757227"
 ---
-# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości obrazu pod kątem niepożądanego materiału przy użyciu języka C#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki start: Analizuj obrazy niepożądanej zawartości wC#
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wyszukiwać zawartość dla dorosłych lub erotyczną, tekst możliwy do wyodrębnienia i ludzkie twarze w celu moderowania potencjalnie niepożądanego materiału.
 
@@ -276,7 +276,7 @@ Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe o
 }]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację platformy .NET, która zwraca odpowiednie informacje o danym obrazie przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
 

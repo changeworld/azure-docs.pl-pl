@@ -3,17 +3,17 @@ title: 'Szybki start: Pozyskiwanie danych przy użyciu biblioteki środowiska No
 description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer za pomocą środowiska Node.js.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 46abd71d4621bad7ee47f6579b1675b75819b16d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979925"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756445"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Szybki start: Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer
 
@@ -165,7 +165,7 @@ Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start 
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań](write-queries.md)

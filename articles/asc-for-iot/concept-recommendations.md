@@ -1,6 +1,6 @@
 ---
-title: Zrozumieć ASC, aby uzyskać zalecenia dotyczące zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat koncepcji zalecenia dotyczące zabezpieczeń i jak są one używane w ASC dla IoT.
+title: Omówienie usługi Azure Security Center dla zalecenia dotyczące zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat koncepcji zalecenia dotyczące zabezpieczeń i jak są one używane w Centrum zabezpieczeń Azure dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 9204bf864ca915baaf6d107ef3586bcd02ed9fef
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576205"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754818"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC IoT skanuje swoje zasoby platformy Azure i urządzeń IoT i udostępnia zalecenia dotyczące zabezpieczeń, aby zmniejszyć obszar ataków. Zalecenia dotyczące zabezpieczeń są wiarygodne i mają na celu pomóc klientom w dostosowaniu się do najlepszych rozwiązań dotyczących zabezpieczeń.
+Usługa Azure Security Center (ASC) dla IoT skanuje swoje zasoby platformy Azure i urządzeń IoT i zapewnia zalecenia dotyczące zabezpieczeń, aby zmniejszyć obszar ataków. Zalecenia dotyczące zabezpieczeń są wiarygodne i mają na celu pomóc klientom w dostosowaniu się do najlepszych rozwiązań dotyczących zabezpieczeń.
 
 W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na usługi IoT Hub i/lub urządzeń IoT.
 

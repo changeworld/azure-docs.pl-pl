@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/11/2018
+ms.date: 03/29/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 37fad0769753f462859809ff8600f5b15c7eaa1f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 13fce896c4d83f628bdb7e12e696e32e343fb689
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437513"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754934"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET
 
@@ -61,21 +61,21 @@ Usługa Application Insights zbiera dane telemetryczne aplikacji niezależnie od
 
 Możesz teraz otworzyć usługę Application Insights w witrynie Azure Portal i wyświetlić różne szczegółowe informacje o uruchomionej aplikacji.
 
-1. Kliknij prawym przyciskiem myszy folder **Connected Services Application Insights** w Eksploratorze rozwiązań i kliknij polecenie **Otwórz portal usługi Application Insights**.  Pojawią się wybrane informacje o aplikacji i różne opcje.
+1. Rozwiń **podłączone usługi** folder (ikona chmury i plug-in) w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **usługi Application Insights** folder i kliknij przycisk **Otwórz Portal usługi Application Insights** .  Pojawią się wybrane informacje o aplikacji i różne opcje.
 
-    ![Mapa aplikacji](media/quick-monitor-portal/overview-001.png)
+    ![Mapa aplikacji](media/quick-monitor-portal/4overview.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji.  Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-    ![Mapa aplikacji](media/quick-monitor-portal/application-map-001.png)
+    ![Mapa aplikacji](media/quick-monitor-portal/5appmap.png)
 
-3. Kliknij ikonę usługi **App Analytics** ![Mapa aplikacji](media/quick-monitor-portal/app-analytics-icon.png) na jednym ze składników aplikacji.  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights.  W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu.  Możesz pisać własne zapytania do analizy innych danych.
+3. Kliknij pozycję **analizy aplikacji** ikonę ![mapy aplikacji](media/quick-monitor-portal/app-analytics-icon.png) **Wyświetl w obszarze analiza** na jeden ze składników aplikacji. Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights.  W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
-    ![Analiza](media/quick-monitor-portal/analytics.png)
+    ![Analiza](media/quick-monitor-portal/6viewanalytics.png)
 
-4. Wróć do strony **Omówienie** i kliknij pozycję **Transmisja strumieniowa na żywo**.  Spowoduje to wyświetlenie danych statystycznych dotyczących uruchomionej aplikacji.  Dane te obejmują informacje dotyczące liczby żądań przychodzących, czasu trwania tych żądań i błędów.  Można też sprawdzić krytyczne metryki wydajności, takie jak wydajność procesora i pamięci.
+4. Kliknij pozycję **Live Stream metryki** po lewej stronie w obszarze badania. Spowoduje to wyświetlenie danych statystycznych dotyczących uruchomionej aplikacji. Dane te obejmują informacje dotyczące liczby żądań przychodzących, czasu trwania tych żądań i błędów. Można też sprawdzić krytyczne metryki wydajności, takie jak wydajność procesora i pamięci.
 
-    ![Transmisja strumieniowa na żywo](media/quick-monitor-portal/live-stream.png)
+    ![Transmisja strumieniowa na żywo](media/quick-monitor-portal/7livemetrics.png)
 
     Jeśli wszystko jest gotowe do hostowania aplikacji na platformie Azure, można opublikować aplikację. Wykonaj instrukcje opisane w artykule [Create an ASP.NET Web App Quickstart (Przewodnik Szybki Start dotyczący tworzenia aplikacji internetowej ASP.NET)](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy).
 
@@ -107,7 +107,7 @@ Aby dowiedzieć się więcej, odwiedź repozytorium GitHub [naszego zestawu SDK 
 * Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights za pomocą aplikacji platformy .NET od podstaw](https://www.youtube.com/watch?v=blnGAVgMAfA).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przewodniku Szybki start omówiono włączanie monitorowania aplikacji przez usługę Azure Application Insights.  Przejdź do kolejnych samouczków, aby dowiedzieć się, jak użyć tej usługi do monitorowania statystyk i wykrywania problemów w aplikacji.
+W tym przewodniku Szybki Start zostało włączone, aplikacja do monitorowania usługi Azure Application Insights.  Przejdź do kolejnych samouczków, aby dowiedzieć się, jak użyć tej usługi do monitorowania statystyk i wykrywania problemów w aplikacji.
 
 > [!div class="nextstepaction"]
 > [Samouczki dotyczące usługi Azure Application Insights](tutorial-runtime-exceptions.md)

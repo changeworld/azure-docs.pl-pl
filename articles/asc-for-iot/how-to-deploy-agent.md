@@ -1,6 +1,6 @@
 ---
-title: Wybierz i wdrażanie usługi ASC agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wybrać około i ciągłe wdrażanie usługi ASC agentów zabezpieczeń IoT na urządzeniach IoT.
+title: Wybierz i wdrożyć usługę Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wybrać około i ciągłe wdrażanie usługi Azure Security Center agentów zabezpieczeń IoT na urządzeniach IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 208f7cdbc9d610713d73c5af1e02de5faf11474c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3a7c3b1b08ab4f0fecd854b969ac18bf9a73ccf
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580796"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755293"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybierz i wdrożyć agenta zabezpieczeń na urządzeniu IoT
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC IoT udostępnia architektur referencyjnych dla agentów zabezpieczeń, które monitorują i zbierają dane z urządzeń IoT.
+Usługa Azure Security Center (ASC) dla IoT udostępnia architektur referencyjnych dla agentów zabezpieczeń, które monitorują i zbierają dane z urządzeń IoT.
 Zobacz [architektury referencyjnej agenta zabezpieczeń](security-agent-architecture.md) Aby dowiedzieć się więcej.
 
 Agenci są tworzone jako projektów typu open source i są dostępne w dwóch wersjach w odpowiedzi: <br> [C](https://aka.ms/iot-security-github-c), i [ C# ](https://aka.ms/iot-security-github-cs).

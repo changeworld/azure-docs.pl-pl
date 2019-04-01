@@ -2,18 +2,18 @@
 title: Użyj procesorach GPU znajdujących się w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak używać procesorów GPU na potrzeby obliczenia o wysokiej wydajności lub obciążeń intensywnie korzystających z grafiki na platformie Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 64cd6276c00126a745e77f3d32679c54ebc2f190
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: zarhoads
+ms.openlocfilehash: 150eaa6a4df558ed0c737d99cbcc8010baf63e96
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771127"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758231"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Użycie procesorów GPU w przypadku obciążeń intensywnie korzystających z obliczeń w usłudze Azure Kubernetes Service (AKS)
 

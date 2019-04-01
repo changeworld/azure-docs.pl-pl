@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: a6bd92a675885cb343b07ef981c38571af0a931c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862466"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756058"
 ---
 # <a name="content-moderator-api-reference"></a>Dokumentacja interfejsu API usługi Content Moderator
 
@@ -31,7 +31,7 @@ Następujące interfejsy API Content Moderator umożliwia konfigurowanie przepł
 | Opis | Informacje ogólne |
 | -------------------- |-------------|
 | **Interfejs API moderowania obrazów**<br /><br />Skanowanie obrazów i wykrywania potencjalnych wyszukania zawartości erotycznej i przeznaczonej dla osób dorosłych za pomocą tagów, oceny zaufania i inne informacje wyodrębnione. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania. <br /><br />| [Dokumentacja interfejsu API moderowania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "dokumentacja interfejsu API moderowania obrazów")   |
-| **Interfejs API moderowania tekstu**<br /><br />Skanowanie zawartości tekstowej. Warunki wulgaryzmów i identyfikowalne dane osobowe (PII) są zwracane. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Dokumentacja interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "dokumentacja interfejsu API moderowania tekstu")   |
+| **Interfejs API moderowania tekstu**<br /><br />Skanowanie zawartości tekstowej. Warunki wulgaryzmów i dane osobiste są zwracane. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Dokumentacja interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "dokumentacja interfejsu API moderowania tekstu")   |
 | **Moderowanie filmów wideo interfejsu API**<br /><br />Skanuj pliki wideo i wykrywanie potencjalnych zawartości dla dorosłych. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Interfejs API moderowania klip wideo z omówieniem](video-moderation-api.md "omówienie interfejsu API moderowania wideo")   |
 | **Interfejs API zarządzania listy**<br /><br />Tworzenie i zarządzanie nimi niestandardowej listy wykluczeń lub dołączeń obrazów i tekstu. Jeśli włączona, **obrazu — dopasowania** i **tekst — ekranu** operacje czy dopasowywania rozmytego przesłanych treści z list niestandardowych. <br /><br />W celu zwiększenia wydajności możesz pominąć krok Moderowanie tekstu w uczeniu maszynowym komputera.<br /><br /> | [Dokumentacja interfejsu API zarządzania listy](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "dokumentacja interfejsu API zarządzania listy")   |
 

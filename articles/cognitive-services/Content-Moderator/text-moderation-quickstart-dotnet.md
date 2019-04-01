@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312246"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756532"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C#
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak przeprowadzać filtrowanie oparte na terminach w zawartości tekstowej oraz jej klasyfikację w celu moderowania potencjalnie niepożądanego materiału.
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Dodaj następujący kod do metody **Main**. Metoda **ScreenText** to niezbędna operacja. Jej parametry określają, które operacje moderowania zawartości zostaną wykonane. W tym przykładzie metoda została skonfigurowana do wykonywania następujących czynności:
 - Wykrywanie potencjalnych przekleństw w tekście.
 - Normalizowanie tekstu i automatyczne poprawianie błędów pisowni.
-- Wykrywanie danych osobowych (PII, personally identifiable information), takich jak numery telefonów w Stanach Zjednoczonych i Zjednoczonym Królestwie, adresy e-mail i adresy pocztowe w Stanach Zjednoczonych.
+- Wykrywanie danych osobowych, takich jak Stany Zjednoczone i Zjednoczonego Królestwa numerów telefonów, adresy e-mail i adresy pocztowe w Stanach Zjednoczonych.
 - Używanie modeli opartych na uczeniu maszynowym do klasyfikowania tekstu w ramach trzech kategorii.
 
 Jeśli chcesz dowiedzieć się więcej o sposobie działania operacji, kliknij link w sekcji [Następne kroki](#next-steps).
@@ -171,7 +171,7 @@ Autocorrect typos, check for matching terms, PII, and classify.
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację platformy .NET, która zwraca odpowiednie informacje o danym tekście przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
 

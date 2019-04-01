@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 43f9443e4b5cd700500bd9803f2737ed9e0aa633
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223169"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756003"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Interfejs API usług Azure Media dostępu przy użyciu wiersza polecenia platformy Azure
  
@@ -40,10 +40,19 @@ Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasob�
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-
-[Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
-
 ## <a name="see-also"></a>Zobacz także
+
+- [Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia](media-reserved-units-cli-how-to.md)
+- [Tworzenie konta usługi Media Services — interfejs wiersza polecenia](./scripts/cli-create-account.md) 
+- [Resetowanie poświadczeń konta — interfejs wiersza polecenia](./scripts/cli-reset-account-credentials.md)
+- [Tworzenie zasobów — interfejs wiersza polecenia](./scripts/cli-create-asset.md)
+- [Przekazywanie pliku — interfejs wiersza polecenia](./scripts/cli-upload-file-asset.md)
+- [Tworzenie transformacji — interfejs wiersza polecenia](./scripts/cli-create-transform.md)
+- [Tworzenie zadań — interfejs wiersza polecenia](./scripts/cli-create-jobs.md)
+- [Tworzenie usługi EventGrid — interfejs wiersza polecenia](./scripts/cli-create-event-grid.md)
+- [Publikowanie elementu zawartości — interfejs wiersza polecenia](./scripts/cli-publish-asset.md)
+- [Filtr — interfejs wiersza polecenia](filters-dynamic-manifest-cli-howto.md)
+
+## <a name="next-steps"></a>Kolejne kroki
 
 [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

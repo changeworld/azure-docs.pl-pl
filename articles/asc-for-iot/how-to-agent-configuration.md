@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi ASC agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować agentów do użycia z usługą ASC dla IoT.
+title: Konfigurowanie usługi Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować agentów do użycia z usługą Azure Security Center dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 27b548459bd1fee3c6596cce624b00d052e608fe
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649377"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757384"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-W tym artykule opisano ASC dla agenta zabezpieczeń IoT, w jaki sposób zmienić ASC je skonfigurować agentów zabezpieczeń IoT.
+W tym artykule opisano usługi Azure Security Center (ASC) dla agenta zabezpieczeń IoT, w jaki sposób zmienić ASC je skonfigurować agentów zabezpieczeń IoT.
 
 > [!div class="checklist"]
 > * Konfigurowanie alertów zabezpieczeń

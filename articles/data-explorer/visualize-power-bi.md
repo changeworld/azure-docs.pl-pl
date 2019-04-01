@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI'
+title: 'Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI'
 description: Z tego samouczka dowiesz się, jak połączyć się z usługą Azure Data Explorer za pomocą usługi Power BI i zwizualizować swoje dane.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: HT
+ms.openlocfilehash: f253911c1830e606dd47b64aaea1f17cb3478cd5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854105"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757734"
 ---
-# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI
+# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji. Z tego samouczka na początku dowiesz się, jak renderować wizualizacje w usłudze Azure Data Explorer. Następnie połączysz się z usługą Azure Data Explorer za pomocą usługi Power BI, utworzysz raport na podstawie przykładowych danych i opublikujesz raport dla usługi Power BI.
 
@@ -226,7 +226,7 @@ Jeśli nie chcesz zachować utworzonego raportu, po prostu usuń plik *storm-eve
 
 1. Potwierdź usunięcie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań](write-queries.md)

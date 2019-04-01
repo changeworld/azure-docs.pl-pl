@@ -4,7 +4,7 @@ description: Najlepsze rozwiązania dotyczące serializacji danych i jak wpływa
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 43d19e5c69733689be184f06b853fa4e488dd51e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871727"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665682"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak serializacji danych wpływa na uaktualnienie aplikacji
 W [stopniowego uaktualnienia aplikacji](service-fabric-application-upgrade.md), uaktualnienie jest stosowany do podzbioru węzłów, jedną domenę uaktualnienia w danym momencie. W trakcie tego procesu niektórych domen uaktualnienia znajdują się na nowszą wersję aplikacji, a niektóre domeny uaktualnienia znajdują się na starszą wersję aplikacji. W miarę wprowadzania aktualizacji nowa wersja aplikacji musi mieć możliwość odczytu stara wersja usługi danych, a stara wersja aplikacji musi mieć możliwość odczytu nową wersję usługi danych. Jeśli format danych jest niezgodny ze starszymi i nowszymi, uaktualnienie może zakończyć się niepowodzeniem lub co gorsza, może być utraty lub uszkodzenia danych. W tym artykule omówiono, co stanowi przez Ciebie formacie danych i oferuje najlepsze rozwiązania umożliwiające zapewnienie, że Twoje dane są do przodu i do tyłu zgodne.

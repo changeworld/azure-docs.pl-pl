@@ -1,6 +1,6 @@
 ---
-title: Wyślij wiadomości zabezpieczeń z usługą ASC dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wysyłać wiadomości zabezpieczeń za pomocą usługi ASC dla IoT.
+title: Wyślij wiadomości zabezpieczeń Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wysyłać wiadomości zabezpieczeń za pomocą Centrum zabezpieczeń Azure dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650159"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754792"
 ---
 # <a name="send-security-messages-sdk"></a>Wysyłanie komunikatów zabezpieczeń zestawu SDK
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-W tym przewodniku wyjaśniono ASC dla możliwości usługi IoT, po wybraniu do zbierania i wysyłania komunikatów zabezpieczeń urządzenia bez użycia usługi ASC agenta IoT i wyjaśniono, jak to zrobić.  
+W tym przewodniku wyjaśniono Azure Security Center (ASC) dla możliwości usługi IoT, po wybraniu do zbierania i wysyłania komunikatów zabezpieczeń urządzenia bez użycia usługi ASC agenta IoT i wyjaśniono, jak to zrobić.  
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]

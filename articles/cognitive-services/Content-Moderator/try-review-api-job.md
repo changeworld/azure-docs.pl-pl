@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie zadań moderowanie zawartości za pomocą konsoli interfejsu API — Content Moderator
+title: Moderowanie zadania za pomocą konsoli interfejsu API REST - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Użyj operacji zadań Przegląd interfejsu API do inicjowania zadań end-to-end moderowanie zawartości dla zawartości image lub text w usłudze Azure Content Moderator.
 services: cognitive-services
@@ -7,101 +7,116 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9fac80ff152b0f7b9c36c182759d41245364fff9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862432"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756090"
 ---
-# <a name="start-a-moderation-job-from-the-api-console"></a>Uruchom zadanie Moderowanie z poziomu konsoli interfejsu API
+# <a name="define-and-use-moderation-jobs-rest"></a>Definiowanie i korzystanie z zadań moderation (REST)
 
-Za pomocą interfejsu API przeglądu [zadania operacje](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) do inicjowania zadań end-to-end moderowanie zawartości dla zawartości image lub text w usłudze Azure Content Moderator. 
-
-Zadanie Moderowanie skanowanie zawartości za pomocą API moderowania obrazów Moderator zawartości lub interfejs API moderowania tekstu. Następnie zadania Moderowanie używa przepływy pracy (zdefiniowanymi w narzędzie do przeglądu) do generowania przeglądy w narzędzie do przeglądu. 
-
-Po ludzi moderator przeglądy automatycznie przypisane tagi i dane prognozowania i przesyła decyzji końcowego Moderowanie, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.
+Zadania Moderowanie służy jako typ otoki dla funkcji moderowania zawartości, przepływy pracy i recenzje. Ten przewodnik pokazuje, jak użyć zadania interfejsów API REST do inicjowania i sprawdzić zadania moderowanie zawartości. Po zrozumieniu struktury interfejsów API można łatwo portu tych wywołań na dowolną platformę zgodną REST.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przejdź do [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/). Utwórz konto, jeśli nie mają to jeszcze zrobione. W ramach narzędzie do przeglądu [zdefiniować niestandardowe przepływ pracy](Review-Tool-User-Guide/Workflows.md) do użycia w tym `Job` operacji.
+- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
+- (Opcjonalnie) [Zdefiniować niestandardowe przepływ pracy](./Review-Tool-User-Guide/Workflows.md) za pomocą zadania; możesz również użyć domyślnego przepływu pracy.
 
-## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
-Będą mogli ją testować interfejs API za pomocą konsoli usługi online, konieczne jest kilku wartości w celu wprowadzenia w życie konsoli programu:
-    
-- `teamName`: Użyj `Id` pola z ekranu poświadczenia tego narzędzia przeglądu. 
-- `ContentId`: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. **ContentId** przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.- `Workflowname`: Nazwa [przepływu pracy, który został utworzony](Review-Tool-User-Guide/Workflows.md) w poprzedniej sekcji.
-- `Ocp-Apim-Subscription-Key`: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
+## <a name="create-a-job"></a>Tworzenie zadania
 
-Interfejs API dostępu do konsoli pochodzi z **poświadczenia** okna.
+Aby utworzyć zadanie Moderowanie, przejdź do [zadania — Tworzenie](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API odwoływać się do strony i wybierz przycisk w Twoim regionie klucza (można znaleźć ten adres URL punktu końcowego na **poświadczenia** stronie [przeglądu Narzędzie](https://contentmoderator.cognitive.microsoft.com/)). Spowoduje to uruchomienie konsoli interfejsu API, w którym można łatwo utworzyć i uruchomienia wywołań interfejsu API REST.
 
-### <a name="navigate-to-the-api-reference"></a>Przejdź do dokumentacja interfejsu API
-W **poświadczenia** wybierz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5).
+![Zadania — Tworzenie strony pole region](images/test-drive-job-1.png)
 
-  `Job.Create` Zostanie otwarta strona.
+### <a name="enter-rest-call-parameters"></a>Wprowadź parametry wywołania REST
 
-### <a name="select-your-region"></a>Wybierz region
-Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
-  ![Zadania — Tworzenie strony pole region](images/test-drive-job-1.png)
+Wprowadź następujące wartości do konstruowania wywołania REST:
 
-  `Job.Create` Zostanie otwarta konsola interfejsu API. 
+- **teamName**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) konta (w **identyfikator** pola na ekranie poświadczenia tego narzędzia przeglądu).
+- **Typ zawartości**: Może to być "Image", "Text" lub "Wideo".
+- **ContentId**: Niestandardowego ciągu identyfikatora. Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. Jest to przydatne kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.
+- **workflowname**: Nazwa przepływu pracy, który został wcześniej utworzony (lub "default" domyślnego przepływu pracy).
+- **CallbackEndpoint**: (Opcjonalnie) Adres URL do odbierania informacji o wywołaniu zwrotnym, po zakończeniu przeglądu.
+- **Ocp-Apim-Subscription-Key**: Klucz usługi Content Moderator. Można je znaleźć na **ustawienia** karcie [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com).
 
-### <a name="enter-parameters"></a>Wprowadzanie parametrów
+### <a name="fill-in-the-request-body"></a>Wprowadź treść żądania
 
-Wprowadź wartości parametrów zapytania wymagane i klucz subskrypcji. W **treść żądania** Określ lokalizację informacje, które chcesz przeprowadzić skanowanie. W tym przykładzie użyjemy to [przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
+Treść wywołania REST zawiera jedno pole **ContentValue**. Wklej zawartość nieprzetworzony tekst, jeśli są Moderowanie tekstu, lub wprowadź obrazu lub adres URL filmu wideo, jeśli masz Moderowanie obrazów i wideo. Możesz użyć następującego adresu URL obrazu próbki: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
-  ![Zadania — Tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/job-api-console-inputs.PNG)
+![Zadania — Tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>Prześlij żądanie
-Wybierz pozycję **Wyślij**. Identyfikator zadania jest tworzony. Skopiuj to do użycia w następnych krokach.
 
-  `"JobId": "2018014caceddebfe9446fab29056fd8d31ffe"`
+Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK`i **zawartość odpowiedzi** pole zawiera identyfikator zadania. Skopiuj ten identyfikator do użycia w kolejnych krokach.
 
-### <a name="open-the-get-job-details-page"></a>Otwórz stronę szczegółów pobrania zadania
-Wybierz **uzyskać**, a następnie otwórz interfejs API, wybierając przycisk, który odpowiada Twoim regionie.
+![Przejrzyj — Tworzenie konsoli zawartości, że pole zawiera identyfikator przeglądu odpowiedzi](images/test-drive-job-3.PNG)
 
-  ![Zadania — Tworzenie konsoli wyniki Get](images/test-drive-job-4.png)
+## <a name="get-job-status"></a>Pobierz stan zadania
 
-### <a name="review-the-response"></a>Odpowiedź na Przegląd kodu
+Aby uzyskać stan i szczegółów dotyczących uruchomionej lub ukończonej zadania, przejdź do [zadania — Pobierz](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) API odwoływać się do strony i wybierz przycisk w Twoim regionie (region, w którym jest podawana klucz).
 
-Wprowadź wartości w polach **teamName** i **JobID**. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**. Następującą odpowiedź zawiera przykładowe zadania stan i szczegółowe informacje.
+![Zadania — pole region Get](images/test-drive-region.png)
 
-```
-    {
-        "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-        "TeamName": "some team name",
-        "Status": "InProgress",
-        "WorkflowId": "OCR",
-        "Type": "Image",
-        "CallBackEndpoint": "",
-        "ReviewId": "",
-        "ResultMetaData": [],
-        "JobExecutionReport": 
-        [
-            {
-            "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-            }
-        ]
+Wprowadź parametry wywołania REST, tak jak w powyższej sekcji. W tym kroku **JobId** jest unikatowy ciąg Identyfikatora otrzymany po utworzeniu zadania. Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK`i **zawartość odpowiedzi** okno wyświetla zadania w formacie JSON, takich jak następujące:
+
+```json
+{  
+  "Id":"2018014caceddebfe9446fab29056fd8d31ffe",
+  "TeamName":"some team name",
+  "Status":"Complete",
+  "WorkflowId":"OCR",
+  "Type":"Image",
+  "CallBackEndpoint":"",
+  "ReviewId":"201801i28fc0f7cbf424447846e509af853ea54",
+  "ResultMetaData":[  
+    {  
+      "Key":"hasText",
+      "Value":"True"
+    },
+    {  
+      "Key":"ocrText",
+      "Value":"IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
     }
+  ],
+  "JobExecutionReport":[  
+    {  
+      "Ts":"2018-01-07T00:38:29.3238715",
+      "Msg":"Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.2928416",
+      "Msg":"Job marked completed and job content has been removed"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.0856472",
+      "Msg":"Execution Complete"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.7714671",
+      "Msg":"Successfully got hasText response from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.4181346",
+      "Msg":"Getting hasText from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:25.5122828",
+      "Msg":"Starting Execution - Try 1"
+    }
+  ]
+}
 ```
 
-## <a name="navigate-to-the-review-tool"></a>Przejdź do narzędzia do przeglądu
-Na pulpicie nawigacyjnym Content Moderator wybierz **przeglądu** > **obraz**. Pojawia się obraz, który skanowany, gotowe do przeglądu przez ludzi.
+![Zadania — Pobierz odpowiedź wywołania REST](images/test-drive-job-5.png)
 
-  ![Obraz narzędzie do przeglądu rowerzystów trzy](images/ocr-sample-image.PNG)
+### <a name="examine-the-new-reviews"></a>Sprawdź nowe review(s)
+
+Jeśli zadanie zawartości spowodowało utworzenie recenzji, możesz wyświetlić ją w [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com). Wybierz **przeglądu** > **obraz**/**tekstu**/**wideo** (zależnie od tego, co możesz zawartości używane). Zawartość powinna zostać wyświetlona, gotowe do przeglądu przez ludzi. Po ludzi moderator przeglądy automatycznie przypisane tagi i dane prognozowania i przesyła decyzji końcowego Moderowanie, interfejsu API zadań przesyła wszystkie te informacje do punktu końcowego punktu końcowego wyznaczonym wywołania zwrotnego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać się [.NET zadania szybkiego startu](moderation-jobs-quickstart-dotnet.md) do integracji z aplikacją.
+W tym przewodniku przedstawiono sposób tworzyć i wykonywać zapytania zadań moderowanie zawartości przy użyciu interfejsu API REST. Następnie zintegrować zadania scenariuszu Moderowanie end-to-end, takich jak [Moderowanie handlu elektronicznego](./ecommerce-retail-catalog-moderation.md) samouczka.

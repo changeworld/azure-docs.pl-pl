@@ -1,6 +1,6 @@
 ---
-title: ASC przewodnik badania urządzenia IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: To jak przewodnik wyjaśnia, jak ASC IoT umożliwia zbadanie podejrzanych urządzeń IoT za pomocą usługi Log Analytics.
+title: Usługa Azure Security Center dla przewodnika badania urządzenia IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: To jak przewodnik wyjaśnia, jak badania podejrzane urządzeń IoT za pomocą usługi Log Analytics przy użyciu Centrum zabezpieczeń Azure dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 032315d1b618b9716e23c8433c6ec1bf64b7e77d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6097954e09d5fd62c45f59b009d974d277bafc57
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580541"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755243"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Zbadanie podejrzanych urządzeń IoT
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC alertów usługi IoT i dowody zapewnić jasne wskazówki po urządzenia IoT są podejrzane o udział w podejrzane działania lub gdy oznaczeń istnieje, że urządzenie zostanie naruszony. 
+Usługa Azure Security Center (ASC) alertów usługi IoT i dowody udzielać wyraźne wskazania urządzenia IoT są podejrzane o udział w podejrzane działania lub gdy oznaczeń istnieje, że urządzenie zostanie naruszony. 
 
 W tym przewodniku należy użyć sugestie badania, pod warunkiem, aby ustalić potencjalne zagrożenia dla Twojej organizacji, należy zdecydować, jak rozwiązania i najlepszych sposobów, aby zapobiec atakom podobne w przyszłości.  
 

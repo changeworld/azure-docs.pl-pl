@@ -1,6 +1,6 @@
 ---
-title: Opis usługi ASC dla architektury rozwiązania IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Zapoznaj się z przepływem informacji w ASC dla usługi IoT.
+title: Omówienie usługi Azure Security Center dla architektury rozwiązania IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Zapoznaj się z przepływem informacji w usłudze Azure Security Center dla usługi IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d70be919fa829401b4a415db626a3cee0713753b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541905"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754981"
 ---
-# <a name="asc-for-iot-architecture"></a>ASC architektury IoT
+# <a name="azure-security-center-for-iot-architecture"></a>Usługa Azure Security Center dla architektury IoT
 
-W tym artykule opisano architekturę działający system usługi Azure Security Center dla rozwiązania IoT. 
+W tym artykule opisano architekturę działający system z usługi Azure Security Center (ASC) dla rozwiązania IoT. 
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="asc-for-iot-components"></a>ASC składników IoT

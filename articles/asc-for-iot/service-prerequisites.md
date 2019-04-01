@@ -1,6 +1,6 @@
 ---
-title: ASC IoT wstępnie wymaganych składników (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje dotyczące wszystkich elementów potrzebnych do Rozpoczynanie pracy z usługą ASC wymagania wstępne usługi IoT.
+title: Usługa Azure Security Center dla wymagań wstępnych IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Szczegóły dotyczące wszystko, co jest potrzebne, aby rozpocząć pracę z usługą Azure Security Center wymagania wstępne usługi IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574756"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755090"
 ---
-# <a name="asc-for-iot-prerequisites"></a>ASC IoT wstępnie wymaganych składników
+# <a name="azure-security-center-for-iot-prerequisites"></a>Usługa Azure Security Center IoT wstępnie wymaganych składników
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten artykuł zawiera omówienie różnych bloki konstrukcyjne usługi ASC IoT usłudze, co jest potrzebne do rozpoczęcia i podstawowe pojęcia, aby lepiej zrozumieć usługę. 
+Ten artykuł zawiera wyjaśnienie różnych bloków konstrukcyjnych z usługi Azure Security Center (ASC) IoT usłudze, co jest potrzebne do rozpoczęcia i podstawowe pojęcia aby lepiej zrozumieć usługę. 
 
 ## <a name="minimum-requirements"></a>Minimalne wymagania
 

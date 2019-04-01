@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075070"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758114"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
 W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplikacjach. Indeksator wideo obsługuje dwa typy osadzanie widżetów w aplikacji: **Cognitive Insights** i **Player**. 
-
-> [!NOTE]
-> Począwszy od 1 lutego 2018 r., wersja 1 **Cognitive Insights** widżet staną się przestarzałe. Domyślnie wersja adres URL osadzania `version=2`.
 
 Począwszy od wersji 2, podstawowy adres URL elementu widget zawiera region konta. Na przykład generuje konto w regionie zachodnie stany USA: `https://wus2.videoindexer.ai/embed/insights/...`.
 
@@ -34,7 +31,6 @@ Widżet **Cognitive Insights** (Szczegółowe informacje) zawiera wszystkie szcz
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
 |widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** **Elementy widget** param adres URL nie jest obsługiwana, jeśli **wersji = 2** jest używany. |
-|version|Wersje widżetu **Cognitive Insights**|Aby uzyskać najnowsze informacje aktualizacje widżetów, należy dodać `?version=2` zapytań wysyłanych na adres URL osadzania. Na przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Aby uzyskać starszą wersję, wystarczy usunąć element `version=2` z adresu URL.
 
 ### <a name="player-widget"></a>Widżet Player
 

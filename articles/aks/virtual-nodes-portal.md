@@ -7,23 +7,25 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: c1e4803698525f0d084fadac14e3952b951ecae6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164446"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755255"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów w witrynie Azure portal
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>W wersji zapoznawczej — tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów w witrynie Azure portal
 
 Aby szybko wdrożyć obciążenia w klastrze usługi Azure Kubernetes Service (AKS), można użyć wirtualnych węzłów. Wirtualne węzły, możesz mieć szybka aprowizacja zasobników i płacić tylko na sekundę na czas wykonywania uległ. W przypadku skalowania nie trzeba czekać na skalowanie klastra Kubernetes do wdrożenia węzłów obliczeniowych maszyn wirtualnych, aby uruchomić dodatkowe zasobniki. W tym artykule pokazano, jak tworzyć i konfigurować zasoby sieci wirtualnej i klastra usługi AKS przy użyciu wirtualnych węzłów włączone.
 
 > [!IMPORTANT]
-> Wirtualne węzły dla usługi AKS jest obecnie oferowana **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+>
+> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
 
-## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
+## <a name="regional-availability"></a>Dostępność regionalna
 
-Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące regiony są obsługiwane dla wdrożeń:
+Następujące regiony są obsługiwane dla wdrożeń wirtualnego węzła:
 
 * Australia Wschodnia (australiaeast)
 * Wschodnie stany USA (eastus)
@@ -182,6 +184,8 @@ Węzły wirtualne są jeden składnik skalowania rozwiązania w usłudze AKS. Ab
 
 - [Użyj skalowania automatycznego zasobników w poziomie rozwiązania Kubernetes][aks-hpa]
 - [Użyj skalowania automatycznego klastra Kubernetes][aks-cluster-autoscaler]
+- [Zapoznaj się z przykładowych skalowania automatycznego dla wirtualnych węzłów][virtual-node-autoscale]
+- [Więcej informacji na temat rozwiązania Virtual Kubelet biblioteki typu open source][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -190,6 +194,9 @@ Węzły wirtualne są jeden składnik skalowania rozwiązania w usłudze AKS. Ab
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md
@@ -198,4 +205,3 @@ Węzły wirtualne są jeden składnik skalowania rozwiązania w usłudze AKS. Ab
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
-

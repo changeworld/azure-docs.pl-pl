@@ -2,18 +2,18 @@
 title: Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych
 description: W tym artykule opisano kontroli dostępu opartej na rolach dla bazy danych i tabele w Eksploratorze danych platformy Azure.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3f5f174f5f5e8aa122ab9c280cc812dd64b0b425
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212883"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756492"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych
 

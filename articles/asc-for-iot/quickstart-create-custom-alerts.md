@@ -1,6 +1,6 @@
 ---
-title: Tworzenie alertów niestandardowych dla usługi ASC dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Utwórz i przypisz urządzenia niestandardowe alerty dla ASC dla IoT.
+title: Utwórz niestandardowe alerty dla Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Utwórz i przypisz niestandardowe alerty Centrum zabezpieczeń Azure dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: fa1825d6f6f6ea5e6c026791aa70dd1b37bdad90
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 40bec01b402d7a597a480a738840cba8f388d88b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574748"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755137"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Szybki start: Utwórz niestandardowe alerty
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Korzystanie z grup zabezpieczeń niestandardowe i alerty, umożliwiają pełne wykorzystywanie zalet informacji o zabezpieczeniach end-to-end i wiedzy podzielonych na kategorie urządzeń, aby zapewnić większe bezpieczeństwo w rozwiązania IoT. 
@@ -33,7 +33,7 @@ Korzystanie z grup zabezpieczeń niestandardowe i alerty, umożliwiają pełne w
 
 Dostęp do najlepszych urządzeń IoT.
 
-Dla klientów, którzy w pełni zrozumieć ich zachowanie oczekiwanego urządzenia ASC IoT umożliwia tłumaczenie tę wiedzę do zasad zachowania urządzenia, a oczekiwano alertu na wszelkie odchylenia od normalnego zachowania.
+Dla klientów, którzy w pełni zrozumieć ich zachowanie oczekiwanego urządzenia Azure Security Center (ASC) dla IoT umożliwia tłumaczenie tę wiedzę do zasad zachowania urządzenia i alertu na wszelkie odchylenia od oczekiwano normalne zachowanie.
 
 ## <a name="security-groups"></a>Grupy zabezpieczeń
 

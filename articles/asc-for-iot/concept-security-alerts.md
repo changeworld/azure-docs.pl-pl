@@ -1,6 +1,6 @@
 ---
-title: Przewodnik dotyczący alertów zabezpieczeń, dla ASC IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat alertów zabezpieczeń i zalecanych czynności naprawczych przy użyciu usługi ASC funkcje IoT i usługi.
+title: Przewodnik dotyczący alertów zabezpieczeń dla Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat alertów zabezpieczeń i zalecanych czynności naprawczych funkcje IoT i usługi za pomocą usługi Azure Security Center.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579448"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755104"
 ---
-# <a name="asc-for-iot-security-alerts"></a>ASC alerty zabezpieczeń IoT
+# <a name="azure-security-center-for-iot-security-alerts"></a>Usługa Azure Security Center dla alertów zabezpieczeń IoT
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC IoT w sposób ciągły analizuje rozwiązania IoT przy użyciu zaawansowanych analizę zagrożeń ostrzega o złośliwych działań.
+Usługa Azure Security Center (ASC) dotyczące IoT w sposób ciągły analizuje rozwiązania IoT przy użyciu zaawansowanych analizę zagrożeń ostrzega o złośliwych działań.
 Ponadto możesz utworzyć niestandardowe alerty bazujące na swojej wiedzy na temat urządzenia oczekiwane zachowanie.
 Alert działa jako wskaźnik comprise, należy zbadać i skorygować.
 

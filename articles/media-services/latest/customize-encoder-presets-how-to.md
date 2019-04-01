@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837239"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754556"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>Jak kodować z niestandardowe przekształcenia przy użyciu platformy .NET
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Jak kodowanie za pomocą niestandardowej transformacji — .NET
 
 Podczas kodowania za pomocą usługi Azure Media Services, należy można szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, oparte na najlepszych branżowych rozwiązań, jak pokazano w [strumieniowego przesyłania plików](stream-files-tutorial-with-api.md) samouczka. Możesz również tworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia.
 

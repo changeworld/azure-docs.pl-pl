@@ -3,17 +3,17 @@ title: Pisanie zapytań w Eksploratorze danych platformy Azure
 description: W tym instruktażu dowiesz się, jak przeprowadzić podstawowych i bardziej zaawansowanych zapytań do Eksploratora danych usługi Azure.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8afb829f806ab55a069ded9cb7198f66368e8720
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961524"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758689"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Pisanie zapytań w Eksploratorze danych platformy Azure
 
@@ -72,7 +72,7 @@ Aby uruchamiać kwerendy na własny klaster:
 
 ### <a name="count"></a>count
 
-[**Liczba**](https://docs.microsoft.com/azure/kusto/query/countoperator): zwraca liczbę wierszy w tabeli.
+[**count**](https://docs.microsoft.com/azure/kusto/query/countoperator): Zwraca liczbę wierszy w tabeli.
 
 Następujące zapytanie zwraca liczbę wierszy w tabeli StormEvents.
 
@@ -84,7 +84,7 @@ StormEvents | count
 
 ### <a name="take"></a>Wypełnij
 
-[**Wykonaj**](https://docs.microsoft.com/azure/kusto/query/takeoperator): zwraca maksymalnie określoną liczbę wierszy danych.
+[**take**](https://docs.microsoft.com/azure/kusto/query/takeoperator): Zwraca maksymalnie określoną liczbę wierszy danych.
 
 Następujące zapytanie zwraca pięć wierszy z tabeli StormEvents. Słowo kluczowe *limit* jest aliasem dla *zająć.*
 
@@ -99,7 +99,7 @@ StormEvents | take 5
 
 ### <a name="project"></a>Projekt
 
-[**Projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): wybierze podzbiór kolumn.
+[**project**](https://docs.microsoft.com/azure/kusto/query/projectoperator): Określa podzbiór kolumn.
 
 Następujące zapytanie zwraca określonego zestawu kolumn.
 
@@ -113,7 +113,7 @@ StormEvents
 
 ### <a name="where"></a>gdzie
 
-[**gdzie**](https://docs.microsoft.com/azure/kusto/query/whereoperator): filtruje tabelę do podzestawu wierszy, które spełniają predykat.
+[**gdzie**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Filtruje tabelę do podzestawu wierszy, które spełniają predykat.
 
 Następujące zapytanie filtruje dane według `EventType` i `State`.
 
@@ -128,7 +128,7 @@ StormEvents
 
 ### <a name="sort"></a>Sortowanie
 
-[**Sortuj**](https://docs.microsoft.com/azure/kusto/query/sortoperator): sortowanie wierszy tabeli wejściowej w kolejności, przez co najmniej jedną kolumnę.
+[**sort**](https://docs.microsoft.com/azure/kusto/query/sortoperator): Sortuj wiersze tabeli wejściowej w kolejności, przez co najmniej jedną kolumnę.
 
 Następujące zapytanie, sortując dane w kolejności według malejącej `DamageProperty`.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**TOP**](https://docs.microsoft.com/azure/kusto/query/topoperator): zwraca pierwszy *N* rekordów posortowanych według określonych kolumn.
+[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): Zwraca pierwszy *N* rekordów posortowanych według określonych kolumn.
 
 Następujące zapytanie zwraca te same wyniki powyżej za pomocą jednego mniej operatora.
 
@@ -162,7 +162,7 @@ StormEvents
 
 ### <a name="extend"></a>Rozszerzanie
 
-[**Rozszerzanie**](https://docs.microsoft.com/azure/kusto/query/extendoperator): oblicza pochodnej kolumny.
+[**Rozszerzanie**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Oblicza pochodnej kolumny.
 
 Następujące zapytanie tworzy nową kolumnę przez obliczenie wartości w każdym wierszu.
 
@@ -180,7 +180,7 @@ Wyrażenia mogą zawierać zwykłych operatorów (+, -, *, /, %), a szeroką gam
 
 ### <a name="summarize"></a>Podsumowanie
 
-[**Podsumowanie**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): agreguje grupy wierszy.
+[**Podsumowanie**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Agreguje grupy wierszy.
 
 Następujące zapytanie zwraca liczbę zdarzeń przez `State`.
 
@@ -213,7 +213,7 @@ Wynik **Podsumuj** operacji:
 
 ### <a name="render"></a>Renderowanie
 
-[**Renderowanie**](https://docs.microsoft.com/azure/kusto/query/renderoperator): renderuje wyniki jako graficzne dane wyjściowe.
+[**Renderowanie**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Renderuje wyniki jako graficzne dane wyjściowe.
 
 Następujące zapytanie Wyświetla wykres kolumnowy.
 
@@ -271,7 +271,7 @@ W tej sekcji opisano niektóre z najważniejszych operatory skalarne.
 
 ### <a name="bin"></a>bin()
 
-[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): zaokrągla w dół do liczby całkowitej wielokrotności rozmiar danego pojemnika.
+[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): Zaokrągla w dół do liczby całkowitej wielokrotności rozmiar danego pojemnika.
 
 Następujące zapytanie oblicza liczbę o rozmiarze zasobnika jeden dzień.
 
@@ -283,9 +283,9 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-### <a name="case"></a>Case()
+### <a name="case"></a>case()
 
-[**Case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): ocenia listę predykatów, a następnie zwraca pierwsze wyrażenie wynik, którego predykat jest spełniony, lub ostatecznego **else** wyrażenia. Ten operator umożliwia klasyfikowanie, lub pogrupować dane:
+[**case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): Oblicza listę predykatów i zwraca pierwsze wyrażenie wynik, którego predykat jest spełniony, lub ostatecznego **else** wyrażenia. Ten operator umożliwia klasyfikowanie, lub pogrupować dane:
 
 Następujące zapytanie zwraca nową kolumnę `deaths_bucket` i likwidacji numerem grupy.
 
@@ -304,7 +304,7 @@ StormEvents
 
 ### <a name="extract"></a>extract()
 
-[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): pobiera pasuje do wyrażenia regularnego z ciągu tekstowego.
+[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): Pobiera pasuje do wyrażenia regularnego z ciągu tekstowego.
 
 Następujące zapytanie pobiera określone wartości danego atrybutu z śledzenia.
 
@@ -320,7 +320,7 @@ To zapytanie używa **umożliwiają** instrukcję, która wiąże nazwę (w tym 
 
 ### <a name="parsejson"></a>parse_json()
 
-[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): interpretuje ciąg jako wartość JSON i zwraca wartość jako dynamiczna. To doskonałe za pomocą **extractjson()** działa, gdy należy wyodrębnić więcej niż jeden element złożony obiekt JSON.
+[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Interpretuje ciąg jako wartość JSON i zwraca wartość jako dynamiczną. To doskonałe za pomocą **extractjson()** działa, gdy należy wyodrębnić więcej niż jeden element złożony obiekt JSON.
 
 Następujące zapytanie pobiera elementów JSON z tablicy.
 
@@ -358,7 +358,7 @@ MyData
 
 ### <a name="ago"></a>ago()
 
-[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): odejmuje dany przedział czasu od bieżącej godziny zegara czasu UTC.
+[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): Odejmuje dany przedział czasu od bieżącej godziny zegara czasu UTC.
 
 Następujące zapytanie zwraca dane dla ostatnich 12 godzin.
 
@@ -374,7 +374,7 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 
 ### <a name="startofweek"></a>startofweek()
 
-[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): zwraca początek tygodnia zawierającą datę, przesunięte przez przesunięcie, jeśli podany
+[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): Zwraca początek tygodnia zawierającą datę, przesunięte przez przesunięcie, jeśli podany
 
 Następujące zapytanie zwraca początek tygodnia dla innego przesunięcia.
 
@@ -387,9 +387,9 @@ range offset from -1 to 1 step 1
 
 To zapytanie używa **zakres** operatora, który generuje jednokolumnowej tabeli wartości. Zobacz również: [ **startofday()**](https://docs.microsoft.com/azure/kusto/query/startofdayfunction), [ **startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction), [ **startofyear()** ](https://docs.microsoft.com/azure/kusto/query/startofyearfunction)), [ **startofmonth()**](https://docs.microsoft.com/azure/kusto/query/startofmonthfunction), [ **endofday()**](https://docs.microsoft.com/azure/kusto/query/endofdayfunction), [ **endofweek()**  ](https://docs.microsoft.com/azure/kusto/query/endofweekfunction), [ **endofmonth()**](https://docs.microsoft.com/azure/kusto/query/endofmonthfunction), i [ **endofyear()**](https://docs.microsoft.com/azure/kusto/query/endofyearfunction).
 
-### <a name="between"></a>Between()
+### <a name="between"></a>between()
 
-[**Between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): pasuje do danych wejściowych, która znajduje się wewnątrz zakresu (włącznie).
+[**between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): Reprezentuje dane wejściowe, która znajduje się wewnątrz zakresu (włącznie).
 
 Następujące zapytanie filtruje dane według w danym zakresie dat.
 
@@ -417,7 +417,7 @@ Kusto ma wiele operatorów tabelarycznych, niektóre z nich znajdują się w inn
 
 ### <a name="parse"></a>Analizy
 
-[**analizowanie**](https://docs.microsoft.com/azure/kusto/query/parseoperator): ocenia wyrażenie ciągu i analizuje jego wartość w co najmniej jedną kolumnę obliczeniową. Istnieją trzy sposoby, aby przeanalizować: proste (ustawienie domyślne), wyrażeń regularnych i spokój.
+[**analizowanie**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Wylicza wartość wyrażenia ciągu i analizuje jego wartość w co najmniej jedną kolumnę obliczeniową. Istnieją trzy sposoby, aby przeanalizować: proste (ustawienie domyślne), wyrażeń regularnych i spokój.
 
 Następujące zapytanie analizuje śledzenia i wyodrębnia istotne wartości, przy użyciu domyślnej proste analizy. Wyrażenie (nazywane StringConstant) jest wartością ciągu regularnych i wykonanie dopasowania nie jest ścisłym: rozszerzona kolumn muszą być zgodne wymaganych typów.
 
@@ -510,9 +510,9 @@ Omówiono podstawowe agregacje, takie jak **liczba** i **Podsumuj**, we wcześni
 
 ### <a name="top-nested"></a>zagnieżdżone TOP
 
-[**zagnieżdżone górnej**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): generuje hierarchiczne wyniki górnym, w których każdy poziom jest na podstawie poprzedniego poziomu wartości Przechodzenie do szczegółów.
+[**top-nested**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Generuje hierarchiczne wyniki górnym, w których każdy poziom jest na podstawie poprzedniego poziomu wartości Przechodzenie do szczegółów.
 
-Ten operator jest przydatne w scenariuszach wizualizacji pulpitu nawigacyjnego lub gdy jest to konieczne odpowiedzieć na pytanie, podobnie do poniższego: "Znajdź wartość pierwszych N K1 (przy użyciu niektórych agregacji); dla każdego z nich Dowiedz się, jakie są wartości top-M K2 (przy użyciu innego agregacji); ..."
+Ten operator jest przydatne w scenariuszach wizualizacji pulpitu nawigacyjnego lub gdy jest to konieczne odpowiedzieć na pytanie, jak pokazano poniżej: "Znajdź wartość pierwszych N K1 (przy użyciu niektórych agregacji); dla każdego z nich Dowiedz się, jakie są wartości top-M K2 (przy użyciu innego agregacji); ..."
 
 Następujące zapytanie zwraca tabelę hierarchiczną z `State` na najwyższym poziomie, a następnie `Sources`.
 
@@ -525,9 +525,9 @@ top-nested 3 of Source by sum(BeginLat),
 top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-### <a name="pivot-plugin"></a>Wtyczka PIVOT()
+### <a name="pivot-plugin"></a>pivot() plugin
 
-[**Wtyczka PIVOT()**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): obraca się tabelę, włączając niepowtarzalne wartości z jednej kolumny w tabeli wejściowej na wiele kolumn w tabeli wyników. Operator wykonuje agregacje, w którym są wymagane wszystkie pozostałe wartości w kolumnach w końcowych danych wyjściowych.
+[**pivot() plugin**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Obraca tabelę, włączając niepowtarzalne wartości z jednej kolumny w tabeli wejściowej na wiele kolumn w tabeli wyników. Operator wykonuje agregacje, w którym są wymagane wszystkie pozostałe wartości w kolumnach w końcowych danych wyjściowych.
 
 Następujące zapytanie filtru i obracając wiersze w kolumny.
 
@@ -541,9 +541,9 @@ StormEvents
 | evaluate pivot(State)
 ```
 
-### <a name="dcount"></a>DCount()
+### <a name="dcount"></a>dcount()
 
-[**DCount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): zwraca szacunkową liczbę unikatowych wartości wyrażenia w tej grupie. Użyj [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) do policzenia wszystkich wartości.
+[**dcount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Zwraca szacunkową liczbę unikatowych wartości wyrażenia w tej grupie. Użyj [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) do policzenia wszystkich wartości.
 
 Następujące zapytanie zlicza różne `Source` przez `State`.
 
@@ -556,7 +556,7 @@ StormEvents
 
 ### <a name="dcountif"></a>dcountif()
 
-[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): zwraca szacunkową liczbę unikatowych wartości właściwości wyrażenia wierszy, dla których predykat jest wartość true.
+[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): Zwraca szacunkową liczbę unikatowych wartości właściwości wyrażenia wierszy, dla których predykat jest wartość true.
 
 Następujące zapytanie liczby unikatowych wartości właściwości `Source` gdzie `DamageProperty < 5000`.
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): oblicza **funkcja** HyperLogLog wyników (generowany przez [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   lub [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Oblicza **funkcja** HyperLogLog wyników (generowany przez [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) lub [**hll_merge** ](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Następujące zapytanie używa algorytmu HLL do generowania liczby.
 
@@ -585,7 +585,7 @@ StormEvents
 
 ### <a name="argmax"></a>arg_max()
 
-[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): znajduje wiersz w grupie, która maksymalizuje wyrażenia i zwraca wartość wyrażenia innego (lub * do zwrócenia cały wiersz).
+[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Umożliwia znalezienie wiersz w grupie, która maksymalizuje wyrażenia i zwraca wartość wyrażenia innego (lub * do zwrócenia cały wiersz).
 
 Następujące zapytanie zwraca czas ostatniego raportu powódź w każdym stanie.
 
@@ -600,7 +600,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): zwraca tablic dynamicznych (JSON) zestawu różne wartości, które przyjmuje wyrażenia w tej grupie.
+[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Zwraca zestawu różne wartości, które przyjmuje wyrażenia tablic dynamicznych (JSON) w grupie.
 
 Następujące zapytanie zwraca cały czas, po całkowitym został zgłoszony przez każdy stan i tworzy tablicę z zestawu unikatowych wartości.
 
@@ -615,7 +615,7 @@ StormEvents
 
 ### <a name="mvexpand"></a>mvexpand
 
-[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): rozwija próbnego wielu wartości z kolumny dynamicznym typie tak, aby każda wartość w kolekcji pobiera w oddzielnym wierszu. Wszystkie pozostałe kolumny w rozwiniętym wierszu są duplikowane. Jest to odwrotność makelist.
+[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): Rozwija próbnego wielu wartości z kolumny dynamicznym typie tak, aby każda wartość w kolekcji pobiera w oddzielnym wierszu. Wszystkie pozostałe kolumny w rozwiniętym wierszu są duplikowane. Jest to odwrotność makelist.
 
 Następujące zapytanie generuje przykładowe dane, tworząc zestaw, a następnie użycie go do zademonstrowania **mvexpand** możliwości.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): zwraca szacunkową dla określonego [**percentyl najbliższym ranga**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) populacji zdefiniowany przez wyrażenie. Dokładność zależy od gęstości populacji w regionie percentyla. Można używać tylko w kontekście agregacji wewnątrz [**Podsumuj**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Zwraca szacunkową dla określonego [**percentyl najbliższym ranga**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) populacji zdefiniowany przez wyrażenie. Dokładność zależy od gęstości populacji w regionie percentyla. Można używać tylko w kontekście agregacji wewnątrz [**Podsumuj**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 Następujące zapytanie oblicza percentyle czasu trwania storm.
 
@@ -665,7 +665,7 @@ W tej sekcji opisano elementy, które umożliwiają tworzenie bardziej złożony
 
 ### <a name="let"></a>Let
 
-[**Pozwól**](https://docs.microsoft.com/azure/kusto/query/letstatement): poprawia modułowości i ponownego użycia. **Umożliwiają** instrukcji umożliwia przerwać potencjalnie złożonego wyrażenia wiele części, każda powiązana z nazwą i narzędzia compose tych części ze sobą. A **umożliwiają** instrukcji można również tworzyć funkcje zdefiniowane przez użytkownika i widoków (wyrażenia za pośrednictwem tabel, których wyniki powinny wyglądać nowa tabela). Wyrażenia związane **umożliwiają** instrukcji może być typu skalarne tabelarycznych typu lub funkcji zdefiniowanej przez użytkownika (wyrażenia lambda).
+[**let**](https://docs.microsoft.com/azure/kusto/query/letstatement): Zwiększa modułowości i ponownego użycia. **Umożliwiają** instrukcji umożliwia przerwać potencjalnie złożonego wyrażenia wiele części, każda powiązana z nazwą i narzędzia compose tych części ze sobą. A **umożliwiają** instrukcji można również tworzyć funkcje zdefiniowane przez użytkownika i widoków (wyrażenia za pośrednictwem tabel, których wyniki powinny wyglądać nowa tabela). Wyrażenia związane **umożliwiają** instrukcji może być typu skalarne tabelarycznych typu lub funkcji zdefiniowanej przez użytkownika (wyrażenia lambda).
 
 Poniższy przykład tworzy zmienną typu tabelarycznym i używa go w wyrażeniu kolejne.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**sprzężenia**](https://docs.microsoft.com/azure/kusto/query/joinoperator): scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi**, **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
+[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi **, **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Poniższy przykład łączy dwie tabele, w przypadku sprzężenia wewnętrznego.
 
@@ -715,7 +715,7 @@ X
 
 ### <a name="serialize"></a>Serializacji
 
-[**Serializowanie**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Serializuje zestawu, aby można było używać funkcji, które wymagają serializowane dane, takie jak wierszy **row_number()**.
+[**serialize**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Serializuje zestawu, aby można było używać funkcji, które wymagają serializowane dane, takie jak wierszy **row_number()**.
 
 Następujące zapytanie powiedzie się, ponieważ dane jest serializowana.
 
@@ -741,7 +741,7 @@ StormEvents
 
 ### <a name="cross-database-and-cross-cluster-queries"></a>Zapytania wielu baz danych i dla wielu klastrów
 
-[Zapytania wielu baz danych i dla wielu klastrów](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): można tworzyć zapytania w bazie danych na tym samym klastrze, odwołując się go jako `database("MyDatabase").MyTable`. Można tworzyć zapytania bazy danych w klastrze zdalnym, odwołując się do niego jako `cluster("MyCluster").database("MyDatabase").MyTable`.
+[Zapytania wielu baz danych i dla wielu klastrów](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Można tworzyć zapytania w bazie danych na tym samym klastrze, odwołując się go jako `database("MyDatabase").MyTable`. Można tworzyć zapytania bazy danych w klastrze zdalnym, odwołując się do niego jako `cluster("MyCluster").database("MyDatabase").MyTable`.
 
 Następujące zapytanie jest wywoływana z jednego klastra i wykonuje zapytania o dane z `MyCluster` klastra. Aby uruchomić to zapytanie, należy użyć własną nazwę klastra i nazwę bazy danych.
 
@@ -755,9 +755,9 @@ cluster("MyCluster").database("Wiki").PageViews
 
 Ta sekcja zawiera elementy i zapytania, które pokazują, jak łatwo jest analiza zachowania użytkowników Kusto.
 
-### <a name="activitycountsmetrics-plugin"></a>Wtyczka activity_counts_metrics
+### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics plugin
 
-[**Wtyczka activity_counts_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): oblicza metryki przydatne działań (łączna liczba wartości, wartości liczności unikatowych wartości, liczność unikatowych wartości nowe wartości i zagregowane liczności unikatowych wartości). Metryki są obliczane dla każdego przedziału czasu, a następnie są porównywane i agregowane do i z wszystkich poprzednich okna czasowe.
+[**Wtyczka activity_counts_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Obliczanie metryki przydatne działań (łączna liczba wartości, wartości liczności unikatowych wartości, liczność unikatowych wartości nowe wartości i zagregowane liczności unikatowych wartości). Metryki są obliczane dla każdego przedziału czasu, a następnie są porównywane i agregowane do i z wszystkich poprzednich okna czasowe.
 
 Następujące zapytanie analizuje rozpowszechnienia wśród użytkowników, obliczając codziennie liczby działań.
 
@@ -791,7 +791,7 @@ window)
 
 ### <a name="activityengagement-plugin"></a>Wtyczka activity_engagement
 
-[**Wtyczka activity_engagement**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): obliczy stosunek zaangażowania działania na podstawie Identyfikatora kolumny przesuwającego się okna osi czasu. **Wtyczka activity_engagement** może służyć do obliczania DAU WAU i użytkownika aktywnego w Miesiącu (codziennych, cotygodniowych i comiesięcznych aktywnych użytkowników).
+[**Wtyczka activity_engagement**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Obliczy stosunek zaangażowania działania na podstawie Identyfikatora kolumny przesuwającego się okna osi czasu. **Wtyczka activity_engagement** może służyć do obliczania DAU WAU i użytkownika aktywnego w Miesiącu (codziennych, cotygodniowych i comiesięcznych aktywnych użytkowników).
 
 Następujące zapytanie zwraca współczynnik łączna liczba unikatowych użytkowników, za pomocą aplikacji codziennie w porównaniu z całkowitą liczbą unikatowych użytkowników za pomocą aplikacji, co tydzień, na to okno ruchome siedmiu dni.
 
@@ -815,9 +815,9 @@ range _day from _start to _end step 1d
 > [!TIP]
 > Podczas obliczania DAU/użytkownika aktywnego w Miesiącu, zmień data zakończenia i przenoszenie okresu okna (OuterActivityWindow).
 
-### <a name="activitymetrics-plugin"></a>Wtyczka activity_metrics
+### <a name="activitymetrics-plugin"></a>activity_metrics plugin
 
-[**Wtyczka activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): oblicza metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) oparte na bieżące okno okresu, a poprzednie okno okresu.
+[**Wtyczka activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Obliczanie metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) oparte na bieżące okno okresu, a poprzednie okno okresu.
 
 Następujące zapytanie oblicza współczynnika zmian i okres przechowywania dla danego zestawu danych.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>Wtyczka new_activity_metrics
 
-[**Wtyczka new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): oblicza metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) dla kohorty nowych użytkowników. Koncepcja ta wtyczka jest podobny do [**wtyczki activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale koncentruje się na nowych użytkowników.
+[**Wtyczka new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Oblicza metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) dla kohorty nowych użytkowników. Koncepcja ta wtyczka jest podobny do [**wtyczki activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale koncentruje się na nowych użytkowników.
 
 Następujące zapytanie oblicza przechowywania oraz postęp dokonany w wysokości z oknem tydzień over tygodniowych dla nowej kohorty użytkowników (użytkowników, którzy już korzystać w pierwszym tygodniu).
 
@@ -864,7 +864,7 @@ range Day from _start to _end step 1d
 
 ### <a name="sessioncount-plugin"></a>Wtyczka session_count
 
-[**Wtyczka session_count**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): oblicza liczbę sesji na podstawie Identyfikatora kolumny na osi czasu.
+[**Wtyczka session_count**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Oblicza liczbę sesji na podstawie Identyfikatora kolumny na osi czasu.
 
 Następujące zapytanie zwraca liczbę sesji. Sesja jest traktowany jako aktywny, jeśli identyfikator użytkownika pojawia się co najmniej raz na przedział czasowy miejsc 100-time, gdy okno ponownie spojrzenie sesji jest odstępów czasu 41.
 
@@ -884,7 +884,7 @@ _data
 
 ### <a name="funnelsequence-plugin"></a>Wtyczka funnel_sequence
 
-[**Wtyczka funnel_sequence**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): oblicza liczności unikatowych wartości użytkowników, którzy miały sekwencji stanów; przedstawia rozkład poprzedni i dalej stanów, które doprowadziły do lub wykonano przez sekwencję.
+[**Wtyczka funnel_sequence**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Oblicza liczności unikatowych wartości użytkowników, którzy miały sekwencji Państw. Pokazuje rozkład poprzedni i dalej stanów, które doprowadziły do lub wykonano przez sekwencję.
 
 Następujące zapytanie pokazuje, jakie zdarzenie się dzieje przed i po wszystkich zdarzeń Tornado w 2007.
 
@@ -900,7 +900,7 @@ StormEvents
 
 ### <a name="funnelsequencecompletion-plugin"></a>Wtyczka funnel_sequence_completion
 
-[**Wtyczka funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): oblicza lejka ukończone sekwencji kroków w ramach różnych okresach czasu.
+[**Wtyczka funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Oblicza lejka ukończonych kroków w ramach różnych okresach czasu.
 
 Następujące zapytanie sprawdza lejka ukończenia sekwencji: `Hail -> Tornado -> Thunderstorm -> Wind` w "Ogólne" razy jednej godziny, cztery godziny, a jeden dzień (`[1h, 4h, 1d]`).
 

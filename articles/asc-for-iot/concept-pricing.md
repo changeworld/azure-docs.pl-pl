@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi ASC koszty IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat kosztów związanych z usługą ASC IoT i jak je kontrolować.
+title: Omówienie Centrum zabezpieczeń Azure dla IoT koszty (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat kosztów związanych z Centrum zabezpieczeń Azure dla IoT i jak je kontrolować.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e694bb1a121b172fe67fbde0bd956700a75dfe12
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e2822b0f2f665220f215b85800081fa2fa7943f9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580661"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758055"
 ---
-# <a name="pricing-and-associated-costs"></a>Cennik i skojarzone kosztów
+# <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-W tym artykule wyjaśniono ASC dla IoT modelu cen, znajduje się podsumowanie wszystkich powiązanych z nimi kosztów i wyjaśniono, jak zarządzać nimi.
+W tym artykule opisano usługi Azure Security Center (ASC) dla modelu cen IoT, znajduje się podsumowanie wszystkich powiązanych z nimi kosztów i wyjaśniono, jak nimi zarządzać.
 
 ## <a name="pricing"></a>Cennik
 

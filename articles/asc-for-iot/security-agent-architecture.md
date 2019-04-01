@@ -1,6 +1,6 @@
 ---
-title: Opis usługi ASC dla architektury agenta zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Informacje na temat architektury agenta zabezpieczeń dla agentów używanych w ASC dla usługi IoT.
+title: Omówienie usługi Azure Security Center dla architektury agenta zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Informacje na temat architektury agenta zabezpieczeń dla agentów używanych w usłudze Azure Security Center dla usługi IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81054e95b9f712262fe5fa46453749b54a7ac24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 83ac2fd1d322dc3fb3c04cdf44d560c392320f91
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651401"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754172"
 ---
 # <a name="security-agent-reference-architecture"></a>Architektura referencyjna agenta zabezpieczeń
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-ASC IoT udostępnia architekturę referencyjną dla agentów zabezpieczeń, które logowania, przetwarzania, agregacji i wysłać danych zabezpieczeń za pomocą usługi IoT hub.
+Usługa Azure Security Center (ASC) dla IoT udostępnia architekturę referencyjną dla agentów zabezpieczeń, które logowania, przetwarzania, agregacji i wysłać danych zabezpieczeń za pomocą usługi IoT hub.
 
 Agentów zabezpieczeń zostały zaprojektowane do pracy w środowisku IoT ograniczone i są wysoce dostosowywalne pod względem wartości, które zapewniają w porównaniu do zasoby, z których korzystają.
 

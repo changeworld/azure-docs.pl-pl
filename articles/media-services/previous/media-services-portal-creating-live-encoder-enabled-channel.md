@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z usługi Azure Media Services i witryny Azure Portal do prowadzenia transmisji strumieniowych na żywo ze strumieniami o różnych szybkościach transmisji bitów | Microsoft Docs
+title: Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft
 description: Ten samouczek przedstawia tworzenie kanału, który odbiera strumień na żywo o jednej szybkości transmisji bitów i koduje go jako strumień o różnych szybkościach transmisji bitów przy użyciu witryny Azure Portal.
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: 1482569e415971fba98de8a586cc2868cc574198
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c230787b739b964998202180efaba20ad8233611
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258092"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757789"
 ---
-# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Jak przeprowadzić transmisja strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -42,34 +42,26 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 > [!NOTE]
 > Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 
-1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Podłącz kamerę wideo do komputera. <br/>Zapoznać się z pomysłami instalacji, zapoznaj się z [konfiguracja sprzętu wideo zdarzenia przenośne i proste]( https://link.medium.com/KNTtiN6IeT).
+1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ponadto zapoznaj się z tym blogu: [Na żywo przesyłania strumieniowego w środowisku produkcyjnym za pomocą systemu bankowości Internetowej](https://link.medium.com/ttuwHpaJeT).
 
     Ten krok można również wykonać po utworzeniu kanału.
-2. Utwórz i uruchom kanał. 
-3. Pobierz adres URL pozyskiwania kanału. 
+1. Utwórz i uruchom kanał. 
+1. Pobierz adres URL pozyskiwania kanału. 
 
     Koder na żywo używa adresu URL pozyskiwania do wysyłania strumienia do kanału.
-4. Pobierz adres URL podglądu kanału. 
+1. Pobierz adres URL podglądu kanału. 
 
     Użyj tego adresu URL, aby sprawdzić, czy kanał prawidłowo odbiera strumień na żywo.
-5. Utwórz wydarzenie/program (to spowoduje również utworzenie elementu zawartości). 
-6. Opublikuj wydarzenie (to spowoduje utworzenie lokalizatora OnDemand dla skojarzonego elementu zawartości).    
-7. Uruchom wydarzenie, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego i archiwizacji.
-8. Opcjonalnie można przesłać do kodera na żywo sygnał o rozpoczęciu reklamy. Reklama jest wstawiana do strumienia wyjściowego.
-9. Zatrzymaj wydarzenie w dowolnym momencie, w którym zechcesz zatrzymać przesyłanie strumieniowe i archiwizowanie wydarzenia.
-10. Usuń wydarzenie (opcjonalnie możesz również usunąć element zawartości).   
-
-## <a name="in-this-tutorial"></a>Informacje o tym samouczku
-W tym samouczku witryna Azure Portal jest używana do wykonywania następujących zadań: 
-
-1. Utworzenie kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo.
-2. Pobranie adresu URL pozyskiwania w celu dostarczenia go do kodera na żywo. Koder na żywo użyje tego adresu URL na potrzeby wysyłania strumienia do kanału.
-3. Utworzenie wydarzenia/programu (i elementu zawartości).
-4. Opublikowanie elementu zawartości i pobranie adresów URL przesyłania strumieniowego.  
-5. Odtwarzanie zawartości.
-6. Czyszczenie.
+1. Utwórz wydarzenie/program (to spowoduje również utworzenie elementu zawartości). 
+1. Opublikuj wydarzenie (to spowoduje utworzenie lokalizatora OnDemand dla skojarzonego elementu zawartości).    
+1. Uruchom wydarzenie, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego i archiwizacji.
+1. Opcjonalnie można przesłać do kodera na żywo sygnał o rozpoczęciu reklamy. Reklama jest wstawiana do strumienia wyjściowego.
+1. Zatrzymaj wydarzenie w dowolnym momencie, w którym zechcesz zatrzymać przesyłanie strumieniowe i archiwizowanie wydarzenia.
+1. Usuń wydarzenie (opcjonalnie możesz również usunąć element zawartości).   
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Następujące elementy są wymagane do wykonania czynności przedstawionych w samouczku.
 
 * Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. 
@@ -78,6 +70,7 @@ Następujące elementy są wymagane do wykonania czynności przedstawionych w sa
 * Kamera internetowa i koder, który może wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów.
 
 ## <a name="create-a-channel"></a>Tworzenie kanału
+
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję Media Services, a następnie kliknij nazwę konta usługi Media Services.
 2. Wybierz pozycję **Transmisja strumieniowa na żywo**.
 3. Wybierz pozycję **Tworzenie niestandardowe**. Ta opcja umożliwi utworzenie kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo.
@@ -120,9 +113,10 @@ Aby uzyskać więcej informacji na ten temat, zobacz artykuł [Korzystanie z us�
 ## <a name="get-ingest-urls"></a>Pobieranie adresów URL pozyskiwania
 Po utworzeniu kanału można pobrać adresy URL pozyskiwania, które należy udostępnić koderowi na żywo. Koder używa tych adresów URL do wprowadzenia strumienia na żywo.
 
-![ingesturls](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![adresy URL pozyskiwania](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>Tworzenie wydarzeń i zarządzanie nimi
+
 ### <a name="overview"></a>Przegląd
 Kanał jest skojarzony z wydarzeniami/programami, które umożliwiają kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają wydarzeniami/programami. Relacja kanału i programu jest bardzo podobna do relacji w tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
 
@@ -154,7 +148,7 @@ Istnieją dwa sposoby rozpoczęcia zdarzenia:
 
     Określ nazwę wydarzenia, nazwę elementu zawartości, okno archiwum i opcję szyfrowania.
 
-    ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
+    ![Utwórz program](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
     Jeśli zaznaczono opcję **Opublikuj to wydarzenie na żywo teraz**, zostaną utworzone ADRESY URL PUBLIKOWANIA.
 

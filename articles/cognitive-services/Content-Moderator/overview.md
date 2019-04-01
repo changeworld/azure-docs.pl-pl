@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7a6424921b869428d1dbeffadd68e173a32d8821
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455250"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758125"
 ---
 # <a name="what-is-azure-content-moderator"></a>Czym jest usługa Azure Content Moderator?
 
@@ -41,26 +41,25 @@ Usługa Content Moderator składa się z kilku interfejsów API usług interneto
 
 Usługa Content Moderator zawiera interfejsy API dla następujących scenariuszy.
 
-| Akcja | Opis |
+| Grupa interfejsów API | Opis |
 | ------ | ----------- |
-|[**Moderowanie tekstu**](text-moderation-api.md)| Skanuje tekst pod kątem obraźliwej zawartości, zawartości o charakterze seksualnym, wulgaryzmów i danych osobowych.|
+|[**Moderowanie tekstu**](text-moderation-api.md)| Skanuje tekst obraźliwą zawartość, zawartość przekleństwa jawne lub sugerujących, wulgaryzmów i danych osobowych.|
 |[**Niestandardowe listy terminów**](try-terms-list-api.md)| Skanuje tekst względem niestandardowych list terminów, poza terminami wbudowanymi. Użyj list niestandardowych, aby blokować zawartość lub zezwalać na nią zgodnie z własnymi zasadami dotyczącymi zawartości.|  
 |[**Moderowanie obrazów**](image-moderation-api.md)| Skanuje obrazy pod kątem zawartości dla dorosłych i zawartości erotycznej, wykrywa tekst w obrazach za pomocą funkcji optycznego rozpoznawania znaków (OCR) i wykrywa twarze.|
 |[**Niestandardowe listy obrazów**](try-image-list-api.md)| Skanuje obrazy względem niestandardowej listy obrazów. Użyj niestandardowych list obrazów, aby filtrować wystąpienia często powtarzającej się zawartości, której nie chcesz klasyfikować ponownie.|
 |[**Moderowanie filmów wideo**](video-moderation-api.md)| Skanuje filmy wideo pod kątem potencjalnej zawartości dla dorosłych lub zawartości erotycznej i zwraca znaczniki czasu dla wypowiadanej zawartości.|
-|[**Przegląd**](try-review-api-job.md)| Przy użyciu operacji [Zadania](try-review-api-job.md), [Przeglądy](try-review-api-review.md) i [Przepływ pracy](try-review-api-workflow.md) utwórz i zautomatyzuj przepływy pracy obsługiwane przez człowieka za pomocą narzędzia do przeglądu przez ludzi. Interfejs API przepływu pracy nie jest jeszcze dostępny za pośrednictwem zestawu .NET SDK.|
+|[**Przegląd interfejsów API**](try-review-api-job.md)| Przy użyciu operacji [Zadania](try-review-api-job.md), [Przeglądy](try-review-api-review.md) i [Przepływ pracy](try-review-api-workflow.md) utwórz i zautomatyzuj przepływy pracy obsługiwane przez człowieka za pomocą narzędzia do przeglądu przez ludzi. Interfejs API przepływu pracy nie jest jeszcze dostępna w zestawie SDK platformy .NET.|
 
-### <a name="human-review-tool"></a>Narzędzie do przeglądu przez ludzi
+### <a name="review-tool"></a>Narzędzie do przeglądu
 
-Usługa Content Moderator obejmuje również internetowe [narzędzie do przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md). 
+Usługa Content Moderator obejmuje również oparta na sieci web [narzędzie do przeglądu](Review-Tool-User-Guide/human-in-the-loop.md), który obsługuje zawartość przeglądy dla moderatorów ludzi do przetworzenia. Dane wejściowe wprowadzane przez ludzi nie uczą usługi, ale połączona praca usługi i zespołów ds. przeglądu przez ludzi pozwala deweloperom uzyskać równowagę między wydajnością i dokładnością. Narzędzie do przeglądu udostępnia przyjazny dla użytkownika frontonu dla różnych zasobów usługi Content Moderator.
 
 ![Strona główna narzędzia do przeglądu przez ludzi usługi Content Moderator](images/homepage.PNG)
 
-Interfejsów API przeglądu możesz użyć do skonfigurowania zespołowych przeglądów tekstu, obrazów i zawartości wideo zgodnie z określonymi przez Ciebie filtrami. Następnie moderatorzy-ludzie mogą podejmować ostateczne decyzje dotyczące moderowania. Dane wejściowe wprowadzane przez ludzi nie uczą usługi, ale połączona praca usługi i zespołów ds. przeglądu przez ludzi pozwala deweloperom uzyskać równowagę między wydajnością i dokładnością.
-
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
+
 Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi Content Moderator powinni znać zasady firmy Microsoft dotyczące danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zacznij korzystać z usługi Content Moderator, postępując zgodnie z instrukcjami w przewodniku [Wypróbowywanie usługi Content Moderator w Internecie](quick-start.md).

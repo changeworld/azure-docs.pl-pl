@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56ad57255f07c93c1bf5f981db07ad4ba57806d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5077f09cba3548b03045011a7b8f16844156de55
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665665"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757640"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -147,7 +147,7 @@ Aby uzyskać więcej informacji o nowym **dzienniki inspekcji** stronie, zobacz 
 **Kategoria usług:** Dostęp warunkowy  
 **Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
 
-Aby zapobiec Administratorzy przed zablokowaniem sobie przypadkowo poza dzierżawcom przy użyciu nieprawidłowej konfiguracji zasad dostępu warunkowego, utworzyliśmy nowe ostrzeżenia oraz zaktualizowano wskazówki w witrynie Azure portal. Aby uzyskać więcej informacji na temat nowych wytycznych, zobacz [zależności usług co to są usługi Azure Active Directory dostępu warunkowego?](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
+Aby zapobiec Administratorzy przed zablokowaniem sobie przypadkowo poza dzierżawcom przy użyciu nieprawidłowej konfiguracji zasad dostępu warunkowego, utworzyliśmy nowe ostrzeżenia oraz zaktualizowano wskazówki w witrynie Azure portal. Aby uzyskać więcej informacji na temat nowych wytycznych, zobacz [zależności usług co to są usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
 ---
 

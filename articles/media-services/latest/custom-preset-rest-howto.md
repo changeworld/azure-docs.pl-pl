@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5fe66634d4f95ba84d13a3d355f28afbedf0f7f0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58012657"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755483"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-rest"></a>Jak kodowanie za pomocą niestandardowej transformacji za pomocą interfejsu REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kodowanie za pomocą niestandardowej transformacji — REST
 
 Podczas kodowania za pomocą usługi Azure Media Services, należy można szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, na podstawie najlepszych w branży, jak pokazano w [strumieniowego przesyłania plików](stream-files-tutorial-with-rest.md#create-a-transform) samouczka. Możesz również tworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia.
 

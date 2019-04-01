@@ -3,17 +3,17 @@ title: Łączenie do Eksploratora danych platformy Azure z ODBC
 description: W tym instruktażu dowiesz się, jak skonfigurować połączenia ODBC do Eksploratora danych platformy Azure, a następnie wizualizowanie danych za pomocą Tableau za pomocą tego połączenia.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: ad00ad247b047d4acf97eb5d0e96229949181ecf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0ec1c2f4fc412ca6c81e179d0ad22f781b896357
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739911"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757620"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Łączenie do Eksploratora danych platformy Azure z ODBC
 
@@ -79,7 +79,7 @@ Po zakończeniu konfigurowania ODBC, przykładowe dane można zapewnić Tableau.
 
 1. Na pulpicie Tableau, w menu po lewej stronie wybierz **inne bazy danych (ODBC)**.
 
-    ![Połącz się z ODBC](media/connect-odbc/connect-odbc.png)
+    ![Łączenie z bazą danych ODBC](media/connect-odbc/connect-odbc.png)
 
 1. Aby uzyskać **DSN**, wybierz źródło danych utworzone dla ODBC, a następnie wybierz **Sign In**.
 

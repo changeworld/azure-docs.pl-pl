@@ -1,68 +1,195 @@
 ---
-title: Moderuj zawartość ludziom dokonywanie przy użyciu konsoli interfejsu API — Content Moderator
+title: Tworzenie przeglądy Moderowanie przy użyciu konsoli interfejsu API REST - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Za pomocą API Przejrzyj Przegląd operacji, utworzyć obraz lub tekst przeglądy dotyczące moderowania ludzi.
+description: Za pomocą Content Moderator przeglądu interfejsów API usługi Azure, utworzyć obraz lub tekst przeglądy dotyczące moderowania ludzi.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: beadbfc09526f738ba90252787b5b0910a2f7163
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101469"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755361"
 ---
-# <a name="create-reviews-from-the-api-console"></a>Utwórz przeglądy z poziomu konsoli interfejsu API
+# <a name="create-human-reviews-rest"></a>Utwórz ludziom dokonywanie (REST)
 
-Użyj API Przejrzyj [Przejrzyj operacje](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) utworzyć image lub text przeglądów do moderacji ludzi. Moderatorzy ludzi narzędzie Przegląd Przejrzyj zawartość. Przy użyciu tej operacji, w oparciu o logikę biznesową po Moderowanie. Użyć go po zawartości zostały przeskanowane, korzystając z dowolnego obrazu Content Moderator, tekst interfejsów API lub inne interfejsy API usług Cognitive Services. 
+[Przeglądy](./review-api.md#reviews) przechowywania i wyświetlania zawartości dla moderatorów ludzi do oceny. Po ukończeniu weryfikacji użytkownika wyniki są wysyłane do punktu końcowego określonego wywołania zwrotnego. W tym przewodniku dowiesz się, jak skonfigurować przeglądy przy użyciu przeglądu interfejsów API REST za pośrednictwem konsoli interfejsu API. Po zrozumieniu struktury interfejsów API można łatwo portu tych wywołań na dowolną platformę zgodną REST.
 
-Po ludzi moderator przeglądy automatycznie przypisane tagi i dane prognozowania i przesyła decyzji końcowego Moderowanie, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
-Będą mogli ją testować interfejs API za pomocą konsoli usługi online, konieczne jest kilku wartości w celu wprowadzenia w życie konsoli programu:
+- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
 
-- **teamName**: Nazwa zespołu, które zostało utworzone podczas konfigurowania konta narzędzie do przeglądu. 
-- **ContentId**: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. ContentId przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.
-- **metadane**: Niestandardowe pary klucz wartość zwracana do punktu końcowego interfejsu API podczas wywołania zwrotnego. Jeśli klucz jest krótki kod, który jest zdefiniowany w narzędzie do przeglądu, pojawia się jako tag.
-- **Ocp-Apim-Subscription-Key**: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
+## <a name="create-a-review"></a>Utwórz Przegląd
 
-Najprostszym sposobem na dostęp do konsoli testowania pochodzi z **poświadczenia** okna.
+O utworzenie recenzji, przejdź do **[Przejrzyj — tworzenie](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API odwoływać się do strony i wybierz przycisk w Twoim regionie klucza (można znaleźć ten adres URL punktu końcowego na **poświadczenia** strony z [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/)). Spowoduje to uruchomienie konsoli interfejsu API, w którym można łatwo utworzyć i uruchomienia wywołań interfejsu API REST.
 
-1. W **poświadczenia** wybierz [dokumentacja interfejsu API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+![Przegląd — pole region Get](images/test-drive-region.png)
 
-   **Przejrzyj — tworzenie** zostanie otwarta strona.
+### <a name="enter-rest-call-parameters"></a>Wprowadź parametry wywołania REST
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
+Wprowadź wartości w polach **teamName**, i **Ocp-Apim-Subscription-Key**:
 
-   ![Przejrzyj — Tworzenie strony pole region](images/test-drive-region.png)
+- **teamName**: Identyfikator zespołu, który został utworzony podczas konfigurowania usługi [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) konta (w **identyfikator** pola na ekranie poświadczenia tego narzędzia przeglądu).
+- **Ocp-Apim-Subscription-Key**: Klucz usługi Content Moderator. Można je znaleźć na **ustawienia** karcie [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com).
 
-   **Przejrzyj — tworzenie** zostanie otwarta konsola interfejsu API.
+### <a name="enter-a-review-definition"></a>Wprowadź definicję przeglądu
+
+Edytuj **treść żądania** pole, aby wprowadzić żądania JSON przy użyciu następujących pól:
+
+- **metadane**: Niestandardowe pary klucz wartość do zwrócenia do punktu końcowego usługi wywołania zwrotnego. Jeśli klucz jest krótki kod, który jest zdefiniowany w [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com), będzie ono wyświetlane jako tag.
+- **Zawartość**: W przypadku obrazów i zawartości wideo jest to ciąg adres URL wskazuje zawartość. Zawartość tekstowa jest to ciąg tekstowy rzeczywistych.
+- **ContentId**: Niestandardowego ciągu identyfikatora. Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. Jest to przydatne kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.
+- **CallbackEndpoint**: (Opcjonalnie) Adres URL do odbierania informacji o wywołaniu zwrotnym, po zakończeniu przeglądu.
+
+Domyślną treść żądania zawiera przykłady różnych rodzajów recenzje, które można utworzyć:
+
+```json
+[Image]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Image",
+    "Content": "<Content Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Text]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Text",
+    "Content": "<Your Text Content>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Video]
+[
+  {
+    "VideoFrames":[
+      {
+          "Id": "<Frame Id>",
+          "Timestamp": "<Frame Timestamp",
+          "FrameImage":"<Frame Image URL",
+          "Metadata": [
+            {
+              "Key": "<Key>",
+              "Value": "<Value"
+            }
+          ],
+          "ReviewerResultTags": [
+          ]
+    ], 
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      },
+      //For encrypted Videos
+        {
+          "Key": "protectedType",
+          "Value": "AES or FairPlay or Widevine or Playready"
+        },
+        {
+          "Key": "authenticationToken",
+          "Value": "your viewtoken(In case of Video Indexer AES encryption type, this value is viewtoken from breakdown json)"
+        },
+      //For FairPlay encrypted type video include certificateUrl as well
+        {
+          "Key": "certificateUrl",
+          "Value": "your certificate url"
+        }
+    ],
+    "Type": "Video",
+    "Content": "<Stream Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>",
+    [Optional]
+    "Timescale": "<Timescale of the video>
+  }
+]
+```
+
+### <a name="submit-your-request"></a>Prześlij żądanie
   
-3. Wprowadź wartości parametrów zapytania wymagany, typ zawartości i klucz subskrypcji. W **treść żądania** Określ zawartości (na przykład obraz lokalizacji), metadane i inne informacje związane z zawartością.
+Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK`i **zawartość odpowiedzi** okno wyświetla identyfikator przeglądu. Skopiuj ten identyfikator do użycia w kolejnych krokach.
 
-   ![Przejrzyj — tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/test-drive-review-1.PNG)
+![Przejrzyj — Tworzenie konsoli zawartości, że pole zawiera identyfikator przeglądu odpowiedzi](images/test-drive-review-2.PNG)
+
+### <a name="examine-the-new-review"></a>Sprawdź nowy przegląd
+
+W [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com), wybierz opcję **przeglądu** > **obraz**/**tekstu** / **Wideo** (w zależności od zawartości użyto). Powinna zostać wyświetlona zawartość, który został przekazany, gotowa do przeglądu przez ludzi.
+
+![Obraz narzędzie do przeglądu piłka nożna](images/test-drive-review-5.PNG)
+
+## <a name="get-review-details"></a>Pobierz szczegóły przeglądu
+
+Aby uzyskać szczegółowe informacje o istniejący Przegląd, przejdź do [Przejrzyj — Pobierz](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) API odwoływać się do strony i wybierz przycisk w Twoim regionie (region, w którym jest podawana klucz).
+
+![Przepływ pracy - wybór regionu Get](images/test-drive-region.png)
+
+Wprowadź parametry wywołania REST, tak jak w powyższej sekcji. W tym kroku **reviewId** jest unikatowy ciąg Identyfikatora otrzymany po utworzeniu przeglądu.
+
+![Przejrzyj — Tworzenie konsoli wyniki Get](images/test-drive-review-3.PNG)
   
-4. Wybierz pozycję **Wyślij**. Zostanie utworzony identyfikator przeglądu. Skopiuj ten identyfikator do użycia w kolejnych krokach.
+Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK`i **zawartość odpowiedzi** polu Wyświetla szczegóły przeglądu w formacie JSON, takich jak następujące:
 
-   ![Przejrzyj — Tworzenie konsoli zawartości, że pole zawiera identyfikator przeglądu odpowiedzi](images/test-drive-review-2.PNG)
-  
-5. Wybierz **uzyskać**, a następnie otwórz interfejs API, wybierając przycisk, który odpowiada Twoim regionie. Na stronie wynikowy wprowadź wartości dla **teamName**, **ReviewID**, i **klucz subskrypcji**. Wybierz **wysyłania** przycisk na stronie. 
+```json
+{  
+  "reviewId":"201712i46950138c61a4740b118a43cac33f434",
+  "subTeam":"public",
+  "status":"Complete",
+  "reviewerResultTags":[  
+    {  
+      "key":"a",
+      "value":"False"
+    },
+    {  
+      "key":"r",
+      "value":"True"
+    },
+    {  
+      "key":"sc",
+      "value":"True"
+    }
+  ],
+  "createdBy":"<teamname>",
+  "metadata":[  
+    {  
+      "key":"sc",
+      "value":"true"
+    }
+  ],
+  "type":"Image",
+  "content":"https://reviewcontentprod.blob.core.windows.net/<teamname>/IMG_201712i46950138c61a4740b118a43cac33f434",
+  "contentId":"0",
+  "callbackEndpoint":"<callbackUrl>"
+}
+```
 
-   ![Przejrzyj — Tworzenie konsoli wyniki Get](images/test-drive-review-3.PNG)
-  
-6. Zobaczysz wyniki skanowania.
+Zwróć uwagę na następujące pola w odpowiedzi:
 
-   ![Przejrzyj — Tworzenie pola zawartości odpowiedzi konsoli](images/test-drive-review-4.PNG)
-  
-7. Na pulpicie nawigacyjnym Content Moderator wybierz **przeglądu** > **obraz**. Pojawia się obraz, który skanowany, gotowe do przeglądu przez ludzi.
-
-   ![Obraz narzędzie do przeglądu piłka nożna](images/test-drive-review-5.PNG)
+- **status**
+- **reviewerResultTags**: To jest wyświetlana, jeśli ręcznie dodano żadnych tagów przez zespół przeglądu przez ludzi (pokazano **createdBy** pola).
+- **metadane**: Pokazuje to tagi, które początkowo zostały dodane w przeglądzie, przed wprowadzeniem zmian zespół przeglądu przez ludzi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać się [Szybki Start .NET przeglądy](moderation-reviews-quickstart-dotnet.md) do integracji z aplikacją.
+W tym przewodniku przedstawiono sposób tworzenia przeglądów moderowanie zawartości przy użyciu interfejsu API REST. Następnie zintegrować przeglądy scenariusz end-to-end Moderowanie takich jak [Moderowanie handlu elektronicznego](./ecommerce-retail-catalog-moderation.md) samouczka.

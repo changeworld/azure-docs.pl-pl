@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864302"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757757"
 ---
 # <a name="learn-text-moderation-concepts"></a>Pojęcia dotyczące moderowania tekstu
 
@@ -26,7 +26,7 @@ Odpowiedź usługi zawiera następujące informacje:
 
 - Wulgaryzmów: termin, na podstawie dopasowania z wbudowanej listy obsceniczne warunki w różnych językach
 - Klasyfikacja: wspomagane maszynowo klasyfikacji na trzy kategorie
-- Dane osobowe (PII)
+- Dane osobowe
 - Poprawił tekstu
 - Oryginalny tekst
 - Język
@@ -75,7 +75,7 @@ Następujące wyodrębniania w instrukcji extract JSON przedstawiono przykładow
 - `Score` to od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta funkcja opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
 - `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
 
-## <a name="personally-identifiable-information-pii"></a>Dane osobowe (PII)
+## <a name="personal-data"></a>Dane osobowe
 
 Funkcja dane osobowe wykrywa potencjalne obecności te informacje:
 

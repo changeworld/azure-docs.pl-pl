@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445487"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756812"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
+Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom DevOps) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
 
 ## <a name="built-in-monitoring-roles"></a>Wbudowane role monitorowania
 Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zasobów w ramach subskrypcji, ograniczając osoby odpowiedzialne za monitorowanie infrastruktury, aby uzyskać i skonfigurować je. Usługa Azure Monitor zapewnia dwie role out-of--box: Monitorowania Czytelnik i współautor monitorowania.
@@ -38,10 +38,10 @@ Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie 
 * Dostęp do danych usługi Application Insights i wyświetlanie danych analitycznych w sztucznej Inteligencji.
 * Wyszukiwanie danych obszaru roboczego usługi Log Analytics, w tym dane użycia dla obszaru roboczego.
 * Wyświetlanie grup zarządzania usługi Log Analytics.
-* Pobieranie schematu wyszukiwania usługi Log Analytics.
-* Lista pakietów intelligence Pack usługi Log Analytics.
-* Pobierz i wykonaj zapisanego wyszukiwania analizy dzienników.
-* Pobieranie konfiguracji magazynu analizy dzienników.
+* Pobierz schemat wyszukiwania w obszarze roboczym usługi Log Analytics.
+* Lista pakietów monitorowania w obszarze roboczym usługi Log Analytics.
+* Pobierz i wykonaj zapisanych wyszukiwań w obszarze roboczym usługi Log Analytics.
+* Pobieranie konfiguracji magazynu analizy dzienników obszaru roboczego.
 
 > [!NOTE]
 > Ta rola nie daje dostęp do odczytu danych dziennika, które są przesyłane strumieniowo do Centrum zdarzeń lub przechowywane na koncie magazynu. [Zobacz poniżej](#security-considerations-for-monitoring-data) informacji na temat konfigurowania dostępu do tych zasobów.
@@ -57,9 +57,9 @@ Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystki
 * Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Utwórz testy sieci web usługi Application Insights i składników.
 * Obszar roboczy usługi Log Analytics listy udostępnionych kluczy.
-* Włącz lub wyłącz pakietów intelligence Pack usługi Log Analytics.
-* Tworzenie i usuwanie i wykonywanie zapisanego wyszukiwania analizy dzienników.
-* Tworzenie i usuwanie konfiguracji magazynu analizy dzienników.
+* Włącz lub wyłącz pakiety monitorowania, w obszarze roboczym usługi Log Analytics.
+* Tworzenie i usuwanie wykonać zapisanych wyszukiwań w obszarze roboczym usługi Log Analytics.
+* Tworzenie i usuwanie konfiguracji magazynu analizy dzienników obszaru roboczego.
 
 \*użytkownik musi również oddzielnie udzielane uprawnienia ListKeys zasobu docelowego (magazynu konta lub zdarzenia przestrzeń nazw Centrum) można ustawić profil dziennika lub ustawienie diagnostyczne.
 

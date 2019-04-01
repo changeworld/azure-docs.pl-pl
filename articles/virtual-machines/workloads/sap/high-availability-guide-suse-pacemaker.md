@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487368"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755717"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -84,7 +84,7 @@ Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualn
 
 Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych** do tworzenia dysków iSCSI w przypadku klastrów używane przez systemy SAP. W poniższym przykładzie są tworzone interwencja urządzeń dla wielu klastrów. Przedstawia on sposób użyje jednego serwera obiektów docelowych iSCSI dla wielu klastrów. Urządzenia interwencja są umieszczane na dysku systemu operacyjnego. Upewnij się, że masz wystarczająco dużo miejsca.
 
-**systemu plików NFS** służy do identyfikowania klastra systemu plików NFS **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania klaster bazy danych **NW1**, **0 systemu plików nfs** i **1 systemu plików nfs** są nazwy hostów węzłów klastra systemu plików NFS **nw1 xscs 0** i  **nw1 xscs 1** są nazwy hostów programu **NW1** węzły, klastra ASCS i **nw1-db-0** i **nw1-db-1** są nazwy hostów bazy danych węzły klastra. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
+**` nfs`** Służy do identyfikowania klastra systemu plików NFS **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania bazy danych klastra **NW1** , **0 systemu plików nfs** i **1 systemu plików nfs** są nazwy hostów węzłów klastra systemu plików NFS **nw1 xscs 0** i **nw1 xscs 1**są nazwy hostów programu **NW1** węzły, klastra ASCS i **nw1-db-0** i **nw1-db-1** są nazwy hostów bazy danych z węzłami klastra. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Utwórz plik konfiguracji softdog
+   Utwórz ` softdog` pliku konfiguracji
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -321,7 +321,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]**  Konfiguruj system operacyjny
+1. **[A]**  Konfiguracji systemu operacyjnego
 
    W niektórych przypadkach program Pacemaker tworzy wiele procesów, a tym samym przekroczy dozwolona liczba procesów. W takim przypadku pulsu między węzłami klastra może zakończyć się niepowodzeniem i prowadzić do trybu failover zasobów. Zalecamy zwiększenie maksymalna liczba dozwolonych procesów, ustawiając następujący parametr.
 
@@ -346,6 +346,18 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    # Change/set the following settings
    vm.dirty_bytes = 629145600
    vm.dirty_background_bytes = 314572800
+   </code></pre>
+
+1. **[A]**  Konfigurowanie chmury platformy azure netconfig zaświadczanie o kondycji klastra
+
+   Zmień plik konfiguracji interfejsu sieciowego, jak pokazano poniżej, aby uniemożliwić usunięcie wirtualnego adresu IP (program Pacemaker kontrolować przypisania adresów VIP) wtyczki sieci chmury. Aby uzyskać więcej informacji, zobacz [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+
+   <pre><code># Edit the configuration file
+   sudo vi /etc/sysconfig/network/ifcfg-eth0 
+   
+   # Change CLOUD_NETCONFIG_MANAGE
+   # CLOUD_NETCONFIG_MANAGE="yes"
+   CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
 1. **[1]**  Dostęp ssh

@@ -1,6 +1,6 @@
 ---
-title: Metody uwierzytelniania dla ASC IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o różnych dostępnych metod uwierzytelniania w przypadku używania usługi ASC dla usługi IoT.
+title: Metody uwierzytelniania dla usługi Azure Security Center w wersji zapoznawczej IoT | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o różnych dostępnych metod uwierzytelniania w przypadku używania usługi Azure Security Center dla usługi IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577804"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758394"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody uwierzytelniania agenta zabezpieczeń 
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W tym artykule opisano różnych metod uwierzytelniania służących z agentem AzureIoTSecurity do uwierzytelniania za pomocą usługi IoT Hub.
 
-Dla każdego urządzenia jest dołączona do ASC IoT w usłudze IoT Hub modułu zabezpieczeń jest wymagany. W celu uwierzytelnienia urządzenia ASC IoT można użyć jednej z dwóch metod. Wybierz metodę, która jest najlepsza dla istniejącego rozwiązania IoT. 
+Dla każdego urządzenia dołączone do usługi Azure Security Center (ASC) dotyczące IoT w usłudze IoT Hub modułu zabezpieczeń jest wymagany. W celu uwierzytelnienia urządzenia ASC IoT można użyć jednej z dwóch metod. Wybierz metodę, która jest najlepsza dla istniejącego rozwiązania IoT. 
 
 > [!div class="checklist"]
 > * Opcja modułu zabezpieczeń

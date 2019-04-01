@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do danych przy użyciu usługi ASC IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tym, jak uzyskać dostęp do danych alertów i zalecenia zabezpieczeń po IoT przy użyciu usługi ASC.
+title: Uzyskiwanie dostępu do danych przy użyciu Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o tym, jak uzyskać dostęp do danych alertów i zalecenia zabezpieczeń po przy użyciu Centrum zabezpieczeń Azure dla IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 510ee9bdefe87c1fab40e58bb715f2a8cce936b7
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576643"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758523"
 ---
 # <a name="access-your-security-data"></a>Dostęp do danych zabezpieczeń 
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC IoT przechowuje alertów zabezpieczeń, zaleceń i danych pierwotnych zabezpieczeń (Jeśli użytkownik chce zapisać ją) w obszarze roboczym usługi Log Analytics.
+Usługa Azure Security Center (ASC) dla IoT przechowuje alertów zabezpieczeń, zaleceń i danych pierwotnych zabezpieczeń (Jeśli użytkownik chce zapisać ją) w obszarze roboczym usługi Log Analytics.
 
 ## <a name="log-analytics"></a>Log Analytics
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cfaf0bf20449262fcebb6cefc1b0a499c6190ae8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861174"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756463"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki start: Wypróbuj pakiet Content Moderator w sieci web
 
@@ -69,5 +69,5 @@ Ewentualnie wykonaj kolejne kroki, aby rozpocząć korzystanie z interfejsów AP
 
 Dowiedz się, jak używać interfejsy API moderowania samodzielnie w swojej aplikacji.
 - Implementowanie Moderowanie obrazów. Użyj [Konsola interfejsu API](try-image-api.md) lub [ C# Szybki Start](image-moderation-quickstart-dotnet.md) do skanowania obrazów i wykrywania potencjalnych dorosłych i zawartości erotycznej przy użyciu tagów, oceny zaufania i inne wyodrębnionych informacji.
-- Implementowanie Moderowanie tekstu. Użyj [Konsola interfejsu API](try-text-api.md) lub użyj [ C# Szybki Start](text-moderation-quickstart-dotnet.md) do skanowania zawartości tekstu dla wulgaryzmy klasyfikacji wspomagane maszynowo niepotrzebnego tekstu (wersja zapoznawcza) i identyfikowalnych danych dane osobowe. 
+- Implementowanie Moderowanie tekstu. Użyj [Konsola interfejsu API](try-text-api.md) lub użyj [ C# Szybki Start](text-moderation-quickstart-dotnet.md) do skanowania zawartości tekstowej wulgaryzmy, klasyfikacji wspomagane maszynowo niepotrzebnego tekstu (wersja zapoznawcza) i danych osobowych.
 - Moderowanie filmów wideo w życie. Postępuj zgodnie z [przewodnik dotyczący instrukcje Moderowanie wideo C# ](video-moderation-api.md) do skanowania filmów wideo i wykrywanie potencjalnych zawartości dla dorosłych. 
