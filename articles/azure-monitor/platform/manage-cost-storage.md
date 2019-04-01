@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 599b1d3f522a0f287736808cce88163f1ef7f28f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295678"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755810"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics w usłudze Azure Monitor
 
 > [!NOTE]
 > W tym artykule opisano sposób kontrolowania kosztów w usłudze Log Analytics, ustawiając okres przechowywania danych.  Zapoznaj się z następującymi artykułami, aby uzyskać powiązane informacje.
 > - [Analizowanie użycia danych w usłudze Log Analytics](manage-cost-storage.md) w tym artykule opisano sposób analizowanie i alerty dotyczące użycia danych.
 > - [Monitorowanie użycia i szacowanych kosztów](usage-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
-Usługa log Analytics została zaprojektowana do skalowania i zbieranie pomocy technicznej, indeksowanie i przechowywanie dużych ilości danych na dzień z dowolnego źródła w przedsiębiorstwie lub wdrożonych na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu, istotne jest dowiedzieć się, że koszt obszaru roboczego usługi Log Analytics nie jest po prostu oparty na temat ilości zebranych danych, również jest zależny od wybranym planem i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
+Usługa log Analytics w usłudze Azure Monitor jest przeznaczone do skalowania i zbieranie pomocy technicznej, indeksowanie i przechowywanie dużych ilości danych na dzień z dowolnego źródła w przedsiębiorstwie lub wdrożonych na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu, istotne jest dowiedzieć się, że koszt obszaru roboczego usługi Log Analytics nie jest po prostu oparty na temat ilości zebranych danych, również jest zależny od wybranym planem i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
 
 W tym artykule omówimy, jak można proaktywnie monitorować wzrostu wielkości i magazynu danych i definiowania ograniczeń do kontrolowania tych powiązanych z nimi kosztów. 
 
@@ -114,8 +114,6 @@ Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenow
 
 Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [zmienić swoją subskrypcję monitorowania modelu cen w usłudze Azure Monitor](usage-estimated-costs.md#moving-to-the-new-pricing-model) która spowoduje zmianę warstwy cenowej wszystkich obszarów roboczych w tej subskrypcji.
 
-> [!NOTE]
-> Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
 
 > [!NOTE]
 > Możesz dowiedzieć się więcej [ustawienie warstwy cenowej za pośrednictwem ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 

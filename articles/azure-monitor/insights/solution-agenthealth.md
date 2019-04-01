@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983387"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757962"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Rozwiązanie Agent Health na platformie Azure
-Rozwiązanie Agent Health na platformie Azure pomaga zrozumieć, dla wszystkich agentów raportujących do obszaru roboczego usługi Log Analytics lub System Center Operations Manager grupy zarządzania podłączone bezpośrednio do usługi Azure Monitor, które są nie odpowiada i wysyłaniem operacyjne dane.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Rozwiązanie Agent Health w usłudze Azure Monitor
+Rozwiązanie Agent Health na platformie Azure pomoże Ci zrozumieć, dla wszystkich agentów raportujących bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor lub grupy zarządzania programu System Center Operations Manager podłączony do usługi Azure Monitor, które są nie odpowiada i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed wdrożeniem tego rozwiązania, upewnij się, masz aktualnie obsługiwanych [agenci Windows](../../log-analytics/log-analytics-windows-agent.md) raportowania do obszaru roboczego usługi Log Analytics lub serwerowi [grupy zarządzania programu Operations Manager](../../azure-monitor/platform/om-agents.md) zintegrowana z usługą obszar roboczy.
@@ -62,7 +62,7 @@ Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania 
 | Rozkład według typu systemu operacyjnego | Rozkład liczby agentów systemu Windows i Linux w Twoim środowisku.|
 | Rozkład według wersji agenta | Rozkład różnych wersji agentów zainstalowanych w Twoim środowisku i liczba agentów dla każdej z nich.|
 | Rozkład według kategorii agenta | Rozkład różnych kategorii agentów wysyłających zdarzenia pulsu: bezpośredni agenci, agenci programu OpsMgr i serwer zarządzania programu OpsMgr.|
-| Rozkład według grupy zarządzania | Rozkład różnych grup zarządzania SCOM w Twoim środowisku.|
+| Rozkład według grupy zarządzania | Rozkład różnych grup zarządzania programu Operations Manager w środowisku.|
 | Lokalizacja geograficzna agentów | Rozkład różnych krajów, w których masz agentów, i łączna liczba agentów zainstalowanych w każdym kraju.|
 | Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowanej bramy usługi Log Analytics, a lista tych serwerów.|
 
@@ -117,4 +117,4 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [alertów w usłudze Azure Monitor](../platform/alerts-overview.md) szczegółowe informacje na temat generowania alertów z usługi Log Analytics. 
+* Dowiedz się więcej o [alertów w usłudze Azure Monitor](../platform/alerts-overview.md) szczegółowe informacje na temat generowania alertów z dziennika zapytań. 

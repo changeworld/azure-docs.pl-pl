@@ -1,6 +1,6 @@
 ---
-title: Włącz ASC dla usługi IoT w wersji zapoznawczej Centrum IoT | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć ASC dla usługi IoT w usłudze IoT Hub.
+title: Usługa Azure Security Center dla usługi IoT w wersji zapoznawczej Centrum IoT | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć usługę Azure Security Center dla usługi IoT w usłudze IoT Hub.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: cea7517a99358d41a8ba60a78b4e2bfdbdeaf0e8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: cb89bb4316b1cd62b3b42a6a0fa05a9fa4513e54
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576228"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754331"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten artykuł zawiera wyjaśnienie, jak włączyć ASC usługi IoT (wersja zapoznawcza) w usłudze IoT Hub.  
+Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center (ASC) usługi IoT (wersja zapoznawcza) w usłudze IoT Hub.  
 
 > [!NOTE]
-> ASC IoT aktualnie obsługuje tylko w warstwie standardowa i wyższych centra IoT Hub.
->ASC IoT jest rozwiązaniem jednym Centrum. Jeśli potrzebujesz wielu centrach, wiele rozwiązań są wymagane. 
+> Centrum zabezpieczeń Azure dla IoT aktualnie obsługuje tylko w warstwie standardowa i wyższych centra IoT Hub.
+> Centrum zabezpieczeń Azure dla IoT jest rozwiązaniem jednym Centrum. Jeśli potrzebujesz wielu centrach, wiele rozwiązań są wymagane. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Wymagania wstępne dotyczące włączania usługi
 

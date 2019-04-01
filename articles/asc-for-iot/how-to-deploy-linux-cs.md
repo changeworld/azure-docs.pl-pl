@@ -1,6 +1,6 @@
 ---
-title: Przewodnik instalacji i wdrażania systemu Linux C# agenta ASC IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować usługi ASC IoT agenta w systemie Linux zarówno 32-bitowych i 64-bitowych.
+title: Przewodnik instalacji i wdrażania systemu Linux C# agenta usługi Azure Security Center w wersji zapoznawczej IoT | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować Centrum zabezpieczeń Azure dla IoT agenta w systemie Linux zarówno 32-bitowych i 64-bitowych.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: d6b4e6065b0ef198ad583b3760124730e658fe0b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: be4c663d3a1e99ef67cbbbc2f39b315f1080125c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619912"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758334"
 ---
-# <a name="deploy-asc-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie usługi ASC dla IoT C#— na podstawie zabezpieczeń agenta dla systemu Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie usługi Azure Security Center dla IoT C#— na podstawie zabezpieczeń agenta dla systemu Linux
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten przewodnik wyjaśnia, jak zainstalować i wdrożyć usługi ASC dla IoT C#-agent zabezpieczenia oparty na w systemie Linux.
+Ten przewodnik wyjaśnia, jak zainstalować i wdrożyć usługi Azure Security Center (ASC) dla IoT C#-agent zabezpieczenia oparty na w systemie Linux.
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]

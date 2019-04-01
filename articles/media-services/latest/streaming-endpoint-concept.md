@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845607"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757187"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
 
@@ -33,18 +33,38 @@ Aby uzyskać wszystkie dodatkowe punkty końcowe: `{EndpointName}-{AccountName}-
 
 ## <a name="types"></a>Typy  
 
-Istnieją dwa **punkt końcowy przesyłania strumieniowego** typów: **Standardowa** i **Premium**. Typ jest zdefiniowany przez liczbę jednostek skalowania (`scaleUnits`) możesz przydzielić dla punktu końcowego przesyłania strumieniowego. 
+Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standardowy** i **Premium**. Typ jest zdefiniowany przez liczbę jednostek skalowania (`scaleUnits`) możesz przydzielić dla punktu końcowego przesyłania strumieniowego. 
 
-W tabeli opisano typy:  
+Tabela zawiera opis typów:  
 
 |Type|Jednostki skalowania|Opis|
 |--------|--------|--------|  
-|**Standardowy punkt końcowy przesyłania strumieniowego** (zalecane)|0|**Standardowa** typu jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. **Standardowa** typu automatycznie skaluje przepustowość wychodzącą. <br/>Dla klientów korzystających z bardzo wymagających wymagania dotyczące usługi Media Services oferują **Premium** punkty końcowe, które mogą być używane przesyłania strumieniowego umożliwiają skalowanie pojemności dla największych odbiorców internet. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod amsstreaming\@microsoft.com, aby uzyskać wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
-|**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. Korzystając z **Premium** typ, każda włączona jednostka zapewnia dodatkową przepustowość do aplikacji. |
+|**Standardowy punkt końcowy przesyłania strumieniowego** (zalecany)|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** typu, ale można ją zmienić na typ Premium.<br/> Standardowy typ jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. Typ **Standardowy** automatycznie skaluje przepustowość wychodzącą. Przepływność z tego typu punktu końcowego przesyłania strumieniowego jest do 600 MB/s. Wideo fragmenty są przechowywane w usłudze CDN nie należy używać przepustowości punkt końcowy przesyłania strumieniowego.<br/>W przypadku klientów z bardzo dużymi wymaganiami usługa Media Services oferuje punkty końcowe przesyłania strumieniowego **Premium**, które umożliwiają skalowanie pojemności w poziomie dla największych odbiorców w Internecie. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod amsstreaming\@microsoft.com, aby uzyskać wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
+|**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
+ 
+## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
+
+### <a name="features"></a>Funkcje
+
+Cecha|Standardowa (Standard)|Premium
+---|---|---
+Bezpłatne pierwsze 15 dni| Yes |Nie
+Przepływność |Do 600 MB/s, gdy nie jest używana sieć CDN systemu Azure. Skaluje się przy użyciu usługi CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Skaluje się przy użyciu usługi CDN.
+Umowa SLA | 99.9|Dostępność na poziomie 99,9 (200 MB/s na SU).
+CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
+Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
+Szyfrowanie dynamiczne|Yes|Yes
+Dynamiczne tworzenie pakietów|Yes|Yes
+Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe jednostki przesyłania strumieniowego
+Host filtrowanie/G20/Custom IP <sup>1</sup>|Yes|Yes
+Pobierania progresywnego|Yes|Yes
+Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.<br/>Jeśli Twoim zdaniem mogą mieć potrzeb poza Standard. Skontaktuj się z nami (amsstreaming@microsoft.com) Jeśli oczekujesz, rozmiar współbieżnych odbiorców większych niż 50 000 osób przeglądających.
+
+<sup>1</sup> warunkiem bezpośrednio na punkt końcowy przesyłania strumieniowego nie włączono usługę CDN w punkcie końcowym.
 
 ## <a name="working-with-cdn"></a>Praca z usługą CDN
 
-W większości przypadków należy włączono usługę CDN. Jednak jeśli są przewidywania współbieżności maksymalną mniejszy niż 500 osoby przeglądające następnie zalecane jest można wyłączyć usługi CDN, ponieważ sieć CDN jest skalowana najlepsze ze współbieżnością.
+W większości przypadków usługa CDN powinna być włączona. Jeśli jednak przewidujesz maksymalną współbieżność poniżej 500 osób wyświetlających, zaleca się wyłączenie usługi CDN, ponieważ jest ona skalowana najlepiej w przypadku współbieżności.
 
 > [!NOTE]
 > Punkt końcowy przesyłania strumieniowego `hostname` i adres URL przesyłania strumieniowego pozostaje taki sam, czy włączyć sieć CDN.
@@ -70,7 +90,7 @@ Ta sekcja zawiera szczegółowe informacje o niektórych właściwości końcowe
     Jeśli ten błąd w centrum danych nie obsługuje. Należy spróbować innego centrum danych.
 - `cdnProfile` — W przypadku `cdnEnabled` jest ustawiona na wartość true, można również przekazać `cdnProfile` wartości. `cdnProfile` jest nazwa profilu CDN, w której zostanie utworzony punkt końcowy usługi CDN. Można podać istniejące cdnProfile lub użyć nowej. Jeśli wartość jest równa NULL i `cdnEnabled` jest true, wartość domyślna "AzureMediaStreamingPlatformCdnProfile" jest używana. Jeśli podane `cdnProfile` już istnieje, punkt końcowy został utworzony w nim. Jeśli profil nie istnieje, nowy profil pobiera tworzone automatycznie.
 - `cdnProvider` -Jeśli CDN została włączona, można również przekazać `cdnProvider` wartości. `cdnProvider` Określa, który dostawca, który będzie używany. Obecnie obsługiwane są trzy wartości: "StandardVerizon", "PremiumVerizon" and "StandardAkamai". Jeśli podano żadnej wartości i `cdnEnabled` ma wartość true, "StandardVerizon" jest używana (która jest wartością domyślną).
-- `crossSiteAccessPolicies` — Służy do określania zasad dostępu cross-site dla różnych klientów. Aby uzyskać więcej informacji, zobacz [określenie pliku zasad między domenami](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) i [wprowadzania Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).
+- `crossSiteAccessPolicies` — Służy do określania zasad dostępu cross-site dla różnych klientów. Aby uzyskać więcej informacji, zobacz [określenie pliku zasad między domenami](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) i [wprowadzania Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).<br/>Ustawienia dotyczą tylko Smooth Streaming.
 - `customHostNames` — Umożliwia skonfigurowanie punktu końcowego przesyłania strumieniowego, aby akceptować ruch skierowany do niestandardową nazwą hosta.  Ta właściwość jest prawidłowa dla standardowego i punkty końcowe przesyłania strumieniowego w warstwie Premium i mogą być ustawiane podczas `cdnEnabled`: wartość false.
     
     Własność nazwy domeny musi zostać potwierdzone przy usługi Media Services. Usługi Media Services sprawdza własność nazwy domeny, wymagając `CName` rekord zawierający identyfikator konta usługi Media Services jako składnik, który ma zostać dodany do domeny w użyciu. Na przykład dla "sports.contoso.com", który ma być używany jako niestandardową nazwą hosta punktu końcowego przesyłania strumieniowego, rekord `<accountId>.contoso.com` należy skonfigurować, aby wskazywały na jeden z nazw hostów weryfikacji usługi Media Services. Nazwa hosta Weryfikacja składa się z verifydns. \<mediaservices dns strefy >. 

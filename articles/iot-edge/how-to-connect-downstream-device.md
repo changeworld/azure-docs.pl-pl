@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445929"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757131"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
 
@@ -43,7 +43,7 @@ Przed wykonaniem kroków opisanych w tym artykule, musisz mieć dwa urządzenia 
     Obecnie tylko podrzędnym urządzenia przy użyciu uwierzytelniania za pomocą klucza symetrycznego można połączyć za pośrednictwem bramy usługi IoT Edge. Urzędy certyfikacji X.509 i certyfikaty X.509 z podpisem własnym nie są obecnie obsługiwane.
     
 > [!NOTE]
-> "Nazwa bramy" służąca do tworzenia certyfikatów w tej instrukcji musi mieć taką samą nazwę jak używana jako nazwa hosta w pliku config.yaml usługi IoT Edge i GatewayHostName w parametrach połączenia podrzędnego urządzenia. "Nazwa bramy" musi być rozpoznawana jako adres IP, albo za pomocą DNS lub wpisu w pliku hostów. Komunikacja oparta na protokół używany (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musi być możliwe między podrzędnymi urządzeniami i transparant usługi IoT Edge. Jeśli Zapora jest między, odpowiedni port musi być otwarty.
+> "Bramy" używane w tym artykule musi być takie same nazwy jak używana jako nazwa hosta w pliku config.yaml usługi IoT Edge. Nazwa bramy musi być rozpoznawana jako adres IP, albo za pomocą DNS lub wpisu w pliku hostów. Komunikacja oparta na protokół używany (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musi być możliwe między podrzędnymi urządzeniami i transparant usługi IoT Edge. Jeśli Zapora jest między, odpowiedni port musi być otwarty.
 
 ## <a name="prepare-a-downstream-device"></a>Przygotuj urządzenie podrzędne
 
@@ -197,6 +197,14 @@ To przykładowe polecenie, które testy, które wszystko, co zostało skonfiguru
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+## <a name="troubleshoot-the-gateway-connection"></a>Rozwiązywanie problemów z połączeniem bramy
+
+Jeśli urządzenia liścia ma sporadyczne połączenia urządzenia bramy, spróbuj wykonać poniższe czynności, do rozpoznania. 
+
+1. Czy nazwa bramy, dołączony do połączeń ciągu taka sama jak nazwa hosta w pliku config.yaml usługi IoT Edge na urządzeniu bramy?
+2. Nazwa bramy jest rozpoznawana jako adres IP? Połączenia intenmittent można rozwiązać za pomocą DNS lub przez dodanie wpisu w pliku hostów na urządzeniu typu liść.
+3. Otwartych portów komunikacyjnych w zaporze? Komunikacja oparta na protokół używany (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musi być możliwe między podrzędnymi urządzeniami i transparant usługi IoT Edge.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d3bc50e1578704de029d53c0b1eaa21e74182cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401923"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756613"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
 
@@ -253,7 +253,7 @@ Ta operacja poziomu zasad nie przekazuje żądania do usługi zaplecza.
 
 | Atrybut                               | Opis                                                                                                      | Wymagane | Domyślne     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="integer"                       | Interwał limitu czasu w sekundach przed wywołaniem do usługi zaplecza nie powiedzie się. Wartość minimalna wynosi 0 sekund. Maksymalne wartości jest 240 sekund.| Nie       | 240 sekund |
+| timeout="integer"                       | Czas w sekundach oczekiwania nagłówków odpowiedzi HTTP, który ma zostać zwrócona przez usługę wewnętrznej bazy danych przed błąd upływu limitu czasu jest wywoływane. Wartość minimalna wynosi 0 sekund. Wartości większe niż 240 sekund może nie być uwzględniane jako podstawową infrastrukturę sieciową może usunąć bezczynne połączenia po upływie tego czasu. | Nie       | Brak |
 | follow-redirects="true &#124; false"    | Określa, czy przekierowania z usługi zaplecza są następuje bramy zwracane do obiektu wywołującego.      | Nie       | false       |
 | buffer-request-body="true &#124; false" | Gdy ustawiona na "true" żądania są buforowane i zostanie ponownie użyty w [ponów](api-management-advanced-policies.md#Retry). | Nie       | false       |
 

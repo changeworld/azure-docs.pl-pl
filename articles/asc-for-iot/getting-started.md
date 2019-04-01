@@ -1,6 +1,6 @@
 ---
 title: Rozpoczęcie korzystania z usługi Azure Security Center (ASC) dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Wprowadzenie do zrozumienia podstawowy przepływ pracy usługi ASC funkcje IoT i usługi.
+description: Wprowadzenie do zrozumienia podstawowy przepływ pracy usługi Azure Security Center dla funkcji IoT i usługi.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 23b15b92c844af85f2e1279e531c38ac7d517423
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648320"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755129"
 ---
-# <a name="get-started-with-azure-security-center-asc-for-iot"></a>Rozpoczynanie pracy przy użyciu usługi Azure Security Center (ASC) dla IoT 
+# <a name="get-started-with-azure-security-center-for-iot"></a>Rozpocznij pracę z Centrum zabezpieczeń Azure dla IoT 
 
 > [!IMPORTANT]
-> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten artykuł zawiera wyjaśnienie różne bloki konstrukcyjne usługi ASC dla usługi IoT i wyjaśniono, jak rozpocząć pracę z [Włączanie usługi](quickstart-onboard-iot-hub.md). 
+Ten artykuł zawiera wyjaśnienie różne bloki konstrukcyjne usługi Azure Security Center (ASC) dla usługi IoT i wyjaśniono, jak rozpocząć pracę z [Włączanie usługi](quickstart-onboard-iot-hub.md). 
 
 ASC IoT można bezproblemowo zintegrować usługi IoT Hub, aby przeprowadzać analizę zabezpieczeń konfiguracji centrum IoT, tożsamości urządzenia i urządzenie koncentratora wzorców komunikacyjnych.
 W przypadku możliwości zwiększone zabezpieczenia ASC IoT zapewnia opartej o agentów zbierania danych zabezpieczeń z urządzeń IoT.
