@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880130"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803497"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Poziom zgodności dla modeli tabelarycznych usług Analysis Services
 
@@ -27,7 +27,11 @@ Usługa Azure Analysis Services obsługują modele tabelaryczne na poziomie zgod
 *  Zabezpieczenia na poziomie obiektu nazwy tabel i kolumn, oprócz zawartych w nich danych.
 *  Rozszerzona obsługa niewyrównanych hierarchii.
 *  Monitorowanie wydajności i ulepszeń.
- 
+
+> [!NOTE]
+> Usługa Azure Analysis Services obsługuje zaimportowane pliki programu Power BI Desktop na poziomie zgodności 1465. Jednak Importuj z usługi Power BI Desktop funkcję, która zawsze była w wersji zapoznawczej, został wycofany i usunięta z usługi w marca 2019 r. Istniejące modele na poziomie zgodności 1465 w dalszym ciągu obsługiwany.  
+
+
 ## <a name="set-compatibility-level"></a>Ustaw poziom zgodności
 
  Podczas tworzenia nowego projektu modelu tabelarycznego w programie SSDT, można określić poziom zgodności na **Projektant modeli tabelarycznych** okna dialogowego. 
@@ -47,6 +51,9 @@ Usługa Azure Analysis Services obsługują modele tabelaryczne na poziomie zgod
  W programie SSMS kliknij prawym przyciskiem myszy nazwę serwera > **właściwości** > **obsługiwany poziom zgodności**.  
   
  Ta właściwość określa najwyższy poziom zgodności bazy danych, które będą uruchamiane na serwerze (z wyjątkiem wersji zapoznawczej). Nie można zmienić poziomu zgodności obsługiwanych.  
+
+> [!NOTE]
+> W programie SSMS podczas połączenia z serwerem usług Azure Analysis Services **obsługiwany poziom zgodności** pokaże właściwość **1200**. Jest to znany problem i zostanie rozwiązany w przyszłych SSMS aktualizacji. Po usunięciu, ta właściwość będzie wyświetlana najwyższego poziomu obsługiwany zgodność.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

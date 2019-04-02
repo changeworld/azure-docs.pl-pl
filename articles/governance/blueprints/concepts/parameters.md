@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838021"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805576"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -67,11 +67,11 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 1. Artefakty dodane do planu, które mają parametr opcje wyświetlania **parametry X z Y wypełnione** w **parametry** kolumny. Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
 
-   ![Parametry strategii](../media/parameters/parameter-column.png)
+   ![Parametry planu na definicji planu](../media/parameters/parameter-column.png)
 
 1. **Edytuj artefaktu** strony Wyświetla opcje wartość odpowiednią do artefaktu kliknięty. Każdy parametr na artefaktu ma tytuł, pole wartości i pola wyboru. Ustaw pole niezaznaczone, aby stał się **parametru statycznego**. W przykładzie poniżej, tylko _lokalizacji_ jest **parametru statycznego** pozostał niezaznaczone i _nazwy grupy zasobów_ jest zaznaczone.
 
-   ![Parametry statyczne dla planu](../media/parameters/static-parameter.png)
+   ![Parametry statyczne planu artefaktu planu](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Parametry statyczne ustawienia z interfejsu API REST
 
@@ -182,7 +182,7 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 1. Na **planu Przypisz** strony, Znajdź **parametry artefaktu** sekcji. Każdego artefaktu z co najmniej jednym **parametru dynamicznego** Wyświetla artefaktu i opcje konfiguracji. Podaj wymagane wartości parametrów, zanim przypisze planu. W poniższym przykładzie _nazwa_ jest **parametru dynamicznego** musi być zdefiniowany można ukończyć ich przypisywania planu.
 
-   ![Parametr dynamiczny plan](../media/parameters/dynamic-parameter.png)
+   ![Parametr dynamiczny plan podczas przypisywania planu](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Ustawianie parametrów dynamicznych z interfejsu API REST
 
@@ -241,8 +241,8 @@ Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](lifecycle.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](sequencing-order.md).
-- Dowiedz się, jak używać [planu blokowania zasobów](resource-locking.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](../troubleshoot/general.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

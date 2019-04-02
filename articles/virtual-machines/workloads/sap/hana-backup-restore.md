@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 04/01/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 69417551c1c8d410f75e74a8164c8b8a223ab835
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541234"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805333"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -58,7 +58,7 @@ Infrastruktura magazynu, podstawowe oprogramowanie SAP HANA na platformie Azure 
 - Podczas wyzwalania migawki /hana/data i /hana/shared (w tym /usr/sap) woluminów, technologia migawki inicjuje migawki przed rozpoczęciem wykonywania migawek magazynu oprogramowania SAP HANA. Ta migawka platformy SAP HANA jest punktem instalacji dla przywracana ostateczna dziennika po odzyskaniu migawki magazynu. Migawka HANA zakończy się powodzeniem wymaga aktywnego wystąpienia platformy HANA.  W scenariuszu HSR migawki magazynu nie jest obsługiwana w bieżącym węźle pomocniczego, których nie można wykonać migawki platformy HANA.
 - Po migawki magazynu została wykonana pomyślnie, migawka platformy SAP HANA jest usuwana.
 - Kopie zapasowe dziennika transakcji są często wykonywane i są przechowywane w woluminie /hana/logbackups lub na platformie Azure. Możesz wyzwolić woluminu /hana/logbackups, który zawiera kopie zapasowe dziennika transakcji, aby zrobić migawkę oddzielnie. W takiej sytuacji nie trzeba wykonać migawki platformy HANA.
-- Należy przywrócić bazę danych do pewnego momentu w czasie, podczas przywracania Zarządzanie usługami platformy Azure do migawki magazynu zażądać tej obsługi platformy Microsoft Azure (w przypadku awarii produkcji) lub SAP HANA. Przykładem jest planowane Przywracanie systemu piaskownicy do stanu pierwotnego.
+- Jeśli musisz przywrócić bazę danych do pewnego momentu w czasie, zażądać tej obsługi platformy Microsoft Azure (w przypadku awarii produkcji) lub SAP HANA podczas przywracania systemu Azure do migawki magazynu. Przykładem jest planowane Przywracanie systemu piaskownicy do stanu pierwotnego.
 - Migawka platformy SAP HANA, który znajduje się w tle magazynu jest punkt przesunięcia stosowania kopie zapasowe dziennika transakcji, które zostały wykonane i przechowywane po migawki magazynu.
 - Te kopie zapasowe dziennika transakcji przejście do przywrócenia bazy danych do pewnego momentu w czasie.
 
@@ -167,15 +167,16 @@ MACs hmac-sha1
 
 Aby włączyć dostęp do interfejsów migawki magazynu Twojej dzierżawy dużych wystąpień HANA, należy ustanowić procedura logowania za pomocą klucza publicznego. Na pierwszy SAP HANA na serwerze Azure (duże wystąpienia) w dzierżawie Utwórz klucz publiczny ma być używany do dostępu do infrastruktury magazynu. Klucz publiczny gwarantuje, że do logowania się na interfejsy migawki magazynu nie jest wymagane hasło. Tworzenie klucza publicznego również oznacza to, nie należy do obsługi poświadczeń haseł. W systemie Linux na serwerze SAP HANA, duże wystąpienia Wydaj następujące polecenie, aby wygenerować klucz publiczny:
 ```
-  ssh-keygen –t dsa –b 1024
+  ssh-keygen -t rsa –b 5120 -C ""
 ```
-Nowa lokalizacja jest **_/root/.ssh/id\_dsa.pub**. Nie należy wprowadzać hasło; w przeciwnym razie należy wprowadzać hasła za każdym razem, logowania. Zamiast tego należy wybrać **Enter** dwa razy, aby usunąć wymaganie "Wprowadź hasło" do logowania.
+
+Nowa lokalizacja jest **_/root/.ssh/id\_rsa.pub**. Nie należy wprowadzać hasło; w przeciwnym razie należy wprowadzać hasła za każdym razem, logowania. Zamiast tego należy wybrać **Enter** dwa razy, aby usunąć wymaganie "Wprowadź hasło" do logowania.
 
 Upewnij się, że klucz publiczny został rozwiązany, zgodnie z oczekiwaniami, zmieniając folderów **/root/.ssh/** , a następnie wykonywanie `ls` polecenia. Jeśli klucz jest obecny, skopiuj go, uruchamiając następujące polecenie:
 
 ![Klucz publiczny jest kopiowany, uruchamiając następujące polecenie](./media/hana-overview-high-availability-disaster-recovery/image2-public-key.png)
 
-W tym momencie skontaktować się z oprogramowania SAP HANA na zarządzanie usługami platformy Azure i je podać przy użyciu klucza publicznego. Przedstawiciela biura obsługi używa klucza publicznego, aby zarejestrować go w podstawowej infrastruktury magazynu, który jest używać dla Twojej dzierżawy dużych wystąpień HANA.
+W tym momencie skontaktować się z platformą SAP HANA na platformie Azure i je podać przy użyciu klucza publicznego. Przedstawiciela biura obsługi używa klucza publicznego, aby zarejestrować go w podstawowej infrastruktury magazynu, który jest używać dla Twojej dzierżawy dużych wystąpień HANA.
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>Krok 4: Tworzenie konta użytkownika platformy SAP HANA
 
@@ -262,7 +263,7 @@ Celem różnych skryptów i plików jest następująca:
 - **removeTestStorageSnapshot.pl**: Ten skrypt usuwa migawkę testu, utworzone za pomocą skryptu **testStorageSnapshotConnection.pl**.
 - **azure\_hana\_dr\_failover.pl**: Ten skrypt przełączenia w tryb failover odzyskiwania po awarii w innym regionie. Skrypt musi być wykonywane na jednostce dużych wystąpień HANA w regionie odzyskiwania po awarii, lub w jednostce ma do trybu failover. Ten skrypt zatrzymanie replikacji magazynu ze strony głównej stronie dodatkowej, przywrócenie najnowszej migawki w woluminach odzyskiwania po awarii i zapewnia punkty instalacji do odzyskiwania po awarii woluminów.
 - **azure\_hana\_test\_dr\_failover.pl**: Ten skrypt wykonuje test trybu failover do lokacji odzyskiwania po awarii. W przeciwieństwie do skryptu azure_hana_dr_failover.pl to wykonanie nie przerywa działania replikacji magazynu z podstawowych do pomocniczych. Zamiast tego klony woluminów replikowanego magazynu są tworzone po stronie odzyskiwania po awarii i znajdują się punkty instalacji woluminów sklonowane. 
-- **HANABackupCustomerDetails.txt**: Ten plik jest plik konfiguracji można modyfikować, który chcesz zmodyfikować, aby dostosować je do konfiguracji oprogramowania SAP HANA. *HANABackupCustomerDetails.txt* plik jest plikiem formantu i konfiguracja dla skryptu, który uruchamia migawek magazynu. Dostosuj plik dla instalacji i celów. Pojawi się **Nazwa kopii zapasowej magazynu** i **adres IP magazynu** z platformy SAP HANA na zarządzanie usługami platformy Azure po wdrożeniu wystąpień. Nie można zmodyfikować sekwencji, zamawiania lub odstępy tych zmiennych w tym pliku. Jeśli to zrobisz, skryptów, nie działają poprawnie. Ponadto zostanie wyświetlony adres IP węzła skalowanie w górę lub węzła głównego (jeśli skalowalnego w poziomie) z platformy SAP HANA na zarządzanie usługami platformy Azure. Znasz także liczby wystąpień HANA, której można korzystać podczas instalacji oprogramowania SAP HANA. Teraz należy dodać nazwę kopii zapasowej do pliku konfiguracji.
+- **HANABackupCustomerDetails.txt**: Ten plik jest plik konfiguracji można modyfikować, który chcesz zmodyfikować, aby dostosować je do konfiguracji oprogramowania SAP HANA. *HANABackupCustomerDetails.txt* plik jest plikiem formantu i konfiguracja dla skryptu, który uruchamia migawek magazynu. Dostosuj plik dla instalacji i celów. Pojawi się **Nazwa kopii zapasowej magazynu** i **adres IP magazynu** z platformy SAP HANA na platformie Azure podczas wdrażania wystąpień. Nie można zmodyfikować sekwencji, zamawiania lub odstępy tych zmiennych w tym pliku. Jeśli to zrobisz, skryptów, nie działają poprawnie. Ponadto zostanie wyświetlony adres IP węzła skalowanie w górę lub węzła głównego (jeśli skalowalnego w poziomie) z platformy SAP HANA na platformie Azure. Znasz także liczby wystąpień HANA, której można korzystać podczas instalacji oprogramowania SAP HANA. Teraz należy dodać nazwę kopii zapasowej do pliku konfiguracji.
 
 Skalowanie w pionie lub poziomie wdrożenia plik konfiguracji będzie wyglądać podobnie jak w poniższym przykładzie, po wypełnieniu nazwę serwera, jednostka dużych wystąpień HANA i adres IP serwera. Wypełnij wszystkie wymagane pola dla każdego identyfikatora SID HANA SAP, aby tworzenie kopii zapasowej lub odzyskiwania.
 
@@ -628,9 +629,9 @@ Dla typów migawki **hana** i **dzienniki**, są dostępne migawki bezpośrednio
 
 W scenariuszu produkcji w dół proces odzyskiwania z migawki magazynu może być inicjowane jako zdarzenia klienta, pomocy technicznej firmy Microsoft Azure. Jeśli dane zostały usunięte w systemie produkcyjnym i jest jedynym sposobem, aby go pobrać, można przywrócić produkcyjną bazę danych, jest kwestią wysoka pilność.
 
-W innej sytuacji w momencie odzyskiwania może być niski pilność i planowane-dniowym wyprzedzeniem. Możesz zaplanować to odzyskiwanie z platformą SAP HANA na zarządzanie usługami platformy Azure, zamiast wywoływania flagi o wysokim priorytecie. Na przykład może być planowane jest uaktualnienie oprogramowania SAP, stosując nowego pakietu rozszerzenia. Następnie należy przywrócić do migawki, który reprezentuje stan przed wykonaniem uaktualnienia pakietu rozszerzenia.
+W innej sytuacji w momencie odzyskiwania może być niski pilność i planowane-dniowym wyprzedzeniem. Możesz zaplanować to odzyskiwanie z platformą SAP HANA na platformie Azure, zamiast wywoływania flagi o wysokim priorytecie. Na przykład może być planowane jest uaktualnienie oprogramowania SAP, stosując nowego pakietu rozszerzenia. Następnie należy przywrócić do migawki, który reprezentuje stan przed wykonaniem uaktualnienia pakietu rozszerzenia.
 
-Przed wysłaniem żądania, które trzeba przygotować. SAP HANA w zespole usługi Azure Service Management można obsłużyć żądania i podaj przywracanych woluminów. Potem możesz przywrócić bazy danych HANA, oparte na migawki. 
+Przed wysłaniem żądania, które trzeba przygotować. Oprogramowanie SAP HANA na zespół platformy Azure można obsłużyć żądania i podaj przywracanych woluminów. Potem możesz przywrócić bazy danych HANA, oparte na migawki. 
 
 Poniżej pokazano, jak przygotować się do żądania:
 
@@ -648,9 +649,9 @@ Poniżej pokazano, jak przygotować się do żądania:
 
 1. Otwórz żądanie pomocy technicznej platformy Azure i zawierają instrukcje informujące o przywrócenie określoną migawkę.
 
-   - Podczas przywracania: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure może poprosić Cię o weź udział w konferencji, do zapewnienia koordynacji, weryfikacji i potwierdzenie, że migawki magazynu poprawną został przywrócony. 
+   - Podczas przywracania: SAP HANA na platformie Azure może poprosić Cię o weź udział w konferencji, do zapewnienia koordynacji, weryfikacji i potwierdzenie, że migawki magazynu poprawną został przywrócony. 
 
-   - Po przywróceniu: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure powiadamia o przywróceniu z migawki magazynu.
+   - Po przywróceniu: SAP HANA w usłudze Azure Service powiadamia o przywróceniu z migawki magazynu.
 
 1. Po ukończeniu procesu przywracania, należy ponownie zainstalować wszystkie woluminy danych.
 
@@ -752,5 +753,5 @@ HANA snapshot deletion successfully.
 W tym przykładzie widać, jak skrypt rekordy utworzenie migawki platformy HANA. W przypadku skalowania w poziomie ten proces jest inicjowany w węźle głównym. Węzeł główny inicjuje synchroniczne tworzenie migawek platformy SAP HANA na każdym z węzłów procesu roboczego. Następnie wykonywana jest migawka magazynu. Po pomyślnym wykonaniu migawek magazynu oprogramowania HANA migawki jest usuwany. Usuwanie migawki HANA jest inicjowane z węzła głównego.
 
 
-**Następne kroki**
-- Zapoznaj się [zasady odzyskiwania po awarii i przygotowania](hana-concept-preparation.md).
+## <a name="next-steps"></a>Kolejne kroki
+- Zobacz [zasady odzyskiwania po awarii i przygotowania](hana-concept-preparation.md).

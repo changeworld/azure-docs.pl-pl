@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 4ca42e34dcf215fe45d1f25adb9509034c6144d2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335848"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803529"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -154,6 +154,14 @@ Spring rozruchu deweloperzy mogą używać [usługi Azure Active Directory Sprin
 ### <a name="configure-tlsssl"></a>Konfigurowanie protokołów TLS/SSL
 
 Postępuj zgodnie z instrukcjami w [wiązanie istniejącego niestandardowego certyfikatu SSL](/azure/app-service/app-service-web-tutorial-custom-ssl) Prześlij istniejący certyfikat protokołu SSL i powiązać nazwy domeny Twojej aplikacji. Domyślnie aplikacja będzie nadal zezwalania HTTP połączeń — wykonaj konkretne kroki w tym samouczku, aby wymusić SSL i TLS.
+
+### <a name="use-keyvault-references"></a>Używać odwołań do magazynu kluczy
+
+[Usługa Azure KeyVault](../../key-vault/key-vault-overview.md) umożliwia scentralizowane zarządzanie wpisu tajnego z historią zasad i inspekcja dostępu. Można przechowywać klucze tajne (takie jak hasła lub parametry połączenia) w magazynie KeyVault i uzyskiwanie dostępu do tych kluczy tajnych w aplikacji za pomocą zmiennych środowiskowych.
+
+Po pierwsze, postępuj zgodnie z instrukcjami dotyczącymi [przyznania aplikacji dostępu do usługi Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) i [odwołanie magazynu kluczy do klucz tajny w ustawieniu aplikacji](../app-service-key-vault-references.md#reference-syntax). Aby zweryfikować, czy odwołanie jest rozpoznawana jako klucz tajny, drukowanie zmiennej środowiskowej, uzyskując dostęp do zdalnego terminalu usługi App Service.
+
+Aby wstawić tych kluczy tajnych w pliku konfiguracji platformy Spring lub Tomcat, należy użyć składni iniekcji zmiennej środowiska (`${MY_ENV_VAR}`). Pliki konfiguracji środowiska Spring, można znaleźć tej dokumentacji na [zewnętrznych konfiguracje](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 ## <a name="data-sources"></a>Źródła danych
 

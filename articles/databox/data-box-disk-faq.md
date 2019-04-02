@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1a192f5cbd0fb5a4dcb911f40753efcbd996a418
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877857"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793848"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -170,6 +170,6 @@ A. Tak. Przekazano dane na platformie Azure, ale jeśli nie widzisz żadnych dys
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj [wymagania systemowe usługi Data Box](data-box-disk-system-requirements.md).
-- Poznaj [ograniczenia usługi Data Box](data-box-disk-limits.md).
+- Przegląd [wymagania systemowe dysku Data Box](data-box-disk-system-requirements.md).
+- Zapoznaj się z [limitami usługi Data Box Disk](data-box-disk-limits.md).
 - Szybko wdróż usługę [Azure Data Box Disk](data-box-disk-quickstart-portal.md) w witrynie Azure Portal.

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d08ddef46c4c78452fcdbc839219b624d55c04
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666413"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793258"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory
 
@@ -49,11 +49,13 @@ Użytkownik | Można przywrócić wszystkie usunięte grupy usługi Office 365, 
    - Trwale usunąć usuniętą grupę, wybierając opcję **Usuń trwale**. Aby trwale usunąć grupę, musisz być administratorem.
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Wyświetlanie usuniętych grup usługi Office 365, które są dostępne do przywrócenia, przy użyciu programu PowerShell
+
 Prz użyciu poniższych poleceń cmdlet możesz wyświetlić usunięte grupy, aby sprawdzić, czy te, które Cię interesują, nie zostały jeszcze trwale usunięte. Te polecenia cmdlet są częścią [modułu usługi Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/). Więcej informacji na temat tego modułu można znaleźć w artykule [Azure Active Directory PowerShell w wersji 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 1.  Uruchom następujące polecenie cmdlet, aby wyświetlić wszystkie usunięte grupy usługi Office 365 w Twojej dzierżawie, które są nadal dostępne do przywrócenia.
    
-    ```
+
+    ```powershell
     Get-AzureADMSDeletedGroup
     ```
 
@@ -64,16 +66,19 @@ Prz użyciu poniższych poleceń cmdlet możesz wyświetlić usunięte grupy, ab
     ```
 
 ## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>Jak przywrócić usuniętą grupę usługi Office 365 przy użyciu programu PowerShell
+
 Po upewnieniu się, że grupa jest nadal dostępna do przywrócenia, możesz przywrócić usuniętą grupę za pomocą jednego z następujących kroków. Jeśli grupa zawiera dokumenty, witryny usługi SharePoint lub inne trwałe obiekty, całkowite przywrócenie grupy i jej zawartości może zająć do 24 godzin.
 
 1. Uruchom następujące polecenie cmdlet, aby przywrócić grupę i jej zawartość.
  
+
    ```
     Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
     ``` 
 
 2. Możesz również uruchomić następujące polecenie cmdlet, aby trwale usunąć usuniętą grupę.
     
+
     ```
     Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
     ```
@@ -88,6 +93,7 @@ Aby sprawdzić, czy grupa usługi Office 365 została pomyślnie przywrócona, u
 - Dostęp do grup można będzie uzyskać z dowolnych punktów końcowych programu Exchange i innych obciążeń usługi Office 365, które obsługują grupy usługi Office 365
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Te artykuły zawierają dodatkowe informacje o grupach usługi Azure Active Directory.
 
 * [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)

@@ -13,27 +13,31 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897677"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791560"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Rozwiązywanie problemów i eliminowanie problemów z grupy
 
 ## <a name="troubleshooting-group-creation-issues"></a>Rozwiązywanie problemów z tworzenia grupy
+
 **Czy wyłączone Tworzenie grupy zabezpieczeń w witrynie Azure portal, ale nadal można tworzyć grupy za pomocą programu Powershell** **użytkownika mogą tworzyć grupy zabezpieczeń w portalach platformy Azure** ustawienie w kontroli portalu systemu Azure czy bez uprawnień administratora Użytkownicy mogą tworzyć grupy zabezpieczeń, w panelu dostępu lub w witrynie Azure portal. Ta funkcja nie kontroluje tworzenie grupy zabezpieczeń za pomocą programu Powershell.
 
 Aby wyłączyć tworzenie grupy dla użytkowników bez uprawnień administratora w programie Powershell:
 1. Sprawdź, czy użytkownicy niebędący administratorami mogą tworzyć grupy:
    
+
+   ```powershell
+   Get-MsolCompanyInformation | Format-List UsersPermissionToCreateGroupsEnabled
    ```
-   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-   ```
+
   
 2. Jeśli zostanie zwrócona `UsersPermissionToCreateGroupsEnabled : True`, a następnie użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
   
+
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```

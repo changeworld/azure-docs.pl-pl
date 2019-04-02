@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy z błędami dołączania p
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/25/2019
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342732"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802035"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów z błędami podczas dołączania do rozwiązania
 
@@ -25,19 +25,23 @@ Mogą wystąpić błędy podczas dołączania rozwiązań, takich jak zarządzan
 
 #### <a name="issue"></a>Problem
 
-Pojawi się następujący komunikat o błędzie podczas próby dołączenia maszyny wirtualnej do rozwiązania:
+Podczas próby dołączenia maszyny wirtualnej do rozwiązania wyświetlany jest jeden z następujących komunikatów:
 
-```
+```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
 ```
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd jest spowodowany przez niepoprawne lub brakujące uprawnienia na maszynie wirtualnej, czy dla użytkownika.
+Ten błąd jest spowodowany przez niepoprawne lub brakujące uprawnienia na maszynie wirtualnej w obszarze roboczym, czy dla użytkownika.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Upewnij się, że masz odpowiednie uprawnienia do dołączenia maszyny wirtualnej. Przegląd [uprawnienia wymagane do dołączania maszyn](../automation-role-based-access-control.md#onboarding) , a następnie spróbuj dołączyć rozwiązanie ponownie.
+Upewnij się, że masz odpowiednie uprawnienia do dołączenia maszyny wirtualnej. Przegląd [uprawnienia wymagane do dołączania maszyn](../automation-role-based-access-control.md#onboarding) , a następnie spróbuj dołączyć rozwiązanie ponownie. Jeśli zostanie wyświetlony błąd `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, upewnij się, że `Microsoft.OperationalInsights/workspaces/read` uprawnień, aby można było znaleźć, jeśli maszyna wirtualna jest dołączona do obszaru roboczego.
 
 ### <a name="computer-group-query-format-error"></a>Scenariusz: ComputerGroupQueryFormatError
 
@@ -79,11 +83,11 @@ Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź d
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-W przypadku wdrażania rozwiązania, szereg powiązane zasoby są wdrażane. Jednym z tych zasobów jest agenta Microsoft Monitoring Agent rozszerzenia lub usługi Log Analytics dla systemu Linux. Są one zainstalowanych przez agenta gościa maszyny wirtualnej, który jest odpowiedzialny za podczas komunikowania się z skonfigurowany obszar roboczy usługi Log Analytics, na potrzeby koordynacji nowsze pobierania plików binarnych rozszerzeń maszyny wirtualnej i inne pliki rozwiązania są dołączania zależą od po jej rozpoczęciu wykonywania.
+W przypadku wdrażania rozwiązania, szereg powiązane zasoby są wdrażane. Jednym z tych zasobów jest agenta Microsoft Monitoring Agent rozszerzenia lub usługi Log Analytics dla systemu Linux. Są one zainstalowanych przez agenta gościa maszyny wirtualnej, który jest odpowiedzialny za podczas komunikowania się z skonfigurowany obszar roboczy usługi Log Analytics, na potrzeby koordynacji nowsze pobierania plików binarnych rozszerzeń maszyny wirtualnej i inne pliki rozwiązanie jesteś dołączania są zależne od po jej rozpoczęciu wykonywania.
 Użytkownik zwykle najpierw zostaną powiadomieni o agenta MMA lub usługi Log Analytics dla systemu Linux błędy instalacji dla powiadomienia w Centrum powiadomień. Kliknięcie powiadomienia zawiera dalsze informacje na temat określonego błędu. Nawigacja do zasobów grupy zasobów, a następnie do elementu wdrożenia w niej również zawiera szczegółowe informacje dotyczące niepowodzeń wdrażania, które wystąpiły.
 Instalacja agenta MMA lub usługi Log Analytics dla systemu Linux może się nie powieść z różnych powodów i kroki do wykonania, aby rozwiązać te błędy różnią się, w zależności od problemu. Postępuj zgodnie z określonym kroki rozwiązywania problemów.
 
-W poniższej sekcji opisano różne problemy, które mogą wystąpić podczas dołączania, spowodować awarię we wdrożeniu rozszerzenia programu MMA.
+W poniższej sekcji opisano różne problemy, które mogą pochodzić między podczas dołączania, spowodować awarię we wdrożeniu rozszerzenia programu MMA.
 
 ### <a name="webclient-exception"></a>Scenariusz: Wystąpił wyjątek podczas wykonywania żądania WebClient
 
@@ -113,7 +117,7 @@ Niektóre z możliwych przyczyn tego błędu to:
 
 Upewnij się, że masz odpowiednie porty i adresy otworzyć dla komunikacji. Aby uzyskać listę portów i adresów, zobacz [planowania sieci](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Scenariusz: Instalacja nie powiodła się z powodu rozwiązywania problemów w środowisku przejściowym
+### <a name="transient-environment-issue"></a>Scenariusz: Instalacja nie powiodła się z powodu problemów środowiska przejściowe
 
 Instalacja rozszerzenia Microsoft Monitoring Agent nie powiodło się podczas wdrażania, ponieważ inna instalacja lub Akcja blokowania instalacji
 
@@ -138,7 +142,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 Niektóre z możliwych przyczyn tego błędu to:
 
 * Inna instalacja jest w toku
-* System jest została wyzwolona ponownego uruchomienia podczas wdrażania szablonu
+* System jest wyzwalany, ponowne uruchomienie podczas wdrażania szablonu
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -150,7 +154,7 @@ Instalacja rozszerzenia MMA nie została ukończona z powodu przekroczenia limit
 
 #### <a name="issue"></a>Problem
 
-Oto przykładowy komunikat o błędzie mogą być zwrócone:
+Poniższy przykład jest komunikat o błędzie mogą być zwrócone:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -158,7 +162,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd wynika z maszyny wirtualnej jest mocno obciążony podczas instalacji.
+Ten błąd występuje, ponieważ maszyna wirtualna jest mocno obciążony podczas instalacji.
 
 ### <a name="resolution"></a>Rozwiązanie
 
@@ -166,7 +170,7 @@ Podjęto próbę można zainstalować rozszerzenia programu MMA, gdy maszyna wir
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli nie została uwzględniona w rozwiązaniu problemu, lub nie można rozwiązać problem, odwiedź jedną z następujących kanałów obsługi więcej:
+Jeśli nie był widoczny problemu lub są w stanie rozwiązać problemu, odwiedź jedną z następujących kanałów obsługi więcej:
 
 * Uzyskaj odpowiedzi od ekspertów w zakresie platformy Azure na [forach dotyczących platformy Azure](https://azure.microsoft.com/support/forums/)
 * Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.

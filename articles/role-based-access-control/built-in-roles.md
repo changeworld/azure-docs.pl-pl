@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/24/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 86bf408f521e11e1bed4e26ca99299abdc710227
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960622"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805639"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -38,6 +38,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Właściciel](#owner) | Umożliwia zarządzanie wszystkim, w tym dostępem do zasobów. |
 | [Współautor](#contributor) | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
 | [Czytelnik](#reader) | Umożliwia wyświetlanie wszystkiego, ale nie umożliwia wprowadzania jakichkolwiek zmian. |
+| [AcrDelete](#acrdelete) | Usuwanie rejestru Azure container Registry |
 | [AcrImageSigner](#acrimagesigner) | osoba podpisująca obraz ACR |
 | [AcrPull](#acrpull) | acr pull |
 | [AcrPush](#acrpush) | acr push |
@@ -51,6 +52,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Operator zadań usługi Automation](#automation-job-operator) | Twórz zadania i zarządzaj nimi za pomocą elementów runbook usługi Automation. |
 | [Operator usługi Automation](#automation-operator) | Operatorzy automatyzacji mogą uruchamiać, zatrzymywać, wstrzymywać i wznawiać zadania |
 | [Operator elementów Runbook usługi Automation](#automation-runbook-operator) | Odczytuj właściwości elementu runbook, aby móc tworzyć zadania tego elementu. |
+| [Współautor Avere](#avere-contributor) | Można tworzyć i zarządzać Avere vFXT klastra. |
+| [Avere Operator](#avere-operator) | Używane przez klaster vFXT Avere Zarządzanie klastrem |
 | [Rola administratora klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-admin-role) | Wyświetl listę akcji poświadczeń administratora klastra. |
 | [Rola użytkownika klastra Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Wyświetl listę akcji poświadczeń użytkownika klastra. |
 | [Właściciel rejestracji w usłudze Azure Stack](#azure-stack-registration-owner) | Umożliwia zarządzanie rejestracjami w usłudze Azure Stack. |
@@ -68,7 +71,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Rola usługi Operator kluczy kont magazynu Classic](#classic-storage-account-key-operator-service-role) | Operatorzy kluczy klasycznych kont magazynu mogą wyświetlać listę kluczy dla klasycznych kont magazynu i ponownie je generować |
 | [Współautor klasycznej maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
 | [Cognitive Services Contributor](#cognitive-services-contributor) | Umożliwia tworzenie, odczytywanie, aktualizowanie i usuwanie kluczy usługi Cognitive Services oraz zarządzanie nimi. |
-| [Czytnik danych usług cognitive Services (wersja zapoznawcza)](#cognitive-services-data-reader-preview) | Umożliwia odczytywanie danych z usług Cognitive Services. |
+| [Czytnik danych usług cognitive Services (wersja zapoznawcza)](#cognitive-services-data-reader-preview) | Umożliwia odczytywanie danych usługi Cognitive Services. |
 | [Cognitive Services User](#cognitive-services-user) | Umożliwia odczytywanie kluczy usługi Cognitive Services i wyświetlanie ich listy. |
 | [Rola czytelnika konta usługi cosmos DB](#cosmos-db-account-reader-role) | Może odczytywać dane z konta usługi Azure Cosmos DB. Zobacz [Współautor konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami usługi Azure Cosmos DB. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Może przesyłać żądania przywracania dotyczące bazy danych Cosmos DB lub kontenera dla konta |
@@ -82,8 +85,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Użytkownik usługi DevTest Labs](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
-| [Współautor EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-contributor-preview) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
-| [Czytnik EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-reader-preview) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
+| [Współautor EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
+| [Czytnik EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
 | [Współautor usługi HDInsight domeny](#hdinsight-domain-services-contributor) | Może odczytywać, tworzyć, modyfikować i usuwać powiązane z Domain Services operacje wymagane w przypadku pakietu Enterprise Security w usłudze HDInsight |
 | [Współautor konta usługi systemy inteligentne](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor magazynu kluczy](#key-vault-contributor) | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -114,21 +117,22 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
 | [Czytelnik usługi Site Recovery](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
-| [Współautor konta kotwic przestrzenne](#spatial-anchors-account-contributor) | Umożliwia zarządzanie przestrzenne kotwic na Twoim koncie, ale nie ich usuwać |
-| [Właściciel konta kotwic przestrzenne](#spatial-anchors-account-owner) | Umożliwia zarządzanie kotwic przestrzennych ze swojego konta, w tym ich usuwania |
-| [Kotwice przestrzenne konta czytnika](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości kotwic przestrzennego w ramach Twojego konta |
+| [Współautor konta kotwic przestrzenne](#spatial-anchors-account-contributor) | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, ale nie na ich usuwanie |
+| [Właściciel konta kotwic przestrzenne](#spatial-anchors-account-owner) | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, w tym ich usuwanie |
+| [Kotwice przestrzenne konta czytnika](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości zakotwiczeń przestrzennych na Twoim koncie |
 | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich. Ponadto nie można zarządzać ich zasad związanych z bezpieczeństwem ani nadrzędnymi serwerami SQL. |
+| [Współautor wystąpienie zarządzane SQL](#sql-managed-instance-contributor) | Umożliwia zarządzanie wystąpienia zarządzane SQL, ale nie przyznawania dostępu innym osobom. |
 | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor serwera SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator kluczy kont magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
-| [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
-| [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-owner-preview) | Zezwala na pełny dostęp do danych i kontenerów obiektów blob usługi Azure Storage, w tym przypisywanie kontroli dostępu POSIX. |
-| [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-reader-preview) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
-| [Współautor danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
-| [Procesor komunikat danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-message-processor-preview) | Pozwala uzyskać wgląd, otrzymywanie i usunąć dostęp do wiadomości w kolejce usługi Azure Storage |
-| [Nadawca wiadomości danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-message-sender-preview) | Umożliwia wysyłanie komunikatów do kolejki usługi Azure Storage |
-| [Czytnik danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-reader-preview) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
+| [Współautor danych obiektu Blob magazynu](#storage-blob-data-contributor) | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Właściciel danych obiektu Blob magazynu](#storage-blob-data-owner) | Zezwala na pełny dostęp do danych i kontenerów obiektów blob usługi Azure Storage, w tym przypisywanie kontroli dostępu POSIX. |
+| [Storage Blob Data Reader](#storage-blob-data-reader) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
+| [Storage Queue Data Contributor](#storage-queue-data-contributor) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
+| [Procesor komunikat danych kolejki magazynu](#storage-queue-data-message-processor) | Zezwala na dostęp do podglądu, odbierania i usuwania do komunikatów kolejek usługi Azure Storage |
+| [Nadawca wiadomości danych kolejki magazynu](#storage-queue-data-message-sender) | Zezwala na wysyłanie komunikatów kolejki usługi Azure Storage |
+| [Storage Queue Data Reader](#storage-queue-data-reader) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
 | [Współautor żądania pomocy technicznej](#support-request-contributor) | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
 | [Współautor usługi Traffic Manager](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
 | [Administrator dostępu użytkowników](#user-access-administrator) | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
@@ -181,6 +185,21 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Identyfikator** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Akcje** |  |
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="acrdelete"></a>AcrDelete
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Usuwanie rejestru Azure container Registry |
+> | **Identyfikator** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
+> | **Akcje** |  |
+> | Microsoft.ContainerRegistry/registries/artifacts/delete | Usuwanie artefaktów w rejestrze kontenerów. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
@@ -458,6 +477,68 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="avere-contributor"></a>Współautor Avere
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Można tworzyć i zarządzać Avere vFXT klastra. |
+> | **Identyfikator** | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
+> | **Akcje** |  |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.Compute/*/read |  |
+> | Microsoft.Compute/availabilitySets/* |  |
+> | Microsoft.Compute/virtualMachines/* |  |
+> | Microsoft.Compute/disks/* |  |
+> | Microsoft.Network/*/read |  |
+> | Microsoft.Network/networkInterfaces/* |  |
+> | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/read | Pobiera definicji podsieci sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. Nie dla. |
+> | Microsoft.Network/networkSecurityGroups/join/action | Dołącza do sieciowej grupy zabezpieczeń. Nie dla. |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
+> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Storage/*/read |  |
+> | Microsoft.Storage/storageAccounts/* |  |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Resources/subscriptions/resourceGroups/resources/read | Pobiera zasoby grupy zasobów. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="avere-operator"></a>Avere Operator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Używane przez klaster vFXT Avere Zarządzanie klastrem |
+> | **Identyfikator** | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | **Akcje** |  |
+> | Microsoft.Compute/virtualMachines/read | Pobierz właściwości maszyny wirtualnej |
+> | Microsoft.Network/networkInterfaces/read | Pobiera definicja interfejsu sieciowego.  |
+> | Microsoft.Network/networkInterfaces/write | Tworzy interfejs sieciowy lub aktualizuje istniejący interfejs sieciowy.  |
+> | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/read | Pobiera definicji podsieci sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
+> | Microsoft.Network/networkSecurityGroups/join/action | Dołącza do sieciowej grupy zabezpieczeń. Nie dla. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca listę kontenerów |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania obiektu blob kontenera |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
@@ -940,11 +1021,11 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="cognitive-services-data-reader-preview"></a>Czytnik danych usług cognitive Services (wersja zapoznawcza)
+## <a name="cognitive-services-data-reader-preview"></a>Czytelnik danych usług Cognitive Services (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia odczytywanie danych z usług Cognitive Services. |
+> | **Opis** | Umożliwia odczytywanie danych usługi Cognitive Services. |
 > | **Identyfikator** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | **Akcje** |  |
 > | *Brak* |  |
@@ -1262,7 +1343,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>Współautor subskrypcji zdarzeń usługi Event Grid (wersja zapoznawcza)
+## <a name="eventgrid-eventsubscription-contributor"></a>Współautor subskrypcji zdarzeń usługi Event Grid
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1285,7 +1366,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>Czytelnik subskrypcji zdarzeń usługi Event Grid (wersja zapoznawcza)
+## <a name="eventgrid-eventsubscription-reader"></a>Czytelnik subskrypcji zdarzeń usługi Event Grid
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1834,17 +1915,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.operationalInsights/workspaces/*/read | Wyświetl dane analizy dziennika |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
-> | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
-> | Microsoft.Security/locations/alerts/activate/action | Uaktywnij alert zabezpieczeń |
-> | Microsoft.Security/locations/alerts/dismiss/action | Odrzuć alert zabezpieczeń |
-> | Microsoft.Security/locations/tasks/activate/action | Aktywuj zalecenie dotyczące zabezpieczeń |
-> | Microsoft.Security/locations/tasks/dismiss/action | Odrzuć zalecenie dotyczące zabezpieczeń |
-> | Microsoft.Security/policies/write | Aktualizuje zasady zabezpieczeń |
-> | Microsoft.Security/pricings/write | Aktualizacje cen ustawienia dla zakresu |
-> | Microsoft.Security/pricings/delete | Usuwa ustawienia cen dla zakresu |
-> | Microsoft.Security/securityContacts/delete | Usuwa kontakt zabezpieczeń |
-> | Microsoft.Security/securityContacts/write | Aktualizacje zabezpieczeń skontaktuj się z |
-> | Microsoft.Security/InformationProtectionPolicies/write | Aktualizacje z zasadami ochrony informacji dla zasobu |
+> | Microsoft.Security/* |  |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | *Brak* |  |
@@ -2060,7 +2131,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie przestrzenne kotwic na Twoim koncie, ale nie ich usuwać |
+> | **Opis** | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, ale nie na ich usuwanie |
 > | **Identyfikator** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | **Akcje** |  |
 > | *Brak* |  |
@@ -2080,7 +2151,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie kotwic przestrzennych ze swojego konta, w tym ich usuwania |
+> | **Opis** | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, w tym ich usuwanie |
 > | **Identyfikator** | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | **Akcje** |  |
 > | *Brak* |  |
@@ -2101,7 +2172,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia lokalizowanie i odczytywanie właściwości kotwic przestrzennego w ramach Twojego konta |
+> | **Opis** | Umożliwia lokalizowanie i odczytywanie właściwości zakotwiczeń przestrzennych na Twoim koncie |
 > | **Identyfikator** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | **Akcje** |  |
 > | *Brak* |  |
@@ -2134,14 +2205,22 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Insights/metrics/read | Odczytaj metryki |
 > | Microsoft.Insights/metricDefinitions/read | Przeczytaj definicje metryk |
 > | **notActions** |  |
+> | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/* |  |
+> | Microsoft.Sql/managedInstances/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Edytowanie zasad inspekcji |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Edytuj ustawienia inspekcji |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Pobieranie rekordów inspekcji obiektów blob bazy danych |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | Edytowanie zasad połączenia |
+> | Microsoft.Sql/servers/databases/currentSensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Edytuj zasady maskowania danych |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
+> | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Edytowanie zasad alertów zabezpieczeń |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | Edytowanie danych dotyczących bezpieczeństwa |
@@ -2150,6 +2229,31 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="sql-managed-instance-contributor"></a>Współautor wystąpienie zarządzane SQL
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia zarządzanie wystąpienia zarządzane SQL, ale nie przyznawania dostępu innym osobom. |
+> | **Identyfikator** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | **Akcje** |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Network/networkSecurityGroups/write | Tworzy sieciową grupę zabezpieczeń lub aktualizacji istniejącej sieciowej grupy zabezpieczeń |
+> | Microsoft.Network/routeTables/write | Tworzy tabelę tras lub aktualizuje istniejącą tabelę tras |
+> | Microsoft.Sql/locations/*/read |  |
+> | Microsoft.Sql/managedInstances/* |  |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Network/virtualNetworks/subnets/write | Tworzy podsieci sieci wirtualnej lub aktualizuje istniejącą podsieć sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
 > | **NotDataActions** |  |
@@ -2168,7 +2272,13 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/* |  |
+> | Microsoft.Sql/managedInstances/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Tworzenie i zarządzanie nimi zasady inspekcji usługi SQL server |
 > | Microsoft.Sql/servers/auditingSettings/* | Tworzenie i zarządzanie nimi ustawienia inspekcji serwera SQL |
@@ -2177,13 +2287,15 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Tworzenie i zarządzanie nimi ustawienia inspekcji bazy danych programu SQL server |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Odczytaj rekordy inspekcji |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | Tworzenie i zarządzanie zasadami połączeń bazy danych serwera SQL |
+> | Microsoft.Sql/servers/databases/currentSensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Tworzenie i zarządzanie nimi danych bazy danych programu SQL server maskowania zasad |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | Pobieranie szczegółów zasad inspekcji rozszerzonego obiektu blob skonfigurowany w danej bazie danych |
 > | Microsoft.Sql/servers/databases/read | Zwraca listę baz danych lub pobiera właściwości dla określonej bazy danych. |
-> | Microsoft.Sql/servers/databases/schemas/read | Pobieranie listy schematy bazy danych |
-> | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobieranie listy kolumn w tabeli |
+> | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/* |  |
+> | Microsoft.Sql/servers/databases/schemas/read | Pobierz schemat bazy danych. |
+> | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobierz kolumny bazy danych. |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/schemas/tables/read | Pobieranie listy tabel bazy danych |
+> | Microsoft.Sql/servers/databases/schemas/tables/read | Pobierz tabelę bazy danych. |
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Tworzenie i zarządzanie zasadami alertów zabezpieczeń bazy danych serwera SQL |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | Tworzenie i zarządzanie nimi metryk zabezpieczeń bazy danych serwera SQL |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
@@ -2220,7 +2332,13 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Insights/metrics/read | Odczytaj metryki |
 > | Microsoft.Insights/metricDefinitions/read | Przeczytaj definicje metryk |
 > | **notActions** |  |
+> | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
+> | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/* |  |
+> | Microsoft.Sql/managedInstances/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Edytuj zasady inspekcji usługi SQL server |
 > | Microsoft.Sql/servers/auditingSettings/* | Edytowanie ustawień inspekcji serwera SQL |
@@ -2228,8 +2346,10 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Edytuj ustawienia inspekcji bazy danych programu SQL server |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Odczytaj rekordy inspekcji |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | Edytowanie zasad połączenia bazy danych serwera SQL |
+> | Microsoft.Sql/servers/databases/currentSensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Edytowanie danych bazy danych programu SQL server maskowania zasad |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
+> | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Edytowanie zasad alertów zabezpieczeń bazy danych serwera SQL |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | Edytuj metryki zabezpieczeń bazy danych programu SQL server |
@@ -2249,7 +2369,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
+> | **Opis** | Umożliwia zarządzanie kontami magazynu. Nie zapewnia dostępu do danych na koncie magazynu. |
 > | **Identyfikator** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczyt wszystkich autoryzacji |
@@ -2272,11 +2392,11 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
+> | **Opis** | Umożliwia wyświetlanie listy i ponowne generowanie kluczy dostępu do konta magazynu. |
 > | **Identyfikator** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
-> | Microsoft.Storage/storageAccounts/regeneratekey/action | Generuje ponownie klucze dostępu dla podanego konta magazynu. |
+> | Microsoft.Storage/storageAccounts/regeneratekey/action | Wygeneruj ponownie klucze dostępu dla podanego konta magazynu. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
@@ -2284,117 +2404,117 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-blob-data-contributor-preview"></a>Współautor danych obiektu blob magazynu (wersja zapoznawcza)
+## <a name="storage-blob-data-contributor"></a>Współautor danych obiektu blob usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
+> | **Opis** | Odczyt, zapis i usuwanie obiektów blob oraz ich kontenerów usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **Akcje** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca listę kontenerów |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania obiektu blob kontenera |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Usuń kontener. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zmodyfikuj właściwości lub metadanych kontenera. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Usuwanie obiektu blob. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Napisz do obiektu blob. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-blob-data-owner-preview"></a>Właściciel danych obiektu blob magazynu (wersja zapoznawcza)
+## <a name="storage-blob-data-owner"></a>Właściciel danych obiektu blob usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na pełny dostęp do danych i kontenerów obiektów blob usługi Azure Storage, w tym przypisywanie kontroli dostępu POSIX. |
+> | **Opis** | Zapewnia pełny dostęp do kontenerów obiektów blob usługi Azure Storage i danych, w tym przypisywanie kontroli dostępu POSIX. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akcje** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* | Pełne uprawnienia w kontenerach.  |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* | Pełne uprawnienia dla obiektów blob. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-blob-data-reader-preview"></a>Czytnik danych obiektu blob magazynu (wersja zapoznawcza)
+## <a name="storage-blob-data-reader"></a>Czytelnik danych obiektu blob usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
+> | **Opis** | Przeczytaj i wyświetlać listę kontenerów usługi Azure Storage i obiektów blob. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Akcje** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca listę kontenerów |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-queue-data-contributor-preview"></a>Współautor danych kolejki magazynu (wersja zapoznawcza)
+## <a name="storage-queue-data-contributor"></a>Współautor danych kolejki usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
+> | **Opis** | Odczyt, zapis i usuwanie kolejek i komunikatów kolejek usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **Akcje** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Zwraca wynik usunięcia kolejki |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Usuwanie kolejki. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/write | Zwraca wynik zapisania kolejki |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/write | Zmodyfikuj właściwości lub metadane kolejki. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Usuń co najmniej jeden komunikat z kolejki. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Peek lub pobrać co najmniej jeden komunikat z kolejki. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Dodawanie komunikatu do kolejki. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-queue-data-message-processor-preview"></a>Procesor komunikat danych kolejki magazynu (wersja zapoznawcza)
+## <a name="storage-queue-data-message-processor"></a>Procesor komunikatów danych kolejki usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Pozwala uzyskać wgląd, otrzymywanie i usunąć dostęp do wiadomości w kolejce usługi Azure Storage |
+> | **Opis** | Wgląd, pobieranie i usuwanie wiadomości z kolejki usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **Akcje** |  |
 > | *Brak* |  |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Zwraca wynik przetworzenia komunikatu |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Wgląd do wiadomości. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Pobieranie i usuwanie wiadomości e-mail. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-queue-data-message-sender-preview"></a>Nadawca wiadomości danych kolejki magazynu (wersja zapoznawcza)
+## <a name="storage-queue-data-message-sender"></a>Nadawca komunikatów danych kolejki usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia wysyłanie komunikatów do kolejki usługi Azure Storage |
+> | **Opis** | Dodawanie komunikatów do kolejki usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | **Akcje** |  |
 > | *Brak* |  |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Zwraca wynik dodania komunikatu |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Dodawanie komunikatu do kolejki. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="storage-queue-data-reader-preview"></a>Czytnik danych kolejki magazynu (wersja zapoznawcza)
+## <a name="storage-queue-data-reader"></a>Czytelnik danych kolejki usługi Storage
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
+> | **Opis** | Przeczytaj i wyświetlać listę kolejek i komunikatów kolejek usługi Azure Storage. Aby dowiedzieć się, akcje, które są wymagane dla operacji danych, zobacz [uprawnień do wywoływania operacji na danych obiektów blob i kolejek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **Identyfikator** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Peek lub pobrać co najmniej jeden komunikat z kolejki. |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
@@ -2558,6 +2678,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Web/serverFarms/* | Tworzenie i zarządzanie nimi farmy serwerów |
+> | Microsoft.Web/hostingEnvironments/Join/Action | Dołącza środowisko App Service Environment |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |

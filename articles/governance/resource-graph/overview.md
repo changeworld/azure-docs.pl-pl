@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi Azure Resource Graph
-description: Azure Resource Graph to usługa platformy Azure, która umożliwia wykonywanie złożonych zapytań o zasoby w odpowiedniej skali.
+description: Dowiedz się, jak usługa wykres zasobów platformy Azure umożliwia złożonych zapytań zasobów na dużą skalę.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193572"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802326"
 ---
-# <a name="what-is-azure-resource-graph"></a>Co to jest usługa Azure Resource Graph
+# <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
 Azure Resource Graph to usługa platformy Azure, której celem jest rozszerzenie usługi Azure Resource Management, zapewniając wydajną i działającą eksplorację zasobów z możliwością wysyłania zapytań na dużą skalę we wszystkich subskrypcjach i grupach zarządzania, aby można było wydajnie zarządzać swoim środowiskiem. Te zapytania zapewniają następujące funkcje:
 

@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 04/01/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434763"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793105"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Tabele tymczasowe w usłudze SQL Data Warehouse
 Ten artykuł zawiera podstawowe wskazówki dotyczące korzystania z tabel tymczasowych i wyróżnienie zasadami poziomu tabel tymczasowych sesji. Korzystając z informacji w tym artykule mogą pomóc w modularyzacji kodu, zwiększanie prostotę konserwacji kodu i możliwość ponownego wykorzystania.
 
 ## <a name="what-are-temporary-tables"></a>Co to są tabele tymczasowe?
-Tabele tymczasowe są przydatne podczas przetwarzania danych — szczególnie podczas przekształcania, których wyniki pośrednie są przejściowy. W usłudze SQL Data Warehouse tabele tymczasowe istnieją na poziomie sesji.  One są widoczne tylko dla sesji, w którym zostały utworzone i są automatycznie usuwane po wylogowaniu tej sesji.  Tabele tymczasowe oferują korzyści wydajności, ponieważ ich wyniki są zapisywane w lokalnym, a nie Magazyn zdalny.  Tabele tymczasowe są nieco inne w usłudze Azure SQL Data Warehouse niż usługi Azure SQL Database, ponieważ są one dostępne z dowolnego miejsca w danej sesji, łącznie z i spoza procedury składowanej.
+Tabele tymczasowe są przydatne podczas przetwarzania danych — szczególnie podczas przekształcania, których wyniki pośrednie są przejściowy. W usłudze SQL Data Warehouse tabele tymczasowe istnieją na poziomie sesji.  One są widoczne tylko dla sesji, w którym zostały utworzone i są automatycznie usuwane po wylogowaniu tej sesji.  Tabele tymczasowe oferują korzyści wydajności, ponieważ ich wyniki są zapisywane w lokalnym, a nie Magazyn zdalny.
 
 ## <a name="create-a-temporary-table"></a>Tworzenie tabeli tymczasowej
 Tabele tymczasowe są tworzone przez poprzedzania ich nazwą tabeli za pomocą `#`.  Na przykład:
@@ -215,7 +215,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Ograniczenia tabeli tymczasowej
-Usługa SQL Data Warehouse nakłada kilka ograniczeń podczas implementowania tabel tymczasowych.  Obecnie tylko sesji tabele tymczasowe w zakresie są obsługiwane.  Globalne tabele tymczasowe są nieobsługiwane.  Ponadto widoki nie można utworzyć na tabelach tymczasowych.
+Usługa SQL Data Warehouse nakłada kilka ograniczeń podczas implementowania tabel tymczasowych.  Obecnie tylko sesji tabele tymczasowe w zakresie są obsługiwane.  Globalne tabele tymczasowe są nieobsługiwane.  Ponadto widoki nie można utworzyć na tabelach tymczasowych.  Tabele tymczasowe można tworzyć tylko za pomocą dystrybucji skrótów i działanie okrężne.  Tabeli tymczasowej replikowane dystrybucji nie jest obsługiwane. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat tworzenia tabel, zobacz [Omówienie tabel](sql-data-warehouse-tables-overview.md).

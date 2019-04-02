@@ -13,12 +13,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e154a53dc32aea0b3fbe093526546b080b02ceff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188464"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793581"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Serwer Proxy aplikacji usługi Azure Active Directory i Tableau 
 
@@ -50,7 +50,7 @@ W przypadku:
 **Aby opublikować aplikację**: 
 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator aplikacji. 
 
 2. Wybierz **usługi Azure Active Directory > aplikacje dla przedsiębiorstw**. 
 

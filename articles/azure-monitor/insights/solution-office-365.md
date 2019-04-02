@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996715"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794023"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -34,6 +34,7 @@ Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środow
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
 
 - Organizacji subskrypcji usługi Office 365.
@@ -42,12 +43,16 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
  
 
 ## <a name="management-packs"></a>Pakiety administracyjne
+
 To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../platform/om-agents.md).
   
+
 ## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
+
 Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-monitoring-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
 
 ### <a name="required-information"></a>Wymagane informacje
+
 Przed rozpoczęciem tej procedury, Zbierz następujące informacje.
 
 W obszarze roboczym usługi Log Analytics:
@@ -64,6 +69,7 @@ Z subskrypcji usługi Office 365:
 - Klucz tajny klienta: Zaszyfrowanego ciągu jest niezbędne do uwierzytelniania.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Tworzenie aplikacji usługi Office 365 w usłudze Azure Active Directory
+
 Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory, który rozwiązania do zarządzania będzie używany do dostępu do rozwiązania do usługi Office 365.
 
 1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com/).
@@ -111,11 +117,12 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
     ![Klucze](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>Dodaj zgoda administratora
+
 Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody administratora dla aplikacji. Można to zrobić za pomocą skryptu programu PowerShell. 
 
 1. Zapisz poniższy skrypt jako *office365_consent.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,     
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -161,9 +168,11 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     ```
 
 2. Uruchom skrypt za pomocą następującego polecenia. Użytkownik jest monitowany dwukrotnie o poświadczenia. Najpierw podaj poświadczenia dla obszaru roboczego usługi Log Analytics, a następnie dzierżawy poświadczenia administratora globalnego usługi Office 365.
+
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
+
     Przykład:
 
     ```
@@ -175,11 +184,12 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     ![zgoda administratora](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Subskrybowanie do obszaru roboczego usługi Log Analytics
+
 Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego usługi Log Analytics. Możesz to zrobić również za pomocą skryptu programu PowerShell.
 
 1. Zapisz poniższy skrypt jako *office365_subscription.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -342,12 +352,14 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
     ```
 
 2. Uruchom skrypt za pomocą następującego polecenia:
+
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
     ```
+
     Przykład:
 
-    ```
+    ```powershell
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
@@ -355,7 +367,7 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
 
 Jeśli aplikacja jest już subskrybowana przez ten obszar roboczy lub jeśli ta dzierżawa jest subskrybentem z innym obszarem roboczym, mogą pojawić się następujący błąd.
 
-```
+```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
 At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 + $officeresponse = Invoke-WebRequest @Officeparams
@@ -366,7 +378,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 
 Może zostać wyświetlony następujący błąd, jeśli podano nieprawidłowe wartości parametrów.
 
-```
+```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
 + ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
@@ -377,11 +389,12 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Dezinstalacja
+
 Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu procesu w [usunąć to rozwiązanie do zarządzania](solutions.md#remove-a-monitoring-solution). Zbierane dane z usługi Office 365 do usługi Azure Monitor jednak nie powoduje wstrzymania. Postępuj zgodnie z poniższą procedurą, aby anulować subskrypcję usługi Office 365 i zatrzymać zbieranie danych.
 
 1. Zapisz poniższy skrypt jako *office365_unsubscribe.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -472,15 +485,18 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 
     Przykład:
 
-    ```
+    ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
 ## <a name="data-collection"></a>Zbieranie danych
+
 ### <a name="supported-agents"></a>Obsługiwani agenci
+
 Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
+
 Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Azure Monitor zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Azure Monitor w ramach po kilku minutach od jego odebrania.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
@@ -511,6 +527,7 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 Wszystkie rekordy utworzone w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor przez rozwiązania usługi Office 365 mają **typu** z **OfficeActivity**.  **OfficeWorkload** właściwość określa, które usługi Office 365, rekord, który odwołuje się do — Exchange, usługi AzureActiveDirectory, SharePoint lub OneDrive.  **RecordType** właściwość określa typ operacji.  Właściwości różnią się dla każdego typu operacji i przedstawiono w poniższych tabelach.
 
 ### <a name="common-properties"></a>Wspólne właściwości
+
 Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Office 365.
 
 | Właściwość | Opis |
@@ -528,6 +545,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 
 
 ### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory
+
 Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Azure Active Directory.
 
 | Właściwość | Opis |
@@ -539,6 +557,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Az
 
 
 ### <a name="azure-active-directory-account-logon"></a>Logowania konto usługi Active Directory platformy Azure
+
 Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Directory.
 
 | Właściwość | Opis |
@@ -552,6 +571,7 @@ Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Dir
 
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+
 Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze Azure Active Directory.
 
 | Właściwość | Opis |
@@ -569,6 +589,7 @@ Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze 
 
 
 ### <a name="data-center-security"></a>Zabezpieczeń Centrum danych
+
 Te rekordy są tworzone na podstawie danych inspekcji zabezpieczeń w centrum danych.  
 
 | Właściwość | Opis |
@@ -584,6 +605,7 @@ Te rekordy są tworzone na podstawie danych inspekcji zabezpieczeń w centrum da
 
 
 ### <a name="exchange-admin"></a>Administrator programu Exchange
+
 Te rekordy są tworzone, gdy zmiany zostaną wprowadzone do konfiguracji programu Exchange.
 
 | Właściwość | Opis |
@@ -598,6 +620,7 @@ Te rekordy są tworzone, gdy zmiany zostaną wprowadzone do konfiguracji program
 
 
 ### <a name="exchange-mailbox"></a>Skrzynka pocztowa programu Exchange
+
 Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do skrzynek pocztowych programu Exchange.
 
 | Właściwość | Opis |
@@ -620,6 +643,7 @@ Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do sk
 
 
 ### <a name="exchange-mailbox-audit"></a>Inspekcji skrzynki pocztowej programu Exchange
+
 Te rekordy są tworzone, gdy zostanie utworzony wpis inspekcji skrzynki pocztowej.
 
 | Właściwość | Opis |
@@ -634,6 +658,7 @@ Te rekordy są tworzone, gdy zostanie utworzony wpis inspekcji skrzynki pocztowe
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Grupa inspekcji skrzynki pocztowej programu Exchange
+
 Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do grupy programu Exchange.
 
 | Właściwość | Opis |
@@ -652,6 +677,7 @@ Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do gr
 
 
 ### <a name="sharepoint-base"></a>SharePoint Base
+
 Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
 
 | Właściwość | Opis |
@@ -668,6 +694,7 @@ Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
 
 
 ### <a name="sharepoint-schema"></a>Schemat programu SharePoint
+
 Te rekordy są tworzone podczas zmiany konfiguracji zostały wprowadzone w programie SharePoint.
 
 | Właściwość | Opis |
@@ -680,6 +707,7 @@ Te rekordy są tworzone podczas zmiany konfiguracji zostały wprowadzone w progr
 
 
 ### <a name="sharepoint-file-operations"></a>Operacje na plikach programu SharePoint
+
 Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoint.
 
 | Właściwość | Opis |
@@ -700,6 +728,7 @@ Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoi
 
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
+
 Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekordów aktualizacji zbieranych przez to rozwiązanie.
 
 | Zapytanie | Opis |
@@ -713,6 +742,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Użyj [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
 * [Tworzenie alertów](../platform/alerts-overview.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  

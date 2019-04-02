@@ -13,16 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: d5c003b2588813f8e8a1dfc2923b9d4c8d8c6cc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820437"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762325"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Program SQL Server na maszynie wirtualnej platformy Azure — informacje o wersji
 
 Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu programu SQL Server, wbudowane. Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersjach [programu SQL Server na maszynach wirtualnych Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Artykuł zawiera także listę znaczące zmiany zawartości, które nie są bezpośrednio do wersji mimo opublikowane w tym samym przedziale czasu. Ulepszenia do innych usług platformy Azure, można zobaczyć [usługi aktualizacji](https://azure.microsoft.com/updates)
+
+## <a name="march-2019"></a>Marca 2019 r
+
+### <a name="service-improvements"></a>Udoskonalenia usługi
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+| **Wsparcie dla obrazu niestandardowego** | Można teraz zainstalować [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) do niestandardowych obrazów systemu operacyjnego i SQL, które oferuje ograniczoną funkcjonalność [elastyczne Licencjonowanie](virtual-machines-windows-sql-ahb.md). Podczas rejestrowania niestandardowego obrazu za pomocą dostawcy zasobu języka SQL, określ typ licencji "AHUB" jako w przeciwnym razie rejestracja zakończy się niepowodzeniem. Możliwości zarządzania za pomocą bloku konfiguracji programu SQL w witrynie Azure portal nie jest obsługiwana dla obrazów niestandardowych.   | 
+| **Wsparcie dla nazwanego wystąpienia** | Mogą teraz wykorzystywać [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) przy użyciu nazwanego wystąpienia, jeśli wystąpienie domyślne został odinstalowany poprawnie. | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
+
+Brak
 
 
 ## <a name="february-2019"></a>Lutego 2019 r
@@ -32,15 +46,9 @@ Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu progr
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
 | **Ulepszenia w portalu** | Teraz jest możliwa zmiana modelu licencjonowania maszyny wirtualnej serwera SQL z rzeczywistym użyciem za pomocą bring-your-own-license [witryny Azure portal](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1).|
-|**Uproszczenie wdrażania grupy dostępności przy użyciu interfejsu wiersza polecenia maszyny Wirtualnej SQL Azure** | Jest teraz łatwiejsze niż kiedykolwiek Aby wdrożyć do grupy dostępności na maszynę Wirtualną programu SQL Server na platformie Azure. Azure CLI maszyny Wirtualnej programu SQL umożliwia utworzenie odbiornika usługi WSFC, wewnętrznego modułu równoważenia obciążenia i grupy dostępności, wszystko z poziomu wiersza polecenia, a także w czasie rekordów! Aby uzyskać więcej informacji, zobacz [Użyj SQL VM wiersza polecenia platformy Azure na konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
+|**Uproszczenie wdrażania grupy dostępności przy użyciu interfejsu wiersza polecenia maszyny Wirtualnej SQL Azure** | Jest teraz łatwiejsze niż kiedykolwiek Aby wdrożyć do grupy dostępności na maszynę Wirtualną programu SQL Server na platformie Azure. [Interfejs wiersza polecenia platformy Azure SQL VM](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) umożliwia utworzenie odbiornika usługi WSFC, wewnętrznego modułu równoważenia obciążenia i grupy dostępności, wszystko z poziomu wiersza polecenia, a także w czasie rekordów! Aby uzyskać więcej informacji, zobacz [Użyj SQL VM wiersza polecenia platformy Azure na konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
-
-| Udoskonalenia dokumentacji | Szczegóły |
-| --- | --- |
-|brak | |
-| | |
 
 ## <a name="december-2018"></a>Grudzień 2018 r.
 

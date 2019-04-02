@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi Azure Blueprints
-description: Azure Blueprints to usługa platformy Azure, która umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
+description: Dowiedz się, jak usługa plany usługi Azure umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf3801381359bb973d126e2ee946cdb51e5aecb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823097"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802579"
 ---
-# <a name="what-is-azure-blueprints"></a>Czym jest usługa Azure Blueprints?
+# <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
 
 Usługę Azure Blueprints można porównać do planu, który pozwala inżynierowi lub architektowi naszkicować parametry projektu. Usługa ta umożliwia architektom chmury i centralnym grupom technologii informatycznych zdefiniowanie powtarzalnego zestawu zasobów platformy Azure, który implementuje standardy, wzorce i wymagania organizacji oraz jest z nimi zgodny. Usługa Azure Blueprints umożliwia zespołom programistów szybkie tworzenie i wdrażanie nowych środowisk z przekonaniem, że zostały one utworzone zgodnie z zasadami organizacji za pomocą zestawu wbudowanych składników — takich jak sieć — przyspieszających opracowywanie i dostarczanie.
 
@@ -119,7 +119,7 @@ Poniższy omówienie usługi Azure Blueprints pochodzi z witryny Azure Fridays. 
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Tworzenie strategii — portal](create-blueprint-portal.md)
 - [Tworzenie strategii — interfejs API REST](create-blueprint-rest-api.md)

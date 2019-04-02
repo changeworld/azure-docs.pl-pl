@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496897"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805588"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Transfer danych dla dużych zestawów danych przy użyciu umiarkowany Wysoka przepustowość sieci
  
@@ -62,7 +62,7 @@ W poniższej tabeli podsumowano różnice w najważniejsze funkcje umożliwiają
 
 Jeśli przy użyciu transferu danych w trybie offline, należy użyć poniższej tabeli, aby zrozumieć różnice w kluczowych funkcji.
 
-|                                     |    Dysku Data Box (wersja zapoznawcza)    |    Data Box                                      |    Duże pole danych (wersja zapoznawcza)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Rozmiar danych                        |    Maksymalnie 35 TB                 |    Do 80 TB na każdym urządzeniu                       |    Maksymalnie 800 TB na każdym urządzeniu               |    Zmienna                            |
 |    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
@@ -83,7 +83,7 @@ Jeśli przy użyciu transferu danych w trybie online, na użytek tabeli w poniż
 
 ### <a name="high-network-bandwidth"></a>Wysoka przepustowość sieci
 
-|                                     |    Narzędzia AzCopy <br>Azure PowerShell, <br>Interfejs wiersza polecenia platformy Azure             |    Interfejsy API REST, zestawy SDK usługi Azure Storage                   |    Brama pola danych lub krawędź pola danych (wersja zapoznawcza)           |    Azure Data Factory                                            |
+|                                     |    Narzędzia AzCopy <br>Azure PowerShell, <br>Interfejs wiersza polecenia platformy Azure             |    Interfejsy API REST, zestawy SDK usługi Azure Storage                   |    Brama pola danych lub krawędź pola danych          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Typ danych                  |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files, tabele platformy Azure    |    Obiekty BLOB platformy Azure, usługa Azure Files                           |   Obsługuje 70 łączników danych dla magazynów danych i formatów    |
 |    Współczynnik postaci                |    Narzędzia wiersza polecenia                        |    Interfejs programistyczny                    |    Firma Microsoft dostarcza wirtualnej <br>lub urządzenia fizycznego     |    Usługi w witrynie Azure portal                                            |

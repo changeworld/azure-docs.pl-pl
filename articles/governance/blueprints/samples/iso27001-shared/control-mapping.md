@@ -1,6 +1,6 @@
 ---
-title: Przykład — ISO 27001 planu — mapowanie kontrolek
-description: Mapowanie kontrolek ISO 27001 przykładowy plan.
+title: Przykładowe mapowanie kontrolek — ISO 27001 udostępnionych usług planu-
+description: Mapowanie kontrolek przykładowy plan ISO 27001 udostępnionych usług do usługi Azure Policy i RBAC.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 34cda2f09392513b0d3f76cc5f77ea0064109410
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3ce755b62ce2ba0328852b551225ffa828a6c1bf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576109"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804687"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapowanie kontrolek Azure schematy ISO 27001 próbki planu
+# <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapowanie kontrolek próbki planu ISO 27001 udostępnionych usług
 
 Poniższy artykuł szczegółowo opisuje sposób usług Azure schematy ISO 27001 udostępnionych planu mapy próbki z kontrolkami ISO 27001. Aby uzyskać więcej informacji na temat formantów, zobacz [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 

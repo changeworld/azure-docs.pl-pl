@@ -16,14 +16,15 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b3da5b2340b6bd4dd49dd6f8278f2fced477bc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190725"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792403"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcji usługi synchronizacji programu Azure AD Connect
+
 Funkcja synchronizacji programu Azure AD Connect ma dwa składniki:
 
 * Składnik środowiska lokalnego, o nazwie **synchronizacji programu Azure AD Connect**, nazywane również **aparatu synchronizacji**.
@@ -65,26 +66,29 @@ Następujące ustawienia są konfigurowane przy użyciu usługi Azure AD Connect
 | UserWriteback |Nie są obecnie obsługiwane. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Odporność na duplikowanie atrybutów
+
 Zamiast przechodzenia do aprowizowania obiekty z zduplikowane UPN / proxyAddresses lub zduplikowanym atrybutem jest "objęte kwarantanną" i przypisano wartości tymczasowej. Po usunięciu konflikt tymczasowe nazwy UPN jest zmieniany na poprawną wartość automatycznie. Aby uzyskać więcej informacji, zobacz [tożsamości synchronizacji i odporności zduplikowanego atrybutu](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName soft match
+
 Po włączeniu tej funkcji miękkiego jest włączona dla nazwy UPN w uzupełnieniu do [podstawowego adresu SMTP użytkownika](https://support.microsoft.com/kb/2641663), który jest zawsze włączona. Opcji soft-match jest używany do dopasowywania istniejących użytkowników w chmurze w usłudze Azure AD przy użyciu lokalnych użytkowników.
 
 Jeśli potrzebujesz dopasowanie środowiska lokalnego konta usługi AD z istniejących kont utworzonych w chmurze i nie używasz usługi Exchange Online, a następnie ta funkcja jest przydatna. W tym scenariuszu ogólnie nie masz powód, aby ustawić atrybut SMTP w chmurze.
 
 Ta funkcja jest na domyślny dla nowo utworzony katalogów usługi Azure AD. Zostanie wyświetlony, jeśli ta funkcja jest włączona dla Ciebie, uruchamiając:  
 
-```
+```powershell
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
 Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, następnie można je włączyć, uruchamiając:  
 
-```
+```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronizowanie aktualizacji userPrincipalName
+
 W przeszłości aktualizacje atrybut UserPrincipalName przy użyciu usługi synchronizacji ze środowiska lokalnego zostało zablokowane, chyba że oba te warunki są spełnione:
 
 * Użytkownik jest zarządzany (inne niż federacyjne).
@@ -96,19 +100,19 @@ Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować 
 
 Ta funkcja jest na domyślny dla nowo utworzony katalogów usługi Azure AD. Zostanie wyświetlony, jeśli ta funkcja jest włączona dla Ciebie, uruchamiając:  
 
-```
+```powershell
 Get-MsolDirSyncFeatures -Feature SynchronizeUpnForManagedUsers
 ```
 
 Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, następnie można je włączyć, uruchamiając:  
 
-```
+```powershell
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
 Po włączeniu tej funkcji, wciąż istniejące wartości userPrincipalName-to. Dla następnej zmiany userPrincipalName atrybutu w środowisku lokalnym synchronizacja różnicowa użytkowników zostanie zaktualizowana nazwa UPN.  
 
 ## <a name="see-also"></a>Zobacz także
+
 * [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).
-

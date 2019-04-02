@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8ab1f31d61b7a6a1637cd274cc5ac7fc4f5dc2f1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622165"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801683"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows
 
@@ -30,6 +30,8 @@ Oto, co jest potrzebne do skonfigurowania dzierżawy pulpitu wirtualnego Windows
 * [Usługi Azure Active Directory](https://azure.microsoft.com/services/active-directory/) identyfikator dla Windows pulpitu wirtualnego użytkowników dzierżawy.
 * Konto administratora globalnego dzierżawy usługi Azure Active Directory.
    * Dotyczy to również organizacjom Cloud Solution Provider (CSP), tworzenia dzierżawy pulpitu wirtualnego Windows dla swoich klientów. Jeśli w organizacji dostawcy usług Kryptograficznych, należy zalogować się jako administrator globalny przez klienta usługi Azure Active Directory.
+   * Konta administratora należy ustalić źródło, z dzierżawy usługi Azure Active Directory, w którym próbujesz utworzyć dzierżawę pulpitu wirtualnego Windows. Ten proces nie obsługuje usługi Azure Active Directory B2B (Gość) konta.
+   * Konto administratora musi być konta firmowego lub szkolnego.
 * Identyfikator subskrypcji platformy Azure
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Uprawnienia GRANT usługi Azure Active Directory z usługą Windows wirtualnego pulpitu (wersja zapoznawcza)

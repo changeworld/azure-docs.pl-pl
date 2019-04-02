@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 13ea4acb5a3b5b3e7ac6d53013193fddbfcbf9b7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759473"
+ms.locfileid: "58762926"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
@@ -31,8 +31,6 @@ Usługa Azure HDInsight clusters mają różne typy maszyn wirtualnych, albo prz
 | Węzeł regionu | Typ klastra HBase uruchamiane serwera regionalnego węzła region (nazywane również węzeł danych). Serwery regionów obsługi i zarządzanie nimi część danych zarządzanych przez bazę danych HBase. Węzły regionu można dodane lub usunięte z klastra na skalowanie możliwości obliczeniowych i zarządzania kosztami.|
 | Węzeł nimbus | Dla typu klastra Storm węzeł Nimbus oferuje funkcje podobne do węzła głównego. Węzeł Nimbus przypisuje zadania do innych węzłów w klastrze za pośrednictwem dozorcy, która koordynuje uruchomionych topologii systemu Storm. |
 | Nadzorca węzła | Dla typu klastra Storm węzeł nadzorca wykonuje instrukcji udostępnionych przez węzeł Nimbus do wykonywania żądanego przetwarzania. |
-
-* =, Apache Hadoop, Apache Hive, Apache Kafka, Apache Spark, Apache HBase i typy klastra oprogramowania R Server
 
 ## <a name="basic-virtual-network-resources"></a>Zasoby podstawowe sieci wirtualnej
 

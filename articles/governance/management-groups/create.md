@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992740"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801270"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -37,14 +37,14 @@ Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy A
 
 1. Na stronie głównej wybierz **nowym rozwiązaniem do zarządzania grupy**.
 
-   ![Główna grupa](./media/main.png)
+   ![Strona do pracy z grupami zarządzania](./media/main.png)
 
 1. Wypełnij pola Identyfikator grupy zarządzania.
 
    - **Identyfikator grupy zarządzania** jest unikatowy identyfikator katalogu, który służy do przesyłania poleceń w tej grupie zarządzania. Ten identyfikator nie jest edytowalny po utworzeniu, ponieważ jest używany do identyfikowania tej grupy w systemie Azure.
    - Nazwa wyświetlana tego pola jest nazwa, która jest wyświetlana w witrynie Azure portal. Nazwę wyświetlaną osobne pole jest opcjonalne, tworząc zarządzania grupy i można ją zmienić w dowolnym momencie.  
 
-   ![Przycisk Utwórz](./media/create_context_menu.png)  
+   ![Okienko opcji tworzenia nowej grupy zarządzania](./media/create_context_menu.png)  
 
 1. Wybierz pozycję **Zapisz**.
 

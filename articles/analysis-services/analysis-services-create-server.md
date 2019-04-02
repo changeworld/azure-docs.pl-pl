@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e9080cfc863b4253a4eb4d427f21df74bb08874
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54186740"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803011"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Szybki start: Tworzenie serwera — Portal
 
@@ -46,7 +46,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
    * **Ustawienie Magazyn kopii zapasowych**: Opcjonalny. Jeśli masz już [konto magazynu](../storage/common/storage-introduction.md), możesz je wskazać jako domyślny magazyn kopii zapasowych modelowej bazy danych. Możesz również określić ustawienia [tworzenia i przywracania kopii zapasowych](analysis-services-backup.md) później.
    * **Czas wygaśnięcia klucza magazynu**: Opcjonalny. Określ czas wygaśnięcia klucza magazynu.
 
-Tworzenie serwera zwykle trwa mniej niż minutę. W przypadku wybrania opcji **Dodaj do portalu** przejdź do portalu, aby zobaczyć nowy serwer. Możesz też wybrać pozycję **Wszystkie usługi** > **Analysis Services**, aby sprawdzić, czy serwer jest gotowy.
+Tworzenie serwera zwykle trwa mniej niż minutę. W przypadku wybrania opcji **Dodaj do portalu** przejdź do portalu, aby zobaczyć nowy serwer. Możesz też wybrać pozycję **Wszystkie usługi** > **Analysis Services**, aby sprawdzić, czy serwer jest gotowy. Serwery obsługują modele tabelaryczne na poziomie zgodności 1200 i wyższym. Poziom zgodności modelu jest określona w programie SSDT lub programu SSMS.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -55,7 +55,7 @@ Gdy serwer nie będzie już potrzebny, usuń go. Na stronie **Przegląd** serwer
  ![Czyszczenie](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki Start przedstawiono sposób tworzenia serwera w ramach subskrypcji platformy Azure. Teraz, po utworzeniu serwera, możesz go zabezpieczyć, konfigurując (opcjonalną) zaporę serwera. Możesz też dodać do serwera podstawowy przykładowy model danych bezpośrednio w portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]

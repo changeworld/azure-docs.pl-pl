@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 87d828e596c42b786d1c54a7158e1151f374c560
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444294"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793043"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem z instalacją łącznika agenta serwera proxy aplikacji
 
@@ -64,13 +64,13 @@ Podczas instalacji łącznika nie powiedzie się, przyczyny to zwykle spowodowan
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Sprawdź, czy administrator służy do instalowania łącznika
 
-**Cel:** Sprawdź, czy użytkownik, który próbuje zainstalować łącznik jest administrator z prawidłowymi poświadczeniami. Obecnie użytkownik musi być administratorem aplikacji lub administratora globalnego dla instalacji zakończyło się sukcesem.
+**Cel:** Sprawdź, czy użytkownik, który próbuje zainstalować łącznik jest administrator z prawidłowymi poświadczeniami. Obecnie użytkownik musi być co najmniej administratora aplikacji do zainstalowania zakończyło się sukcesem.
 
 **Aby sprawdzić, czy poświadczenia są prawidłowe:**
 
 Połączyć się z <https://login.microsoftonline.com> i używać tych samych poświadczeń. Upewnij się, że użytkownik zaloguje się ponownie. Rolę użytkownika można sprawdzić, przechodząc do **usługi Azure Active Directory**  - &gt; **użytkowników i grup**  - &gt; **wszyscy użytkownicy**. 
 
-Wybierz konto użytkownika, następnie "Rola katalogu" w menu wynikowe. Sprawdź wybraną rolę "Administrator aplikacji" lub "Administrator globalny". Jeśli nie możesz uzyskać dostępu do żadnych stron wzdłuż tych kroków, nie masz wymaganych ról.
+Wybierz konto użytkownika, następnie "Rola katalogu" w menu wynikowe. Sprawdź, czy wybraną rolę "Administrator aplikacji". Jeśli nie możesz uzyskać dostępu do żadnych stron wzdłuż tych kroków, nie masz wymaganych ról.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)

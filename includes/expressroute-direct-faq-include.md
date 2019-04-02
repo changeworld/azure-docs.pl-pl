@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6a0d84a2aaf4b52c7fb0163231574eaea63c18c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825570"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807798"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co to jest usługa ExpressRoute bezpośrednio?
 
@@ -52,6 +52,6 @@ Bezpośrednie ExpressRoute zapewnia klientom bezpośredniego pary portu 100 GB/s
 
 Bezpośrednio z usługi ExpressRoute jest naliczana dla pary portu na stałą kwotę. Standardowa obwodów zostaną uwzględnione na nie dodatkowe godziny i premium będzie miał za nieznaczne dodatku. Ruch wychodzący jest naliczana na podstawie poszczególnych obwodu, oparty na strefie lokalizacji komunikacji równorzędnej.
 
-### <a name="when-does-billing-state-for-the-expressroute-direct-port-pairs"></a>Gdy jest stan rozliczeń dla par portu bezpośrednio z usługi ExpressRoute?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Gdy jest start rozliczeń dla par portu bezpośrednio z usługi ExpressRoute?
 
 Pary portu usługi ExpressRoute bezpośrednio do tworzenia zasobów usługi ExpressRoute bezpośrednio, są rozliczane 45 dni lub po włączeniu 1 i / lub łączy osiągnięta jako pierwsza. Aby umożliwić klientom ukończyć proces obejmującej wiele połączeń za pomocą dostawcy kolokacji udzielany jest 45-dniowy okres prolongaty.

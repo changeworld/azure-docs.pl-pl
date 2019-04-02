@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111314"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793391"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Dostosowywanie i współpracy usługi Azure Active Directory B2B interfejsu API
 
 Mieliśmy wielu klientów, powiedz nam, że chce dostosować proces zaproszenie w sposób, który najlepiej sprawdza się w swoich organizacjach. Za pomocą naszego interfejsu API możesz to zrobić tylko. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Możliwości zaproszenia do interfejsu API
+
 Interfejs API oferuje następujące możliwości:
 
 1. Zaproś użytkownika zewnętrznego za pomocą *wszelkie* adres e-mail.
@@ -68,21 +69,25 @@ Interfejs API oferuje następujące możliwości:
 
 
 ## <a name="authorization-model"></a>Modelu autoryzacji
+
 Interfejs API mogą być uruchamiane w następujących trybach autoryzacji:
 
 ### <a name="app--user-mode"></a>Aplikacja i trybu użytkownika
+
 W tym trybie, kto korzysta na potrzeby interfejsu API musi mieć uprawnienia można utworzyć zaproszenia B2B.
 
 ### <a name="app-only-mode"></a>Tryb tylko do aplikacji
+
 W kontekście tylko aplikacji Aplikacja musi zakresu User.Invite.All związane z zaproszeniem została wykonana pomyślnie.
 
 Aby uzyskać więcej informacji można znaleźć: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
+
 Aby dodać, a następnie łatwo zaprosić użytkowników zewnętrznych dla organizacji, można użyć programu PowerShell. Utwórz zaproszenia przy użyciu polecenia cmdlet:
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ Po użytkownik zewnętrzny wysłać zaproszenie, można użyć **Get-AzureADUser
 
 Możesz użyć **filtru** opcję, aby przefiltrować wyniki według **UserState**. W poniższym przykładzie pokazano sposób filtrowania wyników do wyświetlenia tylko tych użytkowników, którzy mają oczekujące zaproszenie. W przykładzie pokazano również **Format-Lista** opcja, która umożliwia określenie właściwości do wyświetlenia. 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Zapoznaj się z odwołanie zaproszenia interfejsu API w [ https://developer.micr
 - [Elementy wiadomości e-mail z zaproszeniem współpracy B2B](invitation-email-elements.md)
 - [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
 - [Dodają użytkowników we współpracy B2B bez zaproszenia](add-user-without-invite.md)
-

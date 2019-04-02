@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: a3096729b2430adf0fd884fc03e3b051b17f5b51
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660464"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791579"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem usługi Azure Data Box Edge za pośrednictwem programu Windows PowerShell
 
@@ -59,6 +59,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 Aby uzyskać więcej informacji na temat certyfikatów, przejdź do [certyfikaty usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [instalowanie certyfikatów na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Wyświetl informacje na urządzeniu
+
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -75,9 +76,10 @@ Skonfigurowanie ról obliczeniowych na urządzeniu z systemem dzienniki obliczen
 
     Poniższy przykład przedstawia sposób użycia tego polecenia cmdlet:
 
-    ```
+    ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
+
     Poniżej przedstawiono opis parametry używane dla polecenia cmdlet:
     - `Path`: Podaj ścieżkę sieciową do udziału, w którym chcesz utworzyć pakiet dziennika obliczeń.
     - `Credential`: Podaj nazwę użytkownika i hasło do udziału sieciowego.

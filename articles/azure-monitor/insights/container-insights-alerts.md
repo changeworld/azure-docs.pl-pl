@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886781"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804828"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w usłudze Azure Monitor dla kontenerów
 Usługa Azure Monitor dla kontenerów monitorów wydajności obciążeń kontenerów wdrożona albo w usłudze Azure Container instances lub zarządzane klastry Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS). 
 
 W tym artykule opisano sposób włączania alertów w następujących sytuacjach:
 
-* Gdy wykorzystanie Procesora i pamięci na węzłach klastra lub przekroczy zdefiniowany próg.
+* Gdy wykorzystanie procesora CPU lub pamięci na węzłach klastra przekracza zdefiniowany próg.
 * Gdy wykorzystanie procesora CPU lub pamięci na każdym z kontenerów w kontrolerze przekracza próg zdefiniowanych w porównaniu do limit ustawiony na odpowiadający jej zasób.
+* **Niegotowe** zlicza stan węzła
+* Liczbę zasobników fazy **nie powiodło się**, **oczekujące**, **nieznany**, **systemem**, lub **zakończone powodzeniem**
 
-Aby alert, gdy wykorzystanie procesora CPU lub pamięci jest wysoka dla klastra lub kontrolera, należy utworzyć regułę alertu pomiaru metryki, która opiera się poza dziennika kwerendy dostarczone. Zapytania Porównaj datetime bieżącej za pomocą operatora teraz i powraca jedną godzinę. Wszystkie daty, przechowywane w usłudze Azure Monitor dla kontenerów są w formacie UTC.
+Do wyzwalania alertu, gdy procesor CPU lub pamięci, że wykorzystanie jest wysoka w węzłach klastra można albo utworzyć alertu dotyczącego metryki lub regułę alertu pomiaru metryki, za pomocą zapytań log, pod warunkiem. Chociaż alertów dotyczących metryk mniejsze opóźnienia niż alertów dzienników, alertu dziennika udostępnia zaawansowane zapytania i coraz bardziej wyszukanymi niż alertu metryki. Dla dziennika alertów zapytania porównania datetime bieżącej za pomocą operatora teraz i powraca jedną godzinę. Wszystkie daty, przechowywane w usłudze Azure Monitor dla kontenerów są w formacie UTC.
 
-Przed rozpoczęciem, jeśli użytkownik nie jest zaznajomiony z alertami w usłudze Azure Monitor, zobacz [Przegląd alertów na platformie Microsoft Azure](../platform/alerts-overview.md). Aby dowiedzieć się więcej o alertach za pomocą dziennika zapytań, zobacz [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md)
+Przed rozpoczęciem, jeśli użytkownik nie jest zaznajomiony z alertami w usłudze Azure Monitor, zobacz [Przegląd alertów na platformie Microsoft Azure](../platform/alerts-overview.md). Aby dowiedzieć się więcej o alertach za pomocą dziennika zapytań, zobacz [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md). Aby dowiedzieć się więcej na temat alertów dotyczących metryk, zobacz [alertów dotyczących metryk w usłudze Azure Monitor](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Zapytania wyszukiwania w dzienniku wykorzystania zasobów
 Zapytania w tej sekcji znajdują się w celu obsługi każdego scenariusza alertów. Zapytania są wymagane w kroku 7 w obszarze [Utwórz alert](#create-alert-rule) poniższej sekcji.  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+Następujące zapytanie zwraca wszystkie węzły i liczba ze stanem **gotowe** i **niegotowe**.
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+Następujące zapytanie zwraca, Liczba zasobników fazy oparte na wszystkich faz - **nie powiodło się**, **oczekujące**, **nieznany**, **systemem**, lub **Zakończyło się pomyślnie**.  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>Do takich jak alert po wystąpieniu określonych etapów pod **oczekujące**, **nie powiodło się**, lub **nieznany**, należy zmodyfikować ostatni wiersz zapytania. Na przykład w ramach alertu *FailedCount* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`.  
 
 ## <a name="create-alert-rule"></a>Utwórz regułę alertu
 Wykonaj poniższe kroki, aby utworzyć alertów dzienników w usłudze Azure Monitor, przy użyciu jednej z reguł wyszukiwania dzienników podany wcześniej.  

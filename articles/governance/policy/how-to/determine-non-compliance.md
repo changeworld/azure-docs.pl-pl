@@ -8,12 +8,12 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314130"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802749"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -46,7 +46,7 @@ Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
 1. **Szczegóły zgodności** okienko wyświetla informacje z najnowszej wersji ewaluacyjnej zasobu do bieżącego przypisania zasad. W tym przykładzie pole **Microsoft.Sql/servers/version** okaże się _12.0_ podczas gdy oczekiwano definicji zasad _14.0_. Jeśli zasób jest niezgodny z wielu powodów, każda znajduje się w tym okienku.
 
-   ![W okienku szczegółów zgodności](../media/determine-non-compliance/compliance-details-pane.png)
+   ![W okienku szczegółów zgodności i przyczyn braku zgodności](../media/determine-non-compliance/compliance-details-pane.png)
 
    Dla **auditIfNotExists** lub **deployIfNotExists** zawierają szczegóły definicji zasad **details.type** właściwości oraz wszelkie opcjonalne właściwości. Aby uzyskać listę, zobacz [właściwości auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) i [właściwości deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Ostatnio oceniono zasobów** jest zasobem powiązane z **szczegóły** sekcja definicji.
 
@@ -118,11 +118,11 @@ Jako część nowego **publicznej wersji zapoznawczej**, w ciągu ostatnich 14 d
 
 1. Wybierz **historię zmian (wersja zapoznawcza)** karcie **zgodność zasobów** strony. Lista Wykryto zmiany, jeśli nie są wyświetlane wszelkie istnieje.
 
-   ![Historię zmian zasad — karta](../media/determine-non-compliance/change-history-tab.png)
+   ![Karta Historia zmian zasad na stronie zgodność zasobów](../media/determine-non-compliance/change-history-tab.png)
 
 1. Wybierz jeden z wykryte zmiany. _Visual diff_ dla zasobu są przedstawione na **historię zmian** strony.
 
-   ![Historię zmian zasad — Visual Diff](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Diff Visual historii zmian zasad na stronie Historia zmian](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z bieżącego stanu zgodności zasobu.
 

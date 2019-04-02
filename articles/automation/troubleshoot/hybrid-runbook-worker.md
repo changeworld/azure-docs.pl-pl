@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 703f27dab6ca6252647ecb37d17d0f4faf045097
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c33b9c1b6cc810c3ef2f8d2637d7ac3523e0d8f9
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268690"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803718"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook
 
@@ -194,7 +194,7 @@ Start-Service -Name HealthService
 
 Pojawi się następujący komunikat o błędzie podczas próby dodania hybrydowego procesu roboczego Runbook za pomocą `Add-HybridRunbookWorker` polecenia cmdlet.
 
-```
+```error
 Machine is already registered to a different account
 ```
 

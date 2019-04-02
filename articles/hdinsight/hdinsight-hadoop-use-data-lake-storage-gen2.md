@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 45b34d12fbcecbf5f6bf1225c5bb82c5385224ed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 186a9bafe70ab9644666868f11d5ddd865a66b8d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338398"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802545"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -44,7 +44,7 @@ Utwórz konto usługi Azure Data Lake Storage Gen2. Upewnij się, że **hierarch
 
 ### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Ustawienia uprawnień dla tożsamości zarządzanej konta Data Lake Storage Gen2
 
-Przypisz tożsamość zarządzaną do **właściciela danych obiektu Blob magazynu (wersja zapoznawcza)** roli na koncie magazynu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC (wersja zapoznawcza)](../storage/common/storage-auth-aad-rbac.md).
+Przypisz tożsamość zarządzaną do **właściciela danych obiektu Blob magazynu** roli na koncie magazynu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC (wersja zapoznawcza)](../storage/common/storage-auth-aad-rbac.md).
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu.
 1. Wybierz konto magazynu, a następnie wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
@@ -52,7 +52,7 @@ Przypisz tożsamość zarządzaną do **właściciela danych obiektu Blob magazy
     ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
 1. Wybierz **+ Dodaj przypisanie roli** przycisk, aby dodać nową rolę.
-1. W **Dodaj przypisanie roli** wybierz **właściciela danych obiektu Blob magazynu (wersja zapoznawcza)** roli. Następnie wybierz subskrypcję, która ma zarządzanych tożsamości i konta magazynu. Następnie wyszukaj, aby zlokalizować użytkownik przypisany zarządzanych tożsamości, który został utworzony wcześniej. Na koniec wybierz pozycję tożsamość zarządzaną i będzie ono wyświetlane w obszarze **wybrane elementy członkowskie**.
+1. W **Dodaj przypisanie roli** wybierz **właściciela danych obiektu Blob magazynu** roli. Następnie wybierz subskrypcję, która ma zarządzanych tożsamości i konta magazynu. Następnie wyszukaj, aby zlokalizować użytkownik przypisany zarządzanych tożsamości, który został utworzony wcześniej. Na koniec wybierz pozycję tożsamość zarządzaną i będzie ono wyświetlane w obszarze **wybrane elementy członkowskie**.
     
     ![Zrzut ekranu przedstawiający sposób Przypisz rolę RBAC](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
@@ -102,7 +102,7 @@ az storage account create --name hdinsightadlsgen2 \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Następnie zaloguj się do portalu. Dodaj nowy użytkownik przypisany zarządzaną tożsamością do **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** roli na koncie magazynu, zgodnie z opisem w kroku 3 w sekcji [przy użyciu witryny Azure portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Następnie zaloguj się do portalu. Dodaj nowy użytkownik przypisany zarządzaną tożsamością do **Współautor danych obiektu Blob magazynu** roli na koncie magazynu, zgodnie z opisem w kroku 3 w sekcji [przy użyciu witryny Azure portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 Po przypisaniu roli dla zarządzanych tożsamości przypisanych przez użytkownika, należy wdrożyć szablon przy użyciu poniższego fragmentu kodu.
 

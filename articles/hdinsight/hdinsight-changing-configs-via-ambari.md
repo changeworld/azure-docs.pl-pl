@@ -1,19 +1,19 @@
 ---
 title: Optymalizacja konfiguracji klastra za pomocą systemu Apache Ambari — Azure HDInsight
 description: Do konfigurowania i Optymalizowanie klastrów HDInsight, należy użyć interfejsu użytkownika sieci web Apache Ambari.
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: ashish
-ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722927"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805384"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Korzystanie z systemu Apache Ambari w celu optymalizacji konfiguracje klastrów HDInsight
 
@@ -51,7 +51,7 @@ Aby zmodyfikować rozmiar sterty środowiska NameNode Java:
 
     ![Edytuj rozmiar sterty środowiska NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. Rozmiar sterty środowiska NameNode Java jest zmieniany do 2 GB od 1 GB.
+1. Rozmiar sterty środowiska NameNode Java jest zmieniany na 1 GB z 2 GB.
 
     ![Rozmiar sterty środowiska NameNode Java edytowany](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
@@ -176,7 +176,7 @@ Zadania Hadoop są zazwyczaj bottlenecked we/wy. Skompresowanie danych można pr
 
 Kompresja dostępne typy to:
 
-| Format | Narzędzie | Algorytm | Rozszerzenie pliku | Podzielne? |
+| Format | Tool | Algorytm | Rozszerzenie pliku | Podzielne? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | KORYGOWANIA | .gz | Nie |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
@@ -273,7 +273,7 @@ Domyślny typ sprzężenia w gałęzi jest *sprzężenia shuffle*. W gałęzi li
 | -- | -- | -- | -- | -- |
 | Shuffle sprzężenia | <ul><li>Wybór domyślny</li><li>Zawsze działa.</li></ul> | <ul><li>Odczytuje z częścią jednej z tabel</li><li>Przedziały i sortowanie na kluczu sprzężenia</li><li>Wysyła jeden przedział do każdego Zmniejsz</li><li>Sprzężenia odbywa się po stronie Zmniejsz</li></ul> | Nie znaczących ustawienie potrzebne gałęzi | Działa z każdym |
 | Przyłączanie do mapy | <ul><li>Jedna tabela mieści się w pamięci</li></ul> | <ul><li>Odczytuje małej tabeli do tabeli mieszania pamięci</li><li>Strumienie przez część dużych plików</li><li>Dołącza każdy rekord w tabeli wyznaczania wartości skrótu</li><li>Sprzężenia są przez samego mapowania</li></ul> | `hive.auto.confvert.join=true` | Bardzo szybko, ale jest ograniczony |
-| Zasobnik scalania sortowania | Jeśli obie tabele: <ul><li>Sortowane takie same</li><li>Bucketed takie same</li><li>Łączenie sortowane zasobnikach kolumny</li></ul> | Każdy proces: <ul><li>Odczytuje Wiadro z każdej tabeli</li><li>Przetwarza wiersz mający najmniejszą wartość</li></ul> | `hive.auto.convert.sortmerge.join=true` | Bardzo wydajny |
+| Sort Merge Bucket | Jeśli obie tabele: <ul><li>Sortowane takie same</li><li>Bucketed takie same</li><li>Łączenie sortowane zasobnikach kolumny</li></ul> | Każdy proces: <ul><li>Odczytuje Wiadro z każdej tabeli</li><li>Przetwarza wiersz mający najmniejszą wartość</li></ul> | `hive.auto.convert.sortmerge.join=true` | Bardzo wydajny |
 
 #### <a name="execution-engine-optimizations"></a>Optymalizacje aparatu wykonywania
 
@@ -295,7 +295,7 @@ Dodatkowe zalecenia dotyczące optymalizowania aparat Hive wykonywania:
 
 1. Znajdź, usuń znaczniki komentarza i zmień wartość właściwości, które chcesz zmodyfikować.
 
-1. Wybierz **Zapisz** w prawej górnej części okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia tej usługi.
+1. Wybierz **Zapisz** w prawym górnym rogu okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia tej usługi.
 
     ![Zaawansowane właściwości pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -365,7 +365,7 @@ Liczba reduktorów jest obliczana na podstawie parametru `pig.exec.reducers.byte
 
 [Apache HBase](https://hbase.apache.org/) konfiguracji zostało zmodyfikowane w porównaniu **konfiguracje bazy danych HBase** kartę. W poniższych sekcjach opisano niektóre ważnych ustawień konfiguracyjnych, które mają wpływ na wydajność bazy danych HBase.
 
-### <a name="set-hbaseheapsize"></a>Ustaw HBASE_HEAPSIZE
+### <a name="set-hbaseheapsize"></a>Set HBASE_HEAPSIZE
 
 Rozmiar sterty HBase określa maksymalną ilość sterty do użycia w megabajtach, *region* i *wzorca* serwerów. Wartość domyślna to 1000 MB. Powinny to być dostosowane dla obciążenia klastra.
 

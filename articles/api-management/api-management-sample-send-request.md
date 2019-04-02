@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: adb7329249570750002f04fb72465698f869afdc
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970182"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792488"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Korzystanie z usług zewnętrznych z usługi Azure API Management
 Zasady dostępne w usłudze Azure API Management można wykonać szeroką gamę przydatnych działań oparte wyłącznie na żądanie przychodzące, Wychodzące odpowiedzi i podstawowe informacje o konfiguracji. Jednak możliwość interakcji z usługami zewnętrznymi z usługi API Management zasady otwiera wiele więcej.
 
 Zauważyliśmy już wcześniej sposób interakcji z [usługi Azure Event Hub, rejestrowanie, monitorowanie i analizy](api-management-log-to-eventhub-sample.md). W tym artykule przedstawiono zasady, które umożliwiają korzystanie z dowolnymi usługami zewnętrznych oparty na protokole HTTP. Te zasady może służyć do wyzwalania zdalnych zdarzeń lub do odzyskiwania informacji, które jest używane do manipulowania oryginalnego żądania i odpowiedzi w jakiś sposób.
 
-## <a name="send-one-way-request"></a>Co sposób żądań wysłania
-Prawdopodobnie najprostszą interakcja zewnętrznych jest styl pożarowego i zapominać żądania, które umożliwia usługi zewnętrznej w celu otrzymywania powiadomień z pewnego rodzaju ważnych zdarzeń. Zasady przepływu sterowania `choose` może służyć do wykrywania dowolnego rodzaju warunek, który Cię interesuje.  Jeśli warunek jest spełniony, można wprowadzić zewnętrzny HTTP żądania przy użyciu [-co sposób — żądanie wysłania](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) zasad. To żądanie, aby system obsługi komunikatów, takich jak usługi Hipchat Slack i/lub wiadomość e-mail interfejsu API usługi SendGrid lub MailChimp, lub dla zdarzeń krytycznych wymagających pomocy technicznej coś w rodzaju usługi PagerDuty. Wszystkie te systemy obsługi komunikatów ma proste interfejsy API protokołu HTTP, który może być wywoływany.
+## <a name="send-one-way-request"></a>Send-One-Way-Request
+Prawdopodobnie najprostszą interakcja zewnętrznych jest styl pożarowego i zapominać żądania, które umożliwia usługi zewnętrznej w celu otrzymywania powiadomień z pewnego rodzaju ważnych zdarzeń. Zasady przepływu sterowania `choose` może służyć do wykrywania dowolnego rodzaju warunek, który Cię interesuje.  Jeśli warunek jest spełniony, można wprowadzić zewnętrzny HTTP żądania przy użyciu [-co sposób — żądanie wysłania](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) zasad. To żądanie, aby system obsługi komunikatów, takich jak usługi Hipchat Slack i/lub wiadomość e-mail interfejsu API usługi SendGrid lub MailChimp, lub dla zdarzeń krytycznych wymagających pomocy technicznej coś w rodzaju usługi PagerDuty. Wszystkie te systemy obsługi komunikatów ma proste interfejsy API protokołu HTTP, który może być wywoływany.
 
 ### <a name="alerting-with-slack"></a>Alerty z Slack
 Poniższy przykład pokazuje, jak wysyłać komunikat do pokoju rozmów Slack, jeśli kod stanu odpowiedzi HTTP jest większa niż lub równy 500. Błąd zakresu 500 wskazuje na problem z zaplecza interfejsu API klienta interfejsu API nie można rozwiązać samodzielnie. Zwykle wymaga pewnego rodzaju interwencji ze strony usługi API Management.  
@@ -59,12 +59,12 @@ Poniższy przykład pokazuje, jak wysyłać komunikat do pokoju rozmów Slack, j
 
 Slack jest pojęcie punkty zaczepienia przychodzącego ruchu internetowego. Podczas konfigurowania punktu zaczepienia przychodzącego ruchu internetowego, Slack generuje specjalny adres URL, dzięki czemu można w tym prostego żądania POST i przekazać komunikat do kanału Slack. Treść kodu JSON, które tworzysz jest oparty na formacie definicją Slack.
 
-![Slack Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Slack Web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Jest uruchomiony i zapomnij wystarczająco dobra?
-Istnieją pewne wady i zalety, korzystając z pożarowego i zapominać styl żądania. Jeśli jakichś powodów, żądanie nie powiedzie się, wówczas nie jest zgłaszany błąd. W szczególności takim złożoność po awarii pomocniczej raportowania systemu oraz wyższą wydajność kosztu oczekiwania na odpowiedź nie jest uzasadnione. W scenariuszach, gdzie jest niezbędne, aby sprawdzić odpowiedzi a następnie [żądań wysłania](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) zasad jest lepszym rozwiązaniem.
+Istnieją pewne wady i zalety, korzystając z pożarowego i zapominać styl żądania. Jeśli jakichś powodów, żądanie nie powiedzie się, wówczas nie jest zgłaszany błąd. W szczególności takim złożoność po awarii pomocniczej raportowania systemu oraz wyższą wydajność kosztu oczekiwania na odpowiedź nie jest uzasadnione. W scenariuszach, gdzie jest niezbędne, aby sprawdzić odpowiedzi a następnie [żądań wysłania](/azure/api-management/api-management-advanced-policies#SendRequest) zasad jest lepszym rozwiązaniem.
 
-## <a name="send-request"></a>Żądanie wysłania
+## <a name="send-request"></a>Send-Request
 `send-request` Umożliwia zasad przy użyciu usługi zewnętrznej do wykonywania zadań złożone przetwarzanie i zwraca dane do usługi API management usługi, która może służyć do dalszego przetwarzania zasad.
 
 ### <a name="authorizing-reference-tokens"></a>Autoryzowanie tokenów odwołań
@@ -209,7 +209,7 @@ Gdy te informacje mogą wysyłać żądania do wszystkich systemów zaplecza. Ka
 Te żądania są wykonywane w sekwencji, która nie jest idealnym rozwiązaniem. 
 
 ### <a name="responding"></a>Odpowiada
-Aby utworzyć złożone reakcji, można użyć [odpowiedzi zwracany](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) zasad. `set-body` Elementu można użyć wyrażenia do utworzenia nowego `JObject` przy użyciu reprezentacji składnika osadzonego jako właściwości.
+Aby utworzyć złożone reakcji, można użyć [odpowiedzi zwracany](/azure/api-management/api-management-advanced-policies#ReturnResponse) zasad. `set-body` Elementu można użyć wyrażenia do utworzenia nowego `JObject` przy użyciu reprezentacji składnika osadzonego jako właściwości.
 
 ```xml
 <return-response response-variable-name="existing response variable">

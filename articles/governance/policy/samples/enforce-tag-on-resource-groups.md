@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 73990de30525dff4e3a0981ebca96368f56845fe
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 792a5b0caa35cc69774dbfe9f3d33d532853e31f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339077"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805167"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Przykład — wymuszanie tagu i jego wartości na grupach zasobów
 
@@ -51,10 +51,10 @@ Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Nazwa) |Typ |Pole |Opis |
+|Name (Nazwa) |Type |Pole |Opis |
 |---|---|---|---|
-|tagName |Ciąg |tags |Nazwa tagu, na przykład costCenter|
-|tagValue |Ciąg |tags |Wartość tagu, na przykład headquarter|
+|tagName |String |tags |Nazwa tagu, na przykład costCenter|
+|tagValue |String |tags |Wartość tagu, na przykład headquarter|
 
 Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
 Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
@@ -74,8 +74,8 @@ W tym przykładowym parametrze jest zdefiniowany tag _tagName_ o wartości **cos
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Wdrażanie na platformie Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
-[![Wdrażanie na platformie Azure dla instytucji rządowych](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![Wdrażanie przykładu zasad w usłudze Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![wdrażanie przykładu zasad do klientów rządowych platformy Azure](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -224,7 +224,7 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
 | Zarządzanie zasobami | Przypisania zasad | [Usuwanie](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
 | Zarządzanie zasobami | Definicje zasad | [Usuwanie](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję zasad Azure Policy. Alternatywne rozwiązanie: [Usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj dodatkowe [przykłady zasad Azure Policy](index.md)
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md)

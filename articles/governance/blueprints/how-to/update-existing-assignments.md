@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78b2f98b61306c22eaba59b9be7259b3a24d7bbe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999851"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805758"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -32,17 +32,17 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 1. Na liście Schematy kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **zaktualizować przypisania** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **zaktualizować przypisania**.
 
-   ![Aktualizuj przypisanie](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualizowanie istniejącego przypisania planu](../media/update-existing-assignments/update-assignment.png)
 
 1. **Planu Przypisz** strony załaduje wstępnie wypełnione przy użyciu wszystkich wartości z oryginalnego przypisania. Możesz zmienić **wersji definicji planu**, **przypisania blokady** stanu i dowolny z parametrów dynamicznych, które istnieją w definicji planu. Kliknij przycisk **przypisać** po zakończeniu wprowadzania zmian.
 
 1. Na stronie szczegółów przypisania zaktualizowane Zobacz nowy stan. W tym przykładzie dodaliśmy **blokowanie** do przypisania.
 
-   ![Zaktualizowano przypisanie — zablokowane](../media/update-existing-assignments/updated-assignment.png)
+   ![Zaktualizowano istniejące przypisania planu — tryb blokady zmieniła się](../media/update-existing-assignments/updated-assignment.png)
 
 1. Poznaj szczegółowe informacje o innych **operacji przypisania** za pomocą listy rozwijanej. Tabela **zarządzane zasoby** aktualizacji przez operację wybrane przypisania.
 
-   ![Operacji przypisania](../media/update-existing-assignments/assignment-operations.png)
+   ![Przypisania operacji przypisania planu](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>Aktualizowanie przypisania zasad
 

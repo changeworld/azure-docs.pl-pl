@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370112"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802964"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -27,9 +27,9 @@ Za pomocą przypisań ról RBAC jest zaawansowany mechanizm kontrolowanie uprawn
 
 Usługa Azure Storage zapewnia trzy wbudowane role kontroli RBAC dla usługi Blob storage: 
 
-- [Właściciel danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [Storage Blob Data Reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [Właściciel danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Storage Blob Data Reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 Użytkownika lub jednostka usługi jest uprawnień RBAC danych za pomocą jednego z tych ról wbudowanych lub za pośrednictwem rolę niestandardową, te uprawnienia są obliczane najpierw od autoryzacji żądania. Jeśli żądana operacja jest autoryzowany przez wywołującego RBAC przydziałów autoryzacji jest natychmiast rozwiązanych i Brak dodatkowych listy ACL są sprawdzane. Alternatywnie Jeśli obiekt wywołujący nie ma przypisania RBAC lub żądania operacji jest niezgodna z przypisane uprawnienie, listy ACL testy są wykonywane do określenia, czy obiekt wywołujący jest autoryzowany do wykonania żądanej operacji.
 
@@ -285,7 +285,7 @@ Identyfikator GUID jest wyświetlany, jeśli wpis reprezentuje użytkownika, a u
 
 Podczas definiowania listy ACL dla nazw głównych usług, ważne jest, aby użyć Identyfikatora obiektu (OID) z *nazwy głównej usługi* rejestracji aplikacji, który został utworzony. Ważne jest, aby należy zauważyć, że zarejestrowanych aplikacji nazwy głównej usługi oddzielne w konkretnym dzierżawy usługi Azure AD. Zarejestrowane aplikacje mają identyfikatora OID, który jest widoczny w witrynie Azure portal, ale *nazwy głównej usługi* ma inny identyfikator OID w (inny).
 
-Aby uzyskać identyfikator OID nazwy głównej usługi tego corresonds do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+Aby uzyskać identyfikator OID dla jednostki usługi, który odnosi się do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

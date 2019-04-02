@@ -1,6 +1,6 @@
 ---
-title: Pola niestandardowe w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Funkcja pól niestandardowych, usługi Log Analytics umożliwia tworzenie własnego pola z możliwością wyszukiwania z rekordy usługi Log Analytics, które dodać właściwości zebranych rekordu.  W tym artykule opisano proces tworzenia pola niestandardowego i zawiera szczegółowy przewodnik z zdarzenie próbkowania.
+title: Pola niestandardowe w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Funkcja pól niestandardowych usługi Azure Monitor pozwala na tworzenie własnego pola z możliwością wyszukiwania na podstawie rekordów w obszarze roboczym usługi Log Analytics, które dodać właściwości zebranych rekordu.  W tym artykule opisano proces tworzenia pola niestandardowego i zawiera szczegółowy przewodnik z zdarzenie próbkowania.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.author: bwren
-ms.openlocfilehash: d3eb0fba2b7178b8b1702d4ca89ff85a441c20d6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541081"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793349"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Tworzenie niestandardowych pól w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor
 
@@ -27,39 +27,37 @@ ms.locfileid: "58541081"
 
 **Pól niestandardowych** funkcji usługi Azure Monitor umożliwia rozszerzanie istniejących rekordów, w obszarze roboczym usługi Log Analytics, dodając własny pola z możliwością wyszukiwania.  Niestandardowe pola są automatycznie wypełniane na podstawie danych wyodrębnionych z innych właściwości w ten sam rekord.
 
-![Niestandardowe pola — omówienie](media/custom-fields/overview.png)
+![Przegląd](media/custom-fields/overview.png)
 
-Na przykład rekord przykładowe poniżej zawiera przydatne dane ukryty w opisie zdarzenia.  Wyodrębnienie tych danych do oddzielnych właściwości udostępnia takie czynności, jak filtrowanie i sortowanie.
+Na przykład rekord przykładowe poniżej zawiera przydatne dane ukryty w opisie zdarzenia. Wyodrębnienie tych danych do oddzielnych właściwość udostępnia takie czynności, jak filtrowanie i sortowanie.
 
-![Przycisk Wyszukiwanie w dziennikach](media/custom-fields/sample-extract.png)
+![Wyodrębnij próbki](media/custom-fields/sample-extract.png)
 
 > [!NOTE]
 > W wersji zapoznawczej jest ograniczona do 100 pól niestandardowych w obszarze roboczym.  Ten limit zostanie rozszerzona, gdy ta funkcja staje się ogólnie dostępna.
-> 
-> 
 
 ## <a name="creating-a-custom-field"></a>Tworzenie pola niestandardowego
-Podczas tworzenia pola niestandardowego, usługi Log Analytics, należy zrozumieć których dane mają być używane do wypełnienia jego wartość.  Używa technologii przez firmę Microsoft Research o nazwie FlashExtract szybkie identyfikowanie tych danych.  Zamiast konieczności podać jawne instrukcje, dane, które mają zostać wyodrębnione z przykładów, które należy podać poznaje usługi Log Analytics.
+Podczas tworzenia pola niestandardowego, usługi Log Analytics, należy zrozumieć których dane mają być używane do wypełnienia jego wartość.  Używa technologii przez firmę Microsoft Research o nazwie FlashExtract szybkie identyfikowanie tych danych.  Zamiast konieczności podać jawne instrukcje, dane, które mają zostać wyodrębnione z przykładów, które należy podać poznaje usługi Azure Monitor.
 
 Poniższe sekcje zawierają procedury tworzenia pola niestandardowego.  W dolnej części tego artykułu znajduje się przewodnik wyodrębniania próbki.
 
 > [!NOTE]
-> Niestandardowe pole jest wypełniane, jak rekordy spełniające określone kryteria są dodawane do usługi Log Analytics, dzięki czemu będą wyświetlane tylko w rekordów zbieranych po utworzeniu pola niestandardowego.  Pole niestandardowe nie zostanie dodany do rekordów, które znajdują się już w magazynie danych, podczas jego tworzenia.
+> Niestandardowe pole jest wypełniane, jak rekordy spełniające określone kryteria są dodawane do obszaru roboczego usługi Log Analytics, dzięki czemu będą wyświetlane tylko w rekordów zbieranych po utworzeniu pola niestandardowego.  Pole niestandardowe nie zostanie dodany do rekordów, które znajdują się już w magazynie danych, podczas jego tworzenia.
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1: określenie rekordy, które będą miały pole niestandardowe
-Pierwszym krokiem jest do identyfikowania rekordy, które umożliwią pola niestandardowego.  Początkowo [zapytania standardowym dzienniku](../log-query/log-query-overview.md) , a następnie zaznacz rekord pełnić rolę usługi Log Analytics zawiera informacje z modelu.  Po określeniu, które mają do wyodrębniania danych do pola niestandardowego, **Kreator wyodrębniania pól** jest otwarty, gdzie Zweryfikuj i zoptymalizuj kryteria.
+Pierwszym krokiem jest do identyfikowania rekordy, które umożliwią pola niestandardowego.  Początkowo [standardowym dzienniku zapytań](../log-query/log-query-overview.md) , a następnie zaznacz rekord do działania jako model, który przedstawiono z usługi Azure Monitor.  Po określeniu, które mają do wyodrębniania danych do pola niestandardowego, **Kreator wyodrębniania pól** jest otwarty, gdzie Zweryfikuj i zoptymalizuj kryteria.
 
-1. Przejdź do **wyszukiwanie w dzienniku** i użyj [zapytanie, aby pobrać te rekordy](../log-query/log-query-overview.md) będą mieć pola niestandardowego.
+1. Przejdź do **dzienniki** i użyj [zapytanie, aby pobrać te rekordy](../log-query/log-query-overview.md) będą mieć pola niestandardowego.
 2. Wybierz rekord, który usługi Log Analytics będzie używany jako model do wyodrębniania danych, aby wypełnić pole niestandardowe.  Należy określić dane, które mają zostać wyodrębnione z tego rekordu, a usługi Log Analytics użyje tych informacji do określenia logiki, aby wypełnić pole niestandardowe dla wszystkich rekordów podobne.
-3. Kliknij przycisk z lewej strony właściwości text dowolnego rekordu, a następnie wybierz pozycję **Wyodrębnij pola z**.
-4. **Zostanie otwarty Kreator wyodrębniania pól**, a rekord wybrany jest wyświetlany w **głównym przykładem** kolumny.  Pole niestandardowe zostaną określone dla tych rekordów o tej samej wartości właściwości, które są wybrane.  
+3. Rozwiń właściwości rekordu, kliknij przycisk wielokropka na lewo od najważniejszych właściwości rekordu, a następnie wybierz **Wyodrębnij pola z**.
+4. **Kreator wyodrębniania pól** jest otwarty, a rekord wybrany jest wyświetlany w **głównym przykładem** kolumny.  Pole niestandardowe zostaną określone dla tych rekordów o tej samej wartości właściwości, które są wybrane.  
 5. Jeśli ustawienie to nie dokładnie to, czego potrzebujesz wybrać dodatkowe pola, aby zawęzić kryteria.  Aby zmienić wartości pól kryteriów, użytkownik musi anulować i wybierz inny rekord zgodne z kryteriami, które chcesz.
 
 ### <a name="step-2---perform-initial-extract"></a>Krok 2 — wykonaj początkową wyodrębniania.
 Po zidentyfikowaniu rekordy, które będą mieć pole niestandardowe, należy zidentyfikować dane, które mają zostać wyodrębnione.  Informacje te są wykorzystywane do identyfikacji podobnych wzorców w podobne rekordy usługi log Analytics.  W kroku po tym będzie mógł zweryfikować wyniki i dostarczyć więcej szczegółów dla usługi Log Analytics do użycia w ich analizy.
 
-1. Wyróżnij tekst w rekordzie próbki, które chcesz wypełnić pole niestandardowe.  Następnie zobaczysz okna dialogowego, aby podać nazwę dla pola i przeprowadzenie początkowej wyodrębniania.  Znaki  **\_CF** zostanie dodane automatycznie.
+1. Wyróżnij tekst w rekordzie próbki, które chcesz wypełnić pole niestandardowe.  Następnie zobaczysz z okna dialogowego podaj nazwę i typ danych dla pola i wykonywanie początkowej wyodrębniania.  Znaki  **\_CF** zostanie dodane automatycznie.
 2. Kliknij przycisk **wyodrębnić** przeprowadzać analizę zebranych rekordów.  
 3. **Podsumowanie** i **wyniki wyszukiwania** sekcjach są wyświetlane wyniki extract, dzięki czemu można sprawdzić jego dokładności.  **Podsumowanie** Wyświetla kryteria używane do identyfikowania rekordów i liczbą dla każdego z wartościami danych zidentyfikowane.  **Wyniki wyszukiwania** zawiera szczegółową listę rekordów pasujących do kryteriów.
 
@@ -83,17 +81,17 @@ Możesz wyświetlić listę wszystkich pól niestandardowych w grupie zarządzan
 Istnieją dwa sposoby, aby usunąć pole niestandardowe.  Pierwsza to **Usuń** opcji dla każdego pola, podczas wyświetlania pełną listę, zgodnie z powyższym opisem.  Inna metoda jest pobrać rekordu, a następnie kliknij przycisk po lewej stronie pola.  Menu będzie mieć opcję, aby usunąć pole niestandardowe.
 
 ## <a name="sample-walkthrough"></a>Przewodnik po przykładzie
-Poniższej sekcji przedstawiono pełny przykład tworzenia pola niestandardowego.  W tym przykładzie pobiera nazwę usługi w Windows zdarzenia wskazujące zmianę stanu usługi.  To zależy od zdarzenia utworzone przez Menedżera sterowania usługami w dzienniku systemu na komputerach z Windows.  Jeśli chcesz wykonać w tym przykładzie, musi być [zbierania informacji zdarzeń dziennika systemu](data-sources-windows-events.md).
+Poniższej sekcji przedstawiono pełny przykład tworzenia pola niestandardowego.  W tym przykładzie pobiera nazwę usługi w Windows zdarzenia wskazujące zmianę stanu usługi.  To zależy od zdarzenia utworzone przez Menedżera sterowania usługami w logowania systemu Windows, komputerów.  Jeśli chcesz wykonać w tym przykładzie, musi być [zbierania informacji zdarzeń dziennika systemu](data-sources-windows-events.md).
 
 Firma Microsoft wprowadź następujące zapytanie, aby zwrócić wszystkich zdarzeń z Menedżera kontroli usług mających Identyfikatorem zdarzenia 7036, który jest zdarzenie wskazujące uruchomienie lub zatrzymanie usługi.
 
 ![Zapytanie](media/custom-fields/query.png)
 
-Wybierzemy opcję dowolny rekord ze zdarzeniem 7036 identyfikator.
+Firma Microsoft wybierz i rozwiń każdy rekord ze zdarzeniem 7036 identyfikator.
 
 ![Rekord źródła](media/custom-fields/source-record.png)
 
-Chcemy, aby nazwa usługi, która pojawia się w **RenderedDescription** właściwości, a następnie wybierz przycisk obok tej właściwości.
+Definiujemy pola niestandardowe, klikając wielokropek obok najważniejsze właściwości.
 
 ![Wyodrębnienie pól](media/custom-fields/extract-fields.png)
 
@@ -101,11 +99,11 @@ Chcemy, aby nazwa usługi, która pojawia się w **RenderedDescription** właśc
 
 ![Główny przykład](media/custom-fields/main-example.png)
 
-Firma Microsoft wyróżnij nazwę usługi w **RenderedDescription** właściwość i użyj **usługi** do identyfikowania nazwy usługi.  Pole niestandardowe, zostanie wywołana **Service_CF**.
+Firma Microsoft wyróżnij nazwę usługi w **RenderedDescription** właściwość i użyj **usługi** do identyfikowania nazwy usługi.  Pole niestandardowe, zostanie wywołana **Service_CF**. Typ pola w tym przypadku jest ciągiem, dzięki czemu można pole pozostanie bez zmian.
 
 ![Tytuł pola](media/custom-fields/field-title.png)
 
-Widzimy, że nazwa usługi jest identyfikowany prawidłowo niektóre rekordy, ale nie dla innych użytkowników.   **Wyniki wyszukiwania** Pokaż nazwę dla tej części **Karta wydajności WMI** nie został wybrany.  **Podsumowanie** pokazują cztery rekordy z **DPRMA** usługi niepoprawnie dołączone dodatkowe word i dwa rekordy zidentyfikowane **Instalator modułów** zamiast **Instalator modułów Windows**.  
+Widzimy, że nazwa usługi jest identyfikowany prawidłowo niektóre rekordy, ale nie dla innych użytkowników.   **Wyniki wyszukiwania** Pokaż nazwę dla tej części **Karta wydajności WMI** nie został wybrany.  **Podsumowanie** pokazuje jednego rekordu zidentyfikowane **Instalator modułów** zamiast **Instalator modułów Windows**.  
 
 ![Wyniki wyszukiwania](media/custom-fields/search-results-01.png)
 
@@ -117,19 +115,11 @@ Możemy zwiększyć wyróżnienia, aby uwzględnić słowa **WMI** , a następni
 
 ![Dodatkowe przykład](media/custom-fields/additional-example-01.png)
 
-Widać, że wpisy dla **Karta wydajności WMI** zostały poprawione, a usługi Log Analytics umożliwia również te informacje rozwiązać rekordy dla **Instalator modułu Windows**.  Widać w **Podsumowanie** sekcji jednak, że **DPMRA** nadal nie Trwa identyfikowanie poprawnie.
+Widać, że wpisy dla **Karta wydajności WMI** zostały poprawione, a usługi Log Analytics umożliwia również te informacje rozwiązać rekordy dla **Instalator modułu Windows**.
 
 ![Wyniki wyszukiwania](media/custom-fields/search-results-02.png)
 
-Firma Microsoft przewiń rekord z usługi DPMRA i wykorzystać te same czynności w celu rozwiązania tego rekordu.
-
-![Dodatkowe przykład](media/custom-fields/additional-example-02.png)
-
- Gdy Uruchamiamy wyodrębniania, widać, że wszystkie nasze wyniki są teraz dokładne.
-
-![Wyniki wyszukiwania](media/custom-fields/search-results-03.png)
-
-Widać, że **Service_CF** zostanie utworzony, ale nie została jeszcze dodana do żadnych rekordów.
+Można teraz uruchomić kwerendę sprawdzającą **Service_CF** zostanie utworzony, ale nie została jeszcze dodana do żadnych rekordów. To, ponieważ pole niestandardowe nie działa dla istniejących rekordów, dlatego musimy poczekaj, aż nowe rekordy, które mają być zbierane.
 
 ![Liczba początkowa](media/custom-fields/initial-count.png)
 
@@ -142,6 +132,6 @@ Teraz możemy użyć pole niestandardowe, takie jak wszystkich innych właściwo
 ![Grupuj według kwerendy](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](../log-query/log-query-overview.md) tworzenie zapytań przy użyciu pól niestandardowych kryteriów.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) tworzenie zapytań przy użyciu pól niestandardowych kryteriów.
 * Monitor [pliki dziennika niestandardowego](data-sources-custom-logs.md) , analizy przy użyciu pól niestandardowych.
 

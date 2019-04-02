@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1fdafaaecd448fd09fc40cf5f6173ce600ac4f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483209"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803582"
 ---
 # <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Tożsamości usługi Azure AD w celu dostępu do obiektów blob i kolejek danych za pomocą interfejsu wiersza polecenia lub programu PowerShell
 
@@ -61,7 +61,7 @@ Poniższy przykład pokazuje, jak utworzyć kontener w nowe konto magazynu z wie
         --encryption-services blob
     ```
     
-1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac.md).
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Przypisania ról RBAC może potrwać kilka minut na propagację.
@@ -114,7 +114,7 @@ Poniższy przykład przedstawia sposób tworzenia kontenera na nowym koncie maga
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac.md).
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Przypisania ról RBAC może potrwać kilka minut na propagację.

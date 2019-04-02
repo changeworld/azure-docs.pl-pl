@@ -1,5 +1,5 @@
 ---
-title: Przykładowe - planu obciążenia ISO 27001 App Service środowiska/bazą danych SQL — kroki wdrażania
+title: Przykładowe — ISO 27001 ASE/SQL obciążenia planu — kroki wdrażania
 description: Wdróż kroki przykładowy plan obciążenia ISO 27001 App Service środowiska/bazą danych SQL.
 services: blueprints
 author: DCtheGeek
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 80c98170fc136c20d8489cec5d145f96e207bc9f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4ed51ee5f8cbdc50fa65a189d8f468bd7713a74b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201912"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804160"
 ---
-# <a name="deploy-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Wdrażanie przykładowej planu obciążenie Azure schematy ISO 27001 App Service środowiska/bazy danych SQL
+# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Wdrażanie przykładowej planu obciążenia ISO 27001 App Service środowiska/bazą danych SQL
 
 Aby wdrożyć przykładowy plan obciążenie Azure schematy ISO 27001 aplikacji środowiska/SQL bazy danych usługi, należy podjąć następujące kroki:
 
@@ -157,10 +157,10 @@ Teraz, po przejrzeniu kroki, aby wdrożyć przykładowy plan obciążenia ISO 27
 > [Plan obciążenia ISO 27001 App Service środowiska/bazą danych SQL — omówienie](./index.md)
 > [planu obciążenia ISO 27001 App Service środowiska/bazą danych SQL — mapowanie kontrolek](./control-mapping.md)
 
-Dodatkowe artykuły na temat planów i jak ich używać:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [planu cyklu życia](../../concepts/lifecycle.md).
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [planu blokowania zasobów](../../concepts/resource-locking.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

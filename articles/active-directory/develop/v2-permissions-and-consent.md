@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225065e35e40c06d324bee89fa65a765a2727233
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123763"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793496"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -260,7 +260,7 @@ Aby uzyskać więcej informacji na temat protokołu OAuth 2.0 i uzyskiwanie toke
 
 Możesz użyć `/.default` zakresu, aby ułatwić migrowanie aplikacji z punktu końcowego w wersji 1.0 do punktu końcowego v2.0. To jest wbudowanym zakresem dla każdej aplikacji, która odwołuje się do statyczną listę uprawnień skonfigurowanych w rejestracji aplikacji. A `scope` wartość `https://graph.microsoft.com/.default` funkcjonalnie jest taka sama jak punkty końcowe v1.0 `resource=https://graph.microsoft.com` — to znaczy, żąda tokenu z zakresami na programie Microsoft Graph, która aplikacja została zarejestrowana dla w witrynie Azure portal.
 
-Zakres /.default mogą być używane w dowolnym przepływ OAuth 2.0, ale jest szczególnie niezbędne w [](v2-oauth2-on-behalf-of-flow.md) w imieniu z przepływu i [przepływ poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md).  
+Zakres /.default mogą być używane w dowolnym przepływ OAuth 2.0, ale jest szczególnie niezbędne w [przepływu w imieniu z](v2-oauth2-on-behalf-of-flow.md) i [przepływ poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md).  
 
 > [!NOTE]
 > Klienci nie można łączyć statyczne (`/.default`) i dynamiczny zgody w pojedynczym żądaniu. W efekcie `scope=https://graph.microsoft.com/.default+mail.read` spowoduje błąd z powodu kombinacji typów zakresu.

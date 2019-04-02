@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cad48eeadc06c84e326cbc5f19f1c97e151a795
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32445e3f6859a6161eb2fae20233c598234f18a0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880453"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791647"
 ---
 # <a name="azure-data-box-disk-limits"></a>Ogranicza dysku Azure Data Box
 
@@ -93,4 +93,4 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przegląd [wymagania systemowe urządzenia Data Box](data-box-system-requirements.md)
+- Przegląd [wymagania systemowe dysku Data Box](data-box-disk-system-requirements.md)

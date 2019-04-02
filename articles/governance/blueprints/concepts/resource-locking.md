@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630717"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762433"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
 
@@ -52,6 +52,8 @@ Usunięcie przypisania blokad utworzone przez schematy są usuwane. Jednakże za
 ## <a name="how-blueprint-locks-work"></a>Jak planu blokuje pracy
 
 RBAC [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) Odmów, akcja jest stosowane do artefaktu zasobów podczas przypisywania planu, jeśli wybrane przypisania **tylko do odczytu** lub **nie usuwaj** Opcja. Akcja odmowy jest dodawany przez zarządzaną tożsamością przypisanie planu i może zostać usunięty tylko ze źródeł artefaktów w tej samej tożsamości zarządzanej. To zabezpieczenie wymusza mechanizm blokowania i uniemożliwia usunięcie blokady plan poza schematy.
+
+![Plan Odmów przypisania dla grupy zasobów](../media/resource-locking/blueprint-deny-assignment.png)
 
 > [!IMPORTANT]
 > Usługa Azure Resource Manager buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. Odmów co w efekcie przypisania odmowy Akcja zasobów planu natychmiast może nie być w pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.

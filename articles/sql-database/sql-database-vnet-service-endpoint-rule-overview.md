@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887123"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805197"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Punkty końcowe usługi sieci wirtualnej i reguł na użytek serwerów baz danych
 
@@ -197,7 +197,7 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
    > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Znane problemy związane z usługi Azure Data Lake Storage Gen2, można znaleźć na stronie to [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC do serwera usługi SQL Database.
+1. W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob magazynu** rolę RBAC do serwera usługi SQL Database.
 
    > [!NOTE] 
    > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

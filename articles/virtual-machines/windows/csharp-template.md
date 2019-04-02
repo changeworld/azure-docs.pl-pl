@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 005b0e74084325606a9a07df6b36b9100cad1750
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885952"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792471"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure przy użyciu języka C# i szablonu usługi Resource Manager
+
 W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu języka C#. Tworzony szablon wdraża pojedynczej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z jedną podsiecią.
 
 Aby uzyskać szczegółowy opis zasobu maszyny wirtualnej, zobacz [maszyn wirtualnych w szablonie usługi Azure Resource Manager](template-description.md). Aby uzyskać więcej informacji na temat wszystkich zasobów w szablonie, zobacz [Przewodnik po szablonie usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
@@ -44,7 +45,7 @@ Pakiety NuGet są najprostszym sposobem zainstalowania bibliotek, które należy
 1. Kliknij przycisk **narzędzia** > **Menedżera pakietów Nuget**, a następnie kliknij przycisk **Konsola Menedżera pakietów**.
 2. W konsoli, wpisz następujące polecenia:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
@@ -206,15 +207,17 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
 3. Zapisz plik azureauth.properties.
 4. Ustaw zmienną środowiskową w Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżkę do pliku autoryzacji, który został utworzony, na przykład następujące polecenie programu PowerShell można użyć polecenia:
 
-    ```
+    ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
+
     
+
 ## <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
 1. Otwórz plik Program.cs w projekcie, który został utworzony, a następnie dodaj je za pomocą instrukcji do istniejących instrukcji w górnej części pliku:
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -226,7 +229,7 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
 
 2. Aby utworzyć klienta zarządzania, Dodaj następujący kod do metody Main:
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -241,7 +244,7 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
 
 Aby określić wartości dla aplikacji, Dodaj kod do metody Main:
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var location = Region.USWest;
 
@@ -256,7 +259,7 @@ Szablon i parametry są wdrażane z konta magazynu na platformie Azure. W tym kr
 
 Aby utworzyć konto, Dodaj następujący kod do metody Main:
 
-```
+```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
 
 Console.WriteLine("Creating storage account...");
@@ -296,7 +299,7 @@ Wdróż szablon i parametry, z konta magazynu, który został utworzony.
 
 Aby wdrożyć szablon, Dodaj następujący kod do metody Main:
 
-```
+```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
 var paramPath = "https://" + storageAccountName + ".blob.core.windows.net/templates/Parameters.json";
 var deployment = azure.Deployments.Define("myDeployment")
@@ -315,7 +318,7 @@ Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest
 
 Aby usunąć grupę zasobów, Dodaj następujący kod do metody Main:
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -328,5 +331,6 @@ Aby zakończyć powinno zająć około pięciu minut, zanim ta aplikacja konsoli
 2. Przed naciśnięciem **Enter** zacząć usuwanie zasobów może potrwać kilka minut na sprawdzenie tworzeniem zasobów w witrynie Azure portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Jeśli wystąpiły problemy dotyczące wdrożenia, następnym krokiem powinno być Przyjrzyj się [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
 * Dowiedz się, jak wdrożyć maszynę wirtualną i zasoby pomocnicze, przeglądając [wdrażania Azure maszyny wirtualnej przy użyciu języka C#](csharp.md).

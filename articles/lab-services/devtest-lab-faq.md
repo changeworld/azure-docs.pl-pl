@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d8fc929b21bedcb3e7e2bd3f5ed1d6c867bca3c8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337701"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803378"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -44,7 +44,7 @@ Obecnie pracujemy nad Migrowanie istniejących wpisów w blogu (z wyjątkiem akt
 Firma Microsoft będzie publikowanie aktualizacji awarii za pomocą naszych uchwyt Twitter w przyszłości. Obserwuj nas w serwisie Twitter w celu uzyskania najnowszych aktualizacji na awarie i znanych błędów.
 
 ### <a name="twitter"></a>Twitter 
-Nasze uchwyt Twitter: azlabservices
+Nasze uchwyt Twitter: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
 Jeśli Twoje pytanie nie ma na liście, dać nam znać, a pomożemy Ci znaleźć odpowiedzi.
@@ -139,7 +139,9 @@ Masz dwie opcje jednocześnie tworzenia wielu maszyn wirtualnych z tego samego s
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Jak przenieść Mój istniejący maszyn wirtualnych platformy Azure do mojego laboratorium DevTest Labs?
 Aby skopiować istniejących maszyn wirtualnych, użytkownik usługi DevTest Labs:
 
-1. Skopiuj plik wirtualnego dysku twardego istniejącej maszyny wirtualnej przy użyciu [skrypt programu Windows PowerShell](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1).
+1. Skopiuj plik wirtualnego dysku twardego istniejącej maszyny wirtualnej przy użyciu skryptu programu PowerShell:
+   * Menedżer zasobów: [CopyRmVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyRmVHDFromVMToLab.ps1)
+   * Klasyczne: [CopyClassicVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyClassicVHDFromVMToLab.ps1)
 2. [Tworzenie obrazu niestandardowego](devtest-lab-create-template.md) wewnątrz laboratorium DevTest Labs.
 3. Tworzenie maszyny Wirtualnej w środowisku laboratoryjnym za pomocą obrazu niestandardowego.
 

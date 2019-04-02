@@ -8,12 +8,12 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112094"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802274"
 ---
 # <a name="create-a-custom-policy-definition"></a>Tworzenie niestandardowej definicji zasad
 
@@ -72,7 +72,7 @@ Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omó
 Najprostszym sposobem na znalezienie właściwości jest przyjrzenie się istniejącemu zasobowi tego samego typu. Zasoby już skonfigurowane za pomocą ustawienia, które ma być wymuszane, służą także do porównywania wartości.
 Zapoznaj się ze stroną **Skrypt automatyzacji** (w obszarze **Ustawienia**) w witrynie Azure Portal dla tego konkretnego zasobu.
 
-![Strona Skrypt automatyzacji](../media/create-custom-policy-definition/automation-script.png)
+![Eksport strony szablonu w istniejącym zasobie](../media/create-custom-policy-definition/automation-script.png)
 
 Wykonanie tego działania dla konta magazynu spowoduje wyświetlenie szablonu podobnego do następującego przykładu:
 
@@ -441,7 +441,7 @@ W tym samouczku pomyślnie wykonano następujące czynności:
 > - Określono efekt do użycia
 > - Utworzono definicję zasad
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Następnie za pomocą niestandardowej definicji zasad utwórz i przypisz zasady:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113269"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762688"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -139,12 +139,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Do czego służy nazwane wystąpienie programu SQL Server z rozszerzeniem IaaS**?
    
-   Tak, to nazwane wystąpienie jest tylko wystąpienie programu SQL Server, a oryginalne wystąpienie domyślne zostało prawidłowo odinstalowane. Aby użyć nazwanego wystąpienia, wykonaj następujące czynności:
-    1. Wdróż maszynę Wirtualną programu SQL Server z witryny marketplace. 
-    1. Odinstaluj rozszerzenie IaaS.
-    1. Całkowicie Odinstaluj program SQL Server.
-    1. Instalowanie programu SQL Server przy użyciu nazwanego wystąpienia. 
-    1. Zainstaluj rozszerzenie IaaS. 
+   Tak, to nazwane wystąpienie jest tylko wystąpienie programu SQL Server, a został oryginalne wystąpienie domyślne [poprawnie odinstalować](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation). Jeśli żadne wystąpienie domyślne, a w pojedynczej maszyny Wirtualnej programu SQL Server znajdują się wiele wystąpień nazwanych, rozszerzenie IaaS zakończy się niepowodzeniem do zainstalowania. 
 
 1. **Czy mogę usunąć całkowicie program SQL Server z maszyny wirtualnej SQL?**
 
@@ -176,6 +171,10 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 1. **Jak zainstalować narzędzia danych serwera SQL na maszynie Wirtualnej platformy Azure?**
 
     Pobieranie i instalowanie narzędzi danych programu SQL z [programu Microsoft SQL Server Data Tools — Business Intelligence programu Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
+
+1. **Czy transakcji rozproszonych za pomocą usługi MSDTC jest obsługiwana na maszynach wirtualnych programu SQL Server?**
+   
+    Tak. Lokalna Usługa DTC jest obsługiwana dla programu SQL Server 2016 z dodatkiem SP2 lub nowszym. Jednak aplikacje muszą zostać przetestowane, gdy przy użyciu zawsze włączonych grup dostępności jako transakcje, śledząc podczas przejścia w tryb failover zakończy się niepowodzeniem i musi zostać ponowiona. Klastra usługi DTC jest dostępna, począwszy od systemu Windows Server w 2019 r. 
 
 ## <a name="resources"></a>Zasoby
 

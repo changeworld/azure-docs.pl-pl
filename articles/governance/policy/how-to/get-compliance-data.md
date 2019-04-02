@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535216"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802961"
 ---
-# <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
+# <a name="get-compliance-data-of-azure-resources"></a>Pobierz dane zgodności zasobów platformy Azure
 
 Jedną z największych zalet usługi Azure Policy jest wglądu i kontroli jest lepsza od zasobów w ramach subskrypcji lub [grupy zarządzania](../../management-groups/overview.md) subskrypcji. Ten formant może być wykonywana na wiele różnych sposobów, na przykład zapobieganie zasobów tworzonych w niewłaściwej lokalizacji, wymuszając użycie wspólny i spójny tag lub inspekcji istniejących zasobów, aby uzyskać odpowiednie konfiguracje i ustawienia. We wszystkich przypadkach dane są generowane przez zasady, aby umożliwić Ci zrozumienie stanu zgodności środowiska.
 
@@ -120,27 +120,27 @@ Używa zasad **typu** i **nazwa** pola w definicji do ustalenia, czy zasób jest
 Wartość procentowa zgodności jest określana przez podzielenie **zgodne** zasobów przez _łączna liczba zasobów_.
 _Łączna liczba zasobów_ jest zdefiniowany jako suma **zgodne**, **niezgodne**, i **powodujące konflikt** zasobów. Ogólnej zgodności numery stanowią sumę odrębne zasoby, które są **zgodne** podzielona przez sumę wszystkich odrębne zasoby. Na poniższej ilustracji są 20 odrębne zasoby, które mają zastosowanie i jest tylko jeden **niezgodne**. Ogólna zgodność zasobów jest 95% (19 z 20).
 
-![Przykład prostego zgodności](../media/getting-compliance-data/simple-compliance.png)
+![Przykład zasad zgodności ze strony zgodności](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>Portal
 
 Azure portal prezentuje graficznego środowiska wizualizacji i zrozumienie stanu zgodności w danym środowisku. Na **zasad** stronie **Przegląd** opcja zawiera szczegółowe informacje o dostępnych zakresów na zgodność inicjatywy i zasady. Oprócz stanu zgodności i liczba na przypisanie zawiera wykres przedstawiający zgodność z ostatnich siedmiu dni.
 **Zgodności** strona zawiera wiele tych samych informacji (z wyjątkiem wykres), ale zapewnia dodatkowe opcji filtrowania i sortowania.
 
-![Stronę z zasadami zgodności](../media/getting-compliance-data/compliance-page.png)
+![Przykład przedstawiający stronę zasad zgodności](../media/getting-compliance-data/compliance-page.png)
 
 Ponieważ do różnych zakresów można przypisywać zasad lub inicjatywy, uwzględniono w zakresie dla każdego przypisania i typu definicji, który został przypisany. Liczba niezgodnych zasobów i dostęp niezgodnych zasad dla każdego przypisania również są dostarczone. Kliknięcie zasad lub inicjatywy w tabeli zawiera lepiej poznać zgodności dla tego przypisania.
 
-![Szczegóły zgodności zasad](../media/getting-compliance-data/compliance-details.png)
+![Przykład strony szczegółów zgodności zasad](../media/getting-compliance-data/compliance-details.png)
 
 Lista zasobów na **zgodność zasobów** karta przedstawia stan oceny istniejących zasobów dla bieżącego przypisania. Wartością domyślną jest karcie **niezgodne**, ale można je filtrować.
 Zdarzenia (Dołącz, inspekcji, Odmów, Wdrażaj) wyzwalane przez żądanie do utworzenia zasobu zostaną wyświetlone w obszarze **zdarzenia** kartę.
 
-![Zdarzenia dotyczące zasad zgodności](../media/getting-compliance-data/compliance-events.png)
+![Przykładem zdarzenia zgodność z zasadami](../media/getting-compliance-data/compliance-events.png)
 
 Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać szczegółowe informacje o, a następnie wybierz pozycję **Pokaż dzienniki aktywności**. Na stronie dziennik aktywności otwiera się i jest wstępnie filtrowane do wyszukiwanie przedstawiający szczegółowe informacje dotyczące przypisania i zdarzenia. Dziennik aktywności zawiera dodatkowy kontekst oraz informacje o tych zdarzeń.
 
-![Dziennik aktywności zgodności zasad](../media/getting-compliance-data/compliance-activitylog.png)
+![Przykładowy dziennik aktywności zgodności zasad](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Zrozumienie braku zgodności
 

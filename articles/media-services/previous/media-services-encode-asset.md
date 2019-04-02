@@ -12,18 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a1b6fe38087975838d99ca4fe45ee0d0638c56c3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187748"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801700"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Przegląd i porównanie platformy Azure na żądanie koderów multimediów 
 
 ## <a name="encoding-overview"></a>Omówienie kodowania
+
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 Usługa Azure Media Services udostępnia wiele opcji kodowania multimediów w chmurze.
 
 Gdy zaczynasz pracę z usługą Media Services, należy zrozumieć różnicę między formatami koderów-dekoderów i plików.
@@ -31,8 +35,7 @@ Kodery-dekodery to oprogramowanie, które implementuje algorytmy kompresji i dek
 
 Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów, która pozwala dostarczać zawartość z adaptacyjną szybkością transmisji bitów w formacie MP4 lub Smooth Streaming, kodowane w formatach transmisji strumieniowej obsługiwanych przez usługę Media Services (MPEG DASH, HLS, Smooth Streaming) bez konieczności ponownego tworzenia pakietów w tych formatów przesyłania strumieniowego.
 
-> [!NOTE]
-> Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
+Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
 
 Usługa Media Services obsługuje następujące czynności na koderów na żądanie, które są opisane w tym artykule:
 
@@ -41,8 +44,7 @@ Usługa Media Services obsługuje następujące czynności na koderów na żąda
 
 Ten artykuł zawiera krótkie omówienie na żądanie koderów multimediów i zawiera linki do artykułów, które zapewniają więcej szczegółowych informacji. Temat ten zawiera również porównanie koderów.
 
->[!NOTE]
->Domyślnie każde konto usługi Media Services może mieć jedno aktywne zadanie kodowania w danym momencie. Możesz zarezerwować jednostek kodowania, które umożliwiają posiadanie wielu zadań kodowania, działających jednocześnie, jeden dla każdego kodowania zastrzeżona jednostka, jaką można nabyć. Aby uzyskać informacje, zobacz [skalowania jednostek kodowania](media-services-scale-media-processing-overview.md).
+Domyślnie każde konto usługi Media Services może mieć jedno aktywne zadanie kodowania w danym momencie. Możesz zarezerwować jednostek kodowania, które umożliwiają posiadanie wielu zadań kodowania, działających jednocześnie, jeden dla każdego kodowania zastrzeżona jednostka, jaką można nabyć. Aby uzyskać informacje, zobacz [skalowania jednostek kodowania](media-services-scale-media-processing-overview.md).
 
 ## <a name="media-encoder-standard"></a>Usługa Media Encoder Standard
 ### <a name="how-to-use"></a>Jak stosować

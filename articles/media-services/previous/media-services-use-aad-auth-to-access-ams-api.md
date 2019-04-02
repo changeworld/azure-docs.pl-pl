@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b6071bef4e4bbd9aaca3f587e5dfa584831d082e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316878"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802494"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD  
- 
+
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 Interfejsu API usługi Azure Media Services to API typu RESTful. Służy do wykonywania operacji na zasoby multimediów, za pomocą interfejsu API REST lub przy użyciu zestawów SDK klienta dostępne. Usługa Azure Media Services oferuje zestaw SDK klienta usługi Media Services dla programu Microsoft .NET. Autoryzowanie dostępu do zasobów usługi Media Services i interfejsu API usług Media Services, użytkownik musi najpierw zostać uwierzytelnione. 
 
 Usługa Media Services obsługuje [usługi Azure Active Directory (Azure AD) — uwierzytelnianie oparte na](../../active-directory/fundamentals/active-directory-whatis.md). Usługa Azure Media REST wymaga, czy użytkownik lub aplikacja, która sprawia, że interfejs API REST żądań, jeden **Współautor** lub **właściciela** roli dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../../role-based-access-control/overview.md).  
 
-> [!IMPORTANT]
-> Obecnie usługa Media Services obsługuje model uwierzytelniania usługi Azure Access Control. Jednak kontroli dostępu autoryzacji staną się przestarzałe 1 czerwca 2018 r. Zalecamy jak najszybszą migrację do modelu uwierzytelniania za pomocą usługi Azure AD.
-
 Ten dokument zawiera omówienie sposobu dostępu do interfejsu API usługi Media za pomocą REST lub interfejsów API platformy .NET.
+
+> [!NOTE]
+> Autoryzację kontroli dostępu została zakończona w dniu 1 czerwca 2018 r.
 
 ## <a name="access-control"></a>Kontrola dostępu
 

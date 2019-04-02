@@ -1,42 +1,42 @@
 ---
-title: Wykrywanie zagrożeń — usługa Azure SQL Database | Dokumentacja firmy Microsoft
-description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w usłudze Azure SQL Database.
+title: Zaawansowana ochrona przed zagrożeniami — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Zaawansowana ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: rmatchoro
+author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/31/2019
+ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001889"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793913"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure SQL
 
-Wykrywanie zagrożeń [usługi Azure SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych.
+Zaawansowana ochrona przed zagrożeniami dla [usługi Azure SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych.
 
-Wykrywanie zagrożeń jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
+Zaawansowana ochrona przed zagrożeniami jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Zaawansowana ochrona przed zagrożeniami, można uzyskać dostępu do i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 
-## <a name="what-is-threat-detection"></a>Co to jest wykrywanie zagrożeń
+## <a name="what-is-advanced-threat-protection"></a>Co to jest Zaawansowana ochrona przed zagrożeniami
 
-Funkcja wykrywania zagrożeń stanowi nową warstwę zabezpieczeń, która umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w przypadku wystąpienia nietypowych działań. Użytkownicy otrzymują alert po podejrzanych działaniach bazy danych, potencjalnych lukach w zabezpieczeniach i wstrzykiwanie kodu SQL, ataki, a także dostęp do nietypowych bazy danych i wzorców zapytań. Wykrywanie zagrożeń integruje alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), który zawiera szczegółowe informacje na podejrzane działania i zaleca się akcji, na temat sposobu zbadania i wyeliminowania zagrożenia. Wykrywanie zagrożeń upraszcza reagowanie na potencjalne zagrożenia bazy danych bez konieczności dysponowania wiedzą na poziomie eksperta zabezpieczeń lub zarządzania zaawansowanymi systemami monitorowania bezpieczeństwa.
+ Zaawansowana ochrona przed zagrożeniami stanowi nową warstwę zabezpieczeń, która umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w przypadku wystąpienia nietypowych działań. Użytkownicy otrzymują alert po podejrzanych działaniach bazy danych, potencjalnych lukach w zabezpieczeniach i wstrzykiwanie kodu SQL, ataki, a także dostęp do nietypowych bazy danych i wzorców zapytań. Zaawansowana ochrona przed zagrożeniami integruje alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), które zawierają szczegółowe informacje o podejrzanych działaniach i zalecane czynności dotyczące sposobu badania i ograniczenia zagrożenia. Zaawansowana ochrona przed zagrożeniami upraszcza reagowanie na potencjalne zagrożenia bazy danych bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania zabezpieczeniami zaawansowanymi systemami monitorowania.
 
 Badanie pełne środowisko pracy, zalecane jest włączanie [inspekcji usługi SQL Database](sql-database-auditing.md), która zapisuje zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure.  
 
-## <a name="threat-detection-alerts"></a>Alerty wykrywania zagrożeń
+## <a name="advanced-threat-protection-alerts"></a>Alerty zaawansowanej ochrony przed zagrożeniami
 
-Wykrywanie zagrożeń dla bazy danych SQL Azure wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych i może wywołać następujące alerty:
+Zaawansowana ochrona przed zagrożeniami dla bazy danych SQL Azure wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych i może wywołać następujące alerty:
 
 - **Podatność na iniekcję SQL**: Ten alert jest wyzwalany, jeśli aplikacja generuje błędnej instrukcji SQL w bazie danych. który może oznaczać możliwe luki w zabezpieczeniach umożliwiające ataki przez iniekcję kodu SQL. Istnieją dwie możliwe przyczyny generowania błędnej instrukcji:
 
@@ -65,20 +65,20 @@ Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań 
 
    ![Określony alert](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Zapoznaj się z alerty wykrywania zagrożeń dla bazy danych w witrynie Azure portal
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Zapoznaj się z alertami zaawansowanej ochrony przed zagrożeniami dla bazy danych w witrynie Azure portal
 
-Wykrywanie zagrożeń integruje jego alerty z usługą [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/). Dynamiczne wykrywanie kafelków w obrębie bazy danych i REKLAM SQL bloków w witrynie Azure portal śledzić stan aktywne zagrożenia zagrożeń SQL.
+Zaawansowana ochrona przed zagrożeniami integruje jego alerty z usługą [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/). Żywe Kafelki SQL zaawansowanej ochrony przed zagrożeniami w ramach bazy danych i REKLAM SQL bloków w witrynie Azure portal śledzenia stanu aktywne zagrożenia.
 
-Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure Security Center alerty strony i zapoznaj się z omówieniem aktywne zagrożenia SQL wykryte na bazę danych ani na magazyn danych.
+Kliknij przycisk **alert zaawansowanej ochrony przed zagrożeniami** można uruchomić usługi Azure Security Center alerty strony i zapoznaj się z omówieniem aktywne zagrożenia SQL wykryte na bazę danych ani na magazyn danych.
 
-   ![Alert wykrycia zagrożeń](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Zaawansowana ochrona przed zagrożeniami alertu](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Alert2 wykrywanie zagrożeń](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Advanced Threat Protection alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [wykrywanie w bazach danych pojedyncze i zbiorcze zagrożeń](sql-database-threat-detection.md).
-- Dowiedz się więcej o [wykrywanie zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).
+- Dowiedz się więcej o [zaawansowanej ochrony przed zagrożeniami w bazach danych pojedyncze i zbiorcze](sql-database-threat-detection.md).
+- Dowiedz się więcej o [zaawansowanej ochrony przed zagrożeniami w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).
 - Dowiedz się więcej o [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md).
 - Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)
 - Dowiedz się więcej o [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)

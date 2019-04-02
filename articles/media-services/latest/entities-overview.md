@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/30/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9a02030cb2b785b027bb78bad5ef636dff9dd8f3
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758546"
+ms.locfileid: "58804874"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
@@ -42,6 +42,30 @@ Przykłady to między innymi:
 * nie zwraca zapytanie ciągu w adresie URL (na przykład aby usunąć podpis) adresów URL danych wejściowych HTTP zadania.
 
 Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet-howto.md) (Pobieranie zasad dotyczących klucza zawartości — .NET).
+
+## <a name="long-running-operations"></a>Długotrwałych operacji
+
+Operacje oznaczone `x-ms-long-running-operation` w usłudze Azure Media Services [swagger pliki](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) długie długotrwałych operacji. 
+
+Aby uzyskać szczegółowe informacje na temat śledzenie operacji asynchronicznych na platformie Azure, zobacz [operacje asynchroniczne](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+
+Usługa Media Services obsługuje następujące operacje długotrwałych:
+
+* Utwórz element LiveEvent
+* Element LiveEvent aktualizacji
+* Usuń element LiveEvent
+* Element LiveEvent Start
+* Zatrzymaj element LiveEvent
+* Resetuj element LiveEvent
+* Utwórz LiveOutput
+* Usuń LiveOutput
+* Utwórz StreamingEndpoint
+* Aktualizuj StreamingEndpoint
+* Usuń StreamingEndpoint
+* Rozpocznij StreamingEndpoint
+* Zatrzymaj StreamingEndpoint
+* StreamingEndpoint skalowania
+
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Stronicowanie filtrowania, sortowania, jednostek usługi Media Services
 

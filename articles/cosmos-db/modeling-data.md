@@ -8,40 +8,37 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: f122d60a4f4df011a0adbe7806e70ae173222641
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 5f117d51378f895755b4f5a27fe892d85e12074a
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295100"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762586"
 ---
-# <a name="modeling-document-data-for-nosql-databases"></a>Modelowanie danych dokumentu dla baz danych NoSQL
+# <a name="data-modeling-in-azure-cosmos-db"></a>Modelowanie danych w usłudze Azure Cosmos DB
 
-Gdy baz danych bez schematu, takich jak usługi Azure Cosmos DB ułatwiają bardzo łatwo wykorzystać zmian do modelu danych powinny nadal poświęcany niektóre myśleć czas dotyczące danych.
+Gdy baz danych bez schematu, takich jak usługi Azure Cosmos DB ułatwiają super do przechowywania i wykonywania zapytań o dane bez określonej struktury i o połowicznej strukturze, powinni spędzać niektóre myśleć czasu o swój model danych, aby maksymalnie wykorzystać usługę pod względem wydajności i skalowalności i najniższego Koszt.
 
-Jak będzie dane mają być przechowywane Jak będzie aplikację do pobierania i wykonywania zapytań o dane Jest mocno aplikacji pogrubiona odczytu lub zapisu?
+Jak będzie dane mają być przechowywane Jak będzie aplikację do pobierania i wykonywania zapytań o dane Jest aplikacja ciężkich odczytu lub zapisu obciążenie?
 
 Po przeczytaniu tego artykułu, możliwe będzie odpowiadać na następujące pytania:
 
-* W jaki sposób należy rozważać dokumentu w bazie danych dokumentów?
 * Co to jest modelowanie danych i dlaczego należy się?
-* Czym różni się modelowania danych w bazie danych dokumentów w relacyjnej bazie danych?
+* Czym różni się modelowania danych w usłudze Azure Cosmos DB w relacyjnej bazie danych?
 * Jak express relacji między danymi w bazie danych nierelacyjnych?
 * Gdy osadzone dane i kiedy utworzyć połączenie danych?
 
 ## <a name="embedding-data"></a>Trwa osadzanie danych
 
-Po uruchomieniu modelowania danych w magazynie dokumentu, takich jak Azure Cosmos DB, spróbuj traktowanie jednostek jako **niezależna dokumenty** reprezentowane w formacie JSON.
+Po uruchomieniu modelowania danych w usłudze Azure Cosmos DB, spróbuj traktowanie jednostek jako **niezależna elementów** reprezentowane jako dokumenty JSON.
 
-Zanim przejdziemy zbyt dużo więcej, Daj nam ponownie wykonać kilka czynności i omówimy sposób firma Microsoft może coś w relacyjnej bazie danych, temat, który wiele osób znają już modelu. Poniższy przykład pokazuje, jak osoby mogą być przechowywane w relacyjnej bazie danych.
+Dla porównania najpierw Zobaczmy, jak firma Microsoft model danych relacyjnej bazy danych. Poniższy przykład pokazuje, jak osoby mogą być przechowywane w relacyjnej bazie danych.
 
 ![Relacyjna baza danych modelu](./media/sql-api-modeling-data/relational-data-model.png)
 
-Podczas pracy z relacyjnych baz danych, firma Microsoft już zostały prowadzone przez wiele lat do normalizacji, normalizacji, normalizacji operacji WE /.
+Podczas pracy z relacyjnych baz danych, strategia jest znormalizować wszystkich Twoich danych. Normalizowanie danych zwykle obejmuje pobranie jednostki, takie jak osoba i podzielenie go na osobne składniki. W powyższym przykładzie osoba może mieć wiele rekordów szczegółów kontaktu, a także wiele rekordów adresów. Szczegółowe dane kontaktowe można dodatkowo podzielić, wyodrębniając dalsze typowe pola, takie jak typ. To samo dotyczy adresu, każdy rekord może być typu *Home* lub *firm*.
 
-Normalizowanie danych zwykle obejmuje pobranie jednostki, takie jak osoba i podzielenie go na osobne fragmentów danych. W powyższym przykładzie osoba może mieć wiele rekordów szczegółów kontaktu, a także wiele rekordów adresów. Firma Microsoft nawet wykonaj krok dalej demonstrować i analizować szczegółowe dane kontaktowe, wyodrębniając dalsze typowe pola, takie jak typ. Tego samego adresu, każdy rekord w tym miejscu ma typ, takich jak *Home* lub *firm*.
-
-Przeprowadzi lokalnego po normalizowanie danych do **uniknąć przechowywania nadmiarowych danych** na każdym rejestrowania i raczej odnosi się do danych. W tym przykładzie można odczytać osoby, wraz z ich szczegółowe dane kontaktowe i adresami, należy użyć sprzężenia do efektywnego agregowanie danych w czasie wykonywania.
+Przeprowadzi lokalnego po normalizowanie danych do **uniknąć przechowywania nadmiarowych danych** na każdym rejestrowania i raczej odnosi się do danych. W tym przykładzie można odczytać osoby, wraz z ich szczegółowe dane kontaktowe i adresami należy użyć SPRZĘŻEŃ, aby efektywnie tworzą ponownie (lub denormalizowanie) danych w czasie wykonywania.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -51,7 +48,7 @@ Przeprowadzi lokalnego po normalizowanie danych do **uniknąć przechowywania na
 
 Aktualizowanie jedna osoba wraz z ich szczegółowe dane kontaktowe i adresami wymaga operacje zapisu na wiele poszczególnych tabel.
 
-Teraz Przyjrzyjmy się w jaki sposób firma Microsoft modelu te same dane jako niezależna jednostkę w bazie danych dokumentów.
+Teraz Przyjrzyjmy się w jaki sposób firma Microsoft modelu te same dane jako niezależna jednostki w usłudze Azure Cosmos DB.
 
     {
         "id": "1",
@@ -72,10 +69,10 @@ Teraz Przyjrzyjmy się w jaki sposób firma Microsoft modelu te same dane jako n
         ]
     }
 
-Przy użyciu podejścia powyżej mamy teraz **nieznormalizowany** osoby rejestrowania gdzie możemy **osadzone** wszystkie informacje dotyczące tej osoby, takich jak ich szczegółowe dane kontaktowe i adresy do jednego JSON dokument.
+Przy użyciu podejścia powyżej firma Microsoft ma **nieznormalizowany** przez osobę rejestrowania **osadzania** wszystkie informacje dotyczące tej osoby, takich jak ich szczegółowe dane kontaktowe i adresy do *pojedynczego JSON* dokumentu.
 Ponadto ponieważ firma Microsoft nie są ograniczone do stałego schematu mamy elastyczność nadanie całkowicie konieczności skontaktowania się z różnych kształtów.
 
-Pobieranie rekordu pełną osoby z bazy danych jest teraz pojedynczy odczytu operacji względem pojedynczej kolekcji i dla pojedynczego dokumentu. Aktualizowanie rekordu osoby za pomocą ich szczegółowe dane kontaktowe i adresy, jest również operacja zapisu jednego dla pojedynczego dokumentu.
+Pobieranie rekordu pełną osoby z bazy danych jest teraz **pojedynczej operacji odczytu** pojedynczy kontener lub dla pojedynczego elementu. Aktualizacja rekordu osoby, wraz z ich szczegółowe dane kontaktowe i adresami, jest również **pojedyncza operacja zapisu** względem pojedynczy element.
 
 Denormalizing danych, aplikacja może być konieczne wystawiać mniejszej liczby zapytań i aktualizacji do wykonania typowych operacji.
 
@@ -86,15 +83,15 @@ Ogólnie rzecz biorąc, używane osadzone dane modeli, gdy:
 * Istnieją **zawarte** relacje między jednostkami.
 * Istnieją **jeden do kilka** relacje między jednostkami.
 * Brak danych osadzonych, **zmieniają się rzadko**.
-* Jest osadzony danych nie będzie rosnąć **bez powiązanych z**.
-* Brak danych osadzonych, która jest **integralną** z danymi w dokumencie.
+* Brak osadzonych danych, który nie będzie się zwiększać **bez powiązanych z**.
+* Brak danych osadzonych, która jest **badane często razem**.
 
 > [!NOTE]
 > Zwykle nieznormalizowane danych modele oferują lepsze **odczytu** wydajności.
 
 ### <a name="when-not-to-embed"></a>Kiedy nie należy osadzać
 
-Gdy zasada mówi w bazie danych dokumentów jest denormalizowanie wszystko i osadzanie wszystkie dane w jednym dokumencie, może to prowadzić do sytuacje, w których należy unikać.
+Gdy zasada mówi w usłudze Azure Cosmos DB jest denormalizowanie wszystko i osadzanie wszystkie dane w jeden element, może to prowadzić do sytuacje, w których należy unikać.
 
 Wykonaj ten fragment kodu JSON.
 
@@ -114,13 +111,13 @@ Wykonaj ten fragment kodu JSON.
         ]
     }
 
-Może to być jak jednostka wpis z komentarzami osadzone będzie wyglądać Jeśli możemy zostały modelowania typowe blogu lub CMS system. Problem z tym przykładem jest tablica komentarze **niepowiązane**, co oznacza, że jest nieograniczona (praktyczne) liczba komentarzy, które mogą mieć dowolnego pojedynczego wpisu. Będzie to problemem jako rozmiar dokumentu może znacznie wzrośnie.
+Może to być jak jednostka wpis z komentarzami osadzone będzie wyglądać Jeśli możemy zostały modelowania typowe blogu lub CMS system. Problem z tym przykładem jest tablica komentarze **niepowiązane**, co oznacza, że jest nieograniczona (praktyczne) liczba komentarzy, które mogą mieć dowolnego pojedynczego wpisu. Ponieważ rozmiar elementu, można powiększać nieskończenie dużych może stać się problemem.
 
-Wzrostem rozmiaru dokumentu, możliwość przesyłania danych za pośrednictwem sieci, a także odczytywanie i aktualizowanie dokumentu, na dużą skalę, będzie mieć wpływ.
+Rozmiar elementu wzrostem możliwość przesyłania danych za pośrednictwem sieci, a także odczytywanie i aktualizowanie elementu na dużą skalę, będzie mieć wpływ.
 
-W takim wypadku byłoby lepiej wziąć pod uwagę następujące modelu.
+W takim wypadku byłoby lepiej wziąć pod uwagę następujące modelu danych.
 
-    Post document:
+    Post item:
     {
         "id": "1",
         "name": "What's new in the coolest Cloud",
@@ -132,7 +129,7 @@ W takim wypadku byłoby lepiej wziąć pod uwagę następujące modelu.
         ]
     }
 
-    Comment documents:
+    Comment items:
     {
         "postId": "1"
         "comments": [
@@ -151,9 +148,9 @@ W takim wypadku byłoby lepiej wziąć pod uwagę następujące modelu.
         ]
     }
 
-Ten model ma trzy najbardziej aktualne komentarze osadzonego na wpis, który jest tablicą o stałym powiązany z tym razem. Inne komentarze są grupowane w partii 100 komentarze i przechowywane w oddzielnych dokumentów. Rozmiar partii została wybrana jako 100, ponieważ naszej fikcyjnej aplikacji umożliwia użytkownikowi załadować 100 komentarzy naraz.  
+Ten model ma trzy najnowszych komentarzy osadzone w kontenerze wpis, który jest tablicą ustalony zestawu atrybutów. Inne uwagi są grupowane w partii 100 komentarze i przechowywane jako oddzielne elementy. Rozmiar partii została wybrana jako 100, ponieważ naszej fikcyjnej aplikacji umożliwia użytkownikowi załadować 100 komentarzy naraz.  
 
-Innym przypadku, gdy osadzania danych nie jest dobrym pomysłem jest, gdy osadzonych danych jest często używana w różnych dokumentach i zmieni się często.
+Innym przypadku, gdy osadzania danych nie jest dobrym pomysłem jest, gdy osadzonych danych jest często używany przez elementy i zmieni się często.
 
 Wykonaj ten fragment kodu JSON.
 

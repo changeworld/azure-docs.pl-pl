@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 01d00b33a4575f17cffb7ba878372367046271a1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578428"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762484"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu usługi Azure Data Factory
 
@@ -55,7 +55,7 @@ Następujące właściwości są obsługiwane dla usługi REST połączone:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość musi być równa **HttpServer**. | Yes |
+| type | **Typu** właściwość musi być równa **RestService**. | Yes |
 | url | Podstawowy adres URL usługi REST. | Yes |
 | enableServerCertificateValidation | Określa, czy sprawdzanie poprawności certyfikatu SSL po stronie serwera, podczas nawiązywania połączenia z punktem końcowym. | Nie<br /> (wartość domyślna to **true**) |
 | Element authenticationType | Typ uwierzytelniania używany do łączenia z usługi REST. Dozwolone wartości to **anonimowe**, **podstawowe**, **AadServicePrincipal** i **ManagedServiceIdentity**. Zobacz do odpowiedniej sekcji poniżej więcej właściwości i przykłady. | Yes |

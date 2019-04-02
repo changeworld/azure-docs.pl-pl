@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30ed127d6be6966baba7d6f862624ef7bca16f40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 50ab4d3c9134e94b60c4dd3eeb5603f450b036c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309559"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794040"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -109,6 +109,10 @@ Podsumowanie wdrażania usługi agenta DC ochronę haseł usługi Azure AD na po
 **Pyt.: Pakiet administracyjny programu System Center Operations Manager jest dostępna dla ochrony haseł usługi Azure AD?**
 
 Nie.
+
+**Pyt.: Dlaczego Azure nadal odrzuca słabe hasła nawet, jeśli skonfigurowano zasady aby być w trybie inspekcji?**
+
+Tryb inspekcji jest obsługiwany tylko w środowisku usługi Active Directory w środowisku lokalnym. Azure jest niejawnie zawsze w trybie "wymusić" gdy był oceniany hasła.
 
 ## <a name="additional-content"></a>Dodatkowa zawartość
 

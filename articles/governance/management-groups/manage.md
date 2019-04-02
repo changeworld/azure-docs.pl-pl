@@ -1,17 +1,17 @@
 ---
-title: Jak zmienić, usunąć lub zarządzać grupami zarządzania na platformie Azure — Azure rządów
+title: Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure rządów
 description: Dowiedz się, jak wyświetlać, obsługi, aktualizacji i usuwania hierarchia grup zarządzania.
 author: rthorn17
 ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622063"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801777"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -37,11 +37,11 @@ Możesz zmienić nazwę grupy zarządzania przy użyciu portalu, programu PowerS
 
 1. Wybierz **Zmień nazwę grupy** opcji w górnej części strony.
 
-   ![Opcja zmiany nazwy grupy](./media/detail_action_small.png)
+   ![Na stronie grupy zarządzania przy użyciu opcji Zmień nazwę grupy](./media/detail_action_small.png)
 
 1. Po otwarciu menu, wprowadź nową nazwę, które Twoim zdaniem, które zostaną wyświetlone.
 
-   ![W okienku Zmień nazwę grupy](./media/rename_context.png)
+   ![Zmień nazwę grupy okienka, aby zmienić nazwę grupy zarządzania](./media/rename_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -223,7 +223,7 @@ Aby zobaczyć, jakie posiadasz uprawnienia w witrynie Azure portal, wybierz opcj
 
 1. Wybierz subskrypcję z listy poprawny identyfikator.
 
-   ![Elementy podrzędne](./media/add_context_sub.png)
+   ![Dostępne subskrypcje, aby dodać do grupy zarządzania](./media/add_context_sub.png)
 
 1. Wybierz pozycję "Zapisz".
 
@@ -237,13 +237,13 @@ Aby zobaczyć, jakie posiadasz uprawnienia w witrynie Azure portal, wybierz opcj
 
 1. Na liście, który chcesz przenieść, wybierz Wielokropek na końcu wiersza dla subskrypcji.
 
-   ![Opcja Przenieś](./media/move_small.png)
+   ![Opcja Przenieś grupy zarządzania](./media/move_small.png)
 
 1. Wybierz **przenieść**.
 
 1. W wyświetlonym menu wybierz **nadrzędna grupa zarządzania**.
 
-   ![Przesuń okienko](./media/move_small_context.png)
+   ![Przesuń okienko, aby zmienić grupy nadrzędnej](./media/move_small_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -294,7 +294,7 @@ Podczas przenoszenia nadrzędna grupa zarządzania hierarchię w ramach tej grup
    - Wybieranie nowego utworzy nową grupę zarządzania.
    - Wybieranie istniejącego spowoduje wyświetlenie menu rozwijane wszystkich grup zarządzania, który można przenieść do tej grupy zarządzania.  
 
-   ![Przenieś](./media/add_context_MG.png)
+   ![Przenoszenie grupy zarządzania do nowej lub istniejącej grupy](./media/add_context_MG.png)
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -318,7 +318,7 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Można tworzyć zapytania wszystkie zdarzenia, które odbywa się w grupie zarządzania w tej samej lokalizacji centralnej, innych zasobów platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
 
-![Dzienniki aktywności z grupami zarządzania](media/al-mg.png)
+![Dzienniki aktywności przy użyciu grup zarządzania](media/al-mg.png)
 
 Jeśli chcesz wykonać zapytanie dotyczące grup zarządzania spoza witryny Azure Portal, zakres docelowy grup zarządzania wygląda tak: **„/providers/Microsoft.Management/managementGroups/{identyfikator_grupy_zarządzania}”**.
 

@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: e80134729c33741aa3007deb2d93a2de3e3fe697
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979721"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792425"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify odtwarzanie rozszerzenia agenta systemu Linux
 
 ## <a name="overview"></a>Przegląd
+
 Stackify zawiera produkty, które śledzą szczegółowe informacje o aplikacji w taki sposób, aby ułatwić znajdowanie i szybkie rozwiązywanie problemów. Dla zespołów deweloperów odtwarzanie jest wydajność administratorami w pełni zintegrowanego środowiska wielu aplikacji. Łączy kilka narzędzi, czego potrzebuje każdy zespół programistów.
 
 Odtwarzanie to narzędzie tylko, która udostępnia wszystkie następujące funkcje we wszystkich środowiskach w ramach jednej platformy.
@@ -40,6 +41,7 @@ To rozszerzenie zapewnia ścieżkę instalacji dla agenta systemu Linux dla odtw
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny 
+
 Odtwarzanie agenta mogą być uruchamiane względem tych dystrybucje systemu Linux
 
 | Dystrybucja | Wersja |
@@ -50,12 +52,14 @@ Odtwarzanie agenta mogą być uruchamiane względem tych dystrybucje systemu Lin
 | CentOS | 6.3+, 7.0+ |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
+
 Rozszerzenie Stackify agenta dla systemu Linux wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
 
 Może być konieczne dostosowanie konfigurację sieci, aby zezwolić na połączenia z rozwiązania Stackify, zobacz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
+
 ---
 
 Następujący kod JSON zawiera schemat dla rozszerzenia Stackify odtwarzanie agenta. Rozszerzenie wymaga `environment` i `activationKey`.
@@ -151,7 +155,7 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 Rozszerzenie wymaga `environment` i `activationKey`.
 
-```
+```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
 $ProtectedSettings = @{"activationKey" = "myActivationKey"}
 

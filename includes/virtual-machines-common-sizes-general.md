@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ae07c29e9fcc7e498e1e39b3d4dc1d93de64e883
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48904520"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58763318"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważonym obciążeniu współczynnik procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepływności rozmiary w tej metodzie grupowania. 
 
-- [DC serii](#dc-series) to Nowa rodzina maszyn wirtualnych na platformie Azure, która pomaga chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Te maszyny są wspierane przez najnowszą generację 3,7 GHz Intel XEON E - 2176G procesora przy użyciu technologii SGX. Z technologią Intel Turbo Boost Technology tych maszyn, można przejść do 4.7 GHz. Wystąpienia serii DC Umożliwiaj klientom tworzenie bezpiecznych aplikacji na podstawie enklawy chronić ich kod i dane, gdy jest używany.
+- [DC serii](#dc-series) to Nowa rodzina maszyn wirtualnych na platformie Azure, która pomaga chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Te maszyny korzystają z najnowszej generacji procesora Intel XEON E-2176G 3,7GHz z technologią SGX. Dzięki technologii Intel Turbo Boost Technology te maszyny mogą osiągać szybkość do 4,7 GHz. Wystąpienia z serii DC umożliwiają klientom tworzenie aplikacji opartych na bezpiecznych enklawach do ochrony kodu i danych w trakcie ich używania.
 
 - Maszyny wirtualne z serii Av2 można wdrożyć na różnych typach sprzętu i procesorach. Maszyny wirtualne serii A zapewniają wydajność procesora CPU i konfiguracje pamięci, które są najlepsze w przypadku obciążeń podstawowych, takich jak tworzenie i testowanie aplikacji. Rozmiar jest ograniczany w zależności od sprzętu, aby zapewnić spójną wydajność procesora dla uruchomionego wystąpienia niezależnie od sprzętu, na którym jest ono wdrożone. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
 
@@ -32,37 +32,39 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 
 ## <a name="b-series"></a>Seria B
 
-Usługa Premium Storage: obsługiwane
+Magazyn w warstwie Premium:  Obsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie Premium Storage:  Nieobsługiwane
 
 Seria B z możliwością zwiększania wydajności maszyny wirtualne są idealne dla obciążeń, które nie potrzebujesz pełnej wydajności procesora CPU w sposób ciągły, takich jak serwery sieci web, małych baz danych i rozwoju i środowisk testowych. Te obciążenia mają zwykle wymagań dotyczących wydajności z możliwością zwiększania wydajności. Seria B zapewnia Ci klienci umożliwiają zakup rozmiar maszyny Wirtualnej za pomocą ceny świadome linii bazowej wydajności, umożliwiająca wystąpienia maszyny Wirtualnej do zbudowania środków w przypadku maszyny Wirtualnej jest mniejsza niż jej wydajność bazy. Gdy maszyna wirtualna zgromadzonych środków, maszyna wirtualna może serii powyżej linii bazowej maszyny Wirtualnej przy użyciu maksymalnie 100% Procesora, gdy aplikacja wymaga wyższej wydajności procesorów CPU.
 
 Przykładowe przypadki użycia obejmują tworzenia i testowania, serwery sieci web o małym natężeniu ruchu, małych baz danych, mikrousługi, serwerów na potrzeby weryfikacji koncepcji, serwery kompilacji.
 
 
-| Rozmiar             | Procesor wirtualny  | Pamięć: GiB | Lokalne dyski SSD: GiB | Podstawowej wydajności rdzenia | Środki na korzystanie z wpłaty / godzinę | Maksymalna liczba wpłaty środki na korzystanie z | Maks. liczba dysków danych | Maksymalna liczba dysków lokalnych danych o wydajności: operacje We/Wy / MB/s | Maksymalna liczba niebuforowanych dysków danych o wydajności: operacje We/Wy / MB/s | Maksymalna liczba kart sieciowych |          
-|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 6                  | 144            | 2                                      | 400 / 10                                  | 320 / 10                                  | 2  |
-| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 12                 | 288            | 2                                      | 800 / 10                                  | 640 / 10                                  | 2  |
-| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
-| Standard_B2ms | 2           | 8              | 16                         | 60%                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
-| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
-| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
+| Rozmiar             | Procesor wirtualny  | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Bazowej wydajności procesora CPU maszyny wirtualnej | Maksymalna liczba wydajności procesora CPU maszyny wirtualnej | Środki na korzystanie z wpłaty / godzinę | Maksymalna liczba wpłaty środki na korzystanie z | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: IOPS / MBps | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych |          
+|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 6                  | 144            | 2                                      | 400 / 10                                  | 320 / 10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 12                 | 288            | 2                                      | 800 / 10                                  | 640 / 10                                  | 2  |
+| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
+| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400%                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
+| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
 
+<sup>1</sup> B1ls jest obsługiwana tylko w systemie Linux
 
 ## <a name="dsv3-series-sup1sup"></a>Seria Dsv3 <sup>1</sup>
 
-ACU: 160–190
+ACU: 160-190
 
-Usługa Premium Storage: obsługiwane
+Magazyn w warstwie Premium:  Obsługiwane
 
-Buforowanie magazynu Premium: obsługiwane
+Buforowanie Premium Storage:  Obsługiwane
 
 Rozmiary serii Dsv3 są oparte na procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesora lub najnowsza wersja 4 2,3 GHz Intel XEON® E5-2673 procesora (Broadwell), który może osiągnąć częstotliwość 3,5 GHz dzięki technologii Intel Turbo Boost Technology 2.0 i użyj usługi premium storage. Rozmiary serii Dsv3 oferują kombinację procesora wirtualnego vCPU, pamięci i magazynu tymczasowego spełniającą potrzeby większości obciążeń produkcyjnych.
 
 
-| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standardowa_D2s_v3  | 2      | 8           | 16             | 4              | 4000 / 32 (50)                                                       | 3200 / 48                                | 2 / 1,000                                   |
 | Standardowa_D4s_v3  | 4      | 16          | 32             | 8              | 8000 / 64 (100)                                                      | 6400 / 96                                | 2 / 2,000                                   |
@@ -75,18 +77,18 @@ Rozmiary serii Dsv3 są oparte na procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Ha
 
 ## <a name="dv3-series-sup1sup"></a>Seria Dv3 <sup>1</sup>
 
-ACU: 160–190
+ACU: 160-190
 
-Usługa Premium Storage: Nieobsługiwane
+Magazyn w warstwie Premium:  Nieobsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie Premium Storage:  Nieobsługiwane
 
 Rozmiary serii Dv3 są oparte na procesorze 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesora lub 2,3 GHz Intel XEON® E5-2673 v4 (broadwell z zegarem) procesora, który może osiągnąć szybkość 3,5 GHz dzięki technologii Intel Turbo Boost Technology 2.0. Rozmiary serii Dv3 oferują kombinację procesora wirtualnego vCPU, pamięci i magazynu tymczasowego spełniającą potrzeby większości obciążeń produkcyjnych.
 
 Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów Dsv3. Liczniki cen i rozliczeń dla rozmiarów Dsv3 są takie same jak dla serii Dv3. 
 
 
-| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standardowa_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1,000                    |
 | Standardowa_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2,000                    |
@@ -100,13 +102,13 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 
 ## <a name="dsv2-series"></a>Seria DSv2
 
-ACU: 210–250
+ACU: 210-250
 
-Usługa Premium Storage: obsługiwane
+Magazyn w warstwie Premium:  Obsługiwane
 
-Buforowanie magazynu Premium: obsługiwane
+Buforowanie Premium Storage:  Obsługiwane
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS1_v2 |1 |3,5 |7 |4 |4000 / 32 (43) |3200 / 48 |2 / 750 |
 | Standardowa_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400 / 96 |2 / 1500 |
@@ -118,13 +120,13 @@ Buforowanie magazynu Premium: obsługiwane
 
 ## <a name="dv2-series"></a>Seria Dv2
 
-ACU: 210–250
+ACU: 210-250
 
-Usługa Premium Storage: Nieobsługiwane
+Magazyn w warstwie Premium:  Nieobsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie Premium Storage:  Nieobsługiwane
 
-| Rozmiar           | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maks. liczba dysków danych | Przepływność: operacje We/Wy | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar           | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maks. liczba dysków danych | Przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standardowa_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4 x 500            | 2 / 750                                      |
 | Standardowa_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8 x 500            | 2 / 1500                                     |
@@ -137,14 +139,14 @@ Buforowanie Premium Storage: Nieobsługiwane
 
 ACU: 100
 
-Usługa Premium Storage: Nieobsługiwane
+Magazyn w warstwie Premium:  Nieobsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie Premium Storage:  Nieobsługiwane
 
 
-| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
+| Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
+| Standardowa_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
 | Standardowa_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
 | Standardowa_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8 x 500               | 4 / 1000                     |
 | Standardowa_A8_v2  | 8         | 16          | 80             | 8000 / 160 / 80                                          | 16 / 16 x 500             | 8 / 2000                     |
@@ -155,17 +157,17 @@ Buforowanie Premium Storage: Nieobsługiwane
 <br>
 
 
-## <a name="dc-series"></a>Seria kontrolera domeny
+## <a name="dc-series"></a>Seria DC
 
-Usługa Premium Storage: obsługiwane
+Magazyn w warstwie Premium: Obsługiwane
 
-Buforowanie magazynu Premium: obsługiwane
+Buforowanie Premium Storage: Obsługiwane
 
 
 
-| Rozmiar          | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar          | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
-| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 — rozmiar/48                                  | 2 / 1500                                     |
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
 
 

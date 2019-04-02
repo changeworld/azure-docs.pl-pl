@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428486"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793564"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management
 Azure Event Hubs to wysoce skalowalna usługa transferu danych przychodzących, która może obsługiwać miliony zdarzeń na sekundę, dzięki czemu możliwe jest przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Usługa Event Hubs działa jako "drzwi wejściowe" dla potoku zdarzeń i zebrane dane do Centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym lub adapterów przetwarzania wsadowego/magazynowania. Usługa Event Hubs oddziela wytwarzanie strumienia zdarzeń od użycia tych zdarzeń, dzięki czemu odbiorcy zdarzeń mogą uzyskiwać dostęp do zdarzeń zgodnie z własnym harmonogramem.
@@ -40,7 +40,7 @@ Aby utworzyć rejestratora, należy żądanie HTTP PUT, korzystając z poniższe
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Zastąp `{your service}` nazwą wystąpienia usługi API Management.
-* Zastąp `{new logger name}` z żądaną nazwą dla Twojego nowego rejestratora. Możesz odwoływać się do tej nazwy podczas konfigurowania [dziennika do Centrum zdarzeń](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) zasad
+* Zastąp `{new logger name}` z żądaną nazwą dla Twojego nowego rejestratora. Możesz odwoływać się do tej nazwy podczas konfigurowania [dziennika do Centrum zdarzeń](/azure/api-management/api-management-advanced-policies#log-to-eventhub) zasad
 
 Dodaj następujące nagłówki żądania:
 

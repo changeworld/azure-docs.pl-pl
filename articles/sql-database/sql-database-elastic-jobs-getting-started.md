@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 68a5bdef17077d1815b6d85e121d9bb26c2280bf
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 6d794fb14b7f581c9e9b92dc581de97e0a236630
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484258"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793763"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie do zadań elastycznych baz danych
 
@@ -116,8 +116,10 @@ W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi
     $ErrorActionPreference = "Continue"
    }
    ```
+
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Tworzenie skryptu T-SQL do wykonania w bazach danych
-   ```
+
+   ```powershell
     $scriptName = "NewTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'Test')
@@ -137,7 +139,7 @@ W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi
 
 ## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>Tworzenie zadania do uruchomienia skryptu w niestandardowej grupy baz danych
 
-   ```
+   ```powershell
     $jobName = "create on server dbs"
     $scriptName = "NewTable"
     $customCollectionName = "dbs_in_server"
@@ -148,50 +150,53 @@ W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi
    ```
 
 ## <a name="execute-the-job"></a>Wykonywania zadania
+
 Poniższy skrypt programu PowerShell mogą służyć do wykonywania istniejącego zadania:
 
 Aktualizacja następującej zmiennej, aby odzwierciedlić nazwę żądanego zadania, aby zostały wykonane:
 
-   ```
+   ```powershell
     $jobName = "create on server dbs"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
    ```
 
 ## <a name="retrieve-the-state-of-a-single-job-execution"></a>Pobiera stan wykonania pojedynczego zadania
+
 Użyto tych samych **Get AzureSqlJobExecution** polecenia cmdlet z **właściwość IncludeChildren** parametru, aby wyświetlić stan wykonania zadania podrzędnego, a mianowicie określony stan dla każdego wykonania zadania, dla każdej bazy danych Celem tego zadania.
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions
    ```
 
 ## <a name="view-the-state-across-multiple-job-executions"></a>Wyświetlanie stanu między wiele wykonań zadania
+
 **Get AzureSqlJobExecution** polecenie cmdlet ma wiele parametry opcjonalne, które mogą służyć do wyświetlania wielu wykonań zadań w celu filtrowany za pośrednictwem podane parametry. Poniżej przedstawiono niektóre możliwe sposoby używania Get AzureSqlJobExecution:
 
 Pobieranie wszystkich wykonań aktywnego zadania najwyższego poziomu:
 
-   ```
+   ```powershell
     Get-AzureSqlJobExecution
    ```
 
 Pobieranie wszystkich wykonań zadania najwyższego poziomu, w tym liczba wykonań zadań nieaktywne:
 
-   ```
+   ```powershell
     Get-AzureSqlJobExecution -IncludeInactive
    ```
 
 Pobieranie wszystkich wykonań zadania podrzędnego dostarczone zadanie identyfikatora wykonywania, liczba wykonań zadań nieaktywne w tym:
 
-   ```
+   ```powershell
     $parentJobExecutionId = "{Job Execution Id}"
     Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
    ```
 
 Pobieranie wszystkich wykonań zadania utworzone za pomocą harmonogramu / zadanie kombinacji, w tym zadania nieaktywne:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
@@ -199,7 +204,7 @@ Pobieranie wszystkich wykonań zadania utworzone za pomocą harmonogramu / zadan
 
 Pobieranie wszystkich zadań przeznaczonych dla określonego mapowania fragmentów w postaci, w tym zadania nieaktywne:
 
-   ```
+   ```powershell
     $shardMapServerName = "{Shard Map Server Name}"
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
@@ -209,7 +214,7 @@ Pobieranie wszystkich zadań przeznaczonych dla określonego mapowania fragment�
 
 Pobieranie wszystkich zadań przeznaczonych dla określonej kolekcji niestandardowych, w tym zadania nieaktywne:
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
@@ -217,7 +222,7 @@ Pobieranie wszystkich zadań przeznaczonych dla określonej kolekcji niestandard
 
 Pobieranie listy zadań wykonań zadań w ramach wykonania określonego zadania:
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Write-Output $jobTaskExecutions
@@ -226,16 +231,18 @@ Pobieranie listy zadań wykonań zadań w ramach wykonania określonego zadania:
 Pobierz szczegóły wykonania zadania dla zadania:
 
 Poniższy skrypt programu PowerShell, można wyświetlić szczegóły wykonania zadania, które jest szczególnie przydatna podczas debugowania awarii wykonywania.
-   ```
+
+   ```powershell
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
    ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>Pobieranie błędy w ramach zadania zadanie wykonania
+
 Obiekt JobTaskExecution zawiera właściwości do zarządzania cyklem życia zadania, wraz z właściwością wiadomości. Jeżeli wykonanie zadania zadania nie powiodło się, ma ustawioną właściwość cyklu *życia* i właściwości wiadomości ustawiono Wynikowy komunikat o wyjątku i jego stosu. Jeśli zadanie nie powiodło się, jest ważne, aby wyświetlić szczegóły zadania, które nie powiodła się dla danego zadania.
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Foreach($jobTaskExecution in $jobTaskExecutions)
@@ -248,14 +255,16 @@ Obiekt JobTaskExecution zawiera właściwości do zarządzania cyklem życia zad
    ```
 
 ## <a name="waiting-for-a-job-execution-to-complete"></a>Oczekiwanie na ukończenie wykonywania zadania
+
 Poniższy skrypt programu PowerShell może służyć do czekać na zakończenie zadania zadania:
 
-   ```
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="create-a-custom-execution-policy"></a>Tworzenie zasad wykonywania niestandardowych
+
 Zadania elastic Database obsługuje tworzenie zasad wykonywania niestandardowych, które mogą być stosowane podczas uruchamiania zadania.
 
 Zezwalaj na aktualnie zasad wykonywania do definiowania:
@@ -278,7 +287,7 @@ Domyślne zasady wykonywania korzysta z następujących wartości:
 
 Utwórz zasady wykonywania żądanego:
 
-   ```
+   ```powershell
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -290,9 +299,10 @@ Utwórz zasady wykonywania żądanego:
    ```
 
 ### <a name="update-a-custom-execution-policy"></a>Aktualizowanie zasad wykonywania niestandardowych
+
 Aktualizuj zasady wykonywania żądanego do aktualizacji:
 
-   ```
+   ```powershell
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -329,38 +339,41 @@ Zamiast tego Stop AzureSqlJobExecution musi można wywołać można anulować wy
 
 Aby wyzwolić zadanie usuwania, należy użyć **AzureSqlJob Usuń** polecenia cmdlet i ustaw **JobName** parametru.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
    ```
 
 ## <a name="create-a-custom-database-target"></a>Utwórz obiekt docelowy niestandardowej bazy danych
+
 Obiekty docelowe w niestandardowej bazie danych można zdefiniować w zadaniach elastycznych baz danych, które mogą być używane do wykonywania bezpośrednio lub do włączenia w obrębie grupy niestandardowej bazy danych. Ponieważ **pul elastycznych** nie są jeszcze bezpośrednio obsługiwane za pośrednictwem interfejsów API programu PowerShell, możesz po prostu utworzyć niestandardową bazę danych obiekt docelowy oraz docelowy kolekcji niestandardowej bazy danych, która obejmuje wszystkie bazy danych w puli.
 
 Ustaw następujące zmienne, aby odzwierciedlić informacje o żądanej bazy danych:
 
-   ```
+   ```powershell
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName
    ```
 
 ## <a name="create-a-custom-database-collection-target"></a>Utwórz obiekt docelowy kolekcję niestandardową bazę danych
+
 Obiekt docelowy kolekcję niestandardową bazę danych można zdefiniować włączyć wykonywanie w wielu lokalizacjach docelowych zdefiniowanych bazy danych. Po utworzeniu grupy bazy danych, baz danych może być skojarzony z obiektem docelowym kolekcji niestandardowej.
 
 Ustaw następujące zmienne w celu odzwierciedlenia konfiguracji docelowego żądanej kolekcji niestandardowej:
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
    ```
 
 ### <a name="add-databases-to-a-custom-database-collection-target"></a>Dodawanie baz danych do docelowej kolekcji niestandardowej bazy danych
+
 Obiekty docelowe bazy danych może być skojarzony z celami kolekcji niestandardowej bazy danych, aby utworzyć grupę baz danych. Zawsze, gdy zostanie utworzone zadanie, który jest przeznaczony dla docelowej kolekcji niestandardowej bazy danych, jest rozwinięte pod kątem baz danych skojarzonego z grupą w czasie wykonywania.
 
 Dodaj żądaną bazy danych do określonej kolekcji niestandardowej:
 
-   ```
+   ```powershell
     $serverName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
@@ -368,9 +381,10 @@ Dodaj żądaną bazy danych do określonej kolekcji niestandardowej:
    ```
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Przejrzyj baz danych w docelowej kolekcji niestandardowej bazy danych
+
 Użyj **Get AzureSqlJobTarget** polecenie cmdlet do pobierania podrzędnych baz danych w docelowej kolekcji niestandardowej bazy danych.
 
-   ```
+   ```powershell
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
@@ -378,9 +392,10 @@ Użyj **Get AzureSqlJobTarget** polecenie cmdlet do pobierania podrzędnych baz 
    ```
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Tworzenie zadania do uruchomienia skryptu w docelowej kolekcji niestandardowej bazy danych
+
 Użyj **New AzureSqlJob** polecenia cmdlet, aby utworzyć zadanie względem grupy baz danych zdefiniowane przez obiekt docelowy kolekcję niestandardową bazę danych. Zadania elastic Database rozwija zadania na wiele zadań podrzędnych, odpowiadający każdej bazy danych skojarzony z elementem docelowym kolekcji niestandardowej bazy danych i upewnij się, że skrypt zostanie wykonany w każdej bazie danych. Ponownie ważne jest, że skrypty są idempotentne, aby była odporna na liczbę ponownych prób.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $customCollectionName = "{Custom Collection Name}"
@@ -391,6 +406,7 @@ Użyj **New AzureSqlJob** polecenia cmdlet, aby utworzyć zadanie względem grup
    ```
 
 ## <a name="data-collection-across-databases"></a>Zbieranie danych w bazach danych
+
 **Zadania elastic Database** obsługuje wykonywanie zapytania dla grupy baz danych i przesyła wyniki do tabeli określonej bazy danych. Tabela może być odpytywany w późniejszym czasie, aby zobaczyć wyniki zapytania z każdej bazy danych. Dzięki temu asynchronicznego mechanizmu, można wykonać zapytania w wielu bazach danych. Błąd przypadkach, takich jak jedna baza danych jest tymczasowo niedostępne są obsługiwane automatycznie za pomocą ponownych prób.
 
 W tabeli z określoną lokalizacją docelową jest tworzony automatycznie, jeśli go jeszcze nie istnieje, dopasowanie schematu zestawu wyników zwracanego. Jeśli wykonanie skryptu zwraca wiele zestawów wyników, zadania Elastic Database wysyła tylko pierwszy z nich do tabeli docelowej podana.
@@ -399,7 +415,7 @@ Poniższy skrypt programu PowerShell może służyć do uruchomienia skryptu zbi
 
 Ustaw następujące polecenie, aby odzwierciedlić żądaną skryptu, poświadczenia i element docelowy wykonywania:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $executionCredentialName = "{Execution Credential Name}"
@@ -413,7 +429,8 @@ Ustaw następujące polecenie, aby odzwierciedlić żądaną skryptu, poświadcz
    ```
 
 ### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>Tworzenie i uruchamianie zadania dla scenariuszy zbierania danych
-   ```
+
+   ```powershell
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
     Write-Output $job
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
@@ -421,10 +438,12 @@ Ustaw następujące polecenie, aby odzwierciedlić żądaną skryptu, poświadcz
    ```
 
 ## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>Utwórz harmonogram wykonywania zadania przy użyciu wyzwalacza zadania
+
 Poniższy skrypt programu PowerShell, można utworzyć harmonogram cyklicznych. Ten skrypt używa interwał jedną minutę, ale nowy AzureSqlJobSchedule obsługuje również parametry - DayInterval, - HourInterval, - MonthInterval i - WeekInterval. Można utworzyć harmonogramy, które są wykonywane tylko raz przez przekazanie - jednorazowa.
 
 Utwórz nowy harmonogram:
-   ```
+
+   ```powershell
     $scheduleName = "Every one minute"
     $minuteInterval = 1
     $startTime = (Get-Date).ToUniversalTime()
@@ -433,11 +452,12 @@ Utwórz nowy harmonogram:
    ```
 
 ### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>Tworzenie wyzwalacza zadania, aby zadania wykonywane zgodnie z harmonogramem czasu
+
 Wyzwalacz zadania można zdefiniować zadania, wykonane zgodnie z harmonogramem. Poniższy skrypt programu PowerShell, można utworzyć wyzwalacza zadania.
 
 Ustaw następujące zmienne odnoszą się do żądanego zadania i harmonogramu:
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
@@ -445,16 +465,18 @@ Ustaw następujące zmienne odnoszą się do żądanego zadania i harmonogramu:
    ```
 
 ### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Usuwanie zaplanowanego skojarzenia można zatrzymać zadania wykonania zgodnie z harmonogramem
+
 Aby przerwać cyklicznych wykonywania zadań za pomocą wyzwalacza zadania, można usunąć wyzwalacza zadania.
 Usuwanie wyzwalacza zadania można zatrzymać zadania zostanie wykonywany zgodnie z harmonogramem przy użyciu **AzureSqlJobTrigger Usuń** polecenia cmdlet.
 
-   ```
+   ```powershell
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
    ```
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>Importuj wyniki zapytania elastycznej bazy danych do programu Excel
+
  Można zaimportować wyników z zapytania do pliku programu Excel.
 
 1. Launch Excel 2013.
@@ -471,9 +493,11 @@ Usuwanie wyzwalacza zadania można zatrzymać zadania zostanie wykonywany zgodni
 Wszystkie wiersze z **klientów** tabeli, przechowywane w różnych fragmentach wypełnianie arkusza programu Excel.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Można teraz używać funkcji danych programu Excel. Użyj parametrów połączenia z nazwą serwera, nazwa bazy danych i poświadczeń, do łączenia z narzędzi integracji danych i analizy Biznesowej w bazie danych zapytania elastycznego. Upewnij się, że program SQL Server jest obsługiwany jako źródło danych dla swojego narzędzia. Zapoznaj się zapytanie elastyczne bazy danych i tabel zewnętrznych, podobnie jak każdej innej bazy danych programu SQL Server i tabel programu SQL Server, które można połączyć się z narzędziem.
 
 ### <a name="cost"></a>Koszty
+
 Nie ma żadnych dodatkowych opłat za używanie funkcji zapytanie elastycznej bazy danych. Jednak w tej chwili ta funkcja jest dostępna tylko na Premium i krytyczne dla działania firmy baz danych i pul elastycznych jako punkt końcowy, ale fragmentami może być dowolną warstwę usług.
 
 Aby uzyskać informacje o cenach, zobacz [SQL Database — szczegóły cennika](https://azure.microsoft.com/pricing/details/sql-database/).

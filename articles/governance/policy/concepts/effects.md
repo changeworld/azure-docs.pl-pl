@@ -4,17 +4,17 @@ description: Definicja zasad platformy Azure ma różne efekty, określające sp
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c6fbde8ff803a053f8c34765ce95d3981a57c52
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551267"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802647"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
@@ -180,9 +180,10 @@ AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania twor
 
 - **Typ** [wymagane]
   - Określa typ powiązanego zasobu do dopasowania.
-  - Rozpoczyna się od próby pobrania zasobu poniżej **Jeśli** zasobów warunek, a następnie zapytań w ramach tej samej grupie zasobów co **Jeśli** warunku zasobu.
+  - Jeśli **details.type** jest typem zasobu poniżej **Jeśli** warunku zasobu, zasad, który wysyła zapytanie dotyczące zasobów tego **typu** w zakresie zasobów ocenione. W przeciwnym razie zapytania zasad w ramach tej samej grupie zasobów co ocenianą zasób.
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady Aby pobrać jeden, konkretny zasób zamiast wszystkich zasobów określonego typu.
+  - Gdy stan wartości **if.field.type** i **then.details.type** są zgodne, następnie **nazwa** staje się _wymagane_ i musi być `[field('name')]`. Jednak [inspekcji](#audit) zamiast tego należy rozważyć wpływ.
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu pochodzić z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **typu** jest zasobem, który będzie poniżej **Jeśli** warunku zasobu.
@@ -253,6 +254,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
   - Rozpoczyna się od próby pobrania zasobu poniżej **Jeśli** zasobów warunek, a następnie zapytań w ramach tej samej grupie zasobów co **Jeśli** warunku zasobu.
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady Aby pobrać jeden, konkretny zasób zamiast wszystkich zasobów określonego typu.
+  - Gdy stan wartości **if.field.type** i **then.details.type** są zgodne, następnie **nazwa** staje się _wymagane_ i musi być `[field('name')]`.
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu pochodzić z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **typu** jest zasobem, który będzie poniżej **Jeśli** warunku zasobu.

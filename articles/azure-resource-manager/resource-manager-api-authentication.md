@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 3/22/2019
 ms.author: dugill
-ms.openlocfilehash: 5144a35dd695ce30f4a7ff940f0bca7e6ba9d23c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372555"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805520"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 
@@ -255,7 +255,7 @@ Przykładową odpowiedź dla tokenu przydział poświadczeń klienta:
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039862","not_before":"1432035962","resource":"https://graph.windows.net/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRv****G5gUTV-kKorR-pg"}
 
 ### <a name="get-objectid-of-application-service-principal-in-user-azure-ad"></a>Pobierz identyfikator obiektu nazwy głównej usługi aplikacji w polu użytkownika usługi Azure AD
-Teraz Użyj tokenu dostępu tylko dla aplikacji do wykonywania zapytań [jednostki usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) interfejsu API, aby określić identyfikator obiektu nazwy głównej usługi aplikacji w katalogu.
+Teraz Użyj tokenu dostępu tylko dla aplikacji do wykonywania zapytań [jednostki usługi Azure AD Graph](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity) interfejsu API, aby określić identyfikator obiektu nazwy głównej usługi aplikacji w katalogu.
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#) metoda przykładowej aplikacji platformy ASP.net MVC zaimplementowano tego wywołania.
 

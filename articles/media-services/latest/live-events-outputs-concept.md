@@ -11,30 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1d28701dd35b9d80fd52a1f102c53f2d59d63b09
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189363"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762358"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
-Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, należy zrozumieć kwestie omówione w tym artykule:
-
-* [Wydarzenia na żywo](#live-events)
-* Typy zdarzeń na żywo
-* Porównanie typów zdarzeń na żywo
-* [Opcje tworzenia zdarzenia na żywo](#live-event-creation-options)
-* [Adresy URL pozyskiwania na żywo z wydarzeń](#live-event-ingest-urls)
-* [Adres URL Podglądu zdarzeń na żywo](#live-event-preview-url)
-* [Dane wyjściowe na żywo](#live-outputs).
+Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, należy zrozumieć kwestie omówione w tym artykule. <br/>Lista sekcjach znajduje się w prawej części strony.
 
 ## <a name="live-events"></a>Wydarzenia na żywo
 
-[Wydarzeń na żywo](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Po utworzeniu zdarzenia na żywo, wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. 
+[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Kiedy utworzysz wydarzenie na żywo, tworzony jest wejściowy punkt końcowy, którego możesz użyć do wysyłania sygnału na żywo z kodera zdalnego. Zdalny koder na żywo wysyła kanał informacyjny do tego wejściowego punktu końcowego przy użyciu protokołu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (plik MP4 podzielony na fragmenty). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. 
 
 ## <a name="live-event-types"></a>Typy zdarzeń na żywo
 
@@ -44,9 +36,9 @@ A [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) mo
 
 ![przekazywane](./media/live-streaming/pass-through.svg)
 
-Przy użyciu przekazywanego **wydarzenie na żywo**, opierają się na swoje lokalny koder na żywo do generowania wielu strumienia wideo o szybkości transmisji bitów i wysyłania, że jako udział Kanał informacyjny do wydarzenie na żywo (przy użyciu protokołu RTMP lub pofragmentowany plik MP4). Wydarzenie na żywo następnie niesie ze sobą za pośrednictwem przychodzących strumieni wideo bez dalszego przetwarzania. Takie przekazywanego element LiveEvent jest zoptymalizowany do wydarzeń na żywo długotrwałych lub 24 x 365 liniowej transmisja strumieniowa na żywo. Podczas tworzenia tego typu zdarzenia na żywo, należy określić Brak (LiveEventEncodingType.None).
+Kiedy używasz przekazywanego **wydarzenia na żywo**, oczekujesz, że Twój lokalny koder na żywo wygeneruje strumień wideo z wieloma szybkościami transmisji bitów i wyśle go jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo przekazuje następnie przychodzące strumienie wideo bez dalszego przetwarzania. Takie przekazywane wydarzenie na żywo jest zoptymalizowane pod kątem długoterminowych wydarzeń na żywo lub liniowej transmisji strumieniowej na żywo w formacie 24x365. Tworząc wydarzenie na żywo tego typu, należy określić parametr None (LiveEventEncodingType.None).
 
-Możesz wysłać wkład kanał przy rozdzielczości, maksymalnie 4 K oraz w ramce stopień 60 klatek na sekundę koder H.264/AVC lub H.265/HEVC koderów-dekoderów wideo i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio.  Zobacz [wydarzenie na żywo typy porównania](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
+Możesz wysyłać kanał informacyjny o rozdzielczości maksymalnie 4K oraz z szybkością 60 klatek na sekundę, za pomocą koderów-dekoderów wideo H.264/AVC lub H.265/HEVC i kodera-dekodera audio AAC (AAC-LC, HE-AACv1 lub HE-AACv2).  Aby uzyskać więcej informacji, zobacz artykuł [Porównanie typów wydarzeń na żywo](live-event-types-comparison.md).
 
 > [!NOTE]
 > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
@@ -58,14 +50,14 @@ Zobacz przykładowy kod platformy .NET w [MediaV3LiveApp](https://github.com/Azu
 
 ![funkcji Live encoding](./media/live-streaming/live-encoding.svg)
 
-Korzystając z kodowania na żywo za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział Kanał informacyjny do wydarzenie na żywo (przy użyciu protokołu RTMP lub podzielonej zawartości w formacie Mp4). Wydarzenie na żywo koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia dostarczania odtworzyć urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu zdarzenia na żywo, określ typ kodowania jako **standardowa** (LiveEventEncodingType.Standard).
+W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services należy skonfigurować lokalny koder na żywo, aby wysłać klip wideo z jedną szybkością transmisji bitów jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo koduje ten strumień z jedną szybkością transmisji bitów do [strumienia z wieloma szybkościami transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia go do dostarczenia do urządzeń odtwarzania za pomocą protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu wydarzenia na żywo określ typ kodowania jako **Standardowy** (LiveEventEncodingType.Standard).
 
-Możesz wysłać wkład kanału informacyjnego w maksymalnie 1080 p rozwiązania z prędkością 30 klatek, / sekundę, przy użyciu kodera-dekodera wideo koder H.264/AVC i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio. Zobacz [wydarzenie na żywo typy porównania](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
+Możesz wysyłać kanał informacyjny o rozdzielczości maksymalnie 1080p oraz z szybkością 30 klatek na sekundę za pomocą kodera-dekodera wideo H.264/AVC i kodera-dekodera audio AAC (AAC-LC, HE-AACv1 lub HE-AACv2). Aby uzyskać więcej informacji, zobacz artykuł [Porównanie typów wydarzeń na żywo](live-event-types-comparison.md).
 
-Podczas korzystania z kodowania na żywo (wydarzenie na żywo jest równa **standardowa**), ustawienie wstępne kodowania definiuje, jak przychodzący strumień jest zakodowany w wielu różnych lub warstwy. Aby uzyskać informacje, zobacz [ustawienia systemu](live-event-types-comparison.md#system-presets).
+W przypadku korzystania z kodowania na żywo (wydarzenie na żywo z ustawieniem **Standardowy**) ustawienie wstępne kodowania definiuje sposób kodowania przychodzącego strumienia w wielu różnych szybkościach transmisji bitów lub warstwach. Aby uzyskać informacje, zobacz [Ustawienia wstępne systemu](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Obecnie jedyną dozwoloną wartość wstępnie zdefiniowane dla standardowego typu wydarzenie na żywo jest *Default720p*. Jeśli musisz użyć niestandardowego ustawienia wstępnego kodowania na żywo, skontaktuj się z amshelp@microsoft.com. Należy określić odpowiednią tabelę, rozdzielczości i szybkości transmisji. Sprawdź, czy jest tylko jednej warstwy na 720 pikseli i maksymalnie 6 warstwy.
+> Obecnie jedyną dozwoloną wartością ustawienia wstępnego dla standardowego typu wydarzenia na żywo jest *Default720p*. Jeśli chcesz użyć niestandardowego ustawienia wstępnego kodowania na żywo, wyślij wiadomość na adres amshelp@microsoft.com. Musisz określić odpowiednią tabelę z rozdzielczością i szybkościami transmisji bitów. Sprawdź, czy istnieje tylko jedna warstwa dla rozdzielczości 720p i maksymalnie 6 warstw.
 
 ## <a name="live-event-creation-options"></a>Opcje tworzenia zdarzenia na żywo
 
@@ -79,24 +71,24 @@ Podczas tworzenia zdarzenia na żywo, można określić następujące opcje:
 
 ## <a name="live-event-ingest-urls"></a>Adresy URL pozyskiwania na żywo z wydarzeń
 
-Po utworzeniu zdarzenia na żywo możesz uzyskać pozyskiwania adresów URL, zapewniających do kodera na żywo w środowisku lokalnym. Koder na żywo używa tych adresów URL do wprowadzenia strumienia na żywo. Aby uzyskać więcej informacji, zobacz [zalecane kodery na żywo lokalne](recommended-on-premises-live-encoders.md). 
+Po utworzeniu wydarzenia na żywo można pobrać adresy URL pozyskiwania, które należy udostępnić lokalnemu koderowi na żywo. Koder na żywo używa tych adresów URL do wprowadzenia strumienia na żywo. Aby uzyskać więcej informacji, zobacz [zalecane kodery na żywo lokalne](recommended-on-premises-live-encoders.md). 
 
-Możesz użyć innych niestandardowych adresów URL lub niestandardowych adresów URL. 
+Możesz użyć znaczących lub nieznaczących adresów URL. 
 
 * Adres URL bez znaczących
 
-    Adres URL znaczących inne niż jest to domyślny tryb w wersji 3 usługi AMS. Możesz potencjalnie szybko wydarzenie na żywo, ale adres URL pozyskiwania jest znane tylko po uruchomieniu wydarzenia na żywo. Adres URL ulegnie zmianie, jeśli możesz zatrzymać/uruchomić wydarzenie na żywo. <br/>Bez znaczących jest przydatne w scenariuszach, gdy użytkownik końcowy chce przesyłać strumieniowo przy użyciu aplikacji, w którym aplikacja chce uzyskać wydarzenia na żywo ASAP i konieczności dynamiczny adres URL pozyskiwania nie jest problemem.
+    Nieznaczący adres URL to tryb domyślny w usłudze AMS w wersji 3. Potencjalnie szybko uzyskujesz wydarzenie na żywo, jednak adres URL pozyskiwania jest znany tylko po uruchomieniu wydarzenia na żywo. Adres URL ulegnie zmianie, jeśli zatrzymasz/uruchomisz wydarzenie na żywo. <br/>Tryb nieznaczący jest przydatny w scenariuszach, kiedy użytkownik końcowy chce przesyłać strumieniowo przy użyciu aplikacji, która chce uzyskać wydarzenie na żywo jak najszybciej, i dynamiczny adres URL pozyskiwania nie jest problemem.
 * Znaczącym adresie URL
 
-    Tryb znaczących jest wybierany przez nośnik dużych, zastosowań studyjnych, którzy korzystają z sprzętu emisji koderów i nie chcesz ponownie skonfigurować ich koderów, po uruchomieniu wydarzenie na żywo. Chcą predykcyjne pozyskanie adresu URL, które nie zmieniają się wraz z upływem czasu.
+    Tryb znaczący jest preferowany przez dużych nadawców multimediów, którzy używają sprzętowych koderów emisyjnych i nie chcą ponownie konfigurować swoich koderów, kiedy uruchamiają wydarzenie na żywo. Wolą dysponować predykcyjnym adresem URL pozyskiwania, który nie zmienia się w czasie.
 
 > [!NOTE] 
 > Adres URL pozyskiwania się należy użyć trybu "znaczących" i przekazać własny token dostępu (w celu uniknięcia losowe token w adresie URL).
 
 ### <a name="live-ingest-url-naming-rules"></a>Pozyskiwanie na żywo reguł nazewnictwa adresów URL
 
-*Losowych* poniższe parametry to liczba szesnastkowa 128-bitowego (który składa się z 32 znaki 0 – 9-f).<br/>
-*Token dostępu* poniżej co jest potrzebne do określenia dla stałej adresu URL. Jest również liczba szesnastkowa 128-bitowego.
+*Losowy* ciąg poniżej to 128-bitowa liczba szesnastkowa (która składa się z 32 znaków 0–9 a–f).<br/>
+Poniższy *token dostępu* to element, który należy określić na potrzeby stałego adresu URL. Jest to również 128-bitowa liczba szesnastkowa.
 
 #### <a name="non-vanity-url"></a>Adres URL bez znaczących
 
@@ -133,6 +125,10 @@ Gdy **wydarzenie na żywo** rozpoczyna odbieranie wkład źródła danych, możn
 > [!IMPORTANT]
 > Upewnij się, że wideo będą przepływać do adresu URL w wersji zapoznawczej przed kontynuowaniem.
 
+## <a name="live-event-long-running-operations"></a>Operacji długotrwałych zdarzenia na żywo
+
+Aby uzyskać więcej informacji, zobacz [długotrwałych operacji](entities-overview.md#long-running-operations)
+
 ## <a name="live-outputs"></a>Dane wyjściowe na żywo
 
 Po przesłaniu strumienia do wydarzenie na żywo, można rozpocząć zdarzenie przesyłania strumieniowego, tworząc [zasobów](https://docs.microsoft.com/rest/api/media/assets), [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs), i [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators). Dane wyjściowe na żywo będzie archiwizację strumienia i udostępnić go użytkownikom za pośrednictwem [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints).  
@@ -140,7 +136,7 @@ Po przesłaniu strumienia do wydarzenie na żywo, można rozpocząć zdarzenie p
 > [!NOTE]
 > Dane wyjściowe na żywo są uruchamiane w momencie utworzenia i zatrzymywane podczas usuwania. Usunięcie danych wyjściowych na żywo nie powoduje usunięcia bazowego zasobu ani znajdującej się w nim zawartości. 
 
-Relacja między **wydarzenie na żywo** i jego **na żywo dane wyjściowe** jest podobny do tradycyjnego emisji telewizyjnych, według której kanał (**wydarzenie na żywo**) reprezentuje stałą strumień i nagranie wideo (**na żywo dane wyjściowe**) obejmuje zasięgiem segmencie określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) telewizyjnych — funkcji równoważnej zdarzeń na żywo jest zarządzana za pośrednictwem **ArchiveWindowLength** właściwości. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
+Relacja między **wydarzenie na żywo** i jego **na żywo dane wyjściowe** jest podobny do tradycyjnego emisji telewizyjnych, według której kanał (**wydarzenie na żywo**) reprezentuje stałą strumień i nagranie wideo (**na żywo dane wyjściowe**) obejmuje zasięgiem segmencie określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Program telewizyjny można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) — równoważna funkcja dla zdarzeń na żywo jest zarządzana za pośrednictwem właściwości **ArchiveWindowLength**. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
 
 **Na żywo dane wyjściowe** obiektu przypomina rejestratora taśm, który będzie przechwytywać i zarejestruj transmisji strumieniowej na żywo do elementu zawartości w ramach konta usługi Media Services. Zarejestrowana zawartość zostaną utrwalone do konta magazynu platformy Azure dołączonych do konta, do kontenera, zdefiniowane przez zasób trwały. **Na żywo dane wyjściowe** również pozwala na kontrolowanie niektórych właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ilość strumienia jest przechowywana w nagraniu archiwum (na przykład pojemność funkcji DVR w chmurze) i czy można uruchomić przeglądarki Obserwowanie transmisji strumieniowej na żywo. Archiwum na dysku jest cykliczna archiwum "okno" zawiera tylko ilość zawartości, który jest określony w **archiveWindowLength** właściwość **na żywo dane wyjściowe**. Zawartość, która wykracza poza tym oknem jest automatycznie odrzucane z kontenera magazynu, a nie jest możliwe do odzyskania. Możesz tworzyć wiele **na żywo dane wyjściowe** (maksymalnie trzy maksymalna) na **wydarzenie na żywo** archiwum różne długości i ustawień.  
 

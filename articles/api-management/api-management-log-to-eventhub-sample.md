@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447756"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793645"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorowanie za pomocą usługi Azure API Management, Event Hubs i Moesif interfejsów API
 [Usługi API Management](api-management-key-concepts.md) udostępnia wiele możliwości przetwarzania żądania HTTP wysyłane do interfejsu API protokołu HTTP. Jednak istnienie żądań i odpowiedzi jest przejściowy. Żądanie jest wysyłane i ich przepływu za pomocą usługi API Management do interfejsu API zaplecza. Interfejs API przetwarza żądania i odpowiedzi są przekazywane za pośrednictwem do konsumenta interfejsu API. Usługa API Management zachowuje niektórych ważnych statystyk dotyczących interfejsów API w celu wyświetlenia w nawigacyjnym witryny Azure portal, w ale nie tylko, że szczegóły znikną.
@@ -47,7 +47,7 @@ Centrum zdarzeń akceptuje dane zdarzenia prosty ciąg znaków. Zawartość tego
 
 Dostępna Alternatywna opcja było jednoczesne używanie `application/http` typu nośnika, jak opisano w specyfikacji protokołu HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Ten typ nośnika używa dokładnie tego samego formatu używanego w celu rzeczywistego wysłania wiadomości HTTP przez sieć, ale cały komunikat można umieścić w treści kolejne żądanie HTTP. W naszym przypadku są po prostu użyjemy treść jako naszej wiadomości do wysłania do usługi Event Hubs. Wygodne jest analizatora składni, która znajduje się w [Microsoft ASP.NET Web API 2.2 Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotek, które można przeanalizować tego formatu i przekonwertować go na natywnym `HttpRequestMessage` i `HttpResponseMessage` obiektów.
 
-Aby można było utworzyć ten komunikat, należy korzystać z zalet języka C# na podstawie [wyrażenia zasad](https://msdn.microsoft.com/library/azure/dn910913.aspx) w usłudze Azure API Management. Poniżej przedstawiono zasady, które wysyła komunikat żądania HTTP do usługi Azure Event Hubs.
+Aby można było utworzyć ten komunikat, należy korzystać z zalet języka C# na podstawie [wyrażenia zasad](/azure/api-management/api-management-policy-expressions) w usłudze Azure API Management. Poniżej przedstawiono zasady, które wysyła komunikat żądania HTTP do usługi Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -315,4 +315,4 @@ Usługa API Management udostępnia doskonale nadaje się do przechwytywania ruch
 * Dowiedz się więcej na temat integracji usługi API Management i centrów zdarzeń
   * [Jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management](api-management-howto-log-event-hubs.md)
   * [Odwołanie do jednostki rejestratora](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [informacje o zasadach dziennika do Centrum zdarzeń](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [informacje o zasadach dziennika do Centrum zdarzeń](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

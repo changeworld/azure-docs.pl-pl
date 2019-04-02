@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8348099d778a9ec65e907bb3d21ae995041b9fb6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268298"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802291"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Wyświetlanie dzienników aktywności, aby przeprowadzić inspekcję działań na zasoby
 
@@ -167,7 +167,7 @@ Można pobrać informacji z dzienników aktywności w portalu, programu PowerShe
 
 ## <a name="rest-api"></a>Interfejs API REST
 
-Operacje REST do pracy z dziennika aktywności są częścią [interfejsu API REST usługi Insights](https://msdn.microsoft.com/library/azure/dn931943.aspx). Aby pobrać zdarzenia dziennika aktywności, zobacz [listy zdarzeń zarządzania w ramach subskrypcji](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Operacje REST do pracy z dziennika aktywności są częścią [interfejsu API REST usługi Insights](/rest/api/monitor/). Aby pobrać zdarzenia dziennika aktywności, zobacz [listy zdarzeń zarządzania w ramach subskrypcji](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

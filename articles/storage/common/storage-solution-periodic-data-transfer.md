@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772861"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801985"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Rozwiązania do transferu danych okresowe
  
@@ -52,7 +52,7 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Pozyskiwanie danych ciągłe za pośrednictwem sieci
 
-| Cecha                                       | Brama pola danych (wersja zapoznawcza) | Krawędź pola danych (wersja zapoznawcza)  | Azure Data Factory        |
+| Cecha                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Współczynnik postaci                                   | Urządzenie wirtualne             | Urządzenie fizyczne          | Usługi w witrynie Azure portal, lokalny agent                                                            |
 | Sprzęt                                      | Z funkcji hypervisor            | Dostarczony przez firmę Microsoft    | Nie dotyczy                                                            |

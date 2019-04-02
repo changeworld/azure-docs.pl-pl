@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445996"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793972"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -297,9 +297,7 @@ Począwszy od wersji usługi storage 2013-08-15, usłudze table service obsługu
 Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: Wprowadzenie do formatu JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle Off
-Algorytm Nagle'a firmy jest często stosowana w sieciach TCP/IP w celu zwiększenia wydajności sieci. Jednak nie jest optymalna w każdych okolicznościach (na przykład wysoce interaktywnych środowisk). Dla usługi Azure Storage algorytm Nagle'a firmy ma negatywny wpływ na wydajność żądań do tabel i kolejek usługi i należy ją wyłączyć, jeśli jest to możliwe.  
-
-Aby uzyskać więcej informacji, zobacz nasz wpis w blogu [algorytm Nagle'a firmy jest nie przyjazną kierunku żądań o małym rozmiarze](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), co wyjaśnia dlaczego algorytm firmy Nagle'a źle współdziała z żądaniami, tabela i kolejka i pokazuje, jak ją wyłączyć w swoim kliencie aplikacja.  
+Algorytm Nagle'a firmy jest często stosowana w sieciach TCP/IP w celu zwiększenia wydajności sieci. Jednak nie jest optymalna w każdych okolicznościach (na przykład wysoce interaktywnych środowisk). Dla usługi Azure Storage algorytm Nagle'a firmy ma negatywny wpływ na wydajność żądań do tabel i kolejek usługi i należy ją wyłączyć, jeśli jest to możliwe.
 
 ### <a name="schema"></a>Schemat
 Jak reprezentują i wykonuj zapytania na danych jest największy pojedynczy czynnik, który wpływa na wydajność usługi table service. Gdy każda aplikacja jest inna, w tej sekcji przedstawiono pewne ogólne sprawdzonych rozwiązań, które odnoszą się do:  
@@ -390,7 +388,7 @@ Wyświetl bieżące cele skalowalności w [usługi Azure Storage dotyczące skal
 Zobacz sekcję dotyczącą konfiguracji tabeli, która w tym artykule omówiono algorytm Nagle'a — algorytm Nagle'a jest zazwyczaj negatywnie wpływać na wydajność żądań kolejki i należy je wyłączyć.  
 
 ### <a name="subheading41"></a>Rozmiar komunikatu
-Kolejka wydajność i skalowalność zmniejsza się wraz ze wzrostem rozmiaru wiadomości. W komunikacie, należy umieścić tylko te informacje, które wymaga odbiorcy.  
+Kolejki, wydajność i skalowalność zmniejszenie wzrostem rozmiaru wiadomości. W komunikacie, należy umieścić tylko te informacje, które wymaga odbiorcy.  
 
 ### <a name="subheading42"></a>Pobieranie usługi Batch
 Możesz pobrać maksymalnie 32 komunikaty z kolejki w ramach jednej operacji. Może to zmniejszyć liczbę natężenie ruchu od aplikacji klienckiej, która jest szczególnie przydatne w przypadku środowisk, takich jak urządzenia przenośne dużymi opóźnieniami.  
@@ -401,7 +399,7 @@ Większość aplikacji sondowania pod kątem komunikatów z kolejki, która moż
 Koszt aktualności informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ### <a name="subheading44"></a>UpdateMessage
-Możesz użyć **UpdateMessage** zwiększenie limitu czasu niewidoczności, lub można zaktualizować informacji o stanie wiadomości. Gdy jest to zaawansowane, należy pamiętać, że każdy **UpdateMessage** operacji liczy się do tę docelową skalowalność. Jednak może to być to podejście znacznie bardziej efektywne niż posiadanie przepływu pracy, który przekazuje zadania z jedną kolejką na następny jako krok po kroku przez zadanie jest ukończone. Za pomocą **UpdateMessage** operacji umożliwia aplikacji w taki sposób zapisać stan zadania do wiadomości, a następnie kontynuować pracę, zamiast ponownie usługę kolejkowania komunikatów na kolejny krok zadania za każdym razem, gdy krok jest wykonywany.  
+Możesz użyć **UpdateMessage** zwiększenie limitu czasu niewidoczności, lub można zaktualizować informacji o stanie wiadomości. Gdy jest to zaawansowane, należy pamiętać, że każdy **UpdateMessage** operacji liczy się do tę docelową skalowalność. Jednak może to być to podejście znacznie bardziej efektywne niż posiadanie przepływu pracy, który przekazuje zadania z jedną kolejką na następny jako krok po kroku przez zadanie jest ukończone. Za pomocą **UpdateMessage** operacji umożliwia aplikacji w taki sposób zapisać stan zadania do wiadomości, a następnie kontynuować pracę, zamiast requeuing wiadomości do kolejnego kroku zadania, za każdym razem, gdy krok jest wykonywany.  
 
 Aby uzyskać więcej informacji, zobacz artykuł [jak: Zmień zawartość komunikatu w kolejce](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 

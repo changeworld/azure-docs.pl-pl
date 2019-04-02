@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520925"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793468"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -96,7 +96,7 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Zwraca listę szyfrów obsługiwanych przez klienta          |
 | ciphers_used               | Zwraca ciąg mechanizmów szyfrowania używany do ustanowionego połączenia SSL |
-| client_ip                  | Adres IP klienta, z którego bramy application gateway odebrał żądanie. W przypadku zwrotnego serwera proxy przed bramy aplikacji i klient źródłowy, następnie *client_ip* zwróci adres IP zwrotnego serwera proxy. Zmienna tjsi jest szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek X-Forwarded-dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP bez informacji o porcie. |
+| client_ip                  | Adres IP klienta, z którego bramy application gateway odebrał żądanie. W przypadku zwrotnego serwera proxy przed bramy aplikacji i klient źródłowy, następnie *client_ip* zwróci adres IP zwrotnego serwera proxy. Ta zmienna jest szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek X-Forwarded-dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP bez informacji o porcie. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informacje na temat klienta połączenie TCP. dostępna w systemach, które obsługują opcję gniazda TCP_INFO |
 | client_user                | Korzystając z uwierzytelniania HTTP, nazwa użytkownika podana dla uwierzytelniania |

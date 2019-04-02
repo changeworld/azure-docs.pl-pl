@@ -1,6 +1,6 @@
 ---
-title: Przykład — ISO 27001 planu — mapowanie kontrolek
-description: Mapowanie kontrolek ISO 27001 przykładowy plan.
+title: Mapowanie kontrolek — planu obciążenia ISO 27001 ASE/SQL — przykład
+description: Mapowanie kontrolek próbki planu obciążenia ISO 27001 App Service środowiska/bazą danych SQL Azure Policy i RBAC.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579703"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802715"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapowanie kontrolek Azure schematy ISO 27001 próbki planu
+# <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapowanie kontrolek próbki planu obciążenia ISO 27001 ASE/SQL
 
 Następujący artykuł szczegółowo opisuje sposób mapowania kontroli ISO 27001 przykładowy plan Azure schematy ISO 27001 ASE/SQL obciążenia. Aby uzyskać więcej informacji na temat formantów, zobacz [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 

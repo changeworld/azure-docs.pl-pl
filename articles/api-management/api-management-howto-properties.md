@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082708"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791630"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
 Zasady usługi API Management są zaawansowaną możliwością system, który pozwala witrynie Azure portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można skonstruować przy użyciu wartości tekst dosłowny, wyrażenia zasad i nazwane wartości. 
@@ -34,7 +34,7 @@ Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
-Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad](https://msdn.microsoft.com/library/azure/dn910913.aspx). Na przykład, wartość `ExpressionProperty` to wyrażenie zasad, które zwraca ciąg zawierający bieżącej daty i godziny. Właściwość `ContosoHeaderValue` jest oznaczony jako klucz tajny, dzięki czemu jego wartość nie jest wyświetlana.
+Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład, wartość `ExpressionProperty` to wyrażenie zasad, które zwraca ciąg zawierający bieżącej daty i godziny. Właściwość `ContosoHeaderValue` jest oznaczony jako klucz tajny, dzięki czemu jego wartość nie jest wyświetlana.
 
 | Name (Nazwa) | Wartość | Wpis tajny | Tagi |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad]
 
 Po utworzeniu właściwości można edytować go, klikając właściwości. Jeśli zmienisz nazwę właściwości, wszystkie zasady, które odwołują się tę właściwość są automatycznie aktualizowane do użycia nowej nazwy.
 
-Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytuj właściwości przy użyciu interfejsu API REST](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytuj właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/property?Patch).
 
 ## <a name="to-delete-a-property"></a>Aby usunąć właściwość
 
@@ -66,7 +66,7 @@ Aby usunąć właściwość, kliknij przycisk **Usuń** widoczny obok właściwo
 > 
 > 
 
-Aby uzyskać informacje na temat usuwania właściwości przy użyciu interfejsu API REST, zobacz [Usuń właściwości przy użyciu interfejsu API REST](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+Aby uzyskać informacje na temat usuwania właściwości przy użyciu interfejsu API REST, zobacz [Usuń właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/property?Delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Wyszukiwanie i filtrowanie wartości o nazwie
 
@@ -111,8 +111,8 @@ Podczas gdy wartości właściwości mogą zawierać wyrażenia zasad, wartości
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o pracy z tymi zasadami
   * [Zasady usługi API Management](api-management-howto-policies.md)
-  * [Dokumentacja zasad](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [Wyrażenia zasad](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [Dokumentacja zasad](/azure/api-management/api-management-policies)
+  * [Wyrażenia zasad](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

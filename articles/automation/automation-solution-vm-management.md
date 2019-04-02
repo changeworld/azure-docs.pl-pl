@@ -6,19 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/26/2019
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902250"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762943"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
 Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania uruchamia i zatrzymuje maszynach wirtualnych platformy Azure zgodnie z harmonogramami zdefiniowanych przez użytkownika, dają wgląd za pomocą dzienników usługi Azure Monitor i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona usługi Azure Resource Manager i klasycznych maszyn wirtualnych w przypadku większości scenariuszy.
+
+> [!NOTE]
+> Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu, które rozwiązanie był testowany z moduły platformy Azure, które są importowane do konta usługi Automation, w przypadku wdrażania rozwiązania. Rozwiązania aktualnie nie działa przy użyciu nowszych wersji modułu usługi Azure. Dotyczy to tylko konto usługi Automation, która umożliwia uruchamianie/zatrzymywanie maszyn wirtualnych są uruchamiane podczas szczytu rozwiązania. Nadal można nowsze wersje modułu platformy Azure w innych kont usługi Automation, zgodnie z opisem w [jak aktualizowanie modułów programu Azure PowerShell w usłudze Azure Automation](automation-update-azure-modules.md)
 
 To rozwiązanie udostępnia opcję zdecentralizowane automatyzacji niskie koszty dla użytkowników, którzy chcesz zoptymalizować swoje koszty maszyn wirtualnych. Dzięki temu rozwiązaniu można wykonywać następujące czynności:
 

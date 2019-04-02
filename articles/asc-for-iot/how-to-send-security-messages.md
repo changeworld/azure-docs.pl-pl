@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: be17c5bb4d09e0868af0c6fd9b31f7653b614735
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754792"
+ms.locfileid: "58762773"
 ---
 # <a name="send-security-messages-sdk"></a>Wysyłanie komunikatów zabezpieczeń zestawu SDK
 
@@ -88,7 +88,7 @@ Po ustawieniu jako komunikat zabezpieczeń i wysłane, ten komunikat zostanie pr
 
 ## <a name="send-security-messages"></a>Wysyłanie komunikatów zabezpieczeń 
 
-Wysyłanie komunikatów zabezpieczeń bez użycia usługi ASC agenta IoT za pomocą [usługi Azure IoT C# zestawu SDK urządzenia](https://github.com/Azure/azure-iot-sdk-csharp) lub [zestaw SDK urządzeń Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
+Wysyłanie komunikatów zabezpieczeń bez użycia usługi ASC agenta IoT za pomocą [usługi Azure IoT C# zestawu SDK urządzenia](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) lub [zestaw SDK urządzeń Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
 
 Aby wysłać dane urządzenia z urządzeń do przetwarzania przez usługę ASC dla IoT, użyj jednej z poniższych interfejsów API, aby oznaczyć wiadomości dla prawidłowy routing z usługą ASC potoku przetwarzania IoT. Komunikaty wysyłane w ten sposób zostanie przetworzone i wyświetlane jako wgląd w zabezpieczenia w ramach usługi ASC dla IoT, w ramach zarówno usługi IoT Hub lub Azure Security Center. 
 

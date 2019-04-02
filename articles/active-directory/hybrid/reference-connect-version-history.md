@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540962"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803157"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -39,17 +39,17 @@ Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz
 Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
->Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+>Udostępnia nową wersję programu Azure AD Connect to proces, który wymaga kilku kroku kontroli jakości w celu zapewnienia ich funkcjonalności operacji usługi, a gdy przejdziemy przez ten proces zostanie zaktualizowany numer wersji w nowej wersji, a także stanu wydania aby odzwierciedlały najnowsze stanu.
+Gdy przejdziemy przez ten proces, numer wersji, wersji będą wyświetlane ze znakiem "X" w pozycji numeru wersji pomocniczej, jak "1.3.X.0" — oznacza to, że informacje o wersji, w tym dokumencie są prawidłowe dla wszystkich wersji rozpoczynające się od "1.3.". Jak najszybciej ostatecznych procesu tworzenia wersji numer wydania zostaną zaktualizowane do wersji niedawno wydany i stanu wersji zostanie zaktualizowana w celu "Wydania do pobrania i automatyczne uaktualnianie".
+Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13100"></a>1.3.10.0 
+## <a name="13x0"></a>1.3.X.0 
 
 ### <a name="release-status"></a>Stan zlecenia 
 
-3/25/2019: Nie została jeszcze ogólnie 
+3/25/2019: Oczekujące
  
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia 
-
-
 
 - Dodano obsługę Odśwież domeny 
 - Funkcja foldery publiczne poczty programu Exchange przechodzi GA 

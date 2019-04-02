@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4822de6f6470547b47ecaa3874bed0df4ad20cf6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309592"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804381"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Często zadawane pytania
 
@@ -89,7 +89,7 @@ Wykonaj następujące czynności na serwerze lokalnym, w którym uruchomiony jes
 2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Zaimportuj moduł bezproblemowego logowania jednokrotnego programu PowerShell, za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
 4. Uruchom program PowerShell jako Administrator. W programie PowerShell, należy wywołać `New-AzureADSSOAuthenticationContext`. To polecenie powinien zapewnić okno podręczne o podanie poświadczeń administratora globalnego dzierżawy.
-5. Wywołaj `Get-AzureADSSOStatus`. To polecenie zawiera listę lasów usługi AD (odszukaj pozycję na liście "Domeny"), w którym ta funkcja została włączona.
+5. Wywołaj `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie zawiera listę lasów usługi AD (odszukaj pozycję na liście "Domeny"), w którym ta funkcja została włączona.
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>Krok 2. Zaktualizuj klucz odszyfrowywania protokołu Kerberos w każdym lesie usługi AD, skonfigurowanej go go na
 
@@ -140,7 +140,7 @@ Wyłączenie bezproblemowe logowanie Jednokrotne za pomocą usługi Azure AD Con
 2. Przejdź do folderu `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Zaimportuj moduł bezproblemowego logowania jednokrotnego programu PowerShell, za pomocą tego polecenia: `Import-Module .\AzureADSSO.psd1`.
 4. Uruchom program PowerShell jako Administrator. W programie PowerShell, należy wywołać `New-AzureADSSOAuthenticationContext`. To polecenie powinien zapewnić okno podręczne o podanie poświadczeń administratora globalnego dzierżawy.
-5. Wywołaj `Get-AzureADSSOStatus`. To polecenie zawiera listę lasów usługi AD (odszukaj pozycję na liście "Domeny"), w którym ta funkcja została włączona.
+5. Wywołaj `Get-AzureADSSOStatus | ConvertFrom-Json`. To polecenie zawiera listę lasów usługi AD (odszukaj pozycję na liście "Domeny"), w którym ta funkcja została włączona.
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 3. Ręcznie usuń `AZUREADSSOACCT` konta komputera w każdym lesie usługi AD, który zostanie wyświetlony na liście.
 

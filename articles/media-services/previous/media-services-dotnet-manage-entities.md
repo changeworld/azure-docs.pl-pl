@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165781"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802681"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "58165781"
 > 
 > 
 
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 W tym temacie pokazano, jak zarządzać jednostkami usługi Azure Media Services przy użyciu platformy .NET.
 
->[!NOTE]
-> Począwszy od 1 kwietnia 2017 roku, wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni, będą automatycznie usuwane wraz ze skojarzonymi rekordami zadań podrzędnych nawet wtedy, gdy całkowita liczba rekordów jest mniejsza niż maksymalny limit przydziału. Na przykład 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 31 grudnia 2016 r. zostaną automatycznie usunięte. Jeśli chcesz zarchiwizować informacje zadania lub zadania podrzędnego, można użyć kodu opisanego w tym temacie.
+Począwszy od 1 kwietnia 2017 roku, wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni, będą automatycznie usuwane wraz ze skojarzonymi rekordami zadań podrzędnych nawet wtedy, gdy całkowita liczba rekordów jest mniejsza niż maksymalny limit przydziału. Na przykład 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 31 grudnia 2016 r. zostaną automatycznie usunięte. Jeśli chcesz zarchiwizować informacje zadania lub zadania podrzędnego, można użyć kodu opisanego w tym temacie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

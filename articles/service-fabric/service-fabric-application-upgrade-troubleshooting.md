@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9e4989f61741d317e78a613c8c8fac312d1568c2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666957"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792454"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Rozwiązywanie problemów z uaktualnieniami aplikacji
+
 W tym artykule omówiono niektóre typowe problemy dotyczące uaktualniania aplikacji usługi Azure Service Fabric i ich rozwiązania.
 
 ## <a name="troubleshoot-a-failed-application-upgrade"></a>Rozwiązywanie problemów z uaktualnienia aplikacji nie powiodło się
+
 Jeśli uaktualnienie nie powiedzie się, dane wyjściowe **Get ServiceFabricApplicationUpgrade** polecenia zawiera dodatkowe informacje dotyczące debugowania błędu.  Poniższa lista określa, jak można uzyskać dodatkowe informacje:
 
 1. Określ typ awarii.
@@ -34,6 +36,7 @@ Jeśli uaktualnienie nie powiedzie się, dane wyjściowe **Get ServiceFabricAppl
 Te informacje są dostępne w przypadku, gdy Usługa Service Fabric wykrywa błąd, niezależnie od tego, czy **FailureAction** wycofać lub zawiesić uaktualnienia.
 
 ### <a name="identify-the-failure-type"></a>Identyfikator typu błędu
+
 W danych wyjściowych **Get ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** identyfikuje znacznik czasu (w formacie UTC) wykryto Niepowodzenie uaktualniania przez usługę Service Fabric i  **FailureAction** zostało wyzwolone. **FailureReason** identyfikuje jeden z trzech możliwych przyczyn wysokiego poziomu błędu:
 
 1. UpgradeDomainTimeout — wskazuje, czy określonej domeny uaktualnienia trwało zbyt długo i **UpgradeDomainTimeout** wygasł.
@@ -43,11 +46,14 @@ W danych wyjściowych **Get ServiceFabricApplicationUpgrade**, **FailureTimestam
 Te wpisy tylko wyświetlana w danych wyjściowych podczas uaktualniania nie powiedzie się i rozpoczyna się wycofywanie. Dalsze informacje są wyświetlane w zależności od typu błędu.
 
 ### <a name="investigate-upgrade-timeouts"></a>Badanie uaktualnienia przekroczeń limitu czasu
+
 Limit czasu, które błędy są najczęściej spowodowane przez problemy z dostępnością usługi uaktualniania. Dane wyjściowe poniżej tego akapitu jest typowy dla uaktualnień, gdzie usługa replik lub wystąpień nie można uruchomić w nowej wersji kodu. **UpgradeDomainProgressAtFailure** pola przechwytuje migawkę żadnych oczekujących działań uaktualnienia w chwili awarii.
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                : fabric:/DemoApp
 ApplicationTypeName            : DemoAppType
 TargetApplicationTypeVersion   : v2
@@ -90,11 +96,14 @@ Bieżący **UpgradeState** jest *RollingBackCompleted*, dzięki czemu oryginalne
 W rzadkich przypadkach **UpgradeDomainProgressAtFailure** pole może być puste, jeśli uaktualnienie ogólną upłynie limit czasu tak samo, jak system zakończy wszystkie prace dla bieżąca domena uaktualnienia. W takim przypadku spróbuj zwiększyć **UpgradeTimeout** i **UpgradeDomainTimeout** uaktualnienia wartości parametrów i ponów uaktualnienie.
 
 ### <a name="investigate-health-check-failures"></a>Zbadaj błędy sprawdzania kondycji
+
 Błędy sprawdzania kondycji mogą być wywoływane przez różne problemy, które mogą wystąpić po zakończeniu wszystkich węzłów w domenie uaktualnienia, uaktualniania i przekazywania wszystkich kontroli bezpieczeństwa. Dane wyjściowe poniżej tego akapitu jest typowy dla uaktualnienie niepowodzenia kontroli kondycji nie powiodło się. **UnhealthyEvaluations** pola przechwytuje migawkę kontrole kondycji, które nie powiodły się w czasie uaktualniania zgodnie z określonym [zasad dotyczących kondycji](service-fabric-health-introduction.md).
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                         : fabric:/DemoApp
 ApplicationTypeName                     : DemoAppType
 TargetApplicationTypeVersion            : v4
@@ -149,6 +158,7 @@ Pierwsze badanie błędy sprawdzania kondycji wymaga zrozumienia model kondycji 
 Uaktualnianie została zawieszona z chwilą niepowodzenie, określając **FailureAction** podręcznika podczas uruchamiania uaktualniania. Ten tryb pozwala nam badanie system na żywo w stanie niepowodzenia, przed podjęciem dalszych działań.
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Odzyskiwanie z wstrzymane uaktualnienia
+
 Przy użyciu wycofywania **FailureAction**, nie jest wymagane, ponieważ uaktualnienie automatyczne wycofanie na niepowodzenie. Za pomocą ręcznego **FailureAction**, dostępnych jest kilka opcji odzyskiwania:
 
 1.  wyzwalacz wycofywania
@@ -161,9 +171,11 @@ Przy użyciu wycofywania **FailureAction**, nie jest wymagane, ponieważ uaktual
 
 **ServiceFabricApplicationUpgrade aktualizacji** polecenia można wznowić monitorowanych uaktualnienia z obu bezpieczeństwa i kontrole kondycji wykonywane.
 
+```powershell
+Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 ```
-PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 
+```Output
 UpgradeMode                             : Monitored
 ForceRestart                            :
 UpgradeReplicaSetCheckTimeout           :
@@ -179,14 +191,14 @@ MaxPercentUnhealthyReplicasPerPartition :
 MaxPercentUnhealthyServices             :
 MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
-
-PS D:\temp>
 ```
 
 Uaktualnianie będzie kontynuowane z domeny uaktualnień, w której ostatnio została zawieszona i użycia, Uaktualnij takie same parametry i zasady dotyczące kondycji jako przed. Jeśli to konieczne, wszystkie parametry uaktualniania oraz zasady dotyczące kondycji pokazano w powyższym danych wyjściowych można zmienić w tym samym poleceniu po wznowieniu działania uaktualnienia. W tym przykładzie uaktualnienie zostało wznowione w trybie monitorowania za pomocą parametrów i zasady dotyczące kondycji, bez zmian.
 
 ## <a name="further-troubleshooting"></a>Dodatkowe informacje o rozwiązywaniu
+
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Usługi Service Fabric nie jest następujące zasady dotyczące kondycji określony
+
 Możliwe przyczyny 1:
 
 Usługa Service Fabric wykonuje translację wszystkich wartości procentowych na rzeczywistą liczbę jednostek (na przykład replik, partycji i usługi) dla oceny kondycji i zawsze zaokrągla w górę do całej jednostki. Na przykład jeśli maksymalną *MaxPercentUnhealthyReplicasPerPartition* wynosi 21% wiąże się z pięciu replik, a następnie zezwala na maksymalnie dwie repliki w złej kondycji usługi Service Fabric (czyli`Math.Ceiling (5*0.21)`). Zatem zasady dotyczące kondycji należy ustawić odpowiednio.
@@ -198,12 +210,15 @@ Zasady dotyczące kondycji są określane w przeliczeniu na wartości procentowe
 Jednak podczas uaktualniania, D może stać się dobrej kondycji podczas C staje się nieprawidłowy. Uaktualnienie będzie nadal się powieść, ponieważ tylko 25% usługi jest w złej kondycji. Jednak może to spowodować nieprzewidziane błędy z powodu C jest nieoczekiwanie złej kondycji, zamiast D. W takiej sytuacji D powinny być modelowane jako typu innej usługi, a, B i C. Ponieważ zasady dotyczące kondycji są określone dla typów usług, można zastosować progi różną wartość procentową w złej kondycji z różnymi usługami. 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nie określono zasadę dla uaktualnienie aplikacji, ale nadal nieudanego uaktualnienia dla niektóre błędy przekroczenia limitu czasu, które nigdy nie została określona
+
 Gdy zasady dotyczące kondycji nie są podane na żądanie uaktualnienia są pobierane z *ApplicationManifest.xml* bieżącej wersji aplikacji. Na przykład jeśli aplikacja X wykonujesz uaktualnienie z wersji 1.0 do wersji 2.0, zasady dotyczące kondycji aplikacji określona dla w wersji 1.0 są używane. Jeśli zasady kondycję różnych powinien być używany do uaktualnienia, zasad musi być określona jako część wywołania interfejsu API uaktualniania aplikacji. Zasady, określony jako część wywołania interfejsu API są stosowane tylko wtedy podczas uaktualniania. Po zakończeniu uaktualniania zasady określone w *ApplicationManifest.xml* są używane.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Podano niepoprawny przekroczeń limitu czasu
+
 Może mieć zastanawiasz się informacji na temat efektów niespójnie ustawione limity czasu. Na przykład masz *UpgradeTimeout* to mniej niż *UpgradeDomainTimeout*. Odpowiedzią jest zwracany jest błąd. Błędy są zwracane, jeśli *UpgradeDomainTimeout* jest mniejsza niż suma *HealthCheckWaitDuration* i *HealthCheckRetryTimeout*, lub jeśli  *UpgradeDomainTimeout* jest mniejsza niż suma *HealthCheckWaitDuration* i *HealthCheckStableDuration*.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Moje uaktualnień trwa zbyt długo
+
 Czas dla uaktualnienie ukończyć zależy od tego, kontroli kondycji i określić limity czasu. Kontrole kondycji oraz przekroczeń limitu czasu są zależą od tego, jak długo trwa kopiowanie, wdrażanie i stabilizacja aplikacji. Trwa zbyt agresywne z przekroczeń limitu czasu może oznaczać bardziej uaktualnienia nie powiodło się, tak więc zaleca się konserwatywnie począwszy od dłuższego limitu czasu.
 
 Poniżej przedstawiono szybki odświeżacz interakcję limitów czasu w czasie uaktualniania:
@@ -215,6 +230,7 @@ Niepowodzenia uaktualnienia nie może być szybsza niż *HealthCheckWaitDuration
 Podczas uaktualniania do domeny uaktualnienia jest ograniczona przez *UpgradeDomainTimeout*.  Jeśli *HealthCheckRetryTimeout* i *HealthCheckStableDuration* są różna od zera i kondycję aplikacji utrzymuje przełączając się, a następnie Uaktualnianie końcu przekroczy limit czasu na *UpgradeDomainTimeout*. *UpgradeDomainTimeout* odlicza dół uaktualnienia dla rozpoczyna się w bieżącej domenie uaktualnienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
 
 [Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.

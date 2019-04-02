@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081070"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805061"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -64,6 +64,7 @@ Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następ
 * Środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
+* Francja Środkowa
 * Europa Zachodnia
 * Europa Północna
 * Brazylia Południowa
@@ -71,20 +72,26 @@ Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następ
 * Południowe Zjednoczone Królestwo
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
+* Azja Wschodnia
 * Azja Południowo-Wschodnia
+* Korea Środkowa
 * Indie Środkowe
 * Indie Południowe
 * Japonia Wschodnia 
+* Japonia Zachodnia
 * Administracja USA — Wirginia
 
 Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
 * Kanada Środkowa
 * Środkowo-zachodnie stany USA
+* Zachodnie stany USA 2
 * Wschodnie stany USA
+* Francja Środkowa
 * Europa Zachodnia
 * Południowe Zjednoczone Królestwo
 * Australia Południowo-Wschodnia
 * Azja Południowo-Wschodnia
+* Korea Środkowa
 * Indie Środkowe
 * Japonia Wschodnia
 * Administracja USA — Wirginia

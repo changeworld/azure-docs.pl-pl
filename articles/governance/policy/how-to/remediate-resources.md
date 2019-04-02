@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816571"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802562"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
@@ -139,11 +139,11 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-   ![Wyszukiwanie zasad](../media/remediate-resources/search-policy.png)
+   ![Wyszukaj zasady wszystkie usługi](../media/remediate-resources/search-policy.png)
 
 1. Wybierz **korygowania** po lewej stronie strony usługi Azure Policy.
 
-   ![Wybierz opcję korygowania](../media/remediate-resources/select-remediation.png)
+   ![Na stronie zasad wybierz opcję korygowania](../media/remediate-resources/select-remediation.png)
 
 1. Wszystkie **deployIfNotExists** przypisania zasad za pomocą niezgodnych zasobów znajdują się w **zasad w celu korygowania** kartę i tabelę danych. Kliknij zasady z zasobami, które są niezgodne. **Nowe zadanie korygowania** zostanie otwarta strona.
 
@@ -152,11 +152,11 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
 1. Na **nowe zadanie korygowania** strony, Filtruj zasoby, aby skorygować za pomocą **zakres** wielokropek, aby wybrać zasoby podrzędne, z której jest przypisany zasad (w tym do pojedynczego zasobu obiekty). Ponadto, za pomocą **lokalizacje** rozwinięcie listy w celu dalszego filtrowania zasobów. Tylko zasoby wymienione w tabeli zostaną skorygowane.
 
-   ![Korygowanie — Wybierz zasoby](../media/remediate-resources/select-resources.png)
+   ![Korygowanie — wybrać zasoby, które korygowania](../media/remediate-resources/select-resources.png)
 
 1. Rozpocznij zadanie korygowania po zasobów zostały przefiltrowane przez kliknięcie przycisku **Koryguj**. Zostanie otwarta strona zgodność zasad **zadania korygowania** kartę, aby wyświetlić stan postępu zadań.
 
-   ![Korygowanie — postęp zadania](../media/remediate-resources/task-progress.png)
+   ![Korygowanie - postęp zadań korygowania](../media/remediate-resources/task-progress.png)
 
 1. Kliknij pozycję **zadań korygowania** ze strony zasad zgodności, aby uzyskać szczegółowe informacje o postępie. Filtrowanie używane dla tego zadania jest wyświetlana wraz z listy zasobów są rozwiązane.
 

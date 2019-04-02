@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 99c9caa167b1615705adc29193bc395b0c9e2a66
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342715"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803990"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów
 
@@ -31,15 +31,15 @@ W tym przewodniku Szybki start utworzysz przypisanie zasad i przypiszesz definic
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-   ![Wyszukiwanie zasad](./media/assign-policy-portal/search-policy.png)
+   ![Wyszukaj zasady wszystkie usługi](./media/assign-policy-portal/search-policy.png)
 
 1. Wybierz pozycję **Przypisania** w lewej części strony usługi Azure Policy. Przypisanie to zasady, które zostały przypisane do określonego zakresu.
 
-   ![Wybieranie przypisań](./media/assign-policy-portal/select-assignments.png)
+   ![Wybierz stronę przypisania ze strony Przegląd zasad](./media/assign-policy-portal/select-assignments.png)
 
 1. Wybierz pozycję **Przypisz zasady** w górnej części strony **Zasady — Przypisania**.
 
-   ![Przypisywanie definicji zasad](./media/assign-policy-portal/select-assign-policy.png)
+   ![Przypisywanie definicji zasad ze strony przypisania](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Na stronie **Przypisywanie zasad** wybierz **Zakres**, klikając wielokropek i wybierając grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad.  Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
 
@@ -71,7 +71,7 @@ Teraz możesz zidentyfikować niezgodne zasoby, aby poznać stan zgodności Twoj
 
 Wybierz pozycję **Zgodność** w lewej części strony. Znajdź utworzone przypisanie zasad **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych).
 
-![Zgodność zasad](./media/assign-policy-portal/policy-compliance.png)
+![Szczegóły zgodności na stronie zasad zgodności](./media/assign-policy-portal/policy-compliance.png)
 
 Jeśli istnieją jakiekolwiek zasoby niezgodne z nowym przypisaniem, zostaną one wyświetlone w obszarze **Niezgodne zasoby**.
 
@@ -94,9 +94,9 @@ Aby usunąć utworzone przypisanie, wykonaj następujące kroki:
 
 1. Kliknij prawym przyciskiem myszy przypisanie **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych), a następnie wybierz pozycję **Usuń przypisanie**
 
-   ![Usuwanie przypisania](./media/assign-policy-portal/delete-assignment.png)
+   ![Usuwanie przypisania ze strony zgodności](./media/assign-policy-portal/delete-assignment.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przypisano definicję zasad do zakresu i oceniono raport jego zgodności. Definicja zasady zawiera sprawdzenie, czy wszystkie zasoby w ramach zakresu są zgodne, oraz określenie niezgodnych zasobów.
 

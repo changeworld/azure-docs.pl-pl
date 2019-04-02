@@ -1,19 +1,19 @@
 ---
 title: Praca z kontami usługi Azure Cosmos DB
 description: W tym artykule opisano sposób tworzenia i używania kont usługi Azure Cosmos DB
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da55807d4ca803adf63a1dd2dfe3ce3794cdd509
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839580"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762603"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Praca z kontem usługi Azure Cosmos
 
@@ -21,7 +21,7 @@ Usługa Azure Cosmos DB to w pełni zarządzana platforma as-a-service (PaaS). A
 
 Konto usługi Azure Cosmos jest podstawową jednostką globalnej dystrybucji i wysokiej dostępności. Globalnie dystrybucji danych i przepływności w wielu regionach platformy Azure, możesz Dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos, w dowolnym momencie. Można skonfigurować swoje konto usługi Azure Cosmos, aby mieć jedną lub wiele regionów zapisu. Aby uzyskać więcej informacji, zobacz [jak dodawanie i usuwanie regionów platformy Azure do swojego konta usługi Azure Cosmos](how-to-manage-database-account.md). Można skonfigurować [domyślna spójność](consistency-levels.md) poziomu konta usługi Azure Cosmos. Usługa Azure Cosmos DB zapewnia kompleksowe umowy SLA, obejmujący przepustowość, opóźnienie w 99. percentylu, spójności i wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Bezpieczne zarządzanie dostępem do wszystkich danych w ramach konta usługi Azure Cosmos, można użyć kluczy głównych skojarzonych z Twoim kontem. Aby dodatkowo zabezpieczyć dostęp do danych można skonfigurować punkt końcowy usługi sieci Wirtualnej i zapory adresów IP na Twoim koncie usługi Azure Cosmos. 
+Aby bezpiecznie zarządzać dostępem do wszystkich danych w ramach konta usługi Azure Cosmos, możesz użyć [klucze główne](secure-access-to-data.md) skojarzonych z Twoim kontem. Aby dodatkowo zabezpieczyć dostęp do danych, można skonfigurować [punkt końcowy usługi sieci Wirtualnej](vnet-service-endpoint.md) i [zapory adresów IP](firewall-support.md) na Twoim koncie usługi Azure Cosmos. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elementy na koncie usługi Azure Cosmos
 
@@ -33,7 +33,7 @@ Obecnie można utworzyć maksymalnie 100 kont usługi Azure Cosmos w ramach subs
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz można przystąpić do Dowiedz się, jak zarządzać kontem usługi Azure Cosmos lub zobacz inne pojęcia związane z usługą Azure Cosmos DB:
+Dowiedz się, jak zarządzać kontem usługi Azure Cosmos i innych pojęć:
 
 * [Instrukcje Zarządzaj swoim kontem usługi Azure Cosmos](how-to-manage-database-account.md)
 * [Dystrybucja globalna](distribute-data-globally.md)

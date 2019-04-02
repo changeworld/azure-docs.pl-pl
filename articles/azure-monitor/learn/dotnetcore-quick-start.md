@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 03/29/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eae9dc6447dd8211a3919c52beaea64274fc0ec5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886732"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801083"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -37,17 +37,17 @@ Jeśli masz aplikację sieci web platformy ASP.NET Core, można użyć naszego p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy jest to aplikacja lokalna czy aplikacja w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
-1. Wybierz pozycję **Utwórz zasób** > **Monitorowanie + zarządzanie** > **Application Insights**.
+1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
-   ![Dodawanie zasobu usługi Application Insights](./media/dotnetcore-quick-start/0001-dc.png)
+   ![Dodawanie zasobu usługi Application Insights](./media/dotnetcore-quick-start/1createresourceappinsight.png)
 
     Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
@@ -64,32 +64,36 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Otwórz **projekt** aplikacji internetowej ASP.NET Core w programie Visual Studio, kliknij prawym przyciskiem myszy nazwę aplikacji w **Eksploratorze rozwiązań**, a następnie wybierz pozycję **Dodaj**  >  **Telemetria usługi Application Insights**.
 
-    ![Dodawanie telemetrii usługi Application Insights](./media/dotnetcore-quick-start/0001.png)
+    ![Dodawanie telemetrii usługi Application Insights](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
-2. Kliknij przycisk **Rozpocznij bezpłatnie**, wybierz **istniejący zasób** utworzony w witrynie Azure Portal, a następnie kliknij pozycję **Zarejestruj**.
+2. Kliknij przycisk **wprowadzenie** przycisku
 
-3. Wybierz pozycję **Debuguj**  >  **Uruchom bez debugowania** (Ctrl+F5), aby uruchomić aplikację
+3. Wybierz swoje konto i Subskrypcja > Wybierz **istniejący zasób** utworzone w witrynie Azure portal > kliknij **zarejestrować**.
+
+4. Wybierz pozycję **Debuguj**  >  **Uruchom bez debugowania** (Ctrl+F5), aby uruchomić aplikację
+
+    ![Menu Przegląd usługi Application Insights](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > Dane zaczną pojawiać się w portalu po 3–5 minutach. W przypadku aplikacji testowej o małym natężeniu ruchu należy pamiętać, że większość metryk jest przechwytywana tylko wtedy, gdy istnieją aktywne żądania lub operacje.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
-1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, wybierając pozycję **Projekt**  >  **Application Insights**  >  **Otwórz portal usługi Application Insights** w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
+1. Otwórz usługę Application Insights **Przegląd** strony w witrynie Azure portal, wybierając **Home** i w obszarze najnowszych zasobów wybierz zasób został utworzony wcześniej, aby wyświetlić szczegółowe informacje o aktualnie uruchomionych aplikacja.
 
-   ![Menu Przegląd usługi Application Insights](./media/dotnetcore-quick-start/overview-001.png)
+   ![Menu Przegląd usługi Application Insights](./media/dotnetcore-quick-start/4overview.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/dotnetcore-quick-start/application-map.png)
+   ![Mapa aplikacji](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/dotnetcore-quick-start/006.png).  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3. Kliknij pozycję **analizy aplikacji** ikonę ![ikona mapy aplikacji](./media/dotnetcore-quick-start/006.png) **Wyświetl w obszarze analiza**. Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
-   ![Wykres analizy żądań użytkowników w danym okresie](./media/dotnetcore-quick-start/0007-dc.png)
+   ![Wykres analizy żądań użytkowników w danym okresie](./media/dotnetcore-quick-start/6analytics.png)
 
 4. Wróć do strony **Przegląd** i sprawdź pulpity nawigacyjne kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/dotnetcore-quick-start/overview-graphs.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/dotnetcore-quick-start/7kpidashboards.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
@@ -113,13 +117,12 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    </script>
    ```
 
-5. Kliknij pozycję **Przeglądarka** w nagłówku **Sprawdź**. W tym miejscu są wyświetlane metryki związane z wydajnością stron aplikacji. Możesz kliknąć pozycję **Dodaj nowy wykres**, aby utworzyć dodatkowe widoki niestandardowe, lub wybrać pozycję **Edytuj**, aby zmodyfikować istniejące typy wykresów, wysokość, paletę kolorów, grupowanie i metryki.
+5. Po kliknięciu lewym na **metryki**. Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobu. Możesz kliknąć pozycję **Dodaj nowy wykres**, aby utworzyć dodatkowe widoki niestandardowe, lub wybrać pozycję **Edytuj**, aby zmodyfikować istniejące typy wykresów, wysokość, paletę kolorów, grupowanie i metryki. Na przykład można utworzyć wykres, wyświetlającą czas ładowania strony przeglądarki średnia, wprost wybierając "Czas ładowania strony przeglądarki" z rozwijanego metryki i "Średnia" z agregacji. Aby dowiedzieć się więcej o Eksploratorze metryk platformy Azure, odwiedź stronę [wprowadzenie do Eksploratora metryk usługi Azure](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Wykres metryk serwera](./media/dotnetcore-quick-start/009-Black.png)
+     ![Karta metryki: Wykres czasu ładowania strony przeglądarki średni](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego szybkiego startu.
+Po zakończeniu testowania, możesz usunąć grupę zasobów i wszystkie pokrewne zasoby. Można więc wykonaj poniższe kroki.
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.

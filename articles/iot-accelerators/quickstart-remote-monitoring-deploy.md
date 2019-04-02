@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58184176"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792505"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
 
 W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań do zdalnego monitorowania usługi Azure IoT. W tym rozwiązaniu opartym na chmurze użyjesz strony **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
 
 W początkowym wdrożeniu akcelerator rozwiązań jest skonfigurowany dla firmy o nazwie Contoso. Jako operator w firmie Contoso zarządzasz różnego typu urządzeniami, takimi jak chłodziarki, wdrożonymi w różnych środowiskach fizycznych. Chłodziarka wysyła dane telemetryczne dotyczące temperatury, wilgotności i ciśnienia do akceleratora rozwiązań do zdalnego monitorowania.
+
+Ten przewodnik szybkiego startu wdroży **podstawowe** wersję akceleratora rozwiązań do celów testowych i demonstracyjnych, które minimalizuje koszty. Aby uzyskać więcej informacji na temat różnych wersji, można wdrożyć zobacz [wdrożeń podstawowa i standardowa](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna aktywna subskrypcja platformy Azure.
 
@@ -36,9 +38,7 @@ Kliknij kafelek **Zdalne monitorowanie**. Na stronie **Zdalne monitorowanie** kl
 
 ![Wybieranie pozycji Zdalne monitorowanie](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Na stronie **Tworzenie rozwiązania do monitorowania zdalnego** wybierz wdrożenie **Podstawowe**. Jeśli wdrażasz akcelerator rozwiązań, aby dowiedzieć się, jak działa, lub aby uruchomić pokaz, wybierz opcję **Podstawowe** w celu zminimalizowania kosztów.
-
-Wybierz pozycję **.NET** jako język. Implementacje środowisk Java i .NET mają takie same funkcje.
+Wybierz  **C# Mikrousług** jako **opcje wdrażania**. Java i C# implementacji mają te same funkcje.
 
 W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązań do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm**.
 
@@ -111,7 +111,7 @@ Aby wykonać działanie dotyczące chłodziarki, przewiń w dół do pozycji **I
 
 W panelu **Zadania** wybierz pozycję **Uruchom metodę** a następnie metodę **EmergencyValveRelease**. Dodaj nazwę zadania **ChillerPressureRelease** i kliknij przycisk **Zastosuj**. Te ustawienia pozwalają utworzyć dla Ciebie zadanie, które jest wykonywane natychmiast.
 
-Aby wyświetlić stan zadania, wróć do strony **Konserwacja** i wyświetl listę zadań w widoku **Zadania**. Może być konieczne odczekanie kilku sekund, zanim zostanie uruchomione zadanie zwolnienia zaworu ciśnienia chłodziarki:
+Aby wyświetlić stan zadania, wróć do strony **Konserwacja** i wyświetl listę zadań w widoku **Zadania**. Może być konieczne odczekaj kilka sekund, zanim zobaczysz, że zadanie zostało uruchomione:
 
 [![Stan zadań w widoku Zadania](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 

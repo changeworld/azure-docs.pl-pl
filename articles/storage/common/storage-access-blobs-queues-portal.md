@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3a0d10f373b045058c6df242c4d98f78d04c4490
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444722"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801139"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure Portal umożliwia dostęp do danych obiektów blob i kolejki
 
@@ -47,11 +47,11 @@ Aby uzyskać dostęp do danych obiektów blob i kolejki, w witrynie Azure portal
 
 Wbudowane role, które obsługują dostęp do danych obiektów blob lub kolejki obejmują:
 
-- [Właściciel danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview): Dla POSIX kontroli dostępu dla usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza).
-- [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview): Uprawnienia odczytu/zapisu/usuwania obiektów blob.
-- [Czytnik danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview): Uprawnienia tylko do odczytu dla obiektów blob.
-- [Storage Queue Data Contributor](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Uprawnienia odczytu/zapisu/usuwania kolejek.
-- [Storage Queue Data Reader](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Uprawnienia tylko do odczytu dla kolejek.
+- [Właściciel danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Dla POSIX kontroli dostępu dla usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza).
+- [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Uprawnienia odczytu/zapisu/usuwania obiektów blob.
+- [Czytnik danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Uprawnienia tylko do odczytu dla obiektów blob.
+- [Storage Queue Data Contributor](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Uprawnienia odczytu/zapisu/usuwania kolejek.
+- [Storage Queue Data Reader](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Uprawnienia tylko do odczytu dla kolejek.
     
 Role niestandardowe mogą obsługiwać różne kombinacje te same uprawnienia, które są dostarczane przez wbudowane role. Aby uzyskać więcej informacji na temat tworzenia niestandardowych ról RBAC, zobacz [niestandardowych ról dla zasobów platformy Azure](../../role-based-access-control/custom-roles.md) i [poznać definicje ról na potrzeby zasobów platformy Azure](../../role-based-access-control/role-definitions.md).
 

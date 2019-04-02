@@ -1,6 +1,6 @@
 ---
 title: Tworzenie strategii w portalu
-description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdrażanie artefaktów za pomocą witryny Azure Portal.
+description: Plany usługi Azure umożliwia tworzenie, zdefiniuj i wdrażaj artefakty za pośrednictwem witryny Azure portal.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0b27514dfa34963901fb94be37d8fe330a3c65ce
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004906"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804398"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie usługi Azure Blueprint w portalu
 
@@ -40,7 +40,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    - Ewentualnie kliknij pozycję **Utwórz** na stronie **Wprowadzenie**, aby przejść bezpośrednio do tworzenia strategii.
 
-   ![Tworzenie strategii](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Utwórz plan ze strony definicji planu](./media/create-blueprint-portal/create-blueprint-button.png)
 
 1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste. W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
 
@@ -48,7 +48,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj przypisanie roli w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** w obszarze **Subskrypcja**, aby otworzyć okno „Dodawanie artefaktu” po prawej stronie przeglądarki. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W polu _Rola_ wybierz wartość „Współautor” i pozostaw pole _Dodaj użytkownika, aplikację lub grupę_ z zaznaczonym polem wyboru wskazującym **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
-   ![Artefakt — Przypisanie roli](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Artefaktu planu — przypisanie roli](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Większość _artefaktów_ obsługuje parametry. Parametr z wartością przypisaną podczas tworzenia strategii to **parametr statyczny**. Parametr przypisywany podczas przypisywania strategii to **parametr dynamiczny**. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
@@ -113,11 +113,11 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
    }
    ```
 
-   ![Artefakt — szablon usługi Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Artefaktu planu — szablon usługi Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
 
 1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zauważ, że każdy artefakt ma informację „wypełniono _x_ z _y_ parametrów” w kolumnie _Parametry_. **Parametry dynamiczne** są ustawiane każdorazowo podczas przypisywania strategii.
 
-   ![Ukończona strategia](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Definicji planu ukończone](./media/create-blueprint-portal/completed-blueprint.png)
 
 1. Teraz, kiedy wszystkie planowane artefakty zostały dodane, kliknij pozycję **Zapisz wersję roboczą** w dolnej części strony.
 
@@ -135,11 +135,11 @@ W ramach procedury [Tworzenie strategii](#create-a-blueprint) nie podano opisu s
 
 1. Dodaj przypisanie roli w grupie zasobów: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  bezpośrednio pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W obszarze _Rola_ wybierz rolę „Właściciel” i usuń zaznaczenie dla pola _Dodaj użytkownika, aplikację lub grupę_, a następnie wyszukaj i wybierz użytkownika, aplikację lub grupę do dodania. Ten artefakt używa tego samego **parametru statycznego** ustawionego w każdym przypisaniu tej strategii. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
-   ![Artefakt — Przypisanie roli nr 2](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Artefaktu planu - 2 przypisania roli](./media/create-blueprint-portal/add-role-assignment-2.png)
 
 1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zwróć uwagę, że nowo dodane przypisanie roli wyświetla informację **wypełniono 1 z 1 parametrów**, co oznacza, że jest to **parametr statyczny**.
 
-   ![Ukończona strategia nr 2](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Definicji planu ukończone #2](./media/create-blueprint-portal/completed-blueprint-2.png)
 
 1. Teraz, gdy strategia została zaktualizowana, kliknij pozycję **Zapisz wersję roboczą**.
 
@@ -224,7 +224,7 @@ Teraz, gdy strategia została przypisana do subskrypcji, sprawdź postęp wdraż
 
 1. Na liście strategii kliknij prawym przyciskiem myszy tę wcześniej przypisaną, a następnie wybierz opcję **Wyświetl szczegóły przypisania**.
 
-   ![Wyświetlanie szczegółów przypisania](./media/create-blueprint-portal/view-assignment-details.png)
+   ![Wyświetl szczegóły przydziału z przypisane plany strony](./media/create-blueprint-portal/view-assignment-details.png)
 
 1. Na stronie **Przypisywanie strategii** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone i czy nie było żadnych błędów podczas wdrażania. Jeśli wystąpiły błędy, zobacz kroki [rozwiązywania problemów ze strategią](./troubleshoot/general.md), aby ustalić, co poszło źle.
 
@@ -249,9 +249,9 @@ Jeśli przypisanie strategii nie jest już potrzebne, możesz usunąć je z subs
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](./concepts/lifecycle.md).
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](./concepts/parameters.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](./concepts/sequencing-order.md).
-- Dowiedz się, jak używać [planu blokowania zasobów](./concepts/resource-locking.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](./troubleshoot/general.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md).
