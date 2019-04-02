@@ -1,6 +1,6 @@
 ---
 title: Indeks przykładów strategii
-description: Indeks przykładów dla usługi Azure Blueprints
+description: Indeks przykładów dotyczących zapewniania zgodności i standardowego środowiska do wdrażania za pomocą usługi Azure Blueprints.
 services: blueprints
 author: DCtheGeek
 manager: carmonm

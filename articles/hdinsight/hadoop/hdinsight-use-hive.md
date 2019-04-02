@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/26/2019
+ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446324"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801933"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -37,17 +37,15 @@ HDInsight zawiera kilka typów klastra, są one dostrojone dla konkretnych obci�
 
 Skorzystaj z poniższej tabeli, aby odnaleźć różne sposoby korzystanie z programu Hive z HDInsight:
 
-| **Ta metoda** Jeśli chcesz... | ... **interaktywne** zapytań | ...**partii** przetwarzania | ...zwykle to **systemu operacyjnego klastra** | ...from to **system operacyjny klienta** |
+| **Ta metoda** Jeśli chcesz... | ... **interaktywne** zapytań | ...**partii** przetwarzania | ...from to **system operacyjny klienta** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Narzędzia HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux, Unix, Mac OS X lub Windows |
-| [Narzędzia HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |System Linux lub Windows * |Windows |
-| [Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |Wszelkie (opartych na przeglądarce) |
-| [Klient z usługi beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X lub Windows |
-| [Interfejs API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |System Linux lub Windows * |Linux, Unix, Mac OS X lub Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |System Linux lub Windows * |Windows |
+| [Narzędzia HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X lub Windows |
+| [Narzędzia HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Wszelkie (opartych na przeglądarce) |
+| [Klient z usługi beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X lub Windows |
+| [Interfejs API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X lub Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
-> [!IMPORTANT]
-> \* Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="hiveql-language-reference"></a>Dokumentacja języka HiveQL
 
@@ -119,7 +117,6 @@ Gałąź w HDInsight jest dostarczany wstępnie załadowane z wewnętrznej tabel
 Poniższe instrukcje HiveQL projektu kolumn na `/example/data/sample.log` pliku:
 
 ```hiveql
-set hive.execution.engine=tez;
 DROP TABLE log4jLogs;
 CREATE EXTERNAL TABLE log4jLogs (
     t1 string,
@@ -138,10 +135,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 W poprzednim przykładzie instrukcje HiveQL, wykonaj następujące czynności:
 
-* `set hive.execution.engine=tez;`: Ustawia aparat wykonywania, aby użyć Apache Tez. Za pomocą aplikacji Tez może zapewnić wzrost wydajności zapytań. Aby uzyskać więcej informacji na temat aplikacji Tez, zobacz [Użyj Apache Tez w celu zwiększenia wydajności](#usetez) sekcji.
-
-    > [!NOTE]  
-    > Ta instrukcja jest tylko wymagany w przypadku korzystania z klastra HDInsight z systemem Windows. Tez jest domyślny aparat wykonywania dla HDInsight opartych na systemie Linux.
 
 * `DROP TABLE`: Jeśli tabela już istnieje, należy go usunąć.
 
@@ -163,7 +156,6 @@ W poprzednim przykładzie instrukcje HiveQL, wykonaj następujące czynności:
 Aby utworzyć **wewnętrzny** tabeli zamiast zewnętrznych, za pomocą języka HiveQL następujące:
 
 ```hiveql
-set hive.execution.engine=tez;
 CREATE TABLE IF NOT EXISTS errorLogs (
     t1 string,
     t2 string,
@@ -193,16 +185,7 @@ Te instrukcje, wykonaj następujące czynności:
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest włączona domyślnie w przypadku klastrów HDInsight opartych na systemie Linux.
-
-> [!NOTE]  
-> Tez jest obecnie domyślnie wyłączona w przypadku klastrów HDInsight z systemem Windows i musi być włączona. Aby móc korzystać z aplikacji Tez, następującą wartość musi być ustawiona dla zapytania programu Hive:
->
-> `set hive.execution.engine=tez;`
->
-> Tez jest domyślny aparat klastrów HDInsight opartych na systemie Linux.
-
-[Apache Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
+[Apache Tez](https://tez.apache.org) to struktura, która umożliwia aplikacji intensywnie korzystających z danych, takich jak Hive, umożliwia bardziej wydajne uruchamianie na dużą skalę. Tez jest domyślnie włączona.  [Apache Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
 
 ### <a name="low-latency-analytical-processing-llap"></a>Małe opóźnienia przetwarzania analitycznego (LLAP)
 

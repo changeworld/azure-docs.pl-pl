@@ -1,5 +1,5 @@
 ---
-title: Przykład — strategia obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001 — omówienie
+title: Przykład — strategia dla obciążenia środowiska ASE/bazy danych SQL ISO 27001 — przegląd
 description: Omówienie i architektura przykładu strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001.
 services: blueprints
 author: DCtheGeek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Omówienie przykładu strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001 w usłudze Azure Blueprints
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Przegląd przykładowej strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001
 
 Przykład strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001 udostępnia dodatkową infrastrukturę przykładu strategii [usług udostępnionych ISO 27001](../iso27001-shared/index.md).
 Ta strategia pomaga klientom wdrażać architektury chmurowe, które oferują rozwiązania dla scenariuszy z wymaganiami w zakresie akredytacji lub zgodności.
@@ -23,7 +23,7 @@ Istnieją dwa przykłady strategii ISO 27001: ten przykład i przykład strategi
 
 Przykład strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001 pozwala wdrożyć platformę jako środowisko internetowe oparte na usługach. Środowisko umożliwia hostowanie wielu aplikacji internetowych, internetowych interfejsów API i wystąpień bazy danych SQL zgodnych ze standardami ISO 27001. Ten przykład strategii zależy od przykładu strategii [usług udostępnionych ISO 27001](../iso27001-shared/index.md).
 
-![Przykładowy projekt strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![Przykładowy projekt strategii obciążenia środowiska ASE/bazy danych SQL ISO 27001](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 To środowisko składa się z kilku usług platformy Azure, które udostępniają bezpieczną, w pełni monitorowaną infrastrukturę obciążeń z obsługą przedsiębiorstw zgodną ze standardami ISO 27001. To środowisko zawiera następujące składniki:
 

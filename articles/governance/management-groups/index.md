@@ -18,7 +18,7 @@ Na przykład możesz zastosować do grupy zarządzania zasady ograniczające reg
 
 Można utworzyć elastyczną strukturę grup zarządzania i subskrypcji w celu organizowania zasobów w hierarchię na potrzeby ujednoliconego zarządzania zasadami i dostępem. Na poniższym diagramie przedstawiono przykład tworzenia hierarchii dla nadzoru przy użyciu grup zarządzania.
 
-![drzewo](./media/tree.png)
+![Przykład drzewa hierarchii grupy zarządzania](./media/tree.png)
 
 Utwórz hierarchię w celu zastosowania zasad — na przykład ograniczenia lokalizacji maszyn wirtualnych w grupie „Production” do regionu Zachodnie stany USA. Te zasady będą dziedziczone przez obie subskrypcje umowy EA w ramach tej grupy zarządzania i będą stosowane do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Te zasady zabezpieczeń nie mogą zostać zmienione przez właściciela zasobu lub subskrypcji, co zapewnia ulepszony nadzór.
 
