@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: abfcece2d71e456a39284ddb4cfa106bce31fb53
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 52a18203e5c6973822f52a65364ae2786913d4f0
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670221"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803854"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services
 metadata:
@@ -32,13 +32,8 @@ sections:
     - href: /azure/media-services/latest/
       html: <p>Koduj, twórz pakiety, chroń swoją zawartość, przesyłaj strumieniowo wideo na żądanie, prowadź emisję na żywo i analizuj zawartość za pomocą usługi Media Services w wersji 3.</p>
       image:
-        src: media/index/AMSIcons-media_servicesV3.svg
+        src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
       title: Azure Media Services w wersji 3
-    - href: /azure/media-services/video-indexer/
-      html: <p>Wyodrębniaj szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
-      image:
-        src: media/index/AMSIcons-media_analytics.svg
-      title: Indeksator wideo
     - href: /azure/media-services/previous/
       html: <p>Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. </p>
       image:
@@ -52,5 +47,10 @@ sections:
     - href: http://amp.azure.net/libs/amp/latest/docs/index.html
       html: <p>Odtwarzaj multimedia z usługi Microsoft Azure Media Services w wielu różnych przeglądarkach i na różnych urządzeniach.</p>
       image:
-        src: 
+        src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
       title: Azure Media Player
+    - href: /azure/media-services/video-indexer/
+      html: <p>Wyodrębniaj szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
+      image:
+        src: media/index/AMSIcons-media_analytics.svg
+      title: Indeksator wideo

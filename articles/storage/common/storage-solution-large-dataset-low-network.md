@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6922d49affdde86728b41ef1d3d0c6a2da5c323e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776669"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805095"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Transfer danych w przypadku dużych zestawów danych za pomocą niski lub nie przepustowość sieci
  
@@ -45,7 +45,7 @@ Opcje dostępne w tym scenariuszu są urządzenia Azure Data Box transferu w try
 
 W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 
-|                                     |    Dysku Data Box (wersja zapoznawcza)    |    Data Box                                      |    Duże pole danych (wersja zapoznawcza)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Rozmiar danych                        |    Maksymalnie 35 TB                 |    Do 80 TB na każdym urządzeniu                       |    Maksymalnie 800 TB na każdym urządzeniu               |    Zmienna                            |
 |    Typ danych                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |

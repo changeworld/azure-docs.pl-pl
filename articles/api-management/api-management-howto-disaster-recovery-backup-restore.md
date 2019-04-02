@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7b5df31c3e1d07cc9ac93f73362e853fab728fa9
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728645"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793802"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -40,7 +40,7 @@ Ten przewodnik pokazuje, jak do uwierzytelniania żądań w usłudze Azure Resou
 ## <a name="authenticating-azure-resource-manager-requests"></a>Żądania uwierzytelniania usługi Azure Resource Manager
 
 > [!IMPORTANT]
-> Interfejs API REST i przywracania kopii zapasowych korzysta z usługi Azure Resource Manager i ma inny mechanizm uwierzytelniania niż interfejsów API REST zarządzania jednostek usługi API Management. W tej sekcji opisano sposób uwierzytelniania żądań usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [żądań uwierzytelniania usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn790557.aspx).
+> Interfejs API REST i przywracania kopii zapasowych korzysta z usługi Azure Resource Manager i ma inny mechanizm uwierzytelniania niż interfejsów API REST zarządzania jednostek usługi API Management. W tej sekcji opisano sposób uwierzytelniania żądań usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [żądań uwierzytelniania usługi Azure Resource Manager](/rest/api/index).
 
 Wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource Manager musi zostać uwierzytelniony w usłudze Azure Active Directory wykonując następujące czynności:
 
@@ -216,7 +216,7 @@ Przywracanie jest operacją wymagającą dużo czasu, który może potrwać co n
 Zapoznaj się z poniższymi zasobami, aby różne wskazówki dotyczące procesu/przywracania kopii zapasowej.
 
 * [Replikacja usługi Azure API Management kont](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-* [Automatyzowanie interfejsu API zarządzania tworzenia kopii zapasowych i przywracania z usługą Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+* [Automatyzowanie tworzenia kopii zapasowej i przywracania w usłudze API Management za pomocą usługi Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 * [Azure API Management: Wykonywanie kopii zapasowych i przywracanie konfiguracji](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
   *podejście szczegółowych przy Stuart jest niezgodna z oficjalnego wskazówki dotyczące, ale co ciekawe.*
 

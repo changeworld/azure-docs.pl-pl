@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 05d20a701b448f8986292400fa2844d20f928a70
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b9ecccfef48af8cf3fe7e679277b870256443fab
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261446"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807822"
 ---
 ## <a name="open-azure-cloud-shell"></a>Otwieranie usługi Azure Cloud Shell
 
@@ -17,8 +17,8 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 
 |  |   |
 |-----------------------------------------------|---|
-| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. | ![Usługa Cloud Shell w tym artykule](./media/cloud-shell-try-it/cli-try-it.png) |
-| Otwórz usługę Cloud Shell w swojej przeglądarce. | [![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). |    ![Usługa Cloud Shell w portalu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. | ![Przykład Wypróbuj usługę Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
+| Otwórz usługę Cloud Shell w swojej przeglądarce. | [![Uruchom usługę Azure Cloud Shell, przycisk](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
+| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). |    ![Przycisk Cloud Shell w witrynie Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 |  |  |
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182136"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793779"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
@@ -62,6 +62,8 @@ Ta sekcja zawiera podsumowanie najważniejszych różnic między wdrożenia pods
 
 ### <a name="basic"></a>Podstawowa
 
+Możecie podstawowego wdrożenia z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) lub przy użyciu interfejsu wiersza polecenia.
+
 Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie rozwiązania. Aby zmniejszyć koszty, wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej. To wdrożenie nie używa architektury gotowe do produkcji.
 
 Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
@@ -80,6 +82,8 @@ Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 — 1 jednostka              | Magazyn dla analizy telemetrii rozszerzony dane i umożliwia wiadomości |
 
 ### <a name="standard"></a>Standardowa (Standard)
+
+Możesz tworzyć standardowe wdrożenie tylko przy użyciu interfejsu wiersza polecenia.
 
 Standardowe wdrożenie to wdrożenie gotowe do produkcji, który deweloper można dostosować i rozszerzyć. Użyj opcji standardowego wdrożenia, gdy wszystko będzie gotowe do dostosowywania architektury gotowe do produkcji, stworzona z myślą o skalowania i rozszerzalności. Mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą usługi Azure Kubernetes Service. Koordynatora Kubernetes wdraża, którą można skalować, mikrousługi i zarządza.
 

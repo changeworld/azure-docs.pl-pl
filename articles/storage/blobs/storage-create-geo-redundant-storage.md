@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 703256206a6626222013f4e502545c5c1f8cfab7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c4e81d9be09855cde986bfd21f8f688fa7d1341e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648694"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793721"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage
 
@@ -49,7 +49,7 @@ W celu ukończenia tego samouczka:
 * Zainstaluj język [Python](https://www.python.org/downloads/)
 * Pobierz i zainstaluj [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python)
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Zestaw SDK języka Java w wersji 7](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[W wersji 7 Java SDK](#tab/java-v7)
 
 * Zainstaluj i skonfiguruj narzędzie [Maven](https://maven.apache.org/download.cgi) tak, aby działało z poziomu wiersza polecenia
 * Zainstaluj i skonfiguruj zestaw [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Zestaw SDK języka Java w wersji 7](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[W wersji 7 Java SDK](#tab/java-v7)
 
 [Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-java-ha-ra-grs) i wyodrębnij plik storage-java-ragrs.zip. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację w języku Java.
 
@@ -161,7 +161,7 @@ export storageconnectionstring=\<yourconnectionstring\>
 setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Zestaw SDK języka Java w wersji 7](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[W wersji 7 Java SDK](#tab/java-v7)
 
 W aplikacji należy wprowadzić parametry połączenia konta magazynu. Zaleca się przechowywanie tych parametrów połączenia w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
 
@@ -370,7 +370,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Zestaw SDK języka Java w wersji 7](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[W wersji 7 Java SDK](#tab/java-v7)
 
 W przypadku języka Java nie trzeba definiować procedur obsługi wywołań zwrotnych, jeśli właściwość **LocationMode** elementu **BlobRequestOptions** ustawiono na **PRIMARY\_THEN\_SECONDARY**. Umożliwia to aplikacji automatyczne przełączanie do lokalizacji pomocniczej, jeśli podczas próby pobrania obrazu **HelloWorld.png** nie uda się połączyć z lokalizacją podstawową.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190672"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807823"
 ---
 ## <a name="benefits-of-managed-disks"></a>Korzyści z dyskami zarządzanymi
 
@@ -43,7 +43,7 @@ Możesz użyć [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](
 
 ### <a name="data-disks"></a>Dyski z danymi
 
-Dysk z danymi jest dysk zarządzany, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4095 gibibajtach (GiB). Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
+Dysk z danymi jest dysk zarządzany, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 32 767 gibibajtach (GiB). Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
 
 ### <a name="os-disks"></a>Dyski systemu operacyjnego
 
@@ -53,7 +53,7 @@ Ten dysk ma maksymalną pojemność wynoszącą 2048 GiB.
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
 
-Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego. 
+Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego.
 
 ## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
 
@@ -71,7 +71,7 @@ Dyski zarządzane obsługują także tworzenie zarządzany obraz niestandardowy.
 Aby uzyskać informacje na temat tworzenia obrazów zobacz następujące artykuły:
 
 * [Jak przechwycić obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Jak Uogólnij i Przechwyć maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
+* [Uogólnianie i przechwytywanie maszyny wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Obrazów i migawki
 

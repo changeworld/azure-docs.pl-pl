@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 4e5b63642b5090b50d29d6d3adc49ea683b90faa
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437717"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805180"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
@@ -38,12 +38,12 @@ Usługa Azure Logic Apps liczniki — wszystkie akcje, które są uruchamiane w 
 
 ## <a name="fixed-pricing-model"></a>Naprawiono modelu cen
 
-W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), płacisz za stałą cenę miesięczną wbudowanych akcji i łączników standardowych. ISE umożliwia tworzenie i uruchamiać aplikacje izolowane logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
+[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) umożliwia prywatne, izolowane i dedykowane można tworzyć i uruchamiać aplikacje logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane wewnątrz środowiska ISE płatność stałą cenę miesięczną wbudowanych akcji i łączników standardowych. Twoje ISE obejmuje także jeden łącznik przedsiębiorstwa bezpłatne, w tym tyle połączeń. Użycie dodatkowe łączniki dla przedsiębiorstw jest obciążany cena za użycie przedsiębiorstwa. 
+
+Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później.
 
 > [!NOTE]
 > Trwa środowiska ISE [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać szczegółowe informacje dotyczące cen, zobacz [Azure Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
-
-Jednostkę podstawową ISE ma ustaloną pojemność, jeśli potrzebujesz więcej przepływności, można więc [dodawać kolejne jednostki skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), albo podczas tworzenia lub później. Twoje ISE zawiera jeden łącznik przedsiębiorstwa bezpłatne, w tym tyle połączeń. Użycie dodatkowe łączniki dla przedsiębiorstw jest obciążany cena za użycie przedsiębiorstwa.
 
 <a name="connectors"></a>
 
