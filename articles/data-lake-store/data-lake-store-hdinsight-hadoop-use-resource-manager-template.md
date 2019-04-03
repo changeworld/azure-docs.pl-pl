@@ -3,28 +3,28 @@ title: Szablony platformy Azure umożliwiają tworzenie HDInsight przy użyciu u
 description: Szablony usługi Azure Resource Manager umożliwiają tworzenie i używanie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5694f8eead2b0fd4be75ee858c3c124dd8c53e03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540416"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880138"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
 > * [Korzystanie z portalu](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Przy użyciu programu PowerShell (do magazynu domyślnego)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Przy użyciu programu PowerShell (w przypadku dodatkowego magazynu)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Przy użyciu usługi Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Używanie Menedżera zasobów](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 

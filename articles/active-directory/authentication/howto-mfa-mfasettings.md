@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f622be53297a9d091a62a1239f022bbd4fb71347
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311768"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885999"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -33,8 +33,8 @@ Niektóre z tych ustawień dotyczą serwera usługi MFA i/lub usługi Azure MFA.
 | Cecha | Opis |
 | ------- | ----------- |
 | Blokada konta | Tymczasowo blokady konta w usłudze uwierzytelniania wieloskładnikowego w przypadku zbyt wielu odmowa prób uwierzytelnienia w wierszu. Ta funkcja dotyczy tylko użytkowników wprowadzających numer PIN w celu uwierzytelnienia. (MFA Server) |
-| [Blokowanie/odblokowywanie użytkowników](#block-and-unblock-users) | Umożliwia zablokowanie określonych użytkowników na serwerze usługi MFA (lokalny) z możliwość odbierania żądań usługi Multi-Factor Authentication. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. |
-| [Alert oszustwa](#fraud-alert) | Skonfiguruj ustawienia związane z użytkownikom możliwość i zgłosić fałszywe weryfikacji żądań z serwera MFA. |
+| [Zablokuj/odblokuj użytkowników](#block-and-unblock-users) | Umożliwia zablokowanie określonych użytkowników na serwerze usługi MFA (lokalny) z możliwość odbierania żądań usługi Multi-Factor Authentication. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. |
+| [Alert dotyczący wykrycia oszustwa](#fraud-alert) | Skonfigurowanie ustawień związanych użytkownikom możliwość i zgłosić fałszywe weryfikacji żądań |
 | Powiadomienia | Włącz powiadomienia o zdarzeniach z serwera MFA. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Używane w środowiskach usługi Azure MFA oparte na chmurze do zarządzania tokenów OATH dla użytkowników. |
 | [Ustawienia połączenia telefonicznego](#phone-call-settings) | Skonfiguruj ustawienia związane z połączeń telefonicznych i powitania dla środowiskach chmurowych i lokalnych. |
@@ -47,7 +47,7 @@ Ustawienia w tej sekcji dotyczą tylko serwera usługi MFA.
 | Cecha | Opis |
 | ------- | ----------- |
 | Ustawienia serwera | Pobierz serwer usługi MFA i Generuj poświadczenia aktywacji można zainicjować środowiska |
-| [Jednorazowe obejście](#one-time-bypass) | Umożliwia użytkownikowi uwierzytelnienie bez konieczności przeprowadzania weryfikacji dwuetapowej przez ograniczony czas. |
+| [Jednokrotne obejście](#one-time-bypass) | Umożliwia użytkownikowi uwierzytelnienie bez konieczności przeprowadzania weryfikacji dwuetapowej przez ograniczony czas. |
 | [Reguły buforowania](#caching-rules) |  Buforowanie jest używany głównie do systemów lokalnych, np. sieć VPN wysyłania wielu żądań weryfikacji, gdy pierwsze żądanie jest nadal w toku. Ta funkcja umożliwia kolejne żądania zakończyło się sukcesem automatycznie po użytkownik zakończy się pomyślnie pierwszej weryfikacji w toku. |
 | Stan serwera | Wyświetlany jest stan serwerów usługi MFA lokalnej tym wersji, status, adres IP i ostatniej komunikacji Data i godzina. |
 
@@ -57,7 +57,7 @@ Raportowania dostępnych w tym miejscu jest specyficzne dla serwera usługi MFA 
 
 ## <a name="block-and-unblock-users"></a>Blokować i odblokowywać użytkowników
 
-Użyj _blokować i odblokowywać użytkowników_ funkcję, aby uniemożliwić użytkownikom odbieranie żądań uwierzytelniania. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. Ta funkcja jest specyficzne dla serwera usługi MFA (lokalny).
+Użyj _blokować i odblokowywać użytkowników_ funkcję, aby uniemożliwić użytkownikom odbieranie żądań uwierzytelniania. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania.
 
 ### <a name="block-a-user"></a>Zablokuj użytkownika
 
@@ -77,7 +77,7 @@ Użyj _blokować i odblokowywać użytkowników_ funkcję, aby uniemożliwić u�
 
 ## <a name="fraud-alert"></a>Alert dotyczący wykrycia oszustwa
 
-Konfigurowanie _oszustwa_ funkcji, dzięki czemu użytkownicy mogą raportować fałszywe próbuje uzyskać dostęp do zasobów. Użytkownicy mogą raportować prób oszustwa, przy użyciu aplikacji mobilnej lub przez telefon. Ta funkcja jest specyficzne dla serwera usługi MFA (lokalny).
+Konfigurowanie _oszustwa_ funkcji, dzięki czemu użytkownicy mogą raportować fałszywe próbuje uzyskać dostęp do zasobów. Użytkownicy mogą raportować prób oszustwa, przy użyciu aplikacji mobilnej lub przez telefon.
 
 ### <a name="turn-on-fraud-alerts"></a>Włączanie alertów oszustwa
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994861"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885965"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
 
@@ -40,10 +40,10 @@ Aby uzyskać informacje o specyfikacjach strategii, zobacz [Interfejs API REST u
 
 Jeśli jeszcze nie masz narzędzia do wykonywania wywołań interfejsu API REST, rozważ wykonywanie tych instrukcji w programie PowerShell. Poniżej przedstawiono przykładowy nagłówek umożliwiający uwierzytelnianie za pomocą platformy Azure. Wygeneruj nagłówek uwierzytelniania, czasami nazywany **tokenem elementu nośnego**, i podaj identyfikator URI interfejsu API REST, z którym chcesz nawiązać połączenie, za pomocą dowolnych parametrów lub **treści żądania**:
 
-```powershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -68,8 +68,8 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
-- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+- `{YourMG}` -Zamień na identyfikator grupy zarządzania
+- `{subscriptionId}` -Zastąp identyfikator subskrypcji
 
 > [!NOTE]
 > Schematy również może zostać utworzony na poziomie subskrypcji. Aby zobaczyć przykład, zobacz [Utwórz plan, na przykład subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -334,9 +334,9 @@ Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać j�
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{tenantId}` — zastąp identyfikatorem swojej dzierżawy
-- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
-- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+- `{tenantId}` -Zamień swój identyfikator dzierżawy
+- `{YourMG}` -Zamień na identyfikator grupy zarządzania
+- `{subscriptionId}` -Zastąp identyfikator subskrypcji
 
 1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator aplikacji jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale identyfikator jednostki usługi jest zależna od dzierżawcy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
@@ -438,9 +438,9 @@ Aby usunąć samą strategię, wykonaj następującą operację interfejsu API R
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](./concepts/lifecycle.md).
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](./concepts/parameters.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](./concepts/sequencing-order.md).
-- Dowiedz się, jak używać [planu blokowania zasobów](./concepts/resource-locking.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](./troubleshoot/general.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md).

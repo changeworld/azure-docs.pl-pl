@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: c66a7d7af2a73e26878b92f34e0f42ce0b3ae7f2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fb17afa4bfe8c00c91cc8fb33ab3326452065a9e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437501"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885421"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: Użyj usługi Azure Key Vault z maszyną wirtualną Windows na platformie .NET
 
@@ -108,7 +108,7 @@ Ten wpis tajny zawiera wartość **MySecret**.
 Można utworzyć maszynę wirtualną przy użyciu jednej z następujących metod:
 
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
-* [Program PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
+* [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
 * [Witryna Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
 ## <a name="assign-an-identity-to-the-vm"></a>Przypisywanie tożsamości do maszyny wirtualnej
@@ -148,7 +148,7 @@ Otwórz wiersz polecenia.
 
 Drukowania "Hello World" w konsoli, uruchamiając następujące polecenia:
 
-```
+```batch
 dotnet new console -o helloworldapp
 cd helloworldapp
 dotnet run
@@ -158,7 +158,7 @@ dotnet run
 
 Otwórz *Program.cs* pliku i Dodaj te pakiety:
 
-```
+```csharp
 using System;
 using System.IO;
 using System.Net;
@@ -172,7 +172,7 @@ Edytuj plik klasy, który będzie zawierał kod następujący dwuetapowy proces:
 1. Pobieranie tokenu z lokalnego punktu końcowego tożsamości usługi zarządzanej na maszynie wirtualnej. Również sposób pobiera token z usługi Azure AD.
 1. Przekaż token do magazynu kluczy, a następnie Pobierz klucz tajny. 
 
-```
+```csharp
  class Program
     {
         static void Main(string[] args)
@@ -226,4 +226,4 @@ Gdy nie są już potrzebne, Usuń maszynę wirtualną i magazyn kluczy.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Interfejsy API REST usługi Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)
+> [Interfejs API REST usługi Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)

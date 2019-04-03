@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 13c0346324ae8e3cf3485985a9014f9999230630
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351443"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883077"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak poprawianie klasyfikatora
 
@@ -73,6 +73,15 @@ Aby rozwiązać ten problem, obejmują szereg obrazów, aby upewnić się, równ
 
     ![Obraz przedstawiający próbki stylu](./media/getting-started-improving-your-classifier/style.png)
 
+## <a name="negative-images"></a>Ujemna obrazów
+
+W pewnym momencie w projekcie, użytkownik może być konieczne dodanie _ujemne przykłady_ dzięki bardziej precyzyjne klasyfikatora. Ujemna próbki są tymi, które pasuje do żadnego innymi tagów. Podczas przekazywania tych obrazów stosowanie specjalnych **ujemna** etykiety do nich.
+
+> [!NOTE]
+> Custom Vision Service obsługuje niektóre obsługi automatycznego obrazów ujemna. Na przykład jeśli tworzysz gronowego a banany klasyfikatora, przesyłanie obrazu butów w celu prognozowania klasyfikatora powinien wynik tego obrazu jako 0% gronowego i banany.
+> 
+> Z drugiej strony w przypadku obrazów ujemna odmianą obrazy używane w szkolenia, prawdopodobnie modelu będzie klasyfikowania obrazów ujemna jako klasę etykietami z powodu podobieństwa doskonałe. Na przykład jeśli masz pomarańczowy, a grejpfrutów klasyfikatora, a kanał w obrazie clementine, jego może wynik clementine pomarańczowa ponieważ wiele funkcji clementine przypominają Pomarańcze. W przypadku obrazów ujemna tego rodzaju, zaleca się utworzenie co najmniej jeden dodatkowe znaczniki (takie jak **innych**) i oznaczanie ujemna obrazy z tym znacznikiem podczas szkolenia zezwolić na model, który ma lepsze rozróżnienie tych klas .
+
 ## <a name="use-prediction-images-for-further-training"></a>Korzystanie z obrazów prognoz do dalszego szkoleniowych
 
 Jeśli używasz lub test klasyfikatora obraz po przesłaniu obrazów do endpoint prognoz usługi Custom Vision przechowuje te obrazy. Następnie można użyć w celu ulepszenia modelu.
@@ -102,4 +111,4 @@ Czasami kontroli można zidentyfikować wzorce, które następnie można usuną�
 W tym przewodniku przedstawiono kilka technik, które umożliwiają bardziej precyzyjne obraz niestandardowy model klasyfikacji. Dowiedz się, jak przetestować obrazy programowo, przesyłając je do interfejsu API prognoz.
 
 > [!div class="nextstepaction"]
-> [Użyj interfejsu API prognoz.](use-prediction-api.md)
+> [Używanie interfejsu API prognozowania](use-prediction-api.md)

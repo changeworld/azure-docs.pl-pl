@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438057"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885608"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 
@@ -85,7 +85,7 @@ W powyższym przykładzie jest tyldy (~), ale ta sama zasada ma zastosowanie do 
 
  Upewnij się, że wszystkie znaki niebezpieczne i zarezerwowanych są zakodowane w adresie URL. Na przykład '#' jest znakiem niebezpieczne, ponieważ jest to identyfikator fragement/zakotwiczenia w adresie URL. Znak musi być zakodowany na `%23` Jeśli używany w adresie URL. "&" i "=" to przykłady znaków zastrzeżonych zgodnie z ich ograniczania parametrów i określ wartości w usłudze Azure Search. Zobacz [RFC1738: Jednolity lokalizatorów zasobów (URL)](https://www.ietf.org/rfc/rfc1738.txt) Aby uzyskać więcej informacji.
 
- Niebezpieczne znaki są ``" ` < > # % { } | \ ^ ~ [ ] ``. Zastrzeżone znaki są `; / ? : @ = + &`.
+ Niebezpieczne znaki są ``" ` < > # % { } | \ ^ ~ [ ]``. Zastrzeżone znaki są `; / ? : @ = + &`.
 
 ### <a name="precedence-operators-grouping-and-field-grouping"></a>Pierwszeństwo operatorów: grupowanie i grupowanie pól  
  Nawiasy umożliwia tworzenie podzapytań, łącznie z operatorów w nawiasach instrukcji. Na przykład `motel+(wifi||luxury)` wyszuka dokumenty zawierające termin "motel" oraz "Wi-Fi" lub "luksusowe" (lub obu).

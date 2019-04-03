@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/19/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 031abcb9133663f39375560a06b0770c89eafb27
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259571"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885461"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania dotyczące korzystania z zreplikowane tabele w usłudze Azure SQL Data Warehouse
 Ten artykuł zawiera zalecenia dotyczące projektowania zreplikowanych tabel w schemacie usługi SQL Data Warehouse. Użyj tych zaleceń, aby poprawić wydajność zapytań, redukowania poziomu złożoności procesów przepływu i zapytanie danych.
@@ -95,8 +95,8 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Replikowanej tabeli nie wymaga przenoszenia żadnych danych dla sprzężeń, ponieważ cała tabela jest już obecny w każdym węźle obliczeniowym. Tabele wymiarów przypadku okrężnego rozproszonych sprzężenia kopiuje tabeli wymiarów w całości na każdym węźle obliczeniowym. Aby przenieść dane, planu zapytania zawiera operacji o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych zmniejsza wydajność zapytań i wyeliminowania przy użyciu zreplikowanych tabelach. Aby zapoznać się z procedurą planu zapytania, należy użyć [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) widoku wykazu systemu. 
 
-Na przykład, w następujące zapytanie względem schematu AdventureWorks ` FactInternetSales` tabela jest dystrybuowane wyznaczania wartości skrótu. `DimDate` i `DimSalesTerritory` tabele to zgodna z mniejszych tabele wymiarów. Ta kwerenda zwraca łączną wartość sprzedaży w Ameryce Północnej, dla roku obrachunkowego 2004:
- 
+Na przykład, w następujące zapytanie względem schematu AdventureWorks `FactInternetSales` tabela jest dystrybuowane wyznaczania wartości skrótu. `DimDate` i `DimSalesTerritory` tabele to zgodna z mniejszych tabele wymiarów. Ta kwerenda zwraca łączną wartość sprzedaży w Ameryce Północnej, dla roku obrachunkowego 2004:
+
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s

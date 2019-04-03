@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487238"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863184"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -44,7 +44,13 @@ Główne objawem tego problemu jest 30018 zdarzenia w dzienniku zdarzeń adminis
 
 ## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Usługa serwera Proxy może odbierać wywołania z agentów dla kontrolera domeny w domenie, ale nie może komunikować się z platformą Azure
 
-Upewnij się, komputera serwera proxy ma połączenia z punktami końcowymi na liście [wymagania w zakresie wdrażania](howto-password-ban-bad-on-premises-deploy.md).
+1. Upewnij się, komputera serwera proxy ma połączenia z punktami końcowymi na liście [wymagania w zakresie wdrażania](howto-password-ban-bad-on-premises-deploy.md).
+
+1. Upewnij się, że lasu i wszystkie serwera proxy, które serwery są zarejestrowane dla tej samej dzierżawie usługi Azure.
+
+   Można to sprawdzić, uruchamiając `Get-AzureADPasswordProtectionProxy` i `Get-AzureADPasswordProtectionDCAgent` poleceń cmdlet programu PowerShell, następnie porównać `AzureTenant` właściwości każdego zwrócony element. Do poprawnego działania te musi być taka sama w lesie, we wszystkich agentów kontrolera domeny i serwery proxy.
+
+   Jeśli warunek niezgodność rejestracji dzierżawy platformy Azure istnieje, można to naprawić, uruchamiając `Register-AzureADPasswordProtectionProxy` i/lub `Register-AzureADPasswordProtectionForest` poleceń cmdlet programu PowerShell, zgodnie z potrzebami, upewniając się użyć poświadczeń z tą samą dzierżawą usługi Azure dla wszystkich rejestracji.
 
 ## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Agent kontrolera domeny nie może zaszyfrować lub odszyfrować pliki zasad haseł i innych stanu
 

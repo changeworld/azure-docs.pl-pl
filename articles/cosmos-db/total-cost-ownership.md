@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: df0dd3f54fb645590ff6e5b30a7ccc42f5ddd2eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036277"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879475"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Łączny koszt Ownership(TCO) przy użyciu usługi Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Usługa Azure Cosmos DB zaprojektowano ład szczegółowe wielodostępu i zasob�
 
 Rozwiązania bazy danych typu NoSQL, takich jak Apache Cassandra, MongoDB, HBase, aparaty zostały zaprojektowane dla środowiska lokalnego. Gdy są one równoważne do szablonu usługi Resource Manager z bazą danych dzierżawy do monitorowania pomocy technicznej i zarządzania klastrami elastycznie oferowana jako usługa zarządzana. Architektury OSS NoSQL wymagają znaczne koszty operacyjne i wiedzę, może być trudne i kosztowna można znaleźć. Z drugiej strony usługi Azure Cosmos DB to usługa w pełni zarządzana usługa w chmurze, co pozwala deweloperom skupić się na innowacjach firmy, a nie na zarządzanie i obsługa infrastruktury bazy danych. 
 
-W przeciwieństwie do bazy danych natywnych dla chmury usługi Azure Cosmos DB baz danych OSS NoSQL nie zostały zaprojektowany i zbudowany z nadzór nad zasobami lub szczegółowych wielodostępu jako podstawowe zasady architektury. Aparatów baz danych typu NoSQL, takie jak Cassandra i bazy danych MongoDB, że podstawowe założenie, że wszystkie zasoby maszyny wirtualnej, na którym są uruchomione są dostępne do użytku. Wiele z tych baz danych nie może działać, jeśli ilość zasobów spadnie poniżej określonego progu. Na przykład mała maszyna wirtualna wystąpienia i ich dostępnych przy użyciu zalecane przez dostawcę konfiguracji, sugerując zazwyczaj na dużą skalę maszyny wirtualne z wyższe koszty. Dlatego nie jest możliwe NoSQL OSS lub innych aparatu w lokalnej bazie danych hosta i udostępnić go przy użyciu modelu ładowania na podstawie użycia takich jak żądania na drugi lub użyte magazynu.
+W przeciwieństwie do bazy danych natywnych dla chmury usługi Azure Cosmos DB baz danych OSS NoSQL nie zostały zaprojektowany i zbudowany z nadzór nad zasobami lub szczegółowych wielodostępu jako podstawowe zasady architektury. Aparatów baz danych typu NoSQL, takie jak Cassandra i bazy danych MongoDB, że podstawowe założenie, że wszystkie zasoby maszyny wirtualnej, na którym są uruchomione są dostępne do użytku. Wiele z tych baz danych nie może działać, jeśli ilość zasobów spadnie poniżej określonego progu. Na przykład mała maszyna wirtualna wystąpienia i ich dostępnych przy użyciu zalecane przez dostawcę konfiguracji, sugerując zazwyczaj na dużą skalę maszyny wirtualne z wyższe koszty. Tak nie jest możliwe do hostowania NoSQL typu lub wszelkich innych lokalnych aparat bazy danych i udostępnić go przy użyciu modelu ładowania na podstawie użycia takich jak żądania na drugi lub użyte magazynu.
 
 ## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Całkowity koszt posiadania w usłudze Azure Cosmos DB 
 

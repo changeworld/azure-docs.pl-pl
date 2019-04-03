@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 066c8bc3edfc2bf36b4d96f787d6db6f16daec9b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c817f017c7394943864e7f20a130c90d3f8485d9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856828"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885982"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -58,7 +58,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 | <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -139,7 +139,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 | <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -229,7 +229,7 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego usługi za pomo
 | <*body-content*> | Obiekt JSON | Wszelkie zawartość komunikatu do wysłania jako ładunek do zarządzanego interfejsu API | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -310,7 +310,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 | <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -405,7 +405,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 | <*endpoint-subscribe-URL*> | String | Adres URL punktu końcowego, gdzie wysyłać żądania subskrypcji | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -499,7 +499,7 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 | <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -608,7 +608,7 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 | <*property-type*> | String | Typ właściwości | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -784,7 +784,7 @@ Akcje są te elementy wysokiego poziomu, chociaż niektóre są opcjonalne:
 | <*previous-trigger-or-action-status*> | Obiekt JSON | Nazwa i Wynikowy stan wyzwalacza lub akcji, który należy uruchomić natychmiast, zanim będzie można uruchomić tego bieżącej akcji | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------|
@@ -819,17 +819,17 @@ Poniżej przedstawiono niektóre typy powszechnie używane akcji:
 
 | Typ akcji | Opis | 
 |-------------|-------------| 
-| [**Compose**](#compose-action) | Tworzy pojedynczy dane wyjściowe na podstawie danych wejściowych, które mogą mieć różnych typów. | 
-| [**— Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
+| [**Redagowanie**](#compose-action) | Tworzy pojedynczy dane wyjściowe na podstawie danych wejściowych, które mogą mieć różnych typów. | 
+| [**Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
 | [**HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
 | [**Join**](#join-action) | Tworzy ciąg ze wszystkich elementów w tablicy, a następnie dzieli te elementy ze znakiem określonego ogranicznika. | 
-| [**Parse JSON**](#parse-json-action) | Tworzy zawartości tokeny przyjazny dla użytkownika przy użyciu właściwości w formacie JSON. Następnie można odwoływać się te właściwości, umieszczając tokenów w aplikacji logiki. | 
-| [**Query**](#query-action) | Tworzy tablicę z elementami w innej tablicy na podstawie warunku lub filtru. | 
-| [**Response**](#response-action) | Tworzy odpowiedź żądania lub połączenia przychodzącego. | 
-| [**Select**](#select-action) | Tworzy tablicę z obiektami JSON poprzez przekształcenie elementów z innej tablicy oparte na określonej mapy. | 
-| [**Table**](#table-action) | Tworzy tabelę CSV lub HTML z tablicy. | 
-| [**Zakończenie**](#terminate-action) | Zatrzymuje aktywnie uruchomiony przepływ pracy. | 
-| [**Wait**](#wait-action) | Wstrzymuje przepływ pracy dla określonego czasu trwania lub do określonej daty i godziny. | 
+| [**Przeanalizuj dane JSON**](#parse-json-action) | Tworzy zawartości tokeny przyjazny dla użytkownika przy użyciu właściwości w formacie JSON. Następnie można odwoływać się te właściwości, umieszczając tokenów w aplikacji logiki. | 
+| [**Zapytanie**](#query-action) | Tworzy tablicę z elementami w innej tablicy na podstawie warunku lub filtru. | 
+| [**Odpowiedź**](#response-action) | Tworzy odpowiedź żądania lub połączenia przychodzącego. | 
+| [**Wybierz pozycję**](#select-action) | Tworzy tablicę z obiektami JSON poprzez przekształcenie elementów z innej tablicy oparte na określonej mapy. | 
+| [**Tabela**](#table-action) | Tworzy tabelę CSV lub HTML z tablicy. | 
+| [**Przerwij**](#terminate-action) | Zatrzymuje aktywnie uruchomiony przepływ pracy. | 
+| [**Oczekiwanie**](#wait-action) | Wstrzymuje przepływ pracy dla określonego czasu trwania lub do określonej daty i godziny. | 
 | [**Przepływ pracy**](#workflow-action) | Zagnieżdżony przepływ pracy wewnątrz innego przepływu pracy. | 
 ||| 
 
@@ -851,11 +851,11 @@ Te akcje pomóc Ci kontrolować wykonywanie przepływu pracy i zawierać inne ak
 
 | Typ akcji | Opis | 
 |-------------|-------------| 
-| [**ForEach**](#foreach-action) | Uruchom te same akcje w pętli dla każdego elementu w tablicy. | 
-| [**If**](#if-action) | Wykonywania działań na ich podstawie określonego warunku jest wartość PRAWDA lub FAŁSZ. | 
+| [**Instrukcja ForEach**](#foreach-action) | Uruchom te same akcje w pętli dla każdego elementu w tablicy. | 
+| [**Jeśli**](#if-action) | Wykonywania działań na ich podstawie określonego warunku jest wartość PRAWDA lub FAŁSZ. | 
 | [**Zakres**](#scope-action) | Uruchamianie akcji w oparciu o stan grupy z zestawu działań. | 
-| [**Switch**](#switch-action) | Uruchom akcje zorganizowane w przypadkach, gdy wartości z wyrażeń, obiekty lub tokenów są zgodne z wartościami, które określono w każdym przypadku. | 
-| [**Until**](#until-action) | Uruchom działania w pętli, aż określony warunek ma wartość true. | 
+| [**Przełącznik**](#switch-action) | Uruchom akcje zorganizowane w przypadkach, gdy wartości z wyrażeń, obiekty lub tokenów są zgodne z wartościami, które określono w każdym przypadku. | 
+| [**Do**](#until-action) | Uruchom działania w pętli, aż określony warunek ma wartość true. | 
 |||  
 
 ## <a name="actions---detailed-reference"></a>Akcje — szczegółową dokumentację
@@ -896,7 +896,7 @@ Ta akcja spowoduje wysłanie żądania HTTP do [zarządzanych przez firmę Micro
 | <*Operacja interfejsu API*> | String | Operacja wywołania interfejsu API | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -975,7 +975,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 | <*api-subscribe-URL*> | String | Identyfikator URI do użycia dla subskrypcji do interfejsu API | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -1015,7 +1015,9 @@ Wynik akcji można następnie użyć w innych działań.
 
 *Przykład 1*
 
+<!-- markdownlint-disable MD038 -->
 Ta definicja akcji scala `abcdefg ` za pomocą spacji i wartość `1234`:
+<!-- markdownlint-enable MD038 -->
 
 ```json
 "Compose": {
@@ -1075,7 +1077,7 @@ Ta akcja wymaga wcześniej utworzony [funkcji platformy Azure](../azure-function
 | <*method-type*> | String | Metoda HTTP do użycia podczas wywoływania funkcji: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" <p>Jeśli nie zostanie określony, wartość domyślna to metoda "POST". | 
 ||||
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------|  
@@ -1146,7 +1148,7 @@ Ta akcja spowoduje wysłanie żądania do określonego punktu końcowego i spraw
 | <*HTTP-or-HTTPS-endpoint-URL*> | String | HTTP lub HTTPS punkt końcowy do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -1383,7 +1385,7 @@ Ta akcja powoduje utworzenie ładunek odpowiedzi na żądania HTTP.
 | <*response-status-code*> | Liczba całkowita | Kod stanu HTTP są wysyłane do żądania przychodzącego. Domyślny kod to "200 OK", ale kod może być prawidłowym stanem kodu, który rozpoczyna się za pomocą 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -1557,7 +1559,7 @@ Ta akcja tworzy tabelę CSV lub HTML z tablicy. Dla tablic z obiektami JSON, ta 
 | <*array*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła w tabeli <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, ta akcja stworzy pustej tabeli. | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 Aby określić lub dostosowywanie nagłówków kolumn i wartości, użyj `columns` tablicy. Gdy `header-value` pary mają taką samą nazwę nagłówka, ich wartości są wyświetlane w tej samej kolumnie pod nazwą tego nagłówka. W przeciwnym razie każdy nagłówek unikatowy definiuje unikatową kolumnę.
 
@@ -1669,7 +1671,7 @@ Ta akcja zatrzymuje działanie dla wystąpienia przepływu pracy aplikacji logik
 | <*status*> | String | Stan aby powrócić do uruchomienia: "Nie", "Anulowane" lub "Powodzenie" |
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 Właściwości dla obiektu "runStatus" mają zastosowanie tylko wtedy, gdy dla właściwości "runStatus" ustawiono stan "Niepowodzenie".
 
@@ -1816,7 +1818,7 @@ Aparat usługi Logic Apps sprawdza, czy dostęp do wyzwalacza, który chcesz wyw
 | <*nested-logic-app-name*> | String | Nazwa aplikacji logiki, który chcesz wybrać |
 ||||
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------|  
@@ -1891,7 +1893,7 @@ Ta akcja pętli wykonuje iterację przez tablicę i wykonuje akcje dla każdego 
 | <*for-each-expression*> | String | Wyrażenie, które odwołuje się do każdego elementu w określonej tablicy | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -2096,7 +2098,7 @@ Tej akcji, nazywana również *switch, instrukcja*, umożliwia organizowanie inn
 | <*matching-value*> | Różna | Wartość do porównania z wynikiem oceniono | 
 |||| 
 
-*Opcjonalne*
+*Optional (Opcjonalność)*
 
 | Wartość | Type | Opis | 
 |-------|------|-------------| 
@@ -2446,7 +2448,7 @@ Ustaw `runtimeConfiguration.concurrency.runs` właściwości `1`:
 }
 ```
 
-*- lub -*
+*— lub —*
 
 Ustaw `operationOptions` właściwości `SingleInstance`:
 
@@ -2498,7 +2500,7 @@ Ustaw `runtimeConfiguration.concurrency.repetitions` właściwości `1`:
 }
 ```
 
-*- lub -*
+*— lub —*
 
 Ustaw `operationOptions` właściwości `Sequential`:
 
@@ -2563,12 +2565,12 @@ Punktów końcowych HTTP obsługuje różne rodzaje uwierzytelniania. Możesz sk
 
 * [HTTP](../connectors/connectors-native-http.md)
 * [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [Element webhook protokołu HTTP](../connectors/connectors-native-webhook.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
 Poniżej przedstawiono typy uwierzytelniania, które można skonfigurować:
 
 * [Uwierzytelnianie podstawowe](#basic-authentication)
-* [Uwierzytelnianie certyfikatu klienta](#client-certificate-authentication)
+* [Uwierzytelnianie certyfikatów klientów](#client-certificate-authentication)
 * [Uwierzytelnianie OAuth usługi Active Directory (Azure AD) systemu Azure](#azure-active-directory-oauth-authentication)
 
 > [!IMPORTANT]
@@ -2583,8 +2585,8 @@ Aby uzyskać [uwierzytelnianie podstawowe](../active-directory-b2c/active-direct
 | Właściwość | Wymagany | Value | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Yes | "Podstawowa" | Typ uwierzytelniania do użycia, która jest tutaj "Basic" | 
-| **Nazwa użytkownika** | Yes | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
-| **Hasło** | Yes | "@parameters(passwordParam)" | Hasło do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
+| **nazwa użytkownika** | Yes | "@parameters('userNameParam')" | Nazwa użytkownika do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
+| **hasło** | Yes | "@parameters(passwordParam)" | Hasło do uwierzytelniania dostępu do punktu końcowego usługi docelowej |
 ||||| 
 
 W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `Basic` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczanie parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
@@ -2618,7 +2620,7 @@ Aby uzyskać [uwierzytelniania opartego na certyfikatach](../active-directory/au
 |----------|----------|-------|-------------|
 | **type** | Yes | "ClientCertificate" | Typ uwierzytelniania do użycia dla certyfikatów klienta protokołu Secure Sockets Layer (SSL). Certyfikaty z podpisem własnym są obsługiwane, nie są obsługiwane certyfikaty z podpisem własnym dla protokołu SSL. |
 | **pfx** | Yes | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **Hasło** | Yes | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
+| **hasło** | Yes | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
 ||||| 
 
 W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `ClientCertificate` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczanie parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
@@ -2652,13 +2654,13 @@ Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authen
 |----------|----------|-------|-------------|
 | **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |
-| **dzierżawy** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **audience** | Yes | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
+| **dzierżawa** | Yes | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **Grupy odbiorców** | Yes | <*resource-to-authorize*> | Zasób, którego chcesz użyć do autoryzacji, na przykład `https://management.core.windows.net/` |
 | **clientId** | Yes | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądanie autoryzacji |
 | **credentialType** | Yes | "Certyfikat" lub "Wpis tajny" | Typ poświadczeń klienta używa dla żądania autoryzacji. Tej właściwości i wartości nie są wyświetlane w podstawowej definicji, ale określa wymagane parametry typu poświadczeń. |
 | **pfx** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(pfxParam) | Zawartość algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **Hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
-| **Klucz tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | "@parameters(secretParam)" | Klucz tajny klienta do żądania autoryzacji |
+| **hasło** | Tak — tylko typ poświadczeń "Certificate" | "@parameters(passwordParam)" | Hasło do uzyskiwania dostępu do pliku PFX |
+| **wpis tajny** | Tak, tylko w przypadku "Wpis tajny" typ poświadczeń | "@parameters(secretParam)" | Klucz tajny klienta do żądania autoryzacji |
 |||||
 
 W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `ActiveDirectoryOAuth` uwierzytelniania i "Wpis tajny" typ poświadczeń. Aby uzyskać więcej informacji o używaniu i zabezpieczanie parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).

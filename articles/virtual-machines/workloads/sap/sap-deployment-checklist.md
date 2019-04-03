@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802800"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878727"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -59,8 +59,8 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
         1.  Definiowanie zależności od RTO i RPO wysoką dostępność i odzyskiwanie po awarii architektury odzyskiwania musi wyglądać
         2.  Wysokiej dostępności w ramach tej samej strefie Sprawdź, co żądany DBMS ma do zaoferowania na platformie Azure. Większość DBMS oferują synchroniczne metody synchronicznej rezerwy, które firma Microsoft zaleca dla systemów produkcyjnych. Również Sprawdź SAP związane z dokumentacji dotyczącej różnych baz danych, rozpoczynając od [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) i powiązanych dokumentów
             1.  Przy użyciu usługę klastra pracy awaryjnej Windows za pomocą konfiguracji dysku udostępnionego dla warstwy DBMS, jak na przykład opisane dla programu SQL Server [tutaj](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) jest **nie** obsługiwane. Zamiast tego rozwiązania, takie jak:
-                1.  [AlwaysOn programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Środowiska Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [Replikacji systemu HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Do odzyskiwania po awarii w różnych regionach platformy Azure Sprawdź, jakie możliwości są oferowane przez różnych dostawców DBMS. Większość z nich obsługuje replikację asynchroniczną ani wysyłania dziennika
         4.  Dla warstwy aplikacji SAP należy określić, czy należy uruchomić usługi biznesowe regresji systemy testowe, które są najlepiej replik wdrożenia produkcyjne, w tym samym regionie platformy Azure lub w Twoim regionie odzyskiwania po awarii. W drugim przypadku możesz wybrać docelową tego systemu regresji firm jako cel odzyskiwania po awarii dla w środowisku produkcyjnym

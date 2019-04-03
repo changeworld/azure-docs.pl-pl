@@ -1,21 +1,21 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage
+title: Usługa Advanced Threat Protection dla usługi Azure Storage
 description: Konfigurowanie usługi Azure Storage zaawansowanej ochrony przed zagrożeniami w celu wykrycia anomalii w aktywności konta i powiadomimy użytkownika o potencjalnie szkodliwych prób dostępu do Twojego konta.
 services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/02/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133233"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850723"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage
+# <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
 Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage zapewnia dodatkową warstwę analizy zabezpieczeń, który wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać kont magazynu. Ta warstwa ochrony umożliwia reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania systemami monitorowania bezpieczeństwa. 
 
@@ -51,6 +51,24 @@ Po zasubskrybowaniu do warstwy standardowa w usłudze Azure Security Center zaaw
 
 Szablon usługi Azure Resource Manager służy do wdrażania konta usługi Azure Storage za pomocą zaawansowanej ochrony przed zagrożeniami jest włączona.
 Aby uzyskać więcej informacji, zobacz [konta magazynu za pomocą zaawansowanej ochrony przed zagrożeniami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+
+### <a name="using-azure-policy"></a>Za pomocą usługi Azure Policy
+
+Włącz zaawansowaną ochronę przed zagrożeniami na kontach magazynu w ramach określonej subskrypcji lub grupy zasobów za pomocą usługi Azure Policy.
+
+1. Biedzie Azure **zasady — definicje** strony.
+
+1. Wyszukaj **wdrażania zaawansowanej ochrony przed zagrożeniami dla kont magazynu** zasad.
+
+     ![Wyszukaj zasady](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. Wybierz Azure subskrypcji lub grupy zasobów.
+
+    ![Wybierz subskrypcję lub grupę](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. Przypisz zasady.
+
+    ![Strona definicji zasad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>Korzystanie z interfejsu API REST
 Użyj poleceń interfejsu API Rest do utworzenia, aktualizacji lub pobieranie ustawienia zaawansowanej ochrony przed zagrożeniami dla konta określonego magazynu.

@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 518a9009ad7a3cca13679f9a410fd36dd874261f
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 57d7fecfa9bf2b27a54387072b080ed95f4e87e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630767"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881226"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
 
@@ -60,7 +60,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
    | Ustawienie | Wartość | Opis | 
    |---------|-------|-------------| 
-   | **Nazwa** | attachmentstorageacct | Nazwa konta magazynu | 
+   | **Name (Nazwa)** | attachmentstorageacct | Nazwa konta magazynu | 
    | **Model wdrażania** | Resource Manager | [Model wdrażania](../azure-resource-manager/resource-manager-deployment-model.md) na potrzeby zarządzania wdrażaniem zasobów | 
    | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **Lokalizacja** | Zachodnie stany USA | Region, w którym będą przechowywane informacje na temat konta magazynu | 
@@ -144,8 +144,8 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej | 
    | **Plan hostingu** | Plan zużycia | To ustawienie określa sposób przydzielania i skalowania zasobów, takich jak moc obliczeniowa, na potrzeby uruchamiania aplikacji funkcji. Zobacz [Hosting plan comparison (Porównanie planów hostingu)](../azure-functions/functions-scale.md). | 
    | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej | 
-   | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz platformy .NET dla C# i F# funkcji. |
-   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. | 
+   | **Stosu środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz platformy .NET dla C# i F# funkcji. |
+   | **Magazyn** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. | 
    | **Application Insights** | Wyłączone | Włącza monitorowanie aplikacji za pomocą usługi [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. | 
    |||| 
 
@@ -237,7 +237,7 @@ Po sprawdzeniu, czy funkcja działa, utwórz aplikację logiki. Chociaż ten sam
 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
-   | **Nazwa** | LA-ProcessAttachment | Nazwa aplikacji logiki | 
+   | **Name (Nazwa)** | LA-ProcessAttachment | Nazwa aplikacji logiki | 
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej | 
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
    | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej | 
@@ -272,7 +272,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
       | Ustawienie | Wartość | Opis | 
       | ------- | ----- | ----------- | 
       | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do sprawdzania | 
-      | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
+      | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
       | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami | 
       |  |  |  | 
   
@@ -281,7 +281,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
       | Ustawienie | Wartość | Opis | 
       | ------- | ----- | ----------- | 
       | **Zawiera załącznik** | Yes | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** Wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. | 
-      | **Uwzględnij załączniki** | Yes | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. | 
+      | **Dołącz załączniki** | Yes | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. | 
       | **Filtr tematu** | ```Business Analyst 2 #423501``` | Tekst do wyszukania w temacie wiadomości e-mail | 
       |  |  |  | 
 
@@ -395,13 +395,14 @@ Ten krok powoduje dodanie wcześniej utworzonej funkcji platformy Azure do aplik
 
    ![Wybieranie funkcji platformy Azure](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
-5. Zmień nazwę kształtu funkcji na ten opis: ```Call RemoveHTMLFunction to clean email body```
+5. Zmień nazwę kształtu funkcji na następujący opis:
+```Call RemoveHTMLFunction to clean email body```
 
 6. Teraz określ dane wejściowe funkcji do przetworzenia. 
 
    1. W obszarze **Treść żądania** wprowadź poniższy tekst ze spacją końcową: 
    
-      ```{ "emailBody": ``` 
+      ```{ "emailBody":``` 
 
       Gdy będziesz pracować z tymi danymi wyjściowymi w następnych krokach, do momentu wprowadzenia tych danych w poprawnym formacie JSON będzie wyświetlany komunikat o błędzie nieprawidłowego kodu JSON.
       Podczas wcześniejszego testowania tej funkcji dane wejściowe określone dla funkcji używały formatu JavaScript Object Notation (JSON). 
@@ -409,7 +410,7 @@ Ten krok powoduje dodanie wcześniej utworzonej funkcji platformy Azure do aplik
 
       Ponadto, gdy kursor znajduje się wewnątrz pola **Treść żądania**, pojawi się dynamiczna lista zawartości, z której będzie można wybrać dostępne wartości właściwości z poprzednich akcji. 
       
-   2. Z listy zawartości dynamicznej w obszarze **Po nadejściu nowej wiadomości e-mail** wybierz właściwość **Treść**. Pamiętaj, aby po tej właściwości dodać zamykający nawias klamrowy: ```}```
+   2. Z listy zawartości dynamicznej w obszarze **Po nadejściu nowej wiadomości e-mail** wybierz właściwość **Treść**. Po tej właściwości Pamiętaj, aby dodać zamykający nawias klamrowy: ```}```
 
       ![Określanie treści żądania do przekazania do funkcji](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
 
@@ -439,7 +440,8 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
    | **Konto magazynu** | attachmentstorageacct | Nazwa konta magazynu, który został utworzony wcześniej do zapisywania załączników | 
    |||| 
 
-4. Zmień nazwę akcji **Utwórz obiekt blob** na następujący opis: ```Create blob for email body```
+4. Zmień nazwę **Utwórz obiekt blob** akcji na następujący opis:
+```Create blob for email body```
 
 5. W akcji **Utwórz obiekt blob** podaj te informacje, a następnie wybierz te pola, aby utworzyć obiekt blob, jak pokazano i opisano w tym miejscu:
 
@@ -505,7 +507,8 @@ Aby przetwarzać wszystkie załączniki do wiadomości e-mail, dodaj pętlę **F
 
    ![Dodawanie pętli „for each”](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-2. Zmień nazwę pętli na następujący opis: ```For each email attachment```
+2. Zmień nazwę pętli na następujący opis:
+```For each email attachment```
 
 3. Teraz określ dane dla pętli do przetworzenia. Kliknij wewnątrz pola **Wybierz dane wyjściowe z poprzednich kroków**, aby otworzyć dynamiczną listę zawartości, a następnie wybierz pozycję **Załączniki**. 
 
@@ -528,7 +531,8 @@ Następnie dodaj akcję, która zapisuje każdy załącznik jako obiekt blob w k
 
    ![Dodawanie akcji umożliwiającej utworzenie obiektu blob](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
-3. Zmień nazwę akcji **Utwórz obiekt blob 2** na następujący opis: ```Create blob for each email attachment```
+3. Zmień nazwę **Utwórz obiekt blob 2** akcji na następujący opis:
+```Create blob for each email attachment```
 
 4. W akcji **Utwórz obiekt blob dla każdego załącznika wiadomości e-mail** podaj te informacje, a następnie wybierz właściwości poszczególnych obiektów blob do utworzenia, tak jak pokazano i opisano tutaj:
 
@@ -593,7 +597,8 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
 
 3. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps utworzyła połączenie z tym kontem e-mail.
 
-4. Zmień nazwę akcji **Wyślij wiadomość e-mail** na następujący opis: ```Send email for review```
+4. Zmień nazwę **Wyślij wiadomość e-mail** akcji na następujący opis:
+```Send email for review```
 
 5. Podaj informacje dotyczące tej akcji i wybierz pola, które chcesz uwzględnić w wiadomości e-mail, tak jak pokazano i opisano. Aby dodać puste wiersze w polu edycji, naciśnij klawisze Shift + Enter.  
 
@@ -603,8 +608,8 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
 
    | Ustawienie | Wartość | Uwagi | 
    | ------- | ----- | ----- | 
-   | **Treść** | ```Please review new applicant:``` <p>```Applicant name: ``` **Od** <p>```Application file location: ``` **Ścieżka** <p>```Application email content: ``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** | 
-   | **Temat**  | ```ASAP - Review applicant for position: ``` **Temat** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. | 
+   | **Treść** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Ścieżka** <p>```Application email content:``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** | 
+   | **Podmiot**  | ```ASAP - Review applicant for position:``` **Podmiot** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. | 
    | **Do** | <*recipient-email-address*> | Do celów testowych możesz użyć własnego adresu e-mail. | 
    |||| 
 

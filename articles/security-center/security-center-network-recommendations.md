@@ -3,7 +3,7 @@ title: Ochrona zasobów sieciowych w usłudze Azure Security Center | Dokumentac
 description: Adresy tego dokumentu, zalecenia w usłudze Azure Security Center, które ułatwiają ochronę zasobów sieci platformy Azure i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118007"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863155"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
 Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.
@@ -30,10 +30,9 @@ W tym artykule opisano zaleceń, które są stosowane do zasobów platformy Azur
 > **Sieć** strona pozwala głębszej analizy usługi kondycji zasobów platformy Azure z punktu widzenia sieci. Mapa sieci oraz adaptacyjne kontrolki sieci są dostępne w usłudze Azure Security Center w warstwie standardowa tylko. [Jeśli używasz warstwy bezpłatnej, możesz kliknąć przycisk, aby **Wyświetl sieć starszych** otrzymasz zaleceń dotyczących zasobów sieci](#legacy-networking).
 >
 
-**Sieć** strona zawiera omówienie sekcji głębokiego możesz od razu, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
+**Sieć** bloku zawiera przegląd sekcje głębokiego możesz od razu, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
 
 - Mapa sieci (tylko w warstwie standardowej usługi Azure Security Center)
-- Sieciowa grupa zabezpieczeń wzmacniania ochrony (już wkrótce. Zarejestruj się w celu korzystania z wersji zapoznawczej)
 - Zalecenia dotyczące zabezpieczeń sieci.
 - Starsza wersja **sieć** bloku (poprzedniego bloku sieci) 
  
@@ -50,6 +49,7 @@ Aby otworzyć program Tablica sieci:
 Wyświetla domyślny widok mapy topologii:
 - Subskrypcje, które wybrano na platformie Azure. Mapa obsługuje wiele subskrypcji.
 - Maszyny wirtualne, podsieci i sieci wirtualne typu zasobu usługi Resource Manager (klasycznym Azure zasoby nie są obsługiwane)
+- Wirtualne sieci równorzędne
 - Tylko zasoby, które mają [sieci zalecenia](security-center-recommendations.md) o wysokiej i średniej ważności  
 - Zasoby dostępnego z Internetu
 - Mapa jest zoptymalizowany dla subskrypcji, które wybrano na platformie Azure. W przypadku zmodyfikowania wybór mapy jest działaniem i ponownie zoptymalizowane pod kątem na podstawie nowych ustawień.  
@@ -98,7 +98,7 @@ Na przykład użytkownik może wykryć komunikację dwóch maszyn, możesz nie w
 
 Aby przejść do zasobu:
 1. Po wybraniu określonego zasobu na mapie, w okienku po prawej stronie zostanie otwarty oraz udostępnia ogólne informacje o zasobie, rozwiązania zabezpieczeń połączone, jeśli istnieją i zalecenia, które są odpowiednie do zasobu. Jest to ten sam typ zachowanie dla każdego typu zasobu, którą wybierzesz. 
-2. Kliknij przycisk **ruchu** Aby wyświetlić listę możliwych ruchu wychodzącego i przychodzącego zasobu — jest to kompleksowe, który może komunikować się z zasobem i który może komunikować się z, a także za pośrednictwem protokołów i portów.
+2. Kliknij przycisk **ruchu** Aby wyświetlić listę możliwych ruchu wychodzącego i przychodzącego zasobu — jest to kompleksowe, który może komunikować się z zasobem i który może komunikować się z, a także za pośrednictwem protokołów i portów. Na przykład po wybraniu maszyny Wirtualnej, wszystkie maszyny wirtualne mogą komunikować są wyświetlane, a po wybraniu podsieci, są wyświetlane wszystkie podsieci, które może komunikować się z.
 
 **Te dane są na podstawie analizy sieciowych grup zabezpieczeń, a także zaawansowane algorytmy, które analizują wiele reguł, aby zrozumieć ich rozjazdów i interakcje uczenia maszynowego.** 
 

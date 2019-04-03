@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842949"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876330"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: Tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
@@ -45,10 +45,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować swoją subskrypcję w wersji zapoznawczej. Jeśli tego nie zrobisz, usługa Virtual WAN nie będzie dostępna w portalu. Aby zarejestrować urządzenie, Wyślij wiadomość e-mail do **azurevirtualwan\@microsoft.com** przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail.
 
-**Zagadnienia dotyczące wersji zapoznawczej:**
+**Uwagi dotyczące wersji zapoznawczej:**
 
-* Dostępność w danym regionie: Środkowo-zachodnie stany USA
-* Obwód usługi ExpressRoute musi być włączony w kraju, w którym obsługiwany jest [zasięg globalny usługi ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported)
+Obwód usługi ExpressRoute musi być włączona w kraju, który obsługuje [zasięgu globalnym ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
 
 ## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
 
@@ -70,16 +69,16 @@ Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwa
 
 ## <a name="hub"></a>4. Wyszukiwanie obwodu i kojarzenie go z koncentratorem
 
-1. Wybierz swoją wirtualną sieć WAN, a następnie w obszarze **Architektura wirtualnej sieci WAN** wybierz pozycję **Obwody usługi ExpressRoute**
-1. Jeśli obwód usługi ExpressRoute znajduje się w tej samej subskrypcji, co Twoja wirtualna sieć WAN, kliknij pozycję **Wybierz obwód usługi ExpressRoute** ze swoich subskrypcji 
+1. Wybierz swoje vWAN i w obszarze **architektura sieci WAN wirtualnego**, wybierz opcję **obwodów usługi ExpressRoute**.
+1. Jeśli obwód usługi ExpressRoute znajduje się w tej samej subskrypcji, co Twoja vWAN, kliknij przycisk **obwodu ExpressRoute wybierz** z subskrypcji. 
 1. Z menu rozwijanego wybierz obwód usługi ExpressRoute, który chcesz skojarzyć z koncentratorem.
 1. Jeśli obwód usługi ExpressRoute nie znajduje się w tej samej subskrypcji lub udostępniony został [klucz autoryzacji i identyfikator komunikacji równorzędnej](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md), wybierz pozycję **Znajdź obwód realizujący klucz autoryzacji**
 1. Wprowadź następujące wartości:
 1. **Klucz autoryzacji** — wygenerowany przez właściciela obwodu zgodnie z powyższym opisem
 1. **Identyfikator URI obwodu równorzędnego** — identyfikator URI obwodu udostępniony przez właściciela obwodu będący jego unikatowym identyfikatorem
 1. **Waga routingu** - [Waga routingu](../expressroute/expressroute-optimize-routing.md) umożliwia preferowanie określonych ścieżek, gdy wiele obwodów z różnych lokalizacji komunikacji równorzędnej jest połączonych z tym samym koncentratorem
-1. Kliknij pozycję **Wyszukaj obwód**, a następnie wybierz obwód, jeśli został odnaleziony
-1. Wybierz co najmniej jeden koncentrator z listy rozwijanej, a następnie kliknij pozycję **Zapisz**
+1. Kliknij przycisk **znaleźć obwodów** i wybierz obwód, jeśli znaleziono.
+1. Wybierz co najmniej 1 koncentratory z listy rozwijanej, a następnie kliknij przycisk **Zapisz**.
 
 ## <a name="vnet"></a>5. Łączenie sieci wirtualnej z koncentratorem
 

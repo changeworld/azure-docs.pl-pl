@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437105"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847536"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -346,7 +346,10 @@ Urządzenie ma problemów podczas uruchamiania moduły zdefiniowane we wdrożeni
 Domyślnie usługi IoT Edge uruchamia moduły w sieci do izolowanego kontenera. Urządzenie może mieć problemy z rozpoznawaniem nazw DNS w ramach tej sieci prywatnej.
 
 ### <a name="resolution"></a>Rozwiązanie
-Określenie serwera DNS dla danego środowiska, w ustawieniach aparatu kontenera. Utwórz plik o nazwie `daemon.json` Określanie serwera DNS, należy użyć. Na przykład:
+
+**Opcja 1: Ustawienia serwera DNS w kontenerze aparatu**
+
+Określenie serwera DNS dla danego środowiska, w ustawieniach aparatu kontenera, które będą stosowane do wszystkich modułów kontenera uruchomione przez aparat. Utwórz plik o nazwie `daemon.json` Określanie serwera DNS, należy użyć. Na przykład:
 
 ```
 {
@@ -371,6 +374,22 @@ Jeśli lokalizacja zawiera już `daemon.json` Dodaj **dns** klawisz, aby go, a n
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (Admin Powershell) | `Restart-Service iotedge-moby -Force` |
+
+**Opcja 2: Ustaw serwer DNS we wdrożeniu usługi IoT Edge dla modułu**
+
+Można ustawić serwera DNS dla każdego modułu *CreateOptions, można żądań* we wdrożeniu usługi IoT Edge. Na przykład:
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+Pamiętaj ustawić dla *edgeAgent* i *edgeHub* także modułów. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać. 

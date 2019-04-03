@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015016"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879050"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -187,9 +187,9 @@ Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, 
 
    sudo apt-get dist-upgrade -y
 
-   sudo apt-get install build-essential ubuntu-desktop -y
-   ```
-3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NVv2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NVv2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
 
    ```
    blacklist nouveau
@@ -244,7 +244,7 @@ Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, 
    sudo yum install dkms
    ```
 
-2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NV2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
+2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NV2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d` o nazwie `nouveau.conf` z następującą zawartością:
 
    ```
    blacklist nouveau

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996147"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878744"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transferowanie danych za pomocą Biblioteka przenoszenia danych magazynu platformy Microsoft Azure
 
@@ -49,7 +49,7 @@ Ten dokument przedstawia sposób tworzenia aplikacji konsolowej .NET Core, któr
 3. Otwórz ten katalog, w programie Visual Studio Code. Ten krok można szybko wykonać z poziomu wiersza polecenia, wpisując `code .` w Windows.
 4. Zainstaluj [rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) w Visual Studio Code Marketplace. Uruchom ponownie program Visual Studio Code.
 5. W tym momencie powinno być widoczne dwa monity. Jeden jest przeznaczony dla dodawania "wymagane zasoby do tworzenia i debugowania." Kliknij przycisk "tak". Innego wiersza jest przywracania nierozwiązane zależności. Kliknij przycisk "Przywróć".
-6. Modyfikowanie `launch.json` w obszarze `.vscode` służące terminalu zewnętrznym jako konsoli. To ustawienie, powinny być odczytywane jako ` "console": "externalTerminal"`
+6. Modyfikowanie `launch.json` w obszarze `.vscode` służące terminalu zewnętrznym jako konsoli. To ustawienie, powinny być odczytywane jako `"console": "externalTerminal"`
 7. Visual Studio Code umożliwia debugowanie aplikacji platformy .NET Core. Trafienia `F5` do uruchamiania aplikacji i sprawdź, czy działa z konfiguracją. Powinien zostać wyświetlony "Hello World!" drukowane w konsoli.
 
 ## <a name="add-data-movement-library-to-your-project"></a>Dodaj Biblioteka przenoszenia danych do projektu

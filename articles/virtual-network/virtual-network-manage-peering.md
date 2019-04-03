@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: 28783b61a9361d97c151294140819249c9a100c2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e0a5674d434d997d04bfd42ca0e0863c11046d69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875221"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882907"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -45,17 +45,16 @@ Zanim utworzysz komunikację równorzędną, zapoznaj się z wymagań i ogranicz
 
 1. W polu wyszukiwania w górnej części witryny Azure portal wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz utworzyć komunikację równorzędną.
-3. Z listy sieci wirtualnych wybierz sieć wirtualną, o których chcesz utworzyć komunikację równorzędną.
-4. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
-5. Wybierz pozycję **+ Dodaj**. 
-6. <a name="add-peering"></a>Wprowadź lub wybierz wartości dla następujących ustawień:
+3. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
+4. Wybierz pozycję **+ Dodaj**. 
+5. <a name="add-peering"></a>Wprowadź lub wybierz wartości dla następujących ustawień:
     - **Nazwa:** Nazwa dla komunikacji równorzędnej musi być unikatowa w obrębie sieci wirtualnej.
     - **Model wdrożenia sieci wirtualnej:** Wybierz model wdrażania, których wdrożono sieć wirtualną, którą chcesz nawiązać komunikację równorzędną za pośrednictwem.
     - **Wiem, identyfikator zasobu:** Jeśli masz dostęp do odczytu do sieci wirtualnej, którą chcesz nawiązać komunikację równorzędną, zaznaczaj tego pola wyboru. Jeśli nie masz dostęp do odczytu do sieci wirtualnej lub subskrypcji, którą chcesz nawiązać komunikację równorzędną, zaznacz to pole wyboru. Wprowadź pełen identyfikator zasobu sieci wirtualnej, o którym chcesz nawiązać komunikację równorzędną w **identyfikator zasobu** pole, które wystąpiły, gdy zaznaczono pole. Zasobów, możesz wprowadzić identyfikator musi być znajdującą się w tej samej sieci wirtualnej lub [obsługiwane różne](#requirements-and-constraints) Azure [region](https://azure.microsoft.com/regions) jako tej sieci wirtualnej. Pełny identyfikator zasobu jest podobny do /subscriptions/<Id>/providers/Microsoft.Network/virtualNetworks/ /resourceGroups/ < — nazwa grupy zasobów-> < nazwa wirtualnej sieci >. Możesz uzyskać identyfikator zasobu dla sieci wirtualnej, wyświetlając właściwości dla sieci wirtualnej. Aby dowiedzieć się, jak wyświetlić właściwości dla sieci wirtualnej, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md#view-virtual-networks-and-settings). Jeśli subskrypcja jest skojarzona z innej dzierżawy usługi Azure Active Directory niż subskrypcji z tworzenia komunikacji równorzędnej z siecią wirtualną, najpierw dodać użytkownika z każdej dzierżawy jako [użytkownik-Gość](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) w przeciwny dzierżawy.
     - **Subskrypcja:** Wybierz [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) chcesz nawiązać komunikację równorzędną sieci wirtualnej. Co najmniej jedną subskrypcją są wyświetlane w zależności od tego, jak wiele subskrypcji Twoje konto ma uprawnienia do odczytu. Jeśli zaznaczono **identyfikator zasobu** pole wyboru, to ustawienie nie jest dostępna.
     - **Sieć wirtualna:** Wybierz sieć wirtualną, którą chcesz nawiązać komunikację równorzędną. Możesz wybrać sieci wirtualnej utworzonej za pomocą dowolnego modelu wdrażania na platformie Azure. Jeśli chcesz wybrać sieć wirtualną w innym regionie, musisz wybrać sieć wirtualną w [obsługiwany region](#cross-region). Musi mieć dostęp do odczytu do sieci wirtualnej, aby była widoczna na liście. Jeśli sieć wirtualna jest na liście, ale wygaszone, może to być, ponieważ przestrzeń adresowa sieci wirtualnej nakłada się na przestrzeń adresową dla tej sieci wirtualnej. Jeśli przestrzenie adresowe sieci wirtualnych nakładają się na siebie, nie mogą one być skomunikowane równorzędnie. Jeśli zaznaczono **identyfikator zasobu** pole wyboru, to ustawienie nie jest dostępna.
     - **Zezwalaj na dostęp do sieci wirtualnej:** Wybierz **włączone** (ustawienie domyślne), jeśli chcesz umożliwić komunikację między dwiema sieciami wirtualnymi. Włączenie komunikacji między sieciami wirtualnymi umożliwia zasobami połączonymi do dowolnej sieci wirtualnej do komunikowania się ze sobą przy użyciu tego samego przepustowości i opóźnienia, tak, jakby były one połączone z tej samej sieci wirtualnej. Cała komunikacja między zasobami w dwóch sieci wirtualnych jest za pośrednictwem sieci prywatnej platformy Azure. **VirtualNetwork** tag usługi dla sieciowych grup zabezpieczeń obejmuje sieć wirtualną i wirtualnej sieci równorzędnej. Aby dowiedzieć się więcej na temat tagów usługi grupy zabezpieczeń sieci, zobacz [omówienie sieciowych grup zabezpieczeń](security-overview.md#service-tags). Wybierz **wyłączone** Jeśli nie chcesz, aby przepływ ruchu do wirtualnej sieci równorzędnej. Możesz wybrać **wyłączone** Jeśli została równorzędnie sieci wirtualnej z inną siecią wirtualną, ale czasami chcesz wyłączyć przepływ ruchu między dwiema sieciami wirtualnymi. Może się okazać że Włączanie/wyłączanie jest bardziej wygodne niż usunięcie i ponowne utworzenie komunikacji równorzędnej. Gdy to ustawienie jest wyłączone, ruch nie przechodzi między równorzędnymi sieciami wirtualnymi.
-    - **Zezwalaj na ruch przesłany dalej:** Zaznacz to pole, aby zezwolić na ruch *przekazywane* przez wirtualne urządzenie sieciowe w sieci wirtualnej (który nie pochodzi z sieci wirtualnej) do usługi flow z tą siecią wirtualną za pośrednictwem komunikacji równorzędnej. Na przykład należy wziąć pod uwagę trzy wirtualne sieci o nazwie szprychy 1, Spoke2 i koncentratora. Komunikację równorzędną między każdej szprysze sieci wirtualnej i sieci wirtualnej koncentratora istnieje, ale komunikacja równorzędna nie istnieją między sieciami wirtualnymi szprychy. Wirtualne urządzenie sieciowe jest wdrożony w centralnej sieci wirtualnej, a trasy zdefiniowane przez użytkownika są stosowane do każdej szprychy sieci wirtualnej, która kierować ruchem między podsieciami za pośrednictwem wirtualnego urządzenia sieciowego. Jeśli to pole wyboru nie zostanie zaznaczona dla komunikacji równorzędnej między każdej szprysze sieci wirtualnej i sieci wirtualnej koncentratora, ruch nie przechodzi między sieciami wirtualnymi szprychy ponieważ Centrum przekazuje ruch między sieciami wirtualnymi. Podczas włączania tej funkcji zezwala na ruch przesłany dalej za pośrednictwem komunikacji równorzędnej, nie tworzy się wszystkie trasy zdefiniowane przez użytkownika lub wirtualnych urządzeń sieciowych. Trasy zdefiniowane przez użytkownika i wirtualnych urządzeń sieciowych są tworzone oddzielnie. Dowiedz się więcej o [trasy zdefiniowane przez użytkownika](virtual-networks-udr-overview.md#user-defined). Nie trzeba sprawdzić to ustawienie, jeśli ruch jest przesyłany dalej między sieciami wirtualnymi za pośrednictwem bramy sieci VPN platformy Azure.
+    - **Zezwalaj na ruch przesłany dalej:** Zaznacz to pole, aby zezwolić na ruch *przekazywane* przez wirtualne urządzenie sieciowe w sieci wirtualnej (który nie pochodzi z sieci wirtualnej) do usługi flow z tą siecią wirtualną za pośrednictwem komunikacji równorzędnej. Na przykład należy wziąć pod uwagę trzy wirtualne sieci o nazwie szprychy 1, Spoke2 i koncentratora. Komunikację równorzędną między każdej szprysze sieci wirtualnej i sieci wirtualnej koncentratora istnieje, ale komunikacja równorzędna nie istnieją między sieciami wirtualnymi szprychy. Wirtualne urządzenie sieciowe jest wdrożony w centralnej sieci wirtualnej, a trasy zdefiniowane przez użytkownika są stosowane do każdej szprychy sieci wirtualnej, która kierować ruchem między podsieciami za pośrednictwem wirtualnego urządzenia sieciowego. Jeśli to pole wyboru nie zostanie zaznaczona dla komunikacji równorzędnej między każdej szprysze sieci wirtualnej i sieci wirtualnej koncentratora, ruch nie przechodzi między sieciami wirtualnymi szprychy, ponieważ Centrum nie przekazuje ruch między sieciami wirtualnymi. Podczas włączania tej funkcji zezwala na ruch przesłany dalej za pośrednictwem komunikacji równorzędnej, nie tworzy się wszystkie trasy zdefiniowane przez użytkownika lub wirtualnych urządzeń sieciowych. Trasy zdefiniowane przez użytkownika i wirtualnych urządzeń sieciowych są tworzone oddzielnie. Dowiedz się więcej o [trasy zdefiniowane przez użytkownika](virtual-networks-udr-overview.md#user-defined). Nie trzeba sprawdzić to ustawienie, jeśli ruch jest przesyłany dalej między sieciami wirtualnymi za pośrednictwem bramy sieci VPN platformy Azure.
     - **Zezwalaj na tranzyt bramy:** Zaznacz to pole wyboru, jeśli masz bramy sieci wirtualnej, dołączonych do tej sieci wirtualnej i chcesz zezwolić na ruch z równorzędnej sieci wirtualnej, które będą przepływać za pośrednictwem bramy. Na przykład ta sieć wirtualna może być podłączona do sieci lokalnej za pośrednictwem bramy sieci wirtualnej. Brama może być brama usługi ExpressRoute lub sieci VPN. Zaznaczenie tego pola wyboru zezwala na ruch z wirtualnej sieci równorzędnej przepływu za pośrednictwem bramy, dołączone do tej sieci wirtualnej do sieci lokalnej. Jeśli zaznaczysz to pole, równorzędnej sieci wirtualnej nie może mieć skonfigurowaną bramę. Musi mieć wirtualnej sieci równorzędnej **Użyj bram zdalnych** zaznaczone pole wyboru, podczas konfigurowania komunikacji równorzędnej z sieci wirtualnej z tą siecią wirtualną. Jeśli pozostawisz to niezaznaczone pole (ustawienie domyślne), ruch z przepływów nadal równorzędnej sieci wirtualnej z tą siecią wirtualną, ale nie można wykonać przepływu za pośrednictwem bramy sieci wirtualnej, dołączonych do tej sieci wirtualnej. W przypadku komunikacji równorzędnej między sieci wirtualnej (Resource Manager) i sieci wirtualnej (model klasyczny), brama musi być w sieci wirtualnej (Resource Manager). Nie można włączyć tę opcję, jeśli w przypadku komunikacji równorzędnej sieci wirtualnych w różnych regionach.
 
        Oprócz przekazywania ruchu w sieci lokalnej, bramy sieci VPN może przekazywać ruch sieciowy między sieciami wirtualnymi jest połączona z siecią wirtualną, w której znajduje się brama, bez konieczności zostać połączona ze sobą sieci wirtualnych. Przesyłanie ruchu sieciowego przy użyciu bramy sieci VPN jest przydatne, gdy chcesz używać bramy sieci VPN w z koncentratorem (Zobacz przykład gwiazdy opisane dla **Zezwalaj na przekazywany ruch**) sieci wirtualnej, aby kierować ruchem między sieciami wirtualnymi szprych, które nie są połączona ze sobą. Aby dowiedzieć się więcej na temat pozwalające na używanie bramy działało, zobacz [Konfigurowanie bramy sieci VPN działało w wirtualnej sieci równorzędnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten scenariusz wymaga wykonania trasy zdefiniowane przez użytkownika, które określają bramy sieci wirtualnej jako typ następnego przeskoku. Dowiedz się więcej o [trasy zdefiniowane przez użytkownika](virtual-networks-udr-overview.md#user-defined). Jako typ następnego przeskoku w trasie zdefiniowanej przez użytkownika można określić tylko bramy VPN gateway, brama usługi ExpressRoute nie można określić jako typu następnego przeskoku w trasie zdefiniowanej przez użytkownika. Nie można włączyć tę opcję, jeśli w przypadku komunikacji równorzędnej sieci wirtualnych w różnych regionach.
@@ -65,7 +64,7 @@ Zanim utworzysz komunikację równorzędną, zapoznaj się z wymagań i ogranicz
 
         Nie można użyć bram zdalnych, jeśli masz już skonfigurowaną bramę w sieci wirtualnej. Nie można włączyć tę opcję, jeśli w przypadku komunikacji równorzędnej sieci wirtualnych w różnych regionach. Aby dowiedzieć się więcej na temat za pomocą bramy działało, zobacz [skonfigurować bramy sieci VPN na tranzyt w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-7. Wybierz **OK** można dodać komunikacji równorzędnej w sieci wirtualnej, które zostały wybrane.
+6. Wybierz **OK** można dodać komunikacji równorzędnej w sieci wirtualnej, które zostały wybrane.
 
 Instrukcje krok po kroku dotyczące implementowania komunikację równorzędną między sieciami wirtualnymi w różnych subskrypcjach i modele wdrażania, zobacz [następne kroki](#next-steps).
 
@@ -80,11 +79,10 @@ Przed zmianą, komunikację równorzędną, zapoznaj się z wymagań i ogranicze
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz zmienić ustawienia komunikacji równorzędnej.
-3. Z listy sieci wirtualnych wybierz sieć wirtualną, o których chcesz zmienić ustawienia komunikacji równorzędnej.
-4. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
-5. Wybierz, komunikację równorzędną, którą chcesz wyświetlić lub zmienić ustawienia.
-6. Zmień odpowiednie ustawienia. Przeczytaj o opcje dla każdego ustawienia w [kroku 6](#add-peering) polecenia Create komunikację równorzędną.
-7. Wybierz pozycję **Zapisz**.
+3. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
+4. Wybierz, komunikację równorzędną, którą chcesz wyświetlić lub zmienić ustawienia.
+5. Zmień odpowiednie ustawienia. Przeczytaj o opcje dla każdego ustawienia w [kroku 5](#add-peering) polecenia Create komunikację równorzędną.
+6. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
 
@@ -101,10 +99,9 @@ Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz usunąć komunikację równorzędną.
-3. Z listy sieci wirtualnych wybierz sieć wirtualną, o których chcesz usunąć komunikację równorzędną.
-4. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
-5. Po prawej stronie komunikacji równorzędnej, aby usunąć, wybierz **...** , wybierz opcję **Usuń**, a następnie wybierz **tak** można usunąć komunikacji równorzędnej z pierwszej sieci wirtualnej.
-6. Wykonaj poprzednie kroki, aby usunąć komunikację równorzędną z innych sieci wirtualnych w komunikacji równorzędnej.
+3. W obszarze **ustawienia**, wybierz opcję **komunikacje równorzędne**.
+4. Po prawej stronie komunikacji równorzędnej, aby usunąć, wybierz **...** , wybierz opcję **Usuń**, a następnie wybierz **tak** można usunąć komunikacji równorzędnej z pierwszej sieci wirtualnej.
+5. Wykonaj poprzednie kroki, aby usunąć komunikację równorzędną z innych sieci wirtualnych w komunikacji równorzędnej.
 
 **Polecenia**
 
@@ -159,9 +156,9 @@ Jeśli Twoje konto nie jest przypisana do jednego z poprzednich ról, musi ona z
 
   |Model wdrażania platformy Azure             | Subskrypcja  |
   |---------                          |---------|
-  |Resource Manager — w obu przypadkach              |[Ta sama](tutorial-connect-virtual-networks-portal.md)|
+  |Resource Manager — w obu przypadkach              |[Ten sam](tutorial-connect-virtual-networks-portal.md)|
   |                                   |[Różne](create-peering-different-subscriptions.md)|
-  |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ta sama](create-peering-different-deployment-models.md)|
+  |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ten sam](create-peering-different-deployment-models.md)|
   |                                   |[Różne](create-peering-different-deployment-models-subscriptions.md)|
 
 - Dowiedz się jak, utworzyć [topologię sieciową typu gwiazda](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259622"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881634"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku (wersja zapoznawcza)
 
@@ -129,9 +129,6 @@ Ponieważ jest to pierwsze żądanie, sprawdź w witrynie Azure Portal, czy źr�
   ![Kafelek Źródła danych w portalu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Kafelek Źródła danych w portalu")
 
 Jeśli otrzymujesz błąd 403 lub 404, sprawdź, czy żądanie jest poprawnie skonstruowane: w punkcie końcowym powinien znajdować się element `api-version=2017-11-11-Preview`, natomiast w nagłówku, po elemencie `Content-Type`, powinien znajdować się element `api-key`, a jego wartość musi być prawidłowa dla usługi wyszukiwania. Tego nagłówka możesz użyć ponownie w pozostałych krokach tego samouczka.
-
-> [!TIP]
-> Teraz, przed wykonaniem dużej ilości pracy, jest odpowiedni moment na zweryfikowanie, czy usługa wyszukiwania jest uruchomiona w jednej z obsługiwanych lokalizacji, w których jest dostępna funkcja w wersji zapoznawczej: Południowo-środkowe stany USA lub Europa Zachodnia.
 
 ## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
@@ -554,4 +551,4 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu. 
 
 > [!div class="nextstepaction"]
-> [Przykład: tworzenie umiejętności niestandardowej](cognitive-search-create-custom-skill-example.md)
+> [Przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md)

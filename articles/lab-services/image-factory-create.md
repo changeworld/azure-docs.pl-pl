@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: c7923282396481dcfd6aa19b75d110fa03e50931
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439899"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879152"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
 W tym artykule pokazano, jak skonfigurować fabrycznie obrazu niestandardowego przy użyciu dostępnych w przykładowych skryptach [repozytorium Git](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
@@ -27,7 +27,7 @@ Fabryki obrazu jest rozwiązaniem konfiguracji jako kodu, które produkcją i dy
 
 Znaczące akceleratora można pobrać pulpitu dla deweloperów, do stanu gotowości w usłudze DevTest Labs korzysta z obrazów niestandardowych. Wadą obrazów niestandardowych jest coś, co jest dodatkowe do zachowania w środowisku laboratoryjnym. Na przykład wersje próbne produktów wygasają wraz z upływem czasu (lub) nie są stosowane nowo wydane aktualizacje zabezpieczeń, które wymusić nam okresowego odświeżania obrazu niestandardowego. Za pomocą fabryki obraz masz definicję obrazu zaewidencjonowany kontrolą kodu źródłowego i zautomatyzowanego procesu w celu utworzenia niestandardowych obrazów na podstawie definicji.
 
-To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardowych eliminuje koszty konserwacji dodatkowe szybkości. Dzięki temu rozwiązaniu można automatycznie Tworzenie niestandardowych obrazów, rozsyłaj je do innych DevTest Labs i wycofać starych obrazów. W poniższym klipie wideo informacje o fabrycznie obrazu i jak jest implementowane za pomocą usługi DevTest Labs.  Wszystkie skrypty programu Azure Powershell są łatwo dostępne i znajduje się tutaj: [ http://aka.ms/dtlimagefactory ](http://aka.ms/dtlimagefactory).
+To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardowych eliminuje koszty konserwacji dodatkowe szybkości. Dzięki temu rozwiązaniu można automatycznie Tworzenie niestandardowych obrazów, rozsyłaj je do innych DevTest Labs i wycofać starych obrazów. W poniższym klipie wideo informacje o fabrycznie obrazu i jak jest implementowane za pomocą usługi DevTest Labs.  Wszystkie skrypty programu Azure Powershell są łatwo dostępne i znajduje się tutaj: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
 
 <br/>
 

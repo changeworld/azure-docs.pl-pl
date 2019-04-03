@@ -3,21 +3,21 @@ title: Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu
 description: Dowiedz się, jak zabezpieczyć dane w usłudze Azure Data Lake magazynu Gen1 przy użyciu grup i listy kontroli dostępu
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296740"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885676"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1
 Zabezpieczanie danych w usłudze Azure Data Lake magazynu Gen1 jest to podejście w trzech krokach.  Zarówno opartej na rolach kontroli (RBAC) dostępu i listy kontroli dostępu (ACL) musi być ustawione na w pełni włączyć dostęp do danych użytkowników i grup zabezpieczeń.
@@ -130,7 +130,7 @@ Dostęp do danych pozostaje niezmieniony i nadal jest zarządzany przez listy AC
 1. W bloku konta usługi Data Lake Storage Gen1 kliknij **kontrola dostępu (IAM)**. 
    
     ![Przypisz grupy zabezpieczeń do konta Data Lake Storage Gen1](./media/data-lake-store-secure-data/adl.select.user.icon.png "Przypisz grupę zabezpieczeń do konta Data Lake Storage Gen1")
-2. W **kontrola dostępu (IAM)** bloku kliknij opcję grupy zabezpieczeń, aby usunąć. Kliknij przycisk **Usuń**.
+2. W **kontrola dostępu (IAM)** bloku kliknij opcję grupy zabezpieczeń, aby usunąć. Kliknij pozycję **Usuń**.
    
     ![Grupa zabezpieczeń została usunięta](./media/data-lake-store-secure-data/adl.remove.group.png "grupa zabezpieczeń została usunięta")
 
@@ -152,7 +152,7 @@ Podczas usuwania grupy zabezpieczeń listy kontroli dostępu w systemie plików 
 * [Kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Za pomocą usług Azure Data Lake Analytics Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Usługa Azure HDInsight za pomocą programu Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)
+* [Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)
 * [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Dostęp do dzienników diagnostycznych usługi Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
 

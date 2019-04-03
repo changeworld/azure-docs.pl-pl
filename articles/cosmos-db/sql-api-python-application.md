@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.openlocfilehash: 2830772dd69ac94c2b8373936665b9445f9f5f10
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 24426a4249934af1d85f43552617cda7c1d7e172
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431210"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883891"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Tworzenie aplikacji internetowej platformy Python Flask za pomocą usługi Azure Cosmos DB
 
@@ -417,7 +417,7 @@ Teraz, gdy kompletna aplikacja działa poprawnie z usługą Azure Cosmos DB loka
     ![Wyniki publikowania aplikacji Bottle, Flask i Django w usłudze App Service](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Jeśli strona internetowa nie jest wyświetlana lub w dalszym ciągu jest widoczny komunikat „Nie można wyświetlić strony, ponieważ wystąpił wewnętrzny błąd serwera”, otwórz plik web.config w usłudze Kudu i dodaj wpis ` <httpErrors errorMode="Detailed"></httpErrors>` w sekcji system.webServer, a następnie odśwież stronę. Spowoduje to dostarczenie szczegółowych informacji o błędzie do przeglądarki. 
+    > Jeśli strona internetowa nie jest wyświetlana lub w dalszym ciągu jest widoczny komunikat „Nie można wyświetlić strony, ponieważ wystąpił wewnętrzny błąd serwera”, otwórz plik web.config w usłudze Kudu i dodaj wpis `<httpErrors errorMode="Detailed"></httpErrors>` w sekcji system.webServer, a następnie odśwież stronę. Spowoduje to dostarczenie szczegółowych informacji o błędzie do przeglądarki. 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Jeśli jest to pierwsza aplikacja napisana w języku Python uruchomiona na Twoim komputerze, upewnij się, że następujące foldery (lub odpowiadające im lokalizacje instalacji) są uwzględnione w zmiennej PATH:

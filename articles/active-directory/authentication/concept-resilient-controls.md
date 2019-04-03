@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316341"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886084"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -131,9 +131,9 @@ Zasady dostępu warunkowego awaryjny **zasady wyłączone** , pomija formantów 
   
 Ten standard nazewnictwa dla zasad gotowości będzie następująca: 
 
-`
+```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
-`
+```
 
 Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do przywrócenia dostępu do aplikacji o kluczowym znaczeniu współpracy**, jest typowy awaryjny firmowych. W tym scenariuszu organizacja zazwyczaj wymaga uwierzytelniania Wieloskładnikowego wszelki dostęp do usługi Exchange Online i SharePoint Online, a zakłócenie w tym przypadku jest dostawca usługi MFA dla klienta wystąpiła awaria (czy usługi Azure MFA w środowisku lokalnym dostawcą uwierzytelnianie wieloskładnikowe lub MFA innych firm). Ta zasada zmniejsza tej awarii, zezwalając na określonych użytkowników docelowych dostęp do tych aplikacji z zaufanych urządzeń Windows tylko wtedy, gdy uzyskują dostęp do aplikacji z zaufanych sieci firmowej. Również będzie możliwe wykluczyć z tych ograniczeń konta awaryjne i Administratorzy core. Użytkowników docelowych zostaną następnie uzyskać dostęp do usługi Exchange Online i SharePoint Online, podczas gdy inni użytkownicy będą nadal ma dostęp do aplikacji z powodu awarii. W tym przykładzie będzie wymagać lokalizację sieciową o nazwie **CorpNetwork** i grupy zabezpieczeń **ContingencyAccess** nazwę grupy użytkowników docelowych **CoreAdmins** z Administratorzy podstawowych i utworzyć grupę o nazwie **EmergencyAccess** za pomocą kont dostępu awaryjnego. Awaryjny wymaga cztery zasady w celu zapewnienia żądanego dostępu. 
 
@@ -261,12 +261,12 @@ Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytko
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* [Dokumentacja usługi Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Dokumentacja uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowe](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Przewodnik wdrażania funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Windows Hello dla firm Podręcznik wdrażania](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Wskazówki dotyczące haseł — badań firmy Microsoft](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jakie są warunki dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

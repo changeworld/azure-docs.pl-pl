@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839733"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883013"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Zrozumienie warunki na fakturze umowy klienta firmy Microsoft
 
@@ -49,7 +49,7 @@ W poniższych sekcjach wymieniono ważne pojęcia, które widzisz na faktury i o
 | POCZTOWEJ numer |Numer zamówienia zakupu opcjonalne przypisanych przez użytkownika do śledzenia |
 | Numer faktury |Unikatowy, generowanych przez Microsoft płatnika używanych na potrzeby śledzenia |
 | Data faktury |Data faktury, jest generowany, zwykle 5 do 12 dni, po zakończeniu cyklu rozliczeniowym. Możesz sprawdzić swoje Data faktury w rozliczeń właściwości profilu.|
-| Warunki płatności |Jak zapłacić za swój rachunek firmy Microsoft. *30 dni roboczych* oznacza, że płatności za sprawdzanie lub przelewem w ciągu 30 dni od daty wskazanej na fakturze. |
+| Warunki płatności |Jak zapłacić za swój rachunek firmy Microsoft. *30 dni roboczych* oznacza, że płaci się w ciągu 30 dni od daty wskazanej na fakturze. |
 
 ### <a name="billing-summary"></a>Podsumowanie rozliczeń
 
@@ -110,6 +110,6 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Informacje o opłatach na fakturze profil rozliczeniowy](billing-mca-understand-your-bill.md)
-- [Jak uzyskać fakturę rozliczeniową za platformę Azure i dane dziennego użycia](billing-download-azure-invoice-daily-usage-date.md)
+- [Jak uzyskać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md)
 - [Wyświetl cennik platformy Azure w Twojej organizacji](billing-ea-pricing.md)
 - [Wyświetlanie dokumentów podatku dla swojego profilu rozliczeń](billing-mca-download-tax-document.md)

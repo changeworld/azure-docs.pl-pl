@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2ad46e7738582f82edcef6b54ac8234901c887d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013899"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885336"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -27,7 +27,7 @@ W tym artykule za pomocą prostych elementów JSON przedstawiono kilka przykład
 
 Utworzymy dwa proste elementy w formacie JSON i zapytania względem tych danych. Rozważ użycie dwóch elementów JSON dotyczących rodzin, wstaw te elementy elementów JSON do kontenera, a następnie wykonaj zapytanie o dane. Mamy tutaj prosty element JSON dla rodzin Andersen i Wakefield: rodzice, dzieci (i ich zwierzęta), adres oraz informacje o rejestracji. Element zawiera ciągi, liczby, wartości logiczne, tablic i właściwości zagnieżdżone.
 
-**Element 1**
+**Item1 —**
 
 ```JSON
 {
@@ -94,7 +94,7 @@ Teraz wypróbujmy kilka zapytań względem tych danych, aby poznać niektóre z 
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -124,7 +124,7 @@ Teraz wypróbujmy kilka zapytań względem tych danych, aby poznać niektóre z 
     WHERE f.address.city = f.address.state
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -145,7 +145,7 @@ Teraz wypróbujmy kilka zapytań względem tych danych, aby poznać niektóre z 
     ORDER BY f.address.city ASC
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -178,7 +178,7 @@ Poniższy przykład przedstawia typowe zapytanie SELECT.
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -202,7 +202,7 @@ W poniższym przykładzie przeprowadzamy projekcję dwóch właściwości zagnie
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -221,7 +221,7 @@ Projekcja obsługuje również wyrażenia JSON, jak pokazano w poniższym przyk�
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -244,7 +244,7 @@ Przyjrzyjmy się roli elementu `$1`. Klauzula `SELECT` musi tworzyć obiekt JSON
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -263,7 +263,7 @@ Przyjrzyjmy się roli elementu `$1`. Klauzula `SELECT` musi tworzyć obiekt JSON
 Klauzula FROM <specyfikacja_początkowa> jest opcjonalna, chyba że później w zapytaniu źródło jest filtrowane lub poddawane projekcji. Aby dowiedzieć się więcej na temat składni, zobacz sekcję [FROM syntax (Składnia klauzuli FROM)](sql-api-query-reference.md#bk_from_clause). Zapytanie, takie jak `SELECT * FROM Families`, wskazuje, że cały kontener Families (Rodziny) jest źródłem, w którym zostaną przeprowadzone wyliczenia. Specjalny identyfikator ROOT może być używany zamiast nazwy kontenera do reprezentowania tego kontenera.
 Poniższa lista zawiera reguły, które są wymuszane w poszczególnych zapytaniach:
 
-* Kontener może mieć alias, taki jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest odpowiednikiem `Families`. `AS` jest opcjonalnym słowem kluczowym do użycia jako aliasu identyfikatora.  
+* Kontener może mieć alias, taki jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest odpowiednikiem `Families`. `AS` jest opcjonalnym słowem kluczowym na alias identyfikator.  
 
 * Po dodaniu aliasu nie można powiązać oryginalnego źródła. Na przykład `SELECT Families.id FROM Families f` ma nieprawidłową składnię, ponieważ już nie można rozpoznać identyfikatora „Families” (Rodziny).  
 
@@ -280,7 +280,7 @@ Poniższa lista zawiera reguły, które są wymuszane w poszczególnych zapytani
     FROM Families.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -322,7 +322,7 @@ Podczas gdy w powyższym przykładzie jako źródła użyto tablicy, także obie
     FROM Families.address.state
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -345,7 +345,7 @@ Następujące zapytanie żąda elementów, które zawierają właściwość name
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -403,13 +403,13 @@ Oprócz operatorów binarnych i jednoargumentowych są również dozwolone odwo�
 
 W poniższej tabeli przedstawiono wynik porównań równości w interfejsie API SQL między dwoma dowolnymi typami JSON.
 
-| **Operator** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **Ciąg** | **Obiekt** | **Tablica** |
+| **OP** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **String** | **Obiekt** | **Tablica** |
 |---|---|---|---|---|---|---|---|
 | **Niezdefiniowane** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Null** | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Wartość logiczna** | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Liczba** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **Ciąg** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
+| **String** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
 | **Obiekt** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane |
 | **Tablica** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** |
 
@@ -446,7 +446,7 @@ Główna różnica między klauzulą BETWEEN w interfejsie API SQL i języku ANS
 ### <a name="logical-and-or-and-not-operators"></a>Operatory logiczne (AND, OR i NOT)
 Operatory logiczne działają na wartościach logicznych. Tabele prawdziwych danych logicznych dla tych operatorów zostały przedstawione poniżej.
 
-**Operator OR**
+**OR — operator**
 
 | LUB | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
@@ -454,7 +454,7 @@ Operatory logiczne działają na wartościach logicznych. Tabele prawdziwych dan
 | False |True |False |Niezdefiniowane |
 | Niezdefiniowane |True |Niezdefiniowane |Niezdefiniowane |
 
-**Operator AND**
+**AND — operator**
 
 | AND | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
@@ -462,7 +462,7 @@ Operatory logiczne działają na wartościach logicznych. Tabele prawdziwych dan
 | False |False |False |False |
 | Niezdefiniowane |Niezdefiniowane |False |Niezdefiniowane |
 
-**Operator NOT**
+**NOT — operator**
 
 | NOT |  |
 | --- | --- |
@@ -538,7 +538,7 @@ Jeśli zapytanie ma dwie właściwości o takiej samej nazwie, do zmiany nazwy j
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -562,7 +562,7 @@ Oprócz odwołań do właściwości klauzula SELECT obsługuje wyrażenia skalar
     SELECT "Hello World"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -578,7 +578,7 @@ Oto bardziej złożony przykład, który używa wyrażenia skalarnego.
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -595,7 +595,7 @@ W poniższym przykładzie wynik wyrażenia skalarnego jest wartością logiczną
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -619,7 +619,7 @@ Inną ważną funkcją interfejsu API SQL jest tworzenie tablic/obiektów. W pop
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -648,7 +648,7 @@ Słowo kluczowe **VALUE** oferuje sposób zwracania wartości JSON. Na przykład
     SELECT VALUE "Hello World"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -665,7 +665,7 @@ Poniższe zapytanie zwraca wartość JSON bez etykiety `"address"` w wynikach.
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -691,7 +691,7 @@ Poniższy przykład jest rozszerzany w celu pokazania sposobu zwracania wartośc
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -711,7 +711,7 @@ Operator specjalny (*) jest obsługiwany w przypadku projekcji elementu w aktual
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -744,7 +744,7 @@ Słowo kluczowe TOP może być używane do ograniczania liczby wartości z zapyt
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -779,7 +779,7 @@ Można również wykonać agregacje w klauzuli `SELECT`. Funkcje agregujące wyk
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -796,7 +796,7 @@ Wartość skalarną agregacji można również zwrócić za pomocą słowa klucz
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [ 2 ]
@@ -812,13 +812,13 @@ Agregacje można również wykonywać w połączeniu z filtrami. Na przykład po
     WHERE f.address.state = "WA"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [ 1 ]
 ```
 
-W poniższej tabeli przedstawiono listę funkcji agregujących obsługiwanych w interfejsie API SQL. Funkcje `SUM` i `AVG` są wykonywane na wartościach liczbowych, a funkcje `COUNT`, `MIN` i `MAX` mogą być wykonywane na liczbach, ciągach, wartościach logicznych i wartościach null.
+W poniższej tabeli przedstawiono listę funkcji agregujących obsługiwanych w interfejsie API SQL. `SUM` i `AVG` są realizowane poprzez wartości liczbowych, natomiast `COUNT`, `MIN`, i `MAX` mogą być wykonywane za pośrednictwem liczby, ciągi, wartości logicznych i wartości null.
 
 | Sposób użycia | Opis |
 |-------|-------------|
@@ -850,7 +850,7 @@ Na przykład oto zapytanie, które pobiera rodziny w kolejności według nazwy m
     ORDER BY f.address.city
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -875,7 +875,7 @@ A oto zapytanie, które pobiera rodziny w kolejności według daty utworzenia, k
     ORDER BY f.creationDate DESC
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -903,7 +903,7 @@ Dodano nową konstrukcję za pośrednictwem słowa kluczowego **IN** w interfejs
     FROM Families.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -941,7 +941,7 @@ Teraz przyjrzyjmy się innemu zapytaniu, które wykonuje iterację dla dzieci w 
     FROM c IN Families.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -976,7 +976,7 @@ Tego elementu można używać do odfiltrowania każdego pojedynczego wpisu tabli
     WHERE c.grade = 8
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -993,7 +993,7 @@ Można również wykonać agregację za pośrednictwem wyniku iteracji tablicy. 
     FROM child IN Families.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1019,7 +1019,7 @@ W poniższych przykładach pokazano, jak działa klauzula JOIN. W poniższym prz
     JOIN f.NonExistent
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1036,7 +1036,7 @@ W poniższym przykładzie sprzężenie występuje między katalogiem głównym e
     JOIN f.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1059,7 +1059,7 @@ Poniższy przykład przedstawia bardziej konwencjonalne sprzężenie:
     JOIN c IN f.children
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1098,7 +1098,7 @@ Rzeczywiste przeznaczenie klauzuli JOIN to formowanie krotek z iloczynu wektorow
     JOIN p IN c.pets
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1138,7 +1138,7 @@ Ten przykład stanowi naturalne rozszerzenie powyższego przykładu i wykonuje s
     }
 ```
 
-Rodzina `AndersenFamily` ma jedno dziecko, które ma jedno zwierzę. Dlatego iloczyn wektorowy daje jeden wiersz (1\*1\*1) dla tej rodziny. Rodzina WakefieldFamily ma dwoje dzieci, ale tylko jedno dziecko — „Jesse” — ma zwierzęta. Jesse ma dwa zwierzęta domowe. Dlatego iloczyn wektorowy daje 1\*1\*2 = 2 wiersze dla tej rodziny.
+`AndersenFamily` ma jeden element podrzędny, który ma jedno zwierzę. Dlatego iloczyn wektorowy daje jeden wiersz (1\*1\*1) dla tej rodziny. Rodzina WakefieldFamily ma dwoje dzieci, ale tylko jedno dziecko — „Jesse” — ma zwierzęta. Jesse ma dwa zwierzęta domowe. Dlatego iloczyn wektorowy daje 1\*1\*2 = 2 wiersze dla tej rodziny.
 
 W następnym przykładzie jest używany dodatkowy filtr według elementu `pet`, który wyklucza wszystkie krotki z imieniem zwierzęcia innym niż „Shadow”. Zauważ, że jesteśmy w stanie tworzyć krotki z tablic, filtrować według dowolnego elementu i przeprowadzać projekcję dowolnej kombinacji elementów.
 
@@ -1156,7 +1156,7 @@ W następnym przykładzie jest używany dodatkowy filtr według elementu `pet`, 
     WHERE p.givenName = "Shadow"
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1212,7 +1212,7 @@ Teraz możemy użyć tej funkcji zdefiniowanej przez użytkownika w zapytaniu w 
     FROM Families
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1235,7 +1235,7 @@ Funkcji zdefiniowanej przez użytkownika można również używać wewnątrz fil
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1279,7 +1279,7 @@ Poniżej znajduje się przykład, który używa funkcji zdefiniowanej przez uży
     FROM Families f
 ```
 
-**Results**
+**Wyniki**
 
 ```json
      [
@@ -1397,7 +1397,7 @@ Teraz można na przykład uruchomić zapytania, jak pokazano w poniższym przyk�
     SELECT VALUE ABS(-4)
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [4]
@@ -1409,13 +1409,13 @@ Główna różnica między funkcjami usługi Cosmos DB w porównaniu do języka 
 
 Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języka SQL. Funkcji kontroli typów można używać do określania typu właściwości elementów na bieżąco, gdy jest to zmienna lub właściwość nieznana. Poniżej znajduje się tabela zawierająca obsługiwane wbudowane funkcje kontroli typów.
 
-| **Użycie** | **Opis** |
+| **Sposób użycia** | **Opis** |
 |-----------|------------|
 | [IS_ARRAY (wyrażenie)](sql-api-query-reference.md#bk_is_array) | Zwraca wartość logiczną wskazującą, czy typ wartości jest tablicą. |
 | [IS_BOOL (wyrażenie)](sql-api-query-reference.md#bk_is_bool) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością logiczną. |
-| [IS_NULL (wyrażenie)](sql-api-query-reference.md#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
+| [IS_NULL (expr)](sql-api-query-reference.md#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
 | [IS_NUMBER (wyrażenie)](sql-api-query-reference.md#bk_is_number) | Zwraca wartość logiczną wskazującą, czy typ wartości jest liczbą. |
-| [IS_OBJECT (wyrażenie)](sql-api-query-reference.md#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
+| [Is_object — (wyrażenie)](sql-api-query-reference.md#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
 | [IS_STRING (wyrażenie)](sql-api-query-reference.md#bk_is_string) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem. |
 | [IS_DEFINED (wyrażenie)](sql-api-query-reference.md#bk_is_defined) | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
 | [IS_PRIMITIVE (wyrażenie)](sql-api-query-reference.md#bk_is_primitive) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem, liczbą, wartością logiczną lub wartością null. |
@@ -1428,7 +1428,7 @@ Używając tych funkcji, można teraz uruchomić zapytania, jak pokazano w poni�
     SELECT VALUE IS_NUMBER(-4)
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [true]
@@ -1440,22 +1440,22 @@ Następujące funkcje skalarne wykonują operację na wartości wejściowej cią
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [LENGTH (wyrażenie_ciągu)](sql-api-query-reference.md#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
-| [CONCAT (wyrażenie_ciągu, wyrażenie_ciągu [, wyrażenie_ciągu])](sql-api-query-reference.md#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
-| [SUBSTRING (wyrażenie_ciągu, wyrażenie_liczbowe, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_substring) | Zwraca część wyrażenia ciągu. |
-| [STARTSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego. |
-| [ENDSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu kończy się drugim. |
-| [CONTAINS (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
-| [INDEX_OF (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_index_of) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony. |
-| [LEFT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
-| [RIGHT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
-| [LTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
-| [RTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
-| [LOWER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
-| [UPPER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
-| [REPLACE (wyrażenie_ciągu,wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
-| [REPLICATE (wyrażenie_ciągu, wyrażenie_liczbowe)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Powtarza wartość ciągu określoną liczbę razy. |
-| [REVERSE (wyrażenie_ciągu)](sql-api-query-reference.md#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
+| [DŁUGOŚĆ (str_expr)](sql-api-query-reference.md#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
+| [CONCAT (str_expr str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
+| [SUBSTRING (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | Zwraca część wyrażenia ciągu. |
+| [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego. |
+| [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu kończy się drugim. |
+| [ZAWIERA (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
+| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony. |
+| [Po lewej stronie (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
+| [Po prawej stronie (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
+| [PRZYTP (str_expr)](sql-api-query-reference.md#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
+| [PRZYTK (str_expr)](sql-api-query-reference.md#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
+| [MAŁE (str_expr)](sql-api-query-reference.md#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
+| [GÓRNY (str_expr)](sql-api-query-reference.md#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
+| [Zastąp (str_expr str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
+| [REPLIKACJA (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Powtarza wartość ciągu określoną liczbę razy. |
+| [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
 
 Używając tych funkcji, można teraz uruchomić zapytania, takie jak poniżej. Można na przykład zwrócić nazwę rodziny zapisaną wielkimi literami w następujący sposób:
 
@@ -1466,7 +1466,7 @@ Używając tych funkcji, można teraz uruchomić zapytania, takie jak poniżej. 
     FROM Families
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [
@@ -1484,7 +1484,7 @@ Lub połączyć ciąg jak w tym przykładzie:
     FROM Families
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1507,7 +1507,7 @@ Funkcje ciągów można być również używane w klauzuli WHERE do filtrowania 
     WHERE STARTSWITH(Families.id, "Wakefield")
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1522,10 +1522,10 @@ Następujące funkcje skalarne wykonują operację na wartości wejściowej tabl
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [ARRAY_LENGTH (wyrażenie_tablicy)](sql-api-query-reference.md#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
-| [ARRAY_CONCAT (wyrażenie_tablicy, wyrażenie_tablicy [, wyrażenie_tablicy])](sql-api-query-reference.md#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
-| [ARRAY_CONTAINS (wyrażenie_tablicy, wyrażenie [, wyrażenie_warunkowe])](sql-api-query-reference.md#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
-| [ARRAY_SLICE (wyrażenie_ciągu, wyrażenie_liczbowe [, wyrażenie_liczbowe])](sql-api-query-reference.md#bk_array_slice) |Zwraca część wyrażenia tablicy. |
+| [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
+| [ARRAY_CONCAT (arr_expr arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
+| [ARRAY_CONTAINS (arr_expr, wyrażenie [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
+| [ARRAY_SLICE (arr_expr num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |Zwraca część wyrażenia tablicy. |
 
 Funkcje tablicy może służyć do manipulowania tablicami w formacie kodzie JSON. Na przykład poniżej znajduje się zapytanie, które zwraca wszystkie elementy, w których jeden z rodziców to „Robin Wakefield”. 
 
@@ -1537,7 +1537,7 @@ Funkcje tablicy może służyć do manipulowania tablicami w formacie kodzie JSO
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin", familyName: "Wakefield" })
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1555,7 +1555,7 @@ Można określić częściowy fragment na potrzeby pasujących elementów w tabl
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1572,7 +1572,7 @@ Oto inny przykład, który używa funkcji ARRAY_LENGTH w celu uzyskania liczby d
     FROM Families 
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1607,7 +1607,7 @@ Funkcje przestrzenne mogą być używane do wykonywania zapytań dotyczących od
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 ```
 
-**Results**
+**Wyniki**
 
 ```json
     [{
@@ -1629,7 +1629,7 @@ Na poniższej ilustracji przedstawiono architekturę pomocniczych zapytań LINQ,
 
 Mapowanie między obiektami platformy .NET i elementami w formacie JSON jest procesem naturalnym — każde pole elementu członkowskiego danych jest mapowane na obiekt JSON, tak aby nazwa pola była mapowana na część „key” obiektu, a część „value” była rekursywnie mapowana na część „wartość” obiektu. Rozważmy następujący przykład: utworzony obiekt Family (Rodzina) jest mapowany na element JSON, jak pokazano poniżej. I odwrotnie: element JSON jest mapowany z powrotem na obiekt .NET.
 
-**Klasa języka C#**
+**C# Class**
 
 ```csharp
     public class Family
@@ -1757,7 +1757,7 @@ Poniżej przedstawiono przykłady, które ilustrują sposób tłumaczenia niekt�
 
 Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Select(family => family.parents[0].familyName);
@@ -1770,7 +1770,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
     FROM Families f
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Select(family => family.children[0].grade + c); // c is an int variable
@@ -1783,7 +1783,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
     FROM Families f
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Select(family => new
@@ -1806,7 +1806,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
 
 Składnia to `input.SelectMany(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym, które zwraca typ kontenera.
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.SelectMany(family => family.children);
@@ -1823,7 +1823,7 @@ Składnia to `input.SelectMany(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym
 
 Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, które zwraca wartość logiczną.
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Where(family=> family.parents[0].familyName == "Smith");
@@ -1837,7 +1837,7 @@ Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, któ
     WHERE f.parents[0].familyName = "Smith"
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Where(
@@ -1862,7 +1862,7 @@ Powyższe operatory mogą być złożone w celu tworzenia bardziej zaawansowanyc
 
 Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytanie połączone można uruchomić przy użyciu opcjonalnego zapytania `SelectMany`, po którym nastąpi wiele operatorów `Select` lub `Where`.
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Select(family=>family.parents[0])
@@ -1877,7 +1877,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytanie połączon
     WHERE f.parents[0].familyName = "Smith"
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Where(family => family.children[0].grade > 3)
@@ -1892,7 +1892,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytanie połączon
     WHERE f.children[0].grade > 3
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.Select(family => new { grade=family.children[0].grade}).
@@ -1907,7 +1907,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytanie połączon
     WHERE ({grade: f.children[0].grade}.grade > 3)
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.SelectMany(family => family.parents)
@@ -1928,7 +1928,7 @@ Składnia to `input.SelectMany(x=>x.Q())`, gdzie Q jest operatorem `Select`, `Se
 
 W zapytaniu zagnieżdżonym zapytanie wewnętrzne jest stosowane do każdego elementu kontenera zewnętrznego. Jedna z ważnych funkcji to fakt, że zapytanie wewnętrzne może odwoływać się do pól elementów w kontenerze zewnętrznym, takich jak samosprzężenia.
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.SelectMany(family=>
@@ -1943,7 +1943,7 @@ W zapytaniu zagnieżdżonym zapytanie wewnętrzne jest stosowane do każdego ele
     JOIN p IN f.parents
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.SelectMany(family =>
@@ -1959,7 +1959,7 @@ W zapytaniu zagnieżdżonym zapytanie wewnętrzne jest stosowane do każdego ele
     WHERE c.familyName = "Jeff"
 ```
 
-**Wyrażenie lambda składni LINQ**
+**Wyrażenie lambda LINQ**
 
 ```csharp
     input.SelectMany(family => family.children.Where(
@@ -2004,7 +2004,7 @@ W poniższych przykładach pokazano operator POST dla zapytania interfejsu API S
     }
 ```
 
-**Results**
+**Wyniki**
 
 ```
     HTTP/1.1 200 Ok
@@ -2078,7 +2078,7 @@ Drugi przykład przedstawia bardziej złożone zapytanie, które zwraca wiele wy
     }
 ```
 
-**Results**
+**Wyniki**
 
 ```
     HTTP/1.1 200 Ok
@@ -2208,7 +2208,7 @@ Następny przykład pokazuje sprzężenia wyrażone za pośrednictwem funkcji Se
 
 Klient platformy .NET automatycznie wykonuje iterację przez wszystkie strony wyników zapytania w blokach instrukcji foreach, jak pokazano powyżej. Opcje zapytania wprowadzone w sekcji interfejsu API REST są również dostępne w zestawie .NET SDK za pośrednictwem klas `FeedOptions` i `FeedResponse` w metodzie CreateDocumentQuery. Liczbą stron można sterować za pomocą ustawienia `MaxItemCount`.
 
-Można także jawnie kontrolować dzielenie na strony, tworząc element `IDocumentQueryable` przy użyciu obiektu `IQueryable`, a następnie odczytując wartości ` ResponseContinuationToken` i przekazując je z powrotem jako token `RequestContinuationToken` w obszarze `FeedOptions`. Element `EnableScanInQuery` można ustawić tak, aby włączać operacje skanowania, gdy obsługa zapytania przez skonfigurowane zasady indeksowania będzie niemożliwa. W przypadku kontenerów partycjonowanych można używać elementu `PartitionKey`, aby uruchamiać zapytania względem jednej partycji (chociaż usługa Azure Cosmos DB może wyodrębnić go z tekstu zapytania), a elementu `EnableCrossPartitionQuery`, aby uruchamiać zapytania, które mogą wymagać uruchamiania względem wielu partycji.
+Można także jawnie kontrolować stronicowania, tworząc `IDocumentQueryable` przy użyciu `IQueryable` obiektu, a następnie, czytając `ResponseContinuationToken` wartości i przekazywania ich z powrotem jako `RequestContinuationToken` w `FeedOptions`. `EnableScanInQuery` można ustawić tak, aby włączyć skanowanie, gdy zapytanie nie może być obsługiwana przez skonfigurowane zasady indeksowania. W przypadku kontenerów partycjonowanych można używać elementu `PartitionKey`, aby uruchamiać zapytania względem jednej partycji (chociaż usługa Azure Cosmos DB może wyodrębnić go z tekstu zapytania), a elementu `EnableCrossPartitionQuery`, aby uruchamiać zapytania, które mogą wymagać uruchamiania względem wielu partycji.
 
 Zapoznaj się z [przykładami dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet), aby uzyskać więcej informacji na temat przykładów zawierających zapytania.
 
@@ -2253,8 +2253,8 @@ Poniższy przykład pokazuje, jak używać elementu queryDocuments w interfejsie
 ## <a id="References"></a>Dokumentacja
 
 1. [Wprowadzenie do usługi Azure Cosmos DB][introduction]
-2. [Azure Cosmos DB SQL specification (Specyfikacja języka SQL w usłudze Azure Cosmos DB)](https://go.microsoft.com/fwlink/p/?LinkID=510612)
-3. [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+2. [Usługa Azure Cosmos DB SQL specyfikacji](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+3. [Przykłady usługi Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Poziomy spójności w usłudze Azure Cosmos DB][consistency-levels]
 5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. Notacja JSON [https://json.org/](https://json.org/)

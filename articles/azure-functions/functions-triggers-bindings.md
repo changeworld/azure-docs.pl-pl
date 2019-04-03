@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56736961"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
@@ -89,8 +89,8 @@ Aby uzyskać informacje o tym, które są w wersji zapoznawczej powiązań, lub 
 - [Przy użyciu wartości zwracanej funkcji platformy Azure](./functions-bindings-return-value.md)
 - [Jak zarejestrować wyrażenia wiązania](./functions-bindings-register.md)
 - Testing:
-  - [Strategie testowania kodu w usłudze Azure Functions](functions-test-a-function.md)
-  - [Ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](functions-manually-run-non-http.md)
+  - [Strategie do testowania kodu w usłudze Azure Functions](functions-test-a-function.md)
+  - [Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP](functions-manually-run-non-http.md)
 - [Obsługa błędów powiązań](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Kolejne kroki

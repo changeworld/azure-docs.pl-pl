@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — zaplecza i pule zaplecza | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć, jakie są wewnętrznej bazy danych i pul zaplecza dla konfiguracji drzwi wejściowe.
+title: Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service wejściu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jakie pul zaplecza i wewnętrznej bazy danych z przodu są drzwi biblioteki konfiguracją.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,69 +11,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 228ed5c54a382db7b47d19adacf9e5db398c53ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123695"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879203"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
-W tym artykule opisano różne koncepcje dotyczące jak mapować wdrażania aplikacji za pomocą drzwiami frontowymi. Wyjaśnimy również różne warunki na wierzchu drzwi biblioteki konfiguracją na całym zaplecza aplikacji znaczenie.
+W tym artykule opisano pojęcia dotyczące sposobu mapowania wdrożenia aplikacji z usługą Azure Service drzwiami frontowymi. Objaśniono także różne warunki w konfiguracji drzwiami frontowymi wokół zaplecza aplikacji.
 
-## <a name="backend-pool"></a>Pula zaplecza
-Pula zaplecza w usłudze Front Door odnosi się do zestawu równoważnych zapleczy, które mogą odbierać ruch tego samego typu dla swoich aplikacji. Inaczej mówiąc, jest to logiczna grupa wystąpień aplikacji na całym świecie, które mogą odbierać taki sam ruch i odpowiadać, wykazując oczekiwane zachowanie. Te zaplecza zwykle są wdrażane w różnych regionach lub w ramach tego samego regionu. Ponadto te zaplecza są całkowicie w trybie wdrożenia aktywne-aktywne, lub można zdefiniować jako konfiguracja aktywny/pasywny.
+## <a name="backends"></a>Zaplecza
+Zapleczem jest taki sam jak wystąpienie wdrażania aplikacji w regionie. Usługa drzwiami frontowymi obsługuje platformy Azure i spoza platformy Azure, zaplecza aplikacji, więc region tylko nie jest ograniczona do regionów platformy Azure. Ponadto można go w lokalnym centrum danych lub wystąpienia aplikacji, w innej chmurze.
 
-Puli zaplecza definiuje również, jak różne zaplecza powinien wszystkie oceniane pod kątem ich kondycji za pomocą sondy kondycji, i odpowiednio jak Równoważenie obciążenia między zapleczem powinno mieć miejsce.
+Zaplecza usługi drzwiami frontowymi odnoszą się do nazwy hosta lub publiczny adres IP aplikacji, która może obsługiwać żądania klientów. Zaplecza nie należy mylić z warstwy bazy danych, warstwy magazynowania i tak dalej. Zaplecza aplikacji powinny być traktowane jako publicznego punktu końcowego zaplecza aplikacji. Po dodaniu zaplecza w puli zaplecza drzwiami frontowymi, musisz również dodać następujące czynności:
 
-### <a name="health-probes"></a>Sondy kondycji
-Drzwiami frontowymi wysyła okresowe żądania sondowania HTTP/HTTPS do każdego skonfigurowanego zaplecza w celu określenia odległości i kondycję każdego zaplecza, aby załadować saldo żądań użytkowników końcowych. Ustawienia sondy kondycji dla puli zaplecza definiują, jak firma Microsoft sondowania stanu kondycji dla aplikacji zaplecza. Dostępne dla konfiguracji Równoważenie obciążenia sieciowego są następujące ustawienia:
+- **Typ hosta zaplecza**. Typ zasobu, który chcesz dodać. Usługa drzwiami frontowymi obsługuje wykrywanie automatyczne z zaplecza aplikacji, jeśli z usługi app service, usługi w chmurze lub magazynu. Jeśli chcesz, aby inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję **hosta niestandardowego**.
 
-1. **Ścieżka**: Ścieżka adresu URL, w których będą wysyłane żądania sondowania do dla wszystkich zaplecza w puli zaplecza. Na przykład, jeśli jeden z zaplecza jest `contoso-westus.azurewebsites.net` i ścieżka jest równa `/probe/test.aspx`, wówczas środowisk drzwiami frontowymi, zakładając, że ustawiono protokołu HTTP, wyśle żądanie sondy kondycji do http://contoso-westus.azurewebsites.net/probe/test.aspx. 
-2. **Protokół**: Określa, czy będą wysyłane żądania sondy kondycji z wejściu do zaplecza za pośrednictwem protokołu HTTP lub HTTPS.
-3. **Interwał (w sekundach)**: To pole określa częstotliwość sondy kondycji do zaplecza, oznacza to, że odstępach czasu, w których wyśle każdego z tych środowisk drzwiami frontowymi sondę. Uwaga — Jeśli potrzebujesz szybszych przejścia w tryb failover, wartość tego pola niższą wartość. Jednak im niższa wartość bardziej sondę kondycji woluminu, który otrzyma zaplecza. Aby poznać ilość sondy, ile drzwi spowoduje wygenerowanie na zaplecza, Przyjrzyjmy się przykładowi. Teraz załóżmy, że, interwał jest ustawiany na 30 sekund wiąże się z około 90 drzwi wejściowe lub w środowiskach POP globalnie. Tak, każdy z zaplecza otrzyma około o 3 – 5 sondowania żądań na sekundę.
+    >[!IMPORTANT]
+    >Podczas konfigurowania interfejsów API nie Sprawdź, czy wewnętrznej bazy danych jest niedostępna w środowiskach wejściu. Upewnij się, że drzwiami frontowymi może osiągnąć wewnętrzną bazą danych.
 
-Odczyt [sond kondycji](front-door-health-probes.md) Aby uzyskać szczegółowe informacje.
+- **Nazwa hosta subskrypcji i zaplecze oparte na**. Jeśli jeszcze nie wybrano **hosta niestandardowego** dla wewnętrznej bazy danych typu hosta, należy wybrać wewnętrzną bazą danych, wybierając odpowiednią subskrypcję i odpowiednią nazwę hosta wewnętrznej bazy danych w interfejsie użytkownika.
 
-### <a name="load-balancing-settings"></a>Ustawienia równoważenia obciążenia
-Ustawienia równoważenia obciążenia dla puli zaplecza, zdefiniuj sposób możemy ocenić sond kondycji dla podejmowania decyzji o wewnętrznej bazy danych jako poprawny stan, a także jak musimy załadować saldo ruch między różnych zaplecza w puli zaplecza. Dostępne dla konfiguracji Równoważenie obciążenia sieciowego są następujące ustawienia:
+- **Nagłówek hosta zaplecza**. Wartość nagłówka hosta wysyłana do wewnętrznej bazy danych dla każdego żądania. Aby uzyskać więcej informacji, zobacz [nagłówek hosta zaplecza](#hostheader).
 
-1. **Przykładowy rozmiar**: Ta właściwość określa, jak wiele przykładów sond kondycji należy wziąć pod uwagę oceny kondycji wewnętrznej bazy danych.
-2. **Rozmiar próbki pomyślne**: Ta właściwość określa, czy wielkość próby jak wyjaśniono powyżej, jak wiele przykładów potrzebujemy pod kątem powodzenia do wywoływania zaplecza jako w dobrej kondycji. 
-</br>Na przykład, załóżmy, że dla Twojego drzwiami frontowymi ustawiono sondy kondycji *interwał* 30 sekund, *przykładowy rozmiar* jest ustawiona na "5" i *rozmiar próbki pomyślne* jest ustawiona na "3". A następnie co ta konfiguracja oznacza, że to, że za każdym razem, gdy Oceniamy sondy kondycji do zaplecza, przyjrzymy się pięć ostatnich przykłady, które będzie obejmujące ostatnich 150 sekund (5 * 30 s) i chyba że istnieją 3 lub więcej z tych sond pomyślne firma Microsoft uzna tylnej koniec złej kondycji. Załóżmy, że wystąpiły tylko dwa sondy pomyślne, dlatego firma Microsoft oznaczy wewnętrznej bazy danych o złej kondycji. Przy następnym Uruchamiamy oceny 3 okaże się pomyślnie WE pięć ostatnich sond, następnie możemy oznaczyć wewnętrznej bazy danych jako w dobrej kondycji ponownie.
-3. **Czułość opóźnienia (dodatkowe opóźnienie)**: Pole czułości opóźnienie definiuje chęci drzwiami frontowymi wysyłać żądania do zaplecza, które są w zakresie poufności pod kątem pomiaru opóźnienia lub przekazywania żądania do najbliższego wewnętrznej bazy danych. Odczyt [najmniejszego opóźnienia na podstawie metody routingu opartego na](front-door-routing-methods.md#latency) na wejściu dowiedzieć się więcej.
+- **Priorytet**. Przypisać priorytety do różnych zaplecza, podczas którego chcesz użyć podstawowa usługa zaplecza dla całego ruchu. Ponadto wykonywanie kopii zapasowych, jeśli główna osoba kontaktowa lub kopii zapasowej zaplecza są niedostępne. Aby uzyskać więcej informacji, zobacz [priorytet](front-door-routing-methods.md#priority).
 
-## <a name="backend"></a>Zaplecze
-Zapleczem jest równoznaczne z wystąpienia wdrożenia aplikacji w regionie. Drzwiami frontowymi obsługuje zarówno platformy Azure, jak i zaplecza spoza platformy Azure, a więc region, w tym miejscu tylko nie jest ograniczona do regionów platformy Azure, ale można też lokalnego centrum danych lub wystąpienie aplikacji, w niektórych innych chmur.
-
-Zaplecza aplikacji, w kontekście drzwi do przodu, odnosi się do nazwy hosta lub publiczny adres IP aplikacji, która może obsługiwać żądania klientów. Tak zaplecza nie należy mylić z warstwy usługi bazy danych lub warstwę magazynu itp., ale raczej powinny być traktowane jako publicznym punktem końcowym zaplecza aplikacji.
-
-Po dodaniu zaplecza w puli zaplecza usługi drzwiami frontowymi należy wypełnić następujące informacje:
-
-1. **Typ hosta zaplecza**: Typ zasobu, który chcesz dodać. Drzwiami frontowymi obsługuje automatyczne odnajdowanie zaplecza aplikacji z usługi app service, usługi w chmurze lub magazynu. Inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję "Niestandardowy host". Uwaga — Podczas konfigurowania interfejsów API nie weryfikuje, czy wewnętrznej bazy danych jest dostępny ze środowisk drzwiami frontowymi zamiast tego należy się upewnić, że zaplecza jest osiągalna drzwiami frontowymi. 
-2. **Nazwa hosta subskrypcji i zaplecze oparte na**: Jeśli nie wybrano typu "Niestandardowy host" dla hosta wewnętrznej bazy danych, a następnie należy określić zakres szczegółów i wybrać wewnętrzną bazą danych, wybierając odpowiednią subskrypcję i odpowiednią nazwę hosta wewnętrznej bazy danych z poziomu interfejsu użytkownika.
-3. **Nagłówek hosta zaplecza**: Wartość nagłówka hosta wysyłana do wewnętrznej bazy danych dla każdego żądania. Odczyt [nagłówek hosta zaplecza](#hostheader) Aby uzyskać szczegółowe informacje.
-4. **Priorytet**: Jeśli chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku, gdy główna osoba kontaktowa lub kopii zapasowej zaplecza są niedostępne, można przypisać priorytety do różnych zaplecza. Przeczytaj więcej na temat [priorytet](front-door-routing-methods.md#priority).
-5. **Waga**: Jeśli chcesz dystrybuować ruch w zestawie zaplecza, równomiernie lub według wagi współczynniki można przypisać wagi do różnych zaplecza. Przeczytaj więcej na temat [wagi](front-door-routing-methods.md#weighted).
-
+- **Waga**. Przypisać wagi do różnych zaplecza do rozdzielenia ruchu między zbiór zapleczy, równomiernie lub zgodnie z współczynniki wagi. Aby uzyskać więcej informacji, zobacz [wagi](front-door-routing-methods.md#weighted).
 
 ### <a name = "hostheader"></a>Nagłówek hosta wewnętrznej bazy danych
 
-Żądania przekazywane za wejściu do wewnętrznej bazy danych ma pola nagłówka hosta, który używa wewnętrznej bazy danych w celu pobrania zasobu docelowego. Wartość dla tego pola zazwyczaj pochodzi z identyfikatora URI wewnętrznej bazy danych, a także ma hosta i portu. Na przykład żądania dotyczącego `www.contoso.com` będzie miał nagłówek hosta `www.contoso.com`. Jeśli konfigurujesz wewnętrzną bazą danych przy użyciu witryny Azure portal, domyślną wartość, która jest wypełniana dla tego pola jest nazwą hosta w wewnętrznej bazie danych. Na przykład, jeśli jest zaplecza `contoso-westus.azurewebsites.net`, a następnie w witrynie Azure portal będzie automatycznie wypełniony wartość nagłówka hosta zaplecza `contoso-westus.azurewebsites.net`. 
-</br>Jednak jeśli przy użyciu szablonów usługi Resource Manager, lub inny mechanizm i są to ustawienie nie zostanie to pole jawnie drzwiami frontowymi wysyła przychodzącą nazwę hosta jako wartość nagłówka hosta. Na przykład, jeśli żądanie zostało wystosowane `www.contoso.com`, a zapleczem `contoso-westus.azurewebsites.net` następnie za pomocą puste pole nagłówka hosta zaplecza drzwiami frontowymi ustawi nagłówek hosta jako `www.contoso.com`.
+Żądania przekazywane za wejściu do wewnętrznej bazy danych obejmują pole nagłówka hosta, który używa wewnętrznej bazy danych w celu pobrania zasobu docelowego. Wartość dla tego pola zazwyczaj pochodzi z identyfikatora URI wewnętrznej bazy danych, a także ma hosta i portu.
 
-Większość zaplecza aplikacji (takich jak Web Apps, Blob Storage i usług w chmurze) wymagają nagłówek hosta był zgodny z domeną wewnętrznej bazy danych. Hosta serwera sieci Web, który kieruje do swojej wewnętrznej bazy danych będzie jednak innej nazwy hosta, takich jak www\.contoso.azurefd.net. Jeśli wewnętrznej bazy danych, którą konfigurujesz wymaga nagłówka hosta, aby dopasować nazwę hosta w wewnętrznej bazie danych, należy upewnić się, że nagłówek hosta wewnętrznej bazy danych ma również nazwę hosta w wewnętrznej bazie danych.
+Na przykład żądania dotyczącego www\.contoso.com, będzie miał www nagłówka hosta\.contoso.com. Konfigurowanie zaplecza za pomocą witryny Azure portal, wartością domyślną dla tego pola czy nazwy hosta w wewnętrznej bazie danych. Jeśli zaplecza jest contoso-westus.azurewebsites.net w witrynie Azure portal wypełnianie automatycznie wartość nagłówka hosta w wewnętrznej bazie danych będzie westus.azurewebsites.net firmy contoso. Jednak jeśli używasz usługi Azure Resource Manager lub innej metody bez jawnego ustawienia tego pola, usługi drzwiami frontowymi wyśle przychodzących nazwy hosta jako wartość dla nagłówka hosta. Jeśli żądanie zostało wystosowane www\.contoso.com i zapleczu westus.azurewebsites.net firmy contoso, zawierającej pole nagłówka pusty, usługa drzwiami frontowymi ustawi nagłówek hosta jako www\.contoso.com.
+
+Większość zaplecza aplikacji (aplikacje internetowe platformy Azure, usługi Blob storage i usług w chmurze) wymagają nagłówek hosta był zgodny z domeną wewnętrznej bazy danych. Jednak hosta serwera sieci Web, który kieruje do swojej wewnętrznej bazy danych będzie używać innej nazwy hosta, takie jak www\.contoso.azurefd.net.
+
+Jeśli zaplecza wymaga nagłówka hosta, która jest zgodna z nazwą hosta wewnętrznej bazy danych, upewnij się, że nagłówek hosta wewnętrznej bazy danych obejmuje wewnętrznej bazy danych dla nazwy hosta.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurowanie zaplecza nagłówek hosta dla wewnętrznej bazy danych
-Pole "Nagłówek hosta dla wewnętrznej bazy danych" można skonfigurować dla zaplecza w sekcji puli zaplecza.
 
-1. Otwórz zasób usługi drzwi wejściowe, a następnie kliknij pulę zaplecza, zawierającej wewnętrznej bazy danych do skonfigurowania.
+Aby skonfigurować **nagłówek hosta zaplecza** pole zaplecza w sekcji puli zaplecza:
 
-2. Dodaj zaplecze, jeśli nie dodano żadnego lub edytować istniejący. Pole "Nagłówek hosta dla wewnętrznej bazy danych" może być ustawiona na wartość niestandardową lub pole pozostanie puste, co oznacza, że nazwa hosta dla żądania przychodzącego będzie służyć jako wartość nagłówka hosta.
+1. Otwórz zasób usługi drzwi wejściowe, a następnie wybierz pulę zaplecza za pomocą wewnętrznej bazy danych, aby skonfigurować.
 
+2. Dodaj zaplecze, jeśli nie zostało to zrobione, lub edytować istniejący.
 
+3. Ustaw pole nagłówka hosta zaplecza niestandardowej wartości lub pozostaw to pole puste. Nazwa hosta dla żądania przychodzącego będzie służyć jako wartość nagłówka hosta.
+
+## <a name="backend-pools"></a>Pule zaplecza
+Puli zaplecza z przodu drzwi odnosi się do zestawu zapleczy, aby utworzyć, odbierać podobne dane dla swoich aplikacji. Innymi słowy to logiczna Grupa wystąpień aplikacji, na całym świecie, odbierać tych samych danych, która odpowiada przy użyciu oczekiwane zachowanie. Te zaplecza są wdrażane w różnych regionach lub w ramach tego samego regionu. Wszystkie zaplecza może być w trybie wdrażania aktywny/aktywny lub co to jest zdefiniowany jako aktywny/pasywny konfiguracji.
+
+Pula zaplecza definiuje, jak za pomocą sondy kondycji, w którym powinna być oceniana różnych zaplecza. Definiuje również, jak równoważenia obciążenia zachodzi między nimi.
+
+### <a name="health-probes"></a>Sondy kondycji
+Usługa drzwiami frontowymi wysyła okresowe żądania sondowania HTTP/HTTPS do każdego skonfigurowanego zaplecza. Żądania sondowania stwierdzić, że odległości i kondycję każdego zaplecza, aby załadować saldo żądań użytkowników końcowych. Ustawienia sondy kondycji dla puli zaplecza definiują, jak firma Microsoft sondowania stanu kondycji zaplecza aplikacji. Następujące ustawienia są dostępne dla konfiguracji równoważenia obciążenia:
+
+- **Ścieżka**. Adres URL do badania żądań dla wszystkich zaplecza w puli zaplecza. Na przykład, jeśli ścieżka jest równa /probe/test.aspx jest jeden z zaplecza westus.azurewebsites.net firmy contoso, następnie środowisk usługi drzwiami frontowymi, zakładając, że ustawiono protokołu HTTP, będzie wysyłać żądań sondy kondycji HTTP\:/ / contoso-westus.azurewebsites.net/probe/test.aspx.
+
+- **Protokół**. Określa, czy wysyłać żądań sondy kondycji usługi wejściu do zaplecza przy użyciu protokołu HTTP lub HTTPS.
+
+- **Interwał (w sekundach)**. Określa częstotliwość sondy kondycji do zaplecza lub odstępach czasu, w których każdego z tych środowisk drzwiami frontowymi wysyła sondę.
+
+    >[!NOTE]
+    >Dla szybszego przejścia w tryb failover należy ustawić interwał niższą wartość. Im niższa wartość, im większy wolumin sondy kondycji otrzymują zaplecza. Na przykład, jeśli interwał wynosi 30 sekund przy użyciu 90 drzwi wejściowe lub w środowiskach POP globalnie, każde zaplecze otrzyma o 3 – 5 sondowania żądań na sekundę.
+
+Aby uzyskać więcej informacji, zobacz [sondy kondycji](front-door-health-probes.md).
+
+### <a name="load-balancing-settings"></a>Ustawienia równoważenia obciążenia
+Ustawienia równoważenia obciążenia dla puli zaplecza definiują, jak możemy obliczyć sond kondycji. Te ustawienia określają, czy wewnętrznej bazy danych jest w dobrej kondycji lub w złej kondycji. Także sprawdzić sposób Równoważenie obciążenia ruchu między różnych zaplecza w puli zaplecza. Następujące ustawienia są dostępne dla konfiguracji równoważenia obciążenia:
+
+- **Przykładowy rozmiar**. Określa, jak wiele przykładów sond kondycji należy wziąć pod uwagę oceny kondycji wewnętrznej bazy danych.
+
+- **Rozmiar próbki pomyślne**. Określa rozmiar próbki, jak wcześniej wspomniano, liczbę pomyślnych próbek potrzebne do wywoływania zaplecza w dobrej kondycji. Załóżmy na przykład, interwał sondy kondycji drzwiami frontowymi jest 30 sekund, rozmiar próbki to 5 sekund i rozmiar próbki pomyślne jest 3 sekundy. Zawsze możemy obliczyć kondycji sondy zaplecza, przyjrzymy się pięć ostatnich przykłady ponad 150 sekund (5 x 30). Co najmniej trzech pomyślne sondy są wymagane do deklarowania wewnętrznej bazy danych jako w dobrej kondycji.
+
+- **Czułość opóźnienia (dodatkowe opóźnienie)**. Określa, czy chcesz drzwiami frontowymi wysyłać żądania do zaplecza w zakresie poufności pomiaru opóźnienia lub przesłania żądania do najbliższego wewnętrznej bazy danych.
+
+Aby uzyskać więcej informacji, zobacz [najmniejszego opóźnienia na podstawie metody routingu opartego na](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
-- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).
+- [Utwórz profil drzwi](quickstart-create-front-door.md)
+- [Jak działa drzwi](front-door-routing-architecture.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5eec77084e104f7bd541405e2ef18e5a178e869c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092552"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877792"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w usłudze Azure Monitor
 
@@ -365,7 +365,7 @@ Można utworzyć omsagent DaemonSets z lub bez wpisów tajnych.
         KEY:    88 bytes
         ```
 
-    5. Utwórz swoje omsagent demona zestawu, uruchamiając ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
+    5. Utwórz swoje omsagent demona zestawu, uruchamiając ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Sprawdź, czy agent usługi Log Analytics DaemonSet jest uruchomiona, podobny do następującego:
 
@@ -409,7 +409,7 @@ Dla rozwiązania Kubernetes Windows skrypt będzie używany do generowania pliku
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Utwórz swoje omsagent demona zestawu, uruchamiając ``` kubectl create -f omsagentsecret.yaml ```
+    3. Utwórz swoje omsagent demona zestawu, uruchamiając ```kubectl create -f omsagentsecret.yaml```
     4. Aby sprawdzić, uruchom następujące polecenie:
 
         ```

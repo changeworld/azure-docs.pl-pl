@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803123"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882468"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -110,24 +110,24 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabski | `ar` | Arabski `Arab` | <--> | Łaciński `Latn` |
 |Bengalski  | `bn` | Bengalski `Beng` | <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
+| Chiński (uproszczony) | `zh-Hans` | Chiński (uproszczony) `Hans`| <--> | Łaciński `Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński (uproszczony) `Hans`| <--> | Chiński tradycyjny `Hant`|
 | Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Łaciński `Latn` |
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński (uproszczony) `Hans` |
 | Gudżarati | `gu`  | Gudżarati `Gujr` | --> | Łaciński `Latn` |
 | Hebrajski | `he` | Hebrajski `Hebr` | <--> | Łaciński `Latn` |
-| Hindi | `hi` | Dewanagari `Deva` | <--> | Łaciński `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Łaciński `Latn` |
 | Japoński | `ja` | Japoński `Jpan` | <--> | Łaciński `Latn` |
 | Kannada | `kn` | Kannada `Knda` | --> | Łaciński `Latn` |
-| Malajalam | `ml` | Malayalam `Mlym` | --> | Łaciński `Latn` |
-| Marathi | `mr` | Dewanagari `Deva` | --> | Łaciński `Latn` |
-| Orija | `or` | Oriya `Orya` | <--> | Łaciński `Latn` |
+| Malajalam | `ml` | Malajalam `Mlym` | --> | Łaciński `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Łaciński `Latn` |
+| Orija | `or` | Orija `Orya` | <--> | Łaciński `Latn` |
 | Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | Łaciński `Latn`  |
 | Serbski (cyrylica) | `sr-Cyrl` | Cyrylica `Cyrl`  | --> | Łaciński `Latn` |
 | Serbski (łaciński) | `sr-Latn` | Łaciński `Latn` | --> | Cyrylica `Cyrl`|
 | Tamilski | `ta` | Tamilski `Taml` | --> | Łaciński `Latn` |
 | Telugu | `te` | Telugu `Telu` | --> | Łaciński `Latn` |
-| Tajlandzki | `th` | Tajski `Thai` | <--> | Łaciński `Latn` |
+| Tajlandzki | `th` | Tajlandzki `Thai` | <--> | Łaciński `Latn` |
 
 ## <a name="dictionary"></a>Słownik
 
@@ -268,7 +268,7 @@ Możesz pobrać listę obsługiwanych języków dla interfejsu API tłumaczenia 
 
 ## <a name="customization"></a>Dostosowywanie
 
-Następujące języki są możliwe do dostosowania do lub z angielskiego przy użyciu [niestandardowe w usłudze Translator](http://aka.ms/CustomTranslator).
+Następujące języki są możliwe do dostosowania do lub z angielskiego przy użyciu [niestandardowe w usłudze Translator](https://aka.ms/CustomTranslator).
 
 | Język    | Kod języka |
 |:----------- |:-------------:|

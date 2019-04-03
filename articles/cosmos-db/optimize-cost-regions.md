@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457653"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876744"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optymalizuj koszt wielu regionów w usłudze Azure Cosmos DB
 
 Można dodać i usunąć regiony z kontem usługi Azure Cosmos w dowolnym momencie. Przepływność, którą można skonfigurować dla różnych baz danych Azure Cosmos i kontenerów jest zarezerwowana w każdym z regionów skojarzonych z Twoim kontem. Jeśli aprowizowana przepływność na godzinę, to Suma jednostek RU/s jest skonfigurowany we wszystkich bazach danych i kontenerów, jest kontem usługi Azure Cosmos `T` a liczbą regionów platformy Azure skojarzony z Twoim kontem bazy danych jest `N`, następnie łącznie aprowizowana przepływność dla Twojego konta usługi Cosmos, dla danej godziny wynosi:
 
-1. ` T x N RU/s` Jeśli Twoje konto usługi Azure Cosmos jest skonfigurowany z regionem zapisu jednego. 
+1. `T x N RU/s` Jeśli Twoje konto usługi Azure Cosmos jest skonfigurowany z regionem zapisu jednego. 
 
 1. `T x (N+1) RU/s` Jeśli Twoje konto usługi Azure Cosmos jest skonfigurowany we wszystkich regionach, która może przetwarzać zapisy. 
 
@@ -25,19 +25,19 @@ Aprowizowana przepływność z regionu zapisu jednego kosztuje $0.008 za godzin�
 
 ## <a name="costs-for-multiple-write-regions"></a>Koszty dla wielu regionów zapisu
 
-W systemie wielu wzorców, net dostępne (RUS) dla zapisu operacji zwiększa `N` razy gdzie `N` jest liczbą regionów zapisu. W przeciwieństwie do zapisu w jednym regionie co region teraz jest zapisywalny i powinien obsługiwać rozwiązywanie konfliktów. Zwiększa ilość obciążenia dla modułów zapisujących. Od opłat planowania punktu widzenia, aby wykonać` M` , przez które jednostek RU/s zapisy na całym świecie, musisz aprowizować M `RUs` na poziomie kontenera lub bazy danych. Następnie możesz dodać dowolną liczbę regionów, jak chcesz i używać ich do zapisu do `M` RU, przez które zapisy na całym świecie. 
+W systemie wielu wzorców, net dostępne (RUS) dla zapisu operacji zwiększa `N` razy gdzie `N` jest liczbą regionów zapisu. W przeciwieństwie do zapisu w jednym regionie co region teraz jest zapisywalny i powinien obsługiwać rozwiązywanie konfliktów. Zwiększa ilość obciążenia dla modułów zapisujących. Od opłat planowania punktu widzenia, aby wykonać `M` , przez które jednostek RU/s zapisy na całym świecie, musisz aprowizować M `RUs` na poziomie kontenera lub bazy danych. Następnie możesz dodać dowolną liczbę regionów, jak chcesz i używać ich do zapisu do `M` RU, przez które zapisy na całym świecie. 
 
 ### <a name="example"></a>Przykład
 
 Należy wziąć pod uwagę w masz kontener w regionie zachodnie stany USA aprowizowany przy przepływności 10 tys jednostek RU/s i zapisuje 1 TB danych w tym miesiącu. Załóżmy, że dodasz trzech regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia, każdy z tego samego magazynu i przepływności i ma możliwość zapisywania do kontenerów we wszystkich czterech regionach z globalnie rozproszonych aplikacji. Twoje łączna kwota rachunku miesięcznego (przy założeniu 31 dni) w danym miesiącu jest następująca:
 
-|**Element**|**Użycie (miesiąc)**|**Kurs**|**Koszt miesięczny**|
+|**Element**|**Użycie (miesiąc)**|**Stawka**|**Koszt miesięczny**|
 |----|----|----|----|
 |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (zapisu wielu regionów) |10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$1,190.40 |
 |Rachunek za przepływność dla 3 dodatkowych regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia (zapisu wielu regionów) |(3 + 1) * 10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$4,761.60 |
 |Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA |100 GB |0,25 USD/GB |$25 |
 |Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia |3 * 1 TB |0,25 USD/GB |$75 |
-|**Łączna liczba**|||**$6,052** |
+|**Łącznie**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Poprawić wykorzystanie przepływności na poszczególnych regionów
 

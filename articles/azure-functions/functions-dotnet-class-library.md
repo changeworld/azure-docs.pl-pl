@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
 ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "58111484"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
@@ -158,7 +158,7 @@ Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, 
 
 Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniowe usługi Functions. Platforma docelowa to, co odróżnia 1.x projektu z projektu 2.x. Oto odpowiednie części *.csproj* pliki, przedstawiający różne docelowych struktur i tym samym `Sdk` pakietu:
 
-**Funkcje 1.x**
+**Functions w wersji 1.x**
 
 ```xml
 <PropertyGroup>
@@ -169,7 +169,7 @@ Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniow
 </ItemGroup>
 ```
 
-**Functions 2.x**
+**Functions w wersji 2.x**
 
 ```xml
 <PropertyGroup>

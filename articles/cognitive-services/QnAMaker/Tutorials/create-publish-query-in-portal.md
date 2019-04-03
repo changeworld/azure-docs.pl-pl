@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121421"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884129"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Samouczek: tworzenie bazy wiedzy, a następnie odpowiadanie na pytanie za pomocą portalu usługi QnA Maker
 
@@ -66,7 +66,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
     |Nazwa ustawienia|Wartość ustawienia|Przeznaczenie|
     |--|--|--|
     |Adres URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
-    |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
+    |Plik |_nie są używane w ramach tego samouczka_|Służy do przekazywania plików dla pytań i odpowiedzi. |
     |Osobowość dla konwersacji|Przyjaciel|Nadaje przyjazny i swobodny ton typowym pytaniom i odpowiedziom. Później można edytować te pytania i odpowiedzi. |
 
     ![Krok 4 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -105,7 +105,7 @@ Po opublikowaniu bazy wiedzy wyświetlany jest punkt końcowy
 
     ![Polecenie narzędzia Curl](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Skopiuj tekst z karty **Curl** i wykonaj go w terminalu lub wierszu polecenia z włączoną obsługą narzędzia Curl. Wartość nagłówka autoryzacji zawiera tekst `Endpoint ` ze spacją końcową, po której następuje klucz.
+1. Skopiuj tekst z karty **Curl** i wykonaj go w terminalu lub wierszu polecenia z włączoną obsługą narzędzia Curl. Wartość nagłówka autoryzacji zawiera tekst `Endpoint` ze spacją końcową, po której następuje klucz.
 
 1. Zastąp element `<Your question>` pytaniem `How large can my KB be?`. Jest ono podobne do pytania `How large a knowledge base can I create?`, ale nie identyczne. Usługa QnA Maker stosuje przetwarzanie języka naturalnego w celu określenia, czy dwa pytania są takie same.     
 
@@ -208,4 +208,4 @@ Dowiedz się więcej o rozmowy [osobowościach](../Concepts/best-practices.md#ch
 Aby uzyskać więcej informacji na temat odpowiedzi domyślnej, zobacz [Nie znaleziono dopasowań](../Concepts/confidence-score.md#no-match-found). 
 
 > [!div class="nextstepaction"]
-> [Pojęcia dotyczące bazy wiedzy](../Concepts/knowledge-base.md)
+> [Pojęcia dotyczące wiedzy](../Concepts/knowledge-base.md)

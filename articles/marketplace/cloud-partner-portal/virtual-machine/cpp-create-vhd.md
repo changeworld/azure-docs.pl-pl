@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096575"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883687"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Utwórz wirtualny dysk twardy zgodnych z platformą Azure
 
 Ten artykuł zawiera kroki wymagane do utworzenia wirtualnego dysku twardego (VHD) dla maszyny wirtualnej (VM) z tej oferty w portalu Azure Marketplace.  Zawiera także najlepsze rozwiązania dotyczące różnych aspektów, takich jak przy użyciu protokołu RDP (Remote Desktop), wybierając rozmiar maszyny wirtualnej, zainstalowanie najnowszych aktualizacji Windows i uogólnianie obrazu wirtualnego dysku twardego.  Poniższe sekcje głównie na wirtualnych dyskach twardych opartych na systemie windows; Aby uzyskać więcej informacji na temat tworzenia opartych na systemie Linux wirtualne dyski twarde, zobacz [systemu Linux na dystrybucje zalecane dla platformy Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
 > [!WARNING]
-> Zdecydowanie zaleca się, postępuj zgodnie ze wskazówkami w tym temacie, Utwórz Maszynę wirtualną zawierającą wstępnie skonfigurowane, zalecane dla systemu operacyjnego za pomocą platformy Azure.  Jeśli to nie jest zgodna z rozwiązaniem, następnie istnieje możliwość utworzyć i skonfigurować Maszynę wirtualną w środowisku lokalnym przy użyciu zatwierdzonego systemu operacyjnego.  Można skonfigurować i przygotować go do przekazywania, zgodnie z opisem w [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Zdecydowanie zaleca się, postępuj zgodnie ze wskazówkami w tym temacie, Utwórz Maszynę wirtualną zawierającą wstępnie skonfigurowane, zalecane dla systemu operacyjnego za pomocą platformy Azure.  Jeśli to nie jest zgodna z rozwiązaniem, następnie istnieje możliwość utworzyć i skonfigurować lokalną maszynę Wirtualną przy użyciu zatwierdzonego systemu operacyjnego.  Można skonfigurować i przygotować go do przekazywania, zgodnie z opisem w [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
 ## <a name="select-an-approved-base"></a>Wybierz podstawowy zatwierdzone

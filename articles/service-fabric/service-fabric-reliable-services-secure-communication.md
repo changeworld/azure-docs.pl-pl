@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: b6d4a44a53ba553ab4fd514c81867156192b69f5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662541"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886271"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Bezpieczna komunikacja usług zdalnych usług w C# usługi
 > [!div class="op_single_selector"]
-> * [C# w systemie Windows](service-fabric-reliable-services-secure-communication.md)
+> * [C# w Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
@@ -129,7 +129,7 @@ Aby zabezpieczyć usługi podczas korzystania z zdalna komunikacja usług przy u
        }
        ```
 
-        Jeśli dodasz `TransportSettings` sekcji w pliku settings.xml `FabricTransportRemotingListenerSettings ` zostanie załadowany w tej sekcji wszystkie ustawienia domyślne.
+        Jeśli dodasz `TransportSettings` sekcji w pliku settings.xml `FabricTransportRemotingListenerSettings` zostanie załadowany w tej sekcji wszystkie ustawienia domyślne.
 
         ```xml
         <!--"TransportSettings" section .-->

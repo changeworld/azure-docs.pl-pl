@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232871"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885591"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalowanie i Konfigurowanie adaptera StorSimple dla programu SharePoint
 ## <a name="overview"></a>Przegląd
@@ -226,9 +226,9 @@ Przed odinstalowaniem adaptera StorSimple dla oprogramowania SharePoint, należy
 4. Na **skonfigurować Adapter usługi StorSimple** kliknij **wyłączyć** znajdujący się poniżej każdej z baz danych zawartości, które chcesz usunąć z zewnętrznej usługi storage BLOB. 
 5. Usuwanie obiektów z programu SharePoint, a następnie przekaż je ponownie.
 
-Alternatywnie, można użyć programu Microsoft` RBS Migrate()` polecenia cmdlet programu PowerShell, dołączone do programu SharePoint. Aby uzyskać więcej informacji, zobacz [migracji zawartości do lub z SPZ](https://technet.microsoft.com/library/ff628255.aspx).
+Alternatywnie, można użyć programu Microsoft `RBS Migrate()` polecenia cmdlet programu PowerShell, dołączone do programu SharePoint. Aby uzyskać więcej informacji, zobacz [migracji zawartości do lub z SPZ](https://technet.microsoft.com/library/ff628255.aspx).
 
-Po przeniesieniu obiektów blob z powrotem do bazy danych zawartości, przejdź do następnego kroku: [odinstalowanie karty](#uninstall-the-adapter).
+Po przeniesieniu obiektów blob z powrotem do bazy danych zawartości, przejdź do następnego kroku: [Odinstalowywanie karty](#uninstall-the-adapter).
 
 ### <a name="uninstall-the-adapter"></a>Odinstalowywanie karty
 Po przeniesieniu obiektów blob z powrotem do bazy danych zawartości programu SQL Server, użyj jednej z następujących opcji do odinstalowania adaptera StorSimple dla programu SharePoint.

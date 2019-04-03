@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 77cbc73c6c6aef40c482b0cfe456dcbd4b7e85d0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435316"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886458"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -26,7 +26,7 @@ Usługa content protection formatów różne technologie klienta (na przykład i
 
 [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md) usługa funkcję dynamicznego tworzenia pakietów w usłudze Media Services umożliwia dostarczanie zawartości multimedialnej dla graczy klienta. Funkcję dynamicznego tworzenia pakietów jest funkcją, która jest dostępna na wszystkich standardowych **punkty końcowe przesyłania strumieniowego** (standardowa / Premium). 
 
-Aby móc korzystać z **funkcję dynamicznego tworzenia pakietów**, musisz mieć **zasobów** z zestawu plików MP4 i przesyłania strumieniowego pliki konfiguracyjne wymagane przez funkcję dynamicznego tworzenia pakietów usługi Media. Jednym ze sposobów przekazania plików jest Koduj plik (źródłowy) mezzanine za pomocą usługi Media Services. Aby udostępnić pliki wideo w zakodowanym elementem zawartości do klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie w oparciu o formatu określonego w manifeście klienta przesyłania strumieniowego (HLS, DASH lub Smooth), strumień jest dostarczany za pomocą wybranego protokołu.
+Aby móc korzystać z **funkcję dynamicznego tworzenia pakietów**, musisz mieć **zasobów** z zestawu plików MP4 i przesyłania strumieniowego pliki konfiguracyjne wymagane przez funkcję dynamicznego tworzenia pakietów usługi Media. Jednym ze sposobów uzyskiwania plików jest kodowanie pliku mezzanine (źródłowego) za pomocą usługi Media Services. Aby udostępnić pliki wideo w zakodowanym elementem zawartości do klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i tworzenie adresów URL przesyłania strumieniowego. Następnie w oparciu o formatu określonego w manifeście klienta przesyłania strumieniowego (HLS, DASH lub Smooth), strumień jest dostarczany za pomocą wybranego protokołu.
 
 Dzięki temu wystarczy przechowywać i opłacać pliki w jednym formacie magazynu, a usługa Media Services utworzy oraz udostępni właściwą odpowiedź na podstawie żądań klienta. 
 
@@ -60,7 +60,7 @@ Wykaz usługi Media Encoder Standard formaty i kodeki narzędzia, zobacz [format
 Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
 
 1. Tworzenie [wydarzenie na żywo](live-events-outputs-concept.md).
-1. Uzyskaj adresy URL pozyskiwania i skonfigurować koder lokalnych wysyłać wkład źródła danych przy użyciu adresu URL.
+1. Uzyskaj adresy URL pozyskiwania i skonfiguruj swoje lokalny koder wysyłać wkład źródła danych przy użyciu adresu URL.
 1. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
 1. Utwórz nową **zasobów**.
 1. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.<br/>**Na żywo dane wyjściowe** spowoduje zarchiwizowanie strumienia do **zasobów**.
@@ -196,7 +196,7 @@ Oto przykład Smooth Streaming manifestu:
 Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref), lub jeden z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

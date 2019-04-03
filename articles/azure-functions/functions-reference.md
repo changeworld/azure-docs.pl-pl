@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 01fce9813299465767bdaed7f3c2939813cfab87
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56339497"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
@@ -48,9 +48,9 @@ Plik function.json definiuje wyzwalacza funkcji, powiązania i inne ustawienia k
 
 | Właściwość | Wartości/typy | Komentarze |
 | --- | --- | --- |
-| `type` |ciąg |Typ powiązania. Na przykład `queueTrigger`. |
+| `type` |string |Typ powiązania. Na przykład `queueTrigger`. |
 | `direction` |"in" "out" |Wskazuje, czy powiązanie jest dla odbierania danych do funkcji lub wysyłanie danych przez funkcję. |
-| `name` |ciąg |Nazwa która jest używana do powiązanych danych w funkcji. Dla języka C# jest to nazwa argumentu; dla języka JavaScript to klucz na liście kluczy/wartości. |
+| `name` |string |Nazwa która jest używana do powiązanych danych w funkcji. Dla języka C# jest to nazwa argumentu; dla języka JavaScript to klucz na liście kluczy/wartości. |
 
 ## <a name="function-app"></a>Aplikacja funkcji
 Aplikacja funkcji zapewnia kontekst wykonania na platformie Azure, w którym funkcje są uruchomione. Aplikacja funkcji składa się z co najmniej jeden poszczególnych funkcji, które są zarządzane, wdrożyć i skalowane razem. Wszystkie funkcje w aplikacji funkcji Udostępnianie tego samego planu cenowego i ciągłe Wdrażanie wersji środowiska uruchomieniowego. Aplikacja funkcji można traktować jako sposób organizowania i zbiorczo zarządzania funkcjami. 

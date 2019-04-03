@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259911"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881045"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -201,7 +201,7 @@ Tak. [Emulatora usługi Azure Cosmos DB](local-emulator.md) zapewnia emulacji o 
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Dlaczego są różne wartości zmiennoprzecinkowe długo w dokumencie zaokrąglana przy przeglądaniu z poziomu Eksploratora danych w portalu.
 
-To ograniczenie języka JavaScript. JavaScript wykorzystuje liczb podwójnej precyzji formatu zmiennoprzecinkowego zgodnie z IEEE 754 i może bezpiecznie przechowywać liczby z zakresu od-(253 - 1) i 253-1 (czyli 9007199254740991) tylko.
+To ograniczenie języka JavaScript. JavaScript wykorzystuje liczb podwójnej precyzji formatu zmiennoprzecinkowego zgodnie z IEEE 754 i może bezpiecznie przechowywać liczby z zakresu od-(2<sup>53</sup> -1) i jest 2<sup>53</sup>-1 (czyli 9007199254740991) tylko.
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Gdzie są dozwolone uprawnienia w hierarchii obiektów?
 
@@ -292,7 +292,7 @@ Jeśli którekolwiek z tych różnic są problemem dla projektu, skontaktuj się
 
 Podziel się swoją opinią, w dowolnym z następujących sposobów:
 
-* [Głos użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 

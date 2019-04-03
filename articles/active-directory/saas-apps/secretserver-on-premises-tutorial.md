@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199786"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą klucza tajnego Server (lokalnie)
 
@@ -111,7 +111,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** polu tekstowym wprowadź nazwę użytkownika, wybranych wartości, na przykład: `https://secretserveronpremises.azure`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > Identyfikator jednostki powyżej jest tylko przykładem i masz swobodę wyboru unikatową wartość, która identyfikuje Twoje wystąpienie serwera klucz tajny w usłudze Azure AD. Trzeba będzie wysłać ten identyfikator jednostki [zespołem pomocy technicznej klienta wpis tajny serwera (lokalnie)](https://thycotic.force.com/support/s/) i ich konfigurowanie na bok. Aby uzyskać więcej informacji, przeczytaj [w tym artykule](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
@@ -199,7 +199,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Link "Użytkownicy i grupy"][202]
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Add** (Dodaj). Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania][203]
 
@@ -216,10 +216,10 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu kafelka wpis tajny serwera (lokalnie), w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji wpis tajny serwera (lokalnie).
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

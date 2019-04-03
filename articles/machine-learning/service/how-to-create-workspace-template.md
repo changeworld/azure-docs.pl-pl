@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obszaru roboczego przy użyciu szablonu
+title: Szablon usługi Azure Resource Manager umożliwia tworzenie obszaru roboczego
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć nowy obszar roboczy usługi Azure Machine Learning za pomocą szablonu usługi Azure Resource Manager.
 services: machine-learning
@@ -8,17 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/11/2019
-ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850081"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883194"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Utwórz obszar roboczy usługi Azure Machine Learning za pomocą szablonu
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Użyj szablonu usługi Azure Resource Manager utworzyć obszar roboczy usługi Azure Machine Learning
 
-W tym artykule dowiesz się, Utwórz obszar roboczy usługi Azure Machine Learning, za pomocą szablonów usługi Azure Resource Manager na kilka sposobów. 
+W tym artykule dowiesz się, Utwórz obszar roboczy usługi Azure Machine Learning, za pomocą szablonów usługi Azure Resource Manager na kilka sposobów. Szablon usługi Resource Manager ułatwia tworzenie zasobów jako jednej, skoordynowanej operacji. Szablon to dokument JSON, który definiuje zasoby, które są potrzebne do wdrożenia. Może on również określać parametrów wdrożenia. Parametry umożliwiają podawanie wartości wejściowych, korzystając z tego szablonu.
 
 Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -30,9 +31,7 @@ Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji przy użyciu szabl
 
 ## <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 
-Szablon usługi Resource Manager ułatwia tworzenie zasobów jako jednej, skoordynowanej operacji. Szablon to dokument JSON, który definiuje zasoby, które są potrzebne do wdrożenia. Może on również określać parametrów wdrożenia. Parametry umożliwiają podawanie wartości wejściowych, korzystając z tego szablonu.
-
-Następujący szablon może służyć do tworzenia obszaru roboczego usługi Azure Machine Learning i skojarzonych zasobów platformy Azure:
+Następujący szablon usługi Resource Manager może służyć do tworzenia obszaru roboczego usługi Azure Machine Learning i skojarzonych zasobów platformy Azure:
 
 ```json
 {

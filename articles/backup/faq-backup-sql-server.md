@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284582"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876432"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące bazy danych programu SQL Server, działające w kopii zapasowej maszyny Wirtualnej platformy Azure
 
@@ -42,7 +42,7 @@ Automatyczne poprawianie jako funkcja jest domyślnie dla wszystkich użytkownik
 Tak. Możesz ograniczyć szybkość, o których uruchamiany jest zasad tworzenia kopii zapasowej, aby zminimalizować wpływ na wystąpieniu programu SQL Server. Aby zmienić ustawienie:
 1. W wystąpieniu programu SQL Server w *C:\Program Files\Azure obciążenia Backup\bin* folderze utwórz *ExtensionSettingsOverrides.json* pliku.
 2. W *ExtensionSettingsOverrides.json* pliku, zmień **DefaultBackupTasksThreshold** ustawienie niższej wartości (na przykład 5). <br>
-  ` {"DefaultBackupTasksThreshold": 5}`
+  `{"DefaultBackupTasksThreshold": 5}`
 
 3. Zapisz zmiany i zamknij plik.
 4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie usługę **AzureWLBackupCoordinatorSvc**.

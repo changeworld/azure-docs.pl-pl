@@ -11,12 +11,12 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: f076b2e859d334b407fe5c93fcec1bb67cb75e48
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233263"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885495"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorowanie i zarządzanie zasobami programu SharePoint za pomocą usługi Azure Logic Apps
 
@@ -72,7 +72,7 @@ Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jes
    Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
    Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
 
-1. Po wyświetleniu monitu zaloguj się w podaj niezbędne informacje o połączeniu. Jeśli używasz programu SharePoint Server, upewnij się, możesz wybrać **Połącz za pośrednictwem bramy danych lokalnych**. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+1. Po wyświetleniu monitu zaloguj się w podaj niezbędne informacje o połączeniu. Jeśli używasz programu SharePoint Server, upewnij się, możesz wybrać **Połącz za pośrednictwem lokalnej bramy danych**. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
 1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
 

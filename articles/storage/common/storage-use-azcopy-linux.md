@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467377"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882229"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Transferowanie danych za pomocą narzędzia AzCopy w systemie Linux
 
@@ -102,7 +102,7 @@ azcopy \
     --source-key <key> 
 ```
 
-Jeśli folder `/mnt/myfiles` nie istnieje, narzędzie AzCopy utworzy go i pobiera `abc.txt ` do nowego folderu. 
+Jeśli folder `/mnt/myfiles` nie istnieje, narzędzie AzCopy utworzy go i pobiera `abc.txt` do nowego folderu. 
 
 ### <a name="download-single-blob-from-secondary-region"></a>Pobierz pojedynczy obiekt blob z regionu pomocniczego
 
@@ -705,12 +705,12 @@ Aby uzyskać więcej informacji na temat usługi Azure Storage i narzędzia AzCo
 ### <a name="azure-storage-documentation"></a>Dokumentacja usługi Azure Storage:
 * [Wprowadzenie do usługi Azure Storage](../storage-introduction.md)
 * [Tworzenie konta magazynu](../storage-create-storage-account.md)
-* [Zarządzanie obiektami blob za pomocą Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
+* [Zarządzanie obiektami blob za pomocą programu Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](../storage-azure-cli.md)
 * [Jak używać magazynu obiektów Blob w języku C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Używanie usługi Blob Storage w języku Java](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Używanie usługi Blob Storage w oprogramowaniu Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Używanie usługi Blob Storage w języku Python](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Jak używać Magazynu obiektów Blob w języku Java](../blobs/storage-java-how-to-use-blob-storage.md)
+* [Jak używać Magazynu obiektów Blob w oprogramowaniu Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Jak używać Magazynu obiektów Blob w języku Python](../blobs/storage-python-how-to-use-blob-storage.md)
 
 ### <a name="azure-storage-blog-posts"></a>Wpisy blogu magazynu platformy Azure:
 * [Ogłoszenie narzędzie AzCopy w systemie Linux (wersja zapoznawcza)](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)

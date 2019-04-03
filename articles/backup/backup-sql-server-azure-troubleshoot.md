@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286018"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847450"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -98,12 +98,18 @@ Następujące kody błędów są wyświetlane podczas przywracania zadanie zako�
 |---|---|---|
 | Przywracanie nie powiodło się, ponieważ baza danych nie można przełączyć do trybu offline. | Podczas wykonywania przywracania, docelowa baza danych musi zostać przełączone do trybu offline. Usługa Azure Backup nie jest w stanie wyświetlić te dane w trybie offline. | Użyj dodatkowe szczegóły w menu błędzie portalu platformy Azure, aby zawęzić głównych przyczyn. Aby uzyskać więcej informacji, zobacz [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Nie można odnaleźć certyfikatu serwera z odciskiem palca w elemencie docelowym. | Wzorzec bazy danych w wystąpieniu docelowym nie ma odcisku palca szyfrowania prawidłowe. | Zaimportuj prawidłowy odcisk palca używane w wystąpieniu źródłowym, do obiektu docelowego. |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|
+| Dziennik kopii zapasowej używany przy odzyskiwaniu zawiera zmiany zarejestrowane zbiorczo. Nie można zatrzymać w umownym punkcie w czasie, zgodnie z wytycznymi SQL. | Gdy baza danych jest w trybie odzyskiwania zarejestrowane zbiorczo, nie można odzyskać danych między niepełnym dziennikiem transakcji i dalej dziennika transakcji. | Wybierz innego punktu w czasie do odzyskania. [Dowiedz się więcej](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>Błędy rejestracji
 

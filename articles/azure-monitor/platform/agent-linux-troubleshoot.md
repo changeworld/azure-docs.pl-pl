@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c9d5b214d0c79f84372ba679db1cbd4a7ad9858
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372594"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884180"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy związane z agenta usługi Log Analytics dla systemu Linux 
 
@@ -36,7 +36,7 @@ Jeśli żadna z powyższych czynności działa, następujących kanałów pomocy
 
  Plik | Ścieżka
  ---- | -----
- Agent analizy dziennika dla pliku dziennika systemu Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
+ Agent analizy dziennika dla pliku dziennika systemu Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Plik dziennika konfiguracji agenta analizy dzienników | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
  Firma Microsoft zaleca używanie naszego narzędzia do modułu zbierającego dzienników do pobierania dzienników ważne podczas rozwiązywania problemów lub przed przesłaniem problem w usłudze GitHub. Możesz przeczytać więcej na temat narzędzia i sposobu jego uruchamiania [tutaj](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md).

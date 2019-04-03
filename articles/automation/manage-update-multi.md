@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/10/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65ea01047743c5894ac2ae8b38a197b57cb6971c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531323"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884928"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -29,7 +29,6 @@ Rozwiązanie Update Management umożliwia zarządzanie aktualizacjami i poprawka
 
 Aby korzystać z rozwiązania Update Management, potrzebne są:
 
-- Konto Uruchom jako usługi Azure Automation. Aby dowiedzieć się, jak utworzyć, zobacz [wprowadzenie do usługi Azure Automation](automation-offering-get-started.md).
 - Maszyna wirtualna lub komputer z zainstalowanym obsługiwanym systemem operacyjnym.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne

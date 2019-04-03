@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: e872c29712c3fadca676ec87870bcc5c4eb58565
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 028c69294d693202b626044cb903dc3124b5d7b7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727403"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863223"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 
@@ -50,7 +50,7 @@ Azure dostrajania automatycznego usługi SQL Database udostępnia swoje podstawo
 
 ## <a name="use-automatic-tuning"></a>Użyj automatycznego dostrajania
 
-Automatyczne dostrajanie musi być włączone ręcznie w Twojej subskrypcji. Aby włączyć dostrajania automatycznego za pomocą witryny Azure portal, zobacz [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
+Automatyczne dostrajanie musi być włączona w Twojej subskrypcji. Aby włączyć dostrajania automatycznego za pomocą witryny Azure portal, zobacz [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
 
 Dostrajanie automatyczne może działać autonomicznie za pomocą automatycznego stosowania zalecenia dotyczące dostrajania, w tym automatyczne weryfikacji wzrost wydajności. 
 
@@ -74,7 +74,9 @@ Dostępne są następujące opcje dostrajania automatycznego dostępnych w usłu
 
 Automatyczne dostrajanie identyfikuje **CREATE INDEX**, **DROP INDEX**, i **WYMUŚ OSTATNI dobry PLAN** zaleceń, które można zoptymalizować wydajność bazy danych i przedstawia je w [Witryny azure portal](sql-database-advisor-portal.md)i udostępnia je za pośrednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). 
 
-Można ręcznie zastosować zalecenia dotyczące dostrajania za pomocą portalu lub umożliwić dostrajania automatycznego autonomicznie stosowanie zalecenia dotyczące dostrajania za Ciebie. Korzyści wynikające z informacją o systemie autonomicznie stosowanie zalecenia dotyczące dostrajania dla Ciebie jest automatycznie weryfikuje istnieje dodatnią korzyści na wydajność obciążeń, a w przypadku braku poprawy istotnie poprawiającą wydajność wykryto będzie Przywróć automatycznie zalecenia dostrajania. Należy pamiętać, w przypadku zapytań dotyczy dostosowywania zaleceń, które nie są często wykonywane, fazy weryfikacji może potrwać do 72 godzin zgodnie z projektem. W przypadku, gdy chcesz ręcznie zastosować dostrajania zalecenia, wydajność automatycznego sprawdzania poprawności i mechanizmy wycofanie nie są dostępne.
+Można ręcznie zastosować zalecenia dotyczące dostrajania za pomocą portalu lub umożliwić dostrajania automatycznego autonomicznie stosowanie zalecenia dotyczące dostrajania za Ciebie. Korzyści wynikające z informacją o systemie autonomicznie stosowanie zalecenia dotyczące dostrajania dla Ciebie jest automatycznie weryfikuje istnieje dodatnią korzyści na wydajność obciążeń, a w przypadku braku poprawy istotnie poprawiającą wydajność wykryto będzie Przywróć automatycznie zalecenia dostrajania. Należy pamiętać, w przypadku zapytań dotyczy dostosowywania zaleceń, które nie są często wykonywane, fazy weryfikacji może potrwać do 72 godzin zgodnie z projektem.
+
+W przypadku, gdy chcesz ręcznie zastosować dostrajania zalecenia, wydajność automatycznego sprawdzania poprawności i mechanizmy wycofanie nie są dostępne. Ponadto Ręczne stosowanie zalecenia pozostaną aktywne i widoczne na liście zaleceń przez 24-48 godzin. zanim system automatycznie wycofuje je. Jeśli chcesz usunąć wcześniej zalecenia, możesz ręcznie odrzucić je.
 
 Opcje dostrajania automatycznego można niezależnie włączać lub wyłączać na bazę danych lub mogą być skonfigurowane na serwerze bazy danych SQL i stosowane w każdej bazie danych, która dziedziczy ustawienia z serwera. Serwery usługi SQL Database może dziedziczyć ustawień domyślnych platformy Azure dla ustawienia automatycznego dostrajania. Ustawień domyślnych platformy Azure, w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
 

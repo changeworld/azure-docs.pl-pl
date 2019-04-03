@@ -1,33 +1,24 @@
 ---
-title: Dostosowywanie klastrów HDInsight za pomocą akcji skryptu, Azure
+title: Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 description: Dodaj niestandardowe składniki w klastrach HDInsight opartych na systemie Linux przy użyciu akcji skryptu. Akcje skryptu to skrypty powłoki Bash, które mogą służyć do dostosowywania konfiguracji klastra lub dodać dodatkowych usług i narzędzi, takich jak Hue, Solr lub języka R.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/02/2019
+ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361697"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885574"
 ---
-# <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux przy użyciu akcji skryptu
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 
 Usługa Azure HDInsight udostępnia metodę konfiguracji o nazwie **akcji skryptu** wywołującej skryptów niestandardowych, aby dostosować klastra. Skrypty te służą do instalowania dodatkowych składników i zmianę ustawień konfiguracji. Akcje skryptu może służyć w trakcie lub po utworzeniu klastra.
 
-> [!IMPORTANT]  
-> Możliwość korzystania z akcji skryptów w klastrze usługi już uruchomionego jest dostępna tylko w przypadku klastrów HDInsight opartych na systemie Linux.
->
-> Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz [wycofanie Windows HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 Akcje skryptu można także publikować w portalu Azure Marketplace jako aplikacji HDInsight. Aby uzyskać więcej informacji na temat aplikacji HDInsight, zobacz [publikowania aplikacji HDInsight w portalu Azure Marketplace](hdinsight-apps-publish-applications.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -225,7 +216,9 @@ Uzyskaj więcej informacji na temat sposobu wdrażania szablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Za pomocą akcji skryptu, podczas tworzenia klastra za pomocą programu Azure PowerShell
 
-W tej sekcji użyjesz [AzHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+W tej sekcji użyjesz [AzHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby użyć tych poleceń programu PowerShell, musisz mieć [modułu AZ](https://docs.microsoft.com/powershell/azure/overview).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Poniższy skrypt pokazuje, jak zastosować akcji skryptu, podczas tworzenia klastra przy użyciu programu PowerShell:
 
@@ -277,7 +270,7 @@ Przejdź do [witryny Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Dotyczą akcji skryptu działającego klastra za pomocą programu Azure PowerShell
 
-Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Aby użyć tych poleceń programu PowerShell, musisz mieć [modułu AZ](https://docs.microsoft.com/powershell/azure/overview).
 
 Poniższy przykład przedstawia sposób stosowania akcji skryptu do działającego klastra:
 

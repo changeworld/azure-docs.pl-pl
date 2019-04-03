@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc78dade345c9f9c72cf936136d9969b79bc1398
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878591"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -169,10 +169,10 @@ Aby wyświetlić listę opcji, wpisz ciąg `/help` w wierszu polecenia.
 
 | Opcja | Opis | Polecenie | Argumenty |
 | --- | --- | --- | --- |
-| **Rozpocznij** |Uruchamiania emulatora magazynu. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
+| **Uruchamianie** |Uruchamiania emulatora magazynu. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
 | **Stop** |Zatrzymuje emulatora magazynu. |`AzureStorageEmulator.exe stop` | |
 | **Stan** |Wyświetla stan emulatora magazynu. |`AzureStorageEmulator.exe status` | |
-| **Usuń zaznaczenie** |Czyści dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*Obiekt blob*: Czyści dane z obiektu blob. <br/>*kolejka*: Czyści dane w kolejce. <br/>*Tabela*: Czyści tabeli danych. <br/>*Wszystkie*: Czyści wszystkie dane w przypadku wszystkich usług. |
+| **Clear** |Czyści dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*Obiekt blob*: Czyści dane z obiektu blob. <br/>*kolejka*: Czyści dane w kolejce. <br/>*Tabela*: Czyści tabeli danych. <br/>*Wszystkie*: Czyści wszystkie dane w przypadku wszystkich usług. |
 | **Init** |Przeprowadza jednorazowe inicjowanie, aby skonfigurować emulator. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Serwer serverName\instanceName*: Określa serwera hostującego wystąpienie programu SQL. <br/>*instanceName — sqlinstance*: Określa nazwę wystąpienia serwera SQL, który ma być używany w domyślnym wystąpieniu serwera. <br/>*-forcecreate*: Wymusza utworzenie bazy danych SQL, nawet jeśli już istnieje. <br/>*-skipcreate*: Pomija tworzenie bazy danych SQL. To ma pierwszeństwo przed - forcecreate.<br/>*-reserveports*: Próby zarezerwowania portach HTTP skojarzone z usługami.<br/>*-unreserveports*: Podejmie próbę usunięcia rezerwacji dla portów HTTP skojarzone z usługami. To ma pierwszeństwo przed - reserveports.<br/>*-inprocess*: Wykonuje inicjowania w bieżącym procesie zamiast duplikowania nowego procesu. Bieżący proces musi zostać uruchomiona z podwyższonym poziomem uprawnień, jeśli zmiana portu rezerwacji. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Różnice między emulatora magazynu i usługi Azure Storage

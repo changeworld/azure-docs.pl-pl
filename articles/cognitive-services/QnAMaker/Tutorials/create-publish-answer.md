@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102166"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877282"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 
@@ -32,10 +32,10 @@ Ten samouczek przedstawia sposób programowego tworzenia i publikowania bazy wie
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 
-* [Tworzenie bazy wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [Pobieranie szczegółów operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [Pobieranie szczegółów bazy wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
-* [Pobieranie punktów końcowych bazy wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
+* [Tworzenie bazy wiedzy Knowledge base (kb)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+* [Pobierz szczegóły operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [Uzyskiwanie szczegółowych informacji w bazie wiedzy Knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
+* [Pobierz punkty końcowe w bazie wiedzy Knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
 * [Publikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -158,7 +158,7 @@ _Podstawowy punkt końcowy_ jest przekazywany jako nagłówek do uwierzytelniani
 
 |Nazwa nagłówka|Wartość nagłówka|
 |--|--|
-|Autoryzacja|`Endpoint ` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
+|Autoryzacja|`Endpoint` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
 
 Treść żądania musi przekazać prawidłowe dane w formacie JSON:
 
@@ -248,4 +248,4 @@ Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stro
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Dokumentacja interfejsu API REST usługi QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

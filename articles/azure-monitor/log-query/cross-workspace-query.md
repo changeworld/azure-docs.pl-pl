@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: d69ddcd44fd947f3d1dc61ac960e7b55258c163e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872016"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882246"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Wykonywać zapytania obejmujące wiele zasobów dzienników w usłudze Azure Monitor  
 
@@ -50,7 +50,7 @@ Identyfikowanie obszar roboczy można wykonać jeden z kilku sposobów:
 
 * Kwalifikowana nazwa - jest "Pełna nazwa" w obszarze roboczym składa się z nazwy subskrypcji, grupy zasobów i nazwy składnika w następującym formacie: *componentName-subscriptionName/resourceGroup*. 
 
-    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
     >Ponieważ nazwy subskrypcji platformy Azure nie są unikatowe, ten identyfikator może być niejednoznaczna. 

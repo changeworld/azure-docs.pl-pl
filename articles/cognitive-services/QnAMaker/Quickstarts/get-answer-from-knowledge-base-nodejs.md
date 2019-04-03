@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f055ecdcc157a9ecf1a564913b0a4f889364b427
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1caec1cd0c05fbc306b1a19c88fbe469be7fa6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309829"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881753"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu środowiska Node.js
 
@@ -56,7 +56,7 @@ Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA
 
 [!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
 
-Wartość nagłówka `Authorization` zawiera ciąg `EndpointKey `. 
+Wartość nagłówka `Authorization` zawiera ciąg `EndpointKey`. 
 
 ## <a name="install-the-dependencies"></a>Instalowanie zależności
 
@@ -85,4 +85,4 @@ Dowiedz się więcej o [żądania](../how-to/metadata-generateanswer-usage.md#ge
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Dokumentacja interfejsu API REST usługi QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

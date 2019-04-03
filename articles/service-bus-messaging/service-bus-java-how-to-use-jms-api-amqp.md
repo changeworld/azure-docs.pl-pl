@@ -1,5 +1,5 @@
 ---
-title: Jak używać protokołu AMQP 1.0 przy użyciu interfejsu API Java usługi Service Bus | Dokumentacja firmy Microsoft
+title: Sposób korzystania z protokołu AMQP 1.0 przy użyciu interfejsu API języka Java JMS usługi Service Bus | Dokumentacja firmy Microsoft
 description: Jak używać usługi wiadomości Java (JMS) za pomocą usługi Azure Service Bus i zaawansowane komunikat Queuing Protocol (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453409"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885557"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API za pomocą usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikat (QUEUING Protocol) 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów protokołu używanego do tworzenia niezawodnych, międzyplatformowych aplikacji do obsługi wiadomości.
@@ -385,5 +385,5 @@ Można również użyć usługi Service Bus protokołu AMQP 1.0 w innych języka
 * [Sposób korzystania z protokołu AMQP 1.0 przy użyciu interfejsu API .NET usługi Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus protokołu AMQP 1.0 przewodnik dewelopera](service-bus-amqp-dotnet.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Centrum deweloperów języka Java](https://azure.microsoft.com/develop/java/)
+* [Java Developer Center](https://azure.microsoft.com/develop/java/)
 

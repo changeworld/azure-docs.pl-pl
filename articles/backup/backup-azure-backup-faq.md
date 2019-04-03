@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993414"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885880"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -40,7 +40,7 @@ Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zan
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dla maszyn wirtualnych z kopii zapasowej w magazynie usługi Recovery Services mogą zrobić elementu poziom przywracania (ILR)?
 - ILR jest obsługiwana dla maszyn wirtualnych platformy Azure, kopie zapasowe wykonywane kopii zapasowych maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [artykułu](backup-azure-restore-files-from-vm.md)
-- ILR nie jest obsługiwane dla punktów odzyskiwania online maszyn wirtualnych w środowisku lokalnym, wspierana przez usługę Azure backup Server lub programu System Center DPM.
+- ILR nie jest obsługiwane dla punktów odzyskiwania online maszyn wirtualnych w środowisku lokalnym kopii zapasowej przez usługę Azure backup Server lub programu System Center DPM.
 
 
 ## <a name="azure-backup-agent"></a>Agent usługi Azure Backup
@@ -93,7 +93,7 @@ Tak.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jakie systemy operacyjne są obsługiwane dla kopii zapasowej?
 Usługa Azure Backup obsługuje następujące systemy operacyjne do wykonywania kopii zapasowych plików i folderów oraz aplikacji chronionych przez usługi Azure Backup Server i programu DPM.
 
-**OS** | **SKU** | **Szczegóły**
+**System operacyjny** | **SKU** | **Szczegóły**
 --- | --- | ---
 Stacja robocza | |
 System Windows 10 64-bitowy | Enterprise, Pro, Home | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.

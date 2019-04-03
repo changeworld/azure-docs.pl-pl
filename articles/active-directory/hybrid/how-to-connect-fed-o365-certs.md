@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177725"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883449"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
 ## <a name="overview"></a>Przegląd
@@ -118,7 +118,7 @@ Sprawdź następujące polecenie, aby potwierdzić, że certyfikat zostaną auto
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-gdzie `(your_FS_name) `jest zastępowany nazwą hosta usługi federacyjnej, organizacja używa przykład fs.contoso.com.  Jeśli jest to możliwe sprawdzić, oba te ustawienia pomyślnie, nie trzeba nic robić.  
+gdzie `(your_FS_name)` jest zastępowany nazwą hosta usługi federacyjnej, organizacja używa przykład fs.contoso.com.  Jeśli jest to możliwe sprawdzić, oba te ustawienia pomyślnie, nie trzeba nic robić.  
 
 Przykład: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## Odnów certyfikat podpisywania ręcznie tokenu <a name="manualrenew"></a>

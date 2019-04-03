@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0facd15d8bc0701448707f48b5a1e93fe3ac592c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 936ad2e49aaf449144296dd941a3fbc42719fe4f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200733"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Skillport
 
@@ -127,7 +127,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     c. W polu tekstowym **Reply URL** (Adres URL odpowiedzi) wpisz adres URL:
     
-      Centrum danych z Unii Europejskiej: ` https://adfs.skillport.eu/adfs/ls/`
+      Centrum danych z Unii Europejskiej: `https://adfs.skillport.eu/adfs/ls/`
     
       Centrum danych USA: `https://sso.skillport.com/sp/ACS.saml2`
  
@@ -196,7 +196,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Przypisz użytkownika][202] 
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Add** (Dodaj). Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
@@ -216,7 +216,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f79700d3b57623693bf1d0d62dd9ab171df464fb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533242"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882519"
 ---
 # <a name="what-is-text-analytics-api"></a>Co to jest interfejs API analizy tekstu?
 
@@ -77,7 +77,7 @@ Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postac
 | Maksymalny rozmiar całego żądania | 1 MB |
 | Maksymalna liczba dokumentów w żądaniu | 1000 dokumentów |
 
-Limit szybkości to 100 wywołań na minutę. Należy pamiętać, że można przesłać dużą liczbę dokumentów w jednym wywołaniu (maksymalnie 1000 dokumentów).
+Ograniczanie liczby wywołań jest 100 wywołań na drugim i 1000 wywołań na minutę. Należy pamiętać, że można przesłać dużą liczbę dokumentów w jednym wywołaniu (maksymalnie 1000 dokumentów).
 
 ## <a name="unicode-encoding"></a>Kodowanie Unicode
 

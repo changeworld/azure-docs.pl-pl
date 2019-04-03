@@ -4,12 +4,12 @@ ms.author: bwren
 ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
-ms.openlocfilehash: 92e57f12e4525fe5769e8b09d34345cdac362c32
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7578cf914030dfb9a116d26c1006791ef3a1401f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741055"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58873009"
 ---
 >[!NOTE]
-> W tym artykule został niedawno zaktualizowany do korzystania z termin dzienniki usługi Azure Monitor zamiast usługi Log Analytics. Dane dziennika będą nadal przechowywane w obszarze roboczym usługi Log Analytics i jest nadal zbierania i analizowania przez tę samą usługę Log Analytics. Aktualizujemy terminologii w celu lepszego odzwierciedlenia rolę [dzienników w usłudze Azure Monitor](../articles/azure-monitor/platform/data-collection.md#logs). Zobacz [zmiany terminologia dotycząca usługi Azure Monitor](../articles/azure-monitor/azure-monitor-rebrand.md) Aby uzyskać szczegółowe informacje.
+> W tym artykule został niedawno zaktualizowany do korzystania z termin dzienniki usługi Azure Monitor zamiast usługi Log Analytics. Dane dziennika będą nadal przechowywane w obszarze roboczym usługi Log Analytics i jest nadal zbierania i analizowania przez tę samą usługę Log Analytics. Aktualizujemy terminologii w celu lepszego odzwierciedlenia rolę [dzienników w usłudze Azure Monitor](../articles/azure-monitor/platform/data-platform-logs.md). Zobacz [zmiany terminologia dotycząca usługi Azure Monitor](../articles/azure-monitor/azure-monitor-rebrand.md) Aby uzyskać szczegółowe informacje.

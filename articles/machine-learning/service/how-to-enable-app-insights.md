@@ -1,7 +1,7 @@
 ---
-title: Modele monitorowanie za pomocą usługi Application Insights
+title: Konfigurowanie usługi Azure Application Insights do monitorowania Obiektywnych modeli uczenia maszynowego
 titleSuffix: Azure Machine Learning service
-description: Usługa Application Insights umożliwia monitorowanie usług sieci web wdrażane za pomocą usługi Azure Machine Learning
+description: Monitorowanie usług sieci web wdrażane za pomocą usługi Azure Machine Learning, za pomocą usługi Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 1/07/2019
-ms.custom: seodec18
-ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847953"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885506"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitoruj swoje modele usługi Azure Machine Learning z usługą Application Insights
 
@@ -36,7 +36,7 @@ W tym artykule dowiesz się, jak skonfigurować usługi Azure Application Insigh
 * Model uczenia maszynowego uczonego do wdrożenia usługi Azure Kubernetes Service (AKS) lub wystąpienia kontenera platformy Azure (ACI). Jeśli nie masz, zobacz [Train model klasyfikacji obrazów](tutorial-train-models-with-aml.md) samouczka.
 
 
-## <a name="enable-and-disable-from-the-sdk"></a>Włączanie i wyłączanie z zestawu SDK
+## <a name="use-sdk-to-configure"></a>Konfigurowanie przy użyciu zestawu SDK 
 
 ### <a name="update-a-deployed-service"></a>Aktualizowania wdrożonej usługi
 1. Zidentyfikuj usługi w obszarze roboczym. Wartość `ws` to nazwa obszaru roboczego.
@@ -77,7 +77,7 @@ Aby wyłączyć usługę Application Insights, użyj następującego kodu:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="enable-and-disable-in-the-portal"></a>Włączanie i wyłączanie w portalu
+## <a name="use-portal-to-configure"></a>Konfigurowanie za pomocą portalu
 
 Można włączyć i wyłączyć usługę Application Insights w witrynie Azure portal.
 
@@ -85,15 +85,15 @@ Można włączyć i wyłączyć usługę Application Insights w witrynie Azure p
 
 1. Na **wdrożeń** , a następnie wybierz usługę, której chcesz włączyć usługi Application Insights.
 
-   [![Lista usług na karcie wdrożenia](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![List usług na karcie wdrożenia](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Wybierz pozycję **Edit** (Edytuj).
 
-   [![Przycisk Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Eprzycisk Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. W **Zaawansowane ustawienia**, wybierz opcję **diagnostykę włączyć usługi AppInsights** pole wyboru.
 
-   [![Zaznaczenie pola wyboru dotyczące włączania diagnostyki](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Szaznaczone pole wyboru włączenia diagnostyki](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Wybierz **aktualizacji** w dolnej części ekranu, aby zastosować zmiany. 
 
@@ -101,11 +101,11 @@ Można włączyć i wyłączyć usługę Application Insights w witrynie Azure p
 1. W [witryny Azure portal](https://portal.azure.com), Otwórz obszar roboczy.
 1. Wybierz **wdrożeń**, wybierz usługę, a wybierz **Edytuj**.
 
-   [![Kliknij przycisk Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Uprzycisk Edytuj SE](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. W **Zaawansowane ustawienia**, wyczyść **diagnostykę włączyć usługi AppInsights** pole wyboru. 
 
-   [![Wyczyszczone pole wyboru włączenia diagnostyki](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Cpole wyboru leared włączenia diagnostyki](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Wybierz **aktualizacji** w dolnej części ekranu, aby zastosować zmiany. 
  
@@ -119,12 +119,12 @@ Aby go wyświetlić:
 
 1. Wybierz **Przegląd** kartę, aby wyświetlić podstawowy zestaw metryk dla Twojej usługi.
 
-   [![Przegląd](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![Omigracji](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 3. Się zapozna Twoje ślady niestandardowe, wybierz **analizy**.
 4. W sekcji schematu wybierz **ślady**. Następnie wybierz pozycję **Uruchom** kwerendy. Dane powinny być wyświetlane w postaci tabeli i powinny być mapowane do niestandardowych połączeń w pliku wyników. 
 
-   [![Niestandardowe śledzenie](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Cślady niestandardowe](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Aby dowiedzieć się więcej o tym, jak używać usługi Application Insights, zobacz [co to jest usługa Application Insights?](../../azure-monitor/app/app-insights-overview.md).
     
@@ -138,6 +138,4 @@ Aby dowiedzieć się więcej o tym, jak używać usługi Application Insights, z
 ## <a name="next-steps"></a>Kolejne kroki
 Może również zbierać dane na modeli w produkcji. Przeczytaj artykuł [zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md). 
 
-
-## <a name="other-references"></a>Inne odwołania
-* [Usługa Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)
+Przeczytaj również [usługi Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).

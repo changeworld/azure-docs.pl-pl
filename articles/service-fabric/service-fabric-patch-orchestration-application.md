@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: bce4946b62e3678f7fa8d5f7f6431441cc00b252
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762841"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847746"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -325,7 +325,7 @@ Jeśli klaster może tolerować systemem n-1-Liczba domen uaktualnienia podczas 
 
 PYTANIE: **Ile czasu zajmuje take zastosowania poprawki względem węzła?**
 
-A. Stosowanie poprawek węzła może potrwać (na przykład: [Aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/wdsi/definitions)) do godzin (na przykład: [Aktualizacje zbiorcze Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
+A. Stosowanie poprawek węzła może potrwać (na przykład: [Aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions)) do godzin (na przykład: [Aktualizacje zbiorcze Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
  - Rozmiar aktualizacji
  - Liczba aktualizacji, które ma być stosowana w okno stosowania poprawek
  - Czas wymagany do zainstalowania aktualizacji, ponowny rozruch węzła (jeśli jest to wymagane) i Zakończ kroki instalacji po ponownym uruchomieniu.

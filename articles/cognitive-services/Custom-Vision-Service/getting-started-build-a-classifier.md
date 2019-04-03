@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088013"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886441"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -27,12 +27,12 @@ Aby użyć usługi Custom Vision Service Klasyfikacja obrazów, należy utworzy�
 - Zestaw obrazów za pomocą którego ma zostać uczyć klasyfikatory. Poniżej znajdują się porady na temat wybierania obrazów.
 
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure Portal
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure portal
 Aby korzystać z usługi Custom Vision Service, konieczne będzie utworzenie Custom Vision uczenia i przewidywania zasobów w w [witryny Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Spowoduje to utworzenie szkolenia i prognozowania zasobów. 
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https://customvision.ai) i wybierz __Zaloguj__. Zaloguj się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure Portal.
+W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https://customvision.ai) i wybierz __Zaloguj__. Zaloguj się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure portal.
 
 ![Obraz strony logowania](./media/browser-home.png)
 
@@ -43,8 +43,8 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
 
 1. Wprowadź nazwę i opis dla projektu. Następnie wybierz grupę zasobów. Jeśli konto logowania jest skojarzony z kontem platformy Azure, lista rozwijana grupy zasobów spowoduje wyświetlenie wszystkich grup zasobów platformy Azure zawierające zasób usługi Custom Vision. 
 
-> [!NOTE]
-> Jeśli żadna grupa zasobów jest dostępny, sprawdź, czy po zalogowaniu do [customvision.ai](https://customvision.ai) z tego samego konta, jak używane do logowania się do [witryny Azure Portal](https://portal.azure.com/). Ponadto, upewnij się, że wybrano ten sam "Directory" w portalu usługi Custom Vision jako katalog w witrynie Azure portal, gdzie znajdują się Twoje zasoby Custom Vision. W obu lokacjach katalogu można wybrać z rozwijanego menu konta w prawym górnym rogu ekranu. 
+   > [!NOTE]
+   > Jeśli żadna grupa zasobów jest dostępny, sprawdź, czy po zalogowaniu do [customvision.ai](https://customvision.ai) z tego samego konta, jak używane do logowania się do [witryny Azure portal](https://portal.azure.com/). Ponadto, upewnij się, że wybrano ten sam "Directory" w portalu usługi Custom Vision jako katalog w witrynie Azure portal, gdzie znajdują się Twoje zasoby Custom Vision. W obu lokacjach katalogu można wybrać z rozwijanego menu konta w prawym górnym rogu ekranu. 
 
 1. Wybierz __klasyfikacji__ w obszarze __typów projektów__. Następnie w obszarze __typy klasyfikacji__, wybierają **Multilabel** lub **kontra**, w zależności od danego przypadku użycia. Dowolna liczba tagów w multilabel klasyfikacja ma zastosowanie do obrazu (zero lub więcej), podczas gdy klasyfikacji wieloklasowej sortuje obrazy w jednej kategorii (każdego obrazu, który prześlesz zostaną posortowane w najprawdopodobniej tag). Będzie można później zmienić typ klasyfikacji, w razie potrzeby.
 
@@ -53,10 +53,10 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
     |Domain|Przeznaczenie|
     |---|---|
     |__Ogólny__| Zoptymalizowane pod kątem szerokiego zakresu zadań klasyfikacji obrazów. Jeśli żaden z innych domen są odpowiednie lub wiesz, która domena, do wyboru, wybierz domenę ogólnego. |
-    |__Żywności__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
+    |__Żywność__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
     |__Charakterystycznych elementów krajobrazu__|Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w zdjęcia. Ta domena działa, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zakłócane przez osoby przed nim.|
-    |__Handlu detalicznego__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
-    |__Zawartość dla dorosłych__|Zoptymalizowana, aby dokładniej zdefiniować treści dla dorosłych i zawartości — zawartość dla dorosłych. Na przykład jeśli chcesz zablokować obrazów osób w kąpieli kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora, aby to zrobić.|
+    |__Sprzedaż detaliczna__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
+    |__Dla dorosłych__|Zoptymalizowana, aby dokładniej zdefiniować treści dla dorosłych i zawartości — zawartość dla dorosłych. Na przykład jeśli chcesz zablokować obrazów osób w kąpieli kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora, aby to zrobić.|
     |__Compact domen__| Zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez compact domen można wyeksportować do uruchomienia lokalnie.|
     
 1. Na koniec wybierz pozycję __Tworzenie projektu__.
@@ -96,12 +96,7 @@ W tej sekcji możesz przekazać i ręcznie tagować obrazy w celu nauczenia klas
 
     ![Pasek postępu pokazuje wszystkie zadania zostały zakończone.](./media/getting-started-build-a-classifier/add-images04.png)
 
-Aby przekazać inny zestaw obrazów, powrót do początku tej sekcji, a następnie powtórz kroki. W pewnym momencie w projekcie, użytkownik może być konieczne dodanie _ujemne przykłady_ dzięki bardziej precyzyjne klasyfikatora. Ujemna próbki są tymi, które pasuje do żadnego innymi tagów. Podczas przekazywania tych obrazów stosowanie specjalnych **ujemna** etykiety do nich.
-
-> [!NOTE]
-> Custom Vision Service obsługuje niektóre obsługi automatycznego obrazów ujemna. Na przykład jeśli tworzysz gronowego a banany klasyfikatora, przesyłanie obrazu butów w celu prognozowania klasyfikatora powinien wynik tego obrazu jako 0% gronowego i banany.
-> 
-> Z drugiej strony w przypadku obrazów ujemna odmianą obrazy używane w szkolenia, prawdopodobnie modelu będzie klasyfikowania obrazów ujemna jako klasę etykietami z powodu podobieństwa doskonałe. Na przykład jeśli masz pomarańczowy, a grejpfrutów klasyfikatora, a kanał w obrazie clementine, jego może wynik clementine pomarańczowa ponieważ wiele funkcji clementine przypominają Pomarańcze. W przypadku obrazów ujemna tego rodzaju, zaleca się utworzenie co najmniej jeden dodatkowe znaczniki (takie jak **innych**) i oznaczanie ujemna obrazy z tym znacznikiem podczas szkolenia zezwolić na model, który ma lepsze rozróżnienie tych klas .
+Aby przekazać inny zestaw obrazów, powrót do początku tej sekcji, a następnie powtórz kroki.
 
 ## <a name="train-the-classifier"></a>Szkolenie klasyfikatora
 
@@ -138,5 +133,5 @@ W okienku po lewej stronie znajdziesz również **Usuń** przycisk, który słu�
 
 W tym przewodniku przedstawiono sposób tworzenie i uczenie model klasyfikacji obrazów, przetwarzania niestandardowe witryny sieci Web. Następnie Pobierz więcej informacji na temat proces iteracyjny poprawy modelu.
 
-[Testowanie i ponowne szkolenie modelu](test-your-model.md)
+[Testowanie i ponowne trenowanie modelu](test-your-model.md)
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f236c6a78edeb04a69685bf27c99997ed470f498
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791527"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882794"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -163,7 +163,7 @@ W tym przykładzie użyto [witryny Azure portal](https://portal.azure.com) możn
 >[!NOTE]
 >Aby użyć oświadczenia niestandardowego, musi również mieć zasad niestandardowych, zdefiniowanych i przypisane do aplikacji.  Ta zasada powinna zawierać wszystkie wymagane atrybutów niestandardowych.
 >
->Definicja zasad i przypisania może odbywać się przy użyciu programu PowerShell, usługi Azure AD Graph Explorer lub MS Graph.  Jeśli robisz to w programie PowerShell, należy najpierw użyć `New-AzureADPolicy `i przypisz je do aplikacji przy użyciu `Set-AzureADServicePrincipalPolicy`.  Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure AD Policy](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Definicja zasad i przypisania może odbywać się przy użyciu programu PowerShell, usługi Azure AD Graph Explorer lub MS Graph.  Jeśli robisz to w programie PowerShell, należy najpierw użyć `New-AzureADPolicy` i przypisz je do aplikacji przy użyciu `Set-AzureADServicePrincipalPolicy`.  Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure AD Policy](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Opcjonalne — Użyj oświadczenia niestandardowego
 Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij się, czy masz również [utworzone oświadczenia niestandardowe mapowanie zasad i przypisać je do aplikacji](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).

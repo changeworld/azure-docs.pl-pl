@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564242"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863206"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdowanie i stosowanie zaleceń dotyczących wydajności
 
@@ -78,6 +78,7 @@ Można przejrzeć i zaakceptuj zalecenia jednego naraz.
 Wybrane zalecenie są stosowane w bazie danych.
 
 ### <a name="removing-recommendations-from-the-list"></a>Usunięcie zalecenia z listy
+
 Jeśli lista zaleceń zawiera elementy, które chcesz usunąć z listy, możesz odrzucić zalecenia:
 
 1. Wybierz zalecenie na liście **zalecenia** można otworzyć szczegóły.
@@ -110,18 +111,21 @@ Można ustawić automatyczne wdrażanie zaleceń usługi Azure SQL Database. W m
 
 Po wybraniu wymaganą konfigurację, kliknij przycisk Zastosuj.
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>Ręcznie uruchom zalecane skryptu T-SQL
+### <a name="manually-apply-recommendations-through-t-sql"></a>Ręcznie stosować zalecenia za pomocą języka T-SQL
+
 Wybierz każde zalecenie, a następnie kliknij przycisk **wyświetlić skryptu**. Uruchom ten skrypt względem bazy danych ręcznie zastosować zalecenie.
 
-*Indeksy ręcznie wykonywanych nie są monitorowane i zweryfikowane dla negatywny wpływ na wydajność przez usługę* więc monitorować te indeksy po utworzeniu, aby sprawdzić, mogą zapewnić wzrost wydajności i dostosować lub je usunąć, jeśli to konieczne. Aby uzyskać szczegółowe informacje na temat tworzenia indeksów, zobacz [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Indeksy ręcznie wykonywanych nie są monitorowane i zweryfikowane dla negatywny wpływ na wydajność przez usługę* więc monitorować te indeksy po utworzeniu, aby sprawdzić, mogą zapewnić wzrost wydajności i dostosować lub je usunąć, jeśli to konieczne. Aby uzyskać szczegółowe informacje na temat tworzenia indeksów, zobacz [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx). Ponadto Ręczne stosowanie zalecenia pozostaną aktywne i widoczne na liście zaleceń przez 24-48 godzin. zanim system automatycznie wycofuje je. Jeśli chcesz usunąć wcześniej zalecenia, możesz ręcznie odrzucić je.
 
 ### <a name="canceling-recommendations"></a>Trwa anulowanie zalecenia
+
 Zalecenia, które znajdują się w **oczekujące**, **weryfikowanie**, lub **Powodzenie** stanu może być anulowany. Zalecenia dotyczące ze stanem **Executing** nie może zostać anulowana.
 
 1. Wybierz zalecenie w **Historia dostrajania** obszar, aby otworzyć **Szczegóły rekomendacji** strony.
 2. Kliknij przycisk **anulować** przerwanie procesu stosowania zalecenia.
 
 ## <a name="monitoring-operations"></a>Operacje monitorowania
+
 Stosowanie zalecenia nie może być realizowane natychmiast. Portal zawiera szczegóły dotyczące stanu zalecenie ma do nich. Poniżej przedstawiono możliwe stany, indeks może być:
 
 | Stan | Opis |
@@ -162,7 +166,7 @@ Monitoruj zalecenia i stosować je do uściślić wydajności w dalszym ciągu. 
 * Zobacz [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) Aby dowiedzieć się więcej o wyświetlaniu wpływ na wydajność najczęściej używane zapytania.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+* [Magazyn zapytań](https://msdn.microsoft.com/library/dn817826.aspx)
 * [TWORZENIE INDEKSU](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md)
 

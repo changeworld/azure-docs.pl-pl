@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002278"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850677"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Teraz możesz monitorować usługi systemu Azure i aplikacji w [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbieranych przez usługi Azure Monitor, łącznie z różnych dzienników i metryk. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -47,7 +47,7 @@ Aby skonfigurować serwer lokalny Grafana [pobrać i zainstalować narzędzia Gr
 
 7. Uzyskaj publiczny adres IP serwera Grafana — wróć do listy zasobów, a następnie wybierz pozycję **publiczny adres IP**.
 
-## <a name="log-in-to-grafana"></a>Zaloguj się do narzędzia Grafana
+## <a name="sign-in-to-grafana"></a>Zaloguj się do narzędzia Grafana
 
 1. Za pomocą adresu IP serwera, otwórz stronę logowania w *http://\<adresu IP\>: 3000* lub  *\<DNSName >\:3000* w przeglądarce. 3000 jest domyślny port, należy pamiętać, że być może wybrano innego portu podczas instalacji. Powinieneś widzieć stronę logowania dla serwera platformy Grafana tworzonej.
 
@@ -167,5 +167,5 @@ Jeśli konfigurujesz środowiska Grafana na platformie Azure, opłaty są nalicz
 2. Na stronie grupy zasobów, kliknij przycisk **Usuń**, typ **Grafana** w polu tekstowym, a następnie kliknij przycisk **Usuń**.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd metryk usługi Azure Monitor](../../azure-monitor/platform/data-collection.md)
+* [Przegląd metryk usługi Azure Monitor](data-platform.md)
 
