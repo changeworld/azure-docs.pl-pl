@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b03a95c4a603ecf59aaaa8c831842117425ebf0a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448455"
 documentType: LandingData
 title: Traffic Manager
 metadata:
-  document_id: 
+  document_id: null
   title: Traffic Manager
-  meta.description: Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.
+  meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
   services: traffic-manager
   author: KumudD
   manager: twooley
@@ -22,76 +16,76 @@ metadata:
   ms.date: 02/28/2019
   ms.author: kumud
 abstract:
-  description: Dowiedz się, jak korzystać z usługi Traffic Manager. Przewodniki Szybki start, samouczki, przykłady i inne pomoce pokazują, jak zarządzać ruchem przychodzącym, aby uzyskać optymalną wydajność aplikacji, oraz jak dystrybuować ruch do platformy Azure lub zewnętrznych punktów końcowych usługi.
+  description: 'Dowiedz się, jak korzystać z usługi Traffic Manager. Przewodniki Szybki start, samouczki, przykłady i inne pomoce pokazują, jak zarządzać ruchem przychodzącym, aby uzyskać optymalną wydajność aplikacji, oraz jak dystrybuować ruch do platformy Azure lub zewnętrznych punktów końcowych usługi.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak zarządzać ruchem internetowym do punktów końcowych usługi za pomocą usługi Traffic Manager.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak kierować ruchem w oparciu o różne metody routingu dostępne w usłudze Traffic Manager.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak zarządzać ruchem internetowym do punktów końcowych usługi za pomocą usługi Traffic Manager.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Kierowanie ruchem na podstawie lokalizacji geograficznej punktu końcowego</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Kierowanie ruchem w celu uzyskania niskich opóźnień</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Dystrybuowanie ruchu do zestawu punktów końcowych</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Kierowanie ruchu do priorytetowego punktu końcowego</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Kontrolowanie ruchu za pomocą punktów końcowych z wagami</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Kierowanie ruchem na podstawie podsieci użytkownika</a>
-- title: Bezpłatne szkolenie wideo firmy PluralSight
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak kierować ruchem w oparciu o różne metody routingu dostępne w usłudze Traffic Manager.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Kierowanie ruchem na podstawie lokalizacji geograficznej punktu końcowego</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Kierowanie ruchem w celu uzyskania niskich opóźnień</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Dystrybuowanie ruchu do zestawu punktów końcowych</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Kierowanie ruchu do priorytetowego punktu końcowego</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Kontrolowanie ruchu za pomocą punktów końcowych z wagami</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Kierowanie ruchem na podstawie podsieci użytkownika</a>
+  - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
-    - title: Administrator platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Architekt rozwiązań platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Administrowanie platformą Azure dla administratorów usługi AWS
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Przykłady skryptów do wykonywania typowych zadań.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Administrator platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Architekt rozwiązań platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Administrowanie platformą Azure dla administratorów usługi AWS
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Przykłady
     items:
-    - html: <a href="/azure/traffic-manager/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/azure/traffic-manager/powershell-samples">Program PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Przykłady skryptów do wykonywania typowych zadań.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/traffic-manager/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/azure/traffic-manager/powershell-samples">Program PowerShell</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/#traffic_manager">Program PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: Języki
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/trafficmanager/">Dokumentacja interfejsu API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager">Program PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Interfejs wiersza polecenia platformy Azure</a></p>'
+          - title: Języki
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/trafficmanager/">Dokumentacja interfejsu API REST</a></p>

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7cbbc8d1d5142c4ddb400bb0698c703b82f5a82d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185591"
 documentType: LandingData
 title: Dokumentacja usługi Network Watcher
 metadata:
-  document_id: 
-  title: Dokumentacja usługi Network Watcher — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.
+  document_id: null
+  title: 'Dokumentacja usługi Network Watcher — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  meta.description: 'Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.'
   services: network-watcher
   author: jdial
   manager: jeconnoc
@@ -21,68 +15,68 @@ metadata:
   ms.date: 04/24/2018
   ms.author: jdial
 abstract:
-  description: Dowiedz się, jak korzystać z usługi Azure Network Watcher. Przewodniki Szybki start, samouczki i inne zasoby przedstawiają sposób uzyskiwania szczegółowych informacji na temat usługi Azure Virtual Network przy użyciu narzędzi, takich jak przechwytywanie pakietów i dzienniki przepływów sieciowych grup zabezpieczeń, w celu diagnozowania problemów z przekierowywaniem i filtrowaniem ruchu oraz monitorowania połączeń.
+  description: 'Dowiedz się, jak korzystać z usługi Azure Network Watcher. Przewodniki Szybki start, samouczki i inne zasoby przedstawiają sposób uzyskiwania szczegółowych informacji na temat usługi Azure Virtual Network przy użyciu narzędzi, takich jak przechwytywanie pakietów i dzienniki przepływów sieciowych grup zabezpieczeń, w celu diagnozowania problemów z przekierowywaniem i filtrowaniem ruchu oraz monitorowania połączeń.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak diagnozować problemy z filtrowaniem ruchu do i z maszyny wirtualnej.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: ./media/index/portal.svg
-      text: Azure Portal
-      href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem
-    - image:
-        src: ./media/index/powershell.svg
-      text: Azure PowerShell
-      href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-powershell
-    - image:
-        src: ./media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-cli
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak diagnozować problemy w sieci wirtualnej.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak diagnozować problemy z filtrowaniem ruchu do i z maszyny wirtualnej.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/portal.svg
+            text: Azure Portal
+            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem
+          - image:
+              src: ./media/index/powershell.svg
+            text: Azure PowerShell
+            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-powershell
+          - image:
+              src: ./media/index/cli.svg
+            text: Interfejs wiersza polecenia platformy Azure
+            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-cli
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">Diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej</a>
-    - html: <a href="/azure/network-watcher/connection-monitor">Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi</a>
-    - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">Diagnozowanie problemów z komunikacją między sieciami</a>
-    - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">Rejestrowanie ruchu sieciowego do i z maszyny wirtualnej</a>
-- title: Bezpłatne szkolenie wideo firmy PluralSight
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak diagnozować problemy w sieci wirtualnej.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">Diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej</a>
+          - html: <a href="/azure/network-watcher/connection-monitor">Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi</a>
+          - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">Diagnozowanie problemów z komunikacją między sieciami</a>
+          - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">Rejestrowanie ruchu sieciowego do i z maszyny wirtualnej</a>
+  - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
-    - title: Administrator platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Architekt rozwiązań platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Administrowanie platformą Azure dla administratorów usługi AWS
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Administrator platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Architekt rozwiązań platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Administrowanie platformą Azure dla administratorów usługi AWS
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/azurerm.network/#network_watcher">Program PowerShell</a></p><p><a href="/cli/azure/network/watcher">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/network-watcher/">Dokumentacja interfejsu API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/powershell/module/az.network/#network_watcher">Program PowerShell</a></p><p><a href="/cli/azure/network/watcher">Interfejs wiersza polecenia platformy Azure</a></p>'
+          - title: Języki
+            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/network-watcher/">Dokumentacja interfejsu API REST</a></p>

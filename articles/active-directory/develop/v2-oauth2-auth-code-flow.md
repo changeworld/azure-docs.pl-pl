@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577598"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880269"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -181,7 +181,7 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 |---------------|------------------------------|
 | `access_token`  | Token żądanego dostępu. Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web.  |
 | `token_type`    | Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego |
-|` expires_in`    | Jak długo token dostępu jest prawidłowy (w sekundach). |
+| `expires_in`    | Jak długo token dostępu jest prawidłowy (w sekundach). |
 | `scope`         | Access_token nadaje się do zakresów. |
 | `refresh_token` | Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskiwanie tokenów dostępu dodatkowe, po upływie bieżącego tokenu dostępu. Refresh_tokens są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów na odświeżenie tokenu dostępu, zapoznaj się [poniżej](#refresh-the-access-token). <br> **Uwaga:** Tylko wtedy, jeśli podana `offline_access` zażądano zakresu. |
 | `id_token`      | Tokenu Web JSON (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** Tylko wtedy, jeśli podana `openid` zażądano zakresu. |

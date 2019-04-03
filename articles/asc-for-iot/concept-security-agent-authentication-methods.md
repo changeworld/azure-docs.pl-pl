@@ -1,25 +1,25 @@
 ---
 title: Metody uwierzytelniania dla usługi Azure Security Center w wersji zapoznawczej IoT | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o różnych dostępnych metod uwierzytelniania w przypadku używania usługi Azure Security Center dla usługi IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758394"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862917"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody uwierzytelniania agenta zabezpieczeń 
 
@@ -63,7 +63,7 @@ W poniższej tabeli opisano te argumenty.
 
 |Parametr|Opis|Opcje|
 |---------|---------------|---------------|
-|**Tożsamość**|Tryb uwierzytelniania| **Moduł** lub **urządzenia**|
+|**identity**|Tryb uwierzytelniania| **Moduł** lub **urządzenia**|
 |**type**|Typ uwierzytelniania|**SymmetricKey** lub **SelfSignedCertificate**|
 |**filePath**|Pełne ścieżki bezwzględnej do pliku zawierającego certyfikat i klucz symetryczny| |
 |**gatewayHostname**|Nazwa FQDN usługi IoT Hub|Przykład: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Edytuj _LocalConfiguration.json_ z następującymi parametrami:
 ## <a name="see-also"></a>Zobacz także
 - [Omówienie czynników zabezpieczeń](security-agent-architecture.md)
 - [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)
-- [Dostęp do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- [Dostęp do nieprzetworzonych danych zabezpieczeń](how-to-security-data-access.md)

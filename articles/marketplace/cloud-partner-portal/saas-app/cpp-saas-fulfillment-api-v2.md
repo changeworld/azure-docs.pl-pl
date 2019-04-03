@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352089"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878030"
 ---
 # <a name="saas-fulfillment-api"></a>Realizacja SaaS interfejsu API
 
@@ -275,7 +275,7 @@ Wewnętrzny błąd serwera<br>
 
 Punkt końcowy resolve umożliwia użytkownikom można rozpoznać tokenu marketplace trwały identyfikator zasobu. Identyfikator zasobu jest unikatowy identyfikator subskrypcji w modelu SAAS.  Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawców oprogramowania, adres URL zawiera token w parametrach zapytania. Niezależny dostawca oprogramowania oczekuje na używanie tego tokenu w celu wykonania żądania, aby go rozwiązać. Odpowiedź zawiera identyfikator subskrypcji w modelu SAAS unikatową nazwę, Identyfikatora oferty i plan dla zasobu. Ten token jest prawidłowy tylko godzinę. 
 
-**Wpis:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
 
 *Parametry zapytania:*
 
@@ -333,7 +333,7 @@ Wewnętrzny błąd serwera
 
 #### <a name="activate-a-subscription"></a>Aktywuj subskrypcję
 
-**Wpis:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
+**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
 
 *Parametry zapytania:*
 
@@ -648,7 +648,7 @@ Umożliwia użytkownikowi śledzenie stanu operacji asynchronicznych wyzwolone (
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  ` application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   Unikatowy ciąg wartości do śledzenia żądania z klienta, najlepiej z identyfikatorem GUID. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.  |
 |  x-ms-correlationid |  Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ten parametr jest skorelowane wszystkie zdarzenia w operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie jest podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.  |
 |  Autoryzacja     | JSON web token (JWT) token elementu nośnego.  |

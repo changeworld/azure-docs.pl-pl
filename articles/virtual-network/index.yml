@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 24e096680e6118b19feeb26d6f5435811ccaa276
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985873"
 documentType: LandingData
 title: Dokumentacja usługi Virtual Network
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: Dokumentacja usługi Virtual Network — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.
+  title: 'Dokumentacja usługi Virtual Network — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  meta.description: 'Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.'
   services: virtual-network
   author: jdial
   manager: jeconnoc
@@ -21,91 +15,91 @@ metadata:
   ms.date: 03/23/2018
   ms.author: jdial
 abstract:
-  description: Dowiedz się, jak korzystać z usługi Azure Virtual Network. Z przewodników Szybki start, samouczków, przykładów i innych materiałów dowiesz się, jak wdrożyć sieć wirtualną, sterować filtrowaniem i routingiem ruchu oraz łączyć sieć wirtualną z innymi sieciami wirtualnymi.
+  description: 'Dowiedz się, jak korzystać z usługi Azure Virtual Network. Z przewodników Szybki start, samouczków, przykładów i innych materiałów dowiesz się, jak wdrożyć sieć wirtualną, sterować filtrowaniem i routingiem ruchu oraz łączyć sieć wirtualną z innymi sieciami wirtualnymi.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak utworzyć sieć wirtualną, wdrożyć w niej maszyny wirtualne, a następnie przesyłać dane między maszynami wirtualnymi i internetem.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/virtual-network/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg
-      text: Azure PowerShell
-      href: /azure/virtual-network/quick-create-powershell
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: /azure/virtual-network/quick-create-cli
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak utworzyć i połączyć sieci wirtualne oraz sterować routingiem i filtrowaniem.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć sieć wirtualną, wdrożyć w niej maszyny wirtualne, a następnie przesyłać dane między maszynami wirtualnymi i internetem.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg'
+            text: Azure Portal
+            href: /azure/virtual-network/quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg'
+            text: Azure PowerShell
+            href: /azure/virtual-network/quick-create-powershell
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg'
+            text: Interfejs wiersza polecenia platformy Azure
+            href: /azure/virtual-network/quick-create-cli
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Filtrowanie ruchu sieciowego</a>
-    - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Routing ruchu sieciowego</a>
-    - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Ograniczenie dostępu przez sieć do zasobów</a>
-    - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Łączenie sieci wirtualnych</a>
-- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć i połączyć sieci wirtualne oraz sterować routingiem i filtrowaniem.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Filtrowanie ruchu sieciowego</a>
+          - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Routing ruchu sieciowego</a>
+          - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Ograniczenie dostępu przez sieć do zasobów</a>
+          - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Łączenie sieci wirtualnych</a>
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
-    - title: " Wprowadzenie do sieci platformy Azure"
-      href: /learn/modules/intro-to-azure-networking/
-      image:
-        src: /learn/achievements/intro-to-azure-networking.svg
-        href: /learn/modules/intro-to-azure-networking/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure">Więcej interakcyjnych zasobów szkoleniowych...</a>
-- title: Bezpłatne szkolenie wideo firmy PluralSight
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: "\_Wprowadzenie do sieci platformy Azure"
+            href: /learn/modules/intro-to-azure-networking/
+            image:
+              src: /learn/achievements/intro-to-azure-networking.svg
+              href: /learn/modules/intro-to-azure-networking/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure">Więcej interakcyjnych zasobów szkoleniowych...</a>
+  - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
-    - title: Administrator platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Architekt rozwiązań platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Administrowanie platformą Azure dla administratorów usługi AWS
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Przykłady skryptów do wykonywania typowych zadań.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Administrator platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Architekt rozwiązań platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Administrowanie platformą Azure dla administratorów usługi AWS
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Przykłady
     items:
-    - html: <a href="/azure/virtual-network/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/azure/virtual-network/powershell-samples">Program PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Przykłady skryptów do wykonywania typowych zadań.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-network/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/azure/virtual-network/powershell-samples">Program PowerShell</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/azurerm.network#networking">Program PowerShell</a></p><p><a href="/cli/azure/network">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/virtual-network/">Dokumentacja interfejsu API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/powershell/module/az.network#networking">Program PowerShell</a></p><p><a href="/cli/azure/network">Interfejs wiersza polecenia platformy Azure</a></p>'
+          - title: Języki
+            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/virtual-network/">Dokumentacja interfejsu API REST</a></p>

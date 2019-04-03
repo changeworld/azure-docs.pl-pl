@@ -16,13 +16,14 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
+ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b25ea5d792edf2f582c9929a0ae5f0c2426db
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00dd8de47422cf849d97e66698be3300b96ff83
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442077"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884554"
 ---
 # <a name="id-tokens"></a>Tokeny identyfikatorów
 
@@ -79,6 +80,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 |`name` | String | `name` Oświadczeń zawiera zrozumiałą wartość, która identyfikuje podmiotu tokenu. Wartość nie musi być unikatowy, jest ona modyfikowalna i został zaprojektowany tak, ma być używany tylko w celach wyświetlania. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |
 |`nonce`| String | Identyfikator jednorazowy odpowiada parametrowi uwzględnione w oryginalnym / autoryzować żądania przez dostawcę tożsamości. Jeśli nie jest zgodny, aplikacja powinna odrzucenie tokena. |
 |`oid` | Ciąg identyfikatora GUID | Niemodyfikowalny identyfikator obiektu w Microsoft systemu tożsamości, w tym przypadku konta użytkownika. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji, rejestrowanie w ten sam użytkownik otrzyma taką samą wartość w `oid` oświadczenia. Program Microsoft Graph zwróci ten identyfikator jako `id` właściwość dla danego konta użytkownika. Ponieważ `oid` wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany w celu odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różne konta, nawet jeśli użytkownik loguje się do każdego konta przy użyciu tych samych poświadczeń. |
+|`roles`| Tablica ciągów | Zbiór ról, które zostały przypisane do użytkownika, który jest logowania. |
 |`rh` | Nieprzezroczysty ciąg |Oświadczenie wewnętrzne używane przez platformę Azure w celu ponownego zweryfikowania tokenów. Mają być ignorowane. |
 |`sub` | Ciąg identyfikatora GUID | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownika aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Temat jest identyfikatorem pairwise — jest on unikatowy dla identyfikatora dla określonej aplikacji. W związku z tym jeśli jeden użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch identyfikatorów innego klienta, aplikacji, które otrzyma dwóch różnych wartości oświadczenia podmiotu. To może być lub może nie być wskazane w zależności od wymagań dotyczących architektury i ochrony prywatności. |
 |`tid` | Ciąg identyfikatora GUID | Identyfikator GUID, który reprezentuje dzierżawy usługi Azure AD, do której należy użytkownik. Dla kont służbowych identyfikator GUID jest identyfikator dzierżawy niezmienne organizacji, do której należy użytkownik. Dla osobistych kont, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |

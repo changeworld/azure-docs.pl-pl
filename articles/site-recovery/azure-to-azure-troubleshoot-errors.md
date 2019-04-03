@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 09ccc938f6b09b9f0d5c5849770fe8b49b4b0e55
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 34f207b3c82ada0cb20152bb71ae900f5de132cb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541194"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878319"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano, jakie są najczęstsze problemy w usłudze Azure Site Re
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemy z przydziałami zasobów platformy Azure (kod błędu: 150097)
 Twoja subskrypcja powinna być włączona w celu tworzenia maszyn wirtualnych platformy Azure w regionie docelowym, który ma być używany jako swój region odzyskiwania po awarii. Ponadto subskrypcji powinny mieć wystarczającego limitu przydziału, włączone, aby tworzyć maszyny wirtualne o określonym rozmiarze. Domyślnie usługa Site Recovery wybiera ten sam rozmiar dla docelowej maszyny Wirtualnej, co źródłowa maszyna wirtualna. Jeśli dopasowania rozmiaru nie jest dostępna, najbardziej zbliżony rozmiar jest pobierany automatycznie. W przypadku nie pasującego rozmiar, który obsługuje konfiguracji źródłowej maszyny Wirtualnej, zostanie wyświetlony ten komunikat o błędzie:
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenie**
+**Kod błędu** | **Możliwe przyczyny** | **Zalecenie**
 --- | --- | ---
 150097<br></br>**Komunikat**: Nie można włączyć replikacji dla maszyny wirtualnej VmName. | — Identyfikator subskrypcji nie może być włączona do tworzenia maszyn wirtualnych w lokalizacji docelowej w regionie.</br></br>— Identyfikator subskrypcji, może nie być włączone lub nie ma wystarczającego limitu przydziału do tworzenia określonych rozmiarów maszyn wirtualnych w lokalizacji docelowej w regionie.</br></br>-Odpowiedni rozmiar docelowej maszyny Wirtualnej pasujący źródłowej maszyny Wirtualnej karty Sieciowej, liczba (2) nie zostanie odnaleziony dla Identyfikatora subskrypcji w lokalizacji docelowej w regionie.| Skontaktuj się z pomocą [Azure pomocy technicznej dotyczącej rozliczeń](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) umożliwiające tworzenia maszyn wirtualnych o wymaganych rozmiarach w lokalizacji docelowej dla Twojej subskrypcji. Po włączeniu ponów próbę wykonania operacji zakończonej niepowodzeniem.
 
@@ -40,7 +40,7 @@ Jeśli lokalizacja docelowa ma ograniczenie pojemności, wyłącz replikację i 
 
 Jeśli wszystkie najnowsze certyfikaty zaufany główny urząd certyfikacji nie istnieje na maszynie Wirtualnej, zadanie "Włącz replikację" może zakończyć się niepowodzeniem. Bez certyfikatów uwierzytelniania i autoryzacji, wywołań usługi Site Recovery z maszyny Wirtualnej zakończyć się niepowodzeniem. Zostanie wyświetlony komunikat o błędzie o zadaniu zakończonym niepowodzeniem "Włącz replikację" Site Recovery:
 
-**Kod błędu:** | **Możliwa przyczyna** | **Zalecenia**
+**Kod błędu** | **Możliwa przyczyna** | **Zalecenia**
 --- | --- | ---
 151066<br></br>**Komunikat**: Konfiguracja usługi Site Recovery nie powiodła się. | Wymagane zaufane certyfikaty główne używane na potrzeby autoryzacji i uwierzytelniania nie są dostępne na komputerze. | — Dla maszyny Wirtualnej z systemem operacyjnym Windows upewnij się, że zaufane certyfikaty główne na maszynie. Aby uzyskać informacje, zobacz [Konfigurowanie zaufanych certyfikatów głównych i certyfikatów niedozwolonych](https://technet.microsoft.com/library/dn265983.aspx).<br></br>— Dla maszyny Wirtualnej z systemem operacyjnym Linux postępuj zgodnie z wytycznymi dla zaufanych certyfikatów głównych opublikowanymi przez dystrybutora wersji systemu operacyjnego Linux.
 
@@ -157,9 +157,9 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Nie można zarejestrować maszyny wirtualnej platformy Azure z usługą Site Recovery (151195) </br>
 - **Możliwa przyczyna** </br>
   - Nie można ustanowić połączenia z punktami końcowymi odzyskiwania lokacji, ze względu na niepowodzenie rozpoznawania nazw DNS.
-  - Jest to częściej występujące podczas ponownej ochrony, gdy zostały przełączone w tryb failover maszyny wirtualnej, ale serwer DNS nie jest dostępny w regionie odzyskiwania po awarii.
+  - Ta sytuacja występuje częściej podczas ponownego włączania ochrony, gdy maszyna wirtualna została przełączona w tryb failover, ale serwer DNS jest nieosiągalny z regionu odzyskiwania po awarii.
 
-- **Rozdzielczość**
+- **Rozwiązanie**
    - Jeśli używasz niestandardowego DNS, upewnij się, że serwer DNS jest dostępne w regionie odzyskiwania po awarii. Aby sprawdzić, czy masz niestandardowe DNS, przejdź do maszyny Wirtualnej > sieć odzyskiwania po awarii > serwery DNS. Wypróbuj, uzyskiwanie dostępu do serwera DNS z maszyny wirtualnej. Jeśli nie jest dostępny następnie go udostępnić, albo przejść w tryb failover serwera DNS lub tworząc wiersz lokacji między siecią odzyskiwania po awarii i usługą DNS.
 
     ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
@@ -169,7 +169,7 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
 - **Możliwa przyczyna** </br>
   - Nie można ustanowić połączenia z uwierzytelnianiem usługi Office 365 i punktów końcowych IP4 tożsamości.
 
-- **Rozdzielczość**
+- **Rozwiązanie**
   - Usługa Azure Site Recovery zakresy adresów IP usługi Office 365 są wymagane do uwierzytelniania.
     Jeśli używasz proxy reguły i zapory Sieciowej grupy zabezpieczeń sieci platformy Azure do kontrolowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że zezwalają na komunikację zakresy adresów IP usługi Office 365. Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
       - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
@@ -181,24 +181,24 @@ W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca 
 - **Możliwa przyczyna** </br>
   - Nie można ustanowić połączenia z punktami końcowymi usługi Azure Site Recovery.
 
-- **Rozdzielczość**
+- **Rozwiązanie**
   - Usługa Azure Site Recovery wymagany dostęp do [zakresów adresów IP odzyskiwania lokacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) w zależności od regionu. Upewnij się, wymagane zakresy adresów ip są dostępne z maszyny wirtualnej.
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problem 4: Replikacji — A2A nie powiodło się, gdy ruch sieciowy przechodzi przez serwer proxy w środowisku lokalnym (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problem 4: Replikacji — A2A nie powiodło się, gdy ruch sieciowy przechodzi przez lokalny serwer proxy (151072)
 - **Możliwa przyczyna** </br>
   - Ustawienia niestandardowego serwera proxy są nieprawidłowe i agenta usługi mobilności dla usługi ASR nie auto wykrył ustawienia serwera proxy z programu Internet Explorer
 
 
-- **Rozdzielczość**
+- **Rozwiązanie**
   1. Agent usługi mobilności wykrywa ustawienia serwera proxy programu Internet Explorer na Windows i /etc/environment w systemie Linux.
   2. Jeśli wolisz skonfigurować serwer proxy tylko w przypadku usługi mobilności dla usługi ASR, można podać szczegóły serwera proxy w ProxyInfo.conf znajdujących się na:</br>
      - ``/usr/local/InMage/config/`` na ***systemu Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
   3. ProxyInfo.conf powinna mieć ustawienia serwera proxy w następującym formacie pliku INI.</br>
                 *[proxy]*</br>
-                *Adres =http://1.2.3.4*</br>
-                *Port = 567*</br>
+                *Address=http://1.2.3.4*</br>
+                *Port=567*</br>
   4. Agent usługi mobilności dla usługi ASR obsługuje tylko ***nieuwierzytelnione serwery proxy***.
 
 
@@ -209,7 +209,7 @@ Do listy dozwolonych [odpowiednie adresy URL](azure-to-azure-about-networking.md
 
 Nowy dysk dołączony do maszyny Wirtualnej musi być zainicjowany.
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
+**Kod błędu** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
 150039<br></br>**Komunikat**: Dysk danych platformy Azure (DiskName) (DiskURI) przy użyciu numeru jednostki logicznej (LUN) (LUNValue) nie został zamapowany do odpowiadającego dysku zgłaszanego z poziomu maszyny Wirtualnej, która ma taką samą wartość jednostki LUN. | -Nowy dysk danych został dołączony do maszyny Wirtualnej, ale nie został on zainicjowany.</br></br>-Dysk danych wewnątrz maszyny Wirtualnej nie zgłasza poprawnie wartości LUN, w którym dysk został dołączony do maszyny Wirtualnej.| Upewnij się, czy są inicjowane dyski z danymi, a następnie spróbuj ponownie wykonać operację.</br></br>W przypadku systemu Windows: [Dołączanie i zainicjować nowy dysk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Dla systemu Linux: [Zainicjuj dysk danych w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
@@ -282,7 +282,7 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ błąd usługi kopiowania woluminów w tle (kod błędu: 151025)
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
+**Kod błędu** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
 151025<br></br>**Komunikat**: Nie można zainstalować rozszerzenia usługi Site recovery | -Usługa "COM + System Application" wyłączona.</br></br>-Usługa "Kopiowanie woluminów w tle" jest wyłączona.| Ustaw tryb automatycznego lub ręcznego uruchamiania usług "COM + System Application" i "Kopiowanie woluminów w tle".
 
@@ -294,7 +294,7 @@ Można otworzyć konsoli "Usługi" i upewnij się, "COM + System Application" i 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nieobsługiwana zarządzane rozmiar dysku (kod błędu: 150172)
 
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
+**Kod błędu** | **Możliwe przyczyny** | **Zalecenia**
 --- | --- | ---
 150172<br></br>**Komunikat**: Nie można włączyć ochrony dla maszyny wirtualnej, ponieważ zawiera ona (DiskName) o rozmiarze (DiskSize), która jest mniejsza niż minimalna obsługiwana rozmiar 1024 MB. | -Dysk jest mniejszy niż obsługiwany rozmiar wynoszący 1024 MB| Upewnij się, że rozmiary dysków są w zakresie obsługiwanych rozmiarów, a następnie spróbuj ponownie wykonać operację. 
 
