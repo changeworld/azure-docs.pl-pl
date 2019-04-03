@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: 4c8502aad40662766b038205eb19dd3302f601b7
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.date: 04/01/2019
+ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632256"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847759"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Tworzenie i zarządzanie odczytu replik z wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać odczytu replik w usłudze Azure Database for PostgreSQL z wiersza polecenia platformy Azure. Aby dowiedzieć się więcej na temat odczytu repliki, zobacz [Przegląd](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-up-azure-cli.md) jako serwer główny.
@@ -49,9 +46,9 @@ Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólneg
 
 `az mysql server replica create` Polecenie wymaga następujących parametrów:
 
-| Ustawienie | Przykładowa wartość | Opis  |
+| Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
-| resource-group | myresourcegroup |  Grupa zasobów, w którym zostanie utworzona na serwerze repliki.  |
+| resource-group | myresourcegroup |  Grupa zasobów, w którym zostanie utworzona na serwerze repliki.  |
 | name | mydemoserver-replica | Nazwa nowego serwera repliki, który jest tworzony. |
 | source-server | mydemoserver | Nazwa lub zasób identyfikator istniejącego serwera głównego jako źródła replikacji. |
 

@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434895"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877061"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z logowania w raportach usługi Azure Active Directory
 
@@ -55,7 +55,7 @@ Potrzebne elementy:
 
     ![Rozwiązywanie problemów i pomoc techniczna](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. Przyczyna niepowodzenia opisuje błąd. Na przykład w powyższym scenariuszu Usługa Przyczyna niepowodzenia jest **nieprawidłowej nazwy użytkownika lub hasła lub nieprawidłowa nazwa użytkownika w środowisku lokalnym lub hasła**. Poprawka jest po prostu Zaloguj się ponownie, podając prawidłową nazwę użytkownika i hasło.
+6. Przyczyna niepowodzenia opisuje błąd. Na przykład w powyższym scenariuszu Usługa Przyczyna niepowodzenia jest **nieprawidłowej nazwy użytkownika lub hasło lub nazwa nieprawidłowa w środowisku lokalnym użytkownika lub hasło**. Poprawka jest po prostu Zaloguj się ponownie, podając prawidłową nazwę użytkownika i hasło.
 
 7. Dodatkowe informacje, w tym koncepcji korygowania, szukając kodu błędu, można uzyskać **50126** w tym przykładzie w [odwołania kody błędów logowania](reference-sign-ins-error-codes.md). 
 

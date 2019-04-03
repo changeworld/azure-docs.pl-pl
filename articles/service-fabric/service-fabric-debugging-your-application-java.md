@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 8f0470b10589ecbbc9e2c98e8d3445435e7f8ed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668827"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880303"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debugowanie aplikacji Java usługi Service Fabric przy użyciu programu Eclipse
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.locfileid: "58668827"
 
 1. Uruchom lokalny klaster projektowy, wykonując kroki opisane w [Konfigurowanie środowiska deweloperskiego usługi Service Fabric](service-fabric-get-started-linux.md).
 
-2. Zaktualizuj entryPoint.sh usługi, które chcesz debugować, tak aby był uruchamiany proces języka java z parametrami debugowania zdalnego. Ten plik znajduje się w następującej lokalizacji: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. W tym przykładzie na potrzeby debugowania ustawiono port 8001.
+2. Zaktualizuj entryPoint.sh usługi, które chcesz debugować, tak aby był uruchamiany proces języka java z parametrami debugowania zdalnego. Ten plik znajduje się w następującej lokalizacji: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. W tym przykładzie na potrzeby debugowania ustawiono port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Zaktualizuj Manifest aplikacji, ustawiając liczbę wystąpień lub liczbę replik dla debugowanej usługi na 1. To ustawienie pozwala uniknąć konfliktów z portem używanym podczas debugowania. Na przykład w przypadku usług bezstanowych ustaw ``InstanceCount="1"``, a dla usług stanowych ustaw docelowy i minimalny rozmiar zestawu replik na 1 w następujący sposób: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Zaktualizuj Manifest aplikacji, ustawiając liczbę wystąpień lub liczbę replik dla debugowanej usługi na 1. To ustawienie pozwala uniknąć konfliktów z portem używanym podczas debugowania. Na przykład w przypadku usług bezstanowych ustaw `InstanceCount="1"`, a dla usług stanowych ustaw docelowy i minimalny rozmiar zestawu replik na 1 w następujący sposób: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. Wdrażanie aplikacji.
 
@@ -46,7 +46,7 @@ ms.locfileid: "58668827"
    ```
 6.  Ustawianie punktów przerwania w punktach żądaną i debugowania aplikacji.
 
-Jeśli aplikacja uległa awarii, mogą również chcesz włączyć coredumps. Wykonaj ``ulimit -c`` w powłoce i zwraca 0, a następnie coredumps nie są włączone. Aby włączyć coredumps bez ograniczeń, wykonaj następujące polecenie: ``ulimit -c unlimited``. Można również sprawdzić stan za pomocą polecenia ``ulimit -a``.  Jeśli chcesz zaktualizować ścieżkę generowania coredump wykonania ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
+Jeśli aplikacja uległa awarii, mogą również chcesz włączyć coredumps. Wykonaj `ulimit -c` w powłoce i zwraca 0, a następnie coredumps nie są włączone. Aby włączyć coredumps bez ograniczeń, wykonaj następujące polecenie: `ulimit -c unlimited`. Można również sprawdzić stan za pomocą polecenia `ulimit -a`.  Jeśli chcesz zaktualizować ścieżkę generowania coredump wykonania `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
 
 ### <a name="next-steps"></a>Kolejne kroki
 

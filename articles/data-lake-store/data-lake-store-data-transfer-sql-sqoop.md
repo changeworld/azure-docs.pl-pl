@@ -3,21 +3,21 @@ title: Kopiowanie danych między Azure Data Lake Storage Gen1 i Azure SQL databa
 description: Kopiowanie danych między środowiskiem usługi Azure SQL Database i Azure Data Lake Storage Gen1 przy użyciu narzędzia Sqoop
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 3f914b2a-83cc-4950-b3f7-69c921851683
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 958171a8d1091254588aef250406b968009eb968
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.author: twooley
+ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391746"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878535"
 ---
 # <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopiowanie danych między Azure Data Lake Storage Gen1 i Azure SQL database przy użyciu narzędzia Sqoop
 Dowiedz się, jak do importowania i eksportowania danych między Azure SQL Database i Azure Data Lake Storage Gen1 przy użyciu narzędzia Apache Sqoop.
@@ -92,7 +92,7 @@ Klaster usługi HDInsight jest już dostępne pakiety narzędzia Sqoop. Jeśli s
     Na przykład:
 
 
-        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
 1. Upewnij się, że dane zostały przeniesione do konta Data Lake Storage Gen1. Uruchom następujące polecenie:
 
@@ -118,7 +118,7 @@ Klaster usługi HDInsight jest już dostępne pakiety narzędzia Sqoop. Jeśli s
     Na przykład:
 
 
-        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
 1. Sprawdź, czy danych został przekazany do tabeli bazy danych SQL. Użyj [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) lub Visual Studio, aby nawiązać połączenie z bazą danych SQL Azure, a następnie uruchom następujące zapytanie.
 
@@ -139,6 +139,6 @@ Aby dostrajania wydajności oprogramowania Sqoop zadania umożliwia kopiowanie d
 
 ## <a name="see-also"></a>Zobacz także
 * [Kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Za pomocą usług Azure Data Lake Analytics Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Usługa Azure HDInsight za pomocą programu Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

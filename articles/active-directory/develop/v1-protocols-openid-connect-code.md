@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 281e1109964ac64853b8b82525579b7ff4de0d2f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406409"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851186"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może to również obejmować inne response_types, takich jak `code` lub `token`. |
 | scope | Zalecane | Specyfikacja protokołu OpenID Connect wymaga zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. To i inne zakresy OIDC są ignorowane w punkcie końcowym w wersji 1.0, ale nadal jest najlepszym rozwiązaniem dla klientów zgodnych ze standardami. |
 | Identyfikator jednorazowy |wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która znajduje się w wynikowym `id_token` jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowy unikatowy ciąg lub identyfikator GUID, który może służyć do identyfikowania pochodzenia żądania. |
-| redirect_uri | Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. Jeśli brakuje, agent użytkownika będą wysyłane do jednej zarejestrowanej aplikacji, w losowo wybranym momencie identyfikatory URI przekierowania. |
+| redirect_uri | Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. Jeśli brakuje, agent użytkownika będą wysyłane do jednej zarejestrowanej aplikacji, w losowo wybranym momencie identyfikatory URI przekierowania. Maksymalna długość to 255 bajtów |
 | response_mode |opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy authorization_code wróć do aplikacji. Obsługiwane wartości to `form_post` dla *HTTP post formularza* i `fragment` dla *fragmentu adresu URL*. Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post` zapewnienie najbardziej bezpieczny transfer tokenów do aplikacji. Ustawieniem domyślnym dla dowolnego przepływu, w tym id_token jest `fragment`.|
 | state |Zalecane |Wartość uwzględnione w żądaniu, który jest zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Obecnie jedyne prawidłowe wartości to "login", "none" i "". `prompt=login` Wymusza na użytkowniku, aby wprowadzić swoje poświadczenia w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem — zapewnia, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, punkt końcowy zwraca błąd. `prompt=consent` Wyzwalacze uwierzytelniania OAuth zgoda okna dialogowego po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |

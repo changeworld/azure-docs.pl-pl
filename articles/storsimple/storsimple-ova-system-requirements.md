@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999507"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876840"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
 ## <a name="overview"></a>Przegląd
@@ -94,10 +94,10 @@ Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, a
 
 | **Nr portu<sup>1</sup>** | **Wewnątrz lub na zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Wyjście |Sieć WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| TCP 443 (HTTPS) |Wyjście |Sieć WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| UDP 53 (DNS) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
-| UDP 123 (NTP) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
+| TCP 80 (HTTP) |limit |WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| TCP 443 (HTTPS) |limit |WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| UDP 53 (DNS) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
+| UDP 123 (NTP) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
 | TCP 80 (HTTP) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. <br></br> Należy pamiętać, uzyskiwanie dostępu do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP spowoduje automatyczne przekierowanie do protokołu HTTPS. |
 | TCP 443 (HTTPS) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. |
 | TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
@@ -123,14 +123,14 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, w opar
 
 | Wzorzec URL | Składnik/funkcji |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa menedżera urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa Menedżer urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania|
 | `http://*.backup.windowsazure.com` |Rejestracja urządzenia |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure storage i monitorowania |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Serwerami usługi Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Pakiet dla pomocy technicznej |
-| `https://*.data.microsoft.com ` |Usługa telemetrii w Windows, zobacz [aktualizacja dla programu obsługi klienta i diagnostycznych telemetrii](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com` |Usługa telemetrii w Windows, zobacz [aktualizacja dla programu obsługi klienta i diagnostycznych telemetrii](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przygotowywanie portalu, aby wdrożyć rozwiązania StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)

@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b99b7b03898ad72b4d9c7cc2ba9154855475ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488405"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884894"
 ---
-# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co to jest Agent programu Azure AD Connect administratora? 
+# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co to jest agent administratora programu Azure AD Connect? 
 Agent programu Azure AD Connect administracji jest nowym składnikiem programu Azure Active Directory Connect zainstalowanego na serwerze usługi Azure Active Directory Connect. Służy do zbierania określonych danych ze środowiska usługi Active Directory, która pomaga pomocy technicznej inżynier ds. Aby rozwiązać problemy podczas otwierania zgłoszenia do pomocy technicznej firmy Microsoft.
 
 Po zainstalowaniu czeka Agent Azure AD Connect administracji dla określonych żądań dla danych z usługi Azure Active Directory, pobiera żądanych danych ze środowiska synchronizacji, a następnie wysyła je do usługi Azure Active Directory, gdzie są one przedstawiane przez firmę Microsoft pomocy technicznej inżynier ds.
@@ -39,7 +39,7 @@ Ze specjalistą pomocy technicznej firmy Microsoft nie można zmienić żadnych 
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Co zrobić, jeśli nie ma ze specjalistą pomocy technicznej firmy Microsoft na dostęp do moich danych? 
  
-Jeśli nie chcesz, inżynier usług firmy Microsoft oraz dostęp do danych dla wywołania pomocy technicznej, może to wskazywać, po otwarciu obsługi wywołań w portalu: 
+Jeśli nie chcesz, inżynier usług firmy Microsoft oraz dostęp do danych dla pomocy technicznej tę opcję można wyłączyć, modyfikując plik konfiguracji usługi, zgodnie z poniższym opisem: 
 
   1.    Otwórz **C:\Program Files\Microsoft Azure AD Connect administracji Agent\AzureADConnectAdministrationAgentService.exe.config** w Notatniku.
   2.    Wyłącz **UserDataEnabled** ustawienia, jak pokazano poniżej. Jeśli **UserDataEnabled** ustawienie istnieje i jest ustawiona na wartość true, a następnie ustaw ją na false. Jeśli ustawienie nie istnieje, Dodaj ustawienie jak pokazano poniżej.    

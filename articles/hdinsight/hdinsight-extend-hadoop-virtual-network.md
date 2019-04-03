@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: 6661ed7e8950c1658ef89858140e2d196999d543
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803089"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883568"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -111,8 +111,8 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
 4. Tworzenie klastra usługi HDInsight, a następnie wybierz sieć wirtualną platformy Azure podczas konfiguracji. Aby zrozumieć ten proces tworzenia klastra, wykonaj kroki w następujących dokumentach:
 
-    * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) (Tworzenie klastrów usługi HDInsight za pomocą usługi Azure Portal)
-    * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) (Tworzenie klastrów usługi HDInsight przy użyciu programu Azure PowerShell)
+    * [Tworzenie przy użyciu portalu Azure HDInsight](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Tworzenie przy użyciu programu PowerShell usługi Azure HDInsight](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
     * [Tworzenie przy użyciu klasyczny interfejs wiersza polecenia usługi Azure HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Utwórz HDInsight przy użyciu szablonu usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
@@ -242,7 +242,7 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń lub tras 
 
 * [Sieciowa grupa zabezpieczeń](../virtual-network/security-overview.md)
 
-* [Trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
+* [Trasy definiowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
 
 #### <a name="forced-tunneling-to-on-premise"></a>Wymuszonego tunelowania do środowiska lokalnego
 

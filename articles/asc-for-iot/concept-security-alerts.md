@@ -1,25 +1,25 @@
 ---
 title: Przewodnik dotyczący alertów zabezpieczeń dla Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat alertów zabezpieczeń i zalecanych czynności naprawczych funkcje IoT i usługi za pomocą usługi Azure Security Center.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755104"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861982"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Usługa Azure Security Center dla alertów zabezpieczeń IoT
 
@@ -93,6 +93,6 @@ Aby uzyskać więcej informacji, zobacz [tworzyć niestandardowe alerty](quickst
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Omówienie](overview.md)
+- [Przegląd](overview.md)
 - [Dostęp do danych zabezpieczeń](how-to-security-data-access.md)
 - [Badanie urządzenia](how-to-investigate-device.md)

@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563834"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880699"
 ---
-# <a name="onboarding-requirements"></a>Wymagania dotyczące udostępniania do sprzedaży
+# <a name="onboarding-requirements"></a>Wymagania dotyczące dołączania
 
 Ta lista składa się wymagania dotyczące uruchamiania oprogramowania SAP HANA na platformie Azure (wystąpienia większy).
 
@@ -33,7 +33,7 @@ Ta lista składa się wymagania dotyczące uruchamiania oprogramowania SAP HANA 
 
 **Połączenie sieciowe**
 
-- ExpressRoute między środowiska lokalnego do platformy Azure: Do łączenia z centrum danych lokalnych do platformy Azure, upewnij się uporządkować połączenia o wielkości co najmniej 1 GB/s od usługodawcy internetowego. Łączność między jednostkami dużych wystąpień HANA i Azure używa także technologii usługi ExpressRoute. To połączenie usługi ExpressRoute między jednostkami dużych wystąpień HANA i Azure znajduje się w cenie jednostki dużych wystąpień HANA, w tym wszystkie dane przychodzące i wychodzące opłaty dla tego określonego obwodu usługi ExpressRoute. W związku z tym jako klient, czy nie występują dodatkowe koszty poza link usługi ExpressRoute między w środowisku lokalnym i platformą Azure.
+- ExpressRoute między środowiska lokalnego do platformy Azure: Do łączenia z centrum danych lokalnych do platformy Azure, upewnij się uporządkować połączenia o wielkości co najmniej 1 GB/s od usługodawcy internetowego. Łączność między jednostkami dużych wystąpień HANA i Azure używa także technologii usługi ExpressRoute. To połączenie usługi ExpressRoute między jednostkami dużych wystąpień HANA i Azure znajduje się w cenie jednostki dużych wystąpień HANA, w tym wszystkie dane przychodzące i wychodzące opłaty dla tego określonego obwodu usługi ExpressRoute. W związku z tym jako klient, czy nie występują dodatkowe koszty poza link usługi ExpressRoute między lokalną i platformą Azure.
 
 **System operacyjny**
 
@@ -62,7 +62,7 @@ Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driv
 > Dla typu II jednostek tylko w systemie SLES 12 z dodatkiem SP2 systemu operacyjnego wersja jest obsługiwana w tym momencie. 
 
 
-**Baza danych**
+**Database (Baza danych)**
 
 - Licencje i składniki instalacyjne oprogramowania dla oprogramowania SAP HANA (platforma lub enterprise edition).
 
@@ -83,5 +83,5 @@ Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driv
 - Oczekuje się, że jesteś klientem usługi SAP i masz pomocy technicznej umowy z oprogramowaniem SAP.
 - Szczególnie w przypadku implementacji klasy typu II jednostek SKU platformy HANA duże wystąpienie zapoznaj się z oprogramowaniem SAP wersje oprogramowania SAP HANA i ostateczną konfiguracje sprzętu skalowanie w górę o dużych rozmiarach.
 
-**Następne kroki**
+**Kolejne kroki**
 - Zapoznaj się [architektura SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)

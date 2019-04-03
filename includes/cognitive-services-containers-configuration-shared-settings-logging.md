@@ -3,13 +3,13 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/02/2019
-ms.openlocfilehash: dc527a4e1bdf9648ddfc9f582b0c146197214f26
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 04/02/2019
+ms.openlocfilehash: d1c880ddc90ae3ce18dfde7e1983b45ac239de85
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741084"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886841"
 ---
 `Logging` Ustawienia zarządzania obsługę rejestrowania platformy ASP.NET Core kontenera. Można użyć tych samych ustawień konfiguracji oraz wartości kontenera używaną dla aplikacji ASP.NET Core. 
 
@@ -17,9 +17,34 @@ Następujących dostawców rejestrowania są obsługiwane przez kontener:
 
 |Dostawca|Przeznaczenie|
 |--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` dostawcy logowania. Obsługiwane są wszystkie ustawienia konfiguracji platformy ASP.NET Core i wartości domyślne dla tego dostawcy logowania.|
+|[Konsola](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` dostawcy logowania. Obsługiwane są wszystkie ustawienia konfiguracji platformy ASP.NET Core i wartości domyślne dla tego dostawcy logowania.|
 |[Debugowanie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` dostawcy logowania. Obsługiwane są wszystkie ustawienia konfiguracji platformy ASP.NET Core i wartości domyślne dla tego dostawcy logowania.|
 |[Dysk](#disk-logging)|Dostawca logowania JSON. Ten dostawca rejestrowania zapisuje dane dziennika instalacji danych wyjściowych.|
+
+To polecenie kontenera przechowuje informacje o rejestrowaniu w formacie JSON w celu instalacji dane wyjściowe:
+
+```bash
+docker run --rm -it -p 5000:5000 \
+--memory 2g --cpus 1 \
+--mount type=bind,src=/home/azureuser/output,target=/output \
+<registry-location>/<image-name> \
+Eula=accept \
+Billing=<billing-endpoint> \
+ApiKey=<api-key> \
+Logging:Disk:Format=json
+```
+
+Ten kontener polecenie wyświetla informacje o debugowaniu, poprzedzony znakiem `dbug`, podczas gdy kontener jest uruchomiony:
+
+```bash
+docker run --rm -it -p 5000:5000 \
+--memory 2g --cpus 1 \
+<registry-location>/<image-name> \
+Eula=accept \
+Billing=<billing-endpoint> \
+ApiKey=<api-key> \
+Logging:Console:LogLevel:Default=Debug
+```
 
 ### <a name="disk-logging"></a>Rejestrowanie dysku
 
@@ -31,3 +56,4 @@ Następujących dostawców rejestrowania są obsługiwane przez kontener:
 | `MaxFileSize` | Liczba całkowita | Maksymalny rozmiar w megabajtach (MB), plik dziennika. Gdy rozmiar bieżącego pliku dziennika, spełnia lub przekracza tę wartość, nowy plik dziennika został uruchomiony przez dostawcę rejestrowania. Jeśli określono wartość -1, rozmiar pliku dziennika jest ograniczona tylko przez maksymalny rozmiar pliku, ewentualne instalacji danych wyjściowych. Wartość domyślna to 1. |
 
 Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
+

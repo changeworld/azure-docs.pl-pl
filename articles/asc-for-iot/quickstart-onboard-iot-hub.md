@@ -1,25 +1,25 @@
 ---
 title: Usługa Azure Security Center dla usługi IoT w wersji zapoznawczej Centrum IoT | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak włączyć usługę Azure Security Center dla usługi IoT w usłudze IoT Hub.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: cb89bb4316b1cd62b3b42a6a0fa05a9fa4513e54
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754331"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862390"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
@@ -60,4 +60,4 @@ Gratulacje! Ukończono włączanie ASC IoT w usłudze IoT Hub.
 Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować rozwiązanie...
 
 > [!div class="nextstepaction"]
-> [Konfiguruj rozwiązanie](quickstart-configure-your-solution.md)
+> [Konfigurowanie rozwiązania](quickstart-configure-your-solution.md)

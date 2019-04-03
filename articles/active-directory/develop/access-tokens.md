@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: celested
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e960e06cc51cc4540a8360cefe90ce68fc7e1f17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009918"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878421"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -107,7 +107,7 @@ Oświadczenia są obecne, tylko wtedy, gdy istnieje wartość, aby wypełnić go
 | `oid` | Ciąg identyfikatora GUID | Niemodyfikowalny identyfikator obiektu na platformie Microsoft tożsamości, w tym przypadku konta użytkownika. Może również służyć do sprawdzania autoryzacji i bezpiecznie jako klucz w tabelach bazy danych. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji, rejestrowanie w ten sam użytkownik otrzyma taką samą wartość w `oid` oświadczenia. W efekcie `oid` mogą być używane podczas tworzenia kwerend do usług Microsoft online services, takich jak program Microsoft Graph. Program Microsoft Graph zwróci ten identyfikator jako `id` właściwość dla danego konta użytkownika. Ponieważ `oid` wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany w celu odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różne konta, nawet jeśli użytkownik loguje się do każdego konta przy użyciu tych samych poświadczeń. |
 | `rh` | Nieprzezroczysty ciąg | Oświadczenie wewnętrzne używane przez platformę Azure w celu ponownego zweryfikowania tokenów. Zasobów nie należy używać tego oświadczenia. |
 | `scp` | Ciąg, spacjami listy zakresów | Zestaw zakresów udostępniany przez aplikację, dla którego aplikacja kliencka zażądała (i odebrano) zgody. Aplikację należy sprawdzić, czy te zakresy są prawidłowe te udostępniane przez aplikację i podejmowania decyzji dotyczących autoryzacji na podstawie wartości tych zakresów. Tylko włączone dla [tokeny użytkowników](#user-and-application-tokens). |
-| `roles` | Ciąg, spacjami listy uprawnień | Zestaw uprawnień udostępniany przez aplikację, któremu nadano aplikacji żądającej uprawnień do wywoływania. Jest to używane podczas [poświadczeń klienta](v1-oauth2-client-creds-grant-flow.md) przepływu zamiast zakresy użytkownika i jest obecna tylko w [tokenów aplikacji](#user-and-application-tokens). |
+| `roles` | Tablica ciągów, listy uprawnień | Zestaw uprawnień udostępniany przez aplikację, któremu nadano aplikacji żądającej uprawnień do wywoływania. Dla [tokenów aplikacji](#user-and-application-tokens), jest on używany podczas [poświadczeń klienta](v1-oauth2-client-creds-grant-flow.md) przepływ zamiast zakresy użytkownika.  Aby uzyskać [tokeny użytkowników](#user-and-application-tokens) wypełniony ról użytkownika została przypisana do aplikacji docelowej. |
 | `sub` | Ciąg identyfikatora GUID | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownika aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Ona może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu i może być używany jako klucz w tabelach bazy danych. Ponieważ podmiot jest zawsze obecne w tokenach problemy dotyczące usługi Azure AD, zalecamy używanie tej wartości w systemie autoryzacji ogólnego przeznaczenia. Temat jest jednak identyfikator pairwise — Unikatowy identyfikator określonej aplikacji. W związku z tym jeśli jeden użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch identyfikatorów innego klienta, aplikacji, które otrzyma dwóch różnych wartości oświadczenia podmiotu. To może być lub może nie być wskazane w zależności od wymagań dotyczących architektury i ochrony prywatności. |
 | `tid` | Ciąg identyfikatora GUID | Reprezentuje dzierżawy usługi Azure AD, do której należy użytkownik. Dla kont służbowych identyfikator GUID jest identyfikator dzierżawy niezmienne organizacji, do której należy użytkownik. Dla osobistych kont, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |
 | `unique_name` | String | Wyświetlane tylko w wersji 1.0 tokenów. Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie musi być unikatowa w ramach dzierżawy i należy używać tylko w celach wyświetlania. |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479533"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862891"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -83,16 +83,6 @@ Ochrony hasłem w usłudze Azure AD nie jest aparat aplikacji zasad w czasie rze
 Wdrożenie ochrona za pomocą hasła usługi Azure AD w lesie usługi Active Directory wymaga rejestracji tego lasu w usłudze Azure AD. Każda usługa serwera proxy, który jest wdrożony również musi być zarejestrowany w usłudze Azure AD. Tyto registrace lasu i serwera proxy są skojarzone z określonym dzierżawy usługi Azure AD, która jest niejawnie identyfikowane za pomocą poświadczeń, które są używane podczas rejestracji.
 
 Las usługi Active Directory i wszystkie usługi proxy wdrożonej w obrębie lasu muszą być zarejestrowane przy użyciu tej samej dzierżawy. Masz lasu usługi Active Directory lub usług serwera proxy w tym dzierżawy lasu jest zarejestrowany do innej usługi Azure AD nie jest obsługiwana. Objawy źle skonfigurowane wdrożenia to brak możliwości pobrania zasad haseł.
-
-## <a name="license-requirements"></a>Wymagania licencyjne
-
-Korzyści wynikające z listy globalne zakazanych haseł mają zastosowanie do wszystkich użytkowników usługi Azure AD.
-
-Niestandardowe listy zakazanych haseł wymaga licencji usługi Azure AD podstawowa.
-
-Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server wymaga licencji usługi Azure AD Premium.
-
-Aby uzyskać dodatkowe informacje o licencjonowaniu, zobacz [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Do pobrania
 

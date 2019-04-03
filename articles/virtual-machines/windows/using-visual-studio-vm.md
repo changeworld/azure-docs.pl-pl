@@ -13,27 +13,27 @@ ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 03/28/2019
+ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: b9bfa49a94bca7f80cacedea0a08b1c0a6128ef8
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619564"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884877"
 ---
 # <a name="visual-studio-images-on-azure"></a>Obrazów programu Visual Studio w systemie Azure
 Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).
 
-Jesteś nowym użytkownikiem platformy Azure? [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free).
+Dopiero zaczynasz korzystać z platformy Azure? [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Jakie konfiguracje i wersje są dostępne?
-Obrazy do najnowszej wersji głównych, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace.  Niedawno Dodaliśmy obsługę wersji zapoznawczych mającej się ukazać wersji głównych — Visual Studio 2019 r.  Dla każdej wydanej wersji głównych Zobacz oryginalnie wydana wersja (RTW) i najnowsze zaktualizowane wersje.  Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise.  Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows.  Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
+Obrazy do najnowszej wersji głównych, 2019 usługi Visual Studio, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace.  Dla każdego wydania wersji głównej, zobacz pierwotnie "udostępnionego w sieci web" (RTW) wersji i najnowsze zaktualizowane wersje.  Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise.  Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows.  Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
 
 | Wersja                                              | Wersje                     |     Wersja produktu      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|     Visual Studio 2019: Wersja zapoznawcza (RC4)                        |           Enterprise         |    Wersja 16.0.0 RC4    |
+|     Visual Studio 2019: RTW                                  |    Enterprise, Community     |      Wersja 16.0.0      |
 | Visual Studio 2017: Najnowsze (w wersji 15.9)                    |    Enterprise, Community     |      Wersja 15.9.10     |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Wersja 15.0.22     |
 |   Visual Studio 2015: Najnowsze (Aktualizacja 3)                      |    Enterprise, Community     |  Wersja 14.0.25431.01   |

@@ -1,25 +1,25 @@
 ---
 title: Co to jest Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o usłudze Azure Security Center dla funkcji IoT i usługi.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757604"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863036"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Wprowadzenie do Centrum zabezpieczeń Azure dla IoT
 
@@ -57,7 +57,7 @@ W tym omówieniu opisano funkcje i usługi ASC dla IoT. Aby dowiedzieć się wi�
 
 - [Architektura](architecture.md)
 - [Wymagania wstępne usługi](service-prerequisites.md)
-- [Rozpoczęcie pracy](getting-started.md)
+- [Wprowadzenie](getting-started.md)
 - [Zdefiniuj swoje rozwiązanie](quickstart-configure-your-solution.md)
 - [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)
 - [ASC alertów IoT](concept-security-alerts.md)

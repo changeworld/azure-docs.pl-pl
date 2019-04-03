@@ -1,5 +1,5 @@
 ---
-title: Twórz aplikacje bezserwerowe za pomocą programu Visual Studio | Dokumentacja firmy Microsoft
+title: Twórz aplikacje bezserwerowe za pomocą usługi Azure Logic Apps i Azure Functions w programie Visual Studio
 description: Tworzenie, wdrażanie i zarządzanie nimi swoją pierwszą aplikację bez użycia serwera za pomocą usługi Azure Logic Apps i Azure Functions w programie Visual Studio
 services: logic-apps
 ms.service: logic-apps
@@ -7,16 +7,15 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
-ms.date: 08/01/2018
-ms.openlocfilehash: c172519984cce765217a713b276db5ccc8f67183
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 04/02/2019
+ms.openlocfilehash: 39b44668a89ce0c77c09a7fa20dc4d95b2164bf4
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558604"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863002"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Utwórz swoją pierwszą aplikację bez użycia serwera za pomocą usługi Azure Logic Apps i Azure Functions — Visual Studio
 
@@ -26,23 +25,38 @@ Możesz szybko tworzyć i wdrażać aplikacje w chmurze przy użyciu narzędzia 
 
 Tworzenie aplikacji bezserwerowej w programie Visual Studio, potrzebne są następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
-* [Program Visual Studio 2017](https://www.visualstudio.com/vs/) lub Visual Studio 2015 — Community, Professional lub Enterprise
+* Pobierz i zainstaluj te narzędzia, jeśli jeszcze ich nie masz:
 
-* [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 lub nowszy)
+  * <a href="https://aka.ms/download-visual-studio" target="_blank">Program Visual Studio 2019 r, 2017 lub 2015 — Community edition lub nowszej</a>. 
+  Ten przewodnik Szybki start używa bezpłatnego Visual Studio Community 2017.
 
-* [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
+    > [!IMPORTANT]
+    > Po zainstalowaniu programu Visual Studio 2019 lub 2017, upewnij się, że wybrano **programowanie na platformie Azure** obciążenia.
+    > Dla programu Visual Studio 2019 r Cloud Explorer można otworzyć projektanta aplikacji logiki w witrynie Azure portal, ale jeszcze nie można otworzyć osadzonego projektanta aplikacji logiki.
 
-* Narzędzia [Azure Logic Apps Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551) lub program [Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio)
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Zestaw Microsoft Azure SDK dla platformy .NET (2.9.1 lub nowszy)</a>. Dowiedz się więcej na temat <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">zestawu Azure SDK dla platformy .NET</a>.
 
-  Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z poziomu programu Visual Studio Marketplace lub [Dowiedz się, jak zainstalować to rozszerzenie z poziomu programu Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). Upewnij się, że ponownie program Visual Studio po zakończeniu instalacji.
+  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-* [Podstawowe narzędzia usługi Azure Functions](https://www.npmjs.com/package/azure-functions-core-tools) lokalne debugowanie funkcji
+  * Narzędzia systemu Azure aplikacje logiki dla wersji programu Visual Studio, które mają:
 
-* Dostęp do Internetu podczas korzystania z projektanta aplikacji logiki osadzone w programie Visual Studio
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
 
-  Projektant wymaga połączenia internetowego do tworzenia zasobów na platformie Azure oraz odczytywania właściwości i danych z łączników w aplikacji logiki. Jeśli na przykład używany jest łącznik usługi Dynamics CRM Online, projektant wyszukuje dostępne właściwości domyślne i niestandardowe w wystąpieniu CRM.
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
+
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015" target="_blank">Visual Studio 2015</a>
+  
+    Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak zainstalować to rozszerzenie z poziomu programu Visual Studio</a>. 
+    Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
+
+  * <a href="https://www.npmjs.com/package/azure-functions-core-tools" target="_blank">Podstawowe narzędzia usługi Azure Functions</a> lokalne debugowanie funkcji
+
+* Dostęp do Internetu podczas korzystania z osadzonego Projektanta aplikacji logiki
+
+  Projektant wymaga połączenia internetowego do tworzenia zasobów na platformie Azure oraz odczytywania właściwości i danych z łączników w aplikacji logiki. 
+  Jeśli na przykład używany jest łącznik usługi Dynamics CRM Online, projektant wyszukuje dostępne właściwości domyślne i niestandardowe w wystąpieniu CRM.
 
 ## <a name="create-resource-group-project"></a>Tworzenie projektu grupy zasobów
 
@@ -56,22 +70,32 @@ Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
 1. W obszarze **Zainstalowane** wybierz pozycję **Visual C#** lub **Visual Basic**. Wybierz pozycję **Chmura** > **Grupa zasobów platformy Azure**.
 
-   Jeśli **chmury** kategorii lub **grupy zasobów platformy Azure** projektu nie istnieje, upewnij się, że zainstalowano zestaw Azure SDK dla programu Visual Studio.
+   > [!NOTE]
+   > Jeśli **chmury** kategorii lub **grupy zasobów platformy Azure** projektu nie istnieje, upewnij się, że zainstalowano zestaw Azure SDK dla programu Visual Studio.
+
+   Jeśli używasz programu Visual Studio 2019 r, wykonaj następujące czynności:
+
+   1. W **Utwórz nowy projekt** wybierz opcję **grupy zasobów platformy Azure** szablon projektu służący do wizualizacji albo C# lub Visual Basic i wybierz polecenie **dalej**.
+
+   1. Podaj nazwę grupy zasobów platformy Azure, którego chcesz użyć i innych informacji o projekcie. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
 1. Nadaj projektowi nazwę i lokalizację, a następnie wybierz **OK**.
 
-   Program Visual Studio zostanie wyświetlony monit o wybranie szablonu. Można zacząć od pustego, aplikacja logiki lub innego szablonu, ale w tym przykładzie użyto szablonu szybkiego startu platformy Azure w celu skompilowania aplikacji bez użycia serwera, który zawiera aplikację logiki i wywołanie funkcji platformy Azure.
+   Program Visual Studio wyświetli monit o wybierz szablon z listy szablonów. 
+   W tym przykładzie użyto szablonu szybkiego startu platformy Azure, dzięki czemu można tworzyć aplikacji bez użycia serwera, który zawiera aplikację logiki i wywołanie funkcji platformy Azure.
 
-   Aby utworzyć aplikację logiki w programie Visual Studio, wybierz **aplikacji logiki** szablonu. Ten szablon umożliwia utworzenie pustej aplikacji logiki, zostanie otwarty w Projektancie aplikacji logiki bez konieczności wstępnego wdrażania rozwiązania w grupie zasobów platformy Azure.
+   > [!TIP]
+   > W scenariuszach, w których nie chcesz do wstępnego wdrażania rozwiązania w grupie zasobów platformy Azure, można użyć pustego **aplikacji logiki** szablonu, który po prostu tworzy pustej aplikacji logiki.
 
-1. W obszarze **Pokaż szablony z tej lokalizacji**, wybierz opcję **szybkiego startu platformy Azure (GitHub/Azure/azure — szablony szybkiego startu —)**.
+1. Z **Pokaż szablony z tej lokalizacji** listy wybierz **szybkiego startu platformy Azure (github.com/Azure/azure-quickstart-templates)**.
 
-1. W polu wyszukiwania wpisz "aplikacja logiki" jako filtr, wybierz ten szablon szybkiego startu bez użycia serwera i wybierz **OK**: **101-Logic-App-and-Function-App**
+1. W polu wyszukiwania wprowadź "aplikacja logiki" jako filtr. Wybierz z wyników, ten szablon: **101-Logic-App-and-Function-App**
 
    ![Wybierz szablon szybkiego startu platformy Azure](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
-   Program Visual Studio tworzy i otwiera rozwiązanie dla Twojego projektu grupy zasobów. Szablon szybkiego startu wybrano utworzenie szablonu wdrożenia o nazwie `azuredeploy.json` wewnątrz projekt grupy zasobów. Szablon wdrożenia zawiera definicję to prosta aplikacja logiki wyzwala na żądanie HTTP, który wywołuje funkcję platformy Azure i zwraca wynik w postaci odpowiedź HTTP.
-   
+   Program Visual Studio tworzy i otwiera rozwiązanie dla Twojego projektu grupy zasobów. 
+   Wybrany szablon szybkiego startu platformy Azure tworzy szablon wdrożenia o nazwie `azuredeploy.json` wewnątrz projekt grupy zasobów. Szablon wdrożenia zawiera definicję to prosta aplikacja logiki wyzwala na żądanie HTTP, który wywołuje funkcję platformy Azure i zwraca wynik w postaci odpowiedź HTTP.
+
    ![Nowe rozwiązanie niewymagające użycia serwera](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
 1. Następnie należy wdrożyć swoje rozwiązanie na platformie Azure, aby można było otworzyć szablon wdrażania i przejrzyj zasoby dla aplikacji bez użycia serwera.
@@ -80,7 +104,7 @@ Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
 Zanim będzie można otworzyć aplikację logiki przy użyciu projektanta aplikacji logiki w programie Visual Studio, musi mieć grupę zasobów platformy Azure, która została już wdrożona na platformie Azure. Projektant następnie można utworzyć połączenia z zasobami i usługami w aplikacji logiki. W tym celu wdrożenia rozwiązania w programie Visual Studio do witryny Azure portal.
 
-1. W Eksploratorze rozwiązań Otwórz menu skrótów projektu zasobów, a następnie wybierz **Wdróż** > **New**.
+1. W oknie Solution Explorer z menu skrótów projektu zasobów, wybierz **Wdróż** > **New**.
 
    ![Utwórz nowe wdrożenie dla grupy zasobów](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -92,13 +116,14 @@ Zanim będzie można otworzyć aplikację logiki przy użyciu projektanta aplika
 
    ![Podaj nazwy dla aplikacji logiki i aplikacji funkcji](./media/logic-apps-serverless-get-started-vs/logic-function-app-name-parameters.png)
 
-   Po uruchomieniu programu Visual Studio wdrożenia w grupie zasobów określonej stan wdrożenia tego rozwiązania jest wyświetlany w programie Visual Studio **dane wyjściowe** okna. Po zakończeniu wdrożenia aplikacja logiki jest aktywna w witrynie Azure portal.
+   Po uruchomieniu programu Visual Studio wdrożenia w grupie zasobów określonej stan wdrożenia tego rozwiązania jest wyświetlany w programie Visual Studio **dane wyjściowe** okna. 
+   Po zakończeniu wdrożenia aplikacja logiki jest aktywna w witrynie Azure portal.
 
 ## <a name="edit-logic-app-in-visual-studio"></a>Edytuj aplikację logiki w programie Visual Studio
 
-Teraz, gdy rozwiązanie jest wdrażana do grupy zasobów, należy otworzyć aplikację logiki przy użyciu projektanta aplikacji logiki, aby można było edytować i zmienić aplikację logiki.
+Teraz, gdy rozwiązanie jest wdrażana do grupy zasobów, należy otworzyć aplikację logiki przy użyciu projektanta aplikacji logiki, aby edytować i zmienić aplikację logiki.
 
-1. W Eksploratorze rozwiązań Otwórz `azuredeploy.json` pliku menu skrótów, a następnie wybierz **Otwórz za pomocą projektanta aplikacji logiki**.
+1. W oknie Eksploratora rozwiązań z `azuredeploy.json` menu skrótów pliku, wybierz opcję **Otwórz za pomocą projektanta aplikacji logiki**.
 
    ![Otwórz "azuredeploy.json" w Projektancie aplikacji logiki](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
@@ -132,6 +157,4 @@ Możesz teraz pobrać aplikacji logiki już opublikowane w projekcie grupy zasob
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Twórz bezserwerowe społecznościowego pulpitu nawigacyjnego](logic-apps-scenario-social-serverless.md)
 * [Zarządzanie aplikacjami logiki w programie Visual Studio](manage-logic-apps-with-visual-studio.md)
-* [Język definicji przepływów pracy aplikacji logiki](logic-apps-workflow-definition-language.md)

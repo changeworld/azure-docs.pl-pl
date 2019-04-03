@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004986"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861883"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Tworzenie niestandardowej sondy dla bramy aplikacji platformy Azure (model klasyczny) przy użyciu programu PowerShell
 
@@ -150,11 +150,11 @@ Parametry konfiguracji są następujące:
 
 |Parametr|Opis|
 |---|---|
-|**Nazwa** |Nazwa odwołania dla niestandardowej sondy. |
+|**Name (Nazwa)** |Nazwa odwołania dla niestandardowej sondy. |
 | **Protokół** | Protokół używany (możliwe wartości to HTTP lub HTTPS).|
-| **Host** i **ścieżki** | Pełna ścieżka adresu URL, które jest wywoływane przez usługę application gateway w celu określenia kondycji wystąpienia. Na przykład, jeśli masz witrynę z http://contoso.com/, a następnie można skonfigurować niestandardową sondę dla "http://contoso.com/path/custompath.htm" dla sonda sprawdza mieć pomyślnej odpowiedzi HTTP.|
-| **Interwał** | Konfiguruje sprawdzanie interwału sondowania w ciągu kilku sekund.|
-| **limit czasu** | Określa limit czasu sondy sprawdzanie odpowiedzi HTTP.|
+| **Host** i **ścieżki** | Pełna ścieżka adresu URL, które jest wywoływane przez usługę application gateway w celu określenia kondycji wystąpienia. Na przykład, jeśli masz http witryny sieci Web:\//contoso.com/, a następnie niestandardowej sondy można skonfigurować dla "http:\//contoso.com/path/custompath.htm" dla sonda sprawdza mieć pomyślnej odpowiedzi HTTP.|
+| **Interval** | Konfiguruje sprawdzanie interwału sondowania w ciągu kilku sekund.|
+| **Limit czasu** | Określa limit czasu sondy sprawdzanie odpowiedzi HTTP.|
 | **UnhealthyThreshold** | Liczba zakończonych niepowodzeniem odpowiedzi HTTP, potrzebne do wystąpienia zaplecza jako *złej kondycji*.|
 
 Odwołuje się nazwa sondy \<BackendHttpSettings\> konfigurację, aby przypisać puli zaplecza, która korzysta z ustawień niestandardowej sondy.

@@ -3,21 +3,21 @@ title: Analizowanie danych w usłudze Azure Data Lake magazynu Gen1 przy użyciu
 description: Usługa Power BI umożliwia analizowanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5db9d18a31af4d6b407fcd9172ac80fc6f93f085
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297183"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880070"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analizowanie danych w usłudze Azure Data Lake magazynu Gen1 przy użyciu usługi Power BI
 W tym artykule dowiesz się, jak analizować i wizualizować dane przechowywane w usłudze Azure Data Lake magazynu Gen1 za pomocą programu Power BI Desktop.

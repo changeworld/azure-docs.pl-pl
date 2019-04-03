@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864460"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883398"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indeksować Cosmos DB przy użyciu indeksator usługi Azure Search
 
@@ -25,7 +25,7 @@ Ponieważ terminologia mogą być mylące, warto zauważyć, że [indeksowanie u
 
 Możesz użyć [portal](#cosmos-indexer-portal), interfejsów API REST lub zestawu .NET SDK do indeksowania zawartości Cosmos. Indeksator usługi Cosmos DB w usłudze Azure Search może przeszukiwać [elementów Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępne za pośrednictwem tych protokołów:
 
-* [INTERFEJS API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [Interfejs API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [Interfejs API usługi MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Obsługa usługi Azure Search dla tego interfejsu API jest w publicznej wersji zapoznawczej)  
 
 > [!Note]
@@ -61,7 +61,7 @@ W **źródła danych** stronie źródłowy musi być **Cosmos DB**, z następuj�
 
 + **Nazwa** to nazwa obiektu źródła danych. Po utworzeniu, możesz je dla innych obciążeń.
 
-+ **Konto usługi cosmos DB** powinien być podstawowy lub pomocniczy połączenia z usługi Cosmos DB przy użyciu `AccountEdpointPoint` i `AccountKey`. To konto Określa, czy data jest rzutowany jako interfejsu API SQL lub interfejsu API usługi Mongo DB
++ **Konto usługi cosmos DB** powinien być podstawowy lub pomocniczy połączenia z usługi Cosmos DB przy użyciu `AccountEndpoint` i `AccountKey`. To konto Określa, czy data jest rzutowany jako interfejsu API SQL lub interfejsu API usługi Mongo DB
 
 + **Baza danych** jest istniejącą bazę danych z konta. 
 
@@ -171,10 +171,10 @@ Treść żądania zawiera definicję źródła danych, który powinien zawierać
 
 | Pole   | Opis |
 |---------|-------------|
-| **Nazwa** | Wymagany. Wybierz dowolną nazwę do reprezentowania obiektu źródła danych. |
+| **name** | Wymagany. Wybierz dowolną nazwę do reprezentowania obiektu źródła danych. |
 |**type**| Wymagany. Musi być `documentdb`. |
-|**Poświadczenia** | Wymagany. Musi być ciąg połączenia usługi Cosmos DB.<br/>Dla kolekcji SQL parametry połączenia są w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekcje bazy danych MongoDB, można dodać **rodzaju interfejsu API = MongoDb** parametry połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Należy unikać numerów portów w programie adres url punktu końcowego. Jeśli uwzględniony numer portu usługi Azure Search można indeksować bazy danych Azure Cosmos DB.|
-| **Kontener** | zawiera następujące elementy: <br/>**name**: Wymagany. Określ identyfikator kolekcji bazy danych mają być indeksowane.<br/>**Zapytanie**: Opcjonalny. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie.<br/>Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. |
+|**poświadczenia** | Wymagany. Musi być ciąg połączenia usługi Cosmos DB.<br/>Dla kolekcji SQL parametry połączenia są w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekcje bazy danych MongoDB, można dodać **rodzaju interfejsu API = MongoDb** parametry połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Należy unikać numerów portów w programie adres url punktu końcowego. Jeśli uwzględniony numer portu usługi Azure Search można indeksować bazy danych Azure Cosmos DB.|
+| **kontener** | zawiera następujące elementy: <br/>**name**: Wymagany. Określ identyfikator kolekcji bazy danych mają być indeksowane.<br/>**Zapytanie**: Opcjonalny. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie.<br/>Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. |
 | **dataChangeDetectionPolicy** | Zalecane. Zobacz [indeksowania zmienione dokumenty](#DataChangeDetectionPolicy) sekcji.|
 |**dataDeletionDetectionPolicy** | Opcjonalny. Zobacz [indeksowanie dokumentów usunięte](#DataDeletionDetectionPolicy) sekcji.|
 

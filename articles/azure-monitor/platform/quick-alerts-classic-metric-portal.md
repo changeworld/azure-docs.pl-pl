@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: alerts
-ms.openlocfilehash: dcce5e424a5f14cb8f36582635383b0a8ba86caa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: f8b9db47684a6dd78302f094d8e670da4a61ab2c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472266"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849816"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki
 
 Usługa Azure Monitor udostępnia metryki dla wielu zasobów platformy Azure. Te metryki informują o wydajności i kondycji zasobów. W wielu przypadkach wartości metryk mogą wskazywać problemy z zasobami. Możesz tworzyć alerty dotyczące metryk, aby monitorować zasoby pod kątem nieprawidłowego działania i otrzymywać powiadomienia w przypadku jego wystąpienia. Ten przewodnik Szybki start zawiera instrukcje tworzenia aplikacji logiki, tworzenia zadania oraz wizualizowania metryk tej aplikacji logiki. Następnie opisano proces tworzenia alertu i otrzymywania powiadomienia dotyczącego metryki zasobu aplikacji logiki.
 
-Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](../../azure-monitor/platform/data-collection.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](./alerts-overview.md) (Omówienie alertów w usłudze Azure Monitor). 
+Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](data-platform.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](alerts-overview.md) (Omówienie alertów w usłudze Azure Monitor). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -110,7 +110,7 @@ Inne przewodniki Szybki start w tej kolekcji bazują na tym przewodniku. Jeśli 
 
 5. W polu tekstowym na panelu kliknij aplikację logiki utworzoną podczas pracy z tym przewodnikiem Szybki start, a następnie kliknij polecenie **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Praca z tym przewodnikiem Szybki start pozwoliła Ci nauczyć się, jak utworzyć alert dotyczący metryki dla zasobów. Aby uzyskać więcej informacji na temat alertów dotyczących metryk, kliknij omówienie dotyczące alertów.
 

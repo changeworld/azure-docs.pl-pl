@@ -3,21 +3,21 @@ title: Przegląd zabezpieczeń w usłudze Azure Data Lake magazynu Gen1 | Dokume
 description: Dowiedz się, jak usługi Azure Data Lake Storage Gen1 jest bardziej bezpiecznego magazynu danych big data
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ebd5b2ac-c5cc-46d4-9cfd-1a1ee70024c2
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959616"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883307"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpieczenia w usługi Azure Data Lake Storage Gen1
 Wiele przedsiębiorstw są się korzystanie z analizy danych big data, aby uzyskać szczegółowe informacje biznesowe pomóc im inteligentne decyzje. Organizacja może być skomplikowane i podlegających regulacjom środowiska z coraz większą liczbę różnych użytkowników. Ważne jest dla przedsiębiorstw upewnić się, że kluczowe dane biznesowe są przechowywane w bardziej bezpiecznie z odpowiedniego poziomu dostępu przyznane dla poszczególnych użytkowników. Azure Data Lake Storage Gen1 ułatwia spełnienie tych wymagań dotyczących zabezpieczeń. Ten artykuł zawiera informacje na temat możliwości zabezpieczeń Data Lake Storage Gen1, w tym:
@@ -112,5 +112,5 @@ Jeśli chcesz zobaczyć nowe funkcje programu Data Lake Storage Gen1, Wyślij do
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Rozpoczynanie pracy z usługą Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

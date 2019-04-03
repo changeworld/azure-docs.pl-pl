@@ -9,16 +9,16 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a7316ea00f5c38d6a2b1a98d81affeeffcd5e9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 0506cc086cbc0c9ea30e199fd0bf18da3b8af545
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518001"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863087"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -46,7 +46,7 @@ Użytkownik musi wprowadzić swoje poświadczenia firmy po raz drugi do uwierzyt
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Szczegółowy opis działania synchronizacji skrótów haseł
 W poniższej sekcji opisano, szczegółowe, jak działa synchronizacja skrótów haseł między usługi Active Directory i Azure AD.
 
-![Przepływ szczegółowe hasła](./media/how-to-connect-password-hash-synchronization/arch3a.png)
+![Przepływ szczegółowe hasła](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
 
 1. Co dwie minuty agenta synchronizacji skrótów haseł dla żądań serwera AD Connect przechowywane wartości skrótów haseł (atrybutu unicodePwd) z kontrolera domeny.  To żądanie jest za pomocą standardowej [MS DRSR](https://msdn.microsoft.com/library/cc228086.aspx) protokołu replikacji używane do synchronizowania danych między kontrolery domeny. Konto usługi musi mieć Replikacja zmian katalogów i Replikuj wszystkie zmiany katalogu AD uprawnienia (domyślnie na instalację), do uzyskania wartości skrótu hasła.
@@ -141,6 +141,6 @@ Aby uzyskać informacje o zabezpieczeniach i ze standardem FIPS, zobacz [synchro
 Jeśli masz problemy z synchronizacją skrótów haseł, zobacz [Rozwiązywanie problemów z synchronizacją skrótów haseł](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Synchronizacja w programie Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 * [Pobieranie planu wdrożenie krok po kroku dotyczące migracji z usług AD FS do synchronizacji skrótów haseł](https://aka.ms/authenticationDeploymentPlan)

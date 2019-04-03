@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 5e4fc40a9b6cfc945670bcd497d4b13af61f2f2f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817766"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849969"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano konfiguracje dla pamięci podręcznej Azure dla wystąpienia usługi Redis. W tym temacie omówiono również domyślne Redis konfiguracji serwera dla usługi Azure Cache do wystąpienia usługi Redis.
@@ -356,7 +356,7 @@ Kliknij przycisk **reguły alertów** Konfigurowanie alertów w oparciu o pamię
 
 ### <a name="diagnostics"></a>Diagnostyka
 
-Domyślnie są metryki pamięci podręcznej w usłudze Azure Monitor [przechowywane przez 30 dni](../azure-monitor/platform/data-collection.md#metrics) a następnie usuwane. Aby zachować swoje metryki pamięci podręcznej przez czas dłuższy niż 30 dni, kliknij przycisk **diagnostyki** do [Konfigurowanie konta magazynu](cache-how-to-monitor.md#export-cache-metrics) używany do przechowywania diagnostykę pamięci podręcznej.
+Domyślnie są metryki pamięci podręcznej w usłudze Azure Monitor [przechowywane przez 30 dni](../azure-monitor/platform/data-platform-metrics.md) a następnie usuwane. Aby zachować swoje metryki pamięci podręcznej przez czas dłuższy niż 30 dni, kliknij przycisk **diagnostyki** do [Konfigurowanie konta magazynu](cache-how-to-monitor.md#export-cache-metrics) używany do przechowywania diagnostykę pamięci podręcznej.
 
 >[!NOTE]
 >Oprócz archiwizacji metryk pamięci podręcznej do magazynu, możesz również [przekazywać je strumieniowo do Centrum zdarzeń lub wysłać je do usługi Azure Monitor dzienniki](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).

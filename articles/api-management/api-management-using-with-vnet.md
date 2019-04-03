@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: a8566e41934b5d78d8be60b385ea4148e1cb60c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78efcefa7df99dfa3386dcdf19aafa47d7b9fab1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087044"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884515"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).

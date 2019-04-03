@@ -3,21 +3,21 @@ title: Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Azure
 description: Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Azure Data Lake Storage Gen1 za pomocą narzędzia AdlCopy
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544649"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879815"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -179,6 +179,6 @@ AdlCopy obsługuje kopiowanie danych zawierający tysiące plików i folderów. 
 * 1.0.13 — Jeśli kopiujesz dane do tego samego konta usługi Azure Data Lake Storage Gen1 między kilka poleceń narzędzia adlcopy, nie trzeba ponownie wprowadzić swoje poświadczenia dla każdego uruchomienia już. Adlcopy teraz będzie buforować tych informacji wielu uruchomień.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Za pomocą usług Azure Data Lake Analytics Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Usługa Azure HDInsight za pomocą programu Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

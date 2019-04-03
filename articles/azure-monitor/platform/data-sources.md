@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763431"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849672"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Źródła danych w usłudze Azure Monitor
-W tym artykule opisano źródeł danych zbieranych przez usługi Azure Monitor do monitorowania kondycji i wydajności zasobów oraz aplikacje uruchomione na nich. Te zasoby może być na platformie Azure, w innej chmurze lub lokalnie.  Zobacz [dane zebrane przez usługi Azure Monitor](data-collection.md) szczegółowe informacje na temat sposobu przechowywania tych danych i jak można je wyświetlić.
+W tym artykule opisano źródeł danych zbieranych przez usługi Azure Monitor do monitorowania kondycji i wydajności zasobów oraz aplikacje uruchomione na nich. Te zasoby może być na platformie Azure, w innej chmurze lub lokalnie.  Zobacz [dane zebrane przez usługi Azure Monitor](data-platform.md) szczegółowe informacje na temat sposobu przechowywania tych danych i jak można je wyświetlić.
 
 Monitorowanie danych na platformie Azure pochodzi z różnych źródeł, które mogą być organizowane w warstwach, najwyższej warstwy aplikacji i systemy operacyjne i niższych warstwach, są składniki platformy Azure. Jest to zilustrowane na poniższym diagramie z każdej warstwy, które opisano szczegółowo w poniższych sekcjach.
 
@@ -59,7 +59,7 @@ Metryki i zasobów poziom dzienniki diagnostyczne zawierają informacje o _wewn�
 
 
 ### <a name="metrics"></a>Metryki
-Większość usług platformy Azure spowoduje wygenerowanie [metryk platformy](data-collection.md#metrics) odzwierciedlające ich wydajność i działanie. Konkretne [metryki będą się różnić dla każdego typu zasobu](metrics-supported.md).  Są dostępne z analizy metryki i mogą być kopiowane do dzienników dla analizy trendu i innych za pomocą usługi Log Analytics.
+Większość usług platformy Azure spowoduje wygenerowanie [metryk platformy](data-platform-metrics.md) odzwierciedlające ich wydajność i działanie. Konkretne [metryki będą się różnić dla każdego typu zasobu](metrics-supported.md).  Są dostępne z analizy metryki i mogą być kopiowane do dzienników dla analizy trendu i innych za pomocą usługi Log Analytics.
 
 
 ### <a name="resource-diagnostic-logs"></a>Dzienniki diagnostyczne zasobu
@@ -116,4 +116,4 @@ Usługa Azure Monitor może zbierać dane dzienników z dowolnego klienta REST p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [typów danych monitorowania zbieranych przez usługi Azure Monitor](data-collection.md) oraz jak wyświetlać i analizować te dane.
+- Dowiedz się więcej o [typów danych monitorowania zbieranych przez usługi Azure Monitor](data-platform.md) oraz jak wyświetlać i analizować te dane.

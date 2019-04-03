@@ -1,25 +1,25 @@
 ---
 title: Usługa Azure Security Center dla wymagań wstępnych IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Szczegóły dotyczące wszystko, co jest potrzebne, aby rozpocząć pracę z usługą Azure Security Center wymagania wstępne usługi IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 790cbcb7-1340-4cc1-9509-7b262e7c3181
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755090"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861693"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Usługa Azure Security Center IoT wstępnie wymaganych składników
 
@@ -33,7 +33,7 @@ Ten artykuł zawiera wyjaśnienie różnych bloków konstrukcyjnych z usługi Az
 
 - W warstwie standardowa Centrum IoT
     - Rola RBAC **właściciela** poziomami uprawnień 
-- [Obszar roboczy usługi log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
+- [Obszar roboczy usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
 - Usługa Azure Security Center (zalecane)
     - Podczas korzystania z usługi Azure Security Center to jedynie zalecenia i nie wymóg, bez tego nie można wyświetlić innych zasobów platformy Azure w ramach usługi IoT Hub. 
  
@@ -62,7 +62,7 @@ Sprawdź swoją lokalizację centrum IoT Hub, aby sprawdzić dostępność usłu
 ASC agentów IoT obsługuje rosnącą listę urządzeń i platform. Zobacz [obsługiwane listy platform](how-to-deploy-agent.md) do sprawdzenia istniejących lub planowanych biblioteki urządzeń.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Omówienie](overview.md)
+- [Przegląd](overview.md)
 - [Włącz usługę](quickstart-onboard-iot-hub.md)
 - [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)
 - [Opis usługi ASC alertów IoT](concept-security-alerts.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649090"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848935"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie testu automatycznego klienta w celu wstępnego zweryfikowania obrazów maszyn wirtualnych platformy Azure
 
@@ -51,7 +51,7 @@ Na poniższym diagramie przedstawiono, jak działa autoryzacji dla wywołań us�
 Interfejs API automatycznego testu zawiera jeden punkt końcowy, który obsługuje tylko metody POST.  Ma ona następującą strukturę.
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -357,7 +357,7 @@ Poniższy zrzut ekranu przedstawia przykład użycia polecenia curl, aby uzyska�
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>Aby utworzyć i Uzyskaj token za pomocą języka C&#35;
 
-Aby zadać Auth0 tokenów dla dowolnej autoryzowanych aplikacji, należy wykonać operacji POST [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) punkt końcowy z ładunku w następującym formacie:
+Aby zadać Auth0 tokenów dla dowolnej aplikacji autoryzowanych, należy wykonać operację POST, aby https:\/końcowy /soamtenant.auth0.com/oauth/token z ładunku w następującym formacie:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -380,7 +380,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Aby utworzyć i Uzyskaj token za pomocą programu PowerShell
 
-Aby zadać Auth0 tokenów dla dowolnej autoryzowanych aplikacji, należy wykonać operacji POST [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) punkt końcowy z ładunku w następującym formacie:
+Aby zadać Auth0 tokenów dla dowolnej aplikacji autoryzowanych, należy wykonać operację POST, aby https:\/końcowy /soamtenant.auth0.com/oauth/token z ładunku w następującym formacie:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";

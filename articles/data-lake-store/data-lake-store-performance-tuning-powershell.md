@@ -4,19 +4,19 @@ description: Wskazówki dotyczące sposobu zwiększenia wydajności podczas korz
 services: data-lake-store
 documentationcenter: ''
 author: stewu
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1c554b0eee844a632e6412b6f8a285c7a2573326
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235606"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885319"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące przy użyciu programu PowerShell przy użyciu usługi Azure Data Lake Storage Gen1 dostrajania wydajności
 
@@ -96,7 +96,7 @@ Te ustawienia można jeszcze bardziej dostosować, zwiększając lub zmniejszaj�
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Użyj usługi Azure Data Lake Storage Gen1 dla wymagających danych big Data](data-lake-store-data-scenarios.md) 
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Za pomocą usług Azure Data Lake Analytics Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Usługa Azure HDInsight za pomocą programu Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

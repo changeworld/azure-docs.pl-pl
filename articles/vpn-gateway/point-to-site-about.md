@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8fc952af011231a9cc12f96e3db9ebb088c237a2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413332"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878217"
 ---
 # <a name="about-point-to-site-vpn"></a>Sieci VPN typu punkt lokacja — informacje
 
@@ -22,7 +22,7 @@ Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne p
 
 Sieci VPN typu punkt lokacja można użyć jednej z następujących protokołów:
 
-* OpenVPN, protokołu sieci VPN na podstawie certyfikatu SSL/TLS. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzeń z systemami Linux i Mac (wersji OS x 10.13 i nowsze wersje).
+* OpenVPN, protokołu sieci VPN na podstawie certyfikatu SSL/TLS. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzenia Windows, Linux i Mac (wersji OS x 10.13 i nowsze wersje).
 
 * Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
 
@@ -94,7 +94,7 @@ Konfiguracji P2S wymaga kilku określonych kroków. Następujące artykuły zawi
 
 * [Konfigurowanie połączenia P2S - Azure natywne Uwierzytelnianie certyfikatów](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-* [Konfigurowanie OpenVPN](vpn-gateway-howto-openvpn.md)
+* [Konfigurowanie oprogramowania OpenVPN](vpn-gateway-howto-openvpn.md)
 
 ## <a name="faqcert"></a>Często zadawane pytania dotyczące uwierzytelniania certyfikatu platformy Azure natywne
 

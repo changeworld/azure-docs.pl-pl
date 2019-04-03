@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/18/2019
 ms.author: dacoulte
-ms.openlocfilehash: c939deda9b1468b5ce843d497b81a462938a2554
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8b383ed4a9e13380ec9d9ad2508c5b48b1e23e9e
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805554"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849258"
 ---
 # <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Przykład — inspekcja określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
 

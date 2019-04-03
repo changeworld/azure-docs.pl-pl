@@ -1,22 +1,22 @@
 ---
-title: 'Service-to-service authentication: Azure Data Lake Storage Gen1 za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Service-to-service authentication: Usługa Azure Data Lake Storage Gen1 za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak osiągnąć usługa Usługa uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956618"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884996"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Usługa Usługa uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,14 +45,14 @@ Podczas zgodnie z instrukcjami w powyższym linkiem, upewnij się, możesz wybra
 
 ![Tworzenie aplikacji internetowej](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "tworzenie aplikacji internetowej")
 
-## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: Uzyskanie Identyfikatora aplikacji, klucz uwierzytelniania i Identyfikatora dzierżawy
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: Pobierz identyfikator aplikacji, klucz uwierzytelniania i Identyfikatora dzierżawy
 Podczas programowego logowania, potrzebujesz Identyfikatora aplikacji. Jeśli aplikacja zostanie uruchomiona w ramach własnej poświadczeń, należy również klucza uwierzytelniania.
 
 * Aby uzyskać instrukcje dotyczące sposobu pobierania aplikacji Identyfikatora i klucza uwierzytelniania (nazywane również klucz tajny klienta) dla aplikacji, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 * Aby uzyskać instrukcje dotyczące pobierania Identyfikatora dzierżawy, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: Przypisywanie aplikacji usługi Azure AD do usługi Azure Data Lake Storage Gen1 konta pliku lub folderu
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: Przypisz aplikację usługi Azure AD do usługi Azure Data Lake Storage Gen1 konta pliku lub folderu
 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz konto Data Lake Storage Gen1, który chcesz skojarzyć z aplikacją usługi Azure Active Directory, która została utworzona wcześniej.
@@ -85,7 +85,7 @@ Podczas programowego logowania, potrzebujesz Identyfikatora aplikacji. Jeśli ap
 > 
 >
 
-## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>Krok 4: Pobieranie punktu końcowego tokenu OAuth 2.0 (tylko w przypadku aplikacji opartych na języku Java)
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>Krok 4: Pobierz punkt końcowy tokenu OAuth 2.0 (tylko w przypadku aplikacji opartych na języku Java)
 
 1. Zaloguj się na [witryny Azure portal](https://portal.azure.com) i kliknij opcję usługi Active Directory z okienka po lewej stronie.
 

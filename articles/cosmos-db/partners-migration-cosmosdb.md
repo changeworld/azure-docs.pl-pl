@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 3126be88e272ab3891caa94ee15b622b0dfbdbdf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860503"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880614"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
 
@@ -19,39 +19,39 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 
 ## <a name="migration-tools"></a>Narzędzia migracji
 
-|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Skontaktuj się z**  |
+|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Kontakt**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Migracja danych](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z bazy danych MongoDB do usługi Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryny sieci Web](http://www.imanisdata.com/)      |
-|![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza kolekcji w czasie rzeczywistym i przenoszenia danych z wielu źródeł lokalnych, w tym dokumencie przedsiębiorstwa i relacyjnych baz danych, czujniki i plików dziennika do usługi Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryny sieci Web](https://www.striim.com/)       |
+|![ImanisData][1]   | [Migracja danych](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z bazy danych MongoDB do usługi Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryna internetowa](http://www.imanisdata.com/)      |
+|![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza kolekcji w czasie rzeczywistym i przenoszenia danych z wielu źródeł lokalnych, w tym dokumencie przedsiębiorstwa i relacyjnych baz danych, czujniki i plików dziennika do usługi Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryna internetowa](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partnerzy będący Integratorami systemów
 
-|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Skontaktuj się z**  |
+|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Kontakt**  |
 |---------|---------|---------|---------|
-| ![10thMagnitude][13] | Migracja NoSQL; Tworzenie nowej aplikacji | Stany Zjednoczone | [Witryny sieci Web](https://www.10thmagnitude.com/)|
-|![Programowanie Altoros LLC][3]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |   Stany Zjednoczone, Norwegia, Finlandia, Białoruś, Argentyna |  [Witryny sieci Web](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji      |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.attunix.com/)       |
-| ![Avanade][26] | Tworzenie nowej aplikacji, <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) | Austria, Niemcy, Szwajcaria, Włochy, Norwegia, Hiszpania, Zjednoczone Królestwo | [Witryny sieci Web](https://www.avanade.com/)
-|![Opracowana przez firmę Bluemetal][5]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Ameryka Północna i Azja i Pacyfik     |  [Witryny sieci Web](https://www.bluemetal.com/)       |
-|![Globalne LLC Capax][6]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | Migracja NoSQL; Wprowadzanie innowacji aplikacji (aplikacje do istniejącej); Tworzenie nowej aplikacji | USA, Francja, Zjednoczone Królestwo, Holandia, Finlandia  | [Witryny sieci Web](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |    Zjednoczone Królestwo     |  [Witryny sieci Web](https://www.coeo.com/)       |
-| ![Cognizant][15] | Migracja NoSQL |USA, Kanada, Zjednoczone Królestwo, Dania, Holandia, Szwajcaria, Australia, Japonia | [Witryny sieci Web](https://www.cognizant.com/)|
-|![Infosys][8]     |  Migracja NoSQL       |    Globalny     |  [Witryny sieci Web](https://www.infosys.com/)       |
-| ![Lagash][16] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Argentyna, Chile, Kolumbia, Meksyk| [Witryny sieci Web](https://www.lagash.com/)|
-| ![Lambda3 informatyką][17] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Brazylia| [Witryny sieci Web](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     Tworzenie aplikacji (nowe aplikacje)    |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.nealanalytics.com/)       |
-|![Pragmatic działa oprogramowanie Włączne][10]    |   Migracja NoSQL      |   Stany Zjednoczone      |  [Witryny sieci Web](https://www.pragmaticworks.com/)       |
-| ![Ricoh globalne][18] | Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji)| Zjednoczone Królestwo  | [Witryny sieci Web](https://www.ricoh.com/)|
-| ![Technologie SNP][19] | Migracja NoSQL| USA | [Witryny sieci Web](https://www.snp.com/)|
-| ![Solidsoft odpowiedzi][20] | Migracja NoSQL | Chorwacja, Szwecja, Dania, Irlandia, Bułgaria, Słowenia, Cypr, Malta, Litwa, Czechy, Islandii i Szwajcarii i Liechtensteinu| [Witryny sieci Web](https://www.reply.com/solidsoft-reply/)|
-| ![Hiszpański punktu technologii][21] | Migracja NoSQL| Irlandia| [Witryny sieci Web](https://www.spanishpoint.ie/)|
-| ![Syone][22] | Migracja NoSQL| Portugalia| [Witryny sieci Web](https://www.syone.com/)|
-|![Tallan][11]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Stany Zjednoczone     |  [Witryny sieci Web](https://www.tallan.com/)       |
-| ![CERTYFIKAT TCS ORGANIZACJI][23] | Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji | Stany Zjednoczone, Zjednoczone Królestwo, Francja, Malezja, Danii, Norwegii, Szwecji| [Witryny sieci Web](https://www.tcs.com/)|
-|![VTeamLabs][12]    | Migracja NoSQL       |  Stany Zjednoczone      | [Witryny sieci Web](https://www.vteamlabs.com/)       |
-| ![Kaczka biały][24] |Migracja NoSQL <br/> Tworzenie nowej aplikacji | Niemcy | [Witryny sieci Web](https://whiteducksoftware.com/)|
-| ![Rozwiń IT][25] | Tworzenie nowej aplikacji | Portugalia, Zjednoczone Królestwo| [Witryny sieci Web](https://www.xpand-it.com/)|
+| ![10thMagnitude][13] | Migracja NoSQL; Tworzenie nowej aplikacji | Stany Zjednoczone | [Witryna internetowa](https://www.10thmagnitude.com/)|
+|![Programowanie Altoros LLC][3]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |   Stany Zjednoczone, Norwegia, Finlandia, Białoruś, Argentyna |  [Witryna internetowa](https://www.altoros.com/)     |
+|![Attunix Redapt][4]     |   Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji      |    Stany Zjednoczone     |  [Witryna internetowa](https://www.attunix.com/)       |
+| ![Avanade][26] | Tworzenie nowej aplikacji, <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) | Austria, Niemcy, Szwajcaria, Włochy, Norwegia, Hiszpania, Zjednoczone Królestwo | [Witryna internetowa](https://www.avanade.com/)
+|![Opracowana przez firmę Bluemetal][5]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Ameryka Północna i Azja i Pacyfik     |  [Witryna internetowa](https://www.bluemetal.com/)       |
+|![Globalne LLC Capax][6]     |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Stany Zjednoczone     |  [Witryna internetowa](https://www.capaxglobal.com/)       |
+| ![Capgemini][14] | Migracja NoSQL; Wprowadzanie innowacji aplikacji (aplikacje do istniejącej); Tworzenie nowej aplikacji | USA, Francja, Zjednoczone Królestwo, Holandia, Finlandia  | [Witryna internetowa](https://www.capgemini.com/) | 
+|![Coeo][7]     |   Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |    Zjednoczone Królestwo     |  [Witryna internetowa](https://www.coeo.com/)       |
+| ![Cognizant][15] | Migracja NoSQL |USA, Kanada, Zjednoczone Królestwo, Dania, Holandia, Szwajcaria, Australia, Japonia | [Witryna internetowa](https://www.cognizant.com/)|
+|![Infosys][8]     |  Migracja NoSQL       |    Globalny     |  [Witryna internetowa](https://www.infosys.com/)       |
+| ![Lagash][16] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Argentyna, Chile, Kolumbia, Meksyk| [Witryna internetowa](https://www.lagash.com/)|
+| ![Lambda3 informatyką][17] | Migracja NoSQL <br/> Tworzenie nowej aplikacji | Brazylia| [Witryna internetowa](https://www.lambda3.com.br/)|
+|![Neal Analytics][9]     |     Tworzenie aplikacji (nowe aplikacje)    |    Stany Zjednoczone     |  [Witryna internetowa](https://www.nealanalytics.com/)       |
+|![Pragmatic działa oprogramowanie Włączne][10]    |   Migracja NoSQL      |   Stany Zjednoczone      |  [Witryna internetowa](https://www.pragmaticworks.com/)       |
+| ![Ricoh globalne][18] | Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji)| Zjednoczone Królestwo  | [Witryna internetowa](https://www.ricoh.com/)|
+| ![Technologie SNP][19] | Migracja NoSQL| USA | [Witryna internetowa](https://www.snp.com/)|
+| ![Solidsoft odpowiedzi][20] | Migracja NoSQL | Chorwacja, Szwecja, Dania, Irlandia, Bułgaria, Słowenia, Cypr, Malta, Litwa, Czechy, Islandii i Szwajcarii i Liechtensteinu| [Witryna internetowa](https://www.reply.com/solidsoft-reply/)|
+| ![Hiszpański punktu technologii][21] | Migracja NoSQL| Irlandia| [Witryna internetowa](https://www.spanishpoint.ie/)|
+| ![Syone][22] | Migracja NoSQL| Portugalia| [Witryna internetowa](https://www.syone.com/)|
+|![Tallan][11]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji       |    Stany Zjednoczone     |  [Witryna internetowa](https://www.tallan.com/)       |
+| ![CERTYFIKAT TCS ORGANIZACJI][23] | Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji | Stany Zjednoczone, Zjednoczone Królestwo, Francja, Malezja, Danii, Norwegii, Szwecji| [Witryna internetowa](https://www.tcs.com/)|
+|![VTeamLabs][12]    | Migracja NoSQL       |  Stany Zjednoczone      | [Witryna internetowa](https://www.vteamlabs.com/)       |
+| ![Kaczka biały][24] |Migracja NoSQL <br/> Tworzenie nowej aplikacji | Niemcy | [Witryna internetowa](https://whiteducksoftware.com/)|
+| ![Rozwiń IT][25] | Tworzenie nowej aplikacji | Portugalia, Zjednoczone Królestwo| [Witryna internetowa](https://www.xpand-it.com/)|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

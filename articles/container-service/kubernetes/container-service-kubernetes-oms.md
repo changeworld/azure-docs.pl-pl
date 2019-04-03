@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 0d9f13003a9b81085fda9635fc8b07566a1c0c66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107529"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877401"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service z usługą Log Analytics
 
@@ -100,7 +100,7 @@ Do ochrony klucza i identyfikator obszaru roboczego usługi Log Analytics umożl
   #> sudo bash ./secret-gen.sh
   ```
 
-  - Utwórz pod wpisami tajnymi, uruchamiając następujące: ``` kubectl create -f omsagentsecret.yaml ```
+  - Utwórz pod wpisami tajnymi, uruchamiając następujące: ```kubectl create -f omsagentsecret.yaml```
 
   - Aby sprawdzić, uruchom następujące polecenie:
 
@@ -123,7 +123,7 @@ Do ochrony klucza i identyfikator obszaru roboczego usługi Log Analytics umożl
   KEY:    88 bytes
   ```
 
-  - Utwórz swoje omsagent demona zestawu, uruchamiając ``` kubectl create -f omsagent-ds-secrets.yaml ```
+  - Utwórz swoje omsagent demona zestawu, uruchamiając ```kubectl create -f omsagent-ds-secrets.yaml```
 
 ### <a name="conclusion"></a>Podsumowanie
 Gotowe. Po kilku minutach można wyświetlić danych przepływających do pulpitu nawigacyjnego usługi Log Analytics.

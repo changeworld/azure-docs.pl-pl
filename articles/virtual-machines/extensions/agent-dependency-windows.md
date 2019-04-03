@@ -15,18 +15,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2bae96c1c87a4bbb44c006ed628ee8019ab2635c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd10c503c6e65f68d063deb5f8a537fc9f3c9f0f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671377"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846337"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor zależności dla Windows
 
 Usługi Azure Monitor dla funkcji mapy maszyny wirtualne, dane są pobierane z Microsoft Dependency agent. Rozszerzenie maszyny wirtualnej agenta zależności maszyn wirtualnych platformy Azure dla Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta zależności na maszynach wirtualnych platformy Azure. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania dla rozszerzenia maszyny wirtualnej agenta zależności maszyn wirtualnych platformy Azure Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ### <a name="operating-system"></a>System operacyjny
 
@@ -130,11 +132,11 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta zależności do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
+`Set-AzVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta zależności do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
 
 ```powershell
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
+Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
@@ -150,7 +152,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgen
 Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą modułu Azure PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając modułu Azure PowerShell.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:

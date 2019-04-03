@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 9154add96084142ca1f93ad61c6418e3b487fb83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090920"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880818"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Zarządzanie migawkami przy użyciu usługi Azure Files NetApp
 
@@ -53,7 +53,7 @@ Obecnie można przywrócić migawki tylko do nowego woluminu.
     ![Przywracanie migawki do nowego woluminu](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. W oknie nowego woluminu Podaj informacje dotyczące nowego woluminu:  
-    * **Nazwa**   
+    * **Name (Nazwa)**   
         Określ nazwę tworzonego woluminu.  
         
         Nazwa musi być unikatowa w obrębie grupy zasobów. Musi zawierać co najmniej trzy znaki.  Dozwolone są dowolne znaki alfanumeryczne.
@@ -65,7 +65,7 @@ Obecnie można przywrócić migawki tylko do nowego woluminu.
         
         Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków. 
 
-    * **Limit przydziału**  
+    * **Przydział**  
         Określ wielkość magazynu logicznego, który zostanie przydzielony do woluminu.  
 
         W polu **Dostępny limit przydziału** jest wyświetlana ilość nieużywanego miejsca w wybranej puli pojemności, które można wykorzystać do utworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.

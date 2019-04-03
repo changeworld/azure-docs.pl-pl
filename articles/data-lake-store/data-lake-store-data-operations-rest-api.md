@@ -3,24 +3,24 @@ title: 'INTERFEJS API REST: Operacje systemu plików w usłudze Azure Data Lake 
 description: Użyj interfejsów API REST WebHDFS do wykonywania operacji systemu plików w usłudze Azure Data Lake magazynu Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4c61d68a948cbc5638dab30713871d1aaf822f03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529257"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877636"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
-> * [Zestaw SDK platformy .NET](data-lake-store-data-operations-net-sdk.md)
+> * [Zestaw SDK .NET](data-lake-store-data-operations-net-sdk.md)
 > * [Zestaw SDK Java](data-lake-store-get-started-java-sdk.md)
 > * [Interfejs API REST](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
@@ -114,7 +114,7 @@ Odczytu danych z usługi Data Lake Storage Gen1 konto jest procesem dwuetapowym.
 * Najpierw prześlij żądanie GET względem punktu końcowego `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`. To wywołanie zwraca lokalizację, do której należy przesłać kolejne żądanie GET.
 * Następnie prześlij żądanie GET względem punktu końcowego `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. To wywołanie powoduje wyświetlenie zawartości pliku.
 
-Jednak ponieważ nie ma żadnej różnicy w parametrach wejściowych kroku pierwszego i drugiego, możesz użyć parametru `-L` w celu przesłania pierwszego żądania. `-L` — ta opcja w praktyce łączy dwa żądania w jedno i powoduje, że narzędzie cURL ponawia żądanie dla nowej lokalizacji. Na koniec zostaną wyświetlone dane wyjściowe z wszystkich wywołań żądań, tak jak pokazano w poniższym fragmencie kodu. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
+Jednak ponieważ nie ma żadnej różnicy w parametrach wejściowych kroku pierwszego i drugiego, możesz użyć parametru `-L` w celu przesłania pierwszego żądania. `-L` Opcja zasadniczo łączy dwa żądania w jedno i powoduje, że narzędzie cURL ponowi żądanie dla nowej lokalizacji. Na koniec zostaną wyświetlone dane wyjściowe z wszystkich wywołań żądań, tak jak pokazano w poniższym fragmencie kodu. Zastąp  **\<yourstorename >** nazwą konta usługi Data Lake Storage Gen1.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889357"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887002"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Uaktualnienie programu SharePoint 2010 do programu SharePoint 2013, a następnie zainstaluj StorSomple Adapter dla programu SharePoint
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "55889357"
 > Należy zaplanować to uaktualnienie wystąpić podczas okna zaplanowanej konserwacji z następujących powodów:
 > 
 > * Wcześniej zewnętrznych zawartość nie będzie dostępna do momentu karta zostanie ponownie zainstalowany.
-> * Żadnej zawartości, przekazywane do witryny po odinstalowaniu wcześniejszej wersji adaptera StorSimple dla programu SharePoint, ale przed zainstalowaniem nowej wersji będą przechowywane w bazie danych zawartości. Musisz przenieść tę zawartość z urządzeniem StorSimple, po zainstalowaniu nowej karty. Można użyć programu Microsoft` RBS Migrate()` dołączone do programu SharePoint, aby przenieść zawartość polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji, zobacz [migracji zawartości do lub z SPZ](https://technet.microsoft.com/library/ff628255.aspx). 
+> * Żadnej zawartości, przekazywane do witryny po odinstalowaniu wcześniejszej wersji adaptera StorSimple dla programu SharePoint, ale przed zainstalowaniem nowej wersji będą przechowywane w bazie danych zawartości. Musisz przenieść tę zawartość z urządzeniem StorSimple, po zainstalowaniu nowej karty. Można użyć programu Microsoft `RBS Migrate()` dołączone do programu SharePoint, aby przenieść zawartość polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji, zobacz [migracji zawartości do lub z SPZ](https://technet.microsoft.com/library/ff628255.aspx). 
 > 
 > 
 

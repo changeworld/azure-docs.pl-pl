@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 1cadf61d7ce6ed48ea2d42b299dede860a505f0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195510"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877435"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -205,7 +205,7 @@ Aby obejść ten problem, można użyć jednej z następujących czynności:
 
 - Uruchom następujące polecenie programu PowerShell:
 
-  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc" `
+  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc"`
 
   Z pliku wsadowego można uruchomić polecenie w ten sposób:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200586"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880427"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -92,7 +92,7 @@ Aby uzyskać informacje dotyczące uprawnień wymaganych do utworzenia komunikac
 
 Istnieje nominalna opłata za ruch przychodzący i wychodzący w połączeniach wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji na temat cen wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych, zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwia sieci wirtualnej wykorzystanie bramy sieci VPN w równorzędnej sieci wirtualnej na potrzeby połączeń obejmujących wiele lokalizacji lub połączeń między sieciami wirtualnymi. Ruch przechodzący przez bramę zdalną w tym scenariuszu podlega [opłatom za bramę sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/). [Opłaty za wirtualne sieci równorzędne](https://azure.microsoft.com/pricing/details/virtual-network) nie są naliczane. Jeśli na przykład sieć VNetA ma bramę sieci VPN obsługującą łączność lokalną, a sieć VnetB komunikuje się równorzędnie z siecią VNetA za pośrednictwem odpowiednio skonfigurowanych właściwości, w przypadku ruchu z sieci VNetB do środowiska lokalnego są naliczane tylko opłaty za ruch wychodzący zgodnie z cennikiem bramy sieci VPN. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwia sieci wirtualnej wykorzystanie bramy sieci VPN w równorzędnej sieci wirtualnej na potrzeby połączeń obejmujących wiele lokalizacji lub połączeń między sieciami wirtualnymi. Ruch przechodzący przez bramę zdalną w tym scenariuszu podlega [opłatom za bramę sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/). [Opłaty za wirtualne sieci równorzędne](https://azure.microsoft.com/pricing/details/virtual-network) nie są naliczane. Na przykład jeśli zachodzi komunikacja równorzędna między ma bramę sieci VPN dla łączności lokalnej i Vnetc jest połączona z zachodzi komunikacja równorzędna między za pomocą odpowiednich właściwości skonfigurowane, ruch z Vnetc do lokalnego tylko za ruch wychodzący na cennik bramy sieci VPN. Opłaty za wirtualne sieci równorzędne nie są naliczane. Dowiedz się, jak [skonfigurować tranzyt bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -100,9 +100,9 @@ Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwi
 
     |Model wdrażania platformy Azure             | Subskrypcja  |
     |---------                          |---------|
-    |Resource Manager — w obu przypadkach              |[Ta sama](tutorial-connect-virtual-networks-portal.md)|
+    |Resource Manager — w obu przypadkach              |[Ten sam](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Różne](create-peering-different-subscriptions.md)|
-    |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ta sama](create-peering-different-deployment-models.md)|
+    |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ten sam](create-peering-different-deployment-models.md)|
     |                                   |[Różne](create-peering-different-deployment-models-subscriptions.md)|
 
 * Dowiedz się jak, utworzyć [topologię sieciową typu gwiazda](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).

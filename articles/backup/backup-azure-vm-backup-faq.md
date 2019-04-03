@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
-ms.openlocfilehash: ef46c37fec3e5438aeb4f9309201d45365a96fdc
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402069"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885268"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowej maszyn wirtualnych platformy Azure
 
@@ -68,7 +68,7 @@ Tak. Wykonywane kopie zapasowe, gdy maszyna zostanie zamknięta. Punkt odzyskiwa
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Czy można anulować zadania tworzenia kopii zapasowej w toku?
 Tak. Możesz anulować zadanie tworzenia kopii zapasowej w **Trwa tworzenie zrzutu ekranu** stanu. Nie można anulować zadania, jeśli przesyłanie danych z migawki jest w toku.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Czy włączono blokadę dla grupy zasobów utworzonej w usłudze Kopia zapasowa Azure (tj.) ` AzureBackupRG_<geo>_<number>`), Moje kopie zapasowe będą pracować?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Czy włączono blokadę dla grupy zasobów utworzonej w usłudze Kopia zapasowa Azure (tj.) `AzureBackupRG_<geo>_<number>`), Moje kopie zapasowe będą pracować?
 Jeśli zablokujesz grupy zasobów utworzonej w usłudze Azure Backup, kopie zapasowe będą kończyć się niepowodzeniem, ponieważ maksymalny limit punktów przywracania 18.
 
 Użytkownik musi usunąć blokadę i wyczyścić kolekcję punktów przywracania z danej grupy zasobów, aby upewnić się powiedzie, wykonanie kolejnych kopii zapasowych [wykonaj następujące kroki](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) usunąć kolekcję punktów przywracania.
@@ -88,7 +88,7 @@ Nie można pobrać migawek na dysku włączony (Waszyngton). Jednak usługa Azur
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mam Maszynę wirtualną z dyskami akcelerator zapisu (Waszyngton) i zainstalować oprogramowanie SAP HANA. Jak wykonać kopię zapasową?
 Usługa Azure Backup nie można utworzyć kopii zapasowych dysków komputerów z obsługą WA, ale można wykluczyć z kopii zapasowej. Jednak kopii zapasowej nie zawiera spójność bazy danych, ponieważ na dysku włączony (Waszyngton) nie ma kopii zapasowej. Jeśli dysk systemu operacyjnego kopii zapasowych i kopii zapasowych dysków, które nie są włączone w stanie Waszyngton, można wykonywanie kopii zapasowych dysków przy użyciu tej konfiguracji.
 
-Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HANA jest uruchomiony przy użyciu RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli chcesz, Wyślij wiadomość e-mail ` AskAzureBackupTeam@microsoft.com ` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
+Prywatna wersja zapoznawcza do tworzenia kopii zapasowych oprogramowania SAP HANA jest uruchomiony przy użyciu RPO o wartości 15 minut. Jest wbudowana w sposób podobny do kopii zapasowej bazy danych SQL i korzysta z interfejsu backInt rozwiązań innych firm, certyfikowanych przez oprogramowanie SAP HANA. Jeśli chcesz, Wyślij wiadomość e-mail `AskAzureBackupTeam@microsoft.com` z tematem **Zarejestruj się w prywatnej wersji zapoznawczej do utworzenia kopii zapasowej danych SAP HANA na maszynach wirtualnych platformy Azure**.
 
 
 ## <a name="restore"></a>Przywracanie

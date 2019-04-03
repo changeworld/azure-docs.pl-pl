@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404764"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884146"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Wskazówki dotyczące ograniczania usługi Azure Key Vault
 
@@ -34,7 +34,7 @@ Jeśli masz biznesowe przypadku wyższych limitów ograniczania przepływności,
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Jak ograniczyć aplikację w odpowiedzi na limity usługi
 
-Poniżej przedstawiono **najlepsze praktyki** ograniczania aplikacji:
+Poniżej przedstawiono **najlepsze praktyki** powinny implementować, gdy jest ograniczany usługi:
 - Zmniejsz liczbę operacji na żądanie.
 - Zmniejsz częstotliwość żądań.
 - Należy unikać bezpośredniego ponownych prób. 
@@ -115,7 +115,7 @@ Poniżej przedstawiono kod, który implementuje wykładniczego wycofywania.
 ```
 
 
-Przy użyciu tego kodu w kliencie C\# aplikacji (inny mikrousług klienta interfejsu API sieci Web, aplikacji ASP.NET MVC lub nawet języku C\# aplikacji Xamarin) jest bardzo proste. W poniższym przykładzie przedstawiono sposób używania klasy HttpClient.
+Przy użyciu tego kodu w kliencie C\# aplikacji jest bardzo proste. W poniższym przykładzie przedstawiono sposób używania klasy HttpClient.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

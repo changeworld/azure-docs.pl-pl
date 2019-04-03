@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995116"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883721"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -292,7 +292,7 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które się ni
 
     Obejmuje projekcji `System.Timestamp`, która zwraca sygnaturę czasową na koniec każdego okna. 
 
-    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY `klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczba według kraju dla co 5 sekund, przez które wywołania.
+    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY` klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczba według kraju dla co 5 sekund, przez które wywołania.
 
 2. Kliknij przycisk **testu** ponownie. W wynikach, zwróć uwagę, że sygnatury czasowe, w obszarze **WindowEnd** znajdują się w przyrostach co 5 sekund.
 

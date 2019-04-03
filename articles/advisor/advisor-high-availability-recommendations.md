@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 6ffe051c019184d5ce1a32af50dbf3e7faa06675
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490315"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881192"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
 
@@ -30,7 +30,7 @@ Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch m
 
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Skorzystaj z usługi Managed Disks, aby zwiększyć niezawodność danych
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Skorzystaj z funkcji Dyski zarządzane, aby zwiększyć niezawodność danych
 
 Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
 

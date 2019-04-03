@@ -8,15 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004136"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849595"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie i monitorowanie kopii zapasowej bazy danych programu SQL Server
-
 
 W tym artykule opisano typowe zadania dla zarządzania i monitorowania baz danych serwera SQL są uruchamiane na maszynie wirtualnej platformy Azure (VM) i który tworzy kopię zapasową do usługi Azure Backup Recovery Services vault przez [kopia zapasowa Azure](backup-overview.md) usługi. Dowiesz się, jak monitorować zadania i alerty, Zatrzymaj i wznowić ochronę bazy danych, uruchamianie zadań tworzenia kopii zapasowej i wyrejestruj Maszynę wirtualną z kopii zapasowych.
 
@@ -113,6 +112,7 @@ Można uruchomić poszczególnych typów kopii zapasowych na żądanie:
 * Różnicowa kopia zapasowa
 * Kopia zapasowa dziennika
 
+Gdy należy określić okres przechowywania dla Copy-only pełnej kopii zapasowej, zakres przechowywania dla innych typów kopii zapasowych jest automatycznie równa 30 dni od bieżącego czasu. <br/>
 Aby uzyskać więcej informacji, zobacz [typy kopii zapasowych programu SQL Server](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Wyrejestrowywanie wystąpienia programu SQL Server

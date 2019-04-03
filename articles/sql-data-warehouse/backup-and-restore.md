@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 55874d261ac453d559975f25b2272319cdc6a7db
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 14e7d8cfdaa9ac59a5a43881283fac6e2c9ee08f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448004"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846993"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 
@@ -44,7 +44,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
 
-Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywracania z magazynu danych, przed i po duże zmiany. Ta funkcja zapewnia, że punkty przywracania są logicznie spójnego zapewniającą dodatkowej ochrony danych w przypadku dowolnego obciążenia przerw i błędy użytkowników dla czasu Szybkie odzyskiwanie. Punkty przywracania na zdefiniowanych przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okres przechowywania punktów przywracania zdefiniowanych przez użytkownika. **punkty przywracania 42 zdefiniowanych przez użytkownika** jest gwarantowana w dowolnym momencie w czasie, więc muszą być [usunięte](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki do utworzenia punktów przywracania zdefiniowanych przez użytkownika za pośrednictwem [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint#examples) lub witrynie Azure portal.
+Ta funkcja umożliwia ręcznie wyzwalacza migawki do utworzenia punktów przywracania z magazynu danych, przed i po duże zmiany. Ta funkcja zapewnia, że punkty przywracania są logicznie spójnego zapewniającą dodatkowej ochrony danych w przypadku dowolnego obciążenia przerw i błędy użytkowników dla czasu Szybkie odzyskiwanie. Punkty przywracania na zdefiniowanych przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okres przechowywania punktów przywracania zdefiniowanych przez użytkownika. **punkty przywracania 42 zdefiniowanych przez użytkownika** jest gwarantowana w dowolnym momencie w czasie, więc muszą być [usunięte](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki do utworzenia punktów przywracania zdefiniowanych przez użytkownika za pośrednictwem [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) lub witrynie Azure portal.
 
 > [!NOTE]
 > Jeśli potrzebujesz więcej niż 7 dni punktów przywracania, należy głosowania dla tej funkcji [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i Przywróć z punktu przywracania nowo utworzony do nowego magazynu danych. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. Aktywna kopia magazynu przywróconych danych, należy można wznowić, które powinny zająć tylko kilka minut.

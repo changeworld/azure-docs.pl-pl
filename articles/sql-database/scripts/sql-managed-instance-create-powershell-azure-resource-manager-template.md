@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 33a0e90f1a0b63138168c44b87385c05aac39c69
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d157d3f4dbc7a88a356cdd754326cbff1080ac1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57869765"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846461"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Użyj programu PowerShell przy użyciu szablonu usługi Azure Resource Manager, aby utworzyć wystąpienie zarządzane usługi Azure SQL Database
 
@@ -44,8 +44,8 @@ Nazwy wystąpienia, nazwy użytkownika administratora SQL, sieci wirtualnej/pods
 W tym przykładzie założono, że [utworzono prawidłowe środowisko sieciowe](../sql-database-managed-instance-create-vnet-subnet.md) lub [zmodyfikowano istniejącą sieć wirtualną](../sql-database-managed-instance-configure-vnet-subnet.md) dla wystąpienia zarządzanego. W przykładzie użyto polecenia cmdlet [New AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) i [Get AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) dlatego upewnij się, że zainstalowano poniższe moduły programu PowerShell:
 
 ```
-Install-Module AzureRM.Network
-Install-Module AzureRM.Resources
+Install-Module Az.Network
+Install-Module Az.Resources
 ```
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager

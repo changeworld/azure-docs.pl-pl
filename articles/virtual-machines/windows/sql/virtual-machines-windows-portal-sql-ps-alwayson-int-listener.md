@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 822dce08d4555d9039ce310464ba49b6e3d4849c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480655"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876993"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden Always On odbiorników grup dostępności — Resource Manager
 W tym temacie przedstawiono sposób:
@@ -35,8 +35,8 @@ W tym temacie wymaga grupy dostępności zostały już skonfigurowane.
 
 Powiązane tematy obejmują:
 
-* [Konfigurowanie grup dostępności AlwaysOn na maszynie wirtualnej platformy Azure (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
-* [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna za pomocą usługi Azure Resource Manager i programu PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [Konfigurowanie grup dostępności AlwaysOn na maszynie wirtualnej platformy Azure (interfejs GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
+* [Konfiguracja połączenia sieć wirtualna-sieć wirtualna za pomocą usługi Azure Resource Manager i programu PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -65,13 +65,13 @@ Bieżący [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-av
 Przykłady w niniejszym artykule Określ standardowego modułu równoważenia obciążenia. W przykładach skrypt zawiera `-sku Standard`.
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
 Aby utworzyć podstawowego modułu równoważenia obciążenia, należy usunąć `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Na przykład:
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Przykładowy skrypt: Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell
@@ -79,7 +79,7 @@ $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupN
 > [!NOTE]
 > Jeśli utworzono grupy dostępności z [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), wewnętrznego modułu równoważenia obciążenia został już utworzony.
 
-Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzAccount` zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzSubscription ` Aby ustawić subskrypcję. 
+Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzAccount` zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzSubscription` Aby ustawić subskrypcję. 
 
 ```powershell
 # Connect-AzAccount

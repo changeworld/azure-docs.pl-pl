@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: e16b523a366cabd04a5f12441874aa60460d508f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213981"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849665"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Service Bus w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Usługa Azure Monitor zapewnia interfejsy użytkownika ujednolicone monitorowani
 
 ## <a name="access-metrics"></a>Dostęp do metryk
 
-Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Możesz albo metryk dostęp za pośrednictwem [witryny Azure portal](https://portal.azure.com), lub użyj rozwiązań analizy, takie jak dzienniki usługi Azure Monitor i usługi Event Hubs i interfejsów API usługi Azure Monitor (REST i .NET). Aby uzyskać więcej informacji, zobacz [dane monitorowania zbierane przez usługi Azure Monitor](../azure-monitor/platform/data-collection.md).
+Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Możesz albo metryk dostęp za pośrednictwem [witryny Azure portal](https://portal.azure.com), lub użyj rozwiązań analizy, takie jak dzienniki usługi Azure Monitor i usługi Event Hubs i interfejsów API usługi Azure Monitor (REST i .NET). Aby uzyskać więcej informacji, zobacz [metryk w usłudze Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
 
 Metryki są domyślnie włączone i możesz uzyskać dostęp z ostatnich 30 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Ta wartość jest skonfigurowana w [ustawień diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) w usłudze Azure Monitor.
 

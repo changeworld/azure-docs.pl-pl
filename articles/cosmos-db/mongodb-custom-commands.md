@@ -1,19 +1,19 @@
 ---
-title: Niestandardowe polecenia do zarządzania — dane przechowywane w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB
-description: W tym artykule opisano, jak zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB za pomocą polecenia niestandardowe.
+title: Polecenia rozszerzenia bazy danych MongoDB na zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB
+description: W tym artykule opisano, jak zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB za pomocą polecenia rozszerzenia bazy danych MongoDB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 238ba2722fef52d4607a7832113c03c097ef90b3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807058"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876892"
 ---
-# <a name="use-custom-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Polecenia niestandardowe umożliwiają zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Polecenia rozszerzenia bazy danych MongoDB umożliwia zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB 
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Można komunikować się z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu dowolnej z "open source" [sterowników klienta bazy danych MongoDB](https://docs.mongodb.org/ecosystem/drivers). Interfejs API usługi Azure Cosmos DB, bazy danych mongodb umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokół przewodowy MongoDB](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
@@ -21,7 +21,7 @@ Za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, możn
 
 ## <a name="mongodb-protocol-support"></a>Obsługa protokołu bazy danych MongoDB
 
-Domyślnie interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest zgodna z bazą danych MongoDB server w wersji 3.2, aby uzyskać więcej informacji, zobacz [obsługiwanych funkcji i składni](mongodb-feature-support.md). Funkcje lub operatorów zapytań, które dodano w bazie danych MongoDB w wersji 3.4 są obecnie dostępne w wersji zapoznawczej w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB. Następujące polecenia niestandardowe obsługi określonych funkcji usługi Azure Cosmos DB, podczas wykonywania operacji CRUD na danych przechowywanych w usłudze Azure Cosmos DB w interfejsie API dla bazy danych MongoDB:
+Domyślnie interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest zgodna z bazą danych MongoDB server w wersji 3.2, aby uzyskać więcej informacji, zobacz [obsługiwanych funkcji i składni](mongodb-feature-support.md). Funkcje lub operatorów zapytań, które dodano w bazie danych MongoDB w wersji 3.4 są obecnie dostępne w wersji zapoznawczej w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB. Następujące polecenia rozszerzenia obsługi określonych funkcji usługi Azure Cosmos DB, podczas wykonywania operacji CRUD na danych przechowywanych w usłudze Azure Cosmos DB w interfejsie API dla bazy danych MongoDB:
 
 * [Tworzenie bazy danych](#create-database)
 * [Aktualizuj bazę danych](#update-database)
@@ -32,7 +32,7 @@ Domyślnie interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest zg
 
 ## <a id="create-database"></a> Tworzenie bazy danych
 
-Tworzenie bazy danych niestandardowych polecenie tworzy nową bazę danych MongoDB. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane. Format polecenia CreateDatabase jest następująca:
+Polecenia create database rozszerzenie tworzy nową bazę danych MongoDB. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane. Format polecenia CreateDatabase jest następująca:
 
 ```
 {
@@ -43,7 +43,7 @@ Tworzenie bazy danych niestandardowych polecenie tworzy nową bazę danych Mongo
 
 W poniższej tabeli opisano parametry w ramach polecenia:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa   |  string  |   Nazwa niestandardowego polecenia, musi być "CreateDatabase".      |
 | offerThroughput | int  | Aprowizowana przepływność, który został ustawiony w bazie danych. Ten parametr jest opcjonalny. |
@@ -74,7 +74,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 ## <a id="update-database"></a> Aktualizuj bazę danych
 
-Aktualizacja bazy danych niestandardowych polecenie aktualizuje właściwości skojarzone z określoną bazą danych. Obecnie można zaktualizować tylko właściwość "offerThroughput".
+Polecenia rozszerzenia aktualizacji bazy danych do aktualizacji właściwości skojarzone z określoną bazą danych. Obecnie można zaktualizować tylko właściwość "offerThroughput".
 
 ```
 {
@@ -85,7 +85,7 @@ Aktualizacja bazy danych niestandardowych polecenie aktualizuje właściwości s
 
 W poniższej tabeli opisano parametry w ramach polecenia:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa    |    string     |   Nazwa polecenia niestandardowego. Musi być "UpdateDatabase".      |
 |  offerThroughput   |  int       |     Nowe aprowizowana przepływność, który chcesz ustawić w bazie danych.    |
@@ -107,7 +107,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 ## <a id="get-database"></a> Pobierz bazę danych
 
-Polecenie niestandardowe get bazy danych zwraca obiekt bazy danych. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane.
+Polecenia rozszerzenia get bazy danych zwraca obiekt bazy danych. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane.
 
 ```
 {
@@ -118,7 +118,7 @@ Polecenie niestandardowe get bazy danych zwraca obiekt bazy danych. Nazwa bazy d
 W poniższej tabeli opisano parametry w ramach polecenia:
 
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 |  Akcja niestandardowa   |   string      |   Nazwa polecenia niestandardowego. Musi być "GetDatabase"|
         
@@ -126,7 +126,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 
 Jeśli polecenie zakończy się pomyślnie, odpowiedzi zawiera dokument za pomocą następujących pól:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Stan odpowiedzi. 1 == sukces. 0 == awarii.      |
 | `database`    |    `string`        |   Nazwa bazy danych.      |
@@ -147,7 +147,7 @@ db.runCommand({customAction: "GetDatabase"});
 
 ## <a id="create-collection"></a> Tworzenie kolekcji
 
-Tworzenie kolekcji niestandardowe polecenie tworzy nową kolekcję usługi MongoDB. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane. Format polecenia CreateCollection jest następująca:
+Utwórz kolekcję rozszerzenia polecenie tworzy nową kolekcję usługi MongoDB. Nazwa bazy danych jest używana w kontekście bazy danych, względem którego polecenie jest wykonywane. Format polecenia CreateCollection jest następująca:
 
 ```
 {
@@ -160,7 +160,7 @@ Tworzenie kolekcji niestandardowe polecenie tworzy nową kolekcję usługi Mongo
 
 W poniższej tabeli opisano parametry w ramach polecenia:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa    | string | Nazwa polecenia niestandardowego. Musi być "CreateDatabase"     |
 | kolekcja      | string | Nazwa kolekcji                                   |
@@ -193,7 +193,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 ## <a id="update-collection"></a> Aktualizowanie kolekcji
 
-Polecenie niestandardowe kolekcji aktualizacji aktualizuje właściwości skojarzone z określonej kolekcji.
+Polecenia rozszerzenia kolekcji aktualizacji aktualizuje właściwości skojarzone z określonej kolekcji.
 
 ```
 {
@@ -205,7 +205,7 @@ Polecenie niestandardowe kolekcji aktualizacji aktualizuje właściwości skojar
 
 W poniższej tabeli opisano parametry w ramach polecenia:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 |  Akcja niestandardowa   |   string      |   Nazwa polecenia niestandardowego. Musi być "UpdateCollection".      |
 |  kolekcja   |   string      |   Nazwa kolekcji.       |
@@ -240,7 +240,7 @@ Polecenie niestandardowe kolekcji get zwraca obiekt kolekcji.
 W poniższej tabeli opisano parametry w ramach polecenia:
 
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 | Akcja niestandardowa    |   string      |   Nazwa polecenia niestandardowego. Musi być "GetCollection".      |
 | kolekcja    |    string     |    Nazwa kolekcji.     |
@@ -250,7 +250,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 Jeśli polecenie zakończy się pomyślnie, odpowiedzi zawiera dokument z następującymi polami
 
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stan odpowiedzi. 1 == sukces. 0 == awarii.      |
 | `database`    |    `string`     |   Nazwa bazy danych.      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 Jeśli nie zostanie określony, niestandardową odpowiedź zawiera dokument za pomocą następujących pól:
 
-|**Pole**|**Typ** |**Opis** |
+|**Pole**|**Type** |**Opis** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Stan odpowiedzi. 1 == sukces. 0 == awarii.      |
 | `code`    |   `int`      |   Zwracany tylko wtedy, gdy polecenie nie powiodło się (czyli ok == 0). Zawiera kod błędu bazy danych MongoDB. Jest to parametr opcjonalny odpowiedzi.      |
@@ -286,4 +286,4 @@ Jeśli nie zostanie określony, niestandardową odpowiedź zawiera dokument za p
 Następnie możesz przejść do następujących pojęcia usługi Azure Cosmos DB: 
 
 * [Indeksowanie w usłudze Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Expire data in Azure Cosmos DB automatically with time to live](../cosmos-db/time-to-live.md) (Automatyczne wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia)
+* [Wygasanie danych w usłudze Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)

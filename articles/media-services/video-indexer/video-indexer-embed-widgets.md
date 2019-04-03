@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758114"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877571"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -92,7 +92,7 @@ Jeśli zdecydujesz się na wdrożenie własnego kodu odtwarzacza i realizację i
 
 W tej sekcji pokazano, jak zrealizować interakcję między dwoma widżetami usługi Video Indexer: gdy użytkownik kliknie kontrolkę szczegółowych informacji w aplikacji, odtwarzacz przeskoczy do odpowiedniego punktu w nagraniu wideo.
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 1. Skopiuj kod osadzania widżetu **Player**.
 2. Skopiuj kod osadzania widżetu **Cognitive Insights**.

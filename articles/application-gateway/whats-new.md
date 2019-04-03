@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/1/2019
 ms.author: victorh
-ms.openlocfilehash: 053eac95a81492e79aee824b02383206c6702a84
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f686c8ac53db2d128cf5bb20f252c547348e5ac7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58806688"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863104"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>What's new in Azure Application Gateway?
 
@@ -33,6 +33,10 @@ Usługa Azure Application Gateway jest aktualizowany na bieżąco. Aby uzyskać 
 |Opróżnianie połączeń     |Opróżniania połączenia pozwala bezpiecznie usunąć członków puli zaplecza. Aby uzyskać więcej informacji, zobacz [opróżniania połączenia](overview.md#connection-draining).|Wrzesień 2018 r.|
 |Niestandardowe strony błędów     |Za pomocą strony błędów niestandardowych można utworzyć stronę błędu w formacie rest, witryny sieci Web. Aby włączyć tę opcję, zobacz [strony błędów niestandardowych Utwórz bramę aplikacji](custom-error.md).|Wrzesień 2018 r.|
 |Ulepszenia metryki     |Możesz uzyskać lepszą widok stanu usługi Application Gateway przy użyciu rozszerzonych metryk. Aby włączyć metryki dotyczące Twojej bramy Application Gateway, zobacz [kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).|Czerwiec 2018 r.|
+
+## <a name="known-issues"></a>Znane problemy
+
+- [Znane problemy w ramach jednostki SKU w wersji 2](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

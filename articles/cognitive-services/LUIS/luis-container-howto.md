@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520160"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884571"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -24,7 +24,7 @@ Kontener Language Understanding (LUIS) ładuje modelu interpretacji języka prze
 
 Poniższy klip wideo pokazuje, za pomocą tego kontenera.
 
-[![Pokaz kontener dla usług Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![CPokaz ontainer dla usług Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -101,7 +101,7 @@ Katalog instalacji danych wejściowych może zawierać **produkcji**, **przemies
 
 |Typ pakietu|Punkt końcowy interfejsu API zapytań|Dostępność zapytań|Format nazwy pliku pakietu|
 |--|--|--|--|
-|Szkolone|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Przeszkoleni|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |Przygotowanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
 |Produkcja|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_PRODUCTION.gz`|
 
@@ -258,7 +258,7 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
 |Opublikowano|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczania<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]<br>|
-|Szkolone|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
+|Przeszkoleni|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
@@ -299,9 +299,9 @@ Nazwa wersji może zawierać maksymalnie 10 znaków i zawiera tylko znaki dozwol
 Jeśli dane wyjściowe instalacji jest określony dla kontenera usługi LUIS, pliki dziennika zapytań aplikacji są zapisywane w katalogu wyjściowym, gdzie {właściwość INSTANCE_ID} to identyfikator kontenera. Dziennik zapytań aplikacji zawiera zapytania, odpowiedzi i sygnatury czasowe dla każdej prognozy przesłano zapytanie do kontenera usługi LUIS. 
 
 Następującej lokalizacji przedstawia strukturę zagnieżdżonych katalog dla plików dziennika kontenera.
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 Wybierz aplikację z portalu usługi LUIS, a następnie wybierz **importować dzienniki do endpoint** przekazywania tych dzienników. 
 

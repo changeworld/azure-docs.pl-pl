@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 7032fabd022b55bc8946a48568bbd799d4a0a5e9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731382"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848349"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak Wykres wydajności dzięki usłudze Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zawiera zbiór wykresy wydajności przeznaczonych wykonuje kilka kluczowych wskaźników wydajności (KPI), aby ułatwić ustalenie, jak dobrze maszynę wirtualną. Wykresy pokazują wykorzystanie zasobów w określonym czasie, dzięki czemu możesz określić wąskie gardła, anomalie, lub przełącz się do perspektywy, wyświetlanie listy każdej maszyny w celu wyświetlenia wykorzystania zasobów, w oparciu o wybraną metryką. Dostępnych jest wiele elementów, należy wziąć pod uwagę podczas rozwiązywania problemów związanych z wydajnością, usługi Azure Monitor dla wskaźników wydajności systemu operacyjnego klucza monitory maszyny wirtualne dotyczące procesora, pamięci, karty sieciowej i wykorzystanie dysku. Wydajność uzupełniają funkcję monitorowania kondycji i pomaga ujawnić problemy, które wskazują możliwe awarii składników, dostrajanie pomocy technicznej i optymalizacji do osiągnięcia wydajności oraz obsługi planowania pojemności.  
@@ -111,7 +111,7 @@ Metryki wydajności, włączone w ramach usługi Azure Monitor dla maszyn wirtua
 
 Jednak może być tylko gromadzimy i przechowujemy podzbiór metryki wydajności, które są wymagane w obszarze roboczym usługi Log Analytics. Jeśli Twoja Strategia monitorowania wymaga analizy lub alerty, które obejmuje innych metryk wydajności, aby skutecznie obliczyć pojemności lub kondycji maszyny wirtualnej, jak i elastyczność, aby określić własne alerty kryteriom lub logiki, możesz to zrobić Konfigurowanie [zbieranie tych liczników wydajności](../platform/data-sources-performance-counters.md) w usłudze Log Analytics i zdefiniuj [alerty dzienników](../platform/alerts-log.md). Gdy usługi Log Analytics pozwala wykonywać złożone analizy przy użyciu innych typów danych i zapewnić dłuższe przechowywanie do obsługi analizy trendu, metryki z drugiej strony są uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. Są one zbierane przez [agenta diagnostyki Azure](../../virtual-machines/windows/monitor.md) i przechowywane w magazynie danych metryk usługi Azure Monitor, dzięki czemu możesz tworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach.
 
-Przejrzyj Omówienie [zbieranie metryk i dzienników za pomocą usługi Azure Monitor](../platform/data-collection.md) Aby jeszcze lepiej zrozumieć podstawowe różnice i inne zagadnienia przed skonfigurowaniem zbierania tych dodatkowych metryk i reguł alertów.  
+Przejrzyj Omówienie [zbieranie metryk i dzienników za pomocą usługi Azure Monitor](../platform/data-platform.md) Aby jeszcze lepiej zrozumieć podstawowe różnice i inne zagadnienia przed skonfigurowaniem zbierania tych dodatkowych metryk i reguł alertów.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się, jak korzystać z funkcji health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](vminsights-health.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych jest mapowany](vminsights-maps.md). 

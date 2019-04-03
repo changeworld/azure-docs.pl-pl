@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 7fb4c68d10478a7c8af62262b3fa4633eaac9d2b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660412"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884724"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 Ten artykuł pokazuje, jak pakowanie i wdrażanie wielu aplikacji wykonywalnych gości w usłudze Azure Service Fabric. Do tworzenia i wdrażania jednego pakietu usługi Service Fabric przeczytaj, jak do [wdrażanie pliku wykonywalnego gościa w usłudze Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Aby utworzyć pakiet aplikacji, która zawiera wielu aplikacji wykonywalnych go�
 * [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikowania się za pośrednictwem usługi nazewnictwa przy użyciu usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Ręcznie pakowanie wielu aplikacji wykonywalnych gościa
-Można też ręcznie spakować plik wykonywalny gościa. Ręczne pakowania, w tym artykule używa narzędzia tworzenia pakietów usługi Service Fabric, które znajduje się w temacie [ http://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Można też ręcznie spakować plik wykonywalny gościa. Ręczne pakowania, w tym artykule używa narzędzia tworzenia pakietów usługi Service Fabric, które znajduje się w temacie [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
 
 ### <a name="packaging-the-nodejs-application"></a>Pakowanie aplikacji Node.js
 W tym artykule założono, że Node.js nie jest zainstalowany na węzłach w klastrze usługi Service Fabric. W rezultacie musisz dodać Node.exe do katalogu głównego w węźle przed pakowania aplikacji. Struktura katalogów aplikacji Node.js (przy użyciu środowiska internetowego Express i aparatu Jade szablonu) powinien wyglądać podobnie do poniższego:

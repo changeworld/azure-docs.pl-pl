@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531644"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880036"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -66,7 +66,7 @@ Następujące właściwości są obsługiwane w przypadku Eksploratora danych pl
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **AzureDataExplorer** | Yes |
-| endpoint | Adres URL punktu końcowego klastra Eksploratora danych usługi Azure, w tym formacie co `https://<clusterName>.<regionName>.kusto.windows.net `. | Yes |
+| endpoint | Adres URL punktu końcowego klastra Eksploratora danych usługi Azure, w tym formacie co `https://<clusterName>.<regionName>.kusto.windows.net`. | Yes |
 | baza danych | Nazwa bazy danych. | Yes |
 | dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to, co zwykle wiedzieć jako "**identyfikator urzędu**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. Jest to, co zwykle wiedzieć jako "**Identyfikatora klienta aplikacji AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |

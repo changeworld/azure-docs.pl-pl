@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 8e98b50e936ba97881e2937a50eb474d57a24a05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107767"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862169"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla bramy aplikacji przy użyciu portalu
 
@@ -51,10 +51,10 @@ Sondy są konfigurowane w dwuetapowy proces za pośrednictwem portalu. Pierwszym
 
    |**Ustawienie** | **Wartość** | **Szczegóły**|
    |---|---|---|
-   |**Nazwa**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
+   |**Name (Nazwa)**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
    |**Protokół**|HTTP lub HTTPS | Protokół, który używa sondy kondycji.|
    |**Host**|i.e contoso.com|Ta wartość jest nazwę hosta, który jest używany dla sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej.|
-   |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Dla ścieżki domyślnej http://contoso.com po prostu użyj "/" |
+   |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Domyślne ścieżki http:\//contoso.com po prostu użyj "/" |
    |**Interwał (w sekundach)**|30|Jak często sondy jest uruchamiany pod kątem kondycji. Nie zaleca się ustawić niższy niż 30 sekund.|
    |**Limit czasu (w sekundach)**|30|Ilość czasu sondy czeka przed przekroczeniem limitu czasu. Interwał limitu czasu musi być wystarczająco wysoka, że wywołania http może również upewnić się, że strona kondycji wewnętrznej bazy danych jest dostępna.|
    |**Próg złej kondycji**|3|Liczba nieudanych prób jest uznawana za złą. Próg 0 oznacza, że jeśli kontrola kondycji nie powiedzie się zapleczem jest określana złej kondycji od razu.|

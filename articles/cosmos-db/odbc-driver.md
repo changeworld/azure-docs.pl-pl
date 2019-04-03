@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816632"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851054"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej ze sterownikiem ODBC
 
@@ -97,7 +97,7 @@ Istnieją dwa typy metod próbkowanie, których mogą używać: **mapowanie kole
 
 1. Po określeniu schematu kliknij **pliku** | **Zapisz**, przejdź do katalogu, aby zapisać schematu, a następnie kliknij **Zapisz**.
 
-    W przyszłości należy do tego schematu za pomocą nazwy DSN Otwórz okno Ustawienia DSN sterownika ODBC usługi Azure Cosmos DB (za pośrednictwem administratora źródła danych ODBC), kliknij przycisk Opcje zaawansowane i w polu pliku schematu, przejdź do zapisanego schematu. Zapisywanie pliku schematu istniejącej nazwy DSN modyfikuje połączenia DSN do zakresu do danych i struktury definiowana przez schemat.
+1. Aby użyć tego schematu przy użyciu nazwy DSN, otwórz **okno Ustawienia DSN sterownika ODBC usługi Azure Cosmos DB** (za pośrednictwem Administrator źródła danych ODBC), kliknij przycisk **zaawansowane opcje**, a następnie w polu **pliku schematu** , przejdź do zapisanego schematu. Zapisywanie pliku schematu istniejącej nazwy DSN modyfikuje połączenia DSN do zakresu do danych i struktury definiowana przez schemat.
 
 ## <a id="table-mapping"></a>Krok 4. Utwórz definicję schematu za pomocą ograniczniki tabeli mapowania — metoda
 

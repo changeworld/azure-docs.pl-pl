@@ -3,24 +3,24 @@ title: 'Python: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen
 description: Dowiedz się, jak używać zestawu SDK języka Python do pracy z systemu plików Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: ed28c502bb407c65b388704c177fca13cecc38d6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 57efc718a51398b577a0078ba829d2f6209cab54
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548630"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880750"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
-> * [Zestaw SDK platformy .NET](data-lake-store-data-operations-net-sdk.md)
+> * [Zestaw SDK .NET](data-lake-store-data-operations-net-sdk.md)
 > * [Zestaw SDK Java](data-lake-store-get-started-java-sdk.md)
 > * [Interfejs API REST](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)

@@ -3,20 +3,20 @@ title: 'Samouczek: Używanie usługi Azure Database Migration Service do przepro
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu PostgreSQL do usługi Azure Database for PostgreSQL za pomocą usługi Azure Database Migration Service.
 services: dms
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 9633b6c083b6e7286435c8c3867339868ae53458
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/03/2019
+ms.openlocfilehash: ec106262653ba6d73c244f5f7c7188abf97d59c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105424"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881215"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu PostgreSQL do usługi [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) z minimalnym przestojem. Innymi słowy migrację można przeprowadzić przy minimalnych przestojach w działaniu aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **DVD Rental** z lokalnego wystąpienia programu PostgreSQL 9.6 do usługi Azure Database for PostgreSQL za pomocą działania migracji w trybie online w usłudze Azure Database Migration Service.
@@ -53,7 +53,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     >
     > Ta konfiguracja jest konieczne, ponieważ usługi Azure Database Migration Service nie ma łączności z Internetem.
 
-- Upewnij się, że Twojego Zrób reguł sieci Wirtualnej, sieciowej grupy zabezpieczeń blokuje komunikację następujące porty 443, 53, 9354, 445, 12000. Aby uzyskać więcej informacji na temat filtrowania ruchu sieciowej grupy zabezpieczeń usługi Azure VNET, zapoznaj się z artykułem [Filter network traffic with network security groups (Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Upewnij się, że reguły sieci Wirtualnej, sieciowej grupy zabezpieczeń nie blokują następujących portów komunikacji przychodzącej do usługi Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej informacji na temat filtrowania ruchu sieciowej grupy zabezpieczeń usługi Azure VNET, zapoznaj się z artykułem [Filter network traffic with network security groups (Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 - [Zapora sytemu Windows skonfigurowana pod kątem dostępu do aparatu bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otwórz zaporę systemu Windows, aby zezwolić usłudze Azure Database Migration Service na dostęp do źródłowego serwera PostgreSQL Server, czyli domyślnie ustawionego portu TCP 5432.
 - W przypadku korzystania z urządzenia zapory przed źródłową bazą danych konieczne może być dodanie reguł zapory, aby zezwolić usłudze Azure Database Migration Service na dostęp do źródłowej bazy danych podczas migracji.

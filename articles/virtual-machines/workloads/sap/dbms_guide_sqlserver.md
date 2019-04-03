@@ -1,6 +1,6 @@
 ---
 title: Wdrożenie programu SQL Server Azure Virtual Machines DBMS w przypadku obciążeń SAP | Dokumentacja firmy Microsoft
-description: Wdrożenie programu SQL Server Azure Virtual Machines DBMS w przypadku obciążeń SAP
+description: Wdrażanie systemu DBMS usługi Azure Virtual Machines programu SQL Server dla obciążenia SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992492"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881090"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -235,7 +235,6 @@ ms.locfileid: "57992492"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -528,10 +527,10 @@ W przypadkach, w którym heterogenicznych migracja jest przeprowadzana z innego 
 W przypadkach, w którym przeniesiesz bazy danych programu SQL Server SAP ze środowiska lokalnego na platformę Azure zaleca się testowanie na infrastrukturę, których można uzyskać zastosowano najszybszych szyfrowanie. W tym pamiętać następujące fakty:
 
 - Nie można zdefiniować, jak wiele wątków umożliwiają zastosowanie szyfrowania danych w bazie danych. Liczba wątków majorly zależy od liczby woluminy na dyskach, które są rozprowadzone plików danych i dziennika programu SQL Server. Oznacza, że woluminy znacznie (litery dysku), więcej wątków będzie zaangażowane w sposób równoległy, przeprowadzić szyfrowanie. Taka konfiguracja jest nieco sprzeczne z wcześniejszej sugestii konfiguracji dysku na tworzeniu co najmniej mniejszą liczbę funkcji miejsca do magazynowania plików bazy danych programu SQL Server na maszynach wirtualnych Azure. Konfiguracji z mniejszą liczbą woluminów doprowadziłoby do niewielkiej liczby wątków wykonania szyfrowania. Szyfrowanie pojedynczego wątku jest odczytywanie zakresów 64KB, szyfruje je i następnie zapisywać rekord w pliku dziennika transakcji, informuje, że zakres został zaszyfrowany. W efekcie obciążenie dziennik transakcji jest umiarkowane.
-- W starszych wersjach programu SQL Server kompresja kopii zapasowej nie pobrały wydajność, już, podczas szyfrowania bazy danych programu SQL Server. To zachowanie można opracować wystąpił problem podczas planu szyfrowania usługi programu SQL Server database w środowisku lokalnym, a następnie skopiować kopii zapasowej na platformie Azure, aby przywrócić bazę danych na platformie Azure. Kompresja kopii zapasowych programu SQL Server zwykle uzyskuje współczynnik 4 stopień kompresji.
+- W starszych wersjach programu SQL Server kompresja kopii zapasowej nie pobrały wydajność, już, podczas szyfrowania bazy danych programu SQL Server. To zachowanie można opracować wystąpił problem podczas planu szyfrowania programu SQL Server database i lokalną, a następnie skopiować kopii zapasowej na platformie Azure, aby przywrócić bazę danych na platformie Azure. Kompresja kopii zapasowych programu SQL Server zwykle uzyskuje współczynnik 4 stopień kompresji.
 - Za pomocą programu SQL Server 2016 SQL Server wprowadził nową funkcję, która umożliwia także kompresowanie szyfrowanymi bazami danych w sposób efektywny. Zobacz [to blogi](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) niektóre szczegółowe informacje.
  
-Traktowanie zastosowanie szyfrowania funkcji TDE bez niewielkie obciążenia SAP, należy przetestować w określonej konfiguracji czy jest lepsze, dotyczą funkcji TDE usługi SAP bazy danych w środowisku lokalnym lub aby to zrobić na platformie Azure. Na platformie Azure bez obaw masz większą elastyczność w zakresie infrastruktury nadmiernej aprowizacji i zmniejszyć infrastruktury po zastosowaniu stało się funkcji TDE.
+Traktowanie zastosowanie szyfrowania funkcji TDE bez niewielkie obciążenia SAP, należy przetestować w określonej konfiguracji czy jest lepsze, dotyczą funkcji TDE SAP bazy danych lokalnych lub aby to zrobić na platformie Azure. Na platformie Azure bez obaw masz większą elastyczność w zakresie infrastruktury nadmiernej aprowizacji i zmniejszyć infrastruktury po zastosowaniu stało się funkcji TDE.
 
 ### <a name="using-azure-key-vault"></a>Za pomocą usługi Azure Key Vault
 Platforma Azure oferuje usługa [usługi Key Vault](https://azure.microsoft.com/services/key-vault/) do przechowywania kluczy szyfrowania. Program SQL Server na drugiej stronie oferują łącznik, aby korzystać z usługi Azure Key Vault jako magazyn certyfikatów funkcji TDE.

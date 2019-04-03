@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure drzwiami frontowymi — metryki i rejestrowanie | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć różne metryki i Dzienniki dostępu, które obsługuje usługę drzwiami frontowymi Azure
+title: Monitorowanie metryk i dzienników w usłudze Azure Service wejściu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano różne metryki i Dzienniki dostępu, które obsługuje usługę drzwiami frontowymi Azure
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,30 +11,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407032"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862118"
 ---
-# <a name="monitoring-metrics-and-logs-for-front-door"></a>Monitorowanie metryk i dzienników drzwi
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorowanie metryk i dzienników w usłudze Azure Service drzwi
 
 Za pomocą usługi Azure Service drzwiami frontowymi, można monitorować zasoby w następujący sposób:
 
-* [Metryki](#metrics): Usługa Application Gateway obecnie ma siedem metryki, aby wyświetlić liczniki wydajności.
-* [Dzienniki](#diagnostic-logging): Dzienniki umożliwiają wydajności, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
+- **Metryki**. Usługa Application Gateway obecnie ma siedem metryki, aby wyświetlić liczniki wydajności.
+- **Dzienniki**. Aktywności i dziennikach diagnostycznych Zezwalaj na wydajność, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
 
-## <a name="metrics"></a>Metryki
+### <a name="metrics"></a>Metryki
 
-Metryki są funkcją dla niektórych zasobów platformy Azure, w którym można wyświetlać liczniki wydajności w portalu. Drzwiami frontowymi dostępne są następujące metryki:
+Metryki są funkcją dla niektórych zasobów platformy Azure, które umożliwiają wyświetlanie liczników wydajności w portalu. Dostępne metryki drzwiami frontowymi są następujące:
 
 | Metryka | Nazwa wyświetlana metryki | Jednostka | Wymiary | Opis |
 | --- | --- | --- | --- | --- |
 | RequestCount | Liczba żądań | Licznik | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba żądań klientów obsługiwanych przez wejściu.  |
 | RequestSize | Rozmiar żądania | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako żądania od klientów na wejściu. |
 | ResponseSize | Rozmiar odpowiedzi | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako odpowiedzi z wejściu do klientów. |
-| TotalLatency | Całkowity czas oczekiwania | Milisekundy | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas obliczonym na podstawie żądanie klienta zostało odebrane przez drzwiami frontowymi, aż klient potwierdzenia ostatni bajt odpowiedzi z drzwiami frontowymi. |
+| TotalLatency | Całkowity czas oczekiwania | Milisekundy | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas jest obliczany od żądania klienta odebranych przez drzwiami frontowymi, dopóki klient potwierdzenia ostatni bajt odpowiedzi z drzwiami frontowymi. |
 | BackendRequestCount | Liczba żądań wewnętrznej bazy danych | Licznik | HttpStatus</br>HttpStatusGroup</br>Zaplecze | Liczba żądań wysyłanych z wejściu do zaplecza. |
 | BackendRequestLatency | Opóźnienia żądania wewnętrznej bazy danych | Milisekundy | Zaplecze | Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przy wejściu do wewnętrznej bazy danych, do chwili drzwiami frontowymi odebrania ostatniego bajtu odpowiedzi z wewnętrznej bazy danych. |
 | BackendHealthPercentage | Wartość procentowa kondycję wewnętrznej bazy danych | Procent | Zaplecze</br>BackendPool | Procent pomyślnych kondycji sondy z wejściu do zaplecza. |
@@ -42,35 +42,36 @@ Metryki są funkcją dla niektórych zasobów platformy Azure, w którym można 
 
 ## <a name="activity-log"></a>Dzienniki aktywności
 
-Dzienniki aktywności udostępniają szczegółowe dane operacji, które zostały wykonane na komputerze użytkownika drzwiami frontowymi. Korzystając z dzienników aktywności można określić "co, kto i kiedy" każdej operacji (PUT, POST, DELETE) wykonywanych na Twoje drzwiami frontowymi zapisu.
+Dzienniki aktywności udostępniają informacje o operacjach na wejściu usługi. Określają również co, kto i dla każdego zapisu (put, post lub delete) wykonywanych na wejściu usługi.
 
-> [!NOTE]
-> Dzienniki aktywności nie obejmują operacji odczytu (GET) ani operacji wykonywanych w witrynie Azure Portal albo przy użyciu oryginalnych interfejsów API zarządzania.
+>[!NOTE]
+>Dzienniki aktywności nie obejmują operacji odczytu (get). Te aktualizacje nie obejmują również operacje wykonywane przy użyciu witryny Azure portal lub oryginalny interfejs API zarządzania.
 
-Możesz uzyskać dostępu do dzienników aktywności w swojej drzwiami frontowymi lub dostęp do wszystkich zasobów platformy Azure w usłudze Azure Monitor. 
-
-Aby wyświetlić dzienniki aktywności:
+Dzienniki aktywności dostępu w usłudze drzwiami frontowymi lub wszystkich dzienników z zasobów platformy Azure w usłudze Azure Monitor. Aby wyświetlić dzienniki aktywności:
 
 1. Wybierz wystąpienie usługi wejściu.
-2. Kliknij pozycję **Dziennik aktywności**.
+2. Wybierz **dziennika aktywności**.
 
-    ![dziennik aktywności](./media/front-door-diagnostics/activity-log.png)
+    ![Dziennik aktywności](./media/front-door-diagnostics/activity-log.png)
 
-3. Wybierz żądany zakres filtrowania i kliknij przycisk **Zastosuj**.
+3. Wybierz zakres filtrowania, a następnie wybierz pozycję **Zastosuj**.
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
-Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób. Dowiedz się więcej o [dzienników diagnostycznych usługi Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne na potrzeby inspekcji i rozwiązywania problemów. Dzienniki diagnostyczne różnią się od dzienników aktywności.
 
-Aby skonfigurować dzienniki diagnostyczne dla Twojego drzwiami frontowymi:
+Dzienniki aktywności udostępniają szczegółowe dane operacji na zasoby platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób. Aby uzyskać więcej informacji, zobacz [dzienników diagnostycznych usługi Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-1. Wybierz wystąpienie usługi APIM.
-2. Kliknij pozycję **Ustawienia diagnostyczne**.
+![Dzienniki diagnostyczne](./media/front-door-diagnostics/diagnostic-log.png)
 
-    ![dzienniki diagnostyczne](./media/front-door-diagnostics/diagnostic-log.png)
+Aby skonfigurować dzienniki diagnostyczne usługi drzwi wejściowe:
 
-3. Kliknij pozycję **Włącz diagnostykę**. Dzienniki diagnostyczne wraz z metrykami można zarchiwizować na koncie magazynu, przesyłać strumieniowo do usługi Event Hub lub wysłać do dziennika usługi Azure Monitor. 
+1. Wybierz usługę Azure API Management.
 
-Usługa drzwiami frontowymi udostępnia obecnie diagnostyki dzienników (wsadowe co godzinę) dotyczące poszczególnych interfejsu API żądania zgodny z następującym schematem AP. Każdy wpis:
+2. Wybierz **ustawień diagnostycznych**.
+
+3. Wybierz **Włącz diagnostykę**. Archiwizuj dzienniki diagnostyczne wraz z metrykami na konto magazynu, przekazywać je strumieniowo do Centrum zdarzeń lub wysyłać dzienniki usługi Azure Monitor.
+
+Usługa drzwiami frontowymi udostępnia obecnie dzienniki diagnostyczne (wsadowe co godzinę). Dzienniki diagnostyczne zawierają poszczególnych żądań interfejsu API zgodny z następującym schematem AP. Każdy wpis:
 
 | Właściwość  | Opis |
 | ------------- | ------------- |
@@ -91,5 +92,5 @@ Usługa drzwiami frontowymi udostępnia obecnie diagnostyki dzienników (wsadowe
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
-- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).
+- [Utwórz profil drzwi](quickstart-create-front-door.md)
+- [Jak działa drzwi](front-door-routing-architecture.md)

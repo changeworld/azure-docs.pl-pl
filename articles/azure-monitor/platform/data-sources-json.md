@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 4d87f21b6312cad1a40e23f3a3b22fa8cc406186
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 101719668fee155e84b7a767647a662ca845f0f2
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530029"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848981"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Zbieranie niestandardowego źródła danych JSON za pomocą agenta usługi Log Analytics dla systemu Linux w usłudze Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Niestandardowe źródła danych JSON można łączyć w [usługi Azure Monitor](data-collection.md) przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](https://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
+Niestandardowe źródła danych JSON można łączyć w [usługi Azure Monitor](data-platform.md) przy użyciu agenta usługi Log Analytics dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](https://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 
 
 > [!NOTE]

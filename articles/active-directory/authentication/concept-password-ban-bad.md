@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369075"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884350"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -100,14 +100,17 @@ Po normalizacji to hasło, staje się "contosoblankf9!". Proces dopasowywania wy
 [contoso] + [puste] + [f] + [9] + [!] = 5 punktów to hasło jest co najmniej 5 punktów, jego akceptacją.
 
    > [!IMPORTANT]
-   > Należy pamiętać, że algorytm zakazanych haseł, wraz z globalnej listy można i zmienić w dowolnym momencie na platformie Azure na podstawie analizy bezpieczeństwa i badań. Usługi agenta lokalnego kontrolera domeny algorytmy zaktualizowany zostanie aktywowane dopiero po ponownym zainstalowaniu oprogramowanie agenta kontrolera domeny.
+   > Należy pamiętać, że algorytm zakazanych haseł, wraz z globalnej listy można i zmienić w dowolnym momencie na platformie Azure na podstawie analizy bezpieczeństwa i badań. Dla usługi agenta kontrolera domeny w środowisku lokalnym algorytmy zaktualizowany zostanie aktywowane dopiero po ponownym zainstalowaniu oprogramowanie agenta kontrolera domeny.
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 
 |   | Usługa Azure AD ochrona za pomocą hasła przy użyciu listy globalne zakazanych haseł | Usługa Azure AD ochrona za pomocą hasła przy użyciu listy niestandardowej zakazanych haseł|
 | --- | --- | --- |
-| Użytkownicy tylko w chmurze | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Podstawowa |
+| Użytkownicy tylko w chmurze | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD Premium P1 lub P2 |
 | Użytkownicy są synchronizowani z lokalnego systemu Windows Server Active Directory | Usługa Azure AD Premium P1 lub P2 | Usługa Azure AD Premium P1 lub P2 |
+
+> [!NOTE]
+> Lokalnych użytkowników usługi Active Directory systemu Windows Server, które nie są zsynchronizowane z usługą Azure Active Directory również skorzystać z zalet oparte na istniejącej licencji dla użytkowników zsynchronizowanych ochrona za pomocą hasła usługi Azure AD.
 
 Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
 

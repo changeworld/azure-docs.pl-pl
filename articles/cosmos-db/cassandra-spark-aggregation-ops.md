@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037314"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877469"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Operacje agregacji w tabelach interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark 
 
@@ -99,7 +99,7 @@ Wybierz [opcji magazynu]( https://spark.apache.org/docs/2.2.0/rdd-programming-gu
 
 * MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Replikuje takie same jak poziomy powyżej, ale każda partycja na dwóch węzłach klastra.
 
-* OFF_HEAP (wersja eksperymentalna): Podobnie jak MEMORY_ONLY_SER, ale przechowuje dane w pamięci poza sterty i wymaga, aby wyłączyć sterty pamięci włączenia wcześniej. 
+* OFF_HEAP (experimental): Podobnie jak MEMORY_ONLY_SER, ale przechowuje dane w pamięci poza sterty i wymaga, aby wyłączyć sterty pamięci włączenia wcześniej. 
 
 ```scala
 //Workaround
@@ -258,7 +258,9 @@ spark
 select max(book_price) from books_vw;
 ```
 **Dane wyjściowe:**
-```22.45 ```
+```
+22.45
+```
 
 ## <a name="sum-operation"></a>Suma operacji
 

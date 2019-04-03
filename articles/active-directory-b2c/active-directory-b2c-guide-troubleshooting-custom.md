@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 15924f2da72318603d11b2d4aadff72cb14ad5f7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156959"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880648"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów z niestandardowych zasad usługi Azure AD B2C i platformy środowiska tożsamości
 
@@ -44,7 +44,7 @@ Przegląd zasad XML może okazać się pomocne. Usługa Azure AD B2C odrzuca XML
 Fragment kodu błędu: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * Wartość oświadczenia mógł zostać źle wpisany lub nie istnieje w schemacie.
 * Element ClaimType wartości musi być zdefiniowany w co najmniej jeden z plików w ramach zasad. 
-    Na przykład: ` <ClaimType Id="socialIdpUserId">`
+    Na przykład: `<ClaimType Id="socialIdpUserId">`
 * Jeśli typ oświadczenia jest zdefiniowana w pliku rozszerzenia, ale jest również używany w profilu TechnicalProfile wartości w pliku podstawowego, przekazywanie pliku podstawowego powoduje wystąpienie błędu.
 
 Fragment kodu błędu: `...makes a reference to a ClaimsTransformation with id...`

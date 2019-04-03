@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 591f7ed52a64d1005f1bb52e54eb3359da0e30a2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 37dcd1dd7052db864797407897851d57e91d43e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579652"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883914"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Łączenie urządzenia Cisco ASA 
 
@@ -113,7 +113,7 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 
 1. Upewnij się, że dzienniki pojawiają się na prawy port w agencie programu Syslog. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 514 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. To polecenie wyświetla dzienników, które są przesyłania strumieniowego z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są otrzymywane z urządzenia źródłowego na prawy port i funkcji odpowiednie.
 2. Sprawdź, czy komunikacja między demona usługi Syslog i agenta. Uruchom następujące polecenie na komputerze agenta usługi Syslog: `tcpdump -A -ni any  port 25226 -vv` To polecenie wyświetla dzienniki, które są przesyłane z urządzenia do maszyny Syslog. Upewnij się, że dzienniki są one odbierane w agencie.
-3. Jeśli oba te polecenia pomyślne wyniki, sprawdź usługi Log Analytics, aby zobaczyć, jeśli dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo ze te urządzenia są wyświetlane w nieprzetworzonej postaci, w usłudze Log Analytics w obszarze `CommonSecurityLog ` typu.
+3. Jeśli oba te polecenia pomyślne wyniki, sprawdź usługi Log Analytics, aby zobaczyć, jeśli dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo ze te urządzenia są wyświetlane w nieprzetworzonej postaci, w usłudze Log Analytics w obszarze `CommonSecurityLog` typu.
 1. Aby sprawdzić, czy występują błędy, czy dzienniki nie są przychodzących, Szukaj w `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Upewnij się, że rozmiar domyślny wiadomości usługi Syslog wynosi 2048 bajtów (2KB). Jeśli dzienniki są zbyt długie, należy zaktualizować security_events.conf za pomocą tego polecenia: `message_length_limit 4096`
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzenia Cisco, wyszukaj **CommonSecurityLog**.

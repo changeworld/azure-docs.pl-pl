@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 04/01/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 542bc1a185f80eaae442931650eb3cd604c197b1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080902"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849389"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Node.js
 
@@ -33,17 +33,20 @@ Jeśli nie masz aplikacji internetowej Node.js, możesz ją utworzyć, wykonują
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy jest to aplikacja lokalna czy aplikacja w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
-1. Wybierz pozycję **Utwórz zasób** > **Monitorowanie + zarządzanie** > **Application Insights**.
+1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
-   ![Dodawanie zasobu usługi Application Insights](./media/nodejs-quick-start/001-u.png)
+   ![Dodawanie zasobu usługi Application Insights](./media/nodejs-quick-start/1createresourseappinsights.png)
+
+   ![Dodawanie zasobu usługi Application Insights](./media/nodejs-quick-start/2createnodejs.png)
+
 
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
@@ -58,9 +61,9 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurowanie zestawu SDK usługi App Insights
 
-1. Wybierz pozycję **Przegląd**  >  **Podstawy** i skopiuj **klucz instrumentacji** aplikacji.
+1. Wybierz **Przegląd** i skopiuj aplikacji **klucz Instrumentacji**.
 
-   ![Formularz nowego zasobu usługi App Insights](./media/nodejs-quick-start/instrumentation-key-001.png)
+   ![Formularz nowego zasobu usługi App Insights](./media/nodejs-quick-start/3key.png)
 
 2. Dodaj zestaw SDK usługi Application Insights dla środowiska Node.js do aplikacji. W folderze głównym aplikacji uruchom polecenie:
 
@@ -84,19 +87,19 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, na której pobrano klucz instrumentacji, w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
 
-   ![Menu Przegląd usługi Application Insights](./media/nodejs-quick-start/overview-001.png)
+   ![Menu Przegląd usługi Application Insights](./media/nodejs-quick-start/4overview.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/nodejs-quick-start/application-map.png)
+   ![Mapa aplikacji](./media/nodejs-quick-start/5appmap.png)
 
-3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/nodejs-quick-start/006.png).  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3. Kliknij pozycję **analizy aplikacji** ikonę ![ikona mapy aplikacji](./media/nodejs-quick-start/006.png) **Wyświetl w obszarze analiza**.  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
-   ![Wykres analizy żądań użytkowników w danym okresie](./media/nodejs-quick-start/007-Black.png)
+   ![Wykres analizy żądań użytkowników w danym okresie](./media/nodejs-quick-start/6analytics.png)
 
-4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy. 
+4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy.
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/nodejs-quick-start/overview-perf.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/nodejs-quick-start/7kpidashboards.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
@@ -120,20 +123,20 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    </script>
    ```
 
-5. Kliknij pozycję **Przeglądarka** w nagłówku **Sprawdź**. W tym miejscu są wyświetlane metryki związane z wydajnością stron aplikacji. Możesz kliknąć pozycję **Dodaj nowy wykres**, aby utworzyć dodatkowe widoki niestandardowe, lub wybrać pozycję **Edytuj**, aby zmodyfikować istniejące typy wykresów, wysokość, paletę kolorów, grupowanie i metryki.
+5. Po kliknięciu lewym na **metryki**. Skorzystaj z Eksploratora metryk do badania kondycji i wykorzystania zasobu. Możesz kliknąć pozycję **Dodaj nowy wykres**, aby utworzyć dodatkowe widoki niestandardowe, lub wybrać pozycję **Edytuj**, aby zmodyfikować istniejące typy wykresów, wysokość, paletę kolorów, grupowanie i metryki. Na przykład można utworzyć wykres, wyświetlającą czas ładowania strony przeglądarki średnia, wprost wybierając "Czas ładowania strony przeglądarki" z rozwijanego metryki i "Średnia" z agregacji. Aby dowiedzieć się więcej o Eksploratorze metryk platformy Azure, odwiedź stronę [wprowadzenie do Eksploratora metryk usługi Azure](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Wykres metryk serwera](./media/nodejs-quick-start/009-Black.png)
+   ![Wykres metryk serwera](./media/nodejs-quick-start/8metrics.png)
 
 Więcej informacji na temat monitorowania środowiska Node.js można znaleźć w [dodatkowej dokumentacji środowiska Node.js w usłudze App Insights](../../azure-monitor/app/nodejs.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego szybkiego startu.
+Po zakończeniu testowania, możesz usunąć grupę zasobów i wszystkie pokrewne zasoby. Można więc wykonaj poniższe kroki.
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyszukiwanie i diagnozowanie problemów z wydajnością](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

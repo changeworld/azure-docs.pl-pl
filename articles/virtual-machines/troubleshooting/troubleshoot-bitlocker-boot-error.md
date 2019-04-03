@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 95dff39cc0803bc29ab69f5bc78952f89e423473
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 51fc47a28cc40d286b5a268d4c42e3531f346c5e
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762399"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846704"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Funkcja BitLocker błędy rozruchu na Maszynie wirtualnej platformy Azure
 
@@ -237,8 +237,8 @@ W scenariuszu klucza szyfrowania wykonaj następujące kroki:
 
         GAC    Version        Location                                                                              
         ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\AzureRM.profile\4.0.0\Microsoft.Identity...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\AzureRM.profile\4.0.0\Microsoft.Identity...
+        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
 
     Po zakończeniu działania skryptu zostanie wyświetlony następujące dane wyjściowe:
 

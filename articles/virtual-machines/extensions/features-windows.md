@@ -16,18 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c07f01acb95523171f0297f7e2fd531713f1facf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550160"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849769"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia maszyn wirtualnych i funkcji dla Windows
 
 Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure. Na przykład, czy maszyna wirtualna wymaga instalacji oprogramowania, oprogramowanie antywirusowe ochrony, aby uruchomić skrypt wewnątrz niej, można użyć rozszerzenia maszyny Wirtualnej. Rozszerzenia maszyn wirtualnych platformy Azure można uruchomić z wiersza polecenia platformy Azure, programu PowerShell, szablony usługi Azure Resource Manager i witryny Azure portal. Rozszerzenia mogą być powiązane z wdrażaniem nowej maszyny Wirtualnej lub uruchamiać dowolnego istniejącego systemu.
 
 Ten artykuł zawiera przegląd rozszerzeń maszyn wirtualnych, wymagania wstępne dotyczące korzystania z rozszerzenia maszyny Wirtualnej platformy Azure i uzyskać wskazówki dotyczące sposobu wykrywania, zarządzanie i usuwanie rozszerzeń maszyn wirtualnych. Ten artykuł zawiera informacje uogólniony, ponieważ wiele rozszerzeń maszyn wirtualnych są dostępne, każdy z potencjalnie unikatowej konfiguracji. Szczegóły specyficzne dla rozszerzenia można znaleźć w każdym dokumencie specyficzne dla poszczególnych rozszerzeń.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="use-cases-and-samples"></a>Przypadki użycia i przykłady
 
@@ -94,27 +96,27 @@ Następujące metody może służyć do uruchamiania rozszerzenie istniejącej m
 Istnieje kilka poleceń programu PowerShell do uruchamiania poszczególnych rozszerzeń. Aby wyświetlić listę, należy użyć [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) i przefiltruj *rozszerzenia*:
 
 ```powershell
-Get-Command Set-Az*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
 Dzięki temu dane wyjściowe podobne do następujących:
 
 ```powershell
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Cmdlet          Set-AzVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+CommandType     Name                                          Version    Source
+-----------     ----                                          -------    ------
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      Az.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      Az.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      Az.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      Az.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
 W poniższym przykładzie użyto rozszerzenia niestandardowego skryptu, aby pobrać skrypt z repozytorium GitHub na docelowej maszynie wirtualnej, a następnie uruchom skrypt. Aby uzyskać więcej informacji na temat rozszerzenia niestandardowego skryptu, zobacz [Omówienie rozszerzenia niestandardowego skryptu](custom-script-windows.md).

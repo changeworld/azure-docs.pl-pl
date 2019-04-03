@@ -1,22 +1,22 @@
 ---
-title: 'Uwierzytelnianie użytkowników końcowych: usługi Azure Data Lake magazynu Gen1 za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Uwierzytelnianie użytkowników końcowych: Usługa Azure Data Lake Storage Gen1 za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak wykonać uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954786"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880087"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Aplikację można uruchomić OAuth 2.0 autoryzacji podręczne, w którym użytko
 Aplikacja może bezpośrednio podania poświadczeń użytkownika do usługi Azure AD. Ta metoda działa tylko z kontami użytkowników w organizacji identyfikator; nie jest zgodny z osobiste / "live ID" kont użytkowników, w tym kont kończy się rozszerzeniem @outlook.com lub @live.com. Ponadto ta metoda nie jest zgodny z konta użytkownika, które wymagają usługi Azure AD uwierzytelniania dwuskładnikowego (2FA).
 
 ### <a name="what-do-i-need-for-this-approach"></a>Co jest potrzebne, w tym podejściu?
-* Nazwa domeny w usłudze Azure AD. To wymaganie już znajduje się w sekcji wymagań wstępnych w tym artykule.
+* Azure AD domain name. To wymaganie już znajduje się w sekcji wymagań wstępnych w tym artykule.
 * Identyfikatora dzierżawy usługi Azure AD To wymaganie już znajduje się w sekcji wymagań wstępnych w tym artykule.
 * Usługa Azure AD **aplikacji natywnej**
 * Identyfikator aplikacji na potrzeby natywną aplikację usługi Azure AD
@@ -72,7 +72,7 @@ Aplikacja może bezpośrednio podania poświadczeń użytkownika do usługi Azur
 * Ustaw uprawnienia delegowane.
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Tworzenie natywną aplikację usługi Active Directory
+## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Utworzyć natywną aplikację usługi Active Directory
 
 Tworzenie i konfigurowanie natywną aplikację usługi Azure AD do uwierzytelniania użytkowników końcowych przy użyciu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory. Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 

@@ -1,25 +1,25 @@
 ---
 title: Windows instalacji usługi Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu instalowania usługi Azure Security Center dla agenta IoT na urządzeniach Windows 32-bitową lub 64-bitowych.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 7e3cb1f44711a8eedb248320db8bce5dfd0eaf0c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b45d64f56653ad6d0baabef4a63351ef14f24c42
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754604"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861959"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Wdrażanie usługi Azure Security Center dla IoT C#— na podstawie agenta zabezpieczeń dla Windows
 

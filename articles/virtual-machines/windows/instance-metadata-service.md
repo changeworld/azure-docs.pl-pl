@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: c54d2aef2d8e748e31bffcecef323c4806d15f60
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482062"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847979"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -102,9 +102,9 @@ Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsł
 
 Interfejs API | Domyślny Format danych | W innych formatach
 --------|---------------------|--------------
-/instance | json | tekst
-/scheduledevents | json | brak
-/ zaświadczenia | json | brak
+/instance | JSON | tekst
+/scheduledevents | JSON | brak
+/ zaświadczenia | JSON | brak
 
 Aby uzyskać dostęp, format odpowiedzi innych niż domyślne, określ żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
 
@@ -220,7 +220,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "rs4-pro",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "17134.345.59",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -298,7 +298,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "Enterprise",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "13.0.400110",
     "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
     "vmScaleSetName": "",
@@ -514,6 +514,22 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 **Odpowiedź**
 ```bash
 AZUREPUBLICCLOUD
+```
+
+### <a name="getting-the-tags-for-the-vm"></a>Trwa pobieranie tagów dla maszyny Wirtualnej
+
+Tagi mogą zostały zastosowane do maszyny Wirtualnej platformy Azure umożliwia ich logiczne zorganizowanie w taksonomii. Tagi przypisane do maszyny Wirtualnej mogą być pobierane za pomocą żądanie poniżej.
+
+**Żądanie**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**Odpowiedź**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
 ```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Weryfikowanie, czy maszyna wirtualna jest uruchomiona na platformie Azure

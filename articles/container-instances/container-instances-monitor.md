@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2018
 ms.author: danlep
-ms.openlocfilehash: c4834d7f9c63735fe08ddc8d023ad9bf34b891cc
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
-ms.translationtype: HT
+ms.openlocfilehash: 950d8b4b5ec1a55e2054039a01d6807915b5c714
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822504"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848239"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorowanie zasobów kontenerów w usłudze Azure Container Instances
 
@@ -131,7 +131,7 @@ Timestamp            Name          Containername             Average
 2018-04-22 16:20:00  Memory Usage  aci-tutorial-sidecar  1.408e+06
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz [Omówienie monitorowania na platformie Azure][azure-monitoring], aby dowiedzieć się więcej na temat monitorowania na platformie Azure.
 
@@ -143,4 +143,4 @@ Zobacz [Omówienie monitorowania na platformie Azure][azure-monitoring], aby dow
 
 <!-- LINKS - Internal -->
 [azure-monitoring]: ../monitoring-and-diagnostics/monitoring-overview.md
-[monitor-dimension]: ../azure-monitor/platform/data-collection.md#multi-dimensional-metrics
+[monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics

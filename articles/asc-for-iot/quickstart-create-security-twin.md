@@ -1,25 +1,25 @@
 ---
 title: Tworzenie bliźniaczą reprezentację modułu zabezpieczeń Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć wiedzy usługi Azure Security Center bliźniacza reprezentacja modułu IoT do użycia z usługą ASC dla IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: c782692e-1284-4c54-9d76-567bc13787cc
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 93b6aa6fe133953025cd504e0486a51c4a3d5e04
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758365"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862220"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Utwórz bliźniaczą reprezentację modułu azureiotsecurity
 
@@ -67,7 +67,7 @@ Aby sprawdzić, czy bliźniaczą reprezentację modułu zabezpieczeń istnieje d
 
 1. W usłudze Azure IoT Hub, wybierz **urządzeń IoT** z **Eksploratory** menu.    
 1. Wprowadź identyfikator urządzenia, lub wybierz opcję **pola urządzenia zapytania** i kliknij przycisk **zapytania urządzeń**. 
-    ![Zapytania urządzeń](./media/quickstart/verify-security-module-twin.png)
+    ![Zapytania względem urządzeń](./media/quickstart/verify-security-module-twin.png)
 1. Wybierz urządzenie lub dwukrotnie kliknij go, aby otworzyć stronę szczegółów urządzenia. 
 1. Wybierz **tożsamości modułu** menu i Sprawdź istnienie **azureiotsecurity** modułu na liście tożsamości modułu skojarzone z urządzeniem. 
     ![Moduły skojarzone z urządzenia](./media/quickstart/verify-security-module-twin-3.png)

@@ -3,20 +3,20 @@ title: Przechwytywanie danych z usługi Event Hubs do usługi Azure Data Lake St
 description: Przechwyć dane z usługi Event Hubs za pomocą usługi Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: a921a717445df93c83518c89970050e63a51ddf3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: twooley
+ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345208"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884514"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Przechwyć dane z usługi Event Hubs za pomocą usługi Azure Data Lake Storage Gen1
 
@@ -123,5 +123,5 @@ Gdy dane znajdują się w Data Lake Storage Gen1, można uruchomić zadania anal
   
 
 ## <a name="see-also"></a>Zobacz także
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

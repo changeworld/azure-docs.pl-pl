@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6f51164904ca51e66b9ce112cf9aec4324812c9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ce8b52717541ea9cf12112ee83d767a23b61f636
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113956"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848209"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Samouczek: zabezpieczanie serwera internetowego na maszynie wirtualnej systemu Windows na platformie Azure przy użyciu certyfikatów SSL przechowywanych w usłudze Key Vault
 
@@ -42,7 +42,7 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Usługa Azure Key Vault chroni klucze kryptograficzne i klucze tajne, takie jak certyfikaty lub hasła. Usługa Key Vault pomaga uprościć proces zarządzania certyfikatami i pozwala zachować kontrolę nad kluczami, które uzyskują dostęp do tych certyfikatów. Możesz utworzyć certyfikat z podpisem własnym wewnątrz usługi Key Vault lub przekazać istniejący zaufany certyfikat, który już posiadasz.
 
 Zamiast używania niestandardowego obrazu maszyny wirtualnej, który zawiera wbudowane certyfikaty, należy wstrzyknąć certyfikaty do uruchomionej maszyny wirtualnej. Ten proces zapewnia, że podczas wdrażania na serwerze sieci Web zostaną zainstalowane najbardziej aktualne certyfikaty. Jeśli odnowisz lub zamienisz certyfikat, nie musisz też tworzyć nowego niestandardowego obrazu maszyny wirtualnej. Najnowsze certyfikaty są automatycznie wstrzykiwane podczas tworzenia dodatkowych maszyn wirtualnych. W trakcie całego procesu certyfikaty nigdy nie opuszczają platformy Azure oraz nie są udostępniane w skrypcie, historii wiersza polecenia ani w szablonie.
@@ -68,7 +68,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Generowanie certyfikatu i zapisywanie go w usłudze Key Vault
-Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę, używając polecenia [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate). W tym samouczku poniższy przykład przedstawia, jak można wygenerować certyfikat z podpisem własnym za pomocą polecenia [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate), które używa domyślnych zasad certyfikatów z poziomu polecenia [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy). 
+Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę, używając polecenia [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). W tym samouczku poniższy przykład przedstawia, jak można wygenerować certyfikat z podpisem własnym za pomocą polecenia [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate), które używa domyślnych zasad certyfikatów z poziomu polecenia [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
 
 ```azurepowershell-interactive
 $policy = New-AzureKeyVaultCertificatePolicy `
@@ -121,7 +121,7 @@ Utworzenie maszyny wirtualnej może potrwać kilka minut. W ostatnim kroku niest
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Dodawanie certyfikatu do maszyny wirtualnej z poziomu usługi Key Vault
-Aby dodać certyfikat z usługi Key Vault do maszyny wirtualnej, uzyskaj identyfikator certyfikatu przy użyciu polecenia [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret). Dodaj certyfikat do maszyny wirtualnej przy użyciu polecenia [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+Aby dodać certyfikat z usługi Key Vault do maszyny wirtualnej, uzyskaj identyfikator certyfikatu przy użyciu polecenia [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Dodaj certyfikat do maszyny wirtualnej przy użyciu polecenia [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
 $certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -170,7 +170,7 @@ Zostanie wyświetlona zabezpieczona witryna internetowa usług IIS, tak jak w po
 ![Wyświetlanie uruchomionej zabezpieczonej witryny usług IIS](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku internetowy serwer usługi IIS został zabezpieczony za pomocą certyfikatu SSL przechowywanego w usłudze Azure Key Vault. W tym samouczku omówiono:
 
 > [!div class="checklist"]

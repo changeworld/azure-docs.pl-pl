@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a8aa00a3bc74c811d7c57db878df0758aa054bb9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978650"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879832"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Przekazywanie uogólnionego wirtualnego dysku twardego do systemu Azure do tworzenia nowej maszyny Wirtualnej
 
@@ -51,7 +51,7 @@ Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez 
 > 
 
 1. Zaloguj się do maszyny wirtualnej Windows.
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom `sysprep.exe`.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom plik `sysprep.exe`.
 3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
 4. W **opcje zamykania**, wybierz opcję **zamknięcia**.
 5. Kliknij przycisk **OK**.
@@ -175,7 +175,7 @@ Tworzenie sieci wirtualnej i podsieci [sieci wirtualnej](../../virtual-network/v
 2. Utwórz sieć wirtualną. Poniższy przykład tworzy sieć wirtualną o nazwie **myVnet** w **zachodnie stany USA** lokalizacji z prefiksem adresu **10.0.0.0/16**.  
    
     ```powershell
-    $location = "West US"
+    $location = "WestUS"
     $vnetName = "myVnet"
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet

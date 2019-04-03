@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 122234e164735270d5566dbaa5d3e8b2d49c141a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 8ba9f4df36f753a1caf619ad90015fa073a00de3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58794006"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883381"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory z lokalnym programem SharePoint
 
@@ -122,7 +122,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
     > [!Note]
     > Zanotuj ścieżkę pliku, do którego został pobrany plik certyfikatu, ponieważ będzie ona używana później w skrypcie programu PowerShell na potrzeby konfiguracji.
 
-6. W sekcji **Skonfiguruj lokalny program SharePoint**  skopiuj odpowiednie adresy URL zgodnie z wymaganiami. W polu **Adres URL usługi logowania jednokrotnego** użyj wartości następującego wzorca: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+6. W sekcji **Skonfiguruj lokalny program SharePoint**  skopiuj odpowiednie adresy URL zgodnie z wymaganiami. Dla **pojedynczy znak na adres URL usługi**, użyj wartości następującego wzorca: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ to identyfikator dzierżawy subskrypcji usługi Azure AD.
@@ -133,7 +133,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
     > [!NOTE]
     > Aplikacja Lokalny program SharePoint używa tokenu SAML 1.1, dzięki czemu usługa Azure AD oczekuje żądania usługi WS-Fed z serwera programu SharePoint, a po uwierzytelnieniu wystawia token SAML 1.1 .
@@ -201,7 +201,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -220,7 +220,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     ![Utwórz grupę zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/addingmembers.png)
 
     > [!NOTE]
-    > Aby można było przypisać grupy zabezpieczeń usługi Active Directory platformy Azure do programu SharePoint w środowisku lokalnym, będą niezbędne do zainstalowania i skonfigurowania [AzureCP](https://yvand.github.io/AzureCP/) w programie SharePoint w lokalnej farmy lub tworzenie i konfigurowanie alternatywnych oświadczenia niestandardowe Dostawca dla programu SharePoint.  Sekcja więcej informacji na końcu dokumentu do tworzenia własnego dostawcy oświadczenia niestandardowe, jeśli nie używasz AzureCP.
+    > Aby można było przypisać grupy zabezpieczeń usługi Active Directory platformy Azure do programu SharePoint w środowisku lokalnym, będą niezbędne do zainstalowania i skonfigurowania [AzureCP](https://yvand.github.io/AzureCP/) w lokalnym programem SharePoint farmy lub tworzenie i konfigurowanie alternatywnych oświadczenia niestandardowe Dostawca dla programu SharePoint.  Sekcja więcej informacji na końcu dokumentu do tworzenia własnego dostawcy oświadczenia niestandardowe, jeśli nie używasz AzureCP.
 
 ### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Udzielanie dostępu do programu SharePoint w lokalnej grupy zabezpieczeń
 
@@ -263,14 +263,14 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     ![Udziel uprawnień](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
-    > Sprawdź w obszarze powiadomień, aby określić, jeśli pomyślnie zostały przyznane uprawnienia.  Jeśli nie są one AzureCP nie będzie działać prawidłowo, i nie będzie możliwe do skonfigurowania programu SharePoint w środowisku lokalnym przy użyciu grup zabezpieczeń usługi Azure Active Directory.
+    > Sprawdź w obszarze powiadomień, aby określić, jeśli pomyślnie zostały przyznane uprawnienia.  Jeśli nie są one AzureCP nie będzie działać prawidłowo, i nie będzie możliwe do skonfigurowania programu SharePoint przy użyciu grup zabezpieczeń usługi Azure Active Directory.
 
 10. Konfigurowanie AzureCP na farmie programu SharePoint w środowisku lokalnym lub rozwiązanie alternatywne, niestandardowe oświadczenia dostawcy.  W tym przykładzie używamy AzureCP.
 
     > [!NOTE]
     > Należy pamiętać, że AzureCP nie jest produktem firmy Microsoft lub obsługiwane przez pomoc techniczną firmy Microsoft. Pobieranie, instalowanie i konfigurowanie AzureCP w farmie programu SharePoint w środowisku lokalnym na https://yvand.github.io/AzureCP/ 
 
-11. **Udzielić dostępu do usługi Azure Security grupy usługi Active Directory w programie SharePoint w lokalnej** :-grupy musi otrzymać dostęp do aplikacji w programie SharePoint na permise.  Wykonaj następujące kroki, aby ustawić uprawnienia dostępu do aplikacji sieci web.
+11. **Udzielić dostępu do usługi Azure Security grupy usługi Active Directory w lokalnym programem SharePoint** :-grupy musi otrzymać dostęp do aplikacji w programie SharePoint na permise.  Wykonaj następujące kroki, aby ustawić uprawnienia dostępu do aplikacji sieci web.
 
 12. W witrynie Administracja centralna kliknij pozycję Zarządzanie aplikacjami, zarządzanie aplikacjami sieci web, a następnie wybierz aplikację sieci web do aktywowania wstążki, a następnie kliknij przycisk w zasadach użytkownika.
 
@@ -367,8 +367,8 @@ Po kliknięciu kafelka lokalnego programu SharePoint na panelu dostępu powinno 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

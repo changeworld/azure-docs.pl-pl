@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2a35435f56a4bb09a8a1958fbc175ef7c889c380
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258381"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863019"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -82,7 +82,7 @@ Utwórz magazyn w następujący sposób:
 
 Wykonywane kopie zapasowe zgodnie z harmonogramem określonym w zasadach tworzenia kopii zapasowej. Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania.
 
-- Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej, jednego dnia o określonej godzinie.
+- Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej raz dziennie o określonej godzinie.
 - Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. 
 
 Aby włączyć i utworzyć kopię zapasową maszynę wirtualną platformy Azure w ramach tego samouczka, firma Microsoft wykonaj następujące czynności:

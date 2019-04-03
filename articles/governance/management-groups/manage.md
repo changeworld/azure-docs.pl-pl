@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801777"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881056"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -330,7 +330,7 @@ Podczas odwoływania się do grup zarządzania, z akcji inny dostawca zasobów, 
 
 Przykładem użycia tej ścieżki jest podczas przypisywania nowe przypisanie roli do grupy zarządzania w programie PowerShell
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
@@ -345,7 +345,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
-- [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
-- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
-- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)
+- [Jak zmienić, usunąć lub zarządzać grupami zarządzania](manage.md)
+- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Przejrzyj grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](/cli/azure/account/management-group)

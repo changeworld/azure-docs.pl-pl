@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870690"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850070"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -70,10 +70,10 @@ Aby przesyłanie danych z dziennika aktywności platformy Azure do przestrzeni n
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Dzienniki usługi Azure resource metryki i Diagnostyka
 
 Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
-1. [Dzienniki diagnostyczne zasobu](./../../azure-monitor/platform/diagnostic-logs-overview.md)
-2. [Metryki](../../azure-monitor/platform/data-collection.md)
+1. [Dzienniki diagnostyczne zasobu](diagnostic-logs-overview.md)
+2. [Metryki](data-platform.md)
 
-Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](./../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
+Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](diagnostic-logs-stream-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
 
 > [!TIP]
 > Można użyć usługi Azure Policy, aby upewnić się, że każdy zasób w określonym zakresie zawsze skonfigurowano ustawienie diagnostyczne [przy użyciu efektu DeployIfNotExists w regule zasad](../../governance/policy/concepts/definition-structure.md#policy-rule).

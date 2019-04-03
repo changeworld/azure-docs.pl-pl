@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113218"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846965"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać odczytu replik w usłudze Azure Database for PostgreSQL w witrynie Azure portal. Aby dowiedzieć się więcej na temat odczytu repliki, zobacz [Przegląd](concepts-read-replicas.md).
 
-> [!IMPORTANT]
-> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-portal.md) jako serwer główny.
 
 ## <a name="prepare-the-master-server"></a>Przygotowanie serwera głównego
-Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
-
-`azure.replication_support` Parametru musi być równa **REPLIKI** na serwerze głównym. Po zmianie tego parametru ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać.
+Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Serwer główny jest przygotowana do replikacji, ustawiając parametr azure.replication_support. Po zmianie parametrów replikacji ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać. W witrynie Azure portal, następujące dwa kroki są hermetyzowane przez jednego przycisku **Włącz obsługę replikacji**.
 
 1. W witrynie Azure portal wybierz istniejących Azure Database dla serwera PostgreSQL do użycia jako główny.
 
-2. W menu po lewej stronie wybierz **parametrów serwera**.
+2. Na pasku bocznym serwera w obszarze **ustawienia**, wybierz opcję **replikacji**.
 
-3. Wyszukaj `azure.replication_support` parametru.
+3. Wybierz **Włączanie obsługi replikacji**. 
 
-   ![Wyszukaj parametr azure.replication_support](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Włączanie obsługi replikacji](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Ustaw `azure.replication_support` wartości parametru **REPLIKI**. Wybierz **Zapisz** Aby zachować zmiany.
+4. Upewnij się, że chcesz włączyć obsługę replikacji. Ta operacja zostanie uruchomiony ponownie serwera głównego. 
 
-   ![Ustaw dla parametru do REPLIKI, a następnie zapisz zmiany](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![Upewnij się, Włącz obsługę replikacji](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. Po zakończeniu operacji otrzymasz dwa powiadomienia z portalu Azure. Istnieje jedno powiadomienie do aktualizowania parametrów serwera. Brak kolejne powiadomienie do ponownego uruchomienia serwera, który następuje od razu.
 
-5. Po zapisaniu zmian zostanie wyświetlone powiadomienie:
+   ![Włącz powiadomienia sukces —](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![Zapisz powiadomień](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. Odśwież stronę witryny Azure portal do aktualizacji narzędzi replikacji. Teraz można utworzyć odczytu replik dla tego serwera.
 
-6. Uruchom ponownie serwer, aby zastosować zmiany. Aby dowiedzieć się, jak uruchomić ponownie serwer, zobacz [ponownego uruchomienia usługi Azure Database for postgresql w warstwie serwera](howto-restart-server-portal.md).
+   ![Zaktualizowany pasek narzędzi](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+Włączanie obsługi replikacji jest to jednorazowa operacja na serwerze głównym. A **Wyłącz Replication Support** przycisk jest dostarczana dla wygody. Nie zaleca się wyłączenie obsługi replikacji, chyba że masz pewność, że nigdy nie utworzy repliki na tym serwerze głównym. Nie można wyłączyć obsługę replikacji, gdy główny serwer ma istniejących replik.
 
 
 ## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
@@ -52,9 +52,7 @@ Aby utworzyć odczytu repliki, wykonaj następujące kroki:
 
 1. Wybierz istniejący Azure bazę danych dla serwera PostgreSQL do użycia jako serwer główny. 
 
-2. W menu serwer w ramach **ustawienia**, wybierz opcję **replikacji**.
-
-   Jeśli nie został ustawiony `azure.replication_support` parametr **REPLIKI** na ogólnego przeznaczenia lub zoptymalizowane pod kątem pamięci głównego serwera i uruchom ponownie serwer, otrzymasz powiadomienie. Przed przystąpieniem do tworzenia repliki, wykonaj te kroki.
+2. Na pasku bocznym serwera w obszarze **ustawienia**, wybierz opcję **replikacji**.
 
 3. Wybierz **dodać repliki**.
 

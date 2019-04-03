@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899030"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884367"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -284,9 +284,9 @@ Poniższy przykład pokazuje, jak odczytać dane metryk na metryce, obsługa wie
 
 Identyfikator zasobu jest unikatowy identyfikator zasobu na platformie Azure. Korzystając z interfejsu API REST usługi Azure Monitor na odczytywanie definicji metryk lub wartości, należy użyć Identyfikatora zasobu dla zasobu, na którym ma działać. Szablon identyfikator zasobu ma następujący format:
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 Magazyn generuje dane pomiarowe zarówno na poziomie konta magazynu, jak i na poziomie usługi, za pomocą usługi Azure Monitor. Na przykład można pobrać metryki tylko magazynu obiektów Blob. Każdy poziom ma swój własny identyfikator zasobu i służy do pobierania metryki dla właśnie na tym poziomie.
 
@@ -294,34 +294,38 @@ Magazyn generuje dane pomiarowe zarówno na poziomie konta magazynu, jak i na po
 
 Na poniższym obrazie przedstawiono format Określ identyfikator ID zasobu dla konta magazynu.
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>Identyfikator zasobu w przypadku usług storage
 
 Na poniższym obrazie przedstawiono formatu do określania Identyfikatora zasobu dla wszystkich usług magazynu.
 
-* Identyfikator zasobu usługi obiektów blob `
+* Identyfikator zasobu usługi obiektów blob
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* Identyfikator zasobu usługi tabeli `
+```
+* Identyfikator zasobu usługi tabeli
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* Identyfikator zasobu usługi kolejki `
+```
+* Identyfikator zasobu usługi kolejki
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* Identyfikator zasobu usługi plików `
+```
+* Identyfikator zasobu usługi plików
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Identyfikator zasobu w usłudze Azure Monitor interfejsu API REST
 
 Na poniższym obrazie przedstawiono wzorzec używany podczas wywoływania interfejsu API REST usługi Azure Monitor.
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>Metryki wydajności
 Wartości metryk wydajności są wysyłane do usługi Azure Monitor co godzinę. Wartości są odświeżane raz dziennie. Ziarno czasu określa interwał czasu, dla której są prezentowane wartości metryk. Obsługiwane ziarno czasu dla wszystkich metryk dotyczących pojemności to jedna godzina (PT1H).

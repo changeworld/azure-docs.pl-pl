@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 76a2d04aece6eb935d3c716a4ce8654c27f077d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: d9d57df3ec8e859a1f3257cb54e423d0006286b1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178003"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880189"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: Migrowanie programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database online przy użyciu usługi DMS
 
@@ -54,7 +54,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     >
     > Ta konfiguracja jest konieczne, ponieważ usługi Azure Database Migration Service nie ma łączności z Internetem.
 
-- Upewnij się, że reguły sieci Wirtualnej, sieciowej grupy zabezpieczeń nie blokuje następujące porty komunikacyjne 443, 53, 9354, 445, 12000. Aby uzyskać więcej informacji na temat filtrowania ruchu sieciowej grupy zabezpieczeń usługi Azure VNET, zapoznaj się z artykułem [Filter network traffic with network security groups (Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Upewnij się, że reguły sieci Wirtualnej, sieciowej grupy zabezpieczeń nie blokują następujących portów komunikacji przychodzącej do usługi Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej informacji na temat filtrowania ruchu sieciowej grupy zabezpieczeń usługi Azure VNET, zapoznaj się z artykułem [Filter network traffic with network security groups (Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - [Zapora sytemu Windows skonfigurowana pod kątem dostępu do aparatu źródłowej bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otwarcie zapory systemu Windows w celu zezwolenia usłudze Azure Database Migration Service na dostęp do źródłowego wystąpienia programu SQL Server, czyli domyślnie portu TCP 1433.
 - Jeśli uruchomiono wiele nazwanych wystąpień programu SQL Server przy użyciu portów dynamicznych, konieczne może być włączenie usługi SQL Browser i zezwolenie na dostęp do portu UDP 1434 przez zapory, tak aby usługa Azure Database Migration Service mogła połączyć się z nazwanym wystąpieniem na serwerze źródłowym.
@@ -188,7 +188,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
     |**Udział lokalizacji sieciowej protokołu SMB** | Lokalny udział sieciowy protokołu SMB zawierający pliki kopii zapasowych całej bazy danych oraz pliki kopii zapasowych dzienników transakcji, których usługa Azure Database Migration Service może użyć podczas migracji. Konto usługi, na którym uruchomiono źródłowe wystąpienie programu SQL Server, musi mieć uprawnienia do odczytu/zapisu w tym udziale sieciowym. Podaj nazwę FQDN lub adresy IP serwera w udziale sieciowym, na przykład „\\\nazwa_serwera.nazwa_domeny.com\folder_kopii_zapasowych” lub „\\\adres_IP\folder_kopii_zapasowych”.|
     |**Nazwa użytkownika** | Upewnij się, że użytkownik systemu Windows ma uprawnienia pełnej kontroli w udziale sieciowym, który podano powyżej. Usługa Azure Database Migration Service personifikuje poświadczenia użytkownika w celu przekazania plików kopii zapasowej do kontenera usługi Azure Storage na potrzeby operacji przywracania. |
     |**Hasło** | Hasło użytkownika. |
-    |**Subskrypcja konta usługi Azure Storage** | Wybierz subskrypcję, która zawiera konto usługi Azure Storage. |
+    |**Subskrypcja konta magazynu platformy Azure** | Wybierz subskrypcję, która zawiera konto usługi Azure Storage. |
     |**Konto usługi Azure Storage** | Wybierz konto usługi Azure Storage, na które usługa DMS może przekazać pliki kopii zapasowej z udziału sieciowego protokołu SMB używane podczas migracji bazy danych.  Zalecamy wybranie konta usługi Storage w tym samym regionie co usługa DMS w celu uzyskania optymalnej wydajności przekazywania plików. |
 
     ![Konfigurowanie ustawień migracji](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)

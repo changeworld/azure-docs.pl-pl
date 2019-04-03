@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 7942b4eb5788357a807911d3eb89d1054a92c3eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449363"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883942"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -166,6 +166,11 @@ Jednak jeśli podejmowana tym przesyłania dalej usługi Azure Monitor utworzyć
 Jeśli następujący wpis jest następnie przesłane, przed utworzeniem typ rekordu, usługi Azure Monitor utworzyć rekord z trzech właściwości **liczba_s**, **boolean_s**, i **string_s**. W tym wpisie początkowej wartości jest w formacie ciągu:
 
 ![Przykładowy rekord 4](media/data-collector-api/record-04.png)
+
+## <a name="reserved-properties"></a>Właściwości zastrzeżone
+Następujące właściwości są zarezerwowane i nie należy używać w typie rekordu niestandardowego. Jeśli Twoje ładunek zawiera dowolne z tych nazw właściwości, zostanie zwrócony błąd.
+
+- dzierżawa
 
 ## <a name="data-limits"></a>Limity danych
 Istnieją pewne ograniczenia wokół danych opublikowane w usłudze Azure Monitor interfejsu API zbierania danych.

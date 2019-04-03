@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001856"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884299"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights
 Jeśli używasz, Logback lub Log4J (wersja 1.2 lub 2.0) do śledzenia, może mieć dzienników śledzenia automatycznie przesyłane do usługi Application Insights, gdzie możesz eksplorować i wyszukiwania na nich.
@@ -60,7 +60,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-*Log4J v1.2*
+*1.2 Log4J*
 
 ```XML
 
@@ -91,7 +91,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**1.2 Log4J**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -116,6 +116,7 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
 
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+        <instrumentationKey>[APPLICATION_INSIGHTS_KEY]</instrumentationKey>
     </appender>
     <root level="trace">
       <appender-ref ref="aiAppender" />
@@ -128,7 +129,7 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
 
     <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
-        <ApplicationInsightsAppender name="aiAppender" />
+        <ApplicationInsightsAppender name="aiAppender" instrumentationKey="[APPLICATION_INSIGHTS_KEY]" />
       </Appenders>
       <Loggers>
         <Root level="trace">
@@ -138,12 +139,13 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
     </Configuration>
 ```
 
-*Log4J v1.2*
+*1.2 Log4J*
 
 ```XML
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
+        <param name="instrumentationKey" value="[APPLICATION_INSIGHTS_KEY]" />
     </appender>
     <root>
       <priority value ="trace" />

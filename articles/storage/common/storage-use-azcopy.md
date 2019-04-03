@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461781"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881736"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Transferowanie danych za pomocą narzędzia AzCopy w Windows
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z systemu Microsoft Azure Blob, File i Table storage przy użyciu prostych poleceń zaprojektowane pod kątem optymalnej wydajności. Dane można kopiować między systemem plików i kontem magazynu lub między kontami magazynu.  
@@ -57,7 +57,7 @@ Spójrzmy na kilka sposobów, aby pobierać obiekty BLOB przy użyciu narzędzia
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
-Należy pamiętać, że jeśli folder `C:\myfolder` nie istnieje, narzędzie AzCopy utworzy go i pobierania `abc.txt ` do nowego folderu.
+Należy pamiętać, że jeśli folder `C:\myfolder` nie istnieje, narzędzie AzCopy utworzy go i pobierania `abc.txt` do nowego folderu.
 
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>Pobierz pojedynczy obiekt blob z regionu pomocniczego
 
@@ -851,7 +851,7 @@ Dostępne atrybuty obejmują:
 
 Określa znak ogranicznika używany do ograniczania katalogów wirtualnych w nazwie obiektu blob.
 
-Domyślnie używa narzędzia AzCopy / jako znak ogranicznika. Narzędzie AzCopy obsługuje jednak przy użyciu dowolnego znaku wspólnych (takich jak @, # lub %) w roli ogranicznika. Jeśli potrzebujesz uwzględnić jedną z następujących znaków specjalnych w wierszu polecenia, należy ująć nazwę pliku znakami podwójnego cudzysłowu.
+Domyślnie używa narzędzia AzCopy / jako znak ogranicznika. Narzędzie AzCopy obsługuje jednak przy użyciu dowolnego znaku wspólnych (takich jak @, #, lub %) jako ogranicznika. Jeśli potrzebujesz uwzględnić jedną z następujących znaków specjalnych w wierszu polecenia, należy ująć nazwę pliku znakami podwójnego cudzysłowu.
 
 Ta opcja dotyczy tylko do pobierania obiektów blob.
 

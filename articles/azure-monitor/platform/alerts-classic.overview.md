@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993037"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847865"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są alertów klasycznych na platformie Microsoft Azure?
 
@@ -88,14 +88,14 @@ Elementy Webhook umożliwia automatyzację i korygowania, na przykład przy uży
 ## <a name="next-steps"></a>Kolejne kroki
 Uzyskać informacje na temat reguł alertów i konfigurowanie ich za pomocą:
 
-* Dowiedz się więcej o [metryki](../../azure-monitor/platform/data-collection.md)
+* Dowiedz się więcej o [metryki](data-platform.md)
 * Konfigurowanie [alertów klasycznych metryki w witrynie Azure portal](alerts-classic-portal.md)
 * Konfigurowanie [klasyczny program PowerShell alerty metryki](alerts-classic-portal.md)
 * Konfigurowanie [klasycznego interfejsu wiersza polecenia alerty metryki (CLI)](alerts-classic-portal.md)
 * Konfigurowanie [klasycznego metryki alerty usługi Azure Monitor interfejsu API REST](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Dowiedz się więcej o [dziennika aktywności](../../azure-monitor/platform/activity-logs-overview.md)
-* Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](../../azure-monitor/platform/activity-log-alerts.md)
+* Dowiedz się więcej o [dziennika aktywności](activity-logs-overview.md)
+* Konfigurowanie [alertów dziennika aktywności w witrynie Azure portal](activity-log-alerts.md)
 * Konfigurowanie [alertów dziennika aktywności przy użyciu usługi Resource Manager](alerts-activity-log.md)
-* Przegląd [schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Dowiedz się więcej o [grupy akcji](../../azure-monitor/platform/action-groups.md)
-* Konfigurowanie [nowszych alertów](../../azure-monitor/platform/alerts-metric.md)
+* Przegląd [schemat elementów webhook alertu dziennika aktywności](activity-log-alerts-webhook.md)
+* Dowiedz się więcej o [grupy akcji](action-groups.md)
+* Konfigurowanie [nowszych alertów](alerts-metric.md)

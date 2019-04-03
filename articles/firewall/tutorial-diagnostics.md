@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958987"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877265"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: Monitorowanie dzienników i metryk usługi Azure Firewall
 
@@ -41,7 +41,7 @@ Przed rozpoczęciem tego samouczka należy przeczytać sekcję dotyczącą [dzie
 Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego może upłynąć kilka minut, zanim dane pojawią się w dziennikach. Jeśli na początku nie widzisz żadnych danych, sprawdź ponownie za kilka minut.
 
 1. W witrynie Azure Portal otwórz grupę zasobów zapory, a następnie kliknij zaporę.
-2. W obszarze **Monitorowanie** kliknij pozycję **Dzienniki diagnostyczne**.
+2. W obszarze **monitorowanie**, kliknij przycisk **ustawień diagnostycznych**.
 
    W przypadku usługi Azure Firewall są dostępne dwa dzienniki specyficzne dla usługi:
 
@@ -57,9 +57,9 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
 9. Na stronie **Obszar roboczy usługi Log Analytics** wpisz nazwę **firewall-oms** dla nowego obszaru w polu **Obszar roboczy OMS**.
 10. Wybierz swoją subskrypcję, użyj istniejącej grupy zasobów zapory (**Test-FW-RG**), a następnie wybierz lokalizację **Wschodnie stany USA** i warstwę cenową **Bezpłatna**.
 11. Kliknij przycisk **OK**.
-   ![Uruchamianie procesu konfiguracji][1] Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
+   ![Uruchamianie procesu konfiguracji][1] obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.  
 12. W obszarze **Dziennik** kliknij pozycję **AzureFirewallApplicationRule** i **AzureFirewallNetworkRule**, aby zbierać dzienniki dla reguł aplikacji i sieci.
-   ![Zapisywanie ustawień diagnostycznych][2]
+   ![Zapisz ustawienia diagnostyczne][2]
 13. Kliknij pozycję **Zapisz**.
 
 ## <a name="enable-logging-with-powershell"></a>Włączanie rejestrowania przy użyciu programu PowerShell
@@ -108,12 +108,12 @@ Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSO
 ## <a name="view-metrics"></a>Wyświetlanie metryk
 Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kliknij pozycję **Metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować dzienniki usługi Azure Monitor, aby wyświetlać dane.
 
 > [!div class="nextstepaction"]
-> [Rozwiązania do monitorowania sieci w dziennikach usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md)
+> [Monitorowanie rozwiązań w dziennikach w usłudze Azure Monitor sieci](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

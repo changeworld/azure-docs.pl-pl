@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001829"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877742"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Włączanie rozszerzenia Snapshot Debugger dla aplikacji .NET usługi Azure Service Fabric, usługa w chmurze i maszyn wirtualnych
 
-Jeśli Twoje ASP.NET lub ASP.NET core uruchamiania aplikacji w usłudze Azure App Service, w poniższych instrukcjach można również. Chyba że aplikacja wymaga dostosowanej konfiguracji rozszerzenia Snapshot Debugger, zdecydowanie zaleca się [włączyć rozszerzenie Snapshot Debugger za pomocą strony portalu usługi Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Jeśli aplikacja działa w usłudze Azure Service Fabric, usługa w chmurze, maszyn wirtualnych lub maszyn w środowisku lokalnym, należy użyć poniższych instrukcji. 
+Jeśli Twoje ASP.NET lub ASP.NET core uruchamiania aplikacji w usłudze Azure App Service, w poniższych instrukcjach można również. Chyba że aplikacja wymaga dostosowanej konfiguracji rozszerzenia Snapshot Debugger, zdecydowanie zaleca się [włączyć rozszerzenie Snapshot Debugger za pomocą strony portalu usługi Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Jeśli aplikacja działa w usłudze Azure Service Fabric, usługa w chmurze, maszyny wirtualne, lub maszyn lokalnych, należy używać zgodnie z poniższymi instrukcjami. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurowanie zbierania migawek dla aplikacji ASP.NET
 

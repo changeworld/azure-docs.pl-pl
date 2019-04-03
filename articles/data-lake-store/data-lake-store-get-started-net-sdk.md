@@ -1,27 +1,27 @@
 ---
-title: 'Zestaw SDK platformy .NET: Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
+title: 'ZESTAW SDK PLATFORMY .NET: Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
 description: Użyj zestawu SDK usługi Azure Data Lake Storage Gen1 .NET do wykonywania operacji zarządzania kontem w Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123916"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879713"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
-> * [Zestaw SDK platformy .NET](data-lake-store-get-started-net-sdk.md)
+> * [Zestaw SDK .NET](data-lake-store-get-started-net-sdk.md)
 > * [Interfejs API REST](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -53,8 +53,8 @@ Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania danym
    2. Na karcie **Menedżer pakietów NuGet** upewnij się, że **Źródło pakietów** jest ustawione na wartość **nuget.org** i że zaznaczone jest pole wyboru **Uwzględnij wersję wstępną**.
    3. Wyszukaj i zainstaluj następujące pakiety NuGet:
 
-      * `Microsoft.Azure.Management.DataLake.Store` — w tym samouczku jest używana wersja v2.1.3-preview.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — w tym samouczku jest używana wersja v2.2.12.
+      * `Microsoft.Azure.Management.DataLake.Store` — W tym samouczku v2.1.3-preview.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — W tym samouczku używana wersja v2.2.12.
 
         ![Dodawanie źródła pakietów NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Tworzenie nowego konta usługi Azure Data Lake")
    4. Zamknij **Menedżera pakietów NuGet**.
@@ -146,4 +146,4 @@ Poniższy fragment kodu powoduje usunięcie konta Data Lake Storage Gen1, która
 * [Dokumentacja zestawu SDK .NET Gen1 Lake magazynu danych](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)

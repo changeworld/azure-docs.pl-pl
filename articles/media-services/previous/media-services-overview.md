@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: fa0dbf60c9bc808465dd4527f06ad754382f075c
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 7a98d3acc3f45772f9e28c23a639f495b75bea0a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258568"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850045"
 ---
 # <a name="azure-media-services-overview"></a>Omówienie usługi Azure Media Services 
 
@@ -26,12 +26,12 @@ ms.locfileid: "58258568"
 > * [Wersja 3](../latest/media-services-overview.md)
 > * [Wersja 2](media-services-overview.md)
 
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 Microsoft Azure Media Services (AMS) to oparta na chmurze rozszerzalna platforma, która umożliwia deweloperom tworzenie skalowalnych aplikacji do dostarczania multimediów i zarządzania nimi. Usługi Media Services są oparte na interfejsach API REST, które umożliwiają bezpieczne przekazywanie, przechowywanie, kodowanie i tworzenie pakietów zawartości wideo lub audio na potrzeby transmisji strumieniowej na żądanie i na żywo do różnych klientów (np. odbiorników TV, komputerów i urządzeń przenośnych).
 
 Korzystając wyłącznie z usługi Media Services, można tworzyć kompleksowe przepływy pracy. W przypadku niektórych części przepływu pracy można użyć składników innych firm. Na przykład kodowanie można wykonać przy użyciu kodera innego producenta. Natomiast przekazywanie, zabezpieczanie, tworzenie pakietów i dostarczanie można realizować za pomocą usługi Media Services. Możliwe jest przesyłanie strumieniowe zawartości na żywo lub dostarczanie zawartości na żądanie. 
-
-> [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

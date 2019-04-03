@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401219"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885030"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozszerzanie skryptów U-SQL przy użyciu kodu języka R w usłudze Azure Data Lake Analytics
 
 Poniższy przykład ilustruje podstawowe kroki wdrażania kodu R:
 * Użyj `REFERENCE ASSEMBLY` instrukcję, aby włączyć rozszerzenia języka R dla skryptu U-SQL.
-* Użyj` REDUCE` operacji w celu podzielenia danych wejściowych dla klucza.
+* Użyj `REDUCE` operacji w celu podzielenia danych wejściowych dla klucza.
 * Rozszerzenia języka R dla języka U-SQL zawierają wbudowane reduktor (`Extension.R.Reducer`), które jest uruchamiane kod R na każdy wierzchołek przypisane do reduktor. 
-* Użycie dedykowanych o nazwie ramki danych o nazwie `inputFromUSQL` i `outputToUSQL `odpowiednio do przekazywania danych między U-SQL i języka R. w danych wejściowych i wyjściowych ramkę danych są ustalone nazwy identyfikatorów (oznacza to, użytkownicy nie można zmienić tych wstępnie zdefiniowanych nazw dane wejściowe i wyjściowe ramkę danych identyfikatory).
+* Użycie dedykowanych o nazwie ramki danych o nazwie `inputFromUSQL` i `outputToUSQL` odpowiednio do przekazywania danych między U-SQL i języka R. w danych wejściowych i wyjściowych ramkę danych są ustalone nazwy identyfikatorów (oznacza to, użytkownicy nie można zmienić tych wstępnie zdefiniowanych nazw dane wejściowe i wyjściowe ramkę danych identyfikatory).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>Osadzanie kodu języka R w skrypcie U-SQL
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53efe44f17f174073ea5ed39f94c9dc8078a9779
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206773"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879968"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
@@ -112,13 +112,13 @@ Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę 
 
 1. W projekcie Szybki start otwórz plik plist `settings.plist`.
 1. Zastąp wartości elementów w sekcji, aby były używane te same wartości, które wprowadzono w witrynie Azure Portal. Twój kod odwołuje się do tych wartości podczas każdego użycia biblioteki ADAL.
-    * `tenant` to domena dzierżawy usługi Azure AD, na przykład contoso.onmicrosoft.com.
-    * `clientId` to identyfikator klienta Twojej aplikacji skopiowany z portalu.
-    * `redirectUri` to adres URL przekierowania, który zarejestrowano w portalu.
+    * `tenant` jest to domena dzierżawy usługi Azure AD, np. contoso.onmicrosoft.com.
+    * `clientId` jest to identyfikator klienta Twojej aplikacji, który został skopiowany z portalu.
+    * `redirectUri` jest adres URL przekierowania, który został zarejestrowany w portalu.
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Uzyskiwanie tokenów z usługi Azure AD przy użyciu biblioteki ADAL
 
-Podstawowa zasada działania biblioteki ADAL polega na tym, że za każdym razem, gdy aplikacja potrzebuje tokenu dostępu, po prostu wywołuje ona element completionBlock `+(void) getToken : `, a biblioteka ADAL zajmuje się resztą.
+Podstawowa zasada działania biblioteki ADAL polega na tym, że za każdym razem, gdy aplikacja potrzebuje tokenu dostępu, po prostu wywołuje ona element completionBlock `+(void) getToken :`, a biblioteka ADAL zajmuje się resztą.
 
 1. W projekcie `QuickStart` otwórz plik `GraphAPICaller.m` i zlokalizuj komentarz `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` w górnej części pliku.
 
@@ -255,9 +255,9 @@ Biblioteka ADAL ułatwia dodanie wszystkich tych typowych funkcji tożsamości d
 
 Gotowa próbka (bez wartości konfiguracji) jest dostępna w serwisie [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz teraz przejść do dodatkowych scenariuszy. Sugerujemy zapoznanie się z następującymi:
 
-* [Zabezpieczanie internetowego interfejsu API platformy Node.JS przy użyciu usługi Azure AD](quickstart-v1-nodejs-webapi.md)
+* [Zabezpieczanie sieci Web środowiska Node.JS interfejsu API za pomocą usługi Azure AD](quickstart-v1-nodejs-webapi.md)
 * Dowiedz się, [jak włączyć logowanie jednokrotne dla wielu aplikacji w systemie iOS przy użyciu biblioteki ADAL](howto-v1-enable-sso-ios.md)  

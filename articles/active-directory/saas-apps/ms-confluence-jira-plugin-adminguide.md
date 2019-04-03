@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109141"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862866"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
 
@@ -112,11 +112,11 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 * **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
 
-* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/.
+* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/.
 
-* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/plugins/servlet/saml/auth.
 
-* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*\<domeny: port >*/plugins/servlet/saml/auth.
 
 * **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
 

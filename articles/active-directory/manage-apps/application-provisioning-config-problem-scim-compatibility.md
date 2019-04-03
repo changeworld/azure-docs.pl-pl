@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124087"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880155"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
 
@@ -82,13 +82,13 @@ Tak. Jeśli korzystasz już z tego wystąpienia aplikacji dla logowania jednokro
 
 10. Uruchom poniższe polecenie, aby utworzyć nowe zadanie inicjowania obsługi administracyjnej, który ma najnowsze poprawki usługi.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
-    `{   templateId: "scim"   } `
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+ `{   templateId: "scim"   }`
    
 11. W wynikach ostatnim kroku należy skopiować pełny ciąg "ID", który rozpoczyna się od "Standard scim". Opcjonalnie Zastosuj ponownie swoje stare mapowania atrybutów, uruchamiając poniższe polecenie, zastępując [identyfikator nowego zadania] identyfikator zadania został skopiowany, a następnie wprowadzenie który za pomocą pliku JSON dane wyjściowe z kroku 7 # jako treści żądania.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
-    `{   <your-schema-json-here>   }`
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
+ `{   <your-schema-json-here>   }`
 
 12. Wróć do okna przeglądarki usługi pierwszy sieci web i wybierz **aprowizacji** kartę dla swojej aplikacji.
 13. Sprawdź konfigurację, a następnie uruchom zadanie inicjowania obsługi administracyjnej. 

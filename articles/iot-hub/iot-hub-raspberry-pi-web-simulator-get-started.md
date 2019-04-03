@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113784"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847210"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi symulatora w trybie online dla usługi Azure IoT Hub (Node.js)
 
@@ -96,6 +96,11 @@ Istnieją trzy obszary, w symulatorze sieci web.
 
 Następujące dane wyjściowe, dane czujników i komunikaty, które są wysyłane do usługi IoT hub powinny być ![dane wyjściowe — dane czujników wysyłanych z urządzenia Raspberry Pi do Centrum IoT hub](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Przeczytaj komunikaty odbierane przez Centrum
+
+Jednym ze sposobów monitorowania komunikaty odbierane przez Centrum IoT hub z symulowanego urządzenia jest konieczne użycie narzędzi IoT platformy Azure dla programu Visual Studio Code. Aby dowiedzieć się więcej, zobacz [Użyj narzędzia IoT platformy Azure dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+Więcej sposobów na przetwarzanie danych przesyłanych przez urządzenia przejdź do następnej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

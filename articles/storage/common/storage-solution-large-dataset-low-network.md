@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6922d49affdde86728b41ef1d3d0c6a2da5c323e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805095"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849615"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Transfer danych w przypadku dużych zestawów danych za pomocą niski lub nie przepustowość sieci
  
@@ -59,7 +59,7 @@ W poniższej tabeli podsumowano różnice w kluczowych funkcji.
 |    Integracja z partnerami              |    Niektóre                         |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Wysoka](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Niektóre                                |
 |    Wysyłka                         |    Zarządzany przez firmę Microsoft            |    Zarządzany przez firmę Microsoft                             |    Zarządzany przez firmę Microsoft                     |    Zarządzaną przez klienta                    |
 | Stosowane, gdy dane są przenoszone         |W granicach handlowych|W granicach handlowych|W granicach handlowych|W granicach geograficznych, np. nam UE|
-|    Cennik                          |    [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Cennik](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    Cennik                          |    [Cennik](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Cennik](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Cennik](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

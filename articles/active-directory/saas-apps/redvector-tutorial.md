@@ -4,229 +4,197 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 99042f39-0ab2-475b-8df8-3016d7f875e9
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/28/2017
+ms.topic: tutorial
+ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06d60b6d5ee5a00c24add39871e3611ea5cdfbff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89a45bb9c291a426c08a403f1fa588f9831798a3
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196862"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849459"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RedVector
 
 W tym samouczku dowiesz się, jak zintegrować RedVector w usłudze Azure Active Directory (Azure AD).
-
 Integrowanie RedVector z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do RedVector
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do RedVector (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do RedVector.
+* Aby umożliwić użytkownikom można automatycznie zalogowany do RedVector (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą RedVector, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- RedVector logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* RedVector logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie RedVector z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Obsługuje RedVector **SP** jednokrotne logowanie inicjowane przez
 
 ## <a name="adding-redvector-from-the-gallery"></a>Dodawanie RedVector z galerii
+
 Aby skonfigurować integrację RedVector w usłudze Azure AD, należy dodać RedVector z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać RedVector z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **RedVector**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/tutorial_redvector_search.png)
+4. W polu wyszukiwania wpisz **RedVector**, wybierz opcję **RedVector** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **RedVector**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![RedVector na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/tutorial_redvector_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą RedVector w oparciu o użytkownika testu o nazwie "Britta Simon".
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w RedVector do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w RedVector musi można ustanowić.
-
-W RedVector, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą RedVector w oparciu o użytkownika testu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w RedVector musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RedVector, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego RedVector](#creating-a-redvector-test-user)**  — aby odpowiednikiem Britta Simon w RedVector połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie RedVector logowania jednokrotnego](#configure-redvector-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego RedVector](#create-redvector-test-user)**  — aby odpowiednikiem Britta Simon w RedVector połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji RedVector.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z RedVector, wykonaj następujące czynności:**
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z RedVector, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **RedVector** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **RedVector** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_redvector_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **RedVector domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_redvector_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://sso2.redvector.com/adfs/<Companyname>`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<Companyname>.redvector.com/saml2`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RedVector](mailto:sso@redvector.com) do uzyskania tych wartości. 
- 
-1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    ![RedVector domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_redvector_certificate.png) 
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://sso2.redvector.com/adfs/<Companyname>`
 
-1. Kliknij przycisk **Save** (Zapisz).
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<Companyname>.redvector.com/saml2`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RedVector](mailto:sso@redvector.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **konfiguracji RedVector** , kliknij przycisk **skonfigurować RedVector** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_redvector_configure.png) 
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **RedVector** stronie, musisz wysłać pobrany **certyfikat (Base64)** i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [ Zespół pomocy technicznej RedVector](mailto:sso@redvector.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+6. Na **Konfigurowanie RedVector** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-redvector-single-sign-on"></a>Konfigurowanie RedVector logowanie jednokrotne
+
+Aby skonfigurować logowanie jednokrotne na **RedVector** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej RedVector](mailto:sso@redvector.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/redvector-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-redvector-test-user"></a>Tworzenie użytkownika testowego RedVector
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w RedVector. Jeśli nie wiesz, jak dodać Britta Simon w RedVector, pracować [zespołem pomocy technicznej RedVector](mailto:sso@redvector.com) do dodawania użytkownika testowego i włączyć logowanie Jednokrotne.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do RedVector.
 
-![Przypisz użytkownika][200] 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **RedVector**.
 
-**Aby przypisać Britta Simon RedVector, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **RedVector**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link RedVector na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **RedVector**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/redvector-tutorial/tutorial_redvector_app.png) 
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Przypisz użytkownika][202] 
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-redvector-test-user"></a>Tworzenie użytkownika testowego RedVector
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w RedVector. Praca z [zespołem pomocy technicznej RedVector](mailto:sso@redvector.com) Aby dodać użytkowników na platformie RedVector. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Po kliknięciu kafelka RedVector w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji RedVector.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka RedVector w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze RedVector, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/redvector-tutorial/tutorial_general_01.png
-[2]: ./media/redvector-tutorial/tutorial_general_02.png
-[3]: ./media/redvector-tutorial/tutorial_general_03.png
-[4]: ./media/redvector-tutorial/tutorial_general_04.png
-
-[100]: ./media/redvector-tutorial/tutorial_general_100.png
-
-[200]: ./media/redvector-tutorial/tutorial_general_200.png
-[201]: ./media/redvector-tutorial/tutorial_general_201.png
-[202]: ./media/redvector-tutorial/tutorial_general_202.png
-[203]: ./media/redvector-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

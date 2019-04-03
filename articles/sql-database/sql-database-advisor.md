@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 348183e1a164dd0a0f5f9672346423b95c27eba4
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3ac55ef4159ab97c909fc5dfc084889bc58a7b7c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793706"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846664"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności usługi SQL Database
 
@@ -88,7 +88,7 @@ Zalecenie "Naprawić problem ze schematem" jest wyświetlany, gdy usługa Azure 
 
 ## <a name="custom-applications"></a>Aplikacje niestandardowe
 
-Deweloperzy mogą należy wziąć pod uwagę tworzenia niestandardowych aplikacji przy użyciu zalecenia dotyczące wydajności usługi Azure SQL Database. Wszystkie zalecenia na liście w portalu dla bazy danych jest możliwy za pośrednictwem [Get AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) interfejsu API.
+Deweloperzy mogą należy wziąć pod uwagę tworzenia niestandardowych aplikacji przy użyciu zalecenia dotyczące wydajności usługi Azure SQL Database. Wszystkie zalecenia na liście w portalu dla bazy danych jest możliwy za pośrednictwem [Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzSqlDatabaseRecommendedAction) interfejsu API.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Monitoruj zalecenia i stosować je do uściślić wydajności w dalszym ciągu. Różnych obciążeń bazy danych są dynamiczne i zmiany w sposób ciągły. SQL Database Advisor w dalszym ciągu monitorować i przedstawić zalecenia w zakresie, które może potencjalnie podnieść wydajność bazy danych. 

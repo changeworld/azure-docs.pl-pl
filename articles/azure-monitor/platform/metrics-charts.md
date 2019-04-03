@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337079"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848863"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -21,7 +21,7 @@ Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure po
 
 ## <a name="metrics-in-azure"></a>Metryki na platformie Azure
 
-[Metryki w usłudze Azure Monitor](data-collection.md#metrics) serie mierzonych i liczniki, które są zbierane i przechowywane wraz z upływem czasu. Brak metryk standardowa (lub "platforma") i metryki niestandardowe. Metryki standardowe są dostarczane przez samą platformę Azure. Standardowa metryki odzwierciedlają statystyki użycia i kondycji zasobów platformy Azure. Natomiast metryki niestandardowe są wysyłane do platformy Azure przy użyciu aplikacji przy użyciu [interfejsu API usługi Application Insights dla niestandardowych zdarzeń i metryk](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [rozszerzenia diagnostyki Azure Windows (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), lub [platformy Azure Monitorowanie interfejsu API REST](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Metryki w usłudze Azure Monitor](data-platform-metrics.md) serie mierzonych i liczniki, które są zbierane i przechowywane wraz z upływem czasu. Brak metryk standardowa (lub "platforma") i metryki niestandardowe. Metryki standardowe są dostarczane przez samą platformę Azure. Standardowa metryki odzwierciedlają statystyki użycia i kondycji zasobów platformy Azure. Natomiast metryki niestandardowe są wysyłane do platformy Azure przy użyciu aplikacji przy użyciu [interfejsu API usługi Application Insights dla niestandardowych zdarzeń i metryk](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [rozszerzenia diagnostyki Azure Windows (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), lub [platformy Azure Monitorowanie interfejsu API REST](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
 ## <a name="create-a-new-chart"></a>Utwórz nowy wykres
 

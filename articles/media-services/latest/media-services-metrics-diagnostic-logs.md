@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 4252b0f26ef3c02216a41dde5d2e1cb5ea0efd6a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555072"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848043"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorowanie metryk usług Media Services i dzienników diagnostycznych
 
 [Usługa Azure Monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć, jak działają aplikacje. Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, metryk i dzienników. Można monitorować dzienników diagnostycznych usługi Media Services i tworzyć alerty i powiadomienia dotyczące zebranych metryk i dzienników. Możesz wizualizować i analizować dane metryk za pomocą [Eksploratora metryk](../../azure-monitor/platform/metrics-getting-started.md). Możesz wysłać dzienniki do [usługi Azure Storage](https://azure.microsoft.com/services/storage/), ich do usługi stream [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i wyeksportować je do [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/), lub użyj 3 usługi innych firm.
 
-Aby uzyskać szczegółowym omówieniem, zobacz [metryk usługi Azure Monitor](../../azure-monitor/platform/data-collection.md) i [dzienników diagnostycznych platformy Azure Monitor](../../azure-monitor/platform/diagnostic-logs-overview.md).
+Aby uzyskać szczegółowym omówieniem, zobacz [metryk usługi Azure Monitor](../../azure-monitor/platform/data-platform.md) i [dzienników diagnostycznych platformy Azure Monitor](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
 W tym temacie omówiono aktualnie dostępne [metryki usług Media](#media-services-metrics) i [dzienniki diagnostyczne usługi multimediów](#media-services-diagnostic-logs).
 

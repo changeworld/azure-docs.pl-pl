@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d71a566d5c6dc5505b4bd939e294f8428e9a5b93
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 2ae5cd0fd177f64bed5ed0705207c6a3e81a1b24
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312913"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878200"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Szybki start: wyodrębnianie tekstu przy użyciu zestawu SDK przetwarzania obrazów i języka C#
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Szybki start: Wyodrębnianie tekstu odręcznego za pomocą przetwarzania obrazów C# zestawu SDK
 
 W tym przewodniku Szybki start wyodrębnisz tekst odręczny lub drukowany na obrazie za pomocą zestawu SDK przetwarzania obrazów dla języka C#. Jeśli chcesz, możesz pobrać kod przedstawiony w tym przewodniku jako pełną przykładową aplikację z repozytorium [Cognitive Services Csharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
@@ -37,7 +37,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
     1. W menu kliknij pozycję **Narzędzia**, a następnie **Menedżer pakietów NuGet** i **Zarządzaj pakietami NuGet rozwiązania**.
     1. Kliknij kartę **Przeglądaj**, a następnie w polu **Wyszukiwanie** wpisz ciąg „Microsoft.Azure.CognitiveServices.Vision.ComputerVision”.
     1. Po wyświetleniu pozycji **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** wybierz tę pozycję, a następnie kliknij kolejno pole wyboru obok nazwy projektu i pozycję **Zainstaluj**.
-1. Zastąp ciąg `Program.cs` następującym kodem. Metody `RecognizeTextAsync` i `RecognizeTextInStreamAsync` opakowują [interfejs API rozpoznawania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) odpowiednio w przypadku obrazów zdalnych i lokalnych. Metoda `GetTextOperationResultAsync` opakowuje [interfejs API wyników operacji rozpoznawania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201).
+1. Zastąp ciąg `Program.cs` następującym kodem. `BatchReadFileAsync` i `BatchReadFileInStreamAsync` owijają [interfejsu API usługi Batch odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) obrazów zdalnych i lokalnych, odpowiednio. `GetReadOperationResultAsync` Zawija metoda [uzyskać API wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -52,7 +52,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
         class Program
         {
             // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-            private const string subscriptionKey = "<SubscriptionKey>";
+            private const string subscriptionKey = "<Subscription key>";
 
             // For printed text, change to TextRecognitionMode.Printed
             private const TextRecognitionMode textRecognitionMode =
@@ -62,9 +62,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
             private const string localImagePath = @"<LocalImage>";
 
             private const string remoteImageUrl =
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                "Cursive_Writing_on_Notebook_paper.jpg/" +
-                "800px-Cursive_Writing_on_Notebook_paper.jpg";
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
 
             private const int numberOfCharsInOperationId = 36;
 
@@ -78,12 +76,12 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                 // keys. For example, if you got your subscription keys from westus,
                 // replace "westcentralus" with "westus".
                 //
-                // Free trial subscription keys are generated in the "westus"
+                // Free trial subscription keys are generated in the westcentralus
                 // region. If you use a free trial subscription key, you shouldn't
                 // need to change the region.
 
                 // Specify the Azure region
-                computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
+                computerVision.Endpoint = "https://westus.api.cognitive.microsoft.com";
 
                 Console.WriteLine("Images being analyzed ...");
                 var t1 = ExtractRemoteTextAsync(computerVision, remoteImageUrl);
@@ -94,7 +92,7 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                 Console.ReadLine();
             }
 
-            // Recognize text from a remote image
+            // Read text from a remote image
             private static async Task ExtractRemoteTextAsync(
                 ComputerVisionClient computerVision, string imageUrl)
             {
@@ -105,9 +103,9 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                     return;
                 }
 
-                // Start the async process to recognize the text
-                RecognizeTextHeaders textHeaders =
-                    await computerVision.RecognizeTextAsync(
+                // Start the async process to read the text
+                BatchReadFileHeaders textHeaders =
+                    await computerVision.BatchReadFileAsync(
                         imageUrl, textRecognitionMode);
 
                 await GetTextAsync(computerVision, textHeaders.OperationLocation);
@@ -127,8 +125,8 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                 using (Stream imageStream = File.OpenRead(imagePath))
                 {
                     // Start the async process to recognize the text
-                    RecognizeTextInStreamHeaders textHeaders =
-                        await computerVision.RecognizeTextInStreamAsync(
+                    BatchReadFileInStreamHeaders textHeaders =
+                        await computerVision.BatchReadFileInStreamAsync(
                             imageStream, textRecognitionMode);
 
                     await GetTextAsync(computerVision, textHeaders.OperationLocation);
@@ -145,8 +143,8 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                     operationLocation.Length - numberOfCharsInOperationId);
 
                 Console.WriteLine("\nCalling GetHandwritingRecognitionOperationResultAsync()");
-                TextOperationResult result =
-                    await computerVision.GetTextOperationResultAsync(operationId);
+                ReadOperationResult result =
+                    await computerVision.GetReadOperationResultAsync(operationId);
 
                 // Wait for the operation to complete
                 int i = 0;
@@ -158,15 +156,18 @@ Aby uruchomić przykład, wykonaj następujące kroki:
                         "Server status: {0}, waiting {1} seconds...", result.Status, i);
                     await Task.Delay(1000);
 
-                    result = await computerVision.GetTextOperationResultAsync(operationId);
+                    result = await computerVision.GetReadOperationResultAsync(operationId);
                 }
 
                 // Display the results
                 Console.WriteLine();
-                var lines = result.RecognitionResult.Lines;
-                foreach (Line line in lines)
+                var recResults = result.RecognitionResults;
+                foreach (TextRecognitionResult recResult in recResults)
                 {
-                    Console.WriteLine(line.Text);
+                    foreach (Line line in recResult.Lines)
+                    {
+                        Console.WriteLine(line.Text);
+                    }
                 }
                 Console.WriteLine();
             }
@@ -180,7 +181,6 @@ Aby uruchomić przykład, wykonaj następujące kroki:
 1. Zastąp ciąg `<LocalImage>` ścieżką i nazwą pliku lokalnego obrazu.
 1. Opcjonalnie możesz ustawić ścieżkę `remoteImageUrl` do innego obrazu.
 1. Uruchom program.
-
 
 ## <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
@@ -200,9 +200,9 @@ Pack my box with five dozen liquor jugs
 
 Zobacz [Szybki start: Wyodrębnianie tekstu odręcznego — REST, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response), aby zobaczyć przykładowe nieprzetworzone dane wyjściowe w formacie JSON z wywołania interfejsu API.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z interfejsami API przetwarzania obrazów używanymi do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego.
 
 > [!div class="nextstepaction"]
-> [Poznaj interfejsy API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Zapoznaj się z interfejsów API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -1,25 +1,25 @@
 ---
 title: Omówienie usługi Azure Security Center dla zalecenia dotyczące zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat koncepcji zalecenia dotyczące zabezpieczeń i jak są one używane w Centrum zabezpieczeń Azure dla IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 9204bf864ca915baaf6d107ef3586bcd02ed9fef
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 3364ff6bcf824e5f7d925fdb6d0826d5c3c32369
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754818"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862254"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
@@ -63,5 +63,5 @@ Zalecenia, alerty zapewniają szczegółowe informacje i sugestie dotyczące dzi
 | Wysoka     | Poświadczenia uwierzytelniania identyczne używane przez wiele urządzeń | Usługa IoT Hub     | Poświadczenia uwierzytelniania usługi IoT Hub są używane przez wiele urządzeń. Może to oznaczać, że urządzenia z systemem nielegalne personifikacji autoryzowanych urządzeń. Użyj poświadczeń zduplikowane zwiększa ryzyko personifikacji urządzenia przez złośliwych aktora. |
 | Medium   | Domyślne zasady filtru IP powinien Odmów                  | Usługa IoT Hub     | Konfiguracja filtru IP mieć reguły zdefiniowane dla dopuszczonego ruchu, a powinien domyślnie, zezwalają na ruch wszystkie inne domyślnie.                                                                                                     |
 | Medium   | Reguły filtru adresu IP zawiera duży zakres adresów IP                   | Usługa IoT Hub     | Zakres IP dozwolonych adresów IP filtr reguły źródła jest zbyt duży. Zbyt liberalnych regułach może narazić Centrum IoT hub do uczestników złośliwych działań.                                                                                       |
-| Małe      | Włącz dzienniki diagnostyczne w usłudze IoT Hub                       | Usługa IoT Hub     | Włączanie dzienników i Zachowaj ich do jednego roku. Zachowywanie dzienników można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.                                       |
+| Małe      | Włącz dzienniki diagnostyki w usłudze IoT Hub                       | Usługa IoT Hub     | Włączanie dzienników i Zachowaj ich do jednego roku. Zachowywanie dzienników można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci.                                       |
 |

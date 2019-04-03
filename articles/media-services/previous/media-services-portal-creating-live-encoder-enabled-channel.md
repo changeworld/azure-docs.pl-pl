@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c230787b739b964998202180efaba20ad8233611
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c7bfa8351a2599ff8616364a093cd6154e90830c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757789"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850862"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
 > [!div class="op_single_selector"]
@@ -27,14 +27,13 @@ ms.locfileid: "58757789"
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [Interfejs API REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
-> 
-
-Ten samouczek przedstawia tworzenie **kanału**, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów i koduje go jako strumień o wielokrotnej szybkości transmisji bitów.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji o pojęciach związanych z kanałami obsługującymi kodowanie na żywo, zobacz temat [Korzystanie z usługi Azure Media Services do prowadzenia transmisji strumieniowych na żywo ze strumieniami o wielokrotnej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md).
-> 
-> 
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
+Ten samouczek przedstawia kroki tworzenia **kanału**, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów i koduje go jako strumień o wielokrotnej szybkości transmisji bitów.
+
+Aby uzyskać więcej informacji o pojęciach związanych z kanałami obsługującymi kodowanie na żywo, zobacz temat [Korzystanie z usługi Azure Media Services do prowadzenia transmisji strumieniowych na żywo ze strumieniami o wielokrotnej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="common-live-streaming-scenario"></a>Typowy scenariusz transmisji strumieniowej na żywo
 Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji strumieniowej na żywo.

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 89f5294d6ac01a6fa377e8d0763e77f8034ab44a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449565"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851185"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 
@@ -714,7 +714,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MatchedEventCount|Dopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń do tej subskrypcji zdarzeń|Nie wymiarów|
 |DeliveryAttemptFailCount|Dostarczanie zdarzeń nie powiodło się|Licznik|Łącznie|Łączna liczba zdarzeń, nie można dostarczyć do tej subskrypcji zdarzeń|Błąd, ErrorType|
 |DeliverySuccessCount|Działanie jest gwarantowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dostarczane do tej subskrypcji zdarzeń|Nie wymiarów|
-|DestinationProcessingDurationInMs|Docelowy czas przetwarzania|Milisekundy|Średnia|Czas przetwarzania docelowego (w milisekundach)|Nie wymiarów|
+|DestinationProcessingDurationInMs|Docelowy czas przetwarzania|MS|Średnia|Czas przetwarzania docelowego (w milisekundach)|Nie wymiarów|
 |DroppedEventCount|Zdarzenia porzucone|Licznik|Łącznie|Całkowita liczba porzuconych zdarzeń pasujących do tej subskrypcji zdarzeń|Nie wymiarów|
 |DeadLetteredCount|Dostępnie zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dostępnie dopasowany do tej subskrypcji zdarzeń|DeadLetterReason|
 
@@ -740,30 +740,30 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |OutgoingMessages|Komunikaty wychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |IncomingBytes|Bajty przychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty przychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |OutgoingBytes|Bajty wychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
-|ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|Połączeń ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |ConnectionsOpened|Połączenia otwarte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |ConnectionsClosed|Połączenia zamknięte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
-|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Lista prac funkcji Capture dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
+|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwyć zaległości dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |CapturedMessages|Przechwycone komunikaty. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |CapturedBytes|Przechwycone bajty. (Wersja zapoznawcza)|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|EntityName|
 |Rozmiar|Rozmiar (wersja zapoznawcza)|Bajty|Średnia|Rozmiar Centrum zdarzeń w bajtach. (Wersja zapoznawcza)|EntityName|
 |INREQS|Żądania przychodzące|Licznik|Łącznie|Łączna liczba żądań wysłania dla przestrzeni nazw|Nie wymiarów|
 |SUCCREQ|Żądania zakończone powodzeniem|Licznik|Łącznie|Łączna liczba udanych żądań dla przestrzeni nazw|Nie wymiarów|
 |FAILREQ|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Łączna liczba nieudanych żądań dla przestrzeni nazw|Nie wymiarów|
-|SVRBSY|Błędy typu Serwer zajęty|Licznik|Łącznie|Łączna liczba błędów zajętego serwera dla przestrzeni nazw|Nie wymiarów|
+|SVRBSY|Błędy typu serwer zajęty|Licznik|Łącznie|Łączna liczba zajętych błędów serwera dla przestrzeni nazw|Nie wymiarów|
 |INTERR|Wewnętrzne błędy serwera|Licznik|Łącznie|Łączna liczba wewnętrznych błędów serwera dla przestrzeni nazw|Nie wymiarów|
 |MISCERR|Inne błędy|Licznik|Łącznie|Łączna liczba nieudanych żądań dla przestrzeni nazw|Nie wymiarów|
 |INMSGS|Komunikaty przychodzące (przestarzałe)|Licznik|Łącznie|Łączna liczba komunikatów przychodzących dla przestrzeni nazw. Ta metryka jest przestarzała. Użyj zamiast niej metryki komunikaty przychodzące|Nie wymiarów|
-|EHINMSGS|Wiadomości przychodzące|Licznik|Łącznie|Łączna liczba komunikatów przychodzących dla przestrzeni nazw|Nie wymiarów|
+|EHINMSGS|Komunikaty przychodzące|Licznik|Łącznie|Łączna liczba komunikatów przychodzących dla przestrzeni nazw|Nie wymiarów|
 |OUTMSGS|Komunikaty wychodzące (przestarzałe)|Licznik|Łącznie|Łączna liczba komunikatów wychodzących dla przestrzeni nazw. Ta metryka jest przestarzała. Użyj zamiast niej metryki komunikaty wychodzące|Nie wymiarów|
-|EHOUTMSGS|Wiadomości wychodzące|Licznik|Łącznie|Łączna liczba komunikatów wychodzących dla przestrzeni nazw|Nie wymiarów|
+|EHOUTMSGS|Komunikaty wychodzące|Licznik|Łącznie|Łączna liczba komunikatów wychodzących dla przestrzeni nazw|Nie wymiarów|
 |EHINMBS|Bajty przychodzące (przestarzałe)|Bajty|Łącznie|Event Hub przepływność komunikatów przychodzących dla przestrzeni nazw. Ta metryka jest przestarzała. Użyj zamiast niej metryki Bajty przychodzące|Nie wymiarów|
-|EHINBYTES|Bajty przychodzące|Bajty|Łącznie|Przepływność komunikatów przychodzących centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
+|EHINBYTES|Bajty przychodzące|Bajty|Łącznie|Event Hub przepływność komunikatów przychodzących dla przestrzeni nazw|Nie wymiarów|
 |EHOUTMBS|Bajty wychodzące (przestarzałe)|Bajty|Łącznie|Event Hub przepływność komunikatów wychodzących dla przestrzeni nazw. Ta metryka jest przestarzała. Użyj zamiast niej metryki bajty wychodzące|Nie wymiarów|
-|EHOUTBYTES|Bajty wychodzące|Bajty|Łącznie|Przepływność komunikatów wychodzących centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
-|EHABL|Archiwizuj komunikaty listy prac|Licznik|Łącznie|Zarchiwizowane komunikaty centrum zdarzeń usługi Event Hubs na liście prac dla przestrzeni nazw|Nie wymiarów|
-|EHAMSGS|Archiwizowanie komunikatów|Licznik|Łącznie|Zarchiwizowane komunikaty centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
-|EHAMBS|Przepływność archiwizowania komunikatów|Bajty|Łącznie|Przepływność zarchiwizowanych komunikatów centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
+|EHOUTBYTES|Bajty wychodzące|Bajty|Łącznie|Event Hub przepływność komunikatów wychodzących dla przestrzeni nazw|Nie wymiarów|
+|EHABL|Archiwizuj komunikaty listy prac|Licznik|Łącznie|Zarchiwizowane komunikaty Centrum zdarzeń na liście prac dla przestrzeni nazw|Nie wymiarów|
+|EHAMSGS|Archiwizowanie komunikatów|Licznik|Łącznie|Centrum zdarzeń zarchiwizowane komunikaty w przestrzeni nazw|Nie wymiarów|
+|EHAMBS|Przepływność archiwizowania komunikatów|Bajty|Łącznie|Przepływność zarchiwizowanych komunikatów Centrum zdarzeń w przestrzeni nazw|Nie wymiarów|
 
 ## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
 
@@ -779,13 +779,13 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |OutgoingMessages|Komunikaty wychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |IncomingBytes|Bajty przychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty przychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |OutgoingBytes|Bajty wychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
-|ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|Połączeń ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |ConnectionsOpened|Połączenia otwarte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |ConnectionsClosed|Połączenia zamknięte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
-|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Lista prac funkcji Capture dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwyć zaległości dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |CapturedMessages|Przechwycone komunikaty. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |CapturedBytes|Przechwycone bajty. (Wersja zapoznawcza)|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
-|Procesor CPU|Procesor (wersja zapoznawcza)|Procent|Maksimum|Użycie procesora CPU dla klastra Centrum zdarzeń w procentach|Rola|
+|Procesor CPU|Procesor (wersja zapoznawcza)|Procent|Maksimum|Użycie procesora CPU dla klastra Centrum zdarzeń jako wartość procentowa|Rola|
 |AvailableMemory|Dostępna pamięć (wersja zapoznawcza)|Licznik|Maksimum|Dostępna pamięć dla klastra Centrum zdarzeń w bajtach|Rola|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -799,9 +799,9 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Zaobserwowana wartość metryki|Licznik|Średnia|Wartość obliczona przez autoskalowanie podczas wykonywania|MetricTriggerSource|
-|MetricThreshold|Próg metryki|Licznik|Średnia|Skonfigurowany próg autoskalowania podczas uruchamiania autoskalowania.|MetricTriggerRule|
-|ObservedCapacity|Zaobserwowana wydajność|Licznik|Średnia|Wydajność zgłoszona do autoskalowania podczas jego wykonywania.|Nie wymiarów|
+|ObservedMetricValue|Zaobserwowana wartość metryki|Licznik|Średnia|Wartość obliczona przez automatyczne skalowanie podczas wykonywania|MetricTriggerSource|
+|MetricThreshold|Próg metryki|Licznik|Średnia|Skonfigurowany próg automatycznego skalowania podczas uruchamiania automatycznego skalowania.|MetricTriggerRule|
+|ObservedCapacity|Zaobserwowana wydajność|Licznik|Średnia|Wydajność zgłoszona do automatycznego skalowania podczas jego wykonywania.|Nie wymiarów|
 |ScaleActionsInitiated|Zainicjowane akcje skalowania|Licznik|Łącznie|Kierunek operacji skalowania.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
@@ -812,28 +812,28 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |availabilityResults/czas trwania|Czas trwania testu|MilliSeconds|Średnia|Czas trwania testu|availabilityResult/name, availabilityResult/lokalizacji, availabilityResult/Powodzenie|
 |billingMeters/telemetryCount|Liczba punktów danych|Licznik|Łącznie|Liczba punktów danych wysłanych do tego zasobu usługi Application Insights. Ta metryka jest przetwarzana z opóźnieniem do dwóch godzin.|billing/telemetryItemType, billing/telemetryItemSource|
-|billingMeters/telemetrySize|Ilość punktów danych|Bajty|Łącznie|Ilość danych wysłanych do tego zasobu usługi Application Insights. Ta metryka jest przetwarzana z opóźnieniem do dwóch godzin.|billing/telemetryItemType, billing/telemetryItemSource|
+|billingMeters/telemetrySize|Wolumin punktu danych.|Bajty|Łącznie|Ilość danych wysłanych do tego zasobu usługi Application Insights. Ta metryka jest przetwarzana z opóźnieniem do dwóch godzin.|billing/telemetryItemType, billing/telemetryItemSource|
 |browserTimings/networkDuration|Czas połączenia sieciowego podczas ładowania strony|MilliSeconds|Średnia|Czas od użytkownika żądania i połączenie sieciowe. Obejmuje DNS wyszukiwania i połączenie transportu.|Nie wymiarów|
 |browserTimings/processingDuration|Czas przetwarzania klienta|MilliSeconds|Średnia|Czas między odebraniem ostatniego bajtu dokumentu, do momentu załadowania modelu DOM. Żądania asynchroniczne mogą nadal być przetwarzane.|Nie wymiarów|
-|browserTimings/receiveDuration|Czas odpowiedzi odbierania|MilliSeconds|Średnia|Czas między pierwszym i ostatnim bajtem lub czas do zakończenia połączenia.|Nie wymiarów|
-|browserTimings/sendDuration|Czas żądania wysyłania|MilliSeconds|Średnia|Czas między nawiązaniem połączenia sieciowego i odebraniem pierwszego bajtu.|Nie wymiarów|
-|browserTimings/totalDuration|Czas ładowania strony przeglądarki|MilliSeconds|Średnia|Czas od wysłania żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów.|Nie wymiarów|
-|zależności/liczby|Wywołania zależności|Licznik|Licznik|Liczba wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
-|zależności/czas trwania|Czas trwania zależności|MilliSeconds|Średnia|Czas trwania wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
-|zależności lub nie powiodła się|Błędy zależności|Licznik|Licznik|Liczba wywołań zależności zasobów zewnętrznych zakończonych niepowodzeniem wykonanych przez aplikację.|Typ zależności/zależności/performanceBucket, operacji/syntetycznych, chmury/roleInstance, chmury/roleName|
+|browserTimings/receiveDuration|Czas odpowiedzi odbierania|MilliSeconds|Średnia|Czas między pierwszym i ostatnim bajtem lub do momentu rozłączenia.|Nie wymiarów|
+|browserTimings/sendDuration|Czas żądania wysyłania|MilliSeconds|Średnia|Czas między połączenia sieciowego i odebraniem pierwszego bajtu.|Nie wymiarów|
+|browserTimings/totalDuration|Czas ładowania strony przeglądarki|MilliSeconds|Średnia|Czas od żądania użytkownika do modelu DOM, arkuszy stylów, skrypty i obrazy są ładowane.|Nie wymiarów|
+|zależności/liczby|Wywołania zależności|Licznik|Licznik|Liczba wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
+|zależności/czas trwania|Czas trwania zależności|MilliSeconds|Średnia|Czas trwania wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
+|zależności lub nie powiodła się|Błędy zależności|Licznik|Licznik|Liczba wywołań zależności zakończone niepowodzeniem wykonanych przez aplikację do zasobów zewnętrznych.|Typ zależności/zależności/performanceBucket, operacji/syntetycznych, chmury/roleInstance, chmury/roleName|
 |Liczba/wyświetleń stron|Wyświetlenia strony|Licznik|Licznik|Liczba wyświetleń strony.|Operacja/syntetycznych|
-|wyświetleń stron/czas trwania|Wyświetlenie strony — czas ładowania|MilliSeconds|Średnia|Wyświetlenie strony — czas ładowania|Operacja/syntetycznych|
-|performanceCounters/requestExecutionTime|Czas wykonywania żądania HTTP|MilliSeconds|Średnia|Czas wykonywania najnowszego żądania.|cloud/roleInstance|
+|wyświetleń stron/czas trwania|Czas ładowania wyświetlenia strony|MilliSeconds|Średnia|Czas ładowania wyświetlenia strony|Operacja/syntetycznych|
+|performanceCounters/requestExecutionTime|Czas wykonywania żądania HTTP|MilliSeconds|Średnia|Godzina wykonania ostatniego żądania.|cloud/roleInstance|
 |performanceCounters/requestsInQueue|Żądania HTTP w kolejce aplikacji|Licznik|Średnia|Długość kolejki żądań aplikacji.|cloud/roleInstance|
-|performanceCounters/requestsPerSecond|Liczba żądań HTTP|CountPerSecond|Średnia|Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę.|cloud/roleInstance|
-|performanceCounters/exceptionsPerSecond|Częstotliwość występowania wyjątków|CountPerSecond|Średnia|Liczba obsługiwanych i nieobsługiwanych wyjątków zgłoszonych w systemie Windows, łącznie z wyjątkami platformy .NET i niezarządzanymi wyjątkami przekonwertowanymi na wyjątki platformy .NET.|cloud/roleInstance|
-|liczniki wydajności/processIOBytesPerSecond|Liczba operacji we/wy procesu|Bajty na sekundę|Średnia|Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach.|cloud/roleInstance|
+|performanceCounters/requestsPerSecond|Liczba żądań HTTP|CountPerSecond|Średnia|Liczba wszystkich żądań wysłanych do aplikacji na sekundę z platformy ASP.NET.|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|częstotliwość występowania wyjątków|CountPerSecond|Średnia|Liczba obsługiwanych i nieobsługiwanych wyjątków zgłoszonych w systemie windows, łącznie z wyjątkami platformy .NET i niezarządzanymi wyjątkami przekonwertowanymi na wyjątki platformy .NET.|cloud/roleInstance|
+|liczniki wydajności/processIOBytesPerSecond|Proces we/wy|BytesPerSecond|Średnia|Całkowita liczba bajtów na sekundę odczytywanych i zapisywanych na plikach i sieci oraz urządzenia.|cloud/roleInstance|
 |liczniki wydajności/processCpuPercentage|Procesy — procesor CPU|Procent|Średnia|Procent minionego czasu wszystkich wątków procesów używały procesora w celu wykonania instrukcji. To może się różnić od 0 do 100. Ta Metryka wskazuje wydajność samego procesu w3wp.|cloud/roleInstance|
-|liczniki wydajności/processorCpuPercentage|Czas procesora|Procent|Średnia|Procent czasu poświęconego przez procesor na aktywne wątki.|cloud/roleInstance|
+|liczniki wydajności/processorCpuPercentage|Czas procesora|Procent|Średnia|Procent czasu, jaki procesor zużywa wątki.|cloud/roleInstance|
 |liczniki wydajności/memoryAvailableBytes|Dostępna pamięć|Bajty|Średnia|Pamięć fizyczna dostępna natychmiast do przydzielenia do procesu lub do użycia przez system.|cloud/roleInstance|
 |liczniki wydajności/processPrivateBytes|Prywatne bajty procesu|Bajty|Średnia|Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji.|cloud/roleInstance|
 |żądania/czas trwania|Czas odpowiedzi serwera|MilliSeconds|Średnia|Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
-|żądania/liczby|Żądania serwera|Licznik|Licznik|Liczba ukończonych żądań HTTP.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
+|żądania/liczby|Żądania serwera|Licznik|Licznik|Ukończonych żądań liczba HTTP.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
 |requests/failed|Żądania zakończone niepowodzeniem|Licznik|Licznik|Liczba HTTP żądania oznaczone jako zakończone niepowodzeniem. W większości przypadków są to żądania z kodem odpowiedzi > = 400 i innym niż 401.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
 |Wyjątki/liczby|Wyjątki|Licznik|Łącznie|Łączna liczba wszystkich nieprzechwyconych wyjątków.|Chmura/roleName, chmura/roleInstance, typu/klienta|
 |Wyjątki/przeglądarki|Wyjątki przeglądarki|Licznik|Łącznie|Liczba nieprzechwyconych wyjątków zgłoszonych w przeglądarce.|Nie wymiarów|
@@ -845,7 +845,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |ServiceApiHit|Całkowita liczba trafień interfejsu API usługi|Licznik|Licznik|Całkowita liczba trafień interfejsu API usługi|ActivityType, ActivityName|
-|ServiceApiLatency|Ogólny czas oczekiwania żądań interfejsu API usługi|Milisekundy|Średnia|Ogólny czas oczekiwania żądań interfejsu API usługi|Właściwości ActivityType, ActivityName, StatusCode|
+|ServiceApiLatency|Ogólny czas oczekiwania żądań interfejsu API usługi|MS|Średnia|Ogólny czas oczekiwania żądań interfejsu API usługi|Właściwości ActivityType, ActivityName, StatusCode|
 |ServiceApiResult|Całkowita liczba wyników interfejsu API usługi|Licznik|Licznik|Całkowita liczba wyników interfejsu API usługi|Właściwości ActivityType, ActivityName, StatusCode|
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
@@ -853,7 +853,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |ClusterDataCapacityFactor|Wykorzystanie pamięci podręcznej|Procent|Średnia|Poziom użycia w zakresie klastra|Nie wymiarów|
-|QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Zapytania czas w sekundach|QueryStatus|
+|QueryDuration|Czas trwania zapytania|MS|Średnia|Zapytania czas w sekundach|QueryStatus|
 |IngestionsLoadFactor|Wykorzystanie pozyskiwania|Procent|Średnia|Współczynnik miejsc pozyskiwania używanych w klastrze|Nie wymiarów|
 |IsEngineAnsweringQuery|Podtrzymanie|Licznik|Średnia|Poprawnością wyboru wskazuje, że klastra odpowiada na kwerendy|Nie wymiarów|
 |IngestCommandOriginalSizeInMb|Pozyskiwanie woluminu (w MB)|Licznik|Łącznie|Łączna ilość pozyskiwanych danych do klastra (w MB)|Nie wymiarów|
@@ -872,42 +872,42 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RunsStarted|Przebiegi rozpoczęte|Licznik|Łącznie|Liczba rozpoczętych przebiegów przepływu pracy.|Nie wymiarów|
-|RunsCompleted|Przebiegi ukończone|Licznik|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Nie wymiarów|
-|RunsSucceeded|Przebiegi zakończone powodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|RunsFailed|Przebiegi zakończone niepowodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|RunsCancelled|Przebiegi anulowane|Licznik|Łącznie|Liczba anulowanych przebiegów przepływu pracy.|Nie wymiarów|
-|RunLatency|Opóźnienie przebiegów|Sekundy|Średnia|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
-|RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Średnia|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Licznik|Łącznie|Liczba zdarzeń ograniczenia akcji lub wyzwalacza przepływu pracy.|Nie wymiarów|
-|RunFailurePercentage|Procent niepowodzeń przebiegów|Procent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|ActionsStarted|Rozpoczęte akcje |Licznik|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
+|RunsStarted|Przebiegi rozpoczęte|Licznik|Łącznie|Liczba przebiegów przepływu pracy wprowadzenie.|Nie wymiarów|
+|RunsCompleted|Przebiegi ukończone|Licznik|Łącznie|Liczba przebiegów przepływu pracy ukończonej.|Nie wymiarów|
+|RunsSucceeded|Przebiegi zakończone powodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zostało zakończone pomyślnie.|Nie wymiarów|
+|RunsFailed|Przebiegi zakończone niepowodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy nie powiodło się.|Nie wymiarów|
+|RunsCancelled|Przebiegi anulowane|Licznik|Łącznie|Liczba przebiegów przepływu pracy anulowane.|Nie wymiarów|
+|RunLatency|Opóźnienie przebiegów|Sekundy|Średnia|Opóźnienie przepływu pracy zakończonych przebiegów.|Nie wymiarów|
+|RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Średnia|Opóźnienie przepływu pracy zakończonych powodzeniem przebiegów.|Nie wymiarów|
+|RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Licznik|Łącznie|Liczba akcji przepływu pracy lub wyzwalacz zdarzenia ograniczenia.|Nie wymiarów|
+|RunFailurePercentage|Procent niepowodzeń przebiegów|Procent|Łącznie|Procent przebiegów przepływu pracy nie powiodło się.|Nie wymiarów|
+|ActionsStarted|Rozpoczęte akcje |Licznik|Łącznie|Liczba akcji przepływu pracy jest uruchomiony.|Nie wymiarów|
 |ActionsCompleted|Ukończone akcje |Licznik|Łącznie|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
 |ActionsSucceeded|Akcje zakończone powodzeniem |Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|ActionsFailed|Akcje zakończone niepowodzeniem|Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|ActionsSkipped|Pominięte akcje |Licznik|Łącznie|Liczba pominiętych akcji przepływu pracy.|Nie wymiarów|
+|ActionsFailed|Akcje zakończone niepowodzeniem|Licznik|Łącznie|Liczba akcji przepływu pracy nie powiodło się.|Nie wymiarów|
+|ActionsSkipped|Pominięte akcje |Licznik|Łącznie|Liczba akcji przepływu pracy są pomijane.|Nie wymiarów|
 |ActionLatency|Opóźnienie akcji |Sekundy|Średnia|Opóźnienie ukończonych akcji przepływu pracy.|Nie wymiarów|
-|ActionSuccessLatency|Opóźnienie akcji – powodzenie |Sekundy|Średnia|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|ActionThrottledEvents|Zdarzenia ograniczenia akcji|Licznik|Łącznie|Liczba zdarzeń ograniczenia akcji przepływu pracy.|Nie wymiarów|
-|TriggersStarted|Rozpoczęte wyzwalacze |Licznik|Łącznie|Liczba rozpoczętych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|ActionSuccessLatency|Opóźnienie akcji – Powodzenie |Sekundy|Średnia|Opóźnienie akcji przepływu pracy zostało zakończone pomyślnie.|Nie wymiarów|
+|ActionThrottledEvents|Zdarzenia ograniczenia akcji|Licznik|Łącznie|Zdarzenia ograniczenia liczby akcji przepływu pracy...|Nie wymiarów|
+|TriggersStarted|Rozpoczęte wyzwalacze |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy jest uruchomiony.|Nie wymiarów|
 |TriggersCompleted|Ukończone wyzwalacze |Licznik|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggersSucceeded|Udane wyzwalacze |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggersFailed|Nieudane wyzwalacze |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|TriggersSkipped|Pominięte wyzwalacze|Licznik|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggersFired|Uruchomione wyzwalacze |Licznik|Łącznie|Liczba uaktywnionych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|TriggersFailed|Nieudane wyzwalacze |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy nie powiodło się.|Nie wymiarów|
+|TriggersSkipped|Pominięte wyzwalacze|Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy są pomijane.|Nie wymiarów|
+|TriggersFired|Uruchomione wyzwalacze |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy jest uruchamiany.|Nie wymiarów|
 |TriggerLatency|Opóźnienie wyzwalacza |Sekundy|Średnia|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggerFireLatency|Opóźnienie uruchomienia wyzwalacza |Sekundy|Średnia|Opóźnienie uaktywnionych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggerSuccessLatency|Opóźnienie udanego wyzwalacza |Sekundy|Średnia|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggerThrottledEvents|Zdarzenia ograniczenia wyzwalacza|Licznik|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
+|TriggerSuccessLatency|Opóźnienie udanego wyzwalacza |Sekundy|Średnia|Opóźnienie wyzwalaczy przepływu pracy zostało zakończone pomyślnie.|Nie wymiarów|
+|TriggerThrottledEvents|Zdarzenia ograniczenia wyzwalacza|Licznik|Łącznie|Zdarzenia ograniczenia liczby wyzwalacza przepływu pracy.|Nie wymiarów|
 |BillableActionExecutions|Rozliczane wykonania akcji|Licznik|Łącznie|Liczba rozliczanych wykonań akcji przepływu pracy.|Nie wymiarów|
 |BillableTriggerExecutions|Rozliczane wykonania wyzwalaczy|Licznik|Łącznie|Liczba rozliczanych wykonań wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TotalBillableExecutions|Łączna liczba rozliczanych wykonań|Licznik|Łącznie|Liczba rozliczanych wykonań przepływu pracy.|Nie wymiarów|
-|BillingUsageNativeOperation|Użycie rozliczeń dla wykonań operacji macierzystych|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
-|BillingUsageStandardConnector|Użycie rozliczeń dla wykonań łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
-|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań wykorzystania magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań wykorzystania magazynu.|Nie wymiarów|
-|BillingUsageNativeOperation|Użycie rozliczeń dla wykonań operacji macierzystych|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
-|BillingUsageStandardConnector|Użycie rozliczeń dla wykonań łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
-|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań wykorzystania magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań wykorzystania magazynu.|Nie wymiarów|
+|BillingUsageNativeOperation|Fakturowania użycia dla wykonania działania natywnego|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
+|BillingUsageStandardConnector|Fakturowania użycia dla wykonania łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
+|BillingUsageStorageConsumption|Fakturowania użycia dla wykonania użycie magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań zużycie pamięci masowej.|Nie wymiarów|
+|BillingUsageNativeOperation|Fakturowania użycia dla wykonania działania natywnego|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
+|BillingUsageStandardConnector|Fakturowania użycia dla wykonania łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
+|BillingUsageStorageConsumption|Fakturowania użycia dla wykonania użycie magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań zużycie pamięci masowej.|Nie wymiarów|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/Volumes
 
@@ -989,15 +989,15 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |UDPPacketsInDDoS|Liczba przychodzących pakietów UDP przed atakami DDoS|CountPerSecond|Maksimum|Liczba przychodzących pakietów UDP przed atakami DDoS|Nie wymiarów|
 |UDPPacketsDroppedDDoS|Przerywanych pakietów UDP porzucony przed atakami DDoS|CountPerSecond|Maksimum|Przerywanych pakietów UDP porzucony przed atakami DDoS|Nie wymiarów|
 |UDPPacketsForwardedDDoS|Przerywanych pakietów UDP przekazywane przed atakami DDoS|CountPerSecond|Maksimum|Przerywanych pakietów UDP przekazywane przed atakami DDoS|Nie wymiarów|
-|BytesInDDoS|Przychodzące bajty przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty przed atakami DDoS|Nie wymiarów|
-|BytesDroppedDDoS|Przychodzące bajty porzucony przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty porzucony przed atakami DDoS|Nie wymiarów|
-|BytesForwardedDDoS|Przychodzące bajty przekazywane przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty przekazywane przed atakami DDoS|Nie wymiarów|
-|TCPBytesInDDoS|Przychodzące bajty TCP przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty TCP przed atakami DDoS|Nie wymiarów|
-|TCPBytesDroppedDDoS|Przychodzące bajty TCP porzucony przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty TCP porzucony przed atakami DDoS|Nie wymiarów|
-|TCPBytesForwardedDDoS|Przychodzące bajty TCP przekazywane przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty TCP przekazywane przed atakami DDoS|Nie wymiarów|
-|UDPBytesInDDoS|Przychodzące bajty UDP przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty UDP przed atakami DDoS|Nie wymiarów|
-|UDPBytesDroppedDDoS|Przychodzące bajty UDP porzucony przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty UDP porzucony przed atakami DDoS|Nie wymiarów|
-|UDPBytesForwardedDDoS|Przychodzące bajty UDP przekazywane przed atakami DDoS|Bajty na sekundę|Maksimum|Przychodzące bajty UDP przekazywane przed atakami DDoS|Nie wymiarów|
+|BytesInDDoS|Przychodzące bajty przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty przed atakami DDoS|Nie wymiarów|
+|BytesDroppedDDoS|Przychodzące bajty porzucony przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty porzucony przed atakami DDoS|Nie wymiarów|
+|BytesForwardedDDoS|Przychodzące bajty przekazywane przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty przekazywane przed atakami DDoS|Nie wymiarów|
+|TCPBytesInDDoS|Przychodzące bajty TCP przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty TCP przed atakami DDoS|Nie wymiarów|
+|TCPBytesDroppedDDoS|Przychodzące bajty TCP porzucony przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty TCP porzucony przed atakami DDoS|Nie wymiarów|
+|TCPBytesForwardedDDoS|Przychodzące bajty TCP przekazywane przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty TCP przekazywane przed atakami DDoS|Nie wymiarów|
+|UDPBytesInDDoS|Przychodzące bajty UDP przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty UDP przed atakami DDoS|Nie wymiarów|
+|UDPBytesDroppedDDoS|Przychodzące bajty UDP porzucony przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty UDP porzucony przed atakami DDoS|Nie wymiarów|
+|UDPBytesForwardedDDoS|Przychodzące bajty UDP przekazywane przed atakami DDoS|BytesPerSecond|Maksimum|Przychodzące bajty UDP przekazywane przed atakami DDoS|Nie wymiarów|
 |IfUnderDDoSAttack|W obszarze przed atakami DDoS ataku lub nie|Licznik|Maksimum|W obszarze przed atakami DDoS ataku lub nie|Nie wymiarów|
 |DDoSTriggerTCPPackets|Liczba przychodzących pakietów protokołu TCP do wyzwolenia ataki DDOS|CountPerSecond|Maksimum|Liczba przychodzących pakietów protokołu TCP do wyzwolenia ataki DDOS|Nie wymiarów|
 |DDoSTriggerUDPPackets|Liczba przychodzących pakietów UDP do wyzwolenia ataki DDOS|CountPerSecond|Maksimum|Liczba przychodzących pakietów UDP do wyzwolenia ataki DDOS|Nie wymiarów|
@@ -1011,7 +1011,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Przepływność|Przepływność|Bajty na sekundę|Łącznie|Liczba bajtów na sekundę, który obsługiwał Application Gateway|Nie wymiarów|
+|Przepływność|Przepływność|BytesPerSecond|Łącznie|Liczba bajtów na sekundę, który obsługiwał Application Gateway|Nie wymiarów|
 |UnhealthyHostCount|Liczba hostów w złej kondycji|Licznik|Średnia|Liczba hostów w złej kondycji wewnętrznej bazy danych|BackendSettingsPool|
 |HealthyHostCount|Liczba hostów w dobrej kondycji|Licznik|Średnia|Liczba hostów zaplecza w dobrej kondycji|BackendSettingsPool|
 |TotalRequests|Łączna liczba żądań|Licznik|Łącznie|Liczba pomyślnych żądań, które usługa Application Gateway jest obsługiwane|BackendSettingsPool|
@@ -1023,10 +1023,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|AverageBandwidth|Brama S2S przepustowości|Bajty na sekundę|Średnia|Średnia przepustowość lokacja lokacja bramy w bajtach na sekundę|Nie wymiarów|
-|P2SBandwidth|Przepustowość P2S bramy|Bajty na sekundę|Średnia|Średnia przepustowość punkt lokacja bramy w bajtach na sekundę|Nie wymiarów|
+|AverageBandwidth|Brama S2S przepustowości|BytesPerSecond|Średnia|Średnia przepustowość lokacja lokacja bramy w bajtach na sekundę|Nie wymiarów|
+|P2SBandwidth|Przepustowość P2S bramy|BytesPerSecond|Średnia|Średnia przepustowość punkt lokacja bramy w bajtach na sekundę|Nie wymiarów|
 |P2SConnectionCount|Liczba połączeń P2S|Licznik|Maksimum|Liczba połączeń punkt lokacja bramy|Protokół|
-|TunnelAverageBandwidth|Przepustowość tunelu|Bajty na sekundę|Średnia|Średnia przepustowość tunelu w bajtach na sekundę|ConnectionName, RemoteIP|
+|TunnelAverageBandwidth|Przepustowość tunelu|BytesPerSecond|Średnia|Średnia przepustowość tunelu w bajtach na sekundę|ConnectionName, RemoteIP|
 |TunnelEgressBytes|Bajty wychodzące tunelu|Bajty|Łącznie|Wychodzące bajty tunel|ConnectionName, RemoteIP|
 |TunnelIngressBytes|Bajty przychodzące tunelu|Bajty|Łącznie|Przychodzące bajty tunel|ConnectionName, RemoteIP|
 |TunnelEgressPackets|Pakiety wychodzące tunelu|Licznik|Łącznie|Liczba wychodzących pakietów tunelu|ConnectionName, RemoteIP|
@@ -1296,7 +1296,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
 |physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Procent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
+|log_write_percent|Wartość procentowa we/wy dziennika|Procent|Średnia|Wartość procentowa we/wy dziennika|Nie wymiarów|
 |dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|Nie wymiarów|
 |magazyn|Łączny rozmiar bazy danych|Bajty|Maksimum|Łączny rozmiar bazy danych|Nie wymiarów|
 |connection_successful|Pomyślnie nawiązane połączenia|Licznik|Łącznie|Pomyślnie nawiązane połączenia|Nie wymiarów|
@@ -1305,7 +1305,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Zakleszczenia|Zakleszczenia|Licznik|Łącznie|Zakleszczenia|Nie wymiarów|
 |storage_percent|Procent użycia rozmiaru bazy danych|Procent|Maksimum|Procent użycia rozmiaru bazy danych|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Procent|Średnia|Procent procesów roboczych|Nie wymiarów|
+|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Nie wymiarów|
 |sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Nie wymiarów|
 |dtu_limit|DTU Limit|Licznik|Średnia|DTU Limit|Nie wymiarów|
 |dtu_used|Używane jednostki DTU|Licznik|Średnia|Używane jednostki DTU|Nie wymiarów|
@@ -1321,10 +1321,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
 |physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Procent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
+|log_write_percent|Wartość procentowa we/wy dziennika|Procent|Średnia|Wartość procentowa we/wy dziennika|Nie wymiarów|
 |dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|Nie wymiarów|
 |storage_percent|Procent użycia magazynu|Procent|Średnia|Procent użycia magazynu|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Procent|Średnia|Procent procesów roboczych|Nie wymiarów|
+|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Nie wymiarów|
 |sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Nie wymiarów|
 |eDTU_limit|eDTU limit|Licznik|Średnia|eDTU limit|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
@@ -1608,7 +1608,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-* [Przeczytaj o metrykach w usłudze Azure Monitor](../../azure-monitor/platform/data-collection.md)
-* [Tworzenie alertów dotyczących metryk](../../azure-monitor/platform/alerts-overview.md)
-* [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Przeczytaj o metrykach w usłudze Azure Monitor](data-platform.md)
+* [Tworzenie alertów dotyczących metryk](alerts-overview.md)
+* [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](diagnostic-logs-overview.md)

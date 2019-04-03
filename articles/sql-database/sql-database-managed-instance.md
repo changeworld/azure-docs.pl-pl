@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 03/29/2019
-ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668504"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877690"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -43,10 +43,10 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 > [!IMPORTANT]
 > Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. Porównanie funkcji dostępnych została wyjaśniona w [porównanie funkcji: Usługa Azure SQL Database i programu SQL Server](sql-database-features.md).
 
-| **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
+| **Korzyści PaaS** | **Ciągłość działalności biznesowej** |
 | --- | --- |
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
-|**Zabezpieczenia i zgodność** | **Zarządzanie**|
+|**Zabezpieczenia i zgodność z przepisami** | **Zarządzanie**|
 |Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Jednostki serwera w usłudze Azure AD (logowania)</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 > [!IMPORTANT]
@@ -149,7 +149,7 @@ Usługa Azure SQL Database udostępnia zestaw zaawansowanych funkcji zabezpiecze
 - [Zabezpieczenia](/sql/relational-databases/security/row-level-security) umożliwia kontrolę dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (takich jak przez grupy członkostwa lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza (RLS, Row-Level Security) upraszczają projektowanie i kodowanie zabezpieczeń w aplikacji. Zabezpieczenia na poziomie wiersza umożliwiają zaimplementowanie ograniczeń w dostępie do wiersza danych. Na przykład zapewnienie, że pracownicy mają dostęp tylko wiersze danych, które są odpowiednie do ich działu, lub ograniczenie dostępu do danych do odpowiednich danych.
 - [Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) szyfruje pliki danych wystąpienia zarządzanego, znane jako szyfrowanie danych magazynowanych. Funkcja TDE wykonuje w czasie rzeczywistym operacji We/Wy szyfrowania i odszyfrowywania plików danych i dziennika. Szyfrowanie używa klucza szyfrowania bazy danych (klucz szyfrowania danych), który jest przechowywany w rekordzie rozruchowym bazy danych dostępności podczas odzyskiwania. Umożliwia ochronę wszystkich baz danych w wystąpieniu zarządzanym za pomocą technologii transparent data encryption. Funkcja TDE jest program SQL Server, sprawdzonych technologii szyfrowania podczas spoczynku, która jest wymagana przez wiele standardów zgodności w celu ochrony przed kradzieżą nośników magazynowania.
 
-Migracja zaszyfrowanych bazy danych do wystąpienia zarządzanego jest obsługiwana za pomocą usługi Azure Database Migration Service (DMS) lub native przywracania. Jeśli planujesz migrację zaszyfrowanej przy użyciu natywnych przywracania bazy danych, migracja istniejącego certyfikatu TDE z programu SQL Server w środowisku lokalnym lub programu SQL Server na maszynie wirtualnej do wystąpienia zarządzanego jest to krok wymagany. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [migracja wystąpienia programu SQL Server do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md).
+Migracja zaszyfrowanych bazy danych do wystąpienia zarządzanego jest obsługiwana za pomocą usługi Azure Database Migration Service (DMS) lub native przywracania. Jeśli planujesz migrację zaszyfrowanej przy użyciu natywnych przywracania bazy danych, migracja istniejących funkcji TDE certyfikatu z lokalnego programu SQL Server lub SQL Server na maszynie wirtualnej wystąpienia zarządzanego jest to krok wymagany. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [migracja wystąpienia programu SQL Server do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
 
@@ -231,7 +231,7 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 |`@@VERSION`|Program Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY ('Edition')`|Usługi SQL Azure|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ta wartość jest jednoznacznie identyfikuje wystąpienie zarządzane.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`,  `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

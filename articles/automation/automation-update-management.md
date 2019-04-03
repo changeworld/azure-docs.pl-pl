@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42a7ae0e6ca5239aa83d20655817973e8f185d02
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805401"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862951"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -52,9 +52,9 @@ Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skon
 > [!NOTE]
 > Aby poprawnie zgłosić do usługi, rozwiązanie Update Management wymaga określonych adresów URL i portów, aby włączyć. Aby dowiedzieć się więcej na temat tych wymagań, zobacz [sieci, planowanie hybrydowych procesów roboczych](automation-hybrid-runbook-worker.md#network-planning).
 
-Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania. 
+Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania.
 
-Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../azure-monitor/platform/computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje.
+Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../azure-monitor/platform/computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje. Termin ten nosi nazwę okna obsługi. Dziesięć minut okna obsługi jest zarezerwowana do ponownego uruchamiania, jeśli wymagane jest ponowne uruchomienie i została wybrana opcja odpowiednie ponowny rozruch. Poprawianie trwa dłużej, niż oczekiwano, jeśli ma mniej niż dziesięć minut okna obsługi, nie nastąpi ponowne uruchomienie komputera.
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie w celu zainstalowania wymaganych aktualizacji.
 
@@ -628,7 +628,7 @@ Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
+> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych z systemem Windows na platformie Azure](automation-tutorial-update-management.md)
 
 * Użyj wyszukiwania w dzienniku [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.

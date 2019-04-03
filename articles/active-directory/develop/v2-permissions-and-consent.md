@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793496"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881651"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -38,9 +38,9 @@ Aplikacje, które integrują się z platformą Microsoft identity postępuj zgod
 
 Implementuje platforma tożsamości firmy Microsoft [OAuth 2.0](active-directory-v2-protocols.md) Protokół autoryzacji. OAuth 2.0 to metoda, za pomocą którego aplikacja innej firmy ma dostęp do zasobów hostowanych w sieci web w imieniu użytkownika. Dowolny zasób hostowanych w sieci web, która integruje się z platformą Microsoft identity jest identyfikatorem zasobu lub *identyfikator URI Identyfikatora aplikacji*. Na przykład zasobów hostowanych w sieci web firmy Microsoft między innymi:
 
-* Program Microsoft Graph: `https://graph.microsoft.com`
+* Microsoft Graph: `https://graph.microsoft.com`
 * Interfejs API wiadomości E-mail usługi Office 365: `https://outlook.office.com`
-* Usługa Azure AD Graph: `https://graph.windows.net`
+* Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
 > Zdecydowanie zaleca się używać programu Microsoft Graph zamiast programu Graph usługi Azure AD, interfejsu API usługi Office 365 wiadomości E-mail itd.
@@ -82,7 +82,7 @@ V2.0 wdrażania protokołu OpenID Connect zawiera kilka zakresów dobrze zdefini
 
 ### <a name="openid"></a>openid
 
-Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu przedstawiono na stronie zgoda konta pracy jako uprawnienie "Logowanie się w", a na osobiste strona zgody użytkownika konta Microsoft jako uprawnienie "Wyświetl swój profil i nawiązać połączenie z aplikacjami i usługami korzystającymi z Twojego konta Microsoft". Posiadając to uprawnienie, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w formie `sub` oświadczenia. Daje ona również dostęp do aplikacji do punktu końcowego informacji o użytkowniku. `openid` Zakres może służyć w punkcie końcowym tokenów w wersji 2.0 można uzyskać Identyfikatora tokenów, które mogą być używane do zabezpieczania połączeń HTTP między poszczególnymi składnikami aplikacji.
+Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu przedstawiono na stronie zgoda konta pracy jako uprawnienie "Logowanie się w", a na osobiste strona zgody użytkownika konta Microsoft jako uprawnienie "Wyświetl swój profil i nawiązać połączenie z aplikacjami i usługami korzystającymi z Twojego konta Microsoft". Posiadając to uprawnienie, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w formie `sub` oświadczenia. Daje ona również dostęp do aplikacji do punktu końcowego informacji o użytkowniku. `openid` Zakres może służyć w punkcie końcowym tokenów w wersji 2.0 można uzyskać Identyfikatora tokenów, które mogą być używane przez aplikację uwierzytelniania.
 
 ### <a name="email"></a>email
 

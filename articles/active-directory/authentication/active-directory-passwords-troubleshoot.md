@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369789"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885081"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
 
@@ -75,7 +75,7 @@ Należy rozwiązać problem z usługi Azure Active Directory (Azure AD) samoobs�
 | Użytkownik zobaczy następujący błąd podczas sprawdzania poprawności numeru telefonu. | Ten błąd występuje, jeśli podany numer telefonu i numer telefonu w pliku nie są zgodne. Upewnij się, że użytkownik jest wprowadzenie pełnego numeru telefonu, tym kod obszaru i kraj, w przypadku, gdy próbują użyć metody oparte na telefon do resetowania hasła. |
 | Występuje błąd podczas przetwarzania żądania. | Może to być spowodowane przez wiele problemów, ale zazwyczaj ten błąd jest spowodowany przez awarię usług lub problem z konfiguracją. Jeśli zostanie wyświetlony ten błąd ma wpływ na działalność, skontaktuj się z pomocy technicznej firmy Microsoft, aby uzyskać dodatkową pomoc. |
 | Naruszenie zasad w środowisku lokalnym | Hasło nie spełnia w lokalnych zasadach haseł usługi Active Directory. |
-| Hasło jest niezgodne z zasadami rozmytego | Hasło, którego użyto pojawia się listy zakazanych haseł i nie mogą być używane. |
+| Hasło jest niezgodne z zasadami rozmytego | Hasło, którego użyto pojawia się w [zakazane liście haseł](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated) i nie mogą być używane. |
 
 ## <a name="troubleshoot-password-writeback"></a>Rozwiązywanie problemów z zapisywaniem zwrotnym haseł
 
@@ -287,12 +287,12 @@ Poniższe artykuły zawierają dodatkowe informacje na temat resetowania haseł 
 
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md)
-* [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
-* [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
+* [Rejestrowanie na potrzeby samoobsługowego resetowania hasła](../user-help/active-directory-passwords-reset-register.md)
+* [Masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
+* [Jakie dane są używane przez Samoobsługowe Resetowanie HASEŁ i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)
-* [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
-* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
-* [Jak zgłosić działanie funkcji samoobsługowego resetowania haseł?](howto-sspr-reporting.md)
-* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
-* [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)
+* [Jakie są opcje zasad funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
+* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego tak ważna go?](howto-sspr-writeback.md)
+* [Jak zgłosić działanie funkcji samoobsługowego resetowania HASEŁ?](howto-sspr-reporting.md)
+* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one oznacza?](concept-sspr-howitworks.md)
+* [Mam pytanie, które nie gdzieś else](active-directory-passwords-faq.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
-ms.openlocfilehash: 3557aa4236904a3654d40337e391fbcaa5486894
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430773"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847988"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Usługa Azure Monitor nazewnictwa i terminologia zmiany
 Istotne zmiany zostały dokonane do usługi Azure Monitor niedawno z różnymi usługami konsolidowana Aby uprościć monitorowanie dla klientów platformy Azure. W tym artykule opisano ostatnie nazwy i terminologii zmian w dokumentacji usługi Azure Monitor.
@@ -26,11 +26,11 @@ Istotne zmiany zostały dokonane do usługi Azure Monitor niedawno z różnymi u
 Po konsolidacji różnych usług w ramach usługi Azure Monitor Przenosimy kolejnego kroku, modyfikując terminologii w naszej dokumentacji, aby lepiej opisać, usługa Azure Monitor i jego różnych składników. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Dzienników platformy Azure Monitor, dane są nadal przechowywane w obszarze roboczym usługi Log Analytics nadal pobierane i analizowane przez tę samą usługę Log Analytics, ale Zmieniamy termin _usługi Log Analytics_ w wielu miejscach do _dzienniki usługi Azure Monitor_ . Pojęcie to lepiej odzwierciedla swojej roli w usłudze Azure Monitor i zapewnia lepsze spójność [metryk w usłudze Azure Monitor](platform/data-collection.md).
+Dzienników platformy Azure Monitor, dane są nadal przechowywane w obszarze roboczym usługi Log Analytics nadal pobierane i analizowane przez tę samą usługę Log Analytics, ale Zmieniamy termin _usługi Log Analytics_ w wielu miejscach do _dzienniki usługi Azure Monitor_ . Pojęcie to lepiej odzwierciedla swojej roli w usłudze Azure Monitor i zapewnia lepsze spójność [metryk w usłudze Azure Monitor](platform/data-platform-metrics.md).
 
 Termin _dziennika analizy_ teraz dotyczy ona głównie strony w witrynie Azure portal umożliwia pisanie i uruchamianie zapytań i analizować dane dzienników. Jest odpowiednikiem funkcjonalności [Eksploratora metryk](platform/metrics-charts.md), czyli stronę w witrynie Azure portal umożliwia analizowanie danych metryk.
 
-### <a name="log-analytics-workspaces"></a>Obszary robocze usługi Log Analytics
+### <a name="log-analytics-workspaces"></a>Obszary robocze usługi log Analytics
 [Obszary robocze](platform/manage-access.md) , przechowywania danych dziennika w usłudze Azure Monitor nadal są określane jako obszarów roboczych usługi Log Analytics. **Usługi Log Analytics** menu w witrynie Azure portal została zmieniona na **obszarów roboczych usługi Log Analytics** i gdzie można [utworzyć nowych obszarów roboczych](learn/quick-create-workspace.md) i skonfigurować źródła danych. Analizowanie dzienników i innych danych monitorowania w **usługi Azure Monitor** i konfigurowanie obszaru roboczego w **obszarów roboczych usługi Log Analytics**.
 
 ### <a name="management-solutions"></a>Rozwiązania do zarządzania

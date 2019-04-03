@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ab4d3c9134e94b60c4dd3eeb5603f450b036c3
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58794040"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861908"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -117,6 +117,8 @@ Tryb inspekcji jest obsługiwany tylko w środowisku usługi Active Directory w 
 ## <a name="additional-content"></a>Dodatkowa zawartość
 
 Następujące łącza nie są częścią podstawowej dokumentacji ochrony haseł usługi Azure AD, ale mogą być przydatne źródło dodatkowe informacje na temat tej funkcji.
+
+[Ochrony hasłem w usłudze Azure AD jest teraz ogólnie dostępne!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
 [Wiadomości e-mail przewodnik dotyczący ochrony wyłudzania informacji — część 15: Implementowanie usługi ochrony hasła usługi Microsoft Azure AD (dla lokalnego zbyt!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 

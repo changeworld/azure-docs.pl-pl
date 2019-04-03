@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5233f9421b02be9b34bb481252f749e153942573
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5de6ba8ab64797da24039718ca7f2c0b88d1d33d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312023"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881345"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrowanie serwerów z systemem Windows Server 2008 na platformę Azure
 
@@ -34,7 +34,7 @@ Sekcja Ograniczenia i znane problemy zawiera niektóre ograniczenia i obejścia 
 ## <a name="supported-operating-systems-and-environments"></a>Obsługiwane systemy operacyjne i środowiska
 
 
-|System operacyjny  | Środowisko lokalne  |
+|System operacyjny  | W środowisku lokalnym  |
 |---------|---------|
 |Windows Server 2008 z dodatkiem SP2 — wersje 32-bitowe i 64-bitowe (IA-32 i x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     Maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne    |
 |Windows Server 2008 R2 z dodatkiem SP1 — wersja 64-bitowa</br>- Standard</br>- Enterprise</br>- Datacenter     |     Maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne|

@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie modeli jako usług sieci web
+title: Jak i gdzie umożliwia wdrażanie modeli
 titleSuffix: Azure Machine Learning service
 description: 'Dowiedz się, jak i gdzie wdrożyć swoje modele usługi Azure Machine Learning, w tym: Usługa Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge i programowalny bramy tablic.'
 services: machine-learning
@@ -9,20 +9,22 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622131"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878302"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
-Zestaw SDK usługi Azure Machine Learning udostępnia uczony model jest wdrażany na kilka sposobów. W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach usługi IoT Edge.
+W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach usługi IoT Edge. 
 
-Można wdrażać modele do następujących celów obliczeń:
+## <a name="compute-targets-for-deployment"></a>Celów obliczeń dla wdrożenia
+
+Użyj zestawu SDK usługi Azure Machine Learning, aby wdrożyć uczonego modelu w następujących lokalizacjach:
 
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
@@ -31,6 +33,8 @@ Można wdrażać modele do następujących celów obliczeń:
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
 | [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |
+
+## <a name="deployment-workflow"></a>Wdrażanie przepływu pracy
 
 Proces wdrażania modelu jest podobnych dla wszystkich celów obliczeń:
 
@@ -46,7 +50,7 @@ Poniższy klip wideo pokazuje, wdrażanie w usłudze Azure Container Instances:
 
 Aby uzyskać więcej informacji na temat pojęć, które są zaangażowane w przepływ pracy wdrażania, zobacz [zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites-for-deployment"></a>Wymagania wstępne dotyczące wdrażania
 
 [!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
@@ -213,7 +217,7 @@ Gdy pojawi się do wdrożenia, proces jest nieco inne w zależności od wdrażan
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
 | [Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web (wnioskowania w czasie rzeczywistym)| Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
+| [Azure ML Compute](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Usługa sieci Web (Tworzenie i testowanie)| Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
 | [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |

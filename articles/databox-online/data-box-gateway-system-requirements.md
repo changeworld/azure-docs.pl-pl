@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 0d898c8d2273c431967603c36c8ff9d0dd8b4b7b
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: cac451634bfa357784f9fd3d3a24e06ef3a4ee19
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417857"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881770"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Wymagania systemowe w usłudze Azure brama pola danych
 
@@ -84,6 +84,10 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 > - Miejsce docelowe adresy IP powinien być ustawiony na [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-azure-government"></a>Wzorce adresów URL dla platformy Azure Government
+
+[!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
 ## <a name="internet-bandwidth"></a>Przepustowością Internetu
 

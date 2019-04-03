@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4eaaff859811e4d97cbd4f73231d702285792064
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285449"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847296"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -55,7 +55,7 @@ Przed rozpoczęciem sprawdź następujące kwestie:
 
 - Kopia zapasowa programu SQL Server można skonfigurować w witrynie Azure portal lub **PowerShell**. Interfejs wiersza polecenia nie jest obsługiwana.
 - Maszynę Wirtualną z uruchomionym programem SQL Server wymaga łączności z Internetem na dostęp do platformy Azure z publicznymi adresami IP.
-- SQL Server-zawsze na **wystąpienia klastra trybu Failover (występowanie)** nie są obsługiwane.
+- Program SQL Server **wystąpienia klastra trybu Failover (FCI)** i SQL Server-zawsze w wystąpieniu klastra trybu Failover nie są obsługiwane.
 - Kopia zapasowa i przywracanie operacji dublowania baz danych i migawki bazy danych nie są obsługiwane.
 - Przy użyciu więcej niż jednego rozwiązania tworzenia kopii zapasowych do tworzenia kopii zapasowych z autonomicznego programu SQL Server lub wystąpienia programu SQL zawsze włączona grupa dostępności może prowadzić do niepowodzenia wykonywania kopii zapasowej; Unikaj umieszczania w ten sposób.
 - Tworzenie kopii zapasowej dwa węzły grupy dostępności za pomocą tych samych lub różnych rozwiązań, również może prowadzić do niepowodzenia wykonywania kopii zapasowej. Usługa Azure Backup można wykryć i chronić wszystkie węzły, które znajdują się w tym samym regionie co magazyn. Jeśli usługi SQL Server zawsze włączona grupa dostępności obejmuje wiele regionów systemu Azure, skonfigurować kopię zapasową z regionem, który ma węzła podstawowego. Usługa Azure Backup można wykryć i ochronę wszystkich baz danych w grupie dostępności, zgodnie z preferencjami kopii zapasowej.  

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850721"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878013"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Instrukcje prowadzić zarządzania dla usługi Azure Table
 
@@ -34,7 +34,7 @@ W tym artykule opisano sposób konfigurowania usługi Azure Table do przechowywa
 
     ![Kroki, aby utworzyć konto magazynu platformy Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  Skopiuj parametry połączenia konta magazynu dla klucza i wklej go do **parametry połączenia konta magazynu** pole w portalu Cloud Partner. Na przykład stingu połączenia `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net `
+4.  Skopiuj parametry połączenia konta magazynu dla klucza i wklej go do **parametry połączenia konta magazynu** pole w portalu Cloud Partner. Na przykład stingu połączenia `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
     
     ![Klucz usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 

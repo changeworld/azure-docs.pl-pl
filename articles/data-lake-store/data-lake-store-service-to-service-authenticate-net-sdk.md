@@ -3,20 +3,20 @@ title: 'Service-to-service authentication: zestawu SDK platformy .NET przy użyc
 description: Dowiedz się, jak osiągnąć service to service uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory przy użyciu zestawu .NET SDK
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
+author: twooley
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5ec6325f3fae21e62fe4a3fb6452aa11158047a4
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: twooley
+ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340239"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881158"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Do usługi uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET
 > [!div class="op_single_selector"]
@@ -54,8 +54,8 @@ Ten artykuł zawiera informacje o sposobie używania zestawu SDK platformy .NET 
    2. Na karcie **Menedżer pakietów NuGet** upewnij się, że **Źródło pakietów** jest ustawione na wartość **nuget.org** i że zaznaczone jest pole wyboru **Uwzględnij wersję wstępną**.
    3. Wyszukaj i zainstaluj następujące pakiety NuGet:
 
-      * `Microsoft.Azure.Management.DataLake.Store` — w tym samouczku jest używana wersja v2.1.3-preview.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — w tym samouczku jest używana wersja v2.2.12.
+      * `Microsoft.Azure.Management.DataLake.Store` — W tym samouczku v2.1.3-preview.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — W tym samouczku używana wersja v2.2.12.
 
         ![Dodawanie źródła pakietów NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Tworzenie nowego konta usługi Azure Data Lake")
    4. Zamknij **Menedżera pakietów NuGet**.
