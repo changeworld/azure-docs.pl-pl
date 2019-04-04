@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc8fae8f1278babd8c4c7402d86700ad78e3cb9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bfd488828d9c96461cb371b35bb0a0cb24fff373
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897422"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891943"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z usług Azure Analysis Services
 
@@ -66,7 +66,7 @@ Biblioteki klienckie dla połączeń klienckich różnią się od dostawców dan
 
  Program ADOMD.NET jest biblioteka klienta zarządzanych danych używane do wykonywania zapytań z danymi usług Analysis Services. Zostanie on zainstalowany i używana przez narzędzia i aplikacje klienckie. 
   
- Podczas nawiązywania połączenia z bazą danych, właściwości parametrów połączenia dla wszystkich trzech bibliotek są podobne. Parametry połączenia, prawie każdy ADOMD.NET są definiowane za pomocą [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) działa również w przypadku AMO i Analysis Services OLE DB dostawcy (MSOLAP). Aby dowiedzieć się więcej, zobacz [właściwości parametrów połączenia &#40;usług Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Podczas nawiązywania połączenia z bazą danych, właściwości parametrów połączenia dla wszystkich trzech bibliotek są podobne. Parametry połączenia, prawie każdy ADOMD.NET są definiowane za pomocą [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) działa również w przypadku AMO i Analysis Services OLE DB dostawcy (MSOLAP). Aby dowiedzieć się więcej, zobacz [właściwości parametrów połączenia &#40;usług Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Jak określić wersji biblioteki klienta   

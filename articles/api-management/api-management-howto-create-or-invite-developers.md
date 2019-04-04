@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d56e2da00e60b9daa44e040db6796215dd03436b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 6a4ad827c39ec106acdc7b52a5b769ab6e7febf8
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793088"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893949"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Jak zarządzać kontami użytkowników w usłudze Azure API Management
 
-W usłudze API Management deweloperzy mają użytkownicy interfejsów API, które należy udostępnić za pomocą usługi API Management. W tym przewodniku przedstawiono sposób utworzyć i zaprosić deweloperów do użycia interfejsów API i produktów, możesz udostępnić je za pomocą wystąpienia usługi API Management. Aby uzyskać informacji na temat programowego zarządzania kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania.
+W usłudze API Management deweloperzy mają użytkownicy interfejsów API, które należy udostępnić za pomocą usługi API Management. W tym przewodniku przedstawiono sposób utworzyć i zaprosić deweloperów do użycia interfejsów API i produktów, możesz udostępnić je za pomocą wystąpienia usługi API Management. Aby uzyskać informacji na temat programowego zarządzania kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -69,7 +69,7 @@ Aby uniemożliwić użytkownikowi, wykonaj poniższe kroki.
 
 ## <a name="reset-a-user-password"></a>Resetowanie hasła użytkownika
 
-Aby programowo pracować z kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania. Aby zresetować hasło do konta użytkownika do określonej wartości, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
+Aby programowo pracować z kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) w dokumentacji [interfejsu API REST zarządzania](/rest/api/apimanagement/) odwołania. Aby zresetować hasło do konta użytkownika do określonej wartości, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
 
 ## <a name="next-steps"> </a>Następne kroki
 Po utworzeniu konta dewelopera możesz skojarzyć go z rolami i subskrybowania produktów i interfejsów API. Aby uzyskać więcej informacji, zobacz [sposób tworzenia i używania grup][How to create and use groups].

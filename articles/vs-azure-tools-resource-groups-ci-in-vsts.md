@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456350"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894153"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
 Aby wdrożyć szablon platformy Azure, należy wykonać zadania w poszczególnych etapach: Kopiuj kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
@@ -37,7 +37,7 @@ Niezależnie od tego, w tym scenariuszu jeśli masz wszelkie artefakty, które s
 * Pliki binarne aplikacji
 
 ### <a name="nested-templates-and-configuration-scripts"></a>Zagnieżdżone szablony i skryptami konfiguracyjnymi
-Jeśli używasz szablonu dostępnego w programie Visual Studio (lub skompilowane przy użyciu fragmentów kodu programu Visual Studio), skrypt programu PowerShell przygotowuje nie tylko artefakty, parametryzuje dane również identyfikator URI zasobów dla różnych wdrożeń. Skrypt, a następnie kopiuje artefakty do bezpiecznego kontenera na platformie Azure, tworzy token SaS dla kontenera i następnie przekazuje informację do wdrożenia szablonu. Zobacz [Utwórz wdrożenie szablonu](https://msdn.microsoft.com/library/azure/dn790564.aspx) Aby dowiedzieć się więcej na temat szablonów zagnieżdżonych.  Korzystając z zadań w usługom DevOps platformy Azure, należy wybrać odpowiednie zadania dla wdrożenia szablonu i jeśli to konieczne, przekazać wartości parametru z kroku przemieszczania do wdrożenia szablonu.
+Jeśli używasz szablonu dostępnego w programie Visual Studio (lub skompilowane przy użyciu fragmentów kodu programu Visual Studio), skrypt programu PowerShell przygotowuje nie tylko artefakty, parametryzuje dane również identyfikator URI zasobów dla różnych wdrożeń. Skrypt, a następnie kopiuje artefakty do bezpiecznego kontenera na platformie Azure, tworzy token SaS dla kontenera i następnie przekazuje informację do wdrożenia szablonu. Zobacz [Utwórz wdrożenie szablonu](/previous-versions/azure/reference/dn790564(v=azure.100)) Aby dowiedzieć się więcej na temat szablonów zagnieżdżonych.  Korzystając z zadań w usługom DevOps platformy Azure, należy wybrać odpowiednie zadania dla wdrożenia szablonu i jeśli to konieczne, przekazać wartości parametru z kroku przemieszczania do wdrożenia szablonu.
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Skonfiguruj ciągłe wdrażanie w potokach platformy Azure
 Aby wywołać skrypt programu PowerShell w potokach platformy Azure, musisz zaktualizować swój potok kompilacji. Krótko mówiąc czynności są następujące: 

@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a271edd710356ff612a4558034e9f7459a17ecaa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119007"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666294"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Systemy operacyjne gościa obsługiwane w usłudze Azure Stack
 
@@ -53,7 +53,7 @@ Wersje Datacenter są dostępne w witrynie marketplace termin pobieranie; Klienc
 Dystrybucje systemu Linux wyświetlane jako dostępne w portalu Marketplace zawierają niezbędne Windows Azure Linux Agent (WALA). W przypadku przeniesienia z własnego obrazu do usługi Azure Stack, postępuj zgodnie z wytycznymi podanymi w [Dodawanie obrazów systemu Linux do usługi Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Obrazy niestandardowe powinny zostać skompilowane z najnowszą wersją publiczną WALA lub z wersją 2.2.20. W usłudze Azure Stack w wersji wcześniejszej niż 2.2.20 i między 2.2.20 i 2.2.36 może nie działać prawidłowo. 
+> Obrazy niestandardowe powinny zostać skompilowane z najnowszą wersją publiczną WALA lub z wersją 2.2.20. W usłudze Azure Stack w wersji wcześniejszej niż 2.2.20 i między 2.2.20 i 2.2.35.1 (wyłącznie) może nie działać prawidłowo. 
 >
 > [Pakiet cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
 

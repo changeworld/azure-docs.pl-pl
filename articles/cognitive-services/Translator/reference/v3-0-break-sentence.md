@@ -3,19 +3,19 @@ title: Metoda BreakSentence interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Metoda BreakSentence interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 8aa726d8a00e76c1b4311140a433e6c7e476dc50
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3a9c2ae0eee3e282dddff812da2fed07787328b7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884906"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916295"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -56,7 +56,7 @@ Nagłówki żądania obejmują:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>_Jeden autoryzacji_<br/>_header_</td>
+    <td>_Jeden autoryzacji_<br/>_nagłówek_</td>
     <td>*Nagłówek żądania wymagane*.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -172,7 +172,7 @@ Jeśli wystąpi błąd, żądanie zwróci błąd odpowiedź w formacie JSON. Kod
 
 Poniższy przykład pokazuje, jak uzyskać zdania granice jednym zdaniu. Język zdanie jest wykrywany automatycznie przez usługę.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

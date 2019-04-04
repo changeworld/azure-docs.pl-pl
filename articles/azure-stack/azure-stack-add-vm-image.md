@@ -1,6 +1,6 @@
 ---
-title: Dodawanie i usuwanie obrazu maszyny Wirtualnej do usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dodawanie lub usuwanie organizacji Windows lub maszyny Wirtualnej systemu Linux obrazu niestandardowego dla dzierżawców.
+title: Dodaj obraz maszyny Wirtualnej do usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dodaj obraz maszyny Wirtualnej lub Usuń obraz niestandardowy Windows w organizacji lub obraz maszyny Wirtualnej systemu Linux dla dzierżawców.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ccf3beaacd15ad7d3e9177614bb62b0050bd8d5c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9e20abfde8a4524b00e60651bbe71135d357a237
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109169"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881464"
 ---
-# <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
+# <a name="add-a-vm-image-to-offer-in-azure-stack"></a>Dodawanie obrazu maszyny Wirtualnej, aby oferować się w usłudze Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-W usłudze Azure Stack można udostępnić obrazy maszyn wirtualnych dla użytkowników. Te obrazy może służyć przez Szablony usługi Azure Resource Manager. Można również dodać je do interfejsu użytkownika usługi Azure Marketplace jako elementu portalu Marketplace. Użyj formularza obraz globalnym rynku platformy Azure lub swój własny obraz niestandardowy. Obraz, który można dodać za pomocą portalu lub programu Windows PowerShell.
+W usłudze Azure Stack możesz dodać obraz maszyny wirtualnej (VM) w portalu Marketplace, aby udostępnić użytkownikom. Możesz dodać obrazy maszyn wirtualnych przy użyciu szablonów usługi Azure Resource Manager dla usługi Azure Stack. Obrazy maszyn wirtualnych można również dodać do interfejsu użytkownika usługi Azure Marketplace, jako elementu portalu Marketplace. Użyj obrazu, który na globalnym rynku platformy Azure lub własnego niestandardowego obrazu maszyny Wirtualnej. Możesz dodać obraz maszyny Wirtualnej przy użyciu portalu administracyjnego lub środowiska Windows PowerShell.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Dodaj obraz maszyny Wirtualnej za pośrednictwem portalu
 
@@ -83,7 +83,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
@@ -93,16 +93,16 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
    ```
 
    **AzsPlatformimage Dodaj** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
-   - **publisher**  
+   - **Wydawcy**  
      Na przykład: `Canonical`  
      Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-   - **offer**  
+   - **oferty**  
      Na przykład: `UbuntuServer`  
      Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
    - **sku**  
      Na przykład: `14.04.3-LTS`  
      Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-   - **Wersja**  
+   - **version**  
      Na przykład: `1.0.0`  
      Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
    - **osType**  
@@ -118,7 +118,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
  
 1. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 
-   ```PowerShell  
+   ```powershell
     # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
     Add-AzureRMEnvironment `
       -Name "AzureStackAdmin" `
@@ -139,7 +139,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 2. Jeśli przy użyciu **Active Directory Federation Services**, użyj następującego polecenia cmdlet:
 
-   ```PowerShell
+   ```powershell
    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
    $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
@@ -158,7 +158,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 5. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), przekazania obrazu do swojego konta magazynu i Pobierz identyfikator URI, do której można pobrać obrazu maszyny Wirtualnej programu PowerShell.  
 
-   ```PowerShell  
+   ```powershell
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
@@ -166,14 +166,14 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 6. (Opcjonalnie) Możesz przekazać tablicę dysków z danymi w ramach obrazu maszyny Wirtualnej. Tworzenie dysków danych za pomocą polecenia cmdlet New-DataDiskObject. Otwórz program PowerShell w wierszu polecenia z podwyższonym poziomem uprawnień i uruchom:
 
-   ```PowerShell  
+   ```powershell
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
    ```
 
 7. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-   ```PowerShell  
+   ```powershell
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
    ```
 
@@ -189,7 +189,7 @@ Jeśli nie potrzebujesz już obraz maszyny wirtualnej, który został przekazany
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-   ```PowerShell  
+   ```powershell  
    Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
@@ -197,16 +197,16 @@ Jeśli nie potrzebujesz już obraz maszyny wirtualnej, który został przekazany
     -version "<version>" `
    ```
    **AzsPlatformImage Usuń** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
-   - **publisher**  
+   - **Wydawcy**  
      Na przykład: `Canonical`  
      Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-   - **offer**  
+   - **oferty**  
      Na przykład: `UbuntuServer`  
      Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
    - **sku**  
      Na przykład: `14.04.3-LTS`  
      Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-   - **Wersja**  
+   - **version**  
      Na przykład: `1.0.0`  
      Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
     

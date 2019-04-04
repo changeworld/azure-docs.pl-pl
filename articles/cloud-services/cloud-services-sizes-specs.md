@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818706"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918267"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (role sieć web i ról procesów roboczych). Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator, który można umieścić w swojej [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usług Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
@@ -60,9 +60,9 @@ Utworzyliśmy pojęcie jednostki obliczeniowe platformy Azure (ACU), aby umożli
 | Rodzina SKU | ACU/rdzeń |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Small-ExtraLarge](#a-series) |100 |
-| [A5-7](#a-series) |100 |
-| [A8–A11](#a-series) |225* |
+| [Mała liczba godzin ExtraLarge](#a-series) |100 |
+| [A5 – 7](#a-series) |100 |
+| [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [D](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |
@@ -213,7 +213,7 @@ Jako charakter zmian obciążenia lub nowe rozmiary maszyn wirtualnych, które s
 >
 
 ## <a name="get-a-list-of-sizes"></a>Pobierz listę rozmiarów
-Aby uzyskać listę rozmiarów, można użyć programu PowerShell lub interfejsu API REST. Interfejs API REST jest udokumentowany [tutaj](https://msdn.microsoft.com/library/azure/dn469422.aspx). Poniższy kod jest polecenia programu PowerShell, który znajduje się lista wszystkich rozmiarów dostępnych dla usług w chmurze. 
+Aby uzyskać listę rozmiarów, można użyć programu PowerShell lub interfejsu API REST. Interfejs API REST jest udokumentowany [tutaj](/previous-versions/azure/reference/dn469422(v=azure.100)). Poniższy kod jest polecenia programu PowerShell, który znajduje się lista wszystkich rozmiarów dostępnych dla usług w chmurze. 
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel

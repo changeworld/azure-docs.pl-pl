@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 55284318a627186b7a20d6d36dff1953e80d5020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958562"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893235"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testowanie przykład wypowiedzi w usługi LUIS
 
@@ -48,7 +48,7 @@ Jeśli testujemy współpracę z punktu końcowego, a nie chcesz wypowiedź reje
 ## <a name="where-to-find-utterances"></a>Gdzie można znaleźć wypowiedzi
 Usługa LUIS przechowuje wypowiedzi wszystkich zarejestrowanych w dzienniku zapytań dostępnych do pobrania na [LUIS](luis-reference-regions.md) witryny sieci Web **aplikacje** strony listy, a także usługi LUIS [Tworzenie interfejsów API](https://aka.ms/luis-authoring-apis). 
 
-Wypowiedzi usługa LUIS jest pewności, jakie są wymienione w **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md)** strony [LUIS](luis-reference-regions.md) witryny sieci Web. 
+Wypowiedzi usługa LUIS jest pewności, jakie są wymienione w **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md)** strony [LUIS](luis-reference-regions.md) witryny sieci Web. 
 
 ![Przeglądanie wypowiedzi punktu końcowego](./media/luis-concept-test/review-endpoint-utterances.png)
  

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4adc6ef6e7dd445eea3fd567072a995e3ac07dda
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539636"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918165"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Włącz komunikację dla wystąpień ról na platformie azure
 Role usługi w chmurze komunikują się za pośrednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowych punktów końcowych** podczas połączenia wewnętrzne są nazywane **wewnętrznych punktów końcowych**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) do tworzenia punktów końcowych.
 
 ## <a name="input-endpoint"></a>Wejściowy punkt końcowy
-Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port na zewnątrz. Należy określić typ protokół i port punktu końcowego, który następnie stosuje dla obu portów wewnętrznych i zewnętrznych dla punktu końcowego. Jeśli chcesz, można określić inny port wewnętrzny dla punktu końcowego o [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) atrybutu.
+Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port na zewnątrz. Należy określić typ protokół i port punktu końcowego, który następnie stosuje dla obu portów wewnętrznych i zewnętrznych dla punktu końcowego. Jeśli chcesz, można określić inny port wewnętrzny dla punktu końcowego o [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) atrybutu.
 
 Wejściowy punkt końcowy, można użyć następujących protokołów: **http, https, tcp, udp**.
 
@@ -96,7 +96,7 @@ Biblioteka zarządzana platformy Azure udostępnia metody dla wystąpień roli d
 > 
 > 
 
-Możesz użyć [wystąpień](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) właściwość służąca do pobierania wystąpień roli. Najpierw użyj [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) zwraca odwołanie do bieżącego wystąpienia roli, a następnie użyć [roli](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) właściwość zwraca odwołanie do samego roli.
+Możesz użyć [wystąpień](/previous-versions/azure/reference/ee741904(v=azure.100)) właściwość służąca do pobierania wystąpień roli. Najpierw użyj [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) zwraca odwołanie do bieżącego wystąpienia roli, a następnie użyć [roli](/previous-versions/azure/reference/ee741918(v=azure.100)) właściwość zwraca odwołanie do samego roli.
 
 Po nawiązaniu połączenia z wystąpieniem roli programowo przy użyciu zestawu .NET SDK, jest stosunkowo łatwo uzyskać dostęp do informacji punktu końcowego. Na przykład po którym już nawiązano środowisku określoną rolę, można uzyskać portu określonego punktu końcowego przy użyciu tego kodu:
 
@@ -111,7 +111,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 > 
 > 
 
-Aby określić numer portu dla wewnętrznego punktu końcowego dla wystąpienia roli, można użyć [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) właściwości, aby zwrócić obiekt słownika, która zawiera nazwy punktów końcowych i ich odpowiedni adres IP, adresów i portów. [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) właściwość zwraca adres IP i portu dla określonego punktu końcowego. **PublicIPEndpoint** właściwość zwraca port punktu końcowego o zrównoważonym obciążeniu. Części adresu **PublicIPEndpoint** właściwość nie jest używana.
+Aby określić numer portu dla wewnętrznego punktu końcowego dla wystąpienia roli, można użyć [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) właściwości, aby zwrócić obiekt słownika, która zawiera nazwy punktów końcowych i ich odpowiedni adres IP, adresów i portów. [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) właściwość zwraca adres IP i portu dla określonego punktu końcowego. **PublicIPEndpoint** właściwość zwraca port punktu końcowego o zrównoważonym obciążeniu. Części adresu **PublicIPEndpoint** właściwość nie jest używana.
 
 Oto przykład, który iteruje po wystąpień roli.
 
@@ -368,7 +368,7 @@ Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, **WebRole1** d
 </ServiceDefinition>
 ```
 
-Odwołanie do schematu XML dla elementów powyżej można znaleźć [tutaj](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Odwołanie do schematu XML dla elementów powyżej można znaleźć [tutaj](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o usłudze w chmurze [modelu](cloud-services-model-and-package.md).

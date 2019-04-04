@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: 2d437f3fd96c38bebac52d6bb9dacf2c01b20a3c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443691"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904274"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -67,7 +67,7 @@ Definicja roli to zbiór uprawnień i inne atrybuty wchodzących w skład roli. 
 Opisano w następujących artykułach dokumentacji odwołania:
 
 - Jak [zapytania lub identyfikator obiektu użytkownika](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
-- Jak [uzyskać identyfikator obiektu dla jednostki usługi](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
+- Jak [uzyskać identyfikator obiektu dla jednostki usługi](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal).
 - Jak [pobrać identyfikator obiektu dla dzierżawy usługi Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="role-assignments"></a>Przypisania ról

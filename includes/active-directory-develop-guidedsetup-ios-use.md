@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203499"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891046"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj Microsoft Authentication Library (MSAL), aby uzyskać token dla interfejsu API programu Microsoft Graph
 
@@ -215,7 +215,7 @@ Metoda `acquireTokenSilent` obsługuje uzyskiwanie i odnawianie tokenów bez ża
 
 Po pewnym czasie `acquireTokenSilent` zakończy się niepowodzeniem — np. użytkownik zalogował lub została zmieniona swojego hasła na innym urządzeniu. Gdy biblioteki MSAL wykryje, że ten problem można rozwiązać, wymagając akcję interaktywne, jest on uruchamiany `MSALErrorCode.interactionRequired` wyjątku. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-1. Wywołania względem `acquireToken` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zwykle używany w aplikacjach w trybie online w przypadku, gdy brak offline zawartości w aplikacji dostępne dla użytkownika. Przykładowa aplikacja generowana za pomocą tego Instalatora z przewodnikiem korzysta z tego wzorca: widoczne w czasie działania pierwszego wykonania aplikacji. Ponieważ żaden użytkownik nie jest nigdy nie użył aplikacji `applicationContext.allAccounts().first` będzie zawierać wartości null i ` MSALErrorCode.interactionRequired ` zostanie zgłoszony wyjątek. Następnie kod w przykładzie obsługuje wyjątek, wywołując `acquireToken` skutkuje monitowania użytkownika do logowania.
+1. Wywołania względem `acquireToken` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zwykle używany w aplikacjach w trybie online w przypadku, gdy brak offline zawartości w aplikacji dostępne dla użytkownika. Przykładowa aplikacja generowana za pomocą tego Instalatora z przewodnikiem korzysta z tego wzorca: widoczne w czasie działania pierwszego wykonania aplikacji. Ponieważ żaden użytkownik nie jest nigdy nie użył aplikacji `applicationContext.allAccounts().first` będzie zawierać wartości null i `MSALErrorCode.interactionRequired` zostanie zgłoszony wyjątek. Następnie kod w przykładzie obsługuje wyjątek, wywołując `acquireToken` skutkuje monitowania użytkownika do logowania.
 
 2. Aplikacje może być wizualne oznaczenie do użytkownika, który interakcyjnego logowania jest wymagana, dzięki czemu użytkownik może wybrać w odpowiednim czasie, aby zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Służy to zwykle po użytkownik może użyć innych funkcji aplikacji bez zakłócana — na przykład Brak dostępnej zawartości w trybie offline w aplikacji. W tym przypadku użytkownik może wybrać, gdy mają logować się do uzyskania dostępu do chronionego zasobu lub w celu odświeżenia nieaktualnych informacji lub aplikacji można zdecydować ponowić próbę `acquireTokenSilent` po przywróceniu sieci po jest tymczasowo niedostępny.
 

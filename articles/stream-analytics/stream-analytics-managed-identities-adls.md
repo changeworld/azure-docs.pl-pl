@@ -8,18 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570117"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895870"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 za pomocą tożsamości zarządzanych
 
 Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządzanej z danymi wyjściowymi Gen1 usługi Azure Data Lake Storage (ADLS). Tożsamość jest zarządzanej aplikacji zarejestrowanych w usłudze Azure Active Directory, który reprezentuje dane zadanie usługi Stream Analytics i może być używany do uwierzytelniania zasobów docelowych. Zarządzanych tożsamości wyeliminować ograniczenia metody uwierzytelniania oparte na użytkownikach, takich jak konieczności ponownego uwierzytelnienia z powodu zmiany hasła lub wygaśnięcia tokenu użytkownika, które występują co 90 dni. Ponadto zarządzanych tożsamości pomóc automatyzację wdrożenia zadania usługi Stream Analytics, które dane wyjściowe do usługi Azure Data Lake Storage Gen1.
-
-Odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu, zarejestruj się w tej wersji zapoznawczej i Dowiedz się więcej o nowych funkcjach.
 
 W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
 
@@ -27,11 +25,11 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Zacznij od utworzenia nowego zadania usługi Stream Analytics lub przez otwarcie istniejącego zadania w witrynie Azure portal. Na pasku menu, znajdujący się po lewej stronie ekranu, wybierz **tożsamości zarządzanej (wersja zapoznawcza)** znajdujący się w folderze **Konfiguruj**.
+1. Zacznij od utworzenia nowego zadania usługi Stream Analytics lub przez otwarcie istniejącego zadania w witrynie Azure portal. Na pasku menu, znajdujący się po lewej stronie ekranu, wybierz **tożsamości zarządzanej** znajdujący się w folderze **Konfiguruj**.
 
-   ![Konfigurowanie tożsamości zarządzanej usługi Stream Analytics w wersji zapoznawczej](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Konfigurowanie tożsamości usługi Stream Analytics zarządzane](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Wybierz **przypisane użycia systemu tożsamości zarządzanej (wersja zapoznawcza)** z okna, który pojawia się po prawej stronie. Kliknij przycisk **Zapisz** dla jednostki usługi tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
+2. Wybierz **przypisane użycia systemu tożsamości zarządzanej** z okna, który pojawia się po prawej stronie. Kliknij przycisk **Zapisz** dla jednostki usługi tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
 
    Podczas zapisywania konfiguracji identyfikator obiektu (OID) nazwy głównej usługi jest wymieniony jako identyfikator podmiotu zabezpieczeń, jak pokazano poniżej:
 
@@ -39,7 +37,7 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
  
    Jednostka usługi ma taką samą nazwę jak zadanie usługi Stream Analytics. Na przykład, jeśli nazwa zadania jest **MyASAJob**, nazwa utworzono nazwę główną usługi jest również **MyASAJob**.
 
-3. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij przycisk listy rozwijanej i wybierz tryb uwierzytelniania **tożsamości zarządzanej (wersja zapoznawcza)**.
+3. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij tryb uwierzytelniania, listy rozwijanej i wybierz pozycję ** tożsamości zarządzanej **.
 
 4. Wypełnij pozostałych właściwości. Aby dowiedzieć się więcej na temat tworzenia danych wyjściowych usługi ADLS, zobacz [tworzenie wyjściowego Data lake Store za pomocą usługi stream analytics](../data-lake-store/data-lake-store-stream-analytics.md). Gdy skończysz, kliknij przycisk **Zapisz**.
 

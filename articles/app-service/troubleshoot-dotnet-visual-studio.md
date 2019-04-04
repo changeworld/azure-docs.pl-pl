@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996778"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895017"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -35,7 +35,7 @@ Dowiesz się:
 * Jak wyświetlić dzienniki serwera sieci web, w tym szczegółowe komunikaty o błędach i śledzenie żądań zakończonych niepowodzeniem.
 * Jak wysyłać dzienniki diagnostyczne do usługi Azure Storage konta, a je wyświetlić.
 
-Jeśli masz program Visual Studio Ultimate, można również użyć [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) do debugowania. IntelliTrace nie została uwzględniona w tym samouczku.
+Jeśli masz program Visual Studio Ultimate, można również użyć [IntelliTrace](/visualstudio/debugger/intellitrace) do debugowania. IntelliTrace nie została uwzględniona w tym samouczku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym samouczku działa środowisko programistyczne, projekt sieci web i aplikacji usługi App Service, który został skonfigurowany w [tworzenie aplikacji ASP.NET w usłudze Azure App Service](app-service-web-get-started-dotnet-framework.md). Dla sekcji zadań Webjob, konieczne będzie aplikacji, który zostanie utworzony w [Rozpoczynanie pracy z usługą Azure WebJobs SDK][GetStartedWJ].
@@ -252,13 +252,13 @@ Jeśli funkcja [napisał dzienniki](https://github.com/Azure/azure-webjobs-sdk/w
 ```
 * Jeśli okaże się, że debuger nie wkroczyć do kodu, który chcesz debugować, trzeba będzie zmienić ustawienie tylko mój kod.  Aby uzyskać więcej informacji, zobacz [Określ, czy w celu debugowania tylko kodu użytkownika przy użyciu tylko mój kod w programie Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Czasomierz uruchamia się na serwerze, po włączeniu funkcji debugowania zdalnego, a po upływie 48 godzin tej funkcji jest automatycznie wyłączana. Ze względów bezpieczeństwa i wydajności odbywa się to ograniczenie 48 godzin. Można łatwo włączyć tę funkcję ponownie dowolną liczbę razy. Zaleca się pozostawienie ją wyłączoną, gdy nie są aktywnego debugowania.
-* Można ręcznie dołączyć debuger do dowolnego procesu nie tylko proces aplikacji (w3wp.exe). Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* Można ręcznie dołączyć debuger do dowolnego procesu nie tylko proces aplikacji (w3wp.exe). Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="logsoverview"></a>Przegląd dzienników diagnostycznych
 Aplikacji ASP.NET, który jest uruchamiany w aplikacji usługi App Service można utworzyć następujące rodzaje dzienników:
 
 * **Dzienniki śledzenia aplikacji**<br/>
-  Aplikacja tworzy te dzienniki przez wywołanie metody [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) klasy.
+  Aplikacja tworzy te dzienniki przez wywołanie metody [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) klasy.
 * **Dzienniki serwera sieci Web**<br/>
   Serwer sieci web tworzy wpis dziennika dla każdego żądania HTTP do aplikacji.
 * **Dzienniki komunikat szczegółowy komunikat o błędzie**<br/>
@@ -633,7 +633,7 @@ Aby uzyskać pomoc dotyczącą określonego zapytania dotyczące rozwiązywania 
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Debugowanie w Visual Studio
-Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) i [debugowania porady dotyczące programu Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](/visualstudio/debugger/debugging-in-visual-studio) i [debugowania porady dotyczące programu Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Zdalne debugowanie na platformie Azure
 Aby uzyskać więcej informacji na temat debugowania zdalnego dla aplikacji usługi App Service i zadania Webjob zobacz następujące zasoby:
@@ -650,14 +650,14 @@ Brak dostępnych nie dokładne i aktualne wprowadzenia do śledzenia ASP.NET w I
 
 * [Monitorowanie i Telemetria (tworzenie rzeczywistych aplikacji w chmurze dzięki platformie Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   Książka elektroniczna rozdziału z zaleceniami dotyczącymi śledzenie w aplikacjach w chmurze platformy Azure.
-* [Śledzenie na platformie ASP.NET](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [Śledzenie na platformie ASP.NET](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Stary, ale nadal dobry zasobem dla wstęp do tematu.
-* [Obiekty nasłuchujące śledzenia](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Wskazówki: Integracja śledzenia ASP.NET z włączonym śledzeniem System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Obiekty nasłuchujące śledzenia](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+  Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
+* [Przewodnik: Integracja śledzenia ASP.NET z włączonym śledzeniem System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   W tym artykule jest także stare, ale zawiera pewne dodatkowe informacje, które wprowadzające artykuł nie obejmuje.
 * [Śledzenie widoki ASP.NET MVC Razor](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](https://msdn.microsoft.com/library/bb397417.aspx) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:
+  Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](/previous-versions/bb397417(v=vs.140)) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:
 
 ``` c#
 try

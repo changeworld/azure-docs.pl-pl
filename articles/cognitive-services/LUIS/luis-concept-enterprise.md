@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 27217b1bdf49f5d2b22ac23a092270be42df9abf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861039"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895092"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
 Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.
@@ -31,7 +31,7 @@ Aby uzyskać ten sam intencji najważniejsze między wszystkie aplikacje, upewni
 
 Należy określić pojedynczej aplikacji jako wzorzec. Wypowiedzi, które są zalecane dla przeglądu powinien dodane do aplikacji głównej, następnie przeniesiony z powrotem do innych aplikacji. To jest pełny eksportowania aplikacji, lub ładowania etykietami wypowiedzi ze wzorca do elementów podrzędnych. Ładowanie może odbywać się za pomocą albo [LUIS](luis-reference-regions.md) witryny sieci Web lub tworzenia interfejsu API dla [pojedynczy wypowiedź](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) lub [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
+Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Przypisywanie klawiszy wielu usługi LUIS do tej samej aplikacji
 Jeśli aplikacją usługi LUIS odbiera więcej punktu końcowego trafień, niż zezwala limit przydziału jednego klucza, utworzyć i przypisać więcej kluczy do aplikacji usługi LUIS. Tworzenie Menedżera ruchu lub zarządzać zapytaniami punktu końcowego różnych kluczy punktu końcowego usługi równoważenia obciążenia. 
@@ -39,7 +39,7 @@ Jeśli aplikacją usługi LUIS odbiera więcej punktu końcowego trafień, niż 
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Gdy aplikacji monolitycznych zwraca niewłaściwy intencji
 Jeśli aplikacja jest przeznaczona do przewidywania szerokiej gamy wypowiedzi użytkownika, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie monolityczną aplikację umożliwia LUIS wykrywania fokus między opcjami pomyślnie zamiast pobieranie mylić między opcjami w aplikacji nadrzędnej i podrzędnej aplikacji. 
 
-Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
+Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Jeśli musisz mieć więcej niż 500 intencji
 Załóżmy na przykład, że opracowujemy Asystent pakietu office, który ma ponad 500 intencji. Jeśli 200 intencji odnoszą się do planowania spotkań, 200 nastąpi przypomnienia 200 nastąpi uzyskiwanie informacji dotyczących współpracowników i 200 służą do wysyłania wiadomości e-mail, intencji grupy tak, aby każda grupa znajduje się w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdy intencji. Użyj [wysyłania narzędzia i architektury](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień botowi użyć kaskadowych wywołania jako Pokaż w [samouczek dotyczący wysyłania][dispatcher-application-tutorial]. 

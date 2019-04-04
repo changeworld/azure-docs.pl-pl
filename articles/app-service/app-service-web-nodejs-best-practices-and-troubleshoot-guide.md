@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898860"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895787"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 
@@ -98,7 +98,7 @@ Wartość domyślna to false. Jeśli włączone, aplikację node można nawiąza
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-Wartość domyślna to 0, co oznacza, że ta funkcja jest wyłączona. Kiedy ustawić na wartość większą niż 0, program iisnode będą zapisywać strony pamięci się jego procesów podrzędnych co "idlePageOutTimePeriod" (w milisekundach). Zobacz [dokumentacji](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx) Aby zrozumieć, co stronie limit środków. To ustawienie jest przydatne w przypadku aplikacji, używać dużej ilości pamięci, które mają być stronie limit pamięci na dysku, od czasu do czasu, aby zwolnić pamięć RAM.
+Wartość domyślna to 0, co oznacza, że ta funkcja jest wyłączona. Kiedy ustawić na wartość większą niż 0, program iisnode będą zapisywać strony pamięci się jego procesów podrzędnych co "idlePageOutTimePeriod" (w milisekundach). Zobacz [dokumentacji](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) Aby zrozumieć, co stronie limit środków. To ustawienie jest przydatne w przypadku aplikacji, używać dużej ilości pamięci, które mają być stronie limit pamięci na dysku, od czasu do czasu, aby zwolnić pamięć RAM.
 
 > [!WARNING]
 > Włączenie następujących ustawień konfiguracji aplikacji w środowisku produkcyjnym, należy zachować ostrożność. Zaleca się nie można ich włączyć w aplikacji w środowisku produkcyjnym.
@@ -280,9 +280,9 @@ NODE.exe ma ustawienie o nazwie `NODE_PENDING_PIPE_INSTANCES`. W usłudze Azure 
 
 Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat aplikacji w technologii node.js w usłudze Azure App Service.
 
-* [Get started with Node.js web apps in Azure App Service (Rozpoczynanie pracy z aplikacjami internetowymi Node.js w usłudze Azure App Service)](app-service-web-get-started-nodejs.md)
+* [Rozpoczynanie pracy z aplikacjami internetowymi środowiska Node.js w usłudze Azure App Service](app-service-web-get-started-nodejs.md)
 * [How to debug a Node.js web app in Azure App Service (Jak debugować aplikację internetową Node.js w usłudze Azure App Service)](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
-* [Centrum deweloperów środowiska Node.js](../nodejs-use-node-modules-azure-apps.md)
+* [Node.js Developer Center (Centrum deweloperów środowiska Node.js)](../nodejs-use-node-modules-azure-apps.md)
 * [Exploring the Super Secret Kudu Debug Console (Szczegółowe informacje o ściśle tajnej konsoli debugowania aparatu Kudu)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

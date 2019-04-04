@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9d358c021f795172e7ced0ba2a2f309a0a0dab6e
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e0556eb5cc3d0f140067a4e3b4a9054a47b91417
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649731"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481490"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Usługa Azure Stack certyfikaty podpisywania generowania żądania
 
@@ -50,13 +50,13 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 1. Zainstaluj AzsReadinessChecker z wiersz polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
-    ```PowerShell  
+    ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
 2. Zadeklaruj **podmiotu** jako słownik uporządkowany. Na przykład:
 
-    ```PowerShell  
+    ```powershell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
     ```
 
@@ -65,7 +65,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 3. Zadeklaruj katalog wyjściowy, który już istnieje. Na przykład:
 
-    ```PowerShell  
+    ```powershell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ```
 
@@ -73,19 +73,19 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
     Usługa Azure Active Directory
 
-    ```PowerShell
+    ```powershell
     $IdentitySystem = "AAD"
     ```
 
     Usługi Active Directory Federation Services
 
-    ```PowerShell
+    ```powershell
     $IdentitySystem = "ADFS"
     ```
 
 5. Zadeklaruj **nazwa regionu** i **FQDN zewnętrznej** przeznaczone do wdrożenia usługi Azure Stack.
 
-    ```PowerShell
+    ```powershell
     $regionName = 'east'
     $externalFQDN = 'azurestack.contoso.com'
     ```
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 6. Aby wygenerować certyfikat podpisywania żądania dla każdej nazwy DNS:
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
@@ -103,7 +103,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 7. Możesz też dla środowisk projektowych/testowych, aby wygenerować żądanie certyfikatu jednego z wielu nazwy alternatywnej podmiotu dodać **- RequestType SingleCSR** parametru i wartości (**nie** zalecane dla środowisk produkcyjnych):
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
@@ -111,7 +111,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
 8. Przejrzyj dane wyjściowe:
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
 
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont

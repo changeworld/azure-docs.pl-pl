@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418690"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895549"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -88,15 +88,15 @@ Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojed
 
 |Przedstawiono maszyny|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Przeznaczenie|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Złożone**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
 |✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchiczna**](#hierarchical-entity)|Grupowanie proste jednostki.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**List**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
 |Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
+|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Wstępnie utworzone**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regular Expression**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Proste**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
 
-Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykład dla każdego intencji. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endoint-utt.md). 
+Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykład dla każdego intencji. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endpoint-utterances.md). 
 
 Jednostki pattern.any muszą być oznaczone w [wzorzec](luis-how-to-model-intent-pattern.md) przykłady szablonów, nie przykłady intencji użytkownika. 
 

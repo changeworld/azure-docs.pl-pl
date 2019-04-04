@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8ebf9826f156245381ce3503dc64275bca571cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890794"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895972"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -23,15 +23,17 @@ Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi 
 ## <a name="video-insights"></a>Informacjom o filmie wideo
 
 - **Wykrywanie twarzy**: Wykrywa i grupuje twarzy w filmie wideo.
-- **Identyfikacja osobistości**: Indeksator wideo automatycznie rozpoznaje osobistości ponad 1 milion — takich jak liderów world aktorów i aktorki, sportowców, pracowników naukowo-badawczych, firm i liderzy techniczni na całym świecie. Dane dotyczące tych osobistości można znaleźć również w różnych znanych witrynach internetowych, takich jak IMDB czy Wikipedia.
+- **Identyfikacja osobistości**: Indeksator wideo automatycznie rozpoznaje osobistości ponad 1 milion — liderów świata, aktorów, aktorki, sportowców, pracowników naukowo-badawczych, praca i liderzy techniczni na całym świecie. Dane dotyczące tych osobistości można znaleźć również w różnych znanych witrynach internetowych, takich jak IMDB czy Wikipedia.
 - **Identyfikowanie twarzy oparte na koncie**: Usługa Video Indexer przygotowuje modelu dla określonego konta. Rozpoznaje twarzy w filmie wideo, na podstawie uczonego modelu. Aby uzyskać więcej informacji, zobacz [dostosowania modelu osoby w witrynie sieci Web Video Indexer](customize-person-model-with-website.md) i [dostosować model osoby przy użyciu interfejsu API indeksatora wideo](customize-person-model-with-api.md).
 - **Wyodrębnianie miniatury dla twarzy** ("najlepsza twarzy"): Automatycznie identyfikuje najlepiej twarzy przechwyconych w każdej grupie twarze (w oparciu jakości, rozmiar i położenie czołowego) i wyodrębnij go jako zasób obrazu.
 - **Rozpoznawanie tekstu Visual** (OCR): Wyodrębnianie tekstu wyświetlanego wizualnie w trakcie filmu wideo.
 - **Moderowanie zawartości Visual**: Wykrywa przeznaczonej dla osób dorosłych i/lub erotycznej wizualizacji.
 - **Identyfikator etykiety**: Identyfikuje obiektów wizualnych i wyświetlane czynności.
-- **Zrzut wykrywania**: Określa, kiedy zmiany sceny, w trakcie filmu wideo.
+- **Segmentacja sceny**: Określa zmiany scenę w oparciu o podpowiedzi wizualne wideo. Scena przedstawia pojedyncze zdarzenie i składa się przez kolejne zrzuty, które są semantycznie ze sobą powiązane. 
+- **Zrzut wykrywania**: Określa, kiedy zrzut zmienia się w oparciu o podpowiedzi wizualne wideo. Zrzut jest serią ramek wykonane z tego samego aparatu obraz ruchu. Aby uzyskać więcej informacji, zobacz [scen, zrzuty i klatki kluczowe](scenes-shots-keyframes.md).
 - **Wykrywanie ramki czarnego**: Identyfikuje czarne ramek przedstawiony w wideo.
 - **Ramka kluczowa wyodrębniania**: Wykrywa stabilne ramek kluczowych w filmie wideo.
+- **Stopniowe środki na korzystanie z**: Identyfikowanie początek i koniec stopniowe środków na końcu programów telewizyjnych i filmów.
 
 ## <a name="audio-insights"></a>Audio insights
 
@@ -69,15 +71,14 @@ Do korzystania z tej usługi możesz się zarejestrować za pomocą już posiada
 Poniżej przedstawiono kilka scenariuszy, w których usługa Video Indexer może być przydatna
 
 - Wyszukiwanie — szczegółowe informacje wyodrębnione z wideo mogą służyć do rozbudowy funkcji wyszukiwania w bibliotece wideo. Na przykład indeksowanie wypowiedzianych słów i twarzy może umożliwić wyszukiwanie w wideo momentów, gdy konkretna osoba wypowiada określone słowa lub gdy dwie osoby są widoczne razem. Wyszukiwanie oparte na takich szczegółowych informacjach przyda się agencjom informacyjnym, instytucjom edukacyjnych, nadawcom, właścicielom zawartości rozrywkowej, w aplikacjach LOB dla przedsiębiorstw i ogólnie w każdej branży z biblioteką wideo, którą użytkownicy muszą przeszukiwać.
-
+- Tworzenie zawartości — szczegółowe informacje wyodrębnione z filmów wideo i skutecznie tworzenia zawartości, takich jak przyczepy zawartości mediów społecznościowych, grup dyskusyjnych klipy wideo itd. z istniejącej zawartości w warstwie archiwum organizacji 
 - Monetyzacja— usługa Video Indexer może zwiększyć wartość wideo. Przykładowo w branżach zarabiających na reklamach (takich jak media informacyjne czy społecznościowe) możliwe jest dostarczanie trafniejszych reklam przez przekazywanie wyodrębnionych szczegółowych informacji jako dodatkowych danych do serwera reklamowego (wyświetlenie reklamy butów sportowych bardziej pasuje do meczu futbolowego niż zawodów pływackich).
-
 - Zaangażowanie użytkowników — szczegółowe informacje o wideo mogą służyć do zwiększenia stopnia zaangażowania użytkowników przez ustawianie dla nich wideo na odpowiednich momentach. Jako przykład weźmy wideo edukacyjne, w którym przez pierwsze 30 minut omawiane są sfery, a przez kolejne 30 minut — ostrosłupy. Uczeń czytający o ostrosłupach będzie bardziej zadowolony, jeśli wideo będzie ustawione na znaczniku 30. minuty.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Możesz już rozpocząć pracę z usługą Video Indexer. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Rozpoczynanie korzystania z witryny internetowej usługi Video Indexer](video-indexer-get-started.md)
-- [Przetwarzanie zawartości przy użyciu interfejsu REST API usługi Video Indexer](video-indexer-use-apis.md)
-- [Osadzanie widgetów wizualnych w aplikacji](video-indexer-embed-widgets.md)
+- [Rozpoczynanie pracy z usługą Video Indexer witryny sieci Web](video-indexer-get-started.md)
+- [Przetwarzanie zawartości przy użyciu interfejsu REST API indeksatora wideo](video-indexer-use-apis.md)
+- [Osadzanie widżetów visual w aplikacji](video-indexer-embed-widgets.md)

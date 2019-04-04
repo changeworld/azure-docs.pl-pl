@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/26/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 0de021f4666da805eab8faba527f7c5322c39e9d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9d495087a0b3db5bba3b00fa9d0d40c91e5e9244
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763456"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497861"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Omówienie planu, oferty, przydziału i subskrypcji
 
@@ -47,11 +47,14 @@ Po utworzeniu oferty użytkowników może być subskrybowana przez dostęp do us
 
 ## <a name="plans"></a>Plany
 
-Plany są grupowania co najmniej jednej usługi. Jako operatorów usługi Azure Stack możesz [tworzyć plany](azure-stack-create-plan.md) do zaoferowania użytkownikom. Z kolei użytkownicy subskrybują oferty, aby korzystać z planów i usług, które należą do. Podczas tworzenia planów, pamiętaj ustawić limity przydziału, zdefiniuj swoje plany podstawowe i należy rozważyć umieszczenie planów dodatków opcjonalne.
+Plany są grupami obejmującymi co najmniej jedną usługę. Jako operatorów usługi Azure Stack możesz [tworzyć plany](azure-stack-create-plan.md) do zaoferowania użytkownikom. Z kolei użytkownicy mogą subskrybować oferty, aby korzystać z planów i objętych nimi usług. Podczas tworzenia planów, pamiętaj ustawić limity przydziału, zdefiniuj swoje plany podstawowe i należy rozważyć umieszczenie planów dodatków opcjonalne.
 
 ### <a name="quotas"></a>Przydziały
 
 Aby ułatwić zarządzanie pojemnością chmury, możesz użyć wstępnie skonfigurowane *przydziały*, lub Utwórz nowy limit przydziału dla każdej usługi w ramach planu. Przydziały definiują limity górny zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału mogą zezwalać na użytkownika, aby utworzyć do pięciu maszyn wirtualnych (VM).
+
+> [!IMPORTANT]
+> Może upłynąć do dwóch godzin nowe przydziały, które mają być dostępne w portalu użytkowników, lub przed zmienionych limitu przydziału jest wymuszany.
 
 Można skonfigurować przydziały uporządkowane według regionów. Na przykład plan, które świadczy usługi compute dla regionu, A może mieć limit przydziału dwie maszyny wirtualne.
 

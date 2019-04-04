@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 848b2a0c912a00a2185d7e4b7b8d8446bc1f6aca
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349709"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497181"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-[Przydziały](azure-stack-plan-offer-quota-overview.md#plans) definiowania ograniczeń zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału może zezwolić użytkownikowi na utworzenie maksymalnie pięć maszyn wirtualnych. Każdy zasób może mieć własne typy przydziałów.
+[Przydziały](azure-stack-plan-offer-quota-overview.md#plans) definiowania ograniczeń zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału może zezwolić użytkownikowi na utworzenie maksymalnie pięciu maszyn wirtualnych. Każdy zasób może mieć własne typy limitów przydziałów.
+
+> [!IMPORTANT]
+> Może upłynąć do dwóch godzin nowe przydziały, które mają być dostępne w portalu użytkowników, lub przed zmienionych limitu przydziału jest wymuszany.
 
 ## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych
 
@@ -41,9 +44,9 @@ ms.locfileid: "58349709"
 | Maksymalną pojemność dysku zarządzanego w warstwie premium (w GB) | 2048 | Maksymalna pojemność premium usługa managed disks, które mogą być tworzone w tej lokalizacji. |
 
 > [!NOTE]  
-> Maksymalna pojemność dysku niezarządzanego (stronicowych obiektów blob) różni się od limitu przydziału dysku zarządzanego, należy ją ustawić limit przydziału magazynu.
+> Maksymalna pojemność dysk niezarządzany (stronicowych obiektów blob) różni się od limitu przydziału dysku zarządzanego. Tę wartość można ustawić **przydziały pamięci masowej**.
 
-## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
+## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu
 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
@@ -51,13 +54,13 @@ ms.locfileid: "58349709"
 | Łączna liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które można utworzyć subskrypcji, w tej lokalizacji. |
 
 > [!NOTE]  
-> Może upłynąć do dwóch godzin, zanim przydział magazynowania jest wymuszany. Maksymalna pojemność dysku zarządzanego jest oddzielony od limitu przydziału pamięci masowej, powinna być ustawiona w przydziału obliczeniowego.
+> Maksymalna pojemność dysków zarządzanych jest niezależna od limitu przydziału pamięci masowej. Tę wartość można ustawić **obliczenia przydziały**.
 
 ## <a name="network-quota-types"></a>Typy przydziałów sieci
 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna publicznych adresów IP |50 |Maksymalna liczba publicznych adresów IP, który subskrypcji można utworzyć w tej lokalizacji. |
+| Maksymalna publicznych adresów IP |50 |Maksymalna liczba publicznych adresów IP, które subskrypcji można utworzyć w tej lokalizacji. |
 | Maksymalna sieci wirtualnych |50 |Maksymalna liczba sieci wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
 | Bramy sieci wirtualnej |1 |Maksymalna liczba bram sieci wirtualnej (bram sieci VPN), które subskrypcji można utworzyć w tej lokalizacji. |
 | Połączenia sieciowe maksymalna |2 |Maksymalna liczba połączeń sieciowych (point-to-point lub site-to-site), które subskrypcji można utworzyć we wszystkich bram sieci wirtualnej w tej lokalizacji. |

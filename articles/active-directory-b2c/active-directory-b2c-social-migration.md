@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089356"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894905"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrowanie użytkowników z tożsamościami społecznościowymi
 Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: Kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
@@ -63,7 +63,7 @@ Na poniższej liście przedstawiono właściwości, które są wymagane w przypa
 * **userIdentities** — co najmniej jeden rekord tożsamości użytkownika, które określają ubezpieczenia konta, typ i identyfikator unikatowy użytkownika z dostawcy tożsamości społecznościowych.
 * [opcjonalnie] **otherMails** — w przypadku konta w sieci społecznościowej tylko adresy e-mail użytkowników 
 
-Aby uzyskać więcej informacji, zobacz: [Dokumentacja interfejsu API programu Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+Aby uzyskać więcej informacji, zobacz: [Dokumentacja interfejsu API programu Graph](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrowanie konta (tylko) w sieci społecznościowej
 Można utworzyć tylko konta społecznościowego bez poświadczeń konta lokalnego. Wysłanie żądania POST protokołu HTTPS do interfejsu API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego do utworzenia. Jako minimum należy określić wymagane właściwości. 

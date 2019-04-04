@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 3dfb87e5f6c231831cd9c007b19ad001e1fce326
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b6a859f1104be8650b95ac789f3da606fb1b70f6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403191"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486686"
 ---
 # <a name="validate-azure-identity"></a>Weryfikowanie tożsamości platformy Azure
 
@@ -85,7 +85,7 @@ Wymagane są następujące składniki:
 
 4. Po uruchomieniu narzędzia, przejrzyj dane wyjściowe. Upewnij się, ma stan **OK** wymagań instalacyjnych. Pomyślnej weryfikacji wygląda podobnie do następującego:
 
-   ```shell
+   ```powershell
    Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
    Starting Azure Identity Validation
 
@@ -119,7 +119,7 @@ Poniższe przykłady zapewnić wskazówki dotyczące typowych błędów sprawdza
 
 ### <a name="expired-or-temporary-password"></a>Hasło wygasło lub tymczasowego
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -145,9 +145,9 @@ Login-AzureRMAccount
 
 Alternatywnie, zaloguj się do [witryny Azure portal](https://portal.azure.com) jako właściciela konta, a użytkownik musi zmienić hasło.
 
-### <a name="unknown-user-type"></a>Typ Nieznany użytkownik
-
-```shell
+### <a name="unknown-user-type"></a>Typ Nieznany użytkownik 
+ 
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -173,7 +173,7 @@ Login-AzureRmAccount –EnvironmentName AzureChinaCloud
 
 ### <a name="account-is-not-an-administrator"></a>Konto nie jest administratorem
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -197,6 +197,6 @@ Usługa Azure Stack wymaga, że nazwa domeny jest nazwa domeny głównej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Sprawdź poprawność rejestracji platformy Azure](azure-stack-validate-registration.md)  
+[Validate Azure registration (Sprawdzanie poprawności rejestracji na platformie Azure)](azure-stack-validate-registration.md)  
 [Wyświetl raport gotowości](azure-stack-validation-report.md)  
 [Zagadnienia dotyczące integracji usługi Azure Stack ogólne](azure-stack-datacenter-integration.md)  

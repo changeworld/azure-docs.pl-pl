@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: d0c5ba41bc636479407e7580fa686fe1bba91612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873203"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893439"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planowanie aplikacji usługi LUIS z domeny podmiotu, intencje i podmioty
 
@@ -49,7 +49,7 @@ Po ustaleniu, które obiekty do użycia w aplikacji, należy pamiętać o tym, �
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po Twojej aplikacji jest uczony opublikowane i pobiera wypowiedzi punktu końcowego, planu wdrożenia przewidywanie ulepszenia [aktywne uczenie](luis-how-to-review-endoint-utt.md), [frazę list](luis-concept-feature.md), i [wzorców](luis-concept-patterns.md). 
+Po Twojej aplikacji jest uczony opublikowane i pobiera wypowiedzi punktu końcowego, planu wdrożenia przewidywanie ulepszenia [aktywne uczenie](luis-how-to-review-endpoint-utterances.md), [frazę list](luis-concept-feature.md), i [wzorców](luis-concept-patterns.md). 
 
 
 * Zobacz [Utwórz swoją pierwszą aplikację Language Understanding Intelligent Services (LUIS)](luis-get-started-create-app.md) szybki Przewodnik tworzenia aplikacji usługi LUIS.

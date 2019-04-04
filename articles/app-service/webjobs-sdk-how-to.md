@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 81401d95b9c40f16a6e593d61b79f5c2d647c0c5
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518834"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895211"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -130,7 +130,7 @@ static void Main()
 
 W wersji 3. *x*, limitu połączeń, wartość domyślna to nieskończoną połączeń. Jeśli z jakiegoś powodu, musisz zmienić ten limit, można użyć [ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) właściwość [ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler) klasy.
 
-W wersji 2. *x*, kontrolować liczbę jednoczesnych połączeń z hostem za pomocą [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) interfejsu API. W wersji 2. *x*, należy zwiększyć tę wartość z domyślnej wartości 2 przed uruchomieniem hosta usługi WebJobs.
+W wersji 2. *x*, kontrolować liczbę jednoczesnych połączeń z hostem za pomocą [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) interfejsu API. W wersji 2. *x*, należy zwiększyć tę wartość z domyślnej wartości 2 przed uruchomieniem hosta usługi WebJobs.
 
 Wszystkie wychodzące żądania HTTP, wprowadzone przez funkcję za pomocą `HttpClient` przepływać przez `ServicePointManager`. Po osiągnięciu wartości ustawionej `DefaultConnectionLimit`, `ServicePointManager` uruchamia Kolejkowanie żądania przed ich wysłaniem. Załóżmy, że Twoje `DefaultConnectionLimit` jest równa 2, a kod sprawia, że 1000 HTTP żądań. Początkowo tylko dwa żądania mogą za pomocą systemu operacyjnego. Inne 998 są umieszczane w kolejce do momentu miejsca dla nich. Oznacza to, że Twoje `HttpClient` może upłynąć limit czasu, ponieważ prawdopodobnie wprowadzono żądanie, ale żądanie nigdy nie zostało wysłane przez system operacyjny na serwerze docelowym. Dlatego może zostać wyświetlony zachowanie, które prawdopodobnie nie ma sensu: lokalnej `HttpClient` trwa 10 sekund na ukończenie żądania przez, ale zwraca każdego żądania usługi w 200 ms. 
 
@@ -1010,7 +1010,7 @@ config.LoggerFactory = new LoggerFactory()
 
 W tym artykule udostępnił fragmenty kodu pokazujące sposób obsługi typowe scenariusze dotyczące pracy z zestawem SDK usługi WebJobs. Aby uzyskać pełne przykładów, zobacz [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples).
 
-[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+["W kontekście wykonywania"]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
 [`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
 [`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer

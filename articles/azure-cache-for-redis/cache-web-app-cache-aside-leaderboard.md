@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234870"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893745"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: Tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji dotyczących tego pakietu, zobacz stronę pakiet
     using System.Data.Entity.SqlServer;
     ```
 
-1. Zastąp definicję klasy `Team` poniższym fragmentem kodu, który zawiera zaktualizowaną definicję klasy `Team` oraz niektóre inne klasy pomocnika platformy Entity Framework. W tym samouczku stosowane jest podejście Code First z platformą Entity Framework. Takie podejście umożliwia platformie Entity Framework utworzenie bazy danych z poziomu kodu. Więcej informacji na temat podejścia typu Code First na platformie Entity Framework używanego w tym samouczku znajduje się w artykule [Code first to a new database](https://msdn.microsoft.com/data/jj193542) (Rozwiązanie Code First dla nowej bazy danych).
+1. Zastąp definicję klasy `Team` poniższym fragmentem kodu, który zawiera zaktualizowaną definicję klasy `Team` oraz niektóre inne klasy pomocnika platformy Entity Framework. W tym samouczku stosowane jest podejście Code First z platformą Entity Framework. Takie podejście umożliwia platformie Entity Framework utworzenie bazy danych z poziomu kodu. Więcej informacji na temat podejścia typu Code First na platformie Entity Framework używanego w tym samouczku znajduje się w artykule [Code first to a new database](/ef/ef6/modeling/code-first/workflows/new-database) (Rozwiązanie Code First dla nowej bazy danych).
 
     ```csharp
     public class Team
@@ -741,7 +741,7 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 
     Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Jak skalować usługę Azure Cache for Redis](./cache-how-to-scale.md)
+> [Jak skalować pamięć podręczna systemu Azure dla usługi Redis](./cache-how-to-scale.md)

@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854326"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895454"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Uruchamianie wieloetapowych kompilacji, testów i zadania poprawki w zadaniach usługi ACR
 
@@ -32,8 +32,6 @@ Na przykład można uruchomić zadanie z krokami, które automatyzują logiki po
 
 Wszystkie kroki są wykonywane w ramach platformy Azure, Odciążanie pracy zasoby obliczeniowe platformy Azure i dzięki temu możesz z zarządzania infrastrukturą. Oprócz usługi Azure container registry płacisz tylko za wykorzystane zasoby. Aby uzyskać informacje o cenach, zobacz **Tworzenie kontenera** sekcji [cennika usługi Azure Container Registry][pricing].
 
-> [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="common-task-scenarios"></a>Typowe scenariusze zadania
 
@@ -49,14 +47,14 @@ Zadania wieloetapowe obsługi takich scenariuszy jak Poniższa logika:
 
 Zadania wieloetapowe w zadaniach usługi ACR jest zdefiniowany jako szereg kroków w ramach pliku YAML. Każdy krok można określić zależności po pomyślnym ukończeniu przynajmniej jednego z poprzednich kroków. Dostępne są następujące typy zadań w kroku:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Kompilacja jednego lub więcej obrazów kontenerów przy użyciu dobrze znanej `docker build` składnię, w serii lub równolegle.
-* [`push`](container-registry-tasks-reference-yaml.md#push): Push wbudowane obrazy do rejestru kontenerów. Rejestry prywatne, takie jak usługa Azure Container Registry są obsługiwane, ponieważ jest publicznej usługi Docker Hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Uruchamiania kontenera, w taki sposób, że może działać jako funkcję w kontekście bieżące zadanie. Parametry można przekazać do kontenera `[ENTRYPOINT]`i określ właściwości, takie jak env, odłączyć i inne znany `docker run` parametrów. `cmd` Typ kroku umożliwia jednostki i testy funkcjonalne z dzięki wykonywanie równoczesne kontenera.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Tworzenie jednego lub więcej obrazów kontenerów przy użyciu dobrze znanej `docker build` składnię, w serii lub równolegle.
+* [`push`](container-registry-tasks-reference-yaml.md#push): Wypychaj obrazy utworzone do rejestru kontenerów. Rejestry prywatne, takie jak usługa Azure Container Registry są obsługiwane, ponieważ jest publicznej usługi Docker Hub.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Uruchomienia kontenera, w taki sposób, że może działać jako funkcję w kontekście bieżące zadanie. Parametry można przekazać do kontenera `[ENTRYPOINT]`i określ właściwości, takie jak env, odłączyć i inne znany `docker run` parametrów. `cmd` Typ kroku umożliwia jednostki i testy funkcjonalne z dzięki wykonywanie równoczesne kontenera.
 
 Poniższe fragmenty kodu przedstawiają sposób łączenia tych typów krok zadania. Zadania wieloetapowe mogą być proste i polega na tworzeniu pojedynczy obraz z pliku Dockerfile i Wypychanie do rejestru, przy użyciu pliku YAML, podobnie jak:
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 Lub bardziej skomplikowane, jak to fikcyjna definicji wieloetapowy, która obejmuje kroki kompilacji, testów, pakiet narzędzia helm i helm wdrażanie (rejestr kontenerów i konfiguracja repozytorium narzędzia Helm niewyświetlany):
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -150,14 +148,6 @@ Run ID: yd14 was successful after 19s
 ```
 
 Aby dowiedzieć się więcej o automatycznych kompilacji po aktualizacji obraz zatwierdzenia lub podstawowa usługi Git, zobacz [Automatyzowanie kompilacji obrazów](container-registry-tutorial-build-task.md) i [podstawowa kompilacje aktualizacji obrazów](container-registry-tutorial-base-image-update.md) kolejnymi artykułami samouczków.
-
-## <a name="preview-feedback"></a>Opinii dotyczących wersji zapoznawczej
-
-Gdy ta funkcja wieloetapowych zadań, zadań rejestru Azure container Registry jest dostępna w wersji zapoznawczej, zachęcamy do opinii. Dostępnych jest kilka kanałami przesyłania opinii:
-
-* [Problemy z](https://aka.ms/acr/issues) — wyświetlanie istniejących usterek i problemów i rejestrować nowe
-* [UserVoice](https://aka.ms/acr/uservoice) -zagłosować na istniejące żądania funkcji lub Utwórz nowe żądania
-* [Omówić](https://aka.ms/acr/feedback) -prowadzenia dyskusji społeczności witryny Stack Overflow usługi Azure Container Registry
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 06cb29d6d04fb314f9eefa63d7a2b628a2af846b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769383"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481124"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Sprawdzanie poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 
@@ -67,12 +67,12 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
 
 1. Zainstaluj **AzsReadinessChecker** w wierszu polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
-    ```PowerShell  
+    ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
 2. Tworzenie struktury katalogów certyfikatu. W poniższym przykładzie można zmienić `<c:\certificates>` nową ścieżkę katalogu wybranych przez użytkownika.
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
     $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
     > [!Note]  
     > Wykres i usług AD FS są wymagane, jeśli używasz usług AD FS w systemie tożsamości. Na przykład:
     >
-    > ```PowerShell  
+    > ```powershell  
     > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     > ```
     
@@ -96,7 +96,7 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
 
 3. W oknie programu PowerShell, należy zmienić wartości **RegionName** i **FQDN** odpowiednie do środowiska usługi Azure Stack i uruchom następujące polecenie:
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
@@ -104,7 +104,7 @@ Wykonaj następujące kroki, aby przygotować się, jak i do sprawdzania poprawn
 
 4. Sprawdź dane wyjściowe i wszystkich certyfikatów pomyślnie przejść wszystkie testy. Na przykład:
 
-```PowerShell
+```powershell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
 Testing: ARM Public\ssl.pfx
 Thumbprint: 7F6B27****************************E9C35A
@@ -156,7 +156,7 @@ Invoke-AzsCertificateValidation Completed
 
  - Inne certyfikaty są pomijane, jeśli łańcuch certyfikatów nie powiedzie się.
 
-    ```PowerShell  
+    ```powershell  
     Testing: ACSBlob\singlewildcard.pfx
         Read PFX: OK
         Signature Algorithm: OK
@@ -185,13 +185,13 @@ Powyższe kroki należy wykonać do przygotowania i zweryfikuj certyfikaty infra
 
 1.  Zainstaluj **AzsReadinessChecker** w wierszu polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
-    ```PowerShell  
+    ```powershell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ```
 
 2.  Tworzenie zagnieżdżonych hashtable, zawierające ścieżki i hasło, aby każdy z certyfikatów PaaS wymagające weryfikacji. W oknie programu PowerShell, uruchom:
 
-    ```PowerShell  
+    ```powershell  
         $PaaSCertificates = @{
         'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
         'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -203,12 +203,12 @@ Powyższe kroki należy wykonać do przygotowania i zweryfikuj certyfikaty infra
 
 3.  Zmienianie wartości **RegionName** i **FQDN** pod kątem danego środowiska usługi Azure Stack, aby rozpocząć sprawdzanie poprawności. Następnie uruchom polecenie:
 
-    ```PowerShell  
+    ```powershell  
     Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
 4.  Sprawdź, czy dane wyjściowe i że wszystkie certyfikaty pomyślnie przejść wszystkie testy.
 
-    ```PowerShell
+    ```powershell
     Invoke-AzsCertificateValidation v1.0 started.
     Thumbprint: 95A50B****************************FA6DDA
         Signature Algorithm: OK

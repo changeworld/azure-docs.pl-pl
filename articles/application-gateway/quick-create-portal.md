@@ -8,18 +8,21 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b474d3579a7c20c190a427f503d97ec7471a1b12
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 42d3bd2285574b4416ec06af13006353880a7ca5
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091158"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903526"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
 Ten przewodnik Szybki Start dowiesz się, jak utworzyć bramę aplikacji za pomocą witryny Azure portal.  Po utworzeniu bramy application gateway, możesz go przetestować, aby upewnić się, że działa prawidłowo. Za pomocą usługi Azure Application Gateway możesz przekazać ruchu aplikacji sieci web do określonych zasobów, przypisując odbiorników portów, tworząc reguły i dodawanie zasobów do puli zaplecza. Dla uproszczenia w tym artykule używany jest prostą konfigurację obejmującą publicznego adresu IP frontonu, podstawowy odbiornik do hosta jednej lokacji w tej bramy application gateway, dwie maszyny wirtualne, które służy do puli zaplecza i regułę routingu podstawowego żądania.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -123,7 +126,7 @@ W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -134,7 +137,7 @@ W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych
       -Location EastUS
     ```
 
-3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki ukończone wcześniej. Użyj wartości *myVM2* jako nazwy maszyny wirtualnej oraz jako wartości ustawienia **VMName** polecenia cmdlet **Set-AzureRmVMExtension**.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki ukończone wcześniej. Użyj *myVM2* dla nazwy maszyny wirtualnej i **VMName** ustawienie **AzVMExtension zestaw** polecenia cmdlet.
 
 ### <a name="add-backend-servers-to-backend-pool"></a>Dodawanie serwerów wewnętrznej bazy danych do puli zaplecza
 
@@ -174,4 +177,4 @@ Aby usunąć grupę zasobów:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-manage-web-traffic-cli.md)
+> [zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-manage-web-traffic-cli.md)

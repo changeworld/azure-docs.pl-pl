@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae5a824fbd96a9a76eb18811a46bfc17afa15073
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243338"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879356"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>Informacje o wersji dostawcy 1.1.33.0 zasobów SQL
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszenia i znane problemy w wersji dostawcy zasobów 1.1.33.0 SQL.
 
@@ -50,7 +50,8 @@ Ta wersja dostawcy zasobów usługi Azure Stack SQL obejmuje następujące uleps
 
 - **Poprzedniego wdrożenia (1.1.30.0) dostawcy zasobów SQL może się nie powieść, jeśli nie włączono protokołu TLS 1.2**. Zaktualizowano dostawcy zasobów bazy danych SQL 1.1.33.0 umożliwiające protokołu TLS 1.2, wdrażając dostawcy zasobów, aktualizowanie dostawcy zasobów lub rotacji kluczy tajnych. 
 
-- **Obrót tajny dostawcy zasobów SQL nie powiedzie się**. Rozwiązano problem, co w przypadku rotacji kluczy tajnych następujący kod błędu: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **Obrót tajny dostawcy zasobów SQL nie powiedzie się**. Rozwiązano problem, co w przypadku rotacji kluczy tajnych następujący kod błędu:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Znane problemy 
 

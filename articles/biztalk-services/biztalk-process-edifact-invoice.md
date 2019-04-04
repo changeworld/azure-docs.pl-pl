@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7093be36e34785d4153c257d411128efe463dee1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550126"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918964"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Samouczek: Przetwarzanie faktur EDIFACT za pomocą usługi Azure BizTalk Services
 
@@ -55,9 +55,9 @@ Uzyskanie tego scenariusza biznesowego, firma Contoso używa funkcji oferowanych
 Aby ukończyć ten scenariusz, użyjemy kolejek usługi Service Bus Faktura z firmy Contoso do Northwind lub odebrać potwierdzenia z Northwind. Te kolejki mogą być tworzone za pomocą aplikacji klienckiej, który jest dostępny do pobrania i znajduje się w pakiecie przykładowych, który jest dostępny w ramach tego samouczka.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Konieczne jest posiadanie przestrzeni nazw usługi Service Bus. Aby uzyskać instrukcje dotyczące tworzenia przestrzeni nazw, zobacz [How to: Utwórz lub zmodyfikuj Namespace usługi Service Bus Service](https://msdn.microsoft.com/library/azure/hh674478.aspx). Daj nam założono, że już zainicjowano obsługę administracyjną, przestrzeni nazw usługi Service Bus o nazwie **edifactbts**.
+* Konieczne jest posiadanie przestrzeni nazw usługi Service Bus. Aby uzyskać instrukcje dotyczące tworzenia przestrzeni nazw, zobacz [How to: Utwórz lub zmodyfikuj Namespace usługi Service Bus Service](/previous-versions/azure/azure-services/hh674478(v=azure.100)). Daj nam założono, że już zainicjowano obsługę administracyjną, przestrzeni nazw usługi Service Bus o nazwie **edifactbts**.
 * Musisz mieć subskrypcję usługi BizTalk Services. Na potrzeby tego samouczka, Daj nam założono, że masz subskrypcję usługi BizTalk Services, o nazwie **contosowabs**.
-* Zarejestruj swoją subskrypcję usługi BizTalk Services w portalu usługi BizTalk Services. Aby uzyskać instrukcje, zobacz [rejestrowanie wdrożenia usługi BizTalk w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/hh689837.aspx)
+* Zarejestruj swoją subskrypcję usługi BizTalk Services w portalu usługi BizTalk Services. Aby uzyskać instrukcje, zobacz [rejestrowanie wdrożenia usługi BizTalk w portalu usługi BizTalk Services](/previous-versions/azure/hh689837(v=azure.100))
 * Musisz mieć zainstalowany program Visual Studio.
 * Musisz mieć zainstalowany zestaw SDK usługi BizTalk Services. Możesz pobrać zestaw SDK z [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
 

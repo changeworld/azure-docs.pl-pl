@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: d8fa510d8a7eb7d9f5a0e9d3c7475dc76fe8207d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 188cb21688ee092db426e51c6ae327def3ff02d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554001"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919307"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "57554001"
 | [Współadministratorów](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |200 |200 |
 | [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na subskrypcję<sup>2</sup> |100 |100 |
 | [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |20 |200 |
-| [Sieci lokalne](https://msdn.microsoft.com/library/jj157100.aspx) na subskrypcję |10 |500 |
+| [Sieci lokalne](/previous-versions/azure/reference/jj157100(v=azure.100)) na subskrypcję |10 |500 |
 | Serwery DNS na subskrypcję |9 |100 |
 | Zastrzeżone adresy IP na subskrypcję |20 |100 |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |256 |256 |

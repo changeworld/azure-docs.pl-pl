@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371863"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894597"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
-Usługi Azure AD samoobsługowego resetowania haseł (SSPR) i usługi Multi-Factor Authentication (MFA) może poprosić o dodatkowe informacje, znane jako metody uwierzytelniania lub informacje zabezpieczające, aby potwierdzić, że osoby Załóżmy, że podczas używania funkcji skojarzone.
+Wybieranie metod uwierzytelniania dla usługi Azure Multi-Factor Authentication i samoobsługi hasło administratora resetowania (SSPR) zaleca się wymagać od użytkowników zarejestrowania wielu metod uwierzytelniania. Gdy metoda uwierzytelniania nie jest dostępna dla użytkownika, można ich do uwierzytelniania za pomocą innej metody.
 
-Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego. Niektórych metod uwierzytelniania nie może być dostępna dla wszystkich funkcji.
+Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego. Niektórych metod uwierzytelniania nie może być dostępna dla wszystkich funkcji. Aby uzyskać więcej informacji o konfigurowaniu zasad, zobacz artykuły [jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł](howto-sspr-deployment.md) i [planowanie oparte na chmurze usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkownikom, aby wybrać więcej niż minimalna wymagana liczba metod uwierzytelniania w przypadku, gdy nie mają dostępu do jednego.
 

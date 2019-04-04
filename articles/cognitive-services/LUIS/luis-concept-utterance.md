@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984362"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895126"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Zrozumienie, co dobre wypowiedzi związanych z aplikacją usługi LUIS
 
@@ -72,7 +72,7 @@ W każdej iteracji modelu nie należy dodawać dużej ilości wypowiedzi. Dodawa
 
 Usługa LUIS kompilacje skuteczne modeli z wypowiedzi dokładnie są wybierane przez tworzenie modelu usługi LUIS. Dodawanie wypowiedzi zbyt wiele nie cenne, ponieważ wprowadza ona pomyłek.  
 
-Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) poprawne intencji ekstrakcji prognoz i jednostek.
+Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) poprawne intencji ekstrakcji prognoz i jednostek.
 
 ## <a name="punctuation-marks"></a>Znaki interpunkcyjne
 
@@ -88,11 +88,11 @@ Szkolenie jest zazwyczaj niedeterministyczna: prognozowanie wypowiedź może si�
 
 ## <a name="testing-utterances"></a>Wypowiedzi testowania 
 
-Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzeczywistego ruchu, wysyłając wypowiedzi do [endpoint prognoz](luis-how-to-azure-subscription.md) adresu URL. Wypowiedzi te są wykorzystywane do ulepszania wydajności intencje i podmioty, za pomocą [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md). Przesłane za pomocą usługi LUIS witryny sieci Web, w okienku testowania testy nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywne uczenie. 
+Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzeczywistego ruchu, wysyłając wypowiedzi do [endpoint prognoz](luis-how-to-azure-subscription.md) adresu URL. Wypowiedzi te są wykorzystywane do ulepszania wydajności intencje i podmioty, za pomocą [Przejrzyj wypowiedzi](luis-how-to-review-endpoint-utterances.md). Przesłane za pomocą usługi LUIS witryny sieci Web, w okienku testowania testy nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywne uczenie. 
 
 ## <a name="review-utterances"></a>Przejrzyj wypowiedzi
 
-Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
+Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endpoint-utterances.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
