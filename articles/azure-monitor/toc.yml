@@ -64,17 +64,17 @@ items:
     href: azure-management.md
   - name: Monitorowanie ciągłe
     href: continuous-monitoring.md
-  - name: Analizowanie danych dzienników
+  - name: Platforma danych
     items:
-    - name: Rejestrowanie zapytań
-      href: log-query/log-query-overview.md
-    - name: Portale zapytań na dzienniku
-      href: log-query/portals.md
-  - name: Dane monitorowania
+    - name: Omówienie
+      href: platform/data-platform.md
+    - name: Metryki
+      href: platform/data-platform-metrics.md
+    - name: Dzienniki
+      href: platform/data-platform-logs.md
+  - name: Źródła danych
     items:
-    - name: Metryki i dzienniki
-      href: platform/data-collection.md
-    - name: Źródła danych
+    - name: Podsumowanie źródeł danych
       href: platform/data-sources.md
     - name: Źródła danych na platformie Azure
       href: platform/data-sources-reference.md
@@ -86,14 +86,20 @@ items:
       href: platform/data-ingestion-time.md
     - name: Niestandardowe metryki do magazynu metryk
       href: platform/metrics-custom-overview.md
-    - name: Bezpieczeństwo danych
-      items:
-      - name: Dane dziennika
-        href: platform/data-security.md
-      - name: Obsługa danych osobowych w dzienniku
-        href: platform/personal-data-mgmt.md
-      - name: Zbieranie, przechowywanie i magazynowanie danych aplikacji
-        href: app/data-retention-privacy.md
+  - name: Analizowanie danych dzienników
+    items:
+    - name: Rejestrowanie zapytań
+      href: log-query/log-query-overview.md
+    - name: Portale zapytań na dzienniku
+      href: log-query/portals.md
+  - name: Bezpieczeństwo danych
+    items:
+    - name: Dane dziennika
+      href: platform/data-security.md
+    - name: Obsługa danych osobowych w dzienniku
+      href: platform/personal-data-mgmt.md
+    - name: Zbieranie, przechowywanie i magazynowanie danych aplikacji
+      href: app/data-retention-privacy.md
   - name: Insights
     items:
     - name: Application Insights
@@ -128,6 +134,8 @@ items:
       href: platform/alerts-unified-log.md
     - name: Alerty dotyczące dziennika aktywności
       href: platform/activity-log-alerts.md
+    - name: Typowe schematy alertów
+      href: platform/alerts-common-schema.md
   - name: Wizualizowanie danych
     href: visualizations.md
   - name: Integracje partnerów
@@ -180,8 +188,6 @@ items:
           href: learn/quick-create-workspace-posh.md
       - name: Usuwanie obszaru roboczego
         href: platform/delete-workspace.md
-      - name: Zarządzanie obszarem roboczym
-        href: platform/manage-access.md
       - name: Projekt dla dostawców usług
         href: platform/service-providers.md
   - name: Zbieranie danych
@@ -341,6 +347,8 @@ items:
           href: app/annotations.md
         - name: Plik ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
+        - name: Debuger migawek
+          href: app/snapshot-debugger.md
       - name: Aplikacje Java
         items:
         - name: Aplikacje internetowe
@@ -434,6 +442,8 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Dane diagnostyczne lub dziennika z usługi Azure Storage
         href: platform/azure-storage-iis-table.md
+      - name: Zasoby usługi Azure PaaS
+        href: platform/collect-azurepass-posh.md
       - name: Korelowanie niestandardowych źródeł danych
         href: app/custom-data-correlation.md
     - name: Zbieranie danych niestandardowych
@@ -460,10 +470,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: Magazynowanie dzienników diagnostycznych
         href: platform/diagnostic-logs-stream-log-store.md
-      - name: Dane zasobów platformy Azure do usługi Event Hub
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: Strumieniowe przesyłanie dzienników aktywności do usługi Event Hubs
         href: platform/activity-logs-stream-event-hubs.md
+      - name: Dzienniki i metryki do Centrum zdarzeń
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Dzienniki diagnostyczne do usługi Centrum zdarzeń
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Dane aplikacji do usługi Log Analytics
@@ -650,9 +660,8 @@ items:
   - name: Wizualizowanie danych
     items:
     - name: Widoki
+      href: platform/view-designer.md
       items:
-      - name: Projektant widoków
-        href: platform/view-designer.md
       - name: Dokumentacja dotycząca kafelków
         href: platform/view-designer-tiles.md
       - name: Dokumentacja części wizualizacji
@@ -807,6 +816,8 @@ items:
           href: platform/action-groups.md
         - name: Informacje dotyczące schematu elementu webhook
           href: platform/activity-log-alerts-webhook.md
+        - name: Definicje typowych schematów alertów
+          href: platform/alerts-common-schema-definitions.md
         - name: Zachowanie alertów SMS
           href: platform/alerts-sms-behavior.md
         - name: Ograniczanie częstotliwości alertów
@@ -978,9 +989,9 @@ items:
   - name: Azure PowerShell
     items:
     - name: Monitorowanie
-      href: /powershell/module/azurerm.insights
+      href: /powershell/module/az.applicationinsights
     - name: Dzienniki
-      href: /powershell/module/azurerm.operationalinsights
+      href: /powershell/module/az.operationalinsights
   - name: Interfejs API REST
     items:
     - name: Monitorowanie
@@ -1056,9 +1067,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 48ea888b5c21bc2c689d93684b4dbae7eaee1ed8
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629430"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886645"

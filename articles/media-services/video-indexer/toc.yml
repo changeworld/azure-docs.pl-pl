@@ -41,8 +41,12 @@ items:
     href: video-indexer-output-json-v2.md
   - name: Znajdowanie konkretnych momentów w wideo
     href: video-indexer-search.md
+  - name: Sceny, ujęcia i klatki kluczowe
+    href: scenes-shots-keyframes.md
   - name: Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
     href: video-indexer-view-edit.md
+  - name: Tworzenie projektów za pomocą edytora
+    href: use-editor-create-project.md
   - name: Generowanie szczegółowych informacji o wideo na podstawie istniejących wideo
     href: video-indexer-create-new.md
   - name: Osadzanie widżetów w aplikacji
@@ -85,9 +89,9 @@ items:
     href: faq.md
   - name: Zgodność
     href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
-ms.openlocfilehash: 667aacd14c7bc3aada0acfa4968bd7155effc4d5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f6caade807d37dfbf38e3f0dd47ab7f801c36a9a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837001"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894837"

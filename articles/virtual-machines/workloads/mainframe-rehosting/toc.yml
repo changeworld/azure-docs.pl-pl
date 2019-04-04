@@ -7,16 +7,28 @@ items:
       href: overview.md
     - name: Obciążenia
       href: partner-workloads.md
+  - name: Pojęcia
+    items:
+    - name: Wystąpienia obliczeniowe
+      href: concepts/mainframe-compute-azure.md
+    - name: Magazyn
+      href: concepts/mainframe-storage-azure.md
   - name: Micro Focus
     items:
     - name: Rozpoczęcie pracy
       href: microfocus/get-started.md
-    - name: Instalowanie serwera Micro Focus Enterprise Server
-      href: microfocus/set-up-micro-focus-on-azure.md
-    - name: Demonstracja
+    - name: Instalowanie serwera Enterprise Server
+      href: microfocus/set-up-micro-focus-azure.md
+    - name: Uruchamianie demonstracji CICS BankDemo
       href: microfocus/demo.md
+    - name: Serwer Enterprise Server w kontenerach
+      href: microfocus/run-enterprise-server-container.md
   - name: TmaxSoft OpenFrame
-    href: https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/
+    items:
+    - name: Rozpoczęcie pracy
+      href: tmaxsoft/get-started.md
+    - name: Instalowanie oprogramowania OpenFrame
+      href: tmaxsoft/install-openframe-azure.md
   - name: IBM
     items:
     - name: Rozpoczęcie pracy
@@ -29,9 +41,15 @@ items:
       href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: Wdrażanie środowiska IBM DB2 pureScale
       href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-ms.openlocfilehash: e89b8301a325ab25d78598cfd3e58e6ac74198a6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+  - name: Zasoby
+    items:
+    - name: Oficjalne dokumenty
+      href: mainframe-white-papers.md
+    - name: Harmonogram działania dla platformy Azure
+      href: https://azure.microsoft.com/updates/
+ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342551"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895228"

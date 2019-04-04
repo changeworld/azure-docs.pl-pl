@@ -97,7 +97,7 @@ items:
       href: stream-analytics-twitter-sentiment-analysis-trends.md
     - name: Wykrywanie oszustw w czasie rzeczywistym
       href: stream-analytics-real-time-fraud-detection.md
-    - name: Uruchamianie zadań na brzegowych urządzeniach IoT
+    - name: Uruchamianie zadań w usłudze IoT Edge
       href: stream-analytics-edge.md
     - name: Analizowanie danych z czujników punktu poboru opłat
       href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
@@ -107,7 +107,7 @@ items:
       href: stream-analytics-high-frequency-trading.md
     - name: Przetwarzanie danych strumienia IoT
       href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-    - name: Reguły na podstawie progów
+    - name: Reguły oparte na progach
       href: stream-analytics-threshold-based-rules.md
     - name: Przetwarzanie zdarzeń platformy Kafka
       href: ../event-hubs/event-hubs-kafka-stream-analytics.md
@@ -423,7 +423,7 @@ items:
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
   - name: Blog
-    href: https://blogs.msdn.com/b/streamanalytics/
+    href: https://azure.microsoft.com/blog/tag/azure-stream-analytics/
   - name: Forum z opiniami
     href: https://feedback.azure.com/forums/270577-azure-stream-analytics
   - name: Forum
@@ -442,9 +442,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Oficjalny dokument — przetwarzanie zdarzeń w czasie rzeczywistym
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 83e5f3f9edd1fb58c0b79566c4bb764e7b430bcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 0066db1ee56ada20527e468e689dde84a823f284
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803650"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849525"
