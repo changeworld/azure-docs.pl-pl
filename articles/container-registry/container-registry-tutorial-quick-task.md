@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860477"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893711"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Samouczek: Kompilowanie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Tasks
 
@@ -30,7 +30,7 @@ W tym samouczku, będącym pierwszą częścią serii, zostaną wykonane następ
 > * Kompilowanie obrazu kontenera na platformie Azure
 > * Wdrażanie kontenera w usłudze Azure Container Instances
 
-Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego. Zadania usługi ACR mogą także uruchamiać [zadania wieloetapowe](container-registry-tasks-multi-step.md) (obecnie dostępne w wersji zapoznawczej), używając pliku YAML do zdefiniowania kroków tworzenia, wypychania i, opcjonalnie, testowania wielu kontenerów.
+Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego. Zadania usługi ACR można również uruchomić [zadania wieloetapowe](container-registry-tasks-multi-step.md), zdefiniuj kroków, aby uruchomić przy użyciu pliku YAML, wypychania i opcjonalnie przetestować wiele kontenerów.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -220,8 +220,8 @@ az keyvault secret set \
 
 Utworzono magazyn Azure Key Vault, w którym są przechowywane dwa wpisy tajne:
 
-* `$ACR_NAME-pull-usr`: identyfikator jednostki usługi do użycia jako **nazwa użytkownika** rejestru kontenerów.
-* `$ACR_NAME-pull-pwd`: hasło jednostki usługi do użycia jako **hasło** rejestru kontenerów.
+* `$ACR_NAME-pull-usr`: identyfikator jednostki usługi do użycia jako **nazwa użytkownika rejestru kontenerów.
+* `$ACR_NAME-pull-pwd`: hasło jednostki usługi do użycia jako **hasło rejestru kontenerów.
 
 Teraz możesz odwoływać się do tych wpisów tajnych według nazwy, gdy Ty lub Twoje aplikacje i usługi ściągają obrazy z rejestru.
 
@@ -307,12 +307,12 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, po przetestowaniu pętli wewnętrznej przy użyciu szybkiego zadania, skonfiguruj **zadanie kompilacji** w celu wyzwolenia kompilacji obrazów kontenera podczas zatwierdzania kodu źródłowego w repozytorium usługi Git:
 
 > [!div class="nextstepaction"]
-> [Wyzwalanie kompilacji automatycznych przy użyciu zadań](container-registry-tutorial-build-task.md)
+> [Wyzwalacz automatyczne kompilacje z zadaniami](container-registry-tutorial-build-task.md)
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip

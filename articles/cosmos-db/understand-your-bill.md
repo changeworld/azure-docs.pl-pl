@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 9411cc42f2fbc12348b4d841174edbe75c584247
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890563"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877642"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Informacje o rachunku Azure Cosmos DB
 
-Jako usługę w pełni zarządzana baza danych natywnych dla chmury Azure Cosmos DB upraszcza rozliczenia opłat tylko za aprowizowaną przepływność i używane magazynu. Brak opłat za dodatkowe licencje, sprzętu, kosztów narzędzie lub funkcji koszty w porównaniu do środowiska lokalnego i hostowanych IaaS alternatyw. Po zastanowieniu się nad wielu regionów możliwości usługi Azure Cosmos DB, usługa bazy danych zapewnia znaczną redukcję kosztów w porównaniu do istniejącego środowiska lokalnego lub rozwiązań IaaS.
+Jako usługę w pełni zarządzana baza danych natywnych dla chmury Azure Cosmos DB upraszcza rozliczenia opłat tylko za aprowizowaną przepływność i używane magazynu. Istnieją, nie dodatkowych opłat, sprzętu, kosztów narzędzie lub funkcji koszty w porównaniu do środowiska lokalnego lub hostowanego w modelu IaaS alternatyw. Po zastanowieniu się nad wielu regionów możliwości usługi Azure Cosmos DB, usługa bazy danych zapewnia znaczną redukcję kosztów w porównaniu z istniejącym lokalnym lub rozwiązań IaaS.
 
 Usługa Azure Cosmos DB są rozliczane godzinowo na podstawie aprowizowaną przepływność i użytego miejsca do magazynowania. Aprowizowana przepływność jednostki na potrzeby rozliczeń jest 100 jednostek żądań na sekundę na godzinę, kosztuje $0.008 za godzinę, zakładając, że standardowej ceny publicznych, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/). Dla użytego miejsca do magazynowania, są rozliczane 0,25 USD na 1 GB pamięci na miesiąc, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
@@ -94,13 +94,13 @@ Można dodawać/usuwać regiony platformy Azure w dowolnym miejscu na świecie d
 
 Załóżmy, że masz kontener usługi Azure Cosmos w regionie zachodnie stany USA. Ten kontener jest tworzony przy przepływności 10 tys jednostek żądań na sekundę i przechowujesz 1 TB danych w tym miesiącu. Załóżmy, że możesz dodać w trzech regionach (wschodnie stany USA, Europa Północna i Azja Wschodnia) do swojego konta usługi Azure Cosmos, każdy z tego samego magazynu i przepływności. Łączny rachunek miesięczny będzie mieć (przy założeniu 30 dni w miesiącu). Na rachunku będzie następujący: 
 
-|**Element** |**Użycie (miesiąc)** |**Kurs** |**Koszt miesięczny** |
+|**Element** |**Użycie (miesiąc)** |**Stawka** |**Koszt miesięczny** |
 |---------|---------|---------|-------|
 |Rachunek za przepływność dla kontenera w regionie Zachodnie stany USA      | 10 K jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę   |$576|
 |Rachunek za przepływność dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia       | K 3 * 10 jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę  |$1,728|
 |Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA      | 250 GB    |0,25 USD/GB  |$62.50|
 |Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |0,25 USD/GB  |$187.50|
-|**Łączna liczba**     |     |  |**$2,554**|
+|**Łącznie**     |     |  |**$2,554**|
 
 *Załóżmy również, że wychodzi 100 GB danych miesięcznie z kontenera w regionie zachodnie stany USA do replikacji danych w regionie wschodnie stany USA, Europa Północna i Azja Wschodnia. Opłaty naliczane za wychodzący ruch według stawki za transfer danych.*
 
@@ -108,13 +108,13 @@ Załóżmy, że masz kontener usługi Azure Cosmos w regionie zachodnie stany US
 
 Załóżmy, że należy utworzyć kontener usługi Azure Cosmos w regionie zachodnie stany USA. Ten kontener jest tworzony przy przepływności 10 tys jednostek żądań na sekundę i przechowujesz 1 TB danych w tym miesiącu. Załóżmy, że możesz dodać w trzech regionach (wschodnie stany USA, Europa Północna i Azja Wschodnia), każdy z tego samego magazynu i przepływności i mają możliwość zapisu do kontenerów we wszystkich regionach skojarzonych z Twoim kontem usługi Azure Cosmos. Łączna kwota rachunku miesięcznego będzie mieć (przy założeniu 30 dni w miesiącu) w następujący sposób:
 
-|**Element** |**Użycie (miesiąc)**|**Kurs** |**Koszt miesięczny** |
+|**Element** |**Użycie (miesiąc)**|**Stawka** |**Koszt miesięczny** |
 |---------|---------|---------|-------|
 |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)       | 10 K jednostek żądań na sekundę * 24 * 30    |0,016; $ na 100 jednostek żądań na sekundę na godzinę    |$1,152 |
 |Rachunek za przepływność dla 3 dodatkowych regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia (we wszystkich regionach są zapisywalne)        | (3 + 1) * 10 K jednostek żądań na sekundę * 24 * 30    |0,016; $ na 100 jednostek żądań na sekundę na godzinę   |$4,608 |
 |Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA      | 250 GB    |0,25 USD/GB  |$62.50|
 |Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |0,25 USD/GB  |$187.50|
-|**Łączna liczba**     |     |  |**$6,010**|
+|**Łącznie**     |     |  |**$6,010**|
 
 *Załóżmy również, że wychodzi 100 GB danych miesięcznie z kontenera w regionie zachodnie stany USA do replikacji danych w regionie wschodnie stany USA, Europa Północna i Azja Wschodnia. Opłaty naliczane za wychodzący ruch według stawki za transfer danych.*
 
@@ -178,7 +178,7 @@ Wizualnie zmiany łączna aprowizowana przepływność podczas 720 godzin na mie
 
 Łączna kwota rachunku miesięcznego, będzie można (przy założeniu 30 dni/720 godziny w miesiącu) będą obliczane w następujący sposób:
 
-|**godz.**  |**RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
+|**Godziny**  |**RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
@@ -194,7 +194,7 @@ Wizualnie zmiany łączna aprowizowana przepływność podczas 720 godzin na mie
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7,680  |
 |[701-720] |D1:20K <br/>D2:50K <br/>C1: -- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
-|| |**Łączny koszt miesięczny**  | |**$38,688**   |
+|| |**Razem koszt miesięczny**  | |**$38,688**   |
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Proaktywnie szacowania, na miesięcznym rachunku  
 
@@ -218,7 +218,7 @@ Rozważmy inny przykład, w którym ma być aktywnie Szacowanie wysokości rachu
 
 Łączna liczba jednostek RU na sekundę: 500 + 400 = 900 koszt na godzinę: 900/100 * $0.008 = $0.072 oczekiwany koszt miesięczny przepływności (przy założeniu 31 dni): $0.072 * 24 * 31 = 53.57 $
 
-**Łączny koszt miesięczny**
+**Razem koszt miesięczny**
 
 Łączny koszt miesięczny = miesięczny koszt magazynu i przepływności Całkowity miesięczny koszt miesięczny koszt = 25,00 + $53.57 = 78.57 $
 
@@ -234,7 +234,7 @@ Pojemność na platformie Azure Cosmos DB zastrzeżone umożliwia zakup przepły
 
 Łączny rachunek (bez rezerwowanie pojemności) będzie (przyjmuje 30 dni lub godzin 720): 
 
-|**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**|**Naliczona opłata (co godzinę)**| **Naliczona opłata (miesięcznie)**|
+|**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**|**Naliczona opłata (za godzinę)**| **Naliczona opłata (za miesiąc)**|
 |----|----|----|----|----|
 |Wschodnie stany USA|$0.008 |50 K|$4|$2,880 |
 |Japonia Wschodnia|$0.009 |50 K| $4.50 |$3,240 |
@@ -248,7 +248,7 @@ Zastanówmy się, że zakupiono rezerwowanie pojemności zamiast tego. Możesz k
 
 Co skutecznie zakupione jest środki w wysokości 8 USD za godzinę dla 100 tysięcy jednostek żądań na sekundę przy użyciu ceny w regionach wschodnie stany USA, po cenie 6.40 $ / godz. Można tworzyć w dół od tę rezerwację przepustowości przedpłacony godzinowo za aprowizowaną przepływność w dowolnej globalnego regionie platformy Azure w odpowiednich cen listy regionalnych dla Twojej subskrypcji. W tym przykładzie, w których jest aprowizowane 50 tysięcy jednostek ru każdej w regionie wschodnie stany USA i Japonia Wschodnia, będzie można narysować 8,00 $ warte z aprowizowaną przepływność na godzinę i będzie rozliczana nadwyżkowe użycie w wysokości 0,50 USD na godzinę (lub 360 $/ miesiąc). 
 
-|**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**| **Naliczona opłata (co godzinę)**| **Naliczona opłata (miesięcznie)**|
+|**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**| **Naliczona opłata (za godzinę)**| **Naliczona opłata (za miesiąc)**|
 |----|----|----|----|----|
 |Wschodnie stany USA|$0.008 |50 K|$4|$2,880 |
 |Japonia Wschodnia|$0.009 |50 K| $4.50 |$3,240 |

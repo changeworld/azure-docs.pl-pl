@@ -51,16 +51,12 @@ items:
     href: getting-started-improving-your-classifier.md
   - name: Używanie interfejsu API prognozowania
     href: use-prediction-api.md
-  - name: Eksportowanie modeli
-    items:
-    - name: Eksportowanie modelu na platformę mobilną
-      href: export-your-model.md
-    - name: Używanie modelu ONNX w usłudze uczenia maszynowego systemu Windows
-      href: custom-vision-onnx-windows-ml.md
-    - name: Uruchamianie modelu TensorFlow w języku Python
-      href: export-model-python.md
-  - name: Tworzenie modelu przy użyciu interfejsu API REST
-    href: rest-api-tutorial.md
+  - name: Eksportowanie modelu na platformę mobilną
+    href: export-your-model.md
+  - name: Używanie modelu ONNX w usłudze uczenia maszynowego systemu Windows
+    href: custom-vision-onnx-windows-ml.md
+  - name: Uruchamianie modelu TensorFlow w języku Python
+    href: export-model-python.md
   - name: Eksportowanie i usuwanie danych konta
     href: ./export-delete-data.md
   - name: Przenoszenie projektu z ograniczonej wersji próbnej na platformę Azure
@@ -101,9 +97,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
   - name: Informacje o wersji
     href: release-notes.md
-ms.openlocfilehash: 98708f7c3ad2f9547e7dde9f4cf9fc7696ed7ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: b8c74c7f14e8f2b5f96004121d276f207a041dbd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886713"
+ms.locfileid: "58893555"

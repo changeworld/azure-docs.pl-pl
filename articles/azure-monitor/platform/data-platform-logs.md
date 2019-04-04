@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 990aad4df05a9cc765baa965da2293d51a19e705
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58852036"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904155"
 ---
 # <a name="logs-in-azure-monitor"></a>Dzienniki w usłudze Azure Monitor
 
@@ -46,7 +46,7 @@ W poniższej tabeli wymieniono różne sposoby dzienników można używać w us�
 | Analiza | Użyj [usługi Log Analytics](../log-query/get-started-portal.md) w witrynie Azure portal, aby zapisać [rejestrowania zapytań](../log-query/log-query-overview.md) i interakcyjnie analizować dane dzienników przy użyciu zaawansowany aparat analizy Eksploratora danych.<br>Użyj [Konsola analizy usługi Application Insights](../app/analytics.md) w witrynie Azure portal do zapisywania dziennika zapytań i interakcyjnie analizować dane dzienników z usługi Application Insights. |
 | Wizualizacja | Wyniki zapytania renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. <br>Eksportowanie wyników kwerendy, aby [usługi Power BI](powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.<br>Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych.|
 | Alerty | Konfigurowanie [reguł alertów dzienników](alerts-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.<br>Konfigurowanie [regułę alertu metryki](alerts-metric-logs.md) na niektórych dzienników danych dziennika, wyodrębnić jako metryki. |
-| Pobierz | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
+| Pobierz | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
 | Eksportowanie | Tworzenie przepływu pracy można pobrać danych dziennika i skopiuj go do lokalizacji zewnętrznej za pomocą [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
