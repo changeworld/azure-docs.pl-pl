@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c7bfa8351a2599ff8616364a093cd6154e90830c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 88a66cae00bcd1256f6c3ad76a04d1333d1db9db
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850862"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917094"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
 > [!div class="op_single_selector"]
@@ -42,6 +42,8 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 > Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 
 1. Podłącz kamerę wideo do komputera. <br/>Zapoznać się z pomysłami instalacji, zapoznaj się z [konfiguracja sprzętu wideo zdarzenia przenośne i proste]( https://link.medium.com/KNTtiN6IeT).
+
+    Jeśli nie masz dostępu do aparatu fotograficznego, narzędzia takie jak [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) może służyć Generowanie Kanał informacyjny na żywo na podstawie pliku wideo.
 1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ponadto zapoznaj się z tym blogu: [Na żywo przesyłania strumieniowego w środowisku produkcyjnym za pomocą systemu bankowości Internetowej](https://link.medium.com/ttuwHpaJeT).
 
     Ten krok można również wykonać po utworzeniu kanału.

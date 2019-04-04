@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984853"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916737"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>W przypadku maszyn wirtualnych (wersja zapoznawcza) mapę, aby poznać składniki aplikacji za pomocą usługi Azure Monitor
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
@@ -43,7 +43,7 @@ Na stronie po prawej stronie okienka, kliknij **zdarzenia dziennika** ikonę, ab
 
 ![Lista wyszukiwania dzienników w okienku właściwości](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Zamknij *dzienniki** i wrócić do **właściwości** okienka, a następnie wybierz **alerty** przeglądający alerty, które alerty zgłoszone dla maszyny Wirtualnej z kryteria kondycji. Mapa integruje się z alertami platformy Azure, aby wyświetlić wyzwolone alerty dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikony, jeśli istnieją bieżące alerty, a okienko maszyny alertów zawiera alerty. 
+Zamknij **dzienniki** i wrócić do **właściwości** okienka, a następnie wybierz **alerty** przeglądający alerty, które alerty zgłoszone dla maszyny Wirtualnej z kryteria kondycji. Mapa integruje się z alertami platformy Azure, aby wyświetlić wyzwolone alerty dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikony, jeśli istnieją bieżące alerty, a okienko maszyny alertów zawiera alerty. 
 
 ![Alerty komputera w okienku właściwości](./media/vminsights-maps/properties-pane-alerts-01.png)
 

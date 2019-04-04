@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/17/2018
+ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9f328e47a49a5c6c53c21baa880c38578c657a33
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733744"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904070"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrowanie aplikacji ASP.NET do usługi Azure App Service za pomocą kontenera Windows (wersja zapoznawcza)
 
@@ -80,7 +80,7 @@ W Eksploratorze rozwiązań otwórz plik **Dockerfile**.
 Konieczne będzie użycie [obsługiwanego obrazu nadrzędnego](app-service-web-get-started-windows-container.md#use-a-different-parent-image). Zmień obraz nadrzędny, zastępując wiersz `FROM` następującym kodem:
 
 ```Dockerfile
-FROM microsoft/aspnet:4.7.1
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 Na końcu pliku dodaj następujący wiersz, a następnie zapisz plik:
@@ -122,7 +122,7 @@ Skonfiguruj nowy rejestr kontenerów, korzystając z sugerowanych wartości z po
 |**Prefiks DNS**| Zachowaj wygenerowaną nazwę rejestru lub zmień ją na inną unikatową nazwę. |  |
 |**Grupa zasobów**| Kliknij pozycję **Nowy**, wpisz **myResourceGroup** i kliknij przycisk **OK**. |  |
 |**SKU**| Podstawowa | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
-|**Lokalizacja rejestru**| Europa Zachodnia | |
+|**Lokalizacja w rejestrze**| Europa Zachodnia | |
 
 ![Konfigurowanie rejestru kontenerów platformy Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
@@ -144,7 +144,7 @@ W interfejsie tworzenia skonfiguruj ustawienia zgodnie z poniższą tabelą:
 | ----------------- | ------------ | ----|
 |**Nazwa aplikacji**| Wpisz unikatową nazwę. | Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji. |
 |**Grupa zasobów**| Wybierz pozycję **Użyj istniejącej** i wpisz **myResourceGroup**. |  |
-|**OS**| Windows (wersja zapoznawcza) | |
+|**System operacyjny**| Windows (wersja zapoznawcza) | |
 
 ### <a name="configure-app-service-plan"></a>Konfigurowanie planu usługi App Service
 

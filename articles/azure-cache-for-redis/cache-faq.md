@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234360"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895600"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -35,7 +35,7 @@ Jeśli Twoje pytanie nie ma na liście, Daj nam znać, a my pomożemy Ci znaleź
 ## <a name="azure-cache-for-redis-basics"></a>Pamięć podręczna systemu Azure, aby uzyskać podstawowe informacje o pamięci podręcznej Redis
 Często zadawane pytania w tej sekcji obejmują niektóre z podstawy pamięć podręczna systemu Azure dla usługi Redis.
 
-* [Co to jest Azure pamięci podręcznej redis Cache?](#what-is-azure-cache-for-redis)
+* [Co to jest usługa Azure Cache for Redis?](#what-is-azure-cache-for-redis)
 * [Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
 
 Poniższe często zadawane pytania obejmuje podstawowe pojęcia i pytania dotyczące usługi Azure Cache dla usługi Redis i odpowiedzi są w innej sekcji często zadawane pytania.
@@ -80,7 +80,7 @@ Często zadawane pytania w tej sekcji obejmują typowe monitorowania i pytania d
 * [Dlaczego mój klient został rozłączony z pamięci podręcznej](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Wcześniejsze oferta pamięci podręcznej — często zadawane pytania
-* [Która oferta pamięci podręcznej Azure jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
+* [Która oferta pamięci podręcznej systemu Azure jest dla mnie najlepsza?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis?
 Pamięć podręczna systemu Azure dla usługi Redis opiera się na popularnych oprogramowania typu open-source [Redis](https://redis.io/). Daje ona dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępny z poziomu dowolnej aplikacji na platformie Azure. Aby uzyskać bardziej szczegółowym omówieniem, zobacz [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
@@ -392,7 +392,7 @@ Jak można skonfigurować tego ustawienia:
   > Wartość określona w tym elemencie konfiguracji jest *za rdzeń* ustawienie. Na przykład, jeśli korzystasz z 4-rdzeniową maszyną i chcesz z ustawieniem minIOThreads to 200 w czasie wykonywania, można użyć `<processModel minIoThreads="50"/>`.
   >
 
-* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) API.
 
   > [!NOTE]
   > Wartość określoną przez ten interfejs API jest ustawienie globalne wpływu na cały element AppDomain. Jeśli masz 4-rdzeniową maszyną i chcesz ustawić minWorkerThreads i minIOThreads 50 dla każdego procesora CPU w czasie wykonywania, należy użyć ThreadPool.SetMinThreads (200, 200).
@@ -402,9 +402,9 @@ Jak można skonfigurować tego ustawienia:
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Włącz serwer GC w celu uzyskania większej przepustowości na komputerze klienckim, używając StackExchange.Redis
 Włączenie serwera GC może zoptymalizować klienta i zapewnia większą wydajność i przepływność, korzystając z StackExchange.Redis. Aby uzyskać więcej informacji na serwerze odzyskiwania pamięci i jak go włączyć zobacz następujące artykuły:
 
-* [Aby włączyć serwer GC](https://msdn.microsoft.com/library/ms229357.aspx)
-* [Podstawy dotyczące odzyskiwania pamięci](https://msdn.microsoft.com/library/ee787088.aspx)
-* [Odzyskiwanie pamięci i wydajność](https://msdn.microsoft.com/library/ee851764.aspx)
+* [Aby włączyć serwer GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [Podstawy dotyczące odzyskiwania pamięci](/dotnet/standard/garbage-collection/fundamentals)
+* [Odzyskiwanie pamięci i wydajność](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Zagadnienia dotyczące wydajności w całym połączeń
@@ -469,11 +469,11 @@ Aby uzyskać więcej informacji na temat rozpoczynania pracy z pamięcią podrę
 ### <a name="managed-cache-service"></a>Usługa Managed Cache service
 [Zarządzana pamięć podręczna usługi została wycofana 30 listopada 2016 r.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna zarządzane](https://msdn.microsoft.com/library/azure/dn386094.aspx).
+Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna zarządzane](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
 ### <a name="in-role-cache"></a>Pamięć podręczna oparta na roli
 [Pamięć podręczna oparta na roli została wycofana 30 listopada 2016 r.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna oparta na roli](https://msdn.microsoft.com/library/azure/dn386103.aspx).
+Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna oparta na roli](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

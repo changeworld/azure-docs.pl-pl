@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648524"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918726"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Koszty oprogramowania, które nie są dołączone Azure Reserved VM Instances
 
-Jeśli nie masz korzyści z używania hybrydowej platformy Azure w swoich wystąpień zarezerwowanych maszyn wirtualnych, następnie opłaty są naliczane dla liczników oprogramowania wymienione w poniższych sekcjach.
+Jeśli nie masz korzyść użycia hybrydowego platformy Azure w swoich wystąpień zarezerwowanych maszyn wirtualnych jest naliczana za liczniki oprogramowania wymienione w poniższej sekcji.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Liczniki oprogramowania Windows nie są objęte kosztów rezerwacji
 
@@ -66,13 +66,13 @@ Jeśli nie masz korzyści z używania hybrydowej platformy Azure w swoich wystą
 
 ## <a name="rates-for-azure-meters"></a>Stawki dla liczników platformy Azure
 
-Koszt każdego z tych liczników można uzyskać za pośrednictwem interfejsu API RateCard platformy Azure. Aby uzyskać informacje dotyczące sposobu uzyskania stawki dla mierników platformy azure, zobacz [uzyskiwanie informacji o cenach i metadanych dla zasobów używanych w subskrypcji platformy Azure](https://msdn.microsoft.com/library/azure/mt219004).
+Koszt każdego z tych liczników można uzyskać za pośrednictwem interfejsu API RateCard platformy Azure. Aby uzyskać informacje dotyczące sposobu uzyskania stawki dla mierników platformy azure, zobacz [uzyskiwanie informacji o cenach i metadanych dla zasobów używanych w subskrypcji platformy Azure](/previous-versions/azure/reference/mt219004(v=azure.100)).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat rezerwacji dla platformy Azure, zobacz następujące artykuły:
 
 - [Co to są rezerwacji dla platformy Azure?](billing-save-compute-costs-reservations.md)
-- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zarządzanie rezerwacji dla platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)

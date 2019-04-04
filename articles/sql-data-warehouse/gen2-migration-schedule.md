@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648577"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917893"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -32,38 +32,38 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 
 | **Region** | **Niższe Gen2 dostępne** | **Rozpocznij automatycznych uaktualnień** |
 |:--- |:--- |:--- |
-| Australia Wschodnia |Dostępne |1 maja 2019 r. |
-| Australia Południowo-Wschodnia |2 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Australia Wschodnia |Dostępne |1 czerwca 2019 r. |
+| Australia Południowo-Wschodnia |2 kwietnia 2019 r. |1 maja 2019 r. |
 | Brazylia Południowa |15 maja 2019 r. |\* |
-| Kanada Środkowa |Dostępne |1 maja 2019 r. |
+| Kanada Środkowa |Dostępne |1 czerwca 2019 r. |
 | Kanada Wschodnia |\* |\* |
-| Środkowe stany USA |Dostępne |1 maja 2019 r. |
+| Środkowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Chiny Wschodnie |\* |\* |
 | Chiny Wschodnie 2 |\* |\* |
 | Chiny Północne |\* |\* |
 | Chiny Północne 2 |\* |\* |
-| Azja Wschodnia |Dostępne |1 maja 2019 r. |
-| Wschodnie stany USA |Dostępne |1 maja 2019 r. |
-| Wschodnie stany USA 2 |Dostępne |Od 1 maja. 2019 |
+| Azja Wschodnia |Dostępne |1 czerwca 2019 r. |
+| Wschodnie stany USA |Dostępne |1 czerwca 2019 r. |
+| Wschodnie stany USA 2 |Dostępne |Od 1 czerwca. 2019 |
 | Francja Środkowa |\* |\* |
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
-| Indie Środkowe |Dostępne |1 maja 2019 r. |
+| Indie Środkowe |Dostępne |1 czerwca 2019 r. |
 | Indie Południowe |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Japonia Wschodnia |Dostępne |1 maja 2019 r. |
-| Japonia Zachodnia |Dostępne |1 czerwca 2019 r. |
-| Korea Środkowa |2 kwietnia 2019 r. |1 maja 2019 r. |
-| Korea Południowa |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Środkowo-północne stany USA |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Europa Północna |Dostępne |1 maja 2019 r. |
-| Środkowo-południowe stany USA |Dostępne |1 maja 2019 r. |
-| Azja Południowo-Wschodnia |Dostępne |1 maja 2019 r. |
-| Południowe Zjednoczone Królestwo |2 kwietnia 2019 r. |1 maja 2019 r. |
+| Japonia Wschodnia |Dostępne |1 czerwca 2019 r. |
+| Japonia Zachodnia |Dostępne |1 maja 2019 r. |
+| Korea Środkowa |2 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Korea Południowa |2 kwietnia 2019 r. |1 maja 2019 r. |
+| Środkowo-północne stany USA |2 kwietnia 2019 r. |1 maja 2019 r. |
+| Europa Północna |Dostępne |1 czerwca 2019 r. |
+| Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
+| Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
+| Południowe Zjednoczone Królestwo |2 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Zachodnie Zjednoczone Królestwo |\*|\* |
 | Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
-| Europa Zachodnia |Dostępne |1 maja 2019 r. |
+| Europa Zachodnia |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Zachodnie stany USA 2 |Dostępne |1 maja 2019 r. |
+| Zachodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie
 

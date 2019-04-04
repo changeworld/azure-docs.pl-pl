@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50349d008e3c2a7a8a09fd3e2d9e96097acc0c9e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855822"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z oprogramowaniem Jamf Pro
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację oprogramowania Jamf Pro z usługą Azure AD, musisz dodać oprogramowanie Jamf Pro z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać oprogramowanie Jamf Pro z galerii, wykonaj następujące czynności:**
+**Aby dodać narzędzia Jamf Pro z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Jamf 
 
     ![Informacje o domenie i adresach URL aplikacji Jamf Pro dla logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
@@ -160,11 +160,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Jamf 
 
     ![Konfiguracja oprogramowania Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. Wybierz pozycję **Other** (Inne) z listy rozwijanej **IDENTITY PROVIDER** (DOSTAWCA TOŻSAMOŚCI).
+    a. Wybierz **innych** jako opcję z **dostawcy tożsamości** listy rozwijanej.
 
     b. W polu tekstowym **OTHER PROVIDER** (INNY DOSTAWCA) wprowadź wartość **Azure AD**.
 
-    c. Wybierz pozycję **Metadata URL** (Adres URL metadanych) jako opcję z listy rozwijanej **IDENTITY PROVIDER METADATA SOURCE** (ŹRÓDŁO METADANYCH DOSTAWCY TOŻSAMOŚCI) i w następującym polu tekstowym wklej wartość  **adresu URL metadanych federacji aplikacji** skopiowaną z witryny Azure Portal.
+    c. Wybierz **adres URL metadanych** jako opcję z **źródła METADANYCH dostawcy tożsamości** listy rozwijanej i Wklej w poniższym polu tekstowym **adres Url metadanych Federacji aplikacji** wartość który skopiowano z witryny Azure portal.
 
     d. Skopiuj wartość pola **Identyfikator jednostki** i wklej ją w polu tekstowym **Identyfikator (identyfikator jednostki)** w sekcji **Domena i adresy URL oprogramowania Jamf Pro** w witrynie Azure Portal.
 
@@ -228,7 +228,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 Aby umożliwić użytkownikom usługi Azure AD logowanie się w oprogramowaniu Jamf Pro, muszą być oni aprowizowaniu w oprogramowaniu Jamf Pro. W przypadku oprogramowania Jamf Pro aprowizacja jest zadaniem ręcznym.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmowej oprogramowania Jamf Pro jako administrator.
 
@@ -274,8 +274,8 @@ Po kliknięciu kafelka Jamf Pro w panelu dostępu powinno nastąpić automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

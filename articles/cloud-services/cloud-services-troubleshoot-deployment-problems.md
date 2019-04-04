@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 348321592fc32f7dd77447c7217c7142f7ad9bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226944"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916856"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Rozwiązywanie problemów z wdrażaniem usługi chmury
 Podczas wdrażania pakietu aplikacji usługi w chmurze na platformie Azure, można uzyskać informacji na temat wdrożenia z **właściwości** okienko w witrynie Azure portal. Szczegółowe informacje można użyć w tym okienku, ułatwiające rozwiązywanie problemów z usługą w chmurze, a następnie można udostępnić te informacje pomocy technicznej systemu Azure podczas otwierania nowe żądanie pomocy technicznej.
@@ -52,7 +52,7 @@ Usługa korygujący odbywa się automatycznie, gdy Azure wykryje problem węzły
 Role będzie również Odtwórz około raz na miesiąc, podczas systemu operacyjnego hosta i aktualizacje systemu operacyjnego gościa.  
 Aby uzyskać więcej informacji, zobacz wpis w blogu [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
-## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problem: nie mogę wykonać wymiany wirtualnych adresów IP i komunikat o błędzie
+## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problem: Nie mogę wykonać wymiany wirtualnych adresów IP i komunikat o błędzie
 Wymienianie adresów VIP jest niedozwolone, jeśli aktualizacja wdrożenia jest w toku. Wdrożenia aktualizacji mogą być wykonywane automatycznie po:
 
 * Nowy system operacyjny gościa jest dostępny, i są skonfigurowane dla aktualizacji automatycznych.
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania tego problemu, zobacz wp
 1. W witrynie Azure portal kliknij wystąpienie roli.
 2. W **właściwości** okienku portalu Azure należy wziąć pod uwagę następujące warunki w celu rozwiązania problemu:
    * Jeśli wystąpienie roli ostatnio została zatrzymana (można sprawdzić wartość **liczba przerwań**), można zaktualizować wdrożenia. Poczekaj, aby zobaczyć, jeśli wystąpienie roli wznawia działanie samodzielnie.
-   * Jeśli wystąpienie roli jest **zajęty**, sprawdzać Twój kod aplikacji, aby sprawdzić, czy [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) zdarzenie jest obsługiwane. Może być konieczne, dodając lub poprawiając kodu, który obsługuje to zdarzenie.
+   * Jeśli wystąpienie roli jest **zajęty**, sprawdzać Twój kod aplikacji, aby sprawdzić, czy [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) zdarzenie jest obsługiwane. Może być konieczne, dodając lub poprawiając kodu, który obsługuje to zdarzenie.
    * Przejdź przez dane diagnostyczne i rozwiązywanie problemów ze scenariuszami wpis w blogu [PaaS platformy Azure Compute dane diagnostyczne](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 > [!WARNING]

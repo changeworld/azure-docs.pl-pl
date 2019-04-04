@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993190"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891688"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
 
@@ -26,7 +26,7 @@ Uprawnienia roli obejmują:
 *  **Proces** — użytkownicy mogą nawiązać połączenie i wykonywać operacje przetwarzania w bazie danych i analizowanie danych z bazy danych modelu.
 *  **Odczyt** — użytkownicy mogą używać aplikacji klienckiej na łączenie się i analizowanie danych z bazy danych modelu.
 
-Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie użytkowników lub grup do tych ról za pomocą menedżera ról w programie SSDT. Zainstalowane na serwerze, za pomocą programu SSMS, [poleceń cmdlet programu PowerShell usługi analizy](https://msdn.microsoft.com/library/hh758425.aspx), lub [języka skryptów modelu tabelarycznego](https://msdn.microsoft.com/library/mt614797.aspx) TMSL () do dodawania lub usuwania ról i elementów członkowskich użytkownika.
+Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie użytkowników lub grup do tych ról za pomocą menedżera ról w programie SSDT. Zainstalowane na serwerze, za pomocą programu SSMS, [poleceń cmdlet programu PowerShell usługi analizy](/sql/analysis-services/powershell/analysis-services-powershell-reference), lub [języka skryptów modelu tabelarycznego](https://msdn.microsoft.com/library/mt614797.aspx) TMSL () do dodawania lub usuwania ról i elementów członkowskich użytkownika.
 
 > [!NOTE]
 > Grupy zabezpieczeń musi mieć `MailEnabled` właściwością `True`.
@@ -48,7 +48,7 @@ Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie uż
     |**Brak**|Elementy członkowskie nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
     |**Odczyt**|Elementy członkowskie wykonywać zapytania na danych (oparte na filtrów wierszy), ale nie można zmodyfikować schematu modelu.|  
     |**Odczyt i przetwarzanie**|Członkowie mogą wysyłać zapytania na danych (na poziomie wiersza filtrami) i wykonywania operacji przetwarzania i przetwórz wszystko, ale nie można zmodyfikować schematu modelu.|  
-    |**Proces**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
+    |**Przetwórz**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
     |**Administrator**|Elementy członkowskie można zmodyfikować schemat modelu i wyszukiwać wszystkie dane.|   
   
 5.  Jeśli rola tworzenia ma odczytu lub uprawnienia Odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij przycisk **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij **Filtr języka DAX** pola, a następnie wpisz formułę języka DAX.
@@ -120,13 +120,13 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Do dodawania ról i użytkowników przy użyciu programu PowerShell
 
-[SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modułu zawiera polecenia cmdlet do zarządzania bazy danych specyficznych dla zadań i ogólnego przeznaczenia polecenia cmdlet Invoke-ASCmd, które akceptuje zapytanie skryptów języka TMSL (Tabular Model) lub skrypt. Następujące polecenia cmdlet są używane do zarządzania rolami bazy danych i użytkowników.
+[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modułu zawiera polecenia cmdlet do zarządzania bazy danych specyficznych dla zadań i ogólnego przeznaczenia polecenia cmdlet Invoke-ASCmd, które akceptuje zapytanie skryptów języka TMSL (Tabular Model) lub skrypt. Następujące polecenia cmdlet są używane do zarządzania rolami bazy danych i użytkowników.
   
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
-|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Dodaj członka do roli bazy danych.| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Usuń członka z roli bazy danych.|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Wykonywanie skryptów TMSL.|
+|[Dodaj RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Dodaj członka do roli bazy danych.| 
+|[Usuń RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Usuń członka z roli bazy danych.|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Wykonywanie skryptów TMSL.|
 
 ## <a name="row-filters"></a>Filtry wierszy  
 

@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b03e02a783245459fa28126b73eac2459f6aad67
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182850"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893099"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Zarządzanie danymi użytkownika w usłudze Azure Active Directory B2C
 
- W tym artykule opisano, jak możesz zarządzać danymi użytkownika w usłudze Azure Active Directory (Azure AD) B2C przy użyciu operacji, które są dostarczane przez [interfejsu API usługi Azure Active Directory Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog). Zarządzanie danymi użytkowników obejmuje usunięcie lub eksportowanie danych z dzienników inspekcji.
+ W tym artykule opisano, jak możesz zarządzać danymi użytkownika w usłudze Azure Active Directory (Azure AD) B2C przy użyciu operacji, które są dostarczane przez [interfejsu API usługi Azure Active Directory Graph](/previous-versions/azure/ad/graph/api/api-catalog). Zarządzanie danymi użytkowników obejmuje usunięcie lub eksportowanie danych z dzienników inspekcji.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Usuń dane użytkownika
 
-Dane użytkownika są przechowywane w katalogu usługi Azure AD B2C i dzienników inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 30 dni w usłudze Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w ciągu tego 30-dniowego okresu, możesz użyć [usunąć użytkownika](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) operacji. Operacja usuwania jest wymagana dla wszystkich dzierżaw usługi Azure AD B2C lokalizację danych. 
+Dane użytkownika są przechowywane w katalogu usługi Azure AD B2C i dzienników inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 30 dni w usłudze Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w ciągu tego 30-dniowego okresu, możesz użyć [usunąć użytkownika](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operacji. Operacja usuwania jest wymagana dla wszystkich dzierżaw usługi Azure AD B2C lokalizację danych. 
 
 Każdy użytkownik w usłudze Azure AD B2C jest przypisany identyfikator obiektu. Identyfikator obiektu oferuje jednoznaczną identyfikator można ich używać do usuwania danych użytkownika w usłudze Azure AD B2C. W zależności od architektury, identyfikator obiektu może być identyfikator korelacji przydatne dla innych usług, takich jak finansowych, marketingu i bazy danych zarządzania relacji klientów. 
 

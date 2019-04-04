@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861999"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918522"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scenariuszach automatyzacji do rozliczeń i kosztów zarządzania
 
@@ -80,9 +80,9 @@ Bezpośrednio w sieci Web i Enterprise klienci mogą używać wszystkich następ
 
 -   [Interfejs API ze szczegółami użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails): Wymaga to opłat ani użycie informacji na temat wszystkich zasobów platformy Azure można uzyskać od firmy Microsoft. Informacje są w formie rekordów szczegółów użycia, które obecnie są emitowane raz na metr dziennie. Informacje umożliwia dodanie koszty wszystkich zasobów lub zbadać koszty/użycia, na określonych zasobach.
 
--   [Interfejs API usługi RateCard](https://msdn.microsoft.com/library/azure/mt219005.aspx): Jeśli jesteś klientem bezpośredni klienci sieci Web, należy uzyskać stawki miernika. Następnie służy pobranych informacjach o informacje o użyciu zasobów do obliczania ręcznego rachunki. 
+-   [Interfejs API usługi RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): Jeśli jesteś klientem bezpośredni klienci sieci Web, należy uzyskać stawki miernika. Następnie służy pobranych informacjach o informacje o użyciu zasobów do obliczania ręcznego rachunki. 
 
--   [Niesklasyfikowaną zawartość interfejs API użycia](https://msdn.microsoft.com/library/azure/mt219003.aspx): Uzyskać informacje o użyciu raw, aby platforma Azure zrobi, wszelkie pomiaru/ładowania.
+-   [Niesklasyfikowaną zawartość interfejs API użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): Uzyskać informacje o użyciu raw, aby platforma Azure zrobi, wszelkie pomiaru/ładowania.
 
 ### <a name="billing"></a>Rozliczenia
 -   [Okresy fakturowania API](https://docs.microsoft.com/rest/api/billing/billingperiods): Określ okresu rozliczeniowego do przeanalizowania wraz z faktury identyfikatory dla tego okresu. Za pomocą faktury identyfikatory interfejsu API faktur.
@@ -121,7 +121,7 @@ Interfejsy API stanowią danych różni się:
    - Zmiany do konto do użycia z zobowiązaniami pieniężnymi przedpłacone
    - Zmiany do konta dla rozbieżności użycia odnalezionych przez platformę Azure
 
-- [Interfejs API użycia](https://msdn.microsoft.com/library/Mt219003.aspx) informacje pierwotne użycia platformy Azure, przed przekazaniem kosztów pomiaru użytkowania systemu Azure. Te dane mogą nie mieć wszelka korelacja z ilością użycia lub jest rozładowany, która jest widoczna po platformy Azure jest opłata w wysokości systemu pomiarów.
+- [Interfejs API użycia](/previous-versions/azure/reference/mt219003(v=azure.100)) informacje pierwotne użycia platformy Azure, przed przekazaniem kosztów pomiaru użytkowania systemu Azure. Te dane mogą nie mieć wszelka korelacja z ilością użycia lub jest rozładowany, która jest widoczna po platformy Azure jest opłata w wysokości systemu pomiarów.
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Jaka jest różnica między faktury interfejsu API i interfejs API szczegółów użycia?
 Interfejsy API stanowią inny widok tych samych danych:
@@ -135,7 +135,7 @@ Te interfejsy API zapewniają podobne zestawy danych, ale ma z różnych grup od
 
 - [Interfejsu API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet) zapewnia wynegocjowanym niestandardowe cen dla klientów firmowych.
 
-- [Interfejsu API RateCard](https://msdn.microsoft.com/library/mt219005.aspx) zapewnia publicznego cen dotyczą bezpośrednich klientów internetowych.
+- [Interfejsu API RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)) zapewnia publicznego cen dotyczą bezpośrednich klientów internetowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

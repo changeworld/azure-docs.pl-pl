@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868569"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893014"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
@@ -52,7 +52,7 @@ Usługa ACR Tasks obsługuje obecnie następujące wyzwalacze:
 * Zatwierdzenie do repozytorium Git
 * Aktualizacja obrazów podstawowych
 
-W tym samouczku zadanie usługi ACR tworzy i wypycha pojedynczy obraz kontenera określony w pliku Dockerfile. Zadania usługi ACR mogą także uruchamiać [zadania wieloetapowe](container-registry-tasks-multi-step.md) (obecnie dostępne w wersji zapoznawczej), używając pliku YAML do zdefiniowania kroków tworzenia, wypychania i, opcjonalnie, testowania wielu kontenerów.
+W tym samouczku zadanie usługi ACR tworzy i wypycha pojedynczy obraz kontenera określony w pliku Dockerfile. Zadania usługi ACR można również uruchomić [zadania wieloetapowe](container-registry-tasks-multi-step.md), zdefiniuj kroków, aby uruchomić przy użyciu pliku YAML, wypychania i opcjonalnie przetestować wiele kontenerów.
 
 ## <a name="create-a-build-task"></a>Tworzenie zadania kompilacji
 
@@ -314,12 +314,12 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku pokazano, jak używać zadania w celu automatycznego wyzwalania kompilacji obrazu kontenera na platformie Azure po zatwierdzeniu kodu źródłowego do repozytorium Git. Przejdź do kolejnego samouczka, aby dowiedzieć się, jak utworzyć zadania, które wyzwalają kompilacje przy aktualizacji obrazu podstawowego obrazu kontenera.
 
 > [!div class="nextstepaction"]
-> [Automatyczne kompilacje przy aktualizacji obrazu podstawowego](container-registry-tutorial-base-image-update.md)
+> [Automatyzuj kompilacje w aktualizacji obrazów podstawowych](container-registry-tutorial-base-image-update.md)
 
 <!-- LINKS - External -->
 [sample-repo]: https://github.com/Azure-Samples/acr-build-helloworld-node

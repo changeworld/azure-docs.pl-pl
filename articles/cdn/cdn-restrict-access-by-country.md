@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093310"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917757"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ogranicz zawartość sieci Azure CDN według kraju
 
@@ -47,16 +47,16 @@ Można stosować filtrowania geograficznego w przypadku wszystkich plików z prz
 Na przykład wszystkie z następujących filtrów ścieżki katalogu są prawidłowe:   
 */*                                 
 */Photos/*     
-*/Photos/Strasburgu /*     
-*/Photos/Strasbourg/City.PNG*
+*/Photos/Strasbourg/*     
+*/Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Zdefiniuj typ akcji
 
 Z **akcji** listy wybierz **Zezwalaj** lub **bloku**: 
 
-- **Zezwalaj na**: tylko do użytkowników z określonym krajów będą miały dostęp do zasobów żądane ze ścieżki cykliczne.
+- **Zezwalaj na**: Tylko użytkownicy z określonych Państw mają prawa dostępu do zasobów żądane ze ścieżki cykliczne.
 
-- **Blok**: użytkowników z określonym kraje są odmowa dostępu z zasobami żądane ze ścieżki cykliczne. Jeśli inne opcje filtrowania kraju zostały skonfigurowane dla tej lokalizacji, następnie wszyscy inni użytkownicy będą miały dostęp.
+- **Blok**: Użytkowników z określonym kraje są odmowa dostępu z zasobami żądane ze ścieżki cykliczne. Jeśli inne opcje filtrowania kraju zostały skonfigurowane dla tej lokalizacji, następnie wszyscy inni użytkownicy będą miały dostęp.
 
 Na przykład filtrowania geograficznego reguły blokowania ścieżce */zdjęcia/Strasburgu/* filtry następujące pliki:     
 *http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
@@ -110,5 +110,5 @@ W tabeli reguł filtrowania kraju, wybierz ikonę usuwania obok zasadę, aby ją
 
 * Tylko jedna reguła może zostać zastosowana do tej samej ścieżce względnej. Oznacza to, że nie można utworzyć wiele filtrów w kraju, które wskazują na tej samej ścieżce względnej. Jednak ponieważ kraj filtry są cykliczne, folder może mieć wiele filtrów kraju. Innymi słowy podfolder folderu wcześniej skonfigurowane można przypisać filtr innym kraju.
 
-* Funkcja filtrowania geograficznego używa numerów kierunkowych krajów do definiowania krajów, z których żądania jest dozwolony lub blokowany dla katalogu zabezpieczone. Mimo że profile firmy Akamai i Verizon obsługuje większość tych samych numerów kierunkowych, ma kilka różnic. Aby uzyskać więcej informacji, zobacz [wysokiej dostępności treści Azure numerów kierunkowych krajów](https://msdn.microsoft.com/library/mt761717.aspx). 
+* Funkcja filtrowania geograficznego używa numerów kierunkowych krajów do definiowania krajów, z których żądania jest dozwolony lub blokowany dla katalogu zabezpieczone. Mimo że profile firmy Akamai i Verizon obsługuje większość tych samych numerów kierunkowych, ma kilka różnic. Aby uzyskać więcej informacji, zobacz [wysokiej dostępności treści Azure numerów kierunkowych krajów](/previous-versions/azure/mt761717(v=azure.100)). 
 

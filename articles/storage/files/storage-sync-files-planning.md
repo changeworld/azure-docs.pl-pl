@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480723"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918641"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -278,6 +278,8 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Azja Wschodnia           | Azja Południowo-Wschodnia     |
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
+| Korea Środkowa       | Korea Południowa        |
+| Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
 | Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
 | Indie Południowe         | Indie Środkowe      |
@@ -292,7 +294,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Należy wziąć pod uwagę ustawień zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
-* [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-* [Wdrażanie usługi pliki Azure](storage-files-deployment-guide.md)
+* [Planowanie wdrażania usługi Pliki Azure](storage-files-planning.md)
+* [Wdrażanie usługi Pliki Azure](storage-files-deployment-guide.md)
 * [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 * [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

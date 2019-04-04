@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 67bf0499b6dcf4257380f601c802723b2993a092
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771484"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893354"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Tworzenie aplikacji platformy Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -37,7 +37,7 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, skorzystaj z bezpłatnej wersji próbnej platformy Azure i uzyskaj maksymalnie 10 bezpłatnych aplikacji mobilnych. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio z programem Xamarin. Instrukcje można znaleźć w temacie [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin).
+* Visual Studio z programem Xamarin. Instrukcje można znaleźć w temacie [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Tworzenie zaplecza Aplikacji mobilnej Azure
 Wykonaj te kroki, aby utworzyć zaplecze aplikacji mobilnej.
@@ -71,7 +71,7 @@ Jeśli masz problemy z kompilowaniem rozwiązania, uruchom menedżera pakietów 
 Pamiętaj, że wszystkie pakiety dla pomocy technicznej, do których odwołuje się projekt, muszą mieć tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dodawanie synchronizacji offline do aplikacji](app-service-mobile-xamarin-android-get-started-offline-data.md)
+* [Dodawanie synchronizacji Offline do aplikacji](app-service-mobile-xamarin-android-get-started-offline-data.md)
 * [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-xamarin-android-get-started-users.md)
 * [Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md)
 * [Jak używać zarządzanego klienta usługi Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)

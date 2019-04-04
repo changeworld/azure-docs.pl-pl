@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884571"
+ms.locfileid: "58894682"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -81,7 +81,7 @@ Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następu
 1. [Uruchom kontener](##run-the-container-with-docker-run), za pomocą wymaganych _wejściowych instalacji_ i rozliczeń ustawienia. Więcej [przykłady](luis-container-configuration.md#example-docker-run-commands) z `docker run` polecenia są dostępne. 
 1. [Wykonywanie zapytań endpoint prognoz kontenera](#query-the-containers-prediction-endpoint). 
 1. Po wykonaniu tych czynności za pomocą kontenera, [importować dzienniki punktu końcowego](#import-the-endpoint-logs-for-active-learning) z danych wyjściowych instalacji w portalu usługi LUIS i [zatrzymać](#stop-the-container) kontenera.
-1. Użyj usługi LUIS portal [aktywne uczenie](luis-how-to-review-endoint-utt.md) na **Przejrzyj wypowiedzi punktu końcowego** strony, aby udoskonalać aplikację.
+1. Użyj usługi LUIS portal [aktywne uczenie](luis-how-to-review-endpoint-utterances.md) na **Przejrzyj wypowiedzi punktu końcowego** strony, aby udoskonalać aplikację.
 
 Nie można zmienić aplikacji działającej w kontenerze. W kolejności zmiany aplikacji w kontenerze, należy zmodyfikować aplikację tak, przy użyciu usługi LUIS [LUIS](https://www.luis.ai) portalu lub użyj usługi LUIS [Tworzenie interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f). Następnie szkolenie i/lub opublikować, a następnie Pobierz nowy pakiet i ponownie uruchom kontenera.
 
@@ -101,7 +101,7 @@ Katalog instalacji danych wejściowych może zawierać **produkcji**, **przemies
 
 |Typ pakietu|Punkt końcowy interfejsu API zapytań|Dostępność zapytań|Format nazwy pliku pakietu|
 |--|--|--|--|
-|Przeszkoleni|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Szkolone|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |Przygotowanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
 |Produkcja|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_PRODUCTION.gz`|
 
@@ -258,7 +258,7 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
 |Opublikowano|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczania<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]<br>|
-|Przeszkoleni|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
+|Szkolone|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
@@ -268,7 +268,7 @@ Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapyta
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|
 |`verbose`|wartość logiczna|Zwraca wszystkie intencje i ich wyniki, gdy ustawiona na wartość true. Wartość domyślna to false, która zwraca górną intencji.|
 |`staging`|wartość logiczna|Zapytanie zwraca wyniki w środowisku przejściowym, jeśli jest ustawiona na wartość true. |
-|`log`|wartość logiczna|Rejestruje zapytania, których można korzystać później podczas [aktywne uczenie](luis-how-to-review-endoint-utt.md). Domyślna to true.|
+|`log`|wartość logiczna|Rejestruje zapytania, których można korzystać później podczas [aktywne uczenie](luis-how-to-review-endpoint-utterances.md). Domyślna to true.|
 
 ### <a name="query-published-app"></a>Opublikowana aplikacja zapytania
 

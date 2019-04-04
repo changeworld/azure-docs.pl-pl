@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
-ms.openlocfilehash: 680e39b291cbaa1012cd972e188ab4e5f7aef694
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449015"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905294"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. System ten zapewnia widoczność i kontrolę nad obciążeniach chmury hybrydowej, aktywne mechanizmów obronnych pozwalających ograniczyć narażenie na zagrożenia i wykrywanie inteligentne, które ułatwią Ci zmieniającego się szybko ewoluującymi cyberatakami.
@@ -46,7 +46,7 @@ Aby wyświetlić warstwy standardowa:
 4. Wybierz **standardowa** do uaktualnienia.
 5. Kliknij pozycję **Zapisz**.
 
-![Cennik usługi Security Center](./media/security-center-pricing/get-standard.png)
+(Ceny na ilustracji są na przykład tylko do celów). ![Cennik usługi Security Center](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Aby włączyć wszystkie funkcje usługi Security Center, należy najpierw zastosować standardowej warstwy cenowej na subskrypcji zawierającej odpowiednich maszyn wirtualnych. Konfigurowanie ceny dla obszaru roboczego nie włączać tylko w przypadku dostępu do maszyny Wirtualnej w czasie, funkcje adaptacyjnego sterowania aplikacjami i rozwiązaniami do wykrywania sieci dla zasobów platformy Azure.

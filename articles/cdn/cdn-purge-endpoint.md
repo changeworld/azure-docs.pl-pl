@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
-ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093854"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916483"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Przeczyszczanie punktu końcowego usługi Azure CDN
 ## <a name="overview"></a>Przegląd
@@ -52,12 +52,12 @@ Ten samouczek przeprowadzi Cię przez czyszczenie zasobów ze wszystkich węzł�
    > 
    > 
 4. Wybierz zasoby, które chcesz przeczyścić z węzłów krawędzi.  Jeśli chcesz wyczyścić wszystkie zasoby, kliknij przycisk **Przeczyść wszystkie** pola wyboru.  W przeciwnym razie wpisz ścieżkę do każdego zasobu, które chcesz przeczyścić w **ścieżki** pola tekstowego. Poniższe formaty są obsługiwane w ścieżce.
-    1. **Pojedynczy adres URL przeczyszczania**: przeczyszczania poszczególnych zasobów, określając pełny adres URL, z lub bez rozszerzenia pliku, np.`/pictures/strasbourg.png`; `/pictures/strasbourg`
-    2. **Symbol wieloznaczny przeczyszczania**: gwiazdki (\*) może być używana jako symbol wieloznaczny. Wyczyść wszystkie foldery, podfoldery i pliki w obszarze punkt końcowy z `/*` przeczyszczania lub ścieżkę wszystkie podfoldery i pliki w określonym folderze, określając folder następuje `/*`, np.,`/pictures/*`.  Należy pamiętać, Przeczyść tego symbolu wieloznacznego nie jest obsługiwana przez usługę Azure CDN from Akamai obecnie. 
-    3. **Przeczyszczanie domeny katalogu głównego**: przeczyszczanie punktu końcowego "/" w ścieżce katalogu głównego.
+    1. **Pojedynczy adres URL przeczyszczania**: Przeczyść poszczególnych zasobów, określając pełny adres URL, z lub bez rozszerzenia pliku, np.`/pictures/strasbourg.png`; `/pictures/strasbourg`
+    2. **Symbol wieloznaczny przeczyszczania**: Gwiazdka (\*) może być używana jako symbol wieloznaczny. Wyczyść wszystkie foldery, podfoldery i pliki w obszarze punkt końcowy z `/*` przeczyszczania lub ścieżkę wszystkie podfoldery i pliki w określonym folderze, określając folder następuje `/*`, np.,`/pictures/*`.  Należy pamiętać, Przeczyść tego symbolu wieloznacznego nie jest obsługiwana przez usługę Azure CDN from Akamai obecnie. 
+    3. **Przeczyszczanie domeny katalogu głównego**: Przeczyszczanie punktu końcowego "/" w ścieżce katalogu głównego.
    
    > [!TIP]
-   > Ścieżki musi być określona dla przeczyszczania i musi być względnym adresem URL, który mieści się następujące [wyrażenia regularnego](https://msdn.microsoft.com/library/az24scfc.aspx). **Przeczyść wszystkie** i **przeczyszczania symboli wieloznacznych** nie są obsługiwane przez **Azure CDN from Akamai** obecnie.
+   > Ścieżki musi być określona dla przeczyszczania i musi być względnym adresem URL, który mieści się następujące [wyrażenia regularnego](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Przeczyść wszystkie** i **przeczyszczania symboli wieloznacznych** nie są obsługiwane przez **Azure CDN from Akamai** obecnie.
    > > Pojedynczy adres URL przeczyszczania `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Ciąg zapytania `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Symbol wieloznaczny przeczyszczania `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
@@ -75,5 +75,5 @@ Ten samouczek przeprowadzi Cię przez czyszczenie zasobów ze wszystkich węzł�
 
 ## <a name="see-also"></a>Zobacz także
 * [Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN](cdn-preload-endpoint.md)
-* [Dokumentacja interfejsu API REST usługi CDN Azure - przeczyszczania i wstępne ładowanie punktu końcowego](https://msdn.microsoft.com/library/mt634451.aspx)
+* [Dokumentacja interfejsu API REST usługi CDN Azure - przeczyszczania i wstępne ładowanie punktu końcowego](/rest/api/cdn/endpoints)
 

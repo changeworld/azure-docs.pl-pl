@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b9c7f00c8ec8408547620111634470d455334c8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210530"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499237"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -186,14 +186,19 @@ Nie można przypisać jednostki SKU do określonych użytkowników lub grup.
 
 Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie mogą tworzyć bazy danych, dopóki nie jest w pełni utworzona jednostka SKU.
 
-Aby edytować jednostki SKU, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Wybierz jednostkę SKU, aby zmodyfikować, wprowadź niezbędne zmiany i kliknij przycisk **Zapisz** można zapisać zmian. Aby usunąć jednostkę SKU, która nie jest już potrzebny, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Kliknij prawym przyciskiem myszy nazwę jednostki SKU, a następnie wybierz pozycję **Usuń** go usunąć.
+Aby edytować jednostki SKU, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Wybierz jednostkę SKU, aby zmodyfikować, wprowadź niezbędne zmiany i kliknij przycisk **Zapisz** można zapisać zmian. 
 
-> [!TIP]
-> Można edytować lub usunąć SQL limity przydziałów dostawcy zasobów w tej samej lokalizacji.
+Aby usunąć jednostkę SKU, która nie jest już potrzebny, przejdź do **wszystkich usług** > **SQL Adapter** > **jednostki SKU**. Kliknij prawym przyciskiem myszy nazwę jednostki SKU, a następnie wybierz pozycję **Usuń** go usunąć.
+
+> [!IMPORTANT]
+> Może potrwać do godziny nowych jednostek SKU mają być dostępne w portalu użytkowników.
 
 ## <a name="make-sql-databases-available-to-users"></a>Udostępnić użytkownikom baz danych SQL
 
 Utwórz plany i oferty, aby udostępnić użytkownikom baz danych SQL. Dodaj **Microsoft.SqlAdapter** usługi zgodnie z planem i tworzenie nowego limitu przydziału.
+
+> [!IMPORTANT]
+> Może upłynąć do dwóch godzin nowe przydziały, które mają być dostępne w portalu użytkowników, lub przed zmienionych limitu przydziału jest wymuszany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

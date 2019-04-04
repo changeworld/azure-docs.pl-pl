@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369721"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894461"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -88,7 +88,7 @@ Zobacz [zasobów usługi Azure Active Directory](luis-how-to-collaborate.md#azur
 
 Wyniki przewidywań nieoczekiwane zapytanie są oparte na stanie opublikowanego modelu. Aby naprawić model, możesz może muszą można zmienić modelu, szkolenie i opublikuj go ponownie. 
 
-Poprawianie modelu zaczyna się od [aktywne uczenie](luis-how-to-review-endoint-utt.md).
+Poprawianie modelu zaczyna się od [aktywne uczenie](luis-how-to-review-endpoint-utterances.md).
 
 Możesz usunąć szkolenia deterministyczna, aktualizując [aplikacji interfejsu API z ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby można było używać wszystkich danych szkoleniowych.
 
@@ -298,7 +298,7 @@ Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Azure-Samples/co
 Filmy wideo:
 * [Azure Friday konferencji Build 2018: Cognitive Services — języka (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Pokaż sztucznej Inteligencji 2018 kompilacji — nowości pojawiły się z usługą interpretacji języka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Kompilacja 2018 sesji — Bot analizy możliwości mowy i NLU najlepsze rozwiązania](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - aktualizacje usługi LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty:

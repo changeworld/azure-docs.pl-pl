@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847450"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916691"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -67,7 +67,7 @@ Poniższe tabele są uporządkowane według kodu błędu.
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Usługa Azure Backup nie jest w stanie połączyć się z wystąpieniem serwera SQL. | Usługa Azure Backup nie może połączyć się z wystąpieniem programu SQL. | Użyj dodatkowe szczegóły w menu błędzie portalu platformy Azure, aby zawęzić głównych przyczyn. Zapoznaj się [rozwiązywania kopii zapasowej SQL](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) Aby naprawić błąd.<br/><ul><li>Jeśli domyślne ustawienia programu SQL nie zezwalają na połączenia zdalne, należy zmienić ustawienia. Zobacz poniższe linki dotyczące zmieniania ustawień.<ul><li>[https://msdn.microsoft.com/library/bb326495.aspx](https://msdn.microsoft.com/library/bb326495.aspx)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Jeśli występują problemy podczas logowania, użyj poniższych linków, aby rozwiązać ten problem:<ul><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Usługa Azure Backup nie jest w stanie połączyć się z wystąpieniem serwera SQL. | Usługa Azure Backup nie może połączyć się z wystąpieniem programu SQL. | Użyj dodatkowe szczegóły w menu błędzie portalu platformy Azure, aby zawęzić głównych przyczyn. Zapoznaj się [rozwiązywania kopii zapasowej SQL](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) Aby naprawić błąd.<br/><ul><li>Jeśli domyślne ustawienia programu SQL nie zezwalają na połączenia zdalne, należy zmienić ustawienia. Zobacz następujące artykuły, aby uzyskać informacje na temat zmiany ustawień.<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Jeśli występują problemy podczas logowania, użyj poniższych linków, aby rozwiązać ten problem:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -169,7 +169,8 @@ Tych objawów mogą wystąpić z powodu co najmniej jeden z następujących powo
   * Maszyny Wirtualnej zostało zamknięte przez dłuższy czas z powodu której konfiguracji rozszerzenia na nim wygasł
   * Maszyna wirtualna została usunięta, a inną maszynę Wirtualną utworzono o takiej samej nazwie i w tej samej grupie zasobów usuniętej maszyny Wirtualnej
   * Jednym z węzłów AG kompletna konfiguracja kopii zapasowej nie nadeszła, może się to zdarzyć, zarówno w czasie rejestracji grupy dostępności w magazynie lub po dodaniu nowego węzła  <br>
-    W powyższych scenariuszach zalecane jest aby wyzwolić ponowne zarejestrowanie operację na maszynie Wirtualnej. Ta opcja jest tylko dostępne za pośrednictwem programów PowerShell i będzie wkrótce dostępna w witrynie Azure portal.
+   
+W powyższych scenariuszach zalecane jest aby wyzwolić ponowne zarejestrowanie operację na maszynie Wirtualnej. Ta opcja jest tylko dostępne za pośrednictwem programów PowerShell i będzie wkrótce dostępna w witrynie Azure portal.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

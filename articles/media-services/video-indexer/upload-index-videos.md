@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516973"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893456"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -22,7 +22,7 @@ Podczas przekazywania filmów wideo za pomocą interfejsu API indeksatora wideo,
 
 * przekazywanie pliku wideo z adresu URL (opcja preferowana),
 * wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania,
-* używanie istniejącego elementu zawartości usługi Azure Media Services przez podanie [identyfikatora elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane tylko w przypadku płatnych kont).
+* Użyj istniejącego zasobu usługi Azure Media Services, zapewniając [identyfikator elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane płatne tylko na kontach).
 
 W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów. <br/>W artykule omówiono też niektóre parametry, które można ustawić w interfejsie API, aby zmieniać przetwarzanie i dane wyjściowe interfejsu API.
 
@@ -85,9 +85,9 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
 
 Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne zawierają hałas w tle. Parametr ten służy do konfigurowania procesu indeksowania. Można określić następujące wartości:
 
-- `Default` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu części zarówno audio, jak i wideo
-- `AudioOnly` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu tylko części audio (z ignorowaniem części wideo)
-- `DefaultWithNoiseReduction` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu zarówno audio, jak i wideo przy zastosowaniu algorytmów redukcji szumów w strumieniu audio
+- `Default` — Indeks i wyodrębnić szczegółowe informacje przy użyciu audio i wideo
+- `AudioOnly` — Indeks i wyodrębnić szczegółowe informacje przy użyciu tylko audio (Ignorowanie wideo)
+- `DefaultWithNoiseReduction` — Indeks i prowadzenie analiz audio i wideo, przy zastosowaniu algorytmów redukcji szumów strumienia audio
 
 Cena zależy od wybranej opcji indeksowania.  
 
@@ -175,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");
@@ -290,4 +290,4 @@ Kody stanu wymienione w poniższej tabeli mogą być zwracane przez operację pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Sprawdzanie danych wyjściowych usługi Azure Video Indexer wygenerowanych przez interfejs API w wersji 2](video-indexer-output-json-v2.md)
+[Sprawdź dane wyjściowe Azure Video Indexer produkowane przez interfejs API](video-indexer-output-json-v2.md)

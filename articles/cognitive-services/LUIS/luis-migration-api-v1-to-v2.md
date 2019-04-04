@@ -1,7 +1,7 @@
 ---
 title: Aby migracja interfejsu API w wersji 2 w wersji 1
 titleSuffix: Azure Cognitive Services
-description: Punkt końcowy w wersji 1 i Tworzenie interfejsów API interpretacji języka są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 2 i Tworzenie interfejsów API.
+description: Punkt końcowy w wersji 1 i tworzenia interfejsy API interpretacji języka są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 2 i Tworzenie interfejsów API.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087928"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894085"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -134,7 +134,7 @@ Kilka interfejsów API, które zwracają metadanych usługi LUIS mają nowe nazw
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Przykładowy" zmieniona na "Zaproponuj"
-Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md)** w witrynie internetowej usługi LUIS.
+Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md)** w witrynie internetowej usługi LUIS.
 
 | version | trasa |
 |--|--|

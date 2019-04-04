@@ -14,16 +14,16 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: da1ae76925ffeba7a1df57b4121f8cfe20b2887f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285925"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882110"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Kopia zapasowa i odzyskiwanie danych dla usługi Azure Stack przy użyciu infrastruktury usługi Backup
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Można utworzyć kopię zapasową i przywrócić konfigurację i dane usługi przy użyciu usługi Kopia zapasowa infrastruktury. Każda instalacja usługi Azure Stack zawiera wystąpienie usługi. Kopie zapasowe utworzone przez usługę do ponownego wdrożenia chmury Azure Stack można użyć do przywrócenia tożsamości, zabezpieczeń i danych usługi Azure Resource Manager. 
 
@@ -32,7 +32,7 @@ Można włączyć kopii zapasowej, gdy jesteś gotowy do ponownego uruchomienia 
 Przed włączeniem usługi tworzenia kopii zapasowej upewnij się, że masz [wymagania w miejscu](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Usługa Backup infrastruktury nie ma danych użytkownika i aplikacji. Zapoznaj się [ochrony maszyn wirtualnych wdrożonych w usłudze Azure Stack](user/azure-stack-manage-vm-protect.md) Aby uzyskać więcej informacji na temat ochrony maszyn wirtualnych IaaS na podstawie aplikacji. Kompleksową wiedzę na temat sposobu ochrony aplikacji w usłudze Azure Stack, można znaleźć [rozważania usługi Azure Stack dla firm ciągłość działalności biznesowej i odzyskiwanie po awarii odzyskiwania oficjalny dokument dotyczący](http://aka.ms/azurestackbcdrconsiderationswp).
+> Usługa Backup infrastruktury nie ma danych użytkownika i aplikacji. Zapoznaj się [ochrony maszyn wirtualnych wdrożonych w usłudze Azure Stack](user/azure-stack-manage-vm-protect.md) Aby uzyskać więcej informacji na temat ochrony maszyn wirtualnych IaaS na podstawie aplikacji. Kompleksową wiedzę na temat sposobu ochrony aplikacji w usłudze Azure Stack, można znaleźć [informacje dotyczące usługi Azure Stack firm ciągłość działalności biznesowej i odzyskiwanie po awarii odzyskiwania oficjalny dokument dotyczący](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="the-infrastructure-backup-service"></a>Usługa kopii zapasowej infrastruktury
 
@@ -48,7 +48,7 @@ Usługi zawiera następujące funkcje.
 
 ## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>Sprawdź wymagania dotyczące infrastruktury usługi Backup
 
-- **Lokalizacja usługi Storage**  
+- **Lokalizacja magazynu**  
   Udział plików należy dostępne z usługi Azure Stack może zawierać siedem kopii zapasowych. Każda kopia zapasowa wynosi około 10 GB. Swój udział powinno być możliwe do przechowywania kopii zapasowych 140 GB. Aby uzyskać więcej informacji o wybieraniu lokalizacji magazynu dla usługi Azure Stack infrastruktury kopii zapasowych, zobacz [wymagania dotyczące kontrolera kopii zapasowej](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Poświadczenia**  
   Potrzebujesz konta użytkownika domeny i poświadczenia, na przykład, może użyć poświadczeń administratora usługi Azure Stack.

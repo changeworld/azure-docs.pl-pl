@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie pojemnością magazynu w usłudze Azure Stack | Dokumentacja firmy Microsoft
-description: Monitorowanie i zarządzanie miejsce do magazynowania dostępne dla usługi Azure Stack.
+description: Monitorowanie i zarządzanie Azure Stack wydajności i dostępności magazynu miejsca do magazynowania dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/29/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: e5188a7f7a1ce889c8f4340f100cfe767ff2dff8
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225709"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629395"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
@@ -53,7 +53,6 @@ Udziały w woluminach przechowywania danych dzierżawy. Danych dzierżawy obejmu
 
 Gdy udział kończy się wolne miejsce i akcje [odzyskać](#reclaim-capacity) miejsca nie są pomyślnie lub będą dostępne, operator chmury Azure Stack można migrować kontenery obiektów blob z jednego udziału na inny.
 
-- Aby uzyskać więcej informacji na temat kontenerów i obiektów blob, zobacz [magazynu obiektów Blob](azure-stack-key-features.md#blob-storage) klucza funkcje i pojęcia w usłudze Azure Stack.
 - Aby uzyskać informacje o współdziałaniu użytkownikom dzierżawy z magazynu obiektów blob w usłudze Azure Stack, zobacz [usług Azure Storage stosu](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
@@ -142,14 +141,14 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 1. Upewnij się, że masz [programu Azure PowerShell zainstalowany i skonfigurowany](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkId=394767) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
 2. Sprawdź kontener, aby zrozumieć, jakie dane są w udziale, który mają być poddane migracji. Aby zidentyfikować najlepsze kontenery Release candidate dla migracji w woluminie, należy użyć **Get AzsStorageContainer** polecenia cmdlet:
 
-   ```PowerShell  
+   ```powershell  
    $farm_name = (Get-AzsStorageFarm)[0].name
    $shares = Get-AzsStorageShare -FarmName $farm_name
    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
    ```
    Następnie sprawdź $containers:
 
-   ```PowerShell
+   ```powershell
    $containers
    ```
 
@@ -157,14 +156,14 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 
 3. Zidentyfikuj najlepsze udziałów docelowego na potrzeby przechowywania kontenerów, które można migrować:
 
-   ```PowerShell
+   ```powershell
    $destinationshares = Get-AzsStorageShare -SourceShareName
    $shares[0].ShareName -Intent ContainerMigration
    ```
 
    Następnie sprawdź $destinationshares:
 
-   ```PowerShell 
+   ```powershell 
    $destinationshares
    ```
 
@@ -172,20 +171,20 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 
 4. Rozpoczynanie migracji dla kontenera. Migracja jest asynchroniczna. W przypadku uruchomienia migracji dodatkowe kontenery przed zakończeniem pierwszej migracji, należy użyć zadania o identyfikatorze śledzić stan każdego z nich.
 
-   ```PowerShell
+   ```powershell
    $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
    ```
 
    Następnie zbadaj $jobId. W poniższym przykładzie Zastąp *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* o identyfikatorze zadania, które chcesz zbadać:
 
-   ```PowerShell
+   ```powershell
    $jobId
    d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
    ```
 
 5. Aby sprawdzić stan zadania migracji, należy użyć Identyfikatora zadania. Po zakończeniu migracji kontenera **MigrationStatus** ustawiono **Complete**.
 
-   ```PowerShell 
+   ```powershell 
    Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
    ```
 
@@ -193,7 +192,7 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 
 6. Możesz anulować zadanie migracji w toku. Anulowano migracji, które zadania są wykonywane asynchronicznie. Unieważnieniu można śledzić za pomocą $jobid:
 
-   ```PowerShell
+   ```powershell
    Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
    ```
 

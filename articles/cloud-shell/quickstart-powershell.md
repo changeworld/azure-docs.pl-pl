@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106410"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905073"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Przewodnik Szybki Start dla programu PowerShell w usłudze Azure Cloud Shell
 
@@ -267,7 +267,7 @@ Aby uwierzytelniać się na serwerach lub maszynach wirtualnych przy użyciu pro
 
 ### <a name="using-ssh"></a>Przy użyciu protokołu SSH
 
-Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) do utworzenia nowej konfiguracji maszyny Wirtualnej przy użyciu poleceń cmdlet usługi AzureRM.
+Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) do utworzenia nowej konfiguracji maszyny Wirtualnej przy użyciu poleceń cmdlet programu Azure PowerShell.
 Przed wywołaniem do `New-AzVM` Konferencję wdrożenia, należy dodać klucz publiczny SSH do konfiguracji maszyny Wirtualnej.
 Nowo utworzonej maszyny Wirtualnej będzie zawierać klucz publiczny w `~\.ssh\authorized_keys` lokalizacji, umożliwiając w ten sposób bez poświadczeń sesję SSH z maszyną wirtualną.
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 W obszarze `Azure` dysku, wpisz `Get-AzCommand` można pobrać poleceń platformy Azure od kontekstu.
 
-Alternatywnie, zawsze można użyć `Get-Command *azurerm* -Module AzureRM.*` Aby sprawdzić dostępne polecenia platformy Azure.
+Alternatywnie, zawsze można użyć `Get-Command *az* -Module Az.*` Aby sprawdzić dostępne polecenia platformy Azure.
 
 ## <a name="install-custom-modules"></a>Zainstaluj moduły niestandardowe
 

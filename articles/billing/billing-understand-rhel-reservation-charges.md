@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
-ms.openlocfilehash: 9eba59bcdc9974519fc1ed37078a205eff28f116
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653236"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917060"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Zrozumienie, jak Red Hat Linux Enterprise software plan rabatu związanego z rezerwacją jest stosowany dla platformy Azure
 
@@ -160,7 +160,7 @@ Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły
 
 - [Co to są rezerwacji dla platformy Azure](billing-save-compute-costs-reservations.md)
 - [Zapłać z góry za plany oprogramowania Red Hat za pomocą rezerwacji platformy Azure](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zarządzanie rezerwacji dla platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)

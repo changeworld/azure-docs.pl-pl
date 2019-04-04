@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118595"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905311"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure
 
 Azure Twins cyfrowego używa kontroli dostępu opartej na rolach ([RBAC](./security-role-based-access-control.md)) do zarządzania dostępem do zasobów.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Omówienie przypisania roli
 
@@ -38,11 +41,11 @@ W poniższej tabeli opisano każdy atrybut:
 
 | Atrybut | Name (Nazwa) | Wymagane | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| Identyfikator RoleId | Identyfikator definicji roli | Yes | Ciąg | Unikatowy identyfikator przypisania roli żądaną. Aby znaleźć definicji ról i ich identyfikatora, wykonywania zapytań interfejsu API systemu lub przeglądania w poniższej tabeli. |
-| Identyfikator obiektu | Identyfikator obiektu | Yes | Ciąg | Identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny. Co lub których przypisanie roli jest przypisany do. Przypisanie roli musi być sformatowany zgodnie z jego skojarzonego typu. Aby uzyskać `DomainName` objectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
-| objectIdType | Typ identyfikatora obiektu | Yes | Ciąg | Typ identyfikatora obiektu używany. Zobacz **obsługiwane ObjectIdTypes** poniżej. |
-| ścieżka | Ścieżka miejsca | Yes | Ciąg | Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
-| Identyfikator dzierżawy | Identyfikator dzierżawy | Różna | Ciąg | W większości przypadków identyfikator dzierżawy usługi Azure Active Directory. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
+| roleId | Identyfikator definicji roli | Yes | String | Unikatowy identyfikator przypisania roli żądaną. Aby znaleźć definicji ról i ich identyfikatora, wykonywania zapytań interfejsu API systemu lub przeglądania w poniższej tabeli. |
+| Identyfikator obiektu | Identyfikator obiektu | Yes | String | Identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny. Co lub których przypisanie roli jest przypisany do. Przypisanie roli musi być sformatowany zgodnie z jego skojarzonego typu. Aby uzyskać `DomainName` objectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
+| objectIdType | Typ identyfikatora obiektu | Yes | String | Typ identyfikatora obiektu używany. Zobacz **obsługiwane ObjectIdTypes** poniżej. |
+| ścieżka | Ścieżka miejsca | Yes | String | Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
+| tenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków identyfikator dzierżawy usługi Azure Active Directory. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Identyfikatorów definicji roli obsługiwanej
 
@@ -83,8 +86,8 @@ Twoja nazwa aplikacji jest dostarczany do Ciebie w usłudze Azure Active Directo
 Po utworzeniu Identyfikatora aplikacji, wykonaj następujące polecenia środowiska PowerShell:
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 Użytkownik mający **administratora** roli można następnie przypisać rolę administratora miejsca dla użytkownika, wprowadzając uwierzytelnionego żądania HTTP POST na adres URL:
@@ -162,10 +165,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Wartość parametru** | **Wymagane** |  **Typ** |  **Opis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Ciąg |   Identyfikator obiektu objectIdType identyfikatora użytkownika. |
-| YOUR_PATH | True | Ciąg |   Do sprawdzenia dostępu dla wybranej ścieżki. |
-| YOUR_ACCESS_TYPE |  True | Ciąg |   Typ dostępu do wyszukania. |
-| YOUR_RESOURCE_TYPE | True | Ciąg |  Zasób do sprawdzenia. |
+| YOUR_USER_ID |  True | String |   Identyfikator obiektu objectIdType identyfikatora użytkownika. |
+| YOUR_PATH | True | String |   Do sprawdzenia dostępu dla wybranej ścieżki. |
+| YOUR_ACCESS_TYPE |  True | String |   Typ dostępu do wyszukania. |
+| YOUR_RESOURCE_TYPE | True | String |  Zasób do sprawdzenia. |
 
 Żądania zakończonego powodzeniem będzie zwracać wartość logiczną `true` lub `false` do wskazania, czy typ dostępu zostały przypisane do użytkownika dla danej ścieżki i zasobu.
 

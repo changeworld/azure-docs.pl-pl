@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 56f7b5e3b303ce68868f15528d1ec200919b52aa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001562"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916312"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Dostosowywanie cyklu życia roli Sieć Web lub Proces roboczy na platformie .NET
-Podczas tworzenia roli procesu roboczego, możesz rozszerzyć [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) klasę, która zapewnia metody do zastąpienia, które umożliwiają reagowanie na zdarzenia cyklu życia. Dla ról sieci web ta klasa jest opcjonalne, więc musisz ją wykorzystać w celu reagowania na zdarzenia cyklu życia.
+Podczas tworzenia roli procesu roboczego, możesz rozszerzyć [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) klasę, która zapewnia metody do zastąpienia, które umożliwiają reagowanie na zdarzenia cyklu życia. Dla ról sieci web ta klasa jest opcjonalne, więc musisz ją wykorzystać w celu reagowania na zdarzenia cyklu życia.
 
 ## <a name="extend-the-roleentrypoint-class"></a>Rozszerzenie klasy RoleEntryPoint
-[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) klasa zawiera metody, które są wywoływane przez platformę Azure podczas jego **uruchamia**, **uruchamia**, lub **zatrzymuje** rola sieć web lub proces roboczy. Opcjonalnie można zastąpić tych metod do zarządzania roli inicjowania, sekwencji zamykania roli lub wątek wykonywania roli. 
+[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) klasa zawiera metody, które są wywoływane przez platformę Azure podczas jego **uruchamia**, **uruchamia**, lub **zatrzymuje** rola sieć web lub proces roboczy. Opcjonalnie można zastąpić tych metod do zarządzania roli inicjowania, sekwencji zamykania roli lub wątek wykonywania roli. 
 
 Podczas rozszerzania **RoleEntryPoint**, jednak należy zwrócić uwagę na następujące metody:
 
-* [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) i [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) metody zwracają wartość logiczną, więc istnieje możliwość powrotu **false** z tych metod.
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) i [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metody zwracają wartość logiczną, więc istnieje możliwość powrotu **false** z tych metod.
   
    Jeśli Twój kod zwraca **false**nagle zakończenia procesu roli, bez konieczności uruchamiania dowolnej sekwencji zamykania systemu mogą mieć w miejscu. Ogólnie rzecz biorąc, należy unikać, zwracając **false** z **OnStart** metody.
 * Dowolny nieprzechwycony wyjątek w obrębie przeciążenia **RoleEntryPoint** metoda jest traktowana jako nieobsługiwany wyjątek.
   
-   Jeśli wystąpi wyjątek w ramach jednej z metod cyklu życia, Azure zgłosi [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) zdarzeń, a następnie proces zostanie zakończony. Po swojej roli została podjęta w trybie offline, zostanie ono uruchomione na platformie Azure. Po wystąpieniu nieobsługiwanego wyjątku [zatrzymywanie](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) zdarzeń nie jest inicjowane i **OnStop** nie jest wywoływana metoda.
+   Jeśli wystąpi wyjątek w ramach jednej z metod cyklu życia, Azure zgłosi [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) zdarzeń, a następnie proces zostanie zakończony. Po swojej roli została podjęta w trybie offline, zostanie ono uruchomione na platformie Azure. Po wystąpieniu nieobsługiwanego wyjątku [zatrzymywanie](/previous-versions/azure/reference/ee758136(v=azure.100)) zdarzeń nie jest inicjowane i **OnStop** nie jest wywoływana metoda.
 
-Jeśli Twojej roli nie uruchamia się lub jest odtwarzane między inicjowanie, zajęta i Stany zatrzymywania, kod może zgłaszanie nieobsługiwany wyjątek w obrębie jednego ze zdarzeń cyklu życia każdego rolę ponownym uruchomieniu. W takim przypadku należy użyć [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) zdarzenie, aby ustalić przyczynę wyjątku i odpowiednio go obsłużyć. Roli użytkownika może również zwracać z [Uruchom](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metody, która powoduje, że rola zostanie uruchomiona ponownie. Aby uzyskać więcej informacji na temat stany wdrożeń zobacz [typowe problemy z którym Przyczyna role do odtwarzania](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Jeśli Twojej roli nie uruchamia się lub jest odtwarzane między inicjowanie, zajęta i Stany zatrzymywania, kod może zgłaszanie nieobsługiwany wyjątek w obrębie jednego ze zdarzeń cyklu życia każdego rolę ponownym uruchomieniu. W takim przypadku należy użyć [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) zdarzenie, aby ustalić przyczynę wyjątku i odpowiednio go obsłużyć. Roli użytkownika może również zwracać z [Uruchom](/previous-versions/azure/reference/ee772746(v=azure.100)) metody, która powoduje, że rola zostanie uruchomiona ponownie. Aby uzyskać więcej informacji na temat stany wdrożeń zobacz [typowe problemy z którym Przyczyna role do odtwarzania](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
 > Jeśli używasz **Azure Tools for Microsoft Visual Studio** do tworzenia aplikacji, automatyczne rozszerzanie szablonów projektu roli **RoleEntryPoint** klasy, w  *WebRole.cs* i *WorkerRole.cs* plików.

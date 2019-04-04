@@ -14,12 +14,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 519046081a7f9778fb430daa0cd418cf9863a2b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975631"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487587"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -95,13 +95,13 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
 
 2. Uaktualnić pakiet PIP. Narzędzie PIP to Menedżer pakietów dla języka Python. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
-    ```PowerShell  
+    ```powershell  
     python -m pip install --upgrade pip
     ```
 
 3. Zainstaluj **certifi** modułu. [Certifi](https://pypi.org/project/certifi/) modułu i kolekcji certyfikatów głównych sprawdzania poprawności wiarygodności certyfikatów protokołu SSL podczas weryfikowania tożsamości hostów TLS. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
-    ```PowerShell
+    ```powershell
     pip install certifi
     ```
 
@@ -157,7 +157,7 @@ Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack
 
 1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
@@ -277,7 +277,7 @@ Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu
 
 1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 

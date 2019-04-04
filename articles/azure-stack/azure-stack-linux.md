@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 277af6f139e815f46894f5b8df82a1d92ef573d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c957812271d2ddd6639672d862026b30cfd19661
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537137"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804517"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Dodawanie obrazów systemu Linux w usłudze Azure Stack
 
@@ -38,7 +38,7 @@ Należy pamiętać, że częste aktualizacje do tych obrazów, dlatego należy s
 
 Wszędzie tam, gdzie to możliwe, należy pobrać obrazów dostępnych za pośrednictwem witryny Marketplace zarządzania, która została przygotowana i sprawdzane pod kątem usługi Azure Stack.
 
-Agent systemu Linux platformy Azure (zazwyczaj nazywany `WALinuxAgent` lub `walinuxagent`) jest wymagana, i nie wszystkie wersje agenta będzie działać w usłudze Azure Stack. Jeśli tworzysz własny obraz należy używać najnowszej wersji WALA lub wersji 2.2.20. Należy pamiętać, że wersje 2.2.20 i 2.2.35.1 (wyłącznie) nie działają w usłudze Azure Stack. Należy pamiętać, że [pakietu cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
+Agent systemu Linux platformy Azure (zazwyczaj nazywany `WALinuxAgent` lub `walinuxagent`) jest wymagana, i nie wszystkie wersje agenta będzie działać w usłudze Azure Stack. Jeśli tworzysz własny obraz należy używać najnowszej wersji WALA lub wersji 2.2.20. Należy pamiętać, że wersje 2.2.20 i 2.2.35.1 (wyłącznie) nie działają w usłudze Azure Stack. Aby użyć wersji agentów między 2.2.20 i 2.2.35.1, należy zastosować poprawkę poprawkę/1902 1901 lub aktualizacji usługi Azure Stack w wersji 1903 (lub nowszych). Należy pamiętać, że [pakietu cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
 
 Można przygotować własnego obrazu systemu Linux przy użyciu następujących instrukcji:
 

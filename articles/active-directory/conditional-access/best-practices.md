@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517606"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895566"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory
 
@@ -46,11 +46,11 @@ Podczas tworzenia nowych zasad są nie użytkowników, grup, aplikacji lub kontr
 Aby ułatwić zasad usługi działa, należy skonfigurować:
 
 
-|Elementy           | Jak                                  | Dlaczego|
-|:--            | :--                                  | :-- |
-|**Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwiają kontrolowanie sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
+| Elementy           | Jak                                  | Dlaczego |
+| :--            | :--                                  | :-- |
+| **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwiają kontrolowanie sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
 | **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która dysponuje autoryzacją do dostępu do aplikacji w wybranej chmurze. | Zasady dostępu warunkowego, która nie ma użytkowników i grup przypisanych, nigdy nie zostanie wywołany. |
-| **Kontrola dostępu** | Wybierz co najmniej jedno dostępu kontrolkę. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić.|
+| **Kontrole dostępu** | Wybierz co najmniej jedno dostępu kontrolkę. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić. |
 
 
 
@@ -111,6 +111,13 @@ Podczas każdego logowania usługi Azure Active Directory ocenia wszystkie zasad
 
 Tak, można użyć programu Exchange ActiveSync w zasadach dostępu warunkowego.
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak należy skonfigurować dostęp warunkowy przy użyciu aplikacji usługi Office 365?
+
+Ponieważ aplikacje usługi Office 365 są połączone ze sobą, zalecane jest przypisanie najczęściej używane aplikacje razem podczas tworzenia zasad.
+
+Typowych aplikacji połączonych ze sobą obejmują Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, usługi Office 365 SharePoint Online i Office 365 w Yammerze.
+
+Jest to ważne w przypadku zasad, które wymagają interakcji z użytkownikami, takich jak uwierzytelnianie wieloskładnikowe, gdy dostęp jest kontrolowany na początku sesji lub zadania. Jeśli nie, użytkownicy nie będą mogli wykonać niektóre zadania w aplikacji. Na przykład jeśli wymagane jest uwierzytelnianie wieloskładnikowe na urządzeniach niezarządzanych do dostępu do programu SharePoint, ale nie do poczty e-mail, użytkowników pracujących w wiadomości e-mail nie będzie mógł dołączyć plików programu SharePoint do wiadomości. Więcej informacji można znaleźć w artykule [zależności usług co to są usługi Azure Active Directory dostępu warunkowego?](service-dependencies.md).
 
 
 

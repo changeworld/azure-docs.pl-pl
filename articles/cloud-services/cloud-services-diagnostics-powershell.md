@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054683"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918335"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell
 Można zbierać dane diagnostyczne, takie jak dzienniki aplikacji, liczniki wydajności, itp. z usługi w chmurze przy użyciu rozszerzenia diagnostyki platformy Azure. W tym artykule opisano, jak włączyć rozszerzenie diagnostyki platformy Azure dla usługi w chmurze przy użyciu programu PowerShell.  Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wymagań wstępnych wymagane na potrzeby tego artykułu.
@@ -136,5 +136,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać dodatkowe wskazówki na temat korzystania z diagnostyki platformy Azure i innych technik rozwiązywania problemów, zobacz [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* [Schemat usługi Diagnostyka konfiguracji](https://msdn.microsoft.com/library/azure/dn782207.aspx) opisano różne opcje konfiguracji rozszerzenia diagnostyki xml.
+* [Schemat usługi Diagnostyka konfiguracji](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) opisano różne opcje konfiguracji rozszerzenia diagnostyki xml.
 * Aby dowiedzieć się, jak włączyć rozszerzenie diagnostyki dla maszyn wirtualnych, zobacz [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md)

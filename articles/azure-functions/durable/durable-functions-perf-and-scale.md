@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286384"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895753"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
@@ -56,7 +56,7 @@ Rozszerzenie zadań trwałe implementuje losowe wykładniczego wycofywania algor
 Opóźnienie maksymalna sondowania jest można konfigurować za pomocą `maxQueuePollingInterval` właściwość [pliku host.json](../functions-host-json.md#durabletask). Ustawienie tej opcji na wartość większą może doprowadzić do wyższych przetwarzania opóźnienia komunikatów. Większych opóźnień oczekuje się dopiero po okresy braku aktywności. Ustawienie tej opcji na niższą wartość może spowodować wyższe koszty magazynowania, ze względu na transakcje magazynu zwiększone.
 
 > [!NOTE]
-> Podczas uruchamiania w planach użycia funkcji platformy Azure i Premium, [Azure funkcji skalowania kontrolera](../functions-scale.md#how-the-consumption-plan-works) sondowania każdej kontrolki i element roboczy kolejki co 10 sekund. To dodatkowe sondowania jest niezbędne do określenia, kiedy można aktywować funkcji wystąpień aplikacji oraz do podejmowania decyzji dotyczących skalowania. W momencie pisania tego 10 Drugi interwał jest stała i nie można skonfigurować.
+> Podczas uruchamiania w planach użycia funkcji platformy Azure i Premium, [Azure funkcji skalowania kontrolera](../functions-scale.md#how-the-consumption-and-premium-plans-work) sondowania każdej kontrolki i element roboczy kolejki co 10 sekund. To dodatkowe sondowania jest niezbędne do określenia, kiedy można aktywować funkcji wystąpień aplikacji oraz do podejmowania decyzji dotyczących skalowania. W momencie pisania tego 10 Drugi interwał jest stała i nie można skonfigurować.
 
 ## <a name="storage-account-selection"></a>Wybór konta magazynu
 
@@ -244,4 +244,4 @@ Jeśli nie widzisz numery przepływności można oczekiwać i your CPU i użycie
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji trwałej w języku C#](durable-functions-create-first-csharp.md)
+> [Tworzenie pierwszej funkcji trwałe wC#](durable-functions-create-first-csharp.md)

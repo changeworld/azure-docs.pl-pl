@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123729"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918896"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpieczanie zasobów usługi Azure CDN przy użyciu tokenu uwierzytelniania
 
@@ -33,7 +33,7 @@ Uwierzytelnianie przy użyciu tokenów to mechanizm, który pozwala na zapobiega
 
 Uwierzytelnianie przy użyciu tokenów sprawdza, czy żądania są generowane przez zaufanych witryn, wymagając żądania zawiera wartość tokenu, że przechowuje zakodowany informacji na temat osoby żądającej. Zawartość są dostarczane do żądającego tylko wtedy, gdy dane zakodowane spełnia wymagania dotyczące programu w przeciwnym razie żądania są odrzucane. Wymagania można skonfigurować przy użyciu co najmniej jeden z następujących parametrów:
 
-- Kraj: Akceptować lub odrzucać żądania, które pochodzą z krajów, określony przez ich [numer kierunkowy kraju](https://msdn.microsoft.com/library/mt761717.aspx).
+- Kraj: Akceptować lub odrzucać żądania, które pochodzą z krajów, określony przez ich [numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)).
 - Adres URL: Zezwalaj na tylko te żądania, które odpowiadają określonym zasobie lub ścieżki.
 - Host: Zezwalaj lub Odmów żądań korzystających z określonych hostach w nagłówku żądania.
 - Odwołania: Zezwolenie lub zablokowanie żądania z określonego odwołania.
@@ -120,7 +120,7 @@ Następujące schemat blokowy opisano, jak usługi Azure CDN weryfikuje żądani
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Umożliwia tylko żądań pochodzących z jednego lub więcej określonych krajów. Żądania, które pochodzą z innych krajów są odrzucane. Użyj dwuliterowych [ISO 3166 numer kierunkowy kraju](https://msdn.microsoft.com/library/mt761717.aspx) dla każdego kraju i oddziel je przecinkami; nie należy dodawać spacji. Na przykład, jeśli chcesz zezwolić na dostęp w Stanach Zjednoczonych i (Francja), wprowadź `US,FR`.</td>
+      >    <td>Umożliwia tylko żądań pochodzących z jednego lub więcej określonych krajów. Żądania, które pochodzą z innych krajów są odrzucane. Użyj dwuliterowych [ISO 3166 numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)) dla każdego kraju i oddziel je przecinkami; nie należy dodawać spacji. Na przykład, jeśli chcesz zezwolić na dostęp w Stanach Zjednoczonych i (Francja), wprowadź `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

@@ -3,19 +3,19 @@ title: Obsługa języków — interfejs API tekstu usługi Translator
 titleSuffix: Azure Cognitive Services
 description: Lista języków naturalnych obsługiwanych przez interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882468"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918046"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 

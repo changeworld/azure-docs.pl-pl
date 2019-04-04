@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d627c3c4419affa0d71cdb23df945c96d9fd7585
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bd4285a2d0f882b8c766563f2304031f1f6e2898
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652437"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904801"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -233,13 +233,13 @@ Aby uzyskać więcej informacji zobacz dokumentację referencyjną: [LargePerson
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace jest strukturą danych w interfejsie API rozpoznawania twarzy. PersistedFace jest powiązana z Identyfikatorem PersistedFace, jak również inne atrybuty, takie jak nazwa i dane użytkownika.
+PersistedFace jest strukturą danych w interfejsie API rozpoznawania twarzy. Dołączono PersistedFace [identyfikator PersistedFace](#persisted-face-id), jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji zobacz dokumentację referencyjną: [LargeFaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [osoba grupie — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
-#### <a name="person-id"></a>Identyfikator osoby
+#### <a name="persisted-face-id"></a>Utrwalonych funkcji Face ID
 
-Identyfikator osoby jest generowany podczas [PersistedFace](#persistedface) został utworzony pomyślnie. Ciąg jest tworzone do reprezentowania tej twarzy [interfejsu API rozpoznawania twarzy](#face-api).
+Trwały funkcji Face ID jest generowany po [PersistedFace](#persistedface) został utworzony pomyślnie. Ciąg jest tworzone do reprezentowania tej twarzy [interfejsu API rozpoznawania twarzy](#face-api).
 
 Aby uzyskać więcej informacji zobacz dokumentację referencyjną: [LargeFaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [osoba grupie — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 

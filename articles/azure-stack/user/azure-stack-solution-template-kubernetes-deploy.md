@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie rozwiązania Kubernetes do usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć rozwiązanie Kubernetes usługi Azure Stack.
+title: Wdrażanie usługi Kubernetes na korzystanie z kontenerów usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć rozwiązanie Kubernetes i używać kontenerów za pomocą usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,19 +15,19 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986247"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877197"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Wdrażanie rozwiązania Kubernetes, aby używać kontenerów za pomocą usługi Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony scenariusza użycia usługi Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
 
 Możesz wykonać kroki opisane w tym artykule, aby wdrożyć i skonfigurować zasoby dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. W krokach używany szablon rozwiązania usługi Azure Resource Manager. Można będzie konieczne do zbierania wymaganych informacji o instalacji programu Azure Stack Generowanie szablonu, a następnie wdrożyć z Twoją chmurą. Szablon usługi Azure Stack nie używa tego samego zarządzanych usług AKS oferowanych na platformie Azure globalnego.
 
@@ -43,7 +43,7 @@ Rozwiązanie Kubernetes można użyć:
 
 Użytkownik zostanie naliczona tylko za wykorzystanie mocy obliczeniowej, wymagane przez węzły obsługi klastra. Aby uzyskać więcej informacji, zobacz [użycie i rozliczenia w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
-## <a name="deploy-kubernetes"></a>Wdrażanie rozwiązania Kubernetes
+## <a name="deploy-kubernetes-to-use-containers"></a>Wdrażanie usługi Kubernetes na korzystanie z kontenerów
 
 Kroki wdrażania klastra Kubernetes w usłudze Azure Stack będzie zależeć od usługi zarządzania tożsamościami. Sprawdź, Zarządzanie tożsamościami, używane przez instalację usługi Azure Stack. Skontaktuj się z administratorem usługi Azure Stack, aby sprawdzić swoje Usługa zarządzania tożsamościami.
 
@@ -69,4 +69,4 @@ Można również znaleźć **Helm** Menedżera pakietów jest przydatne w przypa
 
 [Wdrażanie usługi Kubernetes na użycie usług Active Directory Sfederowana (AD FS) w usłudze Azure Stack](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Usługa Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170398"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918556"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Usługa Azure CDN przy użyciu sygnatury dostępu Współdzielonego
 
@@ -89,7 +89,8 @@ Ta opcja jest dostępna tylko w przypadku **Azure CDN Premium from Verizon** pro
    ![Ponowne zapisywanie adresów URL usługi CDN reguły - lewej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![reguły ponownego zapisywania adresów URL usługi CDN - prawej](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Po nową regułę stanie się aktywny, każdy użytkownik ma dostęp do plików w określonym kontenerze punktu końcowego usługi CDN, niezależnie od tego, czy przy użyciu tokenu sygnatury dostępu Współdzielonego w adresie URL. Oto format: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Po nową regułę stanie się aktywny, każdy użytkownik ma dostęp do plików w określonym kontenerze punktu końcowego usługi CDN, niezależnie od tego, czy przy użyciu tokenu sygnatury dostępu Współdzielonego w adresie URL. Oto format:
+   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Na przykład:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -137,13 +138,13 @@ Ponieważ sygnatury dostępu Współdzielonego parametry nie są widoczne dla us
 | --- | --- |
 | Uruchamianie | Czas rozpoczęcia przez sieć CDN systemu Azure na dostęp do pliku obiektu blob. Z powodu zegara pochylanie (po odebraniu sygnału zegara w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasobów, które mają być dostępne natychmiast. |
 | Koniec | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
-| Dozwolone adresy IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ten parametr zostanie ustawiony na zakresy zdefiniowane w [Azure CDN from Verizon zakresy adresów IP serwerów brzegowych](https://msdn.microsoft.com/library/mt757330.aspx). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresów adresów IP, ponieważ nie są statyczne adresy IP.|
+| Dozwolone adresy IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ten parametr zostanie ustawiony na zakresy zdefiniowane w [Azure CDN from Verizon zakresy adresów IP serwerów brzegowych](/azure/cdn/cdn-pop-list-api). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresów adresów IP, ponieważ nie są statyczne adresy IP.|
 | Dozwolone protokoły | Rozróżniany, dozwolone dla żądań wykonywanych przy użyciu sygnatury dostępu Współdzielonego konta. Ustawienie HTTPS jest zalecane.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego zobacz następujące artykuły:
-- [Używanie sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+- [Używanie sygnatur dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 - [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
 
 Aby uzyskać więcej informacji na temat konfigurowania uwierzytelniania tokenu, zobacz [zasobów Zabezpieczanie usługi Azure Content Delivery Network, za pomocą tokenu uwierzytelniania](https://docs.microsoft.com/azure/cdn/cdn-token-auth).

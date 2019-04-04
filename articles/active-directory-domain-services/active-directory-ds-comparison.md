@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: 5cfcbba58b4e4416a2f1a56adcbe21eeacb15a85
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152169"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892300"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak zdecydować, jeśli usługi Azure AD Domain Services jest odpowiednia dla danego przypadku użycia
 Za pomocą usług domenowych Azure AD można wdrożyć obciążenia w usługach infrastruktury platformy Azure, bez konieczności martwienia się o konserwacja infrastruktury tożsamości na platformie Azure. To zarządzana usługa różni się od typowego wdrożenia usługi Active Directory systemu Windows Server, które wdrażania i administrowania na własną rękę. Usługa jest łatwa do wdrożenia i zapewnia monitorowanie kondycji zautomatyzowane i korygowania. Firma Microsoft stale ewoluuje usługę, aby dodać obsługę typowych scenariuszy wdrażania.
@@ -34,7 +34,7 @@ Zdecyduj, czy do korzystania z usług domenowych Azure AD, firma Microsoft zalec
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Porównanie usług domenowych Azure AD do domeny możesz AD na platformie Azure
 Poniższa tabela ułatwia wybór między za pomocą usług domenowych Azure AD i zarządzania nimi własnej infrastruktury usługi AD na platformie Azure.
 
-| **Funkcja** | **Azure AD Domain Services** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
+| **Cecha** | **Azure AD Domain Services** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
 | --- |:---:|:---:|
 | [**Usługa zarządzana**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Zabezpieczanie wdrożeń**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Administrator musi bezpiecznego wdrażania. |
@@ -115,9 +115,9 @@ Przypadki użycia wdrożenia może być konieczne niektóre funkcje oferowane pr
 >
 >
 
-Opublikowane dotychczas [wskazówki dotyczące wdrażania systemu Windows Server Active Directory na maszynach wirtualnych Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx) pomagające w ułatwienia możesz instalacji.
+Opublikowane dotychczas [wskazówki dotyczące wdrażania systemu Windows Server Active Directory na maszynach wirtualnych Azure](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) pomagające w ułatwienia możesz instalacji.
 
 ## <a name="related-content"></a>Powiązana zawartość
 * [Funkcje — Azure AD Domain Services](active-directory-ds-features.md)
 * [Scenariusze wdrażania — usługi domenowe Azure AD](active-directory-ds-scenarios.md)
-* [Wytyczne dotyczące wdrażania Active Directory systemu Windows Server na maszynach wirtualnych platformy Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+* [Wytyczne dotyczące wdrażania Active Directory systemu Windows Server na maszynach wirtualnych platformy Azure](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

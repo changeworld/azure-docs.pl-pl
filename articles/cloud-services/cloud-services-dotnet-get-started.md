@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762612"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917480"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
 ## <a name="overview"></a>Przegląd
-W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279), [usługi obiektów blob platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
+W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [usługi obiektów blob platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
 
 W samouczku opisano, jak utworzyć i uruchomić aplikację lokalnie, jak wdrożyć ją na platformie Azure i uruchomić w chmurze oraz jak utworzyć ją od samego początku. Można również rozpocząć od kompilowania aplikacji od początku, a dopiero później przeprowadzić testowanie i wdrażanie.
 
@@ -81,7 +81,7 @@ Gdy użytkownik przesyła obraz, fronton uruchomiony w roli Sieć Web zapisuje o
 6. Jeśli używasz programu Visual Studio 2015 lub nowszego, zmień parametry połączenia programu SQL Server w pliku *Web.config* projektu ContosoAdsWeb i w pliku *ServiceConfiguration.Local.cscfg* projektu ContosoAdsCloudService. W każdym przypadku zmień ciąg „(localdb)\v11.0” na „(localdb)\MSSQLLocalDB”.
 7. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację.
 
-    Po uruchomieniu projektu usługi w chmurze w środowisku lokalnym program Visual Studio automatycznie wywołuje *emulator obliczeń* platformy Azure i *emulator magazynu* platformy Azure. Emulator obliczeń używa zasobów komputera do symulowania środowisk roli Sieć Web i roli Proces roboczy. Emulator magazynu używa bazy danych [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx), aby symulować działanie magazynu w chmurze Azure.
+    Po uruchomieniu projektu usługi w chmurze w środowisku lokalnym program Visual Studio automatycznie wywołuje *emulator obliczeń* platformy Azure i *emulator magazynu* platformy Azure. Emulator obliczeń używa zasobów komputera do symulowania środowisk roli Sieć Web i roli Proces roboczy. Emulator magazynu używa bazy danych [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb), aby symulować działanie magazynu w chmurze Azure.
 
     Podczas pierwszego uruchomienia projektu usługi w chmurze uruchomienie emulatorów może potrwać około minuty. Po zakończeniu uruchamiania emulatora w domyślnej przeglądarce otworzy się strona główna aplikacji.
 
@@ -178,7 +178,7 @@ W rzeczywistych aplikacjach przeważnie tworzy się oddzielne konta dla danych a
 
     Jeśli usługa w chmurze i konto magazynu są obsługiwane w różnych centrach danych (różnych regionach), zwiększy się opóźnienie i będą naliczane opłaty dotyczące przepustowości poza centrum danych. Przepustowość w centrum danych jest bezpłatna.
 
-    Grupy koligacji Azure udostępniają mechanizm umożliwiający minimalizowanie odległości między zasobami w centrum danych, a przez to redukowanie opóźnienia. Ten samouczek nie korzysta z grup koligacji. Aby uzyskać więcej informacji, zobacz temat [Jak utworzyć grupę koligacji w Azure](https://msdn.microsoft.com/library/azure/gg715317.aspx).
+    Grupy koligacji Azure udostępniają mechanizm umożliwiający minimalizowanie odległości między zasobami w centrum danych, a przez to redukowanie opóźnienia. Ten samouczek nie korzysta z grup koligacji. Aby uzyskać więcej informacji, zobacz temat [Jak utworzyć grupę koligacji w Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
 7. Kliknij pozycję **Utwórz**.
 
     ![Nowe konto usługi Storage](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Większość kodu kontrolera jest typowa dla pracy z modelem danych platformy Entity Framework za pomocą klasy DbContext. Wyjątkiem jest metoda HttpPost `Create`, która powoduje przekazanie pliku i zapisanie go w magazynie obiektów blob. Integrator modelu udostępnia obiekt [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) w metodzie.
+Większość kodu kontrolera jest typowa dla pracy z modelem danych platformy Entity Framework za pomocą klasy DbContext. Wyjątkiem jest metoda HttpPost `Create`, która powoduje przekazanie pliku i zapisanie go w magazynie obiektów blob. Integrator modelu udostępnia obiekt [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase) w metodzie.
 
 ```csharp
 [HttpPost]
@@ -775,7 +775,7 @@ Film wideo zawierający wprowadzenie do najlepszych rozwiązań i wzorców usłu
 
 Więcej informacji zawierają następujące zasoby:
 
-* [Usługi Azure Cloud Services — część 1: Wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Usługi Azure Cloud Services część 1: Wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak zarządzać usługami Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak wybrać dostawcę usług w chmurze](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540435"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905991"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure, w obszarze roboczym Log Analytics w usłudze Azure Monitor
 
@@ -31,7 +31,7 @@ Korzystając z dziennika aktywności można określić *co*, *kto*, i *podczas* 
 Po nawiązaniu połączenia dzienników aktywności platformy Azure z obszarem roboczym usługi Log Analytics, możesz wykonywać następujące czynności:
 
 - Analizowanie dzienników aktywności, za pomocą wstępnie zdefiniowanych widoków
-- Analizowanie i wyszukiwania i Dzienniki aktywności z wieloma subskrypcjami platformy Azure
+- Analizowanie i przeszukiwanie dzienników aktywności z wieloma subskrypcjami platformy Azure
 - Zachowaj dzienników aktywności przez dłużej niż 90 dni<sup>1</sup>
 - Skorelowania dzienników aktywności z platformą Azure, inne platformy i aplikacji danych
 - Zobacz działań operacyjnych zagregowanych wg stanu
@@ -55,7 +55,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Azure Monitor dane
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
 | [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
-| [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
+| [Konto magazynu Azure](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

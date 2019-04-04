@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9d121146924eb153227e35d608a3c6c33aae31a1
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 0c6be20bfb2a6f15335564a1aa98dc0ac88e3507
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862611"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905838"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
 
@@ -22,6 +22,9 @@ Włączanie monitorowania w .NET i .NET Core oparte na sieci web działających 
 
 > [!NOTE]
 > Ręczne dodanie rozszerzenia witryny usługi Application Insights za pośrednictwem **narzędzia programistyczne** > **rozszerzenia** jest przestarzała. Najnowsza wersja stabilna rozszerzenia jest teraz [wstępnie](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako część obrazu usługi App Service. Pliki znajdują się w `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` i są automatycznie aktualizowane wraz z każdą wersją stabilne. Jeśli postępuj zgodnie z instrukcjami agenta na podstawie, aby włączyć monitorowanie poniżej go automatycznie usunie przestarzałe rozszerzenia dla Ciebie.
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
@@ -283,12 +286,12 @@ Poniżej przedstawiono przykład, zastąpić wszystkie wystąpienia `AppMonitore
 Aby włączyć monitorowania za pomocą programu PowerShell aplikacji, tylko podstawowe ustawienia aplikacji muszą zostać zmienione. Poniżej znajduje się przykład, która umożliwia monitorowanie aplikacji dla witryny sieci Web o nazwie "AppMonitoredSite" w grupie zasobów "AppMonitoredRG", i konfiguruje dane do wysłania do klucza Instrumentacji "012345678-abcd-ef01-2345-6789abcd".
 
 ```powershell
-$app = Get-AzureRmWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
+$app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
 $app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
 $newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
-$app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
+$app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
 
 ## <a name="upgrade-monitoring-extensionagent"></a>Uaktualnij rozszerzenie/agenta monitorowania

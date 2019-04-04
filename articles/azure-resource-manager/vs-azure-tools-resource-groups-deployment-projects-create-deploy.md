@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097461"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905855"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 
 Program Visual Studio umożliwia utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host internetowy, witrynę internetową i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Program Visual Studio zapewnia wiele różnych szablonów początkowych do wdrażania typowych scenariuszy. Ten artykuł dotyczy wdrażania aplikacji internetowej i bazy danych SQL Database.  
 
 W tym artykule pokazano, jak używać programu [Visual Studio 2017 z zainstalowanymi pakietami roboczymi programowania dla platformy Azure i ASP.NET](/dotnet/azure/dotnet-tools). Jeśli używasz programu Visual Studio 2015 Update 2 i zestawu Microsoft Azure SDK dla środowiska .NET 2.9 lub programu Visual Studio 2013 z zestawem Azure SDK 2.9, czynności są w większości takie same.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Tworzenie projektu grupy zasobów platformy Azure
 
@@ -148,7 +150,7 @@ Teraz można przystąpić do wdrażania projektu. Projekt grupy zasobów platfor
    > [!NOTE]
    > W programie Visual Studio może pojawić się monit o zainstalowanie poleceń cmdlet programu Azure PowerShell. Jeśli zostanie wyświetlony monit, zainstaluj je. Moduły Azure PowerShell są niezbędne do pomyślnego wdrożenia grup zasobów. Skrypt programu PowerShell w projekcie nie działa z nowym [modułem Azure PowerShell Az](/powershell/azure/new-azureps-module-az). 
    >
-   > Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie modułów programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+   > Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie modułów programu Azure PowerShell](/powershell/azure/install-Az-ps).
    > 
    > 
 6. Wdrożenie może potrwać kilka minut. W oknach **Dane wyjściowe** jest wyświetlany stan wdrożenia. Po zakończeniu wdrażania ostatni komunikat wskazuje pomyślne wdrożenie i jest podobny do następującego:
@@ -313,4 +315,4 @@ Możesz zarządzać dostępem do pulpitu nawigacyjnego, korzystając z grup kont
 W tym przewodniku Szybki start dowiesz się, jak tworzyć i wdrażać szablony przy użyciu programu Visual Studio. W kolejnym samouczku dowiesz się, jak znaleźć informacje w dokumentacji szablonów, aby utworzyć zaszyfrowane konto usługi Azure Storage.
 
 > [!div class="nextstepaction"]
-> [Tworzenie zaszyfrowanego konta usługi Storage](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Tworzenie zaszyfrowanego konta magazynu](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

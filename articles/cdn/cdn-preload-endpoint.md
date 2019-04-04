@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
-ms.openlocfilehash: d2dc8ad1e4b7e429dc758a96e49aa4825ae108e5
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091321"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918369"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -49,7 +49,7 @@ Ten samouczek przeprowadzi Cię przez wstępne ładowanie zawartości pamięci p
    > [!TIP]
    > Po rozpoczęciu wprowadzania tekstu, więcej **ścieżki zawartości** pól tekstowych, pojawi się umożliwia tworzenie listy wielu zasobów. Aby usunąć zasoby z listy, kliknij przycisk wielokropka (...), a następnie wybierz **Usuń**.
    > 
-   > Każda ścieżka zawartości musi być względnym adresem URL, która pasuje do następujących [wyrażeń regularnych](https://msdn.microsoft.com/library/az24scfc.aspx):  
+   > Każda ścieżka zawartości musi być względnym adresem URL, która pasuje do następujących [wyrażeń regularnych](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
    > - Ładuj ścieżkę pojedynczego pliku: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
    > - Załaduj pojedynczy plik z ciągu zapytania: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
@@ -68,6 +68,6 @@ Ten samouczek przeprowadzi Cię przez wstępne ładowanie zawartości pamięci p
 
 ## <a name="see-also"></a>Zobacz także
 * [Przeczyszczanie punktu końcowego usługi Azure CDN](cdn-purge-endpoint.md)
-* [Dokumentacja interfejsu API REST usługi CDN Azure: wstępne ładowanie zawartości w punkcie końcowym](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Dokumentacja interfejsu API REST usługi CDN Azure: przeczyścić zawartość z punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Dokumentacja interfejsu API REST usługi CDN Azure: Wstępne ładowanie zawartości w punkcie końcowym](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Dokumentacja interfejsu API REST usługi CDN Azure: Przeczyszczanie zawartości z punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

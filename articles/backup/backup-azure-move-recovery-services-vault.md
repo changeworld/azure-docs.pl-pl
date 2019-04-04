@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199248"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905770"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów (ograniczonej publicznej wersji zapoznawczej)
 
@@ -21,6 +21,8 @@ W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, 
 
 > [!NOTE]
 > Aby przenieść magazyn usługi Recovery Services i skojarzone z nią zasoby do innej grupy zasobów, należy najpierw [rejestrowanie subskrypcji źródłowej](#register-the-source-subscription-to-move-your-recovery-services-vault).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Wymagania wstępne dotyczące przenoszenia magazynu
 
@@ -50,24 +52,24 @@ Można zarejestrować subskrypcji źródłowej do **przenieść** magazynu usłu
 1. Zaloguj się do swojego konta platformy Azure
 
    ```
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 2. Wybierz subskrypcję, która ma zostać zarejestrowany
 
    ```
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
    ```
 3. Zarejestruj tę subskrypcję
 
    ```
-   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. Uruchamianie polecenia
 
    ```
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Poczekaj, aż subskrypcja złóż wniosek o umieszczenie przed rozpoczęciem operacji przenoszenia, przy użyciu witryny Azure portal lub programu PowerShell na 30 minut.
@@ -137,18 +139,18 @@ Magazyn usługi Recovery Services i skojarzone z nią zasoby można przenieść 
 
 ## <a name="use-powershell-to-move-a-vault"></a>Przenoszenie magazynu przy użyciu programu PowerShell
 
-Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj `Move-AzureRMResource` polecenia cmdlet. `Move-AzureRMResource` wymaga nazwy zasobów i typu zasobu. Możesz uzyskać zarówno z poziomu `Get-AzureRmRecoveryServicesVault` polecenia cmdlet.
+Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj `Move-AzResource` polecenia cmdlet. `Move-AzResource` wymaga nazwy zasobów i typu zasobu. Możesz uzyskać zarówno z poziomu `Get-AzRecoveryServicesVault` polecenia cmdlet.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Aby przenieść zasoby do innej subskrypcji, należy dołączyć `-DestinationSubscriptionId` parametru.
 
 ```
-Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Po wykonaniu powyższych poleceń cmdlet, użytkownik jest proszony o upewnij się, że chcesz przenieść określonych zasobów. Typ **Y** o potwierdzenie. Po pomyślnej weryfikacji zasób zostanie przeniesiony.

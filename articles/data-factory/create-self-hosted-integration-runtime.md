@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838803"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905889"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -53,7 +53,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania czynn
 ![Ogólne omówienie](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Dane i deweloperów tworzy własne środowisko integration runtime w fabryce danych Azure przy użyciu polecenia cmdlet programu PowerShell. Witryna Azure portal nie obsługuje obecnie tej funkcji.
-2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem własne wystąpienie infrastruktury integration runtime za pomocą której należy połączyć się z magazynów danych. W ramach konfigurowania połączoną usługę dane i deweloperów używa aplikacji Menedżer poświadczeń (obecnie nieobsługiwane) do ustawiania poświadczeń i typy uwierzytelniania. Aplikacji Menedżer poświadczeń komunikuje się z magazynem danych, aby przetestować połączenie i własne środowisko integration runtime do zapisania poświadczeń.
+2. Dane i deweloperów tworzy połączonej usługi magazynu danych w środowisku lokalnym za pośrednictwem własne wystąpienie infrastruktury integration runtime za pomocą której należy połączyć się z magazynów danych.
 3. Węzeł Self-Hosted integration runtime szyfruje poświadczenia za pomocą Windows Data Protection interfejsu API (DPAPI) i zapisuje poświadczenia lokalnie. Jeśli wiele węzłów są skonfigurowane w celu zapewnienia wysokiej dostępności, poświadczenia są dodatkowo synchronizowane w innych węzłach. Każdy węzeł szyfruje poświadczenia przy użyciu interfejsu DPAPI i przechowuje je lokalnie. Synchronizacja poświadczeń jest niewidoczna dla dewelopera danych i jest obsługiwany przez Self-Hosted IR    
 4. Usługa Data Factory, który komunikuje się z własnego środowiska integration runtime do planowania i zarządzania zadań za pośrednictwem *kanał kontrolny* , który używa udostępnionych kolejki usługi Azure Service Bus. Gdy zadanie działania musi zostać uruchomione, usługi Data Factory umieszcza w kolejce żądań wraz z żadnych informacji dotyczących poświadczeń (w przypadku, gdy poświadczenia nie są już przechowywane na własne środowisko integration runtime). Własne środowisko integration runtime dotyczącego zadania po sondowania kolejki.
 5. Własne środowisko integration runtime kopiuje dane z lokalnego magazynu do magazynu w chmurze lub na odwrót w zależności od sposobu skonfigurowania działania kopiowania w potoku danych. W tym kroku własnego środowiska integration runtime bezpośrednio komunikuje się z usługami magazynu w chmurze, takimi jak usługi Azure Blob storage za pośrednictwem bezpiecznego kanału (HTTPS).
@@ -329,7 +329,7 @@ Jeśli wystąpią błędy podobne do poniższych, prawdopodobnie z powodu niepra
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>Włączanie dostęp zdalny z intranetu  
-Jeśli używasz programu PowerShell lub aplikacji Menedżer poświadczeń do szyfrowania poświadczeń z innego komputera (w sieci) niż zainstalowanym własnego środowiska integration runtime, aby umożliwić **dostęp zdalny z intranetu**opcji. Po uruchomieniu programu PowerShell lub aplikacji Menedżer poświadczeń w celu zaszyfrowania poświadczeń na tym samym komputerze z zainstalowanym własnego środowiska integration runtime, nie można włączyć **dostęp zdalny z intranetu**.
+Jeśli używasz programu PowerShell do szyfrowania poświadczeń z innego komputera (w sieci) niż zainstalowanym własnego środowiska integration runtime, aby umożliwić **dostęp zdalny z intranetu** opcji. Po uruchomieniu programu PowerShell w celu szyfrowania poświadczeń na tym samym komputerze z zainstalowanym własnego środowiska integration runtime, nie można włączyć **dostęp zdalny z intranetu**.
 
 Należy włączyć **dostęp zdalny z intranetu** przed dodaniem innego węzła o wysokiej dostępności i skalowalności.  
 
@@ -339,9 +339,7 @@ Jeśli używasz zapory innych firm, możesz ręcznie otworzyć port 8060 (lub sk
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-```
-> [!NOTE]
-> Aplikacji Menedżer poświadczeń nie jest jeszcze dostępna w celu szyfrowania poświadczeń w usłudze Azure Data Factory V2.  
+``` 
 
 Jeśli wybierzesz nie otworzyć port 8060 maszynie Self-Hosted integration runtime, użyj mechanizmów innej niż aplikacja Ustawianie poświadczeń, aby skonfigurować poświadczenia magazynu danych. Na przykład, można użyć **New AzDataFactoryV2LinkedServiceEncryptCredential** polecenia cmdlet programu PowerShell.
 

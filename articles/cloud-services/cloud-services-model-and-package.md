@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238186"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917315"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak jest pakiet?
 Usługa w chmurze jest tworzona z trzech składników i definicji usługi *(csdef)*, konfiguracji usługi *(cscfg)*, a pakiet usługi *(cspkg)*. Zarówno **ServiceDefinition.csdef** i **ServiceConfig.cscfg** pliki są oparte na języku XML i opisz strukturę usługę w chmurze i sposobu jego konfiguracji; pod wspólną nazwą modelu. **ServicePackage.cspkg** plik zip, który jest generowany na podstawie **ServiceDefinition.csdef** i między innymi, zawiera wszystkie zależności wymagane na podstawie pliku binarnego. Platforma Azure tworzy usługi w chmurze z obu **ServicePackage.cspkg** i **ServiceConfig.cscfg**.
@@ -39,7 +39,7 @@ Gdy usługa w chmurze zostanie uruchomiona na platformie Azure, można ponownie 
 <a name="csdef"></a>
 
 ## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
-**ServiceDefinition.csdef** pliku określa ustawienia, które są używane przez platformę Azure do skonfigurowania usługi w chmurze. [Schematem definicji usługi platformy Azure (csdef pliku)](https://msdn.microsoft.com/library/azure/ee758711.aspx) zapewnia dozwolony format pliku definicji usługi. Poniższy przykład przedstawia ustawienia, które mogą być definiowane dla ról sieć Web i proces roboczy:
+**ServiceDefinition.csdef** pliku określa ustawienia, które są używane przez platformę Azure do skonfigurowania usługi w chmurze. [Schematem definicji usługi platformy Azure (csdef pliku)](/previous-versions/azure/reference/ee758711(v=azure.100)) zapewnia dozwolony format pliku definicji usługi. Poniższy przykład przedstawia ustawienia, które mogą być definiowane dla ról sieć Web i proces roboczy:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,9 +90,9 @@ Gdy usługa w chmurze zostanie uruchomiona na platformie Azure, można ponownie 
 </ServiceDefinition>
 ```
 
-Możesz zapoznać się z [schematem definicji usługi](https://msdn.microsoft.com/library/azure/ee758711.aspx) w celu lepszego zrozumienia schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie omówienie niektóre elementy:
+Możesz zapoznać się z [schematem definicji usługi](/previous-versions/azure/reference/ee758711(v=azure.100)) w celu lepszego zrozumienia schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie omówienie niektóre elementy:
 
-**Lokacje**  
+**Witryny**  
 Zawiera definicje dla witryn sieci Web lub aplikacji sieci web, które są hostowane w usługach IIS7.
 
 **InputEndpoints**  
@@ -119,7 +119,7 @@ Zawiera zadania, które są uruchamiane podczas uruchamiania roli. Zadania są z
 <a name="cscfg"></a>
 
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
-Konfigurację ustawień dla usługi w chmurze jest określana przez wartości **ServiceConfiguration.cscfg** pliku. Określasz liczbę wystąpień, które mają zostać wdrożone dla każdej roli, w tym pliku. Wartości ustawienia konfiguracji, które zostały zdefiniowane w pliku definicji usługi są dodawane do pliku konfiguracji usługi. Odciski palców wszelkich certyfikaty zarządzania, które są skojarzone z usługą w chmurze są również dodawane do pliku. [Schematu konfiguracji usługi platformy Azure (cscfg pliku)](https://msdn.microsoft.com/library/azure/ee758710.aspx) zapewnia dozwolony format pliku konfiguracji usługi.
+Konfigurację ustawień dla usługi w chmurze jest określana przez wartości **ServiceConfiguration.cscfg** pliku. Określasz liczbę wystąpień, które mają zostać wdrożone dla każdej roli, w tym pliku. Wartości ustawienia konfiguracji, które zostały zdefiniowane w pliku definicji usługi są dodawane do pliku konfiguracji usługi. Odciski palców wszelkich certyfikaty zarządzania, które są skojarzone z usługą w chmurze są również dodawane do pliku. [Schematu konfiguracji usługi platformy Azure (cscfg pliku)](/previous-versions/azure/reference/ee758710(v=azure.100)) zapewnia dozwolony format pliku konfiguracji usługi.
 
 Pliku konfiguracji usługi nie jest dostarczana razem z aplikacją, ale zostanie przekazany na platformę Azure w postaci oddzielnych plików i służy do konfigurowania usługi w chmurze. Możesz przekazać plik konfiguracji usługi bez konieczności ponownego wdrażania usługi w chmurze. Po uruchomieniu usługi w chmurze, można zmienić wartości konfiguracji dla usługi w chmurze. Poniższy przykład przedstawia ustawienia konfiguracji, które mogą być definiowane dla ról sieć Web i proces roboczy:
 
@@ -141,7 +141,7 @@ Pliku konfiguracji usługi nie jest dostarczana razem z aplikacją, ale zostanie
 </ServiceConfiguration>
 ```
 
-Możesz zapoznać się z [schematu konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710.aspx) dla lepiej poznać schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie Omówienie elementów:
+Możesz zapoznać się z [schematu konfiguracji usługi](/previous-versions/azure/reference/ee758710(v=azure.100)) dla lepiej poznać schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie Omówienie elementów:
 
 **Wystąpienia**  
 Umożliwia skonfigurowanie liczby uruchomionych wystąpień roli. Aby uniemożliwić potencjalnie stają się niedostępne podczas uaktualniania usługi w chmurze, zaleca się wdrożenie więcej niż jedno wystąpienie roli przeznaczonych dla sieci web. Przez wdrożenie więcej niż jedno wystąpienie, przestrzega wytycznych w [obliczeń usługa umowy dotyczącej poziomu (SLA)](https://azure.microsoft.com/support/legal/sla/), która gwarantuje łączność zewnętrzną przez 99,95% czasu dla ról dostępnego z Internetu, gdy dwie lub więcej wystąpień roli wdrożona usługa.
@@ -208,11 +208,11 @@ Można zaktualizować konfiguracji usługi w chmurze, jest uruchomiona na platfo
   Certyfikat można aktualizować tylko wtedy, gdy wystąpienie roli jest w trybie offline. Jeśli certyfikat jest dodane, usunięte lub zmodyfikowane, podczas gdy wystąpienie roli jest w trybie online, Azure bez problemu zmieniała trwa wystąpienia w tryb offline zaktualizuj certyfikat i przełączyć do trybu online po zakończeniu zmiany.
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>Obsługa zmian w konfiguracji o zdarzeniach środowiska uruchomieniowego usługi
-[Biblioteki środowiska uruchomieniowego usługi Azure](https://msdn.microsoft.com/library/azure/mt419365.aspx) obejmuje [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) przestrzeń nazw, która udostępnia klasy do interakcji ze środowiskiem platformy Azure z roli. [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) klasa definiuje następujące zdarzenia, które są wywoływane przed i po zmianie konfiguracji:
+[Biblioteki środowiska uruchomieniowego usługi Azure](/previous-versions/azure/reference/mt419365(v=azure.100)) obejmuje [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) przestrzeń nazw, która udostępnia klasy do interakcji ze środowiskiem platformy Azure z roli. [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) klasa definiuje następujące zdarzenia, które są wywoływane przed i po zmianie konfiguracji:
 
-* **[Zmiana](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) zdarzeń**  
+* **[Zmiana](/previous-versions/azure/reference/ee758134(v=azure.100)) zdarzeń**  
   Dzieje się tak, zanim zmiana konfiguracji została zastosowana do określonego wystąpienia roli, dając Ci w walce z wystąpień roli, jeśli to konieczne.
-* **[Zmienione](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx) zdarzeń**  
+* **[Zmienione](/previous-versions/azure/reference/ee758129(v=azure.100)) zdarzeń**  
   Występuje po zmianie konfiguracji do określonego wystąpienia roli.
 
 > [!NOTE]
@@ -269,7 +269,7 @@ Gdy zmienne są zdefiniowane w następujący sposób:
 | Zmienna | Wartość |
 | --- | --- |
 | \[DirectoryName\] |Podkatalog używany w katalogu głównym projektu, który zawiera plik csdef projektu platformy Azure. |
-| \[Element ServiceDefinition\] |Nazwa pliku definicji usługi. Domyślnie ten plik ma nazwę ServiceDefinition.csdef. |
+| \[ServiceDefinition\] |Nazwa pliku definicji usługi. Domyślnie ten plik ma nazwę ServiceDefinition.csdef. |
 | \[OutputFileName\] |Nazwa pliku wygenerowanego pakietu. Zazwyczaj ustawiono na nazwę aplikacji. Jeśli nazwa pliku nie jest określony, pakiet aplikacji jest tworzona jako \[ApplicationName\]cspkg. |
 | \[RoleName\] |Nazwa roli, zgodnie z definicją w pliku definicji usługi. |
 | \[RoleBinariesDirectory] |Lokalizacja plików binarnych roli. |

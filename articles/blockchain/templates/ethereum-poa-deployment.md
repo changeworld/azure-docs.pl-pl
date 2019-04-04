@@ -10,14 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 50d24fd41a0a933d9cfec37477773463a918ca0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549072"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905923"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 [To rozwiązanie](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) zaprojektowano, aby ułatwić wdrażanie, konfigurowanie i zarządzanie sieci konsorcjum zawierającym wiele elementów członkowskich dowód uwierzytelniania Ethereum przy minimalnej znajomości platformy Azure i Ethereum.
@@ -250,7 +252,7 @@ Szczegółowy opis każdego parametru następująco:
   Moduł sprawdzania poprawności dla wydajności przechowywania danych węzła|Typ dysku zarządzanego kopii każdego z węzłów wdrożonego modułu sprawdzania poprawności.|SSD w warstwie standardowa lub Premium|Standardowa, SSD
   Rozmiar maszyny wirtualnej węzła modułu sprawdzania poprawności|Rozmiar maszyny wirtualnej, używany dla węzłów modułu sprawdzania poprawności.|Standardowa A, standardową wartość d., standardowa D-v2, standardowa F serii, Standard DS i FS standardowe|Standardowa D1, wersja 2
 
-[Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/managed-disks/)
+[Storage — Szczegóły cennika](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Szczegóły cennika maszyny wirtualnej](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 
@@ -395,7 +397,7 @@ $MyGatewayName = $splitValue[8]
 
 ## $otherGatewayResourceid tells me what the subscription and VNet GatewayName are
 $OtherGatewayName = $OtherGatewayResourceId.Split('/')[8]
-$Subscription=Select-AzureRmSubscription -SubscriptionId $MySubscriptionid
+$Subscription=Select-AzSubscription -SubscriptionId $MySubscriptionid
 
 ## create a PSVirtualNetworkGateway instance for the gateway I want to connect to
 $OtherGateway=New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -405,10 +407,10 @@ $OtherGateway.GatewayType = "Vpn"
 $OtherGateway.VpnType = "RouteBased"
 
 ## get a PSVirtualNetworkGateway instance for my gateway
-$MyGateway = Get-AzureRmVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
+$MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
 
 ## create the connection
-New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
+New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
 ### <a name="service-monitoring"></a>Monitorowanie usługi

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: cd64bdabc2b7b34687296c855c27882925d80f63
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d6b54027adcf2b12c6ca4081a11208a31f620e8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124413"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919315"
 ---
 W poniższej tabeli przedstawiono limity przydziału i limity specyficzne dla [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Aby uzyskać informacje na temat cen usługi Event Hubs, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Limit | Zakres | Uwagi | Wartość |
 | --- | --- | --- | --- |
-| Liczba obszarów nazw usługi Event Hubs na subskrypcję |Subskrypcja |- |1000 |
+| Liczba obszarów nazw usługi Event Hubs na subskrypcję |Subskrypcja |- |100 |
 | Liczba zdarzeń centra na przestrzeń nazw |Przestrzeń nazw |Kolejne żądania do tworzenia nowego Centrum zdarzeń są odrzucane. |10 |
 | Liczba partycji na Centrum zdarzeń |Jednostka |- |32 |
 | Liczba grup odbiorców dla Centrum zdarzeń |Jednostka |- |20 |

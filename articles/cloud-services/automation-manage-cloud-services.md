@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328872"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918471"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Zarządzanie usług Azure Cloud Services przy użyciu usługi Azure Automation
 Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do uproszczenia zarządzania usługami Azure cloud services.
@@ -32,7 +32,7 @@ Usługa Azure Automation zapewnia aparat wykonywania przepływu pracy o wysokiej
 Niższe koszty operacyjne i Zwolnij część IT / pracownicy działu DevOps, aby skupić się na pracy, który dodaje firm wartość przez przeniesienie zadań zarządzania systemem chmury uruchamiana automatycznie przez usługę Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Jak usługa Azure Automation ułatwiają zarządzanie usług Azure cloud services?
-Usług Azure cloud services można zarządzać w usłudze Azure Automation za pomocą poleceń cmdlet programu PowerShell, które są dostępne w [narzędzia programu Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Usługa Azure Automation obejmuje te chmury usługi poleceń cmdlet programu PowerShell dostępnych gotowych, tak, aby wykonywać wszystkie zadania zarządzania usługi chmury w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
+Usług Azure cloud services można zarządzać w usłudze Azure Automation za pomocą poleceń cmdlet programu PowerShell, które są dostępne w [narzędzia programu Azure PowerShell](/powershell/). Usługa Azure Automation obejmuje te chmury usługi poleceń cmdlet programu PowerShell dostępnych gotowych, tak, aby wykonywać wszystkie zadania zarządzania usługi chmury w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
 
 Niektóre przykład użycia usługi Azure Automation do zarządzania usługi Azure Cloud Services obejmują:
 

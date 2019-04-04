@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430271"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916975"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
 
@@ -34,7 +34,7 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które przechodzą p
 
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|
-| imageAction   | Jeśli nie działania powinny zostać podjęte, gdy wystąpią obrazy osadzone lub pliki obrazów, należy ustawić na "none". <br/>Ustawienie "generateNormalizedImages" powoduje generowanie tablicę znormalizowane obrazów jako część łamania dokumentów.<br/>Ustawienie "generateNormalizedImagePerPage" Generowanie tablicę znormalizowane obrazów gdzie dla plików PDF w źródle danych, każda strona jest renderowany do jednego obrazu danych wyjściowych.  Funkcjonalność jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy będą widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none". Ta konfiguracja jest tylko odpowiednie do obiektu blob źródła danych, gdy "dataToExtract" ma wartość "contentAndMetadata." |
+| imageAction   | Jeśli nie działania powinny zostać podjęte, gdy wystąpią obrazy osadzone lub pliki obrazów, należy ustawić na "none". <br/>Ustawienie "generateNormalizedImages" powoduje generowanie tablicę znormalizowane obrazów jako część łamania dokumentów.<br/>Ustawienie "generateNormalizedImagePerPage" Generowanie tablicę znormalizowane obrazów gdzie dla plików PDF w źródle danych, każda strona jest renderowany do jednego obrazu danych wyjściowych.  Funkcjonalność jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy będą widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none". Ta konfiguracja jest tylko odpowiednie do obiektu blob źródła danych, gdy "dataToExtract" ma wartość "contentAndMetadata." <br/>Maksymalnie 1000 obrazów zostaną wyodrębnione z danego dokumentu. Jeśli istnieje więcej niż 1000 obrazów w dokumencie, zostaną wyodrębnione pierwsze 1000 i zostaną wygenerowane ostrzeżenie. |
 |  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 |  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 

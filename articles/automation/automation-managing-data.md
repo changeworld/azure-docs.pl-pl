@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817460"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916839"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Azure Automation.
@@ -45,17 +45,17 @@ Jednak jeśli zachodzi potrzeba przechowywać dane przez dłuższy czas, możesz
 Po usunięciu konta usługi automation w systemie Microsoft Azure, wszystkie obiekty w ramach konta są usuwane, łącznie z elementami runbook, moduły, konfiguracje, ustawienia, zadaniami i zasobami. Nie można odzyskać obiekty, po usunięciu konta.  Skorzystaj z poniższych informacji, aby utworzyć kopię zapasową zawartości konta usługi automation, przed jego usunięciem. 
 
 ### <a name="runbooks"></a>Elementy Runbook
-Możesz wyeksportować elementy runbook do plików skryptu za pomocą witryny Azure portal lub [Get AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) polecenia cmdlet programu Windows PowerShell.  Nie można zaimportować te pliki skryptów do innego konta usługi automation, zgodnie z opisem w [Tworzenie lub importowanie elementu Runbook](https://msdn.microsoft.com/library/dn643637.aspx).
+Możesz wyeksportować elementy runbook do plików skryptu za pomocą witryny Azure portal lub [Get AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) polecenia cmdlet programu Windows PowerShell.  Nie można zaimportować te pliki skryptów do innego konta usługi automation, zgodnie z opisem w [Tworzenie lub importowanie elementu Runbook](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Moduły integracji
 Moduły integracji nie można wyeksportować z usługi Azure Automation.  Upewnij się, że są one dostępne poza konta usługi automation.
 
 ### <a name="assets"></a>Elementy zawartości
-Nie można wyeksportować [zasoby](https://msdn.microsoft.com/library/dn939988.aspx) z usługi Azure Automation.  W witrynie Azure portal, należy zaznaczyć szczegóły zmiennych, poświadczenia, certyfikatów, połączeń i harmonogramy.  Następnie należy ręcznie utworzyć wszelkie zasoby, które są używane przez elementy runbook, który można zaimportować do innej usługi automation.
+Nie można wyeksportować [zasoby](/previous-versions/azure/dn939988(v=azure.100)) z usługi Azure Automation.  W witrynie Azure portal, należy zaznaczyć szczegóły zmiennych, poświadczenia, certyfikatów, połączeń i harmonogramy.  Następnie należy ręcznie utworzyć wszelkie zasoby, które są używane przez elementy runbook, który można zaimportować do innej usługi automation.
 
 Możesz użyć [polecenia cmdlet programu Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) można pobrać szczegółów niezaszyfrowanych zasobów, a następnie zapisz je w przyszłości lub twórz równoważne zasoby na innym koncie usługi automation.
 
-Nie można pobrać wartości szyfrowane zmienne lub pole hasła poświadczeń przy użyciu poleceń cmdlet.  Jeśli nie znasz tych wartości, a następnie pobierać je z elementu runbook za pomocą [Get-AutomationVariable](https://msdn.microsoft.com/library/dn940012.aspx) i [Get-AutomationPSCredential](https://msdn.microsoft.com/library/dn940015.aspx) działań.
+Nie można pobrać wartości szyfrowane zmienne lub pole hasła poświadczeń przy użyciu poleceń cmdlet.  Jeśli nie znasz tych wartości, a następnie pobierać je z elementu runbook za pomocą [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) i [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) działań.
 
 Nie można wyeksportować certyfikaty z usługi Azure Automation.  Upewnij się, że wszystkie certyfikaty są dostępne spoza platformy Azure.
 

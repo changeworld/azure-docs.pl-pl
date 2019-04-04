@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4757b20e1a3d9830c2d52a5fbc85fd935b27fb62
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245039"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918199"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Domyślny rozmiar folderu TEMP jest zbyt mały dla roli sieć web/proces roboczy usług chmury
 Domyślny katalog tymczasowy rola usługi w chmurze sieci web lub proces roboczy ma maksymalnym rozmiarze 100 MB, co może stać się pełną w pewnym momencie. W tym artykule opisano sposoby unikania ilość miejsca dla katalogu tymczasowego.
@@ -33,8 +33,8 @@ Standardowa Windows zmienne środowiskowe TEMP i TMP są dostępne do kodu, któ
 ## <a name="suggestion-to-fix-the-problem"></a>Sugestia, aby rozwiązać ten problem
 Implementować jeden z następujących opcji:
 
-* Konfigurowanie zasobów magazynu lokalnego i uzyskać do niego dostęp bezpośrednio zamiast przy użyciu TEMP i TMP. Aby uzyskać dostęp do zasobów magazynu lokalnego, od kodu, który jest uruchomiony w ramach aplikacji, należy wywołać [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metody.
-* Konfigurowanie zasobów magazynu lokalnego, a punktu katalogi TEMP i TMP wskaż ścieżkę zasobu magazynu lokalnego. Ta modyfikacja powinny być wykonywane w ramach [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) metody.
+* Konfigurowanie zasobów magazynu lokalnego i uzyskać do niego dostęp bezpośrednio zamiast przy użyciu TEMP i TMP. Aby uzyskać dostęp do zasobów magazynu lokalnego, od kodu, który jest uruchomiony w ramach aplikacji, należy wywołać [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metody.
+* Konfigurowanie zasobów magazynu lokalnego, a punktu katalogi TEMP i TMP wskaż ścieżkę zasobu magazynu lokalnego. Ta modyfikacja powinny być wykonywane w ramach [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metody.
 
 Poniższy przykład kodu pokazuje, jak zmodyfikować katalog docelowy dla TEMP i TMP z wewnątrz metody OnStart:
 

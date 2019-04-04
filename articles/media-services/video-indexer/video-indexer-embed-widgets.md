@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877571"
+ms.locfileid: "58891588"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -30,7 +30,7 @@ Widżet **Cognitive Insights** (Szczegółowe informacje) zawiera wszystkie szcz
 
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
-|widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** **Elementy widget** param adres URL nie jest obsługiwana, jeśli **wersji = 2** jest używany. |
+|widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** Elementy widget param adres URL nie jest obsługiwane w wersji 2. |
 
 ### <a name="player-widget"></a>Widżet Player
 
@@ -254,4 +254,4 @@ Automatyczne odtwarzanie — domyślnie odtwarzacz rozpocznie odtwarzanie pliku 
 
 Aby uzyskać informacje o sposobie wyświetlania i edytowania szczegółowych informacji usługi Video Indexer, zobacz [ten](video-indexer-view-edit.md) artykuł.
 
-Ponadto odwiedź [poświęconą usłudze Video Indexer stronę w witrynie codepen](https://codepen.io/videoindexer/pen/eGxebZ).
+Ponadto zapoznaj się z [Video indexer funkcji codepen można](https://codepen.io/videoindexer/pen/eGxebZ).

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403395"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891807"
 ---
 # <a name="data-box-edge-security-and-data-protection"></a>Bezpieczeństwo Edge pola danych i ochrony danych
 
@@ -35,6 +35,7 @@ Usługa bramy okno usługi Edge i dane pole danych jest usługą zarządzania ho
 
 - Uzyskiwanie dostępu do usług bramy okno usługi Edge i dane pole danych wymaga Twoja organizacja ma umowy Enterprise Agreement (EA) lub w ramach subskrypcji Cloud Solution Provider (CSP). Aby uzyskać więcej informacji, przejdź do [Zamów subskrypcję platformy Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)!
 - Ponieważ usługi zarządzania jest hostowany na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
+- Dla operacji zarządzania zestawu SDK, klucz szyfrowania będzie dostępny dla Twojej przeglądarki Edge urządzenia Data Box / bramy pola danych zasobami dostępnymi w ramach **właściwości urządzenia**. Klucz szyfrowania można wyświetlić tylko wtedy, gdy masz uprawnienia do interfejsu API programu Graph zasobów.
 
 ## <a name="data-box-edge-device-protection"></a>Ochrona urządzeń krawędź pola danych
 
@@ -44,7 +45,8 @@ Urządzenie brzegowe pole danych jest lokalnym urządzeniem, która pomaga przek
 - Jest chroniony na cały czas hasła urządzenia.
 - To urządzenie w trybie blokady. Urządzenie BMC i systemu BIOS są chronione hasłem z ograniczonym dostępem użytkownika systemu BIOS.
 - Bezpieczny rozruch został włączony.
-- Uruchamia program Windows Defender Device Guard. Funkcja Device Guard umożliwia uruchamianie tylko zaufane aplikacje zdefiniowane w zasadach integralności kodu. 
+- Uruchamia program Windows Defender Device Guard. Funkcja Device Guard umożliwia uruchamianie tylko zaufane aplikacje zdefiniowane w zasadach integralności kodu.
+- Ma klucz wewnątrz okładce, który może służyć do blokowania urządzenia. Firma Microsoft zaleca się, że po skonfigurowaniu urządzenia, otwórz okładki. Znajdź klucz, a następnie zablokować cover, aby uniemożliwić każdego nieautoryzowanego dostępu do dysków z danymi znajduje się uzyskać urządzenia.
 
 ### <a name="protect-the-device-via-activation-key"></a>Ochrona urządzeń za pomocą klucza aktywacji
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860367"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894939"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do usługi Azure Cosmos DB z sieciami wirtualnymi (VNet)
 
@@ -54,6 +54,9 @@ Reguły sieciowej grupy zabezpieczeń są używane do ograniczenia łączności 
 
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>Punkty końcowe usługi są dostępne dla wszystkich sieci wirtualnych?
 Nie, sieciami wirtualnymi tylko usługi Azure Resource Manager może mieć włączonego punktu końcowego usługi. Klasyczne sieci wirtualne nie obsługują punkty końcowe usługi.
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Można "Akceptuj połączenia z w ramach publicznych centrów danych platformy Azure" I po włączeniu dostępu do punktu końcowego usługi dla usługi Azure Cosmos DB?  
+Jest to wymagane tylko, aby Twoje konto usługi Azure Cosmos DB można uzyskać dostęp przez inne platformy Azure do pierwszej strony usług takich jak usługi Azure Data factory, usługa Azure Search lub dowolnej usługi, która jest wdrażana w danym regionie platformy Azure.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

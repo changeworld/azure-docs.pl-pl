@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a3032ee96accdbafb32c96f4e9f3c89a0b3458
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d30a5ca0910c5ceebb38dec7b4cdbffd9b3cf27e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539500"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916788"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET
 
@@ -110,7 +110,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-`kind` Parametru [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metoda kategoryzuje utrwalonych plików. Istnieją cztery wstępnie zdefiniowane [TaskOutputKind] [ net_taskoutputkind] typów: `TaskOutput`, `TaskPreview`, `TaskLog`, i `TaskIntermediate.` można również definiować niestandardowe kategorie danych wyjściowych.
+`kind` Parametru [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) metoda kategoryzuje utrwalonych plików. Istnieją cztery wstępnie zdefiniowane [TaskOutputKind] [ net_taskoutputkind] typów: `TaskOutput`, `TaskPreview`, `TaskLog`, i `TaskIntermediate.` można również definiować niestandardowe kategorie danych wyjściowych.
 
 Te typy danych wyjściowych umożliwiają określenie typu danych wyjściowych, aby wyświetlić listę później zapytania usługi Batch dla utrwalonych danych wyjściowych dla danego zadania. Innymi słowy po wyświetleniu listy danych wyjściowych dla zadania, będzie można filtrować listę na jednym z typów danych wyjściowych. Na przykład "Proszę *Podgląd* danych wyjściowych dla zadania *109*." Więcej informacji o ofercie i pobieranie danych wyjściowych jest wyświetlany w pobieranie danych wyjściowych, w dalszej części tego artykułu.
 

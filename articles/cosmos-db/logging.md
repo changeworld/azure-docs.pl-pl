@@ -7,18 +7,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259775"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904869"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
 Po uruchomieniu używać jednego lub więcej baz danych Azure Cosmos DB, warto monitorować sposobem i czasem baz danych są dostępne. Ten artykuł zawiera omówienie dzienników, które są dostępne na platformie Azure. Dowiesz się, jak włączyć rejestrowanie diagnostyczne do celów, aby wysłać dzienniki do monitorowania [usługi Azure Storage](https://azure.microsoft.com/services/storage/), jak przesyłać strumieniowo dzienniki, aby [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i jak dzienniki, aby wyeksportować [usługi Azure Monitor rejestruje](https://azure.microsoft.com/services/log-analytics/).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="logs-available-in-azure"></a>Dzienniki dostępnych na platformie Azure
 
@@ -132,7 +135,7 @@ Jeśli został już zainstalowany program Azure PowerShell, a nie wiadomo, wersj
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem i domyślnie użyje pierwszej.
@@ -140,13 +143,13 @@ W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla kon
 Jeśli masz więcej niż jedną subskrypcję, może być do określenia konkretnej subskrypcji, który został użyty do utworzenia magazynu kluczy Azure. Aby zobaczyć subskrypcje dla swojego konta, wpisz następujące polecenie:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Następnie aby określić subskrypcję, która jest skojarzona z konta usługi Azure Cosmos DB, która jest rejestruje, wpisz następujące polecenie:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -162,7 +165,7 @@ Chociaż można używać istniejącego konta magazynu dla dzienników, w tym sam
 W celu ułatwienia zarządzania, w tym samouczku używamy tej samej grupie zasobów, która zawiera bazę danych usługi Azure Cosmos DB. Podstaw wartości **ContosoResourceGroup**, **contosocosmosdblogs**, i **północno-środkowe stany USA** parametrów, zgodnie z wymaganiami:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
+$sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
 -Name contosocosmosdblogs -Type Standard_LRS -Location 'North Central US'
 ```
 
@@ -175,15 +178,15 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 Ustaw nazwę konta usługi Azure Cosmos DB do zmiennej o nazwie **konta**, gdzie **ResourceName** jest nazwą konta usługi Azure Cosmos DB.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName ContosoResourceGroup `
+$account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 -ResourceName contosocosmosdb -ResourceType "Microsoft.DocumentDb/databaseAccounts"
 ```
 
 ### <a id="enable"></a>Włączanie rejestrowania
-Aby włączyć rejestrowanie dla usługi Azure Cosmos DB, należy użyć `Set-AzureRmDiagnosticSetting` polecenia cmdlet, za pomocą zmiennych dla nowego konta magazynu, konto usługi Azure Cosmos DB i kategorię Aby włączyć rejestrowanie. Uruchom następujące polecenie, a następnie ustaw **— włączone** flaga **$true**:
+Aby włączyć rejestrowanie dla usługi Azure Cosmos DB, należy użyć `Set-AzDiagnosticSetting` polecenia cmdlet, za pomocą zmiennych dla nowego konta magazynu, konto usługi Azure Cosmos DB i kategorię Aby włączyć rejestrowanie. Uruchom następujące polecenie, a następnie ustaw **— włączone** flaga **$true**:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
 ```
 
 Dane wyjściowe polecenia powinien przypominać następujący przykład:
@@ -221,7 +224,7 @@ Dane wyjściowe polecenia potwierdza, że włączono rejestrowanie dla bazy dany
 Opcjonalnie można także ustawić zasady przechowywania dla dzienników, tak, aby starsze dzienniki są automatycznie usuwane. Na przykład ustawić zasady przechowywania, przy użyciu **- Retentionenable** flaga jest ustawiona na **$true**. Ustaw **- RetentionInDays** parametr **90** tak, aby dzienniki starsze niż 90 dni są automatycznie usuwane.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -238,7 +241,7 @@ Najpierw utwórz zmienną dla nazwy kontenera. Zmienna jest używana w tym przew
 Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz:
 
 ```powershell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 Dane wyjściowe polecenia powinien przypominać następujący przykład:
@@ -273,13 +276,13 @@ New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
 Następnie Uzyskaj listę wszystkich obiektów blob:  
 
 ```powershell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Prześlij tę listę, za pośrednictwem `Get-AzureStorageBlobContent` polecenie, aby pobrać obiekty BLOB w folderze docelowym:
+Prześlij tę listę, za pośrednictwem `Get-AzStorageBlobContent` polecenie, aby pobrać obiekty BLOB w folderze docelowym:
 
 ```powershell
-$blobs | Get-AzureStorageBlobContent `
+$blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
@@ -290,27 +293,27 @@ Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykł
 * Jeśli masz wiele baz danych i chcesz pobrać dzienniki dla tylko jednej bazy danych o nazwie **CONTOSOCOSMOSDB3**, użyj polecenia:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
 * Jeśli masz wiele grup zasobów i chcesz pobrać dzienniki dla tylko jednej grupy zasobów, użyj polecenia `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
 * Jeśli chcesz pobrać wszystkie dzienniki na miesiąc lipca 2017 r., użyj polecenia `-Blob '*/year=2017/m=07/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
 Można również uruchomić następujące polecenia:
 
-* Aby wykonać zapytanie o stan ustawień diagnostycznych dla zasobu bazy danych, użyj polecenia `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`.
-* Aby wyłączyć rejestrowanie **DataPlaneRequests** kategorię dla zasobu konta bazy danych, użyj polecenia `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
+* Aby wykonać zapytanie o stan ustawień diagnostycznych dla zasobu bazy danych, użyj polecenia `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`.
+* Aby wyłączyć rejestrowanie **DataPlaneRequests** kategorię dla zasobu konta bazy danych, użyj polecenia `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
 
 
 Obiekty BLOB, które są zwracane w każdym z tych zapytań są przechowywane jako tekst i sformatowane jako obiekt blob JSON, jak pokazano w poniższym kodzie:
@@ -437,12 +440,12 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 
 | Usługa Azure Storage pola lub właściwości | Usługa Azure Monitor rejestruje właściwości | Opis |
 | --- | --- | --- |
-| **czas** | **TimeGenerated** | Data i godzina (UTC), gdy wystąpienia operacji. |
+| **time** | **TimeGenerated** | Data i godzina (UTC), gdy wystąpienia operacji. |
 | **resourceId** | **Zasób** | Konto usługi Azure Cosmos DB, dla którego dzienniki są włączone.|
 | **category** | **Kategoria** | W przypadku dzienników usługi Azure Cosmos DB **DataPlaneRequests** jest jedyną dostępną wartością. |
-| **OperationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolny z następujących czynności: Tworzenie, aktualizacja, odczytu, ReadFeed, Delete, Replace, należy wykonać, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
-| **Właściwości** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
-| **Identyfikator działania** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
+| **operationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolny z następujących czynności: Tworzenie, aktualizacja, odczytu, ReadFeed, Delete, Replace, należy wykonać, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
+| **properties** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
+| **activityId** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
 | **userAgent** | **userAgent_s** | Ciąg, który określa agent użytkownika klienta, który wykonuje żądanie. Format to {nazwa agenta użytkownika} / {version}.|
 | **requestResourceType** | **requestResourceType_s** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: Bazy danych, kontenerów, dokumentów, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
 | **statusCode** | **statusCode_s** | Stan odpowiedzi operacji. |
@@ -450,7 +453,7 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 | **clientIpAddress** | **clientIpAddress_s** | Adres IP klienta. |
 | **requestCharge** | **requestCharge_s** | Liczba jednostek żądań, które są używane przez operację |
 | **collectionRid** | **collectionId_s** | Unikatowy identyfikator dla kolekcji.|
-| **Czas trwania** | **duration_s** | Czas trwania operacji w dziesięciomilionowych częściach sekundy. |
+| **czas trwania** | **duration_s** | Czas trwania operacji w dziesięciomilionowych częściach sekundy. |
 | **requestLength** | **requestLength_s** | Długość żądania, w bajtach. |
 | **responseLength** | **responseLength_s** | Długość odpowiedzi w bajtach.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ta wartość jest pusta, gdy [tokenów zasobów](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) są używane do uwierzytelniania. Wartość wskazuje identyfikator zasobu użytkownika. |

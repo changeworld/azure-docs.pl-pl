@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182119"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895583"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Tworzenie przepływów pracy opartych na zdarzenia lub akcje przy użyciu elementów webhook i usługi Azure Logic Apps
 
@@ -29,7 +29,7 @@ Dowiedz się więcej o [sposobu tworzenia niestandardowych interfejsów API, kt�
 
 ## <a name="use-the-webhook-trigger"></a>Użyj wyzwalacza elementu webhook
 
-A [ *wyzwalacza* ](connectors-overview.md) jest zdarzeniem uruchamiającym przepływ pracy aplikacji logiki. Wyzwalacza elementu webhook jest oparty na zdarzeniach, które nie są zależne od sondowania dla nowych elementów. Po zapisaniu aplikacji logiki za pomocą wyzwalacza elementu webhook lub po zmianie aplikacji logiki z wyłączonego na włączony wyzwalacza elementu webhook *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Wyzwalacz następnie używa tego adresu URL do uruchomienia aplikacji logiki zgodnie z potrzebami. Podobnie jak [wyzwalacza żądania](connectors-native-reqres.md), aplikacja logiki jest uruchamiany natychmiast po oczekiwane zdarzenie. Wyzwalacz *anulowań subskrypcji* Usuń wyzwalacz i zapisywanie aplikacji logiki lub gdy zmienią się Twoja aplikacja logiki z włączony na wyłączony.
+A [ *wyzwalacza* ](../connectors/apis-list.md) jest zdarzeniem uruchamiającym przepływ pracy aplikacji logiki. Wyzwalacza elementu webhook jest oparty na zdarzeniach, które nie są zależne od sondowania dla nowych elementów. Po zapisaniu aplikacji logiki za pomocą wyzwalacza elementu webhook lub po zmianie aplikacji logiki z wyłączonego na włączony wyzwalacza elementu webhook *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Wyzwalacz następnie używa tego adresu URL do uruchomienia aplikacji logiki zgodnie z potrzebami. Podobnie jak [wyzwalacza żądania](connectors-native-reqres.md), aplikacja logiki jest uruchamiany natychmiast po oczekiwane zdarzenie. Wyzwalacz *anulowań subskrypcji* Usuń wyzwalacz i zapisywanie aplikacji logiki lub gdy zmienią się Twoja aplikacja logiki z włączony na wyłączony.
 
 Oto przykład pokazujący sposób konfigurowania wyzwalacza HTTP w Projektancie aplikacji logiki. W krokach założono, że został już wdrożony lub uzyskują dostęp do interfejsu API, który następuje po [elementu webhook subskrybowanie i anulowanie subskrypcji wzorca w usłudze logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
@@ -48,7 +48,7 @@ Oto przykład pokazujący sposób konfigurowania wyzwalacza HTTP w Projektancie 
 
 ## <a name="use-the-webhook-action"></a>Używanie akcji elementu webhook
 
-[ *Akcji* ](connectors-overview.md) jest operacja, która jest zdefiniowana i wykonywania przez przepływ pracy aplikacji logiki. Po uruchomieniu akcji elementu webhook, ta akcja w aplikacji logiki *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Akcja elementu webhook, a następnie czeka, aż który analizującą adres URL przed wznawia aplikacji logiki, które są uruchomione. Aplikacja logiki anulowań subskrypcji z usługi lub punktu końcowego w następujących przypadkach: 
+[ *Akcji* ](../connectors/apis-list.md) jest operacja, która jest zdefiniowana i wykonywania przez przepływ pracy aplikacji logiki. Po uruchomieniu akcji elementu webhook, ta akcja w aplikacji logiki *subskrybuje* do określonej usługi lub punktu końcowego, rejestrując *adresów URL wywołania zwrotnego* od danej usługi lub punktu końcowego. Akcja elementu webhook, a następnie czeka, aż który analizującą adres URL przed wznawia aplikacji logiki, które są uruchomione. Aplikacja logiki anulowań subskrypcji z usługi lub punktu końcowego w następujących przypadkach: 
 
 * Po pomyślnym zakończeniu działania elementu webhook
 * Jeśli przebieg aplikacji logiki jest anulowane podczas oczekiwania na odpowiedź

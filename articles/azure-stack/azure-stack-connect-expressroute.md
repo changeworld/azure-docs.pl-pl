@@ -14,12 +14,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 0ebd17eca363d7fc02daeb851bb24b8d1d307efc
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: bd5e5a3b6fa72698f04969219b1db3cdb0bde3a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339605"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486703"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -232,7 +232,7 @@ Router jest uruchomienie roli usługi Routing i usługi Dostęp zdalny (RRAS) ma
 1. Zaloguj się do komputera hosta usługi Azure Stack przy użyciu konta administratora.
 1. Skopiuj i Edytuj następujący skrypt programu PowerShell. Zastąp `your administrator password` o hasło administratora, a następnie uruchom skrypt w podwyższonym środowisku PowerShell ISE. Ten skrypt zwraca swoje **adres zewnętrzny BGPNAT**.
 
-   ```PowerShell
+   ```powershell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "your administrator password" `
@@ -250,7 +250,7 @@ Router jest uruchomienie roli usługi Routing i usługi Dostęp zdalny (RRAS) ma
 
    Uruchom poniższy skrypt z podwyższonym poziomem uprawnień środowiska PowerShell ISE:
 
-   ```PowerShell
+   ```powershell
    $ExtBgpNat = 'External BGPNAT address'
    $IntBgpNat = 'Internal IP address'
 
@@ -599,7 +599,7 @@ Wykonaj poniższe testów ping:
 
 Domyślnie system Windows Server 2016 nie zezwala na pakiety przychodzące protokołu ICMP przez zaporę. Dla każdej maszyny wirtualnej, którego używasz w przypadku testów ping muszą zezwalać na przychodzące pakiety protokołu ICMP. Aby utworzyć regułę zapory dla protokołu ICMP, uruchom następujące polecenie cmdlet w oknie programu PowerShell z podwyższonym poziomem uprawnień:
 
-```PowerShell
+```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `

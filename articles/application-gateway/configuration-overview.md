@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 371d15f59c091f7ac38d36bfe3de5f4b31e4482c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629630"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906127"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -21,6 +21,9 @@ Usługa Azure Application Gateway składa się z kilku składników, które moż
 ![Schemat blokowy składniki bramy aplikacji](./media/configuration-overview/configuration-overview1.png)
 
 Ten obraz przedstawia aplikacja, która ma trzy odbiorników. Pierwsze dwa są odbiorników obejmujących wiele lokacji dla `http://acme.com/*` i `http://fabrikam.com/*`, odpowiednio. Zarówno nasłuchiwania na porcie 80. Trzeci jest podstawowy odbiornik, który ma zakończenie protokołu Secure Sockets Layer (SSL) end-to-end.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -136,11 +139,11 @@ Zobacz [certyfikatów obsługiwana w przypadku kończenia żądań SSL](https://
 Obsługa protokołu HTTP/2 jest dostępna dla klientów łączących się tylko odbiorników bramy aplikacji. Komunikacja do pul serwerów zaplecza jest za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Poniższy fragment kodu programu Azure PowerShell pokazuje, jak włączyć tę opcję:
 
 ```azurepowershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
 
 $gw.EnableHttp2 = $true
 
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 #### <a name="websocket-support"></a>Obsługa protokołu WebSocket

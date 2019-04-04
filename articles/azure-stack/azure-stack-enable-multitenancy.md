@@ -15,12 +15,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: bryanr
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 16d915ff6ce0f787febbdc4be4d41e1c2e714d7f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78370dba4c54df5636e6d17d23ce7cc9d7671c15
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336669"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487706"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
@@ -42,7 +42,7 @@ Istnieje kilka wymagań wstępnych na wypadek, przed rozpoczęciem konfigurowani
  - Upewnij się, że masz [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-admin.md) programu PowerShell dla usługi Azure Stack.
  - [Pobierz narzędzia usługi Azure Stack](azure-stack-powershell-download.md)i zaimportować moduły Connect i tożsamości:
 
-    ```PowerShell  
+    ```powershell  
     Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
@@ -55,7 +55,7 @@ Dołączanie dzierżawy katalogu gościa (Fabrikam) do usługi Azure Stack przez
 
 Administrator usługi domeny contoso.onmicrosoft.com uruchom następujące polecenia.
 
-```PowerShell  
+```powershell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
@@ -86,7 +86,7 @@ Raz administratora platformy Azure Stack / operator ma włączoną katalogu firm
 
 Joanna administratorem katalogu Fabrikam uruchom następujące polecenia w fabrikam.onmicrosoft.com katalogu gościa.
 
-```PowerShell
+```powershell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     

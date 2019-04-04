@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: a739b958ad60e39c38e81ce887edf68349340bb0
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285769"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905804"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Określ obowiązkowe artefaktów dla laboratorium w usłudze Azure DevTest Labs
-Jako właściciel laboratorium można określić obowiązkowy artefaktów, które są stosowane do każdej maszyny, utworzone w środowisku laboratoryjnym. Wyobraź sobie scenariusz, w której chcesz poszczególnych maszyn w środowisku laboratoryjnym, które będą podłączone do sieci firmowej. W takim przypadku każdy użytkownik laboratorium będą musiały dodać artefaktu przyłączanie do domeny podczas tworzenia maszyny wirtualnej, aby upewnić się, że ich maszyna jest podłączona do domeny firmy. Innymi słowy użytkownicy laboratorium zasadniczo musi ponownie utworzyć maszynę w przypadku, gdy zapomną zastosowanie obowiązkowe artefaktów na swoim komputerze. Jako właściciel laboratorium należy artefaktu przyłączanie do domeny jako obowiązkowe artefakt w laboratorium. Ten krok pozwala się upewnić, że każda maszyna jest połączona z siecią firmową i zapisywanie czas i nakład pracy użytkowników laboratorium.
+Jako właściciel laboratorium możesz określić obowiązkowy artefaktów, które są stosowane do każdej maszyny, utworzone w środowisku laboratoryjnym. Wyobraź sobie scenariusz, w której chcesz poszczególnych maszyn w środowisku laboratoryjnym, które będą podłączone do sieci firmowej. W takim przypadku każdy użytkownik laboratorium będą musiały dodać artefaktu przyłączanie do domeny podczas tworzenia maszyny wirtualnej, aby upewnić się, że ich maszyna jest podłączona do domeny firmy. Innymi słowy użytkownicy laboratorium zasadniczo musi ponownie utworzyć maszynę w przypadku, gdy zapomną zastosowanie obowiązkowe artefaktów na swoim komputerze. Jako właściciel laboratorium należy artefaktu przyłączanie do domeny jako obowiązkowe artefakt w laboratorium. Ten krok pozwala się upewnić, że każda maszyna jest połączona z siecią firmową i zapisywanie czas i nakład pracy użytkowników laboratorium.
  
 Inne artefakty obowiązkowe mogą obejmować popularnego narzędzia, z której korzystają członkowie zespołu lub pakiet zabezpieczeń związane z platformą, który każda maszyna musi mieć domyślnie itp. Krótko mówiąc nazwy wspólnej programów, które muszą mieć do każdej maszyny w środowisku laboratoryjnym staje się obowiązkowe artefaktu. Jeśli tworzenie obrazu niestandardowego z maszynie, która zawiera artefakty obowiązkowe zastosowano, a następnie utworzyć nowej maszynie z tego obrazu, obowiązkowe artefaktów zostaną ponownie zastosowane na komputerze podczas tworzenia. To zachowanie również oznacza, że, mimo że niestandardowego obrazu jest stary, każdym razem, gdy tworzysz maszynę z niego najbardziej zaktualizowaną wersję artefaktów obowiązkowe są do niego zastosowane podczas tworzenia przepływu. 
  
 Tylko te artefakty, które nie mają parametrów są obsługiwane jako obowiązkowe z nich. Użytkownika usługi laboratoryjnej nie trzeba wprowadzić dodatkowe parametry podczas tworzenia laboratorium i czyniąc prosty proces tworzenia maszyny Wirtualnej. 
 
-## <a name="specify-mandatory-artifacts"></a>Określ wymagane artefaktów
+## <a name="specify-mandatory-artifacts"></a>Określanie obowiązkowych artefaktów
 Obowiązkowe artefaktów dla maszyn Windows i Linux można wybrać oddzielnie. Można również zmieniać kolejność tych artefaktów, w zależności od kolejności, w której chcesz zastosować. 
 
 1. Na stronie głównej w środowisku laboratoryjnym wybierz **konfiguracji i zasad** w obszarze **ustawienia**. 

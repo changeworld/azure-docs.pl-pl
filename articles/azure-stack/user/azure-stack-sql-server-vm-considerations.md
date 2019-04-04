@@ -1,6 +1,6 @@
 ---
-title: Najlepsze rozwiązania dotyczące programu SQL Server na maszynach wirtualnych usługi Azure Stack wydajności
-description: Przedstawia najlepsze rozwiązania dotyczące optymalizacji wydajności programu SQL Server w Microsoft Azure Stack maszyn wirtualnych.
+title: Należy stosować najlepsze rozwiązania programu SQL Server i zwiększyć wydajność w przypadku maszyn wirtualnych usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera programu SQL server najlepsze rozwiązania ułatwiające zwiększenie wydajności i optymalizowanie programu SQL Server na maszynach wirtualnych platformy Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123406"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879068"
 ---
-# <a name="optimize-sql-server-performance"></a>Optymalizacja wydajności programu SQL Server
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>SQL server najlepsze rozwiązania w celu optymalizacji wydajności w usłudze Azure Stack
 
-Ten artykuł zawiera wskazówki dotyczące optymalizacji wydajności programu SQL Server na maszynach wirtualnych Microsoft Azure Stack. Podczas uruchamiania programu SQL Server na maszynach wirtualnych usługi Azure Stack, użyj tej samej bazy danych dostrajanie wydajności opcji mające zastosowanie do programu SQL Server w środowisku serwera w środowisku lokalnym. Wydajność relacyjnej bazy danych w chmurze usługi Azure Stack, zależy od wielu czynników. Czynniki obejmują rodziny rozmiaru maszyny wirtualnej, a konfiguracja dysków z danymi.
+Ten artykuł zawiera najlepsze rozwiązania programu SQL server do optymalizacji programu SQL Server i zwiększyć wydajność w przypadku maszyn wirtualnych Microsoft Azure Stack. Podczas uruchamiania programu SQL Server na maszynach wirtualnych usługi Azure Stack, użyj tej samej bazy danych dostrajanie wydajności opcji mające zastosowanie do programu SQL Server w środowisku serwera w środowisku lokalnym. Wydajność relacyjnej bazy danych w chmurze usługi Azure Stack, zależy od wielu czynników. Czynniki obejmują rodziny rozmiaru maszyny wirtualnej, a konfiguracja dysków z danymi.
 
 Podczas tworzenia obrazów programu SQL Server [należy wziąć pod uwagę inicjowania obsługi administracyjnej maszyn wirtualnych w portalu usługi Azure Stack](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Pobierz rozszerzenie SQL IaaS z zarządzania w portalu Marketplace w portalu administracyjnym usługi Azure Stack i Pobierz swój wybór w opcji SQL maszyny wirtualne dyski twarde (VHD). Obejmują one SQL2014SP2 SQL2016SP1 i SQL2017.
 
@@ -37,7 +37,8 @@ Wprowadzenie *najlepsze* wydajności dla programu SQL Server na maszynach wirtua
 > [!NOTE]  
 > Aby uzyskać wskazówki dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure, zobacz [w tym artykule](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
+## <a name="checklist-for-sql-server-best-practices"></a>Lista kontrolna dotycząca najlepsze rozwiązania dotyczące serwera SQL
+
 Poniższa lista kontrolna jest przeznaczony dla uzyskania optymalnej wydajności programu SQL Server na maszynach wirtualnych usługi Azure Stack:
 
 
@@ -112,7 +113,7 @@ Zalecamy przechowywanie bazy danych TempDB na dysk z danymi, ponieważ każdy dy
 
        Na przykład następujące polecenie programu PowerShell tworzy nową pulę magazynów z rozmiarem przeplotu wartość 64 KB i liczbę kolumn do 2:
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 

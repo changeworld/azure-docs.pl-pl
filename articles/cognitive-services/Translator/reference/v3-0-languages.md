@@ -3,19 +3,19 @@ title: Metoda języków interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Użyj metody interfejsu API usługi Translator tekstu/wszystkie języki.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122407"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915768"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -93,7 +93,7 @@ Odpowiedź oznaczająca Powodzenie to obiekt JSON z jednej właściwości dla ka
 
 Wartość dla każdej właściwości jest w następujący sposób.
 
-* `translation` Właściwość
+* `translation` właściwość
 
   Wartość `translation` właściwość jest słownikiem (klucz, wartość) pary. Każdy klucz jest tag języka BCP 47. Klucz identyfikuje język, dla którego tekst mogą być tłumaczone lub przetłumaczone z. Wartość skojarzoną z kluczem jest obiekt JSON z właściwościami, które opisują języka:
 
@@ -119,7 +119,7 @@ Wartość dla każdej właściwości jest w następujący sposób.
   }
   ```
 
-* `transliteration` Właściwość
+* `transliteration` właściwość
 
   Wartość `transliteration` właściwość jest słownikiem (klucz, wartość) pary. Każdy klucz jest tag języka BCP 47. Klucz identyfikuje język, dla którego można przekonwertować tekst z jednego skryptu do innego skryptu. Wartość skojarzoną z kluczem jest obiekt JSON z właściwościami, które opisują, języka i jego obsługiwanych skryptów:
 
@@ -184,7 +184,7 @@ Wartość dla każdej właściwości jest w następujący sposób.
   }
   ```
 
-* `dictionary` Właściwość
+* `dictionary` właściwość
 
   Wartość `dictionary` właściwość jest słownikiem (klucz, wartość) pary. Każdy klucz jest tag języka BCP 47. Klucz identyfikuje język, dla którego alternatywnych tłumaczeń i ponownie tłumaczenia są dostępne. Wartość jest obiekt JSON, który opisuje języka źródłowego i docelowego języków dostępne tłumaczenia:
 
@@ -281,7 +281,7 @@ Jeśli wystąpi błąd, żądanie zwróci błąd odpowiedź w formacie JSON. Kod
 
 Poniższy przykład pokazuje, jak pobrać języki obsługiwane w przypadku tłumaczenie tekstu.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: 963ee7e952e566952a80903a739b093dbd9f0c21
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 48831767f72dd1b978fad5b0a9a8f2c7a11ec89d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184193"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893116"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services — przewodnik rozwiązywania problemów
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, które można napotkać podczas konfigurowania lub administrowania usługi domenowe Azure Active Directory (AD).
@@ -30,17 +30,17 @@ Ta sekcja ułatwia rozwiązywanie problemów podczas próby włączenia usług d
 
 Wybierz kroki rozwiązywania problemów, które odpowiadają komunikat o błędzie, który wystąpi.
 
-| **Komunikat o błędzie** | **Rozdzielczość** |
+| **Komunikat o błędzie** | **Rozwiązanie** |
 | --- |:--- |
-| *Nazwa contoso100.com jest już używana w tej sieci. Określ nazwę, która nie jest używana.* |[Konflikt nazw domeny w sieci wirtualnej](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Usługa nie ma odpowiednich uprawnień do aplikacji o nazwie „Azure AD Domain Services Sync”. Usuń aplikację o nazwie „Azure AD Domain Services Sync”, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Usługi domenowe nie ma wystarczających uprawnień do aplikacji Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usług Domain Services w dzierżawie usługi Azure AD nie uprawnień wymaganych do włączenia usług Domain Services. Usuń aplikację z identyfikatorem d87dcbc6-a371-462e-88e3-28ad15ec4e64, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Aplikacja usług Domain Services nie jest skonfigurowana poprawnie w Twojej dzierżawie](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usługi Microsoft Azure AD jest wyłączona w dzierżawie usługi Azure AD. Włącz aplikację z identyfikatorem 00000002-0000-0000-c000-000000000000, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Aplikacja Microsoft Graph jest wyłączona w dzierżawie usługi Azure AD](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *Nazwa contoso100.com jest już używana w tej sieci. Określ nazwę, która nie jest w użyciu.* |[Konflikt nazw domeny w sieci wirtualnej](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Usługa nie ma odpowiednich uprawnień do aplikacji o nazwie „Azure AD Domain Services Sync”. Usuń aplikację o nazwie "Azure AD Domain Services Sync", a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Usługi domenowe nie ma wystarczających uprawnień do aplikacji Azure AD Domain Services Sync](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usług Domain Services w dzierżawie usługi Azure AD nie uprawnień wymaganych do włączenia usług Domain Services. Usuń aplikację z d87dcbc6-a371-462e-88e3-28ad15ec4e64 identyfikator aplikacji, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Aplikacja usług Domain Services nie jest skonfigurowana poprawnie w Twojej dzierżawie](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usługi Microsoft Azure AD jest wyłączona w dzierżawie usługi Azure AD. Włącz aplikację z 00000002-0000-0000-c000-000000000000 identyfikator aplikacji, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.* |[Aplikacja Microsoft Graph jest wyłączona w dzierżawie usługi Azure AD](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Konflikt nazw domeny
 **Komunikat o błędzie:**
 
-*Nazwa contoso100.com jest już używana w tej sieci. Określ nazwę, która nie jest używana.*
+*Nazwa contoso100.com jest już używana w tej sieci. Określ nazwę, która nie jest w użyciu.*
 
 **Środki zaradcze:**
 
@@ -51,7 +51,7 @@ Ten błąd jest spowodowany konfliktów nazw dla nazwy domeny w tej sieci wirtua
 ### <a name="inadequate-permissions"></a>Niewystarczające uprawnienia
 **Komunikat o błędzie:**
 
-*Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Usługa nie ma odpowiednich uprawnień do aplikacji o nazwie „Azure AD Domain Services Sync”. Usuń aplikację o nazwie „Azure AD Domain Services Sync”, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.*
+*Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Usługa nie ma odpowiednich uprawnień do aplikacji o nazwie „Azure AD Domain Services Sync”. Usuń aplikację o nazwie "Azure AD Domain Services Sync", a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.*
 
 **Środki zaradcze:**
 
@@ -67,7 +67,7 @@ Wykonaj następujące kroki, aby sprawdzić obecność aplikacji i usuń go, je�
 ### <a name="invalid-configuration"></a>Nieprawidłowa konfiguracja
 **Komunikat o błędzie:**
 
-*Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usług Domain Services w dzierżawie usługi Azure AD nie uprawnień wymaganych do włączenia usług Domain Services. Usuń aplikację z identyfikatorem d87dcbc6-a371-462e-88e3-28ad15ec4e64, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.*
+*Nie można włączyć usług Domain Services w tej dzierżawie usługi Azure AD. Aplikacja usług Domain Services w dzierżawie usługi Azure AD nie uprawnień wymaganych do włączenia usług Domain Services. Usuń aplikację z d87dcbc6-a371-462e-88e3-28ad15ec4e64 identyfikator aplikacji, a następnie spróbuj włączyć usługi Domain Services dla dzierżawy usługi Azure AD.*
 
 **Środki zaradcze:**
 
@@ -157,7 +157,7 @@ Usługa Azure AD zapewnia ochronę przed przypadkowym usunięciem obiektów uży
 
 Konto użytkownika pozostają w stanie wyłączenia w Twojej domeny zarządzanej, nawet wtedy, gdy ponownie utworzyć konto użytkownika o tej samej nazwy UPN w katalogu usługi Azure AD. Aby usunąć konto użytkownika z Twojej domeny zarządzanej, należy wymusić usunięcie go z dzierżawą usługi Azure AD.
 
-Aby całkowicie usunąć konto użytkownika z domeny zarządzanej, należy usunąć użytkownika trwale z dzierżawy usługi Azure AD. Użyj `Remove-MsolUser` polecenia cmdlet programu PowerShell przy użyciu `-RemoveFromRecycleBin` opcji, zgodnie z opisem w tym [artykuł w witrynie MSDN](https://msdn.microsoft.com/library/azure/dn194132.aspx).
+Aby całkowicie usunąć konto użytkownika z domeny zarządzanej, należy usunąć użytkownika trwale z dzierżawy usługi Azure AD. Użyj `Remove-MsolUser` polecenia cmdlet programu PowerShell przy użyciu `-RemoveFromRecycleBin` opcji, zgodnie z opisem w tym [artykuł w witrynie MSDN](/previous-versions/azure/dn194132(v=azure.100)).
 
 
 ## <a name="contact-us"></a>Skontaktuj się z nami

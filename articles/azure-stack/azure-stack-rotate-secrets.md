@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251354"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917564"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -102,7 +102,7 @@ Obrót wpisu tajnego wykonując poniższe instrukcje uruchamiania będą skorygo
     > [!Note] 
     > W przypadku wersji pre-1811 nie trzeba wymienić wpisów tajnych, aby dodać rozszerzenie hosta certyfikaty. Należy wykonać instrukcje przedstawione w artykule [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md) Aby dodać rozszerzenie hosta certyfikaty.
 
-2. Operatorzy mogą zauważyć alerty otwierających i zamykających automatycznie w trakcie rotacji kluczy tajnych w usłudze Azure Stack.  To zachowanie jest przewidywane i alerty można zignorować.  Operatory można sprawdzić poprawność te alerty, uruchamiając **AzureStack testu**.  Dla operatorów do monitorowania za pomocą programu SCOM systemy usługi Azure Stack, wprowadzenie do systemu w trybie konserwacji uniemożliwi ich systemami ITSM osiągnięcie tych alertów, ale będzie w dalszym ciągu alert, jeśli system usługi Azure Stack staje się niedostępny.
+2. Podczas rotacji wpisów tajnych usługi Azure Stack operatorzy mogą obserwować automatyczne otwieranie i zamykanie alertów.  To zachowanie jest przewidywane i alerty można zignorować.  Operatory można sprawdzić poprawność te alerty, uruchamiając **AzureStack testu**.  Dla operatorów do monitorowania za pomocą programu SCOM systemy usługi Azure Stack, wprowadzenie do systemu w trybie konserwacji uniemożliwi ich systemami ITSM osiągnięcie tych alertów, ale będzie w dalszym ciągu alert, jeśli system usługi Azure Stack staje się niedostępny.
 
 3. Powiadom użytkowników, wszelkich operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
 
@@ -122,7 +122,7 @@ Obrót wpisu tajnego wykonując poniższe instrukcje uruchamiania będą skorygo
 > **.\Certificates\AAD** lub ***.\Certificates\ADFS*** w zależności od dostawcy tożsamości używane na potrzeby usługi Azure Stack
 >
 > Jest priorytetowe znaczenie, który kończy się Twoja struktura folderów **AAD** lub **usług AD FS** folderów i wszystkich podkatalogach znajdują się w tej struktury; w przeciwnym razie **Start-SecretRotation**rozpocznie pracę przy użyciu:
-> ```PowerShell
+> ```powershell
 > Cannot bind argument to parameter 'Path' because it is null.
 > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
 > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
@@ -147,7 +147,7 @@ Aby obrócić zewnętrzne wpisy tajne:
 1. W nowo utworzonej **\Certificates\\\<IdentityProvider >** Katalog utworzony w krokach wstępne umieścić nowy zestaw zastępczy certyfikaty zewnętrzne w strukturze katalogów zgodnie z opisem w Format opisany w sekcji wymagane certyfikaty [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 
     Przykład struktura folderów dla dostawcy tożsamości usługi AAD:
-    ```PowerShell
+    ```powershell
         <ShareName>
         │   │
         │   ├───Certificates
@@ -209,7 +209,7 @@ Aby obrócić zewnętrzne wpisy tajne:
     > [!Note]
     > Jeśli wpisu tajnego obrotu zakończy się niepowodzeniem, postępuj zgodnie z instrukcjami w komunikacie o błędzie i uruchom ponownie **Start SecretRotation** z **-Uruchom ponownie** parametru.
 
-    ```PowerShell
+    ```powershell
     Start-SecretRotation -ReRun
     ```
     Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu.
@@ -220,7 +220,7 @@ Aby obrócić zewnętrzne wpisy tajne:
 
 W poniższym przykładzie programu PowerShell pokazuje, poleceń cmdlet i parametrów do uruchomienia w celu obracania wpisów tajnych.
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -256,7 +256,7 @@ Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola *
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **–Internal** and **-ReRun** parameters.  
 
-```PowerShell
+```powershell
 Start-SecretRotation -Internal -ReRun
 ```
 
@@ -270,25 +270,25 @@ Obraca się wpisy tajne w systemie usługi Azure Stack. Wykonać tylko względem
 
 #### <a name="for-external-secret-rotation"></a>Dla zewnętrznych obrotu wpisu tajnego
 
-```PowerShell
+```powershell
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential <PSCredential>] [-CertificatePassword <SecureString>]  
 ```
 
 #### <a name="for-internal-secret-rotation"></a>Dla wewnętrznej obrotu wpisu tajnego
 
-```PowerShell
+```powershell
 Start-SecretRotation [-Internal]  
 ```
 
 #### <a name="for-external-secret-rotation-rerun"></a>Dla zewnętrznych obrotu wpisu tajnego, uruchom ponownie
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun]
 ```
 
 #### <a name="for-internal-secret-rotation-rerun"></a>Dla wewnętrznej obrotu wpisu tajnego, uruchom ponownie
 
-```PowerShell
+```powershell
 Start-SecretRotation [-ReRun] [-Internal]
 ```
 
@@ -298,11 +298,11 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Type | Wymagany | Pozycja | Domyślne | Opis |
+| Parametr | Type | Wymagane | Pozycja | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych. Katalog end musi być **\Certificates**. |
+| PfxFilesPath | String  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych. Katalog end musi być **\Certificates**. |
 | CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniany, gdy są obracane zewnętrznych wpisów tajnych. |
-| Wewnętrzny | Ciąg | False | o nazwie | Brak | Flagi wewnętrznej musi być używane w dowolnym momencie operatorów usługi Azure Stack chce wymienić wewnętrznej infrastruktury kluczy tajnych. |
+| Wewnętrzny | String | False | o nazwie | Brak | Flagi wewnętrznej musi być używane w dowolnym momencie operatorów usługi Azure Stack chce wymienić wewnętrznej infrastruktury kluczy tajnych. |
 | PathAccessCredential | PSCredential | False  | o nazwie  | Brak  | Poświadczenie programu PowerShell dla udziału plików z **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych.  |
 | Uruchom ponownie | SwitchParameter | False  | o nazwie  | Brak  | Uruchom ponownie muszą być używane w dowolnym momencie obrotu wpisu tajnego jest ponowieniu po nieudanej próbie. |
 
@@ -312,7 +312,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 Musi to być uruchamiane za pomocą usługi Azure Stack [środowiska użytkownika uprzywilejowanego punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
-```PowerShell
+```powershell
 PS C:\> Start-SecretRotation -Internal
 ```
 
@@ -320,7 +320,7 @@ To polecenie obraca wszystkich wpisów tajnych infrastruktury, połączenie z si
 
 #### <a name="rotate-only-external-infrastructure-secrets"></a>Obróć tylko wpisy tajne zewnętrznych infrastruktury  
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -346,7 +346,7 @@ To polecenie obraca certyfikaty protokołu TLS, używane dla punktów końcowych
 >
 > **Z *1811 +* nie można obrócić, zarówno wewnętrzne i zewnętrzne certyfikatów kolejne!!!**
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -369,11 +369,11 @@ To polecenie obraca wszystkich wpisów tajnych infrastruktury, połączenie z si
 
 Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwerów. Instrukcje na temat aktualizowania nazwę konta użytkownika i hasło kontrolera BMC i specyfikacje różnią się zależnie od dostawcy sprzętu producenta sprzętu (OEM). Należy zaktualizować hasła dla składników usługi Azure Stack w regularnych odstępach czasu.
 
-1. Aktualizacja kontrolera zarządzania płytą GŁÓWNĄ na serwerach fizycznych w usłudze Azure Stack, postępując zgodnie z instrukcjami podanymi przez producenta OEM. Nazwa konta użytkownika i hasło dla każdego kontrolera zarządzania płytą GŁÓWNĄ w środowisku musi być taka sama.
+1. Aktualizacja kontrolera zarządzania płytą GŁÓWNĄ na serwerach fizycznych w usłudze Azure Stack, postępując zgodnie z instrukcjami podanymi przez producenta OEM. Nazwa użytkownika i hasło dla każdego kontrolera zarządzania płytą GŁÓWNĄ w środowisku musi być taka sama. Należy pamiętać, że kontrolera zarządzania płytą GŁÓWNĄ nazwy użytkowników nie może przekraczać 16 znaków.
 2. Otwórz punkt końcowy uprzywilejowanego w sesji usługi Azure Stack. Aby uzyskać instrukcje, zobacz [przy użyciu uprzywilejowanych punktu końcowego w usłudze Azure Stack](azure-stack-privileged-endpoint.md).
 3. Po PowerShell wiersz został zmieniony na **[adres IP lub maszyny Wirtualnej ERCS name]: PS >** lub **[azs-ercs01]: PS >**, w zależności od środowiska, uruchom `Set-BmcCredential` , uruchamiając `Invoke-Command`. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego, jako parametr. Na przykład:
 
-    ```PowerShell
+    ```powershell
     # Interactive Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
@@ -391,7 +391,7 @@ Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwer
 
     Za pomocą statycznych wersja programu PowerShell i hasła jako wiersze kodu:
 
-    ```PowerShell
+    ```powershell
     # Static Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"

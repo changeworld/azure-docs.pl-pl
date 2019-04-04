@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 8c1e463378cc2c1ba3fdc0bcf91f800f634cc5f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077126"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916278"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Rozwiązywanie problemów z punktów końcowych usługi Azure CDN, które zwracają kod stanu 404
 W tym artykule umożliwia rozwiązywanie problemów z punktami końcowymi usługi Azure Content Delivery Network (CDN), które zwracają 404 kodów stanu odpowiedzi HTTP.
@@ -76,7 +76,7 @@ Sprawdź swoje **HTTP** i **portów HTTPS**. W większości przypadków 80 i 443
 Jednak Załóżmy, że adres URL dla pliku pierwotnego, który został przetestowany wcześniej, jest protokół http:\//www.contoso.com:8080/file.txt. Uwaga *: 8080* części na końcu segmentu nazwy hosta. Czy liczba powoduje, że przeglądarka łączenia z serwerem sieci web w sieci Web za pomocą portu 8080\.contoso.com, w związku z tym musisz wprowadzić *8080* w **portu HTTP** pola. Należy zauważyć, że te ustawienia portów mieć wpływ na tylko port punktu końcowego używa w celu pobierania informacji ze źródła.
 
 > [!NOTE]
-> **Usługa Azure CDN Standard from Akamai** punktów końcowych nie zezwalają na pełny zakres portów TCP dla źródeł.  Lista niedozwolonych portów źródłowych znajduje się w artykule [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Azure CDN from Akamai — dozwolone porty źródłowe).  
+> **Usługa Azure CDN Standard from Akamai** punktów końcowych nie zezwalają na pełny zakres portów TCP dla źródeł.  Lista niedozwolonych portów źródłowych znajduje się w artykule [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Azure CDN from Akamai — dozwolone porty źródłowe).  
 > 
 > 
 

@@ -15,12 +15,12 @@ ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a0411e3aa8f4df1039a129fd73ebdad5a58c5a0c
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: daf30098888a0d7779ccff4d4c6c2ce6390511fe
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257588"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486227"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator
 
@@ -39,7 +39,7 @@ Uruchom następujące wymagania wstępne, albo z [deweloperski](./asdk/asdk-conn
 
 Za pomocą programu PowerShell, należy skonfigurować środowisko operatora usługi Azure Stack. Uruchom jedno z następujących skryptów: Zamień tenantName usługi Azure Active Directory (Azure AD) i wartości punktu końcowego usługi Azure Resource Manager konfiguracji środowiska. <!-- GraphAudience endpoint -->
 
-```PowerShell  
+```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
 Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -59,7 +59,7 @@ Podłącz do środowiska operatora usługi Azure Stack przy użyciu programu Pow
 
 <!-- GraphAudience endpoint -->
 
-  ```PowerShell  
+  ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -74,7 +74,7 @@ Podłącz do środowiska operatora usługi Azure Stack przy użyciu programu Pow
 
 Teraz, gdy masz wszystkie elementy konfiguracji, za pomocą programu PowerShell do tworzenia zasobów w ramach usługi Azure Stack. Na przykład można utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Użyj następującego polecenia, aby utworzyć grupę zasobów o nazwie **MyResourceGroup**.
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093684"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916822"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Tworzenie punktu końcowego usługi Azure CDN
-W tym artykule opisano wszystkie ustawienia dotyczące tworzenia [Azure Content Delivery Network (CDN)](cdn-overview.md) punktu końcowego w istniejący profil usługi CDN. Po utworzeniu profilu i punktu końcowego, można uruchomić dostarczania zawartości do klientów. Aby uzyskać szybki start dotyczące tworzenia profilu i punktu końcowego, zobacz [Szybki Start: tworzenie wysokiej dostępności treści Azure profilu i punktu końcowego](cdn-create-new-endpoint.md).
+W tym artykule opisano wszystkie ustawienia dotyczące tworzenia [Azure Content Delivery Network (CDN)](cdn-overview.md) punktu końcowego w istniejący profil usługi CDN. Po utworzeniu profilu i punktu końcowego, można uruchomić dostarczania zawartości do klientów. Aby uzyskać szybki start dotyczące tworzenia profilu i punktu końcowego, zobacz [Szybki Start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Zanim będzie można utworzyć punktu końcowego usługi CDN, musisz mieć utworzone co najmniej jeden profil CDN, który może zawierać jeden lub więcej punktów końcowych usługi CDN. Do organizowania punktów końcowych usługi CDN według domeny internetowej, aplikacji internetowej lub innych kryteriów można używać wielu profilów. Ponieważ cennikiem sieci CDN została zastosowana na poziomie profilu CDN, należy utworzyć wiele profilów CDN, jeśli chcesz używać różnych warstw cenowych sieć CDN systemu Azure. Aby utworzyć profil usługi CDN, zobacz [Utwórz nowy profil CDN](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
@@ -67,7 +67,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
    > [!NOTE]
    > **Port źródła** wartość określa tylko port punktu końcowego używa w celu pobrania informacji z serwera pochodzenia. Sam punkt końcowy jest dostępny dla klientów końcowych tylko na domyślnych portach HTTP i HTTPS (80 i 443), niezależnie od wartości **Port źródła**.  
    > 
-   > Punkty końcowe w profilach usługi **Azure CDN from Akamai** nie zezwalają na pełny zakres portów TCP dla portów źródeł. Lista niedozwolonych portów źródłowych znajduje się w artykule [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Azure CDN from Akamai — dozwolone porty źródłowe).  
+   > Punkty końcowe w profilach usługi **Azure CDN from Akamai** nie zezwalają na pełny zakres portów TCP dla portów źródeł. Lista niedozwolonych portów źródłowych znajduje się w artykule [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Azure CDN from Akamai — dozwolone porty źródłowe).  
    > 
    > Obsługa protokołu HTTPS dla domen niestandardowych usługi Azure CDN nie jest obsługiwana w **Azure CDN from Akamai** produktów. Aby uzyskać więcej informacji, zobacz [Konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN](cdn-custom-ssl.md).
     
@@ -75,16 +75,16 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
 
     Następujące ustawienia typu optymalizacji są obsługiwane, zależnie od typu profilu:
     - **Usługa Azure CDN Standard from Microsoft** profilów:
-       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Usługa Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profilów:
-       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
        - [**Przyspieszanie witryn dynamicznych**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Usługa Azure CDN Standard from Akamai** profilów:
-       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
        - [**Ogólne transmisje strumieniowe multimediów**](cdn-optimization-overview.md#general-media-streaming)
-       - [**Wideo strumieniowe multimediów na żądanie**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**Transmisje strumieniowe multimediów na żądanie**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Pobieranie dużych plików**](cdn-optimization-overview.md#large-file-download)
        - [**Przyspieszanie witryn dynamicznych**](cdn-optimization-overview.md#dynamic-site-acceleration)
 

@@ -14,112 +14,112 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2db63be6c6997840f7409a3ca79f1845f30e4ceb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008063"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918437"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Udostępnianie ustawień konfiguracji roli jako zmienną środowiskową za pomocą wyrażenia XPath
 W proces roboczy usług chmury lub w pliku definicji usługi roli sieci web mogą uwidocznić wartości konfiguracji środowiska uruchomieniowego, jako zmienne środowiskowe. Obsługiwane są następujące wartości XPath, (które odnoszą się do wartości interfejsu API).
 
-Dostępne są także te wartości XPath [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) biblioteki. 
+Dostępne są także te wartości XPath [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) biblioteki. 
 
 ## <a name="app-running-in-emulator"></a>Aplikacja uruchomiona w emulatorze
 Wskazuje, że aplikacja jest uruchomiona w emulatorze.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/Deployment/@emulated" |
+| XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | Kod |var x = RoleEnvironment.IsEmulated; |
 
 ## <a name="deployment-id"></a>Identyfikator wdrożenia
 Pobiera identyfikator wdrożenia dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/Deployment/@id" |
+| XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | Kod |var deploymentId = RoleEnvironment.DeploymentId; |
 
 ## <a name="role-id"></a>Identyfikator roli
 Pobiera bieżący identyfikator roli dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/CurrentInstance/@id" |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | Kod |Identyfikator var = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Aktualizowanie domeny
 Pobiera domena aktualizacji wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | Kod |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## <a name="fault-domain"></a>Domena błędów
 Pobiera wystąpienia domeny błędów.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | Kod |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## <a name="role-name"></a>Nazwa roli
 Pobiera nazwę roli wystąpień.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Ustawienia konfiguracji
 Pobiera wartość ustawienia konfiguracji.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/appSettings/ConfigurationSetting [@name="Setting1"]/@value" |
-| Kod |Ustawienie var = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
+| Kod |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
 ## <a name="local-storage-path"></a>Ścieżka magazynu lokalnego
 Pobiera ścieżkę magazynu lokalnego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@path" |
+| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@path" |
 | Kod |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). Właściwość RootPath; |
 
 ## <a name="local-storage-size"></a>Rozmiar magazynu lokalnego
 Pobiera informacje o rozmiarze magazynu lokalnego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@sizeInMB" |
+| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@sizeInMB" |
 | Kod |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Punkt końcowy protokołu
 Pobiera protokół punktu końcowego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@protocol" |
+| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@protocol" |
 | Kod |Port var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokół; |
 
 ## <a name="endpoint-ip"></a>Punkt końcowy IP
 Pobiera określony punkt końcowy adres IP.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@address" |
+| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@address" |
 | Kod |adres var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
 
 ## <a name="endpoint-port"></a>Port punktu końcowego
 Pobiera port punktu końcowego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| Wyrażenie XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@port" |
+| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@port" |
 | Kod |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |
 
 ## <a name="example"></a>Przykład

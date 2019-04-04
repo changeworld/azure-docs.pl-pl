@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: b1259d8f15ac719db833bef5ae37a7c2e665b2fb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480638"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905448"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
 
@@ -89,7 +89,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyświetlać i zarządzać klasycznego alertów dotyczących metryk. Przykłady w artykule pokazano, jak można użyć poleceń cmdlet usługi Azure Monitor dla klasycznego alertów dotyczących metryk.
 
-1. Jeśli jeszcze ich, konfigurowanie programu PowerShell do uruchamiania na komputerze. Aby uzyskać więcej informacji, zobacz [jak instalowanie i konfigurowanie programu PowerShell](/powershell/azure/overview). Możesz również przejrzeć całą listę Azure Monitor poleceń cmdlet programu PowerShell w [poleceń cmdlet usługi Azure Monitor (Insights)](https://docs.microsoft.com/powershell/module/azurerm.insights).
+1. Jeśli jeszcze ich, konfigurowanie programu PowerShell do uruchamiania na komputerze. Aby uzyskać więcej informacji, zobacz [jak instalowanie i konfigurowanie programu PowerShell](/powershell/azure/overview). Możesz również przejrzeć całą listę Azure Monitor poleceń cmdlet programu PowerShell w [poleceń cmdlet usługi Azure Monitor (Insights)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
 2. Najpierw zaloguj się do subskrypcji platformy Azure.
 

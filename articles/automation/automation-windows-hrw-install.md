@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842513"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916466"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -134,9 +134,9 @@ Aby uzyskać szczegółowe informacje dotyczące instalacji, należy użyć **-V
 
 Elementy Runbook można użyć dowolnego działania i poleceń cmdlet zdefiniowane w modułach, które są zainstalowane w środowisku usługi Azure Automation. Te moduły nie są automatycznie wdrażane na komputerach w środowisku lokalnym, więc należy je zainstalować ręcznie. Wyjątkiem jest moduł platformy Azure, który jest instalowany domyślnie i zapewnia dostęp do poleceń cmdlet dla wszystkich usług platformy Azure i działań dla usługi Azure Automation.
 
-Ponieważ podstawowym celem funkcji hybrydowego procesu roboczego Runbook do zarządzania zasobami lokalnymi, najprawdopodobniej musisz zainstalować moduły, które obsługują te zasoby. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [instalowanie modułów](https://msdn.microsoft.com/library/dd878350.aspx). 
+Ponieważ podstawowym celem funkcji hybrydowego procesu roboczego Runbook do zarządzania zasobami lokalnymi, najprawdopodobniej musisz zainstalować moduły, które obsługują te zasoby. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [instalowanie modułów](/powershell/developer/windows-powershell). 
 
-Moduły, które są zainstalowane musi znajdować się w lokalizacji, odwołuje się **PSModulePath** zmiennej środowiskowej, aby można je automatycznie zaimportować do hybrydowego procesu roboczego. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
+Moduły, które są zainstalowane musi znajdować się w lokalizacji, odwołuje się **PSModulePath** zmiennej środowiskowej, aby można je automatycznie zaimportować do hybrydowego procesu roboczego. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](/powershell/developer/windows-powershell).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652675"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905974"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -28,6 +28,7 @@ Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funk
 * Obsługuje dyski SSD w warstwie standardowa wraz z dysków standardowych dysków Twardych i dysków SSD w warstwie Premium.
 *   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>What's new in tej funkcji
 
@@ -74,9 +75,9 @@ W witrynie Azure portal można zobaczyć pola dodane w **zasad tworzenia kopii z
 > Za pomocą programu PowerShell Az wersji 1.6.0 lub nowszy można zaktualizować okresu przechowywania natychmiastowe Przywracanie migawki w zasadach przy użyciu programu PowerShell
 
 ```powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Przechowywania migawek domyślne dla każdej zasady jest równa 2 dni. Użytkownik może zmienić wartość co najmniej 1 i maksymalnie 5 dni. Co tydzień zasad przechowywania migawki zostanie usunięty z 5 dni.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc27abf7dd21c4996cfd8cea0c2a478cb6dfb4fc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879373"
+ms.locfileid: "58905498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Slack
 
@@ -119,7 +119,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Slack, wyko
     ![image](common/edit-attribute.png)
 
     > [!NOTE] 
-    > Jeśli istnieją użytkownicy, których przypisanego **adresu e-mail** nie ma w licencji usługi Office 365, oświadczenie **User.Email** nie będzie widoczne w tokenie języka SAML. W takich przypadkach zalecane jest używanie ciągu **user.userprincipalname** jako wartości atrybutu **User.Email** w celu zamapowania jako atrybut **Unikatowy identyfikator**.
+    > Jeśli istnieją użytkownicy, którzy są przypisani **adres e-mail** nie znajduje się na licencję usługi Office 365 **User.Email** oświadczenia nie będą widoczne w tokenu SAML. W takich przypadkach zalecane jest używanie ciągu **user.userprincipalname** jako wartości atrybutu **User.Email** w celu zamapowania jako atrybut **Unikatowy identyfikator**.
 
 6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
@@ -138,7 +138,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Slack, wyko
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. Pozostaw pole **Przestrzeń nazw** puste.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
     d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
@@ -160,7 +160,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Slack, wyko
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
 ### <a name="configure-slack-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Slack
 
@@ -209,7 +209,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 

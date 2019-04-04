@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/12/2018
+ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ab439566da38a537534fc10e70058ab57005ce22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183802"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917910"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Uwierzytelnianie w usłudze Azure SQL Data Warehouse
 Dowiedz się, jak do uwierzytelniania usługi Azure SQL Data Warehouse przy użyciu uwierzytelniania usługi Azure Active Directory (AAD) lub SQL Server.
@@ -56,7 +56,7 @@ Usługa Azure Active Directory korzyści:
 * Eliminuje zapisywania haseł przez włączenie zintegrowane uwierzytelnianie Windows i inne formy uwierzytelniania obsługiwane przez usługę Azure Active Directory.
 * Zastosowań zawartych użytkowników bazy danych do uwierzytelniania tożsamości na poziomie bazy danych.
 * Obsługuje uwierzytelnianie oparte na tokenie na potrzeby aplikacji łączenie z usługą SQL Data Warehouse.
-* Obsługuje uwierzytelnianie wieloskładnikowe za pośrednictwem uniwersalne uwierzytelnianie usługi Active Directory dla programu SQL Server Management Studio. Aby uzyskać opis usługi Multi-Factor Authentication, zobacz [SSMS Obsługa usługi Azure AD MFA przy użyciu bazy danych SQL Database i SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+* Obsługuje uwierzytelnianie wieloskładnikowe przy użyciu uwierzytelniania usługi Active Directory Universal dla różnych narzędzi, takich jak [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
 > Usługa Azure Active Directory jest nadal stosunkowo nowe i ma pewne ograniczenia. Aby upewnić się, że usługi Azure Active Directory jest odpowiednia dla danego środowiska, zobacz [funkcji usługi Azure AD i ograniczenia][Azure AD features and limitations], w szczególności dodatkowe zagadnienia.

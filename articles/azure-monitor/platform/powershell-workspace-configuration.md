@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539381"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903407"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie roboczym usługi Log Analytics w usłudze Azure Monitor przy użyciu programu PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do wykonywania różnych funkcji w obszarze roboczym Log Analytics w usłudze Azure Monitor z wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
+Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) do wykonywania różnych funkcji w obszarze roboczym Log Analytics w usłudze Azure Monitor z wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
 
 * Tworzenie obszaru roboczego
 * Dodawanie lub usuwanie rozwiązania
@@ -33,10 +31,12 @@ Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](http
 * Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
 * Skonfiguruj usługę log analytics do indeksowania danych zebranych za pomocą diagnostyki Azure
 
-Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, które można wykonywać za pomocą programu PowerShell.  Możesz zapoznać się z [Dokumentacja poleceń cmdlet środowiska PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) do innych funkcji.
+Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, które można wykonywać za pomocą programu PowerShell.  Możesz zapoznać się z [Dokumentacja poleceń cmdlet środowiska PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) do innych funkcji.
 
 > [!NOTE]
 > Usługa log Analytics był wcześniej nazywany programem Operational Insights, dlatego jest to nazwa używana w poleceniach cmdlet.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Te przykłady pracy z wersją 1.0.0 lub nowszej moduł Az.OperationalInsights.
@@ -272,5 +272,5 @@ Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w r�
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) dodatkowe informacje na temat konfiguracji usługi Log Analytics przy użyciu programu PowerShell.
+* [Przegląd poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) dodatkowe informacje na temat konfiguracji usługi Log Analytics przy użyciu programu PowerShell.
 

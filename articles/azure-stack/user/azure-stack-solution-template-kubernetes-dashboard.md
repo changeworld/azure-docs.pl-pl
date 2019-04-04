@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259214"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482593"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack 
 
@@ -106,7 +106,7 @@ Adres URL pulpitu nawigacyjnego można pobrać z węzła głównego w klastrze.
 
 3. Zanotuj lokalizacji plików. Zaktualizuj skrypt przy użyciu lokalizacji, a następnie otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom zaktualizowanego skryptu:  
 
-    ```PowerShell   
+    ```powershell   
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 

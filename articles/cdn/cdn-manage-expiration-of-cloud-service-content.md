@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: b070b302917d69e0145c1a10c90685b55aa4dcc2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6e17b110cbfc293e19714399d5b2cdb753aa1ac4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540275"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917961"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Zarządzanie wygasaniem zawartości sieci web w usłudze Azure CDN
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ W poniższym przykładzie plik konfiguracji XML pokazuje, jak ustawić `<clientC
 Aby użyć **cacheControlMaxAge** atrybutu, należy ustawić wartość **cacheControlMode** atrybutu `UseMaxAge`. To ustawienie spowodowane nagłówka HTTP i dyrektywy, `Cache-Control: max-age=<nnn>`, mają zostać dodane do odpowiedzi. Format wartość timespan odpowiadającą **cacheControlMaxAge** atrybut jest `<days>.<hours>:<min>:<sec>`. Jego wartość jest konwertowana na sekund i jest używana jako wartość `Cache-Control` `max-age` dyrektywy. Aby uzyskać więcej informacji na temat `<clientCache>` elementu, zobacz [pamięci podręcznej klienta <clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programowe Ustawianie nagłówki Cache-Control
-Dla aplikacji ASP.NET, możesz kontrolować zachowanie buforowania programowo przez ustawienie sieci CDN **HttpResponse.Cache** właściwości interfejsu API platformy .NET. Aby uzyskać informacje o **HttpResponse.Cache** właściwości, zobacz [właściwość HttpResponse.Cache](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) i [klasy HttpCachePolicy](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+Dla aplikacji ASP.NET, możesz kontrolować zachowanie buforowania programowo przez ustawienie sieci CDN **HttpResponse.Cache** właściwości interfejsu API platformy .NET. Aby uzyskać informacje o **HttpResponse.Cache** właściwości, zobacz [właściwość HttpResponse.Cache](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) i [klasy HttpCachePolicy](/dotnet/api/system.web.httpcachepolicy).  
 
 Aby programowo zawartości pamięci podręcznej aplikacji na platformie ASP.NET wykonaj następujące kroki:
    1. Sprawdź, czy zawartość jest oznaczony jako podlega buforowaniu, ustawiając `HttpCacheability` do `Public`. 
@@ -132,6 +132,6 @@ Możesz łatwo sprawdzić ustawienia wygaśnięcia zawartości sieci web. Przy u
 
 ## <a name="next-steps"></a>Następne kroki
 * [Przeczytaj szczegółowe informacje na temat **clientCache** — element](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Przeczytaj dokumentację dotyczącą **HttpResponse.Cache** właściwości](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [Przeczytaj dokumentację dotyczącą **HttpCachePolicy, klasa**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
+* [Przeczytaj dokumentację dotyczącą **HttpResponse.Cache** właściwości](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [Przeczytaj dokumentację dotyczącą **HttpCachePolicy, klasa**](/dotnet/api/system.web.httpcachepolicy)  
 * [Dowiedz się więcej na temat buforowania pojęcia](cdn-how-caching-works.md)

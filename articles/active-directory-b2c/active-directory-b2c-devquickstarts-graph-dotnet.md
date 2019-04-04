@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075905"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895058"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Korzystanie z interfejsu API Graph usługi Azure AD
 
 >[!NOTE]
-> Należy użyć [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) Zarządzanie użytkownikami w katalogu usługi Azure AD B2C. To różni się od interfejsu API programu Microsoft Graph. Więcej informacji można znaleźć [tutaj](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
+> Należy użyć [interfejsu API usługi Azure AD Graph](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) Zarządzanie użytkownikami w katalogu usługi Azure AD B2C. To różni się od interfejsu API programu Microsoft Graph. Więcej informacji można znaleźć [tutaj](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 Zwykle dzierżaw usługi Azure Active Directory (Azure AD) B2C bardzo duże. Oznacza to, że wiele typowych zadań zarządzania dzierżawy muszą być wykonywane programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Konieczne może być migracja istniejącym magazynem użytkownika do dzierżawy usługi B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Można wykonywać te zadania przy użyciu interfejsu API programu Graph usługi Azure AD.
 
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-Większość tych właściwości, w tym żądaniu są wymagane do utworzenia konsumentów. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Należy pamiętać, że `//` komentarze zostały włączone do celów informacyjnych. Nie należy wprowadzać ich w rzeczywistego żądania.
+Większość tych właściwości, w tym żądaniu są wymagane do utworzenia konsumentów. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Należy pamiętać, że `//` komentarze zostały włączone do celów informacyjnych. Nie należy wprowadzać ich w rzeczywistego żądania.
 
 Aby zobaczyć żądanie, uruchom jedno z następujących poleceń:
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` Polecenie przyjmuje jako parametr wejściowy plik JSON. Zawiera JSON reprezentacja obiektu użytkownika. Istnieją dwa przykładowe pliki JSON w przykładowym kodzie: `usertemplate-email.json` i `usertemplate-username.json`. Można zmodyfikować te pliki do własnych potrzeb. Oprócz powyższych pól wymaganych kilka pól opcjonalnych, których można użyć znajdują się w tych plikach. Szczegółowe informacje na temat pól opcjonalnych można znaleźć w [odwołania do jednostki interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity).
+`Create-User` Polecenie przyjmuje jako parametr wejściowy plik JSON. Zawiera JSON reprezentacja obiektu użytkownika. Istnieją dwa przykładowe pliki JSON w przykładowym kodzie: `usertemplate-email.json` i `usertemplate-username.json`. Można zmodyfikować te pliki do własnych potrzeb. Oprócz powyższych pól wymaganych kilka pól opcjonalnych, których można użyć znajdują się w tych plikach. Szczegółowe informacje na temat pól opcjonalnych można znaleźć w [odwołania do jednostki interfejsu API usługi Azure AD Graph](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity).
 
 Możesz zobaczyć, jak żądania POST jest tworzony w `B2CGraphClient.SendGraphPostRequest(...)`.
 
@@ -257,7 +257,7 @@ Możesz zobaczyć, jak żądania POST jest tworzony w `B2CGraphClient.SendGraphP
 * Zawiera ono obiekt użytkownika w formacie JSON w treści żądania.
 
 > [!NOTE]
-> Jeśli konta, które chcesz przeprowadzić migrację z istniejącym magazynem użytkownika ma niższy siły hasła niż [siły silne hasło, wymuszane przez usługę Azure AD B2C](https://msdn.microsoft.com/library/azure/jj943764.aspx), możesz wyłączyć wymaganie silne hasło przy użyciu `DisableStrongPassword` wartość w `passwordPolicies` właściwości. Na przykład można zmodyfikować żądanie użytkownika Utwórz podanych powyżej w następujący sposób: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Jeśli konta, które chcesz przeprowadzić migrację z istniejącym magazynem użytkownika ma niższy siły hasła niż [siły silne hasło, wymuszane przez usługę Azure AD B2C](/previous-versions/azure/jj943764(v=azure.100)), możesz wyłączyć wymaganie silne hasło przy użyciu `DisableStrongPassword` wartość w `passwordPolicies` właściwości. Na przykład można zmodyfikować żądanie użytkownika Utwórz podanych powyżej w następujący sposób: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 Sprawdzanie `B2CGraphClient.SendGraphDeleteRequest(...)` metody, aby uzyskać szczegółowe informacje na temat sposobu wysyła to żądanie.
 
-Można wykonywać wiele akcji przy użyciu interfejsu API programu Graph usługi Azure AD, oprócz zarządzania użytkownikami. [Dokumentacja interfejsu API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) zawiera szczegółowe informacje o każdej akcji, wraz z prośby o przykłady.
+Można wykonywać wiele akcji przy użyciu interfejsu API programu Graph usługi Azure AD, oprócz zarządzania użytkownikami. [Dokumentacja interfejsu API programu Graph usługi Azure AD](/previous-versions/azure/ad/graph/api/api-catalog) zawiera szczegółowe informacje o każdej akcji, wraz z prośby o przykłady.
 
 ## <a name="use-custom-attributes"></a>Używanie atrybutów niestandardowych
 Większość aplikacji konsumentów muszą przechowywać pewien rodzaj informacji o profilu użytkownika niestandardowego. Jest jednym ze sposobów, w tym do definiowania atrybutu niestandardowego w swojej dzierżawy usługi B2C. Ten atrybut można następnie traktować taki sam sposób traktowania innych właściwości w obiekcie użytkownika. Można zaktualizować atrybutu, usuń atrybut, zapytania za pomocą atrybutu, wysyłanie atrybutu jako oświadczenia w tokeny logowania i nie tylko.

@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f2de6eb0171e5e1c792e8860a56f014dad501f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314828"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917842"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej na potrzeby dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure Active Directory
 
@@ -49,7 +49,7 @@ Aby zapewnić wysoką dostępność w środowisku produkcyjnym, zalecamy użycie
 
 1. Serwer łącznika powinien znajdować się blisko serwerów aplikacji, aby wydajność komunikacji między łącznikiem a aplikacją była optymalna. Aby uzyskać więcej informacji, zobacz [Network topology considerations (Kwestie związane z topologią sieci)](application-proxy-network-topology.md).
 
-2. Serwer łącznika i serwery aplikacji internetowych powinny należeć do tej samej domeny usługi Active Directory. Skonfigurowanie tych serwerów w tej samej domenie jest wymagane do korzystania z logowania jednokrotnego (SSO) razem ze zintegrowanym uwierzytelnianiem systemu Windows i ograniczonym delegowaniem Kerberos. Jeśli serwer łącznika znajduje się w innej domenie usługi Active Directory niż serwery aplikacji internetowych, korzystanie z logowania jednokrotnego wymaga użycia delegowania opartego na zasobach. Aby uzyskać więcej informacji, zobacz [KCD for single sign-on with Application Proxy (Ograniczone delegowanie Kerberos dla logowania jednokrotnego przy użyciu serwera proxy aplikacji)](application-proxy-configure-single-sign-on-with-kcd.md).
+2. Serwer łącznika i serwerów aplikacji sieci web powinna należeć do tej samej domeny usługi Active Directory lub span domenach ufających. Posiadających serwery w tej samej domenie lub domenach ufających jest wymaganie dotyczące korzystania z logowania jednokrotnego (SSO) przy użyciu zintegrowanego Windows Authentication (Zintegrowane) i delegowanie ograniczone protokołu Kerberos (KCD). Jeśli serwer łącznika znajduje się w innej domenie usługi Active Directory niż serwery aplikacji internetowych, korzystanie z logowania jednokrotnego wymaga użycia delegowania opartego na zasobach. Aby uzyskać więcej informacji, zobacz [KCD for single sign-on with Application Proxy (Ograniczone delegowanie Kerberos dla logowania jednokrotnego przy użyciu serwera proxy aplikacji)](application-proxy-configure-single-sign-on-with-kcd.md).
 
 #### <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
 
@@ -172,7 +172,7 @@ Po przygotowaniu środowiska i zainstalowaniu łącznika możemy dodać aplikacj
 
     | Pole | Opis |
     | :---- | :---------- |
-    | **Nazwa** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
+    | **Name (Nazwa)** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
     | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład, jeśli aplikacja znajduje się na https:\//yourapp/aplikacja używa obrazów i znajdujący się w https:\//yourapp/nośnika, możesz opublikować https:\//yourapp/ jako ścieżka. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
     | **Zewnętrzny adres URL** | Ten adres umożliwia użytkownikom dostęp do aplikacji spoza sieci. Jeśli nie chcesz używać domyślnej domeny serwera proxy aplikacji, zobacz [Custom domains in Azure AD Application Proxy (Domeny niestandardowe na serwerze proxy aplikacji usługi Azure AD)](application-proxy-configure-custom-domain.md).|
     | **Wstępne uwierzytelnianie** | Sposób, w jaki serwer proxy aplikacji weryfikuje użytkowników przed udzieleniem im dostępu do aplikacji.<br><br>**Azure Active Directory** — serwer proxy aplikacji przekierowuje użytkowników do zalogowania się w usłudze Azure AD, co umożliwia uwierzytelnienie ich uprawnień do katalogu i aplikacji. Zalecamy pozostawienie domyślnego ustawienia tej opcji, ponieważ umożliwia ono korzystanie z funkcji zabezpieczeń usługi Azure AD, np. dostępu warunkowego i uwierzytelniania wieloskładnikowego. Usługa **Azure Active Directory** jest wymagana do monitorowania aplikacji za pomocą usługi Microsoft Cloud Application Security.<br><br>**Przekazywanie** — użytkownicy nie muszą uwierzytelniać się w usłudze Azure Active Directory, aby uzyskać dostęp do aplikacji. Można jednak na zapleczu skonfigurować wymagania dotyczące uwierzytelniania. |

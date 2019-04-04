@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 6bf84d7ecf2d436bdc00839699b150466b9de3ca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247310"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484054"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Wyszukaj szablony usługi Azure Stack przy użyciu narzędzia sprawdzania poprawności szablonu
 
@@ -47,13 +47,13 @@ Przed użyciem modułu sprawdzania poprawności szablonu uruchomić **AzureRM.Cl
 1. Upewnij się, że masz łączność z usługą Azure Stack. Te kroki można wykonać z hosta usługi Azure Stack development zestawu lub użyć [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) połączyć ze swojej stacji roboczej.
 2. Importuj **AzureRM.CloudCapabilities** modułu programu PowerShell:
 
-    ```PowerShell
+    ```powershell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
 3. Użyj `Get-CloudCapabilities` polecenia cmdlet do pobierania wersji usługi i Utwórz plik JSON możliwości chmury. Jeśli nie określisz **- OutputPath**, plik AzureCloudCapabilities.Json jest tworzony w bieżącym katalogu. Użyj swojej rzeczywistej lokalizacji:
 
-    ```PowerShell
+    ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
     ```
 
@@ -63,14 +63,14 @@ Wykonaj następujące kroki, aby sprawdzić poprawność szablonów przy użyciu
 
 1. Importuj **AzureRM.TemplateValidator.psm1** modułu programu PowerShell:
 
-    ```PowerShell
+    ```powershell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
     Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
 2. Uruchom moduł sprawdzania poprawności szablonu:
 
-    ```PowerShell
+    ```powershell
     Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
     -CapabilitiesPath <path to cloudcapabilities.json> `
     -Verbose
@@ -84,7 +84,7 @@ Szablon sprawdzania poprawności ostrzeżenia i błędy są rejestrowane w konso
 
 Moduł sprawdzania poprawności szablonu obsługuje następujące parametry.
 
-| Parametr | Opis | Wymagany |
+| Parametr | Opis | Wymagane |
 | ----- | -----| ----- |
 | TemplatePath | Określa ścieżkę do rekursywnie Znajdź szablony usługi Azure Resource Manager | Yes | 
 | TemplatePattern | Określa nazwę pliki szablonów do dopasowania. | Nie |
@@ -98,7 +98,7 @@ Moduł sprawdzania poprawności szablonu obsługuje następujące parametry.
 
 W tym przykładzie, sprawdza poprawność wszystkich [szablony szybkiego startu platformy Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates) pobrane do lokalnego magazynu. Przykład sprawdza poprawność, rozmiarów maszyn wirtualnych i rozszerzenia Azure Stack Development Kit możliwościami:
 
-```PowerShell
+```powershell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json `
@@ -109,4 +109,4 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Wdrażanie szablonów do usługi Azure Stack](azure-stack-arm-templates.md)
-- [Tworzenie szablonów usługi Azure Stack](azure-stack-develop-templates.md)
+- [Tworzenie szablonów dla usługi Azure Stack](azure-stack-develop-templates.md)

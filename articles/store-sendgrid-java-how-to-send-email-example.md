@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: fecc3b411211ceb8aa6db5a0e0c0c6b07f19a63f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bc543218678b63d9c101f6cc3a1b65dd5c23a881
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442465"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895177"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Jak wysyłać pocztę E-mail przy użyciu usługi SendGrid w języku Java we wdrożeniu platformy Azure
 Poniższy przykład pokazuje, jak SendGrid umożliwia wysyłanie wiadomości e-mail ze strony sieci web hostowanych na platformie Azure. Wynikłej aplikacji zostanie wyświetlony monit dla wartości adresów e-mail, jak pokazano na poniższym zrzucie ekranu.
@@ -38,7 +38,7 @@ Należy wykonać następujące czynności, aby użyć kodu, w tym temacie:
 
 Musi również mieć własne SendGrid użytkownika i hasło, aby móc wysyłać wiadomości e-mail. Aby rozpocząć korzystanie z usługi SendGrid, zobacz [jak wysyłać pocztę e-mail za pomocą usługi SendGrid w języku Java](store-sendgrid-java-how-to-send-email.md).
 
-Ponadto znajomość odpowiednie informacje zawiera temat [tworzenie aplikacji Hello World na platformie Azure w środowisku Eclipse](https://msdn.microsoft.com/library/windowsazure/hh690944), lub z innych technik do hostowania aplikacji Java na platformie Azure, jeśli nie używasz środowiska Eclipse, zdecydowanie zaleca się.
+Ponadto znajomość odpowiednie informacje zawiera temat [tworzenie aplikacji Hello World na platformie Azure w środowisku Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app), lub z innych technik do hostowania aplikacji Java na platformie Azure, jeśli nie używasz środowiska Eclipse, zdecydowanie zaleca się.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Tworzenie formularza sieci web, wysyłania poczty e-mail
 Poniższy kod przedstawia sposób tworzenia formularza sieci web do pobierania danych użytkownika do wysyłania wiadomości e-mail. Dla celów tej zawartości, nosi nazwę pliku JSP **emailform.jsp**.
@@ -214,7 +214,7 @@ Wdróż aplikację w emulatorze obliczeń i w przeglądarce sieci uruchomić ema
 Ten kod podano WAM, jak używać usługi SendGrid w języku Java na platformie Azure. Przed wdrożeniem na platformie Azure w środowisku produkcyjnym, można dodać więcej obsługę błędów lub innych funkcji. Na przykład: 
 
 * Można użyć usługi Azure storage blob lub bazy danych SQL do przechowywania adresów e-mail i wiadomości e-mail, a nie za pomocą formularza sieci web. Aby dowiedzieć się, jak za pomocą usługi Azure storage BLOB w języku Java, zobacz [sposób użycia usługi Blob Storage w języku Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Aby uzyskać informacje dotyczące korzystania z bazy danych SQL w języku Java, zobacz [przy użyciu bazy danych SQL w języku Java](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
-* Można użyć `RoleEnvironment.getConfigurationSettings` można pobrać usługi SendGrid nazwy użytkownika i hasło z ustawień konfiguracji wdrożenia, zamiast używania formularz sieci web, aby pobrać te wartości. Aby uzyskać informacje o `RoleEnvironment` klasy, zobacz [przy użyciu biblioteki uruchomieniowej usługi platformy Azure w JSP](https://msdn.microsoft.com/library/windowsazure/hh690948) oraz dokumentację pakietu środowiska uruchomieniowego usługi Azure w <http://dl.windowsazure.com/javadoc>.
+* Można użyć `RoleEnvironment.getConfigurationSettings` można pobrać usługi SendGrid nazwy użytkownika i hasło z ustawień konfiguracji wdrożenia, zamiast używania formularz sieci web, aby pobrać te wartości. Aby uzyskać informacje o `RoleEnvironment` klasy, zobacz [przy użyciu biblioteki uruchomieniowej usługi platformy Azure w JSP](/previous-versions/azure/hh690948(v=azure.100)) oraz dokumentację pakietu środowiska uruchomieniowego usługi Azure w <http://dl.windowsazure.com/javadoc>.
 * Aby uzyskać więcej informacji na temat za pomocą usługi SendGrid w języku Java, zobacz [jak wysyłać pocztę e-mail za pomocą usługi SendGrid w języku Java](store-sendgrid-java-how-to-send-email.md).
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

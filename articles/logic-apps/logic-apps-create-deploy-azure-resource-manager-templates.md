@@ -1,6 +1,6 @@
 ---
-title: Tworzenie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie i wdrażanie przepływów pracy aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager w usłudze Azure Logic Apps
+title: Wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager — Azure Logic Apps
+description: Wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,92 +10,32 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ad70c5d22ca73258fa9e6501d03d5409a4e45d8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7543859a916de97d471db2894887e640db51dfc2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652488"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893428"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Tworzenie i wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
+# <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
 
-Usługa Azure Logic Apps udostępnia szablony usługi Azure Resource Manager, które są dostępne, nie tylko do tworzenia aplikacji logiki umożliwiająca automatyzację przepływów pracy, ale także do definiowania zasoby i parametry, które są używane do wdrażania.
-Można użyć tego szablonu w scenariuszach biznesowych lub dostosować szablon do własnych wymagań. Dowiedz się więcej o [szablonu usługi Resource Manager dla usługi logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) i [strukturę szablonu usługi Azure Resource Manager i składnię](../azure-resource-manager/resource-group-authoring-templates.md). Składnię JSON i właściwości, zobacz [typów zasobów Microsoft.Logic](/azure/templates/microsoft.logic/allversions).
+Po utworzeniu szablonu usługi Azure Resource Manager do wdrażania aplikacji logiki, można wdrożyć szablon, w następujący sposób:
 
-## <a name="define-the-logic-app"></a>Definiowanie aplikacji logiki
-Definicji aplikacji logiki ten przykład jest uruchamiany co godzinę i wysyła pakiet usługi ping w lokalizacji określonej w `testUri` parametru.
-Szablon używa wartości parametru Nazwa aplikacji logiki (```logicAppName```) oraz lokalizacji, na polecenie ping do testowania (```testUri```). Dowiedz się więcej o [definiowania tych parametrów w szablonie](#define-parameters).
-Szablon spowoduje także ustawienie lokalizacji dla aplikacji logiki w tej samej lokalizacji co grupa zasobów platformy Azure.
+* [Azure Portal](#portal)
+* [Azure PowerShell](#powershell)
+* [Interfejs wiersza polecenia platformy Azure](#cli)
+* [Interfejs API REST usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Potoki usługi Azure DevOps platformy Azure](#azure-pipelines)
 
-```json
-{
-   "type": "Microsoft.Logic/workflows",
-   "apiVersion": "2016-06-01",
-   "name": "[parameters('logicAppName')]",
-   "location": "[resourceGroup().location]",
-   "tags": {
-      "displayName": "LogicApp"
-   },
-   "properties": {
-      "definition": {
-         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-            "testURI": {
-               "type": "string",
-               "defaultValue": "[parameters('testUri')]"
-            }
-         },
-         "triggers": {
-            "Recurrence": {
-               "type": "Recurrence",
-               "recurrence": {
-                  "frequency": "Hour",
-                  "interval": 1
-               }
-            }
-         },
-         "actions": {
-            "Http": {
-              "type": "Http",
-              "inputs": {
-                  "method": "GET",
-                  "uri": "@parameters('testUri')"
-              },
-              "runAfter": {}
-           }
-         },
-         "outputs": {}
-      },
-      "parameters": {}
-   }
-}
-```
+<a name="portal"></a>
 
-<a name="define-parameters"></a>
+## <a name="deploy-through-azure-portal"></a>Wdrażanie za pośrednictwem witryny Azure portal
 
-### <a name="define-parameters"></a>Zdefiniuj parametry
+Aby automatycznie wdrożyć szablon aplikacji logiki na platformie Azure, możesz wybrać następujące **Wdróż na platformie Azure** przycisk, który zaloguje Cię do witryny Azure portal i wyświetli monit o podanie informacji o aplikacji logiki. Następnie można wprowadzić wymagane zmiany do szablonu aplikacji logiki lub parametrów.
 
-[!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
+[![Deploy na platformie Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Poniżej przedstawiono opisy parametrów w szablonie:
-
-| Parametr | Opis | Przykład kodu JSON z definicji |
-| --------- | ----------- | ----------------------- |
-| `logicAppName` | Definiuje nazwę aplikacji logiki ten szablon umożliwia utworzenie. | "logicAppName": {"type": "string", "metadane": {"description": "myExampleLogicAppName"}} |
-| `testUri` | Określa lokalizację, aby wykonać polecenie ping do testowania. | "testUri": {"type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} |
-||||
-
-Dowiedz się więcej o [interfejsu API REST dla definicji przepływu pracy aplikacji logiki i właściwości](https://docs.microsoft.com/rest/api/logic/workflows) i [Tworzenie definicji aplikacji logiki za pomocą kodu JSON](logic-apps-author-definitions.md).
-
-## <a name="deploy-logic-apps-automatically"></a>Automatyczne wdrażanie aplikacji logiki
-
-Aby utworzyć i automatyczne wdrażanie aplikacji logiki na platformie Azure, wybierz **Wdróż na platformie Azure** tutaj:
-
-[![Wdrażanie na platformie Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-Ta akcja loguje Cię witrynie Azure Portal, w którym można podać szczegóły aplikacji logiki i wprowadź zmiany do szablonu lub parametrów.
-Na przykład witryny Azure portal wyświetli monit o podanie tych szczegółów:
+Na przykład zostanie wyświetlony monit o te informacje po zalogowaniu się do witryny Azure portal:
 
 * Nazwa subskrypcji platformy Azure
 * Grupy zasobów, której chcesz użyć
@@ -104,28 +44,80 @@ Na przykład witryny Azure portal wyświetli monit o podanie tych szczegółów:
 * Test identyfikatora URI
 * Akceptacja określonego warunków i postanowień
 
-## <a name="deploy-logic-apps-with-commands"></a>Wdrażanie aplikacji logiki za pomocą poleceń
+Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Azure Resource Manager i witryny Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+## <a name="authorize-oauth-connections"></a>Autoryzowania połączeń protokołu OAuth
 
-### <a name="powershell"></a>PowerShell
+Po wdrożeniu aplikacja logiki działa end-to-end przy użyciu prawidłowych parametrów. Należy jednak nadal autoryzować połączenia protokołu OAuth do wygenerowania tokenu dostępu nie jest ważna. W przypadku zautomatyzowanych wdrożeń, możesz użyć skryptu, który wyraża zgodę na każde połączenie protokołu OAuth, takich jak to [przykładowy skrypt w projekcie usługi GitHub LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth). Możesz również autoryzować połączenia OAuth za pomocą witryny Azure portal lub w programie Visual Studio, otwierając aplikację logiki w Projektancie aplikacji logiki.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+<a name="powershell"></a>
+
+## <a name="deploy-with-azure-powershell"></a>Wdrażanie przy użyciu programu Azure PowerShell
+
+Do wdrożenia z konkretnym *grupy zasobów platformy Azure*, użyj tego polecenia:
 
 ```powershell
-New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
 
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+Aby wdrożyć w określonej subskrypcji platformy Azure, użyj tego polecenia:
+
+```powershell
+New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
+```
+
+* [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azdeployment)
+
+<a name="cli"></a>
+
+## <a name="deploy-with-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
+
+Do wdrożenia z konkretnym *grupy zasobów platformy Azure*, użyj tego polecenia:
 
 ```azurecli
-azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
+az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
+
+Aby wdrożyć w określonej subskrypcji platformy Azure, użyj tego polecenia:
+
+```azurecli
+az deployment create --location <location> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+```
+
+Aby uzyskać więcej informacji zobacz następujące tematy: 
+
+* [Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment create`](https://docs.microsoft.com/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)
+
+<a name="azure-pipelines"></a>
+
+## <a name="deploy-with-azure-devops"></a>Wdrażanie przy użyciu usługi Azure DevOps
+
+Aby wdrożyć szablony aplikacji logiki i zarządzać środowiskami, zespoły często użyć narzędzia takie jak [potoki Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) w [DevOps platformy Azure](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services). Potoki usługi Azure udostępnia [zadania wdrożenia grupy zasobów platformy Azure](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) można dodać do dowolnej kompilacji lub potoku wydania.
+Na potrzeby autoryzacji do wdrażania i generowanie potoku tworzenia wersji należy również usługi Azure Active Directory (AD) [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md). Dowiedz się więcej o [używania jednostek usług za pomocą potoków Azure](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure). 
+
+Poniżej przedstawiono ogólne kroki wysokiego poziomu przy użyciu potoków usługi Azure:
+
+1. W potokach Azure utworzyć pustym potoku.
+
+1. Wybierz zasoby, czego potrzebujesz do potoku, takie jak szablon aplikacji logiki i plików parametrów szablonów, które generują ręcznie lub jako część procesu kompilacji.
+
+1. Dla zadania agenta, znajduj i dodawaj **wdrożenie grupy zasobów Azure** zadania.
+
+   ![Dodaj zadanie "Wdrożenie grupy zasobów platformy Azure"](./media/logic-apps-create-deploy-template/add-azure-resource-group-deployment-task.png)
+
+1. Konfigurowanie przy użyciu [nazwy głównej usługi](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure). 
+
+1. Dodaj odwołania do szablonu aplikacji logiki i plików parametrów szablonu.
+
+1. Nadal nad kroki procesu tworzenia wersji dla dowolnego środowiska, testów automatycznych lub osób zatwierdzających, zgodnie z potrzebami.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

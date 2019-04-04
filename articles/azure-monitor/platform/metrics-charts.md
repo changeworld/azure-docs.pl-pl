@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848863"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916346"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -76,11 +76,33 @@ Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na p
 
 5. Możesz powtórzyć kroki 1 – 4, aby zastosować wiele filtrów do tych samych wykresów.
 
+## <a name="multiple-metrics-and-charts"></a>Wiele metryki i wykresy
+
+Można również tworzyć wykresy, kreślenia wiele metryk lub Pokaż jednocześnie wiele wykresów metryki. Ta funkcja umożliwia:
+
+- korelowanie powiązane metryki na tym samym wykresie, aby zobaczyć, jak jedna wartość jest powiązany z innym
+- Wyświetlanie metryk z różnych jednostek miary w bliskim sąsiedztwie
+- wizualnie agregacji i Porównaj metryki z wielu zasobów
+
+Na przykład jeśli masz 5 kont magazynu, i chcesz wiedzieć, ile całkowita ilość miejsca jest używane między nimi, można utworzyć wykres warstwowy (skumulowane), który pokazuje poszczególne i sumę wszystkich wartości w określonym punkcie w czasie.
+
+### <a name="multiple-metrics-on-a-chart"></a>Wiele metryk na wykresie
+
+Po pierwsze, [Utwórz nowy wykres](#create-a-new-chart). Kliknij przycisk **Dodaj metrykę** i powtórz kroki Aby dodać kolejną metrykę na tym samym wykresie.
+
+### <a name="multiple-charts"></a>Wiele wykresów
+
+Kliknij przycisk **Dodaj wykres** i utwórz inny wykres z inną metrykę.
+
+### <a name="order-or-delete-multiple-charts"></a>Kolejność lub usunąć wiele wykresów
+
+Kolejność lub usunąć wiele wykresów, kliknij wielokropek ( **...**  ) symbolu, aby otworzyć menu wykresu, a następnie wybierz element menu odpowiednie **Przenieś w górę**, **Przenieś w dół**, lub **Usuń**.
+
 ## <a name="apply-splitting-to-a-chart"></a>Zastosuj rozdzielenie do wykresu
 
-Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metryki porównania między nimi i zidentyfikować odległe mniejsze segmenty wymiaru. 
+Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metryki porównania między nimi i zidentyfikować odległe mniejsze segmenty wymiaru.
 
-### <a name="to-apply-splitting"></a>Aby zastosować podział
+### <a name="apply-splitting"></a>Zastosuj rozdzielenie
 
 1. Kliknij pozycję **zastosować podział** powyżej wykresu.
  

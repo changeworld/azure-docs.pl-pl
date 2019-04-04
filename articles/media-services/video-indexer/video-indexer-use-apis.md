@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 41c665a2a1aec56cc07d5465742d01e41e6adfff
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d915058e13f3c5287bdb037a1600e7f0a09da436
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443585"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895668"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: Korzystanie z interfejsu API usługi Video Indexer
-
-> [!Note]
-> Interfejs API usługi Video Indexer w wersji 1 został wycofany 1 sierpnia 2018 r. Teraz należy używać interfejsu API usługi Video Indexer w wersji 2. <br/>Aby tworzyć rozwiązania za pomocą interfejsów API usługi Video Indexer w wersji 2, zapoznaj się z instrukcjami podanymi [tutaj](https://api-portal.videoindexer.ai/). 
 
 Usługa Video Indexer to pojedyncza usługa zintegrowana, w której skonsolidowano różne technologie sztucznej inteligencji firmy Microsoft związane z audio i wideo, co upraszcza programowanie. Interfejsy API zaprojektowano w celu umożliwienia deweloperom skupienia się na korzystaniu z technologii sztucznej inteligencji do obsługi multimediów bez konieczności martwienia się o skalę, zasięg globalny, dostępność i niezawodność platformy w chmurze. Za ich pomocą można przekazywać pliki, uzyskiwać szczegółowe informacje o wideo, pobierać adresy URL widżetów szczegółowych informacji i odtwarzacza w celu osadzania ich w aplikacji, a także wykonywać inne zadania.
 
@@ -211,7 +208,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Omówienie usługi Video Indexer](video-indexer-overview.md)
+- [Omówienie indeksatora wideo](video-indexer-overview.md)
 - [Regiony](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
 ## <a name="next-steps"></a>Kolejne kroki

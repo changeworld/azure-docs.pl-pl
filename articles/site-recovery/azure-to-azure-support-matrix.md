@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 4ce4cdbaf49fb743a14c7a5285ed29b9ad49faf5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652658"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905005"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 **Wdrożenie** |  **Pomoc techniczna**
 --- | ---
 **Azure Portal** | Obsługiwane.
-**Program PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
+**PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
 **Interfejs API REST** | Obsługiwane.
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
@@ -45,7 +45,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch regionach w obrębie tego samego klastra geograficznego. Klastry geograficzne są zdefiniowane, pamiętając o opóźnieniu przesyłania danych i niezależność danych.
 
 
-**Geograficzne klastra** | **Regiony platformy Azure**
+**Geograficzne klastra** | **Regiony świadczenia usługi Azure**
 -- | --
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada środkowe, południowo-, Zachodnia środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Północnośrodkowa
 Europa | Zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Europa Północna, Europa Zachodnia, Francja środkowa, Francja Południowa
@@ -107,18 +107,21 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Obsługiwane wersje jądra systemu Ubuntu maszyn wirtualnych platformy Azure
 
-**Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
+**Release** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 14.04 LTS | 9.23 | 3.13.0-24-Generic do 3.13.0-165-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.15.0-1023-Azure do 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-Generic do 3.13.0-164-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1036-azure |
 14.04 LTS | 9.21 | 3.13.0-24-Generic do 3.13.0-163-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1035-azure |
 14.04 LTS | 9.20 | 3.13.0-24-Generic do 3.13.0-161-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.15.0-1023-Azure do 4.15.0-1030-azure |
-
-||| 16.04 LTS | 9.23 | 4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-45-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1037-azure| 16.04 LTS | 9.22 | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-43-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1036-azure| 16.04 LTS | 9.21 | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-42-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1035-azure| 16.04 LTS | 9,20 | 4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-38-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1030-azure|
+|||
+16.04 LTS | 9.23 | 4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-45-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1037-azure|
+16.04 LTS | 9.22 | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-43-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1036-azure|
+16.04 LTS | 9.21 | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-42-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1035-azure|
+16.04 LTS | 9.20 | 4.4.0-21-Generic do 4.4.0-138-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-38-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1030-azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Obsługiwane wersje jądra systemu Debian dla maszyn wirtualnych platformy Azure
 
-**Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
+**Release** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 Debian 7 | 9.19,9.20,9.21,9.22,9.23 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
@@ -127,7 +130,7 @@ Debian 8 | 9.19 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Obsługiwane wersje jądra systemu SUSE Linux Enterprise Server 12 maszyn wirtualnych platformy Azure
 
-**Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
+**Release** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.23 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.79-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.22 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
@@ -155,6 +158,7 @@ Obrazy z galerii platformy Azure — Microsoft opublikowane | Obsługiwane | Obs
 Obrazy galerii platformy Azure — innych firm opublikowane | Obsługiwane | Obsługiwane, jeśli maszyna wirtualna uruchamia się w obsługiwanym systemie operacyjnym.
 Obrazy niestandardowe - innych firm opublikowane | Obsługiwane | Obsługiwane, jeśli maszyna wirtualna uruchamia się w obsługiwanym systemie operacyjnym.
 Maszyny wirtualne migrowane przy użyciu Site Recovery | Obsługiwane | Jeśli maszyna wirtualna VMware lub komputera fizycznego został zmigrowany na platformie Azure przy użyciu Site Recovery, musisz odinstalować starszej wersji usługi mobilności uruchomioną na maszynie i uruchom ponownie maszynę przed zreplikowaniem go do innego regionu platformy Azure.
+Zasady RBAC | Nieobsługiwane | Oparta na rolach dostęp do zasad kontroli (RBAC) na maszynach wirtualnych nie są replikowane do trybu failover maszyny Wirtualnej w regionie docelowym.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikowane maszyny - działań dysku
 
@@ -213,7 +217,7 @@ W poniższej tabeli przedstawiono limity Site Recovery.
 - Istnieją dwa ograniczenia należy wziąć pod uwagę na dysk danych na dane maszyny wirtualnej postępów i współczynnika zmian.
 - Na przykład jeśli używamy dysk Premium P20, zgodnie z opisem w poniższej tabeli, Usługa Site Recovery może obsługiwać 5 MB, o współczynniku dysku, za pomocą na maksymalnie pięciu tych dysków na maszynę Wirtualną, ze względu na limit wynoszący 25 MB/s łącznym dziennym współczynniku maszyny Wirtualnej.
 
-**Cel magazynu** | **We/Wy dysku średni źródłowy** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+**Cel magazynu** | **We/Wy dysku średni źródłowy** |**Średni źródłowy współczynnik zmian danych na dysku** | **Współczynnik zmian danych dysku łączny współczynnik dziennie**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk

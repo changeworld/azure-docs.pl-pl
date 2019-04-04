@@ -8,20 +8,20 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
-ms.openlocfilehash: 4ecf8b0808b1eea3af8997caecfdd942f1ff7418
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: d85f8f1ca4617a1bedb783b5f13e5b28c433403d
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793684"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904546"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz usługi Key Vault i klucz tajny dla szyfrowanych maszyn wirtualnych przy użyciu usługi Azure Backup
 
 Ten artykuł zawiera informacje o przy użyciu kopii zapasowych maszyn wirtualnych platformy Azure przeprowadzić przywracanie zaszyfrowanych maszyn wirtualnych platformy Azure, z kluczem i wpisem tajnym nie istnieją w magazynie kluczy. Te kroki można również Jeśli chcesz zachować oddzielna kopia key (klucz szyfrowania klucza) i klucz tajny (klucz szyfrowania funkcją BitLocker) dla przywróconej maszyny Wirtualnej.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Kopii zapasowej zaszyfrowanych maszyn wirtualnych** — zaszyfrowanych maszyn wirtualnych platformy Azure utworzone kopie zapasowe przy użyciu usługi Azure Backup. Zobacz artykuł [Zarządzanie kopia zapasowa i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell](backup-azure-vms-automation.md) szczegółowe informacje na temat sposobu tworzenia kopii zapasowych zaszyfrowanych maszyn wirtualnych platformy Azure.
 * **Konfigurowanie usługi Azure Key Vault** — upewnij się, w tym magazynie kluczy, do którego mają być przywracane kluczy i wpisów tajnych jest już obecny. Zobacz artykuł [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md) szczegółowe informacje na temat Zarządzanie usługą key vault.
@@ -33,8 +33,6 @@ Ten artykuł zawiera informacje o przy użyciu kopii zapasowych maszyn wirtualny
 > Gdy dysk został przywrócony do zaszyfrowanej maszyny Wirtualnej, upewnij się, że:
 > * $details jest wypełniana szczegóły zadania przywracania dysku, zgodnie z opisem w [PowerShell kroki przywracania sekcji dysków](backup-azure-vms-automation.md#restore-an-azure-vm)
 > * Należy utworzyć maszyny Wirtualnej z przywróconych dysków tylko **po przywróceniu klucza i wpisu tajnego usługi key vault**.
->
->
 
 Tworzenie zapytań o właściwości przywróconego dysku, aby uzyskać szczegóły zadania.
 
@@ -134,7 +132,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 > [!NOTE]
 > * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych po1 $. KeyAndSecretDetails.SecretUrl i przy użyciu tekstu po wpisów tajnych / np. wpis tajny w danych wyjściowych adres URL jest https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 i nazwa wpisu tajnego jest B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa wpisu tajnego.
-> * Wartość DiskEncryptionKeyEncryptionKeyURL można uzyskać z magazynu kluczy po przywracania kluczy powrót i używanie [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) polecenia cmdlet
+> * Wartość DiskEncryptionKeyEncryptionKeyURL można uzyskać z magazynu kluczy po przywracania kluczy powrót i używanie [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/get-azurekeyvaultkey) polecenia cmdlet
 >
 >
 

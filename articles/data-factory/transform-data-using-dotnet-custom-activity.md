@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652097"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904580"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 
@@ -356,7 +356,7 @@ Jeśli masz istniejący kod .NET napisany dla wersji 1 działania DotNet (niesta
   - Pakiet Microsoft.Azure.Management.DataFactories NuGet nie jest już wymagane.
   - Kompiluj swój kod, przekazywanie pliku wykonywalnego oraz jego zależności do usługi Azure Storage i zdefiniować ścieżkę w `folderPath` właściwości.
 
-Pełny przykład opisu przykładowy potok i biblioteki DLL end-to-end w usługi Data Factory w wersji 1 artykułu [używanie niestandardowych działań w potoku usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) można inaczej jako działania niestandardowego fabryki danych, zobacz [ Przykładowe działanie niestandardowe fabryki danych](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
+Pełny przykład opisu przykładowy potok i biblioteki DLL end-to-end w usługi Data Factory w wersji 1 artykułu [używanie niestandardowych działań w potoku usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) można inaczej jako działania niestandardowego fabryki danych, zobacz [ Przykładowe działanie niestandardowe fabryki danych](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie usługi Azure Batch
 
@@ -382,10 +382,10 @@ Jeśli pula używa domyślnie [autoScaleEvaluationInterval](https://msdn.microso
 Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób:
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie technologii hive](transform-data-using-hadoop-hive.md)
-* [Działania technologii pig](transform-data-using-hadoop-pig.md)
-* [Działania technologii MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Działanie programu Hive](transform-data-using-hadoop-hive.md)
+* [Działanie programu Pig](transform-data-using-hadoop-pig.md)
+* [Działanie MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Działania przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
 * [Działania platformy Spark](transform-data-using-spark.md)
 * [Machine Learning Batch Execution działania](transform-data-using-machine-learning.md)
-* [Działania procedur składowanych](transform-data-using-stored-procedure.md)
+* [Działanie procedury przechowywanej](transform-data-using-stored-procedure.md)

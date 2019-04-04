@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427240"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918148"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Graficzny, tworzenia w usłudze Azure Automation
 
@@ -48,7 +48,7 @@ W kontrolce biblioteka jest wybierania [działania](#activities) do dodania do e
 |:--- |:--- |
 | Polecenia cmdlet |Obejmuje wszystkie polecenia cmdlet, których można użyć w elemencie runbook. Polecenia cmdlet są uporządkowane według modułu. Dostępne są wszystkie moduły, które zostały zainstalowane na koncie usługi automation. |
 | Elementy Runbook |Zawiera elementy runbook na Twoim koncie usługi automation. Tych elementów runbook można dodać do kanwy, aby służyć jako podrzędne elementy runbook. Wyświetlane są tylko elementy runbook typu core jako elementu runbook, edytowany; Graficzny tylko opartego na programie PowerShell elementów runbook w elementach runbook są pokazane, gdy dla elementów runbook graficzny przepływ pracy programu PowerShell są wyświetlane tylko przepływu pracy — opartego na programie PowerShell elementów runbook. |
-| Elementy zawartości |Obejmuje [elementów zawartości usługi automation](https://msdn.microsoft.com/library/dn939988.aspx) na koncie usługi automation, które mogą być używane w elemencie runbook. Po dodaniu elementu zawartości w elemencie runbook dodaje do działania przepływu pracy, który pobiera wybranego zasobu. W przypadku zmiennych elementów zawartości można wybrać, czy należy dodać działania pobierania zmiennej lub ustawiania zmiennej. |
+| Elementy zawartości |Obejmuje [elementów zawartości usługi automation](/previous-versions/azure/dn939988(v=azure.100)) na koncie usługi automation, które mogą być używane w elemencie runbook. Po dodaniu elementu zawartości w elemencie runbook dodaje do działania przepływu pracy, który pobiera wybranego zasobu. W przypadku zmiennych elementów zawartości można wybrać, czy należy dodać działania pobierania zmiennej lub ustawiania zmiennej. |
 | Sterowanie elementem Runbook |Obejmuje działania sterowania elementu runbook, które mogą być używane w bieżącym elemencie runbook. A *Rozgałęzienie* przyjmuje wielu danych wejściowych i czeka, aż wszystkie została ukończona przed kontynuowaniem przepływu pracy. A *kodu* działanie jest uruchamiane co najmniej jeden wiersz kodu programu PowerShell lub przepływie pracy programu PowerShell w zależności od typu graficzny element runbook. To działanie można użyć niestandardowego kodu lub funkcji, który jest trudny do osiągnięcia z innymi działaniami. |
 
 ### <a name="configuration-control"></a>Kontrola konfiguracji
@@ -249,7 +249,7 @@ W poniższym przykładzie jest częścią elementu runbook, który uruchamia zes
 
 Cykl jest, gdy łączy działania docelowego do jego działania źródłowego lub inne działanie, które ostatecznie łącza z powrotem do źródła. Obecnie cykle nie są dozwolone w tworzenia elementów graficznych. Jeśli element runbook zawiera cykl, zapisuje prawidłowo, ale odbiera błąd, po jego uruchomieniu.
 
-![Cykl](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cykliczny](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Udostępnianie danych między działaniami
 
@@ -326,7 +326,7 @@ Każdy parametr wejściowy jest zdefiniowana za pomocą właściwości w poniżs
 |:--- |:--- |
 | Name (Nazwa) |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
 | Opis |Opcjonalny opis dla parametru wejściowego. |
-| Typ |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
+| Type |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
 | Obowiązkowy |Określa, czy należy podać wartość dla parametru. Nie można uruchomić elementu runbook, jeśli nie zostanie określona wartość dla każdego obowiązkowy parametr, który nie ma wartości domyślnej. |
 | Wartość domyślna |Określa, jaka wartość jest używana dla parametru, jeśli nie zostało ono określone. Może to być wartość Null lub określoną wartość. |
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881099"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905787"
 ---
 # <a name="how-application-gateway-works"></a>Jak działa usługa Application Gateway
 
@@ -36,7 +36,7 @@ Po określeniu serwera wewnętrznej bazy danych usługa application gateway otwi
 
 Bramy aplikacji wewnętrznych ma tylko prywatny adres IP. Nazwy DNS bramy aplikacji wewnętrznej jest wewnętrznie możliwej do rozpoznania na jego prywatny adres IP. W związku z tym wewnętrzne usługi równoważenia obciążenia może kierować żądania klientów z dostępem do sieci Wirtualnej dla usługi Application Gateway.
 
-Należy pamiętać, że zarówno z Internetu i wewnętrzne bramy Application Gateway trasy żądania usługi serwerów wewnętrznej bazy danych przy użyciu prywatnych adresów IP, jeśli zasób puli wewnętrznej bazy danych zawiera prywatny adres IP, konfiguracja karty Sieciowej maszyny Wirtualnej lub wewnętrznie możliwej do rozpoznania adresu i usługi Pula zaplecza jest publiczny punkt końcowy, usługa Application Gateway używa publicznego adresu IP jego frontonu do serwera. Jeśli jeszcze nie przeprowadzono aprowizacji publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
+Jeśli pula wewnętrznej bazy danych zawiera wewnętrznie rozpoznania nazwy FQDN lub prywatnego adresu IP, usługa Application Gateway kieruje żądanie do serwera wewnętrznej bazy danych przy użyciu prywatnych adresów IP jego wystąpienia. Jeśli w puli zaplecza zawiera zewnętrzny punkt końcowy lub zewnętrznie rozpoznawalną nazwą FQDN, usługa Application Gateway kieruje żądanie do serwera wewnętrznej bazy danych przy użyciu jego publiczny adres IP frontonu. Rozpoznawanie nazw DNS opiera się na prywatnej strefy DNS lub niestandardowy serwer DNS, jeśli skonfigurowane lub zajmuje domyślne DNS dostarczanego przez platformę Azure. Jeśli jeszcze nie przeprowadzono aprowizacji publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
 
 ### <a name="modifications-to-the-request"></a>Modyfikacje na żądanie
 

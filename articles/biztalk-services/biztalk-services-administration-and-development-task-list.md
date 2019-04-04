@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: baee8c8e931a18c1d72b52c6141c29cba98f9c53
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6b8e0fea73dc24f7e680482be1f06fba6d702804
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096405"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916244"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Administracja i tworzenie listy zadań w usłudze BizTalk Services
 
@@ -33,30 +33,30 @@ Podczas pracy z usługą Microsoft Azure BizTalk Services, istnieje kilka lokaln
 | Krok | Kto jest odpowiedzialny | Zadanie | Linki powiązane |
 | --- | --- | --- | --- |
 | 1. |Administrator |Utwórz subskrypcję platformy Microsoft Azure przy użyciu konta Microsoft lub konta organizacyjnego |[Azure Portal](https://portal.azure.com) |
-| 2. |Administrator |Tworzenie i aprowizowanie usługi BizTalk. |[Tworzenie usługi BizTalk](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
-| 3. |Administrator |Zarejestruj użytkownik lub wdrożenia usługi BizTalk Services w firmie |[Rejestrowanie i aktualizowanie wdrożenia usługi BizTalk, w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
+| 2. |Administrator |Tworzenie i aprowizowanie usługi BizTalk. |[Tworzenie usługi BizTalk](/previous-versions/azure/reference/dn232347(v=azure.100)) |
+| 3. |Administrator |Zarejestruj użytkownik lub wdrożenia usługi BizTalk Services w firmie |[Rejestrowanie i aktualizowanie wdrożenia usługi BizTalk, w portalu usługi BizTalk Services](/previous-versions/azure/hh689837(v=azure.100)) |
 | 4. |Administrator |Ma zastosowanie, jeśli aplikacja używa usługi BizTalk Adapter, aby nawiązać połączenie z lokalnym systemem Line of Business (LOB) lub korzysta z kolejki lub tematu docelowego.  Utwórz Namespace magistrali usług platformy Azure. Nadaj tej przestrzeni nazw, nazwa wystawcy magistrali usług i wartości klucza wystawcy magistrali usługi dla dewelopera. |[Instrukcje: Utwórz lub zmodyfikuj Namespace usługi Service Bus Service](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) i [wartości pobieranie nazwy wystawcy i klucz wydawcy](biztalk-issuer-name-issuer-key.md) |
-| 5. |Developer |Zainstaluj zestaw SDK i Utwórz projekt usługi BizTalk w programie Visual Studio. |[Instalowanie zestawu SDK usługi Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689760.aspx) i [tworzenie rozbudowanych komunikatów z punktami końcowymi na platformie Azure](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
-| 6. |Developer |Wdróż usługę BizTalk projektu do usługi BizTalk hostowanej na platformie Azure. |[Wdrażanie i odświeżanie projektu usługi BizTalk](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
-| 7. |Administrator |W przypadku korzystania z integracji EDI.  Można dodać partnerów i Tworzenie umów w portalu usługi Microsoft Azure BizTalk Services. Podczas tworzenia umowy, można dodać mostek i/lub przekształcenia utworzone przez dewelopera w ustawieniach umowy. |[Konfigurowanie integracji EDI, AS2 i EDIFACT w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |Administrator |Za pomocą [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx), monitorowanie kondycji usługi BizTalk, w tym metryki wydajności. |[BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
-| 9. |Administrator |Za pomocą portalu usługi Microsoft Azure BizTalk Services, zarządzać artefaktów używane przez usługi BizTalk Services i śledzenie wiadomości przetworzeniu pliki mostka. |[Za pomocą portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
-| 10. |Administrator |Tworzenie planu wykonywania kopii zapasowych, aby utworzyć kopię zapasową usługi BizTalk. |[Ciągłość biznesową i odzyskiwanie po awarii w usłudze BizTalk Services](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
+| 5. |Developer |Zainstaluj zestaw SDK i Utwórz projekt usługi BizTalk w programie Visual Studio. |[Instalowanie zestawu SDK usługi Azure BizTalk Services](/previous-versions/azure/hh689760(v=azure.100)) i [tworzenie rozbudowanych komunikatów z punktami końcowymi na platformie Azure](/previous-versions/azure/hh689766(v=azure.100)) |
+| 6. |Developer |Wdróż usługę BizTalk projektu do usługi BizTalk hostowanej na platformie Azure. |[Wdrażanie i odświeżanie projektu usługi BizTalk](/previous-versions/azure/hh689881(v=azure.100)) |
+| 7. |Administrator |W przypadku korzystania z integracji EDI.  Można dodać partnerów i Tworzenie umów w portalu usługi Microsoft Azure BizTalk Services. Podczas tworzenia umowy, można dodać mostek i/lub przekształcenia utworzone przez dewelopera w ustawieniach umowy. |[Konfigurowanie integracji EDI, AS2 i EDIFACT w portalu usługi BizTalk Services](/previous-versions/azure/hh689853(v=azure.100)) |
+| 8. |Administrator |Za pomocą [REST](/previous-versions/azure/reference/dn232347(v=azure.100)), monitorowanie kondycji usługi BizTalk, w tym metryki wydajności. |[BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 9. |Administrator |Za pomocą portalu usługi Microsoft Azure BizTalk Services, zarządzać artefaktów używane przez usługi BizTalk Services i śledzenie wiadomości przetworzeniu pliki mostka. |[Korzystanie z portalu usługi BizTalk Services](/previous-versions/azure/dn874043(v=azure.100)) |
+| 10. |Administrator |Tworzenie planu wykonywania kopii zapasowych, aby utworzyć kopię zapasową usługi BizTalk. |[Ciągłość biznesową i odzyskiwanie po awarii w usłudze BizTalk Services](/previous-versions/azure/dn509557(v=azure.100)) |
 
 ## <a name="next-steps"></a>Następne kroki
-[Samouczki i przykłady](https://msdn.microsoft.com/library/azure/hh689895.aspx)
+[Samouczki i przykłady](/previous-versions/azure/hh689895(v=azure.100))
 
-[Tworzenie projektu w programie Visual Studio](https://msdn.microsoft.com/library/azure/hh689811.aspx)
+[Tworzenie projektu w programie Visual Studio](/previous-versions/azure/hh689811(v=azure.100))
 
-[Instalowanie zestawu SDK usługi Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689760.aspx)
+[Instalowanie zestawu SDK usługi Azure BizTalk Services](/previous-versions/azure/hh689760(v=azure.100))
 
 ## <a name="concepts"></a>Pojęcia
-[Tworzenie projektu w programie Visual Studio](https://msdn.microsoft.com/library/azure/hh689811.aspx)  
-[EDI, AS2 i EDIFACT komunikatów (firmami)](https://msdn.microsoft.com/library/azure/hh689898.aspx)  
+[Tworzenie projektu w programie Visual Studio](/previous-versions/azure/hh689811(v=azure.100))  
+[EDI, AS2 i EDIFACT komunikatów (firmami)](/previous-versions/azure/hh689898(v=azure.100))  
 
 ## <a name="other-resources"></a>Inne zasoby
-[Dodaj źródło, miejsce docelowe i mostka komunikatów z punktami końcowymi](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
-[Dowiedz się więcej i tworzenie mapy komunikatów i przekształcenia](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
-[Przy użyciu usługi BizTalk Adapter (BAS)](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
-[Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
+[Dodaj źródło, miejsce docelowe i mostka komunikatów z punktami końcowymi](/previous-versions/azure/hh689877(v=azure.100))  
+[Dowiedz się więcej i tworzenie mapy komunikatów i przekształcenia](/previous-versions/azure/hh689905(v=azure.100))  
+[Przy użyciu usługi BizTalk Adapter (BAS)](/previous-versions/azure/hh689889(v=azure.100))  
+[Usługa Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

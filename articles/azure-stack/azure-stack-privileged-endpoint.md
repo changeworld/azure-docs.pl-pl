@@ -15,18 +15,18 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082674"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484342"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Za pomocą uprzywilejowanych punktu końcowego w usłudze Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Jako operatorów usługi Azure Stack należy użyć portalu administratora w programie PowerShell lub interfejsów API usługi Azure Resource Manager dla najbardziej codziennych zadań zarządzania. Jednak w przypadku niektórych mniej typowych operacji, należy użyć *uprzywilejowanych punktu końcowego* (program ten). Program ten jest wstępnie skonfigurowane zdalnego konsoli programu PowerShell, która zawiera wystarczający tylko funkcje, które ułatwiają wykonywanie wymaganych zadań. Punkt końcowy korzysta z [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) do udostępnienia tylko ograniczony zestaw poleceń cmdlet. Program ten dostęp, i wywoływać ograniczony zestaw poleceń cmdlet, używane jest konto o niskich uprawnieniach. Żadnych kont administratora są wymagane. Dla dodatkowego bezpieczeństwa skryptów nie jest dozwolone.
+Operatorzy usługi Azure Stack wykonują większość codziennych zadań zarządzania za pomocą portalu administratora, programu PowerShell lub interfejsów API usługi Azure Resource Manager. Jednak w przypadku niektórych mniej typowych operacji, należy użyć *uprzywilejowanych punktu końcowego* (program ten). Program ten jest wstępnie skonfigurowane zdalnego konsoli programu PowerShell, która zawiera wystarczający tylko funkcje, które ułatwiają wykonywanie wymaganych zadań. Punkt końcowy korzysta z [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) do udostępnienia tylko ograniczony zestaw poleceń cmdlet. Program ten dostęp, i wywoływać ograniczony zestaw poleceń cmdlet, używane jest konto o niskich uprawnieniach. Żadnych kont administratora są wymagane. Dla dodatkowego bezpieczeństwa skryptów nie jest dozwolone.
 
 Program ten służy do wykonywania następujących zadań:
 
@@ -53,7 +53,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
 
     - W zintegrowanym systemie, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami, uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
@@ -61,7 +61,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
    - W zintegrowanym systemie:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
      `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
    - Jeśli korzystasz z ASDK:
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ Jak wspomniano powyżej, program ten jest [PowerShell JEA](https://docs.microsof
 
 Tak na przykład, aby uzyskać listę parametrów dla danego polecenia cmdlet, należy uruchom następujące polecenie:
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
 
     -W zintegrowany system, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami, uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
@@ -133,7 +133,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
    - W zintegrowanym systemie:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
      `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
    - Jeśli korzystasz z ASDK:
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
      - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
 3. Importuj sesję program ten, na komputerze lokalnym
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. Teraz możesz użyć uzupełniania po naciśnięciu tabulatora i wykonać skryptów w zwykły sposób, w lokalnej sesji programu PowerShell przy użyciu wszystkich funkcji i poleceń cmdlet programu program ten, bez wpływu na stan zabezpieczeń usługi Azure Stack. Owocnej pracy.

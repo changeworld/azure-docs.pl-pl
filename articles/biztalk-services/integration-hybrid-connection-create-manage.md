@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d659262195fef0cc6871bac409dd5914b70f401
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105094"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916125"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Tworzenie połączeń hybrydowych i zarządzanie nimi
 
@@ -50,7 +50,7 @@ Ten temat zawiera następujące kroki.
 > 
 
 ## <a name="CreateHybridConnection"></a>Tworzenie połączenia hybrydowego
-Można utworzyć połączenie hybrydowe w [połączeń hybrydowych usługi Azure App Service](../app-service/app-service-hybrid-connections.md) **lub** przy użyciu [interfejsów API REST usługi BizTalk](https://msdn.microsoft.com/library/azure/dn232347.aspx). 
+Można utworzyć połączenie hybrydowe w [połączeń hybrydowych usługi Azure App Service](../app-service/app-service-hybrid-connections.md) **lub** przy użyciu [interfejsów API REST usługi BizTalk](/previous-versions/azure/reference/dn232347(v=azure.100)). 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
@@ -115,11 +115,11 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 Po skopiowaniu służy Edytor zasad grupy do zmiany zasad.
 
 ## <a name="next"></a>Następne kroki
-[Połączenia hybrydowe — omówienie](integration-hybrid-connection-overview.md)
+[Omówienie połączeń hybrydowych](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Zobacz też
-[REST API for Managing BizTalk Services on Microsoft Azure (Interfejs API REST do zarządzania usługą BizTalk Services na platformie Microsoft Azure)](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[BizTalk Services: Wykres przedstawiający wersje](biztalk-editions-feature-chart.md)  
+[Interfejs API REST do zarządzania usługi BizTalk Services na platformie Microsoft Azure](/previous-versions/azure/reference/dn232347(v=azure.100))  
+[BizTalk Services: Zestawienie wersji](biztalk-editions-feature-chart.md)  
 [Tworzenie usługi BizTalk](biztalk-provision-services.md)  
 [BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md)
 

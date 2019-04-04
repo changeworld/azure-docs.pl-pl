@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100176"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905543"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji z punktem końcowym usługi wewnętrznego load balancer (ILB)
 
@@ -25,9 +25,12 @@ W tym artykule dowiesz się jak:
 - Utwórz konfigurację adresu IP frontonu prywatne dla bramy aplikacji
 - Tworzenie bramy aplikacji przy użyciu konfiguracji adresu IP frontonu prywatne
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com>
+Zaloguj się do witryny Azure portal pod <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
@@ -82,7 +85,7 @@ Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej baz
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej:
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej baz
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

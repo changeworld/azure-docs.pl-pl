@@ -10,22 +10,22 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: 23db6f889e2ca4266b7e3566c18cf9a85d4062a8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 16844f60f03e2bf488450797f43915462df08064
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517559"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904920"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Zestaw SDK przetwarzania obrazów usług Azure Cognitive Services dla języka Python
 
-Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. 
+Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych.
 
 * [Analizowanie obrazu](#analyze-an-image)
 * [Pobieranie listy domen tematycznych](#get-subject-domain-list)
 * [Analizowanie obrazu według domeny](#analyze-an-image-by-domain)
 * [Pobieranie tekstu opisu obrazu](#get-text-description-of-an-image)
-* [Pobieranie tekstu odręcznego z obrazu](#get-text-from-image)
+* [Pobieranie tekstu odręcznego z obrazów](#get-text-from-image)
 * [Generowanie miniatury](#generate-thumbnail)
 
 Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwarzanie obrazów?][computervision_docs].
@@ -33,28 +33,28 @@ Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwar
 Szukasz dodatkowej dokumentacji?
 
 * [Dokumentacja referencyjna zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
-* [Dokumentacja przetwarzania obrazów w usługach Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)
+* [Dokumentacja usług cognitive Services przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Python 3.6+][python]
-* Bezpłatny [klucz interfejsu API przetwarzania obrazów][computervision_resource] i skojarzony region. Te wartości są potrzebne do utworzenia wystąpienia obiektu klienta [ComputerVisionAPI][ref_computervisionclient]. Aby uzyskać te wartości, użyj jednej z następujących metod. 
+* Bezpłatne [klucz komputerowej] [ computervision_resource] i skojarzonego punktu końcowego. Te wartości będą potrzebne podczas tworzenia wystąpienia klasy [ComputerVisionClient] [ ref_computervisionclient] obiektu klienta. Aby uzyskać te wartości, użyj jednej z następujących metod.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Jeśli nie masz subskrypcji platformy Azure
 
-Utwórz bezpłatne klucz prawidłowe przez 7 dni w ramach **[wypróbuj] [ computervision_resource]** środowisko usługi przetwarzania obrazów. Po utworzeniu klucza skopiuj klucz i nazwę regionu. Będą one potrzebne do [utworzenia klienta](#create-client).
+Utwórz bezpłatne klucz prawidłowe przez 7 dni w ramach **[wypróbuj] [ computervision_resource]** środowisko usługi przetwarzania obrazów. Po utworzeniu klucz, skopiuj nazwę klucza i punktu końcowego. Będą one potrzebne do [utworzenia klienta](#create-client).
 
 Po utworzeniu klucza zachowaj następujące wartości:
 
-* Wartość klucza: ciąg 32 znaków w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 
-* Region klucza: poddomena adresu URL punktu końcowego — https://**westcentralus**.api.cognitive.microsoft.com
+* Wartość klucza: ciąg znaków 32 w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+* Klucza punktu końcowego: adres URL podstawowego punktu końcowego, https://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Jeśli masz subskrypcję platformy Azure
 
-Najprostszą do utworzenia zasobu w ramach subskrypcji jest korzystających z następujących [wiersza polecenia platformy Azure] [ azure_cli] polecenia. Spowoduje to utworzenie klucz usługi cognitive Services, który można stosować w przypadku wielu usług cognitive services. Musisz wybrać _istniejących_ nazwę grupy zasobów, na przykład, "group Moje cogserv" i nowego zasobu przetwarzania komputera nazwę, takich jak "Mój komputer wizji — zasób". 
+Najprostszą do utworzenia zasobu w ramach subskrypcji jest korzystających z następujących [wiersza polecenia platformy Azure] [ azure_cli] polecenia. Spowoduje to utworzenie klucz usługi cognitive Services, który można stosować w przypadku wielu usług cognitive services. Musisz wybrać _istniejących_ nazwę grupy zasobów, na przykład, "group Moje cogserv" i nowego zasobu przetwarzania komputera nazwę, takich jak "Mój komputer wizji — zasób".
 
 ```Bash
-RES_REGION=westeurope 
+RES_REGION=westeurope
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
@@ -92,31 +92,31 @@ pip install azure-cognitiveservices-vision-computervision
 
 ## <a name="authentication"></a>Authentication
 
-Po utworzeniu zasobu przetwarzania obrazów należy utworzyć wystąpienie obiektu klienta przy użyciu **regionu** i jednego z **kluczy konta** tego zasobu.
+Po utworzeniu zasobu przetwarzania obrazów, należy jej **punktu końcowego**, a jeden z jego **kluczy kont** do utworzenia wystąpienia obiektu klienta.
 
-Wartości te umożliwiają utworzenie wystąpienia obiektu klienta [ComputerVisionAPI][ref_computervisionclient]. 
+Te wartości są używane podczas tworzenia wystąpienia [ComputerVisionClient] [ ref_computervisionclient] obiektu klienta.
 
 Na przykład użyć terminala powłoki Bash, aby ustawić zmienne środowiskowe:
 
 ```Bash
-ACCOUNT_REGION=<resourcegroup-name>
+ACCOUNT_ENDPOINT=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>Dla użytkowników do subskrypcji platformy Azure należy uzyskać poświadczenia dla klucza i regionu
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>Dla użytkowników do subskrypcji platformy Azure uzyskiwać poświadczenia na potrzeby key i punktu końcowego
 
-Jeśli nie pamiętasz swój region i klucz, można użyć następującą metodę, aby je znaleźć. Jeśli potrzebujesz do tworzenia klucza i region, można użyć metody [posiadacze subskrypcji Azure](#if-you-have-an-azure-subscription) lub [użytkownicy bez subskrypcji platformy Azure](#if-you-dont-have-an-azure-subscription).
+Jeśli nie pamiętasz klucz i punkt końcowy, można użyć następującą metodę, aby je znaleźć. Jeśli musisz utworzyć klucz i punkt końcowy, można użyć metody [posiadacze subskrypcji Azure](#if-you-have-an-azure-subscription) lub [użytkownicy bez subskrypcji platformy Azure](#if-you-dont-have-an-azure-subscription).
 
-Poniższy fragment kodu [interfejsu wiersza polecenia platformy Azure][cloud_shell] umożliwia wypełnienie dwóch zmiennych środowiskowych wartościami **regionu** i jednego z **kluczy** konta przetwarzania obrazów (wartości te można również znaleźć w witrynie [Azure Portal][azure_portal]). Ten fragment kodu został sformatowany dla powłoki Bash.
+Użyj [wiersza polecenia platformy Azure] [ cloud_shell] fragment kodu poniżej, aby wypełnić dwóch zmiennych środowiskowych za pomocą konta komputerowej **punktu końcowego** i jeden z jego **klucze**(możesz również znaleźć te wartości w [witryny Azure portal][azure_portal]). Ten fragment kodu został sformatowany dla powłoki Bash.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
-export ACCOUNT_REGION=$(az cognitiveservices account show \
+export ACCOUNT_ENDPOINT=$(az cognitiveservices account show \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
-    --query location \
+    --query endpoint \
     --output tsv)
 
 export ACCOUNT_KEY=$(az cognitiveservices account keys list \
@@ -129,28 +129,28 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
 
 ### <a name="create-client"></a>Tworzenie klienta
 
-Pobierz region i klucz ze zmiennych środowiskowych, a następnie utwórz [ComputerVisionAPI] [ ref_computervisionclient] obiektu klienta.  
+Pobierz klucz i punkt końcowy ze zmiennych środowiskowych, a następnie utwórz [ComputerVisionClient] [ ref_computervisionclient] obiektu klienta.
 
 ```Python
-from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-# Get region and key from environment variables
+# Get endpoint and key from environment variables
 import os
-region = os.environ['ACCOUNT_REGION']
+endpoint = os.environ['ACCOUNT_ENDPOINT']
 key = os.environ['ACCOUNT_KEY']
 
 # Set credentials
 credentials = CognitiveServicesCredentials(key)
 
 # Create client
-client = ComputerVisionAPI(region, credentials)
+client = ComputerVisionClient(endpoint, credentials)
 ```
 
 ## <a name="examples"></a>Przykłady
 
-Aby wykonać dowolne z poniższych zadań, potrzebujesz obiektu klienta [ComputerVisionAPI][ref_computervisionclient].
+Potrzebujesz [ComputerVisionClient] [ ref_computervisionclient] obiektu klienta przed przy użyciu dowolnej z poniższych zadań.
 
 ### <a name="analyze-an-image"></a>Analizowanie obrazu
 
@@ -178,7 +178,7 @@ for x in models.models_property:
 
 ### <a name="analyze-an-image-by-domain"></a>Analizowanie obrazu według domeny
 
-Za pomocą operacji [`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] można analizować obraz według domeny tematycznej. Prawidłowe nazwy domen można znaleźć na [liście obsługiwanych domen tematycznych](#get-subject-domain-list).  
+Za pomocą operacji [`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] można analizować obraz według domeny tematycznej. Prawidłowe nazwy domen można znaleźć na [liście obsługiwanych domen tematycznych](#get-subject-domain-list).
 
 ```Python
 # type of prediction
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Pobieranie tekstu z obrazu
 
-Można wyodrębnić dowolny odręczny lub drukowany tekst znajdujący się na obrazie. Wymaga to dwóch wywołań zestawu SDK: [`recognize_text`][ref_computervisionclient_recognize_text] i [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]. Wywołanie operacji recognize_text jest asynchroniczne. Przed wyodrębnieniem danych tekstowych musisz sprawdzić w wynikach wywołania operacji get_text_operation_result, czy pierwsze wywołanie zostało ukończone z wyliczeniem [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes]. Wyniki obejmują tekst oraz współrzędne pola ograniczenia tekstu. 
+Można wyodrębnić dowolny odręczny lub drukowany tekst znajdujący się na obrazie. Wymaga to dwóch wywołań zestawu SDK: [`recognize_text`][ref_computervisionclient_recognize_text] i [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]. Wywołanie operacji recognize_text jest asynchroniczne. Przed wyodrębnieniem danych tekstowych musisz sprawdzić w wynikach wywołania operacji get_text_operation_result, czy pierwsze wywołanie zostało ukończone z wyliczeniem [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes]. Wyniki obejmują tekst oraz współrzędne pola ograniczenia tekstu.
 
 ```Python
 # import models
@@ -238,13 +238,14 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-while result.status in ['NotStarted', 'Running']:
-    time.sleep(1)
+while True:
     result = client.get_text_operation_result(operationId)
+    if result.status not in ['NotStarted', 'Running']:
+        break
+    time.sleep(1)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
-
     for line in result.recognition_result.lines:
         print(line.text)
         print(line.bounding_box)
@@ -252,13 +253,13 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 ### <a name="generate-thumbnail"></a>Generowanie miniatury
 
-Za pomocą operacji [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] można wygenerować miniaturę obrazu w formacie JPG. Miniatura nie musi mieć takich samych proporcji co oryginalny obraz. 
+Za pomocą operacji [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] można wygenerować miniaturę obrazu w formacie JPG. Miniatura nie musi mieć takich samych proporcji co oryginalny obraz.
 
 Aby skorzystać z tego przykładu, zainstaluj pakiet **Pillow**:
 
 ```bash
 pip install Pillow
-``` 
+```
 
 Po zainstalowaniu pakietu Pillow możesz użyć go w poniższym przykładowym kodzie w celu wygenerowania miniatury.
 
@@ -285,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>Ogólne
 
-W przypadku korzystania z obiektu klienta [ComputerVisionAPI][ref_computervisionclient] przy użyciu zestawu SDK dla języka Python do zwracania błędów służy klasa [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception]. Błędy zwracane przez tę usługę odpowiadają kodom stanu HTTP zwracanym dla żądań interfejsu API REST.
+Kiedy wchodzisz w interakcję z [ComputerVisionClient] [ ref_computervisionclient] obiektu klienta przy użyciu zestawu SDK języka Python, [ `ComputerVisionErrorException` ] [ ref_computervision_computervisionerrorexception] klasa jest używana być zwracane błędy. Błędy zwracane przez tę usługę odpowiadają kodom stanu HTTP zwracanym dla żądań interfejsu API REST.
 
 Na przykład jeśli spróbujesz przeprowadzić analizę obrazu za pomocą nieprawidłowego klucza, zostanie zwrócony błąd `401`. W poniższym fragmencie kodu przedstawiono bezpieczną obsługę [błędu][ref_httpfailure] opartą na przechwyceniu wyjątku i wyświetleniu dodatkowych informacji o błędzie.
 
@@ -304,14 +305,14 @@ try:
         print(caption.confidence)
 except HTTPFailure as e:
     if e.status_code == 401:
-        print("Error unauthorized. Make sure your key and region are correct.")
+        print("Error unauthorized. Make sure your key and endpoint are correct.")
     else:
         raise
 ```
 
 ### <a name="handle-transient-errors-with-retries"></a>Obsługa błędów przejściowych z logiką ponawiania próby
 
-Podczas korzystania z klienta [ComputerVisionAPI][ref_computervisionclient] mogą wystąpić błędy przejściowe, związane z [ograniczeniami liczby wywołań][computervision_request_units] wymuszonymi przez usługę, lub inne przejściowe problemy, takie jak awarie sieci. Aby uzyskać informacje na temat obsługi takich błędów, zobacz temat [Wzorzec ponawiania][azure_pattern_retry] w przewodniku po wzorcach projektowych opartych na chmurze i powiązany temat [Wzorzec wyłącznika][azure_pattern_circuit_breaker].
+Podczas pracy z [ComputerVisionClient] [ ref_computervisionclient] klienta, mogą wystąpić przejściowe awarie spowodowane [limity szybkości] [ computervision_request_units] wymuszane przez usługę lub inne problemy przejściowe, takie jak awarie sieci. Aby uzyskać informacje na temat obsługi takich błędów, zobacz temat [Wzorzec ponawiania][azure_pattern_retry] w przewodniku po wzorcach projektowych opartych na chmurze i powiązany temat [Wzorzec wyłącznika][azure_pattern_circuit_breaker].
 
 ### <a name="more-sample-code"></a>Więcej przykładów kodu
 
@@ -322,7 +323,7 @@ Kilka przykładów dotyczących zestawu SDK przetwarzania obrazów dla języka P
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Applying content tags to images (Stosowanie tagów zawartości do obrazów)](../concept-tagging-images.md)
+> [Stosowanie tagów zawartości do obrazów](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

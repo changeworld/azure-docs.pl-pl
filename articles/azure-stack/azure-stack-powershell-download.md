@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 05dd3b292f90964c6af21890aaeafab9849a09ed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb8b3aefedb3e3330715408595a21596f33a413
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242981"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480943"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Pobierz narzędzia usługi Azure Stack z usługi GitHub
 
@@ -28,7 +28,7 @@ ms.locfileid: "55242981"
 
 **Narzędzia AzureStack** jest [repozytorium GitHub](https://github.com/Azure/AzureStack-Tools) obsługujący modułów programu PowerShell do zarządzania i wdrażania zasobów w usłudze Azure Stack. Jeśli zamierzasz nawiązać połączenie z siecią VPN, możesz pobrać te moduły programu PowerShell usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows. Aby uzyskać tych narzędzi, sklonuj repozytorium GitHub lub pobrać **AzureStack narzędzia** folderu, uruchamiając następujący skrypt:
 
-```PowerShell
+```powershell
 # Change directory to the root directory. 
 cd \
 

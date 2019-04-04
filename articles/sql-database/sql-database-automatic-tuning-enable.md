@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726961"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904359"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Włączanie automatycznego dostrajania monitorowania zapytań i zwiększyć wydajność obciążeń
 
 Usługa Azure SQL Database jest usługą automatycznie zarządzanych danych, która stale monitoruje zapytań i określa działania, które należy wykonać, aby zwiększyć wydajność przetwarzania obciążenia. Przeglądanie zaleceń i ręcznie zastosować je lub pozwól usłudze Azure SQL Database automatycznie stosować akcje naprawcze — jest to nazywane **automatyczny tryb dostrajania**.
 
-Dostrajanie automatyczne usługi można włączyć na serwerze lub na poziomie bazy danych za pośrednictwem [witryny Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [interfejsu API REST](sql-database-automatic-tuning-enable.md#rest-api) wywołania i [języka T-SQL](sql-database-automatic-tuning-enable.md#t-sql) poleceń.
+Dostrajanie automatyczne usługi można włączyć na serwerze lub na poziomie bazy danych za pośrednictwem [witryny Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [interfejsu API REST](sql-database-automatic-tuning-enable.md#rest-api) wywołania i [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) poleceń.
 
 > [!NOTE]
-> Wystąpienie zarządzane, można skonfigurować obsługiwaną opcją FORCE_LAST_GOOD_PLAN za pośrednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) tylko. Portal na podstawie konfiguracji i opcje dostrajania automatycznego indeksu, opisane w tym artykule nie są stosowane do wystąpienia zarządzanego.
+> Wystąpienie zarządzane, można skonfigurować obsługiwaną opcją FORCE_LAST_GOOD_PLAN za pośrednictwem [języka T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) tylko. Portal na podstawie konfiguracji i opcje dostrajania automatycznego indeksu, opisane w tym artykule nie są stosowane do wystąpienia zarządzanego.
 
 > [!NOTE]
 > Konfigurowanie opcji strojenia automatycznego przy użyciu szablonu ARM (Azure Resource Manager) jest nieobsługiwane w tej chwili.

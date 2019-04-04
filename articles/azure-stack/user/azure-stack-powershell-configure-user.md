@@ -15,12 +15,12 @@ ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: ab23013d8de61e13013aa4cd735be04e1e3213c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b8f2e3ebfa7187b6695fbd291c7baf0a9ba3b712
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119942"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485785"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako użytkownik
 
@@ -50,7 +50,7 @@ Upewnij się, że należy zastąpić następujące zmienne skryptu wartości z k
 
 ## <a name="connect-with-azure-ad"></a>Łączenie z usługą Azure AD
 
-```PowerShell  
+```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
     # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
@@ -64,7 +64,7 @@ Upewnij się, że należy zastąpić następujące zmienne skryptu wartości z k
 
 ## <a name="connect-with-ad-fs"></a>Łączenie z usługami AD FS
 
-  ```PowerShell  
+  ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
@@ -76,7 +76,7 @@ Upewnij się, że należy zastąpić następujące zmienne skryptu wartości z k
 
 Dostawcy zasobów nie są automatycznie rejestrowane w przypadku nowych subskrypcji użytkownika, które nie mają żadnych zasobów wdrożonych za pośrednictwem portalu. Można jawnie zarejestrować dostawcę zasobów, uruchamiając następujący skrypt:
 
-```PowerShell  
+```powershell  
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
@@ -88,7 +88,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
 
 Gdy masz wszystko, konfigurowanie, przetestuj łączność przy użyciu programu PowerShell do tworzenia zasobów w usłudze Azure Stack. Jako test Utwórz grupę zasobów dla aplikacji, a następnie dodaj maszynę wirtualną. Uruchom następujące polecenie, aby utworzyć grupę zasobów o nazwie "MyResourceGroup":
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 

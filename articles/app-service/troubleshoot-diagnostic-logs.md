@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339639"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894922"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -36,10 +36,10 @@ Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
 * **Szczegółowe rejestrowanie błędów** — szczegółowe informacje na temat każde żądanie, które powoduje kod stanu HTTP 400 lub nowszej. Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu, w systemie plików aplikacji i maksymalnie 50 błędów (pliki) są zachowywane. Jeżeli liczba plików HTML przekracza 50, 26 najstarsze pliki są automatycznie usuwane.
 * **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP. Jeden folder jest generowany dla każdego błędu w systemie plików aplikacji. Zasady przechowywania plików są takie same jak szczegółowy komunikat o błędzie logowania powyżej.
-* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
+* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
 ### <a name="application-diagnostics"></a>Diagnostyka aplikacji
-Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
+Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -57,11 +57,11 @@ Po włączeniu **programu application diagnostics**, możesz również wybrać *
 
 | Poziom| Uwzględnione Rejestruj kategorie |
 |-|-|
-|**Disabled (Wyłączone)** | Brak |
-|**Error** | Błąd krytyczny |
+|**Disabled (Wyłączony)** | Brak |
+|**Błąd** | Błąd krytyczny |
 |**Ostrzeżenie** | Ostrzeżenie, błąd krytyczny|
-|**Informacje o** | Info, Warning, błąd krytyczny|
-|**pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
+|**Informacje** | Info, Warning, błąd krytyczny|
+|**Pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
 |-|-|
 
 Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku tymczasowego na potrzeby debugowania. Ta opcja powoduje wyłączenie automatycznie w ciągu 12 godzin. Można również włączyć opcję magazynu obiektów blob umożliwia wybór kontenera obiektów blob, będą zapisywane dzienniki.
@@ -101,7 +101,7 @@ Struktury katalogów, które dzienniki są przechowywane w jest następująca:
 * **Dzienniki aplikacji** -/LogFiles/aplikacji /. Ten folder zawiera jeden lub więcej plików tekstowych zawierających informacji generowanych przez rejestrowanie aplikacji.
 * **Nie powiodło się żądanie ślady** -/ LogFiles/W3SVC ### /. Ten folder zawiera pliku XSL i co najmniej jeden plik XML. Upewnij się, pobrać pliku XSL do tego samego katalogu, jak pliki XML, ponieważ plik XSL zapewnia funkcje dotyczące formatowania i filtrowania zawartości plików XML podczas wyświetlania w przeglądarce Internet Explorer.
 * **Szczegółowe dzienniki błędów** -/LogFiles/DetailedErrors /. Ten folder zawiera jeden lub więcej plików htm, które zapewniają szczegółowe informacje, które wystąpiły błędy HTTP.
-* **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging).
 * **Dzienniki wdrożenia** -/ LogFiles/Git. Ten folder zawiera dzienniki generowane przez procesy wewnętrznego wdrażania używane przez usługę Azure App Service, a także dzienniki dla wdrożenia Git. Można również znaleźć dzienniki wdrożenia w obszarze D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
@@ -222,7 +222,7 @@ Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego p
 Dzienniki szczegółowy komunikat o błędzie są dokumenty HTML, które zawierają bardziej szczegółowe informacje dotyczące błędów protokołu HTTP, które wystąpiły. Ponieważ są one po prostu dokumentów HTML, ich można wyświetlić w przeglądarce sieci web.
 
 ### <a name="web-server-logs"></a>Dzienniki serwera sieci Web
-Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Te informacje mogą być odczytywane za pomocą edytora tekstu lub analizowany za pomocą narzędzi takich jak [analizator dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).
+Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging). Te informacje mogą być odczytywane za pomocą edytora tekstu lub analizowany za pomocą narzędzi takich jak [analizator dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
 > Dzienniki generowane przez usługę Azure App Service nie obsługują **s-computername**, **s-ip**, lub **cs-version** pola.

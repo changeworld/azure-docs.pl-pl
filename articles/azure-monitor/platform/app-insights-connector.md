@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481760"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905702"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (przestarzałe)
 
@@ -42,6 +42,9 @@ Korzystając z rozwiązania, możesz wykonywać następujące czynności:
 - Wizualizacja danych aplikacji przy użyciu perspektywy podczas wyszukiwania dziennika
 - Przestawianie z danymi usługi Log Analytics do swojej aplikacji usługę Application Insights w witrynie Azure portal
 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="connected-sources"></a>Połączone źródła
 
 W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane nie są zbierane dla łącznik usługi Application Insights przez agentów. Wszystkie dane używane przez rozwiązania pochodzi bezpośrednio na platformie Azure.
@@ -51,7 +54,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
 | [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
-| [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Działa to rozwiązanie nie zbierania informacji z usługi Azure storage. |
+| [Konto magazynu Azure](collect-azure-metrics-logs.md) | Nie | Działa to rozwiązanie nie zbierania informacji z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -94,7 +97,7 @@ Kliknij przycisk **usługi Application Insights** Kafelek, aby otworzyć **usłu
 Pulpit nawigacyjny zawiera bloki pokazano w tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Można uruchomić wyszukiwanie w dzienniku, które zwróci wszystkie rekordy, po kliknięciu **holograficznych** w dolnej części bloku lub kliknięcie nagłówka bloku.
 
 
-| **Kolumny** | **Opis** |
+| **Kolumna** | **Opis** |
 | --- | --- |
 | Aplikacje — liczba aplikacji | Przedstawia liczbę aplikacji w ramach aplikacji zasobów. Zawiera także listę nazw aplikacji i dla każdej liczby rekordów w aplikacji. Kliknij liczbę, aby uruchomić wyszukiwanie w Dzienniku <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kliknij nazwę aplikacji, aby uruchomić wyszukiwanie w dzienniku dla aplikacji, która zawiera rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (oparte na ostatni dzień). |
 | Ilość danych — hosty wysyłające dane | Pokazuje liczbę hostów komputerów, które wysyłają dane. Zawiera również listę komputerów hostów i liczba rekordów dla każdego hosta. Kliknij liczbę, aby uruchomić wyszukiwanie w Dzienniku <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kliknij nazwę komputera, aby uruchomić wyszukiwanie w dzienniku dla hosta, który pokazuje rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (oparte na ostatni dzień). |
@@ -280,25 +283,25 @@ $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId $Subscription_app
-$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+Connect-AzAccount
+Set-AzContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzContext -SubscriptionId $Subscription_workspace
+Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
 Możesz pobrać listę aplikacji za pomocą poniższy skrypt programu PowerShell, który wywołuje wywołania interfejsu API REST. 
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 $AccessToken = "AAD Authentication Token" 
 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+Set-AzContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
 
 $Headers = @{
     "Authorization" = "Bearer $($AccessToken)"

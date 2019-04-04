@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998190"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918692"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Dostosuj model języka, za pomocą witryny sieci Web indeksatora wideo
 
@@ -116,6 +116,34 @@ Aby usunąć model języka z Twojego konta, kliknij przycisk **...**  przycisk p
 Spowoduje to przejście nowe okno informujące o tym, że usunięcie nie można cofnąć. Kliknij przycisk **Usuń** opcji w nowym oknie.
 
 Ta akcja usuwa model języka całkowicie z Twojego konta. Wszelkie film wideo, który używał usunięto model języka spowoduje zachowanie tego samego indeksu, do momentu ponownego indeksowania wideo. Jeśli ponownie poindeksuj wideo, można przypisać nowego modelu języka filmu wideo. W przeciwnym razie usługa Video Indexer użyje jej domyślny model ponownego indeksowania filmu wideo. 
+
+## <a name="customize-language-models-by-correcting-transcripts"></a>Dostosowywanie modeli językowych, poprawiając transkrypcji
+
+Usługa Video Indexer obsługuje automatyczne dostosowywanie języka modeli na podstawie użytkowników poprawki rzeczywiste dokonać transkrypcje plików wideo.
+
+1. Aby wprowadzić korekty do zapisu, otwórz film wideo, który chcesz edytować konto przetwarzania filmów wideo. Wybierz **osi czasu** kartę.
+
+    ![Dostosuj model języka](./media/customize-language-model/timeline.png)
+1. Kliknij ikonę ołówka, aby edytować transkrypcję dla Twojego transkrypcji. 
+
+    ![Dostosuj model języka](./media/customize-language-model/edits.png)
+
+    Usługa Video Indexer przechwytuje wszystkie wiersze, które są usuwane przez Ciebie w transkrypcji wideo i automatycznie dodaje je do pliku tekstowego o nazwie "od transkrypcji zmiany". Te zmiany są używane do ponownego trenowania określonych języka użytego do indeksu w tym wideo. 
+    
+    Jeśli nie określono modelu języka podczas indeksowania w tym wideo, wszystkie zmiany dla tego wideo będą przechowywane w domyślnego języka modelu o nazwie dostosowania w ramach wykryty język filmu wideo. 
+    
+    W przypadku, gdy wprowadzono wiele zmian tej samej linii, tylko ostatnia wersja poprawiony wiersza będzie służyć do aktualizacji modelu językowego.  
+    
+    > [!NOTE]
+    > Tylko tekstowy korekty są używane do dostosowywania. Oznacza to, że poprawki, które nie wymagają rzeczywistymi słowami (na przykład znaków interpunkcyjnych lub miejsca do magazynowania) nie są uwzględniane. 
+    
+1. Zostanie wyświetlony poprawki transkrypcji pojawiają się w karcie języka strony dostosowania modelu zawartości.
+
+    ![Dostosuj model języka](./media/customize-language-model/customize.png)
+
+   Aby zobaczyć plik "od zmiany transkrypcji" dla każdego z modeli językowych, kliknij go, aby go otworzyć. 
+
+    ![Z edycji transkrypcji](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

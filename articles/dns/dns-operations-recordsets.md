@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: ad9e22668d0f6d994ad0fce7b207b5849dfa27e9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 199843be72df473ae501eaf6bd47dce41b079c94
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651247"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906110"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu programu Azure PowerShell
 
@@ -27,15 +27,15 @@ ms.locfileid: "58651247"
 > * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Klasyczny interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli-nodejs.md)
 > * [Interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md)
-> * [Program PowerShell](dns-operations-recordsets.md)
+> * [PowerShell](dns-operations-recordsets.md)
 
 W tym artykule pokazano, jak zarządzać rekordami DNS dla strefy DNS przy użyciu programu Azure PowerShell. Można również zarządzać rekordami systemu DNS przy użyciu dla wielu platform [wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md) lub [witryny Azure portal](dns-operations-recordsets-portal.md).
 
 W przykładach w tym artykule założono, że już [zainstalowany program Azure PowerShell, zalogowano się i utworzono strefę DNS](dns-operations-dnszones.md).
 
-## <a name="introduction"></a>Wprowadzenie
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="introduction"></a>Wprowadzenie
 
 Przed utworzeniem rekordów DNS w usłudze Azure DNS należy najpierw zrozumieć, w jaki sposób usługa Azure DNS organizuje rekordy DNS w zestawy rekordów DNS.
 
@@ -398,4 +398,4 @@ Dowiedz się więcej o [stref i rekordów w usłudze Azure DNS](dns-zones-record
 <br>
 Dowiedz się, jak [chronić strefy i rekordy](dns-protect-zones-recordsets.md) podczas korzystania z usługi Azure DNS.
 <br>
-Przegląd [dokumentacja usługi Azure DNS z programu PowerShell](/powershell/module/azurerm.dns).
+Przegląd [dokumentacja usługi Azure DNS z programu PowerShell](/powershell/module/az.dns).

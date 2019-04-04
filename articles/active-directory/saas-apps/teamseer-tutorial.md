@@ -4,280 +4,246 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 6ec4806f-fe0f-4ed7-8cfa-32d1c840433f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/09/2017
+ms.topic: tutorial
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6ad70fd2aefdd0a8e626d22c0b95d83aaaf5f4c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d3f95001ff26fe21c29baf0c8721be914e8fdf73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200772"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TeamSeer
 
 W tym samouczku dowiesz się, jak zintegrować TeamSeer w usłudze Azure Active Directory (Azure AD).
-
 Integrowanie TeamSeer z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do TeamSeer
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do TeamSeer (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do TeamSeer.
+* Aby umożliwić użytkownikom można automatycznie zalogowany do TeamSeer (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą TeamSeer, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- TeamSeer logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
+* TeamSeer logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie TeamSeer z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Obsługuje TeamSeer **SP** jednokrotne logowanie inicjowane przez
 
 ## <a name="adding-teamseer-from-the-gallery"></a>Dodawanie TeamSeer z galerii
+
 Aby skonfigurować integrację TeamSeer w usłudze Azure AD, należy dodać TeamSeer z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać TeamSeer z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **TeamSeer**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/tutorial_teamseer_search.png)
+4. W polu wyszukiwania wpisz **TeamSeer**, wybierz opcję **TeamSeer** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **TeamSeer**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![TeamSeer na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/tutorial_teamseer_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą TeamSeer w oparciu o użytkownika testu o nazwie "Britta Simon."
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w TeamSeer do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w TeamSeer musi można ustanowić.
-
-W TeamSeer, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą TeamSeer w oparciu o użytkownika testu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w TeamSeer musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TeamSeer, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego TeamSeer](#creating-a-teamseer-test-user)**  — aby odpowiednikiem Britta Simon w TeamSeer połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie TeamSeer logowania jednokrotnego](#configure-teamseer-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego TeamSeer](#create-teamseer-test-user)**  — aby odpowiednikiem Britta Simon w TeamSeer połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji TeamSeer.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z TeamSeer, wykonaj następujące czynności:**
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z TeamSeer, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **TeamSeer** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **TeamSeer** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **TeamSeer domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_teamseer_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.teamseer.com/<companyid>`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) można uzyskać wartość. 
- 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
+    ![TeamSeer domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.teamseer.com/<companyid>`
 
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **konfiguracji TeamSeer** , kliknij przycisk **skonfigurować TeamSeer** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy TeamSeer.
+6. Na **Konfigurowanie TeamSeer** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-teamseer-single-sign-on"></a>Konfigurowanie TeamSeer logowanie jednokrotne
+
+1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy TeamSeer jako administrator.
 
 1. Przejdź do **administratora HR**.
-   
+
     ![Administrator działu KADR](./media/teamseer-tutorial/ic789634.png "administratora działu KADR")
 
 1. Kliknij przycisk **Instalatora**.
-   
+
     ![Konfigurowanie](./media/teamseer-tutorial/ic789635.png "Konfigurowanie")
 
 1. Kliknij przycisk **Konfigurowanie SAML dostawcy szczegółów**.
-   
+
     ![Ustawienia języka SAML](./media/teamseer-tutorial/ic789636.png "ustawienia języka SAML")
 
 1. W sekcji Szczegóły dostawcy protokołu SAML wykonaj następujące czynności:
-   
-    ![Ustawienia języka SAML](./media/teamseer-tutorial/ic789637.png "ustawienia języka SAML")   
 
-    a. Wklej **pojedynczy znak na adres URL usługi** wartość, która **adresu URL** pola tekstowego.
-          
+    ![Ustawienia języka SAML](./media/teamseer-tutorial/ic789637.png "ustawienia języka SAML")
+
+    a. W **adresu URL** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+
     b. Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu publicznego dostawcy tożsamości** pola tekstowego.
 
 1. Aby ukończyć konfigurację dostawcy protokołu SAML, wykonaj następujące czynności:
-    
-    ![Ustawienia języka SAML](./media/teamseer-tutorial/ic789638.png "ustawienia języka SAML") 
 
-    a. W **Test adresy E-mail**, wpisz adres e-mail użytkownika testowego. 
+    ![Ustawienia języka SAML](./media/teamseer-tutorial/ic789638.png "ustawienia języka SAML")
+
+    a. W **Test adresy E-mail**, wpisz adres e-mail użytkownika testowego.
   
-    b. W **wystawcy** pole tekstowe, wpisz adres URL wystawcy dostawcy usług. 
+    b. W **wystawcy** pole tekstowe, wpisz adres URL wystawcy dostawcy usług.
   
     c. Kliknij pozycję **Zapisz**.
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamseer-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-teamseer-test-user"></a>Tworzenie użytkownika testowego TeamSeer
+
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do TeamSeer.
+
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **TeamSeer**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz **TeamSeer**.
+
+    ![Link TeamSeer na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-teamseer-test-user"></a>Tworzenie użytkownika testowego TeamSeer
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do TeamSeer, ich musi być obsługiwana w celu ShiftPlanning. W przypadku TeamSeer Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **TeamSeer** witryny firmy jako administrator.
 
-1. Wykonaj poniższe czynności:
-   
-    ![Administrator działu KADR](./media/teamseer-tutorial/ic789640.png "administratora działu KADR")  
- 
-    a. Przejdź do **administratora HR \> użytkowników**.
-  
-    b. Kliknij przycisk **Uruchom Kreatora nowego użytkownika**.
+1. Przejdź do **administratora HR \> użytkowników** a następnie kliknij przycisk **Uruchom Kreatora nowego użytkownika**.
+
+    ![Administrator działu KADR](./media/teamseer-tutorial/ic789640.png "administratora działu KADR")
 
 1. W **szczegóły użytkownika** sekcji, wykonaj następujące czynności:
-   
-    ![Szczegóły użytkownika](./media/teamseer-tutorial/ic789641.png "szczegóły użytkownika")
 
-    a. Typ **imię**, **nazwisko**, **nazwę użytkownika (adres E-mail)** poprawnego konta usługi AAD, którym chcesz udostępnić w celu powiązanych pól tekstowych.
+    ![Szczegóły użytkownika](./media/teamseer-tutorial/ic789641.png "Szczegóły użytkownika")
+
+    a. Typ **imię**, **nazwisko**, **nazwę użytkownika (adres E-mail)** prawidłowe platformy Azure konto usługi AD, w którym chcesz udostępnić w celu powiązanych pól tekstowych.
   
     b. Kliknij przycisk **Dalej**.
 
 1. Postępuj zgodnie z wyświetlanymi na ekranie instrukcje dotyczące dodawania nowego użytkownika i kliknij przycisk **Zakończ**.
 
->[!NOTE]
->Można użyć jakichkolwiek innych TeamSeer użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez TeamSeer można uaktywniać ich konta usługi Azure AD. 
+> [!NOTE]
+> Można użyć jakichkolwiek innych TeamSeer użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez TeamSeer można uaktywniać ich konta usługi Azure AD.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do TeamSeer.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon TeamSeer, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **TeamSeer**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-Jeśli chcesz przetestować pojedynczego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej szczegółów na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka TeamSeer w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze TeamSeer, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/teamseer-tutorial/tutorial_general_01.png
-[2]: ./media/teamseer-tutorial/tutorial_general_02.png
-[3]: ./media/teamseer-tutorial/tutorial_general_03.png
-[4]: ./media/teamseer-tutorial/tutorial_general_04.png
-
-[100]: ./media/teamseer-tutorial/tutorial_general_100.png
-
-[200]: ./media/teamseer-tutorial/tutorial_general_200.png
-[201]: ./media/teamseer-tutorial/tutorial_general_201.png
-[202]: ./media/teamseer-tutorial/tutorial_general_202.png
-[203]: ./media/teamseer-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

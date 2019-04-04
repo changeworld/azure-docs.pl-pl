@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 0f4f890afd8c698bec8dbd76e8bb8dca710f4d6c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203374"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891035"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
@@ -140,7 +140,7 @@ Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquire
 
 #### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
-Metoda ` acquireTokenSilent` obsługuje uzyskiwanie i odnawianie tokenów bez żadnej interakcji z użytkownikiem. Po `loginPopup` (lub `loginRedirect`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
+Metoda `acquireTokenSilent` obsługuje uzyskiwanie i odnawianie tokenów bez żadnej interakcji z użytkownikiem. Po `loginPopup` (lub `loginRedirect`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 `acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład użytkownika hasło wygasło. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
 1. Wywołanie `acquireTokenPopup` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji w trybie online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. W przykładzie, wygenerowane za pomocą tego Instalatora z przewodnikiem użyto tego wzorca.

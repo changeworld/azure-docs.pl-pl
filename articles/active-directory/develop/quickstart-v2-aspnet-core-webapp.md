@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0fa2e38a680e8590a89131717136a7960c1d3680
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200994"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903594"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET Core
 
@@ -40,7 +40,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do witryny [Azure Portal — Rejestracja aplikacji (wersja zapoznawcza)](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Przejdź do [witryna Azure portal — rejestracje aplikacji](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
 >
@@ -51,7 +51,8 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza)** > **Nowa rejestracja**.
+> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
+> 1. Wybierz **nowej rejestracji**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-Quickstart`.
 >    - W polu **Adres URL odpowiedzi** dodaj wartość `https://localhost:44321/`, a następnie wybierz polecenie **Zarejestruj**.
@@ -65,20 +66,20 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure Portal
 > Aby przykład kodu w tym przewodniku Szybki Start działał, należy dodać adresy URL odpowiedzi jako `https://localhost:44321/` i `https://localhost:44321/signin-oidc`, dodać adres URL wylogowywania jako `https://localhost:44321/signout-oidc`, a następnie zażądać, aby tokeny Identyfikatorów były wystawiane przez punkt końcowy autoryzacji.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Ta zmiana wprowadzona dla mnie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowano](media/quickstart-v2-aspnet-webapp/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowane](media/quickstart-v2-aspnet-webapp/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Pobieranie projektu ASP.NET Core
 
-- [Pobierz rozwiązanie programu Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Pobierz rozwiązanie programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego w ramach folderu głównego, na przykład **C:\Azure-Samples**.
 1. Jeśli używasz programu Visual Studio 2017, otwórz rozwiązanie w programie Visual Studio (opcjonalne).
-1. Edytuj plik **appsettings.json**. Znajdź plik `ClientId` i zastąp ciąg `Enter_the_Application_Id_here` wartością **identyfikatora aplikacji (klienta)** zarejestrowanej właśnie aplikacji. 
+1. Edytuj plik **appsettings.json**. Znajdź `ClientId` i zaktualizuj wartość `ClientId` z **identyfikator aplikacji (klienta)** wartość aplikacji, które właśnie zostało zarejestrowane. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -87,11 +88,11 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 > [!div renderon="docs"]
 > Gdzie:
-> - `Enter_the_Application_Id_here` to **identyfikator aplikacji (klienta)** dla aplikacji zarejestrowanej w witrynie Azure Portal. **Identyfikator aplikacji (klienta)** możesz znaleźć na stronie aplikacji **Przegląd** aplikacji.
-> - `Enter_the_Tenant_Info_Here` to jedna z następujących opcji:
+> - `Enter_the_Application_Id_here` -jest **identyfikator aplikacji (klienta)** dla aplikacji zarejestrowanych w witrynie Azure portal. **Identyfikator aplikacji (klienta)** możesz znaleźć na stronie aplikacji **Przegląd** aplikacji.
+> - `Enter_the_Tenant_Info_Here` -jest jednym z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta tylko w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
->   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
+>   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
+>   - Jeśli aplikacja obsługuje **użytkowników kont Microsoft wszystkich**, Zastąp tę wartość za pomocą `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
@@ -156,5 +157,5 @@ Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten
 Zapoznaj się z repozytorium GitHub na potrzeby tego przewodnika Szybki start dotyczącego platformy ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje związane ze sposobem dodawania uwierzytelniania do zupełnie nowej aplikacji internetowej ASP.NET Core:
 
 > [!div class="nextstepaction"]
-> [Przykładowy kod aplikacji internetowej ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [Przykładowy kod aplikacji sieci Web platformy ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 

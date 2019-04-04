@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92fc8e9edfc745ae89c2b4d44e193566292d4f08
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093545"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918879"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -30,7 +30,7 @@ ms.locfileid: "58093545"
 Informacje o wersji programu Microsoft Azure BizTalk Services zawierają znane problemy w tej wersji.
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>What's new in Listopadowa aktualizacja usługi BizTalk Services
-* Można włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services. Zobacz [włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+* Można włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services. Zobacz [włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services](/previous-versions/azure/dn874052(v=azure.100)).
 
 ## <a name="update-history"></a>Historia aktualizacji
 ### <a name="october-update"></a>Aktualizacja z października
@@ -39,14 +39,14 @@ Informacje o wersji programu Microsoft Azure BizTalk Services zawierają znane p
   * **Scenariusz**: Zarejestrowany wdrażania usługi BizTalk przy użyciu konta organizacyjnego usługi Azure Active Directory (takich jak user@fabrikam.com lub user@contoso.com). W tym scenariuszu tylko użytkownicy usługi Azure Active Directory w ramach tej samej organizacji można zarządzać za pomocą portalu usługi BizTalk Services usługi BizTalk. Nie można używać konta Microsoft.  
 * Podczas tworzenia usługi BizTalk, są automatycznie rejestrowane w portalu usługi BizTalk Services.
   * **Scenariusz**: Tworzenie usługi BizTalk zalogujesz się do platformy Azure, a następnie wybierz pozycję **Zarządzaj** po raz pierwszy. Po otwarciu portalu usługi BizTalk Services, usługa BizTalk automatycznie rejestruje i jest gotowa do wdrożenia.  
-    Zobacz [rejestrowanie i aktualizowanie wdrożenia usługi BizTalk w BizTalk Services Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+    Zobacz [rejestrowanie i aktualizowanie wdrożenia usługi BizTalk w BizTalk Services Portal](/previous-versions/azure/hh689837(v=azure.100)).  
 
 ### <a name="august-14-update"></a>14 sierpnia aktualizacji
-* Umowy i Mostek oddzielenie — umowy z partnerami i mostków są całkowicie niezależni teraz w portalu usługi BizTalk Services. Możesz teraz tworzyć umowy i mostków osobno, a w czasie wykonywania mostków rozpoznać umowy, na podstawie wartości w komunikatów EDI. Zobacz [Tworzenie umów w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [utworzyć mostek EDI za pomocą portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn793986.aspx), [utworzyć mostek AS2, za pomocą portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn793993.aspx)i [ Jak mostków rozwiązać umowy w czasie wykonywania?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* Umowy i Mostek oddzielenie — umowy z partnerami i mostków są całkowicie niezależni teraz w portalu usługi BizTalk Services. Możesz teraz tworzyć umowy i mostków osobno, a w czasie wykonywania mostków rozpoznać umowy, na podstawie wartości w komunikatów EDI. Zobacz [Tworzenie umów w usłudze Azure BizTalk Services](/previous-versions/azure/hh689908(v=azure.100)), [utworzyć mostek EDI za pomocą portalu usługi BizTalk Services](/previous-versions/azure/dn793986(v=azure.100)), [utworzyć mostek AS2, za pomocą portalu usługi BizTalk Services](/previous-versions/azure/dn793993(v=azure.100))i [ Jak mostków rozwiązać umowy w czasie wykonywania?](/previous-versions/azure/dn794001(v=azure.100))  
 * Możliwość tworzenia szablonów dla umowy jest przerywane.  
-* Na stronie wysyłania umowy możesz teraz określić ogranicznik różne zestawy dla każdego schematu. Ta konfiguracja jest określona w ustawieniach protokołu umowy po stronie wysyłania. Aby uzyskać więcej informacji, zobacz [Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) i [tworzenia umowy EDIFACT w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dwa nowe jednostki są również dodawane do interfejsu API TPM OM w tym samym celu. Zobacz [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) i [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Konstrukcje XSD, w tym typy pochodne są teraz obsługiwane. Zobacz [XSD standardowe użycie konstrukcji w swoich mapach](https://msdn.microsoft.com/library/azure/dn793987.aspx) i [typy pochodne użycia w scenariuszach mapowania i przykłady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 obsługuje nowych algorytmów kontroli integralności uprawnień do podpisywania wiadomości i nowych algorytmów szyfrowania. Zobacz [tworzenia umowy AS2 w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+* Na stronie wysyłania umowy możesz teraz określić ogranicznik różne zestawy dla każdego schematu. Ta konfiguracja jest określona w ustawieniach protokołu umowy po stronie wysyłania. Aby uzyskać więcej informacji, zobacz [Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](/previous-versions/azure/hh689847(v=azure.100)) i [tworzenia umowy EDIFACT w usłudze Azure BizTalk Services](/previous-versions/azure/dn606267(v=azure.100)). Dwa nowe jednostki są również dodawane do interfejsu API TPM OM w tym samym celu. Zobacz [X12DelimiterOverrides](/previous-versions/azure/dn798749(v=azure.100)) i [EDIFACTDelimiterOverride](/previous-versions/azure/dn798748(v=azure.100)).  
+* Konstrukcje XSD, w tym typy pochodne są teraz obsługiwane. Zobacz [XSD standardowe użycie konstrukcji w swoich mapach](/previous-versions/azure/dn793987(v=azure.100)) i [typy pochodne użycia w scenariuszach mapowania i przykłady](/previous-versions/azure/).  
+* AS2 obsługuje nowych algorytmów kontroli integralności uprawnień do podpisywania wiadomości i nowych algorytmów szyfrowania. Zobacz [tworzenia umowy AS2 w usłudze Azure BizTalk Services](/previous-versions/azure/hh689890(v=azure.100)).  
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -85,7 +85,7 @@ W przypadku spacji poza segment IEA dezasembler traktuje ją jako koniec bieżą
 
 ### <a name="tracking-in-biztalk-services-portal"></a>Śledzenie w portalu usługi BizTalk Services
 Zdarzenia śledzenia są przechwytywane do przetwarzania komunikatów EDI i wszelka korelacja. Jeśli komunikat nie powiedzie się poza etapu protokołu, śledzenia zostaną wyświetlone jako pomyślne. W takiej sytuacji można znaleźć w sekcji dziennika, w obszarze **szczegóły** kolumny w **śledzenia** szczegóły błędów.
-X12 odbieranie i wysyłanie ustawień ([Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) zawierają informacje dotyczące etapów protokołu.  
+X12 odbieranie i wysyłanie ustawień ([Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](/previous-versions/azure/hh689847(v=azure.100))) zawierają informacje dotyczące etapów protokołu.  
 
 ### <a name="update-agreement"></a>Aktualizowanie umowy
 Portalu usługi BizTalk Services umożliwia modyfikowanie kwalifikator tożsamości, w przypadku skonfigurowania umowę. Może to spowodować niespójne właściwości. Na przykład istnieje umowa przy użyciu ZZ:1234567 i ZZ:7654321 kwalifikator. W ustawieniach profilu w portalu usługi BizTalk Services możesz zmienić ZZ:1234567 jako 01:ChangedValue. Otwórz umowę, a 01:ChangedValue będzie wyświetlany zamiast ZZ:1234567.
@@ -109,7 +109,8 @@ Rozważmy scenariusz, w następującej kolejności:
 * Zamknij plik .bcs (przez zamknięcie karty w programie Visual Studio), bez zapisywania zmian.  
 * Otwórz plik .bcs ponownie z Eksploratora rozwiązań.  
   Można zauważyć, że chociaż .bridgeconfig skojarzony plik ma nową nazwę, który określiłeś, nazwa jednostki na powierzchni projektowej jest nadal stara nazwa. Jeśli podczas próby otwarcia do konfiguracji mostka przez dwukrotne kliknięcie składnika most, otrzymasz następujący błąd:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby uniknąć uruchomione w tym scenariuszu, upewnij się, że zapiszesz zmiany po zmianie nazwy jednostki w projekcie usługi BizTalk.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`
+  Aby uniknąć uruchomione w tym scenariuszu, upewnij się, że zapiszesz zmiany po zmianie nazwy jednostki w projekcie usługi BizTalk.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Usługa BizTalk projekt jest kompilowany pomyślnie nawet wtedy, gdy artefakt został wykluczony z projektu programu Visual Studio
 Rozważmy scenariusz, w którym dodajesz artefaktu (na przykład plik XSD) do projektu usługi BizTalk, objęte tego artefaktu do konfiguracji mostka (na przykład, określając ją jako typ komunikatu żądania) i wykluczyć go z projektu programu Visual Studio. W takim przypadku skompilowanie projektu nie zapewni żadnych błędów tak długo, jak usunięto artefakt znajduje się na dysku w tej samej lokalizacji, z której został on uwzględniony w projekcie programu Visual Studio.
@@ -224,5 +225,5 @@ Załóżmy scenariusz, w którym masz Mostek XML wdrożone w ramach subskrypcji 
 W tym dokumencie termin "potoki" i "mostków" są używane zamiennie. Zasadniczo zarówno oznaczają to samo, który jest wdrożony w usłudze BizTalk Services jednostka przetwarzania wiadomości.  
 
 ### <a name="concepts"></a>Pojęcia
-[BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk Services](/previous-versions/azure/hh689864(v=azure.100))   
 

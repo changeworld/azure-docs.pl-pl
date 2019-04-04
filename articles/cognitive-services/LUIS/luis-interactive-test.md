@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d8456595e244237a0fd92fae82a43a878ad41080
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857672"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893628"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Przetestuj swoją aplikację usługi LUIS w portalu usługi LUIS
 <a name="train-your-app"></a>
@@ -132,5 +132,5 @@ Zobacz testowania partii [pojęcia](luis-concept-batch-test.md) i Dowiedz się, 
 
 Jeśli testowanie wskazuje, że aplikacją usługi LUIS nie rozpoznaje poprawne intencje i podmioty, możesz podjąć zwiększyć dokładność aplikacją usługi LUIS etykietowania więcej wypowiedzi lub dodając funkcje. 
 
-* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endoint-utt.md) 
+* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endpoint-utterances.md) 
 * [Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS](luis-how-to-add-features.md) 

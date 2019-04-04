@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337119"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905719"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -80,7 +80,7 @@ Funkcja rozszerzenia DNSSEC jest śledzona w zaległości w usłudze Azure DNS. 
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Usługa DNS platformy Azure obsługuje transfery strefy (AXFR/IXFR)?
 
-Nie. Usługa Azure DNS nie obsługuje obecnie transferów stref. Strefy DNS mogą być [importowane do usługi Azure DNS przy użyciu wiersza polecenia platformy Azure](dns-import-export.md). Rekordy DNS są zarządzane za pośrednictwem [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [ Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
+Nie. Usługa Azure DNS nie obsługuje obecnie transferów stref. Strefy DNS mogą być [importowane do usługi Azure DNS przy użyciu wiersza polecenia platformy Azure](dns-import-export.md). Rekordy DNS są zarządzane za pośrednictwem [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [ Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
 Funkcja transfer strefy jest śledzona w zaległości w usłudze Azure DNS. Użyj witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
@@ -149,7 +149,7 @@ Tak. Usługa DNS platformy Azure obsługuje wspólnej hosting domeny z innymi us
 
 Aby skonfigurować wspólnej hostingu, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. The name server (NS) records control which providers receive DNS queries for the domain. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
 
-Upewnij się również, czy rekordy DNS dla domeny są zsynchronizowane między obu dostawców usługi DNS. Usługa Azure DNS nie obsługuje obecnie transferu strefy DNS. Rekordy DNS muszą być synchronizowane za pomocą [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
+Upewnij się również, czy rekordy DNS dla domeny są zsynchronizowane między obu dostawców usługi DNS. Usługa Azure DNS nie obsługuje obecnie transferu strefy DNS. Rekordy DNS muszą być synchronizowane za pomocą [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Czy muszę delegować mojej domeny na wszystkich czterech serwerów nazw usługi Azure DNS?
 

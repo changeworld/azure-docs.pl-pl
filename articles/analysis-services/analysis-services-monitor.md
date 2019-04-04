@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6f686ff40805050b6da05a1971aeabb367da96d7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190839"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893184"
 ---
 # <a name="monitor-server-metrics"></a>Monitorowanie metryk serwera
 
@@ -57,8 +57,8 @@ Ta tabela służy do określenia, które metryki są najlepsze w przypadku daneg
 |MemoryUsage|Pamięć: Użycie pamięci|Bajty|Średnia|Użycie pamięci przez proces serwera używane podczas obliczania cena oczyszczarki pamięci. Równe licznikowi Process\PrivateBytes plus rozmiar danych zamapowanych w pamięci, ignorowanie wszelkich pamięci zamapowanej lub przydzielonej przez aparat analizy w pamięci (VertiPaq) powyżej limitu pamięci aparatu.|
 |Przydział|Pamięć: Przydział|Bajty|Średnia|Bieżący limit przydziału pamięci, w bajtach. Limit przydziału pamięci jest również nazywany rezerwacji pamięci lub przydział pamięci.|
 |QuotaBlocked|Pamięć: Zablokowany limit przydziału|Licznik|Średnia|Bieżąca liczba żądań dotyczących limitu przydziału blokowanych do czasu są zwalniane innych limitów przydziału pamięci.|
-|VertiPaqNonpaged|Pamięć: Niestronicowana pamięć aparatu VertiPaq|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
-|VertiPaqPaged|Pamięć: Stronicowana pamięć aparatu VertiPaq|Bajty|Średnia|Bajty stronicowanej pamięci dla danych w pamięci.|
+|VertiPaqNonpaged|Pamięć: VertiPaq Nonpaged|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
+|VertiPaqPaged|Pamięć: VertiPaq Paged|Bajty|Średnia|Bajty stronicowanej pamięci dla danych w pamięci.|
 |ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Licznik|Średnia|Liczba zadań innych niż we/wy w kolejce puli wątków przetwarzania.|
 |RowsConvertedPerSec|W toku: Wiersze przekonwertowane na sekundę|CountPerSecond|Średnia|Współczynnik wierszy przekonwertowanych podczas przetwarzania.|
 |RowsReadPerSec|W toku: Odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
@@ -87,4 +87,4 @@ Ta tabela służy do określenia, które metryki są najlepsze w przypadku daneg
 ## <a name="next-steps"></a>Kolejne kroki
 [Monitorowanie na platformie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
 [Metryki platformy Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
-[Metryki w usłudze Azure Monitor interfejsu API REST](https://msdn.microsoft.com/library/azure/dn931930.aspx)
+[Metryki w usłudze Azure Monitor interfejsu API REST](/rest/api/monitor/metrics)

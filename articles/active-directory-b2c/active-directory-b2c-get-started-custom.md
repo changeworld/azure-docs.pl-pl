@@ -1,21 +1,21 @@
 ---
-title: Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak rozpocząć pracę z niestandardowych zasad usługi Azure Active Directory B2C.
+title: Wprowadzenie do zasad niestandardowych — Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć pracę przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b414529d7756812f1e1e16d2d0184c8472c0c55f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298743"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916754"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -25,12 +25,13 @@ ms.locfileid: "55298743"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze, musisz [tworzenie dzierżawy usługi Azure AD B2C](tutorial-create-tenant.md) połączony z subskrypcją platformy Azure.
+- Jeśli nie masz jeszcze, musisz [tworzenie dzierżawy usługi Azure AD B2C](tutorial-create-tenant.md) połączony z subskrypcją platformy Azure.
+- [Zarejestruj swoją aplikację](tutorial-register-applications.md) w dzierżawie, który został utworzony tak, aby umożliwić komunikację z usługą Azure AD B2C.
 
 ## <a name="add-signing-and-encryption-keys"></a>Dodaj klucze podpisywania i szyfrowania
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy. 
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Kliknij przycisk **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy. 
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
 
@@ -59,11 +60,11 @@ Jeśli masz już [klucz tajny aplikacji Facebook](active-directory-b2c-setup-fb-
 1. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 2. Aby uzyskać **opcje**, wybierz `Manual`.
 3. Aby uzyskać **nazwa**, wprowadź `FacebookSecret`. Prefiks `B2C_1A_` mogą być dodawane automatycznie.
-4. W **klucz tajny**, wprowadź klucz tajny usługi Facebook z developers.facebook.com lub `0` jako symbol zastępczy. Jest to klucz tajny, a nie identyfikator aplikacji.
+4. W **klucz tajny**, wprowadź klucz tajny usługi Facebook z developers.facebook.com lub `0` jako symbol zastępczy. Ta wartość jest klucz tajny, a nie identyfikator aplikacji.
 5. Aby uzyskać **użycie klucza**, wybierz opcję **podpisu**.
 6. Kliknij pozycję **Utwórz**.
 
-## <a name="register-applications"></a>Rejestrowanie aplikacji
+## <a name="register-identity-experience-framework-applications"></a>Rejestrowanie aplikacji platformy środowiska tożsamości
 
 Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiają rejestrowanie i logowanie użytkowników: IdentityExperienceFramework (aplikacji sieci web), a ProxyIdentityExperienceFramework (aplikacja natywna) przy użyciu delegowanych uprawnień z aplikacji IdentityExperienceFramework. Konta lokalne istnieje tylko w Twojej dzierżawie. Użytkownicy Zarejestruj się przy użyciu kombinacji adresu lub nieprawidłowego hasła unikatowego adresu e-mail, aby dostęp do aplikacji zarejestrowana dzierżawa.
 
@@ -85,8 +86,7 @@ Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiaj
 4. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.
 5. Kliknij pozycję **Utwórz**. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
 6. Na stronie ustawień wybierz **wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
-7. Wybierz pozycję **Wybierz interfejs API**.
-8. Wyszukaj i wybierz pozycję **IdentityExperienceFramework**, a następnie kliknij przycisk **wybierz**.
+7. Wybierz **wybierz interfejs API**, wyszukiwanie i wybieranie **IdentityExperienceFramework**, a następnie kliknij przycisk **wybierz**.
 9. Zaznacz pole wyboru obok pozycji **IdentityExperienceFramework dostępu**, kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe**.
 10. Wybierz **Udziel uprawnień**, a następnie upewnij się, wybierając **tak**.
 
@@ -131,12 +131,11 @@ Dodaj identyfikatory aplikacji do pliku rozszerzenia *TrustFrameworkExtensions.x
 
 ## <a name="test-the-custom-policy"></a>Testowanie zasad niestandardowych
 
-1. Na stronie zasad niestandardowych wybierz **B2C_1A_signup_signin**. 
-2. Wybierz **Uruchom teraz**.
-
-3. Powinien móc zarejestrować się przy użyciu adresu e-mail.
-
-4. Zaloguj się przy użyciu tego samego konta, aby upewnić się, że masz prawidłowej konfiguracji.
+1. Na stronie zasad niestandardowych wybierz **B2C_1A_signup_signin**.
+2. Aby uzyskać **wybierz aplikację** na stronie Przegląd zasad niestandardowych, wybierz aplikację sieci web o nazwie *webapp1* który został wcześniej zarejestrowany. Upewnij się, że **adres URL odpowiedzi** jest `https://jwt.ms`.
+3. Wybierz **Uruchom teraz**.
+4. Powinien móc zarejestrować się przy użyciu adresu e-mail.
+5. Zaloguj się przy użyciu tego samego konta, aby upewnić się, że masz prawidłowej konfiguracji.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Dodawanie usługi Facebook jako dostawcy tożsamości
 

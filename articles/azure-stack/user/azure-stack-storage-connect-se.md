@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763371"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622012"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Łączenie Eksploratora usługi storage do subskrypcji usługi Azure Stack lub na koncie magazynu
 
@@ -49,25 +49,27 @@ Wyeksportować, a następnie zaimportuj certyfikat usługi Azure Stack dla ASDK.
 
 1. Otwórz `mmc.exe` na maszynie hosta usługi Azure Stack lub lokalnej maszynie z połączeniem VPN z usługą Azure Stack. 
 
-2. W **pliku**, wybierz opcję **Dodaj/Usuń przystawkę**, a następnie dodaj **certyfikaty** zarządzanie **Moje konto użytkownika**.
+2. W **pliku**, wybierz opcję **Dodaj/Usuń przystawkę**. Wybierz **certyfikaty** w dostępne przystawki. 
 
-3.  W obszarze **konsoli katalog główny konsoli\certyfikowane (komputer lokalny) \Trusted główne urzędy certyfikacji\Certyfikaty**. Find **AzureStackSelfSignedRootCert**.
+3. Wybierz **konto komputera**, a następnie wybierz pozycję **dalej**. Wybierz **komputera lokalnego**, a następnie wybierz pozycję **Zakończ**.
+
+4.  W obszarze **konsoli katalog główny konsoli\certyfikowane (komputer lokalny) \Trusted główne urzędy certyfikacji\Certyfikaty**. Find **AzureStackSelfSignedRootCert**.
 
     ![Ładowanie certyfikatu głównego usługi Azure Stack za pośrednictwem pliku mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. Kliknij prawym przyciskiem myszy certyfikat, wybierz **wszystkie zadania** > **wyeksportować**, a następnie postępuj zgodnie z instrukcjami, aby wyeksportować certyfikat z **certyfikat x.509 szyfrowany algorytmem Base-64 (. CER)**.
+5. Kliknij prawym przyciskiem myszy certyfikat, wybierz **wszystkie zadania** > **wyeksportować**, a następnie postępuj zgodnie z instrukcjami, aby wyeksportować certyfikat z **certyfikat x.509 szyfrowany algorytmem Base-64 (. CER)**.
 
     Wyeksportowany certyfikat będzie używany w następnym kroku.
 
-5. Uruchom Eksploratora usługi storage, i jeśli zostanie wyświetlony **łączenie z usługą Azure Storage** okna dialogowego pole, anulować.
+6. Uruchom Eksploratora usługi storage, i jeśli zostanie wyświetlony **łączenie z usługą Azure Storage** okna dialogowego pole, anulować.
 
-6. Na **Edytuj** menu wskaż **certyfikaty SSL**, a następnie wybierz pozycję **Importuj certyfikaty**. Użyj okna dialogowego selektora plików, aby wyszukać i otworzyć certyfikat wyeksportowany w poprzednim kroku.
+7. Na **Edytuj** menu wskaż **certyfikaty SSL**, a następnie wybierz pozycję **Importuj certyfikaty**. Użyj okna dialogowego selektora plików, aby wyszukać i otworzyć certyfikat wyeksportowany w poprzednim kroku.
 
     Po zaimportowaniu certyfikatu, monit o ponowne uruchomienie Eksploratora usługi storage.
 
     ![Zaimportuj certyfikat do Eksploratora usługi storage](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. Po ponownym uruchomieniu Eksploratora usługi storage wybierz **Edytuj** menu, a następnie sprawdź, czy **docelowej usługi Azure Stack** jest zaznaczone. Jeśli nie, wybierz **docelowej usługi Azure Stack**, a następnie ponownie uruchom Eksploratora usługi storage aby zmiany zaczęły obowiązywać. Ta konfiguracja jest wymagana w celu zachowania zgodności ze środowiskiem usługi Azure Stack.
+8. Po ponownym uruchomieniu Eksploratora usługi storage wybierz **Edytuj** menu, a następnie sprawdź, czy **interfejsów API programu docelowej usługi Azure Stack** jest zaznaczone. Jeśli nie, wybierz **docelowej usługi Azure Stack**, a następnie ponownie uruchom Eksploratora usługi storage aby zmiany zaczęły obowiązywać. Ta konfiguracja jest wymagana w celu zachowania zgodności ze środowiskiem usługi Azure Stack.
 
     ![Sprawdzanie, czy pozycja Oznacz usługę Azure Stack jako cel została zaznaczona](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ Wykonaj następujące kroki, aby łączenie Eksploratora usługi storage z subsk
 
     ![Dodawanie konta usługi Azure Stack](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. W przypadku nawiązywania połączenia z usługi Azure Storage okno dialogowe w obszarze **środowiska platformy Azure**, wybierz opcję **Azure** lub **Azure (Chiny)**, która jest zależna od konta usługi Azure Stack, który jest używany, wybierz **Zaloguj** zalogować się przy użyciu konta usługi Azure Stack skojarzone z co najmniej jedną aktywną subskrypcją usługi Azure Stack.
+3. W przypadku nawiązywania połączenia z usługi Azure Storage okno dialogowe w obszarze **środowiska platformy Azure**, wybierz opcję **Azure**, **Azure (Chiny)**, **Azure (Niemcy)**,  **Azure dla administracji USA**, lub **Dodaj nowe środowisko**, która jest zależna od konta usługi Azure Stack, który jest używany. Wybierz **Zaloguj** zalogować się przy użyciu konta usługi Azure Stack skojarzone z co najmniej jedną aktywną subskrypcją usługi Azure Stack.
 
     ![Łączenie z usługą Azure Storage](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

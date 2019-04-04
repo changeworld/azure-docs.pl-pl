@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649260"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917791"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Zrozumieć sposób zastosowania planu rezerwacją oprogramowania SUSE Linux Enterprise na platformie Azure
 
@@ -126,10 +126,10 @@ Nazwy witryny portalu Azure marketplace:
 
 Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Zapłać z góry za plany oprogramowania SUSE z zastrzeżeniami platformy Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
+- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Zarządzanie zastrzeżeniami platformy Azure](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 

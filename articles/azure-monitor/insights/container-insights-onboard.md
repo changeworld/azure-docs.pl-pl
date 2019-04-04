@@ -13,16 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 403cbeb0a68e39eab714ceb428fcfaefe8de0ff7
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f41198761604a16e5d8a983f8bf2200b32c06fb9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576245"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906025"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Jak dodać usługi Azure Monitor dla kontenerów  
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i w serwisie [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
@@ -31,6 +29,7 @@ Usługa Azure Monitor dla kontenerów można włączyć dla nowych lub obsługiw
 * W witrynie Azure portal, programu Azure PowerShell lub za pomocą wiersza polecenia platformy Azure
 * Za pomocą [narzędzia Terraform i AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:

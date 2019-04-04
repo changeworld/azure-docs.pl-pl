@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309254"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905685"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, role i kontrola dostępu w usłudze Application Insights
 
@@ -25,6 +25,9 @@ Można kontrolować, kto ma do odczytu i aktualizacji dostępu do danych na plat
 
 > [!IMPORTANT]
 > Przypisywanie dostępu do użytkowników w **grupy zasobów lub subskrypcji** do której należy dany zasób aplikacji — nie w samym zasobem. Przypisz **współautora składników usługi Application Insights** roli. Dzięki temu jednolitego kontroli dostępu do testów sieci web i alerty wraz z dany zasób aplikacji. [Dowiedz się więcej](#access).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>Zasoby, grupy i subskrypcje
 
@@ -86,13 +89,13 @@ Gdy to stosowne, można przejść do skojarzonego dokumentacji oficjalnego.
 | [Czytelnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Można wyświetlać, ale nie nastąpią żadne zmiany. |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie korzystanie z funkcji Application Insights Snapshot Debugger. Należy pamiętać, że tej roli znajduje się w roli właściciela ani współautora. |
 | Współautor zarządzania wersjami wdrażania usługi platformy Azure | Roli współautora dla usług wdrażania za pomocą wdrażania usługi Azure. |
-| [Purger danych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Specjalne rola przeczyszczania danych osobowych. Zobacz nasze [wskazówki dotyczące danych osobowych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Aby uzyskać więcej informacji.   |
+| [Oczyszczacz danych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Specjalne rola przeczyszczania danych osobowych. Zobacz nasze [wskazówki dotyczące danych osobowych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Aby uzyskać więcej informacji.   |
 | Administrator usługi ExpressRoute | Można tworzyć delete i Zarządzaj trasami platformy express.|
-| [Współautor usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure.  |
-| [Czytelnik usługi log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
+| [Współautor usługi Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure.  |
+| [Czytelnik usługi Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
 | masterreader | Umożliwia użytkownikowi przeglądać wszystko, ale nie wprowadzać zmian. |
 | [Współautor monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Może odczytywać wszystkie dane monitorowania i aktualizować ustawienia monitorowania. |
-| [Monitorowanie metryk wydawcy](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Umożliwia publikowanie metryk dotyczących zasobów platformy Azure. |
+| [Wydawca metryk monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Umożliwia publikowanie metryk dotyczących zasobów platformy Azure. |
 | [Czytelnik monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Może odczytywać wszystkie dane monitorowania. |
 | Współautor zasad zasobów (wersja zapoznawcza) | Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, Utwórz bilet pomocy technicznej i odczytu zasobów/hierarchii.  |
 | [Administrator dostępu użytkowników](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Umożliwia użytkownikowi zarządzanie dostępem dla innych użytkowników do zasobów platformy Azure.|
@@ -121,7 +124,7 @@ Ponieważ niektóre role mogą być połączone z powiadomienia i wiadomości e-
 ### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Zapytanie całej subskrypcji dla ról administratora + rolą Współautor
 
 ```powershell
-(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Właściciele i współautorzy kwerendy w kontekście określonego zasobu usługi Application Insights
@@ -130,14 +133,14 @@ Ponieważ niektóre role mogą być połączone z powiadomienia i wiadomości e-
 $resourceGroup = “RGNAME”
 $resourceName = “AppInsightsName”
 $resourceType = “microsoft.insights/components”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Zapytania w kontekście konkretnej grupy zasobów dla właściciele i współautorzy
 
 ```powershell
 $resourceGroup = “RGNAME”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->

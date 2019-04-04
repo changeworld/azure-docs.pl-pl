@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7af06347dd1ca5a3e7e27e5db4849b5540b106b9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250014"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479585"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Wdrażanie szablonu do usługi Azure Stack przy użyciu programu PowerShell
 
@@ -40,7 +40,7 @@ W tym przykładzie użyto **AzureRM** poleceń cmdlet programu PowerShell i szab
 2. Otwórz wiersz polecenia programu PowerShell.
 3. Zastąp `username` i `password` w poniższym skrypcie za pomocą nazwy użytkownika i hasło, a następnie uruchom skrypt:
 
-    ```PowerShell
+    ```powershell
     # Set deployment variables
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"

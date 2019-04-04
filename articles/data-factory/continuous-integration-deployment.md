@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 5f5a9ef689fefd5683f7b6f1ebc9b2193ce020e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2edd4e28a0dd67be3c06159bce2e968d681b7f70
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995777"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905260"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -24,11 +24,11 @@ Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe d
 
 Usługi Azure Data Factory ciągła integracja i dostarczanie oznacza, że przenoszenie potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego. Celu ciągłej integracji i dostarczania umożliwia integrację interfejs użytkownika usługi Data Factory przy użyciu szablonów usługi Azure Resource Manager. Interfejs użytkownika usługi Data Factory można wygenerować szablonu usługi Resource Manager, po wybraniu **szablonu ARM** opcje. Po wybraniu **szablonu ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla usługi data factory i pliku konfiguracji, który zawiera wszystkie ciągi połączeń i innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla poszczególnych środowisk (tworzenia, testowania, produkcji). Główny plik szablonu usługi Resource Manager pozostaje taka sama dla wszystkich środowisk.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Wprowadzenie dziewięć minutę i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Utwórz szablon usługi Resource Manager dla każdego środowiska
 Wybierz **szablonu ARM wyeksportować** eksportowania szablonu usługi Resource Manager dla fabryki danych w środowisku programistycznym.

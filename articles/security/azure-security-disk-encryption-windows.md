@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4cf454a654124468fd31e6412530416da381acf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 52aa57b0a0de0a8ca82e57adda8b41862aa66980
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884901"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918658"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS Windows
 
@@ -145,7 +145,7 @@ Poniższa tabela zawiera listę parametrów szablonu usługi Resource Manager dl
 
 ### <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>Szyfruj zestawów skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 
-Użyj [AzVmssDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azvmssdiskencryptionextension) polecenia cmdlet, aby włączyć szyfrowanie na zestaw skalowania maszyn wirtualnych Windows. Grupa zasobów, maszyny Wirtualnej i magazynu kluczy powinien zostały już utworzone jako warunki wstępne.
+Użyj [AzVmssDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azvmssdiskencryptionextension) polecenia cmdlet, aby włączyć szyfrowanie na zestaw skalowania maszyn wirtualnych Windows. Grupa zasobów, zestaw skalowania maszyn wirtualnych i magazynu kluczy powinien zostały już utworzone jako warunki wstępne.
 
 -  **Szyfruj uruchamianie zestawu skalowania maszyn wirtualnych**:
     ```azurepowershell
@@ -191,7 +191,7 @@ Użyj [AzVmssDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-a
 
 ### <a name="encrypt-virtual-machine-scale-sets-with-azure-cli"></a>Szyfruj zestawów skalowania maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
 
-Użyj [Włącz az vmss szyfrowania](/cli/azure/vmss/encryption#az-vmss-encryption-enable) Aby włączyć szyfrowanie na zestaw skalowania maszyn wirtualnych Windows. Jeśli ustawisz zasad uaktualniania na zestawie skalowania, aby ręcznie uruchomić szyfrowanie za pomocą [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances). Grupa zasobów, maszyny Wirtualnej i magazynu kluczy powinien zostały już utworzone jako warunki wstępne.
+Użyj [Włącz az vmss szyfrowania](/cli/azure/vmss/encryption#az-vmss-encryption-enable) Aby włączyć szyfrowanie na zestaw skalowania maszyn wirtualnych Windows. Jeśli ustawisz zasad uaktualniania na zestawie skalowania, aby ręcznie uruchomić szyfrowanie za pomocą [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances). Grupa zasobów, zestaw skalowania maszyn wirtualnych i magazynu kluczy powinien zostały już utworzone jako warunki wstępne.
 
 -  **Szyfruj uruchamianie zestawu skalowania maszyn wirtualnych**
     ```azurecli-interactive

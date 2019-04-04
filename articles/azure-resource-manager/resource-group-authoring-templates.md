@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781905"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904937"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia.
 
 Ten artykuł jest przeznaczony dla użytkowników, którzy posiadają pewną znajomość szablonów usługi Resource Manager. Zawiera ona szczegółowe informacje dotyczące struktury i składni szablonu. Jeśli chcesz, aby zapoznać się z wprowadzeniem do tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>Format szablonu
 
@@ -49,9 +52,9 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 | apiProfile |Nie | Wersja interfejsu API, która służy jako zbiór wersje interfejsu API dla typów zasobów. Użyj tej wartości, aby uniknąć konieczności określania wersji interfejsu API dla każdego zasobu w szablonie. Gdy określać wersję interfejsu API w profilu, a nie określona wersja interfejsu API dla typu zasobu, Menedżer zasobów używa wersji interfejsu API dla tego typu zasobu, która jest zdefiniowana w profilu.<br><br>Właściwości profilu interfejsu API jest szczególnie przydatne w przypadku wdrażania szablonu w różnych środowiskach, takich jak Azure Stack i globalnej platformy Azure. Wersja profilu interfejs API umożliwia upewnij się, że Twój szablon automatycznie używa wersji, które są obsługiwane w obu środowiskach. Aby uzyskać listę bieżących wersji interfejsu API w profilu i zasobów, wersje interfejsów API, zdefiniowaną w profilu, zobacz [profilu interfejsu API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Aby uzyskać więcej informacji, zobacz [śledzenia wersji przy użyciu interfejsu API profilów](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | [Zmienne](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
-| [Funkcje](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| [Zasoby](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
-| [dane wyjściowe](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
+| [functions](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
+| [zasoby](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
+| [wyjścia](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
 
 Każdy element ma właściwości, które można ustawić. W tym artykule opisano części szablonu bardziej szczegółowo.
 

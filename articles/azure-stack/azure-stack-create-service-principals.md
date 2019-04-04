@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809252"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499412"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Zapewnianie aplikacjom dostępu do usługi Azure Stack
 
@@ -57,7 +57,7 @@ W tej sekcji utworzysz aplikację (nazwy głównej usługi) w usłudze Azure AD,
 
 Utworzono nazwę główną usługi dla swojej aplikacji.
 
-### <a name="get-credentials"></a>Pobierz poświadczenia
+### <a name="get-credentials"></a>Pobieranie poświadczeń
 
 Programowe zalogować, użyj Identyfikatora aplikacji i aplikacji sieci Web / interfejs API, klucz uwierzytelniania. Aby uzyskać te wartości, wykonaj następujące kroki:
 
@@ -89,11 +89,11 @@ Jednostki usług zadania zarządzania usług AD FS.
 | Type | Akcja |
 | --- | --- |
 | Certyfikat usług AD FS | [Tworzenie](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| Certyfikat usług AD FS | [Aktualizacja](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| Certyfikat usług AD FS | [Usuń](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| Certyfikat usług AD FS | [Aktualizacja](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| Certyfikat usług AD FS | [Usuń](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | Klucz tajny programu AD FS klienta | [Tworzenie](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | Klucz tajny programu AD FS klienta | [Aktualizacja](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| Klucz tajny programu AD FS klienta | [Usuń](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| Klucz tajny programu AD FS klienta | [Usuń](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>Tworzenie jednostki usługi przy użyciu certyfikatu
 
@@ -124,7 +124,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia cmdlet:
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,7 +173,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
    > [!Note]  
    > Do celów sprawdzania poprawności, można utworzyć certyfikatu z podpisem własnym za pomocą poniższym przykładzie:
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
@@ -254,7 +254,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia cmdlet:
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 2. Po uruchomieniu polecenia cmdlet powłoki przedstawia wymagane szczegóły, aby użyć nazwy SPN. Upewnij się, że klucz tajny klienta są przechowywane.
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -304,7 +304,7 @@ W przykładzie użyto **ResetClientSecret** parametr, który natychmiast zmienia
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia cmdlet:
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ W przykładzie użyto **ResetClientSecret** parametr, który natychmiast zmienia
 
 2. Po zakończeniu pracy automatyzacji, wyświetla nowo wygenerowane klucz tajny, wymaganych do uwierzytelniania nazwy SPN. Upewnij się, że nowy wpis tajny klienta są przechowywane.
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 

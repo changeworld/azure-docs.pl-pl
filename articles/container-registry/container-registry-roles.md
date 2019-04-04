@@ -3,16 +3,17 @@ title: Usługa Azure Container Registry — role i uprawnienia
 description: Użyj kontroli dostępu opartej na rolach na platformie Azure (RBAC) i zarządzania tożsamościami i dostępem (IAM), aby dostarczyć szczegółowe uprawnienia do zasobów w usłudze Azure container registry.
 services: container-registry
 author: dlepow
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593628"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894272"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Usługa Azure Container Registry role i uprawnienia
 
@@ -23,8 +24,9 @@ Usługa Azure Container Registry obsługuje zestaw ról platformy Azure, które 
 | Właściciel | X | X | X | X | X | X |  |  
 | Współautor | X | X | X |  X | X | X |  |  
 | Czytelnik | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | X |  |  |  
+| AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
+| AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Rozróżniania użytkowników i usług
@@ -61,7 +63,7 @@ Możliwość `docker pull` innych niż-poddane kwarantannie obrazu lub Ściągaj
 
 ## <a name="delete-image-data"></a>Usuń obraz danych
 
-Możliwość [usuwanie obrazów kontenerów lub repozytoriów](container-registry-delete.md).
+Możliwość [usuwać obrazów kontenera](container-registry-delete.md), lub usunąć inne [obsługiwane artefaktów](container-registry-image-formats.md) np. wykresów rozwiązania Helm, z rejestru.
 
 ## <a name="change-policies"></a>Zmiany zasad
 

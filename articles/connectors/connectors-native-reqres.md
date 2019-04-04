@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552184"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892831"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Wprowadzenie do składników żądań i odpowiedzi
 Dzięki składnikom żądań i odpowiedzi w aplikacji logiki może odpowiadać w czasie rzeczywistym na zdarzenia.
@@ -34,7 +34,8 @@ Można na przykład:
 Aby rozpocząć pracę, przy użyciu akcje żądania i odpowiedzi w aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Użyj wyzwalacza żądania HTTP
-Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej na temat wyzwalaczy](connectors-overview.md).
+Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. 
+[Dowiedz się więcej na temat wyzwalaczy](../connectors/apis-list.md).
 
 Oto przykładowa sekwencja sposób konfigurowania żądań HTTP w Projektancie aplikacji logiki.
 

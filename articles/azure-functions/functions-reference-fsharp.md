@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734663"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894359"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Usługa Azure Functions F# dokumentacja dla deweloperów
 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Token anulowania
-Jeśli funkcja musi bezpiecznie obsłużyć zamykania, możesz nadać mu [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argumentu. Może to być łączone z `async`, na przykład:
+Jeśli funkcja musi bezpiecznie obsłużyć zamykania, możesz nadać mu [ `CancellationToken` ](/dotnet/api/system.threading.cancellationtoken) argumentu. Może to być łączone z `async`, na przykład:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -166,7 +166,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 Następujące zestawy są automatycznie dodawane przez środowisko hostingu usługi Azure Functions:
 
-* `mscorlib`,
+* `mscorlib`, 
 * `System`
 * `System.Core`
 * `System.Xml`

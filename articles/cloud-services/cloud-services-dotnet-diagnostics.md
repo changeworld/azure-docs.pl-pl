@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 017461d5b73bb48ce61678fbbd795026cef60bc1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536854"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915361"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączając diagnostykę platformy Azure w usługach Azure Cloud Services
 Zobacz [Omówienie diagnostyki Azure](../azure-diagnostics.md) w tle w usłudze Diagnostyka Azure.
@@ -191,7 +191,7 @@ W programie Visual Studio **Eksploratora serwera**, przejdź do konta magazynu w
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schemat pliku konfiguracji
-Plik konfiguracji diagnostyki definiuje wartości, które są stosowane do inicjalizacji ustawień diagnostycznych konfiguracji podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje ogólne o schematach](https://msdn.microsoft.com/library/azure/mt634524.aspx) uzyskać prawidłowe wartości i przykładów.
+Plik konfiguracji diagnostyki definiuje wartości, które są stosowane do inicjalizacji ustawień diagnostycznych konfiguracji podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje ogólne o schematach](/azure/azure-monitor/platform/diagnostics-extension-schema) uzyskać prawidłowe wartości i przykładów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Jeśli masz problemy, zobacz [Rozwiązywanie problemów z usługi Azure Diagnostics](../azure-diagnostics-troubleshooting.md) Pomoc dotycząca typowych problemów.

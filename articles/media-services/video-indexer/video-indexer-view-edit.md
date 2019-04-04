@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991579"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892793"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
 
@@ -34,17 +34,11 @@ W tym temacie przedstawiono sposób wyświetlania i edytowania informacji szczeg
 
     Odtwarzacz i szczegółowe informacje są synchronizowane. Na przykład jeśli klikniesz słowo kluczowe lub wiersza transkrypcji, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [widżetów indeksatora osadzić platformy Azure w swojej aplikacji](video-indexer-embed-widgets.md). 
 
-3. Edytowanie informacji szczegółowych indeksatora wideo.
-
-    Naciśnij klawisze edycji pod filmem. Zostanie wyświetlona strona, pokazujący pełny podział filmu wideo. Zestawienie to jest podzielone na bloki. Bloki mają ułatwić nawigowanie po danych. Blok może zostać wyodrębniony na przykład na podstawie zmiany osoby mówiącej lub wystąpienia długiej przerwy. Możesz utworzyć własną listę odtwarzania zawierającą tylko wybrane wypowiedzi. Aby zaprezentować tylko określone części źródłowego nagrania wideo, możesz przefiltrować je według tematów/słów kluczowych, tonacji, osób i osób mówiących. Możesz wybrać opcję wyświetlania tylko transkrypcji lub wyników optycznego rozpoznawania znaków (OCR) z nagrania wideo.  
-
-    ![Insights](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się, jak utworzyć własne informacji szczegółowych indeksatora wideo, oparte na inne pliki wideo](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Zobacz także
 
-[Omówienie usługi Video Indexer](video-indexer-overview.md)
+[Omówienie indeksatora wideo](video-indexer-overview.md)
 

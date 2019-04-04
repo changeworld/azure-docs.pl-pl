@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 17e9d19b755c1d3ac455d9fef8406e00de3a376d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628940"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915259"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Samouczek: Zaplecze udziału Azure przestrzenne zakotwiczenia między sesjami i urządzeniami za pomocą usługi Azure Cosmos DB
 
@@ -70,7 +70,7 @@ Znajdź `StorageConnectionString` właściwości, a następnie ustaw wartość t
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku użyto usługi Azure Cosmos DB do udostępnienia identyfikatorów kotwic między urządzeniami. Aby dowiedzieć się więcej o bibliotece usługi Azure Spatial Anchors, kontynuuj pracę z naszym przewodnikiem w sekcji dotyczącej sposobu tworzenia i znajdowania kotwic.
+W tym samouczku użyto usługi Azure Cosmos DB do udostępnienia identyfikatorów kotwic między urządzeniami. Aby dowiedzieć się więcej o sposobie używania Azure przestrzenne kotwice w nowej aplikacji systemu Android, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Tworzenie i znajdowanie kotwic przy użyciu usługi Azure Spatial Anchors](../create-locate-anchors-overview.md)
+> [Uruchamianie nowej aplikacji systemu Android](./tutorial-new-android-app.md)

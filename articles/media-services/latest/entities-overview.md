@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a5ab0b25a2a2db764854982b1a6801ce4f857dda
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804874"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891960"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
@@ -47,7 +47,7 @@ Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet
 
 Operacje oznaczone `x-ms-long-running-operation` w usłudze Azure Media Services [swagger pliki](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) długie długotrwałych operacji. 
 
-Aby uzyskać szczegółowe informacje na temat śledzenie operacji asynchronicznych na platformie Azure, zobacz [operacje asynchroniczne](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+Aby uzyskać szczegółowe informacje na temat śledzenie operacji asynchronicznych na platformie Azure, zobacz [operacje asynchroniczne](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
 Usługa Media Services obsługuje następujące operacje długotrwałych:
 
@@ -65,7 +65,6 @@ Usługa Media Services obsługuje następujące operacje długotrwałych:
 * Rozpocznij StreamingEndpoint
 * Zatrzymaj StreamingEndpoint
 * StreamingEndpoint skalowania
-
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Stronicowanie filtrowania, sortowania, jednostek usługi Media Services
 
@@ -356,4 +355,4 @@ W poniższej tabeli przedstawiono, jak te opcje można stosować do [przekształ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
+[Stream pliku](stream-files-dotnet-quickstart.md)

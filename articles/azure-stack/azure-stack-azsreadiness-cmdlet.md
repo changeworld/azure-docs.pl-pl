@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/30/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f920059f97f43a2ac3c48dad1c8f999833f6add1
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992314"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757782"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
-Moduł: Microsoft.AzureStack.ReadinessChecker
+Moduł: **Microsoft.AzureStack.ReadinessChecker**
 
-Ten moduł zawiera tylko jednego polecenia cmdlet.  To polecenie cmdlet wykonuje jedną lub więcej funkcji przed wdrożeniem lub wstępnie obsługi dla usługi Azure Stack.
+Ten moduł zawiera tylko jednego polecenia cmdlet. Polecenia cmdlet wykonuje jedną lub więcej funkcji przed wdrożeniem lub wstępnie obsługi dla usługi Azure Stack.
 
 ## <a name="syntax"></a>Składnia
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        [-CertificatePath <String>]
        -PfxPassword <SecureString>
@@ -45,7 +45,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        [-CertificatePath <String>]
        -PfxPassword <SecureString>
@@ -57,7 +57,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PaaSCertificates <Hashtable>
        -DeploymentDataJSONPath <String>
@@ -67,7 +67,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PaaSCertificates <Hashtable>
        -RegionName <String>
@@ -79,7 +79,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegionName <String>
        -FQDN <String>
@@ -94,7 +94,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PfxPassword <SecureString>
        -PfxPath <String>
@@ -105,7 +105,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -AADServiceAdministrator <PSCredential>
        -AADDirectoryTenantName <String>
@@ -118,7 +118,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -AADServiceAdministrator <PSCredential>
        -DeploymentDataJSONPath <String>
@@ -129,7 +129,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegistrationAccount <PSCredential>
        -RegistrationSubscriptionID <Guid>
@@ -141,7 +141,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegistrationAccount <PSCredential>
        -RegistrationSubscriptionID <Guid>
@@ -153,7 +153,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -ReportPath <String>
        [-ReportSections <String>]
@@ -166,42 +166,42 @@ Start-AzsReadinessChecker
 
 ## <a name="description"></a>Opis
 
-**Start AzsReadinessChecker** polecenia cmdlet sprawdza poprawność certyfikatów, kont platformy Azure, subskrypcje platformy Azure i katalogi Active Azure. Uruchom sprawdzanie poprawności przed wdrożeniem usługi Azure Stack lub przed obsługi akcji, takich jak obrotu klucz tajny w usłudze Azure Stack. Polecenia cmdlet można również wygenerować żądania podpisania certyfikatu dla certyfikatów infrastruktury i opcjonalnie certyfikaty PaaS.  Na koniec polecenia cmdlet można Przeprowadź ponowne pakowanie certyfikaty PFX do rozwiązywania typowych problemów z pakietu.
+**Start AzsReadinessChecker** polecenia cmdlet sprawdza poprawność certyfikatów, kont platformy Azure, subskrypcje platformy Azure i katalogi Active Azure. Uruchom sprawdzanie poprawności przed wdrożeniem usługi Azure Stack lub przed obsługi akcje, takie jak obrotu tajny w usłudze Azure Stack. Polecenia cmdlet można również wygenerować certyfikat podpisywania żądania certyfikatów infrastruktury i, opcjonalnie, certyfikaty PaaS. Na koniec polecenia cmdlet można Przeprowadź ponowne pakowanie certyfikaty PFX do rozwiązywania typowych problemów z pakietu.
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="example-generate-certificate-signing-request"></a>Przykład: Generowanie żądanie podpisania certyfikatu
+### <a name="example-generate-certificate-signing-request"></a>Przykład: generowanie żądanie podpisania certyfikatu
 
-```PowerShell
+```powershell
 $regionName = 'east'
 $externalFQDN = 'azurestack.contoso.com'
 $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
 Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
-W tym przykładzie Start AzsReadinessChecker generuje wiele certyfikatów podpisywania żądań obsługi dla certyfikatów odpowiednich dla wdrożenia usług AD FS usługi Azure Stack przy użyciu nazwy regionu "Wschód" i nazwę FQDN zewnętrznej "azurestack.contoso.com"
+W tym przykładzie `Start-AzsReadinessChecker` generuje wiele żądania (CSR) podpisywania certyfikatu dla certyfikatów odpowiednich dla wdrożenia usługi AD FS usługi Azure Stack przy użyciu nazwy regionu **wschód** i zewnętrznych nazwę FQDN  **azurestack.contoso.com**.
 
 ### <a name="example-validate-certificates"></a>Przykład: Sprawdzanie poprawności certyfikatów
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
 ```
 
-W tym przykładzie hasło PFX jest monitowany o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza folderu względnego "Certyfikaty" w przypadku certyfikatów jest prawidłowy na potrzeby wdrażania usługi AAD, o nazwie regionu "Wschód" i nazwę FQDN zewnętrznej "azurestack.contoso.com"
+W tym przykładzie hasło PFX jest wymagany dla bezpieczeństwa i `Start-AzsReadinessChecker` sprawdza, czy folder względny **certyfikaty** certyfikatów jest prawidłowy na potrzeby wdrażania usługi AAD o nazwie regionu **wschód** i zewnętrzne nazwę FQDN **azurestack.contoso.com**.
 
 ### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>Przykład: Sprawdzanie poprawności certyfikatów przy użyciu danych z wdrożenia (wdrażania i obsługi)
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-W tym przykładzie wdrażania i obsługi hasła PFX jest monitowany o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza folderu względnego "Certyfikaty" prawidłowy na potrzeby wdrożenia, gdy tożsamość, region i nazwy FQDN zewnętrznej są odczytywane z certyfikatami Plik JSON danych wdrożenia wygenerowany dla wdrożenia. 
+W tym przykładzie wdrażania i obsługi hasła PFX jest wymagany dla bezpieczeństwa i `Start-AzsReadinessChecker` sprawdza, czy folder względny **certyfikaty** certyfikatów jest prawidłowy na potrzeby wdrożenia, których tożsamość, region i nazwy FQDN zewnętrznej odczytać z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
 
 ### <a name="example-validate-paas-certificates"></a>Przykład: Sprawdzanie poprawności certyfikatów PaaS
 
-```PowerShell
+```powershell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -212,11 +212,11 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates – RegionName east -FQDN azurestack.contoso.com
 ```
 
-W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, czy każda ścieżka PFX istnieje i weryfikuje je przy użyciu region "Wschód" i FQDN zewnętrznej "azurestack.contoso.com".
+W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. `Start-AzsReadinessChecker` sprawdza, czy każda ścieżka PFX istnieje i sprawdza poprawność ich za pomocą region **wschód** i nazwy FQDN zewnętrznej **azurestack.contoso.com**.
 
 ### <a name="example-validate-paas-certificates-with-deployment-data"></a>Przykład: Sprawdzanie poprawności certyfikatów PaaS przy użyciu danych wdrożenia
 
-```PowerShell
+```powershell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -227,76 +227,76 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, czy każda ścieżka PFX istnieje i sprawdza poprawność ich za pomocą region i FQDN zewnętrznej odczytu z pliku JSON danych wdrożenia wygenerowany dla wdrożenia. 
+W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. `Start-AzsReadinessChecker` sprawdza, czy każda ścieżka PFX istnieje i sprawdza poprawność ich za pomocą region, a tylko FQDN zewnętrznej odczytu z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
 
-### <a name="example-validate-azure-identity"></a>Przykład: Weryfikowanie tożsamości platformy Azure
+### <a name="example-validate-azure-identity"></a>Przykład: weryfikowania tożsamości platformy Azure
 
-```PowerShell
+```powershell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 # Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD o nazwie katalogu dzierżawy "azurestack.contoso.com"
+W tym przykładzie są wymagane dla bezpieczeństwa poświadczenia konta administratora usługi i `Start-AzsReadinessChecker` sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD o nazwie katalogu dzierżawy  **azurestack.contoso.com**.
 
-### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Przykład: Weryfikowanie usługi Azure identity danymi wdrażania (Obsługa wdrażania)
+### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Przykład: Sprawdzanie poprawności tożsamości platformy Azure z danymi wdrażania (Obsługa wdrażania)
 
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-depploymentdata.json
 ```
 
-W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i Start AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD gdzie AzureCloud i TenantName są odczytywane z danych wdrożenia Plik JSON, generowany dla wdrożenia.
+W tym przykładzie są wymagane dla bezpieczeństwa poświadczenia konta administratora usługi i `Start-AzsReadinessChecker` sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD, gdzie **AzureCloud** i **TenantName** są odczytywane z pliku JSON wdrożenia dane generowane dla wdrożenia.
 
-### <a name="example-validate-azure-registration"></a>Przykład: Sprawdź poprawność rejestracji platformy Azure
+### <a name="example-validate-azure-registration"></a>Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure
 
-```PowerShell
+```powershell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
 $subscriptionID = "<subscription ID"
 # Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
-W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker wykonuje następnie weryfikacji względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack. 
+W tym przykładzie są wymagane dla bezpieczeństwa poświadczenia właściciela subskrypcji i `Start-AzsReadinessChecker` następnie wykonuje sprawdzanie poprawności względem danego konta i subskrypcji, aby upewnić się, może służyć do rejestracji w usłudze Azure Stack.
 
-### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Przykład: Sprawdź poprawność rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)
+### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)
 
-```PowerShell
+```powershell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
 $subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker następnie wykonuje sprawdzanie poprawności względem danego konta i subskrypcji, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack gdzie znajdują się dodatkowe szczegóły odczytać z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
+W tym przykładzie są wymagane dla bezpieczeństwa poświadczenia właściciela subskrypcji i `Start-AzsReadinessChecker` następnie wykonuje sprawdzanie poprawności względem danego konta i subskrypcji, aby upewnić się, może służyć do rejestracji usługi Azure Stack, w którym dodatkowe szczegóły są odczytywane z Plik JSON danych wdrożenia wygenerowany dla wdrożenia.
 
-### <a name="example-importexport-pfx-package"></a>Przykład: Pakiet PFX importu/eksportu
+### <a name="example-importexport-pfx-package"></a>Przykład: importu/eksportu pakietu PFX
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
 ```
 
-W tym przykładzie hasło PFX jest monitowany o podanie bezpiecznego. Plik ssl.pfx zostaną zaimportowane do magazynu certyfikatów komputera lokalnego i ponownie eksportowana przy użyciu tego samego hasła i zapisywane jako ssl_new.pfx.  Ta procedura jest do użytku podczas sprawdzania poprawności certyfikatu oflagowane, czy klucz prywatny nie mają ustawionego atrybutu komputera lokalnego, łańcuch certyfikatów jest uszkodzony, nie ma znaczenia certyfikaty znajdują się w pliku PDF lub łańcuch certyfikatów jest w złej kolejności.
+W tym przykładzie hasło PFX jest wymagany dla zabezpieczeń. Plik Ssl.pfx jest zaimportowany do magazynu certyfikatów komputera lokalnego, ponownie eksportowana przy użyciu tego samego hasła i zapisywane jako Ssl_new.pfx. Ta procedura jest używany podczas weryfikacji certyfikatu oflagowane, że nie ma klucza prywatnego **komputera lokalnego** zestaw atrybutów, łańcuch certyfikatów został przerwany, nie ma znaczenia certyfikaty znajdują się w pliku PDF lub łańcuch certyfikatów jest w nieprawidłowej kolejności.
 
 ### <a name="example-view-validation-report-deployment-support"></a>Przykład: Wyświetl raport weryfikacji (Obsługa wdrażania)
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
 ```
 
-W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport gotowości klienta (Contoso) i użyj Start AzsReadinessChecker, aby wyświetlić stan wykonania sprawdzania poprawności, wykonania firmy Contoso.
+W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymuje raport gotowości od klienta (Contoso) i używa `Start-AzsReadinessChecker` Aby wyświetlić stan sprawdzania poprawności wykonaną w Contoso.
 
 ### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>Przykład: Wyświetl raport weryfikacji Podsumowanie certyfikatu weryfikacji tylko (wdrażania i obsługi)
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSections Certificate -Summary
 ```
 
-W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport gotowości odbiorca Contoso i umożliwia wyświetlanie podsumowania stanu wykonań sprawdzania poprawności certyfikatów, wykonać Contoso AzsReadinessChecker rozpoczęcia.
+W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymuje raport gotowości od klienta (Contoso) i używa `Start-AzsReadinessChecker` do wyświetlania podsumowania stanu certyfikatu weryfikacji wykonaną w Contoso.
 
 ## <a name="required-parameters"></a>Wymagane parametry
 
-> -RegionName
+### <a name="-regionname"></a>-RegionName
 
 Określa nazwę region wdrożenia usługi Azure Stack.
 
@@ -308,9 +308,9 @@ Określa nazwę region wdrożenia usługi Azure Stack.
 |Akceptować wejście potokowe:      |False         |
 |Akceptować symbole wieloznaczne: |False         |
 
-> -FQDN
+### <a name="-fqdn"></a>-FQDN
 
-Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana jako ExternalFQDN i ExternalDomainName.
+Określa wdrożenia usługi Azure Stack FQDN zewnętrznej, również aliasowana jako **ExternalFQDN** i **ExternalDomainName**.
 
 |  |  |
 |----------------------------|--------------|
@@ -320,9 +320,9 @@ Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana 
 |Akceptować wejście potokowe:      |False         |
 |Akceptować symbole wieloznaczne: |False         |
 
-> -IdentitySystem
+### <a name="-identitysystem"></a>-IdentitySystem
 
-Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości prawidłowe wartości, AAD lub ADFS, dla usługi Azure Active Directory i Active Directory Federation Services.
+Określa usługi Azure Stack wdrożenia tożsamości systemu prawidłowe wartości, AAD lub ADFS, Azure Active Directory i Active Directory Federation Services, odpowiednio.
 
 |  |  |
 |----------------------------|--------------|
@@ -333,7 +333,7 @@ Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości
 |Akceptować wejście potokowe:      |False         |
 |Akceptować symbole wieloznaczne: |False         |
 
-> -PfxPassword
+### <a name="-pfxpassword"></a>-PfxPassword
 
 Określa hasło skojarzone z plików certyfikatów PFX.
 
@@ -345,7 +345,7 @@ Określa hasło skojarzone z plików certyfikatów PFX.
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -PaaSCertificates
+### <a name="-paascertificates"></a>-PaaSCertificates
 
 Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
 
@@ -357,7 +357,7 @@ Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -DeploymentDataJSONPath
+### <a name="-deploymentdatajsonpath"></a>-DeploymentDataJSONPath
 
 Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik został wygenerowany dla wdrożenia.
 
@@ -369,9 +369,9 @@ Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik 
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -PfxPath
+### <a name="-pfxpath"></a>-PfxPath
 
-Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/eksportu procedury, aby rozwiązać problem, wskazane przez weryfikację certyfikatu w tym narzędziu.
+Określa ścieżkę do problematycznych certyfikatu, który wymaga procedury importu/eksportu, aby rozwiązać problem, wskazane przez weryfikację certyfikatu w tym narzędziu.
 
 |  |  |
 |----------------------------|---------|
@@ -381,7 +381,7 @@ Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/ekspo
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -ExportPFXPath  
+### <a name="-exportpfxpath"></a>-ExportPFXPath  
 
 Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/eksportowania.  
 
@@ -393,7 +393,7 @@ Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -Podmiotu
+### <a name="-subject"></a>-Podmiotu
 
 Określa słownika uporządkowane podmiotu do generowania żądania certyfikatu.
 
@@ -405,12 +405,12 @@ Określa słownika uporządkowane podmiotu do generowania żądania certyfikatu.
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -RequestType
+### <a name="-requesttype"></a>-RequestType
 
-Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCSR, SingleCSR.
+Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości to **MultipleCSR**, **SingleCSR**.
 
-- *MultipleCSR* generuje wiele żądań certyfikatów, jeden dla każdej usługi.
-- *SingleCSR* generuje jedno żądanie certyfikatu dla wszystkich usług.
+- **MultipleCSR** generuje wiele żądań certyfikatów, jeden dla każdej usługi.
+- **SingleCSR** generuje jedno żądanie certyfikatu dla wszystkich usług.
 
 |  |  |
 |----------------------------|---------|
@@ -421,9 +421,9 @@ Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCS
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -OutputRequestPath
+### <a name="-outputrequestpath"></a>-OutputRequestPath
 
-Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi istnieć.
+Określa ścieżkę docelową dla plików żądania certyfikatu. Katalog musi już istnieć.
 
 |  |  |
 |----------------------------|---------|
@@ -433,9 +433,9 @@ Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi is
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -AADServiceAdministrator
+### <a name="-aadserviceadministrator"></a>-AADServiceAdministrator
 
-Określa administratora usługi usługi Azure Active Directory służący do wdrażania usługi Azure Stack.
+Określa, administrator usługi Azure Active Directory służący do wdrażania usługi Azure Stack.
 
 |  |  |
 |----------------------------|---------|
@@ -445,7 +445,7 @@ Określa administratora usługi usługi Azure Active Directory służący do wdr
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -AADDirectoryTenantName
+### <a name="-aaddirectorytenantname"></a>-AADDirectoryTenantName
 
 Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usługi Azure Stack.
 
@@ -457,7 +457,7 @@ Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usł
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -AzureEnvironment
+### <a name="-azureenvironment"></a>-AzureEnvironment
 
 Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i subskrypcji służący do wdrażania usługi Azure Stack i rejestrowania.
 
@@ -470,7 +470,7 @@ Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i 
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -RegistrationAccount
+### <a name="-registrationaccount"></a>-RegistrationAccount
 
 Określa konto rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 
@@ -482,7 +482,7 @@ Określa konto rejestracji, który ma być używany do rejestracji w usłudze Az
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -RegistrationSubscriptionID
+### <a name="-registrationsubscriptionid"></a>-RegistrationSubscriptionID
 
 Określa identyfikator subskrypcji rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 
@@ -494,9 +494,9 @@ Określa identyfikator subskrypcji rejestracji, który ma być używany do rejes
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -ReportPath
+### <a name="-reportpath"></a>-ReportPath
 
-Określa ścieżkę do raportu gotowości, wartością domyślną jest bieżący katalog i domyślne nazwę raportu.
+Określa ścieżkę do raportu gotowość, wartością domyślną jest bieżący katalog i domyślne nazwę raportu.
 
 |  |  |
 |----------------------------|---------|
@@ -508,7 +508,7 @@ Określa ścieżkę do raportu gotowości, wartością domyślną jest bieżący
 
 ## <a name="optional-parameters"></a>Parametry opcjonalne
 
-> -CertificatePath
+### <a name="-certificatepath"></a>-CertificatePath
 
 Określa ścieżkę, pod którym wymagane foldery certyfikatu znajdują się tylko certyfikat.
 
@@ -528,9 +528,9 @@ ACSBlob, ACSQueue, ACSTable, usług AD FS, portalu administracyjnym, ARM adminis
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> -IncludePaaS  
+### <a name="-includepaas"></a>-IncludePaaS  
 
-Określa, jeśli usługi PaaS jako nazw hostów powinny zostać dodane do żądania certyfikatu.
+Określa, czy nazwy hosta/usług PaaS, powinny zostać dodane do żądania certyfikatu.
 
 |  |  |
 |----------------------------|------------------|
@@ -540,7 +540,7 @@ Określa, jeśli usługi PaaS jako nazw hostów powinny zostać dodane do żąda
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
-> -ReportSections
+### <a name="-reportsections"></a>-ReportSections
 
 Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegółów.
 
@@ -553,7 +553,7 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
-> — Podsumowanie
+### <a name="-summary"></a>— Podsumowanie
 
 Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegółów.
 
@@ -565,7 +565,7 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
-> -CleanReport
+### <a name="-cleanreport"></a>-CleanReport
 
 Usuwa historię wykonywania i sprawdzania poprawności i zapisuje operacji sprawdzania poprawności nowego raportu.
 
@@ -578,9 +578,9 @@ Usuwa historię wykonywania i sprawdzania poprawności i zapisuje operacji spraw
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
-> -OutputPath
+### <a name="-outputpath"></a>-OutputPath
 
-Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełny plik dziennika.  Jeśli ścieżka nie istnieje, narzędzie spróbuje utworzyć katalog.
+Określa niestandardową ścieżkę, aby zapisać raport w formacie JSON gotowości i pełny plik dziennika. Jeśli ścieżka nie istnieje, polecenie próbuje utworzyć katalogu.
 
 |  |  |
 |----------------------------|------------------|
@@ -590,7 +590,7 @@ Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełn
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
-> -Upewnij się
+### <a name="-confirm"></a>-Upewnij się
 
 Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 
@@ -603,7 +603,7 @@ Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
-> -WhatIf
+### <a name="-whatif"></a>-WhatIf
 
 Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie jest uruchomione.
 
@@ -615,4 +615,3 @@ Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie 
 |Wartość domyślna:              |False             |
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
-

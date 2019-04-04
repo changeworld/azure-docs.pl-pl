@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8046721244b31539dc79eba3f2ba11d34c2df256
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170367"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904189"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Przewodnik wdrażania funkcji w usłudze Azure Active Directory
 
@@ -32,7 +32,7 @@ Wiele zaleceń w tym przewodniku można zaimplementować przy użyciu usługi Az
 
 Dodatkowe informacje na temat licencjonowania można znaleźć na następujących stronach:
 
-* [Licencjonowanie usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Zarządzanie licencjonowaniem w usłudze Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Usługi AD B2B licencjonowania wskazówki dotyczące platformy Azure](../b2b/licensing-guidance.md)
@@ -46,7 +46,7 @@ W tej fazie Administratorzy włączyć funkcje zabezpieczeń linii bazowej, aby 
 | [Wyznaczenie więcej niż jednego administratora globalnego](../users-groups-roles/directory-emergency-access.md) | W przypadku zagrożenia, należy przypisać co najmniej dwa konta stałe administratora globalnego tylko w chmurze do użycia. Te konta nie są służyć codziennie i powinien mieć długich i złożonych haseł. | Usługa Azure AD — warstwa Bezpłatna |
 | [Użyj nieglobalnych ról administracyjnych, jeśli jest to możliwe](../users-groups-roles/directory-assign-admin-roles.md) | Oferowanie administratorów dostępu, które są im potrzebne tylko potrzebne im dostęp do obszarów. Nie wszystkie Administratorzy muszą być administratorów globalnych. | Usługa Azure AD — warstwa Bezpłatna |
 | [Włącz Privileged Identity Management dla śledzenia użycia roli administratora](../privileged-identity-management/pim-getting-started.md) | Włącz Privileged Identity Management rozpocząć śledzenie użycia rolę administracyjną. | Usługa Azure AD — warstwa Premium P2 |
-| [Wdrażanie funkcji samoobsługowego resetowania haseł](../authentication/howto-sspr-deployment.md) | Zmniejszyć do działu pomocy technicznej związane z resetowaniem haseł, umożliwiając pracownikom resetować swoje hasła przy użyciu zasad jako kontrolkę, która jest administratorem. | Usługa Azure AD — warstwa Podstawowa |
+| [Wdrażanie samoobsługowego resetowania haseł](../authentication/howto-sspr-deployment.md) | Zmniejszyć do działu pomocy technicznej związane z resetowaniem haseł, umożliwiając pracownikom resetować swoje hasła przy użyciu zasad jako kontrolkę, która jest administratorem. | Usługa Azure AD — warstwa Podstawowa |
 | [Tworzenie listy zakazanych haseł w określonych niestandardowych organizacji](../authentication/howto-password-ban-bad-configure.md) | Uniemożliwić użytkownikom tworzenie haseł, które zawierają powszechnie używanych wyrazów ani fraz z Twojej organizacji lub obszaru. | Usługa Azure AD — warstwa Podstawowa |
 | [Włączanie integracji środowiska lokalnego z ochrona za pomocą hasła usługi Azure AD](../authentication/concept-password-ban-bad-on-premises.md) | Rozszerz do katalogu lokalnego, zapewnienie haseł zestawu w środowisku lokalnym są również zgodne z globalnej listy zakazanych haseł i specyficznym dla dzierżawy zakazane listy haseł. | Usługa Azure AD — warstwa Premium P1 |
 | [Włączyć wskazówki dotyczące haseł firmy Microsoft](https://www.microsoft.com/research/publication/password-guidance/) | Zatrzymaj wymagania użytkowników, aby zmienić swoje hasło, zgodnie z ustalonym harmonogramem, wyłącz wymagania co do złożoności i użytkowników są bardziej apt haseł i zachować coś, co jest bezpieczne. | Usługa Azure AD — warstwa Bezpłatna |

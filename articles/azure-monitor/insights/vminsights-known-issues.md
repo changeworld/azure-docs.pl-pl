@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745677"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916703"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -31,7 +31,6 @@ Następujące znane problemy związane z bieżącej wersji funkcji kondycji:
 - Jeśli Maszynę wirtualną platformy Azure zostało usunięte lub usunięte, jest on wyświetlany w widoku listy maszyn wirtualnych za jakiś czas. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej spowoduje otwarcie **Diagnostyka kondycji** wyświetlić, a następnie inicjuje pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
 - Nawet wtedy, gdy portal lub interfejsu API Monitor obciążenie może je wykonać natychmiastową aktualizację, zmiany konfiguracji, takie jak aktualizowanie wartości progowej, potrwać do 30 minut. 
 - Diagnostyka kondycji środowiska aktualizacje szybciej niż inne widoki. Informacje mogą zostać opóźnione, podczas przełączania między nimi. 
-- Zamykanie maszyny wirtualne aktualizuje niektóre kryteria kondycji *krytyczne* i nie tylko na *dobrej kondycji*. Net stan maszyny Wirtualnej jest wyświetlany jako *krytyczne*.
 - W przypadku maszyn wirtualnych systemu Linux tytuł strony ofercie kryteria kondycji dla pojedynczego widoku maszyny Wirtualnej o nazwie całej domeny maszyny Wirtualnej, zamiast nazwy maszyny Wirtualnej użytkownika. 
 - Po wyłączeniu monitorowanie dla maszyny Wirtualnej przy użyciu jednej z obsługiwanych metod i przystąpieniem do wdrażania go ponownie, należy wdrożyć ją w tym samym obszarze roboczym. Jeśli wybierzesz inny obszar roboczy i spróbuj, aby wyświetlić stan kondycji dla tej maszyny Wirtualnej, może wyświetlać niespójne zachowanie.
 - Łączna liczba kryterium kondycji wykorzystanie procesora CPU dla Windows pokazuje próg *nie jest równa* **4**, co oznacza użycie procesora CPU jest większa niż 95% i długość kolejki systemu jest większa niż 15. To kryterium kondycji nie jest konfigurowany w tej wersji zapoznawczej.  

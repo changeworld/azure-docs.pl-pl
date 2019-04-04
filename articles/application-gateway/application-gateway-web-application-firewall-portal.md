@@ -11,19 +11,19 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/25/2019
 ms.author: victorh
-ms.openlocfilehash: c5f1cb992f27a8d3f97967ff6b885b3296be8710
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1284ddec4cd9cea3ea53c20d437550405dd614d9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448434"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905872"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 
 > [!div class="op_single_selector"]
 >
 > - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [Program PowerShell](tutorial-restrict-web-traffic-powershell.md)
+> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](tutorial-restrict-web-traffic-cli.md)
 >
 > 
@@ -129,7 +129,7 @@ W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
    ```azurepowershell-interactive
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
      -ResourceGroupName myResourceGroupAG `
      -ExtensionName IIS `
      -VMName myVM `
@@ -140,7 +140,7 @@ W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych
      -Location EastUS
    ```
 
-3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki ukończone wcześniej. Użyj wartości *myVM2* jako nazwy maszyny wirtualnej oraz jako wartości ustawienia **VMName** polecenia cmdlet **Set-AzureRmVMExtension**.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki ukończone wcześniej. Użyj *myVM2* dla nazwy maszyny wirtualnej i **VMName** ustawienie **AzVMExtension zestaw** polecenia cmdlet.
 
 ### <a name="add-backend-servers-to-backend-pool"></a>Dodawanie serwerów wewnętrznej bazy danych do puli zaplecza
 

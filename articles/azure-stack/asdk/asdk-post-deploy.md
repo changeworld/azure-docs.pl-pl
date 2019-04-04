@@ -16,12 +16,12 @@ ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: b1b11dc27b279173ede4498ca353aea4018ea8f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7699c9279138aedfdcfe63fb42e65ad102ac92c9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102438"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652471"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -48,14 +48,14 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
 
 - Usługa Azure Stack 1901 lub nowszej:
 
-    ```PowerShell
+    ```powershell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Install-Module AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
     > [!Note]  
-    > Wersja modułu usługi Azure Stack 1.7.0 jest zmianą przerywającą. Migrowanie z usługi Azure Stack 1.6.0 można znaleźć w temacie [Przewodnik po migracji](https://aka.ms/azspshmigration170).
+    > Wersja modułu usługi Azure Stack 1.7.1 jest zmianą przerywającą. Migrowanie z usługi Azure Stack 1.6.0 można znaleźć w temacie [Przewodnik po migracji](https://aka.ms/azspshmigration171).
 
   - Azure Stack 1811:
 
@@ -87,7 +87,7 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
 
 - **Bez połączenia z Internetem** z komputera hosta ASDK. W przypadku odłączony należy najpierw pobrać modułów programu PowerShell na komputerze, który ma łączność z Internetem przy użyciu następujących poleceń programu PowerShell:
 
-  ```PowerShell
+  ```powershell
   $Path = "<Path that is used to save the packages>"
 
   Save-Package `
@@ -99,7 +99,7 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
 
   Następnie skopiuj pakiety pobrane na komputer ASDK i zarejestrować lokalizację jako repozytorium domyślne i zainstaluj moduł AzureRM i AzureStack z tego repozytorium:
 
-    ```PowerShell  
+    ```powershell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
     $RepoName = "MyNuGetSource"
 
@@ -114,7 +114,7 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
 
 [Narzędzia AzureStack](https://github.com/Azure/AzureStack-Tools) jest repozytorium GitHub, który jest hostem modułów programu PowerShell do zarządzania i wdrażania zasobów w usłudze Azure Stack. Do uzyskania tych narzędzi, sklonuj repozytorium GitHub lub pobrać folderu Narzędzia AzureStack, uruchamiając następujący skrypt:
 
-  ```PowerShell
+  ```powershell
   # Change directory to the root directory.
   cd \
 

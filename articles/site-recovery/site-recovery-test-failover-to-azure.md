@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6d8ad71894444b3759e506c50244b592ac1f8aac
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976563"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904716"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure 
 
@@ -33,16 +33,16 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. Jeśli 
 2. Wybierz **punkt odzyskiwania** do którego ma zostać w trybie Failover. Możesz użyć jednej z następujących opcji:
     - **Najnowszy przetworzony**: Ta opcja nie powiedzie się za pośrednictwem wszystkich maszyn wirtualnych w planie do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Aby zobaczyć najnowszy punkt dla określonej maszyny Wirtualnej odzyskiwania, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny Wirtualnej. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
     - **Najnowszy spójny na poziomie aplikacji**: Ta opcja nie powiedzie się za pośrednictwem wszystkich maszyn wirtualnych w planie, aby najnowszy spójnych z aplikacją punkt przywracania przetworzone przez usługę Site Recovery. Aby zobaczyć najnowszy punkt dla określonej maszyny Wirtualnej odzyskiwania, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny Wirtualnej.
-    - **Najnowsze**: Ta opcja najpierw przetwarza wszystkie dane, które została wysłana do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny Wirtualnej przed przechodzenie w tryb failover do niego. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania), ponieważ maszyna wirtualna utworzona po pracy awaryjnej, będzie miał wszystkie dane, które są replikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
+    - **Najnowszy**: Ta opcja najpierw przetwarza wszystkie dane, które została wysłana do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny Wirtualnej przed przechodzenie w tryb failover do niego. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania), ponieważ maszyna wirtualna utworzona po pracy awaryjnej, będzie miał wszystkie dane, które są replikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
     - **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne z włączone ustawienie przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie wielu maszyn wirtualnych wspólnej. Inne maszyny wirtualne przełączyć w tryb failover do najnowszego punktu odzyskiwania przetworzonego.  
     - **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne, które są częścią grupy replikacji przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego z aplikacją wspólnej wielu maszyn wirtualnych. Inne maszyny wirtualne Failover ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
-    - **Niestandardowe**: Użyj tej opcji do określonej maszyny Wirtualnej do określonego punktu odzyskiwania w trybie Failover.
+    - **Niestandardowy**: Użyj tej opcji do określonej maszyny Wirtualnej do określonego punktu odzyskiwania w trybie Failover.
 3. Wybierz opcję Usługa Azure virtual network, w której zostanie utworzony test maszyn wirtualnych.
 
     - Próby odzyskiwania lokacji, aby utworzyć testowe maszyny wirtualne w podsieci z taką samą nazwę i ten sam adres IP, jak ta podana w **obliczenia i sieć** ustawienia maszyny wirtualnej.
     - Jeśli podsieć o takiej samej nazwie, nie jest dostępny w sieci wirtualnej platformy Azure używane do testowania trybu failover, następnie test maszyny Wirtualnej jest tworzony w pierwszej podsieci alfabetycznie.
     - Jeśli ten sam adres IP jest niedostępna w tej podsieci, następnie maszyna wirtualna otrzyma kolejny dostępny adres IP w podsieci. [Dowiedz się więcej](#create-a-network-for-test-failover).
-4. Jeśli użytkownik przechodzenia w tryb failover na platformie Azure i szyfrowanie danych jest włączone, w **klucza szyfrowania**, wybierz certyfikat, który został wystawiony, gdy włączone jest szyfrowanie podczas instalacji dostawcy. Możesz zignorować ten krok nie jest włączone szyfrowanie.
+4. Jeśli użytkownik przechodzenia w tryb failover na platformie Azure i szyfrowanie danych jest włączone, w **klucza szyfrowania**, wybierz certyfikat, który został wystawiony, gdy włączone jest szyfrowanie podczas instalacji dostawcy. Można zignorować ten krok, jeśli nie jest włączone szyfrowanie.
 5. Śledzić postęp trybu failover na **zadań** kartę. Można wyświetlić testową maszynę repliki w witrynie Azure portal.
 6. Aby zainicjować połączenie RDP z maszyny Wirtualnej platformy Azure, musisz [dodać publiczny adres IP](https://aka.ms/addpublicip) interfejsu sieciowego w trybie Failover maszyny Wirtualnej.
 7. Gdy wszystko działa zgodnie z oczekiwaniami, kliknij przycisk **wyczyść test pracy awaryjnej**. Spowoduje to usunięcie maszyn wirtualnych, które zostały utworzone podczas testowania trybu failover.
@@ -55,7 +55,7 @@ Podczas testowania trybu failover zostaje wyzwolona, zostaną wykonane następuj
 
 1. **Wymagania wstępne**: Sprawdzanie wymagań wstępnych, przebiegów, aby upewnić się, że zostały spełnione wszystkie warunki wymagane dla trybu failover.
 2. **Tryb failover**: Przełączenie w tryb failover przetwarza i przygotowane dane, tak, aby z niego można utworzyć Maszynę wirtualną platformy Azure.
-3. **Najnowsze**: Jeśli wybrany najnowszy punkt odzyskiwania, punkt odzyskiwania jest tworzony z wysyłanym do usługi danych.
+3. **Najnowszy**: Jeśli wybrany najnowszy punkt odzyskiwania, punkt odzyskiwania jest tworzony z wysyłanym do usługi danych.
 4. **Rozpocznij**: Ten krok umożliwia utworzenie maszyny wirtualnej platformy Azure przy użyciu danych przetworzonych w poprzednim kroku.
 
 ### <a name="failover-timing"></a>Czas pracy awaryjnej

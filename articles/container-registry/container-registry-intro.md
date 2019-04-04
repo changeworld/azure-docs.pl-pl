@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 03/29/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530266"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894017"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
@@ -43,8 +43,8 @@ Skonfiguruj usługę ACR Tasks, aby automatycznie ponownie kompilować obrazy ap
 * **Repozytorium** — rejestr zawiera przynajmniej jedno repozytorium stanowiące grupę obrazów kontenerów. Usługa Azure Container Registry obsługuje wielopoziomowe przestrzenie nazw repozytoriów. Dzięki wielopoziomowym przestrzeniom nazw można grupować kolekcje obrazów związanych z określoną aplikacją lub kolekcje aplikacji związanych z określonymi zespołami programistycznymi lub operacyjnymi. Na przykład:
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` reprezentuje obraz całej firmy
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` reprezentuje obraz używany do tworzenia aplikacji platformy .NET współdzielony przez dział gwarancji
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` reprezentuje obraz sieci Web zgrupowany w aplikacji zgłoszeń klientów i należący do działu gwarancji
+  * `myregistry.azurecr.io/warrantydept/dotnet-build` reprezentuje obraz używany do tworzenia aplikacji platformy .NET, współużytkowana przez dział gwarancji
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` reprezentuje obraz sieci web zgrupowany w aplikacji zgłoszeń klientów i należący do działu gwarancji
 
 * **Obraz** — każdy obraz jest przechowywany w repozytorium i jest migawką tylko do odczytu kontenera zgodnego z platformą Docker. Rejestry kontenerów platformy Azure mogą obejmować zarówno obrazy systemu Windows, jak i Linux. Możesz kontrolować nazwy obrazów wszystkich wdrożeń kontenera. Użyj standardowych [poleceń platformy Docker](https://docs.docker.com/engine/reference/commandline/), aby wypchnąć obrazy do repozytorium lub aby ściągnąć je z repozytorium. Oprócz obrazów kontenerów usługa Azure Container Registry umożliwia przechowywanie [formatów powiązanej zawartości](container-registry-image-formats.md), takich jak [wykresy Helm](container-registry-helm-repos.md), które są używane do wdrażania aplikacji w usłudze Kubernetes.
 
@@ -54,10 +54,10 @@ Skonfiguruj usługę ACR Tasks, aby automatycznie ponownie kompilować obrazy ap
 
 Usługa [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) to pakiet funkcji usługi Azure Container Registry, który udostępnia uproszczone i wydajne kompilacje obrazów kontenerów platformy Docker na platformie Azure. Usługa ACR Tasks umożliwia rozszerzenie wewnętrznej pętli programowania o chmurę dzięki odciążaniu operacji `docker build` na platformie Azure. Konfiguruj zadania kompilacji w celu automatyzowania potoku poprawiania platformy i systemu operacyjnego kontenera, gdy zespół zatwierdza kod w ramach kontroli źródła.
 
-[Zadania wieloetapowe](container-registry-tasks-overview.md#multi-step-tasks-preview) to funkcja w wersji zapoznawczej usługi ACR Tasks, umożliwiająca krokowe definiowanie i wykonywanie zadań na potrzeby tworzenia, testowania i poprawiania obrazów kontenerów w chmurze. Kroki zadań definiują pojedyncze operacje tworzenia i wypychania obrazu kontenera. Mogą one również definiować wykonanie jednego lub kilku kontenerów, z każdym krokiem używającym kontenera jako jego środowiska wykonawczego.
+[Zadania wieloetapowe](container-registry-tasks-overview.md#multi-step-tasks) Podaj definicji zadań na podstawie kroku i wykonywania dla tworzenia, testowania i poprawianie obrazów kontenerów w chmurze. Kroki zadań definiują pojedyncze operacje tworzenia i wypychania obrazu kontenera. Mogą one również definiować wykonanie jednego lub kilku kontenerów, z każdym krokiem używającym kontenera jako jego środowiska wykonawczego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Create a container registry using the Azure portal](container-registry-get-started-portal.md) (Tworzenie rejestru kontenerów za pomocą witryny Azure Portal)
-* [Create a container registry using the Azure CLI](container-registry-get-started-azure-cli.md) (Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure)
-* [Automatyzacja systemu operacyjnego i poprawianie struktury przy użyciu usługi ACR Tasks](container-registry-tasks-overview.md)
+* [Tworzenie rejestru kontenerów za pomocą witryny Azure Portal](container-registry-get-started-portal.md)
+* [Tworzenie rejestru kontenera za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md)
+* [Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR](container-registry-tasks-overview.md)

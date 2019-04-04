@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863138"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905207"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -64,14 +64,14 @@ Można skonfiguruj baz danych Azure SQL i wystąpienie bazy danych, aby zebrać 
 | :------------------- | ----- | ----- |
 | [Wszystkie metryki](#all-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Yes | Nie |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Yes | Yes |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany), takie jak procesor CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany) są takie procesora CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
 | [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Yes |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu, w bazie danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu bazy danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
 | [Limity czasu](#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Yes | Nie |
 | [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
 | [Zakleszczenie](#deadlocks-dataset): Zawiera informacje o zdarzeniach zakleszczenie w bazie danych. | Yes | Nie |
 | [AutomaticTuning](#automatic-tuning-dataset): Zawiera informacje dotyczące automatycznego zalecenia dotyczące dostrajania bazy danych. | Yes | Nie |
-| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
+| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność bazy danych. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
 
 > [!IMPORTANT]
 > Pule elastyczne i zarządzanych wystąpień przez mają swoje własne dane oddzielne diagnostyczne i telemetryczne z baz danych, które zawierają. Jest to należy zwrócić uwagę jako dane diagnostyczne i telemetryczne skonfigurowano oddzielnie dla każdej z tych zasobów, zgodnie z opisem poniżej.

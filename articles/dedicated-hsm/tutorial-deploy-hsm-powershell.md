@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449354"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904852"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -34,6 +34,9 @@ Typowa architektura wdrożenia w wielu regionach o wysokiej dostępności może 
 ![wdrażanie w wielu regionach](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
 Ten samouczek koncentruje się na dwóch modułach HSM i wymaganej bramie usługi ExpressRoute (patrz Podsieć 1 powyżej), które są integrowane w ramach istniejącej sieci wirtualnej (patrz Sieć wirtualna 1 powyżej).  Wszystkie inne zasoby to standardowe zasoby platformy Azure. Ten sam proces integracji może zostać użyty dla modułów HSM w podsieci 4 w sieci wirtualnej 3 powyżej.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -56,13 +59,13 @@ Aprowizowanie modułów HSM i integrowanie ich w ramach istniejącej sieci wirtu
 Jak wspomniano powyżej, wszelkie działania związane z aprowizacją wymagają, aby usługa dedykowanego modułu HSM była zarejestrowana dla Twojej subskrypcji. Aby to zweryfikować, uruchom następujące polecenie programu PowerShell w usłudze Cloud Shell w witrynie Azure Portal. 
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
+Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
 Poniższe polecenie weryfikuje funkcje sieciowe wymagane na potrzeby usługi dedykowanego modułu HSM.
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
 Oba polecenia powinny zwrócić stan „Zarejestrowano” (jak pokazano poniżej) przed przystąpieniem do dalszej pracy.  Jeśli konieczne jest zarejestrowanie się w celu korzystania z tej usługi, skontaktuj się z przedstawicielem firmy Microsoft.
@@ -75,12 +78,12 @@ Urządzenie HSM jest aprowizowane w sieci wirtualnej klientów. Oznacza to konie
 
 Po uzyskaniu tych plików należy zmodyfikować plik parametrów i wstawić preferowane nazwy zasobów. Oznacza to konieczność edytowania wierszy z wartością "value": "".
 
-- `namingInfix` Prefiks nazw zasobów modułu HSM
-- `ExistingVirtualNetworkName` Nazwa sieci wirtualnej używanej dla modułów HSM
-- `DedicatedHsmResourceName1` Nazwa zasobu modułu HSM w zasobach sprzętowych 1 centrum danych
-- `DedicatedHsmResourceName2` Nazwa zasobu modułu HSM w zasobach sprzętowych 2 centrum danych
+- `namingInfix` Prefiks nazwy zasobów przez moduł HSM
+- `ExistingVirtualNetworkName` Nazwa sieci wirtualnej używane dla modułów HSM
+- `DedicatedHsmResourceName1` Nazwa zasobu przez moduł HSM w sygnatury centrum danych 1
+- `DedicatedHsmResourceName2` Nazwa zasobu przez sprzętowy moduł zabezpieczeń w centrum danych sygnatury 2
 - `hsmSubnetRange` Zakres adresów IP podsieci dla modułów HSM
-- `ERSubnetRange` Zakres adresów IP podsieci dla bramy sieci wirtualnej
+- `ERSubnetRange` Zakres adresów IP podsieci dla bramy sieci Wirtualnej
 
 Przykład tych zmian jest następujący:
 
@@ -130,20 +133,20 @@ Po przekazaniu plików można przystąpić do tworzenia zasobów.
 Przed utworzeniem nowych zasobów modułu HSM należy sprawdzić, czy istnieją pewne wymagane wstępnie zasoby. Należy mieć sieć wirtualną z zakresami adresów na potrzeby obliczeń, modułów HSM i bramy. Następujące polecenia przedstawiają przykładowy sposób tworzenia takiej sieci wirtualnej.
 
 ```powershell
-$compute = New-AzureRmVirtualNetworkSubnetConfig `
+$compute = New-AzVirtualNetworkSubnetConfig `
   -Name compute `
   -AddressPrefix 10.2.0.0/24
 ```
 
 ```powershell
-$delegation = New-AzureRmDelegation `
+$delegation = New-AzDelegation `
   -Name "myDelegation" `
   -ServiceName "Microsoft.HardwareSecurityModules/dedicatedHSMs"
 
 ```
 
 ```powershell
-$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+$hsmsubnet = New-AzVirtualNetworkSubnetConfig ` 
   -Name hsmsubnet ` 
   -AddressPrefix 10.2.1.0/24 ` 
   -Delegation $delegation 
@@ -152,7 +155,7 @@ $hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-$gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
+$gwsubnet= New-AzVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
   -AddressPrefix 10.2.255.0/26
 
@@ -160,7 +163,7 @@ $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -Name myHSM-vnet `
   -ResourceGroupName myRG `
   -Location westus `
@@ -176,7 +179,7 @@ Gdy wszystkie wymagania wstępne zostaną spełnione, uruchom następujące pole
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
+New-AzResourceGroupDeployment -ResourceGroupName myRG `
      -TemplateFile .\Deploy-2HSM-toVNET-Template.json `
      -TemplateParameterFile .\Deploy-2HSM-toVNET-Params.json `
      -Name HSMdeploy -Verbose
@@ -195,10 +198,10 @@ Aby zweryfikować, czy urządzenia zostały zaaprowizowane, i wyświetlić atryb
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG"
 $resourceName = "HSM1"  
-Get-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
 
 ```
 
@@ -218,7 +221,7 @@ Po zalogowaniu się do maszyny wirtualnej z systemem Linux możesz zalogować si
 
 ```powershell
 
-(Get-AzureRmResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
+(Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
 Gdy będziesz mieć adres IP, uruchom następujące polecenie:
@@ -262,10 +265,10 @@ Jeśli zakończono pracę z zasobami w tej grupie zasobów, możesz usunąć je 
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG" 
 $resourceName = "HSMdeploy"  
-Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
+Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
 
 ```
 
@@ -275,6 +278,6 @@ Po wykonaniu kroków w tym samouczku zasoby dedykowanego modułu HSM zostaną za
 
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
-* [Sieć](networking.md)
+* [Networking](networking.md)
 * [Monitorowanie](monitoring.md)
 * [Możliwości obsługi](supportability.md)

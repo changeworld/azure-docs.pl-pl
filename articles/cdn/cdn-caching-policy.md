@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540159"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918284"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Zarządzanie Azure zasady buforowania usługi CDN w usłudze Azure Media Services
 Usługa Azure Media Services udostępnia oparty na protokole HTTP adaptacyjnego przesyłania strumieniowego i pobierania progresywnego. Wysoka skalowalność dzięki korzyści z pamięci podręcznej serwera proxy i warstwy sieci CDN, a także buforowaniem po stronie klienta jest oparty na protokole HTTP, przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego zapewnia ogólne możliwości przesyłania strumieniowego, a także konfiguracji dla protokołu HTTP, nagłówków pamięci podręcznej. Punkty końcowe przesyłania strumieniowego ustawia HTTP Cache-Control: maksymalny wiek i nagłówków Expires. Można uzyskać więcej informacji na nagłówki cache HTTP od [adresem W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -39,7 +39,7 @@ Usługa Azure Media Services udostępnia [zintegrowane usługi CDN](https://azur
 Witryny Azure portal lub interfejsów API usługi Azure Media Services umożliwiają skonfigurowanie wartości nagłówka pamięci podręcznej.
 
 1. Aby skonfigurować nagłówki cache przy użyciu witryny Azure portal, zapoznaj się [jak zarządzanie punktami końcowymi przesyłania strumieniowego](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) sekcji konfigurowania punktu końcowego przesyłania strumieniowego.
-2. W przypadku interfejsu API REST usługi Azure Media Services [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
+2. W przypadku interfejsu API REST usługi Azure Media Services [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
 3. Zestaw .NET SDK usługi Azure Media Services [właściwości StreamingEndpointCacheControl](https://go.microsoft.com/fwlink/?LinkId=615302).
 
 ## <a name="cache-configuration-precedence-order"></a>Kolejność pierwszeństwa konfiguracji pamięci podręcznej

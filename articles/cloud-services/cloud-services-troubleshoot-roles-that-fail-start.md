@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255425"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918420"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z ról usługi w chmurze, które można uruchomić
 Poniżej przedstawiono niektóre typowe problemy i rozwiązania związane z usług Azure Cloud Services role, których nie udało się uruchomić.
@@ -76,7 +76,7 @@ Przejdź do witryny sieci Web teraz zwróci dokładniejsze komunikaty o błędac
 
 * Błąd serwera w aplikacji» /».
 * Opis: Wystąpił nieobsługiwany wyjątek podczas wykonywania bieżącego żądania sieci web. Sprawdź ślad stosu, aby uzyskać więcej informacji o błędzie i pochodzenie w kodzie.
-* Szczegóły wyjątku: System.IO.FIleNotFoundException: nie można załadować pliku lub zestawu "Microsoft.WindowsAzure.StorageClient, wersja = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35" lub jednej z jego zależności. System nie może odnaleźć określonego pliku.
+* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu ' Microsoft.WindowsAzure.StorageClient, wersja = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 "lub jednej z jego zależności. W systemie nie można odnaleźć określonego pliku.
 
 Na przykład:
 
@@ -96,7 +96,7 @@ Aby uzyskać najlepsze wyniki przy użyciu tej metody diagnostyki należy używa
 7. Podczas uruchamiania roli, zobaczysz szczegółowe informacje o błędzie w programie Internet Explorer. Umożliwia także Windows standardowych narzędzi do rozwiązywania problemów można zdiagnozować problem.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnozowanie problemów przy użyciu funkcji IntelliTrace
-W przypadku procesu roboczego i role sieci web, które używają .NET Framework 4, można użyć [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx), który jest dostępny w programie Microsoft Visual Studio Enterprise.
+W przypadku procesu roboczego i role sieci web, które używają .NET Framework 4, można użyć [IntelliTrace](/visualstudio/debugger/intellitrace), który jest dostępny w programie Microsoft Visual Studio Enterprise.
 
 Wykonaj następujące kroki, aby wdrożyć usługę przy użyciu funkcji IntelliTrace jest włączony:
 

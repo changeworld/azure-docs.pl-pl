@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 57a97d76a864a644426296cf24401b2210709d39
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5ddae616f81052e005210310e2d28b1bc10512ab
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805809"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906212"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -1432,8 +1432,8 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.ContainerService/managedClusters/resetServicePrincipalProfile/action | Resetowanie profilu jednostki usługi z zarządzanego klastra |
 > | Akcja | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | Pobiera profil uaktualniania klastra |
 > | Akcja | Microsoft.ContainerService/managedClusters/write | Tworzy nowy klaster zarządzany lub aktualizuje istniejący |
-> | Akcja | Microsoft.ContainerService/openShiftClusters/delete | Usuwanie klastra Open Shift |
-> | Akcja | Microsoft.ContainerService/openShiftClusters/read | Pobierz klastra Open Shift |
+> | Akcja | Microsoft.ContainerService/openShiftClusters/delete | Usuwanie klastra usługi Open Shift |
+> | Akcja | Microsoft.ContainerService/openShiftClusters/read | Pobierz klaster Open Shift |
 > | Akcja | Microsoft.ContainerService/openShiftClusters/write | Tworzy nowy klaster Open Shift lub aktualizuje istniejący zestaw |
 > | Akcja | Microsoft.ContainerService/openShiftManagedClusters/delete | Usunąć klaster zarządzanego Open Shift |
 > | Akcja | Microsoft.ContainerService/openShiftManagedClusters/read | Pobierz Open Shift zarządzanego klastra |
@@ -5902,4 +5902,4 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
-- [Wbudowane role dla zasobów platformy Azure](built-in-roles.md)
+- [Wbudowane role zasobów platformy Azure](built-in-roles.md)

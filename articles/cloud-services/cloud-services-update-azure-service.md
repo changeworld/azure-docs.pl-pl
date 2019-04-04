@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008097"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917230"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak zaktualizować usługę w chmurze
 
@@ -28,7 +28,7 @@ Aktualizowanie usługi w chmurze, łącznie z jej ról i gościa systemu operacy
 ## <a name="update-an-azure-service"></a>Aktualizacja usługi platformy Azure
 Azure organizuje wystąpień roli w logiczne grupy o nazwie domen uaktualnienia (UD). Domen uaktualnienia (UD) to logiczne zestawy wystąpień roli, które zostały zaktualizowane w grupie.  Aktualizacje platformy Azure w chmurze usługi UD jednego naraz, dzięki czemu wystąpień w innych domenach uaktualniania można nadal obsługiwać ruch.
 
-Domyślna liczba domen uaktualnienia wynosi 5. Można określić różną liczbę domen uaktualnienia, umieszczając atrybut upgradeDomainCount w pliku definicji usługi (csdef). Aby uzyskać więcej informacji na temat atrybutów upgradeDomainCount zobacz [webrole — schemat](https://msdn.microsoft.com/library/azure/gg557553.aspx) lub [workerrole — schemat](https://msdn.microsoft.com/library/azure/gg557552.aspx).
+Domyślna liczba domen uaktualnienia wynosi 5. Można określić różną liczbę domen uaktualnienia, umieszczając atrybut upgradeDomainCount w pliku definicji usługi (csdef). Aby uzyskać więcej informacji na temat atrybutów upgradeDomainCount zobacz [webrole — schemat](/previous-versions/azure/reference/gg557553(v=azure.100)) lub [workerrole — schemat](/previous-versions/azure/reference/gg557552(v=azure.100)).
 
 Po wykonaniu aktualizacji w miejscu z jednego lub większej liczby ról w usłudze Azure aktualizuje zestawy wystąpień roli, zgodnie z domeną uaktualnienia, do której należą. Aktualizacje platformy Azure, wszystkich wystąpień w danej domenie uaktualnienia — zatrzymywanie, aktualizuje je, wskazanie ich z powrotem w trybie online — następnie przechodzi do następnej domeny. Przez zatrzymanie wystąpienia, uruchomione w bieżącej domenie uaktualnienia, Azure zapewnia, że nastąpi aktualizacja przy najniższe możliwe wpływie na uruchomioną usługę. Aby uzyskać więcej informacji, zobacz [jak aktualizacja będzie kontynuowana](#howanupgradeproceeds) w dalszej części tego artykułu.
 
@@ -82,7 +82,7 @@ Następujące elementy nie są obsługiwane podczas aktualizacji:
 * Zmiana liczby domen uaktualnienia.
 * Zmniejszenie rozmiaru zasobów lokalnych.
 
-Jeśli wykonujesz inne aktualizacje definicji usługi, takie jak zmniejszyć rozmiar zasobu lokalnego zamiast tego należy wykonać aktualizację wymiany adresu VIP. Aby uzyskać więcej informacji, zobacz [Swap Deployment](https://msdn.microsoft.com/library/azure/ee460814.aspx).
+Jeśli wykonujesz inne aktualizacje definicji usługi, takie jak zmniejszyć rozmiar zasobu lokalnego zamiast tego należy wykonać aktualizację wymiany adresu VIP. Aby uzyskać więcej informacji, zobacz [Swap Deployment](/previous-versions/azure/reference/ee460814(v=azure.100)).
 
 <a name="howanupgradeproceeds"></a>
 
@@ -121,7 +121,7 @@ Aby zminimalizować przestoje podczas uaktualniania pojedynczego wystąpienia us
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Wycofywanie aktualizacji
-Platforma Azure zapewnia elastyczność w zakresie zarządzania usługi podczas aktualizacji, umożliwiając inicjowanie dodatkowych operacji w usłudze po zaakceptowaniu żądania aktualizacji początkowej przez kontroler sieci szkieletowej platformy Azure. Wycofywania można wykonać tylko w przypadku aktualizacji (zmiana konfiguracji) lub Trwa uaktualnianie **w toku** stanu wdrożenia. Aktualizacja lub uaktualnienia jest uważany za w toku, tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji. Aby sprawdzić, czy jest dozwolone wycofywania, sprawdź wartość flagi RollbackAllowed, zwracany przez [Rozpoczynanie wdrażania](https://msdn.microsoft.com/library/azure/ee460804.aspx) i [pobrać właściwości usługi w chmurze](https://msdn.microsoft.com/library/azure/ee460806.aspx) operacji jest ustawiona na wartość true.
+Platforma Azure zapewnia elastyczność w zakresie zarządzania usługi podczas aktualizacji, umożliwiając inicjowanie dodatkowych operacji w usłudze po zaakceptowaniu żądania aktualizacji początkowej przez kontroler sieci szkieletowej platformy Azure. Wycofywania można wykonać tylko w przypadku aktualizacji (zmiana konfiguracji) lub Trwa uaktualnianie **w toku** stanu wdrożenia. Aktualizacja lub uaktualnienia jest uważany za w toku, tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji. Aby sprawdzić, czy jest dozwolone wycofywania, sprawdź wartość flagi RollbackAllowed, zwracany przez [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)) operacji jest ustawiona na wartość true.
 
 > [!NOTE]
 > Tylko warto wywołanie wycofywania na **w miejscu** aktualizacji lub uaktualnienia, ponieważ obejmują uaktualnień wymiany adresu VIP, zastępując cały jedno uruchomione wystąpienie usługi z inną.
@@ -135,13 +135,13 @@ Wycofanie aktualizacja w toku ma następujące skutki wdrożenia:
 
 To funkcjonalnie są dostarczane przez następujące funkcje:
 
-* [Wycofywanie aktualizacji lub uaktualnienia](https://msdn.microsoft.com/library/azure/hh403977.aspx) operacji, która może być wywoływana po aktualizacji konfiguracji (wyzwalane przez wywołanie metody [zmiana konfiguracji wdrożenia](https://msdn.microsoft.com/library/azure/ee460809.aspx)) lub uaktualnienia (wyzwalane przez wywołanie metody [ Uaktualnianie wdrożenia](https://msdn.microsoft.com/library/azure/ee460793.aspx)) tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji.
-* Element zablokowany i RollbackAllowed element, które są zwracane jako część treści odpowiedzi [Rozpoczynanie wdrażania](https://msdn.microsoft.com/library/azure/ee460804.aspx) i [pobrać właściwości usługi w chmurze](https://msdn.microsoft.com/library/azure/ee460806.aspx) operacje:
+* [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operacji, która może być wywoływana po aktualizacji konfiguracji (wyzwalane przez wywołanie metody [zmiana konfiguracji wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100))) lub uaktualnienia (wyzwalane przez wywołanie metody [ Uaktualnianie wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100))) tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji.
+* Element zablokowany i RollbackAllowed element, które są zwracane jako część treści odpowiedzi [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)) operacje:
 
   1. Element zablokowany umożliwia wykrywanie mutujące operacji może być wywoływany w danym wdrożeniu.
-  2. RollbackAllowed element pozwala wykryć, kiedy [Wycofywanie aktualizacji lub uaktualnienia](https://msdn.microsoft.com/library/azure/hh403977.aspx) operacji może być wywoływana dla danego wdrożenia.
+  2. RollbackAllowed element pozwala wykryć, kiedy [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operacji może być wywoływana dla danego wdrożenia.
 
-  Aby można było wykonać wycofanie, jest konieczne Sprawdź elementy RollbackAllowed i zablokowany. Wystarczające, aby upewnić się, że RollbackAllowed jest ustawiona na wartość true. Te elementy są zwracane tylko, jeśli te metody są wywoływane przy użyciu nagłówka żądania ustawiona na "x-ms-version: 2011-10-01" lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+  Aby można było wykonać wycofanie, jest konieczne Sprawdź elementy RollbackAllowed i zablokowany. Wystarczające, aby upewnić się, że RollbackAllowed jest ustawiona na wartość true. Te elementy są zwracane tylko, jeśli te metody są wywoływane przy użyciu nagłówka żądania ustawiona na "x-ms-version: 2011-10-01 "lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](/previous-versions/azure/gg592580(v=azure.100)).
 
 Istnieje kilka sytuacji, gdy Wycofywanie aktualizacji lub uaktualnienie nie jest obsługiwane, są w następujący sposób:
 
@@ -149,9 +149,9 @@ Istnieje kilka sytuacji, gdy Wycofywanie aktualizacji lub uaktualnienie nie jest
 * Ograniczenia limitu przydziału — Jeśli operacja skalowania w dół możesz już zainstalowano aktualizację ma wystarczający przydział usługi compute do ukończenia operacji wycofywania. Każda subskrypcja platformy Azure ma limit przydziału skojarzonych z nim określająca maksymalną liczbę rdzeni, które mogą być używane przez wszystkich hostowanych usług, które należą do tej subskrypcji. Jeśli przeprowadzania wycofywania danej aktualizacji umieścić swoją subskrypcję za pośrednictwem przydziału, a następnie wycofanie nie zostaną włączone.
 * Sytuacja wyścigu — Jeśli ukończono aktualizowanie początkowego, wycofanie nie jest możliwe.
 
-Jest przykładem podczas wycofywania aktualizacji mogą być przydatne, jeśli używasz [uaktualniania wdrożenia](https://msdn.microsoft.com/library/azure/ee460793.aspx) operacji w trybie ręcznej, aby kontrolować szybkość, z jaką usługa hostowana główna uaktualnienia w miejscu do subskrypcji platformy Azure jest wdrażana.
+Jest przykładem podczas wycofywania aktualizacji mogą być przydatne, jeśli używasz [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) operacji w trybie ręcznej, aby kontrolować szybkość, z jaką usługa hostowana główna uaktualnienia w miejscu do subskrypcji platformy Azure jest wdrażana.
 
-W miarę wprowadzania aktualizacji uaktualnienia należy wywołać [uaktualniania wdrożenia](https://msdn.microsoft.com/library/azure/ee460793.aspx) w trybie ręcznej i zacząć Skontroluj domeny uaktualnienia. Jeśli w pewnym momencie podczas monitorowania uaktualnienia, należy zaznaczyć kilka wystąpień roli w pierwszym domen uaktualnienia, które badania mają przestanie odpowiadać, można wywołać [Wycofywanie aktualizacji lub uaktualnienia](https://msdn.microsoft.com/library/azure/hh403977.aspx) operację wdrożenia, co spowoduje, że niezmienione wystąpień, które nie miały jeszcze uaktualnione i wystąpień wycofywania, co ma został uaktualniony do poprzedniego pakietu usługi i konfiguracji.
+W miarę wprowadzania aktualizacji uaktualnienia należy wywołać [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) w trybie ręcznej i zacząć Skontroluj domeny uaktualnienia. Jeśli w pewnym momencie podczas monitorowania uaktualnienia, należy zaznaczyć kilka wystąpień roli w pierwszym domen uaktualnienia, które badania mają przestanie odpowiadać, można wywołać [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operację wdrożenia, co spowoduje, że niezmienione wystąpień, które nie miały jeszcze uaktualnione i wystąpień wycofywania, co ma został uaktualniony do poprzedniego pakietu usługi i konfiguracji.
 
 <a name="multiplemutatingoperations"></a>
 
@@ -162,11 +162,11 @@ Po otrzymaniu początkowe żądanie aktualizacji lub uaktualnienia usługi przez
 
 Inicjowanie drugą operację aktualizacji, gdy trwa Pierwsza aktualizacja będzie wykonywać podobne do operacji wycofywania. W przypadku drugiej aktualizacji w trybie automatycznym, pierwsza domena uaktualnienia zostaną uaktualnione natychmiast, prawdopodobnie prowadzących do wystąpienia z wielu domen uaktualnienia, jest w trybie offline, w tym samym punkcie w czasie.
 
-Operacje mutujące są następujące: [zmiana konfiguracji wdrożenia](https://msdn.microsoft.com/library/azure/ee460809.aspx), [uaktualniania wdrożenia](https://msdn.microsoft.com/library/azure/ee460793.aspx), [stan wdrożenia aktualizacji](https://msdn.microsoft.com/library/azure/ee460808.aspx), [usuwanie wdrożenia ](https://msdn.microsoft.com/library/azure/ee460815.aspx), i [wycofanie aktualizacja lub uaktualnienia](https://msdn.microsoft.com/library/azure/hh403977.aspx).
+Operacje mutujące są następujące: [Zmiana konfiguracji wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100)), [uaktualnić wdrożenie](/previous-versions/azure/reference/ee460793(v=azure.100)), [stan wdrożenia aktualizacji](/previous-versions/azure/reference/ee460808(v=azure.100)), [Drożenie](/previous-versions/azure/reference/ee460815(v=azure.100)), i [wycofywania Aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
-Dwie operacje [Rozpoczynanie wdrażania](https://msdn.microsoft.com/library/azure/ee460804.aspx) i [pobrać właściwości usługi w chmurze](https://msdn.microsoft.com/library/azure/ee460806.aspx), zwracają Flaga zablokowany, która może być sprawdzane w celu określenia, czy mutujące operacji może być wywoływany w danym wdrożeniu.
+Dwie operacje [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)), zwracają Flaga zablokowany, która może być sprawdzane w celu określenia, czy mutujące operacji może być wywoływany w danym wdrożeniu.
 
-Aby można było wywołać wersji tych metod, która zwraca flagę zablokowany, musisz ustawić nagłówek żądania "x-ms-version: 2011-10-01" lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+Aby można było wywołać wersji tych metod, która zwraca flagę zablokowany, musisz ustawić nagłówek żądania "x-ms-version: 2011-10-01 "lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 

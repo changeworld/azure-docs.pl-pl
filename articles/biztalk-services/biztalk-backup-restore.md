@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee86b9aa2d920668cf036f3e8f8634e9289e8913
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230295"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916873"
 ---
-# <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)
+# <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Wykonywanie kopii zapasowych i przywracanie
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -34,7 +34,7 @@ Usługa Azure BizTalk Services obejmuje funkcje tworzenia kopii zapasowych i prz
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-* Kopia zapasowa i przywracanie nie mogą być dostępne dla wszystkich wersji. Zobacz [usługi BizTalk Services: Editions Chart](biztalk-editions-feature-chart.md).
+* Kopia zapasowa i przywracanie nie mogą być dostępne dla wszystkich wersji. See [BizTalk Services: Wykres przedstawiający wersje](biztalk-editions-feature-chart.md).
 * Zawartość kopii zapasowej można przywrócić do tej samej usługi BizTalk lub nową usługę BizTalk. Aby przywrócić usługę BizTalk, przy użyciu takiej samej nazwie, należy usunąć istniejące usługi BizTalk, a nazwa musi być dostępna. Po usunięciu usługi BizTalk może potrwać dłużej, niż dla tej samej nazwie, które mają być dostępne. Jeśli nie możesz czekać na tej samej nazwie, która była dostępna, Przywróć do nowej usługi BizTalk.
 * Usługa BizTalk Services można przywrócić do tej samej wersji lub nowszej wersji. Przywracanie starszej wersji usługi BizTalk Services, od kiedy wykonano kopię zapasową, nie jest obsługiwana.
   
@@ -43,13 +43,13 @@ Usługa Azure BizTalk Services obejmuje funkcje tworzenia kopii zapasowych i prz
 * W przypadku usługi batch ma aktywne wiadomości, proces partii **przed** tworzona kopia zapasowa. Podczas tworzenia kopii zapasowej (jako wymagane lub zaplanowane), nigdy nie są przechowywane komunikaty w partii. 
   
     **Jeśli kopia zapasowa pochodzi z aktywne komunikaty w partii, te komunikaty są nie kopię zapasową, a w związku z tym zostaną utracone.**
-* Opcjonalnie: W portalu usługi BizTalk Services, Zatrzymaj żadnych operacji zarządzania.
+* Opcjonalnie: W portalu usługi BizTalk Services należy zatrzymać wszystkie operacje zarządzania.
 
 ## <a name="create-a-backup"></a>Tworzenie kopii zapasowej
-Kopię zapasową można wykonać w dowolnym momencie i jest całkowicie kontrolowana przez użytkownika. Aby utworzyć kopię zapasową, użyj [REST API for Managing BizTalk Services na platformie Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Kopię zapasową można wykonać w dowolnym momencie i jest całkowicie kontrolowana przez użytkownika. Aby utworzyć kopię zapasową, użyj [REST API for Managing BizTalk Services na platformie Azure](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ## <a name="restore"></a>Przywracanie
-Aby przywrócić kopię zapasową, użyj [REST API for Managing BizTalk Services na platformie Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Aby przywrócić kopię zapasową, użyj [REST API for Managing BizTalk Services na platformie Azure](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ### <a name="postrestore"></a>Po przywróceniu kopii zapasowej
 Usługa BizTalk zawsze zostanie przywrócony w **zawieszone** stanu. W tym stanie może wprowadzać żadnych zmian konfiguracji, zanim nowe środowisko będzie działać, w tym:
@@ -92,7 +92,7 @@ Po utworzeniu kopii zapasowej tworzy kopię zapasową następujących elementów
 
 <tr>
 <td colspan="2">
- <strong>Usługa BizTalk</strong></td>
+ <strong>Azure BizTalk Service</strong></td>
 </tr> 
 <tr>
 <td>Certyfikat SSL</td> 
@@ -104,7 +104,7 @@ Po utworzeniu kopii zapasowej tworzy kopię zapasową następujących elementów
 </td>
 </tr> 
 <tr>
-<td>Ustawienia usługi BizTalk</td> 
+<td>BizTalk Service Settings</td> 
 <td>
 <ul>
 <li>Liczba jednostek skali</li>
@@ -132,17 +132,17 @@ Jeśli baza danych śledzenia zostanie usunięty, a następnie odzyskać na potr
 </table>
 
 ## <a name="next"></a>Następne kroki
-Aby utworzyć usługi Azure BizTalk Services, przejdź do [usługi BizTalk Services: Provisioning](https://go.microsoft.com/fwlink/p/?LinkID=302280). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
+Aby utworzyć usługi Azure BizTalk Services, przejdź do [usługi BizTalk Services: Inicjowanie obsługi administracyjnej](https://go.microsoft.com/fwlink/p/?LinkID=302280). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
 
 ## <a name="see-also"></a>Zobacz też
 * [Usługa BizTalk kopii zapasowej](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [Przywracanie usługi BizTalk z kopii zapasowej](https://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [Usługa BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [Usługa BizTalk Services: Inicjowanie obsługi administracyjnej](https://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Provisioning Status Chart (Usługa BizTalk Services: aprowizowanie wykresu stanu)](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](https://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: Inicjowanie obsługi](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Wykres stanu aprowizacji](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Ograniczanie przepływności](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Nazwa wystawcy i klucz wydawcy](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076823"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918947"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Podczas monitorowania może się w różnych warunkach, za pomocą usługi Azure Monitor, nie został on zaprojektowany do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
@@ -28,23 +28,6 @@ Wyświetlanie ogólną kondycję maszyn wirtualnych platformy Azure i bazowych s
 Ten artykuł pomoże Ci zrozumieć, jak można szybko ocenić, badania i rozwiązywania wykrytych problemów kondycji.
 
 Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).
-
-> [!NOTE]
-> Od 11 lutego 2019 roku firma Microsoft rozpocznie migrowany bieżący model kondycji w usłudze Azure Monitor funkcję kondycji maszyn wirtualnych, która jest widoczna, gdy jesteś w środowisku Diagnostyka kondycji obecnie do nowej wersji modelu kondycji. Ta aktualizacja zapewnia lepszą wydajność przetwarzania zbiorczy kondycji i zawiera model kondycji dostosowany prezentowane w widoku Diagnostyka kondycji. 
-> 
-> Nowy model kondycji zbiorczy kryteria kondycji podrzędnych kryteria kondycji z poziomu nadrzędnego na jednostkę będzie szybciej, a w rezultacie, stan kondycji aktualizacji nadrzędnego stan żądaną lub docelowego zapewnia mniejsze opóźnienie. Nadal można filtrować kryteria kondycji, w obszarze **wydajności** i **dostępności** kategorii, w przeciwieństwie do poprzednich metody opartej na karcie do wybrania jednej z kategorii w widoku.
-> 
-> Aby uzyskać więcej informacji na temat doświadczeń Diagnostyka kondycji można znaleźć diagnostyki kondycji [sekcji](#health-diagnostics) w tym artykule. 
-> 
-> Ta aktualizacja spowoduje zwiększenie następujące czynności: 
-> 
-> - Kondycja zbiorcza przetwarzanie dzięki krótszym czasom oczekiwania  
-> - Szybsze alertów o zmianach stanu kondycji 
-> - Szybsze Aktualizowanie stanu kondycji w widoku zagregowane maszyny wirtualnej dla wszystkich maszyn wirtualnych 
-> 
-> Nie ma żadnych regresji żadnej funkcji, dostarczonych już dzisiaj za pomocą funkcji kondycji usługi Azure Monitor dla maszyn wirtualnych.
-> 
-> W wyniku tej zmiany wpływają na dwa środowiska w diagnostyce kondycji — historię zmian stanu zostaną zresetowane i poprzedniej zmiany stanu dla kryteria kondycji nie będzie dostępne do przeglądu w kolumnie zmiany stanu kondycji strony diagnostyki. Jeśli interesuje Cię w danych historycznych dowolnego o znaczeniu strategicznym krytyczne maszyny Wirtualnej, w, a następnie można wykonać zrzut ekranu przedstawiający dane kryteria kondycji i odpowiednie zmiany stanu w przypadku której można się odwołać. 
 
 ## <a name="monitoring-configuration-details"></a>Szczegóły konfiguracji monitorowania
 W tej sekcji opisano kryteria kondycji domyślne, które są zdefiniowane w celu monitorowania Windows Azure i maszyn wirtualnych systemu Linux. Wszystkie kryteria kondycji wstępnie skonfigurowanych alert po spełnieniu warunku złej kondycji. 
@@ -70,7 +53,7 @@ W tej sekcji opisano kryteria kondycji domyślne, które są zdefiniowane w celu
 - Procent przepustowości używane łącznie
 - Procent przepustowości używane zapisu
 - Wartość procentowa rozmiaru przydzielonej pamięci w użyciu
-- Procent czasu bezczynności dysku fizycznego
+- Procent czasu bezczynności dysku
 - Kondycja usługi klienta DHCP
 - Kondycja usługi klienta DNS
 - Kondycja usługi RPC
@@ -89,10 +72,7 @@ W tej sekcji opisano kryteria kondycji domyślne, które są zdefiniowane w celu
 - Wolne miejsce na dysku logicznym %
 - Dysk logiczny % wolnych węzłów i
 - Kondycja karty sieciowej
-- Procesor Czas DPC (%)
-- Procesor Czas procesora (%)
 - Łączna liczba procentowa czasu procesora
-- Czas całkowity DPC (%)
 - System operacyjny dostępne megabajty pamięci
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 1a192f5cbd0fb5a4dcb911f40753efcbd996a418
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793848"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892334"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -42,7 +42,7 @@ Dyski są szyfrowane za pomocą funkcji szyfrowania dysków Microsoft BitLocker,
 A. Jeśli masz nie więcej niż 40 TB danych, które chcesz przenieść na platformę Azure, korzystne będzie zastosowanie urządzeń Data Box Disk.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>PYTANIE: Jaki jest koszt urządzeń Data Box Disk?
-A. Aby uzyskać informacje o cenach urządzeń Data Box Disk, przejdź do [strony cennika](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Aby uzyskać informacje o cenach urządzeń Data Box Disk, przejdź do [strony cennika](https://azure.microsoft.com/pricing/details/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>PYTANIE: Jak mogę otrzymać urządzenia Data Box Disk? 
 A.  Aby otrzymać urządzenia Azure Data Box Disk, zaloguj się do witryny Azure Portal i utwórz zamówienie dysków w usłudze Data Box. Podaj informacje kontaktowe i szczegóły dotyczące powiadomień. Po złożeniu zamówienia, w zależności od dostępności, dyski zostaną dostarczone do Ciebie w ciągu 10 dni.
@@ -129,8 +129,8 @@ A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędz
  - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwana w przypadku dysków zarządzanych. To narzędzie jest również sprawdzane, ponieważ dane są kopiowane, dlatego możesz pominąć krok weryfikacji podczas używania tego narzędzia.
 
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
-- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
-- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
+- [Pobierz zestaw narzędzi dysku Data Box dla Windows](https://aka.ms/databoxdisktoolswin) 
+- [Pobierz zestaw narzędzi dysku Data Box dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
  
   ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
   A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.

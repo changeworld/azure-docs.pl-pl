@@ -3,19 +3,19 @@ title: Interfejs API tekstu usługi Translator transliteracja — metoda
 titlesuffix: Azure Cognitive Services
 description: Metoda transliteracja interfejsu API usługi Translator tekstu.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a0fcd7159be075f0e311e9a242d389dca62f4a37
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859622"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918624"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -60,7 +60,7 @@ Nagłówki żądania obejmują:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>_Jeden autoryzacji_<br/>_header_</td>
+    <td>_Jeden autoryzacji_<br/>_nagłówek_</td>
     <td>*Nagłówek żądania wymagane*.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -165,7 +165,7 @@ Jeśli wystąpi błąd, żądanie zwróci błąd odpowiedź w formacie JSON. Kod
 
 Poniższy przykład pokazuje, jak przekonwertować dwa ciągi znaków japońskich na Romanized japońskiej.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 Ładunek JSON dla żądania, w tym przykładzie:
 

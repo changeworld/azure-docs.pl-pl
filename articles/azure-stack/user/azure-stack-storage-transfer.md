@@ -14,16 +14,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774341"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905957"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Użyj narzędzia transferu danych dla magazynu usługi Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Microsoft Azure Stack zapewnia zestaw usług magazynu dla dysków, obiekty BLOB, tabel, kolejek i funkcji zarządzania kontem. Zestaw narzędzi usługi Azure storage można użyć, jeśli chcesz zarządzać lub przenieść dane do / z magazynu usługi Azure Stack. Ten artykuł zawiera omówienie dostępnych narzędzi.
 
@@ -71,7 +71,7 @@ Istnieją dwie wersje narzędzia AzCopy: Narzędzie AzCopy w Windows i narzędzi
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Przykłady poleceń narzędzia AzCopy do transferu danych
 
-Typowe scenariusze dotyczące kopiowania danych z obiektów blob usługi Azure Stack i przykładów. Aby dowiedzieć się więcej, zobacz [narzędzie AzCopy w Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) i [narzędzia AzCopy w systemie Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+Typowe scenariusze dotyczące kopiowania danych z obiektów blob usługi Azure Stack i przykładów. Aby dowiedzieć się więcej, zobacz [narzędzie AzCopy w Windows](../../storage/common/storage-use-azcopy.md) i [narzędzia AzCopy w systemie Linux](../../storage/common/storage-use-azcopy-linux.md).
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>Pobierz wszystkie obiekty BLOB na dysk lokalny
 
@@ -156,7 +156,7 @@ W tym przykładzie założono, że pomyślnie [zainstalowany program PowerShell 
    > [!NOTE]
    > Ten skrypt musi być uruchamiany w katalogu głównym **AzureStack_Tools**.
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name

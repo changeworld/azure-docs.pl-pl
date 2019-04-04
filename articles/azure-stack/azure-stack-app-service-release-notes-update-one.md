@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d75467da01f0672bb735e01cbd6d7634cdf843e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165832"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445241"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługa App Service w usłudze Azure Stack update — informacje o wersji 1
 
@@ -56,6 +56,8 @@ Usługa Azure App Service w usłudze Azure Stack Update 1 obejmuje następujące
 - **Wdrażanie w istniejącej sieci wirtualnej** — klienci mogą teraz wdrażać usługi App Service w usłudze Azure Stack w ramach istniejącej sieci wirtualnej. Wdrażanie w istniejącej sieci wirtualnej umożliwia klientom łączenie się z programu SQL Server i serwer plików, wymagane dla usługi Azure App Service za pośrednictwem portów prywatnych. Podczas wdrażania, klienci mogą wybrać do wdrożenia w istniejącej sieci wirtualnej, jednak [utworzyć podsieci do użycia przez usługę App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) przed ich wdrożeniem.
 
 - Aktualizacje **dzierżawy usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**. Zgodne z wersją zestawu SDK usługi Azure Stack Portal.
+
+- Aktualizacje **środowisko uruchomieniowe usługi Azure Functions** do **v1.0.11388**.
 
 - **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
     - Dodano **.NET Core 2.0** pomocy technicznej

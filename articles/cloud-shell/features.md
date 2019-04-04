@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: damaerte
-ms.openlocfilehash: 7e2ead6d5fc13b0d7517258d75148d50a3f1bc62
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fe04c5450ecd2c21affa5cbb89c627bc30cf7b6f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246359"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903458"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -64,7 +64,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 |Edytory tekstu           |Kod (Edytor usługi Cloud Shell)<br> vim<br> nano<br> emacs:    |
 |Kontrola źródła         |git                    |
 |Narzędzia do kompilacji            |Wprowadź<br> Narzędzia maven<br> npm<br> Narzędzie PIP         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |Bazy danych              |Klienta MySQL<br> Klientem PostgreSql<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Inne                  |iPython Client<br> [Usługi cloud Foundry interfejsu wiersza polecenia](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Program chef InSpec](https://www.chef.io/inspec/)|
 
@@ -82,5 +82,5 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>
 [Program PowerShell w przewodniku Szybki Start Cloud Shell](quickstart-powershell.md) <br>
-[Więcej informacji na temat interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[Dowiedz się więcej o wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/) <br>
 [Więcej informacji na temat programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

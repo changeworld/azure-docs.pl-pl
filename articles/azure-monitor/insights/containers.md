@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 5eec77084e104f7bd541405e2ef18e5a178e869c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877792"
+ms.locfileid: "58905758"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w usłudze Azure Monitor
 
@@ -192,7 +192,7 @@ Istnieją trzy sposoby, aby dodać agenta usługi Log Analytics do Red Hat OpenS
 
 * [Zainstaluj agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) bezpośrednio w każdym węźle platformy OpenShift  
 * [Włączanie rozszerzenia Log Analytics VM Extension](../../azure-monitor/learn/quick-collect-azurevm.md) w każdym węźle OpenShift znajdującej się na platformie Azure  
-* Zainstaluj agenta usługi Log Analytics jako zestaw demona platformy OpenShift  
+* Zainstaluj agenta usługi Log Analytics jako zestawie demona platformy OpenShift  
 
 W tej sekcji omówione kroki wymagane do zainstalowania agenta usługi Log Analytics jako zestawie demona platformy OpenShift.  
 

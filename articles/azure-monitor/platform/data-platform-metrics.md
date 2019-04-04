@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 487f70e4055f16c56092f2f970d2a34238e7febe
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 1027398a1a7f790adedf6c7eebed44a8db501b8a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851989"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905039"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metryki w usłudze Azure Monitor
 
@@ -39,7 +39,7 @@ W poniższej tabeli wymieniono różne sposoby, można użyć danych metryk w us
 | Alerty | Konfigurowanie [regułę alertu metryki](alerts-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) kiedy wartość metryki przekracza próg. |
 | Automatyzacja |  Użyj [skalowania automatycznego](autoscale-overview.md) na zwiększanie lub zmniejszanie zasobów opartych na przekroczenia progu przez wartość metryki. |
 | Eksportowanie | [Kierowanie metryk z dziennikami](diagnostic-logs-stream-log-store.md) do analizowania danych metryk usługi Azure Monitor, wraz z danymi w usłudze Azure Monitor dziennikach i do przechowywania wartości metryk przez okres dłuższy niż 93 dni.<br>Stream metryki, aby [Centrum zdarzeń](stream-monitoring-data-event-hubs.md) je rozesłać z systemami zewnętrznymi. |
-| Pobierz | Dostęp do wartości metryk z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0)<br>Dostęp do wartości metryk z niestandardowych aplikacji przy użyciu [interfejsu API REST](rest-api-walkthrough.md).<br>Dostęp do wartości metryk z wiersza polecenia przy użyciu [interfejsu wiersza polecenia](/azure/monitor/metrics). |
+| Pobierz | Dostęp do wartości metryk z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Dostęp do wartości metryk z niestandardowych aplikacji przy użyciu [interfejsu API REST](rest-api-walkthrough.md).<br>Dostęp do wartości metryk z wiersza polecenia przy użyciu [interfejsu wiersza polecenia](/azure/monitor/metrics). |
 | Archiwum | [Archiwum](..//learn/tutorial-archive-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania. |
 
 

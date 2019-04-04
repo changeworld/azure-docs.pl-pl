@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551980"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893402"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Wywołaj punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
 
@@ -28,7 +28,7 @@ Aby dowiedzieć się, jak tworzyć aplikacje logiki za pomocą łączników, zob
 
 HTTP + Swagger wyzwalacza i akcji, które działają w taki sam jak [Akcja HTTP](connectors-native-http.md) jednak zapewnić lepsze doświadczenia w Projektancie aplikacji logiki, zapewniając strukturę interfejsu API i dane wyjściowe z [metadanych Swagger](https://swagger.io). Możesz również użyć protokołu HTTP + Swagger łącznika jako wyzwalacz. Jeśli chcesz zaimplementować wyzwalacza sondowania, postępuj zgodnie z wzorzec sondowania, który jest opisany w [Tworzenie niestandardowych interfejsów API można wywoływać z aplikacji logiki innych interfejsów API, usługami i systemami](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-Dowiedz się więcej o [wyzwalacze aplikacji logiki i akcje](connectors-overview.md).
+Dowiedz się więcej o [wyzwalacze aplikacji logiki i akcje](../connectors/apis-list.md).
 
 Poniżej przedstawiono przykładowy sposób do używają protokołu HTTP + Swagger operacji, ponieważ akcji w przepływie pracy w aplikacji logiki.
 
@@ -72,14 +72,14 @@ Poniżej przedstawiono kroki do tworzenia, konfigurowania i przechowywanie dokum
 Poniżej przedstawiono szczegóły wyzwalaczy i akcji, to protokołu HTTP + Swagger łącznik obsługuje.
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger wyzwalaczy
-Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o wyzwalaczach.](connectors-overview.md) HTTP + Swagger łącznika ma jeden wyzwalacz.
+Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, który jest zdefiniowany w aplikacji logiki. HTTP + Swagger łącznika ma jeden wyzwalacz. [Dowiedz się więcej na temat wyzwalaczy](../connectors/apis-list.md).
 
 | Wyzwalacz | Opis |
 | --- | --- |
 | HTTP + Swagger |Wywołanie HTTP i zwróć treść odpowiedzi |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger akcji
-Akcja jest operacja, która jest przeprowadzane przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. [Dowiedz się więcej o akcjach.](connectors-overview.md) HTTP + Swagger łącznika ma jedną możliwą akcją.
+Akcja jest operacja, która jest przeprowadzane przez przepływ pracy, który jest zdefiniowany w aplikacji logiki. HTTP + Swagger łącznika ma jedną możliwą akcją. [Dowiedz się więcej o akcjach](../connectors/apis-list.md).
 
 | Akcja | Opis |
 | --- | --- |
@@ -123,7 +123,6 @@ Podczas wykonywania wywołań do różnych działań, możesz otrzymać określo
 | 404 |Nie znaleziono |
 | 500 |Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |
 
-- - -
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)

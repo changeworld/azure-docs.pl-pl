@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763677"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894221"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -60,7 +60,7 @@ Wyszukaj **Microsoft.Media** i **Microsoft.EventGrid**. Jeśli nie jest w stanie
 
 1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
 
-2. Kliknij pozycję **Połącz z platformą Azure** przycisku:
+2. Kliknij pozycję **Utwórz nowe konto** przycisku:
 
     ![Łączenie z platformą Azure](./media/create-account/connect-to-azure.png)
 
@@ -90,9 +90,7 @@ Wyszukaj **Microsoft.Media** i **Microsoft.EventGrid**. Jeśli nie jest w stanie
 
     ![nowe konto](./media/create-account/new-account.png)
 
-7. Przejdź do nowego konta:
-
-    ![Wideo konta indeksatora](./media/create-account/vi-account.png)
+7. Przejdź do nowego konta
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Łączenie z platformą Azure ręcznie (opcja zaawansowana)
 
@@ -140,10 +138,10 @@ W oknie dialogowym podaj następujące informacje:
 
 |Ustawienie|Opis|
 |---|---|
-|Region konta usługi wideo indeksatora|Nazwa regionu konta Video Indexer. Aby uzyskać lepszą wydajność i obniżyć koszty zaleca do określenia nazwy regionu, w którym znajdują się zasobów usługi Azure Media Services i konto usługi Azure Storage. |
+|Region konta usługi Video Indexer|Nazwa regionu konta Video Indexer. Aby uzyskać lepszą wydajność i obniżyć koszty zaleca do określenia nazwy regionu, w którym znajdują się zasobów usługi Azure Media Services i konto usługi Azure Storage. |
 |Dzierżawa usługi Azure Active Directory (AAD)|Nazwa dzierżawy usługi Azure AD, na przykład "contoso.onmicrosoft.com". W witrynie Azure portal można pobrać informacji o dzierżawie. Umieść kursor na nazwie użytkownika zalogowanego w prawym górnym rogu. Znajdowanie nazwy po prawej stronie **domeny**.|
 |Identyfikator subskrypcji|Subskrypcja platformy Azure, w którym można utworzyć tego połączenia. Identyfikator subskrypcji można pobrać z witryny Azure portal. Kliknij pozycję **wszystkich usług** w panelu po lewej stronie i wyszukaj "subskrypcje". Wybierz **subskrypcje** i wybierz żądany identyfikator z listy subskrypcji.|
-|Nazwa grupy zasobów w usłudze Azure Media Services|Nazwa grupy zasobów, w którym utworzono konto usługi Media Services.|
+|Nazwa grupy zasobów usługi Azure Media Services|Nazwa grupy zasobów, w którym utworzono konto usługi Media Services.|
 |Nazwa zasobu usługi multimediów|Nazwa konta usługi Azure Media Services, który został utworzony w poprzedniej sekcji.|
 |Identyfikator aplikacji|Usługa Azure AD identyfikator aplikacji (z uprawnieniami określonego konta usługi Media Services) utworzonego w poprzedniej sekcji.|
 |Klucz aplikacji|Klucz aplikacji usługi Azure AD, który został utworzony w poprzedniej sekcji. |

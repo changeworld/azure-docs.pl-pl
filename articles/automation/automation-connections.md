@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439021"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918029"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
 Zasób połączenia usługi Automation zawiera informacje wymagane do połączenia z zewnętrzną usługą lub aplikacją z elementu runbook lub konfiguracji DSC. Może to obejmować informacje wymagane do uwierzytelniania, takiego jak nazwę użytkownika i hasło, oprócz informacji o połączeniu, takich jak adres URL lub port. Wartość połączenia jest zachowanie wszystkich właściwości do łączenia się z określonej aplikacji w jeden zasób, w przeciwieństwie do wielu zmiennych. Użytkownik może edytować wartości połączenia w jednym miejscu, a nazwa połączenia można przekazać do elementu runbook lub konfiguracji DSC w jeden parametr. Właściwości połączenia można uzyskać w element runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** działania. 
 
-Podczas tworzenia połączenia należy określić *typu połączenia*. Typ połączenia to szablon, który definiuje zestaw właściwości. Połączenie definiuje wartości dla każdej właściwości zdefiniowane w jej typ połączenia. Typy połączeń są dodawane do usługi Azure Automation w modułach integracji lub utworzone za pomocą [interfejsu API usługi Azure Automation](https://msdn.microsoft.com/library/azure/mt163818.aspx) Jeśli moduł integracji zawiera typ połączenia i jest importowany do konta usługi Automation. W przeciwnym razie należy utworzyć plik metadanych, aby określić typ połączenia usługi Automation.  Aby uzyskać więcej informacji dotyczących tego, zobacz [moduły integracji](automation-integration-modules.md).  
+Podczas tworzenia połączenia należy określić *typu połączenia*. Typ połączenia to szablon, który definiuje zestaw właściwości. Połączenie definiuje wartości dla każdej właściwości zdefiniowane w jej typ połączenia. Typy połączeń są dodawane do usługi Azure Automation w modułach integracji lub utworzone za pomocą [interfejsu API usługi Azure Automation](/previous-versions/azure/reference/mt163818(v=azure.100)) Jeśli moduł integracji zawiera typ połączenia i jest importowany do konta usługi Automation. W przeciwnym razie należy utworzyć plik metadanych, aby określić typ połączenia usługi Automation.  Aby uzyskać więcej informacji dotyczących tego, zobacz [moduły integracji](automation-integration-modules.md).  
 
 >[!NOTE]
 >Bezpiecznych zasobów w usłudze Azure Automation obejmują poświadczeń, certyfikatów, połączeń i szyfrowane zmienne. Te zasoby są zaszyfrowane i przechowywane w usłudze Azure Automation za pomocą Unikatowy klucz, który jest generowany dla każdego konta usługi automation. Ten klucz jest przechowywany w systemie zarządzane usługi Key Vault. Przed zapisaniem zabezpieczonym zasobem, klucz jest ładowane z usługi Key Vault i następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzane przez usługę Azure Automation.

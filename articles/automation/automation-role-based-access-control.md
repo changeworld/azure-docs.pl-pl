@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621383"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918794"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -317,7 +317,7 @@ Można usunąć uprawnienia dostępu dla użytkownika, który nie jest zarządza
 
 Można również skonfigurować opartej na rolach dostęp do konta usługi Automation za pomocą następujących [poleceń cmdlet programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) Wyświetla wszystkie role RBAC, które są dostępne w usłudze Azure Active Directory. Można użyć tego polecenia z właściwością **Nazwa**, aby wyświetlić listę wszystkich akcji, które mogą być wykonywane przez określoną rolę.
+[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) Wyświetla wszystkie role RBAC, które są dostępne w usłudze Azure Active Directory. Można użyć tego polecenia z właściwością **Nazwa**, aby wyświetlić listę wszystkich akcji, które mogą być wykonywane przez określoną rolę.
 
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -336,7 +336,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) Wyświetla przypisania ról RBAC usługi Azure AD w podanym zakresie. Bez żadnych parametrów to polecenie zwraca wszystkie przypisania ról dokonane w ramach subskrypcji. Parametr **ExpandPrincipalGroups** powoduje wyświetlenie listy przypisań dla określonego użytkownika oraz grup, których członkiem jest użytkownik.
+[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) Wyświetla przypisania ról RBAC usługi Azure AD w podanym zakresie. Bez żadnych parametrów to polecenie zwraca wszystkie przypisania ról dokonane w ramach subskrypcji. Parametr **ExpandPrincipalGroups** powoduje wyświetlenie listy przypisań dla określonego użytkownika oraz grup, których członkiem jest użytkownik.
     **Przykład:** Użyj następującego polecenia, aby wyświetlić listę wszystkich użytkowników i ich ról w ramach konta usługi automation.
 
 ```azurepowershell-interactive
@@ -357,7 +357,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[Nowy-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) Aby przypisać dostęp użytkownikom, grupom i aplikacjom dla określonego zakresu.
+[Nowy-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) Aby przypisać dostęp użytkownikom, grupom i aplikacjom dla określonego zakresu.
     **Przykład:** Użyj następującego polecenia, aby przypisać rolę "Operator usługi" dla użytkownika w zakresie konta usługi Automation.
 
 ```azurepowershell-interactive
@@ -378,7 +378,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Użyj [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) można usunąć dostępu określonego użytkownika, grupy lub aplikacji z określonego zakresu.
+Użyj [Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) można usunąć dostępu określonego użytkownika, grupy lub aplikacji z określonego zakresu.
     **Przykład:** Użyj następującego polecenia, aby usunąć użytkownika z roli "Operator usługi" w zakresie konta usługi Automation.
 
 ```azurepowershell-interactive

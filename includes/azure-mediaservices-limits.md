@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554236"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919309"
 ---
 >[!NOTE]
 >Dla zasobów, które nie są rozwiązywane Otwórz bilet pomocy technicznej, aby poprosić o zwiększenie limitów przydziału. Nie twórz dodatkowych kont usługi Azure Media Services w celu podjęcia próby uzyskania wyższych limitów.
@@ -39,7 +39,7 @@ ms.locfileid: "57554236"
 
 Od 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni jest automatycznie usuwana, wraz z jego rekordów skojarzonych zadań. Automatyczne wykrywanie występuje nawet, jeśli łączna liczba rekordów jest poniżej maksymalny limit przydziału. Aby archiwizację informacji i zadań, należy użyć kodu opisanego w [zarządzanie zasobami za pomocą zestawu SDK .NET usługi Media Services](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>po wprowadzeniu żądania do listy zadań jednostek maksymalnie 1000 zadania jest zwracana na żądanie. Aby zachować śledzić wszystkie przesłane zadania, Użyj górnej i pominąć zapytań, zgodnie z opisem w [opcje zapytania systemu OData](https://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup>po wprowadzeniu żądania do listy zadań jednostek maksymalnie 1000 zadania jest zwracana na żądanie. Aby zachować śledzić wszystkie przesłane zadania, Użyj górnej i pominąć zapytań, zgodnie z opisem w [opcje zapytania systemu OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
 <sup>4</sup>lokalizatory nie są przeznaczone do zarządzania kontroli dostępu poszczególnych użytkowników. Aby nadać różne uprawnienia poszczególnym użytkownikom, użyj rozwiązań do zarządzania (prawami cyfrowymi DRM) prawami cyfrowymi. Aby uzyskać więcej informacji, zobacz [chronić zawartość przy użyciu usługi Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
 

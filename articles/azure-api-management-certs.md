@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765802"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895702"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Prześlij certyfikat usługi Azure Service Management
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania udostępnianych przez platformę Azure. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. 
@@ -56,4 +56,4 @@ Po utworzeniu utworzono certyfikat zarządzania, (plik cer z kluczem publicznym)
     ![Ustawienia](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy certyfikat zarządzania skojarzony z subskrypcją, można (po zainstalowaniu zgodnego certyfikatu lokalnie) programowo nawiązać [klasycznego modelu wdrażania interfejsu API REST](https://msdn.microsoft.com/library/azure/mt420159.aspx) i automatyzacja różne zasoby platformy Azure, które również są skojarzone z tą subskrypcją.
+Teraz, gdy certyfikat zarządzania skojarzony z subskrypcją, można (po zainstalowaniu zgodnego certyfikatu lokalnie) programowo nawiązać [klasycznego modelu wdrażania interfejsu API REST](/azure/#pivot=sdkstools) i automatyzacja różne zasoby platformy Azure, które również są skojarzone z tą subskrypcją.

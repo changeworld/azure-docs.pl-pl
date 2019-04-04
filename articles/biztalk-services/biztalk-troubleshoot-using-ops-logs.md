@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35c30ec97d4c033a687204b926d2f686c52be069
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108260"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916029"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Rozwiązywanie problemów przy użyciu dzienników operacji
 
@@ -31,8 +31,8 @@ ms.locfileid: "58108260"
 Dzienniki operacji jest funkcją usług zarządzania, która służy do wyświetlania historycznych dzienniki operacji wykonywanych na usługi platformy Azure, w tym usługi BizTalk Services. Dzięki temu można wyświetlić dane historyczne związane z operacjami zarządzania sprzed nawet 180 dni subskrypcji usługi BizTalk.
 
 > [!NOTE]
-> Ta funkcja przechwytuje tylko dzienniki operacji zarządzania w usłudze BizTalk Services, takich jak podczas uruchomienia usługi kopii działa, i tak dalej. Operacje takie są śledzone za pomocą [interfejsów API REST usługi BizTalk](https://msdn.microsoft.com/library/azure/dn232347.aspx). Aby uzyskać pełną listę operacji, które są śledzone za pomocą usługi zarządzania, zobacz [operacje śledzonych przy użyciu usługi Azure Management Services](#bizops).<br/><br/>
-> Nie przechwytuje dzienniki działań związanych z środowisko wykonawcze usług BizTalk (np. komunikat o przetwarzane przez mostków itd.). Aby wyświetlić dzienniki, użyj widoku śledzenia z portalu usługi BizTalk Services. Aby uzyskać więcej informacji, zobacz [komunikaty śledzenia](https://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Ta funkcja przechwytuje tylko dzienniki operacji zarządzania w usłudze BizTalk Services, takich jak podczas uruchomienia usługi kopii działa, i tak dalej. Operacje takie są śledzone za pomocą [interfejsów API REST usługi BizTalk](/previous-versions/azure/reference/dn232347(v=azure.100)). Aby uzyskać pełną listę operacji, które są śledzone za pomocą usługi zarządzania, zobacz [operacje śledzonych przy użyciu usługi Azure Management Services](#bizops).<br/><br/>
+> Nie przechwytuje dzienniki działań związanych z środowisko wykonawcze usług BizTalk (np. komunikat o przetwarzane przez mostków itd.). Aby wyświetlić dzienniki, użyj widoku śledzenia z portalu usługi BizTalk Services. Aby uzyskać więcej informacji, zobacz [komunikaty śledzenia](/previous-versions/azure/hh949805(v=azure.100)).
 > 
 > 
 
@@ -64,13 +64,13 @@ W poniższej tabeli przedstawiono operacje, które są śledzone za pomocą usł
 | PurgeBackupBizTalkService |Operacja przeczyszczania usługi BizTalk poza okresem przechowywania kopii zapasowych |
 
 ## <a name="see-also"></a>Zobacz też
-* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Usługa BizTalk kopii zapasowej](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [Przywracanie usługi BizTalk z kopii zapasowej](https://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: Inicjowanie obsługi administracyjnej](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Inicjowanie obsługi](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Wykres stanu aprowizacji](https://go.microsoft.com/fwlink/p/?LinkID=329870)
 * [BizTalk Services: Karty Pulpit nawigacyjny, Monitor i Skala](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Ograniczanie przepustowości](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Ograniczanie przepływności](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Nazwa wystawcy i klucz wydawcy](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1f9c30f1c914f6c8d42967e014d967ba0d5b85cc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010688"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893847"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
@@ -65,9 +65,9 @@ W module SqlServer udostępnia polecenia cmdlet do bazy danych specyficznych dla
   
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Dodaj członka do roli bazy danych.| 
+|[Dodaj RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Dodaj członka do roli bazy danych.| 
 |[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Tworzenie kopii zapasowej bazy danych usług Analysis Services.|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuń członka z roli bazy danych.|   
+|[Usuń RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuń członka z roli bazy danych.|   
 |[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Wykonywanie skryptów TMSL.|
 |[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Przetwarzanie bazy danych.|  
 |[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Przetwarzanie partycji.| 
@@ -81,4 +81,4 @@ W module SqlServer udostępnia polecenia cmdlet do bazy danych specyficznych dla
 * [Pobierz moduł PowerShell programu SQL Server](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Pobieranie programu SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [Module SqlServer w galerii programu PowerShell](https://www.powershellgallery.com/packages/SqlServer)    
-* [Tabelaryczny Model programowania dla zgodności poziomu 1200 i wyższym](https://msdn.microsoft.com/library/mt712541.aspx)
+* [Tabelaryczny Model programowania dla zgodności poziomu 1200 i wyższym](/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

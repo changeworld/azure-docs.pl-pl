@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886441"
+ms.locfileid: "58891484"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -125,9 +125,7 @@ Interpretowanie wywołań prognoz o progu wysokie prawdopodobieństwo ma tendenc
 
 ## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkolenia
 
-Zawsze możesz uczyć klasyfikatory, możesz utworzyć nową _iteracji_ z własną metryki wydajności zaktualizowane. Można wyświetlić wszystkie swoje iteracje w lewym okienku **wydajności** kartę. Po wybraniu jednej, istnieje możliwość sprawia, że _domyślnej iteracji_ , klikając **Ustaw jako domyślny** znajdujący się u góry. _Domyślnej iteracji_ model, który będzie używany domyślnie, kiedy wykonujesz zapytanie za pomocą interfejsu API prognoz (z aplikacji, na przykład). Jeśli odrzucisz można zaktualizować _domyślnej iteracji_, można kontynuować do nauczenia modelu, bez wywierania wpływu na bieżące zachowanie aplikacji; a następnie, gdy jesteś zadowolony z modelem ulepszone, można zaktualizować wartość domyślna.
-
-W okienku po lewej stronie znajdziesz również **Usuń** przycisk, który służy do usuwania iteracji, jeśli jest przestarzały. Po usunięciu iteracji, możesz usunąć wszystkie obrazy, które jednoznacznie powiązanych z nim.
+Zawsze możesz uczyć klasyfikatory, możesz utworzyć nową _iteracji_ z własną metryki wydajności zaktualizowane. Można wyświetlić wszystkie swoje iteracje w lewym okienku **wydajności** kartę. W okienku po lewej stronie znajdziesz również **Usuń** przycisk, który służy do usuwania iteracji, jeśli jest przestarzały. Po usunięciu iteracji, możesz usunąć wszystkie obrazy, które jednoznacznie powiązanych z nim.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e08e6ca4f6413b475bd8a0e5ff30b74921c2f0e6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226807"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891047"
 ---
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie i zarządzanie zasobami platformy Azure w systemach macOS, Linux i Windows. Ten artykuł szczegółowo opisuje niektóre z najczęściej używanych poleceń, aby utworzyć i zarządzać maszyn wirtualnych (VM).
 
@@ -46,7 +46,7 @@ Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełącznik
 ## <a name="disks-and-images"></a>Dyski i obrazy
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
 | --- | --- |
-| Dodawanie dysku danych do maszyny wirtualnej | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| Dodawanie dysku danych do maszyny wirtualnej | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new` |
 | Usuwanie dysku danych z maszyny wirtualnej | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
 | Zmienianie rozmiaru dysku | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
 | Tworzenie migawki dysku | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |

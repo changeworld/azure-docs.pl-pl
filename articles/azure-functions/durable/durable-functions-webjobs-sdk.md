@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e8473ece2ed08798836dc66067e1ce042924f469
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431259"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905096"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak uruchamiać funkcje trwałe jako zadania Webjob
 
@@ -218,50 +218,60 @@ Ta sekcja zawiera omówienie sposobu uruchamiania [przykładowy projekt](https:/
 
 ## <a name="webjobs-sdk-3x"></a>Zestaw SDK usługi WebJobs 3.x
 
-W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJobs. Jeśli tworzysz projekt 3.x zestaw SDK zadań Webjob w tej sekcji pomaga zrozumieć różnice.
+W tym artykule wyjaśniono, jak opracować Projekt 2.x zestawu SDK usługi WebJobs. Jeżeli projektujesz [zestawu SDK usługi WebJobs 3.x](../../app-service/webjobs-sdk-get-started.md) projektu, w tej sekcji, ułatwi Ci zrozumienie różnic.
 
 Główne zmiana wprowadzona polega na użyciu platformy .NET Core, a nie .NET Framework. Aby utworzyć projekt 3.x zestawu SDK usługi WebJobs, instrukcje są takie same, z uwzględnieniem poniższych wyjątków:
 
-1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core** > **Aplikacja konsoli (.NET Core)**. Plik projektu określa, że `TargetFramework` jest `netcoreapp2.0`.
+1. Tworzenie aplikacji konsolowej .NET Core. W programie Visual Studio **nowy projekt** okno dialogowe, wybierz opcję **platformy .NET Core** > **Aplikacja konsoli (.NET Core)**. Plik projektu określa, że `TargetFramework` jest `netcoreapp2.x`.
 
-1. Wybierz wersję wstępną wersję zestawu SDK usługi WebJobs 3.x następujące pakiety:
+1. Wybierz wersję zestawu SDK usługi WebJobs 3.x następujące pakiety:
 
     * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. Pobierz parametry połączenia magazynu i klucz Instrumentacji usługi Application Insights z *appsettings.json* pliku przy użyciu platformy .NET Core framework konfiguracji. Zmiana `Main` kod metody, aby to zrobić. Oto przykład:
+1. Ustaw parametry połączenia magazynu i klucz Instrumentacji usługi Application Insights w *appsettings.json* pliku przy użyciu platformy .NET Core framework konfiguracji. Oto przykład:
+
+    ```json
+        {
+            "AzureWebJobsStorage": "<replace with storage connection string>",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "<replace with Application Insights instrumentation key>"
+        }
+    ```
+
+1. Zmiana `Main` kod metody, aby to zrobić. Oto przykład:
 
    ```cs
    static void Main(string[] args)
    {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json");
+        var hostBuilder = new HostBuilder()
+            .ConfigureWebJobs(config =>
+            {
+                config.AddAzureStorageCoreServices();
+                config.AddAzureStorage();
+                config.AddTimers();
+                config.AddDurableTask(options =>
+                {
+                    options.HubName = "MyTaskHub";
+                    options.AzureStorageConnectionStringName = "AzureWebJobsStorage";
+                });
+            })
+            .ConfigureLogging((context, logging) =>
+            {
+                logging.AddConsole();
+                logging.AddApplicationInsights(config =>
+                {
+                    config.InstrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
+                });
+            })
+            .UseConsoleLifetime();
 
-       var appSettingsConfig = builder.Build();
+        var host = hostBuilder.Build();
 
-       using (var loggerFactory = new LoggerFactory())
-       {
-           var config = new JobHostConfiguration();
-
-           config.DashboardConnectionString = "";
-           config.StorageConnectionString =
-               appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
-           var instrumentationKey =
-               appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
-
-           config.LoggerFactory = loggerFactory
-               .AddApplicationInsights(instrumentationKey, null)
-               .AddConsole();
-
-           config.UseTimers();
-           config.UseDurableTask(new DurableTaskExtension
-           {
-               HubName = "MyTaskHub",
-           });
-           var host = new JobHost(config);
-           host.RunAndBlock();
-       }
+        using (host)
+        {
+            host.Run();
+        }
    }
    ```
 

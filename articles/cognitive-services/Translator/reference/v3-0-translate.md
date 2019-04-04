@@ -3,19 +3,19 @@ title: Interfejs API tekstu usługi Translator Translate — metoda
 titleSuffix: Azure Cognitive Services
 description: Metoda Translator tekstu interfejsu API tłumaczenia.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8533a5b2a974af3bd426e9b70ba298534b0365f7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091039"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917519"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -97,7 +97,7 @@ Nagłówki żądania obejmują:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>_Jeden autoryzacji_<br/>_header_</td>
+    <td>_Jeden autoryzacji_<br/>_nagłówek_</td>
     <td><em>Nagłówek żądania wymagane</em>.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -233,7 +233,7 @@ Jeśli wystąpi błąd, żądanie zwróci błąd odpowiedź w formacie JSON. Kod
 
 Ten przykład przedstawia, jak przekształcać jednym zdaniu z angielskiego na język chiński uproszczony.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -259,7 +259,7 @@ Treść odpowiedzi jest:
 
 Ten przykład przedstawia, jak przekształcać jednym zdaniu z angielskiego na język chiński uproszczony. W żądaniu nie określono języka. Automatyczne wykrywanie języka źródłowego jest używana zamiast tego.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -285,7 +285,7 @@ Odpowiedź jest podobna do odpowiedzi z poprzedniego przykładu. Ponieważ zaż�
 
 Teraz można rozszerzyć poprzedni przykład, dodając transliterację. Następujące żądanie prosi o Tłumaczenie chińskie zapisywane w skrypcie alfabetu łacińskiego.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -316,7 +316,7 @@ Wynik tłumaczenia zawiera teraz `transliteration` właściwość, która zapewn
 
 Tłumaczenie jednocześnie wielu ciągów jest po prostu kwestią określania tablicę ciągów w treści żądania.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -345,7 +345,7 @@ Treść odpowiedzi jest:
 
 Ten przykład przedstawia, jak przekształcać to samo wejście do kilku języków w jednym żądaniu.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -403,7 +403,7 @@ Aby uzyskać <code>ProfanityMarker=Tag</code>, obsceniczne wyrazy są ujęte w z
 
 Na przykład:
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -425,7 +425,7 @@ Spowoduje to zwrócenie:
 
 Porównaj z:
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -456,7 +456,7 @@ Jest to często tłumaczone zawartość, która zawiera kod znaczników, np. zaw
 
 Oto przykładowe żądanie, aby zilustrować.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -480,7 +480,7 @@ Odpowiedź jest:
 
 Aby otrzymywać informacje wyrównanie, należy określić `includeAlignment=true` w ciągu zapytania.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -518,7 +518,7 @@ Należy zauważyć następujące ograniczenia:
 
 Aby otrzymywać informacje o długości zdanie w tekście źródłowym i przetłumaczonego tekstu, należy określić `includeSentenceLength=true` w ciągu zapytania.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

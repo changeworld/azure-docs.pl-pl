@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4d29602581531e9e42edbf4e00eca810757a8a99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116902"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895736"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testowanie za pomocą zestawu wypowiedzi przykład usługi Batch
 
@@ -100,7 +100,7 @@ Dwie sekcje wykresów w kolorze zielonym był zgodny z oczekiwanym prognozy.
 
 Jeśli testy wskazuje, że aplikacją usługi LUIS nie rozpoznaje poprawne intencje i podmioty, możesz podjąć poprawianie wydajności aplikacją usługi LUIS poprzez etykietowanie więcej wypowiedzi lub dodawanie funkcji. 
 
-* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endoint-utt.md) 
+* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endpoint-utterances.md) 
 * [Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS](luis-how-to-add-features.md) 
 * [Omówienie usługi batch, testowanie za pomocą tego samouczka](luis-tutorial-batch-testing.md)
 * [Dowiedz się, testowanie pojęcia usługi batch](luis-concept-batch-test.md).

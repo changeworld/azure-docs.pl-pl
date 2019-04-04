@@ -17,12 +17,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 77942e24af847f7c8f9680ca793dacf8ba0be55f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284e1ce3c3b9a63f3c25e85891b1d2688726183e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112589"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879985"
 ---
 # <a name="redeploy-the-asdk"></a>Ponowne wdrażanie ASDK
 W tym artykule dowiesz się, jak i ponowne wdrażanie usługi Azure Stack Development Kit (ASDK) w środowisku nieprodukcyjnym. Ponieważ uaktualnianie ASDK nie jest obsługiwane, należy całkowicie ją ponownie wdrożyć można przenieść do nowszej wersji. Można także wdrożyć ponownie ASDK w dowolnym momencie po prostu chcesz zacząć od początku, od podstaw.
@@ -61,10 +61,11 @@ Aby usunąć zasób rejestracji, użyj **AzsRegistration Usuń** polecenia cmdle
 3. Monit logować się do subskrypcji platformy Azure i lokalnej instalacji ASDK po uruchomieniu skryptu.
 4. Po zakończeniu działania skryptu powinny zostać wyświetlone komunikaty podobne do następujących:
 
-    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.`
-    ` Remove registration resource from Azure...`
-    ` "Deleting the resource..." on target "/subscriptions/<subscription information>"`
-    ` ********** End Log: Remove-AzsRegistration ********* `
+    `De-Activating Azure Stack (this may take up to 10 minutes to complete).`
+    `Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    `Remove registration resource from Azure...`
+    `"Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    `********** End Log: Remove-AzsRegistration *********`
 
 
 

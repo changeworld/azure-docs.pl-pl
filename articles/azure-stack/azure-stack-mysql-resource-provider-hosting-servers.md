@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8cffcc938a247a2b08ff53b128560e1ab5e1653a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101877"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499781"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych MySQL
 
@@ -90,16 +90,19 @@ Najlepszym rozwiązaniem jest serwerami hostingu w jednostce SKU powinny mieć t
 
 Nie można przypisać jednostki SKU do określonych użytkowników lub grup.
 
-Jednostki SKU może potrwać do godziny mają być wyświetlane w portalu. Użytkownicy nie mogą tworzyć bazy danych, dopóki nie jest w pełni utworzona jednostka SKU.
+Aby edytować jednostki SKU, przejdź do **wszystkich usług** > **karty MySQL** > **jednostki SKU**. Wybierz jednostkę SKU, aby zmodyfikować, wprowadź niezbędne zmiany i kliknij przycisk **Zapisz** można zapisać zmian. 
 
-Aby edytować jednostki SKU, przejdź do **wszystkich usług** > **karty MySQL** > **jednostki SKU**. Wybierz jednostkę SKU, aby zmodyfikować, wprowadź niezbędne zmiany i kliknij przycisk **Zapisz** można zapisać zmian. Aby usunąć jednostkę SKU, która nie jest już potrzebny, przejdź do **wszystkich usług** > **karty MySQL** > **jednostki SKU**. Kliknij prawym przyciskiem myszy nazwę jednostki SKU, a następnie wybierz pozycję **Usuń** go usunąć.
+Aby usunąć jednostkę SKU, która nie jest już potrzebny, przejdź do **wszystkich usług** > **karty MySQL** > **jednostki SKU**. Kliknij prawym przyciskiem myszy nazwę jednostki SKU, a następnie wybierz pozycję **Usuń** go usunąć.
 
-> [!TIP]
-> Można edytować lub usunąć limity przydziałów dostawcy zasobów MySQL w tej samej lokalizacji.
+> [!IMPORTANT]
+> Może potrwać do godziny nowych jednostek SKU mają być dostępne w portalu użytkowników.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>Udostępnić użytkownikom serwery bazy danych MySQL
 
 Utwórz plany i oferty, aby udostępnić użytkownikom serwery bazy danych MySQL. Dodaj usługę Microsoft.MySqlAdapter zgodnie z planem i tworzenie nowego limitu przydziału. MySQL nie zezwala na ograniczenie rozmiaru bazy danych.
+
+> [!IMPORTANT]
+> Może upłynąć do dwóch godzin nowe przydziały, które mają być dostępne w portalu użytkowników, lub przed zmienionych limitu przydziału jest wymuszany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z wdrożenia rozwiązania Kubernetes do usługi Azure Stack.
+title: Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 03/20/2019
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 9af4b7a622bfb47d44c3da0edcece8c9528b08c4
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361544"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878132"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
 
 Następujący artykuł patrzy na rozwiązywanie problemów z klastrem Kubernetes. Można przejrzeć alert wdrażania i sprawdź stan wdrożenia według elementów wymaganych do wdrożenia. Może być konieczne zebranie dzienników wdrażania z usługi Azure Stack lub maszyn wirtualnych systemu Linux obsługujących usługi Kubernetes. Konieczne może również pracować z administratorem usługi Azure Stack, aby pobrać dzienniki z administracyjne punktu końcowego.
 
-## <a name="overview-of-deployment"></a>Omówienie wdrażania
+## <a name="overview-of-kubernetes-deployment"></a>Omówienie wdrażania rozwiązania Kubernetes
 
 Przed rozpoczęciem rozwiązywania problemów z klastrem, warto zapoznać się z procesem wdrożenia klastra Azure Stack Kubernetes. Wdrożenie używa szablon rozwiązania usługi Azure Resource Manager do tworzenia maszyn wirtualnych i instaluje aparatu ACS dla klastra.
 
-### <a name="deployment-workflow"></a>Wdrażanie przepływu pracy
+### <a name="kubernetes-deployment-workflow"></a>Przepływ pracy wdrożenia rozwiązania Kubernetes
 
 Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 
@@ -85,7 +85,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 
 Możesz zbierać dzienniki na maszynach wirtualnych, które obsługują klastra Kubernetes. Możesz również przejrzeć dziennik wdrażania. Konieczne może komunikować się z administratorem usługi Azure Stack, aby sprawdzić wersję programu Azure Stack, które są potrzebne do użycia i pobieranie dzienników z usługi Azure Stack, które są powiązane z danym wdrożeniem.
 
-1. Przegląd [stan wdrożenia](#review-deployment-status) i [Pobierz dzienniki](#get-logs-from-a-vm) z węzła głównego w klastrze Kubernetes.
+1. Przegląd [stan wdrożenia](#review-deployment-status) i pobieranie dzienników z węzła głównego w klastrze Kubernetes.
 2. Pamiętaj, że używasz najnowszej wersji usługi Azure Stack. Jeśli wiesz, której wersji używasz, skontaktuj się z administratorem usługi Azure Stack.
 3.  Przejrzyj pliki tworzenia maszyny Wirtualnej. Mogli mieć następujące problemy:  
     - Klucz publiczny może być nieprawidłowy. Przejrzyj klucza, który został utworzony.  
@@ -172,4 +172,4 @@ Wykonaj następujące kroki, aby zbierać i pobrać dzienniki klastra:
 
 [Dodaj klaster Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Usługa Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

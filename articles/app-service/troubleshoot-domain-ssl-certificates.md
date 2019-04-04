@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c316176094f6d9b8b45b812acaad04ad37f4bce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449124"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905821"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
 W tym artykule wymieniono typowe problemy, które można napotkać podczas konfigurowania domeny lub certyfikatu protokołu SSL dla aplikacji sieci web w usłudze Azure App Service. Opisano również możliwe przyczyny i potencjalne rozwiązania tych problemów.
 
 Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [na forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz **Uzyskaj pomoc techniczną**.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>Problemy z certyfikatem
 
@@ -284,7 +287,7 @@ Tak, może wskazywać domeny maszyny Wirtualnej. Aby uzyskać więcej informacji
 
 Domeny usługi App Service umożliwia GoDaddy dla domeny rejestracji i system DNS Azure hostowanie domen. 
 
-**Mam automatyczne odnawianie włączone, ale nadal otrzymał powiadomienie odnawiania dla mojej domeny za pośrednictwem poczty e-mail. Co zrobić?**
+**Mam automatyczne odnawianie włączone, ale nadal otrzymał powiadomienie odnawiania dla mojej domeny za pośrednictwem poczty e-mail. Co mam zrobić?**
 
 Jeśli masz automatyczne odnawianie włączone, nie trzeba podejmować żadnych działań. Powiadomienie e-mail jest dostarczany, aby poinformować, że domena jest bliski wygaśnięcia i odnowić ręcznie, jeśli automatycznego odnawiania nie jest włączona.
 
@@ -314,7 +317,7 @@ Tak. Gdy uzyskujesz dostęp do bloku domeny niestandardowe i protokół SSL w wi
 
 **Czy mogę przenieść domenę z jednej subskrypcji do innej subskrypcji?**
 
-Domeny można przenieść do innej grupy zasobów/subskrypcji przy użyciu [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource) polecenia cmdlet programu PowerShell.
+Domeny można przenieść do innej grupy zasobów/subskrypcji przy użyciu [AzResource przenoszenia](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) polecenia cmdlet programu PowerShell.
 
 **Jak można zarządzać Mój domeny niestandardowej, jeśli obecnie nie mam aplikację usługi Azure App Service?**
 

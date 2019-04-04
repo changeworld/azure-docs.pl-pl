@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fb689a2a6e2c1c309d22836e88a63662fed9832
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444891"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904835"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
 
 Jako partner możesz śledzić swoje oddziaływanie w powiadomieniach promujących zaangażowanie klientów. Możesz połączyć Twój identyfikator partnera kont, które są używane do zarządzania zasobami klienta.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-access-from-your-customer"></a>Uzyskiwanie dostępu do klienta
 
@@ -57,9 +59,8 @@ Jeśli masz dostęp do zasobów przez klienta, użyć witryny Azure portal, prog
 2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
  
    ```azurepowershell-interactive
-    C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
    ```
-
 
 3. Link do nowego identyfikatora partnera. Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
 

@@ -1,19 +1,17 @@
 ---
 title: Micro fokus środowiska deweloperskie i testowe na platformie Azure | Dokumentacja firmy Microsoft
 description: Ponowne hostowanie obciążeń mainframe firmy IBM z/OS za pomocą rozwiązań Micro fokus na maszynach wirtualnych Azure (maszyny wirtualne).
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 23a650698f8484e3ed8f033331693484c2e02fac
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739847"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893780"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Micro fokus środowiska deweloperskie i testowe na platformie Azure
 
@@ -23,7 +21,8 @@ Micro Focus nawiązała współpracę z firmą Microsoft oferuje atrakcyjne main
 
 Micro Focus oferuje rehosting programowania i testów rehosting rozwiązania, które rozszerzają istniejących COBOL i PL / I aplikacji biznesowych na platformie Azure.
 
-**Następne kroki**
+**Kolejne kroki**
 
-- [Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure](./set-up-micro-focus-on-azure.md)
+- [Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure](./set-up-micro-focus-azure.md)
 - [Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure](./demo.md)
+- [Uruchamianie serwera przedsiębiorstwa w kontenerach platformy Docker na platformie Azure](./run-enterprise-server-container.md)

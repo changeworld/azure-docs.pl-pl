@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17da540bd6077b8e045f125fd3cf13dc0e043000
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172403"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882042"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Dodaj węzły jednostki rozbudowywać w usłudze Azure Stack
 
@@ -75,7 +75,7 @@ Użyj **New AzsScaleUnitNodeObject** polecenia cmdlet, aby dodać węzeł.
 Przed rozpoczęciem korzystania z jednej z następujących przykładowych skryptów programu PowerShell, Zastąp wartości *nazwy węzłów* i *adresów IP* wartościami z używanego środowiska Azure Stack.
 
   > [!Note]  
-  > Podczas określania nazwy węzła musi przechowywać nazwy do mniej niż 15 znaków. Również nie można użyć nazwy, która zawiera spację lub zawiera dowolne z następujących znaków: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`,` }`, `_`.
+  > Podczas określania nazwy węzła musi przechowywać nazwy do mniej niż 15 znaków. Również nie można użyć nazwy, która zawiera spację lub zawiera dowolne z następujących znaków: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
 
 **Dodawanie węzła:**
   ```powershell

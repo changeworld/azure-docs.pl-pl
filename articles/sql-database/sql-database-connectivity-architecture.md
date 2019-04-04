@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661790"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918607"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -37,7 +37,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 > - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach
 > - Logika automatycznego wdrażania tworzy serwer bazy danych SQL, przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
 >
-> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
+> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 11999. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
 > [!NOTE]
 > W tym temacie mają zastosowanie do serwerów usługi Azure SQL Database hostingu pojedynczych baz danych i pul elastycznych, usługa SQL Data Warehouse baz danych, — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for postgresql w warstwie. Dla uproszczenia bazy danych SQL jest używana przy odwoływaniu się do bazy danych SQL Database, SQL Data Warehouse — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for PostgreSQL.
 
@@ -57,7 +57,7 @@ W poniższych krokach opisano, jak jest nawiązywane połączenie z bazą danych
 
 Usługa Azure SQL Database obsługuje poniższe trzy opcje ustawienia zasad połączenia z serwerem bazy danych SQL:
 
-- **Przekierowanie (zalecane):** Klienci ustanowić połączenia bezpośrednio z węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)) dla portów 11000 12000, nie tylko adres IP bramy usługi Azure SQL Database adresy na porcie 1433. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
+- **Przekierowanie (zalecane):** Klienci ustanowić połączenia bezpośrednio z węzeł, w którym baza danych. Aby włączyć łączność, klienci muszą zezwalać na reguły zapory dla ruchu wychodzącego dla wszystkich adresów IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (NSG) za pomocą [tagów usług](../virtual-network/security-overview.md#service-tags)) dla portów 11000 11999, nie tylko adres IP bramy usługi Azure SQL Database adresy na porcie 1433. Ponieważ pakietów przejść bezpośrednio do bazy danych, opóźnienia i przepływności mają większą wydajność.
 - **Serwer proxy:** W tym trybie wszystkie połączenia są przekazywane za pośrednictwem bramy usługi Azure SQL Database. Aby włączyć łączność, klient musi mieć wychodzących reguł zapory zezwalających wyłącznie bramy usługi Azure SQL Database, adresy IP (zazwyczaj dwa adresy IP na region). Wybór ten tryb może spowodować wyższe opóźnienie i niższych przepływności, w zależności od rodzaju obciążenia. Zdecydowanie zaleca się `Redirect` zasad połączenia za pośrednictwem `Proxy` zasady połączenia do najmniejszego opóźnienia i najwyższy przepływność.
 - **Wartość domyślna:** To połączenie zasady obowiązywać na wszystkich serwerach po utworzeniu, chyba że jawnie zmienić zasady połączenia albo `Proxy` lub `Redirect`. Efektywnych zasad zależy od tego, czy połączenia pochodzą z w obrębie platformy Azure (`Redirect`) lub spoza platformy Azure (`Proxy`).
 

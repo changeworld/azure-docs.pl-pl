@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/27/2019
+ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226865"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649411"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -56,18 +56,20 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 ### <a name="azure-stack-hotfixes"></a>Usługa Azure Stack poprawki
 
+Jeśli masz już 1901 i nie zainstalowano żadnych poprawek, ale możesz [bezpośrednio zainstalować 1902](azure-stack-update-1902.md), bez uprzedniego instalowania poprawki 1901.
+
 - **1809**: [KB 4481548 — usługa Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: Nie dostępnych poprawki bieżącego.
-- **1901**: [KB 4481548 — usługa Azure Stack poprawkę 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1901**: [KB 4495662 — usługa Azure Stack poprawkę 1.1901.3.105](https://support.microsoft.com/help/4495662)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
-> - Zainstaluj [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1811 (jeśli istnieje), przed zaktualizowaniem do 1901.
+> Zainstaluj [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1811 (jeśli istnieje), przed zaktualizowaniem do 1901. Jeśli masz już 1901, nie zainstalowano żadnych poprawek jeszcze 1902 można zainstalować bezpośrednio, bez instalowania najpierw oprogramowania 1901 poprawki.
 
 - Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również sprawdź aktywne alerty i rozwiązywanie tych, które wymagają działań:
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -93,7 +95,7 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
    * **AzureRm.Insights**  
          AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.1.5 **interfejsu api w wersji 2018-01-01** dla metryk, definicje metryk typów zasobów.
 
-- **AzureStack 1.7.0** tej istotnej zmiany wersji. Aby uzyskać szczegółowe informacje na temat istotnych zmian, zobacz https://aka.ms/azspshmigration170
+- **AzureStack 1.7.1** tej istotnej zmiany wersji. Aby uzyskać szczegółowe informacje na temat istotnych zmian, zobacz https://aka.ms/azspshmigration171
    * **Moduł Azs.Backup.Admin**  
          Zmiana powodująca niezgodność: Kopia zapasowa zmienia się na tryb szyfrowania opartego na certyfikacie. Obsługa kluczy symetrycznych jest przestarzała.  
    * **Moduł Azs.Fabric.Admin**  
@@ -117,9 +119,6 @@ Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do u
 
 - <!-- 3235634 – IS, ASDK -->
   Rozwiązano problem z których wdrażanie maszyn wirtualnych o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, jest to wymagane, określając sufiks jako **maszyna wirtualna standard_a2_v2 —** () małe litery v). Zgodnie z globalnej platformy Azure, możesz teraz użyć **maszyna wirtualna Standard_A2_V2** (wielkie litery V).
-
-<!-- 2869209 – IS, ASDK --> 
-- Rozwiązano problem, korzystając z [polecenia cmdlet Add-AzsPlatformImage](/powershell/module/azs.compute.admin/add-azsplatformimage), w którym trzeba było używać **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Teraz można również użyć ścieżkę lokalną na dysku.
 
 <!--  2795678 – IS, ASDK --> 
 - Rozwiązano problem, który wygenerował ostrzeżenie, jeśli użyto portalu do tworzenia maszyn wirtualnych (VM) w wersji premium rozmiar maszyny Wirtualnej (DS, Ds_v2, FS i FSv2). Maszyna wirtualna została utworzona na koncie magazynu w warstwie standardowa. Mimo że to nie wpłynął funkcjonalnie, operacje We/Wy lub rozliczeń, ostrzeżenie został rozwiązany.

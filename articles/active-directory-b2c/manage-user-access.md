@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0ec3aa6f3d6e7037e2ed59baeb0657fbdabcf3ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154613"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894860"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ W zależności od rozporządzenie aplikacji zgody rodziców, może być konieczn
 
 Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
-1. [Interfejsu API usługi Azure Active Directory Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) operacji identyfikuje użytkownika jako pomocnicze i zwraca dane użytkownika do aplikacji w postaci bez znaku token JSON.
+1. [Interfejsu API usługi Azure Active Directory Graph](/previous-versions/azure/ad/graph/api/api-catalog) operacji identyfikuje użytkownika jako pomocnicze i zwraca dane użytkownika do aplikacji w postaci bez znaku token JSON.
 
 2. Aplikacja przetwarza JSON token i zawiera ekran z pomocnicze, powiadamianie mu, że wymagana jest zgoda rodzica i żądanie wyrażenia zgody przez nadrzędne w trybie online. 
 

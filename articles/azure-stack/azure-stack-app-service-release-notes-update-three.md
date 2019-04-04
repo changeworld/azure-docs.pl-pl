@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ea711d3d4ffff72279e745290c1c8d9d854298e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886443"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447491"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>Usługa App Service w usłudze Azure Stack update 3 — informacje o wersji
 
@@ -55,6 +55,8 @@ Usługa Azure App Service w usłudze Azure Stack Update 3 obejmuje następujące
 - Dodano nowy parametr środowiska do skryptu pomocnika AADIdentityApp Utwórz w celu ułatwienia określania wartości docelowej różnych regionach usługi AAD.
 
 - Aktualizacje **dzierżawy usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**. Zgodne z wersją zestawu SDK usługi Azure Stack Portal.
+
+- Aktualizacje **środowisko uruchomieniowe usługi Azure Functions** do **v1.0.11820**.
 
 - Aktualizacje do podstawowej usługi, aby zwiększyć niezawodność i komunikatów o włączenie łatwiejsze Diagnostyka typowe problemy.
 

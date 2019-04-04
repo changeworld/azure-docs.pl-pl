@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083941"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896129"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Techniczne
 
@@ -39,15 +39,12 @@ Ta sekcja zawiera trzy części do niego:
 
 Bezproblemowe logowanie Jednokrotne jest włączony, za pomocą usługi Azure AD Connect, jak pokazano [tutaj](how-to-connect-sso-quick-start.md). Podczas włączania funkcji, wykonywane są następujące kroki:
 
-- Konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) jest tworzony w sieci lokalnej usługi Active Directory (AD) w każdym lesie usługi AD.
-- Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD. Jeśli istnieje wiele lasów usługi AD, każdy z nich ma swój własny klucz odszyfrowywania protokołu Kerberos.
-- Ponadto dwa Kerberos głównych nazw usług (SPN) są tworzone do reprezentowania dwa adresy URL, które są używane podczas logowania w usłudze Azure AD.
-
->[!NOTE]
-> Konto komputera, jak i nazwy SPN Kerberos są tworzone w każdym lesie usługi AD, można zsynchronizować z usługą Azure AD (przy użyciu usługi Azure AD Connect) i dla użytkowników, którzy mają bezproblemowe logowanie Jednokrotne. Przenieś `AZUREADSSOACC` konta komputera do organizacji jednostki Organizacyjnej przechowywania innych kont do zapewnienia, że odbywa się w taki sam sposób i nie zostanie usunięta.
+- Konto komputera (`AZUREADSSOACC`) jest tworzony w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD, które można zsynchronizować z usługą Azure AD (przy użyciu usługi Azure AD Connect).
+- Ponadto liczba głównych nazw usługi protokołu Kerberos (SPN) są tworzone do użycia podczas procesu logowania w usłudze Azure AD.
+- Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD. Jeśli istnieje wiele lasów usługi AD, każde konto komputera będzie mieć własny unikatowy klucz odszyfrowywania protokołu Kerberos.
 
 >[!IMPORTANT]
->Zdecydowanie zalecamy możesz [przerzucić klucz odszyfrowywania protokołu Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` konto komputera co najmniej co 30 dni.
+> `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, że delegowanie protokołu Kerberos na konto komputera jest wyłączona. Store konta komputera w organizacji jednostki Organizacyjnej gdy są one bezpieczne przypadkowym. Klucz odszyfrowywania protokołu Kerberos na konto komputera powinny też być traktowane jako poufne. Zdecydowanie zalecamy możesz [przerzucić klucz odszyfrowywania protokołu Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` konto komputera co najmniej co 30 dni.
 
 Po zakończeniu konfiguracji bezproblemowe logowanie Jednokrotne działa tak samo jak wszystkie inne logowania, która używa zintegrowanego Windows Authentication (Zintegrowane).
 

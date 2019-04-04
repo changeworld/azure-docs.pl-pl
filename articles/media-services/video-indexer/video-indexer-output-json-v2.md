@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650093"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892580"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API
 
-Gdy wywołujesz **uzyskać indeks wideo** interfejsu API i stan odpowiedzi jest OK, Uzyskaj szczegółowe dane wyjściowe JSON jako treść odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonym informacjom o filmie wideo. Szczegółowe informacje zawierają wymiary, takie jak: zapisy ocrs, twarzy, tematy, bloki, itp. Wymiary są wystąpienia zakresy czasu, przedstawiających podczas każdego wymiaru pojawiły się w trakcie filmu wideo.  
+Gdy wywołujesz **uzyskać indeks wideo** interfejsu API i stan odpowiedzi jest OK, Uzyskaj szczegółowe dane wyjściowe JSON jako treść odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonym informacjom o filmie wideo. Szczegółowe informacje zawierają wymiary, takie jak: zapisy, OCRs, twarzy, tematy, bloki itp. Wymiary są wystąpienia zakresy czasu, przedstawiających podczas każdego wymiaru pojawiły się w trakcie filmu wideo.  
 
 Można również wizualnie sprawdzić insights podsumowań wideo, naciskając klawisz **Odtwórz** znajdujący się na film wideo na [Video Indexer](https://www.videoindexer.ai/) witryny sieci Web. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych wideo](video-indexer-view-edit.md).
 
@@ -83,7 +83,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |twarzy|Może zawierać zero lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
 |słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać więcej informacji, zobacz [słowa kluczowe](#keywords).|
 |tonacje|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
-|audioEffects| Może zawierać zero lub więcej audioEffects. Aby uzyskać więcej informacji, zobacz [audioEffects](#audioeffects).|
+|audioEffects| Może zawierać zero lub więcej audioEffects. Aby uzyskać więcej informacji, zobacz [audioEffects](#audioEffects).|
 |etykiety| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe więcej informacji, zobacz [etykiety](#labels).|
 |marek| Może zawierać zero lub więcej marek. Aby uzyskać więcej informacji, zobacz [marek](#brands).|
 |statystyki | Aby uzyskać więcej informacji, zobacz [statystyki](#statistics).|
@@ -160,7 +160,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |etykiety|[Etykiety](#labels) wymiaru.|
 |zrzuty|[Zrzuty](#shots) wymiaru.|
 |marek|[Marek](#brands) wymiaru.|
-|audioEffects|[AudioEffects](#audioeffects) wymiaru.|
+|audioEffects|[AudioEffects](#audioEffects) wymiaru.|
 |tonacje|[Tonacji](#sentiments) wymiaru.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wymiaru.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) wymiaru.|
@@ -419,61 +419,85 @@ Przykład:
   ] 
 ```
 
+#### <a name="scenes"></a>sceny
+
+|Name (Nazwa)|Opis|
+|---|---|
+|id|Identyfikator sceny.|
+|wystąpienia|Lista zakresów czasu to sceny (sceny może mieć tylko 1 wystąpienie).|
+
+```json
+"scenes":[  
+    {  
+      "id":0,
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+    {  
+      "id":1,
+      "instances":[  
+          {  
+            "start":"0:00:06.34",
+            "end":"0:00:47.047",
+            "duration":"0:00:40.707"
+          }
+      ]
+    },
+
+]
+```
+
 #### <a name="shots"></a>zrzuty
 
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Zrzut identyfikatora.|
-|keyFrames|Lista klatek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Klatki kluczowe wystąpienia ma pola thumbnailId ze miniaturę ramki kluczowej identyfikatora.|
-|wystąpienia|Lista zakresy czasu to zrzut (zrzuty mają tylko 1 wystąpienie).|
+|keyFrames|Lista ramek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Każde wystąpienie ramki kluczowej ma pole thumbnailId, której znajduje się miniaturę ramki kluczowej identyfikatora.|
+|wystąpienia|Lista zakresów czasu to zrzut (zrzut może mieć tylko wystąpienia: 1).|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
       ],
-      "instances": [
-        {
-            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
       ]
     },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
+
+]
 ```
 
 #### <a name="brands"></a>marek

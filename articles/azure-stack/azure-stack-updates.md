@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894040"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487519"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Zarządzanie aktualizacjami w usłudze Azure Stack — omówienie
 
@@ -29,7 +29,7 @@ Pakiety aktualizacji firmy Microsoft dla zazwyczaj zintegrowane systemy usługi 
 
 Wszystkie wersje aktualizacji oprogramowania firmy Microsoft jest zawarte w pakiecie jako pakiet jedną aktualizację. Jako operatorów usługi Azure Stack można zaimportować, instalacji i Monitoruj postęp instalacji tych aktualizacji dla pakietów z portalu administratora. 
 
-Z dostawcą sprzętu producenta sprzętu (OEM) będzie również aktualizacje, takich jak aktualizacje oprogramowania układowego i sterowników. Chociaż te aktualizacje są dostarczane jako oddzielne pakiety przez dostawcę sprzętu OEM, ich są importowane, zainstalowane i zarządzane te same pakiety aktualizacji sposób od firmy Microsoft, pakiety aktualizacji są importowane, zainstalowane i zarządzane.
+Z dostawcą sprzętu producenta sprzętu (OEM) będzie również aktualizacje, takich jak aktualizacje oprogramowania układowego i sterowników. Chociaż te aktualizacje są dostarczane jako oddzielne pakiety przez dostawcę sprzętu OEM, są importowane, instalowane i zarządzane w ten sam sposób, co pakiety aktualizacji firmy Microsoft.
 
 Aby zapewnić systemu w ramach pomocy technicznej, należy dysponować zaktualizowany do poziomu określonej wersji w usłudze Azure Stack. Upewnij się, że przeglądu [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).
 
@@ -48,7 +48,7 @@ Zdecydowanie zalecamy powiadomienie użytkowników dowolne operacje konserwacji 
 
 - Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji.  
 
-  ```PowerShell
+  ```powershell
   Test-AzureStack -Group UpdateReadiness
   ``` 
 
@@ -71,7 +71,7 @@ Aktualizuj Kafelek pokazuje bieżącą wersję usługi Azure Stack. Aktualizuj K
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Obsługa zasad z usługi Azure Stack](azure-stack-servicing-policy.md) 
+- [Azure Stack servicing policy (Zasady obsługi usługi Azure Stack)](azure-stack-servicing-policy.md) 
 - [Zarządzanie regionami w usłudze Azure Stack](azure-stack-region-management.md)     
 
 

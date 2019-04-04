@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: c5d4f67e9c1e4e983133675c440b8c5b64183227
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 664c8b659152a370d7fb31907b6cdbcd414dce31
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58852013"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905107"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -128,7 +128,7 @@ Bieżący zalecenie dla platformy Azure jest ustalenie, TCP MSS obcinanie 1350 b
 
 #### <a name="latency-and-round-trip-time"></a>Czas opóźnienia i przesyłania danych
 
-Opóźnienie sieci podlega prędkość światła za pośrednictwem sieci światłowodowe włókien. Rzeczywistość jest, przepustowość sieci dla protokołu TCP jest również efektywnie zarządzanych (praktyczne maksymalne wartości) z powodu czas Rundy (RTT) między dwoma urządzeniami sieciowymi.
+Opóźnienie sieci podlega prędkość światła za pośrednictwem sieci światłowodowe włókien. Rzeczywistość jest przepustowość sieci dla protokołu TCP jest również efektywnie zarządzanych (praktyczne maksymalne wartości) ze względu na czas Rundy (RTT) między dwoma urządzeniami sieciowymi.
 
 | | | | |
 |-|-|-|-|

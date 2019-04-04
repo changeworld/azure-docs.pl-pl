@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c475fc4d958044413ae7566c027c0e796f1d699a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486397"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906093"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -241,7 +241,7 @@ Każde konto magazynu obsługuje maksymalnie 100 adresów IP sieci zasad, które
 
 Aby udzielić dostępu z sieci lokalnej do swojego konta magazynu przy użyciu reguły sieci IP, należy określić adresy IP używane przez sieć z Internetem. Aby uzyskać pomoc, skontaktuj się z administratorem sieci.
 
-Możesz użyć [ExpressRoute](/azure/expressroute/expressroute-introduction) Aby połączyć sieć z siecią platformy Azure. W tym miejscu każdy obwód skonfigurowaną dwa publiczne adresy IP. Znajduje się w temacie Microsoft Edge i użyj [publicznej komunikacji równorzędnej Azure](/azure/expressroute/expressroute-circuit-peerings) nawiązać połączenia z programem Microsoft Services takich jak Azure Storage. Aby umożliwić komunikację z usługą Azure Storage, tworzenie reguł sieci IP za publiczne adresy IP obwodów usługi. Aby znaleźć publiczne adresy IP obwodów usługi ExpressRoute [Otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem witryny Azure portal.
+jeśli korzystasz z usługi [ExpressRoute](/azure/expressroute/expressroute-introduction) w środowisku lokalnym na potrzeby publicznej komunikacji równorzędnej lub komunikacji równorzędnej firmy Microsoft, konieczne będzie określenie używanych adresów IP translatora adresów sieciowych. W przypadku publicznej komunikacji równorzędnej każdy obwód usługi ExpressRoute domyślnie używa dwóch adresów IP translatora adresów sieciowych stosowanych do ruchu w ramach usługi platformy Azure, gdy ruch trafia do sieci szkieletowej platformy Microsoft Azure. W przypadku komunikacji równorzędnej firmy Microsoft używane adresy IP translatora adresów sieciowych są dostarczane przez klienta lub przez dostawcę usług. Aby umożliwić dostęp do zasobów usługi, musisz zezwolić na te publiczne adresy IP w ustawieniu zapory adresu IP zasobu. Aby znaleźć adresy IP obwodów usługi ExpressRoute publicznej komunikacji równorzędnej, [otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure Portal. Dowiedz się więcej o [translatorze adresów sieciowych publicznej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft dla usługi ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>Zarządzanie regułami sieci IP
 

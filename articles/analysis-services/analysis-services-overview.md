@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 340f121f64cb01803401a972038677448849e94f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803519"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893133"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -198,7 +198,7 @@ Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Twórz i wdrażaj modele za pomocą bezpłatnych narzędzi [SQL Server Data Tools (SSDT) dla Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Narzędzia SSDT obejmują szablony projektów usług Analysis Services, które pozwalają szybko rozpocząć pracę. Narzędzia SSDT teraz obejmują nowoczesną funkcję Get Data do obsługi zapytań do źródeł danych oraz mashupów dla tabelarycznych modeli 1400. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
+Twórz i wdrażaj modele za pomocą bezpłatnych narzędzi [SQL Server Data Tools (SSDT) dla Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). Narzędzia SSDT obejmują szablony projektów usług Analysis Services, które pozwalają szybko rozpocząć pracę. Narzędzia SSDT teraz obejmują nowoczesną funkcję Get Data do obsługi zapytań do źródeł danych oraz mashupów dla tabelarycznych modeli 1400. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
 
 Jeśli używasz programu Visual Studio 2017, projekty usługi Microsoft Analysis Services są dostępne jako bezpłatny pakiet VSIX do zainstalowania. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
@@ -212,7 +212,7 @@ Zadania zarządzania zasobami serwerowymi, takie jak tworzenie zasobów serwera,
 
 ### <a name="object-model-and-scripting"></a>Model obiektów i obsługa skryptów
 
-Modele tabelaryczne oferują szybkie tworzenie rozwiązań i są wysoce dostosowywalne. Modele tabelaryczne mają usługę TOM ([Tabular Object Model](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)) do opisywania obiektów modeli. Usługa TOM jest dostępna w pakiecie JSON za pośrednictwem języka [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) oraz języka definicji danych AMO w przestrzeni nazw [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx). 
+Modele tabelaryczne oferują szybkie tworzenie rozwiązań i są wysoce dostosowywalne. Modele tabelaryczne mają usługę TOM ([Tabular Object Model](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)) do opisywania obiektów modeli. Usługa TOM jest dostępna w pakiecie JSON za pośrednictwem języka [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) oraz języka definicji danych AMO w przestrzeni nazw [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular). 
 
 ## <a name="supports-the-latest-client-tools"></a>Obsługuje najnowsze narzędzia klienckie
 
@@ -255,7 +255,7 @@ Społeczność użytkowników usług Analysis Services jest bardzo aktywna. Doł
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Utwórz konto bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p/)   
+> [Zamów bezpłatną wersję próbną platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
 > [Szybki start: Tworzenie serwera — Portal](analysis-services-create-server.md)   

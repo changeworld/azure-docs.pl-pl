@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 96b6b4866b17e15f544a10124d07e651d747b58b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 04/03/2019
+ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306446"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916176"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty inne niż 1433 dla platformy ADO.NET 4.5
 
@@ -43,11 +43,11 @@ Sekwencja jest w następujący sposób:
 
 1. ADO.NET 4.5 (lub późniejszy) inicjuje krótki interakcji z chmury platformy Azure i odbiera numeru portu dynamicznego zidentyfikowane.
 
-   * Numer portu dynamicznego wskazany jest z zakresu od 11000 11999 lub 14000 14999.
+   * Numer portu dynamicznego wskazany jest z zakresu od 11000 11999.
 2. ADO.NET następnie łączy się z serwerem usługi SQL Database bezpośrednio, za pomocą nie oprogramowanie pośredniczące między.
 3. Zapytania są wysyłane bezpośrednio do bazy danych, a wyniki są zwracane bezpośrednio do klienta.
 
-Upewnij się, że port, który 11000 11999 i 14000-14999 na komputerze klienta usługi Azure pozostaną dostępne dla platformy ADO.NET 4.5 interakcji klienta z bazy danych SQL.
+Upewnij się, że port, który zakresów 11000-11999 na komputerze klienta usługi Azure pozostaną dostępne dla platformy ADO.NET 4.5 interakcji klienta z bazy danych SQL.
 
 * W szczególności portów z zakresu nie może zawierać innych blokują ruchu wychodzącego.
 * Na maszynie Wirtualnej platformy Azure **Zapora Windows z zabezpieczeniami zaawansowanymi** kontroluje ustawienia portu.
@@ -82,8 +82,8 @@ W tej sekcji wyjaśnia monikerów, które odwołują się do wersji produktu. Za
 * Nawiązać połączenie z usługi Azure SQL Database V12 via przekierowania https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [Lista wersji protokołu TDS](http://www.freetds.org/userguide/tdshistory.htm)
-* [Omówienie tworzenia bazy danych SQL](sql-database-develop-overview.md)
+* [Omówienie bazy danych SQL dla deweloperów](sql-database-develop-overview.md)
 * [Zapora usługi SQL Database platformy Azure](sql-database-firewall-configure.md)
-* [Instrukcje: Konfigurowanie ustawień zapory w usłudze SQL Database](sql-database-configure-firewall-settings.md)
+* [Instrukcje: Konfigurowanie ustawień zapory w Bazie danych SQL](sql-database-configure-firewall-settings.md)
 
 

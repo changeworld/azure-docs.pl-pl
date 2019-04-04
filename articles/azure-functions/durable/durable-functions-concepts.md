@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443423"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892759"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Trwałe wzorce funkcji i zagadnienia techniczne (usługi Azure Functions)
 
@@ -415,7 +415,7 @@ Ze względu na zachowanie powtarzania dyspozytora trwałe Framework zadania moż
 
 Rozszerzenia funkcji trwałych używa kolejek, tabel i obiektów blob w usłudze Azure Storage do utrwalenia wykonywania historii stanu i wyzwalacza wykonywania funkcji. Można użyć domyślnego konta magazynu dla aplikacji funkcji, lub można skonfigurować oddzielne konto magazynu. Możesz chcieć oddzielnego konta, na podstawie limitów przepływności magazynu. Utworzony kod programu orchestrator nie wchodzi w interakcje przy użyciu jednostek w ramach tych kont magazynu. Trwałe Framework zadań zarządza jednostek bezpośrednio jako szczegółowo opisuje implementacja.
 
-Funkcje programu orchestrator zaplanować działania funkcji i otrzymywać odpowiedzi za pomocą wewnętrznej kolejki komunikatów. Uruchomienie aplikacji funkcji w planie zużycie usługi Azure Functions [kontrolera skalowania usługi Azure Functions](../functions-scale.md#how-the-consumption-plan-works) monitoruje te kolejki. Nowe wystąpienia obliczeniowe są dodawane, zgodnie z potrzebami. Podczas skalowania do wewnątrz na wielu maszynach wirtualnych funkcji programu orchestrator mogą być uruchamiane w jednej maszyny Wirtualnej podczas działania funkcji, które wywołania funkcji programu orchestrator mogą być uruchamiane na kilka różnych maszyn wirtualnych. Aby uzyskać więcej informacji na temat zachowania skalowania funkcje trwałe, zobacz [wydajności i skali](durable-functions-perf-and-scale.md).
+Funkcje programu orchestrator zaplanować działania funkcji i otrzymywać odpowiedzi za pomocą wewnętrznej kolejki komunikatów. Uruchomienie aplikacji funkcji w planie zużycie usługi Azure Functions [kontrolera skalowania usługi Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) monitoruje te kolejki. Nowe wystąpienia obliczeniowe są dodawane, zgodnie z potrzebami. Podczas skalowania do wewnątrz na wielu maszynach wirtualnych funkcji programu orchestrator mogą być uruchamiane w jednej maszyny Wirtualnej podczas działania funkcji, które wywołania funkcji programu orchestrator mogą być uruchamiane na kilka różnych maszyn wirtualnych. Aby uzyskać więcej informacji na temat zachowania skalowania funkcje trwałe, zobacz [wydajności i skali](durable-functions-perf-and-scale.md).
 
 Historia wykonywania kont programu orchestrator są przechowywane w usłudze table storage. Zawsze, gdy wystąpienie rehydrates na konkretnej maszyny Wirtualnej, koordynatora pobiera historię jej wykonywania z usługi table storage, dzięki czemu można odtworzyć, jego stan lokalnego. Wygodne aspektów o dostępnej w usłudze table storage historii jest użyć narzędzi, takich jak [Eksploratora usługi Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) aby zobaczyć historię użytkownika aranżacji.
 

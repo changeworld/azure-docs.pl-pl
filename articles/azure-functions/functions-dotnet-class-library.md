@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58111484"
+ms.locfileid: "58896163"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -131,7 +131,7 @@ public static class BindingExpressionsExample
 
 Proces kompilacji tworzy *function.json* pliku w folderze funkcji w folderze kompilacji. Jak wspomniano wcześniej, ten plik nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. 
 
-Ten plik ma na celu Podaj informacje, aby kontroler skalowania dla [skalowanie decyzje w planie zużycie](functions-scale.md#how-the-consumption-plan-works). Z tego powodu plik ma tylko informacje o wyzwalacz, nie wejścia lub wyjścia powiązania.
+Ten plik ma na celu Podaj informacje, aby kontroler skalowania dla [skalowanie decyzje w planie zużycie](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tego powodu plik ma tylko informacje o wyzwalacz, nie wejścia lub wyjścia powiązania.
 
 Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, która informuje środowisko uruchomieniowe używane są atrybuty .NET dla powiązania, zamiast *function.json* konfiguracji. Oto przykład:
 
@@ -274,7 +274,7 @@ Nie można użyć `out` parametrów w funkcji asynchronicznych. W przypadku powi
 
 ## <a name="cancellation-tokens"></a>Anulowanie tokenów
 
-Funkcja może akceptować [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) parametr, który umożliwia systemowi operacyjnemu Powiadamiaj swój kod, gdy funkcja ma zostać zakończone. Skorzystaj z tego powiadomienia, aby upewnić się, że funkcja nie nieoczekiwanego zakończenia działania w sposób powodujący, że dane w stanie niespójnym.
+Funkcja może akceptować [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parametr, który umożliwia systemowi operacyjnemu Powiadamiaj swój kod, gdy funkcja ma zostać zakończone. Skorzystaj z tego powiadomienia, aby upewnić się, że funkcja nie nieoczekiwanego zakończenia działania w sposób powodujący, że dane w stanie niespójnym.
 
 Jak sprawdzić, czy zbliżającym się zakończeniu funkcji można znaleźć w poniższym przykładzie.
 
@@ -369,7 +369,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiuje [obiektu blob magazynu](functions-bindings-storage-blob.md) wejścia lub wyjścia, powiązania i [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) jest typ powiązania obsługiwanych danych wyjściowych.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiuje [obiektu blob magazynu](functions-bindings-storage-blob.md) wejścia lub wyjścia, powiązania i [TextWriter](/dotnet/api/system.io.textwriter) jest typ powiązania obsługiwanych danych wyjściowych.
 
 ### <a name="multiple-attribute-example"></a>Wiele przykład atrybutu
 

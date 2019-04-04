@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: ac713e4abacc8cece1b14972ddf3a1f3fe2f1cdf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1ff5aeddbf05011f7c7d105e6c48552bca81580c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770190"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483287"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN dla usługi Azure Stack
 
@@ -38,7 +38,7 @@ Każda sieć wirtualna usługi Azure Stack obsługuje bramy jednej sieci wirtual
 
 Podczas tworzenia bramy sieci wirtualnej, upewnij się, że typ bramy jest prawidłowy dla danej konfiguracji. Brama sieci VPN wymaga `-GatewayType Vpn`Flaga; na przykład:
 
-```PowerShell
+```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn
 -VpnType RouteBased
@@ -72,7 +72,7 @@ Jeśli używasz portalu usługi Azure Stack do tworzenia bramy sieci wirtualnej 
 
 W poniższym przykładzie programu PowerShell **- GatewaySku** jako `VpnGw1`:
 
-```PowerShell
+```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku VpnGw1
 -GatewayType Vpn -VpnType RouteBased
@@ -86,7 +86,7 @@ W modelu wdrażania usługi Resource Manager każda konfiguracja wymaga typu po�
 
    W poniższym przykładzie programu PowerShell tworzone jest połączenie S2S wymagającego typu połączenia IPsec:
 
-   ```PowerShell
+   ```powershell
    New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
    -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local
    -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
@@ -110,7 +110,7 @@ Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, nale�
 
 W poniższym przykładzie programu PowerShell **- VpnType** jako **RouteBased**. Podczas tworzenia bramy należy musi upewnij się, że **- VpnType** jest prawidłowy dla danej konfiguracji.
 
-```PowerShell
+```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 -Location 'West US' -IpConfigurations $gwipconfig
 -GatewayType Vpn -VpnType RouteBased
@@ -140,7 +140,7 @@ Ponadto należy pamiętać, że podsieć bramy zawiera wystarczającą liczbę a
 
 W poniższym przykładzie programu PowerShell usługi Resource Manager pokazano podsieć bramy o nazwie **GatewaySubnet**. Widać, że notacja CIDR Określa rozmiar/27, który daje wystarczającą liczbę adresów IP w przypadku większości konfiguracji, które obecnie istnieją.
 
-```PowerShell
+```powershell
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
@@ -155,7 +155,7 @@ Nazwij bramy sieci lokalnej, publiczny adres IP urządzenia sieci VPN i określi
 
 Następny przykład programu PowerShell tworzy nową bramę sieci lokalnej:
 
-```PowerShell
+```powershell
 New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```

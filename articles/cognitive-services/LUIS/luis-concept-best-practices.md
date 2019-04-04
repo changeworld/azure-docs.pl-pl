@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984207"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895819"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
@@ -122,12 +122,12 @@ Więcej informacji:
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Korzystać z funkcji sugerowanej aktywne uczenie
 
-Użyj [aktywne uczenie](luis-how-to-review-endoint-utt.md)firmy **Przejrzyj wypowiedzi punktu końcowego** na bieżąco, zamiast opcji dodawania więcej wypowiedzi przykład do intencji. Ponieważ aplikacja otrzymuje stale wypowiedzi punktu końcowego, ta lista jest rosnący i zmianę.
+Użyj [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)firmy **Przejrzyj wypowiedzi punktu końcowego** na bieżąco, zamiast opcji dodawania więcej wypowiedzi przykład do intencji. Ponieważ aplikacja otrzymuje stale wypowiedzi punktu końcowego, ta lista jest rosnący i zmianę.
 
 Więcej informacji:
 * Pojęcia: [Pojęcia dotyczące włączania aktywne uczenie, przeglądając wypowiedzi punktu końcowego](luis-concept-review-endpoint-utterances.md)
 * Samouczek: [Samouczek: Napraw prognozy nie wiesz, przeglądając wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md)
-* Porady: [Jak przeglądać wypowiedzi punktu końcowego w portalu usługi LUIS](luis-how-to-review-endoint-utt.md)
+* Porady: [Jak przeglądać wypowiedzi punktu końcowego w portalu usługi LUIS](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorowanie wydajności aplikacji
 
