@@ -1,16 +1,22 @@
 ---
 title: Dokumentacja usługi Azure Data Lake Storage 1. generacji — samouczki i dokumentacja interfejsu API | Microsoft Docs
-description: 'Dowiedz się, jak skonfigurować zgodne z usługą Hadoop repozytorium usługi Data Lake o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania, oraz jak nim zarządzać i uzyskiwać do niego dostęp.'
+description: Dowiedz się, jak skonfigurować zgodne z usługą Hadoop repozytorium usługi Data Lake o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: null
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
+ms.openlocfilehash: 24d6f41e2415d9a8a6113135bf11c98b1e19f1f7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904665"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentacja usługi Azure Data Lake Storage 1. generacji
 
@@ -175,7 +181,7 @@ Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (pop
                 <div class="card">
                     <div class="cardText">
                         <h3>Wiersz polecenia</h3>
-                        <p><a href="/powershell/module/azurerm.datalakestore/">Program PowerShell</a></p>
+                        <p><a href="/powershell/module/az.datalakestore/">PowerShell</a></p>
                         <p><a href="/cli/azure/dls">Interfejs wiersza polecenia platformy Azure</a></p>
                     </div>
                 </div>
