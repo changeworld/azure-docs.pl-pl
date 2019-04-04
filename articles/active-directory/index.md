@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: false
 title: Dokumentacja usługi Azure Active Directory — samouczki i dokumentacja interfejsu API | Microsoft Docs
-description: 'Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa firmy Microsoft do katalogowania tożsamości i zarządzaniami nimi, która w obrębie jednego rozwiązania łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji oraz ochronę tożsamości.'
+description: Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa firmy Microsoft do katalogowania tożsamości i zarządzaniami nimi, która w obrębie jednego rozwiązania łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji oraz ochronę tożsamości.
 services: active-directory
 author: barbkess
 manager: daveba
@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: d3ad12ac45a90edc5b3d9be0dc78786ef01a0f04
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337837"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Dokumentacja usługi Azure Active Directory</h1>

@@ -1,6 +1,6 @@
 ---
 title: Dokumentacja usług Azure Analysis Services — samouczki i dokumentacja interfejsu API
-description: 'Dowiedz się, jak skonfigurować modelowanie danych za pomocą usług Analysis Services w chmurze. W dokumentacji pokazano, jak utworzyć rozwiązanie służące do przeprowadzania analizy biznesowej w przedsiębiorstwach przy użyciu danych tabelarycznych.'
+description: Dowiedz się, jak skonfigurować modelowanie danych za pomocą usług Analysis Services w chmurze. W dokumentacji pokazano, jak utworzyć rozwiązanie służące do przeprowadzania analizy biznesowej w przedsiębiorstwach przy użyciu danych tabelarycznych.
 services: analysis-services
 author: minewiskan
 ms.author: owend
@@ -8,6 +8,12 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 02/14/2018
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106971"
 ---
 # <a name="analysis-services-documentation"></a>Dokumentacja usług Analysis Services
 

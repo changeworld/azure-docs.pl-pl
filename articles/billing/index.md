@@ -1,19 +1,24 @@
 ---
 layout: LandingPage
 title: Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure | Microsoft Docs
-description: 'Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty oraz zarządzać nimi, a także jak zarządzać kontem i subskrypcjami.'
+description: Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty oraz zarządzać nimi, a także jak zarządzać kontem i subskrypcjami.
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: null
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/19/2019
 ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446719"
 ---
-
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure
 
 Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty, a także jak zarządzać kontem i subskrypcjami.

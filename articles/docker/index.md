@@ -11,6 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
+ms.openlocfilehash: f3e26701a5764169b6d459d28c5d70227386c6bf
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588147"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   
