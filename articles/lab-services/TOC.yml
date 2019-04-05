@@ -135,8 +135,10 @@ items:
         href: devtest-lab-add-vm.md
       - name: Tworzenie możliwych do przejęcia maszyn wirtualnych i zarządzanie nimi
         href: devtest-lab-add-claimable-vm.md
-      - name: Tworzenie maszyn wirtualnych i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
+      - name: Tworzenie maszyn wirtualnych i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
         href: devtest-lab-vmcli.md
+      - name: Tworzenie maszyny wirtualnej przy użyciu programu Azure PowerShell
+        href: devtest-lab-vm-powershell.md
       - name: Tworzenie maszyny wirtualnej na podstawie szablonu usługi Resource Manager
         href: devtest-lab-use-resource-manager-template.md
       - name: Ponowne uruchamianie maszyny wirtualnej
@@ -277,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Często zadawane pytania
       href: devtest-lab-faq.md
-ms.openlocfilehash: bee44d9ce7378bd48960c47ed9be9c7f53e23110
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886679"
+ms.locfileid: "58894444"
