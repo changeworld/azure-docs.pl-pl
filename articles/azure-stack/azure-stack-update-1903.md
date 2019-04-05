@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 2a2e289423eda53d610b2346193f6ee8a30b9c48
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917689"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048813"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizacja usługi Azure Stack 1903
 
@@ -64,6 +64,12 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 - Ulepszenia wykrywania i korygowania małej ilości miejsca na warunkach.
 
+### <a name="secret-management"></a>Zarządzanie wpisami tajnymi
+
+- Usługa Azure Stack obsługuje teraz rotacji certyfikatu głównego używany przez certyfikaty dla zewnętrznych obrotu wpisu tajnego. Aby uzyskać więcej informacji [znajduje się w artykule](azure-stack-rotate-secrets.md).
+
+- 1903 zawiera ulepszenia wydajności dla wpisu tajnego obrotu, które skrócić czas potrzebny na wykonanie wewnętrznego obrotu wpisu tajnego.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
@@ -91,7 +97,7 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 - Po uruchomieniu [AzureStack testu](azure-stack-diagnostic-test.md), zostanie wyświetlony komunikat ostrzegawczy z kontrolera zarządzania płytą główną (BMC). Można bezpiecznie zignorować to ostrzeżenie.
 
-- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem `Error – Template for FaultType UserAccounts.New is missing.` te alerty można bezpiecznie zignorować. Alerty zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
+- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem **błędu — szablon FaultType UserAccounts.New Brak.** Te alerty można bezpiecznie zignorować. Alerty zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
 
 ## <a name="post-update-steps"></a>Kroki po aktualizacji
 
@@ -151,9 +157,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 - Maszyny Wirtualnej systemu Ubuntu 18.04 utworzone za pomocą autoryzacji SSH włączone uniemożliwi używanie kluczy SSH do logowania. Jako obejście użycie dostępu do maszyny Wirtualnej dla rozszerzenia systemu Linux w celu wdrożenia kluczy SSH po zainicjowaniu obsługi administracyjnej lub korzystanie z uwierzytelniania opartego na hasłach.
 
-- Jeśli nie masz hosta cyklu życia sprzętu (HLH): Przed kompilacją 1902 trzeba było ustawić zasady grupy *komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\opcje* do **Wyślij LM i protokołu NTLM — użyj zabezpieczeń sesji NTLMv2 po uzgodnieniu**. Od czasu kompilacji 1902 należy pozostawić go w formie **Niezdefiniowany** lub ustaw go na **tylko NTLMv2 wysłać odpowiedź** (czyli wartość domyślna). W przeciwnym razie nie będzie można nawiązać sesji zdalnej programu PowerShell i otrzymasz *dostęp jest zabroniony* błąd:
+- Jeśli nie masz hosta cyklu życia sprzętu (HLH): przed kompilacją 1902 trzeba było ustawić zasady grupy **komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\opcje** do **Wyślij LM i protokołu NTLM — Użyj zabezpieczeń sesji NTLMv2 po uzgodnieniu**. Od czasu kompilacji 1902 należy pozostawić go w formie **Niezdefiniowany** lub ustaw go na **tylko NTLMv2 wysłać odpowiedź** (czyli wartość domyślna). W przeciwnym razie nie będzie można nawiązać sesji zdalnej programu PowerShell i zostanie wyświetlony **dostęp jest zabroniony** błąd:
 
-   ```PowerShell
+   ```shell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
@@ -169,7 +175,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 3239127 - IS, ASDK -->
 - W portalu usługi Azure Stack po zmianie statyczny adres IP dla konfiguracji adresu IP, który jest powiązany z kartą sieciową, dołączony do wystąpienia maszyny Wirtualnej, zobaczysz komunikat ostrzegawczy z informacją, że 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
 
     Możesz bezpiecznie zignorować ten komunikat; adres IP zostanie zmieniony, nawet wtedy, gdy wystąpienie maszyny Wirtualnej nie jest ponownie uruchamiany.
 
@@ -193,7 +199,6 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 <!-- 2352906 - IS ASDK --> 
 - Należy zarejestrować dostawcę zasobów magazynu, przed utworzeniem pierwszej funkcji platformy Azure w ramach subskrypcji.
-
 
 <!-- ### Usage -->
 

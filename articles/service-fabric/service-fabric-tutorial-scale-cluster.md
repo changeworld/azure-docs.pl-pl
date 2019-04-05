@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 40e372b779d06656b111ad3d7de435b99c401dc3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 05a30bee8e6eb0db2e06d6d5a3a7af0d0759fb4c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669507"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049408"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
@@ -41,12 +41,15 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * [Uaktualnianie środowiska uruchomieniowego klastra](service-fabric-tutorial-upgrade-cluster.md)
 > * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+* Zainstaluj [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Istotne zagadnienia i wytyczne
@@ -98,7 +101,7 @@ Skalowania w usuwanie węzłów z typem węzła brązowa [poziom trwałości] [ 
 Zapisz zmiany wprowadzone w *template.json* i *parameters.json* plików.  Aby wdrożyć zaktualizowany szablon, uruchom następujące polecenie:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Lub następującego polecenia wiersza polecenia platformy Azure:
 ```azure-cli
@@ -804,7 +807,7 @@ W *parameters.json* plików, Dodaj następujące nowe parametry i wartości:
 Zapisz zmiany wprowadzone w *template.json* i *parameters.json* plików.  Aby wdrożyć zaktualizowany szablon, uruchom następujące polecenie:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Lub następującego polecenia wiersza polecenia platformy Azure:
 ```azure-cli
@@ -815,16 +818,16 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 Po utworzeniu klastra usługi Service Fabric klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów. Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze. Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
 
 > [!WARNING]
-> Za pomocą polecenie Remove-AzureRmServiceFabricNodeType Usuń typ węzła z klastra produkcyjnego nie jest zalecane do użycia na częste. Jest to niebezpieczne polecenie jak usuwa zasobu zestawu skalowania maszyny wirtualnej za typ węzła. 
+> Przy użyciu AzServiceFabricNodeType Usuń, aby usunąć typ węzła z klastra produkcyjnego nie jest zalecane do użycia na częste. Jest to niebezpieczne polecenie jak usuwa zasobu zestawu skalowania maszyny wirtualnej za typ węzła. 
 
-Aby usunąć typ węzła, uruchom [Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) polecenia cmdlet.  Typ węzła musi być na poziomie Silver lub Gold [poziom trwałości] [ durability] polecenie cmdlet usuwa zestaw skalowania, skojarzone z typem węzła i zajmuje trochę czasu.  Następnie uruchom [ServiceFabricNodeState Usuń](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) polecenie cmdlet na każdym z węzłów do usunięcia, które usuwa stan węzła i węzłów z klastra. W przypadku usług w węzłach, następnie usług są najpierw przenieść do innego węzła. Jeśli Menedżer klastra nie można odnaleźć węzła dla repliki/usługi, operacja jest opóźnione zablokowane.
+Aby usunąć typ węzła, uruchom [AzServiceFabricNodeType Usuń](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) polecenia cmdlet.  Typ węzła musi być na poziomie Silver lub Gold [poziom trwałości] [ durability] polecenie cmdlet usuwa zestaw skalowania, skojarzone z typem węzła i zajmuje trochę czasu.  Następnie uruchom [ServiceFabricNodeState Usuń](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) polecenie cmdlet na każdym z węzłów do usunięcia, które usuwa stan węzła i węzłów z klastra. W przypadku usług w węzłach, następnie usług są najpierw przenieść do innego węzła. Jeśli Menedżer klastra nie można odnaleźć węzła dla repliki/usługi, operacja jest opóźnione zablokowane.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
 $nodetype = "nt4vm"
 $clustername = "mysfcluster123"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -861,7 +864,7 @@ Jednostka SKU maszyny Wirtualnej dla wszystkich typów z trzema węzłami jest u
 Zapisz zmiany wprowadzone w *template.json* i *parameters.json* plików.  Aby wdrożyć zaktualizowany szablon, uruchom następujące polecenie:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Lub następującego polecenia wiersza polecenia platformy Azure:
 ```azure-cli
@@ -874,6 +877,18 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Dodawanie i usuwanie węzłów (skalowanie w poziomie i skalowanie)
+> * Dodawanie i usuwanie typów węzłów (skalowanie w poziomie i skalowanie)
+> * Zwiększ zasoby węzła (skalowanie w górę)
+
+Przejdź do kolejnego samouczka, aby dowiedzieć się, jak uaktualnić środowisko uruchomieniowe klastra.
+> [!div class="nextstepaction"]
+> [Uaktualnianie środowiska uruchomieniowego klastra](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+Skalowanie w pionie ND))
 > * Dodawanie i usuwanie typów węzłów (skalowanie w poziomie i skalowanie)
 > * Zwiększ zasoby węzła (skalowanie w górę)
 

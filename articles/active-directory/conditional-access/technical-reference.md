@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2334497c6329ee335c529e1490a2f966f51dff
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891722"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051126"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -120,8 +120,8 @@ To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8 / 8.1        | Program Internet Explorer, Chrome                     |
 | Windows 7              | Program Internet Explorer, Chrome                     |
-| iOS                    | Safari, usługa Intune Managed Browser                |
-| Android                | Chrome, usługa Intune Managed Browser                |
+| iOS                    | Safari, przeglądarki Microsoft Edge Intune Managed Browser |
+| Android                | Chrome, Microsoft Edge Intune Managed Browser |
 | Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |

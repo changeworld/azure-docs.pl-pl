@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7f6baec8fee2b046949e2d88b5fff7bb5db9b40b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662418"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045837"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Samouczek: Część 2 — Wyświetl komunikaty trasowane
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rules-for-routing-the-messages"></a>Reguły routingu komunikatów
 
@@ -280,10 +282,10 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Aby wyczyścić zasoby przy użyciu programu PowerShell
 
-Aby usunąć grupę zasobów, użyj polecenia [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup). `$resourceGroup` ustawiono **ContosoResources** ponownie na początku tego samouczka.
+Aby usunąć grupę zasobów, użyj polecenia [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup` ustawiono **ContosoResources** ponownie na początku tego samouczka.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -295,7 +297,7 @@ W tym samouczku 2-częściowych pokazaliśmy ci, jak używać routing komunikat�
 > * Tworzenie zasobów — Centrum IoT hub, konto magazynu, kolejki usługi Service Bus i symulowanego urządzenia.
 > * Punkty końcowe i skonfigurować trasy wiadomości w usłudze IoT Hub dla konta magazynu i kolejki usługi Service Bus.
 
-**Part II: Wysyłanie komunikatów do Centrum, wyświetlanie wyników trasowane**
+**Część II: Wysyłanie komunikatów do Centrum, wyświetlanie wyników trasowane**
 > [!div class="checklist"]
 > * Tworzenie aplikacji logiki, która jest wyzwalana i wysyła wiadomość e-mail po dodaniu komunikatu do kolejki usługi Service Bus.
 > * Pobieranie i uruchamianie aplikacji, która symuluje urządzenie IoT wysyłające komunikaty do centrum przy użyciu różnych opcji routingu.
@@ -308,4 +310,4 @@ W tym samouczku 2-częściowych pokazaliśmy ci, jak używać routing komunikat�
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie i używanie metryk i diagnostyki w usłudze IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Konfigurowanie i używanie metryki i Diagnostyka za pomocą usługi IoT Hub](tutorial-use-metrics-and-diags.md)

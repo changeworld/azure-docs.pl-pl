@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579720"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045488"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest Zarządzanie tożsamościami usługi Azure AD?
 
@@ -56,7 +56,7 @@ Zazwyczaj IT delegatów dostępu zatwierdzeniu podjęte decyzje w kwestii osobom
 
 Organizacje takie jak zautomatyzować proces cyklu życia dostępu za pomocą technologii [grup dynamicznych](../users-groups-roles/groups-dynamic-membership.md), powiązanych z aprowizacji użytkowników do [aplikacji SaaS](../saas-apps/tutorial-list.md) lub [aplikacje zintegrować przy użyciu SCIM](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizacje mogą również kontrolować, które [użytkownicy-goście mają dostęp do aplikacji lokalnych](../b2b/hybrid-cloud-to-on-premises.md).  Te mogą praw dostępu, a następnie być regularnie analizowane za pomocą cykliczne [przeglądy dostępu w usłudze Azure AD](access-reviews-overview.md).
 
-Gdy użytkownik próbuje uzyskać dostęp do aplikacji, Azure AD wymusza [dostępu warunkowego](/azure/active-directory/conditional-access/) zasad. Na przykład zasady dostępu warunkowego obejmują wyświetlanie [warunki użytkowania](active-directory-tou.md) i [zapewnienie użytkownik zgodził się na te warunki](../conditional-access/require-tou.md) przed uzyskaniem dostępu do aplikacji.
+Gdy użytkownik próbuje uzyskać dostęp do aplikacji, Azure AD wymusza [dostępu warunkowego](/azure/active-directory/conditional-access/) zasad. Na przykład zasady dostępu warunkowego obejmują wyświetlanie [warunki użytkowania](../conditional-access/terms-of-use.md) i [zapewnienie użytkownik zgodził się na te warunki](../conditional-access/require-tou.md) przed uzyskaniem dostępu do aplikacji.
 
 ## <a name="privileged-access-lifecycle"></a>Cykl życia uprzywilejowanego dostępu
 
@@ -81,7 +81,7 @@ Następujące konfiguracje oferują przewodnika po to, jakie zasady linii bazowe
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
-- [Do czego można wykorzystać warunki użytkowania?](active-directory-tou.md)
+- [Do czego można wykorzystać warunki użytkowania?](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 

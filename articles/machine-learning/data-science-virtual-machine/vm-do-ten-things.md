@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878435"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046189"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -50,6 +50,9 @@ W tym artykule dowiesz się, jak używać maszyny wirtualnej DSVM do wykonywania
 
 * Musisz mieć subskrypcję platformy Azure. Możesz zasubskrybować bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/free/).
 * Instrukcje dotyczące obsługi maszyny wirtualnej do nauki o danych w witrynie Azure portal są dostępne pod adresem [tworzenia maszyny wirtualnej](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Badaj dane i tworzyć modele przy użyciu usługi Microsoft ML Server lub Python
 Języki R i Python umożliwia przeprowadzenie analizy swoje dane bezpośrednio na maszyny DSVM.
@@ -223,22 +226,22 @@ Można użyć programu Azure Powershell, aby utworzyć udział usługi Azure Fil
 
 ```powershell
 # Authenticate to Azure.
-Connect-AzureRmAccount
+Connect-AzAccount
 # Select your subscription
-Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription –SubscriptionName "<your subscription name>" | Select-AzSubscription
 # Create a new resource group.
-New-AzureRmResourceGroup -Name <dsvmdatarg>
+New-AzResourceGroup -Name <dsvmdatarg>
 # Create a new storage account. You can reuse existing storage account if you wish.
-New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
+New-AzStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
 # Set your current working storage account
-Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
+Set-AzCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
 # Create an Azure File Service Share
-$s = New-AzureStorageShare <<teamsharename>>
+$s = New-AzStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
-New-AzureStorageDirectory -Share $s -Path <directory name>
+New-AzStorageDirectory -Share $s -Path <directory name>
 # List the share to confirm that everything worked
-Get-AzureStorageFile -Share $s
+Get-AzStorageFile -Share $s
 ```
 
 Teraz, po utworzeniu udziału plików platformy Azure, możesz go zainstalować w dowolnej maszyny wirtualnej na platformie Azure. Zdecydowanie zaleca się, że maszyna wirtualna znajduje się w tym samym centrum danych platformy Azure jako konto magazynu, aby uniknąć opłat za transfer opóźnienia i danych. Poniżej przedstawiono polecenia do zainstalowania dysku maszyny wirtualnej DSVM, uruchamianą w programie Azure Powershell.
@@ -283,7 +286,7 @@ Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmu
 
 ![Zrzut ekranu przedstawiający Eksplorator usługi Azure Storage uzyskiwania dostępu do konta magazynu](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: AzCopy**
+**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Narzędzie AzCopy**
 
 Do przenoszenia danych między lokalnymi plikami i usługi blob storage, narzędzia AzCopy można użyć w wiersza polecenia lub programu PowerShell:
 
@@ -308,7 +311,7 @@ Po uruchomieniu polecenia narzędzia AzCopy do kopiowania do obiektu blob platfo
 
 ![Zrzut ekranu przedstawiający konto magazynu, wyświetlanie przekazanego pliku CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Azure Storage Explorer**
+**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Eksplorator usługi Azure Storage**
 
 Możesz również przekazać dane z pliku lokalnego na maszynie wirtualnej za pomocą Eksploratora usługi Azure Storage:
 
@@ -386,7 +389,7 @@ Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy 
 
 ![Zrzut ekranu przedstawiający narzędzi Data Lake Tools w programie Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Usługa Azure Data Lake Explorer**
+**Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Azure Data Lake Explorer**
 
 Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plików lokalnych na maszynie wirtualnej do magazynu usługi Data Lake.
 

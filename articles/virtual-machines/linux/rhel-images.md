@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011665"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045426"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Obrazy systemu Red Hat Enterprise Linux na platformie Azure
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania.
@@ -65,7 +65,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Bieżący konwencji nazewnictwa
 Wszystkie obecnie opublikowanych obrazów systemu RHEL korzystania z modelu płatność za rzeczywiste użycie i są połączone z [Red Hat Update infrastruktury (RHUI) na platformie Azure](https://aka.ms/rhui-update). Ze względu na ograniczenie usługi RHUI do projektu zostało zaadoptowane nowej konwencji nazewnictwa dla rodziny obrazów systemu RHEL 7. W tej chwili nie został zmodyfikowany RHEL 6 rodziny nazewnictwa.
 
-Ograniczenie to z faktu, że w przypadku nie selektywną `yum update` jest wykonywany dla maszyny Wirtualnej podłączone do usługi RHUI, wersja oprogramowania RHEL zostanie zaktualizowany do najnowszej wersji z bieżącego rodziny. Aby uzyskać więcej informacji, zobacz [ten link](https://aka.ms/rhui-udate). Może to spowodować błąd podczas aprowizowanego obrazów systemu RHEL 7.2 staje się RHEL 7.6 po aktualizacji. Nadal można udostępnić z obrazu starsze, zgodnie z przedstawionymi w powyższych przykładach jawne określenie wymaganej wersji. Jeśli nie określono wymaganej wersji podczas aprowizowania nowych obrazów systemu RHEL 7, najnowszego obrazu będzie gotowa.
+Ograniczenie to z faktu, że w przypadku nie selektywną `yum update` jest wykonywany dla maszyny Wirtualnej podłączone do usługi RHUI, wersja oprogramowania RHEL zostanie zaktualizowany do najnowszej wersji z bieżącego rodziny. Aby uzyskać więcej informacji, zobacz [ten link](https://aka.ms/rhui-update). Może to spowodować błąd podczas aprowizowanego obrazów systemu RHEL 7.2 staje się RHEL 7.6 po aktualizacji. Nadal można udostępnić z obrazu starsze, zgodnie z przedstawionymi w powyższych przykładach jawne określenie wymaganej wersji. Jeśli nie określono wymaganej wersji podczas aprowizowania nowych obrazów systemu RHEL 7, najnowszego obrazu będzie gotowa.
 
 >[!NOTE]
 > W RHEL for SAP zestawu obrazów wersja oprogramowania RHEL pozostaje stały. W efekcie ich Konwencja nazewnictwa obejmuje określoną wersję w ramach jednostki SKU.

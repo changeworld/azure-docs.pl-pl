@@ -1,19 +1,18 @@
 ---
 title: 'Samouczek: Pozyskiwanie danych dzienników diagnostycznych i danych dzienników aktywności w usłudze Azure Data Explorer bez pisania ani jednego wiersza kodu'
 description: Z tego samouczka dowiesz się, jak pozyskiwać dane do usługi Azure Data Explorer bez użycia ani jednego wiersza kodu oraz jak tworzyć zapytania dotyczące tych danych.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 3/14/2019
-ms.openlocfilehash: 5d6b595b442b645f57454e317e6535645f643598
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 03/14/2019
+ms.openlocfilehash: 7006c6dcfb149247a066b850f59da626b2826e31
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756843"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051907"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Samouczek: Pozyskiwanie danych w usłudze Azure Data Explorer bez pisania ani jednego wiersza kodu
 
@@ -269,7 +268,7 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowanie metryk na ko
 
 1. Utwórz centrum zdarzeń przy użyciu szablonu usługi Azure Resource Manager w witrynie Azure Portal. Aby wykonać pozostałe kroki w tym artykule, kliknij prawym przyciskiem myszy przycisk **Wdróż na platformie Azure** i wybierz pozycję **Otwórz w nowym oknie**. Przycisk **Wdróż na platformie Azure** powoduje przejście do witryny Azure Portal.
 
-    [![Przycisk Wdróż na platformie Azure](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy przycisk platformy Azure](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Utwórz centrum zdarzeń i przestrzeń nazw usługi Event Hubs na potrzeby dzienników diagnostycznych.
 
@@ -280,7 +279,7 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowanie metryk na ko
     **Ustawienie** | **Sugerowana wartość** | **Opis**
     |---|---|---|
     | **Subskrypcja** | *Twoja subskrypcja* | Wybierz subskrypcję platformy Azure, która ma być używana dla centrum zdarzeń.|
-    | **Grupa zasobów** | *test-resource-group* | Utwórz nową grupę zasobów. |
+    | **Grupa zasobów** | *Test-resource-group* | Utwórz nową grupę zasobów. |
     | **Lokalizacja** | Wybierz region, który najlepiej odpowiada Twoim potrzebom. | Utwórz przestrzeń nazw usługi Event Hubs w tej samej lokalizacji co inne zasoby.
     | **Nazwa przestrzeni nazw** | *AzureMonitoringData* | Wybierz unikatową nazwę, która identyfikuje Twoją przestrzeń nazw.
     | **Nazwa centrum zdarzeń** | *DiagnosticLogsData* | Centrum zdarzeń znajduje się w przestrzeni nazw, która zapewnia unikatowy kontener określania zakresu. |
@@ -461,4 +460,4 @@ Wyniki zapytania:
 Aby dowiedzieć się, jak pisać wiele innych zapytań dotyczących danych wyodrębnionych z usługi Azure Data Explorer, zapoznaj się z następującym artykułem:
 
 > [!div class="nextstepaction"]
-> [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+> [Pisanie zapytań w Eksploratorze danych platformy Azure](write-queries.md)

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803224"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046994"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
 W tym artykule zbiera dane w jednym miejscu wielu najczęściej zadawane pytania na temat analizy ruchu w usłudze Azure Network Watcher.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Jakie są wymagania wstępne dotyczące Korzystanie z analizy ruchu?
 
@@ -51,11 +54,11 @@ Twoje konto musi spełniać jeden z następujących czynności, aby włączyć a
         
 Aby sprawdzić role przypisane do użytkownika w ramach subskrypcji:
 
-1. Logowanie do platformy Azure przy użyciu **Login-AzureRmAccount**. 
+1. Logowanie do platformy Azure przy użyciu **AzAccount logowania**. 
 
-2. Wybierz subskrypcję, wymagane przy użyciu **Select-AzureRmSubscription**. 
+2. Wybierz subskrypcję, wymagane przy użyciu **AzSubscription wybierz**. 
 
-3. Aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, należy użyć **polecenia Get-AzureRmRoleAssignment - SignInName [adres e-mail użytkownika] - IncludeClassicAdministrators**. 
+3. Aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, należy użyć **Get AzRoleAssignment - SignInName [adres e-mail użytkownika] - IncludeClassicAdministrators**. 
 
 Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administratorem odpowiednią subskrypcję, aby uzyskać dostęp do poleceń. Aby uzyskać więcej informacji, zobacz [zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -139,8 +142,8 @@ Skontaktuj się z pomocą techniczną, jeśli problem będzie się powtarzać.
 Dostawcy Microsoft.Insights musi być zarejestrowany dla rejestrowania, aby zapewnić prawidłowe działanie usługi flow. Jeśli nie masz pewności, czy dostawca Microsoft.Insights jest zarejestrowany dla Twojej subskrypcji, należy zastąpić *xxxxx-xxxxx-xxxxxx-xxxx* w następujące polecenia i uruchom następujące polecenia programu PowerShell:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Czy mogę skonfigurować rozwiązania. Dlaczego nie widzę żadnych na pulpicie nawigacyjnym?
@@ -170,7 +173,7 @@ Informacje o zasobach są widoczne na pulpicie nawigacyjnym; jednak nie statysty
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Analiza ruchu przy użyciu programu PowerShell można skonfigurować lub szablonu usługi Azure Resource Manager lub klienta?
 
-Analiza ruchu można skonfigurować za pomocą programu Windows PowerShell z wersji 6.2.1 lub nowszy. Aby skonfigurować rejestrowanie przepływu i analiza ruchu dla określonej sieciowej grupy zabezpieczeń, za pomocą polecenia cmdlet Set, zobacz [AzureRmNetworkWatcherConfigFlowLog zestaw](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog). Rejestrowanie przepływu i stan analizy ruchu dla określonej sieciowej grupy zabezpieczeń, można znaleźć [Get AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus).
+Analiza ruchu można skonfigurować za pomocą programu Windows PowerShell z wersji 6.2.1 lub nowszy. Aby skonfigurować rejestrowanie przepływu i analiza ruchu dla określonej sieciowej grupy zabezpieczeń, za pomocą polecenia cmdlet Set, zobacz [AzNetworkWatcherConfigFlowLog zestaw](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Rejestrowanie przepływu i stan analizy ruchu dla określonej sieciowej grupy zabezpieczeń, można znaleźć [Get AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Obecnie nie można użyć szablonu usługi Azure Resource Manager do konfigurowania analizy ruchu.
 

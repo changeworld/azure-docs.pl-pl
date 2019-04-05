@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: fec72a4fac6baa3869928c0203aeb29e53ce5ea4
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 6df44531e8879783bba6b49a0db44f87af71fb5f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648473"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050513"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji Java Spring korzystającej z usługi App Configuration
 
@@ -54,11 +54,7 @@ Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)
 
 4. Wybierz pozycję **Utwórz**. Wdrożenie może potrwać kilka minut.
 
-5. Po zakończeniu wdrożenia wybierz **ustawienia** > **klucze dostępu**. Zanotuj albo tylko do odczytu lub podstawowy odczytu i zapisu parametry połączenia klucza podstawowego. Użyj tych parametrów połączenia jest później skonfigurować aplikację do komunikowania się z utworzonego magazynu konfiguracji aplikacji. Parametry połączenia mają następującą postać:
-
-        Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>
-
-    Użyj cały ciąg w aplikacji.
+5. Po zakończeniu wdrożenia wybierz **ustawienia** > **klucze dostępu**. Zanotuj albo tylko do odczytu lub podstawowy odczytu i zapisu parametry połączenia klucza podstawowego. Użyj tych parametrów połączenia jest później skonfigurować aplikację do komunikowania się z utworzonego magazynu konfiguracji aplikacji.
 
 6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
 

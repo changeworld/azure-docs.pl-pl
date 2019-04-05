@@ -9,15 +9,17 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ff7aa1ab8972b6cbb891a67b1065044b48f1cfa3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446219"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051873"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
 Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="versioning-experiment"></a>Przechowywanie wersji eksperymentu
 Istnieją dwa sposoby zalecana wersja eksperymenty. Możesz polegać na wbudowane historii uruchamiania lub wyeksportować eksperymentu w formacie JSON w taki sposób, aby zarządzać nim zewnętrznie. Każde podejście ma swoje zalety i wady.
@@ -73,7 +75,7 @@ Wraz z upływem czasu może mieć wiele punktów końcowych, utworzony w tej sam
 Można również utworzyć wiele punktów końcowych usługi sieci web identyczne, a następnie stosowanie poprawek do różnych wersji plik iLearner do punktu końcowego, aby osiągnąć ten sam efekt. [W tym artykule](create-models-and-endpoints-with-powershell.md) wyjaśnia, bardziej szczegółowo, jak to zrobić.
 
 ### <a name="new-web-service"></a>Nowa usługa sieci web
-Jeśli tworzysz nową usługę sieci web opartych na usłudze Azure Resource Manager, konstrukcja punkt końcowy nie jest już dostępna. Zamiast tego możesz wygenerować plików definicji (WSD) usługi sieci web, w formacie JSON z eksperymentu predykcyjnego przy użyciu [AmlWebServiceDefinitionFromExperiment eksportu](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) polecenia cmdlet programu PowerShell lub za pomocą [ *AzureRmMlWebservice eksportu* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) polecenia cmdlet programu PowerShell z usługą sieci web opartych na usłudze Resource Manager wdrożone.
+Jeśli tworzysz nową usługę sieci web opartych na usłudze Azure Resource Manager, konstrukcja punkt końcowy nie jest już dostępna. Zamiast tego możesz wygenerować plików definicji (WSD) usługi sieci web, w formacie JSON z eksperymentu predykcyjnego przy użyciu [AmlWebServiceDefinitionFromExperiment eksportu](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) polecenia cmdlet programu PowerShell lub za pomocą [ *AzMlWebservice eksportu* ](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) polecenia cmdlet programu PowerShell z usługą sieci web opartych na usłudze Resource Manager wdrożone.
 
 Po utworzeniu wyeksportowany plik WSD i nad nim kontroli wersji, można także wdrożyć WSD jako nowej usługi sieci web w ramach planu usługi sieci web w różnych w innym regionie platformy Azure. Po prostu upewnij się, że użytkownik poda prawidłowego magazynu konfiguracji konta, a także nowy identyfikator planu usługi sieci web. Zastosowania poprawki w plikach różnych iLearner, można zmodyfikować plik WSD i zaktualizuj odwołanie do lokalizacji trenowanego modelu i wdrożyć go jako nowej usługi sieci web.
 

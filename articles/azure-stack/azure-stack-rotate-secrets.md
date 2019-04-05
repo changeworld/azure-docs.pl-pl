@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 55bb83015cee6476a10424f32b51eb9eb29db0da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917564"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050258"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -63,13 +63,13 @@ Usługa Azure Stack obsługuje obrotu wpisu tajnego za pomocą certyfikatów zew
 
 |Zainstalowany certyfikat urzędu certyfikacji.|Obróć do urzędu certyfikacji|Obsługiwane|Obsługiwane wersje usługi Azure Stack|
 |-----|-----|-----|-----|
-|Z podpisem własnym|To Enterprise|Nieobsługiwane||
+|Z podpisem własnym|To Enterprise|Obsługiwane|1903 i nowsze|
 |Z podpisem własnym|Aby z podpisem własnym|Nieobsługiwane||
 |Z podpisem własnym|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
-|Dla przedsiębiorstw|To Enterprise|Obsługiwane tak długo, jak klienci używają tego samego przedsiębiorstwa urzędu certyfikacji, ponieważ używany we wdrożeniu|1803 i nowsze|
+|Dla przedsiębiorstw|To Enterprise|Obsługiwane. Od wersji 1803 1903: obsługiwane tak długo, jak klienci używają tego samego przedsiębiorstwa urzędu certyfikacji, ponieważ używany we wdrożeniu|1803 i nowsze|
 |Dla przedsiębiorstw|Aby z podpisem własnym|Nieobsługiwane||
 |Dla przedsiębiorstw|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
-|Z publicznego<sup>*</sup>|To Enterprise|Nieobsługiwane|1803 i nowsze|
+|Z publicznego<sup>*</sup>|To Enterprise|Obsługiwane|1903 i nowsze|
 |Z publicznego<sup>*</sup>|Aby z podpisem własnym|Nieobsługiwane||
 |Z publicznego<sup>*</sup>|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
 

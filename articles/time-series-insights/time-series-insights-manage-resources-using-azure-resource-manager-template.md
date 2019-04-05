@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 79751dc0de8817c940355e8b64652014b1c67c35
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009374"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045904"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów usługi Time Series Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -38,6 +38,9 @@ Szablon usługi Resource Manager to plik JSON, który definiuje infrastrukturę 
 - [Typy zasobów Microsoft.TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 [201-timeseriesinsights środowiska z eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) szablon szybkiego startu jest opublikowana w witrynie GitHub. Ten szablon tworzy środowisko usługi Time Series Insights, źródłem zdarzeń podrzędnych pod kątem korzystanie ze zdarzeń z Centrum zdarzeń i dostęp do zasad, które udzielić dostępu do danych środowiska. Jeśli w istniejącym Centrum zdarzeń nie jest określona, zostanie utworzony przy użyciu wdrażania.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Wdrażanie szablonu szybkiego startu lokalnie przy użyciu programu PowerShell
 
@@ -110,8 +113,8 @@ Aby utworzyć plik parametrów, skopiuj [201-timeseriesinsights środowiska z ev
    | eventSourceDisplayName | Opcjonalna nazwa przyjazna do wyświetlenia w interfejsach użytkownika lub narzędzia zamiast nazwy źródła zdarzeń. |
    | eventSourceTimestampPropertyName | Właściwości zdarzenia, która będzie służyć jako źródło zdarzenia sygnatura czasowa. Jeśli wartość nie jest określona dla timestampPropertyName lub wartość null lub pusty ciąg jest określony, będą używane podczas tworzenia zdarzenia. |
    | eventSourceKeyName | Nazwa klucza dostępu współdzielonego, którego będzie używać usługa Time Series Insights, aby nawiązać połączenie z Centrum zdarzeń. |
-   | accessPolicyReaderObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, którą powinien posiadać czytnika dostęp do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzureRMADUser** lub **Get AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
-   | accessPolicyContributorObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, która powinna mieć dostęp współautora do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzureRMADUser** lub **Get AzureRMADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
+   | accessPolicyReaderObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, którą powinien posiadać czytnika dostęp do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzADUser** lub **Get AzADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
+   | accessPolicyContributorObjectIds | Lista obiektów identyfikatory użytkowników lub aplikacji w usłudze Azure AD, która powinna mieć dostęp współautora do środowiska. Identyfikator obiektu nazwy głównej usługi można uzyskać przez wywołanie metody **Get AzADUser** lub **Get AzADServicePrincipal** polecenia cmdlet. Tworzenie zasad dostępu dla grup usługi Azure AD nie jest jeszcze obsługiwane. |
 
 Na przykład następujący plik parametrów będzie służyć do tworzenia środowiska i źródło zdarzenia, która odczytuje zdarzenia z istniejącym Centrum zdarzeń. Tworzy również dwie zasady dostępu do udzielania dostępu współautora do środowiska.
 
@@ -155,27 +158,27 @@ Aby uzyskać więcej informacji, zobacz [parametry](../azure-resource-manager/re
 W wierszu polecenia programu PowerShell uruchom następujące polecenie:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 To polecenie zwraca listę dostępnych subskrypcji platformy Azure. Wybierz subskrypcję dla bieżącej sesji, uruchamiając następujące polecenie. Zastąp `<YourSubscriptionId>` o identyfikatorze GUID subskrypcji platformy Azure, której chcesz użyć:
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>Ustaw grupę zasobów
 
-Jeśli nie masz istniejącego zasobu, grupy, Utwórz nową grupę zasobów za pomocą **New-AzureRmResourceGroup** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
+Jeśli nie masz istniejącego zasobu, grupy, Utwórz nową grupę zasobów za pomocą **New AzResourceGroup** polecenia. Podaj nazwę grupy zasobów i lokalizacji, w której chcesz użyć. Na przykład:
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 Jeśli to się powiedzie, zostanie wyświetlone podsumowanie nowej grupy zasobów.
@@ -190,38 +193,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Testowanie wdrożenia
 
-Sprawdź poprawność wdrożenia, uruchamiając `Test-AzureRmResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, dokładnie tak jak podczas wykonywania wdrożenia należy podać parametry.
+Sprawdź poprawność wdrożenia, uruchamiając `Test-AzResourceGroupDeployment` polecenia cmdlet. Podczas testowania wdrożenia, dokładnie tak jak podczas wykonywania wdrożenia należy podać parametry.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 ### <a name="create-the-deployment"></a>Tworzenie wdrożenia
 
-Aby utworzyć nowe wdrożenie, uruchom `New-AzureRmResourceGroupDeployment` polecenia cmdlet i podaj wymagane parametry po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie jest określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/deployment-modes.md).
+Aby utworzyć nowe wdrożenie, uruchom `New-AzResourceGroupDeployment` polecenia cmdlet i podaj wymagane parametry po wyświetleniu monitu. Parametry zawierają nazwę dla danego wdrożenia, nazwę grupy zasobów, a ścieżka lub adres URL do pliku szablonu. Jeśli **tryb** parametr nie jest określony, wartością domyślną **przyrostowe** jest używany. Aby uzyskać więcej informacji, zobacz [przyrostowe i pełne wdrożeń](../azure-resource-manager/deployment-modes.md).
 
 Następujące polecenie wyświetli monit o podanie pięć wymaganych parametrów w oknie programu PowerShell:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
 Aby określić plik parametrów zamiast tego, użyj następującego polecenia:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 Umożliwia także wbudowane parametry po uruchomieniu polecenia cmdlet wdrażania usług. Polecenie to w następujący sposób:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 Do uruchomienia [pełną](../azure-resource-manager/deployment-modes.md) wdrożenia, ustawić **tryb** parametr **Complete**:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia

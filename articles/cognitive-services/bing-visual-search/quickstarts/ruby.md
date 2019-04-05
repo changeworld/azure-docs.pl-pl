@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544720"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049290"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Szybki start: Uzyskaj szczegółowe informacje o obrazach za pomocą API REST wyszukiwania wizualnego Bing i języka Ruby
 
-Ten przewodnik Szybki Start używa języku programowania Ruby wywołanie wyszukiwania wizualnego Bing i wyświetlić wyniki. Żądanie Post służy do przekazywania obrazu do punktu końcowego interfejsu API. Wyniki obejmują adresy URL i opisowe informacje na temat obrazy, podobne do przekazanego obrazu.
+Ten przewodnik Szybki Start używa języku programowania Ruby wywołanie wyszukiwania wizualnego Bing i wyświetlić wyniki. Żądanie POST służy do przekazywania obrazu do punktu końcowego interfejsu API. Wyniki obejmują adresy URL i opisowe informacje na temat obrazy, podobne do przekazanego obrazu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,7 +32,7 @@ Aby uruchomić ten przewodnik Szybki Start:
 
 ## <a name="project-and-required-modules"></a>Projekt i wymagane moduły
 
-Utwórz nowy projekt języka Ruby w IDE lub edytora. Importuj `net/http`, `uri` , i `json` do obsługi tekstu JSON wyników. `base64` Biblioteka jest używana do zakodowania ciągu nazwy pliku. 
+Utwórz nowy projekt języka Ruby w IDE lub edytora. Importuj `net/http`, `uri` , i `json` do obsługi tekstu JSON wyników. `base64` Biblioteka jest używana do zakodowania ciągu nazwy pliku: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Definiowanie zmiennych
 
-Poniższy kod przypisuje zmienne wymagane. Upewnij się, że punkt końcowy jest poprawny i Zastąp `accessKey` wartością klucza subskrypcję z kontem platformy Azure.  `batchNumber` Jest identyfikatorem guid wymagane dla początkowe i końcowe granice danych Post.  `fileName` Zmiennej identyfikuje plik obrazu dla wpisu.  `if` Block testy dla klucza ważnej subskrypcji.
+Poniższy kod przypisuje zmienne wymagane. Upewnij się, że punkt końcowy jest poprawny i Zastąp `accessKey` wartością klucza subskrypcję z kontem platformy Azure.  `batchNumber` Jest identyfikatorem GUID wymagane dla początkowe i końcowe granice danych POST.  `fileName` Zmiennej identyfikuje plik obrazu dla wpisu.  `if` Block testy dla klucza ważnej subskrypcji.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Dane formularza do żądania Post
+## <a name="form-data-for-post-request"></a>Dane formularza do żądania POST
 
-Dane obrazu do wpisu jest ujęta w początkowe i końcowe granic.  Następujące funkcje ustawiają granice.
+Dane obrazu do wpisu jest ujęta w początkowe i końcowe granic. Następujące funkcje ustawiają granic:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-Następnie utworzyć identyfikator URI punktu końcowego i Tablica zawiera treść wpisu.  Funkcja poprzedniej załadować granic rozpoczęcia do tablicy. Odczytać pliku obrazu do tablicy. Odczytywać granic zakończenia do tablicy. 
+Następnie należy utworzyć identyfikator URI punktu końcowego i Tablica zawiera treść wpisu.  Funkcja poprzedniej załadować granic rozpoczęcia do tablicy. Odczytać pliku obrazu do tablicy. Następnie odczytać końcowej granicy tablicy:
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>Utwórz żądanie HTTP
 
-Ustaw `Ocp-Apim-Subscription-Key` nagłówka.  Utwórz żądanie.  Następnie przypisz nagłówka i typu zawartości.  Dołącz treść wpisu, wcześniej utworzone na żądanie.
+Ustaw `Ocp-Apim-Subscription-Key` nagłówka.  Utwórz żądanie. Następnie przypisz nagłówka i typu zawartości. Dołącz treść wpisu, wcześniej utworzone na żądanie:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -110,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Żądania i odpowiedzi
 
-Ruby wysyła żądanie i pobiera odpowiedź o następujący wiersz kodu.
+Ruby wysyła żądanie i pobiera odpowiedź z następującego kodu:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>Drukowanie wyników
 
-Drukuj nagłówki odpowiedzi. Następnie użyj biblioteki JSON, aby sformatować dane wyjściowe.
+Drukuj nagłówki odpowiedzi i korzystanie z biblioteki JSON do formatowania danych wyjściowych:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -138,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Wyniki
 
-Następujący kod JSON jest segmentem danych wyjściowych.
+Następujący kod JSON jest segmentem danych wyjściowych:
 
 ```
 Relevant Headers:
@@ -287,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [Przegląd wyszukiwania wizualnego Bing](../overview.md)
-> [tworzenie aplikacji internetowej wyszukiwania niestandardowego](../tutorial-bing-visual-search-single-page-app.md)
+> [tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego](../tutorial-bing-visual-search-single-page-app.md)

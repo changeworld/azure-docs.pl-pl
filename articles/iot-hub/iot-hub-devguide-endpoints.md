@@ -3,17 +3,17 @@ title: Omówienie punktów końcowych usługi Azure IoT Hub | Dokumentacja firmy
 description: Przewodnik dewelopera — informacje na temat usługi IoT Hub punktów końcowych przeznaczonych dla urządzeń i przeznaczonych dla usługi.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201436"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045921"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -102,5 +102,5 @@ Możesz użyć [usługi Azure IoT Edge](/azure/iot-edge/) do wdrożenia bramy w 
 Inne tematy referencyjne w tym przewodniku dla deweloperów usługi IoT Hub obejmują:
 
 * [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md)
-* [Limity przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md)
+* [Limity przydziału i ograniczanie wydajności](iot-hub-devguide-quotas-throttling.md)
 * [Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md)

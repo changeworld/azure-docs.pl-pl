@@ -3,19 +3,19 @@ title: Usługi platformy Azure IoT Hub urządzenia aprowizacji - zaświadczenie 
 description: Ten artykuł zawiera omówienie pojęć dotyczących symetrycznego zaświadczenie klucza przy użyciu IoT Device Provisioning.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/18/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 80828876ffe8b58697cfaacad4991354ac070730
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: philmea
+ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971794"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050948"
 ---
-# <a name="symmetric-key-attestation"></a>Zaświadczenie klucza symetrycznego
+# <a name="symmetric-key-attestation"></a>Zaświadczanie klucza symetrycznego
 
 W tym artykule opisano proces zaświadczania tożsamości, gdy z usługą Device Provisioning przy użyciu kluczy symetrycznych. 
 
@@ -48,10 +48,10 @@ Poniżej przedstawiono składniki każdy token:
 
 | Wartość | Opis |
 | --- | --- |
-| {Sygnatura} |Ciąg sygnatury HMAC SHA256. Dla rejestracji indywidualnych ten podpis jest generowany przy użyciu klucza symetrycznego (podstawowe lub pomocnicze), aby wykonać skrót. W przypadku grup rejestracji klucza generowanego z klucza rejestracji grupy służy do wykonywania skrót. Wartość skrótu jest wykonywana na komunikat w postaci: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: klucz musi zostać zdekodowane z formatu base64 przed używany do wykonywania obliczeń HMAC SHA256. Ponadto wynik podpisu musi być zakodowane w adresie URL. |
+| {Sygnatura} |Ciąg sygnatury HMAC SHA256. Dla rejestracji indywidualnych ten podpis jest generowany przy użyciu klucza symetrycznego (podstawowe lub pomocnicze), aby wykonać skrót. W przypadku grup rejestracji klucza generowanego z klucza rejestracji grupy służy do wykonywania skrót. Wartość skrótu jest wykonywana na komunikat w postaci: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: Klucz musi zostać odczytany z formatu base64 przed używany do wykonywania obliczeń HMAC SHA256. Ponadto wynik podpisu musi być zakodowane w adresie URL. |
 | {resourceURI} |Identyfikator URI punktu końcowego rejestracji, który jest możliwy z tym tokenem, począwszy od Identyfikatora zakresu dla tego wystąpienia usługi Device Provisioning. Na przykład: `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |Ciągi UTF8 liczba sekund od epoki 00:00:00 czasu UTC na 1 stycznia 1970. |
-| {Adres URL — zakodowane resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
+| {URL-encoded-resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
 | {policyName} |Nazwa zasad dostępu współdzielonego, do którego odwołuje się ten token. Nazwa zasad używanych podczas aprowizowania za pomocą zaświadczenie klucza symetrycznego jest **rejestracji**. |
 
 Gdy urządzenie jest zaświadczanie o rejestrację indywidualną, urządzenie używa klucza symetrycznego zdefiniowane w wpisu rejestracji indywidualnej do tworzenia skrótu podpisu tokenu sygnatury dostępu Współdzielonego.
@@ -114,6 +114,6 @@ Jeśli klucze urządzeń nie są zainstalowane w tej fabryce [przez moduł HSM d
 
 Teraz, gdy masz zrozumienia zaświadczenie klucza symetrycznego, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
 
-* [Szybki Start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* [Szybki start: Aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
 * [Dowiedz się więcej o kwestie poruszane w automatycznej aprowizacji](./concepts-auto-provisioning.md)
 * [Rozpoczęcie korzystania z automatycznej aprowizacji](./quick-setup-auto-provision.md) 

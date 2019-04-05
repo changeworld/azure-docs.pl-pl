@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338432"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051788"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure SQL Database
 
@@ -29,7 +29,7 @@ Poniżej przedstawiono niektóre konfiguracje w ramach każdej usługi, który m
 - **Dziedziczenie Partitioning** — ten SQL danych wyjściowych konfiguracji opcji umożliwia dziedziczenie schematu partycjonowania w poprzednim kroku zapytania lub danych wejściowych. Dzięki włączeniu tej opcji, pisanie tabeli opartej na dyskach i równoważy [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) topologii dla zadania powinny być widoczne lepsze przepustowości. Ta partycjonowanie już automatycznie się dzieje w przypadku wielu innych [generuje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). Tabela blokowanie (TABLOCK) również jest wyłączona dla zbiorcze operacje wstawiania wprowadzone przy użyciu tej opcji.
 
 > [!NOTE] 
-> W przypadku więcej niż 8 partycji danych wejściowych dziedziczenie schemat partycjonowania danych wejściowych nie może być odpowiednim wyborem. Ten limit górny zaobserwowano dla tabeli zawierającej kolumnę jednej tożsamości, a indeks klastrowany. Na podstawie schematu i wybór indeksów, Twoje uwagi mogą się różnić.
+> W przypadku więcej niż 8 partycji danych wejściowych dziedziczenie schemat partycjonowania danych wejściowych nie może być odpowiednim wyborem. Ten limit górny zaobserwowano dla tabeli zawierającej kolumnę jednej tożsamości, a indeks klastrowany. W takim przypadku należy rozważyć użycie [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 w zapytaniu, aby jawnie określić liczbę modułów zapisywania danych wyjściowych. Na podstawie schematu i wybór indeksów, Twoje uwagi mogą się różnić.
 
 - **Wielkość partii** — konfiguracja danych wyjściowych SQL pozwala określić maksymalny rozmiar partii w danych wyjściowych SQL usługi Azure Stream Analytics, oparte na rodzaju obciążenia/tabeli docelowej. Rozmiar partii to maksymalną liczbę rekordów, które są wysyłane z każdego zbiorczego Wstaw transakcję. W klastrowanych indeksach magazynu kolumn, batch rozmiary wokół [100 tysięcy](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) umożliwiają więcej przetwarzania równoległego, minimalnego rejestrowania i blokowanie optymalizacji. W tabelach opartej na dyskach 10 (ustawienie domyślne) lub niższego może być optymalne rozwiązanie zgodnie z wyższym rozmiary partii mogą wyzwalać przekazanie blokady podczas operacji wstawiania zbiorczego.
 

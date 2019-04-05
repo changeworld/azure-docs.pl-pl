@@ -14,25 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b22dd2dcf575362b96d150ef98148076f4ec631f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089650"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047589"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analizowanie zabezpieczeń maszyny wirtualnej przy użyciu widoku grupy zabezpieczeń przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
-> - [Program PowerShell](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
 > - [Interfejs API REST](network-watcher-security-group-view-rest.md)
 
 Widok grup zabezpieczeń zwraca reguły zabezpieczeń sieci skonfigurowane i obowiązujące, które są stosowane do maszyny wirtualnej. Ta możliwość jest przydatna do inspekcji i diagnozowania sieciowych grup zabezpieczeń i reguł, które są skonfigurowane na maszynie Wirtualnej, aby upewnić się, ruch jest prawidłowo dozwolony lub blokowany. W tym artykule pokazujemy, jak można pobrać reguł skonfigurowane i obowiązujące zabezpieczeń z maszyną wirtualną przy użyciu programu PowerShell
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu możesz uruchomić `Get-AzureRmNetworkWatcherSecurityGroupView` polecenia cmdlet, aby pobrać informacje dotyczące reguły zabezpieczeń.
+W tym scenariuszu możesz uruchomić `Get-AzNetworkWatcherSecurityGroupView` polecenia cmdlet, aby pobrać informacje dotyczące reguły zabezpieczeń.
 
 W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisane w [utworzyć usługę Network Watcher](network-watcher-create.md) utworzyć usługę Network Watcher.
 
@@ -40,21 +43,21 @@ W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisa
 
 Scenariusz, w tym artykule pobiera zasady zabezpieczeń skonfigurowane i obowiązujące dla danej maszyny wirtualnej.
 
-## <a name="retrieve-network-watcher"></a>Pobieranie usługi Network Watcher
+## <a name="retrieve-network-watcher"></a>Retrieve Network Watcher
 
-Pierwszym krokiem jest można pobrać wystąpienia usługi Network Watcher. Ta zmienna jest przekazywana do `Get-AzureRmNetworkWatcherSecurityGroupView` polecenia cmdlet.
+Pierwszym krokiem jest można pobrać wystąpienia usługi Network Watcher. Ta zmienna jest przekazywana do `Get-AzNetworkWatcherSecurityGroupView` polecenia cmdlet.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 ```
 
 ## <a name="get-a-vm"></a>Uzyskiwanie maszyny Wirtualnej
 
-Maszyna wirtualna jest wymagana do uruchamiania `Get-AzureRmNetworkWatcherSecurityGroupView` polecenia cmdlet względem. Poniższy przykład powoduje pobranie obiektu maszyny Wirtualnej.
+Maszyna wirtualna jest wymagana do uruchamiania `Get-AzNetworkWatcherSecurityGroupView` polecenia cmdlet względem. Poniższy przykład powoduje pobranie obiektu maszyny Wirtualnej.
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
+$VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
 ## <a name="retrieve-security-group-view"></a>Pobierz widok grup zabezpieczeń
@@ -62,7 +65,7 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 Następnym krokiem jest do pobierania wyników widoku grupy zabezpieczeń.
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="viewing-the-results"></a>Wyświetlanie wyników

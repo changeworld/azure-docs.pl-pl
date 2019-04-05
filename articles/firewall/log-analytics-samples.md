@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534007"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051822"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Przykłady programu Azure analizy dziennika zapory
 
@@ -40,7 +40,7 @@ I za dane dziennika reguły sieci:
 
 ![Dane dziennika reguł sieci]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure dzienniki zapory dane poniżej AzureDiagnostics z kategorią jako **AzureFirewallApplicationRule** lub **AzureFirewallApplicationRule**. Dane zawierające szczegółowe informacje są przechowywane w polu msg_s. Za pomocą [przeanalizować](https://docs.microsoft.com/azure/kusto/query/parseoperator) operatora, firma Microsoft można wyodrębnić różne interesujące właściwości pola msg_s. Poniższych zapytań wyodrębnienia informacji dla obu kategorii.
+Azure dzienniki zapory dane poniżej AzureDiagnostics z kategorią jako **AzureFirewallApplicationRule** lub **AzureFirewallNetworkRule**. Dane zawierające szczegółowe informacje są przechowywane w polu msg_s. Za pomocą [przeanalizować](https://docs.microsoft.com/azure/kusto/query/parseoperator) operatora, firma Microsoft można wyodrębnić różne interesujące właściwości pola msg_s. Poniższych zapytań wyodrębnienia informacji dla obu kategorii.
 
 ## <a name="application-rules-log-data-query"></a>Zapytanie danych dziennika reguły aplikacji
 

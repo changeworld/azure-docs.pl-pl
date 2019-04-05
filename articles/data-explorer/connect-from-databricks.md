@@ -1,19 +1,18 @@
 ---
 title: Łączenie do Eksploratora danych platformy Azure z usługi Azure Databricks przy użyciu języka Python
 description: W tym temacie dowiesz się, jak uzyskać dostęp do danych w Eksploratorze danych Azure przy użyciu jednej z dwóch metod uwierzytelniania za pomocą biblioteki Python w usłudze Azure Databricks.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756928"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047759"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Łączenie do Eksploratora danych platformy Azure z usługi Azure Databricks przy użyciu języka Python
 

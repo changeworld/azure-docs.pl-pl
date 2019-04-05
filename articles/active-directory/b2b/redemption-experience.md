@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c19d41cee55a309b5345af4f811c60b82a613
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178978"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046499"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Realizacja zaproszenia współpracy w usłudze Azure Active Directory B2B
 
@@ -56,7 +56,7 @@ Aby dowiedzieć się, jak jak Administrator dzierżawy można połączyć z zasa
 
 ## <a name="terms-of-use"></a>Warunki użytkowania
 
-Warunki użytkowania do użytkownika gościa może powodować podczas procesu realizacji początkowej za pomocą usługi Azure AD warunki Użyj funkcji. W usłudze Azure Active Directory uzyskujesz dostęp do tej funkcji w obszarze **Zarządzaj** > **relacje w organizacji** > **warunki użytkowania** lub obszarze **Zabezpieczeń** > **dostępu warunkowego** > **warunki użytkowania**. Aby uzyskać więcej informacji, zobacz [usługi Azure AD warunki Użyj funkcji](../governance/active-directory-tou.md).
+Warunki użytkowania do użytkownika gościa może powodować podczas procesu realizacji początkowej za pomocą usługi Azure AD warunki Użyj funkcji. W usłudze Azure Active Directory uzyskujesz dostęp do tej funkcji w obszarze **Zarządzaj** > **relacje w organizacji** > **warunki użytkowania** lub obszarze **Zabezpieczeń** > **dostępu warunkowego** > **warunki użytkowania**. Aby uzyskać więcej informacji, zobacz [usługi Azure AD warunki Użyj funkcji](../conditional-access/terms-of-use.md).
 
 ![Zrzut ekranu przedstawiający nowe warunki użytkowania](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 78ca1d7ceb9086e0d589f904b24b967d36b079a0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895617"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046074"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Model za pomocą interfejsu API prognoz.
 
@@ -45,7 +45,7 @@ Po opublikowaniu modelu można pobrać wymaganych informacji, wybierając __URL 
 ![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego wartość adresu URL prognozy przy użyciu pliku obrazu i wartości klucza prognozowania.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Twoje __klucz prognozowania__ można także znaleźć w [witryny Azure Portal](https://portal.azure.com) strony dla zasobów platformy Azure Custom Vision związanych z projektem, w obszarze __klucze__ bloku.
+> Twoje __klucz prognozowania__ można także znaleźć w [witryny Azure portal](https://portal.azure.com) strony dla zasobów platformy Azure Custom Vision związanych z projektem, w obszarze __klucze__ bloku.
 
 W tym przewodniku będzie używać lokalnego obrazu, dlatego skopiuj adres URL, pod **Jeśli masz plik obrazu** do tymczasowej lokalizacji. Skopiuj odpowiedni __klucz prognozowania__ również wartość.
 

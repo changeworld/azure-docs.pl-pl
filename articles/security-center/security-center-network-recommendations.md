@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 04/05/2019
 ms.author: monhaber
-ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863155"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046210"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
 Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.
@@ -30,9 +30,10 @@ W tym artykule opisano zaleceń, które są stosowane do zasobów platformy Azur
 > **Sieć** strona pozwala głębszej analizy usługi kondycji zasobów platformy Azure z punktu widzenia sieci. Mapa sieci oraz adaptacyjne kontrolki sieci są dostępne w usłudze Azure Security Center w warstwie standardowa tylko. [Jeśli używasz warstwy bezpłatnej, możesz kliknąć przycisk, aby **Wyświetl sieć starszych** otrzymasz zaleceń dotyczących zasobów sieci](#legacy-networking).
 >
 
-**Sieć** bloku zawiera przegląd sekcje głębokiego możesz od razu, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
+**Sieć** strona zawiera omówienie sekcji głębokiego możesz od razu, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
 
 - Mapa sieci (tylko w warstwie standardowej usługi Azure Security Center)
+- Adaptacyjne wzmocnienie zabezpieczeń sieci
 - Zalecenia dotyczące zabezpieczeń sieci.
 - Starsza wersja **sieć** bloku (poprzedniego bloku sieci) 
  

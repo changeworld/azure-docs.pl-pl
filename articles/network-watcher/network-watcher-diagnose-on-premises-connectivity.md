@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099400"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051584"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie połączeń lokalnych za pośrednictwem bram sieci VPN
 
 Usługa Azure VPN Gateway umożliwia tworzenie rozwiązań hybrydowych, które można spełnić potrzeby bezpiecznego połączenia między siecią lokalną a siecią wirtualną platformy Azure. Wymagania są unikatowe, dlatego jest wybór lokalnego urządzenia sieci VPN. Platforma Azure jest obecnie obsługuje [kilka urządzeń sieci VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , stale są prawidłowe we współpracy z dostawcami urządzeń. Przejrzyj ustawienia konfiguracji specyficzne dla urządzenia, przed skonfigurowaniem urządzenia sieci VPN w środowisku lokalnym. Podobnie, bramy Azure VPN Gateway jest skonfigurowany przy użyciu zestawu [obsługiwane parametry protokołu IPsec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) służące do nawiązywania połączenia. Obecnie nie ma żadnych sposób na określenie lub wybranie określonej kombinacji parametrów protokołu IPsec z obszaru bramy sieci VPN Azure. Ustanawianie udane połączenie między lokalną i platformą Azure, ustawienia urządzenia lokalnej sieci VPN musi być zgodnie z parametrów protokołu IPsec, ustalonym przez bramę sieci VPN platformy Azure. Jeśli ustawienia są poprawne, tam w przypadku utraty łączności i do tej pory rozwiązywania tych problemów nie jest proste i zazwyczaj trwało godzin, aby zidentyfikować i rozwiązać problem.
 
 Za pomocą usługi Azure Network Watcher Rozwiązywanie problemów z funkcji, można zdiagnozować problemy z bramy oraz połączeń i w ciągu kilku minut ma wystarczających informacji, aby podjąć świadomą decyzję, aby rozwiązać ten problem.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scenariusz
 
@@ -57,7 +60,7 @@ Te problemy są trudne do rozwiązywania i które są często nieintuicyjnych g�
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Rozwiązywanie problemów przy użyciu usługi Azure Network Watcher
 
-Aby zdiagnozować połączenie, nawiązać połączenie z programu Azure PowerShell i zainicjować `Start-AzureRmNetworkWatcherResourceTroubleshooting` polecenia cmdlet. Można znaleźć szczegółowe informacje na temat korzystania z tego polecenia cmdlet w [połączenia — program PowerShell i rozwiązywanie problemów z bramy sieci wirtualnej](network-watcher-troubleshoot-manage-powershell.md). To polecenie cmdlet może potrwać kilka minut, aby zakończyć.
+Aby zdiagnozować połączenie, nawiązać połączenie z programu Azure PowerShell i zainicjować `Start-AzNetworkWatcherResourceTroubleshooting` polecenia cmdlet. Można znaleźć szczegółowe informacje na temat korzystania z tego polecenia cmdlet w [połączenia — program PowerShell i rozwiązywanie problemów z bramy sieci wirtualnej](network-watcher-troubleshoot-manage-powershell.md). To polecenie cmdlet może potrwać kilka minut, aby zakończyć.
 
 Po zakończeniu działania polecenia cmdlet, możesz przejść do lokalizacji magazynu określone w poleceniu cmdlet, aby uzyskać szczegółowe informacje temat problemu i dzienniki. Usługa Azure Network Watcher tworzy folder zip, który zawiera następujące pliki dziennika:
 

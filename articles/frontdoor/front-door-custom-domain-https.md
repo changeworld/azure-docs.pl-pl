@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014120"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050981"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -40,6 +40,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > - Używanie własnego certyfikatu (niestandardowego certyfikatu SSL)
 > - Weryfikowanie domeny
 > - Wyłączanie protokołu HTTPS w domenie niestandardowej
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -86,11 +89,11 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 
 Zarejestruj jednostkę usługi dla usługi Azure Front Door Service jako aplikację w usłudze Azure Active Directory za pomocą programu PowerShell.
 
-1. Jeśli to konieczne, zainstaluj program [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) za pomocą programu PowerShell na komputerze lokalnym.
+1. Jeśli to konieczne, zainstaluj program [Azure PowerShell](/powershell/azure/install-az-ps) za pomocą programu PowerShell na komputerze lokalnym.
 
 2. W programie PowerShell uruchom następujące polecenie:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Udzielanie usłudze Azure Front Door Service dostępu do magazynu kluczy
  
@@ -242,15 +245,15 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
     Dla domeny niestandardowej jest używany dedykowany/pojedynczy certyfikat dostarczony przez firmę DigiCert. 
 
-2. *Czy używasz protokołu TLS/SSL opartego na protokole IP, czy z rozszerzeniem SNI?*
+2. *Używasz protokołu TLS/SSL SNI, czy opartego na protokole IP?*
 
     Usługa Azure Front Door Service używa protokołu TLS/SSL z rozszerzeniem SNI.
 
-3. *Co zrobić, jeśli nie otrzymam wiadomości e-mail weryfikującej domenę od firmy DigiCert?*
+3. *Co zrobić, jeśli nie pojawia się wiadomości e-mail weryfikującej domenę od firmy DigiCert?*
 
     Jeśli masz wpis CNAME dla domeny niestandardowej, który wskazuje bezpośrednio na nazwę hosta punktu końcowego (i nie używasz nazwy domeny podrzędnej afdverify), nie otrzymasz wiadomości e-mail weryfikującej domenę. Walidacja będzie wykonywana automatycznie. W przeciwnym razie, jeśli nie masz wpisu CNAME i nie otrzymasz wiadomości e-mail w ciągu 24 godzin, skontaktuj się z działem pomocy technicznej firmy Microsoft.
 
-4. *Czy używanie certyfikatu SAN jest mniejsze bezpieczne niż certyfikatu dedykowanego?*
+4. *Jest używanie certyfikatu SAN jest mniej bezpieczne niż certyfikatu dedykowanego?*
     
     Certyfikat SAN działa zgodnie z tymi samymi standardami szyfrowania i zabezpieczeń, co certyfikat dedykowany. Wszystkie wystawiane certyfikaty SSL używają algorytmu SHA-256, który pozwala na stosowanie rozszerzonych zabezpieczeń serwerów.
 

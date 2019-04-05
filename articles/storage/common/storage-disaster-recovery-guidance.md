@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486068"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051193"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -22,6 +22,9 @@ Firma Microsoft dokłada starań upewnić się, że usługi platformy Azure są 
 Usługa Azure Storage obsługuje konta pracy awaryjnej (wersja zapoznawcza) dla kont usługi storage geograficznie nadmiarowy. Z trybem failover konta można zainicjować procesu pracy awaryjnej dla konta magazynu, jeśli podstawowy punkt końcowy stanie się niedostępny. Przełączenie w tryb failover aktualizuje pomocniczego punktu końcowego, aby stać się podstawowego punktu końcowego konta magazynu. Po zakończeniu pracy w trybie failover klientów można rozpocząć zapisywanie do nowego podstawowego punktu końcowego.
 
 W tym artykule opisano pojęcia i proces związane z trybem failover konta i w tym artykule omówiono sposób przygotowania konta magazynu do odzyskiwania za pomocą minimalnej liczbie klientów. Aby dowiedzieć się, jak zainicjować trybu failover konta, w witrynie Azure portal lub programu PowerShell, zobacz [zainicjowania trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>Wybierz opcję nadmiarowości w prawo
 
@@ -122,14 +125,14 @@ Korzystania z wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcy
 Aby zarejestrować się do korzystania z wersji zapoznawczej, uruchom następujące polecenia w programie PowerShell. Upewnij się, że Zamień symbol zastępczy w nawiasach identyfikator subskrypcji:
 
 ```powershell
-Connect-AzureRmAccount -SubscriptionId <subscription-id>
-Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Connect-AzAccount -SubscriptionId <subscription-id>
+Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Może upłynąć, 1 – 2 dni, aby uzyskać zatwierdzenie wersji zapoznawczej. Aby sprawdzić, proces rejestracji został zatwierdzony, uruchom następujące polecenie:
 
 ```powershell
-Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia 
@@ -177,5 +180,5 @@ W skrajnych okolicznościach, gdy region jest utracone z powodu awarii znaczące
 ## <a name="see-also"></a>Zobacz także
 
 * [Zainicjuj tryb failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md)
-* [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-* [Samouczek: Tworzenie aplikacji o wysokiej dostępności z magazynu obiektów Blob](../blobs/storage-create-geo-redundant-storage.md) 
+* [Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+* [Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

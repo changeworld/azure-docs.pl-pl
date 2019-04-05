@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 74c33d73f15c4edf63a02ea5c9a0cdcad88bb68c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437318"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049749"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migracja Contoso: Ponownie skompiluj aplikację lokalną na platformę Azure
 
@@ -40,6 +40,9 @@ Artykuł 13: Ponownie skompiluj aplikację na platformie Azure | Pokazuje, jak C
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne
 
 W tym artykule Contoso migruje Windows dwuwarstwowy. Aplikacja rozwiązania SmartHotel360 NET działających na maszynach wirtualnych VMware na platformę Azure. Jeśli chcesz korzystać z tej aplikacji, znajduje się jako "open source" i można go pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360-Backend).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
 
@@ -114,7 +117,7 @@ Contoso ocenia proponowane projektu poprzez umieszczenie razem listę zalet i wa
 
 **Usługa** | **Opis** | **Koszty**
 --- | --- | ---
-[USŁUGI AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Upraszcza zarządzanie Kubernetes, wdrażania i operacji. Udostępnia w pełni zarządzanej usługi organizowania kontenerów Kubernetes.  | AKS to bezpłatna usługa.  Płać tylko maszyny wirtualne, skojarzony magazyn i wykorzystane zasoby sieciowe. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/kubernetes-service/).
+[AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Upraszcza zarządzanie Kubernetes, wdrażania i operacji. Udostępnia w pełni zarządzanej usługi organizowania kontenerów Kubernetes.  | AKS to bezpłatna usługa.  Płać tylko maszyny wirtualne, skojarzony magazyn i wykorzystane zasoby sieciowe. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/kubernetes-service/).
 [Azure Functions](https://azure.microsoft.com/services/functions/) | Przyspiesza tworzenie aplikacji przy użyciu oparte na zdarzeniach bezserwerowemu środowisku obliczeniowemu. Skaluj na żądanie.  | Płacisz tylko za wykorzystane zasoby. Plan jest rozliczana w oparciu o liczby wykonań i użycia zasobów na sekundę. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/functions/).
 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | Magazyny dowolnych typów obrazów wdrożeń kontenerów. | Koszt na podstawie funkcji, magazynu i czas trwania użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/container-registry/).
 [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) | Szybko kompiluj, wdrażaj i skaluj aplikacje internetowe, aplikacje mobilne i aplikacje interfejsów API klasy korporacyjnej działające na dowolnej platformie. | Opłaty za plany usługi App Service są naliczane co sekundę. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
@@ -175,7 +178,7 @@ Administratorzy firmy Contoso aprowizowania wykonaj następujące czynności:
 
     ![AKS](./media/contoso-migration-rebuild/aks3.png)
 
-5. W terminalu zintegrowanego środowiska PowerShell zalogowaniu się do platformy Azure przy użyciu polecenia Connect-AzureRmAccount. [Dowiedz się więcej](https://docs.microsoft.com/powershell/azure/get-started-azureps) temat rozpoczynania pracy przy użyciu programu PowerShell.
+5. W terminalu zintegrowanego środowiska PowerShell zalogowaniu się do platformy Azure przy użyciu polecenia Connect AzAccount. [Dowiedz się więcej](https://docs.microsoft.com/powershell/azure/get-started-azureps) temat rozpoczynania pracy przy użyciu programu PowerShell.
 
     ![AKS](./media/contoso-migration-rebuild/aks4.png)
 
@@ -196,7 +199,7 @@ Administratorzy firmy Contoso aprowizowania wykonaj następujące czynności:
 
 9. Po zakończeniu wdrożenia instalacji **kubectl** narzędzie wiersza polecenia. Narzędzie jest już zainstalowana na usługi Azure CloudShell.
 
-    **az aks install-cli**
+    **AZ aks install-cli**
 
 10. Weryfikują połączenia z klastrem, uruchamiając **kubectl get-węzły** polecenia. Ten węzeł jest taką samą nazwę jak maszyn wirtualnych w grupie automatycznie utworzony zasób.
 
@@ -291,7 +294,7 @@ Wdrażanych w następujący sposób:
 1. Otwórz wiersz polecenia dla deweloperów i używać danych polecenia az logowania dla subskrypcji platformy Azure.
 2. Korzystanie z pliku pliku deploy.cmd do wdrażania zasobów platformy Azure w regionie EUS2 i grupy zasobów ContosoRG, wpisując następujące polecenie:
 
-    **.\deploy.cmd azuredeploy ContosoRG -c eastus2**
+    **.\deploy.cmd azuredeploy - c eastus2 ContosoRG**
 
     ![Wdrażanie zaplecza](./media/contoso-migration-rebuild/backend1.png)
 

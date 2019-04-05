@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894153"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047330"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Ciągła integracja w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure
 Aby wdrożyć szablon platformy Azure, należy wykonać zadania w poszczególnych etapach: Kopiuj kompilacji, testów, na platformie Azure (zwane również "Staging") i wdrożyć szablon. Istnieją dwa różne sposoby wdrażania szablonów usługom DevOps platformy Azure. Obie metody zapewniają takie same wyniki, więc wybierz ten, który najlepiej pasuje do przepływu pracy.
@@ -28,6 +28,8 @@ Aby wdrożyć szablon platformy Azure, należy wykonać zadania w poszczególnyc
 2. Dodaj wielu usługom DevOps platformy Azure kroków kompilacji, każdy z nich do wykonania zadania etapu.
 
 W tym artykule przedstawiono obie opcje. Pierwszym z nich ma tę zaletę przy użyciu tego samego skryptu, które są używane przez deweloperów w programie Visual Studio i zapewniając spójność w całym cyklu życia. Drugiej opcji można używać zamiast wbudowanego skryptu. Obie procedury przyjęto założenie, że masz już program Visual Studio Projekt wdrożenia sprawdzone w usługom DevOps platformy Azure.
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>Kopiowanie artefaktów na platformie Azure
 Niezależnie od tego, w tym scenariuszu jeśli masz wszelkie artefakty, które są potrzebne do wdrożenia szablonu, musisz udzielić dostępu do usługi Azure Resource Manager do nich. Te artefakty mogą zawierać pliki takie jak:
@@ -87,7 +89,7 @@ Poniższe procedury opisują kroki niezbędne do skonfigurowania ciągłego wdra
       
       Dla skryptów programu PowerShell użyj polecenia:
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
       

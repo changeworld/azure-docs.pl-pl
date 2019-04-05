@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 9b7df83b710bac0b37ac28c432f63a47ddda21d1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439919"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051210"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs
 W tym artykule pokazano, jak za pomocą programu Azure PowerShell lub wiersza polecenia platformy Azure uruchamianiem lub zatrzymywaniem maszyn wirtualnych w laboratorium Azure DevTest Labs. Można utworzyć skryptów programu PowerShell/interfejsu wiersza polecenia w celu zautomatyzowania tych operacji. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 Usługa Azure DevTest Labs jest sposobem tworzenia środowiska deweloperskie i testowe szybkie, łatwe i zwarte. Umożliwia zarządzanie kosztami, szybko aprowizuj maszyny wirtualne i zminimalizować ilość odpadów.  Ma wbudowanych funkcji w witrynie Azure portal, które można konfigurować maszyny wirtualne w laboratorium, aby automatycznie uruchomić i zatrzymać w określonym czasie. 
@@ -32,7 +34,7 @@ Jednak w niektórych scenariuszach można zautomatyzować, uruchamianie i zatrzy
 - Używać go jako zadanie w ramach przepływu pracy ciągłej integracji/ciągłego Dostarczania rozpoczynają się od początku przepływu, korzystanie z maszyn wirtualnych, jak tworzyć maszyny, przetestuj maszyny lub infrastruktury, a następnie Zatrzymaj maszyny wirtualne, gdy proces zostanie zakończony. Na przykład będą fabrycznie obrazu niestandardowego za pomocą usługi Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Poniższy skrypt programu PowerShell uruchamia Maszynę wirtualną w laboratorium. [Wywoływanie AzureRmResourceAction](/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-6.13.0) jest podstawowym fokus dla tego skryptu. **ResourceId** parametr jest w pełni kwalifikowanego Identyfikatora zasobu dla maszyny Wirtualnej w środowisku laboratoryjnym. **Akcji** parametr ma miejsce **Start** lub **zatrzymać** opcji ustawia się w zależności od tego, co jest potrzebne.
+Poniższy skrypt programu PowerShell uruchamia Maszynę wirtualną w laboratorium. [Wywoływanie AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) jest podstawowym fokus dla tego skryptu. **ResourceId** parametr jest w pełni kwalifikowanego Identyfikatora zasobu dla maszyny Wirtualnej w środowisku laboratoryjnym. **Akcji** parametr ma miejsce **Start** lub **zatrzymać** opcji ustawia się w zależności od tego, co jest potrzebne.
 
 ```powershell
 # The id of the subscription
@@ -48,17 +50,17 @@ $vMToStart = "vmname"
 $vmAction = "Start"
 
 # Select the Azure subscription
-Select-AzureRMSubscription -SubscriptionId $subscriptionId
+Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
 if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
+    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
 } else {
-    $devTestLab = Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
+    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
 }
 
 # Start the VM and return a succeeded or failed status
-$returnStatus = Invoke-AzureRmResourceAction `
+$returnStatus = Invoke-AzResourceAction `
                     -ResourceId "$($devTestLab.ResourceId)/virtualmachines/$vMToStart" `
                     -Action $vmAction `
                     -Force

@@ -1,19 +1,18 @@
 ---
 title: Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure
 description: Informacje o sposobie monitorowania wydajności, kondycji i użycia klastra przy użyciu Eksploratora danych usługi Azure metryk.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: 5252ca8898439b63a8819f6abfd634de0786932b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851940"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050620"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure
 
@@ -41,17 +40,17 @@ W okienku metryki:
 
 1. Aby utworzyć wykresu metryki, wybierz **metryki** nazwy, a odpowiednie **agregacji** na metrykę zgodnie z opisem poniżej. **Zasobów** i **Namespace metryki** selektora są wstępnie wybrane do klastra usługi Azure Eksploratora danych.
 
-    **Metryka** | **Unit** | **Agregacja** | **Opis metryki**
+    **Metryka** | **Jednostka** | **Agregacja** | **Opis metryki**
     |---|---|---|---|
-    | Wykorzystanie pamięci podręcznej | Procent | Avg, Max, Min | Iloraz rozmiar wymagany pamięci podręcznej (zgodnie z zasadami pamięci podręcznej zdefiniowane) i całkowity rozmiar pamięci podręcznej klastra (całkowity rozmiar dysków SSD, biorąc pod uwagę dla działań użytkownika). Wykorzystanie pamięci podręcznej, 80% lub mniej jest trwały stan dla klastra. Jeśli wykorzystanie pamięci podręcznej przekracza 80%, klaster powinien być [skalowany w górę](manage-cluster-scale-up.md) do magazynu zoptymalizowane pod kątem warstwy cenowej lub [skalowana w poziomie](manage-cluster-scale-out.md) do większej liczby wystąpień. Alternatywnie można dostosować zasady pamięci podręcznej (mniejszą liczbę dni w pamięci podręcznej). Jeśli wykorzystanie pamięci podręcznej wynosi ponad 100%, rozmiar danych w pamięci podręcznej, zgodnie z zasadami pamięci podręcznej jest większy, całkowity rozmiar pamięci podręcznej w klastrze. |
-    | Procesor CPU | Procent | Avg, Max, Min | Stosunek całkowitej użycie Procesora CPU dostępne dla całego klastra. Średnie użycie procesora CPU 80% lub mniej jest trwały dla klastra. Wartość maksymalna procesora CPU wynosi 100%, co oznacza, że nie ma żadnych dodatkowe zasoby obliczeniowe do przetwarzania danych. Gdy klaster nie działa prawidłowo, sprawdź wartość maksymalna liczba procesorów CPU, aby ustalić, czy określonych procesorów CPU, które są blokowane. |
-    | Zdarzenia przetwarzane (dla usługi Event Hubs) | Licznik | Suma Max, Min, | Łączna liczba zdarzeń wysyłanych przez usługi Event Hubs i odebranych przez klaster. Zdarzenia są dzielone na zdarzenia odrzucone i zaakceptowane przez aparat klastra. |
-    | Opóźnienia w pozyskiwaniu danych | Sekundy | Avg, Max, Min | Opóźnienie danych pozyskanych od chwili, gdy otrzymano dane w klastrze, dopóki nie jest gotowa do zapytania. Opóźnienia w pozyskiwaniu danych jest mierzony w sekundach. Pozyskiwanie czasu oczekiwania zależy od scenariusza wprowadzania. |
-    | Wynik pozyskiwania | Licznik | Licznik | Łączna liczba operacji pozyskiwania, które nie powiodło się i zakończyło się pomyślnie. Użyj **zastosować podział** utworzyć zasobników sukces i niepowodzenie wyników.|
-    | Wykorzystanie pozyskiwania | Procent | Avg, Max, Min | Iloraz rzeczywiste zasoby używane w celu pozyskiwania danych i łącznych zasobów przydzielonych w zasadach pojemności w celu pozyskiwania. Domyślne zasady pojemności jest nie więcej niż 512 operacje współbieżne pozyskiwania lub 75% zainwestowały w pozyskiwanie zasoby klastra. Średni pozyskiwania wykorzystanie 80% lub mniej jest trwały stan dla klastra. Wartość maksymalna wykorzystania pozyskiwania to 100%, co oznacza, że wszystkie możliwości pozyskiwania klastra jest używany i może spowodować kolejki pozyskiwania. |
-    | Pozyskiwanie woluminu (w MB) | Licznik | Suma Max, Min, | Całkowity rozmiar danych pozyskanych do klastra (w MB). Jednostki są liczba MB pozyskiwanych danych przed kompresją. |
+    | Wykorzystanie pamięci podręcznej | Procent | Avg, Max, Min | Wartość procentową zasobów przydzielonych pamięci podręcznej, obecnie w użyciu przez klaster. Pamięć podręczna odnosi się do rozmiaru dysków SSD przydzielone dla działań użytkownika, zgodnie z zasadami pamięci podręcznej zdefiniowane. Wykorzystanie pamięci podręcznej, 80% lub mniej jest trwały stan dla klastra. Jeśli wykorzystanie pamięci podręcznej przekracza 80%, klaster powinien być [skalowany w górę](manage-cluster-scale-up.md) do magazynu zoptymalizowane pod kątem warstwy cenowej lub [skalowana w poziomie](manage-cluster-scale-out.md) do większej liczby wystąpień. Alternatywnie można dostosować zasady pamięci podręcznej (mniejszą liczbę dni w pamięci podręcznej). Jeśli wykorzystanie pamięci podręcznej wynosi ponad 100%, rozmiar danych w pamięci podręcznej, zgodnie z zasadami pamięci podręcznej jest większy, całkowity rozmiar pamięci podręcznej w klastrze. |
+    | Procesor CPU | Procent | Avg, Max, Min | Procent zasoby obliczeniowe przydzielone aktualnie w użyciu przez komputery w klastrze. Średnie użycie procesora CPU 80% lub mniej jest trwały dla klastra. Wartość maksymalna procesora CPU wynosi 100%, co oznacza, że nie ma żadnych dodatkowe zasoby obliczeniowe do przetwarzania danych. Gdy klaster nie działa prawidłowo, sprawdź wartość maksymalna procesora CPU, aby ustalić, czy określonych procesorów CPU, które są blokowane. |
+    | Zdarzenia przetwarzane (dla usługi Event Hubs) | Licznik | Suma Max, Min, | Łączna liczba zdarzeń odczytu z usługi event hubs i przetwarzane przez klaster. Zdarzenia są dzielone na zdarzenia odrzucone i zaakceptowane przez aparat klastra. |
+    | Opóźnienia w pozyskiwaniu danych | Sekundy | Avg, Max, Min | Opóźnienie danych pozyskanych od chwili, gdy otrzymano dane w klastrze, dopóki nie jest gotowa do zapytania. Pozyskiwanie czasu oczekiwania zależy od scenariusza wprowadzania. |
+    | Wynik pozyskiwania | Licznik | Licznik | Łączna liczba operacji pozyskiwania, które nie powiodło się i zakończyło się pomyślnie. Użyj **zastosować podział** tworzenie zasobników sukces i niepowodzenie wyniki oraz analizowanie wymiary (**wartość** > **stan**).|
+    | Wykorzystanie pozyskiwania | Procent | Avg, Max, Min | Wartość procentowa rzeczywiste używanych pozyskiwać dane z łącznych zasobów przydzielonych w zasadach pojemności, przeprowadzić pozyskiwanie zasobów. Domyślne zasady pojemności jest nie więcej niż 512 operacje współbieżne pozyskiwania lub 75% zainwestowały w pozyskiwanie zasoby klastra. Pozyskiwanie średnie wykorzystanie 80% lub mniej jest trwały stan dla klastra. Maksymalna wartość wykorzystania pozyskiwania wynosi 100%, co oznacza, że wszystkie możliwości pozyskiwania klastra jest używany i może spowodować kolejki pozyskiwania. |
+    | Pozyskiwanie woluminu (w MB) | Licznik | Suma Max, Min, | Całkowity rozmiar danych pozyskanych do klastra (w MB) przed kompresją. |
     | Podtrzymanie | Licznik | Średnio | Śledzi czas reakcji klastra. Klaster w pełni interaktywne, zwraca wartość 1, i zwraca wartość 0, zablokowanych lub odłączonych klastra. |
-    | Czas trwania zapytania | Sekundy | Liczba, Avg, Min, Max, Sum | Łączny czas na otrzymanie wyników zapytania. |
+    | Czas trwania zapytania | Sekundy | Liczba, Avg, Min, Max, Sum | Łączny czas otrzymanie wyników zapytania (nie obejmuje opóźnienia sieci). |
     | | | |
 
     Dodatkowe informacje dotyczące [obsługiwane metryki klastra Eksplorator danych platformy Azure](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)

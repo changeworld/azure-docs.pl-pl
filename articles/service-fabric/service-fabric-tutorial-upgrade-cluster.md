@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a3c75d98bda89a4330f064ce944f8b08bbf4734d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659562"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046244"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Samouczek: uaktualnianie środowiska uruchomieniowego klastra usługi Service Fabric na platformie Azure
 
@@ -41,16 +41,19 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > [!div class="checklist"]
 > * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure przy użyciu szablonu
 > * [Monitorowanie klastra](service-fabric-tutorial-monitor-cluster.md)
-> * [Skalowanie klastra na zewnątrz lub do wewnątrz](service-fabric-tutorial-scale-cluster.md)
+> * [Skalowanie klastra w poziomie lub w pionie](service-fabric-tutorial-scale-cluster.md)
 > * Uaktualnianie środowiska uruchomieniowego klastra
 > * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+* Zainstaluj [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure
 * Skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com), a następnie zainstaluj obciążenia **Programowanie na platformie Azure**, **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** oraz **Programowanie dla wielu platform w środowisku .NET Core**.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
 
@@ -59,9 +62,9 @@ Przed rozpoczęciem tego samouczka:
 Przed wykonaniem poleceń platformy Azure zaloguj się na konto platformy Azure i wybierz subskrypcję.
 
 ```powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
+Connect-AzAccount
+Get-AzSubscription
+Set-AzContext -SubscriptionId <guid>
 ```
 
 ## <a name="get-the-runtime-version"></a>Uzyskiwanie wersji środowiska uruchomieniowego
@@ -69,14 +72,14 @@ Set-AzureRmContext -SubscriptionId <guid>
 Po nawiązaniu połączenia z platformą Azure i wybraniu subskrypcji zawierającej klaster usługi Service Fabric możesz uzyskać wersję środowiska uruchomieniowego klastra.
 
 ```powershell
-Get-AzureRmServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
+Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
 Alternatywnie uzyskaj listę wszystkich klastrów w subskrypcji za pomocą następującego polecenia:
 
 ```powershell
-Get-AzureRmServiceFabricCluster | Select-Object Name, ClusterCodeVersion
+Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 ```
 
 Zanotuj wartość **ClusterCodeVersion**. Będzie ona używana w następnej sekcji.
@@ -92,7 +95,7 @@ Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
 Dysponując listą wersji, możesz wydać klastrowi usługi Azure Service Fabric polecenie uaktualnienia do nowszej wersji środowiska uruchomieniowego. Jeśli na przykład na potrzeby uaktualnienia jest dostępna wersja `6.0.219.9494`, użyj następującego polecenia w celu uaktualnienia klastra.
 
 ```powershell
-Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
+Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
                                     -Name aztestcluster `
                                     -UpgradeMode Manual `
                                     -Version "6.0.219.9494"
@@ -200,6 +203,11 @@ sfctl cluster upgrade-status
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+> * Uzyskiwanie wersji środowiska uruchomieniowego klastra
+> * Uaktualnianie środowiska uruchomieniowego klastra
+> * Monitorowanie uaktualnienia
+
+[!div class="checklist"]
 > * Uzyskiwanie wersji środowiska uruchomieniowego klastra
 > * Uaktualnianie środowiska uruchomieniowego klastra
 > * Monitorowanie uaktualnienia

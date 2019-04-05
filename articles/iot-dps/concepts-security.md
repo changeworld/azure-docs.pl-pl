@@ -3,17 +3,17 @@ title: Pojęcia dotyczące zabezpieczeń w usłudze Azure IoT Hub Device Provisi
 description: W tym artykule opisano specyficzne dla urządzeń z usługą Device Provisioning i IoT Hub koncepcje dotyczące aprowizacji zabezpieczeń
 author: nberdy
 ms.author: nberdy
-ms.date: 03/30/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 92a30f0754decc3052bf53a64da13325ddc4f954
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946565"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046903"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Pojęcia dotyczące zabezpieczeń IoT Hub Device Provisioning Service 
 

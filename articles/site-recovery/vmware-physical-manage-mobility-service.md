@@ -7,16 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 441b58e60bf8dfd5f164ac24d746b9791158ade2
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420120"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043812"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Zarządzanie agentem mobility na chronionych komputerach
 
 Możesz skonfigurować agenta mobilności na serwerze korzystając z usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Agenta mobilności służy do koordynowania komunikacji między chronionej maszyny, serwer przetwarzania serwera/skalowalnego w poziomie konfiguracji oraz do zarządzania replikacją danych. Ten artykuł zawiera podsumowanie typowych zadań zarządzania agenta mobilności po jej wdrożeniu.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualizacja usługi mobilności z witryny Azure portal
 
@@ -37,7 +40,7 @@ Możesz skonfigurować agenta mobilności na serwerze korzystając z usługi Azu
 Użyj następującego skryptu do uaktualniania usługi mobilności na serwerze za pomocą polecenia cmdlet powłoki power
 
 ```azurepowershell
-Update-AzureRmRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualizuj konto używane na potrzeby instalacji wypychanej usługi mobilności

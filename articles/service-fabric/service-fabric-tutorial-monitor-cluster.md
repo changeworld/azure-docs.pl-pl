@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/13/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 62ab98d2279380df33657967c55bf7fb4d36da43
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662452"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045649"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Samouczek: Monitorowanie klastra usługi Service Fabric na platformie Azure
 
@@ -38,16 +38,19 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > [!div class="checklist"]
 > * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure przy użyciu szablonu
 > * Monitorowanie klastra
-> * [Skalowanie klastra na zewnątrz lub do wewnątrz](service-fabric-tutorial-scale-cluster.md)
+> * [Skalowanie klastra w poziomie lub w pionie](service-fabric-tutorial-scale-cluster.md)
 > * [Uaktualnianie środowiska uruchomieniowego klastra](service-fabric-tutorial-upgrade-cluster.md)
 > * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+* Zainstaluj [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * Instalator [zbieranie diagnostyki](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) klastra
 * Włącz [usługi bazy danych EventStore](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) w klastrze

@@ -1,19 +1,18 @@
 ---
 title: 'Szybki start: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer z usługi Logstash.
-services: data-explorer
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 1/14/2019
-ms.openlocfilehash: a5b4917e0d73378b908739a8fc8c0744c70dd1e9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 01/14/2019
+ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754663"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046414"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
 
@@ -109,12 +108,12 @@ output {
 
 | Nazwa parametru | Opis |
 | --- | --- |
-| **path** | Dodatek usługi Logstash zapisuje zdarzenia w plikach tymczasowych przed ich wysłaniem do usługi Azure Data Explorer. Ten parametr zawiera ścieżkę, w której należy zapisać pliki, oraz wyrażenie czasu na potrzeby rotacji pliku. Pozwolą one na wyzwalanie przekazywania w usłudze Azure Data Explorer.|
+| **ścieżka** | Dodatek usługi Logstash zapisuje zdarzenia w plikach tymczasowych przed ich wysłaniem do usługi Azure Data Explorer. Ten parametr zawiera ścieżkę, w której należy zapisać pliki, oraz wyrażenie czasu na potrzeby rotacji pliku. Pozwolą one na wyzwalanie przekazywania w usłudze Azure Data Explorer.|
 | **ingest_url** | Punkt końcowy Kusto na potrzeby komunikacji dotyczącej pozyskiwania.|
 | **app_id**, **app_key** i **app_tenant**| Poświadczenia wymagane do połączenia z usługą Azure Data Explorer. Pamiętaj, aby używać aplikacji z uprawnieniami do pozyskiwania. |
-| **database**| Nazwa bazy danych, w której zostaną umieszczone zdarzenia. |
-| **table** | Nazwa docelowej tabeli, w której zostaną umieszczone zdarzenia. |
-| **mapping** | Mapowanie jest używane do mapowania ciągu JSON przychodzącego zdarzenia w prawidłowym formacie wiersza (definiuje, która właściwość przechodzi w którą kolumnę). |
+| **baza danych**| Nazwa bazy danych, w której zostaną umieszczone zdarzenia. |
+| **tabela** | Nazwa docelowej tabeli, w której zostaną umieszczone zdarzenia. |
+| **Mapowanie** | Mapowanie jest używane do mapowania ciągu JSON przychodzącego zdarzenia w prawidłowym formacie wiersza (definiuje, która właściwość przechodzi w którą kolumnę). |
 
 ## <a name="run-logstash"></a>Uruchamianie usługi Logstash
 

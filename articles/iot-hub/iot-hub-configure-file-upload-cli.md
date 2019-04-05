@@ -7,13 +7,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: robin.shahan
-ms.openlocfilehash: a77635b6c022527203d1df752723aac3ce2c296c
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010790"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048966"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurowanie usługi IoT Hub, operacje przekazywania plików przy użyciu wiersza polecenia platformy Azure
 

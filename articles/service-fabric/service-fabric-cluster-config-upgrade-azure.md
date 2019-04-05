@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 818136f24eb063e2bd7217d5441bda19bf141317
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666600"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047017"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Uaktualnij konfigurację klastra na platformie Azure 
 
@@ -28,6 +28,9 @@ W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieleto
 > [!NOTE]
 > Nie wszystkie ustawienia są dostępne w portalu i jest [najlepsze rozwiązanie, aby dostosować ją przy użyciu szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Portal jest dla usługi Service Fabric Dev\Test tego scenariusza tylko.
 > 
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Dostosowywanie ustawień klastra przy użyciu szablonów usługi Resource Manager
 Klastry platformy Azure można skonfigurować przy użyciu szablonu usługi Resource Manager w formacie JSON. Aby dowiedzieć się więcej o różnych ustawieniach, zobacz [ustawienia konfiguracji dla klastrów](service-fabric-cluster-fabric-settings.md). Na przykład poniższe kroki pokazują, jak dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji przy użyciu usługi Azure Resource Explorer.
@@ -54,7 +57,7 @@ Można również dostosować ustawienia klastra w jednym z następujących sposo
 - Użyj [witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) do eksportowania i aktualizowanie szablonu Menedżera zasobów.
 - Użyj [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) do wyeksportowania, a następnie zaktualizować szablon usługi Resource Manager.
 - Użyj [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) do wyeksportowania, a następnie zaktualizować szablon usługi Resource Manager.
-- Użyj usługi Azure RM PowerShell [AzureRmServiceFabricSetting zestaw](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) i [AzureRmServiceFabricSetting Usuń](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) polecenia, aby zmodyfikować ustawienia bezpośrednio.
+- Użycie programu Azure PowerShell [AzServiceFabricSetting zestaw](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) i [AzServiceFabricSetting Usuń](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) polecenia, aby zmodyfikować ustawienia bezpośrednio.
 - Użyj wiersza polecenia platformy Azure [az sf klastra ustawienie](https://docs.microsoft.com/cli/azure/sf/cluster/setting) polecenia, aby zmodyfikować ustawienia bezpośrednio.
 
 ## <a name="next-steps"></a>Kolejne kroki

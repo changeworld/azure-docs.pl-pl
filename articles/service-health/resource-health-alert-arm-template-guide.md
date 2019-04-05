@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663438"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047521"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -22,30 +22,32 @@ Usługa Azure Resource Health przechowuje, poinformowani o bieżące i historycz
 > [!NOTE]
 > Alerty dotyczące kondycji zasobów są obecnie dostępne w wersji zapoznawczej.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurować kilka ustawień:
 
-1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`)
+1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Musisz [tworzenia lub ponownego użycia grupy akcji](../azure-monitor/platform/action-groups.md) skonfigurowane powiadomienia użytkownika
 
 ## <a name="instructions"></a>Instrukcje
 1. Przy użyciu programu PowerShell, zaloguj się do platformy Azure przy użyciu swojego konta i wybierz subskrypcję, której ma nastąpić interakcja
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > Możesz użyć `Get-AzureRmSubscription` listę subskrypcji możesz mieć możliwość.
+    > Możesz użyć `Get-AzSubscription` listę subskrypcji możesz mieć możliwość.
 
 2. Znajdź, a następnie zapisz pełny identyfikator usługi Azure Resource Manager dla grupy akcji
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. Utwórz i Zapisz szablon usługi Resource Manager dla alertów dotyczących kondycji zasobu jako `resourcehealthalert.json` ([Zobacz szczegóły poniżej](#resource-manager-template-for-resource-health-alerts))
 
 4. Utwórz nowe wdrożenie usługi Azure Resource Manager przy użyciu tego szablonu
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. Zostanie wyświetlony monit o wpisanie nazwy alertu i skopiowane wcześniej identyfikator zasobu grupy akcji:
 

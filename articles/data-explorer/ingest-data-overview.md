@@ -1,19 +1,18 @@
 ---
 title: Pozyskiwanie danych w usłudze Azure Eksplorator danych
 description: Dowiedz się więcej o różnych sposobów umożliwia pobieranie danych (załaduj) w Eksploratorze danych platformy Azure
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 2/18/2019
-ms.openlocfilehash: e2dd67b7b8e7eaac1b823c044fe3d345ce7e8c7b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 02/18/2019
+ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755770"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045598"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
 
@@ -65,11 +64,11 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
 
 * [Zestaw SDK dla języka Python](/azure/kusto/api/python/kusto-python-client-library)
 
-* [Zestaw SDK platformy .NET](/azure/kusto/api/netfx/about-the-sdk)
+* [Zestaw SDK .NET](/azure/kusto/api/netfx/about-the-sdk)
 
 * [Zestaw SDK Java](/azure/kusto/api/java/kusto-java-client-library)
 
-* [Węzeł zestawu SDK](/azure/kusto/api/node/kusto-node-client-library)
+* [Zestaw SDK dla języka Node](/azure/kusto/api/node/kusto-node-client-library)
 
 * [Interfejs API REST](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
@@ -142,22 +141,22 @@ Mapowanie schematu pozwala powiązać pola danych źródła kolumny tabeli docel
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md)
+> [pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
 > [Pozyskiwanie danych przy użyciu subskrypcji usługi Event Grid do Eksploratora danych platformy Azure](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md)
+> [pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu biblioteki języka Python w Eksploratorze danych Azure](python-ingest-data.md)
+> [pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu biblioteki węzeł Eksploratora danych platformy Azure](node-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer](node-ingest-data.md)
 
 > [!div class="nextstepaction"]
 > [Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych z programu Logstash do Eksploratora danych platformy Azure](ingest-data-logstash.md)
+> [pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer](ingest-data-logstash.md)

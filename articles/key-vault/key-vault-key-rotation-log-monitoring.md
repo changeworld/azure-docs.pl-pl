@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 68fd33dc3e9def11f72b7aec14f83f86b8bb74d0
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: fb3300a45f905eb57fcc4880269e4a9bed9dac0c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749714"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045989"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie usługi Azure Key Vault o rotacji i inspekcji kluczy
 
 ## <a name="introduction"></a>Wprowadzenie
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Po utworzeniu magazynu kluczy, można uruchomić, używany do przechowywania kluczy i wpisów tajnych. Aplikacje nie są już potrzebne zachować swoje klucze i wpisy tajne, ale zażądać ich z magazynu zgodnie z potrzebami. Magazyn kluczy umożliwia zaktualizowanie klucze i wpisy tajne bez wywierania wpływu na działanie aplikacji, która otwiera szerokie możliwości zarządzania wpisami tajnymi i klucz.
 
@@ -39,6 +37,8 @@ Ten artykuł przeprowadzi:
 
 > [!NOTE]
 > W tym artykule nie opisano szczegółowo początkowej konfiguracji magazynu kluczy. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Aby uzyskać instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia, zobacz [Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure](key-vault-manage-with-cli2.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-key-vault"></a>Konfigurowanie usługi Key Vault
 
@@ -166,6 +166,9 @@ Po uruchomieniu aplikacji powinno być teraz uwierzytelniania w usłudze Azure A
 
 ## <a name="key-rotation-using-azure-automation"></a>Wymiana kluczy przy użyciu usługi Azure Automation
 
+> [!IMPORTANT]
+> Elementy runbook usługi Azure Automation nadal korzystają z `AzureRM` modułu.
+
 Teraz można przystąpić do konfigurowania strategii obrotu dla wartości, które są przechowywane jako wpisy tajne usługi Key Vault. Wpisy tajne można obracać na kilka sposobów:
 
 - W ramach procesu ręczne
@@ -210,7 +213,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzAccount `
+    Connect-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -235,12 +238,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzureRmKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 W okienku Edytora wybierz **okienko testowania** Aby przetestować skrypt. Po uruchomieniu skryptu bez błędów, można wybrać **Publikuj**, a następnie zostanie zastosowana harmonogram dla elementu runbook w okienku Konfiguracja elementu runbook.

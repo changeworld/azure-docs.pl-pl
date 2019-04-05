@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877265"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044865"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: Monitorowanie dzienników i metryk usługi Azure Firewall
 
@@ -30,6 +30,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wyświetlanie i analizowanie dziennika aktywności
 > * Wyświetlanie i analizowanie dzienników reguł sieci i aplikacji
 > * Wyświetlanie metryk
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -79,7 +82,7 @@ Aby włączyć rejestrowanie diagnostyczne, wykonaj następujące kroki:
 3. Włącz rejestrowanie diagnostyczne przy użyciu następującego polecenia cmdlet programu PowerShell:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
+    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
    -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
    -Enabled $true     
     ```

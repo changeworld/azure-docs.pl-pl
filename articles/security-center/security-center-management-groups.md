@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871066"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045768"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Grupy zarządzania
 Grupy zarządzania systemu Azure umożliwia wydajne zarządzanie dostępem, zasad i raportowanie na temat grup subskrypcji, jak również skutecznie zarządzać całą standardami platformy Azure, wykonując czynności w głównej grupie zarządzania. Każda dzierżawa usługi Azure AD, otrzymuje pojedynczej najwyższego poziomu grupy zarządzania o nazwie głównej grupy zarządzania. Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Ta grupa umożliwia globalnych zasad i przypisania RBAC, które mają być stosowane na poziomie katalogu. 
@@ -188,7 +191,7 @@ Subskrypcje można dodać do grupy zarządzania, który został utworzony. Te kr
 W tym artykule przedstawiono sposób uzyskać wgląd w całej dzierżawie usługi Azure Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
-> [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md)
+> [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Zarządzanie i odpowiadanie na alerty zabezpieczeń w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)

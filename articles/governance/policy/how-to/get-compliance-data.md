@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c3ef6ff73366ae3017e1126de16153195576a1a8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802961"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048713"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobierz dane zgodności zasobów platformy Azure
 
@@ -30,7 +30,7 @@ Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy si
 > [!WARNING]
 > Jeśli stan zgodności jest zgłaszany jako **niezarejestrowany**, upewnij się, że **Microsoft.PolicyInsights** zarejestrowaniu dostawcy zasobów i czy użytkownik ma odpowiedni dostęp opartej na rolach kontroli () Uprawnień RBAC), zgodnie z opisem w [funkcji RBAC w usługi Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Wyzwalacze oceny
 
@@ -57,7 +57,7 @@ Skanowanie oceny dla subskrypcji lub grupy zasobów może być uruchamiany przy 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
 - `{YourRG}` -Zamień na nazwę grupy zasobów
-- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+- `{subscriptionId}` -Zastąp identyfikator subskrypcji
 
 Skanowanie obsługuje ocena zasobów w ramach subskrypcji lub w grupie zasobów. Uruchom skanowanie w zakresie za pomocą interfejsu API REST **WPIS** polecenie, używając następujących struktur identyfikatora URI:
 

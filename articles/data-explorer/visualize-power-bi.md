@@ -1,19 +1,18 @@
 ---
 title: 'Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI'
 description: Z tego samouczka dowiesz się, jak połączyć się z usługą Azure Data Explorer za pomocą usługi Power BI i zwizualizować swoje dane.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: f253911c1830e606dd47b64aaea1f17cb3478cd5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757734"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049884"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: Wizualizuj dane z Eksploratora danych usługi Azure w usłudze Power BI
 
@@ -34,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Oprócz subskrypcji platformy Azure i usługi Power BI do ukończenia samouczka potrzebne są następujące elementy:
 
-* [Klaster testowy i baza danych](create-cluster-database-portal.md)
+* [Klaster testowy i bazy danych](create-cluster-database-portal.md)
 
 * [Przykładowe dane StormEvents](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 

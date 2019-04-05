@@ -14,15 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: aljo
-ms.openlocfilehash: e60eb33403b9c38972087706b9e62bc3578b97bb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dd4b6026772a20c522532e1ba65c6846addfa161
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663880"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046363"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przechodzą certyfikatu klastra usługi Service Fabric
 Gdy certyfikat klastra usługi Service Fabric jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [do Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat z urzędu certyfikacji z nową datę wygaśnięcia.  Certyfikaty z podpisem własnym nie są obsługiwane w środowisku produkcyjnym klastrów usługi Service Fabric, aby uwzględnić certyfikaty generowane podczas Azure portal klastra przepływ pracy tworzenia. Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Klaster usługi Service Fabric będzie automatycznie używać certyfikatu zadeklarowane z następnych na przyszłą datę wygaśnięcia; podczas sprawdzania poprawności więcej niż jeden certyfikat jest zainstalowany na hoście. Najlepszym rozwiązaniem jest użycie szablonu usługi Resource Manager do aprowizacji zasobów platformy Azure. W środowisku nieprodukcyjnym poniższy skrypt może służyć do przekazania nowego certyfikatu do magazynu kluczy, a następnie instaluje certyfikat na zestaw skalowania maszyn wirtualnych: 
 
@@ -32,7 +34,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 $SubscriptionId  =  <subscription ID>
 
 # Sign in to your Azure account and select your subscription
-Login-AzureRmAccount -SubscriptionId $SubscriptionId
+Login-AzAccount -SubscriptionId $SubscriptionId
 
 $region = "southcentralus"
 $KeyVaultResourceGroupName  = "keyvaultgroup"
@@ -44,10 +46,10 @@ $VmssResourceGroupName     = "sfclustertutorialgroup"
 $VmssName                  = "prnninnxj"
 
 # Create new Resource Group 
-New-AzureRmResourceGroup -Name $KeyVaultResourceGroupName -Location $region
+New-AzResourceGroup -Name $KeyVaultResourceGroupName -Location $region
 
 # Get the key vault.  The key vault must be enabled for deployment.
-$keyVault = Get-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName 
+$keyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName 
 $resourceId = $keyVault.ResourceId  
 
 # Add the certificate to the key vault.
@@ -67,16 +69,16 @@ Write-Host "Common Name              :"  $CommName
 Set-StrictMode -Version 3
 $ErrorActionPreference = "Stop"
 
-$certConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
+$certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
 
 # Get current VM scale set 
-$vmss = Get-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
+$vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
 
 # Update the VM scale set 
-Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
+Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
 
 >[!NOTE]

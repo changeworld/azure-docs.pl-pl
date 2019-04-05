@@ -12,31 +12,33 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892459"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051760"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować użytkownika rejestracji i subskrypcji produktów
-Delegowanie umożliwia istniejącej witryny sieci Web do obsługi projektanta znak — w/rejestracją i subskrypcji produktów, a nie za pomocą wbudowanej funkcji w portalu dla deweloperów. Dzięki temu dane użytkownika i przeprowadzania weryfikacji z tych kroków w niestandardowy sposób witryny sieci Web.
+
+Delegowanie umożliwia używanie istniejącej witryny sieci Web do obsługi logowania dla deweloperów i Zarejestruj się i subskrypcji produktów, a nie za pomocą wbudowanej funkcji w portalu dla deweloperów. Dzięki temu dane użytkownika i przeprowadzania weryfikacji z tych kroków w niestandardowy sposób witryny sieci Web.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"> </a>Delegowanie dla deweloperów Zaloguj się, a rejestracji
-Aby delegować dla deweloperów, logowania i Zarejestruj się w istniejącej witryny sieci Web, należy utworzyć punkt końcowy delegowania specjalne w witrynie, która działa jako punkt wejścia dla takich żądań inicjowanych z portalu dla deweloperów usługi API Management.
+## <a name="delegate-signin-up"> </a>Delegowanie dla deweloperów, zaloguj się i Zarejestruj się
+
+Deleguj logowanie dla deweloperów i Zarejestruj się do istniejącej witryny sieci Web, należy utworzyć punkt końcowy delegowania specjalne w witrynie. Musi działać jako punkt wejścia dla takich żądań inicjowanych z portalu dla deweloperów usługi API Management.
 
 Końcowe przepływ pracy zostanie w następujący sposób:
 
-1. Kliknięć dla deweloperów Link logowania lub tworzenia konta w portalu dla deweloperów usługi API Management
+1. Kliknięć dla deweloperów na logowania lub rejestracji link w portalu dla deweloperów usługi API Management
 2. Przeglądarka jest przekierowywana do punktu końcowego delegowania
-3. W zamian przekierowuje do punktu końcowego delegowania lub przedstawia interfejsu użytkownika monitem użytkownika do logowania w lub rejestracji
+3. W zamian wykonuje przekierowanie do punktu końcowego delegowania lub przedstawia informacje o interfejsie użytkownika zapytaniem użytkownika lub zaloguj
 4. W przypadku powodzenia użytkownik jest przekierowany z powrotem do strony portalu dla deweloperów usługi API Management, uruchomienia z
 
-Aby rozpocząć, możemy pierwszy konfiguracji usługa API Management do rozsyłania żądań za pośrednictwem punktu końcowego delegowania. W portalu wydawcy usługi API Management, kliknij pozycję **zabezpieczeń** a następnie kliknij przycisk **delegowania** kartę. Kliknij pole wyboru, aby włączyć "Delegowanie logowania i rejestracji".
+Aby rozpocząć, możemy pierwszy konfiguracji usługa API Management do rozsyłania żądań za pośrednictwem punktu końcowego delegowania. W portalu wydawcy usługi API Management, kliknij pozycję **zabezpieczeń** a następnie kliknij przycisk **delegowania** kartę. Kliknij pole wyboru, aby włączyć "Deleguj logowanie i Zarejestruj się".
 
 ![Strony delegowania][api-management-delegation-signin-up]
 
@@ -51,10 +53,10 @@ Teraz musisz utworzyć **punktu końcowego delegowania**. Musi przeprowadzić sz
    > 
    > 
    
-    Parametry dla logowania zapytania / Zarejestruj przypadków:
+    Zapytanie parametry logowania / tworzenia konta przypadków:
    
    * **Operacja**: Określa, jakiego rodzaju żądania delegowania jest — może być tylko **SignIn** w tym przypadku
-   * **returnUrl**: adres URL strony, gdy użytkownik kliknął element Link logowania lub rejestracji
+   * **returnUrl**: adres URL strony, gdy użytkownik kliknął logowania lub Zarejestruj się łącze
    * **ziarna**: specjalny ciąg zaburzający używana do przetwarzania danych skrót zabezpieczeń
    * **SIG**: obliczanej zabezpieczeń wyznaczania wartości skrótu do użycia w porównaniu do własnych obliczony skrót
 2. Sprawdź, czy żądanie, pochodzi z usługi Azure API Management (opcjonalne, lecz zdecydowanie zalecane dla zabezpieczeń)
@@ -65,9 +67,9 @@ Teraz musisz utworzyć **punktu końcowego delegowania**. Musi przeprowadzić sz
      > 
      > 
    * Porównaj skrótu powyżej obliczona wartość **sig** parametr zapytania. Jeśli dwa skróty są zgodne, przejdź do następnego kroku, w przeciwnym razie odrzucić żądanie.
-3. Sprawdzić, czy są odbiera żądanie dotyczące logowania w/sign telefoniczny: **operacji** parametr zapytania zostanie ustawiony na "**SignIn**".
-4. Przedstawia zalogowaniem się lub Utwórz konto użytkownika za pomocą interfejsu użytkownika
-5. Jeśli użytkownik jest utworzeniu konta masz utworzyć odpowiednie konto w usłudze API Management. [Tworzenie użytkownika] za pomocą interfejsu API REST zarządzania interfejsu API. Po wykonaniu tej czynności upewnij się, Ustaw identyfikator użytkownika, do tej samej znajduje się w magazynie użytkownika lub identyfikator, który można śledzenie bieżącego.
+3. Sprawdź, czy są odbiera żądanie dotyczące logowania / tworzenia konta: **operacji** parametr zapytania zostanie ustawiony na "**SignIn**".
+4. Przedstawić użytkownikowi za pomocą interfejsu użytkownika, aby zalogować się lub Zarejestruj się
+5. Jeśli użytkownik jest utworzeniu konta masz utworzyć odpowiednie konto w usłudze API Management. [Utwórz użytkownika] za pomocą interfejsu API REST zarządzania interfejsu API. Po wykonaniu tej czynności upewnij się, Ustaw identyfikator użytkownika, taką samą wartość jak w magazynie użytkownika lub identyfikator, który można śledzenie bieżącego.
 6. Po pomyślnym uwierzytelnieniu użytkownika:
    
    * [żądania tokenu logowanie jednokrotne (SSO)] za pośrednictwem interfejsu API REST zarządzania interfejsu API
@@ -87,26 +89,25 @@ Oprócz **SignIn** operacji, można również wykonać Zarządzanie kontami, zgo
 Należy przekazać następujące parametry zapytania dla operacji zarządzania kontem.
 
 * **Operacja**: Określa, jakiego rodzaju żądania delegowania jest (ChangePassword, ChangeProfile lub CloseAccount)
-* **Identyfikator userId**: identyfikator użytkownika, konto do zarządzania
+* **Identyfikator userId**: identyfikator użytkownika konta do zarządzania
 * **ziarna**: specjalny ciąg zaburzający używana do przetwarzania danych skrót zabezpieczeń
 * **SIG**: obliczanej zabezpieczeń wyznaczania wartości skrótu do użycia w porównaniu do własnych obliczony skrót
 
 ## <a name="delegate-product-subscription"> </a>Delegowanie subskrypcję produktu
-Delegowanie subskrypcję produktu działa podobnie do delegowania użytkownika logowania/w górę. Końcowe przepływ pracy będzie następujący:
+Delegowanie subskrypcję produktu działa podobnie do delegowania logowanie użytkownika/w górę. Końcowe przepływ pracy będzie następujący:
 
-1. Deweloper wybiera produktu w portalu dla deweloperów usługi API Management i kliknie przycisk subskrypcji
-2. Przeglądarka jest przekierowywana do punktu końcowego delegowania
-3. Punktu końcowego delegowania wykonuje kroki subskrypcji produktu wymagane — to zależy od użytkownika i może pociągać za sobą przekierowania do innej strony, aby zażądać informacje rozliczeniowe pytaniem dodatkowe pytania, lub po prostu przechowywanie informacji i nie wymaga interwencji ze strony użytkownika
+1. Deweloper wybiera produktu w portalu dla deweloperów usługi API Management i kliknie przycisk subskrypcji.
+2. Przeglądarka jest przekierowywana do punktu końcowego delegowania.
+3. Punktu końcowego delegowania wykonuje kroki subskrypcji wymaganego produktu. To pozwala Ci projektować kroki. Mogą one obejmować przekierowania do innej strony, aby zażądać informacje rozliczeniowe pytaniem dodatkowe pytania, lub po prostu przechowywanie informacji i nie wymaga interwencji ze strony użytkownika.
 
 Aby włączyć funkcje, na **delegowania** kliknij **Deleguj subskrypcję produktu**.
 
-Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące czynności:
+Następnie upewnij się, że punkt końcowy delegowania zapewnia następujące funkcje:
 
 1. Otrzyma żądanie w następującej postaci:
    
    > *http:\//www.yourwebsite.com/apimdelegation?operation= {operacji operation} & productId = {produktu do subskrybowania} & userId = {użytkownika zgłaszającego żądanie} & ziarna = {ciąg} & sig = {ciąg}*
-   > 
-   > 
+   >
    
     Parametry zapytania w przypadku subskrypcji produktu:
    
@@ -115,9 +116,11 @@ Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące c
      * "Anuluj subskrypcję": żądanie, aby anulować subskrypcji użytkownika z produktu
      * "Odnowić": żądanie odnowienia subskrypcji (na przykład, który może być wygasa)
    * **productId**: identyfikator produktu, o których użytkownik zażądał do subskrybowania
-   * **Identyfikator userId**: identyfikator użytkownika, dla którego żądanie jest wysyłane
+   * **subscriptionId**: na *Unsubscribe* i *Odnów* — identyfikator subskrypcji produktu
+   * **Identyfikator userId**: identyfikator użytkownika żądania dotyczącego
    * **ziarna**: specjalny ciąg zaburzający używana do przetwarzania danych skrót zabezpieczeń
    * **SIG**: obliczanej zabezpieczeń wyznaczania wartości skrótu do użycia w porównaniu do własnych obliczony skrót
+
 2. Sprawdź, czy żądanie, pochodzi z usługi Azure API Management (opcjonalne, lecz zdecydowanie zalecane dla zabezpieczeń)
    
    * Obliczenia SHA512 HMAC ciągu na podstawie **productId**, **userId**, i **ziarna** parametry zapytania:
@@ -126,11 +129,17 @@ Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące c
      > 
      > 
    * Porównaj skrótu powyżej obliczona wartość **sig** parametr zapytania. Jeśli dwa skróty są zgodne, przejdź do następnego kroku, w przeciwnym razie odrzucić żądanie.
-3. Wykonywać żadnego przetwarzania subskrypcji produktu, na podstawie typu operacji żądanej w **operacji** — na przykład, rozliczenia, w razie dalszych pytań itp.
+3. Przetwarzanie subskrypcji produktu, na podstawie typu operacji żądanej w **operacji** — na przykład, rozliczenia, w razie dalszych pytań itp.
 4. Na ten pomyślnie użytkownikowi produktu po swojej stronie, subskrypcja użytkownika do produktu API Management przez [wywołanie interfejsu API REST dla subskrypcji produktu].
 
 ## <a name="delegate-example-code"> </a> Przykładowy kod
-Te przykłady kodu przedstawiają sposób zająć *klucz walidacji delegowania*, która jest ustawiona na ekranie delegowania w portalu wydawców na tworzenie kluczem HMAC, który jest następnie używany do weryfikacji podpisu, potwierdzające poprawność przekazanych returnUrl. Ten sam kod działa w przypadku productId i identyfikator użytkownika z niewielkich modyfikacji.
+
+Te przykłady show kodu jak do:
+
+* Wykonaj *klucz walidacji delegowania*, który ustawiono na ekranie delegowania w portalu wydawcy
+* Utwórz kluczem HMAC, który jest następnie używany do weryfikacji podpisu, potwierdzające poprawność przekazanych returnUrl.
+
+Ten sam kod działa w przypadku productId i identyfikator użytkownika z niewielkich modyfikacji.
 
 **C#Kod można wygenerować skrót returnUrl**
 
@@ -173,11 +182,11 @@ Aby uzyskać więcej informacji na temat delegowania zobacz poniższy film wideo
 > 
 > 
 
-[Delegating developer sign-in and sign-up]: #delegate-signin-up
+[Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
 [żądania tokenu logowanie jednokrotne (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Tworzenie użytkownika]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[wywołanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[wywoływanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [przykładowego kodu podanego poniżej]: #delegate-example-code
 

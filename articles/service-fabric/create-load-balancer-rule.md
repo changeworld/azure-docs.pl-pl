@@ -14,18 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 526e70fe8548b23f08a2c85e8a59bdc2c25199b4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660941"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051669"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otwieranie portów dla klastra usługi Service Fabric
 
 Wdrożenia z klastra usługi Azure Service Fabric modułu równoważenia obciążenia kieruje ruch do aplikacji uruchomionej w węźle. Możesz zmienić aplikację, aby użyć innego portu, należy udostępnić ten port (lub kierować inny port) w module równoważenia obciążenia platformy Azure.
 
 Po wdrożeniu klastra usługi Service Fabric na platformie Azure równoważenia obciążenia został utworzony automatycznie. Jeśli nie masz usługi równoważenia obciążenia, zobacz [skonfigurować moduł równoważenia obciążenia dostępnego z Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-service-fabric"></a>Konfigurowanie usługi Service fabric
 
@@ -82,14 +85,14 @@ Program PowerShell jest nieco bardziej skomplikowane niż wiersza polecenia plat
 >[!NOTE]
 >Jeśli musisz określić nazwę modułu równoważenia obciążenia, użyj tego polecenia, aby szybko uzyskać listę wszystkich modułów równoważenia obciążenia i grup zasobów skojarzonych.
 >
->`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
+>`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
 ```powershell
 # Get the load balancer
-$lb = Get-AzureRmLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
+$lb = Get-AzLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
 
 # Create the rule based on information from the load balancer.
-$lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
+$lbrule = New-AzLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
                                             -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
                                             -BackendAddressPool  $lb.BackendAddressPools[0] `
                                             -Probe $lb.Probes[0]
@@ -98,14 +101,14 @@ $lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -Fr
 $lb.LoadBalancingRules.Add($lbrule)
 
 # Update the load balancer on Azure
-$lb | Set-AzureRmLoadBalancer
+$lb | Set-AzLoadBalancer
 ```
 
-Dotyczące `New-AzureRmLoadBalancerRuleConfig` polecenia `-FrontendPort` reprezentuje port modułu równoważenia obciążenia uwidacznia dla połączeń zewnętrznych i `-BackendPort` reprezentuje port nasłuchuje aplikacji usługi Service fabric.
+Dotyczące `New-AzLoadBalancerRuleConfig` polecenia `-FrontendPort` reprezentuje port modułu równoważenia obciążenia uwidacznia dla połączeń zewnętrznych i `-BackendPort` reprezentuje port nasłuchuje aplikacji usługi Service fabric.
 
 >[!NOTE]
 >Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia przy użyciu programu PowerShell, zobacz [Utwórz moduł równoważenia obciążenia przy użyciu programu PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [sieci w usłudze Service Fabric](service-fabric-patterns-networking.md).
+Dowiedz się więcej o [sieci w usłudze Service Fabric](service-fabric-patterns-networking.md).rvice-fabric wzorców networking.md).

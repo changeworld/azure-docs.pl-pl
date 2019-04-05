@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662792"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046297"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -31,6 +31,9 @@ ms.locfileid: "58662792"
 Po uruchomieniu klastra usługi Azure Service Fabric to dobry pomysł, aby zbierać dzienniki z wszystkimi węzłami w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji, ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
 
 Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki Azure Windows (WAD, Domain Name System), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Umożliwia także procesu zewnętrznego do odczytywania zdarzeń z magazynu i umieszczenie ich w produkcie platformy analizy, takie jak [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule używane są następujące narzędzia:
@@ -71,7 +74,7 @@ Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać plik
 
 Aby wyświetlić ustawienia diagnostyki w szablonie usługi Resource Manager, otwórz plik azuredeploy.json, a następnie wyszukaj **IaaSDiagnostics**. Aby utworzyć klaster za pomocą tego szablonu, wybierz **Wdróż na platformie Azure** przycisk jest dostępny w poprzedniej konsolidacji.
 
-Alternatywnie można pobrać przykładowy usługi Resource Manager, wprowadzić zmiany i tworzenie klastra za pomocą zmodyfikowanego szablonu przy użyciu `New-AzureRmResourceGroupDeployment` polecenia w oknie programu Azure PowerShell. Zobacz poniższy kod dla parametrów, które można przekazać do polecenia. Aby uzyskać szczegółowe informacje na temat wdrażania grupy zasobów przy użyciu programu PowerShell, zobacz artykuł [wdrażanie grupy zasobów za pomocą szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Alternatywnie można pobrać przykładowy usługi Resource Manager, wprowadzić zmiany i tworzenie klastra za pomocą zmodyfikowanego szablonu przy użyciu `New-AzResourceGroupDeployment` polecenia w oknie programu Azure PowerShell. Zobacz poniższy kod dla parametrów, które można przekazać do polecenia. Aby uzyskać szczegółowe informacje na temat wdrażania grupy zasobów przy użyciu programu PowerShell, zobacz artykuł [wdrażanie grupy zasobów za pomocą szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Dodaj rozszerzenie diagnostyki do istniejącego klastra
 W przypadku istniejącego klastra, który nie ma wdrożonych diagnostyki można dodać lub zaktualizować go za pomocą szablonu klastra. Zmodyfikuj szablon usługi Resource Manager, który jest używany do tworzenia istniejącego klastra lub pobrać szablon z poziomu portalu, zgodnie z wcześniejszym opisem. Zmodyfikuj plik template.json, wykonując następujące czynności:
@@ -269,7 +272,7 @@ Aby włączyć **kanał operacyjnej bazy** nasza Rekomendacja, kompleksowe rejes
 
 Można zaktualizować diagnostykę, aby zbierać dzienniki z nowych kanałów źródła zdarzeń, które reprezentują one o do wdrożenia, wykonanie takie same nowej aplikacji opisane wcześniej dla ustawień diagnostycznych istniejącego klastra.
 
-Aktualizuj `EtwEventSourceProviderConfiguration` sekcji w pliku template.json, aby dodać wpisy dla nowych kanałów EventSource przed zastosowaniem konfiguracji aktualizacji za pomocą `New-AzureRmResourceGroupDeployment` polecenia programu PowerShell. Nazwa źródła zdarzeń jest zdefiniowana jako część kodu w pliku ServiceEventSource.cs generowanych przez program Visual Studio.
+Aktualizuj `EtwEventSourceProviderConfiguration` sekcji w pliku template.json, aby dodać wpisy dla nowych kanałów EventSource przed zastosowaniem konfiguracji aktualizacji za pomocą `New-AzResourceGroupDeployment` polecenia programu PowerShell. Nazwa źródła zdarzeń jest zdefiniowana jako część kodu w pliku ServiceEventSource.cs generowanych przez program Visual Studio.
 
 Na przykład jeśli źródło zdarzeń nosi Moje Eventsource, Dodaj następujący kod, aby umieścić zdarzenia z Moje źródła zdarzeń w tabeli o nazwie MyDestinationTableName.
 
@@ -346,5 +349,7 @@ Po skonfigurowaniu poprawnie diagnostyki platformy Azure, zobaczysz dane w tabel
 >Obecnie nie ma sposobu filtrowania lub pielęgnacja zdarzenia, które są wysyłane do tabeli. Jeśli nie implementują proces usuwania zdarzenia z tabeli, tabeli będzie nadal rosnąć. Obecnie ma przykład pielęgnacji Usługa danych uruchomiona na [przykładowe strażnika](https://github.com/Azure-Samples/service-fabric-watchdog-service), i jest zalecana zapisu jedną dla siebie, chyba że powody do przechowywania dzienników ponad 30 lub 90 przedział czasu dnia.
 
 * [Dowiedz się, jak zbierać dzienniki lub liczniki wydajności za pomocą rozszerzenia diagnostyki](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)
 * [Analiza zdarzeń i wizualizacji przy użyciu usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)

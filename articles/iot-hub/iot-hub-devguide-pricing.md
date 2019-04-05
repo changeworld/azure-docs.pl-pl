@@ -3,17 +3,17 @@ title: Zrozumienie cennika usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — dowiedzieć się, jak metod rozliczania i cen współpracuje z usługą IoT Hub, w tym przykłady pracy.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769748"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049646"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach usługi Azure IoT Hub
 

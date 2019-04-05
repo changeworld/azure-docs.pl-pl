@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/18/2019
 ms.author: raynew
-ms.openlocfilehash: 018368d28dd34787046ae655a98527aede28603f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 231533f9609a4cf8cc11bedf88aafdfd37d1cb7e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313372"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050122"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera podsumowanie często zadawane pytania dotyczące usługi Azure Site Recovery. 
@@ -36,9 +36,9 @@ Tak, można replikować obsługiwanych maszynach wirtualnych platformy Azure mi�
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Co należy w funkcji Hyper-V do organizowania replikacji z usługą Site Recovery?
 Wymagania serwera hosta funkcji Hyper-V zależą od scenariusza wdrożenia. Zapoznaj się z wymaganiami wstępnymi funkcji Hyper-V:
 
-* [Replikowanie maszyn wirtualnych z funkcją Hyper-V (bez programu VMM) do platformy Azure](site-recovery-hyper-v-site-to-azure.md)
-* [Replikowanie maszyn wirtualnych z funkcją Hyper-V (z programem VMM) do platformy Azure](site-recovery-vmm-to-azure.md)
-* [Replikowanie maszyn wirtualnych funkcji Hyper-V do dodatkowego centrum danych](site-recovery-vmm-to-vmm.md)
+* [Replicating Hyper-V VMs (without VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [bez programu VMM] do platformy Azure)](site-recovery-hyper-v-site-to-azure.md)
+* [Replicating Hyper-V VMs (with VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [z programem VMM] do platformy Azure)](site-recovery-vmm-to-azure.md)
+* [Replicating Hyper-V VMs to a secondary datacenter (Replikacja maszyn wirtualnych funkcji Hyper-V do dodatkowego centrum danych)](site-recovery-vmm-to-vmm.md)
 * Jeśli przeprowadzasz replikację do dodatkowego centrum danych, przeczytaj temat [obsługiwane systemy operacyjne gościa dla maszyn wirtualnych funkcji Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
 * Jeśli przeprowadzasz replikację do platformy Azure, Usługa Site Recovery obsługuje wszystkie systemy operacyjne gościa, które są [obsługiwanym przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
 
@@ -153,7 +153,7 @@ Platforma Azure została zaprojektowana z myślą o odporności danych. Usługa 
 Możesz wyzwolić nieplanowany tryb failover z lokacji dodatkowej. Usługa Site Recovery nie wymaga łączności z lokacją główną do pracy w trybie failover.
 
 ### <a name="is-failover-automatic"></a>Czy tryb failover jest automatyczny?
-Tryb failover nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [odzyskiwania lokacji w programie PowerShell](/powershell/module/azurerm.siterecovery) do wyzwolenia przejścia w tryb failover. Powrotem jest prostej akcji w portalu usługi Site Recovery.
+Tryb failover nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [odzyskiwania lokacji w programie PowerShell](/powershell/module/az.recoveryservices) do wyzwolenia przejścia w tryb failover. Powrotem jest prostej akcji w portalu usługi Site Recovery.
 
 Możesz zautomatyzować można użyć programu Orchestrator w środowisku lokalnym lub programu Operations Manager, aby wykryć awarię maszyny wirtualnej, a następnie wyzwolić tryb failover przy użyciu zestawu SDK.
 

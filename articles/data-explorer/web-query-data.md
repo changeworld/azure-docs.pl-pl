@@ -1,19 +1,18 @@
 ---
 title: 'Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak wykonywać zapytania i udostępniać dane w usłudze Azure Data Explorer.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 1774ae943dc96e07837a3cd155b5980ff732ceb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756151"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050564"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer
 
@@ -193,4 +192,4 @@ W tym przewodniku Szybki start nie zostały utworzone żadne zasoby, ale jeśli 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+> [Pisanie zapytań w Eksploratorze danych platformy Azure](write-queries.md)

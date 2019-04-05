@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621740"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045684"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -29,10 +29,10 @@ W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Medi
 Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej wersji usługi Media Services v2 API](../previous/media-services-overview.md), należy przejrzeć następujące wskazówki i uwagi dotyczące przed przeprowadzeniem migracji do interfejsów API w wersji 3. Istnieje wiele korzyści i nowe funkcje w wersji 3 interfejsu API, które zwiększają Środowisko deweloperskie i możliwości usługi Media Services. Jednak jako o nazwie w [znane problemy](#known-issues) sekcji tego artykułu, również istnieją pewne ograniczenia z powodu zmian między wersjami interfejsu API. Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami. 
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref), lub jeden z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
 
 ## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
-
+  
 ### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne.
 
 *  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, zdarzenia na żywo i nie tylko.
@@ -105,7 +105,7 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
 
 ## <a name="known-issues"></a>Znane problemy
 
-* Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
+* Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
 * Należy aprowizować jednostek zarezerwowanych multimediów (lokalizacje MRU) na Twoim koncie w celu kontrolowania współbieżność i wydajności zadań, szczególnie te, które obejmujące wideo lub Audio analizy. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). Można zarządzać za pomocą lokalizacje MRU [interfejsu wiersza polecenia 2.0 dla usługi Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [witryny Azure portal](../previous/media-services-portal-scale-media-processing.md), lub za pomocą [interfejsów API w wersji 2](../previous/media-services-dotnet-encoding-units.md). Musisz aprowizować lokalizacje MRU, czy używasz usługi Media Services v2 lub v3 interfejsów API.
 * Jednostki usługi Media Services, utworzone w wersji 3, interfejs API nie mogą być zarządzane przez interfejsy API wersji 2.  
 * Nie zaleca się Zarządzanie jednostkami, które zostały utworzone za pomocą interfejsów API w wersji 2, za pośrednictwem interfejsów API w wersji 3. Poniżej przedstawiono przykłady różnic, wchodzące jednostkami w dwóch wersjach niezgodne:   

@@ -1,19 +1,18 @@
 ---
-title: 'Szybki start: Wizualizuj dane przy użyciu zapytań, importowany do usługi Power BI'
+title: 'Szybki start: Wizualizuj dane z Eksploratora danych platformy Azure z kwerendą importowanych w usłudze Power BI '
 description: 'Z tego przewodnika Szybki start nauczysz się, jak używać jednej z trzech opcji wizualizacji danych w usłudze Power BI: importowania zapytania z usługi Azure Data Explorer.'
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756107"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050594"
 ---
 # <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Szybki start: Wizualizuj dane przy użyciu zapytań, importowany do usługi Power BI
 
@@ -31,7 +30,7 @@ Do wykonania kroków tego przewodnika Szybki start potrzebne są następujące e
 
 * Program [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (wybierz pozycję **POBIERZ BEZPŁATNIE**)
 
-* [Aplikacja klasyczna Azure Data Explorer](/azure/kusto/tools/kusto-explorer)
+* [Aplikacji klasycznej platformy Azure Eksplorator danych](/azure/kusto/tools/kusto-explorer)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Pobieranie danych z usługi Azure Data Explorer
 

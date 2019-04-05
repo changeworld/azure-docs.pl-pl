@@ -1,21 +1,20 @@
 ---
-title: Obsługa zduplikowanych danych
-description: W tym temacie opisano różne sposoby radzenia sobie z zduplikowanych danych
-services: data-explorer
+title: Obsługa zduplikowanych danych w Eksploratorze danych platformy Azure
+description: W tym temacie opisano różne podejścia do przeciwdziałania zduplikowanych danych, korzystając z Eksploratora danych usługi Azure.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756371"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045785"
 ---
-# <a name="deal-with-duplicate-data"></a>Obsługa zduplikowanych danych
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Obsługa zduplikowanych danych w Eksploratorze danych platformy Azure
 
 Wysyłanie danych do chmury urządzeń Obsługa lokalnej pamięci podręcznej danych. W zależności od rozmiaru danych lokalnej pamięci podręcznej może być przechowywanie danych w celu dni lub nawet miesięcy. Chcesz chronić baz danych analitycznych z nieprawidłowo urządzeń, które ponownie wysłać dane w pamięci podręcznej i powodować duplikacji danych w bazie danych analitycznych. W tym temacie opisano najlepsze praktyki dotyczące obsługi zduplikowanych danych dla tego rodzaju scenariuszy.
 
@@ -123,4 +122,4 @@ Duplikacji danych mogą być obsługiwane na wiele sposobów. Ocenę opcji dokł
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+> [Pisanie zapytań w Eksploratorze danych platformy Azure](write-queries.md)

@@ -1,26 +1,25 @@
 ---
 title: 'Szybki start: Tworzenie klastra Eksploratora danych usługi Azure i bazy danych przy użyciu wiersza polecenia platformy Azure'
 description: Dowiedz się, w jaki sposób utworzyć klaster i bazę danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure
-services: data-explorer
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 3/25/2019
-ms.openlocfilehash: 852eb32611f526c6fae4898d2bc85cac0859498f
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 03/25/2019
+ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758422"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043976"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Tworzenie klastra Eksploratora danych usługi Azure i bazy danych przy użyciu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 >

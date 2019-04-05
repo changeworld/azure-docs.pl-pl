@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 3a34af77a2806ceb56e939e2b153f2e68bba61cd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352106"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048940"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Słownik terminów dla usługi Custom Vision Service
 
@@ -32,7 +32,6 @@ Podczas tworzenia projektu, możesz wybrać "domena" dla tego projektu. Domeny o
 - **Domena żywności.** Zoptymalizowane pod kątem płytki, który będzie wyświetlony menu restauracji. Nie zoptymalizowanym rozpoznawania poszczególnych owoców lub warzyw. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny ogólnego do tego celu.
 - **Domena charakterystycznych elementów krajobrazu.** Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w fotografii, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zablokowane przez grupy osób stanowiące przed nim.
 - **Domena sprzedaży detalicznej.** Zoptymalizowane pod kątem klasyfikowania obrazów w katalogu zakupów lub zakupów witryna sieci Web. Bardzo precyzyjnej podczas klasyfikowania sukienki, spodnie, koszule itp., następnie użyć domeny sprzedaży detalicznej.
-- **Treści dla dorosłych domeny.** Zoptymalizowana, aby dokładniej zdefiniować między treści dla dorosłych i zawartości — zawartość dla dorosłych. Na przykład jeśli chcesz zablokować obrazów osób w kąpieli kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora, aby to zrobić.
 - **Ogólne domeny.** Dobrze przystosowane do potrzeb szerokiej gamy zadań klasyfikacji obrazów.
 
 Modeli generowanych przez **compact domen** można wyeksportować za pomocą funkcji eksportu iteracji. Są one zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatorów utworzonych za pomocą compact domeny mogą być nieco mniej dokładne standardowej w domenę przy użyciu tej samej ilości danych szkoleniowych. Kosztem jest, że są one wystarczająco mała, aby uruchomić lokalnie w niemal w czasie rzeczywistym. 

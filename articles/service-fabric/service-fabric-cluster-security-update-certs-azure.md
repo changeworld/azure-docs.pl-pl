@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315280"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050241"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
@@ -33,6 +33,9 @@ Usługi Service fabric umożliwia określenie dwóch certyfikatów klastra, pods
 > 
 > 
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Dodaj certyfikat pomocniczy klastra przy użyciu portalu
 Nie można dodać certyfikat pomocniczy klastra za pośrednictwem witryny Azure portal, użyj programu Azure powershell. Proces jest opisany w dalszej części tego dokumentu.
 
@@ -45,7 +48,7 @@ Jeśli jest zgodne z zamiarami użytkownika można usunąć certyfikatu, który 
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Dodawanie certyfikatu pomocniczego przy użyciu programu Powershell usługi Resource Manager
 > [!TIP]
-> Teraz jest lepsze i łatwiejsze w sposób dodać certyfikat pomocniczy przy użyciu [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonać pozostałe kroki w tej sekcji.  Ponadto nie trzeba szablonu pierwotnie używana do tworzenia i wdrażania klastra, korzystając z [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) polecenia cmdlet.
+> Teraz jest lepsze i łatwiejsze w sposób dodać certyfikat pomocniczy przy użyciu [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet. Nie trzeba wykonać pozostałe kroki w tej sekcji.  Ponadto nie trzeba szablonu pierwotnie używana do tworzenia i wdrażania klastra, korzystając z [AzServiceFabricClusterCertificate Dodaj](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) polecenia cmdlet.
 
 Tej procedury przyjęto są zaznajomieni z działaniem Menedżera zasobów i zostaną wdrożone co najmniej jeden klaster usługi Service Fabric przy użyciu szablonu usługi Resource Manager i szablon, którego użyto do skonfigurowania klastra w wygodny. Zakłada również, czy masz doświadczenia, przy użyciu formatu JSON.
 
@@ -195,19 +198,19 @@ Edycja parametru szablonu usługi Resource Manager pliku i dodaj dwa nowe parame
 - Zaloguj się do konta platformy Azure, a następnie wybierz określoną subskrypcję platformy azure. Jest to ważny krok dla osób, które mają dostęp do więcej niż jedną subskrypcję platformy azure.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
 Testuj szablon przed jego wdrożeniem. Użyj tej samej grupie zasobów, który aktualnie jest wdrażany klaster.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Wdróż szablon do grupy zasobów. Użyj tej samej grupie zasobów, który aktualnie jest wdrażany klaster. Uruchom polecenie New-AzureRmResourceGroupDeployment. Nie trzeba określić tryb, ponieważ wartość domyślna to **przyrostowe**.
+Wdróż szablon do grupy zasobów. Użyj tej samej grupie zasobów, który aktualnie jest wdrażany klaster. Uruchom polecenie New-AzResourceGroupDeployment. Nie trzeba określić tryb, ponieważ wartość domyślna to **przyrostowe**.
 
 > [!NOTE]
 > Jeśli tryb jest zakończone, możesz przypadkowo usunąć zasoby, które nie są w szablonie. Dlatego nie jest używana w tym scenariuszu.
@@ -215,7 +218,7 @@ Wdróż szablon do grupy zasobów. Użyj tej samej grupie zasobów, który aktua
 > 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
 Oto przykład wypełnionego tego samego narzędzia.
@@ -225,7 +228,7 @@ $ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

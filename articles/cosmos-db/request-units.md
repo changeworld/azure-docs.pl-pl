@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 850c8af3e3dd696ce0e84b9c553d6f1617deb3de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 72ec8332a3363d5336fb84b3390d5e44ced0b2e5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762977"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047327"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednostki żądań w usłudze Azure Cosmos DB
 
@@ -71,6 +71,7 @@ Gdy należy oszacować liczbę jednostek ru na sekundę do aprowizowania, należ
 * Dowiedz się więcej na temat [globalnie Skaluj aprowizowanej przepływności](scaling-throughput.md).
 * Dowiedz się, jak [aprowizowanie przepływności na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
 * Dowiedz się, jak [aprowizowanie przepływności na bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
+* Dowiedz się, jak [znaleźć opłat za jednostkę żądania dla operacji](find-request-unit-charge.md).
 * Dowiedz się, jak [optymalizacji kosztów aprowizowanej przepływności w usłudze Azure Cosmos DB](optimize-cost-throughput.md).
 * Dowiedz się, jak [zoptymalizować odczyty i Zapisy kosztów w usłudze Azure Cosmos DB](optimize-cost-reads-writes.md).
 * Dowiedz się, jak [optymalizacji kosztów zapytania w usłudze Azure Cosmos DB](optimize-cost-queries.md).

@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695901"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045581"
 ---
 # <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania (FAQ) w o [usługi Azure Relay](https://azure.microsoft.com/services/service-bus/). Ogólne informacje dotyczące platformy Azure ceny i pomocy technicznej, zobacz [często zadawane pytania dotyczące pomocy technicznej Azure](https://azure.microsoft.com/support/faq/).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Pytania ogólne
 ### <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
@@ -111,13 +114,13 @@ Przenieś przestrzeni nazw z jedną subskrypcją platformy Azure do innej subskr
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
+Select-AzSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzResourceGroup -Name 'targetRG' -Location 'East US'
 
 # Move the namespace from the source subscription to the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
-Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
@@ -132,8 +135,8 @@ Tak. Klient przekazujący sprawia, że połączenia z usługą Azure Relay przy 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
-* [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
+* [Wprowadzenie do platformy .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Rozpoczynanie pracy z węzłem](relay-hybrid-connections-node-get-started.md)
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md

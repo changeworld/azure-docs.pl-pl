@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 79b118c0a4fd28eacf24dc63f04f36314807b41a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531100"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046448"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Szybki start: uzyskiwanie szczegółowych informacji dotyczących obrazu przy użyciu interfejsu API REST wyszukiwania wizualnego Bing i języka Java
 
-Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania wizualnego Bing i wyświetlenie wyników wyszukiwania. Ta prosta aplikacja C# przekazuje obraz do interfejsu API i wyświetla zwrócone informacje na jego temat. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Użyj tego przewodnika Szybki Start, aby wprowadzić pierwsze wywołanie interfejsu API wyszukiwania wizualnego Bing i przejrzysz wyniki. Ta aplikacja Java przekazuje obraz do interfejsu API i wyświetla informacje, które zwraca. Chociaż tej aplikacji został napisany w języku Java, interfejs API jest zgodny z większość języków programowania usługi sieci Web typu RESTful.
 
-Podczas przekazywania obrazu lokalnego dane formularza muszą zawierać nagłówek Content-Disposition. Jego parametr `name` musi mieć wartość "image", a parametr `filename` może być ustawiony na dowolny ciąg. Zawartością formularza jest plik binarny obrazu. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB.
+Podczas przekazywania lokalny obraz musi zawierać dane formularza `Content-Disposition` nagłówka. Należy ustawić jego `name` można ustawić parametru "image", a `filename` parametr dowolny ciąg. Zawartość formularza obejmują dane binarne obrazu. Rozmiar maksymalny obrazu, które można przekazać to 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -34,16 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw Java Development Kit (JDK) 7 lub 8](https://aka.ms/azure-jdks)
-* [Biblioteka Gson](https://github.com/google/gson)
+* [Zestawu Java Development Kit (JDK) 7 lub 8](https://aka.ms/azure-jdks)
+* [Biblioteka Gson języka Java](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
-
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
-1. Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe biblioteki.
+1. Utwórz nowy projekt języka Java w Twoim ulubionym środowiskiem IDE lub edytora, a następnie zaimportuj następujące biblioteki:
 
     ```java
     import java.util.*;
@@ -64,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucz subskrypcji oraz ścieżkę obrazu. 
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucz subskrypcji oraz ścieżkę do obrazu:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -74,7 +73,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="create-the-json-parser"></a>Tworzenie analizatora składni JSON
 
-Utwórz metodę, aby zwiększyć czytelność odpowiedzi JSON z interfejsu API, przy użyciu analizatora `JsonParser`.
+Utwórz metodę, aby lepiej odpowiedź JSON z interfejsu API można odczytać przy użyciu `JsonParser`:
 
     ```java
     public static String prettify(String json_text) {
@@ -87,13 +86,13 @@ Utwórz metodę, aby zwiększyć czytelność odpowiedzi JSON z interfejsu API, 
 
 ## <a name="construct-the-search-request-and-query"></a>Konstruowanie zapytania i żądania wyszukiwania
 
-1. W metodzie głównej aplikacji utwórz klienta Http przy użyciu funkcji `HttpClientBuilder.create().build();`.
+1. W metodzie głównej aplikacji, należy utworzyć klienta HTTP przy użyciu `HttpClientBuilder.create().build();`:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Utwórz element `HttpEntity` w celu przekazania obrazu do interfejsu API.
+2. Utwórz `HttpEntity` obiektu przekażesz obraz do interfejsu API:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -102,7 +101,7 @@ Utwórz metodę, aby zwiększyć czytelność odpowiedzi JSON z interfejsu API, 
         .build();
     ```
 
-3. Utwórz obiekt `httpPost` z Twoim punktem końcowym, a następnie ustaw w nagłówku używanie Twojego klucza subskrypcji.
+3. Utwórz `httpPost` obiektu z punktem końcowym usługi, a następnie ustaw nagłówek do użycia tego klucza subskrypcji:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -112,14 +111,14 @@ Utwórz metodę, aby zwiększyć czytelność odpowiedzi JSON z interfejsu API, 
 
 ## <a name="receive-and-process-the-json-response"></a>Odbieranie i przetwarzanie odpowiedzi w formacie JSON
 
-1. Za pomocą funkcji `HttpClient.execute()` wyślij żądanie do interfejsu API i zapisz odpowiedź w obiekcie `InputStream`.
+1. Użyj `HttpClient.execute()` metodę, aby wysłać żądanie do interfejsu API i Przechowaj odpowiedź w `InputStream` obiektu:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Zapisz ciąg JSON, a następnie wydrukuj odpowiedź.
+2. Store ciągu JSON, a następnie wydrukować odpowiedzi:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -130,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](../tutorial-bing-visual-search-single-page-app.md)
+> [Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego](../tutorial-bing-visual-search-single-page-app.md)

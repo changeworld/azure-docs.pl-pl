@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122373"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046159"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -45,7 +45,7 @@ Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych ele
 |[Zdalnego maszyny Wirtualnej](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Wszystkie zasoby obliczeniowe elementy docelowe mogą być ponownie używane dla wielu zadań szkoleniowych**. Na przykład po dołączeniu maszyny Wirtualnej z systemem zdalnym do swojego obszaru roboczego, można ponownie użyć go dla wielu zadań.
@@ -92,7 +92,7 @@ Użyj celów obliczeń poniżej, aby skonfigurować te sekcje:
 * [Komputer lokalny](#local)
 * [Usługi Azure Machine Learning obliczeń](#amlcompute)
 * [Zdalnych maszyn wirtualnych](#vm)
-* [Usługa Azure HDInsight](#hdinsight)
+* [Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Komputer lokalny
@@ -118,7 +118,10 @@ Na żądanie, aby zaplanować uruchomienie lub jako trwałe zasobów, można utw
 
 #### <a name="run-based-creation"></a>Tworzenie opartych na przebieg
 
-Można utworzyć obliczeniowego usługi Azure Machine Learning jako cel obliczenia w czasie wykonywania. Zasoby obliczeniowe są tworzone automatycznie dla przebieg. Skaluje klaster, aż do liczby **max_nodes** określoną w pliku config wykonywania. Zasoby obliczeniowe są usuwane automatycznie po ukończeniu uruchomienia.
+Można utworzyć obliczeniowego usługi Azure Machine Learning jako cel obliczenia w czasie wykonywania. Zasoby obliczeniowe są tworzone automatycznie dla przebieg. Zasoby obliczeniowe są usuwane automatycznie po ukończeniu uruchomienia. 
+
+> [!NOTE]
+> Aby określić maksymalną liczbę węzłów do użycia, należy zwykle ustawić `node_count` do liczby węzłów. Ma obecnie (04/04/2019 r) usterkę, która uniemożliwia to pracę. Jako obejście tego problemu, należy użyć `amlcompute._cluster_max_node_count` właściwości konfiguracji uruchamiania. Na przykład `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Tworzenie na podstawie wykonywania mocy obliczeniowej usługi Azure Machine Learning jest obecnie w wersji zapoznawczej. Nie należy używać tworzenie na podstawie wykonywania, jeśli jest używany, strojenia hiperparametrycznego zautomatyzowane lub zautomatyzowane uczenia maszynowego. Służące do strojenia hiperparametrycznego lub uczenia maszynowego automatyczne tworzenie [trwałego obliczeń](#persistent) docelowych w zamian.
@@ -415,8 +418,8 @@ Możesz też:
 ## <a name="notebook-examples"></a>Przykłady notesu
 
 Zobacz te notesy przykłady szkolenie przy użyciu różnych celów obliczeń:
-* [jak-to-użyj-usługi Azure ml/szkolenia](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [Samouczki/img klasyfikacji — część 1 — training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

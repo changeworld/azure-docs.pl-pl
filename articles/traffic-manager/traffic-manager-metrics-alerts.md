@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c251cc851b34f708a2150d3b0444f235d2bc50d6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200194"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045308"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Alerty i metryki usługi Traffic Manager
 
@@ -58,7 +58,7 @@ Ta metryka może zostać podany w postaci wartości zagregowanej reprezentuje st
 
 *Rysunek 4: Podziel wgląd w metryki stan punktu końcowego*
 
-Będzie można korzystać z tych metryk za pośrednictwem [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md)w portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), i [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights), lub za pomocą sekcji metryki środowisko portalu usługi Traffic Manager.
+Będzie można korzystać z tych metryk za pośrednictwem [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md)w portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor), i [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), lub za pomocą sekcji metryki środowisko portalu usługi Traffic Manager.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Alerty dotyczące metryk usługi Traffic Manager
 Oprócz przetwarzania i wyświetlanie metryk z usługi Traffic Manager, usługi Azure Monitor umożliwia klientom Konfigurowanie i otrzymywać alerty skojarzone z tych metryk. Możesz wybrać, jakie warunki muszą zostać spełnione w te metryki dla wystąpienia alertu, częstotliwość tych warunków muszą być monitorowane i jak alerty powinny być przesyłane w taki sposób, aby użytkownik. Aby uzyskać więcej informacji, zobacz [usługi Azure Monitor alertów dokumentacji](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).

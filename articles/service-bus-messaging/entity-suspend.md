@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 5d1b2718b360a55d9b1510bcfcb2ddb6492e2830
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e2ffda3141462d19557af3af26c117ee505c40ab
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436752"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047351"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Wstrzymywanie i ponowne aktywowanie jednostek obsługi komunikatów (Wyłącz)
 
@@ -34,6 +34,8 @@ W portalu **właściwości** sekcji dla odpowiedniej jednostki umożliwia zmian�
 
 Portal umożliwia jedynie kolejki jest całkowicie wyłączany. Można również wyłączyć wysyłania i odbierania operacji oddzielnie za pomocą usługi Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) interfejsów API w zestawie SDK programu .NET Framework lub przy użyciu szablonu usługi Azure Resource Manager za pomocą wiersza polecenia platformy Azure lub programu Azure PowerShell.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="suspension-states"></a>Stany zawieszenia
 
 Dostępne są następujące stany, które można ustawić dla kolejki:
@@ -48,11 +50,11 @@ W przypadku subskrypcji i tematów, tylko **Active** i **wyłączone** można us
 [Wymiary modułów EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) wyliczenie definiuje również zestaw przejściowe stanów, które można ustawić tylko przez system. Polecenie programu PowerShell, aby wyłączyć kolejki przedstawiono w poniższym przykładzie. Polecenie ponownej aktywacji jest równoważne, ustawienie `Status` do **Active**.
 
 ```powershell
-$q = Get-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
+$q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
 
 $q.Status = "Disabled"
 
-Set-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
+Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

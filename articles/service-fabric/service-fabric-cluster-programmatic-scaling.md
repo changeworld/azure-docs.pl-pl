@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949623"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047943"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programowe skalowania klastra usługi Service Fabric 
 
 Klastry usługi Service Fabric działających na platformie Azure są tworzone na podstawie zestawów skalowania maszyn wirtualnych.  [Skalowanie klastra](./service-fabric-cluster-scale-up-down.md) w tym artykule opisano, jak klastry usługi Service Fabric można skalować ręcznie lub za pomocą reguł automatycznego skalowania. W tym artykule opisano, jak Zarządzanie poświadczeniami i skalować w klastrze na platformie lub się przy użyciu fluent Azure compute zestaw SDK, który jest bardziej zaawansowanym scenariuszu. Aby uzyskać przegląd, przeczytaj [metody programowe koordynacji operacji skalowania Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Zarządzanie poświadczeniami
 Jednym z wyzwań pisania usługi do obsługi skalowania jest, czy usługa musi umożliwiać dostęp do zasobów zestawu skalowania maszyn wirtualnych bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi Service Fabric jest łatwe, jeśli usługa skalowania modyfikuje własną aplikację usługi Service Fabric, ale poświadczenia są wymagane do dostępu do zestawu skalowania. Aby zalogować się, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [wiersza polecenia platformy Azure](https://github.com/azure/azure-cli).
@@ -65,7 +68,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatywnie rozmiar zestawu skalowania maszyn wirtualnych, można też zarządzać przy użyciu poleceń cmdlet programu PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) można pobrać obiektu zestawu skalowania maszyn wirtualnych. Bieżąca pojemność jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, można zaktualizować zestawu na platformie Azure skalowania maszyn wirtualnych za pomocą [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) polecenia.
+Alternatywnie rozmiar zestawu skalowania maszyn wirtualnych, można też zarządzać przy użyciu poleceń cmdlet programu PowerShell. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) można pobrać obiektu zestawu skalowania maszyn wirtualnych. Bieżąca pojemność jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, można zaktualizować zestawu na platformie Azure skalowania maszyn wirtualnych za pomocą [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) polecenia.
 
 Podczas ręcznego dodawania węzła, dodając wystąpienia zestawu skalowania powinny być wszystko, co jest potrzebne do rozpoczęcia nowego węzła usługi Service Fabric, ponieważ szablon zestawu skalowania obejmuje rozszerzenia automatycznie dołączy nowe wystąpienia w klastrze usługi Service Fabric. 
 

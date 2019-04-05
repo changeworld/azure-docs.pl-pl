@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578122"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051443"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -87,7 +87,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
-        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
+        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     Menedżer klucz tajny jest używana tylko w celu testowania aplikacji sieci web w środowisku lokalnym. Gdy aplikacja jest wdrożona, na przykład do [usługi Azure App Service](https://azure.microsoft.com/services/app-service/web), za pomocą aplikacji ustawienia, na przykład **parametry połączenia** w usłudze App Service. Użyj tego ustawienia, zamiast przechowywać parametry połączenia z menedżerem klucz tajny.
 

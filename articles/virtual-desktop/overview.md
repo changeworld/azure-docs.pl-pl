@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577190"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049442"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -54,12 +54,12 @@ Można również przypisać i łączenia użytkowników z pulpitami wirtualnymi:
 
 Istnieje kilka rzeczy, które należy skonfigurować pulpitu wirtualnego Windows i pomyślnym nawiązaniu połączenia użytkownicy na swoich komputerach stacjonarnych Windows i aplikacji.
 
-Najpierw upewnij się, że masz odpowiednie licencje dla użytkowników na podstawie pulpitu i aplikacje, które planujesz wdrożyć:
+Najpierw upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacje, które planujesz wdrożyć:
 
 |System operacyjny|Wymagana licencja|
 |---|---|
-|Wiele sesji systemu Windows 10 Enterprise lub pojedynczej sesji systemu Windows 10|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
-|Windows 7|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Wiele sesji systemu Windows 10 Enterprise lub pojedynczej sesji systemu Windows 10|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
+|Windows 7|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016 r. 2019 r|Licencja dostępu klienta usług pulpitu zdalnego (CAL) z pakietem Software Assurance|
 
 Infrastruktury musi mieć następujące elementy do obsługi Windows pulpitu wirtualnego:

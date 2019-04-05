@@ -1,19 +1,18 @@
 ---
-title: Skalowanie klastrze Eksplorator danych platformy Azure w celu uwzględnienia zmiennym obciążeniem
+title: Skalowanie w poziomie w klastrze usługi Eksploratora danych usługi Azure w taki sposób, aby pomieścić zmiennym obciążeniem
 description: W tym artykule opisano kroki, aby skalować w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych zależności od zmieniających się żądanie.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755067"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044238"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
 
@@ -66,8 +65,8 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Szczegółowe
 
     | Ustawienie | Opis i wartość |
     | --- | --- |
-    | **Minimum** | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
-    | **Maksymalna** | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
+    | **Minimalne** | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
+    | **Maksimum** | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
     | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane, jeśli występują problemy z odczytaniem metryk zasobów. |
     |  |  |
 

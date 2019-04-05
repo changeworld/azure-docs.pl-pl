@@ -3,27 +3,27 @@ title: Pojęcia dotyczące urządzeń dla reprovisioning dla usługi Azure IoT H
 description: W tym artykule opisano urządzenie reprovisioning pojęć dla usługi Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: f52e2a1095c329aabf44a846a644cc05548d4df3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+manager: philmea
+ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712283"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050853"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Pojęcia reprovisioning urządzeń usługi IoT Hub
 
 Podczas cyklu życia rozwiązania IoT jest często przenosić urządzenia między centra IoT Hub. Przyczyny tego przeniesienia może obejmować następujące scenariusze:
 
-* **Używanie funkcji Geolokalizacji / GeoLatency**: przemieszcza się w urządzeniu między lokalizacjami, sieci opóźnieniu przez urządzenie poddane migracji do bliżej usługi IoT hub.
+* **Używanie funkcji Geolokalizacji / GeoLatency**: Przemieszcza się w urządzeniu między lokalizacjami, sieci opóźnieniu przez urządzenie poddane migracji do bliżej usługi IoT hub.
 
-* **Wielodostępność**: urządzenia, które mogą być używane w ramach tego samego rozwiązania IoT i przypisanie do nowego klienta lub klientów lokacji. Ten nowy klient może obsłużenie za pomocą innej usługi IoT hub.
+* **Wielodostępność**: Urządzenie może być używane w ramach tego samego rozwiązania IoT i przypisanie do nowego klienta lub klienta lokacji. Ten nowy klient może obsłużenie za pomocą innej usługi IoT hub.
 
-* **Rozwiązanie, zmian**: urządzenie można jej przenieść do nowych lub zaktualizowanych rozwiązania IoT. To ponowne przypisywanie może wymagać urządzenia do komunikowania się za pomocą nowego centrum IoT, który jest podłączony do innych składników zaplecza.
+* **Rozwiązanie, zmian**: Urządzenie można przenieść do nowych lub zaktualizowanych rozwiązania IoT. To ponowne przypisywanie może wymagać urządzenia do komunikowania się za pomocą nowego centrum IoT, który jest podłączony do innych składników zaplecza.
 
 * **Kwarantanna**: Podobnie jak zmiany rozwiązań. Urządzenia, które działa poprawnie, naruszenia zabezpieczeń lub nieaktualne może zostać ponownie przypisane do usługi IoT hub, która może być tylko zaktualizować i wrócić w zakresie zgodności. Gdy urządzenie działa poprawnie, następnie została zmigrowana do jego głównej koncentratora.
 
@@ -51,17 +51,17 @@ W zależności od scenariusza przemieszcza się w urządzeniu między centra IoT
 
 W zależności od scenariusza urządzenia zwykle wysyła żądanie do aprowizacji wystąpienia usługi podczas ponownego uruchamiania komputera. Obsługuje ona również metodę, aby ręcznie wyzwolić udostępniania na żądanie. Reprovisioning zasady na wpis rejestracji Określa, jak obsługuje te żądania aprowizacji wystąpienia usługi aprowizacji urządzeń. Zasady określają również, czy podczas reprovisioning powinny być migrowane dane o stanie urządzenia. Te same zasady są dostępne dla rejestracji indywidualnych i grup rejestracji:
 
-* **Ponownie zainicjować obsługę administracyjną i przeprowadzić migrację danych**: ta zasada jest ustawieniem domyślnym dla nowych wpisów rejestracji. Ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie (1). W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Informacje o stanie urządzenia zaktualizowane z tej początkowej usługi IoT hub będą migrowani do nowego centrum IoT hub (2). Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**.
+* **Ponownie zainicjować obsługę administracyjną i przeprowadzić migrację danych**: Ta zasada jest domyślnie do nowych wpisów rejestracji. Ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie (1). W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Informacje o stanie urządzenia zaktualizowane z tej początkowej usługi IoT hub będą migrowani do nowego centrum IoT hub (2). Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**.
 
     ![Inicjowanie obsługi administracyjnej za pomocą usługi aprowizacji urządzeń](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Ponownie zainicjować obsługę administracyjną i zresetowane do konfiguracji początkowej**: ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie obsługi administracyjnej (1). W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Dane konfiguracji początkowej, podanym inicjowania obsługi administracyjnej wystąpienia usługi odbieranych, kiedy urządzenie zostało zaaprowizowane do nowego centrum IoT hub (2). Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**.
+* **Ponownie zainicjować obsługę administracyjną i zresetowane do konfiguracji początkowej**: Ta zasada wykonuje akcję, gdy skojarzone z wpisu rejestracji urządzenia przesłać nowe żądanie obsługi administracyjnej (1). W zależności od konfiguracji wpisu rejestracji urządzenia może zostać ponownie przypisane do innego Centrum IoT hub. Jeśli urządzenie ulegają zmianie centra IoT Hub, Rejestracja urządzenia w początkowej Centrum IoT zostaną usunięte. Dane konfiguracji początkowej, podanym inicjowania obsługi administracyjnej wystąpienia usługi odbieranych, kiedy urządzenie zostało zaaprowizowane do nowego centrum IoT hub (2). Podczas migracji stanu urządzenia będą raportowane jako **przypisywanie**.
 
     Ta zasada jest często używany dla do ustawień fabrycznych bez wprowadzania zmian w centrach IoT.
 
     ![Inicjowanie obsługi administracyjnej za pomocą usługi aprowizacji urządzeń](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Nigdy nie ponownie zainicjować obsługę administracyjną**: urządzenie nigdy nie zostanie przypisany do innego koncentratora. Ta zasada zapewnia zarządzanie wstecznej zgodności.
+* **Nigdy nie ponownie zainicjować obsługę administracyjną**: Urządzenie nigdy nie zostanie przypisany do innego koncentratora. Ta zasada zapewnia zarządzanie wstecznej zgodności.
 
 ### <a name="managing-backwards-compatibility"></a>Zarządzanie wstecznej zgodności
 

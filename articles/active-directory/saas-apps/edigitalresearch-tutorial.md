@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4bebbda528f7ed6d7bee6ce77c744c6349d0bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d81797f0d1e7f72842c3a5a127756b99bdc93992
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190895"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą eDigitalResearch
 
@@ -89,7 +89,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego eDigitalResearch](#create-a-edigitalresearch-test-user)**  — aby mają odpowiednika w pozycji Britta simon w eDigitalResearch połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Tworzenie użytkownika testowego eDigitalResearch](#create-an-edigitalresearch-test-user)**  — aby mają odpowiednika w pozycji Britta simon w eDigitalResearch połączonego z usługi Azure AD reprezentacja użytkownika.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
@@ -169,14 +169,14 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     d. Kliknij pozycję **Utwórz**.
   
-### <a name="create-a-edigitalresearch-test-user"></a>Tworzenie użytkownika testowego eDigitalResearch
+### <a name="create-an-edigitalresearch-test-user"></a>Tworzenie użytkownika testowego eDigitalResearch
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w eDigitalResearch. 
 
 Praca z [zespołem pomocy technicznej eDigitalResearch](https://www.maruedr.com/contact) zachęcenia użytkowników utworzone.        
     
  > [!NOTE]
- > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+ > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -215,10 +215,10 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu kafelka eDigitalResearch w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji eDigitalResearch.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

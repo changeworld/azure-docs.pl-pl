@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578581"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045461"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -38,7 +38,7 @@ Następujących usług platformy Azure obsługują zarządzanych tożsamości dl
 Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzanej usługi Azure Virtual Machines (w regionach gdzie są dostępne):
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
-- [Program PowerShell](qs-configure-powershell-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
 - [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
@@ -53,7 +53,7 @@ Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzan
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Virtual Machine Scale Sets (w regionach gdzie są dostępne):
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
-- [Program PowerShell](qs-configure-powershell-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
 - [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
@@ -120,7 +120,7 @@ Typ tożsamości zarządzanych | Wszystkie ogólnie dostępne<br>Globalnych regi
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Data Factory V2 (w regionach gdzie są dostępne):
 
 - [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [Program PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
@@ -177,7 +177,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) |  `https://vault.microsoftazure.de` | Dostępne |
 | Azure w Chinach — 21Vianet | `https://vault.azure.cn` | Dostępne |
 
-## <a name="azure-data-lake"></a>Azure Data Lake 
+### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|
@@ -186,7 +186,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) |   | Niedostępne |
 | Azure w Chinach — 21Vianet |  | Niedostępne |
 
-## <a name="azure-sql"></a>Azure SQL 
+### <a name="azure-sql"></a>Azure SQL 
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|
@@ -195,7 +195,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) | `https://database.cloudapi.de/` | Dostępne |
 | Azure w Chinach — 21Vianet | `https://database.chinacloudapi.cn/` | Dostępne |
 
-## <a name="azure-event-hubs"></a>Azure Event Hubs
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|
@@ -204,7 +204,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) |   | Niedostępne |
 | Azure w Chinach — 21Vianet |  | Niedostępne |
 
-## <a name="azure-service-bus"></a>Azure Service Bus
+### <a name="azure-service-bus"></a>Azure Service Bus
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) |   | Niedostępne |
 | Azure w Chinach — 21Vianet |  | Niedostępne |
 
-## <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|

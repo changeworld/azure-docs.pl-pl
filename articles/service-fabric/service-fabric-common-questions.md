@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665325"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045802"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
 Istnieje wiele często zadawane pytania o możliwościach usługi Service Fabric i jak powinna być używana. W tym dokumencie opisano wiele z tych często zadawane pytania i odpowiedzi.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>Konfiguracja klastra i zarządzanie
 
@@ -133,7 +136,7 @@ Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 Oznacza, że dla aplikacji, aby uzyskać poświadczenia dla uwierzytelniania do magazynu kluczy są następujące:
 
 A. Podczas kompilacji/pakowania zadania aplikacji można ściągnąć certyfikatu do pakietu danych aplikacji SF i służy do uwierzytelniania do magazynu kluczy.
-B. Dla hostów z włączoną tożsamością usługi Zarządzanej zestaw skalowania maszyn wirtualnych, możesz tworzyć proste SetupEntryPoint programu PowerShell dla aplikacji SF można pobrać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać Wpisy tajne z magazynu kluczy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)
+B. Dla hostów z włączoną tożsamością usługi Zarządzanej zestaw skalowania maszyn wirtualnych, możesz tworzyć proste SetupEntryPoint programu PowerShell dla aplikacji SF można pobrać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać Wpisy tajne z magazynu kluczy](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
 
 ## <a name="application-design"></a>Projekt aplikacji
 
@@ -189,4 +192,4 @@ Postępuj zgodnie z [blog usługi Service Fabric](https://blogs.msdn.microsoft.c
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [podstawowe pojęcia dotyczące usługi Service Fabric](service-fabric-technical-overview.md) i [najlepsze rozwiązania](service-fabric-best-practices-overview.md)
+Dowiedz się więcej o [podstawowe pojęcia dotyczące usługi Service Fabric](service-fabric-technical-overview.md) i [najlepsze praktyki](service-fabric-best-practices-overview.md) lodowa concepts](service-fabric-technical-overview.md) sieci szkieletowej i [najlepsze rozwiązania](service-fabric-best-practices-overview.md)

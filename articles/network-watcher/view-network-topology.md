@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9cddf3f8091115f7cd39999e8c52d87ead4af07
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112742"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044332"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Wyświetlanie topologii sieci wirtualnej platformy Azure
 
 W tym artykule dowiesz się, jak do wyświetlania zasobów w sieci wirtualnej Microsoft Azure i relacje między zasobami. Na przykład sieć wirtualna zawiera podsieci. Podsieci zawierają zasoby, takie jak Azure Virtual Machines (VM). Maszyny wirtualne mają co najmniej jeden interfejs sieciowy. Każda podsieć może mieć sieciowej grupy zabezpieczeń i tabelę tras, powiązany. Topologia możliwości usługi Azure Network Watcher umożliwia wyświetlanie wszystkich zasobów w sieci wirtualnej zasoby skojarzone z zasobami w sieci wirtualnej i relacje między zasobami.
 
 Możesz użyć [witryny Azure portal](#azure-portal), [wiersza polecenia platformy Azure](#azure-cli), lub [PowerShell](#powershell) do wyświetlania topologii.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name = "azure-portal"></a>Wyświetlanie topologii — witryna Azure portal
 
@@ -85,38 +87,38 @@ Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-perm
 
 Polecenia można uruchomić w opisanych poniżej:
 - W usłudze Azure Cloud Shell, wybierając **wypróbuj** u góry prawo do dowolnego polecenia. Azure Cloud Shell to bezpłatna interaktywna powłoka, zawierającej popularnych narzędzi platformy Azure wstępnie zainstalowane i skonfigurowane do korzystania z Twoim kontem.
-- Korzystając z polecenia programu PowerShell na komputerze. Po uruchomieniu programu PowerShell z komputera, kroki opisane w tym artykule wymaga wersji 5.7.0 lub nowszej moduł AzureRm. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Korzystając z polecenia programu PowerShell na komputerze. Po uruchomieniu programu PowerShell z komputera, w tym artykule wymaga programu Azure PowerShell `Az` modułu. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-permissions.md).
 
-1. Jeśli masz już usługę network watcher w tym samym regionie co sieć wirtualna, którą chcesz utworzyć topologii dla, przejdź do kroku 3. Utwórz grupę zasobów, aby zawierała przy użyciu usługi network watcher [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Poniższy przykład obejmuje tworzenie grupy zasobów w *eastus* regionu:
+1. Jeśli masz już usługę network watcher w tym samym regionie co sieć wirtualna, którą chcesz utworzyć topologii dla, przejdź do kroku 3. Utwórz grupę zasobów, aby zawierała przy użyciu usługi network watcher [New AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Poniższy przykład obejmuje tworzenie grupy zasobów w *eastus* regionu:
 
     ```azurepowershell-interactive
-    New-AzureRmResourceGroup -Name NetworkWatcherRG -Location EastUS
+    New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. Tworzenie przy użyciu usługi network watcher [New AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher). Poniższy przykład tworzy usługi network watcher w regionie eastus:
+2. Tworzenie przy użyciu usługi network watcher [New AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher). Poniższy przykład tworzy usługi network watcher w regionie eastus:
 
     ```azurepowershell-interactive
-    New-AzureRmNetworkWatcher `
+    New-AzNetworkWatcher `
       -Name NetworkWatcher_eastus `
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. Pobieranie z wystąpienia usługi Network Watcher [Get AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher). Poniższy przykład pobiera usługi network watcher w regionie wschodnie stany USA:
+3. Pobieranie z wystąpienia usługi Network Watcher [Get AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher). Poniższy przykład pobiera usługi network watcher w regionie wschodnie stany USA:
 
     ```azurepowershell-interactive
-    $nw = Get-AzurermResource `
+    $nw = Get-AzResource `
       | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "EastUS" }
-    $networkWatcher = Get-AzureRmNetworkWatcher `
+    $networkWatcher = Get-AzNetworkWatcher `
       -Name $nw.Name `
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. Pobieranie topologii z [Get AzureRmNetworkWatcherTopology](/powershell/module/azurerm.network/get-azurermnetworkwatchertopology). Poniższy przykład pobiera topologii sieci wirtualnej w grupie zasobów o nazwie *MyResourceGroup*:
+4. Pobieranie topologii z [Get AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology). Poniższy przykład pobiera topologii sieci wirtualnej w grupie zasobów o nazwie *MyResourceGroup*:
 
     ```azurepowershell-interactive
-    Get-AzureRmNetworkWatcherTopology `
+    Get-AzNetworkWatcherTopology `
       -NetworkWatcher $networkWatcher `
       -TargetResourceGroupName MyResourceGroup
     ```

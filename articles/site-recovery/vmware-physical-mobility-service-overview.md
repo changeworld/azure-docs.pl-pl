@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 523567a0db79e54bea1ed6ff23557c7fa29c74f6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b354492778426d1e3c31e53e277fd9be1e22c93
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541115"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048116"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Temat usługi mobilności na potrzeby maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -101,13 +101,13 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
 - Należy zainstalować w następujący sposób:
 
-    ``` 
+    ```
     UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
     ```
 
 - Zarejestruj agenta z serwerem konfiguracji.
 
-    ``` 
+    ```
     cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
     UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
     ```
@@ -119,7 +119,7 @@ Sposób użycia | UnifiedAgent.exe/role < MS|MT > /InstallLocation  <Install Loc
 Dzienniki Instalatora | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 /InstallLocation| Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności (dowolnego folderu).
-/ Platform | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
+/ Platform | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure.
 /Silent| Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
@@ -136,7 +136,7 @@ Dzienniki konfiguracji agenta | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgent
 
     ```
     cd /tmp ;
-    tar -xvzf Microsoft-ASR_UA*release.tar.gz
+    tar -xvf Microsoft-ASR_UA*release.tar.gz
     ```
 
 2. Należy zainstalować w następujący sposób:
@@ -157,7 +157,7 @@ Dzienniki konfiguracji agenta | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgent
 Sposób użycia | . / install -d \<lokalizacja instalacji > - r < MS|MT> -v VmWare -q
 -r | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 -d | Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności: /usr/local/ASR.
--v | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
+-v | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure.
 -q | Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
@@ -176,18 +176,18 @@ Sposób użycia | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh
 
 Przejdź do folderu %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository na serwerze konfiguracji. Sprawdź, które należy Instalator oparty na systemie operacyjnym. Poniższa tabela zawiera podsumowanie pliki Instalatora dla każdej maszyny Wirtualnej VMware i serwera fizycznego systemu operacyjnego. Możesz przejrzeć [obsługiwane systemy operacyjne](vmware-physical-azure-support-matrix.md#replicated-machines) przed rozpoczęciem.
 
-**Plik Instalatora** | **System operacyjny (tylko 64-bitowy)** 
+**Plik Instalatora** | **System operacyjny (tylko 64-bitowy)**
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1 
+Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
 Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.* 
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1,SP2,SP3 
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 
+Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.*
+Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1,SP2,SP3
+Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
+Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
 Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5
 Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
 Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Serwer Ubuntu Linux 16.04 LTS
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 
+Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
 Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669699"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049459"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows
 
@@ -27,6 +27,9 @@ W tym dokumencie opisano kroki wymagane do skonfigurowania zbierania liczników 
 
  > [!NOTE]
 > Rozszerzenie WAD powinny być wdrażane w klastrze dla tych kroków pracować za Ciebie. Jeśli go nie ustawiono, przejdź do [agregowania zdarzeń i kolekcji przy użyciu Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>Liczniki wydajności są zbierane za pomocą WadCfg
 
@@ -192,10 +195,10 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
  >[!NOTE]
  >Chociaż można użyć `*` do określania grup liczników wydajności, które są nazwane w podobny sposób, wysyłania żadnych liczników za pośrednictwem obiektu sink (do usługi Application Insights) wymaga indywidualnie one zadeklarowane. 
 
-1. Po dodaniu odpowiednich liczników, których muszą być zbierane, musisz uaktualnić zasobu klastra, aby te zmiany zostaną odzwierciedlone w uruchomionej klastra. Zapisz zmodyfikowany `template.json` i Otwórz program PowerShell. Można uaktualnić za pomocą klastra `New-AzureRmResourceGroupDeployment`. Połączenie wymaga nazwy grupy zasobów, plik zaktualizowanego szablonu i pliku parametrów i wyświetla monit o wprowadzenie odpowiednich zmian do zasobów, które można zaktualizować Menedżera zasobów. Gdy zalogowano się do swojego konta i znajdują się w odpowiednią subskrypcję, użyj następującego polecenia w celu przeprowadzenia uaktualnienia:
+1. Po dodaniu odpowiednich liczników, których muszą być zbierane, musisz uaktualnić zasobu klastra, aby te zmiany zostaną odzwierciedlone w uruchomionej klastra. Zapisz zmodyfikowany `template.json` i Otwórz program PowerShell. Można uaktualnić za pomocą klastra `New-AzResourceGroupDeployment`. Połączenie wymaga nazwy grupy zasobów, plik zaktualizowanego szablonu i pliku parametrów i wyświetla monit o wprowadzenie odpowiednich zmian do zasobów, które można zaktualizować Menedżera zasobów. Gdy zalogowano się do swojego konta i znajdują się w odpowiednią subskrypcję, użyj następującego polecenia w celu przeprowadzenia uaktualnienia:
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut w zależności od tego, czy jest pierwszym wdrożeniu i rozmiar grupy zasobów), WAD powinien być zbierania liczników wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
@@ -203,4 +206,4 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zbieranie większej liczby liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) listę liczników, które należy zebrać.
 * [Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) może wprowadzać dalszych modyfikacji swoje `WadCfg`, np. Konfigurowanie dodatkowych kont magazynu do wysyłania danych diagnostycznych.
-* Odwiedź stronę [konstruktora WadCfg](https://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna.
+* Odwiedź stronę [konstruktora WadCfg](https://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna. () https://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna.

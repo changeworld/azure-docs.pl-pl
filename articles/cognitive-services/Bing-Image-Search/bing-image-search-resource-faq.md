@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539024"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049430"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Często zadawane pytania (FAQ) dotyczące interfejsu API wyszukiwania obrazów Bing
 
@@ -25,11 +25,11 @@ Znajdź odpowiedzi na często zadawane pytania na temat pojęć, kodu i scenariu
 
 Następujące nagłówki mogą występować w odpowiedzi z interfejsu API wyszukiwania obrazów Bing.
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|Unikatowy identyfikator, który Bing został przypisany do użytkownika|
-|`BingAPIs-Market`|Na rynku, który został użyty do spełnienia żądania|
-|`BingAPIs-TraceId`|Wpis dziennika na serwerze interfejsu API Bing dla tego żądania (w przypadku pomocy technicznej)|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |Unikatowy identyfikator, który Bing został przypisany do użytkownika |
+| `BingAPIs-Market`   |Na rynku, który został użyty do spełnienia żądania |
+| `BingAPIs-TraceId`  |Wpis dziennika na serwerze interfejsu API Bing dla tego żądania (w przypadku pomocy technicznej) |
 
 Jest to szczególnie ważne utrwalić identyfikator klienta i przywrócić go z kolejnymi żądaniami. Gdy to zrobisz, wyszukiwania korzystania z wcześniejszych kontekście Klasyfikacja wyników wyszukiwania, a także zapewnić spójne środowisko użytkownika.
 

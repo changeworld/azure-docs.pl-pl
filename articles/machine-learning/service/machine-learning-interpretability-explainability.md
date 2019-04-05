@@ -1,5 +1,5 @@
 ---
-title: Współdziałania modelu
+title: Możliwość interpretowania modelu
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać zestawu SDK usługi Azure Machine Learning współdziałania wyjaśniający, dlaczego wykonuje prognozy w modelu. Może służyć podczas szkolenia oraz wnioskowania Aby zrozumieć, jak model wykonuje prognozy.
 services: machine-learning
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 03/27/2019
-ms.openlocfilehash: 1cd5f48e8e0e74dfa04465993246e5d68840a783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/04/2019
+ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919728"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051805"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Współdziałania usługi Azure Machine Learning zestawu SDK
 
-Dowiedz się, jak wyjaśnić, dlaczego modelu nadejściu prognoz dzięki niemu. Zestaw SDK usługi Azure Machine Learning współdziałania można wyjaśnić model, który jest ważny z następujących powodów:
+W tym artykule nauczysz wyjaśniający, dlaczego modelu wprowadzone prognozy go przy użyciu zestawu SDK usługi Azure Machine Learning współdziałania. Możliwość wyjaśnić modelu ważne jest, z następujących powodów:
 
 * Klienci i uczestnicy projektu chce wiedzieć, **Jeśli ufają przewidywań modelu sprawia, że**.
 * Jako analitykiem danych, którą chcesz poznać **sposób tworzenia zapytań względem modelu uzyskiwanie przydatnego wglądu**. Należy również narzędzia do podejmowania świadomych decyzji na **ulepszenie modelu**.
@@ -27,16 +27,10 @@ Dowiedz się, jak wyjaśnić, dlaczego modelu nadejściu prognoz dzięki niemu. 
 
 Machine learning współdziałania jest ważne w dwóch fazach cyklu programowania uczenia maszynowego: **szkolenia** czasu i **wnioskowania** czasu:
 
-* Podczas **szkolenia**: Projektanci modelu i ewaluatory wymagają współdziałania narzędzia do wyjaśnienia danych wyjściowych modelu do uczestników projektu do tworzenia relacji zaufania. Narzędzia współdziałania również włączyć debugowanie modelu:
-
-    * Jego zachowanie jest zgodny, cele i zamierzenia?
-    * Jest ona obciążona?
-
+* Podczas **szkolenia**: Projektanci modelu i ewaluatory wymagają współdziałania narzędzia do wyjaśnienia danych wyjściowych modelu do uczestników projektu do tworzenia relacji zaufania. Muszą szczegółowych informacji o modelu tak, aby ich debugowania modelu i podejmowania decyzji o czy zachowanie jest zgodne swoje cele. Na koniec należy upewnić się, że model nie jest obciążona.
 * Podczas **wnioskowania**: Prognozy trzeba explainable do osób, które korzystają z modelu. Na przykład, dlaczego modelu odmawianie pożyczki hipoteczny i przewidzieć, że portfelu inwestycji niesie ze sobą większe ryzyko?
 
-Zestaw SDK usługi Azure Machine Learning współdziałania zawiera technologii opracowany przez firmę Microsoft oraz sprawdzonych bibliotek innych firm (na przykład, kształtu i wapna). Zapewnia wspólny interfejs API różnych bibliotek zintegrowane i integruje się z usługami Azure Machine Learning. 
-
-Korzystając z tego zestawu SDK, można wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punkcie danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
+Zestaw SDK usługi Azure Machine Learning współdziałania zawiera technologii opracowany przez firmę Microsoft oraz sprawdzonych bibliotek innych firm (na przykład, kształtu i wapna). Zestaw SDK tworzy wspólny interfejs API różnych bibliotek zintegrowane i integruje usługi Azure Machine Learning. Korzystając z tego zestawu SDK, można wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punkcie danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
@@ -48,11 +42,7 @@ Usługa Azure Machine Learning współdziałania zwraca zestaw informacji, jak m
 
 * Znaczenie względną funkcji globalnych/elementu lokalnego
 * Relacja funkcji i prognozowania globalny/elementu lokalnego
-* Interaktywne wizualizacje:
-
-    * Prognozy
-    * Relacje funkcji i prognozowania
-    * Funkcja względne znaczenie wartości globalnie i lokalnie
+* Interaktywne wizualizacje wyświetlane prognoz, funkcja prognozowania relacji i względne są wyposażone w wartości ważności globalnie i lokalnie
 
 ## <a name="architecture"></a>Architektura
 
@@ -114,11 +104,7 @@ Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśl
 
 ### <a name="local-and-remote-compute-target"></a>Lokalne i zdalne obliczeniowego elementu docelowego
 
-Zestaw SDK Machine Learning współdziałania jest przeznaczona do pracy z zarówno lokalne i zdalne obliczeniowych elementów docelowych. 
-
-* Jeśli **lokalnie**, zestaw SDK nie skontaktować się z dowolnej usługi platformy Azure.
-
-* Jeśli **zdalnie**, informacje o przebiegu są rejestrowane w usług Azure Machine Learning Uruchom historii. Po zalogowaniu się te informacje, raporty i wizualizacje z wyjaśnienie są łatwo dostępne w witrynie Azure Machine Learning obszaru roboczego Portal analiza użytkowników.
+Zestaw SDK Machine Learning współdziałania jest przeznaczona do pracy z zarówno lokalne i zdalne obliczeniowych elementów docelowych. Jeśli uruchomiony lokalnie, funkcje zestawu SDK nie skontaktuje się z dowolnej usługi platformy Azure. Można zdalnie uruchamiać wyjaśnienie na obliczeniowego usługi Azure Machine Learning i informacje o wyjaśnienie Zaloguj się do uruchamiania usług historii Azure Machine Learning. Po zalogowaniu się te informacje, raporty i wizualizacje z wyjaśnienie są łatwo dostępne w witrynie Azure Machine Learning obszaru roboczego Portal analiza użytkowników.
 
 ## <a name="train-and-explain-locally"></a>Szkolenie i wyjaśnić lokalnie
 
@@ -138,9 +124,7 @@ Zestaw SDK Machine Learning współdziałania jest przeznaczona do pracy z zaró
     model = clf.fit(x_train, y_train)
     ```
 
-2. Wywołaj objaśnienie. Podczas tworzenia wystąpienia obiektu objaśnienie, Przekaż modelu i dane szkoleniowe. Opcjonalnie można przekazać funkcji. Jeśli za pomocą funkcji klasyfikacji, należy przekazać dane wyjściowe nazwy klas.
-
-    Poniższy przykład pokazuje, jak utworzyć obiekt objaśnienie przy użyciu [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), i `LimeExplainer` lokalnie. `TabularExplainer` to wywołanie jednej z trzech explainers poniżej (`TreeExplainer`, `DeepExplainer`, lub `KernelExplainer`) i automatycznie wybiera najbardziej odpowiednią dla przypadków użycia. Można jednak każdego z jego trzy podstawowe explainers bezpośrednio wywoływać.
+2. Wywołanie objaśnienie: Aby zainicjować obiekt objaśnienie, należy przekazać model, dane szkoleniowe, funkcje zainteresowania (opcjonalnie) i nazwy klas danych wyjściowych (jeśli klasyfikacja) do objaśnienie. Poniżej przedstawiono sposób tworzenia wystąpienia obiektu objaśnienie przy użyciu [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), i `LimeExplainer` lokalnie. `TabularExplainer` to wywołanie jednej z trzech explainers poniżej (`TreeExplainer`, `DeepExplainer`, lub `KernelExplainer`) i automatycznie wybiera najbardziej odpowiednią dla przypadków użycia. Można jednak każdego z jego trzy podstawowe explainers bezpośrednio wywoływać.
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
@@ -213,7 +197,7 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. Aby przesłać szkolenia, uruchamianie, wykonaj kroki opisane w [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu](how-to-set-up-training-targets.md#amlcompute) artykułu. Wykonaj kroki, aby utworzyć obiekt docelowy obliczeniowego usługi Azure Machine Learning, a następnie prześlij wykonywania szkolenia.
+2. Postępuj zgodnie z instrukcjami [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu](how-to-set-up-training-targets.md#amlcompute) Aby dowiedzieć się więcej o sposobie konfigurowania Azure obliczeniowego usługi Machine Learning jako obliczeniowego elementu docelowego i przesłać przebieg szkolenia.
 
 3. Pobierz wyjaśnienie lokalnego notesu programu Jupyter. 
 

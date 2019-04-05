@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f582ef8cca3c36bad40f14026aea1ad422b6106f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668568"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044967"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Zainicjuj tryb failover konta magazynu (wersja zapoznawcza)
 
@@ -23,6 +23,8 @@ W tym artykule pokazano, jak zainicjować failover konta dla konta magazynu przy
 
 > [!WARNING]
 > Tryb failover konta zwykle powoduje utratę danych. Aby umożliwić poznanie skutków konta przejścia w tryb failover i przygotować się do utraty danych, przeczytaj [zrozumienie procesu pracy awaryjnej konta](storage-disaster-recovery-guidance.md#understand-the-account-failover-process).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +37,7 @@ Przed rozpoczęciem pracy awaryjnej konta na swoim koncie magazynu, upewnij się
 
 Po zainicjowaniu trybu failover konta dla konta magazynu, rekordy DNS dla pomocniczego punktu końcowego są aktualizowane, tak że pomocniczego punktu końcowego staje się podstawowego punktu końcowego. Upewnij się, zrozumieć potencjalny wpływ na koncie magazynu, przed rozpoczęciem pracy w trybie failover.
 
-Aby oszacować stopnia utraty danych prawdopodobnie przed rozpoczęciem pracy w trybie failover, zapoznaj się z **czas ostatniej synchronizacji** właściwość za pomocą `Get-AzureRmStorageAccount` polecenia cmdlet programu PowerShell i obejmują `-IncludeGeoReplicationStats` parametru. Następnie sprawdź `GeoReplicationStats` właściwości konta. 
+Aby oszacować stopnia utraty danych prawdopodobnie przed rozpoczęciem pracy w trybie failover, zapoznaj się z **czas ostatniej synchronizacji** właściwość za pomocą `Get-AzStorageAccount` polecenia cmdlet programu PowerShell i obejmują `-IncludeGeoReplicationStats` parametru. Następnie sprawdź `GeoReplicationStats` właściwości konta. 
 
 Po włączeniu trybu failover typ konta magazynu jest automatycznie konwertowane na magazyn lokalnie nadmiarowy (LRS) w nowym regionie podstawowym. Można ponownie włączyć magazyn geograficznie nadmiarowy (GRS) lub magazyn geograficznie nadmiarowy dostęp do odczytu (RA-GRS) dla konta. Należy pamiętać, że konwersja z LRS na GRS lub RA-GRS spowoduje naliczenie dodatkowych kosztów. Aby uzyskać więcej informacji, zobacz [przepustowość — szczegóły cennika](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
@@ -105,5 +107,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Awaryjnego odzyskiwania i konto pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage](storage-disaster-recovery-guidance.md)
-- [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-- [Samouczek: Tworzenie aplikacji o wysokiej dostępności z magazynu obiektów Blob](../blobs/storage-create-geo-redundant-storage.md) 
+- [Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+- [Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

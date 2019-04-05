@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 501f215ae3daf24db6307b4f8afb0c7d3271d8a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2c64019ae667ff4a2ce0694ffc4a9cd69b9116b3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361867"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048923"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight
 
@@ -94,7 +94,7 @@ Zanim będzie można użyć polecenia cmdlet HDInsight, możesz nawiązać poł�
 ### <a name="renamed-cmdlets"></a>Zmieniono nazwę polecenia cmdlet
 Aby wyświetlić listę poleceń cmdlet usługi HDInsight ASM w konsoli środowiska Windows PowerShell:
 
-    help *azurermhdinsight*
+    help *azurehdinsight*
 
 W poniższej tabeli wymieniono poleceń cmdlet programu ASM i ich nazwy w trybie usługi Resource Manager:
 

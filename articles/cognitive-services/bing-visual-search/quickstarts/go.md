@@ -8,29 +8,29 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 68dd71687e18243a112df0c2568af5b2b6d0d687
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340987"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048023"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Szybki start: Uzyskaj szczegółowe informacje o obrazach za pomocą API REST wyszukiwania wizualnego Bing i języka Go
 
-Ten przewodnik Szybki Start używa języka programowania Go do wywołania interfejsu API wyszukiwania wizualnego Bing i wyświetlać wyniki. Żądanie Post służy do przekazywania obrazu do punktu końcowego interfejsu API. Wyniki obejmują adresy URL i opisowe informacje na temat obrazy, podobne do przekazanego obrazu.
+Ten przewodnik Szybki Start używa języka programowania Go do wywołania interfejsu API wyszukiwania wizualnego Bing i wyświetlać wyniki. Żądanie POST służy do przekazywania obrazu do punktu końcowego interfejsu API. Wyniki obejmują adresy URL i opisowe informacje na temat obrazy, podobne do przekazanego obrazu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * Zainstaluj [Przejdź pliki binarne](https://golang.org/dl/).
-* Drukarka głębokiego pretty spew z rzeczywistym użyciem jest przydatne w przypadku wyświetlania wyników.
-    * Zainstaluj ten libarary: `$ go get -u https://github.com/davecgh/go-spew`.
+* Drukarki głębokiego pretty go spew służy do wyświetlania wyników. Można zainstalować z rzeczywistym użyciem — spew z `$ go get -u https://github.com/davecgh/go-spew` polecenia.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="project-and-libraries"></a>Projekt i bibliotek
 
-Utwórz nowy projekt z rzeczywistym użyciem w IDE lub edytora. Następnie zaimportuj `net/http` w przypadku żądań `ioutil` odczytać odpowiedzi i `encoding/json` do obsługi tekstu JSON wyników. `go-spew` Biblioteki służy do analizowania wyniki JSON. 
+Utwórz projekt z rzeczywistym użyciem w IDE lub edytora. Następnie zaimportuj `net/http` w przypadku żądań `ioutil` odczytać odpowiedzi i `encoding/json` do obsługi tekstu JSON wyników. `go-spew` Biblioteki służy do analizowania wyniki JSON.
 
 ```
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>Struktury, aby sformatować wyniki
 
-`BingAnswer` Struktury formatuje dane zwrócone w odpowiedzi JSON, czyli kategoryzowanie i dość złożony.  Następującą implementacją obejmuje niektóre podstawowe elementy.
+`BingAnswer` Struktury formatuje dane zwrócone w odpowiedzi JSON, czyli kategoryzowanie i złożone. Następującą implementacją obejmuje niektóre podstawowe elementy:
 
 ```
 type BingAnswer struct {
@@ -109,7 +109,7 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Funkcja Main i zmienne  
 
-Poniższy kod deklaruje funkcję main i przypisuje zmienne wymagane. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure.  `batchNumber` Jest identyfikatorem GUID wymagane dla początkowe i końcowe granice danych Post.  `fileName` Zmiennej identyfikuje plik obrazu dla wpisu.  W poniższych sekcjach opisano szczegóły kodu.
+Poniższy kod deklaruje funkcję main i przypisuje zmienne wymagane. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. `batchNumber` Jest identyfikatorem GUID wymagane dla początkowe i końcowe granice danych POST. `fileName` Zmiennej identyfikuje plik obrazu dla wpisu. W poniższych sekcjach opisano szczegóły kodu:
 
 ```
 func main() {
@@ -159,7 +159,7 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>Granice treść wpisu
 
-Żądania Post na punkt końcowy wyszukiwania wizualnego wymaga początkowe i końcowe granice otaczający danych Post.  Wiodący granic zawiera numer wsadowym, identyfikatora typu zawartości `Content-Disposition: form-data; name="image"; filename=`, oraz nazwę pliku obrazu do wpisu.  Końcowe granica jest po prostu numer wsadowym.  Te funkcje nie są uwzględnione w `main` bloku.
+Żądania POST na punkt końcowy wyszukiwania wizualnego wymaga początkowe i końcowe granice otaczający danych POST. Wiodący granic zawiera numer wsadowym, identyfikatora typu zawartości `Content-Disposition: form-data; name="image"; filename=`, oraz nazwę pliku obrazu do wpisu. Końcowe granica jest po prostu numer wsadowym. Te funkcje nie są uwzględnione w `main` bloku:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +178,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Dodaj bajty obrazu do treść wpisu
 
-Ten segment kodu tworzy żądanie Post, zawierający dane obrazu. 
+Ten segment kodu tworzy żądanie POST, zawierający dane obrazu:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-Poniższy kod wysyła żądanie i odczytuje wyniki.
+Poniższy kod wysyła żądanie i odczytuje wyniki:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-`Unmarshall` Funkcja wyodrębniania informacji z tekstu JSON, zwracany przez interfejsu API wyszukiwania wizualnego.  `go-spew` Pretty drukarki wyświetla wyniki.
+`Unmarshall` Funkcja wyodrębniania informacji z tekstu JSON, zwracany przez interfejsu API wyszukiwania wizualnego. `go-spew` Pretty drukarki są wyświetlane wyniki:
 
 ```
     // Create a new answer.  
@@ -249,7 +249,7 @@ resp, err := client.Do(req)
 
 ## <a name="results"></a>Wyniki
 
-Wyniki identyfikowania obrazów, które są podobne do obrazów znajdujących się w treści wpisu.  Przydatne pola są `WebSearchUrl` i `Name`.
+Wyniki identyfikowania obrazów, które są podobne do obrazów znajdujących się w treści wpisu. Przydatne pola są `WebSearchUrl` i `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ Wyniki identyfikowania obrazów, które są podobne do obrazów znajdujących si
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Co to jest wyszukiwania wizualnego Bing](../overview.md)
-> [startu wyszukiwania w Internecie Bing w rzeczywistym użyciem](../../Bing-Web-Search/quickstarts/go.md)
+> [Co to jest interfejs API wyszukiwania wizualnego Bing? ](../overview.md) 
+>  [Startu wyszukiwania w Internecie Bing w rzeczywistym użyciem](../../Bing-Web-Search/quickstarts/go.md)

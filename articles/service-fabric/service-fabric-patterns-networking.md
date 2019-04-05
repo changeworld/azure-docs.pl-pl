@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670255"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049901"
 ---
 # <a name="service-fabric-networking-patterns"></a>Wzorce sieci usługi Service Fabric
 Klaster usługi Azure Service Fabric można zintegrować z inne funkcje sieci platformy Azure. W tym artykule pokazujemy, jak tworzyć klastry, korzystających z następujących funkcji:
@@ -34,6 +34,9 @@ Usługa Service Fabric działa w zestawie skalowania maszyny wirtualnej standard
 Usługa Service Fabric jest niż inne funkcje sieci w jednym z aspektów. [Witryny Azure portal](https://portal.azure.com) wewnętrznie używa dostawcy zasobów usługi Service Fabric w celu wywołania do klastra, aby uzyskać informacje na temat węzłów i aplikacji. Dostawca zasobów usługi Service Fabric wymaga publicznie dostępu przychodzącego do portu bramy protokołu HTTP (port 19080, domyślnie) na punkt końcowy zarządzania. [Narzędzie Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) używa punktu końcowego zarządzania w celu zarządzania klastrem. Dostawcy zasobów usługi Service Fabric używa również ten port do wyszukiwania informacji o klastrze, aby wyświetlić w witrynie Azure portal. 
 
 Jeśli portem 19080 nie jest dostępny od dostawcy zasobów usługi Service Fabric, wiadomości, takich jak *węzłów nie można odnaleźć* pojawia się w portalu i listy węzłów i aplikacja pojawi się pusta. Jeśli chcesz zobaczyć klastrem w witrynie Azure portal, moduł równoważenia obciążenia musi ujawniać publicznego adresu IP i sieciowej grupy zabezpieczeń muszą zezwalać na przychodzący ruch na porcie 19080. Jeśli ustawienia nie spełnia tych wymagań, witryny Azure portal nie wyświetla stan klastra.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Szablony
 
@@ -51,7 +54,7 @@ W poniższym przykładzie Zaczniemy z istniejącej sieci wirtualnej o nazwie Exi
 Statyczny publiczny adres IP jest ogólnie jest dedykowanym zasobem, zarządzanym oddzielnie z maszyny Wirtualnej lub maszyny wirtualne, które jest przypisany do. Zainicjowano w dedykowanej grupie zasobów sieciowych (w przeciwieństwie do zasobu klastra usługi Service Fabric grupowania, sam). Utwórz statyczny publiczny adres IP o nazwie staticIP1 w tej samej grupie zasobów ExistingRG, w witrynie Azure portal lub przy użyciu programu PowerShell:
 
 ```powershell
-PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
+PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
 
 Name                     : staticIP1
 ResourceGroupName        : ExistingRG
@@ -166,8 +169,8 @@ W przykładach w tym artykule używamy template.json usługi Service Fabric. Mo�
 6. Wdrażanie szablonu:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
+    New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
     Po wdrożeniu sieci wirtualnej powinno obejmować nowego zestawu skalowania maszyn wirtualnych. Typ węzła zestawu skali maszyny wirtualnej powinien być wyświetlony w istniejącej sieci wirtualnej i podsieci. Można również uzyskiwać protokołu RDP (Remote Desktop) dostęp do maszyny Wirtualnej, która była już w sieci wirtualnej, a następnie wysłać polecenie ping nowej skali maszyn wirtualnych w zestawie:
@@ -276,13 +279,13 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 8. Wdrażanie szablonu:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
+    New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
 
-    $staticip = Get-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
+    $staticip = Get-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
 
     $staticip
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
 Po wdrożeniu możesz zobaczyć, że moduł równoważenia obciążenia jest powiązana z publiczny statyczny adres IP z grupy zasobów. Punkt końcowy połączenia klienta usługi Service Fabric i [narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punkt programu endpoint dla nazwy FQDN DNS statyczny adres IP.
@@ -378,9 +381,9 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 7. Wdrażanie szablonu:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
 Po wdrożeniu modułu równoważenia obciążenia używa prywatnego 10.0.0.250 statyczny adres IP. Jeśli masz inną maszynę w tej samej sieci wirtualnej, możesz przejść do wewnętrznego [narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punktu końcowego. Należy pamiętać, że nawiązuje połączenie z jednym z węzłów za modułem równoważenia obciążenia.
@@ -595,9 +598,15 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 7. Wdrażanie szablonu:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    ```
+
+Po wdrożeniu możesz zobaczyć dwa moduły równoważenia obciążenia w grupie zasobów. Jeśli możesz przeglądać modułów równoważenia obciążenia, zostanie wyświetlony publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany publiczny adres IP. Widać również statyczne wewnętrzny adres i aplikacji punktu końcowego adresu IP (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Oba moduły równoważenia obciążenia, użyj tej samej puli zaplecza zestawu skalowania maszyn wirtualnych.
+
+## <a name="next-steps"></a>Kolejne kroki
+[Tworzenie klastra](service-fabric-cluster-creation-via-arm.md) ternalLB.json
     ```
 
 Po wdrożeniu możesz zobaczyć dwa moduły równoważenia obciążenia w grupie zasobów. Jeśli możesz przeglądać modułów równoważenia obciążenia, zostanie wyświetlony publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany publiczny adres IP. Widać również statyczne wewnętrzny adres i aplikacji punktu końcowego adresu IP (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Oba moduły równoważenia obciążenia, użyj tej samej puli zaplecza zestawu skalowania maszyn wirtualnych.

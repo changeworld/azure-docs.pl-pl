@@ -16,29 +16,32 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117867"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050496"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Wyświetl względnego opóźnienia do regionów platformy Azure z określonych lokalizacji
 
 W tym samouczku, Dowiedz się, jak używać platformy Azure [usługi Network Watcher](network-watcher-monitoring-overview.md) service, aby pomóc zdecydować, jakie regionie platformy Azure do wdrażania aplikacji lub usługi, oparte na użytkownika demograficznych. Ponadto służy do oceniania połączenia dostawcy usług z platformą Azure.  
         
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-a-network-watcher"></a>Tworzenie usługi network watcher
 
 Jeśli masz już usługę network watcher na platformie Azure co najmniej jeden [region](https://azure.microsoft.com/regions), można pominąć zadania przedstawione w tej sekcji. Utwórz grupę zasobów dla usługi network watcher. W tym przykładzie grupa zasobów zostanie utworzona w regionie wschodnie stany USA, ale można utworzyć grupę zasobów, w dowolnym regionie systemu Azure.
 
 ```powershell
-New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
+New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
 Tworzenie usługi network watcher. Konieczne jest posiadanie usługi network watcher utworzone w co najmniej jednego regionu platformy Azure. W tym przykładzie usługi network watcher zostało utworzone w regionie wschodnie stany USA Azure.
 
 ```powershell
-New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
+New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porównaj opóźnienia sieciowe względnej z pojedynczym regionem platformy Azure z określonej lokalizacji
@@ -46,7 +49,7 @@ New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName Network
 Ocenę dostawców usług lub Rozwiązywanie problemów z użytkownikiem zgłoszenie problemu, takie jak "witryna była powoli," z określonej lokalizacji do regionu platformy azure, w którym wdrożono usługę. Na przykład poniższe polecenie zwraca średnie opóźnienia dostawcy względne usługi Internet między stanu Waszyngton w Stanach Zjednoczonych i regionu zachodnie stany USA 2 platformy Azure między 13 15 grudnia 2017:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Location "West US 2" `
@@ -109,7 +112,7 @@ W wynikach zwrócona wartość **wynik** jest względnego opóźnienia w różny
 Jeśli zamiast określania względnych opóźnienia między określonej lokalizacji i określonego regionu platformy Azure przy użyciu `-Location`chcesz wyznaczyć opóźnienia względną do wszystkich regionów platformy Azure z określonej lokalizacji fizycznej, możesz to zrobić za. Na przykład następujące polecenie pomoże Ci ocenić jakie regionie platformy azure, aby wdrożyć usługę w, jeśli użytkownicy głównej znajdują się użytkownicy Comcast, położony w stanie Waszyngton:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Provider "Comcast Cable Communications, LLC - ASN 7922" `
@@ -127,7 +130,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 Dane są dostępne dla określonego dostawcy usług internetowych, krajów, regionów i miast. Aby wyświetlić listę wszystkich dostępnych usługodawców internetowych, krajów, regionów i miast, które można wyświetlać dane, wprowadź następujące polecenie:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
 Data jest dostępna tylko dla krajów, regionów i miast zwrócony przez poprzednie polecenie. Poprzednie polecenie wymaga określenia istniejącej usługi network watcher. Przykład określony *NetworkWatcher_eastus* usługi network watcher w grupie zasobów o nazwie *NetworkWatcherRG*, ale można określić wszelkie istniejące usługi network watcher. Jeśli nie masz istniejącej usługi network watcher, utwórz ją, wykonywania zadań w [utworzyć usługę network watcher](#create-a-network-watcher). 
@@ -135,7 +138,7 @@ Data jest dostępna tylko dla krajów, regionów i miast zwrócony przez poprzed
 Po uruchomieniu w poprzednim poleceniu, można filtrować dane wyjściowe zwracane, określając prawidłowe wartości dla **kraju**, **stanu**, i **Miasto**, jeśli to konieczne.  Na przykład aby wyświetlić listę usługodawców internetowych dostępnych w Seattle, Waszyngton w Stanach Zjednoczonych, wprowadź następujące polecenie:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList `
+Get-AzNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -City Seattle `

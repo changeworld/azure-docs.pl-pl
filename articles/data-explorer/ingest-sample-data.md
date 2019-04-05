@@ -1,19 +1,18 @@
 ---
 title: Pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure
 description: Dowiedz się więcej o sposobie pozyskiwania (załaduj) dotyczących pogody przykładowych danych do Eksploratora danych usługi Azure.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758480"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050632"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure
 
@@ -24,7 +23,7 @@ W tym artykule pokazano, jak pozyskiwania (załaduj) przykładowe dane w bazie d
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Klaster testowy i baza danych](create-cluster-database-portal.md)
+[Klaster testowy i bazy danych](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>Pozyskiwanie danych
 

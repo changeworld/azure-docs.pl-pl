@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084882"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051941"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>Przegląd
 Usługa Microsoft Azure StorSimple to hybrydowe rozwiązanie magazynu w chmurze odnoszący się do złożoności danych bez struktury, zwykle powiązanych ze udziałów plików. Usługa StorSimple używa magazynu w chmurze jako rozszerzenia rozwiązania lokalnego i automatycznie warstwy danych przez Magazyn lokalny oraz Magazyn w chmurze. Zintegrowana ochrona danych z lokalnego oraz migawki w chmurze, eliminuje potrzebę stosowania sprawling infrastruktury magazynu.
 
@@ -167,7 +170,7 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
    
 1. Na koncie usługi automation kliknij **zmienne** &gt; **Dodaj zmienną** i dodaj następujące zmienne. Można zaszyfrować te zasoby. Te zmienne są określonego planu odzyskiwania. Plan odzyskiwania, który zostanie utworzony w następnym kroku, nazwa będzie plan testu, a następnie zmiennych powinny być StorSimRegKey plan testu, AzureSubscriptionName plan testu i tak dalej.
 
-   - **BaseUrl**: Adres url usługi Resource Manager dla chmury platformy Azure. Pobieranie przy użyciu **Get-AzureRmEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
+   - **BaseUrl**: Adres url usługi Resource Manager dla chmury platformy Azure. Pobieranie przy użyciu **Get AzEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
    - *RecoveryPlanName***-ResourceGroupName**: Grupa usługi Resource Manager, zawierającej zasób usługi StorSimple.
    - * RecoveryPlanName ***- ManagerName**: Zasób usługi StorSimple, który ma urządzenia StorSimple.
    - *RecoveryPlanName***-DeviceName**: Urządzenie StorSimple, który ma być przełączone w tryb failover.

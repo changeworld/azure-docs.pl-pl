@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 266859c1d2076354dbd4f8f09adf0bea084b90f9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359463"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049684"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -125,7 +125,29 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
 5. Za pomocą narzędzia takiego jak [Postman](https://www.getpostman.com/) lub [cURL](https://curl.haxx.se/) wyślij żądanie HTTP POST do punktu końcowego adresu URL.
 
-6. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F1 w programie VS Code.
+    Odpowiedź to początkowy wynik z funkcji HTTP informujący o pomyślnym uruchomieniu aranżacji trwałej.  Nie jest to jeszcze końcowy wynik aranżacji.  Odpowiedź zawiera kilka przydatnych adresów URL.  Na razie wykonajmy zapytanie o stan aranżacji.
+
+6. Skopiuj wartość adresu URL dla `statusQueryGetUri`, wklej go w pasku adresu przeglądarki i wykonaj żądanie.
+
+    Żądanie wykona zapytanie o stan wystąpienia aranżacji. W końcu powinna zostać zwrócona odpowiedź podobna do następującej.  Pokazuje ona, że wystąpienie zostało zakończone, i obejmuje dane wyjściowe lub wyniki funkcji trwałej.
+
+    ```json
+    {
+        "instanceId": "d495cb0ac10d4e13b22729c37e335190",
+        "runtimeStatus": "Completed",
+        "input": null,
+        "customStatus": null,
+        "output": [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ],
+        "createdTime": "2018-11-08T07:07:40Z",
+        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+    }
+    ```
+
+7. Aby zatrzymać debugowanie, naciśnij klawisz **Shift + F5** w programie VS Code.
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
@@ -146,4 +168,4 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 Utworzono i opublikowano aplikację funkcji trwałej w języku JavaScript za pomocą narzędzia Visual Studio Code.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-concepts.md)
+> [Więcej informacji na temat typowych wzorców trwałe — funkcja](durable-functions-concepts.md)

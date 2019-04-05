@@ -1,19 +1,18 @@
 ---
 title: 'Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer'
 description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer za pomocą języka Python.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 309e391412a0e2c698173f02eb9fd00d576ead09
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757705"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046465"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
@@ -25,7 +24,7 @@ Ten przewodnik Szybki start jest również dostępny w formie [notesu platformy 
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-* [Klaster i baza danych](create-cluster-database-portal.md)
+* [Klaster i bazy danych](create-cluster-database-portal.md)
 
 * Język [Python](https://www.python.org/downloads/) zainstalowany na komputerze deweloperskim
 

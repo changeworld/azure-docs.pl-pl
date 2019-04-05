@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116711"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046023"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
 
@@ -36,7 +36,7 @@ Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usług
 * Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, rozpoczynać się [samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
-  * [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
+  * [Samouczek 3. Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
   * [Jak wdrożyć usługę sieci web do wielu regionów](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
@@ -49,7 +49,7 @@ Dostawca zasobów usługi Azure Machine Learning Studio, usług sieci web umożl
 
 Dostawca zasobów usługi Azure Machine Learning Studio, usług sieci web umożliwia wdrażanie i zarządzanie usługami sieci web za pomocą poleceń cmdlet programu PowerShell.
 
-Aby użyć polecenia cmdlet, należy najpierw zalogować do konta platformy Azure w środowisku programu PowerShell przy użyciu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet. Jeśli znasz sposób wywoływania poleceń programu PowerShell, które są oparte na Menedżera zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+Aby użyć polecenia cmdlet, należy najpierw zalogować do konta platformy Azure w środowisku programu PowerShell przy użyciu [Connect AzAccount](/powershell/module/az.profile/connect-azaccount) polecenia cmdlet. Jeśli znasz sposób wywoływania poleceń programu PowerShell, które są oparte na Menedżera zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
 Aby wyeksportować eksperymentu predykcyjnego, należy użyć [ten przykładowy kod](https://github.com/ritwik20/AzureML-WebServices). Po utworzeniu pliku .exe, od kodu, należy wpisać:
 
@@ -78,7 +78,7 @@ Oto przykład:
 
 Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informacji:
 
-* [Polecenia cmdlet usługi Azure Machine Learning Studio](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) odwołania w witrynie MSDN
+* [Polecenia cmdlet usługi Azure Machine Learning Studio](https://docs.microsoft.com/powershell/module/az.machinelearning) odwołania w witrynie MSDN
 * Przykładowe [wskazówki](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) w witrynie GitHub
 
 ## <a name="consume-the-web-services"></a>Korzystanie z usług sieci web
@@ -88,8 +88,8 @@ Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informac
 Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Machine Learning. W tym testowanie usługi odpowiedź na żądanie (RRS) i interfejsy usługę wykonywania wsadowego (BES).
 
 * [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
-* [Wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
+* [Wdrażanie usługi sieci Web Azure Machine Learning](publish-a-machine-learning-web-service.md)
+* [Samouczek 3. Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
 

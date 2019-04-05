@@ -3,17 +3,17 @@ title: Brama protokołu IoT platformy Azure | Dokumentacja firmy Microsoft
 description: Jak rozszerzyć usługę IoT Hub, możliwości i obsługę protokołu, aby umożliwić urządzeniom połączyć się z Twojego Centrum przy użyciu protokołów nie obsługiwane natywnie przez usługę IoT Hub za pomocą bramy protokołu Azure IoT.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ecce53420a92713ad2dcfcc7e0fed9fc226b1d52
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009855"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046431"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>Obsługa dodatkowych protokołów IoT Hub
 Usługa Azure IoT Hub natywnie obsługuje komunikację za pośrednictwem protokołów MQTT, AMQP i HTTPS. W niektórych przypadkach urządzenia lub bram działających w terenie może nie można użyć jednej z tych standardowych protokołów i wymagać dostosowania protokołu. W takich przypadkach można użyć niestandardowych bramy. Niestandardowe bramy umożliwia dostosowanie protokołu dla punktów końcowych usługi IoT Hub mostkowanie ruch do i z usługi IoT Hub. Możesz użyć [brama protokołu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) jako brama niestandardowe umożliwiające dostosowanie protokołu dla Centrum IoT Hub.

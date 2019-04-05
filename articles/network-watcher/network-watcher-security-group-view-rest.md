@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485403"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051533"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analizowanie zabezpieczeń maszyny wirtualnej przy użyciu widoku grupy zabezpieczeń przy użyciu interfejsu API REST
 
 > [!div class="op_single_selector"]
-> - [Program PowerShell](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
 > - [Interfejs API REST](network-watcher-security-group-view-rest.md)
 
 Widok grup zabezpieczeń zwraca reguły zabezpieczeń sieci skonfigurowane i obowiązujące, które są stosowane do maszyny wirtualnej. Ta możliwość jest przydatna do inspekcji i diagnozowania sieciowych grup zabezpieczeń i reguł, które są skonfigurowane na maszynie Wirtualnej, aby upewnić się, ruch jest prawidłowo dozwolony lub blokowany. W tym artykule pokazujemy, jak można pobrać reguł zabezpieczeń efektywny i zastosowane do maszyny wirtualnej przy użyciu interfejsu API REST
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -50,7 +53,7 @@ armclient login
 
 Poniższy kod, uruchom następujący skrypt, aby zwrócić machineThe wirtualnego musi zmienne:
 
-- **subscriptionId** — identyfikator subskrypcji można również pobrać za pomocą **Get-AzureRMSubscription** polecenia cmdlet.
+- **subscriptionId** — identyfikator subskrypcji można również pobrać za pomocą **Get AzSubscription** polecenia cmdlet.
 - **resourceGroupName** — Nazwa grupy zasobów, która zawiera maszyny wirtualne.
 
 ```powershell

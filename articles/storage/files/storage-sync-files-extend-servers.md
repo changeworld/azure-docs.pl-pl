@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474823"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049153"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 
@@ -28,6 +28,8 @@ W tym artykule pokazano podstawowe kroki rozszerzania pojemności magazynu w sys
 > * Tworzenie punktu końcowego serwera
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -181,7 +183,7 @@ Następnie na maszynie wirtualnej z systemem Windows Server 2016 Datacenter zain
 1. Uruchom następujące polecenie:
 
    ```powershell
-   Install-Module -Name AzureRm
+   Install-Module -Name Az
    ```
 
    > [!NOTE]
@@ -200,7 +202,7 @@ Następnie na maszynie wirtualnej z systemem Windows Server 2016 Datacenter zain
 
 1. Wybierz odpowiedź **Tak** lub **Tak na wszystkie**, aby kontynuować instalację.
 
-Moduł `AzureRM` to zbiorczy moduł poleceń cmdlet programu Azure PowerShell. Po jego zainstalowaniu są pobierane wszystkie dostępne moduły usługi Azure Resource Manager i są udostępniane do użycia ich polecenia cmdlet.
+Moduł `Az` to zbiorczy moduł poleceń cmdlet programu Azure PowerShell. Po jego zainstalowaniu są pobierane wszystkie dostępne moduły usługi Azure Resource Manager i są udostępniane do użycia ich polecenia cmdlet.
 
 W tym momencie skonfigurowano środowisko na potrzeby tego samouczka. Możesz teraz wdrożyć usługę synchronizacji magazynu.
 
@@ -218,7 +220,7 @@ Aby wdrożyć usługę Azure File Sync, zacznij od umieszczenia zasobu **Usługi
 
    | Wartość | Opis |
    | ----- | ----- |
-   | **Nazwa** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
+   | **Name (Nazwa)** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
    | **Subskrypcja** | Subskrypcja platformy Azure używana na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu.<br><br>W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
    | **Lokalizacja** | Wschodnie stany USA |
@@ -320,9 +322,9 @@ Pliki zostały teraz zsynchronizowane między udziałem plików platformy Azure 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono podstawowe kroki rozszerzania pojemności magazynu w systemie Windows Server przy użyciu usługi Azure File Sync. Aby bardziej szczegółowo zapoznać się z planowaniem wdrażania usługi Azure File Sync, zobacz:
 
 > [!div class="nextstepaction"]
-> [Planowanie wdrażania usługi Azure File Sync](./storage-sync-files-planning.md)
+> [Planowanie wdrożenia usługi Azure File Sync](./storage-sync-files-planning.md)

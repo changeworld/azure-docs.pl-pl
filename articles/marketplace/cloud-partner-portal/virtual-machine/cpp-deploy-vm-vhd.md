@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106053"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046686"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych
 
@@ -32,13 +32,14 @@ Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, zobacz nastę
 - [Obraz maszyny Wirtualnej](https://azure.microsoft.com/blog/vm-image-blog-post/)
 - [Obraz maszyny Wirtualnej w programie PowerShell "Jak"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisite-install-the-necessary-tools"></a>Wymagania wstępne: Instalacja niezbędne narzędzia
 
 Jeśli jeszcze tego nie zrobiono, należy zainstalować programu Azure PowerShell i wiersza polecenia platformy Azure, korzystając z następujących instrukcji:
 
-- [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
-- [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>Kroki wdrażania

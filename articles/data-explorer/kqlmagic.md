@@ -1,21 +1,20 @@
 ---
-title: Analizowanie danych przy użyciu notesu Jupyter i Kqlmagic
-description: W tym temacie opisano, jak analizować dane przy użyciu notesu Jupyter i KQLmagic
-services: data-explorer
+title: Użyj notesu programu Jupyter do analizy danych w Eksploratorze danych platformy Azure
+description: W tym temacie pokazano, jak analizować dane w Eksploratorze danych platformy Azure za pomocą notesu Jupyter i rozszerzenie Kqlmagic.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e7d6148297dd4208374d9900e10564ac4052c67
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756214"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045069"
 ---
-# <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Analizowanie danych przy użyciu notesu Jupyter i KQL magic
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Użyj rozszerzenia notesu Jupyter i Kqlmagic do analizowania danych w Eksploratorze danych platformy Azure
 
 Notes Jupyter to aplikacja sieci web typu open source, która pozwala tworzyć i udostępniać dokumenty zawierające kodu na żywo, równania, wizualizacje i tekst narracji. Użycie obejmuje czyszczenie danych i transformacji, symulacja wartości liczbowych, modelowanie statystyczne, wizualizacji danych i uczenia maszynowego.
 [Notes Jupyter](https://jupyter.org/) obsługuje magic funkcje, które rozszerzają możliwości jądra dzięki obsłudze dodatkowych poleceń. Magiczna KQL to polecenie, które rozszerza możliwości języka Python jądra w notesie Jupyter, aby można było uruchomić zapytań w języku Kusto natywnie. Umożliwia łatwe łączenie języka Python i Kusto język zapytań w celu wykonywania zapytań i wizualizuj dane przy użyciu rozbudowane biblioteki Plot.ly zintegrowana z usługą `render` poleceń. Źródła danych na potrzeby uruchamiania zapytań są obsługiwane. Te źródła danych obejmują Eksploratora danych usługi Azure, usługa eksploracji danych szybka i wysoce Skalowalna do dziennika i danych telemetrycznych, a także dzienniki usługi Azure Monitor i Application Insights. Magiczna KQL współpracuje również z rozszerzeniem notesów usługi Azure, laboratorium Jupyter i programu Visual Studio Code Jupyter.

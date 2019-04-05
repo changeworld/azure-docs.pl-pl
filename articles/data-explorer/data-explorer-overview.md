@@ -1,19 +1,18 @@
 ---
 title: Co to jest usługa Azure Data Explorer?
 description: Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3a669c547b33e5f13da43bc3ce851a2f24783f5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755983"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044178"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co to jest usługa Azure Data Explorer?
 
@@ -47,7 +46,7 @@ Ogólnie praca z usługą Azure Data Explorer odbywa się zgodnie z następując
 
 1. **Tworzenie bazy danych:** Utwórz *klaster*, a następnie utwórz w nim co najmniej jedną *bazę danych*. [Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer](create-cluster-database-portal.md)
 
-1. **Pozyskiwanie danych:** Ładowanie danych do tabel bazy danych, co pozwala na wykonywanie związanych z nimi zapytań. [Szybki start: Pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
+1. **Pozyskiwanie danych:** Ładowanie danych do tabel bazy danych, co pozwala na wykonywanie związanych z nimi zapytań. [Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
 1. **Wykonywanie zapytań dotyczących bazy danych:** Uruchamianie, przeglądanie i udostępnianie zapytań oraz wyników przy użyciu aplikacji internetowej. Jest ona dostępna w witrynie Azure Portal oraz jako aplikacja autonomiczna. Ponadto można wysyłać zapytania programowo (przy użyciu zestawu SDK) lub do punktu końcowego interfejsu API REST. [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)
 
@@ -67,12 +66,12 @@ Bardzo chcemy poznać Twoją opinię na temat usługi Azure Data Explorer oraz j
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
-- [Przedstaw sugestie dotyczące produktów w witrynie User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
+- [Sugestie produktu w User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer](create-cluster-database-portal.md)
 
-[Szybki start: Pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
+[Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
 [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)

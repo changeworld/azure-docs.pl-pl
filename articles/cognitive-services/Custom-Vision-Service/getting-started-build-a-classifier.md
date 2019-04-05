@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891484"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051480"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -56,9 +56,8 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
     |__Żywność__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
     |__Charakterystycznych elementów krajobrazu__|Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w zdjęcia. Ta domena działa, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zakłócane przez osoby przed nim.|
     |__Sprzedaż detaliczna__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
-    |__Dla dorosłych__|Zoptymalizowana, aby dokładniej zdefiniować treści dla dorosłych i zawartości — zawartość dla dorosłych. Na przykład jeśli chcesz zablokować obrazów osób w kąpieli kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora, aby to zrobić.|
     |__Compact domen__| Zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez compact domen można wyeksportować do uruchomienia lokalnie.|
-    
+
 1. Na koniec wybierz pozycję __Tworzenie projektu__.
 
 ## <a name="choose-training-images"></a>Wybierz uczone obrazy

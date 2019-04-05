@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da3e7e44ed1ad0698392ba1afcb59887ffbc53fe
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639952"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050105"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Utwórz zasoby techniczne dla oferty maszyny wirtualnej
 
@@ -37,6 +37,7 @@ Należy skonfigurować system operacyjny maszyny Wirtualnej, rozmiar maszyny Wir
 > [!IMPORTANT]
 > *Nie zmieniaj liczba dysków w nowej wersji obrazu.* Jeśli musisz ponownie skonfigurować dyski z danymi w obrazie, należy zdefiniować nowej jednostki SKU. Publikowanie nowej wersji obrazu z dużymi liczbami inny dysk będzie miał potencjał istotne nowe wdrożenie w oparciu o nową wersję obrazu w przypadku automatycznego skalowania, automatyczne wdrożeń rozwiązań za pomocą szablonów usługi Azure Resource Manager i innych scenariuszy.
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Podstawową wiedzę techniczną
 
@@ -56,11 +57,11 @@ Wybierz jedną lub obie następujące środowiska skryptów ułatwiających zarz
 
 Ponadto zaleca się dodanie następujących narzędzi do swojego środowiska projektowego: 
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Eksplorator usługi Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Rozszerzenie: [narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Rozszerzenie: [upiększanie](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Rozszerzenie: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Numer wewnętrzny: [Narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Numer wewnętrzny: [Upiększanie](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Numer wewnętrzny: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Także podpowiedzieć dostępne narzędzia w [narzędzi deweloperskich platformy Azure](https://azure.microsoft.com/tools/) strony i, jeśli używasz programu Visual Studio [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
