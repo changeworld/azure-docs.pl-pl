@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: ee08f5e15180a618d1a9c48b7d59b9e1f8bc90ae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329119"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883117"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie kontenerów platformy Docker interpretacji języka 
 
 **Language Understanding** środowisko uruchomieniowe kontenera (LUIS) jest skonfigurowany przy użyciu `docker run` argumenty polecenia. Usługa LUIS ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia specyficzne dla kontenera są dane wejściowe [ustawienia instalacji](#mount-settings) i ustawienia rozliczeń. 
-
-Ustawienia kontenera są [hierarchiczne](#hierarchical-settings) i można ustawić za pomocą [zmienne środowiskowe](#environment-variable-settings) lub rozwiązania docker [argumenty wiersza polecenia](#command-line-argument-settings).
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
@@ -32,12 +30,12 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |--|--|--|
 |Yes|[ApiKey](#apikey-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
-|Yes|[Billing](#billing-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
+|Yes|[Rozliczenia](#billing-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
 |Yes|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Serwer Proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP dla żądania wychodzącego.|
-|Nie|[Logging](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
-|Yes|[Mounts](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i z kontenera do komputera hosta.|
+|Nie|[Rejestrowanie](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
+|Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i z kontenera do komputera hosta.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie Nie można uruchomić kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](luis-container-howto.md#billing).
@@ -103,11 +101,6 @@ W poniższej tabeli opisano ustawienia obsługiwane.
 |Yes| `Input` | Ciąg | Miejsce docelowe instalacji danych wejściowych. Wartość domyślna to `/input`. To jest lokalizacja plików pakietu usługi LUIS. <br><br>Przykład:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Nie| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Obejmuje to usługi LUIS dzienniki zapytań i dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="hierarchical-settings"></a>Ustawienia hierarchicznych
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
-
-
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
 W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń.  Po uruchomieniu kontenera będzie działać do momentu [zatrzymać](luis-container-howto.md#stop-the-container) go.
@@ -160,7 +153,7 @@ ApiKey={ENDPOINT_KEY}
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Przykład rejestrowania za pomocą argumentów wiersza polecenia.
+### <a name="logging-example"></a>Przykład rejestrowania 
 
 Następujące polecenie ustawia poziom rejestrowania `Logging:Console:LogLevel`, aby skonfigurować poziom rejestrowania, aby [ `Information` ](https://msdn.microsoft.com). 
 
@@ -172,22 +165,7 @@ mcr.microsoft.com/azure-cognitive-services/luis:latest \
 Eula=accept \
 Billing={BILLING_ENDPOINT} \
 ApiKey={ENDPOINT_KEY} \
-Logging:Console:LogLevel=Information
-```
-
-### <a name="logging-example-with-environment-variable"></a>Przykład rejestrowania za pomocą zmiennej środowiskowej
-
-Użycie polecenia zmienną środowiskową o nazwie `Logging:Console:LogLevel` poziom rejestrowania, aby skonfigurować [ `Information` ](https://msdn.microsoft.com). 
-
-```bash
-SET Logging:Console:LogLevel=Information
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={APPLICATION_ID} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
