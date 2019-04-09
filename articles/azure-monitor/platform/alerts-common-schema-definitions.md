@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 1a55fa4f39f2ebc2cdcc421eb6d7fecc62277f90
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851929"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010400"
 ---
-# <a name="common-alert-schema-definitions"></a>Typowe definicje schematów alertu
+# <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
 
 W tym artykule opisano [wspólnej definicji schematów alertu](https://aka.ms/commonAlertSchemaDocs) dla elementów Webhook/logika aplikacji/usługi Azure Functions. 
 
@@ -152,6 +152,9 @@ W tym artykule opisano wszystkie wystąpienia alertu **zasób, który będzie mi
 ```
 
 ### <a name="log-alerts"></a>Alerty dzienników
+
+> [!NOTE]
+> Jeśli używasz niestandardowych opcji JSON dla istniejących alertów dziennika dostosowania nie są zachowywane we wspólnym schemacie.
 
 #### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
 

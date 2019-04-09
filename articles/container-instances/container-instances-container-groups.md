@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202014"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005532"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w usłudze Azure Container Instances
 
@@ -41,7 +41,9 @@ Ten przykład grupy kontenerów:
 
 ## <a name="deployment"></a>Wdrożenie
 
-Poniżej przedstawiono dwa podstawowe sposoby wdrażania grupy wielu kontenerów: Użyj [szablonu usługi Resource Manager] [ resource-manager template] lub [pliku YAML][yaml-file]. Użyj szablonu usługi Resource Manager, gdy należy wdrożyć zasoby dodatkowe usługi platformy Azure (na przykład [udostępniać usługi Azure Files][azure-files]) w czasie wdrażania wystąpień kontenera. Ze względu na charakter bardziej zwięzły widok formacie YAML pliku YAML jest zalecane, gdy Twoje wdrożenie obejmuje tylko wystąpienia kontenera.
+Poniżej przedstawiono dwa podstawowe sposoby wdrażania grupy wielu kontenerów: Użyj [szablonu usługi Resource Manager] [ resource-manager template] lub [pliku YAML][yaml-file]. Szablon usługi Resource Manager jest zalecane, gdy należy wdrożyć zasoby dodatkowe usługi platformy Azure (na przykład [udostępniać usługi Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na charakter bardziej zwięzły widok formacie YAML pliku YAML jest zalecane, gdy Twoje wdrożenie obejmuje tylko wystąpienia kontenera.
+
+Aby zachować konfigurację grupy kontenerów, możesz wyeksportować konfigurację do pliku YAML, za pomocą polecenia wiersza polecenia platformy Azure [az container eksportu][az-container-export]. Eksportowanie służy do przechowywania konfiguracji grupy kontenerów w systemie kontroli wersji dla "konfiguracji jako kodu". Możesz też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w YAML.
 
 ## <a name="resource-allocation"></a>Alokacja zasobów
 
@@ -110,3 +112,4 @@ Dowiedz się, jak wdrożyć grupę kontenerów z obsługą wielu kontenerów prz
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
 [gpus]: container-instances-gpu.md
+[az-container-export]: /cli/azure/container#az-container-export

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b156917a9987b023a9bf94e51c0cc14aebb133c7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738389"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006218"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Mapowanie transformacji odnośnika przepływu danych w usłudze Azure Data Factory
 
@@ -25,3 +25,21 @@ Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła, aby przepł
 Zaznacz pola klucza, które mają być zgodne na przychodzące pola strumienia i pola ze źródła odniesienia. Należy najpierw utworzono nowe źródło na kanwę projektu przepływu danych, aby użyć po prawej stronie do wyszukiwania.
 
 W przypadku znalezienia dopasowania wynikowy wiersze i kolumny źródłowej odwołania zostaną dodane do przepływu danych. Możesz wybrać pola, które interesujące, który chcesz uwzględnić w obiektu Sink na końcu przepływu danych.
+
+## <a name="optimizations"></a>Optymalizacje
+
+W usłudze Data Factory wykonania przepływu danych w środowiskach platformy Spark skalowanych w poziomie. Jeśli zestaw danych można dopasować do obszaru pamięci na węzeł procesu roboczego, firma Microsoft można zoptymalizować wydajność wyszukiwania.
+
+![Emisja sprzężenia](media/data-flow/broadcast.png "emisji, sprzężenia")
+
+### <a name="broadcast-join"></a>Sprzężenia emisji
+
+Wybierz w lewo i/lub po prawej stronie emisji sprzężenie do żądania usługi ADF, aby wypchnąć cały zestaw danych z żadnej stronie relacji odnośników do pamięci.
+
+### <a name="data-partitioning"></a>Partycjonowanie danych
+
+Można również określić, partycjonowanie danych, wybierając pozycję "Ustaw partycjonowania" na karcie Optymalizacja transformacji wyszukiwania do tworzenia zestawów danych, który może lepiej mieści się w pamięci dla procesu roboczego.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Dołącz do](data-flow-join.md) i [Exists](data-flow-exists.md) przekształcenia wykonywania podobnych zadań w ADF mapowanie przepływu danych. Przyjrzyj się te przekształcenia dalej.

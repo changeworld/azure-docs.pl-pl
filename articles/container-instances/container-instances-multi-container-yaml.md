@@ -1,38 +1,51 @@
 ---
-title: Wdrażanie grup wielu kontenerów w usłudze Azure Container Instances za pomocą wiersza polecenia platformy Azure i YAML
-description: Dowiedz się, jak wdrożyć grupę kontenerów za pomocą wielu kontenerów w usłudze Azure Container Instances za pomocą wiersza polecenia platformy Azure i pliku YAML.
+title: Samouczek — wdrożenia grupy wielu kontenerów w usłudze Azure Container Instances — YAML
+description: W tym samouczku dowiesz się, jak wdrożyć grupę kontenerów za pomocą wielu kontenerów w usłudze Azure Container Instances za pomocą pliku YAML przy użyciu wiersza polecenia platformy Azure.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 10f2340bd85da3dabcd50d51a4dd56d58d31675b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a0a91ece4f219cf822673cd457c064c326b89478
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372441"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006192"
 ---
-# <a name="deploy-a-multi-container-container-group-with-yaml"></a>Wdrożyć grupę kontenerów z obsługą wielu kontenerów przy użyciu kodu YAML
+# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Samouczek: Wdrażanie grupy wielu kontenerów przy użyciu pliku YAML
 
-Usługa Azure Container Instances obsługuje wdrażanie wielu kontenerów na jednym hoście za pomocą [grupy kontenerów](container-instances-container-groups.md). Grupy kontenerów z obsługą wielu kontenerów są przydatne podczas tworzenia przyczepki aplikacji, rejestrowanie, monitorowanie lub dowolnej innej konfiguracji których usługa wymaga drugiego dołączony proces.
+> [!div class="op_single_selector"]
+> * [YAML](container-instances-multi-container-yaml.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
+>
 
-Istnieją dwie metody wdrażania grup wielu kontenerów przy użyciu wiersza polecenia platformy Azure:
+Usługa Azure Container Instances obsługuje wdrażanie wielu kontenerów na jednym hoście za pomocą [grupy kontenerów](container-instances-container-groups.md). Grupy kontenerów jest przydatne podczas tworzenia przyczepki aplikacji, rejestrowanie, monitorowanie lub dowolnej innej konfiguracji których usługa wymaga drugiego dołączony proces.
 
-* Wdrażanie pliku YAML (w tym artykule)
-* [Wdrażanie szablonu usługi Resource Manager](container-instances-multi-container-group.md)
+W ramach tego samouczka należy wykonać kroki, aby uruchomić konfigurację proste przyczepki dwóch kontenerów, wdrażając pliku YAML, przy użyciu wiersza polecenia platformy Azure. Plik YAML zawiera zwięzłe formatu do określania ustawień wystąpienia. Omawiane kwestie:
 
-Ze względu na charakter bardziej zwięzły widok formacie YAML, jest zalecane wdrożenie przy użyciu pliku YAML, gdy Twoje wdrożenie obejmuje *tylko* wystąpienia kontenera. Jeśli musisz wdrożyć zasoby dodatkowe usługi platformy Azure (na przykład udział usługi Azure Files) w czasie wdrażaniem wystąpienia kontenera, zaleca się wdrożenie szablonu usługi Resource Manager.
+> [!div class="checklist"]
+> * Konfigurowanie pliku YAML
+> * Wdrażanie grupy kontenerów
+> * Wyświetlanie dzienników kontenerów
 
 > [!NOTE]
-> Grup wielu kontenerów są obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+> Grup wielu kontenerów są obecnie ograniczone do kontenerów systemu Linux.
 
-## <a name="configure-the-yaml-file"></a>Konfigurowanie pliku YAML
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Aby wdrożyć grupę kontenerów z obsługą wielu kontenerów przy użyciu [utworzyć kontener az] [ az-container-create] polecenia w interfejsie wiersza polecenia platformy Azure, należy określić konfigurację grupy kontenerów w pliku YAML, a następnie przekazać plik YAML jako parametr w poleceniu.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Zacznij od skopiowania poniższego kodu YAML do nowego pliku o nazwie **wdrażanie aci.yaml**.
+## <a name="configure-a-yaml-file"></a>Konfigurowanie pliku YAML
+
+Do wdrożenia grupy wielu kontenerów przy użyciu [utworzyć kontener az] [ az-container-create] polecenia w interfejsie wiersza polecenia platformy Azure, w pliku YAML, należy określić konfigurację grupy kontenera. Następnie przekaż plik YAML jako parametr do polecenia.
+
+Zacznij od skopiowania poniższego kodu YAML do nowego pliku o nazwie **wdrażanie aci.yaml**. W usłudze Azure Cloud Shell można użyć programu Visual Studio Code, aby utworzyć plik w katalogu roboczym:
+
+```
+code deploy-aci.yaml
+```
 
 Tego pliku YAML definiuje grupę kontenerów o nazwie "myContainerGroup" z dwóch kontenerów, publiczny adres IP i dwa ujawnionych portów. Kontenery są wdrażane z obrazów w publicznych firmy Microsoft. Pierwszego kontenera w grupie uruchamia aplikację sieci web dostępnym z Internetu. Drugi kontener przyczepki, okresowo tworzą żądania HTTP do aplikacji sieci web, działającej w kontenerze pierwszy za pośrednictwem sieci lokalnej grupy kontenerów.
 
@@ -71,6 +84,15 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
+Aby użyć rejestru obrazów kontenera prywatnych, Dodaj `imageRegistryCredentials` właściwość do grupy kontenerów przy użyciu wartości zmodyfikowane w danym środowisku:
+
+```YAML
+  imageRegistryCredentials:
+  - server: imageRegistryLoginServer
+    username: imageRegistryUsername
+    password: imageRegistryPassword
+```
+
 ## <a name="deploy-the-container-group"></a>Wdrażanie grupy kontenerów
 
 Utwórz grupę zasobów za pomocą [Tworzenie grupy az] [ az-group-create] polecenia:
@@ -103,9 +125,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-logs"></a>Wyświetlanie dzienników
+## <a name="view-container-logs"></a>Wyświetlanie dzienników kontenerów
 
-Wyświetl dane wyjściowe dziennika kontenera przy użyciu [dzienniki kontenerów az] [ az-container-logs] polecenia. `--container-name` Argument określa kontener, z którego ma zostać pobierania dzienników. W tym przykładzie określono pierwszego kontenera.
+Wyświetl dane wyjściowe dziennika kontenera przy użyciu [dzienniki kontenerów az] [ az-container-logs] polecenia. `--container-name` Argument określa kontener, z którego ma zostać pobierania dzienników. W tym przykładzie `aci-tutorial-app` kontenera jest określony.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -120,7 +142,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Aby wyświetlić dzienniki dla kontenera po stronie samochód, uruchomić to samo polecenie, określając nazwę drugiego kontenera.
+Aby wyświetlić dzienniki Aby uzyskać kontenerem przyczepki, uruchom polecenie podobne określenie polecenia `aci-tutorial-sidecar` kontenera.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -146,92 +168,25 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak widać, przyczepka okresowo wysłał żądanie HTTP do aplikacji internetowej głównego za pośrednictwem sieci lokalnej grupy, aby upewnić się, że jest on uruchomiony. Ten przykład przyczepka może rozszerzyć w taki sposób, aby wyzwolić alert, jeśli otrzymał kod odpowiedzi HTTP inne niż 200 OK.
-
-## <a name="deploy-from-private-registry"></a>Wdrożenie z rejestru prywatnego
-
-Aby korzystać z prywatnego obrazu rejestru kontenerów, obejmują poniższego kodu YAML wartościami zmodyfikowane w danym środowisku:
-
-```YAML
-  imageRegistryCredentials:
-  - server: imageRegistryLoginServer
-    username: imageRegistryUsername
-    password: imageRegistryPassword
-```
-
-Na przykład poniższego kodu YAML wdraża grupę kontenerów za pomocą jednego kontenera, obraz, którego są pobierane z prywatnego rejestru kontenerów platformy Azure o nazwie "myregistry":
-
-```YAML
-apiVersion: 2018-10-01
-location: eastus
-name: myContainerGroup2
-properties:
-  containers:
-  - name: aci-tutorial-app
-    properties:
-      image: myregistry.azurecr.io/aci-helloworld:latest
-      resources:
-        requests:
-          cpu: 1
-          memoryInGb: 1.5
-      ports:
-      - port: 80
-  osType: Linux
-  ipAddress:
-    type: Public
-    ports:
-    - protocol: tcp
-      port: '80'
-  imageRegistryCredentials:
-  - server: myregistry.azurecr.io
-    username: myregistry
-    password: REGISTRY_PASSWORD
-tags: null
-type: Microsoft.ContainerInstance/containerGroups
-```
-
-## <a name="export-container-group-to-yaml"></a>Eksportowanie grupy kontenerów do YAML
-
-Konfigurację istniejącej grupy kontenerów można wyeksportować do pliku YAML, za pomocą polecenia interfejsu wiersza polecenia Azure [az container eksportu][az-container-export].
-
-Przydatne dla grupy kontenerów przez konfigurację zachowania eksportu umożliwia przechowywanie konfiguracje grupy kontenerów w systemie kontroli wersji dla "konfiguracji jako kodu". Możesz też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w YAML.
-
-Eksportuj konfigurację dla grupy kontenerów utworzone wcześniej przez wydanie następujących [az container eksportu] [ az-container-export] polecenia:
-
-```azurecli-interactive
-az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
-```
-
-Brak danych wyjściowych jest wyświetlana, jeśli polecenie zakończy się pomyślnie, ale można wyświetlić zawartość pliku, aby wyświetlić wynik. Na przykład pierwszych kilka wierszy z `head`:
-
-```console
-$ head deployed-aci.yaml
-additional_properties: {}
-apiVersion: '2018-06-01'
-location: eastus
-name: myContainerGroup
-properties:
-  containers:
-  - name: aci-tutorial-app
-    properties:
-      environmentVariables: []
-      image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
-```
+Jak widać, przyczepka okresowo wysłał żądanie HTTP do aplikacji internetowej głównego za pośrednictwem sieci lokalnej grupy, aby upewnić się, że jest on uruchomiony. Ten przykład przyczepka może można rozszerzyć, aby wyzwolić alert, jeśli otrzymał kod odpowiedzi HTTP inne niż `200 OK`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule opisano kroki wymagane do wdrożenia wystąpienia kontenera platformy Azure obsługującej wiele kontenerów. Środowisko usługi Azure Container Instances end-to-end, w tym za pomocą prywatnej usługi Azure container registry zobacz samouczek usługi Azure Container Instances.
+W tym samouczku plik YAML jest używane do wdrażania grupy wielu kontenerów w usłudze Azure Container Instances. W tym samouczku omówiono:
 
-> [!div class="nextstepaction"]
-> [Samouczek dotyczący usługi Azure Container Instances][aci-tutorial]
+> [!div class="checklist"]
+> * Skonfigurowanie pliku YAML dla grupy wielu kontenerów
+> * Wdrażanie grupy kontenerów
+> * Wyświetlanie dzienników kontenerów
+
+Można również określić grupy wielu kontenerów przy użyciu [szablonu usługi Resource Manager](container-instances-multi-container-group.md). Szablon usługi Resource Manager można łatwo zaadaptować pod kątem scenariuszy gdy należy wdrożyć dodatkowe usługi platformy Azure zasoby z grupy kontenerów.
 
 <!-- LINKS - External -->
-[cli-issue-6525]: https://github.com/Azure/azure-cli/issues/6525
+
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md
 [az-container-create]: /cli/azure/container#az-container-create
-[az-container-export]: /cli/azure/container#az-container-export
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create

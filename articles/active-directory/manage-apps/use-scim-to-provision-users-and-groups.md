@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/22/2018
+ms.date: 4/03/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18042b34e7c3a32dd5e4706c8020324c0cef0754
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437394"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007160"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -31,7 +31,7 @@ Standard SCIM to standardowy protokół i schemat, który ma na celu dysku więk
 
 Wiele aplikacji, dla których usługa Azure AD obsługuje [wstępnie zintegrowane automatyczna aprowizacja użytkowników](../saas-apps/tutorial-list.md) zaimplementować Standard SCIM, ponieważ oznacza, że użytkownik otrzymywać powiadomienia o zmianie.  Oprócz wspomnianych, klienci mogą się łączyć aplikacje, które obsługują określonego profilu [specyfikacji protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644) przy użyciu opcji ogólnych integration "spoza galerii" w witrynie Azure portal. 
 
-Główne ten dokument koncentruje się na profilu Standard SCIM 2.0, który implementuje usługi Azure AD, jako część jej ogólnego łącznika Standard SCIM dla aplikacji spoza galerii. Jednak pomyślne testowania aplikacji, która obsługuje standard SCIM z ogólnego usługi Azure AD connector jest krokiem do aplikacji w galerii usługi Azure AD jako obsługi aprowizacji użytkowników. Aby uzyskać więcej informacji na temat pobierania aplikacji w galerii aplikacji usługi Azure AD, zobacz [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+Głównym celem tego artykułu znajduje się na profil Standard SCIM 2.0, który implementuje usługi Azure AD, jako część jej ogólnego łącznika Standard SCIM dla aplikacji spoza galerii. Jednak pomyślne testowania aplikacji, która obsługuje standard SCIM z ogólnego usługi Azure AD connector jest krokiem do aplikacji w galerii usługi Azure AD jako obsługi aprowizacji użytkowników. Aby uzyskać więcej informacji na temat pobierania aplikacji w galerii aplikacji usługi Azure AD, zobacz [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
  
 
 >[!IMPORTANT]
@@ -46,81 +46,84 @@ W tym artykule jest podzielony na cztery sekcje:
 
 * **[Zrozumienie implementacji usługi Azure AD w Standard SCIM](#understanding-the-azure-ad-scim-implementation)**  — Jeśli tworzysz aplikację, która obsługuje standard SCIM 2.0 interfejsem API zarządzania użytkownikami w tej sekcji opisano szczegółowo sposób implementacji klienta usługi Azure AD w Standard SCIM i jak powinny modelować Protokół usługi Standard SCIM żądania obsługi i odpowiedzi.
   
-* **[Tworzenie punktu końcowego Standard SCIM przy użyciu bibliotek Microsoft CLI](#building-a-scim-endpoint-using-microsoft-cli-libraries)**  — aby ułatwić tworzenie punktu końcowego Standard SCIM, istnieją biblioteki Common Language Infrastructure (CLI) oraz przykłady kodu, które pokazują, jak Podaj punkt końcowy Standard SCIM i wykonuje translację elementu Standard SCIM wiadomości.  
+* **[Tworzenie punktu końcowego Standard SCIM przy użyciu bibliotek Microsoft CLI](#building-a-scim-endpoint-using-microsoft-cli-libraries)**  -Common Language Infrastructure (CLI) bibliotek oraz przykłady kodu przedstawiają sposób tworzenia punktu końcowego Standard SCIM i tłumaczenie wiadomości Standard SCIM.  
 
 * **[Odwołanie do schematu użytkowników i grup](#user-and-group-schema-reference)**  — w tym artykule opisano schematów użytkowników i grup, jest obsługiwana przez implementację Standard SCIM programu Azure AD dla aplikacji spoza galerii. 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Inicjowanie obsługi administracyjnej użytkowników i grup do aplikacji obsługujących standard SCIM
-Usługa Azure AD można skonfigurować, aby automatycznie aprowizować przypisanych użytkowników i grup do aplikacje, które implementują określonego profilu [protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644). Szczegółowe informacje na temat profilu są udokumentowane w zrozumienie implementacji Standard SCIM programu Azure AD.
+Usługa Azure AD można skonfigurować, aby automatycznie aprowizować przypisanych użytkowników i grup do aplikacje, które implementują określonego profilu [protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644). Szczegółowe informacje na temat profilu są udokumentowane w artykule [zrozumienie implementacji usługi Azure AD w Standard SCIM](#understanding-the-azure-ad-scim-implementation).
 
 Skontaktuj się z dostawcą aplikacji lub dokumentacji dostawcy aplikacji dla instrukcji zgodność z tymi wymaganiami.
 
 >[!IMPORTANT]
->Implementacja Standard SCIM programu Azure AD jest zbudowana na użytkownika usługi Azure AD, inicjowania obsługi usługi, która jest przeznaczona do bezterminowo synchronizowania użytkowników między usługą Azure AD a aplikacją docelową i implementuje bardzo określony zbiór działań standardowych. należy zrozumieć tych zachowań, aby zrozumieć zachowanie klienta usługi Azure AD w Standard SCIM. Aby uzyskać więcej informacji, zobacz [co się dzieje podczas aprowizacji użytkowników?](user-provisioning.md#what-happens-during-provisioning).
+>Implementacja Standard SCIM programu Azure AD jest zbudowana na użytkownika usługi Azure AD, inicjowania obsługi usługi, która jest przeznaczona do stale synchronizowania użytkowników między usługą Azure AD a aplikacją docelową i implementuje bardzo określony zbiór działań standardowych. Należy zrozumieć te zachowania, aby zrozumieć zachowanie klienta usługi Azure AD w Standard SCIM. Aby uzyskać więcej informacji, zobacz [co się dzieje podczas aprowizacji użytkowników?](user-provisioning.md#what-happens-during-provisioning).
 
 ### <a name="getting-started"></a>Wprowadzenie
 Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może być połączona z usługą Azure Active Directory przy użyciu funkcji "aplikacji spoza galerii" w galerii aplikacji usługi Azure AD. Po nawiązaniu połączenia usługi Azure AD działa proces synchronizacji co 40 minut, gdzie go zapytania aplikacji Standard SCIM z punktu końcowego dla przypisanych użytkowników i grup i tworzy lub modyfikuje je zgodnie ze szczegółami przypisania.
 
 **Łączenie aplikacji, która obsługuje standard SCIM:**
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com). 
-2. Przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw**i wybierz **nowej aplikacji > wszystkie > Aplikacja spoza galerii**.
-3. Wprowadź nazwę aplikacji, a następnie kliknij przycisk **Dodaj** ikonę, aby utworzyć obiekt aplikacji.
+1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com). 
+
+1. Wybierz **aplikacje dla przedsiębiorstw** z okienka po lewej stronie. Jest wyświetlana lista wszystkich skonfigurowanych aplikacji, w tym aplikacje, które zostały dodane z galerii.
+
+1. Wybierz **+ Nowa aplikacja** > **wszystkich** > **aplikacji spoza galerii**.
+
+1. Wprowadź nazwę aplikacji, a następnie wybierz pozycję **Dodaj** do utworzenia obiektu aplikacji. Nowa aplikacja zostanie dodany do listy aplikacji przeznaczonych dla przedsiębiorstw i otwiera do ekranu zarządzania w swojej aplikacji.
     
    ![][1]
    *Rysunek 2: Galerii aplikacji usługi Azure AD*
     
-4. Z wyświetlonego ekranu wybierz **aprowizacji** karty w lewej kolumnie.
-5. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
+1. Na ekranie zarządzania aplikacji wybierz **aprowizacji** w panelu po lewej stronie.
+1. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
     
    ![][2]
    *Rysunek 3: Konfigurowanie inicjowania obsługi w witrynie Azure portal*
     
-6. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/v2/
-7. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD zawiera tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje korzystające z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej platformy Azure token wystawiony przez usługi AD.
-8. Kliknij przycisk **Testuj połączenie** przycisk, aby mieć Azure Active Directory podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM. Jeśli zakończy się niepowodzeniem, informacje o błędzie jest wyświetlany.  
+1. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/v2/
+1. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD zawiera tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje korzystające z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej platformy Azure token wystawiony przez usługi AD.
+1. Wybierz **Testuj połączenie** mają podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM usługi Azure Active Directory. Jeśli próba nie powiedzie się, informacje o błędzie jest wyświetlany.  
 
     >[!NOTE]
     >**Testuj połączenie** odpytuje punkt końcowy Standard SCIM dla użytkownika, który nie istnieje, za pomocą losowy identyfikator GUID jako właściwość pasującego wybrane w konfiguracji usługi Azure AD. Oczekiwana reakcja poprawne jest pusty komunikat ListResponse Standard SCIM HTTP 200 OK. 
 
-9. Jeśli próbuje nawiązać połączenie z odnieść sukces aplikacji, kliknij przycisk **Zapisz** można zapisać poświadczeń administratora.
-10. W **mapowania** sekcji, istnieją dwa zestawy można wybierać mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+1. W przypadku próby połączenia się osiągnąć sukces aplikacji, wybierz **Zapisz** można zapisać poświadczeń administratora.
+1. W **mapowania** sekcji, istnieją dwa zestawy można wybierać mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz **Zapisz** aby zatwierdzić zmiany.
 
     >[!NOTE]
     >Opcjonalnie można wyłączyć synchronizację grupy obiektów, wyłączając mapowania "groups". 
 
-11. W obszarze **ustawienia**, **zakres** pole definiuje, którzy użytkownicy i grupy są synchronizowane. Wybieranie "Synchronizuj tylko przypisanych użytkowników i grup" (zalecane) będzie zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
-12. Po zakończeniu konfiguracji, zmień **stanie aprowizacji** do **na**.
-13. Kliknij przycisk **Zapisz** można uruchomić usługi aprowizacji usługi Azure AD. 
-14. Jeśli synchronizacja tylko przypisanych użytkowników i grup (zalecane), pamiętaj o wybraniu **użytkowników i grup** karcie, a następnie Przypisz użytkowników i/lub grup, które chcesz synchronizować.
+1. W obszarze **ustawienia**, **zakres** pole definiuje, którzy użytkownicy i grupy są synchronizowane. Wybierz **Synchronizuj tylko przypisanych użytkowników i grup** (zalecane), aby zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
+1. Po zakończeniu konfiguracji ustaw **stanie aprowizacji** do **na**.
+1. Wybierz **Zapisz** można uruchomić usługi aprowizacji usługi Azure AD. 
+1. Jeśli synchronizacja tylko przypisanych użytkowników i grup (zalecane), pamiętaj o wybraniu **użytkowników i grup** kartę, a następnie Przypisz użytkowników lub grup, które mają być synchronizowane.
 
-Po rozpoczęciu synchronizacji początkowej, można użyć **dzienniki inspekcji** kartę do monitorowania postępu, który pokazuje każdą akcję wykonaną przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+Po rozpoczęciu synchronizacji początkowej, możesz wybrać **dzienniki inspekcji** w panelu po lewej stronie, aby monitorować postęp, który zawiera wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
 
 > [!NOTE]
-> Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. 
-
+> Synchronizacja początkowa trwa dłużej niż nowsze synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. 
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Zrozumienie implementacji usługi Azure AD w Standard SCIM
 
-Jeśli tworzysz aplikację, która obsługuje standard SCIM 2.0 interfejsem API zarządzania użytkownikami w tej sekcji opisano szczegółowo sposób implementacji klienta usługi Azure AD w Standard SCIM i jak powinny modelować protokołu usługi Standard SCIM żądania obsługi i odpowiedzi. Po wdrożeniu punktu końcowego usługi Standard SCIM, można ją przetestować, postępując zgodnie z procedurą opisaną w poprzedniej sekcji.
+Jeśli tworzysz aplikację, która obsługuje standard SCIM 2.0 interfejsem API zarządzania użytkownikami w tej sekcji opisano szczegółowo sposób implementacji klienta usługi Azure AD w Standard SCIM i jak powinny modelować protokołu usługi Standard SCIM żądania obsługi i odpowiedzi. Gdy punkt końcowy usługi Standard SCIM zastało zaimplementowane, można ją przetestować, postępując zgodnie z procedurą opisaną w poprzedniej sekcji.
 
 W ramach [specyfikacji protokołu 2.0 Standard SCIM](http://www.simplecloud.info/#Specification), aplikacja musi spełniać następujące wymagania:
 
 * Obsługuje tworzenie użytkowników, a opcjonalnie także grupy, zgodnie z sekcji [3.3 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.3).  
-* Obsługuje modyfikowania użytkowników i/lub grup w żądaniach PATCH zgodnie [sekcji 3.5.2 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
+* Obsługuje modyfikowania użytkowników lub grup przy użyciu żądania PATCH zgodnie [sekcji 3.5.2 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
 * Obsługuje pobieranie znanych zasobów dla użytkownika lub grupy utworzone wcześniej zgodnie [sekcji 3.4.1 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Obsługuje wykonywanie zapytań względem użytkowników i/lub grupy, zgodnie z sekcji [3.4.2 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Domyślnie użytkownicy są pobierane przez ich `id` i sprawdzać za ich `username` i `externalid`, i grup są zgłaszane przez `displayName`.  
-* Obsługa zapytań użytkownika według Identyfikatora i przez Menedżera zgodnie z sekcji 3.4.2 protokołu Standard SCIM.  
-* Obsługuje wykonywanie zapytań dotyczących grup według Identyfikatora, a także przez członka zgodnie z sekcji 3.4.2 protokołu Standard SCIM.  
+* Obsługuje wykonywanie zapytań względem użytkowników lub grupy, zgodnie z sekcji [3.4.2 protokołu Standard SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Domyślnie użytkownicy są pobierane przez ich `id` i sprawdzać za ich `username` i `externalid`, i grup są zgłaszane przez `displayName`.  
+* Obsługa zapytań użytkownika według Identyfikatora i przez menedżera, zgodnie z sekcji 3.4.2 protokołu Standard SCIM.  
+* Obsługuje wykonywanie zapytań dotyczących grup według Identyfikatora a według elementu członkowskiego, zgodnie z sekcji 3.4.2 protokołu Standard SCIM.  
 * Akceptuje token elementu nośnego pojedynczego, uwierzytelniania i autoryzacji usługi Azure AD do aplikacji.
 
-Ponadto należy wykonać te ogólne wytyczne podczas implementowania punktu końcowego Standard SCIM w celu zapewnienia zgodności z usługą Azure AD:
+Podczas implementowania punktu końcowego Standard SCIM w celu zapewnienia zgodności z usługą Azure AD, należy przestrzegać następujących zasad ogólnych:
 
-* `id` Właściwość jest wymagana dla wszystkich zasobów; Każdy odpowiedź, która zwraca zasobu należy upewnić się, każdy zasób ma tej właściwości, z wyjątkiem `ListResponse` członkom zero.
+* `id` Właściwość jest wymagana dla wszystkich zasobów. Każdy odpowiedź, która zwraca zasobu należy upewnić się, każdy zasób ma tej właściwości, z wyjątkiem `ListResponse` członkom zero.
 * Odpowiedź na żądanie filtr zapytania/powinna zawsze być `ListResponse`.
 * Grupy są opcjonalne, lecz tylko obsługiwane, jeśli implementacja Standard SCIM obsługuje żądania PATCH.
-* Nie jest konieczne uwzględnienie całego zasobu w odpowiedzi poprawki.
-* Microsoft Azure AD używa tylko następujących operatorów  
+* Nie obejmują całego zasobu w odpowiedzi poprawki.
+* Microsoft Azure AD używa tylko następujące operatory:  
      - `eq`
      - `and`
 * Nie wymagają dopasowanie uwzględniające na elementy strukturalne w Standard SCIM w konkretnej poprawki `op` wartości operacji, zgodnie z definicją w https://tools.ietf.org/html/rfc7644#section-3.5.2. Usługi Azure AD generuje wartość "op" jako `Add`, `Replace`, i `Remove`.
@@ -134,22 +137,22 @@ Poniższa ilustracja przedstawia komunikatów usługi Azure Active Directory i w
 *Rysunek 4: Użytkownik aprowizację i anulowanie obsługi sekwencji*
 
 ### <a name="group-provisioning-and-de-provisioning"></a>Grupa aprowizację i cofanie aprowizacji
-Grupa aprowizację i cofanie aprowizacji są opcjonalne. Gdy zaimplementowana włączone, na poniższej ilustracji przedstawiono komunikaty tej usługi Azure AD wysyła do usługi Standard SCIM do zarządzania cyklem życia grupy w magazynie tożsamości aplikacji.  Te komunikaty różnią się od komunikatów odnoszących się do użytkowników na dwa sposoby: 
+Grupa aprowizację i cofanie aprowizacji są opcjonalne. Gdy zaimplementowana włączone, na poniższej ilustracji przedstawiono komunikaty tej usługi Azure AD wysyła do usługi Standard SCIM do zarządzania cyklem życia grupy w magazynie tożsamości aplikacji.  Te komunikaty różnią się od komunikatów o użytkownikach na dwa sposoby: 
 
-* Żądania pobrania grupy stanowić atrybut elementów członkowskich mają być wykluczone z dowolnego zasobu w odpowiedzi na żądanie.  
+* Żądania pobrania grupy określić atrybut elementów członkowskich mają być wykluczone z dowolnego zasobu w odpowiedzi na żądanie.  
 * Żądania, aby ustalić, czy jest atrybut odwołania, ma określoną wartość są żądania o atrybucie elementów członkowskich.  
 
 ![][5]
 *Rysunek 5: Grupa aprowizację i anulowanie obsługi sekwencji*
 
 ### <a name="scim-protocol-requests-and-responses"></a>Standard SCIM protokołu żądań i odpowiedzi
-Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta usługi Azure AD w Standard SCIM, a także oczekiwano przykładowe odpowiedzi. Aby uzyskać najlepsze wyniki należy kodu aplikacji w celu obsłużenia tych żądań, w tym formacie i emitować oczekiwanej odpowiedzi.
+Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta usługi Azure AD w Standard SCIM i przykład oczekiwanej odpowiedzi. Aby uzyskać najlepsze wyniki należy kodu aplikacji w celu obsłużenia tych żądań, w tym formacie i emitować oczekiwanej odpowiedzi.
 
 >[!IMPORTANT]
 >Aby dowiedzieć się, jak i kiedy usługa aprowizowania użytkowników w usłudze Azure AD emituje czynności opisane poniżej, zobacz [co się dzieje podczas aprowizacji użytkowników?](user-provisioning.md#what-happens-during-provisioning).
 
 - [Operacje użytkownika](#user-operations)
-  - [Tworzenie użytkownika](#create-user)
+  - [Utwórz użytkownika](#create-user)
     - [Żądanie](#request)
     - [Odpowiedź](#response)
   - [Pobieranie użytkownika](#get-user)
@@ -167,14 +170,14 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
   - [Aktualizuj użytkownika [właściwości pojedynczej wartości]](#update-user-single-valued-properties)
     - [Żądanie](#request-5)
     - [Odpowiedź](#response-5)
-  - [Usuwanie użytkownika](#delete-user)
+  - [Usuń użytkownika](#delete-user)
     - [Żądanie](#request-6)
     - [Odpowiedź](#response-6)
 - [Operacje dotyczące grupy](#group-operations)
   - [Tworzenie grupy](#create-group)
     - [Żądanie](#request-7)
     - [Odpowiedź](#response-7)
-  - [Pobieranie grupy](#get-group)
+  - [Pobierz grupę](#get-group)
     - [Żądanie](#request-8)
     - [Odpowiedź](#response-8)
   - [Pobierz grupę przez Nazwa wyświetlana](#get-group-by-displayname)
@@ -189,7 +192,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
   - [Aktualizowanie grupy [Usuń]](#update-group-remove-members)
     - [Żądanie](#request-12)
     - [Odpowiedź](#response-12)
-  - [Usuwanie grupy](#delete-group)
+  - [Usuń grupę](#delete-group)
     - [Żądanie](#request-13)
     - [Odpowiedź](#response-13)
 
@@ -257,7 +260,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 #### <a name="get-user"></a>Pobieranie użytkownika
 
 ###### <a name="request"></a>Żądanie
-*GET /Users/5d48a0a8e9f04aa38008* 
+*Pobierz /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>Odpowiedź
 *HTTP/1.1 200 OK*
@@ -447,12 +450,12 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 * Zawsze można tworzyć grup przy użyciu listy puste elementy członkowskie.
 * Grupy mogą być przeszukiwane przy `displayName` atrybutu.
 * Aktualizacja żądanie PATCH grupy powinny uzyskanie *HTTP 204 Brak zawartości* w odpowiedzi. Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
-* Należy nie obsługuje zwracania wszystkich elementów członkowskich grupy.
+* Nie obsługuje zwracania wszystkich elementów członkowskich grupy.
 
 #### <a name="create-group"></a>Tworzenie grupy
 
 ##### <a name="request"></a>Żądanie
-*POST /Groups HTTP/1.1*
+*/ Groups POST protokołu HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
@@ -606,19 +609,19 @@ Standard SCIM usługi sieci web, które interfejsy są tworzone za pomocą usłu
 
 Poniżej przedstawiono, jak to działa:
 
-1. Usługa Azure AD zapewnia wspólnej biblioteki language infrastructure (CLI), o nazwie Microsoft.SystemForCrossDomainIdentityManagement, dołączone do kodu, który próbek opisano poniżej. System integratorzy i programiści można użyć tej biblioteki do tworzenia i wdrażania punkt końcowy usługi sieci web opartych na użyciu SCIM możliwość połączenia usługi Azure AD do magazynu tożsamości dowolnej aplikacji.
+1. Usługa Azure AD zapewnia wspólnej biblioteki language infrastructure (CLI), o nazwie Microsoft.SystemForCrossDomainIdentityManagement, dołączone do kodu, który próbek opisano poniżej. System integratorzy i programiści można użyć tej biblioteki do tworzenia i wdrażania punkt końcowy usługi sieci web opartych na użyciu SCIM mającym połączenie z dowolnej aplikacji magazynu tożsamości usługi Azure AD.
 2. Mapowania są implementowane w usłudze sieci web, aby zamapować schemat standardowy użytkownika na schemat użytkownika oraz Protokół wymagany przez aplikację. 
 3. Adres URL punktu końcowego jest zarejestrowany w usłudze Azure AD jako część niestandardową aplikację w galerii aplikacji.
-4. Użytkownicy i grupy są przypisane do tej aplikacji w usłudze Azure AD. Podczas przypisywania są umieszczane w kolejce do synchronizacji z aplikacji docelowej. Proces synchronizacji, obsługa kolejki jest uruchamiane co 40 minut.
+4. Użytkownicy i grupy są przypisane do tej aplikacji w usłudze Azure AD. Podczas przypisywania jest umieścić w kolejce do synchronizacji z aplikacji docelowej. Proces synchronizacji, obsługa kolejki jest uruchamiane co 40 minut.
 
 ### <a name="code-samples"></a>Przykłady kodu
-Aby ułatwić ten proces, [przykłady kodu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) są pod warunkiem, że tworzenie punktu końcowego usługi sieci web Standard SCIM i pokazują automatycznej aprowizacji. Próbka jest dostawcę, który przechowuje plik wierszy z wartościami rozdzielonymi przecinkami reprezentująca użytkowników i grup.    
+Aby ułatwić ten proces, [przykłady kodu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) są dostarczane, której tworzenie Standard SCIM punktu końcowego usługi w sieci web i pokazują automatycznej aprowizacji. Próbka jest dostawcę, który przechowuje plik wierszy z wartościami rozdzielonymi przecinkami reprezentująca użytkowników i grup.    
 
 **Wymagania wstępne**
 
 * Visual Studio 2013 lub nowszy
 * [Zestaw Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/)
-* Windows maszyny, która obsługuje struktury programu ASP.NET 4.5 ma być używany jako punkt końcowy Standard SCIM. Ta maszyna musi być dostępny z poziomu chmury
+* Windows maszyny, która obsługuje struktury programu ASP.NET 4.5 ma być używany jako punkt końcowy Standard SCIM. Ta maszyna musi być dostępny z poziomu chmury.
 * [Subskrypcja platformy Azure w wersji próbnej lub licencjonowanej wersji programu Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>Wprowadzenie
@@ -627,65 +630,78 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
 #### <a name="to-create-a-sample-scim-endpoint"></a>Aby utworzyć punkt końcowy Standard SCIM próbki
 
 1. Pobierz pakiet przykładowy kod w [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
-2. Rozpakuj pakiet i umieść go na komputerze Windows w lokalizacji takiej jak C:\AzureAD-BYOA-Provisioning-Samples\.
-3. W tym folderze Uruchom projekt FileProvisioning\Host\FileProvisioningService.csproj w programie Visual Studio.
-4. Wybierz **Narzędzia > Menedżer pakietów NuGet > Konsola Menedżera pakietów**i wykonaj następujące polecenia w projekcie FileProvisioningService do rozpoznawania odwołań rozwiązania:
+1. Rozpakuj pakiet i umieść go na komputerze Windows w lokalizacji takiej jak C:\AzureAD-BYOA-Provisioning-Samples\.
+1. W tym folderze Uruchom projekt FileProvisioning\Host\FileProvisioningService.csproj w programie Visual Studio.
+1. Wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**i wykonaj następujące polecenia, aby uzyskać Projekt FileProvisioningService do rozpoznawania odwołań rozwiązania:
 
    ```
     Update-Package -Reinstall
    ```
 
-5. Skompiluj projekt FileProvisioningService.
-6. Uruchamianie aplikacji wiersza polecenia w Windows (jako Administrator) i używanie **cd** polecenia Zmień katalog na Twoje **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**folderu.
-7. Uruchom następujące polecenie, zastępując `<ip-address>` przy użyciu adresu IP adresu lub nazwy domeny komputera Windows:
+1. Skompiluj projekt FileProvisioningService.
+1. Uruchamianie aplikacji wiersza polecenia w Windows (jako Administrator) i używanie **cd** polecenia Zmień katalog na Twoje **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**folderu.
+1. Uruchom następujące polecenie, zastępując `<ip-address>` przy użyciu adresu IP adresu lub nazwy domeny komputera Windows:
 
    ```
     FileSvc.exe http://<ip-address>:9000 TargetFile.csv
    ```
 
-8. W Windows w obszarze **Windows Ustawienia > sieci & ustawień internetowych**, wybierz opcję **zapory Windows > Ustawienia zaawansowane**i Utwórz **reguły ruchu przychodzącego** , Umożliwia dostęp ruchu przychodzącego do portu 9000.
-9. Jeśli komputer Windows jest za routerem, router musi być skonfigurowany do wykonywania tłumaczeń dostępu do sieci między jego port 9000, który jest uwidaczniany w Internecie i port 9000 na komputerze Windows. Ta konfiguracja jest wymagana dla usługi Azure AD mieć możliwość dostępu do tego punktu końcowego w chmurze.
+1. W Windows w obszarze **ustawienia Windows** > **sieci & ustawień internetowych**, wybierz opcję **zapory Windows**  >   **Zaawansowane ustawienia**i Utwórz **reguły dla ruchu przychodzącego** umożliwiającą dostęp przychodzący do portu 9000.
+1. Jeśli komputer Windows jest za routerem, router musi być skonfigurowane do uruchamiania tłumaczenia dostępu do sieci między jego port 9000, który jest uwidaczniany w Internecie i port 9000 na komputerze Windows. Ta konfiguracja jest wymagana dla usługi Azure AD na dostęp do tego punktu końcowego w chmurze.
 
 #### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Aby zarejestrować punkt końcowy Standard SCIM przykładowych w usłudze Azure AD
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com). 
-2. Przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw**i wybierz **nowej aplikacji > wszystkie > Aplikacja spoza galerii**.
-3. Wprowadź nazwę aplikacji, a następnie kliknij przycisk **Dodaj** ikonę, aby utworzyć obiekt aplikacji. Utworzony obiekt aplikacji jest przeznaczony do reprezentowania aplikacji docelowej, można będzie aprowizacji i implementowanie logowania jednokrotnego dla i nie tylko punkt końcowy Standard SCIM.
-4. Z wyświetlonego ekranu wybierz **aprowizacji** karty w lewej kolumnie.
-5. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
+1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com). 
+
+1. Wybierz **aplikacje dla przedsiębiorstw** z okienka po lewej stronie. Jest wyświetlana lista wszystkich skonfigurowanych aplikacji, w tym aplikacje, które zostały dodane z galerii.
+
+1. Wybierz **+ Nowa aplikacja** > **wszystkich** > **aplikacji spoza galerii**.
+
+1. Wprowadź nazwę aplikacji, a następnie wybierz pozycję **Dodaj** do utworzenia obiektu aplikacji. Utworzony obiekt aplikacji jest przeznaczony do reprezentowania aplikacji docelowej, można będzie aprowizacji i implementowanie logowania jednokrotnego dla i nie tylko punkt końcowy Standard SCIM.
+
+1. Na ekranie zarządzania aplikacji wybierz **aprowizacji** w panelu po lewej stronie.
+
+1. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
     
    ![][2]
    *Rysunek 6: Konfigurowanie inicjowania obsługi w witrynie Azure portal*
     
-6. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://\<adres ip >: 9000 /, gdzie \<adres ip > jest internet udostępniane IP adresów.  
-7. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD będą zawierać tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje, które korzystają z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej usługi Azure AD — wystawiony token.
-8. Kliknij przycisk **Testuj połączenie** przycisk, aby mieć Azure Active Directory podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM. Jeśli zakończy się niepowodzeniem, informacje o błędzie jest wyświetlany.  
+1. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://\<adres ip >: 9000 /, gdzie \<adres ip > jest internet udostępniane IP adresów. 
+
+1. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD będą zawierać tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje, które korzystają z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej usługi Azure AD — wystawiony token.
+
+1. Wybierz **Testuj połączenie** mają podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM usługi Azure Active Directory. Jeśli próba nie powiedzie się, informacje o błędzie jest wyświetlany.  
 
     >[!NOTE]
     >**Testuj połączenie** odpytuje punkt końcowy Standard SCIM dla użytkownika, który nie istnieje, za pomocą losowy identyfikator GUID jako właściwość pasującego wybrane w konfiguracji usługi Azure AD. Oczekiwana reakcja poprawne jest HTTP 200 OK przy użyciu pustego komunikatu ListResponse Standard SCIM
 
-9. Jeśli próbuje nawiązać połączenie z odnieść sukces aplikacji, kliknij przycisk **Zapisz** można zapisać poświadczeń administratora.
-10. W **mapowania** sekcji, istnieją dwa zestawy można wybierać mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
-11. W obszarze **ustawienia**, **zakres** pole definiuje, które użytkownicy i grupy są synchronizowane. Wybieranie "Synchronizuj tylko przypisanych użytkowników i grup" (zalecane) będzie zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
-12. Po zakończeniu konfiguracji, zmień **stanie aprowizacji** do **na**.
-13. Kliknij przycisk **Zapisz** można uruchomić usługi aprowizacji usługi Azure AD. 
-14. Jeśli synchronizacja tylko przypisanych użytkowników i grup (zalecane), pamiętaj o wybraniu **użytkowników i grup** karcie, a następnie Przypisz użytkowników i/lub grup, które chcesz synchronizować.
+1. W przypadku próby połączenia się osiągnąć sukces aplikacji, wybierz **Zapisz** można zapisać poświadczeń administratora.
 
-Po rozpoczęciu synchronizacji początkowej, można użyć **dzienniki inspekcji** kartę do monitorowania postępu, który pokazuje każdą akcję wykonaną przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+1. W **mapowania** sekcji, istnieją dwa zestawy można wybierać mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz **Zapisz** aby zatwierdzić zmiany.
+
+1. W obszarze **ustawienia**, **zakres** pole definiuje, które użytkownicy i grupy są synchronizowane. Wybierz **"Synchronizuj tylko przypisanych użytkowników i grup** (zalecane), aby zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
+
+1. Po zakończeniu konfiguracji ustaw **stanie aprowizacji** do **na**.
+
+1. Wybierz **Zapisz** można uruchomić usługi aprowizacji usługi Azure AD. 
+
+1. Jeśli synchronizacja tylko przypisanych użytkowników i grup (zalecane), pamiętaj o wybraniu **użytkowników i grup** kartę, a następnie Przypisz użytkowników lub grup, które mają być synchronizowane.
+
+Po rozpoczęciu synchronizacji początkowej, możesz wybrać **dzienniki inspekcji** w panelu po lewej stronie, aby monitorować postęp, który zawiera wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
 
 W ostatnim kroku weryfikacji próbki jest można otworzyć pliku TargetFile.csv w folderze \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug na komputerze Windows. Po jego uruchomieniu procesu aprowizacji ten plik zawiera szczegółowe informacje o wszystkich przypisane i aprowizacji użytkowników i grup.
 
 ### <a name="development-libraries"></a>Biblioteki programistyczne
 Aby opracować własne usługi sieci web, który jest zgodny ze specyfikacją Standard SCIM, najpierw zapoznać się z następującymi bibliotekami, które są obsługiwane przez firmę Microsoft, aby przyspieszyć proces programowania: 
 
-1. Wspólne biblioteki Language Infrastructure (CLI) są oferowane do użytku z językami oparte na tej infrastruktury, takich jak C#. Jedną z tych bibliotek Microsoft.SystemForCrossDomainIdentityManagement.Service, deklaruje interfejsu Microsoft.SystemForCrossDomainIdentityManagement.IProvider, pokazane na poniższej ilustracji. Developer, przy użyciu biblioteki będzie implementują ten interfejs, za pomocą klasy może być określone, objęty dostawcy. Biblioteki umożliwiają deweloperom wdrażanie usługi sieci web, który jest zgodny ze specyfikacją Standard SCIM. Usługi sieci web mogą być albo hostowane w Internet Information Services lub dowolnego pliku wykonywalnego złożenia interfejsu wiersza polecenia. Żądanie jest tłumaczony na wywołania metody dostawcy, które będzie zaprogramowane przez projektanta do pracy na niektórych magazynu tożsamości.
+- Wspólne biblioteki Language Infrastructure (CLI) są oferowane do użytku z językami oparte na tej infrastruktury, takich jak C#. Jedną z tych bibliotek Microsoft.SystemForCrossDomainIdentityManagement.Service, deklaruje interfejsu Microsoft.SystemForCrossDomainIdentityManagement.IProvider, pokazane na poniższej ilustracji. Developer, przy użyciu biblioteki będzie implementują ten interfejs, za pomocą klasy może być określone, objęty dostawcy. Biblioteki umożliwiają deweloperowi wdrażanie usługi sieci web, który jest zgodny ze specyfikacją Standard SCIM. Usługi sieci web mogą być albo hostowane w Internet Information Services lub dowolnego pliku wykonywalnego złożenia interfejsu wiersza polecenia. Żądanie jest tłumaczony na wywołania metody dostawcy, które będzie zaprogramowane przez projektanta do pracy na niektórych magazynu tożsamości.
   
    ![][3]
   
-2. [Express route obsługi](https://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.   
+- [Express route obsługi](https://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Tworzenie punktu końcowego niestandardowe Standard SCIM
-Korzystanie z bibliotek interfejsu wiersza polecenia, deweloperzy korzystający z tych bibliotek mogą hostować usługi w ramach dowolnego zestawu pliku wykonywalnego interfejsu wiersza polecenia lub w Internet Information Services. Poniżej przedstawiono przykładowy kod dla innej usługi w ramach zestawu pliku wykonywalnego, pod adresem hostingu http://localhost:9000: 
+Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia mogą hostować usługi w ramach dowolnego zestawu pliku wykonywalnego interfejsu wiersza polecenia lub w Internet Information Services. Poniżej przedstawiono przykładowy kod dla innej usługi w ramach zestawu pliku wykonywalnego, pod adresem hostingu http://localhost:9000: 
 
     private static void Main(string[] arguments)
     {
@@ -805,7 +821,7 @@ Do obsługi usługi w ramach Internetowe usługi informacyjne, deweloper będzie
     }
 
 ### <a name="handling-endpoint-authentication"></a>Obsługa punktu końcowego uwierzytelniania
-Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa odbiera żądanie, powinna uwierzytelniać wystawcy jako znajdujące się w imieniu z oczekiwaną dzierżawą usługi Azure Active Directory w celu uzyskania dostępu do usługi sieci web usługi Azure Active Directory Graph usługi Azure Active Directory.  W tokenie wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres bazowy wartość oświadczenia https://sts.windows.net, identyfikuje usługi Azure Active Directory jako wystawca, podczas gdy względny adres segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, znajduje się na unikatowy identyfikator dzierżawy usługi Azure Active Directory w imieniu którego token został wystawiony.  Jeśli token został wystawiony na potrzeby uzyskiwania dostępu do usługi sieci web usługi Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia aud tokenu.  Należy pamiętać, że każdej z aplikacji, które są zarejestrowane w jednej dzierżawie może pojawić się taki sam `iss` oświadczenia za pomocą żądań Standard SCIM.
+Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa odbiera żądanie, powinna uwierzytelniać wystawcy jako usługi Azure Active Directory dla z oczekiwaną dzierżawą usługi Azure Active Directory w celu uzyskania dostępu do usługi sieci web usługi Azure Active Directory Graph.  W tokenie wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres bazowy wartość oświadczenia https://sts.windows.net, identyfikuje usługi Azure Active Directory jako wystawca, podczas gdy względny adres segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, to unikatowy identyfikator dzierżawy usługi Azure Active Directory której token został wystawiony.  Jeśli token został wystawiony na potrzeby uzyskiwania dostępu do usługi sieci web usługi Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia aud tokenu.  Każdej z aplikacji, które są zarejestrowane w jednej dzierżawie może pojawić się taki sam `iss` oświadczenia za pomocą żądań Standard SCIM.
 
 Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane przez firmę Microsoft do tworzenia usługi Standard SCIM może uwierzytelnić żądania z usługi Azure Active Directory przy użyciu pakietu Microsoft.Owin.Security.ActiveDirectory, wykonując następujące czynności: 
 
@@ -827,7 +843,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
      }
    ```
 
-2. Dodaj następujący kod do tej metody, aby każde żądanie do dowolnych punktów końcowych usługi uwierzytelniony jako posiadających token wystawiony przez usługę Azure Active Directory w imieniu określonego dzierżawcę, aby uzyskać dostęp do usługi sieci web Azure AD Graph: 
+2. Dodaj następujący kod do tej metody, aby każde żądanie do dowolnych punktów końcowych usługi uwierzytelniony jako posiadających token wystawiony przez usługę Azure Active Directory dla określonego dzierżawcę, aby uzyskać dostęp do usługi sieci web Azure AD Graph: 
 
    ```
      private void OnServiceStartup(
@@ -865,7 +881,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
 1. Usługa Azure Active Directory kwerendę usługi dla użytkownika z wartością atrybutu externalId dopasowania wartość atrybutu mailNickname użytkownika w usłudze Azure AD. Kwerenda jest wyrażona jako żądania protokołu HTTP (Hypertext Transfer), takie jak następująco, w którym jyoung znajduje się przykład mailNickname użytkownika w usłudze Azure Active Directory.
 
     >[!NOTE]
-    > Jest to tylko przykład. Nie wszyscy użytkownicy będą mieć atrybut mailNickname, a wartość, którą użytkownik ma nie mogą być unikatowe w katalogu. Ponadto można skonfigurować w jest atrybut używany do dopasowania (czyli w tym przypadku externalId) [mapowania atrybutów usługi Azure AD](customize-application-attributes.md).
+    > Jest to tylko przykład. Nie wszyscy użytkownicy będą mieć atrybut mailNickname, a wartość, którą użytkownik ma nie mogą być unikatowe w katalogu. Atrybut używany do dopasowania (czyli w tym przypadku externalId) jest również, można skonfigurować w [mapowania atrybutów usługi Azure AD](customize-application-attributes.md).
 
    ````
     GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -966,7 +982,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
    * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
    * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
-2. If the response to a query to the web service for a user with an externalId attribute value that matches the mailNickname attribute value of a user does not return any users, then Azure Active Directory requests that the service provision a user corresponding to the one in Azure Active Directory.  Here is an example of such a request: 
+2. If the response to a query to the web service for a user with an externalId attribute value that matches the mailNickname attribute value of a user doesn't return any users, then Azure Active Directory requests that the service provision a user corresponding to the one in Azure Active Directory.  Here is an example of such a request: 
 
    ````
     AUTORYZACJA https://.../scim/Users HTTP/1.1: Elementu nośnego...  Typu zawartości: aplikacja/Standard scim + json {"schematy": ["urn: ietf:params:scim:schemas:core:2.0:User", "urn: ietf:params:scim:schemas:extension:enterprise:2.0User"], "externalId": "jyoung", "userName": "jyoung", "aktywny": true, "adresy": ma wartość null,    "displayName": "Przynosi radość do małych", "wiadomości e-mail": [{"type": "działa", "value": "jyoung@Contoso.com", "primary": true}], "metadane": {"resourceType": "User"}, "name": {"familyName": "Małe", "imię": "Przynosi radość do"}, "phoneNumbers": preferredLa"ma wartość null, nguage": wartość null"title": ma wartość null,"dział": wartość null,"manager": wartość null}
@@ -998,7 +1014,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
    * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. If a reference attribute is to be updated, then Azure Active Directory queries the service to determine whether or not the current value of the reference attribute in the identity store fronted by the service already matches the value of that attribute in Azure Active Directory. For users, the only attribute of which the current value is queried in this way is the manager attribute. Here is an example of a request to determine whether the manager attribute of a particular user object currently has a certain value: 
+4. If a reference attribute is to be updated, then Azure Active Directory queries the service to determine whether the current value of the reference attribute in the identity store fronted by the service already matches the value of that attribute in Azure Active Directory. For users, the only attribute of which the current value is queried in this way is the manager attribute. Here is an example of a request to determine whether the manager attribute of a particular user object currently has a certain value: 
 
    If the service was built using the CLI libraries provided by Microsoft for implementing SCIM services, then the request is translated into a call to the Query method of the service’s provider. The value of the properties of the object provided as the value of the parameters argument are as follows: 
   
@@ -1012,7 +1028,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
    * parameters.RequestedAttributePaths.ElementAt(0): "ID"
    * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-   Here, the value of the index x may be 0 and the value of the index y may be 1, or the value of x may be 1 and the value of y may be 0, depending on the order of the expressions of the filter query parameter.   
+   Here, the value of the index x can be 0 and the value of the index y can be 1, or the value of x can be 1 and the value of y can be 0, depending on the order of the expressions of the filter query parameter.   
 
 5. Here is an example of a request from Azure Active Directory to an SCIM service to update a user: 
    ````
@@ -1043,7 +1059,7 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
 * parameters.RequestedAttributePaths.ElementAt(0): „Identyfikator”
 * Parametry. SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-  W tym miejscu wartość indeksu x może mieć wartość 0 i wartość y indeks może być 1, lub wartość x może mieć wartość 1 i wartość y, może być 0, w zależności od kolejności wyrażeń parametr zapytania filtru.   
+  W tym miejscu wartość indeksu x może być 0 i wartość y indeks może być 1, lub wartość x może być 1 i wartość y, może być 0, w zależności od kolejności wyrażeń parametr zapytania filtru.   
 
 1. Oto przykład żądania z usługi Azure Active Directory z usługą Standard SCIM do zaktualizowania użytkownika: 
 
@@ -1205,9 +1221,9 @@ Deweloperzy korzystający z biblioteki interfejsu wiersza polecenia obsługiwane
 ## <a name="user-and-group-schema-reference"></a>Odwołanie do schematu użytkowników i grup
 Usługa Azure Active Directory można udostępnić dwa typy zasobów w usługach sieci web Standard SCIM.  Te typy zasobów to użytkowników i grup.  
 
-Zasoby użytkowników są identyfikowane przez identyfikator schematu `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, który znajduje się w tej specyfikacji protokołu: https://tools.ietf.org/html/rfc7643.  Domyślne mapowanie atrybutów użytkowników w usłudze Azure Active Directory do atrybutów zasobów użytkownika znajduje się w poniższej tabeli przedstawiono 1.  
+Zasoby użytkowników są identyfikowane przez identyfikator schematu `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, który znajduje się w tej specyfikacji protokołu: https://tools.ietf.org/html/rfc7643.  Domyślne mapowanie atrybutów użytkowników w usłudze Azure Active Directory do atrybutów zasobów użytkownika znajduje się w tabeli 1.  
 
-Grupy zasobów są identyfikowane przez identyfikator schematu `urn:ietf:params:scim:schemas:core:2.0:Group`.  Tabela 2 poniżej przedstawiono domyślne mapowanie atrybutów grupy w usłudze Azure Active Directory do atrybutów grupy zasobów.  
+Grupy zasobów są identyfikowane przez identyfikator schematu `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabela 2 zawiera domyślne mapowanie atrybutów grupy w usłudze Azure Active Directory do atrybutów grupy zasobów.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabela 1: Domyślne mapowanie atrybutu użytkownika
 
@@ -1248,8 +1264,8 @@ Grupy zasobów są identyfikowane przez identyfikator schematu `urn:ietf:params:
 * [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
 * [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Powiadomienia z Aprowizacją kont](user-provisioning.md)
-* [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
+* [Powiadomienia związane z aprowizacją kont](user-provisioning.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443433"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006818"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurowanie zasad replikacji dla odzyskiwania po awarii programu VMware na platformę Azure i zarządzanie
 W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikujesz maszyny wirtualne VMware na platformę Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
@@ -45,7 +45,7 @@ Skojarz zasady replikacji z serwera konfiguracji w środowisku lokalnym.
 1. Wybierz **zarządzanie** > **infrastruktura usługi Site Recovery** > **zasady replikacji**.
 2. Wybierz zasady replikacji, które chcesz zmodyfikować.
 3. Kliknij przycisk **edytować ustawienia**i zaktualizuj pola Częstotliwość cel punktu odzyskiwania progu/odzyskiwania punktu przechowywania godzin/migawki spójności aplikacji zgodnie z potrzebami.
-4. Jeśli chcesz wyłączyć generowania punktów spójności aplikacji, wybierz "wartość z listy rozwijanej z zachowanej Off" **częstotliwość migawek spójności aplikacji**.
+4. Jeśli chcesz wyłączyć generowania punktów spójności aplikacji, wybierz "wartość w polu listy rozwijanej Off" **częstotliwość migawek spójności aplikacji**.
 5. Kliknij pozycję **Zapisz**. Zasady powinny zostać uaktualnione od 30 do 60 sekund.
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>Usuwanie skojarzenia lub usuwanie zasad replikacji

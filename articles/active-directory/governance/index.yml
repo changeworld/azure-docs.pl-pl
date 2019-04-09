@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4a47f393853d1e1dfb2b6c367fe62d1822e98806
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249455"
 documentType: LandingData
 title: Dokumentacja nadzoru nad tożsamościami w usłudze Azure AD
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja nadzoru nad tożsamościami w usłudze Azure Active Directory | Microsoft Docs
-  description: Uzyskaj informacje na temat nadzoru nad cyklem życia tożsamości, nadzoru nad cyklem życia dostępu oraz bezpiecznego administrowania pracownikami i partnerami.
+  description: 'Uzyskaj informacje na temat nadzoru nad cyklem życia tożsamości, nadzoru nad cyklem życia dostępu oraz bezpiecznego administrowania pracownikami i partnerami.'
   services: active-directory
   author: rolyon
   manager: mtillman
@@ -21,34 +15,34 @@ metadata:
   ms.date: 08/16/2018
   ms.author: rolyon
 abstract:
-  description: Nadzór nad tożsamościami w usłudze Azure Active Directory (Azure AD) umożliwia organizacjom nadzór nad cyklem życia tożsamości, nadzór nad cyklem życia dostępu oraz bezpieczne administrowanie pracownikami i partnerami.
+  description: 'Nadzór nad tożsamościami w usłudze Azure Active Directory (Azure AD) umożliwia organizacjom nadzór nad cyklem życia tożsamości, nadzór nad cyklem życia dostępu oraz bezpieczne administrowanie pracownikami i partnerami.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 112
       src: media/index/video-thumb-identity-governance.png
       width: 200
     title: 'Nadzorowanie dostępu do zasobów (1: 17:24)'
-    href: https://www.youtube.com/embed/aY7A0Br8u5M
+    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
     width: 200
 sections:
-- title: Nadzór nad tożsamościami
-  items:
-  - type: list
-    style: unordered
+  - title: Nadzór nad tożsamościami
     items:
-    - html: <a href="/azure/active-directory/governance/identity-governance-overview">Co to jest nadzór nad tożsamościami?</a>
-- title: Przeglądy dostępu
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Co to jest nadzór nad tożsamościami?</a>
+  - title: Przeglądy dostępu
     items:
-    - html: <a href="/azure/active-directory/governance/access-reviews-overview">Co to jest przegląd dostępu?</a>
-    - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu</a>
-    - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">Zarządzanie dostępem gości za pomocą przeglądów dostępu</a>
-- title: Warunki użytkowania
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Co to jest przegląd dostępu?</a>
+          - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu</a>
+          - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">Zarządzanie dostępem gości za pomocą przeglądów dostępu</a>
+  - title: Warunki użytkowania
     items:
-    - html: <a href="/azure/active-directory/governance/active-directory-tou">Do czego można wykorzystać warunki użytkowania?</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Do czego można wykorzystać warunki użytkowania?</a>

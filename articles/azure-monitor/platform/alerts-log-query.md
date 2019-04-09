@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447218"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006102"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Jeśli kwerendy alertów dzienników w usłudze Azure Monitor
 [Reguły na podstawie dzienników usługi Azure Monitor alertów](alerts-unified-log.md) uruchamiane w regularnych odstępach czasu, dlatego należy upewnić się, że są one zapisywane zminimalizować koszty i opóźnienia. Ten artykuł zawiera zalecenia dotyczące pisania wydajne zapytania dotyczące alertów dzienników i procesu konwersji istniejących zapytań. 
 
 ## <a name="types-of-log-queries"></a>Typy zapytań log
-[Zapytania w usłudze Log Analytics](../log-query/log-query-overview.md) rozpoczynać jedną tabelę lub [wyszukiwania](/azure/kusto/query/searchoperator) lub [Unii](/azure/kusto/query/unionoperator) operatora.
+[Rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) rozpoczynać jedną tabelę lub [wyszukiwania](/azure/kusto/query/searchoperator) lub [Unii](/azure/kusto/query/unionoperator) operatora.
 
 Na przykład poniższe zapytanie jest ograniczone do _SecurityEvent_ tabeli i wyszukuje identyfikator określonego zdarzenia. Jest to tylko tabelę, która musi przetworzyć zapytania.
 

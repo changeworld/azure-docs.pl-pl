@@ -1,6 +1,6 @@
 ---
 title: Kierowanie ruchu platformy Azure do usługi Azure SQL Database i SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano usługi Azure SQL Database i SQL Data Warehouse architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
+description: W tym dokumencie opisano architekturę onnectivity Azcure SQL połączenia bazy danych z w obrębie platformy Azure lub z spoza platformy Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918607"
+ms.locfileid: "59006780"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
 W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architektura łączności również, jak różne składniki funkcji do kierowania ruchu do swojego wystąpienia usługi Azure SQL. Tych funkcji składniki łączności do kierowania ruchu sieciowego do usługi Azure SQL Database lub SQL Data Warehouse z klientów łączących się z w obrębie platformy Azure i klientów łączących się z spoza platformy Azure. Ten artykuł zawiera także przykłady skryptów, aby zmienić sposób występuje łączności i zagadnienia związane z Zmienianie domyślnych ustawień połączenia.
-
-> [!IMPORTANT]
-> **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
-> Aby utworzyć nowe serwery i ustaw istniejącymi klientami przy użyciu typu połączenia jawnie ustawione przekierowania (preferowany) lub serwera Proxy w zależności od ich architektura łączności doradza się klientów.
->
-> Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
->
-> - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.
-> - Dla innych serwerów, możemy przełączyć połączenia typu zostaną przełączeni na `Redirect`.
->
-> Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach:
->
-> - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach
-> - Logika automatycznego wdrażania tworzy serwer bazy danych SQL, przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
->
-> Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 11999. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
-> [!NOTE]
-> W tym temacie mają zastosowanie do serwerów usługi Azure SQL Database hostingu pojedynczych baz danych i pul elastycznych, usługa SQL Data Warehouse baz danych, — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for postgresql w warstwie. Dla uproszczenia bazy danych SQL jest używana przy odwoływaniu się do bazy danych SQL Database, SQL Data Warehouse — Azure Database for MySQL, Azure Database dla serwera MariaDB i — Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 

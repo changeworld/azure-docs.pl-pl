@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 18d8a0e231e8b4dbe33911dd6267966674366904
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734493"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006142"
 ---
 # <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Mapowanie przepływu danych w usłudze Azure Data Factory istnieje transformacji
 
@@ -25,3 +25,10 @@ Przekształcenie Exists jest wiersz przekształcenia, które zatrzymuje się lub
 Wybierz drugie źródło swoje Exists, aby przepływ danych można porównać wartości z zakresu od 1 Stream względem Stream 2.
 
 Wybierz kolumnę, ze źródła 1 i 2 źródła wartości, którego chcesz wyszukać względem Exists, lub nie istnieje.
+
+## <a name="multiple-exists-conditions"></a>Wiele istnieje warunków
+
+Obok każdego wiersza w warunkach kolumny dla Exsits znajdziesz + znak dostępnych po najechaniu kursorem na dotrzeć do wiersza. Pozwoli to dodać wiele wierszy dla warunków Exists.
+
+## <a name="next-steps"></a>Kolejne kroki
+

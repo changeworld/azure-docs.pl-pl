@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 43d289f2688bbf4927ee244d6ae9992782bf380e
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498812"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009822"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Przykład: Dodawanie sugestie lub automatycznego uzupełniania do aplikacji usługi Azure Search
 
-W tym przykładzie, Dowiedz się, jak używać [sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) i [autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) tworzyć pola zaawansowane wyszukiwanie, które obsługuje wyszukiwania jako użytkownik typ-zachowania.
+Ten artykuł zawiera informacje o sposobie użycia [sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) i [autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) tworzyć pola zaawansowane wyszukiwanie, które obsługuje wyszukiwania jako użytkownik typ-zachowania.
 
-+ *Sugestie dotyczące* znajduje się lista wyników sugerowane generowane podczas wpisywania, w którym każdego sugestia jest pojedynczym wynikiem z indeksu, który pasuje do wpisanego do tej pory. 
++ *Sugestie dotyczące* są sugerowane wyniki generowane podczas wpisywania, w którym każdego sugestia jest pojedynczym wynikiem z indeksu, który pasuje do wpisanego do tej pory. 
 
-+ *Autouzupełnianie*, [funkcja w wersji zapoznawczej](search-api-preview.md), "zakończeniu", wyraz lub frazę, która obecnie wpisywany przez użytkownika. Podobnie jak w przypadku sugestii, ukończone wyrazu lub frazy jest uzależniona od dopasowania w indeksie. 
++ *Autouzupełnianie*, [funkcja w wersji zapoznawczej](search-api-preview.md), "zakończeniu", wyraz lub frazę, która obecnie wpisywany przez użytkownika. Zamiast zwracać wyniki, zostanie ukończone kwerendę, która następnie można wykonać w celu zwracania wyników. Podobnie jak w przypadku sugestii, ukończone wyraz lub frazę w zapytaniu jest uzależniona od dopasowania w indeksie. Usługa nie oferują zapytań, które zwracają wartości zerowe w indeksie.
 
 Możesz pobrać i uruchomić przykładowy kod w **DotNetHowToAutocomplete** do oceny tych funkcji. Przykładowy kod jest przeznaczony dla wbudowanych indeks, wypełniony [NYCJobs pokaz danych](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Indeks NYCJobs zawiera [konstrukcji Sugestora](index-add-suggesters.md), która jest wymagana dla przy użyciu sugestie lub automatycznego uzupełniania. Można użyć indeksu przygotowany hostowanej w usłudze piaskownicy, lub [wypełnić indeks własne](#configure-app) w przykładowym rozwiązaniu NYCJobs przy użyciu modułu ładującego dane. 
 
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-Powyższy kod działa w przeglądarce na ładowanie strony, aby skonfigurować Autouzupełnianie interfejsu użytkownika jQuery dla pola wejściowego "example1a".  Parametr `minLength: 3` zapewnia, że rekomendacje będą wyświetlane tylko po wpisaniu co najmniej trzech znaków w polu wyszukiwania.  Ważna jest wartość źródłowa:
+Powyższy kod działa w przeglądarce na ładowanie strony, aby skonfigurować Autouzupełnianie interfejsu użytkownika jQuery dla pola wejściowego "example1a".  `minLength: 3` zapewnia, że zalecenia będą wyświetlane tylko w przypadku co najmniej trzy znaki w polu wyszukiwania.  Ważna jest wartość źródłowa:
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C#Wersja
+## <a name="c-example"></a>Przykład w języku C#
 
 Teraz, gdy firma Microsoft sprawdzono kod JavaScript do strony sieci web, Przyjrzyjmy się C# kodu po stronie serwera kontrolera, który faktycznie pobiera sugestie przy użyciu zestawu .NET SDK usługi Azure Search.
 
@@ -229,9 +229,11 @@ Funkcja autouzupełniania przyjmuje dane wejściowe termin wyszukiwania. Ta meto
 
 Inne przykłady na stronie postępuj zgodnie z tego samego wzorca można dodać, wyróżnianie trafień oraz zestawów reguł do obsługi klienta buforowanie wyników funkcji autouzupełniania. Przejrzyj każdy z nich, aby zrozumieć, jak działają i jak można je wykorzystać w środowisku wyszukiwania.
 
-## <a name="javascript-version-with-rest"></a>Wersja języka JavaScript za pomocą architektury REST
+## <a name="javascript-example"></a>Przykład JavaScript
 
-Implementacja języka JavaScript, można otworzyć **IndexJavaScript.cshtml**. Zwróć uwagę, funkcja automatycznego uzupełniania interfejsu użytkownika jQuery jest również używany dla pola wyszukiwania, zbierania danych wejściowych termin wyszukiwania i wywołań asynchronicznych do usługi Azure Search można pobrać sugerowane dopasowań lub zakończone warunki. 
+Implementację Javascript Autouzupełnianie i sugestie dotyczące wywołań interfejsu API REST, przy użyciu identyfikatora URI jako źródło, aby określić indeks i operacji. 
+
+Aby zapoznać się z implementacji języka JavaScript, otwórz **IndexJavaScript.cshtml**. Zwróć uwagę, funkcja automatycznego uzupełniania interfejsu użytkownika jQuery jest również używany dla pola wyszukiwania, zbierania danych wejściowych termin wyszukiwania i wywołań asynchronicznych do usługi Azure Search można pobrać sugerowane dopasowań lub zakończone warunki. 
 
 Przyjrzyjmy się kodowi JavaScript w pierwszym przykładzie:
 

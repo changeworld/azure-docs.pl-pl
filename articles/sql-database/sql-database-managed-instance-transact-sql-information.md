@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: b633c6a8ccbf9f29b93314bb9391215031d523eb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893065"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010604"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -288,10 +288,9 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
     - Czytnik kolejki nie jest obsługiwane.  
     - Powłoka poleceń nie jest jeszcze obsługiwana.
   - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
-  - Program PowerShell nie jest jeszcze obsługiwana.
   - Usługi Analysis Services nie są obsługiwane.
 - Powiadomienia są obsługiwane częściowo.
-- Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
+- Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. SQL Agent może używać profilu poczty tylko jedną bazę danych i musi zostać wywołana `AzureManagedInstance_dbmail_profile`.  
   - Pagera nie jest obsługiwane.  
   - NetSend nie jest obsługiwane.
   - Alerty nie są jeszcze obsługiwane.
@@ -432,10 +431,7 @@ Ograniczenia:
 - `.BAK` Nie można przywrócić pliki zawierające wiele zestawów kopii zapasowych.
 - `.BAK` Nie można przywrócić plików zawierających wiele plików dziennika.
 - Przywracania zakończy się niepowodzeniem, jeśli zawiera .bak `FILESTREAM` danych.
-- Nie można przywrócić kopii zapasowych zawierający bazy danych, które aktualnie mają obiekty aktywne w pamięci.  
-- Nie można przywrócić kopii zapasowych zawierający bazy danych, gdzie w pewnym momencie, obiekty w pamięci obecnie istniał.
-- Nie można przywrócić kopii zapasowych zawierający aktualnie baz danych w trybie tylko do odczytu. To ograniczenie zostanie wkrótce usunięty.
-
+- Nie można przywrócić kopii zapasowych zawierający bazy danych, które obiekty były aktywne w pamięci w wystąpieniu ogólnego przeznaczenia.  
 Aby uzyskać informacje na temat instrukcji Restore, zobacz [PRZYWRÓCIĆ instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Usługa Service broker
@@ -485,6 +481,8 @@ Wystąpienia zarządzanego nie można przywrócić [zawartych baz danych](https:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekroczenia miejsca do magazynowania z plikami małej bazy danych
 
+`CREATE DATABASE `, `ALTER DATABASE ADD FILE`, i `RESTORE DATABASE` instrukcji może zakończyć się niepowodzeniem, ponieważ wystąpienie może osiągnąć limit usługi Azure Storage.
+
 Każdy ogólnego przeznaczenia wystąpienie zarządzane usługi o maksymalnej 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure i każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
 Na przykład, ogólnego przeznaczenia wystąpienia zarządzanego może mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
@@ -514,9 +512,13 @@ SQL Server Management Studio (SSMS) i SQL Server Data Tools (SSDT) może być pe
 
 Kilka widoków systemowych, liczniki wydajności, komunikaty o błędach, XEvents i wpisów dziennika błędów Wyświetl identyfikator GUID identyfikatory bazy danych zamiast nazwy bazy danych. Nie należy polegać na tych identyfikatorów GUID, ponieważ ich zostanie zamienione nazwy bazy danych w przyszłości.
 
+### <a name="database-mail"></a>Poczta bazy danych
+
+`@query` parametr w [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) procedury nie działają.
+
 ### <a name="database-mail-profile"></a>Profil poczty bazy danych
 
-Profil poczty bazy danych, które są używane przez agenta SQL musi zostać wywołana `AzureManagedInstance_dbmail_profile`.
+Profil poczty bazy danych, które są używane przez agenta SQL musi zostać wywołana `AzureManagedInstance_dbmail_profile`. Nie ma żadnych ograniczeń dotyczących innych nazw profil poczty bazy danych.
 
 ### <a name="error-logs-are-not-persisted"></a>Dzienniki błędów są utrwalane nie
 

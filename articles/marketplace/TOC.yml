@@ -102,13 +102,14 @@ items:
     - name: Strona szczegółowych informacji
       href: ./cloud-partner-portal/portal-tour/cpp-insights-page.md
   - name: Portal zarządzania
+    href: ./cloud-partner-portal/portal-manage/cpp-portal-management.md
     items:
-    - name: Rejestracja konta Centrum deweloperów
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md
-    - name: Zarządzanie profilem wydawcy
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md
+    - name: Wymagania wstępne dotyczące zarządzania kontami
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-prerequisites.md
+    - name: Zarządzanie profilami wydawców
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-publisher-profile.md
     - name: Zarządzanie użytkownikami
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-users.md
   - name: Zarządzanie firmą
     items:
     - name: Wskazówki dotyczące optymalizacji pod kątem aparatów wyszukiwania
@@ -367,7 +368,9 @@ items:
       - name: Interfejsy API realizacji SaaS
         href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
         items:
-        - name: SaaS API v1
+        - name: Rejestrowanie aplikacji SaaS
+          href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
+        - name: SaaS API v1 (przestarzałe)
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
         - name: SaaS API v2
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
@@ -466,9 +469,9 @@ items:
       href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
   - name: Uzyskiwanie pomocy technicznej
     href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-ms.openlocfilehash: 72166e2f797c5eaaeb2908475b18c0f8424e8804
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9b4b1dd0a98ef8717ddc522d69e38a6b15b56cb4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402800"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010862"

@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: rozpoznawanie mowy, Java (Windows, Linux) — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start dowiesz się, jak utworzyć prostą aplikację Java, która przechwytuje i transkrybuje mowę użytkownika z mikrofonu komputera.
+description: W tym przewodniku Szybki Start dowiesz się utworzyć prostą aplikację Java, która przechwytuje i transcribes mowy użytkownika z mikrofonu tego komputera.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 83d6c430d0973d4b45fcfc40bbb93ae283d1133d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447586"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009403"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy Java
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu pakietu Maven zestawu Speech SDK i środowiska IDE Eclipse Java (wersja 4.8) w systemie Windows w wersji 64-bitowej lub Ubuntu Linux 16.04 / 18.04 w wersji 64-bitowej. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacji został utworzony za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowisko Eclipse IDE Java (v4.8) na Windows 64-bitowym, 64-bitowym systemem Ubuntu Linux 16.04 / 18.04 lub w systemie macOS 10.13 lub nowszej. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 > [!NOTE]
 > Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
@@ -30,8 +30,8 @@ W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zest
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: Windows (wersja 64-bitowa) lub Ubuntu Linux 16.04/18.04 (wersja 64-bitowa)
-* [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
+* System operacyjny: Windows (64-bitowy), 16.04/18.04 Ubuntu Linux (64-bitowa) lub z systemem macOS 10.13 lub nowszy
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
@@ -42,8 +42,8 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
-Jeśli korzystasz z systemu Windows (64-bitowego), upewnij się, że masz zainstalowany pakiet Microsoft Visual C++ Redistributable dla swojej platformy.
-* [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+Jeśli korzystasz z Windows (64-bitowy) upewnij się, że zainstalowano program Microsoft Visual C++ Redistributable dla danej platformy.
+* [Pobierz program Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
@@ -75,15 +75,15 @@ Następne 15 sekund mowy z mikrofonu zostanie rozpoznane i zarejestrowane w okni
 
 ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-java-jre-07-console-output.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)
+> [Eksplorowanie przykładów w języku Java w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-- [Szybki start: tłumaczenie mowy, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Szybki start: Tłumaczenie mowy, języka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)

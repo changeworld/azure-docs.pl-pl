@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: a5acc65609b7d8387eca0ec4e091bf823d9d1d67
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: dcd6d907fec3d7f2cc0c8d5c06fdec28125154c1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402698"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009550"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -203,8 +203,8 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 
 Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
-* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [Wstępnie skompilowany C#](functions-dotnet-class-library.md#environment-variables)
+* [Skrypt języka C# (csx)](functions-reference-csharp.md#environment-variables)
 * [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -217,7 +217,7 @@ Jeśli ustawiono nie prawidłowych parametrów połączenia magazynu dla [ `Azur
 
 Nawet w przypadku korzystania z emulatora magazynu do tworzenia aplikacji, można przetestować za pomocą połączenia rzeczywisty magazyn. Przy założeniu, że już [utworzono konto magazynu](../storage/common/storage-create-storage-account.md), prawidłowych parametrów połączenia magazynu można uzyskać w jednym z następujących sposobów:
 
-+ Z [Azure Portal]. Przejdź do swojego konta magazynu, wybierz opcję **klucze dostępu** w **ustawienia**, a następnie skopiuj jeden z **parametry połączenia** wartości.
++ Z [witryny Azure portal]. Przejdź do swojego konta magazynu, wybierz opcję **klucze dostępu** w **ustawienia**, a następnie skopiuj jeden z **parametry połączenia** wartości.
 
   ![Skopiuj parametry połączenia z witryny Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
@@ -431,7 +431,7 @@ func azure functionapp publish <FunctionAppName>
 
 To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Błąd występuje, gdy `<FunctionAppName>` nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenie aplikacji funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md).
 
-`publish` Polecenie przesyła zawartość katalogu projektu funkcji. W przypadku usunięcia plików lokalnie, `publish` polecenie nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzia Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [Azure Portal].
+`publish` Polecenie przesyła zawartość katalogu projektu funkcji. W przypadku usunięcia plików lokalnie, `publish` polecenie nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzia Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [witryny Azure portal].
 
 >[!IMPORTANT]
 > Po utworzeniu aplikacji funkcji w witrynie Azure portal, używa wersji 2.x środowisko uruchomieniowe funkcji domyślnie. Aby funkcja aplikacji użyj wersji 1.x środowiska uruchomieniowego, postępuj zgodnie z instrukcjami [działać w wersji 1.x](functions-versions.md#creating-1x-apps).
@@ -485,7 +485,7 @@ Aby zgłosić żądanie usterki lub funkcji [Otwórz problem w usłudze GitHub](
 
 <!-- LINKS -->
 
-[Podstawowe narzędzia usługi Azure Functions]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 ["FUNCTIONS_WORKER_RUNTIME"]: functions-app-settings.md#functions_worker_runtime

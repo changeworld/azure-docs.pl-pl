@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802122"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009601"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Dodawanie lub usuwanie użytkowników za pomocą usługi Azure Active Directory
 Dodawanie nowych użytkowników lub usuń istniejący użytkownicy z organizacji usługi Azure Active Directory (Azure AD).
@@ -47,7 +47,7 @@ Można utworzyć nowego użytkownika przy użyciu portalu Azure Active Directory
 
    - **Grupy.** Opcjonalnie można dodać użytkownika do co najmniej jeden z istniejących grup. Można również dodać użytkownika do grup w późniejszym czasie. Aby uzyskać więcej informacji na temat dodawania użytkowników do grup, zobacz [jak utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
 
-   - **Rola katalogu.** Opcjonalnie można dodać użytkownika w usłudze Azure AD roli administratora. Możesz przypisać użytkownika jako administrator globalny, jeden lub więcej ról ograniczony administrator w usłudze Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [jak przypisać role do użytkowników](active-directory-users-assign-role-azure-portal.md).
+   - **Rola katalogu.** Opcjonalnie można dodać użytkownika do roli administratora usługi Azure AD. Możesz przypisać użytkownika jako administrator globalny, jeden lub więcej ról ograniczony administrator w usłudze Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [jak przypisać role do użytkowników](active-directory-users-assign-role-azure-portal.md).
 
 4. Skopiuj wygenerowany automatycznie hasło, podane we **hasło** pole. Należy podać to hasło użytkownikowi początkowego procesu logowania.
 
@@ -83,7 +83,7 @@ Po dodaniu użytkowników, należy wykonać następujące procesy basic:
 
 - [Przypisywanie ról do użytkowników](active-directory-users-assign-role-azure-portal.md)
 
-- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
+- [Tworzenie grupy podstawowej i dodawanie członków](active-directory-groups-create-azure-portal.md)
 
 - [Praca z grupami dynamicznymi i użytkowników](../users-groups-roles/groups-create-rule.md)
 

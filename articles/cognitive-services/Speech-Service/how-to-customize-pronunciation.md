@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f825cf8f381a7a2974b150a74a091412b24b09bc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339401"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005166"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 
@@ -63,7 +63,7 @@ Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en U
 Formularz wyświetlania można tylko niestandardowe słowo, akronim lub wyrazy złożone łączące istniejące słowa.
 
 >[!NOTE]
->Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu.
+>Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Jest lepsze Sprawdź, czy niektóre nietypowe słowa (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie transribed, zanim ta funkcja jest używana. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu.
 
 ## <a name="requirements-for-the-file-size"></a>Wymagania dotyczące rozmiaru pliku
 Rozmiar pliku txt, który zawiera wpisy Wymowa jest ograniczona do 1 MB (1KB dla kluczy w warstwie bezpłatna). Zazwyczaj nie trzeba przekazywanie dużych ilości danych przy użyciu tego pliku. Większość plików niestandardowych Wymowa prawdopodobnie kilku kilobajtów (KB/s) w rozmiarze. Kodowanie pliku txt, dla wszystkich ustawień regionalnych powinna być BOM UTF-8. Angielskie ustawienia regionalne dopuszczalne jest również ANSI.

@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734304"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005936"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
 
 Firma Microsoft ma wysłuchaliśmy opinii użytkowników i niedawno wprowadziła [nowego cennika](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) dla różnych monitorowanie usług platformy Azure. W tym artykule przechwytuje zmianach cen. związane z platformą Azure [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) w formie pytań i odpowiedzi łatwych do zrozumienia.
 
 Rozwiązanie Network Performance Monitor obejmuje trzy składniki:
-* [Monitor wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [Monitorowanie wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Monitor usługi ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 W poniższych sekcjach opisano zmiany cen dla składników programu NPM.
 
@@ -38,7 +38,7 @@ W poniższych sekcjach opisano zmiany cen dla składników programu NPM.
 
 Okres rozliczeniowy NPM zależała od użycia i zużycia dwa składniki:
 * **Węzły**: Wszystkie transakcje syntetyczne pochodzą i zakończyć w węzłach. Węzły są również określane jako agentów lub agentów zarządzania firmy Microsoft.
-* **Dane**: Wyniki badań różnych sieci są przechowywane w repozytorium Azure Log Analytics.
+* **Dane**: Wyniki badań różnych sieci są przechowywane w obszarze roboczym usługi Log Analytics.
 
 W obszarze starego modelu rozliczenia została obliczona na podstawie liczby węzłów i ilość wygenerowanych danych. 
 
@@ -63,7 +63,7 @@ Koszty monitorowania łącze pojedynczej podsieci przez cały miesiąc, zobacz [
 
 **Jakie są opłaty za dane, które generuje monitora wydajności?**
 
-Opłata za pozyskiwanie (przekazywanie danych do usługi Log Analytics, przetwarzania i indeksowanie) jest dostępny na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych. Opłata za przechowywanie danych (czyli dane zachowane w opcji klienta, poza pierwszym miesiącu) jest dostępna również na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/), w sekcji przechowywania danych.
+Opłata za pozyskiwanie (przekazywanie danych do obszaru roboczego usługi Log Analytics, w usłudze Azure Monitor, przetwarzania i indeksowanie) jest dostępny na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych. Opłata za przechowywanie danych (czyli dane zachowane w opcji klienta, poza pierwszym miesiącu) jest dostępna również na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/), w sekcji przechowywania danych.
 
 
 ## <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute

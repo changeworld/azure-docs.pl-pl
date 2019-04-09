@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444637"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010145"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure table storage i Visual Studio połączonych usług (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -31,7 +31,7 @@ W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scen
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md)
+* [Konto magazynu Azure](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -537,7 +537,7 @@ Jak wspomniano w sekcji [Dodawanie jednostki do tabeli](#add-an-entity-to-a-tabl
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Utwórz wystąpienie **TableQuery** obiekt określający zapytanie w **gdzie** klauzuli. Za pomocą **CustomerEntity** klas i danych znajdujące się w sekcji [Dodawanie partię jednostek do tabeli](#add-a-batch-of-entities-to-a-table), poniższy fragment kodu wysyła zapytanie tabeli dla wszystkich jednostek gdzie  **PartitionKey** (nazwiska) ma wartość "Smith":
+1. Utwórz wystąpienie **TableQuery** obiekt określający zapytanie w **gdzie** klauzuli. Za pomocą **CustomerEntity** klas i danych znajdujące się w sekcji [Dodawanie partię jednostek do tabeli](#add-a-batch-of-entities-to-a-table), poniższy fragment kodu wysyła zapytanie tabeli dla wszystkich obiektów gdzie **PartitionKey**  (nazwiska) ma wartość "Smith":
 
     ```csharp
     TableQuery<CustomerEntity> query = 

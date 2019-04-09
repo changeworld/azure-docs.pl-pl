@@ -1,6 +1,6 @@
 ---
 title: Akcje elementu Webhook dla alertów dziennika w alertach Azure
-description: W tym artykule opisano, jak regułę alertu dziennika za pomocą log analytics lub aplikacji insights będzie umożliwiać wypychanie powiadomień danych jako element webhook protokołu HTTP i szczegółowe informacje dotyczące różnych dostosowania możliwe.
+description: W tym artykule opisano, jak regułę alertu dziennika za pomocą log analytics obszar roboczy lub aplikacji szczegółowe informacje, będzie umożliwiać wypychanie powiadomień danych jako element webhook protokołu HTTP i szczegółowe informacje dotyczące różnych dostosowania możliwe.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496092"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006621"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
 Gdy [alertu dziennika jest tworzony na platformie Azure](alerts-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
@@ -202,5 +202,5 @@ Poniżej przedstawiono przykładowy ładunek dla akcji niestandardowej elementu 
 - Zrozumienie [Zarządzanie alertami dziennika na platformie Azure](alerts-log.md)
 - Tworzenie i zarządzanie nimi [grup akcji na platformie Azure](action-groups.md)
 - Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
-- Dowiedz się więcej o [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
+- Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md). 
 

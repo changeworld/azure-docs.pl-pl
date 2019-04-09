@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116694"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008906"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
 
@@ -100,7 +100,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>Rozpoczynanie aktualizacji oprogramowania układowego
 
-Utworzysz [konfigurację automatycznego zarządzania urządzeniami](iot-hub-auto-device-config.md#create-a-configuration) w aplikacji zaplecza, aby rozpocząć proces aktualizacji oprogramowania układowego na wszystkich urządzeniach, których tag **devicetype** ma wartość „chiller” (chłodziarka). W tej sekcji zobaczysz, jak:
+Utworzysz [konfigurację automatycznego zarządzania urządzeniami](iot-hub-automatic-device-management.md#create-a-configuration) w aplikacji zaplecza, aby rozpocząć proces aktualizacji oprogramowania układowego na wszystkich urządzeniach, których tag **devicetype** ma wartość „chiller” (chłodziarka). W tej sekcji zobaczysz, jak:
 
 * Utworzyć konfigurację z poziomu aplikacji zaplecza.
 * Monitorować zadanie do ukończenia.
@@ -115,10 +115,10 @@ Aplikacja zaplecza tworzy następującą konfigurację:
 
 Konfiguracja zawiera następujące sekcje:
 
-* `content` — określa żądane właściwości oprogramowania układowego wysyłane do wybranych urządzeń.
-* `metrics` — określa zapytania uruchamiane w celu wyświetlenia raportu stanu aktualizacji oprogramowania układowego.
-* `targetCondition` — wybiera urządzenia, które otrzymają aktualizację oprogramowania układowego.
-* `priorty` — ustawia względny priorytet tej konfiguracji w odniesieniu do innych konfiguracji.
+* `content` Określa właściwości oprogramowania układowego żądanego wysyłane do wybranych urządzeń.
+* `metrics` Określa kwerendy do uruchamiania tego raportu stan aktualizacji oprogramowania układowego.
+* `targetCondition` Wybiera urządzeń mają otrzymywać aktualizacji oprogramowania układowego.
+* `priorty` Ustawia względny priorytet tej konfiguracji na inne konfiguracje.
 
 Aplikacja zaplecza używa następującego kodu do utworzenia konfiguracji w celu ustawienia żądanych właściwości:
 

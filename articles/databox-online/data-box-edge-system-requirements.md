@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905243"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006348"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Wymagania dotyczące systemu Azure krawędź pola danych
 
@@ -101,6 +101,37 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 ## <a name="internet-bandwidth"></a>Przepustowością Internetu
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
+
+## <a name="compute-sizing-considerations"></a>Zagadnienia dotyczące ustalania rozmiaru obliczeń
+
+Użyj środowiska podczas tworzenia i testowania rozwiązania, aby zapewnić istnieje wystarczająca ilość miejsca na urządzeniu z systemem krawędź pola danych i uzyskać optymalną wydajność na urządzeniu.
+
+Czynniki, które należy wziąć pod uwagę obejmują:
+
+- **Szczegóły kontenera** -zastanów się, że.
+
+    - Kontenery są obciążenia? Może mieć wiele uproszczonych kontenerów i kilka z nich dużej ilości zasobów.
+    - Co to są zasobów przydzielonych do tych kontenerów i jakie są zasoby, które wykorzystują one?
+    - Jak wiele warstw korzystają z kontenerów?
+    - Czy istnieją nieużywane kontenery? Zatrzymano kontenera nadal zajmuje miejsce na dysku.
+    - W jakim języku napisano się kontenerów?
+- **Rozmiar danych przetwarzanych** — jak dużo danych będzie kontenerów przetwarzania? Te dane będą korzystać z miejsca na dysku lub danych będą przetwarzane w pamięci?
+- **Oczekiwana wydajność** — co to są żądane właściwości działania rozwiązania? 
+
+Aby zrozumieć i popraw wydajność rozwiązania, można użyć:
+
+- Metryki obliczeniowych dostępnych w witrynie Azure portal. Przejdź do zasobu krawędź pola danych, a następnie przejdź do **monitorowanie > metryki**. Przyjrzyj się **obliczeń brzegowych — użycie pamięci** i **obliczeń brzegowych - procentowe użycie procesora CPU** zrozumienie dostępnych zasobów i jak są zasoby pobierania używane.
+- Monitorowania polecenia dostępne za pośrednictwem interfejsu programu PowerShell, urządzenia, takie jak:
+
+    - `dkr` statystyki można pobrać strumienia na żywo z kontenerów statystyki użycia zasobów. To polecenie obsługuje procesora CPU, użycie pamięci, limit pamięci i sieci metryk we/wy.
+    - `dkr system df` Aby uzyskać informacje dotyczące ilości miejsca na dysku używanego. 
+    - `dkr image [prune]` czyszczenie nieużywanych obrazów i zwolnić miejsce.
+    - `dkr ps --size` Aby wyświetlić przybliżona liczba uruchomionego kontenera. 
+
+    Aby uzyskać więcej informacji na temat dostępnych poleceń, przejdź do [monitorowanie i rozwiązywanie problemów z modułami obliczeń](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+
+Na koniec upewnij się, zweryfikuj swoje rozwiązanie na twoim zestawie danych, a następnie określają ilościowo wydajności na krawędzi pola danych przed wdrożeniem w środowisku produkcyjnym.
+
 
 ## <a name="next-step"></a>Następny krok
 

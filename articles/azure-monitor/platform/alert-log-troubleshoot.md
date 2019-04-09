@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor
+title: Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Typowe problemy, błędów i rozwiązania dla dziennika alertów reguły na platformie Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 56d76cd43b63a389569ae39c1e987a5fccbb9793
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429450"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005294"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 
 ## <a name="overview"></a>Przegląd
 
-W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
+W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure Monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
 
-Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](../platform/alerts-unified-log.md).
+Termin **alertów dzienników** opisuje alerty, że ognia na podstawie dziennika zapytania w [obszaru roboczego usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](../platform/action-groups.md).
@@ -33,7 +33,7 @@ Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [re
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
 
-Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [Czas pozyskiwania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
+Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Ponieważ usługa Azure Monitor przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Azure Monitor dziennikach](../platform/data-ingestion-time.md).
 
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
@@ -84,7 +84,7 @@ Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [r
 
 ### <a name="alert-triggered-by-partial-data"></a>Alert wyzwolony przez częściowe dane
 
-Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [Czas pozyskiwania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
+Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [dziennika czas wprowadzania danych w usłudze Azure Monitor](../platform/data-ingestion-time.md).
 
 W zależności od sposobu skonfigurowania reguły alertu może być źle wielopaliwowego w przypadku nie lub częściowe dane w dziennikach w czasie wykonywania alertu. W takich przypadkach zaleca się zmiany zapytanie alertu ani konfiguracji. 
 
@@ -100,4 +100,4 @@ Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa a
 
 - Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](../platform/alerts-unified-log.md)
 - Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
-- Dowiedz się więcej o [usługi Log Analytics](../../log-analytics/log-analytics-overview.md)
+- Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838616"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008751"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Framework (Windows)
 
@@ -25,7 +25,7 @@ Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieni
 
 Szybkie demonstracyjne (bez kompilowania projektu programu Visual Studio, samodzielnie, jak pokazano poniżej):
 
-Dostęp do najnowszych [zestawem SDK mowy usług Cognitive](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z usługi Github.
+Dostęp do najnowszych [mowy Cognitive Services — przykłady zestawu SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z usługi GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -68,9 +68,9 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z C# przykłady w witrynie GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
