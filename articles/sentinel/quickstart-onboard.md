@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/12/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006591"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276647"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ ms.locfileid: "59006591"
 
 W tym przewodniku Szybki Start dowiesz się jak dołączyć przez wartownika platformy Azure. 
 
-Aby dołączyć przez wartownika platformy Azure należy najpierw połączyć się ze źródłami danych. Azure wartownik dołączono wiele łączników dla rozwiązań firmy Microsoft, dostępne poza pole, a także integracja w czasie rzeczywistym, w tym rozwiązania ochrony przed zagrożeniami firmy Microsoft, Microsoft 365 źródeł, takich jak usługi Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto ma wbudowanych łączników szerszy ekosystemem zabezpieczenia dla rozwiązań firmy Microsoft. Można również użyć typowego formatu zdarzeń dziennika systemu lub interfejsu API REST, do łączenia źródeł danych z platformy Azure przez wartownika.  
+Aby dołączyć przez wartownika platformy Azure należy najpierw włączyć przez wartownika platformy Azure, a następnie nawiązać połączenie źródła danych. Azure wartownik dołączono wiele łączników dla rozwiązań firmy Microsoft, dostępne poza pole, a także integracja w czasie rzeczywistym, w tym rozwiązania ochrony przed zagrożeniami firmy Microsoft, Microsoft 365 źródeł, takich jak usługi Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto ma wbudowanych łączników szerszy ekosystemem zabezpieczenia dla rozwiązań firmy Microsoft. Można również użyć typowego formatu zdarzeń dziennika systemu lub interfejsu API REST, do łączenia źródeł danych z platformy Azure przez wartownika.  
 
 Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonalnego utworzone pulpity nawigacyjne, które Prezentuj wnioski na podstawie danych. Te pulpity nawigacyjne można łatwo dostosować do swoich potrzeb.
 
@@ -40,9 +40,10 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 
 - Zaloguj się obszar roboczy usługi Analytics. Dowiedz się, jak [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
-    - Powiązane uprawnienia współautora do grupy zasobów platformy Azure przez wartownika
-    - Uprawnienia współautora do grupy zasobów, aby włączyć usługi Azure przez wartownika 
-
+-  Aby włączyć przez wartownika platformy Azure, należy uprawnienia współautora do subskrypcji, w której znajduje się obszar roboczy przez wartownika platformy Azure. 
+- Korzystanie z platformy Azure przez wartownika, wymaga uprawnienia współautora lub podglądu w grupie zasobów, do której należy obszar roboczy
+- Mogą być potrzebne dodatkowe uprawnienia do łączenia z konkretnych źródeł danych
+ 
 ## Włącz wartownik platformy Azure <a name="enable"></a>
 
 1. Przejdź do witryny Azure portal.

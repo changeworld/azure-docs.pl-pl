@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577250"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276415"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -102,7 +102,6 @@ _Tryb dostępu_ odnosi się do sposobu użytkownik uzyskuje dostęp do obszaru r
 > - Service Fabric
 > - Application Insights
 > - Containers
-> - Niestandardowe dzienniki utworzone przez interfejs API modułu zbierającego dane HTTP
 >
 > Możesz przetestować, jeśli dzienniki są poprawnie skojarzona z zasobami, uruchamiając zapytanie i sprawdzanie rekordy interesuje Cię. Jeżeli identyfikator odpowiedniego zasobu jest [_ResourceId](log-standard-properties.md#_resourceid) właściwości, a następnie data jest dostępna dla zapytań skoncentrowane na zasób.
 

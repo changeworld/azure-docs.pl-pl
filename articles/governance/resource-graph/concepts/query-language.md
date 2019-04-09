@@ -1,7 +1,6 @@
 ---
 title: Zrozumienie języka zapytań
 description: W tym artykule opisano dostępne operatory Kusto i funkcje, które można używać z wykresem zasobów platformy Azure.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 618445c5b792317d4de4b668e7ea1a186707007c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317921"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276681"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Zrozumienie języka zapytań wykres zasobów platformy Azure
 
@@ -31,15 +30,15 @@ Poniżej przedstawiono listę obsługiwanych operatorów tabelarycznych w wykres
 - [Rozszerzanie](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
 - [kolejność według](/azure/kusto/query/orderoperator)
-- [project](/azure/kusto/query/projectoperator)
-- [project-away](/azure/kusto/query/projectawayoperator)
-- [sample](/azure/kusto/query/sampleoperator)
+- [Projekt](/azure/kusto/query/projectoperator)
+- [Projekt niedostępny](/azure/kusto/query/projectawayoperator)
+- [Próbki](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Sortuj według](/azure/kusto/query/sortoperator)
+- [sortuj według](/azure/kusto/query/sortoperator)
 - [Podsumowanie](/azure/kusto/query/summarizeoperator)
 - [Wypełnij](/azure/kusto/query/takeoperator)
-- [Do góry](/azure/kusto/query/topoperator)
-- [top-nested](/azure/kusto/query/topnestedoperator)
+- [top](/azure/kusto/query/topoperator)
+- [zagnieżdżone TOP](/azure/kusto/query/topnestedoperator)
 - [TOP hitters](/azure/kusto/query/tophittersoperator)
 - [gdzie](/azure/kusto/query/whereoperator)
 
