@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 797804be2588fb5c04c052c6f14c5b2b51146c32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d7b0828dc4cb37afa9dda647c4407b4039ca4f73
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106512"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057867"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Samouczek: Skonfiguruj dwa rozwiązania Zscaler dla automatycznej aprowizacji użytkowników
 
@@ -27,46 +28,42 @@ Celem tego samouczka jest pokazują kroki, które mają być wykonywane w dwóch
 
 > [!NOTE]
 > W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
-> 
+>
+
 > Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
 
-*   Dzierżawa usługi Azure AD
-*   Dzierżawy dwa rozwiązania Zscaler
-*   Konta użytkownika z uprawnieniami administratora w dwa rozwiązania Zscaler
+* Dzierżawa usługi Azure AD
+* Dzierżawy dwa rozwiązania Zscaler
+* Konta użytkownika z uprawnieniami administratora w dwa rozwiązania Zscaler
 
 > [!NOTE]
 > Integracja inicjowania obsługi usługi Azure AD opiera się na API Standard SCIM dwa rozwiązania Zscaler, który jest dostępny dla deweloperów dwa rozwiązania Zscaler dla kont z pakietem Enterprise.
 
 ## <a name="adding-zscaler-two-from-the-gallery"></a>Dodawanie rozwiązania Zscaler dwa z galerii
+
 Przed skonfigurowaniem rozwiązania Zscaler dwóch użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, należy dodać dwa rozwiązania Zscaler z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać dwa rozwiązania Zscaler z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje w przedsiębiorstwie sekcji][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać dwa rozwiązania Zscaler, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **dwa rozwiązania Zscaler**.
+4. W polu wyszukiwania wpisz **dwa rozwiązania Zscaler**, wybierz opcję **dwa rozwiązania Zscaler** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/app-search.png)
-
-5. W panelu wyników wybierz **dwa rozwiązania Zscaler**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać dwa rozwiązania Zscaler do listy aplikacji SaaS.
-
-    ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/app-search-results.png)
-
-    ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/app-creation.png)
+    ![Na liście wyników dwa rozwiązania Zscaler](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-two"></a>Przypisywanie użytkowników do dwóch rozwiązania Zscaler
 
@@ -74,13 +71,13 @@ Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby okre
 
 Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do rozwiązania Zscaler dwa. Po decyzję, należy przypisać do rozwiązania Zscaler dwóch użytkowników i/lub grup zgodnie z instrukcjami w tym miejscu:
 
-*   [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-two"></a>Ważne wskazówki dotyczące przypisywania użytkowników do dwóch rozwiązania Zscaler
 
-*   Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do dwóch rozwiązania Zscaler do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do dwóch rozwiązania Zscaler do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do rozwiązania Zscaler dwóch, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkowników do rozwiązania Zscaler dwóch, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-two"></a>Konfigurowanie automatycznej aprowizacji użytkowników do dwóch rozwiązania Zscaler
 
@@ -91,11 +88,13 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-two-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla rozwiązania Zscaler dwa w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **dwa rozwiązania Zscaler**.
 
-2. Wybierz dwa rozwiązania Zscaler z listy aplikacji SaaS.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/app-instance-search.png)
+2. Na liście aplikacji wybierz **dwa rozwiązania Zscaler**.
+
+    ![Dwa rozwiązania Zscaler łącze na liście aplikacji](common/all-applications.png)
 
 3. Wybierz **aprowizacji** kartę.
 
@@ -107,20 +106,20 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy** i **klucz tajny tokenu** rozwiązania Zscaler dwa konta zgodnie z opisem w kroku 6.
 
-6. Aby uzyskać **adres URL dzierżawy** i **klucz tajny tokenu**, przejdź do **Administracja > Ustawienia uwierzytelniania** dwa rozwiązania Zscaler interfejs użytkownika portalu i kliknij pozycję  **SAML** w obszarze **typ uwierzytelniania**. 
+6. Aby uzyskać **adres URL dzierżawy** i **klucz tajny tokenu**, przejdź do **Administracja > Ustawienia uwierzytelniania** dwa rozwiązania Zscaler interfejs użytkownika portalu i kliknij pozycję  **SAML** w obszarze **typ uwierzytelniania**.
 
     ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
-    
-    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje. 
+
+    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje.
 
     ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/secret-token-2.png)
-    
+
     Wybierz **aprowizacji Enable SCIM-Based** można pobrać **podstawowy adres URL** i **tokenu elementu nośnego**, następnie Zapisz ustawienia. Kopiuj **podstawowy adres URL** do **adres URL dzierżawy** i **tokenu elementu nośnego** do **klucz tajny tokenu** w witrynie Azure portal.
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD można nawiązać dwa rozwiązania Zscaler. Jeśli połączenie nie powiedzie się, upewnij się, że dwa rozwiązania Zscaler konto ma uprawnienia administratora i spróbuj ponownie.
 
     ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/test-connection.png)
-    
+
 8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
     ![Inicjowanie obsługi administracyjnej dwa rozwiązania Zscaler](./media/zscaler-two-provisioning-tutorial/notification.png)
@@ -164,7 +163,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

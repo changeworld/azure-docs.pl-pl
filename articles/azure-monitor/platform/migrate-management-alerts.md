@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307194"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006797"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 
@@ -104,7 +104,7 @@ Aby utworzyć nowe działanie alertów dzienników, można:
 * Postępuj zgodnie z [nasz Przewodnik na temat tworzenia alertu w witrynie Azure portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Dowiedz się, jak [Utwórz alert przy użyciu szablonu usługi Resource Manager](../../azure-monitor/platform/alerts-activity-log.md)
  
-Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone nie będzie są automatycznie migrowane do alertów dziennika aktywności. Należy użyć powyższy skrypt programu PowerShell, aby wyświetlić listę alertów dotyczących zdarzeń zarządzania obecnie zostały skonfigurowane, a następnie ponownie ręcznie utworzyć je jako alertów dziennika aktywności. Należy to zrobić przed 1 października, po upływie którego alertów dotyczących zdarzeń zarządzania nie będzie już widoczna w Twojej subskrypcji platformy Azure. Ta zmiana nie ma wpływu są inne typy alertów platformy Azure, w tym alertów dotyczących metryk usługi Azure Monitor, alerty usługi Application Insights i alertów usługi Log Analytics. Jeśli masz jakieś pytania, Opublikuj w komentarzach poniżej.
+Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone nie będzie są automatycznie migrowane do alertów dziennika aktywności. Należy użyć powyższy skrypt programu PowerShell, aby wyświetlić listę alertów dotyczących zdarzeń zarządzania obecnie zostały skonfigurowane, a następnie ponownie ręcznie utworzyć je jako alertów dziennika aktywności. Należy to zrobić przed 1 października, po upływie którego alertów dotyczących zdarzeń zarządzania nie będzie już widoczna w Twojej subskrypcji platformy Azure. Inne typy alertów platformy Azure, w tym alertów dotyczących metryk usługi Azure Monitor, alerty usługi Application Insights i wyszukiwanie w dzienniku alertów są ta zmiana nie ma wpływu. Jeśli masz jakieś pytania, Opublikuj w komentarzach poniżej.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

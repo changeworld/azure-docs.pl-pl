@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 83db6b8d-503b-48f3-b918-f9fba1369d53
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 47cfa5b2d97148c6b925a071f46518afd3ec8d5e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 54cf2924a94dda1d29baf048c866f019b82e1402
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109648"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056456"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler Beta dla automatycznej aprowizacji użytkowników
 
@@ -27,46 +28,42 @@ Celem tego samouczka jest pokazują kroki do wykonania w wersji Beta rozwiązani
 
 > [!NOTE]
 > W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
-> 
+>
+
 > Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
 
-*   Dzierżawa usługi Azure AD
-*   Dzierżawy rozwiązania Zscaler w wersji Beta
-*   Konta użytkownika z uprawnieniami administratora w wersji Beta rozwiązania Zscaler
+* Dzierżawa usługi Azure AD
+* Dzierżawy rozwiązania Zscaler w wersji Beta
+* Konta użytkownika z uprawnieniami administratora w wersji Beta rozwiązania Zscaler
 
 > [!NOTE]
 > Inicjowania obsługi administracyjnej integracji usługi Azure AD opiera się na interfejsie API rozwiązania Zscaler Standard SCIM Beta, który jest dostępny dla deweloperów rozwiązania Zscaler Beta dla kont z pakietem Enterprise.
 
 ## <a name="adding-zscaler-beta-from-the-gallery"></a>Dodawanie usługi Zscaler Beta z galerii
+
 Przed skonfigurowaniem rozwiązania Zscaler Beta dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać rozwiązania Zscaler w wersji Beta z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać rozwiązania Zscaler w wersji Beta z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje w przedsiębiorstwie sekcji][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać rozwiązania Zscaler w wersji Beta, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Beta rozwiązania Zscaler**.
+4. W polu wyszukiwania wpisz **Zscaler Beta**, wybierz pozycję **Zscaler Beta** na panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/app-search.png)
-
-5. W panelu wyników wybierz **Beta rozwiązania Zscaler**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać rozwiązania Zscaler w wersji Beta do listy aplikacji SaaS.
-
-    ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/app-search-results.png)
-
-    ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/app-creation.png)
+    ![Usługa Zscaler Beta na liście wyników](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-beta"></a>Przypisywanie użytkowników do wersji Beta rozwiązania Zscaler
 
@@ -74,13 +71,13 @@ Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby okre
 
 Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do rozwiązania Zscaler w wersji Beta. Po decyzję, należy przypisać użytkowników i/lub grup do rozwiązania Zscaler wersji Beta, zgodnie z instrukcjami w tym miejscu:
 
-*   [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Ważne wskazówki dotyczące przypisywania użytkowników do wersji Beta rozwiązania Zscaler
 
-*   Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do rozwiązania Zscaler w wersji Beta do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do rozwiązania Zscaler w wersji Beta do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do rozwiązania Zscaler w wersji Beta, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkowników do rozwiązania Zscaler w wersji Beta, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Konfigurowanie automatycznej aprowizacji użytkowników do wersji Beta rozwiązania Zscaler
 
@@ -91,11 +88,13 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla rozwiązania Zscaler w wersji Beta w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Beta rozwiązania Zscaler**.
 
-2. Wybierz wersję Beta rozwiązania Zscaler z listy aplikacji SaaS.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/app-instance-search.png)
+2. Na liście aplikacji wybierz **Beta rozwiązania Zscaler**.
+
+    ![Link usługi Zscaler Beta na liście aplikacji](common/all-applications.png)
 
 3. Wybierz **aprowizacji** kartę.
 
@@ -107,20 +106,20 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy** i **klucz tajny tokenu** Twojego konta rozwiązania Zscaler w wersji Beta, zgodnie z opisem w kroku 6.
 
-6. Aby uzyskać **adres URL dzierżawy** i **klucz tajny tokenu**, przejdź do **Administracja > Ustawienia uwierzytelniania** w interfejsie użytkownika portalu rozwiązania Zscaler w wersji Beta i ,kliknijprzycisk **SAML** w obszarze **typ uwierzytelniania**. 
+6. Aby uzyskać **adres URL dzierżawy** i **klucz tajny tokenu**, przejdź do **Administracja > Ustawienia uwierzytelniania** w interfejsie użytkownika portalu rozwiązania Zscaler w wersji Beta i ,kliknijprzycisk **SAML** w obszarze **typ uwierzytelniania**.
 
     ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
-    
-    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje. 
+
+    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje.
 
     ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
-    
+
     Wybierz **aprowizacji Enable SCIM-Based** można pobrać **podstawowy adres URL** i **tokenu elementu nośnego**, następnie Zapisz ustawienia. Kopiuj **podstawowy adres URL** do **adres URL dzierżawy**, i **tokenu elementu nośnego** do **klucz tajny tokenu** w witrynie Azure portal.
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z rozwiązania Zscaler w wersji Beta. Jeśli połączenie nie powiedzie się, upewnij się, że konta w wersji Beta rozwiązania Zscaler ma uprawnienia administratora i spróbuj ponownie.
 
     ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
-    
+
 8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
     ![Inicjowanie obsługi administracyjnej w wersji Beta rozwiązania Zscaler](./media/zscaler-beta-provisioning-tutorial/notification.png)
@@ -164,7 +163,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 4/3/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13d43a3810bc07cede2a49760f122157de86c44d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856094"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010162"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-sdk-140-2019-april-release"></a>Zestaw SDK 1.4.0 mowy: Wersja 2019 kwietnia
+
+**Nowe funkcje** 
+
+* Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z języka C++, C#i Java. Aby uzyskać więcej informacji o wyboru [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
+* Zestaw SDK obsługuje teraz MP3 oraz dziele/Ogg pliki audio jako pliki wejściowe strumienia. Ta funkcja jest dostępna tylko w systemie Linux z C++ i C# i jest obecnie w wersji beta (więcej szczegółów [tutaj](how-to-use-compressed-audio-input-streams.md)).
+* Zestaw SDK rozpoznawania mowy dla języka Java, .NET core, C++ i języka Objective-C weszły do obsługi systemu macOS. Obsługa języka Objective-C, dla systemu macOS jest obecnie w wersji beta.
+* iOS: Zestaw SDK rozpoznawania mowy dla systemu iOS (Objective-C) teraz zostało również opublikowane jako CocoaPod.
+* JavaScript: Pomoc techniczna dla innych niż domyślne mikrofon jako urządzenia wejściowego.
+* JavaScript: Obsługa serwera proxy dla środowiska Node.js.
+
+**Przykłady**
+
+* Dodano przykłady dotyczące używania zestawu SDK rozpoznawania mowy przy użyciu języka C++ i za pomocą języka Objective-C w systemie macOS.
+* Dodano przykłady ukazujące użycia zamiany tekstu na mowę usługi.
+
+**Ulepszenia / zmiany**
+
+* Python: Dodatkowe właściwości wyniki rozpoznawania są teraz udostępniane za pośrednictwem `properties` właściwości.
+* Dodatkowe obsługę programowania i debugowania można przekierować SDK rejestrowania i informacje diagnostyczne do pliku dziennika (więcej szczegółów [tutaj](how-to-use-logging.md)).
+* JavaScript: Zwiększ wydajność przetwarzania audio.
+
+**Poprawki błędów**
+
+* Mac/iOS: Naprawiono usterkę, która doprowadziła do długim czasie oczekiwania, gdy nie można nawiązać połączenia z usługą mowy.
+* Python: poprawa obsługi błędów dla argumentów wywołania zwrotne języka Python.
+* JavaScript: Naprawiono nieodpowiednim stanie raportowania rozpoznawania mowy upłynął RequestSession.
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Zestaw SDK 1.3.1 mowy: Odświeżanie lutego 2019 r
 
@@ -177,7 +205,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 * Obsługa języka Objective-C w systemie iOS. Zapoznaj się z naszym [języka Objective-C Przewodnik Szybki Start dla systemu iOS](quickstart-objectivec-ios.md).
 * Obsługa języka JavaScript w przeglądarce. Zapoznaj się z naszym [Szybki Start JavaScript](quickstart-js-browser.md).
 
-**Fundamentalne zmiany**
+**Zmiany powodujące niezgodność**
 
 * W tej wersji wprowadzono szereg istotnych zmian.
   Sprawdź, czy [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje.
@@ -196,7 +224,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 
 * Uwidocznić dodatkowe szczegółowe informacje na temat błędów połączenia.
 
-**Fundamentalne zmiany**
+**Zmiany powodujące niezgodność**
 
 * W języku Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkcja nie wymaga już parametr ścieżki. Teraz ścieżki jest wykrywany automatycznie na wszystkich obsługiwanych platformach.
 * Get akcesora właściwości `EndpointUrl` w środowiskach Java i C# został usunięty.
@@ -225,7 +253,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 * Wynik rozpoznawania zawiera więcej pól. Są one przesunięcie od początku audio i czas trwania (zarówno w impulsach) rozpoznany tekst i dodatkowe wartości, które reprezentują rozpoznawania stanu, na przykład `InitialSilenceTimeout` i `InitialBabbleTimeout`.
 * Obsługa tworzenia wystąpienia fabryki AuthorizationToken.
 
-**Fundamentalne zmiany**
+**Zmiany powodujące niezgodność**
 
 * Rozpoznawanie zdarzenia: Typ zdarzenia NoMatch zostały scalone z zdarzenie błędu.
 * SpeechOutputFormat w języku C# została zmieniona na OutputFormat pozostanie wyrównane przy użyciu języka C++.

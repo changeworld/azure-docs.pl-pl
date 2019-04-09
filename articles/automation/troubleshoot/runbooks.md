@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805078"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267348"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -137,7 +137,7 @@ Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu
 
 #### <a name="issue"></a>Problem
 
-Zostanie wyświetlony następujący błąd podczas wywoływania childrunbook z `-Wait` przełącznika strumień wyjściowy zawiera i obiektu:
+Zostanie wyświetlony następujący błąd podczas wywoływania podrzędnego elementu runbook za pomocą `-Wait` przełącznika strumień wyjściowy zawiera i obiektu:
 
 ```error
 Object reference not set to an instance of an object
@@ -483,6 +483,29 @@ Istnieją dwa sposoby, aby rozwiązać ten problem:
 
 * Edytuj element runbook i zmniejszyć liczbę strumieni zadań, które on emituje.
 * Zmniejsz liczbę strumieni, które mają zostać pobrane podczas uruchamiania polecenia cmdlet. Aby wykonać to zachowanie, możesz określić `-Stream Output` parametr `Get-AzureRmAutomationJobOutput` polecenie cmdlet do pobierania tylko strumieni danych wyjściowych. 
+
+### <a name="cannot-invoke-method"></a>Scenariusz: Zadanie programu PowerShell zakończy się niepowodzeniem z powodu błędu: Nie można wywołać metody
+
+#### <a name="issue"></a>Problem
+
+Pojawi się następujący komunikat o błędzie podczas uruchamiania zadania programu PowerShell w elemencie runbook działające na platformie Azure:
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd może wystąpić po uruchomieniu zadania w elemencie runbook został uruchomiony w systemie Azure PowerShell. To zachowanie może być fakt, że elementy runbook uruchomione na platformie Azure piaskownicy mogą nie działać [tryb pełny języka](/powershell/module/microsoft.powershell.core/about/about_language_modes)).
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Istnieją dwa sposoby, aby rozwiązać ten problem:
+
+* Zamiast używania `Start-Job`, użyj `Start-AzureRmAutomationRunbook` do uruchamiania elementu runbook
+* Jeśli element runbook ma ten komunikat o błędzie, uruchom go na hybrydowy proces roboczy elementu Runbook
+
+Aby dowiedzieć się więcej na temat tego zachowania i innych zachowań elementów Runbook usługi Azure Automation, zobacz [zachowanie elementu Runbook](../automation-runbook-execution.md#runbook-behavior).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

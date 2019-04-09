@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861506"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Appraisd
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Appraisd z usługą Azure AD, należy z poziomu galerii dodać tę aplikację do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Appraisd z galerii, należy wykonać następujące kroki:**
+**Aby dodać Appraisd z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -107,9 +107,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Appraisd, 
 
     a. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    b. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `<TENANTCODE>`
+    b. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `<TENANTCODE>`
 
-    c. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, w polu tekstowym **Adres URL logowania** wpisz adres URL przy użyciu następującego wzorca: `https://app.appraisd.com/saml/<TENANTCODE>`
+    c. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, w **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
     > Uzyskasz rzeczywisty adres URL logowania i wartość stanu przekaźnika na stronie konfiguracji logowania jednokrotnego aplikacji Appraisd, co zostało wyjaśnione w dalszej części tego samouczka.
@@ -161,7 +161,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Appraisd, 
 
 1. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Appraisd jako administrator zabezpieczeń.
 
-2. U góry po prawej stronie kliknij ikonę **Settings** (Ustawienia), a następnie przejdź do pozycji  **Configuration** (Konfiguracja).
+2. U góry po prawej stronie kliknij pozycję na **ustawienia** ikonę, a następnie przejdź do **konfiguracji**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
@@ -173,9 +173,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Appraisd, 
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Skopiuj wartość **Default Relay State** (Domyślny stan przekaźnika) i wklej ją w polu tekstowym  **Stan przekaźnika** na stronie  **Podstawowa konfiguracja SAML** w witrynie Azure Portal.
+    a. Kopiuj **domyślny stan przekazywania** wartości, a następnie wklej je **tan przekaźnika** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
 
-    b. Skopiuj wartość **Service-initiated login URL** (Adres URL logowania inicjowanego przez usługę) i wklej ją w polu tekstowym  **Adres URL logowania jednokrotnego** na stronie  **Podstawowa konfiguracja SAML** w witrynie Azure Portal.
+    b. Kopiuj **adres URL logowania zainicjowanych przez usługę** wartości, a następnie wklej je **adres URL logowania** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
 
 5. Przewiń tę samą stronę do pozycji **Identifying users** (Identyfikowanie użytkowników) i wykonaj następujące kroki:
 
@@ -185,7 +185,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Appraisd, 
 
     b. W polu tekstowym **Identity Provider Issuer URL** (Adres URL wystawcy dostawcy tożsamości) wklej wartość **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal, a następnie kliknij przycisk **Save** (Zapisz).
 
-    c. W programie Notatnik otwórz certyfikat zakodowany w formacie Base-64 pobrany z witryny Azure Portal, skopiuj jego zawartość, a następnie wklej go w polu  **X.509 Certificate**  (Certyfikat X.509) i kliknij przycisk **Save** (Zapisz).
+    c. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **certyfikat X.509** pole, a następnie kliknij przycisk **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -242,15 +242,15 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji Appraisd, należy ich aprowizować w tej aplikacji. W aplikacji Appraisd aprowizowanie jest zadaniem ręcznym.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do aplikacji Appraisd jako administrator zabezpieczeń.
 
-2. U góry po prawej stronie kliknij ikonę **Settings** (Ustawienia), a następnie przejdź do pozycji  **Administration centre** (Centrum administracyjne).
+2. U góry po prawej stronie kliknij pozycję na **ustawienia** ikonę, a następnie przejdź do **Centrum administracyjne**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. Na pasku narzędzi w górnej części strony kliknij opcję  **People** (Osoby), a następnie przejdź do pozycji  **Add a new user** (Dodaj nowego użytkownika).
+3. Na pasku narzędzi w górnej części strony kliknij **osób**, a następnie przejdź do **dodać nowego użytkownika**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
@@ -274,8 +274,8 @@ Po kliknięciu kafelka Appraisd w panelu dostępu powinno nastąpić automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

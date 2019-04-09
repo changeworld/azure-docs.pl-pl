@@ -1,25 +1,24 @@
 ---
 title: Przykładowe mapowanie kontrolek — ISO 27001 udostępnionych usług planu-
 description: Mapowanie kontrolek przykładowy plan ISO 27001 udostępnionych usług do usługi Azure Policy i RBAC.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 3ce755b62ce2ba0328852b551225ffa828a6c1bf
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 93a26311216ca5682c02a319f989b3d342a33ce1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804687"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256485"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapowanie kontrolek próbki planu ISO 27001 udostępnionych usług
 
 Poniższy artykuł szczegółowo opisuje sposób usług Azure schematy ISO 27001 udostępnionych planu mapy próbki z kontrolkami ISO 27001. Aby uzyskać więcej informacji na temat formantów, zobacz [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Następujące mapowania są **ISO 27001: 2013** kontrolki. Korzystanie z nawigacji po prawej stronie umożliwia przejście bezpośrednio do mapowania określonego formantu. Wiele kontrolek zamapowanego są implementowane za pomocą [usługi Azure Policy](../../../policy/overview.md) inicjatywy. Aby zapoznać się z pełną inicjatywy, otwórz **zasad** w witrynie Azure portal i wybierz pozycję **definicje** strony. Następnie znajdź i zaznacz  **[Wersja zapoznawcza] audytu ISO 27001: 2013 kontroluje i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu spełnienia wymagań inspekcji** inicjatywa zasad wbudowanych.
+Następujące mapowania są **ISO 27001: 2013** kontrolki. Korzystanie z nawigacji po prawej stronie umożliwia przejście bezpośrednio do mapowania określonego formantu. Wiele kontrolek zamapowanego są implementowane za pomocą [usługi Azure Policy](../../../policy/overview.md) inicjatywy. Aby zapoznać się z pełną inicjatywy, otwórz **zasad** w witrynie Azure portal i wybierz pozycję **definicje** strony. Następnie znajdź i zaznacz  **[Podgląd] audytu ISO 27001: 2013 kontroluje i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu spełnienia wymagań inspekcji** inicjatywa zasad wbudowanych.
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 podział obowiązków
 
@@ -124,10 +123,10 @@ Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracj
 
 Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie siedem [usługi Azure Policy](../../../policy/overview.md) definicje, które Przeprowadź inspekcję ustawienia dziennika dla zasobów platformy Azure. Przypisanych zasad przeprowadza inspekcję, jeśli maszyny wirtualne nie są wysyłane dzienniki do obszaru roboczego analizy określonego dziennika.
 
-- [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Podgląd]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Podgląd]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Podgląd]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Podgląd]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera

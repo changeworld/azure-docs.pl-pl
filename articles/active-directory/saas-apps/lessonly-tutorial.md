@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ced28f5bc3ca947bb4754b7de716b37062f9859a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec1fce18913d6763514abb80ceba471bf73d59ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898571"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Lessonly.com
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Lessonly.com z usługą Azure AD, musisz dodać tę aplikację z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Lessonly.com z galerii, wykonaj następujące czynności:**
+**Aby dodać Lessonly.com z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,12 +105,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Lessonly.c
 
     ![Domena i adresy URL aplikacji Lessonly.com — informacje dotyczące logowania jednokrotnego](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.lessonly.com/signin`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.lessonly.com/signin`
 
     > [!NOTE]
     > Podczas odwoływania się do nazwy ogólnej, pole **nazwa_firmy** musi zostać zastąpione przez rzeczywistą nazwę.
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.lessonly.com/auth/saml/metadata`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.lessonly.com/auth/saml/metadata`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Lessonly.com](mailto:support@lessonly.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -233,7 +233,7 @@ Po kliknięciu kafelka Lessonly.com w panelu dostępu powinno nastąpić automat
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

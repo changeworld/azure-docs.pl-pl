@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: d4af11f5956d548ec25eb0dd9b553e2cf56b195f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409857"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058547"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -84,6 +84,8 @@ Definiując grupę zasobów, należy wziąć pod uwagę pewne ważne czynniki:
 * Zasób może wchodzić w interakcję z zasobami znajdującymi się w innych grupach zasobów. Ta interakcja jest typowa, gdy dwa zasoby są ze sobą powiązane, ale nie mają tego samego cyklu życia (na przykład aplikacje internetowe łączące się z bazą danych).
 
 Podczas tworzenia grupy zasobów, należy podać lokalizację dla danej grupy zasobów. Być może zastanawiasz się, „Dlaczego grupa zasobów wymaga określenia lokalizacji? Ponadto dlaczego lokalizacja grupy zasobów jest w ogóle istotna, skoro zasoby mogą znajdować się w innej lokalizacji niż grupa zasobów?” Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
+
+Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można zaktualizować. Aby zminimalizować ryzyko, Znajdź swoją grupę zasobów i zasobów, w tym samym regionie.
 
 ## <a name="resource-providers"></a>Dostawcy zasobów
 
@@ -181,4 +183,4 @@ Usługa Deployment Manager jest obecnie dostępna w prywatnej wersji zapoznawcze
 W tym artykule przedstawiono sposób wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)
+> [Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)

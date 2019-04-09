@@ -13,18 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/28/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: bb9ac9974be94195f6ed0315aece7dfea749ce33
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436807"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057510"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie ThousandEyes dla automatycznej aprowizacji użytkowników
-
 
 Celem tego samouczka jest pokazanie czynności, które należy wykonać w ThousandEyes i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do ThousandEyes. 
 
@@ -32,15 +31,12 @@ Celem tego samouczka jest pokazanie czynności, które należy wykonać w Thousa
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory
-*   Aktywne [ThousandEyes konta](https://www.thousandeyes.com/pricing)
-*   Konto użytkownika ThousandEyes, któremu przypisano rolę, która zawiera następujące uprawnienia 3:
-    * Wyświetl wszystkich użytkowników
-    * Edytuj użytkownika
-    * Uprawnienia dostępu do interfejsu API
+* Dzierżawy usługi Azure Active directory
+* Dzierżawcy ThousandEyes z [plan w warstwie standardowa](https://www.thousandeyes.com/pricing) lub lepiej nie są włączone 
+* Konto użytkownika ThousandEyes z uprawnieniami administratora 
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM ThousandEyes](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM). 
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM ThousandEyes](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK), co jest dostępne dla zespołów ThousandEyes z planem Standard lub większą.
 
 ## <a name="assigning-users-to-thousandeyes"></a>Przypisywanie użytkowników do ThousandEyes
 
@@ -52,33 +48,18 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 
 ### <a name="important-tips-for-assigning-users-to-thousandeyes"></a>Ważne wskazówki dotyczące przypisywania użytkowników do ThousandEyes
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do ThousandEyes do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do ThousandEyes do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do ThousandEyes, należy wybrać **użytkownika** roli lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w dialogu przypisania. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
-
-## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>Konfigurowanie ról użytkownika automatycznie aprowizowane w ThousandEyes
-
-Dla każdej grupy konta są na automatycznej aprowizacji użytkowników do możesz skonfigurować zestaw ról, które mają być stosowane podczas tworzenia nowego konta użytkownika. Domyślnie są przypisane użytkownikom automatycznej aprowizacji _zwykły użytkownik_ roli dla wszystkich kont grupy, chyba że skonfigurowano inaczej.
-
-1. Aby określić nowy zestaw ról dla użytkowników automatycznie aprowizowane w dzienniku ThousandEyes i przejdź do sekcji Ustawienia Standard SCIM **> ikona użytkownika w prawym górnym rogu > Ustawienia konta > organizacji > zabezpieczeń i uwierzytelniania.** 
-
-   ![Przejdź do ustawień interfejsu API Standard SCIM](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
-
-2. Dodaj wpis dla każdej grupy konta, należy następnie przypisać zestaw ról *Zapisz* zmiany.
-
-   ![Ustaw domyślne role i grupy konta użytkowników utworzone za pomocą interfejsu API Standard SCIM](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
-
+* Podczas przypisywania użytkowników do ThousandEyes, należy wybrać **użytkownika** roli, lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>Konfigurowaniem aprowizowania użytkowników w ThousandEyes 
 
 Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w ThousandEyes aprowizujący interfejs API i konfigurowanie usługi aprowizacji, aby utworzyć, zaktualizować, a następnie wyłącz konta użytkowników przypisane w ThousandEyes na podstawie przypisania użytkowników i grup w usłudze Azure AD .
 
 > [!TIP]
-> Można też włączyć opartej na SAML pojedynczego logowania jednokrotnego (SSO) dla ThousandEyes, zgodnie z [instrukcje podane w Azure wiedzy](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial) do ukończenia rejestracji Jednokrotnej. Chociaż te dwie funkcje uzupełniają się wzajemnie, można skonfigurować logowanie Jednokrotne niezależnie od automatycznej aprowizacji.
-
+> Można też włączyć opartej na SAML logowania jednokrotnego dla ThousandEyes, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Skonfiguruj automatyczne aprowizowaniem kont użytkowników do ThousandEyes w usłudze Azure AD
-
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
 
@@ -98,7 +79,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 7. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi błąd."
 
-8. Kliknij pozycję **Zapisz**. 
+8. Kliknij pozycję **Zapisz**.
 
 9. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do ThousandEyes**.
 
@@ -106,17 +87,16 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 11. Aby włączyć usługi Azure AD, usługi dla ThousandEyes inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
 
-12. Kliknij pozycję **Zapisz**. 
+12. Kliknij pozycję **Zapisz**.
 
 Ta operacja uruchamia wstępnej synchronizacji użytkowników i/lub grupy przypisane do ThousandEyes w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
-
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

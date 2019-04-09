@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52a18203e5c6973822f52a65364ae2786913d4f0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803854"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja usługi Azure Media Services | Microsoft Docs
-  meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
+  meta.description: 'Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.'
   services: media-services
   author: juliako
   manager: femila
@@ -21,36 +15,36 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure Media Services to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na realizowanie kodowania wideo w jakości HD i przesyłania strumieniowego wideo w jakości telewizyjnej docierającego do odbiorców na najpopularniejszych urządzeniach. Usługa Media Services v3 umożliwia też wyodrębnianie szczegółowych informacji z plików wideo i audio przy użyciu usługi Video Indexer za pośrednictwem ustawień wstępnych analizatora usługi Media Services v3. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer.
+  description: 'Azure Media Services to bazująca na chmurze platforma do obsługi przepływów pracy dotyczących multimediów. Pozwala tworzyć rozwiązania wymagające kodowania, tworzenia pakietów, ochrony zawartości i transmitowania wydarzeń na żywo. Usługa Azure Media Services bezproblemowo integruje się z usługą Azure CDN, co pozwala na skalowanie dostarczania za pomocą usług CDN firm Akamai i Verizon, dzięki czemu klienci mogą wybrać odpowiednie rozwiązanie dopasowane do ich wymagań — na przykład na potrzeby równoważenia obciążenia w różnych sieciach dostarczania zawartości. Usługa Azure Media Services Video Indexer pozwala wyodrębniać metadane i szczegółowe informacje za pomocą sztucznej inteligencji z wbudowanymi ustawieniami wstępnymi analizatora wideo i audio. Dokładność tego rozwiązania można łatwo poprawić, trenując dostarczone modele AI na własnej zawartości za pomocą interfejsu Video Indexer API.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
-    items:
-    - href: /azure/media-services/latest/
-      html: <p>Koduj, twórz pakiety, chroń swoją zawartość, przesyłaj strumieniowo wideo na żądanie, prowadź emisję na żywo i analizuj zawartość za pomocą usługi Media Services w wersji 3.</p>
-      image:
-        src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-      title: Azure Media Services w wersji 3
-    - href: /azure/media-services/previous/
-      html: <p>Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. </p>
-      image:
-        src: 
-      title: Azure Media Services w wersji 2 (starsza wersja)
-    - href: /azure/cdn/
-      html: <p>Za pomocą usługi CDN zapisuj obiekty statyczne w pamięci podręcznej i przyspieszaj zawartość dynamiczną, której nie można zapisać w pamięci podręcznej.</p>
-      image:
-        src: /azure/cdn/media/index/cdn.svg
-      title: CDN
-    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
-      html: <p>Odtwarzaj multimedia z usługi Microsoft Azure Media Services w wielu różnych przeglądarkach i na różnych urządzeniach.</p>
-      image:
-        src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-      title: Azure Media Player
-    - href: /azure/media-services/video-indexer/
-      html: <p>Wyodrębniaj szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
-      image:
-        src: media/index/AMSIcons-media_analytics.svg
-      title: Indeksator wideo
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/media-services/latest/
+            html: '<p>Koduj, twórz pakiety, chroń swoją zawartość, przesyłaj strumieniowo wideo na żądanie, prowadź emisję na żywo i analizuj zawartość za pomocą usługi Media Services w wersji 3.</p>'
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
+            title: Azure Media Services w wersji 3
+          - href: /azure/media-services/previous/
+            html: '<p>Koduj zawartość, twórz jej pakiety, chroń ją i nie tylko. To jest starsza usługa, która aktualnie jest w trakcie konserwacji. Klientom zaleca się migrację do usługi Media Services v3, w której pojawiają się nowe funkcje i udoskonalenia.</p>'
+            image:
+              src: null
+            title: Azure Media Services w wersji 2 (starsza wersja)
+          - href: /azure/cdn/
+            html: '<p>Korzystaj z możliwości usługi Azure CDN, aby przesyłać strumieniowo zawartość na dużą skalę z użyciem usług firm Akamai i Verizon albo równoważyć obciążenie na wiele sieci dostarczania zawartości.</p>'
+            image:
+              src: /azure/cdn/media/index/cdn.svg
+            title: CDN
+          - href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
+            html: <p>Odtwarzaj multimedia z usługi Microsoft Azure Media Services w wielu różnych przeglądarkach i na różnych urządzeniach.</p>
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
+            title: Azure Media Player
+          - href: /azure/media-services/video-indexer/
+            html: <p>Wyodrębniaj szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
+            image:
+              src: media/index/AMSIcons-media_analytics.svg
+            title: Azure Media Services Video Indexer

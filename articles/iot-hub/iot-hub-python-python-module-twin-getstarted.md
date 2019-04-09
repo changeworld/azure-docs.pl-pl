@@ -2,19 +2,18 @@
 title: Rozpoczynanie pracy z usługą Azure IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu (Python) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć moduł tożsamości i zaktualizować bliźniaczą reprezentację modułu przy użyciu zestawów SDK usługi IoT dla języka Python.
 author: chrissie926
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1d7c8d8a02358b4eb9f52f1a9bd04b797fcd934f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb6ddbab2fd4cb21ef547d116652f7ea9e63607f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110804"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258151"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu języka Python, zaplecza i języka Python
 
@@ -25,23 +24,26 @@ ms.locfileid: "58110804"
 Na końcu tego samouczka będziesz mieć dwie aplikacje Python:
 
 * **CreateIdentities**, która tworzy tożsamość urządzenia, tożsamość modułu oraz skojarzony klucz zabezpieczeń na potrzeby łączenia klientów modułu i urządzenia.
+
 * **UpdateModuleTwinReportedProperties**, która wysyła zaktualizowane zgłoszone właściwości bliźniaczej reprezentacji modułu do Twojego centrum IoT Hub.
 
 > [!NOTE]
-> Artykuł [Azure IoT SDKs][lnk-hub-sdks] (Zestawy SDK usługi Azure IoT) zawiera informacje dotyczące zestawów SDK usługi Azure IoT, przy użyciu których można tworzyć aplikacje zarówno do uruchamiania na urządzaniach, jak i w zapleczu rozwiązania.
+> Aby uzyskać informacji na temat Azure IoT SDKs można użyć, aby tworzyć aplikacje zarówno do uruchamiania na urządzeniach i w zapleczu rozwiązania, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 >
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
+* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
+
 * An IoT Hub.
+
 * Zainstaluj najnowszą wersję [zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python).
 
 Centrum IoT zostało już utworzone i masz nazwę hosta oraz parametry połączenia usługi IoT Hub potrzebne do ukończenia pozostałej części tego samouczka.
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Tworzenie tożsamości urządzenia i tożsamości modułu w usłudze IoT Hub
 
-W tej sekcji utworzysz aplikację w języku Python, która tworzy tożsamość urządzenia i tożsamości modułu w rejestrze tożsamości w usłudze IoT hub. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Więcej informacji znajduje się w sekcji „Identity registry” (Rejestr tożsamości) artykułu [IoT Hub Developer Guide][lnk-devguide-identity] (Usługa IoT Hub — przewodnik dewelopera). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
+W tej sekcji utworzysz aplikację w języku Python, która tworzy tożsamość urządzenia i tożsamości modułu w rejestrze tożsamości w usłudze IoT hub. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz sekcję "Identity registry" [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide-identity-registry.md). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
 
 Dodaj następujący kod do pliku Python:
 
@@ -78,18 +80,18 @@ except KeyboardInterrupt:
 Ta aplikacja tworzy tożsamość urządzenia o identyfikatorze **myFirstDevice** i tożsamości modułu o identyfikatorze **myFirstModule** obszarze urządzenie **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
 
 > [!NOTE]
-> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Więcej informacji znajduje się w temacie [IoT Hub Developer Guide][lnk-devguide-identity] (Usługa IoT Hub — przewodnik dewelopera).
+> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide-identity-registry.md).
 >
 
 ## <a name="update-the-module-twin-using-python-device-sdk"></a>Zaktualizować bliźniaczą reprezentację modułu za pomocą języka Python SDK
 
 W tej sekcji utworzysz Python aplikacji na urządzenie symulowane, która aktualizuje bliźniaczą reprezentację modułu zgłoszonych właściwości.
 
-1. **Pobierz parametry połączenia modułu** — teraz zaloguj się do witryny [Azure Portal][lnk-portal]. Przejdź do centrum IoT Hub i kliknij pozycję Urządzenia IoT. Znajdź myFirstDevice, otwórz go i zobaczyć myFirstModule został pomyślnie utworzony. Skopiuj parametry połączenia modułu. Będą potrzebne w następnym kroku.
+1. **Pobierz parametry połączenia modułu** — teraz, jeśli zalogujesz się do [witryny Azure portal](https://portal.azure.com/). Przejdź do centrum IoT Hub i kliknij pozycję Urządzenia IoT. Znajdź myFirstDevice, otwórz go i zobaczyć myFirstModule został pomyślnie utworzony. Skopiuj parametry połączenia modułu. Będą potrzebne w następnym kroku.
 
-   ![Szczegóły modułu w witrynie Azure Portal][15]
+   ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-1. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujący kod `using` instrukcji na górze **Program.cs** pliku:
+2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujący kod `using` instrukcji na górze **Program.cs** pliku:
 
     ```python
     import sys
@@ -121,7 +123,7 @@ W tej sekcji utworzysz Python aplikacji na urządzenie symulowane, która aktual
         print ( "IoTHubRegistryManager sample stopped" )
     ```
 
-Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizacji zgłoszonych właściwości za pomocą protokołu AMQP. 
+Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizacji zgłoszonych właściwości za pomocą protokołu AMQP.
 
 ## <a name="get-updates-on-the-device-side"></a>Otrzymuj aktualizacje po stronie urządzenia
 
@@ -159,23 +161,10 @@ except KeyboardInterrupt:
     print ( "module client sample stopped" )
 ```
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby kontynuować wprowadzenie do usługi IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
 
-* [Wprowadzenie do zarządzania urządzeniami][lnk-device-management]
-* [Getting started with IoT Edge][lnk-iot-edge] (Wprowadzenie do usługi IoT Edge)
+* [Wprowadzenie do zarządzania urządzeniami](iot-hub-node-node-device-management-get-started.md)
 
-
-<!-- Images. -->
-[15]:./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-portal]: https://portal.azure.com/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+* [Wprowadzenie do usługi IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

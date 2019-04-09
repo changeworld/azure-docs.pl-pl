@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439077"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258474"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Tworzenie puli hostów przy użyciu programu PowerShell
 
@@ -111,6 +111,9 @@ Aby zarejestrować agentów pulpitu wirtualnego Windows, wykonaj następujące c
      - Z **Start** menu wyszukiwania dla środowiska Windows PowerShell ISE, kliknij go prawym przyciskiem myszy, a następnie wybierz **Uruchom jako administrator**.
      - Wybierz **pliku**, następnie **Otwórz...** , a następnie znajdź skrypt programu PowerShell z pobranymi plikami i otwórz go.
      - Wybierz przycisk zielony Odtwórz, aby uruchomić skrypt.
+
+>[!IMPORTANT]
+>Aby zabezpieczyć środowisku pulpitu wirtualnego Windows na platformie Azure, zalecamy nie otwieraj portu wejściowego 3389 na maszynach wirtualnych. Pulpit wirtualny Windows nie wymaga otwartego portu dla ruchu przychodzącego 3389 dla użytkowników puli hosta maszyn wirtualnych. Jeśli musisz otworzyć port 3389 na potrzeby rozwiązywania problemów, zalecamy użycie [dostęp do maszyny Wirtualnej just-in-time](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

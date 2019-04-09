@@ -1,27 +1,27 @@
 ---
-title: Właściwości użytkownika współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Właściwości użytkownika współpracy w usłudze Azure Active Directory B2B są konfigurowane
+title: Właściwości B2B gościa user - usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Usługa Azure Active Directory B2B gościa użytkownika i Stany przed i po nim realizacja zaproszenia
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294658"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257607"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości użytkownika współpracy B2B usługi Azure Active Directory
 
-Azure Active Directory (Azure AD) business-to-business (B2B) współpracy użytkownik jest użytkownikiem z wartością UserType = gościa. Ten użytkownik-Gość zazwyczaj pochodzi z organizacji partnerskiej i ma ograniczone uprawnienia w katalogu zapraszający domyślnie.
+Ten artykuł zawiera opis właściwości i obiektu użytkowników gości B2B w usłudze Azure Active Directory (Azure AD), przed i po nim realizacja zaproszenia. Usługa Azure AD business-to-business (B2B) współpracy użytkownik jest użytkownikiem z wartością UserType = gościa. Ten użytkownik-Gość zazwyczaj pochodzi z organizacji partnerskiej i ma ograniczone uprawnienia w katalogu zapraszający domyślnie.
 
 W zależności od potrzeb organizacji zapraszającej użytkownik współpracy B2B usługi Azure AD może być w jednym z następujących stanów konta:
 

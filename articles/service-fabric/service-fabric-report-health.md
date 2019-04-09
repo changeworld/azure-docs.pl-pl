@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670391"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058615"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Dodawanie niestandardowych raportów kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza [modelu kondycji](service-fabric-health-introduction.md) przeznaczone do Flaga złej kondycji klastra i warunków określonych jednostek aplikacji. Używa modelu kondycji **Raporty kondycji** (składników systemu i watchdogs). Celem jest łatwe i szybkie diagnozowanie i naprawy. Moduły zapisujące usługi należy traktować ponoszonych z góry o kondycji. Należy podać dowolny warunek, który może mieć wpływ na kondycję, zwłaszcza, jeśli może pomóc problemów flagi blisko głównego. Informacje o kondycji można oszczędzić czas i wysiłek, debugowania i analizy. Użyteczność jest szczególnie oczywiste, gdy usługa jest uruchomiona na dużą skalę w chmurze (prywatnej lub na platformie Azure).
@@ -55,18 +55,18 @@ Raz zdrowia, raportowanie, że projekt jest wyczyszczone, raportów o kondycji m
 > 
 
 ## <a name="health-client"></a>Kondycja klienta
-Raporty o kondycji są wysyłane do magazynu kondycji za pomocą klienta kondycji, które znajdują się wewnątrz klienta sieci szkieletowej. Kondycji klienta można skonfigurować następujące ustawienia:
+Raporty o kondycji są wysyłane do Menedżera kondycji za pomocą klienta kondycji, które znajdują się wewnątrz klienta sieci szkieletowej. Menedżer kondycji raporty są zapisywane w magazynie kondycji. Kondycji klienta można skonfigurować następujące ustawienia:
 
-* **HealthReportSendInterval**: Opóźnienie między czas, który raport zostanie dodany do klienta i są wysyłane do magazynu kondycji. Używany do raportów usługi batch w pojedynczym komunikacie, zamiast wysyłania jeden komunikat dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Domyślne: 30 sekund.
-* **HealthReportRetrySendInterval**: Interwał, jaką kondycji klienta umożliwia ponowne wysłanie kondycji zebranych raportów w magazynie kondycji. Domyślne: 30 sekund.
-* **HealthOperationTimeout**: Limit czasu dla raportu komunikat wysyłany do magazynu kondycji. Jeśli upłynie limit czasu wiadomości, kondycji klient ponawia próbę go do momentu magazynu kondycji potwierdza, że raport został przetworzony. Wartość domyślna: dwie minuty.
+* **HealthReportSendInterval**: Opóźnienie między czas, który raport zostanie dodany do klienta i są wysyłane do Menedżera kondycji. Używany do raportów usługi batch w pojedynczym komunikacie, zamiast wysyłania jeden komunikat dla każdego raportu. Przetwarzanie wsadowe poprawia wydajność. Domyślne: 30 sekund.
+* **HealthReportRetrySendInterval**: Interwał, jaką kondycji klienta umożliwia ponowne wysłanie kondycji zebranych raportów do Menedżera kondycji. Domyślne: 30 sekund, minimalna: 1 sekunda.
+* **HealthOperationTimeout**: Limit czasu dla raportu komunikat wysyłany do Menedżera kondycji. Jeśli upłynie limit czasu wiadomości, kondycji klient ponawia próbę go do momentu Menedżera kondycji potwierdza, że raport został przetworzony. Wartość domyślna: dwie minuty.
 
 > [!NOTE]
-> Jeśli raporty są przetwarzane wsadowo, klient sieci szkieletowej muszą być przechowywane w aktywności dla co najmniej HealthReportSendInterval, aby upewnić się, że są wysyłane. Jeśli komunikat zostanie utracony lub magazynu kondycji nie może zastosować je z powodu błędów przejściowych, klient sieci szkieletowej musi życiu już celu nadania mu szansę, aby spróbować ponownie.
+> Jeśli raporty są przetwarzane wsadowo, klient sieci szkieletowej muszą być przechowywane w aktywności dla co najmniej HealthReportSendInterval, aby upewnić się, że są wysyłane. Jeśli komunikat zostanie utracony lub Menedżera kondycji nie może zastosować je z powodu błędów przejściowych, klient sieci szkieletowej musi życiu już celu nadania mu szansę, aby spróbować ponownie.
 > 
 > 
 
-Buforowanie na kliencie zajmuje unikatowości raportów pod uwagę. Na przykład określonego reportera zły zgłoszenie 100 raportów na sekundę na tę samą właściwość tego samego obiektu, raporty są zastępowane najnowszej wersji. Istnieje co najwyżej jeden taki raport w kolejce klienta. Jeśli skonfigurowano dzielenia na partie, liczbę raportów w magazynie kondycji jest tylko jeden na interwał wysyłania. Raport ten stanowi ostatni raport dodano najbardziej aktualny stan jednostki.
+Buforowanie na kliencie zajmuje unikatowości raportów pod uwagę. Na przykład określonego reportera zły zgłoszenie 100 raportów na sekundę na tę samą właściwość tego samego obiektu, raporty są zastępowane najnowszej wersji. Istnieje co najwyżej jeden taki raport w kolejce klienta. Jeśli skonfigurowano dzielenia na partie, liczbę raportów wysyłanych do Menedżera kondycji jest tylko jeden na interwał wysyłania. Raport ten stanowi ostatni raport dodano najbardziej aktualny stan jednostki.
 Określ parametry konfiguracji podczas `FabricClient` jest tworzony przez przekazanie [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) z odpowiednie wartości dla wpisów z kondycją.
 
 Poniższy przykład tworzy klienta sieci szkieletowej i określa, czy raporty mają być wysyłane, gdy zostaną one dodane. Przekroczeń limitu czasu i błędów, które mogą być ponawiane próby się zdarzyć, co 40 sekund.
@@ -312,7 +312,7 @@ Na podstawie danych kondycji modułów zapisujących usługi i administratorów 
 
 [Użytek rozwiązywania problemów z raportami kondycji systemu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Monitorować i diagnozować usługi lokalnie](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Lokalne monitorowanie i diagnozowanie usług](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Uaktualnianie aplikacji usługi Service Fabric](service-fabric-application-upgrade.md)
 

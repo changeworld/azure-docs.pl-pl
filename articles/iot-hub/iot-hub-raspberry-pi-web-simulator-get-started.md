@@ -1,21 +1,21 @@
 ---
 title: Symulowane urządzenia Raspberry Pi w chmurze (Node.js) - łączenie urządzenia Raspberry Pi symulator internetowy dla usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Symulator internetowy urządzenia Raspberry Pi nawiązać połączenia usługi Azure IoT Hub dla urządzenia Raspberry Pi w celu wysyłania danych do chmury platformy Azure.
-author: rangv
-manager: ''
+author: wesmc7777
+manager: philmea
 keywords: Symulator urządzenia raspberry pi, usługa azure iot urządzenia raspberry pi, usługi iot hub dla urządzenia raspberry pi, urządzenia raspberry pi wysyłania danych do chmury, urządzenia raspberry pi w chmurze
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 58e05ba4fb2e362147f7ca28d83440ddabb6ef38
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847210"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267739"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi symulatora w trybie online dla usługi Azure IoT Hub (Node.js)
 

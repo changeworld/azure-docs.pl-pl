@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094926"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009275"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Z tego artykułu dowiesz się, jak utworzyć aplikację języka Objective-C dla systemu iOS przy użyciu zestawu SDK usługi Mowa z usługi Cognitive Services, aby wykonać transkrypcję pliku dźwiękowego z zarejestrowaną mową na tekst.
+W tym artykule dowiesz się, jak utworzyć aplikację dla systemu iOS w języku Objective-C za pomocą Cognitive Services SDK mowy transkrypcja mowy na tekst z mikrofonu lub plik z nagrania audio.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,16 +29,16 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 * [Klucz subskrypcji](get-started.md) dla usługi Mowa
 * Maszyna z systemem macOS z oprogramowaniem [Xcode w wersji 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) lub nowszej
-* Docelowy system operacyjny ustawiony na system iOS w wersji 11.4 lub nowszej
+* Element docelowy równa system iOS w wersji 9.3 lub nowszym
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Pobierz zestaw SDK usługi Mowa dla systemu iOS
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.3.1`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.4.0`.
 
-Zestaw SDK usługi Mowa z zestawu Cognitive Services dla komputerów Mac i systemu iOS jest aktualnie dystrybuowany w ramach platformy Cocoa.
-Można go pobrać ze strony https://aka.ms/csspeech/iosbinary. Pobierz plik do katalogu macierzystego.
+Cognitive Services mowy zestawu SDK dla systemu iOS jest obecnie dystrybuowane jako struktura cocoa dla.
+Można go pobrać ze [tutaj](https://aka.ms/csspeech/iosbinary). Pobierz plik do katalogu macierzystego.
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu programu Xcode
 
@@ -58,10 +58,10 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
     1. Wyłącz tworzenie repozytorium Git dla tego przykładowego projektu.
     1. Dostosuj ścieżki do zestawu SDK w pozycji *Project Settings* (Ustawienia projektu).
         1. Na karcie **General** (Ogólne) pod nagłówkiem **Embedded Binaries** (Osadzone pliki binarne) dodaj bibliotekę zestawu SDK jako strukturę: **Add embedded binaries** > **Add other...** (Dodaj osadzone pliki binarne > Dodaj inne...) > przejdź do katalogu macierzystego i wybierz plik `MicrosoftCognitiveServicesSpeech.framework`. Powoduje to automatyczne dodanie biblioteki zestawu SDK do nagłówka **Linked Framework and Libraries** (Połączone struktury i biblioteki).
-        ![Dodano strukturę](media/sdk/qs-objectivec-framework.png)
+        ![Dodano Framework](media/sdk/qs-objectivec-framework.png)
         1. Przejdź do karty **Build Settings** (Ustawienia kompilacji) i aktywuj ustawienia **All** (Wszystko).
         1. Dodaj katalog `$(SRCROOT)/..` do pozycji *Framework Search Paths* (Ścieżki wyszukiwania struktury) w ramach nagłówka **Search Paths** (Ścieżki wyszukiwania).
-        ![Ustawienie Framework Search Path (Ścieżka wyszukiwania struktury)](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Ustawienia ścieżki wyszukiwania Framework](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>Konfigurowanie Interfejsu użytkownika
 
@@ -102,4 +102,5 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka Objective-C w serwisie GitHub](https://aka.ms/csspeech/samples)
+> [Poznaj przykłady języka Objective-C w witrynie GitHub](https://aka.ms/csspeech/samples)
+

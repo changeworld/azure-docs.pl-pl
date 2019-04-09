@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a4e64bf6899d3384e0dadc9c2b4ce2fd5d092385
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 135b5719422d1b28a82ac2eda06f76d6dd746800
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849431"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi TINFOIL SECURITY
 
@@ -251,7 +251,7 @@ Po kliknięciu kafelka usługi TINFOIL SECURITY w panelu dostępu, użytkownik p
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

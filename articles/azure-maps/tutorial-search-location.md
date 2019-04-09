@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 42a7eee37d993e5f9245374adbfd133344797eff
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540469"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058173"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -138,8 +138,8 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
 5. W funkcji `GetMap` po zainicjowaniu mapy dodaj następujący kod JavaScript.
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
     });
     ```
 
-   W tym segmencie kodu, dodane do mapy zdarzeń obciążenia, który zostanie uruchomiony po Mapowanie zasobów zostały w pełni załadowane. W obsłudze zdarzeń ładowania mapy jest tworzone źródło danych do przechowywania danych wyników. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak powinny być renderowane dane wyników w źródle danych. W tym przypadku jest ona oznaczona ciemnoniebieską ikoną okrągłej pinezki wyśrodkowaną nad współrzędnymi wyników i umożliwiającą nakładanie się na inne ikony. Warstwa wynik jest dodawana do warstwy mapy.
+   W tym segmencie kodu `ready` do map, które będą uruchamiane, gdy załadowano zasobów mapy i mapy jest gotowy do można uzyskać dostępu do zostanie dodane zdarzenie. Na mapie `ready` procedura obsługi zdarzeń, tworzone jest źródło danych do przechowywania danych wyników. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak powinny być renderowane dane wyników w źródle danych. W tym przypadku jest ona oznaczona ciemnoniebieską ikoną okrągłej pinezki wyśrodkowaną nad współrzędnymi wyników i umożliwiającą nakładanie się na inne ikony. Warstwa wynik jest dodawana do warstwy mapy.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ W tej sekcji pokazano, jak używać Maps [interfejsu API wyszukiwania](https://d
 
 ### <a name="service-module"></a>Moduł usługi
 
-1. Na mapie załadować program obsługi zdarzeń, skonstruować adres URL usługi wyszukiwania, dodając następujący kod Javascript.
+1. Na mapie `ready` programu obsługi zdarzeń skonstruować adres URL usługi wyszukiwania, dodając następujący kod Javascript.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -229,7 +229,7 @@ Na stronie MapSearch można teraz wyświetlić lokalizacje punktów orientacyjny
 
 W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości i szerokości geograficznej. Widać jednak, że nieprzetworzone dane JSON zwracane przez usługę Search Service w usłudze Maps zawierają dodatkowe informacje o każdej stacji paliw, takie jak nazwa i adres. Dane te można zintegrować z mapą za pomocą interaktywnych wyskakujących okienek.
 
-1. Dodaj następujące wiersze kodu do obsługi zdarzeń ładowania mapy po kodzie umożliwiającym wykonanie zapytania do usługi wyszukiwania rozmytego. Spowoduje to utworzenie wystąpienia wyskakującego okienka i dodanie zdarzenia mouseover do warstwy symboli.
+1. Dodaj następujące wiersze kodu na mapie `ready` program obsługi zdarzeń po kodzie do zapytań do usługi wyszukiwania rozmytego. Spowoduje to utworzenie wystąpienia wyskakującego okienka i dodanie zdarzenia mouseover do warstwy symboli.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -282,11 +282,11 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Przykładowy kod z tego samouczka jest dostępny tutaj:
 
-> [Search location with Azure Maps (Wyszukiwanie lokalizacji w usłudze Azure Maps)](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
+> [Lokalizacja wyszukiwania za pomocą usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-[Zobacz tutaj działający przykład](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+[Zobacz przykładową znajdować się tutaj](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Następny samouczek przedstawia sposób wyświetlenia trasy między dwiema lokalizacjami.
 
 > [!div class="nextstepaction"]
-> [Trasa do miejsca docelowego](./tutorial-route-location.md)
+> [Trasy do miejsca docelowego](./tutorial-route-location.md)

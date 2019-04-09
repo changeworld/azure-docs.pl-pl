@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: MT
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745558"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058054"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem Avere vFXT
 
@@ -98,7 +98,7 @@ Podaj następujące wartości:
 * Nazwa grupy zasobów klastra, a także dla zasobów magazynu i sieci, jeśli nie są takie same jak klastra
 * Lokalizacja klastra
 * Sieć klastra i podsieci 
-* Rola dostępu węzła klastra 
+* Rola dostępu węzła klastra (za pomocą wbudowanej roli [Avere Operator](../role-based-access-control/built-in-roles.md#avere-operator))
 * Adres IP zarządzania klastra i hasło administracyjne 
 * Liczba węzłów, aby dodać (1, 2 lub 3)
 * Wystąpienie typu i pamięć podręczna rozmiar wartości węzła 
@@ -113,7 +113,7 @@ Jeśli nie używasz prototypu, należy tworzyć polecenie podobne do następują
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 
@@ -187,7 +187,7 @@ Wystąpienia węzła może zniszczyć trwale, usuwając je w witrynie Azure port
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Usunięcie klastra dodatkowych zasobów w witrynie Azure portal
 
-Jeśli utworzono dodatkowe zasoby dla klastra vFXT, można usunąć je jako część zniszczenia klastra. Nie należy zniszczyć elementy, które zawierają potrzebne dane lub wszystkie elementy, które są współużytkowane z innymi projektami.
+Jeśli utworzono dodatkowe zasoby dla klastra vFXT, można usunąć je jako część zniszczenia klastra. Niszczy elementów, które zawierają dane, których potrzebujesz, lub wszystkie elementy, które są współużytkowane z innymi projektami.
 
 Oprócz usuwania węzłów klastra, rozważ usunięcie tych składników: 
 

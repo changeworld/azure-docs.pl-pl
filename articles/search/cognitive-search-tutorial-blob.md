@@ -1,21 +1,21 @@
 ---
-title: Samouczek dotyczący wywoływanie interfejsów API usług Cognitive Services w potoku indeksowania — usługa Azure Search
-description: W tym samouczku wykonasz kroki przykładu wyodrębniania danych oraz przetwarzania języka naturalnego i obrazów za pomocą funkcji sztucznej inteligencji w ramach indeksowania w usłudze Azure Search na potrzeby wyodrębniania i przekształcania danych.
+title: 'Samouczek: Wywoływanie interfejsów API usług Cognitive Services w potoku indeksowania — usługa Azure Search'
+description: Krokowo przykładem wyodrębnianie danych, języka naturalnego oraz obrazu sztucznej Inteligencji przetwarzania w usłudze Azure Search indeksowanie podczas przekształcania i wyodrębnianie danych za pośrednictwem obiektów blob JSON.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 13361bb73043e83a0162e86604f048b98eb1c3a0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009635"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261925"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku (wersja zapoznawcza)
 
@@ -32,60 +32,44 @@ W tym samouczku interfejs API REST jest wywoływany w celu wykonania następują
 
 Dane wyjściowe stanowią indeks z możliwością wyszukiwania pełnotekstowego w usłudze Azure Search. Indeks możesz rozszerzyć za pomocą innych standardowych możliwości, takich jak [synonimy](search-synonyms.md), [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analizatory](search-analyzers.md) i [filtry](search-filters.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+W tym samouczku jest uruchamiany bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Jeśli chcesz uruchomić w tym samouczku więcej niż jeden raz w ciągu tego samego dnia, należy użyć mniejszy plik ustawione, tak więc mieści się w dodatkowych uruchomień.
 
 > [!NOTE]
-> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swojego zasobu w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Rozpoczniemy wówczas naliczanie opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Ponieważ zakres jest rozwiniesz przez zwiększenie częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, należy dołączyć płatnych zasobu usług Cognitive Services. Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
 >
-> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/) za usługi Cognitive Services. Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to [na stronie z cennikiem usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
+> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest rozliczana według ceny za wersję zapoznawczą, zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To Twoja pierwsza styczność z wyszukiwaniem poznawczym? Przeczytaj artykuł [„Co to jest wyszukiwanie poznawcze?”](cognitive-search-concept-intro.md), aby zapoznać się z tym tematem, lub wypróbuj [przewodnik Szybki start portalu](cognitive-search-quickstart-blob.md), aby uzyskać praktyczne wprowadzenie do ważnych pojęć.
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
 
-Do wykonywania wywołań REST usługi Azure Search, czyli tworzenia żądań HTTP, użyj programu PowerShell lub internetowego narzędzia do testowania, takiego jak Telerik Fiddler lub Postman. Jeśli nie znasz tych narzędzi, zobacz [Odkrywanie interfejsów API REST usługi Azure Search przy użyciu narzędzia Fiddler lub Postman](search-fiddler.md).
+[Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) jest używany dla wywołań REST do usługi Azure Search.
 
-Za pomocą witryny [Azure Portal](https://portal.azure.com/) utwórz usługi używane w kompletnym przepływie pracy. 
+### <a name="get-an-azure-search-api-key-and-endpoint"></a>Uzyskaj klucz interfejsu api usługi Azure Search i punktu końcowego usługi
 
-### <a name="set-up-azure-search"></a>Konfigurowanie usługi Azure Search
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-Najpierw utwórz konto usługi Azure Search. 
+1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://my-service-name.search.windows.net`.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
+2. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-1. Kliknij pozycję **Utwórz zasób**, wyszukaj usługę Azure Search i kliknij pozycję **Utwórz**. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md), jeśli konfigurujesz usługę wyszukiwania po raz pierwszy.
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
-   ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
-
-1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierać wszystkie zasoby utworzone w tym samouczku. Ułatwi to wyczyszczenie zasobów po ukończeniu samouczka.
-
-1. Dla lokalizacji wybierz region, który znajduje się w pobliżu danych i innymi aplikacjami w chmurze.
-
-1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
-
-   Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
-
-   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service1.png "Strona definicji usługi w portalu")
-   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
-
- 
-1. Przypnij usługę do pulpitu nawigacyjnego, aby uzyskać szybki dostęp do informacji o niej.
-
-   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
-
-1. Po utworzeniu usługi zbierz następujące informacje: adres **URL** ze strony Przegląd i klucz **api-key** (podstawowy lub pomocniczy) ze strony Klucze.
-
-   ![Informacje o punkcie końcowym i kluczu w portalu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informacje o punkcie końcowym i kluczu w portalu")
+Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
 Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Pamiętaj, usługa Azure Table Storage nie jest obsługiwana w usłudze wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
 
-1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). Przykładowe dane składają się z małego zestawu plików różnych typów. 
+1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. 
 
-1. Utwórz konto usługi Azure Blob Storage, utwórz konto usługi Storage, zaloguj się w Eksploratorze usługi Storage i utwórz kontener o nazwie `basicdemo`. Instrukcje dotyczące wszystkich kroków zawiera [Przewodnik Szybki start dotyczący Eksploratora usługi Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+1. [Zarejestruj się w usłudze Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), Utwórz konto magazynu, otwieranie stron usługi obiektów Blob i tworzenia kontenera. Utwórz konto magazynu, w tym samym regionie co usługa Azure Search.
 
-1. Korzystając z Eksploratora usługi Azure Storage, w utworzonym kontenerze `basicdemo` kliknij pozycję **Przekaż**, aby przekazać przykładowe pliki.
+1. W utworzonym kontenerze kliknij pozycję **Przekaż**, aby przekazać przykładowe pliki pobrane w poprzednim kroku.
+
+   ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 1. Po załadowaniu przykładowych plików uzyskaj nazwę kontenera i parametry połączenia dla usługi Blob Storage. Te dane są dostępne po przejściu do konta usługi Storage w witrynie Azure Portal. Na stronie **Klucze dostępu**, a następnie skopiuj pole **Parametry połączenia**.
 

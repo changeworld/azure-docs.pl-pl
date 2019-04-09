@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/20/2018
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801270"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057442"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -41,7 +41,7 @@ Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy A
 
 1. Wypełnij pola Identyfikator grupy zarządzania.
 
-   - **Identyfikator grupy zarządzania** jest unikatowy identyfikator katalogu, który służy do przesyłania poleceń w tej grupie zarządzania. Ten identyfikator nie jest edytowalny po utworzeniu, ponieważ jest używany do identyfikowania tej grupy w systemie Azure.
+   - **Identyfikator grupy zarządzania** jest unikatowy identyfikator katalogu, który służy do przesyłania poleceń w tej grupie zarządzania. Ten identyfikator nie można edytować, po utworzeniu, ponieważ jest używany do identyfikowania tej grupy w systemie Azure. [Głównej grupy zarządzania](index.md#root-management-group-for-each-directory) jest tworzone automatycznie za pomocą Identyfikatora, który jest identyfikatorem usługi Azure Active Directory. Dla wszystkich innych grupach zarządzania należy przypisać unikatowy identyfikator.
    - Nazwa wyświetlana tego pola jest nazwa, która jest wyświetlana w witrynie Azure portal. Nazwę wyświetlaną osobne pole jest opcjonalne, tworząc zarządzania grupy i można ją zmienić w dowolnym momencie.  
 
    ![Okienko opcji tworzenia nowej grupy zarządzania](./media/create_context_menu.png)  
@@ -79,7 +79,7 @@ az account management-group create --name 'Contoso'
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
-- [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
-- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
-- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)
+- [Jak zmienić, usunąć lub zarządzać grupami zarządzania](manage.md)
+- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Przejrzyj grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](/cli/azure/account/management-group)

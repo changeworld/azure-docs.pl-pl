@@ -1,5 +1,5 @@
 ---
-title: Tworzenie, wyświetlanie i zarządzanie dziennika alertów za pomocą usługi Azure Monitor
+title: Tworzenie, wyświetlanie i zarządzanie dziennika alertów za pomocą usługi Azure Monitor | Dokumentacja firmy Microsoft
 description: Usługi Azure Monitor umożliwia tworzenie, wyświetlanie i zarządzanie reguł alertów dzienników na platformie Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873795"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006953"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
@@ -23,10 +23,10 @@ W tym artykule pokazano, jak skonfigurować alerty dzienników przy użyciu inte
 - Kryteria: Określony warunek lub Logic Apps, gdy widoczne w sygnał, powinny wyzwalać akcję
 - Akcja: Wywołań wysyłanych do odbiorcy powiadomienia — Wyślij wiadomość e-mail, wiadomość SMS, element webhook itp.
 
-Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie niestandardowe na podstawie [usługi Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](../../azure-monitor/platform/alerts-unified-log.md).
+Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie dziennika w [obszaru roboczego usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](alerts-unified-log.md).
 
 > [!NOTE]
-> Dane dzienników popularnych z [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](../../azure-monitor/platform/alerts-metric-logs.md)
+> Dane dzienników popularnych z [obszar roboczy usługi Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](alerts-metric-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Zarządzanie alertami dzienników w witrynie Azure portal
 
@@ -50,7 +50,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
    > [!NOTE]
    > 
    > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
-   >  ![Wybierz zasób](media/alerts-log/Alert-SelectResourceLog.png)
+   >  ![Wybieranie zasobu](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. *Alerty dzienników*: Upewnij się, **typ zasobu** jest źródłem analizy, takie jak *usługi Log Analytics* lub *usługi Application Insights* i sygnałów typ jako **dziennika**, niż raz odpowiednie **zasobów** jest wybrana, kliknij przycisk *gotowe*. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału **przeszukiwania dzienników niestandardowych** opcję dla wybranego dziennika usługi monitor, takich jak *dziennika Analiza* lub *usługi Application Insights*.
 
@@ -58,7 +58,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
    > [!NOTE]
    > 
-   > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)**, jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu przeszukiwania dzienników w usłudze log analytics](../../azure-monitor/log-query/log-query-overview.md) lub [udostępnionego zapytania w usłudze application insights Analiza](../../azure-monitor/log-query/log-query-overview.md).
+   > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)**, jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu zapytań dzienników w usłudze Azure Monitor](../log-query/log-query-overview.md) lub [udostępnione zapytanie w analizy usługi application insights ](../log-query/log-query-overview.md).
 
 1. *Alerty dzienników*: Po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
 
@@ -126,12 +126,12 @@ Użytkownicy mogą również zakończona ich zapytania usługi analytics w [dzie
 Alerty dzienników w usłudze Azure Monitor są skojarzone z typem zasobu `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Alerty dzienników dla usługi Application Insights ani Log Analytics, mogą być tworzone za pomocą [zaplanowane zasady interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
-> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](../../azure-monitor/platform/api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../../azure-monitor/insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
+> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Przykładowy dziennik tworzenia alertu za pomocą szablonu usługi Azure Resource
 
-Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów przy użyciu zapytania wyszukiwania standardowym dzienniku [liczba alertu dziennika typu wyników](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
+Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów przy użyciu zapytania wyszukiwania standardowym dzienniku [liczba alertu dziennika typu wyników](alerts-unified-log.md#number-of-results-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
 
 ```json
 {
@@ -316,7 +316,7 @@ Usługa Azure Monitor — zaplanowane reguł zapytań interfejsu API] (https://d
 
 
 > [!NOTE]
-> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](../../azure-monitor/platform/api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../../azure-monitor/insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
+> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
 
 Alerty dzienników obecnie nie masz dedykowanych poleceń programu PowerShell lub interfejsu wiersza polecenia obecnie; ale jak przedstawiono poniżej może służyć za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json) w sekcji zasobów szablonu:
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

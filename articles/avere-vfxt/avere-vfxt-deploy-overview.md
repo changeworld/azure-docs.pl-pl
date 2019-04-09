@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991805"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056235"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>VFXT Avere dla platformy Azure — Omówienie wdrożenia
 
@@ -32,14 +32,6 @@ Poniżej przedstawiono omówienie wszystkich kroków.
 1. Konfigurowanie wymagań wstępnych 
 
    Przed utworzeniem maszyny Wirtualnej, należy utworzyć nową subskrypcję dla projektu vFXT Avere, skonfiguruj własności subskrypcji, sprawdź limity przydziału i poprosić o zwiększenie, jeśli potrzebne i zaakceptuj postanowienia dotyczące korzystania z oprogramowania vFXT Avere. Odczyt [przed rozpoczęciem tworzenia Avere vFXT](avere-vfxt-prereqs.md) szczegółowe informacje.
-
-1. Utworzenie roli dostępu w węzłach klastra
-
-   Usługa Azure korzysta [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC), aby autoryzować węzła klastra maszyny wirtualne do wykonywania określonych zadań. Na przykład węzły klastra muszą mieć możliwość przypisywania lub ponowne przypisywanie adresów IP do innych węzłów klastra. Przed utworzeniem klastra, należy zdefiniować rolę, która umożliwi im odpowiednie uprawnienia.
-
-   Odczyt [tworzenie roli dostęp do węzła klastra](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) instrukcje.
-
-   Kontroler klastra używa również rola dostępu, ale możesz zaakceptować domyślna rola właściciela, zamiast tworzyć własne. Jeśli chcesz utworzyć niestandardową rolę kontrolera klastra, zapoznaj się z [roli dostęp do kontrolera dostosowany](avere-vfxt-controller-role.md). 
 
 1. Tworzenie klastra vFXT Avere 
 

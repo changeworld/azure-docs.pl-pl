@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667536"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058870"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -159,7 +159,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |Czas w sekundach, domyślna to 2 |Dynamiczny|Określ przedział czasu w sekundach. Interwał limitu czasu połączenia dla każdego klienta czas próbuje nawiązać połączenie z bramą.|
 |HealthOperationTimeout |Czas w sekundach, domyślna to 120 |Dynamiczny|Określ przedział czasu w sekundach. Limit czasu dla raportu wiadomości wysyłane do Menedżera kondycji. |
-|HealthReportRetrySendInterval |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Określ przedział czasu w sekundach. Interwał, w którym zgłasza, że składnik ponownie wysyła raporty dotyczące zebranych kondycji do Menedżera kondycji. |
+|HealthReportRetrySendInterval |Czas w sekundach, wartość domyślna to 30, minimalna liczba to 1 |Dynamiczny|Określ przedział czasu w sekundach. Interwał, jaką składnika raportowania umożliwia ponowne wysłanie kondycji zebranych raportów do Menedżera kondycji. |
 |HealthReportSendInterval |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Określ przedział czasu w sekundach. Interwał, w którym zgłasza, że składnik wysyła raporty dotyczące zebranych kondycji do Menedżera kondycji. |
 |KeepAliveIntervalInSeconds |Int, domyślna to 20 |Statyczny|Interwał, z jaką transportu FabricClient wysyła komunikaty utrzymywania aktywności do bramy. 0; keepAlive jest wyłączona. Musi być wartością dodatnią. |
 |MaxFileSenderThreads |Uint — wartość domyślna wynosi 10 |Statyczny|Maksymalna liczba plików, które są przekazywane w sposób równoległy. |

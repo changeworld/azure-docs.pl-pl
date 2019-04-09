@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881045"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010621"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -95,8 +95,9 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 * Maksymalnie trzy kolekcje na subskrypcję dla konta bazy danych MongoDB.
 * Pojemność magazynu o rozmiarze 10 GB.
 * Replikacja globalnej jest dostępna w następujących [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/): Środkowe stany USA, Europa Północna i Azja południowo-wschodnia
-* Maksymalnej przepływności równej 5 K jednostek RU/s.
-* Subskrypcje wygasają po upływie 24 godzin i można rozszerzyć do maksymalnie 48 godzin.
+* Maksymalnej przepływności równej 5 K jednostek RU/s podczas aprowizacji na poziomie kontenera.
+* Maksymalna przepływność 20 K jednostek RU/s podczas aprowizacji na poziomie bazy danych.
+* Subskrypcje wygasają po upływie 30 dni i można rozszerzyć do maksymalnie sumę 31 dni.
 * Nie można utworzyć biletów pomocy technicznej platformy Azure dla konta Wypróbuj usługę Azure Cosmos DB jednak obsługiwane dla subskrybentów przy użyciu istniejących planów pomocy technicznej.
 
 ## <a name="set-up-azure-cosmos-db"></a>Konfigurowanie usługi Azure Cosmos DB

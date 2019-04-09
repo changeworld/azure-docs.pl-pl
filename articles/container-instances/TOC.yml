@@ -16,12 +16,20 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: 1 — Tworzenie obrazu kontenerów
-    href: container-instances-tutorial-prepare-app.md
-  - name: 2 — Tworzenie rejestru kontenerów
-    href: container-instances-tutorial-prepare-acr.md
-  - name: 3 — Wdrażanie aplikacji
-    href: container-instances-tutorial-deploy-app.md
+  - name: Tworzenie i wdrażanie obrazu kontenera
+    items:
+    - name: 1 — Tworzenie obrazu kontenerów
+      href: container-instances-tutorial-prepare-app.md
+    - name: 2 — Tworzenie rejestru kontenerów
+      href: container-instances-tutorial-prepare-acr.md
+    - name: 3 — Wdrażanie aplikacji
+      href: container-instances-tutorial-deploy-app.md
+  - name: Wdrażanie grupy z wieloma kontenerami
+    items:
+    - name: Wdrażanie grupy kontenerów — YAML
+      href: container-instances-multi-container-yaml.md
+    - name: Wdrażanie grupy kontenerów — Resource Manager
+      href: container-instances-multi-container-group.md
 - name: Przykłady
   items:
   - name: Przykłady kodu
@@ -42,10 +50,6 @@ items:
   items:
   - name: Wdrażanie
     items:
-    - name: Grupa z wieloma kontenerami — YAML
-      href: container-instances-multi-container-yaml.md
-    - name: Grupa z wieloma kontenerami — Resource Manager
-      href: container-instances-multi-container-group.md
     - name: Wdrażanie w sieci wirtualnej (wersja zapoznawcza)
       href: container-instances-vnet.md
     - name: Wdrażanie z usługi Azure Container Registry
@@ -126,9 +130,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-instances
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 94d16ad208cbe5c5cffbcab9e09cf62a05a399ce
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 4a2f2f48232bc78aa636934b0ac3a38bec2c1a23
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851206"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006052"

@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258117"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Operacje usługi IoT Hub monitorowania (przestarzałe)
 
 Monitorowanie operacji usługi IoT Hub umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. Usługa IoT Hub śledzi zdarzenia w ramach kilku kategorii operacji. Możesz zdecydować się na wysyłanie zdarzeń z jedną lub więcej kategorii do punktu końcowego Centrum IoT Hub do przetworzenia. Można monitorować dane dotyczące błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.
 
 >[!NOTE]
->Usługa IoT Hub **monitorowanie operacji jest przestarzały i został usunięty z usługi IoT Hub na 10 marca 2019**. Do monitorowania operacji i kondycji Centrum IoT Hub, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]. Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health][lnk-blog-announcement].
+>Usługa IoT Hub **monitorowanie operacji jest przestarzały i został usunięty z usługi IoT Hub na 10 marca 2019**. Do monitorowania operacji i kondycji Centrum IoT Hub, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md). Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 
@@ -36,15 +36,15 @@ Usługa IoT Hub monitoruje sześć kategorie zdarzeń:
 
 ## <a name="how-to-enable-operations-monitoring"></a>Jak włączyć monitorowanie operacji
 
-1. Utwórz centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wprowadzenie] [ lnk-get-started] przewodnik.
+1. Utwórz centrum IoT. Instrukcje można znaleźć na temat tworzenia Centrum IoT hub w [wprowadzenie](quickstart-send-telemetry-dotnet.md) przewodnik.
 
-1. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **monitorowanie operacji**.
+2. Otwórz blok Centrum IoT hub. W tym miejscu, kliknij przycisk **monitorowanie operacji**.
 
-    ![Operacje dostępu do monitorowania konfiguracji w portalu][1]
+    ![Operacje dostępu do monitorowania konfiguracji w portalu](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-1. Wybierz kategorie monitorowania, chcesz monitorować, a następnie kliknij przycisk **Zapisz**. Zdarzenia są dostępne do odczytywania z punktu końcowego zgodnego z Centrum zdarzeń, na liście **ustawienia monitorowania**. Następuje wywołanie punktu końcowego usługi IoT Hub `messages/operationsmonitoringevents`.
+3. Wybierz kategorie monitorowania, chcesz monitorować, a następnie kliknij przycisk **Zapisz**. Zdarzenia są dostępne do odczytywania z punktu końcowego zgodnego z Centrum zdarzeń, na liście **ustawienia monitorowania**. Następuje wywołanie punktu końcowego usługi IoT Hub `messages/operationsmonitoringevents`.
 
-    ![Konfiguruj monitorowanie Centrum IoT operacji][2]
+    ![Konfiguruj monitorowanie Centrum IoT operacji](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
 > Wybieranie **pełne** monitorowania **połączeń** category powoduje, że usługi IoT Hub można wygenerować komunikaty diagnostyczne dodatkowe. Dla wszystkich innych kategoriach **pełne** zmiany ustawień ilość informacji o usłudze IoT Hub zawiera każdy komunikat o błędzie.
@@ -145,7 +145,9 @@ Kategoria połączenia służy do śledzenia błędów, które występują, gdy 
 Kategoria przekazywania pliku do śledzenia błędów, które występują w Centrum IoT hub i są związane z funkcjonalnością przekazywania plików. Ta kategoria obejmuje:
 
 * Błędy występujące z identyfikatora URI połączenia SAS, takie jak kiedy wygasa przed urządzenia powiadamia Centrum przekazywanie zostało ukończone.
+
 * Nie powiodło się przekazywania zgłoszona przez urządzenie.
+
 * Błędy, które występują, gdy nie można odnaleźć pliku w magazynie podczas tworzenia komunikatu powiadomienia usługi IoT Hub.
 
 Ta kategoria nie umożliwia przechwytywania błędów występujących bezpośrednio podczas przekazywania pliku z urządzenia do usługi storage.
@@ -188,31 +190,31 @@ Kategoria routingu wiadomości do śledzenia błędów występujących podczas o
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Nawiązać połączenie z monitorowania punktu końcowego
 
-Punkt końcowy monitorowania w Centrum IoT to punkt końcowy zgodny z Centrum zdarzeń. Możesz użyć dowolnego mechanizmu, który współpracuje z usługą Event Hubs do odczytywania komunikatów monitorowania z tego punktu końcowego. Poniższy przykład tworzy czytnika podstawowego, który nie jest odpowiedni dla wdrożenia o wysokiej przepływności. Więcej informacji na temat przetwarzania komunikatów z usługi Event Hubs znajduje się w samouczku [Rozpoczynanie pracy z usługą Event Hubs][lnk-eventhubs-tutorial].
+Punkt końcowy monitorowania w Centrum IoT to punkt końcowy zgodny z Centrum zdarzeń. Możesz użyć dowolnego mechanizmu, który współpracuje z usługą Event Hubs do odczytywania komunikatów monitorowania z tego punktu końcowego. Poniższy przykład tworzy czytnika podstawowego, który nie jest odpowiedni dla wdrożenia o wysokiej przepływności. Aby uzyskać więcej informacji na temat sposobu przetwarzania komunikatów z usługi Event Hubs, zobacz [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) samouczka.
 
 Aby połączyć z monitorowania punktu końcowego, należy parametry połączenia i nazwę punktu końcowego. Poniższe kroki pokazują, jak znaleźć potrzebne wartości w portalu:
 
 1. W portalu przejdź do bloku zasobów usługi IoT Hub.
 
-1. Wybierz **monitorowanie operacji**i zanotuj **nazwę zgodną z Centrum zdarzeń** i **punktu końcowego zgodnego z Centrum zdarzeń** wartości:
+2. Wybierz **monitorowanie operacji**i zanotuj **nazwę zgodną z Centrum zdarzeń** i **punktu końcowego zgodnego z Centrum zdarzeń** wartości:
 
-    ![Wartości punktu końcowego zgodnego z Centrum zdarzeń][img-endpoints]
+    ![Wartości punktu końcowego zgodnego z Centrum zdarzeń](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-1. Wybierz **zasady dostępu współdzielonego**, następnie wybierz **usługi**. Zwróć uwagę na **klucz podstawowy** wartość:
+3. Wybierz **zasady dostępu współdzielonego**, następnie wybierz **usługi**. Zwróć uwagę na **klucz podstawowy** wartość:
 
-    ![Klucz podstawowy zasady dostępu współdzielonego usługi][img-service-key]
+    ![Klucz podstawowy zasady dostępu współdzielonego usługi](./media/iot-hub-operations-monitoring/service-key.png)
 
 Poniższy przykładowy kod języka C# jest pobierana z programu Visual Studio **Windows Classic Desktop** aplikację konsoli C#. Projekt ma **WindowsAzure.ServiceBus** zainstalowany pakiet NuGet.
 
 * Zastąp symbol zastępczy parametrów połączenia parametrami połączenia, który używa **punktu końcowego zgodnego z Centrum zdarzeń** i usługa **klucz podstawowy** wartościami zanotowanymi wcześniej, jak pokazano w poniższym przykładzie:
 
-    ```cs
+    ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
 * Zastąp monitorowania symbol zastępczy nazwy punktu końcowego przy użyciu **nazwę zgodną z Centrum zdarzeń** wartość zanotowanymi wcześniej.
 
-```cs
+```csharp
 class Program
 {
     static string connectionString = "{your monitoring endpoint connection string}";
@@ -263,24 +265,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Przewodnik dla deweloperów usługi IoT Hub][lnk-devguide]
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
+* [Przewodnik dla deweloperów usługi IoT Hub](iot-hub-devguide.md)
 
-<!-- Links and images -->
-[1]: media/iot-hub-operations-monitoring/enable-OM-1.png
-[2]: media/iot-hub-operations-monitoring/enable-OM-2.png
-[img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
-[img-service-key]: media/iot-hub-operations-monitoring/service-key.png
-
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
-[lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: quickstart-send-telemetry-dotnet.md
-[lnk-diagnostic-metrics]: iot-hub-metrics.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-dr]: iot-hub-ha-dr.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

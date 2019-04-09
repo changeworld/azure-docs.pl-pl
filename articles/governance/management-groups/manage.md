@@ -3,15 +3,15 @@ title: Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure rząd
 description: Dowiedz się, jak wyświetlać, obsługi, aktualizacji i usuwania hierarchia grup zarządzania.
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 58f8b3346ddd250736e09966b7c36e570b62bb10
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881056"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057748"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -34,6 +34,8 @@ Możesz zmienić nazwę grupy zarządzania przy użyciu portalu, programu PowerS
 1. Wybierz **wszystkich usług** > **grup zarządzania**.
 
 1. Wybierz grupę zarządzania, którą chcesz zmienić.
+
+1. Wybierz **szczegóły**.
 
 1. Wybierz **Zmień nazwę grupy** opcji w górnej części strony.
 
@@ -80,6 +82,8 @@ Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania
 1. Wybierz **wszystkich usług** > **grup zarządzania**.
 
 1. Wybierz grupę zarządzania, którą chcesz usunąć.
+
+1. Wybierz **szczegóły**.
 
 1. Wybierz **Usuń**
 

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d20316903efde516ec99b0a548449297bdf1419
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805112"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services w wersji 3
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja usługi Azure Media Services v3 — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak przeprowadzać przesyłanie strumieniowe na żądanie, prowadzić emisję na żywo i analizować filmy wideo za pomocą usługi Media Services. Samouczki, dokumentacja interfejsu API i inne materiały.
+  description: 'Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.'
   services: media-services
   author: Juliako
   manager: femila
@@ -21,114 +15,114 @@ metadata:
   ms.date: 03/20/2019
   ms.author: juliako
 abstract:
-  description: Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników. <br/> Te zestawy SDK są oparte na <a href="https://aka.ms/ams-v3-rest-sdk">specyfikacji interfejsu OpenAPI (Swagger) usługi Media Services w wersji 3</a>.
+  description: 'Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników. <br/> Te zestawy SDK są oparte na <a href="https://aka.ms/ams-v3-rest-sdk">specyfikacji interfejsu OpenAPI (Swagger) usługi Media Services w wersji 3</a>.'
 sections:
-- title: 
-  items:
-  - type: list
-    style: cards
-    className: cardImageOuter
+  - title: null
     items:
-    - title: Poznaj pojęcia
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Przekazywanie do chmury i magazynowanie w niej</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kodowanie</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorowanie</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Analiza multimediów</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Tworzenie pakietów</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Ochrona</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Transmisja strumieniowa na żywo</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Odtwarzacze klienckie</a></p>
-    - title: Programowanie za pomocą interfejsu API w wersji 3
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Rozpoczynanie programowania z użyciem zestawów SDK</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Programowanie z użyciem architektury REST</a></p>
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak utworzyć konto platformy Media Services, rozpocząć kodowanie filmów wideo i odtwarzać je za pomocą usługi Azure Media Player:'
-  - type: list
-    style: icon48
+      - type: list
+        style: cards
+        className: cardImageOuter
+        items:
+          - title: Poznaj pojęcia
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Przekazywanie do chmury i magazynowanie w niej</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kodowanie</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorowanie</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Analiza multimediów</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Tworzenie pakietów</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Ochrona</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Transmisja strumieniowa na żywo</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Odtwarzacze klienckie</a></p>'
+          - title: Programowanie za pomocą interfejsu API w wersji 3
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Rozpoczynanie programowania z użyciem zestawów SDK</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Programowanie z użyciem architektury REST</a></p>'
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: media/index/dotnet.svg
-      text: Kodowanie i przesyłanie strumieniowe za pomocą platformy .NET
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-    - image:
-        src: media/index/cli.svg
-      text: Kodowanie i przesyłanie strumieniowe za pomocą interfejsu wiersza polecenia
-      href: /azure/media-services/latest/stream-files-cli-quickstart
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Kodowanie i przesyłanie strumieniowe za pomocą platformy Node.js
-      href: /azure/media-services/latest/stream-files-nodejs-quickstart
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak przesyłać strumieniowo pliki na żądanie, prowadzić emisję na żywo i analizować klipy wideo za pomocą usługi Media Services w wersji 3:'
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 1
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć konto usługi Media Services oraz zacząć kodować, tworzyć pakiety i przesyłać strumieniowo swoje wideo:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            text: Kodowanie i przesyłanie strumieniowe za pomocą platformy .NET
+            href: /azure/media-services/latest/stream-files-dotnet-quickstart
+          - image:
+              src: media/index/cli.svg
+            text: Kodowanie i przesyłanie strumieniowe za pomocą interfejsu wiersza polecenia
+            href: /azure/media-services/latest/stream-files-cli-quickstart
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Kodowanie i przesyłanie strumieniowe za pomocą platformy Node.js
+            href: /azure/media-services/latest/stream-files-nodejs-quickstart
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>W ramach samouczka przekazywany jest lokalny plik wideo, plik ten jest kodowany, po czym zakodowana zawartość jest przesyłana strumieniowo.<p/>
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-      title: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>W samouczku wyjaśniono, jak przygotować konfigurację pod kątem wydarzeń na żywo. Następnie pokazano, jak za pomocą platformy .NET utworzyć wydarzenie na żywo typu przekazywanego.</p>
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-      title: Emisja na żywo
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>W tym samouczku przedstawiono sposób analizowania wideo za pomocą interfejsu Azure Media Services API.</p>
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-      title: Analizowanie filmu wideo
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Dowiedz się, jak skonfigurować interfejsy Media Services API i używać ich do dynamicznego szyfrowania zawartości algorytmem AES-128.</p>
-      href: /azure/media-services/latest/protect-with-aes128
-      title: Dynamiczne szyfrowanie algorytmem AES-128
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Dowiedz się, jak skonfigurować interfejsy Media Services API do dynamicznego szyfrowanie zawartości z użyciem wielu mechanizmów zarządzanie prawami cyfrowymi (PlayReady, Widevine i FairPlay).</p>
-      href: /azure/media-services/latest/protect-with-drm
-      title: Dynamiczne szyfrowanie z użyciem wielu mechanizmów zarządzania prawami cyfrowymi
-    - image:
-        src: media/index/rest.svg
-      html: <p>W samouczku pokazano, jak zakodować plik zdalny na podstawie adresu URL i przesłać strumieniowo wideo.</p>
-      href: /azure/media-services/latest/stream-files-tutorial-with-rest
-      title: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: 'Następujące przykłady w usłudze GitHub pokazują, jak za pomocą interfejsów API przesyłać strumieniowo wideo, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'W samouczkach pokazano, jak bezpiecznie i na czas tworzyć pakiety wideo na żądanie i na żywo oraz wykonywać skalowanie dzięki możliwościom zintegrowanej usługi Azure CDN:'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 1
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>W ramach samouczka przekazywany jest lokalny plik wideo, plik ten jest kodowany, po czym zakodowana zawartość jest przesyłana strumieniowo.<p/>'
+            href: /azure/media-services/latest/stream-files-tutorial-with-api
+            title: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>W samouczku wyjaśniono, jak przygotować konfigurację pod kątem wydarzeń na żywo. Następnie pokazano, jak za pomocą platformy .NET utworzyć wydarzenie na żywo typu przekazywanego.</p>'
+            href: /azure/media-services/latest/stream-live-tutorial-with-api
+            title: Emisja na żywo
+          - image:
+              src: media/index/dotnet.svg
+            html: <p>W tym samouczku przedstawiono sposób analizowania wideo za pomocą interfejsu Azure Media Services API.</p>
+            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+            title: Analizowanie filmu wideo
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API i używać ich do dynamicznego szyfrowania zawartości algorytmem AES-128.</p>'
+            href: /azure/media-services/latest/protect-with-aes128
+            title: Dynamiczne szyfrowanie algorytmem AES-128
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Dowiedz się, jak skonfigurować interfejsy Media Services API do dynamicznego szyfrowanie zawartości z użyciem wielu mechanizmów zarządzanie prawami cyfrowymi (PlayReady, Widevine i FairPlay).</p>'
+            href: /azure/media-services/latest/protect-with-drm
+            title: Dynamiczne szyfrowanie z użyciem wielu mechanizmów zarządzania prawami cyfrowymi
+          - image:
+              src: media/index/rest.svg
+            html: '<p>W samouczku pokazano, jak zakodować plik zdalny na podstawie adresu URL i przesłać strumieniowo wideo.</p>'
+            href: /azure/media-services/latest/stream-files-tutorial-with-rest
+            title: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo
+  - title: Przykłady
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services
-    - image:
-        src: media/index/rest.svg
-      text: REST i Postman
-      href: https://github.com/Azure-Samples/media-services-v3-rest-postman
-    - image:
-        src: media/index/logo_dotnet_core.svg
-      text: .NET Core i Visual Studio Code
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials
-    - image:
-        src: media/index/dotnet.svg
-      text: .NET przy użyciu programu Visual Studio
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: https://github.com/Azure-Samples/media-services-v3-node-tutorials
-- title: Dokumentacja
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Następujące przykłady w usłudze GitHub pokazują, jak za pomocą interfejsów API przesyłać strumieniowo wideo, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Interfejs wiersza polecenia platformy Azure
+            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
+          - image:
+              src: media/index/rest.svg
+            text: REST i Postman
+            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
+          - image:
+              src: media/index/logo_dotnet_core.svg
+            text: .NET Core i Visual Studio Code
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
+          - image:
+              src: media/index/dotnet.svg
+            text: .NET przy użyciu programu Visual Studio
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
+  - title: Dokumentacja
     items:
-    - html: <a href="https://aka.ms/ams-v3-cli-ref">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="https://aka.ms/ams-v3-rest-ref">REST</a>
-    - html: <a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>
-    - html: <a href="https://aka.ms/ams-v3-java-ref">Java</a>
-    - html: <a href="https://aka.ms/ams-v3-python-ref">Python</a>
-    - html: <a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>
+      - type: paragraph
+        text: ''
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Interfejs wiersza polecenia platformy Azure</a>'
+          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
+          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
+          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
+          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
+          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'

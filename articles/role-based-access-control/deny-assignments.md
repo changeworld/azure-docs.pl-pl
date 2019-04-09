@@ -15,12 +15,12 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992097"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006729"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
 
@@ -59,9 +59,9 @@ W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
 Do obsługi odmowy przypisania, **System-Defined jednostki** zostały wprowadzone. Ten podmiot zabezpieczeń reprezentuje wszystkich użytkowników, grup, nazw głównych usług i zarządzanych tożsamości w katalogu usługi Azure AD. Jeśli identyfikator podmiotu zabezpieczeń jest zerowy identyfikator GUID `00000000-0000-0000-0000-000000000000` i typ podmiotu zabezpieczeń jest `SystemDefined`, podmiot zabezpieczeń reprezentuje wszystkie podmioty zabezpieczeń. `SystemDefined` może być łączone z `ExcludePrincipals` odrzucanie wszystkich podmiotów zabezpieczeń, z wyjątkiem niektórych użytkowników. `SystemDefined` ma następujące ograniczenia:
 
 - Może być używana tylko w `Principals` i nie może być używany w `ExcludePrincipals`.
-- `Principals[i].Type` musi być równa `SystemDefined`.
+- `Principals[i].Type` Musi być równa `SystemDefined`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST](deny-assignments-rest.md)
+* [Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal](deny-assignments-portal.md)
 * [Zrozumienie definicje ról na potrzeby zasobów platformy Azure](role-definitions.md)

@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841178"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008990"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć witrynę internetową przy użyciu powiązania języka JavaScript zestawu SDK usługi Mowa z usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja jest oparta na zestawie SDK usługi Mowa z usługi Microsoft Cognitive Services ([pobierz wersję 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Ta aplikacja jest oparta na zestaw SDK rozpoznawania mowy dla języka JavaScript ([pobierania wersji 1.4.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klucz subskrypcji dla usługi Mowa. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md).
 * Komputer PC lub Mac z działającym mikrofonem.
 * Edytor tekstów.
-* Bieżąca wersja przeglądarki Chrome lub Microsoft Edge.
+* Bieżąca wersja przeglądarki Chrome, Microsoft Edge lub przeglądarki Safari.
 * Opcjonalnie serwer internetowy, który obsługuje skrypty hostingu w języku PHP.
 
 ## <a name="create-a-new-website-folder"></a>Tworzenie nowego folderu witryny internetowej
@@ -52,7 +52,7 @@ Utwórz w folderze nowy plik o nazwie `index.html`, a następnie otwórz ten pli
    ```html
    <html>
    <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
+      <title>Speech SDK JavaScript Quickstart</title>
    </head>
    <body>
     <!-- UI code goes here -->
@@ -99,6 +99,10 @@ W ten sposób Twój klucz subskrypcji nigdy nie opuści serwera, ale jednocześn
 
 Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub otwórz plik index.html za pomocą swojej ulubionej przeglądarki internetowej. Będzie on prezentował prosty graficzny interfejs użytkownika umożliwiający wprowadzenie klucza subskrypcji i [regionu](regions.md) oraz wyzwolenie rozpoznawanie przy użyciu mikrofonu.
 
+> [!NOTE]
+> Ta metoda nie działa w przeglądarce Safari.
+> W przeglądarce Safari przykładowej strony internetowej musi być hostowana na serwerze sieci web. Safari nie zezwala na witryn sieci Web załadowanego z pliku lokalnego do użycia mikrofonu.
+
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Kompilowanie i uruchamianie przykładu za pomocą serwera internetowego
 
 Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej publiczny adres URL, pod którym hostowany jest folder, wprowadź swój [region](regions.md) i wyzwól rozpoznawanie za pomocą mikrofonu. Jeśli skonfigurowano tę funkcję, pobierze ona token ze źródła tokenu.
@@ -106,4 +110,4 @@ Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej p
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)
+> [Eksploruj przykładowe skrypty JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)

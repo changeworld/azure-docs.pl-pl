@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 04/8/2019
 ms.custom: seodec18
-ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895870"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257981"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 za pomocą tożsamości zarządzanych
 
@@ -71,7 +71,7 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
 
    ![Konfiguracji zadania usługi Stream Analytics zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij przycisk listy rozwijanej i wybierz tryb uwierzytelniania **tożsamości zarządzanej (wersja zapoznawcza)**.
+2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij tryb uwierzytelniania, listy rozwijanej i wybierz pozycję ** tożsamości zarządzanej **.
 
    ![Azure Data Lake Store, dane wyjściowe zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

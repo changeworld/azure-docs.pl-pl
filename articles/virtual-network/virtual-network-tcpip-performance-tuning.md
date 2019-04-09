@@ -19,7 +19,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/30/2019
+ms.date: 04/02/2019
 ms.author:
 - rimayber
 - dgoddard
@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 664c8b659152a370d7fb31907b6cdbcd414dce31
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.openlocfilehash: 6d53b8fe46997f6b4f915bfb14a64d69b22cc5d4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905107"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057833"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -141,7 +141,7 @@ W poniższej tabeli przedstawiono liniową odległość między dwiema lokalizac
 
 Standardowa wartość 200 może służyć do szybkości propagacji — wartość jest odległość w świetle liczniki przybliżone ilości tych danych w 1 milisekundy.
 
-W przykładzie w Nowym Jorku celu San Francisco jest odległość liniową 4,148 km. Minimalna RTT = 2 * (4,148 / 20). Dane wyjściowe równanie będzie w milisekundach.
+W przykładzie w Nowym Jorku celu San Francisco jest odległość liniową 4,148 km. Minimalna RTT = 2 * (4,148 / 200). Dane wyjściowe równanie będzie w milisekundach.
 
 Podobnie jak fizyczna odległość między dwiema lokalizacjami stały mogą stać się rzeczywistością, jeśli wymagana jest maksymalną wydajność sieci, opcja najbardziej logicznym jest wybranie miejsca docelowe z najmniejszą odległość między nimi. W dalszej kolejności decyzje dotyczące projektu w ramach sieci wirtualnej można nawiązać zoptymalizować ścieżki ruchu i zmniejszyć opóźnienie. Te zagadnienia dotyczące sieci wirtualnej są opisane w poniższej sekcji zagadnienia dotyczące projektowania sieci.
 
@@ -350,3 +350,7 @@ Dodatkowe informacje można znaleźć poniżej:
 Klienci platformy Azure może zostać wyświetlony pakiety TCP przy użyciu flag TCP (WOREK, potwierdzenia Zduplikowanej, RETRANSMISJI i szybkie ponowne przesłanie) w przechwytywania pakietów, które mogą wskazywać problemy z wydajnością sieci. Te pakiety wskazują specjalnie nieefektywności sieci na skutek utraty pakietów. Utrata pakietów nie jest jednak zawsze ze względu na problemy z wydajnością systemu Azure. Problemy z wydajnością może wynikać z aplikacji, system operacyjny lub inne problemy, które nie może być bezpośrednio związana z platformą Azure. Jest również pamiętać, że niektóre retransmisji lub zduplikowane potwierdzenia w sieci jest normalne — protokołów TCP zostały zbudowane wiarygodne. I dowody tych pakietów protokołu TCP w przechwytywania pakietów nie musi oznaczać problem z siecią systemowych, chyba że są one nadmierne.
 
 Jednakże należy podać wyraźnie czy te typy pakietów oznaczeń przepustowość TCP nie osiągnęła maksymalną wydajność — przyczyn omówionych w innych częściach.
+
+## <a name="next-steps"></a>Następne kroki
+
+Teraz, gdy Wiemy już, dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure, kolejne kroki obejmują [planowanie innych sieci wirtualnych](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) uwagi lub [Dowiedz się więcej na temat łączenia i konfigurowanie sieci wirtualnych](https://docs.microsoft.com/en-us/azure/virtual-network/).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 764ad8f1ca19238e1986d1d187d19c405963a832
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890682"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją PureCloud by Genesys
 
@@ -50,7 +50,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji PureCloud by Genesys z usługą Azure AD, należy dodać tę aplikację z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację PureCloud by Genesys z galerii, wykonaj następujące czynności:**
+**Aby dodać PureCloud przez Genesys z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -260,7 +260,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 Użytkownicy usługi Azure AD mogą logować się do aplikacji PureCloud by Genesys po aprowizowaniu w aplikacji PureCloud by Genesys. W aplikacji PureCloud by Genesys aprowizowanie wykonywane jest ręcznie.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do aplikacji PureCloud by Genesys jako administrator.
 
@@ -290,7 +290,7 @@ Po kliknięciu kafelka PureCloud by Genesys w panelu dostępu powinno nastąpić
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

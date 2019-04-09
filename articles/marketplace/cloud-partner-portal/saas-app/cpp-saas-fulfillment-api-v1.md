@@ -12,27 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 5c25d6703fe631a401994039200539156cc7b4de
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579465"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009738"
 ---
-# <a name="saas-fulfillment-apis-version-1"></a>SaaS realizacji interfejsy API wersji 1
+# <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS realizacji interfejsy API wersji 1 (przestarzałe)
 
-W tym artykule opisano sposób tworzenia oferty SaaS za pomocą interfejsów API. Interfejsy API są niezbędne w przypadku sprzedaży za pośrednictwem wybrane platformy Azure, dzięki czemu subskrypcje do swojej oferty SaaS.  
+W tym artykule opisano sposób tworzenia oferty SaaS za pomocą interfejsów API. Interfejsy API, składa się z pozostałych metod i punktów końcowych, są niezbędne dla Jeśli sprzedajesz za pośrednictwem wybrane platformy Azure, dzięki czemu subskrypcje do swojej oferty SaaS.  
 
 > [!WARNING]
-> Ta początkowa wersja interfejsu API realizacji SaaS jest przestarzała; Zamiast tego należy użyć [SaaS realizacji interfejsu API w wersji 2](./cpp-saas-fulfillment-api-v2.md).
-
-
-W tym artykule jest podzielona na dwie sekcje:
-
--   Usługa Usługa uwierzytelniania między usługą SaaS i portalu Azure Marketplace
--   Metody interfejsu API i punktów końcowych
+> Ta początkowa wersja interfejsu API realizacji SaaS jest przestarzała; Zamiast tego należy użyć [SaaS realizacji interfejsu API w wersji 2](./cpp-saas-fulfillment-api-v2.md).  Ten interfejs API jest obecnie są obsługiwana wyłącznie do obsługi istniejących wydawców. 
 
 Aby pomóc w zintegrowaniu usługi SaaS dzięki platformie Azure dostępne są następujące interfejsy API:
 
@@ -41,112 +36,11 @@ Aby pomóc w zintegrowaniu usługi SaaS dzięki platformie Azure dostępne są n
 -   Convert
 -   Cofnij subskrypcję
 
-Na poniższym diagramie przedstawiono przepływ subskrypcji nowych klientów i stosowania tych interfejsów API:
 
-![SaaS oferują usługi flow interfejsu API](./media/saas-offer-publish-api-flow-v1.png)
-
-
-## <a name="service-to-service-authentication-between-saas-service-and-azure-marketplace"></a>Usługa uwierzytelniania usługi między usługą SaaS i portalu Azure marketplace
-
-Azure nie nakłada żadnych ograniczeń dotyczących uwierzytelniania, uwidocznionego przez usługi SaaS dla swoich użytkowników końcowych. Jednakże jeśli chodzi o usłudze SaaS podczas komunikowania się z interfejsów API usługi Azure Marketplace, uwierzytelnianie odbywa się w kontekście aplikacji usługi Azure Active Directory (Azure AD).
-
-W poniższej sekcji opisano, jak utworzyć aplikację usługi Azure AD.
-
-
-### <a name="register-an-azure-ad-application"></a>Rejestrowanie aplikacji usługi Azure AD
-
-Każda aplikacja, która ma korzystać z funkcji usługi Azure AD, musi najpierw zostać zarejestrowana w dzierżawie usługi Azure AD. Ten proces rejestracji obejmuje, zapewniając usługi Azure AD szczegółów dotyczących aplikacji, na przykład adres URL, gdzie znajduje się, adres URL, aby wysyłać odpowiedzi, po uwierzytelnieniu użytkownika identyfikatora URI, który identyfikuje aplikację i tak dalej.
-
-Aby zarejestrować nową aplikację w witrynie Azure portal, wykonaj następujące czynności:
-
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
-2. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, kliknij konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-3. W okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** usługi, kliknij przycisk **rejestracje aplikacji**i kliknij przycisk **rejestrowanie nowej aplikacji**.
-
-   ![Rejestracje aplikacji AD SaaS](./media/saas-offer-app-registration-v1.png)
-
-4. Na stronie tworzenia wprowadź aplikację\'informacje rejestracyjne s:
-   - **Nazwa**: wprowadź opisową nazwę aplikacji
-   - **Typ aplikacji**: 
-     - Wybierz opcję **Natywna** dla [aplikacji klienckich ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), które są zainstalowane lokalnie na urządzeniu. To ustawienie jest używane w przypadku [klientów natywnych](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) publicznego protokołu OAuth.
-     - Wybierz **aplikacji sieci Web / interfejs API** dla [aplikacje klienckie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) i [aplikacji interfejsu API i zasobów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) są instalowane na zabezpieczonym serwerze. To ustawienie jest używane do uwierzytelniania OAuth poufne [sieci web klientów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) i publicznych [klientów z systemem agenta użytkownika](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
-     Ta sama aplikacja może ujawniać zarówno klienta, jak i interfejs API lub zasób.
-   - **Adres URL logowania**: W przypadku aplikacji interfejsu API i aplikacji sieci Web Podaj podstawowy adres URL aplikacji. Na przykład **http:\//localhost:31544** może być adres URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy następnie użyje tego adresu URL do logowania do aplikacji klienta sieci web.
-   - **Identyfikator URI przekierowania**: W przypadku aplikacji natywnych Podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla twojej aplikacji, na przykład **http:\//MyFirstAADApp**.
-
-     ![Rejestracje aplikacji AD SaaS](./media/saas-offer-app-registration-v1-2.png)
-
-     Konkretne przykłady dla aplikacji sieci web lub aplikacji natywnych, zapoznaj się szybki start z przewodnikiem konfiguracje, które są dostępne w sekcji wprowadzenie [przewodnik dla deweloperów usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-
-5. Po zakończeniu kliknij pozycję **Gotowe**. Usługa Azure AD przypisuje unikatowy identyfikator aplikacji do aplikacji, a\'ponowne przekierowanie do aplikacji\'strony głównej rejestracji s. W zależności od tego, czy aplikacja jest internetowa czy natywna, dostępne są różne opcje umożliwiające dodawanie dodatkowych funkcji do aplikacji.
-
->[!Note]
->Domyślnie nowo zarejestrowana aplikacja jest skonfigurowane i umożliwiają tylko użytkownicy z tej samej dzierżawie, aby zalogować się do aplikacji.
-
-<a name="api-methods-and-endpoints"></a>Metody interfejsu API i punktów końcowych
--------------------------
+## <a name="api-methods-and-endpoints"></a>Metody interfejsu API i punktów końcowych
 
 Poniżej opisano metody interfejsu API i punktów końcowych dostępnej włączania subskrypcji skorzystania z oferty SaaS.
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Pobierz token oparty na aplikacji usługi Azure AD
-
-Metoda HTTP
-
-`GET`
-
-*Adres URL żądania*
-
-**https://login.microsoftonline.com/*{Identyfikatordzierżawy}*/oauth2/token**
-
-*Parametr identyfikatora URI*
-
-|  **Nazwa parametru**  | **Wymagane**  | **Opis**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True          | Identyfikator dzierżawy zarejestrowana aplikacja usługi AAD   |
-|  |  |  |
-
-
-*Nagłówek żądania*
-
-|  **Nazwa nagłówka**  | **Wymagane** |  **Opis**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True         | Typ zawartości skojarzonej z żądaniem. Wartość domyślna to `application/x-www-form-urlencoded`.  |
-|  |  |  |
-
-
-*Treść żądania*
-
-| **Nazwa właściwości**   | **Wymagane** |  **Opis**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | Typ udzielenia uprawnień. Wartość domyślna to `client_credentials`.                    |
-|  Client_id          | True         |  Identyfikator klienta/aplikacji skojarzone z aplikacją usługi Azure AD.                  |
-|  client_secret      | True         |  Hasło skojarzone z aplikacją usługi Azure AD.                               |
-|  Zasób           | True         |  Zasób docelowy, dla którego żądany jest token. Wartość domyślna to `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
-|  |  |  |
-
-
-*Odpowiedź*
-
-|  **Nazwa**  | **Typ**       |  **Opis**    |
-| ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | Żądanie zakończone powodzeniem   |
-|  |  |  |
-
-*TokenResponse*
-
-Przykładowe tokenu odpowiedzi:
-
-``` json
-  {
-      "token_type": "Bearer",
-      "expires_in": "3600",
-      "ext_expires_in": "0",
-      "expires_on": "15251…",
-      "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
-```
 
 ### <a name="marketplace-api-endpoint-and-api-version"></a>Punkt końcowy interfejsu API w portalu Marketplace i wersja interfejsu API
 
@@ -207,7 +101,7 @@ Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawc�
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                                         |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token zostały rozpoznane prawidłowo.                                                            |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub określono nieprawidłową wersję interfejsu api. Nie można rozpoznać tokenu, ponieważ albo token jest źle sformułowany lub wygasłe (token jest prawidłowy tylko przez 1 godzinę po wygenerowaniu). |
@@ -223,7 +117,7 @@ Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawc�
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Yes          | Żądaj Identyfikatora otrzymanych od klienta.                                                                   |
 | x-ms-correlationid | Yes          | Identyfikator korelacji, jeśli przekazany przez klienta, w przeciwnym razie wartość ta jest identyfikator serwera korelacji.                   |
-| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania. |
+| x-ms-activityid    | Yes          | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Ten identyfikator jest używany do żadnych uzgadniania. |
 | Retry-After        | Nie           | Ta wartość jest ustawiona tylko w przypadku odpowiedzi 429.                                                                   |
 |  |  |  |
 
@@ -234,11 +128,11 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | Unikatowy identyfikator subskrypcji w modelu saas, uzyskany po rozwiązaniu tokenu za pośrednictwem rozwiązania interfejsu API.                              |
+| subscriptionId      | Unikatowy identyfikator SaaS subskrypcja, która uzyskuje się po usunięciu tokenu za pośrednictwem rozwiązania interfejsu API.                              |
 | wersja interfejsu API         | Wersja operacji przy użyciu dla tego żądania. |
 |  |  |
 
@@ -269,7 +163,7 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -297,9 +191,9 @@ Odpowiedzi 202 monitowanie o stanie operacji żądania w nagłówku "Operacja lo
 
 Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie subskrybowanych plan do nowego planu.
 
-**POPRAWKI**
+**PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -333,7 +227,7 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -363,7 +257,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -382,7 +276,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -413,7 +307,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}* ? api-version = 2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -453,7 +347,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |
@@ -481,7 +375,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -525,7 +419,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |
@@ -597,7 +491,7 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |

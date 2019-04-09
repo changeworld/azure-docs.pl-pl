@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894973"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058445"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -32,7 +32,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 - Gotowość do migracji na maszyny wirtualne platformy Azure można ocenić tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0, 6.5 lub 6.7).
 - Obsługa dla funkcji Hyper-V jest obecnie w wersji zapoznawczej w pomocy technicznej w środowisku produkcyjnym, jeśli chcesz ją wypróbować, zarejestruj się [tutaj.](https://aka.ms/migratefuture)
 - Dla oceny serwerów fizycznych, można korzystać z naszych [partnera narzędzia](https://azure.microsoft.com/migration/partners/).
-- Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
+- Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i w jednym projekcie. Mamy wersji zapoznawczej dostępne umożliwiająca odnajdywanie maksymalnie 10 000 maszyn wirtualnych VMware w jednym projekcie przy użyciu pojedynczego urządzenia, jeśli interesują Cię ją wypróbowujesz, zarejestruj się [tutaj.](https://aka.ms/migratefuture)
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
 -  Projekt usługi Azure Migrate można utworzyć tylko w następujących lokalizacjach geograficznych. Jednak nie ogranicza to możliwości tworzenia przypisań dla innych lokalizacji docelowych platformy Azure.

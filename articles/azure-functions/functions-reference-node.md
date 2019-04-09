@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437581"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010120"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -141,7 +141,7 @@ Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez 
 
 Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących metod (nie połączyć te metody):
 
-- **_[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiektu z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
+- **_[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiekt z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -275,7 +275,7 @@ Pozwala na zapis w dziennikach funkcji przesyłania strumieniowego na domyślny 
 | ---------------------- | ------------------------------------------ |
 | **Błąd (_komunikat_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
 | **Ostrzeżenie (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
-| **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
+| **informacje o (_komunikat_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
 | **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziom śledzenia Ostrzeżenie:
@@ -350,12 +350,12 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 | Właściwość      | Opis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Obiekt, który zawiera treść żądania.               |
-| _headers_     | Obiekt, który zawiera nagłówki żądania.                   |
-| _— Metoda_      | Metoda HTTP żądania.                                |
+| _treść_        | Obiekt, który zawiera treść żądania.               |
+| _Nagłówki_     | Obiekt, który zawiera nagłówki żądania.                   |
+| _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
-| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
+| _query_       | Obiekt zawierający parametry zapytania.                  |
 | _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 
@@ -365,8 +365,8 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Obiekt, który zawiera treści odpowiedzi.         |
-| _headers_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
+| _treść_    | Obiekt, który zawiera treści odpowiedzi.         |
+| _Nagłówki_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
 | _isRaw_   | Wskazuje, że formatowanie jest pomijana dla odpowiedzi.    |
 | _status_  | Kod stanu HTTP odpowiedzi.                     |
 

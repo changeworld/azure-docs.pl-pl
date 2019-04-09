@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Wyszukiwanie wiadomości — zestaw SDK wyszukiwania wiadomości Bing dla języka C#'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika Szybki start, aby wyszukać wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka Python i przetworzyć odpowiedź.
+description: Użyj tego przewodnika Szybki Start, aby wyszukać wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla C#, a przetworzenie odpowiedzi.
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 51de0397e246d3b9e7d4878fd2c8050af1f0ce6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: fe9010215e5b6c4c9ece2372e3ce87bcf99b150c
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090053"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057238"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla języka C#
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 0b39943b318afd6f9aabd6ab0711651d64e975cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2853bd5539a40e3b38927f619756fe37a4cec984
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121608"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006861"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Szybki start: komunikacja z aplikacjami urządzenia w języku C# za pomocą strumieni urządzeń usługi IoT Hub (wersja zapoznawcza)
 
@@ -46,6 +46,12 @@ Możesz sprawdzić bieżącą wersję języka C# na komputerze deweloperskim prz
 dotnet --version
 ```
 
+Uruchom następujące polecenie, aby dodać rozszerzenia usługi Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure do swojego wystąpienia usługi Cloud Shell. Rozszerzenia IOT dodaje określone polecenia usługi IoT Hub, IoT Edge i usługi aprowizacji urządzeń IoT (DPS) do wiersza polecenia platformy Azure.
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 Pobierz przykładowy projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip i wyodrębnij archiwum ZIP. Będzie to konieczne na obu urządzeniach i po stronie usługi.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
@@ -56,14 +62,13 @@ Pobierz przykładowy projekt C# z https://github.com/Azure-Samples/azure-iot-sam
 
 Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tym przewodniku Szybki start opisano rejestrowanie urządzenia symulowanego przy użyciu usługi Azure Cloud Shell.
 
-1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby dodać rozszerzenie interfejsu wiersza polecenia usługi IoT Hub i utworzyć tożsamość urządzenia. 
+1. Uruchom następujące polecenie w usłudze Azure Cloud Shell do tworzenia tożsamości urządzenia.
 
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
    **MyDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj nazwy MyDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
@@ -166,4 +171,4 @@ W tym przewodniku Szybki start skonfigurowano centrum IoT Hub, zarejestrowano ur
 Aby dowiedzieć się więcej na temat strumieni urządzeń, użyj poniższych linków:
 
 > [!div class="nextstepaction"]
-> [Omówienie strumieni urządzeń](./iot-hub-device-streams-overview.md)
+> [Przegląd strumieni urządzenia](./iot-hub-device-streams-overview.md)

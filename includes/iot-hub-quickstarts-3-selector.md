@@ -10,7 +10,7 @@ ms.author: rezas
 ms.custom: include file
 ms.openlocfilehash: 845196c78702c6a94e30554a3346ed776366aac9
 ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
 ms.locfileid: "54830620"

@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652301"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010417"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -60,9 +60,9 @@ W poniższej tabeli porównano opcje przechowywania dzienników oraz dodanie, sz
 
 | Zasób | Używana do |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej poniżej, schematy skorelowane ze zdarzeniami użytkownika w aplikacji. Jest to jedyne rozwiązanie, które uwzględnia akcji użytkownika lub sygnały, mapowania zdarzeń z wyszukiwania zainicjowanego przez użytkownika, w przeciwieństwie do Filtrowanie żądań przesyłanych przez kod aplikacji. Aby użyć tego podejścia, kopiowania i wklejania kod Instrumentacji do plików źródłowych do trasy żądania informacji do usługi Application Insights. Aby uzyskać więcej informacji, zobacz [analiza ruchu wyszukiwania](search-traffic-analytics.md). |
-| [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane do obszaru roboczego usługi Log Analytics. Obszar roboczy, aby zwrócić szczegółowe informacje z dziennika można uruchamiać zapytania. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z dziennikami usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane na kontener obiektów Blob i przechowywane w plikach w formacie JSON. Użyj edytora JSON, aby wyświetlić zawartość pliku.|
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Zarejestrowane zdarzenia i metryki zapytania, oparte na schematach poniżej, skorelowane ze zdarzeniami użytkownika w aplikacji. Jest to jedyne rozwiązanie, które uwzględnia akcji użytkownika lub sygnały, mapowania zdarzeń z wyszukiwania zainicjowanego przez użytkownika, w przeciwieństwie do Filtrowanie żądań przesyłanych przez kod aplikacji. Aby użyć tego podejścia, kopiowania i wklejania kod Instrumentacji do plików źródłowych do trasy żądania informacji do usługi Application Insights. Aby uzyskać więcej informacji, zobacz [analiza ruchu wyszukiwania](search-traffic-analytics.md). |
+| [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki zapytania, oparte na schematach poniżej. Zdarzenia są rejestrowane do obszaru roboczego usługi Log Analytics. Obszar roboczy, aby zwrócić szczegółowe informacje z dziennika można uruchamiać zapytania. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z dziennikami usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki zapytania, oparte na schematach poniżej. Zdarzenia są rejestrowane na kontener obiektów Blob i przechowywane w plikach w formacie JSON. Użyj edytora JSON, aby wyświetlić zawartość pliku.|
 | [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Zarejestrowane zdarzenia i metryki zapytania, w oparciu o schematy opisany w tym artykule. Wybierz tę opcję jako usługa zbierania danych alternatywnych dla bardzo dużych dzienników. |
 
 Dzienniki usługi Azure Monitor i usługi Blob storage są dostępne jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Application Insights jest bezpłatna zarejestrować i używać tak długo, jak rozmiar danych aplikacji podlega pewnym ograniczeniom (zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) Aby uzyskać szczegółowe informacje).
@@ -96,7 +96,7 @@ Rejestrowanie jest włączone po zapisaniu profilu. Kontenery są tworzone tylko
 * insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
 * insights — metryki pt1m: dla metryki
 
-Może potrwać godzinę przed kontenery pojawi się w magazynie obiektów Blob. Brak obiektu blob na godzinę na kontener. 
+**Może potrwać godzinę przed kontenery pojawi się w magazynie obiektów Blob. Brak obiektu blob na godzinę na kontener.**
 
 Możesz użyć [programu Visual Studio Code](#download-and-open-in-visual-studio-code) lub inny edytor plików JSON, aby wyświetlić pliki. 
 

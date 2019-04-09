@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404641"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057153"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure — często zadawane pytania
 
@@ -200,6 +200,14 @@ Wrażliwy na opóźnienia w środowiskach należy używać rozwiązania fiber z 
 
 Nie, Avere vFXT ma działać w środowisku sieciowym zabezpieczony za pomocą najlepszych rozwiązań.  
 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Czy można ograniczyć dostęp do Internetu, z sieci wirtualnej dla mojego klastra? 
+
+Ogólnie rzecz biorąc można skonfigurować dodatkowe zabezpieczenia w Twojej sieci wirtualnej, zgodnie z potrzebami, ale pewne ograniczenia może zakłócać działanie klastra.
+
+Na przykład ograniczając ruch wychodzący do Internetu z sieci wirtualnej powoduje występowanie problemów dla klastra, chyba że dodasz reguł, które jawnie zezwolić na dostęp do AzureConnectors i AzureCloud. Ta sytuacja jest opisana w [uzupełniające dokumentacji w serwisie GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+
+Aby uzyskać pomoc dotyczącą zabezpieczeń dostosowane, skontaktuj się z działem pomocy technicznej zgodnie z opisem w [Uzyskaj pomoc dotyczącą systemu](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
+
 ## <a name="technical-back-end-storage-core-filers"></a>Technical Preview: Magazynu zaplecza (filtrach core)
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Ile filtrach core obsługuje się w jednym środowisku vFXT Avere?
@@ -278,9 +286,9 @@ Nie, "zawsze włączona" wymagają Avere vFXT klastrów usługi. Klastry można 
 
 Aby rozpocząć pracę z Avere vFXT dla platformy Azure, przeczytaj następujące artykuły, aby dowiedzieć się, jak planować i wdrażać własny system:
 
-* [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md)
+* [Planowanie systemu Avere vFXT](avere-vfxt-deploy-plan.md)
 * [Omówienie wdrażania](avere-vfxt-deploy-overview.md)
 * [Przygotowywanie do utworzenia klastra vFXT Avere](avere-vfxt-prereqs.md)
-* [Wdrażanie klastra Avere vFXT](avere-vfxt-deploy.md)
+* [Wdrażanie klastra vFXT Avere](avere-vfxt-deploy.md)
 
 Aby dowiedzieć się więcej o możliwościach i zastosowań Avere vFXT, odwiedź stronę [vFXT Avere dla platformy Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

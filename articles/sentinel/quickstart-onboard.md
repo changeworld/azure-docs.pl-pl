@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399679"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006591"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
 
@@ -36,21 +36,19 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 
 ## <a name="global-prerequisites"></a>Globalne wymagania wstępne
 
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktywna subskrypcja platformy Azure, jeśli nie masz, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed przystąpieniem do wykonywania.
 
 - Zaloguj się obszar roboczy usługi Analytics. Dowiedz się, jak [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
-- Uprawnienia współautora do dzierżawy usługi, aby włączyć usługi Azure przez wartownika
-
-- Globalny dzierżawy lub uprawnienia administratora zabezpieczeń
- 
+    - Powiązane uprawnienia współautora do grupy zasobów platformy Azure przez wartownika
+    - Uprawnienia współautora do grupy zasobów, aby włączyć usługi Azure przez wartownika 
 
 ## Włącz wartownik platformy Azure <a name="enable"></a>
 
 1. Przejdź do witryny Azure portal.
 2. Upewnij się, czy wybrano subskrypcję, w którym przez wartownika Azure zostanie utworzona. 
 3. Wyszukaj wartownik platformy Azure. 
-   ![Wyszukiwanie](./media/quickstart-onboard/search-product.png)
+   ![szukaj](./media/quickstart-onboard/search-product.png)
 
 1. Kliknij przycisk **+ Dodaj**.
 1. Wybierz obszar roboczy, który chcesz użyć lub utworzyć nowy. Przez wartownika Azure można uruchamiać na więcej niż jednego obszaru roboczego, ale dane są izolowane do jednego obszaru roboczego.

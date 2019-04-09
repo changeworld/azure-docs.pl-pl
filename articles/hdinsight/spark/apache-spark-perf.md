@@ -3,18 +3,18 @@ title: Optymalizowanie zadań platformy Spark dla wydajności — Azure HDInsigh
 description: Pokazuje typowe strategie uzyskać najlepszą wydajność klastry Spark.
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: MT
+ms.date: 04/03/2019
+ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117864"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058632"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
 
@@ -33,7 +33,7 @@ Wcześniejszych wersji platformy Spark za pomocą danych dane abstrakcyjne, 1.3 
     * Bezpośredni dostęp do pamięci.
     * Niski wyrzucania elementów bezużytecznych (GC)
     * Nie jak przyjazny dla dewelopera jako zestawy danych, ponieważ nie ma żadnych sprawdzanie w czasie kompilacji lub programowania obiektu domeny.
-* **Zestawy danych**
+* **DataSets**
     * Dobre w złożone potoki przetwarzania ETL, w których wpływ na wydajność jest do zaakceptowania.
     * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność.
     * Udostępnia optymalizacji zapytań za pomocą Catalyst.
@@ -60,8 +60,9 @@ Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Az
 
 | Typ Store | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standardowa** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage | **ADL:**//url/ | **Szybciej** | Yes | Przejściowy klastra |
+| Azure Blob Storage | **wasb [s]:**//url/ | **Standardowa (Standard)** | Yes | Przejściowy klastra |
+| Azure Data Lake Storage Gen 2| **abfs [s]:**//url/ | **Szybsza** | Yes | Przejściowy klastra |
+| Azure Data Lake Storage Gen 1| **ADL:**//url/ | **Szybsza** | Yes | Przejściowy klastra |
 | Lokalny system plików HDFS | **hdfs:**//url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
 
 ## <a name="use-the-cache"></a>Użycie pamięci podręcznej

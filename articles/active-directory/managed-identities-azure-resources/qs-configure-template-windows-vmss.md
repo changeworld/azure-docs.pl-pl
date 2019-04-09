@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b37c4845526227799173b09f468701954fc7b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449327"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009873"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na skalę maszyny wirtualnej platformy Azure przy użyciu szablonu
 
@@ -60,7 +60,7 @@ Niezależnie od wybranej opcji składni szablonu jest taka sama podczas początk
 
 W tej sekcji można będzie włączyć i wyłączyć przypisany systemowo tożsamości zarządzanej przy użyciu szablonu usługi Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia do tworzenia zestawu skalowania maszyn wirtualnych i istniejącego zestawu skalowania maszyn wirtualnych
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia do tworzenia zestawu skalowania maszyn wirtualnych i istniejącego zestawu skalowania maszyn wirtualnych
 
 1. Czy możesz się zarejestrować na platformę Azure lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, który zawiera zestaw skalowania maszyn wirtualnych.
 2. Aby włączyć tożsamość zarządzaną przypisana przez system, należy załadować szablon do edytora, odszukaj `Microsoft.Compute/virtualMachinesScaleSets` zasobów zainteresowania w ramach zasobów sekcji i Dodaj `identity` właściwości w tym samym poziomie co `"type": "Microsoft.Compute/virtualMachinesScaleSets"` właściwości. Należy użyć następującej składni:

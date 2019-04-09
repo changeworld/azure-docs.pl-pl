@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.openlocfilehash: 7f1379bbd3a52b364efc5e4c47612e645fa119ed
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892518"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057000"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Dodaj warstwę bąbelków do mapy
 
 W tym artykule dowiesz się, jak można renderować punktu danych ze źródła danych jako warstwa Bąbelek na mapie. Warstwy bąbelków renderowane punktów jako okręgów na mapie z protokołem radius stały pikseli. 
 
 > [!TIP]
-> Warstwy bąbelków domyślnie będą renderowane współrzędne wszystkich geometrii w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje geometrii punktu funkcje zestawu `filter` właściwości warstwy `['==', '$type', 'Point']`
+> Warstwy bąbelków domyślnie będą renderowane współrzędne wszystkich geometrii w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje geometrii punktu funkcje zestawu `filter` właściwości warstwy, aby `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` aby obejmują również funkcje MultiPoint.
 
-## <a name="add-a-bubble-layer"></a>Dodaj warstwę bąbelkowych
+## <a name="add-a-bubble-layer"></a>Dodawanie warstwy bąbelkowej
 
-<iframe height='500' scrolling='no' title='BubbleLayer źródła danych' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
@@ -38,7 +38,7 @@ Tablica obiektów punktów, źródła danych i warstwy bąbelków są tworzone i
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Pokaż etykiety z warstwą bąbelkowych
 
-<iframe height='500' scrolling='no' title='Wielowarstwowych źródła danych' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>wielowarstwowych DataSource</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>wielowarstwowych DataSource</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
 Powyższy kod dowiesz się, jak wizualizować i etykiety danych na mapie. Pierwszy blok powyższy kod tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
@@ -73,4 +73,4 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 Zobacz następujące artykuły, aby uzyskać więcej przykładów kodu dodać do map:
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę symboli](./map-add-pin.md)
+> [Dodawanie warstwy symboli](./map-add-pin.md)

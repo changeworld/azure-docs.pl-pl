@@ -4,17 +4,17 @@ description: Dowiedz się, jak utworzyć konto usługi Azure Automation i urucho
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 01/15/2019
+ms.date: 04/04/2019
 ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5fd29c47f87dc65d67961224d1e2c103871d4b06
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: 7f7905a4b09e685ad98a1663333aa32bc1d7ae90
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592455"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009516"
 ---
 # <a name="create-an-azure-automation-account"></a>Tworzenie konta usługi Azure Automation
 
@@ -32,7 +32,7 @@ Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 1. Wybierz pozycję **Narzędzia do zarządzania**, a następnie wybierz pozycję **Automatyzacja**.
 
-1. Wprowadź informacje o koncie. W obszarze **Utwórz konto Uruchom jako platformy Azure** wybierz pozycję **Tak**, aby artefakty upraszczające uwierzytelnianie zostały automatycznie włączone. Należy pamiętać, że po wybraniu nazwy konta usługi Automation nie można jej zmienić. *Nazwy kont usługi Automation są unikatowe w każdym regionie i grupie zasobów. Nazwy kont usługi Automation, które zostały usunięte, mogą nie być natychmiast dostępne.* Jedno konto usługi Automation może zarządzać zasobami we wszystkich regionach i subskrypcjach dla danej dzierżawy. Po zakończeniu kliknij przycisk **Utwórz**, aby rozpocząć wdrażanie konta usługi Automation.
+1. Wprowadź informacje o koncie. W obszarze **Utwórz konto Uruchom jako platformy Azure** wybierz pozycję **Tak**, aby artefakty upraszczające uwierzytelnianie zostały automatycznie włączone. Należy pamiętać, że po wybraniu nazwy konta usługi Automation nie można jej zmienić. *Nazwy kont usługi Automation są unikatowe dla regionie i grupie zasobów. Nazwy kont usługi Automation, które zostały usunięte może nie być dostępne natychmiast.* Jedno konto usługi Automation może zarządzać zasobami we wszystkich regionach i subskrypcjach dla danej dzierżawy. Po zakończeniu kliknij przycisk **Utwórz**, aby rozpocząć wdrażanie konta usługi Automation.
 
     ![Wprowadzanie na stronie informacji dotyczących konta usługi Automation](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
@@ -61,14 +61,10 @@ Uruchom jeden z elementów runbook z samouczka.
 
 1. Gdy **Stan zadania** będzie miał wartość **Uruchomione**, kliknij pozycję **Dane wyjściowe** lub **Wszystkie dzienniki**, aby wyświetlić dane wyjściowe zadania elementu runbook. W przypadku tego elementu runbook z samouczka danymi wyjściowymi jest lista Twoich zasobów platformy Azure.
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Gdy grupa zasobów, konto usługi Automation i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu wybierz grupę zasobów konta usługi Automation i kliknij przycisk **Usuń**.
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wdrożono konto usługi Automation, uruchomiono element runbook i wyświetlono wyniki zadania. Aby dowiedzieć się więcej na temat usługi Azure Automation, przejdź do przewodnika Szybki start dotyczącego tworzenia pierwszego elementu runbook.
 
 > [!div class="nextstepaction"]
-> [Przewodnik Szybki start usługi Automation — tworzenie elementu runbook](./automation-quickstart-create-runbook.md)
+> [Szybki Start usługi Automation — Tworzenie elementu Runbook](./automation-quickstart-create-runbook.md)
 

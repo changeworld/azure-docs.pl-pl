@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371178"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267705"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Usługa Azure Storage cele skalowalności i wydajności dla kont magazynu
 
@@ -23,7 +23,7 @@ Pamiętaj przetestować usługi w celu określenia, czy jego wydajność, spełn
 
 Gdy aplikacja osiągnie limit partycji radzić dla obciążenia, usługi Azure Storage rozpoczyna zwracają kod błędu: 503 (serwer zajęty) lub kod błędu: 500 odpowiedzi (limit czasu operacji). Jeśli występują błędy 503 należy rozważyć zmodyfikowanie aplikacji umożliwiająca użycie zasady wykładniczego wycofywania ponownych prób. Wykładniczego wycofywania umożliwia obciążenia na partycji, aby zmniejszyć i działają nawet pod dużym nagłych skoków ruchu do tej partycji.
 
-## <a name="standard-performance-storage-account-scale-limits"></a>Limity skalowania konta magazynu wydajności warstwy standardowa
+## <a name="storage-account-scale-limits"></a>Limity skalowania dla konta magazynu
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
@@ -45,6 +45,36 @@ Aby uzyskać więcej informacji na temat cele skalowalności i wydajności dla u
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+### <a name="premium-files-scale-targets"></a>Files w warstwie Premium skalowanie elementów docelowych
+
+Istnieją trzy kategorie ograniczenia do uwzględnienia w przypadku plików — wersja premium: kont magazynu, udziały i plików.
+
+Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maksymalnie 5000 operacji We/Wy można skalować w jednym pliku. Tak na przykład, jeśli masz trzy pliki w jednym udziale, max operacje We/Wy, można uzyskać z tego folderu wspólnego jest 15 000.
+
+#### <a name="premium-file-share-limits"></a>Limity udziału plików — wersja Premium
+
+> [!IMPORTANT]
+> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
+
+|Obszar  |Środowisko docelowe  |
+|---------|---------|
+|Minimalny rozmiar                        |100 GiB      |
+|Maks. rozmiar                        |100 TiB      |
+|Zwiększenie/zmniejszenie minimalnego rozmiaru    |1 GiB      |
+|Baseline IOPS    |1 operacje We/Wy za GiB maksymalnie 100 000|
+|Operacje We/Wy, przenoszenie obsługi dużego ruchu    |3 x IOPS za GiB maksymalnie 100 000|
+|Przepustowość minimalna                     |100        |
+|Przepustowość |0,1 MB/s na GiB maksymalnie 5 GiB/s     |
+|Maksymalna liczba migawek        |200       |
+
+#### <a name="premium-file-limits"></a>Limity pliku Premium
+
+|Obszar  |Środowisko docelowe  |
+|---------|---------|
+|Rozmiar                  |1 TiB         |
+|Maksymalna liczba operacji We/Wy na pliku     |5000         |
+|Uchwyty współbieżne    |2000         |
+
 ### <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
 
 Usługa Azure File Sync został zaprojektowany w celu nieograniczonego użycia, ale nie nieograniczonego użycia zawsze jest możliwe. Poniższa tabela wskazuje granice badania firmy Microsoft oraz wskazuje, które elementy docelowe są limity stałe:
@@ -61,7 +91,7 @@ Usługa Azure File Sync został zaprojektowany w celu nieograniczonego użycia, 
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/storage/)
+- [Storage — Szczegóły cennika](https://azure.microsoft.com/pricing/details/storage/)
 - [Subskrypcja platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
 - [Replikacja usługi Azure Storage](../storage-redundancy.md)
-- [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage-performance-checklist.md)
+- [Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage](../storage-performance-checklist.md)

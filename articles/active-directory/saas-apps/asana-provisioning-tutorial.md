@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f35de1865f2e02331b8455bbdce92e8fe2f9a1b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210479"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057850"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Asana dla automatycznej aprowizacji użytkowników
 
@@ -32,16 +32,16 @@ Celem tego samouczka jest pokazanie czynności, które należy wykonać w usłud
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawa usługi Azure AD
-*   Dzierżawa usługi Asana z [Enterprise](https://www.asana.com/pricing) plan lub lepiej jest włączona 
-*   Konto użytkownika w usłudze Asana z uprawnieniami administratora 
+* Dzierżawa usługi Azure AD
+* Dzierżawa usługi Asana z [Enterprise](https://www.asana.com/pricing) plan lub lepiej jest włączona
+* Konto użytkownika w usłudze Asana z uprawnieniami administratora
 
-> [!NOTE] 
+> [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji z usługi Azure AD opiera się na [interfejsu API w usłudze Asana](https://asana.com/developers/api-reference/users), który jest dostępny dla Asana.
 
 ## <a name="assign-users-to-asana"></a>Przypisywanie użytkowników do Asana
 
-Usługa Azure AD używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście aprowizacja kont użytkowników tylko do użytkowników, które są przypisane do aplikacji w usłudze Azure AD są synchronizowane. 
+Usługa Azure AD używa koncepcji, o nazwie *przypisania* ustalenie, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście aprowizacja kont użytkowników tylko do użytkowników, które są przypisane do aplikacji w usłudze Azure AD są synchronizowane.
 
 Przed skonfigurowaniem i włączyć usługę aprowizacji, należy zdecydować, użytkowników, którzy w usłudze Azure AD muszą mieć dostęp do aplikacji Asana. Następnie można przypisać tych użytkowników do aplikacji Asana, zgodnie z instrukcjami w tym miejscu:
 
@@ -51,7 +51,7 @@ Przed skonfigurowaniem i włączyć usługę aprowizacji, należy zdecydować, u
 
 Firma Microsoft zaleca, aby przypisać jeden Asana, aby przetestować konfigurację aprowizacji użytkownika usługi Azure AD. Później można przypisać dodatkowych użytkowników.
 
-## <a name="configure-user-provisioning-to-asana"></a>Konfigurowanie aprowizacji użytkownika Asana 
+## <a name="configure-user-provisioning-to-asana"></a>Konfigurowanie aprowizacji użytkownika Asana
 
 Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika Asana aprowizujący interfejs API. Możesz również skonfigurować inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączania kont przypisanych użytkowników w usłudze Asana, w oparciu o przypisania użytkownika w usłudze Azure AD.
 
@@ -86,7 +86,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 1. Wprowadź adres e-mail osoby lub grupy, które chcesz otrzymywać inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem**. Zaznacz pole wyboru poniżej.
 
-1. Wybierz pozycję **Zapisz**. 
+1. Wybierz pozycję **Zapisz**.
 
 1. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Asana**.
 
@@ -94,7 +94,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 1. Aby włączyć usługi Azure AD w inicjowania obsługi usługi Asana, **ustawienia** sekcji, zmień **stanie aprowizacji** do **na**.
 
-1. Wybierz pozycję **Zapisz**. 
+1. Wybierz pozycję **Zapisz**.
 
 Po rozpoczęciu synchronizacji początkowej dla wszystkich użytkowników przypisanych do Asana w **użytkowników** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Użyj **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności. Dzienniki inspekcji opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Asana.
 
@@ -103,5 +103,5 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](asana-tutorial.md)

@@ -1,19 +1,18 @@
 ---
 title: Omówienie zasad platformy Azure
 description: Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi w środowisku platformy Azure.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7440c9bbfce801ffcfc5c4e0f800f6f4f9d34f8c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805129"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259460"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Omówienie usługi Azure Policy
 
@@ -146,7 +145,7 @@ Poniższe omówienie usługi Azure Policy dotyczy kompilacji 2018. Aby pobrać s
 Teraz, gdy masz już podstawowe informacje na temat usługi Azure Policy i kluczowych pojęć, oto zalecane kolejne kroki:
 
 - [Przypisywanie definicji zasad przy użyciu portalu](assign-policy-portal.md)
-- [Przypisywanie definicji zasad przy użyciu interfejsu wiersza polecenia platformy Azure](assign-policy-azurecli.md)
+- [Przypisywanie definicji zasad przy użyciu wiersza polecenia platformy Azure](assign-policy-azurecli.md)
 - [Przypisywanie definicji zasad przy użyciu programu PowerShell](assign-policy-powershell.md)
 - Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](..//management-groups/overview.md)
 - Wyświetlanie klipu wideo [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) w witrynie Channel 9

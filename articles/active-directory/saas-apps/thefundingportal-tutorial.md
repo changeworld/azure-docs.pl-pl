@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: da06b8772cbf4f9f805952e19cff03791a86e4c7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437970"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą portalu finansowania
 
@@ -105,9 +105,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą portalu fin
 
     ![Adresy URL i finansowania domeny Portal pojedynczy informacje logowania jednokrotnego](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.regenteducation.net/`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.regenteducation.net/`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.regenteducation.net`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.regenteducation.net`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej finansowania Portal klient](mailto:info@regenteducation.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -222,7 +222,7 @@ Po kliknięciu kafelka Portal finansowania w panelu dostępu, powinny być autom
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

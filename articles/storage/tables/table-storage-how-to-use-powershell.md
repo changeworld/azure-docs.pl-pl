@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/04/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: bb8f0fd98296d0cc4de1596480988b154a731d41
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: c5491683a74321e370044cd6eb270cc34bbbce6a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540231"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056412"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji magazynu tabel Azure przy użyciu programu Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ W tym artykule omówiono typowe operacje magazynu tabel Azure. Omawiane kwestie:
 
 W tym artykule pokazano, jak utworzyć nowe konto usługi Azure Storage w nowej grupie zasobów, dzięki czemu można łatwo go usuniesz po zakończeniu. Jeśli zostanie wykorzystany raczej istniejące konto magazynu, możesz zrobić to w zamian.
 
-Przykłady wymagają modułów programu PowerShell Az `Az.Storage (1.1.3 or greater)` i `Az.Resources (1.2.0 or greater)`. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable Az*` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
+Przykłady wymagają modułów programu PowerShell Az `Az.Storage (1.1.0 or greater)` i `Az.Resources (1.2.0 or greater)`. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable Az*` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Za pomocą tej funkcji platformy Azure za pomocą programu PowerShell wymaga posiadania `Az` zainstalowany moduł. Bieżąca wersja AzureRmStorageTable nie jest zgodny z starsze modułu AzureRM.

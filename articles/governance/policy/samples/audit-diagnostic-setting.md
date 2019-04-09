@@ -1,19 +1,18 @@
 ---
 title: Przykład — przeprowadzanie inspekcji ustawienia diagnostyki
 description: Te przykładowe definicje zasad przeprowadzają inspekcję, czy ustawienia diagnostyki nie są włączone dla określonych typów zasobów.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f5b3a5cfd8adb97918a727bd05133d6c1b9f8a42
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 66c9c1c21cad7fb4058a91be826a50059691877c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343727"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268164"
 ---
 # <a name="sample---audit-diagnostic-setting"></a>Przykład — przeprowadzanie inspekcji ustawienia diagnostyki
 
@@ -73,6 +72,6 @@ Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualn
 az policy assignment delete --name "Audit diagnostics" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

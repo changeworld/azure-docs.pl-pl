@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 16ac5684d519dc41326ada4afd1bb2965a738070
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b43532ade35e4e01573abbd3f47d009beadd9c60
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404998"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267722"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopiowanie danych z lub do usługi Azure File Storage przy użyciu usługi Azure Data Factory
 
@@ -50,6 +50,9 @@ Następujące właściwości są obsługiwane w przypadku pliku połączoną us�
 >[!IMPORTANT]
 > - Aby skopiować dane do usługi Azure File Storage przy użyciu środowiska Azure Integration Runtime jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją przechowywania plików i kojarzenie w połączonej usłudze, w poniższym przykładzie.
 > - Aby skopiować dane z i do usługi Azure File Storage przy użyciu własne środowisko IR spoza platformy Azure, pamiętaj, aby otworzyć wychodzącego portu TCP 445 w sieci lokalnej.
+
+>[!TIP]
+>Korzystając z interfejsu użytkownika usługi ADF na potrzeby tworzenia, można znaleźć określonego wpisu "Usługi Azure File Storage" do tworzenia połączonej usługi, które na dole generuje typ `FileServer` obiektu.
 
 **Przykład:**
 

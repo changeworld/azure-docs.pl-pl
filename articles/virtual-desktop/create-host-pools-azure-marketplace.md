@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f539a71fccca116ee031781df855ec55158eb63a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399865"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257454"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Utwórz pulę hosta za pomocą portalu Azure Marketplace
+# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
 Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
 
@@ -116,6 +116,9 @@ Poniżej przedstawiono bieżąca liczba obsługiwanych klientów:
 
 - [Klient pulpitu zdalnego dla Windows 7 i Windows 10](connect-windows-7-and-10.md)
 - [Klient sieci web Windows pulpitu wirtualnego](connect-web.md)
+
+>[!IMPORTANT]
+>Aby zabezpieczyć środowisku pulpitu wirtualnego Windows na platformie Azure, zalecamy nie otwieraj portu wejściowego 3389 na maszynach wirtualnych. Pulpit wirtualny Windows nie wymaga otwartego portu dla ruchu przychodzącego 3389 dla użytkowników puli hosta maszyn wirtualnych. Jeśli musisz otworzyć port 3389 na potrzeby rozwiązywania problemów, zalecamy użycie [dostęp do maszyny Wirtualnej just-in-time](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
