@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
-ms.openlocfilehash: 4991be7ecb252001245a0bcde8551d8432b0794b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: db84de194832180b8e153cf6aa7e6c9fab5e6d61
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998505"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010179"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu programu Azure PowerShell
 
@@ -53,10 +53,10 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
-| [Nowe AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
 | [Set-AzResource](/powershell/module/az.resources/new-azresource) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Tworzy profil usługi Azure Traffic Manager. |
-| [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Dodaje punkt końcowy do profilu usługi Traffic Manager platformy Azure. |
+| [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Dodaje punkt końcowy do profilu usługi Azure Traffic Manager. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

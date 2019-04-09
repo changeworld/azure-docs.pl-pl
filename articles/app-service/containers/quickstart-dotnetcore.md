@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889719"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056198"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Tworzenie aplikacji platformy ASP.NET Core w usłudze App Service dla systemu Linux
 
@@ -41,15 +41,15 @@ Kroki podane w tym artykule możesz wykonać przy użyciu komputera z systemem M
 
 Aby ukończyć ten przewodnik Szybki start:
 
-* <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">Zainstaluj program .NET Core</a>
+* <a href="https://git-scm.com/" target="_blank">Instalowanie oprogramowania Git</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">Instalowanie programu .NET Core</a>
 
 ## <a name="create-the-app-locally"></a>Lokalne tworzenie aplikacji
 
 W oknie terminala na komputerze utwórz katalog o nazwie `hellodotnetcore` i zmień bieżący katalog na niego.
 
 ```bash
-md hellodotnetcore
+mkdir hellodotnetcore
 cd hellodotnetcore
 ```
 
@@ -185,7 +185,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service dla systemu Linux](tutorial-dotnetcore-sqldb-app.md)

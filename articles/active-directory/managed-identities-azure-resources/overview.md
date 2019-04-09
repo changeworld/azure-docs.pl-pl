@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbcab0d287f344d308e3ed51ae47087afae7f9e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449267"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058564"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -50,11 +50,20 @@ Istnieją dwa typy tożsamości zarządzanych:
 - **Tożsamość zarządzana przypisana przez system** jest włączana bezpośrednio w wystąpieniu usługi platformy Azure. Po włączeniu tożsamości platforma Azure tworzy tożsamość wystąpienia w dzierżawie usługi Azure AD, która jest zaufaną dzierżawą subskrypcji wystąpienia. Po utworzeniu tożsamości poświadczenia są aprowizowane w wystąpieniu. Cykl życiowy tożsamości przypisanej przez system jest bezpośrednio powiązany z wystąpieniem usługi platformy Azure, w którym została ona włączona. Usunięcie wystąpienia spowoduje, że platforma Azure automatycznie oczyści poświadczenia i tożsamość w usłudze Azure AD.
 - **Tożsamość zarządzana przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure. Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których została przypisana.
 
-Przy użyciu tożsamości zarządzanej kod może zażądać tokenów dostępu dla usług obsługujących uwierzytelnianie usługi Azure AD. Platforma Azure zapewnia stopniową obsługę poświadczeń, które są używane przez wystąpienie usługi.
+Wewnętrznie zarządzanych tożsamości są nazwy główne usług typu specjalne, które są zablokowane ma być używany tylko z zasobami platformy Azure. Po usunięciu tożsamości zarządzanej odpowiedniej nazwy głównej usługi jest automatycznie usuwany. 
+
+Przy użyciu tożsamości zarządzanej kod może zażądać tokenów dostępu dla usług obsługujących uwierzytelnianie usługi Azure AD. Platforma Azure zapewnia stopniową obsługę poświadczeń, które są używane przez wystąpienie usługi. 
 
 Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współpracują z maszynami wirtualnymi platformy Azure:
 
 ![Tożsamości usługi zarządzanej i maszyny wirtualne platformy Azure](media/overview/msi-vm-vmextension-imds-example.png)
+
+|  Właściwość    | Przypisana przez system tożsamości zarządzanej | Tożsamość zarządzana przypisana przez użytkownika |
+|------|----------------------------------|--------------------------------|
+| Tworzenie |  Utworzone w ramach zasobów platformy Azure (na przykład maszynę wirtualną platformy Azure lub usługi Azure App Service) | Utworzony jako autonomicznym zasobem platformy Azure |
+| Cykl życia | Udostępnione cyklu życia dla zasobów platformy Azure, utworzone za pomocą tożsamości zarządzanej. <br/> Podczas usuwania zasobu nadrzędnego tożsamości zarządzanej jest również usunięte. | Niezależny cykl życia. <br/> Muszą zostać jawnie usunięte. |
+| Udostępnianie zasobów platformy Azure | Nie można udostępnić. <br/> Tylko można skojarzyć z jednego zasobu platformy Azure. | Może być współużytkowany <br/> Tej samej tożsamości zarządzanych przypisanych przez użytkownika może być skojarzony z więcej niż jednego zasobu platformy Azure. |
+| Typowe przypadki użycia | Obciążenia, które są zawarte w ramach jednego zasobu platformy Azure <br/> Obciążenia, które mają być niezależnych tożsamości. <br/> Na przykład aplikację, która działa na jednej maszynie wirtualnej | Obciążenia, w których są uruchomione na wielu zasobach i które można udostępnić jedną tożsamość. <br/> Obciążenia wymagające wstępnej autoryzacji do bezpiecznych zasobów jako część przepływu inicjowania obsługi administracyjnej. <br/> Obciążenia, w którym zasoby są odtwarzania często, ale uprawnienia powinny pozostaną niezmienione. <br/> Na przykład obciążenie, gdzie wiele maszyn wirtualnych muszą mieć dostęp do tego samego zasobu | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Jak tożsamość zarządzana przypisana przez system współpracuje z maszyną wirtualną platformy Azure
 
@@ -109,17 +118,17 @@ Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z sys
 * [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-windows-vm-access-arm.md)
 * [Uzyskiwanie dostępu do usługi Azure SQL](tutorial-windows-vm-access-sql.md)
-* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-windows-vm-access-storage.md)
-* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-windows-vm-access-storage-sas.md)
-* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+* [Dostęp do usługi Azure Storage przy użyciu klucza dostępu](tutorial-windows-vm-access-storage.md)
+* [Dostęp do usługi Azure Storage przy użyciu sygnatury dostępu współdzielonego](tutorial-windows-vm-access-storage-sas.md)
+* [Dostęp do zasobu spoza platformy Azure AD z usługą Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 
 Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z systemem Linux:
 
 * [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-linux-vm-access-arm.md)
-* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
-* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
-* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Dostęp do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
+* [Dostęp do usługi Azure Storage przy użyciu sygnatury dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
+* [Dostęp do zasobu spoza platformy Azure AD z usługą Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
 
 Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platformy Azure:
 
@@ -128,7 +137,7 @@ Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platform
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
 * [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
-* [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
+* [Usługa Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 
 ## Jakie usługi platformy Azure obsługują funkcję?<a name="which-azure-services-support-managed-identity"></a>
@@ -140,4 +149,4 @@ Tożsamości zarządzane dla zasobów platformy Azure mogą służyć do uwierzy
 Rozpocznij pracę z funkcją tożsamości zarządzanych dla zasobów platformy Azure, korzystając z następujących przewodników Szybki start:
 
 * [Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager](tutorial-windows-vm-access-arm.md)
-* [Używanie przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Resource Manager](tutorial-linux-vm-access-arm.md)
+* [Umożliwia dostęp do usługi Resource Manager tożsamości zarządzanej przypisany systemowo maszyny Wirtualnej systemu Linux](tutorial-linux-vm-access-arm.md)

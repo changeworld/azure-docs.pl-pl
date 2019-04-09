@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990989"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056728"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -130,6 +130,17 @@ Podczas tworzenia klastra, można wybrać, czy należy utworzyć publiczny adres
 
 * Jeśli tworzysz nową sieć wirtualną lub nowej podsieci kontrolera klastra zostanie przypisany publiczny adres IP.
 * Jeśli wybierzesz istniejącej sieci wirtualnej i podsieci, kontroler klastra będzie miał tylko prywatnych adresów IP. 
+
+## <a name="vm-access-roles"></a>Role dostęp do maszyny Wirtualnej 
+
+Usługa Azure korzysta [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC), aby autoryzować klastra maszyn wirtualnych w celu wykonywania pewnych zadań. Na przykład kontroler klastra wymaga autoryzacji do tworzenia i konfigurowania maszyn wirtualnych węzłów klastra. Węzły klastra muszą mieć możliwość przypisywania lub ponowne przypisywanie adresów IP do innych węzłów klastra.
+
+Dwie wbudowane role platformy Azure są używane w przypadku maszyn wirtualnych vFXT Avere: 
+
+* Kontroler klastra używa wbudowanej roli [Współautor Avere](../role-based-access-control/built-in-roles.md#avere-contributor). 
+* Węzły klastra za pomocą wbudowanej roli [Avere — Operator](../role-based-access-control/built-in-roles.md#avere-operator)
+
+Jeśli zachodzi potrzeba Dostosowywanie ról dostępu Avere vFXT składników, należy zdefiniować własną rolę i przypisać je do maszyn wirtualnych w momencie ich utworzenia. Nie można użyć szablonu wdrożenia w witrynie Azure Marketplace. Zapoznaj się z Microsoft dział obsługi klienta i pomocy technicznej, otwierając bilet w witrynie Azure portal, zgodnie z opisem w [Uzyskaj pomoc dotyczącą systemu](avere-vfxt-open-ticket.md). 
 
 ## <a name="next-step-understand-the-deployment-process"></a>Następny krok: Omówienie procesu wdrażania
 

@@ -4,16 +4,16 @@ description: Dowiedz się, jak pobrać i kontroli dużych zestawów danych podcz
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: MT
+ms.openlocfilehash: 40aa8ca0ebfcc8eb5b686143960af1441768622a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889039"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058395"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
 
@@ -63,7 +63,7 @@ W [interfejsu API REST](/rest/api/azureresourcegraph/resources/resources), znajd
 
 ## <a name="paging-results"></a>Stronicowanie wyników
 
-Gdy jest to konieczne, można przerwać zestawu do prezentowania mniejszych zestawów rekordów do przetwarzania wyników, lub ponieważ zestaw wyników przekracza maksymalną dozwoloną wartość _5000_ zwrócone rekordy, użyj stronicowania. [Interfejsu API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** zawiera wartości, aby wskazać wyników, dzielone zestawu: **resultTruncated** i **$skipToken** .
+Gdy jest to konieczne, można przerwać zestawu do prezentowania mniejszych zestawów rekordów do przetwarzania wyników, lub ponieważ zestaw wyników przekracza maksymalną dozwoloną wartość _1000_ zwrócone rekordy, użyj stronicowania. [Interfejsu API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** zawiera wartości, aby wskazać wyników, dzielone zestawu: **resultTruncated** i **$skipToken** .
 **resultTruncated** jest wartość logiczna, która informuje użytkownika, jeśli istnieją dodatkowe rekordy nie jest zwracana w odpowiedzi. Ten stan może być również zidentyfikować, kiedy **liczba** właściwość jest mniejsza niż **totalRecords** właściwości. **totalRecords** definiuje, ile rekordy, które pasujących do zapytania.
 
 Gdy **resultTruncated** jest **true**, **$skipToken** właściwość jest ustawiona w odpowiedzi. Ta wartość jest używana przy użyciu tej samej wartości zapytania i subskrypcji do następnego zestawu rekordów pasujących do zapytania.

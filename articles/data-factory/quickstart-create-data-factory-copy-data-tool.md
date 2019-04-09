@@ -3,20 +3,20 @@ title: Kopiowanie danych przy użyciu narzędzia do kopiowania danych platformy 
 description: Utwórz fabrykę danych platformy Azure, a następnie za pomocą narzędzia do kopiowania danych skopiuj dane z jednej lokalizacji w usłudze Azure Blob Storage do innej lokalizacji.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 6ff264c079ef5ee18258c3cd136cf441dc33e299
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.author: yexu
+ms.openlocfilehash: a77041b063f043c065df9a2955e9d07b5692f592
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992759"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256264"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Szybki start: Kopiowanie danych przy użyciu narzędzia do kopiowania danych
 
@@ -79,7 +79,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
     ![Wybieranie magazynu obiektów blob z galerii](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    d. Na stronie **Określanie konta usługi Azure Blob Storage** wybierz swoje konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**. 
+    c. Na stronie **Określanie konta usługi Azure Blob Storage** wybierz swoje konto magazynu z listy **Nazwa konta magazynu**, a następnie wybierz przycisk **Zakończ**. 
 
    ![Konfigurowanie konta usługi Azure Blob Storage](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
@@ -133,5 +133,5 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
 1. Przejdź do karty **Tworzenie** powyżej karty **Monitorowanie** na lewym panelu, aby móc edytować połączone usługi, zestawy danych i potoki. Aby dowiedzieć się więcej o edytowaniu tych elementów w interfejsie użytkownika usługi Data Factory, zobacz [Tworzenie fabryki danych za pomocą witryny Azure Portal](quickstart-create-data-factory-portal.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-portal.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach. 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 266859c1d2076354dbd4f8f09adf0bea084b90f9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 94906a75d323e3fb6c96f939e4fdcea60877508c
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049684"
+ms.locfileid: "59056303"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -110,7 +110,9 @@ Dodaliśmy już wszystkie składniki potrzebne do rozpoczęcia aranżacji i utwo
 
 Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio Code.  
 
-1. Na komputerze z systemem Windows uruchom emulator usługi Azure Storage, a następnie upewnij się, że właściwość **AzureWebJobsStorage** pliku local.settings.json została ustawiona na `UseDevelopmentStorage=true`. Na komputerze Mac lub komputerze z system Linux ustaw właściwość **AzureWebJobsStorage** na parametry połączenia istniejącego konta usługi Azure Storage. W dalszej części tego artykułu utworzysz konto magazynu.
+1. Na komputerze z systemem Windows uruchom emulator usługi Azure Storage, a następnie upewnij się, że właściwość **AzureWebJobsStorage** pliku local.settings.json została ustawiona na `UseDevelopmentStorage=true`. 
+
+    Upewnij się, że dla 5.8 emulatora magazynu **AzureWebJobsSecretStorageType** właściwości local.settings.json ustawiono `files`. Na komputerze Mac lub Linux, należy ustawić **AzureWebJobsStorage** właściwości parametry połączenia, istniejącego konta usługi Azure storage. W dalszej części tego artykułu utworzysz konto magazynu.
 
 2. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**. Jeśli po raz pierwszy używasz funkcji trwałych, jest instalowane rozszerzenie Durable Functions, a kompilacja może potrwać kilka sekund.
 

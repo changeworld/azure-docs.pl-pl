@@ -14,16 +14,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: fa1731c9361be83949aa794ed8842681bd81d995
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487587"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057782"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Możesz wykonać kroki opisane w tym artykule, aby ustawić się interfejsu wiersza polecenia platformy Azure (CLI) do zarządzania zasobami usługi Azure Stack Development Kit (ASDK) na platformach klienckich systemu Linux, Mac i Windows.
 
@@ -99,7 +99,7 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
     python -m pip install --upgrade pip
     ```
 
-3. Zainstaluj **certifi** modułu. [Certifi](https://pypi.org/project/certifi/) modułu i kolekcji certyfikatów głównych sprawdzania poprawności wiarygodności certyfikatów protokołu SSL podczas weryfikowania tożsamości hostów TLS. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
+3. Zainstaluj **certifi** modułu. [Certifi](https://pypi.org/project/certifi/) jest modułem i kolekcji certyfikatów głównych sprawdzania poprawności wiarygodności certyfikatów protokołu SSL podczas weryfikowania tożsamości hostów TLS. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
     ```powershell
     pip install certifi
@@ -139,7 +139,7 @@ Powinien zostać wyświetlony wersji wiersza polecenia platformy Azure i inne za
     sudo -H pip3 install --upgrade pip
     ```
 
-3. Zainstaluj **certifi** modułu. [Certifi](https://pypi.org/project/certifi/) modułu i kolekcji certyfikatów głównych sprawdzania poprawności wiarygodności certyfikatów protokołu SSL podczas weryfikowania tożsamości hostów TLS. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
+3. Zainstaluj **certifi** modułu. [Certifi](https://pypi.org/project/certifi/) jest modułem i kolekcji certyfikatów głównych sprawdzania poprawności wiarygodności certyfikatów protokołu SSL podczas weryfikowania tożsamości hostów TLS. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
     ```bash
     pip3 install certifi

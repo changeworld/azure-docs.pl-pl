@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 4db013b51657bb327c36d616a3743c46731cd19a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/04/2019
+ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903797"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010485"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
@@ -33,8 +33,6 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 > Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w niektórych regionach platformy Azure. Aby region pełną listę, zobacz [na dużą skalę usługa regiony dostępne w warstwie](#available-regions). Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 > [!NOTE]
 > Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) warstwy usług. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-purchase-models.md).
-> [!IMPORTANT]
-> Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Jakie są możliwości na dużą skalę
 

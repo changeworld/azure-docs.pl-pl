@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804857"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009788"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów z uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania
 
@@ -88,7 +88,7 @@ Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca 
 
 * Sprawdzanie zostało poprawnie skonfigurowane harmonogram dla rozwiązań uruchamianie/zatrzymywanie maszyn wirtualnych. Aby dowiedzieć się, jak skonfigurować harmonogram, zobacz [harmonogramy](../automation-schedules.md) artykułu.
 
-* Sprawdź strumieni zadań dla elementów runbook wyszukać wszystkie błędy. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**. Z **zadań** wygląd strony dla zadań z jednego z następujących elementów runbook:
+* Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**. Z **zadań** wygląd strony dla zadań z jednego z następujących elementów runbook:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -143,6 +143,8 @@ Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca 
 
 * Jeśli maszyna wirtualna ma problem z uruchomienie lub cofnięcie przydziału, to zachowanie może być spowodowane problemu na samej maszyny Wirtualnej. Niektóre przykłady lub potencjalne problemy są, stosowania aktualizacji podczas próby zamknięcia, usługa zawiesza się i nie tylko). Przejdź do zasobu maszyny Wirtualnej, a następnie sprawdź **dzienników aktywności** aby zobaczyć, czy istnieją błędy w dziennikach. Również może próbować zalogować się do maszyny Wirtualnej, aby zobaczyć, czy istnieją błędy w dziennikach zdarzeń. Aby dowiedzieć się więcej na temat rozwiązywania problemów z maszyną Wirtualną, zobacz [Rozwiązywanie problemów z usługi Azure virtual machines](../../virtual-machines/troubleshooting/index.md)
 
+* Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
+
 ## <a name="custom-runbook"></a>Scenariusz: Moje niestandardowe elementu runbook nie można rozpocząć lub zatrzymać moich maszyn wirtualnych
 
 ### <a name="issue"></a>Problem
@@ -155,7 +157,7 @@ Przyczyną błędu może być jedna z wielu czynności. Przejdź do konta usług
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Zaleca się używać [uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md) uruchamianie i zatrzymywanie maszyn wirtualnych w usłudze Azure Automation. To rozwiązanie jest tworzone przez firmę Microsoft. Niestandardowe elementy runbook nie są obsługiwane przez firmę Microsoft. Może znaleźć rozwiązania dla Twojego niestandardowego elementu runbook, odwiedzając [Rozwiązywanie problemów z elementu runbook](runbooks.md) artykułu. Ten artykuł zawiera ogólne wskazówki i rozwiązywanie problemów dotyczących elementów runbook wszystkich typów.
+Zaleca się używać [uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md) uruchamianie i zatrzymywanie maszyn wirtualnych w usłudze Azure Automation. To rozwiązanie jest tworzone przez firmę Microsoft. Niestandardowe elementy runbook nie są obsługiwane przez firmę Microsoft. Może znaleźć rozwiązania dla Twojego niestandardowego elementu runbook, odwiedzając [Rozwiązywanie problemów z elementu runbook](runbooks.md) artykułu. Ten artykuł zawiera ogólne wskazówki i rozwiązywanie problemów dotyczących elementów runbook wszystkich typów. Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
 
 ## <a name="dont-start-stop-in-sequence"></a>Scenariusz: Maszyny wirtualne nie uruchomić lub zatrzymać w prawidłowej sekwencji
 
@@ -209,7 +211,7 @@ Wiele razy błędy mogą być spowodowane przy użyciu starego i przestarzałe w
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Aby rozwiązać wiele błędów, zaleca się usuwanie i aktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązania, zobacz [aktualizacji uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md#update-the-solution).
+Aby rozwiązać wiele błędów, zaleca się usuwanie i aktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązania, zobacz [aktualizacji uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md#update-the-solution). Ponadto można sprawdzić [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

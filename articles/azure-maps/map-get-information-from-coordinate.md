@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9ab6d9708843cda492795b92b6fb5f58bd7a9154
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571426"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256060"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
 
@@ -29,11 +29,11 @@ Istnieją dwa sposoby utworzenia wyszukiwanie wsteczne adresu. Jednym ze sposob�
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i ustawia mechanizm uwierzytelniania, korzystanie z klucza subskrypcji. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Tworzy drugi blok kodu **SubscriptionKeyCredentialPolicy** do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie **atlas.service.MapsURL.newPipeline()** przyjmuje **SubscriptionKeyCredential** zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. **SearchURL** reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
+Tworzy drugi blok kodu `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie `atlas.service.MapsURL.newPipeline()` przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
 
 Aktualizuje styl kursor myszy na wskaźnik trzeci bloku kodu i tworzy [okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) obiektu. Możesz zobaczyć [dodać okno podręczne na mapie](./map-add-popup.md) instrukcje.
 
-Czwarty bloku kodu dodaje kliknięcie myszą [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Po wyzwoleniu tworzy zapytanie wyszukiwania za pomocą współrzędnych punktu klikniętego. Następnie używa moduł usługi [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) metody zapytania [Uzyskaj adres odwrotnego interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresu współrzędne. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu **geojson.getFeatures()** metody.
+Czwarty bloku kodu dodaje kliknięcie myszą [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Po wyzwoleniu tworzy zapytanie wyszukiwania za pomocą współrzędnych punktu klikniętego. Następnie używa moduł usługi [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) metody zapytania [Uzyskaj adres odwrotnego interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresu współrzędne. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu `geojson.getFeatures()` metody.
 
 Piąty bloku kodu konfiguruje zawartość okna podręcznego HTML, aby wyświetlić adres odpowiedzi kliknięto pozycję współrzędnych.
 
@@ -59,7 +59,7 @@ Zmiana kursora, obiekt menu podręczne i zdarzenie click są tworzone na mapie [
 Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
@@ -67,7 +67,7 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
 > [!div class="nextstepaction"]
-> [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)
+> [Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Wyświetlanie ruchu](./map-show-traffic.md)

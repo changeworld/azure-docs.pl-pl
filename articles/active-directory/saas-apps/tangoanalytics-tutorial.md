@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a701e71b164a13f8c7136d88b83dddf626b1913
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7252fcd0ce3e12c411729002e9594d1a75a49885
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359567"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą analizy Tango
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą analizy Tan
 
     ![Tango Analytics domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz wartość: `TACORE_SSO`
+    a. W **identyfikator** tekstu wpisz wartość: `TACORE_SSO`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
@@ -193,7 +193,7 @@ Po kliknięciu kafelka Tango analizy w panelu dostępu, powinien zostać automat
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

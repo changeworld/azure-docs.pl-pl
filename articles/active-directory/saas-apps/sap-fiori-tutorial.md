@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 44ea1d23c63f8d0842cb60711b10a92606746c02
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011492"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązaniu SAP Fiori
 
@@ -376,8 +376,8 @@ W tej sekcji utworzysz użytkownika w rozwiązaniu SAP Fiori o nazwie Britta Sim
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

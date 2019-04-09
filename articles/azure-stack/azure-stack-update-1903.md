@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 218af82d2385632e7e7a0e77060c5deb758d1e83
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048813"
+ms.locfileid: "59057057"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizacja usługi Azure Stack 1903
 
@@ -156,6 +156,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    - Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 - Maszyny Wirtualnej systemu Ubuntu 18.04 utworzone za pomocą autoryzacji SSH włączone uniemożliwi używanie kluczy SSH do logowania. Jako obejście użycie dostępu do maszyny Wirtualnej dla rozszerzenia systemu Linux w celu wdrożenia kluczy SSH po zainicjowaniu obsługi administracyjnej lub korzystanie z uwierzytelniania opartego na hasłach.
+
+- Usługa Azure Stack obsługuje teraz agenci dla systemu Windows Azure Linux nowsza niż wersja 2.2.20. Ta funkcjonalność było częścią 1901 i 1902 poprawki i pozwala klientom na przechowywanie obrazów systemu linux spójne między platformą Azure i usługi Azure Stack.
+
 
 - Jeśli nie masz hosta cyklu życia sprzętu (HLH): przed kompilacją 1902 trzeba było ustawić zasady grupy **komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\opcje** do **Wyślij LM i protokołu NTLM — Użyj zabezpieczeń sesji NTLMv2 po uzgodnieniu**. Od czasu kompilacji 1902 należy pozostawić go w formie **Niezdefiniowany** lub ustaw go na **tylko NTLMv2 wysłać odpowiedź** (czyli wartość domyślna). W przeciwnym razie nie będzie można nawiązać sesji zdalnej programu PowerShell i zostanie wyświetlony **dostęp jest zabroniony** błąd:
 

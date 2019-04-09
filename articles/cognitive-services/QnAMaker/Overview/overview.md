@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 1fa15c4420cb1e42fcaa34c56a1b0aef9c4102b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872462"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257233"
 ---
 # <a name="what-is-qna-maker"></a>Co jest usługa QnA Maker?
 
@@ -25,7 +25,7 @@ Usługa QnA Maker umożliwia tworzenie bazy wiedzy (KB) na podstawie Twojej czę
 
 Łatwy w obsłudze [portal internetowy](https://qnamaker.ai) umożliwia tworzenie, zarządzanie, szkolenie i publikowanie usługi bez jakiegokolwiek doświadczenia programistycznego. Po opublikowaniu usługi w punkcie końcowym aplikacja kliencka, np. czatbot, może zarządzać konwersacjami z użytkownikami, aby uzyskiwać pytania i na nie odpowiadać. 
 
-![Omówienie](../media/qnamaker-overview-learnabout/overview.png)
+![Przegląd](../media/qnamaker-overview-learnabout/overview.png)
 
 ## <a name="key-qna-maker-processes"></a>Kluczowe procesy usługi QnA Maker
 
@@ -66,13 +66,12 @@ Architektura usługi QnA Maker zawiera dwa następujące składniki:
 
 ## <a name="service-highlights"></a>Najważniejsze informacje dotyczące usługi
 
-- Kompletna środowisko **bez kodu** służące do [tworzenia bota często zadawanych pytań](https://aka.ms/qnamaker-docs-create-faqbot).
+- Kompletna **bez użycia kodu** możliwości [tworzenie botów](../Quickstarts/create-publish-knowledge-base.md#create-a-bot) z bazy wiedzy.
 - **Brak ograniczania przepustowości sieci w przypadku przewidywań**. Opłaty są naliczane za hostowanie usługi, a nie za liczbę transakcji. Więcej szczegółów można znaleźć na [stronie cennika](https://aka.ms/qnamaker-docs-pricing).
 - **Skalowanie wedle potrzeb**. Wybierz odpowiednie jednostki SKU poszczególnych składników pasujących do danego scenariusza. Zobacz, jak [wybrać pojemność](https://aka.ms/qnamaker-docs-capacity) dla używanej usługi QnA Maker.
-- **Pełna zgodność z danymi**. Składniki usługi przewidywania są wdrażane w ramach subskrypcji platformy Azure i granic jej zgodności.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie usługi QnA Maker](../how-to/set-up-qnamaker-service-azure.md)

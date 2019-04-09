@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1dee51354ba9210e52459dcf7a96695bc3736648
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759287"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256383"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co to jest przemysłowego Internetu rzeczy (IIoT)
 
@@ -28,7 +28,7 @@ Zmniejsz czasochłonne, uzyskiwania dostępu do fabryki floor maszyn za pomocą 
 ![Przegląd przemysłowych IoT](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> Aby uzyskać więcej informacji o usługach przemysłowego Internetu rzeczy platformy Azure, zobacz GitHub [repozytorium ](https://github.com/Azure/azure-iiot-services).
+> Aby uzyskać więcej informacji o usługach przemysłowego Internetu rzeczy platformy Azure, zobacz GitHub [repozytorium](https://github.com/Azure/azure-iiot-services).
 Jeśli znasz jak działają moduły usługi Azure IoT Edge, zaczynać się następujące artykuły:
 - [Azure IoT Edge — informacje](../iot-edge/about-iot-edge.md)
 - [Moduły platformy Azure IoT Edge](../iot-edge/iot-edge-modules.md)
@@ -50,4 +50,4 @@ Magazyn OPC lub IoT OPC UA certyfikat zarządzania platformy Azure jest implemen
 Teraz, gdy użytkownik miał wprowadzenie do przemysłowego Internetu rzeczy i jego składników, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Co to jest bliźniaczej reprezentacji OPC](overview-opc-twin.md)
+> [Co to jest bliźniacza reprezentacja OPC](overview-opc-twin.md)

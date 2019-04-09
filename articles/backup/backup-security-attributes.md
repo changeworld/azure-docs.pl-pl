@@ -1,5 +1,5 @@
 ---
-title: Atrybuty zabezpieczeń usługi Azure Backup
+title: Atrybuty zabezpieczeń dla usługi Azure Backup
 description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi Azure Backup
 services: backup
 documentationcenter: ''
@@ -7,29 +7,19 @@ author: msmbaldwin
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1de148005b2f1e5a543507a5bff5378221a454df
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 22f073e96c26213f821259e6230f4a801ca45709
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116681"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007085"
 ---
-# <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń usługi Azure Backup
+# <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń dla usługi Azure Backup
 
-Zabezpieczenia są zintegrowane w każdy aspekt usługi platformy Azure. W tym artykule opisano atrybuty zabezpieczeń wbudowanych w usługę Azure Backup. Atrybut zabezpieczeń jest jakość lub funkcji usługi platformy Azure, którzy przyczyniają się do usługi możliwość zapobiegania, wykrywanie lub odpowiadanie na luki w zabezpieczeniach.
+Zabezpieczenia są zintegrowane w każdy aspekt usługi platformy Azure. W tym artykule opisano typowe atrybuty zabezpieczeń wbudowanych w usługę Azure Backup. 
 
-Atrybuty zabezpieczeń są klasyfikowane jako:
-* Zapobiegawczych
-* Segmentacji sieci
-* Wykrywanie
-* Obsługa zarządzania tożsamościami i dostępem
-* Dziennik inspekcji
-* Mechanizmy kontroli dostępu (jeśli są używane)
-* Zarządzanie konfiguracją (jeśli są używane)
-
-W każdej kategorii, możemy sprawdzić, czy atrybut jest używany, czy nie (tak/nie). W przypadku niektórych usług atrybutu mogą nie mieć zastosowania i jest wyświetlany jako n/d. Notatki lub łącza do dodatkowych informacji o atrybucie również mogą być udostępniane.
-
+[!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
 [!INCLUDE [security-attributes-backup](../../includes/security-attributes-backup.md)]

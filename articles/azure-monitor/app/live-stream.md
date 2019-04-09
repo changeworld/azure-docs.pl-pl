@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814949"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009969"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
@@ -34,9 +34,9 @@ Za pomocą Live Stream metryki możesz wykonywać następujące czynności:
 * Monitoruj wszystkie Windows wydajności licznik na żywo.
 * Łatwo zidentyfikować serwerze, na którym występują problemy i filtr, który wszystkich KPI/live źródła danych z tym serwerem, po prostu.
 
-[![Wideo na żywo Stream metryki](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Lpasywny Stream metryki wideo](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET Core, usługi Azure Functions i Java.
+Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET Core, usługi Azure Functions, Java i Node.js.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -210,4 +210,4 @@ Brak danych? Jeśli aplikacja znajduje się w chronionej sieci: Live Stream metr
 * [Monitorowanie użycia za pomocą usługi Application Insights](../../azure-monitor/app/usage-overview.md)
 * [Za pomocą wyszukiwanie diagnostyczne](../../azure-monitor/app/diagnostic-search.md)
 * [Profiler](../../azure-monitor/app/profiler.md)
-* [Rozszerzenie Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md)
+* [Debuger migawek](../../azure-monitor/app/snapshot-debugger.md)

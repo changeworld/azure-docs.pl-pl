@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 56580454753ae6af60f5f8c51d9504f813f91e97
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540129"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256094"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Korzystanie z kontrolki mapy usługi Azure Maps
 
@@ -30,8 +30,8 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
     a. Używanie sieci CDN globalnie hostowanej wersję zestawu SDK usługi sieci Web Azure Maps przez dodanie punkty końcowe adresu URL do arkusza stylów i skrypt odwołań w `<head>` element pliku:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
     b. Alternatywnie obciążenia kod źródłowy zestawu SDK sieci Web mapy platformy Azure lokalnie przy użyciu [azure maps kontroli](https://www.npmjs.com/package/azure-maps-control) NPM pakietu, a następnie Hostuj go z aplikacją. Ten pakiet zawiera również definicjach TypeScript.
@@ -102,7 +102,7 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
     </script>
     ```
 
-    Zobacz [uwierzytelniania za pomocą usługi Azure Maps](azure-maps-authentication.md) Aby uzyskać więcej informacji.
+    Aby uzyskać więcej informacji, zobacz [uwierzytelniania za pomocą usługi Azure Maps](azure-maps-authentication.md) Aby uzyskać więcej informacji.
 
 6. Opcjonalnie może się okazać, dodając następujące elementy tag meta do Nagłówek strony przydatne:
 
@@ -114,7 +114,7 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. Łączenie wszystkiego razem plik HTML powinien wyglądać następująco:
+7. Łączenie wszystkiego razem plik HTML powinien wyglądać podobnie do poniższego kodu:
 
     ```HTML
     <!DOCTYPE html>
@@ -131,8 +131,8 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <style>
             html, body {
@@ -164,7 +164,7 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
     </html>
     ```
 
-8. Otwórz plik w przeglądarce sieci web i wyświetlić mapę renderowany. Jego powinien wyglądać następująco:
+8. Otwórz plik w przeglądarce sieci web i wyświetlić mapę renderowany. Powinno to wyglądać podobnie do poniższego kodu:
 
     <iframe height="700" style="width: 100%;" scrolling="no" title="Jak używać kontrolki mapy" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz pióra <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak używać kontrolki mapy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
@@ -180,4 +180,4 @@ Dowiedz się, jak utworzyć i korzystać z mapy:
 Dowiedz się, jak do nadawania stylu mapy:
 
 > [!div class="nextstepaction"]
-> [Wybierz style mapy](choose-map-style.md)
+> [Wybieranie stylu mapy](choose-map-style.md)
