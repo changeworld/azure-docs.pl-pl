@@ -1,10 +1,9 @@
 ---
-title: Usługa Azure SQL Database Managed różnice języka T-SQL w wystąpieniu | Dokumentacja firmy Microsoft
+title: Różnice języka T-SQL na wystąpieniu zarządzanym bazy danych usługi Azure SQL | Dokumentacja firmy Microsoft
 description: W tym artykule omówiono różnice języka T-SQL wystąpienia zarządzanego usługi Azure SQL Database i programu SQL Server
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -12,20 +11,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.custom: seoapril2019
+ms.openlocfilehash: 14e33ec25dd2384607d41e4be6e5a33ebf889cbc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010604"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260497"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
-Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcje aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym.
-
-![Migracja](./media/sql-database-managed-instance/migration.png)
-
-Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice. <a name="Differences"></a>
+Ten artykuł zawiera podsumowanie i wyjaśnia różnice w składnią i zachowaniem między wystąpienia zarządzanego Azure SQL Database i aparatu bazy danych serwera SQL w środowisku lokalnym. <a name="Differences"></a>
 
 - [Dostępność](#availability) włącznie z różnicami w [zawsze włączonej](#always-on-availability) i [kopie zapasowe](#backup),
 - [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credential), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
@@ -33,6 +29,10 @@ Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artyku
 - [Funkcje](#functionalities) tym [ZBIORCZEGO WSTAWIANIA/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcje rozproszone](#distributed-transactions), [ Rozszerzone zdarzenia](#extended-events), [zewnętrznych bibliotekach](#external-libraries), [Filestream i Filetable](#filestream-and-filetable), [pełnotekstowe wyszukiwanie semantyczne](#full-text-semantic-search), [połączonej serwery](#linked-servers), [Polybase](#polybase), [replikacji](#replication), [PRZYWRÓCIĆ](#restore-statement), [programu Service Broker](#service-broker), [ Procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-triggers),
 - [Funkcje, które mają różne zachowanie w wystąpieniach zarządzanych](#Changes)
 - [Tymczasowe ograniczenia i znane problemy](#Issues)
+
+Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcje aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym.
+
+![Migracja](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>Dostępność
 
@@ -473,7 +473,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-Maksymalny rozmiar pliku `tempdb` nie może być większy od 24 GB/core, w warstwie ogólnego przeznaczenia. Maksymalna liczba `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` zawsze jest podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nowe pliki, które można dodać do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24GB / rdzeń w `tempdb`.
+Maksymalny rozmiar pliku `tempdb` nie może być większa niż 24 GB/core, w warstwie ogólnego przeznaczenia. Maksymalna liczba `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` zawsze jest podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nowe pliki, które można dodać do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24GB / rdzeń w `tempdb`.
 
 ### <a name="cannot-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
 
@@ -494,7 +494,7 @@ To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określo
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
 
-Możesz [określenie liczby pozostałych plików](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) korzystanie z widoków systemowych. Jeśli chcesz się połączyć ten limit, próby [pustych, a następnie usuń część mniejsze pliki za pomocą instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub shitch do [warstwy krytyczne dla działania firmy, która nie ma tego limitu](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Możesz [określenie liczby pozostałych plików](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) korzystanie z widoków systemowych. Jeśli chcesz się połączyć ten limit, próby [pustych, a następnie usuń część mniejsze pliki za pomocą instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub przełącz się do [warstwy krytyczne dla działania firmy, która nie ma tego limitu](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Przywróć niepoprawnej konfiguracji klucza sygnatury dostępu Współdzielonego podczas bazy danych
 

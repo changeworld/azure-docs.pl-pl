@@ -1,7 +1,6 @@
 ---
 title: Zapoznaj się z zasobami platformy Azure
 description: Dowiedz się więcej, zapoznaj się z zasobami i Odkryj, jak są one połączone przy użyciu języka zapytań wykres zasobów.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/05/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d6ce615e23ce71f22eff3c2c70b387267792fef9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3174e74dc3fb8c56279c0c9708a67d99ae19724a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768439"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276120"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 

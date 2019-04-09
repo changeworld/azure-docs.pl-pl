@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3253c26f99c470a256b937844138d8875219cbd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878044"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Help Scout
 
@@ -52,7 +52,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Help Scout w usłudze Azure AD, należy dodać aplikację Help Scout z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Help Scout z galerii, wykonaj następujące czynności:**
+**Aby dodać Scout pomocy z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -106,18 +106,18 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Help Scout
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Help Scout](common/idp-intiated.png)
 
-    a. **Identyfikator** to wartość **Audience URI (Service Provider Entity ID)** (Identyfikator URI odbiorców — identyfikator jednostki usługodawcy) z aplikacji Help Scout, która zaczyna się od: `urn:`
+    a. **Identyfikator** jest **identyfikator URI odbiorców (identyfikator jednostki usługi dostawcy)** z pomocy programu Scout zaczyna się od `urn:`
 
-    b. **Adres URL odpowiedzi** to wartość **Post-back URL (Assertion Consumer Service URL)** (Zwrotny adres URL — adres URL usługi Assertion Consumer Service) z aplikacji Help Scout, która zaczyna się od: `https://` 
+    b. **Adres URL odpowiedzi** jest **wstecz po wprowadzeniu adresu URL (adres URL usługi Assertion konsumenta)** z pomocy programu Scout zaczyna się od `https://` 
 
     > [!NOTE]
-    > Wartości tych adresów URL są tylko na potrzeby demonstracyjne. Musisz zaktualizować te wartości na podstawie rzeczywistych wartości adresu URL odpowiedzi i identyfikatora. Wartości te uzyskasz z karty **Single Sign-On** (Logowanie jednokrotne) w sekcji Authentication (Uwierzytelnianie), co zostało wyjaśnione w dalszej części tego samouczka.
+    > Wartości tych adresów URL są tylko na potrzeby demonstracyjne. Musisz zaktualizować te wartości z rzeczywistych adres URL odpowiedzi i identyfikator. Wartości te uzyskasz z karty **Single Sign-On** (Logowanie jednokrotne) w sekcji Authentication (Uwierzytelnianie), co zostało wyjaśnione w dalszej części tego samouczka.
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Help Scout](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://secure.helpscout.net/members/login/`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://secure.helpscout.net/members/login/`
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -157,7 +157,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Help Scout
 
     ![Konfigurowanie logowania jednokrotnego](./media/helpscout-tutorial/settings4.png)
 
-    a. W polu tekstowym  **Single Sign-On URL** (Adres URL logowania jednokrotnego) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    a. W **pojedynczy adres URL logowania** pola tekstowego, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
 
     b. Kliknij przycisk **Upload Certificate** (Przekaż certyfikat), aby przekazać **certyfikat (Base64)** pobrany z witryny Azure Portal.
 
@@ -230,8 +230,8 @@ Po kliknięciu kafelka Help Scout w panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

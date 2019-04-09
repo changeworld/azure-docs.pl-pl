@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101554"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269354"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
@@ -52,20 +52,17 @@ W poniższych sekcjach opisano sposób konfiguracji.
 
 Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bramę application gateway.
 
-
 1. Zaloguj się do swojego konta platformy Azure.
 
    ```powershell
    Connect-AzAccount
    ```
 
-
 2. Wybierz subskrypcję do użycia dla tego scenariusza.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
-
 
 3. Utwórz grupę zasobów. (Pomiń ten krok, jeśli używasz istniejącej grupy zasobów).
 
@@ -77,7 +74,6 @@ Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bram�
 
 Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jest używana do przechowywania bramy aplikacji. Innych podsieci jest używana do zaplecza, które hostują aplikację sieci web.
 
-
 1. Przypisz zakres adresów podsieci, która ma być używany dla usługi application gateway.
 
    ```powershell
@@ -86,8 +82,7 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
 
    > [!NOTE]
    > Podsieci skonfigurowane w usłudze application gateway należy poprawnie wielkości. Bramy aplikacji można skonfigurować dla maksymalnie 10 wystąpień. Każde wystąpienie zajmuje się jeden adres IP z podsieci. Zbyt małe podsieci może niekorzystnie wpłynąć na skalowanie w poziomie bramy aplikacji.
-   > 
-   > 
+   >
 
 2. Przypisz zakres adresów ma być używany dla puli adresów zaplecza.
 
@@ -130,7 +125,6 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-
 2. Utwórz konfigurację adresów IP frontonu. To ustawienie mapuje prywatny lub publiczny adres IP frontonu bramy aplikacji. Następny krok kojarzy publiczny adres IP w poprzednim kroku z konfiguracją adresów IP frontonu.
 
    ```powershell
@@ -145,7 +139,6 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 
    > [!NOTE]
    > W pełni kwalifikowaną nazwę domeny (FQDN) jest również prawidłową wartość, należy użyć zamiast adresu IP dla serwerów zaplecza. Można włączyć za pomocą **- BackendFqdns** przełącznika. 
-
 
 4. Skonfiguruj port adresu IP frontonu dla punktu końcowego publicznego adresu IP. Ten port jest numer portu, którego użytkownicy końcowi nawiązywać połączenie.
 
@@ -177,7 +170,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    > Jeśli używasz nagłówki hosta i oznaczaniem nazwy serwera (SNI) na zapleczu pobrane klucz publiczny nie może być planowanej lokacji, do których widok przepływów ruchu sieciowego. Jeśli jesteś w stanie wątpliwości, odwiedź stronę https://127.0.0.1/ na serwerach zaplecza, aby upewnić się, który certyfikat jest używany dla *domyślne* powiązania SSL. W tej sekcji, należy użyć klucza publicznego z tym żądaniem. Jeśli używasz nagłówki hosta i SNI na powiązania HTTPS i nie otrzymasz odpowiedzi i certyfikat od żądanie ręcznej przeglądarki https://127.0.0.1/ na serwerach zaplecza, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i zapleczu nie jest umieszczona na białej liście.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
@@ -227,7 +220,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
     Poniższy przykład ustawia wersję protokołu minimalne **TLS 1_2** i umożliwia **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** tylko.
 
     ```powershell
-    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
     ```
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji

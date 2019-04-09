@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d589714be387bdff14d76ccd9417123295a62770
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba469081bf1f1aa265a55ffbd683ba19bc41b6e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522013"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263336"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Storage Gen2 przy użyciu usługi Azure Data Factory
 
@@ -104,7 +104,7 @@ Aby użyć uwierzytelniania jednostki usługi, wykonaj następujące kroki:
     - **Jako obiekt sink**, w Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
 
 >[!NOTE]
->Do listy folderów, zaczynając od na poziomie konta, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **konta magazynu z uprawnieniami "Execute"** lub uprawnienia do zarządzania tożsamościami i Dostępem. Jest to wartość true, gdy:
+>Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, należy ustawić uprawnienia jednostki usługi, zostanie im przyznany do **konta magazynu z uprawnieniami "Execute" w IAM**. Jest to wartość true, gdy:
 >- **Narzędzie do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
 >Jeśli masz obawy na nadawanie uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania, będą nadal działać tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami na pliki do skopiowania.
@@ -158,7 +158,7 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
     - **Jako obiekt sink**, w Eksploratorze usługi Storage, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Alternatywnie kontroli dostępu (IAM), można nadać co najmniej **Współautor danych obiektu Blob magazynu** roli.
 
 >[!NOTE]
->Do listy folderów, zaczynając od na poziomie konta, musisz ustawić uprawnienie tożsamość zarządzaną, zostanie im przyznany do **konta magazynu z uprawnieniami "Execute"** lub uprawnienia do zarządzania tożsamościami i Dostępem. Jest to wartość true, gdy:
+>Do listy folderów uruchamianie z poziomu konta lub aby przetestować połączenie, musisz ustawić uprawnienie tożsamość zarządzaną, zostanie im przyznany do **konta magazynu z uprawnieniami "Execute" w IAM**. Jest to wartość true, gdy:
 >- **Narzędzie do kopiowania danych** do potoku kopiowania autora.
 >- **Interfejs użytkownika usługi Data Factory** do testowania połączenia i przechodząc folderów podczas tworzenia. 
 >Jeśli masz obawy na nadawanie uprawnień na poziomie konta, można pominąć połączenie testowe i ścieżka wejściowa ręcznie podczas tworzenia. Działanie kopiowania, będą nadal działać tak długo, jak tożsamość zarządzaną otrzymuje z odpowiednimi uprawnieniami na pliki do skopiowania.

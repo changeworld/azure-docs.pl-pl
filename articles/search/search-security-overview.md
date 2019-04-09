@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342426"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269558"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
 
@@ -31,8 +31,8 @@ Usługa Azure Search jest certyfikowany do pracy następujące standardy jako [o
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [1. poziom PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Australia IRAP Nieutajnionych DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Zgodność ze standardami dotyczy funkcji jest ogólnie dostępna. Funkcje w wersji zapoznawczej są certyfikowane podczas przejścia, które są ogólnie dostępne i nie mogą być używane w rozwiązaniach o wymagania rygorystyczne standardy. Certyfikacja zgodności jest udokumentowany w [zgodności omówienie platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
 
@@ -58,6 +58,8 @@ Wiele mechanizmów zabezpieczeń są dostępne sieci platformy Azure i Utwórz a
 
 Wszystkich usług platformy Azure obsługuje kontroli dostępu opartej na rolach (RBAC) do ustawiania poziomów dostępu spójne we wszystkich usługach. Na przykład wyświetlanie poufne dane, takie jak klucz administratora jest ograniczony do ról właściciel i współautor, wyświetlanie stanu usługi jest dostępne dla członków żadnej roli. RBAC zawiera role właściciela, współautora i czytelnika. Domyślnie wszyscy administratorzy usługi są członkami roli właściciela.
 
+<a name="service-access-and-authentication"></a>
+
 ## <a name="service-access-and-authentication"></a>Dostęp do usługi i uwierzytelniania
 
 Gdy usługa Azure Search dziedziczy zabezpieczenia zabezpieczeń platformy Azure, zapewnia również swój własny uwierzytelniania opartego na kluczu. Klucz interfejsu api to ciąg składający się z liter i cyfr generowany losowo. Typ klucza (admin lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowy klucz jest traktowany jako będący dowód żądanie pochodzi z zaufanego jednostki. 
@@ -65,11 +67,11 @@ Gdy usługa Azure Search dziedziczy zabezpieczenia zabezpieczeń platformy Azure
 Istnieją dwa poziomy dostępu do usługi wyszukiwania włączane przez dwa typy kluczy:
 
 * Dostęp administratora (prawidłowe w kontekście operacji odczytu i zapisu względem usługi)
-* Dostęp zapytań (ważny dla operacji tylko do odczytu, takich jak zapytania względem indeksu)
+* Dostęp zapytań (ważny dla operacji tylko do odczytu, takich jak zapytania względem kolekcji dokumentów indeksu)
 
-*Klucze administratora* są tworzone, gdy usługa jest aprowizowana. Dostępne są dwa klucze administratora, wyznaczony jako *podstawowego* i *dodatkowej* je bezpośrednio, ale w rzeczywistości są one wymienne. Każda usługa ma dwa klucze administratora, dzięki czemu można je przerzucić jeden bez utraty dostępu do usługi. Można ponownie wygenerować klucza albo administratora, ale nie można dodać do klucza liczby całkowitej administratora. Istnieje więcej niż dwa klucze administratora dla usługi wyszukiwania.
+*Klucze administratora* są tworzone, gdy usługa jest aprowizowana. Dostępne są dwa klucze administratora, wyznaczony jako *podstawowego* i *dodatkowej* je bezpośrednio, ale w rzeczywistości są one wymienne. Każda usługa ma dwa klucze administratora, dzięki czemu można je przerzucić jeden bez utraty dostępu do usługi. Możesz [administratora ponowne generowanie klucza](search-security-api-keys.md#regenerate-admin-keys) okresowo na zabezpieczeń platformy Azure najlepszych rozwiązań, ale nie można dodać do liczby kluczy administratora całkowitej. Istnieje więcej niż dwa klucze administratora dla usługi wyszukiwania.
 
-*Kluczami zapytań* są tworzone w miarę potrzeb i są przeznaczone dla aplikacji klienckich, które bezpośrednio wywoływać wyszukiwania. Możesz utworzyć maksymalnie 50 klucze zapytania. W kodzie aplikacji należy określić adres URL wyszukiwania i klucz interfejsu api zapytań, aby zezwolić na dostęp tylko do odczytu do usługi. Kod aplikacji określa również indeksu używanych przez aplikację. Punkt końcowy, klucz interfejsu api, aby uzyskać dostęp tylko do odczytu i indeksu docelowego określa poziom zakresu i dostęp do połączenia z aplikacji klienckiej.
+*Kluczami zapytań* są tworzone w miarę potrzeb i są przeznaczone dla aplikacji klienckich, które wystawiają zapytania. Możesz utworzyć maksymalnie 50 klucze zapytania. W kodzie aplikacji należy określić adres URL wyszukiwania i klucz interfejsu api zapytań, aby zezwolić na dostęp tylko do odczytu do kolekcji documents określonego indeksu. Punkt końcowy, klucz interfejsu api, aby uzyskać dostęp tylko do odczytu i indeksu docelowego określa poziom zakresu i dostęp do połączenia z aplikacji klienckiej.
 
 Wymagane jest uwierzytelnienie na każde żądanie, w którym każde żądanie składa się z kluczem obowiązkowe, operacji i obiektu. Gdy połączonych ze sobą, dwóch poziomach uprawnień (pełny lub tylko do odczytu), a także kontekst (na przykład dla operacji zapytania względem indeksu) są wystarczające dla zapewniających bezpieczeństwo szerokim w operacji usługi. Aby uzyskać więcej informacji na temat kluczy, zobacz [tworzenie i zarządzanie kluczami interfejsu api](search-security-api-keys.md).
 
@@ -83,17 +85,11 @@ Takimi samymi jest dostępu administratorów i deweloperów indeksów: zarówno 
 
 Wielodostępność rozwiązań wymagających granic zabezpieczeń na poziomie indeksu w przypadku takich rozwiązań zazwyczaj obejmują warstwy środkowej, w których klientów używać do obsługi izolacji indeksu. Aby uzyskać więcej informacji na temat przypadek użycia wielodostępnych zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS i usługa Azure Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access-from-client-apps"></a>Dostęp administratora z aplikacji klienta
+## <a name="admin-access"></a>Prawa dostępu administratora
 
-Interfejsu API REST usługi Azure Search zarządzania jest rozszerzeniem z usługi Azure Resource Manager i udostępnia jej zależności. W efekcie usługi Active Directory to warunek wstępny do administrowania usługą Azure Search. Wszystkie żądania administracyjne z poziomu kodu klienta musi zostać uwierzytelniony przy użyciu usługi Azure Active Directory, zanim żądanie osiąga usługi Resource Manager.
+[Dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) Określa, czy masz dostęp do formantów za pośrednictwem usługi i jego zawartości. Jeśli jesteś właścicielem lub współautorem w usłudze Azure Search, możesz użyć portalu lub programu PowerShell **Az.Search** modułu do utworzenia, aktualizacji lub usuwania obiektów w usłudze. Można również użyć [interfejsu API REST zarządzania usługi Azure Search](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
-Żądania danych względem punktu końcowego usługi Azure Search, takie jak Create Index (Azure Search Service interfejs API REST) lub wyszukiwanie dokumentów (Azure Search interfejs API REST usługi), Użyj klucza interfejsu api w nagłówku żądania.
-
-Jeśli kod aplikacji obsługuje operacje administracyjne usługi, a także operacje na danych w dokumentach lub indeksów wyszukiwania, implementowanie dwa podejścia do uwierzytelniania w kodzie: klucz dostępu natywnej do usługi Azure Search i uwierzytelniania usługi Active Directory Metodologia wymagane przez usługę Resource Manager. 
-
-Aby uzyskać informacji dotyczących tworzenia struktury żądania w usłudze Azure Search, zobacz [interfejsu REST usługi Search Azure](https://docs.microsoft.com/rest/api/searchservice/). Aby uzyskać więcej informacji na temat wymagań dotyczących uwierzytelniania dla usługi Resource Manager, zobacz [interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji](../azure-resource-manager/resource-manager-api-authentication.md).
-
-## <a name="user-access-to-index-content"></a>Dostęp użytkownika do indeksowanie zawartości
+## <a name="user-access"></a>Dostęp użytkowników
 
 Domyślnie dostęp użytkowników do indeksu jest określany przez klucz dostępu dla żądania zapytania. Większość deweloperów, tworzenie i przypisywanie [ *kluczami zapytań* ](search-security-api-keys.md) na żądanie wyszukiwania po stronie klienta. Klucz zapytania przyznaje dostęp do odczytu do całej zawartości w indeksie.
 

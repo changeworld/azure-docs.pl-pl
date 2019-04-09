@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905889"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261041"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -39,7 +39,9 @@ W tym dokumencie opisano, jak utworzyć i skonfigurować samodzielnie hostowane 
 3. Pobierz klucz uwierzytelniania i zarejestrowania własnego środowiska integration runtime przy użyciu klucza. Oto przykład programu PowerShell:
 
     ```powershell
-    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Konfigurowanie własnego środowiska IR na Maszynie wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager (automation)
@@ -110,7 +112,7 @@ Własne środowisko integration runtime można zainstalować, pobierając pakiet
 
 
 ## <a name="high-availability-and-scalability"></a>Wysoka dostępność i skalowalność
-Własne środowisko integration runtime może być skojarzony z wieloma maszynami w środowisku lokalnym. Te maszyny są nazywane węzłami. Może mieć maksymalnie cztery węzły skojarzone z własnego środowiska integration runtime. Zalety o wielu węzłach (maszynach lokalnych za pośrednictwem bramy, zainstalować) dla bramy sieci logiczne to:
+Własne środowisko integration runtime można skojarzyć z wielu maszyn w środowisku lokalnym lub maszynach wirtualnych platformy Azure. Te maszyny są nazywane węzłami. Może mieć maksymalnie cztery węzły skojarzone z własnego środowiska integration runtime. Zalety o wielu węzłach (maszynach lokalnych za pośrednictwem bramy, zainstalować) dla bramy sieci logiczne to:
 * Wyższą dostępność własnego środowiska integration runtime, tak że użytkownika nie jest już pojedynczym punktem awarii w danych big data rozwiązania lub w chmurze integrację danych dzięki usłudze Azure Data Factory, zapewniając ciągłość działania w przypadku maksymalnie czterech węzłów.
 * Zwiększona wydajność i przepływność podczas przenoszenia danych między lokalizacją lokalną i chmurą magazynów danych. Uzyskaj więcej informacji [porównania wydajności](copy-activity-performance.md).
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295457"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271802"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -58,7 +58,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS50007 | PartnerEncryptionCertificateMissing — dla tej aplikacji nie znaleziono certyfikatu szyfrowania partnera. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) z firmą Microsoft, aby uzyskać dostęp do tej stałej. |
 | AADSTS50008 | InvalidSamlToken — potwierdzenie SAML lub jest niepoprawnie skonfigurowany w tokenie. Skontaktuj się z dostawcą federacji. |
 | AADSTS50010 | AudienceUriValidationFailed — identyfikator URI odbiorców Weryfikacja aplikacji nie powiodła się, ponieważ zostały skonfigurowane nie odbiorców tokenu. |
-| AADSTS50011 | InvalidReplyTo - adres zwrotny brakuje, nieprawidłowo skonfigurowane, lub jest niezgodna z adresy zwrotne skonfigurowane dla aplikacji. Wypróbuj rozwiązanie opisane tutaj: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Jeśli nadal widzisz problemy, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji. |
+| AADSTS50011 | InvalidReplyTo - adres zwrotny brakuje, nieprawidłowo skonfigurowane, lub jest niezgodna z adresy zwrotne skonfigurowane dla aplikacji.  Rozwiązanie tego problemu upewnij się, aby dodać ten brak Adres Odpowiedz do aplikacji usługi Azure Active Directory lub ktoś z uprawnieniami do zarządzania aplikacją w usłudze Active Directory to dla Ciebie.|
 | AADSTS50012 | Nie można uwierzytelnić AuthenticationFailed — jednej z następujących przyczyn:<ul><li>Nazwa podmiotu certyfikatu podpisywania nie jest autoryzowany.</li><li>Nie można odnaleźć odpowiednich zasad zaufany urząd dla nazwy podmiotu autoryzowane</li><li>Łańcuch certyfikatów jest nieprawidłowy</li><li>Certyfikat podpisywania jest nieprawidłowy</li><li>Nie skonfigurowano zasad w ramach dzierżawy</li><li>Odcisk palca certyfikatu podpisywania nie jest autoryzowany.</li><li>Potwierdzenia klienta zawiera nieprawidłowy podpis</li></ul> |
 | AADSTS50013 | InvalidAssertion - potwierdzenia jest nieprawidłowy z różnych powodów — wystawcy tokenów nie jest zgodna api zakres wersji w ramach jego prawidłową godzinę — wygasły token odświeżania — źle sformułowane — w potwierdzenie nie jest token odświeżania podstawowego. |
 | AADSTS50014 | GuestUserInPendingState - realizacji przez użytkownika jest w stanie oczekiwania. Konta gościa nie pełni powstaje jeszcze. |
@@ -153,7 +153,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS70007 | UnsupportedResponseMode — aplikacja zwrócił nieobsługiwana wartość `response_mode` podczas żądania tokenu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant - token odświeżania wygasł z powodu braku aktywności. Token został wystawiony na XXX i był nieaktywny przez pewien czas. |
 | AADSTS70011 | InvalidScope — zakres żądany przez aplikację jest nieprawidłowy. |
-| AADSTS70012 | MsaServerError — błąd serwera podczas uwierzytelniania użytkownika konta Microsoft (użytkownik). Spróbuj ponownie. Jeśli nadal nie będzie działać, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError — błąd serwera podczas uwierzytelniania użytkownika konta Microsoft (użytkownik). Spróbuj ponownie. Jeśli próba ponownie nie powiedzie się, [otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending — błąd przepływu urządzenia protokołu OAuth 2.0. Autoryzacja jest w stanie oczekiwania. Urządzenie ponowi próbę żądania sondowania. |
 | AADSTS70018 | BadVerificationCode — kod weryfikacyjny nieprawidłowy ze względu na użytkownika, wpisując w kodzie użytkownika problem dla przepływu kodu urządzenia. Autoryzacja nie została zatwierdzona. |
 | AADSTS70019 | CodeExpired — kod weryfikacyjny wygasł. Należy mieć użytkownika, ponów próbę logowania. |

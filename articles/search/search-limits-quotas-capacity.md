@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620653"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273400"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
@@ -114,7 +114,7 @@ Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiek
 | Indeksatora obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
 | Indeksatora obiektów blob: Maksymalna liczba znaków w treści wyodrębnić z obiektu blob |32,000 |64,000 |4 mln |4 mln |4 mln |ND |4 mln |4 mln |
 
-<sup>1</sup> do usług bezpłatnych ma indeksatora maksymalny czas wykonywania więcej niż trzy minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych.
+<sup>1</sup> do usług bezpłatnych ma indeksatora maksymalny czas wykonywania więcej niż trzy minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych. Dla tego wywołania do usług Cognitive Services indeksowania sztucznej Inteligencji bezpłatnych usług są ograniczone do 20 bezpłatnych transakcji dziennie, gdy transakcja jest zdefiniowany jako dokumentu, które pomyślnie przechodzą przez wzbogacony potok.
 
 <sup>2</sup> podstawowe usługi utworzone po późno 2017 nie zwiększone limity indeksach 15, źródła danych i indeksatorów. Usługi utworzonej wcześniej mieć 5.
 

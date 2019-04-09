@@ -1,34 +1,34 @@
 ---
 title: Wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia
 description: Czas wygaśnięcia Microsoft Azure Cosmos DB zapewnia możliwość wprowadzenia dokumentów automatycznie usuwane z systemu po upływie określonego czasu.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.author: mjbrown
+ms.date: 04/08/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 27540c3dfce73788e01f0f8ab0892c733f153fdf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549191"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271275"
 ---
-# <a name="time-to-live-in-azure-cosmos-db"></a>Czas wygaśnięcia w usłudze Azure Cosmos DB 
+# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w usłudze Azure Cosmos DB 
 
-Z czasem wygaśnięcia lub "Time to Live" usługi Azure Cosmos DB zapewnia możliwość automatycznie usunąć elementy z kontenera po upływie pewnego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąp wartość na podstawie poszczególnych elementów. Po ustawieniu czas wygaśnięcia w kontenerze, lub na poziomie elementu, usługi Azure Cosmos DB automatycznie usunie te elementy po okresie od czasu ostatniej modyfikacji. Wartość czasu wygaśnięcia skonfigurowano w ciągu kilku sekund. Podczas konfigurowania czasu wygaśnięcia, system automatycznie usunie wygasłych elementów na podstawie wartości TTL, w przeciwieństwie do operacji usuwania, jawnie wydawanego przez aplikację klienta.
+Za pomocą **czas wygaśnięcia** lub czas wygaśnięcia, usługa Azure Cosmos DB zapewnia możliwość automatycznie usunąć elementy z kontenera po upływie pewnego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąp wartość na podstawie poszczególnych elementów. Po ustawieniu czas wygaśnięcia w kontenerze, lub na poziomie elementu, usługi Azure Cosmos DB automatycznie usunie te elementy po okresie od czasu ostatniej modyfikacji. Wartość czasu wygaśnięcia skonfigurowano w ciągu kilku sekund. Podczas konfigurowania czasu wygaśnięcia, system automatycznie usunie wygasłych elementów na podstawie wartości TTL bez konieczności używania operacji usuwania, jawnie wydawanego przez aplikację klienta.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Czas wygaśnięcia dla kontenerów i elementów
 
-Wartość czasu wygaśnięcia jest ustawiany w ciągu kilku sekund, a zostanie on zinterpretowany jako zmian od czasu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia w kontenerze lub elementu w kontenerze:
+Wartość czasu wygaśnięcia jest ustawiana w ciągu kilku sekund, a zostanie on zinterpretowany jako zmian od czasu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia w kontenerze lub elementu w kontenerze:
 
 1. **Czas wygaśnięcia w kontenerze** (można ustawić przy użyciu `DefaultTimeToLive`):
 
    - Jeśli brak (lub ustawionej na wartość null), elementy nie są automatycznie wygasł.
 
-   - Jeśli istnieje, a wartość jest równa "-1", jest równa nieskończonej — elementy nie wygasają domyślnie.
+   - Jeśli istnieje, a wartość jest równa "-1", jest równa nieskończoność, a elementy nie wygasają domyślnie.
 
-   - Jeśli istnieje, a wartość jest równa niektóre numer ("n") — elementy wygasają "n" sekund po ich ostatniej modyfikacji.
+   - Jeśli istnieje, a wartość jest równa niektóre *"n"* — elementy wygasną *"n"* (w sekundach) po ich ostatniej modyfikacji.
 
 2. **Czas wygaśnięcia elementu** (można ustawić przy użyciu `ttl`):
 
@@ -38,7 +38,7 @@ Wartość czasu wygaśnięcia jest ustawiany w ciągu kilku sekund, a zostanie o
 
 ## <a name="time-to-live-configurations"></a>Czas do konfiguracji na żywo
 
-* Jeśli czas wygaśnięcia jest równa "n" w kontenerze, elementy w danym kontenerze będzie tracą ważność po n sekund.  Jeśli istnieją elementy w tym samym kontenerze, które mają czas wprowadzenia na na żywo, ustawioną wartość -1 (wskazującą, że nie wygasną) lub jeśli niektóre elementy przesłonili czas wygaśnięcia ustawienie z różnymi liczbami, te elementy wygasają w oparciu skonfigurowana wartość czasu wygaśnięcia. 
+* Jeśli czas wygaśnięcia jest równa *"n"* w kontenerze, następnie elementy w danym kontenerze wygasną po upływie *n* sekund.  Jeśli istnieją elementy w tym samym kontenerze, które mają czas wprowadzenia na na żywo, ustawioną wartość -1 (wskazującą, że nie wygasną) lub jeśli niektóre elementy przesłonili czas wygaśnięcia ustawienie z różnymi liczbami, te elementy wygasają oparte na ich własnych skonfigurowana wartość czasu wygaśnięcia. 
 
 * Jeśli czas wygaśnięcia nie jest ustawiona na kontenerze, czas wygaśnięcia elementu w tym kontenerze jest ignorowany. 
 

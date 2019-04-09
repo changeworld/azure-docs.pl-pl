@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521979"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258746"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?
 
@@ -58,7 +58,7 @@ Za pomocą Udziel kontroli możesz całkowicie blokowanie dostępu lub zezwolić
 - Wszystkie wybrane formanty, które należy spełnić (*i*)
 - Jeden zaznaczony formant do spełnienia (*lub*)
 
-![Kontrola](./media/controls/17.png)
+![Kontrola](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
@@ -76,9 +76,9 @@ Można skonfigurować zasady dostępu warunkowego, które są oparte na urządze
 
 Urządzenie musi być zarejestrowany w usłudze Azure AD przed mogą zostać oznaczone jako zgodne. Aby zarejestrować urządzenie, masz trzy opcje: 
 
-- [Urządzeń zarejestrowanych w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices)
-- [Urządzenia przyłączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices)  
-- [Urządzenia przyłączone do hybrydowej usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Urządzenia zarejestrowane w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices)
+- [Urządzenia dołączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices)  
+- [Urządzenia dołączone hybrydowo do usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md).
 
@@ -94,6 +94,18 @@ Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, mo�
 Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
 
 Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji klienckiej, która próbuje uzyskać dostęp do obsługi aplikacji w chmurze [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich jest także znana jako [zasad dostępu warunkowego opartego na aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [zatwierdzone klienta aplikacji wymaganie](technical-reference.md#approved-client-app-requirement).
+
+### <a name="app-protection-policy-preview"></a>Zasady ochrony aplikacji (wersja zapoznawcza)
+
+Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, możesz chcieć mieć możliwość ochrony danych firmowych, uzyskiwać dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez użytkownika.
+Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
+
+Za pomocą zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD ma otrzymały [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji jest również nazywany [zasady dostępu warunkowego opartego na ochronę aplikacji](app-protection-based-conditional-access.md). 
+
+Urządzenie musi być zarejestrowana do usługi Azure AD, zanim aplikacja może być oznaczony jako chroniony zasad.
+
+Aby uzyskać listę zasad obsługiwanych klientów chronionych, zobacz [wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement).
+
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 

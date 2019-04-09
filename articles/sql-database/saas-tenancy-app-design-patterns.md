@@ -4,7 +4,7 @@ description: Informacje na temat wymagań i wspólnych danych wzorce architektur
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217873"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260548"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
 
-Podczas projektowania aplikacji SaaS z wieloma dzierżawami, należy starannie wybrać model dzierżawy, który najlepiej pasuje do wymagań aplikacji.  Model dzierżawy określa, jak dane każdej dzierżawy jest mapowany do magazynu.  Wybór modelu dzierżawy ma wpływ na projekt aplikacji i zarządzania.  Przełączanie do innego modelu później czasami jest kosztowne.
+W tym artykule opisano różne modele dzierżawy, dostępne dla aplikacji SaaS z wieloma dzierżawami.
 
-W tym artykule opisano modele alternatywnych dzierżawy.
+Podczas projektowania aplikacji SaaS z wieloma dzierżawami, należy starannie wybrać model dzierżawy, który najlepiej pasuje do wymagań aplikacji.  Model dzierżawy określa, jak dane każdej dzierżawy jest mapowany do magazynu.  Wybór modelu dzierżawy ma wpływ na projekt aplikacji i zarządzania.  Przełączanie do innego modelu później czasami jest kosztowne.
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS pojęcia i terminologia
 

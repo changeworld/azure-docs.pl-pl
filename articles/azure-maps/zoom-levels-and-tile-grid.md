@@ -8,28 +8,29 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055372"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261273"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Poziomy powiększenia i siatka kafelków
 Usługi Azure Maps Użyj rzutowania kulistego Mercator współrzędnych (EPSG: 3857).
 
-Świat jest podzielony na kafelków w kształcie kwadratu. Renderowania (rastrowej) ma 21 poziomami powiększenia, numerowane od 0 do 20. Renderowania (wektor) ma 23 poziomami powiększenia, numerowane od 0 do 22. Na poziom powiększenia 0 cały świat pasuje do pojedynczego kafelka:
+Świat jest podzielony na kafelków w kształcie kwadratu. Usługi Azure maps zapewnia rastrowych i wektorowych kafelków 23 poziomami powiększenia, numerowane od 0 do 22. Na poziom powiększenia 0 cały świat pasuje do pojedynczego kafelka:
 
 ![Kafelek Światowej](./media/zoom-levels-and-tile-grid/world0.png)
 
 Poziom powiększenia 1 używa cztery Kafelki do renderowania na świecie: 2 x 2 kwadrat
 
-![World kafelka u góry z lewej](./media/zoom-levels-and-tile-grid/world1a.png)     ![World kafelka u góry z prawej](./media/zoom-levels-and-tile-grid/world1c.png) 
+![World kafelka u góry z lewej](media/zoom-levels-and-tile-grid/world1a.png)     ![World kafelka u góry z prawej](media/zoom-levels-and-tile-grid/world1c.png) 
 
-![World kafelka na dole z lewej](./media/zoom-levels-and-tile-grid/world1b.png)     ![World kafelka na dole z prawej](./media/zoom-levels-and-tile-grid/world1d.png) 
+![World kafelka na dole z lewej](media/zoom-levels-and-tile-grid/world1b.png)     ![World kafelka na dole z prawej](media/zoom-levels-and-tile-grid/world1d.png) 
 
+Każdy poziom powiększenia dodatkowe cztery bez reszty Kafelki poprzedniemu, Tworzenie siatki 2<sup>powiększenia</sup> x 2<sup>powiększenia</sup>. Poziom powiększenia 22 jest siatka 2<sup>22</sup> x 2<sup>22</sup>, lub kafelków 4,194,304 x 4,194,304 (17,592,186,044,416 Kafelki w sumie).
 
-Każdy poziom powiększenia kolejnych czterech bez reszty Kafelki poprzedniemu, Tworzenie siatki 2<sup>powiększenia</sup> x 2<sup>powiększenia</sup>. Poziom powiększenia 22 jest siatka 2<sup>22</sup> x 2<sup>22</sup>, lub kafelków 4,194,304 x 4,194,304 (17,592,186,044,416 Kafelki w sumie).
+Usługi Azure Maps mapie kontrolki sieci web i Android, obsługują poziomy 25 powiększenia poziomy przybliżenia, numerowane od 0 do 24. Mimo, że dane będą dostępne tylko w kiedy Kafelki są dostępne na poziomach powiększenia.
 
 Poniższa tabela zawiera pełną listę wartości dla poziomu powiększenia:
 
@@ -55,18 +56,20 @@ Poniższa tabela zawiera pełną listę wartości dla poziomu powiększenia:
 |17|1.2|307.2|
 |18|Update 0.6|152.8|
 |19|0.3|76.4|
-|20|0,15|38.2|
-|21|0,075 n|19.1|
+|20|0.15|38.2|
+|21|0.075|19.1|
 |22|0.0375|9.55|
+|23|0.01875|4.775|
+|24|0.009375|2.3875|
 
 Kafelki są nazywane współrzędnymi powiększenia poziom x i y odpowiadający kafelka pozycji na siatce tego poziomu powiększenia.
 
-Podczas ustalania, które poziom powiększenia do użycia, należy pamiętać, że każda lokalizacja znajduje się w stała pozycja jej Kafelek. Oznacza to, że liczba kafelków potrzebne do wyświetlenia danego expanse terytorium jest zależne od określonych umieszczania powiększenia siatki na świecie. Na przykład jeśli istnieją dwa punkty 900 liczniki od siebie, jego *może* przyjmuje tylko trzy kafelków do wyświetlenia trasy między nimi na poziom powiększenia 17. Jednak jeśli western punkt znajduje się po prawej stronie jej Kafelek i Wschodniej punkt po lewej stronie jego kafelka, może upłynąć cztery Kafelki:
+Podczas ustalania, które poziom powiększenia do użycia, pamiętaj, że każda lokalizacja jest w stanie stały jej Kafelek. Oznacza to, że liczba kafelków potrzebne do wyświetlenia danego expanse terytorium jest zależne od określonych umieszczania powiększenia siatki na świecie. Na przykład jeśli istnieją dwa punkty 900 liczniki od siebie, jego *może* przyjmuje tylko trzy kafelków do wyświetlenia trasy między nimi na poziom powiększenia 17. Jednak jeśli western punkt znajduje się po prawej stronie jej Kafelek i Wschodniej punkt po lewej stronie jego kafelka, może upłynąć cztery Kafelki:
 
-![Skala pokaz powiększenia](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
+![Skala pokaz powiększenia](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
 
-Po określeniu poziom powiększenia x i y można obliczyć wartości. Górny Kafelek po lewej stronie w każdej siatce powiększenia jest x = 0, y = 0. Kafelek prawego dolnego rogu zostało wykonane w x = 2<sup>zoom -1</sup>, y = 2<sup>1 powiększenie</sup>.
+Po określeniu poziom powiększenia x i y można obliczyć wartości. Jest w lewym górnym rogu kafelka w każdej siatce powiększenia x = 0, y = 0. Kafelek prawego dolnego rogu zostało wykonane w x = 2<sup>zoom -1</sup>, y = 2<sup>1 powiększenie</sup>.
 
 Oto siatkę powiększenia poziom powiększenia 1:
 
-![Powiększenie siatkę poziom powiększenia 1](./media/zoom-levels-and-tile-grid/api_x_y.png)
+![Powiększenie siatkę poziom powiększenia 1](media/zoom-levels-and-tile-grid/api_x_y.png)

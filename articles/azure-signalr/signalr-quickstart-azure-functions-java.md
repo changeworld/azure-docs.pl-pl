@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b2f89d3fbb427cc3e14be231d4ffae879e641f2c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554904"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261177"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Szybki start: Tworzenie pokoju rozmów przy użyciu funkcji Azure SignalR Service przy użyciu języka Java
 
@@ -64,7 +64,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
 1. W pliku **local.settings.json** wklej parametry połączenia jako wartość ustawienia **AzureSignalRConnectionString**. Zapisz plik.
 
-1. Główny plik, który zawiera funkcje znajdują się w *src/main/java/com/function/Functions.java*:
+1. Główny plik, który zawiera funkcje znajdują się w *src/chat/java/src/main/java/com/function/Functions.java*:
 
     - **negotiate** — ta funkcja generuje i zwraca ważne informacje o połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
     - **SendMessage** — odbiera wiadomości rozmowy w treści żądania i używa *SignalR* danych wyjściowych powiązanie wysyłać wiadomość do wszystkich połączonych aplikacji klienckich.
@@ -90,4 +90,4 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 W tym przewodniku Szybki Start została skompilowana i uruchomienia aplikacji bez użycia serwera w czasie rzeczywistym przy użyciu narzędzia Maven. Następnie Dowiedz się więcej o sposobie tworzenia funkcji platformy Azure dla języka Java, od podstaw.
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../azure-functions/functions-create-first-java-maven.md)
+> [Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven](../azure-functions/functions-create-first-java-maven.md)

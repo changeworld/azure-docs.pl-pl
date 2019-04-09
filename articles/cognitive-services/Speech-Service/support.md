@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: c403bca3abf493448265e25316babe20ea9c8544
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877704"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272024"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -23,6 +23,7 @@ To właśnie zaczynają zapoznaj się z funkcji usług przetwarzania mowy? Może
 
 > [!div class="checklist"]
 > * Poinformują Cię o nowych projektach w *usług Azure Cognitive Services*, lub znaleźć najnowsze informacje związane z *usługa rozpoznawania mowy*.
+> * Informacje o wersji zawierają informacje dotyczące wszystkich wersji.
 > * Wyszukaj, aby zobaczyć, czy problem został omówiony przez społeczność, czy istniejąca dokumentacja dotycząca funkcji, które chcesz zaimplementować już istnieje.
 > * Jeśli nie możesz znaleźć odpowiedzi zadowalające, Zadaj pytanie na *Stack Overflow*.
 > * Jeśli znajdziesz problem z jednym z przykładów w witrynie GitHub podnieść *GitHub* problem.
@@ -31,6 +32,10 @@ To właśnie zaczynają zapoznaj się z funkcji usług przetwarzania mowy? Może
 ## <a name="stay-informed"></a>Bądź na bieżąco
 
 Wiadomości o usługach Cognitive Services są gromadzone w [blog usług Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Aby uzyskać najnowsze informacje dotyczące usług przetwarzania mowy, śledzić [blog usług przetwarzania mowy](https://azure.microsoft.com/blog/tag/speech-service/).
+
+## <a name="release-notes"></a>Informacje o wersji
+
+[Informacje o wersji]] (https://aka.ms/csspeech/whatsnew) są aktualizowane, gdy nowa wersja jest dostępna. Uwagi zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
 
 ## <a name="search"></a>Wyszukiwanie
 
@@ -77,7 +82,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 Przykłady są często publikowanych jako "open source". Pytania i problemy, utworzyć *problem* w odpowiednim repozytorium GitHub. Można przesłać żądanie ściągnięcia zbyt. Poniższa lista zawiera łącza do repozytoriów próbki:
 
 * [Zestaw SDK rozpoznawania mowy](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Zestaw SDK urządzeń](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Można utworzyć raport o usterce, żądania funkcji lub zadać pytanie ogólne i udostępniania najlepszych rozwiązań. Dla raportów usterek postępuj zgodnie z podanym szablonie:
 
@@ -108,7 +113,7 @@ Która wersja zestawu SDK jest używana.
 **Dodatkowy kontekst**
 
  - Ślad, stosu komunikaty o błędach, informacji dziennika...
- - Jeśli użytkownik zgłasza błąd do interakcji z określonej usługi, zgłoś SessionId i czasu (z uwzględnieniem strefa czasowa) zgłoszonych zdarzeń. Identyfikator SessionId jest zgłaszany w każdym wywołaniu — tworzy kopię/otrzymany.
+ - Jeśli użytkownik zgłasza błąd do interakcji z określonej usługi, przekaż identyfikator sesji i czasu (z uwzględnieniem strefa czasowa) zgłoszonych zdarzeń. Identyfikator SessionId jest zgłaszany w każdym wywołaniu — tworzy kopię/otrzymany.
  - Dodatkowe informacje
 
 

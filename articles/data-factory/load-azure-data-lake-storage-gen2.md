@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447223"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269269"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen2 za pomocą usługi Azure Data Factory
 
@@ -34,7 +34,7 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Konto usługi Azure Storage za pomocą magazynu Gen2 jeziora danych, włączone: Jeśli nie masz konta magazynu, kliknij przycisk [tutaj](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) ją utworzyć.
+* Konto usługi Azure Storage za pomocą magazynu Gen2 jeziora danych, włączone: Jeśli nie masz konta magazynu, [Tworzenie konta usługi](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 * Konta usług AWS z przedział S3, która zawiera dane: W tym artykule pokazano, jak skopiować dane z usługi Amazon S3. Wykonując podobne kroki, można użyć innych magazynów danych.
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
@@ -104,7 +104,7 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
    
    ![Określ konto usługi Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
-9. W **Wybieranie wyjściowego pliku lub folderu** wpisz **copyfroms3** jako nazwa folderu danych wyjściowych, a następnie wybierz **dalej**: 
+9. W **Wybieranie wyjściowego pliku lub folderu** wpisz **copyfroms3** jako nazwa folderu danych wyjściowych, a następnie wybierz **dalej**. ADF spowoduje utworzenie odpowiedniego systemu plików ADLS Gen2 i podfoldery podczas kopiowania, jeśli nie istnieje.
 
     ![Określ folder wyjściowy](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 

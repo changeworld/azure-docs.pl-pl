@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577326"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269133"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
 W tym artykule opisano architekturę i pojęcia dotyczące usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy przy użyciu usługi przedstawiono na poniższym diagramie:
 
-[![Architektura usługi Azure Machine Learning service i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![AArchitektura usługi Machine Learning zure i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 Przepływ pracy jest ogólnie przebiega w następującej kolejności:
 
@@ -66,7 +66,7 @@ Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy 
 
 Taksonomia obszaru roboczego zostało zilustrowane na poniższym diagramie:
 
-[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![WTaksonomia orkspace](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Eksperyment
 
@@ -80,7 +80,7 @@ W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i 
 
 Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest uczony poza usługi Azure Machine Learning. Możesz zarejestrować model, w obszarze roboczym usługi Azure Machine Learning.
 
-Usługa Azure Machine Learning jest niezależny od framework. Podczas tworzenia modelu, używając dowolną platformę nauczania popularnych maszyn, takie jak Scikit-learn, XGBoost, PyTorch, TensorFlow, Chainer i Microsoft Cognitive Toolkit (wcześniej znanego jako CNTK).
+Usługa Azure Machine Learning jest niezależny od framework. Podczas tworzenia modelu, używając dowolną platformę nauczania popularnych maszyny, jak Scikit-learn, XGBoost, PyTorch, TensorFlow, Chainer.
 
 Aby uzyskać przykład uczenia modelu, zobacz [samouczka: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -186,6 +186,10 @@ Usługa Azure Machine Learning można tworzyć dwa typy obrazów:
 * **Obraz FPGA**: Używany podczas wdrażania na tablicę programowalny bramy na platformie Azure.
 * **Obraz platformy docker**: Używany podczas wdrażania do celów innych niż FPGA obliczeń. Przykładami są usługi Azure Container Instances i Azure Kubernetes Service.
 
+Usługa Azure Machine Learning zapewnia obraz podstawowy, który jest używany domyślnie. Możesz również podać własne niestandardowe obrazy.
+
+Aby uzyskać więcej informacji, zobacz Konfigurowanie i rejestrowanie części obrazu [wdrażanie modeli](how-to-deploy-and-where.md#configureimage).
+
 Aby uzyskać przykład tworzenia obrazu, zobacz [wdrażanie modeli klasyfikacji obrazów w usłudze Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 ### <a name="image-registry"></a>Rejestru obrazów
@@ -230,5 +234,5 @@ Aby rozpocząć korzystanie z usługi Azure Machine Learning, zobacz:
 
 * [Co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md)
 * [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md)
-* [Samouczek: trenowanie modelu](tutorial-train-models-with-aml.md)
+* [Samouczek: Szkolenie modelu](tutorial-train-models-with-aml.md)
 * [Tworzenie obszaru roboczego przy użyciu szablonu usługi Resource Manager](how-to-create-workspace-template.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075633"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275899"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -102,6 +102,17 @@ Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.
 
 -   Ponadto użytkownik może edytować zasadę, która będzie działać w czasie importowania, ale zawiera ustawienia domyślne, gdzie określono żadnych informacji o importu. Np. Brak informacji o wystawcy  
 
+### <a name="formats-of-import-we-support"></a>Formaty obsługiwane jest importowanie
+Firma Microsoft obsługuje następujący typ importu dla formatu plików PEM. Wraz z PKCS #8 zakodowane, klucz niezaszyfrowany, który ma jeden certyfikat zakodowany w formacie PEM
+
+---BEGIN CERTYFIKATU------END CERTYFIKATU---
+
+---BEGIN PRYWATNEGO KLUCZA------END PRYWATNE KLUCZ---
+
+Na scalanie certyfikatów, firma Microsoft obsługuje 2 PEM na podstawie formatów. Albo można scalać pojedynczego zakodowanego certyfikatu PKCS #8 lub plik P7B zakodowany w formacie base64. ---BEGIN CERTYFIKATU------END CERTYFIKATU---
+
+Obecnie nie obsługujemy WE kluczy w formacie PEM.
+
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Tworzenie certyfikatu z urzędu certyfikacji nie użyły usługi Key Vault  
  Ta metoda umożliwia pracę z innych urzędów certyfikacji od dostawcy utworzyły usługi Key Vault, co oznacza, że Twoja organizacja może współpracować z urzędu certyfikacji do własnego wyboru.  
 
@@ -121,4 +132,4 @@ Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Informacje o kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
+- [Informacje o kluczach, wpisów tajnych i certyfikatów](about-keys-secrets-and-certificates.md)

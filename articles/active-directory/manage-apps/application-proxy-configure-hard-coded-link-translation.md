@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118599"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262554"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe linki do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -81,6 +81,31 @@ Istnieją dwie typowe rodzaje łączy wewnętrznych w aplikacjach środowiska lo
 
 - **Względna łączy wewnętrznych** , takie jak punkt do udostępnionego zasobu w strukturze pliku lokalnego `/claims/claims.html`. Te linki automatycznie działają w aplikacji, które są publikowane za pośrednictwem serwera Proxy aplikacji usługi i kontynuować pracę z lub bez niej łącze tłumaczenia. 
 - **Łączy wewnętrznych zapisane na stałe** do innych aplikacji lokalnych, takich jak `http://expenses` lub opublikowane plików, takie jak `http://expenses/logo.jpg`. Funkcja tłumaczenia łączenia działa dla łączy wewnętrznych zapisane na stałe i zmienia się je, aby wskazywał zewnętrzne adresy URL, które użytkownicy zdalni muszą przechodzić przez.
+
+Pełną listę tagów kodu HTML, czy serwer Proxy aplikacji obsługuje tłumaczenia łącze do dołączenia:
+* a
+* audio
+* podstawowy
+* Przycisk
+* div
+* Osadź
+* Formularz
+* Ramki
+* główny
+* html
+* element IFRAME
+* img
+* wejście
+* link
+* Element MenuItem
+* meta
+* obiekt
+* skrypt
+* source
+* Śledzenie
+* wideo
+
+Ponadto w ramach CSS atrybut adresu URL jest również translacji.
 
 ### <a name="how-do-apps-link-to-each-other"></a>Jak aplikacje połączenie ze sobą?
 

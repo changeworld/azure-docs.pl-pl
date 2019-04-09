@@ -13,12 +13,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884081"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260310"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -415,7 +415,7 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 
 ### <a name="custom-signing-key"></a>Niestandardowy klucz podpisywania
 
-Niestandardowego klucza podpisywania muszą być przypisane do obiektu jednostki usługi dla oświadczeń mapowania zasad, które zostały wprowadzone. Wszystkie tokeny wystawione, wpływ zasad, które są podpisane za pomocą niestandardowego klucza podpisywania, a aplikacje należy skonfigurować tak, aby akceptować tokeny podpisane przy użyciu klucza podpisywania. Dzięki temu po potwierdzeniu, że tokeny zostały zmodyfikowane przez twórcę mapowanie zasad oświadczeń i chroni aplikacje z oświadczeń mapowanie zasad utworzonych przez uczestników złośliwych działań.
+Niestandardowego klucza podpisywania muszą być przypisane do obiektu jednostki usługi dla oświadczeń mapowania zasad, które zostały wprowadzone. Dzięki temu po potwierdzeniu, że tokeny zostały zmodyfikowane przez twórcę mapowanie zasad oświadczeń i chroni aplikacje z oświadczeń mapowanie zasad utworzonych przez uczestników złośliwych działań.  Aplikacje, które mają oświadczeń mapowanie włączone, należy zaznaczyć specjalne identyfikator URI dla tokenu, ich kluczy podpisywania, dodając `appid={client_id}` do ich [OpenID Connect żądania metadanych](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
 
 ### <a name="cross-tenant-scenarios"></a>Scenariusze międzydzierżawowe
 

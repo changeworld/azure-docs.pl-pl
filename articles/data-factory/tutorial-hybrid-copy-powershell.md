@@ -3,7 +3,7 @@ title: Kopiowanie danych z programu SQL Server do usługi Blob Storage przy uży
 description: Dowiedz się, jak skopiować dane z lokalnego magazynu danych do chmury platformy Azure przy użyciu własnego środowiska Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: abnarain
+ms.openlocfilehash: adec7b90d5c38ed85f4b6f9ada8a530eff3846b9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451641"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272516"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
@@ -365,7 +365,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
     > [!IMPORTANT]
     > Wybierz właściwą sekcję na podstawie metody uwierzytelniania używanej do nawiązywania połączenia z programem SQL Server.
 
-    **Nawiązywanie połączenia przy użyciu uwierzytelniania SQL (sa):**
+    **Przy użyciu uwierzytelniania SQL (sa):**
 
     ```json
     {
@@ -386,7 +386,7 @@ W tym kroku połączysz lokalne wystąpienie programu SQL Server z fabryką dany
     }
    ```    
 
-    **Nawiązywanie połączenia przy użyciu uwierzytelniania systemu Windows:**
+    **Korzystanie z uwierzytelniania Windows:**
 
     ```json
     {

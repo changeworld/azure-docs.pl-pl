@@ -4,7 +4,6 @@ title: Dokumentacja usługi Azure Blueprints
 metadata:
   title: Dokumentacja usługi Azure Blueprints — samouczki i dokumentacja interfejsu API
   description: 'Azure Blueprints to usługa platformy Azure, która umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.'
-  services: blueprints
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints

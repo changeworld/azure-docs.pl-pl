@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fa7ace6427a14dc167a46eba3076798114cff7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 850f5e3f96439e1fea0a77b94f2ed733cc451bdf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897728"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HeyBuddy
 
@@ -106,9 +106,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z HeyBuddy, wykonaj n
 
     ![HeyBuddy domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://api.heybuddy.com/auth/<ENTITY ID>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://api.heybuddy.com/auth/<ENTITY ID>`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `YourCompanyInstanceofHeyBuddy`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `YourCompanyInstanceofHeyBuddy`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator jednostki. `Entity ID` Adres url logowania jest automatycznie generowana dla każdej organizacji. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HeyBuddy](mailto:support@heybuddy.com) do uzyskania tych wartości.
@@ -219,7 +219,7 @@ Po kliknięciu kafelka HeyBuddy w panelu dostępu, powinien zostać automatyczni
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

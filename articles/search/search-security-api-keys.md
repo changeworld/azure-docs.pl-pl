@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/06/2019
 ms.author: heidist
-ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286605"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273417"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Tworzenie i zarządzanie nimi klucze api KEY dla usługi Azure Search
 
@@ -53,30 +53,37 @@ Możesz uzyskać klucze dostępu w portalu lub za pomocą [interfejsu API REST z
 
 ## <a name="create-query-keys"></a>Utwórz klucze zapytania
 
-Klucze zapytania są używane dla dostępu tylko do odczytu do dokumentów w indeksie. Ograniczanie dostępu i operacje w aplikacjach klienckich jest niezbędne do ochrony zasobów wyszukiwania w usłudze. Zawsze używaj klucz zapytania zamiast klucza administratora dla dowolnego zapytania pochodzące z aplikacji klienckiej.
+Klucze zapytania są używane do dostęp tylko do odczytu do dokumentów w ramach indeksu dla operacji Wybieranie kolekcji dokumentów. Wyszukiwanie, filtrowanie i sugestii zapytania są wszystkie operacje, które przyjmują klucza zapytania. Wszelkie operację tylko do odczytu, która zwraca system definicje danych lub obiektów, takich jak definicja lub indeksator stan indeksu, wymaga klucza administratora.
+
+Ograniczanie dostępu i operacje w aplikacjach klienckich jest niezbędne do ochrony zasobów wyszukiwania w usłudze. Zawsze używaj klucz zapytania zamiast klucza administratora dla dowolnego zapytania pochodzące z aplikacji klienckiej.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Lista [usługi wyszukiwania](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) dla Twojej subskrypcji.
 3. Wybierz usługę, a następnie na stronie Przegląd kliknij przycisk **ustawienia** >**klucze**.
 4. Kliknij przycisk **zarządzanie kluczami zapytań**.
-5. Użyj zapytania już wygenerowany dla usługi lub utworzyć do 50 nowe klucze zapytania. Domyślny klucz zapytania nie ma nazwy, ale może mieć nazwę zapytania dodatkowe klucze do zarządzania nimi.
+5. Użyj klucza zapytania już wygenerowany dla usługi lub utworzyć do 50 nowe klucze zapytania. Domyślny klucz zapytania nie ma nazwy, ale może mieć nazwę zapytania dodatkowe klucze do zarządzania nimi.
 
    ![Tworzenie lub używanie klucza zapytania](media/search-security-overview/create-query-key.png) 
-
 
 > [!Note]
 > Przykładowy kod pokazujący użycie klucza zapytania można znaleźć w [tworzenie zapytań względem indeksu usługi Azure Search w C# ](search-query-dotnet.md).
 
+<a name="regenerate-admin-keys"></a>
+
 ## <a name="regenerate-admin-keys"></a>Wygeneruj ponownie klucze administratora
 
-Dwa klucze administratora są tworzone dla każdej usługi, dzięki czemu można też obrócić kluczem podstawowym opinię dotyczącą przedłużenia dostępu przy użyciu klucza pomocniczego.
-
-Jeśli w tym samym czasie można ponownie wygenerować kluczy podstawowych i pomocniczych, w aplikacjach używających żadnego z nich do uzyskiwania dostępu do operacji usługi nie jest już mają dostęp do usługi.
+Dwa klucze administratora są tworzone dla każdej usługi, dzięki czemu można też obrócić klucza podstawowego, przy użyciu klucza pomocniczego dla ciągłości działania.
 
 1. W **ustawienia** >**klucze** stronie, skopiuj klucz pomocniczy.
 2. Dla wszystkich aplikacji należy zaktualizować ustawienia klucza interfejsu api, aby używać klucza pomocniczego.
 3. Wygeneruj ponownie klucz podstawowy.
 4. Zaktualizuj wszystkie aplikacje, aby przy użyciu nowego klucza podstawowego.
+
+Jeśli przypadkowo zostaną ponownie wygenerowane oba klucze w tym samym czasie, wszystkie żądania klientów przy użyciu tych kluczy zakończy się niepowodzeniem przy użyciu protokołu HTTP 403 — Dostęp zabroniony. Jednakże zawartość nie zostanie usunięta i nie zablokowaniu trwałe. 
+
+Usługi możesz uzyskiwać dostęp za pośrednictwem portalu lub warstwa zarządzania ([interfejsu API REST](https://docs.microsoft.com/rest/api/searchmanagement/), [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell), lub usługi Azure Resource Manager). Funkcje zarządzania są operacyjne za pośrednictwem identyfikator subskrypcji nie usługa klucz api-key i nadal dostępne w ten sposób, nawet jeśli nie są kluczami interfejsu api. 
+
+Po utworzeniu nowych kluczy przy użyciu portalu lub zarządzania warstwy, dostęp zostanie przywrócona do zawartości (indeksy, indeksatory, źródła danych, map synonimów) po nowych kluczy i zapewnia tych kluczy w odpowiedzi na żądania.
 
 ## <a name="secure-api-keys"></a>Zabezpieczanie kluczy interfejsu api
 Zabezpieczeń klucza jest zapewniana przez ograniczenie dostępu za pośrednictwem portalu lub interfejsów Menedżera zasobów (programu PowerShell lub interfejsu wiersza polecenia). Jak wspomniano, administratorów subskrypcji można przeglądać i ponowne wygenerowanie wszystkich kluczy interfejsu api. Ze względów Przejrzyj przypisania ról, aby dowiedzieć się, kto ma dostęp do kluczy administratora.
@@ -91,5 +98,5 @@ Członkami następujących ról można przeglądać i ponowne generowanie kluczy
 ## <a name="see-also"></a>Zobacz także
 
 + [Kontrola dostępu oparta na rolach w usłudze Azure Search](search-security-rbac.md)
-+ [Zarządzanie za pomocą programu PowerShell](search-manage-powershell.md) 
++ [Zarządzanie przy użyciu programu PowerShell](search-manage-powershell.md) 
 + [Artykuł wydajność i optymalizacja](search-performance-optimization.md)

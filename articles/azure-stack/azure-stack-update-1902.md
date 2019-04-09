@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051686"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271836"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizacja usługi Azure Stack 1902
 
@@ -80,7 +80,7 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 - Kompilacja 1902 wprowadza nowy interfejs użytkownika w portalu administratora usługi Azure Stack do tworzenia plany, oferty, przydziały i planów dodatków. Aby uzyskać więcej informacji, w tym ze zrzutami ekranu, zobacz [Tworzenie planów, ofert i przydziałów](azure-stack-create-plan.md).
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Ulepszenia niezawodności zwiększanie pojemności podczas Dodaj węzeł podczas przełączania stan jednostki skalowania z "Magazyn Expanding" w stanie uruchomienia.
+- Ulepszenia niezawodności zwiększanie pojemności podczas operacji dodawania węzła podczas przełączania stanu jednostki skali, z "Magazyn Expanding" na "Uruchomiona".
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -104,9 +104,6 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
     - Sprawdź stan węzłów sieci szkieletowej usługi awaryjnego odzyskiwania konsoli usługi (ERCS) i je naprawić, zgodnie z potrzebami
     - Stan węzłów sieci szkieletowej usługi XRP ich sprawdzenia i naprawienia zgodnie z potrzebami
     - Sprawdź stan węzłów spójnego magazynu Azure (ACS) usługi Service fabric i je naprawić, zgodnie z potrzebami
-
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Ulepszenia niezawodności zwiększanie pojemności podczas Dodaj węzeł podczas przełączania stan jednostki skalowania z "Magazyn Expanding" w stanie uruchomienia.    
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -259,6 +256,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Dziennik systemu 
+- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, co w kliencie programu syslog i utracić konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809).
+Obejście polega na skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
 
 ## <a name="download-the-update"></a>Pobierz aktualizację
 

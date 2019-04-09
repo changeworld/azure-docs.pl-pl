@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087877"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272771"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -104,7 +104,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 
 #### <a name="spoke-to-hub"></a>Szprycha do piasty
 
-**Kierunek** | **Ustawienie** | **State**
+**Kierunek** | **Ustawienie** | **Stan**
 --- | --- | ---
 Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
@@ -115,7 +115,7 @@ Szprycha do piasty | Za pomocą bram remove | Enabled (Włączony)
 
 #### <a name="hub-to-spoke"></a>Piasta do szprychy
 
-**Kierunek** | **Ustawienie** | **State**
+**Kierunek** | **Ustawienie** | **Stan**
 --- | --- | ---
 Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)

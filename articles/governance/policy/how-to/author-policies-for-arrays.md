@@ -1,19 +1,18 @@
 ---
 title: Tworzenie zasad dla właściwości tablicy dla zasobów platformy Azure
 description: Dowiedz się, jak tworzyć parametry tablicy, tworzenie reguł dla tablicy wyrażeń języka, oceny alias [*] i można dołączyć elementy do istniejącej tablicy przy użyciu usługi Azure Policy definition reguł.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 62267a4549355212a18654ff9781b2164ba19fa9
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57864044"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274727"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy dla zasobów platformy Azure
 

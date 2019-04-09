@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 04/02/2019
 ms.author: aljo
-ms.openlocfilehash: ccb5f690b7947192af401233aa03e799e5c5be0b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668725"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275502"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric SDK i narzędzia 3.3.644
-* Środowisko uruchomieniowe usługi Service Fabric 6.4.644
+* Service Fabric SDK i narzędzia 3.3.654
+* Środowisko uruchomieniowe usługi Service Fabric 6.4.654
 * Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.4.11024.1 
 
@@ -94,7 +94,7 @@ Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruch
 * [Dowiedz się, jak tworzenie, wdrażanie i zarządzanie aplikacjami](service-fabric-tutorial-create-dotnet-app.md)
 * [Więcej informacji o modelach programowania: Usług Reliable Services i Reliable Actors](service-fabric-choose-framework.md)
 * [Przykłady kodu platformy Service Fabric w witrynie GitHub](https://aka.ms/servicefabricsamples)
-* [Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+* [Wizualizowanie klastra przy użyciu usługi Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Strona kampanii usługi Service Fabric"

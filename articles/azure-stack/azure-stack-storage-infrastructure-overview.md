@@ -15,16 +15,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: 4a8287d7ca4da380ad7c2b1e039ab3058ca07a96
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 416d75b254d0fbe14a0b39e5ae77d09a48e548f6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760277"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271292"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Zarządzanie infrastrukturą magazynu dla usługi Azure Stack
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 W tym artykule opisano kondycję i stan operacyjny zasobów infrastruktury magazynu usługi Azure Stack. Zasoby te obejmują dyski i woluminy. Informacje przedstawione w tym temacie może być nieocenione, gdy rozwiązanie różnych problemów, takich jak dysk nie można dodać do puli.
 
@@ -32,7 +32,7 @@ W tym artykule opisano kondycję i stan operacyjny zasobów infrastruktury magaz
 
 ### <a name="drives"></a>Dyski
 
-Obsługiwane przez oprogramowanie systemu Windows Server z usługi Azure Stack zdefiniowane możliwości magazynu przy użyciu kombinacji bezpośrednimi miejscami do magazynowania (S2D) i Windows Server Failover Clustering umożliwia wydajne, skalowalne i odporne na błędy magazynu usługi.
+Obsługiwane przez oprogramowanie systemu Windows Server, usługi Azure Stack definiuje możliwości magazynu przy użyciu kombinacji bezpośrednimi miejscami do magazynowania (S2D) i Windows Server Failover Clustering umożliwia wydajne, skalowalne i usługi storage odporne na błędy.
 
 Partnerzy systemu usługi Azure Stack, zintegrowane oferują wiele zmian rozwiązania, łącznie z szerokiej gamy elastyczność pamięci masowej. Obecnie można wybrać kombinację trzech typów dysku: NVMe (pamięci trwałej Express), SATA/sygnatury dostępu Współdzielonego dysku SSD (SSD), dysk twardy (dysk twardy).
 

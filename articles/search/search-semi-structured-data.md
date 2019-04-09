@@ -1,22 +1,22 @@
 ---
-title: Samouczek dotyczący wyszukiwania danych JSON w usłudze Azure Blob Storage — Azure Search
-description: W tym samouczku pokazano, jak przeszukiwać częściowo ustrukturyzowane dane obiektów blob platformy Azure przy użyciu usługi Azure Search.
+title: 'Samouczek: Indeksowanie danych o częściowej lub strutured w obiektach blob JSON — usługa Azure Search'
+description: Dowiedz się, jak na indeksowanie i wyszukiwanie częściowo ustrukturyzowane obiektów blob JSON platformy Azure przy użyciu usługi Azure Search i narzędzia Postman.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1c8ce14dd3961eff33a54a14c2bd0b27650d8a50
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 8436bb1fc84d5a944b35cd7b2c9667d2148c0af3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201351"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270472"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
+# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
 Usługa Azure Search umożliwia indeksowanie dokumentów JSON i tablic w usłudze Azure blob storage przy użyciu [indeksatora](search-indexer-overview.md) który wie, jak odczytać danych z częściową strukturą. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między pozbawionych struktury danych, które muszą być w pełni indeksowane i formalnie struktury danych, która jest zgodna z modelem danych, takich jak schemat relacyjnej bazy danych, które mogą być indeksowane w poszczególnych pól.
 
@@ -33,37 +33,47 @@ W tym samouczku [interfejsów API REST usługi Azure Search](https://docs.micros
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
+Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki Start. 
 
-[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zawiera przykładowe dane.
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku. 
 
-[Użyj narzędzia Postman](https://www.getpostman.com/) lub innego klienta REST do wysyłania żądań. W następnej sekcji znajdują się instrukcje dotyczące konfigurowania żądania HTTP w narzędziu Postman.
+[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), a następnie [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Ponieważ będziesz używać klucza i magazynu nazwy konta dla połączenia, upewnij się, że poziom dostępu publicznego do kontenera jest ustawiony na "Kontener (anonimowy dostęp do odczytu dla kontenera.)".
 
-## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
+[Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) służy do wysyłania żądań do usługi Azure Search.
 
-Uruchom narzędzie Postman i skonfiguruj żądanie HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-fiddler.md).
+[Kliniczne trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) zawiera dane używane w ramach tego samouczka. Pobierz i Rozpakuj ten plik do własnego folderu. Dane pochodzą z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)konwersji do formatu JSON na potrzeby tego samouczka.
 
-Metodą żądania dla każdego wywołania w tym samouczku jest „POST”. Klucze nagłówka to „Content-type” i „api-key”. Wartości kluczy nagłówka to odpowiednio „application/json” i „admin key” (klucz administratora to symbol zastępczy podstawowego klucza wyszukiwania). Treść to miejsce, w którym umieszcza się właściwą zawartość wywołania. W zależności od używanego klienta mogą występować pewne różnice w sposobie konstruowania zapytania, ale to są jego podstawy.
+## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-  ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/postmanoverview.png)
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-Wywołania REST omówione w tym samouczku wymagają użycia klucza wyszukiwania interfejsu API. Klucz interfejsu API można znaleźć w obszarze **Klucze** wewnątrz usługi wyszukiwania. Ten klucz interfejsu API musi znajdować się w nagłówku każdego wywołania interfejsu API tworzonego w ramach tego samouczka (zastąp nim wartość „admin key” na poprzednim zrzucie ekranu). Klucz należy zachować, ponieważ jest wymagany w przypadku każdego wywołania.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-  ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/keys.png)
+1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
+
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+
+Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
 ## <a name="prepare-sample-data"></a>Przygotowywanie danych przykładowych
 
-1. **Pobierz plik [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip)** i rozpakuj go do własnego folderu. Dane pochodzą z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)konwersji do formatu JSON na potrzeby tego samouczka.
+1. Znajdź przykładowe dane, które zostały pobrane z systemem.
 
-2. Zaloguj się do [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, otwórz **danych** kontenera i kliknij przycisk **przekazywanie**.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu platformy Azure i kontener obiektów Blob, a kliknij **przekazywanie**.
 
-3. Kliknij pozycję **Zaawansowane**, wprowadź wyrażenie „clinical-trials-json”, a następnie przekaż wszystkie pobrane pliki w formacie JSON.
+1. Kliknij pozycję **Zaawansowane**, wprowadź wyrażenie „clinical-trials-json”, a następnie przekaż wszystkie pobrane pliki w formacie JSON.
 
   ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/clinicalupload.png)
 
 Po zakończeniu przekazywania pliki powinny pojawić się w podfolderze wewnątrz kontenera danych.
 
-## <a name="connect-your-search-service-to-your-container"></a>Łączenie usługi wyszukiwania z kontenerem
+## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
+
+Uruchom narzędzie Postman i skonfiguruj żądanie HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-fiddler.md).
+
+Metoda żądania dla każdego wywołania w tym samouczku jest **WPIS**. Klucze nagłówka to „Content-type” i „api-key”. Wartości kluczy nagłówka to odpowiednio „application/json” i „admin key” (klucz administratora to symbol zastępczy podstawowego klucza wyszukiwania). Treść to miejsce, w którym umieszcza się właściwą zawartość wywołania. W zależności od używanego klienta mogą występować pewne różnice w sposobie konstruowania zapytania, ale to są jego podstawy.
+
+  ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/postmanoverview.png)
 
 Używamy narzędzia Postman do wykonania trzech wywołań interfejsu API do usługi wyszukiwania w celu utworzenia źródła danych, indeksu i indeksatora. Źródło danych zawiera wskaźnik do konta magazynu i danych JSON. Usługa wyszukiwania nawiązuje połączenie podczas ładowania danych.
 
@@ -276,4 +286,4 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)
+> [Indeksowanie dokumentów w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

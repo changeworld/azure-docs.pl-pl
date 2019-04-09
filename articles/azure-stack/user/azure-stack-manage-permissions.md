@@ -16,16 +16,16 @@ ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 58c16b8a102ea27499fc464c209d4ca1c0d4db33
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767213"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264713"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Zarządzanie dostępem do zasobów przy użyciu kontroli dostępu Azure Stack Role-Based
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Usługa Azure Stack obsługuje kontroli dostępu opartej na rolach (RBAC), w taki sam [model zabezpieczeń do zarządzania dostępem do](https://docs.microsoft.com/azure/role-based-access-control/overview) używającej Microsoft Azure. RBAC można użyć do zarządzania użytkownika, grupy lub aplikacji dostęp do subskrypcji, zasobów i usług.
 
@@ -40,28 +40,6 @@ Usługa Azure Stack ma trzy podstawowe role, które można zastosować do wszyst
 * **Właściciel** mogą zarządzać wszystkim łącznie z dostępem do zasobów.
 * **Współautor** może zarządzać wszystkim oprócz dostępu do zasobów.
 * **Czytnik** mogą przeglądać wszystko, ale nie może wprowadzać żadnych zmian.
-
-### <a name="resource-hierarchy-and-inheritance"></a>Hierarchia zasobów i dziedziczenie
-
-Usługa Azure Stack ma następującej hierarchii zasobów:
-
-* Każda subskrypcja należy do jednego katalogu.
-* Każdej z grup zasobów należy do jednej subskrypcji.
-* Każdy zasób należy do jednej grupy zasobów.
-
-Prawa dostępu, który można przyznać w zakresie nadrzędnej jest dziedziczona na zakresy podrzędne. Na przykład:
-
-* Rola czytelnika są przypisywane do grupy usługi Azure AD w zakresie subskrypcji. Członkowie tej grupy mogą wyświetlić każdą grupę zasobów i zasobów w subskrypcji.
-* Możesz przypisać rolę współautora do aplikacji w zakresie grupy zasobów. Aplikację można zarządzać zasoby wszystkich typów w danej grupie zasobów, ale nie innych grupach zasobów w subskrypcji.
-
-### <a name="assigning-roles"></a>Przypisywanie ról
-
-Można przypisać więcej niż jednej roli do użytkownika, a każda rola może być skojarzony z innym zakresie. Na przykład:
-
-* Można przypisać roli Czytelnik TestUser-A z subskrypcją 1.
-* Przypisz do TestVM 1 rolę właściciela TestUser-A.
-
-Azure [przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) artykuł zawiera szczegółowe informacje dotyczące wyświetlania, przypisywania i usuwania ról.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Hierarchia zasobów i dziedziczenie
 

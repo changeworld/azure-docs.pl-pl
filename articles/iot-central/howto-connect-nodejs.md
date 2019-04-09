@@ -3,17 +3,17 @@ title: Połącz ogólnego klienta aplikacji Node.js usługi Azure IoT Central | 
 description: Jako deweloper urządzenia jak połączyć ogólny urządzenia środowiska Node.js do aplikacji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/04/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4c04d9dbaf0065f2e68182c9ad84181845dee3e9
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 428e20995f6d2723c5af1ba2beb18ac1336243e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905328"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259970"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 

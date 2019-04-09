@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 55c83c91f4c183e7863c6a9fa129b5469e52afdd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0f21165af0bcbd8bda28f0eae20d3ee837f3be9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835003"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Mozy Enterprise
 
@@ -209,7 +209,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do przedsiębiors
 >[!NOTE]
 >Można użyć jakichkolwiek innych przedsiębiorstw Mozy użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez przedsiębiorstwa Mozy do aprowizacji kont użytkowników usługi AAD.
 
-**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
+**Aby aprowizować konta użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **Mozy Enterprise** dzierżawy.
 
@@ -247,7 +247,7 @@ Po kliknięciu kafelka Mozy przedsiębiorstwa, w panelu dostępu, powinien zosta
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

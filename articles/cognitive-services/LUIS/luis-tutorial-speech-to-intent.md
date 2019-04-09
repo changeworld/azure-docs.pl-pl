@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 04/08/2018
 ms.author: diberry
-ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076755"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273842"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integracja usługi mowy z aplikacją Language Understanding
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) dołączony jako źródło informacji. 
@@ -24,7 +24,7 @@ ms.locfileid: "58076755"
 Do celów tego artykułu potrzebne jest bezpłatne konto internetowe usługi [LUIS][LUIS] w celu zaimportowania aplikacji.
 
 ## <a name="create-luis-endpoint-key"></a>Tworzenie klucza punktu końcowego usługi LUIS
-W witrynie Azure Portal [utwórz](luis-how-to-azure-subscription.md) klucz usługi **Language Understanding** (LUIS). 
+W witrynie Azure portal [tworzenie](luis-how-to-azure-subscription.md) **usługi cognitive Services** klucza (LUIS) dla aplikacji usługi LUIS.  
 
 ## <a name="import-human-resources-luis-app"></a>Importowanie aplikacji Human Resources usługi LUIS
 Intencje i wypowiedzi w tym artykule pochodzą z aplikacji Human Resources usługi LUIS dostępnej w repozytorium GitHub [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding). Pobierz plik [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json), zapisz go z rozszerzeniem `.json` i [zaimportuj](luis-how-to-start-new-app.md#import-new-app) do usługi LUIS. 
@@ -66,7 +66,7 @@ W tym artykule wykorzystywane jest urządzenie audio na Twoim komputerze. Może 
 
 Zestaw SDK rozpoznawania mowy jest już dołączony jako źródło informacji. 
 
-[![Zrzut ekranu przedstawiający program Visual Studio 2017 z wyświetlonym pakietem NuGet Microsoft.CognitiveServices.Speech](./media/luis-tutorial-speech-to-intent/nuget-package.png "Zrzut ekranu przedstawiający program Visual Studio 2017 z wyświetlonym pakietem NuGet Microsoft.CognitiveServices.Speech")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Screenshot programu Visual Studio 2017, wyświetlanie pakietu Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "wyświetlania pakietu Microsoft.CognitiveServices.Speech NuGet zrzut ekranu programu Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Modyfikowanie kodu języka C#
 Otwórz plik `Program.cs`, a następnie zmień następujące zmienne:
@@ -74,7 +74,7 @@ Otwórz plik `Program.cs`, a następnie zmień następujące zmienne:
 |Nazwa zmiennej|Przeznaczenie|
 |--|--|
 |LUIS_assigned_endpoint_key|Odnosi się do przypisanej wartości subscription-key punktu końcowego adresu URL ze strony Publish|
-|LUIS_endpoint_key_region|Odnosi się do pierwszej poddomeny punktu końcowego adresu URL, na przykład `westus`|
+|LUIS_endpoint_key_region|Odnosi się do pierwszego poddomeny URL punktu końcowego, na przykład `westus`|
 |LUIS_app_ID|Odnosi się to trasy punktu końcowego adresu URL po ciągu **apps/**|
 
 Plik `Program.cs` ma już mapowane intencje aplikacji Human Resources.
@@ -98,6 +98,6 @@ Pamiętaj, aby usunąć katalog, gdy nie korzystasz już z kodu przykładowego.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Integrate LUIS with a BOT (Integrowanie usługi LUIS z botem)](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [Integrowanie usługi LUIS z BOTEM](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

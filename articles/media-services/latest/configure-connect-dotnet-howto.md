@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 9fad5874a0e595ee2c275f06504665ce143266f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759579"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273978"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Łączenie z Media Services v3 API — .NET
 
@@ -200,10 +200,6 @@ namespace ConsoleApp1
  
         private static async Task<ServiceClientCredentials> GetCredentialsAsync(ConfigWrapper config)
         {
-            // Use UserTokenProvider.LoginWithPromptAsync or UserTokenProvider.LoginSilentAsync to get a token using user authentication
-            //// ActiveDirectoryClientSettings.UsePromptOnly
-            //// UserTokenProvider.LoginWithPromptAsync
-
             // Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to get a token using service principal with certificate
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
@@ -229,17 +225,17 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe klipów wideo — .NET](stream-files-tutorial-with-api.md) 
-- [Samouczek: Transmisja strumieniowa na żywo z usługi Media Services 3 — .NET](stream-live-tutorial-with-api.md)
-- [Samouczek: Analizowanie wideo za pomocą usługi Media Services 3 — .NET](analyze-videos-tutorial-with-api.md)
-- [Tworzenie danych wejściowych zadania z pliku lokalnego — .NET](job-input-from-local-file-how-to.md)
-- [Tworzenie danych wejściowych zadania na podstawie adresu URL protokołu HTTPS — .NET](job-input-from-http-how-to.md)
-- [Kodowanie za pomocą transformacji niestandardowej — .NET](customize-encoder-presets-how-to.md)
-- [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy — .NET](protect-with-aes128.md)
-- [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM — .NET](protect-with-drm.md)
+- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo — .NET](stream-files-tutorial-with-api.md) 
+- [Samouczek: Stream na żywo za pomocą usługi Media Services v3 — .NET](stream-live-tutorial-with-api.md)
+- [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 — .NET](analyze-videos-tutorial-with-api.md)
+- [Tworzenie wejściowych zadania z pliku lokalnego — .NET](job-input-from-local-file-how-to.md)
+- [Tworzenie danych wejściowych zadania na podstawie adresu URL HTTPS — .NET](job-input-from-http-how-to.md)
+- [Kodowanie za pomocą niestandardowej transformacji — .NET](customize-encoder-presets-how-to.md)
+- [Dynamiczne szyfrowanie AES-128 i usługa dostarczania kluczy — .NET](protect-with-aes128.md)
+- [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania — .NET](protect-with-drm.md)
 - [Pobieranie klucza podpisywania z istniejących zasad — .NET](get-content-key-policy-dotnet-howto.md)
 - [Tworzenie filtrów za pomocą usługi Media Services — .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Zaawansowane przykłady wideo na żądanie usługi Azure Functions v2 z usługą Media Services v3](https://aka.ms/ams3functions)
+- [Zaawansowane wideo na żądanie przykłady usługi Azure Functions w wersji 2 przy użyciu usługi Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 3f92001e9d2fd322e858440ef64991b9de856735
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051126"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273043"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -232,6 +232,23 @@ To ustawienie dotyczy następujących aplikacji klienta:
 - Aplikacje zatwierdzone klienta obsługuje funkcja zarządzania aplikacjami mobilnymi usługi Intune.
 - **Wymagaj zatwierdzonej aplikacji klienckiej** wymagania:
    - Obsługuje tylko systemy iOS i Android, aby uzyskać [warunek platformy urządzenia](#device-platform-condition).
+
+## <a name="app-protection-policy-requirement"></a>Wymaganie dotyczące zasad ochrony aplikacji 
+
+W zasadach dostępu warunkowego można wymagać, że zasady ochrony aplikacji znajdować się na aplikację kliencką, zanim możliwy jest dostęp do aplikacji w wybranej chmurze. 
+
+![Kontroluj dostęp za pomocą zasad ochrony aplikacji](./media/technical-reference/22.png)
+
+To ustawienie dotyczy następujących aplikacji klienta:
+
+- Microsoft OneDrive
+- Microsoft Outlook
+
+**Uwagi**
+
+- Aplikacje dla zasad ochrony aplikacji obsługują funkcji zarządzania aplikacjami mobilnymi usługi Intune przy użyciu zasad ochrony.
+- **Wymagają zasad ochrony aplikacji** wymagania:
+    - Obsługuje tylko systemy iOS i Android, aby uzyskać [warunek platformy urządzenia](#device-platform-condition).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

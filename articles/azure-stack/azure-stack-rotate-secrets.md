@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 55bb83015cee6476a10424f32b51eb9eb29db0da
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 22656c66bf5caa275a32ddcaae323fc0ab2b1600
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050258"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271734"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -300,11 +300,11 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 | Parametr | Type | Wymagane | Pozycja | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych. Katalog end musi być **\Certificates**. |
-| CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniany, gdy są obracane zewnętrznych wpisów tajnych. |
-| Wewnętrzny | String | False | o nazwie | Brak | Flagi wewnętrznej musi być używane w dowolnym momencie operatorów usługi Azure Stack chce wymienić wewnętrznej infrastruktury kluczy tajnych. |
-| PathAccessCredential | PSCredential | False  | o nazwie  | Brak  | Poświadczenie programu PowerShell dla udziału plików z **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych.  |
-| Uruchom ponownie | SwitchParameter | False  | o nazwie  | Brak  | Uruchom ponownie muszą być używane w dowolnym momencie obrotu wpisu tajnego jest ponowieniu po nieudanej próbie. |
+| `PfxFilesPath` | String  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych. Katalog end musi być **\Certificates**. |
+| `CertificatePassword` | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniany, gdy są obracane zewnętrznych wpisów tajnych. |
+| `Internal` | String | False | o nazwie | Brak | Flagi wewnętrznej musi być używane w dowolnym momencie operatorów usługi Azure Stack chce wymienić wewnętrznej infrastruktury kluczy tajnych. |
+| `PathAccessCredential` | PSCredential | False  | o nazwie  | Brak  | Poświadczenie programu PowerShell dla udziału plików z **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych.  |
+| `ReRun` | SwitchParameter | False  | o nazwie  | Brak  | Uruchom ponownie muszą być używane w dowolnym momencie obrotu wpisu tajnego jest ponowieniu po nieudanej próbie. |
 
 ### <a name="examples"></a>Przykłady
 
