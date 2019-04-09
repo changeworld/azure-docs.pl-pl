@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 43406aee8d2e350b82659156bb2837e952fd4a92
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057035"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282393"
 ---
 # <a name="add-a-shape-to-a-map"></a>Dodawanie kształtu do mapy
 
@@ -35,7 +35,7 @@ Pierwszy blok kodu w powyższym kodzie konstrukcji obiektu mapy. Możesz zobaczy
 
 W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. A [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) obiekt zostanie utworzony i dodany do źródła danych.
 
-A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Ostatni blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwie wiersza są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy wiersz jest wyświetlany po mapy ładuje pełni.
+A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Ostatni blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwie wiersza są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby upewnić się, czy wiersz jest wyświetlany po mapy ładuje pełni.
 
 ### <a name="add-symbols-along-a-line"></a>Dodawanie symboli wzdłuż linii
 
@@ -49,7 +49,7 @@ Zobacz pióra <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Pokaż strzałk
 
 ### <a name="line-stroke-gradient"></a> Dodawanie gradientu obrysu do linii
 
-Oprócz możliwości dotyczą kolorem pociągnięcia pojedynczy wiersz możesz również wypełnić linię gradient kolorów, aby pokazać przejście od jednego segmentu wiersz do następnego. Na przykład pochylenia linii może służyć do reprezentowania zmiany w czasie i w odległości lub w różnych temperatur w linii połączonej obiektów. Aby można było zastosować tę funkcję do wiersza, źródło danych musi mieć `lineMetrics` opcji ma wartość true, a następnie wyrażenie gradientów kolorów może być przekazywany do `strokeColor` opcji wiersza. Wyrażenie gradientu obrysu ma odwołanie `['line-progress']` wyrażenie danych, który uwidacznia metryki linii obliczeniowe do wyrażenia.
+Oprócz możliwości dotyczą kolorem pociągnięcia pojedynczy wiersz możesz również wypełnić linię gradient kolorów, aby pokazać przejście od jednego segmentu wiersz do następnego. Na przykład pochylenia linii może służyć do reprezentowania zmiany w czasie i w odległości lub w różnych temperatur w linii połączonej obiektów. Aby można było zastosować tę funkcję do wiersza, źródło danych musi mieć `lineMetrics` opcji ma wartość true, a następnie wyrażenie gradientów kolorów może być przekazywany do `strokeColor` opcji wiersza. Wyrażenie gradientu obrysu ma odwołanie `['line-progress']` wyrażenie danych, który udostępnia metryki linii obliczeniowe do wyrażenia.
 
 <br/>
 
@@ -83,7 +83,7 @@ W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Ut
 
 W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. A [wielokąta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) zostanie utworzony przy użyciu tablicy współrzędnych i dodany do źródła danych. 
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
 
 ### <a name="use-a-polygon-and-line-layer-together"></a>Jednocześnie używać warstwy wielokątów i linii
 
@@ -98,7 +98,7 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) jest tablicą wierszy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Trzeci bloku kodu tworzy warstw wielokątów i linii.
 
-Ostatni blok kodu dodaje warstw wielokątów i linii do mapy. Źródło danych i warstwy są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
+Ostatni blok kodu dodaje warstw wielokątów i linii do mapy. Źródło danych i warstwy są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
 
 > [!TIP]
 > Warstwy linii domyślnie będą renderowane współrzędne wielokąty, a także wierszy w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje LineString funkcje zestawu `filter` właściwości warstwy, aby `['==', ['geometry-type'], 'LineString']` lub `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` aby obejmują również funkcje MultiLineString.
@@ -126,7 +126,7 @@ Warstwa wielokątów ma tylko kilka opcji stylów. W tym miejscu to narzędzie i
 
 ## <a name="add-a-circle-to-the-map"></a>Dodaj koło do mapy
 
-Rozszerzona wersja schemat GeoJSON, który zawiera definicję dla okręgów, jak wspomniano korzysta z usługi Azure Maps [tutaj](extend-geojson.md#circle). Okrąg mogą być renderowane na mapie, tworząc `Point` funkcja, która ma `subType` właściwość z wartością `Circle` i `radius` właściwość, która ma numer, który reprezentuje promień w metrach. Na przykład:
+Rozszerzona wersja schematu GeoJSON, który zawiera definicję dla okręgów, jak wspomniano korzysta z usługi Azure Maps [tutaj](extend-geojson.md#circle). Okrąg mogą być renderowane na mapie, tworząc `Point` funkcja, która ma `subType` właściwość z wartością `"Circle"` i `radius` właściwość, która ma numer reprezentuje promień w metrach. Na przykład:
 
 ```javascript
 {
@@ -149,9 +149,9 @@ Zestaw SDK usługi sieci Web Azure map konwertuje te `Pooint` funkcji do `Polygo
 
 Pierwszy blok kodu w powyższym kodzie konstrukcji obiektu mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Okrąg jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) i ma `subType` ustawioną na "koło" i `radius` liczniki wartości właściwości. Po dodaniu funkcji punktu z podtypem okrąg ze źródłem danych konwertuje go na okręgu wielokąta w mapie.
+W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Okrąg jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) i ma `subType` właściwością `"Circle"` i `radius` wartości właściwości w metrach. Gdy funkcja punktu z `subType` z `"Circle"` zostanie dodany do źródła danych, jej konwertowane na okręgu wielokąta w mapie.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy koła jest wyświetlany po mapy ładuje pełni.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby upewnić się, czy koła jest wyświetlany po mapy ładuje pełni.
 
 ## <a name="make-a-geometry-easy-to-update"></a>Ułatw zaktualizować geometrii
 
@@ -171,14 +171,11 @@ Trzeci blok kodu tworzy funkcję, która przyjmuje wartość z elementu HTML suw
 
 W czwartym bloku kodu, obiekt źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Punkt jest dodawane do źródła danych.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Trzeci bloku kodu tworzy warstwę wielokątów. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródła danych, kliknij pozycję odbiornik zdarzeń i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że punkt jest wyświetlany po mapy ładuje pełni.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Trzeci bloku kodu tworzy warstwę wielokątów. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych, kliknij hanlder zdarzeń i warstwę wielokątów są tworzone i dodawane do mapy w ramach [programu obsługi zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) aby upewnić się, że punkt jest wyświetlany po mapy ładuje pełni.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
-> [Znaczniki HTML](./map-add-custom-html.md)
-
-> [!div class="nextstepaction"]
-> [Dodawanie warstwy mapy cieplnej](./map-add-heat-map-layer.md)
+> [Za pomocą wyrażeń opartych na danych stylu](data-driven-style-expressions-web-sdk.md)
