@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444817"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010230"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -29,6 +29,9 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 > Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+> [!NOTE]
+> Skalowanie automatyczne i strefowo nadmiarowe usługa application gateway jednostkę SKU obsługuje teraz [domyślnej funkcji badania kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i usuwanie dowolnego zasobu z puli uznawana za złą. #Identyfikator sondy kondycji domyślne można automatycznie skonfigurować dla tych zaplecza, dla których nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540860"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058734"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
@@ -454,7 +454,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
     window.onload = initialize;
     ```
 
-1. W odbiorniku zdarzeń `load` mapy dodaj kontrolkę powiększenia i znacznik HTML, aby wyświetlać środek obszaru wyszukiwania.
+1. W odbiorniku zdarzeń `ready` mapy dodaj kontrolkę powiększenia i znacznik HTML, aby wyświetlać środek obszaru wyszukiwania.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
     map.markers.add(centerMarker);
     ```
 
-1. W odbiorniku zdarzeń `load` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. Poprawia to płynność działania interfejsu użytkownika i zwiększa wydajność.
+1. W odbiorniku zdarzeń `ready` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. Poprawia to płynność działania interfejsu użytkownika i zwiększa wydajność.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
     loadStoreData();
     ```
 
-1. Po załadowaniu zestawu danych w odbiorniku zdarzeń `load` mapy zdefiniuj zestaw warstw w celu renderowania danych. Warstwa bąbelkowa jest używana do renderowania punktów danych klastra. Warstwa symboli jest używana do renderowania liczby punktów w każdym klastrze powyżej warstwy bąbelkowej. Druga warstwa symboli renderuje ikonę niestandardową dla poszczególnych lokalizacji na mapie.
+1. Po załadowaniu zestawu danych w odbiorniku zdarzeń `ready` mapy zdefiniuj zestaw warstw w celu renderowania danych. Warstwa bąbelkowa jest używana do renderowania punktów danych klastra. Warstwa symboli jest używana do renderowania liczby punktów w każdym klastrze powyżej warstwy bąbelkowej. Druga warstwa symboli renderuje ikonę niestandardową dla poszczególnych lokalizacji na mapie.
 
    Dodaj zdarzenia `mouseover` i `mouseout` do warstwy bąbelkowej i warstwy ikon, aby zmieniać kursor myszy, gdy użytkownik umieści go na klastrze lub ikonie na mapie. Dodaj zdarzenie `click` do bąbelkowej warstwy klastra. Zdarzenie `click` powiększa mapę na dwóch poziomach i środkuje mapę na klastrze, kiedy użytkownik wybierze jakiś klaster. Dodaj zdarzenie `click` do warstwy ikon. Zdarzenie `click` wyświetla okno podręczne, które pokazuje szczegółowe informacje o kawiarni, kiedy użytkownik wybierze ikonę określonej lokalizacji. Dodaj do mapy zdarzenie, które monitoruje, kiedy mapa przestanie być przesuwana. Gdy to zdarzenie zostanie wyzwolone, zaktualizuj elementy na panelu listy.  
 
@@ -959,7 +959,7 @@ Przykładowy kod z tego samouczka jest dostępny tutaj:
 
 > [Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-[Zobacz tutaj działający przykład](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+[Zobacz przykładową znajdować się tutaj](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Aby dowiedzieć się więcej o zasięgu i możliwościach usługi Azure Maps, zobacz:
 

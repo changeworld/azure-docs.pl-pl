@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c5465562c1af3dbd3fcaff2031149e510a43cfd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 87ad3b8984907b5f5b889c36c2406f07cbeb242b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540741"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056779"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 
@@ -109,8 +109,8 @@ W tym samouczku zostanie wyrenderowana prosta trasa przy użyciu ikon symboli pr
 1. Po inicjowanie na mapie, Dodaj następujący kod JavaScript.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -121,8 +121,7 @@ W tym samouczku zostanie wyrenderowana prosta trasa przy użyciu ikon symboli pr
             strokeColor: '#2272B9',
             strokeWidth: 5,
             lineJoin: 'round',
-            lineCap: 'round',
-            filter: ['==', '$type', 'LineString']
+            lineCap: 'round'
         }), 'labels');
 
         //Add a layer for rendering point data.
@@ -135,14 +134,14 @@ W tym samouczku zostanie wyrenderowana prosta trasa przy użyciu ikon symboli pr
                 textField: ['get', 'title'],
                 offset: [0, 1.2]
             },
-            filter: ['==', '$type', 'Point']
+            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
         }));
     });
     ```
-
-    Zdarzenie ładowania jest dodawane do mapy. Zostanie ono wyzwolone po całkowitym załadowaniu zasobów mapy. W obsłudze zdarzeń ładowania mapy tworzone jest źródło danych do przechowywania linii trasy oraz punktów początkowych i końcowych. Warstwa linii jest utworzone i dołączone do źródła danych, aby zdefiniować sposób renderowania wiersza ścieżki. Wiersz trasy będą renderowane w odcień niebieski szerokość 5 pikseli i zaokrąglony połączeń oraz limity. Dodawany jest filtr, aby się upewnić, że ta warstwa będzie renderowała tylko dane LineString formatu GeoJSON. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie zakryje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa sposób renderowania punktów początkowych i końcowych. W tym przypadku dodano wyrażenia w celu pobrania informacji o obrazie ikony i etykiecie tekstowej z właściwości każdego obiektu punktu.
-
-2. Na potrzeby tego samouczka należy ustawić punkt początkowy jako kampusu firmy Microsoft, a punkt końcowy jako stacja gaz w Seattle. W obsłudze zdarzeń ładowania mapy dodaj następujący kod.
+    
+    W mapach `ready` procedura obsługi zdarzeń, tworzone jest źródło danych do przechowywania wiersza ścieżki, a także punkty początkowy i końcowy. Tworzona jest warstwa linii, która jest następnie dołączana do źródła danych w celu zdefiniowania sposobu renderowana linii trasy. Linia trasy zostanie wyrenderowana w odcieniu koloru niebieskiego o szerokości 5 pikseli z zaokrąglonymi połączeniami oraz zakończeniami. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie zakryje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa sposób renderowania punktów początkowych i końcowych. W tym przypadku dodano wyrażenia w celu pobrania informacji o obrazie ikony i etykiecie tekstowej z właściwości każdego obiektu punktu. 
+    
+2. W tym samouczku ustawimy punkt początkowy w siedzibie firmy Microsoft, a punkt końcowy na stacji paliw w Seattle. W mapach `ready` procedura obsługi zdarzeń, Dodaj następujący kod.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -175,7 +174,7 @@ W tym samouczku zostanie wyrenderowana prosta trasa przy użyciu ikon symboli pr
 
 ## <a name="get-directions"></a>Uzyskiwanie wskazówek dojazdu
 
-W tej sekcji przedstawiono sposób użycia interfejsu API usługi route usługi Azure Maps w celu znajdowania trasy z punktu rozpoczęcia danego do punktu końcowego. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe funkcje powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
+W tej sekcji przedstawiono sposób użycia interfejsu API usługi route usługi Azure Maps w celu znajdowania trasy z punktu rozpoczęcia danego do punktu końcowego. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [Get route directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe funkcje powinny zostać dodane **w ramach eventListener gotowe mapy** aby upewnić się, są one ładowane po gotowy do można uzyskać dostępu do zasobów mapy.
 
 1. W funkcji GetMap Dodaj następujący element do kodu w języku Javascript.
 
@@ -221,11 +220,11 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Przykładowy kod z tego samouczka jest dostępny tutaj:
 
-> [Znajdowanie trasy przy użyciu usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
+> [Znajdowanie tras za pomocą usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
 
-[Zobacz tutaj ten działający przykład](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
+[Zobacz, w tym przykładzie znajdować się tutaj](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
 
 Następny samouczek przedstawia tworzenie zapytania o trasę z ograniczeniami dotyczącymi np. sposobu podróży lub rodzaju ładunku, a następnie wyświetlanie wielu tras na tej samej mapie.
 
 > [!div class="nextstepaction"]
-> [Znajdowanie tras dla różnych sposobów podróży](./tutorial-prioritized-routes.md)
+> [Znajdowanie tras dla różnych trybach podróży](./tutorial-prioritized-routes.md)

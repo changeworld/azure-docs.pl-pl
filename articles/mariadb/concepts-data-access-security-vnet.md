@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958919"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006693"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database dla serwera MariaDB
 
@@ -105,6 +105,8 @@ Masz możliwość korzystania z [kontroli dostępu opartej na rolach (RBAC)] [ r
 ## <a name="limitations"></a>Ograniczenia
 
 Dla usługi Azure Database dla serwera MariaDB funkcja reguł sieci wirtualnej ma następujące ograniczenia:
+
+- Aplikacja sieci Web mogą być mapowane na prywatny adres IP w sieci wirtualnej/podsieci. Nawet wtedy, gdy punkty końcowe usługi są włączone w danej sieci wirtualnej/podsieci, połączeń z serwerem z aplikacji sieci Web będzie źródło IP publicznej platformy Azure nie źródło sieci wirtualnej/podsieci. Aby włączyć łączność z aplikacji sieci Web na serwerze, który ma reguły zapory sieci wirtualnej, musisz usług systemu Azure umożliwia dostęp do serwera na serwerze.
 
 - W zaporze dla usługi Azure Database dla serwera MariaDB każdą regułę sieci wirtualnej odwołuje się do podsieci. Te odwołania podsieci muszą być hostowane w tym samym regionie geograficznym, który jest hostem usługi Azure Database dla serwera MariaDB.
 

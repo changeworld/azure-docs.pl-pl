@@ -13,35 +13,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb39843d9f1e1a430c3f35e8c60521418042921
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: b50bcada8cfc72c06804793850f1f28a288f5248
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211788"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057034"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
 
-
-Celem tego samouczka jest Wam kroki należy wykonać w Slack i usługi Azure AD, aby automatycznie aprowizować i anulować obsługę kont użytkowników z usługi Azure AD do Slack. 
+Celem tego samouczka jest Wam kroki należy wykonać w Slack i usługi Azure AD, aby automatycznie aprowizować i anulować obsługę kont użytkowników z usługi Azure AD do Slack.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawa usługi Azure Active Directory
-*   Slack dzierżawy z [oraz plan](https://aadsyncfabric.slack.com/pricing) lub lepiej nie są włączone 
-*   Konto użytkownika Slack z uprawnieniami administratora zespołu 
+* Dzierżawa usługi Azure Active Directory
+* Slack dzierżawy z [oraz plan](https://aadsyncfabric.slack.com/pricing) lub lepiej nie są włączone
+* Konto użytkownika Slack z uprawnieniami administratora zespołu
 
 Uwaga: Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM Slack](https://api.slack.com/scim), który jest dostępny w usłudze Slack, teams na znak Plus zaplanować lub Lepsza.
 
 ## <a name="assigning-users-to-slack"></a>Przypisywanie użytkowników do Slack
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście konta użytkownika automatycznego inicjowania obsługi administracyjnej tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD będą synchronizowane. 
+Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście konta użytkownika automatycznego inicjowania obsługi administracyjnej tylko użytkownicy i grupy, które "przypisano" do aplikacji w usłudze Azure AD będą synchronizowane.
 
 Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji Slack. Po decyzję, możesz przypisać użytkowników do aplikacji Slack, zgodnie z instrukcjami w tym miejscu:
 
@@ -49,10 +48,9 @@ Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie uż
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Slack
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Slack do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Slack do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do Slack, należy wybrać **użytkownika** lub rola "Group" w oknie dialogowym przydział. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
-
+* Podczas przypisywania użytkowników do Slack, należy wybrać **użytkownika** lub rola "Group" w oknie dialogowym przydział. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
 
 ## <a name="configuring-user-provisioning-to-slack"></a>Konfigurowaniem aprowizowania użytkowników w Slack 
 
@@ -60,9 +58,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 **Porada:** Można też włączyć opartej na SAML logowania jednokrotnego dla Slack, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
 
-
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do Slack w usłudze Azure AD:
-
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
 
@@ -74,17 +70,17 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
    ![Slack, inicjowanie obsługi administracyjnej](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj**. Spowoduje to otwarcie okna dialogowego Slack autoryzacji w nowym oknie przeglądarki. 
+5. W obszarze **poświadczeń administratora** kliknij **Autoryzuj**. Spowoduje to otwarcie okna dialogowego Slack autoryzacji w nowym oknie przeglądarki.
 
 6. W nowym oknie Zaloguj Slack przy użyciu konta administratora zespołu. w oknie dialogowym autoryzacji wynikowe, wybierz Slack zespołu, który chcesz włączyć udostępnianie, a następnie wybierz **Autoryzuj**. Po zakończeniu wróć do witryny Azure portal, aby zakończyć konfigurowanie inicjowania obsługi administracyjnej.
 
-   ![Okno dialogowe autoryzacji](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Okno dialogowe autoryzacji](./media/slack-provisioning-tutorial/Slack3.PNG)
 
 7. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z aplikacji Slack. Jeśli połączenie nie powiedzie się, upewnij się, że usługi Slack konto ma uprawnienia administratora zespołu i spróbuj ponownie w kroku "Autoryzuj".
 
 8. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz poniższe pole wyboru.
 
-9. Kliknij pozycję **Zapisz**. 
+9. Kliknij pozycję **Zapisz**.
 
 10. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do Slack**.
 
@@ -92,11 +88,11 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 12. Aby włączyć usługi Azure AD, inicjowania obsługi usługi Slack, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji
 
-13. Kliknij pozycję **Zapisz**. 
+13. Kliknij pozycję **Zapisz**.
 
 Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy przypisane do Slack w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa może potrwać dłużej niż kolejne synchronizacje, które występują co około 10 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do udostępniania raportów działań, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Slack.
 
-## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Opcjonalnie] Konfigurowanie grupy obiektu aprowizacji Slack 
+## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Opcjonalnie] Konfigurowanie grupy obiektu aprowizacji Slack
 
 Opcjonalnie można włączyć, aprowizacja obiekty grupy z usługi Azure AD w celu Slack. To różni się od "przypisywanie grup użytkowników", w tym, że rzeczywiste grupy obiektów poza jej składowych będą replikowane z usługi Azure AD do Slack. Na przykład jeśli istnieje grupa o nazwie "My" w usłudze Azure AD, identyczne grupy o nazwie "My" zostanie utworzony wewnątrz Slack.
 
@@ -116,14 +112,19 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
-  * Podczas konfigurowania firmy Slack **displayName** atrybutu, należy zwrócić uwagę na następujące zachowania: 
+* Podczas konfigurowania firmy Slack **displayName** atrybutu, należy zwrócić uwagę na następujące zachowania:
+
   * Wartości nie są unikatowe w całości, (np. 2 użytkownicy mogą mieć tę samą nazwę wyświetlaną)
+
   * Obsługuje znaków innych niż angielski, miejsca do magazynowania, wielkość liter. 
+  
   * Dozwolone znaki interpunkcyjne obejmuje kropki, podkreślenia, łączniki, apostrofy, nawiasy kwadratowe (np. **([{}])**) oraz separatory (np. **, /;**).
+  
   * Aktualizuje tylko, jeśli te dwa ustawienia zostały skonfigurowane w miejscu pracy firmy Slack/organizacji - **synchronizowanie profilu jest włączona** i **użytkownicy nie mogą zmieniać ich nazwy wyświetlanej**.
-  * Firmy Slack **userName** atrybutu musi być w obszarze 21 znaków i mieć unikatową wartość. 
+  
+  * Firmy Slack **userName** atrybutu musi być w obszarze 21 znaków i mieć unikatową wartość.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -12,20 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 11bbd87eb283dca2c7da19e32833221c7320a79f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817800"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009720"
 ---
-# <a name="power-bi-app-offer"></a>Usługa Power BI aplikacji oferty
+# <a name="power-bi-app-offer"></a>Oferta aplikacji Power BI
 
 |              |                                |
-|-|--------------------------------|
-| W tym artykule opisano sposób publikowania aplikacji Power BI, Microsoft [marketplace usługi AppSource](https://appsource.microsoft.com/). Aplikacja Power BI pakiety zawartości usługi Power BI i używa przepływów danych do łączenia z raportów i pulpitów nawigacyjnych z danymi w wspólnego magazynu danych. Następnie można wdrożyć aplikację do innych dzierżaw za pomocą usługi AppSource. | ![Ikona usługi Power BI](./media/powerbi-icon.png) |
+|--------------|--------------------------------|
+| W tym artykule opisano sposób publikowania aplikacji Power BI, Microsoft [marketplace usługi AppSource](https://appsource.microsoft.com/).  Aplikacja Power BI pakiety można dostosować zawartość usługi Power BI, w tym zestawy danych, raporty i pulpity nawigacyjne. Można wdrożyć aplikację do innych dzierżaw usługi Power BI za pomocą usługi AppSource, korekt i dostosowania dozwolone przez dewelopera i podłącz go do swoich danych. | ![Ikona usługi Power BI](./media/powerbi-icon.png) |
 
 
 W tym artykule jest podzielony na trzy główne elementy:
@@ -43,17 +43,16 @@ Poniżej przedstawiono ogólne kroki umożliwiające publikowanie oferty aplikac
 
 Oto oferty aplikacji Power BI procesu publikowania:
 
-1. Tworzenie aplikacji usługi w usłudze Power BI. Ta akcja generuje pakiet instalacyjny adresu URL, który reprezentuje zasoby techniczne dla oferty. Aby uzyskać więcej informacji, zobacz [co to jest usługa Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636).
-2. Zbieraj lub Tworzenie trwałych biznesowe, w tym:
-    - Materiały marketingowe.
-    - Prawne i obsługuje dokumentów.
-3.  Utwórz ofertę. Użyj portalu Cloud Partner, aby skonfigurować szczegóły oferty, łącznie z opisem oferty, materiały marketingowe, informacje prawne, informacje o pomocy technicznej i specyfikacje zasobów.
-4.  Certyfikowanie i opublikować ofertę. Spowoduje to uruchomienie procesu publikowania.
-    - Zespół organizujący dołączanie usługi AppSource testy, weryfikuje i potwierdza aplikację. 
-    - Po certyfikowaniu oferty przejrzyj go w jego środowisku testowym, a następnie zwolnij go.
+1. Tworzenie aplikacji szablonu w usłudze Power BI. Ta akcja generuje pakiet instalacyjny adresu URL, który reprezentuje podstawowy zasobów technicznych dla oferty. Również w tej chwili przyczyniają się do pakietu test przedprodukcyjnego. Aby uzyskać więcej informacji, zobacz [co to są aplikacje szablonu usługi Power BI?](https://docs.microsoft.com/power-bi/service-template-apps-overview). 
+2. Zbieraj lub Utwórz oferty materiały marketingowe, w tym: oficjalna nazwa, opis, logo, itp. 
+3. Zbieraj lub Utwórz oferty prawnych i obsługuje dokumentów: *warunki użytkowania*, *zasady zachowania poufności informacji*, *zasady pomocy technicznej*, pomoc dla użytkowników itp.
+4. Utwórz ofertę: Użyj portalu Cloud Partner, aby skonfigurować szczegóły oferty, łącznie z opisem oferty, materiały marketingowe, informacje prawne, informacje o pomocy technicznej i specyfikacje zasobów.  Po tej oferty jest w pełni określona, Prześlij go do publikacji.
+5. Monitoruj proces publikowania w portalu Cloud Partner.  W tym kroku zespół organizujący dołączanie usługi AppSource testy, weryfikuje i potwierdza aplikację. 
+6. Po pomyślnym certyfikowaniu aplikacji przejrzyj go w jego środowisku testowym, a następnie zwolnij go. 
+7. Aplikacja Power BI znajduje się w usłudze AppSource, ("zbliża się na żywo" to).
+8. W usłudze Power BI przyczyniają się do pakietu przedprodukcyjnego do środowiska produkcyjnego. Aby uzyskać więcej informacji, zobacz [Zarządzanie wersja aplikacji szablonu](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
-Po wykonaniu tych czynności, oferty aplikacji Power BI przechodzi na żywo w usłudze AppSource.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przed utworzeniem oferty aplikacji Power BI i opublikuj go w usłudze AppSource, musi spełniać [wymagania](./cpp-prerequisites.md) umożliwiające publikowanie aplikacji usługi Power BI do usługi AppSource.
+Przed utworzeniem oferty aplikacji Power BI i opublikuj go w usłudze AppSource, musi spełniać [wymagania](./cpp-prerequisites.md) publikowania aplikacji Power BI do usługi AppSource.

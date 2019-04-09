@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793662"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056681"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
 
@@ -67,6 +67,23 @@ Po skonfigurowaniu pre i post skryptów, możesz przekazać parametry, podobnie 
 Jeśli potrzebujesz innego typu obiektu, można go rzutować na inny typ, z własną logiką w elemencie runbook.
 
 Oprócz parametry elementu runbook standardowe dodatkowy parametr jest dostępna. Ten parametr jest **SoftwareUpdateConfigurationRunContext**. Ten parametr jest ciąg JSON, a Jeśli zdefiniujesz parametru w skrypcie pre lub wpis, automatycznie jest przekazywana w przez wdrożenie aktualizacji. Parametr zawiera informacje dotyczące wdrażania aktualizacji, która jest podzbiorem informacje zwrócone przez [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) poniższej tabeli przedstawiono właściwości, które znajdują się w zmiennej:
+
+## <a name="stopping-a-deployment"></a>Zatrzymywanie wdrożenia
+
+Jeśli chcesz zatrzymać wdrożenie na podstawie wstępnie skryptu należy [throw](automation-runbook-execution.md#throw) wyjątek. Jeśli użytkownik nie zgłasza wyjątku, wdrażania i skrypt Post będą nadal działać. [Przykładowy element runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) w galerii pokazuje, jak to zrobić. Poniżej przedstawiono fragment z tego elementu runbook.
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>Właściwości SoftwareUpdateConfigurationRunContext
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>Przerwij wdrażania poprawek
+
+Jeśli skrypt pre zwraca błąd, można przerwać wdrożenia. Aby to zrobić, należy najpierw [throw](/powershell/module/microsoft.powershell.core/about/about_throw) błąd w skrypcie dla wszelka logika, która będzie stanowić awarii.
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>Znane problemy
 
 * Nie można przekazać obiekty i tablice parametrów przy użyciu skryptów przed i po. Element runbook zakończy się niepowodzeniem.
@@ -240,5 +268,5 @@ if ($summary.Type -eq "Error")
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
+> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych z systemem Windows na platformie Azure](automation-tutorial-update-management.md)
 

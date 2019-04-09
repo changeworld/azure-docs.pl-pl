@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446713"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010587"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Platforma Azure i oferty w witrynie Marketplace usługi AppSource
 
@@ -56,11 +56,11 @@ W poniższej tabeli wymieniono bieżącego typów ofert objęte [portalu Cloud P
 | [Usługa DORADCZA](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Oba | Kwalifikowana Microsoft konsultantów można wyświetlić listę swoich usług specyficznego dla domeny na portalu Azure Marketplace lub w usłudze AppSource.  Swoją wiedzę ułatwia klientom oceny swoje problemy oraz tworzenie i wdrażanie rozwiązań prawo, aby spełniać swoje cele biznesowe.  |
 | [Kontener](./containers/cpp-containers-offer.md)  | Azure | Rozwiązanie jest inicjowana jak dla usługi Kubernetes lub Azure Container instances obraz kontenera Docker. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Pakiet, który rozszerza to planowanie zasobów przedsiębiorstwa (ERP) i systemu zarządzania biznesowych. |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Pakiet, który rozszerza ten klient systemu zarządzania (CRM) zasobu, za pośrednictwem sprzedaży, usługi, usługi projektu i modułów usługi pola.  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Pakiet, który rozszerza ten zasób przedsiębiorstwa (ERP), usługa planowania tego Finanse obsługuje zaawansowane operacje, produkcji i zarządzania łańcuchem dostaw. |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Pakiet, który rozszerza ten klient systemu zarządzania (CRM) zasobu, za pośrednictwem sprzedaży, usługi, usługi projektu i modułów usługi pola  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Pakiet, który rozszerza tej usługi (ERP), która obsługuje zaawansowane do planowania zasobów przedsiębiorstwa Finanse i operacje, produkcji i zarządzanie łańcuchem zaopatrzenia |
 | [Moduł usługi IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kontener zgodnego z platformą Docker, która jest uruchamiana na urządzeniu usługi IoT Edge.  Zawiera ona modułów małych obliczeniowych korzystających z kombinacji niestandardowego kodu, innych usług platformy Azure i usługi innych firm 3. |
-| [Aplikacja Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Pakiet, który używa przepływów danych do łączenia z raportów i pulpitów nawigacyjnych z danymi w wspólnego magazynu danych. |
-| [Aplikacja SaaS](./saas-app/cpp-saas-offer.md) | Azure | Rozwiązanie jest subskrypcją oprogramowanie jako usługa zarządzana przez wydawcę, w których użytkownicy logują się za pośrednictwem dostosowanego interfejsu, który korzysta z usługi Azure Active Directory. |
+| [Aplikacja Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Aplikacja Power BI, które pakiety można dostosować zawartość usługi Power BI, w tym zestawy danych, raporty i pulpity nawigacyjne |
+| [Aplikacja SaaS](./saas-app/cpp-saas-offer.md) | Azure | Rozwiązanie jest subskrypcją oprogramowanie jako usługa zarządzana przez wydawcę, w których użytkownicy logują się za pośrednictwem dostosowanego interfejsu, który używa usługi Azure Active Directory. |
 | [Maszyna wirtualna](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Rozwiązanie znajduje się w obrębie jednej maszyny wirtualnej wdrożone w subskrypcji klienta.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
@@ -69,4 +69,4 @@ Aby uzyskać więcej informacji, zobacz [Podręcznik przez typ oferty publikowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zawiera informacje o ogólnych operacji można wykonywać na oferty w witrynie marketplace i ich atrybuty wspólne technicznych i zasobów w temacie [Zarządzanie ofertami](./manage-offers/cpp-manage-offers.md).
+Zawiera informacje o ogólnych operacji można wykonywać na oferty w witrynie marketplace i ich atrybuty wspólne technicznych i zasobów w artykule [Zarządzanie ofertami](./manage-offers/cpp-manage-offers.md).

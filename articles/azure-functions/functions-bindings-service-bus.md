@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 9955068fbc0d6493add83c6c92390413b3975106
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 1f4bf24ef5f96fea7602b38d857f12d950fb0b24
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437175"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057731"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -46,7 +46,7 @@ Użyj wyzwalacza usługi Service Bus, aby odpowiadać na komunikaty z kolejki us
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
-* [Skryptu C# (csx)](#trigger---c-script-example)
+* [Skrypt języka C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
@@ -278,12 +278,12 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa "serviceBusTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje komunikat kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
+|**kierunek** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje komunikat kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
 |**queueName**|**QueueName**|Nazwa kolejki do monitorowania.  Ustaw tylko wtedy, gdy kolejki, tematu dla monitorowania.
 |**topicName**|**topicName**|Nazwa tematu do monitorowania. Ustaw tylko wtedy, gdy monitorowanie tematu, nie dla kolejki.|
-|**subscriptionName**|**subscriptionName**|Nazwa subskrypcji do monitorowania. Ustaw tylko wtedy, gdy monitorowanie tematu, nie dla kolejki.|
-|**połączenia**|**połączenia**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` do "MyServiceBus", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyServiceBus." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia usługi Service Bus w ustawieniu aplikacji, który nosi nazwę "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w [Uzyskiwanie poświadczeń zarządzania](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu. |
+|**subscriptionName**|**Nazwa subskrypcji**|Nazwa subskrypcji do monitorowania. Ustaw tylko wtedy, gdy monitorowanie tematu, nie dla kolejki.|
+|**połączenie**|**Połączenie**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` do "MyServiceBus", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyServiceBus." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia usługi Service Bus w ustawieniu aplikacji, który nosi nazwę "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w [Uzyskiwanie poświadczeń zarządzania](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu. |
 |**accessRights**|**Dostęp**|Prawa dostępu parametrów połączenia. Dostępne wartości to `manage` i `listen`. Wartość domyślna to `manage`, który wskazuje, że `connection` ma **Zarządzaj** uprawnień. Jeśli używasz parametry połączenia, który nie ma **Zarządzaj** zestawu uprawnień, `accessRights` "nasłuchiwanie". W przeciwnym razie funkcje środowiska uruchomieniowego może zakończyć się niepowodzeniem próby wykonania operacji wymagających zarządzania prawami. W usłudze Azure Functions w wersji 2.x, ta właściwość nie jest dostępna, ponieważ najnowszą wersję zestawu SDK usługi Storage nie obsługuje zarządzania operacjami.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -328,7 +328,6 @@ Wyzwalacz usługi Service Bus udostępnia wiele [właściwości metadanych](./fu
 |`To`|`string`|Wyślij adres.|
 |`Label`|`string`|Etykieta specyficzna dla aplikacji.|
 |`CorrelationId`|`string`|Identyfikator korelacji.|
-|`UserProperties`|`IDictionary<String,Object>`|Właściwości szczegółowy komunikat o błędzie aplikacji.|
 
 > [!NOTE]
 > Obecnie wyzwalacza działa tylko z kolejki i subskrypcje, które nie używają sesji. Należy śledzić [ten element, funkcja](https://github.com/Azure/azure-functions-host/issues/563) wszelkie dalsze aktualizacji dotyczące tej funkcji. 
@@ -364,7 +363,7 @@ Użyj powiązania danych wyjściowych usługi Azure Service Bus, aby wysyłać k
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [Skryptu C# (csx)](#output---c-script-example)
+* [Skrypt języka C# (csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
@@ -595,11 +594,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa "magistrali usług". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być równa "out". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
+|**kierunek** | Nie dotyczy | Musi być równa "out". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
 |**queueName**|**QueueName**|Nazwa kolejki.  Ustaw tylko wtedy, gdy wysyłanie komunikatów z kolejki, tematu dla.
 |**topicName**|**topicName**|Nazwa tematu do monitorowania. Ustaw tylko wtedy, gdy wysyłanie komunikatów z tematów, nie dla kolejki.|
-|**połączenia**|**połączenia**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` do "MyServiceBus", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyServiceBus." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia usługi Service Bus w ustawieniu aplikacji, który nosi nazwę "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w [Uzyskiwanie poświadczeń zarządzania](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu.|
+|**połączenie**|**Połączenie**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` do "MyServiceBus", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyServiceBus." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia usługi Service Bus w ustawieniu aplikacji, który nosi nazwę "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w [Uzyskiwanie poświadczeń zarządzania](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu.|
 |**accessRights**|**Dostęp**|Prawa dostępu parametrów połączenia. Dostępne wartości to `manage` i `listen`. Wartość domyślna to `manage`, który wskazuje, że `connection` ma **Zarządzaj** uprawnień. Jeśli używasz parametry połączenia, który nie ma **Zarządzaj** zestawu uprawnień, `accessRights` "nasłuchiwanie". W przeciwnym razie funkcje środowiska uruchomieniowego może zakończyć się niepowodzeniem próby wykonania operacji wymagających zarządzania prawami. W usłudze Azure Functions w wersji 2.x, ta właściwość nie jest dostępna, ponieważ najnowszą wersję zestawu SDK usługi Storage nie obsługuje zarządzania operacjami.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -627,7 +626,7 @@ W języku JavaScript, dostęp do kolejki lub tematu przy użyciu `context.bindin
 | Powiązanie | Informacje ogólne |
 |---|---|
 | Service Bus | [Kody błędów usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Service Bus | [Limity usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Service Bus Limits](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 <a name="host-json"></a>  
 

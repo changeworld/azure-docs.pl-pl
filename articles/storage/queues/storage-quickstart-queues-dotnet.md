@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: tamram
-ms.openlocfilehash: b219e1e1e083355f662919fe332725bd9162d390
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: f16c4438dfb2feb70dece0b95f8afc701c5a3d66
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885458"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009312"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Szybki start: Tworzenie kolejki w usłudze Azure Storage przy użyciu platformy .NET
 
@@ -163,7 +163,7 @@ else
 {
     Console.WriteLine(
         "A connection string has not been defined in the system environment variables. " +
-        "Add a environment variable named 'storageconnectionstring' with your storage " +
+        "Add an environment variable named 'storageconnectionstring' with your storage " +
         "connection string as a value.");
 }
 ```
@@ -264,11 +264,11 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji .NET przy użyciu k
 - Aby uzyskać więcej informacji na temat biblioteki klienta .NET, zobacz [dokumentację interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
 - Zapoznaj się z [przykładami magazynu Queue Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) napisanymi przy użyciu biblioteki klienta .NET.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono sposób dodawania komunikatów do kolejki, uzyskiwania wglądu w komunikaty w kolejce oraz usuwania komunikatów z kolejki i przetwarzania ich przy użyciu platformy .NET. 
 
 > [!div class="nextstepaction"]
-> [Communicate between applications with Azure Queue storage (Komunikacja między aplikacjami w usłudze Azure Queue Storage)](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Komunikację między aplikacjami z usługą Azure Queue storage](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - Aby dowiedzieć się więcej na temat platformy .NET Core, zobacz [Get started with .NET in 10 minutes (Rozpoczynanie pracy z platformą .NET w 10 minut)](https://www.microsoft.com/net/learn/get-started/).

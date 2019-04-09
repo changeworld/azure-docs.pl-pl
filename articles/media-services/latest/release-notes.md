@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351561"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058088"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -30,13 +30,15 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 ## <a name="known-issues"></a>Znane problemy
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="march-2019"></a>Marca 2019 r
 
 Dynamiczne pakowanie teraz obsługuje Dolby Atmos. Aby uzyskać więcej informacji, zobacz [kodery-dekodery Audio obsługiwane przez funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+
+Teraz można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skojarzyć filtrów z lokalizatora przesyłania strumieniowego](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>Lutego 2019 r
 
@@ -71,9 +73,9 @@ Moduł interfejsu wiersza polecenia 2.0 jest teraz dostępna dla [usług ogólni
 - [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [zasób usługi ams az](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [AZ ams zawartości klucza policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
 - [Zadanie usługi ams az](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [AZ ams wydarzenie na żywo —](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [AZ ams na żywo dane wyjściowe](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
@@ -201,4 +203,4 @@ Następujące funkcje są obecne w zestawie SDK platformy .NET:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Omówienie](media-services-overview.md)
+[Przegląd](media-services-overview.md)

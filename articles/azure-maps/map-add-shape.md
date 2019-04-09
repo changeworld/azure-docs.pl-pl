@@ -9,20 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 43406aee8d2e350b82659156bb2837e952fd4a92
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579295"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057035"
 ---
 # <a name="add-a-shape-to-a-map"></a>Dodawanie kształtu do mapy
 
-W tym artykule przedstawiono sposób dodawania [kształt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) mapy i zaktualizuj właściwości istniejącego kształtu na mapie.
+W tym artykule przedstawiono sposób renderowania geometrii na mapie za pomocą wiersza i wielokąta warstwy. Zestaw SDK usługi Azure Maps w sieci Web umożliwia także tworzenie geometrii okrąg zgodnie z definicją w [rozszerzony schemat GeoJSON](extend-geojson.md#circle). Wszystkie geometrii funkcji można łatwo aktualizować, jeśli jest ujęte w nawiasy [kształt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) klasy.
 
 <a id="addALine"></a>
 
-## <a name="add-a-line"></a>Dodaj wiersz
+## <a name="add-lines-to-the-map"></a>Dodaj wiersze do mapy
+
+`LineString` i `MultiLineString` funkcje są używane do reprezentowania opisanych na mapie i ścieżki.
+
+## <a name="use-a-line"></a>W wierszu polecenia
 
 <iframe height='500' scrolling='no' title='Dodaj wiersz do mapy' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/qomaKv/'>dodać wiersz do mapy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
@@ -33,7 +37,7 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 
 A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Ostatni blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwie wiersza są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy wiersz jest wyświetlany po mapy ładuje pełni.
 
-## <a name="add-symbols-along-a-line"></a>Dodawanie symboli wzdłuż linii
+### <a name="add-symbols-along-a-line"></a>Dodawanie symboli wzdłuż linii
 
 W tym przykładzie przedstawiono sposób dodawania ikony strzałek wzdłuż linii na mapie. Gdy za pomocą warstwy symboli, ustaw opcję "umieszczania" "wiersz", spowoduje to renderowania symbole wzdłuż linii i Obróć ikony (0 stopni = po prawej stronie).
 
@@ -43,7 +47,17 @@ W tym przykładzie przedstawiono sposób dodawania ikony strzałek wzdłuż lini
 Zobacz pióra <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Pokaż strzałkę wzdłuż linii</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-## <a name="customize-a-line-layer"></a>Dostosowywanie warstwę linii
+### <a name="line-stroke-gradient"></a> Dodawanie gradientu obrysu do linii
+
+Oprócz możliwości dotyczą kolorem pociągnięcia pojedynczy wiersz możesz również wypełnić linię gradient kolorów, aby pokazać przejście od jednego segmentu wiersz do następnego. Na przykład pochylenia linii może służyć do reprezentowania zmiany w czasie i w odległości lub w różnych temperatur w linii połączonej obiektów. Aby można było zastosować tę funkcję do wiersza, źródło danych musi mieć `lineMetrics` opcji ma wartość true, a następnie wyrażenie gradientów kolorów może być przekazywany do `strokeColor` opcji wiersza. Wyrażenie gradientu obrysu ma odwołanie `['line-progress']` wyrażenie danych, który uwidacznia metryki linii obliczeniowe do wyrażenia.
+
+<br/>
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="Wiersz gradientem pociągnięcia" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz pióra <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>wiersza gradientem obrysu</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+</iframe>
+
+### <a name="customize-a-line-layer"></a>Dostosowywanie warstwę linii
 
 Wiersz w warstwie kilka opcji stylów. W tym miejscu to narzędzie ich wypróbowanie.
 
@@ -52,26 +66,15 @@ Wiersz w warstwie kilka opcji stylów. W tym miejscu to narzędzie ich wypróbow
 <iframe height='700' scrolling='no' title='Opcje warstwy linii' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>wiersz opcje warstwy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-<a id="addACircle"></a>
-
-## <a name="add-a-circle"></a>Dodaj koło
-
-<iframe height='500' scrolling='no' title='Dodaj koło z mapą' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Dodaj koło z mapą</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
-</iframe>
-
-Pierwszy blok kodu w powyższym kodzie konstrukcji obiektu mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
-
-W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Okrąg jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) i ma `subType` ustawioną na "koło" i `radius` liczniki wartości właściwości. Po dodaniu funkcji punktu z podtypem okrąg ze źródłem danych konwertuje go na okręgu wielokąta w mapie.
-
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy koła jest wyświetlany po mapy ładuje pełni.
-
 <a id="addAPolygon"></a>
 
-## <a name="add-a-polygon"></a>Dodaj wielokąta
+## <a name="add-a-polygon-to-the-map"></a>Dodaj wielokąta do mapy
 
-Istnieją dwa różne sposoby wielokąta można dodać do mapy. Oba zostały wyjaśnione w poniższych przykładach.
+`Polygon` i `MultiPolygon` funkcje są często używane do reprezentowania obszar na mapie. 
 
-### <a name="use-polygon-layer"></a>Użyj warstwę wielokątów 
+### <a name="use-a-polygon-layer"></a>Użyj warstwę wielokątów 
+
+Warstwa wielokątów renderuje obszaru wielokąta. 
 
 <iframe height='500' scrolling='no' title='Dodawanie wielokąta do mapy ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Dodawanie wielokąta do mapy </a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
@@ -82,7 +85,9 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
 
-### <a name="use-polygon-and-line-layer"></a>Użyj warstwy wielokątów i linii
+### <a name="use-a-polygon-and-line-layer-together"></a>Jednocześnie używać warstwy wielokątów i linii
+
+Warstwa linii może zostać użyty do renderowania zarys wielokąta. 
 
 <iframe height='500' scrolling='no' title='Warstwa wielokątów i linii do dodania wielokąta' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>warstwy wielokątów i linii, aby dodać wielokąta</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
@@ -95,7 +100,10 @@ A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/at
 
 Ostatni blok kodu dodaje warstw wielokątów i linii do mapy. Źródło danych i warstwy są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
 
-## <a name="fill-a-polygon-with-a-pattern"></a>Wypełnij wielokąta z wzorcem
+> [!TIP]
+> Warstwy linii domyślnie będą renderowane współrzędne wielokąty, a także wierszy w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje LineString funkcje zestawu `filter` właściwości warstwy, aby `['==', ['geometry-type'], 'LineString']` lub `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` aby obejmują również funkcje MultiLineString.
+
+### <a name="fill-a-polygon-with-a-pattern"></a>Wypełnij wielokąta z wzorcem
 
 Oprócz wypełnianie wielokąta kolorem wzorzec obrazu można również. Ładowanie wzorzec obrazu do zasobów sprite obrazu mapy, a następnie Odwołaj ten obraz z `fillPattern` właściwości warstwy wielokątów.
 
@@ -105,7 +113,7 @@ Oprócz wypełnianie wielokąta kolorem wzorzec obrazu można również. Ładowa
 Zobacz pióra <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>deseń wypełnienia wielokąta</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-## <a name="customize-a-polygon-layer"></a>Dostosowywanie warstwę wielokątów
+### <a name="customize-a-polygon-layer"></a>Dostosowywanie warstwę wielokątów
 
 Warstwa wielokątów ma tylko kilka opcji stylów. W tym miejscu to narzędzie ich wypróbowanie.
 
@@ -114,9 +122,40 @@ Warstwa wielokątów ma tylko kilka opcji stylów. W tym miejscu to narzędzie i
 <iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-## <a name="update-a-shape"></a>Aktualizowanie kształtów
+<a id="addACircle"></a>
 
-Klasa kształtu zawijania [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) lub [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) i można łatwo aktualizować i obsługiwać je.
+## <a name="add-a-circle-to-the-map"></a>Dodaj koło do mapy
+
+Rozszerzona wersja schemat GeoJSON, który zawiera definicję dla okręgów, jak wspomniano korzysta z usługi Azure Maps [tutaj](extend-geojson.md#circle). Okrąg mogą być renderowane na mapie, tworząc `Point` funkcja, która ma `subType` właściwość z wartością `Circle` i `radius` właściwość, która ma numer, który reprezentuje promień w metrach. Na przykład:
+
+```javascript
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-122.126986, 47.639754]
+    },
+    "properties": {
+        "subType": "Circle",
+        "radius": 100
+    }
+}  
+```
+
+Zestaw SDK usługi sieci Web Azure map konwertuje te `Pooint` funkcji do `Polygon` funkcje w sposób niewidoczny i mogą być renderowane na mapie za pomocą warstw wielokątów i linii, jak pokazano poniżej.
+
+<iframe height='500' scrolling='no' title='Dodaj koło z mapą' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Dodaj koło z mapą</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+</iframe>
+
+Pierwszy blok kodu w powyższym kodzie konstrukcji obiektu mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
+
+W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Okrąg jest [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) i ma `subType` ustawioną na "koło" i `radius` liczniki wartości właściwości. Po dodaniu funkcji punktu z podtypem okrąg ze źródłem danych konwertuje go na okręgu wielokąta w mapie.
+
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Ostatni blok kodu tworzy i dodaje warstwę wielokątów do mapy. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwę wielokątów są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy koła jest wyświetlany po mapy ładuje pełni.
+
+## <a name="make-a-geometry-easy-to-update"></a>Ułatw zaktualizować geometrii
+
+A `Shape` klasy zawija [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) lub [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) i można łatwo aktualizować i obsługiwać je.
 `new Shape(data: Feature<data.Geometry, any>)` Tworzy obiekt kształt i inicjuje ją przy użyciu określonej funkcji.
 
 <br/>
@@ -142,4 +181,4 @@ Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące ar
 > [Znaczniki HTML](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę mapy cieplnej](./map-add-heat-map-layer.md)
+> [Dodawanie warstwy mapy cieplnej](./map-add-heat-map-layer.md)

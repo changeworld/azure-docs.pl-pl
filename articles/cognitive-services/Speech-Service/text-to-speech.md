@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1edc2587ef8680f60082bf6271b73d30184f331b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 52f74bb3cb9e460fc5c572079355f47b4b0bf0a3
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521248"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010451"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -38,7 +38,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Konwertuj tekst na mowę. | Nie | Yes |
+| Konwertuj tekst na mowę. | Yes | Yes |
 | Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
 | Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
 | Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |
@@ -54,23 +54,30 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 
 Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę zamiany tekstu na mowę przewodników Szybki Start, które są zorganizowane według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Przewodnik Szybki Start (REST) | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+
+| Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsu API |
+|------------|----------|---------------|
+| [C#, .NET framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
 Przykładowy kod zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te przykłady obejmują Konwersja tekstu na mowę w najbardziej popularnych języków programowania.
 
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Przykłady zamiany tekstu na mowę (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
 ## <a name="reference-docs"></a>Dokumentacja
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Zestaw Speech Devices SDK](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
+* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
 * [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
 

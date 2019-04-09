@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 385a1153-0f47-4e41-8f44-da1b49d7629e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: afb80f54c2354f65054d8d53b93add6ed5ffa63e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ed158ae825ec8aac24a57eb0f5a986b2124b66fb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099954"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057799"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler trzy dla automatycznej aprowizacji użytkowników
 
@@ -27,46 +28,41 @@ Celem tego samouczka jest aby zademonstrować czynności wykonywanych w trzy roz
 
 > [!NOTE]
 > W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
-> 
+>
 > Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
 
-*   Dzierżawa usługi Azure AD
-*   Dzierżawy rozwiązania Zscaler trzy
-*   Konta użytkownika z uprawnieniami administratora w trzech rozwiązania Zscaler
+* Dzierżawa usługi Azure AD
+* Dzierżawy rozwiązania Zscaler trzy
+* Konta użytkownika z uprawnieniami administratora w trzech rozwiązania Zscaler
 
 > [!NOTE]
 > Integracja inicjowania obsługi usługi Azure AD opiera się na API Standard SCIM trzy rozwiązania Zscaler, który jest dostępny dla rozwiązania Zscaler trzech deweloperów dla kont z pakietem Enterprise.
 
 ## <a name="adding-zscaler-three-from-the-gallery"></a>Dodawanie rozwiązania Zscaler trzy z galerii
+
 Przed skonfigurowaniem rozwiązania Zscaler trzy dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać rozwiązania Zscaler trzy z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać rozwiązania Zscaler trzy z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje w przedsiębiorstwie sekcji][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać rozwiązania Zscaler trzy, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **trzy rozwiązania Zscaler**.
+4. W polu wyszukiwania wpisz **trzy rozwiązania Zscaler**, wybierz opcję **trzy rozwiązania Zscaler** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/app-search.png)
-
-5. W panelu wyników wybierz **trzy rozwiązania Zscaler**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać rozwiązania Zscaler trzy do listy aplikacji SaaS.
-
-    ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/app-search-results.png)
-
-    ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/app-creation.png)
+    ![Na liście wyników trzy rozwiązania Zscaler](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-three"></a>Przypisywanie użytkowników do trzech rozwiązania Zscaler
 
@@ -74,13 +70,13 @@ Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby okre
 
 Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do rozwiązania Zscaler trzy. Po decyzję, należy przypisać do trzech rozwiązania Zscaler użytkowników i/lub grup zgodnie z instrukcjami w tym miejscu:
 
-*   [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-three"></a>Ważne wskazówki dotyczące przypisywania użytkowników do trzech rozwiązania Zscaler
 
-*   Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do rozwiązania Zscaler trzy do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do rozwiązania Zscaler trzy do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do rozwiązania Zscaler trzy, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkowników do rozwiązania Zscaler trzy, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-three"></a>Konfigurowanie automatycznej aprowizacji użytkowników do trzech rozwiązania Zscaler
 
@@ -91,11 +87,13 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-three-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla rozwiązania Zscaler trzy w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **trzy rozwiązania Zscaler**.
 
-2. Wybierz trzy rozwiązania Zscaler z listy aplikacji SaaS.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/app-instance-search.png)
+2. Na liście aplikacji wybierz **trzy rozwiązania Zscaler**.
+
+    ![Trzy rozwiązania Zscaler łącze na liście aplikacji](common/all-applications.png)
 
 3. Wybierz **aprowizacji** kartę.
 
@@ -111,16 +109,16 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
-    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje. 
+    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje.
 
     ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
-    
+
     Wybierz **aprowizacji Enable SCIM-Based** można pobrać **podstawowy adres URL** i **tokenu elementu nośnego**, następnie Zapisz ustawienia. Kopiuj **podstawowy adres URL** do **adres URL dzierżawy** i **tokenu elementu nośnego** do **klucz tajny tokenu** w witrynie Azure portal.
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z trzech rozwiązania Zscaler. Jeśli połączenie nie powiedzie się, upewnij się, że trzy rozwiązania Zscaler konto ma uprawnienia administratora i spróbuj ponownie.
 
     ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/test-connection.png)
-    
+
 8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
     ![Zscaler Three Provisioning](./media/zscaler-three-provisioning-tutorial/notification.png)
@@ -164,7 +162,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

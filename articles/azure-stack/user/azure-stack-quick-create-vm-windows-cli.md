@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 15dd878b7ff322ac8243b37649f16fed4e068af4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 67e0ccfa883e79d66eb9ca38a6cf15f00154c487
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091719"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056181"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Windows Server przy użyciu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -62,7 +62,6 @@ az vm create \
   --image "Win2016Datacenter" \
   --admin-username "Demouser" \
   --admin-password "Demouser@123" \
-  --use-unmanaged-disk \
   --location local
 ```
 

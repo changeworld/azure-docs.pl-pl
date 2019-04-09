@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/18/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbb50ba703221c28576b4c3614c77bbac7eeabb9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 9d4661f6c975265ec710b29a8a05cc7ef41b4011
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519123"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057425"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -43,7 +43,7 @@ Elementy Runbook w usłudze Azure Automation można uruchomić w dowolnym piasko
 |Monitorowanie pliku lub folderu z elementu runbook|Hybrydowy proces roboczy elementu Runbook|Użyj [zadania obserwatora](automation-watchers-tutorial.md) w ramach procesu roboczego hybrydowego elementu Runbook|
 |Skrypt intensywnie korzystających z zasobów|Hybrydowy proces roboczy elementu Runbook| Piaskownice platformy Azure mają [ograniczenia zasobów](../azure-subscription-service-limits.md#automation-limits)|
 |Przy użyciu modułów przy użyciu określonych wymagań| Hybrydowy proces roboczy elementu Runbook|Przykłady to:</br> **WinSCP** -zależność od winscp.exe </br> **Administracyjny usług IIS** -wymaga usług IIS, aby włączyć|
-|Zainstaluj moduł, który wymaga Instalatora|Hybrydowy proces roboczy elementu Runbook|Moduły dla piaskownicy musi być xcopyable|
+|Zainstaluj moduł, który wymaga Instalatora|Hybrydowy proces roboczy elementu Runbook|Moduły dla piaskownicy musi być copiable|
 |Za pomocą elementów runbook i modułów, które wymagają różni się od 4.7.2 w .NET Framework|Hybrydowy proces roboczy elementu Runbook|Piaskownice usługi Automation jest .NET Framework 4.7.2 i nie ma możliwości ją uaktualnić|
 |Skrypty, które wymagają podniesionych uprawnień|Hybrydowy proces roboczy elementu Runbook|Piaskownice nie zezwalają na podniesienie uprawnień. Aby rozwiązać ten problem, użyj hybrydowy proces roboczy elementu Runbook i można wyłączyć obsługę funkcji Kontrola konta użytkownika i używanie `Invoke-Command` po uruchomieniu polecenia wymaga podniesionego poziomu uprawnień|
 |Skrypty, które wymagają dostępu do usługi WMI|Hybrydowy proces roboczy elementu Runbook|Zadania uruchomione w piaskownicach chmury [braku dostępu do usługi WMI](#device-and-application-characteristics)|
@@ -246,9 +246,9 @@ Następujące kroki służą do wyświetlania zadań elementu Runbook.
 3. Na stronie dla wybranego elementu runbook kliknij **zadań** kafelka.
 4. Kliknij jedno z zadań na liście, a następnie na stronie Szczegóły zadania elementu runbook można wyświetlić szczegóły i jego dane wyjściowe.
 
-## <a name="retrieving-job-status-using-windows-powershell"></a>Pobieranie stanu zadania za pomocą programu Windows PowerShell
+## <a name="retrieving-job-status-using-powershell"></a>Pobieranie stanu zadania za pomocą programu PowerShell
 
-Możesz użyć [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) do pobrania zadań utworzonych dla elementu runbook i szczegółów dotyczących określonego zadania. Po uruchomieniu elementu runbook za pomocą środowiska Windows PowerShell przy użyciu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook), a następnie zwraca zadania wynikowe. Użyj [Get AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) można pobrać zadania danych wyjściowych.
+Możesz użyć [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) do pobrania zadań utworzonych dla elementu runbook i szczegółów dotyczących określonego zadania. Po uruchomieniu elementu runbook przy użyciu programu PowerShell [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook), a następnie zwraca zadania wynikowe. Użyj [Get AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) można pobrać zadania danych wyjściowych.
 
 Następujące przykładowe polecenia Pobierz ostatnie zadanie przykładowego elementu runbook i wyświetl jego stan, wartości podanych dla parametrów elementu runbook, a dane wyjściowe z zadania.
 
@@ -285,11 +285,30 @@ Inne szczegóły, takie jak osoba lub uwagę, że uruchomieniu elementu runbook 
 
 ```powershell-interactive
 $SubID = "00000000-0000-0000-0000-000000000000"
-$rg = "ResourceGroup01"
-$AutomationAccount = "MyAutomationAccount"
-$JobResourceID = "/subscriptions/$subid/resourcegroups/$rg/providers/Microsoft.Automation/automationAccounts/$AutomationAccount/jobs"
+$AutomationResourceGroupName = "MyResourceGroup"
+$AutomationAccountName = "MyAutomationAccount"
+$RunbookName = "MyRunbook"
+$StartTime = (Get-Date).AddDays(-1)
+$JobActivityLogs = Get-AzureRmLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
+                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
 
-Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
+$JobInfo = @{}
+foreach ($log in $JobActivityLogs)
+{
+    # Get job resource
+    $JobResource = Get-AzureRmResource -ResourceId $log.ResourceId
+
+    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
+    { 
+        # Get runbook
+        $Runbook = Get-AzureRmAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
+                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+
+        # Add job information to hash table
+        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
+    }
+}
+$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```
 
 ## <a name="fair-share"></a>Udział

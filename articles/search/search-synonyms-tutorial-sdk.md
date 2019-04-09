@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb0d04e46834530c8fea29ef79a2156caabeeeff
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202371"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008979"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Przykład: Dodawanie synonimów na potrzeby usługi Azure Search w języku C#
 
@@ -35,9 +35,9 @@ Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący 
 
 Wymagania samouczka obejmują poniższe elementy:
 
-* [Program Visual Studio](https://www.visualstudio.com/downloads/)
+* [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Usługa Azure Search](search-create-service-portal.md)
-* [Biblioteka Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
+* [Biblioteka programu Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
 * [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Przegląd
@@ -168,7 +168,7 @@ Możesz znaleźć pełny kod źródłowy przykładowej aplikacji używanej w tym
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem na czyszczenie po przykładzie, usuwając grupę zasobów zawierającą usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
+Najszybszym sposobem na czyszczenie po przykładowi, usuwając grupę zasobów zawierającą usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -26,6 +26,7 @@ items:
     href: apache-spark-load-data-run-query.md
   - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
     href: ../hdinsight-for-vscode.md
+    maintainContext: true
   - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu IntelliJ
     href: apache-spark-intellij-tool-plugin.md
   - name: Analizowanie danych przy użyciu narzędzi do analizy biznesowej
@@ -38,6 +39,7 @@ items:
     href: apache-spark-create-standalone-application.md
   - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
     href: ../hdinsight-cluster-availability.md
+    maintainContext: true
 - name: Instrukcje
   items:
   - name: Korzystanie z magazynu klastra
@@ -105,6 +107,7 @@ items:
       href: apache-spark-connect-to-sql-database.md
     - name: Implementowanie architektury lambda przy użyciu platformy Apache Spark i usługi Cosmos DB
       href: ../../cosmos-db/lambda-architecture.md
+      maintainContext: true
     - name: Uruchamianie obciążeń usługi Azure ML przy użyciu rozwiązania AutoML
       href: apache-spark-run-machine-learning-automl.md
       maintainContext: true
@@ -442,9 +445,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9775c1da15b5ac5e675e84487006339b1c9701ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 973adb6fb1c8761ff03935d09faf699040604544
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670174"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058904"

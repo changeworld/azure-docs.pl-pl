@@ -2,14 +2,14 @@
 author: msmbaldwin
 ms.service: backup
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 03/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5a4cc3ea822c5613fc7a50b8e370d6846b683721
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 85d1e4d4909422b82ed38e688e3a62ca53c3430a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513512"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007220"
 ---
 ## <a name="preventative"></a>Zapobiegawczych
 
@@ -34,14 +34,14 @@ ms.locfileid: "55513512"
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługiwane (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Usługa log Analytics jest świadczona za pośrednictwem dzienników diagnostycznych. Monitorowanie usługi Azure Backup chroniony obciążeń przy użyciu usługi Log Analytics (https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) Aby uzyskać więcej informacji. |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Usługa log Analytics jest świadczona za pośrednictwem dzienników diagnostycznych. Monitorowanie usługi Azure Backup chroniony obciążeń przy użyciu usługi Log Analytics (https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) Aby uzyskać więcej informacji. |
 
 ## <a name="iam-support"></a>Obsługa zarządzania tożsamościami i Dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Zarządzanie dostępem — uwierzytelnianie| Yes | Uwierzytelnianie jest za pomocą usługi Azure Active Directory. |
-| Zarządzanie dostępem - autoryzacji| Yes | Klient utworzył i wbudowane role kontroli RBAC są używane. Zobacz Use Role-Based kontrola dostępu do zarządzania punkty odzyskiwania usługi Azure Backup (https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault) Aby uzyskać więcej informacji. |
+| Zarządzanie dostępem - autoryzacji| Yes | Klient utworzył i wbudowane role kontroli RBAC są używane. Zobacz Use Role-Based kontrola dostępu do zarządzania usługi Azure Backup punkty odzyskiwania (/ / backup/magazynu kopii zapasowych azure — rbac-rs —) Aby uzyskać więcej informacji. |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji

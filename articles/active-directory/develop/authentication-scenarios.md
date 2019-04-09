@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie w usłudze Azure Active Directory
-description: Dowiedz się więcej o uwierzytelnianiu w usłudze Azure Active Directory (Azure AD), modelu aplikacji, interfejsie API, aprowizowaniu i najczęstszych scenariuszach uwierzytelniania obsługiwanych przez usługę Azure AD.
+title: Uwierzytelnianie na platformie tożsamości firmy Microsoft | Azure
+description: Dowiedz się więcej o uwierzytelnianiu platformie tożsamości firmy Microsoft, jej modelu interfejsu API, inicjowanie obsługi administracyjnej i najbardziej typowych scenariuszy uwierzytelniania tego platforma tożsamości firmy Microsoft obsługuje.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: MT
+ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295712"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057102"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -31,24 +31,24 @@ ms.locfileid: "58295712"
 
 *Autoryzacja* to przyznanie uprawnienia uwierzytelnionemu podmiotowi zabezpieczeń do wykonania jakiegoś zadania. Autoryzacja określa, do jakich danych można uzyskać dostęp oraz jakie zadania można na nich wykonać. Autoryzacja jest czasami określana terminem AuthZ.
 
-Usługa Azure Active Directory (Azure AD) upraszcza uwierzytelnianie dla deweloperów aplikacji, zapewniając tożsamość jako usługę z obsługą zgodnych ze standardami branżowymi protokołów, takich jak OAuth 2.0 i OpenID Connect, a także biblioteki typu open-source dla różnych platform, które ułatwiają szybkie rozpoczęcie pisania kodu.
+Platforma tożsamości usługi Microsoft upraszcza uwierzytelniania dla deweloperów aplikacji, zapewniając tożsamość jako usługa, za pomocą obsługi protokoły będące standardami branżowymi, takie jak OAuth 2.0 i OpenID Connect, a także bibliotek typu open source dla różnych platform, aby ułatwiają rozpoczęcie tworzenia kodu szybko.
 
-Istnieją dwa główne przypadki użycia w modelu programowania w usłudze Azure AD:
+Istnieją dwa główne przypadki użycia w modelu programowania platforma tożsamości firmy Microsoft:
 
 * Podczas przepływu autoryzacji OAuth 2.0 — gdy właściciel zasobu przyznaje autoryzację do aplikacji klienckiej, co umożliwia klientowi uzyskanie dostępu do zasobów właściciela zasobu.
 * Podczas dostępu do zasobu przez klienta — zgodnie z implementacją serwera zasobów, przy użyciu wartości oświadczeń obecnych w tokenie dostępu na potrzeby podejmowania na ich podstawie decyzji dotyczących kontroli dostępu.
 
-## <a name="authentication-basics-in-azure-active-directory"></a>Podstawy uwierzytelniania w usłudze Azure Active Directory
+## <a name="authentication-basics-in-microsoft-identity-platform"></a>Uwierzytelnianie podstawowe informacje o platformie tożsamości firmy Microsoft
 
 Rozpatrzymy tutaj najprostszy scenariusz, w którym wymagana jest tożsamość: użytkownik w przeglądarce internetowej musi się uwierzytelnić w aplikacji internetowej. Na poniższym diagramie przedstawiono ten scenariusz:
 
-![Przegląd logowania do aplikacji internetowej](./media/authentication-scenarios/basics_of_auth_in_aad.png)
+![Przegląd logowania do aplikacji internetowej](./media/authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
 Poniżej opisano poszczególne składniki wyświetlane na diagramie:
 
-* Usługa Azure AD jest dostawcą tożsamości. Dostawca tożsamości jest odpowiedzialny za weryfikację tożsamości użytkowników i aplikacji, które istnieją w katalogu organizacji. Wystawia on także tokeny zabezpieczające po pomyślnym uwierzytelnieniu tych użytkowników i aplikacji.
-* Aplikacja, która chce oddelegować uwierzytelnianie do usługi Azure AD, musi być zarejestrowana w usłudze Azure AD. Usługa Azure AD rejestruje i unikatowo identyfikuje aplikację w katalogu.
-* Deweloperzy mogą używać bibliotek uwierzytelniania typu open-source w usłudze Azure AD, aby uprościć proces uwierzytelniania dzięki automatycznej obsłudze szczegółów dotyczących protokołu. Aby uzyskać więcej informacji, zobacz tematy dotyczące [bibliotek uwierzytelniania w wersji 2.0](reference-v2-libraries.md) i [bibliotek uwierzytelniania w wersji 1.0](active-directory-authentication-libraries.md) usługi Azure AD.
+* Platforma tożsamości firmy Microsoft jest dostawcą tożsamości. Dostawca tożsamości jest odpowiedzialny za weryfikację tożsamości użytkowników i aplikacji, które istnieją w katalogu organizacji. Wystawia on także tokeny zabezpieczające po pomyślnym uwierzytelnieniu tych użytkowników i aplikacji.
+* Aplikacja, która chce oddelegowania procesów uwierzytelniania do platformą Microsoft identity musi być zarejestrowany w usłudze Azure Active Directory (Azure AD). Usługa Azure AD rejestruje i unikatowo identyfikuje aplikację w katalogu.
+* Deweloperzy mogą używać bibliotek uwierzytelniania typu open source firmy Microsoft tożsamości platformy, aby ułatwić uwierzytelnianie dzięki obsłudze szczegółów protokołu dla Ciebie. Aby uzyskać więcej informacji, zobacz platforma tożsamości usługi Microsoft [bibliotek uwierzytelniania v2.0](reference-v2-libraries.md) i [bibliotek uwierzytelniania v1.0](active-directory-authentication-libraries.md).
 * Po uwierzytelnieniu użytkownika aplikacja musi zweryfikować jego token zabezpieczający, aby się upewnić, że uwierzytelnianie zakończyło się pomyślnie. Procesy zachodzące w aplikacji zostały opisane w różnych przewodnikach Szybki start, samouczkach i przykładach kodu w różnych językach i strukturach.
   * Aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak między innymi uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku, zapoznaj się z sekcją **Przewodniki Szybki start** w dokumentacji.
   * Aby uzyskać szczegółowe, oparte na scenariuszach procedury zadań dla deweloperów uwierzytelniania, takich jak uzyskiwanie tokenów dostępu i korzystanie z nich w wywołaniach interfejsu API programu Microsoft Graph i innych interfejsów API, implementowanie logowania firmy Microsoft przy użyciu tradycyjnej aplikacji internetowej opartej na przeglądarce za pomocą protokołu OpenID Connect i innych, zapoznaj się z sekcją **Samouczki** w dokumentacji.
@@ -60,28 +60,28 @@ W przykładowym scenariuszu powyżej aplikacje można sklasyfikować według tyc
 * Aplikacje, które wymagają bezpiecznego dostępu do zasobów.
 * Aplikacje, które same pełnią rolę zasobu.
 
-Teraz, po zapoznaniu się z podstawami, kontynuuj czytanie, aby zrozumieć model oraz interfejs API aplikacji tożsamości, poznać sposób działania aprowizacji w usłudze Azure AD i uzyskać linki do szczegółowych informacji na temat typowych scenariuszy obsługiwanych przez usługę Azure AD.
+Teraz, po omówieniu wykonywać podstawowe zadania, Czytaj dalej, aby zapoznać się z modelem aplikacji tożsamości i interfejs API obsługuje jak inicjowanie obsługi administracyjnej działa na platformie tożsamości firmy Microsoft i linki do szczegółowych informacji o typowych scenariuszach tego platforma tożsamości usługi Microsoft.
 
 ## <a name="application-model"></a>Model aplikacji
 
-Usługa Azure AD reprezentuje aplikacje działające według określonego modelu, który został zaprojektowany w celu pełnienia dwóch głównych funkcji:
+Platforma tożsamości usługi Microsoft przedstawia aplikacje od określonego modelu, który został zaprojektowany, aby wypełnić dwa główne funkcje:
 
-* **Identyfikowanie aplikacji zgodnie z obsługiwanymi protokołami uwierzytelniania** — obejmuje to wyliczanie wszystkich identyfikatorów, adresów URL, wpisów tajnych i powiązanych informacji, które są wymagane podczas uwierzytelniania. Tutaj usługa Azure AD pełni następujące funkcje:
+* **Identyfikowanie aplikacji zgodnie z obsługiwanymi protokołami uwierzytelniania** — obejmuje to wyliczanie wszystkich identyfikatorów, adresów URL, wpisów tajnych i powiązanych informacji, które są wymagane podczas uwierzytelniania. Oto, platformą Microsoft identity:
 
     * Przechowuje wszystkie dane wymagane do obsługi uwierzytelniania w czasie wykonywania.
     * Przechowuje wszystkie dane konieczne do zdecydowania, jakich zasobów może wymagać aplikacja w celu uzyskania dostępu oraz czy konkretne żądanie powinno zostać spełnione i pod jakimi warunkami.
     * Udostępnia infrastrukturę do implementowania aprowizacji aplikacji w ramach dzierżawy dewelopera aplikacji i dowolnej innej dzierżawy usługi Azure AD.
 
-* **Obsługa zgody użytkownika podczas żądania tokenu i umożliwienie dynamicznej aprowizacji aplikacji między dzierżawami** — tutaj usługa Azure AD pełni następujące funkcje:
+* **Obsługa zgody użytkownika podczas żądania tokenu i ułatwienia dynamicznej aprowizacji aplikacji dla dzierżaw** — w tym miejscu platformą Microsoft identity:
 
     * Umożliwia użytkownikom i administratorom dynamiczne wyrażanie zgody lub odmawianie zgody dla aplikacji na uzyskiwanie przez nią dostępu do zasobów w ich imieniu.
     * Umożliwia administratorom ostateczne zdecydowanie, jakie działania mogą podejmować aplikacje, którzy użytkownicy mogą używać określonych aplikacji i w jaki sposób uzyskiwany jest dostęp do zasobów katalogu.
 
-W usłudze Azure AD **obiekt aplikacji** opisuje aplikację jako jednostkę abstrakcyjną. Deweloperzy pracują z aplikacjami. Podczas wdrażania usługa Azure AD używa danego obiektu aplikacji jako konspektu do utworzenia **jednostki usługi**, która reprezentuje konkretne wystąpienie aplikacji w katalogu lub dzierżawie. To właśnie jednostka usługi definiuje, jakie działania może w rzeczywistości wykonywać aplikacja w konkretnym katalogu docelowym, kto może z niej korzystać, do jakich zasobów ma ona dostęp itd. Usługa Azure AD tworzy jednostkę usługi na podstawie obiektu aplikacji poprzez wyrażenie **zgody**.
+Na platformie tożsamości firmy Microsoft **obiekt aplikacji** opisuje aplikację jako abstrakcyjna jednostki. Deweloperzy pracują z aplikacjami. W czasie wdrażania platforma tożsamości firmy Microsoft używa obiektu danej aplikacji jako planu do utworzenia **nazwy głównej usługi**, która reprezentuje konkretnego wystąpienia aplikacji w katalogu lub dzierżawcy. To właśnie jednostka usługi definiuje, jakie działania może w rzeczywistości wykonywać aplikacja w konkretnym katalogu docelowym, kto może z niej korzystać, do jakich zasobów ma ona dostęp itd. Platforma tożsamości usługi Microsoft tworzy nazwę główną usługi na podstawie obiektu aplikacji za pomocą **zgody**.
 
-Na poniższym diagramie przedstawiono uproszczony przepływ aprowizowania usługi Azure AD sterowany poprzez wyrażenie zgody.  Istnieją dwa dzierżaw (A i B), gdzie dzierżawy A właścicielem aplikacji i dzierżawy B jest utworzenie wystąpienia aplikacji za pomocą nazwy głównej usługi.  
+Poniższy diagram przedstawia uproszczoną platformą Microsoft identity, inicjowanie obsługi administracyjnej sterowany za zgodą.  Istnieją dwa dzierżaw (A i B), gdzie dzierżawy A właścicielem aplikacji i dzierżawy B jest utworzenie wystąpienia aplikacji za pomocą nazwy głównej usługi.  
 
-![Uproszczony przepływ aprowizowania sterowany poprzez wyrażenie zgody](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
+![Uproszczony przepływ aprowizowania sterowany poprzez wyrażenie zgody](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 Ten przepływ aprowizowania składa się z następujących etapów:
 
@@ -90,15 +90,15 @@ Ten przepływ aprowizowania składa się z następujących etapów:
 | 1 | Użytkownik w dzierżawie B próbuje zalogować się przy użyciu aplikacji |
 | 2 | Poświadczenia użytkownika są odbierane i weryfikowane. |
 | 3 | Użytkownik jest monitowany o wyrażenie zgody na przyznanie aplikacji dostępu do dzierżawy B. |
-| 4 | Usługa Azure AD używa obiektu aplikacji A jako planu do tworzenia nazwy głównej usługi w dzierżawie B |
+| 4 | Platforma tożsamości firmy Microsoft używa obiektu aplikacji A jako planu tworzenia usługi głównej w dzierżawie B |
 | 5 | Użytkownik otrzymuje żądany token. |
 |   |   |
 
-Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawy A zachowuje plan dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [Application and service principal objects in Azure AD](app-objects-and-service-principals.md) (Obiekty aplikacji i jednostki usługi w usłudze Azure AD).
+Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawy A zachowuje plan dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [aplikacji i obiektów nazw głównych usług na platformie tożsamości firmy Microsoft](app-objects-and-service-principals.md).
 
-## <a name="claims-in-azure-ad-security-tokens"></a>Oświadczenia w tokenach zabezpieczających usługi Azure AD
+## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Oświadczenia w tokeny zabezpieczające platforma tożsamości firmy Microsoft
 
-Tokeny zabezpieczające (tokeny dostępu i identyfikatora) wydane przez usługę Azure AD zawierają oświadczenia lub potwierdzenia informacji o podmiocie, który został uwierzytelniony. Aplikacje mogą używać oświadczeń do wykonywania różnych zadań, takich jak:
+Tokeny zabezpieczające (dostępu i identyfikator tokenów) wydane przez platforma tożsamości usługi Microsoft zawierają oświadczenia lub potwierdzenia informacji na temat, który został uwierzytelniony. Aplikacje mogą używać oświadczeń do wykonywania różnych zadań, takich jak:
 
 * Sprawdzanie poprawności tokenu
 * Identyfikowanie dzierżawy katalogu podmiotu
@@ -107,7 +107,7 @@ Tokeny zabezpieczające (tokeny dostępu i identyfikatora) wydane przez usługę
 
 Oświadczenia obecne w dowolnym tokenie zabezpieczającym są zależne od typu tokenu, typu poświadczenia użytego do uwierzytelnienia użytkownika i konfiguracji aplikacji.
 
-W poniższej tabeli znajduje się krótki opis każdego typu oświadczenia emitowanego przez usługę Azure AD. Aby uzyskać bardziej szczegółowe informacje, zobacz [tokeny dostępu](access-tokens.md) i [tokeny Identyfikatora](id-tokens.md) wystawione przez usługę Azure AD.
+Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamości usługi Microsoft znajduje się w poniższej tabeli. Aby uzyskać więcej informacji, zobacz [tokeny dostępu](access-tokens.md) i [tokeny Identyfikatora](id-tokens.md) wystawiony przez platforma tożsamości firmy Microsoft.
 
 | Claim | Opis |
 | --- | --- |
@@ -134,4 +134,4 @@ W poniższej tabeli znajduje się krótki opis każdego typu oświadczenia emito
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [typach aplikacji i scenariuszach obsługiwanych w usłudze Azure Active Directory](app-types.md)
+* Dowiedz się więcej o [typy aplikacji i scenariuszy obsługiwanych na platformie tożsamości firmy Microsoft](app-types.md)

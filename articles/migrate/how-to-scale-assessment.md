@@ -4,18 +4,21 @@ description: Opisuje sposób oceny dużej liczby maszyn lokalnych przy użyciu u
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116677"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057476"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
-Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opisano sposób oceny dużą liczbę lokalnych maszyn wirtualnych (VM) przy użyciu [usługi Azure Migrate](migrate-overview.md).   
+Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opisano sposób oceny dużą liczbę lokalnych maszyn wirtualnych (VM) przy użyciu [usługi Azure Migrate](migrate-overview.md).
+
+> [!NOTE]
+> Mamy wersji zapoznawczej dostępne umożliwiająca odnajdywanie maksymalnie 10 000 maszyn wirtualnych VMware w jednym projekcie przy użyciu pojedynczego urządzenia, jeśli interesują Cię ją wypróbowujesz, zarejestruj się [tutaj.](https://aka.ms/migratefuture)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -62,7 +65,7 @@ W przypadku jednorazowego odnajdywania (przestarzałe teraz), odnajdywania dzia�
 
 Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 
-| **Jednostki** | **Limit komputera** |
+| **Jednostka** | **Limit komputera** |
 | ---------- | ----------------- |
 | Project    | 1,500             |
 | Odnajdowanie  | 1,500             |
@@ -284,7 +287,7 @@ Modułem zbierającym, odnajduje poniższe dane konfiguracyjne dotyczące wybran
 
 Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
 
-**Counter** |  **Wpływ na ocenę**
+**Licznik** |  **Wpływ na ocenę**
 --- | ---
 cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
 mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  

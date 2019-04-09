@@ -2,14 +2,14 @@
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 179d87a0c1af587148f1b5ffa2cad8085ef0886f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 41a8d6c2812b0fbd1d7e2fd4fd88a4343b52714f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306853"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007275"
 ---
 ## <a name="preventative"></a>Zapobiegawczych
 
@@ -34,7 +34,7 @@ ms.locfileid: "56306853"
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługiwane (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Korzystanie z platformy Azure, monitorowanie, obsługę i innych firm. |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Korzystanie z platformy Azure, monitorowanie, obsługę i innych firm. |
 
 ## <a name="iam-support"></a>Obsługa zarządzania tożsamościami i Dostępem
 

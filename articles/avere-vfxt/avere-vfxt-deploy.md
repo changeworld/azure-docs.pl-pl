@@ -4,14 +4,14 @@ description: Kroki, aby wdrożyć klaster vFXT Avere na platformie Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409690"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056609"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -31,18 +31,17 @@ Przed użyciem szablonu tworzenia, upewnij się, że zostały rozwiązane te wym
 1. [Nowa subskrypcja](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Uprawnienia właściciela do subskrypcji](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Limit przydziału dla klastra vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Role niestandardowe dostępu](avere-vfxt-prereqs.md#create-access-roles) -musi utworzyć rolę kontroli dostępu opartej na rolach można przypisać do węzłów klastra. Użytkownik może również utworzyć rolę niestandardowego dostępu dla kontrolera klastra, ale większość użytkowników potrwa roli właściciela domyślnej, która zapewnia uprawnienia kontrolera odpowiadającego do właściciela grupy zasobów. Odczyt [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md#owner) Aby uzyskać więcej szczegółów.
 1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — jest to wymagane do wdrażania za pomocą istniejącej sieci wirtualnej i tworzenia usługi blob storage
 
 Aby uzyskać więcej informacji na temat kroków wdrażania klastra i planowania, przeczytaj [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md) i [Przegląd wdrażania](avere-vfxt-deploy-overview.md).
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Tworzenie Avere vFXT dla platformy Azure
 
-Dostęp do szablonu tworzenia w witrynie Azure portal, wyszukując Avere i wybierając pozycję "Avere vFXT ARM wdrożenia". 
+Dostęp do szablonu tworzenia w witrynie Azure portal, wyszukując Avere i wybierając pozycję "Avere vFXT dla szablonu Azure ARM". 
 
-![Okno przeglądarki, przedstawiające witryny Azure portal za pomocą chleb smutek, "Nowe > Marketplace > wszystko". W stronie wszystko, pole wyszukiwania ma "avere", a drugi element wyniku, "Avere vFXT ARM wdrożenia" jest opisany w kolorze czerwonym, aby go zaznaczyć.](media/avere-vfxt-template-choose.png)
+![Okno przeglądarki, przedstawiające witryny Azure portal za pomocą chleb smutek, "Nowe > Marketplace > wszystko". W obszarze strony i pole wyszukiwania ma wszystko "avere", a drugi element wyniku, "Avere vFXT dla szablonu Azure ARM" jest opisany w kolorze czerwonym, aby go zaznaczyć.](media/avere-vfxt-template-choose.png)
 
-Po przeczytaniu szczegółowe informacje na stronie Avere vFXT wdrożenia ARM, kliknij przycisk **Utwórz** do rozpoczęcia. 
+Po przeczytaniu szczegółowe informacje dotyczące vFXT Avere szablonu ARM Azure strony, kliknij przycisk **Utwórz** do rozpoczęcia. 
 
 ![Portal Azure marketplace z pierwszej strony przedstawiający Szablon wdrożenia](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ Wypełnij następujące informacje:
 
 * **Hasło** lub **klucz publiczny SSH** — w zależności od wybranego typu uwierzytelniania, użytkownik musi podać klucz publiczny RSA lub hasło w polach dalej. To poświadczenie jest używane z nazwą użytkownika podany wcześniej.
 
-* **Identyfikator roli tworzenia klastra Avere** — Użyj tego pola, aby określić roli kontroli dostępu dla kontrolera klastra. Wartość domyślna to wbudowana rola [właściciela](../role-based-access-control/built-in-roles.md#owner). Uprawnienia właściciela dla kontrolera klastra są ograniczone do grupy zasobów klastra. 
-
-  Należy użyć globalnie unikatowy identyfikator, który odnosi się do roli. Wartość domyślna (Owner) identyfikator GUID jest 8e3af657-a8ff-443c-a75c-2fe8c4bcb635. Aby znaleźć identyfikator GUID rolę niestandardową, użyj tego polecenia: 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **Subskrypcja** — Wybierz subskrypcję, Avere vFXT. 
 
 * **Grupa zasobów** — wybierz istniejącą grupę zasobów pusty Avere vFXT klastra, lub kliknij przycisk "Utwórz nową" i wprowadź nową nazwę grupy zasobów. 
@@ -97,10 +88,6 @@ Na drugiej stronie Szablon wdrożenia umożliwia ustawianie rozmiaru klastra, ty
 * **Liczba węzłów klastra vFXT Avere** — wybierz liczbę węzłów do użycia w klastrze. Wartość minimalna to trzy węzły, a maksymalna to dwanaście. 
 
 * **Hasło administracyjnej klastra** — Utwórz hasło dla administrowania klastrami. To hasło, które będą używane z nazwą użytkownika ```admin``` do logowania się w Panelu sterowania klastra, do monitorowania klastra i skonfigurować ustawienia.
-
-* **Rola operacji klastra Avere** — Określ nazwę roli kontroli dostępu dla węzłów klastra. Jest to rolę niestandardową, która została utworzona w kroku wymagań wstępnych. 
-
-  Przykład opisanego w [tworzenie roli dostęp do węzła klastra](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) zapisuje plik jako ```avere-operator.json``` i odpowiadające im nazwy roli ```avere-operator```.
 
 * **Nazwa klastra vFXT Avere** -nadaj unikatową nazwę klastra. 
 
@@ -138,7 +125,7 @@ Strona 3 przedstawiono podsumowanie konfiguracji i sprawdza poprawność paramet
 
 ![Trzeciej stronie Szablon wdrożenia — sprawdzanie poprawności](media/avere-vfxt-deploy-3.png)
 
-Na stronie czterech kliknij **Utwórz** przycisk, aby zaakceptować warunki i utworzyć vFXT Avere klastra platformy Azure. 
+Na stronie czterech wprowadź wszystkie wymagane informacje kontaktowe, a następnie kliknij przycisk **Utwórz** przycisk, aby zaakceptować warunki i utworzyć vFXT Avere klastra platformy Azure. 
 
 ![Przycisk Utwórz czwartej stronie Szablon wdrożenia — warunki i postanowienia,](media/avere-vfxt-deploy-4.png)
 

@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 3225ae919e221935b6d8a52e20d943d2178f6a47
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500053"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056855"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodaj warstwę symbol do mapy
 
-W tym artykule dowiesz się, jak można renderować punktu danych ze źródła danych jako warstwa symboli na mapie. Symbol warstwy są renderowane przy użyciu WebGL i obsługuje znacznie większa liczba punktów danych niż znaczników HTML, ale nie obsługują tradycyjnych elementy CSS i HTML do określania stylu.  
+W tym artykule dowiesz się, jak można renderować punktu danych ze źródła danych jako warstwa symboli na mapie. Symbol warstwy są renderowane przy użyciu WebGL i obsługuje znacznie większe zestawów punkty niż znaczników HTML, ale nie obsługują tradycyjnych elementy CSS i HTML do określania stylu.  
 
 > [!TIP]
-> Symbol warstwy domyślnie będą renderowane współrzędne wszystkich geometrii w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje geometrii punktu funkcje zestawu `filter` właściwości warstwy `['==', '$type', 'Point']`
+> Symbol warstwy domyślnie będą renderowane współrzędne wszystkich geometrii w źródle danych. Aby ograniczyć warstwy w taki sposób, że tylko renderuje geometrii punktu funkcje zestawu `filter` właściwości warstwy, aby `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` aby obejmują również funkcje MultiPoint.
 
 ## <a name="add-a-symbol-layer"></a>Dodawanie warstwy symboli
 
@@ -34,14 +34,14 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 
 Trzeci bloku kodu tworzy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) i aktualizacje współrzędne punktu od myszy, kliknij przycisk za pomocą klasy kształt [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metody.
 
-A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Źródła danych, kliknij odbiornik zdarzeń i warstwy symboli są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że punkt jest wyświetlany po mapy ładuje pełni.
+A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Źródła danych, kliknij odbiornik zdarzeń i warstwy symboli są tworzone i dodawane do mapy w ramach `ready` [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, punkt jest wyświetlany po mapy załadowane i gotowy do można uzyskać dostęp.
 
 > [!TIP]
 > Domyślnie w celu uzyskania wydajności warstwy symbol zoptymalizować renderowania symbole, ukrywając symboli, które nakładają się. Jak powiększyć symbole ukryte stają się widoczne. Aby wyłączyć tę funkcję i renderowania wszystkie symbole przez cały czas, ustaw `allowOverlap` właściwość `iconOptions` opcji `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Dodać niestandardową ikonę do warstwy symboli
 
-Symbol warstwy są renderowane przy użyciu WebGL. Jako takie wszystkie zasoby, takie jak obrazy ikon musi być ładowane do kontekstu WebGL. Ten przykład pokazuje, jak dodać ikonę custom — symbol do Mapowanie zasobów, a następnie użyć go do renderowania punktu danych przy użyciu niestandardowego symbolu na mapie. `textField` Właściwości warstwy symbol wymaga wyrażenia należy określić. W tym przypadku chcemy renderowania właściwość temperatury funkcji punktów jako wartości tekstowej. Można to osiągnąć przy użyciu tego wyrażenia: `['get', 'temperature']`. 
+Symbol warstwy są renderowane przy użyciu WebGL. Jako takie wszystkie zasoby, takie jak obrazy ikon musi być ładowane do kontekstu WebGL. Ten przykład pokazuje, jak dodać niestandardową ikonę do mapy zasobów, a następnie użyć go do renderowania punktu danych przy użyciu niestandardowego symbolu na mapie. `textField` Właściwości warstwy symbol wymaga wyrażenia należy określić. W takim przypadku firma Microsoft ma być renderowany właściwość temperatury, ale ponieważ jest liczbą, musi zostać przekonwertowany na ciąg. Ponadto chcemy dołączyć "° F". Można użyć wyrażenia w tym; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -82,7 +82,7 @@ Zobacz następujące artykuły, aby uzyskać więcej przykładów kodu dodać do
 > [Dodawanie kształtu](./map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę bąbelkowych](./map-add-bubble-layer.md)
+> [Dodawanie warstwy bąbelkowej](./map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [Dodaj osoby podejmujące decyzje HTML](./map-add-bubble-layer.md)

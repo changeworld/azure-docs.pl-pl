@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 71b87f975d856e20bd3934258c50be54e06254ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd2895378f713749b3a1d0ac01986b728ceafd2b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666396"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009007"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Omówienie usługi Azure Service Fabric
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi. Ponadto usługa Service Fabric pozwala sprostać istotnym wyzwaniom związanym z opracowywaniem natywnych aplikacji chmurowych i zarządzaniem nimi. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu. Usługa Service Fabric to platforma następnej generacji do tworzenia działających w kontenerach aplikacji w skali chmury warstwy pierwszej dla przedsiębiorstw i zarządzania nimi.
@@ -29,7 +29,7 @@ Ten krótki klip wideo zawiera wprowadzenie do usługi Service Fabric i mikrous�
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Zgodność
-Dostawcy zasobów sieci szkieletowej w usłudze Azure Service jest dostępna we wszystkich regionach platformy Azure i jest zgodny ze wszystkich certyfikatów zgodności, które platforma Azure ma; obejmuje to następujące czynności: Audyt SOC, ISO, PCI DSS, HIPPA i GDRP. Przejrzyj następujące czynności, aby uzyskać pełną listę certyfikatów zgodności: [Ofert zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Dostawcy zasobów sieci szkieletowej w usłudze Azure Service jest dostępna we wszystkich regionach platformy Azure i jest zgodny ze wszystkich certyfikatów zgodności, które platforma Azure ma; obejmuje to następujące czynności: Audyt SOC i ISO, PCI DSS, HIPAA oraz GDRP. Przejrzyj następujące czynności, aby uzyskać pełną listę certyfikatów zgodności: [Ofert zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Aplikacje złożone z mikrousług 
 Usługa Service Fabric umożliwia tworzenie skalowalnych i niezawodnych aplikacji złożonych z mikrousług — działających z dużą gęstością w udostępnionej puli maszyn, nazywanej klastrem — i zarządzanie nimi. Zapewnia zaawansowane i lekkie środowisko uruchomieniowe, umożliwiające tworzenie skalowalnych, rozproszonych mikrousług stanowych i bezstanowych działających w kontenerach. Udostępnia również kompleksowe funkcje zarządzania aplikacjami, umożliwiające inicjowanie obsługi, wdrażanie, monitorowanie, uaktualnianie/poprawianie i usuwanie wdrożonych aplikacji, w tym usług konteneryzowanych.
@@ -91,8 +91,8 @@ Usługa Service Fabric umożliwia:
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Następne kroki
 * Więcej informacji:
-  * [Why a microservices approach to building applications?](service-fabric-overview-microservices.md) (Dlaczego warto tworzyć aplikacje z użyciem mikrousług?)
-  * [Terminology overview](service-fabric-technical-overview.md) (Omówienie terminologii)
+  * [Dlaczego mikrousługi podejście do tworzenia aplikacji?](service-fabric-overview-microservices.md)
+  * [Przegląd terminologii](service-fabric-technical-overview.md)
 * Konfigurowanie [środowiska deweloperskiego w systemie Windows](service-fabric-get-started.md)  
 * Konfigurowanie [środowiska projektowego w systemie Linux](service-fabric-get-started-linux.md)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)

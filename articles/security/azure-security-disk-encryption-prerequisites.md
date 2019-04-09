@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ce1bb6df0a4c062ee41d2a58adf1b7fc93d9805
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 896553890252572e4b5524d047893953b78a4ba1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286248"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010095"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -29,7 +29,7 @@ Przed włączeniem usługi Azure Disk Encryption na maszynach wirtualnych IaaS p
 ## <a name="bkmk_OSs"></a> Obsługiwane systemy operacyjne
 Usługa Azure Disk Encryption jest obsługiwana w następujących systemach operacyjnych:
 
-- Wersje systemu Windows Server: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016.
+- Wersje systemu Windows Server: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i większa wersje Windows znaleziony w galerii systemu Azure.
   - Dla systemu Windows Server 2008 R2 musisz mieć zainstalowany przed włączeniem szyfrowania na platformie Azure program .NET Framework 4.5. Zainstaluj go Windows Update z opcjonalną aktualizację programu Microsoft .NET Framework 4.5.2 systemów Windows Server 2008 R2 x64 64 ([KB2901983](https://support.microsoft.com/kb/2901983)).    
 - Wersje klienta Windows: Klient systemu Windows 8 i klienta systemu Windows 10.
 - Usługa Azure Disk Encryption jest tylko obsługiwana w określonych w galerii platformy Azure są dystrybucje systemu Linux serwera i wersje. Aby uzyskać listę aktualnie obsługiwanych wersji, zobacz [często zadawane pytania dotyczące usługi Azure dysku szyfrowanie](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).

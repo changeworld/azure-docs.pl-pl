@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417976"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056745"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -30,23 +30,16 @@ Aby utworzyć nową subskrypcję platformy Azure w witrynie Azure portal:
 
 ## <a name="configure-subscription-owner-permissions"></a>Skonfiguruj uprawnienia właściciela do subskrypcji
 
-Użytkownik z uprawnieniami właściciela subskrypcji należy utworzyć klaster vFXT. Uprawnienia właściciela subskrypcji są wymagane do wykonywania tych akcji, między innymi:
+Użytkownik z uprawnieniami właściciela subskrypcji należy utworzyć klaster vFXT. Zaakceptuj postanowienia dotyczące oprogramowania, usług i wykonywać inne czynności są potrzebne uprawnienia właściciela subskrypcji. 
 
-* Zaakceptuj postanowienia oprogramowania vFXT Avere
-* Tworzenie roli dostęp do węzła klastra 
+Istnieją pewne scenariusze obejście, umożliwiające niebędących właścicielami utworzyć vFTX Avere klastra platformy Azure. Te scenariusze obejmują ograniczanie zasobów i przypisywania dodatkowych ról do twórcy. W obu przypadkach należy również właściciela subskrypcji [zaakceptuj postanowienia dotyczące oprogramowania dla vFXT Avere](#accept-software-terms) wcześniej. 
 
-Istnieją dwa obejścia problemu, jeśli nie chcesz nadać dostęp właściciela do użytkowników, którzy tworzą vFXT:
-
-* Właścicielem grupy zasobów można utworzyć klaster, jeśli te warunki są spełnione:
-
-  * Właściciel subskrypcji musi [zaakceptuj postanowienia dotyczące oprogramowania dla vFXT Avere](#accept-software-terms) i [tworzenie roli dostęp do węzła klastra](#create-the-cluster-node-access-role). 
-  * Wszystkie zasoby vFXT Avere musi zostać wdrożony w grupie zasobów, w tym:
-    * Kontroler klastra
-    * Węzły klastra
-    * Blob Storage
-    * Elementy sieci
+| Scenariusz | Ograniczenia | Role dostępu wymagane do utworzenia klastra vFXT Avere | 
+|----------|--------|-------|
+| Administrator grupy zasobów | Sieć wirtualną, kontrolera klastra i węzłów klastra musi zostać utworzona w grupie zasobów | [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) ról, zarówno ograniczone do docelowej grupy zasobów | 
+| Zewnętrznej sieci wirtualnej | Kontroler klastra i węzły klastra są tworzone w obrębie grupy zasobów, ale jest używany przez istniejącą sieć wirtualną w innej grupie zasobów | (1) [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) role ograniczone do grupy zasobów vFXT; oraz (2) [Współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [dostępu użytkownika Administrator](../role-based-access-control/built-in-roles.md#user-access-administrator), i [Współautor Avere](../role-based-access-control/built-in-roles.md#avere-contributor) ról do zakresu grupy zasobów sieci Wirtualnej. |
  
-* Użytkownik z uprawnieniami właściciela, nie można utworzyć klastry vFXT przy użyciu kontroli dostępu opartej na rolach (RBAC), wcześniej, aby przypisać uprawnienia dla użytkownika. Ta metoda zapewnia znaczące uprawnienia dla tych użytkowników. [W tym artykule](avere-vfxt-non-owner.md) wyjaśnia, jak utworzyć rolę dostępu do autoryzacji innych właścicieli do tworzenia klastrów.
+Alternatywą jest utworzyć rolę kontroli dostępu opartej na rolach niestandardowych wcześniejsze i przypisywanie uprawnień użytkownikowi, jak wyjaśniono w [w tym artykule](avere-vfxt-non-owner.md). Ta metoda zapewnia znaczące uprawnienia dla tych użytkowników. 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Limit przydziału dla klastra vFXT
 
@@ -83,75 +76,6 @@ Aby zaakceptować oprogramowania wcześniej warunków:
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
-
-## <a name="create-access-roles"></a>Tworzenie ról dostępu 
-
-[Kontrola dostępu oparta na rolach](../role-based-access-control/index.yml) (RBAC) umożliwia vFXT klastra kontrolera i węzłami klastra autoryzacji do wykonania niezbędnych zadań.
-
-* Kontroler klastra wymaga uprawnienia do tworzenia i modyfikowania maszyn wirtualnych w celu utworzenia klastra. 
-
-* VFXT poszczególne węzły muszą wykonywać następujące czynności odczytu właściwości zasobów platformy Azure, zarządzania magazynem i kontrolować ustawienia interfejsu sieciowego innych węzłów w ramach klastra normalnych operacji.
-
-Przed utworzeniem klastra vFXT Avere należy zdefiniować rolę niestandardową do użycia z węzłów klastra. 
-
-Dla kontrolera klastra możesz zaakceptować domyślną rolę z szablonu. Wartość domyślna zapewnia klastra uprawnienia właściciela grupy zasobów dla kontrolera. Jeśli wolisz utworzyć rolę niestandardową dla kontrolera, zobacz [roli dostęp do kontrolera dostosowany](avere-vfxt-controller-role.md).
-
-> [!NOTE] 
-> Tylko właściciel subskrypcji lub użytkownik mający rolę właściciel lub Administrator dostępu użytkowników, można utworzyć role. Role można utworzyć wcześniej.  
-
-### <a name="create-the-cluster-node-access-role"></a>Tworzenie roli dostęp do węzła klastra
-
-<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
-
-Należy utworzyć rolę węzła klastra, aby można było utworzyć vFXT Avere klastra platformy Azure.
-
-> [!TIP] 
-> Użytkownicy wewnętrzni firmy Microsoft należy używać istniejącej roli o nazwie "Operator środowiska uruchomieniowego klastra Avere" zamiast próby, aby je utworzyć. 
-
-1. Skopiuj ten plik. Dodaj swój identyfikator subskrypcji, w wierszu AssignableScopes.
-
-   (Bieżąca wersja tego pliku są przechowywane w repozytorium github.com/Azure/Avere jako [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt).)  
-
-   ```json
-   {
-      "AssignableScopes": [
-          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
-      ],
-      "Name": "Avere Operator",
-      "IsCustom": "true",
-      "Description": "Used by the Avere vFXT cluster to manage the cluster",
-      "NotActions": [],
-      "Actions": [
-          "Microsoft.Compute/virtualMachines/read",
-          "Microsoft.Network/networkInterfaces/read",
-          "Microsoft.Network/networkInterfaces/write",
-          "Microsoft.Network/virtualNetworks/read",
-          "Microsoft.Network/virtualNetworks/subnets/read",
-          "Microsoft.Network/virtualNetworks/subnets/join/action",
-          "Microsoft.Network/networkSecurityGroups/join/action",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
-      ],
-      "DataActions": [
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-      ]
-   }
-   ```
-
-1. Zapisz plik jako ``avere-operator.json`` lub podobny do zapamiętania nazwę. 
-
-
-1. Otwórz powłokę w chmurze platformy Azure i zaloguj się przy użyciu Identyfikatora subskrypcji (opisane [we wcześniejszej części tego dokumentu](#accept-software-terms)). Użyj tego polecenia, aby utworzyć rolę:
-
-   ```bash
-   az role definition create --role-definition /avere-operator.json
-   ```
-
-Nazwa roli jest używany podczas tworzenia klastra. W tym przykładzie nazwa to ``avere-operator``.
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Tworzenie punktu końcowego usługi magazynu w sieci wirtualnej (w razie potrzeby)
 

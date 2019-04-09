@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.openlocfilehash: 6d6ca1fe1256f1571079027ebd299492bfa62f41
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906093"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057391"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -350,13 +350,14 @@ Po włączeniu **dozwolonych zaufanych usług firmy Microsoft...**  wyjątku, na
 |Usługa|Nazwa dostawcy zasobów|Przeznaczenie|
 |:------|:---------------------|:------|
 |Azure Backup|Microsoft.Backup|Wykonywanie kopii zapasowych i przywracanie dysków niezarządzanych na maszynach wirtualnych IAAS. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup).|
-|Azure Site Recovery|Microsoft.SiteRecovery |Konfigurowanie odzyskiwania po awarii, należy włączyć replikację dla maszyn wirtualnych IaaS platformy Azure. Jest to wymagane, jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub źródłowego konta magazynu lub docelowe konto magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure DevTest Labs|Microsoft.DevTestLab|Tworzenie i artefaktu instalacji obrazu niestandardowego. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Data Box|Microsoft.DataBox|Umożliwia importowanie danych na platformę Azure za pomocą urządzenia Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview).|
+|Azure DevTest Labs|Microsoft.DevTestLab|Tworzenie i artefaktu instalacji obrazu niestandardowego. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage i umożliwiają usługi Event Grid opublikować w kolejkach usługi storage. Dowiedz się więcej o [zdarzenia usługi blob storage](/azure/event-grid/event-sources) i [publikowania w kolejkach](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview).|
-|Sieci systemu Azure|Microsoft.Networking|Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview).|
+|Azure HDInsight|Microsoft.HDInsight|Aprowizacja początkowa zawartość domyślnego systemu plików dla nowego klastra HDInsight. [Dowiedz się więcej](https://azure.microsoft.com/en-us/blog/enhance-hdinsight-security-with-service-endpoints/).|
 |Azure Monitor|Microsoft.Insights|Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
+|Sieci systemu Azure|Microsoft.Networking|Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview).|
+|Azure Site Recovery|Microsoft.SiteRecovery |Konfigurowanie odzyskiwania po awarii, należy włączyć replikację dla maszyn wirtualnych IaaS platformy Azure. Jest to wymagane, jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub źródłowego konta magazynu lub docelowe konto magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
 |Azure SQL Data Warehouse|Microsoft.Sql|Umożliwia importowanie i eksportowanie scenariuszy przy użyciu technologii PolyBase. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych analizy magazynu

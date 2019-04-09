@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: a5350befd8d0fb1582606554314d909f7fec04c5
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521096"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058768"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -133,6 +133,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Migracja bazy danych platformy Azure
 * Azure Databricks
 * Azure Firewall
+* Azure Kubernetes Service (AKS)
 * Azure Migrate
 * Azure NetApp Files
 * Certyfikaty — certyfikaty usługi App Service można przenosić, ale zostały przekazane certyfikaty [ograniczenia](#app-service-limitations).
@@ -143,7 +144,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Miejsca do magazynowania dev
 * Dynamics LCS
 * ExpressRoute
-* Kubernetes Service
 * Lab Services - laboratorium na potrzeby zajęć, nie można przenieść do nowej grupy zasobów lub subskrypcji. DevTest Labs, mogą być przenoszone do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Aplikacje zarządzane
 * Microsoft Genomics
@@ -361,7 +361,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
 
    Jeśli identyfikatorów dzierżawy subskrypcje źródłowe i docelowe nie są takie same, należy użyć następujących metod, aby uzgodnić identyfikatorów dzierżawy:
 
-   * [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
+   * [Przenieść własność subskrypcji platformy Azure do innego konta](../billing/billing-subscription-transfer.md)
    * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Możesz zobaczyć ten błąd podczas przenoszenia zasobu do nowej subskrypcji, ale ta subskrypcja nie była nigdy używana z tym typem zasobu.

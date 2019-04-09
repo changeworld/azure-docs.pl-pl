@@ -2,14 +2,14 @@
 author: msmbaldwin
 ms.service: key-vault
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 03/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aba09012bf2e9d2741f598280add8b599a6f6d1a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0a52b7a5234b292fa3f8c3e19fe7f62f989d639c
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55807196"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007246"
 ---
 ## <a name="preventative"></a>Zapobiegawczych
 
@@ -17,7 +17,7 @@ ms.locfileid: "55807196"
 |---|---|--|
 | Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Yes | Wszystkie obiekty są szyfrowane. |
 | Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Yes | Cała komunikacja jest za pomocą zaszyfrowanych wywołań interfejsu API |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Klient kontroluje wszystkie klucze w ich usługi Key Vault. Klucze modułu HSM kopii zabezpieczeń sprzętowych przypadku specifiecd FIPS poziom 2 przez sprzętowy moduł zabezpieczeń chroni klucz, certyfikatu lub klucza tajnego. |
+| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Yes | Klient kontroluje wszystkie klucze w ich usługi Key Vault. Jeśli określono klucze modułu HSM kopii zabezpieczeń sprzętowych FIPS poziom 2 przez sprzętowy moduł zabezpieczeń chroni klucza, certyfikatu lub klucza tajnego. |
 | Szyfrowanie na poziomie kolumny (usługi danych platformy Azure)| ND |  |
 | Wywołania interfejsu API szyfrowane| Yes | Przy użyciu protokołu HTTPS. |
 
@@ -34,7 +34,7 @@ ms.locfileid: "55807196"
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługiwane (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Za pomocą usługi Log Analytics. |
+| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Za pomocą usługi Log Analytics. |
 
 ## <a name="iam-support"></a>Obsługa zarządzania tożsamościami i Dostępem
 
