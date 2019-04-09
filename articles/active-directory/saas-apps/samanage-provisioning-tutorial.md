@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092382"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058020"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Samanage dla automatycznej aprowizacji użytkowników
 
@@ -33,39 +34,34 @@ Celem tego samouczka jest pokazują kroki do wykonania w Samanage i usługi Azur
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
 
-*   Dzierżawa usługi Azure AD
-*   A [dzierżawy Samanage](https://www.samanage.com/pricing/) pakietem Professional
-*   Konto użytkownika Samanage z uprawnieniami administratora
+* Dzierżawa usługi Azure AD
+* A [dzierżawy Samanage](https://www.samanage.com/pricing/) pakietem Professional
+* Konto użytkownika Samanage z uprawnieniami administratora
 
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest Samanage](https://www.samanage.com/api/), który jest dostępny dla deweloperów Samanage dla kont z profesjonalnych pakietu.
 
 ## <a name="adding-samanage-from-the-gallery"></a>Dodawanie usługi Samanage z galerii
+
 Przed skonfigurowaniem Samanage dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać Samanage z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Samanage z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje w przedsiębiorstwie sekcji][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać Samanage, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Samanage**.
+4. W polu wyszukiwania wpisz **Samanage**, wybierz pozycję **Samanage** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/AppSearch.png)
-
-5. W panelu wyników wybierz **Samanage**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać Samanage do listy aplikacji SaaS.
-
-    ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/AppSearchResults.png)
-
-    ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/AppCreation.png)
+    ![Samanage na liście wyników](common/search-new-app.png)
 
 ## <a name="assigning-users-to-samanage"></a>Przypisywanie użytkowników do Samanage
 
@@ -92,11 +88,13 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Samanage w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Samanage**.
 
-2. Wybierz Samanage z listy aplikacji SaaS.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/AppInstanceSearch.png)
+2. Na liście aplikacji wybierz pozycję **Samanage**.
+
+    ![Link usługi Samanage na liście aplikacji](common/all-applications.png)
 
 3. Wybierz **aprowizacji** kartę.
 
@@ -164,7 +162,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

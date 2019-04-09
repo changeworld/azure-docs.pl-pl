@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 1/25/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3b817346c37ec43fd66d166684f5d51ecb5a9718
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294829"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257335"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ ms.locfileid: "58294829"
 | Jednorazowy kod dostępu poczty e-mail to funkcja publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Funkcję powiadomienia E-mail jednorazowy kod dostępu uwierzytelnia użytkowników-gości B2B nie może zostać uwierzytelnione za pośrednictwem innych metod, takich jak usługa Azure AD, konta Microsoft (MSA) lub federacyjnych Google. Przy użyciu uwierzytelniania jednorazowy kod dostępu nie ma potrzeby do utworzenia konta Microsoft. Gdy użytkownik-Gość umarza zaproszenia, lub uzyskuje dostęp do udostępnionego zasobu, będą one żądać tymczasowy kod, który jest wysyłany do swojego adresu e-mail. Następnie wprowadź ten kod, aby kontynuować logowanie.
+W tym artykule opisano sposób włączania uwierzytelniania jednorazowy kod dostępu poczty E-mail dla użytkowników-gości B2B. Funkcję powiadomienia E-mail jednorazowy kod dostępu uwierzytelnia użytkowników-gości B2B nie może zostać uwierzytelnione za pośrednictwem innych metod, takich jak usługa Azure AD, konta Microsoft (MSA) lub federacyjnych Google. Przy użyciu uwierzytelniania jednorazowy kod dostępu nie ma potrzeby do utworzenia konta Microsoft. Gdy użytkownik-Gość umarza zaproszenia, lub uzyskuje dostęp do udostępnionego zasobu, będą one żądać tymczasowy kod, który jest wysyłany do swojego adresu e-mail. Następnie wprowadź ten kod, aby kontynuować logowanie.
 
 Ta funkcja jest obecnie dostępna w wersji zapoznawczej (zobacz [zgody na korzystanie z wersji zapoznawczej](#opting-in-to-the-preview) poniżej). Po (wersja zapoznawcza) ta funkcja będzie można włączyć domyślnie dla wszystkich dzierżaw.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4771c49502b07e371cd227f757445d5ebac9163
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855388"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Bersin
 
@@ -104,11 +104,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Bersin, wykonaj nas
 
     ![Bersin domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-identifier-relay.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.bersin.com/shibboleth`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.bersin.com/shibboleth`
 
     b. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    c. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://www.bersin.com/secure/`
+    c. W **tan przekaźnika** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.bersin.com/secure/`
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
@@ -197,7 +197,7 @@ Po kliknięciu kafelka Bersin w panelu dostępu, powinien zostać automatycznie 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

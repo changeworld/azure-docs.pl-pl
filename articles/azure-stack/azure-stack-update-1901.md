@@ -16,16 +16,16 @@ ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bf355aec2a76a42986320a74447860a8baa968ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649411"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257404"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
-*Dotyczy: Zintegrowane systemy usługi Azure Stack*
+*Dotyczy Zintegrowane systemy usługi Azure Stack*
 
 W tym artykule opisano zawartość pakietu 1901 aktualizacji. Aktualizacja zawiera ulepszenia, poprawki i nowe funkcje dla tej wersji usługi Azure Stack. Również w tym artykule opisano znane problemy w tej wersji i zawiera link do pobierania aktualizacji. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
 
@@ -315,6 +315,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Dziennik systemu 
+- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, co w kliencie programu syslog i utracić konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809).
+Obejście polega na skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
 
 ## <a name="download-the-update"></a>Pobierz aktualizację
 

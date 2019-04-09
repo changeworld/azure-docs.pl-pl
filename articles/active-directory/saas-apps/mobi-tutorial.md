@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9531c66605985f30f5979091906fb644b0373d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf3185b7deee59439bb9c1ba2ac6017c348ed270
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885338"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobi"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą MOBI
 
@@ -104,7 +104,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z MOBI, wykonaj nast�
 
     ![MOBI domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.thefutureis.mobi`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.thefutureis.mobi`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.thefutureis.mobi/saml_consume`
 
@@ -198,7 +198,7 @@ Po kliknięciu kafelka MOBI w panelu dostępu, powinien zostać automatycznie za
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

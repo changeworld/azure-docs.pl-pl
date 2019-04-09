@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883942"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264099"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -61,7 +61,8 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu możesz przeczytać o tym, jak utworzyć nagłówek HMAC SHA256. |
 | Typ dziennika |Określ typ rekordu jest przesyłane dane. Limit rozmiaru dla tego parametru to 100 znaków. |
 | x-ms-date |Data przetwarzania żądania, w formacie RFC 1123. |
-| time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określasz pole, a następnie jej zawartość są używane do **TimeGenerated**. Jeśli to pole nie jest określona, wartość domyślna dla **TimeGenerated** to czas, pobieranym wiadomości. Zawartość pola komunikat powinien być zgodny z formatu ISO 8601 RRRR-MM-Ddtgg. |
+| x-ms-AzureResourceId | Identyfikator zasobu usługi Azure resource dane powinny być skojarzone z. Spowoduje to wypełnienie [_ResourceId](log-standard-properties.md#_resourceid) właściwości i zezwala na danych, które mają zostać uwzględnione w [skoncentrowane na zasób](manage-access.md#access-modes) zapytania. Jeśli to pole nie jest określony, dane nie zostaną uwzględnione w zapytaniach skoncentrowane na zasób. |
+| time-generated-field | Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określasz pole, a następnie jej zawartość są używane do **TimeGenerated**. Jeśli to pole nie jest określona, wartość domyślna dla **TimeGenerated** to czas, pobieranym wiadomości. Zawartość pola komunikat powinien być zgodny z formatu ISO 8601 RRRR-MM-Ddtgg. |
 
 ## <a name="authorization"></a>Autoryzacja
 Każde żądanie do interfejsu API modułu zbierającego dane HTTP monitora platformy Azure musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądania, musisz podpisać żądanie z podstawowej lub klucz pomocniczy dla obszaru roboczego, który wysłał żądanie. Następnie przekaż ten podpis jako część żądania.   

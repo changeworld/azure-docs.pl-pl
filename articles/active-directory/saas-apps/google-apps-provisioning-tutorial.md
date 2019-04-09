@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: ea1f4d4a6b60961515826a1ba7409bf149b318e8
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224152"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058479"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
 
@@ -69,78 +69,77 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 > Automatyzowanie aprowizacji użytkowników do usługi G Suite innego rentowną opcją jest użycie [usługi Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS aprowizuje Twoich tożsamości: lokalnej usługi Active Directory do usługi G Suite. Z kolei rozwiązania, w tym samouczku aprowizuje użytkowników usługi Azure Active Directory (w chmurze) i grupy usługi G Suite i włączona obsługa poczty e-mail. 
 
 1. Zaloguj się do [konsoli administracyjnej aplikacje Google](https://admin.google.com/) przy użyciu konta administratora, a następnie wybierz **zabezpieczeń**. Jeśli nie widzisz łącza może być ukryty pod przyciskiem **więcej formantów** menu wyświetlanym u dołu ekranu.
-   
+
     ![Wybierz opcję Zabezpieczenia.][10]
 
 1. Na **zabezpieczeń** wybierz opcję **dokumentacja interfejsu API**.
-   
+
     ![Wybierz odwołanie do interfejsu API.][15]
 
 1. Wybierz **dostęp do włączenia interfejsu API**.
-   
+
     ![Wybierz odwołanie do interfejsu API.][16]
 
    > [!IMPORTANT]
    > Dla każdego użytkownika, który ma zostać aprowizować do usługi G Suite, nazwa ich użytkownika w usłudze Azure Active Directory *musi* ograniczeni do domeny niestandardowej. Na przykład użytkownik nazwy tego wyglądały bob@contoso.onmicrosoft.com nie są akceptowane przez usługi G Suite. Z drugiej strony bob@contoso.com jest akceptowane. Możesz zmienić istniejącego użytkownika domeny, edytując ich właściwości w usłudze Azure AD. Dołączyliśmy instrukcje dotyczące sposobu ustawiania domeny niestandardowej dla usługi Azure Active Directory i usługi G Suite w poniższych krokach.
-      
+
 1. Jeśli nie dodano jeszcze niestandardowej nazwy domeny do usługi Azure Active Directory, następnie wykonaj następujące czynności:
   
-    a. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Active Directory**. Na liście katalogu wybierz swój katalog. 
+    a. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Active Directory**. Na liście katalogu wybierz swój katalog.
 
     b. Wybierz **nazwy domeny** w okienku nawigacji po lewej stronie, a następnie wybierz **Dodaj**.
-     
-     ![Domain](./media/google-apps-provisioning-tutorial/domain_1.png)
 
-     ![Dodawanie domeny](./media/google-apps-provisioning-tutorial/domain_2.png)
+    ![Domain](./media/google-apps-provisioning-tutorial/domain_1.png)
+
+    ![Dodawanie domeny](./media/google-apps-provisioning-tutorial/domain_2.png)
 
     c. Wpisz nazwę domeny do **nazwy domeny** pola. Ta nazwa domeny powinny być tą samą nazwą domeny, który ma być używana dla usługi G Suite. Następnie wybierz pozycję **dodawania domeny** przycisku.
-     
-     ![Nazwa domeny](./media/google-apps-provisioning-tutorial/domain_3.png)
 
-    d. Wybierz **dalej** aby przejść do strony weryfikacji. Aby sprawdzić, czy jesteś właścicielem tej domeny, należy edytować rekordy DNS w domenie, zgodnie z wartościami, które znajdują się na tej stronie. Można sprawdzić za pomocą **rekordów MX** lub **rekordów TXT**, w zależności od wybrania dla **typu rekordu** opcji. 
-    
+    ![Nazwa domeny](./media/google-apps-provisioning-tutorial/domain_3.png)
+
+    d. Wybierz **dalej** aby przejść do strony weryfikacji. Aby sprawdzić, czy jesteś właścicielem tej domeny, należy edytować rekordy DNS w domenie, zgodnie z wartościami, które znajdują się na tej stronie. Można sprawdzić za pomocą **rekordów MX** lub **rekordów TXT**, w zależności od wybrania dla **typu rekordu** opcji.
+
     Aby uzyskać bardziej szczegółowe instrukcje dotyczące sposobu zweryfikować nazwy domeny z usługą Azure AD, zobacz [Dodaj własną nazwę domeny do usługi Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
-     
-     ![Domain](./media/google-apps-provisioning-tutorial/domain_4.png)
+
+    ![Domain](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Powtórz te czynności dla wszystkich domen, które mają zostać dodane do katalogu.
 
-   > [!NOTE]
-   >  Inicjowanie obsługi użytkowników, domena niestandardowa musi odpowiadać nazwa domeny źródła usługi Azure AD. Jeśli nie są zgodne, można rozwiązać problem, implementowanie dostosowywania mapowanie atrybutu.
-
+    > [!NOTE]
+    > Inicjowanie obsługi użytkowników, domena niestandardowa musi odpowiadać nazwa domeny źródła usługi Azure AD. Jeśli nie są zgodne, można rozwiązać problem, implementowanie dostosowywania mapowanie atrybutu.
 
 1. Teraz, gdy sprawdzeniu wszystkich domen w usłudze Azure AD, należy sprawdzić je ponownie przy użyciu usługi Google Apps. Dla każdej domeny, który nie jest już zarejestrowany za pomocą usługi Google wykonaj następujące czynności:
-   
+
     a. W [konsoli administracyjnej usługi Google Apps](https://admin.google.com/), wybierz opcję **domen**.
-     
-     ![Wybierz domeny][20]
+
+    ![Wybierz domeny][20]
 
     b. Wybierz **dodać domenę lub alias domeny**.
-     
-     ![Dodaj nową domenę][21]
+
+    ![Dodaj nową domenę][21]
 
     c. Wybierz **Dodaj inną domenę**, a następnie wpisz nazwę domeny, który chcesz dodać.
-     
-     ![Wpisz nazwę domeny][22]
+
+    ![Wpisz nazwę domeny][22]
 
     d. Wybierz **Kontynuuj i weryfikowanie własności domeny**. Następnie postępuj zgodnie z instrukcjami, aby sprawdzić, czy jesteś właścicielem nazwy domeny. Aby uzyskać kompleksowe instrukcje dotyczące sposobu weryfikowania Twojej domeny za pomocą usługi Google, zobacz [Sprawdź Twoja własność lokacji za pomocą usługi Google Apps](https://support.google.com/webmasters/answer/35179).
 
     e. Powtórz poprzednie kroki dla dodatkowych domenach, które mają zostać dodane do usługi Google Apps.
-     
-     > [!WARNING]
-     > Jeśli zmienisz domenę podstawową dla dzierżawy usługi G Suite i skonfigurowano już logowanie jednokrotne z usługą Azure AD, musisz powtórzyć krok #3 w sekcji Krok 2: Włącz logowanie jednokrotne.
-       
+
+    > [!WARNING]
+    > Jeśli zmienisz domenę podstawową dla dzierżawy usługi G Suite i skonfigurowano już logowanie jednokrotne z usługą Azure AD, musisz powtórzyć krok #3 w sekcji Krok 2: Włącz logowanie jednokrotne.
+
 1. W [konsoli administracyjnej aplikacje Google](https://admin.google.com/), wybierz opcję **ról administratora**.
-   
-     ![Wybierz usługi Google Apps][26]
+
+    ![Wybierz usługi Google Apps][26]
 
 1. Określ konto administratora, które chcesz użyć do zarządzania, inicjowanie obsługi użytkowników. Aby uzyskać **rolę administratora** tego konta, Edytuj **uprawnienia** dla tej roli. Upewnij się włączyć wszystkie **uprawnień interfejsu API administratora** tak, aby to konto może służyć do inicjowania obsługi.
-   
-     ![Wybierz usługi Google Apps][27]
-   
+
+    ![Wybierz usługi Google Apps][27]
+
     > [!NOTE]
     > W przypadku konfigurowania środowiska produkcyjnego, najlepszym rozwiązaniem jest tworzenie konta administratora w usłudze G Suite specjalnie dla tego kroku. Te konta muszą mieć rolę administratora skojarzonych z nimi, które ma niezbędne uprawnienia interfejsu API.
-     
+
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** sekcji.
 
 1. Jeśli już skonfigurowano usługi G Suite dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi G Suite, przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj**, a następnie wyszukaj **usługi G Suite** lub **Google Apps** w galerii aplikacji. Wybierz aplikację z poziomu wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
@@ -149,13 +148,13 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
 1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
-       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
+    ![Inicjowanie obsługi](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. W obszarze **poświadczeń administratora** zaznacz **Autoryzuj**. Otwiera okno dialogowe autoryzacji Google w nowym oknie przeglądarki.
 
 1. Upewnij się, że chcesz przyznać uprawnienia usługi Azure Active Directory, aby wprowadzić zmiany do dzierżawy usługi G Suite. Wybierz pozycję **Zaakceptuj**.
-    
-       ![Confirm permissions.][28]
+
+    ![Upewnij się, uprawnienia.][28]
 
 1. W witrynie Azure portal wybierz **Testuj połączenie** do upewnij się, że połączenie usługi Azure AD do swojej aplikacji. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto usługi G Suite, ma uprawnienia administratora zespołu. Spróbuj **Autoryzuj** krok ponownie.
 
@@ -178,10 +177,8 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](google-apps-tutorial.md)
-
-
 
 <!--Image references-->
 

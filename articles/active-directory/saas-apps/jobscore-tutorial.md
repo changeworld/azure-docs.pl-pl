@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0dd10eef70986e20b71c7e3735091c16d11ef59
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0acb07651948e923de777713020d678859a2d3b0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863155"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem JobScore
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację rozwiązania JobScore z usługą Azure AD, musisz dodać rozwiązanie JobScore z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać rozwiązanie JobScore z galerii, wykonaj następujące czynności:**
+**Aby dodać JobScore z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -191,7 +191,7 @@ Po kliknięciu kafelka JobScore na panelu dostępu powinno nastąpić automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

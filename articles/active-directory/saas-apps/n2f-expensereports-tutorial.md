@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2851383ed992b314af541b24e7753b1e6b12b28d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898673"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Samouczek: Raporty wydatków Integracja usługi Azure Active Directory za pomocą N2F-
 
@@ -209,7 +209,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do N2F — raporty wydatków one musi być obsługiwana w N2F — raporty wydatków. W przypadku N2F — raporty wydatków aprowizacji to zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej N2F - witryny firmy raportów wydatków jako administrator.
 
@@ -250,7 +250,7 @@ Po kliknięciu N2F — raporty wydatków kafelka w panelu dostępu, powinien zos
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

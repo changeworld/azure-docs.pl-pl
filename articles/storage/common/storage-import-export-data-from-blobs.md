@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99e3abb1bedffdb5a7d49c033ebc8b4c46df1c03
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769284"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263841"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -25,7 +25,7 @@ Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi
 - Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
 - Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks).
-- Mieć konto FedEx/DHL w sprawie.  
+- Mieć konto FedEx/DHL w sprawie. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, skontaktuj się z zespołem operacje pole danych platformy Azure w `adbops@microsoft.com`. 
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
     - Generowanie numer śledzenia, zadanie eksportu.
     - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane. 
@@ -82,7 +82,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 
 4. W **zwracają informacje o wysyłce**:
 
-    - Wybierz nośnik, z listy rozwijanej.
+    - Wybierz nośnik, z listy rozwijanej. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, wybierz opcję istniejący, z listy rozwijanej. Skontaktuj się z pomocą operacje pole danych platformy Azure zespołu w `adbops@microsoft.com` informacji na temat operatora planujesz używać.
     - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. 
     - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
 
@@ -142,7 +142,7 @@ To *opcjonalne* krok ułatwia określa liczbę dysków wymaganych do zadania eks
     |Parametr wiersza polecenia|Opis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Opcjonalny. Katalog dziennika. Plików pełnego dziennika są zapisywane do tego katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
-    |**/SN:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
+    |**/sn:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
     |**/sk:**|Wymagane tylko, jeśli sygnatury dostępu Współdzielonego kontenera nie jest określony. Klucz konta dla konta magazynu dla zadania eksportu.|  
     |**/csas:**|Wymagane tylko, jeśli nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
     |**/ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  

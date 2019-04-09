@@ -15,16 +15,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482593"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255941"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack 
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit* 
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit* 
 > [!Note]   
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą. 
 
@@ -47,7 +47,7 @@ Kubernetes obejmuje pulpit nawigacyjny sieci web, używanego do podstawowych ope
 ## <a name="overview-of-steps-to-enable-dashboard"></a>Przegląd czynności, aby umożliwić pulpitu nawigacyjnego
 
 1.  Eksportowanie certyfikatów Kubernetes z węzła głównego w klastrze. 
-2.  Zaimportuj certyfikaty do usługi Azure Stack na komputerze zarządzania.
+2.  Zaimportuj certyfikaty do Twojego komputera zarządzania usługi Azure Stack.
 2.  Otwórz pulpit nawigacyjny sieci web rozwiązania Kubernetes. 
 
 ## <a name="export-certificate-from-the-master"></a>Eksportowanie certyfikatu z poziomu głównego 
@@ -70,7 +70,7 @@ Adres URL pulpitu nawigacyjnego można pobrać z węzła głównego w klastrze.
     ```Bash   
     kubectl cluster-info 
     ``` 
-    Adres URL można znaleźć na pulpicie nawigacyjnym. Na przykład: `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    Adres URL można znaleźć na pulpicie nawigacyjnym. Na przykład:  `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
 6.  Wyodrębnij certyfikatu z podpisem własnym, a następnie przekonwertować go na PFX format. Uruchom następujące polecenie:
 
@@ -137,4 +137,4 @@ Można użyć pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat pu
 
 [Dodaj klaster Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](../azure-stack-solution-template-kubernetes-cluster-add.md)  
 
-[Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  
+[Usługa Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

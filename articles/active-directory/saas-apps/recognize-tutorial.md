@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: bd772a10cd64b4198e994fdefa671444447c8a53
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 94e0b365d159ef18d7c0e6216ac9f5babb0d6231
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849559"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Rozpoznaj
 
@@ -229,7 +229,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do uznania, musi 
 
 Ta aplikacja nie obsługuje standard SCIM inicjowania obsługi administracyjnej, ale ma synchronizacji alternatywne użytkownika, która aprowizuje użytkowników. 
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy rozpoznawaj jako administrator.
 
@@ -255,7 +255,7 @@ Po kliknięciu kafelka Rozpoznaj w panelu dostępu, powinien zostać automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

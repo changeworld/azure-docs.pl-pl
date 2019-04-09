@@ -12,37 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 04/08/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 650b868762299725927623134039e87bbee9f4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484054"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277514"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Wyszukaj szablony usługi Azure Stack przy użyciu narzędzia sprawdzania poprawności szablonu
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Można użyć narzędzia do sprawdzania poprawności szablonu, aby sprawdzić, czy usługi Azure Resource Manager [szablony](azure-stack-arm-templates.md) są gotowe do wdrożenia w usłudze Azure Stack. Narzędzie sprawdzania poprawności szablonu jest dostępny jako część pakietu narzędzi usługi Azure Stack. Pobierz narzędzia usługi Azure Stack przy użyciu kroków opisanych w [Pobierz narzędzia z serwisu GitHub](azure-stack-powershell-download.md) artykułu.
+Narzędzie sprawdzania poprawności szablonu służy do Sprawdź, czy usługi Azure Resource Manager [szablony](azure-stack-arm-templates.md) są gotowe do wdrożenia w usłudze Azure Stack. Narzędzie sprawdzania poprawności szablonu jest dostępny jako część pakietu narzędzi usługi Azure Stack. Pobierz narzędzia usługi Azure Stack przy użyciu kroków opisanych w [Pobierz narzędzia z serwisu GitHub](azure-stack-powershell-download.md) artykułu.
 
 ## <a name="overview"></a>Przegląd
 
-Aby sprawdzić poprawność szablonu, trzeba możliwości kompilacji w chmurze pierwszy plik, a następnie uruchom narzędzie sprawdzania poprawności. Możesz użyć następujących modułów programu PowerShell z poziomu narzędzi usługi Azure Stack:
+Do sprawdzania poprawności szablonu, należy najpierw utworzyć plik możliwości chmury, a następnie uruchom narzędzie sprawdzania poprawności. Możesz użyć następujących modułów programu PowerShell z poziomu narzędzi usługi Azure Stack:
 
-- W **CloudCapabilities** folderu:<br>         `AzureRM.CloudCapabilities.psm1` Tworzy plik JSON możliwości chmury, reprezentujący usług i wersji w chmurze Azure Stack.
-- W **TemplateValidator** folderu:<br>
-`AzureRM.TemplateValidator.psm1` użyto pliku JSON możliwości chmury, aby przetestować szablony na potrzeby wdrażania w usłudze Azure Stack.
+- W **CloudCapabilities** folder: `AzureRM.CloudCapabilities.psm1` tworzy plik JSON możliwości chmury, reprezentujący usług i wersji w chmurze Azure Stack.
+- W **TemplateValidator** folder: `AzureRM.TemplateValidator.psm1` użyto pliku JSON możliwości chmury, aby przetestować szablony na potrzeby wdrażania w usłudze Azure Stack.
 
 ## <a name="build-the-cloud-capabilities-file"></a>Tworzenie plików funkcji w chmurze
 
 Przed użyciem modułu sprawdzania poprawności szablonu uruchomić **AzureRM.CloudCapabilities** modułu programu PowerShell do tworzenia pliku JSON.
 
 >[!NOTE]
->Jeśli zaktualizowanie systemu klienta zintegrowane lub Dodaj nowe usługi lub rozszerzenia wirtualnego, należy ponownie uruchomić ten moduł.
+> Jeśli zaktualizowanie systemu klienta zintegrowane lub Dodaj nowe usługi lub rozszerzenia wirtualnego, należy ponownie uruchomić ten moduł.
 
 1. Upewnij się, że masz łączność z usługą Azure Stack. Te kroki można wykonać z hosta usługi Azure Stack development zestawu lub użyć [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) połączyć ze swojej stacji roboczej.
 2. Importuj **AzureRM.CloudCapabilities** modułu programu PowerShell:
@@ -51,7 +50,7 @@ Przed użyciem modułu sprawdzania poprawności szablonu uruchomić **AzureRM.Cl
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Użyj `Get-CloudCapabilities` polecenia cmdlet do pobierania wersji usługi i Utwórz plik JSON możliwości chmury. Jeśli nie określisz **- OutputPath**, plik AzureCloudCapabilities.Json jest tworzony w bieżącym katalogu. Użyj swojej rzeczywistej lokalizacji:
+3. Użyj `Get-CloudCapabilities` polecenia cmdlet do pobierania wersji usługi i Utwórz plik JSON możliwości chmury. Jeśli nie określisz **- OutputPath**, plik AzureCloudCapabilities.Json jest tworzony w bieżącym katalogu. Użyj swojej rzeczywistej lokalizacji platformy Azure:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -76,7 +75,7 @@ Wykonaj następujące kroki, aby sprawdzić poprawność szablonów przy użyciu
     -Verbose
     ```
 
-Szablon sprawdzania poprawności ostrzeżenia i błędy są rejestrowane w konsoli programu PowerShell i plik HTML w katalogu źródłowym. Poniższy zrzut ekranu przedstawia przykład raportu weryfikacji:
+Szablon sprawdzania poprawności ostrzeżenia i błędy są wyświetlane w konsoli programu PowerShell i zapisywane do pliku HTML w katalogu źródłowym. Poniższy zrzut ekranu przedstawia przykład raportu weryfikacji:
 
 ![Szablon raportu sprawdzania poprawności](./media/azure-stack-validate-templates/image1.png)
 
@@ -86,13 +85,13 @@ Moduł sprawdzania poprawności szablonu obsługuje następujące parametry.
 
 | Parametr | Opis | Wymagane |
 | ----- | -----| ----- |
-| TemplatePath | Określa ścieżkę do rekursywnie Znajdź szablony usługi Azure Resource Manager | Yes | 
+| TemplatePath | Określa ścieżkę do rekursywnie Znajdź szablony usługi Azure Resource Manager. | Yes |
 | TemplatePattern | Określa nazwę pliki szablonów do dopasowania. | Nie |
-| CapabilitiesPath | Określa ścieżkę do pliku JSON możliwości chmury | Yes | 
-| IncludeComputeCapabilities | Obejmuje ocena zasobów rozwiązania IaaS, takich jak rozmiarów maszyn wirtualnych i rozszerzenia maszyn wirtualnych | Nie |
-| IncludeStorageCapabilities | Obejmuje ocena zasobów magazynu, takich jak typy jednostek SKU | Nie |
-| Raport | Określa nazwę wygenerowanego raportu HTML | Nie |
-| Pełne | Rejestruje błędy i ostrzeżenia w konsoli | Nie|
+| CapabilitiesPath | Określa ścieżkę do pliku JSON możliwości chmury. | Yes |
+| IncludeComputeCapabilities | Obejmuje ocena zasobów IaaS, takich jak rozmiarów maszyn wirtualnych i rozszerzenia maszyn wirtualnych. | Nie |
+| IncludeStorageCapabilities | Obejmuje ocena zasobów magazynu, takich jak typy jednostek SKU. | Nie |
+| Raport | Określa nazwę wygenerowanego raportu HTML. | Nie |
+| Pełne | Rejestruje błędy i ostrzeżenia w konsoli. | Nie|
 
 ### <a name="examples"></a>Przykłady
 
@@ -109,4 +108,4 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Wdrażanie szablonów do usługi Azure Stack](azure-stack-arm-templates.md)
-- [Tworzenie szablonów dla usługi Azure Stack](azure-stack-develop-templates.md)
+- [Tworzenie szablonów usługi Azure Stack](azure-stack-develop-templates.md)

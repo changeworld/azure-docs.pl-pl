@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d37e3cc56b4a80fce9dcae6f87ff626867496007
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b797c7d49495aac90abb31a9214bf2928784a866
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578343"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Proxyclick
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Proxyclick, wykonaj
 
     ![Proxyclick domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://saml.proxyclick.com/init/<companyId>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://saml.proxyclick.com/init/<companyId>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://saml.proxyclick.com/consume/<companyId>`
 
@@ -216,7 +216,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Proxyclick, musi być obsługiwana w Proxyclick. W przypadku Proxyclick Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy Proxyclick jako administrator.
 
@@ -248,7 +248,7 @@ Po kliknięciu kafelka Proxyclick w panelu dostępu, powinien zostać automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 216ce32997a4114f4f2684b14338b4e36d9afd03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558009"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257284"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning
 Jest bardzo proste zadanie usługi Stream Analytics i wykonaj przykładowe dane. Co możemy zrobić, jeśli zaistnieje taka potrzeba uruchomić to samo zadanie z większą ilość danych? Wymaga to nam dowiedzieć się, jak skonfigurować zadanie usługi Stream Analytics, dzięki czemu zostanie przeprowadzone skalowanie. W tym dokumencie skupimy się na specjalne aspektów skalowanie zadań usługi Stream Analytics przy użyciu funkcji usługi Machine Learning. Aby uzyskać informacje dotyczące skalowanie zadań usługi Stream Analytics ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadań](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co to jest funkcja usługi Azure Machine Learning w usłudze Stream Analytics?
-Funkcji usługi Machine Learning, w usłudze Stream Analytics mogą być używane jak regularnym wywołaniu funkcji w języku zapytań usługi Stream Analytics. Za sceną, wywołania funkcji są faktycznie żądania usługi sieci Web Azure Machine Learning. Usługi sieci web Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, o nazwie mini partii, w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepływność. Aby uzyskać więcej informacji, zobacz [funkcje usługi Azure Machine Learning w usłudze Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) i [usług sieci Web Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
+Funkcji usługi Machine Learning, w usłudze Stream Analytics mogą być używane jak regularnym wywołaniu funkcji w języku zapytań usługi Stream Analytics. Za sceną, wywołania funkcji są faktycznie żądania usługi sieci Web Azure Machine Learning. Usługi sieci web Machine Learning obsługuje "przetwarzanie wsadowe" wiele wierszy, o nazwie mini partii, w tej samej sieci web usługi wywołania interfejsu API, aby zwiększyć ogólną przepływność. Aby uzyskać więcej informacji, zobacz [usług sieci Web Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurowanie zadania usługi Stream Analytics przy użyciu funkcji usługi Machine Learning
 Podczas konfigurowania funkcji usługi Machine Learning, zadania usługi Stream Analytics, istnieją dwa parametry należy wziąć pod uwagę, rozmiaru partii wywołania funkcji usługi Machine Learning i jednostek przesyłania strumieniowego (SUs) aprowizowaną dla zadania usługi Stream Analytics. Aby określić odpowiednie wartości dla SUs, najpierw należy podjąć decyzję między opóźnienia i przepływności, oznacza to, czas oczekiwania na zadanie usługi Stream Analytics i przepływności każdy jednostka SU. SUs zawsze mogą być dodawane do zadania w celu zwiększenia przepływności również podzielone na partycje zapytań usługi Stream Analytics, mimo że dodatkowe SUs zwiększyć koszt uruchamiania zadania.
@@ -74,7 +74,7 @@ Poniżej znajduje się tabela przepływności zadania usługi Stream Analytics, 
 
 | rozmiar partii (ML opóźnienie) | 500 (200 ms) | 1000 (200 ms) | 5000 (250 ms) | 10 000 (300 ms) | 25 000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
+| **1 JEDNOSTKA WYSZUKIWANIA** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **12 SUs** |5000 |10 000 |40,000 |60,000 |100 000 |
@@ -94,7 +94,7 @@ W obszarze monitorowania zadań usługi Stream Analytics zostały dodane trzy do
 
 Są zdefiniowane w następujący sposób:
 
-**ŻĄDANIA FUNKCJI**: Liczba żądań funkcji.
+**FUNCTION REQUESTS**: Liczba żądań funkcji.
 
 **ZDARZENIA FUNKCJI**: Liczbę zdarzeń w żądaniach funkcji.
 

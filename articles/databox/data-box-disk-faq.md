@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892334"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258780"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -54,7 +54,7 @@ A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wyko
 A.  Aby zobaczyć, gdzie są obecnie dostępne dyski Data Box, przejdź do [dostępność w poszczególnych regionach](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
-A. Usługa Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie, Australii oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
+A. Dysku Data Box jest obsługiwane dla wszystkich regionów w USA, Kanadzie, Australii, Europa Zachodnia i Europa Północna, Korei i Japonia. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z urządzeniami Data Box Disk?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box Disk, [skontaktuj się z działem pomocy technicznej firmy Microsoft](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -132,8 +132,8 @@ Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi 
 - [Pobierz zestaw narzędzi dysku Data Box dla Windows](https://aka.ms/databoxdisktoolswin) 
 - [Pobierz zestaw narzędzi dysku Data Box dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
  
-  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
-  A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
+A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie
@@ -166,7 +166,7 @@ A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworz
 A. Tak. Przekazano dane na platformie Azure, ale jeśli nie widzisz żadnych dysków zarządzanych przy użyciu grup określonego zasobu, prawdopodobną przyczyną jest danych nie jest prawidłowa. W przypadku stronicowych obiektów blob, blokowe obiekty BLOB, Azure Files i dysków zarządzanych nie jest prawidłowy, te musieli przejść do następujących folderów:
  - Stronicowe obiekty BLOB musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-pb -*.
  - Usługa Azure Files musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-af -*.
- - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk-invliad-md -*.
+ - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-md -*.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

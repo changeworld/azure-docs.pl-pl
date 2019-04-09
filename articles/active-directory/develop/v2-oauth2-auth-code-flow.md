@@ -1,6 +1,6 @@
 ---
-title: Autoryzacji OAuth 2.0 usługa Azure AD kodu przepływu | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji sieci web przy użyciu usługi Azure AD implementacji protokołu uwierzytelniania OAuth 2.0.
+title: Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji w OAuth | Azure
+description: Tworzenie aplikacji sieci web przy użyciu platformą Microsoft identity implementacji protokołu uwierzytelniania OAuth 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,20 +12,20 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2019
+ms.topic: conceptual
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880269"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058751"
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
+# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji OAuth 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -34,7 +34,7 @@ Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które s�
 > [!NOTE]
 > Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0. 
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0.
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 

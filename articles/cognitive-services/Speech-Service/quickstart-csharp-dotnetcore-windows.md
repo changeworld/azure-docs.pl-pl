@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, C# (.NET Core — Windows) — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, C# (.NET Core) — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku C# na platformie .NET Core w systemie Windows przy użyciu zestawu Speech SDK
+description: Dowiedz się, jak rozpoznawanie mowy w C# w ramach platformy .NET Core w Windows lub macOS przy użyciu zestawu SDK rozpoznawania mowy
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895624"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009431"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy .NET Core
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule opisano tworzenie C# konsoli aplikacji dla platformy .NET Core w Windows lub macOS przy użyciu usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 > [!NOTE]
 > .NET Core jest międzyplatformową platformą .NET typu open source, która wdraża specyfikację [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
@@ -32,7 +32,7 @@ Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodn
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
+* [Zestaw SDK dla platformy .NET core](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
@@ -71,9 +71,9 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z C# przykłady w witrynie GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)

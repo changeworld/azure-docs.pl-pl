@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197661"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258695"
 ---
 # <a name="about-microsoft-identity-platform"></a>Informacje o platformie tożsamości firmy Microsoft
 
@@ -38,7 +38,7 @@ W przypadku aplikacji korzystających z najnowszych wersji bibliotek ADAL i MSAL
 
 Na poniższym diagramie przedstawiono ogólnie środowisko obsługi tożsamości firmy Microsoft, obejmujące środowisko rejestracji aplikacji, zestawy SDK, punkty końcowe i obsługiwane tożsamości.
 
-![Platforma tożsamości firmy Microsoft obecnie](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
+![Platforma tożsamości firmy Microsoft obecnie](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
 Platforma tożsamości firmy Microsoft obejmuje dwa punkty końcowe (w wersji 1.0 i 2.0) oraz dwa zestawy bibliotek klienta do obsługi tych punktów końcowych. Podczas tworzenia nowej aplikacji należy wziąć pod uwagę zalety i aktualny stan tych punktów końcowych oraz bibliotek uwierzytelniania. Rozważ również następujące elementy:
 
@@ -58,9 +58,9 @@ Platforma tożsamości firmy Microsoft obejmuje dwa punkty końcowe (w wersji 1.
 
     Biblioteka MSAL jest odpowiednia do użytku w środowisku produkcyjnym. Zapewniamy takie samo wsparcie tej biblioteki na poziomie produkcyjnym, jak w przypadku bieżących bibliotek produkcyjnych. W czasie obowiązywania wersji zapoznawczej możliwe jest wprowadzenie zmian w interfejsie API, wewnętrznym formacie pamięci podręcznej i innych mechanizmach tej biblioteki, które będą wprowadzane wraz z poprawkami błędów i ulepszeniami funkcji. Może to mieć wpływ na aplikację. Na przykład zmiana formatu pamięci podręcznej może wymagać od użytkowników ponownego zalogowania. Zmiany w interfejsie API mogą wymagać aktualizacji kodu. Po opublikowaniu wersji ogólnodostępnej będzie wymagana aktualizacja do wersji ogólnodostępnej w ciągu sześciu miesięcy, ponieważ aplikacje utworzone przy użyciu wersji zapoznawczej biblioteki mogą przestać działać.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat wersji 1.0 i 2.0.
 
-* [Informacje o wersji 1.0](v1-overview.md)
+* [Informacje w wersji 1.0](v1-overview.md)
 * [Informacje o wersji 2.0](v2-overview.md)

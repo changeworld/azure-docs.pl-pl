@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166773"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260462"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -45,12 +45,12 @@ Instalacja jest rozszerzonych właściwości powiązanych z rejestracji, który 
 Poniżej przedstawiono niektóre kluczowe zalety korzystania z instalacji:
 
 - Tworzenie lub aktualizowanie instalacji jest w pełni idempotentne. Dlatego możesz ponowić próbę go bez żadnych problemów dotyczących rejestracji zduplikowane.
-- Model instalacji można łatwo zrobić wypchnięć poszczególnych - przeznaczonych dla określonego urządzenia. Tag systemowy **"$InstallationId: [identyfikator installationId]"** jest automatycznie dodawany z każdej instalacji, na podstawie rejestracji. Dlatego możesz wywołać Wyślij do tego tagu pod kątem określonego urządzenia bez konieczności dodatkowego kodowania.
+- Model instalacji obsługuje format specjalny znacznik (`$InstallationId:{INSTALLATION_ID}`), który umożliwia wysłanie powiadomienia bezpośrednio do określonego urządzenia. Na przykład, jeśli kod aplikacji Ustawia identyfikator instalacji `joe93developer` dla tego konkretnego urządzenia, deweloper można wskazać to urządzenie podczas wysyłania powiadomień do `$InstallationId:{joe93developer}` tagu. Dzięki temu można pod kątem określonego urządzenia bez konieczności dodatkowego kodowania.
 - Przy użyciu instalacji umożliwia także wykonaj aktualizacje częściowe rejestracji. Zażądano częściową aktualizację instalacji przy użyciu metody PATCH [standard poprawki JSON](https://tools.ietf.org/html/rfc6902). Jest to przydatne, gdy chcesz aktualizacji tagów na rejestracji. Nie masz ściągnąć całego rejestracji, a następnie ponownie Wyślij ponownie wszystkie poprzednie tagi.
 
 Instalacja może zawierać następujące właściwości. Aby uzyskać pełną listę właściwości instalacji, zobacz [utworzyć ani zastąpić instalacji przy użyciu interfejsu API REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) lub [właściwości instalacji](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ Nazwa każdego szablonu mapuje treści szablonu i opcjonalny zestaw znaczników.
 
 Dla aplikacji klienckich Windows Store wysyłanie powiadomień do kafelków dodatkowej jest taka sama jak wysyłając główną. Jest to również obsługiwane w instalacjach. Kafelki dodatkowej ma inny identyfikator ChannelUri, która zestawu SDK w aplikacji klienckiej obsługuje w sposób niewidoczny dla użytkownika.
 
-Słownik SecondaryTiles używa tego samego TileId, który służy do tworzenia obiektu SecondaryTiles w aplikacji Windows Store.
-Podobnie jak w przypadku podstawowego identyfikator ChannelUri, ChannelUris dodatkowej Kafelki można zmienić w dowolnym momencie. Aby zachować instalacji w Centrum powiadomień, zaktualizować, urządzenie musi odświeżać je bieżącego ChannelUris dodatkowej kafelków.
+Słownik SecondaryTiles używa tego samego TileId, który służy do tworzenia obiektu SecondaryTiles w aplikacji Windows Store. Podobnie jak w przypadku podstawowego identyfikator ChannelUri, ChannelUris dodatkowej Kafelki można zmienić w dowolnym momencie. Aby zachować instalacji w Centrum powiadomień, zaktualizować, urządzenie musi odświeżać je bieżącego ChannelUris dodatkowej kafelków.
 
 ## <a name="registration-management-from-the-device"></a>Zarządzanie rejestracją urządzenia
 
