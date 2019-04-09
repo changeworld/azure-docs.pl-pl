@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/04/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0defb1a8572cc3adad48dbcdb27a04e366fc3e60
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046790"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282988"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -31,8 +31,8 @@ Poniższe informacje zawierają aktualnie obsługiwany [platforma Microsoft Azur
 | **Azure Government** | Azure Government — przedsiębiorstwa                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
 | **Enterprise Agreement (EA)** | Enterprise — tworzenie i testowanie                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
-| **Umowa klienta firmy Microsoft** | [Plan platformy Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017G |
-| **Umowa klienta firmy Microsoft** | [Plan platformy Microsoft Azure na potrzeby tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | MS-AZR-0148G |
+| **Umowa klienta firmy Microsoft** | [Plan platformy Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND |
+| **Umowa klienta firmy Microsoft** | [Plan platformy Microsoft Azure na potrzeby tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | ND |
 | **Sieć Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
@@ -80,20 +80,21 @@ W poniższych tabelach przedstawiono dane, które ma włączone lub nie znajduje
 | **Dołączono** | **Nie dołączono** |
 | --- | --- |
 | Użycie usługi Azure<sup>1</sup> | Zakup rezerwacji — Aby uzyskać więcej informacji, zobacz [interfejsów API automatyzacji Azure rezerwacji](../billing/billing-reservation-apis.md). |
-| Użycie ofert portalu Marketplace | Zakupy w witrynie Marketplace — Aby uzyskać więcej informacji, zobacz [opłat za usługi innych firm](../billing/billing-understand-your-azure-marketplace-charges.md). |
+| Sposób użycia oferty w portalu Marketplace<sup>2</sup> | Zakupy w witrynie Marketplace — Aby uzyskać więcej informacji, zobacz [opłat za usługi innych firm](../billing/billing-understand-your-azure-marketplace-charges.md). |
 |   | Obsługuje opłaty — Aby uzyskać więcej informacji, zobacz [warunki wyjaśniono faktur](../billing/billing-understand-your-invoice.md). |
 |   | Podatki — Aby uzyskać więcej informacji, zobacz [warunki wyjaśniono faktur](../billing/billing-understand-your-invoice.md). |
 |   | Środki na korzystanie z — Aby uzyskać więcej informacji, zobacz [warunki wyjaśniono faktur](../billing/billing-understand-your-invoice.md). |
 
 <sup>1</sup> opiera się na rezerwacji użycie usług platformy azure i umożliwić jego negocjację ceny.
+<sup>2</sup> użycia oferty w portalu marketplace nie jest dostępna dla płatność za rzeczywiste użycie, MSDN, i Visual Studio oferuje w tej chwili.
 
 **Metadane**
 
 | **Dołączono** | **Nie dołączono** |
 | --- | --- |
-| Tagi zasobów<sup>2</sup> | Pozycja znaczniki grupy zasobów |
+| Tagi zasobów<sup>3</sup> | Pozycja znaczniki grupy zasobów |
 
-<sup>2</sup> tagi zasobów są stosowane są informacje o użytkowaniu generowane w poszczególnych usług i nie są dostępne wstecznie historycznych danych użycia.
+<sup>3</sup> tagi zasobów są stosowane są informacje o użytkowaniu generowane w poszczególnych usług i nie są dostępne wstecznie historycznych danych użycia.
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Harmonogram odświeżania danych użycia ocenione
 

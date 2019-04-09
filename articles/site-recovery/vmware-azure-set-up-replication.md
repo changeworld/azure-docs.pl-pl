@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006818"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278228"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurowanie zasad replikacji dla odzyskiwania po awarii programu VMware na platformę Azure i zarządzanie
 W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikujesz maszyny wirtualne VMware na platformę Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
@@ -20,7 +20,7 @@ W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikuje
 ## <a name="create-a-policy"></a>Utwórz zasady
 
 1. Wybierz pozycję **Zarządzaj** > **Infrastruktura usługi Site Recovery**.
-2. W **oprogramowanie VMware i maszyny fizyczne**, wybierz opcję **zasady replikacji**. 
+2. W **oprogramowanie VMware i maszyny fizyczne**, wybierz opcję **zasady replikacji**.
 3. Kliknij przycisk **+ zasady replikacji**, a następnie określ nazwę zasad.
 4. W polu **Wartość progowa celu punktu odzyskiwania** określ limit celu punktu odzyskiwania. Alerty są generowane, gdy ciągłej replikacji przekracza ten limit.
 5. W obszarze **Przechowywanie punktów odzyskiwania** określ w godzinach, jak długie będzie okno przechowywania dla każdego punktu odzyskiwania. Chronione maszyny można odzyskać do dowolnego punktu w tym oknie przechowywania. W przypadku maszyn replikowanych do magazynu w warstwie Premium jest obsługiwany czas przechowywania do 24 godzin. Do 72 godzin jest obsługiwana dla magazynu w warstwie standardowa.
@@ -29,7 +29,7 @@ W tym artykule opisano sposób konfigurowania zasad replikacji, Jeśli replikuje
 
 Po utworzeniu zasad replikacji, odpowiadające im zasady powrotu po awarii replikacji jest tworzone automatycznie, wraz z sufiksem "powrotu po awarii". Po utworzeniu zasad, można go edytować, wybierając ją > **edytowanie ustawień**.
 
-## <a name="associate-a-configuration-server"></a>Kojarzenie serwera konfiguracji 
+## <a name="associate-a-configuration-server"></a>Kojarzenie serwera konfiguracji
 
 Skojarz zasady replikacji z serwera konfiguracji w środowisku lokalnym.
 

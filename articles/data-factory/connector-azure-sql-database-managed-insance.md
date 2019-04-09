@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903389"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272210"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -282,7 +282,7 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type ujścia działania kopiowania musi być równa **SqlSink**. | Tak. |
-| writeBatchSize |Ta właściwość wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to liczby całkowite, liczby wierszy. |Nie (domyślne: 10,000). |
+| writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/>Dozwolone wartości to liczby całkowite, liczby wierszy. |Nie (domyślne: 10,000). |
 | writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie przed upływem limitu czasu operacji wstawiania wsadowego.<br/>Dozwolone wartości to zakresu czasu. Na przykład "00: 30:00," który jest 30 minut. |Nie. |
 | preCopyScript |Ta właściwość określa zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do wystąpienia zarządzanego. Jest wywoływana tylko raz na kopiowania Uruchom. Ta właściwość umożliwia oczyszczania załadowanych danych. |Nie. |
 | sqlWriterStoredProcedureName |Ta nazwa jest procedury przechowywanej, która definiuje sposób stosowania źródła danych do tabeli docelowej. Przykłady procedury to zrobić za pomocą z własną logiką biznesową wykonuje operację UPSERT lub przekształcenia. <br/><br/>Procedura składowana jest *wywoływane na partię*. Do wykonania operacji, która jest uruchamiany tylko raz i nie ma nic wspólnego z danych źródłowych, na przykład, usunąć lub obciąć należy użyć `preCopyScript` właściwości. |Nie. |
@@ -438,9 +438,9 @@ Gdy dane są kopiowane do wystąpienia zarządzanego Azure SQL Database, procedu
 
 Podczas kopiowania wbudowane mechanizmy nie służą do celów, można użyć procedury składowanej. Jest ona zwykle używana, gdy upsert (aktualizacja + insert) lub dodatkowego przetwarzania musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej. Dodatkowe operacje mogą obejmować zadania, takie jak scalanie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do wielu tabel.
 
-Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarządzanym za pomocą procedury składowanej. Przykład przyjęto założenie, iż dane wejściowe, jak i w tabeli "Marketing" sink trzy kolumny: Identyfikator profilu, stan i kategorii. Przeprowadź upsert, w oparciu o kolumnę ProfileID i poprosić o określonej kategorii.
+Poniższy przykład pokazuje sposób użycia procedury składowanej w celu upsert do tabeli w bazie danych programu SQL Server. Przyjęto założenie, że dane wejściowe i obiekt sink **marketingu** każda tabela ma trzy kolumny: **ProfileID**, **stanu**, i **kategorii**. Czy upsert na podstawie **ProfileID** kolumny i zastosować je tylko dla określonej kategorii.
 
-**Wyjściowy zestaw danych**
+**Wyjściowy zestaw danych:** "tableName" powinien być tej samej nazwie parametru typu tabeli w swojej przechowywanej procedurze (patrz poniżej skrypt procedury składowanej).
 
 ```json
 {
@@ -459,7 +459,7 @@ Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarzą
 }
 ```
 
-Zdefiniuj sekcji SqlSink w działaniu kopiowania w następujący sposób:
+Zdefiniuj **SQL ujścia** sekcji w działaniu kopiowania w następujący sposób.
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ Zdefiniuj sekcji SqlSink w działaniu kopiowania w następujący sposób:
 }
 ```
 
-W bazie danych zdefiniuj procedurę składowaną o takiej samej nazwie jako SqlWriterStoredProcedureName. Obsługuje dane wejściowe z określonego źródła i scala tabela danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak nazwa "tableName", który jest zdefiniowany w zestawie danych.
+W bazie danych, zdefiniuj procedurę składowaną z taką samą nazwę jak **SqlWriterStoredProcedureName**. Go obsługuje danych wejściowych z określonego źródła i scala w tabeli wyników. Nazwa parametru typu tabeli w procedurze składowanej powinna być taka sama jak **tableName** zdefiniowane w zestawie danych.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

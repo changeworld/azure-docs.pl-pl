@@ -5,21 +5,21 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894017"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270527"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
 Usługa Azure Container Registry to zarządzana usługa [rejestru platformy Docker](https://docs.docker.com/registry/) oparta na oprogramowaniu typu open-source Docker Registry 2.0. Twórz i obsługuj rejestry kontenerów platformy Azure w celu przechowywania prywatnych obrazów [kontenerów platformy Docker](https://www.docker.com/what-docker) i zarządzania nimi.
 
-Używaj rejestrów kontenerów na platformie Azure wraz z istniejącymi potokami programowania i wdrażania kontenerów. Używaj usługi Azure Container Registry Build (ACR Build) do kompilowania obrazów kontenerów na platformie Azure. Twórz kompilacje dostępne na żądanie lub całkowicie zautomatyzowane przy użyciu wyzwalaczy kompilacji aktualizacji obrazu podstawowego i zatwierdzenia kodu źródłowego.
+Rejestry kontenerów na platformie Azure za pomocą Twojego istniejącego kontenera potoków programowania i wdrażania lub użyj [zadania ACR](#azure-container-registry-tasks) do tworzenia obrazów kontenerów na platformie Azure. Twórz kompilacje dostępne na żądanie lub całkowicie zautomatyzowane przy użyciu wyzwalaczy kompilacji aktualizacji obrazu podstawowego i zatwierdzenia kodu źródłowego.
 
 Aby uzyskać ogólne informacje o platformie Docker i kontenerach, zobacz temat [Docker overview](https://docs.docker.com/engine/docker-overview/) (Omówienie platformy Docker).
 
@@ -32,15 +32,17 @@ Aby uzyskać ogólne informacje o platformie Docker i kontenerach, zobacz temat 
 
 Deweloperzy mogą również przeprowadzać wypychanie do rejestru kontenerów w ramach przepływu pracy opracowywania kontenera. Na przykład mogą kierować dane do rejestru kontenerów z poziomu narzędzia integracji ciągłej lub narzędzia do wdrażania, takiego jak usługa [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) lub [Jenkins](https://jenkins.io/).
 
-Skonfiguruj usługę ACR Tasks, aby automatycznie ponownie kompilować obrazy aplikacji podczas aktualizowania ich obrazów podstawowych. Przy użyciu usługi ACR Tasks możesz zautomatyzować kompilacje obrazów, gdy Twój zespół będzie zatwierdzać kod w repozytorium usługi Git.
+Konfigurowanie zadań ACR może automatycznie odbudować obrazy aplikacji, po zaktualizowaniu ich obrazy podstawowe lub Automatyzowanie kompilacji obrazów, gdy zespół zatwierdzenia kodu do repozytorium Git. Tworzenie wieloetapowych zadań do automatyzowania tworzenia, testowania i stosowanie poprawek wiele obrazów kontenera równolegle w chmurze.
+
+Platforma Azure udostępnia narzędzia, w tym interfejsu wiersza polecenia platformy Azure, witryny Azure portal i obsługa interfejsu API do zarządzania usługi rejestry kontenerów platformy Azure. Opcjonalnie Zainstaluj [rozszerzenie Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) i [konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozszerzenie, aby pracować z rejestrów kontenerów platformy Azure. Ściąganie i wypychanie obrazów do usługi Azure container registry lub uruchamiania zadań podrzędnych usługi ACR, wszystko to w ramach programu Visual Studio Code.
 
 ## <a name="key-concepts"></a>Kluczowe pojęcia
 
-* **Rejestr** — utwórz przynajmniej jeden rejestr kontenerów w subskrypcji platformy Azure. Rejestry są dostępne w ramach trzech jednostek SKU: [podstawowej, standardowej i Premium](container-registry-skus.md). Każda z nich obsługuje integrację elementów webhook, uwierzytelnianie rejestru za pomocą usługi Azure Active Directory oraz funkcję usuwania. Utwórz rejestr w tej samej lokalizacji platformy Azure, w której znajdują się wdrożenia, aby korzystać z lokalnego, bliskiego sieciowo magazynu obrazów kontenerów. Użyj funkcji [replikacji geograficznej](container-registry-geo-replication.md) dostępnej w rejestrach w warstwie Premium dla scenariuszy zaawansowanej replikacji i dystrybucji obrazu kontenera. W pełni kwalifikowana nazwa rejestru ma format `myregistry.azurecr.io`.
+* **Rejestr** — utwórz przynajmniej jeden rejestr kontenerów w subskrypcji platformy Azure. Rejestry są dostępne w ramach trzech jednostek SKU: [Podstawowa, standardowa i Premium](container-registry-skus.md), każdy z nich obsługuje integrację elementów webhook, uwierzytelnianie rejestru za pomocą usługi Azure Active Directory i funkcji usuwania. Utwórz rejestr w tej samej lokalizacji platformy Azure, w której znajdują się wdrożenia, aby korzystać z lokalnego, bliskiego sieciowo magazynu obrazów kontenerów. Użyj funkcji [replikacji geograficznej](container-registry-geo-replication.md) dostępnej w rejestrach w warstwie Premium dla scenariuszy zaawansowanej replikacji i dystrybucji obrazu kontenera. W pełni kwalifikowana nazwa rejestru ma format `myregistry.azurecr.io`.
 
-  Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą tożsamości platformy Azure, [jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Zaloguj się do rejestru za pomocą interfejsu wiersza polecenia platformy Azure lub standardowego polecenia `docker login`.
+  Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą tożsamości platformy Azure, [jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Zaloguj się do rejestru przy użyciu wiersza polecenia platformy Azure lub standardem `docker login` polecenia.
 
-* **Repozytorium** — rejestr zawiera przynajmniej jedno repozytorium stanowiące grupę obrazów kontenerów. Usługa Azure Container Registry obsługuje wielopoziomowe przestrzenie nazw repozytoriów. Dzięki wielopoziomowym przestrzeniom nazw można grupować kolekcje obrazów związanych z określoną aplikacją lub kolekcje aplikacji związanych z określonymi zespołami programistycznymi lub operacyjnymi. Na przykład:
+* **Repozytorium** — Rejestr zawiera przynajmniej jednej stanowiące wirtualnego grupę obrazów kontenerów przy użyciu tej samej nazwie, ale różnych znaczników lub skróty. Usługa Azure Container Registry obsługuje wielopoziomowe przestrzenie nazw repozytoriów. Dzięki wielopoziomowym przestrzeniom nazw można grupować kolekcje obrazów związanych z określoną aplikacją lub kolekcje aplikacji związanych z określonymi zespołami programistycznymi lub operacyjnymi. Na przykład:
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` reprezentuje obraz całej firmy
   * `myregistry.azurecr.io/warrantydept/dotnet-build` reprezentuje obraz używany do tworzenia aplikacji platformy .NET, współużytkowana przez dział gwarancji

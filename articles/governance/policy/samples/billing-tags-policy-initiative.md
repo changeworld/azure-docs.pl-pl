@@ -1,19 +1,18 @@
 ---
 title: Przykład — inicjatywa zasad tagów rozliczeń
 description: Ta przykładowa definicja zasad wymaga określonych wartości tagów dotyczących centrum kosztu i nazwy produktu.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 13a9dd86e83099e25f7688ddb8ecc04793d3bb27
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9d9a3a5af304c1080d1d43b9bbfbafe2554a9844
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801772"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275015"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa zasad tagów rozliczeń
 
@@ -29,7 +28,7 @@ Można wdrożyć ten szablon przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Dprzykładowe zasady na platformie Azure eploy](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 

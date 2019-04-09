@@ -1,7 +1,6 @@
 ---
 title: Tworzenie zasad dla niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Używając interfejsu wiersza polecenia platformy Azure, utwórz przypisanie usługi Azure Policy, aby zidentyfikować niezgodne zasoby.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1f80171e8987f92688d564713e29fbfe2e103335
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: e30308ac2cda643cc0157f5e718157f6599751d6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342188"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283549"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -113,7 +112,7 @@ Aby usunąć utworzone przypisanie, wykonaj następujące polecenie:
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start została przypisana definicja zasad mających na celu zidentyfikowanie niezgodnych zasobów w środowisku platformy Azure.
 

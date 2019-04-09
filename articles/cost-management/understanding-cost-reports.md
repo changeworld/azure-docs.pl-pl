@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109818"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265835"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn Understanding management raportów kosztów
 
@@ -85,7 +85,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
        - Jednorazowa opłata
        - Pomoc techniczna
        - Koszt użycia
-     - **Odbiorcy**
+     - **Klient**
        - Wybierz określonego odbiorcy, wielu klientów lub wszystkich klientów.
      - **Nazwa konta**
        - Nazwa konta lub subskrypcji. Na platformie Azure jest nazwa subskrypcji platformy Azure.
@@ -103,7 +103,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
        - Usługi AWS samodzielnie lokalizacje w regionie.
      - **Typ zasobu**
        - Typ zasobu w użyciu.
-     - **Sub-Type**
+     - **Podtyp**
        - Wybierz typ podrzędnych.
      - **Operacja**
        - Wybierz operację lub **Pokaż wszystko**.
@@ -116,7 +116,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
        - Miejsce
      - **Typ opłaty**
        - Wybierz typ opłaty ujemne lub dodatni, lub obu.
-     - **Tenancy**
+     - **Dzierżawa**
        - Czy maszyna jest uruchomiona jako dedykowane maszyny.
      - **Typ użycia**
        - Typ użycia może być opłat jednorazowych lub opłat cyklicznych.
@@ -125,7 +125,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
     Użyj filtrów pojedynczego lub wielokrotnego wyboru, aby ustawić zakresy adresów wybrane wartości. Aby ustawić filtr, kliknij **Dodaj** a następnie wybierz filtr kategorie i wartości.
 
-6. **Model kosztów**
+6. **Cost Model**
 
     Użyj modelu kosztów, aby wybrać model kosztów, która została wcześniej utworzona za pomocą Cost Allocation 360. Możesz mieć wiele modeli kosztów Cloudyn, w zależności od wymagań alokacji kosztów. Niektóre zespołom w organizacji mogą kosztów alokacji wymagania, które różnią się od innych użytkowników. Każdy zespół może mieć własne modelu kosztów dedykowanych.
 
@@ -141,7 +141,7 @@ Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisan
 
    W obszarze amortyzacji wybierz **amortyzowanego kosztu** lub **rzeczywistego kosztu**.
 
-8. **Rozdzielczość**
+8. **Rozwiązanie**
 
     Użyj rozwiązania, aby wybrać czas rozdzielczość w ramach wybranego zakresu dat. Rozdzielczość czasu określa, jak jednostki są wyświetlane w raporcie i można:
     - Codziennie

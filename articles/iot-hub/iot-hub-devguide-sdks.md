@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: fcb6f564c97632e4d62f7f052ec5ecc35a9e479a
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011249"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279356"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Zrozumienia i użycia, zestawami SDK Azure IoT Hub
 
@@ -48,7 +48,7 @@ Usługa Azure IoT Hub device zestawu SDK dla platformy .NET:
 * Pobieranie z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  Przestrzeń nazw jest Microsoft.Azure.Devices.Clients, która zawiera klientów urządzeń w Centrum IoT (DeviceClient, ModuleClient).
 * [Kod źródłowy](https://github.com/Azure/azure-iot-sdk-csharp)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
-* [Odwołania do modułu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+* [Dokumentacja modułu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
 Usługa Azure IoT Hub device zestawu SDK dla języka C (ANSI C - C99):
 
@@ -56,23 +56,24 @@ Usługa Azure IoT Hub device zestawu SDK dla języka C (ANSI C - C99):
 * [Kod źródłowy](https://github.com/Azure/azure-iot-sdk-c)
 * [Skompiluj zestaw SDK urządzeń C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compiling-the-c-device-sdk)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-* [Odwołania do modułu](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
+* [Dokumentacja modułu](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
 * [Przenoszenie zestawu SDK języka C dla innych platform](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
 * [Dokumentacja dla deweloperów](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc) informacji na temat między — kompilowanie, uruchamianie na różnych platformach, itd.
+* [Usługi Azure information zużycie zasobów zestawu SDK C usługi IoT Hub](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
 
 Usługa Azure IoT Hub device zestawu SDK dla języka Java: 
 
 * Dodaj do [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) projektu
 * [Kod źródłowy](https://github.com/Azure/azure-iot-sdk-java)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
-* [Odwołania do modułu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
+* [Dokumentacja modułu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
 Usługa Azure IoT Hub device zestawu SDK dla środowiska Node.js: 
 
 * Zainstaluj z [npm](https://www.npmjs.com/package/azure-iot-device)
 * [Kod źródłowy](https://github.com/Azure/azure-iot-sdk-node)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
-* [Odwołania do modułu](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
+* [Dokumentacja modułu](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
 Usługa Azure IoT Hub device zestawu SDK dla języka Python: 
 
@@ -173,8 +174,8 @@ Dokumentacja odpowiednie dotyczące programowania przy użyciu zestawów SDK us�
 
 Inne tematy referencyjne w tym przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md)
+* [Punkty końcowe centrum IoT Hub](iot-hub-devguide-endpoints.md)
 * [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md)
-* [Limity przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md)
+* [Limity przydziału i ograniczanie wydajności](iot-hub-devguide-quotas-throttling.md)
 * [Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md)
 * [Dokumentacja interfejsu API REST Centrum IoT](/rest/api/iothub/)

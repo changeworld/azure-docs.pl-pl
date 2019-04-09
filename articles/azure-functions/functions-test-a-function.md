@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 15e4cf484ae38268c59781101256d64ef85e72ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439332"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283039"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
@@ -253,6 +253,8 @@ Elementy członkowskie zaimplementowane w tej klasie są:
 
 - **Timer_should_log_message**: Ten test tworzy wystąpienie `ListLogger` i przekazuje je do funkcji czasomierza. Po jego uruchomieniu funkcji dziennika jest sprawdzany, aby upewnić się, że oczekiwany komunikat jest obecny.
 
+Jeśli chcesz uzyskać dostęp ustawienia aplikacji w testach, możesz użyć [o nazwie System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+
 ### <a name="run-tests"></a>Uruchom testy
 
 Aby uruchomić testy, przejdź do **Eksplorator testów** i kliknij przycisk **uruchomić wszystkie**.
@@ -375,6 +377,6 @@ Następnie ustaw punkt przerwania w testów i naciśnij klawisz **F5**.
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wyjaśniono sposób pisania testów automatycznych dla funkcji, Kontynuuj przy użyciu tych zasobów:
-- [Ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](./functions-manually-run-non-http.md)
+- [Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP](./functions-manually-run-non-http.md)
 - [Obsługa błędów w usłudze Azure Functions](./functions-bindings-error-pages.md)
 - [Debugowanie funkcji platformy Azure zdarzeń siatki wyzwalacza lokalnego](./functions-debug-event-grid-trigger-local.md)

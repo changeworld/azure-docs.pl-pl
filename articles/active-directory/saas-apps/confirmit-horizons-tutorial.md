@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3533b9e6df0cb0d4be6ea538ce3d0cde4f6e9f2a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8fce2451c915eb4480f6068667350da80e5cf7c5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373000"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą horyzonty Confirmit
 
@@ -218,7 +218,7 @@ Po kliknięciu kafelka horyzonty Confirmit w panelu dostępu, powinien zostać a
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

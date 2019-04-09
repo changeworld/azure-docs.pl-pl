@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 51f4801c00d23aa820949faa58f7cd64ee3597ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842400"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą mindWireless
 
@@ -104,7 +104,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z mindWireless, wykon
 
     ![mindWireless domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.mwsmart.com/`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.mwsmart.com/`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
 
@@ -220,7 +220,7 @@ Po kliknięciu kafelka mindWireless w panelu dostępu, powinien zostać automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

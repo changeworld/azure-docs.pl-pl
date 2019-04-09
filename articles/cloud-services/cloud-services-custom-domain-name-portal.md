@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 814ae0e79ac24d5b645c4bf107287ab1b8326ff4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121625"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267150"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze platformy Azure
 Podczas tworzenia usługi w chmurze, platforma Azure przypisuje go do domeny podrzędnej **cloudapp.net**. Na przykład, jeśli usługa w chmurze ma nazwę "contoso", użytkownicy będą mogli korzystać z aplikacji na adres URL podobny http://contoso.cloudapp.net. Platforma Azure przypisuje także wirtualnego adresu IP.
@@ -64,11 +64,11 @@ Aby utworzyć rekord CNAME, należy dodać nowy wpis w tabeli DNS dla domeny nie
 
 1. Użyj jednej z następujących metod, aby znaleźć **. cloudapp.net** nazwy domeny przypisany do usługi w chmurze.
 
-   * Zaloguj się do [Azure Portal], wybierz usługę w chmurze, Przyjrzyj się **Essentials** sekcji, a następnie znajdź **adres URL witryny** wpisu.
+   * Zaloguj się do [witryny Azure portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **adres URL witryny** wpisu.
 
        ![Przegląd sekcji, w której adres URL witryny][csurl]
 
-       **OR**
+       **LUB**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie za pomocą następującego polecenia:
 
        ```powershell
@@ -97,11 +97,11 @@ Aby utworzyć rekord A, możesz znaleźć wirtualnego adresu IP usługi w chmurz
 
 1. Aby uzyskać adres IP usługi w chmurze, użyj jednej z następujących metod.
 
-   * Zaloguj się do [Azure Portal], wybierz usługę w chmurze, Przyjrzyj się **Essentials** sekcji, a następnie znajdź **publiczne adresy IP** wpisu.
+   * Zaloguj się do [witryny Azure portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **publiczne adresy IP** wpisu.
 
        ![Przegląd sekcji, w której adres VIP][vip]
 
-       **OR**
+       **LUB**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie za pomocą następującego polecenia:
 
        ```powershell

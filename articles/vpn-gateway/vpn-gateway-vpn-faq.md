@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: yushwang
-ms.openlocfilehash: a4f8e2b6a1367658514cc1bf9711825959ee371e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0060d81ae44bd54ab193eb77e3117b7afbfbf73
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095657"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281053"
 ---
 # <a name="vpn-gateway-faq"></a>Brama sieci VPN — często zadawane pytania
 
@@ -74,8 +74,8 @@ Nie. Nie można zmienić typu bramy sieci wirtualnej platformy Azure z opartej 
 1. Usuń bramę:
 1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell — wersja klasyczna](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Utwórz nową bramę odpowiedniego typu i zakończ konfigurowanie sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+1. [Azure Powershell — Model Klasyczny](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Utwórz nową bramę żądany typ i zakończyć konfigurację sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Czy potrzebuję podsieci „GatewaySubnet”?
 
@@ -242,3 +242,5 @@ Dodatkowe informacje dotyczące sieci wirtualnej można znaleźć w artykule [Vi
 
 * Więcej informacji o usłudze VPN Gateway można znaleźć w artykule [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md).
 * Aby uzyskać więcej informacji o ustawieniach konfiguracji bramy VPN Gateway, zobacz temat [About VPN Gateway configuration settings](vpn-gateway-about-vpn-gateway-settings.md) (Informacje o ustawieniach konfiguracji bramy VPN Gateway).
+
+**"OpenVPN" jest zastrzeżonym znakiem towarowym firmy OpenVPN Inc.**

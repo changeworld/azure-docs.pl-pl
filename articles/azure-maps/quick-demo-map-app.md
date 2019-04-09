@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3482a5516e0a044716ac38e7a60a9a8484f73245
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056218"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268674"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Tworzenie interaktywnego wyszukiwania na mapie za pomocą usługi Azure Maps
 
@@ -73,12 +73,12 @@ W tych samouczkach szczegółowo opisano sposób użycia i konfigurowania usług
 W tym przewodniku Szybki start utworzyliśmy konto usługi Azure Maps i utworzyliśmy aplikację demonstracyjną. Przyjrzyj się następujące samouczki, aby dowiedzieć się więcej na temat usługi Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Wyszukiwanie punktów orientacyjnych w pobliżu za pomocą usługi Azure Maps](./tutorial-search-location.md)
+> [Wyszukiwanie punktów orientacyjnych w pobliżu za pomocą usługi Azure Maps](tutorial-search-location.md)
 
 Aby uzyskać dodatkowe przykłady kodu i zapoznać się z interaktywnym środowiskiem kodowania, przejrzyj następujące przewodniki:
 
 > [!div class="nextstepaction"]
-> [Znajdowanie adresu przy użyciu usługi wyszukiwania usługi Azure Maps](./how-to-search-for-address.md)
+> [Znajdowanie adresu przy użyciu usługi wyszukiwania usługi Azure Maps](how-to-search-for-address.md)
 
 > [!div class="nextstepaction"]
-> [Korzystanie z kontrolki mapy usługi Azure Maps](./how-to-use-map-control.md)
+> [Korzystanie z kontrolki mapy usługi Azure Maps](how-to-use-map-control.md)

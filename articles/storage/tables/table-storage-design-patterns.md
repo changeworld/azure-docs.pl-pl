@@ -2,18 +2,18 @@
 title: Wzorce projektowe oparte na usłudze Azure storage table | Dokumentacja firmy Microsoft
 description: Wzorce na użytek rozwiązania usługi Azure table.
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: sngun
+ms.date: 04/08/2019
+ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995298"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271632"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -197,7 +197,7 @@ Umożliwia wyszukiwanie według nazwiska ze strukturą entity powyżej, musisz u
 * Utwórz jednostki indeksu w jednej partycji jako jednostki pracownika.  
 * Utwórz jednostki indeksu w oddzielnej partycji lub tabeli.  
 
-<u>Opcja #1: Usługa blob storage</u>  
+<u>Opcja #1: Korzystanie z magazynu Blob Storage</u>  
 
 Pierwszej opcji Tworzenie obiektu blob dla każdego unikatowy nazwisko i w każdym magazynie obiektów blob listę **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) wartości dla pracowników, które mają ten nazwisko. Po dodaniu lub usunięciu pracownika należy się upewnić, że zawartości odpowiedniego obiektu blob jest ostatecznie spójny z jednostkami pracownika.  
 
@@ -583,27 +583,25 @@ var query = (from employee in employeeQuery
             employee.RowKey.CompareTo("B") >= 0 &&
             employee.RowKey.CompareTo("C") < 0
             select employee).AsTableQuery();
+            
 var employees = query.Execute();  
 ```
 
 Zwróć uwagę, jak zapytanie określa zarówno **RowKey** i **PartitionKey** zapewniające lepszą wydajność.  
 
-Poniższy przykład kodu pokazuje równoważne funkcje przy użyciu interfejsu API fluent (Aby uzyskać więcej informacji na temat płynnych interfejsów API ogólnie rzecz biorąc, zobacz [najlepsze rozwiązania dotyczące projektowania interfejs Fluent API](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Poniższy przykład kodu pokazuje równoważną funkcjonalność bez przy użyciu składni LINQ:  
 
 ```csharp
-TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
-    TableQuery.CombineFilters(
-    TableQuery.CombineFilters(
-        TableQuery.GenerateFilterCondition(
-    "PartitionKey", QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
-    TableQuery.GenerateFilterCondition(
-    "RowKey", QueryComparisons.GreaterThanOrEqual, "B")
-),
-TableOperators.And,
-TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")
-    )
-);
+TableQuery<EmployeeEntity> employeeQuery = 
+    new TableQuery<EmployeeEntity>().Where(
+        TableQuery.CombineFilters(
+            TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B")),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")));
+            
 var employees = employeeTable.ExecuteQuery(employeeQuery);  
 ```
 
@@ -622,36 +620,31 @@ Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w
 Jeśli używasz biblioteki klienta usługi Storage go automatycznie obsługiwać tokenów kontynuacji dla Ciebie jako zwraca jednostki z usługi tabel. Poniższy przykład kodu C# automatycznie przy użyciu biblioteki klienta usługi Storage obsługuje tokeny kontynuacji, jeśli usługa table service zwraca je w odpowiedzi:  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 var employees = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var emp in employees)
 {
-        ...
+    // ...
 }  
 ```
 
 Poniższy kod C# obsługuje tokeny kontynuacji jawnie:  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 TableContinuationToken continuationToken = null;
-
 do
 {
-        var employees = employeeTable.ExecuteQuerySegmented(
-        employeeQuery, continuationToken);
+    var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
     foreach (var emp in employees)
     {
-    ...
+        // ...
     }
+    
     continuationToken = employees.ContinuationToken;
 } while (continuationToken != null);  
 ```
@@ -677,16 +670,15 @@ employeeQuery.TakeCount = 50;
 Pojedynczy element może mieć maksymalnie 255 właściwości i mieć rozmiar maksymalnie 1 MB. Gdy odpytać tabelę i pobieranie jednostek, mogą nie być potrzebne wszystkie właściwości i uniknąć przesyłania danych niepotrzebnie (w celu zmniejszenia opóźnień i kosztów). Projekcja po stronie serwera umożliwia transfer tylko właściwości, których potrzebujesz. Poniższy przykład jest pobiera tylko **E-mail** właściwości (wraz z **PartitionKey**, **RowKey**, **sygnatura czasowa**i **ETag**) z jednostek wybranych przez zapytanie.  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
 List<string> columns = new List<string>() { "Email" };
 TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
+    new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
 
 var entities = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var e in entities)
 {
-        Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
+    Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
 }  
 ```
 
@@ -921,31 +913,29 @@ Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **Parti
 Drugą opcją jest użycie **DynamicTableEntity** typu (zbiór właściwości) zamiast konkretny typ jednostki POCO (Ta opcja może również zwiększyć wydajność, ponieważ nie ma potrzeby do serializacji i deserializacji jednostki do typów .NET). Poniższy kod C# potencjalnie pobiera wielu jednostek o różnych typach z tabeli, ale zwraca wszystkie jednostki jako **DynamicTableEntity** wystąpień. Następnie używa **EntityType** właściwości, aby określić typ każdego obiektu:  
 
 ```csharp
-string filter = TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("PartitionKey",
-    QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
+string filter =
     TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("RowKey",
-                    QueryComparisons.GreaterThanOrEqual, "B"),
+        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
         TableOperators.And,
-        TableQuery.GenerateFilterCondition("RowKey",
-        QueryComparisons.LessThan, "F")
-    )
-);
+        TableQuery.CombineFilters(
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B"),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "F")));
+        
 TableQuery<DynamicTableEntity> entityQuery =
     new TableQuery<DynamicTableEntity>().Where(filter);
+    
 var employees = employeeTable.ExecuteQuery(entityQuery);
 
 IEnumerable<DynamicTableEntity> entities = employeeTable.ExecuteQuery(entityQuery);
 foreach (var e in entities)
 {
-EntityProperty entityTypeProperty;
-if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
-{
-    if (entityTypeProperty.StringValue == "Employee")
+    EntityProperty entityTypeProperty;
+    if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
     {
-        // Use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
+        if (entityTypeProperty.StringValue == "Employee")
+        {
+            // use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
         }
     }
 }  
@@ -958,42 +948,43 @@ Trzecia opcja to się połączyć przy użyciu **DynamicTableEntity** typu i **E
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
 {
-
-        TableEntity resolvedEntity = null;
-        if (props["EntityType"].StringValue == "Department")
-        {
+    TableEntity resolvedEntity = null;
+    if (props["EntityType"].StringValue == "Department")
+    {
         resolvedEntity = new DepartmentEntity();
-        }
-        else if (props["EntityType"].StringValue == "Employee")
-        {
+    }
+    else if (props["EntityType"].StringValue == "Employee")
+    {
         resolvedEntity = new EmployeeEntity();
-        }
-        else throw new ArgumentException("Unrecognized entity", "props");
+    }
+    else 
+    {
+        throw new ArgumentException("Unrecognized entity", "props");
+    }
 
-        resolvedEntity.PartitionKey = pk;
-        resolvedEntity.RowKey = rk;
-        resolvedEntity.Timestamp = ts;
-        resolvedEntity.ETag = etag;
-        resolvedEntity.ReadEntity(props, null);
-        return resolvedEntity;
+    resolvedEntity.PartitionKey = pk;
+    resolvedEntity.RowKey = rk;
+    resolvedEntity.Timestamp = ts;
+    resolvedEntity.ETag = etag;
+    resolvedEntity.ReadEntity(props, null);
+    return resolvedEntity;
 };
 
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<DynamicTableEntity> entityQuery =
-        new TableQuery<DynamicTableEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+        
+TableQuery<DynamicTableEntity> entityQuery = new TableQuery<DynamicTableEntity>().Where(filter);
 
 var entities = employeeTable.ExecuteQuery(entityQuery, resolver);
 foreach (var e in entities)
 {
-        if (e is DepartmentEntity)
-        {
-    ...
-        }
-        if (e is EmployeeEntity)
-        {
-    ...
-        }
+    if (e is DepartmentEntity)
+    {
+        // ...
+    }
+    else if (e is EmployeeEntity)
+    {
+        // ...
+    }
 }  
 ```
 
@@ -1001,19 +992,17 @@ foreach (var e in entities)
 Nie trzeba znać typ jednostki, aby go usunąć, i zawsze znasz typ jednostki po wstawieniu go. Można jednak użyć **DynamicTableEntity** typu, aby zaktualizować jednostkę, nie wiedząc o tym jej typ i bez użycia klasą jednostki POCO. Poniższy przykładowy kod umożliwia pobranie pojedynczej jednostki i sprawdza **EmployeeCount** istnieje właściwość przed aktualizacją.  
 
 ```csharp
-TableResult result =
-        employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
+TableResult result = employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
 DynamicTableEntity department = (DynamicTableEntity)result.Result;
 
 EntityProperty countProperty;
-
 if (!department.Properties.TryGetValue("EmployeeCount", out countProperty))
 {
-        throw new
-        InvalidOperationException("Invalid entity, EmployeeCount property not found.");
+    throw new InvalidOperationException("Invalid entity, EmployeeCount property not found.");
 }
+
 countProperty.Int32Value += 1;
-employeeTable.Execute(TableOperation.Merge(department));  
+employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>Kontrolowanie dostępu przy użyciu sygnatury dostępu współdzielonego
@@ -1038,23 +1027,20 @@ W ramach wystąpienie klienta może zwiększyć przepływność, wykonując oper
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = employeeTable.ExecuteQuerySegmented(
-                employeeQuery, continuationToken);
-        foreach (var emp in employees)
+    TableContinuationToken continuationToken = null;
+    do
     {
-        ...
-    }
+        var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
+        foreach (var emp in employees)
+        {
+            // ...
+        }
+        
         continuationToken = employees.ContinuationToken;
-        } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1063,22 +1049,20 @@ Można łatwo modyfikować ten kod, tak aby zapytanie jest uruchamiane asynchron
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = await employeeTable.ExecuteQuerySegmentedAsync(
-                employeeQuery, continuationToken);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
+    
+    TableContinuationToken continuationToken = null;
+    do
+    {
+        var employees = await employeeTable.ExecuteQuerySegmentedAsync(employeeQuery, continuationToken);
         foreach (var emp in employees)
         {
-            ...
+            // ...
         }
+    
         continuationToken = employees.ContinuationToken;
-            } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1094,24 +1078,24 @@ Należy pamiętać, że nie ma wersji asynchronicznej **Execute** method in Clas
 Można także wstawianie, aktualizowanie i usuwanie jednostek asynchronicznie. Poniższy przykład C# pokazuje prosty, synchronicznej metody Wstawianie lub zastępowanie jednostki pracowników:  
 
 ```csharp
-private static void SimpleEmployeeUpsert(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static void SimpleEmployeeUpsert(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = employeeTable
-        .Execute(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = employeeTable.Execute(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 
 Można łatwo modyfikować ten kod, tak aby aktualizacja jest uruchamiane asynchronicznie, w następujący sposób:  
 
 ```csharp
-private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static async Task SimpleEmployeeUpsertAsync(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = await employeeTable
-        .ExecuteAsync(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = await employeeTable.ExecuteAsync(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 
@@ -1125,6 +1109,6 @@ Aplikacja kliencka można wywołać wiele metod asynchronicznych, takich jak ta,
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Modelowanie relacji](table-storage-design-modeling.md)
-- [Projektowanie pod kątem zapytań](table-storage-design-for-query.md)
-- [Szyfrowanie danych w tabeli](table-storage-design-encrypt-data.md)
+- [Projektowanie pod kątem wykonywania zapytań](table-storage-design-for-query.md)
+- [Szyfrowanie danych tabeli](table-storage-design-encrypt-data.md)
 - [Projektowanie pod kątem modyfikacji danych](table-storage-design-for-modification.md)

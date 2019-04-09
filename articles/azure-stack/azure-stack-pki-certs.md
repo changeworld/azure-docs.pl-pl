@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6d3cb99a55ae5eb8276391f22675a88e8b3d072
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660123"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276443"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure Stack infrastruktury kluczy publicznych certyfikatów
 
@@ -38,7 +38,7 @@ Usługa Azure Stack ma sieci publicznych infrastruktury przy użyciu dostępną 
 Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wymagane do wdrożenia usługi Azure Stack: 
 - Certyfikaty muszą być wystawiane z wewnętrznego urzędu certyfikacji lub publicznego urzędu certyfikacji. Jeśli publiczny urząd certyfikacji jest używany, muszą być zawarte w obrazu podstawowego systemu operacyjnego w ramach programu Microsoft zaufanego głównego urzędu. Pełną listę można znaleźć: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
 - Infrastruktury Azure Stack musi mieć dostęp do sieci do lokalizacji listy odwołania certyfikatów (CRL) urzędu certyfikacji, opublikowane w certyfikacie. Tę listę CRL musi być punkt końcowy http
-- W przypadku rotacji certyfikatów, certyfikaty musi być albo wystawionych przez ten sam organ wewnętrznego certyfikatu używanego do podpisywania certyfikatów podane w wdrożenia lub dowolnym publicznego urzędu certyfikacji z powyższych
+- W przypadku rotacji certyfikaty 1903 sprzed kompilacji, certyfikaty musi być albo wystawionych przez ten sam organ wewnętrznego certyfikatu używanego do podpisywania certyfikatów podane w wdrożenia lub dowolnym publicznego urzędu certyfikacji z powyższych. W przypadku certyfikatów 1903 & później mogą być wystawiane przez przedsiębiorstwa lub publicznego urzędu certyfikacji.
 - Korzystanie z certyfikatów z podpisem własnym nie są obsługiwane.
 - Do wdrożenia i obrót, możesz użyć pojedynczego certyfikatu, obejmujące wszystkie przestrzenie nazw pól Nazwa podmiotu i alternatywnej nazwy podmiotu (SAN) certyfikatu lub można użyć poszczególne certyfikaty dla każdej przestrzeni nazw poniżej usługi Azure Stack usługi, której planujesz korzystanie z wymagają. Oba podejścia wymaga użycia symbole wieloznaczne dla punktów końcowych, w którym są one wymagane, takie jak **KeyVault** i **KeyVaultInternal**. 
 - Szyfrowanie PFX certyfikatu powinien być 3DES. 

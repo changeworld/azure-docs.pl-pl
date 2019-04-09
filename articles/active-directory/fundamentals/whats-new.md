@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd3286d51154c9c1dd53a2f87dd8a97999d064a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e5d85d1f211a4cc0307cca6d631a4bf286d3e576
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046703"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271819"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -39,7 +39,39 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie. Jeśli szuk
 
 ---
 
+## <a name="april-2019"></a>2019 kwietnia
+
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Większe bezpieczeństwo, za pomocą zasad dostępu warunkowego na podstawie ochrony aplikacji w usłudze Azure AD (publiczna wersja zapoznawcza)
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Dostęp warunkowy  
+**Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
+
+Dostęp warunkowy oparty na ochronę aplikacji jest teraz dostępna za pomocą **wymagają ochrony aplikacji** zasad. Nowe zasady pomaga zwiększyć bezpieczeństwo w organizacji, zapobiegając:
+
+- Użytkownicy, którzy mają dostęp do aplikacji bez licencji Microsoft Intune.
+
+- Użytkownicy nie można pobrać zasad ochrony aplikacji Microsoft Intune.
+
+- Użytkownicy, którzy mają dostęp do aplikacji bez skonfigurowanych zasad ochrony aplikacji Microsoft Intune.
+
+Aby uzyskać więcej informacji, zobacz [sposób wymagać zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-protection-based-conditional-access).
+
+---
+
 ## <a name="march-2019"></a>Marca 2019 r
+
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nowa funkcja obsługi usługi Azure AD pojedynczego logowania jednokrotnego i warunkowego dostępu w programie Microsoft Edge (publiczna wersja zapoznawcza)
+
+**Typ:** Nowa funkcja  
+**Kategoria usług:** Dostęp warunkowy  
+**Możliwości produktu:** Ochrona i zabezpieczanie tożsamości
+
+Ulepszyliśmy nasze obsługę usługi Azure AD dla programu Microsoft Edge, umieszczając nowa funkcja obsługi pojedynczego logowania jednokrotnego i warunkowego dostępu usługi Azure AD. Jeśli wcześniej używano Microsoft Intune Managed Browser, możesz teraz użyć Microsoft Edge.
+
+Aby uzyskać więcej informacji na temat konfigurowania i zarządzania urządzeniami i aplikacjami przy użyciu dostępu warunkowego, zobacz [wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/require-managed-devices) i [wymagają zatwierdzonych aplikacji klienckich dla chmury dostęp do aplikacji przy użyciu dostępu warunkowego](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/app-based-conditional-access). Aby uzyskać więcej informacji o zarządzaniu dostępem przy użyciu Microsoft Edge zasady w usłudze Microsoft Intune, zobacz [zarządzanie dostępem do Internetu za pomocą usługi Microsoft Intune chronione przez zasady przeglądarki](https://docs.microsoft.com/en-us/intune/app-configuration-managed-browser).
+
+---
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Struktura środowiska tożsamości i zasad niestandardowych w usłudze Azure Active Directory B2C jest teraz dostępna (GA)
 
@@ -502,7 +534,7 @@ Aby uzyskać więcej informacji na temat korzystania z aplikacji Microsoft Authe
 
 ---
 
-### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nowa rola Administrator urządzenia w chmurze w usłudze Azure AD (publiczna wersja zapoznawcza)
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nowa rola Administrator urządzeń w chmurze w usłudze Azure AD (publiczna wersja zapoznawcza)
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Rejestracja urządzeń i zarządzanie nimi  

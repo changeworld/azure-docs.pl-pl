@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 0dc81393bb6e44c15cedb69aec5a637897a2b144
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 889e9fb334f99db85143513f0447c212e54f56cf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838100"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Samouczek: Integracja usługi Azure Active Directory z usługą MaxxPoint
 
@@ -50,7 +50,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji MaxxPoint z usługą Azure AD, należy dodać aplikację MaxxPoint z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację MaxxPoint z galerii, wykonaj następujące kroki:**
+**Aby dodać MaxxPoint z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -194,7 +194,7 @@ Po kliknięciu kafelka MaxxPoint na panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

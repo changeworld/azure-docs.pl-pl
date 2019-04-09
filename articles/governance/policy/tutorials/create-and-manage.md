@@ -1,20 +1,18 @@
 ---
 title: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 description: Usługa Azure Policy umożliwia wymuszanie standardów, zachowanie zgodności z przepisami, spełnianie wymagań inspekcji, kontrolowanie kosztów, zapewnianie spójności wydajności i zabezpieczeń oraz narzucanie zasad projektowania dla całego przedsiębiorstwa.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 879636b9db2d7c2c48c7a4a194b43985785d2623
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 1641a88a95d4c056cdd1be8d855482c80b1430cc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283617"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 

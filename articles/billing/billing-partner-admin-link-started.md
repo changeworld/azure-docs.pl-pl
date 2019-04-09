@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9fb689a2a6e2c1c309d22836e88a63662fed9832
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904835"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270187"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
 
@@ -151,9 +151,9 @@ Możesz znaleźć ich przychód raportowanie na [Insights Mój pulpit nawigacyjn
 
 Nie widzisz klienta w raportach z następujących przyczyn
 
-1. Konto połączonego użytkownika nie ma [dostępu na podstawie roli ](https://docs.microsoft.com/azure/role-based-access-control/overview) dowolnego klienta subskrypcji platformy Azure lub zasobów.
+1. Konto połączonego użytkownika nie ma [dostępu na podstawie roli](https://docs.microsoft.com/azure/role-based-access-control/overview) dowolnego klienta subskrypcji platformy Azure lub zasobów.
 
-2. Subskrypcja platformy Azure, w której użytkownik ma [dostępu na podstawie roli ](https://docs.microsoft.com/azure/role-based-access-control/overview) dostęp nie ma każde miesięczne użycie.
+2. Subskrypcja platformy Azure, w której użytkownik ma [dostępu na podstawie roli](https://docs.microsoft.com/azure/role-based-access-control/overview) dostęp nie ma każde miesięczne użycie.
 
 **Połączenie z partnerem, identyfikator działa z usługą Azure Stack?**
 

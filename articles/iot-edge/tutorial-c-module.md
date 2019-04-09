@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98406df3746bb0ca2fc658697ee25b1f11b54c0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eeaff4769dba5b6e6951665d09cd12d13f22af07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084593"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273722"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: Opracowywanie modułu usługi IoT Edge w języku C i wdrażanie go na urządzeniu symulowanym
 
@@ -36,8 +36,10 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 Urządzenie usługi Azure IoT Edge:
 
-* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w przewodniku Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md). 
-* Moduły języka C dla usługi Azure IoT Edge nie obsługują kontenerów systemu Windows. Jeśli urządzenie usługi IoT Edge jest maszyną z systemem Windows, upewnij się, że skonfigurowano ją do korzystania z kontenerów systemu Linux. Aby uzyskać informacje o różnicach instalacji kontenerów systemów Windows i Linux, zobacz [Install the IoT Edge runtime on Windows (Instalowanie środowiska uruchomieniowego usługi IoT Edge w systemie Windows)](how-to-install-iot-edge-windows.md).
+* Maszynę wirtualną platformy Azure można użyć jako urządzenia usługi IoT Edge, wykonując kroki opisane w przewodniku Szybki Start dla [Linux](quickstart-linux.md) lub [urządzenia Windows](quickstart.md). 
+
+   >[!TIP]
+   >Ten samouczek używa Visual Studio Code do tworzenia modułu C za pomocą kontenerów systemu Linux. Jeśli chcesz programować w C dla Windows kontenery, należy użyć programu Visual Studio 2017. Aby uzyskać więcej informacji, zobacz [Użyj programu Visual Studio 2017 do tworzenia i debugowania modułów dla usługi Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 Zasoby w chmurze:
 
@@ -100,7 +102,7 @@ Utwórz szablon rozwiązania języka C, który można dostosować przy użyciu w
  
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/tutorial-c-module/repository.png)
 
-W oknie programu VS Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge. Obszar roboczy rozwiązania zawiera pięć składników najwyższego poziomu. Folder **modules** zawiera kod języka C dla modułu, a także pliki Dockerfile na potrzeby kompilowania modułu jako obrazu kontenera. W pliku **\.env** są przechowywane poświadczenia rejestru kontenerów. Plik **deployment.template.json** zawiera informacje, których środowisko uruchomieniowe usługi IoT Edge używa do wdrażania modułów na urządzeniu. Natomiast plik **deployment.debug.template.json** zawiera wersję modułów służącą do debugowania. Folder **\.vscode** i plik **\.gitignore** nie będą edytowane w tym samouczku.
+Okna programu VS Code ładuje obszar roboczy rozwiązania usługi IoT Edge z pięciu części najwyższego poziomu. **Modułów** folder zawiera kod języka C dla modułu i pliki Dockerfile do tworzenia modułu jako obrazu kontenera. W pliku **\.env** są przechowywane poświadczenia rejestru kontenerów. Plik **deployment.template.json** zawiera informacje, których środowisko uruchomieniowe usługi IoT Edge używa do wdrażania modułów na urządzeniu. Natomiast plik **deployment.debug.template.json** zawiera wersję modułów służącą do debugowania. Folder **\.vscode** i plik **\.gitignore** nie będą edytowane w tym samouczku.
 
 Jeśli podczas tworzenia własnego rozwiązania nie określisz rejestru kontenerów, ale zaakceptujesz wartość domyślną localhost:5000, nie będziesz mieć pliku \.env.
 
@@ -118,7 +120,7 @@ W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udost�
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-Dodaj do modułu języka C kod, który umożliwia odczytywanie danych z czujnika, sprawdzanie, czy zgłaszana temperatura maszyny przekracza próg bezpieczeństwa, i przekazywanie tych informacji do usługi IoT Hub.
+Dodaj kod do modułu C umożliwiająca go, aby sprawdzić, czy temperatura zgłoszonych maszyny został przekroczony próg bezpieczne. Jeśli temperatura jest zbyt duża, moduł dodaje parametrów alertu do komunikatu przed wysłaniem danych do usługi IoT Hub. 
 
 1. Dane z czujnika w tym scenariuszu są dostępne w formacie JSON. Aby filtrować komunikaty w formacie JSON, należy zaimportować bibliotekę JSON dla języka C. W tym samouczku używana jest biblioteka Parson.
 
@@ -319,9 +321,9 @@ Dodaj do modułu języka C kod, który umożliwia odczytywanie danych z czujnika
 
 ## <a name="build-and-push-your-solution"></a>Kompilowanie i wypychanie rozwiązania
 
-W poprzedniej sekcji utworzono rozwiązanie usługi IoT Edge i dodano kod do modułu CModule, filtrującego komunikaty, w których zgłoszona temperatura maszyny mieści się w dopuszczalnych limitach. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
+W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do CModule, która będzie filtrować wiadomości, gdzie temperatury zgłoszonych maszyny wykracza poza dopuszczalne limity. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
-1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Integrated Terminal (Zintegrowany terminal)**.
+1. Otwórz zintegrowany terminal programu VS Code, wybierając pozycję **View (Widok)** > **Terminal**.
 
 1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu programu Visual Studio Code. Musisz zalogować się przy użyciu poświadczeń usługi Azure Container Registry, aby móc wypchnąć obraz modułu do rejestru.
      
@@ -368,7 +370,7 @@ Gdy zastosujesz manifest wdrożenia na urządzeniu usługi IoT Edge, środowisko
 
 Możesz wyświetlić stan urządzenia usługi IoT Edge w sekcji **Azure IoT Hub Devices** (Urządzenia usługi Azure IoT Hub) w eksploratorze programu Visual Studio Code. Rozwiń szczegóły urządzenia, aby wyświetlić listę wdrożonych i uruchomionych modułów.
 
-Możesz również wyświetlić stan modułów wdrożenia na samym urządzeniu usługi IoT Edge, używając polecenia `iotedge list`. Powinny zostać wyświetlone cztery moduły: dwa moduły środowiska uruchomieniowego usługi IoT Edge, moduł tempSensor i moduł niestandardowy utworzony w ramach tego samouczka. Uruchomienie wszystkich modułów może potrwać kilka minut, dlatego jeśli na początku wszystkie nie będą widoczne, uruchom polecenie ponownie.
+Na urządzeniu usługi IoT Edge można zobaczyć stan moduły wdrożenia za pomocą polecenia `iotedge list`. Powinny zostać wyświetlone cztery moduły: dwa moduły środowiska uruchomieniowego usługi IoT Edge, moduł tempSensor i moduł niestandardowy utworzony w ramach tego samouczka. Uruchomienie wszystkich modułów może potrwać kilka minut, dlatego jeśli na początku wszystkie nie będą widoczne, uruchom polecenie ponownie.
 
 Aby wyświetlić komunikaty generowane przez któryś moduł, użyj polecenia `iotedge logs <module name>`.
 
@@ -396,5 +398,5 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat tego, jak [utworzyć moduł w języku C za pomocą rozszerzenia usługi Azure IoT Edge dla programu Visual Studio Code](how-to-develop-c-module.md). Możesz teraz kontynuować pracę, korzystając z kolejnych samouczków, aby dowiedzieć się o innych metodach, za pomocą których usługa Azure IoT Edge może ułatwiać przekształcanie danych w analizy biznesowe na urządzeniach brzegowych.
 
 > [!div class="nextstepaction"]
-> [Store data at the edge with SQL Server databases (Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server)](tutorial-store-data-sql-server.md)
+> [Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server](tutorial-store-data-sql-server.md)
 

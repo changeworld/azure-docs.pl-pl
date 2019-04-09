@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 04/03/2019
 ms.author: b-juche
-ms.openlocfilehash: 1cce1883295277f6c6c36d686d90370238265dbf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3df092377a29492facd972745933cd5f4a1ae3bf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775853"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275525"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Omówienie hierarchii magazynu usługi Azure NetApp Files
 
@@ -36,18 +36,15 @@ Przed utworzeniem woluminu w usłudze Azure NetApp Files należy kupić i skonfi
 
 - Pule pojemności są mierzone według aprowizowanej pojemności.  
 - Pojemność jest aprowizowana zgodnie z liczbą zakupionych stałych jednostek SKU (zawierających na przykład 4 TiB pojemności).
-- Minimalny rozmiar pojedynczej puli pojemności wynosi 4 TiB, a maksymalny rozmiar wynosi 500 TiB. 
 - Pula pojemności może mieć tylko jeden poziom usługi.  
-  Obecnie jest dostępny tylko poziom usługi Premium.
 - Każda pula pojemności może należeć tylko do jednego konta usługi NetApp. Można jednak mieć wiele pul pojemności w ramach konta usługi NetApp.  
 - Nie można przenosić pul pojemności między kontami usługi NetApp.   
   Na przykład na poniższym [diagramie koncepcyjnym hierarchii magazynu](#conceptual_diagram_of_storage_hierarchy) nie można przenieść puli pojemności 1 z konta usługi NetApp w regionie Wschodnie stany USA na konto usługi NetApp w regionie Zachodnie stany USA 2.  
 
 ## <a name="volumes"></a>Woluminy
 
-- Woluminy są mierzone według użycia pojemności logicznej i można je skalować. Minimalny rozmiar jednego woluminu wynosi 100 GiB, a maksymalny rozmiar wynosi 92 TiB.
+- Woluminy są mierzone według użycia pojemności logicznej i można je skalować. 
 - Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli.
--   Można mieć maksymalnie 100 woluminów na subskrypcję platformy Azure na region. 
 - Każdy wolumin należy tylko do jednej puli, ale jedna pula może zawierać wiele woluminów. 
 - Można przenosić woluminy między pulami w ramach jednego konta usługi NetApp.    
   Na przykład na poniższym [diagramie koncepcyjnym hierarchii magazynu](#conceptual_diagram_of_storage_hierarchy) można by przenieść woluminy z puli pojemności 1 do puli pojemności 2.

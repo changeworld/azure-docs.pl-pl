@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aaa93c03236f1a3bd87d8fdd5e1be0930ee1381
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887310"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją IMAGE WORKS
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji IMAGE WORKS w usłudze Azure AD, należy dodać aplikację IMAGE WORKS z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację IMAGE WORKS z galerii, wykonaj następujące czynności:**
+**Aby dodać obraz działa z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,9 +105,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji IMAGE WORK
 
     ![Informacje dotyczące domeny i adresów URL logowania jednokrotnego w aplikacji IMAGE WORKS](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji IMAGE WORKS](mailto:iw-sd-support@fujifilm.com), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -193,7 +193,7 @@ Po kliknięciu kafelka IMAGE WORKS w panelu dostępu powinno nastąpić automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

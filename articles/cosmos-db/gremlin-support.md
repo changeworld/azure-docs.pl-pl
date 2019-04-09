@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081104"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275559"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
-Usługa Azure Cosmos DB obsługuje język przechodzenia przez graf struktury [Apache TinkerPop](https://tinkerpop.apache.org), [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), w postaci interfejsu API języka Gremlin do tworzenia jednostek grafu oraz wykonywania operacji zapytań na grafie. Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
+Usługa Azure Cosmos DB obsługuje [Apache Tinkerpop](https://tinkerpop.apache.org) wykresu języka przechodzenia, znane jako [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps). Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
 
-Usługa Azure Cosmos DB oferuje funkcje gotowe do użycia w firmie do baz danych grafu. Obejmują one dystrybucję globalną, niezależne skalowanie magazynu i przepływności, przewidywalne opóźnienia wyrażone w milisekundach za pomocą pojedynczej cyfry, automatyczne indeksowanie, umowy SLA, dostępność odczytu dla kont baz danych obejmujących co najmniej dwa regiony świadczenia usługi Azure. Ze względu na to, że usługa Azure Cosmos DB obsługuje strukturę TinkerPop/język Gremlin, można łatwo migrować aplikacje napisane przy użyciu innej bazy danych grafów bez konieczności wprowadzania zmian w kodzie. Ponadto, ze względu na obsługę języka Gremlin usługa Azure Cosmos DB płynnie integruje się ze strukturami analizy z obsługą TinkerPop, np. [Apache Spark GraphX](https://spark.apache.org/graphx/). 
+Usługa Azure Cosmos DB oferuje funkcje gotowe do użycia w firmie do baz danych grafu. Te funkcje obejmują globalną dystrybucję i niezależne skalowanie magazynu i przepływności, przewidywalnych milisekundowe opóźnienia, automatycznego indeksowania umowy SLA, także dostępność do odczytu dla konta bazy danych obejmujące co najmniej dwóch regionach platformy Azure. Ponieważ usługi Azure Cosmos DB obsługuje TinkerPop/Gremlin, możesz z łatwością migrować aplikacje napisane przy użyciu innej bazy danych grafów zgodne. Ponadto, ze względu na obsługę języka Gremlin usługa Azure Cosmos DB płynnie integruje się ze strukturami analizy z obsługą TinkerPop, np. [Apache Spark GraphX](https://spark.apache.org/graphx/). 
 
-Ten artykuł zawiera krótki przewodnik dotyczący języka Gremlin oraz listę funkcji języka Gremlin oraz kroków obsługiwanych przez interfejs API języka Gremlin.
+W tym artykule oferujemy szybki przewodnik Gremlin i wyliczyć funkcji języka Gremlin, które są obsługiwane przez interfejs API Gremlin.
 
 ## <a name="gremlin-by-example"></a>Język Gremlin w przykładach
 Przykładowy graf pomoże dowiedzieć się, jak można wyrazić zapytania w języku Gremlin. Na poniższej ilustracji przedstawiono w formie grafu aplikację biznesową, która zarządza danymi o użytkownikach, zainteresowaniach i urządzeniach.  
@@ -59,7 +59,7 @@ Poniższe zapytanie zwraca wierzchołki „person” w porządku malejącym wed�
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-Wyjątkowość grafów docenia się, gdy trzeba odpowiedzieć na takie pytania jak: „Jakich systemów operacyjnych używają znajomi Thomasa?” Aby uzyskać te informacje z grafu, można uruchomić proste przejście w języku Gremlin, jak poniżej:
+Wyjątkowość grafów docenia się, gdy trzeba odpowiedzieć na takie pytania jak: „Jakich systemów operacyjnych używają znajomi Thomasa?” Można uruchomić tego przechodzenie Gremlin, aby uzyskać te informacje z wykresu:
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
@@ -123,31 +123,31 @@ Na przykład poniższy fragment kodu przedstawia widok w formacie GraphSON wierz
   }
 ```
 
-Właściwości używane przez format GraphSON dla wierzchołków są następujące:
+Poniżej opisano właściwości używane w formacie GraphSON dla wierzchołków:
 
-| Właściwość | Opis |
-| --- | --- |
-| id | Identyfikator wierzchołka. Musi być unikatowy (w połączeniu z wartością _partition w stosownych przypadkach) |
-| label | Etykieta wierzchołka. Jest opcjonalna i służy do opisu typu jednostki. |
-| type | Służy do odróżnienia wierzchołków od dokumentów bez grafów |
-| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołkiem. Każda właściwość może mieć wiele wartości. |
-| _partition (można konfigurować) | Klucz partycji wierzchołka. Może służyć do skalowania grafów na wielu serwerach |
-| outE | Zawiera listę krawędzi wyjściowych z wierzchołka. Przechowywanie informacji sąsiedztwa razem z wierzchołkiem umożliwia szybkie wykonanie przejść. Krawędzie są pogrupowane w oparciu o etykiety. |
+| Właściwość | Opis | 
+| --- | --- | --- |
+| `id` | Identyfikator wierzchołka. Muszą być unikatowe (w połączeniu z wartością `_partition` jeśli ma to zastosowanie). Jeśli wartość nie zostanie podany, będą go automatycznie wprowadzane z identyfikatorem GUID | 
+| `label` | Etykieta wierzchołka. Służy do opisywania typu jednostki. |
+| `type` | Służy do odróżnienia wierzchołków od dokumentów bez grafów |
+| `properties` | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołkiem. Każda właściwość może mieć wiele wartości. |
+| `_partition` | Klucz partycji wierzchołka. Używany do [partycjonowanie grafu](graph-partitioning.md). |
+| `outE` | Ta właściwość zawiera listę się krawędzie z wierzchołka. Przechowywanie informacji sąsiedztwa razem z wierzchołkiem umożliwia szybkie wykonanie przejść. Krawędzie są pogrupowane w oparciu o etykiety. |
 
 Krawędź zawiera następujące informacje, aby pomóc w nawigacji do innych części grafu.
 
 | Właściwość | Opis |
 | --- | --- |
-| id | Identyfikator krawędzi. Musi być unikatowy (w połączeniu z wartością _partition w stosownych przypadkach) |
-| label | Etykieta krawędzi. Ta właściwość jest opcjonalna i służy do opisu typu relacji. |
-| inV | Zawiera listę wierzchołków wejściowych dla krawędzi. Przechowywanie informacji sąsiedztwa razem z krawędzią umożliwia szybkie wykonanie przejść. Wierzchołki są pogrupowane w oparciu o etykiety. |
-| properties | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z krawędzią. Każda właściwość może mieć wiele wartości. |
+| `id` | Identyfikator krawędzi. Muszą być unikatowe (w połączeniu z wartością `_partition` jeśli ma to zastosowanie) |
+| `label` | Etykieta krawędzi. Ta właściwość jest opcjonalna i służy do opisu typu relacji. |
+| `inV` | Ta właściwość zawiera liście wierzchołków krawędź. Przechowywanie informacji sąsiedztwa razem z krawędzią umożliwia szybkie wykonanie przejść. Wierzchołki są pogrupowane w oparciu o etykiety. |
+| `properties` | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z krawędzią. Każda właściwość może mieć wiele wartości. |
 
 Każda właściwość może przechowywać wiele wartości w tablicy. 
 
 | Właściwość | Opis |
 | --- | --- |
-| wartość | Wartość właściwości
+| `value` | Wartość właściwości
 
 ## <a name="gremlin-steps"></a>Kroki w środowisku Gremlin
 Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę Azure Cosmos DB. Aby uzyskać pełną dokumentację dotyczącą języka Gremlin, zobacz [odwołanie do struktury TinkerPop](https://tinkerpop.apache.org/docs/current/reference).
@@ -156,38 +156,39 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | --- | --- | --- |
 | `addE` | Dodaje krawędź między dwoma wierzchołkami | [krok addE](https://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
 | `addV` | Dodaje wierzchołek do grafu | [krok addV](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | Gwarantuje, że wszystkie przejścia zwracają wartość | [krok and](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | Modulator kroku do przypisania zmiennej do wyniku kroku | [krok as](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | Modulator kroku używany z elementami `group` i `order` | [krok by](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | Zwraca pierwsze przejście, które zwraca wynik | [krok coalesce](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Zwraca wartość stałą. Używany z krokiem `coalesce`| [krok constant](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | Zwraca liczbę z przejścia | [krok count](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | Zwraca wartości z usuniętymi duplikatami | [krok dedup](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | Upuszcza wartości (wierzchołek/krawędź) | [krok drop](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
-| `fold` | Działa jak bariera, która oblicza agregację wyników| [krok fold](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | Grupuje wartości w oparciu o określone etykiety| [krok group](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | Służy do filtrowania właściwości, wierzchołków i krawędzi. Obsługuje warianty `hasLabel`, `hasId`, `hasNot` i `has`. | [krok step](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | Wstawia wartości do strumienia| [krok inject](https://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | Służy do wykonywania filtru przy użyciu wyrażenia logicznego | [krok is](https://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | Pozwala ograniczyć liczbę elementów podczas przechodzenia| [krok limit](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | Krok local opakowuje sekcję przejścia, podobnie jak podzapytanie | [krok local](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | Służy do tworzenia negacji filtru | [krok not](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | Zwraca wynik określonego przejścia, jeśli wstrzymuje wynik lub zwraca wywołujący element | [krok optional](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | Gwarantuje, że co najmniej jedno przejście zwróci wartość | [krok or](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | Zwraca wyniki w określonej kolejności sortowania | [krok order](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | Zwraca pełną ścieżkę przejścia | [krok path](https://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | Projektuje właściwości jako mapę | [krok project](https://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | Zwraca właściwości dla określonych etykiet | [krok properties](https://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | Filtruje do określonego zakresu wartości| [krok range](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | Powtarza krok określoną liczbę razy. Używany do zapętlenia | [krok repeat](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | Służy do próbkowania wyników z przejścia | [krok sample](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Służy do projektowania wyników z przejścia |  [krok select](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
-| `store` | Używany do nieblokujących agregacji z przejścia | [krok store](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | Odwija iterator w ramach kroku| [krok unfold](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | Scalanie wyników z wielu przejść| [krok union](https://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | Zawiera kroki niezbędne do przejść między wierzchołkami i krawędziami `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, oraz `otherV` do | [kroki vertex](https://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | Służy do filtrowania wyników z przejścia. Obsługuje operatory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` i `between`  | [krok where](https://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `and` | Gwarantuje, że wszystkie przejścia zwracają wartość | [i krok](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Modulator kroku do przypisania zmiennej do wyniku kroku | [w kroku](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Używane z modulator krok `group` i `order` | [krok](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Zwraca pierwsze przejście, które zwraca wynik | [COALESCE kroku](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Zwraca wartość stałą. Używane z `coalesce`| [stałe kroku](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Zwraca liczbę z przejścia | [Liczba kroku](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Zwraca wartości z usuniętymi duplikatami | [krok deduplikacji](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Upuszcza wartości (wierzchołek/krawędź) | [Upuść krok](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `executionProfile` | Tworzy opis wszystkie operacje wygenerowane przez krok wykonywany języka Gremlin | [krok executionProfile](graph-execution-profile.md) |
+| `fold` | Działa jak bariera, która oblicza agregację wyników| [krok zwijania](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Grupuje wartości w oparciu o określone etykiety| [krok grupa](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Służy do filtrowania właściwości, wierzchołków i krawędzi. Obsługuje warianty `hasLabel`, `hasId`, `hasNot` i `has`. | [ma kroku](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Wstawia wartości do strumienia| [wstawić krok](https://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Służy do wykonywania filtru przy użyciu wyrażenia logicznego | [stanowi krok](https://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Pozwala ograniczyć liczbę elementów podczas przechodzenia| [limit kroku](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Krok local opakowuje sekcję przejścia, podobnie jak podzapytanie | [krok lokalne](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Służy do tworzenia negacji filtru | [nie krok](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Zwraca wynik określonego przejścia, jeśli wstrzymuje wynik lub zwraca wywołujący element | [krok opcjonalny](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Gwarantuje, że co najmniej jedno przejście zwróci wartość | [lub krok](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Zwraca wyniki w określonej kolejności sortowania | [krok zamówienia](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Zwraca pełną ścieżkę przejścia | [krok ścieżki](https://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Projektuje właściwości jako mapę | [krok projektu](https://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Zwraca właściwości dla określonych etykiet | [właściwości kroku](https://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Filtruje do określonego zakresu wartości| [krok zakresu](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Powtarza krok określoną liczbę razy. Używany do zapętlenia | [Powtórz krok](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Służy do próbkowania wyników z przejścia | [przykład krok](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
+| `select` | Służy do projektowania wyników z przejścia |  [Wybierz krok](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
+| `store` | Używany do nieblokujących agregacji z przejścia | [store krok](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok drzewa](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Odwija iterator w ramach kroku| [unfold kroku](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Scalanie wyników z wielu przejść| [krok Unii](https://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Zawiera kroki niezbędne do przejść między wierzchołkami i krawędziami `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, oraz `otherV` do | [kroki wierzchołka](https://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Służy do filtrowania wyników z przejścia. Obsługuje operatory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` i `between`  | [gdy krok](https://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
 Aparat zoptymalizowany pod kątem zapisu oferowany w usłudze Azure Cosmos DB obsługuje domyślnie automatyczne indeksowanie wszystkich właściwości w wierzchołkach i krawędziach. W związku z tym zapytania z filtrami, zapytania zakresu, sortowanie lub agregacje na dowolnej właściwości są przetwarzane z indeksu i skutecznie obsługiwane. Więcej informacji na temat działania indeksowania w usłudze Azure Cosmos DB znajduje się w dokumencie dotyczącym [indeksowania niezależnie od schematu](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285010"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264900"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -30,6 +30,8 @@ Wszyscy użytkownicy mają jeden *macierzystego* katalogu do uwierzytelniania. J
 
 > [!Important]
 > Kiedy należy skojarzyć subskrypcję z innym katalogiem, użytkowników, którzy mają przypisane przy użyciu ról [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) utracą dostęp. Klasyczni Administratorzy (Administrator usługi i Współadministratorzy) również utracą dostęp.
+> 
+> Ponadto przenoszenie klastra Azure Kubernetes Service (AKS) do innej subskrypcji lub przenoszenie subskrypcji będącej właścicielem klastra do nowego dzierżawcy, powoduje, że klaster, aby utracić funkcjonalność ze względu na przypisań ról utracone i praw podmiotów zabezpieczeń usługi. Aby uzyskać więcej informacji o usłudze AKS, zobacz [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -67,15 +69,16 @@ Zanim można skojarzyć lub dodać subskrypcję, należy wykonać następujące 
 
     ![Strona przełącznik katalogu, z przykładowe informacje](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-Zmienianie katalogu subskrypcji jest operacją poziomu usług, dzięki czemu nie ma wpływu na własność rozliczeń subskrypcji. Administrator konta nadal może zmienić administratora usługi z [Centrum kont](https://account.azure.com/subscriptions). Aby usunąć oryginalny katalog, trzeba przekazać subskrypcji, rozliczeń prawa własności do nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto). 
+Zmienianie katalogu subskrypcji jest operacją poziomu usług, dzięki czemu nie ma wpływu na własność rozliczeń subskrypcji. Administrator konta nadal może zmienić administratora usługi z [Centrum kont](https://account.azure.com/subscriptions). Aby usunąć oryginalny katalog, trzeba przekazać subskrypcji, rozliczeń prawa własności do nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto).
 
 ## <a name="post-association-steps"></a>Skojarzenie kroki po
-
 Po skojarzeniu subskrypcję z innym katalogiem, może to być dodatkowe kroki, które należy wykonać, aby wznowić operacje.
 
 1. Jeśli masz żadnych magazynów kluczy, należy zmienić identyfikator dzierżawy magazynu kluczy Aby uzyskać więcej informacji, zobacz [zmiana Identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji](../../key-vault/key-vault-subscription-move-fix.md).
 
-1. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](../../azure-stack/azure-stack-registration.md).
+2. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](../../azure-stack/azure-stack-registration.md).
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

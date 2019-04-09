@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882505"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265972"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -99,6 +99,8 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 + [Przewodnik Szybki Start (portal)](cognitive-search-quickstart-blob.md)
 + [Samouczek (żądania HTTP)](cognitive-search-tutorial-blob.md)
 + [Przykład umiejętności niestandardowe (C#)](cognitive-search-create-custom-skill-example.md)
+
+Firma Microsoft zaleca bezpłatna usługa dla celów szkoleniowych, ale należy pamiętać, że liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Aby uruchomić Szybki Start i samouczek w ciągu jednego dnia, należy użyć mniejszy zestaw plików (10 dokumenty), tak, aby mieści się w obu ćwiczeniach.
 
 **Krok 3: Przegląd interfejsu API (REST tylko)**
 

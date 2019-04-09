@@ -1,7 +1,7 @@
 ---
-title: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell i interfejsu API REST — usługa Azure Search
-description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell, wywołaj RestMethod i interfejsu API REST usługi Azure Search.
-ms.date: 03/15/2019
+title: 'Szybki start: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell i interfejsu API REST — usługa Azure Search'
+description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell Invoke RestMethod i interfejsu API REST usługi Azure Search.
+ms.date: 04/08/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372118"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268028"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST
 > [!div class="op_single_selector"]
@@ -29,19 +29,23 @@ Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start. Inne wymagania wstępne obejmują następujące elementy.
+Następujące usługi i narzędzia są używane w tym przewodniku Szybki Start. 
+
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start. 
 
 [Program PowerShell 5.1 lub nowszej](https://github.com/PowerShell/PowerShell)przy użyciu [Invoke RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) czynności sekwencyjne i interaktywne.
 
-Pobierz adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać jak https:\//my-service-name.search.windows.net.
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
 2. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-   ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
-   Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
+Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
 ## <a name="connect-to-azure-search"></a>Łączenie z usługą Azure Search
 

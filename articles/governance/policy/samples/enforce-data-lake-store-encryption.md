@@ -1,19 +1,18 @@
 ---
 title: Przykład — wymuszanie szyfrowania dla usługi Data Lake Store
 description: Ta przykładowa definicja zasad wymaga włączonego szyfrowania usługi Data Lake Store.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e4de4c78bec9f4ffa6c4e2711a2d4260279ca559
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: f9e38b737cad255ef2d9802490b5d114950d01e6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340607"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264747"
 ---
 # <a name="sample---require-data-lake-store-encryption"></a>Przykład — Wymuszanie szyfrowania w usłudze Data Lake Store
 
@@ -83,6 +82,6 @@ Uruchom następujące polecenie, aby usunąć przypisanie zasad.
 az policy assignment delete --name "Data Lake Store encryption" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

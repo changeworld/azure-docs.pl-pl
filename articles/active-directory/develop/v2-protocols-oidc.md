@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1527a326ca0107df33857284774252b327b7d8bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112708"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273264"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -57,26 +57,28 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `common` |Za pomocą osobistego konta Microsoft i konto służbowe lub szkolne, z usługi Azure Active Directory (Azure AD) można logowania do aplikacji. |
 | `organizations` |Tylko użytkownicy z pracy lub kont służbowych z usługi Azure AD można zalogować się do aplikacji. |
 | `consumers` |Tylko użytkownicy z osobistego konta Microsoft zalogować się do aplikacji. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` |Tylko użytkownicy przy użyciu konta służbowego z określonej usługi Azure AD dzierżawy można zalogować się do aplikacji. Przyjazna nazwa domeny dzierżawy usługi Azure AD albo identyfikator GUID dzierżawy może służyć. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` | Tylko użytkownicy przy użyciu konta służbowego z określonej usługi Azure AD dzierżawy można zalogować się do aplikacji. Przyjazna nazwa domeny dzierżawy usługi Azure AD albo identyfikator GUID dzierżawy może służyć. Można również użyć dzierżawy konsumenta `9188040d-6c67-4c5b-b112-36a304b66dad`, zamiast `consumers` dzierżawy.  |
 
 Metadane są proste dokumentu JavaScript Object Notation (JSON). Zobacz poniższy fragment kodu, na przykład. Zawartość w tym fragmencie kodu są szczegółowo opisane [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
 ```
 {
-  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/authorize",
-  "token_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/token",
+  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
+  "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
   "token_endpoint_auth_methods_supported": [
     "client_secret_post",
     "private_key_jwt"
   ],
-  "jwks_uri": "https:\/\/login.microsoftonline.com\/common\/discovery\/v2.0\/keys",
+  "jwks_uri": "https:\/\/login.microsoftonline.com\/{tenant}\/discovery\/v2.0\/keys",
 
   ...
 
 }
 ```
+Jeśli aplikacja ma niestandardowe klucze podpisywania w wyniku użycia [Mapowanie oświadczeń](active-directory-claims-mapping.md) funkcji, należy dołączyć `appid` parametr zawierający identyfikator aplikacji w celu uzyskania zapytania `jwks_uri` wskazujący aplikacji podpisywania klucza informacje. Na przykład: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` zawiera `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
-Zazwyczaj ten dokument metadanych umożliwiają konfigurowanie biblioteki uwierzytelniania OpenID Connect lub zestawu SDK; biblioteki użyje metadane, aby wykonać swoją pracę. Jednak jeśli nie używasz bibliotekę prekompilacji OpenID Connect, możesz wykonać kroki opisane w dalszej części tego artykułu, aby wykonać logowania w aplikacji sieci web przy użyciu punktu końcowego v2.0.
+
+Zazwyczaj ten dokument metadanych umożliwiają konfigurowanie biblioteki uwierzytelniania OpenID Connect lub zestawu SDK; biblioteki użyje metadane, aby wykonać swoją pracę. Jednak jeśli nie używasz wbudowanych biblioteki uwierzytelniania OpenID Connect, możesz wykonać kroki opisane w dalszej części tego artykułu, aby wykonać logowania w aplikacji sieci web przy użyciu punktu końcowego v2.0.
 
 ## <a name="send-the-sign-in-request"></a>Wyślij żądanie logowania
 
@@ -87,7 +89,7 @@ Gdy Twoja aplikacja sieci web musi uwierzytelnić użytkownika, można je skiero
 * Żądanie musi zawierać `nonce` parametru.
 
 > [!IMPORTANT]
-> Aby można było pomyślnie żądania identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **[przyznawanie niejawne](v2-oauth2-implicit-grant-flow.md)** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "Wartość podana dla parametru wejściowego"response_type"jest niedozwolone dla tego klienta. Oczekiwana wartość to "code" "
+> Aby można było pomyślnie żądania tokenu Identyfikacyjnego z punktu końcowego /authorization rejestracji aplikacji w [portalu rejestracji](https://portal.azure.com) musi mieć niejawne przyznanie id_tokens włączona na karcie uwierzytelniania (która ustawia `oauth2AllowIdTokenImplicitFlow`znacznik w [manifest aplikacji](reference-app-manifest.md) do `true`). Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "Wartość podana dla parametru wejściowego"response_type"jest niedozwolone dla tego klienta. Oczekiwana wartość to "code" "
 
 Na przykład:
 
@@ -113,14 +115,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | dzierżawa |Wymagane |Możesz użyć `{tenant}` wartość w polu Ścieżka żądania w celu kontrolowania, kto zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
 | client_id |Wymagane |Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
 | response_type |Wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może to również obejmować inne `response_type` wartości, takich jak `code`. |
-| redirect_uri |Zalecane |Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden zarejestrowany w portalu, identyfikatory URI przekierowania z tym wyjątkiem, że musi być zakodowane w adresie URL. |
+| redirect_uri |Zalecane |Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden zarejestrowany w portalu, identyfikatory URI przekierowania z tym wyjątkiem, że musi być zakodowane w adresie URL. Jeśli nie istnieje, punkt końcowy będzie pobranie jednej redirect_uri zarejestrowanego w losowo wybranym momencie, aby wysłać użytkownika z powrotem do. |
 | scope |Wymagane |Rozdzielonej spacjami listy zakresów. Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. W tym żądaniu żądanie zgody, mogą również obejmować inne zakresy. |
 | Identyfikator jednorazowy |Wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej wartości id_token jako oświadczenia. Aplikację można sprawdzić tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
 | response_mode |Zalecane |Określa metodę, które mają być używane do odesłania wynikowy kod autoryzacji do aplikacji. Możliwe wartości to `form_post` i `fragment`. Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post`, aby zapewnić najbardziej bezpieczny transfer tokenów do aplikacji. |
 | state |Zalecane |Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którą chcesz. Losowo generowany unikatową wartość jest zazwyczaj używany do [fałszerstwo żądania międzywitrynowego atakami](https://tools.ietf.org/html/rfc6749#section-10.12). Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widok, który użytkownik był na. |
 | wiersz |Optional (Opcjonalność) |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`. `prompt=login` Oświadczenia wymusza użytkownika o wprowadzenie poświadczeń na żądanie i neguje logowania jednokrotnego. `prompt=none` Oświadczeń jest przeciwieństwem. To oświadczenie gwarantuje, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, punktu końcowego v2.0 zwraca błąd. `prompt=consent` Oświadczenia wyzwala okno dialogowe ze zgodą OAuth po użytkownik loguje się. Okno dialogowe z monitem o przyznanie uprawnień do aplikacji. |
 | login_hint |Optional (Opcjonalność) |Ten parametr umożliwia wstępnie wypełnić pole nazwy użytkownika i adres e-mail adres strony logowania dla użytkownika, jeśli znasz nazwę użytkownika, wcześniej. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania po już wyodrębniania nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
-| Element domain_hint |Optional (Opcjonalność) |Ta wartość może być `consumers` lub `organizations`. Jeśli uwzględniony, pomija proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi w witrynie v2.0 logowania nieco bardziej usprawnione środowisko użytkownika. Często aplikacje tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` oświadczeń z tokenu Identyfikatora. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft dzierżawcy konsumenta), użyj `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`. |
+| Element domain_hint |Optional (Opcjonalność) | Obszar użytkownika w katalogu federacyjnego.  Pomija to proces odnajdywania bazujące na poczcie e-mail, który użytkownik przechodzi w witrynie v2.0 logowania nieco bardziej usprawnione środowisko użytkownika. Dla dzierżawy, które są Sfederowane za pośrednictwem katalogu lokalnego, takich jak usługi AD FS często skutkuje to bezproblemowe logowania z powodu istniejących sesji logowania. |
 
 W tym momencie użytkownik jest monitowany, aby wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Punktu końcowego v2.0 sprawdza, czy użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgody do dowolnego z tych uprawnień, punktu końcowego v2.0 monituje użytkownika o zgodę na wymagane uprawnienia. Przeczytaj więcej o [uprawnienia, wyrażania zgody i aplikacje wielodostępne](v2-permissions-and-consent.md).
 
@@ -179,7 +181,6 @@ W poniższej tabeli opisano kody błędów, które mogą być zwracane w `error`
 Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
 Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzania poprawności tokenów](id-tokens.md#validating-an-id_token) i [ważnych informacji dotyczących podpisywania Przerzucanie klucza](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
-<!--TODO: Improve the information on this-->
 
 Możesz również sprawdzić dodatkowe oświadczenia w zależności od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
 

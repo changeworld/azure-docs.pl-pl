@@ -1,6 +1,6 @@
 ---
-title: Eksplorator metryk usługi Azure Monitor
-description: Informacje o nowych funkcjach w Eksploratorze metryk usługi Azure Monitor
+title: Zaawansowane funkcje Eksploratora metryk usługi Azure
+description: Dowiedz się więcej o zaawansowanych funkcji Eksploratora metryk usługi Azure Monitor
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,46 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916346"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271683"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Zaawansowane funkcje Eksploratora metryk usługi Azure
 
-Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure portal, która umożliwia wykreślania wykresy i wizualne korelowanie trendów i badanie wzrostów i spadki wartości metryk. Eksplorator metryk jest istotne punkt początkowy, badania różne problemy z wydajnością i dostępności przy użyciu aplikacji i infrastruktury hostowany na platformie Azure lub monitorowane przez usługi Azure Monitor.
+> [!NOTE]
+> W tym artykule założono, że znasz podstawowe funkcje Eksploratora metryk. Jeśli dla nowych użytkowników i chcesz dowiedzieć się, jak tworzenie pierwszego wykresu metryk, zobacz [wprowadzenie do Eksploratora metryk usługi Azure](metrics-getting-started.md).
 
 ## <a name="metrics-in-azure"></a>Metryki na platformie Azure
 
 [Metryki w usłudze Azure Monitor](data-platform-metrics.md) serie mierzonych i liczniki, które są zbierane i przechowywane wraz z upływem czasu. Brak metryk standardowa (lub "platforma") i metryki niestandardowe. Metryki standardowe są dostarczane przez samą platformę Azure. Standardowa metryki odzwierciedlają statystyki użycia i kondycji zasobów platformy Azure. Natomiast metryki niestandardowe są wysyłane do platformy Azure przy użyciu aplikacji przy użyciu [interfejsu API usługi Application Insights dla niestandardowych zdarzeń i metryk](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [rozszerzenia diagnostyki Azure Windows (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), lub [platformy Azure Monitorowanie interfejsu API REST](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
-## <a name="create-a-new-chart"></a>Utwórz nowy wykres
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Tworzenie widoków z wieloma metryki i wykresy
 
-1. Otwórz witrynę Azure portal
-2. Przejdź do nowego **Monitor** , a następnie wybierz pozycję **metryki**.
+Możesz tworzyć wykresy, które wykreślenia w wielu wierszach metryk lub Pokaż jednocześnie wiele wykresów metryki. Ta funkcja umożliwia:
 
-   ![Obraz metryki](./media/metrics-charts/00001.png)
+- korelowanie powiązane metryki na tym samym wykresie, aby zobaczyć, jak jedna wartość jest powiązany z innym
+- Wyświetlanie metryk z różnych jednostek miary w bliskim sąsiedztwie
+- wizualnie agregacji i Porównaj metryki z wielu zasobów
 
-3. **Metryki selektor** zostanie automatycznie otwarte dla Ciebie. Wybierz zasób z listy, aby wyświetlić jego skojarzonych z nimi metryk. Tylko zasoby z metryki są wyświetlane na liście.
+Na przykład jeśli masz 5 kont magazynu, i chcesz wiedzieć, ile całkowita ilość miejsca jest używane między nimi, można utworzyć wykres warstwowy (skumulowane), który pokazuje poszczególne i sumę wszystkich wartości w określonym punkcie w czasie.
 
-   ![Obraz metryki](./media/metrics-charts/00002.png)
+### <a name="multiple-metrics-on-the-same-chart"></a>Wiele metryk na tym samym wykresie
 
-   > [!NOTE]
-   >Jeśli masz więcej niż jedną subskrypcję platformy Azure, Eksplorator metryk ściąga się z zasobami we wszystkich subskrypcjach, które są wybrane w ustawieniach portalu -> filtru według listy subskrypcji. Aby je zmienić, kliknij ikonę koła zębatego ustawień portalu na górze ekranu i wybierz pozycję subskrypcje, które chcesz użyć.
-
-4. W przypadku niektórych typów zasobów (kont magazynu i maszyn wirtualnych), przed wybraniem metrykę, musisz wybrać **Namespace**. Każda przestrzeń nazw zawiera swój własny zestaw metryk, które mają zastosowanie tylko w tej przestrzeni nazw, a nie inne przestrzenie nazw.
-
-   Na przykład każdej usługi Azure Storage ma metryki subservices "Blob", "Files", "Kolejki" i "Tabele", które są wszystkie elementy na koncie magazynu. Jednak metryki "Liczba komunikatów w kolejce" dotyczy naturalnie Usługa "W kolejce", a nie innych subservices konta magazynu.
-
-   ![Obraz metryki](./media/metrics-charts/00003.png)
-
-5. Wybierz metrykę, z listy. Jeśli znasz część nazwy metryki, które chcesz, możesz zacząć wpisywać go w będzie filtrowana lista dostępnych metryk:
-
-   ![Obraz metryki](./media/metrics-charts/00004.png)
-
-6. Po wybraniu metrykę, wykres będą renderowane przy użyciu domyślna agregacja dla wybranej metryki. W tym momencie możesz po prostu kliknąć opuszczenie **selektor metryki** go zamknąć. Wykres można również opcjonalnie przełączyć się do różnych agregacji. Niektóre metryki agregacji przełączanie umożliwia można wybrać wartość, która mają być wyświetlane na wykresie. Na przykład można przełączać się między wartość średnią, minimalną i maksymalną. 
-
-7. Klikając **Dodaj metrykę** i powtórzyć kroki od 3 do 6, możesz dodać więcej metryk na tym samym wykresie.
+Po pierwsze, [Utwórz nowy wykres](metrics-getting-started.md#create-your-first-metric-chart). Kliknij przycisk **Dodaj metrykę** i powtórz kroki Aby dodać kolejną metrykę na tym samym wykresie.
 
    > [!NOTE]
    > Zwykle nie chcesz mieć metryki różne jednostki miary (np. "milisekund" i "kilobajtów") lub z znacząco odmiennych skalowania na jeden wykres. Zamiast tego należy wziąć pod uwagę przy użyciu wielu wykresów. Kliknij przycisk Dodaj wykres, aby utworzyć wiele wykresów w Eksploratorze metryk.
+
+### <a name="multiple-charts"></a>Wiele wykresów
+
+Kliknij przycisk **Dodaj wykres** i utwórz inny wykres z inną metrykę.
+
+### <a name="order-or-delete-multiple-charts"></a>Kolejność lub usunąć wiele wykresów
+
+Kolejność lub usunąć wiele wykresów, kliknij wielokropek ( **...**  ) symbolu, aby otworzyć menu wykresu, a następnie wybierz element menu odpowiednie **Przenieś w górę**, **Przenieś w dół**, lub **Usuń**.
 
 ## <a name="apply-filters-to-charts"></a>Zastosuj filtry do wykresów
 
@@ -76,27 +71,7 @@ Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na p
 
 5. Możesz powtórzyć kroki 1 – 4, aby zastosować wiele filtrów do tych samych wykresów.
 
-## <a name="multiple-metrics-and-charts"></a>Wiele metryki i wykresy
 
-Można również tworzyć wykresy, kreślenia wiele metryk lub Pokaż jednocześnie wiele wykresów metryki. Ta funkcja umożliwia:
-
-- korelowanie powiązane metryki na tym samym wykresie, aby zobaczyć, jak jedna wartość jest powiązany z innym
-- Wyświetlanie metryk z różnych jednostek miary w bliskim sąsiedztwie
-- wizualnie agregacji i Porównaj metryki z wielu zasobów
-
-Na przykład jeśli masz 5 kont magazynu, i chcesz wiedzieć, ile całkowita ilość miejsca jest używane między nimi, można utworzyć wykres warstwowy (skumulowane), który pokazuje poszczególne i sumę wszystkich wartości w określonym punkcie w czasie.
-
-### <a name="multiple-metrics-on-a-chart"></a>Wiele metryk na wykresie
-
-Po pierwsze, [Utwórz nowy wykres](#create-a-new-chart). Kliknij przycisk **Dodaj metrykę** i powtórz kroki Aby dodać kolejną metrykę na tym samym wykresie.
-
-### <a name="multiple-charts"></a>Wiele wykresów
-
-Kliknij przycisk **Dodaj wykres** i utwórz inny wykres z inną metrykę.
-
-### <a name="order-or-delete-multiple-charts"></a>Kolejność lub usunąć wiele wykresów
-
-Kolejność lub usunąć wiele wykresów, kliknij wielokropek ( **...**  ) symbolu, aby otworzyć menu wykresu, a następnie wybierz element menu odpowiednie **Przenieś w górę**, **Przenieś w dół**, lub **Usuń**.
 
 ## <a name="apply-splitting-to-a-chart"></a>Zastosuj rozdzielenie do wykresu
 

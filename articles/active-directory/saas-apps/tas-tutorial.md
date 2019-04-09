@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 5dcae137db04b604d7b0450c3bec18fc23b36991
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 11ba7cd9be59f13081bdc5a543c52ca5f9d66e09
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227374"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą zadań
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą zadań, wy
 
     ![Zadanie domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://taseu.combtas.com/<DOMAIN>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://taseu.combtas.com/<DOMAIN>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
 
@@ -226,7 +226,7 @@ Po kliknięciu kafelka zadania w panelu dostępu, możesz powinny być automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

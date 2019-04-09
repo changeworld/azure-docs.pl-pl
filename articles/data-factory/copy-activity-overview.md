@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311143"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267161"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -54,14 +54,15 @@ Działanie kopiowania przechodzi przez następujące etapy do kopiowania danych 
 
 Można użyć działania kopiowania do **skopiuj pliki — jest** między dwoma magazynami danych opartych na plikach, w których przypadku dane są kopiowane efektywnie bez żadnych serializacji/deserializacji.
 
-Działanie kopiowania obsługuje również odczytywanie z oraz zapisywanie do plików w określonym formatów: **Tekst, JSON, Avro, ORC i Parquet**i kodera-dekodera kompresji **GZip, Deflate, BZip2 i ZipDeflate** są obsługiwane. Zobacz [obsługiwane formaty plików i kompresji](supported-file-formats-and-compression-codecs.md) ze szczegółowymi informacjami.
+Działanie kopiowania obsługuje również odczytywanie z oraz zapisywanie do plików w określonym formatów: **Tekst, JSON, Avro, ORC i Parquet**i kompresowania i decompresing pliki za pomocą następujących koderów-dekoderów: **GZip, Deflate, BZip2 i ZipDeflate**. Zobacz [obsługiwane formaty plików i kompresji](supported-file-formats-and-compression-codecs.md) ze szczegółowymi informacjami.
 
 Na przykład należy wykonać następujące działania kopiowania:
 
-* Kopiowanie danych na lokalnym serwerze SQL i zapisywać do usługi Azure Data Lake Store w formacie ORC.
+* Kopiowanie danych na lokalnym serwerze SQL i zapisywać do usługi Azure Data Lake Storage Gen2 w formacie Parquet.
 * Skopiuj pliki w formacie tekstowym (CSV) w systemie plików w środowisku lokalnym i zapisywać do obiektów Blob platformy Azure, w formacie Avro.
-* Skopiuj pliki zip z systemu plików w środowisku lokalnym i następnie Dekompresuj ziemi do usługi Azure Data Lake Store.
+* Skopiuj pliki zip z systemu plików w środowisku lokalnym i następnie Dekompresuj ziemi do usługi Azure Data Lake Storage Gen2.
 * Kopiowanie danych w formacie tekstowym skompresowany (CSV) GZip z obiektów Blob platformy Azure i zapisu do usługi Azure SQL Database.
+* I wiele więcej przypadków z serializacji/deserializacji lub kompresji i dekompresji.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 

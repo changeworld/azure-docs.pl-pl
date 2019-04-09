@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893592"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266941"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
 Usługa Azure Functions jest uruchamiany w dwóch różnych planów: Plan zużycie i plan w warstwie Premium (publiczna wersja zapoznawcza). Plan zużycie automatycznie dodaje moc obliczeniową, gdy kod jest uruchomiony. Twoja aplikacja jest skalowana w poziomie, gdy trzeba obsłużyć obciążenie i skalowane w dół, gdy kod przestanie działać. Nie trzeba płacić za bezczynnych maszyn wirtualnych lub zarezerwować pojemności z wyprzedzeniem.  Plan w warstwie Premium będzie również automatycznie skalować i Dodaj moc obliczeniową dodatkowe, gdy kod jest uruchomiony.  Plan w warstwie Premium jest powiązana z dodatkowych funkcji, takich jak wystąpienia obliczeniowe — wersja premium, możliwość przechowywania bez wyłączania zasilania wystąpień na czas nieokreślony i połączenie między sieciami.  Jeśli masz istniejący Plan usługi App Service, można również uruchomić aplikacji funkcji w nich.
 
 > [!NOTE]  
-> Zarówno [plan w warstwie Premium](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/) i [planu zużycie dla systemu Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) są obecnie dostępne w wersji zapoznawczej.
+> Zarówno [plan w warstwie Premium](https://aka.ms/functions-premiumplan) i [planu zużycie dla systemu Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) są obecnie dostępne w wersji zapoznawczej.
 
 Jeśli nie znasz usługi Azure Functions, zobacz [omówienia usługi Azure Functions](functions-overview.md).
 

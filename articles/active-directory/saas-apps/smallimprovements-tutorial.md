@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1b59d1c030df95a650124f9e9ea34e06db7d08af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19d9624c5bb60f47ef4bfa1b0629327780c2a9c7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180861"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracja usługi Azure Active Directory z ulepszeniami małych
 
@@ -105,9 +105,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z małych ulepszeniami
 
     ![Małe ulepszenia domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.small-improvements.com`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej małych klienta ulepszenia](mailto:support@small-improvements.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -207,7 +207,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do ulepszenia małych, musi być obsługiwana w małych ulepszenia. W przypadku małych ulepszenia aprowizacji to zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy małych ulepszenia jako administrator.
 
@@ -243,7 +243,7 @@ Po kliknięciu kafelka małych ulepszenia w panelu dostępu, możesz powinny by�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

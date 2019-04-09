@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: f3ebbfb1b9894b2bf1ca41ac46970e138d107f7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005799"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265087"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
 W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**. Istnieją dwa modele dla maszyny wirtualnej (VM) hostowany program SQL Server — zgodnie z rzeczywistym użyciem, licencjonowanie i model dostarczania własnej licencji (BYOL). A teraz przy użyciu programu PowerShell lub wiersza polecenia platformy Azure, możesz zmodyfikować model licencjonowania, który korzysta z maszyny Wirtualnej programu SQL Server. 
@@ -43,6 +43,7 @@ Przełączanie między dwoma modelami licencji spowoduje naliczenie **bez przerw
  - Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko w przypadku rozpoczęcia od obrazu maszyny wirtualnej z programem SQL Server w wersji z płatnością zgodnie z rzeczywistym użyciem. W przypadku rozpoczęcia od obrazu typu „bring-your-own-license” z portalu nie można przekonwertować obrazu na wersję z płatnością zgodnie z rzeczywistym użyciem.
   - Obecnie zmiana modelu licencjonowania jest obsługiwana tylko dla maszyn wirtualnych wdrożonych przy użyciu modelu usługi Resource Manager. Maszyny wirtualne wdrożone przy użyciu modelu klasycznego, nie są obsługiwane. 
    - Obecnie zmiana modelu licencjonowania jest włączony tylko w przypadku instalacji w chmurze publicznej.
+   - Obecnie ta procedura jest obsługiwana tylko na maszyny wirtualne z jedną kartą Sieciową (interfejs sieciowy). Na maszynach wirtualnych, które mają więcej niż jedną kartę Sieciową, należy najpierw usunąć jedną z kart sieciowych (przy użyciu witryny Azure portal) przed rozpoczęciem procedury. W przeciwnym razie wystąpi błąd podobny do następującego: "Maszyny wirtualnej"\<vmname\>"ma więcej niż jedną kartę Sieciową, skojarzone." Mimo że można dodać kartę Sieciową do maszyny Wirtualnej, po zmianie trybu licencjonowania, operacje wykonywane przez blok konfiguracji programu SQL, takich jak automatyczne stosowanie poprawek i kopia zapasowa nie jest już uznawane za obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

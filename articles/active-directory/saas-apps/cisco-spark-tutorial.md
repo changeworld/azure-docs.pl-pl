@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb64495d727429ff4dcfc233adee7dd5c60aaa8d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 05127e8ecfe68b4cb6330f838f252557bbd5e11d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852138"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272703"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Cisco Webex
 
@@ -53,7 +53,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Cisco Webex z usługą Azure AD, musisz dodać aplikację Cisco Webex z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Cisco Webex z galerii, wykonaj następujące kroki:**
+**Aby dodać Cisco Webex w galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -107,14 +107,14 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Cisco Webe
 
     ![Informacje dotyczące domeny i adresów URL logowania jednokrotnego aplikacji Cisco Webex](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL w formie: `https://web.ciscospark.com/#/signin`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://web.ciscospark.com/#/signin`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://idbroker.webex.com/<Org Id>`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://idbroker.webex.com/<Org Id>`
 
     > [!NOTE]
     > Ta wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Jeśli masz metadane dostawcy usługi, przekaż je w sekcji **Podstawowa konfiguracja protokołu SAML**, a wartość **Identyfikator (identyfikator jednostki)** zostanie wypełniona automatycznie.
 
-5. Aplikacja Cisco Webex oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby dodać atrybuty.
+5. Aplikacja Cisco Webex oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby dodać atrybuty.
 
     ![image](common/edit-attribute.png)
 
@@ -259,10 +259,10 @@ Po kliknięciu kafelka Cisco Webex w panelu dostępu powinno nastąpić automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurowanie aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial) 
+- [Konfigurowanie Aprowizowania użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial) 

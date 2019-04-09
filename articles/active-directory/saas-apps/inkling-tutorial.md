@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 901abdcc45bcac2c9b912e28386f80ab59a1c520
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 24b18a07a4581eadc556e358f6505345610927c9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094249"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Inkling
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Inkling, wykonaj na
 
     ![Inkling domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://api.inkling.com/saml/v2/metadata/<user-id>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://api.inkling.com/saml/v2/metadata/<user-id>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://api.inkling.com/saml/v2/acs/<user-id>`
 
@@ -193,7 +193,7 @@ Po kliknięciu kafelka Inkling w panelu dostępu, powinien zostać automatycznie
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

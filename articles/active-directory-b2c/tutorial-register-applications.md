@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f79ecd96b15ff4ff96a3bb93061f0c9d7598191f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338161"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278398"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Samouczek: Zarejestrować aplikację w usłudze Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Jeśli nie zostało jeszcze utworzone własne [dzierżawy usługi Azure AD B2C](
 
 ## <a name="create-a-client-secret"></a>Utwórz klucz tajny klienta
 
-W przypadku aplikacji wymienia kodu dla tokenu, musisz utworzyć wpis tajny aplikacji.
+Jeśli aplikacja wymienia kodu dla tokenu, musisz utworzyć wpis tajny aplikacji.
 
 1. Wybierz **klucze** a następnie kliknij przycisk **Wygeneruj klucz**.
 2. Wybierz **Zapisz** Aby wyświetlić klucz. Zanotuj wartość pola **Klucz aplikacji**. Użyj tej wartości jako wpisu tajnego aplikacji w kodzie Twojej aplikacji.

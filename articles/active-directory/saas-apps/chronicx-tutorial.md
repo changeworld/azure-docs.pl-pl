@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a8d289c6dfa58e70db63373178dec4e109c72
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 499cbcada19728a0d0eba1831460ea38245b7f5c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877585"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ChronicX®
 
@@ -106,7 +106,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z ChronicX®, wykonaj
 
     ![ChronicX® domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `ups.chronicx.com`
 
@@ -197,7 +197,7 @@ Po kliknięciu kafelka ChronicX® w panelu dostępu, powinien zostać automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e9efe96490ea1c9351d87b5b2477474ef68fbda9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875241"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266321"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -64,8 +64,8 @@ Te właściwości są obsługiwane w przypadku platformy Azure połączonej usł
 Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotyczących wymagań wstępnych i przykłady kodu JSON odpowiednio:
 
 - [Uwierzytelnianie SQL](#sql-authentication)
-- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: Nazwa główna usługi](#service-principal-authentication)
-- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: zarządzanych tożsamości dla zasobów platformy Azure](#managed-identity)
+- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: Jednostka usługi](#service-principal-authentication)
+- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: Tożsamości zarządzane dla zasobów platformy Azure](#managed-identity)
 
 >[!TIP]
 >Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
@@ -373,7 +373,7 @@ Aby skopiować dane do usługi Azure SQL Database, należy ustawić **typu** wł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlSink**. | Yes |
-| writeBatchSize | Wstawia dane do tabeli SQL, gdy osiągnie rozmiar buforu **writeBatchSize**.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). | Nie. Wartość domyślna to 10000. |
+| writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). | Nie. Wartość domyślna to 10000. |
 | writeBatchTimeout | Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji.<br/> Dozwolone wartości to **timespan**. Przykład: "00: 30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL, działanie kopiowania do uruchomienia przed zapisanie danych w usłudze Azure SQL Database. Jego jest wywoływana tylko po jednej kopii uruchomienia. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
 | sqlWriterStoredProcedureName | Nazwa procedury składowanej, który definiuje sposób stosowania źródła danych do tabeli docelowej. Przykładem jest wykonuje operację UPSERT lub przekształcić za pomocą z własną logiką biznesową. <br/><br/>Procedura składowana jest **wywoływane na partię**. W przypadku operacji, które są tylko uruchamiane raz i mają one nic wspólnego z danymi źródłowymi, użyj `preCopyScript` właściwości. Przykład operacje są delete i obcięcia. | Nie |
@@ -535,7 +535,7 @@ Podczas kopiowania wbudowane mechanizmy nie służą do celów, można użyć pr
 
 Poniższy przykład pokazuje, jak zrobić upsert do tabeli w usłudze Azure SQL Database za pomocą procedury składowanej. Przyjęto założenie, że dane wejściowe i obiekt sink **marketingu** każda tabela ma trzy kolumny: **ProfileID**, **stanu**, i **kategorii**. Czy upsert na podstawie **ProfileID** kolumny i zastosować je tylko dla określonej kategorii.
 
-#### <a name="output-dataset"></a>Wyjściowy zestaw danych
+**Wyjściowy zestaw danych:** "tableName" powinien być tej samej nazwie parametru typu tabeli w swojej przechowywanej procedurze (patrz poniżej skrypt procedury składowanej).
 
 ```json
 {
@@ -554,7 +554,7 @@ Poniższy przykład pokazuje, jak zrobić upsert do tabeli w usłudze Azure SQL 
 }
 ```
 
-Zdefiniuj **SqlSink** sekcji w działaniu kopiowania:
+Zdefiniuj **SQL ujścia** sekcji w działaniu kopiowania w następujący sposób.
 
 ```json
 "sink": {

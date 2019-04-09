@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 71b7cfb92b4caded75e0723564a09fae9f10858c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359777"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Samouczek: Integracja usługi Azure Active Directory z Jitbit działu pomocy technicznej
 
@@ -210,7 +210,7 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do działu p
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do działu pomocy technicznej Jitbit, musi być obsługiwana w Jitbit działu pomocy technicznej. W przypadku pomocy Jitbit aprowizacji to zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **pomocy Jitbit** dzierżawy.
 
@@ -251,7 +251,7 @@ Po kliknięciu kafelka Jitbit działu pomocy technicznej w panelu dostępu, powi
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

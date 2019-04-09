@@ -1,7 +1,6 @@
 ---
 title: Zrozumienie kolejność sekwencji wdrażania
 description: Informacje o cyklu życia, które przechodzi definicji planu i szczegółowe informacje o każdym etapie.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/25/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434810"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266192"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Zrozumienie sekwencję wdrażania w plany usługi Azure
 
@@ -26,7 +25,7 @@ Usługa Azure korzysta plany **sekwencjonowania** Aby określić kolejność two
 
 W przykładach JSON, musisz zastąpić własnymi wartościami, które są zmiennymi:
 
-- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
+- `{YourMG}` -Zamień na nazwę grupy zarządzania
 
 ## <a name="default-sequencing-order"></a>Domyślna kolejność sekwencji
 

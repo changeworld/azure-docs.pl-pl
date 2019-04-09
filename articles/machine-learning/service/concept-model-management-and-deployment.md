@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403695"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275446"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
@@ -33,7 +33,7 @@ Przepływ pracy wdrożenia obejmuje następujące kroki:
 
 Poszczególne kroki można wykonać niezależnie lub jako część polecenia pojedynczego wdrożenia. Ponadto można zintegrować wdrożenie do **przepływu pracy ciągłej integracji/ciągłego Dostarczania** jak pokazano na poniższej ilustracji.
 
-[!["Usługa azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!['Usługa Azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu "](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>Krok 1: Rejestrowanie modelu
 
@@ -63,7 +63,9 @@ Obraz, który może również obejmować składniki zestawu SDK do rejestrowania
 Usługa Azure Machine Learning obsługuje najbardziej popularnych struktur, ale ogólnie rzecz biorąc dowolnej platformy, które mogą być zainstalowane narzędzie pip może pracować.
 
 Podczas tworzenia obszaru roboczego, więc były inne kilka innych zasobów platformy Azure używane przez tego obszaru roboczego.
-Wszystkie obiekty, które są używane do tworzenia obrazu są przechowywane na koncie magazynu platformy Azure, w obszarze roboczym. Możesz podać dodatkowe metadane tagów podczas tworzenia obrazu. Tagi metadanych są także przechowywane przez rejestr obrazów i mogą być wyszukiwane można znaleźć obrazu.
+Wszystkie obiekty, które są użyte do utworzenia domyślnego obrazu są przechowywane na koncie magazynu platformy Azure, w obszarze roboczym. Możesz podać dodatkowe metadane tagów podczas tworzenia obrazu. Tagi metadanych są także przechowywane przez rejestr obrazów i mogą być wyszukiwane można znaleźć obrazu.
+
+Można również użyć niestandardowych obrazów, które można przekazać do usługi Azure Container Registry i używane przez usługę Azure Machine Learning.
 
 Aby uzyskać więcej informacji, zobacz Konfigurowanie i rejestrowanie części obrazu [wdrażanie modeli](how-to-deploy-and-where.md#configureimage).
 
@@ -73,7 +75,7 @@ W chmurze lub na urządzeniach brzegowych, mogą wdrażać obrazy zarejestrowane
 
 Wdrożeń usług internetowych są również można wyszukiwać. Na przykład możesz wyszukać wszystkie wdrożenia określonego modelu lub obrazu.
 
-[![Obiekty docelowe wnioskowania](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Inferencing elem_docelowe](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Obrazy można wdrażać w następujących lokalizacjach docelowych wdrożenia w chmurze:
 

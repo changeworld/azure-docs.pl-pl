@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą za pomocą usługi Azure DevTest Labs
+title: Popularne scenariusze dotyczące korzystania z usługi Azure DevTest Labs
 description: Ten artykuł zawiera podstawowe scenariusze przy użyciu usługi Azure DevTest Labs i dwie ścieżki głównej, aby rozpocząć korzystanie z usługi w Twojej organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803803"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272390"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>Rozpoczynanie pracy z usługą za pomocą usługi Azure DevTest Labs
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Popularne scenariusze dotyczące korzystania z usługi Azure DevTest Labs
 W zależności od potrzeb organizacji aby spełnić różne wymagania można skonfigurować DevTest Labs.  W tym artykule omówiono popularne scenariusze. Każdy scenariusz obejmuje korzyści wprowadzone za pomocą usługi DevTest Labs i zasobów na potrzeby implementowania tych scenariuszy.  
 
 - Komputery stacjonarne dla deweloperów
@@ -85,5 +85,5 @@ A **weryfikacji koncepcji** wdrożenia koncentruje się na najwięcej starań je
 Przeczytaj następujące artykuły:
 
 - [DevTest Labs — pojęcia](devtest-lab-concepts.md)
-- [Usługa DevTest Labs — często zadawane pytania](devtest-lab-faq.md)
+- [DevTest Labs — często zadawane pytania](devtest-lab-faq.md)
 

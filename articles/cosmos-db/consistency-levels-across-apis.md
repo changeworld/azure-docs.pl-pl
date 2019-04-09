@@ -1,18 +1,18 @@
 ---
 title: Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 description: Zrozumienie poziomów spójności między interfejsami API w usłudze Azure Cosmos DB.
-author: markjbrown
-ms.author: mjbrown
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7a8617ae2b01fc89a4c957b8610164a2b53a16f5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620669"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274777"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
@@ -33,7 +33,7 @@ W odróżnieniu od AzureCosmos DB bazy danych Apache Cassandra nie zawierają do
 
 W poniższej tabeli przedstawiono, jak natywne poziomów spójności bazy danych Cassandra są mapowane na poziomy spójności usługi Azure Cosmos DB, korzystając z interfejsu API rozwiązania Cassandra:  
 
-[ ![Mapowanie modelu spójności bazy danych Cassandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![CMapowanie modelu spójności assandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB i usługi Azure Cosmos DB
 
@@ -51,7 +51,7 @@ Podczas korzystania z interfejsu API usługi Azure Cosmos DB dla bazy danych Mon
 
 W poniższej tabeli przedstawiono, jak natywnej bazy danych MongoDB zapisu/odczytu uwagi są mapowane na poziomy spójności w usłudze Azure Cosmos, korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB:
 
-[ ![Mapowanie modelu spójności bazy danych MongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MMapowanie modelu spójności ongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

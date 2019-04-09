@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a782831f0f017423faef7610f984b2ea87e445
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898469"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją HackerOne
 
@@ -52,7 +52,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji HackerOne z usługą Azure AD, musisz dodać aplikację HackerOne z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację HackerOne z galerii, wykonaj następujące czynności:**
+**Aby dodać HackerOne z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -106,7 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji HackerOne](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://hackerone.com/<company name>/authentication`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://hackerone.com/<company name>/authentication`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://hackerone.com/users/saml/metadata`
 
@@ -145,9 +145,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji HackerOne,
 
     a. W polu tekstowym **Email Domain** (Domena poczty e-mail) wpisz nazwę zarejestrowanej domeny.
 
-    b. W polu tekstowym   **Single Sign On URL** (Adres URL logowania jednokrotnego) wklej wartość  **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    b. W **pojedynczy znak na adres URL** pola tekstowe, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
 
-    c. Otwórz pobrany z witryny Azure Portal **plik certyfikatu** w Notatniku, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **X509 Certificate** (Certyfikat x509)  .
+    c. Otwórz swoje pobrany **plik certyfikatu** z witryny Azure portal do Notatnika, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikatu X509** pola tekstowego.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -222,8 +222,8 @@ Po kliknięciu kafelka HackerOne w panelu dostępu powinno nastąpić automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

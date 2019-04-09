@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226576"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268725"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Strefy dostępności to oferta, która chroni aplikacje i dane przed awariami centrów danych o wysokiej dostępności. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Strefowo nadmiarowe usługi replikować aplikacji i danych w różnych strefach dostępności, aby zapewnić ochronę przed pojedynczej punktami z awarią. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -44,7 +44,8 @@ Aby uzyskać kompleksowy zestaw funkcji ciągłości na platformie Azure, tworze
 - Wschodnie stany USA 2
 - Francja Środkowa
 - Europa Północna
-- Azja Południowo-wschodnia 
+- Azja Południowo-Wschodnia 
+- Południowe Zjednoczone Królestwo&#42;
 - Europa Zachodnia
 - Zachodnie stany USA 2
 
@@ -57,8 +58,8 @@ Usługi platformy Azure, które obsługują strefy dostępności są:
 - Maszyny wirtualne z systemem Windows
 - Zestawy skali maszyn wirtualnych
 - Managed Disks
-- Moduł równoważenia obciążenia
-- Publiczny adres IP
+- Standardowego modułu równoważenia obciążenia&#42;
+- Standardowy publiczny adres IP&#42;
 - Magazyn strefowo nadmiarowy
 - SQL Database
 - Event Hubs
@@ -66,6 +67,8 @@ Usługi platformy Azure, które obsługują strefy dostępności są:
 - VPN Gateway
 - ExpressRoute
 - Usługa Application Gateway (wersja zapoznawcza)
+
+&#42;Zasoby utworzone w Południowe Zjednoczone Królestwo przed 25 marca 2019 r wkrótce będzie można przekonwertować na strefowo nadmiarowe. Zasoby utworzone po 25 marca 2019 będzie strefowo nadmiarowe natychmiast.
 
 ## <a name="services-resiliency"></a>Odporność usług
 Wszystkie usługi zarządzania platformy Azure są zaprojektowana, aby była odporna z awariami na poziomie regionu. W szerokim zakresie błędów co najmniej jeden strefy dostępności w obrębie regionu mają mniejsze radius błędów w porównaniu do awarii całego regionu. Azure można odzyskać z awarią poziomu strefy usługi zarządzania w obrębie regionu lub z innego regionu platformy Azure. Platforma Azure przeprowadza konserwację krytyczne w jednej strefie w danym momencie w obrębie regionu, aby uniknąć błędów wpływające na ochronę zasobów klienta wdrożonych w różnych strefach dostępności w obrębie regionu.
@@ -88,4 +91,4 @@ Nie ma żadnych dodatkowych kosztów, dla maszyn wirtualnych wdrożonych w stref
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Quickstart templates (Szablony szybkiego startu)](https://aka.ms/azqs)
+- [Szablony szybkiego startu](https://aka.ms/azqs)

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.date: 04/08/2019
+ms.openlocfilehash: f1e86e4556931c00d317a618eeaf35ac988a2879
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877690"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266243"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -50,7 +50,7 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 |Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Jednostki serwera w usłudze Azure AD (logowania)</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 > [!IMPORTANT]
-> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższej tabeli:
 

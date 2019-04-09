@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517933"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268429"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure container registry przy użyciu sieci wirtualnej platformy Azure lub reguły zapory
 
@@ -29,6 +29,8 @@ W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do 
 * Tylko **Premium** rejestru kontenerów można skonfigurować reguły dostępu do sieci. Aby uzyskać informacji o warstwach usługi rejestru, zobacz [jednostki SKU rejestru kontenerów platformy Azure](container-registry-skus.md). 
 
 * Tylko [usługi Azure Kubernetes Service](../aks/intro-kubernetes.md) klastra lub na platformie Azure [maszyny wirtualnej](../virtual-machines/linux/overview.md) może służyć jako host do dostępu do rejestru kontenerów w sieci wirtualnej. *Inne usługi platformy Azure, w tym usługi Azure Container Instances nie są obecnie obsługiwane.*
+
+* [Zadania usługi ACR](container-registry-tasks-overview.md) operacje nie są obecnie obsługiwane w rejestrze kontenerów wdrożonych w sieci wirtualnej.
 
 * Każdy rejestr obsługuje maksymalnie 100 reguł sieci wirtualnej.
 

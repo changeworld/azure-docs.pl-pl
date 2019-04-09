@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918947"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260344"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Poznanie kondycji usługi Azure virtual machines 
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Podczas monitorowania może się w różnych warunkach, za pomocą usługi Azure Monitor, nie został on zaprojektowany do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
 
 Wyświetlanie ogólną kondycję maszyn wirtualnych platformy Azure i bazowych systemu operacyjnego, można zaobserwować z dwóch perspektyw z usługą Azure Monitor dla kondycji maszyn wirtualnych, bezpośrednio z maszyny wirtualnej lub wszystkich maszyn wirtualnych w grupie zasobów z usługi Azure Monitor.
@@ -92,16 +92,16 @@ Stany kondycji zdefiniowane dla maszyny Wirtualnej zostały opisane w poniższej
 
 |Ikona |Stan kondycji |Znaczenie |
 |-----|-------------|------------|
-| |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. W przypadku nadrzędnym pakiet zbiorczy monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
+| |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. Za pomocą zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. Z listą nadrzędny monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
 | |Nieznana |Stan kondycji jest *nieznany* stan, gdy stan kondycji nie można obliczyć z kilku powodów, takich jak nie może zbierać dane, usługa niezainicjowana itp. Ten stan kondycji jest niemożliwe.| 
 
 Wybieranie **Wyświetl diagnostykę kondycji** spowoduje otwarcie strony, przedstawiający wszystkie składniki maszyny Wirtualnej, kryteriów skojarzonej kondycji, zmian stanu i innych istotnych problemów napotykanych przez monitorowanie składników powiązane z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Diagnostyka kondycji](#health-diagnostics). 
 
 W obszarze **kondycja składnika** sekcji tabeli pojawi się stan kondycji zbiorczy kategorii podstawowej wydajności monitorowanych przez kryteria kondycji dla tych obszarów, w szczególności **Procesora**,  **Pamięć**, **dysku**, i **sieci**.  Wybranie któregokolwiek ze składników powoduje otwarcie strony z listą wszystkich kryterium kondycji poszczególnych monitorowania aspekty tego składnika i stan kondycji odpowiednimi każdego z nich.  
 
-Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure z systemem operacyjnym Windows, stan kondycji 5 pierwszych podstawowych usług Windows są wyświetlane w sekcji **podstawowych usług kondycji**.  Wybranie jednej z usług powoduje otwarcie strony z listą kryteria kondycji monitorowania tego składnika, a jej stan kondycji.  Kliknięcie nazwy kryteria kondycji zostanie otwarty w okienku właściwości, a w tym miejscu możesz przejrzeć szczegóły konfiguracji, w tym przypadku kryteria kondycji ma odpowiedni alert usługi Azure Monitor zdefiniowane. Aby dowiedzieć się więcej, zobacz [Diagnostyka kondycji i Praca z kryteria kondycji](#health-diagnostics).  
+Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure z systemem operacyjnym Windows, stan kondycji górnej pięciu podstawowych Windows services są wyświetlane w sekcji **podstawowych usług kondycji**.  Wybranie jednej z usług powoduje otwarcie strony z listą kryteria kondycji monitorowania tego składnika, a jej stan kondycji.  Kliknięcie nazwy kryteria kondycji zostanie otwarty w okienku właściwości, a w tym miejscu możesz przejrzeć szczegóły konfiguracji, w tym przypadku kryteria kondycji ma odpowiedni alert usługi Azure Monitor zdefiniowane. Aby dowiedzieć się więcej, zobacz [Diagnostyka kondycji i Praca z kryteria kondycji](#health-diagnostics).  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>Perspektywa agregacji maszyny wirtualnej
 Aby wyświetlić kondycji zbieranie danych dla wszystkich maszyn wirtualnych w grupie zasobów, z listy nawigacji w portalu wybierz **usługi Azure Monitor** , a następnie wybierz **maszyny wirtualne (wersja zapoznawcza)**.  
@@ -133,7 +133,7 @@ W widoku listy maszyn wirtualnych, klikając nazwę maszyny Wirtualnej spowoduje
 
 ![Szczegółowe maszyny Wirtualnej informacje dotyczące wybranej maszyny wirtualnej platformy Azure](./media/vminsights-health/vminsights-directvm-health.png)
 
-W tym miejscu pokazuje pakiet zbiorczy **stan kondycji** dla maszyny wirtualnej i **alerty**skategoryzowane według ważności, którą reprezentują wywoływane, gdy stan kondycji zmieni się z kondycji na nieprawidłowy dla alerty dotyczące kondycji maszyny Wirtualnej kryteria kondycji.  Wybieranie **maszyn wirtualnych w stan krytyczny** spowoduje otwarcie strony z listą przynajmniej jednej maszyny wirtualnej, które znajdują się w krytycznym stanie kondycji.  Klikając stan kondycji dla jednej z maszyn wirtualnych, na liście będą wyświetlane **Diagnostyka kondycji** widoku maszyny wirtualnej.  W tym miejscu znajdziesz kryteria kondycji, które jest odzwierciedlający problem z kondycją stanu. Gdy **Diagnostyka kondycji** zostanie otwarta strona, pokazuje wszystkie składniki maszyny Wirtualnej i ich kryteria kondycji skojarzone z bieżącym stanem kondycji.  Zapoznaj się [kondycji diagnostycznych](#health-diagnostics) sekcji, aby uzyskać więcej informacji.  
+W tym miejscu pokazuje pakiet zbiorczy **stan kondycji** dla maszyny wirtualnej i **alerty**skategoryzowane według ważności, którą reprezentują wywoływane, gdy stan kondycji zmieni się z kondycji na nieprawidłowy dla alerty dotyczące kondycji maszyny Wirtualnej kryteria kondycji.  Wybieranie **maszyn wirtualnych w stan krytyczny** spowoduje otwarcie strony z listą przynajmniej jednej maszyny wirtualnej, które znajdują się w krytycznym stanie kondycji.  Klikając stan kondycji dla jednej z maszyn wirtualnych, na liście będą wyświetlane **Diagnostyka kondycji** widoku maszyny wirtualnej.  W tym miejscu znajdziesz kryteria kondycji, które jest odzwierciedlający problem z kondycją stanu. Gdy **Diagnostyka kondycji** zostanie otwarta strona, pokazuje wszystkie składniki maszyny Wirtualnej i ich kryteria kondycji skojarzone z bieżącym stanem kondycji. Aby uzyskać więcej informacji, zobacz [kondycji diagnostycznych](#health-diagnostics).  
 
 Wybieranie **wyświetlić wszystkie kryteria kondycji** otwiera stronę, która pokazuje listę dostępnych za pomocą tej funkcji kryteria kondycji.  Dane można dodatkowo filtrowane na podstawie następujących opcji:
 
@@ -164,7 +164,7 @@ Diagnostyka kondycji porządkuje informacje o kondycji na następujące kategori
 * Dostępność
 * Wydajność
  
-Wszystkie kryteria kondycji zdefiniowane dla określonego składnika, takich jak dysk logiczny procesor CPU, itp. Ponadto kategoria monitora są widoczne obok niego w **kryteria kondycji** kolumny.  
+Wszystkie kryteria kondycji zdefiniowane dla określonego składnika, takich jak dysk logiczny procesor CPU, itp. mogą być wyświetlane bez filtrowania na dwie kategorie, (które znajduje się całej wszystkie kryteria) lub filtrować wyniki według kategorii albo wybierając **dostępności**  lub **wydajności** opcje na stronie. Ponadto kategorii kryteria są widoczne obok niego w **kryteria kondycji** kolumny. Jeśli kryteria nie odpowiada wybranej kategorii, będzie wyświetlany komunikat **kryteria kondycji, nie jest dostępne dla wybranej kategorii** w **kryteria kondycji** kolumny.  
 
 Stan kryteria kondycji jest zdefiniowana za pomocą jednej z czterech stanów — *krytyczny*, *ostrzeżenie*, *dobra kondycja*, i *nieznany*. Pierwsze trzy są konfigurowane, co oznacza, można zmodyfikować wartości progowe monitorów za pomocą [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Nieznany* nie jest konfigurowalne i zarezerwowane dla konkretnych scenariuszy.  
 
@@ -190,7 +190,7 @@ W środkowej kolumnie na stronie Diagnostyka kondycji jest **kryteria kondycji**
 
 Kryterium kondycji mierzy kondycję monitorowanych wystąpień przy użyciu kryteriów, które mogą być wartość progową, stan jednostki itp. Kryterium kondycji ma dwa lub trzy progi stanu kondycji można skonfigurować zgodnie z wcześniejszym opisem. W dowolnym danym momencie kryterium kondycji może być tylko jednego ze swoich potencjalnych stanów. 
 
-Ogólna kondycja obiektu docelowego jest określany przez kondycji każdego z jego kryteria kondycji zdefiniowane w modelu kondycji. Są to kombinacja kryteria kondycji ukierunkowanych bezpośrednio na elemencie docelowym kryteria kondycji celem rzutowanie do elementu docelowego przy użyciu kryterium agregacji kondycji składników. Taka hierarchia jest zaprezentowana w **kryteria kondycji** sekcji na stronie Diagnostyka kondycji. W zasadach zestawienia kondycji jest częścią konfiguracji kryteria kondycji agregacji (domyślnym ustawieniem jest *najgorszy z*). Można znaleźć listy domyślny zestaw kryteria kondycji uruchomiona w ramach tej funkcji w sekcji [szczegóły konfiguracji monitorowania](#monitoring-configuration-details).  
+Ogólna kondycja obiektu docelowego jest określany przez kondycji każdego z jego kryteria kondycji zdefiniowane w modelu kondycji. Jest kombinacją kryteria kondycji ukierunkowanych bezpośrednio na elemencie docelowym kryteria kondycji celem rzutowanie do elementu docelowego przy użyciu kryterium agregacji kondycji składników. Taka hierarchia jest zaprezentowana w **kryteria kondycji** sekcji na stronie Diagnostyka kondycji. W zasadach zestawienia kondycji jest częścią konfiguracji kryteria kondycji agregacji (domyślnym ustawieniem jest *najgorszy z*). Można znaleźć listy domyślny zestaw kryteria kondycji uruchomiona w ramach tej funkcji w sekcji [szczegóły konfiguracji monitorowania](#monitoring-configuration-details).  
 
 **Jednostka** typ kryteria kondycji może mieć ich konfiguracji, modyfikować, klikając łącze wielokropka, aby znacznie rogu i wybierając opcję **Pokaż szczegóły** aby otworzyć okienko konfiguracji. 
 
@@ -256,6 +256,64 @@ Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej 
 ![W okienku szczegółów alertu wybranego alertu](./media/vminsights-health/alert-details-pane-01.png)
 
 Zgłoś alert, również można zmienić stanu dla jednego lub wielu alertów, wybierając je, a następnie wybierając **zmiany stanu** z **wszystkie alerty** strony, w lewym górnym rogu. Na **Zmień stan alertu** okienku wybierz jedną z państw, Dodaj opis zmian w **komentarz** pola, a następnie kliknij przycisk **Ok** aby zatwierdzić zmiany. Podczas weryfikowania informacji i zmiany zostaną zastosowane, możesz śledzić postęp w sekcji **powiadomienia** z menu.  
+
+### <a name="configure-alerts"></a>Konfigurowanie alertów
+Zarządzania niektórych alertów zadań nie mogą być zarządzane w witrynie Azure portal i muszą zostać wykonane za pomocą [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). W szczególności:
+
+- Włączanie lub wyłączanie alertu dotyczącego kryteria kondycji 
+- Konfigurowanie powiadomień o alertach kryteria kondycji 
+
+Metoda używana w każdym przykładzie korzysta [ARMClient](https://github.com/projectkudu/armclient) na komputerze Windows. Jeśli nie jesteś zaznajomiony z tej metody, zobacz [przy użyciu ARMClient](../platform/rest-api-walkthrough.md#use-armclient).  
+
+#### <a name="enable-or-disable-alert-rule"></a>Włączanie lub wyłączanie reguły alertu
+
+Aby włączyć lub wyłączyć regułę alertu kryteria kondycji konkretnego właściwość kryteria kondycji *alertGeneration* należy modyfikować za pomocą wartości **wyłączone** lub **włączone**. Aby zidentyfikować *elementu monitorId* kryteria kondycji konkretnego, poniższy przykład pokazują, jak utworzyć zapytanie dotyczące tej wartości kryteriów **LogicalDisk\Avg dysku sekund na Transfer**.
+
+1. W oknie terminalu wpisz **logowania armclient.exe**. Ten sposób wyświetli monit o logowanie do platformy Azure.
+
+2. Wpisz następujące polecenie, aby pobrać wszystkie aktywne w określonej maszyny wirtualnej kryterium kondycji i zidentyfikować wartość *elementu monitorId* właściwości. 
+
+    ```
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    ```
+
+    Dane wyjściowe tego polecenia można znaleźć w poniższym przykładzie. Zwróć uwagę na wartość *elementu MonitorId* wyróżniony czerwonym kolorem. Ta wartość jest wymagana do kolejnego kroku, w którym należy określić identyfikator kryteria kondycji i modyfikowania jego właściwości w celu utworzenia alertu.
+
+    ![Przykład pobierania Identyfikatora monitora kondycji kryteriów](./media/vminsights-health/get-monitor-identifier-01.png)
+
+3. Wpisz następujące polecenie, aby zmodyfikować *alertGeneration* właściwości.
+
+    ```
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    ```   
+
+4. Wpisz polecenie GET, użyto w kroku 2, aby sprawdzić wartość właściwości jest równa **wyłączone**.  
+
+#### <a name="associate-action-group-with-health-criteria"></a>Skojarz grupę akcji z kryteria kondycji
+
+Monitor kondycji maszyn wirtualnych platformy Azure obsługuje wiadomości SMS i powiadomień e-mail, gdy alerty są generowane, gdy kryteria kondycji staje się nieprawidłowy. Aby skonfigurować powiadomienia, musisz Zanotuj nazwę grupy akcji, który jest skonfigurowany do wysyłania powiadomień programu SMS lub wiadomości e-mail. 
+
+>[!NOTE]
+>Ta akcja musi zostać wykonana względem każdej maszyny Wirtualnej monitorowanej, którą chcesz otrzymywać powiadomienie.
+
+1. W oknie terminalu wpisz **logowania armclient.exe**. Ten sposób wyświetli monit o logowanie do platformy Azure.
+
+2. Wpisz następujące polecenie, aby skojarzyć grupy akcji przy użyciu reguł alertów.
+ 
+    ```
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
+    ```
+
+3. Aby sprawdzić wartość właściwości **actionGroupResourceIds** zostało pomyślnie zaktualizowane, wpisz następujące polecenie.
+
+    ```
+    armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
+    ```
+
+    Dane wyjściowe powinny wyglądać w następujący sposób:
+    
+    ![Przykładowe dane wyjściowe z Get notificationSettings](./media/vminsights-health/get-notification-config-status.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby zidentyfikować wąskie gardła i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [wydajność maszyny Wirtualnej platformy Azure w widoku](vminsights-performance.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych jest mapowany](vminsights-maps.md). 

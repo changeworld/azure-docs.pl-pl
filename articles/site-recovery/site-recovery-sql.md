@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2d141a330b6b6c5fc102dd70ae1d6b3b01283d19
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444875"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270986"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server
 
 W tym artykule opisano, jak chronić programu SQL Server zaplecza aplikacji przy użyciu kombinacji ciągłości programu SQL Server i technologii recovery (BCDR) po awarii, i [usługi Azure Site Recovery](site-recovery-overview.md).
 
@@ -30,7 +30,7 @@ Wiele obciążeń używania programu SQL Server jako podstawa i można zintegrow
 * **SQL Server awaryjnej wystąpienia (zawsze włączone FCI)**: Dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
 * **Zawsze włączone grupy dostępności programu SQL Server**: Co najmniej dwa węzły są konfigurowane w udostępnionym klastra nic za pomocą programu SQL Server baz danych skonfigurowanych w grupie dostępności, przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej.
 
- W tym artykule wykorzystuje następujące natywnych SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do lokacji zdalnej:
+  W tym artykule wykorzystuje następujące natywnych SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do lokacji zdalnej:
 
 * SQL zawsze włączone grupy dostępności, zapewnienie odzyskiwania po awarii dla programu SQL Server 2012 lub 2014 w wersji Enterprise.
 * Funkcja dublowania bazy danych SQL w trybie wysokiego bezpieczeństwa, SQL Server Standard edition (dowolna wersja) lub SQL Server 2008 R2.
@@ -40,12 +40,12 @@ Wiele obciążeń używania programu SQL Server jako podstawa i można zintegrow
 ### <a name="supported-scenarios"></a>Obsługiwane scenariusze
 Usługa Site Recovery chroni program SQL Server zgodnie z opisem w tabeli.
 
-**Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Na platformę Azure**
 --- | --- | ---
 **Funkcja Hyper-V** | Yes | Yes
 **VMware** | Yes | Yes
 **Serwer fizyczny** | Yes | Yes
-**Azure**|Nie dotyczy| Yes
+**Azure** |Nie dotyczy| Yes
 
 ### <a name="supported-sql-server-versions"></a>Obsługiwane wersje programu SQL Server
 Te wersje programu SQL Server są obsługiwane w przypadku obsługiwanych scenariuszy:
@@ -59,9 +59,9 @@ Te wersje programu SQL Server są obsługiwane w przypadku obsługiwanych scenar
 
 Usługa Site Recovery może zostać zintegrowany z natywnych technologiami BCDR serwera SQL, podsumowane w tabeli, aby zapewnić rozwiązanie odzyskiwania po awarii.
 
-**Funkcja** | **Szczegóły** | **SQL Server** |
+**Cecha** | **Szczegóły** | **Oprogramowanie SQL Server** |
 --- | --- | ---
-**Konfigurowanie zawsze włączonej grupy dostępności** | Autonomiczny uruchomić wiele wystąpień programu SQL Server w klastrze trybu failover, który ma wiele węzłów.<br/><br/>Bazy danych, można podzielić na grupy trybu failover, które można skopiować (dublowanych) w wystąpieniach programu SQL Server tak, aby Brak udostępnionego magazynu jest wymagana.<br/><br/>Zapewnia odzyskiwanie po awarii między lokacją główną a przynajmniej jednej lokacji dodatkowej. Dwa węzły można skonfigurować pod kątem w udostępnionej nic klastra przy użyciu bazy danych programu SQL Server jest skonfigurowany w grupie dostępności przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej. | SQL Server 2016, SQL Server 2014 i SQL Server 2012 Enterprise edition
+**Zawsze włączona grupa dostępności** | Autonomiczny uruchomić wiele wystąpień programu SQL Server w klastrze trybu failover, który ma wiele węzłów.<br/><br/>Bazy danych, można podzielić na grupy trybu failover, które można skopiować (dublowanych) w wystąpieniach programu SQL Server tak, aby Brak udostępnionego magazynu jest wymagana.<br/><br/>Zapewnia odzyskiwanie po awarii między lokacją główną a przynajmniej jednej lokacji dodatkowej. Dwa węzły można skonfigurować pod kątem w udostępnionej nic klastra przy użyciu bazy danych programu SQL Server jest skonfigurowany w grupie dostępności przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej. | SQL Server 2016, SQL Server 2014 i SQL Server 2012 Enterprise edition
 **(Zawsze na FCI) do klastra trybu failover** | Program SQL Server korzysta z Windows klastra trybu failover wysokiej dostępności obciążeń programu SQL Server w środowisku lokalnym.<br/><br/>Węzły uruchomione wystąpienia programu SQL Server z dyskami udostępnionymi są skonfigurowane w klastrze trybu failover. Jeśli wystąpienie jest wyłączony klastra kończy się niepowodzeniem przez inny.<br/><br/>Klaster nie chroni przed awarią lub przerw w magazynie udostępnionym. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel, lub udostępnione Vhdx. | SQL Server Enterprise editions<br/><br/>SQL Server Standard edition (ograniczoną do tylko dwa węzły)
 **(Wysokie bezpieczeństwo tryb) dublowania bazy danych** | Chroni pojedynczej bazy danych do pojedynczej kopii dodatkowej. Dostępne w obu wysokie bezpieczeństwo (synchroniczne) i trybach replikacji (asynchroniczny) o wysokiej wydajności. Nie wymaga klastra trybu failover. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise wszystkie wersje
 **Autonomiczny program SQL Server** | SQL Server i bazy danych są hostowane na jednym serwerze (fizyczny lub wirtualny). Klaster hosta jest używana do wysokiej dostępności, jeśli serwer znajduje się wirtualny. Nie wysokiej dostępności poziomie gościa. | Enterprise lub Standard
@@ -73,11 +73,11 @@ Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologia
 | **Wersja** | **Wersja** | **Wdrożenie** | **Na infrastrukturę lokalną w środowisku lokalnym** | **Środowiska lokalnego do platformy Azure** |
 | --- | --- | --- | --- | --- |
 | Program SQL Server 2016, 2014 lub 2012 |Enterprise |Wystąpienia klastra trybu failover |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
-|| Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |
-|| Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne | |
-|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
+|| Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
+|| Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne |
+|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery |
 | SQL Server 2008 R2 or 2008 |Enterprise lub Standard |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne |
-|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
+|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery |
 | Program SQL Server (dowolna wersja) |Enterprise lub Standard |Wystąpienia klastra trybu failover — aplikacja usługi DTC |Replikacja usługi Site Recovery |Nieobsługiwane |
 
 ## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrożenia
@@ -101,7 +101,7 @@ Oto, co należy zrobić:
 
 1. Importuj skrypty na koncie usługi Azure Automation. Zawiera skrypty do trybu failover grupy dostępności SQL w [maszyny wirtualnej usługi Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) i [klasycznej maszyny wirtualnej](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
-    [![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Deploy na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Dodaj usługi ASR-SQL-FailoverAG jako akcję wstępnie pierwszej grupy planu odzyskiwania.

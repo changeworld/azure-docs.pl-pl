@@ -1,20 +1,20 @@
 ---
-title: Samouczek dotyczący tworzenia niestandardowego modułu Java — Azure IoT Edge | Microsoft Docs
+title: Samouczek niestandardowego modułu Java — Azure IoT Edge | Dokumentacja firmy Microsoft
 description: W tym samouczku pokazano, jak utworzyć moduł usługi IoT Edge za pomocą kodu języka Java i wdrożyć go na urządzeniu brzegowym.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9a541f42670b3ccf83331e3e2e9069289bb9b4b3
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3e24894e088f443ca705163c353920e8dd3ff4ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224077"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266685"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: Programowanie modułu usługi IoT Edge w języku Java i wdrażanie go na urządzeniu symulowanym
 
@@ -36,7 +36,7 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 Urządzenie usługi Azure IoT Edge:
 
-* Możesz skonfigurować urządzenie usługi IoT Edge, wykonując kroki opisane w przewodnikach Szybki start dotyczących systemu [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+* Maszynę wirtualną platformy Azure można użyć jako urządzenia usługi IoT Edge, wykonując kroki opisane w przewodniku Szybki Start dla [Linux](quickstart-linux.md) lub [urządzenia Windows](quickstart.md). 
 * W przypadku usługi IoT Edge na urządzeniach z systemem Windows wersja 1.0.5 nie obsługuje modułów języka Java. Aby uzyskać więcej informacji, zobacz [Informacje o wersji 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Aby uzyskać instrukcje dotyczące sposobu instalowania określonej wersji, zobacz [Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego](how-to-update-iot-edge.md).
 
 Zasoby w chmurze:
@@ -50,8 +50,8 @@ Zasoby do programowania:
 * [Narzędzia usługi Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
 * [Java SE Development Kit 10](https://aka.ms/azure-jdks) i [ustaw zmienną środowiskową `JAVA_HOME`](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby wskazywała instalację zestawu JDK.
 * [Maven](https://maven.apache.org/)
-* [Program Docker CE](https://docs.docker.com/install/)
-   * Jeśli programujesz na urządzeniu z systemem Windows, upewnij się, że platforma Docker jest [skonfigurowana do używania kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
+* [Docker CE](https://docs.docker.com/install/)
+   * Jeśli tworzysz na urządzeniu z systemem Windows, upewnij się, Docker jest [skonfigurowany do używania kontenerów systemu Linux lub Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers), w zależności od używanego systemu operacyjnego urządzenia usługi IoT Edge. 
 
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
@@ -146,8 +146,9 @@ W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udost�
 7. Zastąp metodę execute elementu **MessageCallbackMqtt** następującym kodem. Ta metoda jest wywoływana za każdym razem, gdy moduł odbiera komunikat MQTT z centrum usługi IoT Edge. Odfiltrowuje ona komunikaty zgłaszające temperatury nie przekraczające wartości progowej temperatury ustawionej za pomocą bliźniaczej reprezentacji modułu.
 
     ```java
+    protected static class MessageCallbackMqtt implements MessageCallback {
         private int counter = 0;
-       @Override
+        @Override
         public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
  
@@ -173,6 +174,7 @@ W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udost�
             }
             return IotHubMessageResult.COMPLETE;
         }
+    }
     ```
 
 8. Dodaj następujące dwie statyczne klasy wewnętrzne w klasie **App**. Te klasy aktualizują zmienną tempThreshold, gdy zmieni się określona właściwość bliźniaczej reprezentacji modułu. Wszystkie moduły mają swoje bliźniacze reprezentacje, dzięki czemu można skonfigurować kod działający wewnątrz modułu bezpośrednio z poziomu chmury.
@@ -218,7 +220,7 @@ W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udost�
 
 11. Zapisz plik App.java.
 
-12. W eksploratorze programu VS Code otwórz plik **deployment.template.json** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik informuje agenta usługi IoT Edge, które moduły mają zostać wdrożone (w tym przypadku **tempSensor** i **JavaModule**), i informuje centrum usługi IoT Edge o tym, jak kierować wiadomości między nimi. Rozszerzenie programu Visual Studio Code automatycznie wypełni większość informacji potrzebnych w szablonie wdrożenia, ale sprawdź, czy wszystko jest dokładne dla Twojego rozwiązania: 
+12. W eksploratorze programu VS Code otwórz plik **deployment.template.json** w obszarze roboczym rozwiązania usługi IoT Edge. Ten plik nakazuje agentowi usługi IoT Edge, które moduły do wdrożenia i zawiera informacje dotyczące określenia trasy wiadomości między nimi Centrum usługi IoT Edge. W tym przypadku są dwa moduły **tempSensor** i **JavaModule**. Rozszerzenie programu Visual Studio Code automatycznie wypełni większość informacji potrzebnych w szablonie wdrożenia, ale sprawdź, czy wszystko jest dokładne dla Twojego rozwiązania: 
 
    1. Domyślną platformą ustawioną na pasku stanu programu VS Code dla usługi IoT Edge jest platforma **amd64**, co oznacza, że dla modułu **JavaModule** ustawiono wersję obrazu Linux amd64. Zmień domyślną platformę na pasku stanu z **amd64** na **arm32v7** lub **windows-amd64**, jeśli taka jest architektura urządzenia usługi IoT Edge. 
 
@@ -264,7 +266,7 @@ Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowan
 >[!TIP]
 >Jeśli podczas próby skompilowania i wypchnięcia modułu pojawia się błąd, sprawdź następujące rzeczy:
 >* Czy do platformy Docker w programie Visual Studio Code zalogowano się przy użyciu poświadczeń z rejestru kontenerów? Te poświadczenia są inne niż te, których używasz do logowania się w witrynie Azure Portal.
->* Czy używasz właściwego repozytorium kontenerów? Otwórz plik **modules** > **cmodule** > **module.json** i znajdź pole **repository**. Repozytorium obrazów powinno wyglądać tak: **\<nazwa_rejestru\>.azurecr.io/javamodule**. 
+>* Czy używasz właściwego repozytorium kontenerów? Otwórz **modułów** > **JavaModule** > **module.json** i Znajdź **repozytorium** pola. Repozytorium obrazów powinno wyglądać tak: **\<nazwa_rejestru\>.azurecr.io/javamodule**. 
 >* Czy kompilujesz kontenery tego samego typu, co działające na maszynie deweloperskiej? Domyślnie w programie Visual Studio Code są używane kontenery amd64 systemu Linux. Jeśli na maszynie deweloperskiej działają kontenery systemu Windows lub kontenery arm32v7 systemu Linux, zaktualizuj platformę na niebieskim pasku stanu w dolnej części okna programu VS Code, aby była zgodna z platformą kontenerów.
 
 ## <a name="deploy-and-run-the-solution"></a>Wdrażanie i uruchamianie rozwiązania
@@ -321,5 +323,5 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Możesz teraz kontynuować pracę, korzystając z kolejnych samouczków, aby poznać inne metody, za pomocą których usługa Azure IoT Edge może ułatwiać przekształcanie danych w analizy biznesowe na urządzeniach brzegowych.
 
 > [!div class="nextstepaction"]
-> [Store data at the edge with SQL Server databases (Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server)](tutorial-store-data-sql-server.md)
+> [Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server](tutorial-store-data-sql-server.md)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013041"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273587"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
@@ -63,7 +63,9 @@ Kliknij pozycję **Add** (Dodaj).
 
 ![Koszt zarządzania budżetów wyświetlane w witrynie Azure portal](./media/tutorial-acm-create-budgets/budgets01.png)
 
-W **budżetu Utwórz** okna, wprowadź nazwę budżetu i budżetu. Następnie wybierz, co miesiąc, co kwartał, lub roczna czasu trwania. Następnie wybierz datę zakończenia. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Użyj koszt alerty](cost-mgt-alerts-monitor-usage-spending.md).
+W **budżetu Utwórz** okna, wprowadź nazwę budżetu i budżetu. Następnie wybierz albo co miesiąc, co kwartał lub roczna czasu trwania<sup>1</sup>. Następnie wybierz datę zakończenia. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Użyj koszt alerty](cost-mgt-alerts-monitor-usage-spending.md).
+
+<sup>1</sup> Jeśli jesteś klientem płatność za rzeczywiste użycie, MSDN lub Visual Studio okresu rozliczeniowego faktury dla subskrypcji nie może być wyrównane z miesiącem kalendarzowym. Dla subskrypcji i grupy zasobów, które należą do tego zasobnika fakturze lub miesięcy kalendarzowych można utworzyć budżetu, który jest wyrównany. Aby utworzyć budżetu wyrównane do faktury, wybierz okres resetowania rozliczeń miesiąca, kwartału rozliczeń lub rozliczeń roku w czasie tworzenia. Aby utworzyć budżetu wyrównane z miesiącem kalendarzowym, wybierz okres resetowania, co miesiąc, co kwartał lub roczna w czasie jego tworzenia.
 
 Oto przykład tworzenia miesięcznego budżetu dla 4500 zł. Wiadomość e-mail z alertem pobiera wygenerowany, gdy zostanie osiągnięta 90% budżetu.
 
@@ -121,4 +123,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby utworzyć cykliczne eksportu dla usługi danych rozwiązania cost management.
 
 > [!div class="nextstepaction"]
-> [Tworzenie i zarządzanie nimi wyeksportowanych danych](tutorial-export-acm-data.md)
+> [Eksportowanie danych i zarządzanie nimi](tutorial-export-acm-data.md)

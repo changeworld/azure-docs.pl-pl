@@ -9,13 +9,13 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 02/09/2019
-ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.date: 04/03/2019
+ms.openlocfilehash: 477a74d7bd0275715222a54800b81c2812da9c77
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917893"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275610"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -33,7 +33,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | **Region** | **Niższe Gen2 dostępne** | **Rozpocznij automatycznych uaktualnień** |
 |:--- |:--- |:--- |
 | Australia Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Australia Południowo-Wschodnia |2 kwietnia 2019 r. |1 maja 2019 r. |
+| Australia Południowo-Wschodnia |15 kwietnia 2019 r. |1 maja 2019 r. |
 | Brazylia Południowa |15 maja 2019 r. |\* |
 | Kanada Środkowa |Dostępne |1 czerwca 2019 r. |
 | Kanada Wschodnia |\* |\* |
@@ -49,20 +49,20 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
 | Indie Środkowe |Dostępne |1 czerwca 2019 r. |
-| Indie Południowe |2 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Indie Południowe |15 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Japonia Wschodnia |Dostępne |1 czerwca 2019 r. |
 | Japonia Zachodnia |Dostępne |1 maja 2019 r. |
-| Korea Środkowa |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Korea Południowa |2 kwietnia 2019 r. |1 maja 2019 r. |
-| Środkowo-północne stany USA |2 kwietnia 2019 r. |1 maja 2019 r. |
+| Korea Środkowa |15 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Korea Południowa |15 kwietnia 2019 r. |1 maja 2019 r. |
+| Środkowo-północne stany USA |15 kwietnia 2019 r. |1 maja 2019 r. |
 | Europa Północna |Dostępne |1 czerwca 2019 r. |
 | Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Południowe Zjednoczone Królestwo |2 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Południowe Zjednoczone Królestwo |15 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Zachodnie Zjednoczone Królestwo |\*|\* |
 | Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
 | Europa Zachodnia |Dostępne |1 czerwca 2019 r. |
-| Zachodnie stany USA |2 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Zachodnie stany USA |15 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Zachodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie

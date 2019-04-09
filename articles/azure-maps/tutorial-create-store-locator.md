@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058734"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270807"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
@@ -132,14 +132,14 @@ Aby utworzyć interfejs użytkownika, dodaj kod do pliku *index.html*:
 1. Dodaj odwołania do plików JavaScript i CSS kontrolki internetowej usługi Azure Maps:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. Dodaj odwołanie do modułu usług Azure Maps Services. Moduł ten to biblioteka języka JavaScript, która opakowuje usługi REST Azure Maps i umożliwia ich łatwe użycie w kodzie JavaScript. Moduł jest przydatny do obsługi funkcji wyszukiwania.
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. Dodaj odwołania do plików *index.js* i *index.css*:
@@ -970,3 +970,6 @@ Aby uzyskać dodatkowe przykłady kodu i zapoznać się z interaktywnym środowi
 
 > [!div class="nextstepaction"]
 > [Jak używać kontrolki mapy](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Za pomocą wyrażeń opartych na danych stylu](data-driven-style-expressions-web-sdk.md)

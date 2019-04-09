@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f93ca9c35843a130ebdea586a2a1ef469de460
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d9130717f7846c81bee2bf4892a13fcf6042257c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850823"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Menedżera usług Ivanti (ISM)
 
@@ -78,10 +78,10 @@ Dla logowania jednokrotnego do pracy relację łącza między użytkownika usłu
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Menedżera usług Ivanti (ISM), należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie Ivanti Service Manager (ISM) logowanie jednokrotne](#configure-ivanti-service-manager-ism-single-sign-on) ** — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Konfigurowanie Ivanti Service Manager (ISM) logowanie jednokrotne](#configure-ivanti-service-manager-ism-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego Ivanti Service Manager (ISM)](#create-ivanti-service-manager-ism-test-user) ** — aby odpowiednikiem Britta Simon w Ivanti Manager Service (ISM), połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Tworzenie użytkownika testowego Ivanti Service Manager (ISM)](#create-ivanti-service-manager-ism-test-user)**  — aby odpowiednikiem Britta Simon w Ivanti Manager Service (ISM), połączonego z usługi Azure AD reprezentacja użytkownika.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -209,7 +209,7 @@ Po kliknięciu kafelka Ivanti Service Manager (ISM) w panelu dostępu, możesz p
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

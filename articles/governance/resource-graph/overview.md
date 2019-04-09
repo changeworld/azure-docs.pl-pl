@@ -1,19 +1,18 @@
 ---
 title: Omówienie usługi Azure Resource Graph
 description: Dowiedz się, jak usługa wykres zasobów platformy Azure umożliwia złożonych zapytań zasobów na dużą skalę.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/06/2019
+ms.date: 03/29/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802326"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269292"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
@@ -26,13 +25,13 @@ Azure Resource Graph to usługa platformy Azure, której celem jest rozszerzenie
 W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 > [!NOTE]
-> Usługa Azure Resource Graph jest używana przez nowe środowisko przeglądania „Wszystkie zasoby” witryny Azure Portal. Jest ono zaprojektowane, aby ułatwić klientom zarządzanie środowiskami o dużej skali.
+> Usługa Azure Resource Graph jest używana przez nowe środowisko przeglądania „Wszystkie zasoby” witryny Azure Portal. Został zaprojektowany tak, aby ułatwić klientom z rzeczy, aby zarządzać środowiskami na dużą skalę.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak usługa Resource Graph uzupełnia usługę Azure Resource Manager
 
 Usługa Azure Resource Manager aktualnie wysyła dane do ograniczonej pamięci podręcznej zasobu, który udostępnia kilka pól zasobów, a w szczególności — nazwę zasobu, identyfikator, typ, grupę zasobów, subskrypcje i lokalizację. Wcześniej praca z różnymi właściwościami zasobu wymagała wywołania poszczególnych dostawców zasobów i zażądania szczegółów dotyczących właściwości dla każdego zasobu.
 
-Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów.
+Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby uzyskać listę obsługiwane typy zasobów, poszukaj **tak** w [zasobów w przypadku wdrożeń w trybie](../../azure-resource-manager/complete-mode-deletion.md) tabeli.
 
 ## <a name="the-query-language"></a>Język zapytań
 
@@ -45,6 +44,9 @@ Po pierwsze, aby poznać szczegółowe informacje dotyczące operacji i funkcji,
 ## <a name="permissions-in-azure-resource-graph"></a>Uprawnienia w usłudze Azure Resource Graph
 
 Aby użyć usługi Resource Graph, musisz mieć odpowiednie prawa w [kontroli dostępu na podstawie ról](../../role-based-access-control/overview.md) (RBAC) dające co najmniej dostęp do odczytu do zasobów, które chcesz zbadać. Bez uprawnień do obiektu lub grupy obiektów platformy Azure na poziomie co najmniej `read` wyniki nie będą zwracane.
+
+> [!NOTE]
+> Wykres zasobów subskrypcji dostępnych na podmiot zabezpieczeń jest używany podczas logowania. Aby wyświetlić zasoby nową subskrypcję dodany podczas aktywnej sesji, podmiot zabezpieczeń należy odświeżyć kontekstu. Ta akcja odbywa się automatycznie podczas rejestrowania i ponownie do niej.
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 

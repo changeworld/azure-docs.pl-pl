@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: b567f5e74737c6020a3dd08484354383d45ecb7d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ed8884462030e10625f332b182bd900e833f34f4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361893"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272737"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Za pomocą usług Data Lake Storage Gen1 klastrów Azure HDInsight
 
@@ -43,6 +43,7 @@ Aktualnie tylko niektóre HDInsight klastra typy/wersje pomocy technicznej za po
 
 | Typ klastra usługi HDInsight | Data Lake Storage Gen1 jako magazynem domyślnym | Data Lake Storage Gen1 jako magazyn dodatkowy| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
+| HDInsight w wersji 4.0 | Nie | Nie |Gen1 Azure Data Lake Store nie jest obsługiwana przy użyciu HDInsight w wersji 4.0 |
 | HDInsight w wersji 3.6 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.5 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.4 | Nie | Yes | |
@@ -160,7 +161,7 @@ Użyj poniższych linków, aby uzyskać szczegółowe instrukcje dotyczące spos
 * [Korzystanie z portalu](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Przy użyciu programu PowerShell (za pomocą Data Lake Storage Gen1 jako magazynu domyślnego)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Przy użyciu programu PowerShell (za pomocą Data Lake Gen1 magazynu jako magazyn dodatkowy)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
-* [Korzystanie z szablonów platformy Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+* [Za pomocą szablonów platformy Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 ## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>Odśwież certyfikatu HDInsight Data Lake Storage Gen1 dostępu
 
@@ -242,7 +243,7 @@ W tym artykule przedstawiono sposób użycia zgodnego systemem plików HDFS usł
 Aby uzyskać więcej informacji, zobacz:
 
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
-* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* [Szybki start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Tworzenie klastra usługi HDInsight, aby użyć Data Lake Storage Gen1 przy użyciu programu Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
 * [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]

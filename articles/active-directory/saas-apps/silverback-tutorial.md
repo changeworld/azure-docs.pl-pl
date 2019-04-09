@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a104da9ecb28d2109e82056995ef7a8048eafe2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838752"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Silverback
 
@@ -201,7 +201,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Silverback, musi być obsługiwana w Silverback. W Silverback Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do serwera Silverback jako Administrator.
 
@@ -236,7 +236,7 @@ Po kliknięciu kafelka Silverback w panelu dostępu, powinien zostać automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

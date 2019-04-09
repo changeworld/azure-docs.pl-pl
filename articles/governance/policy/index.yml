@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804653"
 documentType: LandingData
 title: Dokumentacja usługi Azure Policy
 metadata:
   title: Dokumentacja usługi Azure Policy — samouczki i dokumentacja interfejsu API
-  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.
-  services: azure-policy
+  description: 'Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.'
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
@@ -18,62 +11,62 @@ metadata:
   ms.date: 03/16/2019
   ms.author: dacoulte
 abstract:
-  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.
+  description: 'Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        alt: Azure Portal
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: ./assign-policy-portal
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: ./assign-policy-powershell
-    - image:
-        alt: Interfejs wiersza polecenia platformy Azure
-        src: ./media/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: ./assign-policy-azurecli
-    - image:
-        alt: Szablon usługi Resource Manager
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: Szablon usługi Resource Manager
-      href: ./assign-policy-template
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: ./assign-policy-portal
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: ./assign-policy-powershell
+          - image:
+              alt: Interfejs wiersza polecenia platformy Azure
+              src: ./media/cli.svg
+            text: Interfejs wiersza polecenia platformy Azure
+            href: ./assign-policy-azurecli
+          - image:
+              alt: Szablon usługi Resource Manager
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Szablon usługi Resource Manager
+            href: ./assign-policy-template
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Tworzenie zasad platformy Azure i zarządzanie nimi</a>
-    - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Tworzenie niestandardowej definicji zasad</a>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Przejrzenie dostępnych przykładów pomoże w tworzeniu definicji zasad na platformie Azure.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Tworzenie zasad platformy Azure i zarządzanie nimi</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Tworzenie niestandardowej definicji zasad</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/governance/policy/samples/index">Indeks przykładów</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Przejrzenie dostępnych przykładów pomoże w tworzeniu definicji zasad na platformie Azure.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/governance/policy/samples/index">Indeks przykładów</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/policy">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (zasady)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (szczegółowe informacje o zasadach)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (konfiguracja gościa)</a></p>
-    - title: Szablony usługi Resource Manager
-      html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Przypisania</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Definicje zasad</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Definicje inicjatyw</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/policy-insights/policyevents">Zdarzenia</a></p><p><a href="/rest/api/policy-insights/policystates">Stany</a></p><p><a href="/rest/api/resources/policyassignments">Przypisania</a></p><p><a href="/rest/api/resources/policydefinitions">Definicje zasad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definicje inicjatyw</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Zasoby śledzone przez zasady</a></p><p><a href="/rest/api/policy-insights/remediations">Korygowania</a></p><p><a href="/rest/api/guestconfiguration/">Konfiguracja gościa</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/cli/azure/policy">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (zasady)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (szczegółowe informacje o zasadach)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (konfiguracja gościa)</a></p>'
+          - title: Szablony usługi Resource Manager
+            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Przypisania</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Definicje zasad</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Definicje inicjatyw</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/policy-insights/policyevents">Zdarzenia</a></p><p><a href="/rest/api/policy-insights/policystates">Stany</a></p><p><a href="/rest/api/resources/policyassignments">Przypisania</a></p><p><a href="/rest/api/resources/policydefinitions">Definicje zasad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definicje inicjatyw</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Zasoby śledzone przez zasady</a></p><p><a href="/rest/api/policy-insights/remediations">Korygowania</a></p><p><a href="/rest/api/guestconfiguration/">Konfiguracja gościa</a></p>

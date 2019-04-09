@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07442d9636ec488da6eb3cdf9000b7f3cc24b61f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223516"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SumoLogic
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SumoLogic, wykonaj 
 
     ![SumoLogic domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<tenantname>.SumoLogic.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenantname>.SumoLogic.com`
 
    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
 
@@ -225,7 +225,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do SumoLogic, musi być obsługiwana na SumoLogic. W przypadku SumoLogic Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do Twojej **SumoLogic** dzierżawy.
 
@@ -260,7 +260,7 @@ Po kliknięciu kafelka SumoLogic w panelu dostępu, powinien zostać automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

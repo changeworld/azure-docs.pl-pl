@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851186"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261993"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory
 
@@ -47,12 +47,12 @@ OpenID Connect zawiera opis dokumentu metadanych, który zawiera większość in
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-Metadane są proste dokumentu JavaScript Object Notation (JSON). Zobacz poniższy fragment kodu, na przykład. Zawartość w tym fragmencie kodu są szczegółowo opisane [specyfikacją z OpenID Connect](https://openid.net). Należy pamiętać, zapewniając dzierżawą zamiast `common` w miejscu {dzierżawa} powyżej spowoduje URI specyficznym dla dzierżawy w zwrócony obiekt JSON.
+Metadane są proste dokumentu JavaScript Object Notation (JSON). Zobacz poniższy fragment kodu, na przykład. Zawartość w tym fragmencie kodu są szczegółowo opisane [specyfikacją z OpenID Connect](https://openid.net). Należy pamiętać, podając identyfikator dzierżawy zamiast `common` w miejscu {dzierżawa} powyżej spowoduje URI specyficznym dla dzierżawy w zwrócony obiekt JSON.
 
 ```
 {
-    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/token",
     "token_endpoint_auth_methods_supported":
     [
         "client_secret_post",
@@ -64,6 +64,8 @@ Metadane są proste dokumentu JavaScript Object Notation (JSON). Zobacz poniższ
     ...
 }
 ```
+
+Jeśli aplikacja ma niestandardowe klucze podpisywania w wyniku użycia [Mapowanie oświadczeń](active-directory-claims-mapping.md) funkcji, należy dołączyć `appid` parametr zawierający identyfikator aplikacji w celu uzyskania zapytania `jwks_uri` wskazujący aplikacji podpisywania klucza informacje. Na przykład: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` zawiera `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ## <a name="send-the-sign-in-request"></a>Wyślij żądanie logowania
 
@@ -91,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr |  | Opis |
 | --- | --- | --- |
 | dzierżawa |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
-| client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure Portal. Kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, wybierz aplikację i zlokalizuj identyfikator aplikacji na stronie aplikacji. |
+| client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure portal. Kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, wybierz aplikację i zlokalizuj identyfikator aplikacji na stronie aplikacji. |
 | response_type |wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może to również obejmować inne response_types, takich jak `code` lub `token`. |
 | scope | Zalecane | Specyfikacja protokołu OpenID Connect wymaga zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. To i inne zakresy OIDC są ignorowane w punkcie końcowym w wersji 1.0, ale nadal jest najlepszym rozwiązaniem dla klientów zgodnych ze standardami. |
 | Identyfikator jednorazowy |wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która znajduje się w wynikowym `id_token` jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowy unikatowy ciąg lub identyfikator GUID, który może służyć do identyfikowania pochodzenia żądania. |
@@ -179,13 +181,13 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| post_logout_redirect_uri |Zalecane |Adres URL, który użytkownik powinno zostać przekierowane do po pomyślne wylogowanie. Jeśli nie zostanie uwzględniony, użytkownik jest wyświetlany komunikat ogólny. |
+| post_logout_redirect_uri |Zalecane |Adres URL, który użytkownik powinno zostać przekierowane do po wylogowaniu się pomyślnie. Jeśli nie zostanie uwzględniony, użytkownik jest wyświetlany komunikat ogólny. |
 
 ## <a name="single-sign-out"></a>Wylogowanie jednokrotne
 
 Gdy przekierowania użytkownika `end_session_endpoint`, usługi Azure AD czyści sesji użytkownika w przeglądarce. Jednak użytkownik może nadal być zalogowany do innych aplikacji, które używają usługi Azure AD do uwierzytelniania. Aby włączyć te aplikacje jednocześnie wylogować użytkownika, usługa Azure AD wysyła żądanie HTTP GET do zarejestrowaną `LogoutUrl` wszystkich aplikacji, które użytkownik jest aktualnie zalogowany. Aplikacje należy odpowiedzieć na to żądanie, czyszcząc żadnych sesji, która identyfikuje użytkownika i zwracanie `200` odpowiedzi. Jeśli użytkownik chce się obsługi logowania jednokrotnego w aplikacji, musisz zaimplementować takie `LogoutUrl` w kodzie twojej aplikacji. Możesz ustawić `LogoutUrl` w witrynie Azure portal:
 
-1. Przejdź do [witryny Azure Portal](https://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. Wybierz usługi Active Directory, klikając swoje konto w prawym górnym rogu strony.
 3. W panelu nawigacyjnym po lewej stronie ekranu wybierz **usługi Azure Active Directory**, następnie wybierz **rejestracje aplikacji** i wybierz swoją aplikację.
 4. Kliknij pozycję **ustawienia**, następnie **właściwości** i Znajdź **adres URL wylogowania** pola tekstowego. 
@@ -200,7 +202,7 @@ Uzyskanie tokenów dostępu, należy zmodyfikować żądanie logowania z powyżs
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'

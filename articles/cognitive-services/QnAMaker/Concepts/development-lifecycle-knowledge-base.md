@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650449"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276783"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia wiedzy, w usługi QnA Maker
 Usługa QnA Maker uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
@@ -44,7 +44,7 @@ Dzięki temu wszelkie zmiany zostaną wprowadzone do wersji testu w bazie wiedzy
 
 Każda z tych baz wiedzy można zastosować do testowania oddzielnie. Korzystając z interfejsów API, możesz wybrać docelową wersją testową bazy wiedzy przy użyciu `isTest=true` flagi w wywołaniu generateAnswer.
 
-Dowiedz się, jak [Opublikuj bazę wiedzy](../How-To/publish-knowledge-base.md).
+Dowiedz się, jak [Opublikuj bazę wiedzy](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="monitor-usage"></a>Monitorowanie użycia
 Aby móc rejestrować dzienniki czatu usługi, czy należy włączyć usługi Application Insights po użytkownik [utworzenie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md).

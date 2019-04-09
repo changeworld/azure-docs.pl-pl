@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2acdb960df2ebd265d078f37840f7a4c37015044
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00154ac3c94a1f43872aff3be29ddd108a4173f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001240"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Linku Springer
 
@@ -111,7 +111,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą Linku Sprin
 
     c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    d. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `https://link.springer.com`
+    d. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `https://link.springer.com`
 
 5. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wykonaj następujące kroki:
 
@@ -203,7 +203,7 @@ Po kliknięciu kafelka Springer łącze w panelu dostępu, powinien zostać auto
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -7,19 +7,21 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621274"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270958"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
-W usłudze Azure Search [utworzony zasób](search-create-service-portal.md) cen warstwy lub jednostki SKU, który został rozwiązany przez okres istnienia usługi. Warstwy obejmują **bezpłatna**, **podstawowe**, **standardowa**, lub **zoptymalizowane pod kątem magazynu**.  **Standardowa** i **zoptymalizowane pod kątem magazynu** są dostępne w kilku konfiguracji i pojemności. Większość klientów zaczyna od **bezpłatna** warstwy do oceny, a następnie stopniowo rozwiązanie do jednego z wyższych warstw płatnych wdrożeń deweloperskim i produkcyjnym. Możesz wykonać wszystkie przewodników Szybki Start i samouczków w **bezpłatna** warstwy, w tym przypadku usługa cognitive search dużej ilości zasobów.
+W usłudze Azure Search [utworzony zasób](search-create-service-portal.md) cen warstwy lub jednostki SKU, który został rozwiązany przez okres istnienia usługi. Warstwy obejmują **bezpłatna**, **podstawowe**, **standardowa**, lub **zoptymalizowane pod kątem magazynu**.  **Standardowa** i **zoptymalizowane pod kątem magazynu** są dostępne w kilku konfiguracji i pojemności. 
+
+Większość klientów zaczyna od **bezpłatna** warstwy do oceny, a następnie stopniowo rozwiązanie do jednego z wyższych warstw płatnych wdrożeń deweloperskim i produkcyjnym. Możesz wykonać wszystkie przewodników Szybki Start i samouczków w **bezpłatna** warstwy, w tym przypadku usługa cognitive search dużej ilości zasobów.
 
 > [!NOTE]
 > Warstwy usługi zoptymalizowane pod kątem magazynu są obecnie dostępne w wersji zapoznawczej w obniżonej cenie na potrzeby testowania i eksperymentowania w celu zbierania informacji zwrotnych. Ostateczna cena usługi zostanie ogłoszony później podczas tych warstwach są ogólnie dostępne. Odradzamy korzystający z tych warstw w przypadku aplikacji produkcyjnych.
@@ -29,7 +31,7 @@ Warstwy odzwierciedlają właściwości sprzętu obsługującego usługi (zamias
 + Liczba indeksów, które można utworzyć
 + Rozmiar i prędkość partycje (magazynu fizycznego)
 
-Mimo że wszystkich warstwach, w tym **bezpłatna** warstwie, zwykle oferują równoważności funkcji większe obciążenia można dyktowanie wymagania dla wyższej warstwy. Na przykład [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) indeksowanie ma umiejętności długotrwałych ten limit czasu to bezpłatna usługa chyba, że zestaw danych stanie się być mały.
+Mimo że wszystkich warstwach, w tym **bezpłatna** warstwie, zwykle oferują równoważności funkcji większe obciążenia można dyktowanie wymagania dla wyższej warstwy. Na przykład [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md) ma umiejętności długotrwałych tego limitu czasu w bezpłatnej usługi, chyba że zestaw danych stanie się być mały.
 
 > [!NOTE] 
 > Wyjątkiem od równoważności funkcji jest [indeksatory](search-indexer-overview.md), które nie są dostępne na S3HD.
@@ -53,7 +55,7 @@ Poniższa tabela zawiera listę dostępnych warstw. Inne źródła informacji wa
 |Magazyn zoptymalizowany pod kątem 2 (L2) | 2 TB na partycję (max 24 TB na usługę) |
 
 > [!NOTE] 
-> Magazyn zoptymalizowany pod kątem warstw oferuje większą pojemność magazynu przy niższej cenie niż warstwy standardowa na TB.  Podstawowy kosztem jest wyższa kwerendami, które należy sprawdzić, czy dla wymaganiom konkretnych aplikacji.  Aby dowiedzieć się więcej na temat tej warstwy zagadnienia związane z wydajnością, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
+> Magazyn zoptymalizowany pod kątem warstw oferuje większą pojemność magazynu przy niższej cenie niż warstwy standardowa na TB. Podstawowy kosztem jest wyższa kwerendami, które należy sprawdzić, czy dla wymaganiom konkretnych aplikacji.  Aby dowiedzieć się więcej na temat tej warstwy zagadnienia związane z wydajnością, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
 >
 
 ## <a name="how-billing-works"></a>Sposób działania rozliczeń
@@ -70,17 +72,27 @@ Poniższy zrzut ekranu na cennikiem jednostek jest wskazywane bezpłatna, podsta
 
 Dodatkowe replik i partycji to dodatek do początkowego opłat. Usługa wyszukiwania wymaga replik i partycji, dlatego minimalnej konfiguracji jednego wystąpienia każdej. Poza minimum należy dodać replik i partycji niezależnie. Na przykład można dodać tylko repliki lub tylko partycje. 
 
-Dodatkowe replik i partycji jest naliczana na podstawie [formuły](#search-units). Koszty są liniowa, (podwojenie pojemności, więcej niż wartości podwójnej precyzji kosztów). Na przykład jak działa formuły zobacz ["How to przydzielenie replik i partycji"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+Dodatkowe replik i partycji jest naliczana na podstawie [formuły](#search-units). Koszty są liniowa, (podwojenie pojemności, więcej niż wartości podwójnej precyzji kosztów). Na przykład jak działa formuły zobacz ["How to przydzielenie replik i partycji"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Opłaty za wyjście danych podczas indeksowania
 
-Podczas ściągania danych ze źródła danych usługi Azure SQL Database i Cosmos DB, są naliczane opłaty za transakcję, na rachunku, dla tych zasobów. Te opłaty nie są liczniki usługi Azure Search, ale są wymienione w tym miejscu, ponieważ jeśli pobierają dane z bazy danych SQL Azure lub usługi Azure Cosmos DB przy użyciu indeksatorów zobaczysz tej opłaty, na rachunku.
+Korzystanie z [indeksatorów usługi Azure Search](search-indexer-overview.md) może doprowadzić do rozliczeń, wpływ zależności, gdzie znajdują się usługi. Jeśli utworzysz usługę Azure Search w tym samym regionie, w którym znajdują się dane, można wyeliminować opłaty za wyjście danych.
+
++ Nie opłat za wszystkie dane przychodzące do dowolnej usługi na platformie Azure.
+
++ Nie opłat za wszystkie dane wychodzące z usługi Azure Search.
+
++ Nie opłat za dane lub wychodzący z bazy danych SQL, Cosmos, magazynu obiektów Blob plików (ruch przychodzący do usługi Azure Search) tak długo, jak wszystkie usługi są w tym samym regionie.
+
++ Opłaty za dane wychodzące lub plików w przypadku magazynu i Azure Search w różnych regionach.
+
+Routing danych między regionami platformy Azure, zobaczysz opłatami za przepustowość, na rachunku, dla tych zasobów. Te opłaty nie są częścią rachunku Azure Search, ale są wymienione w tym miejscu, ponieważ jeśli ściągania danych lub plików przez sieć przy użyciu indeksatorów zobaczysz tej opłaty w ogólną kwotę rachunku.
+
+Jeśli nie używasz indeksatorów, opłaty będą naliczane nie przepustowości. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-wzbogacone indeksowanie przy użyciu usług Cognitive Services
 
-Aby uzyskać [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) tylko wyodrębniania obrazu podczas łamania dokumentów jest rozliczana na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. Na podstawie innych wzbogacenia [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services. Wzbogacenia są rozliczane przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services.
-
-Jeśli nie używasz [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) lub [indeksatorów usługi Azure Search](search-indexer-overview.md), tylko koszty są powiązane z replik i partycji w aktywnym korzystaniu w regularnych obciążeń indeksowania i zapytania.
+Aby uzyskać [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md) tylko wyodrębniania obrazu podczas łamania dokumentów jest rozliczana na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. Inne wzbogacenia, takie jak przetwarzanie języka naturalnego opierają się na [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services. Wzbogacenia są rozliczane przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services.
 
 <a name="search-units"></a>
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9d4661f6c975265ec710b29a8a05cc7ef41b4011
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057425"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268504"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -51,6 +51,8 @@ Elementy Runbook w usłudze Azure Automation można uruchomić w dowolnym piasko
 ## <a name="runbook-behavior"></a>Zachowanie elementu Runbook
 
 Wykonywanie elementów Runbook przy użyciu logiki, która jest zdefiniowana w nich znajdują. Jeśli element runbook zostanie przerwany, element runbook zostanie uruchomiony ponownie na początku. To zachowanie wymaga elementów runbook w celu zapisania w taki sposób, w którym obsługują uruchamiany ponownie, jeśli wystąpiły problemy przejściowe.
+
+Uruchomione zadania programu PowerShell, w pracy z poziomu elementu Runbook na platformie Azure piaskownicy mogą nie działać w trybie pełną obsługą języka. Aby dowiedzieć się więcej na temat trybów języka programu PowerShell, zobacz [Tryby języka programu PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes). Aby uzyskać więcej informacji na temat sposobu interakcji z zadaniami w usłudze Azure Automation, zobacz [pobieranie stanu zadania za pomocą programu PowerShell](#retrieving-job-status-using-powershell)
 
 ### <a name="creating-resources"></a>Tworzenie zasobów
 

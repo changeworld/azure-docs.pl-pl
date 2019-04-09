@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c2cd2437297945fa75ff9f5f3d5184b9cc982f0
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 23830d6ae2ba020a77402d3e2b7acc2f50f75733
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189329"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Panopto
 
@@ -223,7 +223,7 @@ Po kliknięciu kafelka Panopto w panelu dostępu, powinien zostać automatycznie
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

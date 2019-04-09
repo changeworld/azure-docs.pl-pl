@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 041e76ccecb4dd0fe9c060681609dfb92c03ec5a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893150"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270340"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porównanie usług Azure Media Services v3 wstępne i Video Indexer 
 
@@ -33,9 +33,9 @@ Obecnie nakładają się na funkcji oferowanych przez [interfejsów API indeksat
 |Media Insights|[Rozszerzone](video-indexer-output-json-v2.md) |[Podstawy](../latest/intelligence-concept.md)|
 |Środowiska|Zobacz pełną listę obsługiwanych funkcji: <br/> [Przegląd](video-indexer-overview.md)|Zwraca tylko informacjom o filmie wideo|
 |Rozliczenia|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Zgodność|[Zgodność platformy Azure](https://aka.ms/AzureCompliance)|Usługa Media Services jest zgodna z wielu certyfikatów. Zapoznaj się z [Offerings.pdf zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i poszukaj pozycji "Media Services" zobaczyć, jeśli jest on zgodny z certyfikatem zainteresowania.|
+|Zgodność|[ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1,2,3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci)i [ HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certyfikat. Aby uzyskać najnowsze aktualizacje, odwiedź stronę [bieżący stan certyfikaty usługi Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Usługa Media Services jest zgodna z wielu certyfikatów. Zapoznaj się z [Offerings.pdf zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i poszukaj pozycji "Media Services" zobaczyć, jeśli jest on zgodny z certyfikatem zainteresowania.|
 |Bezpłatna wersja próbna|Wschodnie stany USA|Niedostępne|
-|Dostępność |Zachodnie stany USA, Azja Wschodnia, Europa Północna|Zobacz [stanu platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Dostępność w danym regionie|Wschodnie stany USA 2, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Azja Wschodnia i Australia Wschodnia.  Aby uzyskać najnowsze aktualizacje, odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) strony.|Zobacz [stanu platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

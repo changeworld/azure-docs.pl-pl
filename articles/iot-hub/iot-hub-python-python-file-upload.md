@@ -2,19 +2,19 @@
 title: Przekazywanie plików z urządzeń do usługi Azure IoT Hub za pomocą języka Python | Dokumentacja firmy Microsoft
 description: Sposób przekazywania plików z urządzenia do chmury przy użyciu zestawu SDK urządzeń Azure IoT dla języka Python. Przekazane pliki są przechowywane w kontenerze obiektów blob usługi Azure storage.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 0fe2b33bc5f9a0b599934c4cabb065d4c97ea61b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549888"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265530"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -22,8 +22,9 @@ ms.locfileid: "57549888"
 
 W tym artykule pokazano, jak [pliku przekazywania możliwościami usługi IoT Hub](iot-hub-devguide-file-upload.md) można przekazać pliku do [usługi Azure blob storage](../storage/index.yml). Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-- Kontener magazynu można bezpiecznie przekazać do przekazywania pliku.
-- Użyj klienta języka Python, aby przekazać plik za pomocą usługi IoT hub.
+* Kontener magazynu można bezpiecznie przekazać do przekazywania pliku.
+
+* Użyj klienta języka Python, aby przekazać plik za pomocą usługi IoT hub.
 
 [Wysyłanie danych telemetrycznych do Centrum IoT Hub](quickstart-send-telemetry-python.md) Przewodnik Szybki Start przedstawia podstawowe funkcje obsługi komunikatów urządzenia do chmury usługi IoT Hub. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Gdy zachodzi potrzeba wyżynne plików z urządzenia, można nadal używać zabezpieczeń i niezawodności usługi IoT Hub.
 
@@ -35,17 +36,19 @@ Na końcu tego samouczka, możesz uruchomić aplikację konsoli języka Python:
 * **FileUpload.py**, która przekazuje plik do magazynu przy użyciu zestawu SDK urządzenia środowiska Python.
 
 > [!NOTE]
-> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET, Javascript, Python i Java) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT] instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
+> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET, Javascript, Python i Java) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT](https://azure.microsoft.com/develop/iot) instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* [Środowisko Python 2.x lub 3.x][lnk-python-download]. Upewnij się, że używasz 32-bitowej lub 64-bitowej instalacji zgodnie z wymaganiami konfiguracji. Po wyświetleniu monitu podczas instalacji upewnij się, że język Python został dodany do zmiennej środowiskowej specyficznej dla platformy. Jeśli używasz środowiska Python 2.x, może być konieczne [zainstalowanie lub uaktualnienie systemu zarządzania pakietami języka Python — *pip*][lnk-install-pip].
-* [Pakiet redystrybucyjny języka Visual C++][lnk-visual-c-redist] (jeśli używasz systemu operacyjnego Windows) umożliwiający korzystanie z natywnych bibliotek DLL języka Python.
+* [Python 2.x lub 3.x](https://www.python.org/downloads/). Upewnij się, że używasz 32-bitowej lub 64-bitowej instalacji zgodnie z wymaganiami konfiguracji. Po wyświetleniu monitu podczas instalacji upewnij się, że język Python został dodany do zmiennej środowiskowej specyficznej dla platformy. Jeśli używasz środowiska Python 2.x, może być konieczne [zainstalowanie lub uaktualnienie systemu zarządzania pakietami języka Python — *pip*](https://pip.pypa.io/en/stable/installing/).
+
+* Zainstaluj [Pakiet redystrybucyjny języka Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145) (jeśli używasz systemu operacyjnego Windows) umożliwiający korzystanie z natywnych bibliotek DLL języka Python.
+
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+
 * Centrum IoT hub w ramach swojego konta platformy Azure przy użyciu tożsamości urządzenia do testowania funkcji przekazywania plików. 
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
-
 
 ## <a name="upload-a-file-from-a-device-app"></a>Przekaż plik z aplikacji urządzenia
 
@@ -57,14 +60,14 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
     pip install azure-iothub-device-client
     ```
 
-1. Za pomocą edytora tekstu Utwórz plik testowy, który zostanie przekazany do magazynu obiektów blob. 
+2. Za pomocą edytora tekstu Utwórz plik testowy, który zostanie przekazany do magazynu obiektów blob.
 
     > [!NOTE]
     > IoT Hub Python SDK aktualnie obsługuje tylko przekazywania plików opartego na znakach, takich jak **.txt** plików.
 
-1. Za pomocą edytora tekstów Utwórz **FileUpload.py** pliku w folderze roboczym.
+3. Za pomocą edytora tekstów Utwórz **FileUpload.py** pliku w folderze roboczym.
 
-1. Dodaj następujący kod `import` instrukcji i zmienne na początku **FileUpload.py** pliku. 
+4. Dodaj następujący kod `import` instrukcji i zmienne na początku **FileUpload.py** pliku. 
 
     ```python
     import time
@@ -80,9 +83,9 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
     FILENAME = "[File name for storage]"
     ```
 
-1. W pliku, Zastąp `[Device Connection String]` przy użyciu parametrów połączenia urządzenia Centrum IoT. Zastąp `[Full path to file]` ze ścieżką do pliku testu, który został utworzony lub dowolnego pliku na urządzeniu, które chcesz przekazać. Zastąp `[File name for storage]` nazwą, której chcesz nadać do pliku po został przekazany do magazynu obiektów blob. 
+5. W pliku, Zastąp `[Device Connection String]` przy użyciu parametrów połączenia urządzenia Centrum IoT. Zastąp `[Full path to file]` ze ścieżką do pliku testu, który został utworzony lub dowolnego pliku na urządzeniu, które chcesz przekazać. Zastąp `[File name for storage]` nazwą, której chcesz nadać do pliku po został przekazany do magazynu obiektów blob. 
 
-1. Utwórz wywołanie zwrotne dla **upload_blob** funkcji:
+6. Utwórz wywołanie zwrotne dla **upload_blob** funkcji:
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -92,7 +95,7 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-1. Dodaj następujący kod do połączenia klienta, a następnie przekaż plik. Również obejmować `main` procedury:
+7. Dodaj następujący kod do połączenia klienta, a następnie przekaż plik. Również obejmować `main` procedury:
 
     ```python
     def iothub_file_upload_sample_run():
@@ -128,8 +131,7 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
         iothub_file_upload_sample_run()
     ```
 
-1. Zapisz i Zamknij **UploadFile.py** pliku.
-
+8. Zapisz i Zamknij **UploadFile.py** pliku.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
@@ -141,29 +143,20 @@ Teraz można przystąpić do uruchomienia aplikacji.
     python FileUpload.py
     ```
 
-1. Poniższy zrzut ekranu przedstawia dane wyjściowe z **FileUpload** aplikacji:
+2. Poniższy zrzut ekranu przedstawia dane wyjściowe z **FileUpload** aplikacji:
 
     ![Dane wyjściowe z aplikacji symulowane urządzenia](./media/iot-hub-python-python-file-upload/1.png)
 
-1. Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigurowane, można użyć portalu:
+3. Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigurowane, można użyć portalu:
 
     ![Przekazany plik](./media/iot-hub-python-python-file-upload/2.png)
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
-* [Programistyczne tworzenie Centrum IoT hub][lnk-create-hub]
-* [Wprowadzenie do zestawu SDK języka C][lnk-c-sdk]
-* [Zestawy SDK Azure IoT][lnk-sdks]
+* [Programistyczne tworzenie centrum IoT](iot-hub-rm-template-powershell.md)
 
-<!-- Links -->
-[Centrum deweloperów Azure IoT]: https://azure.microsoft.com/develop/iot
+* [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
 
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: https://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
+* [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)

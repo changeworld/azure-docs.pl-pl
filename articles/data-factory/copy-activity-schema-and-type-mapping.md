@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358715"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267127"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
 W tym artykule opisano, jakie działania kopiowania w usłudze Azure Data Factory mapowanie schematu i mapowanie typu danych ze źródła danych do ujścia danych podczas wykonywania kopii danych.
@@ -147,7 +147,7 @@ Mapowanie schematu ma zastosowanie, gdy kopiowanie danych między hierarchiczne 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type translator aktywności kopiowania musi być równa: **TabularTranslator** | Yes |
-| schemaMapping | Kolekcja par klucz wartość, która reprezentuje relację z mapowania po stronie tabelarycznych hierarchiczne po stronie.<br/>- **Klucz:** nazwa kolumny danych tabelarycznych jako zdefiniowanych w strukturze zestawu danych.<br/>- **Wartość:** wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy. W przypadku pól obiektu głównego na początku użyj elementu głównego $. W przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` najpierw podaj element tablicy.  | Yes |
+| schemaMapping | Kolekcji pary klucz wartość, która reprezentuje relację mapowania **po stronie źródła do ujścia po stronie**.<br/>- **Klucz:** reprezentuje źródło. Aby uzyskać **tabelaryczne źródła**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **źródła w hierarchiczny**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy.<br/>- **Wartość:** reprezentuje ujścia. Dla **tabelarycznych ujścia**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **hierarchiczne ujścia**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy. <br/> W przypadku danych hierarchicznych, dla pola w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy.  | Yes |
 | collectionReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów **wewnątrz pola tablicy** przy użyciu tego samego wzorca i przekonwertować każdego wiersza dla każdego obiektu, określ ścieżkę JSON tej tablicy cross-zastosować. Ta właściwość jest obsługiwana tylko wtedy, gdy źródło danych hierarchicznych. | Nie |
 
 **Przykład: kopiowanie danych z bazy danych MongoDB do bazy danych SQL:**
@@ -232,14 +232,14 @@ Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz 
 * Wartość logiczna
 * Data/godzina
 * Datetimeoffset
-* Dziesiętny
-* Podwójne
-* Identyfikator GUID
+* Decimal
+* Double
+* Guid
 * Int16
 * Int32
 * Int64
-* Pojedyncze
-* Ciąg
+* Single
+* String
 * Zakres czasu
 
 ### <a name="explicit-data-type-conversion"></a>Konwersja typu jawnego danych
@@ -255,8 +255,8 @@ W poniższych scenariuszach "strukturę" w zestawie danych jest wymagane:
 
 * Stosowanie [konwersja typu jawnego danych](#explicit-data-type-conversion) dla plikowych źródeł podczas kopiowania (wejściowy zestaw danych)
 * Stosowanie [mapowania kolumn jawne](#explicit-column-mapping) podczas kopiowania (zarówno wejściowy i wyjściowy zestaw danych)
-* Kopiowanie ze źródła / CRM Dynamics 365 (wejściowy zestaw danych)
-* Kopiowanie do usługi Cosmos DB jako zagnieżdżony obiekt, gdy źródłem nie jest pliki JSON (wyjściowy zestaw danych)
+* Kopiowanie ze źródła Dynamics 365/CRM (wejściowy zestaw danych)
+* Kopiowanie do usługi Cosmos DB jako obiekt zagnieżdżony, gdy źródłem nie są pliki JSON (wyjściowy zestaw danych)
 
 W poniższych scenariuszach sugerowana jest "strukturę" w zestawie danych:
 

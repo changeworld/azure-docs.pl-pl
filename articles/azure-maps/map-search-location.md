@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845141"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271598"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -29,11 +29,11 @@ Istnieją dwa sposoby, aby wyszukać lokalizację zainteresowania. Jednym ze spo
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i ustawia mechanizm uwierzytelniania, korzystanie z klucza subskrypcji. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Tworzy drugi blok kodu **SubscriptionKeyCredentialPolicy** do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie **atlas.service.MapsURL.newPipeline()** przyjmuje **SubscriptionKeyCredential** zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. **SearchURL** reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
+Tworzy drugi blok kodu `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie `atlas.service.MapsURL.newPipeline()` przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
 
 Trzeci bloku kodu tworzy źródła danych obiektu przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy i dodać wyniki wyszukiwania do niego. A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Warstwa symbol zostanie utworzony i źródło danych jest dodawane do warstwy "symbol", która następnie zostanie dodany do mapy.
 
-Czwarty blok kodu używa [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Pobierz wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Pobierz interfejs API wyszukiwania rozmytego może obsługiwać dowolną kombinację rozmyte danych wejściowych. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu **geojson.getFeatures()** — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli.
+Czwarty blok kodu używa [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Pobierz wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Pobierz interfejs API wyszukiwania rozmytego może obsługiwać dowolną kombinację rozmyte danych wejściowych. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu `geojson.getFeatures()` — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli.
 
 Ostatni blok kodu dostosowuje granice aparatu mapy za pomocą mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) właściwości.
 
@@ -67,7 +67,7 @@ Dowiedz się więcej o **Wyszukiwanie rozmyte**:
 Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
@@ -75,4 +75,4 @@ Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 > [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)
+> [Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B](./map-route.md)

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088659"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265642"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -30,7 +30,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
 - [Pobierz WAImportExport w wersji 2](https://aka.ms/waiev2) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.
-- Mieć konto FedEx/DHL w sprawie. 
+- Mieć konto FedEx/DHL w sprawie. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, skontaktuj się z zespołem operacje pole danych platformy Azure w `adbops@microsoft.com`.  
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
     - Generowanie numer śledzenia, zadanie eksportu.
     - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane.
@@ -145,7 +145,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 4. W **zwracają informacje o wysyłce**:
 
-    - Wybierz operatora z listy rozwijanej.
+    - Wybierz operatora z listy rozwijanej. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, wybierz opcję istniejący, z listy rozwijanej. Skontaktuj się z pomocą operacje pole danych platformy Azure zespołu w `adbops@microsoft.com` informacji na temat operatora planujesz używać.
     - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. 
     - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
 

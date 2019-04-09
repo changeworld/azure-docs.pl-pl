@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448990"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274012"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
@@ -24,8 +24,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!div class="checklist"]
 > * Tworzenie ramki danych z pliku csv
 > * Uruchamianie zapytań na ramce danych
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +36,11 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio na podstawie plików lub fol
 ![Migawka danych używanych w interakcyjnym zapytaniu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Migawka danych używanych w interakcyjnym zapytaniu Spark SQL")
 
 
-1. Otwórz notes Jupyter, utworzony w sekcji wymagań wstępnych.
+1. Otwieranie notesu Jupyter, który został utworzony w sekcji wymagania wstępne i Utwórz nowy notes PySpark.
+
+    > [!NOTE]  
+    > Dzięki temu, że tworzenie notesu odbywa się przy użyciu jądra PySpark, po uruchomieniu pierwszej komórki kodu sesja `spark` jest tworzona automatycznie. Nie jest konieczne jawne tworzenie sesji.
+
 2. W notesie wklej następujący kod do pustej komórki, a następnie naciśnij klawisze **SHIFT+ENTER**, aby go uruchomić. Kod importuje typy wymagane w tym scenariuszu:
 
     ```python
@@ -58,10 +60,6 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio na podstawie plików lub fol
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]  
-    > Dzięki temu, że tworzenie notesu odbywa się przy użyciu jądra PySpark, po uruchomieniu pierwszej komórki kodu sesja `spark` jest tworzona automatycznie. Nie jest konieczne jawne tworzenie sesji.
-
-
 ## <a name="run-queries-on-the-dataframe"></a>Uruchamianie zapytań na ramce danych
 
 Po utworzeniu tabeli możesz uruchomić interakcyjne zapytanie na danych.
@@ -77,13 +75,13 @@ Po utworzeniu tabeli możesz uruchomić interakcyjne zapytanie na danych.
 
      ![Tabela wyjściowa wyników interakcyjnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabela wyjściowa wyników interakcyjnego zapytania Spark")
 
-3. Wyniki można również przeglądać w postaci innych wizualizacji. Aby wyświetlić wykres warstwowy dla tych samych danych wyjściowych, wybierz pozycję **Area** (Obszar), a następnie ustaw inne wartości, jak pokazano poniżej.
+2. Wyniki można również przeglądać w postaci innych wizualizacji. Aby wyświetlić wykres warstwowy dla tych samych danych wyjściowych, wybierz pozycję **Area** (Obszar), a następnie ustaw inne wartości, jak pokazano poniżej.
 
     ![Wykres warstwowy wyników interakcyjnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Wykres warstwowy wyników interakcyjnego zapytania Spark")
 
-10. W menu **File** (Plik) w notesie wybierz pozycję **Save and Checkpoint** (Zapisz i ustaw punkt kontrolny). 
+3. Na pasku menu Notes, przejdź do **pliku** > **zapisywanie i punktu kontrolnego**.
 
-11. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. Jeśli nie, zamknij notes w celu zwolnienia zasobów klastra: z **pliku** menu w notesie, wybierz opcję **Zamknij i zatrzymanie**.
+4. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. Jeśli nie, zamknij notes w celu zwolnienia zasobów klastra: na pasku menu Notes, przejdź do **pliku** >  **Zamknij i zatrzymanie**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -98,11 +96,10 @@ Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zas
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-* Tworzenie ramki danych na platformie Apache Spark.
-* Uruchamianie zapytania Spark SQL względem ramki danych.
+> [!div class="checklist"]
+> * Tworzenie ramki danych na platformie Apache Spark.
+> * Uruchamianie zapytania Spark SQL względem ramki danych.
 
 Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI. 
 > [!div class="nextstepaction"]
-> [Analyze data using BI tools (Analizowanie danych przy użyciu narzędzi do analizy biznesowej)](apache-spark-use-bi-tools.md)
-
+> [Analizowanie danych przy użyciu narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)

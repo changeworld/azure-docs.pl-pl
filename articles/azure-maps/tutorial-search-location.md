@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 42a7eee37d993e5f9245374adbfd133344797eff
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058173"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260849"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -81,11 +81,11 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -116,7 +116,7 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
 
    Zwróć uwagę, że nagłówek HTML zawiera pliki zasobów CSS i JavaScript obsługiwane przez bibliotekę kontrolek mapy platformy Azure. Zwróć uwagę na zdarzenie `onload` w treści strony, które spowoduje wywołanie funkcji `GetMap` po załadowaniu treści strony. `GetMap` Funkcja będzie zawierać wbudowany kod JavaScript, aby dostęp do interfejsów API usługi Azure Maps.
 
-3. Dodaj następujący kod JavaScript do funkcji `GetMap` w pliku HTML. Zastąp ciąg **\<Your Azure Maps Key\>** kluczem podstawowym, skopiowanym z konta usługi Maps.
+3. Dodaj następujący kod JavaScript do funkcji `GetMap` w pliku HTML. Zastąp ciąg `<Your Azure Maps Key>` za pomocą klucza podstawowego, który został skopiowany z Twojego konta usługi Maps.
 
     ```JavaScript
     //Instantiate a map object
@@ -129,9 +129,9 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
     });
     ```
 
-   Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. **atlas** to przestrzeń nazw, która zawiera interfejs API i powiązane składniki wizualne. **atlas.Map** udostępnia kontrolkę wizualnej i interaktywnej mapy internetowej.
+   Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. `atlas` jest przestrzenią nazw, który zawiera interfejs API i powiązane składniki wizualne. `atlas.Map` udostępnia kontrolkę wizualnej i interaktywnej sieci web mapy.
 
-4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Jest to najbardziej podstawowa mapa utworzona przez wywołanie **atlas.map** i użycie klucza konta.
+4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Jest to najbardziej podstawowym mapy, który może zgłaszać przez wywołanie metody `atlas.Map` przy użyciu klucza konta.
 
    ![Wyświetlanie mapy](./media/tutorial-search-location/basic-map.png)
 
@@ -184,9 +184,9 @@ W tej sekcji pokazano, jak używać Maps [interfejsu API wyszukiwania](https://d
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   **SubscriptionKeyCredential** tworzy **SubscriptionKeyCredentialPolicy** do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. **Atlas.service.MapsURL.newPipeline()** przyjmuje **SubscriptionKeyCredential** zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. **SearchURL** reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
+   `SubscriptionKeyCredential` Tworzy `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. `atlas.service.MapsURL.newPipeline()` Przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
 
-2. Następnie dodaj poniższy blok skryptu w celu utworzenia zapytania wyszukiwania. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak adresy, miejsca i punkty orientacyjne (POI). Ten kod wyszukuje pobliskich stacji benzynowych w obrębie wybranego promienia podana szerokości i długości geograficznej. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu **geojson.getFeatures()** — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli. Ostatnia część skrypt ustawia widok kamery mapy za pomocą pola ograniczenia wyników z wykorzystaniem właściwości mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-).
+2. Następnie dodaj poniższy blok skryptu w celu utworzenia zapytania wyszukiwania. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak adresy, miejsca i punkty orientacyjne (POI). Ten kod wyszukuje pobliskich stacji benzynowych w obrębie wybranego promienia podana szerokości i długości geograficznej. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu `geojson.getFeatures()` — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli. Ostatnia część skrypt ustawia widok kamery mapy za pomocą pola ograniczenia wyników z wykorzystaniem właściwości mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-).
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -239,7 +239,7 @@ W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Element **atlas.Popup** interfejsu API udostępnia okno informacyjne zakotwiczone w żądanym położeniu na mapie. 
+    Interfejs API `sup` informacje okna zakotwiczone w wymaganych położeniu na mapie. 
 
 2. W *skryptu* tagu po `GetMap` funkcji, Dodaj następujący kod, aby pokazać moused za pośrednictwem informacje na temat wyników w menu podręcznym.
 

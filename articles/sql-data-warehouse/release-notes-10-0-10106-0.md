@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f852fe67443193ad19cb9bd57e0fd2294f3c817
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522336"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266039"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 | --- | --- |
 |**Znaczenie obciążenie jest teraz dostępna w wersji zapoznawczej**|Znaczenie obciążenia zapewnia inżynierom danych możliwość używania znaczenie do klasyfikowania żądań. Żądania o wyższym ważności jest gwarantowana szybszego uzyskiwania dostępu do zasobów, która pomaga spełnić wymagania umów SLA.  Znaczenie obciążenia pozwala biznesowe wysoki wartość pracy, aby spełnić wymagania umów SLA w środowisku współdzielonym za pomocą mniejszej ilości zasobów.<br/><br/>Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/>[Obciążenie pojęć związanych z zarządzaniem](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**GRUPUJ WEDŁUG ZBIORCZEGO**|Pakiet ZBIORCZY jest teraz obsługiwaną opcją GROUP BY w usłudze Azure Data Warehouse.   Przedstawienie grupy przez tworzy grupę dla każdej kombinacji wyrażeń kolumny. GROUP BY również "rzutuje" wyniki do sumy częściowe i końcowe. Aby to zrobić, przenosi od prawej do lewej, zmniejszając liczbę wyrażeń kolumny, które tworzy, grupy i aggregation(s).  Kolejność kolumn wpływa na dane wyjściowe ZBIORCZY i może wpłynąć na liczbę wierszy w zestawie wyników.<br/><br/>Aby uzyskać więcej informacji na przedstawienie według grupy, zobacz artykuł [GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
-|**Polepszenia dokładności używane jednostki DWU i procesora CPU metrykami w portalu**|Usługa SQL Data Warehouse znacznie zwiększa dokładność metryki w witrynie Azure portal.  Ta wersja zawiera poprawkę do definicji metryk, procesora CPU i użyte jednostki DWU Aby poprawnie odzwierciedlają obciążenie we wszystkich węzłach obliczeniowych.|
+|**Polepszenia dokładności używane jednostki DWU i procesora CPU metrykami w portalu**|Usługa SQL Data Warehouse znacznie zwiększa dokładność metryki w witrynie Azure portal.  Ta wersja zawiera poprawkę do definicji metryk, procesora CPU i użyte jednostki DWU Aby poprawnie odzwierciedlają obciążenie we wszystkich węzłach obliczeniowych. Zanim ta poprawka wartości metryk zostały trwa undereported. Oczekują zobaczyć zwiększenie używane jednostki DWU i metryk użycia Procesora w witrynie Azure portal. |
 |**Obsługa dodatkowych języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 
@@ -87,7 +87,7 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie bazy danych w usłudze SQL Data Warehouse](./create-data-warehouse-portal.md)
+- [utworzyć bazę danych w usłudze SQL Data Warehouse](./create-data-warehouse-portal.md)
 
 ## <a name="more-information"></a>Więcej informacji
 

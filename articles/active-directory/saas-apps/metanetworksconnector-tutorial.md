@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: aa0d7828534c96d9bda85e80fb297c848cec6845
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 95a138a6dd499df18789e9b587e770a9b7bf7dab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887032"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Meta Networks Connector
 
@@ -52,7 +52,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Meta Networks Connector z usługą Azure AD, należy dodać aplikację Meta Networks Connector z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Meta Networks Connector z galerii, wykonaj następujące kroki:**
+**Aby dodać Meta sieci łącznika z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -106,7 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Meta Networks Connector](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
@@ -116,7 +116,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
-    b. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
+    b. W **tan przekaźnika** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości, używając rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania, które zostały opisane w dalszej części tego samouczka.
@@ -276,7 +276,7 @@ Po kliknięciu kafelka Meta Networks Connector na panelu dostępu powinno nastą
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

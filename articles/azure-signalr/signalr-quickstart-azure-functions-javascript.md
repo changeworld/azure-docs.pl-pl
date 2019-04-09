@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ca73ed314b254f9f73833bb2c4311f03f62508f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535652"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264203"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Szybki start: tworzenie pokoju czatu za pomocą usług Azure Functions i SignalR Service przy użyciu języka JavaScript
 
@@ -50,7 +50,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
     ![Tworzenie usługi SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. W edytorze kodu otwórz folder *chat/src/javascript* w sklonowanym repozytorium.
+1. W edytorze kodu, otwórz *rozmowy/src/javascript* folderu w repozytorium sklonowane.
 
 1. Zmień nazwę pliku *local.settings.sample.json* na *local.settings.json*.
 
@@ -61,7 +61,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
     - **negotiate** — ta funkcja generuje i zwraca ważne informacje o połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
     - **messages** — ta funkcja otrzymuje wiadomość czatu w treści żądania i używa powiązania danych wyjściowych *SignalR* do rozgłoszenia wiadomości do wszystkich połączonych aplikacji klienckich.
 
-1. Z poziomu terminalu upewnij się, że znajdujesz się w folderze *chat/src/javascript*. Użyj podstawowych narzędzi usługi Azure Functions, aby zainstalować rozszerzenia wymagane do uruchomienia aplikacji.
+1. W terminalu, upewnij się, że jesteś w *rozmowy/src/javascript* folderu. Użyj podstawowych narzędzi usługi Azure Functions, aby zainstalować rozszerzenia wymagane do uruchomienia aplikacji.
 
     ```bash
     func extensions install

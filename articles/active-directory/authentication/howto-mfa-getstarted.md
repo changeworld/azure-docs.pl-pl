@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892215"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269031"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Planowanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -60,8 +60,14 @@ Usługa Azure Multi-Factor Authentication jest wdrażana przez wymuszenie zasad 
 * Zgodne urządzenie
 * Urządzenia przyłączone do hybrydowej usługi Azure AD
 * Aplikacja kliencka zatwierdzone
+ 
+
+Umożliwia plakaty można dostosowywać i szablonów wiadomości e-mail [materiałów wdrożenie uwierzytelniania wieloskładnikowego] Wdrażanie uwierzytelniania wieloskładnikowego dla Twojej organizacji. (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Włącz uwierzytelnianie wieloskładnikowe przy użyciu dostępu warunkowego
 
 Zasady dostępu warunkowego wymuszać rejestrację, wymagając od użytkowników niezarejestrowanych ukończyć rejestrację, podczas pierwszego logowania, kwestią istotną.
+
 
 [Usługa Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) przyczynia się zasady rejestracji i ryzyko automatycznego wykrywania i korygowania zasad do użycia usługi Azure Multi-Factor Authentication. Zasady mogą być tworzone, aby wymusić zmiany hasła, gdy istnieje zagrożenie, których bezpieczeństwo zostało naruszone tożsamości lub wymagać uwierzytelniania Wieloskładnikowego podczas logowania jest uznawany za ryzykowne przez następujące [zdarzenia](../reports-monitoring/concept-risk-events.md):
 

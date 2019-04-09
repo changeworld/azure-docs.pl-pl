@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.date: 04/08/2019
+ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670839"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273145"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -156,7 +156,7 @@ Do usługi SQL Database dodajemy również rodzinę [funkcji adaptacyjnego przet
 Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i zgodności](sql-database-security-overview.md), co ułatwia spełnienie przez aplikację różnych wymagań dotyczących zabezpieczeń i zgodności.
 
 > [!IMPORTANT]
-> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -186,7 +186,7 @@ Usługa SQL Database umożliwia centralne zarządzanie tożsamościami użytkown
 
 ### <a name="compliance-certification"></a>Certyfikacja zgodności
 
-Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku standardów zgodności. Aby uzyskać więcej informacji, zobacz witrynę [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/), w której można znaleźć aktualną listę [certyfikatów zgodności usługi SQL Database](https://azure.microsoft.com/support/trust-center/services/).
+Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ## <a name="easy-to-use-tools"></a>Łatwe w użyciu narzędzia
 
@@ -255,9 +255,9 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 - Zapoznać się z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/) zawierającym porównania i kalkulatory kosztów dla pojedynczej bazy danych i pul elastycznych.
 - Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
 
-  - [Tworzenia bazy danych SQL w witrynie Azure Portal](sql-database-single-database-get-started.md)  
-  - [Tworzenia bazy danych SQL za pomocą interfejsu wiersza polecenia platformy Azure](sql-database-get-started-cli.md)
-  - [Tworzenie bazy danych SQL za pomocą programu PowerShell](sql-database-get-started-powershell.md)
+  - [Tworzenie bazy danych SQL w witrynie Azure portal](sql-database-single-database-get-started.md)  
+  - [Tworzenie bazy danych SQL przy użyciu wiersza polecenia platformy Azure](sql-database-get-started-cli.md)
+  - [Tworzenie bazy danych SQL przy użyciu programu PowerShell](sql-database-get-started-powershell.md)
 
 - Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure i programu PowerShell, zobacz:
   - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi SQL Database](sql-database-cli-samples.md)

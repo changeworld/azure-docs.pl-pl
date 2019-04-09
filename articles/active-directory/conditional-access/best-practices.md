@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895566"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261545"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory
 
@@ -138,6 +138,7 @@ W danym środowisku należy unikać następujące konfiguracje:
 
 - **Wymagane było przyłączenie do domeny** — ten blok zasad dostępu również może potencjalnie zablokować dostęp dla wszystkich użytkowników w Twojej organizacji, jeśli nie masz jeszcze urządzenia przyłączone do domeny.
 
+- **Wymagane zasady ochrony aplikacji** — ten blok zasad dostępu również może potencjalnie zablokować dostęp dla wszystkich użytkowników w Twojej organizacji, jeśli nie masz zasad usługi Intune. Jeśli jesteś administratorem bez aplikację kliencką, która ma zasady ochrony aplikacji usługi Intune, ta zasada blokuje powrót do portale, takie jak usługa Intune i Azure.
 
 **Dla wszystkich użytkowników, wszystkie aplikacje w chmurze, wszystkie platformy urządzeń:**
 

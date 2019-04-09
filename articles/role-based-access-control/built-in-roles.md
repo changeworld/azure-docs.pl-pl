@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 4557ce7dea207be0bc6f68a62e3dd7f81ce87911
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010672"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281220"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -113,7 +113,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Administrator zabezpieczeń](#security-admin) | W usłudze Security Center tylko: Można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia |
 | [Menedżer zabezpieczeń (starsza wersja)](#security-manager-legacy) | To jest rola starszej wersji. Zamiast tego użyj Administrator zabezpieczeń |
-| [Odczytywanie zabezpieczeń](#security-reader) | W usłudze Security Center tylko: Można wyświetlić, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
+| [Czytelnik zabezpieczeń](#security-reader) | W usłudze Security Center tylko: Można wyświetlić, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
 | [Czytelnik usługi Site Recovery](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
@@ -121,7 +121,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Właściciel kont zakotwiczeń przestrzennych](#spatial-anchors-account-owner) | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, w tym ich usuwanie |
 | [Czytelnik kont zakotwiczeń przestrzennych](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości zakotwiczeń przestrzennych na Twoim koncie |
 | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich. Ponadto nie można zarządzać ich zasad związanych z bezpieczeństwem ani nadrzędnymi serwerami SQL. |
-| [Współautor wystąpienie zarządzane SQL](#sql-managed-instance-contributor) | Umożliwia zarządzanie wystąpienia zarządzane SQL, ale nie przyznawania dostępu innym osobom. |
 | [Menedżer zabezpieczeń SQL](#sql-security-manager) | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor serwera SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
@@ -1948,7 +1947,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *brak* |  |
 
-## <a name="security-reader"></a>Odczytywanie zabezpieczeń
+## <a name="security-reader"></a>Czytelnik zabezpieczeń
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2229,31 +2228,6 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | **DataActions** |  |
-> | *brak* |  |
-> | **NotDataActions** |  |
-> | *brak* |  |
-
-## <a name="sql-managed-instance-contributor"></a>Współautor wystąpienie zarządzane SQL
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Opis** | Umożliwia zarządzanie wystąpienia zarządzane SQL, ale nie przyznawania dostępu innym osobom. |
-> | **Identyfikator** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | **Akcje** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
-> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
-> | Microsoft.Network/networkSecurityGroups/write | Tworzy sieciową grupę zabezpieczeń lub aktualizacji istniejącej sieciowej grupy zabezpieczeń |
-> | Microsoft.Network/routeTables/write | Tworzy tabelę tras lub aktualizuje istniejącą tabelę tras |
-> | Microsoft.Sql/locations/*/read |  |
-> | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
-> | Microsoft.Network/virtualNetworks/subnets/write | Tworzy podsieci sieci wirtualnej lub aktualizuje istniejącą podsieć sieci wirtualnej |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
-> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
-> | **NotActions** |  |
-> | *brak* |  |
 > | **DataActions** |  |
 > | *brak* |  |
 > | **NotDataActions** |  |

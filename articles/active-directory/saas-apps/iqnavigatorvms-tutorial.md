@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f93bea79354dda68c4307ab45c6d1bbfd410ea1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ad6bf2576d7f033f8ae029338dc94635dbba0fe7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370605"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Samouczek: Integracja usługi Azure Active Directory z maszynami Wirtualnymi IQNavigator
 
@@ -111,7 +111,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z maszynami Wirtualny
 
     c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
-    d. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.iqnavigator.com`
+    d. W **tan przekaźnika** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.iqnavigator.com`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL odpowiedzi i stan przekazywania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta maszyn wirtualnych IQNavigator](https://www.beeline.com/iqn-product-support/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -191,7 +191,7 @@ Po kliknięciu kafelka IQNavigator maszyn wirtualnych w panelu dostępu, powinie
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

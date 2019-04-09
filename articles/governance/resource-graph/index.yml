@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4e2515e8976976184b720ad1a612f96bff3eeaba
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803422"
 documentType: LandingData
 title: Dokumentacja usługi Azure Resource Graph
 metadata:
   title: Dokumentacja usługi Azure Resource Graph — samouczki i dokumentacja interfejsu API
-  description: Azure Resource Graph to usługa platformy Azure, która umożliwia wykonywanie złożonych zapytań o zasoby w odpowiedniej skali.
-  services: resource-graph
+  description: 'Azure Resource Graph to usługa platformy Azure, która umożliwia wykonywanie złożonych zapytań o zasoby w odpowiedniej skali.'
   author: DCtheGeek
   manager: carmonm
   ms.service: resource-graph
@@ -20,36 +13,36 @@ metadata:
 abstract:
   description: Dokumentacja usługi Azure Resource Graph ułatwia skonfigurowanie i poznanie języka zapytań w celu odnajdowania i eksplorowania zasobów w odpowiedniej skali.
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Skonfiguruj usługę Resource Graph i uruchom pierwsze zapytanie.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        alt: Interfejs wiersza polecenia platformy Azure
-        src: ./media/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: first-query-azurecli.md
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: first-query-powershell.md
-- title: Opinia
-  items:
-  - type: paragraph
-    text: Aby przekazać opinię na temat tej funkcji lub uzyskać pomoc dotyczącą zapytań, odwiedź stronę <b>Wykres zasobów (wersja zapoznawcza)</b> z poziomu usługi <b>Azure Policy</b> w witrynie Azure Portal i kliknij pozycję Opinia. Możesz również wysłać nam sugestie na platformie <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a>.
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Skonfiguruj usługę Resource Graph i uruchom pierwsze zapytanie.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Interfejs wiersza polecenia platformy Azure
+              src: ./media/cli.svg
+            text: Interfejs wiersza polecenia platformy Azure
+            href: first-query-azurecli.md
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: first-query-powershell.md
+  - title: Opinia
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/ext/resource-graph/graph">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Zestaw Azure SDK dla platformy .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Zestaw Azure SDK dla środowiska Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/azureresourcegraph/resources/resources">Dokumentacja interfejsu API</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>
+      - type: paragraph
+        text: 'Aby przekazać opinię na temat tej funkcji lub uzyskać pomoc dotyczącą zapytań, odwiedź stronę <b>Wykres zasobów (wersja zapoznawcza)</b> z poziomu usługi <b>Azure Policy</b> w witrynie Azure Portal i kliknij pozycję Opinia. Możesz również wysłać nam sugestie na platformie <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a>.'
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure/ext/resource-graph/graph">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Zestaw Azure SDK dla platformy .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Zestaw Azure SDK dla środowiska Python</a></p>
+          - title: REST
+            html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">Dokumentacja interfejsu API</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>'

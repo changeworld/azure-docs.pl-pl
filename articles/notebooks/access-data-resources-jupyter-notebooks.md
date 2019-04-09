@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 17f7e7acc70047119b882a5bb6e60bfdf06f79c0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775462"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271522"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Dostęp do danych w chmurze w notesie
 
@@ -71,8 +71,8 @@ Usługi Azure Cosmos DB udostępnia pełni indeksowanych magazyn danych NoSQL dl
 - [Aplikacja kompilacji przez interfejs API SQL za pomocą języka Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [Tworzenie aplikacji Flask za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Utwórz bazę danych grafów przy użyciu języka Python i interfejsu API języka Gremlin](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Tworzenie aplikacji bazy danych Cassandra z językiem Python i usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Tworzenie aplikacji interfejsu API za pomocą języka Python i usługi Azure Cosmos DB tabeli](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [tworzenie aplikacji Cassandra przy użyciu języka Python i usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [tworzenie aplikacji interfejsu API tabel przy użyciu języka Python i usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 Podczas pracy z usługą Cosmos DB, możesz użyć [azure-cosmos DB table](https://pypi.org/project/azure-cosmosdb-table/) biblioteki.
 
@@ -80,9 +80,9 @@ Podczas pracy z usługą Cosmos DB, możesz użyć [azure-cosmos DB table](https
 
 System Azure oferuje wiele innych typów baz danych, które są dostępne. Poniższe artykuły zawierają wskazówki dotyczące uzyskiwania dostępu do tych baz danych za pomocą języka Python:
 
-- [Azure Database for PostgreSQL: Korzystanie z języka Python do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL: Nawiązywanie połączeń i wykonywanie zapytań na danych przy użyciu języka Python](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [Szybki start: Użyj usługi Azure Redis Cache za pomocą języka Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: Korzystanie z języka Python do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL: Nawiązywanie połączeń i wykonywanie zapytań na danych przy użyciu języka Python](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Kreator kopiowania usługi fabryka danych Azure](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

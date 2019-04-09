@@ -8,20 +8,33 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e3d2466f05028a963256dbcc052c46650857836d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372717"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59287106"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Magazyn Premium wydajności block blob storage
 
-Wydajność blokowych obiektów blob konta magazynu premium storage jest zoptymalizowany dla aplikacji, które używają mniejszych, KB zakresu obiektów. To idealne rozwiązanie dla aplikacji wymagających bardzo dużo transakcji stawek lub spójnego magazynu o małych opóźnieniach. Magazyn obiektów blob bloku wydajności Premium została zaprojektowana do skalowania za pomocą aplikacji. Jeśli planujesz wdrożyć aplikacje wymagające setki tysięcy żądań na sekundę lub petabajtom pojemności magazynu, skontaktuj się z nami, przesyłając żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Wydajność blokowych obiektów blob konta magazynu premium storage jest zoptymalizowany dla aplikacji, które używają mniejszych, KB zakresu obiektów. To idealne rozwiązanie dla aplikacji, które wymagają transakcji o wysokiej szybkości lub spójnego magazynu o małych opóźnieniach. Magazyn obiektów blob bloku wydajności Premium została zaprojektowana do skalowania za pomocą aplikacji. Jeśli planujesz wdrożyć aplikacje wymagające setki tysięcy żądań na sekundę lub petabajtom pojemności magazynu, skontaktuj się z nami, przesyłając żądanie pomocy technicznej w [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="premium-performance-filestorage-preview"></a>Wydajność warstwy Premium FileStorage (wersja zapoznawcza)
+
+Files w warstwie Premium należy użyć konta magazynu unikatowy o nazwie **FileStorage (wersja zapoznawcza)**. Ten typ konta jest przeznaczona dla obciążeń o wysokiej operacje We/Wy, wysokiej przepływności, zapewniając spójny o małych opóźnieniach. Magazyn plików w warstwie Premium można skalować z aprowizowanego rozmiaru udziału.
+
+|Obszar  |Środowisko docelowe  |
+|---------|---------|
+|Maks. rozmiar     |Wynosi 5 TiB (publiczna wersja zapoznawcza), 100 TiB (ograniczonej publicznej wersji zapoznawczej)     |
+|Udziały   |Nieograniczona liczba  |
+|Operacje wejścia/wyjścia     |100 000 (ograniczonej publicznej wersji zapoznawczej)    |
+|Przepustowość|5 GB/s     |
+
+ Dla pliku premium te same obiekty docelowe skalowania, zobacz [files w warstwie Premium skalowanie elementów docelowych](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) sekcji.
 
 ### <a name="premium-performance-page-blob-storage"></a>Magazyn obiektów blob w warstwie Premium wydajności strony
 
-Wydajność warstwy Premium kont magazynu ogólnego zastosowania v1 lub v2 ma następujące cele skalowalności:
+Wydajność warstwy Premium, general-purpose v1 lub v2 konta magazynu mają następujące cele skalowalności:
 
 | Łączna liczba kont pojemności                            | Całkowitej przepustowości dla konta magazynu lokalnie nadmiarowego                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484291"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266209"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ Podczas klonowania konfiguracji z innego miejsca wdrożenia sklonowanego konfigu
 * Ustawienia monitorowania i diagnostyki
 * Certyfikaty publiczne
 * Zawartość usługi WebJobs
-* Połączenia hybrydowe
+* Połączenia hybrydowe *
+* Integracja z siecią wirtualną *
+* Punkty końcowe usługi *
+* Sieć CDN systemu Azure *
+
+Funkcje oznaczone atrybutem * planowane są dokonywane umocowany do gniazda. 
 
 **Ustawienia, które nie są zamienione**:
 
@@ -93,10 +98,15 @@ Podczas klonowania konfiguracji z innego miejsca wdrożenia sklonowanego konfigu
 * Certyfikaty prywatne i powiązania SSL
 * Ustawienia skalowania
 * Planiści zadań Webjob
+* Ograniczenia adresów IP
+* Zawsze włączone
+* Ustawienia protokołu (HTTP**S**, wersji protokołu TLS, certyfikaty klienta)
+* Ustawienia dziennika diagnostycznego
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-Aby skonfigurować aplikację ustawienie lub parametrów połączenia do przypisane do określonego miejsca (nie zamienione), przejdź do **ustawienia aplikacji** strony dla tego miejsca, a następnie wybierz **ustawienie miejsca** pole elementy konfiguracji, które powinny być przypisane do gniazda. Oznaczanie elementu konfiguracji jako miejsce określonych informuje usługę App Service, nie są swappable.
+Aby skonfigurować aplikację ustawienie lub parametrów połączenia do przypisane do określonego miejsca (nie zamienione), przejdź do **ustawienia aplikacji** strony dla tego miejsca, a następnie wybierz **ustawienie miejsca** pole elementy konfiguracji, które powinny być przypisane do gniazda. Oznaczanie elementu konfiguracji jako miejsce określonych informuje usługę App Service, nie są swappable. 
 
 ![Ustawienie miejsca](./media/web-sites-staged-publishing/SlotSetting.png)
 

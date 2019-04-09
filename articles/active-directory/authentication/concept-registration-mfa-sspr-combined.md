@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370163"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280013"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
-Przed rejestracją połączone użytkownicy zarejestrowani metod uwierzytelniania dla usługi Azure Multi-Factor Authentication (MFA) i samoobsługowego resetowania haseł (SSPR) w dwóch różnych środowiskach. Osoby zostały mylić podobne metody były używane dla usługi Azure MFA i samoobsługowego resetowania HASEŁ, ale musieli zarejestrować dla każdej funkcji oddzielnie. Łączna rejestracja w usłudze Użytkownicy mogą teraz zarejestrować jeden raz i Uzyskaj korzyści z usługi Azure MFA i samoobsługowego resetowania HASEŁ.
+Przed rejestracją połączonych użytkowników zarejestrowania metod uwierzytelniania dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania haseł (SSPR) oddzielnie. Osoby zostały mylić podobne metody były używane do uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, ale musieli zarejestrować dla obu funkcji. Łączna rejestracja w usłudze Użytkownicy mogą teraz zarejestrować jeden raz i Uzyskaj korzyści z funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania wieloskładnikowego.
 
 ![Mój profil przedstawiający zarejestrowane informacje zabezpieczające dla użytkownika](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,24 +28,24 @@ Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane n
 
 |     |
 | --- |
-| Połączone zabezpieczeń informacji o rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł to funkcja publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Połączone zabezpieczeń informacji rejestracji uwierzytelniania wieloskładnikowego i resetowania hasła usługi Azure Active Directory (Azure AD) to funkcja publicznej wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!IMPORTANT]
-> Jeśli użytkownik jest włączony dla oryginalnej wersji zapoznawczej oraz na podstawie doświadczeń rozszerzone połączone rejestracji, zobaczy nowe środowisko. Użytkownicy, którzy są włączone dla obu środowiska będą widzieć tylko nowe środowisko Mój profil. Nowy profil Moje wyrównane wyglądu i działania połączone rejestracji i zapewnia bezproblemowe środowisko dla użytkowników. Użytkownicy widzą mój profil, przechodząc do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+> Użytkownicy, którzy mają włączoną oryginalnej wersji zapoznawczej oraz na podstawie doświadczeń rozszerzone połączone rejestracji zostanie wyświetlony nowe zachowanie. Użytkownicy, którzy są włączone dla obu środowiska zostaną wyświetlone tylko nowe środowisko Mój profil. Nowy profil Moje wyrównane wyglądu i działania połączone rejestracji i zapewnia bezproblemowe środowisko dla użytkowników. Użytkownicy widzą mój profil, przechodząc do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
 
-Strony Mój profil są zlokalizowane w oparciu o bieżące ustawienia języka na komputerze uzyskiwanie dostępu do strony. Firma Microsoft przechowuje najnowszych języka, wykorzystywane w pamięci podręcznej przeglądarki, więc kolejnych prób dostępu będzie w dalszym ciągu renderowane w ostatnim język używany. Wyczyszczenie pamięci podręcznej spowoduje, że strony w celu ponownego renderowania. Jeśli chcesz wymusić, dodając określonego języka `?lng=de-DE` na końcu adresu URL gdzie `de-DE` jest ustawiony na odpowiedni język kodu wymusi strony do renderowania, w tym języku.
+Moje strony profilu są zlokalizowane w oparciu o ustawienia języka komputera, dostęp do strony. Firma Microsoft przechowuje najnowszych język używany w pamięci podręcznej przeglądarki, więc kolejne próby, aby uzyskać dostęp do stron będą w dalszym ciągu renderowane w ostatnim język używany. Po wyczyszczeniu pamięci podręcznej stron ponownie będą renderowane. Jeśli chcesz wymusić określonego języka, można dodać `?lng=<language>` na końcu adresu URL, gdzie `<language>` znajduje się kod języka ma być renderowany.
 
 ![Konfigurowanie samoobsługowego resetowania HASEŁ lub innych metod weryfikacji zabezpieczeń](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
-## <a name="methods-available-in-converged-registration"></a>Metody dostępne w konwergentnej rejestracji
+## <a name="methods-available-in-combined-registration"></a>Metody dostępne w scalonej rejestracji
 
-W tej chwili połączony rejestracji obsługuje następujących metod i działań dla tych metod:
+Połączone rejestracji obsługuje następujące metody uwierzytelniania i akcje:
 
 |   | Zarejestruj subskrypcję | Change | Usuwanie |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Tak (maks. 5) | Nie | Yes |
-| Inną aplikację uwierzytelniania | Tak (maks. 5) | Nie | Yes |
+| Microsoft Authenticator | Tak (maksymalnie 5) | Nie | Yes |
+| Inną aplikację uwierzytelniania | Tak (maksymalnie 5) | Nie | Yes |
 | Token sprzętowy | Nie | Nie | Yes |
 | Numer telefonu | Yes | Yes | Yes |
 | Alternatywny numer telefonu | Yes | Yes | Yes |
@@ -55,59 +55,59 @@ W tej chwili połączony rejestracji obsługuje następujących metod i działa�
 | Hasła aplikacji | Yes | Nie | Yes |
 
 > [!NOTE]
-> Hasła aplikacji są dostępne tylko dla użytkowników, którzy została wymuszona usługi MFA. Hasła aplikacji nie są dostępne dla użytkowników, którzy są włączone dla usługi MFA za pośrednictwem zasad dostępu warunkowego.
+> Hasła aplikacji są dostępne tylko dla użytkowników, którzy wymusić uwierzytelnianie wieloskładnikowe. Hasła aplikacji nie są dostępne dla użytkowników, którzy są włączone dla usługi Multi-Factor Authentication za pośrednictwem zasad dostępu warunkowego.
 
-Użytkownicy mogą ustawić następujące opcje jako metody domyślnego dla usługi MFA:
+Użytkownicy mogą ustawić jedną z następujących opcji jako domyślną metodą uwierzytelniania wieloskładnikowego:
 
-- Microsoft Authenticator — powiadomienie
-- Aplikacja Authenticator lub sprzętu token — kod:
-- Połączenie telefoniczne
-- Wiadomość SMS
+- Microsoft Authenticator — powiadomienie.
+- Aplikacja Authenticator lub sprzętu token — kodu.
+- Połączenie telefoniczne.
+- wiadomości SMS.
 
-Ponieważ stale dodajemy więcej metod uwierzytelniania, takich do usługi Azure AD, te metody będą dostępne w połączone rejestracji.
+Ponieważ w dalszym ciągu dodawać więcej metod uwierzytelniania w usłudze Azure AD, tych metod będą dostępne w scalonej rejestracji.
 
-## <a name="combined-registration-modes"></a>Łączna rejestracja tryby
+## <a name="combined-registration-modes"></a>Tryby połączone rejestracji
 
-Istnieją dwa "tryby" połączone rejestracji: przerwań i zarządzanie nimi.
+Istnieją dwa tryby połączone rejestracji: przerwań i zarządzanie nimi.
 
-Tryb przerwań, to środowisko podobne do kreatora, wyświetlana użytkownikowi podczas rejestrowania, lub Odśwież swoje informacje zabezpieczające podczas logowania.
+- **Tryb przerwań** to środowisko podręczne, wyświetlone dla użytkowników podczas rejestrowania, lub Odśwież swoje informacje zabezpieczające podczas logowania.
 
-Zarządzanie tryb jest częścią profilu użytkownika oraz pozwala na zarządzanie swoje informacje zabezpieczające.
+- **Zarządzanie tryb** jest częścią profilu użytkownika i umożliwia użytkownikom zarządzanie swoje informacje zabezpieczające.
 
-Dla obu trybów Jeśli użytkownik został wcześniej zarejestrowane metody, która może służyć do uwierzytelniania Wieloskładnikowego, należy wykonać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do swoich informacji zabezpieczających.
+Dla obu trybów osób, które zostały wcześniej zarejestrowane metody, która może służyć do uwierzytelniania wieloskładnikowego należy wykonywać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do swoich informacji zabezpieczających.
 
 ### <a name="interrupt-mode"></a>Tryb przerwania
 
-Łączna rejestracja szanuje zasad uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ, jeśli obie są włączone dla Twojej dzierżawy. Te kontrolują zasady, czy użytkownik jest przerywany do rejestracji podczas logowania i metody, które są dostępne do zarejestrowania.
+Łączna rejestracja szanuje zasad uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, jeśli obie są włączone dla Twojej dzierżawy. Zasady te umożliwiają kontrolowanie tego, czy użytkownik zostaje przerwany rejestracji podczas logowania i metody, które są dostępne do rejestracji.
 
-Poniżej listy kilka scenariuszy, w którym użytkownik może zostać wyświetlony monit do zarejestrowania lub Odśwież swoje informacje zabezpieczające:
+Poniżej przedstawiono kilka scenariuszy, w których użytkownicy mogą być monitowani do zarejestrowania lub Odśwież swoje informacje zabezpieczające:
 
-* Rejestracja w usłudze MFA wymuszane za pomocą usługi Identity Protection: Użytkownicy, poprosimy Cię o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Rejestracja w usłudze MFA wymuszane za pośrednictwem usługi MFA na użytkownika: Użytkownicy, poprosimy Cię o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Rejestracja w usłudze MFA wymuszane za pośrednictwem dostępu warunkowego lub innymi zasadami: Użytkownicy zostaną poproszeni o rejestrowania się podczas uzyskiwania dostępu do zasobu, który wymaga uwierzytelniania Wieloskładnikowego. Użytkownicy będą rejestrować metody uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
-* Wymuszone rejestracji samoobsługowego resetowania HASEŁ: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Tylko zgłosić metody funkcji samoobsługowego resetowania HASEŁ
-* Odświeżanie funkcji samoobsługowego resetowania HASEŁ, wymuszane: Użytkownicy muszą przejrzeć swoje informacje zabezpieczające z interwałem ustawione przez administratora. Użytkownicy są wyświetlane w jego informacje i można wybrać "Wygląda dobrze" lub wprowadzić zmiany, jeśli to konieczne.
+* Wymuszone za pomocą usługi Identity Protection rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+* Wymuszane za pośrednictwem uwierzytelniania wieloskładnikowego dla użytkownika rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+* Wymuszane za pośrednictwem dostępu warunkowego lub innymi zasadami rejestracji w usłudze Multi-Factor Authentication: Użytkownicy zostaną poproszeni o zarejestrować, korzystając z zasobem, który wymaga uwierzytelniania wieloskładnikowego. Ich zarejestrować metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ metody (Jeśli użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ).
+* Wymuszone rejestracji samoobsługowego resetowania HASEŁ: Użytkownicy zostaną poproszeni o rejestracji podczas logowania. Zarejestruj są tylko metody z funkcji samoobsługowego resetowania HASEŁ.
+* Odświeżanie funkcji samoobsługowego resetowania HASEŁ, wymuszane: Użytkownicy muszą przejrzeć swoje informacje zabezpieczające z interwałem ustawione przez administratora. Użytkownicy są wyświetlane w jego informacje i można potwierdzić bieżące informacje o lub wprowadzić zmiany, jeśli to konieczne.
 
-Podczas rejestracji są wymuszane, użytkownicy otrzymują minimalna liczba metod wymaganych do zgodne z zasadami uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ przez większość do najmniej bezpieczna.
+Podczas rejestracji są wymuszane, użytkownicy zostaną wyświetlone minimalna liczba metod wymaganych do zgodne z zasadami uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ, od najbardziej do najmniej bezpieczna.
 
-Przykład:
+Na przykład:
 
 * Użytkownik jest włączony dla funkcji samoobsługowego resetowania HASEŁ. Zasady samoobsługowego resetowania HASEŁ wymagane dwie metody, aby zresetować i włączył kod aplikacji mobilnej, poczty e-mail i telefon.
    * Ten użytkownik jest wymagany do zarejestrowania dwóch metod.
-      * Domyślnie są one wyświetlane Authenticator i telefon.
+      * Użytkownik jest domyślnie wyświetlany Authenticator i telefon.
       * Użytkownika można zarejestrować e-mail zamiast aplikacji authenticator lub numeru telefonu.
 
-Następujące schemat blokowy opisano metody, które są wyświetlane dla użytkownika, w przypadku przerwania do rejestracji podczas logowania:
+Ten schemat blokowy opisano metody, które są wyświetlane dla użytkownika, w przypadku przerwania do rejestracji podczas logowania:
 
 ![Schemat blokowy informacje zabezpieczeń połączone](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
-Jeśli masz zarówno usługi MFA, jak i funkcji samoobsługowego resetowania HASEŁ jest włączony, firma Microsoft zaleca wymuszania rejestracji usługi MFA.
+Jeśli masz zarówno usługi Multi-Factor Authentication, jak i funkcji samoobsługowego resetowania HASEŁ jest włączony, firma Microsoft zaleca wymuszania rejestracji usługi Multi-Factor Authentication.
 
-Jeśli zasady samoobsługowego resetowania HASEŁ wymaga od użytkowników przejrzeć swoje informacje zabezpieczające w regularnych odstępach czasu, użytkownicy są przerwane podczas logowania i przedstawiono ich zarejestrowane metody. Można wybrać "Wygląda dobrze", czy informacje są aktualne zdecydują "Edytuj info" Aby wprowadzić zmiany.
+Jeśli zasady samoobsługowego resetowania HASEŁ wymaga od użytkowników przejrzeć swoje informacje zabezpieczające w regularnych odstępach czasu, użytkownicy są przerwane podczas logowania i przedstawiono ich zarejestrowane metody. Bieżące informacje o ich można potwierdzić, czy jest on aktualny, może wprowadzić zmiany w razie potrzeby.
 
 ### <a name="manage-mode"></a>Tryb zarządzania
 
-Użytkownicy mogą uzyskiwać dostęp do zarządzania trybu, przechodząc do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo) lub wybierając pozycję "Informacje zabezpieczające" z ustawień Mój profil. Z tego miejsca użytkownicy mogą Dodaj metody, usunąć lub zmienić istniejących metod, zmień metodę domyślną i nie tylko.
+Użytkownicy mogą uzyskiwać dostęp do zarządzania trybu, przechodząc do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo) lub wybierając **zabezpieczające** z ustawień Mój profil. Z tego miejsca użytkowników można dodać metody, usunąć lub zmienić istniejących metod, zmienić domyślną metodę i nie tylko.
 
 ## <a name="key-usage-scenarios"></a>Scenariusze użycia klucza
 
@@ -115,28 +115,28 @@ Użytkownicy mogą uzyskiwać dostęp do zarządzania trybu, przechodząc do [ h
 
 Administrator ma być wymuszane rejestracji.
 
-Użytkownik nie skonfigurowała wszystkie wymagane informacje zabezpieczające i przechodzi do witryny Azure portal. Po wprowadzeniu nazwy użytkownika i hasła, użytkownik jest monitowany, aby skonfigurować informacje o zabezpieczeniach. Użytkownik wykona następnie kroki wyświetlane w kreatorze, aby skonfigurować wymagane informacje zabezpieczające. Użytkownik może wybrać do konfigurowania metod innych niż co wyświetlany domyślnie, jeśli ustawienia pozwalają. Na końcu kreatora użytkownik przegląda metody, które są skonfigurowane i metod ich domyślne dla usługi MFA. Aby ukończyć proces instalacji, użytkownik potwierdza, informacje i kontynuuje do witryny Azure portal.
+Użytkownik nie skonfigurowała wszystkie wymagane informacje zabezpieczające i prowadzi do witryny Azure portal. Po wprowadzeniu nazwy użytkownika i hasła, użytkownik jest monitowany, aby skonfigurować informacje o zabezpieczeniach. Użytkownik wykona następnie kroki wyświetlane w kreatorze, aby skonfigurować wymagane informacje zabezpieczające. Jeśli ustawienia na to zezwalają, użytkownik można zdefiniować metody inne niż te wyświetlane domyślnie. Po ukończeniu kreatora, użytkownicy dokonują przeglądu metody, które są skonfigurowane i ich domyślną metodą uwierzytelniania Multi-Factor Authentication. Aby ukończyć proces instalacji, użytkownik potwierdza, informacje i kontynuuje do witryny Azure portal.
 
 ### <a name="set-up-security-info-from-my-profile"></a>Skonfiguruj informacje zabezpieczające z ustawień Mój profil
 
 Administrator nie jest wymuszane rejestracji.
 
-Użytkownik, który nie został jeszcze skonfigurowany wszystkie wymagane informacje zabezpieczające przechodzi do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com). Następnie wybraniu **zabezpieczające** nawigacji po lewej stronie. Z tego miejsca użytkownik zdecyduje się dodać metodę, wybiera dowolnej z metod, które są dostępne dla nich i kolejne kroki, aby skonfigurować tę metodę. Po zakończeniu, użytkownik zobaczy metodę, którą one po prostu jest ustawiona na stronę informacji zabezpieczających.
+Użytkownik, który nie zostało jeszcze skonfiguruj wszystkie wymagane informacje zabezpieczające przechodzi do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com). Użytkownik wybierze **zabezpieczające** w okienku po lewej stronie. Z tego miejsca użytkownik zdecyduje się dodać metodę, wybiera dowolnej z dostępnych metod i kolejne kroki, aby skonfigurować tę metodę. Gdy skończysz, użytkownik zobaczy metodę, która została właśnie skonfigurowanym na stronie informacje.
 
 ### <a name="delete-security-info-from-my-profile"></a>Usuń informacje zabezpieczające z ustawień Mój profil
 
 Użytkownik, który został wcześniej skonfigurowany co najmniej jedną metodę przechodzi do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). Użytkownik wybierze opcję Usuń jedną z wcześniej zarejestrowane metody. Po zakończeniu użytkownik zobaczy na stronie informacje o zabezpieczeń nie jest już tej metody.
 
-### <a name="change-default-method-from-my-profile"></a>Zmień domyślną metodę z ustawień Mój profil
+### <a name="change-the-default-method-from-my-profile"></a>Zmień metodę domyślną z ustawień Mój profil
 
-Użytkownik, który został wcześniej skonfigurowany co najmniej jedną metodę, która może służyć do uwierzytelniania Wieloskładnikowego przechodzi do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). Użytkownik zmienia ich bieżącej domyślnej metody do metody różne domyślne. Po zakończeniu użytkownik zobaczy ich nowych domyślną metodę na stronę informacji zabezpieczających.
+Użytkownik, który został wcześniej skonfigurowany co najmniej jedną metodę, która może służyć do uwierzytelniania wieloskładnikowego przechodzi do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). Użytkownik zmienia bieżącej domyślnej metody do metody różne domyślne. Po zakończeniu użytkownik zobaczy nowej metody domyślne na stronę informacji zabezpieczających.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Zezwolenie na zarejestrowanie połączone w ramach dzierżawy](howto-registration-mfa-sspr-combined.md)
 
-[Dostępne metody uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
+[Dostępne metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
 
-[Konfigurowanie samoobsługowego resetowania haseł](howto-sspr-deployment.md)
+[Konfigurowanie samoobsługowego resetowania hasła](howto-sspr-deployment.md)
 
 [Konfigurowanie usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471015"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281271"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -44,7 +44,7 @@ Maszyna wirtualna do nauki o danych oferowana zarówno Windows, jak i Linux prze
 - Power BI desktop dla Windows
 - SQL Server 2016 Developer Edition w systemie Windows / Postgres w systemie Linux
 
-Obejmuje również **narzędzia do uczenia Maszynowego i sztucznej Inteligencji** , takich jak CNTK (Otwórz uczenia głębokiego źródło zestawu narzędzi firmy Microsoft), xgboost, mxnet i Vowpal Wabbit.
+Obejmuje również **narzędzia do uczenia Maszynowego i sztucznej Inteligencji** , takich jak xgboost, mxnet i Vowpal Wabbit.
 
 Obecnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar maszyny wirtualnej DSVM (liczba rdzeni procesora CPU) i ilość pamięci odpowiednio do potrzeb projektów do nauki o danych, które planujesz wykonać na nim. 
 

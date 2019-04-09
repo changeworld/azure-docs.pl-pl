@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399997"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278483"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Samouczek: Instalowanie usługi Azure Data Box krawędzi
 
@@ -90,7 +90,9 @@ Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Użyj pon
 
 - Przed rozpoczęciem przeczytaj instrukcje dotyczące bezpieczeństwa w książeczki bezpieczeństwa, środowiska i informacji prawnych. Niniejszy podręcznik zostało wysłane do urządzenia.
 - Rozpoczęta szyny w wyznaczonym miejscu, znajdujący się najbliżej dolnej części obudowy stojaka.
-- Tooled szyny konfiguracji instalowania, musisz podać osiem śruby: #10-32 "," #12 – 24 "," #M5 "lub" #M6. Główny średnica śruby musi być mniejsza niż 10 mm (0,4").
+- Dla konfiguracji instalowania tooled szyny:
+    -  Należy podać osiem śruby: #10-32 "," #12 – 24 "," #M5 "lub" #M6. Główny średnica śruby musi być mniejsza niż 10 mm (0,4").
+    -  Potrzebny śrubokręt przebijaka.
 
 ### <a name="identify-the-rail-kit-contents"></a>Zidentyfikować jej zawartość zestawu szyny
 
@@ -102,6 +104,9 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Instalowanie i usuwanie narzędzi rails (dziura kwadratowy lub stojakami round dziura)
 
+> [!TIP]
+> Ta opcja jest niewymagająca, ponieważ nie wymaga narzędzia do instalowania i Usuń platformy rails do kwadratu niegwintowana zaokrąglanie luki w stojakach.
+
 1. Umieść elementy end szyny lewy i prawy etykietą **FRONT** skierowany do wewnątrz i poznaniu każdego z nich zakończenia stanowisko w otwory na przedniej stronie stopka stelażu pionowym.
 2. Wyrównaj do każdego elementu end otworów dołu i od góry żądaną U miejsca do magazynowania.
 3. Angażowanie zaplecza szyny dopóki nie jest w pełni stanowisk na listwie stelażu pionowym i kliknięć zatrzaśnięcia w miejscu. Powtórz te kroki, aby ustawić położenie i stanowisko element frontonu na listwie stelażu pionowym.
@@ -110,6 +115,9 @@ Znajdź składniki do zainstalowania zestawu kit szyny:
 ![Instalowanie i usuwanie narzędzi platformy rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalowanie i usuwanie tooled rails (Zhierarchizowany dziura stojakami)
+
+> [!TIP]
+> Ta opcja jest tooled, ponieważ wymaga to narzędzie (_śrubokręta przebijaka_) zainstalować lub usunąć platformy rails do wątków otworów round w stojakach.
 
 1. Usuń numery PIN z przodu i do tyłu instalowania nawiasy kwadratowe przy użyciu śrubokręta przebijaka.
 2. Ściąganie i Obróć podzespołów zatrzaśnięcia kolei, aby usunąć je z nawiasów instalowania.
@@ -152,7 +160,7 @@ UWAGA: Systemy nie wyposażone zamków slam należy zabezpieczyć systemu przy u
 
 1. Znajdź zewnętrzne nawiasy CMA na stronach posługiwanie się nimi zarówno kołnierze stojaka.
 2. Pakietu kable delikatnie, pobierając je wyczyść łączników systemu do lewej i prawej stronie.
-3. Wątek punktu zaczepienia i pętla taśm za pomocą tooled gniazda na zewnętrzne nawiasy CMA po każdej stronie systemu, aby zabezpieczyć pakiety kabel.
+3. Wątek punktu zaczepienia i pętla taśm za pośrednictwem gniazd na zewnętrzne nawiasy CMA po każdej stronie systemu, aby zabezpieczyć pakiety kabel.
 
 
 ![Kable](./media/data-box-edge-deploy-install/routing-cables.png)
@@ -213,6 +221,6 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Edge, taki
 Przejdź do następnego samouczka, aby dowiedzieć się, jak nawiązać połączenie z urządzeniem oraz je skonfigurować i aktywować.
 
 > [!div class="nextstepaction"]
-> [Nawiązywanie połączenia z urządzeniem Data Box Edge i konfigurowanie go](./data-box-edge-deploy-connect-setup-activate.md)
+> [Połącz i skonfiguruj krawędź pola danych](./data-box-edge-deploy-connect-setup-activate.md)
 
 

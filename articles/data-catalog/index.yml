@@ -1,0 +1,36 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja dotycząca usługi Azure Data Catalog
+metadata:
+  title: Dokumentacja usługi Azure Data Catalog — samouczki i dokumentacja interfejsu API
+  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
+  services: data-catalog
+  author: markingmyname
+  ms.author: maghan
+  ms.service: data-catalog
+  ms.topic: landing-page
+  ms.date: 04/05/2019
+abstract:
+  description: 'Informacje o sposobie używania usługi Data Catalog w celu ułatwiania organizacjom i zespołom odnajdywania i interpretowania źródeł danych oraz korzystania z nich. Samouczki, dokumentacja interfejsu API REST oraz inne dokumenty przedstawiające planowanie i konfigurowanie repozytorium danych, w którym konsumenci danych mogą odnaleźć dostępne źródła danych i uzyskać wiedzę zamieszczaną przez ekspertów z danej dziedziny.'
+sections:
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrożyć pierwszą usługę Azure Data Catalog:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/data-catalog.svg
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/datacatalog/">Dokumentacja interfejsu API REST</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">Dokumentacja składni wyszukiwania</a></p>
+          - title: Resource Manager
+            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">Szablony usługi Resource Manager</a></p>

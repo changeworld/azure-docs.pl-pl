@@ -1,17 +1,17 @@
 ---
 title: Wprowadzenie do usługi Azure Cosmos DB
 description: Zapoznaj się z informacjami na temat usługi Azure Cosmos DB. Ta dostępna w skali światowej, wielomodelowa baza danych zapewnia małe opóźnienia, elastyczną skalowalność i wysoką dostępność oraz oferuje natywną obsługę danych NoSQL.
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 03/18/2019
-ms.author: sngun
-ms.openlocfilehash: eec94217cc62f74a5075412aafcf85bf67346bf4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294369"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280948"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -22,7 +22,7 @@ Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy
 Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań.
 
 > [!div class="nextstepaction"]
-> [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+> [Wypróbuj usługę Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/)
 
 ![Azure Cosmos DB to dostępna w skali światowej usługa bazy danych firmy Microsoft z elastycznym skalowaniem, gwarantowanymi małymi opóźnieniami, pięcioma modelami spójności oraz kompleksowymi, gwarantowanymi umowami SLA](./media/introduction/azure-cosmos-db.png)
 
@@ -97,11 +97,11 @@ Więcej informacji na temat usługi Cosmos DB podstawowe pojęcia dotyczące [ko
 
 Rozpocznij pracę z usługą Azure Cosmos DB, korzystając z jednego z naszych przewodników:
 
-* [Rozpoczynanie pracy z interfejsem SQL usługi Azure Cosmos DB](create-sql-api-dotnet.md)
-* [Rozpoczynanie pracy z interfejsem MongoDB usługi Azure Cosmos DB](create-mongodb-nodejs.md)
-* [Rozpoczynanie pracy z interfejsem API rozwiązania Cassandra usługi Azure Cosmos DB](create-cassandra-dotnet.md)
-* [Rozpoczynanie pracy z interfejsem API programu Gremlin usługi Azure Cosmos DB](create-graph-dotnet.md)
-* [Rozpoczynanie pracy z interfejsem API tabeli usługi Azure Cosmos DB](create-table-dotnet.md)
+* [Rozpoczynanie pracy z interfejsem API SQL usługi Azure Cosmos DB](create-sql-api-dotnet.md)
+* [Rozpoczynanie pracy z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB](create-mongodb-nodejs.md)
+* [Rozpoczynanie pracy z interfejsem API usługi Azure Cosmos DB Cassandra](create-cassandra-dotnet.md)
+* [Rozpoczynanie pracy z usługą Azure Cosmos DB — interfejs API Gremlin](create-graph-dotnet.md)
+* [Wprowadzenie do interfejsu API tabeli usługi Azure Cosmos DB](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [Wypróbuj usługę Azure Cosmos DB bezpłatnie](https://azure.microsoft.com/try/cosmosdb/)

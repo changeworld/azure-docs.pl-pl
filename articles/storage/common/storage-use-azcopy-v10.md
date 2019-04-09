@@ -2,18 +2,18 @@
 title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy v10 (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Użyj AzCopy v10 (wersja zapoznawcza) narzędzia wiersza polecenia do przeniesienia lub skopiowania danych do lub z obiektu blob, usługa data lake i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
-author: artemuwka
+author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 02/24/2019
-ms.author: artemuwka
+ms.date: 04/05/2019
+ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574981"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278432"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Transferowanie danych za pomocą narzędzia AzCopy v10 (wersja zapoznawcza)
 
@@ -24,6 +24,7 @@ Narzędzie AzCopy v10 (wersja zapoznawcza) to narzędzie wiersza polecenia do ko
 - Synchronizuje systemy plików w usłudze Azure Blob storage ani odwrotnie. Użyj `azcopy sync <source> <destination>`. Idealne rozwiązanie dla scenariuszy kopiowania przyrostowego.
 - Obsługuje interfejsy API usługi Azure Data Lake Storage Gen2. Użyj `myaccount.dfs.core.windows.net` jako identyfikator URI do wywoływania interfejsów API programu Data Lake Storage Gen2.
 - Obsługuje kopiowanie całego konta (tylko w przypadku usługi obiektów Blob) do innego konta.
+- Obsługuje kopiowanie danych z zasobnika Amazon S3 usługi sieci Web.
 - Używa nowego [umieszczania bloku z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsów API do obsługi kopię na konto. Transfer danych jest szybsza, ponieważ przesyłanie danych do klienta nie jest wymagana.
 - Wyświetla lub usuwa pliki i obiekty BLOB w podanej ścieżce.
 - Obsługuje wzorców symboli wieloznacznych w ścieżkę i — Wyklucz flag.
@@ -79,8 +80,8 @@ Narzędzie AzCopy v10 ma własny udokumentowanego składnię. Po zalogowaniu si�
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
 
 # Examples if you're using SAS tokens to authenticate:
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
-.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D"
 ```
 
 Poniżej przedstawiono, jak można uzyskać listę dostępnych poleceń:
@@ -101,7 +102,7 @@ Aby wyświetlić stronę pomocy i przykłady dla danego polecenia, uruchom nast�
 
 ## <a name="create-a-blob-container-or-file-share"></a>Tworzenie obiektu blob kontener lub udział plików 
 
-**Utwórz kontener obiektów blob**
+**Tworzenie kontenera obiektów blob**
 
 ```azcopy
 .\azcopy make "https://account.blob.core.windows.net/container-name"
@@ -135,16 +136,16 @@ Polecenie kopiowania do przenoszenia danych ze źródła do miejsca docelowego. 
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-Następujące polecenie przekazuje wszystkie pliki w folderze `C:\local\path` rekursywnie do kontenera `mycontainer1`, tworzenie `path` katalogu w kontenerze:
+Następujące polecenie przekazuje wszystkie pliki w folderze `C:\local\path` rekursywnie do kontenera `mycontainer1`, tworzenie `path` katalogu w kontenerze. Gdy `--put-md5` podano flagi, narzędzia AzCopy oblicza i przechowuje skrót md5 każdego pliku w `Content-md5` właściwości odpowiedniego obiektu blob na potrzeby późniejszego użycia.
 
 ```azcopy
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true --put-md5
 ```
 
 Następujące polecenie przekazuje wszystkie pliki w folderze `C:\local\path` (bez recursing do podkatalogów) do kontenera `mycontainer1`:
 
 ```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --put-md5
 ```
 
 Aby uzyskać więcej przykładów, użyj następującego polecenia:
@@ -153,21 +154,27 @@ Aby uzyskać więcej przykładów, użyj następującego polecenia:
 .\azcopy cp -h
 ```
 
-## <a name="copy-data-between-two-storage-accounts"></a>Kopiowanie danych między dwa konta magazynu
+## <a name="copy-blob-data-between-two-storage-accounts"></a>Kopiowanie danych obiektów Blob między dwa konta magazynu
 
 Kopiowanie danych między dwoma kontami magazynu używa [umieścić blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) interfejsu API, a nie korzysta z przepustowości sieci maszyny klienta. Dane są kopiowane między dwoma serwerami usługi Azure Storage bezpośrednio, gdy narzędzie AzCopy jest po prostu organizuje operacji kopiowania. Ta opcja jest obecnie tylko dostępne dla magazynu obiektów Blob.
 
-Aby skopiować dane między dwa konta magazynu, użyj następującego polecenia:
+Aby skopiować wszystkie dane obiektów Blob między dwa konta magazynu, użyj następującego polecenia:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-> [!NOTE]
-> To polecenie wyliczyć wszystkie kontenery obiektów blob i skopiuj je do konta docelowego. W tej chwili AzCopy v10 obsługuje kopiowanie tylko blokowych obiektów blob między dwa konta magazynu. Pominie ona wszystkie inne konta obiektów magazynu (na przykład uzupełnialnych obiektów blob, stronicowe obiekty BLOB, pliki, tabele i kolejki).
+Aby skopiować kontener obiektów Blob do innego kontenera obiektów Blob, użyj następującego polecenia:
+```azcopy
+.\azcopy cp "https://myaccount.blob.core.windows.net/mycontainer/<sastoken>" "https://myotheraccount.blob.core.windows.net/mycontainer/<sastoken>" --recursive=true
+```
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopiowanie obrazu dysku VHD do konta magazynu
 
-Narzędzie AzCopy v10 domyślnie przekazuje dane do blokowych obiektów blob. Jednakże jeśli plik źródłowy ma `.vhd` rozszerzenia, domyślnie zostanie v10 narzędzia AzCopy do przekazania do stronicowych obiektów blob. W tej chwili ta akcja nie jest konfigurowalne.
+Narzędzie AzCopy domyślnie przekazuje dane do blokowych obiektów blob. Aby przekazać pliki jako obiekty BLOB dołączania lub stronicowe obiekty BLOB, Użyj flagi `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+
+```azcopy
+.\azcopy cp "C:\local\path\mydisk.vhd" "https://myotheraccount.blob.core.windows.net/mycontainer/mydisk.vhd<sastoken>" --blob-type=PageBlob
+```
 
 ## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Synchronizacja: przyrostowa kopia i delete (tylko w przypadku magazynu obiektów Blob)
 
@@ -192,6 +199,30 @@ Można również synchronizować kontener obiektów blob do lokalnego systemu pl
 ```
 
 To polecenie synchronizuje przyrostowo źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy v10 będzie się tak samo w miejscu docelowym. Przed usunięciem narzędzia AzCopy spowoduje wyświetlenie monitu o potwierdzenie.
+
+## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Kopiowanie danych z usługi Amazon Web Services (AWS) S3
+
+Aby uwierzytelniać się przy użyciu zasobnika AWS S3, ustaw następujące zmienne środowiskowe:
+
+```
+# For Windows:
+set AWS_ACCESS_KEY_ID=<your AWS access key>
+set AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For Linux:
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For MacOS
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+```
+
+Aby skopiować pakietu do kontenera obiektów Blob, należy wydać następujące polecenie:
+
+```
+.\azcopy cp "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/mycontainer?<sastoken>" --recursive
+```
+
+Szczegółowe informacje na temat kopiowania danych z usługi AWS S3 przy użyciu narzędzia AzCopy, zobacz stronę [tutaj](https://github.com/Azure/azure-storage-azcopy/wiki/Copy-from-AWS-S3).
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 
@@ -277,10 +308,11 @@ Aby filtrować transfery według stanu, użyj następującego polecenia:
 .\azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Użyj następującego polecenia, aby wznowić zadanie nie powiodło się/anulowane. To polecenie używa identyfikatora wraz z tokenu sygnatury dostępu Współdzielonego. Nie jest trwały ze względów bezpieczeństwa:
+Użyj następującego polecenia, aby wznowić zadanie nie powiodło się/anulowane. To polecenie używa identyfikatora wraz z tokenu sygnatury dostępu Współdzielonego, ponieważ nie jest trwały ze względów bezpieczeństwa:
 
 ```azcopy
-.\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
+.\azcopy jobs resume <jobid> --source-sas="<sastokenhere>"
+.\azcopy jobs resume <jobid> --destination-sas="<sastokenhere>"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

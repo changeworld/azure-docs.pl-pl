@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: d7b0828dc4cb37afa9dda647c4407b4039ca4f73
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057867"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273570"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Samouczek: Skonfiguruj dwa rozwiązania Zscaler dla automatycznej aprowizacji użytkowników
 

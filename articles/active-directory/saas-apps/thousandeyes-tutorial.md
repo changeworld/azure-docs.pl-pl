@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 605ab73a11874c85f20728f5524eb770a7a1b259
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 587d6f8ecdc447672c14ce400ebc64609e4d472d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848016"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThousandEyes
 
@@ -209,7 +209,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w ThousandEyes. ThousandEyes obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznej aprowizacji użytkowników można znaleźć [tutaj](thousandeyes-provisioning-tutorial.md).
 
-**Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
+**Jeśli potrzebujesz ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
 1. Zaloguj się do witryny firmy ThousandEyes jako administrator.
 
@@ -249,10 +249,10 @@ Po kliknięciu kafelka ThousandEyes w panelu dostępu, powinien zostać automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurowanie aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+- [Konfigurowanie Aprowizowania użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)

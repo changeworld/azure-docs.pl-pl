@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/31/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c91bf389f5c63b95e5b68784b6657e92b109a46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852931"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265869"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -36,7 +36,7 @@ Aby zainstalować i skonfigurować Windows hybrydowego procesu roboczego Runbook
 
 |System operacyjny  |Typy wdrożeń  |
 |---------|---------|
-|Windows     | [Program PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręcznie](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręcznie](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -97,11 +97,11 @@ Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu
 
 ### <a name="hybrid-worker-role"></a>Rola procesu roboczego hybrydowego
 
-Hybrydowego procesu roboczego Runbook nawiązać połączenie i zarejestrować przy użyciu dzienników usługi Azure Monitor musi mieć dostęp do numeru portu oraz w adresach URL, które są opisane w tej sekcji. Jest to u góry, aby [portów i adresów URL wymaganych dla programu Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) połączyć się z dziennikami usługi Azure Monitor.
+Hybrydowego procesu roboczego Runbook połączyć się i rejestrowanie w usłudze Azure Automation musi mieć dostęp do numeru portu oraz w adresach URL, które są opisane w tej sekcji. Jest to u góry, aby [portów i adresów URL wymaganych dla programu Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) połączyć się z dziennikami usługi Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Jeśli używasz serwera proxy do komunikacji między agentem i usługa Azure Monitor, upewnij się, że odpowiednie zasoby są dostępne. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bram usługi Log Analytics jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę usługi Log Analytics dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
+Jeśli używasz serwera proxy do komunikacji między agentem i usługi Azure Automation, upewnij się, że odpowiednie zasoby są dostępne. Limit czasu żądania z hybrydowego procesu roboczego elementu Runbook i usługi Automation to 30 sekund. Po 3 prób żądanie zakończy się niepowodzeniem. Jeśli używasz zapory, aby ograniczyć dostęp do Internetu, należy skonfigurować zaporę, aby zezwolić na dostęp. Jeśli używasz bram usługi Log Analytics jako serwer proxy, upewnij się, że jest ono skonfigurowane dla hybrydowych procesów roboczych. Aby uzyskać instrukcje, jak to zrobić, zobacz [skonfigurować bramę usługi Log Analytics dla usługi Automation hybrydowych procesów roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
 Następujących portów i adresów URL są wymagane dla roli hybrydowego procesu roboczego Runbook do komunikowania się z usługą Automation:
 

@@ -1,23 +1,23 @@
 ---
-title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w portalu Azure Portal — Azure Search
-description: W tym samouczku połączyć z bazą danych Azure SQL, wyodrębnianie danych z możliwością wyszukiwania i załadować je do indeksu usługi Azure Search.
+title: 'Samouczek: Indeksowanie danych z bazy danych Azure SQL w C# przykładowy kod — usługa Azure Search'
+description: A C# przykład kodu, w którym pokazano, jak nawiązać połączenie z bazą danych Azure SQL, wyodrębnianie danych z możliwością wyszukiwania i załadować je do indeksu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201402"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270469"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
+# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek w C#: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
 Dowiedz się, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych Azure SQL. [Indeksatory](search-indexer-overview.md) to składnik usługi Azure Search, który przeszukuje zewnętrzne źródła danych, wypełniając [indeks wyszukiwania](search-what-is-an-index.md) przy użyciu zawartości. Wszystkie indeksatory indeksator usługi Azure SQL Database jest najczęściej używana. 
 
@@ -37,35 +37,39 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki Start. 
+
 [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
 
-* [Usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) dostarczanie zewnętrzne źródło danych używane w indeksatorze. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli.
+[Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/) przechowuje zewnętrzne źródło danych używane w indeksatorze. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli. Procedury służące do tworzenia usług i bazy danych znajdują się w tym samouczku.
 
-* + [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
+[Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), w każdej wersji, może służyć do uruchamiania w przykładowym rozwiązaniu. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
+
+[Azure — Przykłady/wyszukiwania dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) zawiera przykładowe rozwiązanie znajduje się w repozytorium GitHub przykładów dla platformy Azure. Pobierz i Wyodrębnij rozwiązania. Domyślnie rozwiązania są tylko do odczytu. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wyczyść atrybut tylko do odczytu, dzięki czemu mogą modyfikować pliki.
 
 > [!Note]
 > Jeśli używasz bezpłatnej usługi Azure Search, możesz korzystać tylko z trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że miejsce w usłudze jest wystarczające do zaakceptowania nowych zasobów.
 
-### <a name="download-the-solution"></a>Pobieranie rozwiązania
+## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-Rozwiązanie indeksatora używane w tym samouczku pochodzi z kolekcji przykładów usługi Azure Search dostarczanych w postaci jednego głównego pliku do pobrania. Rozwiązanie używane w tym samouczku to *DotNetHowToIndexers*.
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-1. Przejdź do pozycji [**Azure-Samples/search-dotnet-getting-started**](https://github.com/Azure-Samples/search-dotnet-getting-started) w repozytorium serwisu GitHub zawierającym przykłady związane z platformą Azure.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-2. Kliknij pozycję **Klonuj lub pobierz** > **Pobierz plik ZIP**. Domyślnie plik jest przenoszony do folderu plików do pobrania.
+1.. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-3. W obszarze **Eksplorator plików** > **Pliki do pobrania** kliknij prawym przyciskiem myszy plik i wybierz pozycję **Wyodrębnij wszystko**.
+![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
-4. Wyłącz uprawnienia tylko do odczytu. Kliknij prawym przyciskiem myszy nazwę folderu > **Właściwości** > **Ogólne**, a następnie wyczyść atrybut **Tylko do odczytu** dla bieżącego folderu, podfolderów i plików.
+Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
-5. W programie **Visual Studio 2017** otwórz rozwiązanie *DotNetHowToIndexers.sln*.
-
-6. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy górny węzeł nadrzędny Rozwiązanie > **Przywróć pakiety Nuget**.
-
-### <a name="set-up-connections"></a>Konfigurowanie połączeń
+## <a name="set-up-connections"></a>Konfigurowanie połączeń
 Informacje o połączeniu z wymaganymi usługami są określane w pliku **appsettings.json** w rozwiązaniu. 
 
-W Eksploratorze rozwiązań otwórz plik **appsettings.json**, aby można było wypełnić poszczególne ustawienia przy użyciu instrukcji podanych w tym samouczku.  
+1. W programie Visual Studio, otwórz **DotNetHowToIndexers.sln** pliku.
+
+1. W Eksploratorze rozwiązań Otwórz **appsettings.json** tak, aby można było wypełnić poszczególne ustawienia.  
+
+Pierwsze dwie pozycje można wypełnić od razu, za pomocą kluczy administrator i adres URL dla usługi Azure Search. Podany punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi w celu zapewnienia jest `mydemo`.
 
 ```json
 {
@@ -75,48 +79,17 @@ W Eksploratorze rozwiązań otwórz plik **appsettings.json**, aby można było 
 }
 ```
 
-### <a name="get-the-search-service-name-and-admin-api-key"></a>Pobieranie nazwy usługi wyszukiwania i klucza api-key administratora
-
-Klucz i punkt końcowy usługi wyszukiwania można znaleźć w portalu. Klucz zapewnia dostęp do operacji usługi. Klucze administratora oferują prawa do zapisu niezbędne do tworzenia i usuwania obiektów, takich jak indeksy i indeksatory w usłudze.
-
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) i znajdź [usługi wyszukiwania powiązane z Twoją subskrypcją](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-
-2. Otwórz stronę usługi.
-
-3. W górnej części strony głównej znajdź nazwę usługi. Na poniższym zrzucie ekranu jest to nazwa *azs-tutorial*.
-
-   ![Nazwa usługi](./media/search-indexer-tutorial/service-name.png)
-
-4. Skopiuj i wklej ją jako pierwszy wpis do pliku **appsettings.json** w programie Visual Studio.
-
-   > [!Note]
-   > Nazwa usługi jest częścią punktu końcowego, który obejmuje element search.windows.net. Jeśli Cię to interesuje, możesz zobaczyć pełen adres URL w obszarze **Podstawy** na stronie przeglądu. Adres URL wygląda podobnie do następującego przykładu: https://your-service-name.search.windows.net
-
-5. Po lewej stronie w obszarze **Ustawienia** > **Klucze** skopiuj jeden z kluczy administratora i wklej go jako drugi wpis w pliku **appsettings.json**. Klucze to ciągi znaków alfanumerycznych, które są generowane podczas aprowizowania usługi i są wymagane do uzyskiwania autoryzowanego dostępu do operacji usługi. 
-
-   Po dodaniu obu ustawień plik powinien wyglądać podobnie do poniższego przykładu:
-
-   ```json
-   {
-    "SearchServiceName": "azs-tutorial",
-    "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
-    . . .
-   }
-   ```
+Ostatni wpis wymaga istniejącej bazy danych. Utworzysz je w następnym kroku.
 
 ## <a name="prepare-sample-data"></a>Przygotowywanie danych przykładowych
 
-W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator może przeszukiwać. Plik danych w tym samouczku to *hotels.sql* dostępny w folderze rozwiązania \DotNetHowToIndexers. 
-
-### <a name="azure-sql-database"></a>Azure SQL Database
-
-Przy użyciu witryny Azure Portal i pliku *hotels.sql* z przykładu można utworzyć zestaw danych w bazie danych Azure SQL Database. Usługa Azure Search używa spłaszczonych zestawów wierszy, takich jak zestaw generowany w oparciu o widok lub zapytanie. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
+W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator może przeszukiwać. Przy użyciu witryny Azure Portal i pliku *hotels.sql* z przykładu można utworzyć zestaw danych w bazie danych Azure SQL Database. Usługa Azure Search używa spłaszczonych zestawów wierszy, takich jak zestaw generowany w oparciu o widok lub zapytanie. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
 
 W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz danych — obydwa te elementy zostaną utworzone w kroku 2. Jeśli zasób istnieje można również dodać do niego tabelę hotels, zaczynając pracę od kroku 4.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). 
 
-2. Kliknij pozycję **Utwórz zasób** > **SQL Database**, aby utworzyć bazę danych, serwer i grupę zasobów. Możesz użyć wartości domyślnych i warstwy cenowej najniższego poziomu. Jedną z zalet tworzenia serwera jest możliwość określenia nazwy i hasła użytkownika administratora. Są one niezbędne do utworzenia i załadowania tabel w późniejszym kroku.
+2. Znajdowanie lub tworzenie **usługi Azure SQL Database** do utworzenia bazy danych, serwer i grupę zasobów. Możesz użyć wartości domyślnych i warstwy cenowej najniższego poziomu. Jedną z zalet tworzenia serwera jest możliwość określenia nazwy i hasła użytkownika administratora. Są one niezbędne do utworzenia i załadowania tabel w późniejszym kroku.
 
    ![Strona nowej bazy danych](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -143,7 +116,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
     ```sql
     SELECT HotelId, HotelName, Tags FROM Hotels
     ```
-    Prototypowe zapytanie, `SELECT * FROM Hotels`, nie działa w Edytorze zapytań. Przykładowe dane obejmują współrzędne geograficzne w polu lokalizacji. Nie są one obecnie obsługiwane w edytorze. Aby wyświetlić listę innych kolumn, dla których można wykonać zapytanie, możesz wykonać tę instrukcję: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    Prototypowe zapytanie, `SELECT * FROM Hotels`, nie działa w Edytorze zapytań. Przykładowe dane obejmują współrzędne geograficzne w polu lokalizacji. Nie są one obecnie obsługiwane w edytorze. Aby uzyskać listę innych kolumn, aby wysłać zapytanie można wykonać tej instrukcji: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Teraz masz już zewnętrzny zestaw danych. Skopiuj parametry połączenia ADO.NET dla bazy danych. Na stronie swojej bazy danych SQL Database przejdź do obszaru **Ustawienia** > **Parametry połączenia** i skopiuj parametry połączenia ADO.NET.
  
@@ -156,13 +129,13 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
     ```json
     {
-      "SearchServiceName": "azs-tutorial",
-      "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
+      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
       "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
     }
     ```
 
-## <a name="understand-index-and-indexer-code"></a>Opis kodu indeksatora i indeksu
+## <a name="understand-the-code"></a>Zrozumienie kodu
 
 Kod jest teraz gotowy do skompilowania i uruchomienia. Przed wykonaniem tych czynności poświęć chwilę na zapoznanie się z definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
 
@@ -279,4 +252,4 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)
+> [Indeksowanie dokumentów w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

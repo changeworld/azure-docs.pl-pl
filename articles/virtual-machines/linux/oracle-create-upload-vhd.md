@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: c2c02283518bab0723b7bc815f034c4324c944e1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ecd30d30434d91893102ce6ec0df21daa84b677c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232894"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276860"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Linux w środowisku Oracle dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,9 +37,9 @@ W tym artykule założono, że już zainstalowano systemu operacyjnego Oracle Li
 * NUMA nie jest obsługiwana dla większych rozmiarów maszyn wirtualnych z powodu błędu w wersje jądra systemu Linux poniżej 2.6.37. Ten problem ma wpływ przede wszystkim na za pomocą nadrzędnego Red Hat 2.6.32 jądra. Ręczna instalacja agenta systemu Linux platformy Azure (waagent) zostanie automatycznie wyłączyć technologię NUMA w konfiguracji programu GRUB jądra systemu Linux. Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
 * Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
-* Upewnij się, że `Addons` repozytorium jest włączona. Edytuj plik `/etc/yum.repo.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repo.d/public-yum-ol7.repo`(Oracle Linux) i zmień wiersz `enabled=0` do `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
+* Upewnij się, że `Addons` repozytorium jest włączona. Edytuj plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) i zmień wiersz `enabled=0` do `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64"></a>Oracle Linux 6.4+
 Należy wykonać kroki konfiguracji określone w system operacyjny dla maszyny wirtualnej do uruchamiania na platformie Azure.
 
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
@@ -48,7 +48,7 @@ Należy wykonać kroki konfiguracji określone w system operacyjny dla maszyny w
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Uwaga:** Jeśli pakiet nie jest już zainstalowany, to polecenie zakończy się niepowodzeniem z komunikatem o błędzie. Jest to oczekiwane.
+    **Uwaga:** Pakiet nie jest już zainstalowany, to polecenie zakończy się niepowodzeniem z komunikatem o błędzie. Jest to oczekiwane.
 4. Utwórz plik o nazwie **sieci** w `/etc/sysconfig/` katalog zawierający następujący tekst:
    
         NETWORKING=yes

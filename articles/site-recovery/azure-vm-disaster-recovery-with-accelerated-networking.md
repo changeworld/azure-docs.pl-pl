@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850418"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283362"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Przyspieszona sieć za pomocą odzyskiwania po awarii maszyn wirtualnych platformy Azure
 
@@ -37,13 +37,13 @@ Usługa Azure Site Recovery obsługuje Włączanie Accelerated Networking dla ma
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 Poniższe dystrybucje obsługiwane są gotowe w galerii platformy Azure:
-* **System Windows Server 2016 Datacenter**
+* **Windows Server 2016 Datacenter**
 * **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
-Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są: D/DSv2 i F/Fs
+Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są następujące: D/DSv2 i F/Fs
 
-W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Serie obsługiwane są: D/DSv3, E/ESv3, Fsv2 i Ms/Mms
+W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Seria obsługiwane są następujące: D/DSv3, E/ESv3, Fsv2 i Ms/Mms
 
 Aby uzyskać więcej informacji na temat wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -54,17 +54,17 @@ Usługa Azure Site Recovery obsługuje Włączanie Accelerated Networking dla ma
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 Poniższe dystrybucje obsługiwane są gotowe w galerii platformy Azure:
 * **Ubuntu 16.04**
-* **SLES 12 Z DODATKIEM SP3**
+* **SLES 12 SP3**
 * **RHEL 7.4**
 * **CentOS 7.4**
-* **CoreOS w systemie Linux**
+* **CoreOS Linux**
 * **Debian "Stretch Database" za pośrednictwem jądra backports**
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
-Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są: D/DSv2 i F/Fs
+Przyspieszona sieć jest obsługiwana w najbardziej ogólnego przeznaczenia i oferujące zoptymalizowane możliwości obliczeniowe wystąpień o rozmiarach z co najmniej 2 procesorów wirtualnych.  Te serie obsługiwane są następujące: D/DSv2 i F/Fs
 
-W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Serie obsługiwane są: D/DSv3, E/ESv3, Fsv2 i Ms/Mms.
+W wystąpieniach będzie używanych obsługujące wielowątkowość przyspieszonej sieci jest obsługiwany na wystąpieniach maszyn wirtualnych z 4 lub więcej procesorów wirtualnych. Seria obsługiwane są następujące: D/DSv3, E/ESv3, Fsv2 i Ms/Mms.
 
 Aby uzyskać więcej informacji na temat wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

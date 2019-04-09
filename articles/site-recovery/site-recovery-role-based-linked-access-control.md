@@ -2,16 +2,16 @@
 title: Zarządzanie dostępem do usługi Azure Site Recovery, przy użyciu kontroli dostępu opartej na rolach (RBAC) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób stosowania kontroli dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do usługi Azure Site Recovery.
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218074"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281713"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Zarządzanie dostępem Site Recovery przy użyciu kontroli dostępu opartej na rolach (RBAC)
 
@@ -71,7 +71,7 @@ Rozważ użycie "Współautor maszyny wirtualnej" i "Współautora klasycznej ma
 ## <a name="next-steps"></a>Kolejne kroki
 * [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): Wprowadzenie do funkcji RBAC w witrynie Azure portal.
 * Dowiedz się, jak zarządzanie dostępem przy użyciu:
-  * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
+  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
   * [Interfejs API REST](../role-based-access-control/role-assignments-rest.md)
 * [Rozwiązywanie kontroli dostępu opartej na rolach](../role-based-access-control/troubleshooting.md): Pobierz sugestie dotyczące rozwiązywania typowych problemów.

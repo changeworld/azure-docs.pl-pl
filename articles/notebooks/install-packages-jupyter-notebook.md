@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d18a33b7eeb1e3708b4e657180421bd97dc268b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764341"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276885"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
 
@@ -74,4 +74,4 @@ Paket.Package
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Instrukcje: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Instrukcje: Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)

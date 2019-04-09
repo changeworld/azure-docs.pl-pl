@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f110fe84ab09e930947411a79c950af21cc5334c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544524"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274522"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -23,28 +23,31 @@ ms.locfileid: "57544524"
 Ten samouczek opiera się na kodzie w [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-node-node-c2d.md) samouczka, aby dowiesz się, jak używać [pliku przekazywania możliwościami usługi IoT Hub](iot-hub-devguide-file-upload.md) można przekazać pliku do [obiektów blob platformy Azure Magazyn](../storage/index.yml). Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 - Bezpiecznie przekazać urządzenia z systemem Azure identyfikator URI obiektu blob przekazywania pliku.
+- 
 - Powiadomienia przekazywania pliku usługi IoT Hub umożliwia wyzwalanie przetwarzania pliku w aplikacji zaplecza.
 
 [Rozpoczynanie pracy z usługą IoT Hub](quickstart-send-telemetry-node.md) samouczku przedstawiono podstawowe funkcje obsługi komunikatów urządzenia do chmury usługi IoT Hub. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
 
-* Duże pliki, które zawierają obrazy
-* Filmy wideo
-* Wibracje danych próbkowania o wysokiej częstotliwości
-* Pewnego rodzaju wstępnie przetworzonych danych.
+*  Duże pliki, które zawierają obrazy
+*  Filmy wideo
+*  Wibracje danych próbkowania o wysokiej częstotliwości
+*  Pewnego rodzaju wstępnie przetworzone dane.
 
 Te pliki to typowo wsadowego przetwarzania w chmurze przy użyciu narzędzi takich jak [usługi Azure Data Factory](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.yml) stosu. Gdy zachodzi potrzeba wyżynne plików z urządzenia, można nadal używać zabezpieczeń i niezawodności usługi IoT Hub.
 
 Na końcu tego samouczka, możesz uruchomić dwie aplikacje konsolowe środowiska Node.js:
 
 * **SimulatedDevice.js**, która przekazuje plik do magazynu przy użyciu identyfikatora URI sygnatury dostępu Współdzielonego, dostarczone przez Centrum IoT hub.
+
 * **ReadFileUploadNotification.js**, która odbiera powiadomienia o przekazywania plików z usługi IoT hub.
 
 > [!NOTE]
-> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET, Javascript, Python i Java) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT] instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
+> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET, Javascript, Python i Java) za pomocą zestawów SDK urządzeń Azure IoT. Można znaleźć [Centrum deweloperów Azure IoT] Aby uzyskać instrukcje krok po kroku w celu podłączenia urządzenia z usługą Azure IoT Hub.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Środowisko Node.js w wersji 4.0.x lub nowszej.
+
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
@@ -59,25 +62,25 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
     npm init
     ```
 
-1. W wierszu polecenia w folderze ```simulateddevice``` uruchom następujące polecenie, aby zainstalować pakiet zestawu SDK urządzenia **azure-iot-device** i pakiet **azure-iot-device-mqtt**:
+2. W wierszu polecenia w folderze ```simulateddevice``` uruchom następujące polecenie, aby zainstalować pakiet zestawu SDK urządzenia **azure-iot-device** i pakiet **azure-iot-device-mqtt**:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Za pomocą edytora tekstów utwórz plik **SimulatedDevice.js** w folderze ```simulateddevice```.
+3. Za pomocą edytora tekstów utwórz plik **SimulatedDevice.js** w folderze ```simulateddevice```.
 
-1. Dodaj następujące instrukcje ```require``` na początku pliku **SimulatedDevice.js**:
+4. Dodaj następujące instrukcje ```require``` na początku pliku **SimulatedDevice.js**:
 
     ```javascript
     'use strict';
-    
+
     var fs = require('fs');
     var mqtt = require('azure-iot-device-mqtt').Mqtt;
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-1. Dodaj zmienną ```deviceconnectionstring``` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp ```{deviceconnectionstring}``` nazwą urządzenia utworzonego w _Tworzenie Centrum IoT_ sekcji:
+5. Dodaj zmienną `deviceconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp `{deviceconnectionstring}` nazwą urządzenia utworzonego w *Tworzenie Centrum IoT* sekcji:
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -87,19 +90,19 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
     > [!NOTE]
     > Dla uproszczenia należy parametry połączenia znajduje się w kodzie: nie jest to zalecana praktyka i w zależności od przypadku użycia i architektura warto wziąć pod uwagę bezpieczniejsze sposoby zapisywania tego wpisu tajnego.
 
-1. Dodaj następujący kod do połączenia klienta:
+6. Dodaj następujący kod do połączenia klienta:
 
     ```javascript
     var client = clientFromConnectionString(connectionString);
     console.log('Client connected');
     ```
 
-1. Utwórz wywołanie zwrotne i użyj **uploadToBlob** funkcję, aby przekazać plik.
+7. Utwórz wywołanie zwrotne i użyj **uploadToBlob** funkcję, aby przekazać plik.
 
     ```javascript
     fs.stat(filename, function (err, stats) {
         const rr = fs.createReadStream(filename);
-    
+
         client.uploadToBlob(filename, rr, stats.size, function (err) {
             if (err) {
                 console.error('Error uploading file: ' + err.toString());
@@ -110,9 +113,9 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
     });
     ```
 
-1. Zapisz i zamknij plik **SimulatedDevice.js**.
+8. Zapisz i zamknij plik **SimulatedDevice.js**.
 
-1. Skopiuj plik obrazu do `simulateddevice` folder i zmień jego nazwę `myimage.png`.
+9. Skopiuj plik obrazu do `simulateddevice` folder i zmień jego nazwę `myimage.png`.
 
 ## <a name="receive-a-file-upload-notification"></a>Otrzymywać powiadomienie o przekazywaniu pliku
 
@@ -126,23 +129,23 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
     npm init
     ```
 
-1. W wierszu polecenia w ```fileuploadnotification``` folder, uruchom następujące polecenie, aby zainstalować **azure-iothub** pakiet zestawu SDK:
+2. W wierszu polecenia w ```fileuploadnotification``` folder, uruchom następujące polecenie, aby zainstalować **azure-iothub** pakiet zestawu SDK:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-1. Za pomocą edytora tekstów Utwórz **FileUploadNotification.js** w pliku ```fileuploadnotification``` folderu.
+3. Za pomocą edytora tekstów Utwórz **FileUploadNotification.js** w pliku `fileuploadnotification` folderu.
 
-1. Dodaj następujący kod ```require``` instrukcji na początku **FileUploadNotification.js** pliku:
+4. Dodaj następujący kod `require` instrukcji na początku **FileUploadNotification.js** pliku:
 
     ```javascript
     'use strict';
-    
+
     var Client = require('azure-iothub').Client;
     ```
 
-1. Dodaj zmienną ```iothubconnectionstring``` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp ```{iothubconnectionstring}``` przy użyciu parametrów połączenia Centrum IoT utworzonego w _Tworzenie Centrum IoT_ sekcji:
+5. Dodaj zmienną `iothubconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp `{iothubconnectionstring}` przy użyciu parametrów połączenia Centrum IoT utworzonego w _Tworzenie Centrum IoT_ sekcji:
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -151,13 +154,13 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
     > [!NOTE]
     > Dla uproszczenia należy parametry połączenia znajduje się w kodzie: nie jest to zalecana praktyka i w zależności od przypadku użycia i architektura warto wziąć pod uwagę bezpieczniejsze sposoby zapisywania tego wpisu tajnego.
 
-1. Dodaj następujący kod do połączenia klienta:
+6. Dodaj następujący kod do połączenia klienta:
 
     ```javascript
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
 
-1. Otwórz klienta i użyj **getFileNotificationReceiver** funkcję, aby otrzymywać aktualizacje stanu.
+7. Otwórz klienta i użyj **getFileNotificationReceiver** funkcję, aby otrzymywać aktualizacje stanu.
 
     ```javascript
     serviceClient.open(function (err) {
@@ -179,7 +182,7 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
     });
     ```
 
-1. Zapisz i Zamknij **FileUploadNotification.js** pliku.
+8. Zapisz i Zamknij **FileUploadNotification.js** pliku.
 
 ## <a name="run-the-applications"></a>Uruchamianie aplikacji
 
@@ -213,13 +216,6 @@ Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigu
 
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
-* [Programistyczne tworzenie Centrum IoT hub][lnk-create-hub]
-* [Wprowadzenie do zestawu SDK języka C][lnk-c-sdk]
-* [Zestawy SDK Azure IoT][lnk-sdks]
-
-<!-- Links -->
-[Centrum deweloperów Azure IoT]: https://azure.microsoft.com/develop/iot
-
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
+*  [Programistyczne tworzenie centrum IoT](iot-hub-rm-template-powershell.md)
+*  [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
+*  [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)

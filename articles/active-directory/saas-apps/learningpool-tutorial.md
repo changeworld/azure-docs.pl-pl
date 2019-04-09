@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16cf541dca003446e7b49033018d5b9950bfc54f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889577"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Learningpool Act
 
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Learningpool Act z usługą Azure AD, musisz dodać aplikację Learningpool Act z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Learningpool Act z galerii, wykonaj następujące czynności:**
+**Aby dodać Learningpool Act z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Learningpo
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Learningpool Act](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
     
@@ -237,7 +237,7 @@ Po kliknięciu kafelka Learningpool Act w panelu dostępu powinno nastąpić aut
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

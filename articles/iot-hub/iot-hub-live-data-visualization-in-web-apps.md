@@ -1,19 +1,19 @@
 ---
 title: Wizualizacja danych w czasie rzeczywistym danych z czujników z usługi Azure IoT hub — aplikacje sieci Web | Dokumentacja firmy Microsoft
 description: Funkcja Web Apps, Microsoft Azure App Service umożliwia wizualizowanie temperatury i wilgotności danych zebranych z czujników i wysyłane do usługi Iot hub.
-author: rangv
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: c43431cd6ddbbbf8f6cb709b8c1783179d6cf760
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.author: robinsh
+ms.openlocfilehash: b870c432ea8021d9eeb14eec85ff9912b96ddc96
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158724"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270884"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT hub przy użyciu funkcji Web Apps w usłudze Azure App Service
 

@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
-ms.openlocfilehash: f0cb740f04970aeed4342511a046862f05aaa736
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108202"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269575"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Za pomocą Eksploratora chmury dla programu Visual Studio do zarządzania urządzeniami Azure IoT Hub
 
-![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram end-to-end](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
 [Eksplorator chmury](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) jest przydatne rozszerzenia Visual Studio, która pozwala na wyświetlanie zasobów platformy Azure, badania ich właściwości i akcje klucza dla deweloperów z poziomu programu Visual Studio. Chodzi o opcje zarządzania, które służą do wykonywania różnych zadań.
 
@@ -35,7 +35,7 @@ Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują info
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-Dowiesz się, za pomocą Eksploratora chmury dla programu Visual Studio z różnymi opcjami zarządzania na komputerze deweloperskim.
+Dowiesz się, jak używać Eksploratora chmury dla programu Visual Studio z różnymi opcjami zarządzania na komputerze deweloperskim.
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
@@ -43,8 +43,8 @@ Uruchom Eksplorator chmury dla programu Visual Studio z różnymi opcjami zarzą
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-- Aktywna subskrypcja platformy Azure.
-- Usługa Azure IoT Hub w ramach Twojej subskrypcji.
+- Aktywna subskrypcja platformy Azure
+- Usługa Azure IoT Hub w ramach Twojej subskrypcji
 - Microsoft Visual Studio 2017 Update 8 lub nowszy
 - Składnik Eksploratora chmury z Instalatora programu Visual Studio (wybrane domyślnie obciążenie platformy Azure)
 

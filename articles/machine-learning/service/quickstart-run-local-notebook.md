@@ -10,27 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb601ac5c1ed8e9ca6d2027fe1b774a938e1f0a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362411"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281135"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu
 
-W tym artykule używasz do wykonywania kodu, który jest zalogowany serwer notesu [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning.
+Użyj serwera Notes, aby uruchomić kod, który loguje się wartości [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning.
 
-Ten przewodnik Szybki Start korzysta z własnego środowiska Python i serwer notesu Jupyter. W przewodniku Szybki Start z żadnej instalacji, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md) 
+Ten przewodnik Szybki Start korzysta z własnego środowiska Python i serwer notesu Jupyter. Aby uzyskać szybki start z żadnej instalacji zestawu SDK, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md) 
 
 Zobacz wersję wideo tego przewodnika Szybki start:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
-
-W ramach tego przewodnika Szybki start wykonasz następujące czynności:
-
-* Pisanie kodu, który rejestruje wartości w obszarze roboczym.
-* Wyświetlanie zarejestrowanych wartości w obszarze roboczym.
 
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
@@ -61,7 +56,7 @@ Po zakończeniu przebiegu możesz wyświetlić przebieg eksperymentu w witrynie 
 print(run.get_portal_url())
 ```
 
-Użyj linku, aby wyświetlić zarejestrowane wartości w witrynie Azure Portal w przeglądarce.
+Ten kod zwraca łącze, którego można użyć, aby wyświetlić zarejestrowane wartości w witrynie Azure portal w przeglądarce.
 
 ![Zarejestrowane wartości w witrynie Azure Portal](./media/quickstart-run-local-notebook/logged-values.png)
 
@@ -79,6 +74,6 @@ Jeśli nie planujesz korzystać z zasobów, które zostały utworzone w tym arty
 W tym artykule utworzono zasoby niezbędne do eksperymentowania i wdrażania modeli. Uruchomiono kod w notesie i zbadano historię uruchamiania tego kodu w obszarze roboczym w chmurze.
 
 > [!div class="nextstepaction"]
-> [Samouczek: trenowanie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)
+> [Samouczek: Szkolenie modeli klasyfikacji obrazów](tutorial-train-models-with-aml.md)
 
 Możesz też zapoznać się z [bardziej zaawansowane przykłady w witrynie GitHub](https://aka.ms/aml-notebooks) lub wyświetlić [Podręcznik użytkownika zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

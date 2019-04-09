@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1ace13b8802c86b3ad40725554c698851ff421b0
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360524"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278551"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -35,6 +35,8 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 * Tworzenie [obszaru roboczego usługi Azure Machine Learning](how-to-configure-environment.md#workspace) do przechowywania wszystkich zasobów potoku. 
 
   ```python
+  from azureml.core import Workspace
+  
   ws = Workspace.create(
      name = '<workspace-name>',
      subscription_id = '<subscription-id>',
@@ -118,6 +120,8 @@ Poniżej przedstawiono przykłady tworzenie i dołączanie obliczeniowych elemen
 Można tworzyć zasoby obliczeniowe usługi Azure Machine Learning na potrzeby uruchamiania etapów.
 
 ```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+
 compute_name = "aml-compute"
  if compute_name in ws.compute_targets:
     compute_target = ws.compute_targets[compute_name]

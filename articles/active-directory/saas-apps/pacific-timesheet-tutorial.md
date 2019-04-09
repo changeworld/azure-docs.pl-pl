@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: e68b1fc03dca9865ff0d3c1a1a9d3dfc7c23a00f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 8b145755f88c7a2be215ccfd78538298433331fd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225743"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Samouczek: Integracja usługi Azure Active Directory z grafik Pacyfiku
 
@@ -105,7 +105,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z grafiku Pacyfiku, w
 
     ![Pacyficznego grafiku domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
@@ -193,7 +193,7 @@ Po kliknięciu kafelka grafiku pacyficznego w panelu dostępu, powinien zostać 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -1,7 +1,6 @@
 ---
 title: Dowiedz się, jak inspekcji zawartości maszyny wirtualnej
 description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji gościa na Przeprowadź inspekcję ustawienia w ramach maszyny wirtualnej platformy Azure.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/18/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 045339ec0a725359593797bda172a2e93f7c2890
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339027"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277731"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -125,9 +124,9 @@ Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do g
 
 Rozszerzenie konfiguracji gościa zapisuje pliki dziennika w następujących lokalizacjach:
 
-Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
+W systemie Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
-Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
+W systemie Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 Gdzie `<version>` odwołuje się do bieżący numer wersji.
 
