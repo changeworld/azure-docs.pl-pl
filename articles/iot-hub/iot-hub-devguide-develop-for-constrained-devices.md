@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451735"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261398"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Opracowywanie zawartości dla ograniczonego urządzeń przy użyciu zestawu SDK C usługi Azure IoT
 
 Zestaw SDK usługi Azure IoT Hub C został napisany w ANSI C (C99), dzięki czemu dobrze nadaje się do obsługi wielu różnych platformach za pomocą niewielkie rozmiary dysku i pamięci. Zalecana ilość pamięci RAM jest co najmniej 64 KB, ale dokładna ilość pamięci zajmowaną zależy od protokół używany, liczba otwartych połączeń, a także platformy docelowej.
+> [!NOTE]
+> * Zestaw SDK C usługi Azure IoT regularnie publikuje informacje pomagające w rozwoju.  Odwiedź nasze [repozytorium GitHub](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md) i Przejrzyj najnowsze testów porównawczych.
+>
 
 Zestawu SDK języka C jest dostępna w pakiecie formularz za pomocą polecenia apt-get, NuGet i MBED. Pod kątem urządzeń ograniczone, można skompilować zestaw SDK lokalnie dla danej platformy docelowej. Tej dokumentacji pokazano, jak można usunąć niektórych funkcji, aby zmniejszyć zużycie przy użyciu zestawu SDK języka C [cmake](https://cmake.org/). Ponadto ta dokumentacja zawiera omówienie najlepszych praktyk modelami programowania do pracy z urządzeń z ograniczeniami.
 
@@ -30,7 +33,7 @@ Postępuj zgodnie z tym [Przewodnik instalacji zestawu SDK języka C](https://gi
 
 ### <a name="remove-additional-protocol-libraries"></a>Usuń biblioteki są dostępne dodatkowe protokoły
 
-Zestawu SDK języka C obsługuje protokoły pięć dzisiaj: MQTT, MQTT za pośrednictwem protokołu WebSocket, AMQPs, AMQP przez WebSocket i HTTPS. Większość scenariuszy wymaga jednej do dwóch protokołów uruchomiony na komputerze klienckim, dlatego można usunąć biblioteki protokołu, które nie korzystają z zestawu SDK. Dodatkowe informacje o wybieraniu protokołu komunikacyjnego odpowiednie dla danego scenariusza można znaleźć w [wybierz protokół komunikacyjny usługi IoT Hub](iot-hub-devguide-protocols.md). Na przykład przekształca protokół MQTT to lekki protokół, który często lepiej jest odpowiedni dla urządzeń z ograniczeniami.
+Zestawu SDK języka C obsługuje protokoły pięć dzisiaj: Protokołu MQTT protokołu MQTT za pośrednictwem protokołu WebSocket, AMQPs, AMQP przez WebSocket i HTTPS. Większość scenariuszy wymaga jednej do dwóch protokołów uruchomiony na komputerze klienckim, dlatego można usunąć biblioteki protokołu, które nie korzystają z zestawu SDK. Dodatkowe informacje o wybieraniu protokołu komunikacyjnego odpowiednie dla danego scenariusza można znaleźć w [wybierz protokół komunikacyjny usługi IoT Hub](iot-hub-devguide-protocols.md). Na przykład przekształca protokół MQTT to lekki protokół, który często lepiej jest odpowiedni dla urządzeń z ograniczeniami.
 
 Możesz usunąć biblioteki protokołów AMQP oraz HTTP, używając następującego polecenia cmake:
 

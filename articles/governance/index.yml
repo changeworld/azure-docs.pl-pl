@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341237"
 documentType: LandingData
 title: Zarządzanie platformą Azure — ład
 metadata:
   title: Zarządzanie platformą Azure — ład
   description: Zapoznaj się z pojęciami i dostępnymi usługami platformy Azure związanymi ze spójnym zarządzaniem środowiskiem za pośrednictwem jawnego projektu i reguł oraz dowiedz się jak przeprowadzać inspekcję zgodności.
-  services: governance
   author: DCtheGeek
   manager: carmonm
   ms.service: governance
@@ -18,58 +11,58 @@ metadata:
   ms.date: 09/18/2018
   ms.author: dacoulte
 abstract:
-  description: Ład na platformie Azure to zbiór pojęć i usług umożliwiających zarządzanie różnymi zasobami platformy Azure na dużą skalę. Te usługi umożliwiają między innymi organizowanie i strukturyzowanie subskrypcji w logiczny sposób, tworzenie i wdrażanie pakietów zasobów natywnych dla platformy Azure i wielokrotnego użytku, a także definiowanie zasobów oraz poddawanie ich inspekcji i korygowaniu. Ta strona pozwala dowiedzieć się więcej na temat tych pojęć i usług oraz tego, jak już dziś włączyć je i używać ich we własnym środowisku.
+  description: 'Ład na platformie Azure to zbiór pojęć i usług umożliwiających zarządzanie różnymi zasobami platformy Azure na dużą skalę. Te usługi umożliwiają między innymi organizowanie i strukturyzowanie subskrypcji w logiczny sposób, tworzenie i wdrażanie pakietów zasobów natywnych dla platformy Azure i wielokrotnego użytku, a także definiowanie zasobów oraz poddawanie ich inspekcji i korygowaniu. Ta strona pozwala dowiedzieć się więcej na temat tych pojęć i usług oraz tego, jak już dziś włączyć je i używać ich we własnym środowisku.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 225
       src: ./media/video.png
       width: 250
-    title: Uzyskaj prędkość i kontrolę nad zasobami dzięki usłudze Azure Governance (1:47)
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    title: 'Uzyskaj prędkość i kontrolę nad zasobami dzięki usłudze Azure Governance (1:47)'
+    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
     width: 250
 sections:
-- title: Składniki i usługi
-- items:
-  - type: list
-    style: cards
-    className: cardsD
-    columns: 2
-    items:
-    - href: ./management-groups/overview
-      html: <p>Dowiedz się, jak grupować i organizować subskrypcje w logicznej hierarchii obsługującej wdrażanie innych usług ładu w sposób ustrukturyzowany.<br /></p>
-      image:
-        alt: Grupy zarządzania
-        src: ./media/management-groups-illustration.svg
-      title: Grupy zarządzania
-    - href: ./resource-graph/
-      html: <p>Szybko twórz zapytania sprawdzające złożone informacje szczegółowe dotyczące zasobów platformy Azure za pomocą zaawansowanego narzędzia wiersza polecenia (z obsługą interfejsu wiersza polecenia platformy Azure i modułu Azure PowerShell). Znajduj i ujawniaj informacje, których odnajdowanie na dużą skalę wymagało wcześniej złożonych i iteracyjnych skryptów.</p>
-      image:
-        alt: Wykres zasobów
-        src: ./media/resource-graph-illustration.svg
-      title: Wykres zasobów
-    - href: ./policy/
-      html: <p>Definiuj i stosuj standardy do zasobów w swoim środowisku. Zapobiegaj tworzeniu niepożądanych zasobów, rozszerzaj nowe zasoby za pomocą dodatkowych elementów, a także poddawaj inspekcji i korygowaniu zasoby już istniejące w Twoim środowisku.</p>
-      image:
-        alt: Zasady
-        src: ./media/policy-illustration.svg
-      title: Zasady
-    - href: ./blueprints/
-      html: <p>Utwórz zawierający <i>artefakty</i> (m.in. grupy zasobów, zasady, przypisania ról i szablony usługi Resource Manager) pakiet natywny platformy Azure, który można dynamicznie wdrażać w subskrypcjach, aby tworzyć spójne, powtarzalne środowiska.</p>
-      image:
-        alt: Strategie
-        src: ./media/blueprints-illustration.svg
-      title: Strategie
-- title: Implementacje
-- items:
-  - type: list
-    style: cards
-    className: cardsZ
-    columns: 3
-    items:
-    - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-      html: <p>W przeszłości przedsiębiorstwa były właścicielami wszystkich poziomów technologii od infrastruktury po oprogramowanie i brały za nie odpowiedzialność. Obecnie chmura umożliwia transformację sposobu wykorzystywania technologii w przedsiębiorstwach przez aprowizowanie i używanie zasobów w zależności od potrzeb.</p>
-      title: Wdrożenie rozwiązania Enterprise Cloud
-    - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-      html: <p>Umożliwia administratorom zadbanie o to, aby obciążenia spełniały wymagania minimalne ładu organizacji, bez utrudniania grupom biznesowym i deweloperom szybkiego osiągania ich własnych celów.<br /><br /></p>
-      title: Szkielet dla przedsiębiorstw
+  - title: Składniki i usługi
+  - items:
+      - type: list
+        style: cards
+        className: cardsD
+        columns: 2
+        items:
+          - href: ./management-groups/overview
+            html: '<p>Dowiedz się, jak grupować i organizować subskrypcje w logicznej hierarchii obsługującej wdrażanie innych usług ładu w sposób ustrukturyzowany.<br /></p>'
+            image:
+              alt: Grupy zarządzania
+              src: ./media/management-groups-illustration.svg
+            title: Grupy zarządzania
+          - href: ./resource-graph/
+            html: '<p>Szybko twórz zapytania sprawdzające złożone informacje szczegółowe dotyczące zasobów platformy Azure za pomocą zaawansowanego narzędzia wiersza polecenia (z obsługą interfejsu wiersza polecenia platformy Azure i modułu Azure PowerShell). Znajduj i ujawniaj informacje, których odnajdowanie na dużą skalę wymagało wcześniej złożonych i iteracyjnych skryptów.</p>'
+            image:
+              alt: Wykres zasobów
+              src: ./media/resource-graph-illustration.svg
+            title: Wykres zasobów
+          - href: ./policy/
+            html: '<p>Definiuj i stosuj standardy do zasobów w swoim środowisku. Zapobiegaj tworzeniu niepożądanych zasobów, rozszerzaj nowe zasoby za pomocą dodatkowych elementów, a także poddawaj inspekcji i korygowaniu zasoby już istniejące w Twoim środowisku.</p>'
+            image:
+              alt: Zasady
+              src: ./media/policy-illustration.svg
+            title: Zasady
+          - href: ./blueprints/
+            html: '<p>Utwórz zawierający <i>artefakty</i> (m.in. grupy zasobów, zasady, przypisania ról i szablony usługi Resource Manager) pakiet natywny platformy Azure, który można dynamicznie wdrażać w subskrypcjach, aby tworzyć spójne, powtarzalne środowiska.</p>'
+            image:
+              alt: Strategie
+              src: ./media/blueprints-illustration.svg
+            title: Strategie
+  - title: Implementacje
+  - items:
+      - type: list
+        style: cards
+        className: cardsZ
+        columns: 3
+        items:
+          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+            html: <p>W przeszłości przedsiębiorstwa były właścicielami wszystkich poziomów technologii od infrastruktury po oprogramowanie i brały za nie odpowiedzialność. Obecnie chmura umożliwia transformację sposobu wykorzystywania technologii w przedsiębiorstwach przez aprowizowanie i używanie zasobów w zależności od potrzeb.</p>
+            title: Wdrożenie rozwiązania Enterprise Cloud
+          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+            html: '<p>Umożliwia administratorom zadbanie o to, aby obciążenia spełniały wymagania minimalne ładu organizacji, bez utrudniania grupom biznesowym i deweloperom szybkiego osiągania ich własnych celów.<br /><br /></p>'
+            title: Szkielet dla przedsiębiorstw

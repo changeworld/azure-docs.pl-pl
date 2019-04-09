@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 11fbf14cdeb8d22dbfdf522e1c5838634937f6cb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878217"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282104"
 ---
 # <a name="about-point-to-site-vpn"></a>Sieci VPN typu punkt lokacja — informacje
 
@@ -22,7 +22,7 @@ Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne p
 
 Sieci VPN typu punkt lokacja można użyć jednej z następujących protokołów:
 
-* OpenVPN, protokołu sieci VPN na podstawie certyfikatu SSL/TLS. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzenia Windows, Linux i Mac (wersji OS x 10.13 i nowsze wersje).
+* **Protokół® OpenVPN**, SSL/TLS, na podstawie protokołu sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. OpenVPN może służyć do łączenia z systemem Android, iOS (w wersji 11.0 i nowszych), urządzenia Windows, Linux i Mac (wersji OS x 10.13 i nowsze wersje).
 
 * Zabezpiecz SSTP Socket Tunneling Protocol (), protokołem opartym na protokole SSL sieci VPN. Rozwiązanie SSL sieci VPN może przechodzić przez zapory, ponieważ większość zapór otwiera port 443 protokołu TCP, który używa protokołu SSL. Protokół SSTP jest obsługiwana tylko na urządzeniach Windows. Platforma Azure obsługuje wszystkich wersji systemu Windows, który ma protokołu SSTP (Windows 7 i nowsze).
 
@@ -54,7 +54,7 @@ Serwer usługi RADIUS można również zintegrować z usługami certyfikatów us
 Serwer usługi RADIUS można również zintegrować z innymi systemami tożsamości zewnętrznej. Spowoduje to otwarcie wiele możliwości uwierzytelniania sieci VPN P2S, włącznie z opcjami usługi Multi-Factor Authentication.
 
 >[!NOTE]
->Protokół OpenVPN nie jest obsługiwany przy użyciu uwierzytelniania usługi RADIUS.
+>**Protokół® OpenVPN** nie jest obsługiwana przy użyciu uwierzytelniania usługi RADIUS.
 >
 
 ![punkt lokacja](./media/point-to-site-about/p2s.png "Point-to-Site")
@@ -109,3 +109,5 @@ Konfiguracji P2S wymaga kilku określonych kroków. Następujące artykuły zawi
 * [Konfigurowanie połączenia P2S — uwierzytelnianie usługi RADIUS](point-to-site-how-to-radius-ps.md)
 
 * [Konfigurowanie połączenia P2S - Azure natywne Uwierzytelnianie certyfikatów](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+**"OpenVPN" jest zastrzeżonym znakiem towarowym firmy OpenVPN Inc.**

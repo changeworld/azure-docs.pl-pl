@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244370"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257165"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -143,7 +143,7 @@ W tej sekcji opiszemy sposób ustawiania alertu wyjątku na podstawie zapytania.
 
 10. Na koniec dodanie szczegółów dotyczących alertu (alertu z reguły nazwę, opis, ważność). Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz regułę alertu** u dołu.
 
-    ![W obszarze szczegółów alertu, wpisz nazwę reguły alertu, Napisz opis i wybierz ważność ](./media/alerts/9alertdetails.png)
+    ![W obszarze szczegółów alertu, wpisz nazwę reguły alertu, Napisz opis i wybierz ważność](./media/alerts/9alertdetails.png)
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
 
@@ -163,9 +163,9 @@ Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć n
 * [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Zobacz także
-* [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Testy dostępności sieci Web](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
-* [Diagnostyka proaktywna](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Aktywna diagnostyka](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a6da0a92e99cbfe49bdebfb33dfaab91e2411acc
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: 2cceaf61129c6c756fadb3d41e825264fa23331f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010740"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278874"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -661,7 +661,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Blueprint/blueprints/versions/read | Odczytaj wszelkie strategie |
 > | Akcja | Microsoft.Blueprint/blueprints/versions/write | Utwórz lub zaktualizuj wszelkie strategie |
 > | Akcja | Microsoft.Blueprint/blueprints/write | Utwórz lub zaktualizuj wszelkie strategie |
-> | Akcja | Microsoft.Blueprint/register/action | Rejestruje dostawcę zasobów strategii platformy Azure |
+> | Akcja | Microsoft.Blueprint/register/action | Rejestruje dostawcę zasobów usługi Azure Blueprints |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 

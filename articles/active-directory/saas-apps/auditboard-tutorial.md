@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce100c4e8aa33a9180f5657756b11d6c6e34920
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838871"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem AuditBoard
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Do skonfigurowania integracji usługi Azure AD z oprogramowaniem AuditBoard wymagane są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja oprogramowania AuditBoard z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację oprogramowania AuditBoard z usługą Azure AD, należy to oprogramowanie z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać oprogramowanie AuditBoard z galerii, wykonaj następujące czynności:**
+**Aby dodać AuditBoard z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację oprogramowania AuditBoard z usługą Azure AD, na
 
 4. W polu wyszukiwania wpisz **AuditBoard**, wybierz pozycję **AuditBoard** w panelu z wynikami, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Oprogramowanie AuditBoard na liście wyników](common/search-new-app.png)
+    ![Oprogramowanie AuditBoard na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -79,8 +79,8 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z opro
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w oprogramowaniu AuditBoard](#configure-auditboard-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Tworzenie użytkownika testowego oprogramowania AuditBoard](#create-auditboard-test-user)** — aby Britta Simon miała swojego odpowiednika w oprogramowaniu AuditBoard połączonego z reprezentacją użytkownika usługi Azure AD.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego oprogramowania AuditBoard](#create-auditboard-test-user)** — aby Britta Simon miała swojego odpowiednika w oprogramowaniu AuditBoard połączonego z reprezentacją użytkownika usługi Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Audit
 
     ![Informacje o domenie i adresach URL oprogramowania AuditBoard na potrzeby logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
@@ -118,7 +118,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Audit
     > [!NOTE]
     > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta oprogramowania AuditBoard](mailto:support@auditboard.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
@@ -126,7 +126,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Audit
 
 Aby skonfigurować logowanie jednokrotne po stronie oprogramowania **AuditBoard**, należy wysłać **adres URL metadanych federacyjnych aplikacji** do [zespołu pomocy technicznej oprogramowania AuditBoard](mailto:support@auditboard.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
@@ -144,8 +144,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola `brittasimon\@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -181,7 +180,7 @@ W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z
 
 W tej sekcji utworzysz użytkownika Britta Simon w oprogramowaniu AuditBoard. Postępuj zgodnie ze wskazówkami udzielanymi przez [zespół pomocy technicznej oprogramowania AuditBoard](mailto:support@auditboard.com), aby dodać użytkowników do oprogramowania AuditBoard. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
@@ -189,9 +188,8 @@ Po kliknięciu kafelka AuditBoard w panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -17,11 +17,11 @@ ms.date: 03/28/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e95fae67d3e7fd97cf4be1642f41b64a07fd0145
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056915"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259613"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi LinkedIn podniesienie poziomu do automatycznej aprowizacji użytkowników
 

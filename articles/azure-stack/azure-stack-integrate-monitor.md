@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904002"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257301"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integracja zewnętrznej rozwiązania do monitorowania za pomocą usługi Azure Stack
 
@@ -30,7 +30,7 @@ Dla zewnętrznych monitorowania infrastruktury Azure Stack, należy monitorować
 - Komputerów fizycznych można udostępnić kondycji i informacje o alertach za pomocą kontrolerów zarządzania płytą główną (BMC).
 - Fizyczne urządzenia sieciowe można udostępnić kondycji i informacje o alertach za pośrednictwem protokołu SNMP.
 
-Każde z tych rozwiązań usługi Azure Stack jest dostarczany z cyklem życia sprzętu hosta. Ten host uruchamia monitorujący oprogramowanie dostawcy sprzętu Original Equipment Manufacturer (OEM) dla serwerów fizycznych i urządzeniami sieciowymi. Jeśli to konieczne, można pominąć te rozwiązania do monitorowania i bezpośrednio integrować z istniejącymi rozwiązaniami monitorowania w centrum danych.
+Każde z tych rozwiązań usługi Azure Stack jest dostarczany z cyklem życia sprzętu hosta. Ten host uruchamia monitorujący oprogramowanie dostawcy sprzętu Original Equipment Manufacturer (OEM) dla serwerów fizycznych i urządzeniami sieciowymi. Sprawdź u swojego dostawcy OEM, jeśli ich rozwiązania do monitorowania można zintegrować z istniejącymi rozwiązaniami monitorowania w centrum danych.
 
 > [!IMPORTANT]
 > Zewnętrzne rozwiązanie monitorowania, którego używasz, musi być bez wykorzystania agentów. Nie można zainstalować agentów firm wewnątrz składników usługi Azure Stack.
@@ -40,7 +40,7 @@ Na poniższym diagramie przedstawiono przepływ ruchu między zintegrowanym syst
 ![Diagram przedstawiający ruchu między usługi Azure Stack, monitorowania i tworzenia biletów rozwiązania.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> Zewnętrzne integracji monitorowania bezpośrednio z fizycznych serwerów i urządzeń sieciowych nie jest dozwolone i aktywnie zablokowane przez listy kontroli dostępu (ACL). 
+> Zewnętrzne integracji monitorowania bezpośrednio z fizycznych serwerów nie jest dozwolone i aktywnie zablokowane przez listy kontroli dostępu (ACL).  Zewnętrzne integracja monitorowania bezpośrednio z fizyczne urządzenia sieciowe jest obsługiwana, skontaktuj się z dostawcą producenta OEM w sposób włączyć tę funkcję.
 
 W tym artykule wyjaśniono, jak zintegrować usługę Azure Stack z zewnętrznego monitorowania rozwiązań, takich jak System Center Operations Manager i Nagios. Obejmuje to również sposób pracy z alertami programowo przy użyciu programu PowerShell lub za pomocą wywołań interfejsu API REST.
 

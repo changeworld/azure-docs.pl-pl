@@ -1,20 +1,20 @@
 ---
 title: ESP8266 do chmury — łączenie Feather HUZZAH ESP8266 dla usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować i połączyć urządzenie Adafruit Feather HUZZAH ESP8266 do usługi Azure IoT Hub dla niego do wysyłania danych do platformy w chmurze w ramach tego samouczka.
-author: rangv
-manager: nasing
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: wesmc
+ms.openlocfilehash: 928860cd9b6493200ed8a14b7654f6a6f32c45d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085103"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259392"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenie z usługi Azure IoT Hub w chmurze
 
@@ -168,10 +168,10 @@ Przykładowa aplikacja jest hostowana w usłudze GitHub. Sklonuj repozytorium pr
 
 9. W **ustawienia użytkownika** okna, skopiuj i wklej następujący kod na końcu pliku
 
-   ```
+   ```json
    "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
-   
+
    ![Skonfiguruj adres URL pakietu Arduino w programie VS Code](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
 10. Zapisz plik i Zamknij **ustawienia użytkownika** kartę.
@@ -213,7 +213,7 @@ Przykładowa aplikacja można symulować dane temperatury i wilgotności, w przy
    ```c
    define SIMULATED_DATA true
    ```
-   
+
    ![Konfigurowanie przykładowej aplikacji na korzystanie z symulowanych danych](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. Zapisz plik.
@@ -251,8 +251,14 @@ Jeśli zobaczysz następujące dane wyjściowe z okna monitora szeregowe i migaj
 
 ![Końcowe dane wyjściowe w środowisku IDE Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Przeczytaj komunikaty odbierane przez Centrum
+
+Jednym ze sposobów monitorowania komunikaty odbierane przez Centrum IoT hub na urządzeniu jest konieczne użycie narzędzi IoT platformy Azure dla programu Visual Studio Code. Aby dowiedzieć się więcej, zobacz [Użyj narzędzia IoT platformy Azure dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+Więcej sposobów na przetwarzanie danych przesyłanych przez urządzenia przejdź do następnej sekcji.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pomyślnie połączona Feather HUZZAH ESP8266 z Centrum IoT i wysyłane dane przechwycone czujnika do usługi IoT hub. 
+Pomyślnie połączona Feather HUZZAH ESP8266 z Centrum IoT i wysyłane dane przechwycone czujnika do usługi IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057442"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259816"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -50,7 +50,7 @@ Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy A
 
 ### <a name="create-in-powershell"></a>Tworzenie w programie PowerShell
 
-W programie PowerShell, możesz użyć polecenia cmdlet New-AzManagementGroup:
+W przypadku programu PowerShell, użyj [New AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) polecenia cmdlet, aby utworzyć nową grupę zarządzania.
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
@@ -58,20 +58,39 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 **GroupName** jest unikatowym identyfikatorem tworzona. Ten identyfikator jest używany przez inne polecenia, aby odwoływać się do tej grupy i nie można zmienić później.
 
-Jeśli chce się grupy zarządzania, aby pokazać inną nazwę w witrynie Azure portal, należy dodać **DisplayName** parametr na ciąg. Na przykład jeśli chcesz utworzyć grupę zarządzania z GroupName Contoso i nazwę wyświetlaną grupy"Contoso", użyj następującego polecenia cmdlet:
+Jeśli chcesz, aby grupa zarządzania, aby pokazać inną nazwę w witrynie Azure portal, Dodaj **DisplayName** parametru. Na przykład aby utworzyć grupę zarządzania z GroupName Contoso i nazwę wyświetlaną grupy"Contoso", należy użyć następującego polecenia cmdlet:
 
 ```azurepowershell-interactive
-New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-Użyj **ParentId** parametru tej grupy zarządzania można utworzyć w ramach różnych zarządzania.
+W powyższych przykładach zostanie utworzona nowa grupa zarządzania, w ramach głównej grupy zarządzania. Aby określić innej grupy zarządzania, co element nadrzędny, użyj **ParentId** parametru.
+
+```azurepowershell-interactive
+$parentGroup = Get-AzManagementGroup -GroupName Contoso
+New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
+```
 
 ### <a name="create-in-azure-cli"></a>Tworzenie w wiersza polecenia platformy Azure
 
-W interfejsie wiersza polecenia platformy Azure, użyj az polecenia create grupy zarządzania kontem.
+W przypadku wiersza polecenia platformy Azure, użyj [az konta z grupy zarządzania, tworzenie](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) polecenie, aby utworzyć nową grupę zarządzania.
 
 ```azurecli-interactive
-az account management-group create --name 'Contoso'
+az account management-group create --name Contoso
+```
+
+**Nazwa** jest unikatowym identyfikatorem tworzona. Ten identyfikator jest używany przez inne polecenia, aby odwoływać się do tej grupy i nie można zmienić później.
+
+Jeśli chcesz, aby grupa zarządzania, aby pokazać inną nazwę w witrynie Azure portal, Dodaj **nazwę wyświetlaną** parametru. Na przykład aby utworzyć grupę zarządzania z GroupName Contoso i nazwę wyświetlaną grupy"Contoso", należy użyć następującego polecenia:
+
+```azurecli-interactive
+az account management-group create --name Contoso --display-name 'Contoso Group'
+```
+
+W powyższych przykładach zostanie utworzona nowa grupa zarządzania, w ramach głównej grupy zarządzania. Aby określić innej grupy zarządzania, co element nadrzędny, użyj **nadrzędnego** parametru i podaj nazwę grupy nadrzędnej.
+
+```azurecli-interactive
+az account management-group create --name ContosoSubGroup --parent Contoso
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 3a17b42458cf1512c1dd9ee38782917ca93cd2ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4788b65201792292d79cd8c4d1b22f22c5e67eb6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904596"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Nuclino
 
@@ -106,7 +106,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Nuclino, wykonaj na
 
     ![Nuclino domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://api.nuclino.com/api/sso/<UNIQUE-ID>/acs`
 
@@ -265,7 +265,7 @@ Po kliknięciu kafelka Nuclino w panelu dostępu, powinien zostać automatycznie
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

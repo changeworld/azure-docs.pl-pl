@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915930"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256196"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR
 
@@ -97,10 +97,9 @@ Dowiedz się więcej o wieloetapowego zadania w [uruchamianie wieloetapowych kom
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Gdy wszystko będzie gotowe zautomatyzować systemu operacyjnego i framework poprawek, tworzenie obrazów kontenerów w chmurze, zapoznaj się z częścią trzyczęściowej serii samouczków zadania usługi ACR.
+Gdy wszystko będzie gotowe zautomatyzować systemu operacyjnego i framework poprawek, tworzenie obrazów kontenerów w chmurze, zapoznaj się z trzech części [serii samouczków zadania ACR](container-registry-tutorial-quick-task.md).
 
-> [!div class="nextstepaction"]
-> [Kompilowanie obrazów kontenerów w chmurze za pomocą zadań rejestru kontenera platformy Azure](container-registry-tutorial-quick-task.md)
+Opcjonalnie Zainstaluj [rozszerzenie Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) i [konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozszerzenie, aby pracować z rejestrów kontenerów platformy Azure. Ściąganie i wypychanie obrazów do usługi Azure container registry lub uruchamiania zadań podrzędnych usługi ACR, wszystko to w ramach programu Visual Studio Code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

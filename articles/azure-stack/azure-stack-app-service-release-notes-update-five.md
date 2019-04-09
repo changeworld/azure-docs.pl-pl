@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 192ac256f013498e57ecf7939d29796af073b948
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500206"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260565"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>Usługa App Service w usłudze Azure Stack update 5 — informacje o wersji
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszeń i poprawek w usłudze Azure App Service na usługi Azure Stack aktualizacja Update 5 i znanych problemach. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
 
@@ -77,7 +77,7 @@ Usługa Azure App Service w usłudze Azure Stack aktualizacji 5 obejmuje następ
 ### <a name="post-deployment-steps"></a>Czynności po wdrożeniu
 
 > [!IMPORTANT]  
-> Jeśli podano jednostki Uzależnionej usługi aplikacji przy użyciu zawsze w wystąpieniu SQL musi [Dodawanie appservice_hosting i appservice_metering baz danych do grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) i synchronizowanie baz danych w celu zapobieżenia utracie pracy w zdarzenia przejścia w tryb failover bazy danych.
+> Jeśli podano dostawcy zasobów usługi App Service przy użyciu zawsze w wystąpieniu SQL musi [Dodawanie appservice_hosting i appservice_metering baz danych do grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) i synchronizowanie baz danych w celu zapobieżenia utracie usługi w przypadku pracy awaryjnej bazy danych.
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 

@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: MT
+ms.date: 04/04/2019
+ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960885"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057170"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -53,13 +53,17 @@ Następnie informacje na temat dodatkowych mechanizmów, które umożliwiają od
 
 Każda z tych funkcji ma różne charakterystyki dotyczące szacowanego czasu odzyskiwania (ERT, estimated recovery time) i potencjalnej utraty danych dotyczących ostatnich transakcji. Po zapoznaniu się z tymi opcjami można dokonać między nimi wyboru, a także — w większości przypadków — użyć ich razem w ramach różnych scenariuszy. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do aplikacji w celu przeprowadzenia pełnego odzyskania jest określany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych (przedział czasu) aplikacja może tolerować momencie odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
 
-W poniższej tabeli porównano wartości ERT i RPO dla każdej warstwy usług dla trzech najbardziej typowych scenariuszy.
+W poniższej tabeli porównano wartości ERT i RPO dla każdej warstwy usług dla najbardziej typowych scenariuszy.
 
 | Możliwości | Podstawowa | Standardowa (Standard) | Premium | Ogólne zastosowanie | Krytyczne dla działania firmy
 | --- | --- | --- | --- |--- |--- |
 | Przywracanie do punktu w czasie z kopii zapasowej |Dowolny punkt przywracania w ciągu siedmiu dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu skonfigurowanego okresu (maksymalnie 35 dni)|Dowolny punkt przywracania w ciągu skonfigurowanego okresu (maksymalnie 35 dni)|
 | Przywracanie geograficzne z kopii zapasowych z replikacją geograficzną |ERT < 12 godz.<br> RPO < 1 godz. |ERT < 12 godz.<br>RPO < 1 godz. |ERT < 12 godz.<br>RPO < 1 godz. |ERT < 12 godz.<br>RPO < 1 godz.|ERT < 12 godz.<br>RPO < 1 godz.|
 | Grupy automatycznego trybu failover |Cel czasu odzyskiwania = 1 godz.<br>RPO < 5 s |Cel czasu odzyskiwania = 1 godz.<br>RPO < 5 s |Cel czasu odzyskiwania = 1 godz.<br>RPO < 5 s |Cel czasu odzyskiwania = 1 godz.<br>RPO < 5 s|Cel czasu odzyskiwania = 1 godz.<br>RPO < 5 s|
+| Tryb failover ręczne bazy danych |ERT = 30 s<br>RPO < 5 s |ERT = 30 s<br>RPO < 5 s |ERT = 30 s<br>RPO < 5 s |ERT = 30 s<br>RPO < 5 s|ERT = 30 s<br>RPO < 5 s|
+
+> [!NOTE]
+> *Ręczne bazy danych w tryb failover* odwołuje się do trybu failover dla pojedynczej bazy danych do jego replikowanej geograficznie pomocniczej za pomocą [nieplanowany tryb](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities).
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Odzyskiwanie bazy danych do istniejącego serwera
 
@@ -84,7 +88,7 @@ Sporadycznie centrum danych platformy Azure może mieć awarię. Taka awaria pow
 
 - Jedną z opcji jest oczekiwanie, aż baza danych powróci do trybu online po zakończeniu awarii centrum danych. Takie rozwiązanie sprawdza się dla aplikacji, w przypadku których baza danych może być w trybie offline. Może to na przykład dotyczyć projektu tworzenia oprogramowania lub bezpłatnej wersji próbnej, nad którymi nie trzeba pracować na bieżąco. Centrum danych po awarii nie wiesz, jak długo może trwać awarii, więc ta opcja działa tylko, jeśli nie potrzebujesz bazy danych od pewnego czasu.
 - Innym rozwiązaniem jest Przywracanie bazy danych na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure przy użyciu [kopie zapasowe bazy danych magazynu geograficznie nadmiarowego](sql-database-recovery-using-backups.md#geo-restore) (Przywracanie geograficzne). Przywracanie geograficzne korzysta z geograficznie nadmiarowej kopii zapasowej jako źródła i może służyć do odzyskiwania bazy danych, nawet jeśli bazy danych lub centrum danych jest niedostępna z powodu awarii.
-- Na koniec można szybko odzyskać sprawności po awarii po skonfigurowaniu obu-geograficznych przy użyciu [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) dla baz danych lub bazy danych. W zależności od wybranego tych technologii można użyć trybu failover ręcznych lub automatycznych. Podczas pracy awaryjnej, sama zajmuje tylko kilka sekund, usługa potrwa co najmniej 1 godzina, aby ją uaktywnić. Jest to konieczne upewnić się, aby przejść do trybu failover jest uzasadnione skali awarii. Ponadto przełączenie w tryb failover może spowodować utratę danych małych ze względu na charakter replikacji asynchronicznej. Zobacz tabelę w tym artykule, aby uzyskać szczegółowe informacje automatyczny tryb failover RTO i RPO.
+- Na koniec można szybko odzyskać sprawności po awarii, jeśli zostały skonfigurowane przy użyciu pomocniczej geograficznej [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) dla baz danych lub bazy danych. W zależności od wybranego tych technologii można użyć trybu failover ręcznych lub automatycznych. Podczas pracy awaryjnej, sama zajmuje tylko kilka sekund, usługa potrwa co najmniej 1 godzina, aby ją uaktywnić. Jest to konieczne upewnić się, aby przejść do trybu failover jest uzasadnione skali awarii. Ponadto przełączenie w tryb failover może spowodować utratę danych małych ze względu na charakter replikacji asynchronicznej. Zobacz tabelę w tym artykule, aby uzyskać szczegółowe informacje automatyczny tryb failover RTO i RPO.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
@@ -116,7 +120,7 @@ Jeśli nie przygotowywania prawidłowo, przeniesienie aplikacji trybu online po 
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Failover do pomocniczej bazy danych replikowanej geograficznie
 
-Jeśli jako mechanizm odzyskiwania używają aktywna replikacja geograficzna i grupy automatyczny tryb failover, można skonfigurować zasady automatycznej pracy awaryjnej lub użyć [ręczna praca awaryjna](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group). Po zainicjowaniu przełączenie w tryb failover spowoduje, że pomocniczej do nowej podstawowej i gotowa do rejestrowania nowych transakcji i odpowiadania na zapytania — z minimalną utratą danych dla danych nie zostały jeszcze zreplikowane. Aby uzyskać informacje dotyczące projektowania procesu pracy awaryjnej, zobacz [projektowania aplikacji do odzyskiwania po awarii w chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Jeśli używasz aktywnej replikacji geograficznej lub automatyczny tryb failover grupy jako mechanizm odzyskiwania można skonfigurować zasady automatycznej pracy awaryjnej lub użyć [ręczne nieplanowany tryb failover](sql-database-active-geo-replication-portal.md#initiate-a-failover). Po zainicjowaniu przełączenie w tryb failover spowoduje, że pomocniczej do nowej podstawowej i gotowa do rejestrowania nowych transakcji i odpowiadania na zapytania — z minimalną utratą danych dla danych nie zostały jeszcze zreplikowane. Aby uzyskać informacje dotyczące projektowania procesu pracy awaryjnej, zobacz [projektowania aplikacji do odzyskiwania po awarii w chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
 > Gdy centrum danych powróci do trybu online stare kolory podstawowe ponownie połączyć się z nową podstawową i automatycznie stają się pomocniczych baz danych. Konieczne jest przeniesienie podstawowej kopii do oryginalnej regionu, możesz ręcznie zainicjować planowanego trybu failover (powrót po awarii).

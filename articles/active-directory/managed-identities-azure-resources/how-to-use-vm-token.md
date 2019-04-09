@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7354ed8362412c40d52a3895a9b4118eb7c1544
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449395"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258916"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
 
@@ -79,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | Pola nagłówka żądania HTTP, związanej z zarządzanych tożsamości dla zasobów platformy Azure jako ograniczenie przed atakiem serwera po stronie żądania Międzywitrynowego (SSRF). Ta wartość musi być równa "true", małymi literami. |
 | `object_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący object_id tożsamości zarządzanej, które Twoim zdaniem token dla. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika.|
 | `client_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący client_id z tożsamości zarządzanej, które Twoim zdaniem tokenem. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika.|
+| `mi_res_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący mi_res_id (identyfikator zasobu platformy Azure) z tożsamości zarządzanej, które Twoim zdaniem tokenem. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika. |
 
 Przykładowe żądanie przy użyciu zarządzanych tożsamości dla zasobów platformy Azure punktu końcowego maszyny Wirtualnej rozszerzenie *(zaplanowane do wycofania z użycia w styczniu 2019)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -96,10 +97,9 @@ Metadata: true
 | `object_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący object_id tożsamości zarządzanej, które Twoim zdaniem token dla. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika.|
 | `client_id` | (Opcjonalnie) Parametr ciągu zapytania, wskazujący client_id z tożsamości zarządzanej, które Twoim zdaniem tokenem. Wymagane, jeśli maszyna wirtualna ma wiele tożsamości zarządzanych przypisanych przez użytkownika.|
 
-
 Przykładowa odpowiedź:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668198"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057646"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Linux w klastrze usługi Service Fabric
 
@@ -121,13 +121,13 @@ Dla systemu Ubuntu [nienadzorowanego uaktualnienia](https://help.ubuntu.com/comm
 
 Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA_v2.0.2.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA_v2.0.3.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
 Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych potrzeb. Zastąp wartości domyślne, przekazując w parametrze aplikacji podczas tworzenia aplikacji lub aktualizacji. Można podać parametry aplikacji, określając `ApplicationParameter` do `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication` polecenia cmdlet.
 
-|**Parametr**        |**Typ**                          | **Szczegóły**|
+|**Parametr**        |**Type**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
@@ -173,7 +173,8 @@ Dla wygody programu powershell (Undeploy.ps1) i skrypty powłoki bash (Undeploy.
 
 ## <a name="view-the-update-results"></a>Wyświetlanie wyników aktualizacji
 
-Aplikacja orchestration poprawki udostępnia interfejsy API REST, aby wyświetlić wyniki historyczne dla użytkownika. Poniżej przedstawiono przykładowy wynik: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+Aplikacja orchestration poprawki udostępnia interfejsy API REST, aby wyświetlić wyniki historyczne dla użytkownika. Poniżej przedstawiono przykładowy wynik:
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -373,5 +374,10 @@ Aplikacja orchestration poprawki gromadzi dane telemetryczne umożliwiający śl
 ### <a name="version-201"></a>Wersja 2.0.1
 - Ponownie kompilowana w aplikacji przy użyciu najnowszy zestaw SDK usługi Service Fabric
 
-### <a name="version-202-latest"></a>Wersja pkt 2.0.2 (Najnowsza wersja)
+### <a name="version-202"></a>Wersja 2.0.2 
 - Rozwiązano problem z ostrzeżeniem kondycji wprowadzenie pozostawione podczas ponownego uruchamiania.
+
+### <a name="version-203-latest"></a>Wersji 2.0.3 (Najnowsza wersja)
+- Rozwiążesz ten problem, gdy użycie procesora CPU agenta węzła Usługa demona osiągnięto maksymalnie 99% na maszynach wirtualnych maszyna wirtualna Standard_D1_v2.
+- Rozwiążesz ten problem, do której dokonywane poprawianie cyle życia w węźle, w przypadku, gdy istnieją węzły z nazwą, która jest podzbiorem nazwę bieżącego węzła. Dla tych węzłów, jego możliwe, stosowanie poprawek brakuje lub Trwa oczekiwanie na ponowne.
+- Usunięto usterkę z powodu której demona agenta węzła często występuje awaria podczas uszkodzony ustawienia są przekazywane do usługi.

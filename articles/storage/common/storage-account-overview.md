@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ca71fdc8074e56adc8595ee905d5b1db3b60cef1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371814"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278993"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
-Konto magazynu platformy Azure zawiera wszystkie obiekty danych usługi Azure Storage: obiekty BLOB, pliki, kolejki, tabele i dyski. Dane na Twoim koncie usługi Azure storage jest trwałe i o wysokiej dostępności, bezpiecznego, wysoce skalowalna i dostępna z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. 
+Konto magazynu platformy Azure zawiera wszystkie obiekty danych usługi Azure Storage: obiekty BLOB, pliki, kolejki, tabele i dyski. Dane na Twoim koncie usługi Azure storage jest trwałe i o wysokiej dostępności, bezpiecznego, wysoce skalowalna i dostępna z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS.
 
 Aby dowiedzieć się, jak utworzyć konto usługi Azure storage, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
 
@@ -52,7 +52,7 @@ Konta ogólnego przeznaczenia w wersji 1 zapewniają dostęp do wszystkich usłu
 - Kolejki
 - Tabele
 
-Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadków, kont ogólnego przeznaczenia w wersji 1 są najlepiej nadaje się do tych scenariuszy: 
+Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadków, kont ogólnego przeznaczenia w wersji 1 są najlepiej nadaje się do tych scenariuszy:
 
 * Wymagane przez aplikacje platformy Azure klasycznego modelu wdrażania. Konta ogólnego przeznaczenia v2 i konta usługi Blob storage obsługują tylko model wdrażania usługi Azure Resource Manager.
 
@@ -64,6 +64,10 @@ Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadkó
 
 Konto usługi block blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB lub uzupełnialnych obiektów blob. Blok konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
+### <a name="filestorage-preview-storage-accounts"></a>Konta magazynu FileStorage (wersja zapoznawcza)
+
+Konto magazynu FileStorage to specjalne konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie premium. Kont magazynu FileStorage oferują unikatowe wydajności dedykowanej cechami, takimi jak operacje We/Wy przenoszenie obsługi dużego ruchu. Aby uzyskać więcej informacji na temat tych właściwości, zobacz [warstwy wydajności udziału pliku](../files/storage-files-planning.md#file-share-performance-tiers) sekcji plików Podręcznik planowania.
+
 ## <a name="naming-storage-accounts"></a>Nazw kont magazynu
 
 Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
@@ -71,7 +75,7 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 - Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 - Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
 
-## <a name="performance-tiers"></a>Warstwy wydajności
+## <a name="general-purpose-performance-tiers"></a>Warstwy wydajności ogólnego przeznaczenia
 
 Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
@@ -84,9 +88,9 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 
 Są warstwy dostępu:
 
-* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
-* **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.
-* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorąca lub chłodna. 
+* **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
+* **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być bardziej kosztowne niż dostęp do danych w warstwie gorąca.
+* **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorąca lub chłodna.
 
 W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalna dostępu](../blobs/storage-blob-storage-tiers.md).
 

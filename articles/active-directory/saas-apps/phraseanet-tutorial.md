@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a43ba4a4f6a1a9d658d8f4bc8ba4ff7d07d1834
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c022dbb08146bbf8b16ccd9020fdffbc50166dd9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407372"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Phraseanet
 
@@ -191,7 +191,7 @@ Po kliknięciu kafelka Phraseanet w panelu dostępu, powinien zostać automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

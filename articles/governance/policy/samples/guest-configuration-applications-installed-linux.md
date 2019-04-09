@@ -1,19 +1,18 @@
 ---
 title: Przykład — inspekcji, jeśli aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
 description: Tej przykładowej konfiguracji gościa zasad inicjatywy i definicje inspekcji, jeśli określone aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/18/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8b383ed4a9e13380ec9d9ad2508c5b48b1e23e9e
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849258"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256468"
 ---
 # <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Przykład — inspekcja określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
 
@@ -34,9 +33,9 @@ Można przypisać za pomocą tej przykładowej:
 To [konfiguracji gościa](../concepts/guest-configuration.md) inicjatywy składają się następujące zasady:
 
 - [Inspekcja](#audit-definition) -inspekcji, że aplikacja jest zainstalowana wewnątrz maszyn wirtualnych systemu Linux
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
+  - Identyfikator: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
 - [deployIfNotExists](#deployIfNotExists-definition) — wdrażanie rozszerzenia maszyny Wirtualnej do inspekcji, że aplikacja jest zainstalowana wewnątrz maszyn wirtualnych systemu Linux
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
+  - Identyfikator: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Definicja inicjatywy
 

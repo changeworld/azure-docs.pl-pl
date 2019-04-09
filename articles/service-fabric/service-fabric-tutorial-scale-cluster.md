@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05a30bee8e6eb0db2e06d6d5a3a7af0d0759fb4c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049408"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278704"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
@@ -815,7 +815,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Usuń typ węzła z klastra
-Po utworzeniu klastra usługi Service Fabric klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów. Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze. Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
+Po utworzeniu klastra usługi Service Fabric, klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów. Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze. Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
 
 > [!WARNING]
 > Przy użyciu AzServiceFabricNodeType Usuń, aby usunąć typ węzła z klastra produkcyjnego nie jest zalecane do użycia na częste. Jest to niebezpieczne polecenie jak usuwa zasobu zestawu skalowania maszyny wirtualnej za typ węzła. 

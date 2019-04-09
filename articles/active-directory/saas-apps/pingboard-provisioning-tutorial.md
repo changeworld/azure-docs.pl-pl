@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203747"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058384"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Pingboard dla automatycznej aprowizacji użytkowników
 
@@ -32,11 +32,11 @@ Ten samouczek ma na celu dowiesz się, kroki, które należy wykonać, aby włą
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
-*   Dzierżawa usługi Azure AD
-*   Dzierżawy Pingboard [konto Pro](https://pingboard.com/pricing) 
-*   Konto użytkownika Pingboard z uprawnieniami administratora 
+* Dzierżawa usługi Azure AD
+* Dzierżawy Pingboard [konto Pro](https://pingboard.com/pricing)
+* Konto użytkownika Pingboard z uprawnieniami administratora
 
-> [!NOTE] 
+> [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji z usługi Azure AD opiera się na [Pingboard API](https://pingboard.docs.apiary.io/#), który jest dostępny dla Twojego konta.
 
 ## <a name="assign-users-to-pingboard"></a>Przypisywanie użytkowników do Pingboard
@@ -69,7 +69,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
     ![Pingboard inicjowania obsługi administracyjnej.](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. W obszarze **poświadczeń administratora** sekcji, wykonaj następujące czynności:
 
     a. W **adres URL dzierżawy**, wprowadź `https://your_domain.pingboard.com/scim/v2`i zastąp "format domena_użytkownika" rzeczywistych domeny.
@@ -86,7 +86,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
 1. Wprowadź adres e-mail osoby lub grupy, które chcesz otrzymywać inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem**. Zaznacz pole wyboru poniżej.
 
-1. Wybierz pozycję **Zapisz**. 
+1. Wybierz pozycję **Zapisz**.
 
 1. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Pingboard**.
 
@@ -103,5 +103,5 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](pingboard-tutorial.md)

@@ -1,19 +1,18 @@
 ---
 title: Jak zarządzać przypisaniami przy użyciu programu PowerShell
 description: Dowiedz się, jak zarządzać przypisaniami planu za pomocą oficjalnego schematy moduł Azure PowerShell, Az.Blueprint.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 47026975a5142760f90a1a5712b532519f969fd7
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57995677"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256876"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Jak zarządzać przypisaniami przy użyciu programu PowerShell
 

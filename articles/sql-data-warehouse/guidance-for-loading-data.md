@@ -9,22 +9,21 @@ ms.topic: conceptual
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: igorstan
-ms.openlocfilehash: 0f35e14686c2bd3f87faf51ed6a54728f2a54641
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.custom: seoapril2019
+ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466034"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256910"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące ładowania danych do usługi Azure SQL Data Warehouse
-Zalecenia dotyczące ładowania danych do usługi Azure SQL Data Warehouse i optymalizacji wydajności tego procesu. 
 
-- Aby dowiedzieć się więcej na temat technologii PolyBase oraz projektowania procesu wyodrębniania, ładowania i transformacji (ELT, Extract, Load, and Transform), zobacz [Design ELT for SQL Data Warehouse (Projektowanie procesu ELT dla usługi SQL Data Warehouse)](design-elt-data-loading.md).
-- Aby zapoznać się z samouczkiem dotyczącym ładowania, zobacz [Use PolyBase to load data from Azure blob storage to Azure SQL Data Warehouse (Ładowanie danych z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase)](load-data-from-azure-blob-storage-using-polybase.md).
-
+Zalecenia dotyczące ładowania danych do usługi Azure SQL Data Warehouse i optymalizacji wydajności tego procesu.
 
 ## <a name="preparing-data-in-azure-storage"></a>Przygotowywanie danych w usłudze Azure Storage
+
 Aby zminimalizować opóźnienie, warstwa magazynu i magazyn danych powinny znajdować się w jednej lokalizacji.
 
 Podczas eksportowania danych do formatu plików ORC mogą pojawić się błędy braku pamięci Java, jeśli w danych znajdują się duże kolumny tekstu. Aby obejść to ograniczenie, można wyeksportować tylko podzestaw wszystkich kolumn.
@@ -42,12 +41,14 @@ Aby uzyskać większą szybkość ładowania, uruchamiaj tylko jedno zadanie ła
 Aby uruchamiać zadania ładowania przy użyciu odpowiednich zasobów obliczeniowych, utwórz użytkowników ładujących na potrzeby uruchamiania ładowania. Przypisz każdego użytkownika ładującego do określonej klasy zasobów. Aby uruchomić ładowanie, zaloguj się jako jeden z użytkowników ładujących, a następnie uruchom ładowanie. Ładowanie zostanie uruchomione przy użyciu klasy zasobów przypisanej do użytkownika.  Jest to prostsza metoda niż zmienianie klasy zasobów użytkownika odpowiednio do bieżących potrzeb.
 
 ### <a name="example-of-creating-a-loading-user"></a>Przykład tworzenia użytkownika ładującego
+
 Ten przykład umożliwia utworzenie użytkownika ładującego dla klasy zasobów staticrc20. Pierwszym krokiem jest **nawiązanie połączenia z główną bazą danych** i utworzenie nazwy logowania.
 
 ```sql
    -- Connect to master
    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
 ```
+
 Nawiąż połączenie z bazą danych magazynu danych i utwórz użytkownika. W poniższym kodzie przyjęto założenie, że nawiązano połączenie z bazą danych o nazwie mySampleDataWarehouse. Widoczny jest w nim sposób utworzenia użytkownika o nazwie LoaderRC20 i nadanie mu uprawnień do kontroli w bazie danych. Następnie użytkownik jest dodawany jako członek roli bazy danych staticrc20.  
 
 ```sql
@@ -56,7 +57,8 @@ Nawiąż połączenie z bazą danych magazynu danych i utwórz użytkownika. W p
    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
-Aby uruchomić ładowanie z zasobami należącymi do klasy zasobów staticRC20, wystarczy zalogować się jako użytkownik LoaderRC20 i uruchomić ładowanie.
+
+Aby uruchomić ładowanie z zasobami należącymi do klasy zasobów staticRC20, zaloguj się jako użytkownik LoaderRC20 i uruchomić obciążenia.
 
 Lepszym rozwiązaniem jest uruchamianie ładowania przy użyciu statycznych, a nie dynamicznych klas zasobów. Przy użyciu statycznych klas zasobów gwarantuje te same zasoby niezależnie od swojej [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). W przypadku użycia dynamicznej klasy zasobów zasoby różnią się w zależności od poziomu usług. W przypadku dynamicznych klas zasobów niższy poziom usług oznacza, że prawdopodobnie konieczne będzie użycie większej klasy zasobów na potrzeby użytkownika ładującego.
 
@@ -73,7 +75,6 @@ Rozważmy na przykład dwa schematy bazy danych, schema_A dla działu A i schema
 
 Użytkownicy user_A i user_B nie mają teraz dostępu do schematu drugiego działu.
 
-
 ## <a name="loading-to-a-staging-table"></a>Ładowanie do tabeli przejściowej
 
 Aby osiągnąć największą szybkość ładowania dla przenoszenie danych do tabeli magazynu danych, załaduj dane do tabeli przejściowej.  Zdefiniuj tabelę przejściową jako stertę i użyj opcji dystrybucji z działaniem okrężnym. 
@@ -87,7 +88,6 @@ Indeksy magazynu kolumn wymagają dużej ilości pamięci w celu skompresowania 
 - Aby mieć pewność, że użytkownik ładujący ma wystarczająco dużo pamięci do uzyskania maksymalnej szybkości kompresji, korzystaj z użytkowników ładujących będących członkami średnich lub dużych klas zasobów. 
 - Załaduj wystarczającą liczbę wierszy, aby całkowicie wypełnić nowe grupy wierszy. Podczas ładowania zbiorczego każde 1 048 576 wierszy jest kompresowanych bezpośrednio do magazynu kolumn jako pełna grupa wierszy. W przypadku zadań ładowania z liczbą wierszy mniejszą niż 102 400 wiersze są przekazywane do magazynu delta, gdzie są przechowywane w indeksie b-drzewa. W przypadku załadowania zbyt małej liczby wierszy wszystkie wiersze mogą zostać przekazane do magazynu delta, a nie natychmiast skompresowane do formatu magazynu kolumn.
 
-
 ## <a name="handling-loading-failures"></a>Postępowanie w przypadku błędów ładowania
 
 Ładowanie z użyciem tabeli zewnętrznej może zakończyć się wystąpieniem błędu *Zapytanie zostało przerwane — osiągnięto maksymalny próg odrzuceń podczas odczytu ze źródła zewnętrznego*. Ten komunikat wskazuje, że dane zewnętrzne zawierają zanieczyszczone rekordy. Rekord danych jest uznawany za zanieczyszczony, jeśli typy danych i liczba kolumn nie odpowiadają definicjom kolumn w tabeli zewnętrznej lub jeśli dane nie są zgodne z określonym zewnętrznym formatem pliku. 
@@ -95,6 +95,7 @@ Indeksy magazynu kolumn wymagają dużej ilości pamięci w celu skompresowania 
 Aby poprawić zanieczyszczone rekordy, upewnij się, że definicje tabeli zewnętrznej i zewnętrznego formatu pliku są prawidłowe, a dane zewnętrzne są zgodne z tymi definicjami. Jeśli podzestaw rekordów danych zewnętrznych jest zanieczyszczony, możesz odrzucić te rekordy w zapytaniach, używając opcji odrzucania w kodzie CREATE EXTERNAL TABLE.
 
 ## <a name="inserting-data-into-a-production-table"></a>Wstawianie danych do tabeli produkcyjnej
+
 Jednorazowe ładowanie do małej tabeli za pomocą [instrukcji INSERT](/sql/t-sql/statements/insert-transact-sql) lub nawet okresowe ponowne ładowanie wyszukiwania to strategie, które mogą sprawdzić się w przypadku instrukcji takich jak `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Jednak pojedyncze wstawienia są mniej wydajne niż ładowanie zbiorcze. 
 
 Jeśli w ciągu dnia wykonujesz kilka tysięcy lub więcej wstawień, utwórz partię wstawień i załaduj je zbiorczo.  Opracuj proces dołączania pojedynczych wstawień do pliku, a następnie kolejny proces okresowo ładujący ten plik.
@@ -112,6 +113,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
 ## <a name="rotate-storage-keys"></a>Rotacja kluczy magazynu
+
 Zalecanym rozwiązaniem w zakresie zabezpieczeń jest regularne zmienianie klucza dostępu do usługi Blob Storage. Istnieją dwa klucze magazynu dla konta usługi Blob Storage, co pozwala na przenoszenie tych kluczy.
 
 Aby przeprowadzić rotację kluczy konta usługi Azure Storage:
@@ -134,9 +136,11 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 Nie są potrzebne żadne inne zmiany podstawowych zewnętrznych źródeł danych.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się, jak monitorować ładowanie danych, zobacz [Monitor your workload using DMVs](sql-data-warehouse-manage-monitor.md) (Monitorowanie obciążenia przy użyciu widoków DMV).
+
+- Aby dowiedzieć się więcej na temat technologii PolyBase oraz projektowania procesu wyodrębniania, ładowania i transformacji (ELT, Extract, Load, and Transform), zobacz [Design ELT for SQL Data Warehouse (Projektowanie procesu ELT dla usługi SQL Data Warehouse)](design-elt-data-loading.md).
+- Aby zapoznać się z samouczkiem dotyczącym ładowania, zobacz [Use PolyBase to load data from Azure blob storage to Azure SQL Data Warehouse (Ładowanie danych z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase)](load-data-from-azure-blob-storage-using-polybase.md).
+- Aby dowiedzieć się, jak monitorować ładowanie danych, zobacz [Monitor your workload using DMVs](sql-data-warehouse-manage-monitor.md) (Monitorowanie obciążenia przy użyciu widoków DMV).
 
 
 
