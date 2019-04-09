@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862891"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264475"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -31,7 +31,8 @@ Ochrony hasłem w usłudze Azure AD zaprojektowano z tymi zasadami, należy pami
 * Nie zmian schematu usługi Active Directory są wymagane. Oprogramowanie korzysta z istniejącą usługą Active Directory **kontenera** i **serviceConnectionPoint** obiektów schematu.
 * Nie minimalnych usługi Active Directory domeny lub lasu poziom funkcjonalności (DFL/FFL) jest wymagany.
 * Oprogramowanie nie jest tworzenie i wymagają kont w domenach usługi Active Directory, które chroni.
-* Hasła w postaci zwykłego tekstu użytkowników nie może pozostać kontrolera domeny podczas operacji sprawdzania poprawności hasła lub w dowolnym innym czasie.
+* Hasła w postaci zwykłego tekstu użytkowników nigdy nie opuszczają kontrolera domeny, podczas wykonywania operacji sprawdzania poprawności hasła lub w dowolnym innym czasie.
+* Oprogramowanie nie jest zależny od innych funkcji usługi Azure AD; na przykład synchronizacji skrótów haseł usługi Azure AD nie jest powiązana i nie jest wymagany w kolejności ochrona za pomocą hasła usługi Azure AD do funkcji.
 * Wdrożenie przyrostowe jest obsługiwane, ale z zasadami haseł jest wymuszana tylko którym jest zainstalowany Agent kontrolera domeny (DC Agent). Zobacz następny temat, aby uzyskać więcej informacji.
 
 ## <a name="incremental-deployment"></a>Wdrożenie przyrostowe
@@ -62,7 +63,7 @@ Usługa agenta kontrolera domeny jest odpowiedzialny za inicjowanie pobierania n
 
 Gdy Usługa agenta DC otrzyma nowe zasady haseł z usługi Azure AD, Usługa przechowuje zasady w dedykowanym folderze w katalogu głównym domeny *sysvol* udziału folderu. Usługa agenta kontrolera domeny także monitoruje ten folder, w przypadku nowszych zasady replikacji w od innych usług agenta kontrolera domeny w domenie.
 
-Usługa agenta kontrolera domeny zawsze żąda nowych zasad podczas uruchamiania usługi. Po uruchomieniu usługi agenta kontrolera domeny, sprawdza wiek bieżące zasady dostępne lokalnie co godzinę. Jeśli zasady są starsze niż jedna godzina, agenta kontrolera domeny żąda nowych zasad z usługi Azure AD, zgodnie z wcześniejszym opisem. Jeśli bieżące zasady nie jest starsza niż jedna godzina, Agent kontrolera domeny w dalszym ciągu używa tych zasad.
+Usługa agenta kontrolera domeny zawsze żąda nowych zasad podczas uruchamiania usługi. Po uruchomieniu usługi agenta kontrolera domeny, sprawdza wiek bieżące zasady dostępne lokalnie co godzinę. Jeśli zasady są starsze niż jedna godzina, agenta kontrolera domeny żąda nowych zasad z usługi Azure AD za pośrednictwem usługi Serwer proxy, zgodnie z wcześniejszym opisem. Jeśli bieżące zasady nie jest starsza niż jedna godzina, Agent kontrolera domeny w dalszym ciągu używa tych zasad.
 
 Przy każdym pobraniu zasad haseł usługi Azure AD hasło ochrony tej zasady jest specyficzne dla dzierżawy. Innymi słowy zasady dotyczące haseł są zawsze kombinacją globalnej listy zakazanych haseł firmy Microsoft i niestandardowej listy zakazanych haseł dla dzierżawy.
 
@@ -77,6 +78,8 @@ Usługa serwera proxy jest bezstanowy. Nigdy nie buforuje zasad lub dowolnego in
 Usługa agenta kontrolera domeny zawsze używa najnowszych zasad haseł dostępne lokalnie można obliczyć wartości hasła użytkownika. Jeśli nie zasady haseł jest dostępny na lokalnym kontrolerze domeny, hasło jest automatycznie akceptowane. Jeśli tak się stanie, aby ostrzec administratora jest rejestrowany komunikat zdarzenia.
 
 Ochrony hasłem w usłudze Azure AD nie jest aparat aplikacji zasad w czasie rzeczywistym. Może to być opóźnienie między podczas wprowadzania zmian konfiguracji zasad haseł w usłudze Azure AD, kiedy zmienić przypada oraz są wymuszane na wszystkich kontrolerach domeny.
+
+Ochrony hasłem w usłudze Azure AD działa jako uzupełnienie istniejących zasad haseł usługi Active Directory, nie mogą zastąpić. Dotyczy to również wszelkich innych firm 3 hasło biblioteki DLL filtru, może być zainstalowana. Zawsze usługi Active Directory wymaga, że wszystkie składniki sprawdzania poprawności hasła zgodę przed zaakceptowaniem hasła.
 
 ## <a name="foresttenant-binding-for-password-protection"></a>Powiązanie las/dzierżawy ochrony hasłem
 

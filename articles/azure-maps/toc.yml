@@ -23,14 +23,12 @@ items:
     href: tutorial-geofence.md
 - name: Pojęcia
   items:
-  - name: Poziomy powiększenia i siatka kafelków
-    href: zoom-levels-and-tile-grid.md
+  - name: Uwierzytelnianie w usłudze Azure Maps
+    href: azure-maps-authentication.md
   - name: Integracja usług Event Grid i Azure Maps
     href: azure-maps-event-grid-integration.md
   - name: Wybieranie właściwej warstwy cenowej
     href: choose-pricing-tier.md
-  - name: Uwierzytelnianie za pomocą usługi Azure Maps
-    href: azure-maps-authentication.md
   - name: Pokrycie
     items:
     - name: Pokrycie geokodowaniem
@@ -47,6 +45,8 @@ items:
     href: supported-map-styles.md
   - name: Przeglądarki obsługiwane przez zestaw Web SDK
     href: supported-browsers.md
+  - name: Poziomy powiększenia i siatka kafelków
+    href: zoom-levels-and-tile-grid.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Zarządzanie kontami usługi Maps
@@ -159,7 +159,7 @@ items:
   items:
   - name: Warunki użytkowania usługi Azure Maps
     href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31
-  - name: Cennik
+  - name: Ceny usługi Azure Maps
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Kalkulator cen
     href: https://azure.microsoft.com/pricing/calculator/
@@ -167,7 +167,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-maps
   - name: Forum MSDN
     href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: Słownik
+  - name: Wideo usługi Azure Maps
+    href: https://aka.ms/AzureMapsVideos
+  - name: Słownik usługi Azure Maps
     href: glossary.md
   - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates
@@ -177,7 +179,7 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Techniczne analizy przypadków
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Filmy wideo
+  - name: Usługa Azure Maps w witrynie IoT School
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
 - name: Powiązane
   items:
@@ -205,9 +207,9 @@ items:
       href: /azure/iot-edge
     - name: Zestawy SDK urządzeń IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: db82c8eac3288867b524f19b688b6358b8e6bbc6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: fa4c3a4f8158123e6773640c1612daa0c7390424
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575827"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058938"

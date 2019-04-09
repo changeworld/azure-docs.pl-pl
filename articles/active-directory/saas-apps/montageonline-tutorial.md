@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 505bb292a6b8a81f5fa11a03bc150a7f43129956
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28d52a6eb5018aac8ebeb48b0a2a60a1dd9e1a43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852811"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Online montażowy
 
@@ -106,13 +106,13 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą montażowy 
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
 
-    Dla środowiska produkcyjnego: `https://<subdomain>.montageonline.co.nz/`
+    W środowisku produkcyjnym: `https://<subdomain>.montageonline.co.nz/`
 
     W przypadku środowiska testowego: `https://build-<subdomain>.montageonline.co.nz/`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL:
 
-    Dla środowiska produkcyjnego: `MOL_Azure`
+    W środowisku produkcyjnym: `MOL_Azure`
 
     W przypadku środowiska testowego: `MOL_Azure_Build`
 
@@ -200,7 +200,7 @@ Po kliknięciu kafelka montażowy Online, w panelu dostępu, powinien zostać au
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

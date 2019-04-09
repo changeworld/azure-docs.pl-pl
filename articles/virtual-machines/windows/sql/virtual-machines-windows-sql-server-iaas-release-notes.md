@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762325"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282546"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Program SQL Server na maszynie wirtualnej platformy Azure — informacje o wersji
 
@@ -30,8 +30,9 @@ Platforma Azure umożliwia wdrażanie maszyny wirtualnej za pomocą obrazu progr
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
-| **Wsparcie dla obrazu niestandardowego** | Można teraz zainstalować [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) do niestandardowych obrazów systemu operacyjnego i SQL, które oferuje ograniczoną funkcjonalność [elastyczne Licencjonowanie](virtual-machines-windows-sql-ahb.md). Podczas rejestrowania niestandardowego obrazu za pomocą dostawcy zasobu języka SQL, określ typ licencji "AHUB" jako w przeciwnym razie rejestracja zakończy się niepowodzeniem. Możliwości zarządzania za pomocą bloku konfiguracji programu SQL w witrynie Azure portal nie jest obsługiwana dla obrazów niestandardowych.   | 
+| **Wsparcie dla obrazu niestandardowego** | Można teraz zainstalować [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) do niestandardowych obrazów systemu operacyjnego i SQL, które oferuje ograniczoną funkcjonalność [elastyczne Licencjonowanie](virtual-machines-windows-sql-ahb.md). Podczas rejestrowania niestandardowego obrazu za pomocą dostawcy zasobu języka SQL, określ typ licencji "AHUB" jako w przeciwnym razie rejestracja zakończy się niepowodzeniem.  | 
 | **Wsparcie dla nazwanego wystąpienia** | Mogą teraz wykorzystywać [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) przy użyciu nazwanego wystąpienia, jeśli wystąpienie domyślne został odinstalowany poprawnie. | 
+| **Rozszerzenie portalu** | Środowisku witryny Azure portal do wdrożenia maszyny Wirtualnej programu SQL Server zostały przekształca system, aby zwiększyć użyteczność. Aby uzyskać więcej informacji, zobacz krótki opis [Szybki Start](quickstart-sql-vm-create-portal.md) i bardziej szczegółowego [porad](virtual-machines-windows-portal-sql-server-provision.md) przewodnik dotyczący wdrażania maszyny Wirtualnej programu SQL Server. |
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
@@ -78,11 +79,11 @@ Brak
 * [Migrowanie bazy danych do programu SQL Server na maszynie Wirtualnej platformy Azure](virtual-machines-windows-migrate-sql.md)
 * [Wysoka dostępność i odzyskiwanie po awarii programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-high-availability-dr.md)
 * [Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md)
-* [Wzorce aplikacji i strategie programowania dla programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+* [Wzorce aplikacji i strategie programowania dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 **Maszyny wirtualne z systemem Linux**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej systemu Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Aprowizowanie maszyny wirtualnej programu SQL Server Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 * [Często zadawane pytania (system Linux)](../../linux/sql/sql-server-linux-faq.md)
-* [Dokumentacja programu SQL Server w systemie Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Program SQL Server w dokumentacji systemu Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

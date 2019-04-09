@@ -4,22 +4,20 @@ description: Przewodnik dla deweloperów do uwierzytelniania za pomocą interfej
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
-manager: timlt
-editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/22/2019
+ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805520"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264339"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 
@@ -31,8 +29,6 @@ Twoja aplikacja może uzyskiwać dostęp z interfejsów API usługi Resource Man
 2. **Dostęp tylko do aplikacji**: dla aplikacji uruchamianych usługi demona i zaplanowane zadania. Tożsamości aplikacji udzielany jest bezpośredni dostęp do zasobów. Ta metoda działa w przypadku aplikacje, które muszą długoterminowe bezobsługowego (Instalacja nienadzorowana) korzystanie z platformy Azure.
 
 Ten artykuł zawiera instrukcje krok po kroku, aby utworzyć aplikację, która stosuje oba te metody autoryzacji. Pokazuje, jak to zrobić każdego kroku, korzystając z interfejsu API REST lub C#. Kompletna aplikacja platformy ASP.NET MVC znajduje się w temacie [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-the-web-app-does"></a>Jak działa aplikacja sieci web
 
@@ -72,27 +68,9 @@ Zarządzaj swoimi subskrypcjami połączone:
 ## <a name="register-application"></a>Zarejestruj aplikację
 Przed rozpoczęciem kodowania, Zarejestruj swoją aplikację sieci web za pomocą usługi Azure Active Directory (AD). Rejestracja aplikacji powoduje utworzenie centralnej tożsamości aplikacji w usłudze Azure AD. Przechowuje podstawowe informacje o swojej aplikacji, takich jak identyfikator klienta OAuth, adresy URL odpowiedzi i poświadczeń używanych przez aplikację do uwierzytelniania i dostępu do interfejsów API usługi Azure Resource Manager. Rejestracja aplikacji rejestruje także różne uprawnienia delegowane, wymaganych przez aplikację podczas uzyskiwania dostępu do firmy Microsoft APIs dla użytkownika.
 
-Ponieważ aplikacja uzyskuje dostęp do innej subskrypcji, należy go skonfigurować jako aplikacji z wieloma dzierżawami. Aby pomyślnie weryfikacji, należy podać domeny skojarzone z usługi Azure Active Directory. Aby wyświetlić domeny skojarzone z usługi Azure Active Directory, zaloguj się do portalu.
+Aby zarejestrować aplikację, zobacz [Szybki Start: Rejestrowanie aplikacji z platformą tożsamości Microsoft](../active-directory/develop/quickstart-register-app.md). Nadaj aplikacji nazwę, a następnie wybierz pozycję **kont w dowolnym katalogu organizacji** dla typów obsługiwanych kont. Adres URL przekierowania Podaj domeny skojarzone z usługi Azure Active Directory.
 
-Poniższy przykład pokazuje, jak zarejestrować aplikację przy użyciu programu Azure PowerShell. Konieczne jest posiadanie najnowszej wersji programu Azure PowerShell na potrzeby to polecenie mogło działać (sierpnia 2016 r.).
-
-```azurepowershell-interactive
-$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
-```
-
-Aby zalogować się jako aplikacji usługi AD, potrzebujesz Identyfikatora aplikacji i hasło. Aby wyświetlić identyfikator aplikacji, która jest zwracana z poprzedniego polecenia, użyj:
-
-```azurepowershell-interactive
-$app.ApplicationId
-```
-
-Poniższy przykład pokazuje, jak zarejestrować aplikację przy użyciu wiersza polecenia platformy Azure.
-
-```azurecli-interactive
-az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
-```
-
-Wyniki obejmują identyfikator aplikacji, które są wymagane podczas uwierzytelniania aplikacji.
+Aby zalogować się jako aplikacji usługi AD, potrzebne są identyfikator i klucz tajny. Identyfikator aplikacji jest wyświetlany w obszarze Przegląd dla aplikacji. Aby utworzyć wpis tajny i zażądać uprawnień interfejsu API, zobacz [Szybki Start: Konfigurowanie aplikacji klienckiej dostęp do interfejsów API sieci web](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Podaj nowy wpis tajny klienta. Uprawnienia do interfejsu API, można wybrać **usługi Azure Service Management**. Wybierz **delegowane uprawnienia** i **user_impersonation**.
 
 ### <a name="optional-configuration---certificate-credential"></a>Konfiguracja opcjonalna - poświadczenie certyfikatu
 Usługa Azure AD obsługuje również poświadczeń certyfikatu dla aplikacji: Utworzenie certyfikatu z podpisem własnym, zachowaj klucz prywatny i Dodaj klucz publiczny do rejestracji aplikacji usługi Azure AD. Do uwierzytelniania Twoja aplikacja przesyła małych ładunku do usługi Azure AD podpisany przy użyciu klucza prywatnego, a usługa Azure AD sprawdza podpis przy użyciu klucza publicznego, który został zarejestrowany.

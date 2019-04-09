@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878421"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259868"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
@@ -148,7 +148,7 @@ Tożsamości firmy Microsoft mogą uwierzytelniać się na różne sposoby, któ
 
 ## <a name="validating-tokens"></a>Sprawdzanie poprawności tokenów
 
-Aby sprawdzić poprawność id_token ' access_token ', aplikację należy zweryfikować podpisu tokenu i oświadczenia. Aby sprawdzić poprawność tokenów dostępu, aplikacja powinna również umożliwić weryfikację w wystawcy, odbiorców i podpisywania tokenów. Muszą one być weryfikowany pod kątem wartości w dokumencie odnajdywania protokołu OpenID. Na przykład, niezależnie od dzierżawcy wersję dokumentu znajduje się w [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). 
+Aby sprawdzić poprawność id_token ' access_token ', aplikację należy zweryfikować podpisu tokenu i oświadczenia. Aby sprawdzić poprawność tokenów dostępu, aplikacja powinna również umożliwić weryfikację w wystawcy, odbiorców i podpisywania tokenów. Muszą one być weryfikowany pod kątem wartości w dokumencie odnajdywania protokołu OpenID. Na przykład niezależny od dzierżawcy wersję dokumentu znajduje się w [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). 
 
 Oprogramowanie pośredniczące usługi Azure AD ma wbudowane możliwości sprawdzania poprawności tokenów dostępu i możesz przeglądać naszych [przykłady](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) można znaleźć w wybranym języku. Aby uzyskać więcej informacji na temat sposobu jawnie Weryfikacja tokenu JWT, zobacz [ręczne przykładowe sprawdzania poprawności tokenu JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation). 
 
@@ -173,14 +173,14 @@ Tokeny wystawione przez usługę Azure AD są podpisywane przy użyciu branżowy
 
 W dowolnym danym momencie w czasie usługi Azure AD może podpisać id_token przy użyciu jednego zestawu pary kluczy publiczny prywatny. Usługa Azure AD obraca się możliwe zestaw kluczy w regularnych odstępach czasu, więc aplikacji mają być zapisywane automatycznie obsługiwać zmiany klucza. Uzasadnione częstotliwość, aby sprawdzić, czy są aktualizacje kluczy publicznych używane przez usługę Azure AD jest co 24 godziny.
 
-Możesz uzyskać podpisywania danych klucza, który należy zweryfikować podpisu, za pomocą protokołu OpenID Connect dokumentów metadanych znajdujący się w:
+Mogą nabyć podpisywania danych klucza, który należy zweryfikować podpisu, używając [OpenID Connect dokument metadanych](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) znajdujących się na:
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Skorzystaj z tej [adresu URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) w przeglądarce!
+> Skorzystaj z tej [adresu URL](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) w przeglądarce!
 
 Ten dokument metadanych:
 
@@ -190,7 +190,9 @@ Ten dokument metadanych:
 > [!NOTE]
 > Zwraca punkt końcowy w wersji 1.0, zarówno `x5t` i `kid` oświadczeń, natomiast punktu końcowego v2.0 odpowiada za pomocą tylko `kid` oświadczenia. Idąc dalej, firma Microsoft zaleca używanie `kid` oświadczeń można zweryfikować tokenu.
 
-Wykonywanie weryfikacji podpisu wykracza poza zakres tego dokumentu — wiele bibliotek typu open source są dostępne, aby pomóc Ci w tym celu w razie potrzeby.
+Wykonywanie weryfikacji podpisu wykracza poza zakres tego dokumentu — wiele bibliotek typu open source są dostępne, aby pomóc Ci w tym celu w razie potrzeby.  Jednak platformą Microsoft Identity ma jeden token podpisywania rozszerzenia ze standardami - niestandardowych kluczy podpisywania.  
+
+Jeśli aplikacja ma niestandardowe klucze podpisywania w wyniku użycia [Mapowanie oświadczeń](active-directory-claims-mapping.md) funkcji, należy dołączyć `appid` parametr zawierający identyfikator aplikacji w celu uzyskania zapytania `jwks_uri` wskazujący aplikacji podpisywania klucza informacje, które powinny być używane do sprawdzania poprawności. Na przykład: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` zawiera `jwks_uri` z `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ### <a name="claims-based-authorization"></a>Autoryzacja oparta na oświadczeniach
 

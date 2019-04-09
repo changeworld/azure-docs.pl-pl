@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ea7f2e730b4963016d221705ba8c9356efffa858
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905277"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263765"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider dla platformy .NET Core ILogger dzienników
 
@@ -208,10 +208,10 @@ Gdy starego dostawcy usług mogą być nadal używane (go jest teraz przestarza�
 1. Poprzedni dostawca bez obsługi [zakresy](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). W przypadku nowego dostawcę właściwości z zakresu są automatycznie dodawane jako właściwości niestandardowych do zebranych danych telemetrycznych.
 2. Dzienniki mogą być przechwytywane teraz znacznie wcześniej w potoku do uruchamiania aplikacji. i.e Teraz można przechwycić dzienników z klas programu i uruchamiania.
 3. Za pomocą nowego dostawcę odbywa się na poziomie framework sam. Filtrowanie dzienników do dostawcy usługi Application Insights może odbywać się w dokładnie taki sam sposób jak w przypadku innych dostawców rozwiązań, w tym wbudowane dostawców, takich jak konsoli debugowania i tak dalej. Istnieje również możliwość zastosowania tych samych filtrów do wielu dostawców.
-4. [Zalecane](https://github.com/aspnet/Announcements/issues/255) sposobem w programie Asp.Net Core (2.0 lub nowszy) Włącz rejestrowanie dostawców jest przy użyciu metody rozszerzenia na ILoggingBuilder w `Program.cs` sam.
+4. [Zalecane](https://github.com/aspnet/Announcements/issues/255) sposobem w programie ASP.NET Core (2.0 lub nowszy) Włącz rejestrowanie dostawców jest przy użyciu metody rozszerzenia na ILoggingBuilder w `Program.cs` sam.
 
 > [!Note]
-Nowego dostawcy jest dostępna dla aplikacji przeznaczonych na `NETSTANDARD2.0` lub nowszej. Jeśli aplikacja jest przeznaczone dla starszej wersji platformy .NET Core, takich jak .NET Core 1.1 lub przeznaczonych dla platformy .NET Framework, można nadal używać starego dostawcy usług.
+> Nowego dostawcy jest dostępna dla aplikacji przeznaczonych na `NETSTANDARD2.0` lub nowszej. Jeśli aplikacja jest przeznaczony dla starszych wersji platformy .NET Core, takich jak .NET Core 1.1 lub zgodne z .NET Framework, można nadal używać starego dostawcy usług.
 
 ## <a name="console-application"></a>Aplikacja konsolowa
 

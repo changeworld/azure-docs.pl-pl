@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: df3799111a26afe33cee5f7b6ee1bc3fc6989758
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 06a10cab81b1253658f505b3cd3f2c520ef9cea8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439723"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HRworks logowania jednokrotnego
 
@@ -196,7 +196,7 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do HRworks l
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się w celu HRworks logowanie jednokrotne, ich musi być obsługiwana w HRworks logowania jednokrotnego. W HRworks logowanie jednokrotne, inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do HRworks logowanie jednokrotne z uprawnieniami administratora.
 
@@ -220,7 +220,7 @@ Po kliknięciu kafelka HRworks logowanie jednokrotne w panelu dostępu, użytkow
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

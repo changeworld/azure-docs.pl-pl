@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875142"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257913"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -43,9 +43,9 @@ Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ust
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
 | nullValue |Co najmniej jeden znak służący do reprezentowania wartości null. |Co najmniej jeden znak. Wartości **domyślne** to **„\N” i „NULL”** przy odczycie oraz **„\N”** przy zapisie. |Nie |
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
-| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (domyślnie)</b> |Nie |
+| firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>FALSE (domyślnie)</b> |Nie |
 | skipLineCount |Wskazuje liczbę **niepuste** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
-| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>False |Nie |
+| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**Wartość true (ustawienie domyślne)**<br/>False |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
 
@@ -96,6 +96,9 @@ Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw 
 | encodingName |Określa nazwę kodowania. Aby uzyskać listę prawidłowych nazw kodowania zobacz: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) właściwości. Na przykład: windows-1250 lub shift_jis. **Domyślne** wartość to: **UTF-8**. |Nie |
 | nestingSeparator |Znak używany do rozdzielania poziomów zagnieżdżenia. Wartość domyślna to „.” (kropka). |Nie |
 
+>[!NOTE]
+>W przypadku krzyżowe stosowanie danych w tablicy na wiele wierszy (przypadek 1 -> przykład 2 w [przykłady JsonFormat](#jsonformat-example)) rozwinąć pojedynczą tablicę przy użyciu właściwości można wybrać tylko `jsonNodeReference`. 
+
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
 
 Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
@@ -117,7 +120,7 @@ Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
         }
         ```
 
-    * **przykład kodu JSON z obiektami rozdzielonymi wierszami**
+    * **przykład kodu JSON z rozdzielonymi wierszami**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
@@ -125,7 +128,7 @@ Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
         {"time":"2015-04-29T07:13:21.4370000Z","callingimsi":"466923101048691","callingnum1":"678901578","callingnum2":"345626404","switch1":"Germany","switch2":"UK"}
         ```
 
-    * **przykład kodu JSON z obiektami połączonymi**
+    * **przykład kodu JSON z połączonych**
 
         ```json
         {
@@ -191,7 +194,7 @@ Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
 
 **Przypadek 1: Kopiowanie danych z plików JSON**
 
-**Przykład 1. Wyodrębnianie danych z obiektu i tablicy**
+**Przykład 1: wyodrębnianie danych z obiektu i tablicy**
 
 W tym przykładzie oczekiwany jest jeden główny obiekt JSON mapowany na pojedynczy rekord w wyniku tabelarycznym. Jeśli masz plik JSON z następującą zawartością:  
 
@@ -227,8 +230,8 @@ i chcesz skopiować ją do tabeli usługi Azure SQL w następującym formacie pr
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, możesz użyć `array[x].property` do wyodrębnienia wartości danej właściwości z `xth` obiektu, lub użyć `array[*].property` do odnalezienia wartości z dowolnych obiektów zawierających taką właściwość.
+- `structure` sekcja definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
+- `jsonPathDefinition` Określa ścieżkę JSON dla każdej kolumny, wskazując, skąd można wyodrębnić dane z. Aby skopiować dane z tablicy, możesz użyć `array[x].property` do wyodrębnienia wartości danej właściwości z `xth` obiektu, lub użyć `array[*].property` do odnalezienia wartości z dowolnych obiektów zawierających taką właściwość.
 
 ```json
 "properties": {
@@ -265,7 +268,7 @@ Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: 
 }
 ```
 
-**Przykład 2. Krzyżowe stosowanie tego samego wzorca z tabeli do wielu obiektów**
+**Przykład 2: krzyżowe stosowanie wielu obiektów za pomocą tego samego wzorca z tablicy**
 
 W tym przykładzie oczekiwane jest przetransformowanie jednego głównego obiektu JSON na wiele rekordów w wyniku tabelarycznym. Jeśli masz plik JSON z następującą zawartością:
 
@@ -302,9 +305,9 @@ i chcesz ją skopiować do tabeli Azure SQL w następującym formacie, spłaszcz
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
+- `structure` sekcja definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` Wskazuje, iteracja i ekstrakcja danych z obiektów o tym samym wzorcem, w obszarze **tablicy** `orderlines`.
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. W tym przykładzie `ordernumber`, `orderdate`, i `city` są w obiekcie głównym przy użyciu formatu JSON ścieżki począwszy od `$.`, podczas gdy `order_pd` i `order_price` są definiowane przy użyciu ścieżki pochodzącej od elementu tablicy bez `$.` .
+- `jsonPathDefinition` Określa ścieżkę JSON dla każdej kolumny, wskazując, skąd można wyodrębnić dane z. W tym przykładzie `ordernumber`, `orderdate`, i `city` są w obiekcie głównym przy użyciu formatu JSON ścieżki począwszy od `$.`, podczas gdy `order_pd` i `order_price` są definiowane przy użyciu ścieżki pochodzącej od elementu tablicy bez `$.` .
 
 ```json
 "properties": {

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652386"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264067"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
@@ -135,15 +135,15 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 Aby dowiedzieć się więcej na temat faktury i opłaty, zobacz:
 
-- [Przeglądanie i pobieranie usługi Microsoft Azure użycia i opłat](billing-download-azure-daily-usage.md)
-- [Opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md)
+- [Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Microsoft Azure](billing-download-azure-daily-usage.md)
+- [Opis zawartości rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md)
 - [Zrozumienie warunki na fakturze platformy Azure](billing-understand-your-invoice.md)
 - [Zrozumienie warunki na usługi Microsoft Azure szczegółowe użycia](billing-understand-your-usage.md)
 - [Wyświetl cennik platformy Azure w Twojej organizacji](billing-ea-pricing.md)
 
 Jeśli masz umowy klienta firmy Microsoft, zobacz:
 
-- [Informacje o opłatach w faktury dla swojego profilu rozliczeń ](billing-mca-understand-your-bill.md)
+- [Informacje o opłatach w faktury dla swojego profilu rozliczeń](billing-mca-understand-your-bill.md)
 - [Zrozumienie warunki na fakturze dla swojego profilu rozliczeń](billing-mca-understand-your-invoice.md)
 - [Omówienie plików użycia i opłat platformy Azure dla swojego profilu rozliczeń](billing-mca-understand-your-usage.md)
 - [Przeglądanie i pobieranie dokumentów podatkowych dla swojego profilu rozliczeń](billing-mca-download-tax-document.md)

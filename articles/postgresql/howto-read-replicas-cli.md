@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/05/2019
+ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847759"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265292"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Tworzenie i zarządzanie odczytu replik z wiersza polecenia platformy Azure
 
@@ -44,7 +44,7 @@ Te kroki musi służyć do przygotowania serwera głównego w warstwach ogólneg
 
 ## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 
-`az mysql server replica create` Polecenie wymaga następujących parametrów:
+[Tworzenie az postgres server repliki](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) polecenie wymaga następujących parametrów:
 
 | Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
@@ -64,14 +64,14 @@ Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. 
 > Konfiguracja serwera głównego jest aktualizowany do nowych wartości, aktualizacja konfiguracji repliki większa lub równa wartości. Ta akcja zagwarantuje, że repliki może nadążyć za wszelkie zmiany wprowadzone do poziomu głównego.
 
 ## <a name="list-replicas"></a>Lista repliki
-Można wyświetlić listę replik serwera głównego.
+Można wyświetlić listę replik serwera głównego przy użyciu [az postgres server repliki listy](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) polecenia.
 
 ```azurecli-interactive
-az postgres server replica stop --server-name mydemoserver --resource-group myresourcegroup 
+az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ## <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
-Można zatrzymać replikację między głównym serwerem i odczytu repliki.
+Można zatrzymać replikację między głównym serwerem i odczytu repliki, za pomocą [az postgres server repliki stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) polecenia.
 
 Po zatrzymaniu replikację do serwera głównego i odczytu repliki, nie można cofnąć. Przeczytaj replika staje się serwer autonomiczny, który obsługuje operacje odczytu i zapisu. Serwer autonomiczny nie wprowadzać ponownie do repliki.
 
@@ -80,7 +80,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ## <a name="delete-a-master-or-replica-server"></a>Usuwanie serwera głównego lub replik
-Aby usunąć serwer główny lub replikę, używasz tego samego polecenia, aby usunąć autonomiczne bazy danych Azure Database dla serwera PostgreSQL. 
+Aby usunąć serwer główny lub repliki, należy użyć [az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) polecenia.
 
 Po usunięciu serwera głównego, replikacja wszystkich replik do odczytu został zatrzymany. Odczytu replik stają się autonomicznymi serwerami, które teraz obsługują operacje odczytu i zapisu.
 

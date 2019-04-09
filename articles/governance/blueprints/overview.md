@@ -1,20 +1,18 @@
 ---
 title: Omówienie usługi Azure Blueprints
 description: Dowiedz się, jak usługa plany usługi Azure umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802579"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259426"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
 
@@ -87,9 +85,9 @@ Każdą **opublikowaną** **wersję** strategii można przypisać do istniejące
 
 Aby móc korzystać ze strategii, użytkownik musi mieć udzielone uprawnienia za pośrednictwem [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md). Aby użytkownik mógł tworzyć strategie, jego konto musi mieć następujące uprawnienia:
 
-- `Microsoft.Blueprint/blueprints/write` — tworzenie definicji strategii
-- `Microsoft.Blueprint/blueprints/artifacts/write` — tworzenie artefaktów w definicji strategii
-- `Microsoft.Blueprint/blueprints/versions/write` — publikowanie strategii
+- `Microsoft.Blueprint/blueprints/write` — Tworzenie definicji planu
+- `Microsoft.Blueprint/blueprints/artifacts/write` -Tworzenie artefaktów w definicji planu
+- `Microsoft.Blueprint/blueprints/versions/write` -Publikuj plan
 
 Aby użytkownik mógł usuwać strategie, jego konto musi mieć następujące uprawnienia:
 
@@ -102,8 +100,8 @@ Aby użytkownik mógł usuwać strategie, jego konto musi mieć następujące up
 
 Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jego konto musi mieć następujące uprawnienia:
 
-- `Microsoft.Blueprint/blueprintAssignments/write` — przypisywanie strategii
-- `Microsoft.Blueprint/blueprintAssignments/delete` — anulowanie przypisania strategii
+- `Microsoft.Blueprint/blueprintAssignments/write` -Przypisz plan
+- `Microsoft.Blueprint/blueprintAssignments/delete` -Cofnij przypisanie planu
 
 > [!NOTE]
 > Przypisania strategii są tworzone w ramach subskrypcji, dlatego uprawnienia przypisywania strategii lub anulowania takiego przypisania muszą zostać przyznane w zakresie subskrypcji bądź muszą być dziedziczone w zakresie subskrypcji.

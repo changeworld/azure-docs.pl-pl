@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b56aeb4fb0c902d3c824c58d2ac589c5f1fb01b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894769"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256893"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
@@ -93,7 +93,7 @@ Wykonaj te instrukcje, aby sprawdzić, prawidłowo włączona bezproblemowe logo
 ![Azure Portal: Okienko usługi Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, że delegowanie protokołu Kerberos na konto komputera jest wyłączona. Store konta komputera w organizacji jednostki Organizacyjnej gdy są one bezpieczne przypadkowym.
+> Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, że delegowanie protokołu Kerberos na konto komputera jest wyłączona. Store konta komputera w organizacji jednostki Organizacyjnej, gdzie są one bezpieczne przypadkowym a tylko Administratorzy domeny mają dostęp.
 
 >[!NOTE]
 > Jeśli używane są architektur Pass--Hash i ograniczania ryzyka kradzieży poświadczeń w Twoim środowisku w środowisku lokalnym, wprowadzić odpowiednie zmiany, aby upewnić się, że `AZUREADSSOACC` konto komputera nie znajdą się w kontenerze kwarantanny. 

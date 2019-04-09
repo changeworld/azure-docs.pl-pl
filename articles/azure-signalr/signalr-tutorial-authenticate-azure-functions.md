@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012556"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278840"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Samouczek: Uwierzytelnianie usługi Azure SignalR Service za pomocą usługi Azure Functions
 
@@ -348,7 +348,7 @@ Do tej pory aplikacja czatu działa w sposób anonimowy. Na platformie Azure uż
 
 Podczas wysyłania wiadomości aplikacja może zdecydować, czy wysłać ją do wszystkich połączonych klientów, czy tylko do klientów, które zostały uwierzytelnione danemu użytkownikowi.
 
-1. W programie VS Code otwórz plik **SignalRInfo/function.json**.
+1. Otwórz w programie VS Code **negotiate/function.json**.
 
 1. Wstaw [wyrażenie powiązania](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) do właściwości *userId* powiązania *SignalRConnectionInfo*: `{headers.x-ms-client-principal-name}`. Spowoduje to ustawienie wartości na nazwę uwierzytelnionego użytkownika. Ten atrybut powinien teraz wyglądać następująco.
 
@@ -419,7 +419,7 @@ Uwierzytelnianie usługi App Service obsługuje uwierzytelnianie za pomocą kont
 
 1. Postępuj zgodnie z dokumentacją wybranego dostawcy logowania, aby ukończyć konfigurację.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+    - [Usługa Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
     - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
     - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
     - [Konto Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
@@ -498,4 +498,4 @@ Aby wyczyścić zasoby utworzone w tym samouczku, usuń grupę zasobów za pomoc
 W niniejszym samouczku zawarto informacje na temat sposobu używania usługi Azure Functions z usługą Azure SignalR Service. Dowiedz się więcej o tworzeniu bezserwerowych aplikacji w czasie rzeczywistym przy użyciu powiązań usługi SignalR dla usługi Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji w czasie rzeczywistym za pomocą usługi Azure Functions](signalr-concept-azure-functions.md)
+> [Tworzenie aplikacji czasu rzeczywistego za pomocą usługi Azure Functions](signalr-concept-azure-functions.md)

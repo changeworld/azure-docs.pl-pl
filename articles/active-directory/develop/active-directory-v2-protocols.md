@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed27830aa1f4212e4bc26af8da4febc1b61a76cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175108"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266974"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
 
@@ -41,10 +41,11 @@ W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cz
 * **Serwera autoryzacji** jest punktem końcowym v2.0 i odpowiada za zagwarantowanie, tożsamość użytkownika, przyznawania i odbieranie prawa dostępu do zasobów i wydawania tokenów. Serwer autoryzacji, znany także jako dostawcy tożsamości — bezpieczną obsługę nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
 * **Właściciel zasobu** jest zazwyczaj użytkownika końcowego. To strona, która jest właścicielem danych i zasilania, aby umożliwić firmom dostęp do tych danych lub zasobu.
 * **Klienta OAuth** aplikacja, identyfikowane przez jego identyfikator aplikacji. Klient uwierzytelniania OAuth jest zazwyczaj innych firm, które użytkownik końcowy korzysta z, a żądania tokenów z serwera autoryzacji. Klient musi otrzymać uprawnienia dostępu do zasobu przez właściciela zasobów.
-* **Serwer zasobów** jest, gdzie znajduje się zasób lub danych. Zaufany serwer autoryzacji do bezpiecznego uwierzytelniania i autoryzacji klienta OAuth i używa access_tokens elementu nośnego, aby upewnić się, że można udzielić dostępu do zasobu.
+* **Serwer zasobów** jest, gdzie znajduje się zasób lub danych. Zaufany serwer autoryzacji do bezpiecznego uwierzytelniania i autoryzacji klienta OAuth i używa tokenów dostępu do elementu nośnego, aby upewnić się, że można udzielić dostępu do zasobu.
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
-Każda aplikacja, która korzysta z punktu końcowego v2.0 musi być zarejestrowana w [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) lub za pomocą nowego **rejestracje aplikacji (wersja zapoznawcza)** środowiska w [witryny Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) przed mogą współdziałać, za pomocą uwierzytelniania OAuth lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
+
+Każda aplikacja, która chce zaakceptować zarówno osobistych i kont służbowych musi być zarejestrowana w nowej **rejestracje aplikacji (wersja zapoznawcza)** środowiska w [witryny Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) przed jego zaakceptowaniem tych użytkowników przy użyciu protokołu OAuth 2.0 lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację
 * A **identyfikator URI przekierowania** lub **identyfikator pakietu** który może służyć do kierowania odpowiedzi z powrotem do aplikacji
@@ -71,6 +72,9 @@ Gdzie `{tenant}` może mieć jedną z czterech różnych wartości:
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` | Umożliwia tylko użytkownicy z kontami służbowe z określonej usługi Azure AD dzierżawy, aby zalogować się do aplikacji. Przyjazna nazwa domeny dzierżawy usługi Azure AD albo identyfikator GUID dzierżawy może służyć. |
 
 Aby dowiedzieć się, jak korzystać z tych punktów końcowych, wybierz typ danej aplikacji w [protokołów](#protocols) sekcji i skorzystaj z linków, aby uzyskać więcej informacji.
+
+> [!TIP]
+> Dowolna aplikacja zarejestrowana w usłudze Azure AD można używać punktu końcowego v2.0, nawet, jeśli nie zarejestruje się na kontach osobistych.  Dzięki temu można migrować istniejące aplikacje, aby w wersji 2.0 i [MSAL](reference-v2-libraries.md) bez potrzeby ponownego tworzenia aplikacji.  
 
 ## <a name="tokens"></a>Tokeny
 

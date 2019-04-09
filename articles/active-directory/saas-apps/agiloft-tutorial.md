@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97419dac33688d24159b35f00f1e9bffbd587497
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886392"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Agiloft
 
@@ -52,7 +52,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Agiloft z usługą Azure AD, należy z poziomu galerii dodać to rozwiązanie do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Agiloft z galerii, wykonaj następujące kroki:**
+**Aby dodać Agiloft z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -167,13 +167,13 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, w
 
     ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup4.png)
 
-    a. W polu tekstowym  **IdP Entity Id / Issuer (Identyfikator jednostki dostawcy tożsamości / Wystawca)**  wklej wartość  **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+    a. W **dostawcy tożsamości, identyfikator jednostki / wystawcy** pola tekstowego, Wklej wartość **usługi Azure Ad identyfikator**, który skopiowano z witryny Azure portal.
 
-    b. W polu tekstowym  **IdP Login URL (Adres URL logowania dostawcy tożsamości)**  wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    b. W **adres URL logowania dostawcy tożsamości** pole tekstowe, Wklej wartość **adres URL logowania**, które zostały skopiowane z witryny Azure portal.
 
-    c. W polu tekstowym  **IdP Logout URL (Adres URL wylogowywania dostawcy tożsamości)**  wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+    c. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
 
-    d. Otwórz w Notatniku swój **certyfikat zakodowany w formacie base-64** pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym  **IdP Provided X.509 certificate contents (Dostarczona przez dostawcę tożsamości zawartość certyfikatu X.509)** .
+    d. Otwórz swoje **certyfikat szyfrowany algorytmem base-64** w Notatniku pobranego z witryny Azure portal, skopiuj zawartość go do Schowka, a następnie wklej go do **zawartość certyfikatu X.509 podana tożsamości** pola tekstowego.
 
     e. Kliknij przycisk **Zakończ**.
 
@@ -240,8 +240,8 @@ Po kliknięciu kafelka Agiloft w panelu dostępu powinno nastąpić automatyczne
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

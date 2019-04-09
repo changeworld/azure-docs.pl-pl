@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: aa4fff24620ffd74393d549f1888bdf0e1cb0224
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264424"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Tworzenie, konfigurowanie i zarządzanie zadań elastycznych
 
@@ -76,6 +76,8 @@ Wersja zapoznawcza jest obecnie ograniczona do 100 współbieżnych zadań.
 
 Aby zapewnić, że zasoby nie będą przeciążone podczas uruchamiania zadań w ramach baz danych w elastycznej puli SQL, możliwe jest skonfigurowanie zadań w taki sposób, aby ograniczana była liczba baz danych, w ramach których mogą one być jednocześnie uruchamiane.
 
+Ustaw liczbę równoczesnych baz danych, wykonywania zadania, ustawiając `sp_add_jobstep` przez procedurę składowaną `@max_parallelism` parametr języka T-SQL lub `Add-AzSqlElasticJobStep -MaxParallelism` w programie PowerShell.
+
 ## <a name="best-practices-for-creating-jobs"></a>Najlepsze rozwiązania dotyczące tworzenia zadań
 
 ### <a name="idempotent-scripts"></a>Skrypty idempotentne
@@ -94,7 +96,7 @@ Podobnie musi być możliwe pomyślne wykonanie skryptu przez logiczne testowani
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie zadań elastycznych i zarządzanie nimi za pomocą programu PowerShell](elastic-jobs-powershell.md)
-- [Tworzenie zadań elastycznych i zarządzanie nimi za pomocą języka Transact-SQL (T-SQL)](elastic-jobs-tsql.md)
+- [Tworzenie i zarządzanie nimi przy użyciu programu PowerShell zadań elastycznych](elastic-jobs-powershell.md)
+- [Tworzenie i zarządzanie nimi za pomocą instrukcji języka Transact-SQL (T-SQL) zadań elastycznych](elastic-jobs-tsql.md)

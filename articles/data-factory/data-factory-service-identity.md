@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549151"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260752"
 ---
 # <a name="managed-identity-for-data-factory"></a>Tożsamość zarządzana dla usługi Data Factory
 
@@ -46,7 +46,7 @@ Możesz odnaleźć fabryki danych nie ma tożsamości zarządzanej skojarzone na
 
 - [Generowanie tożsamości zarządzanej przy użyciu programu PowerShell](#generate-managed-identity-using-powershell)
 - [Generowanie tożsamości zarządzanej przy użyciu interfejsu API REST](#generate-managed-identity-using-rest-api)
-- Generowanie tożsamości zarządzanej przy użyciu szablonu usługi Azure Resource Manager
+- [Generowanie tożsamości zarządzanej przy użyciu szablonu usługi Azure Resource Manager](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [Generowanie tożsamości zarządzanej przy użyciu zestawu SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ Możesz pobrać tożsamość zarządzaną w witrynie Azure portal lub programowo
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Pobieranie tożsamości zarządzanej przy użyciu witryny Azure portal
 
-Można znaleźć informacje o tożsamości zarządzanej z witryny Azure portal -> fabryki danych -> Ustawienia -> Właściwości:
+Można znaleźć informacje o tożsamości zarządzanej z witryny Azure portal -> fabryki danych -> Właściwości:
 
-- IDENTYFIKATOR TOŻSAMOŚCI USŁUGI
-- DZIERŻAWA TOŻSAMOŚCI USŁUGI
-- **Identyfikator aplikacji tożsamości usługi** > Skopiuj tę wartość
+- Identyfikator obiektu tożsamości zarządzanej
+- Dzierżawa tożsamości zarządzanej
+- **Zarządzany identyfikator aplikacji tożsamości** > Skopiuj tę wartość
 
 ![Pobieranie tożsamości zarządzanej](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
