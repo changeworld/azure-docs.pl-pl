@@ -1,23 +1,29 @@
 ---
-title: Samouczek szybkiego startu indeksowania i wykonywania zapytań przy użyciu witryny Azure Portal — usługa Azure Search
-description: Dowiedz się, jak utworzyć swój pierwszy indeks w usłudze Azure Search i wykonywać względem niego zapytania, korzystając z wbudowanych przykładowych danych i kreatora importu danych w witrynie Azure Portal.
+title: 'Szybki start: Tworzenie, obciążenia i tworzenie zapytań względem indeksu w witrynie Azure portal — usługa Azure Search'
+description: Twórz i zapytania pierwszego indeksu w usłudze Azure Search przy użyciu wbudowanych przykładowych danych i Kreatora importu danych w witrynie Azure portal.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137831"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282665"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
+> [!div class="op_single_selector"]
+> * [Portal](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatory i edytory nie oferują pełnej równoważności z interfejsami API .NET i REST, ale możesz szybko zacząć pracę bez korzystania z kodu, w ciągu kilku minut pisząc ciekawe zapytania odnoszące się do danych przykładowych.
 
@@ -222,7 +228,7 @@ Wyróżnianie trafień oznacza dodawanie formatowania do tekstu zgodnego ze sło
 
 ### <a name="fuzzy-search"></a> Testowanie wyszukiwania rozmytego
 
-Domyślnie, terminy wyszukiwania z błędami pisowni, na przykład *samamish* zamiast prawidłowej nazwy równiny Sammamish w pobliżu Seattle, spowodują, że w typowym wyszukiwaniu nie zostaną zwrócone żadne dopasowania. Poniższy przykład nie zwraca żadnych wyników.
+Domyślnie, błędnie napisane terminów zapytania, takie jak *samamish* dla płaska Sammamish w obszarze Seattle, niepowodzeniem równiny samammish w typowym wyszukiwaniu. Poniższy przykład nie zwraca żadnych wyników.
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Przykład (błąd pisowni, nieobsługiwany): `search=samamish`
 

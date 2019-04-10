@@ -1,18 +1,18 @@
 ---
 title: Planista wdrażania usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure — informacje | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat odzyskiwania po awarii Azure lokacji odzyskiwania Deployment Planner funkcji Hyper-V do platformy Azure.
-author: nsoneji
+author: mayurigupta13
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 06e3139ffa958637721aae7e912b34070d307757
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 4/9/2019
+ms.author: mayg
+ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207398"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360283"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure — informacje
 
@@ -30,7 +30,7 @@ Narzędzie udostępnia następujące szczegóły:
 
 * Ocena uprawnień maszyny wirtualnej na podstawie liczby dysków, rozmiaru dysku, liczby operacji we/wy na sekundę, współczynnika zmian i pewnych charakterystyk maszyny wirtualnej.
 
-**Zapotrzebowanie na przepustowość sieci w porównaniu z oceną celu punktu odzyskiwania**
+**Zapotrzebowanie na przepustowość sieci i oceną celu punktu odzyskiwania**
 
 * Szacowana przepustowość sieci wymagana na potrzeby replikacji przyrostowej
 * Przepływność, którą usługa Azure Site Recovery może uzyskać między środowiskiem lokalnym i platformą Azure
@@ -57,7 +57,7 @@ Narzędzie udostępnia następujące szczegóły:
 * Kolejność, w której mają być chronione partie
 * Szacowany czas trwania replikacji początkowej każdej partii
 
-**Szacowany koszt odzyskiwania po awarii do platformy Azure**
+**Szacowany koszt odzyskiwania po awarii na platformie Azure**
 * Szacowany łączny koszt odzyskiwania po awarii do platformy Azure: koszt obliczeń, magazynu, sieci i licencji usługi Azure Site Recovery
 * Szczegółowa analiza kosztów dla maszyny wirtualnej
 
@@ -70,7 +70,7 @@ Narzędzie udostępnia następujące szczegóły:
 
 ## <a name="support-matrix"></a>Tabela obsługi
 
-| | **Z programu VMware do platformy Azure** |**Z funkcji Hyper-V do platformy Azure**|**Z platformy Azure do platformy Azure**|**Z funkcji Hyper-V do lokacji dodatkowej**|**Z oprogramowania VMware do lokacji dodatkowej**
+| | **Z programu VMware do platformy Azure** |**Z funkcji Hyper-V do platformy Azure**|**Azure–Azure**|**Funkcji Hyper-V do lokacji dodatkowej**|**Program VMware do lokacji dodatkowej**
 --|--|--|--|--|--
 Obsługiwane scenariusze |Yes|Yes|Nie|Tak*|Nie
 Obsługiwana wersja | vCenter 6.5, 6.0 lub 5.5| Windows Server 2016, Windows Server 2012 R2 | Nie dotyczy |Windows Server 2016, Windows Server 2012 R2|Nie dotyczy
@@ -84,7 +84,7 @@ W przypadku funkcji Hyper-V narzędzie obejmuje trzy główne etapy: pobieranie 
 
 | Wymaganie dotyczące serwera | Opis |
 |---|---|
-|Pobieranie listy maszyn wirtualnych, profilowanie i pomiar przepływności |<ul><li>System operacyjny: Microsoft Windows Server 2016 lub Microsoft Windows Server 2012 R2 </li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Maszynę wirtualną, na której jest uruchomione narzędzie planisty wdrażania Azure Site Recovery, należy dodać do listy TrustedHosts wszystkich serwerów funkcji Hyper-V.</li><li>Wszystkie serwery funkcji Hyper-V do profilowania należy dodać do listy TrustedHosts maszyny Wirtualnej klienta, z którego jest uruchamiane narzędzie. [Dowiedz się więcej na temat dodawania serwerów do listy TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Narzędzie należy uruchomić z uprawnieniami administratora z poziomu programu PowerShell lub konsoli wiersza polecenia na kliencie</ul></ul>|
+|Pobieranie listy maszyn wirtualnych, profilowanie i pomiar przepływności |<ul><li>System operacyjny: Microsoft Windows Server 2016 lub Microsoft Windows Server 2012 R2 </li><li>Konfiguracja maszyny: 8 wirtualnych procesorów CPU, 16 GB pamięci RAM, dysk twardy o rozmiarze 300 GB</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable dla programu Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Dostęp do platformy Azure przez Internet z tego serwera</li><li>Konto magazynu Azure</li><li>Dostęp administratora na serwerze</li><li>Minimalnie 100 GB wolnego miejsca na dysku (przy założeniu 1000 maszyn wirtualnych z średnio trzema dyskami na każdej z nich i profilowanych przez 30 dni)</li><li>Maszynę wirtualną, na której jest uruchomione narzędzie planisty wdrażania Azure Site Recovery, należy dodać do listy TrustedHosts wszystkich serwerów funkcji Hyper-V.</li><li>Wszystkie serwery funkcji Hyper-V do profilowania należy dodać do listy TrustedHosts maszyny Wirtualnej klienta, z którego jest uruchamiane narzędzie. [Dowiedz się więcej na temat dodawania serwerów do listy TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Narzędzie należy uruchomić z uprawnieniami administratora z poziomu programu PowerShell lub konsoli wiersza polecenia na kliencie</ul></ul>|
 | Generowanie raportu | Dowolny komputer z systemem Windows lub Windows Server i programem Microsoft Excel 2013 lub nowszym |
 | Uprawnienia użytkowników | Konto administratora umożliwiające dostęp do klastra lub hosta funkcji Hyper-V podczas operacji pobierania listy maszyn wirtualnych i profilowania.<br>Wszystkie hosty, dla których należy przeprowadzić profilowanie, muszą mieć konto administratora domeny z takimi samymi poświadczeniami, tj. nazwą użytkownika i hasłem
  |
@@ -132,8 +132,8 @@ Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następ
   >Każdy nowy planista wdrożenia jest aktualizacją zbiorczą pliku ZIP. Nie musisz kopiować najnowszych plików do poprzedniego folderu. Można utworzyć nowy folder i użyć go.
 
 ## <a name="version-history"></a>Historia wersji
-Najnowszej wersji narzędzia planista wdrażania usługi ASR jest 2.3.
-Informacje na temat poprawek, które zostały dodane w poszczególnych aktualizacjach, możesz znaleźć na stronie [Historia wersji narzędzia Planista wdrażania usługi ASR](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
+Najnowszej wersji narzędzia planista wdrażania usługi Azure Site Recovery jest 2.3.
+Zapoznaj się [Historia wersji narzędzia planista wdrażania usługi Azure Site odzyskiwania](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) strona poprawki, które zostały dodane w poszczególnych aktualizacjach.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

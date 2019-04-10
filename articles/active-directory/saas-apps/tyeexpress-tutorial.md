@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5dc1451d75b14c89fd9fa1742c3e0b078b035d7f
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: d3459f7bcfc0e2e61cb55b38a05b7b6a21ea3e9e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361850"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283515"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą języka T & E Express
 
@@ -195,7 +195,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do T & E Express, musi być obsługiwana w T & E Express. W przypadku T & E Express Inicjowanie obsługi to zadanie ręczne.
 
-**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
+**Aby aprowizować konta użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy T & E Express jako administrator.
 
@@ -221,7 +221,7 @@ Po kliknięciu kafelka T & E Express w panelu dostępu, możesz powinny być aut
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

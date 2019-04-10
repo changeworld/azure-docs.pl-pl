@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320285"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359028"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
 
@@ -56,7 +56,7 @@ W pierwszej sekcji przedstawiono ogólny koszt odzyskiwania według składników
 
 **Sieć**: Usługa ExpressRoute site-to-site VPN koszt i na potrzeby odzyskiwania po awarii. 
 
-**Licencja usługi ASR**: Koszt licencji Site Recovery dla wszystkich zgodnych maszyn wirtualnych. Jeśli w tabeli szczegółowej analizy kosztów ręcznie wprowadzono maszynę wirtualną, koszt licencji usługi Site Recovery również jest uwzględniany w przypadku tej maszyny wirtualnej.
+**Licencja na usługę Azure Site Recovery**: Koszt licencji Site Recovery dla wszystkich zgodnych maszyn wirtualnych. Jeśli w tabeli szczegółowej analizy kosztów ręcznie wprowadzono maszynę wirtualną, koszt licencji usługi Site Recovery również jest uwzględniany w przypadku tej maszyny wirtualnej.
 
 ### <a name="overall-dr-costs-by-states"></a>Ogólne koszty odzyskiwania po awarii według stanów
 Łączny koszt odzyskiwania po awarii jest dzielony na kategorie na podstawie dwóch różnych stanów: replikacji i testowania odzyskiwania po awarii.
@@ -111,11 +111,11 @@ Aby ręcznie dodać maszyny wirtualne:
 
     b. **Rozmiar IaaS (wybór)**
 
-    c. **Typ magazynu (Standardowa/Premium)**
+    c. **Typ magazynu standardowa/Premium**
 
     d. **Łączny rozmiar magazynu maszyny wirtualnej (GB)**
 
-    e. **Liczba operacji testowania odzyskiwania po awarii w roku**
+    e. **Liczba awarii w roku**
 
     f. **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**
 
@@ -157,7 +157,7 @@ Aby ręcznie dodać maszyny wirtualne:
 
 **Łączny koszt testowania odzyskiwania po awarii (średni)**: Zasoby obliczeniowe i Magazyn koszt testowania odzyskiwania po awarii.
 
-**Koszt licencji usługi ASR**: Koszt licencji usługi Site Recovery.
+**Koszt licencji usługi Azure Site Recovery**: Koszt licencji usługi Site Recovery.
 
 ## <a name="supported-target-regions"></a>Obsługiwane regiony docelowe
 Planista wdrażania usługi Site Recovery udostępnia szacowanie kosztów dla poniższych regionów świadczenia usługi Azure. Jeśli ta lista nie zawiera Twojego regionu, możesz użyć dowolnego spośród następujących regionów, którego cena jest najbardziej zbliżona do Twojego:

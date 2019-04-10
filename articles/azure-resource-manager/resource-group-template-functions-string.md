@@ -4,22 +4,20 @@ description: Opisuje funkcje, które można użyć w szablonie usługi Azure Res
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/11/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621417"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278789"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -35,25 +33,26 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [pusty](#empty)
 * [endsWith](#endswith)
 * [pierwszy](#first)
+* [format](#format)
 * [Identyfikator GUID](#guid)
 * [indexOf](#indexof)
-* [last](#last)
+* [ostatni](#last)
 * [lastIndexOf](#lastindexof)
 * [Długość](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [Zastąp](#replace)
-* [skip](#skip)
+* [pomiń](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [ciąg](#string)
+* [string](#string)
 * [podciąg](#substring)
 * [Wypełnij](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [trim](#trim)
+* [TRIM](#trim)
 * [uniqueString](#uniquestring)
-* [Identyfikator URI](#uri)
+* [identyfikator URI](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)
@@ -714,9 +713,66 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | String | jeden |
 | stringOutput | String | O |
 
+## <a name="format"></a>format
+
+`format(formatString, arg1, arg2, ...)`
+
+Tworzy ciąg formatowania na podstawie wartości wejściowych.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Wymagane | Typ | Opis |
+|:--- |:--- |:--- |:--- |
+| formatString | Yes | string | Ciąg formatu złożonego. |
+| arg1 | Yes | ciąg, liczba całkowita lub atrybut typu wartość logiczna | Wartość, aby uwzględnić w sformatowanym ciągu. |
+| dodatkowe argumenty | Nie | ciąg, liczba całkowita lub atrybut typu wartość logiczna | Dodatkowe wartości, aby uwzględnić w sformatowanym ciągu. |
+
+### <a name="remarks"></a>Uwagi
+
+Użyj tej funkcji można sformatować ciągu w szablonie. Używa ona te same opcje formatowania, co [elementu System.String.Format](/dotnet/api/system.string.format) metody na platformie .NET.
+
+### <a name="examples"></a>Przykłady
+
+Następującego przykładowego szablonu pokazuje, jak korzystać z funkcji formatu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "greeting": {
+            "type": "string",
+            "defaultValue": "Hello"
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "User"
+        },
+        "numberToFormat": {
+            "type": "int",
+            "defaultValue": 8175133
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "formatTest": {
+            "type": "string",
+            "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
+        }
+    }
+}
+```
+
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+
+| Name (Nazwa) | Typ | Wartość |
+| ---- | ---- | ----- |
+| formatTest | String | Witaj, użytkownika. Sformatowany numer: 8,175,133 |
+
 ## <a name="guid"></a>Identyfikator GUID
 
-`guid (baseString, ...)`
+`guid(baseString, ...)`
 
 Tworzy wartość w formacie Unikatowy identyfikator globalny na podstawie wartości, podane jako parametry.
 
@@ -800,7 +856,7 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu jest rozróżniana w
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita wskazująca pozycję elementu do znalezienia. Wartość jest liczony od zera. Jeśli element nie zostanie znaleziony, jest zwracana wartość -1.
+Liczba całkowita wskazująca pozycję elementu do znalezienia. Wartość jest liczony od zera. Jeśli element nie zostanie znalezione, jest zwracana wartość -1.
 
 ### <a name="examples"></a>Przykłady
 
@@ -913,7 +969,7 @@ Zwraca pozycję ostatniego wartości w ciągu. W porównaniu jest rozróżniana 
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita, która reprezentuje ostatnia pozycja elementu do znalezienia. Wartość jest liczony od zera. Jeśli element nie zostanie znaleziony, jest zwracana wartość -1.
+Liczba całkowita, która reprezentuje ostatnia pozycja elementu do znalezienia. Wartość jest liczony od zera. Jeśli element nie zostanie znalezione, jest zwracana wartość -1.
 
 ### <a name="examples"></a>Przykłady
 
@@ -1809,7 +1865,7 @@ Poniższy przykład przedstawia sposób tworzenia unikatowej nazwy dla konta mag
     ...
 ```
 
-Jeśli musisz utworzyć nową nazwę unikatową za każdym razem wdrożyć szablon, a nie intencji na aktualizację zasobu, można użyć [utcNow](#utcnow) funkcji z uniqueString. Tej metody można użyć w środowisku testowym. Aby uzyskać przykład, zobacz [utcNow](#utcnow).
+Jeśli musisz utworzyć nową nazwę unikatową za każdym razem wdrożyć szablon, a nie był zamierzony na aktualizację zasobu, można użyć [utcNow](#utcnow) funkcji z uniqueString. Tej metody można użyć w środowisku testowym. Aby uzyskać przykład, zobacz [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Wartość zwracana
 

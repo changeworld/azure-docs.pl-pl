@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fc6acb211e30af460106acd1c19b61db52f09269
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311886"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279385"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -64,7 +64,7 @@ Z poziomu programu Visual Studio Code wprowadź następujące cztery zmiany:
 ![Usługa Azure Resource Manager tworzy wiele wystąpień](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Dodaj element `copy` do definicji zasobu konta magazynu. W elemencie copy określ liczbę iteracji i zmienną dla tej pętli. Wartość licznika musi być dodatnią liczbą całkowitą i nie może przekraczać 800.
-2. Funkcja `copyIndex()` zwraca bieżącą iterację w pętli. Jako prefiksu nazwy należy użyć indeksu. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Na przykład *copyIndex(1)*.
+2. Funkcja `copyIndex()` zwraca bieżącą iterację w pętli. Jako prefiksu nazwy należy użyć indeksu. `copyIndex()` jest liczony od zera. Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Na przykład *copyIndex(1)*.
 3. Usuń element **variables**, ponieważ nie jest już używany.
 4. Usuń element **outputs**. Nie jest już potrzebny.
 
@@ -126,14 +126,14 @@ Zapoznaj się z sekcją [Wdrażanie szablonu](./resource-manager-quickstart-crea
 
 Aby wyświetlić wszystkie trzy konta magazynu, pomiń parametr --name:
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# [<a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,7 +155,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób tworzenia wielu wystąpień konta magazynu. W następnym samouczku dowiesz się, jak przenieść zasób z jednej grupy zasobów do innej grupy zasobów.
+W tym samouczku przedstawiono sposób tworzenia wielu wystąpień konta magazynu.  W następnym samouczku utworzysz szablon z wieloma zasobami i wieloma typami zasobów. Niektóre zasoby zawierają zasoby zależne.
 
 > [!div class="nextstepaction"]
-> [Przenoszenie zasobów](./resource-manager-tutorial-move-resources.md)
+> [Utwórz zasoby zależne](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

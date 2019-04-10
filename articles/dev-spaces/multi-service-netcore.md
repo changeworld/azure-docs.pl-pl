@@ -9,12 +9,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: ff2031395eb14cc1b9d8fda2150523c37fdcab69
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 575a14416835337d9aad45c4328f3119288f04c8
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870951"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359201"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Programowanie wielu usług za pomocą usługi Azure Dev Spaces
 
@@ -110,4 +110,4 @@ Teraz masz aplikację z wieloma kontenerami, z których każdy może być tworzo
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat programowania zespołowego w usłudze Dev Spaces](team-development-netcore.md)
+> [Dowiedz się więcej o programowanie zespołowe w obszarach Dev](team-development-netcore.md)

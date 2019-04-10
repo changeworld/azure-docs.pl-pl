@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010514"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360189"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -50,11 +50,11 @@ Koszt obliczeń odpowiada moc obliczeniową całkowita, które jest obsługiwane
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
-Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. 
+Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie.
 
 Domyślnie automatyczne kopie zapasowe baz danych z 7 dni są kopiowane do magazynu obiektów blob w warstwie RA-GRS Standardowa. Magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe oraz kopie zapasowe dzienników transakcji kopiowane co 5 minut. Rozmiar dziennika transakcji, zależy od szybkości zmian bazy danych. Bez dodatkowych kosztów jest zapewniany minimalny magazyn o rozmiarze wynoszącym 100% rozmiaru bazy danych. Dodatkowe użycie magazynu kopii zapasowych wiąże się z comiesięczną opłatą za ilość używanych GB.
 
-Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) strony. 
+Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) strony.
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
@@ -71,7 +71,7 @@ Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać z
 > **Ograniczenia regionu:** Aby uzyskać bieżącą listę obsługiwanych regionów, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Jeśli chcesz utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwane, możesz to zrobić [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 .
 
-Jeśli z pojedynczej bazy danych lub elastycznej puli zużywa ponad 300 jednostek Dtu, konwertowanie do modelu zakupu opartego na rdzeniach wirtualnych może zmniejszyć koszt. Jeśli zdecydujesz się przekonwertować, możesz przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana i nie odbywa się automatycznie. Jeśli model zakupu opartego na jednostkach DTU spełnia swoje wymagania biznesowe i wydajności, można nadal go używać. Jeśli zdecydujesz się przekonwertować z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych, wybierz rozmiar obliczeń przy użyciu następujące reguły akceptacji: 
+Jeśli z pojedynczej bazy danych lub elastycznej puli zużywa ponad 300 jednostek Dtu, konwertowanie do modelu zakupu opartego na rdzeniach wirtualnych może zmniejszyć koszt. Jeśli zdecydujesz się przekonwertować, możesz przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana i nie odbywa się automatycznie. Jeśli model zakupu opartego na jednostkach DTU spełnia swoje wymagania biznesowe i wydajności, można nadal go używać. Jeśli zdecydujesz się przekonwertować z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych, wybierz rozmiar obliczeń przy użyciu następujące reguły akceptacji:
 
 - Każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne
 - Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy

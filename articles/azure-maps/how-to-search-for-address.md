@@ -1,23 +1,30 @@
 ---
 title: Jak wyszukiwać adres przy użyciu usługi Azure Maps Search | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wyszukiwać adres przy użyciu usługi Azure Search mapy
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875790"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277327"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
 Usługa wyszukiwania map to zbiór interfejsów API RESTful umożliwiający deweloperom wyszukiwanie adresów, miejsc, punktów orientacyjnych, list biznesowych i innych informacji geograficznych. Usługa przypisuje szerokości/długości geograficznej do określonego adresu, między ulicy, funkcja geograficznej lub punktu orientacyjnego (punktów POI). Wartości szerokości i długości geograficznej zwróconego przez wyszukiwanie może służyć jako parametry w innych usługach map, takich jak trasach i ruchu.
+
+W tym artykule dowiesz się jak:
+
+* Wyszukaj przy użyciu adresu [interfejs API wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* Wyszukiwanie adresu oraz współrzędne i właściwości
+* Wprowadź [odwrotnego wyszukiwania adresu](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) aby wyszukać adres ulicy
+* Wyszukaj między ulicy przy użyciu [adres odwrotnego między ulicy interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

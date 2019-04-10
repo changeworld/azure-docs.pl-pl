@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821392"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358053"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i DNS
 
@@ -106,7 +106,7 @@ Po zainicjowaniu testowy tryb failover nie uwzględniają wszystkich kontroleró
 Począwszy od systemu Windows Server 2012, [dodatkowe zabezpieczenia są wbudowane w Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Te zabezpieczenia chronić zwirtualizowane kontrolery domeny przed wycofywania numerów USN, gdy podstawowej platformy funkcji hypervisor obsługuje **identyfikator VM-GenerationID**. Platforma Azure obsługuje **identyfikator VM-GenerationID**. W związku z tym kontrolerów domeny z systemem Windows Server 2012 lub nowszy na usłudze Azure virtual machines ma te dodatkowe zabezpieczenia.
 
 
-Gdy **identyfikator VM-GenerationID** jest resetowany **InvocationID** wartości bazy danych usług AD DS jest także zresetować. Ponadto pulę identyfikatorów RID jest odrzucana i folderu SYSVOL jest oznaczony jako nieautorytatywnego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wirtualizacji usług Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) i [bezpiecznie wirtualizacja DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Gdy **identyfikator VM-GenerationID** jest resetowany **InvocationID** wartości bazy danych usług AD DS jest także zresetować. Ponadto pulę identyfikatorów RID jest odrzucana i folderu sysvol jest oznaczony jako nieautorytatywnego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wirtualizacji usług Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) i [bezpiecznie wirtualizacja DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
 Przechodzenie w tryb failover na platformie Azure może spowodować **identyfikator VM-GenerationID** do zresetowania. Resetowanie **identyfikator VM-GenerationID** wyzwala dodatkowe zabezpieczenia, po uruchomieniu maszyny wirtualnej kontrolera domeny, na platformie Azure. Może to spowodować *znaczne opóźnienie* jest możliwość Zaloguj się do maszyny wirtualnej kontrolera domeny.
 
@@ -128,11 +128,11 @@ Po przejściu w tryb failover testów zostają uruchomione zabezpieczenia wirtua
 
     ![Zmiany Identyfikatora wywołania](./media/site-recovery-active-directory/Event1109.png)
 
-* Udziały SYSVOL i NETLOGON nie są dostępne.
+* SYSVOL folder i NETLOGON udziały nie są dostępne.
 
-    ![Udział SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Udostępnij folder SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol folder](./media/site-recovery-active-directory/Event13565.png)
 
 * Baz danych DFSR są usuwane.
 
@@ -146,7 +146,7 @@ Po przejściu w tryb failover testów zostają uruchomione zabezpieczenia wirtua
 >
 >
 
-1. W wierszu polecenia Uruchom następujące polecenie, aby sprawdzić, czy SYSVOL i NETLOGON foldery są udostępnione:
+1. W wierszu polecenia Uruchom następujące polecenie, aby sprawdzić, czy udostępnionego folderu sysvol i NETLOGON folderu:
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ Jeśli powyższe warunki są spełnione, istnieje prawdopodobieństwo, że kontr
     * Chociaż nie jest zalecane [replikacji usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), jeśli używasz replikacji usługi FRS, postępuj zgodnie z instrukcjami dla przywracania autorytatywnego. Proces jest opisany w [Usługa replikacji plików za pomocą klucza rejestru BurFlags](https://support.microsoft.com/kb/290762).
 
         Aby uzyskać więcej informacji na temat BurFlags, zobacz wpis w blogu [D2 i D4: Co to jest dla? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Jeśli używasz replikacji DFSR, wykonaj kroki procedury przywracania autorytatywnego. Proces jest opisany w [wymusić autorytatywne autorytatywną i nieautorytatywną synchronizację dla folderem SYSVOL replikowanym w DFSR (na przykład "D4/D2" w przypadku usługi FRS)](https://support.microsoft.com/kb/2218556).
+    * Jeśli używasz replikacji DFSR, wykonaj kroki procedury przywracania autorytatywnego. Proces jest opisany w [wymusić synchronizację autorytatywne autorytatywną i nieautorytatywną folderu sysvol zreplikowanego DFSR folderu (na przykład "D4/D2" w przypadku usługi FRS)](https://support.microsoft.com/kb/2218556).
 
         Można również użyć funkcji programu PowerShell. Aby uzyskać więcej informacji, zobacz [funkcji PowerShell autorytatywne/przywracanie nieautorytatywne DFSR SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop-msft
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997366"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357924"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwy usług ogólnego przeznaczenia — usługi Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "55997366"
 
 Usługa Azure SQL Database jest oparty na architekturze aparatu bazy danych programu SQL Server zostało dostosowane do środowiska chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy warstwy usług, które są używane w usłudze Azure SQL Database, każdy z różnych modeli architektury. Te warstwy usługi są:
 
-- Zastosowania ogólne 
+- Zastosowania ogólne
 - Krytyczne dla działania firmy
 - Hiperskalowanie
 

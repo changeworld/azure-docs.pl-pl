@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f7e31c9e153f25faae9224f04eabf5ca54bb06b4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759223"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359696"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak używać usługi Azure SQL Database
 
@@ -29,24 +29,24 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 - [Importowanie bazy danych z pliku BACPAC](sql-database-import.md)
 - [Eksportowanie bazy danych do pliku BACPAC](sql-database-export.md)
 - [Ładowanie danych za pomocą narzędzia BCP](sql-database-load-from-csv-with-bcp.md)
-- [Load data with ADF](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json) (Ładowanie danych za pomocą usługi ADF)
+- [Ładowanie danych za pomocą usługi ADF](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json)
 
 ### <a name="data-sync"></a>Synchronizacja danych
 
 - [SQL Data Sync](sql-database-sync-data.md)
 - [Agent synchronizacji danych](sql-database-data-sync-agent.md)
 - [Replikowanie zmian schematu](sql-database-update-sync-schema.md)
-- [Monitorowanie za pomocą pakietu OMS](sql-database-sync-monitor-oms.md)
-- [Najlepsze rozwiązania dotyczące synchronizacji danych](sql-database-best-practices-data-sync.md)
-- [Rozwiązywanie problemów z synchronizacji danych](sql-database-troubleshoot-data-sync.md)
+- [Monitorowanie za pomocą usługi OMS](sql-database-sync-monitor-oms.md)
+- [Najlepsze rozwiązania dotyczące funkcji Data Sync](sql-database-best-practices-data-sync.md)
+- [Rozwiązywanie problemów z usługą Data Sync](sql-database-troubleshoot-data-sync.md)
 
 ## <a name="monitoring-and-tuning"></a>Monitorowanie i dostrajanie
 
 - [Ręczne dostrajanie](sql-database-performance-guidance.md)
 - [Korzystanie z widoków DMV do monitorowania wydajności](sql-database-monitoring-with-dmvs.md)
 - [Korzystanie z magazynu zapytań do monitorowania wydajności](sql-database-operate-query-store.md)
-- [Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md)
-- [Użyj dziennik diagnostyczny Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
+- [Rozwiązywanie problemów z wydajnością przy użyciu funkcji Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
+- [Korzystanie z dziennika diagnostycznego funkcji Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Monitorowanie miejsca OLTP w pamięci](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>Zdarzenia rozszerzone
@@ -59,12 +59,12 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 
 - [Konfigurowanie uwierzytelniania usługi Azure AD](sql-database-aad-authentication-configure.md)
 - [Konfigurowanie dostępu warunkowego](sql-database-conditional-access.md)
-- [Uwierzytelnianie wieloskładnikowe dla usługi AAD](sql-database-ssms-mfa-authentication.md)
+- [Uwierzytelnianie wieloskładnikowe usługi AAD](sql-database-ssms-mfa-authentication.md)
 - [Konfigurowanie uwierzytelniania wieloskładnikowego](sql-database-ssms-mfa-authentication-configure.md)
-- [Skonfiguruj zasady przechowywania danych czasowych](sql-database-temporal-tables-retention-policy.md)
-- [Konfigurowanie funkcji TDE przy użyciu funkcji BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
-- [Obróć klucze TDE BYOK](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- [Usuwanie ochrony TDE](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
+- [Konfigurowanie zasad przechowywania danych czasowych](sql-database-temporal-tables-retention-policy.md)
+- [Konfigurowanie szyfrowania TDE przy usługi BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
+- [Obracanie kluczy BYOK szyfrowania TDE](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- [Usuwanie ochrony szyfrowania TDE](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Konfigurowanie przetwarzania OLTP w pamięci](sql-database-in-memory-oltp-migration.md)
 - [Konfigurowanie usługi Azure Automation](sql-database-manage-automation.md)
 
@@ -78,15 +78,15 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 - [Wskazówki dotyczące łączności](sql-database-connectivity-issues.md)
 - [Aliasy DNS](dns-alias-overview.md)
 - [Konfiguracja DNS alias programu PowerShell](dns-alias-powershell.md)
-- [Ports - ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md) (Porty — ADO.NET)
+- [Porty — ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
 - [C i C++](sql-database-develop-cplusplus-simple.md)
 - [Excel](sql-database-connect-excel.md)
 
 ## <a name="design-applications"></a>Projektowanie aplikacji
 
 - [Projektowanie po kątem odzyskiwania po awarii](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Projektowanie pod kątem pul elastycznych](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [Projektowanie pod kątem uaktualnienia aplikacji](sql-database-manage-application-rolling-upgrade.md)
+- [Projektowanie pod kątem elastycznych pul](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [Projektowanie pod kątem uaktualnień aplikacji](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>Projektowanie wielodostępnych aplikacji SaaS
 

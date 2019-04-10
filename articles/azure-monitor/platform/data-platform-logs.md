@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904155"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360633"
 ---
 # <a name="logs-in-azure-monitor"></a>Dzienniki w usłudze Azure Monitor
 
@@ -46,7 +46,7 @@ W poniższej tabeli wymieniono różne sposoby dzienników można używać w us�
 | Analiza | Użyj [usługi Log Analytics](../log-query/get-started-portal.md) w witrynie Azure portal, aby zapisać [rejestrowania zapytań](../log-query/log-query-overview.md) i interakcyjnie analizować dane dzienników przy użyciu zaawansowany aparat analizy Eksploratora danych.<br>Użyj [Konsola analizy usługi Application Insights](../app/analytics.md) w witrynie Azure portal do zapisywania dziennika zapytań i interakcyjnie analizować dane dzienników z usługi Application Insights. |
 | Wizualizacja | Wyniki zapytania renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).<br>Tworzenie [skoroszytu](../app/usage-workbooks.md) połączyć z wieloma zestawami danych w interaktywnych raportów. <br>Eksportowanie wyników kwerendy, aby [usługi Power BI](powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.<br>Eksportowanie wyników kwerendy, aby [Grafana](grafana-plugin.md) wykorzystać jej dashboarding i łączyć z innymi źródłami danych.|
 | Alerty | Konfigurowanie [reguł alertów dzienników](alerts-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.<br>Konfigurowanie [regułę alertu metryki](alerts-metric-logs.md) na niektórych dzienników danych dziennika, wyodrębnić jako metryki. |
-| Pobierz | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
+| Pobierz | Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [wiersza polecenia platformy Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Dostęp do dziennika wyników zapytania z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Dostęp do dziennika wyników zapytania z niestandardowych aplikacji przy użyciu [interfejsu API REST](https://dev.loganalytics.io/). |
 | Eksportowanie | Tworzenie przepływu pracy można pobrać danych dziennika i skopiuj go do lokalizacji zewnętrznej za pomocą [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -105,8 +105,8 @@ Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zar
 |:---|:---|
 | Żądań i wyjątków | Szczegółowe dane dotyczące aplikacji żądań i wyjątków są w _żądań_, _pageViews_, i _wyjątki_ tabel. Wywołania [składników zewnętrznych](../app/asp-net-dependencies.md) znajdują się w _zależności_ tabeli. |
 | Użycie i wydajność | Wydajność aplikacji jest dostępna w _żądań_, _browserTimings_ i _liczniki wydajności_ tabel. Dane dotyczące [metryki niestandardowe](../app/api-custom-events-metrics.md#trackevent) znajduje się w _customMetrics_ tabeli.|
-| Dane śledzenia | Powstały na skutek [rozproszonego śledzenia](/app/distributed-tracing) są przechowywane w _ślady_ tabeli. |
-| Testy dostępności | Podsumowanie danych z [testy dostępności](/app/monitor-web-app-availability) są przechowywane w _availabilityResults_ tabeli. Szczegółowe dane z tych testów są oddzielnie i uzyskać dostęp z usługi Application Insights w witrynie Azure portal. |
+| Dane śledzenia | Powstały na skutek [rozproszonego śledzenia](../app/distributed-tracing.md) są przechowywane w _ślady_ tabeli. |
+| Testy dostępności | Podsumowanie danych z [testy dostępności](../app/monitor-web-app-availability.md) są przechowywane w _availabilityResults_ tabeli. Szczegółowe dane z tych testów są oddzielnie i uzyskać dostęp z usługi Application Insights w witrynie Azure portal. |
 
 ### <a name="insights"></a>Insights
 
@@ -127,7 +127,7 @@ Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zar
 | Dane | Opis |
 |:---|:---|
 | Azure Security Center | [Usługa Azure Security Center](/azure/security-center/) przechowuje dane, które są zbierane w obszarze roboczym usługi Log Analytics, gdzie mogą być analizowane za pomocą innych danych dziennika. Zobacz [zbierania danych w usłudze Azure Security Center](../../security-center/security-center-enable-data-collection.md) szczegółowe informacje dotyczące konfiguracji obszaru roboczego. |
-| Usługa Azure Sentinel | [Azure wartownik](/azure/sentinel/) przechowuje dane ze źródeł danych do obszaru roboczego usługi Log Analytics. Zobacz [](/sentinel/connect-data-sources.md)  |
+| Usługa Azure Sentinel | [Azure wartownik](/azure/sentinel/) przechowuje dane ze źródeł danych do obszaru roboczego usługi Log Analytics. Zobacz [połączyć źródeł danych](/azure/sentinel/connect-data-sources).  |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

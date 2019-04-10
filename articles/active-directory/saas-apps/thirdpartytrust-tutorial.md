@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cf91afa2c4913be9d63c40d92272d62b15410bed
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 63905a1130ffb972ff71ebcce232cd242961dcad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849438"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThirdPartyTrust
 
@@ -193,7 +193,7 @@ Po kliknięciu kafelka ThirdPartyTrust w panelu dostępu, powinien zostać autom
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

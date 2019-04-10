@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b3e997a37bb5d030d559b6771b2c0e2f74cc62ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117459"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277697"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych jest włączone szyfrowanie (ADE) dysku platformy Azure do innego regionu platformy Azure
 
@@ -148,7 +148,7 @@ Możesz użyć [skrypt](#copy-ade-keys-to-dr-region-using-powershell-script) kop
 Jeśli użytkownik wybierania Keyvault zostały już utworzone w regionie docelowym, a nie umożliwiają usługi Azure Site Recovery, utwórz go. Upewnij się, że usługi Key vault ma wymagane uprawnienia, jak wspomniano powyżej.</br>
 *Na przykład*: Użytkownik próbuje replikowanie maszyny Wirtualnej, która ma magazyn kluczy w regionie źródłowym Załóżmy, że "ContososourceKeyvault".
 Użytkownik ma wszystkie uprawnienia w magazynie kluczy region źródła, ale podczas ochrony, który wybiera już utworzonej usługi key vault "ContosotargetKeyvault", który nie ma uprawnienia, a następnie protection zidentyfikuje zgłasza błąd.</br>
-**Jak naprawić:** Stało się na "Strona główna > Keyvaults > ContososourceKeyvault > zasady dostępu" i Dodaj uprawnienia, jak pokazano powyżej. 
+**Jak naprawić:** Stało się na "Strona główna > Keyvaults > ContososourceKeyvault > zasady dostępu" i Dodaj uprawnienia, jak pokazano powyżej.
 
 **Przyczyny 2:** Być może wybrano już utworzonego magazynu kluczy w regionie docelowym, które nie mają decry pt szyfrowania uprawnień.
 Jeśli użytkownik wybierania Keyvault zostały już utworzone w regionie docelowym, a nie umożliwiają usługi Azure Site Recovery, utwórz go. Upewnij się, że użytkownik ma odszyfrowywania szyfrowania uprawnień w przypadku, gdy Szyfrujesz klucz zbyt w regionie źródłowym.</br>

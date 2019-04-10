@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 86821e2082deb500f050eeab827dcee593082661
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 50e24ce29b5378b3aa930c54824fd444cd823b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776363"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279894"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Odnajdywanie i korzystanie z notesów próbki
 
@@ -43,5 +43,5 @@ Po zidentyfikowaniu Notes, którą chcesz, aby zapoznać się z poniżej przedst
 
 - [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
 - [Instrukcje: Praca z plikami danych](work-with-project-data-files.md)
-- [Instrukcje: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Instrukcje: Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Instrukcje: Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Instrukcje: Korzystanie z usług Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

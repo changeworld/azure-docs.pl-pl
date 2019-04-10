@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518789"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279877"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
 
@@ -81,7 +81,7 @@ Jeśli używasz żadnych istniejących interfejsów API EA, należy je zaktualiz
 | Przeznaczenie | Stary oferty | Nowa oferta |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) zawartości pakietu i programu connector | [Aplikacja Microsoft Azure zużycie Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) i [ łącznika Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) zawartości pakietu i programu connector | [Aplikacja Microsoft Azure zużycie Insights Power BI](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) i [łącznika Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>Pobieranie informacji o saldach i środki na korzystanie z interfejsów API
 
@@ -373,7 +373,7 @@ W poniższej tabeli przedstawiono pola w starszych API arkusza przedsiębiorstwa
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Dokładnie taki ciąg znaków wartości mogą się różnić. |
 | includedQuantity  | includedQuantity | Nie dotyczy usługi w ramach umowy klienta firmy Microsoft. |
-| PartNumber  | _Nie dotyczy_ | Zamiast tego należy użyć kombinacji productOrderName (tak jak identyfikatora oferty) i meterid. |
+| partNumber  | _Nie dotyczy_ | Zamiast tego należy użyć kombinacji productOrderName (tak jak identyfikatora oferty) i meterid. |
 | Cena jednostkowa  | Cena jednostkowa | Cena ma zastosowanie do usług używane w umowach klientów firmy Microsoft. |
 | currencyCode  | pricingCurrency | Umowy klienta firmy Microsoft mają reprezentacji ceny w walucie cen i waluta rozliczeniowa. CurrencyCode odpowiada pricingCurrency w umowy klienta firmy Microsoft. |
 | offerId | productOrderName | Zamiast identyfikatora oferty można użyć productOrderName, ale nie jest taka sama jak identyfikatora oferty. Jednak productOrderName i licznik stwierdzić, że ceny w umowy klienta firmy Microsoft związane z meterId i identyfikatora oferty w starszej wersji rejestracji. |

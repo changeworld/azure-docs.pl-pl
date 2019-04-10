@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 24391e9e8541f12c434ade837b8f4944711ae375
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887236"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357393"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrowanie środowiska potoków usługi Azure DevOps ciągłej integracji/ciągłego wdrażania
 Można użyć rozszerzenia usługi Azure DevTest Labs zadania, które jest zainstalowany w usługom DevOps platformy Azure (dawniej Visual Studio Team Services), aby w łatwy sposób zintegrować swoje ciągłej integracji (CI) / ciągłe dostarczanie (CD) kompilacji i wydania potoku za pomocą platformy Azure Usługa DevTest Labs. Rozszerzenia te ułatwiają szybkie wdrożenie [środowiska](devtest-lab-test-env.md) dla określonego testu zadania i usunąć go po zakończeniu testu. 
@@ -56,7 +56,7 @@ Następny etap wdrożenia to aby utworzyć środowisko, które ma być używany 
 
 1. W definicji wydania wybierz **dodawać zadania**.
 2. Na **zadania** kartę, Dodaj zadanie programu tworzenie środowiska usługi Azure DevTest Labs. Skonfiguruj zadania w następujący sposób:
-    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/devops/pipelines/library/service-endpoints).
+    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).
 2. Aby uzyskać **Nazwa laboratorium**, wybierz nazwę wystąpienia, który został utworzony wcześniej *.
 3. Aby uzyskać **nazwę repozytorium**, wybierz repozytorium, w której zostało wypchnięte do szablonu usługi Resource Manager (201) *.
 4. Aby uzyskać **Nazwa szablonu**, wybierz nazwę środowisko, w którym został zapisany do Twojego źródła kodu repozytorium *. 
@@ -71,7 +71,7 @@ Końcowy etap polega na usunięciu środowiska, która została wdrożona w wyst
 W definicji wydania wybierz **dodawać zadania**, a następnie na **Wdróż** kartę, należy dodać **usuwania środowiska Azure DevTest Labs** zadania. Skonfiguruj w następujący sposób:
 
 1. Aby usunąć maszynę Wirtualną, zobacz [Azure DevTest Labs zadania](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/devops/pipelines/library/service-endpoints).
+    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).
     2. Aby uzyskać **Nazwa laboratorium**, wybierz laboratorium, w której istnieje środowisko.
     3. Aby uzyskać **Nazwa środowiska**, wprowadź nazwę środowiska, które ma zostać usunięty.
 2. Wprowadź nazwę definicji wydania, a następnie zapisz go.
@@ -80,5 +80,5 @@ W definicji wydania wybierz **dodawać zadania**, a następnie na **Wdróż** ka
 Zobacz następujące artykuły: 
 - [Tworzenie środowisk z wieloma Maszynami wirtualnymi za pomocą szablonów usługi Resource Manager](devtest-lab-create-environment-from-arm.md).
 - Szablony szybkiego startu Resource Manager dla usługi DevTest Labs automatyzacji z [repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-quickstart-templates).
-- [Rozwiązywanie problemów z usługi VSTS strony](/devops/pipelines/troubleshooting)
+- [Rozwiązywanie problemów z usługi VSTS strony](/azure/devops/pipelines/troubleshooting)
 

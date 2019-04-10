@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088931"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360147"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -55,7 +55,7 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfiguracja sieci — Host/gościa maszyny Wirtualnej
 
-**Konfiguracja** | **Obsługiwane**  
+**Konfigurowanie** | **Obsługiwane**  
 --- | --- 
 Host - zespołu kart interfejsu Sieciowego | Yes 
 Host - sieci VLAN | Yes 
@@ -81,7 +81,7 @@ Wiele ścieżek (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
-**Konfiguracja** | **Obsługiwane** 
+**Konfigurowanie** | **Obsługiwane** 
 --- | --- 
 VMDK | Yes 
 VHD/VHDX | ND 

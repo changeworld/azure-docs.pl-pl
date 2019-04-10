@@ -8,19 +8,19 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273145"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358332"
 ---
-# <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
+# <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
 
 Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. SQL Database oferuje dynamicznie skalowalną wydajność w dwóch różnych modeli zakupu: modelu zakupu opartego na rdzeniach wirtualnych i model zakupu jednostek DTU. Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą.
 
@@ -102,12 +102,12 @@ Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i
 ## <a name="availability-capabilities"></a>Możliwości dostępności
 
 W środowisku programu SQL Server tradycyjnych zazwyczaj trzeba maszyn (co najmniej) 2 lokalnie skonfigurować przy użyciu dokładnie (synchronicznie utrzymywane w dobrym stanie) kopii danych (za pomocą funkcji, takich jak zawsze włączone grupy dostępności lub wystąpienia klastra trybu Failover) do ochrony przed awaria pojedynczego komputera/składnika.  To zapewnia wysoką dostępność, ale nie chroni przed klęskami żywiołowymi niszczenie centrum danych.
- 
+
 Odzyskiwanie po awarii przyjęto założenie, że katastrofy będzie geograficznie zlokalizowane wystarczająco dużo, aby mieć inny maszyny/zestaw maszyn przy użyciu kopii danych daleko.  W programie SQL Server można użyć zawsze włączone grupy dostępności działają w trybie async można pobrać tę możliwość.  Szybkość światła problemów zwykle oznacza, że osoby nie chcesz czekać replikacji się zdarzyć, że daleko przed zatwierdzeniem transakcji, dlatego jest potencjalną utratę danych podczas wykonywania nieplanowane tryby Failover.
 
 Bazy danych w usłudze premium i biznesowe krytyczne warstwy już [w bardzo podobny sposób użyć](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) do synchronizacji grupy dostępności. Bazy danych w niższych warstwach usług zapewniają nadmiarowość za pomocą magazynu [mechanizm różnych, ale równoważne](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Brak logiki, która chroni przed awarią pojedynczego komputera.  Funkcji aktywnej replikacji geograficznej zapewnia możliwość ochrony przed awarii gdzie jest niszczony całego regionu.
 
-Strefy dostępności platformy Azure jest play na problem wysokiej dostępności.  Próbuje ochronę przed awarią centrum danych jednego tworzenia w jednym regionie.  Dlatego chce zapobiec utracie zasilania lub sieć w celu tworzenia. W usługach SQL Azure, będzie to możliwe, umieszczając różnych replik w różnych strefach dostępności (różnych budynkach, efektywnie), a w przeciwnym razie działa tak jak poprzednio. 
+Strefy dostępności platformy Azure jest play na problem wysokiej dostępności.  Próbuje ochronę przed awarią centrum danych jednego tworzenia w jednym regionie.  Dlatego chce zapobiec utracie zasilania lub sieć w celu tworzenia. W usługach SQL Azure, będzie to możliwe, umieszczając różnych replik w różnych strefach dostępności (różnych budynkach, efektywnie), a w przeciwnym razie działa tak jak poprzednio.
 
 W rzeczywistości, Umowa dotycząca poziomu usług platformy Azure w branży wiodących 99,99% dostępności [(SLA)](https://azure.microsoft.com/support/legal/sla/), obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24/7. Platforma Azure w pełni zarządza każdej bazy danych i gwarantuje brak utraty danych i wysoki odsetek dostępność danych. Platforma Azure automatycznie obsługuje stosowanie poprawek, tworzenie kopii zapasowych, replikację, wykrywanie błędów, bazowe potencjalne awarie sprzętu, oprogramowania lub sieci, wdrażanie poprawek usterek, przełączanie w tryb failover, uaktualnianie bazy danych oraz inne zadania konserwacji. Dostępność w warstwie Standardowa jest osiągana przez oddzielenie warstw obliczeń i magazynu. Premium dostępność jest osiągana integracji zasobów obliczeniowych i magazynu na jednym węźle wydajności, a następnie wdrażania technologii podobne do zawsze włączonych grup dostępności w sposób niewidoczny. Aby uzyskać pełne omówienie możliwości wysokiej dostępności usługi Azure SQL Database, zobacz [dostępności bazy danych SQL](sql-database-high-availability.md). Ponadto usługa SQL Database oferuje wbudowane funkcje [zapewnienia ciągłości działalności biznesowej i globalnej skalowalności](sql-database-business-continuity.md), takie jak:
 
@@ -156,7 +156,7 @@ Do usługi SQL Database dodajemy również rodzinę [funkcji adaptacyjnego przet
 Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i zgodności](sql-database-security-overview.md), co ułatwia spełnienie przez aplikację różnych wymagań dotyczących zabezpieczeń i zgodności.
 
 > [!IMPORTANT]
-> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -186,7 +186,7 @@ Usługa SQL Database umożliwia centralne zarządzanie tożsamościami użytkown
 
 ### <a name="compliance-certification"></a>Certyfikacja zgodności
 
-Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+Usługa SQL Database jest poddawana regularnym inspekcjom i ma certyfikat kilku standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ## <a name="easy-to-use-tools"></a>Łatwe w użyciu narzędzia
 
@@ -240,7 +240,6 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 |SQL Server Enterprise Edition core klientom SA|<li>Płacić można stawka podstawowa, ogólnego przeznaczenia lub jednostki SKU krytycznej biznesowych</li><br><li>1 rdzeń w środowisku lokalnym = 4 rdzenie w jednostki SKU ogólnego przeznaczenia</li><br><li>1 rdzeń w środowisku lokalnym = 1 rdzeń w jednostce SKU krytycznej biznesowych</li>|
 |SQL Server Standard Edition core klientom SA|<li>Można tylko płacić stawka podstawowa według jednostki SKU ogólnego przeznaczenia</li><br><li>1 rdzeń w środowisku lokalnym = 1 rdzeń w jednostki SKU ogólnego przeznaczenia</li>|
 |||
-
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt z zespołem inżynierów programu SQL Server
 

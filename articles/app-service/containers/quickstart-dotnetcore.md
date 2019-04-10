@@ -17,11 +17,11 @@ ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
 ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056198"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278517"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Tworzenie aplikacji platformy ASP.NET Core w usłudze App Service dla systemu Linux
 

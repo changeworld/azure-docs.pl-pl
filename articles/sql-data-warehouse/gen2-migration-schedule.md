@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 477a74d7bd0275715222a54800b81c2812da9c77
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275610"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361131"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -34,7 +34,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 |:--- |:--- |:--- |
 | Australia Wschodnia |Dostępne |1 czerwca 2019 r. |
 | Australia Południowo-Wschodnia |15 kwietnia 2019 r. |1 maja 2019 r. |
-| Brazylia Południowa |15 maja 2019 r. |\* |
+| Brazylia Południowa |15 maja 2019 r. |1 czerwca 2019 r. |
 | Kanada Środkowa |Dostępne |1 czerwca 2019 r. |
 | Kanada Wschodnia |\* |\* |
 | Środkowe stany USA |Dostępne |1 czerwca 2019 r. |
@@ -44,8 +44,8 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Chiny Północne 2 |\* |\* |
 | Azja Wschodnia |Dostępne |1 czerwca 2019 r. |
 | Wschodnie stany USA |Dostępne |1 czerwca 2019 r. |
-| Wschodnie stany USA 2 |Dostępne |Od 1 czerwca. 2019 |
-| Francja Środkowa |\* |\* |
+| Wschodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
+| Francja Środkowa |\* |1 czerwca 2019 r. |
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
 | Indie Środkowe |Dostępne |1 czerwca 2019 r. |

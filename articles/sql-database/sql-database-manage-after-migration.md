@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216938"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358416"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -149,7 +149,7 @@ Szyfrowanie zapewnia silne mechanizm Chroń i Zabezpieczaj dane poufne przed int
 W bazie danych SQL, domyślnie dane magazynowane na platformie plików danych i dziennika w podsystemie magazynowania jest całkowicie i zawsze szyfrowane za pomocą [funkcji Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Kopie zapasowe są również są szyfrowane. Za pomocą funkcji TDE nie uległy zmianie wymagane po swojej stronie aplikacji, który uzyskuje dostęp do tych danych. Szyfrowanie i odszyfrowywanie się tak zdarzyć w sposób przezroczysty; Dlatego nazwa.
 Na potrzeby ochrony danych poufnych śledząc i magazynowanych, SQL Database oferuje funkcję o nazwie [zawsze zaszyfrowane (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE jest formą szyfrowania po stronie klienta, który szyfruje poufnych kolumn w bazie danych (dzięki czemu będzie szyfrowany, administratorzy baz danych i nieautoryzowanym użytkownikom). Serwer odebrał zaszyfrowane dane, rozpoczynać się. Klucz dla funkcji Always Encrypted także są przechowywane po stronie klienta, aby tylko autoryzowani klienci może odszyfrować poufnych kolumn. Serwer i administratorów danych nie może, zobacz dane poufne, ponieważ klucze szyfrowania są przechowywane na komputerze klienckim. AE szyfruje poufnych kolumn w tabeli typu end to end, od nieautoryzowanych klientów na dysku fizycznym. Porównywanie równości jest w AE obsługuje obecnie, dzięki czemu przetwarzający mogą w dalszym ciągu zapytania zaszyfrowanych kolumn jako część ich poleceń SQL. Zawsze zaszyfrowane mogą być używane z różnych opcji magazynu kluczy, takie jak [usługi Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), Magazyn certyfikatów Windows i lokalne sprzętowych modułów zabezpieczeń.
 
-|**Właściwości**|**Zawsze szyfrowane**|**Przezroczyste szyfrowanie danych**|
+|**Właściwości**|**Zawsze szyfrowane**|**Niewidoczne szyfrowanie danych**|
 |---|---|---|
 |**Zakres szyfrowania**|End-to-end|Dane w spoczynku|
 |**Serwer bazy danych mają dostęp do poufnych danych**|Nie|Tak, ponieważ szyfrowanie danych magazynowanych|
@@ -196,18 +196,18 @@ Na poniższym diagramie przedstawiono opcje magazynu kluczy dla kluczy głównyc
 Ruch sieciowy między organizacji i bazy danych SQL może uzyskać zazwyczaj kierowane za pośrednictwem publicznej sieci. Jednak jeśli wybierzesz zoptymalizować tę ścieżkę i bezpieczniejsze, warto zajrzeć do Express Route. Expressroute umożliwia zasadniczo rozszerzanie sieci firmowej na platformie Azure za pośrednictwem połączenia prywatnego. W ten sposób nie omijają publiczny Internet. Możesz także uzyskać wyższy poziom zabezpieczeń, niezawodności i optymalizacji routingu, który przekłada się na mniejsze opóźnienia sieci i szybciej, wyższe szybkości niż w przypadku normalnie doświadczenie przesyłane za pośrednictwem publicznej sieci internet. Jeśli planowane jest na transferowanie znaczące fragmentów danych między organizacji i Azure, za pomocą Express Route może przynieść korzyści finansowe. Można wybierać spośród trzech modeli innego połączenia dla połączenia z Twojej organizacji na platformie Azure:
 
 - [Chmura Exchange wspólnej lokalizacji](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Dowolna dowolna](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Punkt-punkt](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Expressroute umożliwia również serii maksymalnie 2 x limit przepustowości, zakupionych dla bez dodatkowych opłat. Jest również możliwość skonfigurowania wielu łączności regionie przy użyciu Express route. Aby wyświetlić listę dostawców łączności ER, zobacz: [Express Route partnerzy i lokalizacje komunikacji równorzędnej](../expressroute/expressroute-locations.md). Szczegółowo w następujących artykułach opisano Express Route:
 
 - [Wprowadzenie Express Route](../expressroute/expressroute-introduction.md)
 - [Wymagania wstępne](../expressroute/expressroute-prerequisites.md)
-- [Przepływy pracy](../expressroute/expressroute-workflows.md)
+- [Przepływy](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Jest bazą danych SQL spełniają wszelkie wymagania prawne i jak, pomaga przy użyciu własnego organizacji zgodności
 
-Baza danych SQL jest zgodna z szeroką gamę zachowania zgodności z przepisami prawnymi. Aby wyświetlić najnowszy zestaw zachowania zgodności prawnymi, które zostały spełnione, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) i przechodzenie do zachowania zgodności prawnymi, które są istotne dla Twojej organizacji, aby zobaczyć, jeśli baza danych SQL znajduje się w obszarze zgodnych usług systemu Azure. Należy pamiętać, że mimo że bazy danych SQL może być zakwalifikowany jako zgodnej usługi, go pomaga zgodności organizacji usługi, ale nie automatycznie gwarantuje on jest.
+Baza danych SQL jest zgodna z szeroką gamę zachowania zgodności z przepisami prawnymi. Aby wyświetlić najnowszy zestaw zachowania zgodności prawnymi, które zostały spełnione przez usługę SQL Database, odwiedź stronę [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i przechodzenie do zachowania zgodności prawnymi, które są istotne dla Twojej organizacji, aby zobaczyć, jeśli baza danych SQL znajduje się w obszarze zgodne Usługi platformy Azure. Należy pamiętać, że mimo że bazy danych SQL może być zakwalifikowany jako zgodnej usługi, go pomaga zgodności organizacji usługi, ale nie automatycznie gwarantuje on jest.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentna baza danych monitorowania i konserwacji po migracji
 
@@ -284,7 +284,7 @@ Usługa SQL Database oferuje różne warstwy usług podstawowa, standardowa i Pr
 |**Warstwa usług**|**Typowe scenariusze przypadków użycia**|
 |---|---|
 |**Podstawowa**|Aplikacje korzystające z grupy użytkowników i bazy danych, która nie ma wysokie wymagania dotyczące współbieżności, skalowalność i wydajność. |
-|**Standardowa**|Aplikacje za pomocą znaczne wymagania współbieżności, skalowalność i wydajność dzięki połączeniu z usługami małej do średniej żądania We/Wy. |
+|**Standardowa (Standard)**|Aplikacje za pomocą znaczne wymagania współbieżności, skalowalność i wydajność dzięki połączeniu z usługami małej do średniej żądania We/Wy. |
 |**Premium**|Aplikacje z dużą liczbą równoczesnych użytkowników, wysoka Procesora/pamięci i wysoki żądań We/Wy. Wysoka współbieżności, wysokiej przepływności i opóźnienia w przypadku poufnych aplikacji można wykorzystać na poziomie Premium. |
 |||
 

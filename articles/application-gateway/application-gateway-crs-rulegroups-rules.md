@@ -1,23 +1,17 @@
 ---
 title: Usługa Azure Application Gateway zapory aplikacji sieci web CRS grup reguł i reguł
 description: Ta strona zawiera informacje dotyczące grup reguł CRS zapory aplikacji sieci web i reguł.
-documentationcenter: na
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 4/16/2018
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302044"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279707"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Oferowana listę grup reguł CRS zapory aplikacji sieci web i reguł
 
@@ -37,41 +31,23 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 
 |Identyfikator reguły|Opis|
 |---|---|
-|911011|Reguła 911011|
-|911012|Reguła 911012|
 |911100|Metoda nie jest dozwolona przez zasady|
-|911013|Reguła 911013|
-|911014|Reguła 911014|
-|911015|Reguła 911015|
-|911016|Reguła 911016|
-|911017|Reguła 911017|
-|911018|Reguła 911018|
 
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|913011|Reguła 913011|
-|913012|Reguła 913012|
 |913100|Znaleziono agenta użytkownika skojarzony z skaner zabezpieczeń|
 |913110|Znaleziono nagłówek żądania skojarzony z skaner zabezpieczeń|
 |913120|Znaleziono żądania/argument pliku skojarzone z skaner zabezpieczeń|
-|913013|Reguła 913013|
-|913014|Reguła 913014|
 |913101|Znaleziono agenta użytkownika skojarzony z klienta HTTP skryptów/ogólne|
 |913102|Znaleziono agenta użytkownika skojarzony z sieci web przeszukiwarki/bota|
-|913015|Reguła 913015|
-|913016|Reguła 913016|
-|913017|Reguła 913017|
-|913018|Reguła 913018|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|920011|Reguła 920011|
-|920012|Reguła 920012|
 |920100|Nieprawidłowe żądanie HTTP wiersza|
 |920130|Nie można przeanalizować treści żądania.|
 |920140|Wieloczęściowy żądania, treści ścisła Weryfikacja nie powiodła się = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} %@{MULTIPART_HEADER_FOLDING KF} LF % @ {MULTIPART_LF_LINE}     %@{MULTIPART_FILE_LIMIT_EXCEEDED FINLANDIA %@{MULTIPART_INVALID_HEADER_FOLDING BĘDZIE %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
@@ -102,30 +78,22 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |920430|Wersja protokołu HTTP nie jest dozwolony przez zasady|
 |920440|Rozszerzenie pliku adres URL jest ograniczona przez zasady|
 |920450|Nagłówek HTTP jest ograniczona przez zasady (%@{MATCHED_VAR})|
-|920013|Reguła 920013|
-|920014|Reguła 920014|
 |920200|Zakres = zbyt wiele pól (6- lub więcej)|
 |920201|Zakres = zbyt wiele pól dla żądania pdf (35 lub więcej)|
 |920230|Wykryto wiele kodowania adresu URL|
 |920300|Żądania brakuje nagłówek Accept|
 |920271|Nieprawidłowy znak w żądaniu (innych niż drukowalne znaki)|
 |920320|Brak nagłówka agenta użytkownika|
-|920015|Reguła 920015|
-|920016|Reguła 920016|
 |920272|Nieprawidłowy znak w żądaniu (poza drukowalnych znaków poniżej ascii 127 znaków)|
-|920017|Reguła 920017|
-|920018|Reguła 920018|
 |920202|Zakres = zbyt wiele pól dla żądania pdf (6- lub więcej)|
 |920273|Nieprawidłowy znak w żądaniu (poza bardzo rygorystyczny set)|
 |920274|Nieprawidłowy znak w nagłówkach żądania (poza bardzo rygorystyczny set)|
-|920460|Reguła 920460|
+|920460|Znaki ucieczki nietypowe|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|921011|Reguła 921011|
-|921012|Reguła 921012|
 |921100|Żądanie HTTP, Przemycaniem ataku.|
 |921110|Atak przemycie żądania HTTP|
 |921120|Odpowiedź HTTP podział ataku|
@@ -133,75 +101,43 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |921140|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem nagłówki|
 |921150|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (Wykryto CR/LF)|
 |921160|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (CR/LF i wykryto nazwę nagłówka)|
-|921013|Reguła 921013|
-|921014|Reguła 921014|
 |921151|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (Wykryto CR/LF)|
-|921015|Reguła 921015|
-|921016|Reguła 921016|
-|921170|Reguła 921170|
+|921170|Zanieczyszczenie parametru HTTP|
 |921180|Zanieczyszczenie parametru HTTP (% @{TX.1})|
-|921017|Reguła 921017|
-|921018|Reguła 921018|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|930011|Reguła 930011|
-|930012|Reguła 930012|
 |930100|Ścieżka przechodzenia ataku (/... /)|
 |930110|Ścieżka przechodzenia ataku (/... /)|
 |930120|Próba dostępu do pliku systemu operacyjnego|
 |930130|Próba dostępu do pliku ograniczone|
-|930013|Reguła 930013|
-|930014|Reguła 930014|
-|930015|Reguła 930015|
-|930016|Reguła 930016|
-|930017|Reguła 930017|
-|930018|Reguła 930018|
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|931011|Reguła 931011|
-|931012|Reguła 931012|
 |931100|Możliwości ataku zdalnego plików (RFI) = parametr adresu URL przy użyciu adresu IP|
 |931110|Możliwości ataku zdalnego plików (RFI) = RFI narażone parametru Nazwa pospolita używana w/URL ładunku|
 |931120|Możliwe zdalnego pliku dołączania (RFI) ataku = adres URL ładunku używane w/końcowe pytanie znakiem zapytania (?)|
-|931013|Reguła 931013|
-|931014|Reguła 931014|
 |931130|Możliwe zdalnego pliku dołączania (RFI) ataku = łącze odwołania Wyłącz domeny|
-|931015|Reguła 931015|
-|931016|Reguła 931016|
-|931017|Reguła 931017|
-|931018|Reguła 931018|
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|932011|Reguła 932011|
-|932012|Reguła 932012|
 |932120|Wykonanie polecenia zdalnego = znaleziono programu Windows PowerShell polecenia|
 |932130|Wykonanie polecenia zdalnego = wyrażenie powłoki systemu Unix, znaleziono|
 |932140|Wykonanie polecenia zdalnego = Windows dla /, jeśli znaleziono polecenia|
 |932160|Wykonanie polecenia zdalnego = znaleziono kod powłoki systemu Unix|
 |932170|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
 |932171|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
-|932013|Reguła 932013|
-|932014|Reguła 932014|
-|932015|Reguła 932015|
-|932016|Reguła 932016|
-|932017|Reguła 932017|
-|932018|Reguła 932018|
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|933011|Reguła 933011|
-|933012|Reguła 933012|
 |933100|Ataku polegającego na iniekcji PHP = znaleziono tagu otwierającego/zamykającego|
 |933110|Ataku polegającego na iniekcji PHP = przekazywanie pliku skryptu języka PHP znaleziono|
 |933120|Ataku polegającego na iniekcji PHP = dyrektywy konfiguracji znaleziono|
@@ -209,58 +145,42 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |933150|Ataku polegającego na iniekcji PHP = można odnaleźć nazwy funkcji PHP o wysokim ryzyku|
 |933160|Ataku polegającego na iniekcji PHP = o wysokim ryzyku PHP wywołania funkcji znanego|
 |933180|Ataku polegającego na iniekcji PHP = wywołania funkcji zmiennej znanego|
-|933013|Reguła 933013|
-|933014|Reguła 933014|
 |933151|Ataku polegającego na iniekcji PHP = można odnaleźć nazwy funkcji PHP średniego ryzyka|
-|933015|Reguła 933015|
-|933016|Reguła 933016|
 |933131|Ataku polegającego na iniekcji PHP = znaleziono zmiennych|
 |933161|Ataku polegającego na iniekcji PHP = znaleziono wywołanie funkcji PHP niskiej wartości|
 |933111|Ataku polegającego na iniekcji PHP = przekazywanie pliku skryptu języka PHP znaleziono|
-|933017|Reguła 933017|
-|933018|Reguła 933018|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|941011|Reguła 941011|
-|941012|Reguła 941012|
 |941100|Wykrył ataku XSS, za pośrednictwem libinjection|
 |941110|Filtr XSS - kategorii 1 = wektor Tag skryptu|
 |941130|Filtr XSS - kategorii 3 = wektor atrybutu|
 |941140|Filtr XSS — kategoria 4 = wektor URI języka Javascript|
 |941150|Filtr XSS — kategoria 5 = atrybutów HTML niedozwolonych|
 |941180|Słowa kluczowe lista zablokowanych modułów weryfikacji węzła|
-|941190|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941200|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941210|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941220|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941230|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941240|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941260|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941270|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941280|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941290|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941300|Filtry XSS programu Internet Explorer — wykryto atak.|
+|941190|XSS, przy użyciu arkuszy stylów|
+|941200|XSS, przy użyciu klatek VML|
+|941210|XSS zaciemnionego języka JavaScript|
+|941220|XSS, za pomocą zaciemnionego skryptu VB|
+|941230|XSS, za pomocą "Osadź" tag|
+|941240|XSS, przy użyciu atrybutu "import" lub "wdrożenia"|
+|941260|XSS, za pomocą znacznika 'meta'|
+|941270|XSS, za pomocą "link" href|
+|941280|XSS, za pomocą znacznika "base"|
+|941290|XSS, za pomocą znacznika "apletu"|
+|941300|XSS, za pomocą znacznika "obiekt"|
 |941310|US ASCII źle sformułowane kodowania Filtr XSS - atak.|
 |941330|Filtry XSS programu Internet Explorer — wykryto atak.|
 |941340|Filtry XSS programu Internet Explorer — wykryto atak.|
 |941350|UTF-7 kodowania IE XSS - atak.|
-|941013|Rule 941013|
-|941014|Reguła 941014|
 |941320|Wykryto ataku XSS możliwe - procedurę obsługi tagów HTML|
-|941015|Reguła 941015|
-|941016|Reguła 941016|
-|941017|Reguła 941017|
-|941018|Reguła 941018|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|942011|Reguła 942011|
-|942012|Reguła 942012|
 |942100|Wykryto atak w programie SQL iniekcji za pośrednictwem libinjection|
 |942110|Ataku polegającego na iniekcji SQL: Iniekcja wspólne testowanie wykryte|
 |942130|Ataku polegającego na iniekcji SQL: Wykryto Tautology SQL.|
@@ -280,35 +200,21 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |942350|Wykrywa iniekcji MySQL funkcji zdefiniowanej przez użytkownika i inne struktury danych/manipulowanie prób|
 |942360|Wykrywa połączonych podstawowe wstrzyknięcie kodu SQL i prób SQLLFI|
 |942370|Wykrywa klasycznego probings iniekcji SQL 2/2|
-|942013|Reguła 942013|
-|942014|Reguła 942014|
 |942150|Ataku polegającego na iniekcji SQL|
 |942410|Ataku polegającego na iniekcji SQL|
 |942430|Wykrywanie anomalii znak SQL (argumenty) z ograniczeniami: liczba znaków specjalnych przekracza (12)|
 |942440|Wykryto sekwencja Komentarz SQL.|
 |942450|SQL szesnastkowy kodowanie określone|
-|942015|Reguła 942015|
-|942016|Reguła 942016|
 |942251|Wykrywa HAVING wstrzyknięć kodu|
 |942460|Alert wykrywania anomalii meta-znak — powtarzające się znaki niebędące znakami słowa|
-|942017|Reguła 942017|
-|942018|Reguła 942018|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
-|943011|Reguła 943011|
-|943012|Reguła 943012|
 |943100|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = ustawienie wartości plików Cookie w formacie HTML|
 |943110|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z odwołania Wyłącz domeny|
 |943120|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z nie odwołania|
-|943013|Rule 943013|
-|943014|Reguła 943014|
-|943015|Reguła 943015|
-|943016|Reguła 943016|
-|943017|Reguła 943017|
-|943018|Reguła 943018|
 
 ## <a name="owasp229"></a> OWASP_2.2.9
 
@@ -569,5 +475,3 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web, odwiedzając: [Dostosowywanie reguł zapory aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)
-
-[1]: ./media/application-gateway-integration-security-center/figure1.png

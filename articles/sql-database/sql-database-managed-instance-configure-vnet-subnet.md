@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 13038bb7159556b36e82b598732d1f2d497bf314
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762776"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358848"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
 
@@ -25,10 +25,9 @@ Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach 
 
 Jeśli jeden z następujących przypadków ma zastosowanie do Ciebie, można sprawdzić i modyfikować sieci przy użyciu skryptu opisanych w tym artykule:
 
-* Masz nowej podsieci, które nadal nie jest skonfigurowane.
-* Nie masz pewności, że podsieć jest powiązana z [wymagania](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
-* Aby sprawdzić, czy podsieci, spełnia [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po dokonaniu zmiany.
-
+- Masz nowej podsieci, które nadal nie jest skonfigurowane.
+- Nie masz pewności, że podsieć jest powiązana z [wymagania](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+- Aby sprawdzić, czy podsieci, spełnia [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po dokonaniu zmiany.
 
 > [!Note]
 > Można utworzyć wystąpienie zarządzane tylko w sieciach wirtualnych utworzonych za pomocą modelu wdrażania usługi Azure Resource Manager. Sieci wirtualne platformy Azure utworzonych za pomocą klasycznego modelu wdrażania nie są obsługiwane. Oblicz rozmiar podsieci, postępując zgodnie z wytycznymi podanymi w [określi rozmiar podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md) artykułu. Po wdrożeniu zasobów w obrębie nie można zmienić rozmiaru tej podsieci.

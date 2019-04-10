@@ -7,21 +7,21 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 955f13376ac899f66b0ec4e1ed99166164508fbe
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c85b967615e866635cb4dd93be5ddeb78a8c7129
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449871"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357005"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Użyj programu PowerShell do utworzenia usługi Azure SQL Database, wystąpienia zarządzanego
 
-Ten przykładowy skrypt programu PowerShell tworzy wystąpienia zarządzanego usługi Azure SQL Database w dedykowanej podsieci sieci wirtualnej. Konfiguruje również tabelę tras i sieciowej grupy zabezpieczeń dla sieci wirtualnej. Po pomyślnym uruchomieniu skryptu wystąpienia zarządzanego jest możliwy z w ramach sieci wirtualnej lub ze środowiska lokalnego. Przewodniki Szybki Start omawiający w tym temacie [Konfigurowanie maszyny Wirtualnej platformy Azure nawiązać wystąpienia usługi Azure SQL Database Managed](../sql-database-managed-instance-configure-vm.md) i [Konfigurowanie połączenia typu punkt lokacja do bazy danych wystąpienia zarządzanego Azure SQL z w środowisku lokalnym](../sql-database-managed-instance-configure-p2s.md).
+Ten przykładowy skrypt programu PowerShell tworzy wystąpienia zarządzanego usługi Azure SQL Database w dedykowanej podsieci sieci wirtualnej. Konfiguruje również tabelę tras i sieciowej grupy zabezpieczeń dla sieci wirtualnej. Po pomyślnym uruchomieniu skryptu wystąpienia zarządzanego jest możliwy z w ramach sieci wirtualnej lub ze środowiska lokalnego. Zobacz [Konfigurowanie maszyny Wirtualnej platformy Azure nawiązać wystąpienia usługi Azure SQL Database Managed](../sql-database-managed-instance-configure-vm.md) i [Konfigurowanie połączenia typu punkt lokacja do wystąpienia usługi Azure SQL Database Managed ze środowiska lokalnego](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
 > Aby uzyskać informacje o ograniczeniach, zobacz [obsługiwane regiony](../sql-database-managed-instance-resource-limits.md#supported-regions) i [obsługiwane typy subskrypcji](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
@@ -36,7 +36,7 @@ Jeśli zdecydujesz się zainstalować i korzystać z programu PowerShell lokalni
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
-Po wykonaniu przykładowego skryptu możesz uruchomić następujące polecenie, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
+Użyj następującego polecenia, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,7 +48,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. 
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby.
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Tworzy sieć wirtualną |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Dodaje konfigurację podsieci w sieci wirtualnej |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Pobiera z sieci wirtualnej w grupie zasobów |

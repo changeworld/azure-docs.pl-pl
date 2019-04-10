@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045802"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359427"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -136,7 +136,7 @@ Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 Oznacza, że dla aplikacji, aby uzyskać poświadczenia dla uwierzytelniania do magazynu kluczy są następujące:
 
 A. Podczas kompilacji/pakowania zadania aplikacji można ściągnąć certyfikatu do pakietu danych aplikacji SF i służy do uwierzytelniania do magazynu kluczy.
-B. Dla hostów z włączoną tożsamością usługi Zarządzanej zestaw skalowania maszyn wirtualnych, możesz tworzyć proste SetupEntryPoint programu PowerShell dla aplikacji SF można pobrać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać Wpisy tajne z magazynu kluczy](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
+B. Dla hostów z włączoną tożsamością usługi Zarządzanej zestaw skalowania maszyn wirtualnych, możesz tworzyć proste SetupEntryPoint programu PowerShell dla aplikacji SF można pobrać [token dostępu z punktu końcowego MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), a następnie [pobrać Wpisy tajne z magazynu kluczy](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Projekt aplikacji
 

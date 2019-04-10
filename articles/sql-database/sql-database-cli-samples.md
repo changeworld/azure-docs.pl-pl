@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: e3a75acb6d591a9fdf1e632369cc2e9ae6b6099d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447835"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359432"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla bazy danych Azure SQL Database
 
@@ -35,10 +35,10 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 
 | |  |
 |---|---|
-|**Tworzenie pojedynczej bazy danych i elastycznej puli**||
+|**Tworzenie pojedynczej bazy danych oraz puli elastycznej**||
 | [Tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia tworzy pojedynczą bazę danych Azure SQL Database i konfiguruje regułę zapory na poziomie serwera. |
 | [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia tworzy elastyczne pule SQL, przenosi bazy danych Azure SQL Database w puli i zmienia rozmiar zasobów obliczeniowych.|
-|**Skalowanie pojedynczej bazy danych i puli elastycznej**||
+|**Skalowanie pojedynczej bazy danych oraz puli elastycznej**||
 | [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pojedynczą bazę danych Azure SQL do innego rozmiaru zasobów obliczeniowych po utworzeniu zapytania o informacje na temat rozmiaru bazy danych. |
 | [Skalowanie puli elastycznej](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pulę elastyczną SQL do innego rozmiaru zasobów obliczeniowych.  |
 |||
@@ -52,7 +52,7 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 | |  |
 |---|---|
 | [Tworzenie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób tworzenia wystąpienia zarządzanego. |
-| [Aktualizowanie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób aktualizowania wystąpienia zarządzanego. |
+| [Aktualizacja wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób aktualizowania wystąpienia zarządzanego. |
 | [Przenoszenie bazy danych do innego wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ten skrypt interfejsu wiersza polecenia ilustruje przywracanie kopii zapasowej bazy danych z jednego wystąpienia do innego. |
 |||
 

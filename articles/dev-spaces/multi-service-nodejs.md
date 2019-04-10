@@ -9,12 +9,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 8d17ece1426c2aedda2ef98cb465dad532d4dba6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 61a10d4401daeedcf81ea85b7b837f5c1fbfb909
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902709"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357136"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Programowanie wielu usług za pomocą usługi Azure Dev Spaces
 
@@ -60,7 +60,7 @@ Napiszmy w aplikacji `webfrontend` kod, który będzie wysyłał żądanie do ap
        });
     });
     ```
-   1. *Usuń* wiersz `server.close()` na końcu pliku `server.js`
+   1. *Usuń* `server.close()` wiersz na końcu `server.js`
 
 W poprzednim przykładzie kodu nagłówek `azds-route-as` jest przekazywany z żądania przychodzącego do żądania wychodzącego. Później zobaczysz, jak ułatwia to zespołom programowanie zespołowe.
 
@@ -101,4 +101,4 @@ Teraz masz aplikację z wieloma kontenerami, z których każdy może być tworzo
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat programowania zespołowego w usłudze Dev Spaces](team-development-nodejs.md)
+> [Dowiedz się więcej o programowanie zespołowe w obszarach Dev](team-development-nodejs.md)

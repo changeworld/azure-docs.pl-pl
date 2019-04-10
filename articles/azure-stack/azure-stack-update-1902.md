@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2005cf4b1929dfe9e520f56308493db7d820226e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271836"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361101"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizacja usługi Azure Stack 1902
 
@@ -97,13 +97,14 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
   ```  
   
 - W celu zwiększenia ogólnej niezawodności i dostępności podstawowe usługi infrastruktury, podczas procesu aktualizacji firma natywnego dostawcy zasobów aktualizacji w ramach planu akcji update wykryje i automatyczne globalnego korygowania funkcję w miarę potrzeb Wywołaj. Przepływy pracy korygowania globalne "Napraw" obejmują:
-    - Sprawdzanie, czy maszyny wirtualne infrastruktury, które są w stanie optymalnej i spróbować rozwiązać je w miarę potrzeb 
-    - Sprawdź, czy są problemy z usługą SQL, w ramach planu kontroli i spróbować rozwiązać je w miarę potrzeb
-    - Sprawdź stan usługi programowego modułu równoważenia obciążenia (SLB) w ramach kontrolera sieci (NC) i spróbować rozwiązać je w miarę potrzeb
-    - Sprawdź stan usługi kontrolera sieci (NC) i spróbować go naprawić, zgodnie z potrzebami
-    - Sprawdź stan węzłów sieci szkieletowej usługi awaryjnego odzyskiwania konsoli usługi (ERCS) i je naprawić, zgodnie z potrzebami
-    - Stan węzłów sieci szkieletowej usługi XRP ich sprawdzenia i naprawienia zgodnie z potrzebami
-    - Sprawdź stan węzłów spójnego magazynu Azure (ACS) usługi Service fabric i je naprawić, zgodnie z potrzebami
+
+  - Sprawdza, czy maszyny wirtualne infrastruktury, które są w stanie optymalnej i spróbować rozwiązać je w miarę potrzeb.
+  - Sprawdź, czy są problemy z usługą SQL, w ramach planu kontroli i spróbować rozwiązać je w miarę potrzeb.
+  - Sprawdź stan usługi programowego modułu równoważenia obciążenia (SLB) w ramach kontrolera sieci (NC) i spróbować rozwiązać je w miarę potrzeb.
+  - Sprawdź stan usługi kontrolera sieci (NC) i spróbować go naprawić, zgodnie z potrzebami
+  - Sprawdź stan węzłów sieci szkieletowej usługi awaryjnego odzyskiwania konsoli usługi (ERCS) i je naprawić, zgodnie z potrzebami.
+  - Sprawdź stan infrastruktury i napraw zgodnie z potrzebami.
+  - Sprawdź stan węzłów spójnego magazynu Azure (ACS) usługi Service fabric i je naprawić, zgodnie z potrzebami.
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -258,8 +259,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- #### Marketplace -->
 
 ### <a name="syslog"></a>Dziennik systemu 
-- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, co w kliencie programu syslog i utracić konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809).
-Obejście polega na skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
+
+- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, powodując klienta syslog utratę konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809). Aby obejść ten problem, należy skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
 
 ## <a name="download-the-update"></a>Pobierz aktualizację
 

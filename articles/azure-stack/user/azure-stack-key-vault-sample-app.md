@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 04/08/2019
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 578ca59b3f00bc1f4e876fd2b007c4b45901f86c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 04/08/2019
+ms.openlocfilehash: 7ca02b35cd8f302b856b2d7fcbfb5bac304f1a00
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782381"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358617"
 ---
 # <a name="a-sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Przykładowa aplikacja, która używa kluczy i wpisów tajnych przechowywanych w magazynie kluczy
 
-*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
+*Dotyczy Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Wykonaj kroki opisane w tym artykule, aby uruchomić przykładową aplikację o nazwie **HelloKeyVault** , który pobiera klucze i wpisy tajne z klucza magazynu w usłudze Azure Stack.
+Wykonaj kroki opisane w tym artykule, aby uruchomić przykładową aplikację **HelloKeyVault** , który pobiera klucze i wpisy tajne z klucza magazynu w usłudze Azure Stack.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujące warunki wstępne można zainstalować z usługi Azure Stack [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Można zainstalować następujące wstępnie wymagane składniki z [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
 * Zainstaluj [modułów programu Azure PowerShell dla usługi Azure Stack zgodnego](azure-stack-powershell-install.md).
 * Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md).
@@ -44,8 +44,8 @@ Aby przygotować się do przykładowej aplikacji:
 
 Aby przygotować się do przykładowej aplikacji, można użyć witryny Azure portal lub programu PowerShell. W tym artykule przedstawiono sposób tworzenia magazynu kluczy i zarejestrowanie aplikacji przy użyciu programu PowerShell.
 
->[!NOTE]
->Domyślnie skrypt programu PowerShell tworzy nową aplikację w usłudze Active Directory. Jednak można zarejestrować jeden z istniejących aplikacji.
+> [!NOTE]
+> Domyślnie skrypt programu PowerShell tworzy nową aplikację w usłudze Active Directory. Jednak można zarejestrować jeden z istniejących aplikacji.
 
 Przed uruchomieniem poniższego skryptu, pamiętaj o podaniu wartości `aadTenantName` i `applicationPassword` zmiennych. Jeśli nie określisz wartości `applicationPassword`, ten skrypt generuje losowe hasło.
 
@@ -55,7 +55,7 @@ $resourceGroupName   = 'myResourceGroup'
 $applicationName     = 'myApp'
 $location            = 'local'
 
-# Password for the application. If not specified, this script will generate a random password during app creation.
+# Password for the application. If not specified, this script generates a random password during app creation.
 $applicationPassword = ''
 
 # Function to generate a random password for the application.
@@ -141,7 +141,7 @@ Na poniższej ilustracji przedstawiono dane wyjściowe skryptu użyty do utworze
 
 ![Magazyn kluczy przy użyciu kluczy dostępu](media/azure-stack-key-vault-sample-app/settingsoutput.png)
 
-Zwróć uwagę na **VaultUrl**, **AuthClientId**, i **AuthClientSecret** wartości zwróconych z poprzednim skrypcie. Te wartości są używane do uruchamiania aplikacji HelloKeyVault.
+Zwróć uwagę na **VaultUrl**, **AuthClientId**, i **AuthClientSecret** wartości zwróconych z poprzednim skrypcie. Te wartości można używać do uruchamiania **HelloKeyVault** aplikacji.
 
 ## <a name="download-and-configure-the-sample-application"></a>Pobieranie i konfigurowanie przykładowej aplikacji
 
@@ -149,30 +149,30 @@ Pobierz przykładowe usługi key vault z platformy Azure [usługi Key Vault klie
 
 Aby załadować **HelloKeyVault** próbki:
 
-* Przejdź do **Microsoft.Azure.KeyVault.Samples** > **przykłady** > **HelloKeyVault** folderu.
-* Otwórz **HelloKeyVault** aplikacji w programie Visual Studio.
+1. Przejdź do **Microsoft.Azure.KeyVault.Samples**, **przykłady**, **HelloKeyVault** folderu.
+2. Otwórz **HelloKeyVault** aplikacji w programie Visual Studio.
 
 ### <a name="configure-the-sample-application"></a>Konfigurowanie przykładowej aplikacji
 
 W programie Visual Studio:
 
-* Otwórz plik HelloKeyVault\App.config i Znajdź &lt; **appSettings** &gt; elementu.
-* Aktualizacja **VaultUrl**, **AuthClientId**, i **AuthClientSecret** klucze za pomocą wartości zwrócone przez te wykorzystywane do utworzenia magazynu kluczy. Domyślnie plik App.config ma symbol zastępczy `AuthCertThumbprint`. Zamiast tego symbolu zastępczego z `AuthClientSecret`.
+1. Otwórz plik HelloKeyVault\App.config i Znajdź `<appSettings>` elementu.
+2. Aktualizacja **VaultUrl**, **AuthClientId**, i **AuthClientSecret** klucze za pomocą wartości zwrócone przez te wykorzystywane do utworzenia magazynu kluczy. Domyślnie plik App.config ma symbol zastępczy `AuthCertThumbprint`. Zamiast tego symbolu zastępczego z `AuthClientSecret`.
 
-  ![Ustawienia aplikacji](media/azure-stack-key-vault-sample-app/appconfig.png)
+   ![Ustawienia aplikacji](media/azure-stack-key-vault-sample-app/appconfig.png)
 
-* Ponownie skompiluj rozwiązanie.
+3. Ponownie skompiluj rozwiązanie.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Po uruchomieniu HelloKeyVault aplikacji loguje się do usługi Azure AD, a następnie używa tokenu AuthClientSecret do uwierzytelniania do magazynu kluczy w usłudze Azure Stack.
+Po uruchomieniu **HelloKeyVault**, aplikacji, loguje się do usługi Azure AD, a następnie używa `AuthClientSecret` token uwierzytelniania do magazynu kluczy w usłudze Azure Stack.
 
-Można użyć przykładowych HelloKeyVault do:
+Możesz użyć **HelloKeyVault** próbki do:
 
 * Wykonaj podstawowe operacje, takie jak tworzenie, szyfrowanie, opakowywanie i usuwanie kluczy i wpisów tajnych.
-* Przekazywanie parametrów, takich jak `encrypt` i `decrypt` do HelloKeyVault i stosowanie określonych zmian do magazynu kluczy.
+* Przekazywanie parametrów, takich jak `encrypt` i `decrypt` do **HelloKeyVault**i stosowanie określonych zmian do magazynu kluczy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wdrażanie maszyny wirtualnej z hasłem usługi Key Vault](azure-stack-key-vault-deploy-vm-with-secret.md)
-- [Wdrażanie maszyny Wirtualnej z certyfikatem usługi Key Vault](azure-stack-key-vault-push-secret-into-vm.md)
+* [Wdrażanie maszyny Wirtualnej z hasłem usługi Key Vault](azure-stack-key-vault-deploy-vm-with-secret.md)
+* [Wdrażanie maszyny Wirtualnej z certyfikatem usługi Key Vault](azure-stack-key-vault-push-secret-into-vm.md)

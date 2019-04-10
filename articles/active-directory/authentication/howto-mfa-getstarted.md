@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269031"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358114"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Planowanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -107,6 +107,9 @@ Administratorzy mogą wybrać [metod uwierzytelniania](../authentication/concept
 ### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
 
 Powiadomienia wypychane są wysyłane do aplikacji Microsoft Authenticator na swoim urządzeniu przenośnym. Użytkownik przegląda powiadomienia i wybiera **Zatwierdź** aby ukończyć weryfikację. Powiadomienia wypychane za pośrednictwem aplikacji mobilnej udostępniają opcję najmniej istotnych dla użytkowników. Są one również opcja najbardziej niezawodną i bezpieczną, ponieważ używają one połączeń danych zamiast telefonii.
+
+> [!NOTE]
+> Jeśli Twoja organizacja ma personel pracujący w lub podróży do Chin, **powiadomienie przez aplikację mobilną** metody **urządzeń z systemem Android** nie działa w danym kraju. Alternatywne metody powinny udostępnione dla tych użytkowników.
 
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 

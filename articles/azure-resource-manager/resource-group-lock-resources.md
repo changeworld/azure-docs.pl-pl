@@ -4,22 +4,20 @@ description: Uniemożliwianie użytkownikom aktualizowanie i usuwanie zasoby pla
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649173"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360443"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -36,12 +34,32 @@ Po zastosowaniu blokady w zakresie nadrzędnej wszystkie zasoby w tym zakresie d
 
 W przeciwieństwie do kontroli dostępu opartej na rolach umożliwia zarządcze stosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).
 
-Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych, ale go nie uniemożliwiają tworzenie, aktualizowanie lub usuwanie danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
+Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia z tworzenia, aktualizowania lub usuwania danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
 
 Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które promieniowe wydają się być odczytana operacje rzeczywiście wymagają dodatkowych akcji. Na przykład umieszczenie **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Na liście, którą zwrócone klucze nie są dostępne dla operacji klucze odbywa się za pomocą żądania POST operacji zapisu. Inny przykład umieszczając **tylko do odczytu** blokady zasobu usługi App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
 
-## <a name="who-can-create-or-delete-locks-in-your-organization"></a>Kto może utworzyć lub usunąć blokady w Twojej organizacji
+## <a name="who-can-create-or-delete-locks"></a>Kto może utworzyć lub usunąć blokady
 Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do `Microsoft.Authorization/*` lub `Microsoft.Authorization/locks/*` akcji. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
+
+## <a name="managed-applications-and-locks"></a>Zarządzane aplikacje i blokowania
+
+Użyj usług platformy Azure, takich jak usługi Azure Databricks [zarządzanych aplikacji](../managed-applications/overview.md) wdrażania usługi. W takiej sytuacji usługa tworzy dwie grupy zasobów. Jedna grupa zasobów zawiera omówienie usługi i nie jest zablokowany. Grupa zasobów zawiera infrastruktury usługi i jest zablokowany.
+
+Jeśli spróbujesz usunąć grupę zasobów infrastruktury, otrzymasz komunikat o błędzie informujący, że grupa zasobów jest ograniczona. Jeśli zostanie podjęta próba usunięcia blokady dla grupy zasobów infrastruktury, otrzymasz komunikat o błędzie informujący, że blokada nie można usunąć, ponieważ jej właścicielem jest aplikacja systemowa
+
+Zamiast tego należy usunąć usługę, która spowoduje również usunięcie grupy zasobów infrastruktury.
+
+Dla zarządzanych aplikacji wybierz wdrożonej usługi.
+
+![Wybierz usługę](./media/resource-group-lock-resources/select-service.png)
+
+Powiadomienie usługi zawiera również link do **grupy zarządzanej z wykorzystaniem zasobów**. Tej grupy zasobów przechowuje infrastruktury i jest zablokowany. Go nie można bezpośrednio usunąć.
+
+![Grupa zarządzana przez show](./media/resource-group-lock-resources/show-managed-group.png)
+
+Aby usunąć wszystkie usługi, w tym infrastruktury zablokowanej grupy zasobów, wybierz pozycję **Usuń** dla usługi.
+
+![Usuwanie usługi](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>Portal
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]

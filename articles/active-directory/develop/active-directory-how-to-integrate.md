@@ -1,6 +1,6 @@
 ---
 title: Jak zintegrować z usługą Azure Active Directory | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący korzyści i zasoby dotyczące integracji z usługą Azure Active Directory.
+description: Informacje o zaletach usługi integracji aplikacji z usługą Azure Active Directory i pobrać zasoby dla funkcji, takich jak uproszczone logowania, Zarządzanie tożsamościami, uwierzytelnianie wieloskładnikowe i kontroli dostępu.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/04/2019
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: bryanla
-ms.custom: aaddev
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b2848dc4bcf4e0c8935795eb66e07c3a5a7bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 726d70c46dca712deaf4846c24976cdabcc49be9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894631"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359899"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure Active Directory (Azure AD) zapewnia organizacjom przeznaczonych dla przedsiębiorstw Zarządzanie tożsamościami dla aplikacji w chmurze. Integracja z usługą Azure AD zapewnia usprawnione środowisko logowania użytkowników i pomaga aplikacjom są zgodne z zasadami IT.
+W tym artykule poznasz korzyści integracji aplikacji z usługą Azure Active Directory (Azure AD) i pobieranie zasobów w celu integracji. Usługa Azure AD zapewnia organizacjom przeznaczonych dla przedsiębiorstw Zarządzanie tożsamościami dla aplikacji w chmurze. Integracja z usługą Azure AD zapewnia usprawnione środowisko logowania użytkowników i pomaga aplikacjom są zgodne z zasadami IT.
 
 ## <a name="how-to-integrate"></a>Sposób przeprowadzania integracji
 

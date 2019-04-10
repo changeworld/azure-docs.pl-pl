@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807823"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291732"
 ---
 ## <a name="benefits-of-managed-disks"></a>Korzyści z dyskami zarządzanymi
 
@@ -31,6 +31,10 @@ Używanie dysków zarządzanych, możesz utworzyć maksymalnie 50 000 maszyn wir
 
 Dyski zarządzane są zintegrowane z zestawami dostępności w celu zapewnienia, że dyski [maszyn wirtualnych w zestawie dostępności](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Dyski są automatycznie umieszczane w różnych jednostkach skalowania magazynu (sygnatury). Sygnatura zakończy się niepowodzeniem z powodu awarii sprzętu lub oprogramowania, tylko wystąpienia maszyn wirtualnych z dyskami na tych sygnatur zakończyć się niepowodzeniem. Na przykład załóżmy, że masz aplikację działającą w pięciu maszyn wirtualnych i maszyny wirtualne znajdują się w zestawie dostępności. Dyski dla tych maszyn wirtualnych nie będzie można przechowywać w tej samej sygnaturze, więc jeśli jednej sygnatury ulegnie awarii, pozostałe wystąpienia aplikacji nadal działać.
 
+## <a name="integration-with-availability-zones"></a>Integracja z usługą strefy dostępności
+
+Managed disks obsługuje [strefy dostępności](../articles/availability-zones/az-overview.md), czyli oferty o wysokiej dostępności, która chroni aplikacji przed awariami centrum danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%.
+
 ### <a name="azure-backup-support"></a>Obsługa usługi Azure Backup
 
 Aby zapewnić ochronę przed regionalnej awarii [kopia zapasowa Azure](../articles/backup/backup-introduction-to-azure-backup.md) może służyć do tworzenia zadania tworzenia kopii zapasowej za pomocą zasad przechowywania kopii zapasowych i kopii zapasowych opartych na czasie. Dzięki temu można łatwo przywracana maszyny Wirtualnej w momencie wykonywania. Usługa Azure Backup obsługuje obecnie rozmiary dysków maksymalnie cztery dyski tebibyte (TiB). Aby uzyskać więcej informacji, zobacz [przy użyciu usługi Azure Backup dla maszyn wirtualnych z dyskami zarządzanymi](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -41,11 +45,15 @@ Możesz użyć [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](
 
 ## <a name="disk-roles"></a>Role dysku
 
-### <a name="data-disks"></a>Dyski z danymi
+Istnieją trzy role głównego dysku na platformie Azure: dysk z danymi, dysk systemu operacyjnego i tymczasowy dysk. Te role są mapowane na dyskach, które są dołączone do maszyny wirtualnej.
+
+![Role dysku w działaniu](media/virtual-machines-managed-disks-overview/disk-types.png)
+
+### <a name="data-disk"></a>Dysk z danymi
 
 Dysk z danymi jest dysk zarządzany, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 32 767 gibibajtach (GiB). Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
 
-### <a name="os-disks"></a>Dyski systemu operacyjnego
+### <a name="os-disk"></a>Dysk systemu operacyjnego
 
 Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ten dysk systemu operacyjnego został wstępnie zainstalowany system operacyjny, który został wybrany podczas tworzenia maszyny Wirtualnej.
 
@@ -71,7 +79,7 @@ Dyski zarządzane obsługują także tworzenie zarządzany obraz niestandardowy.
 Aby uzyskać informacje na temat tworzenia obrazów zobacz następujące artykuły:
 
 * [Jak przechwycić obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Uogólnianie i przechwytywanie maszyny wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
+* [Jak Uogólnij i Przechwyć maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Obrazów i migawki
 

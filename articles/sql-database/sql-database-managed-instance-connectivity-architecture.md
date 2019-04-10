@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651316"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358285"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
 
 W tym artykule opisano komunikację w wystąpieniu zarządzanym usługi Azure SQL Database. Omówiono także architekturę łączności i jak składniki kierować ruch do wystąpienia zarządzanego.  
 
@@ -117,7 +117,6 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 
 > [!IMPORTANT]
 > Chociaż zasady zabezpieczeń dla ruchu przychodzącego zezwalającą na ruch z _wszelkie_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez zaporę wbudowanych. Aby uzyskać więcej informacji, zobacz [ustalić adres punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
-
 > [!NOTE]
 > Jeśli korzystanie z replikacji transakcyjnej w zarządzanym wystąpieniu i można użyć dowolnej bazy danych wystąpienia jako wydawca lub dystrybutora, należy otworzyć port 445 (ruch wychodzący protokołu TCP) w regułach zabezpieczeń tej podsieci. Tego portu umożliwi dostęp do udziału plików platformy Azure.
 

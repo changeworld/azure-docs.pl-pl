@@ -2,17 +2,17 @@
 title: Jak wyszukiwać wydajnie za pomocą usługi Azure Maps wyszukiwania | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak stosować najlepsze rozwiązania dla wyszukiwania przy użyciu usługi Azure Search mapy
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3a9c5ad92494dd82500c4faee82c119e99346c7a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288159"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358157"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Najlepsze rozwiązania usługi Azure Maps Search
 
@@ -83,7 +83,7 @@ Podczas przeprowadzania wyszukiwania wstecznego geocode z [adres zwrotny interfe
 **Przykładowe żądanie:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key={subscription-key}&query=MicrosoftWay&entityType=Municipality
+https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
 **Odpowiedź:**
@@ -240,14 +240,20 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="uri-encoding-to-handle-special-characters"></a>Identyfikator URI kodowanie do obsługi znaków specjalnych 
 
-Aby dowiedzieć się, ulicy wielu adresów oznacza to, że 1 dnia ścieżek & ulicy Unii, Seattle, znaki specjalne ' i ' musi być zakodowany przed wysłaniem żądania. Firma Microsoft zaleca, kodowania danych znak w identyfikatorze URI, w przypadku, gdy wszystkie znaki są zakodowane przy użyciu znaku "%" i wartości szesnastkowej znaku dwóch odpowiadający ich znaków UTF-8.
+Można znaleźć między adresy pocztowe, czyli "ścieżek 1 dnia & Unii ulicy, Seattle", znak specjalny 'i' musi być zakodowany przed wysłaniem żądania. Firma Microsoft zaleca, kodowania danych znak w identyfikatorze URI, w przypadku, gdy wszystkie znaki są zakodowane przy użyciu znaku "%" i wartości szesnastkowej znaku dwóch odpowiadający ich znaków UTF-8.
 
 **Przykłady użycia**:
 
 Uzyskaj adres wyszukiwania:
 
 ```
-query=1st Avenue & E 111th St, New York shall be encoded as query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York 
+query=1st Avenue & E 111th St, New York
+```
+
+ powinien być kodowany jako:
+
+```
+query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
@@ -315,7 +321,7 @@ Upewnijmy się [wyszukiwanie według kategorii punktów POI](https://docs.micros
 **Przykładowe zapytanie:**
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas station&limit=3&lat=47.6413362&lon=-122.1327968
+https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
 **Odpowiedź:**
@@ -402,72 +408,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 }
             ]
         },
-        {
-            "type": "POI",
-            "id": "US/POI/p0/7728133",
-            "score": 5.663,
-            "dist": 1330.1278248163273,
-            "info": "search:ta:840539001100326-US",
-            "poi": {
-                "name": "76",
-                "phone": "+(1)-(425)-7472126",
-                "brands": [
-                    {
-                        "name": "76"
-                    }
-                ],
-                "url": "www.76.com/",
-                "classifications": [
-                    {
-                        "code": "PETROL_STATION",
-                        "names": [
-                            {
-                                "nameLocale": "en-US",
-                                "name": "petrol station"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "address": {
-                "streetNumber": "2421",
-                "streetName": "148th Ave NE",
-                "municipalitySubdivision": "Redmond, Bellevue",
-                "municipality": "Redmond, Bellevue",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98007",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "2421 148th Ave NE, Bellevue, WA 98007",
-                "countrySubdivisionName": "Washington"
-            },
-            "position": {
-                "lat": 47.63187,
-                "lon": -122.14365
-            },
-            "viewport": {
-                "topLeftPoint": {
-                    "lat": 47.63277,
-                    "lon": -122.14498
-                },
-                "btmRightPoint": {
-                    "lat": 47.63097,
-                    "lon": -122.14232
-                }
-            },
-            "entryPoints": [
-                {
-                    "type": "main",
-                    "position": {
-                        "lat": 47.63186,
-                        "lon": -122.14313
-                    }
-                }
-            ]
-        },
+        ...,
         {
             "type": "POI",
             "id": "US/POI/p0/7727106",
@@ -559,31 +500,31 @@ Upewnijmy się, żądanie wyszukiwania adresów do usługi Azure Maps [usługi w
 **Przykładowe zapytanie:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400BroadSt,Seattle,WA&countrySet=US
+https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-Dodatkowo załóżmy zapoznaj się z odpowiedzi struktura poniższego schematu. Typy wyników obiektów wynikowych w odpowiedzi są różne. Jeśli zauważysz dokładnie czy widać, że mamy trzy różne typy obiektów wynikowych, które są adres punktu, ulicy i wielu ulicy. Zwróć uwagę, że wyszukiwanie tego adresu nie może zwracać POIs. `Score` Parametr dla każdego obiektu odpowiedzi wskazuje względną pasującego oceny oceny innych obiektów w tej samej odpowiedzi. Zobacz [Uzyskaj adres wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) Aby dowiedzieć się więcej na temat parametrów obiektu odpowiedzi.
+Dodatkowo załóżmy zapoznaj się z odpowiedzi struktura poniższego schematu. Typy wyników obiektów wynikowych w odpowiedzi są różne. Jeśli zauważysz dokładnie czy widać, że mamy trzy różne typy obiektów wynikowych, które są "Punkt Address", "Ulicy" i "Cross ulic". Zwróć uwagę, że wyszukiwanie tego adresu nie może zwracać POIs. `Score` Parametr dla każdego obiektu odpowiedzi wskazuje względną pasującego oceny oceny innych obiektów w tej samej odpowiedzi. Zobacz [Uzyskaj adres wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) Aby dowiedzieć się więcej na temat parametrów obiektu odpowiedzi.
 
 **Obsługiwane typy wyników:**
 
-**Adres punktu:** Wskazuje na mapie z określonego adresu przy użyciu nazwy ulica i numer. Najwyższy poziom dokładności dostępnych adresów. 
+* **Adres punktu:** Wskazuje na mapie z określonego adresu przy użyciu nazwy ulica i numer. Najwyższy poziom dokładności dostępnych adresów. 
 
-**Zakres adresów:**  W przypadku niektórych streets istnieją punkty adresów, które są interpolowane z początku i końcu ulicy; te punkty są reprezentowane jako zakres adresów. 
+* **Zakres adresów:**  W przypadku niektórych streets istnieją punkty adresów, które są interpolowane z początku i końcu ulicy; te punkty są reprezentowane jako zakres adresów. 
 
-**Lokalizacja geograficzna:** Obszary na mapę, która reprezentuje podział administracyjny gruntów, to znaczy, kraj, stan, miasta. 
+* **Lokalizacja geograficzna:** Obszary na mapę, która reprezentuje podział administracyjny gruntów, to znaczy, kraj, stan, miasta. 
 
-**GROT - (punktów orientacyjnych):** Punktów na mapie, które są warte uwagi i mogą być interesujące.
+* **GROT - (punktów orientacyjnych):** Punktów na mapie, które są warte uwagi i mogą być interesujące.
 
-**Ulica:** Reprezentacja Streets (ulice) na mapie. Adresy są rozwiązywane do Współrzędna szerokości/długości geograficznej ulicy, która zawiera adres. Numer domu nie mogą być przetwarzane. 
+* **Ulica:** Reprezentacja Streets (ulice) na mapie. Adresy są rozwiązywane do Współrzędna szerokości/długości geograficznej ulicy, która zawiera adres. Numer domu nie mogą być przetwarzane. 
 
-**Ulica wielu:** Przecięcia. Reprezentacje punktach transferu; miejsca przecięcia się dwie Streets (ulice).
+* **Ulica wielu:** Przecięcia. Reprezentacje punktach transferu; miejsca przecięcia się dwie Streets (ulice).
 
 **Odpowiedź:**
 
 ```JSON
 {
     "summary": {
-        "query": "400 broad st seattle wa",
+        "query": "400 broad street seattle wa",
         "queryType": "NON_NEAR",
         "queryTime": 129,
         "numResults": 6,

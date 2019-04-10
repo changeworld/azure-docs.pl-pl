@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 71f792dd1238b11810abfb6a97ac9e051da2ec45
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274639"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357178"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -127,14 +127,14 @@ Aby uruchamiać zapytania Kusto:
 1. Po zainstalowaniu agentów, przejdź do portalu i kliknij przycisk **Przegląd**.
 2. W **Przegląd**, przejdź do **Essentials** części projektu i kliknij przycisk Dalej, aby nazwa obszaru roboczego **obszaru roboczego pakietu OMS**.
 3. Na stronie obszaru roboczego usługi Log Analytics kliknij **ogólne** > **dzienniki**.
-4. Napisz zapytanie do zbierania danych zależności przy użyciu dzienników usługi Azure Monitor. Przykładowe zapytania, aby zebrać dane zależności są dostępne [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Napisz zapytanie do zbierania danych zależności przy użyciu dzienników usługi Azure Monitor. Znajdź przykładowe zapytania w następnej sekcji.
 5. Uruchom zapytanie, klikając polecenie Uruchom. 
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tym, jak pisać zapytania Kusto. 
 
 ## <a name="sample-azure-monitor-logs-queries"></a>Przykład usługi Azure Monitor rejestruje zapytania
 
-Poniżej przedstawiono przykładowe zapytania, można użyć, aby wyodrębnić dane zależności. Można zmodyfikować zapytania, które można wyodrębnić punkty preferowany. Wyczerpujący wykaz pól w rekordach zależności jest dostępna [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)
+Poniżej przedstawiono przykładowe zapytania, można użyć, aby wyodrębnić dane zależności. Można zmodyfikować zapytania, które można wyodrębnić punkty preferowany. Wyczerpujący wykaz pól w rekordach zależności jest dostępna [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records). Znajdź więcej przykładowych zapytań [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 
 ### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Podsumowanie połączenia przychodzące na zestawie maszyn
 

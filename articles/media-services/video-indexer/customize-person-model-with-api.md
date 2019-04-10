@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999355"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360504"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Dostosuj model osoba, za pomocą interfejsu API indeksatora wideo
 
@@ -50,16 +50,16 @@ Poniżej znajduje się na żądanie w Curl.
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?).
+[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
 
 ### <a name="request-parameters"></a>Parametry żądania 
 
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
+|**Name (Nazwa)**|**Type**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|ciąg|Yes|Unikatowy identyfikator globalny dla konta|
-|name|ciąg|Yes|Nazwa modelu osoby|
-|accessToken|ciąg|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
+|name|string|Yes|Nazwa modelu osoby|
+|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -95,16 +95,16 @@ Poniżej znajduje się na żądanie w Curl.
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-PersonModel?).
+[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
+|**Name (Nazwa)**|**Type**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|ciąg|Yes|Unikatowy identyfikator globalny dla konta|
-|id|ciąg|Yes|Identyfikator modelu osoby (generowany podczas tworzenia modelu osoby)|
-|accessToken|ciąg|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
+|id|string|Yes|Identyfikator modelu osoby (generowany podczas tworzenia modelu osoby)|
+|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -132,15 +132,15 @@ Poniżej znajduje się na żądanie w Curl.
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-PersonModels?).
+[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
+|**Name (Nazwa)**|**Type**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|ciąg|Yes|Unikatowy identyfikator globalny dla konta|
-|accessToken|ciąg|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -187,18 +187,18 @@ Poniżej znajduje się na żądanie w Curl.
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-face?).
+[Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
 
 ### <a name="request-parameters"></a>Parametry żądania
 
-|**Nazwa**|**Typ**|**Wymagane**|**Opis**|
+|**Name (Nazwa)**|**Type**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
-|accountId|ciąg|Yes|Unikatowy identyfikator globalny dla konta|
-|videoId|ciąg|Yes|Identyfikator filmu wideo, w którym pojawia się twarz, którą chcesz zaktualizować. To jest tworzony, gdy wideo zostanie przekazany i indeksowane.|
+|location|string|Yes|Region platformy Azure, do którego powinny być kierowane wywołania. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure i Video Indexer](regions.md).|
+|accountId|string|Yes|Unikatowy identyfikator globalny dla konta|
+|videoId|string|Yes|Identyfikator filmu wideo, w którym pojawia się twarz, którą chcesz zaktualizować. To jest tworzony, gdy wideo zostanie przekazany i indeksowane.|
 |faceId|liczba całkowita|Yes|Identyfikator twarzy, które zostaną zaktualizowane. Indeks wideo można uzyskać faceId|
-|accessToken|ciąg|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
-|name|ciąg|Yes|Nowa nazwa do rozpoznawania twarzy, za pomocą aktualizacji.|
+|accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
+|name|string|Yes|Nowa nazwa do rozpoznawania twarzy, za pomocą aktualizacji.|
 
 Nazwy są unikatowe dla modeli osoby, więc jeśli nadasz dwa różne twarze na tej samej osoby modelu takie same **nazwa** wartość parametru i Video Indexer widoków powierzchnie jako ta sama osoba i zbieżna dla wartości, ich po ponownego poindeksowania danych filmu wideo. 
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878302"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280897"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -87,6 +87,8 @@ Wdrożonych modelach są spakowane w formie obrazu. Obraz zawiera zależności n
 
 Aby uzyskać **wystąpienia kontenera platformy Azure**, **usługi Azure Kubernetes Service**, i **usługi Azure IoT Edge** wdrożeń [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) klasa jest używana do tworzenia konfiguracji obrazu. Konfiguracja obrazu jest następnie używany do utworzenia nowego obrazu platformy Docker.
 
+Podczas tworzenia konfiguracji obrazu, można użyć __domyślny obraz__ udostępniane przez usługę Azure Machine Learning lub __obrazu niestandardowego__ przez Ciebie.
+
 Poniższy kod przedstawia sposób tworzenia nowej konfiguracji obrazu:
 
 ```python
@@ -112,6 +114,36 @@ Ważne parametry w tym przykładzie opisano w poniższej tabeli:
 Aby uzyskać przykład tworzenia konfiguracji obrazu, zobacz [wdrażanie klasyfikatora obraz](tutorial-deploy-models-with-aml.md).
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [ContainerImage, klasa](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
+
+### <a id="customimage"></a> Używanie niestandardowego obrazu
+
+Korzystając z niestandardowego obrazu, obraz, który musi spełniać następujące wymagania:
+
+* Ubuntu 16.04 lub nowszej.
+* Conda 4.5. # lub nowszej.
+* Język Python 3.5. # lub 3.6. #.
+
+Aby użyć obrazu niestandardowego, ustaw `base_image` właściwość konfiguracji obrazu na adres obrazu. Poniższy przykład ilustruje sposób używania obrazu z obu publicznymi i prywatnymi usługi Azure Container Registry:
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+Aby uzyskać więcej informacji na temat przekazywania obrazów do usługi Azure Container Registry, zobacz [Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+
+Jeśli model jest uczony w obliczeniowego usługi Azure Machine Learning, za pomocą __wersji 1.0.22 lub nowszej__ zestawu Azure SDK Learning maszyny, obraz jest tworzony podczas szkolenia. Poniższy przykład pokazuje sposób użycia następująco:
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> Wykonanie skryptu
 
@@ -396,7 +428,7 @@ Aby zapoznać się z przewodnikiem wdrażania modelu za pomocą Project Brainwav
 
 ## <a name="define-schema"></a>Definiowanie schematu
 
-Dekoratory niestandardowe mogą służyć do [OpenAPI](https://swagger.io/docs/specification/about/) specyfikacji generacji i danych wejściowych typu manipulacji podczas wdrażania usługi sieci web. W `score.py` pliku podawanej przykładowe dane wejściowe i/lub dane wyjściowe w Konstruktorze w jednym z obiektów zdefiniowanego typu, a przykład i typ są używane do automatycznego generowania schematu. Obecnie obsługiwane są następujące typy:
+Dekoratory niestandardowe mogą służyć do [OpenAPI](https://swagger.io/docs/specification/about/) specyfikacji generacji i danych wejściowych typu manipulacji podczas wdrażania usługi sieci web. W `score.py` plik, podawanej przykładowe dane wejściowe i/lub dane wyjściowe w Konstruktorze w jednym z obiektów zdefiniowanego typu i typu i przykładowe są używane do automatycznego tworzenia schematu. Obecnie obsługiwane są następujące typy:
 
 * `pandas`
 * `numpy`

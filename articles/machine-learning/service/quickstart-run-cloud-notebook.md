@@ -10,71 +10,71 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cd643185fb4647b19082980edfd333c507aab8a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0672d90a25bc4c879d28512ab212f98f29efbf3b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266260"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358221"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
-Utwórz serwer opartych na chmurze Notes, a następnie użyj go, aby uruchomić kod, który rejestruje wartości w usłudze Azure Machine Learning [obszaru roboczego](concept-azure-machine-learning-architecture.md). Twój obszar roboczy jest podstawowe bloku w chmurze, którego używasz do eksperymentowania, uczenia i wdrażania modeli uczenia maszynowego przy użyciu usługi Machine Learning. 
+W tym artykule używasz notesów usługi Azure, aby uruchomić kod, który jest zalogowany w usłudze Azure Machine Learning [obszaru roboczego](concept-azure-machine-learning-architecture.md). Twój obszar roboczy jest podstawowe bloku w chmurze, którego używasz do eksperymentowania, uczenia i wdrażania modeli uczenia maszynowego przy użyciu usługi Machine Learning. 
 
-Ten przewodnik Szybki Start przedstawiono sposób tworzenia zasobu chmury w obszarze roboczym usługi Azure Machine Learning skonfigurowany ze środowiskiem Python niezbędne do uruchomienia usługi Azure Machine Learning. Aby użyć własnego środowiska, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu](quickstart-run-local-notebook.md).  
+Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby użyć własnego środowiska, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu](quickstart-run-local-notebook.md).  
  
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
-* Tworzenie stacji roboczej
-* Uruchom serwer notesu Jupyter na stacji roboczej
-* Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
-* Uruchamianie notesu.
-* Wyświetl wartości błędów rejestrowane w obszarze roboczym.  W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+* Połącz się z obszarem roboczym przy użyciu języka Python w notesie Jupyter. Notes, zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji. 
+* Wyświetl wartości błędów rejestrowane w obszarze roboczym.
 
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Wymagania wstępne
 
 1. [Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md#portal) Jeśli nie masz.
 
-1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com/).  Jeśli nie masz pewności, jak znaleźć obszaru roboczego w portalu, zobacz temat jak [Znajdź obszar roboczy](how-to-manage-workspace.md#view).
+1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com/).  Zobacz jak [Znajdź obszar roboczy](how-to-manage-workspace.md#view).
 
-## <a name="create-a-workstation"></a>Tworzenie stacji roboczej 
+## <a name="use-your-workspace"></a>Używania Twojego obszaru roboczego
 
-Stacja robocza Notes umożliwia platformy z opartych na chmurze dla notesów programu Jupyter, który został wstępnie skonfigurowany z wszystko, czego potrzebujesz, aby uruchomić usługę Azure Machine Learning. Z obszaru roboczego można utworzyć tej platformie, aby rozpocząć korzystanie z notesów programu Jupyter.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
-1. Na stronie obszaru roboczego w witrynie Azure portal, wybierz **stacji roboczej notesu** po lewej stronie.
 
-1. Wybierz **tworzenie notesów w stacji roboczej usługi Azure Machine Learning (wersja zapoznawcza)**
+
+Dowiedz się, jak obszar roboczy ułatwia zarządzanie skryptów uczenia maszynowego. W tej sekcji wykonasz następujące kroki:
+
+* Otwieranie notesu w usłudze Azure Notebooks.
+* Uruchamianie kodu, który tworzy niektóre rejestrowane wartości.
+* Wyświetlanie zarejestrowanych wartości w obszarze roboczym.
+
+W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+
+### <a name="open-a-notebook"></a>Otwieranie notesu 
+
+Usługa [Azure Notebooks](https://notebooks.azure.com) udostępnia bezpłatną platformę w chmurze do przechowywania notesów Jupyter, które są wstępnie skonfigurowane do obsługi wszystkich elementów potrzebnych, aby uruchomić usługę Machine Learning. W obszarze roboczym można uruchomić tej platformie, aby rozpocząć korzystanie z obszaru roboczego usługi Azure Machine Learning.
+
+1. Na stronie Omówienie obszaru roboczego wybierz **Rozpoczynanie pracy notesów usługi Azure** próby swoje pierwsze eksperymentalne rozwiązanie w notesach platformy Azure.  Azure Notebooks to oddzielna usługa, która umożliwia bezpłatne uruchamianie notesów programu Jupyter w chmurze.  Jeśli użyjesz tego linku do usługi, informacje o sposobie łączenia się z obszarem roboczym zostaną dodane do biblioteki tworzonej w usłudze Azure Notebooks.
 
    ![Eksplorowanie obszaru roboczego](./media/quickstart-run-cloud-notebook/explore-aml.png)
 
-1. **Stacje robocze notesu** sekcja pokazuje listę dostępnych serwerów opartych na chmurze Notes w obszarze roboczym.  W tym miejscu możesz zarządzać tymi zasobami i usuwać je, gdy nie są już potrzebne. 
+1. Zaloguj się do usługi Azure Notebooks.  Upewnij się, że logujesz się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure Portal. Organizacja może wymagać [zgody administratora](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) przed zalogowaniem się.
 
-1. Wybierz **Dodawanie stacji roboczej** Aby utworzyć notes stacji roboczej.
+1. Po zalogowaniu zostanie otwarta nowa karta z wyświetlonym monitem `Clone Library`. Sklonowanie tej biblioteki spowoduje załadowanie zestawu notesów i innych plików na konto usługi Azure Notebooks.  Te pliki pomogą Ci w eksplorowaniu możliwości usługi Azure Machine Learning.
 
-     ![Wybieranie opcji dodawania stacji roboczej](./media/quickstart-run-cloud-notebook/add-workstation.png)
+1. Usuń zaznaczenie pola wyboru **Publiczne**, aby nie udostępniać informacji o obszarze roboczym innym osobom.
 
-1. W sekcji Dodaj stacji roboczej notesu Nadaj swojej stacji roboczej **nazwa obliczeniowego** i wybierz **typ obliczeń**. Następnie wybierz przycisk **Utwórz**.
+1. Wybierz pozycję **Klonuj**.
 
-    ![Tworzenie nowej stacji roboczej](media/quickstart-run-cloud-notebook/create-new-workstation.png)
+   ![Klonowanie biblioteki](./media/quickstart-run-cloud-notebook/clone.png)
 
-    > [!NOTE]
-    > Swojej stacji roboczej zajmuje około dwóch minut, aby utworzyć. Po zakończeniu aktualizacji stanu na "Uruchomiona" i zawiera łącza do aplikacji Jupyter i JupyterLab są wyświetlane.
+1. Jeśli zobaczysz, że projekt jest w stanie Zatrzymano, kliknij pozycję **Uruchom w ramach bezpłatnych obliczeń**, aby korzystać z bezpłatnego serwera notesu.
 
-## <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci web programu Jupyter
-
-Po utworzeniu stacji roboczej za pomocą sekcji notesu stacji roboczych do uruchamiania interfejsu sieci web programu Jupyter.
-
-* Wybierz **Jupyter** lub **laboratorium Jupyter** w **Uruchom** kolumny dla stacji roboczej.
-
-    ![Uruchom serwer notesu Jupyter](./media/quickstart-run-cloud-notebook/start-notebook-server.png)
-
-    Spowoduje to uruchomienie serwera Notes i zostanie otwarta strona główna serwera w nowej karcie przeglądarki.  Serwer zawiera przykładowe notesów, możesz użyć, aby rozpocząć pracę z usługą Azure Machine Learning.
+    ![Uruchamianie projektu w ramach bezpłatnych obliczeń](./media/quickstart-run-cloud-notebook/run-project.png)
 
 ### <a name="run-the-notebook"></a>Uruchamianie notesu
 
-Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboczym.
+Na liście plików tego projektu zobaczysz plik `config.json`. Ten plik konfiguracji zawiera informacje o obszarze roboczym utworzonym w witrynie Azure Portal.  Ten plik umożliwia kodowi nawiązywanie połączenia i dodawanie informacji do obszaru roboczego.
 
 1. Wybierz plik **01.run experiment.ipynb**, aby otworzyć notes.
 
@@ -82,7 +82,9 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
     ![Oczekiwanie na uruchomienie jądra](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
 
-1. Gdy jądro zacznie działać, przy użyciu kombinacji klawiszy **Shift + Enter** uruchom kolejno poszczególne komórki. Możesz też wybrać kolejno pozycje **Komórki** > **Uruchom wszystkie** w celu uruchomienia całego notesu. Po wyświetleniu znak gwiazdki (__*__) obok komórki, komórki jest nadal uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba.  
+1. Gdy jądro zacznie działać, przy użyciu kombinacji klawiszy **Shift + Enter** uruchom kolejno poszczególne komórki. Możesz też wybrać kolejno pozycje **Komórki** > **Uruchom wszystkie** w celu uruchomienia całego notesu. Gdy obok komórki pojawi się znak gwiazdki, __*__, oznacza to, że komórka jest nadal uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba. 
+
+1. Postępuj zgodnie z instrukcjami w notesie w celu uwierzytelnienia subskrypcji platformy Azure.
 
 Po zakończeniu uruchamiania wszystkich komórek w notesie możesz wyświetlić zarejestrowane wartości w swoim obszarze roboczym.
 
@@ -106,16 +108,9 @@ Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykres
 
 Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki Start możesz wykonać następujące czynności:
-
-* Tworzenie stacji roboczej
-* Uruchom serwer notesu Jupyter na stacji roboczej
-* Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
-* Uruchamianie notesu.
-* Wyświetl wartości błędów rejestrowane w obszarze roboczym.  W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+Utworzono zasoby umożliwiające eksperymentowanie i wdrażanie modeli. Uruchomiono też kod w notesie. Zbadano historię przebiegów dotyczącą tego kodu w obszarze roboczym w chmurze.
 
 Aby poznać szczegółowo środowisko przepływu pracy, wykonaj czynności opisane w samouczku dotyczącym trenowania i wdrażania modelu w usłudze Machine Learning:  
 

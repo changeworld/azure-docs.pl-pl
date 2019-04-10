@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie logowania automatycznego przyspieszenia aplikacji za pomocą zasad odnajdowania obszaru macierzystego | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jakie dzierżawę usługi Azure AD i sposobu zarządzania nią za pomocą usługi Azure Active Directory.
+description: Dowiedz się, jak skonfigurować zasady odnajdowania obszaru macierzystego dla uwierzytelniania usługi Azure Active Directory dla użytkowników federacyjnych, w tym automatycznego przyspieszenia i domeny.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190266"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360938"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania usługi Azure Active Directory w zachowaniu aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 
-Ten dokument zawiera wprowadzenie do konfigurowania zachowania uwierzytelniania usługi Azure Active Directory dla użytkowników federacyjnych.   Poruszono w nim konfiguracji uwierzytelniania i automatycznego przyspieszenia ograniczeń dla użytkowników w domenach federacyjnych.
+Ten artykuł zawiera wprowadzenie do konfigurowania zachowania uwierzytelniania usługi Azure Active Directory dla użytkowników federacyjnych. Poruszono w nim konfiguracji uwierzytelniania i automatycznego przyspieszenia ograniczeń dla użytkowników w domenach federacyjnych.
 
 ## <a name="home-realm-discovery"></a>Odnajdowanie obszaru głównego
 Home obszaru odnajdywania (HRD) to proces, który umożliwia usłudze Azure Active Directory (Azure AD), aby określić, w którym użytkownik musi uwierzytelnić podczas logowania.  Gdy użytkownik loguje się do dzierżawy usługi Azure AD, aby uzyskać dostęp do zasobu lub usługi Azure AD wspólnej strony logowania, ich wpisz nazwę użytkownika (UPN). Usługi Azure AD używa, aby dowiedzieć się, gdy użytkownik musi się zalogować. 

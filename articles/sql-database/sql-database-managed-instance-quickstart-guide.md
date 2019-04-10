@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein, carlr
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 08b7870000b38d782e9282eef7ec9c0d551094dd
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 739afe52403633b1a37f57f0005a85972cc78a39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444315"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360170"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Wprowadzenie do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -65,8 +65,8 @@ Jeśli masz już sieć wirtualną i podsieć, w których chcesz wdrożyć wystą
 
  Jeśli nie utworzono środowiska sieciowego zgodnie z opisem w poprzednim kroku, witryna Azure Portal może to zrobić za Ciebie — jedyną wadą tego rozwiązania jest fakt, że zostanie ono skonfigurowane przy użyciu wartości domyślnych dla niektórych parametrów, a tych wartości nie będzie można zmienić później. Ewentualnie możesz użyć następujących narzędzi:
 
-- [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)
-- [Program PowerShell z szablonem usługi Resource Manager](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)
+- [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)
+- [PowerShell za pomocą szablonu usługi Resource Manager](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)
 - [Interfejs wiersza polecenia platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/).
 - [Szablon usługi Resource Manager](sql-database-single-database-get-started-template.md)
 

@@ -5,58 +5,45 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360371"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357974"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
-Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii i ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania migracją maszyn lokalnych na platformę Azure.
+
+W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md). Ogólnie rzecz biorąc Usługa Site Recovery jest używany do zarządzania i Organizuj odzyskiwanie po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure. Jednak może również służyć do migracji. Migracja używa te same czynności co odzyskiwania po awarii z jednym wyjątkiem. W przypadku migracji przechodzenie maszyn w tryb failover z lokacji lokalnej jest to ostatni krok. W przeciwieństwie do odzyskiwania po awarii nie powrotu po awarii do środowiska lokalnego w scenariuszu migracji.
 
 
-Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnych i serwerów fizycznych na platformę Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnych i serwerów fizycznych na platformę Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Wybieranie celu replikacji
-> * Konfigurowanie środowiska źródłowego i docelowego
+> * Konfigurowanie środowiska źródłowego i docelowego do migracji
 > * Konfigurowanie zasad replikacji
 > * Włączanie replikacji
 > * Uruchamianie testowania migracji w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami
 > * Uruchamianie jednokrotnego przejścia w tryb failover na platformie Azure
 
-Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykonane zadania z poprzednich samouczków:
-
-1. [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
-2. Przygotuj lokalne serwery [programu VMware](vmware-azure-tutorial-prepare-on-premises.md) lub [funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
-
-Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-architecture.md) lub [Hyper-V](hyper-v-azure-architecture.md) na potrzeby odzyskiwania po awarii.
 
 > [!TIP]
-> Czy chcesz uczestniczyć w naszego nowego środowiska bez wykorzystania agentów dla migracji maszyn wirtualnych VMware na platformę Azure? [Więcej informacji można znaleźć](https://aka.ms/migrateVMs-signup).
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
+> Usługa Azure Migrate oferuje obecnie nowe środowisko bez agenta w wersji zapoznawczej dla migracji maszyn wirtualnych VMware na platformę Azure. [Więcej informacji można znaleźć](https://aka.ms/migrateVMs-signup).
 
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Kliknij kolejno pozycje **Utwórz zasób** > **Narzędzia do zarządzania** > **Backup i Site Recovery**.
-3. W polu **Nazwa** podaj przyjazną nazwę **ContosoVMVault**. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
-4. Utwórz grupę zasobów **ContosoRG**.
-5. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Aby szybko uzyskać dostęp do magazynu z pulpitu nawigacyjnego, kliknij pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
+Należy pamiętać, że urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 
-   ![Nowy magazyn](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
-Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszystkie zasoby** oraz pojawi się na stronie głównej **Magazyny usługi Recovery Services**.
+## <a name="prepare-azure-and-on-premises"></a>Przygotowywanie platformy Azure i w środowisku lokalnym
+
+1. Przygotowywanie platformy Azure, zgodnie z opisem w [w tym artykule](tutorial-prepare-azure.md). Mimo że w tym artykule opisano kroki przygotowania do odzyskiwania po awarii, kroki również są prawidłowe dla migracji.
+2. Przygotuj lokalne serwery [programu VMware](vmware-azure-tutorial-prepare-on-premises.md) lub [funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md). W przypadku migrowania maszyn fizycznych, nie ma potrzeby przygotowawczych. Sprawdź, po prostu [macierz obsługi](vmware-physical-azure-support-matrix.md).
 
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
@@ -72,9 +59,11 @@ Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać rep
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-- [Skonfiguruj](vmware-azure-tutorial.md#set-up-the-source-environment) środowisko źródłowe dla maszyn wirtualnych oprogramowania VMware.
-- [Skonfiguruj](physical-azure-disaster-recovery.md#set-up-the-source-environment) środowisko źródłowe dla serwerów fizycznych.
-- [Skonfiguruj](hyper-v-azure-tutorial.md#set-up-the-source-environment) środowisko źródłowe dla maszyn wirtualnych funkcji Hyper-V.
+**Scenariusz** | **Szczegóły**
+--- | --- 
+VMware | Konfigurowanie [środowisko źródłowe](vmware-azure-set-up-source.md)i skonfiguruj [serwera konfiguracji](vmware-azure-deploy-configuration-server.md).
+Maszyna fizyczna | [Konfigurowanie](physical-azure-set-up-source.md) środowiska i konfiguracji serwera źródłowego.
+Funkcja Hyper-V | Konfigurowanie [środowiska źródłowego](hyper-v-azure-tutorial.md#set-up-the-source-environment)<br/><br/> Konfigurowanie [środowisko źródłowe](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 ## <a name="set-up-the-target-environment"></a>Konfigurowanie środowiska docelowego
 
@@ -82,20 +71,26 @@ Wybierz i zweryfikuj zasoby docelowe.
 
 1. Kliknij kolejno pozycje **Przygotowywanie infrastruktury** > **Docelowa** i wybierz subskrypcję platformy Azure do użycia.
 2. Określ model wdrażania usługi Resource Manager.
-3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
+3. Usługa Site Recovery sprawdza zasobów platformy Azure.
+    - W przypadku migrowania maszyn wirtualnych VMware lub serwery fizyczne, Usługa Site Recovery sprawdza, czy masz siecią platformy Azure, w której maszyny wirtualne Azure zostaną umieszczone po ich utworzeniu po włączeniu trybu failover.
+    - W przypadku migrowania maszyn wirtualnych funkcji Hyper-V, Usługa Site Recovery sprawdza, czy masz konto magazynu platformy Azure zgodny i sieci.
+4. W przypadku migrowania maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM, skonfigurować [mapowania sieci](hyper-v-vmm-azure-tutorial.md#configure-network-mapping).
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
-- [Skonfiguruj zasady replikacji](vmware-azure-tutorial.md#create-a-replication-policy) dla maszyn wirtualnych oprogramowania VMware.
-- [Skonfiguruj zasady replikacji](physical-azure-disaster-recovery.md#create-a-replication-policy) dla serwerów fizycznych.
-- [Skonfiguruj zasady replikacji](hyper-v-azure-tutorial.md#set-up-a-replication-policy) dla maszyn wirtualnych funkcji Hyper-V.
-
+**Scenariusz** | **Szczegóły**
+--- | --- 
+VMware | Konfigurowanie [zasad replikacji](vmware-azure-set-up-replication.md) dla maszyn wirtualnych VMware.
+Maszyna fizyczna | Konfigurowanie [zasad replikacji](physical-azure-disaster-recovery.md#create-a-replication-policy) maszyn fizycznych.
+Funkcja Hyper-V | Konfigurowanie [zasad replikacji](hyper-v-azure-tutorial.md#set-up-a-replication-policy)<br/><br/> Konfigurowanie [zasad replikacji](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-- [Włącz replikację](vmware-azure-tutorial.md#enable-replication) dla maszyn wirtualnych oprogramowania VMware.
-- [Włącz replikację](physical-azure-disaster-recovery.md#enable-replication) dla serwerów fizycznych.
-- Włącz replikację dla maszyn wirtualnych funkcji Hyper-V [z programem VMM](hyper-v-vmm-azure-tutorial.md#enable-replication) lub [bez programu VMM](hyper-v-azure-tutorial.md#enable-replication).
+**Scenariusz** | **Szczegóły**
+--- | --- 
+VMware | [Włącz replikację](vmware-azure-enable-replication.md) dla maszyn wirtualnych oprogramowania VMware.
+Maszyna fizyczna | [Włącz replikację](physical-azure-disaster-recovery.md#enable-replication) maszyn fizycznych.
+Funkcja Hyper-V | [Włączanie replikacji](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Włącz replikację](hyper-v-vmm-azure-tutorial.md#enable-replication) funkcji Hyper-v wdrożone za pomocą programu System Center VMM.
 
 
 ## <a name="run-a-test-migration"></a>Uruchamianie migracji testowej
@@ -160,8 +155,13 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 - Zaktualizuj wszystkie dokumenty wewnętrzne, aby wyświetlić nową lokalizację i adres IP maszyn wirtualnych platformy Azure.
 
 
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz można [skonfigurować odzyskiwanie po awarii](azure-to-azure-replicate-after-migration.md) w regionie pomocniczym platformy Azure dla maszyn wirtualnych platformy Azure.
+W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie odzyskiwania po awarii](azure-to-azure-replicate-after-migration.md) do regionu pomocniczego platformy Azure dla maszyn wirtualnych platformy Azure.
 
   

@@ -11,29 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 04/5/2019
 ms.author: banders
-ms.openlocfilehash: 229b5a0948a81c9b5d78dd49f304e7b6891f95ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653251"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281985"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwrot kosztów dla platformy Azure rezerwacji
 
 Rezerwacje platformy Azure zapewniają elastyczność pozwalającą spełniać potrzeby stale rosnących potrzeb. Mogą wymieniać rezerwacji do innej rezerwacji tego samego typu. Jeśli nie są już potrzebne, można również zwrócić rezerwacji, maksymalnie 50 000 USD rocznie.
+
+Możliwości programu exchange i Anuluj samoobsługi nie jest dostępna dla US Government klienci z umową Enterprise. Obsługiwane są inne typy subskrypcji dla instytucji rządowych USA, łącznie z rzeczywistym użyciem i dostawcy usług Kryptograficznych.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Wymiany istniejącego wystąpienia zarezerwowane
 
 Mogą wymieniać rezerwacji z trzech krótkich krokach w [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 1. Wybierz rezerwacji, które chcesz zwrotu, a następnie kliknij przycisk **Exchange**.  
-    ![Przykładowy obraz przedstawiający rezerwacje, aby zwrócić ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+    ![Przykładowy obraz przedstawiający rezerwacje, aby zwrócić](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
 2. Wybierz produkt maszyny Wirtualnej, który chcesz kupić, a następnie wpisz ilość. Upewnij się, że nowa suma zakupu jest większa niż suma zwrotu. [Rozmiar jest określany na prawo przed zakupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
-    ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+    ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Przejrzyj i Zakończ transakcję.  
-    ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange z ukończenie powrotu ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+    ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange z ukończenie powrotu](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
 Aby zwrot kosztów rezerwacji, przejdź do **szczegóły rezerwacji** i kliknij przycisk **zwrotu**.
 
@@ -84,7 +86,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 - Aby dowiedzieć się, jak zarządzać rezerwacji, zobacz [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
-    - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+    - [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
     - [Zarządzanie zastrzeżeniami na platformie Azure](billing-manage-reserved-vm-instance.md)
     - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
     - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)

@@ -1,7 +1,6 @@
 ---
 title: Korzystanie z parametrów do tworzenia dynamicznych plany
 description: Więcej informacji na temat parametrów statyczne i dynamiczne i jak za ich pomocą tworzy schematy dynamiczne.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/12/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805576"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279979"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -77,8 +76,8 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
-- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+- `{YourMG}` -Zamień na nazwę grupy zarządzania
+- `{subscriptionId}` -Zastąp identyfikator subskrypcji
 
 ##### <a name="blueprint-level-parameter"></a>Parametr poziomu planu
 

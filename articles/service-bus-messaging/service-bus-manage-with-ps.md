@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 9810baf433ddf67997aeda10856060edc0d1ebec
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051157"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359139"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Zarządzanie zasobami usługi Service Bus przy użyciu programu PowerShell
 
@@ -83,11 +83,11 @@ Ta część skrypt wykonuje następujące czynności:
 
 ### <a name="create-a-namespace-authorization-rule"></a>Utwórz regułę autoryzacji przestrzeni nazw
 
-Poniższy przykład pokazuje, jak zarządzać przy użyciu reguły autoryzacji przestrzeni nazw [New AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule), [Get AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule), [AzServiceBusNamespaceAuthorizationRule zestaw](/powershell/module/az.servicebus/set-azservicebusnamespaceauthorizationrule), i [polecenia cmdlet Remove-AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule).
+Poniższy przykład pokazuje, jak zarządzać przy użyciu reguły autoryzacji przestrzeni nazw [New AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule), [Get AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule), [ Zestaw AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule), i [AzServiceBusAuthorizationRule Usuń](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) polecenia cmdlet.
 
 ```powershell
 # Query to see if rule exists
-$CurrentRule = Get-AzServiceBusNamespaceAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
+$CurrentRule = Get-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
 
 # Check if the rule already exists or needs to be created
 if ($CurrentRule)

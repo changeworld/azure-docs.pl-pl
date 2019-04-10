@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/05/2019
 ms.author: sogup
-ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905974"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359958"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -23,12 +23,11 @@ ms.locfileid: "58905974"
 Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funkcji:
 
 * Możliwość stosowania migawek wykonanych w ramach zadania tworzenia kopii zapasowej, który jest dostępny dla odzyskiwania bez oczekiwania na przesyłanie danych do magazynu, aby zakończyć. Zmniejsza to czas oczekiwania dla migawek skopiować do magazynu przed wyzwoleniem przywracania.
-* Skraca okresy i przywracania kopii zapasowych, zachowując lokalnie, migawki przez dwa dni domyślnie. Ten magazyn domyślny jest konfigurowany na wartość z zakresu od 1 do 5 dni.
-* Obsługa dysków o rozmiarach do 4 TB.
+* Skraca okresy i przywracania kopii zapasowych, zachowując lokalnie, migawki przez dwa dni domyślnie. Ta migawka przechowywania wartość domyślna to można skonfigurować dowolną wartość z zakresu od 1 do 5 dni.
+* Obsługa dysków o rozmiarach do 4 TB. Usługa Azure Backup nie obsługuje dysków rozłożonych. Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
 * Obsługuje dyski SSD w warstwie standardowa wraz z dysków standardowych dysków Twardych i dysków SSD w warstwie Premium.
 *   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>What's new in tej funkcji
 
@@ -75,9 +74,9 @@ W witrynie Azure portal można zobaczyć pola dodane w **zasad tworzenia kopii z
 > Za pomocą programu PowerShell Az wersji 1.6.0 lub nowszy można zaktualizować okresu przechowywania natychmiastowe Przywracanie migawki w zasadach przy użyciu programu PowerShell
 
 ```powershell
-PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Przechowywania migawek domyślne dla każdej zasady jest równa 2 dni. Użytkownik może zmienić wartość co najmniej 1 i maksymalnie 5 dni. Co tydzień zasad przechowywania migawki zostanie usunięty z 5 dni.
 

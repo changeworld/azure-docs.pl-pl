@@ -8,18 +8,41 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/03/2019
 ms.author: carlrab
-ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861297"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360085"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
 Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Database i w dokumentacji usługi SQL Database. Ulepszeń usługi SQL Database, zobacz też [aktualizacji usługi SQL Database](https://azure.microsoft.com/updates/?product=sql-database). Ulepszenia do innych usług platformy Azure, można zobaczyć [aktualizowaniem usługi](https://azure.microsoft.com/updates).
+
+## <a name="features-in-public-preview"></a>Funkcje w wersji zapoznawczej
+
+| Cecha | Szczegóły |
+| ---| --- |
+| Zadania elastycznych baz danych | Aby uzyskać informacje, zobacz [tworzenie, konfigurowanie i zarządzanie nimi zadań elastycznych](elastic-jobs-overview.md) |
+| Transakcje elastyczne | [Transakcje rozproszone w bazach danych w chmurze](sql-database-elastic-transactions-overview.md) |
+| Zapytania elastyczne | Aby uzyskać informacje, zobacz [elastyczne zapytanie — omówienie](sql-database-elastic-query-overview.md) |
+| Replikacja za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database](replication-with-sql-database-managed-instance.md)|
+| Sortowania wystąpienia za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Użyj programu PowerShell przy użyciu szablonu usługi Azure Resource Manager, aby utworzyć wystąpienie zarządzane usługi Azure SQL Database](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
+| R services / usługi machine learning za pomocą pojedynczych baz danych i pul elastycznych |Aby uzyskać informacje, zobacz [usługi Machine Learning w usłudze Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)|
+| Odzyskiwanie bazy danych jej jako przyspieszonej za pomocą pojedynczych baz danych i pul elastycznych | Aby uzyskać informacje, zobacz [przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md)|
+| Odnajdowanie i klasyfikacja danych  |Aby uzyskać informacje, zobacz [usługi Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md)|
+| Przezroczyste szyfrowanie danych (TDE) przy użyciu Bring Your Own Key (BYOK) z wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Azure przezroczyste szyfrowanie danych SQL za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault: Bring Your Own Key pomocy technicznej](transparent-data-encryption-byok-azure-sql.md)|
+| Utwórz ponownie usuwanej bazy danych z wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [ponownie utworzyć usunięte bazy danych w wystąpieniu zarządzanym usługi SQL Azure](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)|
+| Wykrywanie zagrożeń za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Konfigurowanie wykrywania zagrożeń w usłudze Azure SQL Database, wystąpienia zarządzanego](sql-database-managed-instance-threat-detection.md)|
+| Warstwy usługi w Hiperskali o pojedynczych baz danych |Aby uzyskać informacje, zobacz [warstwy usług w Hiperskali dla maksymalnie 100 TB](sql-database-service-tier-hyperscale.md)|
+| Edytor zapytań w witrynie Azure portal |Aby uzyskać informacje, zobacz [używać edytora zapytań SQL w witrynie Azure portal do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](sql-database-connect-query-portal.md)|
+|Przybliżona liczba unikatowych|Aby uzyskać informacje, zobacz [przybliżony Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
+|Tryb partii na magazynu wierszy (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [tryb usługi Batch na magazynu wierszy](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
+|Zwrotna przydziału pamięci (w trybie wiersza) (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [zwrotna przydziału pamięci (w trybie wiersza)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
+|Tabela zmiennych odroczone kompilacji (na poziomie zgodności 150)|Aby uzyskać informacje, zobacz [kompilacji odroczone w zmiennej tabeli](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
+|||
 
 ## <a name="march-2019"></a>Marca 2019 r
 
@@ -27,7 +50,7 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
-| Wkrótce ||
+| Ogólna dostępność: Obsługa skalowania odczytu w poziomie dla usługi Azure SQL Database | Aby uzyskać więcej informacji, zobacz [odczytu skalowalnego w poziomie](sql-database-read-scale-out.md)|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji

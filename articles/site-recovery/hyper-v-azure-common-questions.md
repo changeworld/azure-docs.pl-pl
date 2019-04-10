@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c4e87e365e11084a7088522f64abef238d04b715
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271488"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357996"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
 
@@ -29,6 +29,31 @@ Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić
 
 ## <a name="azure"></a>Azure
 
+### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Co należy w funkcji Hyper-V do organizowania replikacji z usługą Site Recovery?
+
+Wymagania serwera hosta funkcji Hyper-V zależą od scenariusza wdrożenia. Zapoznaj się z wymaganiami wstępnymi funkcji Hyper-V:
+
+* [Replicating Hyper-V VMs (without VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [bez programu VMM] do platformy Azure)](site-recovery-hyper-v-site-to-azure.md)
+* [Replicating Hyper-V VMs (with VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [z programem VMM] do platformy Azure)](site-recovery-vmm-to-azure.md)
+* [Replicating Hyper-V VMs to a secondary datacenter (Replikacja maszyn wirtualnych funkcji Hyper-V do dodatkowego centrum danych)](site-recovery-vmm-to-vmm.md)
+* Jeśli przeprowadzasz replikację do dodatkowego centrum danych, przeczytaj temat [obsługiwane systemy operacyjne gościa dla maszyn wirtualnych funkcji Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
+* Jeśli przeprowadzasz replikację do platformy Azure, Usługa Site Recovery obsługuje wszystkie systemy operacyjne gościa, które są [obsługiwanym przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
+
+### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Gdy funkcja Hyper-V działa w systemie operacyjnym klienta można chronić maszyny wirtualne?
+Nie. Maszyny wirtualne muszą znajdować się na serwerze hosta funkcji Hyper-V, który jest uruchomiony na serwerze z obsługiwanym systemem Windows. Jeśli musisz chronić komputer kliencki, możesz replikować go jako maszynę fizyczną do [Azure](site-recovery-vmware-to-azure.md) lub [dodatkowego centrum danych](site-recovery-vmware-to-vmware.md).
+
+### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Czy hosty funkcji Hyper-V muszą znajdować się w chmurach programu VMM?
+Jeśli chcesz replikować do dodatkowego centrum danych, a następnie maszyn wirtualnych funkcji Hyper-V muszą znajdować się na funkcji Hyper-V hostuje serwery znajdujące się w chmurze programu VMM. Można replikować do platformy Azure, można replikować maszyny wirtualne, z lub bez niej chmur programu VMM. [Dowiedz się więcej](tutorial-hyper-v-to-azure.md) dotyczących replikacji funkcji Hyper-V do platformy Azure.
+
+
+### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Czy można replikować maszyny wirtualne funkcji Hyper-V drugiej generacji do platformy Azure?
+Tak. Usługa Site Recovery konwertuje z generacji 2 do generacji 1, podczas trybu failover. W przypadku powrotu po awarii maszyny jest konwertowana do generacji 2. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+
+
+### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>Czy mogę wdrożyć usługę Site Recovery z programem VMM, jeśli mam tylko jeden serwer VMM?
+
+Tak. Można replikować maszyny wirtualne na serwerach funkcji Hyper-V w chmurze programu VMM do platformy Azure lub replikować je między chmurami programu VMM na tym samym serwerze. Dla środowiska lokalnego do replikacji lokalnej zaleca się posiadanie serwera VMM w lokacjach głównych i dodatkowych. 
+
 ### <a name="what-do-i-need-in-azure"></a>Czego potrzebujesz na platformie Azure?
 Potrzebujesz subskrypcji platformy Azure, magazyn usługi Recovery Services, konta magazynu i sieci wirtualnej. Magazyn, konto magazynu i sieci musi być w tym samym regionie.
 
@@ -43,7 +68,7 @@ Nie, Usługa Site Recovery nie przechwytuje replikowanych danych, nie ma żadnyc
 
 Usługa Site Recovery jest ISO 27001: 2013, 27018, HIPAA, DPA certyfikowane i jest w trakcie SOC2 i FedRAMP JAB.
 
-### <a name="can-we-keep-on-premises-metadata-within-a-geographic-regions"></a>Może nam obowiązek przechowywania metadanych w środowisku lokalnym w ramach regionów geograficznych?
+### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>Może nam obowiązek przechowywania metadanych w środowisku lokalnym w regionie geograficznym?
 Tak. Po utworzeniu magazynu w regionie, Upewniamy się, że wszystkie metadane używane przez pozostaje Site Recovery w ramach tego regionu geograficznego.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Czy usługa Site Recovery szyfruje replikację?
@@ -75,7 +100,7 @@ Tak, Usługa Site Recovery obsługuje klastrowane hosty funkcji Hyper-V. Należy
 - Wszystkie węzły klastra powinien być zarejestrowany w tym samym magazynie.
 - Jeśli nie używasz programu VMM, wszystkie hosty funkcji Hyper-V w klastrze, należy dodać do tej samej lokacji funkcji Hyper-V.
 - Zainstaluj agenta dostawcy usługi Azure Site Recovery i Recovery Services na każdym hoście funkcji Hyper-V w klastrze i Dodaj hostów do lokacji funkcji Hyper-V.
-- Nie określonej czynności musi odbywać się w klastrze.
+- Nie określonej czynności należy wykonać, w klastrze.
 - Jeśli uruchamiasz narzędzie planista wdrażania funkcji Hyper-v, narzędzie zbiera dane profilu z węzła, w którym jest uruchomiona i której maszyna wirtualna jest uruchomiona. Narzędzia nie zbierają żadnych danych z węzła, który jest wyłączony, ale będzie śledzić tego węzła. Po skonfigurowaniu i uruchomieniu węzła rozpoczyna zbieranie danych profilu maszyny Wirtualnej z niego (Jeśli maszyna wirtualna jest częścią profilu listy maszyn wirtualnych i jest uruchomiona w węźle).
 - Jeśli Maszynę wirtualną na hoście funkcji Hyper-V w magazynie usługi Site Recovery jest migrowana do innego hosta funkcji Hyper-V, w tym samym klastrze lub do hosta autonomicznego, nie jest to negatywny wpływ na replikację maszyny Wirtualnej. Host funkcji Hyper-V musi spełniać [wymagania wstępne](hyper-v-azure-support-matrix.md#on-premises-servers)i być skonfigurowana w magazynie usługi Site Recovery. 
 
@@ -127,7 +152,7 @@ Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
-Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa. 
+W przypadku replikacji na platformie Azure ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage. Dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
 
@@ -187,7 +212,7 @@ Po przejściu w tryb failover maszyn wirtualnych platformy Azure są dostępne z
 Platforma Azure została zaprojektowana z myślą o odporności danych. Usługa Site Recovery został zaprojektowany do trybu failover do pomocniczego centrum danych platformy Azure, zgodnie z umową SLA platformy Azure. Po przejściu do trybu failover, możemy zagwarantować metadane i magazyny pozostają w tym samym regionie geograficznym, który został wybrany dla magazynu.
 
 ### <a name="is-failover-automatic"></a>Czy tryb failover jest automatyczny?
-[Tryb failover](site-recovery-failover.md) nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [PowerShell](/powershell/module/az.siterecovery) do wyzwolenia przejścia w tryb failover.
+[Tryb failover](site-recovery-failover.md) nie jest automatyczny. Zainicjuj tryb failover z jednym kliknięciem w portalu lub użyć [PowerShell](/powershell/module/az.recoveryservices) do wyzwolenia przejścia w tryb failover.
 
 ### <a name="how-do-i-fail-back"></a>Jak I powrót po awarii?
 
@@ -199,7 +224,7 @@ Gdy infrastruktury lokalnej będzie uruchomione ponownie, możesz można wykona�
     - Pełne pobieranie: Po wybraniu tej opcji dane są synchronizowane podczas pracy awaryjnej. Ta opcja spowoduje pobranie całego dysku. Jest szybsze, ponieważ nie sumy kontrolne są obliczane, ale ma więcej przestojów. Użyj tej opcji, jeśli działała repliki maszyn wirtualnych platformy Azure przez pewien czas lub lokalna maszyna wirtualna została usunięta.
 
 2. Możesz wybrać, czy niepowodzenie powrót do tej samej maszyny Wirtualnej lub do alternatywnej maszyny Wirtualnej. Można określić, Usługa Site Recovery należy utworzyć maszynę Wirtualną, jeśli jeszcze nie istnieje.
-3. Po zakończeniu początkowej synchronizacji, należy wybrać do przełączenia w tryb failover. Po zakończeniu instalacji możesz zalogować się na lokalną maszynę Wirtualną w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami. W witrynie Azure portal widać, że maszyny wirtualne platformy Azure zostały zatrzymane.
+3. Po zakończeniu początkowej synchronizacji, należy wybrać do przełączenia w tryb failover. Po zakończeniu instalacji można logowaniu do lokalnej maszyny Wirtualnej do sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami. W witrynie Azure portal widać, że maszyny wirtualne platformy Azure zostały zatrzymane.
 4. Należy zatwierdzić tryb failover, aby zakończyć i rozpocząć uzyskiwanie dostępu do obciążenia z lokalnej maszyny Wirtualnej ponownie.
 5. Po obciążeń przywrócono po awarii, możesz włączyć replikacji odwrotnej, tak, aby replikować do platformy Azure ponownie lokalnych maszyn wirtualnych.
 

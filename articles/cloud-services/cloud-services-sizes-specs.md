@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918267"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358251"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (role sieć web i ról procesów roboczych). Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator, który można umieścić w swojej [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usług Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
@@ -205,7 +205,7 @@ Oto przykład ustawienie rozmiaru roli to maszyna wirtualna Standard_D2 dla wyst
 
 ## <a name="changing-the-size-of-an-existing-role"></a>Zmiana rozmiaru istniejącej roli
 
-Jako charakter zmian obciążenia lub nowe rozmiary maszyn wirtualnych, które staną się dostępne można zmienić rozmiar Twojej roli. Aby to zrobić, należy zmienić rozmiar maszyny Wirtualnej w pliku definicji usługi (jak pokazano powyżej), przeprowadź ponowne pakowanie usługi w chmurze i wdrożyć go. Nie jest możliwa zmiana rozmiarów maszyn wirtualnych bezpośrednio z portalu lub programu PowerShell.
+Jako charakter zmian obciążenia lub nowe rozmiary maszyn wirtualnych, które staną się dostępne można zmienić rozmiar Twojej roli. Aby to zrobić, należy zmienić rozmiar maszyny Wirtualnej w pliku definicji usługi (jak pokazano powyżej), przeprowadź ponowne pakowanie usługi w chmurze i wdrożyć go.
 
 >[!TIP]
 > Możesz chcieć użyć różnych rozmiarów maszyn wirtualnych dla roli użytkownika w różnych środowiskach (np.) Przetestuj produkcyjnego programu vs). Jednym ze sposobów pozwala to tworzyć wiele definicji usługi (csdef), pliki w projekcie, następnie utworzyć inną chmurę pakietów usługi na środowisko podczas zautomatyzowanych kompilacji przy użyciu narzędzia CSPack. Aby dowiedzieć się więcej o elementach pakiet usług chmury i jak je utworzyć, zobacz [co to jest chmura usług modelu i jak jest pakiet?](cloud-services-model-and-package.md)

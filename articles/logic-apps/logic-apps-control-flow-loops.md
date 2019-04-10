@@ -10,18 +10,18 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225012"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360765"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
 W celu przetwarzania tablicy w aplikacji logiki, można utworzyć [pętlę "Foreach"](#foreach-loop). Ta pętla powtarza się co najmniej jedną akcję dla każdego elementu w tablicy. Ograniczenia dotyczące liczby elementów tablicy, które wykonuje pętlę "Foreach" mogą przetwarzać, w temacie [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
 
-Powtarzanie operacji, dopóki nie zostanie spełniony warunek lub stan zmieni się, można utworzyć ["pętlą Until"](#until-loop). Twoja aplikacja logiki działa wszystkich akcji wewnątrz pętli, a następnie sprawdza warunek lub stanu. Jeśli warunek jest spełniony, pętla zatrzymuje się. W przeciwnym razie powtórzeniu pętli. Limity liczby "Do" pętli w aplikacji logiki, uruchamianie, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
+Powtarzanie operacji, dopóki nie zostanie spełniony warunek lub stan zmieni się, można utworzyć ["pętlą Until"](#until-loop). Twoja aplikacja logiki najpierw uruchamia wszystkie akcje wewnątrz pętli, a następnie sprawdza warunek lub stanu. Jeśli warunek jest spełniony, pętla zatrzymuje się. W przeciwnym razie powtórzeniu pętli. Limity liczby "Do" pętli w aplikacji logiki, uruchamianie, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
 > Jeśli masz wyzwalacz, który odbiera tablicy i chcesz uruchomić przepływ pracy dla każdego elementu tablicy, możesz to zrobić *debatch* tablicy przy użyciu [ **SplitOn** wyzwalacza właściwości](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -154,7 +154,9 @@ Jeśli pracujesz z definicji JSON aplikacji logiki, możesz użyć `Sequential` 
 
 ## <a name="until-loop"></a>"Pętlą until"
   
-Aby powtórzyć działania, dopóki nie zostanie spełniony warunek lub stan zmieni się, należy umieścić te akcje w pętli "Do momentu". Poniżej przedstawiono kilka typowych scenariuszy, w którym można korzystać z pętli "Do momentu":
+Aby uruchomić i powtarzanie operacji, dopóki nie zostanie spełniony warunek lub stan zmieni się, należy umieścić te akcje w pętli "Do momentu". Twoja aplikacja logiki najpierw uruchamia wszystkie akcje wewnątrz pętli, a następnie sprawdza warunek lub stanu. Jeśli warunek jest spełniony, pętla zatrzymuje się. W przeciwnym razie powtórzeniu pętli.
+
+Poniżej przedstawiono kilka typowych scenariuszy, w którym można korzystać z pętli "Do momentu":
 
 * Wywołanie punktu końcowego, dopóki nie uzyskasz odpowiedzi, który ma.
 
@@ -177,7 +179,7 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
    | Właściwość | Wartość |
    | -------- | ----- |
-   | **Interwał** | 1 | 
+   | **Interval** | 1 | 
    | **Częstotliwość** | Dzień |
    | **W tych godzinach** | 8 |
    ||| 
@@ -193,8 +195,8 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
    | Właściwość | Wartość | Opis |
    | -------- | ----- | ----------- |
-   | **Nazwa** | Limit | Nazwa zmiennej użytkownika | 
-   | **Typ** | Liczba całkowita | Typ danych zmiennej użytkownika | 
+   | **Name (Nazwa)** | Limit | Nazwa zmiennej użytkownika | 
+   | **Type** | Liczba całkowita | Typ danych zmiennej użytkownika | 
    | **Wartość** | 0 | Zmiennej przez wartość początkowa | 
    |||| 
 
@@ -235,7 +237,7 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
       | Właściwość | Wartość | Opis |
       | -------- | ----- | ----------- | 
       | **Do** | *<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
-      | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
+      | **Podmiot** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
       | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
       |||| 
 
@@ -251,8 +253,8 @@ Pętlę "Do momentu" ma limity domyślne, które zatrzymać wykonywanie, jeśli 
 
 | Właściwość | Wartość domyślna | Opis | 
 | -------- | ------------- | ----------- | 
-| **Liczba** | 60 | Największa liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
-| **limit czasu** | PT1H | Kończy działanie większości ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu. Jednak na następny cykl nie zaczyna się, ponieważ nie jest spełniony warunek limit. | 
+| **Licznik** | 60 | Największa liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
+| **Limit czasu** | PT1H | Kończy działanie większości ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu. Jednak na następny cykl nie zaczyna się, ponieważ nie jest spełniony warunek limit. | 
 |||| 
 
 Aby zmienić te domyślne limity, wybierz **Pokaż opcje zaawansowane** w kształcie akcji pętli.

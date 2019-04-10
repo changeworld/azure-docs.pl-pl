@@ -10,19 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360728"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357249"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
 W tym artykule dowiesz się, jak do uczenia modelu regresji prognozowania szeregów czasowych za pomocą automatycznych usługi machine learning w usłudze Azure Machine Learning. Konfigurowanie modelu prognozowania jest podobny do konfigurowania modelu regresji standard za pomocą automatycznych machine learning, ale niektórych opcjami i wstępne przetwarzanie kroki konfiguracji istnieje do pracy z danymi szeregów czasowych. Poniższe przykłady pokazują sposób do:
 
 * Przygotowuje dane do modelowania serii czasu
-* Konfigurowanie określone parametry szeregów czasowych w [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) obiektu
+* Konfigurowanie określone parametry szeregów czasowych w [ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) obiektu
 * Uruchom prognoz z danymi szeregów czasowych
 
 ## <a name="prerequisites"></a>Wymagania wstępne

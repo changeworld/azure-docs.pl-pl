@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 94906a75d323e3fb6c96f939e4fdcea60877508c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056303"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281237"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -127,11 +127,11 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
 5. Za pomocą narzędzia takiego jak [Postman](https://www.getpostman.com/) lub [cURL](https://curl.haxx.se/) wyślij żądanie HTTP POST do punktu końcowego adresu URL.
 
-    Odpowiedź to początkowy wynik z funkcji HTTP informujący o pomyślnym uruchomieniu aranżacji trwałej.  Nie jest to jeszcze końcowy wynik aranżacji.  Odpowiedź zawiera kilka przydatnych adresów URL.  Na razie wykonajmy zapytanie o stan aranżacji.
+   Odpowiedź to początkowy wynik z funkcji HTTP informujący o pomyślnym uruchomieniu aranżacji trwałej. Nie jest to jeszcze końcowy wynik aranżacji. Odpowiedź zawiera kilka przydatnych adresów URL. Na razie wykonajmy zapytanie o stan aranżacji.
 
-6. Skopiuj wartość adresu URL dla `statusQueryGetUri`, wklej go w pasku adresu przeglądarki i wykonaj żądanie.
+6. Skopiuj wartość adresu URL dla `statusQueryGetUri` i wklej go w pasku adresu przeglądarki i wykonaj żądanie. Można również nadal m ożna również wysłać żądanie GET za pomocą narzędzia Postman.
 
-    Żądanie wykona zapytanie o stan wystąpienia aranżacji. W końcu powinna zostać zwrócona odpowiedź podobna do następującej.  Pokazuje ona, że wystąpienie zostało zakończone, i obejmuje dane wyjściowe lub wyniki funkcji trwałej.
+   Żądanie wykona zapytanie o stan wystąpienia aranżacji. Należy uzyskać ostateczną odpowiedź, co pokazuje wystąpienie zostało ukończone i obejmuje dane wyjściowe i wyniki funkcji trwałe. Wygląda ona następująco: 
 
     ```json
     {

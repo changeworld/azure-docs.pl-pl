@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259826"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282869"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -144,7 +144,7 @@ Jeśli usługodawca oferuje usługi ExpressRoute w obu lokacjach, możesz wspó�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>W tym samym metro można mieć wiele obwodów usługi ExpressRoute? Czy można połączyć je z tej samej sieci wirtualnej?
 
-Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwodów tworzonych w tej samej lokalizacji komunikacji równorzędnej, nie można połączyć je do tej samej sieci wirtualnej. Każda nazwa lokalizacji w witrynie Azure portal lub interfejsu API programu PowerShell/interfejsu wiersza polecenia platformy reprezentuje lokalizacji komunikacji równorzędnej. Na przykład można wybrać lokalizacje komunikacji równorzędnej "Singapuru" i "Singapur2" i połącz obwodów każdego z nich do tej samej sieci wirtualnej. 
+Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwodów tworzonych w tej samej lokalizacji komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej, ale tylko maksymalnie 4 obwodów usługi ExpressRoute w każdej lokalizacji komunikacji równorzędnej. Na przykład można wybrać lokalizacje komunikacji równorzędnej "Singapuru" i "Singapur2" i połącz obwodów każdego z nich do tej samej sieci wirtualnej. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak połączyć mojej sieci wirtualne z obwodem usługi ExpressRoute
 

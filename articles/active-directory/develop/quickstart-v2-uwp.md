@@ -17,12 +17,12 @@ ms.date: 04/01/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6de55cb9f1f89c9c3cd809294890f63134a26d8
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3cf4ec48942cbe345b12d2a358afc3dadbe63a96
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793173"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360121"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -64,14 +64,14 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
 > Aby kod przykładowy z tego samouczka działał, należy dodać identyfikator URI przekierowania w formacie **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Ta zmiana wprowadzona dla mnie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowano](media/quickstart-v2-uwp/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowane](media/quickstart-v2-uwp/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
- - [Pobierz projekt programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)
+ - [Pobieranie projektu programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
@@ -86,11 +86,11 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 
 > [!div renderon="docs"]
 > Gdzie:
-> - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
-> - `Enter_the_Tenant_Info_Here` jest jedną z poniższych opcji:
->   - Jeśli aplikacja obsługuje tryb **Tylko moja organizacja**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
->   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
+> - `Enter_the_Application_Id_here` — Identyfikator aplikacji dla aplikacji został zarejestrowany.
+> - `Enter_the_Tenant_Info_Here` -jest jedną z poniższych opcji:
+>   - Jeśli aplikacja obsługuje **tylko Moja organizacja**, Zastąp tę wartość za pomocą **identyfikator dzierżawy** lub **nazwa dzierżawy** (np. contoso.onmicrosoft.com)
+>   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
+>   - Jeśli aplikacja obsługuje **użytkowników kont Microsoft wszystkich**, Zastąp tę wartość za pomocą `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości *Identyfikator aplikacji*, *Identyfikator katalogu (dzierżawy)* i *Obsługiwane typy kont*, przejdź do strony **Przegląd**
@@ -167,4 +167,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 Wypróbuj samouczek dotyczący aplikacji klasycznych systemu Windows, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym podręczniku Szybki start.
 
 > [!div class="nextstepaction"]
-> [UWP — Call Graph API tutorial (Samouczek dotyczący platformy UWP i wywoływania interfejsu API programu Graph)](tutorial-v2-windows-uwp.md)
+> [Platforma UWP — samouczek wywołania interfejsu API programu Graph](tutorial-v2-windows-uwp.md)

@@ -2,16 +2,16 @@
 title: Zachowaj adresów IP podczas pracy w trybie failover maszyny Wirtualnej platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Opisuje sposób zachować adresy IP, gdy przejść w tryb failover maszyn wirtualnych platformy Azure do odzyskiwania po awarii do regionu pomocniczego przy użyciu usługi Azure Site Recovery
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090750"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357888"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Podczas pracy awaryjnej należy zachować adresy IP
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono architekturę przed włączeniem trybu failover.
         - Azja południowo-wschodnia ma odzyskiwania sieci wirtualnej (**sieć odzyskiwania**) taka sama jak **źródłowa sieć wirtualna**.
         - Azja południowo-wschodnia ma dodatkowe sieci wirtualnej (**sieci wirtualnej platformy Azure**) przy użyciu 10.2.0.0/16 przestrzeni adresowej.
         - **Sieci wirtualnej platformy Azure** zawiera podsieć (**4 podsieci**) przy użyciu 10.2.4.0/24 przestrzeni adresowej.
-        - Węzły repliki dla programu SQL Server Always On, itp. kontroler domeny znajdują się w **4 podsieci**.
+        - Węzły repliki dla programu SQL Server Always On, kontroler domeny itd. znajdują się w **4 podsieci**.
     - **Źródła sieci wirtualnej** i **sieci wirtualnej platformy Azure** są połączone za pomocą połączenia sieci VPN lokacja lokacja.
     - **Sieć wirtualna odzyskiwania** nie jest połączony z innej sieci wirtualnej.
     - **Firmy A** przypisuje/sprawdza docelowych adresów IP dla zreplikowanych elementów. Docelowy adres IP jest taki sam jak źródłowy adres IP dla każdej maszyny Wirtualnej.
@@ -92,7 +92,7 @@ Przed włączeniem trybu failover architektura jest w następujący sposób:
 - Region pomocniczy (docelowy) to Azure Południowo-Wschodnia Azja — Azja południowo-wschodnia ma odzyskiwania sieciami wirtualnymi (**1 sieć wirtualna odzyskiwania** i **2 sieć odzyskiwania**), które są identyczne z **źródła sieci wirtualnej 1** i **Źródła siecią vnet2**.
         - **Sieć wirtualna odzyskiwania 1** i **2 sieć odzyskiwania** mają dwie podsieci, które odpowiadają podsieci w **źródła sieci wirtualnej 1** i **źródła sieci wirtualnej 2** -ma Azja południowo-wschodnia dodatkowe sieci wirtualnej (**sieci wirtualnej platformy Azure**) przy użyciu 10.3.0.0/16 przestrzeni adresowej.
         - **Sieci wirtualnej platformy Azure** zawiera podsieć (**4 podsieci**) przy użyciu 10.3.4.0/24 przestrzeni adresowej.
-        -Węzły repliki dla programu SQL Server Always On, kontroler domeny itp. znajdują się w **4 podsieci**.
+        -Węzły repliki dla programu SQL Server Always On, kontroler domeny itd. znajdują się w **4 podsieci**.
 - Istnieje wiele połączeń sieci VPN typu lokacja lokacja: 
     - **Źródła sieci wirtualnej 1** i **sieci wirtualnej platformy Azure**
     - **Źródło siecią vnet2** i **sieci wirtualnej platformy Azure**

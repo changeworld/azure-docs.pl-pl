@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 1/29/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 29c2e53c4fb496e0f12e04f08b0add4273db25a7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790162"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277424"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń
 
@@ -54,6 +54,7 @@ Operatory kryteria dopasowania obsługiwane są następujące:
 - **Rozpoczyna się od**: Ten operator pasuje do wszystkich pól, rozpoczynających się od wartości określonej selektora.
 - **Kończy się**:  Ten operator pasuje do wszystkich pól żądania, które kończy się wartość określony selektor.
 - **Zawiera**: Ten operator pasuje do wszystkich pól żądania, które zawierają wartość określony selektor.
+- **Równe wszystkim**: Ten operator pasuje do wszystkich pól żądania. * będzie wartości selektora.
 
 We wszystkich przypadkach dopasowania jest uwzględniana wielkość liter i wyrażenie regularne nie są dozwolone jako selektorów.
 

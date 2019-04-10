@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: eababa0d83e1db4934fc8b2315e20407ccc77f27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892952"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją ClickUp Productivity Platform
 
@@ -50,7 +50,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji ClickUp Productivity Platform z usługą Azure AD, należy dodać tę aplikację z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikacji ClickUp Productivity Platform z galerii, wykonaj następujące czynności:**
+**Aby dodać ClickUp produktywności platformy z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -104,9 +104,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji ClickUp Pr
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji ClickUp Productivity Platform](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.clickup.com/login/sso`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.clickup.com/login/sso`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywistej wartości identyfikatora opisanej w dalszej części tego samouczka.
@@ -213,7 +213,7 @@ Po kliknięciu kafelka ClickUp Productivity Platform w panelu dostępu powinno n
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

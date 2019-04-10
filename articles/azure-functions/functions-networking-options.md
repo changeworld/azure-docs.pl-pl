@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896639"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358155"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci usługi Azure Functions
 
@@ -43,7 +43,8 @@ Funkcja aplikacji może być hostowana na kilka różnych sposobów.
 
 Ograniczenia adresów IP umożliwiają definiowanie priorytetu, uporządkowane zezwalania/niezezwalania na listę adresów IP, które mogą uzyskiwać dostęp do aplikacji. Lista dozwolonych może zawierać adresów IPv4 i IPv6. W przypadku co najmniej jeden wpis istnieje, a następnie niejawna odmowa, wszystkie, znajdującą się na końcu listy. Funkcja ograniczenia adresów IP współpracuje ze wszystkich funkcji opcji hostingu.
 
-> ! [WAŻNE] Aby można było używać edytora portalu Azure, portalu muszą mieć możliwość uzyskania bezpośredniego dostępu do uruchomionej aplikacji funkcji, a urządzenie, używanym do korzystania z portalu musi mieć jego listy dozwolonych adresów IP. Bez ograniczeń sieci w miejscu, możesz uzyskiwać dostęp wszystkie funkcje w **funkcje platformy** kartę.
+> [!NOTE]
+> Aby można było używać edytora portalu Azure, portalu muszą mieć możliwość uzyskania bezpośredniego dostępu do uruchomionej aplikacji funkcji, a urządzenie, używanym do korzystania z portalu musi mieć jego listy dozwolonych adresów IP. Bez ograniczeń sieci w miejscu, możesz uzyskiwać dostęp wszystkie funkcje w **funkcje platformy** kartę.
 
 [Dowiedz się więcej tutaj](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

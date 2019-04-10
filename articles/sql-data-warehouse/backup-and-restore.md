@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 14e7d8cfdaa9ac59a5a43881283fac6e2c9ee08f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846993"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359015"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 
@@ -25,7 +25,7 @@ Dowiedz się, jak używać kopii zapasowej i przywracania w usłudze Azure SQL D
 
 A *migawki magazynu danych* tworzy punkt przywracania, można wykorzystać, aby odzyskać lub kopii Hurtownia danych do poprzedniego stanu.  Ponieważ usługa SQL Data Warehouse to Rozproszony system, migawek magazynu danych składa się z wielu plików, które znajdują się w usłudze Azure storage. Migawki przechwytują przyrostowe zmiany w danych przechowywanych w magazynie danych.
 
-A *przywracania z magazynu danych* nowego magazynu danych, który jest tworzony z punktu przywracania do istniejącego lub usunięty magazyn danych. Przywracanie magazynu danych jest fundamentalna część każdej strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ ponownie tworzy dane po przypadkowym uszkodzeniem lub usunięciem. Magazyn danych jest również zaawansowanym mechanizmem służącym do tworzenia kopii magazynu danych do celów testowych lub badawczych.  Usługa SQL Data Warehouse używa mechanizmów szybkiego przywracania, w tym samym regionie, który został zmierzony na mniej niż 20 minut dla dowolnego rozmiaru danych.
+A *przywracania z magazynu danych* nowego magazynu danych, który jest tworzony z punktu przywracania do istniejącego lub usunięty magazyn danych. Przywracanie magazynu danych jest fundamentalna część każdej strategii odzyskiwania firmy, jak ciągłość działalności biznesowej i odzyskiwanie po awarii, ponieważ ponownie tworzy dane po przypadkowym uszkodzeniem lub usunięciem. Magazyn danych jest również zaawansowanym mechanizmem służącym do tworzenia kopii magazynu danych do celów testowych lub badawczych.  Usługa SQL Data Warehouse przywracania stawki mogą się różnić w zależności od rozmiaru bazy danych i lokalizacji magazynu danych źródłowych i docelowych. Średnio w tym samym regionie szybkości przywracania zwykle po około 20 minut. 
 
 ## <a name="automatic-restore-points"></a>Automatyczne punkty przywracania
 

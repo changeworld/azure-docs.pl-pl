@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 034/08/2019
-ms.openlocfilehash: 804e60b141f6ad4f089710d4b85c52a8dad33cfc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 0437ba24727c06e874b49908a5a22d0063de72fd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269524"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356869"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
 
@@ -56,7 +56,7 @@ Aby uzyskać więcej informacji, zobacz [różnice rozpoznawania języka Transac
 SQL Database oferuje szeroką gamę [wbudowanych rozwiązań zabezpieczeń i zgodności](sql-database-security-overview.md) funkcje, aby pomóc aplikacji spełnić różne wymagania dotyczące zabezpieczeń i zgodności.
 
 > [!IMPORTANT]
-> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+> Usługa Azure SQL Database (wszystkich opcjach wdrażania) zostanie certyfikowana na liczbie standardów zgodności. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

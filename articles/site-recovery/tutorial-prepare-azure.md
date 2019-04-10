@@ -5,46 +5,49 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8bdb711d39f514375362235388943ec42451b312
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315576"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358485"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
- Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
+W tym artykule opisano sposób przygotowania składników i zasobów platformy Azure, aby skonfigurować odzyskiwanie po awarii lokalnych maszyn wirtualnych VMware, maszyny wirtualne funkcji Hyper-V lub systemu Windows/Linux serwerów fizycznych na platformę Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
-Ten artykuł jest pierwszym samouczkiem z serii pokazującej, jak skonfigurować odzyskiwanie po awarii dla lokalnych maszyn wirtualnych. Istotne jest, czy pojawiła się konieczność ochrony lokalnych maszyn wirtualnych VMware, Hyper-V czy serwerów fizycznych.
+Ten artykuł jest pierwszym samouczkiem z serii pokazującej, jak skonfigurować odzyskiwanie po awarii dla lokalnych maszyn wirtualnych. 
 
-> [!NOTE]
-> Samouczki mają za zadanie przedstawić najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z sekcją **Instrukcje** odpowiedniego scenariusza.
 
-W tym artykule przedstawiono sposób przygotowania składników platformy Azure w przypadku replikowania lokalnych maszyn wirtualnych (korzystających z funkcji Hyper-V lub oprogramowania VMware) bądź serwerów fizycznych z systemami Windows i Linux do platformy Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Sprawdzanie, czy konto platformy Azure ma uprawnienia do replikacji.
+> * Sprawdź, czy konto platformy Azure ma uprawnienia do replikacji.
 > * Utwórz magazyn usługi Recovery Services. Magazyn przechowuje metadane i informacje o konfiguracji dla maszyn wirtualnych i innych składników replikacji.
-> * Skonfiguruj sieć platformy Azure. Gdy maszyny wirtualne są tworzone po przejściu w tryb failover, dołączają one do sieci platformy Azure.
+> * Konfigurowanie sieci wirtualnej platformy Azure (VNet). Podczas tworzenia maszyn wirtualnych platformy Azure po włączeniu trybu failover, dołączają one do tej sieci.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
+> [!NOTE]
+> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Szczegółowe informacje na ten temat można znaleźć w artykule w sekcji jak tabeli odzyskiwania lokacji zawartości.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+- Przegląd architektury [VMware](vmware-azure-architecture.md), [funkcji Hyper-V](hyper-v-azure-architecture.md), i [serwera fizycznego](physical-azure-architecture.md) odzyskiwania po awarii.
+- Przeczytaj często zadawane pytania dotyczące [VMware](vmware-azure-common-questions.md) i Hyper-V(hyper-v-azure-common-questions.md)
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/). Następnie zaloguj się do [witryny Azure portal](https://portal.azure.com).
+
 
 ## <a name="verify-account-permissions"></a>Sprawdzanie uprawnień konta
 
-Jeśli bezpłatne konto platformy Azure zostało właśnie utworzone, jesteś administratorem subskrypcji. Jeśli nie jesteś administratorem subskrypcji, współpracuj z administratorem w celu przypisania potrzebnych uprawnień. Aby włączyć replikację dla nowej maszyny wirtualnej, konieczne jest posiadanie następujących uprawnień:
+Jeśli bezpłatne konto platformy Azure jest właśnie utworzone, jesteś administratorem subskrypcji, i masz potrzebnych uprawnień. Jeśli nie jesteś administratorem subskrypcji, współpracuj z administratorem w celu przypisania potrzebnych uprawnień. Aby włączyć replikację dla nowej maszyny wirtualnej, konieczne jest posiadanie następujących uprawnień:
 
 - Tworzenie maszyny wirtualnej w wybranej grupie zasobów.
 - Tworzenie maszyny wirtualnej w wybranej sieci wirtualnej.
-- Napisz do konta magazynu.
-- Zapis na dysku zarządzanego.
+- Zapisz konto magazynu platformy Azure.
+- Zapis na platformie Azure dysku zarządzanego.
 
 Aby można było wykonać te zadania, do konta musi być przypisana wbudowana rola Współautor maszyny wirtualnej. Ponadto na potrzeby zarządzania operacjami usługi Site Recovery w magazynie do konta powinna być przypisana wbudowana rola Współautor usługi Site Recovery.
 
@@ -64,30 +67,29 @@ Aby można było wykonać te zadania, do konta musi być przypisana wbudowana ro
 
 ## <a name="set-up-an-azure-network"></a>Konfiguracja sieci platformy Azure
 
-Podczas tworzenia maszyn wirtualnych platformy Azure z dyskami zarządzanymi po włączeniu trybu failover, dołączają one do tej sieci.
+Lokalne maszyny są replikowane do usługi Azure managed disks. Po przejściu do trybu failover, maszyny wirtualne platformy Azure są tworzone na podstawie tych dysków zarządzanych i przyłączone do sieci platformy Azure, określonych w tej procedurze.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
-2. Jako model wdrażania pozostaw wybraną pozycję **Menedżer zasobów**.
+2. Jako model wdrażania pozostaw wybraną pozycję **Resource Manager**.
 3. W obszarze **Nazwa** wprowadź nazwę sieci. Nazwa musi być unikatowa w obrębie grupy zasobów platformy Azure. W tym samouczku użyto nazwy **ContosoASRnet**.
 4. Podaj grupę zasobów, w której zostanie utworzona sieć. Należy użyć istniejącej grupy zasobów **contosoRG**.
-5. W obszarze **Zakres adresów** wprowadź zakres sieci **10.0.0.0/24**. W tej sieci nie należy używać podsieci.
+5. W **zakres adresów**, wprowadź zakres sieci. Firma Microsoft korzysta z **10.0.0.0/24**, a nie za pomocą podsieci.
 6. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć sieć.
-7. W obszarze **Lokalizacja** wybierz pozycję **Europa Zachodnia**. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania.
+7. W **lokalizacji**, wybierz region, w tym samym jako, w którym utworzono magazyn usługi Recovery Services. W naszym samouczku przedstawiono w nim **Europa Zachodnia**. Sieć musi znajdować się w tym samym regionie co magazyn.
 8. Należy pozostawić opcje domyślne podstawowej ochrony DDoS bez punktu końcowego usługi w sieci.
 9. Kliknij pozycję **Utwórz**.
 
    ![Tworzenie sieci wirtualnej](media/tutorial-prepare-azure/create-network.png)
 
-   Utworzenie sieci wirtualnej zajmuje kilka sekund. Po utworzeniu sieć jest wyświetlana na pulpicie nawigacyjnym witryny Azure Portal.
+Utworzenie sieci wirtualnej zajmuje kilka sekund. Po utworzeniu sieć jest wyświetlana na pulpicie nawigacyjnym witryny Azure Portal.
 
-## <a name="useful-links"></a>Przydatne łącza
-
-- [Dowiedz się więcej na temat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) sieci platformy Azure.
-- [Dowiedz się więcej o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) dysków zarządzanych.
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Przygotowywanie lokalnej infrastruktury VMware do odzyskiwania po awarii na platformie Azure](tutorial-prepare-on-premises-vmware.md)
+- Do odzyskiwania po awarii programu VMware [przygotowywanie lokalnej infrastruktury VMware](tutorial-prepare-on-premises-vmware.md).
+- Do odzyskiwania po awarii z funkcji Hyper-V [Przygotuj lokalne serwery funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
+- Do odzyskiwania po awarii serwerów fizycznych [Konfigurowanie środowiska konfiguracji serwera i źródła](physical-azure-disaster-recovery.md)
+- [Dowiedz się więcej na temat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) sieci platformy Azure.
+- [Dowiedz się więcej o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) dysków zarządzanych.

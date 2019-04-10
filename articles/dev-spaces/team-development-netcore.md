@@ -9,12 +9,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 22f68b4350bfa0310a517bd36cda9763601aad2a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8b75fbde461d2d9660c9fbcf7fdd33aee4650e73
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438718"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360965"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

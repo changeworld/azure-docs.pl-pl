@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4eee19a13a7a518087a77ed49fbb533ce47f03c8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238083"
 documentType: LandingData
 title: Usługa Azure SQL Database — platforma jako usługa
 metadata:
@@ -14,49 +8,50 @@ metadata:
   services: sql-database
   ms.subservice: service
   author: jovanpop-msft
+  ms.reviewer: carlrab
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 11/11/2018
   ms.author: jovanpop-msft
 sections:
-- items:
-  - type: paragraph
-    text: Usługa Azure SQL Database to w pełni zarządzana platforma jako usługa (PaaS) Aparat bazy danych, który obsługuje większość funkcji zarządzania bazy danych, takich jak uaktualnianie, poprawek i kopie zapasowe oraz monitorowanie bez udziału użytkownika. Usługa Azure SQL Database jest zawsze uruchomiona na najnowszej stabilnej wersji aparatu bazy danych programu SQL Server i poprawek systemu operacyjnego o dostępności 99,99%. Możliwości PaaS, które są wbudowane w usłudze Azure SQL database pozwalają skupić się na domeny określonej bazy danych zarządzania i optymalizacji działania, które mają kluczowe znaczenie dla Twojej firmy.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: 'Usługa Azure SQL Database to w pełni zarządzana platforma jako usługa (PaaS) Aparat bazy danych, który obsługuje większość funkcji zarządzania bazy danych, takich jak uaktualnianie, poprawek i kopie zapasowe oraz monitorowanie bez udziału użytkownika. Usługa Azure SQL Database jest zawsze uruchomiona na najnowszej stabilnej wersji aparatu bazy danych programu SQL Server i poprawek systemu operacyjnego o dostępności 99,99%. Możliwości PaaS, które są wbudowane w usłudze Azure SQL database pozwalają skupić się na domeny określonej bazy danych zarządzania i optymalizacji działania, które mają kluczowe znaczenie dla Twojej firmy.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Ciągłość działalności biznesowej
+            href: /azure/sql-database/sql-database-business-continuity
+            html: '<p>Usługa Azure SQL Database umożliwia firmie do kontynuowania działania w przypadku przerwy w działaniu, zwłaszcza w celu jego infrastruktury obliczeniowej.</p>'
+          - title: Wysoka dostępność
+            href: /azure/sql-database/sql-database-high-availability
+            html: '<p>Usługa Azure SQL Database gwarantuje, że bazy danych są uruchomione na dostępność przez 99,99% czasu, bez martwienia się o konserwację i przestoje.</p>'
+          - title: Automatyczne kopie zapasowe
+            href: /azure/sql-database/sql-database-automated-backups
+            html: '<p>Usługa Azure SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy Azure dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS), aby zapewnić nadmiarowość geograficzna.</p>'
+          - title: Długoterminowe przechowywanie kopii zapasowych
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: '<p>Usługa Azure umożliwia bazy danych SQL, przechowywania określonego programu SQL przez maksymalnie 10 lat bazy danych pełnych kopii zapasowych.</p>'
+          - title: Replikacja geograficzna
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Usługa Azure SQL Database umożliwia tworzenie replik z możliwością odczytu bazy danych w centrum danych w tej samej lub innej (region).</p>
+          - title: Skalowanie zasobów
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Usługa Azure SQL Database pozwala w prosty sposób dodać więcej zasobów (procesor CPU, pamięci, magazynu) bez długie inicjowania obsługi administracyjnej.</p>'
+  - title: Więcej zasobów
     items:
-    - title: Ciągłość działalności biznesowej
-      href: /azure/sql-database/sql-database-business-continuity
-      html: <p>Usługa Azure SQL Database umożliwia firmie do kontynuowania działania w przypadku przerwy w działaniu, zwłaszcza w celu jego infrastruktury obliczeniowej.</p>
-    - title: Wysoka dostępność
-      href: /azure/sql-database/sql-database-high-availability
-      html: <p>Usługa Azure SQL Database gwarantuje, że bazy danych są uruchomione na dostępność przez 99,99% czasu, bez martwienia się o konserwację i przestoje.</p>
-    - title: Automatyczne kopie zapasowe
-      href: /azure/sql-database/sql-database-automated-backups
-      html: <p>Usługa Azure SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy Azure dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS), aby zapewnić nadmiarowość geograficzna.</p>
-    - title: Długoterminowe przechowywanie kopii zapasowych
-      href: /azure/sql-database/sql-database-long-term-retention
-      html: <p>Usługa Azure umożliwia bazy danych SQL, przechowywania określonego programu SQL przez maksymalnie 10 lat bazy danych pełnych kopii zapasowych.</p>
-    - title: Replikacja geograficzna
-      href: /azure/sql-database/sql-database-geo-replication-overview
-      html: <p>Usługa Azure SQL Database umożliwia tworzenie replik z możliwością odczytu bazy danych w centrum danych w tej samej lub innej (region).</p>
-    - title: Skalowanie zasobów
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Usługa Azure SQL Database pozwala w prosty sposób dodać więcej zasobów (procesor CPU, pamięci, magazynu) bez długie inicjowania obsługi administracyjnej.</p>
-- title: Więcej zasobów
-  items:
-  - type: paragraph
-    text: Usługa Azure SQL Database udostępnia zestaw dodatkowe wbudowane funkcje usługi PaaS, w której można łatwiej zarządzać baz danych.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/sql-database/sql-database-security-index">Zaawansowane zabezpieczenia</a> wykryje zagrożeń i luk w zabezpieczeniach baz danych i umożliwia zabezpieczenie danych.
-    - html: <a href="/azure/sql-database/sql-database-automatic-tuning">Automatyczne dostrajanie</a> analizuje obciążenia i zapewnia zaleceń, które można zoptymalizować wydajność aplikacji, dodając indeksów, usunięcie nieużywanych indeksy i automatycznie naprawia zapytanie problemy z planu.
-    - html: <a href="/azure/log-analytics/log-analytics-azure-sql">Wbudowane funkcje monitorowania</a> umożliwiają Uzyskaj wgląd w wydajność bazy danych i obciążenia i rozwiązywanie problemów z wydajnością.
-    - html: <a href="/azure/sql-database/sql-database-intelligent-insights">Wbudowana funkcja analizy</a> automatycznie identyfikuje potencjalne problemy w obciążenia i zapewnia zaleceń, które mogą pomóc rozwiązać problemy.
+      - type: paragraph
+        text: 'Usługa Azure SQL Database udostępnia zestaw dodatkowe wbudowane funkcje usługi PaaS, w której można łatwiej zarządzać baz danych.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sql-database/sql-database-security-index">Zaawansowane zabezpieczenia</a> wykryje zagrożeń i luk w zabezpieczeniach baz danych i umożliwia zabezpieczenie danych.
+          - html: '<a href="/azure/sql-database/sql-database-automatic-tuning">Automatyczne dostrajanie</a> analizuje obciążenia i zapewnia zaleceń, które można zoptymalizować wydajność aplikacji, dodając indeksów, usunięcie nieużywanych indeksy i automatycznie naprawia zapytanie problemy z planu.'
+          - html: <a href="/azure/log-analytics/log-analytics-azure-sql">Wbudowane funkcje monitorowania</a> umożliwiają Uzyskaj wgląd w wydajność bazy danych i obciążenia i rozwiązywanie problemów z wydajnością.
+          - html: '<a href="/azure/sql-database/sql-database-intelligent-insights">Wbudowana funkcja analizy</a> automatycznie identyfikuje potencjalne problemy w obciążenia i zapewnia zaleceń, które mogą pomóc rozwiązać problemy.'

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855728"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280540"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
 
@@ -131,19 +131,21 @@ Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRe
 
 Teraz zaimportuj model z aplikacji usługi LUIS przy użyciu elementu `LanguageUnderstandingModel.FromAppId()` i dodaj intencje usługi LUIS, które chcesz rozpoznawać za pośrednictwem metody `AddIntent()` aparatu rozpoznawania. Te dwa kroki zwiększają dokładność rozpoznawania mowy, wskazując słowa, których użytkownik prawdopodobnie użyje w swoich żądaniach. Nie trzeba dodawać wszystkich intencji aplikacji, jeśli nie musisz rozpoznawać ich wszystkich w aplikacji.
 
-Dodawanie intencji wymaga trzech argumentów: modelu usługi LUIS (który został właśnie utworzony i nosi nazwę `model`), nazwy intencji i identyfikatora intencji. Różnica między identyfikatorem i nazwą jest następująca.
+Dodawanie intencji wymaga trzech argumentów: model usługi LUIS (który został utworzony i nosi nazwę `model`), nazwę intencji i identyfikatora elementu intent Różnica między identyfikatorem i nazwą jest następująca.
 
-|Argument `AddIntent()`|Przeznaczenie|
+|`AddIntent()` Argument|Przeznaczenie|
 |--------|-------|
 |intentName |Nazwa intencji zgodnie z definicją w aplikacji usługi LUIS. Musi dokładnie odpowiadać nazwie intencji usługi LUIS.|
 |intentID    |Identyfikator przypisany do rozpoznanej intencji przez zestaw SDK rozpoznawania mowy. Dopuszczalna jest dowolna wartość; nie musi odpowiadać nazwie intencji zdefiniowanej w aplikacji usługi LUIS. Jeśli na przykład ten sam kod obsługuje wiele intencji, możesz dla nich użyć tego samego identyfikatora.|
 
-Aplikacja usługi LUIS Home Automation ma dwie intencje: jedną na potrzeby włączenia urządzenia, a drugą na potrzeby wyłączania urządzenia. Poniższe wiersze powodują dodanie tych intencji do aparatu rozpoznawania; zastąp trzy wiersze `AddIntent` w metodzie `RecognizeIntentAsync()` tym kodem.
+Aplikacja strona główna usługi LUIS automatyzacji ma dwie opcje: jeden włączania urządzenia i drugą na potrzeby wyłączenie urządzenia. Poniższe wiersze powodują dodanie tych intencji do aparatu rozpoznawania; zastąp trzy wiersze `AddIntent` w metodzie `RecognizeIntentAsync()` tym kodem.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+Zamiast opcji dodawania poszczególnych opcji, można również użyć `AddAllIntents` metody w celu dodania wszystkich intencje w modelu dla aparatu rozpoznawania.
 
 ## <a name="start-recognition"></a>Uruchamianie rozpoznawania
 
@@ -186,4 +188,4 @@ Wyszukaj kod z tego artykułu w folderze samples/csharp/sharedcontent/console.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Jak rozpoznawać mowę](how-to-recognize-speech-csharp.md)
+> [Rozpoznawanie mowy](how-to-recognize-speech-csharp.md)

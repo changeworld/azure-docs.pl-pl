@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 52e227b933533bf60a474d0417c57e4b75c7978f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224638"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281186"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
 
@@ -195,14 +195,14 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 Aby dowiedzieć się więcej na temat faktury i opłaty, zobacz:
 
-- [Opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md)
+- [Opis zawartości rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md)
 - [Zrozumienie warunki na fakturze platformy Azure](billing-understand-your-invoice.md)
 - [Zrozumienie warunki na usługi Microsoft Azure szczegółowe użycia](billing-understand-your-usage.md)
 - [Wyświetl cennik platformy Azure w Twojej organizacji](billing-ea-pricing.md)
 
 Jeśli masz umowy klienta firmy Microsoft, zobacz:
 
-- [Informacje o opłatach w faktury dla swojego profilu rozliczeń ](billing-mca-understand-your-bill.md)
+- [Informacje o opłatach w faktury dla swojego profilu rozliczeń](billing-mca-understand-your-bill.md)
 - [Zrozumienie warunki na fakturze dla swojego profilu rozliczeń](billing-mca-understand-your-invoice.md)
 - [Omówienie plików użycia i opłat platformy Azure dla swojego profilu rozliczeń](billing-mca-understand-your-usage.md)
 - [Przeglądanie i pobieranie dokumentów podatkowych dla swojego profilu rozliczeń](billing-mca-download-tax-document.md)

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/25/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 5bc67551c70b185ad0b5ed993a510ded2229481f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444653"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279622"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -23,6 +23,31 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 + Usługi Azure Machine Learning [ **głównego zestawu SDK dla języka Python**](https://aka.ms/aml-sdk)
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-08"></a>2019-04-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.23
+
++ **Nowe funkcje**
+  + Zestaw SDK usługi Azure Machine Learning obsługuje teraz 3.7 języka Python.
+
+### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Zestaw SDK v1.1.1 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Nowe funkcje**
+  + Może odczytywać wielu źródeł magazynu danych/ścieżki danych/element DataReference, przy użyciu read_ * przekształcenia.
+  + Można wykonywać następujące operacje na kolumnach, aby utworzyć nową kolumnę: dzielenie, piętro modulo mocy, długość.
+  + Przygotowywanie danych jest teraz częścią pakietu diagnostyki usługi uczenie Maszynowe Azure i będzie rejestrować informacje diagnostyczne domyślnie.
+    + Aby wyłączyć tę funkcję, należy ustawić tej zmiennej środowiskowej na wartość true: DISABLE_DPREP_LOGGER
+
++ **Poprawki błędów i ulepszenia**
+  + Dokumentacja ulepszone kod często używane klasy i funkcje.
+  + Usunięto usterkę w auto_read_file, którego nie można odczytać plików programu Excel.
+  + Dodano opcję, aby zastąpić istniejący folder w read_pandas_dataframe.
+  + Lepsza wydajność dotnetcore2 zależności instalacji i dodanie obsługi Fedora 27/28 i Ubuntu 1804.
+  + Zwiększona wydajność czytanie z obiektów blob platformy Azure.
+  + Wykrywanie typu kolumny teraz obsługuje kolumny typu Long.
+  + Usunięto usterkę, w której niektóre wartości daty były wyświetlane jako sygnatury czasowe zamiast obiektów daty/godziny w języku Python.
+  + Usunięto usterkę, w której niektóre liczniki typu były wyświetlane jako wartości podwójnej precyzji, zamiast liczb całkowitych.
+  
 ## <a name="2019-03-25"></a>2019-03-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.21
@@ -32,7 +57,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Zestaw SDK v1.1.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 
-+ **Fundamentalne zmiany**
++ **Zmiany powodujące niezgodność**
   + Pojęcie pakiet przygotowania bazy danych jest przestarzała i nie jest już obsługiwana. Zamiast utrwalanie wiele przepływów danych w jednym pakiecie, jednak można utrwalić przepływów danych indywidualnie.
     + Przewodnik: [Otwieranie i zapisywanie przepływów danych notesu](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -51,7 +76,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.18
 
- + **Changes**
+ + **Zmiany**
    + Pakiet Azure ml tensorboard zastępuje usługę Azure ml — contrib-tensorboard.
    + W tej wersji można skonfigurować konto użytkownika na klastrze zarządzanych zasobów obliczeniowych (amlcompute), podczas jego tworzenia. Można to zrobić, po prostu przekazując tych właściwości w konfiguracji Inicjowanie obsługi administracyjnej elementu. Można znaleźć więcej szczegółów w [Dokumentacja referencyjna zestawu SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-).
 
@@ -111,7 +136,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
   + Azure potoków uczenia maszynowego dodano AzureBatchStep ([notesu](https://aka.ms/pl-azbatch)), HyperDriveStep ([notesu](https://aka.ms/pl-hyperdrive)) i na podstawie czasu planowania funkcji ([notesu](https://aka.ms/pl-schedule)).
   +  DataTranferStep zaktualizowane do pracy z serwera SQL Azure i usługa Azure database for PostgreSQL ([notesu](https://aka.ms/pl-data-trans)).
 
-+ **Changes**
++ **Zmiany**
   + Przestarzałe `PublishedPipeline.get_published_pipeline` uzyskać `PublishedPipeline.get`.
   + Przestarzałe `Schedule.get_schedule` uzyskać `Schedule.get`.
 
@@ -120,7 +145,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 + **Nowe funkcje**
   + Odczytywanie z usługi Azure SQL database przy użyciu magazynu danych obsługuje teraz przygotowania bazy danych.
  
-+ **Changes**
++ **Zmiany**
   + Znaczne zwiększenie wydajności pamięci niektórych działań na dużej ilości danych.
   + `read_pandas_dataframe()` wymagane jest teraz `temp_folder` należy określić.
   + `name` Właściwość `ColumnProfile` został przestarzałe — użyj `column_name` zamiast tego.
@@ -217,18 +242,18 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 > Zalecamy utworzenie nowego obszaru roboczego, aby użyć obliczeniowego usługi Azure Machine Learning. Brak zdalnego prawdopodobieństwo, że w trakcie tworzenia obliczeniowego usługi Azure Machine Learning z istniejącym obszarem roboczym użytkownicy będą widzieć błąd. Istniejących zasobów obliczeniowych, w obszarze roboczym będą nadal działać bez zmian.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.2
-+ **Fundamentalne zmiany**
++ **Zmiany powodujące niezgodność**
   + W tej wersji zostaną usunięte obsługę tworzenia maszyny Wirtualnej z usługi Azure Machine Learning. Nadal możesz dołączyć istniejącej chmury maszyny Wirtualnej lub zdalnej na serwerze lokalnym. 
   + Obsługa BatchAI, które powinny być wspierane za pośrednictwem obliczeniowego usługi Azure Machine Learning teraz również zostaną usunięte.
 
-+ **Nowy**
++ **Nowa**
   + Dla potoków uczenia maszynowego:
     + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
     + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **zaktualizowane**
++ **Zaktualizowana**
   + Dla potoków uczenia maszynowego:
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) teraz akceptuje runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) teraz kopiuje do i z źródła danych SQL
@@ -237,7 +262,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Zestaw SDK v0.5.2 przeznaczonego do przygotowania danych usługi Azure Machine Learning
-+ **Fundamentalne zmiany** 
++ **Zmiany powodujące niezgodność** 
   * `SummaryFunction.N` Nazwa została zmieniona na `SummaryFunction.Count`.
   
 + **Poprawki błędów**
@@ -248,7 +273,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
   * Losowe podziału nie jest już nie powiedzie się jeśli oryginalny przepływu danych nie ma nazwy  
 
 + **Więcej informacji**
-  * [Zestaw SDK przygotowywania danych usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
+  * [Usługi Azure Machine Learning przygotowywanie danych zestawu SDK](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumenty i notesów
 + Potokach uczenia Maszynowego
@@ -275,7 +300,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.80
 
-+ **Fundamentalne zmiany** 
++ **Zmiany powodujące niezgodność** 
   * *azureml.Train.widgets* przestrzeń nazw została przeniesiona do *azureml.widgets*.
   * *azureml.core.compute.AmlCompute* następujące klasy — na podstawie której zaniechane *azureml.core.compute.BatchAICompute* i *azureml.core.compute.DSVMCompute*. Ostatnie klasy zostaną usunięte w następnych wersjach. Klasa AmlCompute ma teraz łatwiej definicję po prostu potrzebuje vm_size i max_nodes i automatycznie skaluje klaster z zakresu od 0 do max_nodes po przesłaniu zadania. Nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zostały zaktualizowane przy użyciu tych informacji i powinny zawierać przykłady użycia. Mamy nadzieję, że możesz np. to uproszczenie i wiele więcej fascynujących funkcji są dostępne w nowszej wersji!
 
@@ -316,7 +341,7 @@ Witryny Azure portal dla usługi Azure Machine Learning ma następujące aktuali
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.74
 
-+ **Fundamentalne zmiany** 
++ **Zmiany powodujące niezgodność** 
   * * Workspace.compute_targets, magazynów danych, eksperymentów, obrazy, modele i *usług sieci Web* właściwości zamiast metod. Na przykład Zastąp ciąg *Workspace.compute_targets()* z *Workspace.compute_targets*.
   * *Run.get_context* traktuje jako przestarzałą *Run.get_submitted_run*. Druga metoda zostaną usunięte w następnych wersjach.
   * *PipelineData* klasy teraz oczekuje obiektu magazynu danych jako parametr zamiast datastore_name. Podobnie *potoku* akceptuje default_datastore zamiast default_datastore_name.
@@ -366,7 +391,7 @@ Witryny Azure portal dla usługi Azure Machine Learning ma następujące aktuali
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
-+ **Fundamentalne zmiany**
++ **Zmiany powodujące niezgodność**
   * Workspace.experiments, Workspace.models, Workspace.compute_targets Workspace.images Workspace.web_services słownika zwrotu, poprzednio zwróconej liście. Zobacz [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentacji interfejsu API.
 
   * Automatyczne usługi Machine Learning usunąć błąd znormalizowane średniej kwadratowej z podstawowe metryki.
@@ -388,7 +413,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   * log_table() i log_row() są obsługiwane w szczegóły przebiegu. 
   * Automatycznie tworzyć wykresy, tabele i wiersze, 1, 2 lub 3 kolumny liczbowe i opcjonalna kolumna podzielonych na kategorie.
 
-+ **Automatyczne Machine Learning**
++ **Zautomatyzowane uczenie maszynowe**
   * Ulepszona obsługa błędów i dokumentacji 
   * Naprawiono pobieranie właściwości uruchamiania problemy z wydajnością. 
   * Naprawiono kontynuować wykonywania problem. 
