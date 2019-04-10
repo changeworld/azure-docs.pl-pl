@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 60424edc8e617aca55777d019e6a0f9409f7ca28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276528"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426447"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -85,7 +85,7 @@ Należy pamiętać, że stos sieci wirtualnej jest natury nieefektywne, poniewa�
 
 #### <a name="azure-and-fragmentation"></a>Platforma Azure i fragmentacji
 
-Stos sieci wirtualnej skonfigurowano pomijać "poza kolejnością fragmentów," oznacza to, że pofragmentowane pakiety, które nie pojawić się w ich oryginalnej kolejności pofragmentowany. Te pakiety są porzucane przede wszystkim z powodu ogłoszeniem z listopada 2018 o nazwie FragmentStack luki w zabezpieczeniach sieci.
+Stos sieci wirtualnej skonfigurowano pomijać "poza kolejnością fragmentów," oznacza to, że pofragmentowane pakiety, które nie pojawić się w ich oryginalnej kolejności pofragmentowany. Te pakiety są porzucane przede wszystkim z powodu ogłoszeniem z listopada 2018 o nazwie FragmentSmack luki w zabezpieczeniach sieci.
 
 FragmentSmack jest usterka w sposób jądra systemu Linux obsługiwane ponowne składanie pofragmentowane pakiety protokołów IPv4 i IPv6. Osoba atakująca może użyć tej wady do wyzwalacza kosztowne fragmentu ponownego asemblowania operacje, które może prowadzić do zwiększenia procesora CPU i typu "odmowa usługi" w systemie docelowym.
 

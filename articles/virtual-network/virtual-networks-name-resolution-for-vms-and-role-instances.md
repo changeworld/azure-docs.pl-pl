@@ -4,26 +4,26 @@ titlesuffix: Azure Virtual Network
 description: Nazwa rozwiązania scenariusze dotyczące modelu IaaS platformy Azure, rozwiązania hybrydowe między różnych usług w chmurze, usługi Active Directory i za pomocą własnego serwera DNS.
 services: virtual-network
 documentationcenter: na
-author: subsarma
+author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
-ms.author: subsarma
-ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: rohink
+ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418741"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426430"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
 W zależności od tego, jak używać platformy Azure do hostowania IaaS, PaaS oraz rozwiązań hybrydowych konieczne może być Zezwalaj na maszynach wirtualnych (VM) i innych zasobów wdrożonych w sieci wirtualnej do komunikowania się ze sobą. Mimo że można włączyć komunikację przy użyciu adresów IP, jest dużo łatwiejszy w obsłudze nazw, które można łatwo zapamiętać, a nie należy zmieniać. 
 
-Jeśli zasoby wdrożone w sieciach wirtualnych muszą rozpoznać nazw domen wewnętrznych adresów IP, można użyć jednej z dwóch metod:
+Kiedy zasoby wdrożone w sieciach wirtualnych muszą rozpoznać nazwy domen jako wewnętrzne adresy IP, mogą użyć jednej z dwóch metod:
 
 * [Rozpoznawania nazw platformy Azure](#azure-provided-name-resolution)
 * [Nadaj nazwę rozwiązania, który używa własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server) (która może przekazywać kwerendy do serwerów DNS platformy Azure)
@@ -34,7 +34,7 @@ Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak zasoby muszą
 > W zależności od scenariusza możesz korzystać z funkcji usługi Azure DNS Private Zones, która jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
-| **Scenariusz** | **Rozwiązanie** | **Suffix** |
+| **Scenariusz** | **Rozwiązanie** | **Sufiks** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między maszynami wirtualnymi znajduje się w tej samej sieci wirtualnej lub usługi Azure Cloud Services wystąpień roli w tej samej usłudze w chmurze. | [Usługa Azure DNS Private Zones](../dns/private-dns-overview.md) lub [rozpoznawania nazw platformy Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpień roli w różnych usługach w chmurze. |[Usługa Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwerów DNS zarządzanych przez klienta przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
@@ -219,6 +219,6 @@ Model wdrażania usługi Azure Resource Manager:
 
 Klasyczny model wdrażania:
 
-* [Schemat konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/azure/ee758710)
+* [Azure Service Configuration Schema](https://msdn.microsoft.com/library/azure/ee758710)
 * [Schemat konfiguracji sieci wirtualnej](https://msdn.microsoft.com/library/azure/jj157100)
 * [Skonfiguruj sieć wirtualną przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md)

@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f4ab983fbebe9c0219e70fa7bd5742cf1c3a0491
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905770"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361980"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów (ograniczonej publicznej wersji zapoznawczej)
 
@@ -22,7 +22,9 @@ W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, 
 > [!NOTE]
 > Aby przenieść magazyn usługi Recovery Services i skojarzone z nią zasoby do innej grupy zasobów, należy najpierw [rejestrowanie subskrypcji źródłowej](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="supported-geos"></a>Obsługiwane obszarach geograficznych
+
+Przenoszenie zasobów magazynu usługi Recovery Services jest obsługiwane w Australia Wschodnia, Australia Wschodnia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja południowo-wschodnia, Azja Wschodnia, środkowe stany USA, północno-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, południowo centralnej USA, zachodnio-środkowe stany USA, centralnej zachodnie stany USA 2, zachodnie stany USA, Indie środkowe, Indie Południowe, Japonia, część wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna RPA, Republika Południowej Afryki Zachodnia, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo, środkowe Zjednoczone Emiraty Arabskie i Północne Zjednoczone Emiraty Arabskie.
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Wymagania wstępne dotyczące przenoszenia magazynu
 
@@ -34,12 +36,12 @@ W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, 
 - Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie.
 - Maszyny Wirtualnej nie przenieść przy użyciu magazynu usługi Recovery Services, subskrypcji lub do nowej grupy zasobów, bieżących punktów odzyskiwania maszyn wirtualnych pozostają niezmienione w magazynie dopóki nie wygasną.
 - Czy maszyna wirtualna zostanie przeniesiona z magazynem, czy nie, zawsze można przywrócić maszynę Wirtualną z zachowanej historii kopii zapasowych w magazynie.
--   Usługa Azure Disk Encryption wymaga, że maszyny wirtualne i usługi key vault, na których znajdują się w tym samym regionie platformy Azure i subskrypcji.
--   Aby przenieść maszynę wirtualną z dyskami zarządzanymi, zobacz ten [artykułu](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
--   Opcje przenoszenia zasobów wdrożonych za pośrednictwem klasycznego modelu różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji. Aby uzyskać więcej informacji, zobacz ten [artykułu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
--   Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu zostaną zachowane, gdy magazyn zostanie przeniesiona w subskrypcjach lub do nowej grupy zasobów.
--   Obecnie nie można przenieść magazynów zawierających pliki Azure, usługi Azure File Sync lub SQL na maszynach wirtualnych IaaS w subskrypcji i grup zasobów. Wsparcie dla tych scenariuszy zostaną dodane w przyszłych wersjach.
--   Po przeniesieniu Magazyn zawierający dane kopii zapasowej maszyn wirtualnych, między subskrypcjami, możesz przenosić maszyny wirtualne z tą samą subskrypcją i Użyj tej samej grupie zasobów docelowych, aby kontynuować tworzenie kopii zapasowych.<br>
+- Usługa Azure Disk Encryption wymaga, że maszyny wirtualne i usługi key vault, na których znajdują się w tym samym regionie platformy Azure i subskrypcji.
+- Aby przenieść maszynę wirtualną z dyskami zarządzanymi, zobacz ten [artykułu](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- Opcje przenoszenia zasobów wdrożonych za pośrednictwem klasycznego modelu różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji. Aby uzyskać więcej informacji, zobacz ten [artykułu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
+- Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu zostaną zachowane, gdy magazyn zostanie przeniesiona w subskrypcjach lub do nowej grupy zasobów.
+- Obecnie nie można przenieść magazynów zawierających pliki Azure, usługi Azure File Sync lub SQL na maszynach wirtualnych IaaS w subskrypcji i grup zasobów.
+- Po przeniesieniu Magazyn zawierający dane kopii zapasowej maszyn wirtualnych, między subskrypcjami, możesz przenosić maszyny wirtualne z tą samą subskrypcją i Użyj tej samej grupie zasobów docelowych, aby kontynuować tworzenie kopii zapasowych.<br>
 
 > [!NOTE]
 >
@@ -52,24 +54,24 @@ Można zarejestrować subskrypcji źródłowej do **przenieść** magazynu usłu
 1. Zaloguj się do swojego konta platformy Azure
 
    ```
-   Connect-AzAccount
+   Connect-AzureRmAccount
    ```
 
 2. Wybierz subskrypcję, która ma zostać zarejestrowany
 
    ```
-   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
    ```
 3. Zarejestruj tę subskrypcję
 
    ```
-   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. Uruchamianie polecenia
 
    ```
-   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Poczekaj, aż subskrypcja złóż wniosek o umieszczenie przed rozpoczęciem operacji przenoszenia, przy użyciu witryny Azure portal lub programu PowerShell na 30 minut.
@@ -139,18 +141,18 @@ Magazyn usługi Recovery Services i skojarzone z nią zasoby można przenieść 
 
 ## <a name="use-powershell-to-move-a-vault"></a>Przenoszenie magazynu przy użyciu programu PowerShell
 
-Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj `Move-AzResource` polecenia cmdlet. `Move-AzResource` wymaga nazwy zasobów i typu zasobu. Możesz uzyskać zarówno z poziomu `Get-AzRecoveryServicesVault` polecenia cmdlet.
+Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj `Move-AzureRMResource` polecenia cmdlet. `Move-AzureRMResource` wymaga nazwy zasobów i typu zasobu. Możesz uzyskać zarówno z poziomu `Get-AzureRmRecoveryServicesVault` polecenia cmdlet.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Aby przenieść zasoby do innej subskrypcji, należy dołączyć `-DestinationSubscriptionId` parametru.
 
 ```
-Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Po wykonaniu powyższych poleceń cmdlet, użytkownik jest proszony o upewnij się, że chcesz przenieść określonych zasobów. Typ **Y** o potwierdzenie. Po pomyślnej weryfikacji zasób zostanie przeniesiony.

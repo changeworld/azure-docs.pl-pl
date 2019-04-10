@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Szybkie opracowywanie usługi Kubernetes przy użyciu kontenery, mikrousługi i języka Java na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, Java, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26f82427ff06608de39381b4ecc45d318212a8a0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419017"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425750"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Programowanie za pomocą języka Java na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
 
@@ -31,7 +31,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 - Subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 - [Visual Studio Code](https://code.visualstudio.com/download).
--  [Miejsca do magazynowania Azure Dev](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) i [debugera języka Java dla usługi Azure Dev miejsca do magazynowania](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) rozszerzeń programu Visual Studio Code.
+- [Miejsca do magazynowania Azure Dev](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) i [debugera języka Java dla usługi Azure Dev miejsca do magazynowania](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) rozszerzeń programu Visual Studio Code.
 - [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Narzędzia maven, zainstalować i skonfigurować](https://maven.apache.org).
 
@@ -212,4 +212,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Dowiedz się, jak usługi Azure Dev miejsca do magazynowania ułatwia tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie zespołowe przy pracy z różnymi wersjami lub gałęzi kodu w różnych miejsc do magazynowania.
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-java.md)
+> [Praca z wieloma kontenerami i Projektowanie zespołowe](multi-service-java.md)

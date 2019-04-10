@@ -14,19 +14,19 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: fc8b300cea714ee44f826a78ce8c7a10c1443414
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282121"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357430"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
 
 [Wystąpienie zarządzane](sql-database-managed-instance.md) inspekcji śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie magazynu platformy Azure. Inspekcja również:
 
 - Pomaga zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
-- Włącza i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+- Włącza i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Inspekcja serwera do usługi Azure storage
 
@@ -242,7 +242,7 @@ Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure Blob stora
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
-- Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/compliance/) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+- Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
 
 <!--Image references-->
 

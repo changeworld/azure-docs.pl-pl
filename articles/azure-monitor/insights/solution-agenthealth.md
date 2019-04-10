@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757962"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426226"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Rozwiązanie Agent Health w usłudze Azure Monitor
 Rozwiązanie Agent Health na platformie Azure pomoże Ci zrozumieć, dla wszystkich agentów raportujących bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor lub grupy zarządzania programu System Center Operations Manager podłączony do usługi Azure Monitor, które są nie odpowiada i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -76,21 +76,21 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 
 | Właściwość | Opis |
 | --- | --- |
-| Type | *Heartbeat*|
-| Kategoria | Wartością jest *Direct Agent*, *SCOM Agent* lub *SCOM Management Server*.|
-| Computer | Nazwa komputera.|
-| OSType | System operacyjny Windows lub Linux.|
-| OSMajorVersion | Wersja główna systemu operacyjnego.|
-| OSMinorVersion | Wersja pomocnicza systemu operacyjnego.|
-| Wersja | Wersja agenta programu log Analytics lub agenta programu Operations Manager.|
-| SCAgentChannel | Wartością jest *Direct* i/lub *SCManagementServer*.|
-| IsGatewayInstalled | Jeśli zainstalowano bramę usługi Log Analytics, wartość jest *true*, w przeciwnym razie wartość jest *false*.|
-| ComputerIP | Adres IP komputera.|
-| RemoteIPCountry | Lokalizacja geograficzna, w której wdrożony jest komputer.|
-| ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager.|
-| SourceComputerId | Unikatowy identyfikator komputera.|
-| RemoteIPLongitude | Długość geograficzna lokalizacji geograficznej komputera.|
-| RemoteIPLatitude | Szerokość geograficzna lokalizacji geograficznej komputera.|
+| `Type` | *Puls*|
+| `Category` | Wartością jest *Direct Agent*, *SCOM Agent* lub *SCOM Management Server*.|
+| `Computer` | Nazwa komputera.|
+| `OSType` | System operacyjny Windows lub Linux.|
+| `OSMajorVersion` | Wersja główna systemu operacyjnego.|
+| `OSMinorVersion` | Wersja pomocnicza systemu operacyjnego.|
+| `Version` | Wersja agenta programu log Analytics lub agenta programu Operations Manager.|
+| `SCAgentChannel` | Wartością jest *Direct* i/lub *SCManagementServer*.|
+| `IsGatewayInstalled` | Jeśli zainstalowano bramę usługi Log Analytics, wartość jest *true*, w przeciwnym razie wartość jest *false*.|
+| `ComputerIP` | Adres IP komputera.|
+| `RemoteIPCountry` | Lokalizacja geograficzna, w której wdrożony jest komputer.|
+| `ManagementGroupName` | Nazwa grupy zarządzania programu Operations Manager.|
+| `SourceComputerId` | Unikatowy identyfikator komputera.|
+| `RemoteIPLongitude` | Długość geograficzna lokalizacji geograficznej komputera.|
+| `RemoteIPLatitude` | Szerokość geograficzna lokalizacji geograficznej komputera.|
 
 Każdy agent raportujący do serwera zarządzania programu Operations Manager będzie wysyłać dwa pulsy, a wartość właściwości SCAgentChannel będzie obejmować obie **bezpośredniego** i **SCManagementServer** zależności od tego, co źródła danych i rozwiązań do monitorowania włączono w Twojej subskrypcji. Jeżeli pamiętasz, dane z rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Azure Monitor lub ze względu na ilość danych zgromadzonych na agencie, wysyłane bezpośrednio z agenta do usługi Azure Monitor. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
 

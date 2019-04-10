@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: b6785dc06107424344f0a6af775abe9b1c956f70
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999321"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426141"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Azure Monitor
 [Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Azure Monitor.
@@ -112,14 +112,14 @@ Aby zachować znanego modelu między metryk infrastruktury już zebrane przez ag
 
 | Metryki zebrane pola | Pole monitorowania platformy Azure |
 |:--|:--|
-| host | Computer (Komputer) |
-| Dodatek typu plug-in | Brak |
-| plugin_instance | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = "*_Total*" |
-| type | Nazwa obiektu |
-| type_instance | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
-| [] dsnames | CounterName |
-| dstypes | Brak |
-| wartości] | CounterValue |
+| `host` | Computer (Komputer) |
+| `plugin` | Brak |
+| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = "*_Total*" |
+| `type` | Nazwa obiektu |
+| `type_instance` | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
+| `dsnames[]` | CounterName |
+| `dstypes` | Brak |
+| `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

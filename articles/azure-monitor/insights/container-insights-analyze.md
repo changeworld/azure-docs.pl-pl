@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234004"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426396"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -71,7 +71,7 @@ Poniższa tabela zawiera podział obliczeń kontrolowanie stanów kondycji monit
 | |Ostrzeżenie |ND |
 | |Krytyczny |< 100% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
-|**Node** | | |
+|**Węzeł** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 - 84% |
 | |Krytyczny |< 60% |
@@ -100,7 +100,34 @@ Wykres wydajności przedstawia cztery metryki wydajności:
 
 Strzałka w lewo/w prawo umożliwia przechodzić przez każdy punkt danych na wykresie i Strzałka w górę/w dół klucze, aby przechodzić między wiersze percentyl.
 
-Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości.  Pokazuje właściwości elementu zaznaczone, w tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes. Kliknij pozycję **>>** połączyć w okienku view\hide okienka.  
+Usługa Azure Monitor dla kontenerów obsługuje również usługi Azure Monitor [Eksploratora metryk](../platform/metrics-getting-started.md), gdzie można utworzyć własnego wykresów wykres, korelować i śledzenie trendów i przypinać do pulpitów nawigacyjnych. Z poziomu Eksploratora metryk umożliwia także kryteria zostało ustawione w celu wizualizacji metryk jako podstawa [metryki na podstawie reguły alertu](../platform/alerts-metric.md).  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>Wyświetl metryki kontenera w Eksploratorze metryk
+W Eksploratorze metryk można wyświetlić zagregowane węzła i zasobnik wykorzystania metryki z usługi Azure Monitor kontenerów. W poniższej tabeli przedstawiono szczegółowe informacje ułatwiające zrozumienie metod wykorzystania wykresy metryk w celu wizualizacji metryk kontenera.
+
+|Przestrzeń nazw | Metryka |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | podCount |
+
+Można zastosować [podział](../platform/metrics-charts.md#apply-splitting-to-a-chart) metryki, aby go wyświetlić, wymiarów i wizualizację różnych części porównać ze sobą. Dla węzła, możesz posegmentować wykres według *hosta* wymiar, a w zasobniku można podzielić ją przez poniższe wymiary:
+
+* Kontroler
+* Przestrzeni nazw Kubernetes
+* Węzeł
+* Etap
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>Analizowanie węzłów, kontrolerów i kondycji kontenera
+
+Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości.  Pokazuje właściwości elementów wybranych, tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes. Kliknij pozycję **>>** połączyć w okienku view\hide okienka.  
 
 ![W okienku właściwości perspektyw Kubernetes przykład](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
@@ -133,7 +160,7 @@ Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale okn
 
 Gdy przesuniesz wskaźnik myszy nad wykres słupkowy w ramach **Trend** kolumny, Każdy słupek pokazuje użycie procesora CPU lub pamięci, w zależności od tego, który jest wybrana metryka, 15 minut przed upływem próbki. Po wybraniu wykresu trendu za pomocą klawiatury, umożliwia klawisze Alt + PageUp lub Alt + PageDown przechodzić przez każdy słupek indywidualnie i szczegółowe informacje ten sam sposób jak w mouseover.
 
-![Trend paska przykład po wskazaniu wskaźnikiem wykresu](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![Trend wykres słupkowy, umieść kursor nad przykład](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 W następnym przykładzie, należy pamiętać, pierwszy na liście - węzeł *aks-nodepool1 -*, wartość **kontenery** jest 9, która stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.
 
@@ -176,10 +203,10 @@ W poniższej tabeli opisano informacje, które jest wyświetlane, gdy wyświetla
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera.|
 | Stan | Stan pakietu zbiorczego kontenery po ukończeniu uruchomione o stanie, takie jak *OK*, *zwolniony*, *niepowodzenie* *zatrzymane*, lub *Wstrzymana*. Jeśli kontener jest uruchomiony, ale stan był albo nie zostało prawidłowo wyświetlane lub nie została pobrana przez agenta i nie odpowiedział ponad 30 minut, stan jest *nieznany*. W poniższej tabeli znajdują się dodatkowe szczegóły ikonę stanu.|
-| Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Pakiet zbiorczy średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
-| Avg, Min, Max, 50., 90  | Pakiet zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
+| Średnia liczba&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Przedstawia średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
+| Avg, Min, Max, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
 | Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
-| Ponowne uruchomienie | Zbiorcze informacje licznika ponowne uruchomienie z kontenerów. |
+| Uruchamia ponownie | Rzutowanie liczby ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
 | Trend Avg&nbsp;%, minimalnej&nbsp;%, Max&nbsp;%, 50.&nbsp;%, 90.&nbsp;%| Wykres słupkowy trend reprezentuje metryki średni percentyl kontrolera. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309914"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426243"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -48,10 +48,7 @@ Aby skonfigurować urządzenie Windows IoT Core wykonaj przewodnik krok po kroku
 
 ### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows IoT Core** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
-
- > [!NOTE]
-   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrukcje, aby [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#get-a-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows IoT Core** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Wykonaj te instrukcje, aby [Generowanie parametrów połączenia urządzenia](howto-generate-connection-string.md) przy użyciu **identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy** wprowadzono należy pamiętać o wcześniej.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Przygotuj urządzenie Windows 10 IoT Core
 
@@ -67,7 +64,8 @@ Wdrażanie aplikacji klienckiej z poprzedniego kroku do Twojego urządzenia syst
 
 **Upewnij się, że parametry połączenia są przechowywane na urządzeniu na potrzeby aplikacji klienckiej do użycia**
 * Na komputerze stacjonarnym należy zapisać parametry połączenia w pliku tekstowym o nazwie connection.string.iothub.
-* Skopiuj plik tekstowy do folderu dokumentów urządzenia: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+* Skopiuj plik tekstowy do folderu dokumentów urządzenia:
+`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
 Po wykonaniu tego, musisz otworzyć [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) , wpisując http://[device-IP-address]:8080 w dowolnej przeglądarce.
 

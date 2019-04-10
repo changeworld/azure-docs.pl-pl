@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273978"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361239"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Łączenie z Media Services v3 API — .NET
 
@@ -35,7 +35,7 @@ W tym artykule pokazano, jak połączyć się z zestawu .NET SDK usługi Azure M
 1. Z **pliku** menu, kliknij przycisk **New** > **projektu**. 
 1. Tworzenie **platformy .NET Core** aplikacji konsoli.
 
-Przykładowa aplikacja w tym temacie jest przeznaczony dla `netcoreapp2.0`. Kod używa "asynchroniczna funkcja main", która jest dostępna, począwszy od C# 7.1. Zobacz ten [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) Aby uzyskać więcej informacji.
+Przykładowa aplikacja w tym temacie jest przeznaczony dla `netcoreapp2.0`. Kod używa "async main", która jest dostępna, począwszy od C# 7.1. Zobacz ten [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) Aby uzyskać więcej informacji.
 
 ## <a name="add-required-nuget-packages"></a>Dodawanie wymaganych pakietów NuGet
 
@@ -223,7 +223,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo — .NET](stream-files-tutorial-with-api.md) 
 - [Samouczek: Stream na żywo za pomocą usługi Media Services v3 — .NET](stream-live-tutorial-with-api.md)
@@ -237,6 +237,6 @@ namespace ConsoleApp1
 - [Tworzenie filtrów za pomocą usługi Media Services — .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Zaawansowane wideo na żądanie przykłady usługi Azure Functions w wersji 2 przy użyciu usługi Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="see-also"></a>Zobacz także
 
 [Dokumentacja platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)

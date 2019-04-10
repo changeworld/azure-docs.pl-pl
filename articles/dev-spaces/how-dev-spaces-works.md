@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500563"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361495"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -85,10 +85,10 @@ Trwa przygotowywanie klastra usługi AKS obejmuje:
 * Włączanie usługi Azure Dev miejsca do magazynowania w sieci za pomocą klastra `az aks use-dev-spaces`
 
 Aby uzyskać więcej informacji o tym, jak utworzyć i skonfigurować klaster AKS dla usługi Azure Dev miejsca do magazynowania zobacz jeden z uzyskiwaniem przewodniki z wprowadzeniem:
-* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu języka Java](get-started-java.md)
-* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu platformy .NET Core i Visual Studio](get-started-netcore-visualstudio.md)
-* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania za pomocą programu .NET Core](get-started-netcore.md)
-* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu środowiska Node.js](get-started-nodejs.md)
+* [Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java](get-started-java.md)
+* [Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio](get-started-netcore-visualstudio.md)
+* [Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core](get-started-netcore.md)
+* [Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu środowiska Node.js](get-started-nodejs.md)
 
 Po włączeniu usługi Azure Dev miejsca do magazynowania w klastrze AKS instaluje kontrolera dla klastra. Kontroler jest oddzielne zasoby platformy Azure poza klastrem i wykonuje następujące czynności, aby zasoby w klastrze:
 

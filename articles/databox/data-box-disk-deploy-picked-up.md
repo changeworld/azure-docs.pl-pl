@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7d1d38a2e8d3216414ab215f3023d4a188c57120
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282903"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425954"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box Disk i weryfikowanie przekazania danych na platformę Azure
 
@@ -108,7 +108,7 @@ Centra danych platformy Azure w Australii mają wiadomość z powiadomieniem dod
     - Wskazuje odwołanie numer Chakubarai oznacza rzeczywistej kolumny uwagi, pozwalających zapewnić wpis w Japonii.
     - Wprowadź adres docelowy, jak pokazano poniżej:   
         ```
-        3F N7 Prologis Park Tokyo Ohta, 1-4-3 Tokai Ohta-ku, Tokyo 143-0001
+        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
         Microsoft Service Center c/o Quantium Solutions Japan
         TEL: 03-5755-0150
         ```

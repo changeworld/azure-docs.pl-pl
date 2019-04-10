@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120809"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425852"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitoruje stan replikacji usługi Active Directory z usługą Azure Monitor
 
@@ -44,7 +44,7 @@ Nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Az
 3. Na tym komputerze należy ustawić następujący klucz rejestru:<br>Klucz: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Wartość: **IsTarget**<br>Dane wartości: **true**
 
    > [!NOTE]
-   > Te zmiany nie obowiązywać do Twojej ponowne uruchomienie usługi Microsoft Monitoring Agent (HealthService.exe).
+   > Te zmiany nie obowiązywać dopiero po ponownym uruchomieniu usługi Microsoft Monitoring Agent (HealthService.exe).
    > ### <a name="install-solution"></a>Zainstalować rozwiązanie
    > Wykonaj czynności opisane w [zainstalować rozwiązanie do monitorowania](solutions.md#install-a-monitoring-solution) dodać **stan replikacji usługi Active Directory** rozwiązania do obszaru roboczego usługi Log Analytics. Nie są wymagane żadne dalsze czynności konfiguracyjne.
 

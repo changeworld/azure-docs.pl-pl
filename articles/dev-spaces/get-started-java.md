@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 49f3f50cd33d2b3fea1e784fcfc70044c568ba31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842417"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426311"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java
 
@@ -26,15 +26,10 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Efektywne tworzenie i testowanie kodu w środowisku zespołu.
 
 > [!Note]
-> **Jeśli utkniesz** w dowolnym momencie, zobacz sekcję [Rozwiązywanie problemów](troubleshooting.md) lub prześlij komentarz na tej stronie.
-
-Teraz możesz przystąpić do tworzenia obszaru deweloperskiego Kubernetes na platformie Azure.
+> **Pobierz zapoznaniu się z** w dowolnym momencie wyświetlić [Rozwiązywanie problemów](troubleshooting.md) sekcji.
 
 ## <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 Usługa Azure Dev Spaces wymaga minimalnej konfiguracji komputera lokalnego. Większość ustawień obszaru deweloperskiego jest przechowywana w chmurze i udostępniana innym użytkownikom. Zacznij od pobrania i uruchomienia [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
-
-> [!IMPORTANT]
-> Jeśli masz już zainstalowany interfejs wiersza polecenia platformy Azure, upewnij się, że używasz wersji 2.0.43 lub nowszej.
 
 ### <a name="sign-in-to-azure-cli"></a>Logowanie do interfejsu wiersza polecenia platformy Azure
 Zaloguj się do platformy Azure. W oknie terminala wpisz następujące polecenie:
@@ -113,7 +108,7 @@ W tej chwili masz podstawową aplikację internetową, która działa lokalnie. 
     ```
 
 Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zasoby platformy Docker i Kubernetes z ustawieniami domyślnymi:
-* Plik `./Dockerfile` opisuje obraz kontenera aplikacji oraz sposób kompilowania kodu źródłowego i uruchamiania go w kontenerze.
+* `./Dockerfile` Opis aplikacji obraz kontenera i jak kod źródłowy jest wbudowana i jest uruchamiany w kontenerze.
 * [Pakiet Helm](https://docs.helm.sh) w folderze `./charts/webfrontend` opisuje, jak wdrożyć kontener na platformie Kubernetes.
 
 Na razie nie trzeba rozumieć pełnej zawartości tych plików. Warto jednak wspomnieć, że **te same zasoby konfiguracji jako kodu platformy Kubernetes i Docker mogą być używane od etapu opracowywania po etap produkcyjny, co zapewnia większą spójność w różnych środowiskach.**
@@ -153,7 +148,7 @@ Otwórz ten adres URL w oknie przeglądarki — aplikacja internetowa powinna zo
 > Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
 
 1. W oknie terminalu naciśnij klawisze `Ctrl+C`, aby zatrzymać polecenie `azds up`.
-1. Otwórz plik kodu o nazwie `src/main/java/com/ms/sample/webfrontend/Application.java` i zmodyfikuj komunikat powitalny: `return "Hello from webfrontend in Azure!";`
+1. Otwórz plik kodu o nazwie `src/main/java/com/ms/sample/webfrontend/Application.java`i edytowania wiadomości powitania: `return "Hello from webfrontend in Azure!";`
 1. Zapisz plik.
 1. Uruchom polecenie `azds up` w oknie terminalu.
 
@@ -220,9 +215,9 @@ Zamiast ponownego kompilowania i wdrażania nowego obrazu kontenera przy każdej
 
 Odśwież aplikację internetową w przeglądarce. Twój komunikat powinien zostać wyświetlony w interfejsie użytkownika.
 
-**Umiesz już korzystać z metody szybkiego wprowadzania zmian w kodzie i debugowania bezpośrednio w środowisku Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
+**Teraz masz metodę szybkie Iterowanie nad kodem i debugowania bezpośrednio w usłudze Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-java.md)
+> [Dowiedz się więcej o programowaniu dla wielu usług](multi-service-java.md)

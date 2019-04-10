@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/09/2019
-ms.openlocfilehash: 79f61f99050748c93ca4bd17d1849f4cbba7a295
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: f07f81562c604913e633a8d93fa9c7db28a7bf55
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360558"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471481"
 ---
 # <a name="azure-stack-1903-update"></a>Aktualizacja usługi Azure Stack 1903
 
@@ -97,7 +97,8 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 - Po uruchomieniu [AzureStack testu](azure-stack-diagnostic-test.md), zostanie wyświetlony komunikat ostrzegawczy z kontrolera zarządzania płytą główną (BMC). Można bezpiecznie zignorować to ostrzeżenie.
 
-- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem **błędu — szablon FaultType UserAccounts.New Brak.** Te alerty można bezpiecznie zignorować. Alerty zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
+<!-- 2468613 - IS -->
+- Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem **błędu — szablon FaultType konta użytkowników. Nowe nebyl nalezen.** Te alerty można bezpiecznie zignorować. Alerty zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
 
 ## <a name="post-update-steps"></a>Kroki po aktualizacji
 
@@ -124,10 +125,15 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
 
 <!-- 1663805 - IS ASDK --> 
-- Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu, należy użyć [programu PowerShell w celu sprawdzenia uprawnień](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
+- Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu, należy użyć [programu PowerShell w celu sprawdzenia uprawnień](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 <!-- Daniel 3/28 -->
-- W aplikacji portal użytkowników, gdy przejdź do obiektu blob w ramach konta magazynu i spróbuj otworzyć **zasad dostępu** w drzewie nawigacji kolejne okno nie udało się załadować.
+- W aplikacji portal użytkowników, gdy przejdź do obiektu blob w ramach konta magazynu i spróbuj otworzyć **zasad dostępu** w drzewie nawigacji kolejne okno nie udało się załadować. Aby obejść ten problem, następujących poleceń cmdlet programu PowerShell, Włącz tworzenie, pobieranie, ustawiania i usuwania zasad dostępu, odpowiednio:
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- Daniel 3/28 -->
 - W aplikacji portal użytkowników, podczas próby przekazania obiektu blob przy użyciu **OAuth(preview)** opcji, zadanie kończy się niepowodzeniem z komunikatem o błędzie. Aby obejść ten problem, przekaż obiekt blob przy użyciu **sygnatury dostępu Współdzielonego** opcji.
@@ -157,17 +163,16 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 - Maszyny Wirtualnej systemu Ubuntu 18.04 utworzone za pomocą autoryzacji SSH włączone uniemożliwi używanie kluczy SSH do logowania. Jako obejście użycie dostępu do maszyny Wirtualnej dla rozszerzenia systemu Linux w celu wdrożenia kluczy SSH po zainicjowaniu obsługi administracyjnej lub korzystanie z uwierzytelniania opartego na hasłach.
 
-- Usługa Azure Stack obsługuje teraz agenci dla systemu Windows Azure Linux nowsza niż wersja 2.2.20. Ta funkcjonalność było częścią 1901 i 1902 poprawki i pozwala klientom na przechowywanie obrazów systemu linux spójne między platformą Azure i usługi Azure Stack.
-
+- Usługa Azure Stack obsługuje teraz agenci dla systemu Windows Azure Linux nowsza niż wersja 2.2.20. Ta funkcjonalność była częścią poprawki 1901 i 1902 i umożliwia klientom zachować spójną obrazów systemu Linux między platformą Azure i usługi Azure Stack.
 
 - Jeśli nie masz hosta cyklu życia sprzętu (HLH): przed kompilacją 1902 trzeba było ustawić zasady grupy **komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\opcje** do **Wyślij LM i protokołu NTLM — Użyj zabezpieczeń sesji NTLMv2 po uzgodnieniu**. Od czasu kompilacji 1902 należy pozostawić go w formie **Niezdefiniowany** lub ustaw go na **tylko NTLMv2 wysłać odpowiedź** (czyli wartość domyślna). W przeciwnym razie nie będzie można nawiązać sesji zdalnej programu PowerShell i zostanie wyświetlony **dostęp jest zabroniony** błąd:
 
-   ```shell
+   ```powershell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
    At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   + $Session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
    +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed

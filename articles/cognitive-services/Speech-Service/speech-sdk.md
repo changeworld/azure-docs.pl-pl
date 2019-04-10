@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 04/08/2019
 ms.author: wolfma
-ms.custom: seodec18
-ms.openlocfilehash: bd42e8c5fe3a766f5c8a74784212712748a50549
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: bb28972469ca33a7fb33a50a8ce2e9bf326222b8
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010468"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425801"
 ---
 # <a name="about-the-speech-sdk"></a>Temat mowy zestawu SDK
 
-Mowy Software Development Kit (SDK) daje dostęp aplikacji do funkcji usług rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**. Ogólne omówienie o możliwościach i obsługiwanych platform można znaleźć w dokumentacji [strony wprowadzania](https://aka.ms/csspeech).
+Mowy Software Development Kit (SDK) daje dostęp aplikacji do funkcji usług rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do **mowy na tekst**, **zamiany tekstu na mowę**, **tłumaczenia mowy**, i **rozpoznawanie intencji**. Ogólne omówienie o możliwościach i obsługiwanych platform można znaleźć w dokumentacji [strony wprowadzania](https://aka.ms/csspeech).
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

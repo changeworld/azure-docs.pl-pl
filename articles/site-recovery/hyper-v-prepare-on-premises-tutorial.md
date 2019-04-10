@@ -5,29 +5,37 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 127e970927e8ac1d0cd9b431c0c0175bdc4f5c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e57b629a0007b06af6e37f96e1466e35afafccc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315779"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361889"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów funkcji Hyper-V do odzyskiwania po awarii na platformie Azure
 
-Ten samouczek pokazuje, jak przygotować infrastrukturę funkcji Hyper-V w środowisku lokalnym, jeśli chcesz replikować maszyny wirtualne funkcji Hyper-V do platformy Azure na potrzeby odzyskiwania po awarii. Hosty funkcji Hyper-V może być zarządzana przez System Center Virtual Machine Manager (VMM), ale nie jest to wymagane.  Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule opisano sposób przygotowania infrastruktury funkcji Hyper-V w środowisku lokalnym skonfigurować odzyskiwanie po awarii maszyny wirtualne funkcji Hyper-v na platformę Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
+
+
+Jest to drugi samouczek z serii, który pokazuje, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V w środowisku lokalnym. W pierwszym samouczku mamy [skonfigurować składniki platformy Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii z funkcji Hyper-V.
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przejrzyj wymagania dotyczące funkcji Hyper-V i wymagania dotyczące programu VMM, jeśli ma to zastosowanie.
-> * Przygotowywanie programu VMM, jeśli ma to zastosowanie
-> * Sprawdź dostęp do Internetu do lokalizacji platformy Azure
-> * Przygotowywanie maszyn wirtualnych, dzięki czemu można z nich korzystać po włączeniu trybu failover na platformie Azure
+> * Jeśli hosty funkcji Hyper-V są zarządzane przez program System Center VMM, należy przejrzeć wymagania funkcji Hyper-V i wymagania dotyczące programu VMM.
+> * Przygotowywanie programu VMM, jeśli ma to zastosowanie.
+> * Sprawdź dostęp do lokalizacji platformy Azure przez internet.
+> * Przygotowywanie maszyn wirtualnych, dzięki czemu można z nich korzystać po włączeniu trybu failover na platformie Azure.
 
-Jest to drugi samouczek z tej serii. Upewnij się, że są już [skonfigurowane składniki platformy Azure](tutorial-prepare-azure.md) zgodnie z opisem w poprzednim samouczku.
+> [!NOTE]
+> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Szczegółowe informacje na ten temat można znaleźć w artykule w sekcji jak tabeli odzyskiwania lokacji zawartości.
 
+## <a name="before-you-start"></a>Przed rozpoczęciem
 
+Upewnij się, że przygotowanymi Azure zgodnie z opisem w [pierwszym samouczku tej serii](tutorial-prepare-azure.md).
 
 ## <a name="review-requirements-and-prerequisites"></a>Przejrzyj wymagania i wymagania wstępne
 
@@ -79,7 +87,7 @@ Aby połączyć z Windows maszyn wirtualnych przy użyciu protokołu RDP po wł�
 
 1. Aby uzyskać dostęp przez Internet, włącz protokół RDP na lokalnej maszynie wirtualnej przed włączeniem trybu failover. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.
 2. Aby uzyskać dostęp za pośrednictwem połączenia VPN typu lokacja-lokacja, włącz protokół RDP na maszynie lokalnej. Używanie protokołu RDP powinno być dozwolone w pozycji **Zapora systemu Windows** -> **Dozwolone aplikacje i funkcje** dla sieci typu **Domena i prywatne**.
-   Upewnij się, że zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135). Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. W przeciwnym razie nie będzie można zalogować się na maszynie wirtualnej do momentu ukończenia aktualizacji.
+   Upewnij się, że zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135). Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. Jeśli, nie można zalogować się do maszyny wirtualnej, do momentu ukończenia aktualizacji.
 3. Na maszynie wirtualnej platformy Azure z systemem Windows po przejściu do trybu failover sprawdź **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie możesz się połączyć, upewnij się, że maszyna wirtualna jest uruchomiona, i przejrzyj te [porady dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Po przejściu w tryb failover można uzyskać dostęp przy użyciu tego samego adresu IP jako maszyny Wirtualnej zreplikowanej w środowisku lokalnym lub innym adresem IP maszyn wirtualnych platformy Azure. [Dowiedz się więcej](concepts-on-premises-to-azure-networking.md) o konfigurowaniu adresowania IP na potrzeby trybu failover.

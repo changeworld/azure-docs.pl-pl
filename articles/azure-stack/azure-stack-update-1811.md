@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0fe5b055665ef5a770fba71fdefcfd13b9809e37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 138913414a8e45084d498a0c7b2e864bc443197f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282274"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362062"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -391,9 +391,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
-### <a name="syslog"></a>Dziennik systemu 
-- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, co w kliencie programu syslog i utracić konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809).
-Obejście polega na skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
+### <a name="syslog"></a>Dziennik systemu
+
+- Konfigurację dziennika systemu nie jest trwały za pośrednictwem cyklu aktualizacji, powodując klienta syslog utratę konfiguracji oraz komunikaty dziennika systemu, aby zatrzymać przesyłane dalej. Ten problem ma zastosowanie do wszystkich wersji programu Azure Stack od Ogólnodostępnej wersji klienta usługi syslog (1809). Aby obejść ten problem, należy skonfigurować klienta usługi syslog po zastosowaniu aktualizacji usługi Azure Stack.
 
 ## <a name="download-the-update"></a>Pobierz aktualizację
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540049"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426193"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Azure Monitor z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -92,15 +92,15 @@ Zgłoś alert, ma rekordów zbieranych przez Nagios **typu** z **alertu** i **sy
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*Zgłoś alert* |
-| SourceSystem |*Nagios* |
-| AlertName |Nazwa alertu. |
-| AlertDescription | Opis alertu. |
-| AlertState | Stan hosta lub usługi.<br><br>OK<br>OSTRZEŻENIE<br>UP<br>W DÓŁ |
-| Nazwa hosta | Nazwa hosta, która utworzyła alert. |
-| PriorityNumber | Priorytet alertu. |
-| StateType | Typ stanu alertu.<br><br>SOFT - problem, który nie został zresetowany.<br>TWARDE — problem, który został zresetowany określoną liczbę razy.  |
-| TimeGenerated |Data i godzina utworzenia alertu. |
+| `Type` |*Alerty* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |Nazwa alertu. |
+| `AlertDescription` | Opis alertu. |
+| `AlertState` | Stan hosta lub usługi.<br><br>OK<br>OSTRZEŻENIE<br>UP<br>W DÓŁ |
+| `HostName` | Nazwa hosta, która utworzyła alert. |
+| `PriorityNumber` | Priorytet alertu. |
+| `StateType` | Typ stanu alertu.<br><br>SOFT - problem, który nie został zresetowany.<br>TWARDE — problem, który został zresetowany określoną liczbę razy.  |
+| `TimeGenerated` |Data i godzina utworzenia alertu. |
 
 
 ### <a name="zabbix-alert-records"></a>Rekordy alertów Zabbix
@@ -108,17 +108,17 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*Zgłoś alert* |
-| SourceSystem |*Zabbix* |
-| AlertName | Nazwa alertu. |
-| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
-| AlertState | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
-| AlertTypeNumber | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
-| Komentarze | Dodatkowe komentarze dla alertu. |
-| Nazwa hosta | Nazwa hosta, która utworzyła alert. |
-| PriorityNumber | Wartość wskazująca, ważność alertu.<br><br>0 - niesklasyfikowanych<br>1 — informacje<br>2 — ostrzeżenie<br>3 — średnia<br>4 — Wysoka<br>5 — po awarii |
-| TimeGenerated |Data i godzina utworzenia alertu. |
-| TimeLastModified |Data i godzina ostatniej zmiany stanu alertu. |
+| `Type` |*Alerty* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | Nazwa alertu. |
+| `AlertPriority` | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
+| `AlertState` | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
+| `AlertTypeNumber` | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
+| `Comments` | Dodatkowe komentarze dla alertu. |
+| `HostName` | Nazwa hosta, która utworzyła alert. |
+| `PriorityNumber` | Wartość wskazująca, ważność alertu.<br><br>0 - niesklasyfikowanych<br>1 — informacje<br>2 — ostrzeżenie<br>3 — średnia<br>4 — Wysoka<br>5 — po awarii |
+| `TimeGenerated` |Data i godzina utworzenia alertu. |
+| `TimeLastModified` |Data i godzina ostatniej zmiany stanu alertu. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

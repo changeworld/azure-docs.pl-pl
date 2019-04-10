@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006348"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361335"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure
 
@@ -98,7 +98,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Opcjonalnie) Hasło wymagane do nawiązania połączenia z hostem funkcji Hyper-V. Jeśli nie zostanie ono określone jako parametr, po uruchomieniu polecenia zostanie wyświetlony związany z tym monit.|
 |-StorageAccountName|(Opcjonalnie) Nazwa konta magazynu używana do wyszukiwania osiągalnej przepływności na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu obliczenia przepływności. Musi to być konto magazynu ogólnego przeznaczenia typu v1 (GPv1).|
 |-StorageAccountKey|(Opcjonalnie) Klucz używany do uzyskiwania dostępu do konta magazynu. W witrynie Azure Portal przejdź do pozycji **Konta magazynu** > *nazwa_konta_magazynu* > **Ustawienia** > **Klucze dostępu** > **Klucz1** (lub podstawowy klucz dostępu w przypadku klasycznego konta magazynu).|
-|-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Może to być jedna z trzech wartości: AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli docelowy region to Wersja platformy Azure dla administracji USA lub Chińska wersja platformy Azure.|
+|-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Może to być jedna z trzech wartości: AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli docelowy region to wersja dla administracji USA lub chińska wersja platformy Azure — firmą 21Vianet.|
 
 Zalecamy, aby maszyny wirtualne były profilowane przez więcej niż 7 dni. Jeśli wzorzec zmian zmienia się w ciągu miesiąca, zaleca się przeprowadzenie profilowania w tygodniu, w którym występuje maksymalna wartość współczynnika zmian. W celu uzyskania lepszych rekomendacji zaleca się wykonywanie profilowania przez 31 dni. 
 
@@ -256,7 +256,7 @@ Wygenerowany raport programu Microsoft Excel zawiera następujące informacje:
 
 * [Podsumowanie środowiska lokalnego](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Zalecenia](hyper-v-deployment-planner-analyze-report.md#recommendations)
-* [Rozmieszczenie maszyny wirtualnej](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
+* [Rozmieszczenie maszyny wirtualnej względem magazynu](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
 * [Zgodne maszyny wirtualne](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
 * [Niezgodne maszyny wirtualne](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
 * [Wymagania dotyczące magazynu lokalnego](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
@@ -283,7 +283,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | Nazwa konta magazynu używana w celu znalezienia użytej przepustowości na potrzeby replikacji danych ze środowiska lokalnego na platformę Azure. Narzędzie przekazuje dane testowe na to konto magazynu w celu określenia użytej przepustowości. Musi to być konto magazynu ogólnego przeznaczenia typu v1 (GPv1).|
 | -StorageAccountKey | Klucz konta magazynu używany do uzyskiwania dostępu do konta magazynu. W witrynie Azure Portal przejdź do pozycji **Konta magazynu** > *nazwa_konta_magazynu* > **Ustawienia** > **Klucze dostępu** > **Klucz1**.|
 | -VMListFile | Plik zawierający listę maszyn wirtualnych, które mają być profilowane, na potrzeby obliczenia użytej przepustowości. Można użyć bezwzględnej lub względnej ścieżki pliku. W przypadku funkcji Hyper-V jest to plik wyjściowy operacji GetVMList. Jeśli jest on przygotowywany ręcznie, powinien zawierać w każdym wierszu jedną nazwę serwera lub adres IP, po którym występuje nazwa maszyny wirtualnej. Oba elementy powinny być rozdzielone znakiem \. Nazwa maszyny wirtualnej określona w pliku powinna być taka sama jak nazwa maszyny wirtualnej na hoście funkcji Hyper-V.<br><br>**Przykład:** Plik VMList.txt zawiera następujące maszyny wirtualne:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Może to być jedna z trzech wartości: AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli docelowy region świadczenia usługi Azure to Wersja platformy Azure dla administracji USA lub Chińska wersja platformy Azure.|
+|-Environment|(Opcjonalnie) Docelowe środowisko na potrzeby konta usługi Azure Storage. Może to być jedna z trzech wartości: AzureCloud, AzureUSGovernment lub AzureChinaCloud. Wartość domyślna to AzureCloud. Użyj tego parametru, jeśli Twoim docelowym regionem świadczenia usługi Azure są dla administracji USA lub chińska wersja platformy Azure — firmą 21Vianet.|
 
 ### <a name="example"></a>Przykład
 ```

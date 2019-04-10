@@ -3,17 +3,17 @@ title: Łączność urządzeń w usłudze Azure IoT Central | Dokumentacja firmy
 description: W tym artykule przedstawiono podstawowe pojęcia dotyczące łączności między urządzeniami w usłudze Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522098"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425971"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -39,24 +39,7 @@ W tym artykule opisano następujące cztery zastosowań:
 
 ## <a name="connect-a-single-device"></a>Łączenie pojedynczego urządzenia
 
-Takie podejście jest przydatne podczas testowania urządzeń lub eksperymentowanie z IoT Central.
-
-Aby połączyć się z IoT Central, przy użyciu sygnatury dostępu Współdzielonego z jednego urządzenia, wykonaj następujące kroki:
-
-1. Aby dodać rzeczywistego urządzenia, przejdź do **Device Explorer**, a następnie wybierz szablon, urządzenia i wybierz **+ nowy > rzeczywistych**:
-    - Wprowadź własne (małe litery) **identyfikator urządzenia** lub użyj sugerowanego identyfikatora.
-    - Wprowadź **nazwy urządzenia** lub użyć sugerowanej nazwy.
-
-      ![Dodaj urządzenie](media/concepts-connectivity/add-device.png)
-
-1. Aby uzyskać informacje o połączeniu urządzenia, wybierz **Connect** na stronie urządzenia. Potrzebujesz **identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy** wartości:
-    - Każda aplikacja IoT Central ma unikatową [identyfikator zakresu](../iot-dps/concepts-device.md#id-scope) , jest generowany przez usługi DPS.
-    - [Identyfikator urządzenia](../iot-dps/concepts-device.md#device-id) jest unikatowy identyfikator urządzenia. Urządzenia, identyfikator jest przechowywany w [rejestr tożsamości](../iot-hub/iot-hub-devguide-identity-registry.md).
-    - **Klucz podstawowy** jest tokenem sygnatury dostępu Współdzielonego generowanych przez IoT Central dla urządzenia.
-
-      ![Szczegóły połączenia](media/concepts-connectivity/device-connect.png)
-
-Włącz urządzenie do nawiązywania połączeń i wysyłania danych do IoT do Twojej aplikacji IoT Central za pomocą informacji o połączeniu w kodu urządzenia. Aby uzyskać więcej informacji na temat łączenia urządzeń, zobacz [następne kroki](#next-steps).
+Takie podejście jest przydatne podczas testowania urządzeń lub eksperymentowanie z IoT Central. Informacje o połączeniu urządzenia z poziomu aplikacji IoT Central umożliwia generowanie parametry połączenia dla urządzenia. Aby uzyskać szczegółowe instrukcje, zobacz [sposób generowania parametrów połączenia urządzenia, aby nawiązać połączenie z aplikacją usługi Azure IoT Central](howto-generate-connection-string.md).
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego
 
@@ -169,35 +152,15 @@ Gdy rzeczywiste urządzenie łączy się z aplikacji IoT Central, jej udostępni
 
 1. Operator może zablokować urządzenie. Gdy urządzenie jest zablokowane, nie jest w stanie wysyłać dane do aplikacji IoT Central. Zablokowane urządzenia mają stan inicjowania obsługi administracyjnej **zablokowane**. Operator musi zresetować urządzenie, zanim można wznowić, wysyłają dane. Gdy operator odblokowuje urządzenie powraca do poprzedniej wartości, stanu aprowizacji **zarejestrowanej** lub **Aprowizowana**.
 
-## <a name="get-a-connection-string"></a>Pobieranie parametrów połączenia
-
-W poniższych krokach opisano, jak uzyskać parametry połączenia dla urządzenia:
-
-1. Wybierz **Connect** na **Device Explorer** strony w celu uzyskania szczegółów połączenia: **Identyfikator zakresu**, **identyfikator urządzenia**, i **klucza podstawowego urządzenia**:
-
-    ![Szczegóły połączenia](media/concepts-connectivity/device-connect.png)
-
-1. Użyj `dps-keygen` narzędzie wiersza polecenia, aby wygenerować parametry połączenia:  Aby zainstalować [klucza narzędzie generatora](https://github.com/Azure/dps-keygen), uruchom następujące polecenie:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    Aby wygenerować parametry połączenia, uruchom następujące polecenie:
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
-
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 
 Oferty zestawy SDK urządzeń Azure najłatwiej można zaimplementować kodu urządzenia. Dostępne są następujące zestawy SDK urządzeń:
 
-- [Usługa Azure IoT SDK dla języka C](https://github.com/azure/azure-iot-sdk-c)
-- [Usługa Azure IoT SDK dla języka Python](https://github.com/azure/azure-iot-sdk-python)
-- [Usługa Azure IoT SDK dla środowiska Node.js](https://github.com/azure/azure-iot-sdk-node)
-- [Usługa Azure IoT SDK dla języka Java](https://github.com/azure/azure-iot-sdk-java)
-- [Usługa Azure IoT SDK dla platformy .NET](https://github.com/azure/azure-iot-sdk-csharp)
+- [Zestaw Azure IoT SDK dla języka C](https://github.com/azure/azure-iot-sdk-c)
+- [Zestaw Azure IoT SDK dla języka Python](https://github.com/azure/azure-iot-sdk-python)
+- [Zestaw Azure IoT SDK dla platformy Node.js](https://github.com/azure/azure-iot-sdk-node)
+- [Zestaw Azure IoT SDK dla języka Java](https://github.com/azure/azure-iot-sdk-java)
+- [Zestaw Azure IoT SDK dla platformy .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
 Każde urządzenie łączy, przy użyciu parametrów połączenia unikatowy, która identyfikuje urządzenia. Urządzenia mogą łączyć się tylko z Centrum IoT, w którym jest zarejestrowany. Podczas tworzenia rzeczywistego urządzenia w aplikacji usługi Azure IoT Central, aplikacja generuje informacje potrzebne do utworzenia, parametry połączenia za pomocą `dps-keygen`.
 
@@ -218,7 +181,7 @@ W poniższej tabeli przedstawiono sposób mapowania funkcji usługi Azure IoT Ce
 
 Aby dowiedzieć się więcej o korzystaniu z zestawów SDK urządzeń typu, zobacz jeden z następujących artykułów przykładowy kod:
 
-- [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)
+- [Łączenie z ogólnego klienta Node.js do aplikacji usługi Azure IoT Central](howto-connect-nodejs.md)
 - [Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central](howto-connect-raspberry-pi-python.md)
 - [Podłącz urządzenie kit DevDiv do aplikacji usługi Azure IoT Central](howto-connect-devkit.md).
 
@@ -243,6 +206,6 @@ Wszystkie dane wymieniane między urządzeniami i usługi Azure IoT Central są 
 Skoro wiesz o łączności między urządzeniami w usłudze Azure IoT Central, Oto zalecane kolejne kroki:
 
 - [Przygotuj i podłącz urządzenie Mxchip](howto-connect-devkit.md)
-- [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)
-- [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)
-- [ZESTAW SDK C: Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Przygotowanie i Połącz z urządzeniem Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Łączenie z ogólnego klienta Node.js do aplikacji usługi Azure IoT Central](howto-connect-nodejs.md)
+- [C SDK: Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

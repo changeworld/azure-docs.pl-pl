@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905207"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426509"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -77,7 +77,7 @@ Można skonfiguruj baz danych Azure SQL i wystąpienie bazy danych, aby zebrać 
 > Pule elastyczne i zarządzanych wystąpień przez mają swoje własne dane oddzielne diagnostyczne i telemetryczne z baz danych, które zawierają. Jest to należy zwrócić uwagę jako dane diagnostyczne i telemetryczne skonfigurowano oddzielnie dla każdej z tych zasobów, zgodnie z opisem poniżej.
 
 > [!NOTE]
-> Dzienniki inspekcji zabezpieczeń i SQLSecurityAuditEvents nie można włączyć za pomocą ustawień diagnostycznych bazy danych. Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2), i [inspekcji dzienników w dzienniki usługi Azure Monitor i Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Dzienniki inspekcji zabezpieczeń i SQLSecurityAuditEvents nie można włączyć przy użyciu ustawień diagnostycznych bazy danych (chociaż wyświetlanie na ekranie). Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2), i [inspekcji dzienników w dzienniki usługi Azure Monitor i Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -141,7 +141,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla 
 1. Powtórz te czynności dla każdej bazy danych, które chcesz monitorować.
 
 > [!NOTE]
-> Dzienniki inspekcji zabezpieczeń i SQLSecurityAuditEvents nie można włączyć za pomocą ustawień diagnostycznych bazy danych. Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2), i [inspekcji dzienników w dzienniki usługi Azure Monitor i Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Dzienniki inspekcji zabezpieczeń i SQLSecurityAuditEvents nie można włączyć przy użyciu ustawień diagnostycznych bazy danych (chociaż wyświetlanie na ekranie). Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2), i [inspekcji dzienników w dzienniki usługi Azure Monitor i Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 > [!TIP]
 > Powtórz te czynności dla każdej usługi Azure SQL Database, którą chcesz monitorować.
 

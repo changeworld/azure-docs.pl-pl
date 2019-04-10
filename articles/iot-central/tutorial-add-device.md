@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793485"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425937"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 
@@ -41,6 +41,8 @@ Przed rozpoczęciem konstruktor powinien ukończyć co najmniej pierwszy samoucz
 * [Definiowanie nowego typu urządzenia](tutorial-define-device-type.md) (wymagany)
 * [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md) (opcjonalny)
 * [Dostosowywanie widoków operatora](tutorial-customize-operator.md) (opcjonalny)
+
+Zainstaluj [Node.js](https://nodejs.org/) wersji 8.0.0 lub później na komputerze deweloperskim. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
@@ -92,37 +94,27 @@ Artykuły wymienione w [następne kroki](#next-steps) sekcji zawierają przykła
 
 W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania [Node.js](https://nodejs.org/):
 
-1. Zainstaluj oprogramowanie [Node.js](https://nodejs.org/) w wersji 4.0.x lub nowszej na maszynie. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
-
-1. Utwórz folder o nazwie `connectedairconditioner` na maszynie.
-
-1. W środowisku wiersza polecenia przejdź do utworzonego folderu `connectedairconditioner`.
-
-1. Zainstaluj generator kluczy DPS przy użyciu następującego polecenia:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-   Dowiedz się więcej na temat [narzędzia wiersza polecenia w tym miejscu](https://www.npmjs.com/package/dps-keygen).
+### <a name="get-the-device-connection-information"></a>Pobieranie informacji o połączeniu urządzenia
 
 1. Parametry połączenia dla wystąpienia urządzenia w aplikacji są generowane na podstawie informacji o urządzeniu udostępnionych przez usługę IoT Central.
 
-   Wróć do portalu usługi IoT Central. Na ekranie dla rzeczywistego połączonego klimatyzatora wybierz pozycję **Połącz**.
+   Na ekranie dla rzeczywistego połączonego klimatyzatora wybierz pozycję **Połącz**.
 
    ![Strona Urządzenie przedstawiająca link umożliwiający wyświetlenie informacji o połączeniu](media/tutorial-add-device/connectionlink.png)
 
-1. Na stronie Połączenie urządzenia skopiuj pola Identyfikator zakresu, Identyfikator urządzenia i Klucz podstawowy, a następnie wklej je w edytorze tekstów i zapisz plik. Użyjesz tych wartości w następnym kroku.
+1. Na stronie połączenie z urządzeniem Zanotuj **identyfikator zakresu**, **identyfikator urządzenia** i **klucz podstawowy** wartości. Użyjesz tych wartości w następnym kroku.
 
    ![Szczegóły połączenia](media/tutorial-add-device/device-connect.png)
 
-1. Wróć do środowiska wiersza polecenia i wygenerować parametry połączenia, wykonując:
+### <a name="generate-the-connection-string"></a>Generowanie parametrów połączenia
 
-    ```cmd/sh
-    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
-    ```
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-   Skopiuj dane wyjściowe i zapisz je w nowym pliku (na przykład connection.txt).
+### <a name="prepare-the-nodejs-project"></a>Przygotowanie projektu środowiska Node.js
+
+1. Utwórz folder o nazwie `connectedairconditioner` na komputerze deweloperskim.
+
+1. W środowisku wiersza polecenia przejdź do utworzonego folderu `connectedairconditioner`.
 
 1. Aby zainicjować projekt oprogramowania Node.js, uruchom następujące polecenie, akceptując wszystkie wartości domyślne:
 
@@ -309,7 +301,7 @@ Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacj�
     var connectionString = '{your device connection string}';
     ```
 
-1. Zastąp element `{your device connection string}` parametrami połączenia rzeczywistego urządzenia. Parametry połączenia zostały zapisane wcześniej w edytorze tekstów.
+1. Zastąp element `{your device connection string}` parametrami połączenia rzeczywistego urządzenia. Możesz skopiować parametry połączenia, który został wygenerowany w poprzednim kroku.
 
 1. Zapisz zmiany w pliku **ConnectedAirConditioner.js**.
 
@@ -367,7 +359,7 @@ Jako operator możesz dowiedzieć się, jak wykonywać następujące działania:
 Jako deweloper urządzenia możesz dowiedzieć się, jak wykonywać następujące działania:
 
 * [Przygotuj i podłącz urządzenie Mxchip (C)](howto-connect-devkit.md)
-* [Przygotowanie i Połącz z urządzeniem Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Przygotowanie i Połącz z urządzeniem Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Przygotowywanie i łączenie urządzenia Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Przygotowywanie i łączenie urządzenia Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Przygotuj i podłącz urządzenie z systemu Windows 10 IoT core (C#)](howto-connect-windowsiotcore.md)
-* [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)
+* [Łączenie z ogólnego klienta Node.js do aplikacji usługi Azure IoT Central](howto-connect-nodejs.md)

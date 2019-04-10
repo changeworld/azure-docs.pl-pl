@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1465f31c8b5eb15b6fe63ed61a946e3b32d550
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439959"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361850"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
 W tym artykule opisano ustawienia zasad przechowywania, czyszczenie fabryki i wycofywana starych obrazów z wszystkich innych usłudze DevTest Labs w organizacji. 
@@ -25,9 +25,9 @@ W tym artykule opisano ustawienia zasad przechowywania, czyszczenie fabryki i wy
 ## <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że przed kontynuacją zostały wykonane następujące artykuły:
 
-- [Utwórz fabrykę obrazu](image-factory-create.md)
-- [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md)
-- [Zapisywanie niestandardowych obrazów i dystrybucji do wielu labs](image-factory-save-distribute-custom-images.md)
+- [Tworzenie fabryki obrazów](image-factory-create.md)
+- [Uruchamianie fabryki obrazów z usługi Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Zapisywanie obrazów niestandardowych i ich dystrybucja do wielu laboratoriów](image-factory-save-distribute-custom-images.md)
 
 Następujące elementy już powinny być stosowane:
 
@@ -73,7 +73,7 @@ Dodawanie nowego obrazu z fabryką również jest proste. Jeśli chcesz dołącz
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-1. [Planowanie kompilacji/wydania](/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) okresowe uruchamianie fabrycznie obrazu. Odświeża jej generowane fabryki obrazów w regularnych odstępach czasu.
+1. [Planowanie kompilacji/wydania](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) okresowe uruchamianie fabrycznie obrazu. Odświeża jej generowane fabryki obrazów w regularnych odstępach czasu.
 2. Wprowadź więcej obrazów złoty fabryki. Można również rozważyć [tworzenie artefaktów](devtest-lab-artifact-author.md) skryptu dodatkowe fragmenty zadania konfiguracji maszyny Wirtualnej i zawierać artefakty do obrazów fabryki.
-4. Tworzenie [oddzielić kompilacji/wydania](/devops/pipelines/overview.md?view=azure-devops-2019) do uruchomienia **DistributeImages** skrypt oddzielnie. Ten skrypt można uruchomić, gdy dokonać zmian Labs.json i pobieranie obrazów skopiowane do laboratoriów docelowej bez konieczności ponownego tworzenia wszystkie obrazy ponownie.
+4. Tworzenie [oddzielić kompilacji/wydania](/azure/devops/pipelines/overview.md?view=azure-devops-2019) do uruchomienia **DistributeImages** skrypt oddzielnie. Ten skrypt można uruchomić, gdy dokonać zmian Labs.json i pobieranie obrazów skopiowane do laboratoriów docelowej bez konieczności ponownego tworzenia wszystkie obrazy ponownie.
 

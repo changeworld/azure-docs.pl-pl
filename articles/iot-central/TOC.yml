@@ -36,6 +36,8 @@ items:
   items:
   - name: Łączenie urządzeń
     items:
+    - name: Generowanie parametrów połączenia urządzenia
+      href: howto-generate-connection-string.md
     - name: Przygotowywanie i łączenie aplikacji Node.js (ogólnej)
       href: howto-connect-nodejs.md
     - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
@@ -144,9 +146,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Obsługiwane przeglądarki
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 09145448edd42e03b77abde46a120ade1631d6bf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 277b1ca0a239bddc02ca32d93ca1ffebbf542240
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520738"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425903"

@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Serv
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 0ae2b264e689270743bc8e4aa5024a4b99eb6626
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418843"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361262"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes za pomocą usługi Azure Dev miejsca do magazynowania (Visual Studio 2017)
 
@@ -130,4 +130,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore-visualstudio.md)
+> [Praca z wieloma kontenerami i Projektowanie zespołowe](multi-service-netcore-visualstudio.md)

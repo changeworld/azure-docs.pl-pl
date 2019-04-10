@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268215"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361548"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -407,11 +407,14 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |AzureStorageMaxWorkerThreads | int, domyślna to 25 |Dynamiczny|Maksymalna liczba wątków roboczych równolegle. |
 |AzureStorageOperationTimeout | Czas w sekundach, wartość domyślna to 6000 |Dynamiczny|Określ przedział czasu w sekundach. Limit czasu na zakończenie operacji xstore. |
 |CleanupApplicationPackageOnProvisionSuccess|wartość logiczna, domyślna to FALSE |Dynamiczny|Ta konfiguracja Włącza lub wyłącza automatycznego czyszczenia pakietu aplikacji na pomyślne aprowizacji. |
+|CleanupUnusedApplicationTypes|wartość logiczna, domyślna to FALSE |Dynamiczny|Ta konfiguracja umożliwia automatyczne wyrejestrować wersje typu aplikacji nieużywane, pomijanie najnowsze trzy wersje nieużywane, a tym samym przycinania miejsca na dysku zajmowanego przez magazynu obrazów. Automatyczne oczyszczanie zostaną wyzwolone za końcem pomyślnej aprowizacji dla tego typu specyficzne dla aplikacji i również jest uruchamiane okresowo, raz dziennie dla wszystkich typów aplikacji. Liczba nieużywanych wersji, aby pominąć to można skonfigurować za pomocą parametru "MaxUnusedAppTypeVersionsToKeep". |
 |DisableChecksumValidation | Wartość logiczna, wartość domyślna to false |Statyczny| Ta konfiguracja pozwala włączyć lub wyłączyć weryfikacja sumy kontrolnej podczas udostępniania aplikacji. |
 |DisableServerSideCopy | Wartość logiczna, wartość domyślna to false |Statyczny|Ta konfiguracja Włącza lub wyłącza po stronie serwera kopię pakietu aplikacji na ImageStore podczas udostępniania aplikacji. |
 |ImageCachingEnabled | Wartość logiczna, wartość domyślna to true |Statyczny|Ta konfiguracja pozwala włączyć lub wyłączyć buforowanie. |
 |ImageStoreConnectionString |SecureString |Statyczny|Parametry połączenia do katalogu głównego dla ImageStore. |
 |ImageStoreMinimumTransferBPS | Int, domyślny wynosi 1024 |Dynamiczny|Szybkość transferu minimalne między klastrem i ImageStore. Ta wartość jest używana do określenia wartości limitu czasu podczas uzyskiwania dostępu do zewnętrznych ImageStore. Tę wartość można zmienić tylko wtedy, gdy opóźnienie między klastrem i ImageStore jest wysoka, aby dać więcej czasu dla klastra można pobrać z zewnętrznego ImageStore. |
+|MaxUnusedAppTypeVersionsToKeep | Int, domyślna to 3 |Dynamiczny|Ta konfiguracja określa liczbę wersje typu aplikacji nieużywane na pomijanie oczyszczania. Ten parametr ma zastosowanie tylko wtedy, gdy parametr CleanupUnusedApplicationTypes jest włączona. |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |

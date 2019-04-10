@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848252"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425989"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatyczne stosowanie poprawek dla programu SQL Server w usłudze Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ W poniższej tabeli opisano opcje, które można skonfigurować do automatyczneg
 | Ustawienie | Możliwe wartości | Opis |
 | --- | --- | --- |
 | **Automatyczne stosowanie poprawek** |Włącz/Wyłącz (wyłączony) |Włącza lub wyłącza automatyczne stosowanie poprawek dla maszyny wirtualnej platformy Azure. |
-| **Harmonogram konserwacji** |Codziennie, poniedziałek, Wtorek, Środa, czwartek, Friday, Saturday lub Sunday |Harmonogram pobierania i instalowania aktualizacji Windows, SQL Server i Microsoft dla maszyny wirtualnej. |
+| **Harmonogram obsługi** |Codziennie, poniedziałek, Wtorek, Środa, czwartek, Friday, Saturday lub Sunday |Harmonogram pobierania i instalowania aktualizacji Windows, SQL Server i Microsoft dla maszyny wirtualnej. |
 | **Godzina rozpoczęcia konserwacji** |0-24 |Godzina rozpoczęcia lokalne, które można zaktualizować maszyny wirtualnej. |
 | **Czas trwania okna obsługi** |30-180 |Liczba minut na ukończenie pobierania i instalacji aktualizacji. |
 | **Kategoria poprawki** |Ważne | Kategoria aktualizacji Windows, aby pobrać i zainstalować.|
@@ -96,11 +96,6 @@ W **konfiguracji programu SQL Server** bloku kliknij **Edytuj** przycisk Automat
 Po zakończeniu kliknij przycisk **OK** przycisk w dolnej części **konfiguracji programu SQL Server** bloku, aby zapisać zmiany.
 
 Jeśli włączasz automatyczne stosowanie poprawek po raz pierwszy, Azure konfiguruje agenta IaaS programu SQL Server w tle. W tym czasie witryny Azure portal może nie pokazać, że skonfigurowano automatyczne stosowanie poprawek. Poczekaj kilka minut, zanim agent, który ma zostać zainstalowane, skonfigurowane. Po tym witryny Azure portal odzwierciedla nowych ustawień.
-
-> [!NOTE]
-> Można również skonfigurować automatyczne stosowanie poprawek za pomocą szablonu. Aby uzyskać więcej informacji, zobacz [szablon szybkiego startu platformy Azure automatyczne stosowanie poprawek](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update).
-> 
-> 
 
 ## <a name="configuration-with-powershell"></a>Konfiguracja przy użyciu programu PowerShell
 Po aprowizacji maszyny Wirtualnej SQL, skonfiguruj automatyczne stosowanie poprawek za pomocą programu PowerShell.

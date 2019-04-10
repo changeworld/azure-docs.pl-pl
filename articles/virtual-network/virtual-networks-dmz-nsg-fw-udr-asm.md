@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 104eae7c8d18c32fd5b9b84147df2bf121345c22
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277423"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426532"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Przykład 3: Tworzenie sieci obwodowej, do ochrony sieci z zaporą, routingiem zdefiniowanym przez użytkownika i sieciowymi grupami zabezpieczeń
 
@@ -396,7 +396,7 @@ Poniżej przedstawiono szczegółowe informacje na temat każdej reguły potrzeb
     > [!TIP]
     > Chociaż ta przykładowa reguła używa `<explicit-dest>` odwołania, należy użyć spójnego podejścia w całym konfigurację zapory. Zalecane jest łatwiejsze czytelności i możliwości obsługi przy użyciu nazwanego obiektu sieci. `<explicit-dest>` Pokazano, w tym miejscu jest tylko po to, aby wyświetlić alternatywne reference — metoda. Nie jest ogólnie zalecane jest, szczególnie w przypadku złożonych konfiguracji.
 
-* **Reguły ruchu wychodzącego z Internetem**: Ta zasada — dostęp próbny zezwala na ruch z żadną siecią źródła do przekazania do wybranej sieci docelowej. Zapora Barracuda NextGen zwykle ma to ta zasada "włączone" Domyślnie, ale w stanie wyłączenia. Kliknij prawym przyciskiem myszy na tej reguły, aby uzyskać dostęp do **reguły aktywacji** polecenia. Zmodyfikuj regułę pokazano na zrzucie ekranu, można dodać obiektów sieciowych dla podsieci zaplecza i frontonu z atrybutem źródłowym tej reguły. Te obiekty sieci został utworzony w sekcji wymagań wstępnych w tym artykule.
+* **Reguły ruchu wychodzącego z Internetem**: Ta zasada — dostęp próbny zezwala na ruch z żadną siecią źródła do przekazania do wybranej sieci docelowej. Zapora Barracuda NextGen ma zwykle tę regułę "włączone" Domyślnie, ale w stanie wyłączenia. Kliknij prawym przyciskiem myszy na tej reguły, aby uzyskać dostęp do **reguły aktywacji** polecenia. Zmodyfikuj regułę pokazano na zrzucie ekranu, można dodać obiektów sieciowych dla podsieci zaplecza i frontonu z atrybutem źródłowym tej reguły. Te obiekty sieci został utworzony w sekcji wymagań wstępnych w tym artykule.
   
     ![Reguły ruchu wychodzącego zapory][14]
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: Carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 6aa8f362f067a4e3e391f435ee849f96abdf752f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: c6a6612390676de26f2f14e23b8040f983493970
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997497"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361382"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 

@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: Azure Portal
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak rejestrować, wyszukiwać, opatrywać adnotacjami i usuwać zasoby w usłudze Azure Data Catalog oraz zarządzać nimi:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Rejestrowanie zasobów danych w usłudze Azure Data Catalog</a>
   - title: Dokumentacja
     items:
       - type: list
