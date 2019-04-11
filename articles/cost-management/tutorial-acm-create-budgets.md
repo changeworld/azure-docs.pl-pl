@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273587"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469492"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
@@ -63,9 +63,9 @@ Kliknij pozycję **Add** (Dodaj).
 
 ![Koszt zarządzania budżetów wyświetlane w witrynie Azure portal](./media/tutorial-acm-create-budgets/budgets01.png)
 
-W **budżetu Utwórz** okna, wprowadź nazwę budżetu i budżetu. Następnie wybierz albo co miesiąc, co kwartał lub roczna czasu trwania<sup>1</sup>. Następnie wybierz datę zakończenia. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Użyj koszt alerty](cost-mgt-alerts-monitor-usage-spending.md).
+W **budżetu Utwórz** okna, wprowadź nazwę budżetu i budżetu. Następnie wybierz, co miesiąc, co kwartał, lub roczna czasu trwania. Następnie wybierz datę zakończenia. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Użyj koszt alerty](cost-mgt-alerts-monitor-usage-spending.md).
 
-<sup>1</sup> Jeśli jesteś klientem płatność za rzeczywiste użycie, MSDN lub Visual Studio okresu rozliczeniowego faktury dla subskrypcji nie może być wyrównane z miesiącem kalendarzowym. Dla subskrypcji i grupy zasobów, które należą do tego zasobnika fakturze lub miesięcy kalendarzowych można utworzyć budżetu, który jest wyrównany. Aby utworzyć budżetu wyrównane do faktury, wybierz okres resetowania rozliczeń miesiąca, kwartału rozliczeń lub rozliczeń roku w czasie tworzenia. Aby utworzyć budżetu wyrównane z miesiącem kalendarzowym, wybierz okres resetowania, co miesiąc, co kwartał lub roczna w czasie jego tworzenia.
+Jeśli masz subskrypcję płatność za rzeczywiste użycie, MSDN lub Visual Studio, okresu rozliczeniowego faktur mogą być niewyrównane z miesiącem kalendarzowym. Dla tych typów subskrypcji i grup zasobów można utworzyć budżetu, który jest wyrównany do okresu faktury lub miesiące. Aby utworzyć budżetu wyrównane do okresu faktury, wybierz okres resetowania rozliczeń miesiąca, kwartału rozliczeń lub rozliczeń roku. Do utworzenia budżetu wyrównane z miesiącem kalendarzowym, wybierz okres resetowania co miesiąc, co kwartał lub rocznie.
 
 Oto przykład tworzenia miesięcznego budżetu dla 4500 zł. Wiadomość e-mail z alertem pobiera wygenerowany, gdy zostanie osiągnięta 90% budżetu.
 

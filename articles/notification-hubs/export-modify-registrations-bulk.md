@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: a86c3bd85f9d611787a41754f49ee2475ba33a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58175792"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469135"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Eksportowanie i importowanie usługi Azure Notification Hubs rejestracji zbiorczej
 Istnieją scenariusze, w których jest wymagany, aby utworzyć lub zmodyfikować dużą liczbę rejestracji w Centrum powiadomień. Niektóre z tych scenariuszy są aktualizacje tag następujące obliczeń wsadowych, czy migrujesz istniejącą implementację wypychania używać usługi Notification Hubs.
@@ -34,7 +34,7 @@ W tej sekcji założono, że masz następujące jednostki:
 
 - Centrum powiadomień elastycznie.
 - Kontener obiektów blob usługi Azure Storage.
-- Odwołania do pakietów usługi Azure Storage i Azure NuGet usługi Service Bus.
+- Odwołuje się do [pakietu NuGet usługi Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) i [pakietu NuGet usługi Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Tworzenie pliku wejściowego i zapisz go w obiekcie blob
 Plik wejściowy zawiera listę rejestracje serializowane w kodzie XML, jeden na wiersz. Przy użyciu zestawu SDK platformy Azure, w poniższym przykładzie kodu pokazano, jak do serializacji rejestracji i przekazać je do kontenera obiektów blob.
@@ -132,7 +132,7 @@ Te pliki zawierają listę udane i nieudane operacje z usługi batch. Format pli
 Następujący przykładowy kod importuje rejestracji do danego centrum powiadomień.
 
 ```csharp
-using Microsoft.ServiceBus.Notifications;
+using Microsoft.Azure.NotificationHubs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;

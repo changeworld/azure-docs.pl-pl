@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 30d578f130985548c431dea8b68ee291325b5c99
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893224"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469509"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Zarządzanie połączeniami w usłudze Azure Functions
 
@@ -24,6 +24,8 @@ Funkcje w aplikacji funkcji udostępniania zasobów. Wśród tych zasoby udostę
 Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [środowisku piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). On ograniczenia, które piaskownicy nakłada się na kodzie [dzienny limit liczby połączeń (obecnie na 600 aktywnych połączeń i 1200 łączna liczba połączeń)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) dla każdego wystąpienia. Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions tworzy dziennik z następującym komunikatem: `Host thresholds exceeded: Connections`.
 
 To ograniczenie jest dla każdego wystąpienia.  Podczas [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-and-premium-plans-work) do obsługi więcej żądań, każde wystąpienie ma limit połączeń niezależne. Oznacza to, nie ma żadnego limitu połączenia globalnego i może mieć znacznie więcej niż 600 aktywnych połączeń ze wszystkich aktywnych wystąpień.
+
+Podczas rozwiązywania problemów, upewnij się, że włączono usługę Application Insights dla aplikacji funkcji. Usługa Application Insights umożliwia wyświetlanie metryk dla twojej aplikacji funkcji, takich jak wykonań. Aby uzyskać więcej informacji, zobacz [wyświetlanie telemetrii w usłudze Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Klientów statycznych
 

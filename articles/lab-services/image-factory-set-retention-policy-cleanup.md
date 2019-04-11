@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361850"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469374"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
 W tym artykule opisano ustawienia zasad przechowywania, czyszczenie fabryki i wycofywana starych obrazów z wszystkich innych usłudze DevTest Labs w organizacji. 
@@ -75,5 +75,5 @@ Dodawanie nowego obrazu z fabryką również jest proste. Jeśli chcesz dołącz
 ## <a name="next-steps"></a>Kolejne kroki
 1. [Planowanie kompilacji/wydania](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) okresowe uruchamianie fabrycznie obrazu. Odświeża jej generowane fabryki obrazów w regularnych odstępach czasu.
 2. Wprowadź więcej obrazów złoty fabryki. Można również rozważyć [tworzenie artefaktów](devtest-lab-artifact-author.md) skryptu dodatkowe fragmenty zadania konfiguracji maszyny Wirtualnej i zawierać artefakty do obrazów fabryki.
-4. Tworzenie [oddzielić kompilacji/wydania](/azure/devops/pipelines/overview.md?view=azure-devops-2019) do uruchomienia **DistributeImages** skrypt oddzielnie. Ten skrypt można uruchomić, gdy dokonać zmian Labs.json i pobieranie obrazów skopiowane do laboratoriów docelowej bez konieczności ponownego tworzenia wszystkie obrazy ponownie.
+4. Tworzenie [oddzielić kompilacji/wydania](/azure/devops/pipelines/overview?view=azure-devops-2019) do uruchomienia **DistributeImages** skrypt oddzielnie. Ten skrypt można uruchomić, gdy dokonać zmian Labs.json i pobieranie obrazów skopiowane do laboratoriów docelowej bez konieczności ponownego tworzenia wszystkie obrazy ponownie.
 

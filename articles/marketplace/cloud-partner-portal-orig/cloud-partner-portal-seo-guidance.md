@@ -1,5 +1,5 @@
 ---
-title: Przewodnik dotyczący publikowania w portalu Azure Marketplace optymalizacji dla aparatów wyszukiwania | Dokumentacja firmy Microsoft
+title: Wskazówki dotyczące optymalizacji dla aparatów wyszukiwania w portalu Marketplace platformy Azure | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące maksymalizując optymalizacji dla aparatów wyszukiwania (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834340"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469662"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Przewodnik dotyczący publikowania w portalu Azure Marketplace optymalizacji dla aparatów wyszukiwania
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Wskazówki dotyczące optymalizacji dla aparatów wyszukiwania w portalu Marketplace platformy Azure
 
-### <a name="general-explanation-of-algorithm"></a>Ogólne omówienie algorytmu
+W tym artykule wyjaśniono, jak zwiększyć wykrywalność swoją ofertę za pośrednictwem funkcji wyszukiwania w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [AppSource](https://appsource.microsoft.com). 
 
-Portal marketplace korzysta z usługi Azure Search zapewniająca możliwości wyszukiwania w witrynie. Algorytm opiera się na określenie częstotliwości — odwrotność dokumentu częstotliwość ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardowa [analizator Lucene](https://lucene.apache.org/core/) jest używany.
+
+## <a name="general-explanation-of-algorithm"></a>Ogólne omówienie algorytmu
+
+Korzystanie z usługi Azure Search zapewniająca możliwości wyszukiwania witryny platformach handlowych firmy Microsoft. Algorytm opiera się na określenie częstotliwości — odwrotność dokumentu częstotliwość ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardowa [analizator Lucene](https://lucene.apache.org/core/) jest używany.
 
 Ogólnie rzecz biorąc cały tekst pola kategorii i branżach każdego typu i należy do weightage zgodność. Terminy specjalistyczne, które są rzadko używane przez aplikacje, ale często w swojej aplikacji, spowoduje wygenerowanie wyższą ocenę dopasowanie za pomocą wyszukiwania. Dlatego w tym terminy, takie jak "Maszyny Wirtualnej" będzie oferują niewielkie korzyści, konieczne będzie znacznie bardziej wyspecjalizowane "Usługa Azure search".
 Poniżej przedstawiono najbardziej odpowiednie pola, aby wziąć pod uwagę.
@@ -42,7 +44,7 @@ Poniżej przedstawiono najbardziej odpowiednie pola, aby wziąć pod uwagę.
 |  |  |  |
 
 
-### <a name="other-tips"></a>Inne porady
+## <a name="other-tips"></a>Inne porady
 
 -   Wyszukiwanie sugeruje aktywności użytkownika mocno pobiera. Priorytet odpowiedników wydawcę nazwę aplikacji. Krótki opis staje się pole klucza dla gdy wyszukiwany termin nie jest on identyczny z nazwą wydawcy/aplikacji.
 -   Dokumenty do pobrania nie są uwzględnione w weightage wyszukiwania.

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418061"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470070"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu
 
@@ -65,9 +65,9 @@ Jeśli dołączysz opcję `--docker`, zostanie wygenerowany plik dockerfile dla 
 
 Po wyświetleniu monitu wybierz środowisko uruchomieniowe procesów roboczych spośród następujących języków:
 
-* `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
-* `node`: tworzy projekt w języku JavaScript.
-* `python`: tworzy projekt w języku Python.
+* `dotnet`: tworzy projekt biblioteki klas platformy .NET (.csproj).
+* `node`: tworzy projektu w języku JavaScript.
+* `python`: tworzy projekt języka Python.
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
@@ -255,6 +255,16 @@ AzureWebJobsStorage=$storageConnectionString
 Teraz można przetestować funkcje działające w systemie Linux na platformie Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+
+Zalecanym sposobem monitorowania wykonywania funkcji jest integrowanie aplikacji funkcji z usługi Azure Application Insights. Po utworzeniu aplikacji funkcji w witrynie Azure portal, ta Integracja jest wykonywane domyślnie. Jednak po utworzeniu aplikacji funkcji przy użyciu wiersza polecenia platformy Azure, integracji w Twojej aplikacji funkcji na platformie Azure nie jest wykonywane.
+
+Aby włączyć usługę Application Insights dla aplikacji funkcji:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+Aby dowiedzieć się więcej, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 
 ## <a name="enable-continuous-deployment"></a>Włącz ciągłe wdrażanie
 

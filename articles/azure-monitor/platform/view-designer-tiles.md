@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887764"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470267"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Azure Monitor
 Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -34,13 +34,16 @@ W poniższej tabeli opisano dostępnych kafelków Projektant widoków:
 | Sąsiadująco | Opis |
 |:--- |:--- |
 | [Liczba](#number-tile) |Liczba rekordów w wyniku zapytania. |
-| [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
-| [Wykres pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
+| [Dwie liczby](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
+| [Pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
 | Wykres liniowy i objaśnienie | Wykres liniowy, który jest oparty na zapytania i objaśnienie z wartością podsumowania. |
 | [Wykres liniowy](#line-chart-tile) |Wykres liniowy, który jest oparty na zapytaniu. |
 | [Dwie osie czasu](#two-timelines-tile) | Wykres kolumnowy z dwóch serii każdy na podstawie osobne zapytania. |
 
 W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
+
+> [!NOTE]
+> Kafelki w widokach są oparte na [rejestrowania zapytań](../log-query/log-query-overview.md) w obszarze roboczym usługi Log Analytics. Aktualnie nie obsługuje [zasobów zapytania obejmujące wiele](../log-query/cross-workspace-query.md) do pobierania danych z usługi Application Insights.
 
 ## <a name="number-tile"></a>Kafelka z liczbą
 **Numer** Kafelek Wyświetla liczbę rekordów z zapytanie dziennika i etykietę.
@@ -51,7 +54,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Kafelek** | |
+| **Sąsiadująco** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
@@ -69,10 +72,10 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Pierwszy Kafelek** | |
+| **Pierwszy kafelek** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| **Drugi Kafelek** | |
+| **Drugi kafelek** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
@@ -90,13 +93,13 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Wykres pierścieniowy** | |
+| **Pierścieniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. |
-| **Wykres pierścieniowy** |**> Center** |
+| **Pierścieniowy** |**> Center** |
 | Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
 | Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaj wartości wszystkie rekordy z wartością właściwości.</li><li>Procent: Procent wartości sumowany rekordy z wartością właściwości, w porównaniu do sumowany wartości wszystkich rekordów.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
-| **Wykres pierścieniowy** |**> Dodatkowe opcje** |
+| **Pierścieniowy** |**> Dodatkowe opcje** |
 | Kolory |Kolor, który jest wyświetlany dla każdego z trzech najważniejszych właściwości. Aby określić alternatywne kolory dla konkretnych wartości właściwości, należy użyć *zaawansowane mapowanie kolorów*. |
 | Zaawansowane mapowanie kolorów |Wyświetla kolor, który reprezentuje określone wartości właściwości. Jeśli wartość, którą można określić trzy pierwsze, alternatywny kolor jest wyświetlany zamiast Kolor standardowy. Jeśli właściwość nie ma trzy pierwsze, nie jest wyświetlany kolor. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |

@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: b3079a7f2e71e26164d96cf167b67f1a60f7a23b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046477"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469747"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Rozwiązywanie problemów niesymetryczność danych przy użyciu narzędzi Azure Data Lake Tools for Visual Studio
 
@@ -28,9 +28,9 @@ W naszym scenariuszu dane są nierównomiernie rozłożone między wszystkie eks
 
 Usługa Azure Data Lake Tools for Visual Studio może pomóc wykryć, czy zadanie ma problem niesymetryczność danych. Jeśli istnieje problem, można rozwiązać go za pomocą rozwiązań w tej sekcji.
 
-## <a name="solution-1-improve-table-partitioning"></a>Rozwiązanie 1: Poprawa, Partycjonowanie tabel
+## <a name="solution-1-improve-table-partitioning"></a>Rozwiązanie 1: Poprawić, Partycjonowanie tabel
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Opcja 1: Filtrowanie niesymetryczne wartości klucza z wyprzedzeniem
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Opcja 1: Filtruj niesymetryczne wartości klucza z wyprzedzeniem
 
 Jeśli nie ma wpływu na logice biznesowej, można filtrować wartości wyższa częstotliwość z wyprzedzeniem. Na przykład jeśli jest dostępnych wiele 000-000-000 w kolumnie identyfikator GUID, nie można zagregować wartości. Przed agregacji, można napisać "GUID gdzie! ="000-000-000"" na wartość o wysokiej częstotliwości filtru.
 
@@ -42,15 +42,15 @@ W poprzednim przykładzie Jeśli chcesz tylko sprawdzić obciążenia inspekcji 
 
 Zamiast używania tylko _stanu_ jako klucza partycji, można użyć więcej niż jednego klucza do partycjonowania. Na przykład, należy rozważyć dodanie _kod POCZTOWY_ jako klucza partycji dodatkowe, aby zmniejszyć rozmiar partycji danych i bardziej równomierne rozłożenie danych.
 
-### <a name="option-4-use-round-robin-distribution"></a>Opcja 4: Użycie rozdzielanie
+### <a name="option-4-use-round-robin-distribution"></a>Opcja 4: Użyj rozdzielanie
 
-Jeśli nie możesz znaleźć odpowiedniego klucza partycji i dystrybucji, możesz spróbować do użycia dystrybucji działanie okrężne. Rozdzielanie równie traktuje wszystkie wiersze i losowo umieszcza je w odpowiednich przedziały. Równomiernie pobiera dane, ale utracie miejscowość informacji zwrotnych, może także zmniejszyć wydajność zadania dla niektórych operacji. Ponadto jeśli mimo to ustalania agregacji niesymetryczne klucza zostanie utrzymany problem niesymetryczność danych. Aby dowiedzieć się więcej na temat rozdzielanie, zobacz sekcję dystrybucje tabeli U-SQL w [CREATE TABLE (U-SQL): Tworzenie tabeli przy użyciu schematu](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
+Jeśli nie możesz znaleźć odpowiedniego klucza partycji i dystrybucji, możesz spróbować do użycia dystrybucji działanie okrężne. Rozdzielanie równie traktuje wszystkie wiersze i losowo umieszcza je w odpowiednich przedziały. Równomiernie pobiera dane, ale utracie miejscowość informacji zwrotnych, może także zmniejszyć wydajność zadania dla niektórych operacji. Ponadto jeśli mimo to ustalania agregacji niesymetryczne klucza zostanie utrzymany problem niesymetryczność danych. Aby dowiedzieć się więcej na temat rozdzielanie, zobacz sekcję dystrybucje tabeli U-SQL w [CREATE TABLE (U-SQL): Tworzenie tabeli przy użyciu schematu](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch).
 
 ## <a name="solution-2-improve-the-query-plan"></a>Rozwiązanie 2: Ulepszyć plan zapytania
 
-### <a name="option-1-use-the-create-statistics-statement"></a>Opcja 1: Użycie instrukcji CREATE STATISTICS
+### <a name="option-1-use-the-create-statistics-statement"></a>Opcja 1: Użyj instrukcji CREATE STATISTICS
 
-U-SQL zawiera instrukcję CREATE STATISTICS dla tabel. Ta instrukcja daje więcej informacji do Optymalizator zapytań dotyczących właściwości danych, np. rozkład wartości, które są przechowywane w tabeli. Dla większości zapytań Optymalizator zapytań generuje już niezbędne statystyki dotyczące planu zapytania o wysokiej jakości. Czasami konieczne może poprawić wydajność zapytań, tworząc dodatkowe statystyki z CREATE STATISTICS lub modyfikując Projekt kwerendy. Aby uzyskać więcej informacji, zobacz [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) strony.
+U-SQL zawiera instrukcję CREATE STATISTICS dla tabel. Ta instrukcja daje więcej informacji do Optymalizator zapytań dotyczących właściwości danych, np. rozkład wartości, które są przechowywane w tabeli. Dla większości zapytań Optymalizator zapytań generuje już niezbędne statystyki dotyczące planu zapytania o wysokiej jakości. Czasami konieczne może poprawić wydajność zapytań, tworząc dodatkowe statystyki z CREATE STATISTICS lub modyfikując Projekt kwerendy. Aby uzyskać więcej informacji, zobacz [CREATE STATISTICS (U-SQL)](/u-sql/ddl/statistics/create-statistics) strony.
 
 Przykład kodu:
 
@@ -59,7 +59,7 @@ Przykład kodu:
 >[!NOTE]
 >Informacje statystyczne nie jest aktualizowane automatycznie. Jeśli aktualizujesz dane w tabeli bez potrzeby ponownego tworzenia statystyk wydajności zapytań może odrzucić.
 
-### <a name="option-2-use-skewfactor"></a>Opcja 2: Użycie SKEWFACTOR
+### <a name="option-2-use-skewfactor"></a>Opcja 2: Użyj SKEWFACTOR
 
 Jeśli chcesz zsumować podatku dla każdego stanu, należy użyć Grupuj według stanu, metody, która nie uniknąć tego problemu niesymetryczność danych. Może jednak zapewniać wskazówką danych w zapytaniu do identyfikowania niesymetryczność danych w kluczach, więc, że optymalizator można przygotować plan wykonywania.
 
@@ -169,7 +169,7 @@ Atrybuty trybu funkcji łączenia:
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left): Każdy wiersz danych wyjściowych jest zależna od pojedynczy wiersz danych wejściowych z lewej strony (i potencjalnie wszystkie wiersze z prawej strony z taką samą wartość klucza).
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right): każdy wiersz danych wyjściowych jest zależna od pojedynczy wiersz danych wejściowych z prawej strony (i potencjalnie wszystkie wiersze z lewej strony z taką samą wartość klucza).
+- qlUserDefinedCombiner(Mode=CombinerMode.Right): Każdy wiersz danych wyjściowych jest zależna od pojedynczy wiersz danych wejściowych z prawej strony (i potencjalnie wszystkie wiersze z lewej strony z taką samą wartość klucza).
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Każdy wiersz danych wyjściowych jest zależna od pojedynczy wiersz danych wejściowych z lewej i prawej strony z taką samą wartość.
 

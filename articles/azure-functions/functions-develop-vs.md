@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58889808"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471039"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -80,7 +80,7 @@ Szablon projektu tworzy projekt C#, instaluje `Microsoft.NET.Sdk.Functions` paki
 
 * **host.json**: Umożliwia konfigurowanie hostów funkcji. Te ustawienia mają zastosowanie zarówno, gdy uruchomiona lokalnie i na platformie Azure. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
 
-* **local.settings.json**: Przechowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane przez platformę Azure, są one używane przez [podstawowych narzędzi usługi Azure Functions](functions-run-local.md). Użyj tego pliku, aby określić ustawienia aplikacji dla zmiennych wymaganych funkcji. Dodaj nowy element do **wartości** tablicy dla każdego połączenia wymagane przez powiązania funkcji w projekcie. Aby uzyskać więcej informacji, zobacz [pliku ustawień lokalnych](functions-run-local.md#local-settings-file) w artykule podstawowych narzędzi usługi Azure Functions.
+* **local.settings.json**: Przechowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane przez platformę Azure, są one używane przez [podstawowych narzędzi usługi Azure Functions](functions-run-local.md). Użyj tego pliku, aby określić ustawienia aplikacji dla zmienne środowiskowe wymagane przez funkcje. Dodaj nowy element do **wartości** tablicy dla każdego połączenia wymagane przez powiązania funkcji w projekcie. Aby uzyskać więcej informacji, zobacz [pliku ustawień lokalnych](functions-run-local.md#local-settings-file) w artykule podstawowych narzędzi usługi Azure Functions.
 
     >[!IMPORTANT]
     >Pliku local.settings.json może zawierać klucze tajne, musi on spod kontroli źródła z projektu. **Kopiuj do katalogu wyjściowego** ustawienie dla tego pliku powinna zawsze być **Kopiuj Jeśli nowszy**. 
@@ -207,15 +207,11 @@ Można również zarządzać ustawienia aplikacji w jednym z tych sposobów:
 
 ## <a name="monitoring-functions"></a>Funkcje monitorowania
 
-Jest to zalecany sposób Monitoruj wykonywanie funkcji na platformie Azure dzięki integracji z usługą Azure Application Insights. Po utworzeniu aplikacji funkcji w witrynie Azure portal, ta Integracja jest wykonywane domyślnie. Jednak po utworzeniu aplikacji funkcji podczas publikowania w programie Visual Studio nie jest wykonywane integracji w Twojej aplikacji funkcji na platformie Azure. Zamiast tego należy pobrać wbudowanych rejestrowania, która nie jest zalecane.
+Zalecanym sposobem monitorowania wykonywania funkcji jest integrowanie aplikacji funkcji z usługi Azure Application Insights. Po utworzeniu aplikacji funkcji w witrynie Azure portal, ta Integracja jest wykonywane domyślnie. Jednak po utworzeniu aplikacji funkcji podczas publikowania w programie Visual Studio nie jest wykonywane integracji w Twojej aplikacji funkcji na platformie Azure.
 
-Aby włączyć usługę Application Insights dla aplikacji funkcji na platformie Azure:
+Aby włączyć usługę Application Insights dla aplikacji funkcji:
 
-1. Utwórz wystąpienie usługi Application Insights w [witryny Azure portal](https://portal.azure.com) i skopiuj klucz instrumentacji. Aby dowiedzieć się więcej, zobacz temat [ręcznie połączyć zasobu usługi App Insights](functions-monitoring.md#manually-connect-an-app-insights-resource).  
-
-1. Dodaj aplikację, ustawienie o nazwie `APPINSIGHTS_INSTRUMENTATIONKEY` do ustawień aplikacji funkcji na platformie Azure, zgodnie z opisem w [ustawień aplikacji funkcji](#function-app-settings). To ustawienie aplikacji zawiera klucz instrumentacji, który został utworzony w poprzednim kroku.
-
-1. Usuń `AzureWebJobsDashboard` ustawienia aplikacji na podstawie aplikacji funkcji na platformie Azure, która wyłącza wbudowane funkcje rejestrowania.  
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 Aby dowiedzieć się więcej, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 

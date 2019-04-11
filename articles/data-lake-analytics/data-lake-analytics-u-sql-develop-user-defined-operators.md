@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040994"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469628"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Opracowywanie operatorów języka U-SQL zdefiniowane przez użytkownika (udo)
 W tym artykule opisano tworzenie operatory zdefiniowane przez użytkownika do przetwarzania danych w ramach zadania U-SQL.
@@ -115,7 +115,7 @@ W tym artykule opisano tworzenie operatory zdefiniowane przez użytkownika do pr
 8. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Script.usql**, a następnie kliknij pozycję **Build Script** (Kompiluj skrypt).
 9. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **Script.usql**, a następnie kliknij pozycję **Submit Script** (Prześlij skrypt).
 10. Jeszcze nie nawiązano z subskrypcją platformy Azure, zostanie wyświetlony monit wprowadź swoje poświadczenia konta platformy Azure.
-11. Kliknij przycisk **przesłać**. Wyniki przesyłania i link do zadania są dostępne w oknie wyników po zakończeniu przesyłania.
+11. Kliknij przycisk **Prześlij**. Wyniki przesyłania i link do zadania są dostępne w oknie wyników po zakończeniu przesyłania.
 12. Kliknij przycisk **Odśwież** przycisk, aby wyświetlić najbardziej aktualny stan zadania i odświeżyć ekran.
 
 **Aby wyświetlić dane wyjściowe**
@@ -124,5 +124,5 @@ W tym artykule opisano tworzenie operatory zdefiniowane przez użytkownika do pr
 2. Rozwiń przykłady, rozwiń danych wyjściowych, a następnie kliknij dwukrotnie ikonę **Drivers.csv**.
 
 ## <a name="see-also"></a>Zobacz także
-* [Rozszerzanie wyrażenia języka U-SQL z kodu użytkownika](https://msdn.microsoft.com/library/azure/mt621316.aspx)
+* [Rozszerzanie wyrażenia języka U-SQL z kodu użytkownika](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [Użyj narzędzi Data Lake Tools for Visual Studio do tworzenia aplikacji w języku U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

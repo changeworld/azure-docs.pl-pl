@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/13/2019
-ms.openlocfilehash: c6a6612390676de26f2f14e23b8040f983493970
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.date: 04/09/2019
+ms.openlocfilehash: a6abaf9b444ca9b3f14093dde1239d9158dfd3ff
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361382"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469645"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -48,6 +48,7 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
    |**Nazwa wystąpienia zarządzanego**|Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie używaj nazwy „serveradmin”, gdyż jest ona zarezerwowana dla roli poziomu serwera.|
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+   |**Strefa czasowa**|Strefa czasowa, muszą spełniać Twoje wystąpienie zarządzane|Aby uzyskać więcej informacji, zobacz [stref czasowych](sql-database-managed-instance-timezone.md)|
    |**Sortowanie**|Sortowanie, którego chcesz użyć dla wystąpienia zarządzanego|W przypadku migrowania baz danych z programu SQL Server sprawdź sortowanie źródła przy użyciu elementu `SELECT SERVERPROPERTY(N'Collation')` i użyj tej wartości. Aby uzyskać informacje na temat sortowań, zobacz [Server-level collations (Sortowania na poziomie serwera)](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Lokalizacja**|Lokalizacja, w której chcesz utworzyć wystąpienie zarządzane|Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
    |**Sieć wirtualna**|Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć/podsieć jest niedostępny jest musi być [zmodyfikowana, aby spełnić wymagania dotyczące sieci](sql-database-managed-instance-configure-vnet-subnet.md) można wybrać jako miejsce docelowe dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieci dla wystąpienia zarządzanego, zobacz [Configure a VNet for a managed instance (Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego)](sql-database-managed-instance-connectivity-architecture.md). |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311734"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470359"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -207,6 +207,8 @@ Można utworzyć ten klucz i ustawić wartość FALSE, gdy użytkownicy są doł
 
 Wyszukaj certyfikat z podpisem własnym utworzony przez Instalatora w magazynie certyfikatów i upewnij się, że klucz prywatny, ma uprawnienia przyznane użytkownikowi **Usługa sieciowa**. Certyfikat ma nazwę podmiotu **CN \<tenantid\>, OU = rozszerzenia serwera NPS firmy Microsoft**
 
+Certyfikaty z podpisem własnym generowanych przez *AzureMfaNpsExtnConfigSetup.ps1* skryptu również mieć okresu istnienia ważności na dwa lata. Podczas sprawdzania, czy certyfikat jest zainstalowany, należy także sprawdzić, czy certyfikat nie wygasł.
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak zweryfikować, że moje certyfikat klienta jest skojarzony z dzierżawą usługi Azure Active Directory?
@@ -262,6 +264,14 @@ Sprawdź, czy AD Connect jest uruchomiona, a użytkownik musi być obecny w usł
 
 Upewnij się, że adres https://adnotifications.windowsazure.com jest osiągalny z serwera, na którym działa rozszerzenie NPS.
 
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Dlaczego uwierzytelnianie nie działa, mimo obecności ważnego certyfikatu?
+
+Jeśli wygasł poprzedniego certyfikat komputera, a nowy certyfikat został wygenerowany, należy usunąć wszelkie wygasłych certyfikatów. Posiadanie wygasłych certyfikatów może spowodować problemy z rozszerzeniem serwera NPS, uruchamianie.
+
+Aby sprawdzić, czy mają prawidłowy certyfikat, sprawdź Store certyfikat konta komputera lokalnego za pomocą programu MMC, a następnie upewnij się, że certyfikat nie został przekazany datę jego wygaśnięcia. Aby wygenerować nowo prawidłowy certyfikat, uruchom ponownie kroki opisane w sekcji "[uruchomienia skryptu programu PowerShell](#run-the-powershell-script)"
+
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Zarządzanie protokołami TLS/SSL i zestawami szyfrowania
 
 Zalecane jest, że mechanizmów szyfrowania starsze, słabszej je wyłączyć lub usunąć, chyba że wymagane przez Twoją organizację. Informacje o tym, jak wykonać to zadanie, można znaleźć w artykule [Managing SSL/TLS Protocols and Cipher Suites for AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) (Zarządzanie protokołami SSL/TLS i zestawami szyfrowania dla usług AD FS).
@@ -272,4 +282,4 @@ Zalecane jest, że mechanizmów szyfrowania starsze, słabszej je wyłączyć lu
 
 - Dowiedz się, jak zintegrować [bramy usług pulpitu zdalnego](howto-mfa-nps-extension-rdg.md) i [serwerów sieci VPN](howto-mfa-nps-extension-vpn.md) przy użyciu rozszerzenia serwera NPS
 
-- [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md) (Rozstrzyganie komunikatów o błędach z rozszerzenia serwera NPS dotyczących usługi Azure Multi-Factor Authentication)
+- [Komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

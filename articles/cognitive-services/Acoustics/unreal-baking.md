@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311573"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470376"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Samouczek Unreal tworzenie Akustyka projektu
 W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora unreal Engine.
@@ -40,6 +40,8 @@ Karta obiektów jest pierwsza karta, która pobiera wyświetlana po otwarciu try
 
 Wybierz jeden lub więcej obiektów w tworzenie konspektu świata, lub użyj **zbiorczo wybrane** sekcji mogą ułatwić wybór wszystkie obiekty w określonej kategorii. Gdy obiekty są wybrane, użyć **znakowanie** sekcji, aby zastosować żądanego tagu do wybranych obiektów.
 
+Jeśli coś nie ma **AcousticsGeometry** ani **AcousticsNavigation** tagu, zostaną zignorowane w symulacji. Tylko statyczne oczek, nav siatki i krajobrazów są obsługiwane. Jeśli oznaczysz czymkolwiek zostaną zignorowane.
+
 ### <a name="for-reference-the-objects-tab-parts"></a>Aby uzyskać informacje dotyczące: Części karty obiektów
 
 ![Zrzut ekranu Akustyka obiektów karcie Unreal](media/unreal-objects-tab-details.png)
@@ -63,9 +65,23 @@ Nie dołączaj rzeczy, które nie powinien wpływać na Akustyka, takich jak sia
 
 Przekształcanie obiektu w czasie obliczania sondy (za pośrednictwem karty sondy poniżej) zostanie rozwiązany w wynikach tworzenie. Przenoszenie wszystkich zaznaczonych obiektów w scenie będzie wymagać ponownego wykonywania obliczeń sondowania i rebaking sceny.
 
-## <a name="create-or-tag-a-navigation-mesh"></a>Tworzenie lub tagu siatki nawigacji
+### <a name="create-or-tag-a-navigation-mesh"></a>Tworzenie lub tagu siatki nawigacji
 
-Siatka nawigacji służy umieścić punkty sondy symulacji. Można użyć w Unreal [Nav siatki granice woluminu](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), lub można określić własne nawigacyjne siatki. Musisz otagować co najmniej jeden obiekt jako **nawigacji Akustyka**.
+Siatka nawigacji służy umieścić punkty sondy symulacji. Można użyć w Unreal [Nav siatki granice woluminu](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), lub można określić własne nawigacyjne siatki. Musisz otagować co najmniej jeden obiekt jako **nawigacji Akustyka**. Jeśli używasz firmy Unreal nawigacyjne siatki, upewnij się, że masz skompilowane na początku.
+
+### <a name="acoustics-volumes"></a>Woluminy Akustyka ###
+
+Brak dalszych, zaawansowane dostosowania można wprowadzić na obszary, nawigacji za pomocą **woluminy Akustyka**. **Woluminy Akustyka** są aktorami można dodać do sceny, które pozwalają na wybór obszary, które obejmują i Ignoruj z siatki nawigacji. Aktor udostępnia właściwości, które mogą być przełączane między "Include" i "Wyklucz". Woluminy "Include" Upewnij się, tylko obszary siatki nawigacji w nich znajdują, są traktowane jako i woluminy "Wyklucz" Oznacz tych obszarów, które mają być ignorowane. Woluminy "Wyklucz" są one zawsze stosowane po woluminy "Include". Upewnij się, że tag **woluminy Akustyka** jako **nawigacji Akustyka** zwykle proces na karcie obiektów. Aktorzy są ***nie*** automatycznie oznakowane.
+
+![Zrzut ekranu Akustyka woluminu właściwości Unreal](media/unreal-acoustics-volume-properties.png)
+
+Woluminy "Wyklucz" są głównie przeznaczone do szczegółową kontrolę na lokalizację nie sondy obostrzenie użycia zasobów.
+
+![Zrzut ekranu przedstawiający wykluczania Akustyka woluminu w Unreal](media/unreal-acoustics-volume-exclude.png)
+
+"Include" woluminy są przydatne w przypadku tworzenia ręczne części scenę, takich jak chcesz podzielić sceny w wielu strefach akustyczny. Na przykład w przypadku dużych sceny kwadrat wielu kilometrów i mieć dwóch obszarach zainteresowań, aby wprowadzić Akustyka na. Można narysować dwa woluminy "Include" big Data w scenie i tworzenia plików ACE dla każdego z nich pojedynczo. Następnie w grze, można użyć wyzwalacza woluminy łączyć z wywołaniami planu można załadować odpowiedniego pliku wpisu kontroli dostępu, gdy gracz zbliża się do każdego kafelka.
+
+**Woluminy Akustyka** tylko ograniczenia nawigacji i ***nie*** geometrii. Każdy sondy wewnątrz "Include" **woluminu Akustyka** nadal będzie pobierać wszystkie niezbędne geometrii poza woluminu podczas przeprowadzania symulacji wave. W związku z tym nie powinien być żadnych przerw w zamknięcia lub innych Akustyka wynikające z odtwarzacza wykraczania poza granice z jednej sekcji do innego.
 
 ## <a name="select-acoustic-materials"></a>Wybierz materiały akustycznych
 
@@ -87,6 +103,7 @@ Czas reverberation danego materiału w pomieszczeniu odwrotnie jest powiązana z
 4. Zawiera materiały akustyczny powierzonych materiału w scenie. Kliknij listę rozwijaną, aby ponownie przypisać materiał sceny do innego materiału akustyczny.
 5. Pokazuje akustyczny współczynnik materiał wybraną w poprzednim kolumnę. Wartość zero oznacza, że dokładnie odzwierciedlają (nie absorpcji) podczas wartość 1 oznacza, że doskonale pochłaniającym (bez odbicia). Zmiana tej wartości spowoduje zaktualizowanie Akustyka materiał (krok #4) **niestandardowe**.
 
+Po wprowadzeniu zmian do materiałów w do sceny, musisz przełączyć kart we wtyczce Akustyka projektu, aby wyświetlić te zmiany wpłynęły na **materiałów** kartę.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Obliczanie i przejrzyj lokalizacji funkcji badania odbiornika
 
@@ -98,7 +115,7 @@ Po przypisaniu materiałów, przełącz się do **sondy** kartę.
 
 1. **Sondy** przycisk karta umożliwia wyświetlenie na tej stronie
 2. Krótki opis co należy zrobić, korzystając z tej strony
-3. Umożliwia wybieranie rozpoznawania symulacji zgrubnym lub dobrym rozwiązaniem. Duże jest szybsze, ale ma pewne wady i zalety. Zobacz [Zgrubnym vs poprawnie rozpoznawania](#Coarse-vs-Fine-Resolution) poniżej szczegółowe informacje.
+3. Umożliwia wybieranie rozpoznawania symulacji zgrubnym lub dobrym rozwiązaniem. Duże jest szybsze, ale ma pewne wady i zalety. Zobacz [tworzenie rozwiązania](bake-resolution.md) poniżej szczegółowe informacje.
 4. Wybierz lokalizację, w których można umieścić pliki danych Akustyka za pomocą tego pola. Kliknij przycisk "...", aby użyć selektora folderów. Aby uzyskać więcej informacji na temat plików danych, zobacz [pliki danych](#Data-Files) poniżej.
 5. Pliki danych dla tego sceny będzie miała przy użyciu prefiksu podane w tym miejscu. Wartość domyślna to "_AcousticsData [nazwa poziomu]".
 6. Kliknij przycisk **Calculate** znajdujący się voxelize sceny i obliczyć lokalizacji punktu sondowania. Odbywa się lokalnie na urządzeniu i należy wykonać przed sposób tworzenie. Po sondy zostały obliczone, kontrolki powyżej zostanie wyłączona i kliknięcie tego przycisku spowoduje zmianę powiedzieć **wyczyść**. Kliknij przycisk **wyczyść** przycisk, aby wymazać obliczeń i włączyć formanty, tak, aby ponownie obliczyć przy użyciu nowych ustawień.
@@ -147,21 +164,7 @@ Należy sprawdzić punkty sondy istnieje wszędzie tam, gdzie gracz oczekuje si�
 
 ![Zrzut ekranu Akustyka sondy w Unreal w wersji zapoznawczej](media/unreal-probes-preview.png)
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Rozpoznawanie poprawnie zdalnego programu vs
-
-Jedyną różnicą między ustawień rozpoznawania zgrubnym i dobrym rozwiązaniem jest częstotliwość, w którym odbywa się symulacji. Szczegółowe wykorzystuje dwa razy możliwie jak zgrubnym częstotliwości.
-A to może wydawać się prosty, ma wiele skutki akustyczny symulacji:
-
-* Długość fali grubych jest dwa razy tak długo, jak poprawnie i dlatego voxels dwukrotnie są tak duże.
-* Rozmiar voxel, dzięki czemu tworzenie zgrubnym około 16 razy szybciej niż tworzenie dobrym rozwiązaniem jest bezpośrednio związana czasu symulacji.
-* Nie może być symulowana portali (na przykład drzwi lub systemu windows) mniejszy niż rozmiar voxel. Gruba ustawienie może spowodować, że niektóre z tych portali mniejszych, aby nie być symulowana; w związku z tym nie przekaże dźwięku za pomocą w czasie wykonywania. Aby zobaczyć, jeśli to się dzieje, wyświetlając voxels.
-* Mniejszą częstotliwością symulacji powoduje mniej diffraction wokół rogi i krawędzie.
-* Dźwięk źródła nie może znajdować się wewnątrz "wypełnione" voxels będącego voxels, który zawiera geometrii — skutkuje to Brak dźwięku. Jest trudniejsze do umieszczenia źródeł dźwięku, dzięki czemu nie wewnątrz większych voxels z grubą, niż gdyby poprawnie ustawienie.
-* Większe voxels będzie mającym więcej do portali, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu zdalnego, podczas gdy druga jest tego samego pola, za pomocą cienkiej rozpoznawania. Wskazane przez czerwony oznaczenia, jest znacznie mniej nieautoryzowanego dostępu do pola przy użyciu ustawień w dobrym stanie. Niebieska linia jest bramą, zgodnie z definicją geometrii, podczas gdy czerwona linia jest skuteczne portal akustyczne, zależy od rozmiaru voxel. Jak ta włamań odgrywa w danej sytuacji zależy od całkowicie jak voxels wiersz w górę przy użyciu geometrii portalu, który zależy od rozmiaru i lokalizacje obiektów w scenie.
-
-![Zrzut ekranu przedstawiający zgrubnym voxels, wypełniając pola w Unreal](media/unreal-coarse-bake.png)
-
-![Zrzut ekranu przedstawiający voxels dobrym rozwiązaniem w pola w Unreal](media/unreal-fine-bake.png)
+Zobacz [tworzenie rozwiązania](bake-resolution.md) więcej informacji na temat zdalnego vs poprawnie rozdzielczości.
 
 ## <a name="bake-your-level-using-azure-batch"></a>Tworzenie poziomu przy użyciu usługi Azure Batch
 

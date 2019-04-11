@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ca64071d068f95bf3de2dc9730629b5f475d92e
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
+ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426379"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469900"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -320,8 +320,8 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
       
    Ponadto należy wziąć pod uwagę:
    + W pliku konfiguracyjnym Automl, korzystając z usługi Azure Databricks, Dodaj następujące parametry:
-    1. ```max_concurrent_iterations``` na podstawie liczby węzłów procesu roboczego w klastrze. 
-    2. ```spark_context=sc``` #databricks/spark domyślny kontekst aparatu spark. 
+        1. ```max_concurrent_iterations``` opiera się na liczbę węzłów procesu roboczego w klastrze. 
+        2. ```spark_context=sc``` opiera się na domyślny kontekst aparatu spark. 
    + Lub, jeśli masz starszą wersję zestawu SDK, usuń zaznaczenie opcji z zainstalowanych libs klastra i przenosić do Kosza. Instalowanie nowej wersji zestawu SDK i uruchom ponownie klaster. Jeśli występuje problem, po to, odłącz i ponownie podłącz klastra.
 
 Jeśli instalacja się powiodła, zaimportowanej biblioteki powinien wyglądać podobnie jeden z nich:

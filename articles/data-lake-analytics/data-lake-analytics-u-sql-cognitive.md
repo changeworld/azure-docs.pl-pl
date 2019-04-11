@@ -9,12 +9,12 @@ ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 550a57b1dc90256fb2d94e270aba2f79f7b0d370
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b8d43188c337e0c12db60b51dee053ef7259701a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603077"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469050"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Rozpoczynanie pracy z usługą możliwości poznawcze języka U-SQL
 
@@ -22,14 +22,14 @@ ms.locfileid: "45603077"
 Możliwości poznawcze języka U-SQL umożliwiają deweloperom korzystanie z analizy put w swoich programach danych big data. 
 
 Dostępne są poniższe przykłady przy użyciu możliwości poznawcze:
-* Tworzenie obrazów: [wykrywanie twarzy](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Tworzenie obrazów: [wykrywanie emocji](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* Tworzenie obrazów: [wykrywanie obiektów (znakowanie)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* Tworzenie obrazów: [OCR (optyczne rozpoznawanie znaków)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Tekst: [kluczowe frazy i analiza tonacji](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
+* Tworzenie obrazu: [Wykrywanie twarzy](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Tworzenie obrazu: [Wykrywanie emocji](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Tworzenie obrazu: [Wykrywanie obiektów (znakowanie)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Tworzenie obrazu: [Optyczne rozpoznawanie znaków (OCR)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Tekst: [Wyodrębnianie kluczowych fraz & analizy tonacji](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>Rejestracja rozszerzenia Kognitywne języka U-SQL
-Przed przystąpieniem do wykonywania, wykonaj kroki opisane w tym artykule, aby zarejestrować rozszerzenia Kognitywne języka U-SQL: [zarejestrowanie rozszerzenia Kognitywne języka U-SQL](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/cognitive-capabilities-in-u-sql#registeringExtensions).
+Przed przystąpieniem do wykonywania, wykonaj kroki opisane w tym artykule, aby zarejestrować rozszerzenia Kognitywne języka U-SQL: [Rejestracja rozszerzenia Kognitywne języka U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przykłady języka U-SQL/Cognitive](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

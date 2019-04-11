@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6cb875aa686d9e2d0ba7bf51563d3b51b1572a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6af7106e991f0306ae2fef69129888219a9c0e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094232"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469526"
 ---
 # <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>Uaktualnienie bezpłatnej wersji próbnej lub na platformie Azure dla studentów subskrypcja płatności
 
-Jeśli masz [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/), możesz przeprowadzić uaktualnienie do [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) subskrypcji w witrynie Azure portal. Jeśli masz [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) subskrypcji, możesz uaktualnić do [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) w Centrum konta platformy Azure.
+Jeśli masz [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) subskrypcji, możesz uaktualnić do [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) w witrynie Azure portal. Jeśli korzystasz z subskrypcji Azure for Students Starter i są uprawnieni do skorzystania z bezpłatnej wersji próbnej, możesz uaktualnić do bezpłatnej wersji próbnej.
 
 <a id="freetrial"></a>
 
@@ -35,9 +35,9 @@ Jeśli masz [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/), mo
 Po podwyższeniu poziomu planu z subskrypcji bezpłatnej wersji próbnej zachowasz swoje pozostałe środki przez pełne 30 dni od utworzenia subskrypcji. Masz również dostęp do bezpłatnych usług przez 12 miesięcy.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia.**
+1. Wyszukiwanie **subskrypcji.**
 
-    ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-upgrade-azure-subscription/search.png)
+    ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. Wybierz swoją subskrypcję bezpłatnej wersji próbnej.
 1. W bloku Przegląd subskrypcji kliknij **uaktualnić subskrypcję** na pasku poleceń.
@@ -63,15 +63,24 @@ Jeśli chcesz [przenieść subskrypcję](billing-subscription-transfer.md) po ua
 
 ## <a name="upgrade-your-azure-for-students-starter-subscription-to-pay-as-you-go"></a>Uaktualnij Twojej subskrypcji Azure for Students Starter na płatność za rzeczywiste użycie
 
-1. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/subscriptions).
+Jeśli wykonasz poniższe kroki, firma Microsoft zapewni opcji uaktualnienia do bezpłatnej wersji próbnej, jeśli kwalifikujesz się.
+
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Wyszukiwanie **subskrypcji.**
+
+    ![Zrzut ekranu pokazujący wyszukiwania](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+
 1. Wybierz Twojej subskrypcji Azure for Students Starter.
-1. W obszarze **stan subskrypcji**, kliknij przycisk **Uaktualnij teraz**.
+1. W bloku Przegląd subskrypcji kliknij **uaktualnić subskrypcję** na pasku poleceń.
 
-    ![Zrzut ekranu pokazujący uaktualnienia dla uczniów lub studentów](./media/billing-upgrade-azure-subscription/student-upgrade-button.png)
+    ![Zrzut ekranu pokazujący przycisk Uaktualnij dla uczniów lub studentów](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
-1. Wprowadź nazwę dla Twojej subskrypcji.
+1. Jeśli wykonujesz uaktualnienie do płatności i już nie ma formy płatności dla Twojej subskrypcji, zostanie wyświetlony monit dodanie.
+1. Może być konieczne wprowadzenie numeru telefonu, aby zweryfikować swoją tożsamość.
+1. Wpisz nazwę dla Twojej subskrypcji.
+1. Jeśli aktualizujesz płatność za rzeczywiste użycie, wybierz plan pomocy technicznej dla Twojej subskrypcji. Aby dowiedzieć się więcej o planach pomocy technicznej, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/us/support/plans/).
 
-1. Kliknij przycisk **Uaktualnij teraz**.
+1. Kliknij przycisk **uaktualnienia**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

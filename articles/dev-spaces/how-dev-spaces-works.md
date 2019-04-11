@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361495"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470903"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -96,13 +96,15 @@ Po włączeniu usługi Azure Dev miejsca do magazynowania w klastrze AKS instalu
 * Usuwa wszystkie przestrzeni nazw Kubernetes o nazwie *azds*, jeśli istnieje, a utworzony zostaje nowy indeks.
 * Wdraża obiektu inicjatora Kubernetes.
 
+Używa tej samej nazwy głównej usługi, które można wykonywać wywołań usług do innych składników usługi Azure Dev miejsca do magazynowania korzysta z klastra usługi AKS.
+
 ![Usługa Azure Dev spacje przygotować klaster](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Aby można było używać usługi Azure Dev miejsca do magazynowania, musi istnieć co najmniej jedną spację deweloperów. Azure Dev do magazynowania używa przestrzeni nazw Kubernetes, w ramach klastra usługi AKS dla deweloperów miejsca do magazynowania. Po zainstalowaniu kontrolera monituje o utworzenie nowej przestrzeni nazw Kubernetes lub wybierz istniejącą przestrzenią nazw do użycia jako pierwszą przestrzeń deweloperów. Gdy przestrzeni nazw jest wyznaczony jako miejsce dev, dodaje kontroler *azds.io/space=true* etykietę do tego obszaru nazw do identyfikowania jej jako przestrzeni deweloperów. Miejsce początkowe dev utworzyć albo wyznaczenie jest domyślnie zaznaczona, po przygotowaniu klastra. Po wybraniu miejsca jest używany przez usługi Azure Dev miejsca do magazynowania do tworzenia nowych obciążeń.
 
 Domyślnie kontrolera tworzy miejsce na deweloperów o nazwie *domyślne* przez uaktualnienie istniejącego *domyślne* przestrzeni nazw Kubernetes. Narzędzia po stronie klienta służy do tworzenia nowych deweloperów spacje i Usuń istniejące spacje deweloperów. Ze względu na ograniczenia w usłudze Kubernetes *domyślne* miejsca deweloperów nie można go usunąć. Kontroler spowoduje również usunięcie o nazwie wszelkie istniejące przestrzenie nazw Kubernetes *azds* w celu uniknięcia konfliktów z `azds` polecenia używane przez narzędzia po stronie klienta.
 
-Obiekt inicjatora Kubernetes jest używany do wstrzyknięcie zasobników z trzy kontenery podczas wdrażania do Instrumentacji: kontener devspaces proxy, kontener devspaces proxy inicjowania i kontener devspaces kompilacji. **Wszystkie trzy te kontenery Uruchom z dostępem do katalogu głównego w klastrze AKS.**
+Obiekt inicjatora Kubernetes jest używany do wstrzyknięcie zasobników z trzy kontenery podczas wdrażania do Instrumentacji: kontener devspaces proxy, kontener devspaces proxy inicjowania i kontener devspaces kompilacji. **Wszystkie trzy te kontenery Uruchom z dostępem do katalogu głównego w klastrze AKS.** Również używają tej samej nazwy głównej usługi, które można wykonywać wywołań usług do innych składników usługi Azure Dev miejsca do magazynowania korzysta z klastra usługi AKS.
 
 ![Usługa Azure Dev miejsca do magazynowania w usłudze Kubernetes inicjatora](media/how-dev-spaces-works/kubernetes-initializer.svg)
 

@@ -6,16 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 870910654101b4d6689b51464f8a29aef41bf9cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/09/2018
+ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103132"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470937"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure
-Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie dostępem do usługi Azure Database dla serwera MySQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Aby uzyskać omówienie — Azure Database dla MySQL zapór, zobacz [— Azure Database for reguły zapory serwera MySQL](./concepts-firewall-rules.md)
+Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do usługi Azure Database dla serwera MySQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Aby uzyskać omówienie — Azure Database dla MySQL zapór, zobacz [— Azure Database for reguły zapory serwera MySQL](./concepts-firewall-rules.md).
+
+Wirtualne reguł sieci wirtualnej można również bezpieczny dostęp do serwera. Dowiedz się więcej o [creating and managing Virtual Network i punktów końcowych i reguł za pomocą wiersza polecenia platformy Azure usługi](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
@@ -31,7 +33,7 @@ Polecenia:
 - **Pokaż**: Wyświetlenie szczegółów dotyczących serwera usługi Azure MySQL reguły zapory.
 - **Aktualizacja**: Aktualizuj reguły zapory serwera MySQL na platformie Azure.
 
-## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Logowanie do platformy Azure i wyświetlać listę usługi Azure Database dla serwerów MySQL
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Logowanie do platformy Azure i wyświetlać listę usługi Azure Database dla serwerów MySQL
 Bezpiecznie łączyć z wiersza polecenia platformy Azure przy użyciu konta platformy Azure przy użyciu **az login** polecenia.
 
 1. Z wiersza polecenia Uruchom następujące polecenie:
@@ -42,7 +44,7 @@ Bezpiecznie łączyć z wiersza polecenia platformy Azure przy użyciu konta pla
 
 2. Użyj przeglądarki sieci web, aby otworzyć stronę [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), a następnie wprowadź kod.
 
-3. Po wyświetleniu monitu zaloguj się przy użyciu swoich poświadczeń platformy Azure.
+3. W wierszu Zaloguj się przy użyciu swoich poświadczeń platformy Azure.
 
 4. Po autoryzacji Twoje dane logowania listę subskrypcji jest drukowany w konsoli. Skopiuj identyfikator odpowiedniej subskrypcji, aby ustawić bieżącą subskrypcję do użycia. Użyj [zestaw konta az](/cli/azure/account#az-account-set) polecenia.
     ```azurecli-interactive
@@ -119,3 +121,4 @@ W razie powodzenia nie ma żadnych danych wyjściowych. W przypadku awarii Wyśw
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedzieć się więcej o [— Azure Database for reguły zapory serwera MySQL](./concepts-firewall-rules.md).
 - [Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal](./howto-manage-firewall-using-portal.md).
+- Dodatkowo zabezpieczyć dostęp do serwera przez [creating and managing Virtual Network i punktów końcowych i reguł za pomocą wiersza polecenia platformy Azure usługi](howto-manage-vnet-using-cli.md).

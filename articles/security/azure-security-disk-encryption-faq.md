@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275907eed94f3165853ecf9adcb11fb62460d2e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 413ed4a56afad5ced221ba957af9ddb007622b6a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282223"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470053"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -37,7 +37,11 @@ Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych w warstwie
 
 ## <a name="bkmk_LinuxOSSupport"></a> Jakie są dystrybucje systemu Linux obsługuje usługi Azure Disk Encryption?
 
-Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera systemu Linux i wersji:
+Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [zatwierdzone dystrybucje systemu Linux na platformie Azure](../virtual-machines/linux/endorsed-distros.md), który sam jest podzbiór wszystkich możliwych dystrybucji.
+
+ ![Diagram Venna Linux server obsługujących usługi Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Dystrybucje nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje serwera systemu Linux i wersje obsługują usługi Azure Disk Encryption:
 
 | Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
 | --- | --- |--- |
@@ -64,7 +68,8 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 | SLES | 12-SP4 | Dysk z danymi |
 | SLES | 12-SP3 | Dysk z danymi |
 
-*__Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Można również znaleźć [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) artykuł, aby uzyskać więcej informacji.__
+> [!NOTE]
+> Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Można również znaleźć [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) artykuł, aby uzyskać więcej informacji. __
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak rozpocząć, za pomocą usługi Azure Disk Encryption?
 

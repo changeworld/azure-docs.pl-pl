@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579686"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470614"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników do grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -46,7 +46,7 @@ Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłu
 
 1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla Twoją nazwę i domyślną organizację. Jeśli na liście jest więcej niż jedna organizacja, wybierz tę, która zażądała przeglądu dostępu.
 
-1. W prawej części strony kliknij **przeglądów dostępu** Kafelek, aby wyświetlić listę przeglądów dostępu oczekujące.
+1. Kliknij przycisk **przeglądów dostępu** Kafelek, aby wyświetlić listę przeglądów dostępu oczekujące.
 
     Jeśli kafelek nie jest widoczny, nie ma żadnych przeglądów dostępu do wykonania dla tej organizacji i w tej chwili jest wymagana żadna akcja.
 
@@ -76,6 +76,8 @@ Istnieją dwa sposoby, można zatwierdzić lub odmowa dostępu:
 1. Kliknij przycisk **zatwierdzić** lub **Odmów**. Jeśli nie masz, możesz kliknąć **nie znasz**. To spowoduje użytkownika, jego dostępu, ale zaznaczenia zostaną odzwierciedlone w dziennikach inspekcji.
 
     ![Przeprowadzenie przeglądu dostępu](./media/perform-access-review/approve-deny.png)
+
+1. Jeśli to konieczne, podaj przyczynę w **Przyczyna** pole.
 
     Administrator przeglądu dostępu może wymagać podania przyczyny zatwierdzenie przedłużenia dostępu oraz członkostwa w grupie.
 

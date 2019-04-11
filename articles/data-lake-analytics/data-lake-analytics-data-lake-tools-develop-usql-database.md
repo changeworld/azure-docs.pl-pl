@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898809"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469713"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Użyj projektu bazy danych U-SQL do tworzenia bazy danych U-SQL dla usługi Azure Data Lake
 
 Bazy danych U-SQL zapewnia widoki ze strukturą za pośrednictwem danych bez struktury oraz zarządzanych ze strukturą danych w tabelach. Umożliwia także system katalogu metadanych ogólny służący do organizowania danych ze strukturą i kod niestandardowy. Baza danych jest koncepcji, który grupuje obiekty powiązane ze sobą.
 
-Dowiedz się więcej o [bazy danych U-SQL i języka definicji danych (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql). 
+Dowiedz się więcej o [bazy danych U-SQL i języka definicji danych (DDL)](/u-sql/data-definition-language-ddl-statements). 
 
 Projekt bazy danych U-SQL jest typ projektu w programie Visual Studio, która ułatwia deweloperom tworzenie, zarządzanie i wdrażanie ich bazy danych U-SQL, szybko i łatwo.
 

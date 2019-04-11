@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/04/2019
-ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/09/2019
+ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051805"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469781"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Współdziałania usługi Azure Machine Learning zestawu SDK
 
@@ -34,7 +34,7 @@ Zestaw SDK usługi Azure Machine Learning współdziałania zawiera technologii 
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
-Usługa Azure Machine Learning współdziałania można zastosować zrozumienie zachowania globalnego modelu lub określonych prognozy. Pierwsza nazywa globalnego wyjaśnienie a drugim jest wyjaśnienie lokalnego.
+Usługa Azure Machine Learning współdziałania można zastosować zrozumienie zachowania globalnego lub predykcje określonego modelu. Pierwsza nazywa globalnego wyjaśnienie a drugim jest wyjaśnienie lokalnego.
 
 Azure Machine Learning współdziałania metody można również podzielić na podstawie tego, czy metoda jest niezależny od modelu lub modelu określonego. Niektóre metody docelowej modeli określonego typu. Na przykład jego kształtu drzewa objaśnienie dotyczy tylko modeli oparta na drzewie. Niektóre metody modelu należy traktować jako czarne pole, takich jak mimic objaśnienie lub objaśnienie jądra dla kształtu. Zestaw SDK usługi Azure Machine Learning współdziałania wykorzystuje te różne metody, na podstawie zestawów danych, typy modeli i przypadkami użycia.
 
@@ -42,7 +42,6 @@ Usługa Azure Machine Learning współdziałania zwraca zestaw informacji, jak m
 
 * Znaczenie względną funkcji globalnych/elementu lokalnego
 * Relacja funkcji i prognozowania globalny/elementu lokalnego
-* Interaktywne wizualizacje wyświetlane prognoz, funkcja prognozowania relacji i względne są wyposażone w wartości ważności globalnie i lokalnie
 
 ## <a name="architecture"></a>Architektura
 
@@ -70,11 +69,10 @@ __Bezpośrednie explainers__ pochodzą z biblioteki zintegrowanego. Zestaw SDK o
 * **Objaśnienie wapna**: Oparte na wapna, objaśnienie wapna używa algorytmu z najnowocześniejszych lokalnego interpretowanej niezależny od modelu objaśnienia dotyczące (WAPNO) do tworzenia modeli lokalnych zastępczy. Inaczej niż w przypadku modeli globalnego zastępczy wapna koncentruje się na szkolenie modele zastępcze lokalny, aby wyjaśnić poszczególnych prognozy.
 * **Objaśnienie tekstu HANOWI**: Objaśnienie tekstu HANOWI korzysta z hierarchicznej sieci uwagi w celu uzyskania objaśnienia dotyczące modelu z danych tekstowych dla danego czarne pole modelu tekstu. Uczenie modelu zastępczy HANOWI od modelu dla danego nauczycieli przewidywane w danych wyjściowych. Po szkoleniu globalnie w głównej części tekstu dodaliśmy krok fine-tune dla określonego dokumentu w celu zwiększenia dokładności wyjaśnienia. HANOWI za pomocą dwukierunkowych RNN dwie warstwy uwagi, o uwagę zdania i word. Po DNN jest uczony model dla nauczycieli i dostosowaniu do określonego dokumentu, firma Microsoft może wyodrębnić importances programu word z warstw uwagi. Znaleźliśmy HANOWI się bardziej precyzyjne niż wapna lub kształtu danych tekstowych, ale bardziej kosztowne warunków w szkolenia także czas. Jednakże ulepszyliśmy do chwili, szkolenia, dając użytkownikowi możliwość inicjowania do sieci za pomocą osadzenia wyrazów w drodze, mimo że nadal wolne. Uruchamiając HANOWI na zdalnej maszynie Wirtualnej procesorów GPU platformy Azure, można znacznie poprawiony czasu szkoleń. Implementacja HANOWI jest opisana w "Hierarchiczne sieciami uwagi do klasyfikowania dokumentów (Yang et al., 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)).
 
-__Meta explainers__ wybierz odpowiedni objaśnienie bezpośrednie i automatycznie Generuj najważniejsze informacje o wyjaśnienie, na podstawie podanego modelu i zestawów danych. Meta explainers korzystać z wszystkich bibliotek (kształtu, wapna, GA2M, Podgląd itp.), które firma Microsoft zintegrowane lub rozwinięte. Poniżej przedstawiono dostępne w zestawie SDK explainers metadanych:
+__Meta explainers__ wybierz odpowiedni objaśnienie bezpośrednie i automatycznie Generuj najważniejsze informacje o wyjaśnienie, na podstawie podanego modelu i zestawów danych. Meta explainers korzystać z wszystkich bibliotek (kształtu, wapna, Podgląd itp.), które firma Microsoft zintegrowane lub rozwinięte. Poniżej przedstawiono dostępne w zestawie SDK explainers metadanych:
 
 * **Objaśnienie tabelarycznych**: Używane z zestawów danych tabelarycznych.
 * **Objaśnienie tekst**: Używane z zestawami danych tekstu.
-* **Obraz objaśnienie** używane z zestawami danych obrazu.
 
 Ponadto do meta-Wybieranie z bezpośredniego explainers, meta explainers twórz dodatkowe funkcje, na podstawie podstawowej biblioteki i zwiększyć szybkość i skalowalność w przypadku bezpośredniego explainers.
 
@@ -90,7 +88,6 @@ Wbudowana funkcja analizy `TabularExplainer` staną się bardziej zaawansowanych
 
 * **Podsumowanie zestawu inicjowania**. W przypadku, gdy szybkość wyjaśnienie jest najważniejsze firma Microsoft podsumować zestaw danych inicjowania i wygenerować niewielki zestaw reprezentatywnej próbki przyspiesza wyjaśnienie zarówno globalne i lokalne.
 * **Próbkowanie zestawu danych oceny**. Jeśli użytkownik przekazuje duży zestaw przykładów oceny, ale faktycznie nie potrzebuje wszystkich z nich ma zostać obliczone, parametr próbkowania można ustawić wartość true, aby przyspieszyć globalnego wyjaśnienie.
-* **KNN szybkie wyjaśnienie**. W przypadku, gdy wyjaśnienie musi być tak szybko, jak do pojedynczego oceniania/prognozowania metoda KNN może służyć do. Podczas globalnego wyjaśnienia przykłady inicjalizacji i odpowiednie funkcje top k zostaną zachowane. Aby wygenerować wyjaśnienia dla każdej oceny próbki, metoda KNN jest używana do znajdowania najbardziej podobny przykład z przykładów inicjalizacji i najbardziej podobny przykład top k funkcje są zwracane jako funkcji top k przykład oceny.
 
 Na poniższym diagramie przedstawiono relację między dwoma zestawami bezpośrednio i meta explainers.
 
@@ -100,7 +97,7 @@ Na poniższym diagramie przedstawiono relację między dwoma zestawami bezpośre
 
 Modele, które są uczone zestawów danych w języku Python na `numpy.array`, `pandas.DataFrame`, `iml.datatypes.DenseData`, lub `scipy.sparse.csr_matrix` format jest obsługiwany przez zestaw SDK współdziałania usługi Machine Learning.
 
-Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśli model zostanie podany, model musi implementować funkcji prognozowania `predict` lub `predict_proba` potwierdza, że do Konwencji Scikit. Jeśli nie podano potoku (Nazwa skryptu potoku), funkcji wyjaśnienie przyjęto, że uruchamianie skryptu potoku zwraca prognozę.
+Funkcje wyjaśnienie zaakceptować modeli i potoków jako dane wejściowe. Jeśli model zostanie podany, model musi implementować funkcji prognozowania `predict` lub `predict_proba` , zgodne ze Konwencji Scikit. Jeśli nie podano potoku (Nazwa skryptu potoku), funkcji wyjaśnienie przyjęto, że uruchamianie skryptu potoku zwraca prognozę.
 
 ### <a name="local-and-remote-compute-target"></a>Lokalne i zdalne obliczeniowego elementu docelowego
 
@@ -129,13 +126,12 @@ Zestaw SDK Machine Learning współdziałania jest przeznaczona do pracy z zaró
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
-    or
+    ```
+    lub
+    ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
-    or
-    from azureml.contrib.explain.model.lime.lime_explainer import LIMEExplainer
-    explainer = LIMEExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. Pobiera globalne funkcji wartości ważności.
@@ -154,9 +150,16 @@ Zestaw SDK Machine Learning współdziałania jest przeznaczona do pracy z zaró
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0,:])
-    or
+    
+    # sorted feature importance values and feature names
+    sorted_local_importance_names = local_explanation.get_ranked_local_names()
+    sorted_local_importance_values = local_explanation.get_ranked_local_values()
+    ```
+    lub
+    ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4,:])
+    
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -172,21 +175,14 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
     
-    breast_cancer_data = load_breast_cancer()
-    X_train, X_test, y_train, y_test = train_test_split(breast_cancer_data.data, breast_cancer_data.target, test_size = 0.2, random_state = 0)
-    data = {
-        "train":{"X": X_train, "y": y_train},        
-        "test":{"X": X_test, "y": y_test}
-    }
-    clf = svm.SVC(gamma=0.001, C=100., probability=True)
-    model = clf.fit(data['train']['X'], data['train']['y'])
-    joblib.dump(value = clf, filename = 'model.pkl')
+    # Train your model here
+
     # explain predictions on your local machine    
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(data["test"]["X"])
+    global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(data["test"]["X"][0,:])
+    local_explanation = explainer.explain_local(x_test[0,:])
     # upload global and local explanation objects to Run History
     upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
@@ -200,6 +196,8 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
 2. Postępuj zgodnie z instrukcjami [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu](how-to-set-up-training-targets.md#amlcompute) Aby dowiedzieć się więcej o sposobie konfigurowania Azure obliczeniowego usługi Machine Learning jako obliczeniowego elementu docelowego i przesłać przebieg szkolenia.
 
 3. Pobierz wyjaśnienie lokalnego notesu programu Jupyter. 
+    > [!IMPORTANT]
+    > Elementy w contrib nie są w pełni obsługiwane. W miarę dojrzała eksperymentalne funkcje stopniowo zostaną przeniesione do pakietu głównego.
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
@@ -221,6 +219,6 @@ Chociaż możesz uczyć się na różnych celów obliczeń, obsługiwane przez u
     print('global importance names: {}'.format(global_importance_names))
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby wyświetlić kolekcję notesów programu Jupyter, demonstrujące z powyższymi instrukcjami, zobacz [notesów przykładowej usługi Azure Machine Learning współdziałania](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).

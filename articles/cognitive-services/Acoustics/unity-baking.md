@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309645"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470342"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Samouczek tworzenie Unity Akustyka projektu
 W tym samouczku opisano Akustyka pieczenie przy użyciu Akustyka projektu na platformie Unity.
@@ -137,7 +137,7 @@ Nazwa sceny jest używana do sceny łączenie się z plikami przechowywania poł
 
 1. **Sondy** przycisk karta umożliwia wyświetlenie na tej stronie
 2. Krótki opis co należy zrobić, korzystając z tej strony
-3. Użyj tych, aby wybrać rozdzielczość symulacji zgrubnym lub dobrym rozwiązaniem. Duże jest szybsze, ale ma pewne wady i zalety. Zobacz [wybierając zgrubnym vs poprawnie rozpoznawania](#Coarse-vs-Fine-Resolution) poniżej szczegółowe informacje.
+3. Użyj tych, aby wybrać rozdzielczość symulacji zgrubnym lub dobrym rozwiązaniem. Duże jest szybsze, ale ma pewne wady i zalety. Zobacz [tworzenie rozwiązania](bake-resolution.md) poniżej szczegółowe informacje.
 4. Wybierz lokalizację, w których można umieścić pliki danych Akustyka za pomocą tego pola. Kliknij przycisk "...", aby użyć selektora folderów. Wartość domyślna to **zasobów/AcousticsData**. **Edytora** podfolder zostanie również utworzony w tej lokalizacji. Aby uzyskać więcej informacji na temat plików danych, zobacz [pliki danych](#Data-Files) poniżej.
 5. Pliki danych dla tego sceny będzie miała przy użyciu prefiksu podane w tym miejscu. Wartość domyślna to "Acoustics_ [Nazwa sceny]".
 6. Po sondy zostały obliczone z kontrolki powyżej zostanie wyłączona. Kliknij przycisk **wyczyść** przycisk, aby wymazać obliczeń i włączyć formanty, tak, aby ponownie obliczyć przy użyciu nowych ustawień.
@@ -145,21 +145,7 @@ Nazwa sceny jest używana do sceny łączenie się z plikami przechowywania poł
 
 W tej wersji projektu Akustyka sondy nie może znajdować się ręcznie i muszą znajdować się za pomocą zautomatyzowanego procesu w **sondy** kartę.
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Wybieranie zdalnego a poprawnie rozwiązania
-
-Jedyną różnicą między ustawień rozpoznawania zgrubnym i dobrym rozwiązaniem jest częstotliwość, w którym odbywa się symulacji. Szczegółowe wykorzystuje dwa razy możliwie jak zgrubnym częstotliwości.
-A to może wydawać się prosty, ma wiele skutki akustyczny symulacji:
-
-* Długość fali grubych jest dwa razy tak długo, jak poprawnie i dlatego voxels dwukrotnie są tak duże.
-* Rozmiar voxel, dzięki czemu tworzenie zgrubnym około 16 razy szybciej niż tworzenie dobrym rozwiązaniem jest bezpośrednio związana czasu symulacji.
-* Nie może być symulowana portali (na przykład drzwi lub systemu windows) mniejszy niż rozmiar voxel. Gruba ustawienie może spowodować, że niektóre z tych portali mniejszych, aby nie być symulowana; w związku z tym nie przekaże dźwięku za pomocą w czasie wykonywania. Aby zobaczyć, jeśli to się dzieje, wyświetlając voxels.
-* Mniejszą częstotliwością symulacji powoduje mniej diffraction wokół rogi i krawędzie.
-* Dźwięk źródła nie może znajdować się wewnątrz "wypełnione" voxels będącego voxels, który zawiera geometrii — skutkuje to Brak dźwięku. Jest trudniejsze do zlokalizowania źródeł dźwięku, dzięki czemu nie wewnątrz większych voxels z grubą niż ustawienie dobrym rozwiązaniem.
-* Większe voxels będzie mającym więcej do portali, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu zdalnego, podczas gdy druga jest tego samego pola, za pomocą cienkiej rozpoznawania. Wskazane przez czerwony oznaczenia, jest znacznie mniej nieautoryzowanego dostępu do pola przy użyciu ustawień w dobrym stanie. Niebieska linia jest bramą, zgodnie z definicją geometrii, podczas gdy czerwona linia jest skuteczne portal akustyczne, zależy od rozmiaru voxel. Jak ta włamań odgrywa w danej sytuacji zależy od całkowicie jak voxels wiersz w górę przy użyciu geometrii portalu, który zależy od rozmiaru i lokalizacje obiektów w scenie.
-
-![Zrzut ekranu przedstawiający zgrubnym voxels w drzwi](media/coarse-voxel-doorway.png)
-
-![Zrzut ekranu przedstawiający voxels dobrym rozwiązaniem w drzwi](media/fine-voxel-doorway.png)
+Zobacz [tworzenie rozwiązania](bake-resolution.md) więcej informacji na temat zdalnego vs poprawnie rozdzielczości.
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Tworzenie sceny za pomocą usługi Azure Batch
 Można wprowadzić sceny z klastra obliczeniowego w chmurze przy użyciu usługi Azure Batch. Wtyczka Unity Akustyka projekt łączy się bezpośrednio z usługi Azure Batch do utworzenia wystąpienia, zarządzanie i zatrzymywania klastra usługi Azure Batch dla każdego tworzenie. Na **tworzenie** kartę, wprowadź swoje poświadczenia platformy Azure, wybierz typ komputera klastra i rozmiar i kliknij przycisk **tworzenie**.
@@ -210,7 +196,7 @@ Na przykład podczas testów na komputerze o architekturze Intel Xeon E5-1660 8-
 Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
 1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
 2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie konfiguruje zasoby, które mają co najmniej 8GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Zrzut ekranu przedstawiający przykładowy ustawień platformy Docker](media/docker-settings.png)
-3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![Opcje dysku Screnshot Docker udostępnione](media/docker-shared-drives.png)
+3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![Zrzut ekranu z opcje platformy Docker udostępnionego dysku](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Tworzenie lokalnego uruchomienia
 1. Kliknij przycisk "Przygotowanie lokalnego tworzenie" **tworzenie** karcie, a następnie wybierz folder, w którym zostaną zapisane pliki wejściowe i wykonywania skryptów. Następnie można uruchomić tworzenie na dowolnym komputerze, tak długo, jak spełnia minimalne wymagania sprzętowe i ma platforma Docker jest zainstalowana przez skopiowanie folderu do tej maszyny.

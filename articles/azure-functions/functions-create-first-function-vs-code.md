@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104526"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469730"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -41,9 +41,9 @@ Aby ukończyć ten przewodnik Szybki start:
 
     | Język | Wewnętrzny |
     | -------- | --------- |
-    | **C#** | [Rozszerzenie C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debuger dla języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
+    | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
+    | **Java** | [Debuger dla języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Narzędzie maven 3 +](https://maven.apache.org/) |
+    | **JavaScript** | [Węzeł 8.0 i nowsze](https://nodejs.org/)  |
 
     \* Również wymagane przez pakiet Core Tools.
 
@@ -113,14 +113,12 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 
     ![Odpowiedź funkcji wyświetlona w przeglądarce](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W programie Visual Studio Code utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP. Aby dowiedzieć się więcej na temat tworzenia funkcji w określonym języku, zapoznaj się z przewodnikami informacyjnymi dla języków [JavaScript](functions-reference-node.md), [.NET](functions-dotnet-class-library.md) lub [Java](functions-reference-java.md).
-
-Warto także dowiedzieć się więcej na temat lokalnego testowania i debugowania z terminalu lub wiersza polecenia przy użyciu pakietu Azure Functions Core Tools.
+W programie Visual Studio Code utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP. Możesz także dowiedzieć się więcej o [lokalnego testowania i debugowania z Terminal lub wiersz polecenia](functions-run-local.md) przy użyciu podstawowych narzędzi usługi Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Kodowanie i testowanie lokalnie](functions-run-local.md)
+> [Włączanie integracji usługi Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Rozszerzenie usługi Azure Functions dla programu Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

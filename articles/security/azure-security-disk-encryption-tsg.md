@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838276"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470699"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -49,6 +49,14 @@ Po ponownym uruchomieniu maszyny Wirtualnej do nowego jądra nowa wersja jądra 
 ```
 uname -a
 ```
+
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Zaktualizuj agenta maszyny wirtualnej platformy Azure i wersje rozszerzenia
+
+Operacji na platformie Azure Disk Encryption może zakończyć się niepowodzeniem w obrazach maszyn wirtualnych przy użyciu nieobsługiwane wersje agenta maszyny wirtualnej platformy Azure. Aby uzyskać więcej informacji można znaleźć [minimalna obsługiwana wersja dla agentów maszyny wirtualnej na platformie Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).  
+
+Poprawną wersję rozszerzenia Microsoft.Azure.Security.AzureDiskEncryption lub Microsoft.Azure.Security.AzureDiskEncryptionForLinux agenta gościa jest również wymagany. Wersje rozszerzenia są obsługiwane i są automatycznie aktualizowane przez platformę, gdy są spełnione wymagania wstępne dotyczące agenta w maszynie wirtualnej platformy Azure i służy obsługiwaną wersję agenta maszyny wirtualnej.
+
+Rozszerzenie Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux jest przestarzała i nie jest już obsługiwana.  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Nie można zaszyfrować dyski w systemie Linux
 

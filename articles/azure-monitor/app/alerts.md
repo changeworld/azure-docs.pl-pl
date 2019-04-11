@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257165"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469799"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -144,6 +144,24 @@ W tej sekcji opiszemy sposób ustawiania alertu wyjątku na podstawie zapytania.
 10. Na koniec dodanie szczegółów dotyczących alertu (alertu z reguły nazwę, opis, ważność). Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz regułę alertu** u dołu.
 
     ![W obszarze szczegółów alertu, wpisz nazwę reguły alertu, Napisz opis i wybierz ważność](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak anulować subskrypcję alertów klasycznych w wiadomości e-mail z powiadomieniami
+
+Ta sekcja dotyczy **alerty klasyczne dostępności**, **alertów dotyczących metryk usługi Application Insights**, a **alerty dotyczące anomalii klasycznego błędów**.
+
+Otrzymujesz wiadomości e-mail z powiadomieniami dla tych alertów klasycznych, jeśli dowolny z następujących czynności:
+
+* Adres e-mail znajduje się w polu adresatów powiadomień e-mail, w ustawieniach reguły alertu.
+
+* Opcja wysyłania powiadomień e-mail dla użytkowników posiadających pewnych ról dla subskrypcji jest aktywna i przechowywania odpowiedniej roli dla tej konkretnej subskrypcji platformy Azure.
+
+![Zrzut ekranu z powiadomień o alertach](./media/alerts/alert-notification.png)
+
+Aby lepiej kontrolować, co do bezpieczeństwa i prywatności ogólnie zaleca się jawnie określ adresatów powiadomienia dla alertów klasycznych w **adresatów wiadomości e-mail powiadomień** pola. Możliwość Powiadom wszystkich użytkowników, zawierający określone role towarzyszy zgodności z poprzednimi wersjami.
+
+Aby otrzymywać powiadomienia e-mail generowane przez niektóre reguły alertu, należy usunąć swój adres e-mail, z **adresatów wiadomości e-mail powiadomień** pola.
+
+Jeśli Twój adres e-mail nie ma jawnie, firma Microsoft zaleca wyłączenie opcji automatycznego powiadamiania wszyscy członkowie określonych ról i zamiast tego wyświetlić listę wszystkich wiadomości e-mail użytkowników, którzy będą otrzymywać powiadomienia dla tej reguły alertu w wiadomości e-mail z powiadomieniem pole adresatów.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
 

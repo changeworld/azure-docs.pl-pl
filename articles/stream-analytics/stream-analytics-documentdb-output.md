@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658576"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470410"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Stream Analytics można wskazać [usługi Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie danych archiwizowanie i małe opóźnienia zapytań na danych JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -34,12 +34,12 @@ Dane wyjściowe usługi Azure Cosmos DB w usłudze Stream Analytics umożliwia z
 Niektóre opcje kolekcję usługi Cosmos DB są szczegółowo opisane poniżej.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Dostosowywanie spójnością, dostępnością i opóźnieniem
-Aby są zgodne z wymaganiami aplikacji, usługi Azure Cosmos DB umożliwia prawidłowo dostrajania bazy danych i kolekcji i kompromisu między spójnością, dostępnością i opóźnieniem. Zależności od tego, jakie poziomy spójności odczytu wymagań scenariusza dla zapisu i odczytu czas oczekiwania, możesz wybrać poziom spójności na Twoje konto bazy danych. Domyślnie usługa Azure Cosmos DB umożliwia także synchroniczne indeksowanie każdej operacji CRUD, do swojej kolekcji. Jest to przydatne zablokowałoby do kontrolowania wydajności zapisu/odczytu w usłudze Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [Zmienianie poziomów spójności bazy danych i zapytania](../cosmos-db/consistency-levels.md) artykułu.
+Aby są zgodne z wymaganiami aplikacji, usługi Azure Cosmos DB umożliwia dostrajania bazy danych i kolekcji i kompromisu między spójnością, dostępnością i opóźnieniem. Zależności od tego, jakie poziomy spójności odczytu wymagań scenariusza dla zapisu i odczytu czas oczekiwania, możesz wybrać poziom spójności na Twoje konto bazy danych. Domyślnie usługa Azure Cosmos DB umożliwia także synchroniczne indeksowanie każdej operacji CRUD, do swojej kolekcji. Jest to przydatne zablokowałoby do kontrolowania wydajności zapisu/odczytu w usłudze Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [Zmienianie poziomów spójności bazy danych i zapytania](../cosmos-db/consistency-levels.md) artykułu.
 
 ## <a name="upserts-from-stream-analytics"></a>Wykonuje operację UPSERT z usługi Stream Analytics
 Stream Analytics integracji z usługą Azure Cosmos DB umożliwia wstawianie lub aktualizowania rekordów w kolekcji na podstawie danej kolumny Identyfikatora dokumentu. To jest również nazywany *Upsert*.
 
-Stream Analytics korzysta z metody optymistycznej upsert których aktualizacje są wykonywane tylko podczas wstawiania zakończy się niepowodzeniem z konfliktem identyfikator dokumentu. Ta aktualizacja jest wykonywane jako poprawki, dzięki czemu umożliwia ona aktualizacje częściowe do dokumentu, to znaczy, dodanie nowych właściwości lub zastępując istniejącą właściwość jest wykonywana stopniowo. Jednak zmiany wartości właściwości tablicy w wyniku dokumentu JSON, korzystając z całej tablicy wprowadzenie zastąpione, czyli tablicy nie jest połączony.
+Stream Analytics korzysta z metody optymistycznej upsert których aktualizacje są wykonywane tylko podczas wstawiania zakończy się niepowodzeniem z konfliktem identyfikator dokumentu. Z wersji 1.0 poziom zgodności ta aktualizacja jest wykonywane jako poprawki, dzięki czemu umożliwia ona aktualizacje częściowe do dokumentu, to znaczy, dodanie nowych właściwości lub zastępując istniejącą właściwość jest wykonywana stopniowo. Jednak zmiany wartości właściwości tablicy w wyniku dokumentu JSON, korzystając z całej tablicy wprowadzenie zastąpione, czyli tablicy nie jest połączony. Za pomocą 1.2 zachowanie upsert zostanie zmodyfikowany na potrzeby wstawić lub Zastąp dokument. Jest to dokładniejszym opisem zawartym w poniższej sekcji 1,2 poziom zgodności.
 
 Jeśli przychodzący dokument JSON zawiera istniejące pole ID, że pole jest automatycznie używane jako kolumna Identyfikatora dokumentu w usłudze Cosmos DB, a wszystkie kolejne operacje zapisu są obsługiwane jako takie, co prowadzi do jednej z tych sytuacji:
 - unikatowe identyfikatory prowadzić do wstawienia
@@ -56,6 +56,24 @@ Usługa Azure Cosmos DB [nieograniczone](../cosmos-db/partition-data.md) kontene
 Dla stałej kolekcji usługi Azure Cosmos DB Stream Analytics umożliwia sposób skalować w górę lub w poziomie, gdy są one pełne. Mają górnego limitu 10 GB i 10 000 jednostek RU/s przepływności.  Aby przeprowadzić migrację danych z kontener stały do nieograniczonego kontenera (na przykład jeden z co najmniej 1000 jednostek RU/s i klucz partycji), należy użyć [narzędzia migracji danych](../cosmos-db/import-data.md) lub [biblioteki kanału informacyjnego zmian](../cosmos-db/change-feed.md).
 
 Zapisywanie wielu kontenerów stałej jest on przestarzały i nie jest zalecane podejście do skalowania w poziomie zadania usługi Stream Analytics. Artykuł [partycjonowanie i skalowanie w usłudze Cosmos DB](../cosmos-db/sql-api-partition-data.md) zawiera dalsze szczegóły.
+
+## <a name="improved-throughput-with-compatibility-level-12"></a>Ulepszone przepływności, zapewniając 1,2 poziom zgodności
+Poziom zgodności 1.2 natywna Integracja usługi Stream Analytics obsługuje do zbiorczego zapisu do usługi Cosmos DB. Umożliwia to efektywne zapisywania Cosmos DB przy użyciu maksymalizując przepływności i wydajnego ograniczania żądań dojście. Mechanizm ulepszone zapisu jest dostępne w nowy poziom zgodności z powodu różnic zachowanie upsert.  Przed 1.2 zachowanie upsert jest aby wstawić lub scalić dokument. Za pomocą 1.2 wykonuje operację UPSERT zachowanie zostanie zmodyfikowany na potrzeby wstawić lub Zastąp dokument. 
+
+Przed 1.2 używa niestandardowej procedury składowanej do zbiorczego upsert dokumentów na klucz partycji do usługi Cosmos DB, w którym zapisywana jest partii jako transakcja. Nawet wtedy, gdy jest to błąd przejściowy (ograniczanie przepustowości) uderza w jeden rekord, musi zostać powtórzone, całą partię. Stało się scenariusze obejmujące usługę nawet uzasadnione ograniczania stosunkowo wolniej. Następujące porównania pokazuje, jak takie zadania będzie się zachowywał tak z 1.2.
+
+Poniższa Instalator zawiera dwa identyczne zadania usługi Stream Analytics podczas odczytywania z tych samych danych wejściowych (Centrum zdarzeń). Oba zadania usługi Stream Analytics są [pełni podzielona na partycje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) przy użyciu zapytania przekazującego i zapisywania identyczne kolekcji bazy danych cosmos DB. Metryki po lewej stronie jest z zadania skonfigurowano poziom zgodności 1.0, a te po prawej stronie z 1.2. Klucz partycji kolekcji usługi cosmos DB to unikatowy identyfikator guid pochodzące z dane wejściowe zdarzenia.
+
+![Stream analytics metryki porównania](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-3.png)
+
+Szybkość odbierania zdarzeń w Centrum zdarzeń to 2 x większa niż kolekcje usługi Cosmos DB (20K RU) są skonfigurowane do pobierania, dzięki czemu ograniczanie oczekuje się w usłudze Cosmos DB. Jednak zadania za pomocą 1.2, stale zapisuje przy większej przepływności (dane wyjściowe zdarzenia/minutę) i niższych średni % wykorzystania SU. W danym środowisku ta różnica będzie zależeć od kilku więcej czynniki, takie jak wybór formatu zdarzeń, rozmiar danych wejściowych/komunikatu o zdarzeniu, klucze partycji, zapytania itp.
+
+![cosmos db metryki porównania](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
+
+1.2 Stream Analytics jest bardziej inteligentne i w użyciu 100% dostępne przepływności w usłudze Cosmos DB z małą liczbą ponownych przesłań z ograniczania/szybkości. Zapewnia to lepsze środowisko dla innych obciążeń, takich jak zapytania, uruchomiony w kolekcji, w tym samym czasie. W razie potrzeby możesz wypróbować jak ASA skalowania za pomocą usługi Cosmos DB jako obiekt sink dla 1 do 10 tys. obr komunikaty/sekundę w tym miejscu jest [projektu przykładów dla platformy azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , która umożliwia to zrobić.
+Należy pamiętać, że przepływności danych wyjściowych usługi Cosmos DB jest taka sama, jak 1.0 i 1.1. Ponieważ 1.2 nie jest obecnie domyślna, możesz [Ustaw poziom zgodności](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) dla zadania usługi Stream Analytics, za pomocą portalu lub przy użyciu [wywołanie interfejsu API REST zadania tworzenia](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Ma ona *zdecydowanie zaleca się* 1,2 poziom zgodności w ASA za pomocą usługi Cosmos DB. 
+
+
 
 ## <a name="cosmos-db-settings-for-json-output"></a>Ustawienia usługi cosmos DB dla danych wyjściowych JSON
 

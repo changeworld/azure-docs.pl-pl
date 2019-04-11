@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b294163a4486ab1db0590f39ca9235ae46ef1dfe
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286996"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469084"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki start: Tworzenie nowej dzierżawy w usłudze Azure Active Directory
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
@@ -60,7 +60,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, możesz usunąć dzierż
 
     Dzierżawa zostanie usunięta wraz ze skojarzonymi informacjami.
 
-    ![Tworzenie strony katalogu przy użyciu przykładowych informacji](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    ![Strona przeglądu, za pomocą przycisku Usuń wyróżniony w katalogu](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zmiana lub dodawanie kolejnych nazw domen — zobacz [Jak dodać nazwę domeny niestandardowej do usługi Azure Active Directory](add-custom-domain.md)

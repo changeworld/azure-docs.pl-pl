@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: fcda3e1ee8029bf40a0d7eec2ad440b7b128a650
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263523"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470271"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji OAuth 2.0
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | wymagane    | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | wymagane    | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji.  |
 | `response_type` | wymagane    | Musi zawierać `code` dla przepływ kodu autoryzacji.       |
-| `redirect_uri`  | Zalecane | Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `redirect_uri`  | wymagane | Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | `scope`  | wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na. |
 | `response_mode`   | Zalecane | Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może to być jeden z następujących modyfikatorów dostępu:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Aby uzyskać więcej informacji, zobacz [protokołu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widoku, które znajdowały się w wartości również zakodować informacje o stanie użytkownika w aplikacji. |
@@ -242,7 +242,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_tokens są krótkie krótkotrwałe i należy je odświeżyć, po ich wygaśnięciu, aby nadal mieć dostęp do zasobów. Możesz to zrobić, przesyłając innego `POST` limit czasu żądania `/token` punktu końcowego, tym razem realizacji `refresh_token` zamiast `code`.  Tokeny odświeżania są prawidłowe dla wszystkich uprawnień, które klient otrzymał już zgoda na — w związku z tym, token odświeżania wydane w żądaniu na potrzeby `scope=mail.read` może służyć do żądania nowy token dostępu dla `scope=api://contoso.com/api/UseResource`.  
 
-Odświeżanie tokenów nie mają określonego okresy istnienia. Zazwyczaj okresy istnienia tokenów odświeżania są stosunkowo długo. Jednak w niektórych przypadkach, tokeny odświeżania wygaśnie, zostaną odwołane lub braku wystarczających uprawnień do żądanej akcji. Twoja aplikacja potrzebuje do oczekują i obsługiwać [błędy zwrócone przez punkt końcowy wystawiania tokenu](#error-codes-for-token-endpoint-errors) poprawnie.  Należy zauważyć, że tokeny odświeżania nie zostaną odwołane, gdy jest używana w celu uzyskania nowych tokenów dostępu. 
+Odświeżanie tokenów nie mają określonego okresy istnienia. Zazwyczaj okresy istnienia tokenów odświeżania są stosunkowo długo. Jednak w niektórych przypadkach, tokeny odświeżania wygaśnie, zostaną odwołane lub braku wystarczających uprawnień do żądanej akcji. Twoja aplikacja potrzebuje do oczekują i obsługiwać [błędy zwrócone przez punkt końcowy wystawiania tokenu](#error-codes-for-token-endpoint-errors) poprawnie. 
+
+Mimo że nie zostaną odwołane tokeny odświeżania, gdy jest używana w celu uzyskania nowych tokenów dostępu, mają być Odrzuć stare token odświeżania. [Specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-6) jest wyświetlany komunikat: "Serwer autoryzacji może wystawić nowy token odświeżania, w którym należy odrzucić przypadku klient stary token odświeżania i zastąp go nowego tokena odświeżania. Serwer autoryzacji może cofnąć stary token odświeżania po wydaniu nowego tokena odświeżania do klienta."  
 
 ```
 // Line breaks for legibility only
@@ -254,7 +256,6 @@ Content-Type: application/x-www-form-urlencoded
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
 ```
@@ -271,8 +272,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | wymagane    | Musi być `refresh_token` dla tej gałęzi przepływ kodu autoryzacji. |
 | `scope`         | wymagane    | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w oryginalnym gałęzi żądania authorization_code wymagane. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `refresh_token` | wymagane    | Refresh_token, uzyskanego w drugim nogi przepływ. |
-| `redirect_uri`  | wymagane    |  A `redirect_uri`zarejestrowanych aplikacji klienta. |
-| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.                                                                                                                                                    |
+| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web. |
 
 #### <a name="successful-response"></a>Pomyślna odpowiedź
 

@@ -9,22 +9,22 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518733"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471022"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
 [Usługa Azure Functions](functions-overview.md) oferuje wbudowaną integrację z [usługi Azure Application Insights](../azure-monitor/app/app-insights-overview.md) do monitorowania funkcji. W tym artykule przedstawiono sposób konfigurowania usługi Azure Functions do wysyłania plików dziennika generowanych przez system do usługi Application Insights.
 
-![Eksplorator metryk usługi Application Insights](media/functions-monitoring/metrics-explorer.png)
+Firma Microsoft zaleca, za pomocą usługi Application Insights, ponieważ zbiera dzienniki, wydajności i danych o błędach. Automatycznie wykrywa anomalie wydajność i obejmują zaawansowane narzędzia analityczne ułatwiające diagnozowanie problemów i aby zrozumieć, jak są używane funkcje. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań. Możesz nawet Application Insights mogą służyć podczas tworzenia projektu aplikacji funkcji lokalnej. Aby uzyskać więcej informacji, zobacz [co to jest usługa Application Insights?](../azure-monitor/app/app-insights-overview.md)
 
-Usługa Azure Functions oferuje również wbudowane monitorowanie, która nie korzysta z usługi Application Insights. Firma Microsoft zaleca usługi Application Insights, ponieważ oferuje on większej ilości danych i lepsze sposoby analizować dane.
+Jak wymagane Instrumentacji usługi Application Insights jest wbudowana w usłudze Azure Functions, wszystko co potrzebne jest kluczem Instrumentacji prawidłowe połączyć swoją aplikację funkcji do zasobu usługi Application Insights.
 
 ## <a name="application-insights-pricing-and-limits"></a>Limity i ceny usługi Application Insights
 
@@ -34,56 +34,28 @@ Możesz wypróbować integracji usługi Application Insights z aplikacji funkcji
 
 Dla aplikacji funkcji do przesyłania danych do usługi Application Insights musi ona znasz klucz Instrumentacji zasobu usługi Application Insights. Klucz należy podać w aplikacji, ustawienie o nazwie **APPINSIGHTS_INSTRUMENTATIONKEY**.
 
-Można skonfigurować tego połączenia w [witryny Azure portal](https://portal.azure.com):
+### <a name="new-function-app-in-the-portal"></a>Nową aplikację funkcji w portalu
 
-* [Automatyczne łączenie z nową aplikację funkcji](#new-function-app)
-* [Ręcznie połączyć z zasobem usługi Application Insights](#manually-connect-an-app-insights-resource)
+Po użytkownik [utworzyć aplikację funkcji w witrynie Azure portal](functions-create-first-azure-function.md), Integracja usługi Application Insights jest domyślnie włączona. Zasób usługi Application Insights ma taką samą nazwę jak aplikacja funkcji i zostanie utworzony w tym samym regionie lub w najbliższym regionie.
 
-### <a name="new-function-app"></a>Nowa aplikacja funkcji
-<!-- Add a transitional sentence to introduce the procedure. -->
+Aby zapoznać się z zasobem usługi Application Insights, trwa tworzenie, wybierz ją, aby rozwinąć **usługi Application Insights** okna. Możesz zmienić **Nowa nazwa zasobu** lub wybrać inną **lokalizacji** w [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) potrzebne do przechowywania danych.
 
-1. Przejdź do aplikacji funkcji **Utwórz** strony.
+![Włącz usługę Application Insights podczas tworzenia aplikacji funkcji](media/functions-monitoring/enable-ai-new-function-app.png)
 
-1. Ustaw **usługi Application Insights** Przełącz **na**.
-
-1. Wybierz **Lokalizacja usługi Application Insights**. Wybierz region najbliższy region aplikacji funkcji i w [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) potrzebne do przechowywania danych.
-
-   ![Włącz usługę Application Insights podczas tworzenia aplikacji funkcji](media/functions-monitoring/enable-ai-new-function-app.png)
-
-1. Wprowadź wymagane informacje, a następnie wybierz pozycję **Utwórz**.
-
-Następnym krokiem jest [wyłączyć wbudowane funkcje rejestrowania](#disable-built-in-logging).
-
+Po wybraniu **Utwórz**, zasób usługi Application Insights jest tworzony za pomocą aplikacji funkcji, która ma `APPINSIGHTS_INSTRUMENTATIONKEY` w ustawieniach aplikacji. Wszystko jest gotowe.
 
 <a id="manually-connect-an-app-insights-resource"></a>
-### <a name="application-insights-resource"></a>Zasób usługi Application Insights 
-<!-- Add a transitional sentence to introduce the procedure. -->
+### <a name="add-to-an-existing-function-app"></a>Dodawanie do istniejącej aplikacji funkcji 
 
-1. Utwórz zasób usługi Application Insights. Ustaw typ aplikacji **ogólne**.
+Po utworzeniu aplikacji funkcji przy użyciu [wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md), [programu Visual Studio](functions-create-your-first-function-visual-studio.md), lub [programu Visual Studio Code](functions-create-first-function-vs-code.md), należy utworzyć zasób usługi Application Insights. Następnie można dodać klucza Instrumentacji z tego zasobu jako ustawienie aplikacji w aplikacji funkcji.
 
-   ![Utwórz zasób usługi Application Insights typu ogólnego](media/functions-monitoring/ai-general.png)
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-1. Skopiuj klucz Instrumentacji z **Essentials** strony zasobu usługi Application Insights. Wskaż koniec wyświetlane wartości klucza, aby uzyskać **kliknij, aby skopiować** przycisku.
-
-   ![Skopiuj klucz Instrumentacji usługi Application Insights](media/functions-monitoring/copy-ai-key.png)
-
-1. W aplikacji funkcji **ustawienia aplikacji** stronie [Dodaj ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) , wybierając **Dodaj nowe ustawienie**. Nazwa nowego ustawienia **APPINSIGHTS_INSTRUMENTATIONKEY** i Wklej klucz Instrumentacji skopiowany.
-
-   ![Dodaj klucz Instrumentacji do pliku ustawień aplikacji](media/functions-monitoring/add-ai-key.png)
-
-1. Wybierz pozycję **Zapisz**.
-
-<!-- Before the next H2 heading, add transitional sentences to summarize why the procedures were necessary. -->
-
-## <a name="disable-built-in-logging"></a>Wyłącz wbudowane funkcje rejestrowania
-
-Po włączeniu usługi Application Insights, należy wyłączyć wbudowane funkcje rejestrowania, który używa usługi Azure Storage. Wbudowane funkcje rejestrowania jest przydatna przy testowaniu z niewielkich obciążeń, ale nie jest przeznaczony do użytku produkcyjnego duże obciążenie. Do monitorowania produkcji, firma Microsoft zaleca usługę Application Insights. Jeśli wbudowane funkcje rejestrowania jest używany w środowisku produkcyjnym, rekord rejestrowania może być niekompletna ze względu na ograniczenia przepustowości w usłudze Azure Storage.
-
-Aby wyłączyć wbudowane funkcje rejestrowania, należy usunąć `AzureWebJobsDashboard` ustawienia aplikacji. Aby dowiedzieć się, jak usunąć ustawienia aplikacji w witrynie Azure portal, zobacz **ustawienia aplikacji** części [jak Zarządzanie aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Zanim usuniesz ustawienia aplikacji, upewnij się, że żadne istniejące funkcje w tej samej aplikacji funkcji, użyj ustawienia dla wyzwalaczy usługi Azure Storage lub powiązania.
+Wcześniejsze wersje funkcji używany wbudowany monitoring, który nie jest już zalecany. Podczas włączania Integracja usługi Application Insights dla aplikacji funkcji, musisz także [wyłączyć wbudowane funkcje rejestrowania](#disable-built-in-logging).  
 
 ## <a name="view-telemetry-in-monitor-tab"></a>Wyświetlanie danych telemetrycznych na karcie Monitor
 
-Po skonfigurowaniu integracji usługi Application Insights jak pokazano w poprzednich sekcjach, można wyświetlić dane telemetryczne w **Monitor** kartę.
+Za pomocą [Integracja usługi Application Insights włączoną](#enable-application-insights-integration), można wyświetlić dane telemetryczne w **Monitor** kartę.
 
 1. Na stronie aplikacji funkcji wybierz funkcję, która zostało uruchomione co najmniej raz, po skonfigurowaniu usługi Application Insights. Następnie wybierz pozycję **Monitor** kartę.
 
@@ -103,13 +75,13 @@ Po skonfigurowaniu integracji usługi Application Insights jak pokazano w poprze
 
    ![Szczegóły wywołania](media/functions-monitoring/invocation-details-ai.png)
 
-Obie strony (wywołanie listy i szczegółów wywołania), połącz się z zapytania analizy usługi Application Insights, które pobiera dane:
+Widać, że obie strony mają **Uruchom w usłudze Application Insights** łącze do zapytania analizy usługi Application Insights, które pobiera dane.
 
 ![Uruchom w usłudze Application Insights](media/functions-monitoring/run-in-ai.png)
 
-![Application Insights — analiza wywołanie listy](media/functions-monitoring/ai-analytics-invocation-list.png)
+Następujące zapytanie zostanie wyświetlone. Widać, że listy wywołań jest ograniczony do ostatnich 30 dni. Lista zawiera nie więcej niż 20 wierszy (`where timestamp > ago(30d) | take 20`). Lista szczegółów wywołanie jest w ciągu ostatnich 30 dni bez ograniczeń.
 
-Z tych zapytań widać, że listy wywołań jest ograniczony do ostatnich 30 dni. Lista zawiera nie więcej niż 20 wierszy (`where timestamp > ago(30d) | take 20`). Lista szczegółów wywołanie jest w ciągu ostatnich 30 dni bez ograniczeń.
+![Application Insights — analiza wywołanie listy](media/functions-monitoring/ai-analytics-invocation-list.png)
 
 Aby uzyskać więcej informacji, zobacz [wysyłania zapytań dotyczących danych telemetrii](#query-telemetry-data) w dalszej części tego artykułu.
 
@@ -121,25 +93,17 @@ Aby otworzyć usługę Application Insights z aplikacji funkcji w witrynie Azure
 
 Aby uzyskać informacje o tym, jak używać usługi Application Insights, zobacz [dokumentacja usługi Application Insights](https://docs.microsoft.com/azure/application-insights/). W tej sekcji przedstawiono kilka przykładów sposobu wyświetlania danych w usłudze Application Insights. Jeśli już znasz z usługi Application Insights, możesz przejść bezpośrednio do [sekcje dotyczące sposobu konfigurowania i dostosowywania dane telemetryczne](#configure-categories-and-log-levels).
 
-W [Eksploratora metryk](../azure-monitor/app/metrics-explorer.md), możesz również tworzyć wykresy i alerty, które opierają się na metryki. Metryki obejmują liczbę wywołań funkcji, czas wykonywania i współczynniki powodzenia.
+![Karta Przegląd szczegółowych informacji w aplikacji](media/functions-monitoring/metrics-explorer.png)
 
-![Eksplorator metryk](media/functions-monitoring/metrics-explorer.png)
+Następujące obszary usługi Application Insights może być przydatne podczas obliczania zachowanie, wydajności i błędów w funkcji:
 
-Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że implementacji niestandardowej telemetrii zależności.
-
-![Niepowodzenia](media/functions-monitoring/failures.png)
-
-Na [wydajności](../azure-monitor/app/performance-counters.md) karcie, można analizować problemy z wydajnością.
-
-![Wydajność](media/functions-monitoring/performance.png)
-
-**Serwerów** karta przedstawia wykorzystanie zasobów i przepływność na serwerze. Może to być przydatne podczas debugowania scenariuszy, w którym funkcje są bogging dół podstawowych zasobów. Serwery są określane jako **wystąpień roli w chmurze**.
-
-![Serwery](media/functions-monitoring/servers.png)
-
-[Live Stream metryki](../azure-monitor/app/live-stream.md) karta przedstawia dane metryk, ponieważ jest on tworzony w czasie rzeczywistym.
-
-![Transmisja strumieniowa na żywo](media/functions-monitoring/live-stream.png)
+| Tab | Opis |
+| ---- | ----------- |
+| **[Niepowodzenia](../azure-monitor/app/asp-net-exceptions.md)** |  Tworzenie wykresów i alertów na podstawie funkcji błędy i wyjątki serwera. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że implementacji niestandardowej telemetrii zależności. |
+| **[Wydajność](../azure-monitor/app/performance-counters.md)** | Analizuj problemy z wydajnością. |
+| **Serwery** | Widok wykorzystania zasobów i przepływność na serwerze. Może to być przydatne podczas debugowania scenariuszy, w którym funkcje są bogging dół podstawowych zasobów. Serwery są określane jako **wystąpień roli w chmurze**. |
+| **[Metryki](../azure-monitor/app/metrics-explorer.md)** | Tworzenie wykresów i alertów, które są oparte na metryki. Metryki obejmują liczbę wywołań funkcji, czas wykonywania i współczynniki powodzenia. |
+| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Wyświetlanie danych metryk utworzonemu w czasie rzeczywistym. |
 
 ## <a name="query-telemetry-data"></a>Wykonywanie zapytań dotyczących danych telemetrii
 
@@ -160,12 +124,14 @@ requests
 
 Tabele, które są dostępne są wyświetlane w **schematu** karty po lewej stronie. Można znaleźć danych generowanych przez wywołania funkcji w poniższych tabelach:
 
-* **ślady**: Dzienniki utworzone przez środowisko uruchomieniowe i kodu funkcji.
-* **Żądania**: Jedno żądanie dla każdego wywołania funkcji.
-* **Wyjątki**: Wyjątki zgłaszane w czasie wykonywania.
-* **customMetrics**: Liczba wywołań zakończonych powodzeniem i niepowodzeniem, Częstotliwość powodzeń i czas trwania.
-* **customEvents**: Zdarzenia śledzenia w czasie wykonywania, na przykład: Żądania HTTP, które mogą powodować funkcji.
-* **liczniki wydajności**: Informacje o wydajności z serwerów, które funkcje są uruchomione na.
+| Tabela | Opis |
+| ----- | ----------- |
+| **ślady** | Dzienniki utworzone przez środowisko uruchomieniowe i kodu funkcji. |
+| **żądania** | Jedno żądanie dla każdego wywołania funkcji. |
+| **wyjątki** | Wyjątki zgłaszane w czasie wykonywania. |
+| **customMetrics** | Liczba wywołań zakończonych powodzeniem i niepowodzeniem, Częstotliwość powodzeń i czas trwania. |
+| **customEvents** | Zdarzenia śledzenia w czasie wykonywania, na przykład: Żądania HTTP, które mogą powodować funkcji. |
+| **Liczniki wydajności** | Informacje o wydajności z serwerów, które funkcje są uruchomione na. |
 
 Inne tabele są przeznaczone dla testów dostępności i dane telemetryczne dotyczące klienta i przeglądarki. Możesz zaimplementować niestandardowej telemetrii, aby dodać dane do nich.
 
@@ -180,7 +146,7 @@ traces
 
 ## <a name="configure-categories-and-log-levels"></a>Konfigurowanie kategorii i poziomy dziennika
 
-Za pomocą usługi Application Insights bez żadnej konfiguracji niestandardowej. Domyślna konfiguracja może spowodować duże ilości danych. Jeśli używasz subskrypcji programu Visual Studio na platformie Azure może napotkać limit danych dla usługi Application Insights. W dalszej części tego artykułu dowiesz się, jak skonfigurować i dostosować dane, które funkcje wysyłanie do usługi Application Insights.
+Za pomocą usługi Application Insights bez żadnej konfiguracji niestandardowej. Domyślna konfiguracja może spowodować duże ilości danych. Jeśli używasz subskrypcji programu Visual Studio na platformie Azure może napotkać limit danych dla usługi Application Insights. W dalszej części tego artykułu dowiesz się, jak skonfigurować i dostosować dane, które funkcje wysyłanie do usługi Application Insights. W przypadku aplikacji funkcji rejestrowania jest konfigurowana w [host.json] pliku.
 
 ### <a name="categories"></a>Kategorie
 
@@ -208,7 +174,7 @@ Poziom dziennika `None` zostało wyjaśnione w kolejnej sekcji.
 
 ### <a name="log-configuration-in-hostjson"></a>Konfiguracja dziennika w host.json
 
-[Host.json](functions-host-json.md) plik konfiguruje poziom rejestrowania aplikacji funkcji, wysyła do usługi Application Insights. Dla każdej kategorii wskazujesz, minimalny poziom rejestrowania do wysłania. Istnieją dwa przykłady: pierwszy cele przykład [środowisko uruchomieniowe usługi Functions w wersji 2.x](functions-versions.md#version-2x) (.NET Core), a drugi przykład jest przez środowisko uruchomieniowe 1.x wersji.
+[Host.json] plik konfiguruje poziom rejestrowania aplikacji funkcji, wysyła do usługi Application Insights. Dla każdej kategorii wskazujesz, minimalny poziom rejestrowania do wysłania. Istnieją dwa przykłady: pierwszy cele przykład [środowisko uruchomieniowe usługi Functions w wersji 2.x](functions-versions.md#version-2x) (.NET Core), a drugi przykład jest przez środowisko uruchomieniowe 1.x wersji.
 
 ### <a name="version-2x"></a>W wersji 2.x
 
@@ -248,12 +214,12 @@ Poziom dziennika `None` zostało wyjaśnione w kolejnej sekcji.
 Ten przykład konfiguruje następujące reguły:
 
 * W dziennikach kategorii `Host.Results` lub `Function`, Wyślij tylko `Error` poziom i nowsze wersje do usługi Application Insights. W dziennikach `Warning` na poziomie i poniżej są ignorowane.
-* W przypadku dzienników z kategorią `Host.Aggregator`, Wyślij wszystkie dzienniki do usługi Application Insights. `Trace` Poziom rejestrowania jest taka sama jak wywołać pewne rejestratorów `Verbose`, ale `Trace` w [host.json](functions-host-json.md) pliku.
+* W przypadku dzienników z kategorią `Host.Aggregator`, Wyślij wszystkie dzienniki do usługi Application Insights. `Trace` Poziom rejestrowania jest taka sama jak wywołać pewne rejestratorów `Verbose`, ale `Trace` w [host.json] pliku.
 * W przypadku innych dzienników wysyłać tylko `Information` poziom lub nowszym do usługi Application Insights.
 
-Wartości kategorii w [host.json](functions-host-json.md) kontroluje rejestrowanie dla wszystkich kategorii, rozpoczynające się od tej samej wartości. `Host` w [host.json](functions-host-json.md) rejestrowanie dla formantów `Host.General`, `Host.Executor`, `Host.Results`i tak dalej.
+Wartości kategorii w [host.json] kontroluje rejestrowanie dla wszystkich kategorii, rozpoczynające się od tej samej wartości. `Host` w [host.json] rejestrowanie dla formantów `Host.General`, `Host.Executor`, `Host.Results`i tak dalej.
 
-Jeśli [host.json](functions-host-json.md) obejmuje wiele kategorii rozpoczynających się od tych samych parametrach dłużej te są dopasowywane. Załóżmy, że chcesz, aby wszystko — od środowiska uruchomieniowego, z wyjątkiem `Host.Aggregator` rejestrowania `Error` poziomu, ale ma `Host.Aggregator` rejestrowania `Information` poziom:
+Jeśli [host.json] obejmuje wiele kategorii rozpoczynających się od tych samych parametrach dłużej te są dopasowywane. Załóżmy, że chcesz, aby wszystko — od środowiska uruchomieniowego, z wyjątkiem `Host.Aggregator` rejestrowania `Error` poziomu, ale ma `Host.Aggregator` rejestrowania `Information` poziom:
 
 ### <a name="version-2x"></a>W wersji 2.x 
 
@@ -322,7 +288,7 @@ Dzienniki napisane przez kod funkcji mają kategorii `Function` i może być dow
 
 ## <a name="configure-the-aggregator"></a>Konfigurowanie agregatora
 
-Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane dotyczące wykonań funkcji w okresie czasu. Domyślny okres to 30 sekund lub 1000 jest uruchamiany w zależności od tego, co nastąpi wcześniej. Można skonfigurować tego ustawienia w [host.json](functions-host-json.md) pliku.  Oto przykład:
+Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane dotyczące wykonań funkcji w okresie czasu. Domyślny okres to 30 sekund lub 1000 jest uruchamiany w zależności od tego, co nastąpi wcześniej. Można skonfigurować tego ustawienia w [host.json] pliku.  Oto przykład:
 
 ```json
 {
@@ -335,7 +301,7 @@ Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane do
 
 ## <a name="configure-sampling"></a>Konfigurowanie próbkowania
 
-Usługa Application Insights ma [próbkowania](../azure-monitor/app/sampling.md) funkcji, które można chronić klientów przed tworzenie zbyt dużej ilości danych telemetrycznych dane w czasie szczytowego obciążenia. Liczba przychodzących danych telemetrycznych przekracza określoną wartość progową, Application Insights uruchamia losowo ignorowanie niektórych elementów przychodzących. Domyślne ustawienie maksymalnej liczby elementów na sekundę wynosi pięć. Można skonfigurować pobieranie próbek w [host.json](functions-host-json.md).  Oto przykład:
+Usługa Application Insights ma [próbkowania](../azure-monitor/app/sampling.md) funkcja, która może chronić klientów przed tworzenie zbyt dużej ilości danych telemetrycznych na ukończone wykonaniami w czasie szczytowego obciążenia. Liczba wykonań przychodzący przekroczy określoną wartość progową, Application Insights uruchamia losowo ignoruje część wykonania przychodzących. Domyślnym ustawieniem maksymalnej liczby wykonań na sekundę wynosi 20 (5 w wersji 1.x). Można skonfigurować pobieranie próbek w [host.json].  Oto przykład:
 
 ### <a name="version-2x"></a>W wersji 2.x 
 
@@ -345,7 +311,7 @@ Usługa Application Insights ma [próbkowania](../azure-monitor/app/sampling.md)
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 5
+        "maxTelemetryItemsPerSecond" : 20
       }
     }
   }
@@ -465,18 +431,18 @@ using Microsoft.Extensions.Logging;
 
 namespace functionapp0915
 {
-    public static class HttpTrigger2
+    public class HttpTrigger2
     {
-        // In Functions v2, TelemetryConfiguration.Active is initialized with the InstrumentationKey
-        // from APPINSIGHTS_INSTRUMENTATIONKEY. Creating a default TelemetryClient like this will 
-        // automatically use that key for all telemetry. It will also enable telemetry correlation
-        // with the current operation.
-        // If you require a custom TelemetryConfiguration, create it initially with
-        // TelemetryConfiguration.CreateDefault() to include this automatic correlation.
-        private static TelemetryClient telemetryClient = new TelemetryClient();
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
 
         [FunctionName("HttpTrigger2")]
-        public static Task<IActionResult> Run(
+        public Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
             HttpRequest req, ExecutionContext context, ILogger log)
         {
@@ -491,12 +457,12 @@ namespace functionapp0915
             // Track an Event
             var evt = new EventTelemetry("Function called");
             evt.Context.User.Id = name;
-            telemetryClient.TrackEvent(evt);
+            this.telemetryClient.TrackEvent(evt);
 
             // Track a Metric
             var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
             metric.Context.User.Id = name;
-            telemetryClient.TrackMetric(metric);
+            this.telemetryClient.TrackMetric(metric);
 
             // Track a Dependency
             var dependency = new DependencyTelemetry
@@ -509,7 +475,7 @@ namespace functionapp0915
                 Success = true
             };
             dependency.Context.User.Id = name;
-            telemetryClient.TrackDependency(dependency);
+            this.telemetryClient.TrackDependency(dependency);
 
             return Task.FromResult<IActionResult>(new OkResult());
         }
@@ -627,58 +593,62 @@ module.exports = function (context, req) {
 
 `tagOverrides` Zestawów parametrów `operation_Id` identyfikatora wywołania funkcji To ustawienie umożliwia korelowanie wszystkie automatycznie generowane i niestandardowych danych telemetrycznych dla wywołania danej funkcji.
 
-## <a name="known-issues"></a>Znane problemy
-<!-- Add a transitional sentence to introduce the section. -->
-
-### <a name="dependencies"></a>Zależności
+## <a name="dependencies"></a>Zależności
 
 Zależności, funkcja używa się do innych usług, które nie będą automatycznie wyświetlane. Można napisać kod niestandardowy, aby wyświetlić zależności. Przykłady można znaleźć w przykładowym kodzie w [ C# sekcji niestandardowej telemetrii](#log-custom-telemetry-in-c-functions). Przykładowy kod powoduje *mapy aplikacji* w usłudze Application Insights, który wygląda podobnie do poniższej ilustracji:
 
-![Mapa aplikacji](media/functions-monitoring/app-map.png)
+![Mapa aplikacji](./media/functions-monitoring/app-map.png)
 
-### <a name="report-issues"></a>Zgłaszanie problemów
+## <a name="report-issues"></a>Zgłaszanie problemów
 
 Aby zgłosić problem z integracją usługi Application Insights w funkcji lub aby wprowadzić sugestię lub żądania, [Utwórz problem w serwisie GitHub](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="monitor-without-application-insights"></a>Monitor bez usługi Application Insights
+## <a name="streaming-logs"></a>Dzienniki przesyłania strumieniowego
 
-Firma Microsoft zaleca usługę Application Insights dla funkcji monitorowania. Oferuje ona większej ilości danych i lepsze sposoby analizować dane. Ale jeśli chcesz, aby system wbudowane funkcje rejestrowania, który używa usługi Azure Storage, można kontynuować użycie tej metody.
+Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestrowania w czasie niemal rzeczywistym. Można wyświetlić strumienia plików dzienników generowanych przez funkcje w witrynie Azure portal lub w sesji wiersza polecenia na komputerze lokalnym.
 
-### <a name="azure-storage-account-for-logging"></a>Konto usługi Azure Storage do rejestrowania
+Jest to równoważne z danych wyjściowych widoczny podczas debugowania funkcji podczas [rozwoju lokalnego](functions-develop-local.md). Aby uzyskać więcej informacji, zobacz [jak przesyłanie strumieniowe dzienników](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
 
-Wbudowane funkcje rejestrowania używa konta magazynu, określona przez ciąg połączenia w `AzureWebJobsDashboard` ustawienia aplikacji. Na stronie aplikacji funkcji wybierz funkcję, a następnie wybierz **Monitor** kartę i chce go przechowywać w **Klasyczny**.
+> [!NOTE]
+> Dzienniki przesyłania strumieniowego obsługuje tylko jedno wystąpienie hosta funkcji. W przypadku funkcji skalowania do wielu wystąpień, dane z innych wystąpień nie są wyświetlane w strumień dziennika. [Live Stream metryki](../azure-monitor/app/live-stream.md) w usłudze Application Insights obsługuje wiele wystąpień. A także w niemal w czasie rzeczywistym analizy przesyłania strumieniowego są również na podstawie [próbce danych](#configure-sampling).
 
-![Przełącz na widok klasyczny](media/functions-monitoring/switch-to-classic-view.png)
+### <a name="portal"></a>Portal
 
-Możesz uzyskać listę wykonań funkcji. Wybierz opcję wykonywania funkcji, aby sprawdzić czas trwania, danych wejściowych, błędów i skojarzone pliki dziennika.
+Aby wyświetlić dzienniki przesyłania strumieniowego w portalu, wybierz **funkcje platformy** kartę w aplikacji funkcji. Następnie w obszarze **monitorowanie**, wybierz **przesyłanie strumieniowe dzienników**.
 
-Jeśli włączona jest usługa Application Insights, możesz wrócić do korzystania z wbudowane funkcje rejestrowania. Ręcznie wyłączyć usługi Application Insights, a następnie wybierz pozycję **Monitor** kartę. Można wyłączyć integracji usługi Application Insights, należy usunąć `APPINSIGHTS_INSTRUMENTATIONKEY` ustawienia aplikacji.
+![Włącz dzienniki przesyłania strumieniowego w portalu](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
-Nawet wtedy, gdy **Monitor** karta przedstawia dane usługi Application Insights, możesz sprawdzić dane dziennika w systemie plików, jeśli jeszcze tego nie [wyłączone wbudowane funkcje rejestrowania](#disable-built-in-logging). Zasób magazynu, przejdź do **pliki**i wybierz usługę plików dla funkcji. Następnie przejdź do **LogFiles** > **aplikacji** > **funkcje** > **funkcja**  >  **your_function** można znaleźć w pliku dziennika.
+Ta aplikacja łączy się z dzienników przesyłania strumieniowego usługi i dzienniki aplikacji są wyświetlane w oknie. Można przełączać się między **Dzienniki aplikacji** i **dzienników serwera w sieci Web**.  
 
-### <a name="real-time-monitoring"></a>Monitorowanie w czasie rzeczywistym
+![Wyświetl dzienniki przesyłania strumieniowego w portalu](./media/functions-monitoring/streaming-logs-window.png)
 
-Można przesłać strumieniowo pliki dziennika w celu sesji wiersza polecenia na lokalnej stacji roboczej. Użyj [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).  
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Wiersza polecenia platformy Azure Użyj następujących poleceń, aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
+Dzienniki przesyłania strumieniowego można włączyć za pomocą [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/install-azure-cli). Wiersza polecenia platformy Azure Użyj następujących poleceń, aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
 
 ```azurecli
 az login
 az account list
 az account set --subscription <subscriptionNameOrId>
-az webapp log tail --resource-group <resource group name> --name <function app name>
+az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_NAME>
 ```
 
-Dla programu Azure PowerShell Użyj następujących poleceń, aby dodać konta platformy Azure, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Dzienniki przesyłania strumieniowego można włączyć za pomocą [programu Azure PowerShell](/powershell/azure/overview). W przypadku programu PowerShell Użyj następujących poleceń, aby dodać konta platformy Azure, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
 
 ```powershell
 Add-AzAccount
 Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <function app name> -Tail
+Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-Aby uzyskać więcej informacji, zobacz [jak przesyłanie strumieniowe dzienników](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+## <a name="disable-built-in-logging"></a>Wyłącz wbudowane funkcje rejestrowania
+
+Po włączeniu usługi Application Insights, należy wyłączyć wbudowane funkcje rejestrowania, który używa usługi Azure Storage. Wbudowane funkcje rejestrowania jest przydatna przy testowaniu z niewielkich obciążeń, ale nie jest przeznaczony do użytku produkcyjnego duże obciążenie. Do monitorowania produkcji, firma Microsoft zaleca usługę Application Insights. Jeśli wbudowane funkcje rejestrowania jest używany w środowisku produkcyjnym, rekord rejestrowania może być niekompletna ze względu na ograniczenia przepustowości w usłudze Azure Storage.
+
+Aby wyłączyć wbudowane funkcje rejestrowania, należy usunąć `AzureWebJobsDashboard` ustawienia aplikacji. Aby dowiedzieć się, jak usunąć ustawienia aplikacji w witrynie Azure portal, zobacz **ustawienia aplikacji** części [jak Zarządzanie aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Zanim usuniesz ustawienia aplikacji, upewnij się, że żadne istniejące funkcje w tej samej aplikacji funkcji, użyj ustawienia dla wyzwalaczy usługi Azure Storage lub powiązania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -686,3 +656,5 @@ Więcej informacji zawierają następujące zasoby:
 
 * [Application Insights](/azure/application-insights/)
 * [Platforma ASP.NET Core rejestrowania](/aspnet/core/fundamentals/logging/)
+
+[host.json]: functions-host-json.md

@@ -4,36 +4,33 @@ description: Opisuje funkcje do używania szablonu usługi Azure Resource Manage
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2018
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9065c6bc71a153ae94ddc20d5b41a152094fc111
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267873"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470155"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
 
 Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 
 * [i](#and)
-* [wartość logiczna](#bool)
+* [bool](#bool)
 * [if](#if)
-* [not](#not)
+* [nie](#not)
 * [lub](#or)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="and"></a>i
+
 `and(arg1, arg2, ...)`
 
 Sprawdza, czy wszystkie wartości parametrów są spełnione.
@@ -84,19 +81,8 @@ Dane wyjściowe z poprzedniego przykładu są:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+## <a name="bool"></a>bool
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-## <a name="bool"></a>wartość logiczna
 `bool(arg1)`
 
 Konwertuje parametr na wartość logiczną.
@@ -149,19 +135,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | trueInt | Bool | True |
 | falseInt | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
-
 ## <a name="if"></a>if
+
 `if(condition, trueValue, falseValue)`
 
 Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
@@ -170,7 +145,7 @@ Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| warunek |Yes |wartość logiczna |Wartość, aby sprawdzić, czy jest spełniony. |
+| warunek |Yes |wartość logiczna |Wartość, aby sprawdzić, czy jest wartość PRAWDA lub FAŁSZ. |
 | trueValue |Yes | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
 | falseValue |Yes | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest fałszywy. |
 
@@ -180,49 +155,7 @@ Zwraca drugi parametr, gdy pierwszy parametr jest **True**; w przeciwnym razie z
 
 ### <a name="remarks"></a>Uwagi
 
-Ta funkcja umożliwia warunkowo ustawić właściwości zasobu. Poniższy przykład jest pełny szablon, ale jej przedstawia istotne części warunkowo ustawienia zestawu dostępności.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        ...
-        "availabilitySet": {
-            "type": "string",
-            "allowedValues": [
-                "yes",
-                "no"
-            ]
-        }
-    },
-    "variables": {
-        ...
-        "availabilitySetName": "availabilitySet1",
-        "availabilitySet": {
-            "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
-        }
-    },
-    "resources": [
-        {
-            "condition": "[equals(parameters('availabilitySet'),'yes')]",
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[variables('availabilitySetName')]",
-            ...
-        },
-        {
-            "apiVersion": "2016-03-30",
-            "type": "Microsoft.Compute/virtualMachines",
-            "properties": {
-                "availabilitySet": "[if(equals(parameters('availabilitySet'),'yes'), variables('availabilitySet'), json('null'))]",
-                ...
-            }
-        },
-        ...
-    ],
-    ...
-}
-```
+Gdy warunek jest **True**, jest oceniana wartość true. Gdy warunek jest **False**, jest oceniana wartość false. Za pomocą **Jeśli** funkcji może zawierać wyrażeń, które obowiązują tylko warunkowo. Na przykład możesz odwoływać się z zasobem, który istnieje w ramach jednego warunku, ale nie w ramach innych warunków. W poniższej sekcji przedstawiono przykładowy warunkowo obliczenia wyrażenia.
 
 ### <a name="examples"></a>Przykłady
 
@@ -259,19 +192,56 @@ Dane wyjściowe z poprzedniego przykładu są:
 | noOutput | String | nie |
 | objectOutput | Obiekt | { "test": "value1" } |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Następujące [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) pokazuje, jak użyć tej funkcji za pomocą wyrażeń, które obowiązują tylko warunkowo.
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "logAnalytics": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "resources": [
+        {
+            "condition": "[greaterOrEquals(parameters('logAnalytics'), '0')]",
+            "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2017-03-30",
+            "properties": {
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "MicrosoftMonitoringAgent",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "workspaceId": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
+                },
+                "protectedSettings": {
+                    "workspaceKey": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "mgmtStatus": {
+            "type": "string",
+            "value": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), 'Enabled monitoring for VM!', 'Nothing to enable')]"
+        }
+    }
+}
 ```
 
 ## <a name="not"></a>nie
+
 `not(arg1)`
 
 Konwertuje wartość przeciwną wartość logiczną.
@@ -320,18 +290,6 @@ Dane wyjściowe z poprzedniego przykładu są:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [jest równa](resource-group-template-functions-comparison.md#equals).
 
 ```json
@@ -354,19 +312,8 @@ Dane wyjściowe z poprzedniego przykładu są:
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
 ## <a name="or"></a>lub
+
 `or(arg1, arg2, ...)`
 
 Sprawdza, czy wszystkie wartości parametru to true.
@@ -417,19 +364,8 @@ Dane wyjściowe z poprzedniego przykładu są:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 * Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).

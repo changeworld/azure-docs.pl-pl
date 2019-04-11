@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233360"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469611"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics
 U-SQL jest językiem, który łączy deklaratywne SQL za pomocą imperatywne C# umożliwia przetwarzanie danych w dowolnej skali. Za pomocą funkcji skalowalnych, rozproszonych zapytań U-SQL można efektywnie analizować dane w magazynach relacyjnych, takich jak Azure SQL Database. Przy użyciu języka U-SQL może przetwarzać dane bez określonej struktury, stosując schematu przy odczycie oraz Wstawianie niestandardowej logiki i funkcji zdefiniowanych przez użytkownika. Ponadto U-SQL zawiera rozszerzalności, który zapewnia precyzyjną kontrolę nad jak wykonać na dużą skalę. 
@@ -27,7 +27,7 @@ U-SQL jest językiem, który łączy deklaratywne SQL za pomocą imperatywne C# 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem przykłady języka U-SQL, w tym dokumencie, przeczytaj i wykonaj [samouczek: tworzenie-skryptów U SQL przy użyciu narzędzi Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Ten samouczek wyjaśnia mechanika przy użyciu języka U-SQL przy użyciu narzędzi Azure Data Lake Tools for Visual Studio.
+Przed wykonaniem przykłady języka U-SQL, w tym dokumencie, przeczytaj i wykonaj [samouczka: Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Ten samouczek wyjaśnia mechanika przy użyciu języka U-SQL przy użyciu narzędzi Azure Data Lake Tools for Visual Studio.
 
 ## <a name="your-first-u-sql-script"></a>Pierwszy skrypt U-SQL
 
@@ -55,7 +55,7 @@ Ten skrypt nie ma żadnych kroków przekształcania. Odczytuje ze źródłowego 
 Zwróć uwagę, znaku zapytania obok danych, wpisz `Duration` pola. Oznacza to, że `Duration` pole może mieć wartości null.
 
 ### <a name="key-concepts"></a>Kluczowe pojęcia
-* **Zestaw wierszy zmienne**: każde wyrażenie zapytania, który produkuje zestawu wierszy, które można przypisać do zmiennej. U-SQL jest zgodny ze zmiennej wzorcem nazewnictwa języka T-SQL (`@searchlog`, na przykład) w skrypcie.
+* **Zestaw wierszy zmienne**: Każde wyrażenie zapytania, który produkuje zestawu wierszy można przypisać do zmiennej. U-SQL jest zgodny ze zmiennej wzorcem nazewnictwa języka T-SQL (`@searchlog`, na przykład) w skrypcie.
 * **WYODRĘBNIĆ** — słowo kluczowe odczytuje dane z pliku i definiuje schematu przy odczycie. `Extractors.Tsv` to wbudowane ekstraktor U-SQL dla plików kartę wartości rozdzielanych przecinkami. Można tworzyć niestandardowe ekstraktory.
 * **Dane wyjściowe** zapisuje dane z zestawu wierszy w pliku. `Outputters.Csv()` to wbudowane outputter U-SQL, aby utworzyć plik przecinkami wartości rozdzielanych przecinkami. Można tworzyć niestandardowe outputters.
 
@@ -117,7 +117,7 @@ Użyj **wybierz** do przekształcania zestawów wierszy:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-Używa klauzuli WHERE [wyrażenie języka C# logiczne](https://msdn.microsoft.com/library/6a71f45d.aspx). Język wyrażeń języka C# można użyć w celu własnych wyrażeń i funkcji. Możesz nawet wykonywać bardziej złożone filtrowanie, łącząc je z spójniki logiczne (i) i disjunctions (ORs).
+Używa klauzuli WHERE [wyrażenie języka C# logiczne](/dotnet/csharp/language-reference/operators/index). Język wyrażeń języka C# można użyć w celu własnych wyrażeń i funkcji. Możesz nawet wykonywać bardziej złożone filtrowanie, łącząc je z spójniki logiczne (i) i disjunctions (ORs).
 
 Poniższy skrypt używa metody DateTime.Parse() i połączeniu.
 
@@ -222,7 +222,7 @@ Klauzula o języku U-SQL może służyć do dane wyjściowe zostaną ograniczone
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-W przypadku scenariuszy zaawansowanych agregacji, zobacz dokumentację referencyjną języka U-SQL [agregacji, analitycznych i odwoływać się do funkcji](https://msdn.microsoft.com/library/azure/mt621335.aspx)
+W przypadku scenariuszy zaawansowanych agregacji, zobacz dokumentację referencyjną języka U-SQL [agregacji, analitycznych i odwoływać się do funkcji](/u-sql/built-in-functions)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
