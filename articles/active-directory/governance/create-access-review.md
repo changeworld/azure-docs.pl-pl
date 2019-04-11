@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576206"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471634"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
@@ -35,13 +35,13 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 ## <a name="create-one-or-more-access-reviews"></a>Utwórz co najmniej jeden przeglądów dostępu
 
-1. Zaloguj się do witryny Azure portal i Otwórz [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Zaloguj się w witrynie Azure portal i Otwórz [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. Kliknij przycisk **formantów**.
+1. W menu po lewej stronie kliknij **przeglądów dostępu**.
 
 1. Kliknij przycisk **nowy przegląd dostępu** Aby utworzyć nowy przegląd dostępu.
 
-    ![Przegląd dostępu — formanty](./media/create-access-review/controls.png)
+    ![Przegląd dostępu — formanty](./media/create-access-review/access-reviews.png)
 
 1. Nazwa przeglądu dostępu. Opcjonalnie można podać przeglądu opis. Nazwa i opis są wyświetlane dla recenzentów.
 
@@ -51,15 +51,15 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
     ![Tworzenie przeglądu dostępu — rozpoczęcia i zakończenia](./media/create-access-review/start-end-dates.png)
 
-1. Aby cyklu przeglądu dostępu, należy zmienić **częstotliwość** z **jeden raz** do **tygodniowy**, **miesięczne**,  **Co kwartał** lub **rocznie**i użyj **czas trwania** suwaka lub pola tekstowego, aby określić, ile dni będą każdej recenzji serii cyklicznych, Otwórz na dane wejściowe recenzentów. Na przykład maksymalny czas trwania, którego można ustawić comiesięcznego przeglądu jest 27 dni, należy unikać nakładania się recenzji.
+1. Aby cyklu przeglądu dostępu, należy zmienić **częstotliwość** z **jeden raz** do **tygodniowy**, **miesięczne**,  **Co kwartał** lub **rocznie**. Użyj **czas trwania** suwaka lub pola tekstowego, aby określić, ile dni będą każdej recenzji serii cyklicznych, Otwórz na dane wejściowe recenzentów. Na przykład maksymalny czas trwania, którego można ustawić comiesięcznego przeglądu jest 27 dni, należy unikać nakładania się recenzji.
 
 1. Użyj **zakończenia** ustawienie, aby określić sposób kończyć się cyklicznym dostępu Przejrzyj serii. Seria mogą kończyć się na trzy sposoby: działa w sposób ciągły można uruchomić przeglądy przez czas nieokreślony, aż do określonej daty lub po zakończeniu zdefiniowanej liczby wystąpień. Inny administrator użytkownika lub inny administrator globalny może zatrzymać serii po utworzeniu, zmieniając datę w **ustawienia**, dzięki czemu kończy się ona w tym dniu.
 
-1. W **użytkowników** sekcji, określ dotyczą użytkowników, którzy Przegląd dostępu. Przeglądy dostępu może być członkami grupy lub osób, które zostały przypisane do aplikacji. Możesz dodatkowo ograniczyć dostęp tylko do przeglądu i przejrzyj użytkowników-gości kto są elementami członkowskimi (lub przypisane do aplikacji), zamiast przeglądanie wszystkich użytkowników, którzy są członkami lub mających dostęp do aplikacji.
+1. W **użytkowników** sekcji, określ użytkowników, których dotyczy przegląd dostępu. Przeglądy dostępu może być członkami grupy lub osób, które zostały przypisane do aplikacji. Możesz dodatkowo ograniczyć dostęp tylko do przeglądu i przejrzyj użytkowników-gości kto są elementami członkowskimi (lub przypisane do aplikacji), zamiast przeglądanie wszystkich użytkowników, którzy są członkami lub mających dostęp do aplikacji.
 
     ![Tworzenie przeglądu dostępu — użytkownicy](./media/create-access-review/users.png)
 
-1. W **grup** wybierz co najmniej jednej grupy, które chcesz przejrzeć członkostwo.
+1. W **grupy** wybierz co najmniej jednej grupy, które chcesz przejrzeć członkostwo.
 
     > [!NOTE]
     > Wybranie więcej niż jednej grupy spowoduje utworzenie wielu przeglądów dostępu. Na przykład wybranie pięć grup utworzy pięciu przeglądach uprawnień dostępu.
@@ -112,7 +112,9 @@ W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla
 
 ## <a name="start-the-access-review"></a>Rozpocznij Przegląd dostępu
 
-Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**.
+Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**. Przegląd dostępu będą wyświetlane na liście ze wskaźnikiem jego stan.
+
+![Lista przeglądów dostępu](./media/create-access-review/access-reviews-list.png)
 
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). W przypadku zapoznania się z nimi dla gości, aby dokonać przeglądu własnego dostępu, wyświetlić je instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md).
 
@@ -120,13 +122,15 @@ W przypadku niektórych recenzentów gości, gości są powiadamiane za pośredn
 
 ## <a name="manage-the-access-review"></a>Zarządzanie przeglądu dostępu
 
-Recenzenci wykonać ich recenzje na pulpicie nawigacyjnym usługi Azure AD w postęp można śledzić **przeglądów dostępu** sekcji. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](complete-access-review.md).
+Recenzenci Wypełnij przeglądów ich na postęp można śledzić **Przegląd** strony Przegląd dostępu. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](complete-access-review.md).
+
+![Przeglądy dostępu w toku](./media/create-access-review/overview-progress.png)
 
 Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md) aby zobaczyć i zastosować wyniki.  
 
-Aby zarządzać serię przeglądów dostępu, przejdź do przeglądu dostępu z **formantów**, będzie znajdowanie kolejnych wystąpień w przeglądach zaplanowane i Edytuj datę zakończenia lub Dodawanie/usuwanie recenzentów w związku z tym. 
+Aby zarządzać szereg dostępu recenzje, przejdź do przeglądu dostępu i będą Znajdź nadchodzące zdarzenia w przeglądach zaplanowane i Edytuj datę zakończenia lub Dodawanie/usuwanie recenzentów w związku z tym.
 
-Na podstawie dokonanego wyboru w ustawienia działań po zakończeniu, automatycznie stosowanego będzie wykonywany po Data zakończenia przeglądu lub jeśli ręcznie zatrzymaj przeglądu. Stan przeglądu ulegnie zmianie z ukończono za pośrednictwem pośrednich stanów, takich jak stosowanie a na koniec stan zastosowano. Należy się spodziewać się zablokowani użytkownicy ewentualnej usuwany z przypisania grupy członkostwa lub aplikacji w ciągu kilku minut.
+Na podstawie dokonanego wyboru w **ustawienia działań po zakończeniu**, automatycznie Zastosuj będzie wykonywany po Data zakończenia przeglądu lub jeśli ręcznie zatrzymaj przeglądu. Stan przeglądu ulegnie zmianie z **Ukończono** za pośrednictwem pośrednich stanów, takie jak **stosowanie** a na koniec do stanu **zastosowano**. Należy się spodziewać się zablokowani użytkownicy ewentualnej usuwany z przypisania grupy członkostwa lub aplikacji w ciągu kilku minut.
 
 ## <a name="create-reviews-via-apis"></a>Utwórz przeglądy za pośrednictwem interfejsów API
 

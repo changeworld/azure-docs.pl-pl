@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855677"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471532"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -67,9 +67,15 @@ Prześlij zgłoszenie do pomocy technicznej w portalu. Pamiętaj uwzględniać i
 Aby uzyskać Profiler zapewnić prawidłowe działanie:
 * Twój plan usługi sieci web app service musi być w warstwie podstawowa lub wyższej.
 * Twoja aplikacja sieci web musi mieć włączone w usłudze Application Insights.
-* Twoja aplikacja internetowa musi odebrać **APPINSIGHTS_INSTRUMENTATIONKEY** ustawienia aplikacji skonfigurowano ten sam klucz instrumentacji, który jest używany przez zestaw SDK usługi Application Insights.
-* Twoja aplikacja internetowa musi odebrać **APPINSIGHTS_PROFILERFEATURE_VERSION** ustawienia aplikacji zdefiniowane i ustawić 1.0.0.
-* Twoja aplikacja internetowa musi odebrać **DiagnosticServices_EXTENSION_VERSION** ustawienie aplikacji zdefiniowane i wartość równa OK. 3.
+* Twoja aplikacja sieci web musi mieć następujące ustawienia aplikacji:
+
+    |Ustawienia aplikacji    | Wartość    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz instrumentacji dla Ciebie zasobem usługi Application Insights    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
 * **ApplicationInsightsProfiler3** zadania webjob musi być uruchomiona. Aby sprawdzić zadania webjob:
    1. Przejdź do [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
    1. W **narzędzia** menu, wybierz opcję **pulpitu nawigacyjnego zadań Webjob**.  
@@ -93,12 +99,13 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 1. Ustaw **.NET Framework w wersji** do **wersje 4.6**.
 
 1. Ustaw **zawsze włączone** do **na**.
+1. Utwórz te ustawienia aplikacji:
 
-1. Dodaj **APPINSIGHTS_INSTRUMENTATIONKEY** aplikacji ustawienia, a następnie ustaw wartość na ten sam klucz instrumentacji, który jest używany przez zestaw SDK.
-
-1. Dodaj **APPINSIGHTS_PROFILERFEATURE_VERSION** ustawienia aplikacji, a następnie ustaw wartość 1.0.0.
-
-1. Dodaj **DiagnosticServices_EXTENSION_VERSION** ustawienia aplikacji, a następnie ustaw wartość na OK. 3.
+    |Ustawienia aplikacji    | Wartość    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz instrumentacji dla Ciebie zasobem usługi Application Insights    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Zbyt wiele aktywnych sesji profilowania
 
@@ -124,7 +131,7 @@ Profiler jest uruchamiany jako ciągłe zadanie webjob w aplikacji sieci web. Mo
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Rozwiązywanie problemów z Profiler i Diagnostyka Azure
 
-  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego. Jeśli używasz programu Visual Studio na starszą wersję zestawu SDK aplikacji usługi Insights może wystąpić błąd przekierowanie powiązania w czasie wykonywania. Jest to spowodowane "newVersion" w pliku web.config dla Microsoft.ApplicationInsights powinna być równa "2.7.2.0" po zmiany na starszą wersję zestawu SDK sztucznej Inteligencji, ale nie zostaje zaktualizowana automatycznie.
+>**Rozwiązane usterki w programie profiler, który jest dostarczany w WAD dla usług w chmurze.** Najnowszą wersję WAD (1.12.2.0) dla usług Cloud Services współpracuje z wszystkich najnowszych wersji zestawu SDK aplikacji usługi Insights. Hosty usług w chmurze zostanie automatycznie uaktualniona WAD, ale nie jest bezpośrednim. Aby wymusić uaktualnienia, możesz ponownie wdrożyć usługę lub ponowny rozruch węzła.
 
 Aby sprawdzić, czy Profiler jest poprawnie skonfigurowany przez diagnostykę platformy Azure, wykonaj następujące czynności: 
 1. Najpierw sprawdź, czy zawartość konfiguracji diagnostyki platformy Azure, które zostały wdrożone są, czego oczekiwać. 

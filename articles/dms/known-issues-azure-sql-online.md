@@ -10,17 +10,20 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091498"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471243"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Znane problemy dotyczące/migracja ograniczeń dotyczących migracji online do usługi Azure SQL DB
 
 Poniżej opisano znane problemy i ograniczenia związane z usługą online migracje z programu SQL Server do usługi Azure SQL Database.
+
+> [!IMPORTANT]
+> Za pomocą migracji online programu SQL Server do usługi Azure SQL Database migracja typów danych SQL_variant nie jest obsługiwana.
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migracja tabele danych czasowych nie jest obsługiwane
 
@@ -32,7 +35,7 @@ Jeśli źródłowej bazy danych składa się z co najmniej jedna tabela danych c
  
  ![Przykład błędów w tabeli danych czasowych](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Obejście problemu**
+**Obejście**
 
 1. Znajdź tabele danych czasowych w schemacie źródła przy użyciu poniższe zapytanie.
      ``` 
@@ -54,7 +57,7 @@ Może zostać wyświetlony sugerowanie "ntext jest niezgodny z hierarchyid" podc
      
 ![przykład błędy hierarchyid](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Obejście problemu**
+**Obejście**
 
 1. Znajdź tabel użytkownika, które zawierają kolumny z typem danych identyfikator hierarchii przy użyciu poniższe zapytanie.
 
@@ -62,17 +65,20 @@ Może zostać wyświetlony sugerowanie "ntext jest niezgodny z hierarchyid" podc
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
-   1. Wyklucz te tabele z **Konfiguruj ustawienia migracji** bloku, w którym określisz tabel dla migracji.
+2. Wyklucz te tabele z **Konfiguruj ustawienia migracji** bloku, w którym określisz tabel dla migracji.
 
-   1. Należy ponownie uruchomić działanie migracji.
+3. Należy ponownie uruchomić działanie migracji.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Błędy migracji z różnych naruszenia integralności za pomocą wyzwalaczy active w schemacie podczas "pełne ładowanie danych" lub "Przyrostowa synchronizacja danych"
 
-**Obejście problemu**
+**Obejście**
+
 1. Znajdź wyzwalacze, które są aktualnie aktywne w źródłowej bazy danych przy użyciu poniższe zapytanie:
+
      ```
      select * from sys.triggers where is_disabled =0
      ```
+
 2. Wyłącz Wyzwalacze w źródłowej bazy danych przy użyciu z krokami opisanymi w artykule [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
 
 3. Uruchom ponownie działanie migracji.
@@ -87,7 +93,7 @@ Jeśli długość kolumny duży obiekt (LOB) jest większy niż 32 KB, dane mog�
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Obejście problemu**
+**Obejście**
 
 Jeśli masz kolumną LOB, który jest większy niż 32 KB, skontaktuj się z zespołu inżynieryjnego w [poproś migracje baz danych Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
@@ -97,19 +103,19 @@ Jeśli masz kolumną LOB, który jest większy niż 32 KB, skontaktuj się z zes
 
 Usługa DMS nie migrować wartość sygnatury czasowej źródła; Zamiast tego usługa DMS generuje nową wartość sygnatury czasowej w tabeli docelowej.
 
-**Obejście problemu**
+**Obejście**
 
 Usługa DMS do migracji wartości dokładny znacznik czasu: przechowywane w tabeli źródłowej, należy skontaktować się z zespołu inżynieryjnego w [poproś migracje baz danych Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
-### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Błędy migracji danych nie są oferowane dodatkowe informacje w bloku szczegółowy stan bazy danych.
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Błędy migracji danych, nie zawierają dodatkowe szczegóły, w bloku szczegółowy stan bazy danych.
 
 **Objaw**
 
-Jeśli wystąpią błędy migracji w widoku stanu Szczegóły bazy danych, wybierając **błędy migracji danych** łącze na Wstążce najważniejsze nie mogą zawierać dodatkowe szczegóły specyficzne dla błędów migracji.
+Gdy trafisz na błędy migracji w widoku stanu Szczegóły bazy danych, wybierając **błędy migracji danych** łącze na Wstążce najważniejsze nie mogą zawierać dodatkowe szczegóły specyficzne dla błędów migracji.
 
 ![błędy migracji danych nie przykład szczegółów](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Obejście problemu**
+**Obejście**
 
 Aby przejść do szczegółów błąd, wykonaj poniższe kroki.
 

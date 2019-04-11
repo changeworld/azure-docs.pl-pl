@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510327"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471668"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Usługa Application Insights dla usługi Azure Functions obsługiwane funkcje
 
@@ -27,12 +27,12 @@ Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.co
 
 | Azure Functions                       | Wersja 1                | W wersji 2 (Konferencja Ignite 2018 r.)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Usługa Application Insights SDK platformy .NET**   | **2.5.0**       | **2.7.2**         |
+| **Usługa Application Insights SDK platformy .NET**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatyczne zbieranie**        |                 |                   |               
 | &bull; Żądania                     | Yes             | Yes               | 
 | &bull; Wyjątki                   | Yes             | Yes               | 
-| &bull; Liczniki wydajności         | Yes             |                   |
+| &bull; Liczniki wydajności         | Yes             | Yes               |
 | &bull; Zależności                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
@@ -65,3 +65,30 @@ Filtry niestandardowe określonych kryteriów są wysyłane do składnika metryk
 ## <a name="sampling"></a>Próbkowanie
 
 Usługa Azure Functions umożliwia pobieranie próbek domyślnie w swojej konfiguracji. Aby uzyskać więcej informacji, zobacz [skonfigurować próbkowania](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+
+Projekt przyjmuje zależności zestawu SDK Application Insights w celu ręcznego telemetrii śledzenia, może wystąpią nietypowe zachowanie konfiguracji pobierania próbek różni się od funkcje konfiguracji pobierania próbek. 
+
+Zalecamy używanie tej samej konfiguracji jako funkcje. Za pomocą **funkcje w wersji 2**, uzyskasz tę samą konfigurację przy użyciu iniekcji zależności w konstruktora:
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

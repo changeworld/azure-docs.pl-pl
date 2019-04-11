@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251006"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471413"
 ---
 # <a name="export-a-u-sql-database"></a>Eksportowanie bazy danych U-SQL
 
@@ -37,7 +37,7 @@ Wszystkie konta usługi Data Lake Analytics, do których masz uprawnienia są wy
 
      Jeśli **wyeksportować** nie jest dostępna opcja menu, musisz [narzędzie aktualizacji do wersji z najnowszą wersję apletu](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurowanie obiektów, które mają zostać wyeksportowane
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Skonfiguruj obiekty, które mają zostać wyeksportowane
 
 Jeśli potrzebujesz tylko niewielką część dużych baz danych, można skonfigurować podzbiór obiektów, które mają zostać wyeksportowane w Kreatorze eksportu. 
 
@@ -45,7 +45,7 @@ Akcja eksportu jest wykonywana przez uruchomienie zadania U-SQL. W związku z ty
 
 ![Kreator eksportowania bazy danych — wybierz opcję Eksportuj obiekty](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Sprawdź listy obiektów i innych konfiguracji
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Krok 3: Sprawdź listę obiektów i innych konfiguracji
 
 W tym kroku możesz sprawdzić wybranych obiektów w **lista obiektów eksportu** pole. Jeśli występują błędy, wybierz **Wstecz** przejść wstecz i poprawnie Skonfiguruj obiekty, które chcesz wyeksportować.
 
@@ -61,7 +61,7 @@ Można także skonfigurować inne ustawienia dla elementu docelowego eksportu. W
 
 ![Kreator eksportowania bazy danych — Eksportuj listę obiektów i innych konfiguracji](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>Krok 4: Sprawdzenie wyników eksportu
+### <a name="step-4-check-the-export-results"></a>Krok 4: Sprawdzanie wyników eksportu
 
 Po zakończeniu operacji eksportowania, można wyświetlić wyeksportowane wyniki w oknie dziennika w kreatorze. Poniższy przykład pokazuje, jak znaleźć wyeksportowanego U-SQL skrypt i zasobami baz danych, m.in. zestawy, dodatkowe pliki i przykładowe dane:
 
@@ -84,7 +84,7 @@ Obecnie Jeśli wybierzesz **schemat i dane** opcja w kroku 3, to narzędzie uruc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się więcej o języku U-SQL w bazach danych](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
-* [Testowanie i debugowanie zadań U-SQL przy użyciu uruchamiania lokalnego i zestawu SDK U-SQL usługi Azure Data Lake](data-lake-analytics-data-lake-tools-local-run.md)
+* [Dowiedz się więcej o języku U-SQL w bazach danych](/u-sql/data-definition-language-ddl-statements) 
+* [Testowanie i debugowanie zadań U-SQL przy użyciu uruchamiania lokalnego i zestawu SDK usługi Azure Data Lake U-SQL](data-lake-analytics-data-lake-tools-local-run.md)
 
 

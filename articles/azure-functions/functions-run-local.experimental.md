@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: dcd6d907fec3d7f2cc0c8d5c06fdec28125154c1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009550"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471286"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -478,6 +478,15 @@ Dostępne są następujące opcje wdrażania niestandardowego kontenera:
 | **`--min`**  | Opcjonalnie Ustawia minimalną liczbę wystąpień aplikacji funkcji do wdrożenia. |
 | **`--config`** | Ustawia plik konfiguracji wdrożenia opcjonalne. |
 
+## <a name="monitoring-functions"></a>Funkcje monitorowania
+
+Jest to zalecany sposób monitorowania wykonywania funkcji dzięki integracji z usługą Azure Application Insights. Po utworzeniu aplikacji funkcji w witrynie Azure portal, ta Integracja jest wykonywane domyślnie. Jednak po utworzeniu aplikacji funkcji przy użyciu wiersza polecenia platformy Azure, integracji w Twojej aplikacji funkcji na platformie Azure nie jest wykonywane.
+
+Aby włączyć usługę Application Insights dla aplikacji funkcji:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+Aby dowiedzieć się więcej, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 ## <a name="next-steps"></a>Kolejne kroki
 
 Podstawowe narzędzia usługi Azure Functions jest [oprogramowanie typu open source oraz hostowane w serwisie GitHub](https://github.com/azure/azure-functions-cli).  

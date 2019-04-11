@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8436bb1fc84d5a944b35cd7b2c9667d2148c0af3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270472"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471464"
 ---
 # <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
@@ -37,7 +37,7 @@ Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki
 
 [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku. 
 
-[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), a następnie [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Ponieważ będziesz używać klucza i magazynu nazwy konta dla połączenia, upewnij się, że poziom dostępu publicznego do kontenera jest ustawiony na "Kontener (anonimowy dostęp do odczytu dla kontenera.)".
+[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) służy do przechowywania przykładowych danych.
 
 [Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) służy do wysyłania żądań do usługi Azure Search.
 
@@ -57,13 +57,19 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 ## <a name="prepare-sample-data"></a>Przygotowywanie danych przykładowych
 
-1. Znajdź przykładowe dane, które zostały pobrane z systemem.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, kliknij przycisk **obiektów blob**, a następnie kliknij przycisk **+ kontener**.
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu platformy Azure i kontener obiektów Blob, a kliknij **przekazywanie**.
+1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Ponieważ będziesz używać klucza i magazynu nazwy konta dla połączenia, upewnij się, że poziom dostępu publicznego do kontenera jest ustawiony na "Kontener (anonimowy dostęp do odczytu dla kontenera.)".
 
-1. Kliknij pozycję **Zaawansowane**, wprowadź wyrażenie „clinical-trials-json”, a następnie przekaż wszystkie pobrane pliki w formacie JSON.
+   ![Ustaw poziom dostępu publicznego](media/search-semi-structured-data/container-public-access-level.png "Ustaw poziom dostępu publicznego")
 
-  ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/clinicalupload.png)
+1. Po utworzeniu kontenera otwórz go i wybierz **przekazywanie** na pasku poleceń.
+
+   ![Przekaż na pasku poleceń](media/search-semi-structured-data/upload-command-bar.png "przekazywania na pasku poleceń")
+
+1. Przejdź do folderu zawierającego pliki przykładowe. Zaznacz wszystkie z nich, a następnie kliknij przycisk **przekazywanie**.
+
+   ![Przekazywanie plików](media/search-semi-structured-data/clinicalupload.png "przekazywanie plików")
 
 Po zakończeniu przekazywania pliki powinny pojawić się w podfolderze wewnątrz kontenera danych.
 
@@ -83,20 +89,22 @@ Wykonaj trzy następujące wywołania interfejsu API z poziomu klienta REST.
 
 ## <a name="create-a-data-source"></a>Tworzenie źródła danych
 
-Źródło danych jest obiektem usługi Azure Search, który określa, jakie dane mają być indeksowane.
+[Danych źródłowych interfejsu API tworzenia](https://docs.microsoft.com/rest/api/searchservice/create-data-source)tworzy obiekt usługi Azure Search, który określa, jakie dane mają być indeksowane.
 
-Punkt końcowy tego wywołania to `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania. W przypadku tego wywołania potrzebna jest nazwa konta magazynu oraz klucz konta magazynu. Klucz konta magazynu można znaleźć w witrynie Azure Portal w obszarze **Klucze dostępu** konta magazynu. Lokalizację pokazano na poniższej ilustracji:
+Punkt końcowy tego wywołania to `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania. 
+
+Dla tego wywołania treść żądania musi zawierać nazwę konta magazynu, klucz konta magazynu i nazwa kontenera obiektów blob. Klucz konta magazynu można znaleźć w witrynie Azure Portal w obszarze **Klucze dostępu** konta magazynu. Lokalizację pokazano na poniższej ilustracji:
 
   ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/storagekeys.png)
 
-Przed wykonaniem wywołania należy zmienić nazwy elementów `[storage account name]` i `[storage account key]` w treści wywołania.
+Upewnij się zastąpić `[storage account name]`, `[storage account key]`, i `[blob container name]` w treści wywołania przed wykonaniem wywołania.
 
 ```json
 {
     "name" : "clinical-trials-json",
     "type" : "azureblob",
     "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
-    "container" : { "name" : "data", "query" : "clinical-trials-json" }
+    "container" : { "name" : "[blob container name]"}
 }
 ```
 
@@ -114,8 +122,8 @@ Odpowiedź powinna wyglądać następująco:
         "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
     },
     "container": {
-        "name": "data",
-        "query": "clinical-trials-json"
+        "name": "[mycontainernamehere]",
+        "query": null
     },
     "dataChangeDetectionPolicy": null,
     "dataDeletionDetectionPolicy": null
@@ -124,7 +132,7 @@ Odpowiedź powinna wyglądać następująco:
 
 ## <a name="create-an-index"></a>Tworzenie indeksu
     
-Drugie wywołanie interfejsu API powoduje utworzenie indeksu usługi Azure Search. Indeks określa wszystkie parametry i ich atrybuty.
+Drugie wywołanie ma [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-data-source), tworzenie indeksu usługi Azure Search, który przechowuje wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
 
 Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 
@@ -214,7 +222,7 @@ Odpowiedź powinna wyglądać następująco:
 
 ## <a name="create-and-run-an-indexer"></a>Tworzenie i uruchamianie indeksatora
 
-Indeksator łączy źródło danych, importuje dane do docelowym indeksem wyszukiwania i opcjonalnie zapewnia harmonogram w celu zautomatyzowania odświeżania danych.
+Indeksator łączy źródło danych, importuje dane do docelowym indeksem wyszukiwania i opcjonalnie zapewnia harmonogram w celu zautomatyzowania odświeżania danych. Interfejs API REST jest [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 
@@ -257,7 +265,11 @@ Odpowiedź powinna wyglądać następująco:
 
 ## <a name="search-your-json-files"></a>Przeszukiwanie plików JSON
 
-Teraz można wykonywać zapytania względem indeksu. W tym celu należy użyć [ **Eksploratora wyszukiwania** ](search-explorer.md) w portalu.
+Możesz rozpocząć wyszukiwanie zaraz po załadowaniu pierwszy dokument. W tym celu należy użyć [ **Eksploratora wyszukiwania** ](search-explorer.md) w portalu.
+
+W witrynie Azure portal Otwórz usługę wyszukiwania **Przegląd** strony, Znajdź indeks został utworzony w **indeksy** listy.
+
+Pamiętaj wybrać indeks, który został utworzony. Wersja interfejsu API może być w wersji zapoznawczej lub ogólnie dostępnej wersji. Jedynym wymaganiem (wersja zapoznawcza) był dla indeksowania tablic JSON.
 
   ![Wyszukiwanie bez struktury](media/search-semi-structured-data/indexespane.png)
 
@@ -283,7 +295,7 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
+Algorytmy Sztucznej inteligencji usług Cognitive Services można dołączyć do potoku indeksatora. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Indeksowanie dokumentów w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> [Indeksowanie za pomocą sztucznej Inteligencji](cognitive-search-tutorial-blob.md)

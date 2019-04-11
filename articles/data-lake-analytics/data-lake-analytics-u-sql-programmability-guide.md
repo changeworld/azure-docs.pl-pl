@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835456"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471090"
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Aby uzyskać więcej informacji o używaniu appliers w wyrażeniu wybierz zobacz [U-SQL ZAZNACZYĆ zaznaczając CROSS APPLY a operatora OUTER APPLY](https://msdn.microsoft.com/library/azure/mt621307.aspx).
+Aby uzyskać więcej informacji o używaniu appliers w wyrażeniu wybierz zobacz [U-SQL ZAZNACZYĆ zaznaczając CROSS APPLY a operatora OUTER APPLY](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
 
 Zdefiniowane przez użytkownika, applier definicji klasy bazowej jest następująca:
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Aby uzyskać więcej informacji, zobacz [POŁĄCZYĆ wyrażenia (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx).
+Aby uzyskać więcej informacji, zobacz [POŁĄCZYĆ wyrażenia (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
 
 Aby zdefiniować funkcja łączenia zdefiniowana przez użytkownika, należy utworzyć `ICombiner` współpracować z usługą [`SqlUserDefinedCombiner`] atrybut, który jest opcjonalny w przypadku definicji funkcja łączenia zdefiniowana przez użytkownika.
 
@@ -1877,7 +1877,7 @@ Wejściowe zestawy wierszy są przekazywane jako **po lewej stronie** i **prawo*
 
 Na potrzeby buforowania, można utworzyć listy\<T\> typ struktury pamięci w wyniku LINQ wykonywanie zapytania, w szczególności listy <`IRow`>. Typ anonimowy danych może służyć podczas wyliczania, jak również.
 
-Zobacz [wprowadzenie do zapytań LINQ (C#)](https://msdn.microsoft.com/library/bb397906.aspx) Aby uzyskać więcej informacji o zapytaniach LINQ i [IEnumerable\<T\> interfejsu](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Aby uzyskać więcej informacji na temat interfejsu IEnumerable\<T\> interfejsu.
+Zobacz [wprowadzenie do zapytań LINQ (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) Aby uzyskać więcej informacji o zapytaniach LINQ i [IEnumerable\<T\> interfejsu](/dotnet/api/system.collections.generic.ienumerable-1) Aby uzyskać więcej informacji na temat interfejsu IEnumerable\<T\> interfejsu.
 
 Aby uzyskać wartości rzeczywiste dane z przychodzącego `IRowset`, możemy użyć metody Get() `IRow` interfejsu.
 

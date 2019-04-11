@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092722"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471719"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -143,8 +143,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` za pomocą `span.kind = server`                  |
-| `Dependency`                          | `Span` za pomocą `span.kind = client`                  |
+| `Request`,  `PageView`                 | `Span` z `span.kind = server`                  |
+| `Dependency`                          | `Span` z `span.kind = client`                  |
 | `Id` z `Request` i `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` typu `ChildOf` (zakres nadrzędny)   |
@@ -183,6 +183,11 @@ Zestaw Application Insights SDK, począwszy od wersji 2.4.0-beta1, używa `Diagn
 > Tylko wywołania za pośrednictwem Apache HTTPClient są obsługiwane w przypadku funkcji korelacji. Jeśli używasz środowiska Spring RestTemplate lub Feign zarówno może służyć za pomocą Apache HTTPClient pod maską.
 
 Obecnie usługa propagacji automatyczne kontekstu między komunikatów technologii (takie platformy Kafka, RabbitMQ lub Azure Service Bus) nie jest obsługiwane. Jednak jest możliwe ręcznie kodu takich scenariuszy za pomocą `trackDependency` i `trackRequest` interfejsów API. W tych interfejsów API telemetrii zależności reprezentuje komunikat jest umieszczonych w kolejce przez producenta i żądanie reprezentuje komunikat jest przetwarzany przez odbiorcę. W takim przypadku zarówno `operation_id` i `operation_parentId` powinny być propagowane we właściwościach komunikatu.
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Korelacja telemetrii w asynchronicznej aplikacji Java
+
+W celu skorelowania danych telemetrycznych w asynchronicznej aplikacji Spring Boot, postępuj zgodnie z [to](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) szczegółowego artykułu. Wskazówki dotyczące Instrumentacji firmy Spring [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) także [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html). 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Nazwa roli

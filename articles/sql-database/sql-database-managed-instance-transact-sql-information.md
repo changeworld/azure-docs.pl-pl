@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d84e52878c285ddd66fd799efe8c0f3cd2fc3e31
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 4ceed2fb2b42dc8e09d1a837200652d29838d81b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358439"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471566"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -217,7 +217,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET PARTNER i SET WITNES
 
 - Wiele plików dziennika nie są obsługiwane.
 - Obiekty w pamięci nie są obsługiwane w przypadku warstwy usług ogólnego przeznaczenia.  
-- Ma limitu 280 plików dla każdego wystąpienia ogólnego przeznaczenia obszaru max 280 plików na bazę danych. Zarówno danych i dziennika plików, ogólnie rzecz biorąc przeznaczenie warstwy są wliczane do tego limitu. [Obsługuje pliki 32 767 na bazę danych o warstwie krytyczne dla działania firmy](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Ma limitu 280 plików dla każdego wystąpienia ogólnego przeznaczenia obszaru max 280 plików na bazę danych. Zarówno danych i dziennika plików, ogólnie rzecz biorąc przeznaczenie warstwy są wliczane do tego limitu. [Obsługuje pliki 32 767 na bazę danych o warstwie krytyczne dla działania firmy](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Baza danych nie mogą zawierać grup plików zawierających dane filestream.  Przywracania zakończy się niepowodzeniem, jeśli zawiera .bak `FILESTREAM` danych.  
 - Każdy plik zostanie umieszczony w usłudze Azure Blob storage. We/Wy i przepływność na pliku są zależne od rozmiaru każdego pliku.  
 
@@ -467,7 +467,6 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 - `@@SERVICENAME` Zwraca wartość NULL, ponieważ koncepcję usług, ponieważ nie istnieje dla programu SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` jest obsługiwany. Zwraca wartość NULL, jeśli logowanie do usługi Azure AD nie jest sys.syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nie jest obsługiwane. Zwraca nieprawidłowe dane (znany problem tymczasowy). Zobacz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
-- `GETDATE()` i inne funkcje wbudowane daty/godziny zawsze zwraca czas w strefie czasowej UTC. Zobacz [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Znane problemy i ograniczenia
 
@@ -494,7 +493,7 @@ To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określo
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
 
-Możesz [określenie liczby pozostałych plików](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) korzystanie z widoków systemowych. Jeśli chcesz się połączyć ten limit, próby [pustych, a następnie usuń część mniejsze pliki za pomocą instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub przełącz się do [warstwy krytyczne dla działania firmy, która nie ma tego limitu](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Możesz [określenie liczby pozostałych plików](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) korzystanie z widoków systemowych. Jeśli chcesz się połączyć ten limit, próby [pustych, a następnie usuń część mniejsze pliki za pomocą instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub przełącz się do [warstwy krytyczne dla działania firmy, która nie ma tego limitu](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Przywróć niepoprawnej konfiguracji klucza sygnatury dostępu Współdzielonego podczas bazy danych
 
@@ -567,11 +566,11 @@ Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączony
 
 **Obejście**: Jeśli to możliwe używać kontekstu połączeń w module środowiska CLR.
 
-### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE szyfrowane baz danych nie obsługuje kopii zapasowych zainicjowanej przez użytkownika
+### <a name="tde-encrypted-databases-with-service-managed-key-dont-support-user-initiated-backups"></a>TDE szyfrowane baz danych, za pomocą klucza zarządzanego przez usługę nie obsługuje kopii zapasowych zainicjowanych przez użytkownika
 
-Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany za pomocą przezroczystego szyfrowania danych (TDE). Funkcja TDE wymusza za pomocą wewnętrznej funkcji TDE kluczy szyfrowania kopii zapasowych i nie można wyeksportować klucza, dzięki czemu nie będzie można przywrócić kopię zapasową.
+Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany przy użyciu zarządzanego przez usługę przezroczystego szyfrowania danych (TDE). Zarządzane przez usługę TDE wymusza szyfrowania z kluczem wewnętrznym TDE kopii zapasowych i nie można wyeksportować klucza, dzięki czemu nie będzie można przywrócić kopię zapasową.
 
-**Obejście**: Użyj automatycznych kopii zapasowych i przywracania w momencie lub wyłącz szyfrowanie dla bazy danych.
+**Obejście**: Użyj automatycznych kopii zapasowych i przywracania w momencie lub [zarządzanych przez klienta (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) zamiast tego lub wyłącz szyfrowanie dla bazy danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
