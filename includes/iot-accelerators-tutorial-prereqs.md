@@ -17,12 +17,12 @@ ms.locfileid: "39162355"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
+Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązania do monitorowania zdalnego w subskrypcji platformy Azure.
 
-Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
+Jeśli jeszcze nie wdrożono akceleratora rozwiązania do monitorowania zdalnego, należy ukończyć przewodnik Szybki start [Wdrażanie rozwiązania do monitorowania zdalnego opartego na chmurze](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Przechodzenie do pulpitu nawigacyjnego
 
-Aby wyświetlić pulpit nawigacyjny rozwiązania do zdalnego monitorowania w przeglądarce, najpierw odwiedź stronę [Akceleratory rozwiązań usługi Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Może być konieczne zalogowanie się przy użyciu poświadczeń subskrypcji platformy Azure.
+Aby wyświetlić pulpit nawigacyjny rozwiązania do monitorowania zdalnego w przeglądarce, najpierw odwiedź stronę [Akceleratory rozwiązania usługi Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Może być konieczne zalogowanie się przy użyciu poświadczeń subskrypcji platformy Azure.
 
-Następnie kliknij pozycję **Uruchom** na kafelku akceleratora rozwiązania do zdalnego monitorowania wdrożonego w przewodniku [Szybki start](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
+Następnie kliknij pozycję **Uruchom** na kafelku akceleratora rozwiązania do monitorowania zdalnego wdrożonego w przewodniku [Szybki start](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).

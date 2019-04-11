@@ -1,5 +1,5 @@
 ---
-title: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania IoT — Azure | Microsoft Docs
+title: Testowanie opartego na chmurze rozwiązania do monitorowania zdalnego IoT — Azure | Microsoft Docs
 description: W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań usługi Azure IoT do zdalnego monitorowania oraz zalogować się do pulpitu nawigacyjnego rozwiązania i korzystać z niego.
 author: dominicbetts
 manager: timlt
@@ -16,11 +16,11 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 04/01/2019
 ms.locfileid: "58792505"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: Testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: Testowanie opartego na chmurze rozwiązania do monitorowania zdalnego
 
-W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań do zdalnego monitorowania usługi Azure IoT. W tym rozwiązaniu opartym na chmurze użyjesz strony **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
+W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązania do monitorowania zdalnego usługi Azure IoT. W tym rozwiązaniu opartym na chmurze użyjesz strony **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
 
-W początkowym wdrożeniu akcelerator rozwiązań jest skonfigurowany dla firmy o nazwie Contoso. Jako operator w firmie Contoso zarządzasz różnego typu urządzeniami, takimi jak chłodziarki, wdrożonymi w różnych środowiskach fizycznych. Chłodziarka wysyła dane telemetryczne dotyczące temperatury, wilgotności i ciśnienia do akceleratora rozwiązań do zdalnego monitorowania.
+W początkowym wdrożeniu akcelerator rozwiązań jest skonfigurowany dla firmy o nazwie Contoso. Jako operator w firmie Contoso zarządzasz różnego typu urządzeniami, takimi jak chłodziarki, wdrożonymi w różnych środowiskach fizycznych. Chłodziarka wysyła dane telemetryczne dotyczące temperatury, wilgotności i ciśnienia do akceleratora rozwiązania do monitorowania zdalnego.
 
 Ten przewodnik szybkiego startu wdroży **podstawowe** wersję akceleratora rozwiązań do celów testowych i demonstracyjnych, które minimalizuje koszty. Aby uzyskać więcej informacji na temat różnych wersji, można wdrożyć zobacz [wdrożeń podstawowa i standardowa](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
@@ -40,7 +40,7 @@ Kliknij kafelek **Zdalne monitorowanie**. Na stronie **Zdalne monitorowanie** kl
 
 Wybierz  **C# Mikrousług** jako **opcje wdrażania**. Java i C# implementacji mają te same funkcje.
 
-W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązań do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm**.
+W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązania do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm**.
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy regionu **Wschodnie stany USA**.
 Możesz wybrać opcję **Visual Studio Enterprise**, ale w tym celu musisz być [administratorem globalnym lub użytkownikiem](iot-accelerators-permissions.md).
@@ -51,17 +51,17 @@ Aby rozpocząć wdrożenie, kliknij pozycję **Utwórz**. Ten proces trwa co naj
 
 ## <a name="sign-in-to-the-solution"></a>Logowanie się do rozwiązania
 
-Po zakończeniu wdrożenia w Twojej subskrypcji platformy Azure na kafelku rozwiązania zostanie wyświetlony zielony znacznik wyboru i tekst **Gotowe**. Teraz możesz zalogować się do pulpitu nawigacyjnego akceleratora rozwiązań do zdalnego monitorowania.
+Po zakończeniu wdrożenia w Twojej subskrypcji platformy Azure na kafelku rozwiązania zostanie wyświetlony zielony znacznik wyboru i tekst **Gotowe**. Teraz możesz zalogować się do pulpitu nawigacyjnego akceleratora rozwiązania do monitorowania zdalnego.
 
-Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązań do zdalnego monitorowania:
+Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązania do monitorowania zdalnego:
 
 ![Wybieranie nowego rozwiązania](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Możesz przejrzeć informacje o akceleratorze rozwiązań do zdalnego monitorowania w wyświetlonym panelu. Wybierz pozycję **Przejdź do własnego akceleratora rozwiązań**, aby wyświetlić akcelerator rozwiązań do zdalnego monitorowania:
+Możesz przejrzeć informacje o akceleratorze rozwiązania do monitorowania zdalnego w wyświetlonym panelu. Wybierz pozycję **Przejdź do własnego akceleratora rozwiązania**, aby wyświetlić akcelerator rozwiązania do monitorowania zdalnego:
 
 ![Panel rozwiązania](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
-Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do zdalnego monitorowania:
+Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do monitorowania zdalnego:
 
 [![Pulpit nawigacyjny rozwiązania](./media/quickstart-remote-monitoring-deploy/solutiondashboard-inline.png)](./media/quickstart-remote-monitoring-deploy/solutiondashboard-expanded.png#lightbox)
 
@@ -129,7 +129,7 @@ Wartość w kolumnie stanu zmieni się na **Zamknięto**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz przejść do samouczków, nie usuwaj wdrożenia akceleratora rozwiązań do zdalnego monitorowania.
+Jeśli zamierzasz przejść do samouczków, nie usuwaj wdrożenia akceleratora rozwiązania do monitorowania zdalnego.
 
 Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard), wybierając go, a następnie klikając pozycję **Usuń rozwiązanie**:
 
@@ -140,7 +140,7 @@ Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Apr
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wdrożono akcelerator rozwiązań do zdalnego monitorowania i wykonano zadanie monitorowania przy użyciu urządzeń symulowanych w domyślnym wdrożeniu firmy Contoso.
+W tym przewodniku Szybki start wdrożono akcelerator rozwiązania do monitorowania zdalnego i wykonano zadanie monitorowania przy użyciu urządzeń symulowanych w domyślnym wdrożeniu firmy Contoso.
 
 Aby dowiedzieć się więcej na temat akceleratora rozwiązań korzystającego z urządzeń symulowanych, przejdź do następującego samouczka.
 

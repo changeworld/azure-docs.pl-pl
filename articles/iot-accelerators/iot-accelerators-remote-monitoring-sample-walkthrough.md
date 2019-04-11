@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58176140"
 ---
-# <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązania do monitorowania zdalnego
 
 Zdalne monitorowanie [akcelerator rozwiązań](../iot-accelerators/about-iot-accelerators.md) implementuje — kompleksowe rozwiązanie do monitorowania dla wielu maszyn w lokalizacjach zdalnych. Rozwiązanie to łączy najważniejsze usługi platformy Azure, aby umożliwić ogólną implementację scenariusza biznesowego. Można użyć rozwiązania jako punktu wyjścia dla własnej implementacji i [dostosować](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) go do konkretnych potrzeb biznesowych.
 

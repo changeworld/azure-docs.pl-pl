@@ -101,7 +101,7 @@ Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowoln
 
 [Dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md) zbierają pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
-Przykładowe zapytania usługi Log Analytics w usłudze Azure Firewall można znaleźć w temacie [Przykłady usługi Log Analytics w usłudze Azure Firewall](log-analytics-samples.md).
+Przykładowe zapytania analizy dzienników w usłudze Azure Firewall można znaleźć w temacie [Przykłady analizy dzienników w usłudze Azure Firewall](log-analytics-samples.md).
 
 Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSON dotyczące dostępu i wydajności. Po pobraniu plików JSON możesz je przekonwertować do formatu CSV i wyświetlać w programie Excel, usłudze Power BI lub innym narzędziu do wizualizacji danych.
 

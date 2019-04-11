@@ -76,7 +76,7 @@ items:
       href: howto-integrate-activity-logs-with-log-analytics.md
     - name: Analizowanie dzienników aktywności w dziennikach usługi Azure Monitor
       href: howto-analyze-activity-logs-log-analytics.md
-    - name: Instalowanie i używanie widoków usługi Log Analytics dla usługi Azure AD
+    - name: Instalowanie i używanie widoków analizy dzienników dla usługi Azure AD
       href: howto-install-use-log-analytics-views.md
     - name: Integrowanie dzienników aktywności z rozwiązaniem SumoLogic
       href: howto-integrate-activity-logs-with-sumologic.md

@@ -71,7 +71,7 @@ Gratulacje! Konfigurując zaledwie kilku ustawień, udało Ci się wdrożyć pub
 
 ## <a name="view-container-logs"></a>Wyświetlanie dzienników kontenerów
 
-W przypadku rozwiązywania problemów z kontenerem lub uruchomioną aplikacją przydatne jest przeglądanie dzienników wystąpienia kontenera.
+W przypadku rozwiązywania problemów z kontenerem lub uruchomioną w nim aplikacją przydatne jest przeglądanie dzienników wystąpienia kontenera.
 
 Aby wyświetlić dzienniki kontenera, w obszarze **Ustawienia** wybierz pozycję **Kontenery**, a następnie **Dzienniki**. Powinno pojawić się żądanie HTTP GET generowane podczas wyświetlania aplikacji w przeglądarce.
 

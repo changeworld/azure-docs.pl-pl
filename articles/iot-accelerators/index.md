@@ -53,7 +53,7 @@ Dowiedz się, jak używać akceleratorów rozwiązań IoT. W poniższych artyku�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Omówienie akceleratora rozwiązań do zdalnego monitorowania</h3>
+                        <h3>Omówienie akceleratora rozwiązania do monitorowania zdalnego</h3>
                     </div>
                 </div>
             </div>

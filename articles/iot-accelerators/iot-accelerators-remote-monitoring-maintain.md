@@ -1,6 +1,6 @@
 ---
-title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do zdalnego monitorowania — samouczek — Azure | Microsoft Docs
-description: Ten samouczek przedstawia sposób używania alertów w celu identyfikowania i rozwiązywania problemów z urządzeniami podłączonymi do akceleratora rozwiązania do zdalnego monitorowania.
+title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do monitorowania zdalnego — samouczek — Azure | Microsoft Docs
+description: Ten samouczek przedstawia sposób używania alertów w celu identyfikowania i rozwiązywania problemów z urządzeniami podłączonymi do akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
 ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2019
 ms.locfileid: "54451727"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Samouczek: Rozwiązywanie problemów z urządzeniami
 
-W tym samouczku użyjesz akceleratora rozwiązania do zdalnego monitorowania, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
+W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
 
 Firma Contoso testuje nowe **prototypowe** urządzenie w terenie. Jako operator firmy Contoso podczas testowania zauważasz, że **prototypowe** urządzenie nieoczekiwanie wyzwala alert o temperaturze na pulpicie nawigacyjnym. Teraz musisz zbadać zachowanie tego wadliwego **prototypowego** urządzenia i rozwiązać problem.
 
@@ -86,4 +86,4 @@ Możesz sprawdzić, czy temperatura urządzenia zmniejszyła się, wyświetlają
 
 W tym samouczku pokazano, jak używać alertów w celu identyfikowania problemów z urządzeniami oraz jak działać na tych urządzeniach, aby rozwiązać problemy. Aby dowiedzieć się, jak połączyć rzeczywiste urządzenie z akceleratorem rozwiązania, przejdź do artykułów z poradami.
 
-Teraz wiesz już, jak zarządzać problemami z urządzeniami. Sugerujemy, aby w następnym kroku dowiedzieć się, jak [połączyć urządzenie z akceleratorem rozwiązania do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
+Teraz wiesz już, jak zarządzać problemami z urządzeniami. Sugerujemy, aby w następnym kroku dowiedzieć się, jak [połączyć urządzenie z akceleratorem rozwiązania do monitorowania zdalnego](iot-accelerators-connecting-devices.md).

@@ -111,7 +111,7 @@ Aby zmienić kolor jednego z diod LED Mxchip, użyj **LedColor** metody:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli zamierzasz przejść do samouczków, nie usuwaj wdrożenia akceleratora rozwiązań do zdalnego monitorowania.
+Jeśli zamierzasz przejść do samouczków, nie usuwaj wdrożenia akceleratora rozwiązania do monitorowania zdalnego.
 
 Jeśli akcelerator rozwiązań nie są już potrzebne, usuń go ze strony rozwiązania Aprowizowana, wybierając ją, a następnie klikając polecenie Usuń rozwiązanie:
 

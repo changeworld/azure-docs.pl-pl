@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316205"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470019"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Samouczek projektowania Unreal/Wwise Akustyka projektu
 W tym samouczku opisano konfigurację projektu i przepływu pracy dla projektu Akustyka Unreal i Wwise.
@@ -62,11 +62,18 @@ Należy pamiętać, że instalacji wymagane mixer aktora wymiany zwykle susz i m
 ![Zrzut ekranu Wwise edytora przedstawiający wytyczne dotyczące projektowania głosu Akustyka projektu](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Konfigurowanie odległość tłumienie krzywych
-Upewnij się, wszystkie krzywej tłumienie posługują się mieszarki aktora, za pomocą projektu Akustyka mają zdefiniowane przez użytkownika aux, Wyślij ustawiona na "danych wyjściowych magistrali woluminu". Wwise robi to domyślnie dla nowo utworzonej tłumienia krzywych. Jeśli przenosisz istniejący projekt, należy sprawdzić ustawienia krzywej. 
+Upewnij się, wszystkie krzywej tłumienie posługują się mieszarki aktora, za pomocą projektu Akustyka mają zdefiniowane przez użytkownika aux, Wyślij ustawiona na "danych wyjściowych magistrali woluminu". Wwise robi to domyślnie dla nowo utworzonej tłumienia krzywych. Jeśli przenosisz istniejący projekt, należy sprawdzić ustawienia krzywej.
 
 Domyślnie symulacji Akustyka projekt ma promień 45 liczniki wokół lokalizacji odtwarzacza. Ogólnie zaleca się ustawienie z krzywej tłumienie dB-200 wokół tej odległości. Odległość ta nie jest ograniczenie twardych. Dla niektórych brzmi, jak broni, możesz zechcieć większych usługi radius. W takich przypadkach zastrzeżenie: to, czy tylko geometrii w ciągu 45 m lokalizacji odtwarzacza będzie uczestniczył. Jeśli źródła dźwięku znajduje się poza pokój i natychmiast 100 mln odtwarzacz jest w pomieszczeniu, zostaną prawidłowo zamknięte. Jeśli źródłem jest w pomieszczeniu, a gracz jest poza i natychmiast 100 mln, nie będą prawidłowo zamknięte.
 
 ![Zrzut ekranu Wwise tłumienie krzywych](media/atten-curve.png)
+
+### <a name="post-mixer-equalization"></a>Opublikuj wyrównywania Mixer ###
+ Jeden element, który chcesz zrobić, to dodanie korektor mixer post. Można traktować magistrali Akustyka projektu jako magistrala typowe pogłosu (w domyślnym trybie pogłosu) i umieść filtru na nim celu wyrównywania. Możesz zobaczyć próbka w projekcie Akustyka Wwise przykładowym projekcie.
+
+![Zrzut ekranu Wwise po mixer EQ](media/wwise-post-mixer-eq.png)
+
+Na przykład filtr wysoki — dostęp próbny może pomóc obsługi niskich z nagrań NFC, które pogłosu boomy, określenie. Możesz również uzyskać większą kontrolę po tworzenie, dostosowując EQ za pośrednictwem RTPCs, dzięki czemu możesz zmienić kolor pogłosu podczas gry.
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Ustawianie właściwości projektu Akustyka całej sceny
 
@@ -80,7 +87,7 @@ Aktor miejsca Akustyka udostępnia wiele formantów, które modyfikują zachowan
 * **Skalowanie pamięci podręcznej:** steruje rozmiarem pamięci podręcznej, używany do przesyłania zapytań akustyczna. Mniejsze cache używa mniejszą ilość pamięci RAM, ale może zwiększyć użycie procesora CPU dla każdego zapytania.
 * **Poziom hałasu podczas włączone** Debugowanie kontrolki umożliwiające szybkie A / B, przełączając symulacji Akustyka. Ten formant jest ignorowany w wysyłce konfiguracje. Kontrolka jest przydatny do znajdowania, jeśli konkretnego błędu audio pochodzi z obliczenia Akustyka lub innym problemem w w projekcie Wwise.
 * **Zaktualizuj odległości:** Użyj tej opcji, jeśli chcesz użycie informacji o wstępnie ramach Akustyka odległość zapytań. Te zapytania są podobne do rzutowania ray, ale są one wstępnie obliczonych więc warto poświęcić dużo mniej procesora CPU. Przykład użycia jest odrębny odbić powierzchni najbliższy do odbiornika. W pełni wykorzystać to, należy za pomocą kodu lub plany odległości zapytania.
-* **Rysowanie statystyki:** Podczas gdy w UE `stat Acoustics` może zapewnić Ci informacje o Procesorze, na tym ekranie stanu będzie widoczna mapy aktualnie załadowanych, użycie pamięci RAM oraz inne informacje o stanie w górnym lewym rogu ekranu.
+* **Rysowanie statystyki:** Podczas gdy w UE `stat Acoustics` może zapewnić Ci informacje o Procesorze, na tym ekranie stanu będzie widoczna aktualnie załadowanych plików ACE, użycie pamięci RAM oraz inne informacje o stanie w górnym lewym rogu ekranu.
 * **Rysowanie Voxels:** Zamknij, aby nakładki voxels odbiornika przedstawiający siatki voxel używane podczas interpolacji czasu wykonywania. Nadajnik znajduje się wewnątrz voxel środowiska uruchomieniowego, zakończy się niepowodzeniem zapytań akustyczna.
 * **Rysowanie sondy:** Pokaż sondy to sceny. Będą one różne kolory w zależności od stanu obciążenia.
 * **Rysowanie odległości:** Jeśli odległości aktualizacji jest włączona, spowoduje to wyświetlenie polem powierzchni najbliższego połączenia z odbiornikiem w wykonywanie kwantyzowanych kierunkach odbiornika.
@@ -96,6 +103,7 @@ Te kontrolki projektu są ograniczone do poszczególnych składników audio w Un
 * **Dostosowanie outdoorness:** Określa, jak na zewnątrz jest reverberation. Wartości bliższa 0 są bardziej pomieszczeniu, bliżej 1 są bardziej na zewnątrz. To dopasowanie jest dodatku, więc ustawieniem dla niego wartość -1 będzie wymuszać pomieszczeniu, ustawieniem dla niego + 1 będzie wymuszać na zewnątrz.
 * **Przekazywanie bazy danych:** Renderowanie dodatkowe dźwięku za pomocą tablicy z tym głośności w połączeniu z tłumienie linii wzroku na podstawie odległości.
 * **Współczynnik mokrą Warp odległość:** Dostosowuje właściwości reverberation na "source", tak jakby bliżej/dalsze natychmiast, bez wywierania wpływu na bezpośrednią ścieżkę.
+* **Odtwarzać, w menu Start:** Przełącz, aby określić, czy dźwięk powinna być automatycznie odtwarzana w menu start sceny. Domyślnie włączone.
 * **Pokaż akustyczny parametry:** Wyświetla informacje debugowania bezpośrednio na składnik w grze. (tylko w przypadku konfiguracji bez wysyłania)
 
 ## <a name="blueprint-functionality"></a>Funkcje planu

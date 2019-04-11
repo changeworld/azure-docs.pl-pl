@@ -91,7 +91,7 @@ Aby dowiedzieć się więcej na temat architektury mikrousług, zobacz [Wprowadz
 
 Akceleratory rozwiązań można wdrażać z witryny [akceleratorów rozwiązań usługi Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#) lub przy użyciu wiersza polecenia.
 
-Akcelerator rozwiązania monitorowania zdalnego można wdrażać w następujących konfiguracjach:
+Akcelerator rozwiązania do monitorowania zdalnego można wdrażać w następujących konfiguracjach:
 
 * **Standardowa:** Rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
 * **Podstawowa:** Tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.

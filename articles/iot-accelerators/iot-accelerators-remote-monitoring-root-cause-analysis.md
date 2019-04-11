@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
 ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2018
 ms.locfileid: "52284570"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
 
-W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą akceleratora rozwiązań do monitorowania zdalnego. Na pulpicie nawigacyjnym rozwiązania do monitorowania zdalnego zobaczysz, że został wyzwolony alert, a następnie zbadasz główną przyczynę za pomocą eksploratora usługi Azure Time Series Insights.
+W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą akceleratora rozwiązania do monitorowania zdalnego. Na pulpicie nawigacyjnym rozwiązania do monitorowania zdalnego zobaczysz, że został wyzwolony alert, a następnie zbadasz główną przyczynę za pomocą eksploratora usługi Azure Time Series Insights.
 
-Ten samouczek korzysta z dwóch urządzeń symulowanych: ciężarówek dostawczych. Wysyłają one dane telemetryczne obejmujące lokalizację, wysokość nad poziomem morza, prędkość i temperaturę ładunku. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązań do zdalnego monitorowania. Jako operator firmy Contoso musisz zrozumieć, dlaczego jedna z ciężarówek (delivery-truck-02) zarejestrowała alert niskiej temperatury.
+Ten samouczek korzysta z dwóch urządzeń symulowanych: ciężarówek dostawczych. Wysyłają one dane telemetryczne obejmujące lokalizację, wysokość nad poziomem morza, prędkość i temperaturę ładunku. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązania do monitorowania zdalnego. Jako operator firmy Contoso musisz zrozumieć, dlaczego jedna z ciężarówek (delivery-truck-02) zarejestrowała alert niskiej temperatury.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -88,7 +88,7 @@ Aby potwierdzić swoje podejrzenia, że ciężarówki pojechały różnymi trasa
 
 ## <a name="create-a-new-rule"></a>Tworzenie nowej reguły
 
-Trasy ciężarówek są przeważnie optymalizowane z wyprzedzeniem, okazuje się jednak, że ruch na drogach, pogoda i inne nieprzewidziane zdarzenia mogą powodować opóźnienia i pozostawiać podejmowane w ostatniej chwili decyzje dotyczące trasy w rękach kierowców, którzy podejmują je w oparciu o swoje doświadczenie i ocenę sytuacji. Jednak ze względu na to, że temperatura produktów znajdujących się wewnątrz pojazdu ma kluczowe znaczenie, należy utworzyć dodatkową regułę w rozwiązaniu do zdalnego monitorowania. Ta reguła zapewnia otrzymanie ostrzeżenia, jeśli średnia wysokość w okresie 1 minuty przekroczy 350 stóp (ok. 107 metrów):
+Trasy ciężarówek są przeważnie optymalizowane z wyprzedzeniem, okazuje się jednak, że ruch na drogach, pogoda i inne nieprzewidziane zdarzenia mogą powodować opóźnienia i pozostawiać podejmowane w ostatniej chwili decyzje dotyczące trasy w rękach kierowców, którzy podejmują je w oparciu o swoje doświadczenie i ocenę sytuacji. Jednak ze względu na to, że temperatura produktów znajdujących się wewnątrz pojazdu ma kluczowe znaczenie, należy utworzyć dodatkową regułę w rozwiązaniu do monitorowania zdalnego. Ta reguła zapewnia otrzymanie ostrzeżenia, jeśli średnia wysokość w okresie 1 minuty przekroczy 350 stóp (ok. 107 metrów):
 
 [![Karta reguł rozwiązania do zdalnego monitorowania: ustawianie reguły wysokości](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 
@@ -98,7 +98,7 @@ Aby dowiedzieć się, jak tworzyć i edytować reguły, zapoznaj się z poprzedn
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą eksploratora usługi Time Series Insights i akceleratora rozwiązań do zdalnego monitorowania. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu identyfikowania i rozwiązywania problemów z urządzeniami połączonymi, przejdź do kolejnego samouczka.
+W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą eksploratora usługi Time Series Insights i akceleratora rozwiązania do monitorowania zdalnego. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu identyfikowania i rozwiązywania problemów z urządzeniami połączonymi, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Use device alerts to identify and fix issues with devices connected to your monitoring solution (Korzystanie z alertów urządzenia do identyfikowania i rozwiązywania problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania)](iot-accelerators-remote-monitoring-maintain.md)

@@ -9,7 +9,7 @@ ms.date: 07/17/2018
 ms.author: danlep
 ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
 ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/26/2019
 ms.locfileid: "56879717"
@@ -33,7 +33,7 @@ Aby włączyć rejestrowanie w wystąpieniach kontenera, potrzebne są następuj
 
 Usługa Azure Container Instances wymaga uprawnień do wysyłania danych do obszaru roboczego usługi Log Analytics. Aby nadać to uprawnienie i włączyć rejestrowanie, należy podać identyfikator obszaru roboczego usługi Log Analytics i jeden z jego kluczy (podstawowy lub pomocniczy) podczas tworzenia grupy kontenerów.
 
-Aby uzyskać identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy:
+Aby uzyskać identyfikator obszaru roboczego analizy dzienników i klucz podstawowy:
 
 1. W witrynie Azure Portal przejdź do obszaru roboczego usługi Log Analytics
 1. W obszarze **USTAWIENIA** wybierz pozycję **Ustawienia zaawansowane**
@@ -44,7 +44,7 @@ Aby uzyskać identyfikator obszaru roboczego usługi Log Analytics i klucz podst
 
 ## <a name="create-container-group"></a>Tworzenie grupy kontenerów
 
-Teraz, gdy masz identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem.
+Teraz, gdy masz identyfikator obszaru roboczego analizy dzienników i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem.
 
 W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów z jednym kontenerem [fluentd][fluentd]: za pomocą interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia platformy Azure przy użyciu szablonu YAML. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
 

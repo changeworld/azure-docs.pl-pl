@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący wykrywania problemów z urządzeniami w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
-description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do zdalnego monitorowania.
+title: Samouczek dotyczący wykrywania problemów z urządzeniami w rozwiązaniu do monitorowania zdalnego — Azure | Microsoft Docs
+description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
 ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/19/2018
 ms.locfileid: "53598687"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: Wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
 
-W tym samouczku skonfigurujesz akcelerator rozwiązań do zdalnego monitorowania, aby wykryć problemy z połączonymi urządzeniami IoT. Aby wykryć problemy z urządzeniami, dodasz reguły alertów generujące alerty na pulpicie nawigacyjnym rozwiązania.
+W tym samouczku skonfigurujesz akcelerator rozwiązania do monitorowania zdalnego, aby wykryć problemy z połączonymi urządzeniami IoT. Aby wykryć problemy z urządzeniami, dodasz reguły alertów generujące alerty na pulpicie nawigacyjnym rozwiązania.
 
-Aby wprowadzić reguły i alerty, w tym samouczku używane jest symulowane urządzenie: chłodnia. Chłodnia jest zarządzana przez organizację o nazwie Contoso i jest połączona z akceleratorem rozwiązań do zdalnego monitorowania. Firma Contoso ma już regułę, która generuje alert krytyczny, gdy ciśnienie w chłodni przekracza wartość 298 PSI. Jako operator w firmie Contoso chcesz zidentyfikować chłodnie, w których mogą występować problemy z czujnikami, szukając skoków ciśnienia. Aby zidentyfikować takie urządzenia, dodajesz regułę, która wygeneruje alert ostrzegawczy, gdy ciśnienie w chłodni przekroczy wartość 150 PSI.
+Aby wprowadzić reguły i alerty, w tym samouczku używane jest symulowane urządzenie: chłodnia. Chłodnia jest zarządzana przez organizację o nazwie Contoso i jest połączona z akceleratorem rozwiązania do monitorowania zdalnego. Firma Contoso ma już regułę, która generuje alert krytyczny, gdy ciśnienie w chłodni przekracza wartość 298 PSI. Jako operator w firmie Contoso chcesz zidentyfikować chłodnie, w których mogą występować problemy z czujnikami, szukając skoków ciśnienia. Aby zidentyfikować takie urządzenia, dodajesz regułę, która wygeneruje alert ostrzegawczy, gdy ciśnienie w chłodni przekroczy wartość 150 PSI.
 
 Poproszono Cię również o utworzenie alertu krytycznego dla chłodni w sytuacji, gdy w ciągu ostatnich pięciu minut średnia wilgotność wewnątrz urządzenia przekroczyła 80%, a temperatura urządzenia przekroczyła 75 stopni Fahrenheita.
 
@@ -134,7 +134,7 @@ Jednocześnie można usunąć tylko jedną regułę.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób korzystania ze strony **Reguły** w akceleratorze rozwiązań do zdalnego monitorowania w celu tworzenia reguł, które wywołują alerty w rozwiązaniu, i zarządzania nimi. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu konfigurowania połączonych urządzeń i zarządzania nimi, przejdź do kolejnego samouczka.
+W tym samouczku przedstawiono sposób korzystania ze strony **Reguły** w akceleratorze rozwiązania do monitorowania zdalnego w celu tworzenia reguł, które wywołują alerty w rozwiązaniu, i zarządzania nimi. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu konfigurowania połączonych urządzeń i zarządzania nimi, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi](iot-accelerators-remote-monitoring-manage.md)

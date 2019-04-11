@@ -1,6 +1,6 @@
 ---
 title: Samouczek dotyczący monitorowania urządzeń IoT z poziomu rozwiązania platformy Azure — Azure | Microsoft Docs
-description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązań do zdalnego monitorowania.
+description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -18,9 +18,9 @@ ms.locfileid: "58173825"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: Monitorowanie urządzeń IoT
 
-W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania w celu monitorowania połączonych urządzeń IoT. Użyjesz pulpitu nawigacyjnego rozwiązania, aby wyświetlać dane telemetryczne, informacje na temat urządzenia, alerty i wskaźniki KPI.
+W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego w celu monitorowania połączonych urządzeń IoT. Użyjesz pulpitu nawigacyjnego rozwiązania, aby wyświetlać dane telemetryczne, informacje na temat urządzenia, alerty i wskaźniki KPI.
 
-Ten samouczek korzysta z dwóch urządzeń symulowanych: ciężarówek. Wysyłają one dane telemetryczne obejmujące lokalizację, szybkość i temperaturę ładunku. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązań do zdalnego monitorowania. Jako operator firmy Contoso musisz monitorować lokalizację i działanie jednej z ciężarówek (truck-02) w terenie.
+Ten samouczek korzysta z dwóch urządzeń symulowanych: ciężarówek. Wysyłają one dane telemetryczne obejmujące lokalizację, szybkość i temperaturę ładunku. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązania do monitorowania zdalnego. Jako operator firmy Contoso musisz monitorować lokalizację i działanie jednej z ciężarówek (truck-02) w terenie.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -97,7 +97,7 @@ Te same filtry, które wyznaczają zakres czasowy dla alertów i określają, kt
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono, jak korzystać ze strony **Pulpit nawigacyjny** w akceleratorze rozwiązań do zdalnego monitorowania, aby filtrować i monitorować symulowane ciężarówki. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu wykrywania problemów z połączonymi urządzeniami, przejdź do kolejnego samouczka.
+W tym samouczku przedstawiono, jak korzystać ze strony **Pulpit nawigacyjny** w akceleratorze rozwiązania do monitorowania zdalnego, aby filtrować i monitorować symulowane ciężarówki. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu wykrywania problemów z połączonymi urządzeniami, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania](iot-accelerators-remote-monitoring-automate.md)

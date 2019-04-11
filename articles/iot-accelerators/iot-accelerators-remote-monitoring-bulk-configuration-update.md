@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie urządzeniami podłączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym — Azure | Microsoft Docs
-description: W tym samouczku dowiesz się, jak zarządzać urządzeniami podłączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym.
+description: W tym samouczku dowiesz się, jak zarządzać urządzeniami podłączonymi do rozwiązania do monitorowania zdalnego w trybie zbiorczym.
 author: aditidugar
 manager: philmea
 ms.service: iot-accelerators
@@ -17,9 +17,9 @@ ms.locfileid: "59009671"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: Zarządzanie zbiorczo połączonych urządzeń
 
-W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby zarządzać konfiguracją podłączonych urządzeń w trybie zbiorczym.
+W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, aby zarządzać konfiguracją podłączonych urządzeń w trybie zbiorczym.
 
-Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązań do zdalnego monitorowania. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
+Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązania do monitorowania zdalnego. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -27,7 +27,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Tworzenie grupy urządzeń
 > * Przygotowanie i hostowanie oprogramowania układowego
 > * Tworzenie konfiguracji urządzenia w witrynie Azure Portal
-> * Importowanie konfiguracji urządzenia do rozwiązania do zdalnego monitorowania
+> * Importowanie konfiguracji urządzenia do rozwiązania do monitorowania zdalnego
 > * Wdrażanie konfiguracji na urządzeniach z grupy urządzeń
 > * Monitorowanie wdrożenia
 
@@ -41,9 +41,9 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
+Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązania do monitorowania zdalnego w subskrypcji platformy Azure.
 
-Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
+Jeśli jeszcze nie wdrożono akceleratora rozwiązania do monitorowania zdalnego, należy ukończyć przewodnik Szybki start [Wdrażanie rozwiązania do monitorowania zdalnego opartego na chmurze](quickstart-remote-monitoring-deploy.md).
 
 Potrzebujesz konta usługi Azure Storage do hostowania plików oprogramowania układowego. Możesz użyć istniejącego konta magazynu lub [utworzyć nowe konto magazynu](../storage/common/storage-quickstart-create-account.md) w ramach subskrypcji.
 
@@ -59,17 +59,17 @@ Przed rozpoczęciem:
 * Upewnij się, że [program inicjujący na urządzeniu IoT DevKit jest w wersji 1.4.0 lub nowszej](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
 * Upewnij się, że zestaw SDK urządzenia IoT DevKit jest w tej samej wersji co program inicjujący. Zestaw SDK urządzenia IoT DevKit możesz zaktualizować za pomocą rozszerzenia Azure IoT Workbench w programie VS Code. Otwórz paletę poleceń, a następnie wprowadź **Arduino: Menedżer tablicy**. Aby uzyskać więcej informacji, zobacz [Przygotowywanie środowiska deweloperskiego](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Musisz również połączyć co najmniej jedno urządzenie IoT DevKit z akceleratorem rozwiązań do zdalnego monitorowania. Jeśli nie połączono jeszcze urządzenia IoT DevKit, zobacz [Łączenie urządzenia MXChip IoT DevKit AZ3166 z akceleratorem rozwiązań do zdalnego monitorowania IoT](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
+Musisz również połączyć co najmniej jedno urządzenie IoT DevKit z akceleratorem rozwiązania do monitorowania zdalnego. Jeśli nie połączono jeszcze urządzenia IoT DevKit, zobacz [Łączenie urządzenia MXChip IoT DevKit AZ3166 z akceleratorem rozwiązania do monitorowania zdalnego IoT](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Przechodzenie do pulpitu nawigacyjnego
 
-Aby wyświetlić pulpit nawigacyjny rozwiązania do zdalnego monitorowania w przeglądarce, najpierw odwiedź stronę [Akceleratory rozwiązań usługi Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Może być konieczne zalogowanie się przy użyciu poświadczeń subskrypcji platformy Azure.
+Aby wyświetlić pulpit nawigacyjny rozwiązania do monitorowania zdalnego w przeglądarce, najpierw odwiedź stronę [Akceleratory rozwiązania usługi Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Może być konieczne zalogowanie się przy użyciu poświadczeń subskrypcji platformy Azure.
 
-Następnie kliknij pozycję **Uruchom** na kafelku akceleratora rozwiązania do zdalnego monitorowania wdrożonego w przewodniku [Szybki start](quickstart-remote-monitoring-deploy.md).
+Następnie kliknij pozycję **Uruchom** na kafelku akceleratora rozwiązania do monitorowania zdalnego wdrożonego w przewodniku [Szybki start](quickstart-remote-monitoring-deploy.md).
 
 ## <a name="create-a-device-group"></a>Tworzenie grupy urządzeń
 
-Aby oprogramowanie układowe było automatycznie aktualizowane w grupie urządzeń, urządzenia muszą być elementami członkowskimi grupy urządzeń w rozwiązaniu do zdalnego monitorowania:
+Aby oprogramowanie układowe było automatycznie aktualizowane w grupie urządzeń, urządzenia muszą być elementami członkowskimi grupy urządzeń w rozwiązaniu do monitorowania zdalnego:
 
 1. Na stronie **Urządzenia** wybierz wszystkie urządzenia **IoT DevKit**, które zostały połączone z akceleratorem rozwiązań. Następnie kliknij pozycję **Zadania**.
 
@@ -204,7 +204,7 @@ Użyjesz tego pliku konfiguracji w poniższej sekcji.
 
 ## <a name="import-a-configuration"></a>Importowanie konfiguracji
 
-W tej sekcji zaimportujesz konfigurację urządzenia jako pakiet do akceleratora rozwiązań do zdalnego monitorowania. To zadanie jest zwykle wykonywane przez operatora.
+W tej sekcji zaimportujesz konfigurację urządzenia jako pakiet do akceleratora rozwiązania do monitorowania zdalnego. To zadanie jest zwykle wykonywane przez operatora.
 
 1. W internetowym interfejsie użytkownika zdalnego monitorowania przejdź do strony **Pakiety** i kliknij pozycję **+ Nowy pakiet**:
 

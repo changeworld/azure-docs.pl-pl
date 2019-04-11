@@ -1,6 +1,6 @@
 ---
 title: Samouczek dotyczący wykrywania anomalii na urządzeniach brzegowych w rozwiązaniu — Azure | Microsoft Docs
-description: W tym samouczku pokazano, jak monitorować urządzenia usługi IoT Edge przy użyciu akceleratora rozwiązań do zdalnego monitorowania.
+description: W tym samouczku pokazano, jak monitorować urządzenia usługi IoT Edge przy użyciu akceleratora rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -16,13 +16,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58166756"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązań do zdalnego monitorowania
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Samouczek: wykrywanie anomalii na urządzeniach brzegowych za pomocą akceleratora rozwiązania do monitorowania zdalnego
 
-Podczas pracy z tym samouczkiem utworzysz rozwiązanie do zdalnego monitorowania w celu reagowania na anomalie wykryte przez urządzenie usługi IoT Edge. Urządzenia usługi IoT Edge umożliwiają przetwarzanie danych telemetrycznych na urządzeniach brzegowych, co pozwala na zmniejszenie ilości danych telemetrycznych wysyłanych do rozwiązania oraz szybsze reagowanie na zdarzenia występujące na urządzeniach. Aby dowiedzieć się więcej na temat zalet przetwarzania danych na urządzeniach brzegowych, zobacz [Co to jest usługa Azure IoT Edge](../iot-edge/about-iot-edge.md).
+Podczas pracy z tym samouczkiem utworzysz rozwiązanie do monitorowania zdalnego w celu reagowania na anomalie wykryte przez urządzenie usługi IoT Edge. Urządzenia usługi IoT Edge umożliwiają przetwarzanie danych telemetrycznych na urządzeniach brzegowych, co pozwala na zmniejszenie ilości danych telemetrycznych wysyłanych do rozwiązania oraz szybsze reagowanie na zdarzenia występujące na urządzeniach. Aby dowiedzieć się więcej na temat zalet przetwarzania danych na urządzeniach brzegowych, zobacz [Co to jest usługa Azure IoT Edge](../iot-edge/about-iot-edge.md).
 
-Aby przedstawić sposób przetwarzania danych na urządzeniach brzegowych za pomocą rozwiązania do zdalnego monitorowania, w tym samouczku wykorzystano symulowane urządzenie pompy olejowej. Ta pompa olejowa jest zarządzana przez organizację o nazwie Contoso i jest połączona z akceleratorem rozwiązań do zdalnego monitorowania. Czujniki pompy olejowej mierzą temperaturę i ciśnienie. Operatorzy w firmie Contoso wiedzą, że nadmierny wzrost temperatury może spowodować wolniejszą pracę pompy. Operatorzy w firmie Contoso nie muszą monitorować temperatury urządzenia wtedy, gdy mieści się w normie.
+Aby przedstawić sposób przetwarzania danych na urządzeniach brzegowych za pomocą rozwiązania do zdalnego monitorowania, w tym samouczku wykorzystano symulowane urządzenie pompy olejowej. Ta pompa olejowa jest zarządzana przez organizację o nazwie Contoso i jest połączona z akceleratorem rozwiązania do monitorowania zdalnego. Czujniki pompy olejowej mierzą temperaturę i ciśnienie. Operatorzy w firmie Contoso wiedzą, że nadmierny wzrost temperatury może spowodować wolniejszą pracę pompy. Operatorzy w firmie Contoso nie muszą monitorować temperatury urządzenia wtedy, gdy mieści się w normie.
 
-Firma Contoso chce wdrożyć moduł inteligentnego urządzenia brzegowego, wykrywający anomalie temperatury pompy. Kolejny moduł brzegowy będzie wysyłać alerty do rozwiązania do zdalnego monitorowania. Po otrzymaniu alertu operator w firmie Contoso może wysłać technika w celu przeprowadzenia konserwacji. Firma Contoso może również skonfigurować działanie automatyczne, na przykład wysłanie wiadomości e-mail po otrzymaniu alertu przez rozwiązanie.
+Firma Contoso chce wdrożyć moduł inteligentnego urządzenia brzegowego, wykrywający anomalie temperatury pompy. Kolejny moduł brzegowy będzie wysyłać alerty do rozwiązania do monitorowania zdalnego. Po otrzymaniu alertu operator w firmie Contoso może wysłać technika w celu przeprowadzenia konserwacji. Firma Contoso może również skonfigurować działanie automatyczne, na przykład wysłanie wiadomości e-mail po otrzymaniu alertu przez rozwiązanie.
 
 Na poniższym diagramie przedstawiono najważniejsze składniki w tym scenariuszu samouczka:
 
@@ -53,14 +53,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="add-an-iot-edge-device"></a>Dodawanie urządzenia usługi IoT Edge
 
-Dodawanie urządzenia do akceleratora rozwiązań zdalnego monitorowania przebiega w dwóch etapach. W tej sekcji przedstawiono następujące czynności:
+Dodawanie urządzenia do akceleratora rozwiązania do monitorowania zdalnego przebiega w dwóch etapach. W tej sekcji przedstawiono następujące czynności:
 
 * Dodawanie urządzenia usługi IoT Edge na stronie **Device Explorer** w internetowym interfejsie użytkownika zdalnego monitorowania.
 * Instalowanie środowiska uruchomieniowego usługi IoT Edge na maszynie wirtualnej z systemem Linux.
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>Dodawanie urządzenia usługi IoT Edge do rozwiązania
 
-Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania, przejdź do strony **Device Explorer** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
+Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązania do monitorowania zdalnego, przejdź do strony **Device Explorer** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
 
 Na panelu **Nowe urządzenie** wybierz pozycję **Urządzenie usługi IoT Edge** i wpisz **oil-pump** jako identyfikator urządzenia. Dla innych właściwości możesz pozostawić ustawienia domyślne. Następnie kliknij pozycję **Zastosuj**:
 
@@ -68,7 +68,7 @@ Na panelu **Nowe urządzenie** wybierz pozycję **Urządzenie usługi IoT Edge**
 
 Zanotuj parametry połączenia urządzenia, które będą potrzebne w kolejnej sekcji tego samouczka.
 
-Urządzenie zarejestrowane w centrum IoT Hub w akceleratorze rozwiązań do zdalnego monitorowania pojawi się na liście na stronie **Device Explorer** w internetowym interfejsie użytkownika:
+Urządzenie zarejestrowane w centrum IoT Hub w akceleratorze rozwiązania do monitorowania zdalnego pojawi się na liście na stronie **Device Explorer** w internetowym interfejsie użytkownika:
 
 [![Nowe urządzenie usługi IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
@@ -139,7 +139,7 @@ Urządzenia usługi Edge wymagają zainstalowanego środowiska uruchomieniowego 
 
     Pamiętaj, aby ująć parametry połączenia w cudzysłów.
 
-Masz teraz zainstalowane i skonfigurowane środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Linux. W dalszej części tego samouczka użyjesz rozwiązania do zdalnego monitorowania, aby wdrożyć moduły usługi IoT Edge na tym urządzeniu.
+Masz teraz zainstalowane i skonfigurowane środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem Linux. W dalszej części tego samouczka użyjesz rozwiązania do monitorowania zdalnego, aby wdrożyć moduły usługi IoT Edge na tym urządzeniu.
 
 ## <a name="create-an-edge-manifest"></a>Tworzenie manifestu usługi Edge
 
@@ -148,7 +148,7 @@ Aby zasymulować urządzenie pompy olejowej, należy dodać następujące moduł
 * Moduł symulacji temperatury.
 * Wykrywanie anomalii w usłudze Stream Analytics.
 
-Poniższe kroki pokazują, jak utworzyć manifest wdrożenia usługi Edge, która zawiera te moduły. W dalszej części tego samouczka zaimportujesz ten manifest jako pakiet w akceleratorze rozwiązań do zdalnego monitorowania.
+Poniższe kroki pokazują, jak utworzyć manifest wdrożenia usługi Edge, która zawiera te moduły. W dalszej części tego samouczka zaimportujesz ten manifest jako pakiet w akceleratorze rozwiązania do monitorowania zdalnego.
 
 ### <a name="create-the-azure-stream-analytics-job"></a>Tworzenie zadania usługi Azure Stream Analytics
 
@@ -199,9 +199,9 @@ Masz teraz zdefiniowanie zadanie usługi Stream Analytics do uruchomienia na urz
 
 ### <a name="create-the-iot-edge-deployment"></a>Tworzenie wdrożenia usługi IoT Edge
 
-Następne należy utworzyć manifest wdrożenia usługi IoT Edge, definiujący moduły do uruchomienia na urządzeniu usługi Edge. W następnej sekcji zaimportujesz ten manifest jako pakiet w rozwiązaniu do zdalnego monitorowania.
+Następne należy utworzyć manifest wdrożenia usługi IoT Edge, definiujący moduły do uruchomienia na urządzeniu usługi Edge. W następnej sekcji zaimportujesz ten manifest jako pakiet w rozwiązaniu do monitorowania zdalnego.
 
-1. W witrynie Azure Portal przejdź do centrum IoT Hub w rozwiązaniu do zdalnego monitorowania. Możesz znaleźć to centrum IoT Hub w grupie zasobów o takiej samej nazwie, jak rozwiązanie do zdalnego monitorowania.
+1. W witrynie Azure Portal przejdź do centrum IoT Hub w rozwiązaniu do monitorowania zdalnego. Możesz znaleźć to centrum IoT Hub w grupie zasobów o takiej samej nazwie, jak rozwiązanie do monitorowania zdalnego.
 
 1. W obszarze centrum IoT Hub kliknij pozycję **IoT Edge** w sekcji **Automatyczne zarządzanie urządzeniami**. Kliknij pozycję **Dodaj wdrożenie usługi IoT Edge**.
 
@@ -249,7 +249,7 @@ Manifest usługi IoT Edge, aby zaimportować do rozwiązania do zdalnego monitor
 
 ## <a name="import-a-package"></a>Importowanie pakietu
 
-W tej sekcji zaimportujesz manifest usługi Edge jako pakiet w rozwiązaniu do zdalnego monitorowania.
+W tej sekcji zaimportujesz manifest usługi Edge jako pakiet w rozwiązaniu do monitorowania zdalnego.
 
 1. W internetowym interfejsie użytkownika zdalnego monitorowania przejdź do strony **Pakiety** i kliknij pozycję **+ Nowy pakiet**:
 
@@ -331,7 +331,7 @@ Jeśli chcesz, aby operatorzy byli powiadamiani o osiągnięciu wartości progow
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, w jaki sposób dodać i skonfigurować urządzenie usługi IoT Edge połączone z akceleratorem rozwiązań do zdalnego monitorowania. Aby dowiedzieć się więcej na temat pracy z pakietami usługi IoT Edge w ramach rozwiązania do zdalnego monitorowania, zobacz następujący przewodnik:
+W tym samouczku pokazano, w jaki sposób dodać i skonfigurować urządzenie usługi IoT Edge połączone z akceleratorem rozwiązania do monitorowania zdalnego. Aby dowiedzieć się więcej na temat pracy z pakietami usługi IoT Edge w ramach rozwiązania do monitorowania zdalnego, zobacz następujący przewodnik:
 
 > [!div class="nextstepaction"]
 > [Import an IoT Edge package into your Remote Monitoring solution accelerator (Importowanie pakietu usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania)](iot-accelerators-remote-monitoring-import-edge-package.md)

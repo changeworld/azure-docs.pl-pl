@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: Analiza danych w usłudze Log Analytics
+  - name: Analiza danych w analizie dzienników
     href: learn/tutorial-viewdata.md
-  - name: Wizualizacja danych w usłudze Log Analytics
+  - name: Wizualizacja danych w analizie dzienników
     href: learn/tutorial-logs-dashboards.md
   - name: Archiwizowanie danych dzienników i metryk platformy
     href: learn/tutorial-archive-data.md

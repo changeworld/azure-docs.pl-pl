@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący konfigurowania urządzeń w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
-description: W tym samouczku pokazano, w jaki sposób konfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania.
+title: Samouczek dotyczący konfigurowania urządzeń w rozwiązaniu do monitorowania zdalnego — Azure | Microsoft Docs
+description: W tym samouczku pokazano, w jaki sposób konfigurować urządzenia połączone z akceleratorem rozwiązania do monitorowania zdalnego.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -18,9 +18,9 @@ ms.locfileid: "58183394"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania
 
-W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby skonfigurować połączone urządzenia IoT i nimi zarządzać. Dodasz nowe urządzenie do akceleratora rozwiązań i skonfigurujesz je.
+W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, aby skonfigurować połączone urządzenia IoT i nimi zarządzać. Dodasz nowe urządzenie do akceleratora rozwiązań i skonfigurujesz je.
 
-Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązań do zdalnego monitorowania i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na aktualizacje konfiguracji. W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [rzeczywistym urządzeniu połączonym z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
+Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązania do monitorowania zdalnego i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na aktualizacje konfiguracji. W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [rzeczywistym urządzeniu połączonym z akceleratorem rozwiązania do monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -123,7 +123,7 @@ Teraz operator firmy Contoso może wykonać zapytanie dotyczące urządzeń wed�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, w jaki sposób skonfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania i zarządzać nimi. Aby dowiedzieć się, jak używać akceleratora rozwiązań do przeprowadzania analizy głównej przyczyny w przypadku nieoczekiwanego alertu, przejdź do następnego samouczka.
+W tym samouczku pokazano, w jaki sposób skonfigurować urządzenia połączone z akceleratorem rozwiązania do monitorowania zdalnego i zarządzać nimi. Aby dowiedzieć się, jak używać akceleratora rozwiązań do przeprowadzania analizy głównej przyczyny w przypadku nieoczekiwanego alertu, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu](iot-accelerators-remote-monitoring-root-cause-analysis.md)

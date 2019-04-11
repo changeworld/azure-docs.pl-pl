@@ -78,7 +78,7 @@ Jako bezpieczny magazyn na platformie Azure usługa Key Vault jest używana do u
 -  Funkcja [Zawsze szyfrowane]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) na platformie SQL Server i w usłudze Azure SQL Database
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 
-Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i usługą Log Analytics.
+Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i analizą dzienników.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

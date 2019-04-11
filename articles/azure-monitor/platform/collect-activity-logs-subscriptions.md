@@ -291,11 +291,11 @@ Akcja [Redaguj](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose
 1. Kliknij opcję **Nowy krok** > **Dodaj akcję**
 2. Wpisz *log analytics* jako filtr, a następnie wybierz akcję **Moduł zbierający dane usługi Azure Log Analytics — wyślij dane**.
 
-   ![Dodawanie akcji wysyłania danych usługi Log Analytics w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
+   ![Dodawanie akcji wysyłania danych analizy dzienników w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
 3. Wprowadź nazwę połączenia i wklej **identyfikator obszaru roboczego** oraz **klucz obszaru roboczego** dla obszaru roboczego usługi Log Analytics.  Kliknij pozycję **Utwórz**.
 
-   ![Dodawanie połączenia usługi Log Analytics w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
+   ![Dodawanie połączenia analizy dzienników w usłudze Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
 4. Po utworzeniu połączenia edytuj ustawienia w poniższej tabeli. 
 
