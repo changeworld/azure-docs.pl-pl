@@ -123,8 +123,10 @@ items:
       href: dbms_guide_sqlserver.md
     - name: Wdrażanie systemu DBMS usługi Azure Virtual Machines oprogramowania Oracle dla obciążenia SAP
       href: dbms_guide_oracle.md
-    - name: Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM DB2 dla obciążenia SAP
+    - name: Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM Db2 dla obciążenia SAP
       href: dbms_guide_ibm.md
+    - name: Wysoka dostępność programu IBM Db2 LUW na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
+      href: dbms-guide-ha-ibm.md
     - name: Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP
       href: dbms_guide_sapase.md
     - name: Wdrażanie rozwiązania SAP MaxDB, technologii liveCache i serwera zawartości na platformie Azure
@@ -229,9 +231,9 @@ items:
   items:
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: e366d205b3d903ad79b26798a82ee05752ac5622
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: b91931661ad91f813ca84e0c9b7bef4b22e2e975
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762960"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489040"

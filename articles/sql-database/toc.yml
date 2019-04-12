@@ -185,6 +185,8 @@ items:
       href: sql-database-managed-instance-connectivity-architecture.md
     - name: Różnice w języku T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
+    - name: Strefa czasowa w wystąpieniu zarządzanym
+      href: sql-database-managed-instance-timezone.md
   - name: Platforma jako usługa
     items:
     - name: Omówienie platformy jako usługi
@@ -730,9 +732,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalowywanie zadania elastycznego (przestarzałe)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 55afe0d516861f0c1042893374b6faef8927ac16
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d789a7d8cb42d0871dcd09e55036f965daef0d9f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358023"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495075"

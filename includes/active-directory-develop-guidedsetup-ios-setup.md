@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203544"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503001"
 ---
 ## <a name="setting-up-your-ios-application"></a>Konfigurowanie aplikacji dla systemu iOS
 
@@ -61,7 +61,7 @@ Skopiuj i Wklej poniżej. To polecenie pobiera zależności w folderze Carthage/
 carthage update
 ```
 
-> Powyższy proces umożliwia pobieranie i tworzenie Microsoft Authentication Library (MSAL). Biblioteka MSAL obsługuje pobieranie, buforowanie i odświeżanie tokenów użytkownika, które umożliwiają dostęp do interfejsów API chroniony przez usługę Azure Active Directory w wersji 2.0.
+> Powyższy proces umożliwia pobieranie i tworzenie Microsoft Authentication Library (MSAL). Biblioteka MSAL obsługuje pobieranie, buforowanie i odświeżanie tokenów użytkownika, które umożliwiają dostęp do interfejsów API chroniony przez platforma tożsamości firmy Microsoft.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>Dodaj platformę biblioteki MSAL do swojej aplikacji
 

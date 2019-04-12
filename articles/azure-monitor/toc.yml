@@ -581,8 +581,8 @@ items:
           href: insights/network-performance-monitor.md
         - name: Monitorowanie wydajności
           href: insights/network-performance-monitor-performance-monitor.md
-        - name: Punkt końcowy usługi
-          href: insights/network-performance-monitor-service-endpoint.md
+        - name: Monitorowanie łączności usług
+          href: insights/network-performance-monitor-service-connectivity.md
         - name: ExpressRoute
           href: insights/network-performance-monitor-expressroute.md
         - name: Cennik
@@ -658,8 +658,9 @@ items:
   - name: Wizualizowanie danych
     items:
     - name: Widoki
-      href: platform/view-designer.md
       items:
+      - name: Projektant widoków
+        href: platform/view-designer.md
       - name: Dokumentacja dotycząca kafelków
         href: platform/view-designer-tiles.md
       - name: Dokumentacja części wizualizacji
@@ -864,7 +865,7 @@ items:
         href: platform/autoscale-common-scale-patterns.md
       - name: Automatyczne skalowanie za pomocą metryk niestandardowych
         href: platform/autoscale-custom-metric.md
-      - name: Automatyczne skalowanie usługi VM Scale Sets przy użyciu szablonów usługi Resource Manager
+      - name: Autoskalowanie zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: Automatyczne skalowanie maszyn w zestawie skalowania maszyn wirtualnych
         href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
@@ -1071,9 +1072,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Przykłady kodu
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: b2021ca33265e06f882f04f726a889ddae0fd91f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7605179d1d1129587114f1462639ad06dde6fcef
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261160"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491104"

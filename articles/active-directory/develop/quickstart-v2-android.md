@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start dla usługi Azure AD 2 dla systemu Android | Microsoft Docs
-description: Dowiedz się, jak aplikacje systemu Android mogą wywołać interfejs API, który wymaga tokenów dostępu, przez punkt końcowy usługi Azure Active Directory w wersji 2.0
+title: Microsoft identity platformy systemu Android Przewodnik Szybki Start | Azure
+description: Dowiedz się, jak dla systemu Android aplikacje mogą wywołać interfejs API, które wymagają tokenów dostępu przez punkt końcowy platforma tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/11/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862764"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495315"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "58862764"
 
 Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplikacja systemu Android umożliwia logowanie na kontach osobistych i służbowych, uzyskiwanie tokenów dostępu i wywoływanie interfejsu API programu Microsoft Graph.
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-android/android-intro-updated.png)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Wymagania wstępne**
@@ -47,7 +47,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 > #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
 > Aby zarejestrować aplikację,
-> 1. Przejdź do witryny [Azure Portal — Rejestracja aplikacji (wersja zapoznawcza)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs).
+> 1. Przejdź do nowego [witryna Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) okienka.
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację za pomocą tylko jednego kliknięcia.
 >
@@ -56,9 +56,10 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 > #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
 > Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
-> 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza)** > **Nowa rejestracja**.
+> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
+> 1. Wybierz **nowej rejestracji**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `Android-Quickstart`.
 >      - Trafienia `Register` przycisku.
@@ -137,7 +138,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, jak aplik
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. Zastąp ciąg * *identyfikatorem aplikacji. Jeśli chcesz znaleźć *identyfikator aplikacji*, przejdź do strony *Omówienie*.
+> 1. Zastąp ciąg `<ENTER_THE_APPLICATION_ID_HERE>` *identyfikatorem aplikacji*. Jeśli chcesz znaleźć *identyfikator aplikacji*, przejdź do strony *Omówienie*.
 
 ## <a name="more-information"></a>Więcej informacji
 
@@ -145,7 +146,7 @@ Przeczytaj poniższe sekcje, aby uzyskać więcej informacji o tym przewodniku S
 
 ### <a name="msal"></a>BIBLIOTEKA MSAL
 
-Biblioteka MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) to biblioteka używana do logowania użytkowników i przesyłania żądań tokenów, które zostały użyte do uzyskania dostępu do interfejsu API chronionego przez usługę Azure Active Directory (Azure AD). Można ją zainstalować przy użyciu programu Gradle, dodając poniższy w obszarze **Gradle Scripts** > **build.gradle (Module: app)** w sekcji **Dependencies** (Zależności):
+Biblioteka MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) to biblioteka używane do logowania użytkowników i żądać tokenów, które umożliwiają dostęp do interfejsu API chronionego przez platforma tożsamości usługi Microsoft. Można ją zainstalować przy użyciu programu Gradle, dodając poniższy w obszarze **Gradle Scripts** > **build.gradle (Module: app)** w sekcji **Dependencies** (Zależności):
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -178,7 +179,7 @@ Biblioteka MSAL oferuje dwie metody używane uzyskać tokeny: `acquireToken` i `
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
-Niektóre sytuacje wymagają wymuszenia na użytkowniku interakcji z punktem końcowym usługi Azure AD 2.0, co powoduje przełączenie kontekstu do przeglądarki systemu w celu weryfikacji poświadczeń użytkownika lub uzyskania zgody. Oto niektóre przykłady:
+Sytuacje wymagają wymuszanie użytkownikom na interakcję z końcowym platforma tożsamości firmy Microsoft, co spowodowało kontekst przełączyć się do przeglądarki systemu, aby to zweryfikować poświadczeń użytkownika, lub o wyrażenie zgody. Oto niektóre przykłady:
 
 * Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
 * Gdy użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.

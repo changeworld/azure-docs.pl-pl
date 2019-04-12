@@ -5,6 +5,8 @@ items:
   items:
   - name: Czym jest interfejs API analizy tekstu?
     href: overview.md
+  - name: Przykładowe scenariusze dotyczące użytkowników
+    href: text-analytics-user-scenarios.md
   expanded: true
 - name: Przewodniki Szybki start
   items:
@@ -24,13 +26,16 @@ items:
     href: quickstarts/ruby.md
 - name: Samouczki
   items:
-  - name: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: Analiza tekstu przy użyciu usługi Power BI
+  - name: Integracja usługi Power BI w celu analizy opinii klientów
     href: Tutorials/tutorial-power-bi-key-phrases.md
   - name: Analiza tekstu w usłudze Power Apps
     href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
+  - name: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
+  - name: Tłumaczenie tekstu, analizowanie tonacji i syntetyzowanie mowy za pomocą platformy Flask
+    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
+    maintainContext: true
 - name: Przewodniki z instrukcjami
   items:
   - name: Rejestrowanie
@@ -79,6 +84,8 @@ items:
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
 - name: Zasoby
   items:
+  - name: Identyfikowanie tonacji komentarzy w grupie usługi Yammer za pomocą usługi MS Flow
+    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
   - name: Zawartość zewnętrzna i społeczności
     href: text-analytics-resource-external-community.md
   - name: Często zadawane pytania
@@ -97,9 +104,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475632"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500825"

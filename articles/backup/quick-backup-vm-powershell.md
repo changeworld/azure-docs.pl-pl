@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 850fce4e04ce07a323e830d2daf74ea1a324f1a0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906076"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489386"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell
 
@@ -29,7 +29,7 @@ Ten przewodnik Szybki Start wymaga programu Azure PowerShell AZ modułu Wersja 1
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>Zaloguj się i rejestrowanie
+## <a name="sign-in-and-register"></a>Zaloguj się i rejestrowanie
 
 1. Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -53,10 +53,10 @@ Po utworzeniu magazynu:
 - Jeśli używasz tego [przykładowy skrypt](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) do utworzenia maszyny Wirtualnej, grupa zasobów jest **myResourceGroup**, maszyna wirtualna jest ***myVM**, a zasoby znajdują się w **WestEurope**  regionu.
 - Usługa Azure Backup automatycznie obsługuje magazyn kopii zapasowych danych. Domyślnie używa magazynu [magazyn geograficznie nadmiarowy (GRS)](../storage/common/storage-redundancy-grs.md). Nadmiarowość geograficzna zapewnia, że kopie zapasowe danych są replikowane do regionu pomocniczego platformy Azure, setek odległości od regionu podstawowego.
 
-Teraz Utwórz magazyn.
+Teraz Utwórz magazyn:
 
 
-1. Użyj [New AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)do utworzenia magazynu:
+1. Użyj [New AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) do utworzenia magazynu:
 
     ```powershell
     New-AzRecoveryServicesVault `
@@ -114,7 +114,7 @@ Wykonywane kopie zapasowe zgodnie z harmonogramem określonym w zasadach tworzen
 - Po początkowej kopii zapasowej każde zadanie tworzenia kopii zapasowej tworzy przyrostowe punkty odzyskiwania.
 - Przyrostowe punkty odzyskiwania są oszczędne pod względem czasu i miejsca w magazynie, ponieważ przesyłają wyłącznie zmiany wprowadzone od czasu ostatniej kopii zapasowej.
 
-Aby uruchomić kopii zapasowej usługi ad-hoc, należy użyć[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Aby uruchomić kopii zapasowej usługi ad-hoc, należy użyć [AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
 - Określasz kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Każda maszyna wirtualna, której kopia zapasowa ma być tworzona, jest traktowana jako element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
@@ -162,7 +162,7 @@ Jeśli nie są już potrzebne do tworzenia kopii zapasowej maszyny Wirtualnej, m
 - Jeśli chcesz wypróbować funkcję przywracania maszyny Wirtualnej, Pomiń oczyszczanie się.
 - Jeśli użyto istniejącej maszyny Wirtualnej, możesz pominąć końcowe [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) polecenia cmdlet, aby pozostawić grupę zasobów i maszynę Wirtualną na miejscu.
 
-Wyłącz ochronę, usunąć punkty przywracania oraz Magazyn. Następnie możesz usunąć grupę zasobów i skojarzone zasoby maszyny Wirtualnej w następujący sposób:
+Wyłącz ochronę, usunąć punkty przywracania oraz Magazyn. Następnie usuń grupę zasobów i skojarzone zasoby maszyny Wirtualnej w następujący sposób:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

@@ -961,7 +961,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         <li>
                                             <a href="/azure/cognitive-services/labs/anomaly-finder/overview">
                                                 <img src="media/index/API_Anomaly_Finder.svg" alt="" />
-                                                <p>Narzędzie do wyszukiwania anomalii</p>
+                                                <p>Anomaly Finder</p>
                                             </a>
                                         </li>
                                         <li>

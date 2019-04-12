@@ -1,5 +1,5 @@
 ---
-title: Czym jest narzędzie do wyszukiwania anomalii? — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Co to jest narzędzie Anomaly Finder? — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 description: Użyj zaawansowanych algorytmów w narzędzie do wyszukiwania anomalii, aby identyfikować anomalie w danych szeregów czasowych i zwracają informacje w usługach Microsoft Cognitive Services.
 services: cognitive-services
 author: tonyxing
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2019
 ms.locfileid: "56726817"
 ---
-# <a name="what-is-anomaly-finder"></a>Czym jest narzędzie do wyszukiwania anomalii?
+# <a name="what-is-anomaly-finder"></a>Co to jest narzędzie Anomaly Finder?
 
 [!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 

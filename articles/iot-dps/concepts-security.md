@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046903"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490276"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Pojęcia dotyczące zabezpieczeń IoT Hub Device Provisioning Service 
 
@@ -77,7 +77,11 @@ Pośredniego certyfikatu jest certyfikat X.509, który został podpisany certyfi
 
 ### <a name="end-entity-leaf-certificate"></a>Certyfikat "liścia" jednostki końcowej
 
-Certyfikat liścia lub certyfikatów jednostek końcowych identyfikuje właściciela certyfikatu. Ma on certyfikat główny w łańcuchu certyfikatów, a także zero lub więcej certyfikatów pośrednich. Certyfikat liścia nie jest używany do podpisywania innych certyfikatów. Jednoznacznie identyfikuje urządzenie do usługi aprowizacji i jest czasami określane jako certyfikatu tego urządzenia. Podczas uwierzytelniania jest używany klucz prywatny skojarzony z tym certyfikatem odpowiadania na dowód posiadania żądania z usługi. Aby dowiedzieć się więcej, zobacz [uwierzytelniając urządzenia podpisane za pomocą certyfikatów X.509 urzędu certyfikacji](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Certyfikat liścia lub certyfikatów jednostek końcowych identyfikuje właściciela certyfikatu. Ma on certyfikat główny w łańcuchu certyfikatów, a także zero lub więcej certyfikatów pośrednich. Certyfikat liścia nie jest używany do podpisywania innych certyfikatów. Jednoznacznie identyfikuje urządzenie do usługi aprowizacji i jest czasami określane jako certyfikatu tego urządzenia. Podczas uwierzytelniania jest używany klucz prywatny skojarzony z tym certyfikatem odpowiadania na dowód posiadania żądania z usługi.
+
+Certyfikaty używane z liści [rejestracji indywidualnej](./concepts-service.md#individual-enrollment) wpis ma wymagań dotyczących, **nazwy podmiotu** musi być ustawione na identyfikator rejestracji wpis rejestracji indywidualnej. Liści certyfikaty używane z [grupy rejestracji](./concepts-service.md#enrollment-group) wejścia powinny mieć **nazwy podmiotu** Ustaw identyfikator żądanego urządzenia, które zostaną wyświetlone w **rejestracji rekordów** dla uwierzytelnionego urządzenia w grupie rejestracji.
+
+Aby dowiedzieć się więcej, zobacz [uwierzytelniając urządzenia podpisane za pomocą certyfikatów X.509 urzędu certyfikacji](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509
 
