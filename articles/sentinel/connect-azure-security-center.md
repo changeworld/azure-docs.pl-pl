@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługi Azure Security Center w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane z usługi Azure Security Center w przez wartownika platformy Azure.
+title: Łączenie danych w usłudze Azure Security Center przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure Security Center przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f59c5f6a9f497a6420172996f9f327f16ffd26f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bd6fe027da8c16157c7fce6c348e49c0a6b73ea3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242278"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490675"
 ---
-# <a name="collect-data-from-azure-security-center"></a>Zbieranie danych z usługi Azure Security Center
+# <a name="connect-data-from-azure-security-center"></a>Połącz dane z usługi Azure Security Center
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -29,7 +29,7 @@ ms.locfileid: "57242278"
 
 
 
-Wartownik platformy Azure umożliwia zbieranie alertów z [usługi Azure Security Center](../security-center/security-center-intro.md) i przekazywać je strumieniowo do usługi Azure przez wartownika. 
+Wartownik platformy Azure umożliwiają łączenie alertów z [usługi Azure Security Center](../security-center/security-center-intro.md) i przekazywać je strumieniowo do usługi Azure przez wartownika. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,7 @@ Wartownik platformy Azure umożliwia zbieranie alertów z [usługi Azure Securit
 
 ## <a name="connect-to-azure-security-center"></a>Łączenie z usługą Azure Security Center
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **usługi Azure Security Center** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure Security Center** kafelka.
 1. Po prawej stronie, kliknij **Connect** obok każdej subskrypcji alertów, którego chcesz strumieniowo przesyłać do platformy Azure przez wartownika. Upewnij się, że uaktualnienie każdej subskrypcji do warstwy standardowej usługi Azure Security Center do strumienia alertów do platformy Azure przez wartownika.
 
 3. Kliknij przycisk **Połącz**.

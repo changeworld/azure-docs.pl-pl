@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652318"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494631"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
 
@@ -217,37 +217,9 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
    run = experiment.submit(src)
    ```
 
-## <a name="cancel-a-run"></a>Anuluj przebieg
+## <a name="manage-a-run"></a>Zarządzanie przebiegu
 
-ALTER przebieg jest przesyłany, możesz to anulować nawet wtedy, gdy odwołanie do obiektu zostało utracone, tak długo, jak znasz nazwy eksperymentu i uruchom identyfikatora. 
-
-
-```python
-from azureml.core import Experiment
-exp = Experiment(ws, "my-experiment-name")
-
-# if you don't know the run id, you can list all runs under an experiment
-for r in exp.get_runs():  
-    print(r.id, r.get_status())
-
-# if you know the run id, you can "rehydrate" the run
-from azureml.core import get_run
-r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
-  
-# check the returned run type and status
-print(type(r), r.get_status())
-
-# you can cancel a run if it hasn't completed or failed
-if r.get_status() not in ['Complete', 'Failed']:
-    r.cancel()
-```
-Obecnie tylko typy ScriptRun i PipelineRun obsługuje operacji anulowania.
-
-Ponadto można anulować przebiegu za pośrednictwem interfejsu wiersza polecenia, używając następującego polecenia:
-```shell
-az ml run cancel -r <run_id> -p <project_path>
-```
-
+[Start, monitor i Anuluj wysyłanie przebiegów szkoleniowych](how-to-manage-runs.md) artykuł prezentuje określonej usługi Azure Machine Learning przepływy pracy dotyczące sposobu zarządzania eksperymenty.
 
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
 
@@ -417,7 +389,7 @@ Przykład 2: Model nadmiernego confident ![nadmiernego confident modelu](./media
 
 ### <a name="regression"></a>Regresji
 Dla każdego modelu regresji kompilowania przy użyciu zautomatyzowanych maszyny możliwości usługi Azure Machine Learning uczenia, możesz zobaczyć następujące wykresy: 
-+ [Przewidywane programu vs. Wartość true](#pvt)
++ [Przewidywane programu vs. True](#pvt)
 + [Histogram reszty](#histo)
 
 <a name="pvt"></a>
@@ -450,9 +422,9 @@ Znaczenie dla funkcji daje wynik, który wskazuje opowiadają została każda fu
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:
-* [How-to-use-azureml/Training/Train-WITHIN-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [How-to-use-azureml/Training/Train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

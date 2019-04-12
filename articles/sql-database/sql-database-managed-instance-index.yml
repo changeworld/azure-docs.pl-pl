@@ -15,7 +15,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 01/03/2019
+  ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
   description: 'Wystąpienie zarządzane usługi Azure SQL Database to w pełni zarządzane wystąpienia programu SQL Server bazy danych aparatu hostowanych w chmurze platformy Azure. Jest to najlepszym rozwiązaniem PaaS migracji bazy danych programu SQL Server do chmury. Informacje o sposobie tworzenia i używania wystąpienia zarządzanego z naszych przewodników Szybki Start, samouczków i przykładów.'
@@ -35,7 +35,7 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - title: Przegląd
+          - title: Omówienie
             href: /azure/sql-database/sql-database-managed-instance
             html: <p>Dowiedz się więcej informacji na temat wystąpienia zarządzanego usługi Azure SQL Database.</p>
           - title: Obszar powierzchni zaawansowane
@@ -78,6 +78,7 @@ sections:
           - html: Wystąpienia zarządzane są chronione za pomocą <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">wbudowanej zapory</a>.
           - html: '(Wersja zapoznawcza) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Ponownie utworzyć usunięte bazy danych przy użyciu programu PowerShell</a>'
           - html: 'Funkcja przywracania geograficznego umożliwia <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przywrócić bazę danych do innego centrum danych przy użyciu programu PowerShell</a>.'
+          - html: '(Wersja zapoznawcza) <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Strefy czasowej Konfiguruj</a> podczas tworzenia wystąpienia.'
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph

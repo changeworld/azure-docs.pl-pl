@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c9be129624c87ca0bff1e85a5d1c71425ef06b89
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471884"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489694"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance"></a>Strefa czasowa w wystąpieniu zarządzanym bazy danych Azure SQL
+# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Strefę czasową w wystąpienie zarządzane usługi Azure SQL Database (wersja zapoznawcza)
 
 Przy użyciu uniwersalnego czasu koordynowanego (UTC) jest zalecanym rozwiązaniem dla rozwiązań w chmurze w warstwie danych, wystąpienia zarządzanego Azure SQL Database zapewnia szeroki wybór strefy czasowej do potrzeb istniejących aplikacji, które przechowywanie wartości daty i godziny i Data rozmowy i Funkcje czasu z kontekstem niejawne określonej strefy czasowej.
 
@@ -72,7 +72,7 @@ Jeśli nie zostanie określony, strefa czasowa zostaną ustawione na czas UTC.
 
 ## <a name="checking-the-time-zone-of-instance"></a>Sprawdzanie strefy czasowej wystąpienia
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timestamp-transact-sql) funkcja zwraca nazwę wyświetlaną wystąpienia strefy czasowej.
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) funkcja zwraca nazwę wyświetlaną wystąpienia strefy czasowej.
 
 ## <a name="cross-feature-considerations"></a>Zagadnienia związane z wielu funkcji
 

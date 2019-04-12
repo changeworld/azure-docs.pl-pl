@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1bc8dc822622ee7b16b3e0a31e7b0b66ed7556e6
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619802"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488409"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP lub WAR
 
@@ -31,7 +31,7 @@ To wdrożenie plików ZIP korzysta z tej samej usługi Kudu tego uprawnienia ci�
 - Opcja Włącz domyślnego procesu kompilacji, który obejmuje Przywracanie pakietu.
 - [Dostosowanie wdrożenia](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), takie jak uruchamianie skryptów wdrażania.  
 - Dzienniki wdrożenia. 
-- Limit rozmiaru pliku 512 MB.
+- Limit rozmiaru pliku 2048 MB.
 
 Więcej informacji zawiera [dokumentacja aparatu Kudu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 

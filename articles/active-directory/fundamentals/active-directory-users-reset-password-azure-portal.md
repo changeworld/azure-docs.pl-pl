@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce76fa7fecb8a82f76d40827bfa868061a0ed584
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204903"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492706"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Zresetuj hasło użytkownika przy użyciu usługi Azure Active Directory
+
 Jako administrator możesz zresetować hasła użytkownika, czy zapomniane hasło, jeśli użytkownik pobiera blokada urządzenia, czy hasło nigdy nie odebrane przez użytkownika.
 
 >[!Note]
@@ -32,7 +33,7 @@ Jako administrator możesz zresetować hasła użytkownika, czy zapomniane hasł
 
 ## <a name="to-reset-a-password"></a>Aby zresetować hasło
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny, administrator użytkownika lub hasło administratora. Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako użytkownika administrator lub administrator haseł. Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**Wyszukaj i wybierz użytkownika, który potrzebuje resetowania, a następnie wybierz **resetowania hasła**.
 
@@ -50,6 +51,7 @@ Jako administrator możesz zresetować hasła użytkownika, czy zapomniane hasł
     >Tymczasowe hasło nigdy nie wygasa. Podczas następnego logowania użytkownika, hasła będzie nadal działać, bez względu na to ile czasu minęło od wygenerowano hasło tymczasowe.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Po po zresetowaniu hasła użytkownika, należy wykonać następujące procesy basic:
 
 - [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md)
@@ -58,6 +60,6 @@ Po po zresetowaniu hasła użytkownika, należy wykonać następujące procesy b
 
 - [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
 
-- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
+- [Tworzenie grupy podstawowej i dodawanie członków](active-directory-groups-create-azure-portal.md)
 
 Lub można wykonywać bardziej złożonych scenariuszy użytkownika, takich jak przypisanie delegatów, przy użyciu zasad oraz udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [dokumentacja zarządzania użytkownika usługi Azure Active Directory](../users-groups-roles/index.yml).

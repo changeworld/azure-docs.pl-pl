@@ -12,26 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 074976ea1f889893b5daa21cea5c186ec77145c4
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588351"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501114"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Jak używać kolejek usługi Service Bus za pomocą języka Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Ten przewodnik opisuje sposób używania kolejek usługi Service Bus. Przykłady są napisane w języku Ruby i używają platformy Azure gem. Omówione scenariusze obejmują **tworzenie kolejek, wysyłanie i odbieranie komunikatów**, i **usuwanie kolejek**. Aby uzyskać więcej informacji na temat usługi Service Bus, zobacz [następne kroki](#next-steps) sekcji.
+W tym samouczku dowiesz się, jak tworzyć aplikacje języka Ruby do wysyłania komunikatów i odbiera komunikaty z kolejki usługi Service Bus. Przykłady są napisane w języku Ruby i używają platformy Azure gem.
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Wymagania wstępne
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykułu.
+    1. Przeczytaj szybkiego **Przegląd** usługi Service Bus **kolejek**. 
+    2. Tworzenie usługi Service Bus **przestrzeni nazw**. 
+    3. Pobierz **parametry połączenia**. 
 
-## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > Utworzysz **kolejki** w przestrzeni nazw usługi Service Bus przy użyciu języka Ruby w ramach tego samouczka. 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>Jak utworzyć kolejkę
@@ -74,7 +79,7 @@ Komunikaty są odbierane z kolejki za pomocą `receive_queue_message()` metody *
 
 Domyślne zachowanie umożliwia odczyt i usuwanie operacją dwuetapową, co umożliwia także do obsługi aplikacji, które nie tolerują brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Po skopiowaniu aplikacja zakończy przetwarzanie komunikatu (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez wywołanie metody `delete_queue_message()` metody i dostarczający komunikat do usunięcia jako parametr. `delete_queue_message()` Metoda będzie Oznacz komunikat jako wykorzystany i usunąć go z kolejki.
 
-Jeśli `:peek_lock` parametr ma wartość **false**, odczytywanie i usuwanie wiadomości jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Usługa Service Bus oznaczyła komunikat jako wykorzystany, gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
+Jeśli `:peek_lock` parametr ma wartość **false**, Odczyt i usuwanie wiadomości jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Usługa Service Bus oznaczyła komunikat jako wykorzystany, gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
 
 Poniższy przykład pokazuje, jak odbierać i przetwarzać komunikaty przy użyciu `receive_queue_message()`. W przykładzie najpierw odbiera i usuwa komunikat przy użyciu `:peek_lock` równa **false**, otrzyma inny komunikat o błędzie, a następnie usuwa komunikat przy użyciu `delete_queue_message()`:
 

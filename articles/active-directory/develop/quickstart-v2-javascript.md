@@ -1,6 +1,6 @@
 ---
-title: Przewodnik Szybki start dla usługi Azure AD w wersji 2 dla języka JavaScript | Microsoft Docs
-description: Dowiedz się, jak aplikacje języka JavaScript mogą wywołać interfejs API, który wymaga tokenów dostępu, przez punkt końcowy usługi Azure Active Directory w wersji 2.0
+title: Program Microsoft identity platformy JavaScript Przewodnik Szybki Start | Azure
+description: Dowiedz się, jak wywołać interfejs API, które wymagają tokenów dostępu przez platforma tożsamości usługi Microsoft aplikacji JavaScript.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -12,24 +12,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 63827c74d584053b5131fbc602a04d4d24338f47
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203051"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500332"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Szybki start: Logowanie użytkowników i uzyskiwanie tokenu dostępu z aplikacji języka JavaScript
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Szybki start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji jednostronicowej JavaScript (SPA)
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-W tym przewodniku Szybki start dowiesz się, jak użyć przykładowego kodu, który demonstruje, jak jednostronicowa aplikacja (SPA) języka JavaScript może logować się do kont osobistych i kont służbowych, a także uzyskiwać token dostępu w celu wywołania interfejsu API programu Microsoft Graph lub dowolnego internetowego interfejsu API.
+W tym przewodniku Szybki Start dowiesz się, jak użyć przykładowego kodu, który demonstruje, jak JavaScript aplikacja jednostronicowa (SPA) Zaloguj się na kontach osobistych, praca i kont służbowych i uzyskania tokenu dostępu do wywołania interfejsu API programu Microsoft Graph lub dowolnego interfejsu API sieci web.
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+W tym przewodniku Szybki Start potrzebne są następujące ustawienia:
+* Aby uruchomić projekt za pomocą serwera node.js
+    * Zainstalować środowisko [Node.js](https://nodejs.org/en/download/).
+    * Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/download) edytowania plików projektu
+* Aby uruchomić projekt jako rozwiązanie w programie Visual Studio, zainstaluj [programu Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -39,7 +47,9 @@ W tym przewodniku Szybki start dowiesz się, jak użyć przykładowego kodu, kt�
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do witryny [Azure Portal — Rejestracja aplikacji (wersja zapoznawcza)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+> 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+> 1. Przejdź do nowego [witryna Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) okienka.
 > 1. Wprowadź nazwę aplikacji i kliknij pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
 >
@@ -47,9 +57,11 @@ W tym przewodniku Szybki start dowiesz się, jak użyć przykładowego kodu, kt�
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
 >
-> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/), aby zarejestrować aplikację.
+> 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza) > Nowa rejestracja**.
+> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
+> 1. Wybierz **nowej rejestracji**.
+> 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
 > 1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
 > 1. Wybierz platformę **Internet** w sekcji **Identyfikator URI przekierowania** i ustaw wartość na `http://localhost:30662/`.
@@ -62,16 +74,16 @@ W tym przewodniku Szybki start dowiesz się, jak użyć przykładowego kodu, kt�
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure Portal
 > Aby kod przykładowy z tego przewodnika Szybki start działał, dodaj identyfikator URI przekierowania w formacie `http://localhost:30662/` i włącz pozycję **Niejawne udzielenie**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź zmiany automatycznie]()
+> > [Wprowadzenie tych zmian]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowano](media/quickstart-v2-javascript/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowane](media/quickstart-v2-javascript/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Pobieranie projektu
 
 Możesz wybrać jedną z poniższych opcji, właściwą dla środowiska deweloperskiego.
-* [Pobierz podstawowe pliki projektu core — dla serwera internetowego, takiego jak Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
-* [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+* [Pobierz pliki projektów core - dla serwera sieci web, takich jak Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+* [Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
 Aby otworzyć pliki w folderze, użyj edytorem takim jak [programu Visual Studio Code](https://code.visualstudio.com/).
@@ -95,11 +107,11 @@ var applicationConfig = {
 > [!div renderon="docs"]
 >
 > Gdzie:
-> - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
-> - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
+> - `Enter_the_Application_Id_here` -jest **identyfikator aplikacji (klienta)** dla aplikacji został zarejestrowany.
+> - `Enter_the_Tenant_Info_Here` -jest ustawiony na jedną z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
->   - Jeśli aplikacja obsługuje tryb **Konta w moim katalogu organizacyjnym i osobiste konta Microsoft**, zastąp tę wartość za pomocą wartości `common`
+>   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
+>   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**, Zastąp tę wartość za pomocą `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
@@ -121,14 +133,16 @@ var applicationConfig = {
 
 * Jeśli przy użyciu [programu Visual Studio](https://visualstudio.microsoft.com/downloads/), upewnij się, że wybierz rozwiązanie projektu, a następnie naciśnij klawisz **F5** Aby uruchomić projekt.
 
+Po załadowaniu aplikacji przeglądarki kliknij **Sign In**.  Przy pierwszym logowaniu się, zostanie wyświetlony monit Twojej zgody, aby umożliwić aplikacji dostęp do Twojego profilu i logowanie się w. Na temat pomyślnego logowania powinny być widoczne wyświetlany na stronie informacji o profilu użytkownika.
+
 ## <a name="more-information"></a>Więcej informacji
 
-### <a name="msaljs"></a>*msal.js*
+### *<a name="msaljs"></a>msal.js*
 
-Biblioteka MSAL to biblioteka umożliwiająca logowanie użytkowników i przesyłanie żądań tokenów używanych do uzyskiwania dostępu do interfejsu API chronionego przez usługę Azure Active Directory (Azure AD). Plik *index.html* tego przewodnika Szybki start zawiera odwołanie do biblioteki:
+Biblioteka MSAL jest biblioteki używane na potrzeby logowania użytkowników i żądania tokenów umożliwiający dostęp do interfejsu API chronionego przez platforma tożsamości usługi Microsoft. Plik *index.html* tego przewodnika Szybki start zawiera odwołanie do biblioteki:
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
 ```
 
 Jeśli masz zainstalowane środowisko Node, możesz ją pobrać za pośrednictwem menedżera npm:
@@ -148,7 +162,7 @@ var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applic
 > |Lokalizacja  |  |
 > |---------|---------|
 > |`ClientId`     |Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie Azure Portal|
-> |`authority`    |Jest to adres URL urzędu. Przekazanie wartości *null* powoduje ustawienie domyślnego urzędu na `https://login.microsoftonline.com/common`. Jeśli aplikacja obsługuje pojedynczą dzierżawę (konta docelowe tylko w jednym katalogu), ustaw tę wartość na `https://login.microsoftonline.com/<tenant name or ID>`|
+> |`authority`    |Jest to adres URL urzędu. Przekazanie wartości *null* powoduje ustawienie domyślnego urzędu na `https://login.microsoftonline.com/common`. Jeśli Twoja aplikacja jest pojedynczej dzierżawy (docelowych kont w tylko jednym katalogu), ustaw tę wartość na `https://login.microsoftonline.com/<tenant name or ID>`|
 > |`tokenReceivedCallback`| Metoda wywołania zwrotnego wywołana po uwierzytelnieniu powoduje przekierowanie z powrotem do aplikacji. W tym miejscu jest przekazywana wartość `acquireTokenRedirectCallBack`. W przypadku użycia elementu loginPopup jest to wartość null.|
 > |`options`  |Kolekcja parametrów opcjonalnych. W tym przypadku elementy `storeAuthStateInCookie` i `cacheLocation` stanowią konfigurację opcjonalną. Zobacz stronę [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options), aby uzyskać więcej informacji na temat opcji. |
 
@@ -171,7 +185,7 @@ myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
 
 ### <a name="request-tokens"></a>Żądanie tokenów
 
-Biblioteka MSAL oferuje trzy metody uzyskiwania tokenów: `acquireTokenRedirect`, `acquireTokenPopup` i `acquireTokenSilent`
+Biblioteka MSAL ma trzy metody używane do uzyskania tokenów: `acquireTokenRedirect`, `acquireTokenPopup` i `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
@@ -189,14 +203,14 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 #### <a name="get-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
-W niektórych sytuacjach należy wymusić na użytkownikach interakcję z punktem końcowym usługi Azure AD w wersji 2.0. Na przykład:
+Istnieją sytuacje, w których należy wymusić użytkownikom na interakcję z punktem końcowym platforma tożsamości firmy Microsoft. Na przykład:
 * Użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
 * Aplikacja żąda dostępu do dodatkowych zakresów zasobów wymagających zgody użytkownika.
 * Wymagane jest uwierzytelnianie dwuetapowe.
 
 W przypadku większości aplikacji zwykle zalecane jest wywołanie najpierw metody `acquireTokenSilent`, przechwycenie wyjątku, a następnie wywołanie metody `acquireTokenRedirect` (lub `acquireTokenPopup`) w celu uruchomienia żądania.
 
-Wywołanie metody `acquireTokenPopup(scope)` powoduje wyświetlenie okna wyskakującego służącego do logowania (a metoda `acquireTokenRedirect(scope)` powoduje przekierowywanie użytkowników do punktu końcowego usługi Azure AD w wersji 2.0), w którym użytkownicy muszą wchodzić w interakcje, potwierdzając poświadczenia, wyrażając zgodę dla wymaganego zasobu lub przeprowadzając uwierzytelnianie dwuskładnikowe.
+Wywoływanie `acquireTokenPopup(scope)` wyniki w oknie podręcznym, aby zalogować się (lub `acquireTokenRedirect(scope)` skutkuje przekierowywanie użytkowników do endpoint platforma tożsamości firmy Microsoft) w przypadku, gdy użytkownicy muszą wchodzić w interakcje, sprawdzając swoich poświadczeń, zapewniając zgody wymagane zasób lub korzystanie z uwierzytelniania dwuskładnikowego.
 
 ```javascript
 myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
@@ -219,4 +233,4 @@ Aby uzyskać bardziej szczegółowe wskazówki krok po kroku dotyczące kompilow
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>Przejrzyj repozytorium biblioteki MSAL, aby znaleźć dokumentację, odpowiedzi na często zadawane pytania, opis problemów i inne informacje
 
 > [!div class="nextstepaction"]
-> [Repozytorium MSAL.js GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)

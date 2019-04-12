@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługi Azure AD Identity Protection w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbieranie danych usługi Azure AD Identity Protection przez wartownika platformy Azure.
+title: Połączenie danych usługi Azure AD Identity Protection przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure AD Identity Protection przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 609aced38b7e30f78d81934867196c568dcc85ca
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d8306056655809c69af2ed39b5bbf8efebe05d3f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240002"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496167"
 ---
-# <a name="collect-data-from-azure-ad-identity-protection"></a>Zbieranie danych z usługi Azure AD Identity Protection
+# <a name="connect-data-from-azure-ad-identity-protection"></a>Połącz dane z usługi Azure AD Identity Protection
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -42,7 +42,7 @@ Jeśli masz już usługę Azure AD Identity Protection, upewnij się, że jest [
 Jeśli wdrożono usługę Azure AD Identity Protection i pobieranie danych, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
 
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **usługi Azure AD Identity Protection** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure AD Identity Protection** kafelka.
 
 2. Kliknij przycisk **Connect** aby rozpocząć przesyłanie strumieniowe zdarzeń usługi Azure AD Identity Protection do platformy Azure przez wartownika.
 

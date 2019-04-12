@@ -1,5 +1,5 @@
 ---
-title: Użyj usługi Azure AD w wersji 2.0, aby logować użytkowników za pomocą ROPC | Dokumentacja firmy Microsoft
+title: Użyj platforma tożsamości usługi Microsoft do logowania się użytkowników przy użyciu ROPC | Azure
 description: Obsługa przeglądarki bez uwierzytelniania są przekazywane przy użyciu przyznania poświadczeń hasła właściciela zasobu.
 services: active-directory
 documentationcenter: ''
@@ -11,25 +11,25 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/28/2018
+ms.topic: conceptual
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df9073bbf9789875c373bb7093ab1878a20c399f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8c1372263bfa3f684d30ad583bfb6a9d434c3cc2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274193"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499941"
 ---
-# <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory w wersji 2.0 i poświadczeń hasła właściciela zasobów OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma tożsamości firmy Microsoft i poświadczeń hasła właściciela zasobów OAuth 2.0
 
-Usługa Azure Active Directory (Azure AD) obsługuje [przyznania poświadczeń hasła właściciela zasobu (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), co umożliwia aplikacji do logowania użytkownika dzięki obsłudze bezpośrednio swoje hasło. Przepływ ROPC wymaga wysokiego stopnia narażenia zaufania i użytkowników i deweloperów należy używać tylko ten przepływ, gdy nie można użyć innych, bardziej bezpiecznymi przepływów.
+Obsługuje platformy tożsamości firmy Microsoft [przyznania poświadczeń hasła właściciela zasobu (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), co umożliwia aplikacji do logowania użytkownika dzięki obsłudze bezpośrednio swoje hasło. Przepływ ROPC wymaga wysokiego stopnia narażenia zaufania i użytkowników i deweloperów należy używać tylko ten przepływ, gdy nie można użyć innych, bardziej bezpiecznymi przepływów.
 
-> [!Important]
-> * Punktu końcowego v2.0 usługi Azure AD obsługuje tylko ROPC dla dzierżaw usługi Azure AD, nie osobistych kont. Oznacza to, że trzeba korzystać z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`) lub `organizations` punktu końcowego.
+> [!IMPORTANT]
+> * Punkt końcowy platforma tożsamości firmy Microsoft obsługuje tylko ROPC dla dzierżaw usługi Azure AD, nie osobistych kont. Oznacza to, że trzeba korzystać z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`) lub `organizations` punktu końcowego.
 > * Konta osobiste, które są zaproszeni do dzierżawy usługi Azure AD nie można użyć ROPC.
 > * Konta, które nie mają hasła nie może zalogować się za pomocą ROPC. W tym scenariuszu zaleca się używać inny przepływ dla aplikacji zamiast tego.
 > * Jeśli użytkownicy muszą użyć uwierzytelniania wieloskładnikowego (MFA) do logowania do aplikacji, będą blokowane zamiast tego.
@@ -44,10 +44,17 @@ Na poniższym diagramie przedstawiono przepływ ROPC.
 
 Przepływ ROPC jest pojedyncze żądanie&mdash;wysyła do klienta w identyfikacji i poświadczenia użytkownika do dostawcy tożsamości, a następnie otrzymuje w odpowiedzi tokeny. Klient musi żądać adres e-mail użytkownika (UPN) i hasło przed jej wprowadzeniem. Natychmiast po żądania zakończonego powodzeniem klient powinien gwarantuje bezpieczne wydawanie poświadczenia użytkownika z pamięci. Nigdy nie należy zapisać je.
 
+> [!TIP]
+> Spróbuj wykonać tego żądania w narzędziu Postman!
+> [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+
+
 ```
 // Line breaks and spaces are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token?
+POST {tenant}/oauth2/v2.0/token
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=user.read%20openid%20profile%20offline_access
@@ -96,11 +103,11 @@ Jeśli użytkownik udzielona poprawna nazwa użytkownika lub hasło lub nie odeb
 
 | Błąd | Opis | Akcja klienta |
 |------ | ----------- | -------------|
-| `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia są niepoprawne lub klient nie ma wyrażania zgody dla żądanych zakresów. Jeśli zakresy nie są przyznawane, `consent_required` suberror zostaną zwrócone. W takim przypadku klient powinien wysłać użytkownika do monitu interakcyjnego przy użyciu widoku sieci Web lub w przeglądarce. |
+| `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia są niepoprawne lub klient nie ma wyrażania zgody dla żądanych zakresów. Jeśli zakresy nie są przyznawane, `consent_required` zostanie zwrócony błąd. W takim przypadku klient powinien wysłać użytkownika do monitu interakcyjnego przy użyciu widoku sieci Web lub w przeglądarce. |
 | `invalid_request` | Żądanie zostało nieprawidłowo skonstruowany. | Typ udzielania nie jest obsługiwana na `/common` lub `/consumers` kontekst uwierzytelniania.  Zamiast nich należy używać słów kluczowych `/organizations`. |
-| `invalid_client` | Aplikacja jest nieprawidłowo skonfigurowana | Może się to zdarzyć, jeśli `allowPublicClient` właściwość nie jest ustawiona wartość true w [manifest aplikacji](reference-app-manifest.md). `allowPublicClient` Właściwość jest niezbędne, ponieważ przydział ROPC nie ma identyfikatora URI przekierowania. Usługa Azure AD nie może określić, jeśli aplikacja jest aplikacji publicznych klienta lub poufne klienta, chyba że właściwość jest ustawiona. Należy pamiętać, ROPC jest obsługiwana tylko w przypadku aplikacji publicznych klienta. |
+| `invalid_client` | Aplikacja jest nieprawidłowo skonfigurowana | Może się to zdarzyć, jeśli `allowPublicClient` właściwość nie jest ustawiona na wartość true w [manifest aplikacji](reference-app-manifest.md). `allowPublicClient` Właściwość jest niezbędne, ponieważ przydział ROPC nie ma identyfikatora URI przekierowania. Usługa Azure AD nie może określić, jeśli aplikacja jest aplikacji publicznych klienta lub poufne klienta, chyba że właściwość jest ustawiona. Należy pamiętać, ROPC jest obsługiwana tylko w przypadku aplikacji publicznych klienta. |
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
 * ROPC osobiście wypróbować przy użyciu [Przykładowa aplikacja konsoli](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+* Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).

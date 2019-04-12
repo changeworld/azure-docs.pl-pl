@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199634"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492349"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
 
@@ -37,9 +37,6 @@ W tym dokumencie opisano dwa scenariusze:
 1. Obie sieci wirtualne korzystają z modelu wdrażania usługi Resource Manager
 2. Promieniście ułożone sieci wirtualne korzystają z modelu klasycznego, a centralna sieć wirtualna z bramą używa modelu usługi Resource Manager
 
-> [!IMPORTANT]  
-> Tranzyt przez bramę jest obecnie obsługiwana przy użyciu globalne wirtualne sieci równorzędne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych, ale nie w ramach wielu chmur. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej. 
-
 ## <a name="requirements"></a>Wymagania
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -53,9 +50,9 @@ Przykład przedstawiony w tym dokumencie wymaga utworzenia następujących zasob
 
 Instrukcje można znaleźć w następujących dokumentach:
 
-1. [Create a VPN gateway in a virtual network](vpn-gateway-howto-site-to-site-resource-manager-portal.md) (Tworzenie bramy sieci VPN w sieci wirtualnej)
-2. [Create virtual network peering with the same deployment model](../virtual-network/tutorial-connect-virtual-networks-portal.md) (Tworzenie wirtualnych sieci równorzędnych w tych samych modelu wdrażania)
-3. [Create virtual network peering with different deployment models](../virtual-network/create-peering-different-deployment-models.md) (Tworzenie wirtualnych sieci równorzędnych w różnych modelach wdrażania)
+1. [Tworzenie bramy sieci VPN w sieci wirtualnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+2. [Tworzenie wirtualnej sieci równorzędnej przy użyciu tego samego modelu wdrażania](../virtual-network/tutorial-connect-virtual-networks-portal.md)
+3. [Tworzenie wirtualnej sieci równorzędnej przy użyciu różnych modeli wdrażania](../virtual-network/create-peering-different-deployment-models.md)
 
 ## <a name="permissions"></a>Uprawnienia
 

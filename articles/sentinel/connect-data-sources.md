@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a1c74f0ed9fd9b9abccfb7c2762cadf948c8fce0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884799"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492366"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -34,25 +34,25 @@ Aby dołączyć przez wartownika platformy Azure należy najpierw połączyć si
 
 ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
 
-## <a name="data-collection-methods"></a>Metody zbierania danych
+## <a name="data-connection-methods"></a>Metody połączenia danych
 
-Następujące metody zbierania danych są obsługiwane przez usługi Azure przez wartownika:
+Następujące metody połączenia danych są obsługiwane przez usługi Azure przez wartownika:
 
 - **Usługi firmy Microsoft**:<br> Usługi firmy Microsoft są połączone w sposób macierzysty, korzystanie z platformy Azure podstawa out-gotową integrację, następujące rozwiązania mogą być połączone za pomocą kilku kliknięć:
     - [Office 365](connect-office-365.md)
     - [Usługa Azure AD inspekcji, dzienniki i logowania](connect-azure-active-directory.md)
     - [Aktywności platformy Azure](connect-azure-activity.md)
-    - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
+    - [Usługa Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Usługa Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Azure Advanced Threat Protection](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
-    - [Zdarzenia zabezpieczeń Windows](connect-windows-security-events.md) 
+    - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
     - [Zapora Windows](connect-windows-firewall.md)
 
 - **Zewnętrzny rozwiązań za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone za pomocą interfejsów API, które zostały udostępnione przez połączonego źródła danych. Zazwyczaj większość technologii zabezpieczeń zawierają zestaw interfejsów API za pomocą którego można pobrać dzienników zdarzeń. Interfejsy API nawiązać połączenie z platformy Azure przez wartownika i zbieranie danych z konkretnych typów i wysyłać je do usługi Azure Log Analytics. Urządzenia połączone za pośrednictwem interfejsu API to:
     - [Barracuda](connect-barracuda.md)
-    - Symantec
+    - [Symantec](connect-symantec.md)
 - **Zewnętrzny rozwiązań za pośrednictwem agenta**: Wartownik platformy Azure mogą być połączone do wszystkich innych źródeł danych, które mogą wykonywać, przesyłanie strumieniowe dzienników w czasie rzeczywistym, za pomocą przy użyciu protokołu Syslog, za pośrednictwem agenta. <br>Większość urządzeń Użyj protokołu Syslog, aby wysyłać komunikaty o zdarzeniach, które zawierają dziennik, sam, jak i dane dotyczące dziennika. Format dzienniki różni się jednak większość urządzeń obsługuje standard Common Event Format (CEF). <br>Agent platformy Azure przez wartownika, który jest oparty na agenta pakietu OMS, konwertuje CEF sformatowane dzienników do formatu, który może być pozyskiwane przez usługę Log Analytics. W zależności od typu urządzenia agent jest zainstalowany bezpośrednio na urządzeniu lub na dedykowanych serwerach Linux. Agent dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, gdzie maszynę z systemem Linux oczekuje się, aby zebrać dużą liczbę zdarzeń dziennika systemu, te są wysyłane za pośrednictwem protokołu TCP z demona usługi Syslog do agenta, a do usługi Log Analytics.
     - Zapór, proxy i punktów końcowych:
         - [F5](connect-f5.md)

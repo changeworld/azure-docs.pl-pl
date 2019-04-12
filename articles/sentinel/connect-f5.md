@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych F5 w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane F5 w przez wartownika platformy Azure.
+title: Połącz dane F5 przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych F5 przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b78ed31fec3716e06f74d9c026ca2af2c48e0312
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0f5452ade7a34a06cef4564760dc31981f1d8f37
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883466"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492570"
 ---
 # <a name="connect-your-f5-appliance"></a>Połącz urządzenie F5
 
@@ -30,7 +30,7 @@ ms.locfileid: "58883466"
 Możesz połączyć przez wartownika platformy Azure na dowolnym urządzeniu F5 zapisując pliki dziennika w formacie Syslog CEF. Integracja z platformy Azure przez wartownika pozwala łatwo uruchamiać analizy i zapytań dla danych pliku dziennika z F5. Aby uzyskać więcej informacji na temat sposobu przez wartownika Azure pozyskuje dane CEF, zobacz [CEF łączenie urządzeń](connect-common-event-format.md).
 
 > [!NOTE]
-> - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
+> Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="step-1-connect-your-f5-appliance-using-an-agent"></a>Krok 1: Połącz urządzenie F5 przy użyciu agenta
 
@@ -42,7 +42,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
 
 ### <a name="deploy-the-agent-in-azure"></a>Wdrażanie agenta w systemie Azure
 
-1. W portalu Azure przez wartownika kliknij **zbierania danych** i wybierz typ urządzenia. 
+1. W portalu Azure przez wartownika kliknij **connecctors danych** i wybierz typ urządzenia. 
 
 1. W obszarze **konfiguracji agenta systemu Linux Syslog**:
    - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszynę Wirtualną, która jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
@@ -79,7 +79,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 
 
-1. W portalu Azure przez wartownika kliknij **zbierania danych** i wybierz typ urządzenia.
+1. W portalu Azure przez wartownika kliknij **łączników danych** i wybierz typ urządzenia.
 1. Aby utworzyć dedykowane maszyny Wirtualnej systemu Linux w obszarze **konfiguracji agenta systemu Linux Syslog** wybierz **ręcznego wdrażania**.
    1. W obszarze **pobrać i zainstalować agenta programu Syslog**, wybierz opcję **maszyny z systemem Linux spoza platformy Azure**. 
    1. W **agent bezpośredni** ekran, który zostanie otwarty, wybierz **agenta dla systemu Linux** Pobierz agenta lub uruchom następujące polecenie, aby ją pobrać na maszynie z systemem Linux:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

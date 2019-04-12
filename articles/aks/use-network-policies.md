@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181490"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494769"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
 Po uruchomieniu aplikacji nowoczesnych, opartych na mikrousługach w usłudze Kubernetes, często zachodzi potrzeba kontroli, które składniki mogą komunikować się ze sobą. Zasadę najmniejszych uprawnień powinny być stosowane do jak ruch może przepływać między zasobników w klastrze usługi Azure Kubernetes Service (AKS). Załóżmy, że prawdopodobnie chcesz blokować ruch bezpośrednio do aplikacji zaplecza. *Zasad sieciowych* funkcji w usłudze Kubernetes pozwala zdefiniować reguły dla ruchu przychodzącego i wychodzącego między zasobników w klastrze.
 
-Calico, typu open source, sieci i rozwiązań zabezpieczeń sieciowych przez Tigera, oferuje aparatu zasad sieci, które można zaimplementować reguły zasad sieciowych usługi Kubernetes. W tym artykule pokazano, jak zainstalować Calico aparat zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS.
+W tym artykule pokazano, jak zainstalować aparatu zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 > [!IMPORTANT]
 > Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
@@ -27,7 +27,7 @@ Calico, typu open source, sieci i rozwiązań zabezpieczeń sieciowych przez Tig
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.56 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 Aby utworzyć klaster usługi AKS, można użyć zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 Wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu, bez ograniczenia, domyślnie. Aby zwiększyć bezpieczeństwo, można zdefiniować reguł, które kontrolują przepływu ruchu. Aplikacji zaplecza są często dostępne tylko do wymaganych usług frontonu, na przykład. Lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
 
-Zasady sieciowe to zasoby platformy Kubernetes, które pozwalają sterować przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień takich jak przypisane etykiety, przestrzeń nazw lub ruchu sieciowego port. Zasady sieciowe są definiowane jako manifesty YAML. Te zasady mogą być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
+Zasady sieci jest specyfikacja Kubernetes, który definiuje zasady dostępu do komunikacji między zasobników. Za pomocą zasad sieciowych, należy zdefiniować uporządkowany zestaw reguł do wysyłania i odbierania ruchu i zastosować je do kolekcji zasobników, które odpowiadają co najmniej jeden selektory etykiety.
+
+Te zasady sieciowe są definiowane jako manifesty YAML. Zasady sieciowe może być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
+
+### <a name="network-policy-options-in-aks"></a>Opcje zasad sieciowych w usłudze AKS
+
+Platforma Azure udostępnia dwa sposoby zaimplementowania zasad sieciowych. Możesz wybrać opcję Zasady sieci, podczas tworzenia klastra usługi AKS. Nie można zmienić opcji zasad, po utworzeniu klastra:
+
+* Wywołana implementacji własnych Azure *zasady sieciowe Azure*.
+* *Zasady sieciowe calico*, typu open-source sieci i rozwiązań zabezpieczeń sieciowych przez [Tigera][tigera].
+
+Obu implementacjach używać systemu Linux *IPTables* do wymuszania zasad określony. Zasady są tłumaczone na zestawy par adresów IP dozwolonych i niedozwolonych. Te pary następnie są programowane jako IPTable reguły filtrowania.
+
+Zasady sieci działa tylko z opcją wtyczki Azure CNI (zaawansowane). Implementacja różni się dwie opcje:
+
+* *Zasady sieciowe Azure* -wtyczki Azure CNI konfiguruje bridge w hoście maszyny Wirtualnej dla sieci wewnątrz węzła. Reguły filtrowania są stosowane, gdy pakiety przechodzą przez połączenie.
+* *Zasady sieciowe calico* -wtyczki Azure CNI konfiguruje trasy lokalne jądra dla ruchu wewnątrz węzła. Zasady są stosowane w interfejsie sieciowym zasobników.
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Różnice między platformą Azure i Calico zasady i ich możliwości
+
+| Możliwości                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| Obsługiwane platformy                      | Linux                      | Linux                       |
+| Obsługiwane opcje sieciowe             | Azure CNI                  | Azure CNI                   |
+| Zgodność ze specyfikacją rozwiązania Kubernetes | Wszystkie typy zasad obsługiwanych |  Wszystkie typy zasad obsługiwanych |
+| Dodatkowe funkcje                      | Brak                       | Rozszerzony model zasad, składające się z globalnych zasad sieciowych, ustawienie globalne sieci i hosta punktu końcowego. Aby uzyskać więcej informacji na temat korzystania z `calicoctl` interfejsu wiersza polecenia do zarządzania są rozszerzone funkcje, zobacz [odwołań do użytkownika calicoctl][calicoctl]. |
+| Pomoc techniczna                                  | Obsługiwane, a zespół inżynierów pomocy technicznej platformy Azure | Pomoc techniczna w społeczności calico. Aby uzyskać więcej informacji na temat dodatkowych płatnej pomocy technicznej, zobacz [opcje pomocy technicznej Calico projektu][calico-support]. |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Tworzenie klastra AKS i włączyć zasad sieciowych
 
 Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasady, które definiują przepływ ruchu:
 
@@ -59,9 +87,7 @@ Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasa
 * Zezwalać na ruch na podstawie etykiet zasobników.
 * Zezwalać na ruch w oparciu o przestrzeni nazw.
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Tworzenie klastra AKS i włączyć zasad sieciowych
-
-Zasady sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. 
+Najpierw Utwórz klaster AKS, który obsługuje zasady sieci. Funkcja zasad sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS.
 
 Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki Azure CNI wtyczki] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking].
 
@@ -71,6 +97,7 @@ Poniższy przykładowy skrypt:
 * Tworzy jednostkę usługi do użycia usługi Azure Active Directory (Azure AD), z klastrem usługi AKS.
 * Przypisuje *Współautor* uprawnienia dla usługi AKS klastra nazwy głównej usługi w sieci wirtualnej.
 * Tworzy klaster usługi AKS w zdefiniowanych sieci wirtualnej i włącza zasad sieciowych.
+    * *Azure* używana jest opcja zasad sieci. Aby zamiast tego użyj Calico jako opcja zasad sieciowych, należy użyć `--network-policy calico` parametru.
 
 Podaj własne bezpieczne *SP_PASSWORD*. Możesz zastąpić *RESOURCE_GROUP_NAME* i *nazwa_klastra* zmiennych:
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 Utworzenie klastra trwa kilka minut. Gdy klaster będzie gotowy, skonfiguruj `kubectl` nawiązać połączenia z klastrem Kubernetes za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia. To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes, aby ich używać:
@@ -454,6 +481,9 @@ Aby dowiedzieć się więcej na temat zasad, zobacz [zasad sieciowych Kubernetes
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

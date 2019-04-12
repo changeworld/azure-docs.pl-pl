@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Active Directory w wersji 2.0 zakresy, uprawnienia i zgody | Dokumentacja firmy Microsoft
-description: Opis autoryzacji w punktu końcowego v2.0 usługi Azure AD, w tym zakresy, uprawnienia i zgody.
+title: Zakresy platforma tożsamości firmy Microsoft, uprawnienia i zgody | Dokumentacja firmy Microsoft
+description: Opis autoryzacji końcowy platformy tożsamości firmy Microsoft, w tym zakresy, uprawnienia i zgody.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,26 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881651"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501253"
 ---
-# <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgody w punkcie końcowym platforma tożsamości firmy Microsoft
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Aplikacje, które integrują się z platformą Microsoft identity postępuj zgodnie z modelu autoryzacji, która zapewnia użytkownikom i administratorom kontrolę nad jak można uzyskać dostępu do danych. Implementacja modelu autoryzacji został zaktualizowany w punkcie końcowym v2.0 i zmiany, jak aplikacja może mieć interakcji z platformą Microsoft identity. W tym artykule opisano podstawowe pojęcia tego modelu autoryzacji, w tym zakresy, uprawnienia i zgody.
+Aplikacje, które integrują się z platformą Microsoft identity postępuj zgodnie z modelu autoryzacji, która zapewnia użytkownikom i administratorom kontrolę nad jak można uzyskać dostępu do danych. Implementacja modelu autoryzacji został zaktualizowany w punkcie końcowym platforma tożsamości firmy Microsoft, a zmiany, jak aplikacja może mieć interakcji z platformą Microsoft identity. W tym artykule opisano podstawowe pojęcia tego modelu autoryzacji, w tym zakresy, uprawnienia i zgody.
 
 > [!NOTE]
-> Nie obsługuje punktu końcowego v2.0, wszystkie scenariusze i funkcje. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkie scenariusze i funkcje. Aby ustalić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
 
 ## <a name="scopes-and-permissions"></a>Zakresy i uprawnienia
 
@@ -51,15 +51,15 @@ Dotyczy to także wszystkie zasoby innych firm, które mają zintegrowany z plat
 * Zapis do kalendarza użytkownika
 * Wysyłaj pocztę jako użytkownik
 
-Definiując te rodzaje uprawnień, zasób ma precyzyjną kontrolę nad jego danych i jak funkcja interfejsu API jest widoczna. Aplikacja innej firmy mogą żądać tych uprawnień z użytkowników i administratorów, którzy musi zatwierdzić żądanie, zanim aplikacja może uzyskiwać dostęp do danych lub działanie w imieniu użytkownika. Według segmentu zasobu funkcje na mniejsze zestawy uprawnień, aplikacje innych firm mogą być wbudowane do żądania tylko określone uprawnienia, które są im niezbędne do wykonywania ich funkcji. Użytkownicy i Administratorzy mogą wiedzieć, dokładnie dane aplikacji ma dostęp do i może być większa pewność, że jej nie zachowuje się ze złośliwymi działaniami. Deweloperzy należy zawsze przestrzegać pojęcie minimalnych uprawnień, pytaniem, czy są dostępne tylko uprawnienia, które są im niezbędne do ich działanie aplikacji.
+Definiując te rodzaje uprawnień, zasób ma precyzyjną kontrolę nad jego danych i jak funkcja interfejsu API jest widoczna. Aplikacja innej firmy mogą żądać tych uprawnień z użytkowników i administratorów, którzy musi zatwierdzić żądanie, zanim aplikacja może uzyskiwać dostęp do danych lub działanie w imieniu użytkownika. Według segmentu zasobu funkcje na mniejsze zestawy uprawnień, aplikacje innych firm mogą być wbudowane do żądania tylko określone uprawnienia, które są im niezbędne do wykonywania ich funkcji. Użytkownicy i Administratorzy mogą wiedzieć, dokładnie dane aplikacji ma dostęp do i może być większa pewność nie zachowuje się ze złośliwymi działaniami. Deweloperzy należy zawsze przestrzegać pojęcie minimalnych uprawnień, pytaniem, czy są dostępne tylko uprawnienia, które są im niezbędne do ich działanie aplikacji.
 
-OAuth w wersji 2.0 tego rodzaju uprawnienia są nazywane *zakresy*. One również często nazywany *uprawnienia*. Uprawnienie jest reprezentowany w platformie tożsamości firmy Microsoft jako wartość ciągu. Wartość ciągu dla każdego uprawnienia, kontynuując przykład programu Microsoft Graph, jest:
+OAuth w wersji 2.0 tego rodzaju uprawnienia są nazywane *zakresy*. One również często nazywane *uprawnienia*. Uprawnienie jest reprezentowany w platformie tożsamości firmy Microsoft jako wartość ciągu. Wartość ciągu dla każdego uprawnienia, kontynuując przykład programu Microsoft Graph, jest:
 
 * Odczytaj kalendarza użytkownika za pomocą `Calendars.Read`
 * Zapisać przy użyciu kalendarza użytkownika `Calendars.ReadWrite`
 * Wysyłaj pocztę jako użytkownika za pomocą przez `Mail.Send`
 
-Aplikacja najczęściej żądania punktu końcowego autoryzacji tych uprawnień, określając zakresy w żądaniach wysyłanych do wersji 2.0. Jednak pewne uprawnienia na wysokim poziomie uprawnień można udzielać tylko za pośrednictwem zgody administratora i ogólnie żądane/udzielone za pomocą [punktu końcowego zgody administratora](v2-permissions-and-consent.md#admin-restricted-permissions). Czytaj dalej, aby dowiedzieć się więcej.
+Aplikacja żądania najczęściej te uprawnienia, określając zakresy w żądaniach wysyłanych do firmy Microsoft platformy tożsamości punktu końcowego autoryzacji. Jednak pewne uprawnienia na wysokim poziomie uprawnień można tylko udzielone za zgodą administratora i żądane/przyznać za pomocą [punktu końcowego zgody administratora](v2-permissions-and-consent.md#admin-restricted-permissions). Czytaj dalej, aby dowiedzieć się więcej.
 
 ## <a name="permission-types"></a>Typy uprawnień
 
@@ -72,33 +72,34 @@ Platforma tożsamości firmy Microsoft obsługuje dwa typy uprawnień: **delegow
 _Czynne uprawnienia_ uprawnień, mających aplikacji podczas wysyłania żądań do zasobu docelowego. Należy zrozumieć różnicę między delegowane uprawnienia aplikacji, które otrzymuje aplikacji i jej czynne uprawnienia, podczas wykonywania wywołań do zasobu docelowego.
 
 - Dla uprawnienia delegowane _czynne uprawnienia_ Twojej aplikacji będą najniższych uprawnieniach przecięcie delegowane uprawnienia aplikacji udzielono (za pośrednictwem zgodę) i uprawnieniami aktualnie zalogowanego użytkownika. Aplikacja nigdy nie może mieć większych uprawnień niż zalogowany użytkownik. Uprawnienia zalogowanego użytkownika mogą być określone w organizacji na podstawie zasad lub członkostwa w co najmniej jednej roli administratora. Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
-  Załóżmy na przykład aplikacji zostały przyznane _User.ReadWrite.All_ delegowane uprawnienia. Uprawnienie to przyznaje aplikacji nominalne uprawnienia do odczytu i aktualizowania profilu każdego użytkownika w organizacji. Jeśli zalogowany użytkownik jest administratorem globalnym, aplikacja będzie mogła zaktualizować profil każdego użytkownika w organizacji. Jednak jeśli zalogowany użytkownik nie ma roli administratora, aplikacja będzie mogła aktualizować tylko profil zalogowanego użytkownika. Użytkownik nie będzie mógł zaktualizować profili innych użytkowników w organizacji, ponieważ użytkownik mający uprawnienia do działania w imieniu innych osób nie ma odpowiednich uprawnień.
+
+   Załóżmy na przykład aplikacji zostały przyznane _User.ReadWrite.All_ delegowane uprawnienia. Uprawnienie to przyznaje aplikacji nominalne uprawnienia do odczytu i aktualizowania profilu każdego użytkownika w organizacji. Jeśli zalogowany użytkownik jest administratorem globalnym, aplikacja będzie mogła zaktualizować profil każdego użytkownika w organizacji. Jednak jeśli zalogowany użytkownik nie ma rolę administratora, aplikacja będzie można zaktualizować tylko profilem zalogowanego użytkownika. Użytkownik nie będzie mógł zaktualizować profili innych użytkowników w organizacji, ponieważ użytkownik mający uprawnienia do działania w imieniu innych osób nie ma odpowiednich uprawnień.
   
 - Uprawnienia aplikacji _czynne uprawnienia_ aplikacji będzie pełna poziom uprawnień też dorozumianych przez uprawnienia. Na przykład aplikację, która ma _User.ReadWrite.All_ uprawnień aplikacji może też zaktualizować profil każdego użytkownika w organizacji. 
 
 ## <a name="openid-connect-scopes"></a>Zakresy uwierzytelniania OpenID Connect
 
-V2.0 wdrażania protokołu OpenID Connect zawiera kilka zakresów dobrze zdefiniowanych, które nie są stosowane do określonego zasobu: `openid`, `email`, `profile`, i `offline_access`. `address` i `phone` OpenID Connect zakresy nie są obsługiwane.
+OpenID Connect implementacja platforma tożsamości firmy Microsoft ma kilka zakresów dobrze zdefiniowanych, które nie są stosowane do określonego zasobu: `openid`, `email`, `profile`, i `offline_access`. `address` i `phone` OpenID Connect zakresy nie są obsługiwane.
 
 ### <a name="openid"></a>openid
 
-Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu przedstawiono na stronie zgoda konta pracy jako uprawnienie "Logowanie się w", a na osobiste strona zgody użytkownika konta Microsoft jako uprawnienie "Wyświetl swój profil i nawiązać połączenie z aplikacjami i usługami korzystającymi z Twojego konta Microsoft". Posiadając to uprawnienie, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w formie `sub` oświadczenia. Daje ona również dostęp do aplikacji do punktu końcowego informacji o użytkowniku. `openid` Zakres może służyć w punkcie końcowym tokenów w wersji 2.0 można uzyskać Identyfikatora tokenów, które mogą być używane przez aplikację uwierzytelniania.
+Jeśli aplikacja wykonuje logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu przedstawiono na stronie zgoda konta pracy jako uprawnienie "Logowanie się w", a na osobiste strona zgody użytkownika konta Microsoft jako uprawnienie "Wyświetl swój profil i nawiązać połączenie z aplikacjami i usługami korzystającymi z Twojego konta Microsoft". Posiadając to uprawnienie, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w formie `sub` oświadczenia. Daje ona również dostęp do aplikacji do punktu końcowego informacji o użytkowniku. `openid` Zakres może służyć w punkcie końcowym z tokenu platformy Microsoft tożsamości można uzyskać Identyfikatora tokenów, które mogą być używane przez aplikację uwierzytelniania.
 
 ### <a name="email"></a>email
 
-`email` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji, aby do adres podstawowy adres e-mail użytkownika w postaci `email` oświadczenia. `email` Oświadczenia znajduje się w tokenie, tylko wtedy, gdy jest skojarzony z konta użytkownika, które nie zawsze jest to adres e-mail. Jeśli użyto `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
+`email` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji, aby do adres podstawowy adres e-mail użytkownika w postaci `email` oświadczenia. `email` Tylko wtedy, gdy jest to adres e-mail jest skojarzony z konta użytkownika, który nie jest zawsze oświadczenia znajduje się w tokenie. Jeśli użyto `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
 
 ### <a name="profile"></a>profil
 
-`profile` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji do znacznej ilości informacji o użytkowniku. Informacje, które mogą uzyskać dostęp, obejmują, ale nie jest ograniczony do użytkownika imię, nazwisko, preferowany nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę dostępnych w parametrze id_tokens oświadczeń profilu określonego użytkownika, zobacz [ `id_tokens` odwołania](id-tokens.md).
+`profile` Zakresu, może być używany z `openid` zakresu i innych. Daje ona dostęp do aplikacji do znacznej ilości informacji o użytkowniku. Informacje, które mogą uzyskać dostęp, który zawiera, ale nie ogranicza się do użytkownika imię, nazwisko, preferowany nazwy użytkownika i identyfikatora obiektu. Aby uzyskać pełną listę dostępnych w parametrze id_tokens oświadczeń profilu określonego użytkownika, zobacz [ `id_tokens` odwołania](id-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
 
-[ `offline_access` Zakres](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) pozwala aplikacji dostęp do zasobów w imieniu użytkownika przez dłuższy czas. Na stronie zgoda ten zakres jest wyświetlana jako uprawnienie "Zachować dostęp do danych, które mają zapewniony dostęp do". Gdy użytkownik akceptuje `offline_access` zakresu, aplikacja może odbierać tokeny odświeżania z punktu końcowego tokenów w wersji 2.0. Długotrwałe są tokeny odświeżania. Aplikację można uzyskać nowych tokenów dostępu, jak wygaśnięciu starszych.
+[ `offline_access` Zakres](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) pozwala aplikacji dostęp do zasobów w imieniu użytkownika przez dłuższy czas. Na stronie zgoda ten zakres jest wyświetlana jako uprawnienie "Zachować dostęp do danych, które mają zapewniony dostęp do". Gdy użytkownik akceptuje `offline_access` zakresu, aplikacja może odbierać tokeny odświeżania z punktu końcowego z tokenu platformy Microsoft identity. Długotrwałe są tokeny odświeżania. Aplikację można uzyskać nowych tokenów dostępu, jak wygaśnięciu starszych.
 
-Jeśli aplikacja nie jawne żądanie `offline_access` zakresu, nie będzie ona otrzymywać tokenów odświeżania. Oznacza to, że po wprowadzeniu kodu autoryzacji w [przepływ kodu autoryzacji OAuth 2.0](active-directory-v2-protocols.md), otrzymasz tylko tokenu dostępu z `/token` punktu końcowego. Token dostępu jest ważny przez krótki czas. Token dostępu jest zazwyczaj wygasa w ciągu jednej godziny. AT, że punkt, Twoja aplikacja powinna przekieruje użytkownika z powrotem do `/authorize` punktu końcowego, aby uzyskać nowy kod autoryzacji. Podczas tego przekierowania, w zależności od typu aplikacji użytkownik może być konieczne ponowne wprowadzenie poświadczeń lub ponownie zgodę na uprawnienia.  Należy pamiętać, że podczas `offline_access` zakres jest automatycznie zleconych przez serwer, klient musi nadal żądania w celu odbierania tokenów odświeżania. 
+Jeśli aplikacja nie jawne żądanie `offline_access` zakresu, nie będzie ona otrzymywać tokenów odświeżania. Oznacza to, że po wprowadzeniu kodu autoryzacji w [przepływ kodu autoryzacji OAuth 2.0](active-directory-v2-protocols.md), otrzymasz tylko tokenu dostępu z `/token` punktu końcowego. Token dostępu jest ważny przez krótki czas. Token dostępu jest zazwyczaj wygasa w ciągu jednej godziny. AT, że punkt, Twoja aplikacja powinna przekieruje użytkownika z powrotem do `/authorize` punktu końcowego, aby uzyskać nowy kod autoryzacji. Podczas tego przekierowania, w zależności od typu aplikacji użytkownik może być konieczne ponowne wprowadzenie poświadczeń lub ponownie zgodę na uprawnienia. Gdy `offline_access` zakres jest automatycznie zleconych przez serwer, klient musi nadal żądania w celu odbierania tokenów odświeżania.
 
-Aby uzyskać więcej informacji o tym, jak pobrać i używać tokenów odświeżania, zobacz [referencyjne protokołu v2.0](active-directory-v2-protocols.md).
+Aby uzyskać więcej informacji o tym, jak pobrać i używać tokenów odświeżania, zobacz [referencyjne protokołu platforma tożsamości firmy Microsoft](active-directory-v2-protocols.md).
 
 ## <a name="requesting-individual-user-consent"></a>Żądanie zgody użytkownika
 
@@ -118,7 +119,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` Parametr jest listę rozdzielonych spacjami delegowane uprawnienia, których żąda aplikacja. Każdego uprawnienia, które jest wskazywany przez dołączenie wartości uprawnienie do identyfikatora zasobu (identyfikator URI Identyfikatora aplikacji). W tym przykładzie żądania aplikacji wymaga uprawnień do odczytu użytkownika kalendarza, a następnie wysyłaj pocztę jako użytkownik.
 
-Gdy użytkownik wprowadzi swoje poświadczenia, punktu końcowego v2.0 sprawdza, czy pasującego rekordu w *zgody użytkownika*. Jeśli użytkownik nie wyraził zgody na dowolne żądane uprawnienia w przeszłości, ani administrator wyraził zgody na te uprawnienia w imieniu całej organizacji, punktu końcowego v2.0 prosi użytkownika o nadanie uprawnień żądany.
+Gdy użytkownik wprowadzi swoje poświadczenia, punkt końcowy platforma tożsamości firmy Microsoft sprawdza, czy pasującego rekordu w *zgody użytkownika*. Jeśli użytkownik nie wyraził zgody na dowolne żądane uprawnienia w przeszłości, ani administrator wyraził zgody na te uprawnienia w imieniu całej organizacji, Microsoft platformy tożsamości z punktu końcowego z monitem o żądane uprawnienia.
 
 > [!NOTE]
 > W tej chwili `offline_access` ("zachować dostęp do danych mają zapewniony dostęp do") i `user.read` ("zalogowania Cię i wczytania Twojego profilu) uprawnienia są automatycznie umieszczane w początkowej wyrażania zgody dla aplikacji.  Te uprawnienia są zazwyczaj wymagane dla aplikacji odpowiednie funkcje — `offline_access` zapewnia dostęp do aplikacji, można odświeżyć tokenów krytyczne dla natywnych i aplikacji sieci web podczas `user.read` daje dostęp do `sub` oświadczeń, umożliwiając klienta lub aplikacji, aby poprawnie zidentyfikować użytkownika, za pośrednictwem czasu i dostęp do informacji o użytkowniku podstawowe.  
@@ -149,7 +150,7 @@ Jeśli aplikacja wymaga dostępu do ograniczonym zakresy dla organizacji, zażą
 
 Jeśli aplikacja żąda uprawnienia delegowane wysokim poziomie uprawnień, a administrator przyznaje tych uprawnień za pośrednictwem punktu końcowego zgody administratora, zgoda zostanie ustanowione dla wszystkich użytkowników w dzierżawie.
 
-Jeśli aplikacja żąda uprawnień aplikacji, a administrator daje te uprawnienia przez administratora zgody punktu końcowego, tym przydziałem nie odbywa się w imieniu dowolnego określonego użytkownika. Zamiast tego aplikacja kliencka są udzielane uprawnienia *bezpośrednio*. Tego rodzaju uprawnień zazwyczaj są używane tylko przez usługi demona oraz innych nieinterakcyjnych aplikacji, które są uruchamiane w tle.
+Jeśli aplikacja żąda uprawnień aplikacji, a administrator daje te uprawnienia przez administratora zgody punktu końcowego, tym przydziałem nie jest wykonywane w imieniu dowolnego określonego użytkownika. Zamiast tego aplikacja kliencka są udzielane uprawnienia *bezpośrednio*. Tego rodzaju uprawnienia są używane tylko przez usługi demona oraz innych nieinterakcyjnych aplikacji, które są uruchamiane w tle.
 
 ## <a name="using-the-admin-consent-endpoint"></a>Przy użyciu punktu końcowego zgody administratora
 
@@ -163,8 +164,9 @@ Aby zobaczyć przykładowy kod, który implementuje kroków, zobacz [przykładow
 
 Zgoda administratora nie akceptuje parametr zakresu, więc żądanej wszelkie uprawnienia muszą być statycznie zdefiniowane w rejestracji aplikacji. Ogólnie rzecz biorąc jest najlepszym rozwiązaniem, aby upewnić się, że uprawnienia zadeklarowany jako statyczny dla danej aplikacji jest nadzbiorem uprawnienia, że będzie on dynamicznie/przyrostowo żąda.
 
-Aby skonfigurować listę statycznie żądanych uprawnień dla aplikacji: 
-1. Przejdź do aplikacji w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), lub [tworzenie aplikacji](quickstart-v2-register-an-app.md) Jeśli jeszcze go.
+#### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Aby skonfigurować listę statycznie żądanych uprawnień dla aplikacji
+
+1. Przejdź do aplikacji w [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowiskiem lub [tworzenie aplikacji](quickstart-register-app.md) Jeśli jeszcze go.
 2. Znajdź **Microsoft Graph uprawnienia** sekcji, a następnie Dodaj uprawnienia, których wymaga aplikacja.
 3. **Zapisz** rejestracji aplikacji.
 
@@ -172,11 +174,11 @@ Aby skonfigurować listę statycznie żądanych uprawnień dla aplikacji:
 
 Zazwyczaj podczas kompilowania aplikacji korzystającej z punktu końcowego zgody administratora, aplikacja musi strony lub widok, w którym administrator może zatwierdzić uprawnienia aplikacji. Ta strona może być część przepływu rejestracji aplikacji, część ustawień aplikacji lub może być dedykowany przepływ "Połącz". W wielu przypadkach dobrym pomysłem dla aplikacji wyświetlić to "łączenie" Wyświetl tylko wtedy, gdy użytkownik zalogował się przy użyciu służbowego konta Microsoft.
 
-Po zalogowaniu się użytkownika do aplikacji, można zidentyfikować organizacji, do której należy administrator, przed monitem o zatwierdzenia niezbędnych uprawnień. Chociaż nie niezbędne, pomoże Ci utworzyć bardziej intuicyjne środowisko dla użytkowników w organizacji. Aby utworzyć użytkownika, postępuj zgodnie z naszym [samouczki protocol w wersji 2.0](active-directory-v2-protocols.md).
+Po zalogowaniu się użytkownika do aplikacji, można zidentyfikować organizacji, do której należy administrator, przed monitem o zatwierdzenia niezbędnych uprawnień. Chociaż nie niezbędne, pomoże Ci utworzyć bardziej intuicyjne środowisko dla użytkowników w organizacji. Aby się zalogować użytkownika, postępuj zgodnie z naszym [samouczki protokołu platforma tożsamości firmy Microsoft](active-directory-v2-protocols.md).
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>Żądanie uprawnień od administratora katalogu
 
-Gdy wszystko będzie gotowe zażądać uprawnień z administratorem Twojej organizacji, można przekierować użytkownika do v2.0 *punktu końcowego zgody administratora*.
+Gdy wszystko będzie gotowe zażądać uprawnień z administratorem Twojej organizacji, można przekierować użytkownika do platformą Microsoft identity *punktu końcowego zgody administratora*.
 
 ```
 // Line breaks are for legibility only.
@@ -198,7 +200,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
 | `tenant` | Wymagane | Dzierżawy katalogu, który chcesz zażądać uprawnień z. Mogą być podane w formacie przyjaznej nazwy lub identyfikatora GUID lub objęty do którego odwołuje się `common` jak pokazano w przykładzie. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klienta) [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) lub [nowego portalu rejestracji (wersja zapoznawcza) aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) został przypisany do aplikacji. |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `redirect_uri` | Wymagane |Identyfikator URI, którego odpowiedź do wysłania dla aplikacji do obsługi przekierowania. Dokładnie musi odpowiadać jednej z przekierowania URI, który został zarejestrowany w portalu rejestracji aplikacji. |
 | `state` | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którą chcesz. Umożliwia kodowanie informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w stan. |
 
@@ -235,7 +237,7 @@ Po otrzymaniu pomyślnej odpowiedzi z punktu końcowego zgody administratora, ap
 
 ## <a name="using-permissions"></a>Przy użyciu uprawnień
 
-Po użytkownik wyraża zgodę na uprawnienia dla swojej aplikacji, aplikacji można uzyskać tokenów dostępu, które reprezentują aplikacji uprawnień dostępu do zasobu w niektórych pojemności. Token dostępu może służyć tylko do jednego zasobu zakodowanych w tokenie dostępu jest jednak wszystkie uprawnienia, która aplikacja ma przyznane dla tego zasobu. Uzyskanie tokenu dostępu, aplikacja zgłosić wniosek aby token punktu końcowego v2.0, następująco:
+Po użytkownik wyraża zgodę na uprawnienia dla swojej aplikacji, aplikacji można uzyskać tokenów dostępu, które reprezentują aplikacji uprawnień dostępu do zasobu w niektórych pojemności. Token dostępu może służyć tylko do jednego zasobu zakodowanych w tokenie dostępu jest jednak wszystkie uprawnienia, która aplikacja ma przyznane dla tego zasobu. Uzyskanie tokenu dostępu, aplikację zgłosić wniosek do firmy Microsoft tożsamości platformy punktu końcowego tokenu, następująco:
 
 ```
 POST common/oauth2/v2.0/token HTTP/1.1
@@ -254,24 +256,24 @@ Content-Type: application/json
 
 W żądaniach HTTP do zasobu, można użyć wynikowy token dostępu. Niezawodne wskazuje na zasób czy aplikacja ma odpowiednie uprawnienia do wykonywania określonych zadań. 
 
-Aby uzyskać więcej informacji na temat protokołu OAuth 2.0 i uzyskiwanie tokenów dostępu, zobacz [referencyjne protokołu punktu końcowego v2.0](active-directory-v2-protocols.md).
+Aby uzyskać więcej informacji na temat protokołu OAuth 2.0 i uzyskiwanie tokenów dostępu, zobacz [odwołania do programu Microsoft identity platformy punktu końcowego protokołu](active-directory-v2-protocols.md).
 
 ## <a name="the-default-scope"></a>Zakres /.default
 
-Możesz użyć `/.default` zakresu, aby ułatwić migrowanie aplikacji z punktu końcowego w wersji 1.0 do punktu końcowego v2.0. To jest wbudowanym zakresem dla każdej aplikacji, która odwołuje się do statyczną listę uprawnień skonfigurowanych w rejestracji aplikacji. A `scope` wartość `https://graph.microsoft.com/.default` funkcjonalnie jest taka sama jak punkty końcowe v1.0 `resource=https://graph.microsoft.com` — to znaczy, żąda tokenu z zakresami na programie Microsoft Graph, która aplikacja została zarejestrowana dla w witrynie Azure portal.
+Możesz użyć `/.default` zakresu, aby ułatwić migrowanie aplikacji z punktu końcowego w wersji 1.0 do endpoint platforma tożsamości firmy Microsoft. To jest wbudowanym zakresem dla każdej aplikacji, która odwołuje się do statyczną listę uprawnień skonfigurowanych w rejestracji aplikacji. A `scope` wartość `https://graph.microsoft.com/.default` funkcjonalnie jest taka sama jak punkty końcowe v1.0 `resource=https://graph.microsoft.com` — to znaczy, żąda tokenu z zakresami na programie Microsoft Graph, która aplikacja została zarejestrowana dla w witrynie Azure portal.
 
-Zakres /.default mogą być używane w dowolnym przepływ OAuth 2.0, ale jest szczególnie niezbędne w [przepływu w imieniu z](v2-oauth2-on-behalf-of-flow.md) i [przepływ poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md).  
+Zakres /.default mogą być używane w dowolnym przepływ OAuth 2.0, ale jest to konieczne w [przepływu w imieniu z](v2-oauth2-on-behalf-of-flow.md) i [przepływ poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md).  
 
 > [!NOTE]
 > Klienci nie można łączyć statyczne (`/.default`) i dynamiczny zgody w pojedynczym żądaniu. W efekcie `scope=https://graph.microsoft.com/.default+mail.read` spowoduje błąd z powodu kombinacji typów zakresu.
 
 ### <a name="default-and-consent"></a>/.default i zgody
 
-`/.default` Zakres wyzwala zachowanie punktu końcowego v1.0 `prompt=consent` także. Wymaga zgody na wszystkie uprawnienia zarejestrowane przez aplikację, niezależnie od tego zasobu. Jeśli dołączone jako część żądania, `/.default` zakres zwraca token, który zawiera zakresy dla specjalnie żądanego zasobu.
+`/.default` Zakres wyzwala zachowanie punktu końcowego v1.0 `prompt=consent` także. Wymaga zgody na wszystkie uprawnienia zarejestrowane przez aplikację, niezależnie od tego zasobu. Jeśli dołączone jako część żądania, `/.default` zakres zwraca token, który zawiera zakresy dla żądanego zasobu.
 
 ### <a name="default-when-the-user-has-already-given-consent"></a>/.default po użytkownik już wyraził zgody
 
-Ponieważ `/.default` jest funkcjonalnie identyczny `resource`-zachowanie v1.0 skoncentrowane na punkt końcowy zapewnia z nią zgody zachowanie punktu końcowego w wersji 1.0. To znaczy `/.default` wyzwala monit o wyrażenie zgody tylko, jeśli przyznano uprawnienie nie między klientem i zasobu przez użytkownika. Jeśli istnieje taki zgody, następnie token zostanie zwrócony zawierający wszystkie zakresy przyznane przez użytkownika dla tego zasobu. Jednakże, jeśli brak uprawnienia zostały przyznane, lub `prompt=consent` parametr został podany, monit o wyrażenie zgody będą wyświetlane dla wszystkich zakresów zarejestrowane przez aplikację klienta. 
+Ponieważ `/.default` jest funkcjonalnie identyczny `resource`-zachowanie v1.0 skoncentrowane na punkt końcowy zapewnia z nią zgody zachowanie punktu końcowego w wersji 1.0. To znaczy `/.default` wyzwala monit o wyrażenie zgody tylko, jeśli przyznano uprawnienie nie między klientem i zasobu przez użytkownika. Jeśli istnieje taki zgody, następnie token zostanie zwrócony zawierający wszystkie zakresy przyznane przez użytkownika dla tego zasobu. Jednakże, jeśli brak uprawnienia zostały przyznane, lub `prompt=consent` parametr został podany, monit o wyrażenie zgody będą wyświetlane dla wszystkich zakresów zarejestrowane przez aplikację klienta.
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Przykład 1: Użytkownik lub Administrator dzierżawy ma przyznane uprawnienia
 
@@ -300,7 +302,7 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Daje ekran wyrażania zgody dla wszystkich zarejestrowanych uprawnień (jeśli dotyczy oparty na powyższych opisów zgody i `/.default`), następnie zwraca id_token zamiast tokenu dostępu.  To zachowanie dla niektórych starszych klientów, przenoszenie z biblioteki ADAL do biblioteki MSAL istnieje i nie powinny być używane przez nowych klientów, przeznaczone dla punktu końcowego v2.0.  
+Daje ekran wyrażania zgody dla wszystkich zarejestrowanych uprawnień (jeśli dotyczy oparty na powyższych opisów zgody i `/.default`), następnie zwraca id_token zamiast tokenu dostępu.  To zachowanie dla niektórych starszych klientów, przenoszenie z biblioteki ADAL do biblioteki MSAL istnieje i nie powinny być używane przez nowych klientów, przeznaczone dla punktu końcowego platformy tożsamości firmy Microsoft.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Rozwiązywanie problemów z uprawnienia i zgody
 

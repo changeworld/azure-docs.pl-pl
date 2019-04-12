@@ -1,6 +1,6 @@
 ---
 title: Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji w OAuth | Azure
-description: Tworzenie aplikacji sieci web przy użyciu platformą Microsoft identity implementacji protokołu uwierzytelniania OAuth 2.0.
+description: Tworzenie aplikacji sieci web przy użyciu implementacji platformy tożsamości firmy Microsoft protokołu uwierzytelniania OAuth 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,34 +13,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcda3e1ee8029bf40a0d7eec2ad440b7b128a650
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 79e0ebce5704e7b61956568f5ebbce6ea6cbc3af
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470271"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500961"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu autoryzacji OAuth 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które są zainstalowane na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Przy użyciu app model v2.0 w implementacji protokołu OAuth 2.0, możesz dodać Zaloguj się i interfejs API dostępu do aplikacji mobilnych i klasycznych. Ten przewodnik jest niezależny od języka i opisano, jak wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek [biblioteki uwierzytelniania usługi platformy Azure typu open-source](active-directory-authentication-libraries.md).
+Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które są zainstalowane na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Przy użyciu implementacji platformy tożsamości firmy Microsoft, OAuth 2.0, możesz dodać Zaloguj się i interfejs API dostępu do aplikacji mobilnych i klasycznych. Ten przewodnik jest niezależny od języka i opisano, jak wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek [biblioteki uwierzytelniania usługi platformy Azure typu open-source](active-directory-authentication-libraries.md).
 
 > [!NOTE]
-> Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy platforma tożsamości firmy Microsoft. Aby ustalić, należy użyć programu Microsoft platformy tożsamości z punktu końcowego, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0.
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punkt końcowy platforma tożsamości firmy Microsoft.
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
 Na wysokim poziomie przepływ cały proces uwierzytelniania dla aplikacji natywnych/mobile nieco wyglądają następująco:
 
-![Przepływ kodu autoryzacji OAuth](./media/v2-oauth2-auth-code-flow/convergence_scenarios_native.png)
+![Przepływ kodu autoryzacji OAuth](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
 ## <a name="request-an-authorization-code"></a>Żądanie zwróciło kod autoryzacji
 
@@ -61,8 +61,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Kliknij poniższy link, aby wykonać tego żądania. Po zarejestrowaniu się w przeglądarce powinno zostać przekierowane do `https://localhost/myapp/` z `code` na pasku adresu.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | Parametr    | Wymagane/opcjonalne | Opis |
 |--------------|-------------|--------------|
@@ -73,15 +71,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`  | wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na. |
 | `response_mode`   | Zalecane | Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może to być jeden z następujących modyfikatorów dostępu:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Aby uzyskać więcej informacji, zobacz [protokołu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widoku, które znajdowały się w wartości również zakodować informacje o stanie użytkownika w aplikacji. |
-| `prompt`  | opcjonalne    | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`.<br/><br/>- `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, zwróci punktu końcowego v2.0 `interaction_required` błędu.<br/>- `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
+| `prompt`  | opcjonalne    | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są `login`, `none`, i `consent`.<br/><br/>- `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie jest wyświetlone wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, zwróci Microsoft platformy tożsamości z punktu końcowego `interaction_required` błędu.<br/>- `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
 | `login_hint`  | opcjonalne    | Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia.   |
-| `domain_hint`  | opcjonalne    | Może być jednym z `consumers` lub `organizations`.<br/><br/>Jeśli uwzględniony, pominie proces odnajdywania bazujące na poczcie e-mail tego użytkownika przechodzi przez w witrynie v2.0 logowania, co prowadzi do nieco bardziej usprawnione środowisko użytkownika. Aplikacje często będzie tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` z poprzedniego logowania. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.  |
-| `code_challenge_method` | opcjonalne    | Metoda użyta do zakodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z następujących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Jeśli wykluczone, `code_challenge` przyjęto, że będzie mieć postać zwykłego tekstu, jeśli `code_challenge` jest dołączony. Obsługuje platformy Azure 2.0 w usłudze AAD, zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `domain_hint`  | opcjonalne    | Może być jednym z `consumers` lub `organizations`.<br/><br/>Jeśli uwzględniony, pominie proces odnajdywania bazujące na poczcie e-mail tego użytkownika przechodzi przez na stronie logowania, co prowadzi do nieco bardziej usprawnione środowisko użytkownika. Aplikacje często będzie tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` z poprzedniego logowania. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.  |
+| `code_challenge_method` | opcjonalne    | Metoda użyta do zakodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z następujących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Jeśli wykluczone, `code_challenge` przyjęto, że będzie mieć postać zwykłego tekstu, jeśli `code_challenge` jest dołączony. Platforma tożsamości firmy Microsoft obsługuje zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 | `code_challenge`  | opcjonalne | Wykorzystywany do zabezpieczenia przydziałów kod autoryzacji za pomocą klucza dowód kod programem Exchange (PKCE) z klientami. Jeśli wymagane `code_challenge_method` jest dołączony. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
-W tym momencie użytkownik będzie monitowany wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Punktu końcowego v2.0 będzie również upewnij się, że użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgody do dowolnego z tych uprawnień, zostanie wyświetlony monit użytkownika o zgodę na wymagane uprawnienia. Szczegółowe informacje o [uprawnienia, wyrażania zgody i aplikacje z wieloma dzierżawami znajdują się w tym miejscu](v2-permissions-and-consent.md).
+W tym momencie użytkownik będzie monitowany wprowadzić swoje poświadczenia i wykonania uwierzytelnienia. Microsoft platformy tożsamości z punktu końcowego będą upewnij się również, że użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgody do dowolnego z tych uprawnień, zostanie wyświetlony monit użytkownika o zgodę na wymagane uprawnienia. Szczegółowe informacje o [uprawnienia, wyrażania zgody i aplikacje z wieloma dzierżawami znajdują się w tym miejscu](v2-permissions-and-consent.md).
 
-Po użytkownik jest uwierzytelniany i przyznaje zgody, punktu końcowego v2.0 zwróci odpowiedź do aplikacji, na wskazany `redirect_uri`, przy użyciu metody podanej w `response_mode` parametru.
+Po użytkownik jest uwierzytelniany i przyznaje zgody, Microsoft platformy tożsamości z punktu końcowego zwróci odpowiedź do aplikacji, na wskazany `redirect_uri`, przy użyciu metody podanej w `response_mode` parametru.
 
 #### <a name="successful-response"></a>Pomyślna odpowiedź
 
@@ -95,7 +93,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 | Parametr | Opis  |
 |-----------|--------------|
-| `code` | Authorization_code, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są bardzo krótkotrwałe, zwykle wygasają po upływie około 10 minut. |
+| `code` | Authorization_code, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są krótkotrwałe, zwykle wygasają po upływie około 10 minut. |
 | `state` | Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 #### <a name="error-response"></a>Odpowiedzi na błąd
@@ -122,11 +120,11 @@ W poniższej tabeli opisano różne kody błędów, które mogą być zwracane w
 | `invalid_request` | Błąd protokołu, np. Brak wymaganego parametru. | Usuń i ponownie prześlij żądanie. Jest to błąd programistyczny, zazwyczaj przechwytywane w początkowej fazie testowania. |
 | `unauthorized_client` | Aplikacja kliencka nie ma zezwolenia na żądanie kod autoryzacji. | Ten błąd występuje zazwyczaj, gdy aplikacja kliencka nie jest zarejestrowany w usłudze Azure AD lub nie została dodana do dzierżawy usługi Azure AD przez użytkownika. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
 | `access_denied`  | Właściciel zasobu odmowa zgody  | Aplikacja kliencka może powiadomić użytkownika, którego nie można kontynuować, chyba że użytkownik wyrazi na to zgody. |
-| `unsupported_response_type` | Serwer autoryzacji nie obsługuje typu odpowiedzi w żądaniu. | Usuń i ponownie prześlij żądanie. To rozwinięcie błąd jest zwykle przechwycono w początkowej fazie testowania.  |
+| `unsupported_response_type` | Serwer autoryzacji nie obsługuje typu odpowiedzi w żądaniu. | Usuń i ponownie prześlij żądanie. Jest to błąd programistyczny, zazwyczaj przechwytywane w początkowej fazie testowania.  |
 | `server_error`  | Serwer napotkał nieoczekiwany błąd.| Ponów żądanie. Te błędy mogą być wynikiem tymczasowe warunki. Aplikacja kliencka może wyjaśnić użytkownikowi, że odpowiedzi przez punkt końcowy zostanie opóźnione do tymczasowego błędu. |
 | `temporarily_unavailable`   | Serwer jest tymczasowo zbyt zajęty, aby obsłużyć żądanie. | Ponów żądanie. Aplikacja kliencka może wyjaśnić użytkownikowi, że odpowiedzi przez punkt końcowy jest opóźnione ze względu na tymczasowy warunek. |
-| `invalid_resource`  | Zasób docelowy jest nieprawidłowy, ponieważ nie istnieje, usługa Azure AD nie może okazać się lub nie jest poprawnie skonfigurowana. | Ten błąd wskazuje, że zasób, jeśli istnieje, nie został skonfigurowany w ramach dzierżawy. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
-| `login_required` | Zbyt wiele lub nie znaleziono żadnych użytkowników | Klient zażądał dyskretne uwierzytelnianie (`prompt=none`), ale nie można odnaleźć jednego użytkownika. Może to oznaczać, że w sesji lub żaden użytkownik nie są aktywne wielu użytkowników. Uwzględnia to dzierżawy wybrać (na przykład, jeśli istnieją 2 aktywne konta usługi AAD i jeden MSA i `consumers` wybrano dyskretne uwierzytelnianie będzie działać). |
+| `invalid_resource`  | Zasób docelowy jest nieprawidłowy, ponieważ nie istnieje, usługa Azure AD nie może okazać się lub nie jest prawidłowo skonfigurowany. | Ten błąd wskazuje, że zasób, jeśli istnieje, nie został skonfigurowany w ramach dzierżawy. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
+| `login_required` | Zbyt wiele lub nie znaleziono żadnych użytkowników | Klient zażądał dyskretne uwierzytelnianie (`prompt=none`), ale nie można odnaleźć jednego użytkownika. Może to oznaczać, że w sesji lub żaden użytkownik nie są aktywne wielu użytkowników. Uwzględnia to dzierżawy wybrać (na przykład, jeśli istnieją dwa aktywne konta usługi Azure AD i jednego konta Microsoft i `consumers` wybrano dyskretne uwierzytelnianie będzie działać). |
 | `interaction_required` | Żądanie wymaga interakcji użytkownika. | Krok dodatkowego uwierzytelniania lub zgoda jest wymagana. Ponów próbę wykonania żądania bez `prompt=none`. |
 
 ## <a name="request-an-access-token"></a>Żądanie tokenu dostępu
@@ -149,17 +147,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman! (Nie zapomnij zastąpić `code`) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Nie zapomnij zastąpić `code`) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 | Parametr  | Wymagane/opcjonalne | Opis     |
 |------------|-------------------|----------------|
 | `tenant`   | wymagane   | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | wymagane  | Identyfikator aplikacji (klienta) [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
 | `grant_type` | wymagane   | Musi być `authorization_code` dla przepływ kodu autoryzacji.   |
-| `scope`      | wymagane   | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w pierwszy gałęzi. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
+| `scope`      | wymagane   | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w pierwszy gałęzi. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, Microsoft platformy tożsamości z punktu końcowego zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `code`          | wymagane  | Authorization_code, uzyskanego w pierwszej gałęzi przepływu. |
 | `redirect_uri`  | wymagane  | Taką samą wartość redirect_uri, który został użyty do uzyskania authorization_code. |
-| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Klucz tajny klienta musi być zakodowane w adresie URL przed wysłaniem.  |
+| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie można używać klucza tajnego aplikacji w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest to wymagane dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Klucz tajny klienta musi być zakodowane w adresie URL przed wysłaniem.  |
 | `code_verifier` | opcjonalne  | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Pomyślna odpowiedź
@@ -218,10 +216,10 @@ Odpowiedzi na błędy będzie wyglądać następująco:
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Błąd protokołu, np. Brak wymaganego parametru. | Usuń i ponownie prześlij żądanie   |
 | `invalid_grant`    | Kod autoryzacji lub weryfikatora kodu PKCE jest nieprawidłowy lub wygasł. | Wypróbuj nowe żądanie do `/authorize` punktu końcowego i sprawdź, czy parametr wartość parametru code_verifier jest poprawna.  |
-| `unauthorized_client` | Uwierzytelniany klient nie ma uprawnień do użycia tego typu przydziału autoryzacji. | Dzieje się tak zazwyczaj, gdy aplikacja kliencka nie jest zarejestrowany w usłudze Azure AD lub nie została dodana do dzierżawy usługi Azure AD przez użytkownika. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
-| `invalid_client` | Nie można uwierzytelnić klienta.  | Poświadczenia klienta są nieprawidłowe. Aby rozwiązać problem, administrator aplikacji aktualizuje poświadczenia.   |
+| `unauthorized_client` | Uwierzytelniany klient nie jest autoryzowane do używania tego typu przydziału autoryzacji. | Dzieje się tak zazwyczaj, gdy aplikacja kliencka nie jest zarejestrowany w usłudze Azure AD lub nie została dodana do dzierżawy usługi Azure AD przez użytkownika. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
+| `invalid_client` | Nie można uwierzytelnić klienta.  | Poświadczenia klienta nie są prawidłowe. Aby rozwiązać problem, administrator aplikacji aktualizuje poświadczenia.   |
 | `unsupported_grant_type` | Serwer autoryzacji nie obsługuje typu Udziel autoryzacji. | Zmień typ przydział w żądaniu. Tego rodzaju błąd powinien wystąpić tylko podczas programowania i można wykryć w początkowej fazie testowania. |
-| `invalid_resource` | Zasób docelowy jest nieprawidłowy, ponieważ nie istnieje, usługa Azure AD nie może okazać się lub nie jest poprawnie skonfigurowana. | Oznacza to, że zasób, jeśli istnieje, nie został skonfigurowany w ramach dzierżawy. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD.  |
+| `invalid_resource` | Zasób docelowy jest nieprawidłowy, ponieważ nie istnieje, usługa Azure AD nie może okazać się lub nie jest prawidłowo skonfigurowany. | Oznacza to, że zasób, jeśli istnieje, nie został skonfigurowany w ramach dzierżawy. Aplikacja może monitować użytkownika przy użyciu instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD.  |
 | `interaction_required` | Żądanie wymaga interakcji użytkownika. Na przykład krok dodatkowego uwierzytelniania jest wymagany. | Ponów próbę wykonania żądania z tego samego zasobu.  |
 | `temporarily_unavailable` | Serwer jest tymczasowo zbyt zajęty, aby obsłużyć żądanie. | Ponów żądanie. Aplikacja kliencka może wyjaśnić użytkownikowi, że odpowiedzi przez punkt końcowy jest opóźnione ze względu na tymczasowy warunek. |
 
@@ -230,7 +228,7 @@ Odpowiedzi na błędy będzie wyglądać następująco:
 Teraz, gdy zostały pomyślnie uzyskano `access_token`, umieszczając go w służy token w żądaniach wysyłanych do interfejsów API sieci Web `Authorization` nagłówka:
 
 > [!TIP]
-> Wykonanie tego żądania w narzędziu Postman! (Zastąp `Authorization` nagłówek pierwszego) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
+> Wykonanie tego żądania w narzędziu Postman! (Zastąp `Authorization` nagłówek pierwszego) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 GET /v1.0/me/messages
@@ -244,7 +242,7 @@ Access_tokens są krótkie krótkotrwałe i należy je odświeżyć, po ich wyga
 
 Odświeżanie tokenów nie mają określonego okresy istnienia. Zazwyczaj okresy istnienia tokenów odświeżania są stosunkowo długo. Jednak w niektórych przypadkach, tokeny odświeżania wygaśnie, zostaną odwołane lub braku wystarczających uprawnień do żądanej akcji. Twoja aplikacja potrzebuje do oczekują i obsługiwać [błędy zwrócone przez punkt końcowy wystawiania tokenu](#error-codes-for-token-endpoint-errors) poprawnie. 
 
-Mimo że nie zostaną odwołane tokeny odświeżania, gdy jest używana w celu uzyskania nowych tokenów dostępu, mają być Odrzuć stare token odświeżania. [Specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-6) jest wyświetlany komunikat: "Serwer autoryzacji może wystawić nowy token odświeżania, w którym należy odrzucić przypadku klient stary token odświeżania i zastąp go nowego tokena odświeżania. Serwer autoryzacji może cofnąć stary token odświeżania po wydaniu nowego tokena odświeżania do klienta."  
+Mimo że tokeny odświeżania nie są odwoływane, gdy jest używana w celu uzyskania nowych tokenów dostępu, mają być Odrzuć stare token odświeżania. [Specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-6) jest wyświetlany komunikat: "Serwer autoryzacji może wystawić nowy token odświeżania, w którym należy odrzucić przypadku klient stary token odświeżania i zastąp go nowego tokena odświeżania. Serwer autoryzacji może cofnąć stary token odświeżania po wydaniu nowego tokena odświeżania do klienta."  
 
 ```
 // Line breaks for legibility only
@@ -261,8 +259,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman! (Nie zapomnij zastąpić `refresh_token`) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
-> 
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Nie zapomnij zastąpić `refresh_token`) [ ![uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
 | Parametr     |                | Opis        |
@@ -270,9 +267,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | wymagane     | `{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | wymagane    | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `grant_type`    | wymagane    | Musi być `refresh_token` dla tej gałęzi przepływ kodu autoryzacji. |
-| `scope`         | wymagane    | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w oryginalnym gałęzi żądania authorization_code wymagane. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, punktu końcowego v2.0 zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
+| `scope`         | wymagane    | Rozdzielonej spacjami listy zakresów. Zakresy w tej gałęzi musi być równoważna lub być podzbiorem wartości zakresów w oryginalnym gałęzi żądania authorization_code wymagane. Jeśli określono w tym żądaniu zakresów obejmują wiele zasobów serwerów, Microsoft platformy tożsamości z punktu końcowego zwróci tokenu do zasobu, określony w zakresie pierwszy. Aby uzyskać bardziej szczegółowy opis zakresów, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md). |
 | `refresh_token` | wymagane    | Refresh_token, uzyskanego w drugim nogi przepływ. |
-| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web. |
+| `client_secret` | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy można użyć w aplikacji macierzystej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest to wymagane dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web. |
 
 #### <a name="successful-response"></a>Pomyślna odpowiedź
 

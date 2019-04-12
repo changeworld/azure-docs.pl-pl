@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361460"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496099"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -41,8 +41,8 @@ Dowiedz się więcej o usłudze backup [przy użyciu kopii zapasowej serwera](ba
 **Akcja** | **Pomoc techniczna**
 --- | ---
 Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej platformy Azure z systemem Windows | Obsługiwane w przypadku:  System Windows Server 2019 r (rdzenie Datacenter/Datacenter), Windows Server 2016 (Datacenter/Datacenter-rdzeniowe); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM i z dodatkiem SP1)
-Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3<br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
-Tworzenie kopii zapasowej maszyny Wirtualnej to shutdown/offline/znalezienia maszyny Wirtualnej | Obsługiwane.<br/><br/> Migawka jest spójna w razie awarii tylko, nie spójny na poziomie aplikacji.
+Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Tworzenie kopii zapasowej maszyny Wirtualnej, która jest shutdown/offline maszyny Wirtualnej | Obsługiwane.<br/><br/> Migawka jest spójna w razie awarii tylko, nie spójny na poziomie aplikacji.
 Wykonywanie kopii zapasowych dysków, po migracji do usługi managed disks | Obsługiwane.<br/><br/> Kopia zapasowa, będą nadal działać. Nie jest wymagana żadna akcja.
 Tworzenie kopii zapasowych dysków zarządzanych, po włączeniu blokady grupy zasobów | Nieobsługiwane.<br/><br/> Usługa Azure Backup nie można usunąć starsze punkty zasobów i kopie zapasowe będą kończyć się niepowodzeniem, jeśli osiągnięto maksymalny limit punktów przywracania.
 Modyfikowanie zasad tworzenia kopii zapasowej dla maszyny Wirtualnej | Obsługiwane.<br/><br/> Maszyna wirtualna zostanie skopiowana za pomocą ustawień harmonogram i okres przechowywania w nowych zasad. Jeśli ustawienia przechowywania są przedłużony, istniejące punkty odzyskiwania są oznaczone i przechowywane. One zostały obniżone, istniejące punkty odzyskiwania będą usuwane w ramach następnego zadania oczyszczania i usunięte po pewnym czasie.
@@ -149,8 +149,7 @@ Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrożone w [zestawu s
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowanych przez firmę Microsoft i innych firm) |  Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane na podstawie niestandardowego obrazu (innej firmy) |   Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformie Azure  | Obsługiwane.<br/><br/> Aby utworzyć kopię zapasową maszyny Wirtualnej, musi być zainstalowany agent maszyny Wirtualnej, na zmigrowanej maszynie.
-Tworzenie kopii zapasowych maszyn wirtualnych spójności | Nieobsługiwane. <br/><br/>Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
-
+Tworzenie kopii zapasowych wielu maszyn wirtualnych | Usługa Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
 
 
 ## <a name="vm-storage-support"></a>Obsługa magazynu maszyny Wirtualnej
@@ -166,7 +165,7 @@ Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Jeśli u
 Wykonywanie kopii zapasowych deduplikowanych dysków | Nieobsługiwane.
 Dodaj dysk do chronionej maszyny Wirtualnej | Obsługiwane.
 Zmiana rozmiaru dysku na chronionej maszynie Wirtualnej | Obsługiwane.
-Magazyn udostępniony| Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych przy użyciu pliku CSV lub serwera plików skalowalnego w poziomie. Autorzy CSV są prawdopodobnie nastąpi ich awaria.
+Magazyn udostępniony| Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych przy użyciu udostępnionego woluminu klastra (CSV) lub serwera plików skalowalnego w poziomie. Autorzy CSV są mogą kończyć się niepowodzeniem podczas wykonywania kopii zapasowej. Podczas przywracania dyski zawierające woluminów CSV może nie wróć w górę.
 
 > [!NOTE]
 > Usługa Azure Backup nie obsługuje dysków rozłożonych. Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.

@@ -1,6 +1,6 @@
 ---
 title: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database | Microsoft Docs
-description: Dowiedz się więcej o technikach i funkcjach umożliwiających zabezpieczenie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database.
+description: Samouczek, który jest przedstawienie o technikach i funkcjach umożliwiających zabezpieczenie pojedyncze lub zbiorcze bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,23 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893275"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496441"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> - Tworzenie reguł zapory na poziomie serwera i na poziomie bazy danych
+> - Konfigurowanie administratora usługi Azure Active Directory (AD)
+> - Zarządzanie dostępem użytkowników za pomocą funkcji uwierzytelniania SQL, uwierzytelniania usługi Azure AD i bezpiecznych parametrów połączenia
+> - Włączanie funkcji zabezpieczeń, takich jak zaawansowane zabezpieczenia danych, inspekcja, maskowanie danych i szyfrowanie
 
 Usługa Azure SQL Database zabezpiecza dane w pojedynczej bazie danych lub w bazie danych w puli, umożliwiając:
 
@@ -28,14 +37,6 @@ Usługa Azure SQL Database zabezpiecza dane w pojedynczej bazie danych lub w baz
 
 > [!NOTE]
 > Baza danych Azure SQL Database w wystąpieniu zarządzanym jest zabezpieczona przez zasady zabezpieczeń sieci i prywatne punkty końcowe, zgodnie z opisem w tematach [Wystąpienie zarządzane usługi Azure SQL Database](sql-database-managed-instance-index.yml) i [Connectivity architecture (Architektura łączności)](sql-database-managed-instance-connectivity-architecture.md).
-
-Możesz zwiększyć poziom bezpieczeństwa bazy danych, wykonując kilka prostych kroków. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> - Tworzenie reguł zapory na poziomie serwera i na poziomie bazy danych
-> - Konfigurowanie administratora usługi Azure Active Directory (AD)
-> - Zarządzanie dostępem użytkowników za pomocą funkcji uwierzytelniania SQL, uwierzytelniania usługi Azure AD i bezpiecznych parametrów połączenia
-> - Włączanie funkcji zabezpieczeń, takich jak zaawansowane zabezpieczenia danych, inspekcja, maskowanie danych i szyfrowanie
 
 Aby dowiedzieć się więcej, zobacz artykuły [Azure SQL Database security overview (Omówienie zabezpieczeń usługi Azure SQL Database)](/azure/sql-database/sql-database-security-index) i [Capabilities (Funkcje)](sql-database-security-overview.md).
 
@@ -140,12 +141,12 @@ Aby ustawić administratora usługi Azure AD:
 
 Aby uzyskać informacje na temat konfigurowania usługi Azure AD, zobacz:
 
-- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md)
-- [Add your own domain name to Azure AD (Dodawanie własnej nazwy domeny do usługi Azure Active Directory)](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure now supports federation with Windows Server AD (Platforma Microsoft Azure obsługuje teraz federację z usługą AD systemu Windows Server)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Integrowanie tożsamości lokalnych z usługą Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Dodaj własną nazwę domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)
+- [Platforma Microsoft Azure obsługuje teraz Federacja z usługą AD systemu Windows Server](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Administrowanie katalogiem usługi Azure AD](../active-directory/fundamentals/active-directory-administer.md)
 - [Zarządzanie usługą Azure AD przy użyciu programu PowerShell](/powershell/azure/overview?view=azureadps-2.0)
-- [Wymagane porty i protokoły dotyczące tożsamości hybrydowej](../active-directory/hybrid/reference-connect-ports.md)
+- [Wymagane porty i protokoły tożsamości hybrydowej](../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Zarządzanie dostępem do bazy danych
 

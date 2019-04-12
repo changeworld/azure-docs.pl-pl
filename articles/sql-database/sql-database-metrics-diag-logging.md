@@ -1,10 +1,10 @@
 ---
 title: Rejestrowanie diagnostyczne i metryki usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować usługi Azure SQL Database do przechowywania statystyk wykonywania użycia i kwerendy zasobów.
+description: Dowiedz się, jak włączyć diagnostykę w usłudze Azure SQL Database do przechowywania informacji na temat wykorzystania zasobów i statystyk wykonywania zapytań.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
@@ -12,14 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: a2bd25f6dac4e73c0d8e3e951981f45e669b226a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426509"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490072"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
+
+W tym temacie dowiesz się, jak skonfigurować rejestrowanie dane diagnostyczne i telemetryczne usługi Azure SQL Database za pomocą witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST usługi Azure Monitor i szablon usługi Azure Resource Manager. Te funkcje diagnostyki może służyć do pomiaru wykorzystania zasobów i statystyk wykonywania zapytań. 
 
 Pojedyncze bazy danych, bazy danych w puli w elastycznej puli i bazy danych wystąpienia w można wystąpienia zarządzanego przesyłanie strumieniowe dzienników metryki i Diagnostyka ułatwiają monitorowanie wydajności. Można skonfigurować bazę danych do przesłania użycia zasobów, pracowników i sesji oraz łączność z jedną z następujących zasobów platformy Azure:
 
@@ -436,7 +438,7 @@ Szczegóły telemetria dostępna dla wszystkich dzienników są udostępniane w 
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: ResourceUsageStats |
 |Zasób|Nazwa zasobu |
@@ -461,7 +463,7 @@ Szczegóły telemetria dostępna dla wszystkich dzienników są udostępniane w 
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: QueryStoreRuntimeStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreRuntimeStatisticsEvent |
@@ -512,7 +514,7 @@ Dowiedz się więcej o [danych statystyki czasu wykonywania zapytania Store](htt
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: QueryStoreWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreWaitStatisticsEvent |
@@ -550,7 +552,7 @@ Dowiedz się więcej o [Query Store oczekiwania dane statystyk](https://docs.mic
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQ |
 |Kategoria|Nazwa kategorii. Zawsze: Błędy |
 |OperationName|Nazwa operacji. Zawsze: ErrorEvent |
@@ -579,7 +581,7 @@ Dowiedz się więcej o [komunikaty o błędach programu SQL Server](https://msdn
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: DatabaseWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: DatabaseWaitStatisticsEvent |
@@ -608,7 +610,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: Limity czasu |
 |OperationName|Nazwa operacji. Zawsze: TimeoutEvent |
@@ -631,7 +633,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: bloki |
 |OperationName|Nazwa operacji. Zawsze: BlockEvent |
@@ -655,7 +657,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: Zakleszczenia |
 |OperationName|Nazwa operacji. Zawsze: DeadlockEvent |
@@ -676,7 +678,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Type|Zawsze: AzureDiagnostics |
+|Typ|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: AutomaticTuning |
 |Zasób|Nazwa zasobu |

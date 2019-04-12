@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługi Azure ATP w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane z usługi Azure ATP w przez wartownika platformy Azure.
+title: Połącz dane usługi Azure ATP przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure ATP przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574947"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492655"
 ---
-# <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>Zbieranie danych z usługi Azure Advanced Threat Protection (ATP)
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Połącz dane z usługi Azure Advanced Threat Protection (ATP)
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -42,7 +42,7 @@ Jeśli wdrożono narzędzia Azure ATP i zbierać dane, podejrzanych alertów mo�
 
 
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **narzędzia Azure ATP** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **narzędzia Azure ATP** kafelka.
 
 2. Kliknij przycisk **Połącz**.
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 2/6/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43123e77a5c1cfb37f51c472420d3d7f2d440c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173372"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490915"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 
-Jako administrator globalny, lub użytkownik, który jest przypisany do żadnego ograniczony administrator ról w katalogu można użyć witryny Azure portal można zaprosić użytkowników we współpracy B2B. Możesz zaprosić użytkowników-gości do katalogu, grupę lub aplikację. Po za pomocą dowolnej z tych metod można zaprosić użytkownika, zaproszonego użytkownika konto jest dodawane do usługi Azure Active Directory (Azure AD) z typem użytkownika *gościa*. Użytkownik-Gość musi następnie zrealizować zaproszenia uzyskują dostęp do zasobów.
+Jako użytkownik, który jest przypisany do żadnego z ról w katalogu ograniczony administrator można użyć witryny Azure portal, aby zaprosić użytkowników we współpracy B2B. Możesz zaprosić użytkowników-gości do katalogu, grupę lub aplikację. Po za pomocą dowolnej z tych metod można zaprosić użytkownika, zaproszonego użytkownika konto jest dodawane do usługi Azure Active Directory (Azure AD) z typem użytkownika *gościa*. Użytkownik-Gość musi następnie zrealizować zaproszenia uzyskują dostęp do zasobów.
 
 Po dodaniu użytkownika-gościa do katalogu, możesz albo wysłać użytkownik-Gość bezpośredni link do udostępnionej aplikacji, lub kliknąć adres URL realizacji w wiadomości e-mail z zaproszeniem użytkownika gościa. Aby uzyskać więcej informacji na temat procesu realizacji zobacz [realizacja zaproszenia współpracy B2B](redemption-experience.md).
 
@@ -31,7 +31,7 @@ Po dodaniu użytkownika-gościa do katalogu, możesz albo wysłać użytkownik-G
 
 Aby dodać użytkowników we współpracy B2B do katalogu, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) użytkownika, który jest przypisany, dowolny ograniczony administrator ról w katalogu.
 2. W okienku nawigacji wybierz **usługi Azure Active Directory**.
 3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 4. Wybierz pozycję **Nowy użytkownik-gość**.

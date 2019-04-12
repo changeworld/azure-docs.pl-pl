@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 852d0874a91418bf28e674b02087aeb7edbdd833
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5fb8d4420c4d46bc8a4ffe80743578cea338dd8e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730515"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492553"
 ---
 # <a name="support-for-appsource"></a>Obsługa usługi AppSource  
 Opcje pomocy technicznej dla usługi AppSource.  
@@ -28,7 +28,7 @@ Opcje pomocy technicznej dla usługi AppSource.
 
 | Kanał obsługi | Opis |  
 |:--- |:--- |  
-| Formularze sieci MSDN: Usługa Azure Active Directory znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
+| Fora MSDN: Usługa Azure Active Directory znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
 | StackOverflow: Usługa Azure Active Directory znajduje się w [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD na stronie stackoverflow") | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z usługą Azure Active Directory (Azure AD). |  
 
 ## <a name="next-steps"></a>Kolejne kroki

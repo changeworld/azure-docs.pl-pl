@@ -1,6 +1,6 @@
 ---
-title: Zbieraj dane zdarzenia zabezpieczeń Windows w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane dotyczące zdarzeń zabezpieczeń Windows w przez wartownika platformy Azure.
+title: Łączenie danych zdarzeń zabezpieczeń Windows przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych zdarzeń zabezpieczeń Windows Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d131d39a9d9770046fa3f9368250204e4d0b0162
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576092"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491956"
 ---
 # <a name="connect-windows-security-events"></a>Łączenie ze zdarzeniami zabezpieczeń systemu Windows 
 
@@ -42,7 +42,7 @@ Wszystkie zdarzenia zabezpieczeń z serwerów Windows połączonego z obszarem r
 
 Pełną integrację zdarzeń związanych z zabezpieczeniami Windows z platformy Azure przez wartownika:
 
-1. W portalu Azure przez wartownika wybierz **zbierania danych** a następnie kliknij polecenie **zdarzenia zabezpieczeń Windows** kafelka. 
+1. W portalu Azure przez wartownika wybierz **łączników danych** a następnie kliknij polecenie **zdarzenia zabezpieczeń Windows** kafelka. 
 1. Wybierz typy danych, które ma być przesyłana strumieniowo.
 1. Kliknij przycisk **Update** (Aktualizuj).
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń zabezpieczeń Windows, wyszukaj **SecurityEvent**.

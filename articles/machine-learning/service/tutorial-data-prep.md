@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: cd0b41966a392f6e56a5f0dfb97c00fc713d17d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: cd77dcc7202f61a801d29d42f61815c8ce7c2067
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266277"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496218"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -84,7 +84,7 @@ Cała konfiguracja dla prac programistycznych może zostać wykonana w notesie j
 Użyj następującego polecenia do zainstalowania niezbędnych pakietów, jeśli jeszcze ich nie masz.
 
 ```shell
-pip install azureml-dataprep==1.0.17
+pip install "azureml-dataprep>=1.1.0,<1.2.0"
 ```
 
 Zaimportuj zestaw SDK.
@@ -94,7 +94,7 @@ import azureml.dataprep as dprep
 ```
 
 > [!IMPORTANT]
-> Upewnij się, że w wersji 1.0.17. W tym samouczku nie będzie działać z najnowszej wersji 1.1.0
+> Upewnij się, że możesz zainstalować najnowszą wersję. W tym samouczku nie będzie działać z numer wersji jest niższy niż 1.1.0
 
 ## <a name="load-data"></a>Ładowanie danych
 
@@ -323,7 +323,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>Typ</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Liczba</th>
@@ -475,7 +475,7 @@ latlong_filtered_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>Typ</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Liczba</th>
@@ -609,7 +609,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>Typ</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Liczba</th>
@@ -1090,8 +1090,7 @@ Teraz masz w pełni przekształcony i przygotowany obiekt przepływu danych, kt�
 import os
 
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
-package = dprep.Package([final_df])
-package.save(file_path)
+final_df.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba77772352d3f6f6494abeddc7faf9f12e5f80c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262571"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489197"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z połączone rejestracji informacje zabezpieczeń (wersja zapoznawcza)
 
@@ -154,7 +154,7 @@ W oknie programu PowerShell, uruchom następujące polecenie podając lokalizacj
 
 Aby wyłączyć środowisko wersji zapoznawczej dla użytkowników, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny Azure portal jako administrator globalny lub administrator użytkowników.
+1. Zaloguj się do witryny Azure portal jako administrator użytkowników.
 2. Przejdź do **usługi Azure Active Directory** > **ustawienia użytkownika** > **Zarządzanie ustawieniami funkcji w wersji zapoznawczej panelu dostępu**.
 3. W obszarze **użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania nimi informacje zabezpieczające**, równa selektor **Brak**, a następnie wybierz pozycję **Zapisz**.
 

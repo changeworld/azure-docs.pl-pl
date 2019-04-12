@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start dotyczący aplikacji internetowej ASP.NET Core usługi Azure AD w wersji 2.0 | Microsoft Docs
+title: Platforma tożsamości usługi Microsoft Szybki Start aplikacji sieci web platformy ASP.NET Core | Azure
 description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w aplikacji internetowej ASP.NET Core za pomocą protokołu OpenID Connect.
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfa78177974499badc29b7e83556b6a91db7979
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005659"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505351"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "59005659"
 
 W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetowa ASP.NET Core może przeprowadzać logowanie kont osobistych (hotmail.com, outlook.com itp.) oraz kont służbowych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD).
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -120,7 +120,7 @@ public void ConfigureServices(IServiceCollection services)
 
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
   {
-    options.Authority = options.Authority + "/v2.0/";         // Azure AD v2.0
+    options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
 
     options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
   });
@@ -138,13 +138,17 @@ public void ConfigureServices(IServiceCollection services)
 
 Metoda `AddAuthentication` służy do konfigurowania usługi pod kątem dodawania uwierzytelniania na podstawie plików cookie, które jest używane w scenariuszach przeglądarki, oraz do wysyłania wezwania względem protokołu OpenID Connect. 
 
-Wiersz zawierający element `.AddAzureAd` dodaje uwierzytelnianie usługi Azure AD do aplikacji. Aplikacja jest po tym skonfigurowana do logowania przy użyciu punktu końcowego usługi Azure AD w wersji 2.0.
+Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy Microsoft tożsamości do aplikacji. Następnie jest on skonfigurowany do logowania przy użyciu Microsoft platformy tożsamości z punktu końcowego.
 
 > |Lokalizacja  |  |
 > |---------|---------|
 > | ClientId  | Identyfikator aplikacji (klient) z aplikacji zarejestrowanej w witrynie Azure Portal. |
 > | Urząd | Punkt końcowy usługi STS na potrzeby uwierzytelnienia użytkownika. Zazwyczaj jest to adres <https://login.microsoftonline.com/{tenant}/v2.0> dla chmury publicznej, gdzie parametr {tenant} jest nazwą dzierżawy, identyfikatorem dzierżawy lub ma wartość *common* na potrzeby odwołania do wspólnego punktu końcowego (używany dla aplikacji z wieloma dzierżawami) |
 > | TokenValidationParameters | Lista parametrów na potrzeby weryfikacji tokenu. W tym przypadku parametr `ValidateIssuer` ustawiono na wartość `false`, aby wskazać, że może akceptować logowania z dowolnych kont osobistych i służbowych. |
+
+
+> [!NOTE]
+> Ustawienie `ValidateIssuer = false` jest uproszczenia w tym przewodniku Szybki Start. W rzeczywistym aplikacji należy dokonać weryfikacji wystawcy, zobacz przykłady, aby dowiedzieć się, jak to zrobić.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrona kontrolera lub metody kontrolera
 
@@ -154,8 +158,7 @@ Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z repozytorium GitHub na potrzeby tego przewodnika Szybki start dotyczącego platformy ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje związane ze sposobem dodawania uwierzytelniania do zupełnie nowej aplikacji internetowej ASP.NET Core:
+Zapoznaj się z repozytorium GitHub na potrzeby tego samouczka platformy ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące sposobu dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web platformy ASP.NET Core, jak wywołać program Microsoft Graph i inne APIs Microsoft sposób wywołania z własnymi interfejsami API, jak dodać autoryzacja, jak logowania użytkowników w innych chmurach krajowej lub przy użyciu tożsamości społecznościowych i nie tylko:
 
 > [!div class="nextstepaction"]
-> [Przykładowy kod aplikacji sieci Web platformy ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-
+> [Samouczek dotyczący aplikacji sieci Web Core ASP.NET](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

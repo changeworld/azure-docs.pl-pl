@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f3f041fa3b594b4b680d794c1c013e55b97da4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235193"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501599"
 ---
 # <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów
 
@@ -52,11 +52,10 @@ Gdzie *{Your wyszukiwane terminy}* odpowiadają słowa kluczowe wyszukiwania.
 
 ## <a name="use-the-development-support-tools"></a>Używanie narzędzi obsługi programowania
 
-| Narzędzie  | Opis  |
+| Tool  | Opis  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Wklej identyfikator lub tokenu dostępu w celu zdekodowania nazwy oświadczenia i wartości. |
-| [Analizator kodu błędu](https://apps.dev.microsoft.com/portal/tools/errors)| Wklej odebrany kod błędu podczas logowania lub wyrazić zgodę strony, aby wyświetlić możliwe przyczyny i rozwiązania. |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Narzędzie, które pozwala wysyłać żądania i odpowiedzi dla interfejsu API programu Microsoft Graph. |
+| [Program Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Narzędzie, które pozwala wysyłać żądania i odpowiedzi dla interfejsu API programu Microsoft Graph. |
 
 ## <a name="post-a-question-to-stack-overflow"></a>Zamieść pytanie na przepełnienie stosu
 

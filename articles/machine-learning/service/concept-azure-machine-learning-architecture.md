@@ -1,29 +1,31 @@
 ---
-title: 'Usługi Machine learning w chmurze: Warunki i architektura'
+title: Architektury i kluczowe pojęcia
 titleSuffix: Azure Machine Learning service
-description: Więcej informacji na temat architektury, terminologii i pojęcia związane z usługi Azure Machine Learning. Poznasz również ogólny przepływ pracy zalety korzystania z usługi i usług platformy Azure, które są używane przez usługę Azure Machine Learning.
+description: Więcej informacji na temat architektury, warunki, pojęcia i przepływu pracy wchodzące w skład usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269133"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489951"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
-W tym artykule opisano architekturę i pojęcia dotyczące usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy przy użyciu usługi przedstawiono na poniższym diagramie:
+Więcej informacji na temat architektury, pojęcia i przepływ pracy dla usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy przy użyciu usługi przedstawiono na poniższym diagramie:
 
 [![AArchitektura usługi Machine Learning zure i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-Przepływ pracy jest ogólnie przebiega w następującej kolejności:
+## <a name="workflow"></a>Przepływ pracy
+
+Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejności:
 
 1. Tworzenie usługi machine learning szkolenia skryptów w **Python**.
 1. Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.

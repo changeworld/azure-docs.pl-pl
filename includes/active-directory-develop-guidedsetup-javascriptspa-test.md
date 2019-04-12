@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: bb73f58c5dca5e49cdb075b046f883ffeb77c95c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203315"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502933"
 ---
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -35,7 +35,7 @@ Jeśli nie używasz programu Visual Studio, upewnij się, że serwer sieci web j
     ```
 1. Otwórz przeglądarkę i wpisz http://<span></span>localhost:30662 lub http://<span></span>localhost: {port} gdzie **portu** jest portu nasłuchiwania serwera sieci web. Powinna zostać wyświetlona zawartość pliku index.html i **Sign In** przycisku.
 
-<p/><!-- -->
+<p><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Testowanie za pomocą programu Visual Studio
 
@@ -43,7 +43,7 @@ Jeśli używasz programu Visual Studio upewnij się wybrać projekt rozwiązanie
 
 ## <a name="test-your-application"></a>Testowanie aplikacji
 
-Po załadowaniu pliku index.html przeglądarki kliknij **Sign In**. Użytkownik jest monitowany o zalogowanie się punktu końcowego v2.0 Microsoft Azure Active Directory (Azure AD):
+Po załadowaniu pliku index.html przeglądarki kliknij **Sign In**. Użytkownik jest monitowany o zalogowanie do endpoint platforma tożsamości firmy Microsoft:
 
 ![Zaloguj się do swojego konta JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

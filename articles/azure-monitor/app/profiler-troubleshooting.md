@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471532"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495400"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -71,7 +71,7 @@ Aby uzyskać Profiler zapewnić prawidłowe działanie:
 
     |Ustawienia aplikacji    | Wartość    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz instrumentacji dla Ciebie zasobem usługi Application Insights    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz Instrumentacji zasobu usługi Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
@@ -83,7 +83,7 @@ Aby uzyskać Profiler zapewnić prawidłowe działanie:
    
       ![profiler-webjob]   
    
-   1. Aby wyświetlić szczegóły zadania webjob, w tym dzienniku, wybierz **ApplicationInsightsProfiler2** łącza.  
+   1. Aby wyświetlić szczegóły zadania webjob, w tym dzienniku, wybierz **ApplicationInsightsProfiler3** łącza.  
      **Ciągłe zadanie WebJob szczegóły** zostanie otwarte okienko.
 
       ![profiler-webjob-log]
@@ -92,7 +92,7 @@ Jeśli nie można ustalić przyczyny Profiler nielubianych przez WAS, możesz po
     
 ### <a name="manual-installation"></a>Instalacja ręczna
 
-Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji sieci web. Jeśli środowisko wymaga, należy ręcznie zastosować aktualizacje. Przykładem może być, że aplikacja jest uruchomiona w środowisku aplikacji sieci Web w usłudze PowerApps. Aby zastosować aktualizacje ręcznie, wykonaj następujące czynności:
+Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji sieci web. Jeśli środowisko wymaga, należy ręcznie zastosować aktualizacje. Przykładem może być, że aplikacja jest uruchomiona w środowisku aplikacji sieci Web w usłudze PowerApps. Aby ręcznie zastosować aktualizacje:
 
 1. W **kontroli aplikacji sieci Web** otwartym okienkiem **ustawienia**.
 
@@ -103,7 +103,7 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 
     |Ustawienia aplikacji    | Wartość    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz instrumentacji dla Ciebie zasobem usługi Application Insights    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | klucz Instrumentacji zasobu usługi Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 

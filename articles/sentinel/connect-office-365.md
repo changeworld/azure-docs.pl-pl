@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługi Office 365 w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane usługi Office 365 w przez wartownika platformy Azure.
+title: Łączenie danych w usłudze Office 365 przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych usługi Office 365 przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574862"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495194"
 ---
-# <a name="collect-data-from-office-365-logs"></a>Zbieranie danych z pakietu Office 365 dzienników
+# <a name="connect-data-from-office-365-logs"></a>Połącz dane z pakietu Office 365 dzienników
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -33,11 +33,11 @@ Można przesyłać strumieniowo dzienniki inspekcji z [usługi Office 365](https
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musi być administratorem globalnym lub administratorem zabezpieczeń, które znajdują się w dzierżawie
-- Na komputerze, z którego zalogowano się do platformy Azure przez wartownika do utworzenia połączenia, upewnij suretha port 4433 jest otwarty dla ruchu w sieci web.
+- Na komputerze, z którego zalogowano się do platformy Azure przez wartownika do utworzenia połączenia, upewnij się, że jest otwarty na potrzeby ruchu sieciowego port 4433.
 
 ## <a name="connect-to-office-365"></a>Łączenie z usługą Office 365
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **usługi Office 365** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Office 365** kafelka.
 
 2. Jeśli użytkownik nie jest jeszcze włączone, w obszarze **połączenia** użyj **Włącz** przycisk, aby włączyć rozwiązanie usługi Office 365. Jeśli został już włączony, zostaną zidentyfikowane na ekranie połączenia, jak jeszcze włączone.
 1. Usługi Office 365 umożliwia przesyłanie strumieniowe danych z wielu dzierżaw do platformy Azure przez wartownika. Dla każdej dzierżawy, aby nawiązać połączenie, dodać dzierżawy w ramach **nawiązać połączenie z dzierżawy usługi Azure przez wartownika**. 

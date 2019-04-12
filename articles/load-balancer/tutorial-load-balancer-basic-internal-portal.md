@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105305"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489318"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -95,11 +95,10 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
+    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
     | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
-| Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
-    | Przypisywanie publicznego adresu IP              | Wybierz wartość **Statyczny**.   |
+    | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |
     | Prywatny adres IP|wpisz adres, który znajduje się w przestrzeni adresowej sieci wirtualnej i podsieci, na przykład *10.3.0.7*.  |
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**. 
@@ -113,7 +112,7 @@ W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla p
 
 Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia używa puli adresów zaplecza. Ta pula adresów zaplecza zawiera adresy IP wirtualnych interfejsów sieciowych (NIC, virtual network interface) połączonych z modułem równoważenia obciążenia. 
 
-**Aby utworzyć pulę adresów zaplecza, która obejmuje maszyny VM1 i VM2:**
+**Utwórz pulę adresów zaplecza, która obejmuje maszyny VM1 i VM2:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -142,7 +141,7 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
 
 Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie stanu maszyny wirtualnej. Dynamicznie dodaje lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. 
 
-**Aby utworzyć sondę kondycji w celu monitorowania kondycji maszyn wirtualnych:**
+**Aby utworzyć sondę kondycji, aby monitorować kondycję maszyn wirtualnych:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -167,7 +166,7 @@ Reguła modułu równoważenia obciążenia definiuje sposób dystrybucji ruchu 
 
 Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nasłuchuje na porcie 80 frontonu **LoadBalancerFrontEnd**. Ta reguła wysyła ruch sieciowy do puli adresów zaplecza **MyBackEndPool**, również przy użyciu portu 80. 
 
-**Aby utworzyć regułę modułu równoważenia obciążenia:**
+**Aby utworzyć reguły modułu równoważenia obciążenia:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -200,7 +199,7 @@ Najpierw należy połączyć się ze wszystkimi trzema maszynami wirtualnymi prz
 >[!NOTE]
 >Domyślnie maszyny wirtualne mają już otwarty port **RDP** (pulpit zdalny), aby zezwolić na dostęp do pulpitu zdalnego. 
 
-**Aby połączyć pulpit zdalny (RDP) z maszynami wirtualnymi:**
+**Do usług pulpitu zdalnego (RDP) do maszyn wirtualnych:**
 
 1. W portalu wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz poszczególne maszyny wirtualne w grupie zasobów **MyResourceGroupLB**.
    
@@ -223,7 +222,7 @@ Na każdym serwerze zaplecza należy użyć programu PowerShell do zainstalowani
 >[!NOTE]
 >Można również użyć **Kreatora dodawania ról i funkcji** w **Menedżerze serwera** do zainstalowania usługi IIS. 
 
-**Aby zainstalować usługi IIS i zaktualizować domyślną stronę internetową przy użyciu programu PowerShell:**
+**Aby zainstalować usługi IIS i zaktualizować domyślnej strony internetowej przy użyciu programu PowerShell:**
 
 1. Na maszynach wirtualnych MyVM1 i MyVM2 uruchom program **Windows PowerShell** z poziomu menu **Start**. 
 

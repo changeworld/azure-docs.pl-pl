@@ -17,25 +17,26 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88c47e1090673eb0a56f12c2eaf790a0ac851c6b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259868"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501148"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Tokeny dostępu w usłudze Azure Active Directory
 
 Tokeny dostępu umożliwia klientom bezpiecznie wywoływać interfejsy API chronionej przez platformę Azure. Tokeny dostępu w usłudze Azure Active Directory (Azure AD) to [tokenów Jwt](https://tools.ietf.org/html/rfc7519), obiekty JSON, podpisanego przez platformę Azure kodowany w formacie Base64. Klienci powinien traktować dostępu tokenów jako nieprzezroczysty ciągi, zawartość, token są przeznaczone tylko do tego zasobu. Do sprawdzania poprawności i debugowania, deweloperzy mogą odszyfrowywać tokenów Jwt, przy użyciu witryny, takie jak [jwt.ms](https://jwt.ms). Klient może uzyskiwanie tokenu dostępu z dowolnego punktu końcowego (w wersji 1.0 lub 2.0) przy użyciu różnych protokołów.
 
-W przypadku żądania tokenu dostępu, usługi Azure AD zwraca także niektóre metadane dotyczące tokenu dostępu do użycia w Twojej aplikacji. Informacje te obejmują czas wygaśnięcia tokenu dostępu i zakresy, dla których jest on prawidłowy. Te dane umożliwia aplikacji wykonać inteligentne buforowanie tokenów dostępu, bez konieczności przeanalizować tokenu dostępu, sama.
+Po klienta żądanie tokenu dostępu usługi Azure AD zwraca również wartość niektóre metadane dotyczące tokenu dostępu do użycia w Twojej aplikacji. Informacje te obejmują czas wygaśnięcia tokenu dostępu i zakresy, dla których jest on prawidłowy. Te dane umożliwia aplikacji wykonać inteligentne buforowanie tokenów dostępu, bez konieczności przeanalizować tokenu dostępu, sama.
 
 Jeśli aplikacja jest klienci mogą żądać dostępu do zasobów (interfejsu API sieci web), tokeny dostępu zapewniają pomocne informacje na potrzeby uwierzytelniania i autoryzacji, takich jak użytkownik, klient, wystawcy i uprawnienia. 
 
 Zobacz następujące sekcje, aby dowiedzieć się, jak zasób można sprawdzać poprawność i korzystanie z oświadczeń w tokenie dostępu.
 
-> [!NOTE]
-> Podczas testowania aplikacji klienckiej przy użyciu osobistego konta (np. hotmail.com lub outlook.com), może się okazać, że token dostępu odebranych przez klienta to nieprzezroczysty ciąg. Jest to spowodowane zasobu, do którego wysłano żądanie starszych biletów (konto Microsoft) MSA, są szyfrowane, które nie może być rozumiany przez klienta.
+> [!Important]
+> Tokeny dostępu tworzone są na podstawie *odbiorców* tokenu, co oznacza, aplikacji, która jest właścicielem zakresów w tokenie.  Jest to sposób ustawienia zasobów `accessTokenAcceptedVersion` w [manifest aplikacji](reference-app-manifest.md#manifest-reference) do `2` umożliwia klientowi wywołanie punktu końcowego w wersji 1.0 do odbierania token dostępu w wersji 2.0.  Podobnie, to dlaczego zmiany token dostępu [opcjonalnych oświadczeń](active-directory-optional-claims.md) dla Twojego klienta nie zmieniać Odebrano tokenu dostępu, gdy token jest wymagany dla `user.read`, który jest własnością zasobów MS Graph.  
+> Z tego samego powodu podczas testowania aplikacji klienckiej przy użyciu osobistego konta (np. hotmail.com lub outlook.com), może się okazać, że token dostępu odebranych przez klienta to nieprzezroczysty ciąg. Jest to spowodowane zasobu, do którego wysłano żądanie starszych biletów (konto Microsoft) MSA, są szyfrowane, które nie może być rozumiany przez klienta.
 
 ## <a name="sample-tokens"></a>Przykładowe tokenów
 

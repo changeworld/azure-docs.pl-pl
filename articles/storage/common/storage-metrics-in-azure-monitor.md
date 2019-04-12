@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e9d11f7426a70d058daa75466b977e47e6e33ee8
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884367"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505774"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -393,7 +393,7 @@ Usługa Azure Storage obsługuje następujące wymiary metryk w usłudze Azure M
 | Nazwa wymiaru | Opis |
 | ------------------- | ----------------- |
 | BlobType | Typ obiektu blob na potrzeby tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob** i **PageBlob**. Dołącz obiekt Blob znajduje się w BlockBlob. |
-| ResponseType | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>ServerOtherError: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li> ServerBusyError: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li> ServerTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li> Powodzenie: Żądanie zakończone powodzeniem|
+| ResponseType | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>ServerOtherError: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li> ServerBusyError: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li> ServerTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li> Powodzenie: Pomyślne żądania. </li> <li> SuccessWithThrottling: Pomyślne żądania, gdy klient SMB pobiera ograniczenie w pierwszej próby, ale zakończy się powodzeniem, ponowne próby.|
 | GeoType | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości obejmują podstawowe i pomocnicze. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
 | ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości obejmują: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>SAS: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>Uwierzytelnianie OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowy: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja została żądania wstępnego.</li> |

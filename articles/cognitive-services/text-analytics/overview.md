@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 054f0cf91904497b77fd08165808f9b4c381ecca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904767"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500386"
 ---
 # <a name="what-is-text-analytics-api"></a>Co to jest interfejs API analizy tekstu?
 
@@ -58,6 +58,18 @@ Przepływ pracy jest prosty: przesyłasz dane do analizy i obsługujesz dane wyj
 Dane wyjściowe są zwracane w jednym dokumencie JSON, z wynikami dla każdego opublikowanego dokumentu tekstowego, w oparciu o identyfikator. Możesz następnie przeanalizować, zwizualizować lub sklasyfikować wyniki, przekształcając je w szczegółowe informacje umożliwiające podejmowanie działań.
 
 Dane nie są przechowywane na koncie. Operacje wykonywane przez interfejs API analizy tekstu są bezstanowe, co oznacza, że podany tekst jest przetwarzany, a wyniki są zwracane natychmiast.
+
+## <a name="text-analytics-for-multiple-programming-experience-levels"></a>Analiza tekstu dla wielu programowania poziom doświadczenia
+
+Za pomocą interfejsu API analizy tekstu w procesach, można uruchomić, nawet jeśli nie masz doświadczenie w programowaniu. Korzystanie z tych samouczków, aby dowiedzieć się, jak za pomocą interfejsu API można analizować tekstu na różne sposoby, aby dopasować poziomu Twojego doświadczenia. 
+
+* Wymagany minimalny programowania:
+    * [Użyj interfejsu API analizy tekstu i Flow MS, aby zidentyfikować tonacji komentarzy w grupie usługi Yammer](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Integrowanie usługi Power BI przy użyciu interfejsu API analizy tekstu, aby analizować opinie klientów](tutorials/tutorial-power-bi-key-phrases.md)
+* Zaleca się środowisko programowania:
+    * [Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Tworzenie aplikacji Flask tłumaczenie tekstu, analizowanie tonacji i syntetyzowania mowy](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+
 
 <a name="supported-languages"></a>
 

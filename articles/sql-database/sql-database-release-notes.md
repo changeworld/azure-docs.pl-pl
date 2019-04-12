@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 04/10/2019
 ms.author: carlrab
-ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360085"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495109"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -42,6 +42,8 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |Tryb partii na magazynu wierszy (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [tryb usługi Batch na magazynu wierszy](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
 |Zwrotna przydziału pamięci (w trybie wiersza) (równy podanemu poziomowi zgodności 150)|Aby uzyskać informacje, zobacz [zwrotna przydziału pamięci (w trybie wiersza)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
 |Tabela zmiennych odroczone kompilacji (na poziomie zgodności 150)|Aby uzyskać informacje, zobacz [kompilacji odroczone w zmiennej tabeli](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
+|SQL Analytics|Aby uzyskać informacje, zobacz [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
+| Obsługa strefy czasowej dla wystąpienia zarządzanego|Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md)|
 |||
 
 ## <a name="march-2019"></a>Marca 2019 r
@@ -57,6 +59,7 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 
 | Udoskonalenia dokumentacji | Szczegóły |
 | --- | --- |
+| Obsługa strefy czasowej dla wystąpienia zarządzanego|Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md)|
 | Dodano dziennika limity dla pojedynczych baz danych|Aby uzyskać więcej informacji, zobacz [pojedynczy limity zasobów na rdzeniach wirtualnych bazy danych](sql-database-vcore-resource-limits-single-databases.md).|
 | Dodano dziennika limity dla pul elastycznych i baz danych w puli|Aby uzyskać więcej informacji, zobacz [vCore zasobów limity pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).|
 | Dodano nadzoru współczynnik dziennika transakcji| Dodano nową zawartość dotyczącą [nadzoru współczynnik dziennika transakcji](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|

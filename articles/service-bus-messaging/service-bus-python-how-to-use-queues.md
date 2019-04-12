@@ -12,30 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242602"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500502"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak używać kolejek usługi Service Bus za pomocą języka Python
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-W tym artykule opisano sposób używania kolejek usługi Service Bus. Przykłady są zapisywane w języku Python i użyj [pakiet języka Python usługi Azure Service Bus][Python Azure Service Bus package]. Omówione scenariusze obejmują **tworzenie kolejek, wysyłanie i odbieranie komunikatów**, i **usuwanie kolejek**.
+W tym samouczku dowiesz się, jak tworzyć aplikacje języka Python do wysyłania komunikatów i odbiera komunikaty z kolejki usługi Service Bus. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Wymagania wstępne
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykułu.
+    1. Przeczytaj szybkiego **Przegląd** usługi Service Bus **kolejek**. 
+    2. Tworzenie usługi Service Bus **przestrzeni nazw**. 
+    3. Pobierz **parametry połączenia**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-> [!IMPORTANT]
-> Do zainstalowania języka Python lub [pakiet języka Python usługi Azure Service Bus][Python Azure Service Bus package], zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md).
-> 
-> Zobacz pełną dokumentację zestawu SDK usługi Service Bus języka Python [tutaj](/python/api/overview/azure/servicebus?view=azure-python)
-
+        > [!NOTE]
+        > Utworzysz **kolejki** w przestrzeni nazw usługi Service Bus przy użyciu języka Python w ramach tego samouczka. 
+1. Zainstaluj język Python lub [pakiet języka Python usługi Azure Service Bus][Python Azure Service Bus package], zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md). Zobacz pełną dokumentację zestawu SDK usługi Service Bus języka Python [tutaj](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 **ServiceBusClient** obiekt umożliwia pracę z kolejkami. Dodaj następujący kod u góry każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Service Bus:

@@ -12,25 +12,31 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 32b566056de76d4e73b88c7ce37e148b4ecc3fd7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587875"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500842"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-W tym artykule opisano, jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js. Przykłady są napisane w języku JavaScript i korzystać z modułu Node.js Azure. Omówione scenariusze obejmują **tworzenie kolejek**, **wysyłanie i odbieranie komunikatów**, i **usuwanie kolejek**. Aby uzyskać więcej informacji na temat kolejek, zobacz [następne kroki](#next-steps) sekcji.
+W tym samouczku dowiesz się, jak tworzyć aplikacje Node.js do wysyłania komunikatów i odbiera komunikaty z kolejki usługi Service Bus. Przykłady są napisane w języku JavaScript i korzystać z modułu Node.js Azure. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Wymagania wstępne
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Jeśli nie masz kolejki chcesz pracować, wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykuł, aby utworzyć kolejkę.
+    1. Przeczytaj szybkiego **Przegląd** usługi Service Bus **kolejek**. 
+    2. Tworzenie usługi Service Bus **przestrzeni nazw**. 
+    3. Pobierz **parametry połączenia**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
+        > [!NOTE]
+        > Utworzysz **kolejki** w przestrzeni nazw usługi Service Bus przy użyciu środowiska Node.js w ramach tego samouczka. 
+ 
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 Tworzenie pustej aplikacji Node.js. Aby uzyskać instrukcje dotyczące sposobu tworzenia aplikacji w technologii Node.js, zobacz [tworzenie i wdrażanie aplikacji Node.js w witrynie sieci Web platformy Azure][Create and deploy a Node.js application to an Azure Website], lub [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell.
@@ -114,7 +120,7 @@ Po wykonaniu tej jej wstępne przetwarzanie na temat opcji żądania, należy wy
 function (returnObject, finalCallback, next)
 ```
 
-W tym wywołaniu zwrotnym, a po zakończeniu przetwarzania `returnObject` (odpowiedź z żądania do serwera), wywołania zwrotnego albo musi zostać wywołany `next` istnienia Kontynuuj przetwarzanie inne filtry lub po prostu wywołać `finalCallback`, który kończy się usługi wywołania.
+W tym wywołaniu zwrotnym, a po zakończeniu przetwarzania `returnObject` (odpowiedź z żądania do serwera), wywołania zwrotnego albo musi zostać wywołany `next` istnienia Kontynuuj przetwarzanie innych filtrów lub wywołania `finalCallback`, który kończy się wywołania usługi .
 
 Dwa filtry, które implementują logikę ponawiania prób są uwzględniane w zestawie Azure SDK dla środowiska Node.js, `ExponentialRetryPolicyFilter` i `LinearRetryPolicyFilter`. Poniższy kod tworzy `ServiceBusService` obiektu, który używa `ExponentialRetryPolicyFilter`:
 
@@ -173,7 +179,7 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
 Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody **ServiceBusService** obiektu. Spowoduje to odblokowanie komunikatu w kolejce i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed blokady upłynie limit czasu (np. Jeśli wystąpiła awaria aplikacji), Usługa Service Bus zostanie automatycznie odblokować wiadomości i ułatwiają dostępne do ponownego odbioru.
+Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed blokady upłynie limit czasu (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus zostanie automatycznie odblokować wiadomości i ułatwiają dostępne do ponownego odbioru.
 
 W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` metoda jest wywoływana, a następnie komunikat zostanie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, oznacza to, że każdy komunikat będzie przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu właściwości **MessageId** komunikatu, która pozostaje niezmienna między kolejnymi próbami dostarczenia.
 
@@ -182,7 +188,7 @@ Aby dowiedzieć się więcej na temat kolejek, zobacz następujące zasoby.
 
 * [Kolejki, tematy i subskrypcje][Queues, topics, and subscriptions]
 * [Zestaw Azure SDK dla węzła] [ Azure SDK for Node] repozytorium w witrynie GitHub
-* [Centrum deweloperów środowiska Node.js](https://azure.microsoft.com/develop/nodejs/)
+* [Node.js Developer Center (Centrum deweloperów środowiska Node.js)](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com

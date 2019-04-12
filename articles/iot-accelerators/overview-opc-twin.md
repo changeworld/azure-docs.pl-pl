@@ -1,5 +1,5 @@
 ---
-title: Co to jest zarządzanie urządzeniami usługi Azure IoT OPC UA | Dokumentacja firmy Microsoft
+title: Co to jest bliźniacza reprezentacja OPC — Azure | Dokumentacja firmy Microsoft
 description: Omówienie bliźniaczej reprezentacji OPC
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759272"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496816"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Co to jest zarządzanie urządzeniami usługi Azure IoT Otwórz platformy łączności (OPC)?
-Zarządzanie urządzeniami IoT OPC UA platformy Azure, znany także jako OPC Twin składa się z mikrousług connect, chmury i sieci fabrycznej za pomocą usługi Azure IoT Edge i IoT Hub. Bliźniacza reprezentacja OPC udostępnia funkcje odnajdywania, rejestracji i zdalne sterowanie urządzeń przemysłowych za pośrednictwem interfejsów API REST. Bliźniacza reprezentacja OPC nie wymaga OPC Unified architektury (OPC UA) zestawu SDK jest programowania niezależny od języka i mogą być zawarte w przepływie pracy bez użycia serwera. W tym artykule opisano kilka przypadków użycia bliźniaczej reprezentacji OPC.
+
+Bliźniacza reprezentacja OPC składa się z mikrousług connect, chmury i sieci fabrycznej za pomocą usługi Azure IoT Edge i IoT Hub. Bliźniacza reprezentacja OPC udostępnia funkcje odnajdywania, rejestracji i zdalne sterowanie urządzeń przemysłowych za pośrednictwem interfejsów API REST. Bliźniacza reprezentacja OPC nie wymaga OPC Unified architektury (OPC UA) zestawu SDK jest programowania niezależny od języka i mogą być zawarte w przepływie pracy bez użycia serwera. W tym artykule opisano kilka przypadków użycia bliźniaczej reprezentacji OPC.
 
 ## <a name="discovery-and-control"></a>Odnajdowanie i sterowanie
 Za pomocą bliźniaczej reprezentacji OPC dla prostej odnajdywania i rejestracji.

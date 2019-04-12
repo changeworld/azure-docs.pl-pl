@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811532"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492723"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
 > [!NOTE]
 > Narzędzie diagnostyczne systemu Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych z usługi Azure Virtual Machines, Virtual Machine Scale Sets, usługi Service Fabric i Cloud Services.  Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
 >
 
-Narzędzie diagnostyczne systemu Azure jest używany z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, Application Insights i Log Analytics.
+Narzędzie diagnostyczne systemu Azure jest używany z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, który zawiera usługi Application Insights i Log Analytics.
 
 Plik konfiguracji usługi Azure Diagnostics definiuje wartości, które są stosowane do inicjalizacji Monitor diagnostyki. Ten plik jest używany do zainicjowania ustawień diagnostycznych konfiguracji podczas uruchamiania Monitora diagnostyki.  
 
@@ -101,7 +101,7 @@ Element najwyższego poziomu w pliku konfiguracji diagnostyki.
 
 Atrybuty:
 
-|Atrybut  |Type   |Wymagane| Domyślne | Opis|  
+|Atrybut  |Typ   |Wymagane| Domyślne | Opis|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
 |**overallQuotaInMB**|unsignedInt|Optional (Opcjonalność)| 4000 MB. Jeśli podano wartość nie może przekraczać tę kwotę |Łączna kwota magazyn systemu plików przydzielony dla wszystkich buforów rejestrowania.|  
@@ -113,10 +113,10 @@ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
 Atrybuty:
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
+|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="logs-element"></a>Dzienniki elementu  
@@ -126,10 +126,10 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
+|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="directories-element"></a>Element katalogów  
@@ -140,7 +140,7 @@ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -152,9 +152,9 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
+|**kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs Element  
@@ -164,9 +164,9 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
+|**kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
 
 ##  <a name="iislogs-element"></a>IISLogs Element  
@@ -176,9 +176,9 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
+|**kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
 
 ## <a name="datasources-element"></a>Element źródła danych  
@@ -193,9 +193,9 @@ Atrybuty:
 
 Atrybuty:
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
+|**kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
 
 ## <a name="absolute-element"></a>Element bezwzględne  
@@ -205,9 +205,9 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**path**|ciąg|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
+|**ścieżka**|string|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
 |**expandEnvironment**|wartość logiczna|Wymagany. Jeśli ustawiono **true**, zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
 
 ## <a name="localresource-element"></a>LocalResource Element  
@@ -217,10 +217,10 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwa**|ciąg|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
-|**relativePath**|ciąg|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
+|**name**|string|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
+|**relativePath**|string|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
 
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
  Określa ścieżkę licznika wydajności do zbierania.
@@ -230,7 +230,7 @@ Atrybuty:
 
  Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -242,9 +242,9 @@ Atrybuty:
 
  Atrybuty:  
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|ciąg|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
+|**counterSpecifier**|string|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
 |**sampleRate**|czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
@@ -254,10 +254,10 @@ Atrybuty:
 
   Atrybuty:
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
+|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
 ## <a name="datasource-element"></a>Element źródła danych  
@@ -267,7 +267,7 @@ Atrybuty:
 
  Atrybuty:
 
-|Atrybut|Type|Opis|  
+|Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwa**|ciąg|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
+|**name**|string|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
 

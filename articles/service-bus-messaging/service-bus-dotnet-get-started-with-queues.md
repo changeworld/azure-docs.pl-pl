@@ -12,38 +12,29 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778012"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500689"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-Ten samouczek obejmuje następujące kroki:
-
-1. Utworzenie przestrzeni nazw usługi Service Bus za pomocą usługi Azure Portal.
-2. Utworzenie kolejki usługi Service Bus przy użyciu witryny Azure Portal.
-3. Napisanie aplikacji konsolowej .NET Core w celu wysłania zestawu komunikatów do kolejki.
-4. Napisanie aplikacji konsolowej .NET Core w celu otrzymania tych komunikatów z kolejki.
+W tym samouczku utworzysz aplikacje konsoli .NET Core, aby wysyłać i odbierać komunikaty z kolejki usługi Service Bus. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
 2. [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
-2. Subskrypcja platformy Azure.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
-
+2. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+3. Jeśli nie masz kolejki chcesz pracować, wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykuł, aby utworzyć kolejkę.
+    1. Przeczytaj szybkiego **Przegląd** usługi Service Bus **kolejek**. 
+    2. Tworzenie usługi Service Bus **przestrzeni nazw**. 
+    3. Pobierz **parametry połączenia**. 
+    4. Tworzenie usługi Service Bus **kolejki**. 
 
 ## <a name="send-messages-to-the-queue"></a>Wysyłanie komunikatów do kolejki
 
@@ -206,7 +197,7 @@ Uruchom program Visual Studio i utwórz nowy projekt **Aplikacja konsoli (.NET C
 
 ## <a name="receive-messages-from-the-queue"></a>Odbieranie komunikatów z kolejki
 
-Aby odbierać komunikaty wysłane w poprzednim kroku, utwórz nową aplikację konsolową .NET Core i zainstaluj pakiet NuGet **Microsoft.Azure.ServiceBus**, podobnie jak w przypadku poprzedniej aplikacji nadawcy.
+Aby odbierać komunikaty wysłane, należy utworzyć inną aplikację konsoli .NET Core i zainstalować **Microsoft.Azure.ServiceBus** pakietu NuGet, podobnie jak w przypadku poprzedniej aplikacji nadawcy.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Pisanie kodu w celu odbierania komunikatów z kolejki
 

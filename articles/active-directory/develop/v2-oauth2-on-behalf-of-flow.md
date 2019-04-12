@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276052"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501607"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"
 
@@ -55,7 +55,7 @@ Poniższe kroki stanowią przepływu OBO i zostały wyjaśnione przy pomocy poni
 
 ## <a name="service-to-service-access-token-request"></a>Żądanie tokenu dostępu do usługi
 
-Do żądania tokenu dostępu, metody HTTP POST do punktu końcowego tokenu v2.0 specyficznym dla dzierżawy z następującymi parametrami.
+Do żądania tokenu dostępu, metody HTTP POST do specyficznym dla dzierżawy Microsoft tożsamości platformy punktu końcowego tokenu z następującymi parametrami.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Uzyskanie zgody dla aplikacji warstwy środkowej
 
-W zależności od odbiorców dla aplikacji można rozważyć różne strategie za zapewnienie, że przepływu OBO zakończyła się powodzeniem. We wszystkich przypadkach ostatecznym celem jest upewnij się, że podano odpowiedniej zgody. Jak ma to miejsce, jednak jest zależna od użytkowników, którzy aplikacja obsługuje. 
+W zależności od odbiorców dla aplikacji można rozważyć różne strategie za zapewnienie, że przepływu OBO zakończyła się powodzeniem. We wszystkich przypadkach ostatecznym celem jest upewnij się, że podano odpowiedniej zgody. Jak ma to miejsce, jednak jest zależna od użytkowników, którzy aplikacja obsługuje.
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Zgoda na usługi Azure AD aplikacji
 
 #### <a name="default-and-combined-consent"></a>/.default i połączone zgody
 
-W przypadku aplikacji, którzy muszą tylko zarejestrować się w pracy lub szkołą kont tradycyjne podejście "Znane aplikacje klienckie" jest wystarczająca. Aplikacja warstwy środkowej dodaje klienta do listy znanych klienta aplikacji w manifeście, a następnie klient może wyzwolić przepływu wyrażania zgody połączone sam i aplikacji warstwy środkowej. Dla punktu końcowego v2.0 odbywa się przy użyciu [ `/.default` zakres](v2-permissions-and-consent.md#the-default-scope). Podczas wyzwalania ekranie wyrażania zgody, przy użyciu aplikacji klienckich znane i `/.default`, ekran wyrażania zgody Pokaż uprawnienia dla klienta do interfejsu API warstwy środkowej, a także zażądać uprawnień wymaganych przez interfejs API warstwy środkowej. Użytkownik udostępnia wyrażania zgody dla obu aplikacji, a następnie przepływu OBO działa.
+W przypadku aplikacji, którzy muszą tylko zarejestrować się w pracy lub szkołą kont tradycyjne podejście "Znane aplikacje klienckie" jest wystarczająca. Aplikacja warstwy środkowej dodaje klienta do listy znanych klienta aplikacji w manifeście, a następnie klient może wyzwolić przepływu wyrażania zgody połączone sam i aplikacji warstwy środkowej. W punkcie końcowym platforma tożsamości firmy Microsoft, odbywa się przy użyciu [ `/.default` zakres](v2-permissions-and-consent.md#the-default-scope). Podczas wyzwalania ekranie wyrażania zgody, przy użyciu aplikacji klienckich znane i `/.default`, ekran wyrażania zgody Pokaż uprawnienia dla klienta do interfejsu API warstwy środkowej, a także zażądać uprawnień wymaganych przez interfejs API warstwy środkowej. Użytkownik udostępnia wyrażania zgody dla obu aplikacji, a następnie przepływu OBO działa.
 
 W tej chwili system osobistych kont Microsoft nie obsługuje połączonych zgody, a więc takie podejście nie działa w przypadku aplikacji, które mają się w szczególności w ramach kont osobistych. Osobistych kont Microsoft, używane jako konta gościa w dzierżawie są obsługiwane w systemie usługi Azure AD i można przejść przez połączone zgody.
 
@@ -211,7 +211,7 @@ Administrator dzierżawy może zagwarantować, że aplikacje mają uprawnienia d
 
 ### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Zgoda na usługi Azure AD i aplikacji konta Microsoft
 
-Ze względu na ograniczenia w modelu uprawnień dla osobistych kont i braku zarządzania dzierżawy wymagania wyrażania zgody dla osobistych kont różnią się nieco z usługi Azure AD. Istnieje żaden z dzierżawców zgody dla dzierżawy dla nie jest istnieje możliwość robienia połączone zgody. W związku z tym inne strategie, które są obecne samodzielnie — należy pamiętać, że działają one dla aplikacji wymagających tylko obsługują także kont usługi Azure AD.
+Z powodu ograniczeń w modelu uprawnień dla osobistych kont i braku zarządzania dzierżawy wymagania wyrażania zgody dla osobistych kont różnią się nieco z usługi Azure AD. Istnieje żaden z dzierżawców zgody dla dzierżawy dla nie jest istnieje możliwość robienia połączone zgody. W związku z tym inne strategie, które są obecne samodzielnie — należy pamiętać, że działają one dla aplikacji wymagających tylko obsługują także kont usługi Azure AD.
 
 #### <a name="use-of-a-single-application"></a>Korzystanie z pojedynczą aplikacją
 

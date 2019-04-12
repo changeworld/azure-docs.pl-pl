@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260395"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496305"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 
@@ -54,7 +54,7 @@ Tak. Gość obiekty nie są widoczne w Twojej organizacji globalnej liście adre
 Naturalnie. Aby uzyskać więcej informacji, zobacz [dodawania użytkowników-gości do roli](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Współpraca B2B w usłudze Azure AD pozwala użytkownikom B2B dostępu witryny Azure portal?
-Chyba że użytkownik przypisany do roli ograniczony administrator lub administrator globalny, użytkowników we współpracy B2B nie będzie wymagać dostępu do witryny Azure portal. Jednak użytkowników we współpracy B2B, którzy mają przypisaną rolę ograniczony administrator lub administrator globalny może uzyskać dostęp do portalu. Ponadto jeśli użytkownika gościa, który nie jest przypisany jeden z tych ról Administrator uzyskuje dostęp do portalu, użytkownik może być mogli korzystać z niektórych części środowiska. Rola użytkownika gościa ma niektóre uprawnienia w katalogu.
+Chyba że użytkownik przypisany do roli administratora ograniczone, użytkowników we współpracy B2B nie wymagają dostępu do witryny Azure portal. Jednak użytkowników we współpracy B2B, którzy mają przypisaną rolę ograniczony administrator może uzyskać dostęp do portalu. Ponadto jeśli użytkownika gościa, który nie jest przypisany jeden z tych ról Administrator uzyskuje dostęp do portalu, użytkownik może być mogli korzystać z niektórych części środowiska. Rola użytkownika gościa ma niektóre uprawnienia w katalogu.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Czy można zablokować dostęp do witryny Azure portal dla użytkowników-gości?
 Tak! Po skonfigurowaniu tych zasad, należy zachować ostrożność uniknąć przypadkowego blokowanie dostępu do członków i administratorów.

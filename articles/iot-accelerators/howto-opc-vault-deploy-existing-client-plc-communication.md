@@ -1,5 +1,5 @@
 ---
-title: Bezpieczna komunikacja klienta OPC i PLC OPC za pomocą zarządzania certyfikatami w usłudze Azure IoT OPC UA | Dokumentacja firmy Microsoft
+title: Bezpieczna komunikacja klienta OPC i PLC OPC za pomocą magazynu OPC — Azure | Dokumentacja firmy Microsoft
 description: Zabezpieczanie komunikacji klienta OPC i OPC PLC, rejestrując swoje certyfikaty przy użyciu urzędu certyfikacji w magazynie OPC.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759572"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494017"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Bezpieczna komunikacja klienta OPC i OPC PLC
 
-Usługa Azure IoT OPC UA zarządzanie certyfikatami, również wiedzieć, co magazyn OPC to wczesnych usługa, która można skonfigurować rejestr i zarządzanie cyklem życia certyfikatu dla aplikacji serwera i klienta OPC UA w chmurze. W tym artykule dowiesz się, jak zabezpieczyć komunikację klienta OPC i OPC PLC, rejestrując swoje certyfikaty przy użyciu urzędu certyfikacji w magazynie OPC.
+OPC Vault to mikrousług, konfigurowanie, rejestrowanie i zarządzanie cyklem życia certyfikatów dla serwera OPC UA i aplikacje klienckie w chmurze. W tym artykule dowiesz się, jak zabezpieczyć komunikację klienta OPC i OPC PLC, rejestrując swoje certyfikaty przy użyciu urzędu certyfikacji w magazynie OPC.
 
 W następujących ustawieniach klienta OPC sprawdza łączność OPC PLC. Domyślnie połączenie jest niemożliwe, ponieważ oba te składniki nie są udostępnione za pomocą odpowiednie certyfikaty. Jeśli składnika serwera OPC UA nie zostało jeszcze aprowizowane przy użyciu certyfikatu, ta aplikacja wygeneruje certyfikat z podpisem własnym przy uruchamianiu. Jednak certyfikat można podpisany przez urząd certyfikacji (CA) i zainstalować w składniku OPC UA. Po tej operacji dla klienta OPC i OPC PLC, połączenie jest włączone. Przepływ pracy poniżej opisano proces. Niektóre informacje uzupełniające dotyczące zabezpieczeń OPC UA znajdują się w [w tym dokumencie](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf) oficjalny dokument. Pełne informacje można znaleźć w specyfikacji OPC UA.
 
@@ -31,7 +31,7 @@ OPC Vault skrypty:
 
 ## <a name="generate-a-self-signed-certificate-on-startup"></a>Generowanie certyfikatu z podpisem własnym przy uruchamianiu
 
-**Przygotowywanie**
+**Przygotowanie**
 
 - Upewnij się, że zmienne środowiskowe `$env:_PLC_OPT` i `$env:_CLIENT_OPT` są niezdefiniowane, na przykład `$env:_PLC_OPT=""` w swoje środowiska PowerShell.
 
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 Jeśli widzisz certyfikaty zgłaszane, wykonaj powyższe kroki przygotowania, a następnie usuń woluminy platformy docker.
 
-Upewnij się, że połączenie OPC PLC zakończyła się niepowodzeniem. Powinny zostać wyświetlone następujące dane wyjściowe w kliencie OPC dziennika danych wyjściowych:
+Upewnij się, że połączenie OPC PLC zakończyła się niepowodzeniem. Powinny zostać wyświetlone następujące dane wyjściowe w danych wyjściowych dzienników klienta OPC:
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -70,7 +70,7 @@ Przyczyna niepowodzenia jest, certyfikat nie jest zaufany. Oznacza to, że `opc-
 
 ## <a name="sign-and-install-certificates-in-opc-ua-components"></a>Zaloguj się i instalowania certyfikatów w składnikach serwera OPC UA
 
-**Przygotowywanie**
+**Przygotowanie**
 1. Spójrz na dane wyjściowe dziennika w kroku 1 i pobrać "Informacje o CreateSigningRequest" OPC PLC i klienta OPC. W tym miejscu danych wyjściowych jest wyświetlana tylko dla OPC PLC:
 
     ```
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 Wystawca certyfikatu aplikacji to urząd certyfikacji `CN=Azure IoT OPC Vault CA, O=Microsoft Corp.` i OPC PLC zaufania również wszystkie certyfikaty podpisane przez ten urząd certyfikacji.
 
 
-Sprawdź, czy połączenie OPC PLC został pomyślnie utworzony, a klient OPC może odczytywać dane z OPC PLC. Powinny zostać wyświetlone następujące dane wyjściowe w kliencie OPC dziennika danych wyjściowych:
+Sprawdź, czy połączenie OPC PLC został pomyślnie utworzony, a klient OPC może odczytywać dane z OPC PLC. Powinny zostać wyświetlone następujące dane wyjściowe w danych wyjściowych dzienników klienta OPC:
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -189,7 +189,7 @@ opcclient-123456 | [20:54:42 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [20:54:42 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/20/2018 20:54:42
 ```
-Jeśli widzisz te dane wyjściowe, następnie OPC PLC jest teraz ufające klienta OPC i na odwrót, ponieważ mają teraz certyfikaty podpisane przez urząd certyfikacji i obu zaufanie certyfikaty, które pochodzą podpisane przez ten urząd certyfikacji.
+Jeśli widzisz te dane wyjściowe, następnie OPC PLC jest teraz ufające OPC klienta i na odwrót, ponieważ mają teraz te certyfikaty, które podpisany przez urząd certyfikacji i relacje zaufania certyfikatów, które gdzie podpisane przez ten urząd certyfikacji.
 
 > [!NOTE] 
 > Chociaż pokazaliśmy pierwsze kroki weryfikacji dwóch tylko w przypadku OPC PLC te potrzebne można zweryfikować również klienta OPC.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006755"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489728"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -33,7 +33,7 @@ Rozwiązanie Network Performance Monitor oferuje trzy szerokie możliwości:
 
 * [Monitor wydajności](network-performance-monitor-performance-monitor.md): Możesz monitorować łączność sieciową między wdrożeniami w chmurze i lokalizacjami lokalnymi, wiele centrów danych i biur oddziałów i kluczowych dla działalności aplikacji wielowarstwowej lub mikrousług. Za pomocą Monitora wydajności można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi.
 
-* [Monitor łączności usługi](network-performance-monitor-service-endpoint.md): Możesz monitorować łączność użytkowników z usługami interesujące, określić, jaka infrastruktura znajduje się w ścieżce i zidentyfikować, gdzie występują wąskie gardła w sieci. Możesz dowiedzieć się o przerwach w działaniu przed użytkownikami i zobaczyć dokładną lokalizację problemów w ścieżce Twojej sieci. 
+* [Monitor łączności usługi](network-performance-monitor-service-connectivity.md): Możesz monitorować łączność użytkowników z usługami interesujące, określić, jaka infrastruktura znajduje się w ścieżce i zidentyfikować, gdzie występują wąskie gardła w sieci. Możesz dowiedzieć się o przerwach w działaniu przed użytkownikami i zobaczyć dokładną lokalizację problemów w ścieżce Twojej sieci. 
 
     Ta funkcja umożliwia wykonywanie testu w zależności od protokołu HTTP, HTTPS, TCP i ICMP, do monitorowania w czasie rzeczywistym i historycznie dostępność i czas odpowiedzi usługi. Można również monitorować udziału sieci w utracie pakietów i opóźnienia. Za pomocą mapy topologii sieci można izolować spowolnienie sieci. Można zidentyfikować problem punkty, występujących na ścieżce sieciowej z węzła do usługi z danymi opóźnienie każdego przeskoku. Za pomocą wbudowanych testów możesz monitorować łączność sieciową do usługi Office 365 i Dynamics CRM, bez żadnych Konfiguracja wstępna. Dzięki tej możliwości możesz monitorować łączność sieciową do dowolnego punktu końcowego TCP możliwością, takich jak witryny sieci Web, aplikacji SaaS, PaaS aplikacji i baz danych SQL.
 
@@ -83,7 +83,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
     > Skrypt konfiguruje tylko Windows zapory lokalnie. Jeśli Zapora sieciowa, upewnij się, że umożliwia ruch przeznaczony dla port TCP używany przez rozwiązania Network Performance Monitor.
 
     >[!NOTE]
-    > Nie trzeba uruchomić [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skrypt programu PowerShell do monitorowania punktu końcowego usługi.
+    > Nie trzeba uruchomić [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skrypt programu PowerShell do monitorowania łączności usługi.
 
     
 
@@ -115,7 +115,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
     
    **Monitor łączności usługi**: Ta funkcja udostępnia wbudowane testy wstępnie skonfigurowane, aby monitorować łączność sieciową do usługi Office 365 i Dynamics 365 z agentów. Wybierz usługi Office 365 i Dynamics 365, które mają być monitorowane przez zaznaczenie pól wyboru obok nich. Aby wybrać agentów, z których chcesz monitorować, wybierz **dodawanie agentów**. Jeśli nie chcesz używać tej funkcji lub chcesz później skonfigurować nie wybierz nic i wybierz pozycję **Zapisz i Kontynuuj**.
 
-   ![Widok monitorowania punktu końcowego usługi](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![Monitor łączności usługi widoku](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
    **ExpressRoute Monitor**: Wybierz **odnajdywanie teraz** do odnajdywania wszystkich ExpressRoute prywatnej komunikacji równorzędnej, które są połączone z sieciami wirtualnymi w subskrypcji platformy Azure są połączone z tym obszarem roboczym usługi Log Analytics. 
 
@@ -152,7 +152,7 @@ Wszystkie węzły, które zainstalowano na nich agenta są wyświetlane na **wę
 Konfigurowanie funkcji, które mają:
 
 - [Monitorowanie wydajności](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitor punktu końcowego usługi](network-performance-monitor-performance-monitor.md#configuration)
+- [Monitorowanie łączności usług](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md#configuration)
 
  

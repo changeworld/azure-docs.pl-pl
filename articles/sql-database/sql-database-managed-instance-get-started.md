@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: a6abaf9b444ca9b3f14093dde1239d9158dfd3ff
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: d94e00c8a475e29ddd671004b8137ba4e6efd107
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469645"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495041"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -52,6 +52,7 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
    |**Sortowanie**|Sortowanie, którego chcesz użyć dla wystąpienia zarządzanego|W przypadku migrowania baz danych z programu SQL Server sprawdź sortowanie źródła przy użyciu elementu `SELECT SERVERPROPERTY(N'Collation')` i użyj tej wartości. Aby uzyskać informacje na temat sortowań, zobacz [Server-level collations (Sortowania na poziomie serwera)](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Lokalizacja**|Lokalizacja, w której chcesz utworzyć wystąpienie zarządzane|Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
    |**Sieć wirtualna**|Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć/podsieć jest niedostępny jest musi być [zmodyfikowana, aby spełnić wymagania dotyczące sieci](sql-database-managed-instance-configure-vnet-subnet.md) można wybrać jako miejsce docelowe dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieci dla wystąpienia zarządzanego, zobacz [Configure a VNet for a managed instance (Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego)](sql-database-managed-instance-connectivity-architecture.md). |
+   |**Typ połączenia**|Wybieranie między serwera Proxy i Przekierowanie typ połączenia|Aby uzyskać więcej informacji na temat typów połączeń, zobacz [zasady połączenia usługi Azure SQL](sql-database-connectivity-architecture.md#connection-policy).|
    |**Grupa zasobów**|Nowa lub istniejąca grupa zasobów|Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa).|
 
    ![formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

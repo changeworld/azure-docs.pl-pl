@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do zasobów bezpiecznych bez interakcji z użytkownikiem usługi Azure AD w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji sieci web za pomocą usługi Azure AD implementacji protokołu uwierzytelniania OAuth 2.0.
+title: Użyj platforma tożsamości usługi Microsoft dostęp do bezpiecznych zasobów bez interakcji z użytkownikiem | Azure
+description: Tworzenie aplikacji sieci web za pomocą implementacja firmy Microsoft platformy tożsamości protokołu uwierzytelniania OAuth 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e6aed38c8c670c751ee51de95e6622685caea1ce
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445428"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500927"
 ---
-# <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma tożsamości firmy Microsoft i przepływ poświadczeń klienta OAuth 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -34,19 +34,19 @@ Możesz użyć [przyznawanie poświadczeń klienta OAuth 2.0](https://tools.ietf
 Poświadczenia klienta OAuth 2.0 udzielić zezwolenia przepływ usługi sieci web (poufne klienta), aby używanie jej własnych poświadczeń, zamiast personifikacji użytkownika, do uwierzytelniania podczas wywoływania innej usługi sieci web. W tym scenariuszu klient jest zazwyczaj usługi sieci web warstwy środkowej, usługą demona lub witryną sieci web. Wyższy poziom gwarancji Microsoft platformy tożsamości umożliwia także wywoływania usługi do użycia certyfikatu (zamiast wspólny klucz tajny) jako poświadczenie.
 
 > [!NOTE]
-> Punkt końcowy v2.0 nie obsługuje wszystkich scenariuszy usługi Azure AD i funkcji. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy usługi Azure AD i funkcji. Aby ustalić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
 
-W przypadku bardziej typowych *OAuth 3 z bokami*, aplikacja kliencka udzielono uprawnień do uzyskania dostępu do zasobu w imieniu określonego użytkownika. Uprawnienie jest delegowane przez użytkownika do aplikacji, zwykle w ciągu [zgody](v2-permissions-and-consent.md) procesu. Jednak w przypadku poświadczeń klienta (*bokami dwóch OAuth*) przepływu, uprawnienia są udzielane bezpośrednio w samej aplikacji. Gdy aplikacja prezentuje tokenu do zasobu, zasób wymusza, że aplikacja ma autoryzacji do wykonania akcji, a nie użytkownika. 
+W przypadku bardziej typowych *OAuth 3 z bokami*, aplikacja kliencka udzielono uprawnień do uzyskania dostępu do zasobu w imieniu określonego użytkownika. Uprawnienie jest delegowane przez użytkownika do aplikacji, zwykle w ciągu [zgody](v2-permissions-and-consent.md) procesu. Jednak w przypadku poświadczeń klienta (*bokami dwóch OAuth*) przepływu, uprawnienia są udzielane bezpośrednio w samej aplikacji. Gdy aplikacja prezentuje tokenu do zasobu, zasób wymusza, że aplikacja ma autoryzacji do wykonania akcji, a nie użytkownika.
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
 Przepływ poświadczeń klienta w całej przypomina poniższy diagram. Opisano poszczególne kroki w dalszej części tego artykułu.
 
-![Przepływ poświadczeń klienta](./media/v2-oauth2-client-creds-grant-flow/convergence_scenarios_client_creds.png)
+![Przepływ poświadczeń klienta](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>Pobierz bezpośrednich autoryzacji
 
-Aplikacja odbiera zwykle bezpośredni autoryzacji dostępu do zasobu w jeden z dwóch sposobów: 
+Aplikacja odbiera zwykle bezpośredni autoryzacji dostępu do zasobu w jeden z dwóch sposobów:
 
 * [Za pomocą listy kontroli dostępu (ACL) do danego zasobu](#access-control-lists)
 * [Za pomocą przypisanie uprawnień aplikacji w usłudze Azure AD](#application-permissions)
@@ -55,9 +55,9 @@ Te dwie metody są najbardziej rozpowszechnione w usłudze Azure AD, a firma Mic
 
 ### <a name="access-control-lists"></a>Listy kontroli dostępu
 
-Dostawca zasobów może wymuszać sprawdzania autoryzacji na podstawie listy (klient) identyfikatorów, które zna i przyznaje określony poziom dostępu do aplikacji. W przypadku zasobów odbiera token z punktu końcowego v2.0, można dekodować tokenu i wyodrębnić identyfikator aplikacji klienckiej z `appid` i `iss` oświadczeń. Następnie porównuje ochronę aplikacji przed listy kontroli dostępu (ACL), ta funkcja obsługuje. Poziom szczegółowości listy ACL i metody mogą znacząco różnią się między zasobami.
+Dostawca zasobów może wymuszać sprawdzania autoryzacji na podstawie listy (klient) identyfikatorów, które zna i przyznaje określony poziom dostępu do aplikacji. W przypadku zasobów odbiera token z punktu końcowego platformy tożsamości firmy Microsoft, można dekodować tokenu i wyodrębnić identyfikator aplikacji klienckiej z `appid` i `iss` oświadczeń. Następnie porównuje ochronę aplikacji przed listy kontroli dostępu (ACL), ta funkcja obsługuje. Poziom szczegółowości listy ACL i metody mogą znacząco różnią się między zasobami.
 
-Typowy przypadek użycia jest uruchomić testy dla aplikacji sieci web lub interfejsu API sieci web za pomocą listy ACL. Internetowy interfejs API może udzielić tylko podzbioru pełnych uprawnień do określonego klienta. Aby uruchomić testy end-to-end w interfejsie API, należy utworzyć klienta testowego, który uzyskuje tokenów z punktem końcowym v2.0, a następnie wysyła je do interfejsu API. Interfejs API następnie sprawdza listy ACL dla Identyfikatora aplikacji klienta testowego w celu uzyskania pełnego dostępu do całej funkcji interfejsu API. Jeśli używasz tego rodzaju listy ACL, pamiętaj sprawdzić poprawność nie tylko wywołującego `appid` wartość, ale również sprawdzić, czy `iss` wartość tokenu jest zaufany.
+Typowy przypadek użycia jest uruchomić testy dla aplikacji sieci web lub interfejsu API sieci web za pomocą listy ACL. Internetowy interfejs API może udzielić tylko podzbioru pełnych uprawnień do określonego klienta. Aby uruchomić testy end-to-end w interfejsie API, należy utworzyć klienta testowego, który uzyskuje tokenów z punktu końcowego platformy tożsamości firmy Microsoft, a następnie wysyła je do interfejsu API. Interfejs API następnie sprawdza listy ACL dla Identyfikatora aplikacji klienta testowego w celu uzyskania pełnego dostępu do całej funkcji interfejsu API. Jeśli używasz tego rodzaju listy ACL, pamiętaj sprawdzić poprawność nie tylko wywołującego `appid` wartość, ale również sprawdzić, czy `iss` wartość tokenu jest zaufany.
 
 Ten typ autoryzacji jest typowe dla demonów i kont usług, które wymagają dostępu do danych należących do użytkowników odbiorców, którzy mają osobistych kont Microsoft. W przypadku danych należących do organizacji firma Microsoft zaleca, możesz uzyskać wymagane zgody za pośrednictwem uprawnień aplikacji.
 
@@ -77,19 +77,22 @@ Aby użyć uprawnień aplikacji w swojej aplikacji, wykonaj kroki omówione w ko
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Żądanie uprawnień w portalu rejestracji aplikacji
 
 1. Rejestrowanie i tworzenie aplikacji za pomocą nowego [środowisko rejestracji aplikacji (wersja zapoznawcza)](quickstart-register-app.md).
-2. Przejdź do aplikacji w aplikacji interfejsu rejestracji (wersja zapoznawcza). Przejdź do **certyfikaty i klucze tajne** sekcji i Dodaj **nowy wpis tajny klienta**, ponieważ należy używać co najmniej jeden klucz tajny klienta do żądania tokenu.
+2. Przejdź do aplikacji w aplikacji interfejsu rejestracji (wersja zapoznawcza). Przejdź do **certyfikaty i klucze tajne** sekcji i Dodaj **nowy wpis tajny klienta**, ponieważ będziesz potrzebować co najmniej jeden klucz tajny klienta do wysłania żądania tokenu.
 3. Znajdź **uprawnienia do interfejsu API** sekcji, a następnie dodaj **uprawnienia aplikacji** wymaganych przez aplikację.
 4. **Zapisz** rejestracji aplikacji.
 
-#### <a name="recommended-sign-the-user-in-to-your-app"></a>Zalecane: Zalogować użytkownika do aplikacji
+#### <a name="recommended-sign-the-user-into-your-app"></a>Zalecane: Zaloguj się użytkownika do aplikacji
 
 Zazwyczaj podczas kompilowania aplikacji korzystającej z uprawnienia aplikacji aplikacja wymaga strony lub widok, w którym administrator zatwierdzi uprawnienia aplikacji. Na tej stronie mogą być częścią aplikacji przepływ logowania, część ustawień aplikacji lub może być dedykowany przepływ "Połącz". W wielu przypadkach dobrym pomysłem dla aplikacji wyświetlić to "łączenie" Wyświetl tylko wtedy, gdy użytkownik zalogował się przy użyciu służbowego konta Microsoft.
 
-Można zalogować użytkownika do aplikacji, po określeniu organizacji, do której należy użytkownik przed skontaktowaniem się użytkownikowi zatwierdzanie uprawnień aplikacji. Chociaż nie niezbędne, pomoże Ci utworzyć bardziej intuicyjne środowisko dla użytkowników. Aby utworzyć użytkownika, postępuj zgodnie z naszym [samouczki protocol w wersji 2.0](active-directory-v2-protocols.md).
+Jeśli zalogujesz się użytkownika do aplikacji, można zidentyfikować organizacji, do której należy użytkownik przed skontaktowaniem się użytkownikowi zatwierdzanie uprawnień aplikacji. Chociaż nie niezbędne, pomoże Ci utworzyć bardziej intuicyjne środowisko dla użytkowników. Aby się zalogować użytkownika, postępuj zgodnie z naszym [samouczki protokołu platforma tożsamości firmy Microsoft](active-directory-v2-protocols.md).
 
 #### <a name="request-the-permissions-from-a-directory-admin"></a>Żądanie uprawnień od administratora katalogu
 
-Gdy wszystko będzie gotowe zażądać uprawnień od administratora w organizacji, można przekierować użytkownika do v2.0 *punktu końcowego zgody administratora*.
+Gdy wszystko będzie gotowe zażądać uprawnień od administratora w organizacji, można przekierować użytkownika do platformą Microsoft identity *punktu końcowego zgody administratora*.
+
+> [!TIP]
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -111,11 +114,11 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
 | `tenant` | Wymagane | Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Jeśli nie wiesz, którego użytkownik należy do dzierżawy i chcesz umożliwić im Zaloguj się przy użyciu dowolnej dzierżawy, należy użyć `common`. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klient), która jest przypisana do aplikacji. Te informacje można znaleźć w portalu, gdzie aplikacja została zarejestrowana. |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `redirect_uri` | Wymagane | Identyfikator URI, którego odpowiedź do wysłania dla aplikacji do obsługi przekierowania. Jego musi dokładnie odpowiadać jeden przekierowania identyfikatory URI, który został zarejestrowany w portalu, z tą różnicą, że musi być zakodowane w adresie URL i może mieć segmenty ścieżki dodatkowe. |
 | `state` | Zalecane | Wartość, która znajduje się w żądaniu, która jest także zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, która ma. Stan jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 
-W tym momencie usługa Azure AD wymusza, czy administrator dzierżawy może zalogować się do ukończenia żądania. Administrator jest proszony o zatwierdzania wszystkie uprawnienia bezpośrednich zastosowań, które żądanej aplikacji w portalu rejestracji aplikacji.
+W tym momencie usługa Azure AD wymusza, tylko administrator dzierżawy może zalogować się do ukończone żądania. Administrator jest proszony o zatwierdzania wszystkie uprawnienia bezpośrednich zastosowań, które żądanej aplikacji w portalu rejestracji aplikacji.
 
 ##### <a name="successful-response"></a>Pomyślna odpowiedź
 
@@ -148,7 +151,10 @@ Po otrzymaniu pomyślnej odpowiedzi z punktu końcowego inicjowania obsługi adm
 
 ## <a name="get-a-token"></a>Pobierz token
 
-Po nabyciu autoryzację na odpowiednim dla twojej aplikacji, należy kontynuować uzyskiwanie tokenów dostępu do interfejsów API. Do pobrania tokenu przy użyciu klienta poświadczeń, Wyślij żądanie POST `/token` punktu końcowego v2.0:
+Po nabyciu autoryzację na odpowiednim dla twojej aplikacji, należy kontynuować uzyskiwanie tokenów dostępu do interfejsów API. Do pobrania tokenu przy użyciu klienta poświadczeń, Wyślij żądanie POST `/token` punktu końcowego platformy tożsamości firmy Microsoft:
+
+> [!TIP]
+> Spróbuj wykonać tego żądania w narzędziu Postman! (Użyj Identyfikatora aplikacji w celu uzyskania najlepszych wyników — samouczek aplikacji nie będzie żądać przydatne uprawnień). [![Uruchamianie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu za pomocą wspólny klucz tajny
 
@@ -171,7 +177,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | Wymagane | Dzierżawy katalogu aplikacji firma planuje działać, w formacie nazwy domeny lub identyfikator GUID. |
 | `client_id` | Wymagane | Identyfikator aplikacji, która jest przypisana do aplikacji. Te informacje można znaleźć w portalu, gdzie aplikacja została zarejestrowana. |
-| `scope` | Wymagane | Przekazana wartość `scope` parametru, w tym żądaniu powinien być identyfikator zasobu (identyfikator URI aplikacji) zasobu, umieszczone za pomocą `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. </br>Ta wartość informuje punktu końcowego v2.0 wszystkich bezpośrednich zastosowań uprawnień skonfigurowanych dla aplikacji, punkt końcowy należy wystawić token dla nich skojarzone z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat `/.default` zakresu, zobacz [zgody dokumentacji](v2-permissions-and-consent.md#the-default-scope). |
+| `scope` | Wymagane | Przekazana wartość `scope` parametru, w tym żądaniu powinien być identyfikator zasobu (identyfikator URI aplikacji) zasobu, umieszczone za pomocą `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje Microsoft platformy tożsamości z punktu końcowego wszystkich bezpośrednich zastosowań uprawnień skonfigurowanych dla aplikacji, punkt końcowy należy wystawić token dla nich skojarzone z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat `/.default` zakresu, zobacz [zgody dokumentacji](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Wymagane | Klucz tajny klienta, który został wygenerowany dla aplikacji w portalu rejestracji aplikacji. Klucz tajny klienta musi być zakodowane w adresie URL przed wysłaniem. |
 | `grant_type` | Wymagane | Musi być równa `client_credentials`. |
 
@@ -193,7 +199,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | --- | --- | --- |
 | `tenant` | Wymagane | Dzierżawy katalogu aplikacji firma planuje działać, w formacie nazwy domeny lub identyfikator GUID. |
 | `client_id` | Wymagane |Identyfikator aplikacji (klient), która jest przypisana do aplikacji. |
-| `scope` | Wymagane | Przekazana wartość `scope` parametru, w tym żądaniu powinien być identyfikator zasobu (identyfikator URI aplikacji) zasobu, umieszczone za pomocą `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. <br>Ta wartość informuje punktu końcowego v2.0, czy wszystkich bezpośrednich zastosowań uprawnień skonfigurowanych dla aplikacji, go należy wystawić tokenu dla tych skojarzone z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat `/.default` zakresu, zobacz [zgody dokumentacji](v2-permissions-and-consent.md#the-default-scope). |
+| `scope` | Wymagane | Przekazana wartość `scope` parametru, w tym żądaniu powinien być identyfikator zasobu (identyfikator URI aplikacji) zasobu, umieszczone za pomocą `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje Microsoft platformy tożsamości z punktu końcowego, czy wszystkich bezpośrednich zastosowań uprawnień skonfigurowanych dla aplikacji, go należy wystawić tokenu dla tych skojarzone z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat `/.default` zakresu, zobacz [zgody dokumentacji](v2-permissions-and-consent.md#the-default-scope). |
 | `client_assertion_type` | Wymagane | Wartość musi być równa `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Wymagane | Potwierdzenie (JSON web token) należy utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
 | `grant_type` | Wymagane | Musi być równa `client_credentials`. |
@@ -215,7 +221,7 @@ Odpowiedź oznaczająca powodzenie wygląda następująco:
 | Parametr | Opis |
 | --- | --- |
 | `access_token` | Token żądanego dostępu. Aplikacja może używać tego tokenu do uwierzytelniania do zabezpieczonych zasobów, takich jak interfejs API sieci Web. |
-| `token_type` | Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest `bearer`. |
+| `token_type` | Wskazuje typ tokenu. To jedyny typ przez firmę Microsoft, które obsługuje platforma tożsamości jest `bearer`. |
 | `expires_in` | Ilość czasu, który token dostępu jest prawidłowy (w sekundach). |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6b100846ec08ca1bdda49d0d7bce9eb78ecf019b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262146"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501131"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -80,6 +80,7 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
 * **AzureMonitor** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi AzureMonitor. Jeśli określisz *AzureMonitor* wartości, ruch jest dozwolony lub zablokowany do AzureMonitor. 
 * **ServiceFabric** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi ServiceFabric. Jeśli określisz *ServiceFabric* wartości, ruch jest dozwolony lub zablokowany do ServiceFabric. 
 * **AzureMachineLearning** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi AzureMachineLearning. Jeśli określisz *AzureMachineLearning* wartości, ruch jest dozwolony lub zablokowany do AzureMachineLearning. 
+* **BatchNodeManagement** (tylko model Resource Manager): Ten tag określa prefiksy adresów usługi platformy Azure BatchNodeManagement. Jeśli określisz *BatchNodeManagement* wartości, ruch jest dozwolony lub zablokowany z usługą Batch w węzłach obliczeniowych.
 
 > [!NOTE]
 > Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. 

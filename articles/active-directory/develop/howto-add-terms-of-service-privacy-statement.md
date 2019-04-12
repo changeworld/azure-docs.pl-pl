@@ -1,5 +1,5 @@
 ---
-title: Warunków użytkowania usługi i zasady zachowania poufności dla aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+title: Warunków użytkowania usługi i zasady zachowania poufności dla aplikacji | Azure
 description: Dowiedz się, jak można skonfigurować warunki usługi i zasady zachowania poufności dla aplikacji zarejestrowana do korzystania z usługi Azure AD.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193513"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500306"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Warunków użytkowania usługi i zasady zachowania poufności dla zarejestrowanych aplikacji usługi Azure Active Directory
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania usługi i zasady zachowania poufności dla aplikacji
 
 Deweloperzy, którzy tworzenie i zarządzanie aplikacjami, które integrują się z kontami Microsoft i usługi Azure Active Directory (Azure AD) powinien zawierać linki do warunków aplikacji usługi i zasady zachowania poufności. Warunki usługi i zasady zachowania poufności są udostępniane użytkownikom za pośrednictwem środowiska zgody użytkownika. One pomóc użytkownikom dowiedzieć się, że ich zaufania aplikacji. Warunki usługi i zasady zachowania poufności są szczególnie istotne w przypadku aplikacji wielodostępnych widocznych dla użytkownika — aplikacje, które są używane przez wiele katalogów, lub są dostępne dla dowolnego konta Microsoft.
 
@@ -47,7 +47,7 @@ Przed dodaniem linki do warunków Twojej aplikacji, usług i ochrony prywatnośc
 | Wytyczna     | Opis                           |
 |---------------|---------------------------------------|
 | Format        | Nieprawidłowy adres URL                             |
-| Prawidłowe schematy | HTTP i HTTPS</br>Firma Microsoft zaleca protokołu HTTPS |
+| Prawidłowe schematy | HTTP i HTTPS<br/>Firma Microsoft zaleca protokołu HTTPS |
 | Maksymalna długość    | 2048 znaków                       |
 
 Przykłady: `https://myapp.com/terms-of-service` i `https://myapp.com/privacy-statement`

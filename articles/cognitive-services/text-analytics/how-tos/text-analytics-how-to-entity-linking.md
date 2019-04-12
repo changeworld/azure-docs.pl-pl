@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: d1f4c72ec0a67baa6f523c1ab632903b0580f3a7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339384"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505579"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Obsługiwane typy dla rozpoznawanie jednostek znaku
 
-| Type  | SubType | Przykład |
+| Typ  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | N/D\*         | "Jan", "Billa Gatesa"     |
 | Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
@@ -56,7 +56,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | Ilość      | Temperatura   | "stopni 32"    |
 | DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
 | DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
-| Data i godzina     | Time          | "8: 00", "8:00"  | 
+| DateTime      | Time          | "8: 00", "8:00"  | 
 | DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
 | DateTime      | TimeRange     | "18: 00 – 19: 00"     | 
 | DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
@@ -96,7 +96,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on obejmować zasób `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on zawierać `/entities` zasobów: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 
@@ -287,7 +287,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy dotyczący łączenie po
 
 ## <a name="see-also"></a>Zobacz także 
 
- [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
+ [Omówienie analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
 

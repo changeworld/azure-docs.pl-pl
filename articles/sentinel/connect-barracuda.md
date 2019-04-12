@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych Barracuda w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane Barracuda w przez wartownika platformy Azure.
+title: Połącz dane Barracuda przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych Barracuda przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d8e92fd3918230b48449926dcbb7528d919fd96f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574722"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492842"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Połącz urządzenie Barracuda 
 
@@ -31,11 +31,10 @@ Barracuda zapory aplikacji sieci Web (WAF) łącznik umożliwia łatwe łączeni
 
 
 > [!NOTE]
-> 
-> - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
+> Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Skonfigurować i połączyć z zapory aplikacji internetowych Barracuda
-Zapory aplikacji internetowych barracuda można integrować i Eksportuj dzienniki bezpośrednio do [ASI] za pomocą serwera usługi Azure pakietu OMS.
+Zapory aplikacji internetowych barracuda można integrować i Eksportuj dzienniki bezpośrednio do platformy Azure przez wartownika za pomocą serwera usługi Azure pakietu OMS.
 1. Przejdź do [przepływu konfiguracji zapory aplikacji internetowych Barracuda](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)i postępuj zgodnie z instrukcjami, aby skonfigurować połączenie przy użyciu tych parametrów:
     - **Identyfikator obszaru roboczego**: Skopiuj wartość Identyfikatora obszaru roboczego ze strony łącznika Azure przez wartownika Barracuda.
     - **Klucz podstawowy**: Skopiuj wartość klucz podstawowy na stronie łącznika Azure przez wartownika Barracuda.

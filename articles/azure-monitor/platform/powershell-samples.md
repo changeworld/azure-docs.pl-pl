@@ -1,6 +1,6 @@
 ---
-title: Przykłady programu PowerShell usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Przykłady programu PowerShell usługi Azure Log Analytics
+title: Przykłady programu PowerShell usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Przykłady programu PowerShell usługi Azure Monitor
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 642aa385f52e3757f1f872d47d6dd2de80f36d2e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5aac1f7e1ded700b9bec38c358ea0049df93fd3e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110077"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492621"
 ---
-# <a name="azure-log-analytics-powershell-samples"></a>Przykłady programu Azure PowerShell analizy dzienników
+# <a name="azure-monitor-powershell-samples"></a>Przykłady programu Azure PowerShell monitora
 
-Poniższa tabela zawiera linki do przykładowych skryptów programu PowerShell do wykonywania różnych funkcji w usłudze Log Analytics.
+Poniższa tabela zawiera linki do przykładowych skryptów programu PowerShell do wykonywania różnych funkcji w usłudze Azure Monitor.
 
 | | |
 |---|---|
 |**Tworzenie obszaru roboczego**||
-| [Utwórz obszar roboczy usługi Log Analytics](../scripts/powershell-sample-create-workspace.md) | Tworzy obszar roboczy w usłudze Log Analytics.|
+| [Utwórz obszar roboczy usługi Log Analytics](../scripts/powershell-sample-create-workspace.md) | Tworzy obszar roboczy usługi Log Analytics w usłudze Azure Monitor.|
 | | |
 

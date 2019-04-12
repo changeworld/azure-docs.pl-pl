@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych zapory aplikacji sieci web firmy Microsoft w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane zapory aplikacji sieci web firmy Microsoft w przez wartownika platformy Azure.
+title: Połącz dane zapory aplikacji sieci web firmy Microsoft przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane zapory aplikacji sieci web firmy Microsoft na platformie Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2238060acb60b1be0d06b81f62fb45a7f1c7a9b6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5316fa7e3aa4465349b762b99bec9171f821062f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580601"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491034"
 ---
-# <a name="collect-data-from-microsoft-web-application-firewall"></a>Zbieranie danych z zapory aplikacji sieci web firmy Microsoft
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Połącz dane z zapory aplikacji sieci web firmy Microsoft
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -39,15 +39,15 @@ Obejmuje strumieniowe przesyłanie dzienników z zapory aplikacji sieci web usł
 Jeśli masz już zapory aplikacji sieci web firmy Microsoft, upewnij się, że masz istniejący zasób bramy.
 Po wdrożeniu zapory aplikacji sieci web firmy Microsoft i pobieranie danych, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
     
-5. W portalu Azure przez wartownika wybierz **łączników danych**.
-5. Na stronie łączniki danych wybierz **zapory aplikacji sieci Web** kafelka.
+1. W portalu Azure przez wartownika wybierz **łączników danych**.
+1. Na stronie łączniki danych wybierz **zapory aplikacji sieci Web** kafelka.
 1. Przejdź do [zasobu usługi Application Gateway](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) i wybierz polecenie zapory aplikacji internetowych.
     1. Wybierz **ustawień diagnostycznych**.
     1. Wybierz **+ Dodaj ustawienie diagnostyczne** pod tabelą.
     1. W **ustawień diagnostycznych** wpisz **nazwa** i wybierz **wysyłanie do usługi Log Analytics**.
     1. W obszarze **obszar roboczy usługi Log Analytics** wybierz obszar roboczy przez wartownika platformy Azure.
     1. Wybierz typy dzienników, które mają być analizowane. Firma Microsoft zaleca: ApplicationGatewayAccessLog i ApplicationGatewayFirewallLog.
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów zapory aplikacji sieci web firmy Microsoft, możesz wyszukać **AzureDiagnostics**.
+1. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów zapory aplikacji sieci web firmy Microsoft, możesz wyszukać **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie przedstawiono sposób nawiązywania połączeń zapory aplikacji sieci web firmy Microsoft na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:

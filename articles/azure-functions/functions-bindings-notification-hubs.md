@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 9f80f1a8d02352daa663ee5ea4fa9287e0e8580e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893796"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490966"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Usługa Notification Hubs danych wyjściowych powiązania dla usługi Azure Functions
 
@@ -25,6 +25,9 @@ W tym artykule wyjaśniono, jak wysyłać powiadomienia wypychane przy użyciu [
 Usługa Azure Notification Hubs, muszą być skonfigurowane dla platformy powiadomienia usługi (system powiadomień platformy) chcesz użyć. Aby dowiedzieć się, jak otrzymywać powiadomienia wypychane w aplikacji klienckiej z usługi Notification Hubs, zobacz [wprowadzenie do usługi Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) i wybierz platformę klienta docelowego z listy rozwijanej w górnej części strony.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+> [!IMPORTANT]
+> Google ma [przestarzałe Google Cloud Messaging (GCM) na rzecz usługi Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). To powiązanie danych wyjściowych nie obsługuje usługi FCM. Aby wysłać powiadomienia za pomocą usługi FCM, należy użyć [interfejsu API usługi Firebase](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) bezpośrednio w funkcji lub użyj [powiadomienia o szablonach](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -197,37 +200,6 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---gcm-native"></a>Przykład — natywnej usługi GCM
-
-Ten przykładowy skrypt języka C# pokazano, jak wysyłać natywne powiadomienia usługi GCM. 
-
-```cs
-#r "Microsoft.Azure.NotificationHubs"
-#r "Newtonsoft.Json"
-
-using System;
-using Microsoft.Azure.NotificationHubs;
-using Newtonsoft.Json;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<Notification> notification, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
-    // a "name" value.
-    //
-    // The JSON format for a native GCM notification is ...
-    // { "data": { "message": "notification message" }}  
-
-    log.Info($"Sending GCM notification of a new user");    
-    dynamic user = JsonConvert.DeserializeObject(myQueueItem);    
-    string gcmNotificationPayload = "{\"data\": {\"message\": \"A new user wants to be added (" + 
-                                        user.name + ")\" }}";
-    log.Info($"{gcmNotificationPayload}");
-    await notification.AddAsync(new GcmNotification(gcmNotificationPayload));        
-}
-```
-
 ## <a name="example---wns-native"></a>Przykład — natywnej usługi WNS
 
 Ten przykładowy skrypt języka C# pokazano, jak używać typów zdefiniowanych w [Biblioteka usługi Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) do wysyłania natywnych powiadomień wyskakującego powiadomienia usługi WNS. 
@@ -289,7 +261,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**tagExpression** |**TagExpression** | Wyrażenia tagu umożliwiają określenie, że powiadomienia dostarczone do zestawu urządzeń, które zostały zarejestrowane do otrzymywania powiadomień, które pasują do wyrażenia tagu.  Aby uzyskać więcej informacji, zobacz [routingu i znaczników wyrażeń](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Nazwa zasobu Centrum powiadomień w witrynie Azure portal. |
 |**połączenie** | **ConnectionStringSetting** | Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Notification Hubs.  Parametry połączenia musi być równa *DefaultFullSharedAccessSignature* wartość dla Centrum powiadomień. Zobacz [ustawienia parametrów połączenia](#connection-string-setup) w dalszej części tego artykułu.|
-|**Platforma** | **Platforma** | Właściwość platformy wskazuje platforma klienta elementy docelowe powiadomień. Domyślnie w przypadku pominięcia właściwości platformy z powiązania danych wyjściowych szablonu powiadomienia mogą służyć do przeznaczone na dowolną platformę skonfigurowany w Centrum powiadomień platformy Azure. Aby uzyskać więcej informacji na temat korzystania z szablonów ogólnie rzecz biorąc do wysyłania wielu powiadomień platformy przy użyciu usługi Azure Notification Hub, zobacz [szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Po ustawieniu **platformy** musi mieć jedną z następujących wartości: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Aby uzyskać więcej informacji na temat konfigurowania Centrum powiadomień dla usługi APNS i otrzymywanie powiadomienia w aplikacji klienta, zobacz [wysyłanie powiadomień wypychanych do systemu iOS z usługą Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Aby uzyskać więcej informacji na temat konfigurowania Centrum powiadomień dla usługi ADM i odbieranie powiadomień w aplikację dla urządzeń Kindle, zobacz [wprowadzenie do usługi Notification Hubs dla aplikacji na urządzenie Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Usługa Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, która jest nowa wersja usługi GCM, jest również obsługiwany. Aby uzyskać więcej informacji, zobacz [wysyłanie powiadomień wypychanych do systemu Android z usługą Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Usługi powiadomień wypychanych Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) przeznaczonych dla platform Windows. Windows Phone 8.1 lub nowszy, jest również obsługiwana przez usługi WNS. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notification Hubs dla Windows aplikacji platformy uniwersalnej](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Usługi powiadomień wypychanych firmy Microsoft](/previous-versions/windows/apps/ff402558(v=vs.105)). Ta platforma obsługuje wcześniejszych platform Windows Phone i Windows Phone 8. Aby uzyskać więcej informacji, zobacz [wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs na Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**Platforma** | **Platforma** | Właściwość platformy wskazuje platforma klienta elementy docelowe powiadomień. Domyślnie w przypadku pominięcia właściwości platformy z powiązania danych wyjściowych szablonu powiadomienia mogą służyć do przeznaczone na dowolną platformę skonfigurowany w Centrum powiadomień platformy Azure. Aby uzyskać więcej informacji na temat korzystania z szablonów ogólnie rzecz biorąc do wysyłania wielu powiadomień platformy przy użyciu usługi Azure Notification Hub, zobacz [szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Po ustawieniu **platformy** musi mieć jedną z następujących wartości: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Aby uzyskać więcej informacji na temat konfigurowania Centrum powiadomień dla usługi APNS i otrzymywanie powiadomienia w aplikacji klienta, zobacz [wysyłanie powiadomień wypychanych do systemu iOS z usługą Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Aby uzyskać więcej informacji na temat konfigurowania Centrum powiadomień dla usługi ADM i odbieranie powiadomień w aplikację dla urządzeń Kindle, zobacz [wprowadzenie do usługi Notification Hubs dla aplikacji na urządzenie Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Usługi powiadomień wypychanych Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) przeznaczonych dla platform Windows. Windows Phone 8.1 lub nowszy, jest również obsługiwana przez usługi WNS. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notification Hubs dla Windows aplikacji platformy uniwersalnej](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Usługi powiadomień wypychanych firmy Microsoft](/previous-versions/windows/apps/ff402558(v=vs.105)). Ta platforma obsługuje wcześniejszych platform Windows Phone i Windows Phone 8. Aby uzyskać więcej informacji, zobacz [wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs na Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -307,7 +279,7 @@ Oto przykład powiązania usługi Notification Hubs w *function.json* pliku.
       "tagExpression": "",
       "hubName": "my-notification-hub",
       "connection": "MyHubConnectionString",
-      "platform": "gcm"
+      "platform": "apns"
     }
   ],
   "disabled": false

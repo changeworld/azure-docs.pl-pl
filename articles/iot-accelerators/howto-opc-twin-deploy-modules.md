@@ -1,5 +1,5 @@
 ---
-title: Sposób wdrażania modułu zarządzania urządzeniami Azure IoT OPC UA od podstaw | Dokumentacja firmy Microsoft
+title: Jak wdrożyć OPC bliźniaczej reprezentacji modułu na platformę Azure od podstaw | Dokumentacja firmy Microsoft
 description: Jak wdrożyć bliźniaczej reprezentacji OPC od podstaw.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759480"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491360"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Wdrażanie OPC bliźniaczej reprezentacji modułu i zależności od podstaw
 
-Moduł bliźniaczej reprezentacji urządzenia OPC jest uruchamiany w usłudze IoT Edge i udostępnia usługi edge do bliźniaczej reprezentacji urządzenia OPC i rejestr usług. 
+OPC bliźniaczej reprezentacji modułu jest uruchamiany na urządzeniach brzegowych IoT i udostępnia kilka usług brzegowych bliźniaczej reprezentacji urządzenia OPC i usługi rejestru. 
 
 Dostępnych jest kilka opcji, aby wdrożyć moduły do Twojej [usługi Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) bramy między nimi
 
@@ -109,7 +109,7 @@ Najprostszym sposobem, aby wdrożyć moduły urządzenia bramy usługi Azure IoT
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-1. Wdrażanie zarządzania OPC UA urządzeniami [zależności](howto-opc-twin-deploy-dependencies.md) i pobierane wynikowy `.env` pliku. Należy pamiętać, wdrożonych `hub name` z `PCS_IOTHUBREACT_HUB_NAME` zmiennej w wynikowym `.env` pliku.
+1. Wdrażanie bliźniaczej reprezentacji OPC [zależności](howto-opc-twin-deploy-dependencies.md) i pobierane wynikowy `.env` pliku. Należy pamiętać, wdrożonych `hub name` z `PCS_IOTHUBREACT_HUB_NAME` zmiennej w wynikowym `.env` pliku.
 
 2. Rejestrowanie i rozpocząć [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) lub [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) brama usługi IoT Edge i zwróć uwagę, jego `device id`.
 
@@ -205,7 +205,7 @@ Problemy z rozwiązywania problemów i debugowanie jest przydatne do uruchamiani
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-1. Wdrażanie zarządzania OPC UA urządzeniami [zależności](howto-opc-twin-deploy-dependencies.md).
+1. Wdrażanie bliźniaczej reprezentacji OPC [zależności](howto-opc-twin-deploy-dependencies.md).
 
 2. Zainstaluj [Docker CE (18.02.0+)](https://www.docker.com/community-edition) na [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) lub [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
 

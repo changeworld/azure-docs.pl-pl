@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293996"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496628"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Samouczek: wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B
 
@@ -72,7 +72,7 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 3.  Wyloguj się.
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Tworzenie zasad dostępu warunkowego, które wymagają użycia usługi MFA
-1.  Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) jako administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1.  Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com/) jako administrator zabezpieczeń lub administrator dostępu warunkowego.
 2.  W witrynie Azure Portal wybierz pozycję **Azure Active Directory**. 
 3.  Na stronie **Azure Active Directory** w sekcji **Zabezpieczenia** wybierz pozycję **Dostęp warunkowy**.
 4.  Na stronie **Dostęp warunkowy** na pasku narzędzi w górnej części wybierz pozycję **Nowe zasady**.

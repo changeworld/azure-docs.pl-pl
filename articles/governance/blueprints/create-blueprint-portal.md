@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 598df72bf9c37b8687e2122813609e165ae8c2fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260667"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505689"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>Zdefiniuj i przypisz plan w witrynie portal
 
@@ -41,116 +41,117 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Tworzenie planu ze strony definicji planu](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Podaj **nazwy planu** takich jak **MyBlueprint**. (Użyj maksymalnie 48 litery i cyfry, ale bez spacji i znaków specjalnych). Pozostaw **planu opis** puste. 
-   
+1. Podaj **nazwy planu** takich jak **MyBlueprint**. (Użyj maksymalnie 48 litery i cyfry, ale bez spacji i znaków specjalnych). Pozostaw **planu opis** puste.
+
 1. W **Lokalizacja definicji** polu, wybierz przycisk wielokropka po prawej stronie, wybierz [grupy zarządzania](../management-groups/overview.md) lub subskrypcji, w którym chcesz zapisać planu, a następnie wybierz **wybierz**.
 
 1. Sprawdź, czy informacje są poprawne. **Nazwy planu** i **Lokalizacja definicji** pola nie można zmienić później. Następnie wybierz pozycję **dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodawanie przypisania roli na poziomie subskrypcji: 
+1. Dodawanie przypisania roli na poziomie subskrypcji:
 
-   a. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**. **Dodawanie artefaktu** po prawej stronie w przeglądarce zostanie otwarte okno. 
-   
-   b. Wybierz **przypisania roli** dla **typ artefaktu**. 
-   
-   c. W obszarze **roli**, wybierz opcję **Współautor**. Pozostaw **Dodaj użytkownika, aplikacji lub grupy** pola, przy czym pole wyboru, który wskazuje parametr dynamiczny. 
-   
-   d. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**. **Dodawanie artefaktu** po prawej stronie w przeglądarce zostanie otwarte okno.
+
+   1. Wybierz **przypisania roli** dla **typ artefaktu**.
+
+   1. W obszarze **roli**, wybierz opcję **Współautor**. Pozostaw **Dodaj użytkownika, aplikacji lub grupy** pola, przy czym pole wyboru, który wskazuje parametr dynamiczny.
+
+   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
 
    ![Przypisanie roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Większość artefaktów obsługuje parametrów. Parametr, który ma przypisaną wartość, podczas tworzenia planu jest *parametru statycznego*. Jeśli parametr nie zostanie przypisana podczas przypisywania planu jest *parametru dynamicznego*. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
 
-1. Dodaj przypisanie zasad na poziomie subskrypcji: 
+1. Dodaj przypisanie zasad na poziomie subskrypcji:
 
-   a. Wybierz **+ Dodawanie artefaktu** wiersz pod artefaktu przypisania roli. 
-   
-   b. Wybierz **przypisania zasad** dla **typ artefaktu**. 
-   
-   c. Zmiana **typu** do **wbudowanych**. W **wyszukiwania**, wprowadź **tag**. 
-   
-   d. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz **Zastosuj tag i jego wartość domyślną do grup zasobów**. 
-   
-   e. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz **+ Dodawanie artefaktu** wiersz pod artefaktu przypisania roli.
 
-1. Zaznacz wiersz przypisania zasad **Zastosuj tag i jego wartość domyślną do grup zasobów**. 
+   1. Wybierz **przypisania zasad** dla **typ artefaktu**.
+
+   1. Zmiana **typu** do **wbudowanych**. W **wyszukiwania**, wprowadź **tag**.
+
+   1. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz **Zastosuj tag i jego wartość domyślną do grup zasobów**.
+
+   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+
+1. Zaznacz wiersz przypisania zasad **Zastosuj tag i jego wartość domyślną do grup zasobów**.
 
 1. Okna, aby podać parametry do artefaktu w ramach definicji planu otwiera i umożliwia ustawienie parametrów dla wszystkich przypisań (parametry statyczne) oparte na ten plan zamiast podczas przypisywania (parametry dynamiczne). W tym przykładzie użyto parametrów dynamicznych podczas przypisywania planu, więc pozostaw wartości domyślne i wybierz pozycję **anulować**.
 
-1. Dodaj grupę zasobów na poziomie subskrypcji: 
+1. Dodaj grupę zasobów na poziomie subskrypcji:
 
-   a. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**. 
-   
-   b. Wybierz **grupy zasobów** dla **typ artefaktu**. 
-   
-   c. Pozostaw **nazwę wyświetlaną artefaktu**, **nazwy grupy zasobów**, i **lokalizacji** pola puste, ale upewnij się, że zaznaczono pole wyboru dla każdej właściwości parametru były one parametry dynamiczne. 
-   
-   d. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**.
 
-1. Dodawanie szablonu w ramach grupy zasobów: 
+   1. Wybierz **grupy zasobów** dla **typ artefaktu**.
 
-   a. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **ResourceGroup** wpisu. 
-   
-   b. Wybierz **szablonu usługi Azure Resource Manager** dla **typ artefaktu**ustaw **nazwę wyświetlaną artefaktu** do **StorageAccount**i pozostawić  **Opis** puste. 
-   
-   c. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager. Po wklejeniu tego szablonu, wybierz **parametry** kartę i zwróć uwagę, że parametry szablonu **storageAccountType** i **lokalizacji** zostały wykryte. Każdy parametr został automatycznie wykryte i wypełnione, ale skonfigurowany jako parametr dynamiczny. 
-   
-   > [!IMPORTANT]
-   > Jeśli importujesz szablonu, upewnij się, że plik jest tylko JSON i nie zawiera kodu HTML. Gdy wskazuje adres URL w witrynie GitHub, upewnij się, że wybrano **RAW** można pobrać czystej plik JSON, a nie jednego, ujęte w nawiasy HTML do wyświetlenia w witrynie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
+   1. Pozostaw **nazwę wyświetlaną artefaktu**, **nazwy grupy zasobów**, i **lokalizacji** pola puste, ale upewnij się, że zaznaczono pole wyboru dla każdej właściwości parametru były one parametry dynamiczne.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "storageAccountType": {
-               "type": "string",
-               "defaultValue": "Standard_LRS",
-               "allowedValues": [
-                   "Standard_LRS",
-                   "Standard_GRS",
-                   "Standard_ZRS",
-                   "Premium_LRS"
-               ],
-               "metadata": {
-                   "description": "Storage Account type"
-               }
-           },
-           "location": {
-               "type": "string",
-               "defaultValue": "[resourceGroups('ResourceGroup').location]",
-               "metadata": {
-                   "description": "Location for all resources."
-               }
-           }
-       },
-       "variables": {
-           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-       },
-       "resources": [{
-           "type": "Microsoft.Storage/storageAccounts",
-           "name": "[variables('storageAccountName')]",
-           "location": "[parameters('location')]",
-           "apiVersion": "2018-07-01",
-           "sku": {
-               "name": "[parameters('storageAccountType')]"
-           },
-           "kind": "StorageV2",
-           "properties": {}
-       }],
-       "outputs": {
-           "storageAccountName": {
-               "type": "string",
-               "value": "[variables('storageAccountName')]"
-           }
-       }
-   }
-   ```
+   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
 
-   d. Wyczyść **storageAccountType** pole wyboru i zwróć uwagę, że listy rozwijanej zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić jej parametrów dynamicznych. 
-   
-   e. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+1. Dodawanie szablonu w ramach grupy zasobów:
+
+   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **ResourceGroup** wpisu.
+
+   1. Wybierz **szablonu usługi Azure Resource Manager** dla **typ artefaktu**ustaw **nazwę wyświetlaną artefaktu** do **StorageAccount**i pozostawić  **Opis** puste.
+
+   1. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager.
+      Po wklejeniu tego szablonu, wybierz **parametry** kartę i zwróć uwagę, że parametry szablonu **storageAccountType** i **lokalizacji** zostały wykryte. Każdy parametr został automatycznie wykryte i wypełnione, ale skonfigurowany jako parametr dynamiczny.
+
+      > [!IMPORTANT]
+      > Jeśli importujesz szablonu, upewnij się, że plik jest tylko JSON i nie zawiera kodu HTML. Gdy wskazuje adres URL w witrynie GitHub, upewnij się, że wybrano **RAW** można pobrać czystej plik JSON, a nie jednego, ujęte w nawiasy HTML do wyświetlenia w witrynie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
+
+      ```json
+      {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+              "storageAccountType": {
+                  "type": "string",
+                  "defaultValue": "Standard_LRS",
+                  "allowedValues": [
+                      "Standard_LRS",
+                      "Standard_GRS",
+                      "Standard_ZRS",
+                      "Premium_LRS"
+                  ],
+                  "metadata": {
+                      "description": "Storage Account type"
+                  }
+              },
+              "location": {
+                  "type": "string",
+                  "defaultValue": "[resourceGroup().location]",
+                  "metadata": {
+                      "description": "Location for all resources."
+                  }
+              }
+          },
+          "variables": {
+              "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+          },
+          "resources": [{
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[variables('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                  "name": "[parameters('storageAccountType')]"
+              },
+              "kind": "StorageV2",
+              "properties": {}
+          }],
+          "outputs": {
+              "storageAccountName": {
+                  "type": "string",
+                  "value": "[variables('storageAccountName')]"
+              }
+          }
+      }
+      ```
+
+   1. Wyczyść **storageAccountType** pole wyboru i zwróć uwagę, że listy rozwijanej zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić jej parametrów dynamicznych.
+
+   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
 
    ![Szablon usługi Resource Manager dla artefaktu planu](./media/create-blueprint-portal/add-resource-manager-template.png)
 
@@ -172,16 +173,16 @@ W [Tworzenie planu](#create-a-blueprint), nie Podaj opis lub dodawanie przypisan
 
 1. Wybierz opcję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodaj przypisanie roli w ramach grupy zasobów: 
+1. Dodaj przypisanie roli w ramach grupy zasobów:
 
-   a. Wybierz **+ Dodawanie artefaktu** wiersz bezpośrednio pod **ResourceGroup** wpisu. 
-   
-   b. Wybierz **przypisania roli** dla **typ artefaktu**. 
-   
-   c. W obszarze **roli**, wybierz opcję **właściciela**i usuń zaznaczenie pola wyboru w obszarze **Dodaj użytkownika, aplikacji lub grupy** pole. 
-   
-   d. Wyszukaj i wybierz użytkownika, aplikacji lub grupy do dodania. Ten artefakt używa zestawu parametrów statyczne takie same w każdym przypisania tego planu. 
-   
+   1. Wybierz **+ Dodawanie artefaktu** wiersz bezpośrednio pod **ResourceGroup** wpisu.
+
+   1. Wybierz **przypisania roli** dla **typ artefaktu**.
+
+   1. W obszarze **roli**, wybierz opcję **właściciela**i usuń zaznaczenie pola wyboru w obszarze **Dodaj użytkownika, aplikacji lub grupy** pole.
+
+   1. Wyszukaj i wybierz użytkownika, aplikacji lub grupy do dodania. Ten artefakt używa zestawu parametrów statyczne takie same w każdym przypisania tego planu.
+
    e. Wybierz **Dodaj** można dodać tego artefaktu do planu.
 
    ![Drugie przypisanie roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment-2.png)
@@ -217,15 +218,15 @@ Po opublikowaniu planu można ją przypisać do subskrypcji. Przypisz plan, któ
 
    Jeśli w portalu [Azure Billing](../../billing/index.md) są dostępne obsługiwane oferty dotyczące wersji Enterprise, zostanie uaktywniony link **Utwórz nową** w obszarze **Subskrypcja**. Wykonaj następujące kroki:
 
-   a. Wybierz **Utwórz nową** link, aby utworzyć nową subskrypcję, zamiast zaznaczania już istniejące.
+   1. Wybierz link **Utwórz nową**, aby utworzyć nową subskrypcję, zamiast wybierać już istniejące.
 
-   b. W polu **Nazwa wyświetlana** podaj nazwę dla nowej subskrypcji.
+   1. W polu **Nazwa wyświetlana** podaj nazwę dla nowej subskrypcji.
 
-   c. Wybierz dostępnych **oferują** z listy rozwijanej.
+   1. Wybierz dostępnych **oferują** z listy rozwijanej.
 
-   d. Użyj wielokropka, aby wybrać [grupy zarządzania](../management-groups/index.md) , subskrypcja będzie elementem podrzędnym.
+   1. Użyj wielokropka, aby wybrać [grupy zarządzania](../management-groups/index.md) , subskrypcja będzie elementem podrzędnym.
 
-   e. Wybierz pozycję **Utwórz** w dolnej części strony.
+   1. Wybierz pozycję **Utwórz** w dolnej części strony.
 
    ![Utwórz subskrypcję dla subskrypcji przypisanie planu](./media/create-blueprint-portal/assignment-create-subscription.png)
 
@@ -254,7 +255,8 @@ Po opublikowaniu planu można ją przypisać do subskrypcji. Przypisz plan, któ
 1. Dla **ResourceGroup**, podaj **nazwa** z **StorageAccount** i **lokalizacji** z **wschodnie stany USA 2** z listy rozwijanej.
 
    > [!NOTE]
-   > Dla każdego artefaktu dodanego w ramach grupy zasobów w definicji planu tego artefaktu tworzone jest wcięcie aby było zgodne z grupą zasobów lub obiekt, który ją wdrożysz. Artefakty, które nie przyjmują parametrów albo nie może mieć parametrów określonych w przypisania są wyświetlane tylko w przypadku informacji kontekstowych.
+   > Dla każdego artefaktu dodanego w ramach grupy zasobów w definicji planu tego artefaktu tworzone jest wcięcie aby było zgodne z grupą zasobów lub obiekt, który ją wdrożysz.
+   > Artefakty, które nie przyjmują parametrów albo nie może mieć parametrów określonych w przypisania są wyświetlane tylko w przypadku informacji kontekstowych.
 
 1. W szablonie usługi Azure Resource Manager **StorageAccount**, wybierz opcję **Standard_GRS** dla **storageAccountType** parametru.
 
@@ -294,7 +296,8 @@ Jeśli przypisanie planu nie są już potrzebne, usuń go z subskrypcji. Planu m
 1. Kliknij prawym przyciskiem myszy planu, który chcesz usunąć, a następnie wybierz pozycję **usuwania planu**. Następnie wybierz pozycję **tak** w oknie dialogowym potwierdzenia.
 
 > [!NOTE]
-> Trwa usuwanie planu w przypadku tej metody spowoduje również usunięcie wszystkich opublikowane wersje wybranego planu. Aby usunąć jedną wersję, otwórz planu, wybierz **opublikowane wersje** , a następnie wybierz wersję, którą chcesz usunąć, a następnie wybierz **Usuń tę wersję**. Ponadto nie można usunąć planu, dopóki nie zostały usunięte wszystkie przypisania planu tej definicji planu.
+> Trwa usuwanie planu w przypadku tej metody spowoduje również usunięcie wszystkich opublikowane wersje wybranego planu.
+> Aby usunąć jedną wersję, otwórz planu, wybierz **opublikowane wersje** , a następnie wybierz wersję, którą chcesz usunąć, a następnie wybierz **Usuń tę wersję**. Ponadto nie można usunąć planu, dopóki nie zostały usunięte wszystkie przypisania planu tej definicji planu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

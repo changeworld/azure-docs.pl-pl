@@ -1,6 +1,6 @@
 ---
-title: Zbieraj dane o aktywności platformy Azure w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane o aktywności platformy Azure w przez wartownika platformy Azure.
+title: Połącz dane aktywności platformy Azure do platformy Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane o aktywności platformy Azure do platformy Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 42ce8d06489cfacf7ba9bb3de1425224b5df95e7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d0cc13227bfe02594a57a7fb0ba8ee1cb3383d56
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240579"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494682"
 ---
-# <a name="collect-data-from-azure-activity-log"></a>Zbieranie danych z dziennika aktywności platformy Azure
+# <a name="connect-data-from-azure-activity-log"></a>Połącz dane z dziennika aktywności platformy Azure
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -37,7 +37,7 @@ Można przesyłać strumieniowo dzienniki z [dziennik aktywności platformy Azur
 
 ## <a name="connect-to-azure-activity-log"></a>Łączenie z dziennikiem aktywności platformy Azure
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **dziennik aktywności platformy Azure** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **dziennik aktywności platformy Azure** kafelka.
 
 2. W okienku dziennika aktywności platformy Azure Wybierz subskrypcje, które mają być przesyłane strumieniowo do usługi Azure przez wartownika. 
 

@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się więcej o protokoły autoryzacji obsługiwanych przez usługę Azure AD w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący protokołów obsługiwanych przez punkt końcowy usługi Azure AD w wersji 2.0.
+title: Dowiedz się więcej o protokoły autoryzacji, obsługiwane przez platformę tożsamości firmy Microsoft | Azure
+description: Przewodnik dotyczący protokołu OAuth 2.0 i OpenID Connect protokołów, które są obsługiwane przez punkt końcowy platforma tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 04/11/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266974"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490725"
 ---
-# <a name="v20-protocols---oauth-20-and-openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
+# <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 
-Punktu końcowego v2.0, można użyć usługi Azure Active Directory (Azure AD) dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa żądań HTTP lub użyć innej biblioteki typu open source, a nie przy użyciu jednej z naszych [bibliotek typu open-source](reference-v2-libraries.md).
+Punkt końcowy platforma tożsamości firmy Microsoft tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa żądań HTTP lub użyć innej biblioteki typu open source, a nie przy użyciu jednej z naszych [bibliotek typu open-source](reference-v2-libraries.md).
 
 > [!NOTE]
-> Nie wszystkie scenariusze i funkcje usługi Azure AD są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Nie wszystkie scenariusze usługi Azure AD i funkcje są obsługiwane przez punkt końcowy platforma tożsamości firmy Microsoft. Aby ustalić, należy użyć programu Microsoft platformy tożsamości z punktu końcowego, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Podstawy
 
 W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cztery strony związane z programu exchange:
 
-![Role uwierzytelniania OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
+![Role uwierzytelniania OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Serwera autoryzacji** jest punktem końcowym v2.0 i odpowiada za zagwarantowanie, tożsamość użytkownika, przyznawania i odbieranie prawa dostępu do zasobów i wydawania tokenów. Serwer autoryzacji, znany także jako dostawcy tożsamości — bezpieczną obsługę nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
+* **Serwera autoryzacji** jest punktem końcowym platforma tożsamości firmy Microsoft i odpowiada za zagwarantowanie, tożsamość użytkownika, przyznawania i odbieranie prawa dostępu do zasobów i wydawania tokenów. Serwer autoryzacji, znany także jako dostawcy tożsamości — bezpieczną obsługę nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
 * **Właściciel zasobu** jest zazwyczaj użytkownika końcowego. To strona, która jest właścicielem danych i zasilania, aby umożliwić firmom dostęp do tych danych lub zasobu.
 * **Klienta OAuth** aplikacja, identyfikowane przez jego identyfikator aplikacji. Klient uwierzytelniania OAuth jest zazwyczaj innych firm, które użytkownik końcowy korzysta z, a żądania tokenów z serwera autoryzacji. Klient musi otrzymać uprawnienia dostępu do zasobu przez właściciela zasobów.
 * **Serwer zasobów** jest, gdzie znajduje się zasób lub danych. Zaufany serwer autoryzacji do bezpiecznego uwierzytelniania i autoryzacji klienta OAuth i używa tokenów dostępu do elementu nośnego, aby upewnić się, że można udzielić dostępu do zasobu.
@@ -55,7 +55,7 @@ Aby uzyskać więcej szczegółowych informacji, zapoznaj się z procedurą [rej
 
 ## <a name="endpoints"></a>Punkty końcowe
 
-Po zarejestrowaniu aplikacji komunikuje się z usługą Azure AD, wysyłając żądania do punktu końcowego v2.0:
+Po zarejestrowaniu aplikacji komunikuje się z platformą Microsoft identity, wysyłając żądania do punktu końcowego:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -74,17 +74,17 @@ Gdzie `{tenant}` może mieć jedną z czterech różnych wartości:
 Aby dowiedzieć się, jak korzystać z tych punktów końcowych, wybierz typ danej aplikacji w [protokołów](#protocols) sekcji i skorzystaj z linków, aby uzyskać więcej informacji.
 
 > [!TIP]
-> Dowolna aplikacja zarejestrowana w usłudze Azure AD można używać punktu końcowego v2.0, nawet, jeśli nie zarejestruje się na kontach osobistych.  Dzięki temu można migrować istniejące aplikacje, aby w wersji 2.0 i [MSAL](reference-v2-libraries.md) bez potrzeby ponownego tworzenia aplikacji.  
+> Dowolnej aplikacji zarejestrowanych w usłudze Azure AD można użyć punktu końcowego platformy tożsamości firmy Microsoft, nawet jeśli nie zarejestruje się na kontach osobistych.  Dzięki temu można migrować istniejące aplikacje na platformie tożsamości firmy Microsoft i [MSAL](reference-v2-libraries.md) bez potrzeby ponownego tworzenia aplikacji.  
 
 ## <a name="tokens"></a>Tokeny
 
-Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione za pomocą usługi Azure AD, aby otrzymać token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, złośliwa strona umożliwia atak typu man-in--middle uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
+Implementacja platforma tożsamości firmy Microsoft protokołu OAuth 2.0 i OpenID Connect Wykorzystaj rozbudowane tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione z platformą tożsamości Microsoft do odbierania token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, złośliwa strona umożliwia atak typu man-in--middle uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
 
-Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](v2-id-and-access-tokens.md).
+Dalsze szczegóły różnego rodzaju tokeny używane w programie Microsoft endpoint platformy tożsamości jest dostępna w [odwołania Microsoft tożsamości platformy punktu końcowego tokenu](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoły
 
-Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](v2-app-types.md).
+Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, można tworzyć z platformą tożsamości Microsoft](v2-app-types.md).
 
 * [Tworzenie aplikacji mobilnych i natywnych przy użyciu protokołu OAuth 2.0](v2-oauth2-auth-code-flow.md)
 * [Tworzenie aplikacji sieci web z OpenID Connect](v2-protocols-oidc.md)

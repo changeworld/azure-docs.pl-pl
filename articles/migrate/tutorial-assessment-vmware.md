@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313163"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490325"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -56,7 +56,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 4. Utwórz nową grupę zasobów.
 5. Określ lokalizację geograficzną, w której chcesz utworzyć projekt, a następnie kliknij pozycję **Utwórz**. Projekt usługi Azure Migrate można utworzyć tylko w poniższych lokalizacjach geograficznych. Można jednak zaplanować migrację do dowolnej docelowej lokalizacji platformy Azure. Geografia projektu jest używana wyłącznie do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
 
-**Lokalizacja geograficzna** | **Lokalizacja usługi Storage**
+**Współrzędne geograficzne** | **Lokalizacja magazynu**
 --- | ---
 Azure Government | Administracja USA — Wirginia
 Azja | Azja Południowo-Wschodnia
@@ -195,6 +195,9 @@ Zaimportuj pobrany plik na serwer vCenter.
     - W polach **User name** (Nazwa użytkownika) i **Password** (Hasło) wprowadź poświadczenia konta tylko do odczytu, którego moduł zbierający ma użyć do odnalezienia maszyn wirtualnych na serwerze vCenter.
     - W obszarze **Collection scope** (Zakres zbierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych. [Dowiedz się więcej](how-to-scale-assessment.md) o sposobach odnajdywania większego środowiska.
 
+       > [!NOTE]
+       > **Zakres zbierania** Wyświetla listę tylko folderów hostów i klastrów. Foldery maszyn wirtualnych nie może bezpośrednio pełnić roli zakres zbierania. Jednak można odnajdywać za pomocą konta vCenter, który ma dostęp do poszczególnych maszyn wirtualnych. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions) o tym, jak do zakresu do folderu maszyn wirtualnych.
+
 7. W obszarze **Specify migration project** (Określ projekt migracji) podaj identyfikator i klucz projektu usługi Azure Migrate, skopiowane z portalu. Jeśli nie zostały skopiowane, otwórz witrynę Azure Portal na maszynie wirtualnej modułu zbierającego. Na stronie **Omówienie** projektu kliknij polecenie **Odnajdź maszyny**, a następnie skopiuj wartości.  
 8. W obszarze **View collection progress** (Wyświetl postęp zbierania) monitoruj stan odnajdywania. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector) o tym, jakie dane są zbierane przez usługę Azure Migrate Collector.
 
@@ -267,7 +270,7 @@ Każda bazująca na wydajności ocena w usłudze Azure Migrate jest skojarzona z
 
 W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate potrzebuje danych o użyciu procesora CPU i pamięci maszyny wirtualnej. Ponadto dla każdego dysku podłączonego do maszyny wirtualnej potrzebuje ona danych o liczbie operacji odczytu/zapisu na sekundę i przepływności. Analogicznie dla każdej karty sieciowej podłączonej do maszyny wirtualnej usługa Azure Migrate potrzebuje danych o ruchu wchodzącym/wychodzącym sieci do ustalenia rozmiaru na podstawie wydajności. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
 
-   **Dostępność punktów danych** | **Ocenę zaufania**
+   **Dostępność punktów danych** | **Ocena zaufania**
    --- | ---
    0%–20% | 1 gwiazdka
    21%–40% | 2 gwiazdki

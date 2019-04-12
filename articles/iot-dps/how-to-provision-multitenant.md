@@ -3,17 +3,17 @@ title: Jak aprowizować urządzenia dla wielodostępności w usłudze Azure IoT 
 description: Jak aprowizować urządzenia dla wielodostępności urządzeń z systemem aprowizacji wystąpienia usługi
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+manager: philmea
+ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544447"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500740"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak wykonać aprowizację dla wielodostępności 
 
@@ -208,7 +208,7 @@ W tej sekcji zostanie sklonować zestawu SDK C usługi IoT platformy Azure na ka
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
 
-    Rozmiar tego repozytorium wynosi obecnie około 220 MB. Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
+    Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
 1. Dla obu maszyn wirtualnych, Utwórz nową **cmake** folderu w repozytorium i zmiany do tego folderu.
 
@@ -420,7 +420,7 @@ Aby usunąć grupę zasobów o nazwie:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej Reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
+- Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
 - Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 
 

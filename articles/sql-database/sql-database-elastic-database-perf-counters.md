@@ -1,10 +1,10 @@
 ---
-title: Liczniki wydajności dla menedżera map fragmentów
+title: Tworzenie liczników wydajności do śledzenia wydajności dla menedżera map fragmentów
 description: ShardMapManager klas i danych zależnych routingu liczników wydajności
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
@@ -12,18 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 2823f997a38e280bdbf19beb3a478a73ef1ae842
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895180"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494922"
 ---
-# <a name="performance-counters-for-shard-map-manager"></a>Liczniki wydajności dla menedżera map fragmentów
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Tworzenie liczników wydajności do śledzenia wydajności dla menedżera map fragmentów
+
+Liczniki wydajności są używane do śledzenia wydajności [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md) operacji. Te liczniki są dostępne w Monitorze wydajności w obszarze "elastyczna baza danych: Kategoria zarządzania fragmentami".
 
 Możesz przechwycić wydajności [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md), zwłaszcza w przypadku korzystania [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md). Liczniki są tworzone za pomocą metod klasy Microsoft.Azure.SqlDatabase.ElasticScale.Client.  
 
-Liczniki są używane do śledzenia wydajności [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md) operacji. Te liczniki są dostępne w Monitorze wydajności w obszarze "elastyczna baza danych: Kategoria zarządzania fragmentami".
 
 **Aby uzyskać najnowszą wersję:** Przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Zobacz też [uaktualnić aplikację do korzystania z najnowszych Biblioteka kliencka elastic database](sql-database-elastic-scale-upgrade-client-library.md).
 
@@ -67,7 +68,7 @@ Liczniki wydajności zostaną zaktualizowane, wszystkie operacje pamięci podrę
 
 ### <a name="see-also"></a>Zobacz także
 
-[Elastic Database features overview (Omówienie funkcji Elastic Database)](sql-database-elastic-scale-introduction.md)  
+[Funkcje elastycznej bazy danych — omówienie](sql-database-elastic-scale-introduction.md)  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

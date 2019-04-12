@@ -1,5 +1,5 @@
 ---
-title: Zbieraj dane analizy zagrożeń w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
+title: Połącz dane analizy zagrożeń przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o tym, jak połączyć dane analizy zagrożeń na platformie Azure przez wartownika.
 documentationcenter: na
 author: rkarlin
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400628"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494837"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>Zbieranie danych od dostawców analizy zagrożeń 
+# <a name="connect-data-from-threat-intelligence-providers"></a>Połącz dane z dostawców analizy zagrożeń 
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -44,7 +44,7 @@ Można przesyłać strumieniowo dzienniki z dostawców analizy zagrożeń na pla
 
 1. Jeśli już używasz dostawcy analizy zagrożeń, pamiętaj przejść do aplikacji PORADĘ, a następnie przyznać uprawnienia do wskaźników do firmy Microsoft i określić usługę jako platformy Azure przez wartownika.  
 
-2. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **analizy zagrożeń** kafelka.
+2. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **analizy zagrożeń** kafelka.
 
 3. Kliknij przycisk **Połącz**. 
 

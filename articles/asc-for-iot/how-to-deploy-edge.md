@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862849"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505621"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń, na urządzeniu usługi IoT Edge
 
@@ -75,8 +75,25 @@ Istnieją trzy kroki, aby utworzyć wdrożenie usługi IoT Edge dla Centrum zabe
 1. Z **Dodawanie modułów** karcie **moduły wdrożeń** obszaru, kliknij przycisk **AzureSecurityCenterforIoT**. 
    
 1. Zmiana **nazwa** do **azureiotsecurity**.
-1. Zmień nazwę **identyfikator URI obrazu** do **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1**
-      
+1. Zmiana **identyfikator URI obrazu** do **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Sprawdź **opcje tworzenia kontenera** ma wartość:      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. Upewnij się, że **żądane właściwości zestawu modułu bliźniaczej reprezentacji** jest zaznaczone, a następnie zmień obiekt konfiguracji, aby:
       
     ``` json
@@ -89,12 +106,16 @@ Istnieją trzy kroki, aby utworzyć wdrożenie usługi IoT Edge dla Centrum zabe
 1. Kliknij pozycję **Zapisz**.
 1. Przewiń w dół kartę, a następnie wybierz pozycję **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**.
    
-  >[!Note]
-  > Czy **nie** Wyłącz komunikacji protokołu AMQP dla Centrum usługi IoT Edge.
-  > Usługa Azure Security Center dla modułu IoT wymaga komunikacji protokołu AMQP z Centrum usługi IoT Edge.
+   >[!Note]
+   > Czy **nie** Wyłącz komunikacji protokołu AMQP dla Centrum usługi IoT Edge.
+   > Usługa Azure Security Center dla modułu IoT wymaga komunikacji protokołu AMQP z Centrum usługi IoT Edge.
    
-1. Zmiana **obraz** w obszarze **krawędzi Centrum** do **mcr.microsoft.com/ascforiot/edgehub:1.05-preview**.
-      
+1. Zmiana **obraz** w obszarze **krawędzi Centrum** do **mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**.
+
+   >[!Note]
+   > Usługa Azure Security Center dla modułu IoT wymaga rozwidlone wersję Centrum usługi Edge IoT, w oparciu o zestaw SDK w wersji 1.20.
+   > Zmieniając obrazu usługi IoT Edge Hub, zlecasz urządzenia usługi IoT Edge, aby zastąpić najnowsza stabilna wersja rozwidlone wersję Centrum IoT Edge, co nie jest oficjalnie obsługiwane przez usługę IoT Edge.
+
 1. Sprawdź **opcje tworzenia** jest ustawiona na: 
          
     ``` json
@@ -137,8 +158,8 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem, aby dowi
    
    | Name (Nazwa) | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.IO/edgehub:1.04-Preview |
+   | azureIoTSecurity | MCR.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | MCR.microsoft.com/ascforiot/edgehub:1.0.9-Preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Minimalna wymagana kontenery nie są obecne, sprawdź, jeśli manifest wdrożenia usługi IoT Edge jest powiązana z zalecanych ustawień. Aby uzyskać więcej informacji, zobacz [moduł usługi IoT Edge wdrażanie](#deployment-using-azure-portal).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c7163667ec370abf468b289cea231e86a4b5753f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046841"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499856"
 ---
 # <a name="how-to-reprovision-devices"></a>Jak ponownie udostępnić urządzeń
 
@@ -27,7 +27,7 @@ Podczas cyklu życia rozwiązania IoT jest często przenosić urządzenia międz
 
 * **Kwarantanna**: Podobnie jak zmiany rozwiązań. Urządzenie jest nieprawidłowo, których bezpieczeństwo zostało naruszone lub nieaktualne może zostać ponownie przypisane do usługi IoT hub, gdzie to wszystko, co można zrobić aktualizacji, a wrócić w zakresie zgodności. Gdy urządzenie działa poprawnie, następnie jest migrowana do jego głównej koncentratora.
 
-Aby uzyskać bardziej szczegółowe omówienie reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md).
+Aby uzyskać bardziej szczegółowe omówienie reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurowanie rejestracji zasady alokacji
@@ -93,7 +93,7 @@ Na przykład inicjowania obsługi żądań z urządzenia podczas sekwencji rozru
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej Reprovisioning, zobacz [pojęcia reprovisoning urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
+- Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
 - Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
 
 

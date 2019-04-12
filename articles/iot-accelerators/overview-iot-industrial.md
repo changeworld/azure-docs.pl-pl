@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256383"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491752"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co to jest przemysłowego Internetu rzeczy (IIoT)
 
@@ -23,7 +23,7 @@ IIoT jest przemysłowego Internetu rzeczy. IIoT zwiększa efektywność przemys�
 
 Zwiększ produktywność operacyjną i zyskowność dzięki akcelerator rozwiązania połączonej fabryki. Połącz sprzęt i urządzenia przemysłowe — w tym również maszyny, które już pracują w fabryce — i monitoruj je w chmurze. Analizuj dane IoT, aby wyciągać wnioski, które pomogą w zwiększeniu wydajności całej fabryki.
 
-Zmniejsz czasochłonne, uzyskiwania dostępu do fabryki floor maszyn za pomocą zarządzania urządzeniami Azure IoT OPC UA (OPC Twin), a skupić się czas na tworzenie rozwiązań IIoT. Usprawnianie zarządzania certyfikatami i zasobów przemysłowych integracji z usługą zarządzania certyfikatami w usłudze Azure IoT OPC UA (OPC magazynu) i zagwarantować, że łączność zasobów są zabezpieczone. Takich mikrousług zapewnia interfejs API REST podobne w górnej części [składniki przemysłowego Internetu rzeczy Azure](https://github.com/Azure/azure-iiot-opc-ua). Interfejs API usługi zapewnia kontrolę nad funkcji modułu. 
+Zmniejszenia czasochłonne, uzyskiwania dostępu do fabryki floor maszyn z bliźniaczej reprezentacji OPC i skoncentrować się czas na tworzenie rozwiązań IIoT. Usprawnianie zarządzania certyfikatami i zasobów przemysłowych integracji z usługą Magazyn OPC i zagwarantować, że łączność zasobów są zabezpieczone. Takich mikrousług zapewnia interfejs API REST podobne w górnej części [składniki przemysłowego Internetu rzeczy Azure](https://github.com/Azure/azure-iiot-opc-ua). Interfejs API usługi zapewnia kontrolę nad funkcji modułu. 
 
 ![Przegląd przemysłowych IoT](media/overview-iot-industrial/overview.png)
 
@@ -39,11 +39,11 @@ Jeśli znasz jak działają moduły usługi Azure IoT Edge, zaczynać się nast�
 
 ## <a name="factory-floor-connectivity"></a>Fabryka floor łączności
 
-Zarządzanie urządzeniami IoT OPC UA platformy Azure, znany także jako OPC Twin jest składnikiem IIoT automatyzuje odnajdywanie urządzeń i rejestracji, która oferuje zdalnego sterowania urządzeń przemysłowych za pośrednictwem interfejsów API REST. OPC Twin używa usługi Azure IoT Edge i IoT Hub do łączenia z chmury i sieci fabryki. Bliźniacza reprezentacja OPC umożliwia deweloperom IIoT skoncentrowanie się na tworzeniu aplikacji IIoT bez konieczności martwienia się o tym, jak bezpieczny dostęp do maszyn lokalnych.
+Bliźniacza reprezentacja OPC jest składnikiem IIoT automatyzuje odnajdywanie urządzeń i rejestracji, która oferuje zdalnego sterowania urządzeń przemysłowych za pośrednictwem interfejsów API REST. OPC Twin używa usługi Azure IoT Edge i IoT Hub do łączenia z chmury i sieci fabryki. Bliźniacza reprezentacja OPC umożliwia deweloperom IIoT skoncentrowanie się na tworzeniu aplikacji IIoT bez konieczności martwienia się o tym, jak bezpieczny dostęp do maszyn lokalnych.
 
 ## <a name="security"></a>Bezpieczeństwo
 
-Magazyn OPC lub IoT OPC UA certyfikat zarządzania platformy Azure jest implementacją elementu OPC UA globalnego odnajdywania serwera (GDS), konfigurować, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. OPC Vault upraszcza wdrażanie i konserwowanie zasobów bezpiecznej łączności w przemysłowe miejsca. Dzięki automatyzacji zarządzania certyfikatami, magazynie OPC zwalnia operatory fabryki z ręcznie, jak i złożone procesy związane z łącznością i zarządzanie certyfikatami.
+OPC Vault jest implementacją z serwera OPC UA globalnego odnajdywania serwera (GDS), konfigurować, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. OPC Vault upraszcza wdrażanie i konserwowanie zasobów bezpiecznej łączności w przemysłowe miejsca. Dzięki automatyzacji zarządzania certyfikatami, magazynie OPC zwalnia operatory fabryki z ręcznie, jak i złożone procesy związane z łącznością i zarządzanie certyfikatami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

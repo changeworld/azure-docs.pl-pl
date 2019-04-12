@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471464"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489231"
 ---
 # <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
@@ -37,9 +37,9 @@ Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki
 
 [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku. 
 
-[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) służy do przechowywania przykładowych danych.
+[Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych.
 
-[Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) służy do wysyłania żądań do usługi Azure Search.
+[Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) wysyłania żądań do usługi Azure Search.
 
 [Kliniczne trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) zawiera dane używane w ramach tego samouczka. Pobierz i Rozpakuj ten plik do własnego folderu. Dane pochodzą z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)konwersji do formatu JSON na potrzeby tego samouczka.
 
@@ -295,7 +295,7 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Algorytmy Sztucznej inteligencji usług Cognitive Services można dołączyć do potoku indeksatora. Aby wykonać następny krok, przejdź do kolejnego samouczka.
+Istnieje kilka metod i wiele opcji indeksowanie obiektów blob JSON. Kolejnym krokiem Przejrzyj i przetestować różne opcje, aby zobaczyć, co sprawdza się najlepiej w przypadku danego scenariusza.
 
 > [!div class="nextstepaction"]
-> [Indeksowanie za pomocą sztucznej Inteligencji](cognitive-search-tutorial-blob.md)
+> [Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search](search-howto-index-json-blobs.md)

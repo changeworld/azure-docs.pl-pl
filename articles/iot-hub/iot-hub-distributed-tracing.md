@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439300"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501385"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów urządzenie chmura usługi Azure IoT za pomocą rozproszonego śledzenia (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ W tym artykule używasz [zestaw SDK urządzeń Azure IoT dla języka C](./iot-hu
 - Rozproszonego śledzenia w wersji zapoznawczej jest obecnie obsługiwane tylko w przypadku centrów IoT Hub są tworzone w następujących regionach:
 
   - **Europa Północna**
-  - **Azja południowo-wschodnia**
+  - **Azja Południowo-Wschodnia**
   - **Zachodnie stany USA 2**
 
 - W tym artykule założono, że znasz wysyła komunikaty telemetryczne do Centrum IoT. Upewnij się, że zostały wykonane [wysyłanie danych telemetrycznych Szybki Start języka C](./quickstart-send-telemetry-c.md).
@@ -98,7 +98,7 @@ Te instrukcje dotyczą tworzenia przykładu na Windows. W innych środowiskach, 
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
-    Rozmiar tego repozytorium wynosi obecnie około 220 MB. Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
+    Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
 1. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu.
 

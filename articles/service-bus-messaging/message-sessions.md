@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497843"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500145"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Sesje wiadomości: pierwszy, najpierw FIFO 
 
@@ -51,7 +51,7 @@ Sesje zapewniają współbieżnych cofnąć Multipleksowanie strumieni komunikat
 
 A [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) odbiorcy jest tworzony przez klienta, akceptując sesji. Wywołania klienta [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) lub [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) w języku C#. W modelu reaktywne wywołania zwrotnego rejestruje obsługi sesji.
 
-Gdy [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) obiektu jest akceptowane i gdy odbywa się przez klienta, ten klient przechowuje blokady na wyłączność na wszystkie komunikaty z tej sesji [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) znajdujące się w kolejce lub subskrypcji, i również na wszystkie komunikaty z tym **SessionId** , nadal pojawić się podczas sesji jest przechowywany.
+Gdy [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) obiektu jest akceptowane i gdy odbywa się przez klienta, ten klient przechowuje blokady na wyłączność na wszystkie komunikaty z tej sesji [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) znajdujące się w kolejce lub subskrypcji, i również na wszystkie komunikaty z tym **SessionId** , nadal pojawić się podczas sesji jest przechowywany.
 
 Blokada jest zwalniana podczas **Zamknij** lub **CloseAsync** są nazywane lub wygaśnięcia blokady w przypadkach, w których nie można wykonać operacji zamknięcia aplikacji. Blokady sesji powinien być traktowany jak blokady na wyłączność w pliku, co oznacza, że aplikacja powinna zamykać sesji tak szybko, jak go nie jest już konieczne i/lub nie oczekuje żadnych dalszych komunikatów.
 

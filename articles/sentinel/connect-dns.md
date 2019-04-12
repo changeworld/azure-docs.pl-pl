@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych DNS w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane DNS w przez wartownika platformy Azure.
+title: Połącz dane DNS w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane DNS w przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a7f075b74876ec807d790f3ffbea5dad14163535
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e34db2bdc78eb846cf4885b1ef083fd3b21e21b5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530420"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489746"
 ---
 # <a name="connect-your-domain-name-server"></a>Połączyć swój serwer nazwy domeny
 
@@ -29,7 +29,7 @@ ms.locfileid: "57530420"
 
 Możesz połączyć wszystkie domeny nazwy serwera (DNS) systemem Windows na platformie Azure przez wartownika. Odbywa się to przez zainstalowanie agenta na komputerze DNS. Loguje się przy użyciu systemu DNS, możesz uzyskać zabezpieczeń, wydajności i operacji związanych z szczegółowych informacji w infrastrukturze DNS organizacji przez zbieranie, analizowanie, i korelowanie analityczne i dzienniki inspekcji i inne powiązane dane z serwerów DNS.
 
-Po włączeniu funkcji zbierania dzienników DNS, możesz wykonywać następujące czynności:
+Po włączeniu połączenia dziennika DNS, możesz wykonywać następujące czynności:
 - Identyfikacja klientów próbujących rozpoznać nazwy domen złośliwe
 - Identyfikowanie starych rekordów
 - Zidentyfikuj domeny często poszukiwanych nazw i próg klienci DNS
@@ -38,11 +38,11 @@ Po włączeniu funkcji zbierania dzienników DNS, możesz wykonywać następują
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Zbieranie DNS odbywa się przez zainstalowanie agenta na komputerze DNS. Agent pobiera zdarzenia z usługi DNS i przekazuje je do usługi Log Analytics.
+Połączenie DNS odbywa się przez zainstalowanie agenta na komputerze DNS. Agent pobiera zdarzenia z usługi DNS i przekazuje je do usługi Log Analytics.
 
 ## <a name="connect-your-dns-appliance"></a>Połącz urządzenie DNS
 
-1. W portalu Azure przez wartownika wybierz **zbierania danych** i wybierz polecenie **DNS** kafelka.
+1. W portalu Azure przez wartownika wybierz **łączników danych** i wybierz polecenie **DNS** kafelka.
 1. W przypadku maszyn z systemem DNS na platformie Azure:
     1. Kliknij przycisk **Pobierz i zainstaluj agenta dla maszyn wirtualnych Windows**.
     1. W **maszyn wirtualnych** listy, wybierz maszynę DNS ma być przesyłana strumieniowo do usługi Azure przez wartownika. Upewnij się, że jest to maszyny Wirtualnej z systemem Windows.

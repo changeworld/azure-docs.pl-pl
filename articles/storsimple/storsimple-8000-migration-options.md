@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/10/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e8a5ae4a4ee9cfd5c39e8e399784ec65f2ee2660
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339457"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500910"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opcje migracji danych z usługi StorSimple serii 5000 – 7000 
 
@@ -49,15 +49,28 @@ Aby uzyskać więcej informacji na temat migrowania danych do usługi Azure File
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Migrowanie do swobodę Panzura NAS
 
-StorSimple 5000 – 7000 klienci mogą wybrać opcję migracji do Panzura swobodę NAS, aby zachować swoje dane na platformie Azure. Swoboda Panzura rozwiązanie zapewnia rozwiązanie NAS obejmującej centrów danych, oddziałów, chmur prywatnych i publicznych. To rozwiązanie umożliwia lokalnych, hybrydowych i przepływy pracy danych w chmurze dla systemu plików NFS, SMB i klientów mobilnych. Ta migracja jest obsługiwana przez Panzura i klienci mogą zacząć żądając Obsługa migracji z [Panzura witryny sieci Web](https://panzura.com/storsimple-migration/).
+StorSimple 5000 – 7000 klienci mogą wybrać opcję migracji do Panzura swobodę NAS, aby zachować swoje dane na platformie Azure. Swoboda Panzura rozwiązanie zapewnia rozwiązanie NAS obejmującej centrów danych, oddziałów, chmur prywatnych i publicznych. To rozwiązanie umożliwia lokalnych, hybrydowych i przepływy pracy danych w chmurze dla systemu plików NFS, SMB i klientów mobilnych. 
+
+Ta migracja jest obsługiwana przez Panzura i klienci mogą zacząć żądając Obsługa migracji z [Panzura witryny sieci Web](https://panzura.com/storsimple-migration/).
 
 #### <a name="migrate-to-cohesity"></a>Migrowanie do Cohesity
 
-Cohesity umożliwia migrację danych z bieżącego rozwiązania StorSimple 5000 – 7000 do platformy Cohesity danych na platformie Azure. Cohesity Data Platform jest rozwiązaniem skali sieci web zdefiniowanych przez oprogramowanie, która konsoliduje plików, tworzenie kopii zapasowych, obiektów i maszyn wirtualnych na jedno rozwiązanie natywnych dla chmury. Po zakończeniu migracji do platformy danych można zarządzać, ochronę i udostępniania danych i aplikacji z chmury do core za pomocą jedną taflę szkła. Dzięki firmie Cohesity Uruchom mających co najmniej trzy węzły. Dowiedz się więcej o [migracji Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+Cohesity umożliwia migrację danych z bieżącego rozwiązania StorSimple 5000 – 7000 do platformy Cohesity danych na platformie Azure. Cohesity Data Platform jest rozwiązaniem skali sieci web zdefiniowanych przez oprogramowanie, która konsoliduje plików, tworzenie kopii zapasowych, obiektów i maszyn wirtualnych na jedno rozwiązanie natywnych dla chmury. Po zakończeniu migracji do platformy danych można zarządzać, ochronę i udostępniania danych i aplikacji z chmury do core za pomocą jedną taflę szkła. Dzięki firmie Cohesity Uruchom mających co najmniej trzy węzły. 
+
+Dowiedz się więcej o [migracji do usługi Cohesity Data Platform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 #### <a name="migrate-to-nasuni"></a>Migrowanie do Nasuni
 
-Firma Nasuni ułatwia klientom StorSimple 5000 – 7000 do migracji i przechowują swoje dane na platformie Azure.  Nasuni to wiodące rozwiązanie magazynu oparte na platformie Azure NAS, wydajności i zabezpieczeń, które spełniają oczekiwane z rozwiązań lokalnych, z chmury i skali, dzięki czemu klienci.  Oprócz przechowywania plików o wysokiej wydajności, Nasuni i Azure dojście do obsługi kopii zapasowych i odzyskiwania po awarii, umożliwiając udostępnianie i współpraca na podstawie danych na całym świecie z zarządzaniem magazynem scentralizowane plików jednocześnie. Firma Nasuni ma środowisko aby ułatwić migrację — Zacznij już dzisiaj: https://info.nasuni.com/nasuni-storsimple-migration
+Firma Nasuni ułatwia klientom StorSimple 5000 – 7000 do migracji i przechowują swoje dane na platformie Azure.  Nasuni to wiodące rozwiązanie magazynu oparte na platformie Azure NAS, wydajności i zabezpieczeń, które spełniają oczekiwane z rozwiązań lokalnych, z chmury i skali, dzięki czemu klienci.  Oprócz przechowywania plików o wysokiej wydajności, Nasuni i Azure dojście do obsługi kopii zapasowych i odzyskiwania po awarii, umożliwiając udostępnianie i współpraca na podstawie danych na całym świecie z zarządzaniem magazynem scentralizowane plików jednocześnie. 
+
+Firma Nasuni ma środowisko aby ułatwić migrację — Zacznij już dzisiaj: https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>Migrowanie do Talon FAST
+
+Firma talon ułatwia klientom StorSimple 5000 – 7000 nadal korzystać z korzyści są wyceniane tak wiele platformie StorSimple (niewielkie na miejscu rozmiary obsługiwane przez zasoby w chmurze bez ograniczeń) za pomocą funkcji jeszcze bardziej.  Dzięki rozwiązaniu firma Talon szybko migrować klientów i zachować swoje dane na platformie Azure, teraz o jeszcze mniejsze zużycie u klienta tylko do oprogramowania i dodawanie korzyści, takich jak plik globalnych blokowania, globalnej przestrzeni nazw i współpracy obejmujące wiele lokacji.  Firma talon to wiodące rozwiązanie ekosystem platformy Azure, do pracy z klientami globalne migracji obciążeń serwera plików w środowisku lokalnym zużywających skonsolidowany, oparte na platformie Azure bez uszczerbku dla przepływu pracy użytkownika i środowiska.  
+
+Więcej informacji na temat sposobu ewoluowania przedsiębiorstwu skonsolidowane w chmurze w https://www.talonstorage.com/alliances/microsoft-storsimple.
+
 
 ## <a name="migration---frequently-asked-questions"></a>Migracja — często zadawane pytania
 

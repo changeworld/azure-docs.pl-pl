@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051890"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491000"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -173,15 +173,16 @@ New-AzStorageAccount `
 Wybierz następujące opcje, jak pokazano na ilustracji:
 
 1. Wybierz *na* dla **stanu**
-2. Wybierz istniejące konto magazynu do przechowywania dzienników przepływów na platformie. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość *0*. Powoduje naliczenie opłat za magazyn Azure dla konta magazynu.
-3. Ustaw **przechowywania** do liczby dni, które mają być przechowywane dane.
-4. Wybierz *na* dla **stan analizy ruchu**.
-5. Wybierz istniejący obszar roboczy usługi Log Analytics lub **Utwórz nowy obszar roboczy** Aby utworzyć nową. Analiza ruchu służy obszar roboczy usługi Log Analytics do przechowywania danych zagregowanych i indeksowane, który jest następnie używany do generowania analizami. Jeśli wybierzesz istniejącego obszaru roboczego, musi istnieć w jednym z obsługiwanych regionów i zostały uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub w obsługiwanym regionie nie ma obszaru roboczego, Utwórz nową. Aby uzyskać więcej informacji na temat język zapytań, zobacz [nową funkcją przeszukiwania dzienników usługi Azure Monitor rejestruje uaktualnienia](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+2. Wybierz *w wersji 2* dla **wersji dzienników przepływu**. W wersji 2 zawiera statystyki sesji przepływu (bajtów i pakietów)
+3. Wybierz istniejące konto magazynu do przechowywania dzienników przepływów na platformie. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość *0*. Powoduje naliczenie opłat za magazyn Azure dla konta magazynu.
+4. Ustaw **przechowywania** do liczby dni, które mają być przechowywane dane.
+5. Wybierz *na* dla **stan analizy ruchu**.
+6. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub **Utwórz nowy obszar roboczy** Aby utworzyć nową. Analiza ruchu służy obszar roboczy usługi Log Analytics do przechowywania danych zagregowanych i indeksowane, który jest następnie używany do generowania analizami. Jeśli wybierzesz istniejącego obszaru roboczego, musi istnieć w jednym z [obsługiwane regiony](#supported-regions) i zostały uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub w obsługiwanym regionie nie ma obszaru roboczego, Utwórz nową. Aby uzyskać więcej informacji na temat język zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Obszar roboczy usługi Log Analytics, hostingu rozwiązanie do analizy ruchu i sieciowe grupy zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład można mieć sieciowych grup zabezpieczeń w regionie wschodnie stany USA i zachodnie stany USA, w obszarze roboczym w regionie Europa Zachodnia, może być analizy ruchu. Wiele sieciowych grup zabezpieczeń można skonfigurować w tym samym obszarze roboczym.
-6. Wybierz pozycję **Zapisz**.
+    Obszaru roboczego analizy dzienników hostingu rozwiązanie do analizy ruchu i sieciowe grupy zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład można mieć sieciowych grup zabezpieczeń w regionie wschodnie stany USA i zachodnie stany USA, w obszarze roboczym w regionie Europa Zachodnia, może być analizy ruchu. Wiele sieciowych grup zabezpieczeń można skonfigurować w tym samym obszarze roboczym.
+7. Wybierz pozycję **Zapisz**.
 
-    ![Wybór konta magazynu, obszar roboczy usługi Log Analytics i włączanie analizy ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
+    ![Wybór konta magazynu, obszar roboczy usługi Log Analytics i włączanie analizy ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
 Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w Twoim kraju na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
 
@@ -300,7 +301,7 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
     ![Pulpit nawigacyjny, w którym przedstawiane są dystrybucja sieci wirtualnej](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Topologię sieci wirtualnej przedstawiono najważniejsze wstążce wybór parametrów, takich jak sieci wirtualnej (Vnet sieci wirtualnej połączeń/Active/Inactive), połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy sieci wirtualnej.
-- Można filtrować wirtualnego topologią i konfiguracją sieci na podstawie subskrypcji, obszarów roboczych, grupy zasobów i interwał czasu. Dodatkowe filtry, które pomagają zrozumieć, czy przepływ: Przepływ typ (między sieciami wirtualnymi, IntraVNET itp.), kierunek przepływu (przychodzące, wychodzące), stan przepływu (dozwolone, zablokowane) w sieci (docelowych i połączone), typ połączenia (komunikacji równorzędnej lub bramy — P2S i S2S) i sieciowej grupy zabezpieczeń. Te filtry umożliwiają skupić się na sieci wirtualnych, które chcesz zbadać szczegółowo.
+- Można filtrować wirtualnego topologią i konfiguracją sieci na podstawie subskrypcji, obszarów roboczych, grupy zasobów i interwał czasu. Dodatkowe filtry, które pomagają zrozumieć, czy przepływ: Przepływ typu (między sieciami wirtualnymi, IntraVNET itd.), kierunek przepływu (przychodzące, wychodzące), stan przepływu (dozwolonych, zablokowanych), sieci wirtualne (docelowe i połączone), typ połączenia (komunikacji równorzędnej lub brama - P2S i S2S) i sieciowej grupy zabezpieczeń. Te filtry umożliwiają skupić się na sieci wirtualnych, które chcesz zbadać szczegółowo.
 - Topologię sieci wirtualnej przedstawia Dystrybucja ruchu w sieci wirtualnej w odniesieniu do przepływów (dozwolone/zablokowane/ruchu przychodzącego/ruchu wychodzącego/Benign/złośliwym kodem), protokół aplikacji i sieciowych grup zabezpieczeń, na przykład:
 
     ![Topologii sieci wirtualnej, na którym przedstawiane są szczegóły dystrybucji i przepływ ruchu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

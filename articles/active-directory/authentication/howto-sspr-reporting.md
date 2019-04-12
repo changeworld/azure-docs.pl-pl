@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369534"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493063"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -118,7 +118,7 @@ Poniżej opisano to działanie szczegółowo:
 Poniżej opisano to działanie szczegółowo:
 
 * **Opis działania**: Wskazuje, że administrator wykonywane resetowania w imieniu użytkownika z witryny Azure portal hasła.
-* **Działanie aktora**: Administrator, który resetowania w imieniu innego użytkownika lub administratora hasła. Musi być albo administrator globalny, administrator haseł, użytkownika administrator lub administrator pomocy technicznej.
+* **Działanie aktora**: Administrator, który resetowania w imieniu innego użytkownika lub administratora hasła. Musi to być hasło administratora, użytkownika administrator lub administrator pomocy technicznej.
 * **Działania docelowego**: Użytkownik, którego hasło zostało zresetowane. Użytkownik może być użytkownik końcowy lub innego administratora.
 * **Stany działania**:
   * _Success_: Wskazuje, że administrator pomyślnie zresetowano hasło użytkownika.
@@ -179,13 +179,13 @@ Poniżej opisano to działanie szczegółowo:
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md).
-* [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
-* [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
+* [Masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
+* [Jakie dane są używane przez Samoobsługowe Resetowanie HASEŁ i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)
-* [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
-* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
-* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
-* [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcją samoobsługowego resetowania haseł?](active-directory-passwords-troubleshoot.md)
-* [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)
+* [Jakie są opcje zasad funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
+* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego tak ważna go?](howto-sspr-writeback.md)
+* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one oznacza?](concept-sspr-howitworks.md)
+* [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcji samoobsługowego resetowania HASEŁ](active-directory-passwords-troubleshoot.md)
+* [Mam pytanie, które nie gdzieś else](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Przykład funkcji samoobsługowego resetowania HASEŁ działania inspekcji dzienników w usłudze Azure AD"

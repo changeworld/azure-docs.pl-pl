@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie serwera OPC UA klienta i aplikację serwera OPC UA z przy użyciu zarządzania certyfikatami w usłudze Azure IoT OPC UA | Dokumentacja firmy Microsoft
-description: Zabezpiecz OPC UA klienta i serwera OPC UA serwera aplikacji przy użyciu nowej pary kluczy i certyfikatów przy użyciu magazynu OPC.
+title: Zabezpieczanie serwera OPC UA, klienta i aplikację serwera OPC UA przy użyciu magazynu OPC — Azure | Dokumentacja firmy Microsoft
+description: Zabezpieczanie klienta OPC UA i OPC UA aplikacji serwera przy użyciu nową parę kluczy i certyfikatów przy użyciu magazynu OPC.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bfa6bdf6a54cb5e54087055988e9682565667105
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759503"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495298"
 ---
-# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpieczanie aplikacji serwera OPC UA klienta i serwera OPC UA 
-Usługa Azure IoT OPC UA zarządzanie certyfikatami, również wiedzieć, co magazyn OPC są mikrousługi można skonfigurować, zarejestruj się i zarządzanie cyklem życia certyfikatu w przypadku aplikacji serwera i klienta OPC UA w chmurze. Ten artykuł pokazuje, jak zabezpieczyć OPC UA klienta i serwera OPC UA serwera aplikacji z nową parę kluczy i certyfikatów przy użyciu magazynu OPC.
+# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpieczanie serwera OPC UA, klienta i aplikacji serwera OPC UA 
+OPC Vault to mikrousług, konfigurowanie, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. W tym artykule przedstawiono sposób zabezpieczania aplikacji serwera przy użyciu nową parę kluczy i certyfikatów przy użyciu magazynu OPC klienta OPC UA i OPC UA.
 
 W następujących ustawieniach klienta OPC testuje łączność OPC PLC. Domyślnie połączenie nie jest możliwe, ponieważ oba te składniki nie zostały jeszcze aprowizowane z odpowiednie certyfikaty. W tym przepływie pracy firma Microsoft nie używają certyfikatów z podpisem własnym składniki serwera OPC UA i zarejestrować ich za pośrednictwem serwera OPC magazynu. Zobacz poprzedni [testbed](howto-opc-vault-deploy-existing-client-plc-communication.md). Zamiast tego należy to testbed aprowizuje składników przy użyciu nowego certyfikatu, a także przy użyciu nowego klucza prywatnego, które przez Magazyn OPC są generowane. Niektóre informacje uzupełniające dotyczące zabezpieczeń OPC UA znajdują się w tym [oficjalny dokument dotyczący](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf). Pełne informacje można znaleźć w specyfikacji OPC UA.
 
 Testbed: Następujące środowisko jest skonfigurowane do testowania.
 
 OPC Vault skrypty:
-- Zabezpiecz OPC UA klienta i serwera OPC UA serwera aplikacji przy użyciu nowej pary kluczy i certyfikatów przy użyciu magazynu OPC.
+- Zabezpieczanie klienta OPC UA i OPC UA aplikacji serwera przy użyciu nowej pary kluczy i certyfikatów przy użyciu magazynu OPC.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji, zobacz serwisu GitHub [repozytorium](https://github.com/Azure-Samples/iot-edge-industrial-configs#testbeds).
 
 ## <a name="generate-a-new-certificate-and-private-key"></a>Wygeneruj nowy certyfikat i klucz prywatny 
-**Przygotowywanie**
+**Przygotowanie**
 - Upewnij się, że zmienne środowiskowe `$env:_PLC_OPT` i `$env:_CLIENT_OPT` są niezdefiniowane. Na przykład `$env:_PLC_OPT=""` w swoje środowiska PowerShell
 - Ustaw zmienną środowiskową `$env:_OPCVAULTID` na ciąg, który pozwala na ponowne odnalezienie danych w magazynie OPC. Firma Microsoft zaleca ustawienie 6-cyfrowy numer. W naszym przykładzie "123456" został użyty jako wartość dla zmiennej.
 - Upewnij się, istnieje wolumin docker `opcclient` lub `opcplc`. Skontaktuj się z `docker volume ls` i usunąć je z `docker volume rm <volumename>`. Konieczne może być również usunąć kontenerów przy użyciu `docker rm <containerid>` Jeśli woluminy są nadal używane przez kontener.
@@ -105,7 +105,7 @@ opcplc-123456 | [13:40:09 INF] Trusted peer store has 1 CRLs.
 opcplc-123456 | [13:40:09 INF] 01: Issuer 'CN=Azure IoT OPC Vault CA, O=Microsoft Corp.', Next update time '10/19/2019 22:06:46'
 opcplc-123456 | [13:40:09 INF] Rejected certificate store contains 0 certs
 ```
-OPC PLC ufać wszystkim OPC UA klientom za pomocą certyfikatów podpisanych przez Magazyn OPC.
+OPC PLC ufać wszystkim klientom OPC UA za pomocą certyfikatów podpisanych przez Magazyn OPC.
 
 Sprawdź w dzienniku, że formatem klucza prywatnego jest rozpoznawana jako PEM i zainstalowanie nowego certyfikatu aplikacji. Poniżej przedstawiono dane wyjściowe dziennika OPC PLC i klienta OPC ma podobne dane wyjściowe dziennika. 
 
@@ -118,7 +118,7 @@ opcplc-123456 | [13:40:09 INF] Activating the new application certificate with t
 
 Certyfikat aplikacji i klucz prywatny są teraz zainstalowany w magazynie certyfikatów aplikacji i używane przez aplikację serwera OPC UA.
 
-Sprawdź, czy można pomyślnie nawiązać połączenie między klientem OPC i OPC PLC i klienta OPC w stanie pomyślnie odczytywać dane z OPC PLC. Powinny zostać wyświetlone następujące dane wyjściowe w kliencie OPC dziennika danych wyjściowych:
+Sprawdź, czy można pomyślnie nawiązać połączenie między klientem OPC i OPC PLC i klienta OPC w stanie pomyślnie odczytywać dane z OPC PLC. Powinny zostać wyświetlone następujące dane wyjściowe w danych wyjściowych dzienników klienta OPC:
 ```
 opcclient-123456 | [13:40:12 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [13:40:12 INF] Session successfully created with Id ns=3;i=941910499.
@@ -132,7 +132,7 @@ opcclient-123456 | [13:40:12 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [13:40:12 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [13:40:12 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/21/2018 13:40:12
 ```
-Jeśli widzisz te dane wyjściowe, OPC PLC jest teraz ufające klienta OPC i na odwrót, ponieważ mają teraz te certyfikaty, które podpisany przez urząd certyfikacji lub certyfikaty zaufania, które zostały podpisane przez ten urząd certyfikacji.
+Jeśli widzisz te dane wyjściowe, następnie OPC PLC jest teraz ufające OPC klienta i na odwrót, ponieważ mają teraz te certyfikaty, które podpisany przez urząd certyfikacji lub certyfikaty zaufania, które zostały podpisane przez ten urząd certyfikacji.
 
 ### <a name="a-testbed-for-opc-publisher"></a>Testbed dla wydawcy OPC ###
 
@@ -145,7 +145,7 @@ docker-compose -f testbed.yml up
 
 **Weryfikacja**
 - Sprawdź, czy dane są wysyłane do usługi IoTHub skonfigurowane przez ustawienie `_HUB_CS` przy użyciu [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [narzędzia iothub-explorer](https://github.com/Azure/iothub-explorer).
-- Klient testowy OPC zamierza umożliwiają konfigurowanie wydawcy OPC w celu publikowania/unpublish węzły OPC elementu Testserver wywołania metody bezpośredniej IoTHub i wywołania metody OPC.
+- Klient testowy OPC zamierza umożliwiają konfigurowanie wydawcy OPC w celu publikowania/unpublish węzły na serwerze testowym OPC wywołania metody bezpośredniej IoTHub i wywołania metody OPC.
 - Obejrzyj dane wyjściowe komunikaty o błędach.
 
 ## <a name="next-steps"></a>Kolejne kroki

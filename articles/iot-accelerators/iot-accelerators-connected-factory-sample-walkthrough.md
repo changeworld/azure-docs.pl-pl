@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180606"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490363"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania połączonej fabryki
 
@@ -73,7 +73,7 @@ Moduł wydawcy OPC łączy się z serwerami OPC UA stacji i subskrybuje węzły 
 
 1. Konwertuje dane węzła do formatu JSON.
 1. Szyfruje za pomocą pliku JSON.
-1. Wysyła dane JSON do usługi IoT Hub jako komunikaty OPC UA Pub/Sub.
+1. Wysyła dane JSON do usługi IoT Hub jako OPC UA komunikatów publikowania/subskrybowania.
 
 Moduł wydawcy OPC wymaga tylko wychodzącego portu https (443) i może współdziałać z istniejącą infrastrukturą przedsiębiorstwa.
 
@@ -230,7 +230,7 @@ Aplikacja internetowa wdrożona w ramach akcelerator rozwiązań obejmuje zinteg
 Możesz kontynuować poznawanie akceleratorów rozwiązań IoT, czytając następujące artykuły:
 
 * [Uprawnienia w witrynie azureiotsolutions.com][lnk-permissions]
-* [Deploy a gateway on Windows or Linux for the Connected Factory solution accelerator (Wdrażanie bramy w systemie Windows lub Linux na potrzeby akceleratora rozwiązania połączonej fabryki)](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Wdrażanie bramy w systemie Windows lub Linux dla akceleratora rozwiązania połączonej fabryki](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC Publisher reference implementation (Implementacja referencyjna wydawcy OPC)](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png

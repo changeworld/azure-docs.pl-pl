@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługa Cloud App Security w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane w usłudze Cloud App Security w przez wartownika Azure.
+title: Łączenie danych w usłudze Cloud App Security przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane w usłudze Cloud App Security z platformy Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a7dfeed7b52453b38720c21c7d213679b8d2854
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245492"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496373"
 ---
-# <a name="collect-data-from-microsoft-cloud-app-security"></a>Zbieranie danych z programu Microsoft Cloud App Security 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Połącz dane z Microsoft Cloud App Security 
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -39,7 +39,7 @@ Jeśli masz już Cloud App Security, upewnij się, jest [włączone w sieci](htt
 Jeśli usługa Cloud App Security jest wdrażana i zbierać dane, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
 
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **Cloud App Security** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **Cloud App Security** kafelka.
 
 2. Kliknij przycisk **Połącz**.
 

@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848584"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501641"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus
 
@@ -127,6 +127,19 @@ Pobieranie z wyprzedzeniem wiadomości zwiększa ogólną przepływność kolejk
 Time to live (TTL) właściwość wiadomości jest sprawdzana przez serwer w momencie serwer wysyła wiadomość do klienta. Klient nie sprawdza właściwości TTL wiadomości po odebraniu wiadomości. Zamiast tego może zostać odebrany komunikat, nawet, jeśli czas wygaśnięcia komunikatu został przekazany, gdy komunikat był buforowany przez klienta.
 
 Trwa pobieranie z wyprzedzeniem nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest dostępna tylko dla protokołu klienta usługi Service Bus. Protokół HTTP nie obsługuje pobieranie z wyprzedzeniem. Trwa pobieranie z wyprzedzeniem jest dostępna dla operacji odbioru synchroniczne i asynchroniczne.
+
+## <a name="prefetching-and-receivebatch"></a>Trwa pobieranie z wyprzedzeniem i ReceiveBatch
+
+Podczas gdy koncepcji pobieranie z wyprzedzeniem wielu komunikatów jednocześnie mają podobną semantyką na przetwarzanie komunikatów w partii (ReceiveBatch), istnieją pewne niewielkie różnice, które muszą być przechowywane na uwadze, podczas korzystania z je razem.
+
+Pobieranie z wyprzedzeniem to konfiguracji (lub tryb) na komputerze klienckim (QueueClient i SubscriptionClient) i ReceiveBatch jest operacją (który ma semantykę odpowiedź na żądanie).
+
+Podczas korzystania z tych razem, należy wziąć pod uwagę następujące przypadki-
+
+* Pobieranie z wyprzedzeniem powinna być większa lub równa liczbie wiadomości, które są oczekiwane, odbierać z ReceiveBatch.
+* Pobieranie z wyprzedzeniem może zawierać maksymalnie n/3 razy liczba komunikatów przetwarzanych na sekundę, gdzie n to domyślny czas trwania blokady.
+
+Istnieją niektóre wyzwania, wymaga zachłanne podejście (czyli przechowywanie dużej liczby pobieranie z wyprzedzeniem), ponieważ zakłada się, że wiadomość jest ograniczona do określonego odbiornika. Zalecane jest, aby spróbować się pobrana z wyprzedzeniem wartości między wartościami progowymi wymienionych powyżej i empirically zidentyfikować, co odpowiada wymaganiom.
 
 ## <a name="multiple-queues"></a>Wielu kolejek
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 15bb64917fa58ba2d13c6f372640957508ab29c1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258585"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494563"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -109,7 +109,7 @@ Kluczowym aspektem jest warunek wyzwalający alert. Klikając polecenie "Warunek
 
 ![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-Edytuj zapytanie Kusto, jeśli to konieczne, zaznacz odpowiednie wartości progowej, (który zdecyduje, gdy alert zostanie wyzwolone), prawy okres (przedział czasu dla której jest uruchamiane zapytanie) oraz częstotliwość. Na przykład: Na przykład: Jeśli wartość progową jest większa niż 0, okres wynosi 5 minut i częstotliwość to 5 minut, następnie reguła jest tłumaczony jako "Uruchom kwerendę co 5 minut do ostatnich 5 minut, a jeśli liczba wyników jest większa niż 0, Powiadom mnie za pośrednictwem grupy wybranej akcji"
+Edytuj zapytanie Kusto, jeśli to konieczne, zaznacz odpowiednie wartości progowej, (który zdecyduje, gdy alert zostanie wyzwolone), prawy okres (przedział czasu dla której jest uruchamiane zapytanie) oraz częstotliwość. Na przykład: Jeśli wartość progową jest większa niż 0, okres wynosi 5 minut i częstotliwość to 5 minut, następnie reguła jest tłumaczony jako "Uruchom kwerendę co 5 minut do ostatnich 5 minut, a jeśli liczba wyników jest większa niż 0, Powiadom mnie za pośrednictwem grupy wybranej akcji"
 
 #### <a name="action-group-integration"></a>Integracja grupy akcji
 

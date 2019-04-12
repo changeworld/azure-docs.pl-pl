@@ -1,6 +1,6 @@
 ---
-title: Zbieraj dane CEF w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane CEF przez wartownika platformy Azure.
+title: Połącz dane CEF przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane CEF z platformy Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2117a139de52643f7cdbc6d054f46e5fb8ec0a77
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 18eb305beb79913713898b939ef840ca9ffab014
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005597"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489403"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Połączenia zewnętrzne rozwiązania przy użyciu Common Event Format
 
@@ -29,8 +29,7 @@ ms.locfileid: "59005597"
 
 Możesz połączyć przez wartownika platformy Azure, za pomocą rozwiązania zewnętrznego, który umożliwia zapisanie plików dziennika usługi SYSLOG. Jeśli urządzenie umożliwia zapisanie dzienniki jako Syslog Common Event Format (CEF), integracji z platformy Azure przez wartownika umożliwia w prosty sposób uruchamiaj analizy i zapytań względem danych.
 
-> [!NOTE]
-> 
+> [!NOTE] 
 > Dane są przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="how-it-works"></a>Jak to działa
@@ -59,7 +58,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
 ### <a name="deploy-the-agent-in-azure"></a>Wdrażanie agenta w systemie Azure
 
 
-1. W portalu Azure przez wartownika kliknij **zbierania danych** i wybierz typ urządzenia. 
+1. W portalu Azure przez wartownika kliknij **łączników danych** i wybierz typ urządzenia. 
 
 1. W obszarze **konfiguracji agenta systemu Linux Syslog**:
    - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszyny Wirtualnej systemu Linux, który jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
@@ -96,7 +95,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
 Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika platformy Azure, aby uruchomić na dedykowanym serwerze z systemem Linux.
 
 
-1. W portalu Azure przez wartownika kliknij **zbierania danych** i wybierz typ urządzenia.
+1. W portalu Azure przez wartownika kliknij **łączników danych** i wybierz typ urządzenia.
 1. Aby utworzyć dedykowane maszyny Wirtualnej systemu Linux w obszarze **konfiguracji agenta systemu Linux Syslog** wybierz **ręcznego wdrażania**.
    1. W obszarze **pobrać i zainstalować agenta programu Syslog**, wybierz opcję **maszyny z systemem Linux spoza platformy Azure**. 
    1. W **agent bezpośredni** ekran, który zostanie otwarty, wybierz **agenta dla systemu Linux** Pobierz agenta lub uruchom następujące polecenie, aby ją pobrać na maszynie z systemem Linux:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

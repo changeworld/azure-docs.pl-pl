@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471654"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493318"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Usługa Azure wersji schematu konfiguracji rozszerzenia diagnostyki i Historia
 Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jako część programu Microsoft Azure SDK.  
@@ -29,7 +29,7 @@ Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jak
 >
 > Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
 
-Rozszerzenie diagnostyki platformy Azure jest używana z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, Application Insights i Log Analytics. Aby uzyskać więcej informacji, zobacz [omówienie narzędzi monitorowania Microsoft](../../azure-monitor/overview.md).
+Rozszerzenie diagnostyki platformy Azure jest używana z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, który zawiera usługi Application Insights i Log Analytics. Aby uzyskać więcej informacji, zobacz [omówienie narzędzi monitorowania Microsoft](../../azure-monitor/overview.md).
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure wersji zestawu SDK i Diagnostyka wysyłania wykresu  
 

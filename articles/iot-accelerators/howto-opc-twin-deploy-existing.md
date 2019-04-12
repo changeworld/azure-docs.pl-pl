@@ -1,5 +1,5 @@
 ---
-title: Sposób wdrażania modułu zarządzania urządzeniami Azure IoT OPC UA do istniejącego projektu | Dokumentacja firmy Microsoft
+title: Jak wdrożyć OPC bliźniaczej reprezentacji modułu do istniejącego projektu platformy Azure | Dokumentacja firmy Microsoft
 description: Jak wdrożyć bliźniaczej reprezentacji OPC do istniejącego projektu.
 author: dominicbetts
 ms.author: dobett
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255890"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493250"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Wdrażanie bliźniaczej reprezentacji OPC do istniejącego projektu
 
-Moduł bliźniaczej reprezentacji urządzenia OPC jest uruchamiany w usłudze IoT Edge i udostępnia usługi edge do bliźniaczej reprezentacji urządzenia OPC i rejestr usług. 
+OPC bliźniaczej reprezentacji modułu jest uruchamiany w usłudze IoT Edge i udostępnia usługi edge do bliźniaczej reprezentacji OPC i usług rejestru. 
 
-Bliźniacza reprezentacja urządzenia OPC wczesnych usługa ułatwia tworzenie komunikacji między operatorami fabryki i urządzeń serwerów OPC UA na etapie produkcji przy użyciu moduł usługi IoT Edge w bazie wiedzy OPC bliźniaczej reprezentacji. Usługa wczesnych przedstawia usług OPC UA (przeglądania, odczytu, zapisu i wykonania) za pośrednictwem jego interfejsu API REST. 
+Usługa wczesnych w bliźniaczej reprezentacji OPC ułatwia tworzenie komunikacji między operatorami fabryki i urządzeń serwerów OPC UA na etapie produkcji przy użyciu moduł usługi IoT Edge w bazie wiedzy OPC bliźniaczej reprezentacji. Usługa wczesnych przedstawia usług OPC UA (przeglądania, odczytu, zapisu i wykonania) za pośrednictwem jego interfejsu API REST. 
 
-Usługa wczesnych OPC UA urządzenia rejestru zapewnia dostęp do zarejestrowanych aplikacji serwera OPC UA i ich punktami końcowymi. Operatorzy i Administratorzy można rejestrować i wyrejestrować nowe aplikacje serwera OPC UA i przeglądanie istniejących, łącznie z ich punkty końcowe. Oprócz aplikacji i punkt końcowy zarządzania usługi rejestru Skatalogowano zarejestrowanych OPC urządzenia bliźniaczej reprezentacji moduły usługi IoT Edge. Interfejs API usługi zapewnia kontrolę nad moduł funkcji, na przykład uruchamianie lub zatrzymywanie odnajdywaniem serwera (skanowania usługi) lub aktywowanie nowego bliźniaczych reprezentacji punktu końcowego, które mogą być udostępniane przy użyciu usługi wczesnych OPC bliźniaczej reprezentacji.
+Mikrousługi rejestru urządzenia OPC UA zapewnia dostęp do zarejestrowanych aplikacji serwera OPC UA i ich punktami końcowymi. Operatorzy i Administratorzy można rejestrować i wyrejestrować nowe aplikacje serwera OPC UA i przeglądanie istniejących, łącznie z ich punkty końcowe. Oprócz aplikacji i punkt końcowy zarządzania usługi rejestru Skatalogowano zarejestrowany moduł OPC bliźniaczej reprezentacji IoT Edge. Interfejs API usługi zapewnia kontrolę nad moduł funkcji, na przykład uruchamianie lub zatrzymywanie odnajdywaniem serwera (skanowania usługi) lub aktywowanie nowego bliźniaczych reprezentacji punktu końcowego, które mogą być udostępniane przy użyciu usługi wczesnych OPC bliźniaczej reprezentacji.
 
-Podstawowy moduł jest tożsamością kierownika. Nadzorca zarządza bliźniaczej reprezentacji punktu końcowego, który odnosi się do punktów końcowych serwera OPC UA, które są aktywowane przy użyciu odpowiedniego rejestru OPC UA interfejsu API. Ten punkt końcowy twins wykonuje translację elementu OPC UA JSON otrzymanych z usługi wczesnych bliźniaczej reprezentacji OPC działające w chmurze do wiadomości binarnych serwera OPC UA, które są wysyłane za pośrednictwem stanowych bezpiecznego kanału do zarządzanego punktu końcowego. Nadzorca udostępnia również usługi odnajdywania, wysyłających zdarzenia odnajdywania urządzenia w usłudze OPC UA urządzenia dołączania do przetworzenia, w których te zdarzenia spowodować aktualizacje w rejestrze serwera OPC UA.  W tym artykule przedstawiono sposób wdrażania modułu bliźniaczej reprezentacji OPC do istniejącego projektu. 
+Podstawowy moduł jest tożsamością kierownika. Nadzorca zarządza bliźniaczej reprezentacji punktu końcowego, który odnosi się do punktów końcowych serwera OPC UA, które są aktywowane przy użyciu odpowiedniego rejestru OPC UA interfejsu API. Ten punkt końcowy twins wykonuje translację elementu OPC UA JSON otrzymanych z usługi wczesnych bliźniaczej reprezentacji OPC działające w chmurze do wiadomości binarnych serwera OPC UA, które są wysyłane za pośrednictwem stanowych bezpiecznego kanału do zarządzanego punktu końcowego. Nadzorca udostępnia również usługi odnajdywania, wysyłających zdarzenia odnajdywania urządzenia w usłudze OPC UA device dołączania do przetworzenia, w których te zdarzenia spowodować aktualizacje w rejestrze serwera OPC UA.  W tym artykule przedstawiono sposób wdrażania modułu bliźniaczej reprezentacji OPC do istniejącego projektu. 
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat szczegółów wdrażania oraz instrukcje, zobacz GitHub [repozytorium](https://github.com/Azure/azure-iiot-opc-twin-module).
@@ -71,7 +71,7 @@ Skrypt wdrażania próbuje zarejestrować dwie aplikacje usługi AAD w usłudze 
 2. Alternatywnie wdrażanie prywatnego dzierżawy usługi AAD w innej subskrypcji, uruchom ponownie skrypt i wybrać z niej korzystać.
 
 > [!WARNING]
-> Nigdy nie jest kontynuowane bez uwierzytelniania.  Jeśli wybierzesz to zrobić, każdy dostęp do punktów końcowych zarządzania urządzeniami OPC z Internetu, nieuwierzytelnione.   Zawsze możesz [opcji wdrożenia "local"](howto-opc-twin-deploy-dependencies.md) do testów laboratoryjnych.
+> Nigdy nie jest kontynuowane bez uwierzytelniania.  Jeśli wybierzesz to zrobić, każdy dostęp do punktów końcowych bliźniaczej reprezentacji OPC z Internetu, nieuwierzytelnione.   Zawsze możesz [opcji wdrożenia "local"](howto-opc-twin-deploy-dependencies.md) do testów laboratoryjnych.
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Wdrażanie pokaz usługi IoT przemysłowych w jednym
 

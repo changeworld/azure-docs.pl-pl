@@ -1,5 +1,5 @@
 ---
-title: Jak wdrożyć zależności chmury zarządzania urządzenia Azure IoT OPC UA | Dokumentacja firmy Microsoft
+title: Jak wdrożyć bliźniaczej reprezentacji OPC zależności chmury na platformie Azure | Dokumentacja firmy Microsoft
 description: Jak wdrożyć zależności platformy Azure w bliźniaczej reprezentacji OPC.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759555"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491990"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Wdrażanie zależności na potrzeby lokalnego programowania
 
@@ -52,7 +52,7 @@ Skrypt wdrażania próbuje rejestrowania aplikacji usługi AAD w usłudze Azure 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, że pomyślnie wdrożono usługi zarządzania urządzeniami OPC do istniejącego projektu, poniżej przedstawiono sugerowany następny krok:
+Teraz, gdy została pomyślnie wdrożona usług bliźniaczej reprezentacji OPC do istniejącego projektu, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wdrażaniu modułów zarządzania urządzeniami OPC](howto-opc-twin-deploy-modules.md)
+> [Dowiedz się więcej o wdrażaniu modułów bliźniaczej reprezentacji OPC](howto-opc-twin-deploy-modules.md)

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265253"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490641"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -39,20 +39,11 @@ Usługa Azure Migrate wymaga dostępu do serwerów VMware w celu automatycznego 
 - Szczegóły: Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.
 - Aby ograniczyć dostęp, przypisz do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci) rolę Bez dostępu z propagacją do obiektu podrzędnego.
 
-Jeśli jest wdrażane w środowisku dzierżawy, w tym miejscu jest jednym ze sposobów konfigurowania tego:
+Jeśli są wdrażane w środowisku z wieloma dzierżawami i chcesz zakresu folder maszyn wirtualnych dla jednej dzierżawy, nie można bezpośrednio wybierz folder maszyny Wirtualnej, podczas określania zakresu kolekcji w usłudze Azure Migrate. Poniżej przedstawiono instrukcje dotyczące zakresu odnajdowania przez folder maszyn wirtualnych:
 
-1. Tworzenie użytkownika na dzierżawę i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do maszyn wirtualnych tylko specyficznym dla dzierżawy.
-2. Konfigurowania funkcji RBAC dla użytkowników innej dzierżawy zgodnie z opisem w poniższym przykładzie dla użytkownika nr 1 i 2 użytkownika:
-
-    - W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający ma użyć do odnalezienia maszyn wirtualnych w
-    - Datacenter1 - przyznać uprawnienia tylko do odczytu do 1 użytkownika i użytkownika nr 2. Nie propagować te uprawnienia do wszystkich obiektów podrzędnych, ponieważ uprawnienia zostanie ustawiona na poszczególnych maszynach wirtualnych.
-
-      - Maszyna VM1 (dzierżawy #1) (uprawnienia tylko do odczytu do 1 użytkownika)
-      - VM2 (dzierżawy #1) (uprawnienia tylko do odczytu do 1 użytkownika)
-      - Maszyna VM3 (dzierżawy nr 2) (uprawnienia tylko do odczytu do użytkownika nr 2)
-      - VM4 (dzierżawy nr 2) (uprawnienia tylko do odczytu do użytkownika nr 2)
-
-   - Jeśli przeprowadzisz odnajdywanie przy użyciu poświadczeń użytkownika nr 1, następnie tylko maszyna VM1 i VM2 zostaną odnalezione.
+1. Utwórz użytkownika na dzierżawę i przypisz uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. 
+2. Przyznaj dostęp użytkownika tylko do odczytu do wszystkich obiektów nadrzędnych, gdzie znajdują się maszyny wirtualne. Wszystkie obiekty nadrzędne - host, folder hostów, klastrów, folder klastrów — w hierarchii do centrum danych mają być włączone. Nie trzeba Propaguj uprawnienia do wszystkich obiektów podrzędnych.
+3. Użyj poświadczeń do odnajdowania, wybierając centrum danych jako *zakres zbierania*. ROLACH Ustawianie zapewnia odpowiedniego użytkownika vCenter będzie dostęp do maszyn wirtualnych tylko specyficznym dla dzierżawy.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Planowanie migracji projektów i odnajdywania
 
@@ -97,7 +88,7 @@ Jeśli masz wiele serwery vCenter z mniej niż 1500 maszyn wirtualnych na serwer
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Więcej niż 1500 maszyn w jednym programie vCenter Server
 
-Jeśli masz więcej niż 1500 maszyn wirtualnych w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pola zakresu w urządzeniu i określić hosta, klaster, folder lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli masz dwa foldery w programie vCenter Server, jednym z 1000 maszyn wirtualnych (Folder1) i drugi z 800 maszyn wirtualnych (Folder2), można użyć pola zakresu do dzielenia odnajdywania między te foldery.
+Jeśli masz więcej niż 1500 maszyn wirtualnych w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pola zakresu w urządzeniu i określić hosta, klaster, folder hostów, folder klastrów lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli masz dwa foldery w programie vCenter Server, jednym z 1000 maszyn wirtualnych (Folder1) i drugi z 800 maszyn wirtualnych (Folder2), można użyć pola zakresu do dzielenia odnajdywania między te foldery.
 
 **Ciągłe odnajdywania:** W takim przypadku należy utworzyć dwa urządzenia modułu zbierającego, pierwszy modułu zbierającego, określić zakres Folder1 i podłącz go do pierwszy projekt migracji. Możesz równolegle uruchomić odnajdywanie Folder2 przy użyciu drugiego urządzenia modułu zbierającego i podłącz go do drugiego projekt migracji.
 

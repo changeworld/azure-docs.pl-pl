@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych usługi Azure AD w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane z usługi Azure Active Directory w przez wartownika platformy Azure.
+title: Połącz dane usługi Azure AD przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure Active Directory przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f29ae9a8fcaecfc345efae02084f31d133e67b5d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575134"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494888"
 ---
-# <a name="collect-data-from-azure-active-directory"></a>Zbieranie danych z usługi Azure Active Directory
+# <a name="connect-data-from-azure-active-directory"></a>Połącz dane z usługi Azure Active Directory
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -38,7 +38,7 @@ Wartownik platformy Azure umożliwia zbieranie danych z [usługi Azure Active Di
 
 ## <a name="connect-to-azure-ad"></a>Łączenie z usługą Azure AD
 
-1. Na platformie Azure przez wartownika, wybierz **zbierania danych** a następnie kliknij przycisk **usługi Azure Active Directory** kafelka.
+1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure Active Directory** kafelka.
 
 2. Obok dzienniki mają być przesyłane strumieniowo do usługi Azure przez wartownika, kliknij **Connect**.
 

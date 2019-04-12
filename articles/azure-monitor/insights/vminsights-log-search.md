@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188972"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492092"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -125,7 +125,12 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 ### <a name="ports"></a>Porty 
 Porty na maszynie, które aktywnie akceptuje ruch przychodzący lub potencjalnie może akceptować ruch, ale są w stanie bezczynności raportowania przedziale czasu, są zapisywane w tabeli VMBoundPort.  
 
-Domyślnie dane nie są zapisywane w tej tabeli. Aby uzyskać dane zapisywane w tej tabeli, Wyślij wiadomość e-mail do vminsights@microsoft.com wraz z regionu obszaru roboczego i identyfikator obszaru roboczego, na których.   
+>[!NOTE]
+>Usługa Azure Monitor dla maszyn wirtualnych nie obsługuje gromadzenia i rejestrowania danych portu w obszarze roboczym usługi Log Analytics w następujących regionach:  
+>- Wschodnie stany USA  
+>- Europa Zachodnia
+>
+> Zbieranie tych danych jest włączone w drugim [obsługiwane regiony](vminsights-onboard.md#log-analytics) monitora platformy Azure dla maszyn wirtualnych. 
 
 Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól: 
 
@@ -157,7 +162,7 @@ Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z ag
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
+| Typ | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Unikatowy identyfikator dla maszyny w obszarze roboczym |
 | ResourceName_s | Unikatowy identyfikator dla maszyny w obszarze roboczym |
@@ -182,7 +187,7 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
+| Typ | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
 | ResourceName_s | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|

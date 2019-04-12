@@ -1,5 +1,5 @@
 ---
-title: Co to jest zarządzanie certyfikatami w usłudze Azure IoT OPC UA | Dokumentacja firmy Microsoft
+title: Co to jest magazyn OPC — Azure | Dokumentacja firmy Microsoft
 description: Omówienie magazynu OPC
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ba3313d927ec4317d6c051f6058d75a415b92288
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759288"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490380"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-ua-certificate-management"></a>Co to jest zarządzanie certyfikatami w usłudze Azure IoT Otwórz platformy łączności (OPC) UA?
+# <a name="what-is-opc-vault"></a>Co to jest magazyn OPC?
 
-Usługa Azure IoT OPC UA zarządzanie certyfikatami, również wiedzieć, co magazyn OPC są mikrousługi można skonfigurować, zarejestruj się i zarządzanie cyklem życia certyfikatu w przypadku aplikacji serwera i klienta OPC UA w chmurze. W tym artykule opisano magazynu OPC prostych zastosowań.
+OPC Vault to mikrousług, konfigurowanie, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. W tym artykule opisano magazynu OPC prostych zastosowań.
 
 ## <a name="certificate-management"></a>Zarządzanie certyfikatami
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886135"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501335"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -779,8 +779,6 @@ Azure portal to jeden z trzech interfejsów zarządzania wdrożeniami maszyn wir
 
 ![Portal Microsoft Azure — omówienie maszyny wirtualnej][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Zadań administracyjnych i konfiguracji dla wystąpienia maszyny wirtualnej są możliwe w witrynie Azure Portal.
 
@@ -791,9 +789,6 @@ Azure portal udostępnia podstawowe funkcje wdrażania i konfigurowania maszyn w
 * Przekazywanie wirtualnych dysków twardych na platformie Azure
 * Kopiowanie maszyn wirtualnych
 
-[comment]: <> (MShermannd TODO temat automatyzacji usługi SAP maszyn wirtualnych? )
-[comment]: <> (Wdrożenie wielu maszyn wirtualnych systemu operacyjnego w międzyczasie można MSSedusch)
-[comment]: <> (MSSedusch również dowolnego typu automatyzacji, dotyczące wdrożenia nie jest możliwe w witrynie Azure portal. Zadania, takie jak inicjowanych przez skrypty wdrażania wielu maszyn wirtualnych nie jest możliwe za pośrednictwem witryny Azure portal.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Zarządzanie za pomocą poleceń cmdlet programu PowerShell Azure firmy Microsoft
 
@@ -808,9 +803,8 @@ Komfort do tej pory było programu PowerShell (PS) to oczywiście bardziej zaawa
 Zobacz przykład poniżej:
 <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO opisano nowe polecenia interfejsu wiersza polecenia podczas testowania )
-Wdrażanie rozszerzenia monitorowania platformy Azure dla rozwiązania SAP (zobacz rozdział [Azure rozwiązanie do monitorowania dla rozwiązania SAP] [ planning-guide-9.1] w tym dokumencie) jest możliwe tylko za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia. W związku z tym jest konieczne instalowanie i konfigurowanie programu PowerShell lub interfejsu wiersza polecenia podczas wdrażania i administrowania systemem SAP NetWeaver na platformie Azure.
-  
+
+Wdrażanie rozszerzenia monitorowania platformy Azure dla rozwiązania SAP (zobacz rozdział [Azure rozwiązanie do monitorowania dla rozwiązania SAP] [ planning-guide-9.1] w tym dokumencie) jest możliwe tylko za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia. W związku z tym jest konieczne instalowanie i konfigurowanie programu PowerShell lub interfejsu wiersza polecenia podczas wdrażania i administrowania systemem SAP NetWeaver na platformie Azure.  
 
 Jak platforma Azure oferuje więcej funkcji, nowe polecenia cmdlet PS są mają zostać dodane wymagającym aktualizacja poleceń cmdlet. W związku z tym warto Sprawdź witrynę Azure Pobierz co najmniej raz w miesiącu <https://azure.microsoft.com/downloads/> nowej wersji poleceń cmdlet. Nowa wersja jest instalowana na starszej wersji.
 
@@ -1587,7 +1581,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="template"></a>Szablon
 
-Można użyć przykładowych szablonów w repozytorium azure-quickstart-templates w witrynie github.
+Można użyć przykładowych szablonów w repozytorium azure-quickstart-templates w witrynie GitHub.
 
 * [Proste maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [Proste Windows maszyny Wirtualnej](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -1632,13 +1626,13 @@ Między lokalizacjami lub hybrydowy scenariusz może być mniej więcej opisany 
 
 ![Połączenie lokacja-lokacja między magazynami lokalnymi i zasobów platformy Azure][planning-guide-figure-2100]
 
-Scenariuszu przedstawionym powyżej opisano scenariusz, gdzie lokalnej usługi AD/OpenLDAP i DNS zostały rozszerzone na platformę Azure. Na tej stronie w środowisku lokalnym określonego zakresu adresów IP jest zastrzeżony na subskrypcję platformy Azure. Zakres adresów IP zostanie przypisany do usługi Azure Virtual Network na stronie platformy Azure.
-
-#### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+Scenariusz powyżej opisano scenariusz, gdzie w środowisku lokalnym
 
 Minimalnym wymaganiem jest użycie protokołów bezpiecznej komunikacji, takich jak protokół SSL/TLS dla opartych na sieci VPN połączeń, aby uzyskać dostęp do systemu usług platformy Azure lub dostęp za pomocą przeglądarki. Zakłada się, firm inaczej obsługi połączenia sieci VPN między siecią firmową i platformy Azure. Niektóre firmy może zostać otwarta blankly wszystkie porty. Niektóre innych firm może być była precyzyjna, w które porty należy otworzyć itp.
 
 W tabeli poniżej SAP typowe porty komunikacyjne są wyświetlane. Zasadniczo jest wystarczające, aby otworzyć port bramy SAP.
+
+<!-- sapms is prefix of a SAP service name and not a spelling error -->
 
 | Usługa | Nazwa portu | Przykład `<nn`> = 01 | Domyślny zakres (minimum maksimum) | Komentarz |
 | --- | --- | --- | --- | --- |
@@ -1834,7 +1828,7 @@ Instalator portalu SAP w maszynie wirtualnej platformy Azure nie różnią się 
 
 Scenariusz wdrożenia specjalne przez niektórych klientów jest przed nawiązywaniem bezpośredniego połączenia z portalu dla przedsiębiorstw SAP do Internetu, gdy host maszyny wirtualnej jest połączony z siecią firmową za pośrednictwem tunelu VPN typu lokacja lokacja lub ExpressRoute. Takiej sytuacji należy upewnić się, że określone porty są otwarte i nie jest blokowany przez zapory lub sieciowej grupy zabezpieczeń. 
 
-Portal początkowego identyfikatora URI jest http (s):`<Portalserver`>: 5XX00/irj, gdzie numer portu jest tworzona przez 50000 znaku plus (Systemnumber? 100). Domyślny system identyfikatora URI SAP portalu 00 to `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Aby uzyskać więcej informacji, zapoznaj się <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+Portal początkowego identyfikatora URI jest http (s):`<Portalserver`>: 5XX00/irj, gdzie numer portu jest sformułowany, zgodnie z opisem SAP w <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
 ![Konfiguracja punktu końcowego][planning-guide-figure-2800]
 

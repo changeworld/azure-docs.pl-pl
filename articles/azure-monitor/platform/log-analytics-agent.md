@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841110"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492808"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
@@ -41,8 +41,9 @@ Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywan
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
-* Windows Server 2008 R2 lub nowszy
-* Windows 7 z dodatkiem SP1 lub nowszy.
+* Windows Server 2019
+* Windows Server 2008 R2, 2012, 2012 R2, 2016 w wersji 1709 i 1803
+* Windows 7 z dodatkiem SP1 lub nowszy
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 Ta sekcja zawiera szczegółowe informacje o obsługiwanych dystrybucjach systemu Linux.    
@@ -104,7 +105,8 @@ Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub
 |proxyhost | Adres lub nazwę FQDN serwera proxy serwera/Log Analytics bramy |
 |port | Numer portu opcjonalne dla bramy analizy dziennika/serwera proxy |
 
-Na przykład: `https://user01:password@proxy01.contoso.com:30443`
+Na przykład:
+`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > Jeśli takie jak używać znaków specjalnych "\@" swoje hasło, zostanie wyświetlony błąd połączenia serwera proxy, ponieważ wartość jest nieprawidłowo przeanalizowane.  Aby obejść ten problem, należy zakodować hasła w adresie URL, za pomocą narzędzia, takie jak [URLDecode](https://www.urldecoder.org/).  

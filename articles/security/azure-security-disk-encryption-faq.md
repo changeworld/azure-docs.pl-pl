@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 413ed4a56afad5ced221ba957af9ddb007622b6a
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: d7ccf370ae2f3f9add2b73797e8938d4580d81dd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470053"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493148"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -37,11 +37,11 @@ Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych w warstwie
 
 ## <a name="bkmk_LinuxOSSupport"></a> Jakie są dystrybucje systemu Linux obsługuje usługi Azure Disk Encryption?
 
-Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [zatwierdzone dystrybucje systemu Linux na platformie Azure](../virtual-machines/linux/endorsed-distros.md), który sam jest podzbiór wszystkich możliwych dystrybucji.
+Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [dystrybucje zatwierdzone na platformie Azure z systemem Linux](../virtual-machines/linux/endorsed-distros.md), który sam jest podzestawem wszystkich server możliwe są dystrybucje systemu Linux.
 
  ![Diagram Venna Linux server obsługujących usługi Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 
-Dystrybucje nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje serwera systemu Linux i wersje obsługują usługi Azure Disk Encryption:
+Dystrybucje systemu Linux server, które nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje i wersje obsługują usługi Azure Disk Encryption:
 
 | Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
 | --- | --- |--- |

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/27/2019
 ms.author: celested
-ms.reviewer: zawad
+ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86424a7c797dfd7e73ad5f0e56929616d9653b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170979"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500485"
 ---
-# <a name="understanding-azure-ad-application-consent-experiences"></a>Opis usługi Azure AD aplikacji zgody środowisk
+# <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
 
 Dowiedz się więcej na temat aplikacji Azure Active Directory (Azure AD) zgoda środowisko użytkownika. Dlatego inteligentnie Zarządzanie aplikacjami w swojej organizacji lub Twórz aplikacje za pomocą aby usprawnić środowisko zgody.
 
@@ -85,4 +85,5 @@ Poniżej przedstawiono procesy zgody, które użytkownik może zostać wyświetl
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Szczegółowe omówienie [jak platformy wyrażania zgody w usłudze Azure AD implementuje zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [użycia platformy wyrażania zgody aplikacji z wieloma dzierżawami](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) do zaimplementowania "user" i "admin" zgody, obsługa więcej zaawansowanych wzorce aplikacji wielowarstwowych.
+- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [użycia platformy wyrażania zgody aplikacji z wieloma dzierżawami](active-directory-devhowto-multi-tenant-overview.md) do zaimplementowania "user" i "admin" zgody, obsługa więcej zaawansowanych wzorce aplikacji wielowarstwowych.
+- Dowiedz się, [sposobu konfigurowania domena wydawcy aplikacji](howto-configure-publisher-domain.md).

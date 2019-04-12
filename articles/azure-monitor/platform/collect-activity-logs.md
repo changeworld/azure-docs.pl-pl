@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905991"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505638"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure, w obszarze roboczym Log Analytics w usłudze Azure Monitor
 
 ![Symbol dzienników aktywności usługi Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
-Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) we wszystkich subskrypcjach platformy Azure. Dziennik aktywności platformy Azure jest dziennik, który zawiera szczegółowe informacje dotyczące operacji wykonywanych na zasobach w Twoich subskrypcjach. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* od momentu jego raporty zdarzeń dla subskrypcji.
+Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dziennika aktywności platformy Azure](activity-logs-overview.md) we wszystkich subskrypcjach platformy Azure. Dziennik aktywności platformy Azure jest dziennik, który zawiera szczegółowe informacje dotyczące operacji wykonywanych na zasobach w Twoich subskrypcjach. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* od momentu jego raporty zdarzeń dla subskrypcji.
 
 Korzystając z dziennika aktywności można określić *co*, *kto*, i *podczas* dla dowolnego zapisu (PUT, POST, DELETE) dla zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stan działania i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego modelu wdrażania.
 
@@ -52,28 +52,39 @@ W przeciwieństwie do większości innych rozwiązań usługi Azure Monitor dane
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
-| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
-| [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
+| [Agenci dla systemu Windows](agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
+| [Agenci dla systemu Linux](../learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
+| [Grupa zarządzania programu System Center Operations Manager](om-agents.md) | Nie | Rozwiązanie zbiera informacje z agentów raportujących do grupy zarządzania programu Operations Manager. |
 | [Konto magazynu Azure](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aby uzyskać dostęp do informacji z dziennika aktywności platformy Azure, musi mieć subskrypcję platformy Azure.
+Aby uzyskać dostęp do informacji z dziennika aktywności platformy Azure, musi mieć subskrypcję platformy Azure.
+
+To rozwiązanie wymaga również, że następujących dwóch dostawców zasobów są zarejestrowane w ramach subskrypcji:
+
+1. Microsoft.OperationalInsights
+2. Microsoft.OperationsManagement
+
+Aby dowiedzieć się, jak zarejestrować lub upewnij się, są rejestrowane, zobacz [dostawcy zasobów platformy Azure i ich typy](../../azure-resource-manager/resource-manager-supported-services.md)
 
 ## <a name="configuration"></a>Konfigurowanie
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Activity Log Analytics dla obszarów roboczych.
 
-1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../../azure-monitor/insights/solutions.md).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+
+2. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../insights/solutions.md).
+
 2. Konfigurowanie dzienników aktywności, aby przejść do obszaru roboczego usługi Log Analytics.
     1. W witrynie Azure portal, wybierz swój obszar roboczy, a następnie kliknij przycisk **dziennik aktywności platformy Azure**.
     2. Dla każdej subskrypcji kliknij nazwę subskrypcji.  
+        
         ![Dodaj subskrypcję](./media/collect-activity-logs/add-subscription.png)
+    
     3. W *SubscriptionName* bloku kliknij **Connect**.  
+    
         ![Łączenie subskrypcji](./media/collect-activity-logs/subscription-connect.png)
-
-Zaloguj się do witryny Azure portal do łączenia z subskrypcją platformy Azure do swojego obszaru roboczego.  
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
@@ -98,5 +109,5 @@ Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Tworzenie [alert](../../azure-monitor/platform/alerts-metric.md) podczas określonego działania się dzieje.
-- Użyj [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.
+- Tworzenie [alert](../platform/alerts-metric.md) podczas określonego działania się dzieje.
+- Użyj [wyszukiwanie w dzienniku](../log-query/log-query-overview.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.

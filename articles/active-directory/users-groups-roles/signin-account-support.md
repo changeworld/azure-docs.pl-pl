@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/10/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62c4d56fbfca34ff6291863149b078f7ddc6680
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288594"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491599"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Opcje logowania dla konta Microsoft w usłudze Azure Active Directory
 
-Strony logowania usługi Microsoft 365 dla usługi Azure Active Directory (Azure AD) obsługuje jeden lub oba pracy lub kont służbowych i kont Microsoft, w zależności od sytuacji, w celu obsługi:
+Strony logowania usługi Microsoft 365 dla usługi Azure Active Directory (Azure AD) obsługuje konta służbowe ani służbowych i kont Microsoft, ale w zależności od ewentualne problemy użytkownika, może to być jednej lub drugiej lub oba. Na przykład strony logowania usługi Azure AD obsługuje:
 
 * Aplikacje, które akceptują logowania z obu typów kont
 * Organizacje, które akceptują gości
@@ -32,7 +32,7 @@ Aby sprawdzić, czy strony logowania, której używa Twoja organizacja obsługuj
 
 ![Różnica między strony logowania konta](./media/signin-account-support/ui-prompt.png)
 
-[Dodatkowe opcje logowania działają tylko w przypadku osobistych kont Microsoft](index.yml) , ale nie można użyć do logowania do zasobów konta służbowego.
+[Dodatkowe opcje logowania działają tylko w przypadku osobistych kont Microsoft](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , ale nie można użyć do logowania do zasobów konta służbowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

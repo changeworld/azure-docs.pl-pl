@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: networking
-author: jimdial
+author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 02/07/2019
-ms.author: jdial
+ms.date: 04/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553948"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503280"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | --- | --- |
 | Sieci wirtualne |1000 |
 | Podsieci na sieć wirtualną |3,000 |
-| Komunikacja równorzędna sieci wirtualnych na sieć wirtualną |100 |
+| Komunikacja równorzędna sieci wirtualnych na sieć wirtualną |500 |
 | Serwery DNS na sieć wirtualną |20 |
 | Prywatne adresy IP na sieć wirtualną |65,536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |
@@ -68,7 +68,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Publiczne adresy IP — dynamiczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
-| Publiczne adresy IP — statyczny | 200 Basic. |Skontaktuj się z pomocą techniczną. |
+| Publiczne adresy IP — statyczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
 | Publiczne adresy IP — statyczny | 200 dla warstwy standardowa.|Skontaktuj się z pomocą techniczną. |
 | Rozmiar prefiksu publicznego adresu IP (wersja zapoznawcza) | /28 | /28 |
 

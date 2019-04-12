@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9631e4b82ceb14a98740491b98288d75dd23f9a3
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227699"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501012"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów przy użyciu szablo
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Włączanie i wyłączanie skalowania automatycznego dla działającego klastra
 
-Można włączyć lub wyłączyć automatyczne skalowanie klastrów HDInsight utworzonych po 1 stycznia 2019 za pośrednictwem witryny Azure portal.
+Tylko można włączyć lub wyłączyć automatyczne skalowanie dla nowych klastrów HDInsight.
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -108,8 +108,8 @@ Powyższe metryki są sprawdzane co 60 sekund. Skalowanie automatyczne spowoduje
 
 Po wykryciu następujące warunki automatycznego skalowania będzie wysłać żądanie skalowania w górę:
 
-* Całkowita liczba oczekujących procesora CPU jest większy niż łączny czas Procesora bezpłatne więcej niż 1 minuty.
-* Całkowita liczba oczekujących pamięci jest większa od całkowitej ilości wolnej pamięci ponad 1 minuty.
+* Całkowita liczba oczekujących procesora CPU jest większy niż łączny czas Procesora bezpłatne więcej niż 3 minuty.
+* Całkowita liczba oczekujących pamięci jest większa od całkowitej ilości wolnej pamięci w więcej niż 3 minuty.
 
 Firma Microsoft będzie obliczać, ilu nowych węzłów procesu roboczego są wymagane do spełnić bieżące wymagania dotyczące procesora CPU i pamięci, a następnie wysłać żądanie skalowania w górę, który dodaje tę liczbę nowych węzłach procesów roboczych.
 
@@ -120,7 +120,7 @@ Po wykryciu następujące warunki automatycznego skalowania będzie wysłać ż�
 * Całkowita liczba oczekujących procesora CPU jest mniejsza niż łączny czas Procesora bezpłatne przez więcej niż 10 minut.
 * Całkowita liczba oczekujących pamięci jest mniejsza od całkowitej ilości wolnej pamięci na więcej niż 10 minut.
 
-Na podstawie liczby kontenerów AM na węzeł i bieżący procesor CPU i wymagania dotyczące pamięci, automatycznego skalowania będzie wystawiać wniosek o usunięcie niektórych liczbę węzłów, określając węzły, które są potencjalnymi kandydatami do usunięcia. Domyślnie zostanie usunięty z uwzględnieniem dwóch węzłów w jednym cyklu.
+Na podstawie liczby kontenerów AM na węzeł i bieżący procesor CPU i wymagania dotyczące pamięci, automatycznego skalowania będzie wystawiać wniosek o usunięcie niektórych liczbę węzłów, określając węzły, które są potencjalnymi kandydatami do usunięcia. Skalowanie w dół wyzwoli likwidowania węzłów, a po węzły zostaną całkowicie zlikwidowane, zostaną one usunięte.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

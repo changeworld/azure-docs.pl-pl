@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych zapory Windows w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane zapory Windows Azure przez wartownika.
+title: Połącz dane zapory Windows Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych zapory Windows Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574844"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494224"
 ---
 # <a name="connect-windows-firewall"></a>Łączenie z zaporą systemu Windows
 
@@ -31,12 +31,11 @@ ms.locfileid: "58574844"
 
 
 > [!NOTE]
-> 
-> - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
+> Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="enable-the-connector"></a>Włącz łącznik 
 
-1. W portalu Azure przez wartownika wybierz **zbierania danych** a następnie kliknij polecenie **zapory Windows** kafelka. 
+1. W portalu Azure przez wartownika wybierz **łączników danych** a następnie kliknij polecenie **zapory Windows** kafelka. 
 1. Wybierz typy danych, które ma być przesyłana strumieniowo.
 1. Kliknij pozycję **Zainstaluj**.
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics zapory Windows, wyszukaj **SecurityEvent**.

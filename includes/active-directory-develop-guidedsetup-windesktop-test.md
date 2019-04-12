@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214349"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502666"
 ---
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -39,14 +39,13 @@ Przy pierwszym logowaniu do aplikacji, zostanie również wyświetlony monit zap
 
 ### <a name="view-application-results"></a>Wyświetl wyniki aplikacji
 
-Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, który jest zwracany przez wywołanie interfejsu API programu Microsoft Graph. Wyniki są wyświetlane w **wyników wywołań interfejsu API** pole. Podstawowe informacje o token, który został uzyskany za pośrednictwem wywołania `AcquireTokenAsync` lub `AcquireTokenSilentAsync` powinny być widoczne w **informacje o tokenie** pole. Wyniki obejmują następujące właściwości:
+Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, który jest zwracany przez wywołanie interfejsu API programu Microsoft Graph. Wyniki są wyświetlane w **wyników wywołań interfejsu API** pole. Podstawowe informacje o token, który został uzyskany za pośrednictwem wywołania `AcquireTokenInteractive` lub `AcquireTokenSilent` powinny być widoczne w **informacje o tokenie** pole. Wyniki obejmują następujące właściwości:
 
 |Właściwość  |Format  |Opis |
 |---------|---------|---------|
-|**Nazwa** |Imię i nazwisko użytkownika |Użytkownik na imię i nazwisko.|
-|**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika, który służy do identyfikowania użytkownika.|
-|**Token wygasa** |DateTime |Czas, w którym token jest ważny. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
-|**Token dostępu** |String |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
+
+|**Nazwa użytkownika**  | <span> user@domain.com </span> | Nazwa użytkownika, który służy do identyfikowania użytkownika. | | **Wygaśnięcia ważności tokenu** | Data i godzina | Czas, w którym token jest ważny. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami. |
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i delegowane uprawnienia

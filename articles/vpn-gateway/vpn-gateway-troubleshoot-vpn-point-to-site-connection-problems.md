@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630464"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492383"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
@@ -57,6 +57,35 @@ Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatu klient
 
 > [!NOTE]
 > Po zaimportowaniu certyfikatu klienta, nie należy wybierać **włączanie silnej ochrony klucza prywatnego** opcji.
+
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Nie można nawiązać połączenie sieciowe między komputerem a serwerem sieci VPN, ponieważ serwer zdalny nie odpowiada.
+
+### <a name="symptom"></a>Objaw
+
+Kiedy sprawdzasz i nawiązać połączenie z gteway sieci wirtualnej platformy Azure za pomocą protokołu IKEv2 w Windows, otrzymasz następujący komunikat o błędzie:
+
+**Nie można nawiązać połączenie sieciowe między komputerem a serwerem sieci VPN, ponieważ serwer zdalny nie odpowiada.**
+
+### <a name="cause"></a>Przyczyna
+ 
+ Ten problem występuje, jeśli wersja systemu Windows nie ma obsługę protokołu IKE fragmentacji
+ 
+### <a name="solution"></a>Rozwiązanie
+
+Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego starsze niż Windows 10 nie są obsługiwane i mogą używać tylko protokołu SSTP.
+
+Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2:
+
+1. Zainstaluj aktualizację.
+
+   | Wersja systemu operacyjnego | Date | Numer/link |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | System Windows 10 w wersji 1709 | 22 marca 2018 r. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. Ustaw wartość klucza rejestru. Utwórz lub ustaw klucz rejestru REG_DWORD „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”na wartość 1.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Błąd klienta sieci VPN: Odebrano komunikat jest nieoczekiwany lub nieprawidłowo sformatowany
 
@@ -107,7 +136,7 @@ Podczas próby nawiązania połączenia z siecią wirtualną platformy Azure, ko
 
 Pojawi się następujący komunikat o błędzie:
 
-**Błąd pobierania pliku. Docelowy identyfikator URI nie jest określony.**
+**Błąd pobierania pliku. Nie określono docelowego identyfikatora URI.**
 
 ### <a name="cause"></a>Przyczyna 
 

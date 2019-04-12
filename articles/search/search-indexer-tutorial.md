@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c2fc406fa864fe2f67ded4ea98ad14475944671a
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270469"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500349"
 ---
 # <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek w C#: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
@@ -56,7 +56,7 @@ Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla ka
 
 1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1.. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
+1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
 ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
@@ -87,7 +87,7 @@ W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator m
 
 W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz danych — obydwa te elementy zostaną utworzone w kroku 2. Jeśli zasób istnieje można również dodać do niego tabelę hotels, zaczynając pracę od kroku 4.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). 
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/). 
 
 2. Znajdowanie lub tworzenie **usługi Azure SQL Database** do utworzenia bazy danych, serwer i grupę zasobów. Możesz użyć wartości domyślnych i warstwy cenowej najniższego poziomu. Jedną z zalet tworzenia serwera jest możliwość określenia nazwy i hasła użytkownika administratora. Są one niezbędne do utworzenia i załadowania tabel w późniejszym kroku.
 
@@ -99,7 +99,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
    ![Strona bazy danych SQL Database](./media/search-indexer-tutorial/hotels-db.png)
 
-4. Na pasku poleceń kliknij kolejno pozycje **Narzędzia** > **Edytor zapytań**.
+4. W okienku nawigacji kliknij **Edytor zapytań (wersja zapoznawcza)**.
 
 5. Kliknij pozycję **Zaloguj się**, a następnie wprowadź nazwę użytkownika i hasło administratora serwera.
 
@@ -137,7 +137,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Kod jest teraz gotowy do skompilowania i uruchomienia. Przed wykonaniem tych czynności poświęć chwilę na zapoznanie się z definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
+Po danych i ustawień konfiguracji znajdują się w miejscu, próbki programu **DotNetHowToIndexers.sln** jest gotowy do skompilowania i uruchomienia. Przed wykonaniem tych czynności poświęć chwilę na zapoznanie się z definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
 
   + **hotel.cs**, który zawiera schemat definiujący indeks
   + **Program.cs**, który zawiera funkcje służące do tworzenia struktur i zarządzania nimi w usłudze
@@ -155,45 +155,65 @@ public string HotelName { get; set; }
 
 Schemat może również obejmować inne elementy, w tym profile oceniania na potrzeby poprawiania wyniku wyszukiwania, niestandardowe analizatory i inne konstrukcje. Jednak na nasze potrzeby zdefiniowaliśmy bardzo prosty schemat, który zawiera tylko pola znalezione w przykładowych bazach danych.
 
-W tym samouczku indeksator ściąga dane z jednego źródła danych. W praktyce można dołączyć wiele indeksatorów do tego samego indeksu, tworząc w ten sposób skonsolidowany indeks z możliwością przeszukiwania na podstawie wielu źródeł danych i indeksatorów. Możesz użyć tej samej pary indeks-indeksator różniącej się tylko źródłami danych lub jednego indeksu z różnymi kombinacjami indeksatora i źródła danych, w zależności od tego, w jakim obszarze chcesz zachować elastyczność.
+W tym samouczku indeksator ściąga dane z jednego źródła danych. W praktyce można dołączyć wiele indeksatorów do tego samego indeksu, tworząc skonsolidowany indeks wyszukiwania z wielu źródeł danych. Możesz użyć tej samej pary indeks-indeksator różniącej się tylko źródłami danych lub jednego indeksu z różnymi kombinacjami indeksatora i źródła danych, w zależności od tego, w jakim obszarze chcesz zachować elastyczność.
 
 ### <a name="in-programcs"></a>W pliku Program.cs
 
-Główny program obejmuje funkcje przeznaczone dla wszystkich trzech reprezentatywnych źródeł danych. Jeśli skoncentrujesz się tylko na usłudze Azure SQL Database, wyróżniają się następujące obiekty:
+Główny program zawiera logikę do tworzenia klienta, indeks, źródło danych i indeksatora. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
+
+Obiekt źródła danych jest skonfigurowany przy użyciu ustawień, które są specyficzne dla zasobów bazy danych Azure SQL, w tym [przyrostowe indeksowania](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) za pomocą wbudowanych [zmiany funkcji wykrywania](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) platformy Azure SQL. Hotele demonstracyjną bazę danych w usłudze Azure SQL zawiera kolumnę "usuwania nietrwałego" o nazwie **IsDeleted**. Gdy w tej kolumnie jest ustawiona na wartość true w bazie danych, indeksator usuwa odpowiednich dokumentów z indeksu wyszukiwania platformy Azure.
 
   ```csharp
-  private const string IndexName = "hotels";
-  private const string AzureSqlHighWaterMarkColumnName = "RowVersion";
-  private const string AzureSqlDataSourceName = "azure-sql";
-  private const string AzureSqlIndexerName = "azure-sql-indexer";
+  Console.WriteLine("Creating data source...");
+
+  DataSource dataSource = DataSource.AzureSql(
+      name: "azure-sql",
+      sqlConnectionString: configuration["AzureSQLConnectionString"],
+      tableOrViewName: "hotels",
+      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
+          softDeleteColumnName: "IsDeleted",
+          softDeleteMarkerValue: "true"));
+  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-W usłudze Azure Search obiekty, które można wyświetlać, konfigurować lub usuwać niezależnie, obejmują indeksy, indeksatory i źródła danych (odpowiednio *hotels*, *azure-sql-indexer*, *azure-sql*). 
-
-Kolumna *AzureSqlHighWaterMarkColumnName* wymaga szczególnej uwagi, ponieważ udostępna informacje dotyczące wykrywania zmian, których indeksator używa w celu określenia, czy wiersz został zmieniony od czasu ostatniego obciążenia indeksowania. [Zasady wykrywania zmian](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) są obsługiwane tylko w indeksatorach i różnią się w zależności od źródła danych. W usłudze Azure SQL Database możesz wybrać jedną z dwóch zasad, w zależności od wymagań bazy danych.
-
-Poniższy kod przedstawia metody w pliku Program.cs używanym do tworzenia źródła danych i indeksatora. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
+Obiekt indeksatora jest niezależne od platformy, których konfiguracja, planowanie i wywołania są takie same, niezależnie od źródła. Ten przykładowy indeksator zawiera harmonogramu, opcja resetowania, czyści historię indeksatora, która wywołuje metodę, aby utworzyć i uruchomić indeksator natychmiast.
 
   ```csharp
-  private static string SetupAzureSqlIndexer(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+  Console.WriteLine("Creating Azure SQL indexer...");
+  Indexer indexer = new Indexer(
+      name: "azure-sql-indexer",
+      dataSourceName: dataSource.Name,
+      targetIndexName: index.Name,
+      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
+  // Indexers contain metadata about how much they have already indexed
+  // If we already ran the sample, the indexer will remember that it already
+  // indexed the sample data and not run again
+  // To avoid this, reset the indexer if it exists
+  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
+  if (exists)
   {
-    Console.WriteLine("Deleting Azure SQL data source if it exists...");
-    DeleteDataSourceIfExists(serviceClient, AzureSqlDataSourceName);
+      await searchService.Indexers.ResetAsync(indexer.Name);
+  }
 
-    Console.WriteLine("Creating Azure SQL data source...");
-    DataSource azureSqlDataSource = CreateAzureSqlDataSource(serviceClient, configuration);
+  await searchService.Indexers.CreateOrUpdateAsync(indexer);
 
-    Console.WriteLine("Deleting Azure SQL indexer if it exists...");
-    DeleteIndexerIfExists(serviceClient, AzureSqlIndexerName);
+  // We created the indexer with a schedule, but we also
+  // want to run it immediately
+  Console.WriteLine("Running Azure SQL indexer...");
 
-    Console.WriteLine("Creating Azure SQL indexer...");
-    Indexer azureSqlIndexer = CreateIndexer(serviceClient, AzureSqlDataSourceName, AzureSqlIndexerName);
-
-    return azureSqlIndexer.Name;
+  try
+  {
+      await searchService.Indexers.RunAsync(indexer.Name);
+  }
+  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+  {
+      Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
   }
   ```
 
-Zauważ, że wywołania interfejsu API indeksatora są niezależne od platformy, z wyjątkiem elementu [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet), która określa typ przeszukiwarki do wywołania.
+
 
 ## <a name="run-the-indexer"></a>Uruchamianie indeksatora
 
@@ -236,12 +256,10 @@ W witrynie Azure Portal na stronie przeglądu usługi wyszukiwania kliknij pozyc
 
 W portalu są wyświetlane wszystkie indeksatory, w tym właśnie utworzony przy użyciu programu. Możesz otworzyć definicję indeksatora i wyświetlić źródło danych lub skonfigurować harmonogram odświeżania w celu zidentyfikowania nowych i zmienionych wierszy.
 
-1. Otwórz stronę przeglądu usługi dla usługi Azure Search.
-2. Przewiń w dół w celu wyszukania kafelków **Indeksatory** i **Źródła danych**.
-3. Kliknij kafelek, aby otworzyć listę każdego zasobu. Możesz wybrać poszczególne indeksatory lub źródła danych w celu wyświetlenia lub zmodyfikowania ustawień konfiguracji.
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** kliknij linki do **indeksy**, **indeksatory**, i **danych Źródła**.
+3. Wybierz poszczególne obiekty, aby wyświetlić lub zmodyfikować ustawienia konfiguracji.
 
    ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
-
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

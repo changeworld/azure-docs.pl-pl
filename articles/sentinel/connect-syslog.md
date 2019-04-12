@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych dziennika systemu w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane usługi Syslog w przez wartownika platformy Azure.
+title: Łączenie danych z serwera Syslog przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć dane usługi Syslog z platformy Azure przez wartownika.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 55949da97f58f1d8c1670f69d25e92d6bb4e9eef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9144f20eae5a925ad88054e972c99ae024bcefe3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447306"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496526"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Połącz swoje rozwiązanie zewnętrznych przy użyciu protokołu Syslog
 
@@ -30,18 +30,18 @@ ms.locfileid: "57447306"
 Możesz połączyć wszystkie lokalne urządzenie, obsługującego usługi Syslog do platformy Azure przez wartownika. Odbywa się przy użyciu agenta, oparte na maszynie z systemem Linux między urządzeniem i przez wartownika Azure. W przypadku maszyną z systemem Linux na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia lub aplikacji z obszarem roboczym dedykowanym tworzenie na platformie Azure i połączyć ją. Jeśli maszyną z systemem Linux nie jest na platformie Azure, można przesyłać strumieniowo dzienniki z urządzenia do dedykowanej na lokalnej maszynie Wirtualnej lub maszyny, na którym należy zainstalować agenta dla systemu Linux. 
 
 > [!NOTE]
-> Jeśli urządzenie obsługuje format CEF Syslog, połączenie jest pełniejszy i należy wybrać tę opcję i postępuj zgodnie z instrukcjami w [zbieranie danych z formatu CEF](connect-common-event-format.md).
+> Jeśli urządzenie obsługuje format CEF Syslog, połączenie jest pełniejszy i należy wybrać tę opcję i postępuj zgodnie z instrukcjami w [łączenia danych z formatu CEF](connect-common-event-format.md).
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Zbieranie dzienników systemowych odbywa się przy użyciu agenta dla systemu Linux. Domyślnie agenta dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, w której maszyny z systemem Linux oczekuje się, zbierać dużą liczbę zdarzeń dziennika systemu, takie jak w przypadku agenta systemu Linux jest odbierania zdarzeń z innymi urządzeniami, konfiguracja zostanie zmodyfikowany na potrzeby Użyj transportu TCP między demona usługi Syslog i agenta.
+Połączenie usługi SYSLOG odbywa się przy użyciu agenta dla systemu Linux. Domyślnie agenta dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, w której maszyny z systemem Linux oczekuje się, zbierać dużą liczbę zdarzeń dziennika systemu, takie jak w przypadku agenta systemu Linux jest odbierania zdarzeń z innymi urządzeniami, konfiguracja zostanie zmodyfikowany na potrzeby Użyj transportu TCP między demona usługi Syslog i agenta.
 
 ## <a name="connect-your-syslog-appliance"></a>Połącz urządzenie z usługi Syslog
 
-1. W portalu Azure przez wartownika wybierz **zbierania danych** i wybierz polecenie **Syslog** kafelka.
+1. W portalu Azure przez wartownika wybierz **łączników danych** i wybierz polecenie **Syslog** kafelka.
 2. Jeśli maszyną z systemem Linux nie jest w obrębie platformy Azure, Pobierz i zainstaluj, Azure, przez wartownika **agenta dla systemu Linux** na urządzeniu. 
 1. Jeśli pracujesz na platformie Azure, wybierz lub Utwórz Maszynę wirtualną, która w obrębie platformy Azure przez wartownika obszar roboczy, który jest przeznaczony do odbierania komunikatów Syslog. Wybierz maszynę Wirtualną w usłudze Azure przez wartownika w obszarach roboczych, a następnie kliknij przycisk **Connect** w górnej części okienka po lewej stronie.
-3. Kliknij przycisk **konfigurowania dzienników, które mają być zbierane** w instalacji łącznika usługi Syslog. 
+3. Kliknij przycisk **konfigurowania dzienników do podłączenia** w instalacji łącznika usługi Syslog. 
 4. Kliknij przycisk **naciśnij tutaj, aby otworzyć blok konfiguracji**.
 1. Wybierz **danych** i następnie **Syslog**.
    - Upewnij się, że każde urządzenie, która jest wysyłana przez Syslog znajduje się w tabeli. Dla każdego obiektu chcesz monitorować, Ustaw ważność. Kliknij przycisk **Zastosuj**.

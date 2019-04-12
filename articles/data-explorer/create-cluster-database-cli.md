@@ -6,13 +6,13 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 451eeaf6b30c85371728968d834aa6e34092dbc3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043976"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491257"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Tworzenie klastra Eksploratora danych usługi Azure i bazy danych przy użyciu wiersza polecenia platformy Azure
 
@@ -79,7 +79,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
 1. Utwórz bazę danych przy użyciu następującego polecenia:
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
@@ -87,8 +87,8 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    | cluster-name | *azureclitest* | Nazwa klastra, w którym zostanie utworzona baza danych.|
    | name | *clidatabase* | Nazwa bazy danych.|
    | resource-group | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
-   | soft-delete-period | *3650:00:00:00* | Okres przechowywania danych na potrzeby zapytań. |
-   | hot-cache-period | *3650:00:00:00* | Okres przechowywania danych w pamięci podręcznej. |
+   | soft-delete-period | *P365D* | Oznacza ilość czasu, dane pozostaną dostępne dla zapytania. Zobacz [zasady przechowywania](/azure/kusto/concepts/retentionpolicy) Aby uzyskać więcej informacji. |
+   | hot-cache-period | *P31D* | Oznacza ilość czasu, dane będą przechowywane w pamięci podręcznej. Zobacz [pamięci podręcznej zasad](/azure/kusto/concepts/cachepolicy) Aby uzyskać więcej informacji. |
 
 1. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
 

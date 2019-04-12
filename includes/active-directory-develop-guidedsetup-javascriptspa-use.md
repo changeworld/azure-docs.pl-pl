@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 68598d4bb7fb9fd928a7b664e6ce0c02220ca4bb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891035"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503143"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
@@ -124,19 +124,19 @@ if (!isIE) {
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
 
-Po kliknięciu **Sign In** przycisku po raz pierwszy `signIn` wywołania metody `loginPopup` do logowania użytkownika. Ta metoda powoduje otwarcie okna podręcznego z *punktu końcowego v2.0 usługi Microsoft Azure Active Directory* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
+Po kliknięciu **Sign In** przycisku po raz pierwszy `signIn` wywołania metody `loginPopup` do logowania użytkownika. Ta metoda powoduje otwarcie okna podręcznego z *punktu końcowego platformy tożsamości firmy Microsoft* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
 
 SPA wygenerowane przez ten przewodnik dotyczący wywołania `acquireTokenSilent` i/lub `acquireTokenPopup` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph, aby uzyskać informacje o profilu użytkownika. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 GitHub") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
-Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktu końcowego v2.0 usługi Azure Active Directory — niektóre przykłady to:
+Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktem końcowym platforma tożsamości firmy Microsoft — niektóre przykłady to:
 
 - Użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
 - Aplikacja żąda dostępu do zasobów wymagającego zgody użytkownika.
 - Wymagane jest uwierzytelnianie dwuetapowe.
 
-Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquireTokenRedirect(scope)* skutkuje przekierowywanie użytkowników do punktu końcowego v2.0 usługi Azure Active Directory) gdzie użytkownicy musieli współpracują ze sobą, potwierdzenie poświadczeń, zapewniając zgody do wymaganych zasobów albo ukończenie uwierzytelniania dwuskładnikowego.
+Wywoływanie *acquireTokenPopup(scope)* wyniki w oknie podręcznym (lub *acquireTokenRedirect(scope)* skutkuje przekierowywanie użytkowników do endpoint platforma tożsamości firmy Microsoft) gdzie użytkownicy musieli współpracują ze sobą, potwierdzenie poświadczeń, zapewniając zgody do wymaganych zasobów albo ukończenie uwierzytelniania dwuskładnikowego.
 
 #### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734559"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496968"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734559"
 
 Ten artykuł zawiera często zadawane pytania (FAQ) dotyczących Network Performance Monitor (NPM) na platformie Azure
 
-[Monitor wydajności sieci](/azure/networking/network-monitoring-overview) jest oparta na chmurze [monitorowania sieci hybrydowych](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) rozwiązanie, które pomaga monitorować wydajność sieci, między różnymi punktami w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do [punktów końcowych usług i aplikacji](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md) i [monitorowanie wydajności usługi Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Monitor wydajności sieci](/azure/networking/network-monitoring-overview) jest oparta na chmurze [monitorowania sieci hybrydowych](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) rozwiązanie, które pomaga monitorować wydajność sieci, między różnymi punktami w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do [punktów końcowych usług i aplikacji](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) i [monitorowanie wydajności usługi Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak blackholing ruchu, routingu błędy i problemy, które metody monitorowania sieci są konwencjonalne funkcje nie są w stanie wykryć. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. 
 

@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start dla usługi Azure AD w wersji 2 dla systemu iOS | Microsoft Docs
+title: Przewodnik Szybki Start Microsoft tożsamości platformy systemu iOS | Azure
 description: Dowiedz się, w jaki sposób logować użytkowników i wykonywać zapytania do programu Microsoft Graph w aplikacji natywnej dla systemu iOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439266"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496133"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439266"
 
 Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sposób można logować się na kontach osobistych i służbowych, uzyskiwać tokeny dostępu i wywoływać interfejs API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS.
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-ios/ios-intro-updated.png)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Rejestrowanie i pobieranie
@@ -46,10 +46,10 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
 > Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać adres URL odpowiedzi jako `msal<AppId>://auth` (gdzie msal\<AppId > jest identyfikator aplikacji).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Ta zmiana wprowadzona dla mnie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Already configured](media/quickstart-v2-ios/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
+> > ![Już skonfigurowane](media/quickstart-v2-ios/green-check.png) aplikacja jest skonfigurowana za pomocą tego atrybutu
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Pobieranie serwera internetowego lub projektu
 
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |Gdzie: ||
 > |---------|---------|
 > | `clientId` | Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie *portal.azure.com* |
-> | `authority` | Punkt końcowy usługi Azure AD w wersji 2.0. W większości przypadków będzie to adres *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Punkt końcowy platforma tożsamości firmy Microsoft. W większości przypadków będzie to adres *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>Przesyłanie żądań tokenów
 
@@ -155,7 +155,7 @@ Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `acquireToken` i `acqu
 
 #### <a name="getting-an-access-token-interactively"></a>Interaktywne uzyskiwanie tokenów dostępu
 
-Niektóre sytuacje wymagają wymuszenia na użytkowniku interakcji z punktem końcowym usługi Azure Active Directory (Azure AD) 2.0, co powoduje przełączenie kontekstu do przeglądarki systemu w celu weryfikacji poświadczeń użytkownika lub uzyskania zgody. Oto niektóre przykłady:
+Sytuacje wymagają wymuszanie użytkownikom na interakcję z końcowym platforma tożsamości firmy Microsoft, co spowoduje, że przełączenie kontekstu do przeglądarki systemu, aby to zweryfikować poświadczeń użytkownika, lub o wyrażenie zgody. Oto niektóre przykłady:
 
 * Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
 * Gdy użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
@@ -190,6 +190,6 @@ Wypróbuj samouczek dotyczący systemu iOS, aby uzyskać instrukcje krok po krok
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 
 > [!div class="nextstepaction"]
-> [Call Graph API iOS tutorial (Samouczek dotyczący wywoływania interfejsu API programu Graph dla systemu iOS)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Wywołanie interfejsu API programu Graph dla systemu iOS w ramach samouczka](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
