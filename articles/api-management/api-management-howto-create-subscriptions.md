@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1393e548c46c23f6b50c1b18a274febb74914ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054512"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523511"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Tworzenie subskrypcji usługi Azure API Management
 
@@ -38,7 +38,8 @@ Aby wykonać kroki opisane w tym artykule, wymagania wstępne są następujące:
 1. Wybierz **subskrypcje** w menu po lewej stronie.
 2. Wybierz **Dodaj subskrypcję**.
 3. Podaj nazwę subskrypcji, a następnie wybierz zakres.
-4. Wybierz pozycję **Zapisz**.
+4. Opcjonalnie wybierz opcję, jeśli subskrypcja powinna być skojarzona z użytkownikiem.
+5. Wybierz pozycję **Zapisz**.
 
 ![Elastyczne subskrypcji](./media/api-management-subscriptions/flexible-subscription.png)
 

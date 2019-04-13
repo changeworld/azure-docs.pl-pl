@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897626"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524637"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
 Celem tego samouczka jest ukazują kroki, które należy wykonać, aby zaimportować profile procesu roboczego z produktu Workday do usługi Active Directory i Azure Active Directory, za pomocą opcjonalnych zapisywania zwrotnego adresu e-mail w produkcie Workday.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Usługa aprowizowania użytkowników w usłudze Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [interfejsu API zarządzania zasobami ludzkimi Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) w celu dostarczania kont użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujący użytkownik przepływy pracy aprowizacji:
 
@@ -50,7 +50,7 @@ Dzień roboczy użytkownika inicjowania obsługi administracyjnej przepływów p
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Kto jest ten użytkownik rozwiązanie do aprowizowania najlepsze dostosowane do?
 
-Tego użytkownika z produktu Workday aprowizacji rozwiązania jest obecnie w publicznej wersji zapoznawczej i doskonale nadaje się do:
+Doskonale nadają się dla tego użytkownika z produktu Workday aprowizacji rozwiązania:
 
 * Organizacje, które pragną wbudowanych, oparte na chmurze rozwiązanie do aprowizowania użytkowników w produkcie Workday
 
@@ -69,7 +69,7 @@ W tej sekcji opisano użytkownika end-to-end, inicjowanie obsługi administracyj
 * **Przepływ danych HR autorytatywne — z produktu Workday do usługi Active Directory w środowisku lokalnym:** W tym przepływie, zdarzeń procesu roboczego (na przykład nowi pracownicy w przypadku transferów zakończeń) najpierw występują w chmurze dzierżawy produktu Workday HR, a następnie przepływu danych zdarzeń do środowiska lokalnego usługi Active Directory za pomocą usługi Azure AD i aprowizacji agenta. W zależności od zdarzenia może prowadzić do operacji tworzenia/aktualizacji/Włączanie/wyłączanie w AD.
 * **Przepływ zapis zwrotny wiadomości e-mail — z lokalnej usługi Active Directory w produkcie Workday:** Po zakończeniu tworzenia konta w usłudze Active Directory jest synchronizowana z usługą Azure AD za pomocą usługi Azure AD Connect, a atrybut poczty e-mail, skąd pochodzi z usługi Active Directory można zapisać zwrotnie w produkcie Workday.
 
-![Przegląd](./media/workday-inbound-tutorial/wd_overview.png)
+![Omówienie](./media/workday-inbound-tutorial/wd_overview.png)
 
 ### <a name="end-to-end-user-data-flow"></a>Przepływ danych użytkownika end-to-end
 
@@ -460,7 +460,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
 2. W **zakres obiektów źródłowych** pola, można wybrać, który konfiguruje użytkowników w usłudze WORKDAY aplikacja musi należeć do zakresu, aby aprowizacja w usłudze AD, definiując zestaw opartych na atrybutach filtrów. Domyślny zakres jest "wszyscy użytkownicy w produkcie Workday". Przykładowe filtry:
 
-   * Przykład: Zakres do użytkowników z identyfikatorami procesów roboczych 1000000 i 2000000
+   * Przykład: Zakres do użytkowników z identyfikatorami procesów roboczych 1000000 i 2000000 (z wyjątkiem 2000000)
 
       * Atrybut: WorkerID
 
@@ -1165,7 +1165,7 @@ W tej sekcji opisano często spotykanych problemów z aprowizowaniem użytkownik
 |--|---|---|---|
 |1.| Wystąpił błąd podczas instalowania agenta inicjowania obsługi administracyjnej z komunikatem o błędzie:  *Usługa "Agenta Microsoft Azure AD Connect aprowizacji" (AADConnectProvisioningAgent) nie powiodło się. Sprawdź, czy masz wystarczające uprawnienia do uruchomienia systemu.* | Ten błąd zazwyczaj pojawia się, jeśli chcesz zainstalować agenta inicjowania obsługi administracyjnej na kontrolerze domeny i zasad grupy uniemożliwia uruchomienie usługi.  Również pojawia się, jeśli masz poprzednią wersję agenta uruchomionego i nie ma go odinstalować przed rozpoczęciem nowej instalacji.| Na serwerze-DC, należy zainstalować agenta inicjowania obsługi administracyjnej. Upewnij się, że poprzednie wersje agenta zostaną odinstalowane przed zainstalowaniem nowego agenta.|
 |2.| Usługa Windows "Agenta Microsoft Azure AD Connect aprowizacji" znajduje się w *od* stanu i przełącza się na *systemem* stanu. | W ramach instalacji, Kreator agent tworzy konta lokalnego (**usługi NT\\AADConnectProvisioningAgent**) na serwerze i to jest **logowanie** konto używane do uruchamiania Usługa. Jeśli zasady zabezpieczeń na serwerze Windows uniemożliwia uruchamianie usług kont lokalnych, wystąpi błąd. | Otwórz *konsoli usługi*. Kliknij prawym przyciskiem myszy w usłudze Windows "Agenta Microsoft Azure AD Connect aprowizacji", i w karcie Logowanie Określ konto administratora domeny, aby uruchomić usługę. Uruchom ponownie usługę. |
-|3.| Podczas konfigurowania agenta inicjowania obsługi administracyjnej z Twoją domeną usługi AD w kroku *łączenie usługi Active Directory*, Kreator długi czas ładowania schematu usługi AD i w końcu przekroczy limit czasu. | Ten błąd zazwyczaj wyświetlane Jeśli Kreator nie mógł skontaktować się z serwerem kontrolera domeny usługi AD, ze względu na problemy z zaporą. | Na *łączenie usługi Active Directory* ekranie kreatora przy jednoczesnym zapewnieniu poświadczenia dla Twojej domeny usługi AD, jest dostępna opcja o nazwie *wybierz priorytet kontrolera domeny*. Ta opcja umożliwia wybranie kontrolera domeny, który znajduje się w tej samej lokacji co serwer agenta i upewnij się, że nie istnieją żadne reguły zapory blokuje komunikację. |
+|3.| Podczas konfigurowania agenta inicjowania obsługi administracyjnej z Twoją domeną usługi AD w kroku *łączenie usługi Active Directory*, Kreator długi czas ładowania schematu usługi AD i w końcu przekroczy limit czasu. | Ten błąd jest zazwyczaj wyświetlany, jeśli kreator nie może skontaktować się z serwerem kontrolera domeny usługi AD ze względu na problemy z zaporą. | Na *łączenie usługi Active Directory* ekranie kreatora przy jednoczesnym zapewnieniu poświadczenia dla Twojej domeny usługi AD, jest dostępna opcja o nazwie *wybierz priorytet kontrolera domeny*. Ta opcja umożliwia wybranie kontrolera domeny, który znajduje się w tej samej lokacji co serwer agenta i upewnij się, że nie istnieją żadne reguły zapory blokuje komunikację. |
 
 #### <a name="connectivity-errors"></a>Błędy związane z łącznością
 
@@ -1174,14 +1174,14 @@ Jeśli usługa aprowizowania jest w stanie połączyć się z produktem Workday 
 |#|Błąd scenariusza |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
 |1.| Po kliknięciu **Testuj połączenie**, zostanie wyświetlony komunikat o błędzie: *Wystąpił błąd podczas nawiązywania połączenia z usługi Active Directory. Upewnij się, że jest uruchomiony Agent inicjowania obsługi administracyjnej lokalnych i jest ono skonfigurowane przy użyciu poprawnej domeny usługi Active Directory.* | Ten błąd zazwyczaj wyświetlane if aprowizacji agenta nie jest uruchomiona lub jest Zapora blokuje komunikację między usługą Azure AD i agenta inicjowania obsługi administracyjnej. Ten błąd może być też widoczny, jeśli domena nie jest skonfigurowany w Kreatorze agenta. | Otwórz *usług* konsolę na serwerze Windows, aby upewnić się, że agent jest uruchomiony. Otwórz Kreatora inicjowania obsługi agenta i upewnij się, że właściwej domeny jest zarejestrowana przy użyciu agenta.  |
-|2.| Zadanie inicjowania obsługi administracyjnej przechodzi w stan kwarantanny podczas weekendów (PT-SO) i uzyskujemy wiadomość e-mail z powiadomieniem że jest błąd synchronizacji. | Jednym z typowych przyczyn tego błędu jest planowanych przestojów produktu Workday. Korzystania z dzierżawy produktu Workday implementacji należy pamiętać, że Workday zaplanowano czas przestoju w przypadku dzierżaw jego implementacja podczas weekendów (zazwyczaj z wieczór w piątek do soboty rano) i w tym okresie pracy inicjowania obsługi administracyjnej aplikacji może przejść do Stan kwarantanny, ponieważ nie jest w stanie połączyć się z produktem Workday. Pobiera powrót do normalnego stanu po implementacji dzierżawy produktu Workday jest wróci do trybu online. W rzadkich przypadkach może także wyświetlony ten błąd, jeśli hasło użytkownika systemu integracji zmienić z powodu odświeżania dzierżawy lub jeśli konto znajduje się w zablokowane lub wygasła stanu. | Skontaktuj się z partnerem Workday administratora lub integracji, aby zobaczyć, kiedy Workday planuje Przestój, aby zignorować komunikaty alertów w okresie czas przestoju i dostępności upewnij się, gdy wystąpienie produktu Workday jest wróci do trybu online.  |
+|2.| Zadanie inicjowania obsługi administracyjnej przechodzi w stan kwarantanny podczas weekendów (PT-SO) i uzyskujemy wiadomość e-mail z powiadomieniem że jest błąd synchronizacji. | Częstą przyczyną występowania tego błędu są planowane przestoje produktu Workday. Jeśli korzystasz z dzierżawy implementacji produktu Workday, pamiętaj, że ten produkt ma w weekendy zaplanowane przestoje dzierżaw implementacji (zwykle od wieczora w piątek do rana w sobotę). W tym czasie aplikacje aprowizacji produktu Workday mogą przechodzić w stan kwarantanny, ponieważ nie mogą nawiązać połączenia z produktem Workday. Normalny stan zostaje przywrócony po ponownym przejściu w tryb online dzierżawy implementacji produktu Workday. W rzadkich przypadkach ten błąd może być także wyświetlany, jeśli zmieniło się hasło użytkownika systemu integracji z powodu odświeżenia dzierżawy lub jeśli konto zostało zablokowane bądź wygasło. | Zapytaj administratora produktu Workday lub partnera integracji o czas planowanych przestojów produktu Workday, aby wiedzieć, które komunikaty o alertach można zignorować, i móc potwierdzić dostępność wystąpienia produktu Workday po jego ponownym przejściu w tryb online.  |
 
 
 #### <a name="ad-user-account-creation-errors"></a>Błędy tworzenia konta użytkownika usługi AD
 
 |#|Błąd scenariusza |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
-|1.| Eksportuj niepowodzeń operacji w dzienniku inspekcji z komunikatem *błąd: OperationsError-SvcErr: Wystąpił błąd operacji. Brak odwołania do wyższego poziomu został skonfigurowany dla usługi katalogowej. Usługa katalogowa jest w związku z tym nie może przydzielić odwołań do obiektów poza tym lesie.* | Ten błąd jest zwykle pojawia się Jeśli *kontener usługi Active Directory* jednostki Organizacyjnej nie jest ustawiona poprawnie, lub jeśli występują problemy z mapowania wyrażenie używane dla *parentDistinguishedName*. | Sprawdź *kontener usługi Active Directory* jednostki Organizacyjnej parametr literówki. Jeśli używasz *parentDistinguishedName* w mapowaniu atrybutów upewnij się, że zawsze daje wynik znany kontener w ramach domeny usługi AD. Sprawdź *wyeksportować* dzienniki zdarzeń w dzienniku inspekcji, aby zobaczyć wygenerowaną wartość. |
+|1.| Eksportuj niepowodzeń operacji w dzienniku inspekcji z komunikatem *błąd: OperationsError-SvcErr: Wystąpił błąd operacji. Nie skonfigurowano odwołania wyższego poziomu dla usługi katalogowej. Usługa katalogowa jest w związku z tym nie może przydzielić odwołań do obiektów poza tym lesie.* | Ten błąd jest zwykle pojawia się Jeśli *kontener usługi Active Directory* jednostki Organizacyjnej nie jest ustawiona poprawnie, lub jeśli występują problemy z mapowania wyrażenie używane dla *parentDistinguishedName*. | Sprawdź *kontener usługi Active Directory* jednostki Organizacyjnej parametr literówki. Jeśli korzystasz z elementu *parentDistinguishedName* podczas mapowania atrybutów, upewnij się, że zawsze wynikiem jego oceny jest znany kontener w ramach domeny usługi AD. Sprawdź *wyeksportować* dzienniki zdarzeń w dzienniku inspekcji, aby zobaczyć wygenerowaną wartość. |
 |2.| Eksportuj niepowodzeń operacji w dzienniku inspekcji, kod błędu: *SystemForCrossDomainIdentityManagementBadResponse* i komunikat *błąd: ConstraintViolation AtrErr: Wartość w żądaniu jest nieprawidłowa. Wartość atrybutu nie dopuszczalny zakres wartości. Szczegóły \nError: CONSTRAINT_ATT_TYPE - firmy*. | Ten błąd jest specyficzne dla *firmy* atrybutu, może zostać wyświetlony ten błąd dla innych atrybutów, takich jak *CN* także. Ten błąd pojawia się ze względu na ograniczenia schematu AD wymuszane. Domyślnie, takich jak atrybuty *firmy* i *CN* AD mieć maksymalnie 64 znaki. Jeśli wartość pochodzące z produktu Workday jest więcej niż 64 znaki, spowoduje zobacz ten komunikat o błędzie. | Sprawdź *wyeksportować* zdarzeń w dziennikach inspekcji, aby wyświetlić wartość dla atrybutu zgłoszonych w komunikacie o błędzie. Należy wziąć pod uwagę obcinanie wartości pochodzące z produktu Workday za pomocą [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) funkcji lub zmiana mapowań do atrybutu usługi AD, który nie ma podobnych ograniczeń długości.  |
 
 #### <a name="ad-user-account-update-errors"></a>Błędy aktualizacji konta użytkownika usługi AD

@@ -14,26 +14,28 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105169"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545420"
 ---
-> [!NOTE]
-> Każdy znajduje się środowisko usługi App ma Virtual IP (VIP), która może służyć do kontaktowania się z usługi App Service Environment.
-> 
-> # <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej #
+# <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej
 
-Środowisko Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet). Istnieją dwa sposoby wdrażania środowiska App Service Environment (ASE):
+Środowisko Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet).
+
+> [!NOTE]
+> Każdy środowiska App Service Environment ma Virtual IP (VIP), która może służyć do kontaktowania się z usługi App Service Environment.
+
+Istnieją dwa sposoby wdrażania środowiska App Service Environment (ASE):
 
 - Z wirtualnym adresem IP będącym zewnętrznym adresem IP — jest to często nazywane zewnętrznym środowiskiem ASE.
 - Z Wirtualnym adresem IP będącym wewnętrznego adresu IP często nazywane środowisko ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ wewnętrzny punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB).
 
 W tym artykule pokazano, jak tworzenie zewnętrznego środowiska ASE. Aby uzyskać omówienie środowiska ASE, zobacz [wprowadzenie do usługi App Service Environment][Intro]. Aby uzyskać informacje na temat tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE ##
+## <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE
 
 Po utworzeniu środowiska ASE, nie można zmienić następujące czynności:
 
@@ -48,7 +50,7 @@ Po utworzeniu środowiska ASE, nie można zmienić następujące czynności:
 > Po wybraniu sieci wirtualnej i określ podsieć, upewnij się, że jest wystarczająco duży, aby uwzględnić przyszły rozwój i skalowanie potrzeb. Firma Microsoft zaleca rozmiar `/24` za pomocą 256 adresów.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Trzy sposoby, aby utworzyć środowisko ASE ##
+## <a name="three-ways-to-create-an-ase"></a>Trzy sposoby, aby utworzyć środowisko ASE
 
 Istnieją trzy sposoby, aby utworzyć środowisko ASE:
 
@@ -58,7 +60,7 @@ Istnieją trzy sposoby, aby utworzyć środowisko ASE:
 
 Zewnętrzne środowisko ASE ma publicznych adresów VIP, co oznacza, że cały ruch HTTP/HTTPS do aplikacji w środowisku ASE trafienia adresu IP dostępne za pośrednictwem Internetu. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia ma adres IP w podsieci używanej przez środowisko ASE. Aplikacje hostowane w środowisku ASE z wewnętrznym modułem równoważenia obciążenia nie są bezpośrednio połączone z Internetem.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Jednocześnie utworzyć środowisko ASE i plan usługi App Service ##
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Jednocześnie utworzyć środowisko ASE i plan usługi App Service
 
 Plan usługi App Service jest kontenerem aplikacji. Podczas tworzenia aplikacji w usłudze App Service, wybierz lub Utwórz plan usługi App Service. Środowiska usługi App Service, przytrzymaj planów usługi App Service i planów usługi App Service przechowywania aplikacji.
 
@@ -142,7 +144,7 @@ Aby utworzyć środowisko ASE, podczas tworzenia planu usługi App Service:
 1. Wybierz **Utwórz** do tworzenia środowiska ASE. Ten proces tworzy również plan usługi App Service i aplikację. Środowisko ASE, plan usługi App Service i aplikację są wszystkie tej samej subskrypcji, a także w tej samej grupie zasobów. Jeśli środowisko ASE wymaga oddzielnej grupie zasobów lub jeśli potrzebujesz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, postępuj zgodnie z instrukcjami, aby utworzyć środowisko ASE przez siebie.
 
 
-## <a name="create-an-ase-by-itself"></a>Tworzenie środowiska ASE samodzielnie ##
+## <a name="create-an-ase-by-itself"></a>Tworzenie środowiska ASE samodzielnie
 
 Jeśli tworzysz autonomiczne środowisko ASE, go nie ma nic w nim. Środowisko ASE pusty nadal opłatę miesięczną infrastruktury. Wykonaj następujące kroki, aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia lub utworzyć środowisko ASE w jego własnej grupie zasobów. Po utworzeniu środowiska ASE, można utworzyć aplikacji w nim przy użyciu standardowego procesu. Wybierz nowe środowisko ASE jako lokalizację.
 
@@ -170,7 +172,7 @@ Jeśli tworzysz autonomiczne środowisko ASE, go nie ma nic w nim. Środowisko A
     
     * Jeśli wybierzesz istniejącej sieci wirtualnej, nowa podsieć jest tworzony po utworzeniu środowiska ASE. *Nie można użyć wstępnie utworzonej podsieci, w portalu. Jeśli używasz szablonu usługi Resource Manager, możesz utworzyć środowisko ASE się na istniejącą podsieć.* Aby utworzyć środowisko ASE na podstawie szablonu, zobacz [tworzenie środowiska usługi App Service na podstawie szablonu][MakeASEfromTemplate].
 
-## <a name="app-service-environment-v1"></a>Środowisko usługi App Service — wersja 1 ##
+## <a name="app-service-environment-v1"></a>Środowisko usługi App Service — wersja 1
 
 Nadal można utworzyć wystąpienia elementu pierwszą wersję środowiska App Service Environment (środowiska ASEv1). Aby rozpocząć ten proces, portalu Marketplace wyszukaj hasło **środowiska App Service Environment v1**. Należy utworzyć środowisko ASE w taki sam sposób, jak tworzyć autonomiczne środowisko ASE. Po zakończeniu program Twojego środowiska ASEv1 ma dwa Frontony i dwa procesy robocze. Za pomocą środowiska ASEv1 muszą zarządzać frontonami ani procesami roboczymi. Są dodawane automatycznie, gdy tworzysz swoje plany usługi App Service. Frontony działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników. Procesy robocze to role, które hostują swoje aplikacje. Po utworzeniu środowiska ASE, można dostosować ilość frontonami ani procesami roboczymi. 
 

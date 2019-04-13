@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 212d7f5352b58ee8f5b2c119bb1f5f828591f6bf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f72e98d8874a5a5dc94deb882affdf66388b13c9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490779"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548529"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Kontrola dostępu oparta na rolach (RBAC) dla konta usługi Media Services
 
@@ -43,8 +43,8 @@ Zobacz następujące artykuły, aby uzyskać więcej informacji:
 - [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [Co to jest RBAC dla zasobów platformy Azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Zarządzanie dostępem przy użyciu kontroli RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Pobieranie zawartości zasad kluczy przy użyciu platformy .NET usług Media Services](get-content-key-policy-dotnet-howto.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API](media-services-apis-overview.md)
+- [Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API](media-services-apis-overview.md)
+- [Pobieranie zawartości zasad kluczy przy użyciu platformy .NET usług Media Services](get-content-key-policy-dotnet-howto.md)

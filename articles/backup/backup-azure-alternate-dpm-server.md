@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
-ms.openlocfilehash: a0960cba58817a6d340998933fe315d6fca887e4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488461"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528105"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
 Można użyć usługi Azure Backup Server, aby odzyskać dane, które zostały kopii zapasowej w magazynie usługi Recovery Services. Proces może więc jest zintegrowana z konsoli zarządzania usługi Azure Backup Server i jest podobna do przepływu pracy odzyskiwania dla innych składników usługi Azure Backup.
@@ -85,7 +85,7 @@ Aby odzyskać dane z usługi Azure Backup Server:
 | 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Przyczyna:** Ten błąd jest wyświetlany, gdy plik poświadczeń magazynu, które są wybrane nie należy do magazynu usługi Recovery Services, skojarzone z usługi Azure Backup Server, na którym jest podejmowana próba odzyskania. <br> **Rozwiązanie:** Pobierz plik poświadczeń magazynu z magazynu usługi Recovery Services, w której jest zarejestrowana serwera usługi Azure Backup. |
 | 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** Istnieją nie inne serwery kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (alias systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
 | 3. |Żaden inny serwer DPM jest zarejestrowany w tym magazynie. |**Przyczyna:** Nie ma żadnych innych serwerów kopia zapasowa Azure, zarejestrowanych w magazynie, z którego są podejmowane próby odzyskiwania.<br>**Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure.<br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
-| 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem: **<server name>** |**Przyczyna:** Hasło szyfrowania używany przy wysyłaniu szyfrowania danych, dane serwera Azure Backup, który jest odzyskiwany jest niezgodna z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
+| 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem:  **\<nazwa serwera >** |**Przyczyna:** Hasło szyfrowania używany przy wysyłaniu szyfrowania danych, dane serwera Azure Backup, który jest odzyskiwany jest niezgodna z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

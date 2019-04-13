@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9c628b02961ee289833e669a4c77de0bf824de22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999980"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527255"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL przy użyciu wiersza polecenia platformy Azure
 
@@ -232,11 +232,11 @@ az network public-ip show \
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-Zmień adres URL do http://<ip-address>:8080/video/test.html na koniec podstawowego adresu URL i powinny zostać wyświetlone, informacje jak w poniższym przykładzie:
+Zmień adres URL do `http://<ip-address>:8080/video/test.html` -to-end podstawowy adres URL i powinny zostać wyświetlone informacje jak w poniższym przykładzie:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-Zmień adres URL do http://<ip-address>:8080/video/test.html i powinny zostać wyświetlone, informacje jak w poniższym przykładzie.
+Zmień adres URL do `http://<ip-address>:8080/video/test.html` powinien zostać wyświetlony coś tak jak w poniższym przykładzie.
 
 ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 

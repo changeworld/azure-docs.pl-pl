@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 4d7ecdcff356f27e17eca95a0d42290037d6b570
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426464"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549358"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -487,36 +487,7 @@ Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-Alias "normal" reprezentuje pole jako pojedyncza wartość. To pole jest scenariuszach porównania dokładnego dopasowania, gdy cały zestaw wartości muszą zawierać dokładnie zgodnie z definicją, już nie. Za pomocą **ipRules**, przykład będzie weryfikowanie, czy dokładny zestaw reguł, istnieje w tym liczba reguł i korzeń każdej reguły. Ta przykładowa reguła sprawdza, czy dokładnie zarówno **192.168.1.1** i **10.0.4.1** z _akcji_ z **Zezwalaj** w **ipRules** do zastosowania **effectType**:
-
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "Equals": [
-                    {
-                        "action": "Allow",
-                        "value": "192.168.1.1"
-                    },
-                    {
-                        "action": "Allow",
-                        "value": "10.0.4.1"
-                    }
-                ]
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+Alias "normal" reprezentuje pole jako pojedyncza wartość. To pole jest scenariuszach porównania dokładnego dopasowania, gdy cały zestaw wartości muszą zawierać dokładnie zgodnie z definicją, już nie.
 
 **[\*]** Alias sprawia, że można porównać wartości każdego elementu w tablicy i właściwości każdego elementu. To podejście sprawia, że można porównać właściwości elementu "Jeśli żadna z", "ewentualne", lub "Jeśli wszystkie z" scenariuszy. Za pomocą **ipRules [\*]**, przykład czy sprawdzanie poprawności, które każdy _akcji_ jest _Odmów_, ale nie martwiąc się o istnieją reguły ile lub jaki adres IP _wartość_ jest. Ta przykładowa reguła sprawdza, czy wszystkie dopasowania **ipRules [\*] .value** do **10.0.4.1** i stosuje **effectType** tylko wtedy, gdy co najmniej jedno dopasowanie nie zostanie znaleziona:
 

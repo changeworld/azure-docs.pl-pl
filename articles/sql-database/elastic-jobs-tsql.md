@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621502"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523770"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -193,7 +193,7 @@ Poniższy przykład tworzy nowe zadanie do zbierania danych wydajności z wielom
 Domyślnie będzie wyglądać agenta zadań, aby utworzyć tabelę do przechowywania wyników zwróconych w. W wyniku logowania skojarzone z poświadczeń używanych dla poświadczenia danych wyjściowych musisz mieć wystarczające uprawnienia do wykonania tej. Jeśli chcesz ręcznie utworzyć tabelę wcześniejsze następnie musi ona mieć następujące właściwości:
 1. Kolumny przy użyciu poprawnej nazwy i typy danych dla zestawu wyników.
 2. Dodatkowa kolumna internal_execution_id z typu danych uniqueidentifier.
-3. Indeksu nieklastrowanego na indeks o nazwie "IX_<TableName>_Internal_Execution_ID" w kolumnie internal_execution_id.
+3. Indeksu nieklastrowanego na indeks o nazwie `IX_<TableName>_Internal_Execution_ID` w kolumnie internal_execution_id.
 
 Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenia:
 

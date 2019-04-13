@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877303"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527425"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie wyjątkami | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -201,7 +201,7 @@ Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obs
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Edytuj okno dialogowe ustawień stron błędów ASP.NET](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Kroki** | <p>Gdy aplikacja ASP.NET nie powiedzie się i powoduje, że wystąpił wewnętrzny błąd serwera HTTP/1.x 500 lub Konfiguracja funkcji (np. Filtrowanie żądań) uniemożliwia wyświetlenie strony, zostanie wygenerowany komunikat o błędzie. Administratorzy mogą wybrać, informację określającą, czy aplikacja powinna wyświetlić przyjazny komunikat do klienta, szczegółowy komunikat o błędzie do klienta lub szczegółowy komunikat o błędzie tylko localhost. <customErrors> Znacznika w pliku web.config ma trzy tryby:</p><ul><li>**Włączone:** Określa, czy błędy niestandardowe są włączone. Jeśli atrybut defaultRedirect nie zostanie określony, użytkownicy widzą błąd ogólny. Błędy niestandardowe są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**Wyłączone:** Określa, że błędy niestandardowe są wyłączone. Szczegóły błędów ASP.NET są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**RemoteOnly:** Określa, że błędy niestandardowe są wyświetlane tylko z klientami zdalnymi oraz że ASP.NET błędy są wyświetlane dla hosta lokalnego. Jest to wartość domyślna</li></ul><p>Otwórz `web.config` plików dla aplikacji/witryny i sprawdź, czy tag ma `<customErrors mode="RemoteOnly" />` lub `<customErrors mode="On" />` zdefiniowane.</p>|
+| **Kroki** | <p>Gdy aplikacja ASP.NET nie powiedzie się i powoduje, że wystąpił wewnętrzny błąd serwera HTTP/1.x 500 lub Konfiguracja funkcji (np. Filtrowanie żądań) uniemożliwia wyświetlenie strony, zostanie wygenerowany komunikat o błędzie. Administratorzy mogą wybrać, informację określającą, czy aplikacja powinna wyświetlić przyjazny komunikat do klienta, szczegółowy komunikat o błędzie do klienta lub szczegółowy komunikat o błędzie tylko localhost. `<customErrors>` Znacznika w pliku web.config ma trzy tryby:</p><ul><li>**Włączone:** Określa, czy błędy niestandardowe są włączone. Jeśli atrybut defaultRedirect nie zostanie określony, użytkownicy widzą błąd ogólny. Błędy niestandardowe są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**Wyłączone:** Określa, że błędy niestandardowe są wyłączone. Szczegóły błędów ASP.NET są wyświetlane z klientami zdalnymi, jak i do hosta lokalnego</li><li>**RemoteOnly:** Określa, że błędy niestandardowe są wyświetlane tylko z klientami zdalnymi oraz że ASP.NET błędy są wyświetlane dla hosta lokalnego. Jest to wartość domyślna</li></ul><p>Otwórz `web.config` plików dla aplikacji/witryny i sprawdź, czy tag ma `<customErrors mode="RemoteOnly" />` lub `<customErrors mode="On" />` zdefiniowane.</p>|
 
 ## <a id="deployment"></a>Set, metoda wdrażania na detaliczną w usługach IIS
 

@@ -9,19 +9,48 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18b72ceaee0ca0747a0bf2144d5f9ffddbee8b8c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492145"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546402"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
 W tym artykule omówiono reguły mające zastosowanie do interfejsów API oraz jednostek, podczas tworzenia za pomocą usługi Media Services v3.
+
+## <a name="accessing-the-azure-media-services-api"></a>Uzyskiwanie dostępu do interfejsu API usługi Azure Media Services
+
+Aby uzyskać dostęp do zasobów usługi Azure Media Services, należy użyć uwierzytelniania jednostki usługi Azure Active Directory (AD). Interfejsu API usługi Azure Media Services wymaga, że użytkownik lub aplikacja, która sprawia, że interfejs API REST żądania, mają dostęp do zasobów konta usługi Azure Media Services (zazwyczaj **Współautor** lub **właściciela** Rola). Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach do konta usługi Media Services](rbac-overview.md).
+
+Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure na dostęp do interfejsu API usług Media Services za pomocą usługi Azure Resource Manager. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+
+### <a name="azure-ad-service-principal"></a>Nazwa główna usługi Azure AD 
+
+Jeśli tworzysz aplikację usługi Azure AD i usługi jednostki, aplikacja musi znajdować się w jego własnej dzierżawy. Po utworzeniu aplikacji, nadaj aplikacji **Współautor** lub **właściciela** roli dostęp do konta usługi Media Services. 
+
+Jeśli nie masz pewności, czy masz uprawnienia do tworzenia aplikacji usługi Azure AD, zobacz [wymagane uprawnienia](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+
+Na poniższej ilustracji liczby reprezentują przepływ żądań w kolejności chronologicznej:
+
+![Aplikacje warstwy środkowej](../previous/media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+
+1. Aplikacja warstwy środkowej żąda tokenu dostępu usługi Azure AD, która ma następujące parametry:  
+
+   * Punkt końcowy dzierżawy usługi Azure AD.
+   * Identyfikator URI zasobu usługi Media Services.
+   * Identyfikator URI dla usługi Media Services REST zasobu.
+   * Wartości aplikacji w usłudze Azure AD: identyfikator klienta oraz klucz tajny klienta.
+   
+   Aby uzyskać wszystkie potrzebne wartości, zobacz [dostępu Azure interfejsu API Media Services przy użyciu wiersza polecenia platformy Azure](access-api-cli-how-to.md)
+
+2. Token dostępu usługi Azure AD jest wysyłany do warstwy środkowej.
+4. Warstwa środkowa wysyła żądanie do interfejsu API REST usługi Azure Media z tokenem usługi Azure AD.
+5. Warstwa środkowa otrzymuje dane z usługi Media Services.
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
@@ -30,17 +59,6 @@ Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, 
 Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>”, „%”, „&”, „:”, „&#92;”, „?”, „/”, „*”, „+”, „.”, pojedynczych cudzysłowów ani żadnych znaków sterujących. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków. 
 
 Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager zobacz: [Wymagania dotyczące nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
-
-## <a name="v3-api-design-principles-and-rbac"></a>zasady projektowania interfejsu API w wersji 3 i RBAC
-
-Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. interfejsy API w wersji 3 nie zwracają wpisów tajnych lub poświadczeń na **uzyskać** lub **listy** operacji. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Użytkownik musi wywołać metodę oddzielnej akcji służącej do pobrania wpisów tajnych lub poświadczenia. **Czytnika** roli nie można wywołać operacji, więc nie można wywoływać operacje, takie jak ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas, StreamingLocator.ListContentKeys,. Masz oddzielne działania umożliwia ustawianie bardziej szczegółowych uprawnień zabezpieczeń RBAC do roli niestandardowej, w razie potrzeby.
-
-Aby uzyskać więcej informacji, zobacz:
-
-- [Definicje ról wbudowanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-- [Zarządzanie dostępem przy użyciu kontroli RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Kontrola dostępu oparta na rolach dla konta usługi Media Services](rbac-overview.md)
-- [Pobieranie zawartości klucza zasad — .NET](get-content-key-policy-dotnet-howto.md).
 
 ## <a name="long-running-operations"></a>Długotrwałych operacji
 
@@ -71,4 +89,4 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Azure Media
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Rozpoczęcie programowania przy użyciu interfejsu API usługi Media Services 3 za pomocą zestawów SDK i narzędzi](developers-guide.md)
+[Zacznij programować przy użyciu interfejsu API w wersji 3 usługa Media Services przy użyciu narzędzi/zestawów SDK](developers-guide.md)

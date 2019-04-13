@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e5124d466c4294d83bbfa0b7ca15ff6f98e9ec
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: b6d3d98c91b2a373e4ed8b1ae556d402cb29d0dd
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505385"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520765"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: Uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 
@@ -64,14 +64,14 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: konfigurowanie aplikacji w witrynie Azure Portal
 > Aby kod przykładowy z tego samouczka działał, należy dodać adres URL odpowiedzi w formacie **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Ta zmiana wprowadzona dla mnie]()
+> > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-windows-desktop/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-windows-desktop/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
-[Pobieranie projektu programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
+[Pobierz projekt programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
@@ -86,11 +86,11 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 > [!div renderon="docs"]
 > Gdzie:
-> - `Enter_the_Application_Id_here` -jest **identyfikator aplikacji (klienta)** dla aplikacji został zarejestrowany.
-> - `Enter_the_Tenant_Info_Here` -jest ustawiony na jedną z następujących opcji:
+> - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
->   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**, Zastąp tę wartość za pomocą `common`
+>   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
+>   - Jeśli aplikacja obsługuje tryb **Konta w moim katalogu organizacyjnym i osobiste konta Microsoft**, zastąp tę wartość za pomocą wartości `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Przesyłanie żądań tokenów
 
-Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `AcquireToken` i `AcquireTokenSilent`.
+Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `AcquireTokenInteractive` i `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
@@ -140,7 +140,7 @@ Sytuacje wymagają wymuszania użytkowników wchodzić w interakcje z punktem ko
 - Gdy wymagane jest uwierzytelnianie dwuetapowe.
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(_scopes)
+authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
@@ -150,7 +150,7 @@ authResult = await App.PublicClientApp.AcquireToken(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
-Nie chcesz, aby użytkownik musiał weryfikować poświadczenia za każdym razem, gdy musi uzyskać dostęp do zasobu. Przez większość czasu uzyskiwanie i odnawianie tokenów powinno odbywać się bez żadnej interakcji z użytkownikiem. Możesz użyć metody `AcquireTokenSilentAsync` do uzyskiwania tokenów umożliwiających dostęp do chronionych zasobów po początkowym skorzystaniu z metody `AcquireTokenAsync`:
+Nie chcesz, aby użytkownik musiał weryfikować poświadczenia za każdym razem, gdy musi uzyskać dostęp do zasobu. Przez większość czasu uzyskiwanie i odnawianie tokenów powinno odbywać się bez żadnej interakcji z użytkownikiem. Możesz użyć metody `AcquireTokenSilentAsync` do uzyskiwania tokenów umożliwiających dostęp do chronionych zasobów po początkowym skorzystaniu z metody `AcquireTokenInteractive`:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -171,5 +171,5 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Wypróbuj samouczek dotyczący aplikacji klasycznych systemu Windows, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym podręczniku Szybki start.
 
 > [!div class="nextstepaction"]
-> [Wywołanie interfejsu API programu Graph w ramach samouczka](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
+> [Call Graph API tutorial (Samouczek dotyczący wywoływania interfejsu API programu Graph)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 

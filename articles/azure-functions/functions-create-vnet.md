@@ -6,14 +6,14 @@ author: alexkarcher-msft
 manager: jehollan
 ms.service: azure-functions
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894210"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523736"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integracja z aplikacją funkcji z siecią wirtualną platformy Azure
 
@@ -111,13 +111,14 @@ Aplikacja funkcji jest podłączony do Internetu i siecią Wirtualną. Serwer pr
 
 ## <a name="next-steps"></a>Następne kroki
 
-Funkcje działające w ramach planu Premium udostępnianie tej samej podstawowej infrastruktury usługi App Service jako aplikacje sieci Web. Oznacza to, że całą dokumentację dla aplikacji sieci Web ma zastosowanie do funkcji plan Premium.
+Funkcje działające w ramach planu Premium udostępnianie tej samej podstawowej infrastruktury usługi App Service jako aplikacje sieci Web na PV2 planów. Oznacza to, że całą dokumentację dla aplikacji sieci Web ma zastosowanie do funkcji plan Premium.
 
-1. [Dowiedz się więcej na temat integracji sieci Wirtualnej przy użyciu usługi App Service / funkcje w tym miejscu](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-1. [Dowiedz się więcej na temat sieci wirtualnych na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
-1. [Włącz dla funkcji sieciowych i kontrolować przy użyciu środowisk usługi App Service](https://docs.microsoft.com/azure/app-service/environment/intro)
-1. [Łączenie z poszczególnych zasobów lokalnych bez zmian w zaporze przy użyciu połączeń hybrydowych](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
-1. [Dowiedz się więcej na temat serwerów proxy funkcji](https://review.docs.microsoft.com/azure/azure-functions/functions-proxies)
+1. [Dowiedz się więcej na temat opcji sieciowych w funkcjach w tym miejscu](./functions-networking-options.md)
+1. [Przeczytaj funkcje, w tym miejscu sieć — często zadawane pytania](./functions-networking-faq.md)
+1. [Dowiedz się więcej na temat sieci wirtualnych na platformie Azure](../virtual-network/virtual-networks-overview.md)
+1. [Włączyć więcej sieciowych funkcji i kontrola przy użyciu środowisk usługi App Service](../app-service/environment/intro.md)
+1. [Łączenie z poszczególnych zasobów lokalnych bez zmian w zaporze przy użyciu połączeń hybrydowych](../app-service/app-service-hybrid-connections.md)
+1. [Dowiedz się więcej na temat serwerów proxy funkcji](./functions-proxies.md)
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png

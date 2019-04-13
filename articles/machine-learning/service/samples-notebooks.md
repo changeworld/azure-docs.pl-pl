@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 961983aad0775f9b9d728269e8a57137ff508f02
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b597d6efa87aa2811ce42f3315698acfa17426b2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451794"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548592"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Korzystanie z notesów Jupyter Notebook w celu eksplorowania usługi Azure Machine Learning
 
@@ -51,51 +51,7 @@ Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komp
 
 Instrukcje w przewodniku Szybki start spowodują zainstalowanie pakietów potrzebnych do uruchomienia notesów szybkiego startu i samouczków.  Inne przykładowe notesy mogą wymagać zainstalowania dodatkowych składników.  Aby uzyskać więcej informacji dotyczących tych składników, zobacz [Instalowanie zestawu SDK usługi Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
 
-<a name="automated-ml-setup"></a>
-
-## <a name="automated-machine-learning-setup"></a>Konfigurowanie zautomatyzowanego uczenia maszynowego 
-
-_Te kroki dotyczą tylko notesów w folderze **how-to-use-azureml/automated-machine-learning**._
-
-Choć możesz użyć dowolnej z powyższych opcji, możesz również jednocześnie zainstalować środowisko i utworzyć obszar roboczy, korzystając z poniższych instrukcji. 
-
-1. Zainstaluj środowisko [Mini-conda](https://conda.io/miniconda.html). Wybierz wersję 3.7 lub nowszą. Postępuj zgodnie z monitami, aby przeprowadzić instalację. 
-   >[!NOTE]
-   >Istniejącego środowiska Conda możesz użyć, jeśli jest ono w wersji 4.4.10 lub nowszej. Użyj polecenia `conda -V`, aby wyświetlić wersję. Wersję środowiska Conda możesz zaktualizować za pomocą polecenia `conda update conda`. Nie musisz specjalnie instalować środowiska mini-conda.
-
-1. Pobierz przykładowe notesy z serwisu [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
-) jako plik zip i wyodrębnij zawartość do katalogu lokalnego. Notesy zautomatyzowanego uczenia maszynowego znajdują się w folderze `how-to-use-azureml/automated-machine-learning`.
-
-1. Skonfiguruj nowe środowisko Conda. 
-   1. Otwórz wiersz polecenia środowiska Conda na maszynie lokalnej.
-   
-   1. Przejdź do plików, które zostały wyodrębnione na maszynie lokalnej.
-   
-   1. Otwórz folder **automated-machine-learning**.
-   
-   1. W wierszu polecenia środowiska Conda wykonaj plik `automl_setup.cmd` w systemie Windows lub plik `.sh` dla Twojego systemu operacyjnego. Może to potrwać około 10 minut.
-
-      Skrypt konfiguracji wykonuje następujące działania:
-      + Tworzy nowe środowisko Conda
-      + Instaluje wymagane pakiety
-      + Konfiguruje widżet
-      + Uruchamia notes Jupyter Notebook
-      
-   >[!NOTE]
-   > Skrypt przyjmuje nazwę środowiska Conda jako parametr opcjonalny. Domyślna nazwa środowiska Conda to `azure_automl`. Dokładna postać polecenia zależy od systemu operacyjnego. Jest to przydatne w przypadku tworzenia nowego środowiska lub uaktualniania do nowej wersji. Na przykład można użyć "automl_setup.cmd azure_automl_sandbox" do tworzenia azure_automl_sandbox nazwę środowiska. 
-      
-1. Po zakończeniu skryptu w przeglądarce zostanie wyświetlona strona główna notesu Jupyter Notebook.
-
-1. Przejdź do ścieżki, w której zapisano notesy. 
-
-1. Otwórz folder automated-machine-learning, a następnie otwórz notes **configuration.ipynb**. 
-
-1. Wykonaj komórki w notesie, aby zarejestrować dostawcę zasobów Machine Learning Services i utworzyć obszar roboczy.
-
-Teraz możesz otwierać i uruchamiać notesy zapisane na maszynie lokalnej.
-
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z [repozytorium notesów na potrzeby usługi Azure Machine Learning w serwisie GitHub](https://aka.ms/aml-notebooks)
 

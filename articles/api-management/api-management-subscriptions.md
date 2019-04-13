@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049762"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526592"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Subskrypcje w usłudze Azure API Management
 
@@ -32,7 +32,7 @@ Aby uzyskać klucz subskrypcji do uzyskiwania dostępu do interfejsów API, wyma
 
 > [!TIP]
 > Usługa API Management obsługuje również inne mechanizmy do zabezpieczania dostępu do interfejsów API, w tym w następujących przykładach:
-> - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
+> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Certyfikaty klienta](api-management-howto-mutual-certificates-for-clients.md)
 > - [Listy dozwolonych adresów IP](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
@@ -50,9 +50,6 @@ Tradycyjnie subskrypcji w usłudze API Management zawsze były skojarzone z poje
 > W niektórych scenariuszach może być publikowanie produktu interfejsu API publicznie bez wymogu subskrypcji wydawcy interfejsów API. Można usunąć zaznaczenie **wymagają subskrypcji** opcja **ustawienia** stronę produktu w witrynie Azure portal. W rezultacie wszystkie interfejsy API w ramach produktu są dostępne bez klucza API.
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Subskrypcje dla wszystkich interfejsów API lub poszczególnych interfejsu API
-
-> [!NOTE]
-> Obecnie ta funkcja jest dostępna w ramach warstwy interfejsu API zarządzania zużycia.
 
 Kiedy wdrożyliśmy [zużycie](https://aka.ms/apimconsumptionblog) warstwy interfejsu API zarządzania, wprowadziliśmy kilka zmian, aby usprawnić zarządzanie kluczami:
 - Po pierwsze, dodaliśmy dwa więcej zakresów subskrypcji: wszystkie interfejsy API i jednego interfejsu API. Zakres subskrypcji nie jest już ograniczona do produktu interfejsu API. Teraz jest możliwa do tworzenia kluczy określającymi udzielenie dostępu do interfejsu API lub wszystkie interfejsy API w ramach wystąpienia usługi API Management, bez konieczności tworzenia produktu i najpierw Dodaj interfejsy API do niego. Ponadto każde wystąpienie usługi API Management zawiera teraz niezmienne, interfejsy API wszystkich subskrypcji. Ta subskrypcja umożliwia łatwiejsze i bardziej bezpośredni, testowanie i debugowanie interfejsów API w konsoli testów.

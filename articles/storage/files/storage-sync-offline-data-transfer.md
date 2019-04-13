@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 04b13c1e511f54c1fcf7b632d3a368fde16bf319
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445351"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549037"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migracja danych zbiorczo do usługi Azure File Sync
 Zbiorcze danych można migrować do usługi Azure File Sync na dwa sposoby:
@@ -36,13 +36,13 @@ Poniżej przedstawiono główne korzyści z używania narzędzie do transferu ta
 - Urządzenie Data Box i usługi Azure File Sync wymagają bez przestojów. Podczas transferu danych na platformę Azure za pomocą urządzenia Data Box efektywnie używać przepustowości sieci i zachować wierność pliku. Możesz również przestrzeni nazw na bieżąco, przekazując tylko te pliki, które zmieniają się po przeniesieniu danych do platformy Azure.
 
 ## <a name="prerequisites-for-the-offline-data-transfer"></a>Wymagania wstępne dotyczące transferu danych w trybie offline
-Przed rozpoczęciem transferu danych w trybie offline:
+Nie należy włączać synchronizacji na serwerze, który jest przeprowadzana migracja przed ukończeniem transferu danych w trybie offline. Innych rzeczy, aby wziąć pod uwagę przed przystąpieniem do wykonywania są następujące:
 
-- Migruj dane zbiorczo do jednego lub wielu udziałów plików platformy Azure, przed włączeniem synchronizacji za pomocą usługi Azure File Sync.
-- Jeśli planujesz używać urządzenia Data Box do zbiorczego migracji, zapoznaj się z [wymagania wstępne dotyczące wdrażania dla urządzenia Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
-- Planowanie topologii końcowego usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md).
-- Wybierz konto usługi Azure Storage lub konta, które będą przechowywane udziałów plików, które mają być synchronizowane ze. Migruj dane zbiorczo do tymczasowego przemieszczania udziałów, które znajdują się w tym samym koncie magazynu lub konta. Można użyć końcowy udziału i przemieszczania udziału, które znajdują się w tym samym koncie magazynu.
-- Utwórz nową relację synchronizacji z lokalizacją serwera. Za pomocą istniejącą relację synchronizacji nie można migrować dane zbiorcze.
+- Jeśli planujesz używać urządzenia Data Box do zbiorczego migracji: Przegląd [wymagania wstępne dotyczące wdrażania dla urządzenia Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
+- Planowanie topologii końcowego usługi Azure File Sync: [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
+- Wybieranie konta magazynu platformy Azure, który będzie przechowywać udziałów plików, które mają być synchronizowane ze. Upewnij się, że migrację zbiorcze stanie się tymczasowe przemieszczania udziałów w ramach tego samego konta magazynu. Zbiorcze migracji można włączyć tylko przy użyciu ostatecznego — a udziałem przemieszczania znajdujących się w tym samym koncie magazynu.
+- Migracji zbiorcze być wykorzystywane tylko w przypadku, gdy utworzysz nową relację synchronizacji z lokalizacją serwera. Nie można włączyć migracji zbiorcze za pomocą istniejącej relacji synchronizacji.
+
 
 ## <a name="process-for-offline-data-transfer"></a>Proces transferu danych w trybie offline
 Poniżej przedstawiono sposób konfigurowania usługi Azure File Sync w sposób, który jest zgodny z narzędzia migracji zbiorcze, takie jak Azure Data Box:
@@ -51,7 +51,7 @@ Poniżej przedstawiono sposób konfigurowania usługi Azure File Sync w sposób,
 
 | Krok | Szczegół |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Urządzenie Data Box oferty rodziny [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) stosownie do potrzeb. Gdy pojawi się usługi Data Box, postępuj zgodnie z jego [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do ścieżki UNC na urządzenie Data Box: *\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>*. W tym miejscu *ShareName* to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Zamówienie usługi Data Box](../../databox/data-box-deploy-ordered.md). Urządzenie Data Box oferty rodziny [kilka produktów](https://azure.microsoft.com/services/storage/databox/data) stosownie do potrzeb. Gdy pojawi się usługi Data Box, postępuj zgodnie z jego [dokumentacji, aby skopiować dane](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do ścieżki UNC na urządzenie Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>*. W tym miejscu *ShareName* to nazwa udziału przemieszczania. Urządzenie Data Box można wysyłać do platformy Azure. |
 | ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Poczekaj, aż pliki pojawiają się w udziałów plików platformy Azure, wybranych przez Ciebie jako tymczasowy udziały przemieszczania. *Nie włączaj synchronizację w tych udziałach.* |
 | ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Utwórz nowy pusty udział dla każdego udziału plików, które urządzenia Data Box utworzone dla Ciebie. Ten nowy udział powinien być na tym samym koncie magazynu, udziału urządzenia Data Box. [Jak utworzyć nowy udział plików platformy Azure](storage-how-to-create-file-share.md). |
 | ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) w usłudze synchronizacji magazynu. Odwołanie do pustego udziału jako punktu końcowego w chmurze. Powtórz ten krok dla każdego udziału plików urządzenia Data Box. [Konfigurowanie usługi Azure File Sync](storage-sync-files-deployment-guide.md). |

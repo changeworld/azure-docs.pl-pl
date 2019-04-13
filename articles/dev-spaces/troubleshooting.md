@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: b205f7782dc14c9108032d2b4a274f884194874e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357863"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548784"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -325,3 +325,35 @@ Węzeł uruchomiony zasobnik z aplikacją Node.js próbujesz połączyć się za
 
 ### <a name="try"></a>Spróbuj
 Tymczasowe obejście tego problemu jest zwiększenie wartości *fs.inotify.max_user_watches* w każdym węźle w klastrze i ponownie uruchomić ten węzeł, aby zmiany zaczęły obowiązywać.
+
+## <a name="new-pods-are-not-starting"></a>Nowych zasobników nie jest uruchamiany.
+
+### <a name="reason"></a>Przyczyna
+
+Inicjator Kubernetes nie można zastosować PodSpec dla nowych zasobników z powodu zmiany uprawnień RBAC do *administratora klastra* rolę w klastrze. Nowych zasobników może być również nieprawidłowa PodSpec, na przykład konto usługi, skojarzone z zasobnik już nie istnieje. Aby wyświetlić zasobników, które znajdują się w *oczekujące* stanów spowodowanych przez problem inicjatora, użyj `kubectl get pods` polecenia:
+
+```bash
+kubectl get pods --all-namespaces --include-uninitialized
+```
+
+Ten problem może mieć wpływ na zasobników w *wszystkie przestrzenie nazw* w klastrze, w tym przestrzenie nazw, w którym nie włączono usługi Azure Dev miejsca do magazynowania.
+
+### <a name="try"></a>Spróbuj
+
+[Aktualizowanie interfejsu wiersza polecenia miejsca do magazynowania dla deweloperów do najnowszej wersji](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , a następnie usunięcie *azds InitializerConfiguration* od administratora usługi Azure Dev miejsca do magazynowania:
+
+```bash
+az aks get-credentials --resource-group <resource group name> --name <cluster name>
+kubectl delete InitializerConfiguration azds
+```
+
+Po usunięciu *azds InitializerConfiguration* od administratora usługi Azure Dev miejsca do magazynowania, należy użyć `kubectl delete` do usunięcia wszelkich zasobników w *oczekujące* stanu. Gdy wszystkie oczekujące zasobników zostały usunięte, Wdróż ponownie zasobników.
+
+W przypadku nowych zasobników nadal są zablokowane w *oczekujące* stanu po ponownego wdrożenia, użyj `kubectl delete` do usunięcia wszelkich zasobników w *oczekujące* stanu. Gdy wszystkie oczekujące zasobników zostały usunięte, usunąć kontroler z klastra i ponownie ją zainstaluj:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Po ponownym zainstalowaniu kontrolera sieci, należy ponownie wdrożyć zasobników.

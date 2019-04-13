@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905821"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525385"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
@@ -270,8 +270,8 @@ Ten problem występuje jeden z następujących powodów:
     |Typ rekordu|Host|Wskaż|
     |------|------|-----|
     |A|@|Adres IP dla aplikacji|
-    |TXT|@|<app-name>.azurewebsites.net|
-    |CNAME|www|<app-name>.azurewebsites.net|
+    |TXT|@|`<app-name>.azurewebsites.net`|
+    |CNAME|www|`<app-name>.azurewebsites.net`|
 
 ## <a name="faq"></a>Często zadawane pytania
 
@@ -287,7 +287,7 @@ Tak, może wskazywać domeny maszyny Wirtualnej. Aby uzyskać więcej informacji
 
 Domeny usługi App Service umożliwia GoDaddy dla domeny rejestracji i system DNS Azure hostowanie domen. 
 
-**Mam automatyczne odnawianie włączone, ale nadal otrzymał powiadomienie odnawiania dla mojej domeny za pośrednictwem poczty e-mail. Co mam zrobić?**
+**Mam automatyczne odnawianie włączone, ale nadal otrzymał powiadomienie odnawiania dla mojej domeny za pośrednictwem poczty e-mail. Co zrobić?**
 
 Jeśli masz automatyczne odnawianie włączone, nie trzeba podejmować żadnych działań. Powiadomienie e-mail jest dostarczany, aby poinformować, że domena jest bliski wygaśnięcia i odnowić ręcznie, jeśli automatycznego odnawiania nie jest włączona.
 

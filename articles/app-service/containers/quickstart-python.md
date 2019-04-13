@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5cca0d866442583c87665b3a1db8c65c66d12f0a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285381"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547712"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji języka Python w usłudze App Service dla systemu Linux (wersja zapoznawcza)
 
@@ -109,7 +109,7 @@ Checking connectivity... done.
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
-W poniższym przykładzie Zastąp < nazwa aplikacji > unikatową nazwę aplikacji.
+W poniższym przykładzie Zastąp `<app-name>` unikatową nazwą aplikacji.
 
 ```bash
 cd python-docs-hello-world
@@ -205,13 +205,10 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 Wbudowany obraz języka Python w usłudze App Service w systemie Linux jest obecnie w wersji zapoznawczej. Można dostosować polecenie używane do uruchamiania aplikacji. Można też tworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
 
 > [!div class="nextstepaction"]
-> [Python z PostgreSQL](tutorial-python-postgresql-app.md)
+> [Samouczek: Aplikację w języku Python z bazą danych PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie niestandardowego polecenia uruchamiania](how-to-configure-python.md#customize-startup-command)
+> [Konfigurowanie aplikacji języka Python](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Rozwiązywanie problemów](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [Używanie niestandardowych obrazów](tutorial-custom-docker-image.md)
+> [Samouczek: Uruchamianie aplikacji w języku Python w kontenerze niestandardowe](tutorial-custom-docker-image.md)

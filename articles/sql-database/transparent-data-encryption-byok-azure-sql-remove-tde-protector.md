@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 51cdd43e62bd511da55978bbac3215200c3a8e01
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847802"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528275"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Usuwanie ochrony przezroczystego szyfrowania danych (TDE), przy użyciu programu PowerShell
 
@@ -31,7 +31,7 @@ ms.locfileid: "58847802"
 - Konieczne jest posiadanie programu Azure PowerShell zainstalowany i uruchomiony. 
 - W tym przewodniku przyjęto założenie, że korzystasz już klucza z usługi Azure Key Vault jako funkcja ochrony TDE dla usługi Azure SQL Database lub magazynu danych. Zobacz [funkcji Transparent Data Encryption z obsługą funkcji BYOK](transparent-data-encryption-byok-azure-sql.md) Aby dowiedzieć się więcej.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym przewodniku opisano sposób reagowania na mogą mieć złamane zabezpieczenia ochrony TDE dla usługi Azure SQL Database lub magazynu danych, który używa funkcji TDE za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault — Obsługa Bring Your Own Key (BYOK). Aby dowiedzieć się więcej na temat obsługi funkcji BYOK dla funkcji TDE, zobacz [strony Przegląd](transparent-data-encryption-byok-azure-sql.md). 
 
@@ -40,6 +40,12 @@ Poniższych procedur należy to robić tylko w ekstremalnych przypadkach lub w �
 Jeśli klucz nigdy nie podejrzewa się być narażone na ataki, takie, że usługa lub użytkownik miał nieautoryzowany dostęp do klucza, najlepiej jest usunąć klucza.
 
 Należy pamiętać, kwotę ochrony TDE zostanie usunięty z usługi Key Vault **wszystkie połączenia z szyfrowanymi bazami danych na tym serwerze są blokowane, a tymi bazami danych przejdą w tryb offline oraz są porzucane w ciągu 24 godzin**. Stare kopie zapasowe szyfrowane za pomocą których bezpieczeństwo zostało naruszone klucza nie są już dostępne.
+
+Następujące kroki przedstawiają sposób sprawdzić odcisków palców funkcji ochrony TDE nadal w użyciu przez wirtualny dziennika plików (VLF) z określoną bazą danych. Odcisk palca bieżącego ochrony TDE w bazie danych i identyfikator bazy danych można znaleźć, uruchamiając: Wybierz OPCJĘ [bazie]       [encryption_state], [encryptor_type] /*klucza asymetrycznego oznacza AKV, certyfikat oznacza kluczy zarządzanych przez usługę*/ [encryptor_thumbprint] z [sys]. [ dm_database_encryption_keys] 
+ 
+Następujące zapytanie zwraca VLF i modułu szyfrującego odpowiednich odcisków palca w użyciu. Każdy inny odcisk palca odwołuje się do innego klucza w usługi Azure Key Vault (AKV): Wybierz * z sys.dm_db_log_info (bazie) 
+
+Polecenia programu PowerShell Get-AzureRmSqlServerKeyVaultKey zapewnia odcisk palca z funkcji ochrony TDE użytego w zapytaniu, aby było widać, które klucze, aby zachować i które kluczy do usunięcia w AKV. Tylko te klucze, które nie jest już używany przez bazę danych można bezpiecznie usunąć z usługi Azure Key Vault.
 
 Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po reagowania na zdarzenia:
 

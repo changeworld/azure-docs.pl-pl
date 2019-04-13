@@ -8,14 +8,14 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918709"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543763"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plan usługi Azure Functions — wersja Premium (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Następujące funkcje są dostępne dla aplikacji funkcji wdrożonych na plan w 
 
 Jeśli nie zdarzenia i wykonania występują obecnie planu zużycie, aplikacja może Skaluj w dół do zera wystąpień. Gdy nowe zdarzenia są dostępne w, nowe wystąpienie musi można wyspecjalizować z aplikacji uruchomionej na nim.  Wyspecjalizowanym nowych wystąpień może potrwać pewien czas w zależności od aplikacji.  To dodatkowe opóźnienie przy pierwszym wywołaniu jest często nazywana zimny start aplikacji.
 
-Plan w warstwie Premium mogą mieć wstępnie przygotowaniu na określoną liczbę wystąpień aplikacji.  Wstępnie przygotowaniu wystąpień pozwalają również wstępnie skalować aplikację przed dużym obciążeniem. Ponieważ aplikacja jest skalowana w poziomie, najpierw skaluje do wstępnie warmed wystąpień. Dodatkowe wystąpienia w dalszym ciągu buforu na zewnątrz i do dostępu do ciepłych bezpośrednio w ramach przygotowania do następnej operacji skalowania. Dzięki bufor o przygotowaniu wstępnie wystąpień, można skutecznie uniknąć opóźnienia zimny start.  Przygotowaniu wstępnie wystąpień jest funkcją plan w warstwie Premium i należy zachować co najmniej jedno wystąpienie, uruchomione i dostępne pod adresem cały czas plan jest aktywny.
+Plan w warstwie Premium mogą mieć aplikację wstępnie przygotowaniu na określoną liczbę wystąpień, z maksymalnie rozmiar minimalny planu.  Wstępnie przygotowaniu wystąpień pozwalają również wstępnie skalować aplikację przed dużym obciążeniem. Ponieważ aplikacja jest skalowana w poziomie, najpierw skaluje do wstępnie warmed wystąpień. Dodatkowe wystąpienia w dalszym ciągu buforu na zewnątrz i do dostępu do ciepłych bezpośrednio w ramach przygotowania do następnej operacji skalowania. Dzięki bufor o przygotowaniu wstępnie wystąpień, można skutecznie uniknąć opóźnienia zimny start.  Przygotowaniu wstępnie wystąpień jest funkcją plan w warstwie Premium i należy zachować co najmniej jedno wystąpienie, uruchomione i dostępne pod adresem cały czas plan jest aktywny.
 
 Liczba wystąpień przygotowaniu wstępnie można skonfigurować w witrynie Azure portal, wybierając **skalowanie w poziomie** w **funkcje platformy** kartę.
 
@@ -69,6 +69,8 @@ Dodatkowe zasoby obliczeniowe wystąpień są automatycznie dodawane do swojej a
 ### <a name="unbounded-run-duration"></a>Niepowiązane czas trwania przebiegu
 
 Usługa Azure Functions w ramach planu zużycie są ograniczone do 10 minut na pojedyncze wykonanie.  W planie Premium czas trwania testu wartość domyślna to 30 minut, aby zapobiec wykonań niekontrolowany. Można jednak [zmodyfikować konfigurację host.json](./functions-host-json.md#functiontimeout) się to bez ograniczeń dla aplikacji plan w warstwie Premium.
+
+W wersji zapoznawczej czasu trwania nie ma żadnej gwarancji, ostatnie 12 minut i będzie mieć najlepsze prawdopodobieństwo uruchomiony dłużej niż 30 minut, jeśli aplikacja nie jest skalowana poza jego liczba minimalne procesu roboczego.
 
 ## <a name="plan-and-sku-settings"></a>Ustawienia planu i jednostki SKU
 
@@ -104,9 +106,8 @@ Poniżej są obecnie obsługiwane regiony, w publicznej wersji zapoznawczej.
 |Region|
 |--|
 |Australia Wschodnia|
-|Australia Souteast|
+|Australia Południowo-Wschodnia|
 |Kanada Środkowa|
-|Indie Środkowe|
 |Środkowe stany USA|
 |Azja Wschodnia|
 |Wschodnie stany USA 2|

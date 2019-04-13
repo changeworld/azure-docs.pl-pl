@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370571"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526276"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -26,7 +26,7 @@ ms.locfileid: "58370571"
 
 [Konta usługi Azure storage](/azure/storage/storage-create-storage-account) używa poświadczeń, który składa się z nazwy konta i klucz. Klucz jest generowana automatycznie i służy tylko jako "password" w przeciwieństwie do klucza kryptograficznego. Usługa Key Vault można zarządzać te klucze konta magazynu, przechowując je jako [wpisy tajne usługi Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Magazynu kluczy zarządzanego konta magazynu, że funkcja wykonuje kilka funkcji zarządzania w Twoim imieniu:
 
@@ -109,7 +109,7 @@ Można również zadawać usługi Key Vault do generowania tokenów SAS (Shared 
 Po wykonaniu kroków opisanych powyżej można uruchomić następujące polecenia, aby poprosić usługi Key Vault do generowania tokenów sygnatur dostępu Współdzielonego dla Ciebie. 
 
 Lista rzeczy, które będą realizowane w następujące czynności są
-- Ustawia konta definicja sygnatury dostępu Współdzielonego o nazwie "<YourSASDefinitionName>"na koncie magazynu zarządzanej usługi KeyVault"<YourStorageAccountName>"w magazynie"<VaultName>". 
+- Ustawia konta definicja sygnatury dostępu Współdzielonego o nazwie `<YourSASDefinitionName>` na koncie magazynu zarządzanej usługi KeyVault `<YourStorageAccountName>` w magazynie `<VaultName>`. 
 - Tworzy token sygnatury dostępu Współdzielonego konta usługi Blob, plik, tabela i kolejka, dla typów zasobów usługi, kontenerów i obiektów, ze wszystkich uprawnień przy użyciu protokołu https i z określonymi datami rozpoczęcia i zakończenia
 - Ustawia magazynu zarządzanej usługi KeyVault definicja sygnatury dostępu Współdzielonego w magazynie o identyfikatorze uri szablonu jako token sygnatury dostępu Współdzielonego utworzony powyżej, sygnatury dostępu Współdzielonego typu "konto" i prawidłową dla N dni
 - Pobiera token dostępu rzeczywiste z wpisu tajnego magazynu kluczy, odpowiadający definicja sygnatury dostępu Współdzielonego

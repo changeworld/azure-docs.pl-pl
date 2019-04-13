@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56cd608d337d817b849a0902569e9aeddeca80ab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758574"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524501"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Utwórz przeglądy transkrypcji wideo przy użyciu platformy .NET
 
@@ -154,7 +154,7 @@ Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVid
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
 1. Nazwa zespołu usługi Content Moderator.
-1. **IList<CreateVideoReviewsBodyItem>**  obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. **IList\<CreateVideoReviewsBodyItem >** obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Jako minimum można ustawić następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo do przeglądu.
@@ -244,15 +244,15 @@ Oprócz dodawania transkrypcji do wideo przeglądu, można też dodać wynik Mod
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
 1. Nazwa zespołu usługi Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** ma następujące właściwości:
-1. **Warunki**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
+1. IList\<TranscriptModerationBodyItem >. A **TranscriptModerationBodyItem** ma następujące właściwości:
+1. **Warunki**. IList\<TranscriptModerationBodyItemTermsItem >. A **TranscriptModerationBodyItemTermsItem** ma następujące właściwości:
 1. **Indeks**. Liczony od zera indeks termin.
 1. **Termin**. Ciąg, który zawiera wyrażenie.
 1. **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w transkrypcji, w którym znajdują się warunki.
 
 Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: Tekst wideo w sieci Web śledzi Format](https://www.w3.org/TR/webvtt1/).
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Ta metoda przesyła transkrypcję, aby **ContentModeratorClient.TextModeration.ScreenText** metody. Również tłumaczy wynik na IList<TranscriptModerationBodyItem>i przekazuje do **AddVideoTranscriptModerationResult**.
+Dodaj następującą definicję metody do przestrzeni nazw VideoTranscriptReviews, klasy programu. Ta metoda przesyła transkrypcję, aby **ContentModeratorClient.TextModeration.ScreenText** metody. Również tłumaczy wynik na IList\<TranscriptModerationBodyItem > i przekazuje do **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>

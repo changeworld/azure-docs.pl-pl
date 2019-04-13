@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369143"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524375"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Dołącz swoje urządzenie pracy do sieci organizacji
 Dołączanie urządzenia należące do pracy systemu Windows 10 do sieci w organizacji, aby dostęp do zasobów z potencjalnie ograniczeniami.
@@ -62,7 +62,7 @@ Należy upewnić się, że one przyłączone, sprawdzając ustawienia.
 
     ![Konta na ekranie Ustawienia](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone *< your_organization >* usługi Azure AD**.
+2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone  *\<your_organization >* usługi Azure AD**.
 
     ![Otwórz ekran służbowego przy użyciu konta z połączonych firmy contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +107,7 @@ Należy upewnić się, że one przyłączone, sprawdzając ustawienia.
 
     ![Konta na ekranie Ustawienia](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone *< your_organization >* usługi Azure AD**.
+2. Wybierz **dostęp do zasobów służbowych**i upewnij się, zostanie wyświetlony tekst, który jest wyświetlany komunikat podobny do, **połączone  *\<your_organization >* usługi Azure AD**.
 
     ![Otwórz ekran służbowego przy użyciu konta z połączonych firmy contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

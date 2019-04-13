@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225539"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546854"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -118,9 +118,12 @@ Aby uzyskać więcej informacji, zobacz [Obsługa protokołu WebSocket](https://
 
 ## <a name="rewrite-http-headers-public-preview"></a>Ponowne zapisywanie nagłówków HTTP (publiczna wersja zapoznawcza)
 
-Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne zapisywanie nagłówków HTTP ułatwia realizację różnych ważnych scenariuszy, takich jak dodanie pól nagłówka związanych z zabezpieczeniami, takich jak HSTS/X-Ochrona-XSS, lub usunięcie pól nagłówka odpowiedzi, których zawartość mogłaby spowodować ujawnienie poufnych informacji, takich jak nazwa serwera wewnętrznej bazy danych. 
+Zezwalaj na nagłówki HTTP, klienta i serwera przekazać dodatkowe informacje z żądania lub odpowiedzi. Ponowne napisanie tych nagłówków HTTP pomaga osiągnąć kilku ważnych scenariuszy, takich jak:
+- Dodawanie pola nagłówka związanych z zabezpieczeniami, takich jak HSTS / X XSS ochrony.
+- Usuwanie pola nagłówka odpowiedzi, które może ujawnić poufne informacje.
+- Usuwanie z nagłówków X-Forwarded-Aby uzyskać informacje o porcie.
 
-Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania nagłówków w przychodzących żądaniach HTTP, jak również w wychodzących odpowiedziach HTTP. Będzie można dodawać, usuwać lub aktualizować nagłówki żądania i odpowiedzi HTTP podczas przenoszenia pakietów żądań/odpowiedzi między pulami klienta i wewnętrznej bazy danych. Można ponownie zapisać zarówno standardowe (zdefiniowane w [dokumencie RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)), jak i niestandardowe pola nagłówka.  
+Usługa Application Gateway obsługuje możliwość dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP, gdy pakiety żądań i odpowiedzi, przenoszenie między klientem a pule zaplecza. On również zapewnia możliwość dodawania warunków, aby upewnić się, że określone nagłówki są przepisany tylko wtedy, gdy zostaną spełnione określone warunki.
 
 Aby uzyskać więcej informacji na temat tej funkcji w publicznej wersji zapoznawczej, zobacz artykuł [Ponowne zapisywanie nagłówków HTTP](rewrite-http-headers.md).
 

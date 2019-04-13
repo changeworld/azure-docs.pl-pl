@@ -1,7 +1,7 @@
 ---
 title: Wyodrębnianie danych
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS)
+description: Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty. Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893983"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526293"
 ---
-# <a name="data-extraction-from-intents-and-entities"></a>Wyodrębnianie danych z intencje i podmioty
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
 
 Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie znajduje się dopasowania tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz.
@@ -170,9 +170,11 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezione tekst z
 
 |Obiekt danych|Nazwa jednostki|Wartość|
 |--|--|--|
-|Proste jednostki|"Klient"|"bob jones"|
+|Proste jednostki|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>Dane hierarchiczne jednostki
+
+**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
 
 [Hierarchiczna](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Elementy podrzędne są identyfikowane przez kontekst. Jeśli szukasz relacji nadrzędny podrzędny z dopasowaniem tekstu do dokładnego dopasowania użyj [listy](#list-entity-data) jednostki.
 
@@ -432,13 +434,18 @@ Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niema
 [PersonName](luis-reference-prebuilt-person.md) i [GeographyV2](luis-reference-prebuilt-geographyV2.md) jednostki są dostępne w niektórych [kultur języka](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Nazwiska osób
-Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Za pomocą hierarchicznych jednostki imiona i nazwiska jako elementy podrzędne, lub Użyj prostego jednostki przy użyciu ról imię i nazwisko. Pamiętaj nadać przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](luis-how-to-review-endpoint-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+
+Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Użyj jednej ze wstępnie utworzonych **[personName](luis-reference-prebuilt-person.md)** jednostki lub **[jednostki prostej](luis-concept-entity-types.md#simple-entity)** z [role](luis-concept-roles.md) pierwszych i nazwisko. 
+
+Korzystając z prostego jednostki, upewnij się, zapewnienie przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
 
 ### <a name="names-of-places"></a>Nazwy miejsc
-Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Jeśli aplikacja korzysta z zestawu wie, lokalizacji, należy wziąć pod uwagę obiektami listy. Jeśli trzeba znaleźć umieścić wszystkie nazwy, tworzenie prostego jednostki i obejmują różnorodne przykłady. Dodaj frazy listę nazw miejsce do potwierdzenia, jakie miejsce nazwy jak wyglądają w swojej aplikacji. [Przegląd](luis-how-to-review-endpoint-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+
+Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Użyj wstępnie utworzone jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** można wyodrębnić informacji o lokalizacji.
 
 ### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
-Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw jest najtrudniejsze rodzaj wyodrębnianie danych. Zaczynają się od prostego jednostki i Dodawanie listy fraz. [Przegląd](luis-how-to-review-endpoint-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+
+Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najtrudniejsze typu wyodrębnianie danych. Zaczynają się od **[jednostki prostej](luis-concept-entity-types.md#simple-entity)** i Dodaj [listy fraz](luis-concept-feature.md). [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
 
 ## <a name="pattern-roles-data"></a>Wzorzec role danych
 Role różnią się kontekstowych jednostek.

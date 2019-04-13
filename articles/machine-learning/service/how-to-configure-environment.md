@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489505"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548890"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -350,7 +350,7 @@ Plik konfiguracji obszaru roboczego jest pliku JSON, który informuje zestawu SD
 }
 ```
 
-Ten plik JSON musi być w strukturze katalogu, który zawiera Twoje skrypty języka Python i notesy Jupyter. Może być w tym samym katalogu, w podkatalogu nazwanym *aml_config*, lub w katalogu nadrzędnym.
+Ten plik JSON musi być w strukturze katalogu, który zawiera Twoje skrypty języka Python i notesy Jupyter. Może być w tym samym katalogu, w podkatalogu nazwanym *.azureml*, lub w katalogu nadrzędnym.
 
 Aby użyć tego pliku w kodzie, należy użyć `ws=Workspace.from_config()`. Ten kod ładuje dane z pliku i nawiązuje połączenie z obszarem roboczym.
 
@@ -379,7 +379,7 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
         print('Workspace not found')
     ```
 
-    Ten kod, zapisuje plik konfiguracyjny *aml_config/config.json* pliku.
+    Ten kod, zapisuje plik konfiguracyjny *.azureml/config.json* pliku.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

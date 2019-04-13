@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863359"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524025"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywały operacje zbiorcze na danych usługi Azure Cosmos DB za pomocą biblioteki języka Java przetwarzania zbiorczego
 
@@ -118,8 +118,8 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
    |int getNumberOfDocumentsImported()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z dostarczonych do zbiorczego dokumentów zaimportować wywołania interfejsu API.      |
    |Podwójna getTotalRequestUnitsConsumed()   |  Łączna liczba jednostek żądania (RU) używane przez większość zaimportować wywołania interfejsu API.       |
    |Czas trwania getTotalTimeTaken()   |    Łączny czas za pomocą importowania zbiorczego do ukończenia wykonywania wywołań interfejsu API.     |
-   |Lista<Exception> getErrors() |  Pobiera listę błędów, jeśli niektóre dokumenty z usługi batch do zbiorczego zaimportować wywołania interfejsu API nie można pobrać wstawiony.       |
-   |Lista<Object> getBadInputDocuments()  |    Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Użytkownik powinien rozwiązać zwróconych dokumentów i ponów próbę importowania. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).     |
+   |Lista\<wyjątku > getErrors() |  Pobiera listę błędów, jeśli niektóre dokumenty z usługi batch do zbiorczego zaimportować wywołania interfejsu API nie można pobrać wstawiony.       |
+   |Lista\<obiektu > getBadInputDocuments()  |    Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Użytkownik powinien rozwiązać zwróconych dokumentów i ponów próbę importowania. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).     |
 
 5. Po umieszczeniu zbiorcze importowanie gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
 
@@ -182,7 +182,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
    |int getNumberOfDocumentsUpdated()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaktualizowane poza dokumentów dostarczonych wywołania interfejsu API pakietu zbiorczego aktualizacji.      |
    |Podwójna getTotalRequestUnitsConsumed() |  Jednostki łączna liczba żądań (RU) używane przez aktualizacja zbiorcza wywołania interfejsu API.       |
    |Czas trwania getTotalTimeTaken()  |   Łączny czas zbiorczego aktualizacji do ukończenia wykonywania wywołań interfejsu API.      |
-   |Lista<Exception> getErrors()   |     Pobiera listę błędów, jeśli niektóre dokumenty, poza partii dostarczane do wywołania interfejsu API zbiorcze aktualizacji nie można pobrać wstawiony.      |
+   |Lista\<wyjątku > getErrors()   |    Pobiera listę błędów, jeśli niektóre dokumenty, poza partii dostarczane do wywołania interfejsu API zbiorcze aktualizacji nie można pobrać wstawiony.      |
 
 3. Po umieszczeniu zbiorczej aktualizacji gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
 

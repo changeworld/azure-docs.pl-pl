@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878274"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524093"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Tworzenie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1 jako magazynem domyślnym przy użyciu programu PowerShell
 
@@ -215,7 +215,7 @@ W tej sekcji utworzysz klaster usługi HDInsight Hadoop Linux z Data Lake Storag
     Po pomyślnym zakończeniu polecenia cmdlet powinny być widoczne dane wyjściowe, który wyświetla szczegóły klastra.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Uruchamianie testów zadań w klastrze HDInsight, aby użyć Data Lake Storage Gen1
-Po skonfigurowaniu klastra usługi HDInsight można uruchomić zadania testowe na niej w celu zapewnienia, że mają dostęp do programu Data Lake Storage Gen1. Aby to zrobić, uruchamianie przykładowego zadania Hive można utworzyć tabeli, który używa przykładowych danych, który jest już dostępna w Data Lake Storage Gen1 w  *<cluster root>/example/data/sample.log*.
+Po skonfigurowaniu klastra usługi HDInsight można uruchomić zadania testowe na niej w celu zapewnienia, że mają dostęp do programu Data Lake Storage Gen1. Aby to zrobić, uruchamianie przykładowego zadania Hive można utworzyć tabeli, który używa przykładowych danych, który jest już dostępna w Data Lake Storage Gen1 w  *\<katalogu głównego klastra > /example/data/sample.log*.
 
 W tej sekcji należy utworzyć połączenie Secure Shell (SSH) do klastra HDInsight w systemie Linux, który został utworzony, a następnie uruchom przykładowe zapytanie programu Hive.
 
@@ -255,7 +255,7 @@ Można również użyć `hdfs dfs -put` polecenie, aby przekazać pliki do Data 
 
 ## <a name="see-also"></a>Zobacz także
 * [Za pomocą usług Data Lake Storage Gen1 klastrów Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure Portal: Tworzenie klastra usługi HDInsight, aby użyć Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Witryna Azure portal: Tworzenie klastra usługi HDInsight, aby użyć Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

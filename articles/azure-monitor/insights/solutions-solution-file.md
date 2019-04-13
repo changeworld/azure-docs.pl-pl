@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776652"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526371"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -83,7 +83,7 @@ W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań 
 >
 >
 
-| Parametr | Type | Opis |
+| Parametr | Typ | Opis |
 |:--- |:--- |:--- |
 | accountName |string |Nazwa konta usługi Azure Automation. |
 | pricingTier |string |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |
@@ -213,7 +213,7 @@ Zasób rozwiązanie ma właściwości w poniższej tabeli.  Obejmują one zasoby
 
 | Właściwość | Opis |
 |:--- |:--- |
-| workspaceResourceId |Identyfikator obszaru roboczego usługi Log Analytics w formie  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<nazwa obszaru roboczego\>*. |
+| workspaceResourceId |Identyfikator obszaru roboczego usługi Log Analytics w formie  *\<identyfikator grupy zasobów > /providers/Microsoft.OperationalInsights/workspaces/\<nazwa obszaru roboczego\>*. |
 | referencedResources |Lista zasobów w rozwiązaniu, które nie powinny być usuwane, gdy rozwiązanie zostanie usunięty. |
 | containedResources |Lista zasobów w rozwiązaniu, które powinny zostać usunięte po usunięciu rozwiązania. |
 

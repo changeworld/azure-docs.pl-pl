@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493318"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526347"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Usługa Azure wersji schematu konfiguracji rozszerzenia diagnostyki i Historia
 Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jako część programu Microsoft Azure SDK.  
@@ -187,7 +187,7 @@ Istnieją pewne istotne różnice między jak parametry połączenia pracy w us�
 
 * W usłudze Azure SDK 2.4 lub starszej parametry połączenia był używany w czasie wykonywania przez wtyczki diagnostyki Aby uzyskać informacje o koncie magazynu, przesyłania dzienników diagnostycznych.
 * W wersji 2.6 zestawu SDK platformy Azure i później programu Visual Studio używa parametrów połączenia diagnostyki, aby skonfigurować rozszerzenie diagnostyki z informacjami o koncie magazynu odpowiednie podczas publikowania. Parametry połączenia umożliwiają definiowanie różnych kont magazynu dla konfiguracji innej usługi, używających programu Visual Studio podczas publikowania. Jednak ponieważ wtyczki Diagnostyka nie jest już dostępne (po Azure SDK 2.5), w pliku .cscfg przez sam nie można włączyć rozszerzenie diagnostyki. Należy włączyć rozszerzenie oddzielnie za pomocą narzędzi, takich jak Visual Studio lub programu PowerShell.
-* Aby uprościć proces konfigurowania rozszerzenia diagnostyki za pomocą programu PowerShell, dane wyjściowe pakietu Visual Studio zawiera również publiczna Konfiguracja XML dla rozszerzenia diagnostyki dla każdej roli. Visual Studio używa parametrów połączenia diagnostyki do wypełniania informacji o koncie magazynu, które są obecne w konfiguracji publicznego. Pliki konfiguracji publicznego są tworzone w folderze rozszerzenia i oparte na wzorcu PaaSDiagnostics. <RoleName>. PubConfig.xml. Wszystkie wdrożenia programu PowerShell, na podstawie może używać tego wzorca, aby zamapować każdej konfiguracji do roli.
+* Aby uprościć proces konfigurowania rozszerzenia diagnostyki za pomocą programu PowerShell, dane wyjściowe pakietu Visual Studio zawiera również publiczna Konfiguracja XML dla rozszerzenia diagnostyki dla każdej roli. Visual Studio używa parametrów połączenia diagnostyki do wypełniania informacji o koncie magazynu, które są obecne w konfiguracji publicznego. Pliki konfiguracji publicznego są tworzone w folderze rozszerzeń i postępuj zgodnie ze wzorcem `PaaSDiagnostics.<RoleName>.PubConfig.xml`. Wszystkie wdrożenia programu PowerShell, na podstawie może używać tego wzorca, aby zamapować każdej konfiguracji do roli.
 * Parametry połączenia w pliku .cscfg jest również używane przez witryny Azure portal dostępu do danych diagnostycznych, dzięki czemu może występować w **monitorowanie** kartę. Ciąg połączenia jest wymagane do skonfigurowania usługi, aby wyświetlić pełne dane monitorowania w portalu.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Migrowanie projektów 2.6 zestawu SDK platformy Azure i nowszych

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017161"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545437"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -70,7 +70,7 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
 
 >[!IMPORTANT]
->Po skopiowaniu danych do systemu Dynamics domyślnego środowiska Azure Integration Runtime nie może służyć do wykonywania kopii. Innymi słowy, jeśli połączona ze źródłem usługi nie ma określonego IR jawnie [utworzyć środowisko IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w pobliżu wystąpienie usługi Dynamics. Skojarz go w połączonej usłudze Dynamics, jak w poniższym przykładzie.
+>Po skopiowaniu danych do systemu Dynamics domyślnego środowiska Azure Integration Runtime nie może służyć do wykonywania kopii. Innymi słowy, jeśli połączona ze źródłem usługi nie ma określonego IR jawnie [utworzyć środowisko IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w pobliżu wystąpienie usługi Dynamics. Dowiedz się, gdzie znajduje się wystąpienie usługi Dynamics, odwołując się do [listy regionów na Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Skojarz go w połączonej usłudze Dynamics, jak w poniższym przykładzie.
 
 >[!NOTE]
 >Łącznik Dynamics, używany na potrzeby opcjonalne "nazwa_organizacji" właściwość identyfikuje Twoje wystąpienie usługi Dynamics CRM/365 Online. Gdy go nadal działa, są zalecane do określ nową właściwość "serviceUri" zamiast tego w celu uzyskania lepszej wydajności odnajdywania dla wystąpienia.
@@ -109,9 +109,9 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **Dynamics**. | Yes |
 | deploymentType | Typ wdrażania wystąpienia programu Dynamics. Musi to być **"OnPremisesWithIfd"** Dynamics i lokalnych przy użyciu IFD.| Yes |
-| Nazwa hosta | Nazwa hosta na lokalnym serwerze Dynamics. | Yes |
+| hostName | Nazwa hosta na lokalnym serwerze Dynamics. | Yes |
 | port | Port lokalny serwer Dynamics. | Nie, port domyślny to 443 |
-| Nazwa_organizacji | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
+| organizationName | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
 | Element authenticationType | Typ uwierzytelniania, aby nawiązać połączenie z serwerem Dynamics. Określ **"Ifd"** Dynamics i lokalnych przy użyciu IFD. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania pobierania w tym miejscu podczas kopiowania danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -330,20 +330,20 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Długie | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Wartość logiczna | ✓ | ✓ |
-| AttributeType.Customer | Identyfikator GUID | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | Data/godzina | ✓ | ✓ |
-| AttributeType.Decimal | Dziesiętny | ✓ | ✓ |
-| AttributeType.Double | Podwójne | ✓ | ✓ |
-| AttributeType.EntityName | Ciąg | ✓ | ✓ |
+| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Double | Double | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Identyfikator GUID | ✓ | ✓ (ze skojarzonego pojedynczy element docelowy) |
+| AttributeType.Lookup | Guid | ✓ | ✓ (ze skojarzonego pojedynczy element docelowy) |
 | AttributeType.ManagedProperty | Wartość logiczna | ✓ | |
-| AttributeType.Memo | Ciąg | ✓ | ✓ |
-| AttributeType.Money | Dziesiętny | ✓ | ✓ |
-| AttributeType.Owner | Identyfikator GUID | ✓ | |
+| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
-| AttributeType.Uniqueidentifier | Identyfikator GUID | ✓ | ✓ |
-| AttributeType.String | Ciąg | ✓ | ✓ |
+| AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

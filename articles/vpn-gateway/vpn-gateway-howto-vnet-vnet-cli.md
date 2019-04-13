@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 24e12184070909943c5660d94d8e19ce9df1de30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111127"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526150"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -299,7 +299,7 @@ Podczas tworzenia dodatkowych połączeń, ważne jest, by sprawdzić, czy przes
 
 ### <a name="TestVNet5"></a>Krok 7 — Tworzenie i konfigurowanie sieci TestVNet5
 
-Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę część procedury może wykonać administrator w innej organizacji, która jest właścicielem subskrypcji. Aby przełączać się między subskrypcjami i wyświetlić listę subskrypcji dostępnych na koncie, użyj polecenia „az account list --all”. Następnie użyj polecenia „az account set --subscription <subscriptionID>”, aby przełączyć się na subskrypcję, która ma być używana.
+Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę część procedury może wykonać administrator w innej organizacji, która jest właścicielem subskrypcji. Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
 
 1. Upewnij się, czy nastąpiło połączenie z Subskrypcją 5, a następnie utwórz grupę zasobów.
 
@@ -338,7 +338,7 @@ Ten krok należy wykonać w kontekście nowej subskrypcji (Subskrypcja 5). Tę c
 
 ### <a name="connections5"></a>Krok 8 — Tworzenie połączeń
 
-Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]**. Aby przełączać się między subskrypcjami i wyświetlić listę subskrypcji dostępnych na koncie, użyj polecenia „az account list --all”. Następnie użyj polecenia „az account set --subscription <subscriptionID>”, aby przełączyć się na subskrypcję, która ma być używana.
+Ze względu na to, że bramy należą do różnych subskrypcji, zastosowano rozbicie na dwie sesje interfejsu wiersza polecenia oznaczone jako **[Subskrypcja 1]** i **[Subskrypcja 5]**. Aby przełączać się między subskrypcjami użyj `az account list --all` Aby wyświetlić listę subskrypcji dostępnych dla Twojego konta, a następnie użyj `az account set --subscription <subscriptionID>` Aby przełączyć się do subskrypcji, do którego chcesz używać.
 
 1. **[Subskrypcja 1]** Zaloguj się i połącz z Subskrypcją 1. Uruchom następujące polecenie, aby uzyskać nazwę i identyfikator bramy z danych wyjściowych:
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881150"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524008"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z klastrów Azure HDInsight Hadoop
 W tym przewodniku używamy [Team Data Science naukowych](overview.md) w scenariuszu end-to-end. Używamy [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) przechowywać, eksplorować, inżynier ds. funkcji dane i z publicznie dostępnych [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych i obniżenie częstotliwości próbkowania danych. Aby obsłużyć binarne i wieloklasowej klasyfikacji i regresji predykcyjnego zadań, firma Microsoft tworzy modele danych przy użyciu usługi Azure Machine Learning. 
@@ -88,11 +88,11 @@ Aby skopiować [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zest
 
 W tym miejscu opisano sposób użycia narzędzia AzCopy do transferu plików zawierających dane. Aby pobrać i zainstalować narzędzia AzCopy, postępuj zgodnie z instrukcjami w artykule [wprowadzenie do narzędzia wiersza polecenia AzCopy](../../storage/common/storage-use-azcopy.md).
 
-1. W oknie wiersza polecenia, uruchom następujące polecenia narzędzia AzCopy, zastępując *< path_to_data_folder >* z docelowej lokalizacji:
+1. W oknie wiersza polecenia, uruchom następujące polecenia narzędzia AzCopy, zastępując  *\<path_to_data_folder >* z docelowej lokalizacji:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Po zakończeniu kopiowania, zobaczysz łącznie 24 skompresowane pliki z folderu danych wybrana. Rozpakuj pobranych plików, w tym samym katalogu na komputerze lokalnym. Zanotuj folder, w którym znajdują się pliki nieskompresowane. Ten folder jest określany jako *< ścieżka\_do\_unzipped_data\_pliki\>*  w poniżej.
+1. Po zakończeniu kopiowania, zobaczysz łącznie 24 skompresowane pliki z folderu danych wybrana. Rozpakuj pobranych plików, w tym samym katalogu na komputerze lokalnym. Zanotuj folder, w którym znajdują się pliki nieskompresowane. Ten folder jest określany jako *\<ścieżki\_do\_unzipped_data\_pliki\>* w poniżej.
 
 ## <a name="upload"></a>Przekaż dane do domyślnego kontenera klastra usługi HDInsight Hadoop
 > [!NOTE]
@@ -102,10 +102,10 @@ W tym miejscu opisano sposób użycia narzędzia AzCopy do transferu plików zaw
 
 Następujące polecenia narzędzia AzCopy, należy zastąpić następujące parametry przy użyciu rzeczywistych wartości, które zostały określone podczas tworzenia klastra usługi Hadoop i Rozpakowywanie plików danych.
 
-* ***< Path_to_data_folder >*** katalogu (wraz ze ścieżką) na komputerze, który zawiera pliki danych rozpakowany.  
-* ***<storage account name of Hadoop cluster>*** Konto magazynu skojarzone z klastrem usługi HDInsight.
-* ***<default container of Hadoop cluster>*** Domyślny kontener używane przez klaster. Należy pamiętać, że nazwa domyślnego kontenera zwykle taką samą nazwę jak samego klastra. Na przykład jeśli klaster jest nazywany "abc123.azurehdinsight.net", domyślny kontener jest abc123.
-* ***<storage account key>*** Klucz konta magazynu używanego przez klaster.
+* ***\<path_to_data_folder >*** katalogu (wraz ze ścieżką) na komputerze, który zawiera pliki danych rozpakowany.  
+* ***\<Nazwa konta magazynu klastra Hadoop >*** konto magazynu skojarzone z klastrem usługi HDInsight.
+* ***\<domyślny kontener klastra Hadoop >*** domyślny kontener używane przez klaster. Należy pamiętać, że nazwa domyślnego kontenera zwykle taką samą nazwę jak samego klastra. Na przykład jeśli klaster jest nazywany "abc123.azurehdinsight.net", domyślny kontener jest abc123.
+* ***\<klucz konta magazynu >*** klucz dla konta magazynu używanego przez klaster.
 
 Z wiersza polecenia lub okno programu Windows PowerShell Uruchom dwa poniższe polecenia narzędzia AzCopy.
 

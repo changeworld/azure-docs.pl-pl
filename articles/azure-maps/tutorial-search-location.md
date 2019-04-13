@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 125e0c4331eea105ffc201bd1f5f26bdbec1c553
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260849"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549392"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -280,13 +280,13 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy
 > * Wyszukiwanie punktu orientacyjnego w pobliżu przy użyciu usługi Search Service
 
-Przykładowy kod z tego samouczka jest dostępny tutaj:
+> [!div class="nextstepaction"]
+> [Wyświetl pełny kod źródłowy](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-> [Lokalizacja wyszukiwania za pomocą usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-[Zobacz przykładową znajdować się tutaj](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+> [!div class="nextstepaction"]
+> [Wyświetl przykład na żywo](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Następny samouczek przedstawia sposób wyświetlenia trasy między dwiema lokalizacjami.
 
 > [!div class="nextstepaction"]
-> [Trasy do miejsca docelowego](./tutorial-route-location.md)
+> [Trasa do miejsca docelowego](./tutorial-route-location.md)

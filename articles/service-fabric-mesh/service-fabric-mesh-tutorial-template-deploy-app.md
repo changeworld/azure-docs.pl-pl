@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8a910f35bf25f889150ea3e89f4fa653f3a9ac14
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336324"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527340"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: Wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
 
@@ -351,8 +351,8 @@ W pliku parametrów zaktualizuj następujące wartości parametrów:
 |registryPassword|Hasło uzyskane wcześniej w kroku [Pobieranie poświadczeń dla rejestru](#retrieve-credentials-for-the-registry). Ten parametr w szablonie jest bezpiecznym ciągiem i nie będzie wyświetlany w stanie wdrożenia ani w poleceniach `az mesh service show`.|
 |registryUserName|Nazwa użytkownika uzyskana w kroku [Pobieranie poświadczeń dla rejestru](#retrieve-credentials-for-the-registry).|
 |registryServer|Nazwa serwera rejestru uzyskana w kroku [Pobieranie poświadczeń dla rejestru](#retrieve-credentials-for-the-registry).|
-|frontEndImage|Obraz kontenera dla usługi frontonu.  Na przykład „<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709”.|
-|serviceImage|Obraz kontenera dla usługi zaplecza.  Na przykład „<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709”.|
+|frontEndImage|Obraz kontenera dla usługi frontonu.  Na przykład `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|Obraz kontenera dla usługi zaplecza.  Na przykład `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Aby wdrożyć aplikację, uruchom następujące polecenie:
 

@@ -1,7 +1,7 @@
 ---
 title: Tworzenie aplikacji z wieloma kontenerami przy użyciu narzędzia Docker Compose — Azure App Service
 description: Wdróż swoją pierwszą aplikację wielokontenerową w funkcji Azure Web App for Containers w ciągu kilku minut.
-keywords: azure app service, aplikacja internetowa, linux, docker, compose, wielokontenerowe, wielokontenerowa, web app for containers, wiele kontenerów, kontener, kubernetes, wordpress, azure db dla mysql, produkcyjna baza danych z kontenerami
+keywords: usłudze Azure app service, aplikacji sieci web, linux, docker compose multicontainer, obsługującej wiele kontenerów, usługi web app for containers, wiele kontenerów kontener wordpress azure db dla mysql, produkcyjnej bazy danych za pomocą kontenerów
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316584"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546242"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Tworzenie aplikacji z wieloma kontenerami (w wersji zapoznawczej) przy użyciu konfiguracji narzędzia Docker Compose
 
-Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose. Instrukcje dotyczące platformy Kubernetes oraz pełne rozwiązanie z użyciem usługi Azure DB dla MySQL zawiera [samouczek dotyczący aplikacji wielokontenerowych](tutorial-multi-container-app.md).
+Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose.
 
 Użyjesz tego przewodnika Szybki start w usłudze Cloud Shell, ale możesz również uruchomić te polecenia lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). 
 
@@ -135,10 +135,13 @@ Przejdź do wdrożonej aplikacji pod adresem `http://<app_name>.azurewebsites.ne
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji wielokontenerowej WordPress przy użyciu funkcji Web App for Containers](tutorial-multi-container-app.md)
+> [Samouczek: Aplikację WordPress z obsługą wielu kontenerów](tutorial-multi-container-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie niestandardowego kontenera](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

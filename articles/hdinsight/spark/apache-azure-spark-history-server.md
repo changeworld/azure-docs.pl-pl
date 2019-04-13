@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076806"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524178"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Serwer historii platformy Spark w usłudze rozszerzonej Apache umożliwia debugowanie i diagnozowanie aplikacji platformy Apache Spark
 
@@ -32,7 +32,7 @@ Serwer historii platformy Spark Apache jest interfejs użytkownika sieci web dla
     ![Platforma Spark jest serwer historii](./media/apache-azure-spark-history-server/launch-history-server.png "Spark serwer historii")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otwórz Web serwer historii platformy Spark interfejsu użytkownika według adresu URL
-Otwórz Zamień serwer historii platformy Spark, przechodząc pod następujący adres URL <ClusterName> nazwą klastra Spark klienta.
+Otwórz Zamień serwer historii platformy Spark, przechodząc pod następujący adres URL `<ClusterName>` nazwą klastra Spark klienta.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory

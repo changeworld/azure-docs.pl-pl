@@ -8,22 +8,22 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486822"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549699"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
 Usługa Azure SQL Database udostępnia kilka metod do tworzenia spójnej transakcyjnie kopii istniejącej bazy danych Azure SQL na tym samym serwerze lub na innym serwerze. Możesz skopiować bazę danych SQL za pomocą witryny Azure portal, programu PowerShell lub języka T-SQL. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Kopiowanie bazy danych jest migawką źródłowej bazy danych od czasu żądanie kopii. Można wybrać tego samego serwera lub innego serwera, jej warstwę usług i rozmiaru obliczeń lub rozmiar obliczeniowej, w ramach tej samej warstwy usługi (wydanie). Po zakończeniu kopiowania staje się ona w pełni funkcjonalne, niezależnie od bazy danych. W tym momencie można uaktualnić lub obniżyć jej do dowolnej wersji. Identyfikatory logowania, użytkownikami i uprawnieniami mogą być zarządzane niezależnie.  
 
@@ -90,10 +90,16 @@ To polecenie kopiuje bazadanych1 na serwerze1 do nowej bazy danych o nazwie bazy
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> Oba serwery zapory muszą skonfigurowane w taki sposób, aby zezwolić na połączenia przychodzące z adresu IP klienta, wydanie polecenia języka T-SQL kopii.
 
-## <a name="to-move-a-database-between-subscriptions"></a>Przenoszenie bazy danych między subskrypcjami
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>Kopiowanie bazy danych SQL do innej subskrypcji
 
-W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **serwerów SQL** a następnie wybierz serwer, który hostuje bazę danych z listy. Kliknij przycisk **przenieść**, a następnie wybierz zasoby do przeniesienia oraz subskrypcję, której chcesz przenieść.
+Descrbed kroki opisane w poprzedniej sekcji służy do kopiowania bazy danych na serwerze bazy danych SQL w innej subskrypcji. Upewnij się, użyj nazwy logowania, która ma taką samą nazwę i hasło jako właściciel bazy danych źródłowej bazy danych i jest członkiem roli dbmanager lub jest głównego identyfikatora logowania poziomu serwera. 
+
+> [!NOTE]
+> [Witryny Azure portal](https://portal.azure.com) nie obsługuje kopiowania do innej subskrypcji, ponieważ Portal wywołuje interfejs API ARM i używa certyfikatów subskrypcji dostępu do obu serwerów, które są związane z replikacją geograficzną.  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitoruj postęp operacji kopiowania
 

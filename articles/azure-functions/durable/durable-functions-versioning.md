@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338247"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549088"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcje trwałe (usługa Azure Functions)
 
@@ -140,7 +140,7 @@ Wszystkie jednostki usługi Azure Storage są nazywane na podstawie `HubName` wa
 Firma Microsoft zaleca Wdrażanie nowej wersji aplikacji funkcji na nowe [miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Miejsca wdrożenia umożliwiają uruchamianie wielu kopii Twojej funkcji aplikacji side-by-side przy użyciu tylko jeden z nich jako aktywny *produkcji* miejsca. Gdy wszystko jest gotowe do udostępnienia nowej logiki aranżacji w istniejącej infrastrukturze, może być proste i polega na zamianę nowej wersji do miejsca produkcji.
 
 > [!NOTE]
-> Ta strategia sprawdza się najlepiej, korzystając z wyzwalaczami HTTP i elementy webhook dla funkcji programu orchestrator. Wyzwalaczy protokołu HTTP, takich jak kolejki i usługi Event Hubs do definicji wyzwalacza powinien pochodzić od ustawienia aplikacji, która zostanie zaktualizowany w ramach operacji wymiany.
+> Ta strategia sprawdza się najlepiej, korzystając z wyzwalaczami HTTP i elementy webhook dla funkcji programu orchestrator. Wyzwalaczy protokołu HTTP, takich jak kolejki i usługi Event Hubs do definicji wyzwalacza powinien [dziedziczyć ustawienia aplikacji](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , zostanie zaktualizowany w ramach operacji wymiany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

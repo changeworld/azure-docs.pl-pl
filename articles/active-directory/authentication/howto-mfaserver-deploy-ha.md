@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370078"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547009"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication wysokiej dostępności
 
@@ -36,7 +36,7 @@ Zarówno węzła głównego usługi MFA, jak i serwery podrzędne MFA komunikowa
 
 Po pomyślnym uwierzytelnieniu z usługą Active Directory serwer MFA będą komunikować się z usługą MFA. Serwer MFA czeka na powiadomienie z usługi MFA, aby udzielić lub odmówić dostępu użytkownika do aplikacji.
 
-Jeśli głównym serwerem MFA przejdzie do trybu offline, uwierzytelnień mogą nadal być przetwarzane, ale nie można przetworzyć operacji, które wymagają zmian w bazie danych usługi MFA. (Przykłady: dodanie użytkowników samoobsługi zmiany numeru PIN i zmiany informacji o użytkowniku)
+Jeśli głównym serwerem MFA przejdzie do trybu offline, uwierzytelnień mogą nadal być przetwarzane, ale nie można przetworzyć operacji, które wymagają zmian w bazie danych usługi MFA. (Przykłady: dodanie użytkowników, Samoobsługowe numeru PIN zmian, zmiany informacji o użytkowniku lub dostępu do aplikacji portal użytkowników)
 
 ## <a name="deployment"></a>Wdrożenie
 

@@ -8,29 +8,24 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 2957b45a0a26c590e2db1b402f4956ae9c3b8000
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59291834"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532785"
 ---
-W poniższej tabeli opisano domyślne limity dla usługi Azure Storage. *Ruch przychodzący* limit odnosi się do wszystkich danych z żądań, które są wysyłane do konta magazynu. *Ruch wychodzący* limit odnosi się do wszystkich danych z odpowiedzi, które są odbierane z konta magazynu.
+W poniższej tabeli opisano domyślne limity dla platformy Azure, general-purpose v1, v2 i konta usługi Blob storage. *Ruch przychodzący* limit odnosi się do wszystkich danych z żądań, które są wysyłane do konta magazynu. *Ruch wychodzący* limit odnosi się do wszystkich danych z odpowiedzi, które są odbierane z konta magazynu.
 
 | Zasób | Limit domyślny |
 | --- | --- |
 | Liczba kont magazynu na region na subskrypcję, w tym kont w warstwach standardowa i premium | 250 |
 | Maksymalna pojemność konta | 2 PB dla Stanów Zjednoczonych i Europie, 500 TB dla wszystkich innych regionów, w tym Wielkiej Brytanii |
 | Maksymalna liczba kontenerów obiektów blob, obiekty BLOB, udziały plików, tabel, kolejek, jednostki lub wiadomości na koncie magazynu | Bez ograniczeń |
-| Maksymalny rozmiar konta magazynu FileStorage (wersja zapoznawcza) | 100 000 giB |
-| Maksymalna liczba IOPS dla konta magazynu FileStorage (wersja zapoznawcza) | 100 000 |
-| Maksymalna przepustowość dla konta magazynu FileStorage (wersja zapoznawcza) | 5 GB/s |
 | Maksymalna liczba żądań<sup>1</sup> na konto magazynu | 20 000 żądań na sekundę |
 | Maksymalna ruch przychodzący<sup>1</sup> na konto magazynu (regionami w Stanach Zjednoczonych) | 10 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 20 GB/s dla magazynu LRS/ZRS<sup>2</sup> |
 | Maksymalna ruch przychodzący<sup>1</sup> na konto magazynu (regiony poza USA) | 5 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 10 GB/s dla magazynu LRS/ZRS<sup>2</sup> |
-| Maksymalna ruch przychodzący na koncie magazynu FileStorage (wersja zapoznawcza) (regionami w Stanach Zjednoczonych) | 20 GB/s (tylko LRS) |
-| Maksymalna ruch przychodzący na koncie magazynu FileStorage (wersja zapoznawcza) (regiony poza USA) | 10 GB/s (tylko LRS)|
-| Maksymalna ruchu wychodzącego dla ogólnego przeznaczenia w wersji 2, FileStorage (wersja zapoznawcza) i magazynu obiektów Blob konta (wszystkich regionów) | 50 GB/s |
+| Maksymalnego wychodzącego ogólnego przeznaczenia v2 i konta usługi Blob storage (wszystkich regionów) | 50 GB/s |
 | Maksymalna ruchu wychodzącego dla kont magazynu ogólnego przeznaczenia w wersji 1 (regionami w Stanach Zjednoczonych) | 20 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 30 GB/s dla magazynu LRS/ZRS<sup>2</sup> |
 | Maksymalna ruchu wychodzącego dla kont magazynu ogólnego przeznaczenia w wersji 1 (regiony poza USA) | 10 GB/s Jeśli Magazyn RA-GRS/GRS jest włączona, 15 GB/s dla magazynu LRS/ZRS<sup>2</sup> |
 

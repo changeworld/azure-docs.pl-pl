@@ -7,21 +7,24 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: de5d8a3cd329e023b57d887a22db5459f13c7486
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492791"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545560"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie aktywności wykorzystanie i kwerendy zasobów w usłudze Azure SQL Data Warehouse
 Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania magazynu danych, ponieważ zapewnia okresów przechowywania można skonfigurować, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure np. Operations Management Suite (OMS) i Azure Monitor (Dzienniki), aby zapewnić kompleksowe środowisko monitorowania dla nie tylko magazyn danych, ale także całą analizy platformy Azure Platforma zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów 
 Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Data Warehouse. Te metryki są udostępniane za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+
+> [!NOTE]
+> Obecnie poziomu węzła procesora CPU i metryk We/Wy nie odzwierciedlają prawidłowo użycie magazynu danych. Te metryki zostanie usunięty w najbliższej przyszłości, jak zespół poprawia monitorowania i rozwiązywania problemów z usługi SQL Data Warehouse. 
 
 | Nazwa metryki                           | Opis     | Typ agregacji |
 | --------------------------------------- | ---------------- | --------------------------------------- |

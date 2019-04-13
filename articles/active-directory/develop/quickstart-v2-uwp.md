@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c61da6a55b1f4502deee056b29fdbc22ef33514
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490622"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526388"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -65,14 +65,14 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
 > Aby kod przykładowy z tego samouczka działał, należy dodać identyfikator URI przekierowania w formacie **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Ta zmiana wprowadzona dla mnie]()
+> > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-uwp/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-uwp/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
- - [Pobieranie projektu programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [Pobierz projekt programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
@@ -86,7 +86,7 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 
 > [!div renderon="docs"]
 > Gdzie:
-> - `Enter_the_Application_Id_here` — Identyfikator aplikacji dla aplikacji został zarejestrowany.
+> - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 >
 > > [!TIP]
 > > Aby znaleźć wartości *identyfikator aplikacji*, przejdź do **Przegląd** strony
@@ -108,7 +108,7 @@ Ta sekcja zawiera więcej informacji na temat przewodnika Szybki start.
 Biblioteka MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) to biblioteka używane do logowania użytkowników i żądania tokenów zabezpieczających. Tokeny zabezpieczające umożliwiają dostęp do interfejsu API chronionego przez platformę Microsoft Identity dla deweloperów. Bibliotekę MSAL można zainstalować, uruchamiając następujące polecenie w *Konsoli menedżera pakietów* programu Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
@@ -145,14 +145,13 @@ Sytuacje wymagają wymuszania użytkowników wchodzić w interakcje z punktem ko
 - Gdy wymagane jest uwierzytelnianie dwuetapowe.
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(scopes, this)
-                       .ExecuteAsync();
+authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
+                      .ExecuteAsync();
 ```
 
 > |Gdzie:||
 > |---------|---------|
 > | `scopes` | Zawiera żądane zakresy, takie jak `{ "user.read" }` dla programu Microsoft Graph lub `{ "api://<Application ID>/access_as_user" }` dla niestandardowych interfejsów internetowych API. |
-> | `this`| To okno WPF, który będzie używany, aby wyśrodkować okno dialogowe logowania
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
@@ -177,4 +176,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Wypróbuj samouczek dotyczący aplikacji klasycznych systemu Windows, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym podręczniku Szybki start.
 
 > [!div class="nextstepaction"]
-> [Platforma UWP — samouczek wywołania interfejsu API programu Graph](tutorial-v2-windows-uwp.md)
+> [UWP — Call Graph API tutorial (Samouczek dotyczący platformy UWP i wywoływania interfejsu API programu Graph)](tutorial-v2-windows-uwp.md)

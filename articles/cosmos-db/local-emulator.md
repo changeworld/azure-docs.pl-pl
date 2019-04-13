@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493216"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525426"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Na użytek emulatora usługi Azure Cosmos lokalne programowanie i testowanie
 
@@ -252,7 +252,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 | GremlinPort | Numer portu używany dla punktu końcowego języka Gremlin. Wartość domyślna to 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: numer pojedynczego portu |
 |TablePort | Numer portu używany dla punktu końcowego z tabeli platformy Azure. Wartość domyślna to 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: numer pojedynczego portu|
 | KeyFile | Odczyt klucza autoryzacji z określonego pliku. Użyj opcji /GenKeyFile do wygenerowania pliku klucza | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<nazwa_pliku\>: Ścieżka do pliku |
-| ResetDataPath | Rekursywnie usuwa wszystkie pliki w określonej ścieżce. Jeśli nie określisz ścieżki, jego wartość domyślna to %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath [=<path>] | \<path\>: Ścieżka pliku  |
+| ResetDataPath | Rekursywnie usuwa wszystkie pliki w określonej ścieżce. Jeśli nie określisz ścieżki, jego wartość domyślna to %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath [=\<path >] | \<path\>: Ścieżka pliku  |
 | StartTraces  |  Rozpoczęcie zbierania dzienników śledzenia debugowania. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Zatrzymaj zbieranie dzienników śledzenia debugowania. | CosmosDB.Emulator.exe /StopTraces  | |
 |EnableTableEndpoint | Umożliwia usłudze Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |

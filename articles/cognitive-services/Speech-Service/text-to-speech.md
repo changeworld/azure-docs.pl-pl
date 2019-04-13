@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 597932ae9ad4dba76428fa6a4882c50f6ff98754
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263115"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549509"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -56,7 +56,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 \* *Te usługi są dostępne przy użyciu punktu końcowego cris.ai. Zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> Punkt końcowy zamiany tekstu na mowę implementuje, ograniczanie przepustowości, która ogranicza żądania do 25 na 5 sekund. Gdy wystąpi ograniczanie przepustowości, zostanie wyświetlone powiadomienie za pośrednictwem nagłówków wiadomości.
+> Punkty końcowe niestandardowych voice zaimplementować ograniczanie przepustowości, która ogranicza żądania do 25 na 5 sekund. Gdy wystąpi ograniczanie przepustowości, zostanie wyświetlone powiadomienie za pośrednictwem nagłówków wiadomości.
 
 ## <a name="get-started-with-text-to-speech"></a>Rozpoczynanie pracy z usługą zamiany tekstu na mowę
 
@@ -66,17 +66,17 @@ Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamian
 
 | Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| [C#, .NET framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
+| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 
 ### <a name="rest-quickstarts"></a>Przewodniki Szybki Start REST
 
 | Przewodnik Szybki Start (REST) | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -89,7 +89,7 @@ Przykładowy kod zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te pr
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Zestaw Speech Devices SDK](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
+* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
 * [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
 

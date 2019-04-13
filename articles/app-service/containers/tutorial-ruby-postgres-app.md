@@ -1,23 +1,23 @@
 ---
-title: Tworzenie aplikacji w języku Ruby i korzystającej z bazy danych Postgres w systemie Linux — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację języka Ruby na platformie Azure z użyciem połączenia z bazą danych PostgreSQL na platformie Azure.
+title: Ruby (Rails) z Postgres w systemie Linux — usługa Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uruchomić aplikację języka Ruby na platformie Azure z użyciem połączenia z bazą danych PostgreSQL na platformie Azure. Platformy Rails jest używany w tym samouczku.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: ruby
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e42d9592d74e845410441097fa6082cfb3f4ac5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713883"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544692"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Ruby i korzystającej z bazy danych Postgres w usłudze Azure App Service w systemie Linux
 
@@ -65,7 +65,7 @@ Wpisz polecenie `\q`, aby zamknąć klienta Postgres.
 Utwórz użytkownika bazy danych Postgres, który może tworzyć bazy danych, uruchamiając następujące polecenie za pomocą zalogowanej nazwy użytkownika systemu Linux.
 
 ```bash
-sudo -u postgres createuser -d <signed_in_user>
+sudo -u postgres createuser -d <signed-in-user>
 ```
 
 <a name="step2"></a>
@@ -125,10 +125,10 @@ W tym kroku utworzysz bazę danych Postgres w usłudze [Azure Database for Postg
 
 Za pomocą polecenia [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) utwórz serwer PostgreSQL.
 
-Uruchom następujące polecenie w usłudze Cloud Shell, wstawiając unikatową nazwę serwera w miejscu ciągu zastępczego *\<postgres_server_name>*. Nazwa serwera musi być unikatowa w obrębie wszystkich serwerów na platformie Azure. 
+Uruchom następujące polecenie w usłudze Cloud Shell i Wstaw unikatową nazwę serwera dla  *\<postgres-server-name >* symbol zastępczy. Nazwa serwera musi być unikatowa w obrębie wszystkich serwerów na platformie Azure. 
 
 ```azurecli-interactive
-az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres_server_name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
+az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
 ```
 
 Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersza polecenia platformy Azure zostaną wyświetlone informacje podobne do następujących:
@@ -137,10 +137,10 @@ Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersz
 {
   "administratorLogin": "adminuser",
   "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
-  "fullyQualifiedDomainName": "<postgres_server_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres_server_name>",
+  "fullyQualifiedDomainName": "<postgres-server-name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres-server-name>",
   "location": "westeurope",
-  "name": "<postgres_server_name>",
+  "name": "<postgres-server-name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 2,
@@ -155,10 +155,10 @@ Po utworzeniu serwera usługi Azure Database for PostgreSQL w interfejsie wiersz
 
 ### <a name="configure-server-firewall"></a>Konfigurowanie zapory serwera
 
-W usłudze Cloud Shell przy użyciu polecenia [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) utwórz regułę zapory dla serwera Postgres, aby zezwolić na połączenia klientów. Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. Wstaw unikatową nazwę serwera w miejsce ciągu zastępczego *\<postgres_server_name>*.
+W usłudze Cloud Shell przy użyciu polecenia [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) utwórz regułę zapory dla serwera Postgres, aby zezwolić na połączenia klientów. Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. Wstaw unikatową nazwę serwera dla  *\<postgres-server-name >* symbol zastępczy.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres_server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!TIP] 
@@ -167,10 +167,10 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ### <a name="connect-to-production-postgres-server-locally"></a>Nawiązywanie połączenia z serwerem produkcyjnym Postgres lokalnie
 
-W usłudze Cloud Shell połącz się z serwerem Postgres na platformie Azure. Zamiast ciągów zastępczych _&lt;postgres_server_name>_ użyj wcześniej określonej wartości.
+W usłudze Cloud Shell połącz się z serwerem Postgres na platformie Azure. Użyj wartości określonej wcześniej  _&lt;postgres-server-name >_ symbole zastępcze.
 
 ```bash
-psql -U adminuser@<postgres_server_name> -h <postgres_server_name>.postgres.database.azure.com postgres
+psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
 Gdy zostanie wyświetlony monit o hasło, wpisz hasło _My5up3r$tr0ngPa$w0rd!_, które określono podczas tworzenia serwera bazy danych.
@@ -188,7 +188,7 @@ CREATE DATABASE sampledb;
 Utwórz użytkownika bazy danych o nazwie _railsappuser_ i nadaj mu wszystkie uprawnienia w bazie danych `sampledb`.
 
 ```sql
-CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017'; 
+CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017';
 GRANT ALL PRIVILEGES ON DATABASE sampledb TO railsappuser;
 ```
 
@@ -220,13 +220,13 @@ Zapisz zmiany.
 Po powrocie do terminala lokalnego ustaw następujące zmienne środowiskowe:
 
 ```bash
-export DB_HOST=<postgres_server_name>.postgres.database.azure.com
+export DB_HOST=<postgres-server-name>.postgres.database.azure.com
 export DB_DATABASE=sampledb 
-export DB_USERNAME=railsappuser@<postgres_server_name>
+export DB_USERNAME=railsappuser@<postgres-server-name>
 export DB_PASSWORD=MyPostgresAzure2017
 ```
 
-Uruchom migracje baz danych platformy Rails z właśnie skonfigurowanymi wartościami produkcyjnymi, aby utworzyć tabele w bazie danych Postgres w usłudze Azure Database for PostgreSQL. 
+Uruchom migracje baz danych platformy Rails z właśnie skonfigurowanymi wartościami produkcyjnymi, aby utworzyć tabele w bazie danych Postgres w usłudze Azure Database for PostgreSQL.
 
 ```bash
 rake db:migrate RAILS_ENV=production
@@ -247,8 +247,8 @@ rails secret
 Zapisz ten klucz tajny w określonych zmiennych używanych przez środowisko produkcyjne platformy Rails. Dla wygody możesz używać tego samego klucza dla obu zmiennych.
 
 ```bash
-export RAILS_MASTER_KEY=<output_of_rails_secret>
-export SECRET_KEY_BASE=<output_of_rails_secret>
+export RAILS_MASTER_KEY=<output-of-rails-secret>
+export SECRET_KEY_BASE=<output-of-rails-secret>
 ```
 
 Włącz w środowisku produkcyjnym platformy Rails udostępnianie plików JavaScript i CSS.
@@ -302,15 +302,15 @@ W tym kroku wdrożysz aplikację platformy Rails połączoną z bazą danych Pos
 
 W usłudze App Service zmienne środowiskowe ustawia się jako _ustawienia aplikacji_ za pomocą polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell.
 
-Następujące polecenie usługi Cloud Shell konfiguruje ustawienia aplikacji `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` i `DB_PASSWORD`. Zastąp ciągi zastępcze _&lt;appname>_ i _&lt;postgres_server_name>_.
+Następujące polecenie usługi Cloud Shell konfiguruje ustawienia aplikacji `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` i `DB_PASSWORD`. Zastąp symbole zastępcze  _&lt;nazwa_aplikacji >_ i  _&lt;postgres-server-name >_.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<postgres_server_name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres_server_name>" DB_PASSWORD="MyPostgresAzure2017"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
 ```
 
 ### <a name="configure-rails-environment-variables"></a>Konfigurowanie zmiennych środowiskowych platformy Rails
 
-W terminalu lokalnym wygeneruj nowy klucz tajny dla środowiska produkcyjnego platformy Rails na platformie Azure.
+W terminalu lokalnym [wygenerować nowy klucz tajny](configure-language-ruby.md#set-secret_key_base-manually) w środowisku produkcyjnym platformy Rails na platformie Azure.
 
 ```bash
 rails secret
@@ -318,20 +318,20 @@ rails secret
 
 Skonfiguruj zmienne wymagane przez środowisko produkcyjne platformy Rails.
 
-W następującym poleceniu usługi Cloud Shell zastąp dwa teksty zastępcze _&lt;output_of_rails_secret>_ nowy kluczem tajnym wygenerowanym w terminalu lokalnym.
+W poniższym poleceniu usługi Cloud Shell Zastąp dwa  _&lt;dane wyjściowe programu platformy rails secret >_ symbole zastępcze przy użyciu nowego klucza tajnego generowane w terminalu lokalnym.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output_of_rails_secret>" SECRET_KEY_BASE="<output_of_rails_secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-Właściwość `ASSETS_PRECOMPILE="true"` informuje domyślny kontener języka Ruby, aby wstępnie skompilował zasoby przy każdym wdrożeniu narzędzia Git.
+Właściwość `ASSETS_PRECOMPILE="true"` informuje domyślny kontener języka Ruby, aby wstępnie skompilował zasoby przy każdym wdrożeniu narzędzia Git. Aby uzyskać więcej informacji, zobacz [wstępnie skompilował zasoby](configure-language-ruby.md#precompile-assets) i [obsługiwać zasoby statyczne](configure-language-ruby.md#serve-static-assets).
 
 ### <a name="push-to-azure-from-git"></a>Wypychanie z narzędzia Git na platformę Azure
 
 W terminalu lokalnym dodaj zdalną platformę Azure do lokalnego repozytorium Git.
 
 ```bash
-git remote add azure <paste_copied_url_here>
+git remote add azure <paste-copied-url-here>
 ```
 
 Wykonaj wypchnięcie na zdalną platformę Azure w celu wdrożenia aplikacji platformy Ruby on Rails. Zostanie wyświetlony monit o podanie hasła określonego wcześniej w ramach tworzenia użytkownika wdrożenia.
@@ -359,7 +359,7 @@ remote: Running deployment command...
 
 ### <a name="browse-to-the-azure-app"></a>Przechodzenie do aplikacji platformy Azure
 
-Przejdź do adresu `http://<app_name>.azurewebsites.net` i dodaj kilka zadań do listy.
+Przejdź do adresu `http://<app-name>.azurewebsites.net` i dodaj kilka zadań do listy.
 
 ![Aplikacja platformy Ruby on Rails uruchomiona w usłudze Azure App Service](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
 
@@ -476,6 +476,10 @@ Po zakończeniu wykonywania polecenia `git push` przejdź do aplikacji platformy
 
 Jeśli dodano jakiekolwiek zadania, zostaną one zachowane w bazie danych. Aktualizacje schematu danych pozostawiają dane bez zmian.
 
+## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+
 ## <a name="manage-the-azure-app"></a>Zarządzanie aplikacją platformy Azure
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby zarządzać utworzoną aplikacją.
@@ -506,7 +510,12 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Strumieniowe przesyłanie dzienników diagnostycznych z platformy Azure
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Samouczek: Mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
+
+Lub zapoznaj się z innymi zasobami:
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie aplikacji języka Ruby](configure-language-ruby.md)

@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 3/17/2019
 ms.author: b-juche
-ms.openlocfilehash: c2dd8b636223e0484e36eed9fcc616dc6f19cf3a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877979"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549188"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Tworzenie woluminu dla usługi Azure NetApp Files
 
@@ -46,10 +46,10 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
         Nazwa musi być unikatowa w obrębie grupy zasobów. Musi zawierać co najmniej trzy znaki.  Można użyć znaków alfanumerycznych.
 
-    * **Pula pojemności**  
+    * **Pojemności puli**  
         Określ pulę pojemności, którego woluminu, który ma zostać utworzony.
 
-    * **Przydział**  
+    * **Limit przydziału**  
         Określ wielkość magazynu logicznego, który zostanie przydzielony do woluminu.  
 
         W polu **Dostępny limit przydziału** jest wyświetlana ilość nieużywanego miejsca w wybranej puli pojemności, które można wykorzystać do utworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.  
@@ -100,7 +100,7 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
         Jest to adres IP kontrolera domeny preferowanych Active Directory Domain Services do użycia z usługą Azure Files NetApp. 
     * **Pomocniczy serwer DNS**  
         Jest to adres IP kontrolera domeny dla dodatkowej Active Directory Domain Services do użycia z usługą Azure Files NetApp. 
-    * **Domain**  
+    * **Domeny**  
         Jest to nazwa domeny usługi Active Directory Domain Services, którą chcesz przyłączyć.
     * **Prefiks serwera (konto komputera) protokołu SMB**  
         Jest to prefiks nazewnictwa dla konta komputera w usłudze Active Directory, które usługi Azure Files NetApp zostanie użyte do tworzenia nowych kont.
@@ -113,7 +113,7 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
         Jest to ścieżka LDAP dla jednostki organizacyjnej (OU), której zostanie utworzona kont komputerów serwera SMB. Oznacza to, OU = drugiego poziomu, OU = pierwszy poziom. 
     * Poświadczenia, w tym usługi **username** i **hasła**
 
-    ![Dołącz do usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Połącz usługę Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kliknij pozycję **Dołącz**.  
 
@@ -141,10 +141,10 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
      
         Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków.  
 
-    * **Pula pojemności**  
+    * **Pojemności puli**  
         Określ pulę pojemności, którego woluminu, który ma zostać utworzony.
 
-    * **Przydział**  
+    * **Limit przydziału**  
         Określ wielkość magazynu logicznego, który zostanie przydzielony do woluminu.  
 
         W polu **Dostępny limit przydziału** jest wyświetlana ilość nieużywanego miejsca w wybranej puli pojemności, które można wykorzystać do utworzenia nowego woluminu. Rozmiar nowego woluminu nie może przekraczać dostępnego limitu przydziału.  
@@ -179,6 +179,6 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-* [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Konfigurowanie zasad eksportu dla woluminu NFS](azure-netapp-files-configure-export-policy.md)
-* [Dowiedz się więcej o integracji sieci wirtualnej dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Zainstalowanie lub odinstalowanie woluminu dla maszyn wirtualnych Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Konfigurowanie zasad eksportu dla woluminu systemu plików NFS](azure-netapp-files-configure-export-policy.md)
+* [Informacje o integracji z siecią wirtualną dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 35f2c1bcc3db82f5fbca5f0458d534bf73d9067a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 4d93cfe78159fdf4ef3c34e8f80732603b701538
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010502"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521686"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -272,7 +272,7 @@ W ciągu kilku minut zostanie utworzona maszyna wirtualna. Po utworzeniu, zwró�
 
 ## <a name="confirm-access-to-storage-account"></a>Potwierdzanie dostępu do konta magazynu
 
-Nawiąż połączenie *myVmPrivate* maszyny Wirtualnej. Zastąp *<publicIpAddress>* publiczny adres IP Twojego *myVmPrivate* maszyny Wirtualnej.
+Nawiąż połączenie *myVmPrivate* maszyny Wirtualnej. Zastąp  *\<publiczny adres IP >* publiczny adres IP Twojego *myVmPrivate* maszyny Wirtualnej.
 
 ```bash 
 ssh <publicIpAddress>

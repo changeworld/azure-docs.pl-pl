@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873567"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522749"
 ---
 # <a name="collaborating-with-other-authors"></a>Współpraca z innymi autorami
 
-Usługa LUIS umożliwia współpracę, aby umożliwić grupa osób, aby utworzyć aplikację.
+Usługa LUIS aplikacje wymagają jednego właściciela i współpracowników opcjonalne zezwalanie wielu użytkownikom tworzenie pojedynczej aplikacji.
 
 ## <a name="luis-account"></a>Konto usługi LUIS
 Konto usługi LUIS jest skojarzone z pojedynczym [Microsoft Live](https://login.live.com/) konta. Każde konto usługi LUIS otrzymuje bezpłatne [tworzenia klucza](luis-concept-keys.md#authoring-key) służące do tworzenia aplikacji usługi LUIS to konto ma dostęp do. 
@@ -30,7 +30,8 @@ Konto usługi LUIS może mieć wiele aplikacji usługi LUIS.
 Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 
 ## <a name="luis-app-owner"></a>Właściciel aplikacji usługi LUIS
-Konta, które służy do tworzenia aplikacji jest właścicielem. Każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji  **[ustawienia](luis-how-to-collaborate.md)**. To konto które można usunąć aplikacji. Jest to również konto które otrzymuje wiadomość e-mail po osiągnięciu limitu przydziału z punktu końcowego 75% limit miesięczny. 
+
+Konta, które służy do tworzenia aplikacji jest właścicielem i każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji **[ustawienia](luis-how-to-collaborate.md)** strony. Właściciel może usunąć aplikację otrzymywać wiadomości e-mail, gdy przydział punktu końcowego osiągnie 75% limit miesięczny. 
 
 ## <a name="authorization-roles"></a>Role autoryzacji
 Usługa LUIS nie obsługuje różne role dla właścicieli i współpracowników z jednym wyjątkiem. Właściciel jest to jedyne konto, które można usunąć aplikacji.
@@ -61,6 +62,10 @@ Ta metoda umożliwia jednej wersji aktywnej, jednej wersji etapu i jeden opublik
 [Eksportuj](luis-how-to-manage-versions.md#export-version) wersja podstawowa. Każdego autora importuje wersji. Osoby, które importuje aplikacja jest właścicielem wersji. Po ich zakończeniu modyfikowania aplikacji, eksportowanie wersji. 
 
 Wyeksportowane aplikacje są sformatowanego JSON pliki, które można porównać z podstawowej eksportu dla zmian. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji.
+
+## <a name="collaborator-roles-vs-entity-roles"></a>Współautor ról programu vs jednostki ról
+
+[Role jednostki](luis-concept-roles.md) mają zastosowanie do modelu danych aplikacji usługi LUIS. Współautor role mają zastosowanie do poziomów dostępu do tworzenia. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093672"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547560"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Zainstaluj środowisko uruchomieniowe usługi Azure Functions preview 2
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Jeśli chcesz zainstalować Podgląd środowiska uruchomieniowego usługi Azure Functions, 2, wykonaj następujące kroki:
 
@@ -102,36 +104,37 @@ Aby ukończyć instalację środowiska uruchomieniowego usługi Azure Functions,
 
 Tworzenie pierwszej funkcji w wersji zapoznawczej środowisko uruchomieniowe usługi Azure Functions
 
-1. Przejdź do **Portal środowiska uruchomieniowego usługi Azure Functions** jako https://<machinename>.<domain> Na przykład https://mycomputer.mydomain.com
+1. Przejdź do **Portal środowiska uruchomieniowego usługi Azure Functions** jako `https://<machinename>.<domain>` na przykład `https://mycomputer.mydomain.com`.
+
 1. Zostanie wyświetlony monit o **Zaloguj**, jeśli wdrożono używane domeny, nazwę domeny konta użytkownika i hasło, w przeciwnym razie użyj nazwę lokalnego konta użytkownika i hasło, aby zalogować się do portalu.
 
-![Środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu logowanie do platformy Azure][14]
+    ![Środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu logowanie do platformy Azure][14]
 
-1. Aby utworzyć aplikację funkcji, należy utworzyć subskrypcję.  W lewym górnym rogu portalu kliknij **+** opcję obok subskrypcje
+1. Aby utworzyć aplikację funkcji, należy utworzyć subskrypcję.  W lewym górnym rogu portalu kliknij **+** opcję obok subskrypcje.
 
-![Subskrypcje platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej portalu][15]
+    ![Subskrypcje platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej portalu][15]
 
 1. Wybierz **DefaultPlan**, wprowadź nazwę dla Twojej subskrypcji i kliknij przycisk **Utwórz**.
 
-![Plan subskrypcji w portalu w wersji zapoznawczej w usłudze Azure środowisko uruchomieniowe usługi Functions i nazwa][16]
+    ![Plan subskrypcji w portalu w wersji zapoznawczej w usłudze Azure środowisko uruchomieniowe usługi Functions i nazwa][16]
 
 1. Wszystkie Twoje aplikacje funkcji są wyświetlane w okienku po lewej stronie portalu.  Aby utworzyć nową aplikację funkcji, wybierz nagłówek **aplikacje funkcji** i kliknij przycisk **+** opcji.
 
 1. Wprowadź nazwę aplikacji funkcji, wybierz poprawną subskrypcję, którą wersję środowiska uruchomieniowego usługi Azure Functions, aby programować przy użyciu, a następnie kliknij przycisk Wybierz **Create**
 
-![Usługa Azure środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu nowej aplikacji funkcji][17]
+    ![Usługa Azure środowisko uruchomieniowe usługi Functions w wersji zapoznawczej portalu nowej aplikacji funkcji][17]
 
 1. Nową aplikację funkcji znajduje się w okienku po lewej stronie portalu.  Wybierz funkcje, a następnie kliknij przycisk **nową funkcję** w górnej części okienka Centrum w portalu.
 
-![Szablony platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][18]
+    ![Szablony platformy Azure w wersji zapoznawczej środowiska uruchomieniowego usługi Functions][18]
 
 1. Wybierz funkcję wyzwalacza czasomierza, w menu po prawej stronie wysuwane nadaj nazwę funkcji i Zmień harmonogram `*/5 * * * * *` (to wyrażenie cron powoduje, że funkcję czasomierza, aby wykonać co pięć sekund) i kliknij przycisk **Create**
 
-![Konfiguracji platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej nowego czasomierza — funkcja][19]
+    ![Konfiguracji platformy Azure środowiska uruchomieniowego usługi Functions w wersji zapoznawczej nowego czasomierza — funkcja][19]
 
 1. Funkcja została utworzona.  Dziennik wykonywania aplikacji funkcji można wyświetlić, rozwijając **dziennika** okienku u dołu portalu.
 
-![Wykonywanie funkcji w wersji zapoznawczej środowiska uruchomieniowego usługi Functions platformy Azure][20]
+    ![Wykonywanie funkcji w wersji zapoznawczej środowiska uruchomieniowego usługi Functions platformy Azure][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

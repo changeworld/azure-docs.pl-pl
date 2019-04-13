@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360765"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523005"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
@@ -179,7 +179,7 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
    | Właściwość | Wartość |
    | -------- | ----- |
-   | **Interval** | 1 | 
+   | **Interwał** | 1 | 
    | **Częstotliwość** | Dzień |
    | **W tych godzinach** | 8 |
    ||| 
@@ -195,8 +195,8 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
    | Właściwość | Wartość | Opis |
    | -------- | ----- | ----------- |
-   | **Name (Nazwa)** | Limit | Nazwa zmiennej użytkownika | 
-   | **Type** | Liczba całkowita | Typ danych zmiennej użytkownika | 
+   | **Nazwa** | Limit | Nazwa zmiennej użytkownika | 
+   | **Typ** | Liczba całkowita | Typ danych zmiennej użytkownika | 
    | **Wartość** | 0 | Zmiennej przez wartość początkowa | 
    |||| 
 
@@ -236,8 +236,8 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
       | Właściwość | Wartość | Opis |
       | -------- | ----- | ----------- | 
-      | **Do** | *<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
-      | **Podmiot** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
+      | **Do** | *\<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
+      | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
       | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
       |||| 
 
@@ -253,8 +253,8 @@ Pętlę "Do momentu" ma limity domyślne, które zatrzymać wykonywanie, jeśli 
 
 | Właściwość | Wartość domyślna | Opis | 
 | -------- | ------------- | ----------- | 
-| **Licznik** | 60 | Największa liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
-| **Limit czasu** | PT1H | Kończy działanie większości ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu. Jednak na następny cykl nie zaczyna się, ponieważ nie jest spełniony warunek limit. | 
+| **Liczba** | 60 | Największa liczba pętli, które Uruchom przed kończy pętli. Wartość domyślna to 60 cykli. | 
+| **limit czasu** | PT1H | Kończy działanie większości ilość czasu, aby uruchomić pętlę przed pętli. Wartość domyślna to 1 godzina i jest określony w formacie ISO 8601. <p>Wartość limitu czasu jest szacowana dla każdego cyklu pętli. Jeśli żadnych działań w pętli trwa dłużej niż limit czasu, nie zatrzymuje bieżącego cyklu. Jednak na następny cykl nie zaczyna się, ponieważ nie jest spełniony warunek limit. | 
 |||| 
 
 Aby zmienić te domyślne limity, wybierz **Pokaż opcje zaawansowane** w kształcie akcji pętli.

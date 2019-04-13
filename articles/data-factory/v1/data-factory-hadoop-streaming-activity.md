@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f4bdeee08e81c16dfdd03620eb1fc61251f90400
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025177"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523226"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania przesyłania strumieniowego usługi Hadoop w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -99,7 +99,7 @@ Pamiętaj o następujących kwestiach:
 2. Ustaw typ działania, aby **HDInsightStreaming**.
 3. Aby uzyskać **mapowania** właściwości, określ nazwę pliku wykonywalnego mapowania. W tym przykładzie cat.exe jest mapowania pliku wykonywalnego.
 4. Aby uzyskać **reduktor** właściwości, określ nazwę pliku wykonywalnego reduktor. W tym przykładzie wc.exe jest reduktor pliku wykonywalnego.
-5. Aby uzyskać **wejściowych** właściwość typu, określ plik wejściowy (w tym lokalizację) dla mapowania. W przykładzie: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample jest kontener obiektów blob, przykład/data/Gutenberg to folder, a davinci.txt jest obiekt blob.
+5. Aby uzyskać **wejściowych** właściwość typu, określ plik wejściowy (w tym lokalizację) dla mapowania. W przykładzie: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample jest kontener obiektów blob, przykład/data/Gutenberg to folder, a davinci.txt jest obiekt blob.
 6. Aby uzyskać **dane wyjściowe** właściwość typu, określ plik wyjściowy (w tym lokalizację) reduktor. Dane wyjściowe zadania przesyłania strumieniowego usługi Hadoop jest zapisywany w lokalizacji określonej dla tej właściwości.
 7. W **filePaths** sekcji, określ ścieżki dla plików wykonywalnych mapowania i reduktor. W przykładzie: "adfsample/example/apps/wc.exe" adfsample jest kontener obiektów blob, przykładowe/aplikacje jest folder i wc.exe jest plik wykonywalny.
 8. Aby uzyskać **fileLinkedService** właściwości, określ połączoną usługę Azure Storage reprezentujący magazynu platformy Azure, który zawiera pliki określone w sekcji filePaths.

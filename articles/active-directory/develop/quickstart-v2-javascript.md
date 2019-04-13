@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63827c74d584053b5131fbc602a04d4d24338f47
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500332"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547401"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Szybki start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji jednostronicowej JavaScript (SPA)
 
@@ -61,7 +61,6 @@ W tym przewodniku Szybki Start potrzebne są następujące ustawienia:
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
 > 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
 > 1. Wybierz **nowej rejestracji**.
-> 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
 > 1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
 > 1. Wybierz platformę **Internet** w sekcji **Identyfikator URI przekierowania** i ustaw wartość na `http://localhost:30662/`.
@@ -74,16 +73,16 @@ W tym przewodniku Szybki Start potrzebne są następujące ustawienia:
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure Portal
 > Aby kod przykładowy z tego przewodnika Szybki start działał, dodaj identyfikator URI przekierowania w formacie `http://localhost:30662/` i włącz pozycję **Niejawne udzielenie**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadzenie tych zmian]()
+> > [Wprowadź zmiany automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-javascript/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-javascript/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Pobieranie projektu
 
 Możesz wybrać jedną z poniższych opcji, właściwą dla środowiska deweloperskiego.
-* [Pobierz pliki projektów core - dla serwera sieci web, takich jak Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
-* [Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+* [Pobierz podstawowe pliki projektu core — dla serwera internetowego, takiego jak Node.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+* [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
 Aby otworzyć pliki w folderze, użyj edytorem takim jak [programu Visual Studio Code](https://code.visualstudio.com/).
@@ -107,11 +106,11 @@ var applicationConfig = {
 > [!div renderon="docs"]
 >
 > Gdzie:
-> - `Enter_the_Application_Id_here` -jest **identyfikator aplikacji (klienta)** dla aplikacji został zarejestrowany.
-> - `Enter_the_Tenant_Info_Here` -jest ustawiony na jedną z następujących opcji:
+> - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
->   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**, Zastąp tę wartość za pomocą `common`
+>   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
+>   - Jeśli aplikacja obsługuje tryb **Konta w moim katalogu organizacyjnym i osobiste konta Microsoft**, zastąp tę wartość za pomocą wartości `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
@@ -137,7 +136,7 @@ Po załadowaniu aplikacji przeglądarki kliknij **Sign In**.  Przy pierwszym log
 
 ## <a name="more-information"></a>Więcej informacji
 
-### *<a name="msaljs"></a>msal.js*
+### <a name="msaljs"></a>*msal.js*
 
 Biblioteka MSAL jest biblioteki używane na potrzeby logowania użytkowników i żądania tokenów umożliwiający dostęp do interfejsu API chronionego przez platforma tożsamości usługi Microsoft. Plik *index.html* tego przewodnika Szybki start zawiera odwołanie do biblioteki:
 
@@ -162,7 +161,7 @@ var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applic
 > |Lokalizacja  |  |
 > |---------|---------|
 > |`ClientId`     |Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie Azure Portal|
-> |`authority`    |Jest to adres URL urzędu. Przekazanie wartości *null* powoduje ustawienie domyślnego urzędu na `https://login.microsoftonline.com/common`. Jeśli Twoja aplikacja jest pojedynczej dzierżawy (docelowych kont w tylko jednym katalogu), ustaw tę wartość na `https://login.microsoftonline.com/<tenant name or ID>`|
+> |`authority`    |Jest to adres URL urzędu. Przekazanie wartości *null* powoduje ustawienie domyślnego urzędu na `https://login.microsoftonline.com/common`. Jeśli aplikacja obsługuje pojedynczą dzierżawę (konta docelowe tylko w jednym katalogu), ustaw tę wartość na `https://login.microsoftonline.com/<tenant name or ID>`|
 > |`tokenReceivedCallback`| Metoda wywołania zwrotnego wywołana po uwierzytelnieniu powoduje przekierowanie z powrotem do aplikacji. W tym miejscu jest przekazywana wartość `acquireTokenRedirectCallBack`. W przypadku użycia elementu loginPopup jest to wartość null.|
 > |`options`  |Kolekcja parametrów opcjonalnych. W tym przypadku elementy `storeAuthStateInCookie` i `cacheLocation` stanowią konfigurację opcjonalną. Zobacz stronę [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options), aby uzyskać więcej informacji na temat opcji. |
 
@@ -185,7 +184,7 @@ myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
 
 ### <a name="request-tokens"></a>Żądanie tokenów
 
-Biblioteka MSAL ma trzy metody używane do uzyskania tokenów: `acquireTokenRedirect`, `acquireTokenPopup` i `acquireTokenSilent`
+Biblioteka MSAL oferuje trzy metody uzyskiwania tokenów: `acquireTokenRedirect`, `acquireTokenPopup` i `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
@@ -233,4 +232,4 @@ Aby uzyskać bardziej szczegółowe wskazówki krok po kroku dotyczące kompilow
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>Przejrzyj repozytorium biblioteki MSAL, aby znaleźć dokumentację, odpowiedzi na często zadawane pytania, opis problemów i inne informacje
 
 > [!div class="nextstepaction"]
-> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [Repozytorium MSAL.js GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)

@@ -3,17 +3,17 @@ title: Często zadawane pytania dotyczące sieci w usłudze Azure Functions
 description: Odpowiedzi na niektóre najbardziej typowe pytania i scenariusze dotyczące sieci w środowisku Azure Functions.
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: troubleshooting
-ms.date: 2/26/2019
-ms.author: alkarche
-ms.openlocfilehash: 7946b7f45ff3df9225a27b70ccfbdb895bfd03c4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.date: 4/11/2019
+ms.author: alkarche, glenga
+ms.openlocfilehash: 126b9ccefedee1f5cefdac8a8666a58e7a4a1fef
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896494"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548649"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Często zadawane pytania dotyczące sieci w usłudze Azure Functions
 
@@ -54,3 +54,13 @@ Dzięki wdrażaniu aplikacji funkcji w środowisku usługi App Service może wyz
 Wdrażanie do środowiska usługi App Service jest jedynym sposobem, aby utworzyć aplikację funkcji, która całkowicie znajduje się wewnątrz sieci Wirtualnej Aby uzyskać szczegółowe informacje na temat korzystania z ASE z wewnętrznym modułem równoważenia obciążenia, zacznij od artykuł tutaj: [Tworzenie i używanie środowisko ASE z wewnętrznym modułem równoważenia obciążenia](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
 
 W przypadku scenariuszy wymagających tylko jednokierunkowe dostępu do zasobów sieci Wirtualnej lub mniej izolacji sieci kompleksowe zobacz [Functions — omówienie sieci](functions-networking-options.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej na temat sieci i funkcje: 
+
+* [Postępuj zgodnie z samouczkiem ułatwiającym integrację sieci Wirtualnej rozpoczęcie pracy](./functions-create-vnet.md)
+* [Dowiedz się więcej na temat opcji sieciowych w funkcjach w tym miejscu](./functions-networking-options.md)
+* [Dowiedz się więcej na temat integracji sieci Wirtualnej przy użyciu usługi App Service / funkcje w tym miejscu](../app-service/web-sites-integrate-with-vnet.md)
+* [Dowiedz się więcej na temat sieci wirtualnych na platformie Azure](../virtual-network/virtual-networks-overview.md)
+* [Włączyć więcej sieciowych funkcji i kontrola przy użyciu środowisk usługi App Service](../app-service/environment/intro.md)

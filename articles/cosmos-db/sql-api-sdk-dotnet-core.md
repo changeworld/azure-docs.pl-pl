@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: cc6c66ccb0bb08d709b2015d643544fb9dc30f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846739"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545250"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB platformy .NET Core SDK interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "57846739"
 |**Zestaw SDK do pobrania**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Przykłady**|[Przykłady kodu platformy .NET](sql-api-dotnet-samples.md)|
-|**Wprowadzenie**|[Rozpoczynanie pracy z usługą Azure Cosmos DB platformy .NET Core SDK](sql-api-dotnetcore-get-started.md)|
+|**Wprowadzenie**|[Rozpoczynanie pracy z usługą Azure Cosmos DB platformy .NET Core SDK](sql-api-dotnet-core-get-started-preview.md)|
 |**Samouczek dotyczący aplikacji sieci Web**|[Opracowywanie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Bieżącej struktury obsługiwanej**|[.NET standard w wersji 1.6 i .NET Standard w wersji 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 

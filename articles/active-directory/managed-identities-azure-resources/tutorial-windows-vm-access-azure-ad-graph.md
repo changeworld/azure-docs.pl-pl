@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b0d9e4fad61195118c92c047340f2cd4d9e20f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480689"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523362"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
@@ -165,7 +165,7 @@ Aby użyć przypisanej przez system tożsamości zarządzanej maszyny wirtualnej
    $AccessToken = $content.access_token
    ```
 
-5. Identyfikator obiektu jednostki usługi tożsamości maszyny wirtualnej (możesz pobrać tę wartość za pomocą zmiennej zadeklarowanej we wcześniejszych krokach: ``$ManagedIdentitiesServicePrincipal.ObjectId``) pozwala wykonywać zapytania w interfejsie API funkcji Azure AD Graph umożliwiające pobieranie członkostw w grupach. Element <OBJECT ID> zastąp identyfikatorem obiektu z poprzedniego kroku, a element <ACCESS-TOKEN> zastąp uzyskanym wcześniej tokenem dostępu:
+5. Identyfikator obiektu jednostki usługi tożsamości maszyny wirtualnej (możesz pobrać tę wartość za pomocą zmiennej zadeklarowanej we wcześniejszych krokach: ``$ManagedIdentitiesServicePrincipal.ObjectId``) pozwala wykonywać zapytania w interfejsie API funkcji Azure AD Graph umożliwiające pobieranie członkostw w grupach. Zastąp `<OBJECT ID>` o identyfikatorze obiektu z poprzedniego kroku i <`ACCESS-TOKEN>` przy użyciu tokenu dostępu wcześniej uzyskanej:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

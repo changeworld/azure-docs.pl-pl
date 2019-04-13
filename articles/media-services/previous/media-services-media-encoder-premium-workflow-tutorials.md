@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189788"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523838"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Samouczki zaawansowane Media Encoder Premium Workflow
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten dokument zawiera wskazówki, które pokazują, jak dostosować przepływy pracy za pomocą **projektanta przepływów pracy**. Pliki faktyczny przepływ pracy można znaleźć [tutaj](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
 ## <a name="toc"></a>TOC
@@ -760,7 +760,7 @@ Zostało to zrobione za pomocą ciągu normalnych operacji na strumieniach. Wyni
 
 *Rejestrowanie wynikowego listy klipu*
 
-Do przebiegu testu, aby zobaczyć, jak strumienie audio i wideo została obcięta. Jak odbywa się na więcej niż jeden przebieg testu z różnymi wartościami dla punktów przycinania, można zauważyć, że te nie bierze się pod konta jednak! Dzieje się, projektanta, w przeciwieństwie do środowiska uruchomieniowego platformy Azure, nie powoduje zastąpienia cliplist xml każdego uruchomienia. Oznacza to, że tylko po raz pierwszy ustawiono punktów wejścia i wyjścia, spowoduje, że plik xml, aby przekształcić wszystkich innych przypadkach nasz klauzuli guard (jeśli (clipListXML.indexOf ("<trim>") == -1)) uniemożliwi Dodawanie innego elementu przycinania, gdy istnieje przepływu pracy jeszcze jeden obecne.
+Do przebiegu testu, aby zobaczyć, jak strumienie audio i wideo została obcięta. Jak odbywa się na więcej niż jeden przebieg testu z różnymi wartościami dla punktów przycinania, można zauważyć, że te nie bierze się pod konta jednak! Dzieje się, projektanta, w przeciwieństwie do środowiska uruchomieniowego platformy Azure, nie powoduje zastąpienia cliplist xml każdego uruchomienia. Oznacza to, że tylko po raz pierwszy ustawiono punktów wejścia i wyjścia, spowoduje, że plik xml, aby przekształcić wszystkich innych przypadkach nasz klauzuli guard (jeśli (`clipListXML.indexOf("<trim>") == -1`)) uniemożliwi Dodawanie innego elementu przycinania, gdy istnieje już już ono przepływu pracy.
 
 Aby uprościć przepływu pracy do testowania lokalnie, najlepsze dodamy niektóre kod zachowywaniu dom, który sprawdza się, jeśli już istniał przycinania elementu. Jeśli tak, możemy go usunąć przed kontynuowaniem, modyfikując plik xml z nowymi wartościami. Zamiast przy użyciu zwykłego działań na ciągach, prawdopodobnie bezpieczniej jest w tym celu za pośrednictwem modelu obiektów xml rzeczywistych analizy.
 

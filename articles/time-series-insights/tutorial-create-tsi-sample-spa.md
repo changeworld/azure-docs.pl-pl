@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fe8b6113646589e30ff839c8bd47968138d98b03
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312210"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521438"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
@@ -179,7 +179,7 @@ Przed skompilowaniem aplikacji trzeba ją zarejestrować za pomocą usługi Azur
 Kod/warunek błędu | Opis
 ---------------------| -----------
 *AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji.* | Brak właściwości „Adres URL odpowiedzi” w rejestracji usługi Azure AD. Przejdź na stronę **Ustawienia** / **Adresy URL odpowiedzi** dla rejestracji aplikacji usługi Azure AD. Sprawdź, czy adres URL **logowania jednokrotnego** określony w kroku 3 sekcji [Rejestrowanie aplikacji w usłudze Azure AD](#register-the-application-with-azure-ad) jest obecny. 
-*AADSTS50011: adres URL odpowiedzi określony w żądaniu jest niezgodny z adresami URL odpowiedzi skonfigurowanymi dla aplikacji: „<Application ID GUID>”.* | Identyfikator `postLogoutRedirectUri` określony w kroku 4.b sekcji [Kompilowanie i publikowanie aplikacji internetowej](#build-and-publish-the-web-application) musi odpowiadać wartości właściwości **Ustawienia** / **Adresy URL odpowiedzi** w rejestracji aplikacji usługi Azure AD. Pamiętaj o zmianie wartości **Docelowy adres URL** w celu używania protokołu `https`, tak jak w kroku 5.e sekcji [Kompilowanie i publikowanie aplikacji internetowej](#build-and-publish-the-web-application).
+*AADSTS50011: Odpowiedź adres url określony w żądaniu jest niezgodna z adresów URL odpowiedzi skonfigurowane dla aplikacji: "\<Aplikacji identyfikator GUID >".* | Identyfikator `postLogoutRedirectUri` określony w kroku 4.b sekcji [Kompilowanie i publikowanie aplikacji internetowej](#build-and-publish-the-web-application) musi odpowiadać wartości właściwości **Ustawienia** / **Adresy URL odpowiedzi** w rejestracji aplikacji usługi Azure AD. Pamiętaj o zmianie wartości **Docelowy adres URL** w celu używania protokołu `https`, tak jak w kroku 5.e sekcji [Kompilowanie i publikowanie aplikacji internetowej](#build-and-publish-the-web-application).
 Aplikacja internetowa jest ładowana, ale ma stronę logowania bez stylu i tylko z tekstem na białym tle. | Sprawdź, czy ścieżki omówione w kroku 4.a sekcji [Kompilowanie i publikowanie aplikacji internetowej](#build-and-publish-the-web-application) są prawidłowe. Jeśli aplikacja internetowa nie może znaleźć plików CSS, styl strony będzie niepoprawny.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

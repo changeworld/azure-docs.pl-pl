@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917757"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526185"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ogranicz zawartość sieci Azure CDN według kraju
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Gdy użytkownik zażąda zawartości, domyślnie, zawartość są dostarczane niezależnie od lokalizacji użytkownika zgłaszającego żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do zawartości według kraju. Za pomocą *filtrowania geograficznego* funkcji, można utworzyć reguły w określonych ścieżkach w punkcie końcowym usługi CDN do zezwalania lub blokowania zawartości w wybranych krajach.
 
 > [!IMPORTANT]
@@ -59,8 +59,8 @@ Z **akcji** listy wybierz **Zezwalaj** lub **bloku**:
 - **Blok**: Użytkowników z określonym kraje są odmowa dostępu z zasobami żądane ze ścieżki cykliczne. Jeśli inne opcje filtrowania kraju zostały skonfigurowane dla tej lokalizacji, następnie wszyscy inni użytkownicy będą miały dostęp.
 
 Na przykład filtrowania geograficznego reguły blokowania ścieżce */zdjęcia/Strasburgu/* filtry następujące pliki:     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>Zdefiniuj krajów
 Z **numerów KIERUNKOWYCH krajów** Wybierz kraje, które chcesz zablokować lub zezwolić dla ścieżki. 

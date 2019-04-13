@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102673"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524518"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak zdefiniować parametry pliki konfiguracji w usłudze Service Fabric
 
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak zdefiniować parametry pliku konfiguracji w usłudz
 
 W tym przykładzie można zastąpić wartości konfiguracji przy użyciu parametrów podczas wdrażania aplikacji.
 
-1. Otwórz  *<MyService>\PackageRoot\Config\Settings.xml* plik w projekcie usługi.
+1. Otwórz  *\<Moja_usługa > \PackageRoot\Config\Settings.xml* plik w projekcie usługi.
 1. Ustaw nazwę parametru konfiguracji i wartość, na przykład rozmiar pamięci podręcznej równa 25, dodając następujący kod XML:
 
    ```xml
@@ -37,7 +37,7 @@ W tym przykładzie można zastąpić wartości konfiguracji przy użyciu paramet
    ```
 
 1. Zapisz i zamknij plik.
-1. Otwórz  *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* pliku.
+1. Otwórz  *\<MojaAplikacja > \ApplicationPackageRoot\ApplicationManifest.xml* pliku.
 1. W pliku ApplicationManifest.xml zadeklarować parametru i domyślne wartości w `Parameters` elementu.  Zaleca się, że nazwa parametru zawiera nazwę usługi (na przykład "MyService").
 
    ```xml

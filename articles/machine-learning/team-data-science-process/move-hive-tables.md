@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840651"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522507"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Tworzenie tabel programu Hive i ładowanie danych z usługi Azure Blob Storage
 
@@ -112,7 +112,7 @@ Jeśli otworzysz domyślnego kontenera w klastrze usługi Hadoop, za pomocą Eks
 ![Eksplorator usługi Azure Storage przedstawiający dane wyjściowe zapytania programu Hive](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Przesyłanie zapytań programu Hive za pomocą edytora programu Hive
-Umożliwia także z konsoli zapytań (Edytor Hive), wprowadzając adres URL w formacie *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* w przeglądarce sieci web. Musi być zalogowany widzą tę konsolę i dlatego należy poświadczeń klastra usługi Hadoop.
+Umożliwia także z konsoli zapytań (Edytor Hive), wprowadzając adres URL w formacie *https:\//\<nazwa klastra usługi Hadoop >.azurehdinsight.net/Home/HiveEditor* w przeglądarce sieci web. Musi być zalogowany widzą tę konsolę i dlatego należy poświadczeń klastra usługi Hadoop.
 
 ### <a name="ps"></a> 3. Przesyłanie zapytań programu Hive za pomocą poleceń programu PowerShell platformy Azure
 Program PowerShell umożliwia również przesłać zapytania Hive. Aby uzyskać instrukcje, zobacz [Hive przesyłanie zadań za pomocą programu PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
@@ -149,7 +149,7 @@ Oto zapytanie Hive, który ładuje dane do tabeli programu Hive.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Ścieżka do danych obiektów blob\>**: Jeśli plik obiektu blob do przekazania do tabeli programu Hive znajduje się w domyślnym kontenerze klastra usługi HDInsight Hadoop *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / / /<directory in this container> /<blob file name>'*. Można także pliku obiektu blob w kontenerze dodatkowe klastra usługi HDInsight Hadoop. W tym przypadku *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **\<Ścieżka do danych obiektów blob\>**: Jeśli plik obiektu blob do przekazania do tabeli programu Hive znajduje się w domyślnym kontenerze klastra usługi HDInsight Hadoop *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / /\< katalog, w tym kontenerze > /\<nazwa pliku obiektu blob > "*. Można także pliku obiektu blob w kontenerze dodatkowe klastra usługi HDInsight Hadoop. W tym przypadku *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / /\<nazwa kontenera >\<nazwa konta magazynu >.blob.core.windows.net/\<nazwa pliku obiektu blob > "*.
 
   > [!NOTE]
   > Dane obiektu blob do przekazania do tabeli programu Hive, musi mieć domyślne lub dodatkowego kontenera konta magazynu dla klastra usługi Hadoop. W przeciwnym razie *ładowanie danych* zapytanie nie powiedzie się skarżących się, że nie można uzyskać dostęp do danych.

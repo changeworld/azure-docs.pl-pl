@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314454"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525534"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Użyj usługi Menedżer urządzeń StorSimple, aby wyświetlić alerty i zarządzaj nimi StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Alerty** bloku usługi Menedżer urządzeń StorSimple umożliwia przeglądanie i wyczyść alerty związane z urządzeniem StorSimple na zasadzie w czasie rzeczywistym. W tym bloku mogą centralnie monitorować problemy z kondycją urządzenia StorSimple i ogólnego rozwiązania Microsoft Azure StorSimple.
 
@@ -160,7 +160,7 @@ Jeśli łączność z chmurą nie powiedzie się na urządzeniu StorSimple w śr
 | Urządzenie przełączone w tryb failover <*nazwy urządzenia*>. |Inne/Nieznana przyczyna. |Jeśli widzisz dużą liczbę tych alertów, skontaktuj się z Microsoft Support. Po usunięciu problemu wyczyść ten alert na stronie alertów. |
 | Usługi krytyczne urządzenie raportuje stan jako zakończony niepowodzeniem. |Awaria usługi ścieżki danych. |Aby uzyskać pomoc, skontaktuj się z Microsoft Support. |
 | Wirtualny adres IP dla interfejsu sieciowego <*danych #*> zgłasza stan jako zakończony niepowodzeniem. |Inne/Nieznana przyczyna. |Czasami tymczasowe warunki mogą być przyczyną tych alertów. Jeśli jest to możliwe, następnie ten alert zostanie automatycznie wyczyszczony po pewnym czasie. Jeśli problem będzie się powtarzać, skontaktuj się z działem pomocy technicznej firmy Microsoft. |
-| Wirtualny adres IP dla interfejsu sieciowego <*danych #*> zgłasza stan jako zakończony niepowodzeniem. |Nazwa interfejsu: <*danych #*> adres IP <IP address> nie można przełączyć online, ponieważ wykryto zduplikowany adres IP w sieci. |Upewnij się, że zduplikowany adres IP został usunięty z sieci, lub ponownie skonfigurować interfejs przy użyciu innego adresu IP. |
+| Wirtualny adres IP dla interfejsu sieciowego <*danych #*> zgłasza stan jako zakończony niepowodzeniem. |Nazwa interfejsu: <*danych #*> adres IP `<IP address>` nie można przełączyć online, ponieważ wykryto zduplikowany adres IP w sieci. |Upewnij się, że zduplikowany adres IP został usunięty z sieci, lub ponownie skonfigurować interfejs przy użyciu innego adresu IP. |
 
 ### <a name="disaster-recovery-alerts"></a>Alerty odzyskiwania po awarii
 
@@ -200,8 +200,8 @@ Jeśli łączność z chmurą nie powiedzie się na urządzeniu StorSimple w śr
 | Tekst alertu | Wydarzenie | Więcej informacji / zalecane akcje |
 |:--- |:--- |:--- |
 | Nie można uruchomić usług StorSimple. |Błąd ścieżki danych |Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
-| Wykryto "Data0" zduplikowanego adresu IP. | |System wykrył konflikt adresu IP "10.0.0.1". Zasób sieciowy "Data0" na urządzeniu *<device1>* jest w trybie offline. Upewnij się, że ten adres IP nie jest używany przez żadną inną jednostkę w tej sieci. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Aby uzyskać pomoc w rozwiązaniu tego problemu, skontaktuj się z administratorem sieci. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
-| Adres IPv4 (lub IPv6) dla "Data0" jest w trybie offline. | |Zasób sieciowy "Data0" z adresem IP "10.0.0.1". i długość "22" na urządzeniu prefiksu *<device1>* jest w trybie offline. Upewnij się, że porty przełącznika, z którymi jest połączony ten interfejs operacyjnej. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Wykryto "Data0" zduplikowanego adresu IP. | |System wykrył konflikt adresu IP "10.0.0.1". Zasób sieciowy "Data0" na urządzeniu  *\<urządzenia 1 >* jest w trybie offline. Upewnij się, że ten adres IP nie jest używany przez żadną inną jednostkę w tej sieci. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Aby uzyskać pomoc w rozwiązaniu tego problemu, skontaktuj się z administratorem sieci. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
+| Adres IPv4 (lub IPv6) dla "Data0" jest w trybie offline. | |Zasób sieciowy "Data0" z adresem IP "10.0.0.1". i długość "22" na urządzeniu prefiksu  *\<urządzenia 1 >* jest w trybie offline. Upewnij się, że porty przełącznika, z którymi jest połączony ten interfejs operacyjnej. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Nie można nawiązać połączenia z usługą uwierzytelniania. |Błąd ścieżki danych |URLthat jest używany do uwierzytelniania jest nieosiągalny. Upewnij się, że reguły zapory obejmują wzorce adresów URL, określony dla urządzenia StorSimple. Aby uzyskać więcej informacji na temat wzorców adresów URL w witrynie Azure portal, przejdź do protokołu https:\//aka.ms/ss-8000-network-reqs. Jeśli używasz chmury dla instytucji rządowych platformy Azure, przejdź do wzorców adresów URL przy użyciu protokołu https:\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Alerty wydajności

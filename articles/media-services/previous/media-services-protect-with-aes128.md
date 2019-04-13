@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802834"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526830"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ Możesz przetestować strumień za pomocą usługi [Azure Media Services Player]
 W poprzednim kroku tworzony jest adres URL, który wskazuje plik manifestu. Twój klient musi wyodrębnić wymaganych informacji z przesyłania strumieniowego plików manifestu, aby wysyłać żądania do usługi dostarczania kluczy.
 
 ### <a name="manifest-files"></a>Pliki manifestu
-Klient musi wyodrębnić adres URL (zawierający zawartość [Kącik] identyfikator klucza) wartość z pliku manifestu. Klient następnie próbuje uzyskać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć go do odszyfrowywania strumienia. Poniższy fragment kodu przedstawia <Protection> elemencie manifestu Smooth Streaming:
+Klient musi wyodrębnić adres URL (zawierający zawartość [Kącik] identyfikator klucza) wartość z pliku manifestu. Klient następnie próbuje uzyskać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć go do odszyfrowywania strumienia. Poniższy fragment kodu przedstawia `<Protection>` elemencie manifestu Smooth Streaming:
 
 ```xml
     <Protection>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983799"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547026"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
 
@@ -92,6 +92,8 @@ Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istn
 **Włączyć NSG Flow rejestrowanie na wszystkie sieciowe grupy zabezpieczeń, które są dołączone do zasobu**: Przepływ rejestrowania na platformie Azure jest konfigurowany na zasób sieciowej grupy zabezpieczeń. Przepływ zostanie być skojarzony tylko z jedną regułę sieciowej grupy zabezpieczeń. W scenariuszach, gdzie są wykorzystywane wiele sieciowych grup zabezpieczeń, zaleca się, czy rejestrowanie przepływu sieciowych grup zabezpieczeń jest włączona na wszystkie sieciowe grupy zabezpieczeń stosowane zasobu podsiecią lub interfejsem sieciowym aby upewnić się, że cały ruch jest rejestrowane. Zobacz [jak ruch jest oceniany](../virtual-network/security-overview.md#how-traffic-is-evaluated) Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń. 
 
 **Przepływ koszty rejestrowania**: Rejestrowanie przepływu sieciowych grup zabezpieczeń jest rozliczana na woluminie dzienników generowanych. Duży ruch woluminu może spowodować przepływ dużą woluminu dziennika i powiązanych kosztów. Cennik dzienników przepływów sieciowych grup zabezpieczeń nie obejmuje podstawowych kosztów magazynu. Funkcja zasad przechowywania użyciu rejestrowanie przepływu sieciowych grup zabezpieczeń może skutkować dużą liczbę operacji magazynu i powiązanych kosztów. Jeśli funkcja zasad przechowywania nie jest wymagane, zaleca się Ustaw tę wartość na 0. Zobacz [cennik usługi Network Watcher](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) i [cennik usługi Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/) dodatkowe szczegóły.
+
+**Dla ruchu przychodzącego przepływów rejestrowane z Internetu adresy IP do maszyn wirtualnych bez publiczne adresy IP**: Maszyny wirtualne nie mają przypisany za pośrednictwem publicznego adresu IP skojarzone z kartą Sieciową jako publiczny adres IP na poziomie wystąpienia publiczny adres IP lub które są częścią puli zaplecza modułu równoważenia obciążenia podstawowe, użyj [domyślne SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) i adres IP przypisany przez Azure w celu ułatwienia łączności wychodzącej. W rezultacie, zostanie wyświetlony przepływ wpisów dziennika dla przepływów z Internetu adresy IP, jeśli przepływ jest kierowany do portu z zakresu portów przypisanych do SNAT. Gdy platforma Azure nie zezwala na te przepływy do maszyny Wirtualnej, próba jest rejestrowane i pojawi się dzienników przepływu sieciowych grup zabezpieczeń usługi Network Watcher zgodnie z projektem. Zaleca się, że niechcianego przychodzącego ruchu internetowego można jawnie zablokowane za pomocą sieciowej grupy zabezpieczeń.
 
 ## <a name="sample-log-records"></a>Przykładowy rekord dziennika
 

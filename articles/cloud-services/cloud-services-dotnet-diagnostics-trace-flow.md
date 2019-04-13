@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: jeconnoc
-ms.openlocfilehash: f0724fd6e5f08f3e09bcb147c12d1657235dc704
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916890"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525565"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Śledzenie przepływu aplikacji usługi w chmurze przy użyciu diagnostyki Azure
 Śledzenie jest sposobem monitorowania wykonywanie aplikacji, gdy jest on uruchomiony. Możesz użyć [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [system.Diagnostics.Debug —](/dotnet/api/system.diagnostics.debug), i [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) klasy do rejestrowania informacji o błędach i wykonywanie aplikacji w dzienniki, pliki tekstowe lub innych urządzeń do późniejszej analizy. Aby uzyskać więcej informacji na temat śledzenia, zobacz [śledzenie i Instrumentacja aplikacji](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji na temat odbiorników zobacz [detektorów śledz
 Po wykonaniu kroków w celu dodania odbiornika należy dodawanie instrukcji śledzenia do kodu.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>Dodawanie instrukcji śledzenia do kodu
-1. Otwórz plik źródłowy aplikacji. Na przykład <RoleName>pliku CS roli procesu roboczego lub roli sieci web.
+1. Otwórz plik źródłowy aplikacji. Na przykład \<RoleName > pliku CS roli procesu roboczego lub roli sieci web.
 2. Dodaj następującą instrukcję using, jeśli nie został już dodany:
     ```
         using System.Diagnostics;

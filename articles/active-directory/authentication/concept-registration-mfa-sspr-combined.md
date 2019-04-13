@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280013"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521442"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -25,6 +25,8 @@ Przed rejestracją połączonych użytkowników zarejestrowania metod uwierzytel
 ![Mój profil przedstawiający zarejestrowane informacje zabezpieczające dla użytkownika](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane na administratora i dokumentacji skoncentrowane na użytkownika, aby upewnić się, że rozumiesz, funkcje i wpływ tej funkcji. Bazowy szkolenia na temat dokumentacji użytkownika przygotowanie użytkowników do nowego środowiska i aby zapewnić pomyślne wdrożenie.
+
+Usługa Azure AD w połączeniu informacji zabezpieczających rejestracja nie jest obecnie dostępny dla chmury krajowe, takie jak Azure US Government, Azure (Niemcy) lub Azure (Chiny) — firmą 21Vianet.
 
 |     |
 | --- |
@@ -137,6 +139,6 @@ Użytkownik, który został wcześniej skonfigurowany co najmniej jedną metodę
 
 [Dostępne metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
 
-[Konfigurowanie samoobsługowego resetowania hasła](howto-sspr-deployment.md)
+[Konfigurowanie samoobsługowego resetowania haseł](howto-sspr-deployment.md)
 
 [Konfigurowanie usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

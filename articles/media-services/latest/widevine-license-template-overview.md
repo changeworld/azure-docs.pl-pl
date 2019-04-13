@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3615bd88cfadf2f59942fab7678d36d4d20d8c9f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992742"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548720"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
 
@@ -64,8 +64,8 @@ Usługa Azure Media Services umożliwia szyfrowanie zawartości przy użyciu **G
 | --- | --- | --- |
 | ładunek |Ciąg kodowany w formacie Base64 |Żądanie dotyczące licencji wysłane przez klienta. |
 | content_id |Ciąg kodowany w formacie Base64 |Identyfikator używany do uzyskania kluczowych identyfikator i zawartości klucza dla każdego content_key_specs.track_type. |
-| Dostawcy |ciąg |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
-| nazwa_zasady |ciąg |Nazwa zasady wcześniej zarejestrowany. Opcjonalny. |
+| dostawca |string |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
+| nazwa_zasady |string |Nazwa zasady wcześniej zarejestrowany. Opcjonalny. |
 | allowed_track_types |Wyliczenia |SD_ONLY lub SD_HD. Formanty, które zawartości klucze są uwzględnione w licencji. |
 | content_key_specs |Tablica JSON struktur, zobacz sekcję "Specyfikacje klucza zawartości."  |Bardziej szczegółowej kontroli na które kluczy zawartości do zwrócenia. Aby uzyskać więcej informacji zobacz sekcję "Specyfikacje klucza zawartości." Można określić tylko jedną z wartości allowed_track_types i content_key_specs. |
 | use_policy_overrides_exclusively |Wartość logiczna PRAWDA lub FAŁSZ |Używanie atrybutów zasady określone przez policy_overrides i pominąć wszystkie zasady wcześniej przechowywanych. |
@@ -80,7 +80,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 
 | Name (Nazwa) | Wartość | Opis |
 | --- | --- | --- |
-| content_key_specs. track_type |ciąg |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
+| content_key_specs. track_type |string |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
 | content_key_specs  <br/> security_level |uint32 |Określa wymagania dotyczące niezawodności klienta do odtwarzania. <br/> Oprogramowania oparte na kryptografii biały pole jest wymagane. <br/> — Kryptografia oprogramowanie i zaciemnionego dekodera są wymagane. <br/> Kluczowych operacji materiał i kryptografii muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania. <br/> Kryptografii i dekodowania zawartości muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania.  <br/> Kryptografii dekodowanie i obsługę wszystkich nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w środowisku sprzętowej zaufanych wykonywania. |
 | content_key_specs <br/> required_output_protection.hdc |string, one of HDCP_NONE, HDCP_V1, HDCP_V2 |Wskazuje, czy HDCP jest wymagana. |
 | content_key_specs <br/>key |Base64 —<br/>Ciąg zakodowany |Klucz zawartości do użycia dla tej ścieżki. Jeśli zostanie określony, track_type lub key_id jest wymagany. Dostawcy zawartości można użyć tej opcji do dodania klucza zawartości dla tej ścieżki samodzielny serwer licencji Widevine wygenerować lub wyszukać klucz. |
@@ -95,7 +95,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 | policy_overrides&#46;license_duration_seconds |int64 |Określa przedział czasu dla tej konkretnej licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
 | policy_overrides&#46;rental_duration_seconds |int64 |Określa przedział czasu, podczas odtwarzania jest dozwolone. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
 | policy_overrides&#46;playback_duration_seconds |int64 |Wyświetlanie okna czas po rozpoczęciu w trakcie trwania licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
-| policy_overrides&#46;renewal_server_url |ciąg |Wszystkie żądania pulsu (odnowienie) dla tej licencji jest kierowany do określonego adresu URL. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
+| policy_overrides&#46;renewal_server_url |string |Wszystkie żądania pulsu (odnowienie) dla tej licencji jest kierowany do określonego adresu URL. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
 | policy_overrides&#46;renewal_delay_seconds |int64 |Ile sekund po license_start_time, zanim odnawianie najpierw zostanie podjęta. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. Domyślna to 0. |
 | policy_overrides&#46;renewal_retry_interval_seconds |int64 |Określa opóźnienie w ciągu kilku sekund między żądaniami odnowy kolejnych licencji w przypadku awarii. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
 | policy_overrides&#46;renewal_recovery_duration_seconds |int64 |Okno czasu, w których odtwarzania można kontynuować, gdy podejmowana jest próba odnowienia jeszcze się niepowodzeniem z powodu problemów z zaplecza z serwerem licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
@@ -118,12 +118,12 @@ Aby skonfigurować szablon, możesz wykonywać następujące czynności:
 
 Ta metoda może być podatne na błędy. Zalecane jest użycie inne metody opisanej w [zdefiniuj wymagane klasy i serializować do notacji JSON](#classes).
 
-    ```csharp
-    ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
-    {
-        WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
-    };
-    ```
+```csharp
+ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
+{
+    WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
+};
+```
 
 ### <a id="classes"></a> Zdefiniuj wymagane klasy i serializacji do formatu JSON
 
@@ -131,36 +131,36 @@ Ta metoda może być podatne na błędy. Zalecane jest użycie inne metody opisa
 
 Poniższy przykład pokazuje przykład definicje klas, które mapowania do schematu Widevine JSON. Przed rozpoczęciem serializacji je do ciągu JSON, można utworzyć wystąpienie klasy.  
 
-    ```csharp
-    public class PolicyOverrides
-    {
-        public bool CanPlay { get; set; }
-        public bool CanPersist { get; set; }
-        public bool CanRenew { get; set; }
-        public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
-    }
+```csharp
+public class PolicyOverrides
+{
+    public bool CanPlay { get; set; }
+    public bool CanPersist { get; set; }
+    public bool CanRenew { get; set; }
+    public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
+}
 
-    public class ContentKeySpec
-    {
-        public string TrackType { get; set; }
-        public int SecurityLevel { get; set; }
-        public OutputProtection RequiredOutputProtection { get; set; }
-    }
+public class ContentKeySpec
+{
+    public string TrackType { get; set; }
+    public int SecurityLevel { get; set; }
+    public OutputProtection RequiredOutputProtection { get; set; }
+}
 
-    public class OutputProtection
-    {
-        public string HDCP { get; set; }
-    }
+public class OutputProtection
+{
+    public string HDCP { get; set; }
+}
 
-    public class WidevineTemplate
-    {
-        public string AllowedTrackTypes { get; set; }
-        public ContentKeySpec[] ContentKeySpecs { get; set; }
-        public PolicyOverrides PolicyOverrides { get; set; }
-    }
-    ```
+public class WidevineTemplate
+{
+    public string AllowedTrackTypes { get; set; }
+    public ContentKeySpec[] ContentKeySpecs { get; set; }
+    public PolicyOverrides PolicyOverrides { get; set; }
+}
+```
 
 #### <a name="configure-the-license"></a>Konfigurowanie licencji
 

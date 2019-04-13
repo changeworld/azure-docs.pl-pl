@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164385"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526408"
 ---
 # <a name="troubleshoot-input-connections"></a>Rozwiązywanie problemów z połączeniami danych wejściowych
 
@@ -39,7 +39,9 @@ Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komu
 ![Kafelek usługi Azure Stream Analytics danych wejściowych.](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Włącz dzienniki diagnostyki wyświetlić szczegóły ostrzeżenia. Źle sformułowane zdarzenia wejściowe dzienniki wykonywania zawiera wpis z komunikat, który wygląda następująco: 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>Co spowodowało błąd deserializacji
 Można wykonać poniższe kroki, aby analizować zdarzenia wejściowe szczegółowo zapoznanie co spowodowało błąd deserializacji. Następnie można ustalić źródła zdarzeń do generowania zdarzeń w odpowiednim formacie, aby zapobiec osiągnięciu ten problem, ponownie.
@@ -92,7 +94,7 @@ Następujące scenariusze, w których liczbę czytników w jednej partycji przek
 
 * Wiele instrukcji SELECT: Jeśli użyjesz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
 * UNII: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
-* SAMOSPRZĘŻENIE: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
+* SELF JOIN: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
 
 Poniższe najlepsze rozwiązania może pomóc zmniejszyć scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5.
 

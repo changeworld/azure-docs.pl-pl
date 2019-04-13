@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916822"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525113"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Tworzenie punktu końcowego usługi Azure CDN
 W tym artykule opisano wszystkie ustawienia dotyczące tworzenia [Azure Content Delivery Network (CDN)](cdn-overview.md) punktu końcowego w istniejący profil usługi CDN. Po utworzeniu profilu i punktu końcowego, można uruchomić dostarczania zawartości do klientów. Aby uzyskać szybki start dotyczące tworzenia profilu i punktu końcowego, zobacz [Szybki Start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
    
     ![Dodaj stronę punktu końcowego](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. W polu **Nazwa** wprowadź unikatową nazwę nowego punktu końcowego CDN. Ta nazwa jest używana do dostępu do buforowanych zasobów w domenie _<endpointname>_. azureedge.net.
+3. W polu **Nazwa** wprowadź unikatową nazwę nowego punktu końcowego CDN. Ta nazwa jest używana do dostępu do buforowanych zasobów w domenie  _\<nazwapunktukoncowego >_. azureedge.net.
 
 4. Aby uzyskać **typ źródła**, wybierz jedną z następujących typów źródła: 
    - **Magazyn** dla usługi Azure Storage
@@ -62,7 +62,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
    > Niektóre typy źródeł, takie jak usługi Azure Storage i Web Apps, wymagają, aby nagłówek hosta był zgodny z domeną źródła. Pozostaw wartość domyślną, chyba że masz źródło, które wymaga nagłówka hosta innego niż jego domena.
    > 
     
-8. Aby uzyskać **protokołu** i **port źródła**, Określ protokoły i porty na potrzeby dostępu do zasobów na serwerze źródłowym. Należy wybrać co najmniej jeden protokół (HTTP lub HTTPS). Użyj domeny udostępnionej do sieci CDN (_<endpointname>_. azureedge.net) Aby uzyskać dostęp do zawartości HTTPS. 
+8. Aby uzyskać **protokołu** i **port źródła**, Określ protokoły i porty na potrzeby dostępu do zasobów na serwerze źródłowym. Należy wybrać co najmniej jeden protokół (HTTP lub HTTPS). Użyj domeny udostępnionej do sieci CDN (_\<nazwapunktukoncowego >_. azureedge.net) Aby uzyskać dostęp do zawartości HTTPS. 
    
    > [!NOTE]
    > **Port źródła** wartość określa tylko port punktu końcowego używa w celu pobrania informacji z serwera pochodzenia. Sam punkt końcowy jest dostępny dla klientów końcowych tylko na domyślnych portach HTTP i HTTPS (80 i 443), niezależnie od wartości **Port źródła**.  
@@ -75,16 +75,16 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
 
     Następujące ustawienia typu optymalizacji są obsługiwane, zależnie od typu profilu:
     - **Usługa Azure CDN Standard from Microsoft** profilów:
-       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Usługa Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profilów:
-       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
        - [**Przyspieszanie witryn dynamicznych**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Usługa Azure CDN Standard from Akamai** profilów:
-       - [**Ogólne dostarczanie w sieci Web**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Ogólne dostarczanie w Internecie**](cdn-optimization-overview.md#general-web-delivery)
        - [**Ogólne transmisje strumieniowe multimediów**](cdn-optimization-overview.md#general-media-streaming)
-       - [**Transmisje strumieniowe multimediów na żądanie**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**Wideo strumieniowe multimediów na żądanie**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Pobieranie dużych plików**](cdn-optimization-overview.md#large-file-download)
        - [**Przyspieszanie witryn dynamicznych**](cdn-optimization-overview.md#dynamic-site-acceleration)
 

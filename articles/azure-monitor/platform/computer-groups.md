@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444127"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549307"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Grupy komputerów w usłudze Azure Monitor rejestrowania zapytań
 Grupy komputerów w usłudze Azure Monitor pozwala do zakresu [rejestrowania zapytań](../log-query/log-query-overview.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupa jest dołączany do zapytania dziennika, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
@@ -127,15 +127,15 @@ Rekord zostanie utworzony w obszarze roboczym usługi Log Analytics dla każdego
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*ComputerGroup* |
-| SourceSystem |*SourceSystem* |
-| Computer (Komputer) |Nazwa komputera członkowskiego. |
-| Grupa |Nazwa grupy. |
-| GroupFullName |Pełna ścieżka do grupy, w tym źródłowego i nazwę źródła. |
-| GroupSource |Źródłowej, tej grupy, zebranych z. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |Nazwa źródła, które zostały zebrane grupy.  Usługi Active Directory jest to nazwa domeny. |
-| ManagementGroupName |Nazwa grupy zarządzania agentów SCOM.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
-| TimeGenerated |Data i godzina utworzenia lub aktualizacji grupy komputerów. |
+| `Type` |*ComputerGroup* |
+| `SourceSystem` |*SourceSystem* |
+| `Computer` |Nazwa komputera członkowskiego. |
+| `Group` |Nazwa grupy. |
+| `GroupFullName` |Pełna ścieżka do grupy, w tym źródłowego i nazwę źródła. |
+| `GroupSource` |Źródłowej, tej grupy, zebranych z. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |Nazwa źródła, które zostały zebrane grupy.  Usługi Active Directory jest to nazwa domeny. |
+| `ManagementGroupName` |Nazwa grupy zarządzania agentów SCOM.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
+| `TimeGenerated` |Data i godzina utworzenia lub aktualizacji grupy komputerów. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  

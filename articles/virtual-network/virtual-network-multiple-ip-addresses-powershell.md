@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70dac62e3e19ad0e9b33ea7b376a8fe479bf3131
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649653"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522988"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -96,7 +96,7 @@ Poniższe kroki wyjaśniają, jak Utwórz przykładowy maszyny Wirtualnej z wiel
 
 6. Zdefiniuj podstawowa konfiguracja adresu IP dla karty sieciowej. Zmień 10.0.0.4 na prawidłowy adres w podsieci, w której został utworzony, jeśli użyty przez Ciebie wartość zdefiniowana wcześniej. Przed przypisaniem statyczny adres IP, zalecane jest, że należy najpierw upewnij się, że nie jest już używana. Wprowadź polecenie `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Jeśli adres jest dostępny, zwraca dane wyjściowe *True*. Jeśli nie jest dostępna, zwraca dane wyjściowe *False* i listę adresów, które są dostępne. 
 
-    W poniższych poleceniach **Zamień < Zastąp-przy użyciu your unikatowy name > unikatową nazwę DNS do użycia.** Nazwa musi być unikatowa we wszystkich publicznych adresów IP w obrębie regionu platformy Azure. Jest to parametr opcjonalny. Można usunąć, jeśli chcesz się połączyć z maszyną wirtualną przy użyciu publicznego adresu IP.
+    W poniższych poleceniach **Zastąp \<Zastąp-przy użyciu your unikatowy name > na unikatową nazwę DNS do użycia.** Nazwa musi być unikatowa we wszystkich publicznych adresów IP w obrębie regionu platformy Azure. Jest to parametr opcjonalny. Można usunąć, jeśli chcesz się połączyć z maszyną wirtualną przy użyciu publicznego adresu IP.
 
     ```powershell
     

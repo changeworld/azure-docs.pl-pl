@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650482"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524056"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -227,7 +227,7 @@ Przedstawiono dane techniczne urządzeń, takie jak data produkcji, numer modelu
 
 Wysiłek przygotowywania danych omówionych do tej pory powinny prowadzić do dane są organizowane, jak pokazano poniżej. Szkolenia, testowanie i Walidacja danych powinny mieć ten schemat logicznych (w tym przykładzie przedstawiono czas w jednostkach dni).
 
-| Identyfikator elementu zawartości | Time | <Feature Columns> | Etykieta |
+| Identyfikator elementu zawartości | Time | \<Funkcja kolumny > | Label |
 | ---- | ---- | --- | --- |
 | A123 |1 dzień | . . . | . |
 | A123 |2 dni | . . . | . |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895893"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549716"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
 Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
@@ -94,9 +94,9 @@ Wszystkie działania mają właściwości podane w poniższej tabeli.  Różne t
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |Typ akcji.  Obecnie możliwe wartości to Alert i elementów Webhook. |
-| Name (Nazwa) |Nazwa wyświetlana alertu. |
-| Wersja |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
+| `Type` |Typ akcji.  Obecnie możliwe wartości to Alert i elementów Webhook. |
+| `Name` |Nazwa wyświetlana alertu. |
+| `Version` |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
 
 ### <a name="retrieving-actions"></a>Pobieranie akcji
 
@@ -154,8 +154,8 @@ Progi mają właściwości podane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Operator |Operator porównania wartości progowej. <br> gt = większe niż <br> lt = mniej niż |
-| Wartość |Wartość progu. |
+| `Operator` |Operator porównania wartości progowej. <br> gt = większe niż <br> lt = mniej niż |
+| `Value` |Wartość progu. |
 
 Rozważmy na przykład zapytania dotyczącego zdarzenia w odstępie 15 minut, przedział czasu, 30 minut i próg większe niż 10. W tym przypadku zapytanie będzie uruchamiany co 15 minut, a alert może zostać wyzwolony, jeśli zwrócony 10 zdarzenia, które zostały utworzone w okresie 30-minutowe.
 
@@ -187,9 +187,9 @@ Usługa log Analytics umożliwia klasyfikowanie alertów w kategorie, aby umożl
 
 |Poziom ważności analizy dzienników  |Poziom ważności alertów platformy Azure  |
 |---------|---------|
-|krytyczny |Ważność 0|
-|ostrzeżenie |Ważność 1|
-|Informacyjny | Ważność 2|
+|`critical` |Ważność 0|
+|`warning` |Ważność 1|
+|`informational` | Ważność 2|
 
 Oto przykładowa odpowiedź dla akcji przy użyciu progu i ważności. 
 
@@ -284,7 +284,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 Akcje domyślne, wykonując standardowego szablonu i format dla powiadomień. Jednak użytkownik może dostosować pewne działania, nawet wtedy, gdy są one kontrolowane przez grupy akcji. Obecnie Dostosowywanie jest temat wiadomości E-mail i ładunek elementu Webhook.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Dostosowywanie temat wiadomości E-Mail do grupy akcji
-Domyślnie jest temat wiadomości e-mail dla alertów: Powiadomienia o alercie <AlertName> dla <WorkspaceName>. Ale to można dostosowywać, aby można było konkretnych słów lub tagi — pozwala łatwo stosować reguły filtrowania w Twojej skrzynce odbiorczej. Szczegółowe informacje o nagłówku Dostosuj wiadomości e-mail należy wysyłać wraz ze szczegółami ActionGroup, tak jak w poniższym przykładzie.
+Domyślnie jest temat wiadomości e-mail dla alertów: Powiadomienia o alercie `<AlertName>` dla `<WorkspaceName>`. Ale to można dostosowywać, aby można było konkretnych słów lub tagi — pozwala łatwo stosować reguły filtrowania w Twojej skrzynce odbiorczej. Szczegółowe informacje o nagłówku Dostosuj wiadomości e-mail należy wysyłać wraz ze szczegółami ActionGroup, tak jak w poniższym przykładzie.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

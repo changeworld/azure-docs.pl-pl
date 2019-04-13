@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3eed2bbb03334fed41bf0c74b1c287d9ca3f53eb
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501471"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549543"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -1092,57 +1092,43 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | Usuń listę określonego twarzy. Obrazy powiązane twarzy na liście twarzy również zostaną usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | Usuwanie twarzy list twarzy przez określony faceListId i persisitedFaceId. Obraz twarzy powiązane również zostaną usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/write | Dodaj twarzy na listę określoną twarzy maksymalnie 1000 twarzy. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | Pobieranie listy twarzy faceListId, nazwy, userData i twarze na liście twarzy.
-Wyświetl listę list twarzy faceListId, nazwa i danych użytkownika. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Tworzenie list twarzy pusty za pomocą faceListId określonych przez użytkownika, nazwę i opcjonalny userData. Maksymalnie 64 twarzy list są dozwolone
-Zaktualizuj informacje listy rozpoznawania twarzy, takie jak nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | Pobieranie listy twarzy faceListId, nazwy, userData i twarze na liście twarzy. Wyświetl listę list twarzy faceListId, nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Tworzenie list twarzy pusty za pomocą faceListId określonych przez użytkownika, nazwę i opcjonalny userData. Maksymalnie 64 twarzy list są dozwolone informacji o aktualizacji listy rozpoznawania twarzy, takie jak nazwa i danych użytkownika. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/findsimilars/action | Podane faceId kwerendy rozpoznawania twarzy, wyszukiwanie podobnie wyglądających twarzy z tablicą faceId listy twarzy lub dużych powierzchni. faceId |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/group/action | Dzielenie Release candidate twarze na grupy na podstawie podobieństwa twarzy. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/identify/action | Identyfikacja 1-do wielu, można znaleźć najbliższe dopasowania określonej osoby twarz z grupy osoba lub grupa osób dużych. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/delete | Usuń listę określonego dużych powierzchni. Obrazy powiązane twarzy na liście twarzy dużych również zostaną usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/delete | Usuwanie twarzy z listy dużych powierzchni przez określony largeFaceListId i persisitedFaceId. Obraz twarzy powiązane również zostaną usunięte. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | Aby pobrać utrwalonych twarzy na liście twarzy dużych, largeFaceListId i persistedFaceId.
-Listę persistedFaceId i danych użytkownika na liście twarzy dużych określonego twarzy. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Dodaj twarzy na listę określoną dużych powierzchni twarzy do 1 000 000.
-Zaktualizuj pole userData określonego twarzy na liście twarzy dużych, jego persistedFaceId. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Pobierz listę dużych powierzchni largeFaceListId, nazwa, userData.
-Wyświetl listę list twarzy dużych informacji largeFaceListId, nazwy i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | Aby pobrać utrwalonych twarzy na liście twarzy dużych, largeFaceListId i persistedFaceId. Listę persistedFaceId i danych użytkownika na liście twarzy dużych określonego twarzy. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Dodaj twarzy na listę określoną dużych powierzchni twarzy do 1 000 000. Zaktualizuj pole userData określonego twarzy na liście twarzy dużych, jego persistedFaceId. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Pobierz listę dużych powierzchni largeFaceListId, nazwa, userData. Wyświetl listę list twarzy dużych informacji largeFaceListId, nazwy i danych użytkownika. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Prześlij zadania szkolenia twarzy duże listy. Szkolenie jest to istotny krok, można użyć tylko uczonego twarzy duże listy. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | Aby sprawdzić stan szkolenia listy dużych powierzchni ukończone lub postępujące. Operacja asynchroniczna jest LargeFaceList szkolenie |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Tworzenie list twarzy dużych pustych za pomocą largeFaceListId określonych przez użytkownika, nazwę i opcjonalny userData.
-Zaktualizuj informacje listy dużych powierzchni, takie jak nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Tworzenie list twarzy dużych pustych za pomocą largeFaceListId określonych przez użytkownika, nazwę i opcjonalny userData. Zaktualizuj informacje listy dużych powierzchni, takie jak nazwa i danych użytkownika. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/delete | Usuń istniejącą grupę dużych osoby za pomocą określonego personGroupId. Utrwalone dane w tej grupie dużych osoby zostaną usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/action | Utwórz nową osobę w grupie określona osoba dużych. Aby dodać tę osobę do rozpoznawania twarzy, skontaktuj się z działem |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/delete | Usunąć istniejące osoby z grupy dużych osoby. Wszystkie przechowywane danych osobowych i obrazy twarzy w zapisie osoby zostanie usunięty. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/delete | Usuwanie twarzy od osoby w grupie dużych osoby. Dane rozpoznawania twarzy i obrazów związanych z tego wpisu rozpoznawania twarzy można również usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/read | Pobierz informacje o twarzy osoby. Twarzy osoby utrwalonych jest określony przez jego largePersonGroupId, personId i persistedFaceId. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy dużych osoby identyfikowanie twarzy lub weryfikacji. Aby poradzić sobie z obrazu
-Aktualizacja osoby utrwalone tarczy userData pola. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane.
-Wyświetl listę informacji o wszystkich osób w grupie określona osoba dużych, jak personId, nazwa, userData persistedFaceIds. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy dużych osoby identyfikowanie twarzy lub weryfikacji. Aby poradzić sobie z obrazem aktualizacji osoby utrwalone tarczy userData pola. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane. Wyświetl listę informacji o wszystkich osób w grupie określona osoba dużych, jak personId, nazwa, userData persistedFaceIds. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | Zaktualizuj nazwę lub userData osoby. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Pobierz informacje o dużych osoby grupy, takie jak jego nazwa i danych użytkownika. Ten interfejs API zwraca dużych osoby informacje o grupie
-Wyświetl listę largePesonGroupId wszystkich istniejących osoby dużych grup firmy, nazwę i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Pobierz informacje o dużych osoby grupy, takie jak jego nazwa i danych użytkownika. Ten interfejs API zwraca dużej grupy informacje o osobie listy wszystkich istniejących grup osób dużych largePesonGroupId, nazwę i danych użytkownika. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Prześlij zadania szkolenia grupy dużych osoby. Szkolenie jest to istotny krok, można użyć tylko uczonego osób dużych grup. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | Można sprawdzić stan ukończone lub postępujące szkolenia grupy dużych osoby. Operacja asynchroniczna jest LargePersonGroup szkolenie |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Utwórz nową grupę dużych osoby za pomocą largePersonGroupId określonych przez użytkownika, nazwę i opcjonalny userData.
-Zaktualizuj nazwę istniejącej grupy dużych osoby i userData. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Utwórz nową grupę dużych osoby za pomocą largePersonGroupId określonych przez użytkownika, nazwę i opcjonalny userData. Zaktualizuj nazwę istniejącej grupy dużych osoby i userData. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/delete | Usuń istniejącą grupę osoby za pomocą określonego personGroupId. Utrwalone dane w tej grupie osób zostaną usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/action | Tworzenie nowej osoby do grupy określonej osoby. Aby dodać tę osobę do rozpoznawania twarzy, skontaktuj się z działem |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/delete | Usuń istniejące osoby z grupa osób. Wszystkie przechowywane danych osobowych i obrazy twarzy w zapisie osoby zostanie usunięty. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/delete | Usuwanie twarzy od osoby w grupie osób. Dane rozpoznawania twarzy i obrazów związanych z tego wpisu rozpoznawania twarzy można również usunięte. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/read | Pobierz informacje o twarzy osoby. Twarzy osoby utrwalonych jest określony przez jego personGroupId, personId i persistedFaceId. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy osoby do rozpoznawania twarzy lub weryfikacji. Aby poradzić sobie z obrazem wielu
-Aktualizacja osoby utrwalone tarczy userData pola. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane.
-Informacje o wszystkich osób w grupie określona osoba, jak personId, nazwa, userData persistedFaceIds z listy zarejestrowany. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy osoby do rozpoznawania twarzy lub weryfikacji. Aby poradzić sobie z obrazem wielu aktualizacji osoby utrwalone tarczy userData pola. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane. Informacje o wszystkich osób w grupie określona osoba, jak personId, nazwa, userData persistedFaceIds z listy zarejestrowany. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | Zaktualizuj nazwę lub userData osoby. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Pobieranie nazwy grupy osoby i danych użytkownika. Aby uzyskać informacje o osobie w tej grupie, użyj
-Lista grup osób pesonGroupId, nazwę i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Pobieranie nazwy grupy osoby i danych użytkownika. Aby uzyskać informacje o osobie w tej grupie, użyj pesonGroupId grup listy osób, nazwę i danych użytkownika. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Prześlij zadania szkolenia grupy osoby. Szkolenie jest to istotny krok, można użyć tylko grupa uczonego osoby. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | Można sprawdzić stan ukończone lub postępujące szkolenia grupy osoby. Szkolenie w grupie jest operacja asynchroniczna wyzwolone |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Utwórz nową grupę osoby z personGroupId określony, nazwa i userData podanego przez użytkownika.
-Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Utwórz nową grupę osoby z personGroupId określony, nazwa i userData podanego przez użytkownika. Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | Sprawdź, czy dwie twarze należą do tej samej osoby lub czy należy twarzy jednej osobie. |
 > | Akcja | Microsoft.CognitiveServices/accounts/listKeys/action | Wylicz klucze |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | Pobiera prognozowania opublikowanych punkt końcowy dla danego zapytania. |
@@ -5901,5 +5887,5 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
-- [Wbudowane role zasobów platformy Azure](built-in-roles.md)
+- [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
+- [Wbudowane role dla zasobów platformy Azure](built-in-roles.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491546"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548719"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -147,7 +147,7 @@ W tej sekcji opiszemy sposób ustawiania alertu wyjątku na podstawie zapytania.
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak anulować subskrypcję alertów klasycznych w wiadomości e-mail z powiadomieniami
 
-Ta sekcja dotyczy **alerty klasyczne dostępności**, **alertów dotyczących metryk usługi Application Insights**, a **alerty dotyczące anomalii klasycznego błędów**.
+Ta sekcja dotyczy **alerty klasyczne dostępności**, **klasycznego alertów dotyczących metryk usługi Application Insights**, a **alerty dotyczące anomalii klasycznego błędów**.
 
 Otrzymujesz wiadomości e-mail z powiadomieniami dla tych alertów klasycznych, jeśli dowolny z następujących czynności:
 
@@ -181,9 +181,9 @@ Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć n
 * [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Zobacz także
-* [Testy dostępności sieci Web](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
-* [Aktywna diagnostyka](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Diagnostyka proaktywna](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

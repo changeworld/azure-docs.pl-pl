@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bd535aeb034a17f1844c1d19379c1811b43d27e5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260242"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549273"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: Tworzenie maszyny wirtualnej systemu Windows z programem SQL Server 2017 w witrynie Azure Portal
 
@@ -29,11 +29,10 @@ ms.locfileid: "59260242"
 
 Ten przewodnik Szybki start przeprowadza użytkownika przez proces tworzenia maszyny wirtualnej z programem SQL Server w witrynie Azure Portal.
 
-> [!TIP]
-> W tym przewodniku Szybki start przedstawiono ścieżkę szybkiego aprowizowania maszyny wirtualnej SQL i nawiązywania z nią połączenia. Aby uzyskać więcej informacji na temat innych opcji aprowizowania maszyn wirtualnych SQL, zobacz [Provisioning guide for Windows SQL Server VMs in the Azure portal (Przewodnik aprowizowania maszyn wirtualnych systemu Windows z programem SQL Server w witrynie Azure Portal)](virtual-machines-windows-portal-sql-server-provision.md).
 
-> [!TIP]
-> Jeśli masz pytania dotyczące maszyn wirtualnych programu SQL Server, zobacz [Często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md).
+  > [!TIP]
+  > - W tym przewodniku Szybki start przedstawiono ścieżkę szybkiego aprowizowania maszyny wirtualnej SQL i nawiązywania z nią połączenia. Aby uzyskać więcej informacji na temat innych opcji aprowizowania maszyn wirtualnych SQL, zobacz [Provisioning guide for Windows SQL Server VMs in the Azure portal (Przewodnik aprowizowania maszyn wirtualnych systemu Windows z programem SQL Server w witrynie Azure Portal)](virtual-machines-windows-portal-sql-server-provision.md).
+  > - Jeśli masz pytania dotyczące maszyn wirtualnych programu SQL Server, zobacz [Często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md).
 
 ## <a id="subscription"></a> Uzyskiwanie subskrypcji platformy Azure
 
@@ -47,12 +46,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. W polu wyszukiwania wpisz `SQL Server 2017 Developer on Windows Server 2016`, i naciśnij klawisz ENTER.
 
-1. Wybierz obraz **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** (Bezpłatna licencja programu SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016).
+1. Wybierz obraz **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** (Bezpłatna licencja programu SQL Server: SQL Server 2017 Developer w systemie Windows Server 2016). W tym samouczku jest używana wersja Developer — w pełni funkcjonalna wersja programu SQL Server, bezpłatna w przypadku zastosowań obejmujących tworzenie i testowanie. Opłaty dotyczą tylko kosztów obsługi maszyny wirtualnej. Aby uzyskać więcej informacji na temat cen, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
 
    ![Nowe okno wyszukiwania](./media/quickstart-sql-vm-create-portal/newsearch.png)
 
-   > [!TIP]
-   > W tym samouczku jest używana wersja Developer — w pełni funkcjonalna wersja programu SQL Server, bezpłatna w przypadku zastosowań obejmujących tworzenie i testowanie. Opłaty dotyczą tylko kosztów obsługi maszyny wirtualnej. Aby uzyskać więcej informacji na temat cen, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -99,19 +96,14 @@ Na **ustawień programu SQL Server** skonfiguruj następujące opcje:
 
 Na **Przejrzyj + Utwórz** kartę, Przejrzyj podsumowanie, a następnie wybierz **Utwórz** do utworzenia programu SQL Server, grupę zasobów i zasoby określone dla tej maszyny Wirtualnej.
 
-Możesz monitorować wdrożenie z poziomu witryny Azure Portal. Przycisk **Powiadomienia** w górnej części ekranu służy do wyświetlania podstawowych informacji dotyczących stanu wdrożenia.
-
-> [!TIP]
-> Wdrażanie maszyny wirtualnej systemu Windows z programem SQL Server może potrwać kilka minut.
+Możesz monitorować wdrożenie z poziomu witryny Azure Portal. Przycisk **Powiadomienia** w górnej części ekranu służy do wyświetlania podstawowych informacji dotyczących stanu wdrożenia. Wdrożenie może potrwać kilka minut. 
 
 ## <a name="connect-to-sql-server"></a>Ustanawianie połączenia z programem SQL Server
 
 1. W portalu Znajdź **publiczny adres IP** z usługi SQL Server VM in **Przegląd** sekcji właściwości maszyny wirtualnej.
 
-1. Na innym komputerze podłączonym do Internetu otwórz program SQL Server Management Studio (SSMS).
+1. Na innym komputerze podłączonym do Internetu, otwórz [programu SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
-   > [!TIP]
-   > Jeśli nie masz programu SQL Server Management Studio, możesz pobrać go z [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 1. W oknie dialogowym **Connect to Server** (Łączenie z serwerem) lub **Connect to Database Engine** (Łączenie z aparatem bazy danych) edytuj wartość **Server name** (Nazwa serwera). Wprowadź publiczny adres IP maszyny wirtualnej. Następnie dodaj przecinek i port niestandardowy, **1401**, określony podczas konfigurowania nowej maszyny wirtualnej. Na przykład `11.22.33.444,1401`.
 
@@ -145,4 +137,4 @@ Jeśli maszyna wirtualna SQL ma działać w sposób ciągły, możesz uniknąć 
 W tym przewodniku Szybki Start utworzono maszynę wirtualną programu SQL Server 2017 w witrynie Azure portal. Aby dowiedzieć się więcej o sposobie przeprowadzania migracji danych do nowego serwera SQL Server, zobacz następujący artykuł.
 
 > [!div class="nextstepaction"]
-> [Migrowanie bazy danych do maszyny Wirtualnej SQL](virtual-machines-windows-migrate-sql.md)
+> [Migrowanie bazy danych do maszyny wirtualnej SQL](virtual-machines-windows-migrate-sql.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute: wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft'
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
 description: Ten artykuł pokazuje, jak tworzenie, aprowizować, sprawdź, aktualizowanie, usuwanie i anulować aprowizację obwodu ExpressRoute za pomocą interfejsu wiersza polecenia platformy.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084145"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524892"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Pobieranie listy obsługiwanych dostawców, lokalizacji i przepustowości
 
-Przed przystąpieniem do tworzenia obwodu usługi ExpressRoute, należy listę dostawców łączności obsługiwanych, lokalizacji i opcje przepustowości. Interfejsu wiersza polecenia polecenie "az express-route list dostawcy usług sieciowych —" zwraca te informacje, która będzie używana w dalszych krokach:
+Przed przystąpieniem do tworzenia obwodu usługi ExpressRoute, należy listę dostawców łączności obsługiwanych, lokalizacji i opcje przepustowości. Polecenia interfejsu wiersza polecenia `az network express-route list-service-providers` zwraca te informacje, która będzie używana w dalszych krokach:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -154,7 +154,7 @@ Odpowiedź zawiera klucz usługi.
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Lista wszystkich obwodów usługi ExpressRoute
 
-Aby uzyskać listę wszystkich obwodów usługi ExpressRoute, które zostały utworzone, uruchom polecenie "az network express-route list". Możesz pobrać te informacje w dowolnym momencie za pomocą tego polecenia. Aby wyświetlić listę wszystkich obwodów, należy wykonać wywołanie bez parametrów.
+Aby uzyskać listę wszystkich obwodów usługi ExpressRoute, które zostały utworzone, uruchom `az network express-route list` polecenia. Możesz pobrać te informacje w dowolnym momencie za pomocą tego polecenia. Aby wyświetlić listę wszystkich obwodów, należy wykonać wywołanie bez parametrów.
 
 ```azurecli-interactive
 az network express-route list

@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8bc213c14553bc73c7eb7fffcb1c1dcad924aaed
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c1b3282417cd95f1aaff472890ec655e4c5a983f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906059"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546284"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Uruchamianie niestandardowego kontenera systemu Windows na platformie Azure (wersja zapoznawcza)
 
@@ -179,7 +179,7 @@ Ponownie [przejdź do aplikacji kontenera](#browse-to-the-container-app). Po od�
 Możesz użyć innego niestandardowego obrazu platformy Docker do uruchamiania aplikacji. Musisz jednak wybrać właściwy [obraz nadrzędny](https://docs.docker.com/develop/develop-images/baseimages/) dla wybranej platformy: 
 
 - Wdrażanie aplikacji .NET Framework, należy użyć obrazu nadrzędnego na podstawie 2019 systemu Windows Server Core [Long-Term Servicing Channel (LTSC)](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview#long-term-servicing-channel-ltsc) wydania. 
-- Aby wdrożyć aplikacje platformy .NET Core, należy użyć obrazu nadrzędnego, w oparciu o 1809 Nano Server systemu Windows [Long-Term Servicing Channel (LTSC)](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview#long-term-servicing-channel-ltsc) wydania. 
+- Aby wdrożyć aplikacje platformy .NET Core, należy użyć obrazu nadrzędnego, w oparciu o 1809 Nano Server systemu Windows [kanał obsługi półroczny (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) wydania. 
 
 Pobieranie obrazu nadrzędnego podczas uruchamiania aplikacji może zająć trochę czasu. Można jednak skrócić czas uruchamiania, korzystając z jednego z następujących obrazów nadrzędnych, które już zostały zbuforowane w usłudze Azure App Service:
 
@@ -189,4 +189,4 @@ Pobieranie obrazu nadrzędnego podczas uruchamiania aplikacji może zająć troc
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Migrowanie do Windows kontener na platformie Azure](app-service-web-tutorial-windows-containers-custom-fonts.md)
+> [Migrowanie do kontenera systemu Windows na platformie Azure](app-service-web-tutorial-windows-containers-custom-fonts.md)

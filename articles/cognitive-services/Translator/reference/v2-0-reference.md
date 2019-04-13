@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918012"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527289"
 ---
 # <a name="translator-text-api-v20"></a>Interfejs API tekstu usługi Translator w wersji 2.0
 
@@ -45,7 +45,7 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
 |ProfanityAction    |Akcja |Przykład źródłowej (japoński)  |Przykład tłumaczenie (język angielski)  |
 |:--|:--|:--|:--|
 |NoAction   |Domyślne. Taka sama jak nie Ustawianie opcji. Wulgaryzmów zostaną spełnione ze źródła do docelowego.        |彼はジャッカスです。     |Jest on jackass.   |
-|Oznaczone jako     |Wyrazy obsceniczne jest otoczony tagi XML <profanity> i </profanity>.     |彼はジャッカスです。 |Jest on <profanity>jackass</profanity>.    |
+|Oznaczone jako     |Wyrazy obsceniczne jest otoczony tagi XML \<wulgaryzmów > i \</profanity >.       |彼はジャッカスです。 |Jest on \<wulgaryzmów > jackass\</profanity >.  |
 |Usunięte    |Wyrazy obsceniczne zostaną usunięte z danych wyjściowych bez zastępowania.     |彼はジャッカスです。 |Jest on.   |
 
     

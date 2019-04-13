@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835020"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524909"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
 W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
@@ -89,14 +89,14 @@ Gałąź jest dostarczany z zestawu funkcji zdefiniowanych przez użytkownika do
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-To zapytanie Hive założono, że *<datetime field>* znajduje się w domyślnym formacie daty/godziny.
+To zapytanie Hive założono, że  *\<pola daty/godziny >* znajduje się w domyślnym formacie daty/godziny.
 
 Pole daty i godziny nie jest w domyślnym formacie, musisz najpierw przekonwertuj pole daty/godziny na sygnatura czasowa systemu Unix, a następnie wykonać konwersję sygnatura czasowa systemu Unix ciąg daty/godziny, który jest w domyślnym formacie. Gdy daty/godziny jest w domyślnym formatem, użytkownicy mogą stosować osadzone funkcje zdefiniowane przez użytkownika, aby wyodrębnić funkcji daty i godziny.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-W tym zapytaniu Jeśli *<datetime field>* ma wzorca, takich jak *2015-03-26 12:04:39*,  *<pattern of the datetime field>"* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby przetestować go, użytkownicy mogą uruchamiać
+W tym zapytaniu Jeśli  *\<pola daty/godziny >* ma wzorca, takich jak *2015-03-26 12:04:39*,  *\<wzorzec pola daty/godziny > "* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby przetestować go, użytkownicy mogą uruchamiać
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

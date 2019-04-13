@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124290"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544822"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics  
 
@@ -66,7 +66,7 @@ Skryptów U-SQL projektu U-SQL może zawierać instrukcji kwerendy dla obiektów
 Dowiedz się więcej o [projekt bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->Projekt bazy danych U-SQL jest obecnie w publicznej wersji zapoznawczej. Jeśli masz instrukcja DROP w projekcie, kompilacja kończy się niepowodzeniem. Instrukcja DROP będą miały wkrótce.
+>Instrukcja DROP może spowodować problem usunięcia awarii. Aby włączyć instrukcja DROP, musisz jawnie określić argumenty MSBuild. **AllowDropStatement** spowoduje włączenie bez danych powiązanych wykonać operacji usuwania, jak usunąć zestaw i upuść funkcja zwracająca tabelę. **AllowDataDropStatement** umożliwi wykonać operacji usuwania, takie jak listy table i schema listy powiązane dane. Należy włączyć AllowDropStatement przed użyciem AllowDataDropStatement.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Tworzenie projektu U-SQL przy użyciu wiersza polecenia programu MSBuild
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Definicja argumentów i wartości są następujące:
 
-* **USQLSDKPath = < pakietu Nuget języka U-SQL > \build\runtime**. Ten parametr odwołuje się do ścieżki instalacji pakietu NuGet usługi języka U-SQL.
+* **USQLSDKPath =\<pakietu Nuget języka U-SQL > \build\runtime**. Ten parametr odwołuje się do ścieżki instalacji pakietu NuGet usługi języka U-SQL.
 * **USQLTargetType = scalania lub SyntaxCheck**:
     * **Scal**. Tryb scalania kompiluje pliki związane z kodem. Należą do nich **.cs**, **.py**, i **.r** plików. Jego inlines wynikowej biblioteki zdefiniowanych przez użytkownika kodu do skryptu U-SQL. Przykłady to plik binarny biblioteki dll, Python lub R kodu.
     * **SyntaxCheck**. Tryb SyntaxCheck najpierw scala plików z kodem skryptu U-SQL. Następnie kompiluje skrypt U-SQL, aby zweryfikować swój kod.
-* **Ścieżka folderu DataRoot =<DataRoot path>**. Ścieżka folderu DataRoot jest wymagane tylko dla trybu SyntaxCheck. Podczas tworzenia skryptów w trybie SyntaxCheck, program MSBuild sprawdza, czy odwołania do obiektów bazy danych w skrypcie. Przed kompilacją, należy skonfigurować zgodne środowisko lokalne, które zawiera obiekty z bazy danych U-SQL w folderze DataRoot maszynie kompilacji. Można również zarządzać te zależności bazy danych przez [odwołanie do projektu bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Program MSBuild sprawdza tylko odwołania do obiektu bazy danych, nie pliki.
+* **Ścieżka folderu DataRoot =\<ścieżka folderu DataRoot >**. Ścieżka folderu DataRoot jest wymagane tylko dla trybu SyntaxCheck. Podczas tworzenia skryptów w trybie SyntaxCheck, program MSBuild sprawdza, czy odwołania do obiektów bazy danych w skrypcie. Przed kompilacją, należy skonfigurować zgodne środowisko lokalne, które zawiera obiekty z bazy danych U-SQL w folderze DataRoot maszynie kompilacji. Można również zarządzać te zależności bazy danych przez [odwołanie do projektu bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Program MSBuild sprawdza tylko odwołania do obiektu bazy danych, nie pliki.
 * **EnableDeployment = true** lub **false**. EnableDeployment wskazuje, czy zezwolił na Wdróż przywoływane bazy danych U-SQL podczas procesu kompilacji. Jeśli można odwoływać się do projektu bazy danych U-SQL i korzystać z obiektów bazy danych w skrypcie języka U-SQL, należy nadać parametrowi **true**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Ciągła integracja za pośrednictwem potoków usługi Azure

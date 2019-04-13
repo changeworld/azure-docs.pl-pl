@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361997"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527683"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 Ten artykuł to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
@@ -136,7 +136,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Generowanie raportu
-Narzędzie generuje plik programu Microsoft Excel z włączoną obsługą makr (plik XLSM) jako dane wyjściowe raportu zawierające podsumowanie wszystkich zaleceń dotyczące wdrożenia. Raport nosi nazwę DeploymentPlannerReport_<unique numeric identifier>.xlsm i jest umieszczany w wybranym katalogu.
+Narzędzie generuje plik programu Microsoft Excel z włączoną obsługą makr (plik XLSM) jako dane wyjściowe raportu zawierające podsumowanie wszystkich zaleceń dotyczące wdrożenia. Raport nosi `DeploymentPlannerReport_<unique numeric identifier>.xlsm` i jest umieszczany w wybranym katalogu.
 
 >[!NOTE]
 >Raport wymaga symbol dziesiętny, skonfigurowany jako "." oszacować koszt na serwerze, na którym uruchamiasz planista wdrażania. W przypadku możesz skonfigurować "," jako symbol dziesiętny na komputerze Windows, przejdź do "Zmiana daty, godziny lub formaty liczbowe" w Panelu sterowania i wybierz pozycję "Dodatkowe ustawienia" Aby zmienić symbol dziesiętny".".
@@ -226,7 +226,7 @@ Korzystanie z wartości 95. percentyla oddaje rzeczywistą charakterystykę obci
 ```
 
 ## <a name="growth-factor-considerations"></a>Zagadnienia związane ze współczynnikiem wzrostu
-**Dlaczego warto jest rozważyć współczynnik wzrostu podczas planowania wdrożenia?**
+**Dlaczego podczas planowania wdrożenia warto wziąć pod uwagę współczynnik wzrostu?**
 
 Uwzględnianie wzrostu w charakterystyce obciążenia jest niezwykle ważne przy zakładaniu potencjalnego wzrostu użycia wraz z upływem czasu. W przypadku zmiany charakterystyki po włączeniu ochrony nie ma możliwości przełączenia do innego konta magazynu w celu zapewnienia ochrony bez wyłączenia i ponownego włączenia ochrony.
 
@@ -242,7 +242,7 @@ Wygenerowany raport programu Microsoft Excel zawiera następujące informacje:
 
 * [Podsumowanie środowiska lokalnego](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Zalecenia](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [Rozmieszczenie maszyny Wirtualnej <> —](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [Rozmieszczenie maszyny wirtualnej względem magazynu](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Zgodne maszyny wirtualne](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [Niezgodne maszyny wirtualne](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
 * [Szacowanie kosztów](site-recovery-vmware-deployment-planner-cost-estimation.md)

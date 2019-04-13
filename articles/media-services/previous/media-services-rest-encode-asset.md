@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293077"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521632"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Jak kodować zasoby przy użyciu usługi Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "58293077"
 >
 >
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Do dostarczania wideo za pośrednictwem Internetu, trzeba skompresować nośniki. Pliki wideo cyfrowe są duże i może być zbyt duża, aby dostarczyć za pośrednictwem Internetu lub dla klientów urządzeń, aby wyświetlać się poprawnie. Kodowanie jest procesem kompresowania audio i wideo, dzięki czemu klienci mogą wyświetlać multimediów.
 
@@ -94,14 +94,14 @@ Poniższy przykład pokazuje, jak ustawić atrybutu assetName:
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 * Taskbody — właściwości należy użyć literał XML, aby zdefiniować liczbę dane wejściowe lub wyjściowe zasoby, które są używane przez zadanie. Ten artykuł zadań zawiera definicji schematu XML dla pliku XML.
-* W definicji taskbody — wartość każdego wewnętrzny <inputAsset> i <outputAsset> musi być ustawiona jako JobInputAsset(value) lub JobOutputAsset(value).
+* W definicji taskbody — wartość każdego wewnętrzny `<inputAsset>` i `<outputAsset>` musi być ustawiona jako JobInputAsset(value) lub JobOutputAsset(value).
 * Zadanie może mieć wielu zasobów danych wyjściowych. Jeden JobOutputAsset(x) należy używać tylko jeden raz jako dane wyjściowe zadania w zadaniu.
 * Możesz określić JobInputAsset lub JobOutputAsset jako wejściowego elementu zadania.
 * Zadania muszą nie tworzą cyklu.
 * Parametr wartości, który jest przekazywany do JobInputAsset lub JobOutputAsset reprezentuje wartość indeksu dla zasobu. Rzeczywiste zasoby są zdefiniowane w InputMediaAssets i OutputMediaAssets właściwości nawigacji na definicję jednostki zadania.
 * Ponieważ usługa Media Services jest oparta na protokole OData v3, poszczególnych zasobów w kolekcji właściwości nawigacji InputMediaAssets i OutputMediaAssets są wywoływane za pośrednictwem "__metadata: identyfikator uri" pary nazwa wartość.
 * InputMediaAssets jest mapowany na jeden lub więcej zasobów utworzonych w usłudze Media Services. OutputMediaAssets są tworzone przez system. Nie mogą odwoływać się istniejący zasób.
-* Może być nazwany OutputMediaAssets za pomocą atrybutu assetName. Jeśli ten atrybut nie jest obecny, a następnie nazywa OutputMediaAsset niezależnie od tekst wewnętrzny wartość <outputAsset> element jest sufiksem Nazwa zadania wartość lub wartość identyfikatora zadania (w przypadku, w którym nie zdefiniowano właściwości Name). Na przykład jeśli ustawisz wartość assetName do "Przykładowy", następnie OutputMediaAsset nazwa właściwości jest równa "Przykładowy". Jednakże jeśli nie była ustawiana wartość assetName, ale ustawiona na nazwę zadania, aby "NewJob", nazwa OutputMediaAsset może być "_NewJob JobOutputAsset (wartość)".
+* Może być nazwany OutputMediaAssets za pomocą atrybutu assetName. Jeśli ten atrybut nie jest obecny, a następnie nazywa OutputMediaAsset niezależnie od tekst wewnętrzny wartość `<outputAsset>` element jest sufiksem Nazwa zadania wartość lub wartość identyfikatora zadania (w przypadku, w którym nie zdefiniowano właściwości Name). Na przykład jeśli ustawisz wartość assetName do "Przykładowy", następnie OutputMediaAsset nazwa właściwości jest równa "Przykładowy". Jednakże jeśli nie była ustawiana wartość assetName, ale ustawiona na nazwę zadania, aby "NewJob", nazwa OutputMediaAsset może być "_NewJob JobOutputAsset (wartość)".
 
 ## <a name="create-a-job-with-chained-tasks"></a>Tworzenie zadania za pomocą łańcuchowe zadania podrzędne
 W wielu scenariuszach aplikacji deweloperzy chcą utworzyć serię zadań przetwarzania. W usłudze Media Services można utworzyć szereg łańcuchowe zadania podrzędne. Każde zadanie podrzędne wykonuje inne przetwarzanie kroki i mogą używają procesorów różnych mediów. Łańcuchowe zadania podrzędne oddać zasobu z jednego zadania do innego, wykonywanie liniowej sekwencji zadań w elemencie zawartości. Jednak zadania wykonywane w ramach zadania nie muszą znajdować się w sekwencji. Po utworzeniu połączonych zadań łańcuchowych **ITask** obiekty są tworzone w ramach pojedynczej **IJob** obiektu.

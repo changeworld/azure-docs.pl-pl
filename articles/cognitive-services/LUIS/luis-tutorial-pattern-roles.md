@@ -1,7 +1,7 @@
 ---
 title: Role wzorca
 titleSuffix: Azure Cognitive Services
-description: Użyj wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
+description: Wzorce wyodrębnianie danych z wypowiedzi prawidłowo sformatowaną szablonu. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106597"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523278"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: wyodrębnianie wzorców powiązanych kontekstowo przy użyciu ról
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: Wyodrębnij kontekstowe powiązane wzorów przy użyciu ról
 
-W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
+W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Używa wypowiedź szablonu [jednostki prostej](luis-concept-entity-types.md#simple-entity) i [role](luis-concept-roles.md) można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
 
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
@@ -40,7 +40,7 @@ W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowa
 
 ## <a name="using-roles-in-patterns"></a>Używanie ról we wzorcach
 
-Celem ról jest wyodrębnienie kontekstowo powiązanych jednostek z wypowiedzi. W wypowiedzi `Move new employee Robert Williams from Sacramento and San Francisco` wartości miasta początkowego i docelowego są ze sobą powiązane, a każda z tych lokalizacji jest określona za pomocą wspólnego języka. 
+Role ma na celu wyodrębnienia kontekstowe powiązanych jednostek w wypowiedź. W wypowiedzi `Move new employee Robert Williams from Sacramento and San Francisco` wartości miasta początkowego i docelowego są ze sobą powiązane, a każda z tych lokalizacji jest określona za pomocą wspólnego języka. 
 
 
 Nazwisko nowego pracownika, Billy Patterson, nie jest jeszcze częścią jednostki listy **Employee** (Pracownik). Nazwisko nowego pracownika jest wyodrębniane w pierwszej kolejności w celu wysłania nazwiska do systemu zewnętrznego i utworzenia poświadczeń firmowych. Po utworzeniu poświadczeń firmowych poświadczenia pracowników są dodawane do listy jednostki **Employee**.
@@ -373,19 +373,6 @@ Miasta, tak jak nazwiska, są problematyczne, ponieważ również mogą zawiera�
     ```
 
 Wynik intencji jest teraz znacznie wyższy, a nazwy roli są częścią odpowiedzi jednostki.
-
-## <a name="hierarchical-entities-versus-roles"></a>Jednostki hierarchiczne a role
-
-W [samouczku dotyczącym jednostek hierarchicznych](luis-quickstart-intent-and-hier-entity.md) intencja **MoveEmployee** wykryła, kiedy przenieść obecnego pracownika z jednego budynku do innego. Wypowiedzi przykładowe zawierały lokalizacje początkową i docelową, ale nie korzystały z ról. Zamiast tego miejsce początkowe i docelowe były elementami podrzędnymi jednostki hierarchicznej. 
-
-W tym samouczku aplikacja Human Resources wykryje wypowiedzi dotyczące przenoszenia nowych pracowników pomiędzy miastami. Mimo że te dwa rodzaje wypowiedzi są takie same, są obsługiwane za pomocą różnych funkcji usługi LUIS.
-
-|Samouczek|Przykładowa wypowiedź|Lokalizacja początkowa i docelowa|
-|--|--|--|
-|[Hierarchiczne (brak ról)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298** (przenieś osobę o nazwisku Jill Jones z lokalizacji a-2349 do lokalizacji b-1298)|a-2349, b-1298|
-|Ten samouczek (przy użyciu ról)|Move Billy Patterson from **Yuma** to **Denver** (Przenieś osobę o nazwisku Billy Patterson z miasta Yuma do miasta Denver)|Yuma, Denver|
-
-Aby uzyskać więcej informacji, zobacz [Role a jednostki hierarchiczne](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

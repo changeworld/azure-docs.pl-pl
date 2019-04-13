@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758258"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527374"
 ---
 # <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
 
@@ -166,7 +166,7 @@ Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVid
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien być "application/json". 
 1. Nazwa zespołu usługi Content Moderator.
-1. **IList<CreateVideoReviewsBodyItem>**  obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. **IList\<CreateVideoReviewsBodyItem >** obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Jako minimum można ustawić następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo do przeglądu.
@@ -224,18 +224,18 @@ Dodaj klatki wideo na przegląd wideo za pomocą **ContentModeratorClient.Review
 1. Ciąg zawierający typ MIME, który powinien być "application/json".
 1. Nazwa zespołu usługi Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. **IList<VideoFrameBodyItem>**  obiektu. Każdy **VideoFrameBodyItem** obiekt reprezentuje klatki wideo.
+1. **IList\<VideoFrameBodyItem >** obiektu. Każdy **VideoFrameBodyItem** obiekt reprezentuje klatki wideo.
 
 **VideoFrameBodyItem** ma następujące właściwości:
 - **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w trakcie filmu wideo, z którego wykonano klatki wideo.
 - **FrameImage**. Adres URL wideo ramki.
-- **Metadane**. IList<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** jest po prostu pary klucz/wartość. Klucze obejmują:
+- **Metadane**. An IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** jest po prostu pary klucz/wartość. Klucze obejmują:
 - **reviewRecommended**. Wartość true, jeśli przeglądu przez ludzi klatki wideo jest zalecane.
 - **adultScore**. Wartość z zakresu od 0 do 1, która ocenia ważności zawartości dla dorosłych w ramce wideo.
 - **A** Wartość true, jeśli film wideo zawiera treści dla dorosłych.
 - **racyScore**. Wartość z zakresu od 0 do 1, która ocenia ważności zawartości erotycznej w ramce wideo.
 - **r**. Wartość true, jeśli ramka wideo zawiera zawartości erotycznej.
-- **ReviewerResultTags**. IList<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** jest po prostu pary klucz/wartość. Aplikacja może użyć tych tagów do organizowania klatki wideo.
+- **ReviewerResultTags**. An IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** jest po prostu pary klucz/wartość. Aplikacja może użyć tych tagów do organizowania klatki wideo.
 
 > [!NOTE]
 > Ten przewodnik Szybki Start generuje losowe wartości dla **adultScore** i **racyScore** właściwości. W przypadku aplikacji produkcyjnej można uzyskać te wartości z [usługa moderowania klipów wideo](video-moderation-api.md)wdrożone jako usługa multimediów Azure.

@@ -4,7 +4,7 @@ description: W ramach tego podręcznika Szybki start wdrożysz swoją pierwszą 
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999104"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544742"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji w języku Java w usłudze App Service w systemie Linux
 
@@ -99,17 +99,15 @@ Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej a
 
 **Gratulacje!** Udało Ci się wdrożyć pierwszą własną aplikację w języku Java w usłudze App Service w systemie Linux.
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start użyto narzędzia Maven do utworzenia aplikacji Java, skonfigurowano wtyczkę [Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), a następnie wdrożono aplikację Java w pakiecie archiwum internetowego do usługi App Service w systemie Linux. Skorzystaj z następujących samouczków i przewodników, aby uzyskać więcej informacji na temat hostowania aplikacji Java w usłudze App Service dla systemu Linux.
+> [!div class="nextstepaction"]
+> [Samouczek: Aplikacja przedsiębiorstwa Java z bazą danych PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
-- [Samouczek: Wdrażanie aplikacji Java Enterprise przy użyciu systemu PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [Konfigurowanie źródła danych Tomcat](app-service-linux-java.md#tomcat)
-- [Ciągła integracja/ciągłe wdrażanie przy użyciu narzędzia Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [Konfigurowanie narzędzi do monitorowania wydajności aplikacji](how-to-java-apm-monitoring.md)
-- [Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux](app-service-linux-java.md)
+> [!div class="nextstepaction"]
+> [Konfigurowanie aplikacji Java](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [Ciągła integracja/ciągłe wdrażanie przy użyciu narzędzia Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)

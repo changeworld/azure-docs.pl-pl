@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426430"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527187"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -34,7 +34,7 @@ Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak zasoby muszą
 > W zależności od scenariusza możesz korzystać z funkcji usługi Azure DNS Private Zones, która jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
-| **Scenariusz** | **Rozwiązanie** | **Sufiks** |
+| **Scenariusz** | **Rozwiązanie** | **Suffix** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między maszynami wirtualnymi znajduje się w tej samej sieci wirtualnej lub usługi Azure Cloud Services wystąpień roli w tej samej usłudze w chmurze. | [Usługa Azure DNS Private Zones](../dns/private-dns-overview.md) lub [rozpoznawania nazw platformy Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpień roli w różnych usługach w chmurze. |[Usługa Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwerów DNS zarządzanych przez klienta przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
@@ -147,7 +147,7 @@ Również przesyłania dalej DNS umożliwia rozpoznawanie nazw DNS między sieci
 
 > [!NOTE]
 > Wystąpienie roli można wykonać rozpoznawanie nazw maszyn wirtualnych w ramach tej samej sieci wirtualnej. Robi to przy użyciu w pełni kwalifikowaną nazwę domeny, która składa się z nazwy hosta maszyny Wirtualnej i **internal.cloudapp.net** sufiks DNS. Jednak w takim przypadku rozpoznawania nazw jest tylko pomyślne, jeśli wystąpienie roli ma nazwę maszyny Wirtualnej, zdefiniowane w [Role — schemat (pliku cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Wystąpienia roli, które należy wykonać rozpoznawanie nazw maszyn wirtualnych w innej sieci wirtualnej (nazwa FQDN przy użyciu **internal.cloudapp.net** sufiks) trzeba to zrobić przy użyciu metody opisanej w tej sekcji (niestandardowe serwery DNS przekazywania między dwie sieci wirtualne).
 >
@@ -219,6 +219,6 @@ Model wdrażania usługi Azure Resource Manager:
 
 Klasyczny model wdrażania:
 
-* [Azure Service Configuration Schema](https://msdn.microsoft.com/library/azure/ee758710)
+* [Schemat konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/azure/ee758710)
 * [Schemat konfiguracji sieci wirtualnej](https://msdn.microsoft.com/library/azure/jj157100)
 * [Skonfiguruj sieć wirtualną przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md)

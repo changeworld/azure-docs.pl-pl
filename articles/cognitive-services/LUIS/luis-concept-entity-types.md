@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895549"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528037"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -24,7 +24,15 @@ Jednostki wyodrębnianie danych z wypowiedź. Typy jednostek zapewniają przewid
 
 ## <a name="entity-compared-to-intent"></a>Jednostki w porównaniu do intencji
 
-Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Wypowiedź może zawierać wiele jednostek lub brak wcale. Jednostka reprezentuje klasę, łącznie z kolekcji podobnych obiektów (miejsc, rzeczy, osoby, zdarzenia lub pojęcia). Jednostki opisują informacje istotne dla intencji i czasami są istotne dla aplikacji w celu wykonania swojego zadania. Na przykład aplikacji wyszukiwania wiadomości mogą obejmować jednostki, takie jak "tematu", "źródło", "słowo kluczowe" i "publikowania daty" będące kluczowych danych do wyszukiwania wiadomości. W aplikacji rezerwacji podróży, "Lokalizacja", "Data", "linii lotniczych" "podróży class" i "bilety" są informacje o kluczu dla rezerwacji lotu (dotyczy na intencje "Zarezerwuj lotów").
+Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Wypowiedź może zawierać wiele jednostek lub brak wcale. Aplikacja kliencka może wymagać jednostki do wykonywania swoich zadań lub służyć jako przewodnik kilka opcji do zaprezentowania użytkownikowi. 
+
+Jednostki:
+
+* Reprezentuje klasę, łącznie z kolekcji podobnych obiektów (miejsc, rzeczy, osoby, zdarzenia lub pojęcia). 
+* W tym artykule opisano informacje istotne dla intencji
+
+
+Na przykład aplikacji wyszukiwania wiadomości mogą obejmować jednostki, takie jak "tematu", "źródło", "słowo kluczowe" i "publikowania daty" będące kluczowych danych do wyszukiwania wiadomości. W aplikacji rezerwacji podróży, "Lokalizacja", "Data", "linii lotniczych" "podróży class" i "bilety" są informacje o kluczu dla rezerwacji lotu (dotyczy na intencje "Zarezerwuj lotów").
 
 Natomiast zamiar reprezentuje prognozowania całego wypowiedź. 
 
@@ -88,15 +96,15 @@ Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojed
 
 |Przedstawiono maszyny|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Przeznaczenie|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Złożone**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchiczna**](#hierarchical-entity)|Grupowanie proste jednostki.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**List**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchiczna**](#hierarchical-entity)|Grupowanie proste jednostki.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
 |Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Wstępnie utworzone**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
+|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regular Expression**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Proste**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
 
-Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykład dla każdego intencji. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endpoint-utterances.md). 
+Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykładu. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endoint-utt.md). 
 
 Jednostki pattern.any muszą być oznaczone w [wzorzec](luis-how-to-model-intent-pattern.md) przykłady szablonów, nie przykłady intencji użytkownika. 
 
@@ -121,29 +129,15 @@ Ta jednostka jest bardzo dopasowania, gdy dane:
 
 ## <a name="hierarchical-entity"></a>Jednostka hierarchiczna
 
+**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
+
 Hierarchiczna jednostka jest kategoria kontekstowe nauczony jednostek proste, nazywane elementami podrzędnymi.
-
-Ta jednostka jest bardzo dopasowania, gdy dane:
-
-* Są prostymi jednostkami.
-* Są ze sobą powiązane w kontekście wypowiedzi.
-* Wybór określonego programu word umożliwia wskazanie każdej jednostki podrzędne. Przykładowe wyrazy tego typu to: from/to (od/do), leaving/headed to (opuszczać/kierować się do), away from/toward (w kierunku od/do).
-* Elementy podrzędne są często stosowane w tej samej wypowiedź. 
-* Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
-
-Należy używać, jeśli:
-
-* Potrzebujesz jednostki, która ma dopasowania tekstu do dokładnego dopasowania dla dzieci, niezależnie od kontekstu. Użyj [listy jednostek](#list-entity) zamiast tego. 
-* Potrzebujesz jednostki relacji nadrzędny podrzędny przy użyciu innych typów jednostek. Użyj [złożonego jednostki](#composite-entity).
 
 ![Hierarchiczna jednostki](./media/luis-concept-entities/hierarchical-entity.png)
 
-[Samouczek](luis-quickstart-intent-and-hier-entity.md)<br>
-[Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
 
-[Role](luis-concept-roles.md#roles-versus-hierarchical-entities) wzorca rozwiązanie tego problemu, ponieważ hierarchiczne jednostki, ale odnosi się do wszystkich typów jednostek. Role są obecnie dostępne tylko we wzorcach. Role nie są dostępne w wypowiedzi przykład intencji.  
+[Role](luis-concept-roles.md) rozwiązanie tego problemu, ponieważ hierarchiczne jednostki, ale odnosi się do wszystkich typów jednostek.  
 
 ## <a name="list-entity"></a>Jednostka listy
 
@@ -262,24 +256,15 @@ Jednostka jest bardzo dopasowania, gdy:
 
 Przegląd [limity](luis-boundaries.md#model-boundaries) Aby dowiedzieć się, ile poszczególnych typów obiektu można dodać do modelu.
 
-## <a name="composite-vs-hierarchical-entities"></a>Jednostki hierarchiczne złożonego programu vs
-
-Composite jednostek i hierarchiczne jednostek zarówno mają relacji nadrzędny podrzędny i przedstawiono maszyny. Usługi machine learning umożliwia usługi LUIS do informacje o jednostkach, w oparciu o różne konteksty (rozmieszczenie wyrazów). Złożone jednostki są bardziej elastyczne, ponieważ umożliwiają one typów jednostek innej jako elementy podrzędne. Hierarchiczna jednostki podrzędne są tylko proste jednostki. 
-
-|Typ|Przeznaczenie|Przykład|
-|--|--|--|
-|Hierarchiczna|Nadrzędny podrzędny, proste jednostek|Location.Origin=New Jorku<br>Location.Destination=London|
-|Złożone|Jednostki nadrzędny podrzędny: lista wbudowanych, proste, hierarchiczne| liczba = 3<br>Lista najwyższej klasy =<br>prebuilt.datetimeV2=March 5|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Jeśli potrzebujesz więcej niż maksymalna liczba jednostek 
 
-Może być konieczne użycie jednostek hierarchiczne i złożone. Hierarchiczna jednostek odzwierciedlają relacji między jednostkami, które mają właściwości lub należą do kategorii. Jednostki podrzędne są wszyscy członkowie ich nadrzędnej kategorii. Na przykład jednostka hierarchicznej, o nazwie PlaneTicketClass może być EconomyClass i FirstClass obiektów podrzędnych. Hierarchia obejmuje tylko jeden poziom głębi.  
+Może być konieczne korzystanie z jednostek złożonego w połączeniu z rolami jednostki.
 
-Composite jednostek reprezentują części całości. Na przykład jednostka złożone o nazwie PlaneTicketOrder niewykluczone jednostki podrzędne linii lotniczych, miejsce docelowe, DepartureCity, DepartureDate i PlaneTicketClass. Możesz tworzyć złożone jednostki z istniejących jednostek proste dzieci hierarchiczne jednostek lub ze wstępnie utworzonych jednostek.  
+Composite jednostek reprezentują części całości. Na przykład jednostka złożone o nazwie PlaneTicketOrder niewykluczone jednostki podrzędne linii lotniczych, miejsce docelowe, DepartureCity, DepartureDate i PlaneTicketClass.
 
 Usługa LUIS także listy Typ jednostki obsługiwanej przez nie przedstawiono maszyny, ale pozwala aplikacją usługi LUIS określić stałą listy wartości. Zobacz [granice LUIS](luis-boundaries.md) odwołania, aby zapoznać się ograniczenia typu listy jednostek. 
 
-Jeśli zostały uznane za hierarchiczna, złożony i wyświetlanie list jednostek i nadal potrzebujesz więcej niż limit się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
+Jeśli zostały uznane za te jednostki i nadal potrzebujesz więcej niż limit, skontaktuj się z działem pomocy technicznej. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

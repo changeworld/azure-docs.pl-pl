@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853090"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526915"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -61,12 +61,12 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 | Ustawienie | Opis | Wartość |
 |:--- |:--- |:--- |
 | **Typ repozytorium** | Typ repozytorium kodu repozytoriów platformy Azure.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwane. | Azure repozytoriów Git |
-| **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | <your tenant name> |
-| **Organizacja repozytoriów platformy Azure** | Nazwa organizacji repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa organizacji repozytoriów platformy Azure w `https://{organization name}.visualstudio.com`. Możesz [Zaloguj się do Twojej organizacji repozytoriów Azure](https://www.visualstudio.com/team-services/git/) dostęp do Twojego profilu programu Visual Studio i zobacz projektów i repozytoriów. | <your organization name> |
-| **ProjectName** | Nazwa projektu repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa projektu repozytoriów platformy Azure w `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
-| **RepositoryName** | Nazwę repozytorium kodu repozytoriów platformy Azure. Projekty repozytoriów platformy Azure zawierają repozytoriów Git do zarządzania kodem źródłowym, wraz ze wzrostem natężenia projektu. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już w projekcie. | <your Azure Repos code repository name> |
-| **Gałąź współpracy** | Gałęzi współpracy repozytoriów platformy Azure, które jest używane do publikowania. Domyślnie jest `master`. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | <your collaboration branch name> |
-| **Folder główny** | Folderem w gałęzi współpracy repozytoriów platformy Azure. | <your root folder name> |
+| **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | `<your tenant name>` |
+| **Organizacja repozytoriów platformy Azure** | Nazwa organizacji repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa organizacji repozytoriów platformy Azure w `https://{organization name}.visualstudio.com`. Możesz [Zaloguj się do Twojej organizacji repozytoriów Azure](https://www.visualstudio.com/team-services/git/) dostęp do Twojego profilu programu Visual Studio i zobacz projektów i repozytoriów. | `<your organization name>` |
+| **ProjectName** | Nazwa projektu repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa projektu repozytoriów platformy Azure w `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **RepositoryName** | Nazwę repozytorium kodu repozytoriów platformy Azure. Projekty repozytoriów platformy Azure zawierają repozytoriów Git do zarządzania kodem źródłowym, wraz ze wzrostem natężenia projektu. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już w projekcie. | `<your Azure Repos code repository name>` |
+| **Gałąź współpracy** | Gałęzi współpracy repozytoriów platformy Azure, które jest używane do publikowania. Domyślnie jest `master`. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | `<your collaboration branch name>` |
+| **Folder główny** | Folderem w gałęzi współpracy repozytoriów platformy Azure. | `<your root folder name>` |
 | **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium Git repozytoriów platformy Azure. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 
 #### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (repozytorium Git repozytoriów platformy Azure). Kanwa tworzenia interfejsu użytkownika

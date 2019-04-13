@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096694"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524263"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
@@ -91,6 +91,8 @@ Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wyp
 
 ## <a name="add-hierarchical-entity"></a>Dodawanie jednostki hierarchicznej
 
+**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
+
 Hierarchiczna jednostka jest kategoria kontekstowe nauczony i pod względem koncepcyjnym powiązanych jednostek. W poniższym przykładzie jednostki zawiera początkowe i docelowe lokalizacje. 
 
 W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to lokalizacja źródła i Kair jest lokalizacja docelowa. Każda lokalizacja jest kontekstowe różnych i nauczony kolejność słów i wybór o słowo w wypowiedź.
@@ -105,6 +107,12 @@ W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to loka
 
     >[!CAUTION]
     >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
+
+## <a name="add-entitys-role-to-utterance"></a>Dodaj rolę jednostki wypowiedź
+
+Rola jest podtypem o nazwie podmiotu, który jest ustalany na podstawie kontekstu wypowiedź. Zaznacz jednostkę w ramach wypowiedź jako jednostki lub wybierz rolę w ramach tej jednostki. Każda jednostka może mieć ról w tym jednostek niestandardowych, które są przedstawiono maszyny (jednostek proste i złożone jednostek), nie omówiono maszyny (wstępnie utworzonych jednostek, jednostek wyrażenia regularnego listy jednostek). 
+
+Dowiedz się, [sposobu oznaczania wypowiedź z rolami jednostki](tutorial-entity-roles.md) z praktycznego samouczka. 
 
 ## <a name="entity-status-predictions"></a>Prognozy stanu jednostki
 
@@ -151,11 +159,11 @@ Aby usunąć etykietę maszyny do opanowania jednostki wypowiedź, wybrać jedno
 
 ### <a name="add-prebuilt-entity-label"></a>Dodaj etykietę wstępnie utworzone jednostki
 
-Po dodaniu ze wstępnie utworzonych jednostek z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat wstępnie utworzonych jednostek i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-prebuilt-entity).
+Po dodaniu ze wstępnie utworzonych jednostek z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat wstępnie utworzonych jednostek i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ### <a name="add-regular-expression-entity-label"></a>Dodaj etykietę jednostki wyrażeń regularnych
 
-Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat jednostek wyrażenia regularnego i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-regular-expression-entities).
+Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat jednostek wyrażenia regularnego i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>Tworzenie wzorca z wypowiedź

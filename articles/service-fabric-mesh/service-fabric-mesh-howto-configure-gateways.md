@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532086"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528122"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurowanie zasobu bramy w celu kierowania żądań
 
@@ -228,8 +228,8 @@ Oto jak wygląda pełną konfigurację zasobu bramy (jest to zaczerpnięte z prz
 ```
 
 Ta brama jest skonfigurowana dla aplikacji systemu Linux, "meshAppLinux", który składa się z co najmniej dwie usługi: "helloWorldService" i "counterService", która nasłuchuje na porcie 80. W zależności od struktury adresu URL żądania przychodzącego jej będzie kierować żądania do jednego z tych usług. 
-* "<IPAddress>: 80/helloWorld/\<żądania\>" spowodowałoby żądanie jest kierowane do "helloWorldListener" w helloWorldService. 
-* "<IPAddress>: 80/licznik/\<żądania\>" spowodowałoby żądanie jest kierowane do "counterListener" w counterService. 
+* "\<Adres IP >: 80/helloWorld/\<żądania\>" spowodowałoby żądanie jest kierowane do "helloWorldListener" w helloWorldService. 
+* "\<Adres IP >: 80/licznik/\<żądania\>" spowodowałoby żądanie jest kierowane do "counterListener" w counterService. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Wdrażanie [przykładowych danych przychodzących](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) można wyświetlić bramy w działaniu

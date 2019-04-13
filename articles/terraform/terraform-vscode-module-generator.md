@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001277"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526745"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
@@ -73,8 +73,8 @@ W wierszu polecenia:
 1. Przejdź do katalogu nadrzędnego, w którym ma zostać utworzony nowy, pusty katalog.
 1. Wprowadź polecenie `mkdir <new-directory-name>`.
 
-    >[!NOTE]
-    >Pozycję <new-directory-name> zastąp nazwą swojego nowego katalogu. W tym przykładzie nadaliśmy nowemu katalogowi nazwę `GeneratorDocSample`.
+    > [!NOTE]
+    > Zastąp `<new-directory-name>` nazwą Twojego nowego katalogu. W tym przykładzie nadaliśmy nowemu katalogowi nazwę `GeneratorDocSample`.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -250,7 +250,7 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
 1. Utwórz folder $GOPATH, jeśli jeszcze nie istnieje: Wprowadź polecenie `mkdir ~/go`.
 
-1. Utwórz folder w folderze $GOPATH: Wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowania różnych folderów projektów, które możesz później utworzyć, takich jak folder <nazwa_modułu>, który utworzymy w następnym kroku.
+1. Utwórz folder w folderze $GOPATH: Wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowanie folderów inny projekt, możesz utworzyć, takie jak `<your-module-name>` folderu zostanie utworzony w następnym kroku.
 
 1. Utwórz folder do przechowywania modułu Terraform: Wprowadź polecenie `mkdir ~/go/src/<your-module-name>`.
 

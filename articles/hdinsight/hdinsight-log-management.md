@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500478"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544290"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -176,5 +176,5 @@ Gromadzić dzienniki ze wszystkich węzłów w jednej centralnej lokalizacji, mo
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Monitorowanie i rejestrowanie praktyki w zakresie HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Dostęp do Apache Hadoop YARN application logowania HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Dzienniki aplikacji Apache Hadoop YARN dostępu w HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Jak kontrolować rozmiar plików dziennika dla różnych składników usługi Apache Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

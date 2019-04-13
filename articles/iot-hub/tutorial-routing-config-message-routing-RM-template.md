@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 58b0039980f448c9bd953e9d59289c511ce95517
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663030"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543762"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Samouczek: Użyj szablonu usługi Azure Resource Manager, aby skonfigurować routing komunikatów usługi IoT Hub
 
@@ -54,7 +54,7 @@ Większość z tych parametrów mają przypisane wartości domyślne. Te kończ�
 
 **Lokalizacja**: To pole jest region platformy Azure, w którym jest wdrażany, takie jak "westus".
 
-**consumer_group**: To pole jest ustawione dla wiadomości przychodzących za pośrednictwem routingu punktu końcowego grupy odbiorców. Służy do filtrowania wyników w usłudze Azure Analytics pary. Na przykład istnieje cały strumienia, w przypadku, gdy wszystkie elementy Pobierz lub z danych przesyłanych za pomocą consumer_group równa **Contoso**, a następnie skonfiguruj strumienia usługi Azure Stream Analytics (i raportu usługi Power BI) aby wyświetlić tylko te wpisy. To pole jest używane w części 2 samouczka.
+**consumer_group**: To pole jest ustawione dla wiadomości przychodzących za pośrednictwem routingu punktu końcowego grupy odbiorców. Służy do filtrowania wyników w usłudze Azure Stream Analytics. Na przykład istnieje cały strumienia, w przypadku, gdy wszystkie elementy Pobierz lub z danych przesyłanych za pomocą consumer_group równa **Contoso**, a następnie skonfiguruj strumienia usługi Azure Stream Analytics (i raportu usługi Power BI) aby wyświetlić tylko te wpisy. To pole jest używane w części 2 samouczka.
 
 **sku_name**: To pole jest skalowanie dla usługi IoT Hub. Ta wartość musi być S1 lub nowszy; w warstwie bezpłatna nie działa w ramach tego samouczka, ponieważ nie zezwala na wiele punktów końcowych.
 

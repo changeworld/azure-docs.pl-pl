@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805730"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551485"
 ---
 Azure okresowo aktualizuje platformy w celu poprawy niezawodności, wydajności i bezpieczeństwa infrastruktury hosta dla maszyn wirtualnych. Aktualizacje rozwiązania z zakresu od stosowania poprawek składnikami oprogramowania w środowisku hostingu uaktualniania składników sieciowych do likwidacji sprzętu. Większość tych aktualizacji nie mają wpływu na obsługiwanych maszynach wirtualnych. Jednak istnieją przypadki, w których aktualizacje mają wpływ i Azure wybiera najmniej udane metody aktualizacji:
 
@@ -27,9 +27,9 @@ W maszynie Wirtualnej powiadomienie o zbliżającej się konserwacji można uzys
 
 Aby uzyskać "porad" informacji o zarządzaniu planowanej konserwacji, zobacz "Obsługa Planned maintenance notifications zaplanowanej" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="memory-preserving-maintenance"></a>Zachowywanie konserwacji pamięci
+## <a name="maintenance-not-requiring-a-reboot"></a>Konserwacji nie wymaga ponownego uruchomienia
 
-Celem większości innych rebootful aktualizacji jest mniejsza niż 10 sekund wstrzymać maszyny wirtualnej. W niektórych przypadkach pamięci, zachowywanie konserwacji mechanizmów są używane, który wstrzymuje maszynę Wirtualną do 30 sekund i zachowuje pamięci RAM. Następnie wznawiać jej działanie maszyny wirtualnej i zegar maszyny wirtualnej jest automatycznie synchronizowany. Platforma Azure jest coraz większym stopniu przy użyciu technologii migracji na żywo i poprawianie pamięci zachowywanie mechanizm obsługi, aby zmniejszyć czas trwania pauzy.
+Celem większości konserwacji, które nie wymagają ponownego uruchomienia jest mniejsza niż 10 sekund wstrzymać maszyny wirtualnej. W niektórych przypadkach pamięci, zachowywanie konserwacji mechanizmów są używane, który wstrzymuje maszynę Wirtualną do 30 sekund i zachowuje pamięci RAM. Następnie wznawiać jej działanie maszyny wirtualnej i zegar maszyny wirtualnej jest automatycznie synchronizowany. Platforma Azure jest coraz większym stopniu przy użyciu technologii migracji na żywo i poprawianie pamięci zachowywanie mechanizm obsługi, aby zmniejszyć czas trwania pauzy.
 
 Te operacje konserwacji bez rebootful są domena błędów zastosowane przez domenę błędów, a postęp zostanie zatrzymany, jeśli wszystkie sygnały kondycji ostrzeżenia są odbierane. 
 

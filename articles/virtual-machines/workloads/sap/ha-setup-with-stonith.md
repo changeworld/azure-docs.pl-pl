@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66973ce78004d0f29d08264869f166202aaaf109
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011848"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525470"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Wysoka dostępność skonfigurowane w systemie SUSE przy użyciu pomocą metody STONITH
 Ten dokument zawiera szczegółowe instrukcje krok po kroku, aby skonfigurować wysoką dostępność w systemie SUSE działających za pomocą urządzenia pomocą metody STONITH.
 
 **Zastrzeżenie:** *Ten przewodnik jest uzyskiwana w wyniku testowania konfiguracji w środowisku dużych wystąpień HANA firmy Microsoft, w którym pomyślnie działa. Ponieważ zespół zarządzania usług firmy Microsoft dla dużych wystąpień HANA nie obsługuje systemu operacyjnego, może być konieczne skontaktuj się z systemem SUSE uzyskać dodatkowe informacje o rozwiązywaniu lub objaśnień do warstwy system operacyjny. Zespół zarządzający usługi Microsoft konfigurowanie za pomocą metody STONITH urządzenia i w pełni obsługuje i mogą brać udział w celu rozwiązywania problemów dla problemów z urządzeniami pomocą metody STONITH.*
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby skonfigurować wysoką dostępność przy użyciu klastra SUSE, musi spełniać następujące wymagania wstępne.
 ### <a name="pre-requisites"></a>Wymagania wstępne
 - Aprowizowanych dużych wystąpień HANA
@@ -258,7 +258,7 @@ Uruchom polecenie *crm_mon* zapewnienie **zarówno** węzły są w trybie online
 ```
 crm_mon
 ```
-![CRM-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) możesz również zalogować się do hawk, aby sprawdzić stan klastra *https://<node IP>: 7630*. Użytkownik domyślny jest hacluster, a hasło to linux. Jeśli to konieczne, można zmienić hasło przy użyciu *haseł* polecenia.
+![CRM-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) możesz również zalogować się do hawk, aby sprawdzić stan klastra *https://\<adres IP węzła >: 7630*. Użytkownik domyślny jest hacluster, a hasło to linux. Jeśli to konieczne, można zmienić hasło przy użyciu *haseł* polecenia.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurowanie właściwości klastra i zasoby 
 W tej sekcji opisano kroki, aby skonfigurować zasoby klastra.
@@ -323,7 +323,7 @@ crm configure load update crm-vip.txt
 Po uruchomieniu polecenia *crm_mon*, zobaczysz ma dwa zasoby.
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Ponadto możesz zobaczyć stan w *https://<node IP address>: 7630/cib/live/stanu*
+Ponadto możesz zobaczyć stan w *https://\<adres IP węzła >: 7630/cib/live/stanu*
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338466"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526626"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Skorzystaj z platformy Azure zarządzane tożsamości do uwierzytelniania w usłudze Azure container registry 
 
@@ -164,7 +164,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Protokół SSH z maszyną wirtualną platformy Docker, który jest skonfigurowany przy użyciu tożsamości. Uruchom następujące polecenia wiersza polecenia platformy Azure przy użyciu wiersza polecenia platformy Azure zainstalowany na maszynie Wirtualnej.
 
-Najpierw uwierzytelniania dla interfejsu wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości skonfigurowane na maszynie Wirtualnej. Aby uzyskać <userID>, Zastąp identyfikator tożsamości, pobrać w poprzednim kroku. 
+Najpierw uwierzytelniania dla interfejsu wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości skonfigurowane na maszynie Wirtualnej. Aby uzyskać `<userID>`, Zastąp identyfikator tożsamości, pobrać w poprzednim kroku. 
 
 ```azurecli
 az login --identity --username <userID>

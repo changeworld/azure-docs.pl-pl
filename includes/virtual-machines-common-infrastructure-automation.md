@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f1774e02a34b60a8a6e936b62905a0a27ccfb85
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891041"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551627"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Korzystanie z narzędzi automatyzacji infrastruktury z maszynami wirtualnymi na platformie Azure
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
@@ -57,17 +57,7 @@ Instrukcje:
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
- Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy upewnij wdrożenia pakietu cloud-init, a konfiguracje bezproblemowej współpracy z maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. W poniższej tabeli przedstawiono bieżącej dostępności obrazów pakietu cloud-init, włączone na platformie Azure:
-
-| Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init
-|:--- |:--- |:--- |:--- |:--- 
-|Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
-|Canonical |UbuntuServer |14.04.5-LTS |najnowsza |tak |
-|CoreOS |CoreOS |Stable |najnowsza |tak |
-|OpenLogic |CentOS |7-CI |najnowsza |wersja zapoznawcza |
-|RedHat |RHEL |7-RAW-CI |najnowsza |wersja zapoznawcza |
-
-Dowiedz się więcej na temat pakietu cloud-init w systemie Azure:
+Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy upewnij wdrożenia pakietu cloud-init, a konfiguracje bezproblemowej współpracy z maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. Dowiedz się więcej na temat pakietu cloud-init w systemie Azure:
 
 - [Pakiet cloud-init pomocy technicznej dla maszyn wirtualnych systemu Linux na platformie Azure](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Wypróbuj samouczek dotyczący automatycznych konfiguracji maszyny Wirtualnej przy użyciu pakietu cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).

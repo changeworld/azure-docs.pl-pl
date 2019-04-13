@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489592"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544927"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -85,16 +85,18 @@ Trwa przygotowywanie klastra usługi AKS obejmuje:
 * Włączanie usługi Azure Dev miejsca do magazynowania w sieci za pomocą klastra `az aks use-dev-spaces`
 
 Aby uzyskać więcej informacji o tym, jak utworzyć i skonfigurować klaster AKS dla usługi Azure Dev miejsca do magazynowania zobacz jeden z uzyskiwaniem przewodniki z wprowadzeniem:
-* [Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java](get-started-java.md)
-* [Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio](get-started-netcore-visualstudio.md)
-* [Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core](get-started-netcore.md)
-* [Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu środowiska Node.js](get-started-nodejs.md)
+* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu języka Java](get-started-java.md)
+* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu platformy .NET Core i Visual Studio](get-started-netcore-visualstudio.md)
+* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania za pomocą programu .NET Core](get-started-netcore.md)
+* [Wprowadzenie do usługi Azure Dev miejsca do magazynowania przy użyciu środowiska Node.js](get-started-nodejs.md)
 
 Po włączeniu usługi Azure Dev miejsca do magazynowania w klastrze AKS instaluje kontrolera dla klastra. Kontroler jest oddzielne zasoby platformy Azure poza klastrem i wykonuje następujące czynności, aby zasoby w klastrze:
 
 * Tworzy lub wyznacza przestrzeni nazw Kubernetes do użycia jako miejsce deweloperów.
 * Usuwa wszystkie przestrzeni nazw Kubernetes o nazwie *azds*, jeśli istnieje, a utworzony zostaje nowy indeks.
-* Wdraża obiektu inicjatora Kubernetes.
+* Wdraża konfigurację elementu webhook Kubernetes.
+* Służy do wdrażania serwera dopuszczenie elementu webhook.
+    
 
 Używa tej samej nazwy głównej usługi, które można wykonywać wywołań usług do innych składników usługi Azure Dev miejsca do magazynowania korzysta z klastra usługi AKS.
 
@@ -104,9 +106,9 @@ Aby można było używać usługi Azure Dev miejsca do magazynowania, musi istni
 
 Domyślnie kontrolera tworzy miejsce na deweloperów o nazwie *domyślne* przez uaktualnienie istniejącego *domyślne* przestrzeni nazw Kubernetes. Narzędzia po stronie klienta służy do tworzenia nowych deweloperów spacje i Usuń istniejące spacje deweloperów. Ze względu na ograniczenia w usłudze Kubernetes *domyślne* miejsca deweloperów nie można go usunąć. Kontroler spowoduje również usunięcie o nazwie wszelkie istniejące przestrzenie nazw Kubernetes *azds* w celu uniknięcia konfliktów z `azds` polecenia używane przez narzędzia po stronie klienta.
 
-Obiekt inicjatora Kubernetes jest używany do wstrzyknięcie zasobników z trzy kontenery podczas wdrażania do Instrumentacji: kontener devspaces proxy, kontener devspaces proxy inicjowania i kontener devspaces kompilacji. **Wszystkie trzy te kontenery Uruchom z dostępem do katalogu głównego w klastrze AKS.** Również używają tej samej nazwy głównej usługi, które można wykonywać wywołań usług do innych składników usługi Azure Dev miejsca do magazynowania korzysta z klastra usługi AKS.
+Serwer dopuszczenie elementu webhook platformy Kubernetes jest używany do wstrzyknięcie zasobników z trzy kontenery podczas wdrażania do Instrumentacji: kontener devspaces proxy, kontener devspaces proxy inicjowania i kontener devspaces kompilacji. **Wszystkie trzy te kontenery Uruchom z dostępem do katalogu głównego w klastrze AKS.** Również używają tej samej nazwy głównej usługi, które można wykonywać wywołań usług do innych składników usługi Azure Dev miejsca do magazynowania korzysta z klastra usługi AKS.
 
-![Usługa Azure Dev miejsca do magazynowania w usłudze Kubernetes inicjatora](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Serwer dopuszczenie elementu webhook w usłudze Azure Dev miejsca do magazynowania w usłudze Kubernetes](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 Kontener devspaces proxy jest kontenerem przyczepki, która obsługuje cały ruch TCP do i z kontenera aplikacji i pomaga wykonywać routingu. Kontener devspaces proxy zmienia trasę wiadomości HTTP, jeśli używane są niektóre miejsca do magazynowania. Na przykład może to pomóc trasy wiadomości HTTP między aplikacjami w obszarach nadrzędnymi i podrzędnymi. Cały ruch protokołu HTTP przechodzą przez devspaces-proxy w niezmienionej postaci. Kontener devspaces proxy także rejestruje wszystkie przychodzące i wychodzące komunikaty HTTP i wysyła je do klienta narzędzi jako ślady. Ślady te można wyświetlić przez dewelopera, aby sprawdzić sposób działania aplikacji.
 
@@ -117,7 +119,7 @@ Kontener devspaces kompilacji jest kontenerem init i kod źródłowy projektu i 
 > [!NOTE]
 > Usługa Azure Dev spacje używa tego samego węzła do tworzenia aplikacji kontenera i uruchom go. W wyniku Azure Dev miejsca do magazynowania nie jest konieczne rejestr kontenerów zewnętrznych do tworzenia i uruchamiania aplikacji.
 
-Obiekt inicjatora Kubernetes nasłuchuje nowych zasobników, który jest tworzony w klastrze AKS. W przypadku wdrażania dowolnego obszaru nazw, z którym następnie *azds.io/space=true* etykiety, którym następnie go wprowadza z kontenerami dodatkowe. Kontener devspaces kompilacji są wstrzykiwane tylko, jeśli uruchamiania kontenera aplikacji przy użyciu narzędzia po stronie klienta.
+Serwer dopuszczenie elementu webhook platformy Kubernetes nasłuchuje nowych zasobników, który jest tworzony w klastrze AKS. W przypadku wdrażania dowolnego obszaru nazw, z którym następnie *azds.io/space=true* etykiety, którym następnie go wprowadza z kontenerami dodatkowe. Kontener devspaces kompilacji są wstrzykiwane tylko, jeśli uruchamiania kontenera aplikacji przy użyciu narzędzia po stronie klienta.
 
 Po przygotowaniu klastra usługi AKS, można użyć narzędzia po stronie klienta do przygotowywania i uruchamiania kodu w obszarze deweloperów.
 
@@ -221,7 +223,7 @@ Na bardziej szczegółowym poziomie, Oto co dzieje się po uruchomieniu `azds up
 1. Pliki są synchronizowane z komputera użytkownika usługi Azure file storage, który jest unikatowy dla użytkownika klastra AKS. Kod źródłowy, narzędzia Helm i pliki konfiguracji są przekazywane. Szczegółowe informacje na temat procesu synchronizacji są dostępne w następnej sekcji.
 1. Kontroler tworzy żądanie rozpoczęcia nowej sesji. To żądanie zawiera kilka właściwości, w tym Unikatowy identyfikator, nazwę obszaru, ścieżkę do kodu źródłowego i flagi debugowania.
 1. Zastępuje kontrolera *$(tag)* symbol zastępczy w wykresu Helm Unikatowy identyfikator sesji i instaluje narzędzia Helm wykresu dla Twojej usługi. Dodanie odwołania do Unikatowy identyfikator sesji do wykresu Helm umożliwia kontenera wdrożony do klastra usługi AKS dla tej określonej sesji, aby powiązać z powrotem żądanie sesji i skojarzonych informacji.
-1. Podczas instalacji wykresu Helm obiektu inicjatora Kubernetes dodaje dodatkowe kontenery do zasobnika aplikacji do Instrumentacji i dostęp do kodu źródłowego projektu. Serwer proxy devspaces i kontenery devspaces proxy inicjowania są dodawane do śledzenia protokołu HTTP i routing miejsca. Kontener devspaces kompilacji jest dodawany do udostępnienia zasobnik wystąpienie platformy Docker i kod źródłowy projektu do tworzenia aplikacji kontenera.
+1. Podczas instalacji wykresu Helm serwera dopuszczenie elementu webhook platformy Kubernetes dodaje dodatkowe kontenery do zasobnika aplikacji do Instrumentacji i dostęp do kodu źródłowego projektu. Serwer proxy devspaces i kontenery devspaces proxy inicjowania są dodawane do śledzenia protokołu HTTP i routing miejsca. Kontener devspaces kompilacji jest dodawany do udostępnienia zasobnik wystąpienie platformy Docker i kod źródłowy projektu do tworzenia aplikacji kontenera.
 1. Podczas uruchamiania aplikacji pod kontener devspaces kompilacji i devspaces proxy inicjowania kontenera są używane do tworzenia kontenera aplikacji. Kontener aplikacji i kontenerów devspaces proxy są następnie uruchamiane.
 1. Po uruchomieniu kontenera aplikacji, funkcje po stronie klienta używa rozwiązania Kubernetes *do przodu portu* funkcji, co zapewnia dostęp do aplikacji ze HTTP za pośrednictwem http://localhost. Ta przekierowania portów komputera deweloperskiego łączy się z usługą w obszarze deweloperów.
 1. Gdy wszystkie kontenery w zasobnik zostały uruchomione, usługa jest uruchomiona. W tym momencie do przesyłania strumieniowego ślady protokołu HTTP, stdout i stderr rozpoczyna się funkcje po stronie klienta. Te informacje są wyświetlane przez funkcje po stronie klienta dla deweloperów.

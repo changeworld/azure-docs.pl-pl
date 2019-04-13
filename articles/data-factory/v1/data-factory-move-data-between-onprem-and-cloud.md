@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995899"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524110"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -280,7 +280,7 @@ W tym kroku utworzysz zestawy danych wejściowych i wyjściowych, które repreze
    * **folderPath** ustawiono **adftutorial/outfromonpremdf** gdzie outfromonpremdf to folder w kontenerze adftutorial. Tworzenie **adftutorial** kontener, jeśli jeszcze nie istnieje.
    * Parametr **availability** (dostępność) został ustawiony na wartość **hourly** (co godzinę) (parametr **frequency** [częstotliwość] został ustawiony na **hour** [godzinę], a **interval** [interwał] został ustawiony na wartość **1**).  Usługa Data Factory generuje wycinek danych wyjściowych, co godzinę w **emp** tabeli w bazie danych SQL Azure.
 
-   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: `Data.<Guid>.txt` (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Aby ustawić **folderPath** i **fileName** dynamicznie na podstawie **SliceStart** czasu, należy użyć właściwości partitionedBy. W poniższym przykładzie parametr folderPath używa elementów Year, Month i Day z parametru SliceStart (czas rozpoczęcia przetwarzania wycinka), a parametr fileName używa elementu Hour z parametru SliceStart. Na przykład jeśli wycinek jest generowany dla czasu 2014-10-20T08:00:00, parametr folderName zostaje ustawiony na wikidatagateway/wikisampledataout/2014/10/20, a parametr fileName zostaje ustawiony na wartość 08.csv.
 

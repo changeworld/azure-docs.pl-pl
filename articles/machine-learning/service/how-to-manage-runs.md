@@ -1,7 +1,7 @@
 ---
 title: Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak uruchomić, ustawić stan tagu i organizowanie eksperymentów uczenia maszynowego.
+description: Dowiedz się, jak uruchomić, ustawić stan tagu i organizowanie eksperymenty z uczeniem maszynowym.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,43 +11,41 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/05/2019
-ms.openlocfilehash: 82df2258116ce55fa440b67ec0a66b106d0d72c7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: c0c1c1353b12944fa913dfb0789192917b99f234
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494051"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543597"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
 
 [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) zapewnia różne metody monitorowania i organizować oraz zarządzać nimi przebiegów szkoleniowych i eksperymentowanie w usłudze.
 
-Niniejszy instruktaż zawiera przykłady następujących zadań:
+W tym artykule przedstawiono przykłady następujących zadań:
 
-* [Monitor wydajności uruchamiania](#monitor)
-* [Anulowanie lub niepowodzenie uruchomienia](#cancel)
-* [Utwórz podrzędny przebiegi](#children)
-* [Tag i znaleźć przebiegi](#tag)
+* Monitor wydajności uruchamiania.
+* Anulowanie lub niepowodzenie uruchomienia.
+* Tworzenie obiektu podrzędnego przebiegów.
+* Tag i Znajdź przebiegów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Będą potrzebne następujące czynności:
+Będą potrzebne następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* Obszar roboczy usługi Azure Machine Learning. Zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md).
+* [Obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md).
 
-* Azure Machine Learning SDK dla język Python jest zainstalowany (wersja 1.0.21 lub nowszej). Aby zainstalować lub aktualizacji do najnowszej wersji zestawu SDK, przejdź do [instalacji/aktualizacji zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) strony.
+* Zestaw Azure Machine Learning SDK for Python (wersja 1.0.21 lub nowszej). Aby zainstalować lub aktualizacji do najnowszej wersji zestawu SDK, zobacz [Zainstaluj lub zaktualizuj zestaw SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-    Aby sprawdzić swoją wersję zestawu SDK usługi Azure Machine Learning, użyj następującego kodu.
+    Aby sprawdzić swoją wersję zestawu SDK usługi Azure Machine Learning, użyj następującego kodu:
 
     ```Python
     print(azureml.core.VERSION)
     ```
 
-<a name="monitor"></a>
-
-## <a name="start-a-run-and-set-its-status"></a>Uruchom przebieg i ustaw jego stan
+## <a name="start-a-run-and-its-logging-process"></a>Rozpocznij przebieg i jego proces rejestrowania
 
 Konfigurowanie eksperymentu, importując [obszaru roboczego](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [eksperymentować](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [Uruchom](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py), i [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) klas z [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) pakietu.
 
@@ -68,13 +66,15 @@ notebook_run = exp.start_logging()
 notebook_run.log(name="message", value="Hello from run!")
 ```
 
-Pobierz stan przebiegu o [ `get_status()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--).
+## <a name="monitor-the-status-of-a-run"></a>Monitorowanie stanu przebiegu
+
+Pobierz stan przebiegu o [ `get_status()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) metody.
 
 ```Python
 print(notebook_run.get_status())
 ```
 
-Aby uzyskać więcej informacji dotyczących używania wykonywania [ `get_details()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--).
+Aby uzyskać dodatkowe szczegóły dotyczące uruchomienia, użyj [ `get_details()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) metody.
 
 ```Python
 notebook_run.get_details()
@@ -87,7 +87,7 @@ notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Możesz również użyć języka Python `with...as` wzorca. W tym kontekście Uruchom automatycznie oznaczy się jako ukończony podczas przebiegu jest poza zakresem. Dzięki temu nie trzeba ręcznie oznaczyć działanie jako ukończone.
+Jeśli używasz języka Python `with...as` wzorzec, Uruchom automatycznie oznaczy się jako ukończone, gdy działanie jest poza zakresem. Nie potrzebujesz ręcznie oznaczyć działanie jako ukończone.
 
 ```Python
 with exp.start_logging() as notebook_run:
@@ -97,11 +97,9 @@ with exp.start_logging() as notebook_run:
 print("Has it completed?",notebook_run.get_status())
 ```
 
-<a name="cancel"></a>
-
 ## <a name="cancel-or-fail-runs"></a>Anulowanie lub niepowodzenie uruchomienia
 
- Jeśli zauważysz błąd lub przebieg wydaje się wymagać trochę czasu zakończenia, należy użyć [ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metodę, aby zatrzymać działanie przed zakończeniem i oznacz go jako anulowany.
+ Zwróć uwagę, błędu lub jeśli przebieg trwa zbyt długo, skorzystaj [ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metodę, aby zatrzymać działanie przed zakończeniem i oznacz go jako anulowany.
 
 ```Python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -113,7 +111,7 @@ local_script_run.cancel()
 print("Did the run cancel?",local_script_run.get_status())
 ```
 
-Jeśli przebieg zakończy, ale zawiera błąd, taki jak, użyto skrypt szkoleniowy niepoprawne, możesz użyć [ `fail()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#fail-error-details-none---set-status-true-) metodę, aby oznaczyć go jako nie powiodła się.
+Jeśli zakończy się przebieg, ale zawiera błąd (na przykład skrypt szkoleniowy niepoprawne użyto), możesz użyć [ `fail()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#fail-error-details-none---set-status-true-) metodę, aby oznaczyć go jako nie powiodła się.
 
 ```Python
 local_script_run = exp.submit(run_config)
@@ -122,13 +120,11 @@ local_script_run.fail()
 print(local_script_run.get_status())
 ```
 
-<a name="children"></a>
-
 ## <a name="create-child-runs"></a>Utwórz podrzędny przebiegi
 
-Tworzenie obiektu podrzędnego przebiegi do grupowania powiązanych przebiegów, np. dla różnych hiperparametrycznego dostrajania iteracji.
+Tworzenie obiektu podrzędnego przebiegi do grupowania powiązanych przebiegów, takich jak dla różne iteracje strojenia hiperparametrycznego.
 
-Ten przykład kodu używa tego skryptu hello_with_children.py, aby utworzyć partię pięciu przebiegów podrzędnych z w obrębie przesłane uruchomienia za pomocą [ `child_run()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) metody.
+W tym przykładzie kodu użyto `hello_with_children.py` skrypt, aby utworzyć partię pięć przebiegów podrzędnych z w ramach wykonywania przesłane za pomocą [ `child_run()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) metody:
 
 ```Python
 !more hello_with_children.py
@@ -145,17 +141,15 @@ with exp.start_logging() as parent_run:
 ```
 
 > [!NOTE]
-> Podrzędne uruchamia automatycznie pełną przechodzące poza zakres tej asysty.
+> Przechodzące poza zakresem, przebiegów podrzędne są automatycznie oznaczane jako ukończone.
 
 Można również uruchomić podrzędne uruchamia jedno po drugim, ale ponieważ każda tworzenia powoduje wysłanie wywołania sieci, jest mniej wydajne niż przesyłania partii przebiegów.
 
-Użyj [ `get_children()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metody zapytania podrzędne uruchamia określonego elementu nadrzędnego.
+Aby wysłać zapytanie działa podrzędny określonego elementu nadrzędnego, użyj [ `get_children()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metody.
 
 ```Python
 list(parent_run.get_children())
 ```
-
-<a name="tag"></a>
 
 ## <a name="tag-and-find-runs"></a>Tag i znaleźć przebiegi
 
@@ -163,14 +157,14 @@ W usłudze Azure Machine Learning można użyć właściwości i tagów, aby uł
 
 ### <a name="add-properties-and-tags"></a>Dodaj właściwości i tagów
 
-Użyj [ `add_properties()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) dodać wyszukiwalnych metadanych do przebiegów. Na przykład poniższy kod dodaje właściwości "Autor" do uruchomienia.
+Aby dodać wyszukiwalnych metadanych do przebiegów, użyj [ `add_properties()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) metody. Na przykład, poniższy kod dodaje `"author"` właściwość do uruchomienia:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Właściwości są niezmienne, co jest przydatne jako trwałe rekord na potrzeby inspekcji. Poniższy przykład kodu spowoduje błąd, ponieważ już dodana "usługi Azure ml użytkownika" jako właściwość "Autor" w poprzednim kodzie.
+Właściwości są niezmienne, dzięki czemu mogą utworzyć rekord stałe na potrzeby inspekcji. Poniższy kod przykładowy będzie skutkowało błędem, ponieważ już dodana `"azureml-user"` jako `"author"` wartości właściwości w poprzednim kodzie:
 
 ```Python
 try:
@@ -179,7 +173,7 @@ except Exception as e:
     print(e)
 ```
 
-Tagi, jednak są zmieniane. Użyj [ `tag()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) dodawanie można wyszukiwać i istotnych informacji dla konsumentów eksperymentu.
+W przeciwieństwie do właściwości tagi są zmieniane. Aby dodać informacje można wyszukiwać i zrozumiała dla konsumentów eksperymentu, użyj [ `tag()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) metody.
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -189,7 +183,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-Można również dodać tag prostego ciągu. Pojawia się w słowniku tag o wartości `None`.
+Można również dodać tagi prostego ciągu. Gdy tagi te pojawią się w słowniku tag, mają wartość `None`.
 
 ```Python
 local_script_run.tag("worth another look")
@@ -198,7 +192,7 @@ print(local_script_run.get_tags())
 
 ### <a name="query-properties-and-tags"></a>Właściwości zapytania i tagów
 
-Można tworzyć zapytania działa w ramach eksperymentu, które pasują do określonych właściwości i tagów.
+Można tworzyć zapytania działa w ramach eksperymentu, aby powrócić do listy uruchomień, które pasują do określonych właściwości i tagów.
 
 ```Python
 list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
@@ -211,8 +205,8 @@ Następujące notesów zademonstrowania koncepcji w tym artykule:
 
 * Aby dowiedzieć się więcej na temat rejestrowania interfejsów API, zobacz [notesu rejestrowanie interfejsu API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
 
-* Aby uzyskać dodatkowe informacje na temat zarządzania systemem za pomocą zestawu SDK usługi Azure Machine Learning, zobacz [Zarządzanie uruchomienia notesu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
+* Aby uzyskać więcej informacji o zarządzaniu działa przy użyciu zestawu SDK usługi Azure Machine Learning, zobacz [Zarządzanie uruchomienia notesu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się, jak rejestrować metryki dla eksperymentów, zobacz [dziennika metryki podczas wysyłanie przebiegów szkoleniowych](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiment) artykułu.
+* Aby dowiedzieć się, jak rejestrować metryki dla eksperymentów, zobacz [dziennika metryki podczas wysyłanie przebiegów szkoleniowych](how-to-track-experiments.md).

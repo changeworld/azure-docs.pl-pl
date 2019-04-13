@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879288"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547952"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Utwórz obszar roboczy usługi Azure Machine Learning
 
@@ -34,10 +34,10 @@ Po utworzeniu obszaru roboczego następujących zasobów platformy Azure są dod
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
-- [W usłudze Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
+- [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Podobnie jak w przypadku innych usług platformy Azure korzystanie z usługi Machine Learning jest ograniczone pewnymi limitami i przydziałami. [Dowiedz się więcej o limitach przydziałów i sposobu wysyłania żądania więcej.](how-to-manage-quotas.md)
+>Podobnie jak w przypadku innych usług platformy Azure korzystanie z usługi Machine Learning jest ograniczone pewnymi limitami i przydziałami. [Learn about quotas and how to request more (Więcej informacji o limitach przydziału i zwiększaniu limitów)](how-to-manage-quotas.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -160,7 +160,7 @@ Utwórz obszar roboczy w aplikacji Jupyter Notebook przy użyciu zestawu SDK ję
 
 ### <a name="write-a-configuration-file"></a>Zapisywanie pliku konfiguracji
 
-Zapisz szczegóły obszaru roboczego w pliku konfiguracji do bieżącego katalogu. Ten plik jest nazywany *aml_config/config.json*.  
+Zapisz szczegóły obszaru roboczego w pliku konfiguracji do bieżącego katalogu. Ten plik jest nazywany *.azureml/config.json*.  
 
 Plik konfiguracji obszaru roboczego ułatwia późniejsze załadowanie tego samego obszaru roboczego. Można go załadować z innymi notesów i skryptów, w tym samym katalogu lub podkatalog przy użyciu kodu `ws=Workspace.from_config()` . 
 
@@ -177,13 +177,14 @@ To wywołanie interfejsu API `write_config()` utworzy plik konfiguracyjny w bie�
 ```
 
 > [!TIP]
-> Do używania Twojego obszaru roboczego w skryptach języka Python lub notesów programu Jupyter, znajduje się w innych katalogach, skopiuj ten plik do tego katalogu. Może to być plik w tym samym katalogu, w podkatalogu nazwanym *aml_config*, lub w katalogu nadrzędnym.
+> Do używania Twojego obszaru roboczego w skryptach języka Python lub notesów programu Jupyter, znajduje się w innych katalogach, skopiuj ten plik do tego katalogu. Może to być plik w tym samym katalogu, w podkatalogu nazwanym *.azureml*, lub w katalogu nadrzędnym.
 
 ## <a name="resource-manager-template"></a>Szablonu usługi resource manager
 
 Aby utworzyć obszar roboczy za pomocą szablonu, zobacz [Utwórz obszar roboczy usługi Azure Machine Learning za pomocą szablonu](how-to-create-workspace-template.md)
 
-## <a name="cli"></a>Interfejs wiersza polecenia
+<a name="cli"></a>
+## <a name="command-line-interface"></a>Interfejs wiersza polecenia
 
 Aby utworzyć obszar roboczy za pomocą interfejsu wiersza polecenia, zobacz [Użyj rozszerzenie interfejsu wiersza polecenia dla usługi Azure Machine Learning](reference-azure-machine-learning-cli.md).
 

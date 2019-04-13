@@ -1,6 +1,6 @@
 ---
-title: Kompilowanie aplikacji PHP przy użyciu bazy danych MySQL — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure.
+title: PHP (Laravel) z bazą danych MySQL — usługa Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure. Platformy Laravel jest używany w tym samouczku.
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c906880897b14cf999fcffd17abba0adebc1adf6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 35f9b97f7955f0ba430f94f559b0ab160cc2efcd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552133"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544623"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Samouczek: tworzenie aplikacji języka PHP i MySQL na platformie Azure
 

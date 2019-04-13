@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281135"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549139"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 * Serwer notesu Python 3.6 przy użyciu usługi Azure Machine Learning zainstalowany zestaw SDK
 * Obszar roboczy usługi Azure Machine Learning
-* Plik konfiguracji obszaru roboczego (**aml_config/config.json** ).
+* Plik konfiguracji obszaru roboczego (**.azureml/config.json** ).
 
 Pobierz wszystkie te wstępnie wymagane składniki z [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#portal).
 
@@ -74,6 +74,6 @@ Jeśli nie planujesz korzystać z zasobów, które zostały utworzone w tym arty
 W tym artykule utworzono zasoby niezbędne do eksperymentowania i wdrażania modeli. Uruchomiono kod w notesie i zbadano historię uruchamiania tego kodu w obszarze roboczym w chmurze.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Szkolenie modeli klasyfikacji obrazów](tutorial-train-models-with-aml.md)
+> [Samouczek: trenowanie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md)
 
 Możesz też zapoznać się z [bardziej zaawansowane przykłady w witrynie GitHub](https://aka.ms/aml-notebooks) lub wyświetlić [Podręcznik użytkownika zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

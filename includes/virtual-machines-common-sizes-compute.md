@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 04/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5a4495dd675b662273715b5c13a5594adc87fceb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd06326b22b227490798b2b89c0439940cb4575f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333933"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551535"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -21,13 +21,7 @@ Obliczenia zoptymalizowane rozmiarów maszyn wirtualnych mają wysoki współczy
 
 Fsv2 — seria jest oparta na procesorze Intel® Xeon® Platinum 8168, oferujący funkcje stałego wszystkich głównych prędkość zegara Turbo 3.4 GHz oraz częstotliwości maksymalna turbo jednordzeniowy 3,7 GHz. Instrukcje Intel® AVX-512, będące nową funkcją w skalowalnych procesory Intel, będzie udostępniać maksymalnie 2 X zwiększeniu wydajności obciążeń przetwarzania wektora na pojedyncze i Podwójna precyzja operacji zmiennoprzecinkowych. Innymi słowy są one naprawdę szybkiej w przypadku wszystkich obciążeń obliczeniowych. 
 
-Przy niższej cenie listy za godzinę seria Fsv2 jest wartość najlepsze ceny do wydajności w portfolio platformy Azure, oparta na platformie Azure obliczenia jednostki (ACU) na każdy procesor wirtualny. 
-
-Seria F jest oparta na procesorze Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz, który dzięki technologii Intel Turbo Boost 2.0 może osiągnąć prędkość zegara do 3,1 GHz. Wydajność procesora CPU jest taka sama jak w przypadku maszyn wirtualnych serii Dv2.  
-
-Maszyny wirtualne z serii F są doskonałym wyborem dla obciążeń wymagających szybszych procesorów CPU, ale nie potrzebujących tak dużej ilości pamięci lub magazynu tymczasowego na każdy procesor wirtualny vCPU.  Z wartości serii F skorzystają obciążenia takie jak analizy, serwery gier, serwery sieci Web i przetwarzanie wsadowe.
-
-Seria Fs ma magazyn w warstwie Premium i wszystkie zalety serii F.
+Przy niższej cenie listy za godzinę seria Fsv2 jest wartość najlepsze ceny do wydajności w portfolio platformy Azure, oparta na platformie Azure obliczenia jednostki (ACU) na każdy procesor wirtualny.
 
 ## <a name="fsv2-series-sup1sup"></a>Seria Fsv2 <sup>1</sup>
 
@@ -37,7 +31,7 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-| Rozmiar             | procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | procesory wirtualne | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | 2 / 1,750               |
@@ -53,47 +47,3 @@ Buforowanie Premium Storage:  Obsługiwane
 <sup>2</sup> więcej niż 64 procesory wirtualne wymagają jednego z tych systemów operacyjnych gościa: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 z dodatkiem SP2 i Red Hat Enterprise Linux, CentOS 7.3 lub Oracle Linux 7.3 z usługami LIS 4.2.1
 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
-
-## <a name="fs-series-sup1sup"></a>Seria FS <sup>1</sup>
-
-ACU: 210 - 250
-
-Magazyn w warstwie Premium:  Obsługiwane
-
-Buforowanie Premium Storage:  Obsługiwane
-
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_F1s |1 |2 |4 |4 |4000 / 32 (12) |3200 / 48 |2 / 750 |
-| Standardowa_F2s |2 |4 |8 |8 |8000 / 64 (24) |6400 / 96 |2 / 1500 |
-| Standardowa_F4s |4 |8 |16 |16 |16 000 / 128 (48) |12 800 / 192 |4 / 3000 |
-| Standardowa_F8s |8 |16 |32 |32 |32 000 / 256 (96) |25 600 / 384 |8 / 6000 |
-| Standardowa_F16s |16 |32 |64 |64 |64 000 / 512 (192) |51 200 / 768 |8 / 12000 |
-
-MB/s = 10^6 bajtów na sekundę, GiB = 1024^3 bajtów.
-
-<sup>1</sup> maksymalna przepływność dysków (na SEKUNDĘ lub MB/s) możliwa dla maszyny Wirtualnej serii Fs może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać więcej informacji, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-
-<br>
-
-## <a name="f-series"></a>Seria F
-
-ACU: 210 - 250
-
-Magazyn w warstwie Premium:  Nieobsługiwane
-
-Buforowanie Premium Storage:  Nieobsługiwane
-
-| Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4 x 500                         | 2 / 750                 |
-| Standardowa_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1500                     |
-| Standardowa_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
-| Standardowa_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
-| Standardowa_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000           |
-
-
-<br>
-
-

@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 4d11af1edc13fa675bef5cf9067dbe95646abff1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091921"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546837"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Omówienie środowiska uruchomieniowego usługi Azure Functions (wersja zapoznawcza)
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Środowisko uruchomieniowe funkcji platformy Azure (wersja zapoznawcza) oferuje nowy sposób korzystać z zalet prostotę i elastyczności usługi Azure Functions programowania modelu w środowisku lokalnym. Oparta na tych samych obiektów głównych "open source", jako rozwiązań Azure Functions, środowisko uruchomieniowe usługi Azure Functions jest wdrożone w środowisku lokalnym zapewniając rozwoju niemal identyczne środowisko jako usługa w chmurze.
 

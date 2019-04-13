@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417518"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549492"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -121,6 +121,9 @@ Czasami nie chcesz utworzyć kopię zapasową wszystko, co w aplikacji. Oto kilk
 * Nie chcesz utworzyć kopię zapasową plików dziennika.
 
 Częściowych kopii zapasowych pozwala wybrać dokładnie pliki, które chcesz utworzyć kopię zapasową.
+
+> [!NOTE]
+> Pojedyncze bazy danych w kopii zapasowej może być 4GB max, ale maksymalny łączny rozmiar kopii zapasowej wynosi 10GB
 
 ### <a name="exclude-files-from-your-backup"></a>Wyklucz pliki z kopii zapasowej
 Załóżmy, że masz aplikację, która zawiera pliki dziennika i obrazy statyczne, które zostały kopii zapasowej raz i nie chce zmienić. W takich przypadkach można wykluczyć te foldery i pliki znajdują się w przyszłości kopii zapasowych. Aby wykluczyć pliki i foldery z kopii zapasowych, należy utworzyć `_backup.filter` w pliku `D:\home\site\wwwroot` folderu aplikacji. Określ listę plików i folderów, które chcesz wykluczyć, w tym pliku. 

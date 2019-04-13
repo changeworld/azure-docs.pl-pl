@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916006"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549341"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla aplikacji z galerii usługi Azure Active Directory podpisywania certyfikatu
 
@@ -49,7 +49,7 @@ Usługa Azure AD obsługuje dwa algorytmy podpisywania lub bezpiecznego skrótu 
 
 * **SHA-1**. Ten algorytm jest starszy i jest ona traktowana jak mniej bezpieczne niż algorytm SHA-256. Jeśli aplikacja obsługuje tylko ten algorytm podpisywania, możesz wybrać tę opcję w **algorytmu podpisywania** listy rozwijanej. Następnie usługa Azure AD podpisuje odpowiedzi SAML przy użyciu algorytmu SHA-1.
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>Zmień opcje podpisywania certyfikatu i algorytmu podpisywania certyfikatu
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Zmienianie certyfikatu opcje podpisywania i algorytm podpisywania
 
 Aby zmienić opcje podpisywania certyfikatu SAML aplikacji i certyfikatu algorytm podpisywania, wybierz aplikację, która jest zagrożona:
 

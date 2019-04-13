@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010621"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523957"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -266,7 +266,7 @@ Pod względem interfejsu API REST istnieje kilka opcji punkty końcowe/zapytania
 | Metody REST | Stosowanie opcji zapytania/na punkt końcowy REST | Adresy URL dokumentacji | Wyjaśnienie |
 | ------------| ------------- | ---------- | ----------- |
 | GET, PUT | /? restype =service@comp= właściwości| [Ustaw właściwości usługi tabeli](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) i [pobrać właściwości usługi tabeli](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ten punkt końcowy jest używana do ustawiania reguły CORS, konfiguracja usługi storage analytics i ustawień rejestrowania. Mechanizm CORS nie jest obecnie obsługiwane i analizy i rejestrowania są obsługiwane inaczej w usłudze Azure Cosmos DB niż tabele magazynu platformy Azure |
-| OPCJE | /<table-resource-name> | [Żądanie tabeli CORS krótkiej](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Jest to część CORS, który nie obsługuje obecnie usługi Azure Cosmos DB. |
+| OPCJE | /\<table-resource-name> | [Żądanie tabeli CORS krótkiej](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Jest to część CORS, który nie obsługuje obecnie usługi Azure Cosmos DB. |
 | GET | /? restype =service@comp= statystyki | [Pobieranie statystyk usługi tabeli](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Zawiera informacje, jak szybko danych jest replikowana między podstawowe i pomocnicze bazy danych. To nie jest wymagany w usłudze Cosmos DB, ponieważ replikacja jest częścią zapisów. |
 | GET, PUT | /mytable?comp=acl | [Pobierz tabelę listy ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) i [ustawić tabeli listy ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | To pobiera i ustawia zasady dostępu przechowywane, używany do zarządzania sygnaturami dostępu współdzielonego (SAS). Sygnatury dostępu Współdzielonego jest obsługiwana, ich są ustawiane i zarządzane w różny sposób. |
 
@@ -293,7 +293,7 @@ Jeśli którekolwiek z tych różnic są problemem dla projektu, skontaktuj się
 
 Podziel się swoją opinią, w dowolnym z następujących sposobów:
 
-* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [Głos użytkownika](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najważniejsze pytania na temat programowania. Upewnij się, Twoje pytanie jest [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, dzięki czemu zapytania teraz bardziej czytelne i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 

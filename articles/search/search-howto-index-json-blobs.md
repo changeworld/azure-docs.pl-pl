@@ -1,7 +1,7 @@
 ---
 title: Indeksowanie obiektów blob JSON z indeksatora obiektów Blob platformy Azure w celu wyszukiwania pełnotekstowego — usługa Azure Search
 description: Można przeszukiwać JSON usługi Azure blob dla zawartości tekstu za pomocą indeksatora obiektów Blob platformy Azure Search. Indeksatory zautomatyzować pozyskiwanie danych dla wybranych źródeł danych takich jak usługi Azure Blob storage.
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518749"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527357"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
 W tym artykule dowiesz się, jak skonfigurować obiekt blob usługi Azure Search [indeksatora](search-indexer-overview.md) wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
@@ -40,14 +40,15 @@ Zalecamy używanie tej samej subskrypcji platformy Azure dla usługi Azure Searc
 
 ### <a name="1---prepare-source-data"></a>1 — Przygotowanie danych źródłowych
 
-Należy mieć konto magazynu platformy Azure przy użyciu usługi Blob storage i kontenerem dokumentów JSON. Jeśli nie jesteś zaznajomiony z dowolnym z tych wymagań, zapoznaj się z "Konfigurowanie obiektów Blob platformy Azure usługi i ładowanie danych przykładowych" w [cognitive search-quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/).
 
-> [!Important]
-> W kontenerze, upewnij się, że **poziom dostępu publicznego** jest ustawiona na "Kontener (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)". Usługa Azure storage i Azure Search, powinien być w tej samej subskrypcji, a jeśli to możliwe, w tym samym regionie. 
+1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawierają swoje dane. Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
+
+Konieczne będzie nazwa konta magazynu, nazwy kontenera i klucza dostępu, aby pobrać dane w **importowania danych** kreatora.
 
 ### <a name="2---start-import-data-wizard"></a>2 — Uruchom Kreatora importu danych
 
-Możesz [uruchom kreatora](search-import-data-portal.md) na pasku poleceń, na stronie usługi Azure Search lub przez kliknięcie przycisku **Dodaj usługę Azure Search** w **usługi Blob service** sekcji konta magazynu w okienku nawigacji po lewej stronie.
+Na stronie Przegląd usługi Azure Search, możesz [uruchom kreatora](search-import-data-portal.md) na pasku poleceń lub klikając **Dodaj usługę Azure Search** w **usługi Blob service** części sieci konta magazynu użytkownika lewe okienko nawigacji.
 
    ![Polecenie importu danych w portalu](./media/search-import-data-portal/import-data-cmd2.png "uruchomić Kreatora importu danych")
 

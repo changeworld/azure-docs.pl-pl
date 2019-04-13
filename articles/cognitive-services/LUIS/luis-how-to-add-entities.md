@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106937"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522354"
 ---
 # <a name="create-entities-without-utterances"></a>Tworzenie jednostek bez wypowiedzi
 
@@ -56,7 +56,7 @@ Proste jednostki w tym artykule opisano pojęcia pojedynczego. Użyj poniższej 
 
 <a name="add-regular-expression-entities"></a>
 
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Dodaj jednostki wyrażenia regularnego pojęcia związane z wysoce ze strukturą
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Dodaj jednostki wyrażenia regularnego uporządkowany pojęcia dotyczące
 
 Jednostka wyrażenia regularnego umożliwia wyodrębnienie danych z wypowiedź, w oparciu o podane wyrażenie regularne. 
 
@@ -135,7 +135,7 @@ W polu wypowiedź `Where is Request relocation from employee new to the company 
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>Dodaj rolę, aby odróżnić różne konteksty
 
-Rola to nazwane podtyp jednostki na podstawie kontekstu. Jest ona porównywalna ze [hierarchiczne](#add-hierarchical-entities) jednostki, ale ról są używane tylko w [wzorców](luis-how-to-model-intent-pattern.md). 
+Rola jest podtypem nazwany na podstawie kontekstu. Jest dostępny w wszystkich jednostek w tym jednostki wbudowanych i przedstawiono maszyny. 
 
 Przy użyciu tego samego przykładu jako hierarchiczna jednostki pochodzenia i miasta docelowego, różnica jest, że roli nosi nazwę źródła zamiast hierarchiczne podrzędnych. 
 

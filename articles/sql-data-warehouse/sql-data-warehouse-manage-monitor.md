@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/18/2019
+ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189550"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546900"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano, jak używać dynamicznych widoków zarządzania (DMV) do monitorowania obciążenia. Dotyczy to również badanie wykonywania zapytań w usłudze Azure SQL Data Warehouse.
@@ -170,33 +170,10 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Jeśli zapytanie jest aktywnie oczekujących na zasoby z innego zapytania, a następnie stan będzie **AcquireResources**.  Jeśli zapytanie ma wszystkie wymagane zasoby, a następnie stan będzie **przyznany**.
 
 ## <a name="monitor-tempdb"></a>Monitor bazy danych tempdb
-Tempdb wysokie użycie może być głównej przyczyny niskiej wydajności i poza problemy z pamięcią. Należy rozważyć skalowanie magazynu danych, jeśli okaże się osiągnięcia zmuszenia podczas wykonywania zapytań w bazie danych tempdb. Następujące informacje w tym artykule opisano sposób zidentyfikować użycie bazy danych tempdb na zapytanie w każdym węźle. 
+Bazy danych tempdb jest używany do przechowywania wyników pośrednich podczas wykonywania zapytania. Wysokie wykorzystanie bazy danych tempdb może prowadzić do obniżyć wydajność zapytań. Każdy węzeł w usłudze Azure SQL Data Warehouse ma około 1 TB miejsca pierwotne bazy danych TempDB. Poniżej znajdują się wskazówki dotyczące monitorowania użycia bazy danych tempdb i zmniejsza użycie bazy danych tempdb w zapytaniach. 
 
-Utwórz następujący widok do skojarzenia z odpowiedniego węzła identyfikator sys.dm_pdw_sql_requests. Identyfikator węzła o będzie pozwalają na korzystanie z innych przekazywanego widoków DMV i połączenia tych tabel przy użyciu sys.dm_pdw_sql_requests.
-
-```sql
--- sys.dm_pdw_sql_requests with the correct node id
-CREATE VIEW sql_requests AS
-(SELECT
-       sr.request_id,
-       sr.step_index,
-       (CASE 
-              WHEN (sr.distribution_id = -1 ) THEN 
-              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
-              ELSE d.pdw_node_id END) AS pdw_node_id,
-       sr.distribution_id,
-       sr.status,
-       sr.error_id,
-       sr.start_time,
-       sr.end_time,
-       sr.total_elapsed_time,
-       sr.row_count,
-       sr.spid,
-       sr.command
-FROM sys.pdw_distributions AS d
-RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
-```
-Aby monitorować bazy danych tempdb, uruchom następujące zapytanie:
+### <a name="monitoring-tempdb-with-views"></a>Monitorowanie bazy danych tempdb z widokami
+Aby monitorować użycie bazy danych tempdb, należy najpierw zainstalować [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) z widoku [Microsoft Toolkit dla usługi SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Można następnie wykonaj następujące zapytanie, aby zobaczyć użycie bazy danych tempdb na węzeł dla wszystkich wykonywanych zapytań:
 
 ```sql
 -- Monitor tempdb
@@ -221,12 +198,17 @@ SELECT
 FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
-    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
+
+Jeśli masz kwerendę, która zużywa duże ilości pamięci lub odebrały komunikat o błędzie powiązany przydziału bazy danych tempdb, często jest ze względu na bardzo dużych [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) lub [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Instrukcja z systemem, która kończy się niepowodzeniem w ramach operacji przenoszenia danych końcowych. To zazwyczaj można zidentyfikować jako operacja ShuffleMove w ramach planu zapytania rozproszonego przed ostatnim INSERT SELECT.
+
+Najbardziej typowe ograniczenia jest Podziel instrukcji CTAS lub INSERT SELECT na wiele instrukcji ładowania, więc wolumin danych nie może przekroczyć 1TB na limit liczby węzłów bazy danych tempdb. Możesz również skalować na większy rozmiar, który będzie rozkładają się rozmiar bazy danych tempdb na większą liczbę węzłów, zmniejszając bazy danych tempdb na poszczególnych węzłów klastra. 
+
 ## <a name="monitor-memory"></a>Monitorowanie pamięci
 
 Pamięć może być głównej przyczyny niskiej wydajności i poza problemy z pamięcią. Należy rozważyć skalowanie magazynu danych, jeśli okaże się użycia pamięci programu SQL Server osiągnięcia zmuszenia podczas wykonywania zapytania.

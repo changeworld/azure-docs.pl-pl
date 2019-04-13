@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 79b694b877e7e26c5b9c71fb5cfbde3703ef3cb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 7d372dfa845459a63de8ccc1b81e7b1319f47e34
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750923"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524379"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Samouczek: zabezpieczanie internetowego serwera na maszynie wirtualnej z systemem Linux na platformie Azure z certyfikatami SSL zapisanymi w usłudze Key Vault
 Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Sockets Layer) do szyfrowania ruchu w sieci Web. Te certyfikaty SSL mogą być przechowywane w usłudze Azure Key Vault i umożliwiają bezpieczne wdrażanie certyfikatów na maszynach wirtualnych z systemem Linux na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -50,7 +50,7 @@ Aby można było utworzyć usługę Key Vault i certyfikaty, utwórz grupę zaso
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Następnie utwórz usługę Key Vault za pomocą polecenia [az keyvault create](/cli/azure/keyvault) i włącz ją do użycia podczas wdrażania maszyny wirtualnej. Każda usługa Key Vault wymaga unikatowej nazwy, która powinna zawierać tylko małe litery. Zamień wartość *<mykeyvault>* w poniższym przykładzie na własną unikatową nazwę usługi Key Vault:
+Następnie utwórz usługę Key Vault za pomocą polecenia [az keyvault create](/cli/azure/keyvault) i włącz ją do użycia podczas wdrażania maszyny wirtualnej. Każda usługa Key Vault wymaga unikatowej nazwy, która powinna zawierać tylko małe litery. Zastąp  *\<mykeyvault >* w poniższym przykładzie na własną unikatową nazwę usługi Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić ciąg *https://<publicIpAddress>*  na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
+Teraz możesz otworzyć przeglądarkę sieci web i wprowadź *https:\/\/\<publiczny adres IP >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -146,7 +146,7 @@ Zostanie wyświetlona zabezpieczona witryna serwera NGINX, tak jak w poniższym 
 ![Wyświetlanie uruchomionej zabezpieczonej witryny serwera NGINX](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku serwer sieci Web NGINX został zabezpieczony za pomocą certyfikatu SSL przechowywanego w usłudze Azure Key Vault. W tym samouczku omówiono:
 

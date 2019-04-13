@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 0ac102f388c404bab98354b7bd131989abedd7e6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887567"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548191"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych systemu Linux na platformie Azure
 
@@ -32,7 +32,7 @@ Azure jest wspierana przez infrastruktury z systemem Windows Server 2016. System
 >
 > Aby uzyskać więcej informacji, zobacz [dokładnego czasu systemu Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Dokładność zegara komputera jest pomiarowym na blisko zegara komputera jest standardowy czas uniwersalny czas koordynowany (UTC). UTC jest definiowany przez wielonarodowych próbka dokładne zegary niepodzielność, które może być tylko wyłączyć jedną sekundę lat 300. Jednak bezpośrednio do czytania UTC wymaga specjalistycznego sprzętu. Zamiast tego należy serwery czasu UTC są synchronizowane i są dostępne z innych komputerów w celu zapewnienia skalowalności i niezawodności. Każdy komputer ma czas Usługa synchronizacji jest uruchomiona, wie, jakie serwery czasu, należy użyć i okresowo sprawdza, czy zegar komputera ma zostać poprawione i dostosowuje czas, w razie potrzeby. 
 
@@ -40,7 +40,7 @@ Hosty platformy Azure są synchronizowane wewnętrznych serwerów czasu firmy Mi
 
 Na sprzęcie autonomicznego systemu operacyjnego Linux odczytuje tylko sprzętu hosta zegara podczas rozruchu. Po tym zegara jest utrzymywany w jądrze systemu Linux przy użyciu czasomierz przerwanie. W tej konfiguracji będzie odstępstw zegara, wraz z upływem czasu. W nowszych dystrybucje systemu Linux na platformie Azure maszyn wirtualnych można użyć dostawcę VMICTimeSync objęte systemu Linux integration services (LIS), zapytania dotyczące aktualizacji zegara z większą częstotliwością hosta.
 
-Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podczas [pamięci zachowywanie konserwacji](maintenance-and-updates.md#memory-preserving-maintenance), maszyny wirtualne są wstrzymane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem konserwacji zegar maszyny Wirtualnej zawiera 10:00:00 AM i obowiązuje 28 sekundach. Po wznowieniu działania maszyny Wirtualnej, zegar na maszynie Wirtualnej nadal będą wyświetlane 10:00:00 AM, który będzie 28 sekundach wyłączone. Prawidłowe w tym celu usługa VMICTimeSync monitoruje co dzieje się na hoście i wyświetla monit o zmiany do wykonania na maszynach wirtualnych wyrównania.
+Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podczas [pamięci zachowywanie konserwacji](maintenance-and-updates.md#maintenance-not-requiring-a-reboot), maszyny wirtualne są wstrzymane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem konserwacji zegar maszyny Wirtualnej zawiera 10:00:00 AM i obowiązuje 28 sekundach. Po wznowieniu działania maszyny Wirtualnej, zegar na maszynie Wirtualnej nadal będą wyświetlane 10:00:00 AM, który będzie 28 sekundach wyłączone. Prawidłowe w tym celu usługa VMICTimeSync monitoruje co dzieje się na hoście i wyświetla monit o zmiany do wykonania na maszynach wirtualnych wyrównania.
 
 Bez pracy synchronizacji czasu, zegar na maszynie Wirtualnej może wzrosnąć błędy. Gdy istnieje tylko jedna maszyna wirtualna, efekt mogą nie być istotne, chyba że obciążenie wymaga bardzo dokładnych. Jednak w większości przypadków, firma Microsoft ma wielu, wzajemnie połączonych maszyn wirtualnych, które umożliwiają śledzenie transakcji i spójne całe wdrożenie wymaga czasu czasu. Gdy czas między maszynami wirtualnymi jest inny, można uzyskać następujące skutki:
 

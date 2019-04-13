@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — usługi ExpressRoute: wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — ExpressRoute: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu wiersza polecenia platformy Azure
 services: expressroute
 author: anzaman
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: 94bdd4819d750f4c26c93a88cc6982a60583171c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cfd9f4c52d3ddddd944186a833cba48e6ca76182
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079300"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527969"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: wiersza polecenia platformy Azure
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Interfejs wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -90,7 +90,7 @@ Wybierz subskrypcję, dla której chcesz utworzyć obwód usługi ExpressRoute.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Krok 1: Pobierz listę prefiksów i wartości społeczności BGP
+## <a name="prefixes"></a>Krok 1. Pobierz listę prefiksów i wartości społeczności BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Pobierz listę wartości społeczności BGP
 
@@ -103,13 +103,13 @@ az network route-filter rule list-service-communities
 
 Tworzenie listy wartości społeczności BGP, którego chcesz użyć do filtru trasy. Na przykład wartość społeczności BGP dla usługi Dynamics 365 jest 12076:5040.
 
-## <a name="filter"></a>Krok 2: Tworzenie filtru tras i regułę filtru
+## <a name="filter"></a>Krok 2. Tworzenie filtru tras i regułę filtru
 
 Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwalaj". Ta zasada może mieć listę wartości społeczności BGP skojarzonych z nim.
 
 ### <a name="1-create-a-route-filter"></a>1. Tworzenie filtru tras
 
-Najpierw utwórz filtr tras. Polecenie "az network route-filter tworzenie" umożliwia utworzenie zasobu filtru trasy. Po utworzeniu zasobu, należy utworzyć regułę i dołącz je do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
+Najpierw utwórz filtr tras. Polecenie `az network route-filter create` tylko tworzy zasób filtru trasy. Po utworzeniu zasobu, należy utworzyć regułę i dołącz je do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
@@ -123,7 +123,7 @@ Uruchom następujące polecenie, aby utworzyć nową regułę:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Krok 3: Dołącz filtru tras do obwodu usługi ExpressRoute
+## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
 
 Uruchom następujące polecenie, aby dołączyć filtru tras do obwodu usługi ExpressRoute:
 

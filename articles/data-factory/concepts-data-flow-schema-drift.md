@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729359"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547148"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapowanie dryfu schemat przepływu danych
 
@@ -26,7 +26,7 @@ W celu ochrony przeciwko dryfu schematu, ważne jest zapewnienie urządzeń w na
 * Definiowanie parametrów transformacji, które może współpracować z wzorców danych zamiast zakodowanych pola i wartości
 * Definiowanie wyrażenia, które zrozumieć wzorce do dopasowania pól przychodzące, zamiast korzystać z pola nazwane
 
-W usługi Azure Data Factory przepływu danych takich obiektów są udostępniane przez ten przepływ pracy:
+## <a name="how-to-implement-schema-drift"></a>Jak zaimplementować kilka schematu
 
 * Wybierz opcję "Zezwalaj na schemat odejściem od tego stanu" w swojej transformacji źródła
 
@@ -67,3 +67,10 @@ Możesz przetestować ten w poziomie przy użyciu przykładowy przepływ danych 
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>Dostęp do podrzędnych nowych kolumn
+
+Podczas generowania nowych kolumn z wzorcami kolumny, możesz uzyskać dostęp tych nowych kolumn w dalszej części przekształceń przepływu danych przy użyciu funkcji wyrażenia "byName".
+
+## <a name="next-steps"></a>Kolejne kroki
+
+W [język wyrażeń przepływu danych](data-flow-expression-functions.md) znajdują się dodatkowe urządzenia do wzorców kolumny i dryfu schematu, w tym "byName" i "byPosition".

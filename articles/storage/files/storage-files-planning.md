@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 609e774c36ab685d017f311a74c8680dbb9750c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283022"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525929"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -109,9 +109,9 @@ Wszystkie udziały mogą serii do co najmniej 100 operacji We/Wy i docelowe prze
 >
 > Seria Limit = 3 * linii bazowej operacje We/Wy. (Maksymalnie maksymalnie 100 000 operacji We/Wy).
 >
-> współczynnik ruchu wychodzącego = 60 MiB/s + 0.06 elastycznie GiB (maksymalnie 6 GiB/s)
+> współczynnik ruchu wychodzącego = 60 MiB/s + 0,06 * aprowizowane GiB
 >
-> szybkość transferu danych przychodzących = 40 MiB/s + 0.04 elastycznie GiB (maksymalnie 4 GiB)
+> szybkość transferu danych przychodzących = 40 MiB/s + 0,04 * aprowizowane GiB
 
 Rozmiar udziału może być zwiększana w każdym czasu i obniżenie dowolnym momencie, ale można zmniejszyć co 24 godziny od czasu ostatniego wzrost. Zmiana skali na SEKUNDĘ lub przepływności będą obowiązywać w ciągu 24 godzin po zmianie rozmiaru.
 
@@ -128,9 +128,9 @@ W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów
 |10,240 *     | 10,240  | 30 do 720  | 675 | 450   |
 |33,792 *     | 33,792  | Do 100 000 | 2,088 | 1,392   |
 |51,200 *     | 51,200  | Do 100 000 | 3,132 | 2,088   |
-|100,000 *    | 100 000 | Do 100 000 | 6,204 | 4,136   |
+|102,400 *    | 100 000 | Do 100 000 | 6,204 | 4,136   |
 
-Obecnie rozmiar udziału plików maksymalnie 5 TiB są w publicznej wersji zapoznawczej, a rozmiarze do 102 TiB w ograniczonej publicznej wersji zapoznawczej, aby poprosić o dostęp do ograniczonej publicznej wersji zapoznawczej pełną [w ramach tej ankiety.](https://aka.ms/azurefilesatscalesurvey)
+Obecnie rozmiar udziału plików maksymalnie 5 TiB są w publicznej wersji zapoznawczej, a w ograniczonej publicznej wersji zapoznawczej, aby poprosić o dostęp do ograniczonej publicznej wersji zapoznawczej pełną rozmiarze do 100 TiB [w ramach tej ankiety.](https://aka.ms/azurefilesatscalesurvey)
 
 ### <a name="bursting"></a>Przenoszenie obsługi dużego ruchu
 

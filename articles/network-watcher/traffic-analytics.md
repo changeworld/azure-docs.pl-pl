@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491000"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545403"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -369,3 +369,8 @@ Czy masz złośliwy ruch w środowisku? Gdzie jest ona pochodzące z komputera? 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
+- Aby zrozumieć schemat i przetwarzania informacji analizy ruchu, zobacz [Traffic analytics schematu](traffic-analytics-schema.md).

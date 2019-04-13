@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359743"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549409"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -30,7 +30,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 
 **Nowe funkcje** 
 
-* Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z języka C++, C#i Java. Aby uzyskać więcej informacji o wyboru [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
+* Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z C++ i C#. Aby uzyskać więcej informacji o wyboru [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
 * Zestaw SDK obsługuje teraz MP3 oraz dziele/Ogg pliki audio jako pliki wejściowe strumienia. Ta funkcja jest dostępna tylko w systemie Linux z C++ i C# i jest obecnie w wersji beta (więcej szczegółów [tutaj](how-to-use-compressed-audio-input-streams.md)).
 * Zestaw SDK rozpoznawania mowy dla języka Java, .NET core, C++ i języka Objective-C weszły do obsługi systemu macOS. Obsługa języka Objective-C, dla systemu macOS jest obecnie w wersji beta.
 * iOS: Zestaw SDK rozpoznawania mowy dla systemu iOS (Objective-C) teraz zostało również opublikowane jako CocoaPod.
@@ -211,7 +211,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 * Obsługa języka Objective-C w systemie iOS. Zapoznaj się z naszym [języka Objective-C Przewodnik Szybki Start dla systemu iOS](quickstart-objectivec-ios.md).
 * Obsługa języka JavaScript w przeglądarce. Zapoznaj się z naszym [Szybki Start JavaScript](quickstart-js-browser.md).
 
-**Zmiany powodujące niezgodność**
+**Fundamentalne zmiany**
 
 * W tej wersji wprowadzono szereg istotnych zmian.
   Sprawdź, czy [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje.
@@ -230,7 +230,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 
 * Uwidocznić dodatkowe szczegółowe informacje na temat błędów połączenia.
 
-**Zmiany powodujące niezgodność**
+**Fundamentalne zmiany**
 
 * W języku Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkcja nie wymaga już parametr ścieżki. Teraz ścieżki jest wykrywany automatycznie na wszystkich obsługiwanych platformach.
 * Get akcesora właściwości `EndpointUrl` w środowiskach Java i C# został usunięty.
@@ -259,7 +259,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 * Wynik rozpoznawania zawiera więcej pól. Są one przesunięcie od początku audio i czas trwania (zarówno w impulsach) rozpoznany tekst i dodatkowe wartości, które reprezentują rozpoznawania stanu, na przykład `InitialSilenceTimeout` i `InitialBabbleTimeout`.
 * Obsługa tworzenia wystąpienia fabryki AuthorizationToken.
 
-**Zmiany powodujące niezgodność**
+**Fundamentalne zmiany**
 
 * Rozpoznawanie zdarzenia: Typ zdarzenia NoMatch zostały scalone z zdarzenie błędu.
 * SpeechOutputFormat w języku C# została zmieniona na OutputFormat pozostanie wyrównane przy użyciu języka C++.

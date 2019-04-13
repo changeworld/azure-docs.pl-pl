@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: aljo
-ms.openlocfilehash: d4d0145ef07a6a89cbae1fe18d2cb7df88cdd113
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667110"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549039"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Wskazówki i zalecenia dotyczące elementów Reliable Collections w usłudze Azure Service Fabric
 Ta sekcja zawiera wskazówki dotyczące korzystania z Reliable State Manager i elementów Reliable Collections. Celem jest pomaganie użytkownikom uniknąć typowych pułapek.
@@ -32,6 +32,7 @@ Wytyczne są uporządkowane jako prosty zalecenia prefiksem warunki *czy*, *rozw
 * Nie używaj transakcji po została zatwierdzona, zostało przerwane lub usunięty.
 * Nie należy używać wyliczenia poza zakresem transakcji, który został utworzony.
 * Nie należy tworzyć transakcji w ramach innej transakcji `using` instrukcji, ponieważ może to spowodować zakleszczenia.
+* Nie należy tworzyć niezawodne stanu z `IReliableStateManager.GetOrAddAsync` i niezawodne stanu w ramach jednej transakcji. Skutkuje to InvalidOperationException.
 * Upewnij się, że Twoje `IComparable<TKey>` implementacja jest prawidłowa. System zdobywa zależności `IComparable<TKey>` scalania punkty kontrolne i wierszy.
 * Użyj blokady aktualizacji podczas odczytywania elementu z zamiarem Aby zaktualizować go w celu uniemożliwienia klasy zakleszczenia.
 * Należy wziąć pod uwagę zachowanie liczbę elementów Reliable Collections na partycję za mniej niż 1000. Preferuj elementów Reliable Collections z większej liczby elementów przed więcej elementów Reliable Collections przy użyciu mniejszej liczby elementów.

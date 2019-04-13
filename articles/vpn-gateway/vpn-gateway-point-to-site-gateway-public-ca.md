@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848936"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521598"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
 
@@ -56,7 +56,7 @@ Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięczne
 
 ### <a name="classic"></a>Wdrożenie klasyczne
 
-1. Na komputerze klienckim przejdź do ścieżki %appdata%/Microsoft/Network/Connections/Cm/<gatewayID>. W folderze identyfikator bramy można wyświetlić certyfikat.
+1. Na komputerze klienckim przejdź do ścieżki `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`. W folderze identyfikator bramy można wyświetlić certyfikat.
 2. Na karcie Ogólne dla certyfikatu sprawdź, czy urząd wystawiający certyfikaty jest "DigiCert globalnego głównego urzędu certyfikacji". Jeśli masz coś innego niż ten urząd wystawiający certyfikat bramy jest częścią aktualizacji i zostanie przeniesiona.
 
 ## <a name="2-check-certificate-transition-schedule"></a>2. Certyfikat przejścia harmonogram sprawdzania

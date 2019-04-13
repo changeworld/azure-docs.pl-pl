@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104679"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521924"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Linux do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów z systemem Linux uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta systemu Linux.
@@ -57,7 +57,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
    ![Instalowanie agenta][5]
 
-Dzienniki agenta usługi Azure Security Center dla systemu Linux można znaleźć w folderze: */var/opt/microsoft/omsagent/<workspace id>/log/*
+Dzienniki agenta Centrum zabezpieczeń dla systemu Linux można znaleźć na: */var/opt/microsoft/omsagent/\<identyfikator obszaru roboczego > /log/*
 
   ![Dzienniki agenta][6]
 

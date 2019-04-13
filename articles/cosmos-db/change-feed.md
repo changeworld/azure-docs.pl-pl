@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886727"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525640"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Zmiana źródła danych w usłudze Azure Cosmos DB — omówienie
 
@@ -84,7 +84,7 @@ Na przykład za pomocą zestawienia zmian można wykonać następujące zadania 
 
 Poniżej przedstawiono niektóre scenariusze, które można łatwo zaimplementować za pomocą kanału informacyjnego zmian:
 
-* W ramach Twojej [bezserwerowe](https://azure.microsoft.com/en-us/solutions/serverless/) aplikacje internetowe lub mobilne, można śledzić zdarzenia, takie jak wszystkie zmiany do profilu klienta, preferencje lub ich lokalizacji i wyzwalania określonych czynności, na przykład wysyłanie powiadomień wypychanych do urządzeń za pomocą [usługi Azure Functions](change-feed-functions.md).
+* W ramach Twojej [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) aplikacje internetowe lub mobilne, można śledzić zdarzenia, takie jak wszystkie zmiany do profilu klienta, preferencje lub ich lokalizacji i wyzwalania określonych czynności, na przykład wysyłanie powiadomień wypychanych do urządzeń za pomocą [usługi Azure Functions](change-feed-functions.md).
 
 * Jeśli używasz usługi Azure Cosmos DB do tworzenia gier, możesz, na przykład użyj Zmień źródło danych do zaimplementowania rankingi w czasie rzeczywistym, w oparciu o wyniki z gry ukończone.
 

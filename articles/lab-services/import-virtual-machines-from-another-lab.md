@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b2eee0bfd32b58cd751f8bf70aff1d4f460a353
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340142"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546595"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Importowanie maszyn wirtualnych z innego laboratorium w usłudze Azure DevTest Labs
 Ten artykuł zawiera informacje o tym, jak importować maszyny wirtualne z innego laboratorium do laboratorium. 
@@ -47,7 +47,7 @@ Istnieją dwa ograniczenia klucza pod uwagę podczas planowania do importowania 
 - Obecnie ta funkcja jest obsługiwana wyłącznie za pośrednictwem programu Powershell i interfejsu API REST.
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
-Pobierz plik ImportVirtualMachines.ps1 z [GitHub](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/ImportVirtualMachines/ImportVirtualMachines.ps1). Skrypt służy do importowania jednej maszyny Wirtualnej lub wszystkich maszyn wirtualnych w laboratorium źródła do docelowego laboratorium. 
+Pobierz plik ImportVirtualMachines.ps1 z [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skrypt służy do importowania jednej maszyny Wirtualnej lub wszystkich maszyn wirtualnych w laboratorium źródła do docelowego laboratorium. 
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Aby zaimportować pojedynczej maszyny Wirtualnej przy użyciu programu PowerShell
 Wykonującego ten skrypt programu powershell wymaga zidentyfikowanie źródłowej maszyny Wirtualnej i laboratorium z docelowej i opcjonalnie podanie nowej nazwy do użycia dla docelowej maszyny:

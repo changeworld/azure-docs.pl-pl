@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40105510"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551601"
 ---
-**Ostatnie dokumentowanie aktualizacji**: 14 sierpnia 2018 r., 10:00 czasu PST.
+**Ostatnie dokumentowanie aktualizacji**: 14 sierpnia 2018 r. 10:00 czasu PST.
 
 Ujawnienie [nową klasę luk w zabezpieczeniach procesora CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) nazywane ataków kanału po stronie wykonywania spekulacyjnego spowodowało pytania klientów poszukujących bardziej przejrzysty.  
 
 Microsoft wdrożono środki zaradcze dla naszych usług w chmurze. Infrastrukturę, która działa na platformie Azure i izoluje obciążeń klientów od siebie nawzajem jest chroniony. Oznacza to, że potencjalnym osobom atakującym przy użyciu tej samej infrastruktury nie ataki swoją aplikację przy użyciu tych luk w zabezpieczeniach.
 
-Używa usługi Azure [pamięci zachowywanie konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) zawsze, gdy jest to możliwe zminimalizować wpływ na klientów i wyeliminować potrzebę ponownego uruchomienia. Platforma Azure będzie kontynuować korzystanie z tych metod, podczas wprowadzania aktualizacji ogólnosystemowe do hosta i ochrony jej klientów.
+Używa usługi Azure [pamięci zachowywanie konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) zawsze, gdy jest to możliwe zminimalizować wpływ na klientów i wyeliminować potrzebę ponownego uruchomienia. Platforma Azure będzie kontynuować korzystanie z tych metod, podczas wprowadzania aktualizacji ogólnosystemowe do hosta i ochrony jej klientów.
 
 Więcej informacji na temat sposobu zabezpieczenia są zintegrowane w każdy aspekt platformy Azure jest dostępna na [dokumentacja zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/) lokacji. 
 
@@ -70,17 +70,17 @@ Można włączyć dodatkowe funkcje zabezpieczeń w swojej maszyny Wirtualnej lu
 
 Aktualne, aby włączyć te dodatkowe funkcje zabezpieczeń muszą być docelowego systemu operacyjnego. Chociaż wiele z wykonywaniem spekulatywnym po stronie kanału środki zaradcze są domyślnie włączone, dodatkowe funkcje, które są opisane w tym miejscu musi być włączone ręczne i może spowodować, że wpływ na wydajność. 
 
-**Krok 1**: [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych. 
+**Krok 1**: [Skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych. 
 
-**Krok 2**: Włącz jądra wirtualnego adresu przesłanianie (KVAS) i systemu operacyjnego w gałęzi docelowej iniekcji (WIT). Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby włączyć ochronę za pomocą `Session Manager` kluczy rejestru. Wymagany jest ponowny rozruch. 
+**Krok 2**: Włącz obsługę jądra wirtualnego adresu przesłanianie (KVAS) i systemu operacyjnego w gałęzi docelowej iniekcji (WIT). Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby włączyć ochronę za pomocą `Session Manager` kluczy rejestru. Wymagany jest ponowny rozruch. 
 
-**Krok 3**: w przypadku wdrożeń, które korzystają z [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 i tylko E3): instrukcje te mają zastosowanie wewnątrz maszyny Wirtualnej, której używasz jako hosta funkcji Hyper-V. 
+**Krok 3**: W przypadku wdrożeń, które korzystają z [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 i tylko E3): Te instrukcje mają zastosowanie wewnątrz maszyny Wirtualnej, której używasz jako hosta funkcji Hyper-V. 
 
 1. Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby włączyć ochronę za pomocą `MinVmVersionForCpuBasedMitigations` kluczy rejestru.  
  
 1. Ustaw typ harmonogramu funkcji hypervisor **Core** zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types). 
 
-**Krok 4**: postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby sprawdzić, zabezpieczenia są włączone, za pomocą [SpeculationControl](https://aka.ms/SpeculationControlPS) modułu programu PowerShell. 
+**Krok 4**: Postępuj zgodnie z instrukcjami w [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) Aby sprawdzić, zabezpieczenia są włączone, za pomocą [SpeculationControl](https://aka.ms/SpeculationControlPS) modułu programu PowerShell. 
 
 > [!NOTE]
 > Jeśli ten moduł został wcześniej pobrany, należy zainstalować najnowszą wersję.
@@ -101,9 +101,9 @@ L1TFWindowsSupportEnabled: True
 
 <a name="linux"></a>Włączanie zestaw dodatkowych funkcji zabezpieczeń wewnątrz wymaga docelowy system operacyjny aktualne. Niektóre środki zaradcze zostaną włączone domyślnie. W poniższej sekcji opisano funkcje, które są wyłączone, domyślnie i/lub na architekturze na pomoc techniczna dotycząca sprzętu (mikrokodu). Włączenie tych funkcji może spowodować negatywny wpływ na wydajność. Aby uzyskać dalsze instrukcje dokumentacji dostawcy systemu operacyjnego
  
-**Krok 1**: [skontaktuj się z pomocą techniczną platformy Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych.
+**Krok 1**: [Skontaktuj się z działem pomocy technicznej systemu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) udostępniają aktualizacji oprogramowania układowego (mikrokodu) do maszyn wirtualnych.
  
-**Krok 2**: Włącz gałęzi iniekcji Target (WIT) w system operacyjny pomocy technicznej, aby uniknąć CVE-2017-5715 (krokami zaradczymi dla luki wariantu 2), postępując zgodnie z dokumentacją dostawcy systemu operacyjnego. 
+**Krok 2**: Włącz obsługę gałęzi docelowej iniekcji (WIT) systemu operacyjnego złagodzić CVE-2017-5715 (krokami zaradczymi dla luki wariantu 2), postępując zgodnie z dokumentacją dostawcy systemu operacyjnego. 
  
 **Krok 3**: Włącz jądra strony tabeli izolacji (KPTI) aby uniknąć CVE-2017-5754 (Meltdown Variant 3), postępując zgodnie z dokumentacją dostawcy systemu operacyjnego. 
  

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855643"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Samouczek: integracja usługi Azure Active Directory z oprogramowaniem SAP NetWeaver
 
@@ -135,7 +135,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP N
 6. W polu **Provider Name** (Nazwa dostawcy) zastąp ciąg T01122 ciągiem `http://T01122` i kliknij pozycję **Save** (Zapisz).
 
     > [!NOTE]
-    > Domyślnie nazwa dostawcy ma format <sid><client>, jednak usługa Azure AD oczekuje nazwy w formacie <protocol>://<name>, zalecając zachowanie nazwy dostawcy w formacie https://<sid><client>, aby umożliwić konfigurację wielu aparatów ABAP rozwiązania SAP NetWeaver w usłudze Azure AD.
+    > Nazwa domyślnego dostawcy uszkodzonym `<sid><client>` formatowanie, ale usługa Azure AD oczekuje nazwy w formacie `<protocol>://<name>`, zalecających, aby zachować nazwę dostawcy, jak `https://<sid><client>` umożliwia wielu aparatów SAP NetWeaver ABAP do skonfigurowania w usłudze Azure AD.
 
     ![Link do pobierania certyfikatu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 

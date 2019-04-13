@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379c7913f803c599865df080524da5c3fb1d0e52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120520"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526350"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
@@ -165,7 +165,7 @@ Aby wyświetlić kanał informacyjny zmian przetwarzaniu nowe akcje w witrynie h
 
 1. Przejdź z powrotem do repozytorium w Eksploratorze plików, a następnie kliknij prawym przyciskiem myszy **ChangeFeedFunction.sln** ponownie otworzyć nowe okno programu Visual Studio.  
 
-2. Przejdź do **App.config** pliku. W ramach <appSettings> zablokować, Dodaj punkt końcowy i unikatowych **klucz podstawowy** z kontem usługi Azure Cosmos DB, który pobranym wcześniej.  
+2. Przejdź do **App.config** pliku. W ramach `<appSettings>` zablokować, Dodaj punkt końcowy i unikatowych **klucz podstawowy** z kontem usługi Azure Cosmos DB, który pobranym wcześniej.  
 
 3. Dodaj w **kolekcji** i **bazy danych** nazwy. (Te nazwy powinny być **changefeedlabcollection** i **changefeedlabdatabase** dopóki nie zdecydujesz się nazwę należy do Ciebie inaczej.)
 

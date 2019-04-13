@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f749a04b569d183589fba8c788ce48f29358b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295559"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525793"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Szyfrowanie zawartości przy użyciu szyfrowania magazynu 
 
@@ -111,7 +111,7 @@ Poniżej przedstawiono ogólne kroki do generowania kluczy zawartości, które s
 
     Właściwości treści żądania    | Opis
     ---|---
-    Identyfikator | Identyfikator ContentKey jest generowany przy użyciu następującego formatu "nb:kid:UUID:<NEW GUID>".
+    Identyfikator | Identyfikator ContentKey jest generowany przy użyciu następującego formatu "nb:kid:UUID:\<nowy identyfikator GUID >".
     ContentKeyType | Typ klucza zawartości jest liczba całkowita, która definiuje klucz. Dla formatu szyfrowania magazynu wartość wynosi 1.
     EncryptedContentKey | Utworzymy nową wartość klucza zawartości, która jest wartością 256-bitowego (32-bajtów). Klucz jest zaszyfrowany przy użyciu certyfikatu X.509 szyfrowania magazynu, który możemy pobrać z usługi Microsoft Azure Media Services, wykonując żądanie HTTP GET dla GetProtectionKeyId i metod GetProtectionKey. Na przykład zobacz następujący kod .NET: **EncryptSymmetricKeyData** metody zdefiniowanej [tutaj](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
     ProtectionKeyId | Jest to ochrona identyfikator klucza dla certyfikatu X.509 szyfrowania magazynu, który został użyty do zaszyfrowania naszych klucza zawartości.

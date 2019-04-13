@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8eb569e628e598dbfd890c11656a23007f915b45
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491168"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545233"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -103,7 +103,7 @@ import os
 
 Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. A [obszaru roboczego](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to klasa, która akceptuje usługi Azure information subskrypcji i zasobów. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
 
-`Workspace.from_config()` odczytuje plik **aml_config/config.json** i ładuje szczegóły do obiektu o nazwie `ws`.  `ws` jest używana w pozostałej części kodu w ramach tego samouczka.
+Metoda `Workspace.from_config()` odczytuje plik **config.json** i ładuje szczegóły do obiektu o nazwie `ws`.  Obiekt `ws` jest używany w kodzie w tym samouczku.
 
 Po utworzeniu obiektu obszaru roboczego określ nazwę eksperymentu. Utwórz i zarejestruj katalog lokalny w obszarze roboczym. Historia wszystkich przebiegów jest rejestrowana w ramach określonego eksperymentu oraz w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -653,10 +653,10 @@ Zdefiniuj parametr eksperymentu i ustawienia modelu na potrzeby automatycznego g
 |Właściwość| Wartość w ramach tego samouczka |Opis|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Limit czasu w minutach dla każdej iteracji. Zmniejszenie tej wartości powoduje skrócenie całkowitego czasu wykonywania.|
-|**Liczba iteracji**|30|Liczba iteracji. W każdej iteracji przy użyciu danych jest trenowany nowy model uczenia maszynowego. Jest to podstawowa wartość, która ma wpływ na całkowity czas wykonywania.|
+|**iterations**|30|Liczba iteracji. W każdej iteracji przy użyciu danych jest trenowany nowy model uczenia maszynowego. Jest to podstawowa wartość, która ma wpływ na całkowity czas wykonywania.|
 |**primary_metric**| spearman_correlation | Metryka, który ma być optymalizowana. Na podstawie tej metryki zostanie wybrany model o najlepszym dopasowaniu.|
-|**Przetwarzanie wstępne**| True | Ustawienie wartości **True** umożliwia wstępne przetworzenie danych wejściowych w eksperymencie (obsługę brakujących danych, przekonwertowanie tekstu na liczby itp.).|
-|**Poziom szczegółowości**| logging.INFO | Steruje poziomem rejestrowania.|
+|**preprocess**| True | Ustawienie wartości **True** umożliwia wstępne przetworzenie danych wejściowych w eksperymencie (obsługę brakujących danych, przekonwertowanie tekstu na liczby itp.).|
+|**verbosity**| logging.INFO | Steruje poziomem rejestrowania.|
 |**n_cross_validations**|5|Liczba podziałów krzyżowego sprawdzania poprawności w przypadku nieokreślenia danych weryfikacji.|
 
 
@@ -754,8 +754,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Szczegóły przebiegu widżet Jupyter](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widżet wykresu](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Szczegóły przebiegu widżetu Jupyter](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Wykres widżetu Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Opcja 2: Pobieranie i sprawdzanie wszystkich iteracji przebiegów w środowisku Python
 
@@ -774,8 +774,7 @@ rundata
 ```
 
 <div>
-<style scoped>
-.dataframe tbody tr th: tylko of-type {wyrównanie w pionie: środkowy;}
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;

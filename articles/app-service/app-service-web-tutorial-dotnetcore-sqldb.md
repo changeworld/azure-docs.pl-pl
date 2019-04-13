@@ -1,5 +1,5 @@
 ---
-title: Kompilowanie aplikacji platformy .NET Core przy użyciu usługi SQL Database — Azure App Service | Microsoft Docs
+title: Platforma ASP.NET Core z usługą SQL Database — usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak uruchomić aplikację .NET Core w usłudze Azure App Service z użyciem połączenia z usługą SQL Database.
 services: app-service\web
 documentationcenter: dotnet
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d62e74c5d81cdf3331bde349a9ec5dfe3071e7f8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510701"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548871"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji platformy ASP.NET Core i SQL Database w usłudze Azure App Service
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć usługę App Service w systemie _Linux_, zobacz [Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service w systemie Linux](./containers/tutorial-dotnetcore-sqldb-app.md).

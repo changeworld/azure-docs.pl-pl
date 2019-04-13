@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 2/14/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 818b6e5994a4f5b9d21d511f0a31eab6e00033f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012477"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548174"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Szkolenie modeli przy użyciu usługi Azure Machine Learning przy użyciu narzędzie do szacowania
 
@@ -59,7 +59,7 @@ Ten fragment kodu określa następujące parametry `Estimator` konstruktora.
 Parametr | Opis
 --|--
 `source_directory`| Katalog lokalny, który zawiera wszystkie wymagane na potrzeby zadania szkolenia kodu. Ten folder skopiowane z komputera lokalnego do zdalnego obliczeń 
-`script_params`| Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > par
+`script_params`| Określanie argumentów wiersza polecenia do skryptu szkolenia słownika `entry_script`, w postaci < argument wiersza polecenia, wartość > pary. Aby określić pełne flagi w `script_params`, użyj `<command-line argument, "">`.
 `compute_target`| Zdalne obliczeniowego elementu docelowego, uruchamianego skrypt szkolenia, w tym przypadku Azure obliczeniowego usługi Machine Learning ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) klastra. (Należy pamiętać, nawet jeśli AmlCompute klastra jest często używane docelowej, jest również można określić innych obliczeń typów docelowych, takich jak maszyny wirtualne platformy Azure lub na komputerze lokalnym nawet.)
 `entry_script`| FilePath (względem `source_directory`) skryptu szkolenia, należy uruchomić na zdalne zasoby obliczeniowe. Ten plik i wszelkie dodatkowe pliki, od których zależy, powinny się znajdować w tym folderze
 `conda_packages`| Lista pakietów języka Python, aby ją zainstalować za pomocą narzędzia conda, wymagane przez skrypt szkolenia.  

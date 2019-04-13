@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194686"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544944"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: Tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
 
@@ -45,6 +45,9 @@ Aby utworzyć gotową, działającą aplikację, musisz:
 1. Zarejestrować aplikację w usłudze Azure AD.
 2. Zainstalować bibliotekę ADAL i skonfigurować aplikację jednostronicową.
 3. Użyć biblioteki ADAL do zabezpieczenia stron w aplikacji jednostronicowej.
+
+> [!NOTE]
+> Jeśli musisz włączyć logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć  *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)*. Aby uzyskać więcej informacji, zobacz [w tym samouczku JavaScript SPA](tutorial-v2-javascript-spa.md) także [w tym artykule](active-directory-v2-limitations.md) wyjaśniających *punktu końcowego platformy tożsamości firmy Microsoft*. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -179,7 +182,7 @@ Biblioteka adal.js ułatwia dodanie typowych funkcji tożsamości do aplikacji. 
 
 Gotowy przykład (bez wartości konfiguracji) jest dostępny w repozytorium [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz teraz przejść do dodatkowych scenariuszy.
 

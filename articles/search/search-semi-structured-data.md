@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Indeksowanie danych o częściowej lub strutured w obiektach blob JSON — usługa Azure Search'
-description: Dowiedz się, jak na indeksowanie i wyszukiwanie częściowo ustrukturyzowane obiektów blob JSON platformy Azure przy użyciu usługi Azure Search i narzędzia Postman.
+description: Dowiedz się, jak na indeksowanie i wyszukiwanie częściowo ustrukturyzowane obiektów blob JSON platformy Azure przy użyciu interfejsów API REST usługi Azure Search i narzędzia Postman.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489231"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525351"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek dotyczący architektury REST: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
 Usługa Azure Search umożliwia indeksowanie dokumentów JSON i tablic w usłudze Azure blob storage przy użyciu [indeksatora](search-indexer-overview.md) który wie, jak odczytać danych z częściową strukturą. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między pozbawionych struktury danych, które muszą być w pełni indeksowane i formalnie struktury danych, która jest zgodna z modelem danych, takich jak schemat relacyjnej bazy danych, które mogą być indeksowane w poszczególnych pól.
 
@@ -59,9 +59,7 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, kliknij przycisk **obiektów blob**, a następnie kliknij przycisk **+ kontener**.
 
-1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Ponieważ będziesz używać klucza i magazynu nazwy konta dla połączenia, upewnij się, że poziom dostępu publicznego do kontenera jest ustawiony na "Kontener (anonimowy dostęp do odczytu dla kontenera.)".
-
-   ![Ustaw poziom dostępu publicznego](media/search-semi-structured-data/container-public-access-level.png "Ustaw poziom dostępu publicznego")
+1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
 
 1. Po utworzeniu kontenera otwórz go i wybierz **przekazywanie** na pasku poleceń.
 

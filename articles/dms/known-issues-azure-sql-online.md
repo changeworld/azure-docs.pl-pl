@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
-ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491394"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520754"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Znane problemy dotyczące/migracja ograniczeń dotyczących migracji online do usługi Azure SQL DB
 
@@ -31,11 +31,13 @@ Poniżej opisano znane problemy i ograniczenia związane z usługą online migra
 
 Jeśli źródłowej bazy danych składa się z co najmniej jedna tabela danych czasowych, migracji bazy danych nie powiodło się podczas operacji "pełne ładowanie danych" i może zostać wyświetlony następujący komunikat:
 
-{"resourceId": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Błąd migracji bazy danych", "errorEvents": "[" funkcje przechwytywania nie można ustawić. RetCode: SQL_ERROR SqlState: 42000 NativeError: Komunikat 13570: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] użycie replikacji nie jest obsługiwane w tabeli danych czasowych z systemową obsługą "[aplikacji. Miast] "wiersz: 1 Column: -1 "]" }
- 
+```
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+```
+
  ![Przykład błędów w tabeli danych czasowych](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Obejście**
+**Obejście problemu**
 
 1. Znajdź tabele danych czasowych w schemacie źródła przy użyciu poniższe zapytanie.
      ``` 
@@ -57,7 +59,7 @@ Może zostać wyświetlony sugerowanie "ntext jest niezgodny z hierarchyid" podc
      
 ![przykład błędy hierarchyid](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Obejście**
+**Obejście problemu**
 
 1. Znajdź tabel użytkownika, które zawierają kolumny z typem danych identyfikator hierarchii przy użyciu poniższe zapytanie.
 
@@ -71,7 +73,7 @@ Może zostać wyświetlony sugerowanie "ntext jest niezgodny z hierarchyid" podc
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Błędy migracji z różnych naruszenia integralności za pomocą wyzwalaczy active w schemacie podczas "pełne ładowanie danych" lub "Przyrostowa synchronizacja danych"
 
-**Obejście**
+**Obejście problemu**
 
 1. Znajdź wyzwalacze, które są aktualnie aktywne w źródłowej bazy danych przy użyciu poniższe zapytanie:
 
@@ -93,7 +95,7 @@ Jeśli długość kolumny duży obiekt (LOB) jest większy niż 32 KB, dane mog�
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Obejście**
+**Obejście problemu**
 
 Jeśli masz kolumną LOB, który jest większy niż 32 KB, skontaktuj się z zespołu inżynieryjnego w [poproś migracje baz danych Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
@@ -103,7 +105,7 @@ Jeśli masz kolumną LOB, który jest większy niż 32 KB, skontaktuj się z zes
 
 Usługa DMS nie migrować wartość sygnatury czasowej źródła; Zamiast tego usługa DMS generuje nową wartość sygnatury czasowej w tabeli docelowej.
 
-**Obejście**
+**Obejście problemu**
 
 Usługa DMS do migracji wartości dokładny znacznik czasu: przechowywane w tabeli źródłowej, należy skontaktować się z zespołu inżynieryjnego w [poproś migracje baz danych Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
@@ -115,7 +117,7 @@ Gdy trafisz na błędy migracji w widoku stanu Szczegóły bazy danych, wybieraj
 
 ![błędy migracji danych nie przykład szczegółów](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Obejście**
+**Obejście problemu**
 
 Aby przejść do szczegółów błąd, wykonaj poniższe kroki.
 

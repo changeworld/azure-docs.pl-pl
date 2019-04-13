@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104441"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523175"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -93,7 +93,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
     
     Aby utworzyć to połączenie pliku:
 
-   1. Wybierz **<New Connection...>** w ustawieniu FileConnection.
+   1. Wybierz  **\<nowe połączenie... >** w ustawieniu FileConnection.
    2. Ustaw **typu użycia** do **istniejący plik**i ustaw **pliku** do ścieżki pliku wszystkie istniejące pliki.
 
        ![Konfiguruj Kontener pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)

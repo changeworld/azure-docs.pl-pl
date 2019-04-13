@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: ecaabe0cf2e9e55bf02f8e12244d55fc2bef830b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359810"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549054"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -86,7 +86,7 @@ Różnymi przestrzeniami adresowymi<br/><br/> Następnym dostępnym adresem IP w
 **Sieć docelowa** | **Szczegóły**
 --- | ---
 Docelowa sieć jest siecią wirtualną w tryb failover | -Docelowy adres IP jest statyczna, ale nie jako ten sam adres IP zarezerwowane dla trybu failover.<br/><br/>  -Przypisanego adresu jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP jest 10.0.0.19 i trybu failover sieć używa zakresu 10.0.0.0/24, dalej adresu IP przypisanego do docelowej maszyny Wirtualnej jest 10.0.0.254.
-Sieć docelowa nie jest trybem failover sieci wirtualnej | -Docelowy adres IP będzie statycznych przy użyciu tego samego adresu IP dla trybu failover.<br/><br/>  -Jeśli ten sam adres IP jest już przypisany, adres IP jest kolejny dostępny w ramach każdego zakresu podsieci.<br/><br/> Na przykład: Jeśli źródło statyczny adres IP jest 10.0.0.19 i trybu failover znajduje się w sieci, która nie jest sieć trybu failover, to przy użyciu zakresu 10.0.0.0/24, statyczny adres IP docelowego będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.
+Sieć docelowa nie jest trybem failover sieci wirtualnej | -Docelowy adres IP będzie statycznych przy użyciu tego samego adresu IP dla trybu failover.<br/><br/>  -Jeśli ten sam adres IP jest już przypisany, adres IP jest dostępne na końcu zakresu podsieci kolejny.<br/><br/> Na przykład: Jeśli źródło statyczny adres IP jest 10.0.0.19 i trybu failover znajduje się w sieci, która nie jest sieć trybu failover, to przy użyciu zakresu 10.0.0.0/24, statyczny adres IP docelowego będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.
 
 - Przełączenie w tryb failover w sieci wirtualnej jest sieci docelowej, która została wybrana, podczas konfigurowania odzyskiwania po awarii.
 - Firma Microsoft zaleca, zawsze używać innych produkcyjnego środowiska sieciowego do testowania trybu failover.

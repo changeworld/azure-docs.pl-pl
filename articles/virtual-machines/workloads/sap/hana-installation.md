@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6c636366d494901a34078100290084298de686
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96acb2e7af797f2777cc751417f50eb21faa46da
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999825"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522558"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -151,8 +151,8 @@ Konwencje nazewnictwa woluminy magazynu są wymienione w poniższej tabeli:
 
 | Użycie magazynu | Nazwa instalacji | Nazwa woluminu | 
 | --- | --- | ---|
-| Dane oprogramowania HANA | /hana/data/SID/mnt0000<m> | Magazyn IP: / hana_data_SID_mnt00001_tenant_vol |
-| Dziennik HANA | /hana/log/SID/mnt0000<m> | Magazyn IP: / hana_log_SID_mnt00001_tenant_vol |
+| Dane oprogramowania HANA | /hana/data/SID/mnt0000\<m> | Magazyn IP: / hana_data_SID_mnt00001_tenant_vol |
+| Dziennik HANA | /Hana/log/SID/mnt0000\<m > | Magazyn IP: / hana_log_SID_mnt00001_tenant_vol |
 | Kopia zapasowa dziennika HANA | /Hana/log/Backups | Magazyn IP: / hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA udostępnione | /Hana/Shared/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/udostępnione |
 | usr/sap | /usr/sap/SID | Magazyn IP: / hana_shared_SID_mnt00001_tenant_vol/usr_sap |

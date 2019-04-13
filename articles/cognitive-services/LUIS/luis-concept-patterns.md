@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547422"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523107"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -31,7 +31,7 @@ Należy wziąć pod uwagę aplikacja zarządzania zasobami ludzkimi, zawierając
 |Kto jest podwładnym Tom firmy?|GetOrgChart|.30|
 |Kto jest podwładnym Tom?|GetOrgChart|.30|
 
-Jeśli aplikacja ma od 10 do 20 wypowiedzi o różnej długości zdania, inną kolejność słów i nawet innych wyrazów (synonimy "podrzędne", "manage", "raport"), LUIS, mogą zwracać współczynnik ufności niski. Tworzenie wzorca, aby pomóc zrozumieć znaczenie kolejność słów usługi LUIS. 
+Jeśli aplikacja ma od 10 do 20 wypowiedzi o różnej długości zdania, inną kolejność słów i nawet innych wyrazów (synonimy "podrzędne", "manage", "raport"), LUIS, mogą zwracać współczynnik ufności niski. Tworzenie wzorca pomagające zrozumieć znaczenie kolejność słów usługi LUIS. 
 
 Wzorce rozwiązać w następujących sytuacjach: 
 
@@ -41,7 +41,7 @@ Wzorce rozwiązać w następujących sytuacjach:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Wzorce nie są gwarancji intencji
 Wzorce używać różnych technologii prognozy. Ustawienie przeznaczenie wypowiedź szablonu we wzorcu nie jest gwarancja intencji prognozowania, ale jest silny sygnał. 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Wzorce poprawienia wykrywania maszyny do opanowania jednostki
 
@@ -50,7 +50,7 @@ Wzorzec jest przeznaczony głównie ułatwiające prognozowanie intencje i ról.
 Nie spodziewa się zobaczyć prognozowania ulepszone jednostki, czy zwijane wypowiedzi wiele do jednego wzorca. W przypadku prostych jednostek na uruchomienie należy dodawanie wypowiedzi lub korzystanie z listy jednostek else deseń nie zostanie wyzwolony.
 
 ## <a name="patterns-use-entity-roles"></a>Wzorce użycia ról jednostki
-Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców użycia jednostki [role](luis-concept-roles.md) można wyodrębnić informacje kontekstowe dotyczące jednostek. To jest odpowiednikiem hierarchiczne jednostki podrzędne, ale **tylko** dostępne we wzorcach. 
+Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców użycia jednostki [role](luis-concept-roles.md) można wyodrębnić informacje kontekstowe dotyczące jednostek.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Wyniki prognozowania z i bez wzorców
 Mając wystarczająco dużo wypowiedzi przykładu, LUIS będą mogli zwiększyć ufności prognoz bez wzorców. Wzorce zwiększyć współczynnik ufności bez konieczności podawania tyle wypowiedzi.  
@@ -83,7 +83,7 @@ Składnia wzorca obsługuje następującej składni:
 |to nowy formularz|pasuje do zewnętrznego opcjonalne słowo i — opcjonalnie wyrazów we wzorcu|
 |nowy formularz|tylko wyrazy dopasowania wymagane|
 
-**Grupowanie** składni z nawiasami, mogą być zagnieżdżone dwa poziomy. Na przykład: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Dzięki temu dowolnej z trzech jednostek do dopasowania. 
+**Grupowanie** składni z nawiasami, mogą być zagnieżdżone dwa poziomy. Na przykład: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ta funkcja umożliwia dowolnej z trzech jednostek do dopasowania. 
 
 Jeśli jednostki Entity1 to lokalizacja, z ról, takich jak pochodzenia (Seattle) i docelowy (Kair) i 2 jednostki jest nazwą budynku znane z obiektami listy (RedWest-C), następujące wypowiedzi mapującej do tego wzorca:
 
@@ -170,7 +170,7 @@ Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych
 |Wzorzec z opcjonalnym tekstem|Znaczenie|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` i `from {person}` są opcjonalne|
-|' Można prosić o [?]|Znak interpunkcyjny jest opcjonalna|
+|"Proszę [?] o pomoc | Znak interpunkcyjny jest opcjonalna|
 
 Znaki interpunkcyjne (`?`, `!`, `.`) mają być ignorowane i trzeba je przy użyciu składni nawias kwadratowy we wzorcach zignorować. 
 

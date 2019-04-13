@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: ac2edb4c12e95a915790c1fadfb2dcdcce554aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202711"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545577"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -46,8 +46,6 @@ Zarówno Hive i Pig można przekazać danych do aplikacji zewnętrznych do przet
 * __HDInsight opartych na systemie Linux__ klastrów przy użyciu [Mono (https://mono-project.com) ](https://mono-project.com) do uruchamiania aplikacji .NET. Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6.
 
     Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](https://www.mono-project.com/docs/about-mono/compatibility/).
-
-    Aby użyć określonej wersji platformy Mono, zobacz [Instalowanie lub aktualizowanie środowiska Mono](../hdinsight-hadoop-install-mono.md) dokumentu.
 
 * __HDInsight oparte na Windows__ klastry używają programu Microsoft .NET CLR do uruchamiania aplikacji .NET.
 
@@ -154,7 +152,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET framework i Mono d
 
 3. Zapisz **Program.cs**, a następnie Skompiluj projekt.
 
-## <a name="upload-to-storage"></a>Przekaż do magazynu
+## <a name="upload-to-storage"></a>Przekazywanie do magazynu
 
 1. W programie Visual Studio, otwórz **Eksploratora serwera**.
 

@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875190"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549733"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse IP
 
@@ -32,7 +32,7 @@ Microsoft Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Dat
 
 Oprócz reguły IP zarządza także zapory *reguł sieci wirtualnej*. Reguły sieci wirtualnej są oparte na punkty końcowe usługi sieci wirtualnej. Reguły sieci wirtualnej może być korzystniejsze IP reguł w niektórych przypadkach. Aby dowiedzieć się więcej, zobacz [punkty końcowe usługi sieci wirtualnej i zasad usługi Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Początkowo cały dostęp do serwera Azure SQL jest blokowany przez zaporę usługi SQL Database. Aby uzyskać dostęp do serwera bazy danych, należy określić co najmniej jeden reguły zapory IP poziom serwera, które umożliwiają dostęp do serwera Azure SQL. Użyj reguł zapory adresów IP, aby określić adresów IP pochodzących z Internetu są dozwolone i tego, czy aplikacje systemu Azure można spróbować połączyć się z serwerem Azure SQL.
 
@@ -249,6 +249,7 @@ Jeśli dostęp do usługi Microsoft Azure SQL Database nie działa zgodnie z ocz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Upewnij się, że w środowisku firmowym sieci umożliwia komunikacji przychodzącej z zakresów adresów IP zasobów obliczeniowych (w tym zakresy SQL) używane w centrach danych platformy Microsoft Azure. Może być konieczne do listy dozwolonych te adresy IP, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653)  
 - W przewodniku Szybki start dotyczące tworzenia reguły zapory poziomu serwera IP, zobacz [utworzyć bazę danych Azure SQL](sql-database-single-database-get-started.md).
 - Aby uzyskać pomoc podczas łączenia się z bazą danych Azure SQL z aplikacji innych firm lub aplikacji typu open source, zobacz [Client quick-start code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx) (Przykłady kodu umożliwiające szybki start dla klienta usługi SQL Database).
 - Aby uzyskać informacji na temat dodatkowych portów, które może być konieczne otwarcie, zobacz **bazy danych SQL: Poza programem vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)

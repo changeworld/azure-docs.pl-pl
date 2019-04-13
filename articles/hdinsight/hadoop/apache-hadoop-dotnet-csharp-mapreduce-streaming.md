@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 09b652b236e1fbe68d93298f0f8793854e411aad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0c3525b73560d3edee5bffa7a391fcedeaaa1e48
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095674"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545098"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -27,7 +27,7 @@ Przesyłanie strumieniowe Apache Hadoop to narzędzie, które umożliwia uruchom
 
 ## <a name="net-on-hdinsight"></a>.NET na HDInsight
 
-__HDInsight opartych na systemie Linux__ klastrów użyj [Mono (https://mono-project.com) ](https://mono-project.com) do uruchamiania aplikacji .NET. Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzyskać więcej informacji na wersję platformy Mono dołączone HDInsight, zobacz [wersje składników HDInsight](../hdinsight-component-versioning.md). Aby użyć określonej wersji platformy Mono, zobacz [Instalowanie lub aktualizowanie środowiska Mono](../hdinsight-hadoop-install-mono.md) dokumentu.
+__HDInsight opartych na systemie Linux__ klastrów użyj [Mono (https://mono-project.com) ](https://mono-project.com) do uruchamiania aplikacji .NET. Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzyskać więcej informacji na wersję platformy Mono dołączone HDInsight, zobacz [wersje składników HDInsight](../hdinsight-component-versioning.md). 
 
 Aby uzyskać więcej informacji na temat zgodności platformy Mono z wersji systemu .NET Framework, zobacz [zgodności platformy Mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -143,7 +143,7 @@ namespace reducer
 
 Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe` pliku w katalogu projektu.
 
-## <a name="upload-to-storage"></a>Przekaż do magazynu
+## <a name="upload-to-storage"></a>Przekazywanie do magazynu
 
 1. W programie Visual Studio, otwórz **Eksploratora serwera**.
 

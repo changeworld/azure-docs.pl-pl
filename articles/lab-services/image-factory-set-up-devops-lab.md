@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 62cb8222b592660f2e7ab32d438fd4073246ee50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5a3d6e51a71f6aab742fe042d6e6e281192319a4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439909"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523022"
 ---
-# <a name="run-an-image-factory-from-azure-devops"></a>Uruchom fabrykę obrazu z DevOps platformy Azure
+# <a name="run-an-image-factory-from-azure-devops"></a>Uruchamianie fabryki obrazów z usługi Azure DevOps
 W tym artykule opisano wszystkie czynności, które są potrzebne do uruchomienia fabrycznie obrazu z DevOps platformy Azure (dawniej Visual Studio Team Services).
 
 > [!NOTE]
@@ -44,12 +44,12 @@ DevOps platformy Azure umożliwiają przechowywanie kodu źródłowego, uruchami
 
 Jeśli masz istniejące konto DevOps lub projektu, którego chcesz użyć, Pomiń ten krok.
 
-Aby rozpocząć, Utwórz bezpłatne konto w DevOps platformy Azure. Odwiedź stronę https://www.visualstudio.com/ i wybierz **Rozpocznij za darmo** tuż poniżej **DevOps platformy Azure** (dawniej VSTS). Należy wybrać unikatową nazwę konta i upewnij się, że chce zarządzać kodem przy użyciu narzędzia Git. Po utworzeniu, Zapisz adres URL do projektu zespołowego. Poniżej przedstawiono przykładowy adres URL: https://<accountname>.visualstudio.com/MyFirstProject.
+Aby rozpocząć, Utwórz bezpłatne konto w DevOps platformy Azure. Odwiedź stronę https://www.visualstudio.com/ i wybierz **Rozpocznij za darmo** tuż poniżej **DevOps platformy Azure** (dawniej VSTS). Należy wybrać unikatową nazwę konta i upewnij się, że chce zarządzać kodem przy użyciu narzędzia Git. Po utworzeniu, Zapisz adres URL do projektu zespołowego. Poniżej przedstawiono przykładowy adres URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
 ## <a name="check-in-the-image-factory-to-git"></a>Sprawdź w fabryce obrazu do usługi Git
 Wszystkie środowiska PowerShell, szablony i konfiguracji fabryki obrazu znajdują się w [publicznego repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory). Najszybszym sposobem uzyskania kodu do nowego projektu zespołowego jest importowanie repozytorium. Spowoduje to pobranie całego repozytorium w usłudze DevTest Labs (dzięki czemu zapewnisz sobie dodatkowych dokumentację i przykłady). 
 
-1. Odwiedź stronę projektu DevOps platformy Azure, który został utworzony w poprzednim kroku (adres URL wygląda **https://<accountname>.visualstudio.com/MyFirstProject**).
+1. Odwiedź stronę projektu DevOps platformy Azure, który został utworzony w poprzednim kroku (adres URL wygląda **https:\//\<accountname >.visualstudio.com/MyFirstProject**).
 2. Wybierz **zaimportować repozytorium**.
 3. Wprowadź **adres URL klonowania** dla repozytorium usługi DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
 4. Wybierz **importu**.

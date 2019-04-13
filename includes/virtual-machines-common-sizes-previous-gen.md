@@ -5,59 +5,25 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964242"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59550148"
 ---
-Ten artykuł zawiera informacje dotyczące poprzednie generacje rozmiarów maszyn wirtualnych. Nadal można korzystać z tych rozmiarów, ale są dostępne nowsze generacji.
+Ta sekcja zawiera informacje dotyczące poprzednie generacje rozmiarów maszyn wirtualnych. Nadal można korzystać z tych rozmiarów, ale są dostępne nowsze generacji. 
 
+## <a name="f-series"></a>Seria F
 
-## <a name="ds-series"></a>Seria DS
+Seria F jest oparta na procesorze Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz, który dzięki technologii Intel Turbo Boost 2.0 może osiągnąć prędkość zegara do 3,1 GHz. Wydajność procesora CPU jest taka sama jak w przypadku maszyn wirtualnych serii Dv2.  
 
-ACU: 160-250 <sup>1</sup>
+Maszyny wirtualne z serii F są doskonałym wyborem dla obciążeń wymagających szybszych procesorów CPU, ale nie potrzebujących tak dużej ilości pamięci lub magazynu tymczasowego na każdy procesor wirtualny vCPU.  Z wartości serii F skorzystają obciążenia takie jak analizy, serwery gier, serwery sieci Web i przetwarzanie wsadowe.
 
-Magazyn w warstwie Premium:  Obsługiwane
-
-Buforowanie Premium Storage:  Obsługiwane
-
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_DS1 |1 |3,5 |7 |4 |4000 / 32 (43) |3200 / 32 |2 / 500 |
-| Standardowa_DS2 |2 |7 |14 |8 |8000 / 64 (86) |6400 / 64 |2 / 1000 |
-| Standardowa_DS3 |4 |14 |28 |16 |16 000 / 128 (172) |12 800 / 128 |4 / 2000 |
-| Standardowa_DS4 |8 |28 |56 |32 |32 000 / 256 (344) |25 600 / 256 |8 / 4000 |
-
-<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
-
-## <a name="ds-series---memory-optimized"></a>Seria DS — zoptymalizowane pod kątem pamięci
-
-ACU: 160-250 <sup>1,2</sup>
-
-Magazyn w warstwie Premium:  Obsługiwane
-
-Buforowanie Premium Storage:  Obsługiwane
-
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysków bez buforowania: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_DS11 |2 |14 |28 |8 |8000 / 64 (72) |6400 / 64 |2 / 1000 |
-| Standardowa_DS12 |4 |28 |56 |16 |16 000 / 128 (144) |12 800 / 128 |4 / 2000 |
-| Standardowa_DS13 |8 |56 |112 |32 |32 000 / 256 (288) |25 600 / 256 |8 / 4000 |
-| Standardowa_DS14 |16 |112 |224 |64 |64 000 / 512 (576) |51 200 / 512 |8 / 8000 |
-
-<sup>1</sup> maksymalna przepływność dysków (na SEKUNDĘ lub MB/s) możliwa dla maszyny Wirtualnej serii DS może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać więcej informacji, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>2</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-
-## <a name="d-series"></a>Seria D 
-
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
 Magazyn w warstwie Premium:  Nieobsługiwane
 
@@ -65,101 +31,63 @@ Buforowanie Premium Storage:  Nieobsługiwane
 
 | Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_D1  | 1         | 3,5         | 50             | 3000 / 46 / 23                                           | 4 / 4 x 500                         | 2 / 500                 |
-| Standardowa_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1000                     |
-| Standardowa_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 2000                     |
-| Standardowa_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 4000                     |
+| Standardowa_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4 x 500                         | 2 / 750                 |
+| Standardowa_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1500                     |
+| Standardowa_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
+| Standardowa_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
+| Standardowa_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000           |
 
-<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
+## <a name="fs-series-sup1sup"></a>Seria FS <sup>1</sup>
 
-## <a name="d-series---memory-optimized"></a>Seria D — zoptymalizowane pod kątem pamięci
+Seria Fs ma magazyn w warstwie Premium i wszystkie zalety serii F.
 
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
-Magazyn w warstwie Premium:  Nieobsługiwane
+Magazyn w warstwie Premium:  Obsługiwane
 
-Buforowanie Premium Storage:  Nieobsługiwane
+Buforowanie Premium Storage:  Obsługiwane
 
-| Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1000                     |
-| Standardowa_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 2000                     |
-| Standardowa_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 4000                     |
-| Standardowa_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MBps | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standardowa_F1s |1 |2 |4 |4 |4000 / 32 (12) |3200 / 48 |2 / 750 |
+| Standardowa_F2s |2 |4 |8 |8 |8000 / 64 (24) |6400 / 96 |2 / 1500 |
+| Standardowa_F4s |4 |8 |16 |16 |16 000 / 128 (48) |12 800 / 192 |4 / 3000 |
+| Standardowa_F8s |8 |16 |32 |32 |32 000 / 256 (96) |25 600 / 384 |8 / 6000 |
+| Standardowa_F16s |16 |32 |64 |64 |64 000 / 512 (192) |51 200 / 768 |8 / 12000 |
 
-<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
-<br>
+MB/s = 10^6 bajtów na sekundę, GiB = 1024^3 bajtów.
 
-## <a name="a-series---compute-intensive-instances"></a>Seria A — wystąpienia intensywnie korzystające z mocy obliczeniowej
+<sup>1</sup> maksymalna przepływność dysków (na SEKUNDĘ lub MB/s) możliwa dla maszyny Wirtualnej serii Fs może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać więcej informacji, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-ACU: 225
+## <a name="ls-series"></a>Seria Ls
 
-Magazyn w warstwie Premium:  Nieobsługiwane
+Maszyny wirtualne serii Ls oferują do 32 procesorów wirtualnych vCPU — procesor [Intel® Xeon® z rodziny E5 v3](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Wydajność procesora CPU dla serii Ls jest taka sama jak w przypadku maszyn wirtualnych serii G/GS. Na procesor wirtualny vCPU przypada pamięć o pojemności 8 GiB.
 
-Buforowanie Premium Storage:  Nieobsługiwane
+Seria Ls nie obsługuje tworzenia lokalnej pamięci podręcznej w celu zwiększenia operacje We/Wy osiągalna dysków danych trwałych. Wysoka przepływność i operacje We/Wy dysku lokalnego sprawia, że maszyny wirtualne z serii Ls idealnym rozwiązaniem dla magazynów NoSQL, takie jak bazy danych Apache Cassandra i bazy danych MongoDB, które replikowanie danych między wieloma maszynami wirtualnymi do osiągnięcia trwałości w przypadku awarii jednej maszyny Wirtualnej.
 
-Rozmiary A8–A11 i serii H są również nazywane *wystąpieniami intensywnie korzystającymi z mocy obliczeniowej*. Sprzęt, na którym działają te rozmiary maszyn wirtualnych, został zaprojektowany i zoptymalizowany pod kątem aplikacji intensywnie korzystających z mocy obliczeniowej i sieci, w tym aplikacji klastrów obliczeń o wysokiej wydajności, modelowania i symulacji. Maszyny wirtualne serii A8–A11 korzystają z procesorów Intel Xeon E5-2670 o częstotliwości 2,6 GHz, a seria H korzysta z procesorów Intel Xeon E5-2667 v3 o częstotliwości 3,2 GHz.  
+ACU: 180-240
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (HDD): GiB | Maks. liczba dysków danych | Maksymalna przepływność dysków danych: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych|
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32 x 500 |2 |
-| Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64x500 |4 |
-| Standardowa_A10 |8 |56 |382 |32 |32 x 500 |2  |
-| Standardowa_A11 |16 |112 |382 |64 |64x500 |4 |
-
-<sup>1</sup>w przypadku aplikacji MPI dedykowana sieć zaplecza RDMA jest włączane przez sieć FDR InfiniBand, która zapewnia bardzo ultraniskie opóźnienia i wysoką przepustowość.
-
-<br>
-
-## <a name="a-series"></a>Seria A
-
-ACU: 50-100
-
-Magazyn w warstwie Premium:  Nieobsługiwane
+Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
+ 
+| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Magazynu tymczasowego (GiB) | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego (na SEKUNDĘ / MB/s) | Maksymalna przepływność niebuforowanych dysków (na SEKUNDĘ / MB/s) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standardowa_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5000 / 125  | 2 / 4,000  | 
+| Standardowa_L8s   | 8  | 64  | 1,388 | 32 | 40,000 / 400 | 10 000 / 250 | 4 / 8,000  | 
+| Standardowa_L16s  | 16 | 128 | 2,807 | 64 | 80,000 / 800 | 20 000 / 500 | 8 / 16,000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40 000 / 1000     | 8 / 20,000 | 
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (HDD): GiB | Maks. liczba dysków danych | Maksymalna przepływność dysków danych: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0,768 |20 |1 |1 x 500 |2 / 100 |
-| Standardowa_A1 |1 |1,75 |70 |2 |2 x 500 |2 / 500  |
-| Standardowa_A2 |2 |3,5 |135 |4 |4 x 500 |2 / 500 |
-| Standardowa_A3 |4 |7 |285 |8 |8 x 500 |2 / 1000 |
-| Standardowa_A4 |8 |14 |605 |16 |16 x 500 |4 / 2000 |
-| Standardowa_A5 |2 |14 |135 |4 |4 x 500 |2 / 500 |
-| Standardowa_A6 |4 |28 |285 |8 |8 x 500 |2 / 1000 |
-| Standardowa_A7 |8 |56 |605 |16 |16 x 500 |4 / 2000 |
+Maksymalna przepływność dysków możliwa przy użyciu maszyn wirtualnych serii Ls może być ograniczona przez liczbę, rozmiar i rozłożenie wszelkich dołączonych dysków. Aby uzyskać więcej informacji, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-<br>
-
-<sup>1</sup> rozmiar A0 jest nadmiernie subskrybowany na sprzęcie fizycznym. Tylko w przypadku tego konkretnego rozmiaru inne wdrożenia klienta mogą mieć wpływ na wydajność uruchomionego obciążenia. Wydajność względna jest przedstawiona poniżej jako oczekiwana linia bazowa, podlegająca przybliżonej zmienności w granicach 15 procent.
+<sup>1</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standardowa_A0–A4 w przypadku używania interfejsu wiersza polecenia i programu PowerShell
 
 W klasycznym modelu wdrażania niektóre nazwy rozmiarów maszyny wirtualnej są nieco inne w interfejsie wiersza polecenia i programie PowerShell:
 
-* Standardowa_A0 = Bardzo mała 
+* Standardowa_A0 = Bardzo mała
 * Standardowa_A1 = Mała
 * Standardowa_A2 = Średnia
 * Standardowa_A3 = Duża
 * Standardowa_A4 = Bardzo duża
-
-## <a name="basic-a"></a>Podstawowa A
-
-Magazyn w warstwie Premium:  Nieobsługiwane
-
-Buforowanie Premium Storage:  Nieobsługiwane
-
-Rozmiary warstwy Podstawowa są przeznaczone głównie dla obciążeń związanych z tworzeniem aplikacji i innych aplikacji, które nie wymagają równoważenia obciążenia, automatycznego skalowania ani maszyn wirtualnych korzystających z dużej ilości pamięci.
-
-|Rozmiar — rozmiar\nazwa | Procesor wirtualny |Memory (Pamięć)|Karty sieciowe (maks.)|Maksymalny rozmiar dysku tymczasowego |Maksymalnie z dyski z danymi (1023 GB każdy)|Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk)|
-|---|---|---|---|---|---|---|
-|A0\Podstawowa_A0|1|768 MB|2| 20 GB|1|1x300|
-|A1\Podstawowa_A1|1|1,75 GB|2| 40 GB |2|2x300|
-|A2\Podstawowa_A2|2|3,5 GB|2| 60 GB|4|4x300|
-|A3\Podstawowa_A3|4|7 GB|2| 120 GB |8|8x300|
-|A4\Podstawowa_A4|8|14 GB|2| 240 GB |16|16x300|
- 
-
-

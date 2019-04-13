@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106903"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548750"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -44,14 +44,15 @@ Przed przystąpieniem do kopiowania danych na dyskach, należy przejrzeć nastę
 - Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md).
 - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 
-Jeśli określono dysków zarządzanych w kolejności, przejrzyj następujące dodatkowe kwestie:
+   > [!IMPORTANT]
+   >  Jeśli wybrano dysków zarządzanych jako miejsca docelowe magazynu podczas tworzenia zamówienie dotyczy poniższej sekcji.
 
 - Użytkownik może mieć tylko jeden dysk zarządzany o określonej nazwie w grupie zasobów we wszystkich folderach precreated i we wszystkich dysku Data Box. Oznacza to, że wirtualne dyski twarde przekazany do folderów precreated powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa jest niezgodna już istniejącego dysku zarządzanego w grupie zasobów. Jeśli wirtualne dyski twarde mają takie same nazwy, tylko jeden wirtualny dysk twardy jest konwertowany na dysk zarządzany o tej nazwie. Inne dyski VHD są ładowane jako stronicowe obiekty BLOB konta magazynu przejściowego.
 - Zawsze Kopiuj wirtualne dyski twarde do jednego z precreated folderów. W przypadku kopiowania wirtualnych dysków twardych poza te foldery lub w folderze, który został utworzony, wirtualne dyski twarde są przekazywane do konta usługi Azure Storage jako stronicowe obiekty BLOB i dyski zarządzane nie.
 - Do utworzenia dysków zarządzanych można przekazać tylko stałych dysków VHD. Dynamicznych wirtualnych dysków twardych, różnicowych wirtualnych dysków twardych lub dysk VHDX pliki nie są obsługiwane.
 
 
-Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
+## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
 
 1. Wyświetl zawartość odblokowanego dysku. Lista precreated foldery i podfoldery w stacji różni się w zależności od opcji wybranych podczas umieszczania zamówienie dysku Data Box.
 
@@ -91,12 +92,12 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     |Element docelowy       | Określa ścieżkę do katalogu docelowego.        |
     |/E                  | Kopiuje podkatalogi, włącznie z pustymi katalogami. |
     |/MT[:N]             | Tworzy kopie wielowątkowe zawierające N wątków, gdzie N to liczba całkowita od 1 do 128. <br>Domyślna wartość N to 8.        |
-    |/R: <N>             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
-    |/W: <N>             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
+    |/R: \<N>             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
+    |/W: \<N>             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
     |/NFL                | Określa, że nazwy plików nie mają być rejestrowane w dzienniku.        |
     |/NDL                | Określa, że nazwy katalogów nie mają być rejestrowane w dzienniku.        |
     |/FFT                | Zakłada czas plików w formacie FAT (dokładność do dwóch sekund).        |
-    |/Log:<Log File>     | Zapisuje dane wyjściowe stanu w pliku dziennika (zastępuje istniejący plik dziennika).         |
+    |/ Log:\<pliku dziennika >     | Zapisuje dane wyjściowe stanu w pliku dziennika (zastępuje istniejący plik dziennika).         |
 
     Można użyć równolegle wielu dysków, uruchamiając wiele zadań na każdym z nich.
 
@@ -222,7 +223,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
  
 7. Otwórz okno wiersza polecenia. 
 
-8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Type
+8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 

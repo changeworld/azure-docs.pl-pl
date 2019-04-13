@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541217"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523719"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
@@ -321,7 +321,7 @@ W pewnych okolicznościach może się okazać aspekt liczby nie są zgodne z zes
 
 Liczba reguł może być niedokładny ze względu na architecture dzielenie na fragmenty. Każdy indeks wyszukiwania ma wiele fragmentów i każdy fragment raporty najważniejsze aspekty N, liczby dokumentów, które następnie są łączone w pojedynczy wynik. Jeśli niektóre fragmenty ma wiele pasujących wartości, podczas gdy inne osoby będą mieć mniej, może się okazać że niektóre wartości aspektu brakuje lub w obszarze zliczane w wynikach.
 
-Mimo że to zachowanie można zmienić w dowolnym momencie, jeśli wystąpi ten problem już dziś, można obejść go przez sztucznie pompowania liczba:<number> do dużej liczby, aby wymusić pełną raportowania z każdego fragmentu. Jeśli wartość licznika: jest większe niż lub równa liczbie unikatowych wartości w polu, masz gwarancję dokładne wyniki. Jednak w przypadku wysokiej liczbie dokumentów jest spadek wydajności, więc rozsądnie Użyj tej opcji.
+Mimo że to zachowanie można zmienić w dowolnym momencie, jeśli wystąpi ten problem już dziś, można obejść go przez sztucznie pompowania liczba:\<numer > do dużej liczby, aby wymusić pełną raportowania z każdego fragmentu. Jeśli wartość licznika: jest większe niż lub równa liczbie unikatowych wartości w polu, masz gwarancję dokładne wyniki. Jednak w przypadku wysokiej liczbie dokumentów jest spadek wydajności, więc rozsądnie Użyj tej opcji.
 
 ### <a name="user-interface-tips"></a>Wskazówki dotyczące interfejsu użytkownika
 **Dodaj etykiety dla każdego pola w nawigacji zestawu reguł**

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d49a6f88f3475359a74be74bf528fb5699dce632
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 573e6ea857ef17a6160f7e03f52f9c64f903530a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860656"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546630"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -106,7 +106,7 @@ Określa repozytorium lub dostawca magazynu kluczy. Obecnie obsługiwane repozyt
 
 ## <a name="functionappeditmode"></a>FUNKCJA\_APLIKACJI\_EDYTUJ\_TRYB
 
-Prawidłowe wartości to "readwrite" i "readonly".
+Określa, czy włączono edycji w witrynie Azure portal. Prawidłowe wartości to "readwrite" i "readonly".
 
 |Klucz|Wartość przykładowa|
 |---|------------|

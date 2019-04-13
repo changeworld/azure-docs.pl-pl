@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885574"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545335"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 
@@ -152,7 +152,6 @@ HDInsight zapewnia skrypty dopasowane do zainstalowania następujących składni
 | Zainstaluj skrypt Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobacz [instalacji i używania środowiska Presto na HDInsight opartych na usłudze Hadoop clusters](hdinsight-hadoop-install-presto.md). |
 | Zainstaluj program Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobacz [zainstalować system Giraph Apache na HDInsight Hadoop clusters](hdinsight-hadoop-giraph-install-linux.md). |
 | Wstępne ładowanie bibliotek technologii Hive |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobacz [Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
-| Instalowanie lub aktualizowanie środowiska Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`. Zobacz [Instalowanie lub aktualizowanie środowiska Mono na HDInsight](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Za pomocą akcji skryptu, podczas tworzenia klastra
 

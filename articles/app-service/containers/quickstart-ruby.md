@@ -4,8 +4,8 @@ description: Informacje na temat tworzenia aplikacji Ruby on Rails w usłudze Ap
 keywords: usługa azure app, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: cfowler
+author: cephalin
+manager: jeconnoc
 editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870439"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545149"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Informacje na temat tworzenia aplikacji Ruby on Rails w usłudze App Service w systemie Linux
 
 Usługa [Azure App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten przewodnik szybkiego startu pokazuje, jak utworzyć podstawową aplikację [Ruby on Rails](https://rubyonrails.org/), którą można wdrożyć na platformie Azure jako aplikację internetową w systemie Linux.
 
 > [!NOTE]
-> Obecnie stos programistyczny Ruby obsługuje jedynie aplikację Ruby on Rails. Jeśli chcesz użyć innej platformy, np. Sinatra, lub [nieobsługiwanej wersji środowiska Ruby](app-service-linux-intro.md), zobacz przewodnik Szybki start dla [funkcji Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
+> Obecnie stos programistyczny Ruby obsługuje jedynie aplikację Ruby on Rails. Jeśli chcesz użyć innej platformy, takie jak Sinatra, lub jeśli chcesz użyć [nieobsługiwana wersja środowiska Ruby](app-service-linux-intro.md), musisz [ją uruchomić w kontener niestandardowy](quickstart-docker-go.md).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -136,7 +136,10 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Środowisko Ruby on Rails z bazą danych Postgres](tutorial-ruby-postgres-app.md)
+> [Samouczek: Ruby on Rails z Postgres](tutorial-ruby-postgres-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie aplikacji języka Ruby](configure-language-ruby.md)

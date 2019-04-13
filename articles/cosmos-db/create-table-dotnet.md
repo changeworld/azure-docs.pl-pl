@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 7ca51b176c17f33b4779a0129c5dc57b220c0097
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877636"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544198"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji interfejsu API za pomocą zestawu SDK platformy .NET i usługi Azure Cosmos DB tabeli 
 
@@ -65,9 +65,6 @@ Teraz sklonujemy aplikację Tabela z serwisu GitHub, ustawimy parametry połącz
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
-   > [!NOTE]
-   > Przykład standardowy .NET opisane w tym dokumencie współpracuje z interfejsu API tabeli usługi Azure Cosmos DB i Azure Table Storage. Jeśli interesuje Cię uruchomieniem przykładu, który współdziała z .NET Framework 4.5, zobacz [magazynu table-dotnet-getting-started](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) próbki. 
-
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Otwieranie przykładowej aplikacji w programie Visual Studio
 
@@ -94,7 +91,6 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
       "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
-   Jeśli używasz [.NET Framework](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) próbki, należy zaktualizować parametry połączenia, który znajduje się w **App.config** pliku.
 
 4. Naciśnij klawisze CTRL + S umożliwia zapisanie **Settings.json** pliku.
 
@@ -107,9 +103,6 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
    ![Zarządzanie pakietami NuGet](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
 2. W pakiecie NuGet **Przeglądaj** wpisz Microsoft.Azure.Cosmos.Table. Spowoduje to wyszukanie biblioteki klienta interfejsu API tabeli usługi Cosmos DB. Należy pamiętać, że ta biblioteka jest obecnie dostępna dla środowiska .NET Framework i .NET Standard. 
-
-   > [!NOTE]
-   > Jeśli używasz przykładów, które korzysta z .NET Framework, należy zainstalować *Microsoft.Azure.CosmosDB.Table*, pakiet NuGet. Jeśli używasz przykładowych .NET Framework za pomocą usługi Azure Table Storage, oprócz określonego pakietu NuGet usługi Cosmos DB możesz również wymagać *Microsoft.Azure.Storage.Common* pakietu NuGet. 
    
    ![Karta Przeglądaj pakietu NuGet](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

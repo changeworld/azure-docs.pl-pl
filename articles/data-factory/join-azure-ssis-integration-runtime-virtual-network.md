@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107801"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526677"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -135,9 +135,9 @@ Zobacz [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/sc
 
 ### <a name="resource-group"></a> Wymagania dotyczące grupy zasobów
 -   Azure-SSIS IR potrzebne do utworzenia niektórych zasobów sieciowych w ramach tej samej grupie zasobów co sieć wirtualna. Te zasoby obejmują następujące czynności:
-    -   Usługa Azure load balancer o nazwie  *<Guid>cloudserviceloadbalancer - azurebatch*.
-    -   Usługa Azure publiczny adres IP, o nazwie  *<Guid>cloudservicepublicip - azurebatch*.
-    -   Grupę zabezpieczeń sieci pracy o nazwie  *<Guid>cloudservicenetworksecuritygroup - azurebatch*. 
+    -   Usługa Azure load balancer o nazwie  *\<Guid > - azurebatch - cloudserviceloadbalancer*.
+    -   Azure publiczny adres IP, nazwą  *\<Guid > - azurebatch - cloudservicepublicip*.
+    -   Grupę zabezpieczeń sieci pracy o nazwie  *\<Guid > - azurebatch - cloudservicenetworksecuritygroup*. 
 
 -   Upewnij się, że nie masz żadnej blokady zasobu, grupy zasobów lub subskrypcji, do którego należy sieć wirtualna. Jeśli skonfigurujesz blokadę tylko do odczytu lub blokadę usuwania, uruchamianie i zatrzymywanie środowiska IR może zakończyć się niepowodzeniem lub zawieszeniu. 
 

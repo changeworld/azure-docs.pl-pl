@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 3b7ceb07fe874ebc012696f73c21d5c270cb3cee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268997"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524076"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu usługi Resource Manager
 
@@ -37,14 +37,14 @@ Oto kopię szablonu:
 
 1. Wybierz poniższy obraz, aby zalogować się do witryny Azure portal i otworzyć szablon:
 
-   [![Deploy szablonu zasad na platformie Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![Wdrażanie szablonu zasad na platformie Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Wybierz lub wprowadź następujące wartości:
 
    | Name (Nazwa) | Wartość |
    |------|-------|
    | Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
-   | Grupa zasobów | Wybierz **Utwórz nową**, określ nazwę, a następnie wybierz **OK**. Na zrzucie ekranu Nazwa grupy zasobów jest *mypolicyquickstart<Date in MMDD>rg*. |
+   | Grupa zasobów | Wybierz **Utwórz nową**, określ nazwę, a następnie wybierz **OK**. Na zrzucie ekranu Nazwa grupy zasobów jest *mypolicyquickstart\<datę w MMDD > rg*. |
    | Lokalizacja | Wybierz region. Na przykład **Środkowe stany USA**. |
    | Nazwa przypisania zasad | Określ nazwę przypisania zasad. Jeśli chcesz, możesz użyć wyświetlanie definicji zasad. Na przykład **inspekcji maszyn wirtualnych, które nie korzystają z dysków zarządzanych**. |
    | Nazwa RG | Określ nazwę grupy zasobów, której chcesz przypisać zasady. W tym przewodniku Szybki Start, użyj wartości domyślnej **[resourceGroup () .name]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  jest funkcją szablonu, która pobiera grupy zasobów. |

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 1bc8dc822622ee7b16b3e0a31e7b0b66ed7556e6
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488409"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544062"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP lub WAR
 
@@ -73,13 +73,23 @@ Upewnij się, że Twoja wersja interfejsu wiersza polecenia platformy Azure zost
 
 Wdróż przekazany plik ZIP do aplikacji sieci web za pomocą [az webapp wdrożenia źródła konfiguracji zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) polecenia.  
 
-Poniższy przykład służy do wdrażania pliku ZIP, który został przekazany. Korzystając z lokalnej instalacji wiersza polecenia platformy Azure, określ ścieżkę do lokalnego pliku ZIP dla `--src`.   
+Poniższy przykład służy do wdrażania pliku ZIP, który został przekazany. Korzystając z lokalnej instalacji wiersza polecenia platformy Azure, określ ścieżkę do lokalnego pliku ZIP dla `--src`.
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
-To polecenie wdraża pliki i katalogi z pliku ZIP do domyślnego folderu aplikacji App Service (`\home\site\wwwroot`) i ponownie uruchamia aplikację. Jeśli został skonfigurowany jakikolwiek dodatkowy niestandardowy proces kompilacji, również zostanie uruchomiony. Więcej informacji zawiera [dokumentacja aparatu Kudu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+To polecenie wdraża pliki i katalogi z pliku ZIP do domyślnego folderu aplikacji App Service (`\home\site\wwwroot`) i ponownie uruchamia aplikację.
+
+Domyślnie aparat wdrażania zakłada, że plik ZIP jest gotowy do uruchamiania jako — jest i nie zostanie uruchomiona wszelkich zautomatyzowanych programowych działań kompilacji. Umożliwiające automatyzację, podobnie jak w taki sam kompilacji [wdrożenie Git](deploy-local-git.md)ustaw `SCM_DO_BUILD_DURING_DEPLOYMENT` ustawienia aplikacji, uruchamiając następujące polecenie w [Cloud Shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+```
+
+
+
+Więcej informacji zawiera [dokumentacja aparatu Kudu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
 

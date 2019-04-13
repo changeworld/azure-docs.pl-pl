@@ -1,6 +1,6 @@
 ---
-title: Kompilowanie aplikacji Node.js przy użyciu bazy danych MongoDB — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację środowiska Node.js działającą na platformie Azure z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB.
+title: Node.js (MEAN.js) z bazą danych MongoDB — usługa Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uruchomić aplikację środowiska Node.js działającą na platformie Azure z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. MEAN.js jest używany w tym samouczku.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f123a443d9a00aa7f1b35bd8ed540f90d66de97f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891828"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548129"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Samouczek: tworzenie aplikacji środowiska Node.js i usługi MongoDB na platformie Azure
 

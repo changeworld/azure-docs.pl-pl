@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ac10f1f1c6336098afc2abd2b8f720cedfb6f579
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489728"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548939"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -151,9 +151,9 @@ Wszystkie węzły, które zainstalowano na nich agenta są wyświetlane na **wę
 
 Konfigurowanie funkcji, które mają:
 
-- [Monitorowanie wydajności](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitorowanie łączności usług](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md#configuration)
+- [Monitor wydajności](network-performance-monitor-performance-monitor.md#configuration)
+- [Monitor łączności usługi](network-performance-monitor-performance-monitor.md#configuration)
+- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -251,13 +251,13 @@ Rozwiązanie Network Performance Monitor korzysta z możliwości alertów [usłu
 
 Oznacza to, że wszystkie powiadomienia są zarządzane przy użyciu [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem LAzure Monitor: 
-1. Zostanie wyświetlony link, do którego nastąpi przekierowanie do witryny Azure Portal. Kliknij go, aby uzyskać dostęp do portalu.
+Jeśli jesteś użytkownikiem NPM tworzenia alertu za pomocą usługi Log Analytics: 
+1. Zostanie wyświetlony link, do którego nastąpi przekierowanie do witryny Azure portal. Kliknij go, aby uzyskać dostęp do portalu.
 2. Kliknij Kafelek rozwiązania Network Performance Monitor. 
 3. Przejdź do skonfigurowania.  
 4. Wybierz test, aby utworzyć alertu dla i postępuj zgodnie z wymienione poniżej kroki.
 
-Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azure Portal:  
+Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azure portal:  
 1. Użytkownik może wprowadzić swój adres e-mail, bezpośrednio lub możesz utworzyć alerty w wiadomościach grup akcji.
 2. Jeśli zdecydujesz się bezpośrednio wprowadź swój adres e-mail, akcji grupy o nazwie **NPM Email ActionGroup** jest tworzony i identyfikator poczty e-mail zostanie dodany do tej grupy akcji.
 3. Jeśli zdecydujesz się użyć grup akcji, należy wybrać grupy akcji utworzone wcześniej. Możesz dowiedzieć się, jak utworzyć grupy akcji [tutaj.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 

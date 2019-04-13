@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
-ms.author: sachinp
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/11/2019
+ms.openlocfilehash: a5fbc58feea8779ba8a7a61dfc89158e20bd2c92
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075189"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544294"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database za pomocą witryny Azure Portal
 
@@ -34,51 +34,62 @@ Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci,
 Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works LT:
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
-2. Wybierz pozycję **Bazy danych**, a następnie wybierz opcję **SQL Database**.
-3. W formularzu **Utwórz bazę danych SQL Database** wpisz lub wybierz następujące wartości:
+2. Wybierz **baz danych** , a następnie wybierz **bazy danych SQL** otworzyć **tworzenie bazy danych SQL** strony. 
 
-   - **Nazwa bazy danych**: Wprowadź ciąg *mySampleDatabase*.
-   - **Subskrypcja**: otwórz listę rozwijaną i wybierz poprawną subskrypcję, jeśli nie została wyświetlona.
-   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *myResourceGroup*, a następnie wybierz przycisk **OK**.
-   - **Wybierz źródło**: otwórz listę rozwijaną i wybierz pozycję **Przykład (AdventureWorksLT)**.
-
-     > [!IMPORTANT]
-     > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
-  
    ![Tworzenie pojedynczej bazy danych](./media/sql-database-get-started-portal/create-database-1.png)
 
-4. W obszarze **Serwer** wybierz pozycję **Utwórz nowy**.
-5. W formularzu **Nowy serwer** wpisz lub wybierz następujące wartości:
+1. Na **podstawy** na karcie **Project Details** sekcji, wpisz lub wybierz następujące wartości:
 
-   - **Nazwa serwera**: Wprowadź nazwę *mysqlserver*.
-   - **Identyfikator logowania administratora serwera**: wpisz *azureuser*.
-   - **Hasło**: Wprowadź ciąg *Azure1234567*.
-   - **Potwierdź hasło**: wpisz ponownie hasło.
-   - **Lokalizacja**: otwórz listę rozwijaną, a następnie wybierz dowolną prawidłową lokalizację.  
+   - **Subskrypcja**: otwórz listę rozwijaną i wybierz poprawną subskrypcję, jeśli nie została wyświetlona.
+   - **Grupa zasobów**: Wybierz **Utwórz nową**, typ `myResourceGroup`i wybierz **OK**.
+
+   ![Nowa baza danych SQL — karta podstawowe](media/sql-database-get-started-portal/new-sql-database-basics.png)
+
+
+1. W **Szczegóły bazy danych** sekcji, wpisz lub wybierz następujące wartości: 
+
+   - **Nazwa bazy danych**: Wprowadź polecenie `mySampleDatabase`.
+   - **Serwer**: Wybierz **Utwórz nową** i wprowadź następujące wartości, a następnie wybierz pozycję **wybierz**. 
+       - **Nazwa serwera**: Typ `mysqlserver`; wraz z niektórych numerów, aby zapewnić unikatowość. 
+       - **Identyfikator logowania administratora serwera**: Wpisz polecenie `azureuser`.
+       - **Hasło**: Wpisz hasło złożone, który spełnia wymagania dotyczące hasła. 
+       - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, takich jak `West US 2`. 
+
+       ![Nowy serwer](media/sql-database-get-started-portal/new-server.png)
+
+        > [!IMPORTANT]
+        > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
+
+      ![Szczegóły bazy danych SQL](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+
+   - **Aby użyć elastycznej puli SQL**: Wybierz **nie** opcji. 
+   - **Obliczeniowe i magazyn**: Wybierz **bazy danych skonfiguruj** i w tym przewodniku Szybki Start wybierz **standardowa** warstwę usługi, a następnie wybierz za pomocą suwaka **10 jednostek Dtu (S0)** i **1** GB miejsca do magazynowania. Wybierz przycisk **Zastosuj**. 
+
+    ![Konfigurowanie warstwy](media/sql-database-get-started-portal/create-database-s1.png) 
+
+
+      > [!NOTE]
+      > W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+      > [!IMPORTANT]
+      > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
+    
+
+
+
+1. Wybierz **dodatkowe ustawienia** kartę. 
+1. W **źródła danych** sekcji w obszarze **korzystać z istniejących danych**, wybierz opcję `Sample`. 
+
+   ![Dodatkowe ustawienia bazy danych SQL](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
+   > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
 
-    ![Tworzenie serwera](./media/sql-database-get-started-portal/create-database-server.png)
+1. Pozostałe wartości Pozostaw domyślne, a następnie wybierz pozycję **przeglądu + Utwórz** w dolnej części formularza. 
+1. Przejrzyj ustawienia końcowe i wybierz **Utwórz**. 
 
-6. Wybierz pozycję **Wybierz**.
-7. W formularzu **SQL Database** wybierz opcję **Warstwa cenowa**. Sprawdź liczbę jednostek DTU i wielkość miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
+8. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
 
-   > [!NOTE]
-   > W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
-   > [!IMPORTANT]
-   > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
-8. Na potrzeby tego przewodnika Szybki start wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **10 jednostek DTU (S0)** i **1** GB miejsca do magazynowania.
-9. Wybierz przycisk **Zastosuj**.  
-
-   ![Wybieranie cennika](./media/sql-database-get-started-portal/create-database-s1.png)
-
-10. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
-
-    Wdrożenie zajmuje kilka minut. Aby monitorować postęp wdrożenia, wybierz pozycję **Powiadomienia** na pasku narzędzi.
-
-    ![Powiadomienie](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Wykonywanie zapytań względem bazy danych
 
@@ -120,5 +131,5 @@ Po zakończeniu korzystania z tych zasobów możesz je usunąć w następujący 
 - Po utworzeniu reguły zapory na poziomie serwera [nawiąż połączenie z bazą danych i wykonaj zapytania](sql-database-connect-query.md) przy użyciu różnych narzędzi i języków.
   - [Nawiązywanie połączeń i wykonywanie zapytań przy użyciu programu SQL Server Management Studio](sql-database-connect-query-ssms.md)
   - [Nawiązywanie połączeń i wykonywanie zapytań za pomocą usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Aby tworzyć pojedyncze bazy danych przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [Przykłady interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
-- Aby tworzyć pojedyncze bazy danych przy użyciu usługi Azure PowerShell, zobacz [Przykłady programu Azure PowerShell](sql-database-powershell-samples.md).
+- Aby utworzyć pojedynczą bazę danych przy użyciu wiersza polecenia platformy Azure, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
+- Aby utworzyć pojedynczą bazę danych przy użyciu programu Azure PowerShell, zobacz [przykładów programu Azure PowerShell](sql-database-powershell-samples.md).

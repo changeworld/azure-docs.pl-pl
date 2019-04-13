@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267705"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521754"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Usługa Azure Storage cele skalowalności i wydajności dla kont magazynu
 
@@ -58,13 +58,13 @@ Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maks
 
 |Obszar  |Środowisko docelowe  |
 |---------|---------|
-|Minimalny rozmiar                        |100 GiB      |
-|Maks. rozmiar                        |100 TiB      |
+|Zainicjowano obsługę administracyjną minimalny rozmiar                        |100 GiB      |
+|Maksymalny rozmiar zainicjowano obsługę administracyjną                        |100 TiB      |
 |Zwiększenie/zmniejszenie minimalnego rozmiaru    |1 GiB      |
 |Baseline IOPS    |1 operacje We/Wy za GiB maksymalnie 100 000|
 |Operacje We/Wy, przenoszenie obsługi dużego ruchu    |3 x IOPS za GiB maksymalnie 100 000|
-|Przepustowość minimalna                     |100        |
-|Przepustowość |0,1 MB/s na GiB maksymalnie 5 GiB/s     |
+|Współczynnik ruchu wychodzącego         |60 MiB/s i 0,06 * aprowizowane GiB        |
+|Szybkość transferu danych przychodzących| 40 MiB/s i 0,04 * aprowizowane GiB |
 |Maksymalna liczba migawek        |200       |
 
 #### <a name="premium-file-limits"></a>Limity pliku Premium
@@ -89,9 +89,9 @@ Usługa Azure File Sync został zaprojektowany w celu nieograniczonego użycia, 
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-- [Storage — Szczegóły cennika](https://azure.microsoft.com/pricing/details/storage/)
+- [Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Subskrypcja platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
 - [Replikacja usługi Azure Storage](../storage-redundancy.md)
-- [Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage](../storage-performance-checklist.md)
+- [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage-performance-checklist.md)

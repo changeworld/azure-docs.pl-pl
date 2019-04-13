@@ -11,85 +11,123 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 04/04/2019
 ms.author: celested
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9c6f197f98eda5a71cefd3f4a0c71709a4f51b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64c2d14a2aa6fc6b53260912b5bead2bd7c01e8d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203135"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547848"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
-W tym artykule opisano typowe pytania i informacje dotyczące certyfikatów, które tworzy usługi Azure Active Directory (Azure AD), można ustanowić federacyjnego logowania jednokrotnego (SSO) w aplikacjach SaaS. Dodawanie aplikacji z galerii aplikacji Azure AD lub przy użyciu szablonu aplikacji spoza galerii. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.
 
-W tym artykule dotyczy tylko aplikacji, które są skonfigurowane do używania logowania jednokrotnego usługi Azure AD przy użyciu Federacji SAML, jak pokazano w poniższym przykładzie:
+W tym artykule omówione typowe pytania i informacje związane z certyfikatami, że usługi Azure Active Directory (Azure AD) tworzy nawiązać federacyjnego logowania jednokrotnego (SSO) z oprogramowaniem jako aplikacji usługi (SaaS). Dodawanie aplikacji z galerii aplikacji Azure AD lub przy użyciu szablonu aplikacji spoza galerii. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.
 
-![Usługa Azure AD logowanie jednokrotne](./media/manage-certificates-for-federated-single-sign-on/saml_sso.PNG)
+Ten artykuł ma zastosowanie tylko do aplikacji, które są skonfigurowane do używania logowania jednokrotnego usługi Azure AD za pomocą [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) federacyjnych (SAML).
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatycznie wygenerowany certyfikat dla aplikacji i innych galerii
-Podczas dodawania nowej aplikacji z galerii i konfigurowania opartej na SAML logowania jednokrotnego, usługi Azure AD generuje certyfikat dla aplikacji, który jest ważny przez trzy lata. Możesz pobrać tego certyfikatu od **certyfikat podpisywania SAML** sekcji. W przypadku aplikacji z galerii w tej sekcji może wyświetlać umożliwiający pobranie certyfikatu lub metadane, w zależności od wymagań aplikacji.
 
-![Usługa Azure AD logowania jednokrotnego](./media/manage-certificates-for-federated-single-sign-on/saml_certificate_download.png)
+Podczas dodawania nowej aplikacji z galerii i skonfigurować opartej na SAML logowania jednokrotnego (wybierając **logowanie jednokrotne** > **SAML** ze strony Przegląd aplikacji), Azure AD generuje certyfikat dla aplikacji, który jest ważny przez trzy lata. Aby pobrać aktywnego certyfikatu jako certyfikatu zabezpieczeń (**cer**) plik, wróć do tej strony (**opartej na SAML logowania jednokrotnego**) i wybierz link pobierania w **certyfikat podpisywania SAML** nagłówka. Możesz wybrać między pierwotne certyfikatu (plik binarny) lub certyfikat (Base64 tekstu podstawowego) Base64. W przypadku aplikacji z galerii w tej sekcji również są pokazywane link umożliwiający pobranie certyfikatu jako kod XML metadanych Federacji ( **.xml** pliku), w zależności od wymagań aplikacji.
+
+![SAML active podpisywania certyfikatu opcje pobierania](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+
+Możesz również pobrać certyfikat aktywną lub nieaktywną, wybierając **certyfikat podpisywania SAML** nagłówka **Edytuj** ikonę (ołówka), która wyświetla **certyfikatpodpisywaniaSAML** strony. Wybierz przycisk wielokropka (**...** ) obok certyfikatu, aby pobrać, a następnie wybierz format certyfikatu, który chcesz. Masz dodatkową opcję Pobierz certyfikat w formacie poczty z rozszerzoną ochroną prywatności (PEM). Ten format jest taka sama jak Base64, ale z **PEM** rozszerzenie, które nie są rozpoznawane w Windows w formacie certyfikatu.
+
+![Opcje pobierania certyfikatu (aktywnych i nieaktywnych) podpisywania protokołu SAML](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
 ## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Dostosowywanie datę wygaśnięcia certyfikatu usługi federacyjnej i przechodzą do nowego certyfikatu
-Domyślnie certyfikaty są ustawione na wygaśnięcie po trzy lata. Możesz wybrać inny wygaśnięcia dla certyfikatu, wykonując następujące kroki.
-Zrzuty ekranów korzystają usługi Salesforce dla przykładu, ale te kroki można zastosować do wszystkich federacyjnych aplikacji SaaS.
 
-1. W [witryny Azure portal](https://aad.portal.azure.com), kliknij przycisk **aplikacja dla przedsiębiorstw** w okienku po lewej stronie, a następnie kliknij przycisk **nową aplikację** na **Przegląd** strony:
+Domyślnie platforma Azure konfiguruje certyfikat wygaśnie po upływie trzech lat, gdy jest tworzony automatycznie podczas SAML jednej konfiguracji logowania jednokrotnego. Nie można zmienić datę certyfikatu po jego zapisaniu, należy:
 
-   ![Otwórz kreatora Konfiguracja logowania jednokrotnego](./media/manage-certificates-for-federated-single-sign-on/enterprise_application_new_application.png)
+1. Utwórz nowy certyfikat z odpowiednią datą.
+2. Zapisz nowy certyfikat.
+3. Pobierz nowy certyfikat w poprawnym formacie.
+4. Przekaż nowy certyfikat do aplikacji.
+5. Ustaw nowy certyfikat jako aktywny w portalu Azure Active Directory.
 
-2. Wyszukiwanie aplikacji z galerii, a następnie wybierz aplikację, którą chcesz dodać. Jeśli nie można odnaleźć wymaganej aplikacji, należy dodać aplikację przy użyciu **aplikacji spoza galerii** opcji. Ta funkcja jest dostępna tylko w ramach jednostki SKU usługi Azure AD Premium (P1 i P2).
+Poniższych sekcjach ułatwiają wykonaj następujące kroki.
 
-    ![Usługa Azure AD logowania jednokrotnego](./media/manage-certificates-for-federated-single-sign-on/add_gallery_application.png)
+### <a name="create-a-new-certificate"></a>Utwórz nowy certyfikat
 
-3. Kliknij przycisk **logowanie jednokrotne** łącze w okienku po lewej stronie i zmień **tryb rejestracji jednokrotnej** do **opartej na SAML logowania jednokrotnego**. W tym kroku wygeneruje certyfikat z trzech lat dla swojej aplikacji.
+Najpierw utwórz i Zapisz nowy certyfikat za pomocą różnych wygaśnięcia:
 
-4. Aby utworzyć nowy certyfikat, kliknij przycisk **Utwórz nowy certyfikat** łącze w **certyfikat podpisywania SAML** sekcji.
+1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/). **Centrum administracyjne usługi Azure Active Directory** zostanie wyświetlona strona.
 
-    ![Wygeneruj nowy certyfikat](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
+2. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji przeznaczonych dla przedsiębiorstw na Twoim koncie.
 
-5. **Utwórz nowy certyfikat** łącze otwiera kontrolki kalendarza. Można ustawić dowolną datę i godzinę do trzech lat od bieżącej daty. Wybrana data i godzina to nowa data wygaśnięcia i godzina nowy certyfikat. Kliknij pozycję **Zapisz**.
+3. Wybierz aplikację, których to dotyczy. Zostanie wyświetlona strona Omówienie aplikacji.
 
-    ![Pobierz, a następnie przekaż certyfikat](./media/manage-certificates-for-federated-single-sign-on/certifcate_date_selection.PNG)
+4. W okienku po lewej stronie strony przeglądu aplikacji wybierz **logowanie jednokrotne**.
 
-6. Dostępne do pobrania jest teraz nowy certyfikat. Kliknij przycisk **certyfikatu** link, aby go pobrać. W tym momencie certyfikat nie jest aktywny. Przeskocz do tego certyfikatu, należy wybrać **Ustaw nowy certyfikat jako aktywny** pole wyboru i kliknij przycisk **Zapisz**. Z tego punktu Usługi Azure AD jest uruchamiany przy użyciu nowego certyfikatu podpisywania odpowiedzi.
+5. Jeśli **wybierz jedną metodę logowania jednokrotnego** zostanie wyświetlona strona wybierz **SAML**.
 
-7.  Aby dowiedzieć się, jak przekazać certyfikat do określonej aplikacji SaaS, kliknij przycisk **samouczek konfigurowania aplikacji widoku** łącza.
+6. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony, Znajdź **certyfikat podpisywania SAML** nagłówek i wybierz **Edytuj** ikonę (ołówka). **Certyfikat podpisywania SAML** zostanie wyświetlona strona, która wyświetla stan (**Active** lub **nieaktywny**), datę wygaśnięcia i odcisk palca (ciąg wyznaczania wartości skrótu) każdego certyfikatu.
 
-## <a name="certificate-expiration-notification-email"></a>Wiadomość e-mail z powiadomieniem wygaśnięcia certyfikatu
+7. Wybierz **nowy certyfikat**. Pojawi się nowy wiersz poniżej listy certyfikatów, których data wygaśnięcia wartość domyślna to dokładnie trzech lat po dacie bieżącej. (Zmiany nie zostały jeszcze zapisane, dzięki czemu mogą modyfikować datę wygaśnięcia.)
 
-Usługa Azure AD będzie wysyłać wiadomość e-mail powiadomienie 60, 30 i 7 dni przed wygaśnięciem certyfikatu SAML. Aby określić adres e-mail, w których można wysłać powiadomienia:
+8. W nowym wierszu certyfikatu, umieść kursor nad kolumny daty wygaśnięcia, a następnie wybierz pozycję **wybierz datę** ikonę (Kalendarz). Formant kalendarza zostanie wyświetlone, dni miesiąca do bieżącej daty wygaśnięcia nowego wiersza.
 
-- W witrynie usługi Azure Active Directory aplikacji pojedynczego logowania przejdź do pola wiadomość E-mail z powiadomieniem.
-- Wprowadź adres e-mail, który powinien otrzymywać powiadomienia e-mail wygaśnięcia certyfikatu. Domyślnie to pole używa adresu e-mail administratora, który dodaje aplikację.
+9. Aby ustawić nową datę przy użyciu kontrolki kalendarza. Możesz ustawić dowolna data od bieżącej daty i trzech lat po dacie bieżącej.
 
-Otrzymasz powiadomienie e-mail z aadnotification@microsoft.com. Aby uniknąć poczty e-mail, przechodząc do lokalizacji wiadomości-śmieci, należy dodać tę wiadomość e-mail do Twoich kontaktów. 
+10. Wybierz pozycję **Zapisz**. Pojawi się nowy certyfikat ze stanem **nieaktywny**, po upływie daty, wybierz opcję i odcisku palca.
+
+11. Wybierz **X** aby powrócić do **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony.
+
+### <a name="upload-and-activate-a-certificate"></a>Przekazywanie i aktywować certyfikatu
+
+Następnie Pobierz nowy certyfikat w prawidłowym formacie, przekaż go do aplikacji i uaktywnić w usłudze Azure Active Directory:
+
+1. Aby wyświetlić dodatkowe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji albo:
+   - Wybieranie **Przewodnik po konfiguracji** link, aby wyświetlić w osobnym oknie przeglądarki lub na karcie, lub
+   - przechodząc do **Konfigurowanie** nagłówka i wybierając polecenie **wyświetlić instrukcje krok po kroku** do wyświetlania na pasku bocznym.
+
+2. W instrukcjach należy pamiętać, formacie kodowania, wymagane w celu przekazania certyfikatu.
+
+3. Postępuj zgodnie z instrukcjami w [automatycznie wygenerowany certyfikat dla aplikacji i innych galerii](#auto-generated-certificate-for-gallery-and-non-gallery-applications) wcześniejszej sekcji. Ten krok spowoduje pobranie certyfikatu w formacie kodowania, wymagane do przekazania przez aplikację.
+
+4. Gdy użytkownik chce przechodzą do nowego certyfikatu, wróć do **certyfikat podpisywania SAML** strony, a w wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka (**...** ) i wybierz **uaktywnić certyfikat**. Stan nowego certyfikatu zmieni się na **Active**, a wcześniej aktywnego certyfikatu zmienia stan **nieaktywny**.
+
+5. Kontynuuj poniższe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji, które wcześniej wyświetlane tak, aby przekazać podpisywania SAML certyfikatów poprawny format kodowania.
+
+## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Dodaj adresy powiadomień e-mail do wygaśnięcia certyfikatu
+
+Usługa Azure AD będzie wysyłać wiadomość e-mail powiadomienie 60, 30 i 7 dni przed wygaśnięciem certyfikatu SAML. Możesz dodać więcej niż jeden adres e-mail, aby otrzymywać powiadomienia. Aby określić adresy e-mail, chcesz, aby powiadomienia mają być wysyłane do:
+
+1. W **certyfikat podpisywania SAML** strony, przejdź do **adresy e-mail powiadomień** nagłówka. Domyślnie ten nagłówek używa tylko adres e-mail administratora, który dodaje aplikację.
+
+2. Poniżej adres e-mail końcowego wpisz adres e-mail, który powinien otrzymywać powiadomienie o wygaśnięciu certyfikatu, a następnie naciśnij klawisz Enter.
+
+3. Powtórz poprzedni krok dla każdego z adresów e-mail, który chcesz dodać.
+
+4. Dla każdego z adresów e-mail do usunięcia, wybierz **Usuń** ikonę (Kosza) obok adres e-mail.
+
+5. Wybierz pozycję **Zapisz**.
+
+Otrzymasz powiadomienie e-mail z aadnotification@microsoft.com. Aby uniknąć poczty e-mail, przechodząc do lokalizacji spamu, Dodaj tę wiadomość e-mail do Twoich kontaktów.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Odnów certyfikat, który wkrótce wygaśnie
-Poniższe kroki odnawiania powinno spowodować nie znaczących przestojów dla użytkowników. Zrzuty ekranu w tej sekcji funkcji Salesforce jako przykład, ale te kroki można stosować do dowolnej federacyjnych aplikacji SaaS.
 
-1. Na **usługi Azure Active Directory** aplikacji **logowanie jednokrotne** strony, generuje nowy certyfikat dla aplikacji. Można to zrobić, klikając **Utwórz nowy certyfikat** łącze w **certyfikat podpisywania SAML** sekcji.
+Jeśli certyfikat wygaśnie, można odnowić go za pomocą procedury, która powoduje nie znaczących przestojów dla użytkowników. Aby odnowić Wygasający certyfikat:
 
-    ![Wygeneruj nowy certyfikat](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
+1. Postępuj zgodnie z instrukcjami w [Utwórz nowy certyfikat](#create-a-new-certificate) sekcji wcześniej, za pomocą daty, która pokrywa się z istniejącym certyfikatem. Tą datą ogranicza przestoje spowodowane wygaśnięcia certyfikatu.
 
-2. Wybierz odpowiednią datę i godzinę wygaśnięcia dla nowego certyfikatu, a następnie kliknij przycisk **Zapisz**. Wybranie daty, która pokrywa się z istniejącym certyfikatem zapewni wynosi żadnych przestojów z powodu wygaśnięcia certyfikatu. 
+2. Jeśli aplikacji można automatycznego przerzucania certyfikatu, ustawić nowy certyfikat na aktywny, wykonaj następujące czynności:
+   1. Wróć do **certyfikat podpisywania SAML** strony.
+   2. W wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka (**...** ), a następnie wybierz **uaktywnić certyfikat**.
+   3. Pomiń dwa następne kroki.
 
-3. Jeśli aplikacja może automatycznego przerzucania certyfikatu, należy ustawić nowy certyfikat na aktywny.  Zaloguj się do aplikacji, aby sprawdzić, czy działa.
+3. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz przedział czasu przestojów do wykonania kolejnego kroku. (W przeciwnym razie, jeśli aplikacja nie automatyczne pobranie nowego certyfikatu, ale może obsługiwać więcej niż jeden certyfikat podpisywania, można wykonać następny krok dowolnym.)
 
-4. Jeżeli aplikacja nie jest automatycznie pobrania nowego certyfikatu, ale można dojście do więcej niż jeden certyfikat podpisywania, przed upływem starego, Przekaż nowy katalog w celu aplikacji, a następnie wróć do portalu i przypisz ją aktywnego certyfikatu. 
+4. Przed upływem starego certyfikatu, postępuj zgodnie z instrukcjami [przekazywania i aktywowania certyfikatu](#upload-and-activate-a-certificate) wcześniejszej sekcji.
 
-5. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz okno Przestój Pobierz nowy certyfikat, przekaż go do aplikacji, wróć do witryny Azure Portal i ustaw nowy certyfikat jako aktywny. 
-   
-6. Aby aktywować nowy certyfikat w usłudze Azure AD, wybierz pozycję **Ustaw nowy certyfikat jako aktywny** pole wyboru i kliknij przycisk **Zapisz** znajdujący się u góry strony. Przedstawia to za pośrednictwem nowego certyfikatu po stronie usługi Azure AD. Zmiany stanu certyfikatu z **New** do **Active**. Z tego punktu Usługi Azure AD jest uruchamiany przy użyciu nowego certyfikatu podpisywania odpowiedzi. 
-   
-    ![Wygeneruj nowy certyfikat](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
+5. Zaloguj się do aplikacji, aby upewnić się, że certyfikat działa prawidłowo.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](../saas-apps/tutorial-list.md)
+
+* [Samouczki dotyczące integrowania aplikacji SaaS z usługą Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Zarządzanie aplikacjami w usłudze Azure Active Directory](what-is-application-management.md)
-* [Dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](what-is-single-sign-on.md)
-* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](what-is-single-sign-on.md)
+* [Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)

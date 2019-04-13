@@ -2,20 +2,20 @@
 title: Zamiast ETL, projektowanie procesu ELT dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Zamiast ETL projektowania procesu wyodrębniania, ładowania i przekształcania (ELT) do ładowania danych lub usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 04/12/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96f6da7e081430768b5a6f8fd874e289b8256271
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308486"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548668"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Projektowanie PolyBase ładowaniem strategię dla usługi Azure SQL Data Warehouse
 
@@ -99,7 +99,7 @@ Aby załadować dane przy użyciu technologii PolyBase, można użyć dowolnej z
 - [Program PolyBase przy użyciu języka T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa dobrze, gdy dane są już w usłudze Azure Blob storage lub Azure Data Lake Store. Zapewnia największą kontrolę nad procesem ładowania, ale wymaga również Definiowanie danych zewnętrznych obiektów. Inne metody definiowania tych obiektów w tle jako mapowanie tabel źródłowych do tabel docelowych.  Do organizowania obciążeń języka T-SQL, używając usługi Azure Data Factory, SSIS lub usługi Azure functions. 
 - [Program PolyBase przy użyciu funkcji SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) działa dobrze, gdy źródło danych jest w programie SQL Server, SQL Server w środowisku lokalnym lub w chmurze. SSIS określa źródła do docelowego mapowania tabel, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
 - [Program PolyBase z usługi Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) to kolejne narzędzie aranżacji.  Definiuje potoku i harmonogram zadań. 
-- [Program PolyBase z usługi Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) przesyła dane z tabeli SQL Data Warehouse do Databricks dataframe i/lub zapisuje dane z usługi Databricks ramkę danych do tabeli SQL Data Warehouse.
+- [Program PolyBase z usługi Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) przesyła dane z tabeli SQL Data Warehouse do Databricks dataframe i/lub zapisuje dane z usługi Databricks ramkę danych do tabeli SQL Data Warehouse przy użyciu technologii PolyBase.
 
 ### <a name="non-polybase-loading-options"></a>Opcje ładowania non-PolyBase
 

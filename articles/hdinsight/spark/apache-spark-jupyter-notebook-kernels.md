@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084102"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527476"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jądra dla notesu Jupyter w klastrach platformy Apache Spark w usłudze Azure HDInsight 
 
@@ -69,7 +69,7 @@ Poniżej przedstawiono kilka korzyści wynikające ze stosowania nowych jądra z
    
     Wstępnie ustawionych kontekstów można zamiast tego należy korzystać bezpośrednio w aplikacji.
 
-- **Komórka poleceń magicznych**. Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą `%%` (na przykład `%%MAGIC` <args>). Magiczne polecenie musi być pierwszy wyraz w komórce kodu i umożliwić wiele wierszy w zawartości. Magic word powinien być pierwszy wyraz w komórce. Dodawanie czegokolwiek przed magic, a nawet komentarzy powoduje błąd.     Aby uzyskać więcej informacji na temat poleceń magicznych, zobacz [tutaj](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Komórka poleceń magicznych**. Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą `%%` (na przykład `%%MAGIC` `<args>`). Magiczne polecenie musi być pierwszy wyraz w komórce kodu i umożliwić wiele wierszy w zawartości. Magic word powinien być pierwszy wyraz w komórce. Dodawanie czegokolwiek przed magic, a nawet komentarzy powoduje błąd.     Aby uzyskać więcej informacji na temat poleceń magicznych, zobacz [tutaj](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
     W poniższej tabeli wymieniono różne poleceń magicznych dostępnych za pośrednictwem jądra.
 

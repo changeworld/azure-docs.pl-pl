@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976780"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523940"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Usługa Azure Data Factory — funkcje i zmienne systemowe
 > [!NOTE]
@@ -59,7 +59,7 @@ Można użyć funkcji w usłudze data factory wraz ze zmiennych systemowych w na
 
 1. Określanie w zapytaniach wyboru danych (zobacz artykuły łącznika odwołuje się [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu.
    
-   Składnia do wywoływania funkcji fabryki danych: **$$ <function>** zapytaniach wyboru danych i inne właściwości w działanie i zestawów danych.  
+   Składnia do wywoływania funkcji fabryki danych:  **$$ \<funkcja >** zapytaniach wyboru danych i inne właściwości w działanie i zestawów danych.  
 2. Określanie zależności wejściowe przy użyciu funkcji usługi fabryka danych w kolekcji danych wejściowych działania.
    
     $$ nie jest wymagana do określania wyrażenia danych wejściowych zależności.     

@@ -3,19 +3,19 @@ title: Opcje sieci usługi Azure Functions
 description: Omówienie wszystkich opcji sieciowych dostępnych w usłudze Azure Functions
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 1/14/2019
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a4ae2d8bad50a4103da6afaa0bee5cbb75c877aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358155"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545509"
 ---
-# <a name="azure-functions-networking-options"></a>Opcje sieci usługi Azure Functions
+# <a name="azure-functions-networking-options"></a>Usługa Azure Functions opcji sieciowych
 
 W tym dokumencie opisano zestaw funkcji sieciowych, które są dostępne w usłudze Azure Functions opcji hostingu. Wszystkie z następujących opcji sieciowych zapewniają możliwość uzyskiwać dostęp do zasobów, bez korzystania z obsługą routingu adresów internetowych lub ograniczyć dostęp do Internetu z aplikacją funkcji. Modelach hostingu wszystkie mają różne poziomy izolacji sieci, które są dostępne, a następnie wybierając właściwą umożliwi wymagań izolacji sieci.
 
@@ -32,8 +32,8 @@ Funkcja aplikacji może być hostowana na kilka różnych sposobów.
 |                |[Plan zużycia](functions-scale.md#consumption-plan)|⚠ [Plan w warstwie Premium](functions-scale.md##premium-plan-public-preview)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[**Ograniczenia adresów IP dla ruchu przychodzącego**](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[**Integracja sieci wirtualnej**](#vnet-integration)|❌No|⚠ Tak|✅Yes|✅Yes|
-|[**Integracja z siecią Wirtualną (wersja zapoznawcza) (Expressroute i punktów końcowych usługi)**](#preview-vnet-integration)|❌No|⚠ Tak|⚠ Tak|✅Yes|
+|[**Integracja z siecią Wirtualną**](#vnet-integration)|❌No|❌No|✅Yes|✅Yes|
+|[**Integracja z siecią Wirtualną (wersja zapoznawcza) (Expressroute i punktów końcowych usługi)**](#preview-vnet-integration)|❌No|⚠Tak|⚠Tak|✅Yes|
 |[**Połączenia hybrydowe**](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
 |[**Dostęp do witryn prywatne**](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 
@@ -48,7 +48,7 @@ Ograniczenia adresów IP umożliwiają definiowanie priorytetu, uporządkowane z
 
 [Dowiedz się więcej tutaj](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 
-## <a name="vnet-integration"></a>Integracja sieci wirtualnej
+## <a name="vnet-integration"></a>Integracja z siecią wirtualną
 
 Integracja sieci Wirtualnej umożliwia aplikację funkcji, aby uzyskać dostęp do zasobów w sieci Wirtualnej. Integracja z siecią Wirtualną jest dostępna w plan w warstwie Premium i plan usługi App Service. Jeśli aplikacja znajduje się w środowisku usługi App Service jest już w sieci wirtualnej, a nie wymaga użycia funkcji integracji sieci wirtualnej w celu uzyskania dostępu do zasobów w tej samej sieci wirtualnej.
 
@@ -84,8 +84,18 @@ W przypadku użycia w funkcje, każde połączenie hybrydowe skorelowany jednej 
 
 Aby dowiedzieć się więcej, zobacz [dokumentacja usługi App Service dla połączeń hybrydowych](../app-service/app-service-hybrid-connections.md), który obsługuje zarówno funkcje, jak i aplikacji sieci Web.
 
-## <a name="private-site-access"></a>Dostęp do witryn prywatne
+## <a name="private-site-access"></a>Dostęp do witryn prywatnych
 
 Dostęp do prywatnej witryny dotyczy tylko udostępnianie aplikacji z sieci prywatnej takich jak z w obrębie sieci wirtualnej platformy Azure. Dostęp do prywatnej witryny jest dostępna tylko dla środowiska ASE skonfigurowane za pomocą wewnętrznego obciążenia równoważenia (ILB). Aby uzyskać więcej informacji na temat korzystania z ASE z wewnętrznym modułem równoważenia obciążenia, zobacz [tworzenie i używanie środowisko ASE z wewnętrznym modułem równoważenia obciążenia](../app-service/environment/create-ilb-ase.md).
 
 Istnieje wiele sposobów dostępu do zasobów sieci Wirtualnej w inne opcje hostingu, ale środowisko ASE jest jedynym sposobem, aby umożliwić wyzwalaczy, funkcji uzyskanie odbywa się za pośrednictwem sieci Wirtualnej.
+
+## <a name="next-steps"></a>Kolejne kroki
+Aby dowiedzieć się więcej na temat sieci i funkcje: 
+
+* [Postępuj zgodnie z samouczkiem ułatwiającym integrację sieci Wirtualnej rozpoczęcie pracy](./functions-create-vnet.md)
+* [Przeczytaj funkcje, w tym miejscu sieć — często zadawane pytania](./functions-networking-faq.md)
+* [Dowiedz się więcej na temat integracji sieci Wirtualnej przy użyciu usługi App Service / funkcje w tym miejscu](../app-service/web-sites-integrate-with-vnet.md)
+* [Dowiedz się więcej na temat sieci wirtualnych na platformie Azure](../virtual-network/virtual-networks-overview.md)
+* [Włączyć więcej sieciowych funkcji i kontrola przy użyciu środowisk usługi App Service](../app-service/environment/intro.md)
+* [Łączenie z poszczególnych zasobów lokalnych bez zmian w zaporze przy użyciu połączeń hybrydowych](../app-service/app-service-hybrid-connections.md)

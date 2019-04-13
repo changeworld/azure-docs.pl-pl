@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dcb38d839017d1c4ea5b6714f7c900c476ddcd6b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494665"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546546"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -170,7 +170,7 @@ Aby przekazać własne certyfikaty i przetestować dostęp:
 
 4. Skonfiguruj ustawienia DNS dla domeny środowiska ASE. W domenie w usłudze DNS możesz użyć symbolu wieloznacznego. Aby przeprowadzić proste testy, edytuj plik hosts na maszynie wirtualnej w celu ustawienia dla nazwy aplikacji wirtualnego adresu IP:
 
-    a. Jeśli nazwa domeny środowiska ASE to _.aseilb.com_ i utworzysz aplikację o nazwie _mojaaplikacja_, będzie ona miała adres _mojaaplikacja.aseilb.com_. Następnie skonfiguruj rozpoznawanie adresu _mojaaplikacja.aseilb.com_ jako adresu wewnętrznego modułu równoważenia obciążenia. (W systemie Windows plik hosts znajduje się w folderze _C:\Windows\System32\drivers\etc\_).
+    a. Jeśli nazwa domeny środowiska ASE to _.aseilb.com_ i utworzysz aplikację o nazwie _mojaaplikacja_, będzie ona miała adres _mojaaplikacja.aseilb.com_. Następnie skonfiguruj rozpoznawanie adresu _mojaaplikacja.aseilb.com_ jako adresu wewnętrznego modułu równoważenia obciążenia. (W Windows, plik hosts znajduje się w _C:\Windows\System32\drivers\etc\\_.)
 
     b. Aby przetestować publikowanie wdrażania w Internecie lub dostęp do konsoli zaawansowanej, utwórz rekord dla _mojaaplikacja.scm.aseilb.com_.
 

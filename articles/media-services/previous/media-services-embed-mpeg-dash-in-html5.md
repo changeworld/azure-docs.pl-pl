@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403078"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522439"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Osadzanie MPEG-DASH adaptacyjne przesyłanie strumieniowe filmów wideo w aplikacji HTML5 z implementacją DASH.js  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 MPEG-DASH jest standardem ISO do adaptacyjnego przesyłania strumieniowego zawartości wideo, która oferuje istotne korzyści dla deweloperów, które chcą dostarczanie wideo wysokiej jakości, adaptacyjne przesyłanie strumieniowe danych wyjściowych. Przy użyciu standardu MPEG-DASH strumienia wideo dopasowuje automatycznie niższych definicji podczas staje się przeciążenia sieci. Zmniejsza to prawdopodobieństwo podglądu oglądanie wideo "wstrzymane", gdy gracz pliki do pobrania następnej kilka sekund, aby odtworzyć (zwane również buforowania). Jak zmniejsza przeciążenie sieci, odtwarzacza wideo z kolei powróci do strumienia wyższej jakości. Ta możliwość dostosowania przepustowość wymaganą również powoduje szybsze uruchamianie filmu wideo. Oznacza to, że pierwsze kilka sekund, mogą być odtwarzane w segmencie niższa jakość fast do pobierania, a następnie została buforowana krok do wyższej jakości zawartości po wystarczające.
 
 Implementacją Dash.js jest typu open-source MPEG-DASH odtwarzacza wideo napisanych w języku JavaScript. Jego celem jest zapewnienie odtwarzacz niezawodne, dla wielu platform, który mogą być swobodnie ponownie użyte w aplikacjach, które wymagają odtwarzania wideo. Zapewnia odtwarzanie MPEG-DASH w dowolnej przeglądarce, który obsługuje obecnie W3C nośnika źródłowego rozszerzenia (MSE) dla programu Chrome, Microsoft Edge i IE11 (innych przeglądarek ma wskazuje zamiar obsługuje MSE). Aby uzyskać więcej informacji na temat implementacją DASH.js js, zobacz repozytorium implementacją dash.js w witrynie GitHub.
@@ -86,7 +86,7 @@ Następnie można utworzyć wystąpienia klasy podstawowej framework implementac
 
 Funkcja startup() MediaPlayer — klasa jest wywoływana, aby upewnić się, że gracz jest gotowy do odtwarzania wideo. Między innymi funkcja gwarantuje, że wszystkie niezbędne klasy (zgodnie z definicją kontekście) zostały załadowane. Gdy gracz jest gotowy, możesz dołączyć do niego przy użyciu funkcji attachView() elementu wideo. Funkcja startowa umożliwia MediaPlayer wstawić strumienia wideo do elementu, a także sterować odtwarzaniem zgodnie z potrzebami.
 
-Przekazać adres URL pliku MPD do MediaPlayer, tak aby wie o wideo, że oczekuje się, aby odtworzyć. Funkcja setupVideo() właśnie utworzony należy do wykonania po stronie pełni został załadowany. W tym za pomocą zdarzeń onload elementu body. Zmień swoje <body> elementu:
+Przekazać adres URL pliku MPD do MediaPlayer, tak aby wie o wideo, że oczekuje się, aby odtworzyć. Funkcja setupVideo() właśnie utworzony należy do wykonania po stronie pełni został załadowany. W tym za pomocą zdarzeń onload elementu body. Zmień swoje `<body>` elementu:
 
 ```html
     <body onload="setupVideo()">

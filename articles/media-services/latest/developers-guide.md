@@ -13,24 +13,26 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 4f9911259cc4da02429971ef6bddfa62080a9fe6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: d97682de6c8eb7dd36e25cbd4b8d66d328745748
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044410"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543640"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Rozpoczęcie programowania przy użyciu interfejsu API usługi Media Services 3 za pomocą zestawów SDK i narzędzi
 
 Jako deweloper możesz użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref) usługi Media Services lub bibliotek klienckich, które umożliwiają interakcję z interfejsem API REST, aby łatwo tworzyć i utrzymywać niestandardowe przepływy pracy multimediów oraz zarządzać nimi. Interfejs API usługi [Media Services v3](https://aka.ms/ams-v3-rest-sdk) opiera się na specyfikacji interfejsu OpenAPI (wcześniej znanej jako struktura Swagger).
 
-Ten temat zawiera linki do zestawów SDK, narzędzi i dokumentacji. Zawiera także pewne przydatne informacje dla różnych środowisk programistycznych.
+Przed rozpoczęciem tworzenia, przejrzyj [opracowywanie zawartości przy użyciu usługi Media Services v3 API](media-services-apis-overview.md).
 
 > [!NOTE]
 > Zestawy SDK usługi Azure Media Services v3 nie musi być metodą o bezpiecznych wątkach. Podczas tworzenia aplikacji wielowątkowych, należy dodać własną logiką synchronizacji wątków do ochrony klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Ponadto należy ostrożnie wielowątkowości problemy wynikające z opcjonalne obiekty udostępniany przez kod (na przykład wystąpienie klasy HttpClient w programie .NET).
+
+Ten temat zawiera łącza do zestawów SDK, narzędzia, zobacz inne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +42,7 @@ Aby rozpocząć opracowywanie pod kątem usługi Media Services, potrzebne są:
 - [Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)
 - [Tworzenie konta usługi Media Services — interfejs wiersza polecenia](create-account-cli-how-to.md)
 
-## <a name="start-developing-with-sdks"></a>Zacznij programować przy użyciu zestawów SDK
+## <a name="start-developing-with-sdks"></a>Rozpoczynanie programowania z użyciem zestawów SDK
 
 ### <a name="net"></a>.NET
 
@@ -84,4 +86,4 @@ Narzędzie AMSE to projekt typu Open Source, w przypadku którego pomoc technicz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przegląd](media-services-overview.md)
+[Omówienie](media-services-overview.md)

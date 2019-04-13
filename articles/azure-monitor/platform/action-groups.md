@@ -5,18 +5,18 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/26/2019
+ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 695a2ff827fc5514c3a32364026bc9d47c8a2121
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500319"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549665"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
-## <a name="overview"></a>Przegląd ##
+## <a name="overview"></a>Omówienie ##
 Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika. Można skonfigurować maksymalnie 2000 grup akcji w ramach subskrypcji.
 
 Możesz skonfigurować akcję, aby powiadomić osoby, adres e-mail lub wiadomości SMS, otrzymują potwierdzenie wskazujący, że zostały one dodane do grupy akcji.
@@ -103,6 +103,7 @@ Zakresy adresów IP źródła
  - 52.244.68.117
  - 51.4.138.199
  - 51.5.148.86
+ - 51.5.149.19
 
 Aby otrzymywać aktualizacje o zmianach na te adresy IP, firma Microsoft zaleca skonfigurować [usługa alert o kondycji, która monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
 

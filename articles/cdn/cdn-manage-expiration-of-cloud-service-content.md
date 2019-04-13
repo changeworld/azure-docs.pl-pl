@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 6e17b110cbfc293e19714399d5b2cdb753aa1ac4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917961"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525674"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Zarządzanie wygasaniem zawartości sieci web w usłudze Azure CDN
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ W poniższym przykładzie plik konfiguracji XML pokazuje, jak ustawić `<clientC
 </configuration>
 ```
 
-Aby użyć **cacheControlMaxAge** atrybutu, należy ustawić wartość **cacheControlMode** atrybutu `UseMaxAge`. To ustawienie spowodowane nagłówka HTTP i dyrektywy, `Cache-Control: max-age=<nnn>`, mają zostać dodane do odpowiedzi. Format wartość timespan odpowiadającą **cacheControlMaxAge** atrybut jest `<days>.<hours>:<min>:<sec>`. Jego wartość jest konwertowana na sekund i jest używana jako wartość `Cache-Control` `max-age` dyrektywy. Aby uzyskać więcej informacji na temat `<clientCache>` elementu, zobacz [pamięci podręcznej klienta <clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Aby użyć **cacheControlMaxAge** atrybutu, należy ustawić wartość **cacheControlMode** atrybutu `UseMaxAge`. To ustawienie spowodowane nagłówka HTTP i dyrektywy, `Cache-Control: max-age=<nnn>`, mają zostać dodane do odpowiedzi. Format wartość timespan odpowiadającą **cacheControlMaxAge** atrybut jest `<days>.<hours>:<min>:<sec>`. Jego wartość jest konwertowana na sekund i jest używana jako wartość `Cache-Control` `max-age` dyrektywy. Aby uzyskać więcej informacji na temat `<clientCache>` elementu, zobacz [pamięci podręcznej klienta \<clientCache >](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programowe Ustawianie nagłówki Cache-Control
 Dla aplikacji ASP.NET, możesz kontrolować zachowanie buforowania programowo przez ustawienie sieci CDN **HttpResponse.Cache** właściwości interfejsu API platformy .NET. Aby uzyskać informacje o **HttpResponse.Cache** właściwości, zobacz [właściwość HttpResponse.Cache](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) i [klasy HttpCachePolicy](/dotnet/api/system.web.httpcachepolicy).  

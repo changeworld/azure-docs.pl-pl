@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287106"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528496"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Magazyn Premium wydajności block blob storage
 
@@ -25,10 +25,11 @@ Files w warstwie Premium należy użyć konta magazynu unikatowy o nazwie **File
 
 |Obszar  |Środowisko docelowe  |
 |---------|---------|
-|Maks. rozmiar     |Wynosi 5 TiB (publiczna wersja zapoznawcza), 100 TiB (ograniczonej publicznej wersji zapoznawczej)     |
+|Maksymalny rozmiar zainicjowano obsługę administracyjną     |Wynosi 5 TiB (publiczna wersja zapoznawcza), 100 TiB (ograniczonej publicznej wersji zapoznawczej)     |
 |Udziały   |Nieograniczona liczba  |
 |Operacje wejścia/wyjścia     |100 000 (ograniczonej publicznej wersji zapoznawczej)    |
-|Przepustowość|5 GB/s     |
+|Ruch przychodzący|4,136 MiB/s     |
+|Ruch wychodzący|6,204 MiB/s |
 
  Dla pliku premium te same obiekty docelowe skalowania, zobacz [files w warstwie Premium skalowanie elementów docelowych](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) sekcji.
 

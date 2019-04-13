@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010230"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548730"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 > [!NOTE]
-> Skalowanie automatyczne i strefowo nadmiarowe usługa application gateway jednostkę SKU obsługuje teraz [domyślnej funkcji badania kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i usuwanie dowolnego zasobu z puli uznawana za złą. #Identyfikator sondy kondycji domyślne można automatycznie skonfigurować dla tych zaplecza, dla których nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Skalowanie automatyczne i strefowo nadmiarowe usługa application gateway jednostkę SKU obsługuje teraz [domyślnej funkcji badania kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i wyróżnianie tych członków wewnętrznej bazy danych, które są traktowane jako złej kondycji. #Identyfikator sondy kondycji domyślne można automatycznie skonfigurować dla tych zaplecza, dla których nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
 

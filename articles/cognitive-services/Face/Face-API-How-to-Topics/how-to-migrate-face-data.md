@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448785"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548408"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migruj dane rozpoznawania twarzy do innej subskrypcji twarzy
 
@@ -79,7 +79,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Proces pobierania i stosowanie migawek nie będzie zakłócać działanie wszelkie wywołania regularne źródłowa lub docelowa **grupie**s (lub **FaceList**s). Jednak nie zaleca się dokonywania jednoczesnych wywołań, które zmieniają się z obiektem źródłowym ([wywołania zarządzania List twarzy](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist) lub [grupa osób — szkolenie](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup/train) na przykład wywoływać), ponieważ może wykonać operacji migawki Wykonaj przed lub po tych operacji lub mogą wystąpić błędy. 
+> Proces pobierania i stosowanie migawek nie będzie zakłócać działanie wszelkie wywołania regularne źródłowa lub docelowa **grupie**s (lub **FaceList**s). Jednak nie zaleca się dokonywania jednoczesnych wywołań, które zmieniają się z obiektem źródłowym ([wywołania zarządzania FaceList](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) lub [Train grupie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) na przykład wywoływać), ponieważ może wykonać operacji migawki Wykonaj przed lub po tych operacji lub mogą wystąpić błędy.
 
 ## <a name="retrieve-the-snapshot-id"></a>Pobierz identyfikator migawki
 

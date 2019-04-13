@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: db01c2f51e9069e8fc9ee979eacf746bee8dbdd2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3e33eef430db627a82bb82e8c22ddc861d08982b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260922"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546276"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -283,16 +283,16 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Tworzenie zapytań o trasę zawierających deklarację sposobu podróży
 > * Wyświetlanie wielu tras na mapie
 
-Przykładowy kod z tego samouczka jest dostępny tutaj:
+> [!div class="nextstepaction"]
+> [Wyświetl pełny kod źródłowy](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
 
-> [Wiele tras z usługi Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
-
-[Zobacz przykładową znajdować się tutaj](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
+> [!div class="nextstepaction"]
+> [Wyświetl przykład na żywo](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
 W następnym samouczku przedstawiony jest proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps.
 
 > [!div class="nextstepaction"]
-> [Tworzenie lokalizatora magazynu przy użyciu usługi Azure Maps](./tutorial-create-store-locator.md)
+> [Create a store locator using Azure Maps (Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps)](./tutorial-create-store-locator.md)
 
 > [!div class="nextstepaction"]
 > [Za pomocą wyrażeń opartych na danych stylu](data-driven-style-expressions-web-sdk.md)

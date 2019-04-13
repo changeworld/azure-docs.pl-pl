@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917774"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547601"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Usługa Azure CDN przy użyciu mechanizmu CORS
 ## <a name="what-is-cors"></a>Co to jest mechanizm CORS?
@@ -32,7 +32,7 @@ Istnieją dwa typy żądań CORPS *prostych żądań* i *złożonych żądań.*
 
 1. Przeglądarka wysyła żądanie CORS przy użyciu dodatkowego **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka origin, która obsłużyła stronę nadrzędną, która jest zdefiniowana jako kombinacja *protokołu* *domeny* i *portu.*  Gdy strona z https://www.contoso.com próbuje uzyskać dostęp do danych użytkownika w początek fabrikam.com, następujący nagłówek żądania, które będą wysyłane na fabrikam.com:
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. Serwer może odpowiadać z dowolnymi z następujących czynności:
 

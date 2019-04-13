@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007610"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548563"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -32,7 +32,7 @@ W tym przewodniku Szybki start dowiesz się, jak zaimplementować logowanie przy
 Na zakończenie tego przewodnika Szybki start aplikacja będzie akceptować logowania kont służbowych organizacji, które zostały zintegrowane z usługą Azure Active Directory (Azure AD).
 
 > [!NOTE]
-> Jeśli oprócz kont służbowych musisz włączyć możliwość logowania kont osobistych, możesz użyć [punktu końcowego w wersji 2.0](azure-ad-endpoint-comparison.md). Aby uzyskać więcej informacji, zobacz [ten samouczek platformy ASP.NET dotyczący punktu końcowego w wersji 2.0](tutorial-v2-asp-webapp.md), a także [ten artykuł](active-directory-v2-limitations.md) wyjaśniający aktualne ograniczenia punktu końcowego w wersji 2.0.
+> Jeśli musisz włączyć logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć  *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)*. Aby uzyskać więcej informacji, zobacz [w tym samouczku ASP.NET](tutorial-v2-asp-webapp.md) także [w tym artykule](active-directory-v2-limitations.md) wyjaśniających *punktu końcowego platformy tożsamości firmy Microsoft*.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

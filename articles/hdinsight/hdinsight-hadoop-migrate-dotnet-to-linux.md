@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: adab50b7325be96830ee937153d110754cc0b552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714665"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549801"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrowanie rozwiązań .NET dla oparte na Windows HDInsight do HDInsight opartych na systemie Linux
 
@@ -22,7 +22,7 @@ HDInsight opartych na systemie Linux klastrów użyj [Mono (https://mono-project
 
 ## <a name="mono-compatibility-with-net"></a>Zgodność platformy mono przy użyciu platformy .NET
 
-Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzyskać więcej informacji na wersję platformy Mono dołączone HDInsight, zobacz [wersje składników HDInsight](hdinsight-component-versioning.md). Aby zainstalować określoną wersję platformy Mono, zobacz [Instalowanie lub aktualizowanie środowiska Mono](hdinsight-hadoop-install-mono.md) dokumentu.
+Wersja platformy mono 4.2.1 jest dołączony do HDInsight w wersji 3.6. Aby uzyskać więcej informacji na wersję platformy Mono dołączone HDInsight, zobacz [wersje składników HDInsight](hdinsight-component-versioning.md).
 
 Aby uzyskać więcej informacji na temat zgodności platformy Mono i .NET, zobacz [zgodności platformy Mono (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 

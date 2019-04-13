@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: a4907a65f100fd6efcabe422becad69aaee4b6ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/12/2019
+ms.openlocfilehash: 8a2a61e821ad41265dc9262064a79a5c44abbc7f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882715"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545828"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -72,7 +72,7 @@ Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-s
 
 ### <a name="backups-for-point-in-time-restore"></a>Tworzenie kopii zapasowych do punktu w czasie przywracania
 
-SQL Database obsługuje samoobsługowego przywracania w momencie (Odzyskiwanie) przez automatyczne tworzenie pełnej kopii zapasowej, różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji. Pełne kopie zapasowe są tworzone co tydzień, różnicowe kopie zapasowe są zazwyczaj tworzone co 12 godzin i kopie zapasowe dziennika transakcji są zazwyczaj tworzone co 5 – 10 minut, z częstotliwością, na podstawie rozmiaru obliczeń i zmniejszenia liczby działań bazy danych. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast, po utworzeniu bazy danych. Zazwyczaj zostanie zakończona w ciągu 30 minut, ale może to trwać dłużej, gdy baza danych znajduje się o znacznym rozmiarze. Na przykład tworzenia początkowej kopii zapasowej może potrwać dłużej przywróconej bazy danych lub kopii bazy danych. Po pierwszej pełnej kopii zapasowej wszystkie dodatkowe kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładny czas wszystkie kopie zapasowe bazy danych jest określany przez usługę SQL Database jako jej całkowitego obciążenia systemu.
+SQL Database obsługuje samoobsługowego przywracania w momencie (Odzyskiwanie) przez automatyczne tworzenie pełnej kopii zapasowej, różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji. Pełne kopie zapasowe są tworzone co tydzień, różnicowe kopie zapasowe są zazwyczaj tworzone co 12 godzin i kopie zapasowe dziennika transakcji są zazwyczaj tworzone co 5 – 10 minut, z częstotliwością, na podstawie rozmiaru obliczeń i zmniejszenia liczby działań bazy danych. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast, po utworzeniu bazy danych. Zazwyczaj zostanie zakończona w ciągu 30 minut, ale może to trwać dłużej, gdy baza danych znajduje się o znacznym rozmiarze. Na przykład tworzenia początkowej kopii zapasowej może potrwać dłużej przywróconej bazy danych lub kopii bazy danych. Po pierwszej pełnej kopii zapasowej wszystkie dodatkowe kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładny czas wszystkie kopie zapasowe bazy danych jest określany przez usługę SQL Database jako jej całkowitego obciążenia systemu. Nie można zmienić ani wyłączyć zadania tworzenia kopii zapasowej. 
 
 Odzyskiwanie kopii zapasowych są geograficznie nadmiarowy i chronione przez [replikacji między regionami w usłudze Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
@@ -107,7 +107,7 @@ Podczas migracji bazy danych z warstwy usług oparte na jednostkach DTU z przech
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak zmienić okres przechowywania kopii zapasowej Odzyskiwanie
 
-Można zmienić domyślny okres przechowywania kopii zapasowych Odzyskiwanie przy użyciu witryny Azure Portal, programu PowerShell lub interfejsu API REST. Obsługiwane wartości to: 7, 14, 21, 28 lub 35 dni. Poniższe przykłady ilustrują zmiana okresu przechowywania Odzyskiwanie 28 dni.
+Można zmienić domyślny okres przechowywania kopii zapasowych Odzyskiwanie przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST. Obsługiwane wartości to: 7, 14, 21, 28 lub 35 dni. Poniższe przykłady ilustrują zmiana okresu przechowywania Odzyskiwanie 28 dni.
 
 > [!NOTE]
 > Te interfejsy API będą mają wpływ tylko na okres przechowywania Odzyskiwanie. Jeśli od lewej do prawej są skonfigurowane dla bazy danych, nie będzie mieć wpływ. Aby uzyskać więcej informacji na temat zmiany okresy przechowywania od lewej do prawej, zobacz [długoterminowego przechowywania](sql-database-long-term-retention.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4ece2dc1df3d29a3024c7efe15dd8cecfd9666db
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663863"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528190"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Używanie raportów kondycji systemu do rozwiązywania problemów
 Składniki usługi Service Fabric platformy Azure udostępniają raportów kondycji systemu na wszystkich jednostek w klastrze, gotową do. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) tworzy i usuwa jednostki na podstawie raportów systemu. On również organizuje ich w hierarchii, która przechwytuje interakcje jednostki.
@@ -640,7 +640,7 @@ Inne wywołania interfejsu API można utknięcie znajdują się na **IReplicator
 
 - **IReplicator.CatchupReplicaSet**: To ostrzeżenie wskazuje, jedna z następujących czynności. Ma za mało zapasową replik. Aby zobaczyć, jeśli jest to możliwe, sprawdź stan repliki replik partycji lub raport o kondycji System.FM dla zablokowane ponownej konfiguracji. Lub replik nie potwierdza operacji. Polecenia cmdlet programu PowerShell `Get-ServiceFabricDeployedReplicaDetail` umożliwia określenie postępu wszystkich replik. Problem jest związany z replikami którego `LastAppliedReplicationSequenceNumber` wartość znajduje się za podstawowy `CommittedSequenceNumber` wartość.
 
-- **IReplicator.BuildReplica(<Remote ReplicaId>)**: Ostrzeżenie to wskazuje na problem w procesie kompilacji. Aby uzyskać więcej informacji, zobacz [cykl życia repliki](service-fabric-concepts-replica-lifecycle.md). Może być to spowodowane błędną konfiguracją adresu replikatora. Aby uzyskać więcej informacji, zobacz [skonfigurować stanowych usług Reliable Services](service-fabric-reliable-services-configuration.md) i [określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md). Może być również problem w węźle zdalnym.
+- **IReplicator.BuildReplica (\<zdalnego ReplicaId >)**: Ostrzeżenie to wskazuje na problem w procesie kompilacji. Aby uzyskać więcej informacji, zobacz [cykl życia repliki](service-fabric-concepts-replica-lifecycle.md). Może być to spowodowane błędną konfiguracją adresu replikatora. Aby uzyskać więcej informacji, zobacz [skonfigurować stanowych usług Reliable Services](service-fabric-reliable-services-configuration.md) i [określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md). Może być również problem w węźle zdalnym.
 
 ### <a name="replicator-system-health-reports"></a>Replikator raportów o kondycji systemu
 **Kolejka replikacji jest pełna:**

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046994"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549375"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -239,12 +239,27 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>Jaka jest cena analizy ruchu
 
 Analiza ruchu jest mierzone. Zliczanie opiera się na przetwarzanie danych dziennika przepływu przez usługę i przechowywania, wynikowy rozszerzone dzienników w obszarze roboczym usługi Log Analytics. 
 
 Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/pricing/details/network-watcher/), biorąc pod uwagę w regionie zachodnio-środkowe stany USA, jeśli dzienników przepływów danych przechowywanych na koncie magazynu, przetwarzane przez analizę ruchu wynosi 10 GB i rozszerzone dzienników pozyskanych w obszarze roboczym usługi Log Analytics jest 1 GB, a następnie odpowiednie opłaty są: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak często Traffic Analytics może przetwarzać dane?
+
+Zapoznaj się [sekcji agregacji danych](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) Traffic Analytics schematu i danych agregacji dokumencie
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak analiza ruchu zdecydować, czy adres IP jest złośliwego? 
+
+Analiza ruchu opiera się na systemach analizy zagrożeń wewnętrznych firmy Microsoft można uznać za jako złośliwych adresów IP. Te systemy wykorzystuj telemetrii różnych źródeł, takich jak produkty firmy Microsoft i usługi, jednostka przestępstw cyfrowych (DCU) firmy Microsoft, Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych i tworzenie partii analizy na ich podstawie. Niektóre z tych danych jest najważniejszymi wewnętrzny. Jeśli znanymi adresami IP pobierania z flagą malicios, zgłoś bilet pomocy technicznej, aby poznać szczegóły.
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Jak ustawić alerty na danych, analizy ruchu
+
+Analiza ruchu nie ma wbudowana obsługa alertów. Jednak ponieważ analizy ruchu, dane są przechowywane w usłudze Log Analytics można zapisać zapytania niestandardowe i ustawić alerty związane z nimi. Kroki:
+- Skróconym można użyć usługi Log Analytics w usłudze Traffic Analytics. 
+- Użyj [schematu opisane tutaj](traffic-analytics-schema.md) można zapisać zapytania 
+- Kliknij pozycję "Nowa reguła alertu" do utworzenia alertu
+- Zapoznaj się [dziennika alertów dokumentacji](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) do utworzenia alertu
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak można przejść za pomocą klawiatury w widoku mapy geograficznej?
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904852"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521666"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -78,12 +78,12 @@ Urządzenie HSM jest aprowizowane w sieci wirtualnej klientów. Oznacza to konie
 
 Po uzyskaniu tych plików należy zmodyfikować plik parametrów i wstawić preferowane nazwy zasobów. Oznacza to konieczność edytowania wierszy z wartością "value": "".
 
-- `namingInfix` Prefiks nazwy zasobów przez moduł HSM
-- `ExistingVirtualNetworkName` Nazwa sieci wirtualnej używane dla modułów HSM
-- `DedicatedHsmResourceName1` Nazwa zasobu przez moduł HSM w sygnatury centrum danych 1
-- `DedicatedHsmResourceName2` Nazwa zasobu przez sprzętowy moduł zabezpieczeń w centrum danych sygnatury 2
+- `namingInfix` Prefiks nazw zasobów modułu HSM
+- `ExistingVirtualNetworkName` Nazwa sieci wirtualnej używanej dla modułów HSM
+- `DedicatedHsmResourceName1` Nazwa zasobu modułu HSM w zasobach sprzętowych 1 centrum danych
+- `DedicatedHsmResourceName2` Nazwa zasobu modułu HSM w zasobach sprzętowych 2 centrum danych
 - `hsmSubnetRange` Zakres adresów IP podsieci dla modułów HSM
-- `ERSubnetRange` Zakres adresów IP podsieci dla bramy sieci Wirtualnej
+- `ERSubnetRange` Zakres adresów IP podsieci dla bramy sieci wirtualnej
 
 Przykład tych zmian jest następujący:
 
@@ -217,7 +217,7 @@ Narzędzie SSH jest używane do nawiązywania połączenia z maszyną wirtualną
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Używane hasło to hasło z pliku parametrów.
-Po zalogowaniu się do maszyny wirtualnej z systemem Linux możesz zalogować się do modułu HSM przy użyciu prywatnego adresu IP znalezionego w portalu dla zasobu <prefix>hsm_vnic.
+Gdy zarejestrowane do maszyny Wirtualnej systemu Linux, możesz zalogować się do modułu HSM przy użyciu prywatnego adresu IP w portalu dla zasobu \<prefiksu > hsm_vnic.
 
 ```powershell
 
@@ -278,6 +278,6 @@ Po wykonaniu kroków w tym samouczku zasoby dedykowanego modułu HSM zostaną za
 
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
-* [Networking](networking.md)
+* [Sieć](networking.md)
 * [Monitorowanie](monitoring.md)
 * [Możliwości obsługi](supportability.md)

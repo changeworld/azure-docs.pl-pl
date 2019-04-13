@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482610"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527170"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis
 
@@ -250,6 +250,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
 1. Czy były dużych poprzedzających kilka żądań o małym rozmiarze pamięci podręcznej, który upłynął limit czasu żądania? Parametr `qs` w błędzie komunikat informujący o tym ile żądań wysłanych z klienta do serwera, ale nie zostały przetworzone odpowiedzi. Tę wartość można zachować rośnie, ponieważ StackExchange.Redis korzysta z jednego połączenia TCP i jedną odpowiedź mogą być odczytane tylko w danym momencie. Mimo że upłynął limit czasu operacji pierwszy, go nie zatrzymuje większej ilości danych wysyłanych do lub z serwera. Inne żądania będą blokowane, aż do dużych żądanie zostało zakończone i może spowodować, że limity czasu. Jednym rozwiązaniem jest zminimalizować prawdopodobieństwo przekroczenia limitu czasu, zapewnia, że pamięć podręczna jest wystarczająco duży dla obciążenia i dzielenia dużych wartości na mniejsze części. Inne rozwiązanie możliwe jest użycie puli `ConnectionMultiplexer` obiektów w swoim kliencie, a następnie wybierz co najmniej załadować `ConnectionMultiplexer` wysyłając żądanie nowego. Podczas ładowania wielu obiektów połączenia uniemożliwiać pojedynczego limitu czasu będą powodować innych żądaniach również limit czasu.
 1. Jeśli używasz `RedisSessionStateProvider`, upewnij się, limit czasu ponawiania zostały ustawione prawidłowo. `retryTimeoutInMilliseconds` powinien być większy niż `operationTimeoutInMilliseconds`, w przeciwnym razie wystąpić brak ponownych prób. W poniższym przykładzie `retryTimeoutInMilliseconds` jest równa 3000. Aby uzyskać więcej informacji, zobacz [dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-session-state-provider.md) i [sposobu korzystania z parametrów konfiguracji dostawcy stanu sesji i dostawca wyjściowej pamięci podręcznej](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. Sprawdź użycie pamięci w usłudze Azure Cache serwera Redis przez [monitorowania](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` i `Used Memory`. Jeśli zasady eksmisji znajduje się w miejscu, rozpoczyna się Redis wykluczania klucze kiedy `Used_Memory` osiągnie rozmiar pamięci podręcznej. W idealnym przypadku `Used Memory RSS` powinny być tylko nieznacznie wyższe niż `Used memory`. Duża różnica oznacza, że istnieje fragmentacji pamięci (wewnętrznych lub zewnętrznych). Gdy `Used Memory RSS` jest mniejsza niż `Used Memory`, oznacza to część pamięci podręcznej została zapisana przez system operacyjny. Jeśli zamianę ten problem wystąpi, można oczekiwać, że niektóre znaczne opóźnienia. Ponieważ usługa Redis nie ma kontrolę nad jak jego alokacje są mapowane do stron pamięci wysokiej `Used Memory RSS` często jest wynikiem wzrost użycia pamięci. Gdy serwer Redis zwalnia pamięć, alokator zajmuje pamięć, ale może być lub może nie być pamięć powrót do systemu. Może być niezgodność między `Used Memory` zużycie wartości i pamięci podaną przez system operacyjny. Może być używana pamięć i wydane przez usługi Redis, ale nie udzieliła wstecz do systemu. Aby pomóc rozwiązać problemy z pamięcią, można wykonać następujące czynności:
 

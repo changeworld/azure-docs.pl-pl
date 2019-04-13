@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994951"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523328"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Wprowadzenie do usługi Knowledge Exploration Service
 
@@ -252,7 +252,7 @@ Po utworzeniu usługi w chmurze możesz użyć polecenia [`kes.exe deploy_servic
 
 [Zamień](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) zawartość miejsca przejściowego z miejscem produkcyjnym, tak aby ruch na żywo był teraz kierowany do nowo wdrożonej usługi. Ten proces można powtarzać w przypadku wdrażania zaktualizowanej wersji usługi z nowymi danymi. Podobnie jak w przypadku wszystkich innych usług w chmurze platformy Azure, możesz opcjonalnie użyć witryny Azure Portal do skonfigurowania [automatycznego skalowania](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md).
 
-W tym przykładzie wdrożono indeks *Academic* do miejsca przejściowego istniejącej usługi w chmurze za pomocą maszyn wirtualnych o rozmiarze *<vm_size>*. Użyj następującego polecenia:
+W tym przykładzie wdrożono *akademickich* indeksu, który ma miejsce na tymczasową istniejącej usługi w chmurze za pomocą  *\<vm_size >* maszyn wirtualnych. Użyj następującego polecenia:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 

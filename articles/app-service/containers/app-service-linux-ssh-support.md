@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d84a4dd0b69ce9ca7fc594dffce3238c620c426
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167137"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543977"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -35,71 +35,11 @@ Możesz również nawiązać kontenera bezpośrednio z lokalnej maszynie do prog
 
 ## <a name="open-ssh-session-in-browser"></a>Otwórz sesję SSH w przeglądarce
 
-Aby połączenia klienta SSH za pomocą usługi kontenera, aplikacja powinna być uruchomiona.
-
-Wklej następujący adres URL do przeglądarki i Zastąp \<nazwa_aplikacji > nazwą swojej aplikacji:
-
-```
-https://<app_name>.scm.azurewebsites.net/webssh/host
-```
-
-Jeśli nie są już uwierzytelniony, są wymagane do uwierzytelniania przy użyciu subskrypcji platformy Azure, aby połączyć. Po uwierzytelnieniu zobaczysz shell w przeglądarce, gdzie możesz uruchamiać polecenia wewnątrz kontenera.
-
-![Połączenie SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh-connection.png)
+[!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>Obsługa protokołu SSH za pomocą niestandardowych obrazów platformy Docker
 
-Aby niestandardowy obraz platformy Docker na potrzeby obsługi komunikacji SSH między kontenerem a klienta w witrynie Azure portal wykonaj następujące kroki dla obrazu platformy Docker.
-
-Te kroki są wyświetlane w repozytorium usługi Azure App Service jako [przykład](https://github.com/Azure-App-Service/node/blob/master/6.9.3/).
-
-1. Obejmują `openssh-server` instalacji w [ `RUN` instrukcji](https://docs.docker.com/engine/reference/builder/#run) w pliku Dockerfile obrazu i ustaw hasło do głównego konta do `"Docker!"`.
-
-    > [!NOTE]
-    > Ta konfiguracja nie zezwala na połączenia zewnętrzne z kontenerem. Protokół SSH może zostać oceniony jedynie za pomocą aparatu Kudu / SCM lokacji, który jest uwierzytelniany przy użyciu poświadczeń publikowania.
-
-    ```Dockerfile
-    # ------------------------
-    # SSH Server support
-    # ------------------------
-    RUN apt-get update \
-        && apt-get install -y --no-install-recommends openssh-server \
-        && echo "root:Docker!" | chpasswd
-    ```
-
-2. Dodaj [ `COPY` instrukcji](https://docs.docker.com/engine/reference/builder/#copy) do pliku Dockerfile, aby skopiować [sshd_config](https://man.openbsd.org/sshd_config) plik */etc/ssh/* katalogu. Plik konfiguracji powinien być oparty na pliku sshd_config w repozytorium GitHub Azure aplikacji usługi [tutaj](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config).
-
-    > [!NOTE]
-    > *Sshd_config* plik musi zawierać następujące lub połączenie nie powiedzie się: 
-    > * `Ciphers` musi zawierać co najmniej jedną z następujących: `aes128-cbc,3des-cbc,aes256-cbc`.
-    > * `MACs` musi zawierać co najmniej jedną z następujących: `hmac-sha1,hmac-sha1-96`.
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
-    ```
-
-3. Obejmują port 2222 w [ `EXPOSE` instrukcji](https://docs.docker.com/engine/reference/builder/#expose) dla pliku Dockerfile. Mimo iż hasło konta root jest znane, nie można uzyskać dostępu do portu 2222 z Internetu. Jest to tylko port wewnętrzny dostępny tylko przez kontenerów w sieci mostkowanej prywatnej sieci wirtualnej.
-
-    ```Dockerfile
-    EXPOSE 2222 80
-    ```
-
-4. Upewnij się uruchomić usługę SSH za pomocą skryptu powłoki (Zobacz przykład w [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
-
-    ```bash
-    #!/bin/bash
-    service ssh start
-    ```
-
-Plik Dockerfile używa [ `ENTRYPOINT` instrukcji](https://docs.docker.com/engine/reference/builder/#entrypoint) do uruchomienia skryptu.
-
-    ```Dockerfile
-    COPY init_container.sh /opt/startup
-    ...
-    RUN chmod 755 /opt/startup/init_container.sh
-    ...
-    ENTRYPOINT ["/opt/startup/init_container.sh"]
-    ```
+Zobacz [Konfigurowanie protokołu SSH w kontenerze niestandardowe](configure-custom-container.md#enable-ssh).
 
 ## <a name="open-ssh-session-from-remote-shell"></a>Otwórz sesję SSH z powłoki zdalnej
 
@@ -111,10 +51,10 @@ Za pomocą protokołu TCP tunelowania, możesz utworzyć połączenie sieciowe m
 
 Aby rozpocząć pracę, musisz zainstalować [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Aby zobaczyć, jak to działa bez konieczności instalowania interfejsu wiersza polecenia platformy Azure, otwórz [usługi Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<subskrypcji\_identyfikator >_,  _\<grupy\_name >_ i \_< aplikacji\_nazwa > _ dla aplikacji.
+Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<identyfikator subskrypcji >_,  _\<nazwa_grupy >_ i \__ < nazwa aplikacji > dla aplikacji.
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> &
+az webapp remote-connection create --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]

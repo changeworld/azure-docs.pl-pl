@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736553"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523413"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 
@@ -86,7 +86,7 @@ Aby utworzyć profil usługi Traffic Manager w regionie wschodnie stany USA, ist
     |-RelativeDnsName|Usługa Luis-dns-eastus|Jest to poddomeny dla usługi: Usługa luis-dns-eastus.trafficmanager.net|
     |-Czas wygaśnięcia|30|Interwał sondowania, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port oraz Protokół usługi LUIS jest 443 dla protokołu HTTPS|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Zastąp <appIdLuis> i <subscriptionKeyLuis> własnymi wartościami.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Zastąp `<appIdLuis>` i `<subscriptionKeyLuis>` własnymi wartościami.|
     
     Żądania zakończonego powodzeniem ma bez odpowiedzi.
 
@@ -154,7 +154,7 @@ Aby utworzyć profil usługi Traffic Manager dla regionu zachodnie stany USA, wy
     |-RelativeDnsName|Usługa Luis-dns-westus|Jest to poddomeny dla usługi: Usługa luis-dns-westus.trafficmanager.net|
     |-Czas wygaśnięcia|30|Interwał sondowania, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port oraz Protokół usługi LUIS jest 443 dla protokołu HTTPS|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Zastąp <appId> i <subscriptionKey> własnymi wartościami. Należy pamiętać, że ten klucz punktu końcowego różni się od klucza punktu końcowego wschód|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Zastąp `<appId>` i `<subscriptionKey>` własnymi wartościami. Należy pamiętać, że ten klucz punktu końcowego różni się od klucza punktu końcowego wschód|
     
     Żądania zakończonego powodzeniem ma bez odpowiedzi.
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919305"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528552"
 ---
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -45,10 +45,10 @@ Po przejściu do widoku kontrolera, powinny zostać wyświetlone tabeli, która 
 
 |Właściwość |Wartość |Opis |
 |---|---|---|
-|**Name (Nazwa)** |Imię i nazwisko użytkownika | Użytkownik na imię i nazwisko.
+|**Nazwa** |Imię i nazwisko użytkownika | Użytkownik na imię i nazwisko.
 |**Nazwa użytkownika** |Użytkownik<span>@domain.com</span> | Nazwa użytkownika, który służy do identyfikowania użytkownika.
-|**Podmiot** |Podmiot |Ciąg, który unikatowo identyfikuje użytkownika w sieci Web.|
-|**Identyfikator dzierżawy** |Guid | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacja.|
+|**Temat** |Podmiot |Ciąg, który unikatowo identyfikuje użytkownika w sieci Web.|
+|**Tenant ID (Identyfikator dzierżawy)** |Guid | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacja.|
 
 Ponadto powinien zostać wyświetlony spis wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [lista oświadczeń, które znajdują się w usłudze Azure AD identyfikator tokenu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -96,5 +96,3 @@ Można ograniczyć dostęp do logowania do kont użytkowników tylko, które zna
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Opcja 3: Użyj niestandardowej metody do sprawdzania poprawności wystawcy
 
 Możesz zaimplementować niestandardowy metodę do sprawdzania poprawności wystawcy przy użyciu **IssuerValidator** parametru. Aby uzyskać więcej informacji o tym, jak używać tego parametru, przeczytaj temat [klasy TokenValidationParameters](/previous-versions/visualstudio/dn464192(v=vs.114)).
-
-[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

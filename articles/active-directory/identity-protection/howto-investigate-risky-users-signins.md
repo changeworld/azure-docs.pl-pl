@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517603"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547060"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Instrukcje: Badanie ryzykownych użytkowników i logowań 
 
@@ -56,7 +56,7 @@ Raport ryzykownych użytkowników ma domyślny widok, który pokazuje:
 
 - Ostatnia aktualizacja ryzyka
 
-- Type
+- Typ
 
 - Stan
  
@@ -113,7 +113,7 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 
 - Poziom ryzyka
 
-- Type
+- Typ
 
 - Stan
 
@@ -151,7 +151,7 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 
 ### <a name="download-risky-users-data"></a>Pobierz dane ryzykownych użytkowników
 
-Jeśli chcesz pracować z nim poza witryny Azure portal można pobrać danych ryzykownych użytkowników. Klikając przycisk Pobierz tworzy plik CSV ostatnich rekordów 5K. 
+Jeśli chcesz pracować z nim poza witryny Azure portal można pobrać danych ryzykownych użytkowników. Klikając przycisk Pobierz tworzy plik CSV najnowszych klient może dysponować 2500 rekordów. 
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/07.png)
 
@@ -320,7 +320,7 @@ Możliwe wartości:
 
 ### <a name="download-risky-sign-ins-data"></a>Pobierz dane ryzykowne logowania
 
-Jeśli chcesz pracować z nim poza portalem Azure, można pobrać danych dotyczący ryzykownych logowań. Klikając przycisk Pobierz tworzy plik CSV ostatnich rekordów 5K. 
+Jeśli chcesz pracować z nim poza portalem Azure, można pobrać danych dotyczący ryzykownych logowań. Klikając przycisk Pobierz tworzy plik CSV najnowszych klient może dysponować 2500 rekordów. 
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/15.png)
 

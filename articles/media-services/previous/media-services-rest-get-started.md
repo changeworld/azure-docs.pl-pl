@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fea9bae9fadc20622a6ca3d2e08db9cd3a92c800
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295134"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523991"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST  
 
@@ -560,7 +560,7 @@ Jeśli to się powiedzie, jest zwracany następującą odpowiedź:
 Istnieje kilka ważnych rzeczy, należy pamiętać, we wszystkich żądaniach zadania:
 
 * Taskbody — właściwości należy użyć literał XML, aby zdefiniować liczbę dane wejściowe lub wyjściowe zasoby, które są używane przez zadanie. Ten artykuł zadań zawiera definicji schematu XML dla pliku XML.
-* W definicji taskbody — wartość każdego wewnętrzny <inputAsset> i <outputAsset> musi być ustawiona jako JobInputAsset(value) lub JobOutputAsset(value).
+* W definicji taskbody — wartość każdego wewnętrzny `<inputAsset>` i `<outputAsset>` musi być ustawiona jako JobInputAsset(value) lub JobOutputAsset(value).
 * Zadanie może mieć wielu zasobów danych wyjściowych. Jeden JobOutputAsset(x) należy używać tylko jeden raz jako dane wyjściowe zadania w zadaniu.
 * Możesz określić JobInputAsset lub JobOutputAsset jako wejściowego elementu zadania.
 * Zadania muszą nie tworzą cyklu.
@@ -572,7 +572,7 @@ Istnieje kilka ważnych rzeczy, należy pamiętać, we wszystkich żądaniach za
 >
 
 * InputMediaAssets jest mapowany na jeden lub więcej zasobów, które zostały utworzone w usłudze Media Services. OutputMediaAssets są tworzone przez system. Nie odwołują się do istniejącego zasobu.
-* OutputMediaAssets może być nazwane za pomocą atrybutu assetName. Jeśli ten atrybut nie jest obecny, a następnie nazywa OutputMediaAsset niezależnie od tekst wewnętrzny wartość <outputAsset> element jest sufiksem Nazwa zadania wartość lub wartość identyfikatora zadania (w przypadku, w którym nie zdefiniowano właściwości Name). Na przykład jeśli ustawisz wartość assetName do "Przykładowy", następnie właściwość OutputMediaAsset Name będzie miał ustawienie "Przykładowy". Jednak jeśli nie ustawiona wartość assetName, ale ustawiona na nazwę zadania, aby "NewJob", nazwa OutputMediaAsset będzie "_NewJob JobOutputAsset (wartość)".
+* OutputMediaAssets może być nazwane za pomocą atrybutu assetName. Jeśli ten atrybut nie jest obecny, a następnie nazywa OutputMediaAsset niezależnie od tekst wewnętrzny wartość `<outputAsset>` element jest sufiksem Nazwa zadania wartość lub wartość identyfikatora zadania (w przypadku, w którym nie zdefiniowano właściwości Name). Na przykład jeśli ustawisz wartość assetName do "Przykładowy", następnie właściwość OutputMediaAsset Name będzie miał ustawienie "Przykładowy". Jednak jeśli nie ustawiona wartość assetName, ale ustawiona na nazwę zadania, aby "NewJob", nazwa OutputMediaAsset będzie "_NewJob JobOutputAsset (wartość)".
 
     Poniższy przykład pokazuje, jak ustawić atrybutu assetName:
 

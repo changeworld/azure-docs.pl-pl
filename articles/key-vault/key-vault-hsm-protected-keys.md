@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630616"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522732"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -228,7 +228,7 @@ Zestaw narzędzi zawiera:
 * Pakiet środowiska zabezpieczeń Security World, którego nazwa zaczyna się od **BYOK-SecurityWorld - pkg-.**
 * Skrypt w języku python o nazwie **verifykeypackage.py.**
 * Plik wykonywalny wiersza polecenia o nazwie **KeyTransferRemote.exe** oraz powiązane biblioteki dll.
-* Pakiet redystrybucyjny Visual C++, o nazwie **vcredist_x64.exe.**
+* Element wizualny C++ do dystrybucji pakiet o nazwie **vcredist_x64.exe.**
 
 Skopiuj pakiet na dysku USB lub innego przenośnego urządzenia pamięci masowej.
 
@@ -445,7 +445,7 @@ Podczas uruchamiania tego polecenia Zastąp *contosokey* z taką samą wartość
 
 Zostanie wyświetlony monit monit o podłączenie kart administratora zabezpieczeń świata.
 
-Po zakończeniu wykonywania polecenia zostanie wyświetlony **wynik: Powodzenie** a kopia klucza z ograniczonymi uprawnieniami znajdują się w pliku o nazwie key_xferacId_<contosokey>.
+Po zakończeniu wykonywania polecenia zostanie wyświetlony **wynik: Powodzenie** a kopia klucza z ograniczonymi uprawnieniami znajdują się w pliku o nazwie key_xferacId_\<contosokey >.
 
 Może być bada, listy ACL za pomocą następującego polecenia, używając narzędzi firmy Thales:
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882754"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522308"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault przy użyciu aplikacji sieci web Node 
 
@@ -150,7 +150,7 @@ Przejdź do swojej nowo utworzoną aplikację internetową, a zobaczysz, że dzi
     ```
     http://<app name>.azurewebsites.net
     ```
-Poprzednie polecenie tworzy również włączone Git aplikacji, która umożliwia wdrażanie na platformie Azure ze swojego lokalnego repozytorium Git. Lokalne repozytorium Git jest skonfigurowana z tym adresem URL: https://<username>@ .git.scm.azurewebsites.net/ < nazwa_aplikacji > < nazwa_aplikacji >.
+Poprzednie polecenie tworzy również włączone Git aplikacji, która umożliwia wdrażanie na platformie Azure ze swojego lokalnego repozytorium Git. Lokalne repozytorium Git jest skonfigurowana z tym adresem URL: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
 
 Po zakończeniu wprowadzania zmian poprzednim poleceniu, możesz Dodaj zdalną platformę Azure do lokalnego repozytorium Git. Zastąp `<url>` adres URL repozytorium Git.
 
@@ -194,9 +194,9 @@ Uruchom następujące polecenie, aby wdrożyć aplikację na platformie Azure:
 git push azure master
 ```
 
-Później po przejściu do https://<app_name>.azurewebsites.net, zobaczysz wartość wpisu tajnego. Upewnij się, że został zastąpiony nazwą <YourKeyVaultName> nazwą magazynu.
+Później, po przejściu do `https://<app_name>.azurewebsites.net`, możesz zobaczyć wartość wpisu tajnego. Upewnij się, że został zastąpiony nazwą `<YourKeyVaultName>` nazwą magazynu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zestaw Azure SDK dla oprogramowania Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+> [Zestaw Azure SDK dla węzła](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

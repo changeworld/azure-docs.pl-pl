@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860715"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549691"
 ---
 # <a name="schema-format"></a>Format schematu
 
@@ -41,16 +41,16 @@ W nazwach atrybutów jest rozróżniana wielkość liter identyfikatorów, któr
 
 Poniżej przedstawiono listę typów danych obsługiwanych atrybutu:
 
-| Type | Opis | Operacje | Przykład |
+| Typ | Opis | Operacje | Przykład |
 |------|-------------|------------|---------|
-| String | Ciąg (1 – 1024 znaki) | Equals, starts_with | "hello world" |
-| Int32 | 32-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 2016 |
-| Int64 | 64-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 9876543210 |
-| Double | Wartość zmiennoprzecinkowa o podwójnej precyzji | równa się, starts_with, is_between | 1.602e-19 |
-| Date | Data (1400-01-01 do 9999-12-31) | Equals, is_between | '2016-03-14' |
-| Guid | Unikatowy identyfikator globalny | równa się | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Obiekt blob | Wewnętrznie skompresowanych danych nieindeksowaną | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby i każdej organizacji, na świecie, aby mogli osiągnąć więcej" |
-| Złożone | Kompozycja wiele atrybutów podrzędnych| *Nie dotyczy* | {"Name": "harry shum", "Przynależności": "microsoft"} |
+| `String` | Ciąg (1 – 1024 znaki) | Equals, starts_with | "hello world" |
+| `Int32` | 32-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 2016 |
+| `Int64` | 64-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 9876543210 |
+| `Double` | Wartość zmiennoprzecinkowa o podwójnej precyzji | równa się, starts_with, is_between | 1.602e-19 |
+| `Date` | Data (1400-01-01 do 9999-12-31) | Equals, is_between | '2016-03-14' |
+| `Guid` | Unikatowy identyfikator globalny | równa się | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| `Blob` | Wewnętrznie skompresowanych danych nieindeksowaną | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby i każdej organizacji, na świecie, aby mogli osiągnąć więcej" |
+| `Composite` | Kompozycja wiele atrybutów podrzędnych| *Nie dotyczy* | {"Name": "harry shum", "Przynależności": "microsoft"} |
 
 Atrybuty ciągu są używane do reprezentowania wartości ciągów, które mogą się pojawić jako część zapytania użytkownika.  Obsługują one dokładne dopasowanie *jest równa* operacji, jak również *starts_with* operacji scenariuszach uzupełniania zapytań, na przykład dopasowania "micros" z "microsoft".  Bez uwzględniania wielkości liter i rozmyte dopasowywanie do obsługi błędów pisowni będą obsługiwane w przyszłych wydaniach.
 

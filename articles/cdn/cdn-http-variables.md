@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013547"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528173"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Zmienne HTTP dla usługi Azure CDN aparatu reguł
 Zmienne HTTP udostępniają oznacza, że za pomocą którego można pobrać metadanych żądań i odpowiedzi HTTP. Następnie można te metadane dynamicznie zmieniać żądania lub odpowiedzi. Używanie zmiennych HTTP jest ograniczone do następujących funkcje aparatu reguł:
@@ -38,7 +38,7 @@ W poniższej tabeli opisano obsługiwane zmienne HTTP. Po geograficznie metadany
 | ---- | -------- | ----------- | ------------ |
 | Numer ASN (żądającego) | % {geo_asnum} | Wskazuje żądającego jako numer. <br /><br />**Przestarzałe:** % {virt_dst_asnum}. <br />Ta zmienna została zastąpiona % {geo_asnum}. Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej. | AS15133 |
 | Miasto (żądającego) | %{geo_city} | Wskazuje Miasto żądającego. | Los Angeles |
-| Kontynent (żądającego) | % {geo_continent} | Wskazuje, kontynent żądającego za pośrednictwem jej skrót. <br />Prawidłowe wartości to: <br />AF: Afryka<br />AS: Azja<br />UE: Europa<br />NAZWA: Ameryka Północna<br />OC: Oceania<br />AMERYKA POŁUDNIOWA: Ameryka Południowa<br /><br />**Przestarzałe:** % {virt_dst_continent}. <ber />Ta zmienna została zastąpiona % {geo_continent}. <br />Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej.| ND |
+| Kontynent (żądającego) | % {geo_continent} | Wskazuje, kontynent żądającego za pośrednictwem jej skrót. <br />Prawidłowe wartości to: <br />AF: Afryka<br />AS: Azja<br />UE: Europa<br />NAZWA: Ameryka Północna<br />OC: Oceania<br />AMERYKA POŁUDNIOWA: Ameryka Południowa<br /><br />**Przestarzałe:** % {virt_dst_continent}. <br />Ta zmienna została zastąpiona % {geo_continent}. <br />Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej.| ND |
 | Wartość pliku cookie | %{cookie_Cookie} | Zwraca wartość odpowiadającą kluczowi plik cookie identyfikowane przez określenie pliku Cookie. | Przykładowe zastosowanie: <br />%{cookie__utma}<br /><br />Wartość próbek:<br />111662281.2.10.1222100123 |
 | Kraj (żądającego) | % {geo_country} | Wskazuje żądającego kraju pochodzenia za pośrednictwem jego numer kierunkowy kraju. <br />**Przestarzałe:** % {virt_dst_country}. <br /><br />Ta zmienna została zastąpiona % {geo_country}. Mimo że regułę, która korzysta z tej zmiennej przestarzałe będą nadal działać, należy zaktualizować go do używania nowej zmiennej. | USA |
 | Obszar wyznaczonym rynku (żądającego) | %{geo_dma_code} |Wskazuje na rynku media żądającego przez jego kod regionu. <br /><br />To pole ma zastosowanie tylko do żądania, które pochodzą ze Stanów Zjednoczonych.| 745 |

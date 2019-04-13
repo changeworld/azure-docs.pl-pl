@@ -4,22 +4,24 @@ description: Ta strona zawiera informacje dotyczące grup reguł CRS zapory apli
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279707"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523923"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Oferowana listę grup reguł CRS zapory aplikacji sieci web i reguł
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Grupy reguł CRS zapory aplikacji sieci Web i reguł
 
-Zapory aplikacji sieci web (WAF) Application Gateway chroni aplikacje sieci web z najpopularniejszych luk w zabezpieczeniach i luki w zabezpieczeniach. Jest to realizowane za pomocą reguł, które są zdefiniowane w oparciu o podstawowych zestawów reguł OWASP 2.2.9 lub 3.0. Te reguły można wyłączyć na podstawie przez reguły. Ten artykuł zawiera bieżące reguły i oferowana zestawów reguł.
+Zapory aplikacji sieci web (WAF) Application Gateway chroni aplikacje sieci web z najpopularniejszych luk w zabezpieczeniach i luki w zabezpieczeniach. Jest to realizowane za pomocą reguł, które są zdefiniowane w oparciu o podstawowych zestawów reguł OWASP wersji 3.0 lub 2.2.9. Te reguły można wyłączyć na podstawie przez reguły. Ten artykuł zawiera bieżące reguły i oferowana zestawów reguł.
 
-Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzystania z bramy aplikacji przy użyciu zapory aplikacji sieci web.  Każda tabela dotyczy znaleziono w grupie reguły dla określonej wersji CRS reguł.
+Następujących grup reguł i reguł są dostępne podczas korzystania z bramy aplikacji przy użyciu zapory aplikacji sieci web.
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a> Zestawy reguł
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Ogólne</p>
 
@@ -50,7 +52,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |---|---|
 |920100|Nieprawidłowe żądanie HTTP wiersza|
 |920130|Nie można przeanalizować treści żądania.|
-|920140|Wieloczęściowy żądania, treści ścisła Weryfikacja nie powiodła się = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} %@{MULTIPART_HEADER_FOLDING KF} LF % @ {MULTIPART_LF_LINE}     %@{MULTIPART_FILE_LIMIT_EXCEEDED FINLANDIA %@{MULTIPART_INVALID_HEADER_FOLDING BĘDZIE %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|920140|Treść żądania wieloczęściowej wiadomości ścisła Weryfikacja nie powiodła się|
 |920160|Nagłówek Content-Length protokołu HTTP nie jest liczbą.|
 |920170|Pobierz ani HEAD żądania z treść.|
 |920180|Brak nagłówka Content-Length żądania POST.|
@@ -216,7 +218,9 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |943110|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z odwołania Wyłącz domeny|
 |943120|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z nie odwołania|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+
+## <a name="owasp229"></a> Zestawy reguł
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |960911|Nieprawidłowe żądanie HTTP wiersza|
 |981227|Błąd Apache = nieprawidłowy identyfikator URI żądania.|
 |960912|Nie można przeanalizować treści żądania.|
-|960914|Wieloczęściowy żądania, treści ścisła Weryfikacja nie powiodła się = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} %@{MULTIPART_HEADER_FOLDING KF} LF % @ {MULTIPART_LF_LINE}     %@{MULTIPART_FILE_LIMIT_EXCEEDED FINLANDIA %@{MULTIPART_INVALID_HEADER_FOLDING BĘDZIE %@{MULTIPART_INVALID_QUOTING IQ SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|960914|Treść żądania wieloczęściowej wiadomości ścisła Weryfikacja nie powiodła się|
 |960915|Parser wieloczęściowej wiadomości wykryto możliwe niedopasowane granicy.|
 |960016|Nagłówek Content-Length protokołu HTTP nie jest liczbą.|
 |960011|Pobierz ani HEAD żądania z treść.|
@@ -472,6 +476,8 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |950921|Udostępniający Tylne wejście do|
 |950922|Udostępniający Tylne wejście do|
 
+---
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web, odwiedzając: [Dostosowywanie reguł zapory aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)
+Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web: [Dostosowywanie reguł zapory aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)

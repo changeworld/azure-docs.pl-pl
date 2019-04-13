@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664119"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527054"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Klasa Azure usługi Service Fabric stanowa niezawodnych usług StatefulServiceBase emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzenia, które mogą służyć do debugowania usługi dają wgląd w sposób operacyjnego środowiska uruchomieniowego i pomóc w rozwiązywaniu problemów.
@@ -106,7 +106,7 @@ W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest ciąg repr
 | --- | --- |
 | Rozpoczęcia operacji transakcji/s | Liczba nowych zapisu utworzone transakcje na sekundę.|
 | Operacje transakcji/s | Liczba operacji Dodawanie/aktualizowanie/usuwanie na elementów reliable collections na sekundę.|
-| Średni Opóźnienie opróżniania (ms) | Liczba bajtów opróżnianych na dysk przez replikatora transakcyjnego na sekundę |
+| Bajty opróżniania dziennika/s | Liczba bajtów opróżnianych na dysk przez replikatora transakcyjnego na sekundę |
 | Ograniczone operacje/s | Liczba operacji odrzuconych w każdej sekundzie przez replikatora transakcyjnego ze względu na ograniczenie. |
 | Średni Zatwierdzanie ms transakcji | Opóźnienie średni zatwierdzenia na transakcję w milisekundach |
 | Średni Opóźnienie opróżniania (ms) | Średni czas trwania operacji opróżniania dysku, zainicjowanych przez Replikator transakcyjny (w milisekundach) |
