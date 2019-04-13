@@ -44,17 +44,16 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Zestaw SDK systemu Android</a>'
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">Zestaw SDK systemu iOS</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">Zestaw SDK .NET</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">Zestaw SDK platformy .NET</a>'
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">Repozytorium przykładów (inne platformy)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
+          - html: <a href="/azure/notification-hubs/samples-powershell">Program PowerShell</a>
   - title: Dokumentacja
     items:
       - type: list
         style: unordered
         items:
           - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
-          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">Zestaw SDK .NET</a>
-          - html: <a href="/rest/api/notificationhubs">Interfejs API REST zarządzania</a>
-          - html: '<a href="https://docs.microsoft.com/previous-versions/azure/reference/dn223264(v%3dazure.100)">Interfejs API REST usługi Notification Hubs</a>'
+          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">Zestaw SDK platformy .NET</a>
+          - html: <a href="/rest/api/notificationhubs">Dokumentacja interfejsu API REST</a>
