@@ -72,7 +72,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi Azure SQL Data Warehouse, 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **AzureSqlDW** |Yes |
-| Parametry połączenia |Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Data Warehouse dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Yes |
+| connectionString |Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Data Warehouse dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Yes |
 
 > [!IMPORTANT]
 > Konfigurowanie [zapory bazy danych SQL Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) a serwerem bazy danych do [Zezwalaj usługom Azure na dostęp do serwera](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Ponadto jeśli dane są kopiowane do usługi Azure SQL Data Warehouse z zewnętrznej platformy Azure w tym z lokalnymi źródłami danych za pomocą bramy fabryki danych, należy skonfigurować odpowiedni zakres adresów IP dla maszyny, która wysyła dane do usługi Azure SQL Data Warehouse.
@@ -147,7 +147,7 @@ GO
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że po oczyszczeniu danych określonego wycinka. Aby uzyskać więcej informacji, zobacz [powtarzalność części](#repeatability-during-copy). |Instrukcja zapytania. |Nie |
 | allowPolyBase |Wskazuje, czy do korzystania z technologii PolyBase (jeśli ma zastosowanie) zamiast mechanizmu BULKINSERT. <br/><br/> **Przy użyciu technologii PolyBase jest zalecany sposób ładowania danych do usługi SQL Data Warehouse.** Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji ograniczeń i szczegółów. |True <br/>FALSE (domyślnie) |Nie |
-| Usługi |Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
+| polyBaseSettings |Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
 | rejectValue |Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się. <br/><br/>Dowiedz się więcej na temat opcji odrzucania programu PolyBase w **argumenty** części [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tematu. |0 (domyślnie), 1, 2... |Nie |
 | rejectType |Określa, czy opcja rejectValue jest określony jako wartość literału lub wartości procentowej. |Wartość (ustawienie domyślne), wartość procentowa |Nie |
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed programu PolyBase ponownie oblicza odsetek odrzuconych wierszy. |1, 2, … |Tak, jeśli **rejectType** jest **procent** |
@@ -276,10 +276,10 @@ Poniższa tabela zawiera przykłady dotyczące sposobu określania **tableName**
 
 | Schemat bazy danych | Nazwa tabeli | Właściwość JSON tableName |
 | --- | --- | --- |
-| dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
-| dbo1 |MyTable |dbo1. MyTable lub [dbo1]. [MyTable] |
-| dbo |My.Table |[My.Table] lub [dbo]. [My.Table] |
-| dbo1 |My.Table |[dbo1]. [My.Table] |
+| dbo |MyTable |MyTable lub dbo.MyTable lub [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable lub [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] lub [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Jeśli zostanie wyświetlony następujący błąd, może to być problem z wartością, która została określona jako właściwość tableName. Zobacz tabelę w prawidłowy sposób określić wartości dla właściwości JSON tableName.
 
@@ -308,22 +308,22 @@ Data Factory tworzy tabelę w magazynie docelowym o takiej nazwie tabeli w magaz
 | TinyInt | TinyInt |
 | Bit | Bit |
 | Decimal | Decimal |
-| Liczbowy | Decimal |
-| Liczba zmiennoprzecinkowa | Liczba zmiennoprzecinkowa |
-| pieniędzy | pieniędzy |
+| Numeric | Decimal |
+| Float | Float |
+| Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binarny | Binarny |
-| varbinary | Varbinary (maksymalnie 8000) |
+| Binary | Binary |
+| Varbinary | Varbinary (maksymalnie 8000) |
 | Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Time | Time |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
-| Tekst | Varchar (maksymalnie 8000) |
+| Text | Varchar (maksymalnie 8000) |
 | NText | NVarChar (maksymalnie 4000) |
-| Image (Obraz) | VarBinary (maksymalnie 8000) |
+| Image | VarBinary (maksymalnie 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -346,36 +346,36 @@ Mapowanie jest taka sama jak [mapowanie typu danych SQL Server, ADO.NET](https:/
 | Typ aparatu bazy danych programu SQL Server | Typ .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| dane binarne |Byte[] |
-| Bitowe |Wartość logiczna |
-| Char |Ciąg, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Data/godzina |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Dziesiętna |Dziesiętna |
-| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |Podwójne |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| pieniędzy |Dziesiętna |
-| nchar |Ciąg, Char] |
-| ntext |Ciąg, Char] |
-| Numeryczne |Dziesiętna |
-| nvarchar |Ciąg, Char] |
-| rzeczywiste |Pojedyncze |
-| ROWVERSION |Byte[] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Dziesiętna |
-| sql_variant |Obiekt * |
-| tekst |Ciąg, Char] |
-| time |Przedział czasu |
-| sygnatura czasowa |Byte[] |
-| tinyint |Bajt |
-| uniqueidentifier |Identyfikator GUID |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
-| varchar |Ciąg, Char] |
+| varchar |String, Char[] |
 | xml |Xml |
 
 Można również mapować kolumny z zestawu danych źródłowych do kolumn z zestaw danych ujścia w definicji działania kopiowania. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
