@@ -99,7 +99,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - ME(Montenegro)
 
-        - MK (Macedonia, BJR)
+        - MK (Macedonia Północna)
 
         - MT(Malta)
 

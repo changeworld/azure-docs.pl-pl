@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure NetApp Files
+metadata:
+  title: Dokumentacja usługi Azure NetApp Files
+  description: 'Dowiedz się, jak skonfigurować woluminy, uzyskać do nich dostęp i zarządzać nimi za pomocą usługi Azure NetApp Files.'
+  author: b-juche
+  ms.author: b-juche
+  ms.service: azure-netapp-files
+  ms.topic: landing-page
+  ms.date: 04/10/2019
+abstract:
+  description: 'Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami. <p>Korzystanie z usługi Azure NetApp Files wymaga dołączenia do programu Podglądu publicznego. Musisz też być na liście dozwolonych, aby uzyskać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Aby poprosić o dołączenie do programu podglądu publicznego, zobacz <a href="azure-netapp-files-register">Rejestrowanie w usłudze Azure NetApp Files</a>.</p>'
+sections:
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak skonfigurować usługę Azure NetApp Files i utworzyć wolumin za pomocą następujących metod:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
+            text: Azure Portal
+            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">Interfejs API REST</a></p>'
+          - title: Azure Resource Manager
+            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Szablony usługi Resource Manager</a></p>'

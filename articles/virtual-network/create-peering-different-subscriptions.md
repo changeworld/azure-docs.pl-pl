@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492298"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528265"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie, wirtualne sieci równorzędne — różne subskrypcje usługa Resource Manager
 
@@ -27,9 +27,9 @@ Kroki, aby utworzyć wirtualne sieci równorzędne są różne w zależności od
 
 |Model wdrażania platformy Azure  | Subskrypcja platformy Azure  |
 |--------- |---------|
-|[Resource Manager — w obu przypadkach](tutorial-connect-virtual-networks-portal.md) |Ten sam|
-|[Jedna sieć — Resource Manager, druga — model klasyczny](create-peering-different-deployment-models.md) |Ten sam|
-|[Jedna sieć — Resource Manager, druga — model klasyczny](create-peering-different-deployment-models-subscriptions.md) |Różne|
+|[Obie usługi Resource Manager](tutorial-connect-virtual-networks-portal.md) |Ten sam|
+|[Jeden usługi Resource Manager, druga — Model Klasyczny](create-peering-different-deployment-models.md) |Ten sam|
+|[Jeden usługi Resource Manager, druga — Model Klasyczny](create-peering-different-deployment-models-subscriptions.md) |Różne|
 
 Nie można utworzyć wirtualnej sieci równorzędnej między dwiema sieciami wirtualnymi wdrożonymi za pośrednictwem klasycznego modelu wdrażania. Jeśli zachodzi potrzeba łączenia sieci wirtualnych, zarówno utworzone za pomocą klasycznego modelu wdrażania, możesz użyć platformy Azure [bramy sieci VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) do łączenia sieci wirtualnych.
 
@@ -61,7 +61,7 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
 7. Wybierz **Współautor sieci** w **roli** pole.
 8. W **wybierz** wybierz *Użytkownik_b*, lub wpisz adres e-mail firmy Użytkownik_b ją wyszukać.
 9. Wybierz pozycję **Zapisz**.
-10. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
+10. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.
 12. Wykonaj kroki 2 – 3, wprowadź lub wybierz następujące wartości w kroku 3:
 
@@ -74,7 +74,7 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Lokalizacja**: *Wschodnie stany USA*
 
 13. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetB*. Wybierz **myVnetB** , gdy pojawia się w wynikach wyszukiwania.
-14. W obszarze **myVnetB**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. W obszarze **myVnetB**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
 15. Wybierz **kontrola dostępu (IAM)** w obszarze **myVnetB**, a następnie wykonaj kroki 5 – 10 myVnetB, wprowadzając **Użytkownik_a** w kroku 8.
 16. Wyloguj się z portalu jako UżytkownikB, a następnie zaloguj się jako użytkownik a.
 17. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Wybierz **myVnetA** , gdy pojawia się w wynikach wyszukiwania.
@@ -111,7 +111,7 @@ Następujące skrypty:
 Zamiast instalowania interfejsu wiersza polecenia i jego zależności, można użyć usługi Azure Cloud Shell. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Wybierz **wypróbuj** skrypt, który następuje, i wywołuje Cloud Shell, że możesz zalogować się do konta platformy Azure za pomocą przycisku.
 
 1. Otwórz sesję programu interfejsu wiersza polecenia, a następnie zaloguj się do platformy Azure jako Użytkownika_a przy użyciu `azure login` polecenia. Zaloguj się przy użyciu konta musi mieć uprawnienia niezbędne do tworzenia wirtualnej sieci równorzędnej. Aby uzyskać listę uprawnień, zobacz [wirtualnych sieci równorzędnych uprawnienia](virtual-network-manage-peering.md#permissions).
-2. Skopiuj poniższy skrypt do edytora tekstów na komputerze PC, Zastąp `<SubscriptionA-Id>` identyfikator SubscriptionA, a następnie skopiuj zmodyfikowany skrypt, wklej go w sesji interfejsu wiersza polecenia i naciśnij klawisz `Enter`. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź polecenie "az account show". Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji
+2. Skopiuj poniższy skrypt do edytora tekstów na komputerze PC, Zastąp `<SubscriptionA-Id>` identyfikator SubscriptionA, a następnie skopiuj zmodyfikowany skrypt, wklej go w sesji interfejsu wiersza polecenia i naciśnij klawisz `Enter`. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji
 
     ```azurecli-interactive
     # Create a resource group.

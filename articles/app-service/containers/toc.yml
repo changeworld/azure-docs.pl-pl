@@ -23,7 +23,7 @@ items:
     href: quickstart-python.md
   - name: Tworzenie aplikacji Ruby
     href: quickstart-ruby.md
-  - name: Tworzenie aplikacji Docker/Go
+  - name: Uruchamianie niestandardowego kontenera
     href: quickstart-docker-go.md
   - name: Tworzenie aplikacji z wieloma kontenerami
     href: quickstart-multi-container.md
@@ -48,7 +48,7 @@ items:
       href: tutorial-java-enterprise-postgresql-app.md
   - name: Aplikacja z wieloma kontenerami
     href: tutorial-multi-container-app.md
-  - name: Niestandardowy obraz Docker
+  - name: Uruchamianie kontenera za pomocą usługi ACR
     href: tutorial-custom-docker-image.md
   - name: Mapowanie domeny niestandardowej
     href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -72,10 +72,6 @@ items:
     href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Środowisko usługi App Service
     href: ../environment/intro.md
-  - name: Przewodnik dla deweloperów języka Java
-    href: app-service-linux-java.md
-  - name: Java Enterprise — przewodnik
-    href: app-service-java-enterprise.md
   - name: Przychodzące i wychodzące adresy IP
     href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Uwierzytelnianie i autoryzacja
@@ -88,10 +84,22 @@ items:
   items:
   - name: Konfigurowanie aplikacji
     items:
-    - name: Obraz języka Python
-      href: how-to-configure-python.md
     - name: Używanie ustawień aplikacji
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Konfigurowanie platformy ASP.NET Core
+      href: configure-language-dotnetcore.md
+    - name: Konfigurowanie języka Node.js
+      href: configure-language-nodejs.md
+    - name: Konfigurowanie języka PHP
+      href: configure-language-php.md
+    - name: Konfigurowanie środowiska Java
+      href: configure-language-java.md
+    - name: Konfigurowanie języka Python
+      href: how-to-configure-python.md
+    - name: Konfigurowanie języka Ruby
+      href: configure-language-ruby.md
+    - name: Konfigurowanie kontenera niestandardowego
+      href: configure-custom-container.md
     - name: Udostępnianie zawartości za pomocą usługi Storage
       href: how-to-serve-content-from-azure-storage.md
   - name: Wdrażanie na platformie Azure
@@ -158,8 +166,6 @@ items:
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Włączanie dzienników
       href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Integracje rozwiązania Java APM
-      href: how-to-java-apm-monitoring.md
   - name: Zarządzanie aplikacją
     items:
     - name: Tworzenie kopii zapasowej aplikacji
@@ -222,9 +228,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Często zadawane pytania dotyczące konfiguracji i zarządzania
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719527"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544876"

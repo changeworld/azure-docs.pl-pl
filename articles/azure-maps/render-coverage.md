@@ -276,7 +276,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Liechtenstein             | ✓ | ✓ |
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
-| BJR Macedonia                 | ✓ | ✓ |
+| Macedonia Północna                 | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |

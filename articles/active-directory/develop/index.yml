@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ab6fd4a2becde56ed538581561eb170f25c57278
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728915"
 documentType: LandingData
 title: Platforma tożsamości firmy Microsoft (Azure Active Directory dla deweloperów)
 metadata:
   title: Platforma tożsamości firmy Microsoft (Azure Active Directory dla deweloperów)
-  description: Dowiedz się, jak za pomocą platformy tożsamości firmy Microsoft tworzyć aplikacje, które bezpiecznie logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów.
+  description: 'Dowiedz się, jak za pomocą platformy tożsamości firmy Microsoft tworzyć aplikacje, które bezpiecznie logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów.'
   services: active-directory
   author: CelesteDG
   manager: mtillman
@@ -21,242 +15,242 @@ metadata:
   ms.date: 09/24/2018
   ms.author: celested
 abstract:
-  description: Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów. Jest to kompleksowa platforma składająca się z usługi uwierzytelniania, bibliotek typu open source, funkcji rejestrowania i konfigurowania aplikacji, pełnej dokumentacji dla deweloperów, przykładów kodu oraz innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowe protokoły branżowe, takie jak OAuth 2.0 i OpenID Connect.
+  description: 'Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API opracowanych przez deweloperów. Jest to w pełni wyposażona platforma, która obejmuje usługę uwierzytelniania zgodną ze standardami OAuth 2.0 i OpenID Connect, biblioteki typu open source, rejestrację i konfigurację aplikacji, niezawodną dokumentację koncepcyjną i referencyjną, przykłady szybkiego startu, przykłady kodu, samouczki oraz przewodniki.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ./media/index/video-featured.png
       width: 250
-    title: Tworzenie rozwiązań aplikacji internetowych z uwierzytelnianiem (9:31)
-    href: https://www.youtube.com/watch?v=QWh5HZK9vRA
+    title: 'Tworzenie rozwiązań aplikacji internetowych z uwierzytelnianiem (9:31)'
+    href: 'https://www.youtube.com/watch?v=QWh5HZK9vRA'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/active-directory/develop/about-microsoft-identity-platform
+            html: <p>Dowiedz się więcej o platformie tożsamości firmy Microsoft oraz jej funkcjach i możliwościach.</p>
+            image:
+              src: ./media/index/i_get-started.svg
+            title: Informacje o platformie tożsamości firmy Microsoft
+          - href: /azure/active-directory/develop/azure-ad-developers-guide/
+            html: '<p>Uwierzytelniaj tożsamości usługi Azure AD (konta służbowe), żądając tokenów z punktu końcowego usługi Azure AD w wersji 1.0 — przy użyciu biblioteki Azure ADAL (AD Authentication Library), witryny Azure Portal oraz interfejsu API usługi Azure AD Graph.</p>'
+            image:
+              src: ./media/index/i_advanced.svg
+            title: Wersja 1.0
+          - href: /azure/active-directory/develop/v2-overview
+            html: '<p>Uwierzytelniaj szerszy zestaw tożsamości firmy Microsoft za pośrednictwem tak zwanego punktu końcowego usługi Azure AD w wersji 2.0 — przy użyciu biblioteki Microsoft MSAL (Microsoft Authentication Library), witryny Azure Portal oraz interfejsu API Microsoft Graph.</p>'
+            image:
+              src: ./media/index/i_investigate.svg
+            title: Wersja 2.0
+  - title: Przewodniki Szybki start
     items:
-    - href: /azure/active-directory/develop/about-microsoft-identity-platform
-      html: <p>Dowiedz się więcej o platformie tożsamości firmy Microsoft oraz jej funkcjach i możliwościach.</p>
-      image:
-        src: ./media/index/i_get-started.svg
-      title: Informacje o platformie tożsamości firmy Microsoft
-    - href: /azure/active-directory/develop/azure-ad-developers-guide/
-      html: <p>Uwierzytelniaj tożsamości usługi Azure AD (konta służbowe), żądając tokenów z punktu końcowego usługi Azure AD w wersji 1.0 — przy użyciu biblioteki Azure ADAL (AD Authentication Library), witryny Azure Portal oraz interfejsu API usługi Azure AD Graph.</p>
-      image:
-        src: ./media/index/i_advanced.svg
-      title: Wersja 1.0
-    - href: /azure/active-directory/develop/v2-overview
-      html: <p>Uwierzytelniaj szerszy zestaw tożsamości firmy Microsoft za pośrednictwem tak zwanego punktu końcowego usługi Azure AD w wersji 2.0 — przy użyciu biblioteki Microsoft MSAL (Microsoft Authentication Library), witryny Azure Portal oraz interfejsu API Microsoft Graph.</p>
-      image:
-        src: ./media/index/i_investigate.svg
-      title: Wersja 2.0
-- title: Przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Skorzystaj z tych przewodników Szybki start, aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak między innymi uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku.
-  - type: paragraph
-    text: <b>Aplikacje jednostronicowe</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/angularjs-shield.svg
-      title: AngularJS
-    - image:
-        src: ./media/index/logo_js.svg
-      title: JavaScript
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: quickstart-v1-angularjs-spa.md
-      - href: https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi
-    - title: Wersja 2.0
-      values:
-      - href: 
-      - href: quickstart-v2-javascript.md
-  - type: paragraph
-    text: <b>Aplikacje internetowe</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP.NET
-    - image:
-        src: ./media/index/logo_NETcore.svg
-      title: ASP.NET Core
-    - image:
-        src: ./media/index/logo_java.svg
-      title: Java
-    - image:
-        src: ./media/index/logo_nodejs.svg
-      title: NodeJS
-    - image:
-        src: ./media/index/logo_python.svg
-      title: Python
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: quickstart-v1-aspnet-webapp.md
-      - href: 
-      - href: https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect
-      - href: quickstart-v1-openid-connect-code.md
-      - href: https://github.com/Azure-Samples/active-directory-python-webapp-graphapi
-    - title: Wersja 2.0
-      values:
-      - href: quickstart-v2-aspnet-webapp.md
-      - href: quickstart-v2-aspnet-core-webapp.md
-      - href: 
-      - href: https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs
-      - href: 
-  - type: paragraph
-    text: <b>Interfejsy API sieci Web</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP .NET
-    - image:
-        src: ./media/index/logo_NETcore.svg
-      title: ASP.NET Core
-    - image:
-        src: ./media/index/logo_nodejs.svg
-      title: NodeJS
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: quickstart-v1-dotnet-webapi.md
-      - href: 
-      - href: quickstart-v1-nodejs-webapi.md
-    - title: Wersja 2.0
-      values:
-      - href: https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet
-      - href: https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2
-      - href: 
-  - type: paragraph
-    text: <b>Aplikacje mobilne i klasyczne</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_android.svg
-      title: Android
-    - image:
-        src: ./media/index/logo_ios.svg
-      title: iOS
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Platforma uniwersalna systemu Windows
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Aplikacje klasyczne Windows — .NET
-    - image:
-        src: ./media/index/logo_xamarin.svg
-      title: Xamarin
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: quickstart-v1-android.md
-      - href: quickstart-v1-ios.md
-      - href: 
-      - href: quickstart-v1-dotnet.md
-      - href: quickstart-v1-xamarin.md
-    - title: Wersja 2.0
-      values:
-      - href: quickstart-v2-android.md
-      - href: quickstart-v2-ios.md
-      - href: quickstart-v2-uwp.md
-      - href: quickstart-v2-windows-desktop.md
-      - href: 
-  - type: paragraph
-    text: <b>Aplikacje usługa-usługa i aplikacje demona</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: .NET
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: sample-v1-code.md
-    - title: Wersja 2.0
-      values:
-      - href: quickstart-v2-netcore-daemon.md
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Korzystaj z platformy tożsamości firmy Microsoft i śledź szczegółowe, oparte na scenariuszach procedury dla najważniejszych zadań deweloperów dotyczących uwierzytelniania, takich jak między innymi uzyskiwanie tokenów dostępu i wdrażanie logowania się w usługach firmy Microsoft.
-  - type: paragraph
-    text: <b>Aplikacje jednostronicowe</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_js.svg
-      title: JavaScript
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: 
-    - title: Wersja 2.0
-      values:
-      - href: tutorial-v2-javascript-spa.md
-  - type: paragraph
-    text: <b>Aplikacje internetowe</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_NET.svg
-      title: ASP.NET
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: 
-    - title: Wersja 2.0
-      values:
-      - href: tutorial-v2-asp-webapp.md
-  - type: paragraph
-    text: <b>Aplikacje mobilne i klasyczne</b>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: ./media/index/logo_android.svg
-      title: Android
-    - image:
-        src: ./media/index/logo_ios.svg
-      title: iOS
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Platforma uniwersalna systemu Windows
-    - image:
-        src: ./media/index/logo_Windows.svg
-      title: Aplikacje klasyczne Windows — .NET
-    rows:
-    - title: Wersja 1.0
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: Wersja 2.0
-      values:
-      - href: tutorial-v2-android.md
-      - href: tutorial-v2-ios.md
-      - href: tutorial-v2-windows-uwp.md
-      - href: tutorial-v2-windows-desktop.md
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Znajdź przykłady kodu odpowiednie do typu tworzonej aplikacji oraz używanej platformy i interfejsów API.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Skorzystaj z tych przewodników Szybki start, aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak między innymi uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku.'
+      - type: paragraph
+        text: <b>Aplikacje jednostronicowe</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/angularjs-shield.svg
+            title: AngularJS
+          - image:
+              src: ./media/index/logo_js.svg
+            title: JavaScript
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: quickstart-v1-angularjs-spa.md
+              - href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
+          - title: Wersja 2.0
+            values:
+              - href: null
+              - href: quickstart-v2-javascript.md
+      - type: paragraph
+        text: <b>Aplikacje internetowe</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP.NET
+          - image:
+              src: ./media/index/logo_NETcore.svg
+            title: ASP.NET Core
+          - image:
+              src: ./media/index/logo_java.svg
+            title: Java
+          - image:
+              src: ./media/index/logo_nodejs.svg
+            title: NodeJS
+          - image:
+              src: ./media/index/logo_python.svg
+            title: Python
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: quickstart-v1-aspnet-webapp.md
+              - href: null
+              - href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
+              - href: quickstart-v1-openid-connect-code.md
+              - href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
+          - title: Wersja 2.0
+            values:
+              - href: quickstart-v2-aspnet-webapp.md
+              - href: quickstart-v2-aspnet-core-webapp.md
+              - href: null
+              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+              - href: null
+      - type: paragraph
+        text: <b>Interfejsy API sieci Web</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP .NET
+          - image:
+              src: ./media/index/logo_NETcore.svg
+            title: ASP.NET Core
+          - image:
+              src: ./media/index/logo_nodejs.svg
+            title: NodeJS
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: quickstart-v1-dotnet-webapi.md
+              - href: null
+              - href: quickstart-v1-nodejs-webapi.md
+          - title: Wersja 2.0
+            values:
+              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+              - href: null
+      - type: paragraph
+        text: <b>Aplikacje mobilne i klasyczne</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_android.svg
+            title: Android
+          - image:
+              src: ./media/index/logo_ios.svg
+            title: iOS
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Platforma uniwersalna systemu Windows
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Aplikacje klasyczne Windows — .NET
+          - image:
+              src: ./media/index/logo_xamarin.svg
+            title: Xamarin
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: quickstart-v1-android.md
+              - href: quickstart-v1-ios.md
+              - href: null
+              - href: quickstart-v1-dotnet.md
+              - href: quickstart-v1-xamarin.md
+          - title: Wersja 2.0
+            values:
+              - href: quickstart-v2-android.md
+              - href: quickstart-v2-ios.md
+              - href: quickstart-v2-uwp.md
+              - href: quickstart-v2-windows-desktop.md
+              - href: null
+      - type: paragraph
+        text: <b>Aplikacje usługa-usługa i aplikacje demona</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: .NET
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: sample-v1-code.md
+          - title: Wersja 2.0
+            values:
+              - href: quickstart-v2-netcore-daemon.md
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/active-directory/develop/sample-v1-code">Przykłady kodu w wersji 1.0 według scenariusza</a>
-    - html: <a href="/azure/active-directory/develop/sample-v2-code">Przykłady kodu w wersji 2.0 według scenariusza</a>
+      - type: paragraph
+        text: 'Korzystaj z platformy tożsamości firmy Microsoft i śledź szczegółowe, oparte na scenariuszach procedury dla najważniejszych zadań deweloperów dotyczących uwierzytelniania, takich jak między innymi uzyskiwanie tokenów dostępu i wdrażanie logowania się w usługach firmy Microsoft.'
+      - type: paragraph
+        text: <b>Aplikacje jednostronicowe</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_js.svg
+            title: JavaScript
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: null
+          - title: Wersja 2.0
+            values:
+              - href: tutorial-v2-javascript-spa.md
+      - type: paragraph
+        text: <b>Aplikacje internetowe</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_NET.svg
+            title: ASP.NET
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: null
+          - title: Wersja 2.0
+            values:
+              - href: tutorial-v2-asp-webapp.md
+      - type: paragraph
+        text: <b>Aplikacje mobilne i klasyczne</b>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: ./media/index/logo_android.svg
+            title: Android
+          - image:
+              src: ./media/index/logo_ios.svg
+            title: iOS
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Platforma uniwersalna systemu Windows
+          - image:
+              src: ./media/index/logo_Windows.svg
+            title: Aplikacje klasyczne Windows — .NET
+        rows:
+          - title: Wersja 1.0
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Wersja 2.0
+            values:
+              - href: tutorial-v2-android.md
+              - href: tutorial-v2-ios.md
+              - href: tutorial-v2-windows-uwp.md
+              - href: tutorial-v2-windows-desktop.md
+  - title: Przykłady
+    items:
+      - type: paragraph
+        text: Znajdź przykłady kodu odpowiednie do typu tworzonej aplikacji oraz używanej platformy i interfejsów API.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/develop/sample-v1-code">Przykłady kodu w wersji 1.0 według scenariusza</a>
+          - html: <a href="/azure/active-directory/develop/sample-v2-code">Przykłady kodu w wersji 2.0 według scenariusza</a>

@@ -32,7 +32,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="manage-triggers"></a>Zarządzanie wyzwalaczy
 
-Zdarzenia są rzeczy, które odbywa się w Twoim środowisku chmury lub na urządzeniu, które prawdopodobnie chcą podejmij działanie. Na przykład gdy tworzony jest plik w udziale, to zdarzenie. Wyzwalacze zgłaszać zdarzenia. Dla Twojej przeglądarki Edge pole danych wyzwalaczy może być w odpowiedzi na zdarzenia w pliku lub harmonogramu.
+Zdarzenia są rzeczy, które odbywa się w Twoim środowisku chmury lub na urządzeniu, które prawdopodobnie chcą podejmij działanie. Na przykład gdy tworzony jest plik w udziale, to zdarzenie. Wyzwalacze zgłaszać zdarzenia. Dla Twojej przeglądarki Microsoft Edge pole danych wyzwalaczy może być w odpowiedzi na zdarzenia w pliku lub harmonogramu.
 
 - **Plik**: Te wyzwalacze są w odpowiedzi na zdarzenia plików takie jak utworzenie pliku modyfikacji pliku.
 - **Zaplanowane**: Te wyzwalacze są w odpowiedzi na harmonogram, który można zdefiniować przy użyciu datę rozpoczęcia, godzinę rozpoczęcia i interwału powtarzania.

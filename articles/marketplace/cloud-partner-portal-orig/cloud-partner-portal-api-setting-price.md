@@ -149,7 +149,7 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litwa            | EUR               |
 | JEDNOSTKA LOGICZNA         | Luksemburg           | EUR               |
-| MK         | Macedonia Była Jugosłowiańska Republika       | MKD               |
+| MK         | Macedonia Północna       | MKD               |
 | MOJE         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |

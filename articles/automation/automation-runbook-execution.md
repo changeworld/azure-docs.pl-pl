@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268504"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544759"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -46,7 +46,7 @@ Elementy Runbook w usłudze Azure Automation można uruchomić w dowolnym piasko
 |Zainstaluj moduł, który wymaga Instalatora|Hybrydowy proces roboczy elementu Runbook|Moduły dla piaskownicy musi być copiable|
 |Za pomocą elementów runbook i modułów, które wymagają różni się od 4.7.2 w .NET Framework|Hybrydowy proces roboczy elementu Runbook|Piaskownice usługi Automation jest .NET Framework 4.7.2 i nie ma możliwości ją uaktualnić|
 |Skrypty, które wymagają podniesionych uprawnień|Hybrydowy proces roboczy elementu Runbook|Piaskownice nie zezwalają na podniesienie uprawnień. Aby rozwiązać ten problem, użyj hybrydowy proces roboczy elementu Runbook i można wyłączyć obsługę funkcji Kontrola konta użytkownika i używanie `Invoke-Command` po uruchomieniu polecenia wymaga podniesionego poziomu uprawnień|
-|Skrypty, które wymagają dostępu do usługi WMI|Hybrydowy proces roboczy elementu Runbook|Zadania uruchomione w piaskownicach chmury [braku dostępu do usługi WMI](#device-and-application-characteristics)|
+|Skrypty, które wymagają dostępu do usługi WMI|Hybrydowy proces roboczy elementu Runbook|Zadania uruchomione w piaskownicach w chmurze [nie mają dostępu do usługi WMI](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>Zachowanie elementu Runbook
 
@@ -192,7 +192,7 @@ Elementy Runbook, uruchom w piaskownicach platformy Azure nie obsługują proces
 
 ### <a name="device-and-application-characteristics"></a>Właściwości urządzenia i aplikacji
 
-Zadania elementu Runbook są uruchamiane w piaskownicach platformy Azure nie mają dostępu do żadnych właściwości urządzenia lub aplikacji. Najczęściej używane do pomiarów wydajności zapytań na Windows interfejsu API jest WMI. Niektóre z tych często używane metryki są, pamięci i Procesora CPU. Jednak nie ma znaczenia, co jest używany interfejs API. Zadania działające w chmurze, nie mają dostępu implementacja firmy Microsoft w sieci Web podstawie Enterprise Management (WBEM), który został utworzony w modelu wspólnych informacji (CIM), będące standardami branżowymi do definiowania właściwości urządzeń i aplikacji.
+Zadania elementu Runbook są uruchamiane w piaskownicach platformy Azure nie mają dostępu do żadnych właściwości urządzenia lub aplikacji. Najczęściej używane do pomiarów wydajności zapytań na Windows interfejsu API jest WMI. Niektóre z tych często używane metryki są, pamięci i Procesora CPU. Jednak nie ma znaczenia, co jest używany interfejs API. Zadania działające w chmurze nie mają dostępu implementacją przez firmę Microsoft z sieci Web na podstawie Enterprise Management (WBEM), który został utworzony w modelu wspólnych informacji (CIM), będące standardami branżowymi do definiowania właściwości urządzeń i aplikacji.
 
 ## <a name="job-statuses"></a>Stany zadania
 

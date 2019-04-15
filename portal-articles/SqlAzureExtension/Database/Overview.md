@@ -6,24 +6,24 @@ author: sewatson
 manager: lwelicki
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/27/2017
-ms.author: sewatson
-ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/09/2019
+ms.author: ninarn
+ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073932"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545886"
 ---
 # <a name="sql-database-documentation"></a>Dokumentacja usługi SQL Database
 
-Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługach, która korzysta z aparatu programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
+Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) ogólnego przeznaczenia, oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych w chmurze, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
 
 ## <a name="5-minute-quickstarts"></a>5-minutowe przewodniki Szybki start
 
-Dowiedz się, jak utworzyć bazę danych SQL, zarządzać nią za pomocą narzędzia SQL Management Studio i programować z jej użyciem w językach C#, Java, Python, Node.js i Ruby:
+Usługa Azure SQL Database ułatwia wykonywanie podstawowych zadań zarządzania przy użyciu witryny Azure Portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania dzięki przykładom z poniższych przewodników Szybki start:
 
-- [Azure Portal](/azure/sql-database/sql-database-get-started-portal)
+- [Azure Portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/sql-database/sql-database-get-started-cli)
 
@@ -31,8 +31,9 @@ Dowiedz się, jak utworzyć bazę danych SQL, zarządzać nią za pomocą narzę
 
 Dowiedz się, jak tworzyć i migrować bazy danych oraz zarządzać nimi za pomocą usługi SQL DB.
 
-- [Tworzenie i projektowanie schematu dla nowej bazy danych SQL](/azure/sql-database/sql-database-design-first-database)
-- [Migrowanie istniejącej bazy danych programu SQL Server do używania w usłudze Azure SQL Database](/azure/sql-database/sql-database-migrate-your-sql-server-database)
+- Rozpoczynanie pracy z [pojedynczą bazą danych](/azure/sql-database/sql-database-single-database-quickstart-guide) za pomocą naszych przewodników Szybki start
+- Tworzenie i projektowanie schematu dla nowej pojedynczej bazy danych przy użyciu platformy [SSMS](/azure/sql-database/sql-database-design-first-database) lub [.NET](/azure/sql-database/sql-database-design-first-database-csharp)
+- Migrowanie istniejącej bazy danych na platformę Azure za pomocą [narzędzia Data Migration Assistant](/azure/dms/tutorial-sql-server-to-azure-sql) albo [przez zaimportowanie pliku BACPAC](/azure/sql-database/sql-database-import)
 - [Zabezpieczanie usługi SQL Database](/azure/sql-database/sql-database-security-tutorial)
 - [Podnoszenie wydajności usługi SQL Database](/azure/sql-database/sql-database-performance-tutorial)
 - [Wdrażanie wielodostępnych aplikacji SaaS przy użyciu usługi SQL DB](/azure/sql-database/sql-database-multi-tenant-application)
@@ -41,7 +42,7 @@ Dowiedz się, jak tworzyć i migrować bazy danych oraz zarządzać nimi za pomo
 
 - [Programowanie przy użyciu platformy .NET](https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
 
-## <a name="samples"></a>Przykłady 
+## <a name="samples"></a>Przykłady
 
 Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
 

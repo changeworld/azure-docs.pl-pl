@@ -93,7 +93,7 @@ sections:
       - type: paragraph
         text: 'Dowiedz się, jak programować aplikacje przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator:'
       - type: paragraph
-        text: '<a href="tutorial-wpf-translation-csharp.md">Pisanie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator w języku C#</a>'
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">Tworzenie aplikacji WPF dla tłumaczenia tekstu w usłudze Translator, C#</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Tworzenie aplikacji do tłumaczenia Flask, Python</a></li>'
   - title: Dokumentacja
     items:
       - type: paragraph

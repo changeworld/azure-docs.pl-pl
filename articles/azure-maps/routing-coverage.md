@@ -51,7 +51,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Cabo Verde                     |        ✓       |                       |             |
 | Kongo Brazzaville Kinszasa    |        ✓       |                       |             |
 | Kongo - Kinszasa                |        ✓       |                       |             |
-| Wybrzeże Kości Słoniowej                  |        ✓       |                       |             |
+| Wybrzeże Kości Słoniowej (Côte d’Ivoire)                  |        ✓       |                       |             |
 | Egipt                          |        ✓       |         ✓            |             |
 | Gabon                          |        ✓       |                       |             |
 | Gambia                         |        ✓       |                       |             |
@@ -190,7 +190,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litwa                      |        ✓       |         ✓            |     ✓      | 
 | Luksemburg                     |        ✓       |         ✓            |     ✓      | 
-| BJR Macedonia                      |        ✓       |                      |             |
+| Macedonia Północna                      |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
 | Monako                         |        ✓       |         ✓            |             |

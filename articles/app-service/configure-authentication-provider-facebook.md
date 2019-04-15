@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cc10c9be5bab3b84c8773d8a930473267db353ab
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f37a0c9e4c664ac9631a0a07fa6f114e62939845
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411052"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522893"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Jak skonfigurować aplikację App Service, aby używała logowania do usługi Facebook
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -48,7 +48,7 @@ Aby ukończyć tę procedurę w tym temacie, muszą mieć konta w serwisie Faceb
    > Klucz tajny aplikacji jest ważnym poświadczeniem zabezpieczeń. Udostępnij ten wpis tajny osobom lub nie rozpowszechnić ją w aplikacji klienckiej.
    > 
    > 
-9. Konta w serwisie Facebook, który został użyty do zarejestrowania aplikacji jest administratorem aplikacji. Tylko administratorzy mogą na tym etapie Zaloguj się do tej aplikacji. Na potrzeby uwierzytelniania innych kont usługi Facebook, kliknij przycisk **przeglądu aplikacji** i włączyć **publicznego upewnij < your-app-name >** umożliwiające ogólnego dostępu publicznego przy użyciu uwierzytelniania serwisu Facebook.
+9. Konta w serwisie Facebook, który został użyty do zarejestrowania aplikacji jest administratorem aplikacji. Tylko administratorzy mogą na tym etapie Zaloguj się do tej aplikacji. Na potrzeby uwierzytelniania innych kont usługi Facebook, kliknij przycisk **przeglądu aplikacji** i włączyć **upewnij \<your-app-name > publicznych** umożliwiające ogólnego dostępu publicznego przy użyciu uwierzytelniania serwisu Facebook.
 
 ## <a name="secrets"> </a>Dodaj informacje o usłudze Facebook do aplikacji
 1. Ponownie [Azure Portal], przejdź do aplikacji. Kliknij przycisk **ustawienia** > **uwierzytelniania / autoryzacji**i upewnij się, że **uwierzytelnianie usługi App Service** jest **na**.
@@ -70,6 +70,6 @@ Teraz można przystąpić do użycia usługi Facebook na potrzeby uwierzytelnian
 
 <!-- URLs. -->
 [Deweloperzy w serwisie Facebook]: https://go.microsoft.com/fwlink/p/?LinkId=268286
-[Facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
+[facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure Portal]: https://portal.azure.com/

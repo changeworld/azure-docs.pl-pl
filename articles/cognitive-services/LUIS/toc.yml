@@ -62,11 +62,14 @@ items:
       href: luis-quickstart-intents-regex-entity.md
     - name: Uzyskiwanie dokładnych dopasowań tekstu za pomocą list
       href: luis-quickstart-intent-and-list-entity.md
-    - name: Uzyskiwanie danych powiązanych kontekstowo za pomocą jednostek hierarchicznych
-      href: luis-quickstart-intent-and-hier-entity.md
+    - name: Pobieranie powiązanych danych za pomocą ról jednostek
+      displayName: roles, geographyV2, context
+      href: tutorial-entity-roles.md
     - name: Grupowanie i wyodrębnianie powiązanych danych za pomocą jednostek złożonych
+      displayName: roles
       href: luis-tutorial-composite-entity.md
     - name: Uzyskiwanie nazw za pomocą prostych jednostek
+      displayName: roles
       href: luis-quickstart-primary-and-secondary-data.md
   - name: Usprawnianie aplikacji
     items:
@@ -77,6 +80,7 @@ items:
     - name: Dodawanie typowych formatów wypowiedzi
       href: luis-tutorial-pattern.md
     - name: Wyodrębnianie wzorców powiązanych kontekstowo
+      displayName: roles
       href: luis-tutorial-pattern-roles.md
     - name: Wyodrębnianie danych o formacie swobodnym
       href: luis-tutorial-pattern-any.md
@@ -113,7 +117,7 @@ items:
     - name: Intencje
       href: luis-concept-intent.md
     - name: Jednostki
-      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles
       href: luis-concept-entity-types.md
     - name: Wypowiedzi
       href: luis-concept-utterance.md
@@ -130,6 +134,7 @@ items:
     - name: Listy fraz
       href: luis-concept-feature.md
     - name: Wzorce
+      displayName: roles
       href: luis-concept-patterns.md
   - name: Zarządzanie danymi
     items:
@@ -138,6 +143,7 @@ items:
     - name: Konwertowanie danych
       href: luis-concept-data-conversion.md
     - name: Wyodrębnianie danych
+      displayName: roles
       href: luis-concept-data-extraction.md
     - name: Magazyn danych
       href: luis-concept-data-storage.md
@@ -171,7 +177,7 @@ items:
     - name: Dodawanie jednostki do wypowiedzi
       href: luis-how-to-add-example-utterances.md
     - name: Dodawanie jednostki bez wypowiedzi
-      displayName: import
+      displayName: roles, import
       href: luis-how-to-add-entities.md
     - name: Korzystanie ze wstępnie utworzonych modeli
       items:
@@ -220,7 +226,7 @@ items:
       displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: Dodawanie wzorców
-      displayName: syntax, template
+      displayName: syntax, template, roles
       href: luis-how-to-model-intent-pattern.md
   - name: Szkolenie
     href: luis-how-to-train.md
@@ -410,9 +416,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Baza wiedzy
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: db4e3cf9cad70556b057645dec52c9705fb29079
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1a35c8befbffae02a169e87390677c547aec833c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896112"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523688"

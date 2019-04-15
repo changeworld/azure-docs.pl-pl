@@ -98,7 +98,7 @@ Oferty platformy Azure Marketplace można zakupić w 141 lokalizacje geograficzn
 | Litwa                           | LT        | EUR          |
 | Luksemburg                          | LU        | EUR          |
 | SRA Makau                           | MO        | USD          |
-| Macedonia Była Jugosłowiańska Republika                      | MK        | USD          |
+| Macedonia Północna                      | MK        | USD          |
 | Malezja                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | JEDNOSTKĘ OBSŁUGI KOMUNIKATÓW        | USD          |

@@ -22,19 +22,16 @@ items:
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: Samouczki
   items:
-  - name: 1 — Używanie przesyłania strumieniowego ze strukturą platformy Apache Spark
+  - name: Używanie przesyłania strumieniowego ze strukturą platformy Apache Spark
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2 — Zapisywanie/odczytywanie na platformie Apache Kafka za pomocą systemu Apache Storm
+  - name: Zapisywanie/odczytywanie na platformie Apache Kafka za pomocą systemu Apache Storm
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3 — Używanie interfejsu API producentów i konsumentów platformy Apache Kafka
+  - name: Używanie interfejsu API producentów i konsumentów platformy Apache Kafka
     href: apache-kafka-producer-consumer-api.md
-  - name: 4 — Tworzenie aplikacji przy użyciu interfejsu API strumieni platformy Apache Kafka
+  - name: Tworzenie aplikacji przy użyciu interfejsu API strumieni platformy Apache Kafka
     href: apache-kafka-streams-api.md
-  - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
-    href: ../hdinsight-cluster-availability.md
-    maintainContext: true
 - name: Pojęcia
   items:
   - name: Planowanie pojemności
@@ -159,6 +156,9 @@ items:
       - name: Korzystanie z interfejsu API REST systemu Apache Ambari
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
+      - name: Monitorowanie dostępności klastrów za pomocą dzienników usługi Azure Monitor
+        href: ../hdinsight-cluster-availability.md
+        maintainContext: true
       maintainContext: true
     - name: Zarządzanie dziennikami klastra usługi HDInsight
       href: ../hdinsight-log-management.md
@@ -271,9 +271,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4549b041bc9e754aca632826c8e1a2afc7622a82
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668147"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565102"
