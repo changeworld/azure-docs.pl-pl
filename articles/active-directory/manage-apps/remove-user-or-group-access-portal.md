@@ -11,38 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 97759ae992ebe38aa85e9b4724edeebb5285db4b
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074288"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565703"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Usuń przypisanie użytkownika lub grupy z aplikacji przedsiębiorstwa w usłudze Azure Active Directory
-To proste usunąć użytkownika lub grupy z przypisania dostępu do jednej z Twoich aplikacjach firmowych w usłudze Azure Active Directory (Azure AD). Musi mieć odpowiednie uprawnienia do zarządzania aplikacji przedsiębiorstwa, a musi być administratorem globalnym katalogu.
+To proste usunąć użytkownika lub grupę z przypisanego dostępu do jednej z Twoich aplikacjach firmowych w usłudze Azure Active Directory (Azure AD). Konieczne jest odpowiednie uprawnienia do zarządzania aplikacji przedsiębiorstwa. Ponadto musisz być administratorem globalnym katalogu.
 
 > [!NOTE]
 > For Applications firmy Microsoft (takich jak aplikacje usługi Office 365) usuwać użytkowników z aplikacji przedsiębiorstwa za pomocą programu PowerShell.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Jak usunąć użytkownika lub przypisania grupy do aplikacji przedsiębiorstwa w witrynie Azure portal?
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz **więcej usług**, wprowadź **usługi Azure Active Directory** w polu tekstowym, a następnie wybierz pozycję **Enter**.
-3. Na **usługi Azure Active Directory — *directoryname***  strony (oznacza to, że strony usługi Azure AD dla katalogu zarządzasz), wybierz **aplikacje dla przedsiębiorstw**.
-
-    ![Otwieranie aplikacji dla przedsiębiorstw](./media/remove-user-or-group-access-portal/open-enterprise-apps.png)
-4. Na **aplikacje dla przedsiębiorstw** wybierz opcję **wszystkie aplikacje**. Zobaczysz listę aplikacji, którymi można zarządzać.
-5. Na **aplikacje w przedsiębiorstwie — wszystkie aplikacje** wybierz aplikację.
-6. Na ***appname*** strony (czyli strony o nazwie wybranej aplikacji w tytule), wybierz **użytkownikami i grupami**.
-
-    ![Wybieranie użytkowników lub grup](./media/remove-user-or-group-access-portal/remove-app-users.png)
-7. Na ***appname*** **— przypisanie do grupy & użytkownika** stronie, wybierz jedną z więcej użytkowników lub grup, a następnie wybierz **Usuń** polecenia. Potwierdź decyzję w wierszu.
-
-    ![Wybierając polecenie Remove](./media/remove-user-or-group-access-portal/remove-users.png)
+1. Wybierz **wszystkich usług**, wprowadź **usługi Azure Active Directory** w polu tekstowym, a następnie wybierz pozycję **Enter**.
+1. Na **usługi Azure Active Directory — *directoryname***  strony (czyli strony usługi Azure AD dla katalogu zarządzasz), wybierz **aplikacje dla przedsiębiorstw**.
+1. Na **aplikacje w przedsiębiorstwie — wszystkie aplikacje** stronie zostaną wyświetlone listy aplikacje, którymi można zarządzać. Wybierz aplikację.
+1. Na ***appname*** strony Przegląd (czyli strony o nazwie wybranej aplikacji w tytule), wybierz **użytkownikami i grupami**.
+1. Na ***appname*** **— przypisanie do grupy & użytkownika** stronie, wybierz jedną z więcej użytkowników lub grup, a następnie wybierz **Usuń** polecenia. Potwierdź decyzję w wierszu.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Jak usunąć użytkownika lub przypisania grupy do aplikacji przedsiębiorstwa przy użyciu programu PowerShell?
 1. Otwórz wiersz polecenia programu Windows PowerShell.
@@ -50,8 +43,8 @@ To proste usunąć użytkownika lub grupy z przypisania dostępu do jednej z Two
     >[!NOTE] 
     > Musisz zainstalować moduł usługi Azure AD (Użyj polecenia `Install-Module -Name AzureAD`). Jeśli zostanie wyświetlony monit, aby zainstalować moduł NuGet lub nowego modułu programu PowerShell usługi Azure Active Directory w wersji 2, wpisz Y, a następnie naciśnij klawisz ENTER.
 
-2. Uruchom `Connect-AzureAD` i zaloguj się przy użyciu konta użytkownika administratora globalnego.
-3. Aby usunąć użytkownika i roli z aplikacji, użyj następującego skryptu:
+1. Uruchom `Connect-AzureAD` i zaloguj się przy użyciu konta użytkownika administratora globalnego.
+1. Aby usunąć użytkownika i roli z aplikacji, użyj następującego skryptu:
 
     ```powershell
     # Store the proper parameters

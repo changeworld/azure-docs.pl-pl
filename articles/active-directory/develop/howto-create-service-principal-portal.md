@@ -16,19 +16,19 @@ ms.author: celested
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee12cb2a0fdd4547ffae8dfce4fddee03167e539
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257420"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565924"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu
 
-W tym artykule pokazano, jak utworzyć nową aplikację usługi Azure Active Directory i usługi jednostki, które mogą być używane przy użyciu kontroli dostępu opartej na rolach. Jeśli masz kod, który wymaga dostępu lub modyfikacji zasobów, można utworzyć tożsamości dla aplikacji. Ta tożsamość jest określana jako jednostka usługi. Następnie można przypisać uprawnienia wymagane do jednostki usługi. W tym artykule pokazano, jak utworzyć jednostkę usługi za pomocą portalu. Uwzględniono w szczególności aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania tylko jednej organizacji. Używa się zazwyczaj jedną dzierżawą aplikacji dla aplikacji line-of-business, które są uruchamiane w danej organizacji.
+W tym artykule pokazano, jak utworzyć nową aplikację usługi Azure Active Directory (Azure AD) i jednostki usługi, które mogą być używane z kontroli dostępu opartej na rolach. Jeśli masz kod, który wymaga dostępu lub modyfikacji zasobów, można utworzyć tożsamości dla aplikacji. Ta tożsamość jest określana jako jednostka usługi. Następnie można przypisać uprawnienia wymagane do jednostki usługi. W tym artykule pokazano, jak utworzyć jednostkę usługi za pomocą portalu. Uwzględniono w szczególności aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania tylko jednej organizacji. Używa się zazwyczaj jedną dzierżawą aplikacji dla aplikacji line-of-business, które są uruchamiane w danej organizacji.
 
 > [!IMPORTANT]
-> Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure dla Twojej tożsamości aplikacji. Jeśli kod jest wykonywany na to usługa, która obsługuje zarządzanych tożsamości i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure Active Directory (Azure AD), zarządzanych tożsamości jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, w tym usług, które obecnie go obsługują, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).
+> Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure dla Twojej tożsamości aplikacji. Jeśli kod jest wykonywany na to usługa, która obsługuje zarządzanych tożsamości i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure AD, zarządzanych tożsamości jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, w tym usług, które obecnie go obsługują, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).
 
 ## <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
 

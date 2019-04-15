@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef3c9d1fdbf030a820f2a3a1724bd18a4b0cedb
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 7f231d3d966154c1ea5cca808eedad1051089fea
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501165"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Samouczek: Integracja usługi Azure Active Directory z planami 10 000 stóp
 
@@ -107,9 +107,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z 10 000 stóp planów
 
     ![10 000 stóp plany domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.10000ft.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://app.10000ft.com`
 
-    b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL: `https://app.10000ft.com/saml/metadata`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://app.10000ft.com/saml/metadata`
 
     > [!NOTE]
     > Wartość **identyfikator** jest inny, jeśli masz domenę niestandardową. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta plany 10 000 stóp](https://www.10000ft.com/plans/support) aby zyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -197,8 +197,8 @@ Po kliknięciu kafelka plany 10 000 stóp w panelu dostępu, możesz powinny by�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

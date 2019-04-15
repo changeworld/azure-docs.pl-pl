@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495689"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565971"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -99,11 +99,11 @@ Następujące obszary usługi Application Insights może być przydatne podczas 
 
 | Tab | Opis |
 | ---- | ----------- |
-| **[Niepowodzenia](../azure-monitor/app/asp-net-exceptions.md)** |  Tworzenie wykresów i alertów na podstawie funkcji błędy i wyjątki serwera. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że implementacji niestandardowej telemetrii zależności. |
+| **[błędy](../azure-monitor/app/asp-net-exceptions.md)** |  Tworzenie wykresów i alertów na podstawie funkcji błędy i wyjątki serwera. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że implementacji niestandardowej telemetrii zależności. |
 | **[Wydajność](../azure-monitor/app/performance-counters.md)** | Analizuj problemy z wydajnością. |
 | **Serwery** | Widok wykorzystania zasobów i przepływność na serwerze. Może to być przydatne podczas debugowania scenariuszy, w którym funkcje są bogging dół podstawowych zasobów. Serwery są określane jako **wystąpień roli w chmurze**. |
 | **[Metryki](../azure-monitor/app/metrics-explorer.md)** | Tworzenie wykresów i alertów, które są oparte na metryki. Metryki obejmują liczbę wywołań funkcji, czas wykonywania i współczynniki powodzenia. |
-| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Wyświetlanie danych metryk utworzonemu w czasie rzeczywistym. |
+| **[Transmisja strumieniowa metryk na żywo](../azure-monitor/app/live-stream.md)** | Wyświetlanie danych metryk utworzonemu w czasie rzeczywistym. |
 
 ## <a name="query-telemetry-data"></a>Wykonywanie zapytań dotyczących danych telemetrii
 
@@ -127,8 +127,8 @@ Tabele, które są dostępne są wyświetlane w **schematu** karty po lewej stro
 | Tabela | Opis |
 | ----- | ----------- |
 | **ślady** | Dzienniki utworzone przez środowisko uruchomieniowe i kodu funkcji. |
-| **żądania** | Jedno żądanie dla każdego wywołania funkcji. |
-| **wyjątki** | Wyjątki zgłaszane w czasie wykonywania. |
+| **requests** | Jedno żądanie dla każdego wywołania funkcji. |
+| **Wyjątki** | Wyjątki zgłaszane w czasie wykonywania. |
 | **customMetrics** | Liczba wywołań zakończonych powodzeniem i niepowodzeniem, Częstotliwość powodzeń i czas trwania. |
 | **customEvents** | Zdarzenia śledzenia w czasie wykonywania, na przykład: Żądania HTTP, które mogą powodować funkcji. |
 | **Liczniki wydajności** | Informacje o wydajności z serwerów, które funkcje są uruchomione na. |
@@ -595,7 +595,9 @@ module.exports = function (context, req) {
 
 ## <a name="dependencies"></a>Zależności
 
-Zależności, funkcja używa się do innych usług, które nie będą automatycznie wyświetlane. Można napisać kod niestandardowy, aby wyświetlić zależności. Przykłady można znaleźć w przykładowym kodzie w [ C# sekcji niestandardowej telemetrii](#log-custom-telemetry-in-c-functions). Przykładowy kod powoduje *mapy aplikacji* w usłudze Application Insights, który wygląda podobnie do poniższej ilustracji:
+Funkcje w wersji 2 automatycznie zbiera zależności dla żądań HTTP, magistrali usług i SQL.
+
+Można napisać kod niestandardowy, aby wyświetlić zależności. Przykłady można znaleźć w przykładowym kodzie w [ C# sekcji niestandardowej telemetrii](#log-custom-telemetry-in-c-functions). Przykładowy kod powoduje *mapy aplikacji* w usłudze Application Insights, który wygląda podobnie do poniższej ilustracji:
 
 ![Mapa aplikacji](./media/functions-monitoring/app-map.png)
 

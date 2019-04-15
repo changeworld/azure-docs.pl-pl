@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163790"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565414"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Jak dodać Pre-trained jednostek
 W tym samouczku przedstawiono sposób dodawania Pre-Trained jednostki do modelu uczeń konwersacji.
@@ -62,7 +62,7 @@ Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
 
 1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
 2. Wprowadź **jaka jest data?** dla **odpowiedzi Botów...** . Wstępnie przeszkolonych jednostki nie może być **wymaganych jednostek** rozpoznawanym przez domyślne dla wszystkich wypowiedzi.
-3. Wprowadź **builtin datetimev2** dla **dyskwalifikacji uprawnia**.
+3. Wprowadź **builtin datetimev2** dla **dyskwalifikacji jednostek**.
 4. Wybierz pozycję **Utwórz**.
 
 ![](../media/T08_action_create_2.png)

@@ -1,6 +1,6 @@
 ---
-title: Słownik deweloperów usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Lista warunków dla często używane pojęcia dla deweloperów usługi Azure Active Directory i funkcji.
+title: Słownik deweloperów platforma tożsamości firmy Microsoft | Azure
+description: Lista warunków dla często używane pojęcia dla deweloperów platformy tożsamości firmy Microsoft i funkcji.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2017
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
+ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650397"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565545"
 ---
-# <a name="azure-active-directory-developer-glossary"></a>Słownik deweloperów usługi Azure Active Directory
+# <a name="microsoft-identity-platform-developer-glossary"></a>Słownik deweloperów platforma tożsamości firmy Microsoft
 
-Ten artykuł zawiera definicje niektóre podstawowe pojęcia dla deweloperów usługi Azure Active Directory (AD), które są przydatne, gdy poznawania opracowywanie aplikacji dla usługi Azure AD.
+Ten artykuł zawiera definicje niektóre podstawowe pojęcia dla deweloperów i terminologia, które są przydatne, gdy poznawania opracowywanie aplikacji przy użyciu platformy tożsamości firmy Microsoft.
 
 ## <a name="access-token"></a>token dostępu
 
@@ -38,11 +38,11 @@ Tokeny dostępu są czasami określane jako "Użytkownik + App" lub "Tylko dla a
 * ["Kod autoryzacji" autoryzację](#authorization-grant), użytkownik końcowy uwierzytelnia się najpierw jako właściciela zasobu, delegowanie autoryzacji do klienta dostępu do zasobu. Klient uwierzytelnia się później, podczas uzyskiwania tokenu dostępu. Token może czasami określane dokładniej jako token "Użytkownik + aplikacja", ponieważ reprezentuje on zarówno wobec użytkownika który autoryzowanych aplikacji klienckiej i aplikacji.
 * ["Klient poświadczenia" autoryzację](#authorization-grant), klient zawiera wyłącznie uwierzytelnianie działa bez właściciel zasobu uwierzytelniania/autoryzacji, więc token może czasami określane jako token "Tylko do aplikacji".
 
-Zobacz [odwołania do usługi Azure AD tokenu] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
+Zobacz [platforma tożsamości usługi Microsoft odwołania do tokenu] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
 
 ## <a name="application-id-client-id"></a>Identyfikator aplikacji (identyfikator klienta)
 
-Problemy Unikatowy identyfikator usługi Azure AD do rejestracji aplikacji, identyfikująca określoną aplikację i skojarzony konfiguracji. Tego identyfikatora aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie projektowania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny.
+Problemy Unikatowy identyfikator usługi Azure AD do rejestracji aplikacji, identyfikująca określoną aplikację i skojarzony konfiguracji. Tego Identyfikatora aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie projektowania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny.
 
 ## <a name="application-manifest"></a>manifest aplikacji
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji, zobacz [aplikacji i obiekty nazwę głównej us
 Aby umożliwić aplikacji Integracja z usługą i delegować funkcje zarządzania tożsamościami i dostępem do usługi Azure AD, musi być zarejestrowana przy użyciu usługi Azure AD [dzierżawy](#tenant). Po zarejestrowaniu aplikacji z usługą Azure AD, udostępniasz Konfiguracja tożsamości dla aplikacji, co pozwala na integrację z usługą Azure AD i używać funkcji takich jak:
 
 * Niezawodne funkcje zarządzania z logowania jednokrotnego przy użyciu usługi Azure AD Identity Management i [OpenID Connect] [ OpenIDConnect] implementacja protokołu
-* Obsługiwane przez brokera dostęp do [zasobów chronionych](#resource-server) przez [aplikacje klienckie](#client-application), za pomocą usługi Azure AD OAuth 2.0 [serwera autoryzacji](#authorization-server) implementacji
+* Obsługiwane przez brokera dostęp do [zasobów chronionych](#resource-server) przez [aplikacje klienckie](#client-application), za pomocą protokołu OAuth 2.0 [serwera autoryzacji](#authorization-server)
 * [Platformy wyrażania zgody](#consent) w celu zarządzania dostępem klientów do chronionych zasobów, w oparciu o autoryzacji właściciela zasobów.
 
 Zobacz [Integrowanie aplikacji z usługą Azure Active Directory] [ AAD-Integrating-Apps] Aby uzyskać więcej informacji.
@@ -93,13 +93,13 @@ Poświadczenie przedstawiający [właściciel zasobu](#resource-owner) [autoryza
 
 Zgodnie z definicją [ramy autoryzacji OAuth2][OAuth2-Role-Def], odpowiedzialne za wystawianie dostępu do serwera tokenów do [klienta](#client-application) po pomyślnym uwierzytelnieniu [właściciel zasobu](#resource-owner) i uzyskanie autoryzację. A [aplikacja kliencka](#client-application) wchodzi w interakcję z serwera autoryzacji w czasie wykonywania za pomocą jego [autoryzacji](#authorization-endpoint) i [tokenu](#token-endpoint) punktów końcowych, zgodnie z OAuth2 zdefiniowane [przydziałów autoryzacji](#authorization-grant).
 
-W przypadku integracji z usługą aplikacji Azure AD, usługi Azure AD implementuje rolę serwera autoryzacji dla aplikacji usługi Azure AD i usługi firmy Microsoft interfejsów API, na przykład [interfejsów API programu Microsoft Graph][Microsoft-Graph].
+W przypadku integracji aplikacji platforma tożsamości firmy Microsoft, platforma tożsamości usługi Microsoft implementuje rolę serwera autoryzacji dla aplikacji usługi Azure AD i usługi firmy Microsoft interfejsów API, na przykład [interfejsów API programu Microsoft Graph] [Microsoft-Graph].
 
 ## <a name="claim"></a>oświadczenie
 
 A [token zabezpieczający](#security-token) zawiera oświadczenia, zapewniający potwierdzenia około jednej jednostki (takie jak [aplikacja kliencka](#client-application) lub [właściciel zasobu](#resource-owner)) do innej jednostki (takie jak [serwer zasobów](#resource-server)). Oświadczenia są pary nazwa/wartość, które przekazywania informacji o tokenu podmiotu (na przykład, podmiot zabezpieczeń został uwierzytelniony przez [serwera autoryzacji](#authorization-server)). Oświadczenia obecne w danym tokenie są zależne od kilku zmiennych, takich jak typ tokenu, typ poświadczenia używane do uwierzytelniania podmiotu, konfigurację aplikacji, itp.
 
-Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
+Zobacz [odwołanie tokenu programu Microsoft identity platformy] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
 
 ## <a name="client-application"></a>Aplikacja kliencka
 
@@ -117,7 +117,7 @@ Zobacz [platformy wyrażania zgody](consent-framework.md) Aby uzyskać więcej i
 
 [OpenID Connect] [ OpenIDConnect-ID-Token] [token zabezpieczający](#security-token) dostarczone przez [serwera autoryzacji](#authorization-server) [punkt końcowy autoryzacji](#authorization-endpoint), który zawiera [oświadczeń](#claim) odnoszących się do uwierzytelniania użytkownika końcowego [właściciel zasobu](#resource-owner). Takich jak token dostępu, tokeny Identyfikatora również są reprezentowane jako cyfrowo podpisanych [tokenu Web JSON (JWT)][JWT]. W przeciwieństwie do tokenu dostępu, identyfikator tokenu oświadczeń nie są używane do celów związanych z dostępu do zasobów i specjalnie kontroli dostępu.
 
-Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
+Zobacz [odwołanie tokenu programu Microsoft identity platformy] [ AAD-Tokens-Claims] Aby uzyskać więcej informacji.
 
 ## <a name="microsoft-identity-platform"></a>Platforma tożsamości firmy Microsoft
 
@@ -220,14 +220,14 @@ Rodzaj [aplikacja kliencka](#client-application) , który jest wykonywany całeg
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[— Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest stroną docelową dla wszystkich usługi Azure AD związanych z opracowywaniem tematy, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] oraz znasz podstawy [uwierzytelniania usługi Azure AD i scenariuszy uwierzytelniania obsługiwanych][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskania szybko uruchamiać wdrożenia na [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Podręcznik dewelopera Microsoft tożsamości platformy] [ AAD-Dev-Guide] jest stroną docelową dla wszystkich Microsoft tożsamości platformy związanych z opracowywaniem tematy, w tym omówienie [aplikacji Integracja] [ AAD-How-To-Integrate] oraz znasz podstawy [uwierzytelnianie platforma tożsamości firmy Microsoft i scenariuszy uwierzytelniania obsługiwanych][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskania szybko uruchamiać wdrożenia na [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Aby przekazać opinie i pomoc do analizy i połącz kształt tej zawartości, w tym realizowania żądań dostępność nowych definicji lub aktualizowanie istniejących, należy użyć następujących sekcji komentarzy!
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
+[AAD-App-Manifest]:reference-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md

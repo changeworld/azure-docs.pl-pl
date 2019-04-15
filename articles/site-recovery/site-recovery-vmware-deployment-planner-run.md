@@ -1,25 +1,25 @@
 ---
 title: Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformie Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób uruchamiania Planisty wdrożenia usługi Azure Site Recovery w celu odzyskiwania po awarii programu VMware na platformę Azure.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527683"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565431"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Uruchamianie Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 Ten artykuł to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Tryby uruchamiania planisty wdrożenia
-Narzędzie wiersza polecenia (ASRDeploymentPlanner.exe) można uruchomić w dowolnym z czterech następujących trybów:
+Narzędzie wiersza polecenia (ASRDeploymentPlanner.exe) możesz uruchomić w jednym z trzech następujących trybów:
 
 1.  [Profilowanie](#profile-vmware-vms)
 2.  [Generowanie raportu](#generate-report)
@@ -139,7 +139,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 Narzędzie generuje plik programu Microsoft Excel z włączoną obsługą makr (plik XLSM) jako dane wyjściowe raportu zawierające podsumowanie wszystkich zaleceń dotyczące wdrożenia. Raport nosi `DeploymentPlannerReport_<unique numeric identifier>.xlsm` i jest umieszczany w wybranym katalogu.
 
 >[!NOTE]
->Raport wymaga symbol dziesiętny, skonfigurowany jako "." oszacować koszt na serwerze, na którym uruchamiasz planista wdrażania. W przypadku możesz skonfigurować "," jako symbol dziesiętny na komputerze Windows, przejdź do "Zmiana daty, godziny lub formaty liczbowe" w Panelu sterowania i wybierz pozycję "Dodatkowe ustawienia" Aby zmienić symbol dziesiętny".".
+>Generowanie raportu wymaga komputera Windows lub Windows Server z programem Excel 2013 lub nowszym. Symbol dziesiętny na tej maszynie powinien zostać skonfigurowany jako "." do oszacowania kosztów wyprodukowania. W przypadku, gdy skonfigurowano "," jako symbol dziesiętny, przejdź do "Zmiana daty, godziny lub formaty liczbowe" w Panelu sterowania i przejdź do "Dodatkowe ustawienia", aby zmienić symbol dziesiętny do".".
 
 Po zakończeniu profilowania możesz uruchomić narzędzie w trybie generowania raportu. Poniższa tabela zawiera listę obowiązkowych i opcjonalnych parametrów narzędzia uruchamianego w trybie generowania raportu.
 

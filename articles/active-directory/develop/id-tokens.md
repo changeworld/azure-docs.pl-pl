@@ -1,6 +1,6 @@
 ---
-title: Azure odwołania do tokenu identyfikator Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać id_tokens wyemitowane przez punkty końcowe usługi Azure AD w wersji 1.0 i 2.0.
+title: Microsoft identity platformy Identyfikator odwołania do tokenu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać id_tokens wyemitowane przez usługę Azure AD w wersji 1.0 i punktów końcowych platformy (w wersji 2.0) tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,26 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad1b686152101cbeaddc29974a2a1c5f13a7712
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500549"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563833"
 ---
-# <a name="id-tokens"></a>Tokeny identyfikatorów
+# <a name="microsoft-identity-platform-id-tokens"></a>Tokeny Identyfikatora platforma tożsamości firmy Microsoft
 
 `id_tokens` są wysyłane do aplikacji klienckiej jako część [OpenID Connect](v1-protocols-openid-connect-code.md) przepływu. Mogą być wysyłane wzdłuż krawędzi lub zamiast token dostępu i są używane przez klienta do uwierzytelnienia użytkownika.
 
 ## <a name="using-the-idtoken"></a>Za pomocą id_token
 
-Tokeny identyfikator powinien być używany do weryfikacji, czy jest użytkownik, który podaje się i Uzyskaj przydatne informacje dodatkowe o nich — nie należy jej używać do autoryzacji zamiast [token dostępu](access-tokens.md). Oświadczenia, które zapewnia może służyć do środowiska użytkownika w aplikacji, obsługi kluczy bazy danych i zapewniania dostępu do aplikacji klienckiej.
+Tokeny identyfikator powinien być używany do weryfikacji, czy jest użytkownik, który podaje się i Uzyskaj przydatne informacje dodatkowe o nich — nie można używać do autoryzacji zamiast [token dostępu](access-tokens.md). Oświadczenia, które zapewnia może służyć do środowiska użytkownika w aplikacji, obsługi kluczy bazy danych i zapewniania dostępu do aplikacji klienckiej.
 
 ## <a name="claims-in-an-idtoken"></a>Oświadczenia w id_token
 
@@ -64,7 +64,7 @@ Wyświetl ten token przykładowe v2.0 w [jwt.ms](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="payload-claims"></a>Ładunek oświadczeń
 
-Ta lista zawiera oświadczenia, które są w większości id_tokens domyślnie (z wyjątkiem sytuacji, gdy podane).  Jednak Twoja aplikacja może używać [opcjonalnych oświadczeń](active-directory-optional-claims.md) dodatkowe oświadczenia w id_token żądania.  Te można dostosować w zakresie `groups` oświadczenie do informacji na temat nazw użytkowników.
+Ta lista zawiera oświadczenia, które są w większości id_tokens domyślnie (z wyjątkiem sytuacji, gdy podane).  Jednak Twoja aplikacja może używać [opcjonalnych oświadczeń](active-directory-optional-claims.md) dodatkowe oświadczenia w id_token żądania.  Te można dostosować w zakresie `groups` oświadczenia do informacji o nazwę użytkownika.
 
 |Claim | Format | Opis |
 |-----|--------|-------------|
@@ -73,26 +73,26 @@ Ta lista zawiera oświadczenia, które są w większości id_tokens domyślnie (
 |`iat` |  int, sygnatura czasowa systemu UNIX | "Wydany w" wskazuje, kiedy wystąpił uwierzytelniania dla tego tokenu.  |
 |`idp`|Ciąg, zazwyczaj identyfikator URI usługi STS | Rejestruje dostawcę tożsamości, który uwierzytelnił podmiot tokenu. Ta wartość jest taka sama jak wartość oświadczenia wystawcy, chyba że konto użytkownika nie znajduje się w tej samej dzierżawie, jako wystawca - goście, na przykład. Jeśli oświadczenia nie jest obecny, oznacza to, że wartość `iss` mogą być używane zamiast tego.  Dla osobistych kont, które są używane w kontekście organizacji (na przykład konta osobistego zaproszeni do dzierżawy usługi Azure AD) `idp` oświadczeń może być "live.com" lub identyfikator URI usługi STS dzierżawy konta Microsoft zawierającego `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 |`nbf` |  int, sygnatura czasowa systemu UNIX | Oświadczenie "nbf" (nie przed) identyfikuje czas, przed którym tokenu JWT nie muszą zostać zaakceptowane do przetworzenia.|
-|`exp` |  int, sygnatura czasowa systemu UNIX | Oświadczenie "exp" (czas wygaśnięcia) identyfikuje czasu wygaśnięcia na lub po JWT nie może być który zaakceptowane do przetworzenia.  Należy zauważyć, że zasób może odrzucić token przed upływem wskazanego terminu, jak również — Jeśli na przykład konieczne jest wprowadzenie zmiany w uwierzytelnianiu lub token odwołania został wykryty. |
+|`exp` |  int, sygnatura czasowa systemu UNIX | Oświadczenie "exp" (czas wygaśnięcia) identyfikuje czasu wygaśnięcia na lub po JWT nie może być który zaakceptowane do przetworzenia.  Należy zauważyć, że zasób może odrzucić token przed upływem wskazanego terminu, jak również — czy, na przykład, konieczne jest wprowadzenie zmiany w uwierzytelnianiu token odwołania został wykryty. |
 | `c_hash`| String |Skrót kod znajduje się w tokeny Identyfikatora, tylko wtedy, gdy wystawiono tokenu Identyfikacyjnego z kodu autoryzacji OAuth 2.0. Może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać szczegółowe informacje dotyczące przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`at_hash`| String |Skrót tokenu znajduje się w identyfikatorze dostęp tokenów, tylko, gdy tokenu Identyfikacyjnego wystawione przy użyciu tokenu dostępu OAuth 2.0. Może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać szczegółowe informacje dotyczące przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Nieprzezroczysty ciąg | Oświadczenie wewnętrzny używany przez usługę Azure AD do rejestrowania danych do ponownego wykorzystania tokenu. Mają być ignorowane.|
-|`preferred_username` | String | Nazwa głównej reprezentuje użytkownika. Może on być adres e-mail, numer telefonu lub ogólny nazwy użytkownika bez określonego formatu. Jego wartość jest modyfikowalna i mogą ulec zmianie wraz z upływem czasu. Ponieważ jest ona modyfikowalna, ta wartość nie należy do podejmowania decyzji dotyczących autoryzacji. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia.|
+|`preferred_username` | String | Nazwa głównej reprezentuje użytkownika. Może on być adres e-mail, numer telefonu lub ogólny nazwy użytkownika bez określonego formatu. Jego wartość jest modyfikowalna i mogą ulec zmianie wraz z upływem czasu. Ponieważ jest ona modyfikowalna, ta wartość nie należy do podejmowania decyzji dotyczących autoryzacji. `profile` Zakres jest wymagany do odbierania tego oświadczenia.|
 |`email` | String | `email` Oświadczenia ma domyślnie dla konta gościa, które mają adres e-mail.  Aplikacja może żądać oświadczenie adresu e-mail dla zarządzanych użytkowników (te, z tą samą dzierżawą jako zasób) przy użyciu `email` [opcjonalnego roszczenia](active-directory-optional-claims.md).  Dla punktu końcowego v2.0 aplikacji mogą również żądać `email` zakresu OpenID Connect — nie trzeba używać zarówno opcjonalnego roszczenia oraz zakres, aby uzyskać oświadczenia.  Oświadczenie adresu e-mail obsługuje tylko adresy poczty z informacji o profilu użytkownika. |
-|`name` | String | `name` Oświadczeń zawiera zrozumiałą wartość, która identyfikuje podmiotu tokenu. Wartość nie musi być unikatowy, jest ona modyfikowalna i został zaprojektowany tak, ma być używany tylko w celach wyświetlania. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |
+|`name` | String | `name` Oświadczeń zawiera zrozumiałą wartość, która identyfikuje podmiotu tokenu. Wartość nie musi być unikatowy, jest ona modyfikowalna i został zaprojektowany tak, ma być używany tylko w celach wyświetlania. `profile` Zakres jest wymagany do odbierania tego oświadczenia. |
 |`nonce`| String | Identyfikator jednorazowy odpowiada parametrowi uwzględnione w oryginalnym / autoryzować żądania przez dostawcę tożsamości. Jeśli nie jest zgodny, aplikacja powinna odrzucenie tokena. |
-|`oid` | Ciąg identyfikatora GUID | Niemodyfikowalny identyfikator obiektu w Microsoft systemu tożsamości, w tym przypadku konta użytkownika. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji, rejestrowanie w ten sam użytkownik otrzyma taką samą wartość w `oid` oświadczenia. Program Microsoft Graph zwróci ten identyfikator jako `id` właściwość dla danego konta użytkownika. Ponieważ `oid` wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany w celu odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różne konta, nawet jeśli użytkownik loguje się do każdego konta przy użyciu tych samych poświadczeń. |
+|`oid` | Ciąg identyfikatora GUID | Niemodyfikowalny identyfikator obiektu w Microsoft systemu tożsamości, w tym przypadku konta użytkownika. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji, rejestrowanie w ten sam użytkownik otrzyma taką samą wartość w `oid` oświadczenia. Program Microsoft Graph zwróci ten identyfikator jako `id` właściwość dla danego konta użytkownika. Ponieważ `oid` wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany do odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różnych kont, nawet jeśli użytkownik loguje się do każdego konta przy użyciu tych samych poświadczeń. |
 |`roles`| Tablica ciągów | Zbiór ról, które zostały przypisane do użytkownika, który jest logowania. |
 |`rh` | Nieprzezroczysty ciąg |Oświadczenie wewnętrzne używane przez platformę Azure w celu ponownego zweryfikowania tokenów. Mają być ignorowane. |
-|`sub` | Ciąg identyfikatora GUID | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownika aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Temat jest identyfikatorem pairwise — jest on unikatowy dla identyfikatora dla określonej aplikacji. W związku z tym jeśli jeden użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch identyfikatorów innego klienta, aplikacji, które otrzyma dwóch różnych wartości oświadczenia podmiotu. To może być lub może nie być wskazane w zależności od wymagań dotyczących architektury i ochrony prywatności. |
-|`tid` | Ciąg identyfikatora GUID | Identyfikator GUID, który reprezentuje dzierżawy usługi Azure AD, do której należy użytkownik. Dla kont służbowych identyfikator GUID jest identyfikator dzierżawy niezmienne organizacji, do której należy użytkownik. Dla osobistych kont, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Zakres jest wymagany w celu odbierania tego oświadczenia. |
-|`unique_name` | String | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie musi być unikatowa w ramach dzierżawy i należy używać tylko w celach wyświetlania. Pojawiły się tylko w wersji 1.0 `id_tokens`. |
+|`sub` | Ciąg identyfikatora GUID | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownika aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Temat jest identyfikatorem pairwise — jest on unikatowy dla identyfikatora dla określonej aplikacji. Jeśli jeden użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch identyfikatorów innego klienta, aplikacji, które otrzyma dwóch różnych wartości oświadczenia podmiotu. To może być lub może być niepożądane w zależności od wymagań dotyczących architektury i ochrony prywatności. |
+|`tid` | Ciąg identyfikatora GUID | Identyfikator GUID, który reprezentuje dzierżawy usługi Azure AD, do której należy użytkownik. Dla kont służbowych identyfikator GUID jest identyfikator dzierżawy niezmienne organizacji, do której należy użytkownik. Dla osobistych kont, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Zakres jest wymagany do odbierania tego oświadczenia. |
+|`unique_name` | String | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie musi być unikatowy w ramach dzierżawy i należy używać tylko w celach wyświetlania. Pojawiły się tylko w wersji 1.0 `id_tokens`. |
 |`uti` | Nieprzezroczysty ciąg | Oświadczenie wewnętrzne używane przez platformę Azure w celu ponownego zweryfikowania tokenów. Mają być ignorowane. |
 |`ver` | Ciąg, w wersji 1.0 lub 2.0 | Wskazuje wersję id_token. |
 
 ## <a name="validating-an-idtoken"></a>Sprawdzanie poprawności elementu id_token
 
-Sprawdzanie poprawności `id_token` jest bardzo podobny do pierwszego kroku [sprawdzania poprawności tokenu dostępu](access-tokens.md#validating-tokens) — klienta należy sprawdzić, czy poprawny wystawca ma odesłał tokenu i nie została zmieniona z. Ponieważ `id_tokens` są zawsze token JWT, wiele bibliotek istnieją, aby sprawdzić te tokeny — firma Microsoft zaleca, możesz użyć jednej z tych zamiast wykonywania samodzielnie.
+Sprawdzanie poprawności `id_token` jest podobny do pierwszego kroku [sprawdzania poprawności tokenu dostępu](access-tokens.md#validating-tokens) — klienta należy sprawdzić, czy poprawny wystawca ma odesłał tokenu i nie została zmieniona z. Ponieważ `id_tokens` są zawsze token JWT, wiele bibliotek istnieją, aby sprawdzić te tokeny — firma Microsoft zaleca, możesz użyć jednej z tych zamiast wykonywania samodzielnie.
 
 Aby ręcznie sprawdzić poprawność tokenu, się ze szczegółami kroki [sprawdzania poprawności tokenu dostępu](access-tokens.md#validating-tokens). Po upewnieniu się, podpis w tokenie, następujące oświadczeń powinny być weryfikowane w id_token (te mogą również po weryfikacji tokenu biblioteki):
 
@@ -102,5 +102,5 @@ Aby ręcznie sprawdzić poprawność tokenu, się ze szczegółami kroki [sprawd
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [tokenów dostępu usługi Azure AD](access-tokens.md)
+* Dowiedz się więcej o [tokeny dostępu](access-tokens.md)
 * Dostosowywanie oświadczeń przy użyciu id_token [opcjonalnych oświadczeń](active-directory-optional-claims.md).

@@ -1,6 +1,6 @@
 ---
 title: Zestawy SDK usługi Azure Media Services 3 — Azure
-description: Ten artykuł przedstawia omówienie sposobu rozpoczęcia opracowywania za pomocą interfejsu API usługi Media Services 3 przy użyciu zestawów SDK i narzędzi.
+description: Ten artykuł zawiera omówienie sposobu uruchamiania, tworzenie aplikacji za pomocą usługi Media Services v3 API za pomocą zestawów SDK.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -16,23 +16,21 @@ ms.workload: media
 ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: d97682de6c8eb7dd36e25cbd4b8d66d328745748
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 9fb4d1561a661387f759aada9e776d43a95aa5c7
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543640"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564513"
 ---
-# <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Rozpoczęcie programowania przy użyciu interfejsu API usługi Media Services 3 za pomocą zestawów SDK i narzędzi
+# <a name="develop-against-media-services-v3-api-using-sdks"></a>Tworzenie interfejsu API w wersji 3 usługa Media Services za pomocą zestawów SDK
 
 Jako deweloper możesz użyć [interfejsu API REST](https://aka.ms/ams-v3-rest-ref) usługi Media Services lub bibliotek klienckich, które umożliwiają interakcję z interfejsem API REST, aby łatwo tworzyć i utrzymywać niestandardowe przepływy pracy multimediów oraz zarządzać nimi. Interfejs API usługi [Media Services v3](https://aka.ms/ams-v3-rest-sdk) opiera się na specyfikacji interfejsu OpenAPI (wcześniej znanej jako struktura Swagger).
-
-Przed rozpoczęciem tworzenia, przejrzyj [opracowywanie zawartości przy użyciu usługi Media Services v3 API](media-services-apis-overview.md).
 
 > [!NOTE]
 > Zestawy SDK usługi Azure Media Services v3 nie musi być metodą o bezpiecznych wątkach. Podczas tworzenia aplikacji wielowątkowych, należy dodać własną logiką synchronizacji wątków do ochrony klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Ponadto należy ostrożnie wielowątkowości problemy wynikające z opcjonalne obiekty udostępniany przez kod (na przykład wystąpienie klasy HttpClient w programie .NET).
 
-Ten temat zawiera łącza do zestawów SDK, narzędzia, zobacz inne.
+Ten temat zawiera łącza do zestawów SDK, narzędzia, przewodniki z instrukcjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,39 +38,40 @@ Aby rozpocząć opracowywanie pod kątem usługi Media Services, potrzebne są:
 
 - Aktywna subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)
+- Przegląd [opracowywanie zawartości przy użyciu nośnika usług interfejsów API w wersji 3](media-services-apis-overview.md)
 - [Tworzenie konta usługi Media Services — interfejs wiersza polecenia](create-account-cli-how-to.md)
 
 ## <a name="start-developing-with-sdks"></a>Rozpoczynanie programowania z użyciem zestawów SDK
 
 ### <a name="net"></a>.NET
 
-Użyj [zestawu .NET SDK](https://aka.ms/ams-v3-dotnet-sdk).
+Użyj [zestawu .NET SDK](https://aka.ms/ams-v3-dotnet-sdk) do [nawiązać połączenie z usługi Media Services](configure-connect-dotnet-howto.md).
 
-Eksploruj usługę Media Services [.NET ref](https://aka.ms/ams-v3-dotnet-ref) dokumentacji.
+Eksploruj usługę Media Services [dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref) dokumentacji.
 
 ### <a name="java"></a>Java
 
-Użyj [Java SDK](https://aka.ms/ams-v3-java-sdk).
+Użyj [zestawu Java SDK](https://aka.ms/ams-v3-java-sdk) do [nawiązać połączenie z usługi Media Services](configure-connect-java-howto.md).
 
-Przejrzyj [dokumentację dla języka Java](https://aka.ms/ams-v3-java-ref) usługi Media Services.
+Przegląd usługi Media Services [dokumentacja języka Java](https://aka.ms/ams-v3-java-ref) dokumentacji.
 
 ### <a name="nodejs"></a>Node.js
 
-Użyj [zestawu SDK środowiska Node.js](https://aka.ms/ams-v3-nodejs-sdk).
+Użyj [zestawu SDK środowiska Node.js](https://aka.ms/ams-v3-nodejs-sdk) do [nawiązać połączenie z usługi Media Services](configure-connect-nodejs-howto.md).
 
-Przeanalizuj [dokumentację oprogramowania Node.js](https://aka.ms/ams-v3-nodejs-ref) usługi Media Services i zapoznaj się z [przykładami](https://github.com/Azure-Samples/media-services-v3-node-tutorials) pokazującymi, jak używać interfejsu API usługi Media Services przy użyciu środowiska node.js.
+Eksploruj usługę Media Services [dokumentacja środowiska Node.js](https://aka.ms/ams-v3-nodejs-ref) dokumentacji i sprawdź [przykłady](https://github.com/Azure-Samples/media-services-v3-node-tutorials) które pokazują sposób użycia interfejsu API usługi Media Services przy użyciu środowiska node.js.
 
 ### <a name="python"></a>Python
 
 Użyj [Python SDK](https://aka.ms/ams-v3-python-sdk).
 
-Przejrzyj [dokumentację dla języka Python](https://aka.ms/ams-v3-python-ref) usługi Media Services.
+Przegląd usługi Media Services [dokumentacja języka Python](https://aka.ms/ams-v3-python-ref) dokumentacji.
 
 ### <a name="go"></a>Przejdź
 
 Użyj [Przejdź SDK](https://aka.ms/ams-v3-go-sdk).
 
-Przejrzyj [dokumentację dla języka Go](https://aka.ms/ams-v3-go-ref) usługi Media Services.
+Przegląd usługi Media Services [Przejdź odwołanie](https://aka.ms/ams-v3-go-ref) dokumentacji.
 
 ### <a name="ruby"></a>Ruby
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 412dfd690ea4ab33f249af78d4ef94c5ae5ccad2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358485"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565839"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -70,10 +70,10 @@ Aby można było wykonać te zadania, do konta musi być przypisana wbudowana ro
 Lokalne maszyny są replikowane do usługi Azure managed disks. Po przejściu do trybu failover, maszyny wirtualne platformy Azure są tworzone na podstawie tych dysków zarządzanych i przyłączone do sieci platformy Azure, określonych w tej procedurze.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
-2. Jako model wdrażania pozostaw wybraną pozycję **Resource Manager**.
+2. Zachowaj **usługi Resource Manager** wybrany jako model wdrażania.
 3. W obszarze **Nazwa** wprowadź nazwę sieci. Nazwa musi być unikatowa w obrębie grupy zasobów platformy Azure. W tym samouczku użyto nazwy **ContosoASRnet**.
 4. Podaj grupę zasobów, w której zostanie utworzona sieć. Należy użyć istniejącej grupy zasobów **contosoRG**.
-5. W **zakres adresów**, wprowadź zakres sieci. Firma Microsoft korzysta z **10.0.0.0/24**, a nie za pomocą podsieci.
+5. W **zakres adresów**, wprowadź zakres sieci. Firma Microsoft korzysta z **10.1.0.0/24**, a nie za pomocą podsieci.
 6. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć sieć.
 7. W **lokalizacji**, wybierz region, w tym samym jako, w którym utworzono magazyn usługi Recovery Services. W naszym samouczku przedstawiono w nim **Europa Zachodnia**. Sieć musi znajdować się w tym samym regionie co magazyn.
 8. Należy pozostawić opcje domyślne podstawowej ochrony DDoS bez punktu końcowego usługi w sieci.

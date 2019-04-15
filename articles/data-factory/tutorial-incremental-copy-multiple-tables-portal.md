@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257437"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566009"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -491,11 +491,12 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 1. Przejdź do karty **Ujście** i wybierz pozycję **SinkDataset** w polu **Zestaw danych będący ujściem**. 
         
     ![Działanie Copy (Kopiowanie) — ustawienia ujścia](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. Przejdź do karty **Parametry** i wykonaj następujące czynności:
+1. Wykonaj następujące czynności:
 
-    1. Dla właściwości **Nazwa procedury składowanej będącej ujściem** wprowadź wartość `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Dla właściwości **Typ tabeli będącej ujściem** wprowadź wartość `@{item().TableType}`.
-    1. W sekcji **Zestaw danych będący ujściem** jako parametr **SinkTableName** wprowadź wartość `@{item().TABLE_NAME}`.
+    1. W **Dataset** właściwości dla **SinkTableName** parametrów, wprowadź `@{item().TABLE_NAME}`.
+    1. Aby uzyskać **Nazwa procedury składowanej** właściwości wprowadź `@{item().StoredProcedureNameForMergeOperation}`.
+    1. Aby uzyskać **typ tabeli** właściwości wprowadź `@{item().TableType}`.
+
 
         ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Przeciągnij działanie **Stored Procedure** (Procedura składowana) z przybornika **Działania** do powierzchni projektanta potoku. Połącz działanie **Copy** z działaniem **Stored Procedure**. 
@@ -743,6 +744,6 @@ W ramach tego samouczka wykonano następujące procedury:
 Przejdź do następującego samouczka, aby dowiedzieć się więcej o przekształcaniu danych za pomocą klastra Spark na platformie Azure:
 
 > [!div class="nextstepaction"]
->[Przyrostowe ładowanie danych z usługi Azure SQL Database do magazynu obiektów Blob platformy Azure przy użyciu technologii Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
+>[Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem technologii Change Tracking](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
 

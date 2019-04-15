@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491495"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564535"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -78,6 +78,12 @@ Serwer NPS musi być w stanie komunikować się z następujących adresów URL p
 
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
+
+Ponadto do ukończenia jest wymagana łączność z następującymi adresami URL [Instalatora karty przy użyciu dostarczonego skryptu programu PowerShell](#run-the-powershell-script)
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -142,6 +148,14 @@ Użytkownicy muszą wykonaj następujące kroki, aby zarejestrować przed ich mo
 1. [Pobierz rozszerzenia serwera NPS](https://aka.ms/npsmfa) z Centrum pobierania Microsoft.
 2. Skopiuj plik binarny serwera zasad sieciowych, którą chcesz skonfigurować.
 3. Uruchom *setup.exe* i postępuj zgodnie z instrukcjami instalacji. Jeśli wystąpią błędy, należy dokładnie dwie biblioteki z sekcji wymagań wstępnych zostały pomyślnie zainstalowane.
+
+#### <a name="upgrade-the-nps-extension"></a>Uaktualnij rozszerzenia serwera NPS
+
+Podczas uaktualniania istniejącego rozszerzenia serwera NPS dla instalacji, aby uniknąć ponownego uruchomienia serwera bazowego wykonaj następujące czynności:
+
+1. Odinstalować istniejącą wersję
+1. Uruchamianie nowego Instalatora
+1. Uruchom ponownie usługę serwera zasad sieciowych (IAS)
 
 ### <a name="run-the-powershell-script"></a>Uruchom skrypt programu PowerShell
 
@@ -231,7 +245,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-Po uruchomieniu tego polecenia, przejdź do dysku C, zlokalizuj plik, a następnie kliknij dwukrotnie na nim. Przejdź do szczegółów i przewiń w dół do "odciskiem palca", porównać odcisk palca certyfikatu zainstalowanego na serwerze do wskazanego. Odciski palców certyfikatu powinien być zgodny.
+Po uruchomieniu tego polecenia, przejdź do dysku C, zlokalizuj plik i kliknij go dwukrotnie. Przejdź do szczegółów i przewiń w dół do "odciskiem palca", porównać odcisk palca certyfikatu zainstalowanego na serwerze do wskazanego. Odciski palców certyfikatu powinien być zgodny.
 
 Nieprawidłowa-z i ważne — aż sygnatury czasowe, które znajdują się w postaci czytelnej dla człowieka, można odfiltrować misfits oczywiste, jeśli polecenie zwraca więcej niż jeden certyfikat.
 
@@ -270,7 +284,7 @@ Upewnij się, że adres https://adnotifications.windowsazure.com jest osiągalny
 
 Jeśli wygasł poprzedniego certyfikat komputera, a nowy certyfikat został wygenerowany, należy usunąć wszelkie wygasłych certyfikatów. Posiadanie wygasłych certyfikatów może spowodować problemy z rozszerzeniem serwera NPS, uruchamianie.
 
-Aby sprawdzić, czy mają prawidłowy certyfikat, sprawdź Store certyfikat konta komputera lokalnego za pomocą programu MMC, a następnie upewnij się, że certyfikat nie został przekazany datę jego wygaśnięcia. Aby wygenerować nowo prawidłowy certyfikat, uruchom ponownie kroki opisane w sekcji "[uruchomienia skryptu programu PowerShell](#run-the-powershell-script)"
+Aby sprawdzić, czy mają prawidłowy certyfikat, sprawdź Store certyfikat konta komputera lokalnego za pomocą programu MMC, a następnie upewnij się, że certyfikat nie został przekazany datę jego wygaśnięcia. Aby wygenerować certyfikat nowo, ponownie uruchom kroki opisane w sekcji "[uruchomienia skryptu programu PowerShell](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Zarządzanie protokołami TLS/SSL i zestawami szyfrowania
 
@@ -282,4 +296,4 @@ Zalecane jest, że mechanizmów szyfrowania starsze, słabszej je wyłączyć lu
 
 - Dowiedz się, jak zintegrować [bramy usług pulpitu zdalnego](howto-mfa-nps-extension-rdg.md) i [serwerów sieci VPN](howto-mfa-nps-extension-vpn.md) przy użyciu rozszerzenia serwera NPS
 
-- [Komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)
+- [Resolve error messages from the NPS extension for Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md) (Rozstrzyganie komunikatów o błędach z rozszerzenia serwera NPS dotyczących usługi Azure Multi-Factor Authentication)

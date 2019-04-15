@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261041"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565546"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -255,7 +255,7 @@ Jeśli w środowisku firmowym sieci korzysta z serwera proxy, dostęp do Interne
 
 ![Określ serwer proxy](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-Własne środowisko integration runtime używa serwera proxy, aby nawiązać połączenie z usługą w chmurze. Wybierz **łącze Zmień** podczas początkowej konfiguracji. Pojawi się okno dialogowe Ustawienia serwera proxy.
+Po skonfigurowaniu własnego środowiska integration runtime używa serwera proxy na potrzeby łączenia z usługą w chmurze źródłowej / docelowej (za pomocą protokołu HTTP / protokołu HTTPS). Jest to wybierz **łącze Zmień** podczas początkowej konfiguracji. Pojawi się okno dialogowe Ustawienia serwera proxy.
 
 ![Ustaw serwer proxy](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

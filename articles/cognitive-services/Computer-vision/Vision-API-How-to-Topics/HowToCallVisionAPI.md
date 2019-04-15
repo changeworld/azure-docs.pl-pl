@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350916"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563374"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Przykład: jak wywoływać interfejs API przetwarzania obrazów
 
@@ -165,15 +165,15 @@ Oto przykład:
 }
 ```
 
-Pole | Type | Zawartość
+Pole | Typ | Zawartość
 ------|------|------|
-Tagi  | obiekt | Obiekt najwyższego poziomu dla tablicy tagów
-tags[].Name | string    | Słowo kluczowe z klasyfikatora tagów
-tags[].Score    | numer    | Współczynnik ufności od 0 do 1.
-description  | obiekt   | Obiekt najwyższego poziomu dla opisu.
-description.tags[] |    string  | Lista tagów.  Jeśli występuje niewystarczający poziom ufności w zakresie tworzenia podpisu, tagi mogą stanowić jedyne informacje dostępne dla funkcji wywołującej.
-description.captions[].text | string    | Fraza opisująca obraz.
-description.captions[].confidence   | numer    | Poziom ufności dla frazy.
+Tagi  | `object` | Obiekt najwyższego poziomu dla tablicy tagów
+tags[].Name | `string`  | Słowo kluczowe z klasyfikatora tagów
+tags[].Score    | `number`  | Współczynnik ufności od 0 do 1.
+description  | `object` | Obiekt najwyższego poziomu dla opisu.
+description.tags[] |    `string`    | Lista tagów.  Jeśli występuje niewystarczający poziom ufności w zakresie tworzenia podpisu, tagi mogą stanowić jedyne informacje dostępne dla funkcji wywołującej.
+description.captions[].text | `string`  | Fraza opisująca obraz.
+description.captions[].confidence   | `number`  | Poziom ufności dla frazy.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Pobieranie i zrozumieć dane wyjściowe JSON modeli specyficznych dla domeny
 
@@ -227,12 +227,12 @@ W przypadku modeli specyficznych dla domeny używających opcji drugiej (analiza
 
 Pole kategorii jest listą co najmniej jednej z [86 kategorii](../Category-Taxonomy.md) w oryginalnej taksonomii. Należy również pamiętać, że kategorie zakończone podkreśleniem będą pasować do tej kategorii oraz jej elementów podrzędnych (na przykład people_ i people_group, dla modelu celebrities).
 
-Pole   | Type  | Zawartość
+Pole   | Typ  | Zawartość
 ------|------|------|
-categories | obiekt | Obiekt najwyższego poziomu
-categories[].name    | string   | Nazwa z taksonomii obejmującej 86 kategorii
-categories[].score  | numer    | Współczynnik ufności od 0 do 1
-categories[].detail  | obiekt?      | Opcjonalny obiekt szczegółów
+categories | `object`   | Obiekt najwyższego poziomu
+categories[].name    | `string` | Nazwa z taksonomii obejmującej 86 kategorii
+categories[].score  | `number`  | Współczynnik ufności od 0 do 1
+categories[].detail  | `object?`      | Opcjonalny obiekt szczegółów
 
 Należy pamiętać, że jeśli pasuje wiele kategorii (na przykład klasyfikator obejmujący 86 kategorii zwraca wynik dla kategorii people_ i people_young w przypadku modelu model=celebrities), szczegóły zostają dołączone do najbardziej ogólnego poziomu dopasowania (w tym przykładzie kategorii people_).
 

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361311"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565686"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Konfigurowanie adresów IP, odnoszący się nawiązać połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover
 
@@ -62,7 +62,7 @@ Dla Woodgrove można było do jej maszyny wirtualne można replikować na platfo
 
 1. Tworzenie sieci wirtualnej platformy Azure, w której maszyny wirtualne platformy Azure zostanie utworzony po przełączeniu w tryb failover maszyn lokalnych. Rozszerzenie sieci lokalnej, należy tak, aby aplikacje w trybie Failover bezproblemowo.
 2. Przed włączeniem trybu failover w usłudze Site Recovery mogą przypisać ten sam adres IP we właściwościach maszyny. Po przejściu w tryb failover Usługa Site Recovery przypisuje ten adres do maszyny Wirtualnej platformy Azure.
-3. Po uruchomieniu trybu failover i maszyn wirtualnych platformy Azure są tworzone przy użyciu tego samego adresu IP, łączą się z sieci za pomocą funkcji [połączenie między sieciami wirtualnymi](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ta akcja umożliwia pisanie skryptów.
+3. Po uruchomieniu trybu failover i maszyn wirtualnych platformy Azure są tworzone przy użyciu tego samego adresu IP, łączą się z sieci za pomocą funkcji [połączenie między sieciami wirtualnymi](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Ta akcja umożliwia pisanie skryptów.
 4. Muszą oni tras, tak że 192.168.1.0/24 przeniósł się teraz na platformie Azure, aby zmodyfikować.
 
 

@@ -3,7 +3,7 @@ title: Usługa Azure Security Center Szybki Start — dołączanie usługi Azure
 description: Ten przewodnik Szybki Start przedstawia sposób aprowizacji rozszerzenia maszyny wirtualnej usługi Azure Monitor, aktualizacji i zarządzania konfiguracją na maszynach wirtualnych usługi Azure Stack.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: pipposera
 manager: dsavage
 editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 9efd6514b722168f8ecb1235159e7463ce318118
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.author: fiseraci
+ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904019"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563798"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Szybki start:  Dołączanie maszyn wirtualnych usługi Azure Stack do usługi Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center, aby chronić maszyny wirtualne uruchomione w usłudze Azure Stack, dodając **usługi Azure Monitor, aktualizacji i zarządzania konfiguracją** rozszerzenia maszyny wirtualnej Usługa Azure Stack Portal marketplace.
@@ -32,7 +32,7 @@ Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja 
 
 Musi mieć subskrypcję platformy Azure na warstwy standardowa usługi Security Center przed rozpoczęciem tego przewodnika Szybki Start. Zobacz [Dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), aby uzyskać instrukcje dotyczące uaktualnienia. Możesz spróbować Security Center w warstwie standardowa bezpłatnie przez 30 dni. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="add-an-azure-stack-virtual-machine"></a>Dodaj maszynę wirtualną usługi Azure Stack
+## <a name="select-your-workspace-in-azure-security-center"></a>Wybierz swój obszar roboczy w usłudze Azure Security Center
 
 1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**. 
@@ -65,8 +65,12 @@ Teraz należy dodać **usługi Azure Monitor, aktualizacji i zarządzania konfig
 3. Wybierz pozycję **Rozszerzenia**. Lista rozszerzeń maszyny wirtualnej na tej maszynie wirtualnej jest wyświetlana.
 4. Kliknij przycisk **Dodaj** kartę. **Nowy zasób** bloku menu otwiera i wyświetla listę rozszerzeń dostępnych maszyny wirtualnej. 
 5. Wybierz **usługi Azure Monitor, aktualizacji i zarządzania konfiguracją** rozszerzenie i kliknij przycisk **Utwórz**. **Zainstalować rozszerzenie** zostanie otwarty blok konfiguracji.
+
+>[!NOTE]
+> Jeśli nie widzisz **usługi Azure Monitor, aktualizacji i zarządzania konfiguracją** rozszerzenie wymienione w portalu marketplace, skontaktuj się z operatorem usługi Azure Stack, aby udostępnić go.
+
 6. Na **zainstalować rozszerzenie** bloku konfiguracja, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego (klucz podstawowy)** skopiowany do Notatnika w poprzedniej procedurze.
-7.  W przypadku zakończenia, zapewniając niezbędnych ustawień konfiguracji kliknij **OK**.
+7.  Po zakończeniu realizacji niezbędnych ustawień konfiguracji, kliknij przycisk **OK**.
 8. Po ukończeniu instalacji rozszerzenia, jego stan będzie wyświetlany jako **aprowizacji Powodzenie**. Może potrwać do godziny dla maszyny wirtualnej, które pojawią się w portalu usługi Security Center.
 
 Aby uzyskać więcej informacji na temat instalowania i konfigurowania agenta dla Windows, zobacz [komputerów Windows Połącz](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
