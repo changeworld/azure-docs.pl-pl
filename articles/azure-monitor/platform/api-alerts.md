@@ -36,7 +36,7 @@ Harmonogramy mają właściwości podane w poniższej tabeli.
 |:--- |:--- |
 | Interval |Jak często jest uruchamiany podczas wyszukiwania. Mierzony w ciągu kilku minut. |
 | QueryTimeSpan |Przedział czasu, w którym jest oceniana kryteria. Musi być równy lub większy niż interwał. Mierzony w ciągu kilku minut. |
-| Wersja |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
+| Version |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
 
 Rozważmy na przykład zapytania dotyczącego zdarzenia z odstępie 15 minut i przedziału czasu 30 minut. W tym przypadku zapytanie będzie uruchamiany co 15 minut, a alert może zostać wyzwolony, jeśli kryteria nadal prowadzić do przez wartość true, zakres 30 minut.
 
@@ -359,9 +359,9 @@ Powiadomienia e-mail Wyślij wiadomości e-mail do co najmniej jednego adresata.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Adresaci |Lista adresów e-mail. |
-| Podmiot |Temat wiadomości e-mail. |
-| Załącznik |Załączniki nie są obecnie obsługiwane, dzięki czemu zawsze będzie to miało wartość "None". |
+| Recipients |Lista adresów e-mail. |
+| Subject |Temat wiadomości e-mail. |
+| Attachment |Załączniki nie są obecnie obsługiwane, dzięki czemu zawsze będzie to miało wartość "None". |
 
 Oto przykładowa odpowiedź dla akcji powiadomienia e-mail o progu.  
 
@@ -406,7 +406,7 @@ Korygowania funkcję obejmują właściwości w poniższej tabeli.
 |:--- |:--- |
 | RunbookName |Nazwa elementu runbook. Musi on być zgodny opublikowanego elementu runbook na koncie usługi automation skonfigurowano w rozwiązaniu usługi Automation, w obszarze roboczym usługi Log Analytics. |
 | WebhookUri |Identyfikator URI elementu webhook. |
-| Data wygaśnięcia |Datę i godzinę wygaśnięcia elementu webhook.  Jeśli element webhook nie ma wygasania, może to być dowolną prawidłową datę przyszłości. |
+| Expiry |Datę i godzinę wygaśnięcia elementu webhook.  Jeśli element webhook nie ma wygasania, może to być dowolną prawidłową datę przyszłości. |
 
 Oto przykładowa odpowiedź dla akcji korygowania o progu.
 
