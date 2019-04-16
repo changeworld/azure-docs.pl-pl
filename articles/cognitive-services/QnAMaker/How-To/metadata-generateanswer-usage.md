@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: tulasim
-ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958052"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579414"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi wiedzy, za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -67,22 +67,23 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
 ```
 
-|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
+|Właściwości żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Parametr trasy adresu URL|Host punktu końcowego interfejsu QnAMaker|string|Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
 |Nagłówek|Content-Type|string|Typ nośnika treści wysłanej do interfejsu API. Wartość domyślna to: "|
 |Nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Treść wpisu|Obiekt JSON|JSON|Pytanie przy użyciu ustawień|
-|Parametr ciągu zapytania (opcjonalnie)|`isTest`|wartość logiczna|Jeśli ustawionej na wartość true, zwraca wyniki z `testkb` indeksu wyszukiwania zamiast opublikowanych indeksu.|
+
 
 Treść kodu JSON ma kilka ustawień:
 
-|Właściwość treść JSON|Wymagane|Type|Przeznaczenie|
+|Właściwość treść JSON|Wymagane|Typ|Przeznaczenie|
 |--|--|--|--|
 |`question`|wymagane|string|Pytanie użytkownika mają być wysyłane do bazy wiedzy.|
 |`top`|opcjonalne|liczba całkowita|Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.|
 |`userId`|opcjonalne|string|Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.|
+|`isTest`|opcjonalne|wartość logiczna|Jeśli ustawionej na wartość true, zwraca wyniki z `testkb` indeksu wyszukiwania zamiast opublikowanych indeksu.|
 |`strictFilters`|opcjonalne|string|Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych.|
 
 Przykładowy kod JSON wygląda następująco:
@@ -91,6 +92,7 @@ Przykładowy kod JSON wygląda następująco:
 {
     "question": "qna maker and luis",
     "top": 6,
+    "isTest": true,
     "strictFilters": [
     {
         "name": "category",
