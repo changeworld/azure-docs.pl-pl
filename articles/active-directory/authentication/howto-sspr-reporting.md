@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493063"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577971"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -50,15 +50,14 @@ W środowisku witryny Azure portal firma Microsoft ulepszyła sposobu można wy�
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**.
 3. Wyszukaj **usługi Azure Active Directory** na liście usług i wybierz ją.
-4. Wybierz pozycję **Użytkownicy i grupy**.
-5. Wybierz **dzienników inspekcji** z **użytkowników i grup** menu. To pokazuje wszystkie zdarzenia inspekcji, które wystąpiły dla wszystkich użytkowników w katalogu. Możesz filtrować ten widok, aby zobaczyć wszystkie zdarzenia związane z hasłami.
-6. Aby odfiltrować ten widok, aby wyświetlić tylko zdarzenia dotyczące resetowania hasła, wybierz **filtru** znajdujący się u góry okienka.
-7. Z **filtru** menu, wybierz opcję **kategorii** listy rozwijanej listy i zmień ją na **samoobsługowego zarządzania hasłami** typu kategorii.
-8. Opcjonalnie, dokładniej przefiltrować listę, wybierając konkretne **działania** interesuje Cię.
+4. Wybierz **użytkowników** z sekcji Zarządzanie.
+5. Wybierz **dzienników inspekcji** z **użytkowników** bloku. To pokazuje wszystkie zdarzenia inspekcji, które wystąpiły dla wszystkich użytkowników w katalogu. Możesz filtrować ten widok, aby zobaczyć wszystkie zdarzenia związane z hasłami.
+6. Z **filtru** menu w górnej części okienka wybierz **usługi** listy rozwijanej listy i zmień ją na **samoobsługowego zarządzania hasłami** typ usługi.
+7. Opcjonalnie, dokładniej przefiltrować listę, wybierając konkretne **działania** interesuje Cię.
 
 ### <a name="converged-registration-preview"></a>Osiągnięcia zbieżności rejestracji (wersja zapoznawcza)
 
-Jeśli uczestniczysz w publicznej wersji zapoznawczej konwergentnej rejestracji informacje dotyczące działań użytkownika w dziennikach inspekcji zostanie znaleziony w kategorii **metod uwierzytelniania**.
+Jeśli uczestniczysz w publicznej wersji zapoznawczej konwergentnej rejestracji informacje dotyczące działań użytkownika w dziennikach inspekcji zostanie znaleziony w usłudze **metod uwierzytelniania**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Opis kolumny raportu w witrynie Azure portal
 
@@ -179,13 +178,13 @@ Poniżej opisano to działanie szczegółowo:
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md).
-* [Masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
-* [Jakie dane są używane przez Samoobsługowe Resetowanie HASEŁ i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
+* [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
+* [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)
-* [Jakie są opcje zasad funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
-* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego tak ważna go?](howto-sspr-writeback.md)
-* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one oznacza?](concept-sspr-howitworks.md)
-* [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcji samoobsługowego resetowania HASEŁ](active-directory-passwords-troubleshoot.md)
-* [Mam pytanie, które nie gdzieś else](active-directory-passwords-faq.md)
+* [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
+* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
+* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
+* [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcją samoobsługowego resetowania haseł?](active-directory-passwords-troubleshoot.md)
+* [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Przykład funkcji samoobsługowego resetowania HASEŁ działania inspekcji dzienników w usłudze Azure AD"

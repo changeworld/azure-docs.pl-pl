@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263047"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579225"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -484,13 +484,13 @@ Umożliwia także odwołania do właściwości w zapytaniach. Na przykład `SELE
 
 W poniższej tabeli przedstawiono wynik porównań równości w interfejsie API SQL między dwoma dowolnymi typami JSON.
 
-| **OP** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **String** | **Obiekt** | **Tablica** |
+| **Operator** | **Niezdefiniowane** | **Null** | **Wartość logiczna** | **Liczba** | **Ciąg** | **Obiekt** | **Tablica** |
 |---|---|---|---|---|---|---|---|
 | **Niezdefiniowane** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Null** | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Wartość logiczna** | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
 | **Liczba** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane |
-| **String** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
+| **Ciąg** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane | Niezdefiniowane |
 | **Obiekt** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** | Niezdefiniowane |
 | **Tablica** | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | Niezdefiniowane | **OK** |
 
@@ -502,7 +502,7 @@ Jeśli jest wynikiem wyrażenia skalarne `Undefined`, element nie jest uwzględn
 
 Operatory logiczne działają na wartościach logicznych. W poniższych tabelach przedstawiono tabel prawdziwych danych logicznych dla tych operatorów:
 
-**OR — operator**
+**Operator OR**
 
 | LUB | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
@@ -510,7 +510,7 @@ Operatory logiczne działają na wartościach logicznych. W poniższych tabelach
 | False |True |False |Niezdefiniowane |
 | Niezdefiniowane |True |Niezdefiniowane |Niezdefiniowane |
 
-**AND — operator**
+**Operator AND**
 
 | AND | True | False | Niezdefiniowane |
 | --- | --- | --- | --- |
@@ -518,7 +518,7 @@ Operatory logiczne działają na wartościach logicznych. W poniższych tabelach
 | False |False |False |False |
 | Niezdefiniowane |Niezdefiniowane |False |Niezdefiniowane |
 
-**NOT — operator**
+**Operator NOT**
 
 | NOT |  |
 | --- | --- |
@@ -1238,13 +1238,13 @@ Wynik jest:
 
 Funkcje sprawdzania typu pozwalają sprawdzić typ wyrażenia w ramach zapytania SQL. Kontrola typów w funkcji służy do określania typów właściwości elementów na bieżąco, kiedy są one zmienna lub nieznany. W tym miejscu znajduje się tabela obsługiwanych wbudowanych funkcji sprawdzania typów:
 
-| **Sposób użycia** | **Opis** |
+| **Użycie** | **Opis** |
 |-----------|------------|
 | [IS_ARRAY (wyrażenie)](sql-api-query-reference.md#bk_is_array) | Zwraca wartość logiczną wskazującą, czy typ wartości jest tablicą. |
 | [IS_BOOL (wyrażenie)](sql-api-query-reference.md#bk_is_bool) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością logiczną. |
-| [IS_NULL (expr)](sql-api-query-reference.md#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
+| [IS_NULL (wyrażenie)](sql-api-query-reference.md#bk_is_null) | Zwraca wartość logiczną wskazującą, czy typ wartości jest wartością null. |
 | [IS_NUMBER (wyrażenie)](sql-api-query-reference.md#bk_is_number) | Zwraca wartość logiczną wskazującą, czy typ wartości jest liczbą. |
-| [Is_object — (wyrażenie)](sql-api-query-reference.md#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
+| [IS_OBJECT (wyrażenie)](sql-api-query-reference.md#bk_is_object) | Zwraca wartość logiczną wskazującą, czy typ wartości jest obiektem JSON. |
 | [IS_STRING (wyrażenie)](sql-api-query-reference.md#bk_is_string) | Zwraca wartość logiczną wskazującą, czy typ wartości jest ciągiem. |
 | [IS_DEFINED (wyrażenie)](sql-api-query-reference.md#bk_is_defined) | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
 | [IS_PRIMITIVE (wyrażenie)](sql-api-query-reference.md#bk_is_primitive) | Zwraca wartość Boolean wskazującą, czy typ wartości ciągu, liczba, wartość logiczna lub o wartości null. |
@@ -1267,22 +1267,22 @@ Następujące funkcje skalarne wykonania operacji na wartość ciągu wejściowe
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [DŁUGOŚĆ (str_expr)](sql-api-query-reference.md#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
-| [CONCAT (str_expr str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
-| [SUBSTRING (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | Zwraca część wyrażenia ciągu. |
-| [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego. |
-| [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi. |
-| [ZAWIERA (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
-| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | Zwraca pozycję początkową pierwsze wystąpienie ciągu drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli nie odnaleziono ciągu. |
-| [Po lewej stronie (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
-| [Po prawej stronie (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
-| [PRZYTP (str_expr)](sql-api-query-reference.md#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
-| [PRZYTK (str_expr)](sql-api-query-reference.md#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
-| [MAŁE (str_expr)](sql-api-query-reference.md#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
-| [GÓRNY (str_expr)](sql-api-query-reference.md#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
-| [Zastąp (str_expr str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
-| [REPLIKACJA (str_expr, num_expr)](sql-api-query-reference.md#bk_replicate) | Powtarza wartość ciągu określoną liczbę razy. |
-| [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
+| [LENGTH (wyrażenie_ciągu)](sql-api-query-reference.md#bk_length) | Zwraca liczbę znaków z określonego wyrażenia ciągu. |
+| [CONCAT (wyrażenie_ciągu, wyrażenie_ciągu [, wyrażenie_ciągu])](sql-api-query-reference.md#bk_concat) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
+| [SUBSTRING (wyrażenie_ciągu, wyrażenie_liczbowe, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_substring) | Zwraca część wyrażenia ciągu. |
+| [STARTSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_startswith) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego. |
+| [ENDSWITH (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_endswith) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi. |
+| [CONTAINS (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_contains) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
+| [INDEX_OF (wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_index_of) | Zwraca pozycję początkową pierwsze wystąpienie ciągu drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli nie odnaleziono ciągu. |
+| [LEFT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_left) | Zwraca lewą część ciągu z określoną liczbą znaków. |
+| [RIGHT (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_right) | Zwraca prawą część ciągu z określoną liczbą znaków. |
+| [LTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_ltrim) | Zwraca wyrażenie ciągu po usunięciu spacji wiodących. |
+| [RTRIM (wyrażenie_ciągu)](sql-api-query-reference.md#bk_rtrim) | Zwraca wyrażenie ciągu po przycięciu wszystkich spacji końcowych. |
+| [LOWER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_lower) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
+| [UPPER (wyrażenie_ciągu)](sql-api-query-reference.md#bk_upper) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
+| [REPLACE (wyrażenie_ciągu,wyrażenie_ciągu, wyrażenie_ciągu)](sql-api-query-reference.md#bk_replace) | Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu. |
+| [REPLICATE (wyrażenie_ciągu, wyrażenie_liczbowe)](sql-api-query-reference.md#bk_replicate) | Powtarza wartość ciągu określoną liczbę razy. |
+| [REVERSE (wyrażenie_ciągu)](sql-api-query-reference.md#bk_reverse) | Zwraca wartość ciągu w odwrotnej kolejności. |
 
 Korzystanie z tych funkcji, można uruchomić zapytania, podobnie do poniższego, która zwraca rodziny `id` pisane wielkimi literami:
 
@@ -1343,10 +1343,10 @@ Następujące funkcje skalarne wykonania operacji na wartości wejściowej tabli
 
 | Sposób użycia | Opis |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
-| [ARRAY_CONCAT (arr_expr arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
-| [ARRAY_CONTAINS (arr_expr, wyrażenie [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
-| [ARRAY_SLICE (arr_expr num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |Zwraca część wyrażenia tablicy. |
+| [ARRAY_LENGTH (wyrażenie_tablicy)](sql-api-query-reference.md#bk_array_length) |Zwraca liczbę elementów określonego wyrażenia tablicy. |
+| [ARRAY_CONCAT (wyrażenie_tablicy, wyrażenie_tablicy [, wyrażenie_tablicy])](sql-api-query-reference.md#bk_array_concat) |Zwraca tablicę, która jest wynikiem połączenia co najmniej dwóch wartości tablicy. |
+| [ARRAY_CONTAINS (wyrażenie_tablicy, wyrażenie [, wyrażenie_warunkowe])](sql-api-query-reference.md#bk_array_contains) |Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełne czy lub częściowe. |
+| [ARRAY_SLICE (wyrażenie_ciągu, wyrażenie_liczbowe [, wyrażenie_liczbowe])](sql-api-query-reference.md#bk_array_slice) |Zwraca część wyrażenia tablicy. |
 
 Funkcje tablicy należy używać do manipulowania tablicami w formacie JSON. Na przykład, w tym miejscu jest zapytanie, które zwraca wszystkie elementy `id`s w przypadku, gdy jeden z `parents` jest `Robin Wakefield`: 
 
@@ -1714,7 +1714,7 @@ W kolejnym przykładzie pokazano sprzężenia, wyrażone za pomocą LINQ `Select
 
 Klient modelu .NET automatycznie wykonuje iterację przez wszystkie strony wyników zapytania w `foreach` blokuje, jak pokazano w powyższym przykładzie. Opcje zapytania wprowadzona w [interfejsu API REST](#RestAPI) sekcji są również dostępne w zestawie SDK platformy .NET przy użyciu `FeedOptions` i `FeedResponse` klas w `CreateDocumentQuery` metody. Liczbę stron, które można kontrolować za pomocą `MaxItemCount` ustawienie.
 
-Można także jawnie kontrolować dzielenie na strony, tworząc element `IDocumentQueryable` przy użyciu obiektu `IQueryable`, a następnie odczytując wartości ` ResponseContinuationToken` i przekazując je z powrotem jako token `RequestContinuationToken` w obszarze `FeedOptions`. Możesz ustawić `EnableScanInQuery` Aby włączyć skanowanie, gdy zapytanie nie jest obsługiwany przez skonfigurowane zasady indeksowania. W przypadku partycjonowanego kontenerów, można użyć `PartitionKey` uruchamiać zapytanie jednej partycji, mimo że usługę Azure Cosmos DB można automatycznie prowadzenie to tekst zapytania. Możesz użyć `EnableCrossPartitionQuery` uruchamiać zapytania wiele partycji.
+Można także jawnie kontrolować stronicowania, tworząc `IDocumentQueryable` przy użyciu `IQueryable` obiektu, a następnie, czytając `ResponseContinuationToken` wartości i przekazywania ich z powrotem jako `RequestContinuationToken` w `FeedOptions`. Możesz ustawić `EnableScanInQuery` Aby włączyć skanowanie, gdy zapytanie nie jest obsługiwany przez skonfigurowane zasady indeksowania. W przypadku partycjonowanego kontenerów, można użyć `PartitionKey` uruchamiać zapytanie jednej partycji, mimo że usługę Azure Cosmos DB można automatycznie prowadzenie to tekst zapytania. Możesz użyć `EnableCrossPartitionQuery` uruchamiać zapytania wiele partycji.
 
 Aby uzyskać więcej przykładów .NET za pomocą zapytań, zobacz [przykładów usługi Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet) w usłudze GitHub.
 
@@ -1915,7 +1915,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
 
 **Wybierz operator, przykład 1:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Select(family => family.parents[0].familyName);
@@ -1930,7 +1930,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
   
 **Wybierz operator, przykład 2:** 
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Select(family => family.children[0].grade + c); // c is an int variable
@@ -1945,7 +1945,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
   
 **Wybierz operator, przykład 3:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
     input.Select(family => new
@@ -1967,7 +1967,7 @@ Składnia to `input.Select(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym.
 
 Składnia to `input.SelectMany(x => f(x))`, gdzie `f` jest wyrażeniem skalarnym, które zwraca typ kontenera.
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.SelectMany(family => family.children);
@@ -1986,7 +1986,7 @@ Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, któ
 
 **Gdy operator, na przykład 1:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Where(family=> family.parents[0].familyName == "Wakefield");
@@ -2002,7 +2002,7 @@ Składnia to `input.Where(x => f(x))`, gdzie `f` jest wyrażenie skalarnym, któ
   
 **Gdy operator, na przykład 2:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Where(
@@ -2029,7 +2029,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączon
 
 **Łączenie, przykład 1:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Select(family=>family.parents[0])
@@ -2046,7 +2046,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączon
 
 **Łączenie, przykład 2:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Where(family => family.children[0].grade > 3)
@@ -2063,7 +2063,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączon
 
 **Łączenie, przykład 3:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.Select(family => new { grade=family.children[0].grade}).
@@ -2080,7 +2080,7 @@ Składnia to `input(.|.SelectMany())(.Select()|.Where())*`. Zapytania połączon
 
 **Łączenie, przykład 4:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.SelectMany(family => family.parents)
@@ -2103,7 +2103,7 @@ Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu ko
 
 **Zagnieżdżanie, przykład 1:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.SelectMany(family=>
@@ -2120,7 +2120,7 @@ Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu ko
 
 **Zagnieżdżanie, przykład 2:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.SelectMany(family =>
@@ -2138,7 +2138,7 @@ Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu ko
 
 **Zagnieżdżanie, przykład 3:**
 
-- **Wyrażenie lambda LINQ**
+- **Wyrażenie lambda składni LINQ**
   
   ```csharp
       input.SelectMany(family => family.children.Where(
@@ -2156,20 +2156,20 @@ Zapytanie zagnieżdżone dotyczy zapytanie wewnętrzne każdy element obiektu ko
 
 ## <a id="References"></a>Dokumentacja
 
-- [Usługa Azure Cosmos DB SQL specyfikacji](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Azure Cosmos DB SQL specification (Specyfikacja języka SQL w usłudze Azure Cosmos DB)](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [Specyfikacja języka JavaScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 - Graefe, Goetz. [Zapytanie technik oceny wykonania w przypadku dużych baz danych](https://dl.acm.org/citation.cfm?id=152611). *ACM obliczeń ankiet* 25, nie. 2 (1993).
-- Graefe, G. "Framework kaskady optymalizacji zapytań." *IEEE Data Eng. Bull.* 18, nie. 3 (1995).
+- Graefe, G. "Framework kaskady optymalizacji zapytań." *Eng. danych IEEE Bull.* 18, nie. 3 (1995).
 - Lu, Ooi, Tan. "Przetwarzania zapytań, w systemach równoległe relacyjnej bazy danych." *Naciśnij klawisz społeczeństwa komputera IEEE* (1994).
 - Olston Christopher, Benjamin Reed, Utkarsh Srivastava, Kumara Ravi i Andrew Tomkins. "Język Pig Latin: Język nie tak obcych do przetwarzania danych." *SIGMOD* (2008).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Wprowadzenie do usługi Azure Cosmos DB][introduction]
-- [Przykłady usługi Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [Poziomy spójności w usłudze Azure Cosmos DB][consistency-levels]
 
 [1]: ./media/how-to-sql-query/sql-query1.png

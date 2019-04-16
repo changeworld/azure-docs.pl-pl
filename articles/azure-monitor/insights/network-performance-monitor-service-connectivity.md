@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501966"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571175"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -68,7 +68,7 @@ Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końc
 5. W **docelowej**, wprowadź adres IP/nazwę FQDN/adres URL, do którego chcesz monitorować łączność sieciową.
 6. W **numer portu**, wprowadź numer portu z usług docelowych. 
 7. W **częstotliwość testowania**, wprowadź wartość jak często mają testów do uruchomienia. 
-8. Wybierz węzły, które chcesz monitorować łączność sieciową do usługi. 
+8. Wybierz węzły, które chcesz monitorować łączność sieciową do usługi. Upewnij się, że liczba agentów, które dodano na test jest mniej niż 150. Każdy agent można przetestować maksymalną 150 punktów końcowych i agentami testowymi.
 
     >[!NOTE]
     > W przypadku węzłów na serwerze Windows możliwości używa żądania oparte na protokole TCP do wykonywania pomiarów sieci. W przypadku węzłów opartą na kliencie Windows możliwości używa żądania ICMP w zależności do wykonywania pomiarów sieci. W niektórych przypadkach aplikacja docelowa blokuje przychodzące żądania opartego na protokole ICMP, gdy węzły zostaną Windows oparte na kliencie. Rozwiązanie jest w stanie wykonać pomiary sieci. Zalecamy użycie węzły na serwerze Windows w takich przypadkach. 

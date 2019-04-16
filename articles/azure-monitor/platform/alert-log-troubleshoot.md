@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Typowe problemy, błędów i rozwiązania dla dziennika alertów reguły na platformie Azure.
+description: Typowe problemy, błędy i rozwiązania dla reguł alertów dzienników na platformie Azure.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 0c7189f1d43a114532b30b0c1aabe6f7cd4402d8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005294"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578717"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure Monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
 
@@ -25,7 +25,6 @@ Termin **alertów dzienników** opisuje alerty, że ognia na podstawie dziennika
 
 > [!NOTE]
 > W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](../platform/action-groups.md).
-
 
 ## <a name="log-alert-didnt-fire"></a>Alert dziennika nie został uruchomiony
 
@@ -92,9 +91,94 @@ Na przykład, jeśli skonfigurowano reguł alertów dzienników do wyzwalania, g
 
 ### <a name="alert-query-output-misunderstood"></a>Dane wyjściowe zapytanie alertu źle zrozumiane
 
-Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Można to zaobserwować w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![Zapytanie do wykonania](media/alert-log-troubleshoot/LogAlertPreview.png)
+Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Ta zmiana mogą być wyświetlane w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![Zapytanie do wykonania](media/alert-log-troubleshoot/LogAlertPreview.png)
 
 Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa alertu dotyczącego dziennika. Możesz uruchomić określonego zapytania, a także przedział czasu za pośrednictwem [portalu analiza](../log-query/portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) Jeśli chcesz zrozumieć, jakie zapytanie alertu danych wyjściowych może być przed faktycznie utworzenia alertu.
+
+## <a name="log-alert-was-disabled"></a>Alert dziennika zostało wyłączone.
+
+Poniżej przedstawiono niektóre przyczyny z powodu której [reguł alertów dzienników w usłudze Azure Monitor](../platform/alerts-log.md) mogą być wyłączone przez usługi Azure Monitor.
+
+### <a name="resource-on-which-alert-was-created-no-longer-exists"></a>Zasób, na którym został utworzony alert nie jest już istnieje
+
+Utworzone w usłudze Azure Monitor reguł alertów dzienników docelowych określonych zasobów, takich jak Azure Log Analytics w obszarze roboczym aplikacji usługi Azure Application Insights i zasobów platformy Azure. Usługa alertu dotyczącego dziennika zostanie uruchomi, zapytania usługi analytics podany w zasadzie dla określonego celu. Jednak po utworzeniu reguły często użytkowników przejdź do usunięcia z platformy Azure lub przeniesienia wewnątrz platformy Azure — element docelowy reguły alertu. Zgodnie z celem reguł alertów dzienników nie jest już prawidłowy, wykonywanie reguły kończy się niepowodzeniem.
+
+W takich przypadkach usługi Azure Monitor Wyłącz alert dziennika i upewnij się, że klienci nie są rozliczane niepotrzebnie, gdy reguła sam nie jest w stanie wykonać stale inwestycją okres, takich jak tygodnia. Użytkownicy mogą znaleźć na dokładny czas, w którym reguł alertów dzienników został wyłączony przez usługi Azure Monitor za pośrednictwem [dziennika aktywności platformy Azure](../../azure-resource-manager/resource-group-audit.md). W dzienniku aktywności platformy Azure po wyłączeniu reguł alertów dzienników przez platformę Azure, zostanie dodane zdarzenie w dzienniku aktywności platformy Azure.
+
+Zdarzenie próbkowania w dzienniku aktywności platformy Azure dla reguły alertu wyłączanie z powodu braku ciągłe; Poniżej przedstawiono.
+
+```json
+{
+    "caller": "Microsoft.Insights/ScheduledQueryRules",
+    "channels": "Operation",
+    "claims": {
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/ScheduledQueryRules"
+    },
+    "correlationId": "abcdefg-4d12-1234-4256-21233554aff",
+    "description": "Alert: test-bad-alerts is disabled by the System due to : Alert has been failing consistently with the same exception for the past week",
+    "eventDataId": "f123e07-bf45-1234-4565-123a123455b",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "id": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "localizedValue": "Microsoft.Insights/ScheduledQueryRules/disable/action"
+    },
+    "resourceGroupName": "<Resource Group>",
+    "resourceProviderName": {
+        "value": "MICROSOFT.INSIGHTS",
+        "localizedValue": "Microsoft Insights"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.INSIGHTS/scheduledqueryrules",
+        "localizedValue": "MICROSOFT.INSIGHTS/scheduledqueryrules"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "subscriptionId": "<SubscriptionId>",
+    "properties": {
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+        "subscriptionId": "<SubscriptionId>",
+        "resourceGroup": "<ResourceGroup>",
+        "eventDataId": "12e12345-12dd-1234-8e3e-12345b7a1234",
+        "eventTimeStamp": "03/22/2019 04:18:22",
+        "issueStartTime": "03/22/2019 04:18:22",
+        "operationName": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "status": "Succeeded",
+        "reason": "Alert has been failing consistently with the same exception for the past week"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="query-used-in-log-alert-is-not-valid"></a>Zapytanie używane w dzienniku alertów jest nieprawidłowe
+
+Każdej reguły alertu dziennika utworzonego w usłudze Azure Monitor w ramach konfiguracji należy określić zapytania usługi analytics do wykonania, okresowo przez usługę alertów. Podczas zapytania usługi analytics może mieć poprawną składnię w czasie tworzenia reguły lub aktualizacji. Kilka razy w okresie, zapytanie, podaj w dzienniku reguły alertu mogą tworzyć problemy składni i spowodować wykonanie reguła będzie kończyć się niepowodzeniem. Niektóre typowe przyczyny, dlaczego zapytania usługi analytics podawany reguł alertów dzienników można opracować błędy są:
+
+- Zapytania są zapisywane do [działającym na wielu zasobach](../log-query/cross-workspace-query.md) i przynajmniej jedna z określonych zasobów, obecnie nie istnieją.
+- Wystąpił nie przepływu danych do korzystania z platformy analizy z powodu której [wykonywania zapytań powoduje błąd](https://dev.loganalytics.io/documentation/Using-the-API/Errors) jako nie ma żadnych danych dla podanego zapytania.
+- Zmiany w [język zapytań](https://docs.microsoft.com/azure/kusto/query/) miały miejsce w jakie polecenia i funkcje zostały poprawione formatu. Dlatego wcześniej podane zapytanie w regule alertu nie jest już prawidłowy.
+
+Użytkownik będą ostrzegani to zachowanie najpierw za pomocą [usługi Azure Advisor](../../advisor/advisor-overview.md). Zalecenia zostanie dodany do określonego dziennika regułę alertu w usłudze Azure Advisor do kategorii o wysokiej dostępności przy użyciu średni wpływ i opis, jak "Naprawą usługi reguł alertów dzienników, aby upewnić się, monitorowanie". Jeśli kwerenda alertu w regule alertu określonego dziennika nie zostanie zmieniona po upływie siedmiu dni, zapewniając zaleceń w usłudze Azure Advisor. Następnie usługa Azure Monitor Wyłącz alert dziennika i upewnij się, że klienci nie są rozliczane niepotrzebnie, gdy reguła sam nie jest w stanie wykonać stale inwestycją okres, takich jak tygodnia.
+
+Użytkownicy mogą znaleźć na dokładny czas, w którym reguł alertów dzienników został wyłączony przez usługi Azure Monitor za pośrednictwem [dziennika aktywności platformy Azure](../../azure-resource-manager/resource-group-audit.md). W dzienniku aktywności platformy Azure gdy reguł alertów dzienników jest wyłączona przez platformę Azure — zostanie dodane zdarzenie w dzienniku aktywności platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

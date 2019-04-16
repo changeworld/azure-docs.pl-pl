@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945ec4ae55e22bdeaf7d969153f4a7d9c24389b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881235"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Trello
 
@@ -28,136 +28,139 @@ Z tego samouczka dowiesz się, jak zintegrować aplikację Trello z usługą Azu
 Integracja aplikacji Trello z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Trello.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Trello (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Aby umożliwić użytkownikom można automatycznie zalogowany Trello (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do skonfigurowania integracji usługi Azure AD z aplikacją Trello potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji Trello z obsługą logowania jednokrotnego
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja pojedynczego logowania na obsługujących usługi Trello.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja Trello obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług oraz dostawcę tożsamości**
+* Obsługuje usługi Trello, i dostawcy tożsamości — zainicjowanego przez dostawcę usług rejestracji Jednokrotnej
 
-* Aplikacja Trello obsługuje aprowizowanie użytkowników typu **Just In Time**
+* Trello obsługę Just In Time użytkownika
 
-## <a name="adding-trello-from-the-gallery"></a>Dodawanie aplikacji Trello z galerii
+## <a name="add-trello-from-the-gallery"></a>Dodaj usługi Trello z galerii
 
-Aby skonfigurować integrację aplikacji Trello z usługą Azure AD, musisz dodać aplikację Trello z galerii do swojej listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi Trello w usłudze Azure AD, najpierw dodać Trello z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Trello z galerii, wykonaj następujące kroki:**
+Aby dodać usługi Trello z galerii, wykonaj następujące czynności:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Trello**, wybierz pozycję **Trello** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **Trello**, a następnie wybierz pozycję **Trello** w okienku wyników.
+
+5. Wybierz **Dodaj** przycisk, aby dodać aplikację.
 
      ![Aplikacja Trello na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją [Application name] w oparciu o użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji [Application name].
+W tej sekcji, konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu usługi Trello w oparciu o użytkownika testu o nazwie **Britta Simon**.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], należy wykonać poniższe bloki konstrukcyjne:
+Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w usłudze Trello.
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Trello](#configure-trello-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji Trello](#create-trello-test-user)** — aby mieć w aplikacji Trello odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu usługi Trello, należy wykonać poniższe bloki konstrukcyjne:
+
+1. [Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on) — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. [Konfigurowanie usługi Trello logowania jednokrotnego](#configure-trello-single-sign-on) do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
+3. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą użytkownika Britta Simon.
+4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. [Tworzenie użytkownika testowego usługi Trello](#create-a-trello-test-user) odpowiednikiem Britta Simon znajdują się w aplikacji Trello, połączonego z usługi Azure AD reprezentacja użytkownika.
+6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
 > [!NOTE]
-> Dostawca aplikacji Trello powinien dostarczyć Ci element slug **\<enterprise\>**. Jeśli nie masz wartości elementu slug, skontaktuj się z [zespołem pomocy technicznej Trello](mailto:support@trello.com), aby uzyskać element slug dla swojego przedsiębiorstwa.
+> Dostawca aplikacji Trello powinien dostarczyć Ci element slug **\<enterprise\>**. Jeśli nie masz wartość informacji o pracy, skontaktuj się z [zespołem pomocy technicznej usługi Trello](mailto:support@trello.com) można pobrać informacji o pracy w przedsiębiorstwie.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], wykonaj następujące czynności:
+Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usługi Trello, wykonaj następujące czynności:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Trello** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe.
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W **podstawową konfigurację protokołu SAML** sekcji, aby skonfigurować aplikację w trybie inicjowane przez dostawcę tożsamości, wykonaj następujące czynności:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Trello](common/idp-intiated.png)
+    ![Domena usługi Trello i adresy URL pojedynczy informacje logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/metadata`
+    a. W **identyfikator** wprowadź adres URL przy użyciu następującego wzorca: `https://trello.com/auth/saml/metadata`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/consume/<enterprise>`
+    b. W **adres URL odpowiedzi** wprowadź adres URL przy użyciu następującego wzorca: `https://trello.com/auth/saml/consume/<enterprise>`
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Wybierz **Ustaw dodatkowe adresy URL**, a następnie, jeśli chcesz skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, wykonaj następujące czynności:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Trello](common/metadata-upload-additional-signon.png)
+    ![Domena usługi Trello i adresy URL pojedynczy informacje logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://trello.com/auth/saml/login/<enterprise>`
+    W **adres URL logowania** wprowadź adres URL przy użyciu następującego wzorca:  `https://trello.com/auth/saml/login/<enterprise>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Trello](mailto:support@trello.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizować te wartości z identyfikatorem rzeczywisty adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usługi Trello](mailto:support@trello.com) do uzyskania tych wartości. Może również odnosić się do wzorców w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
 
-6. Aplikacja Trello oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+6. Aplikacja usługi Trello oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okno dialogowe.
 
-    ![image](common/edit-attribute.png)
+    ![Okno dialogowe Atrybuty użytkownika](common/edit-attribute.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
+7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na poprzedniej ilustracji. Następnie wykonaj następujące kroki:
 
-    | Nazwa |  Atrybut źródłowy|
+    | Name (Nazwa) |  Atrybut źródłowy|
     | --- | --- |
     | User.Email | user.mail |
     | User.FirstName | user.givenname |
     | User.LastName | user.surname |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+    a. Wybierz pozycję **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![image](common/new-save-attribute.png)
+    ![Okno dialogowe oświadczenia użytkownika](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Zarządzanie oświadczeniami użytkownika](common/new-attribute-details.png)
 
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+    b. W **nazwa** wprowadź nazwę atrybutu, która jest wyświetlana dla tego wiersza.
 
-    d. Pozostaw pole **Przestrzeń nazw** puste.
+    c. Pozostaw **Namespace** puste.
 
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+    d. Aby uzyskać **źródła**, wybierz opcję **atrybutu**.
 
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+    e. W **atrybut źródłowy** listy, wprowadź wartość atrybutu, który jest wyświetlany dla tego wiersza.
 
-    f. Kliknij przycisk **OK**.
+    f. Wybierz przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Wybierz pozycję **Zapisz**.
 
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+8. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikat (Base64)**  z danymi opcjami zgodnie z wymaganiami. Następnie zapisz go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-9. W sekcji **Skonfiguruj aplikację Trello** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+9. Na **Konfigurowanie usługi Trello** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -165,11 +168,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
-### <a name="configure-trello-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Trello
+### <a name="configure-trello-single-sign-on"></a>Konfigurowanie usługi Trello logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Trello**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Trello](mailto:support@trello.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne, po stronie usługi Trello, najpierw wysyłać pobrany **certyfikat (Base64)** i skopiować adresy URL w witrynie Azure portal do [zespołem pomocy technicznej usługi Trello](mailto:support@trello.com). Pozwalają zagwarantować, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -183,61 +186,60 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** wprowadź "brittasimon@yourcompanydomain.extension". Na przykład, w tym przypadku możesz wprowadzić "BrittaSimon@contoso.com".
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Wybierz **hasło Show** pole wyboru, a następnie zanotuj tę wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Trello.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Trello**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Trello**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz pozycję **Trello**.
 
-    ![Link aplikacji Trello na liście aplikacji](common/all-applications.png)
+    ![Link usługi Trello, na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
     ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz **Dodaj użytkownika** przycisku. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy. Następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekiwane wartości roli w potwierdzenie SAML, a następnie, w **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
 
-### <a name="create-trello-test-user"></a>Tworzenie użytkownika testowego aplikacji Trello
+### <a name="create-a-trello-test-user"></a>Tworzenie użytkownika testowego usługi Trello
 
-W tej sekcji w aplikacji Trello jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Trello obsługuje aprowizację użytkowników just-in-time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Trello, zostanie utworzony po uwierzytelnieniu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w usłudze Trello. Trello obsługuje Just in aprowizacji użytkowników czas, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Trello, zostanie utworzony po uwierzytelnieniu.
 
-> [!Note]
-> Jeśli musisz utworzyć użytkownika ręcznie, skontaktuj się z  [zespołem pomocy technicznej aplikacji Trello](mailto:support@trello.com).
+> [!NOTE]
+> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej usługi Trello](mailto:support@trello.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu MyApps.
 
-Po kliknięciu kafelka Trello w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Trello, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka usługi Trello w portalu MyApps powinny być automatycznie zarejestrowaniu w usłudze Trello. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [co to jest MyApps portal?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

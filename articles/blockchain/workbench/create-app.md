@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 29f660ebc4bea7fbea7c8c0549cc21edd6066d22
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382050"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578802"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
 
@@ -351,7 +351,7 @@ Dodaj do aplikacji członków, którzy będą inicjować kontrakty i wykonywać 
 
 Aby uzyskać więcej informacji na temat zarządzania użytkownikami w usłudze Blockchain Workbench, zobacz [Zarządzanie użytkownikami w usłudze Azure Blockchain Workbench](manage-users.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule z instrukcjami utworzono podstawową aplikację żądań i odpowiedzi. Aby uzyskać informacje na temat korzystania z aplikacji, przejdź do następnego artykułu z instrukcjami.
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045409"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578411"
 ---
 # <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
@@ -22,7 +22,7 @@ Usługa Azure Event Grid umożliwia łatwe tworzenie aplikacji za pomocą archit
 
 Filtry pozwalają kierować określone zdarzenia do różnych punktów końcowych i korzystać z multiemisji do wielu punktów końcowych, a także zapewniają niezawodne dostarczanie zdarzeń.
 
-Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych regionach. Nie jest jeszcze dostępna w chmurach Azure (Niemcy), Azure (Chiny) ani Azure Government.
+Obecnie usługa Azure Event Grid jest dostępna we wszystkich publicznych regionach. Jeszcze nie jest dostępna w Azure (Niemcy), Azure China 21Vianet lub chmury platformy Azure dla instytucji rządowych.
 
 Ten artykuł zawiera omówienie usługi Azure Event Grid. Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md). 
 
@@ -34,30 +34,29 @@ Poniżej przedstawiono połączenie źródeł i procedur obsługi w usłudze Eve
 
 Aby uzyskać szczegółowe informacje o możliwościach poszczególnych źródeł oraz zapoznać się z pokrewnymi artykułami, zobacz [Źródła zdarzeń](event-sources.md). Aktualnie wysyłanie zdarzeń do usługi Event Grid jest obsługiwane w przypadku następujących usług platformy Azure:
 
-* Subskrypcje platformy Azure (operacje zarządzania)
-* Container Registry
-* Tematy niestandardowe
-* Event Hubs
-* Usługa IoT Hub
-* Media Services
-* Grupy zasobów (operacje zarządzania)
-* Service Bus
-* Storage Blob
-* Magazyn ogólnego przeznaczenia w wersji 2 (GPv2)
-* Azure Maps
+* [Subskrypcje platformy Azure (operacje zarządzania)](event-sources.md#azure-subscriptions)
+* [Container Registry](event-sources.md#container-registry)
+* [Tematy niestandardowe](event-sources.md#custom-topics)
+* [Event Hubs](event-sources.md#event-hubs)
+* [IoT Hub](event-sources.md#iot-hub)
+* [Media Services](event-sources.md#media-services)
+* [Grupy zasobów (operacje zarządzania)](event-sources.md#resource-groups)
+* [Service Bus](event-sources.md#service-bus)
+* [Obiekt Blob magazynu](event-sources.md#storage)
+* [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Procedury obsługi zdarzeń
 
 Aby uzyskać szczegółowe informacje o możliwościach poszczególnych procedur obsługi oraz zapoznać się z pokrewnymi artykułami, zobacz [Procedury obsługi zdarzeń](event-handlers.md). Aktualnie obsługa zdarzeń pochodzących z usługi Event Grid jest zapewniona w przypadku następujących usług platformy Azure: 
 
-* Azure Automation
-* Azure Functions
-* Event Hubs
-* Połączenia hybrydowe
-* Logic Apps
-* Microsoft Flow
-* Queue Storage
-* Elementy webhook
+* [Azure Automation](event-handlers.md#azure-automation)
+* [Azure Functions](event-handlers.md#azure-functions)
+* [Event Hubs](event-handlers.md#event-hubs)
+* [Połączenia hybrydowe](event-handlers.md#hybrid-connections)
+* [Logic Apps](event-handlers.md#logic-apps)
+* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Queue Storage](event-handlers.md#queue-storage)
+* [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Pojęcia
 
@@ -114,13 +113,13 @@ Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Kierowanie zdarzeń usługi Storage Blob](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+* [Route Storage Blob events (Kierowanie zdarzeń usługi Storage Blob)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Informacje na temat odpowiadania na zdarzenia usługi Storage Blob za pomocą usługi Event Grid.
-* [Tworzyć i subskrybować zdarzenia niestandardowe](custom-event-quickstart.md)  
+* [Create and subscribe to custom events (Tworzenie i subskrybowanie zdarzeń niestandardowych)](custom-event-quickstart.md)  
   Ten przewodnik Szybki start po usłudze Azure Event Grid pozwoli Ci szybko zacząć wysyłać własne zdarzenia do dowolnego punktu końcowego.
-* [Przy użyciu aplikacji logiki jako program obsługi zdarzeń](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+* [Using Logic Apps as an Event Handler (Używanie usługi Logic Apps jako procedury obsługi zdarzeń)](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Samouczek dotyczący tworzenia aplikacji korzystającej z usługi Logic Apps w celu umożliwienia reagowania na zdarzenia wypychane przez usługę Event Grid.
 * [Przesyłanie strumieniowe danych Big Data do magazynu danych](event-grid-event-hubs-integration.md)  
   Samouczek przedstawiający użycie usługi Azure Functions do strumieniowego przesyłania danych z usługi Event Hubs do usługi SQL Data Warehouse.
-* [Dokumentacja interfejsu API REST siatki zdarzeń](/rest/api/eventgrid)  
+* [Event Grid REST API reference (Dokumentacja interfejsu API REST usługi Event Grid)](/rest/api/eventgrid)  
   Zawiera informacje na temat zarządzania subskrypcjami zdarzeń, routingiem i filtrowaniem.

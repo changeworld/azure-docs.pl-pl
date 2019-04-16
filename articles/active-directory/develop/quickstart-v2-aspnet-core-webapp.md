@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505351"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579465"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET Core
 
@@ -55,9 +55,9 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > 1. Wybierz **nowej rejestracji**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-Quickstart`.
->    - W polu **Adres URL odpowiedzi** dodaj wartość `https://localhost:44321/`, a następnie wybierz polecenie **Zarejestruj**.
+>    - W **identyfikator URI przekierowania**, Dodaj `https://localhost:44321/`i wybierz **zarejestrować**.
 > 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
->    - W polu **Adres URL odpowiedzi** dodaj wartość `https://localhost:44321/signin-oidc`, a następnie wybierz polecenie **Zarejestruj**.
+>    - W **identyfikatory URI przekierowań**, Dodaj `https://localhost:44321/signin-oidc`i wybierz **Zapisz**.
 >    - W sekcji **Ustawienia zaawansowane** ustaw pole **Adres URL wylogowywania** na wartość `https://localhost:44321/signout-oidc`.
 >    - W obszarze **Niejawne przyznanie** zaznacz pole wyboru **Tokeny Identyfikatorów**.
 >    - Wybierz pozycję **Zapisz**.
@@ -66,14 +66,14 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure Portal
 > Aby przykład kodu w tym przewodniku Szybki Start działał, należy dodać adresy URL odpowiedzi jako `https://localhost:44321/` i `https://localhost:44321/signin-oidc`, dodać adres URL wylogowywania jako `https://localhost:44321/signout-oidc`, a następnie zażądać, aby tokeny Identyfikatorów były wystawiane przez punkt końcowy autoryzacji.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Ta zmiana wprowadzona dla mnie]()
+> > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-aspnet-webapp/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-aspnet-webapp/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Pobieranie projektu ASP.NET Core
 
-- [Pobierz rozwiązanie programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Pobierz rozwiązanie programu Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurowanie projektu programu Visual Studio
 
@@ -88,11 +88,11 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 > [!div renderon="docs"]
 > Gdzie:
-> - `Enter_the_Application_Id_here` -jest **identyfikator aplikacji (klienta)** dla aplikacji zarejestrowanych w witrynie Azure portal. **Identyfikator aplikacji (klienta)** możesz znaleźć na stronie aplikacji **Przegląd** aplikacji.
-> - `Enter_the_Tenant_Info_Here` -jest jednym z następujących opcji:
+> - `Enter_the_Application_Id_here` to **identyfikator aplikacji (klienta)** dla aplikacji zarejestrowanej w witrynie Azure Portal. **Identyfikator aplikacji (klienta)** możesz znaleźć na stronie aplikacji **Przegląd** aplikacji.
+> - `Enter_the_Tenant_Info_Here` to jedna z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta tylko w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
->   - Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą `organizations`
->   - Jeśli aplikacja obsługuje **użytkowników kont Microsoft wszystkich**, Zastąp tę wartość za pomocą `common`
+>   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
+>   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
 >
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
@@ -148,7 +148,8 @@ Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy Microsoft to
 
 
 > [!NOTE]
-> Ustawienie `ValidateIssuer = false` jest uproszczenia w tym przewodniku Szybki Start. W rzeczywistym aplikacji należy dokonać weryfikacji wystawcy, zobacz przykłady, aby dowiedzieć się, jak to zrobić.
+> Ustawienie `ValidateIssuer = false` jest uproszczenia w tym przewodniku Szybki Start. W rzeczywistych aplikacjach należy do weryfikowania wystawcy.
+> Zobacz przykłady, aby dowiedzieć się, jak to zrobić.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrona kontrolera lub metody kontrolera
 

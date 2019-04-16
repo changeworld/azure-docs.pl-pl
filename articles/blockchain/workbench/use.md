@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332221"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578854"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Samouczek: Używanie aplikacji w usłudze Azure Blockchain Workbench
 
@@ -40,9 +40,9 @@ Omawiane tematy:
 
 Musisz zalogować się jako członek usługi Blockchain Workbench. Jeśli na liście nie ma aplikacji, jesteś członkiem usługi Blockchain Workbench, ale nie członkiem aplikacji. Administrator aplikacji Blockchain Workbench może przypisywać członków do aplikacji.
 
-## <a name="create-new-contract"></a>Tworzenie nowego kontraktu 
+## <a name="create-new-contract"></a>Tworzenie nowego kontraktu
 
-Aby utworzyć nowy kontrakt, musisz być członkiem określonym jako **inicjator** kontraktu. Aby uzyskać informacje na temat definiowania ról aplikacji i inicjatorów dla kontraktu, zobacz sekcję dotyczącą [przepływów pracy w artykule z omówieniem konfiguracji](configuration.md#workflows). Aby uzyskać informacje na temat przypisywania członków do ról aplikacji, zobacz sekcję dotyczącą [dodawania członka do aplikacji](manage-users.md#add-member-to-application).
+Aby utworzyć nową umowę, musisz należeć, określony jako kontrakt **inicjatora**. Aby uzyskać informacje na temat definiowania ról aplikacji i inicjatorów dla kontraktu, zobacz sekcję dotyczącą [przepływów pracy w artykule z omówieniem konfiguracji](configuration.md#workflows). Aby uzyskać informacje na temat przypisywania członków do ról aplikacji, zobacz sekcję dotyczącą [dodawania członka do aplikacji](manage-users.md#add-member-to-application).
 
 1. W sekcji aplikacji Blockchain Workbench wybierz kafelek aplikacji zawierający kontrakt, który chcesz utworzyć. Zostanie wyświetlona lista aktywnych kontraktów.
 
@@ -87,7 +87,7 @@ W zależności od stanu kontraktu członkowie mogą podejmować akcje mające na
 
 7. Wybierz pozycję **Wykonaj akcję**, aby wykonać akcję.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Obsługa wersji aplikacji Azure Blockchain Workbench](version-app.md)

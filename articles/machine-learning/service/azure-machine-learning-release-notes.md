@@ -10,18 +10,25 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528139"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579159"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełny opis każdego zestawu SDK odwiedź dokumenty referencyjne dotyczące:
 + Usługi Azure Machine Learning [ **głównego zestawu SDK dla języka Python**](https://aka.ms/aml-sdk)
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-04-15"></a>2019-04-15
+
+### <a name="azure-portal"></a>Azure Portal
+  + Możesz teraz ponownie prześlij istniejący skrypt uruchamiania w istniejącym klastrze zdalnym obliczeń. 
+  + Teraz możesz uruchomić potok opublikowanego z nowymi parametrami na karcie potoków. 
+  + Szczegóły przebiegu obsługuje teraz nowy podgląd pliku migawki. Po przesłaniu określonego uruchomienia, można wyświetlić migawkę katalogu. Można również pobrać Notes, który został przesłany do uruchomić przebieg.
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -49,6 +56,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
   + Wykrywanie typu kolumny teraz obsługuje kolumny typu Long.
   + Usunięto usterkę, w której niektóre wartości daty były wyświetlane jako sygnatury czasowe zamiast obiektów daty/godziny w języku Python.
   + Usunięto usterkę, w której niektóre liczniki typu były wyświetlane jako wartości podwójnej precyzji, zamiast liczb całkowitych.
+
   
 ## <a name="2019-03-25"></a>2019-03-25
 

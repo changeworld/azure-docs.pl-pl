@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 38cbd32be30885837d2f98a9e1dd5d967b4938b4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489815"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571158"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji
 
@@ -62,13 +62,15 @@ Przekazywanie pliku, który zawiera certyfikat w procesie przekazywania pociąga
 
 Dowód przesyłany krok polega na kryptograficznych żądania i odpowiedzi procesu między Tobą i Centrum IoT Hub.  Biorąc pod uwagę, że certyfikat cyfrowy są publiczne, jak i w związku z tym podatne na podsłuchiwaniu, usługi IoT Hub chcesz upewnić się, tak naprawdę własny certyfikat urzędu certyfikacji.  Powinna to zrobić, generując wezwanie losowych, należy zalogować się przy użyciu odpowiedniego klucza prywatnego certyfikatu urzędu certyfikacji.  Jeśli pozostawiono klucza prywatnego wpisu tajnego i chronione poinformowany jak wcześniej, a następnie tylko będzie posiadać wiedzy w celu ukończenia tego kroku. Tajemnicy kluczy prywatnych jest źródłem zaufania w przypadku tej metody.  Po zarejestrowaniu wyzwanie, należy wykonać ten krok, przekazując plik zawierający wyniki.
 
-Tutaj dowiesz się jak [zarejestrować certyfikat urzędu certyfikacji](iot-hub-security-x509-get-started.md#registercerts).
+Tutaj dowiesz się jak [zarejestrować certyfikat urzędu certyfikacji](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Jak utworzyć urządzenie w Centrum IoT Hub
 
 Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga Niech wiedzieć, jakie urządzenia można oczekiwać.  Możesz to zrobić, tworząc wpis urządzenia w rejestrze urządzeń usługi IoT Hub.  Proces ten jest zautomatyzować, korzystając z usługi IoT Hub [usługi Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
-Tutaj dowiesz się jak [ręcznie utworzyć urządzenie w usłudze IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
+Tutaj dowiesz się jak [ręcznie utworzyć urządzenie w usłudze IoT Hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+
+Tworzenie urządzenia X.509 dla usługi IoT hub
 
 ## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Uwierzytelnianie urządzeń podpisane za pomocą certyfikatów X.509 urzędu certyfikacji
 
@@ -76,7 +78,7 @@ Zarejestrowany certyfikat X.509 urzędu certyfikacji i urządzenia zalogowali si
 
 Połączenie urządzenia pomyślnie do Centrum IoT Hub jest również wskazuje prawidłową konfigurację i kończy proces uwierzytelniania.
 
-Tutaj dowiesz się jak [ukończenia tego kroku połączenia urządzenia](iot-hub-security-x509-get-started.md#authenticatedevice).
+Tutaj dowiesz się jak [ukończenia tego kroku połączenia urządzenia](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
 
 ## <a name="next-steps"></a>Następne kroki
 

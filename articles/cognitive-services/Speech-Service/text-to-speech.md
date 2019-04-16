@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549509"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578788"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -53,10 +53,7 @@ Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
 | Tworzenie i zarządzanie nimi testy czcionek głosowych. | Nie | Tak\* |
 | Zarządzaj subskrypcjami. | Nie | Tak\* |
 
-\* *Te usługi są dostępne przy użyciu punktu końcowego cris.ai. Zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index).*
-
-> [!NOTE]
-> Punkty końcowe niestandardowych voice zaimplementować ograniczanie przepustowości, która ogranicza żądania do 25 na 5 sekund. Gdy wystąpi ograniczanie przepustowości, zostanie wyświetlone powiadomienie za pośrednictwem nagłówków wiadomości.
+\* *Te usługi są dostępne przy użyciu punktu końcowego cris.ai. Zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index). Te szkolenia niestandardowe głosu i interfejsów API zarządzania można zaimplementować ograniczanie przepustowości, limity żądań do 25 na 5 sekund, natomiast synteza mowy sam interfejs API implementuje, ograniczanie przepustowości, która umożliwia 200 żądań na sekundę jako najwyższy. Gdy wystąpi ograniczanie przepustowości, zostanie wyświetlone powiadomienie za pośrednictwem nagłówków wiadomości.*
 
 ## <a name="get-started-with-text-to-speech"></a>Rozpoczynanie pracy z usługą zamiany tekstu na mowę
 

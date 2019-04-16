@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb34ab8d811d813e751b25c2a6b6d4bf0397f9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 26c25c57dec14a81e5bcfcfa044cf5d5302e1c88
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884056"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Samouczek: integracja usługi Azure Active Directory z platformą Coralogix
 
@@ -28,118 +28,117 @@ Z tego samouczka dowiesz się, jak zintegrować platformę Coralogix z usługą 
 Integracja platformy Coralogix z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować w usłudze Azure AD, kto ma dostęp do platformy Coralogix.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do platformy Coralogix (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Aby umożliwić użytkownikom automatyczne logowanie do Coralogix (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD z platformą Coralogix, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja platformy Coralogix z obsługą logowania jednokrotnego
+- Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Coralogix logowanie jednokrotne włączone subskrypcji. 
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Platforma Coralogix obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
+* Coralogix obsługuje logowanie Jednokrotne zainicjowane przez SP.
 
-## <a name="adding-coralogix-from-the-gallery"></a>Dodawanie platformy Coralogix z galerii
+## <a name="add-coralogix-from-the-gallery"></a>Dodaj Coralogix z galerii
 
-Aby skonfigurować integrację platformy Coralogix z usługą Azure AD, musisz dodać platformę Coralogix z galerii do swojej listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Coralogix w usłudze Azure AD, najpierw dodać Coralogix z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać platformę Coralogix z galerii, wykonaj następujące kroki:**
+Aby dodać Coralogix z galerii, wykonaj następujące czynności:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** i wybierz pozycję **Wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okna dialogowego.
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Coralogix**, wybierz pozycję **Coralogix** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **Coralogix**. Wybierz **Coralogix** w okienku wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
      ![Platforma Coralogix na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z platformą Coralogix, korzystając z danych użytkownika testowego **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem platformy Coralogix.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Coralogix w oparciu o użytkownika testu o nazwie Britta Simon.
+Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w Coralogix.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z platformą Coralogix, należy ukończyć poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Coralogix, najpierw wykonaj poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego na platformie Coralogix](#configure-coralogix-single-sign-on)**— aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego platformy Coralogix](#create-coralogix-test-user)** — aby mieć na platformie Coralogix odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+1. [Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on) — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. [Konfigurowanie Coralogix logowania jednokrotnego](#configure-coralogix-single-sign-on) do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
+3. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą użytkownika Britta Simon.
+4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. [Tworzenie użytkownika testowego Coralogix](#create-a-coralogix-test-user) mieć odpowiednikiem Britta Simon Coralogix połączonego z usługi Azure AD reprezentacja użytkownika.
+6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie Coralogix, wykonaj następujące kroki:
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z Coralogix, wykonaj następujące czynności:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Coralogix** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą języka SAML** wybierz ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+4. W **podstawową konfigurację protokołu SAML** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Domena i adresy URL platformy Coralogix — informacje dotyczące logowania jednokrotnego](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.coralogix.com`
+    a. W **adres URL logowania** wprowadź adres URL z następującym wzorcem: `https://<SUBDOMAIN>.coralogix.com`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL:
+    b. W **identyfikator jednostki** tekstu wprowadź adres URL, takich jak:
+    
+    `https://api.coralogix.com/saml/metadata.xml`
 
-    | |
-    |--|
-    | `https://api.coralogix.com/saml/metadata.xml` |
-    | `https://aws-client-prod.coralogix.com/saml/metadata.xml` |
+    lub
+
+    `https://aws-client-prod.coralogix.com/saml/metadata.xml` 
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj wartość za pomocą rzeczywistego adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta platformy Coralogix](mailto:info@coralogix.com) w celu uzyskania wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL logowania nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Coralogix](mailto:info@coralogix.com) można uzyskać wartość. Może również odnosić się do wzorców w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
 
-5. Aplikacja Coralogix oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+5. Aplikacja Coralogix oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okno dialogowe.
 
     ![image](common/edit-attribute.png)
 
-6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
+6. W **oświadczenia użytkownika** sekcji **atrybutów użytkownika** okno dialogowe Edytuj oświadczenia za pomocą **Edytuj** ikony. Można również dodać oświadczenia, za pomocą **Dodaj nowe oświadczenie** skonfigurować atrybut tokenu SAML, jak pokazano na poprzedniej ilustracji. Następnie wykonaj następujące kroki:
     
-    a. Kliknij **ikonę Edytuj**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+    a. Wybierz **ikonę edycji** otworzyć **Zarządzanie oświadczenia użytkownika** okno dialogowe.
 
-    ![image](./media/coralogix-tutorial/tutorial_usermail.png)
-
-    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![obraz](./media/coralogix-tutorial/tutorial_usermail.png) ![obrazu](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. Z listy **Format identyfikatora** wybierz pozycję **Adres e-mail**.
 
     c. Z listy **Atrybut źródłowy** wybierz pozycję **user.mail**.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Wybierz pozycję **Zapisz**.
 
-7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+7. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **XML metadanych Federacji**  z danymi opcjami zgodnie z wymaganiami. Następnie zapisz go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-8. W sekcji **Konfigurowanie platformy Coralogix** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+8. W **Konfigurowanie Coralogix** sekcji, skopiuj odpowiednie adresy URL.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -147,11 +146,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie Coralogi
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
-### <a name="configure-coralogix-single-sign-on"></a>Konfigurowanie logowania jednokrotnego platformy Coralogix
+### <a name="configure-coralogix-single-sign-on"></a>Konfigurowanie Coralogix logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne po stronie platformy **Coralogix**, musisz wysłać pobrany **plik XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej platformy Coralogix](mailto:info@coralogix.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Coralogix** po stronie, Wyślij pobrany **XML metadanych Federacji** i skopiować adresy URL w witrynie Azure portal do [Coralogix zespołem pomocy technicznej](mailto:info@coralogix.com). Pozwalają zagwarantować, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -161,28 +160,27 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. W górnej części ekranu wybierz **nowego użytkownika**.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** wprowadź "brittasimon@yourcompanydomain.extension." Na przykład, w tym przypadku możesz wprowadzić "brittasimon@contoso.com."
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Wybierz **hasło Show** pole wyboru, a następnie zanotuj tę wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do platformy Coralogix.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Coralogix**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Coralogix**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -194,29 +192,29 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
     ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz **Dodaj użytkownika** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy. Następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybieranie roli** wybierz odpowiednią rolę dla użytkownika z listy. Następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
 
-### <a name="create-coralogix-test-user"></a>Tworzenie użytkownika testowego platformy Coralogix
+### <a name="create-a-coralogix-test-user"></a>Tworzenie użytkownika testowego Coralogix
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon na platformie Coralogix. Aby dodać użytkowników na platformie Coralogix, współpracuj z  [zespołem pomocy technicznej platformy Coralogix](mailto:info@coralogix.com). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon na platformie Coralogix. Praca z [zespołem pomocy technicznej Coralogix](mailto:info@coralogix.com) Aby dodać użytkowników na platformie Coralogix. Należy utworzyć i aktywować użytkowników przed użyciem logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu MyApps.
 
-Po kliknięciu kafelka Coralogix w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Coralogix, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Coralogix w portalu MyApps powinny być automatycznie zarejestrowaniu w usłudze Coralogix. Aby uzyskać więcej informacji na temat portalu MyApps, zobacz [co to jest MyApps portal?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

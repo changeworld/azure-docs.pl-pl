@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2018
 ms.author: xshi
-ms.openlocfilehash: bc955db4e851c1f59012dc1375170850e1b0604c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108398"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571315"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Wysyłanie i odbieranie komunikatów między urządzeniem i Centrum IoT Hub za pomocą Eksploratora chmury dla programu Visual Studio
 
-![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram end-to-end](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
 
 [Eksplorator chmury](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) jest przydatne rozszerzenia Visual Studio, która pozwala na wyświetlanie zasobów platformy Azure, badania ich właściwości i akcje klucza dla deweloperów z poziomu programu Visual Studio. Ten artykuł koncentruje się na temat sposobu wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub za pomocą Eksploratora chmury.
 
@@ -48,10 +48,14 @@ Składnik programu Cloud Explorer z poziomu Instalatora programu Visual Studio o
 
     ![Kliknij pozycję Zarządzanie kontami](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-1. Kliknij przycisk **Zarządzanie kontami** w programie Cloud Explorer.
-1. Kliknij przycisk **Dodaj konto...**  w nowym oknie zalogować się do platformy Azure po raz pierwszy.
-1. Po zalogowaniu zostaną wyświetlone listy subskrypcji platformy Azure. Wybieranie subskrypcji platformy Azure, aby wyświetlić, a następnie kliknij przycisk **Zastosuj**.
-1. Rozwiń **subskrypcji** > **centra IoT Hub** > **Your IoT Hub**, na liście będą wyświetlane w węźle usługi IoT Hub.
+
+2. Kliknij przycisk **Zarządzanie kontami** w programie Cloud Explorer.
+
+3. Kliknij przycisk **Dodaj konto...**  w nowym oknie zalogować się do platformy Azure po raz pierwszy.
+
+4. Po zalogowaniu zostaną wyświetlone listy subskrypcji platformy Azure. Wybieranie subskrypcji platformy Azure, aby wyświetlić, a następnie kliknij przycisk **Zastosuj**.
+
+5. Rozwiń **subskrypcji** > **centra IoT Hub** > **Your IoT Hub**, na liście będą wyświetlane w węźle usługi IoT Hub.
 
     ![Lista urządzeń](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
 
@@ -63,11 +67,11 @@ Do monitorowania komunikatów wysyłanych z urządzenia do usługi IoT Hub, wyko
 
     ![Rozpocznij monitorowania komunikatu D2C](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
 
-1. Monitorowane komunikaty będą wyświetlane w **usługi IoT Hub** okienko danych wyjściowych.
+2. Monitorowane komunikaty będą wyświetlane w **usługi IoT Hub** okienko danych wyjściowych.
 
     ![Wyników monitorowania komunikatu D2C](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
 
-1. Aby zatrzymać monitorowanie, kliknij prawym przyciskiem myszy na urządzeniu lub usługi IoT Hub i wybierz **Zatrzymaj monitorowanie komunikatu D2C**.
+3. Aby zatrzymać monitorowanie, kliknij prawym przyciskiem myszy na urządzeniu lub usługi IoT Hub i wybierz **Zatrzymaj monitorowanie komunikatu D2C**.
 
 ## <a name="send-cloud-to-device-messages"></a>Wysyłanie komunikatów z chmury do urządzeń
 
@@ -77,8 +81,9 @@ Aby wysłać wiadomość z usługi IoT Hub do urządzenia, wykonaj następujące
 
     ![Wyślij wiadomość C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
 
-1. Wprowadź komunikat w polu wejściowym.
-1. Wyniki będą wyświetlane w **usługi IoT Hub** okienko danych wyjściowych.
+2. Wprowadź komunikat w polu wejściowym.
+
+3. Wyniki będą wyświetlane w **usługi IoT Hub** okienko danych wyjściowych.
 
     ![Wyślij C2D wynik komunikatu](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
 

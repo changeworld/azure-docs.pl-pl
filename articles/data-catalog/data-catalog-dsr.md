@@ -4,21 +4,19 @@ description: W tym artykule wymieniono specyfikacje aktualnie obsługiwanych źr
 services: data-catalog
 author: markingmyname
 ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/15/2019
+ms.openlocfilehash: d859fc92c4adbcd224d49601678804445a313ef7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410191"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579397"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Obsługiwane źródła danych w usłudze Azure Data Catalog
 
 Metadane można opublikować za pomocą publicznego interfejsu API lub przez kliknięcie — po rejestracji narzędzia lub ręcznie wprowadzić informacje bezpośrednio do usługi Azure Data Catalog w portalu internetowym. Poniższa tabela zawiera podsumowanie wszystkich źródeł danych, które są obsługiwane przez katalog już dziś i możliwości publikowania dla każdego. Liście są również narzędzia danych zewnętrznych, które każde źródło danych można uruchomić z naszego środowiska portalu "Otwórz w". Druga tabela zawiera specyfikację techniczne każdej właściwości połączenia źródła danych.
-
 
 ## <a name="list-of-supported-data-sources"></a>Listę obsługiwanych źródeł danych
 
@@ -32,7 +30,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
        <td><b>Uwagi</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store directory</td>
+      <td>Katalog usługi Azure Data Lake Store (tylko Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +38,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td></td>
     </tr>
     <tr>
-      <td>Plik usługi Azure Data Lake Store</td>
+      <td>Plik usługi Azure Data Lake Store (tylko Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -180,7 +178,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td></td>
     </tr>
     <tr>
-      <td>Miara usług SQL Server Analysis Services</td>
+      <td>SQL Server Analysis Services measure</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

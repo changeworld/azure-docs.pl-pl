@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 1/8/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: c4c5dcf9c83b79158e3459e79db6dd066d982fc8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108258"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579219"
 ---
 # <a name="azure-blockchain-workbench-application-versioning"></a>Wersji aplikacji w usłudze Azure Blockchain Workbench
 
@@ -25,18 +25,18 @@ Można tworzyć i używać wielu wersji aplikacji Azure Blockchain Workbench. Je
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wdrażanie aplikacji Blockchain Workbench. Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji Azure Blockchain Workbench](deploy.md) szczegółowe informacje dotyczące wdrażania
-* Aplikacja wdrożonej łańcucha bloków w aplikacji Blockchain Workbench. Zobacz [tworzenie aplikacji łańcucha bloków w aplikacji Azure Blockchain Workbench](create-app.md)
+* Wdrożenie usługi Blockchain Workbench. Aby uzyskać szczegółowe informacje na temat wdrożenia, zobacz [Wdrożenie usługi Azure Blockchain Workbench](deploy.md)
+* Wdrożona aplikacja łańcucha bloków w usłudze Blockchain Workbench. Zobacz [Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench](create-app.md)
 
 ## <a name="add-an-app-version"></a>Dodaj wersję aplikacji
 
 Aby dodać nową wersję, Przekaż nową konfigurację i pliki kontraktu inteligentnych do aplikacji Blockchain Workbench.
 
-1. W przeglądarce internetowej przejdź do adresu internetowego aplikacji Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` uzyskać informacji na temat znajdowania Twojej aplikacji Blockchain Workbench adres sieci web, zobacz [Blockchain Workbench — adres URL sieci Web](deploy.md#blockchain-workbench-web-url)
-2. Zaloguj się jako [administratora aplikacji Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
+1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` uzyskać informacji na temat znajdowania Twojej aplikacji Blockchain Workbench adres sieci web, zobacz [Blockchain Workbench — adres URL sieci Web](deploy.md#blockchain-workbench-web-url)
+2. Zaloguj się jako [administrator usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 3. Wybierz aplikację łańcucha bloków, które chcesz zaktualizować przy użyciu innej wersji.
 4. Wybierz **wersji Dodaj**. **Wersji Dodaj** zostanie wyświetlone okienko.
-5. Wybierz nową konfigurację wersja umowy i umowy plików kodu do przekazania. Plik konfiguracji jest automatycznie weryfikowana. Napraw wszystkie błędy weryfikacji przed wdrożeniem aplikacji.
+5. Wybierz nową konfigurację wersja umowy i umowy plików kodu do przekazania. Zostanie wykonana automatyczna walidacja pliku konfiguracji. Napraw wszystkie błędy weryfikacji przed wdrożeniem aplikacji.
 6. Wybierz **wersji Dodaj** można dodać nowej wersji aplikacji łańcucha bloków.
 
     ![Dodawanie nowej wersji](media/version-app/add-version.png)

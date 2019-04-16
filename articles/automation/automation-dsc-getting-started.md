@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767043"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579278"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Wprowadzenie do usługi Azure Automation stanu konfiguracji
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera przewodnik krok po kroku, aby za pomocą usługi Azure Auto
 Aby można było ukończyć przykłady przedstawione w tym artykule, wymagane jest spełnienie następujących:
 
 - Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
-- Maszyna wirtualna usługi Azure Resource Manager (nie klasycznej) systemem Windows Server 2008 R2 lub nowszym. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Maszyna wirtualna usługi Azure Resource Manager (nie klasycznej) uruchomiona [obsługiwanym systemie operacyjnym](automation-dsc-overview.md#operating-system-requirements). Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>Tworzenie konfiguracji DSC
 
@@ -149,9 +149,9 @@ Za pomocą usługi Azure Automation stanu konfiguracji do zarządzania maszynami
 1. Na **maszyny wirtualnej** strony szczegółów, kliknij przycisk **+ Connect**.
 
    > [!IMPORTANT]
-   > Musi to być maszyna wirtualna usługi Azure Resource Manager systemem Windows Server 2008 R2 lub nowszym.
+   > Musi to być maszyna wirtualna Azure Resource Manager działają [obsługiwanym systemie operacyjnym](automation-dsc-overview.md#operating-system-requirements).
 
-1. W **rejestracji** wybierz Nazwa konfiguracji węzła, który chcesz zastosować do maszyny Wirtualnej w **Nazwa konfiguracji węzła** pole. W tym momencie podanie nazwy jest opcjonalne. Można zmienić konfiguracji przypisanym węźle po dołączeniu węzła.
+2. W **rejestracji** wybierz Nazwa konfiguracji węzła, który chcesz zastosować do maszyny Wirtualnej w **Nazwa konfiguracji węzła** pole. W tym momencie podanie nazwy jest opcjonalne. Można zmienić konfiguracji przypisanym węźle po dołączeniu węzła.
    Sprawdź **ponowny rozruch węzła, w razie potrzeby**, następnie kliknij przycisk **OK**.
 
    ![Zrzut ekranu przedstawiający blok rejestracji](./media/automation-dsc-getting-started/RegisterVM.png)

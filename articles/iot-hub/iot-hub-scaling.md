@@ -8,23 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0214fbbe1ecc0d0b6b20b740ec898f24cf5b58ec
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536287"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571298"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
-Każde rozwiązanie IoT jest inny, dzięki czemu usługa Azure IoT Hub oferuje kilka opcji, w oparciu o cenach i skali. W tym artykule mają na celu ułatwić ocenę potrzeb usługi IoT Hub. Aby uzyskać informacje o warstwach usługi IoT Hub, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub). 
+Każde rozwiązanie IoT jest inny, dzięki czemu usługa Azure IoT Hub oferuje kilka opcji, w oparciu o cenach i skali. W tym artykule mają na celu ułatwić ocenę potrzeb usługi IoT Hub. Aby uzyskać informacje o warstwach usługi IoT Hub, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub).
 
 Aby zdecydować, którą warstwę usługi IoT Hub jest odpowiednia dla danego rozwiązania, spróbuj odpowiedzieć sobie dwa pytania:
 
 **Jakie funkcje chcę użyć?**
+
 Usługa Azure IoT Hub oferuje dwie warstwy, podstawowa i standardowa, które różnią się w wiele funkcji, które obsługują. Jeśli rozwiązanie IoT opiera się wokół zbieranie danych z urządzeń i centralnie je analizować, warstwa basic jest prawdopodobnie odpowiedni dla Ciebie. Jeśli chcesz, zdalne sterowanie urządzeniami IoT lub dystrybucji niektórych obciążeń na samych urządzeń za pomocą bardziej zaawansowanych ustawień konfiguracji, należy rozważyć warstwy standardowa. Aby uzyskać szczegółowy podział, które funkcje dostępne w poszczególnych warstwach w dalszym ciągu [warstw podstawowa i standardowa](#basic-and-standard-tiers).
 
 **Jak dużo danych chcę przenieść codziennie?**
+
 Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie ogólnej przepływności ilości danych może obsługiwać w każdym dniu. Te rozmiary numerycznie są identyfikowane jako 1, 2 i 3. Na przykład każda jednostka w Centrum IoT poziomu 1 może obsługiwać tysiąc 400 komunikatów dziennie, gdy jednostka poziomu 3 może obsługiwać 300 milionów. Aby uzyskać więcej informacji na temat wytycznych dane w dalszym ciągu [przepływność komunikatów](#message-throughput).
 
 ## <a name="basic-and-standard-tiers"></a>W warstwach podstawowa i standardowa
@@ -46,15 +48,13 @@ Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w
 | [Strumienie urządzenia (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Yes |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
-Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa. 
-
+Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa.
 
 ## <a name="partitions"></a>Partycje
 
-Usługa Azure IoT Hubs zawiera wiele kluczowych elementów związanych z [usługi Azure Event Hubs](../event-hubs/event-hubs-features.md), w tym [partycje](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT Hub zwykle są wypełniane przy użyciu przychodzących danych telemetrycznych zgłoszonych przez różnych urządzeń IoT. Partycje strumienia zdarzeń służy do zmniejszenia rywalizacji, które występują, gdy jednocześnie odczytu i zapisu do strumieni zdarzeń. 
+Usługa Azure IoT Hubs zawiera wiele kluczowych elementów związanych z [usługi Azure Event Hubs](../event-hubs/event-hubs-features.md), w tym [partycje](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT Hub zwykle są wypełniane przy użyciu przychodzących danych telemetrycznych zgłoszonych przez różnych urządzeń IoT. Partycje strumienia zdarzeń służy do zmniejszenia rywalizacji, które występują, gdy jednocześnie odczytu i zapisu do strumieni zdarzeń.
 
 Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i nie można zmienić. Limit maksymalny partycji dla warstwy podstawowa usługi IoT Hub i IoT Hub w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Aby uzyskać więcej informacji na temat określania partycji, zobacz często zadawane pytania Event Hubs [partycje ile potrzebuję?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
-
 
 ## <a name="tier-upgrade"></a>Uaktualnienie warstwy
 
@@ -62,10 +62,9 @@ Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warst
 
 Konfiguracja partycji zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa.
 
-
 ## <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
 
-Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne: 
+Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne:
 
 | Interfejs API | Warstwa Podstawowa | Warstwa bezpłatna/Standard |
 | --- | ---------- | ------------- |
@@ -116,26 +115,24 @@ Na przykład możliwości ruchu poszczególnych warstw komunikatów z urządzeni
 | B2, S2 |Maksymalnie 16 MB na minutę na jednostkę<br/>(22.8 GB/dzień/jednostkę) |Średnia krocząca 4,167 komunikatów na minutę na jednostkę<br/>(6 milionów komunikatów/dzień na jednostkę) |
 | B3, S3 |Maksymalnie minutę 814 MB na jednostkę<br/>(1144.4 GB/dzień/jednostkę) |Średnia krocząca 208,333 komunikatów na minutę na jednostkę<br/>(300 milionów komunikatów/dzień na jednostkę) |
 
-Oprócz tego informacji o przepływności, zobacz [usługi IoT Hub, przydziały i ograniczenia] [ IoT Hub quotas and throttles] i w związku z tym zaprojektować rozwiązanie.
+Oprócz tego informacji o przepływności, zobacz [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md) i w związku z tym zaprojektować rozwiązanie.
 
 ### <a name="identity-registry-operation-throughput"></a>Przepływność operacji rejestru tożsamości
+
 Operacje rejestru tożsamości usługi IoT Hub nie powinna być czasu wykonywania operacji, ponieważ są one głównie powiązane Inicjowanie obsługi administracyjnej urządzeń.
 
-W przypadku serii określonych liczb wydajności, zobacz [usługi IoT Hub, przydziały i ograniczenia][IoT Hub quotas and throttles].
+W przypadku serii określonych liczb wydajności, zobacz [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
+
 Jeśli zbliża się limit dozwolony wiadomości w usłudze IoT Hub, możesz użyć tych [kroki, aby automatycznie skalować](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) się zwiększać jednostki usługi IoT Hub w tej samej warstwy usługi IoT Hub.
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
+
 W jednym centrum IoT umożliwia skalowanie do milionów urządzeń, czasami rozwiązanie wymaga charakterystyk wydajności zależnych, które nie może zagwarantować w jednym centrum IoT. W takim przypadku można podzielić urządzeń w wielu centrach IoT. Wiele centrów IoT smooth wzmożenia ruchu i uzyskać wymagany przepływności lub szybkości operacji, które są wymagane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać więcej informacji na temat możliwości usługi IoT Hub i szczegółowe informacje dotyczące wydajności, zobacz [cenach usługi IoT Hub] [ lnk-pricing] lub [usługi IoT Hub, przydziały i ograniczenia] [ IoT Hub quotas and throttles].
+* Aby uzyskać więcej informacji na temat możliwości usługi IoT Hub i szczegółowe informacje dotyczące wydajności, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) lub [usługi IoT Hub, przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
+
 * Aby zmienić warstwę usługi IoT Hub, wykonaj kroki opisane w [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md).
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452695"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578751"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Informacje o konfiguracji platformy Azure Blockchain Workbench
 
- Aplikacji Azure Blockchain Workbench są wieloosobowa przepływy pracy, zdefiniowana za pomocą metadanych konfiguracji i kodu kontraktu inteligentne. Metadane konfiguracji definiują ogólne przepływy pracy i model interakcji aplikacji łańcucha bloków. Kontrakty inteligentne zdefiniowanie logiki biznesowej, aplikacji łańcucha bloków. Usługa Workbench używa konfiguracji i kodu kontraktu inteligentnych do generowania środowisk użytkownika aplikacji łańcucha bloków.
+Aplikacji Azure Blockchain Workbench są wieloosobowa przepływy pracy, zdefiniowana za pomocą metadanych konfiguracji i kodu kontraktu inteligentne. Metadane konfiguracji definiują ogólne przepływy pracy i model interakcji aplikacji łańcucha bloków. Kontrakty inteligentne zdefiniowanie logiki biznesowej, aplikacji łańcucha bloków. Usługa Workbench używa konfiguracji i kodu kontraktu inteligentnych do generowania środowisk użytkownika aplikacji łańcucha bloków.
 
 Metadane konfiguracji określa następujące informacje dla każdej aplikacji łańcucha bloków:
 
@@ -67,11 +67,11 @@ Logika biznesowa aplikacji może być modelowane jako automatu stanów, których
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
-## <a name="type"></a>Type
+## <a name="type"></a>Typ
 
 Obsługiwane typy danych.
 
-| Type | Opis |
+| Typ | Opis |
 |-------|-------------|
 | adres  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
 | tablica    | Pojedynczą tablicę poziomu typu integer, bool, pieniędzy i czasu. Tablice mogą być statyczne lub dynamiczne. Użyj **ElementType** na określony typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |

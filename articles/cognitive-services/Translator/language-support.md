@@ -10,18 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267910"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577596"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
 Interfejs API tekstu usługi Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny.
 
 [Dowiedz się więcej o tym, jak działa tłumaczenia maszynowego](https://www.microsoft.com/translator/mt.aspx)
+
+## <a name="translation"></a>Tłumaczenie
 
 **W wersji 2 Translator interfejsu API**
 
@@ -113,24 +115,24 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabski | `ar` | Arabski `Arab` | <--> | Łaciński `Latn` |
 |Bengalski  | `bn` | Bengalski `Beng` | <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński (uproszczony) `Hans`| <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński (uproszczony) `Hans`| <--> | Chiński tradycyjny `Hant`|
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Łaciński `Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
 | Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Łaciński `Latn` |
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński (uproszczony) `Hans` |
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
 | Gudżarati | `gu`  | Gudżarati `Gujr` | --> | Łaciński `Latn` |
 | Hebrajski | `he` | Hebrajski `Hebr` | <--> | Łaciński `Latn` |
-| Hindi | `hi` | Devanagari `Deva` | <--> | Łaciński `Latn` |
+| Hindi | `hi` | Dewanagari `Deva` | <--> | Łaciński `Latn` |
 | Japoński | `ja` | Japoński `Jpan` | <--> | Łaciński `Latn` |
 | Kannada | `kn` | Kannada `Knda` | --> | Łaciński `Latn` |
-| Malajalam | `ml` | Malajalam `Mlym` | --> | Łaciński `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Łaciński `Latn` |
-| Orija | `or` | Orija `Orya` | <--> | Łaciński `Latn` |
+| Malajalam | `ml` | Malayalam `Mlym` | --> | Łaciński `Latn` |
+| Marathi | `mr` | Dewanagari `Deva` | --> | Łaciński `Latn` |
+| Orija | `or` | Oriya `Orya` | <--> | Łaciński `Latn` |
 | Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | Łaciński `Latn`  |
 | Serbski (cyrylica) | `sr-Cyrl` | Cyrylica `Cyrl`  | --> | Łaciński `Latn` |
 | Serbski (łaciński) | `sr-Latn` | Łaciński `Latn` | --> | Cyrylica `Cyrl`|
 | Tamilski | `ta` | Tamilski `Taml` | --> | Łaciński `Latn` |
 | Telugu | `te` | Telugu `Telu` | --> | Łaciński `Latn` |
-| Tajlandzki | `th` | Tajlandzki `Thai` | <--> | Łaciński `Latn` |
+| Tajlandzki | `th` | Tajski `Thai` | <--> | Łaciński `Latn` |
 
 ## <a name="dictionary"></a>Słownik
 
@@ -191,77 +193,8 @@ Słownik obsługuje następujące języki do lub z języka angielskiego, za pomo
 
 ## <a name="detect"></a>Detect
 
-Za pomocą metody wykrywania są obsługiwane następujące języki. Wykrywanie może rozpoznać języków, które nie może tłumaczyć Microsoft Translator.
+Interfejs API tekstu usługi Translator wykrywa wszystkie języki dostępne dla tłumaczenia i transliterację.
 
-| Język    |
-|:----------- |
-| Afrikaans |
-| Albański |
-| Arabski |
-| Baskijski |
-| Białoruski |
-| Bułgarski |
-| Kataloński |
-| Chiński |
-| Chiński (uproszczony) |
-| Chiński (tradycyjny) |
-| Chorwacki |
-| Czeski |
-| Duński |
-| Holenderski |
-| Polski |
-| Esperanto |
-| Estoński |
-| Fiński |
-| Francuski |
-| Galicyjski |
-| Niemiecki |
-| Grecki |
-| Haitański |
-| Hebrajski |
-| Hindi |
-| Węgierski |
-| Islandzki |
-| Indonezyjski |
-| Irlandzki |
-| Włoski |
-| Japoński |
-| Koreański |
-| Kurdyjska (arabski) |
-| Kurdyjska (łaciński) |
-| Łaciński |
-| Łotewski |
-| Litewski |
-| Macedoński |
-| Malajski |
-| Maltański |
-| Norweski |
-| Norweski (Nynorsk) |
-| Paszto |
-| Perski |
-| Polski |
-| Portugalski |
-| Rumuński |
-| Rosyjski |
-| Serbski (cyrylica) |
-| Serbski (łaciński) |
-| Słowacki |
-| Słoweński |
-| Somali |
-| Hiszpański |
-| Suahili |
-| Szwedzki |
-| Tagalski |
-| Telugu |
-| Tajlandzki |
-| Turecki |
-| Ukraiński |
-| Urdu |
-| Uzbecki (cyrylica) |
-| Uzbecki (łaciński) |
-| Wietnamski |
-| Walijski |
-| Jidysz |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programowy dostęp Lista języków interfejsu API tłumaczenia tekstu
 
@@ -294,6 +227,7 @@ Następujące języki są możliwe do dostosowania do lub z angielskiego przy u�
 | Hindi      | `hi`          |
 | Węgierski      | `hu`          |
 | Islandzki | `is` |
+| Indonezyjski|   `id`    |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
 | Koreański      | `ko`          |

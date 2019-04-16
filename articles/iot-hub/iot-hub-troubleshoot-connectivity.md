@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648823"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571056"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Wykrywanie i rozwiązywanie problemów z zamknie połączenie z usługą Azure IoT Hub
 
@@ -28,13 +28,18 @@ Usługa Azure Monitor umożliwia otrzymywanie alertów i zapisują dzienniki w p
 Aby rejestrować zdarzenia połączenia urządzenia i błędy, Włącz diagnostykę usługi IoT Hub.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do Centrum IoT hub.
-1. Wybierz **ustawień diagnostycznych**.
-1. Wybierz **Włącz diagnostykę**.
-1. Włącz **połączeń** dzienników, które mają być zbierane.
-1. Ułatwia analizowanie włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Zobacz przykład w obszarze [rozwiązać błędy związane z łącznością](#resolve-connectivity-errors).
 
-   ![Zalecane ustawienia][2]
+2. Przejdź do Centrum IoT hub.
+
+3. Wybierz **ustawień diagnostycznych**.
+
+4. Wybierz **Włącz diagnostykę**.
+
+5. Włącz **połączeń** dzienników, które mają być zbierane.
+
+6. Ułatwia analizowanie włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Zobacz przykład w obszarze [rozwiązać błędy związane z łącznością](#resolve-connectivity-errors).
+
+   ![Zalecane ustawienia](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
 Aby dowiedzieć się więcej, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md).
 
@@ -43,11 +48,16 @@ Aby dowiedzieć się więcej, zobacz [monitorowania kondycji usługi Azure IoT H
 Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alertów dotyczących **połączone urządzenia (wersja zapoznawcza)** metryki.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do Centrum IoT hub.
-1. Wybierz **alerty**.
-1. Wybierz **Nowa reguła alertu**.
-1. Wybierz **Dodaj warunek**, następnie wybierz pozycję "Połączone urządzenia (wersja zapoznawcza)".
-1. Zakończ konfigurowanie Twojego odpowiednie progi i alerty opcje, określ poniższe informacje.
+
+2. Przejdź do Centrum IoT hub.
+
+3. Wybierz **alerty**.
+
+4. Wybierz **Nowa reguła alertu**.
+
+5. Wybierz **Dodaj warunek**, następnie wybierz pozycję "Połączone urządzenia (wersja zapoznawcza)".
+
+6. Zakończ konfigurowanie Twojego odpowiednie progi i alerty opcje, określ poniższe informacje.
 
 Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platformie Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
 
@@ -56,8 +66,10 @@ Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platform
 Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz otrzymywać alerty, jeśli wystąpią błędy. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Azure Monitor dzienników dla dzienników diagnostycznych.
 
 1. Szukać obszaru roboczego **usługi Log Analytics** w witrynie Azure portal.
-1. Wybierz **wyszukiwania w dzienniku**.
-1. Aby wyizolować dzienniki błędów łączności dla usługi IoT Hub, wprowadź następujące zapytanie, a następnie wybierz pozycję **Uruchom**:
+
+2. Wybierz **wyszukiwania w dzienniku**.
+
+3. Aby wyizolować dzienniki błędów łączności dla usługi IoT Hub, wprowadź następujące zapytanie, a następnie wybierz pozycję **Uruchom**:
 
     ```
     search *
@@ -67,12 +79,12 @@ Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz o
 
 1. W przypadku wyników poszukaj `OperationName`, `ResultType` (kod błędu) i `ResultDescription` (komunikat), aby uzyskać więcej informacji na temat błędu.
 
-   ![Przykładowy dziennik błędów][4]
+   ![Przykładowy dziennik błędów](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. Ta tabela służy do zrozumienia i rozwiązania typowych problemów.
+2. Ta tabela służy do zrozumienia i rozwiązania typowych problemów.
 
     | Błąd | Główna przyczyna | Rozwiązanie |
-    |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    |-------|------------|------------|
     | 404104 DeviceConnectionClosedRemotely | Połączenie zostało zamknięte przez urządzenie, ale nie może ustalić, dlaczego usługi IoT Hub. Typowe przyczyny MQTT/AMQP limitu czasu i internet utraty łączności. | Upewnij się, że urządzenie może połączyć się do usługi IoT Hub za [Trwa testowanie połączenia](tutorial-connectivity.md). Jeśli połączenie jest poprawne, ale urządzenie jest sporadycznie rozłączane, upewnij się zaimplementować logikę aktywne urządzenie Zachowaj właściwe dla wybranego protokołu (MQTT/AMPQ). |
     | 401003 IoTHubUnauthorized | Usługi IoT Hub nie można uwierzytelnić połączenia. | Upewnij się, że sygnatury dostępu Współdzielonego lub innych token zabezpieczający, którego używasz nie jest uznawane za wygasłe. [Usługa Azure IoT SDKs](iot-hub-devguide-sdks.md) automatycznego generowania tokenów bez specjalnej konfiguracji. |
     | 409002 LinkCreationConflict | Urządzenie ma więcej niż jedno połączenie. Po przejściu do trybu nowego żądania połączenia dla urządzenia, usłudze IoT Hub zamyka poprzedniemu, z powodu następującego błędu. | W typowych przypadkach urządzenia wykrywa rozłączenia i próbuje ponownie nawiązać połączenie, ale usługi IoT Hub nadal uważa się urządzenie podłączone. Usługi IoT Hub zamyka poprzednie połączenie i rejestruje tego błędu. Zazwyczaj ten błąd pojawia się jako efekt uboczny różnych przejściowy problem, więc poszukaj inne błędy w dziennikach do dalszego rozwiązywania. W przeciwnym razie upewnij się, że wystawiania nowego żądania połączenia, tylko wtedy, gdy połączenie spada. |
@@ -84,7 +96,9 @@ Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz o
 Jeśli poprzednie kroki nie pomogły, możesz wypróbować:
 
 * Jeśli masz dostęp do urządzeń problematyczne fizycznie lub zdalnie (na przykład protokołu SSH), postępuj zgodnie z [przewodnik rozwiązywania problemów po stronie urządzenia](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) aby kontynuować rozwiązywanie problemów.
+
 * Sprawdź, czy urządzenia są **włączone** w witrynie Azure portal > usługi IoT hub > urządzeń IoT.
+
 * Uzyskaj pomoc od [forum usługi Azure IoT Hub](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub), lub [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).
 
 Aby pomóc udoskonalić dokumentację dla wszystkich użytkowników, pozostaw komentarz w poniższej sekcji opinii, jeśli to nie być pomocny ten przewodnik.
@@ -92,10 +106,5 @@ Aby pomóc udoskonalić dokumentację dla wszystkich użytkowników, pozostaw ko
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat rozwiązywania problemów przejściowych, zobacz [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
-* Dowiedz się więcej o usłudze Azure IoT SDK do zarządzania ponowieniami, zobacz [sposobu zarządzania łącznością i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub](iot-hub-reliability-features-in-sdks.md#connection-and-retry).
 
-<!-- Images -->
-[1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png
-[2]: ./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png
-[3]: ./media/iot-hub-troubleshoot-connectivity/metric-alert.png
-[4]: ./media/iot-hub-troubleshoot-connectivity/diag-logs.png
+* Dowiedz się więcej o usłudze Azure IoT SDK do zarządzania ponowieniami, zobacz [sposobu zarządzania łącznością i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub](iot-hub-reliability-features-in-sdks.md#connection-and-retry).

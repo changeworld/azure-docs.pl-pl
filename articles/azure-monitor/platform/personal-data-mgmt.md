@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121353"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577902"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w usłudze Log Analytics i usługi Application Insights
 
@@ -86,6 +86,9 @@ Jak wspomniano w [strategii do obsługi danych osobowych](#strategy-for-personal
 ### <a name="view-and-export"></a>Wyświetlanie i eksportowanie
 
 Dla obu wyświetlanie i eksportowanie żądań danych [interfejsu API zapytań usługi Log Analytics](https://dev.loganalytics.io/) lub [usługi Application Insights zapytania interfejsu API](https://dev.applicationinsights.io/quickstart) powinny być używane. Logika do przekonwertowania kształtu danych na jeden z nich można dostarczać użytkownikom będzie maksymalnie można zaimplementować. [Usługa Azure Functions](https://azure.microsoft.com/services/functions/) ułatwia wspaniałego programu do obsługi takich logiki.
+
+> [!IMPORTANT]
+>  Chociaż większość operacji przeczyszczania może zakończyć się znacznie szybsze niż umowa SLA, **formalnych umowa SLA na ukończenie operacji przeczyszczanie równego 30 dni** ze względu na ich mocno wpływ na platformie danych używane. Jest to zautomatyzowanego procesu; nie ma sposobu na żądanie, szybciej obsługi operacji.
 
 ### <a name="delete"></a>Usuwanie
 

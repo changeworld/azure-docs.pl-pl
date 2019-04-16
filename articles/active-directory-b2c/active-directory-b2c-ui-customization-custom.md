@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7463a61945524672c5124966db2464c036559db7
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818876"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571332"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ Aby utworzyć publicznego kontenera w usłudze Blob storage, wykonaj następują
 Konfigurowanie magazynu obiektów Blob na potrzeby udostępniania zasobów między źródłami, wykonując następujące czynności:
 
 1. Wybierz z menu **CORS**.
-2. Aby uzyskać **dozwolone źródła**, wprowadź `your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `fabrikam.b2clogin.com`. Należy używać małych liter, wprowadzając nazwę dzierżawy.
+2. Aby uzyskać **dozwolone źródła**, wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Należy używać małych liter, wprowadzając nazwę dzierżawy.
 3. Aby uzyskać **dozwolone metody**, zaznacz zarówno pozycję `GET` i `OPTIONS`.
 4. Aby uzyskać **dozwolone nagłówki**, wprowadź znak gwiazdki (*).
 5. Aby uzyskać **udostępniane nagłówki**, wprowadź znak gwiazdki (*).
@@ -144,8 +144,8 @@ Aby skonfigurować dostosowywania interfejsu użytkownika, należy skopiować **
 
 ## <a name="upload-your-updated-custom-policy"></a>Przekaż zaktualizowany zasad niestandardowych
 
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+1. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **struktura środowiska tożsamości**.
 2. Kliknij przycisk **wszystkie zasady**.
 3. Kliknij przycisk **przekazywać zasady**.

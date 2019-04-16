@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 90fa56bb0e2044d24533c35a051d3f4b644e05b5
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349641"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578192"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -38,10 +38,10 @@ Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania 
  Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai
  Wschodnie stany USA | `eastus` | https://eastus.cris.ai
  Wschodnie stany USA 2 | `eastus2` | https://eastus2.cris.ai
- Środkowe stany USA | 'centralus' | https://centralus.cris.ai
- Środkowo-północne stany USA | 'northcentralus' | https://northcentralus.cris.ai
- Środkowo-południowe stany USA | 'southcentralus' | https://southcentralus.cris.ai
- Indie Środkowe | "centralindia" | https://centralindia.cris.ai
+ Środkowe stany USA | `centralus` | https://centralus.cris.ai
+ Środkowo-północne stany USA | `northcentralus` | https://northcentralus.cris.ai
+ Środkowo-południowe stany USA | `southcentralus` | https://southcentralus.cris.ai
+ Indie Środkowe | `centralindia` | https://centralindia.cris.ai
  Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
  Azja Południowo-Wschodnia | `southeastasia` | https://southeastasia.cris.ai
  Japonia Wschodnia | `japaneast` | https://japaneast.cris.ai

@@ -4,93 +4,74 @@ description: Samouczek dotyczący wysyłania alertów w odpowiedzi na błędy w 
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/20/2017
+ms.date: 04/10/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079166"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578768"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorowanie kondycji aplikacji i wysyłanie powiązanych alertów za pomocą usługi Azure Application Insights
 
-Usługa Azure Application Insights umożliwia monitorowanie aplikacji i wysyłania alertów, gdy aplikacja jest niedostępna lub występują w niej błędy bądź problemy z wydajnością.  Ten samouczek przeprowadzi Cię przez proces tworzenia testów stale sprawdzających dostępność aplikacji i wysyłających różnego rodzaju alerty w odpowiedzi na wykryte problemy.  Omawiane kwestie:
+Usługa Azure Application Insights umożliwia monitorowanie aplikacji i wysyłania alertów, gdy aplikacja jest niedostępna lub występują w niej błędy bądź problemy z wydajnością.  Ten samouczek przeprowadzi Cię przez proces tworzenia testów, aby stale sprawdzać dostępność aplikacji.
+
+Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie testu dostępności stale sprawdzającego odpowiedź aplikacji
 > * Wysyłanie wiadomości e-mail do administratorów, gdy występuje problem
-> * Tworzenie alertów na podstawie metryk wydajności 
-> * Korzystanie z aplikacji logiki do wysyłania podsumowania danych telemetrycznych zgodnie z harmonogramem.
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
-- Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    - Tworzenie aplikacji na platformie Azure
-    - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+Tworzenie [zasób usługi Application Insights](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
 
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-availability-test"></a>Tworzenie testu dostępności
-Testy dostępności w usłudze Application Insights umożliwiają automatyczne testowanie aplikacji z różnych lokalizacji na całym świecie.   W tym samouczku wykonasz prosty test, aby się upewnić, że aplikacja jest dostępna.  Możesz również utworzyć szczegółowy przewodnik, aby dokładnie przetestować działanie aplikacji. 
+
+Testy dostępności w usłudze Application Insights umożliwiają automatyczne testowanie aplikacji z różnych lokalizacji na całym świecie.   W tym samouczku wykonasz test adresu url, aby upewnić się, że aplikacja sieci web jest dostępna.  Możesz również utworzyć szczegółowy przewodnik, aby dokładnie przetestować działanie aplikacji. 
 
 1. Wybierz pozycję **Application Insights**, a następnie wybierz swoją subskrypcję.  
-1. Wybierz pozycję **Dostępność** w menu **Zbadaj**, a następnie kliknij przycisk **Dodaj test**.
- 
-    ![Dodawanie testu dostępności](media/tutorial-alert/add-test.png)
 
-2. Wpisz nazwę testu i pozostaw inne wartości domyślne.  Spowoduje to wysyłanie co 5 minut żądania strony głównej aplikacji z 5 różnych lokalizacji geograficznych. 
-3. Wybierz pozycję **Alerty**, aby otworzyć panel **Alerty**, na którym można zdefiniować szczegóły dotyczące sposobu reagowania w przypadku niepowodzenia testu. Wpisz adres e-mail, na który zostanie wysłana wiadomość, gdy zostaną spełnione kryteria alertu.  Opcjonalnie można wpisać adres elementu webhook, który ma zostać wywołany po spełnieniu kryteriów alertu.
+2. Wybierz **dostępności** w obszarze **zbadaj** menu, a następnie kliknij przycisk **Utwórz test**.
 
-    ![Tworzenie testu](media/tutorial-alert/create-test.png)
- 
-4. Wróć do panelu testów. Po kilku minutach powinny zacząć się pojawiać wyniki testu dostępności.  Kliknij nazwę testu, aby wyświetlić szczegółowe informacje z poszczególnych lokalizacji.  Na wykresie punktowym wyświetlane są informacje, czy test zakończył się powodzeniem, oraz czas trwania poszczególnych testów.
+    ![Dodawanie testu dostępności](media/tutorial-alert/add-test-001.png)
 
-    ![Szczegóły testu](media/tutorial-alert/test-details.png)
+3. Wpisz nazwę testu i pozostaw inne wartości domyślne.  Zaznacz to pole wyboru wyzwoli żądania dla adresu url aplikacji co 5 minut od pięciu różnych lokalizacjach geograficznych.
 
-5.  Kliknięcie kropki na wykresie punktowym umożliwia przejście do szczegółów konkretnego testu.  W poniższym przykładzie przedstawiono szczegółowe informacje dotyczące żądania zakończonego niepowodzeniem.
+4. Wybierz **alerty** otworzyć **alerty** listy rozwijanej, w którym można zdefiniować szczegóły dotyczące sposobu reagowania, jeśli test zakończy się niepowodzeniem. Wybierz **niemal w czasie rzeczywistym** i ustawić stan na **włączone.**
 
-    ![Wynik testu](media/tutorial-alert/test-result.png)
+    Wpisz adres e-mail, na który zostanie wysłana wiadomość, gdy zostaną spełnione kryteria alertu.  Opcjonalnie można wpisać adres elementu webhook, który ma zostać wywołany po spełnieniu kryteriów alertu.
+
+    ![Tworzenie testu](media/tutorial-alert/create-test-001.png)
+
+5. Wróć do panelu testu, wybierz wielokropek, a następnie Edytuj alert, aby wprowadzić konfiguracji alertu niemal w czasie rzeczywistym.
+
+    ![Edytuj alert](media/tutorial-alert/edit-alert-001.png)
+
+6. Ustawianie lokalizacji z błędami większa lub równa 3. Tworzenie [grupy akcji](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) do skonfigurowania, który pobiera powiadomienia w przypadku włamania się próg alertu.
+
+    ![Zapisywanie alertu interfejsu użytkownika](media/tutorial-alert/save-alert-001.png)
+
+7. Po skonfigurowaniu alert, kliknij nazwę testu, aby wyświetlić szczegółowe informacje z każdej lokalizacji. Testy mogą być wyświetlane w obu wiersza wykres punktowy wykres format i wizualizacji sukcesów/niepowodzeń w zakresie w danym momencie.
+
+    ![Szczegóły testu](media/tutorial-alert/test-details-001.png)
+
+8. Możesz przejść do szczegółów dowolnego testu, klikając jej kropkę na wykresie punktowym. Spowoduje to uruchomienie widoku szczegółów transakcji end-to-end. W poniższym przykładzie przedstawiono szczegółowe informacje dotyczące żądania zakończonego niepowodzeniem.
+
+    ![Wynik testu](media/tutorial-alert/test-result-001.png)
   
-6. Jeśli zostaną spełnione kryteria alertu, na podany adres jest wysyłana wiadomość e-mail podobna do przedstawionej poniżej.
-
-    ![Wiadomość e-mail z alertem](media/tutorial-alert/alert-mail.png)
-
-
-## <a name="create-an-alert-from-metrics"></a>Tworzenie alertu na podstawie metryki
-Oprócz wysyłania alertów z testu dostępności można utworzyć alert na podstawie dowolnych metryk wydajności zbieranych na potrzeby aplikacji.
-
-1. Wybierz pozycję **Alerty** z menu **Konfiguruj**.  Spowoduje to otwarcie panelu alertów platformy Azure.  Mogą tu być wyświetlane inne reguły alertów skonfigurowane na potrzeby innych usług.
-1. Kliknij pozycję **Dodaj alert metryki**.  Spowoduje to otwarcie panelu umożliwiającego utworzenie nowej reguły alertu.
-
-    ![Dodawanie alertu dotyczącego metryki](media/tutorial-alert/add-metric-alert.png)
-
-1. W polu **Nazwa** wpisz nazwę reguły alertu i z listy rozwijanej **Zasób** wybierz swoją aplikację.
-1. Wybierz **metrykę** do próbkowania.  Zostanie wyświetlony wykres wskazujący wartość tego żądania w ciągu ostatnich 24 godzin.  Ułatwia to ustawienie warunku metryki.
-
-    ![Dodawanie reguły alertu](media/tutorial-alert/add-alert-01.png)
-
-1. Określ **Warunek** i **Próg** alertu. Jest to liczba wskazująca, ile razy musi nastąpić przekroczenie metryki, aby został utworzony alert. 
-1. W obszarze **Metoda powiadomienia** zaznacz pole **Właściciele, współautorzy i czytelnicy poczty e-mail**, aby do tych użytkowników została wysłana wiadomość e-mail, kiedy zostanie spełniony warunek alertu, i dodaj adresy e-mail ewentualnych dodatkowych odbiorców.  W tym miejscu możesz również określić element webhook lub aplikację logiki, które będą uruchamiane, gdy warunek jest spełniony.  Za pomocą tych elementów można podjąć próbę ograniczenia wykrytego problemu. 
-
-    ![Dodawanie reguły alertu](media/tutorial-alert/add-alert-02.png)
-
-
-## <a name="proactively-send-information"></a>Proaktywne wysyłanie informacji
-Alerty są tworzone w odpowiedzi na określony zestaw problemów zidentyfikowanych w aplikacji. Alerty są zwykle używane w przypadku krytycznych warunków wymagających natychmiastowej uwagi.  Informacje o aplikacji można otrzymywać w sposób proaktywny za pomocą aplikacji logiki uruchamianej automatycznie zgodnie z harmonogramem.  Codziennie może być na przykład wysyłana wiadomość e-mail do administratorów z informacjami podsumowującymi wymagającymi dalszej oceny.
-
-Aby uzyskać więcej informacji na temat tworzenia aplikacji logiki za pomocą usługi Application Insights, zobacz [Automate Application Insights processes by using Logic Apps](../../azure-monitor/app/automate-with-logic-apps.md) (Automatyzacja procesów usługi Application Insights za pomocą aplikacji logiki)
-
 ## <a name="next-steps"></a>Kolejne kroki
+
 Po poznaniu sposobów tworzenia alertów w odpowiedzi na problemy przejdź do następnego samouczka, aby się dowiedzieć, jak analizować sposób, w jaki użytkownicy wchodzą w interakcje z Twoją aplikacją.
 
 > [!div class="nextstepaction"]

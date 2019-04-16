@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2019
+ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189142"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571099"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -36,17 +36,18 @@ Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągł
 - [Big przełącznika big Data, monitorowanie sieci szkieletowej](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Narzędzia analizy zabezpieczeń, zarządzanie wydajnością aplikacji/Sieć
 
 - [Aktywne zabezpieczeń](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch chmury](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [Platforma NetWitness® RSA](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -56,7 +57,7 @@ Na poniższym obrazie jak wirtualne sieci działa wzorca TAP. Można dodać konf
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem sieci wirtualnej wzorca TAP, muszą Odebrano wiadomość e-mail z potwierdzeniem, które są zarejestrowane w wersji zapoznawczej i mieć jeden lub więcej maszyn wirtualnych utworzonych przy użyciu [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) partnerem i modelu wdrażania rozwiązanie dla agregacji ruchu wzorca TAP w regionie WestCentralUS. Jeśli nie masz rozwiązania partnerskiego w usłudze virtual network, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) Aby wdrożyć. Można użyć tej samej sieci wirtualnej zasobów wzorca TAP agregacji ruchu z wieloma interfejsami sieciowymi w tej samej lub różnych subskrypcji. W przypadku interfejsów sieciowych monitorowanych w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory. Ponadto interfejsów sieciowych monitorowanych i docelowy punkt końcowy dla agregacji ruchu wzorca TAP może być w równorzędnych sieciach wirtualnych, w tym samym regionie. Jeśli używasz tego modelu wdrażania upewnij się, że [wirtualne sieci równorzędne](virtual-network-peering-overview.md) jest włączona, przed skonfigurowaniem PODSŁUCHU sieci wirtualnej.
+Przed utworzeniem sieci wirtualnej wzorca TAP, muszą Odebrano wiadomość e-mail z potwierdzeniem, które są zarejestrowane w wersji zapoznawczej i mieć jeden lub więcej maszyn wirtualnych utworzonych przy użyciu [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) partnerem i modelu wdrażania rozwiązanie dla agregacji ruchu NACIŚNIJ w tym samym regionie platformy azure. Jeśli nie masz rozwiązania partnerskiego w usłudze virtual network, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) Aby wdrożyć. Można użyć tej samej sieci wirtualnej zasobów wzorca TAP agregacji ruchu z wieloma interfejsami sieciowymi w tej samej lub różnych subskrypcji. W przypadku interfejsów sieciowych monitorowanych w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą usługi Azure Active Directory. Ponadto interfejsów sieciowych monitorowanych i docelowy punkt końcowy dla agregacji ruchu wzorca TAP może być w równorzędnych sieciach wirtualnych, w tym samym regionie. Jeśli używasz tego modelu wdrażania upewnij się, że [wirtualne sieci równorzędne](virtual-network-peering-overview.md) jest włączona, przed skonfigurowaniem PODSŁUCHU sieci wirtualnej.
 
 ## <a name="permissions"></a>Uprawnienia
 

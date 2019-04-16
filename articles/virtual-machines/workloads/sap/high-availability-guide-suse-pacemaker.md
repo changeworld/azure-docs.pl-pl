@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: f1b993cf45d987cb51f64359b331f3862d054774
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549903"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577799"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -84,7 +84,7 @@ Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualn
 
 Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych** do tworzenia dysków iSCSI w przypadku klastrów używane przez systemy SAP. W poniższym przykładzie są tworzone interwencja urządzeń dla wielu klastrów. Przedstawia on sposób użyje jednego serwera obiektów docelowych iSCSI dla wielu klastrów. Urządzenia interwencja są umieszczane na dysku systemu operacyjnego. Upewnij się, że masz wystarczająco dużo miejsca.
 
-**` nfs`** Służy do identyfikowania klastra systemu plików NFS **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania bazy danych klastra **NW1** , **0 systemu plików nfs** i **1 systemu plików nfs** są nazwy hostów węzłów klastra systemu plików NFS **nw1 xscs 0** i **nw1 xscs 1**są nazwy hostów programu **NW1** węzły, klastra ASCS i **nw1-db-0** i **nw1-db-1** są nazwy hostów bazy danych z węzłami klastra. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
+**`nfs`** Służy do identyfikowania klastra systemu plików NFS **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania bazy danych klastra **NW1** , **0 systemu plików nfs** i **1 systemu plików nfs** są nazwy hostów węzłów klastra systemu plików NFS **nw1 xscs 0** i **nw1 xscs 1**są nazwy hostów programu **NW1** węzły, klastra ASCS i **nw1-db-0** i **nw1-db-1** są nazwy hostów bazy danych z węzłami klastra. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Utwórz ` softdog` pliku konfiguracji
+   Utwórz `softdog` pliku konfiguracji
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
