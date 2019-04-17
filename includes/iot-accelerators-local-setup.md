@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: ec382217bfa32da19c0b98e656f3782739b26cc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125246"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630540"
 ---
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
@@ -59,7 +59,7 @@ Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj nastę
 
      Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań. Można usunąć tej grupy zasobów, gdy nie są już potrzebne odpowiednich zasobów.
 
-     Skrypt ten dodaje również zestaw zmiennych środowiskowych z prefiksem **komputerów** na komputer lokalny. Po uruchomieniu kontenerów platformy Docker lub projekty mikrousługi lokalnie odczytywane wartości konfiguracji z tych zmiennych środowiskowych.
+     Skrypt ten dodaje również zestaw zmiennych środowiskowych z prefiksem **komputerów** na komputer lokalny. Te zmienne środowiskowe zawierają szczegółowe informacje dotyczące monitorowania zdalnego był możliwy odczyt z zasobem usługi Azure Key Vault. Ten zasób usługi Key Vault jest, gdzie zdalne monitorowanie odczyta jego wartości konfiguracji z.
 
      > [!TIP]
      > Po ukończeniu działania skryptu, zapisuje również zmiennych środowiskowych w pliku o nazwie  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** . Można je dla wdrożenia akcelerator rozwiązań w przyszłości. Należy pamiętać, że wszelkie zmienne środowiskowe, ustaw na komputerze lokalnym zastąpić wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **docker-compose**.
@@ -68,4 +68,12 @@ Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj nastę
 
 ### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
 
-Jeśli już utworzono wymaganych zasobów platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym. Mogą być zapisane w  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** pliku z wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na komputerze lokalnym, Zastąp wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **narzędzia docker compose**.
+Jeśli już utworzono wymaganych zasobów platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym.
+Ustaw zmienne środowiskowe do wykonania poniższych czynności:
+* **PCS_KEYVAULT_NAME** — Nazwa zasobu usługi Azure Key Vault
+* **PCS_AAD_APPID** — identyfikator aplikacji usługi AAD
+* **PCS_AAD_APPSECRET** — klucz tajny aplikacji usługi AAD
+
+Wartości konfiguracji będą odczytywane z tego zasobu usługi Azure Key Vault. Te zmienne środowiskowe mogą być zapisane w  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** pliku z wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na komputerze lokalnym, Zastąp wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **narzędzia docker compose**.
+
+Niektórych elementów konfiguracji wymaganych przez mikrousługi są przechowywane w wystąpieniu **usługi Key Vault** utworzony na początkowym wdrożeniu. Odpowiednie zmienne w magazynie keyvault powinien być modyfikowany, zgodnie z potrzebami.

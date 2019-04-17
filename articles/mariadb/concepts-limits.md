@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 04/15/2019
+ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895792"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616275"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia dotyczące usługi Azure Database dla serwera MariaDB
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych.
@@ -28,10 +28,12 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Ogólne zastosowanie| 8| 1250|
 |Ogólne zastosowanie| 16| 2500|
 |Ogólne zastosowanie| 32| 5000|
+|Ogólne zastosowanie| 64| 10 000|
 |Pamięć| 2| 600|
 |Pamięć| 4| 1250|
 |Pamięć| 8| 2500|
 |Pamięć| 16| 5000|
+|Pamięć| 32| 10 000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > ERROR 1040 (08004): Zbyt wiele połączeń

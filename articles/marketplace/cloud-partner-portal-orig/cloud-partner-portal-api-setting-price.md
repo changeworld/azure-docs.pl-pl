@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c78a54d5002972339994d9590c0a3e23b5c69bd9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810530"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607799"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Cennik oferty maszyny wirtualnej
+<a name="pricing-for-virtual-machine-offers"></a>Cennik ofert maszyn wirtualnych
 ==================================
 
 Istnieją trzy sposoby, aby określić, cennik oferty maszyny wirtualnej: dostosowane cen core, ceny za Rdzeń oraz ceny arkusza kalkulacyjnego.
@@ -109,21 +109,21 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | AU         | Australia            | AUD               |
 | AT         | Austria              | EUR               |
 | BH         | Bahrajn              | BHD               |
-| PRZEZ         | Białoruś              | RUB               |
-| MOŻNA         | Belgia              | EUR               |
-| BRAZYLIA         | Brazylia               | USD               |
+| BY         | Białoruś              | RUB               |
+| BE         | Belgia              | EUR               |
+| BR         | Brazylia               | USD               |
 | BG         | Bułgaria             | BGN               |
-| Urząd certyfikacji         | Kanada               | CAD               |
+| CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
 | CO         | Kolumbia             | COP               |
 | CR         | Kostaryka           | CRC               |
-| Kadry         | Chorwacja              | HRK               |
+| HR         | Chorwacja              | HRK               |
 | CY         | Cypr               | EUR               |
-| CZECHY         | Republika Czeska       | CZK               |
+| CZ         | Czechy       | CZK               |
 | DK         | Dania              | DKK               |
-| CZY         | Dominikana   | USD               |
-| WE         | Ekwador              | USD               |
-| NA PRZYKŁAD         | Egipt                | EGP               |
+| DO         | Republika Dominikańska   | USD               |
+| EC         | Ekwador              | USD               |
+| EG         | Egipt                | EGP               |
 | SV         | Salwador          | USD               |
 | EE         | Estonia              | EUR               |
 | FI         | Finlandia              | EUR               |
@@ -133,11 +133,11 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | GT         | Gwatemala            | GTQ               |
 | HK         | SRA Hongkong        | HKD               |
 | HU         | Węgry              | HUF               |
-| JEST         | Islandia              | ISK               |
-| INDIE         | Indie                | INR               |
+| IS         | Islandia              | ISK               |
+| IN         | Indie                | INR               |
 | ID         | Indonezja            | IDR               |
-| PROGRAMU INTERNET EXPLORER         | Irlandia              | EUR               |
-| IL         | Izrael               | USŁUGI ILS               |
+| IE         | Irlandia              | EUR               |
+| IL         | Izrael               | ILS               |
 | IT         | Włochy                | EUR               |
 | JP         | Japonia                | JPY               |
 | JO         | Jordania               | JOD               |
@@ -148,32 +148,32 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | LV         | Łotwa               | EUR               |
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litwa            | EUR               |
-| JEDNOSTKA LOGICZNA         | Luksemburg           | EUR               |
-| MK         | Macedonia Północna       | MKD               |
-| MOJE         | Malezja             | MYR               |
+| LU         | Luksemburg           | EUR               |
+| MK         | Macedonia Północna      | MKD               |
+| MY         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |
-| MNIE         | Czarnogóra           | EUR               |
+| ME         | Czarnogóra           | EUR               |
 | MA         | Maroko              | MAD               |
-| HOLANDIA         | Holandia          | EUR               |
+| NL         | Holandia          | EUR               |
 | NZ         | Nowa Zelandia          | NZD               |
 | NG         | Nigeria              | NGN               |
-| NIE         | Norwegia               | NOK               |
+| NO         | Norwegia               | NOK               |
 | OM         | Oman                 | OMA               |
-| KLUCZ PODSTAWOWY         | Pakistan             | PKR               |
+| PK         | Pakistan             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paragwaj             | PYG               |
 | PE         | Peru                 | PIÓRA               |
 | PH         | Filipiny          | PHP               |
 | PL         | Polska               | PLN               |
-| (CZAS PACYFICZNY)         | Portugalia             | EUR               |
-| ŻĄDANIA ŚCIĄGNIĘCIA         | Portoryko          | USD               |
-| ODPOWIEDZI NA PYTANIA         | Katar                | QAR               |
+| PT         | Portugalia             | EUR               |
+| PR         | Portoryko          | USD               |
+| QA         | Katar                | QAR               |
 | RO         | Rumunia              | PIOTR               |
-| JEDNOSTKA ŻĄDANIA         | Rosja               | RUB               |
-| AMERYKA POŁUDNIOWA         | Arabia Saudyjska         | SAR               |
+| RU         | Rosja               | RUB               |
+| SA         | Arabia Saudyjska         | SAR               |
 | RS         | Serbia               | RSD               |
-| GRUPY ZABEZPIECZEŃ         | Singapur            | SGD               |
+| SG         | Singapur            | SGD               |
 | SK         | Słowacja             | EUR               |
 | SI         | Słowenia             | EUR               |
 | ZA         | Republika Południowej Afryki         | ZAR               |
@@ -186,9 +186,9 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | TT         | Trynidad i Tobago  | TTD               |
 | TN         | Tunezja              | TND               |
 | TR         | Turcja               | TRY               |
-| AGENT UŻYTKOWNIKA         | Ukraina              | UAH               |
+| UA         | Ukraina              | UAH               |
 | AE         | Zjednoczone Emiraty Arabskie | EUR               |
-| GB         | Wielka Brytania       | GBP               |
+| GB         | Zjednoczone Królestwo       | GBP               |
 | USA         | Stany Zjednoczone        | USD               |
 | UY         | Urugwaj              | UYU               |
 | VE         | Wenezuela            | USD               |

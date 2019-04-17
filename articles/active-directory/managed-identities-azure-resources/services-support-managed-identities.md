@@ -4,18 +4,18 @@ description: Lista usług, które obsługują zarządzanych tożsamości do uwie
 services: active-directory
 author: MarkusVi
 ms.author: priyamo
-ms.date: 11/28/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 79c3f8ae183c78b19f7f520f8154bf9484a1f795
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045461"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607997"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -38,7 +38,7 @@ Następujących usług platformy Azure obsługują zarządzanych tożsamości dl
 Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzanej usługi Azure Virtual Machines (w regionach gdzie są dostępne):
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
-- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Program PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
 - [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
@@ -53,7 +53,7 @@ Można znaleźć na poniższej liście do konfigurowania tożsamości zarządzan
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Virtual Machine Scale Sets (w regionach gdzie są dostępne):
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
-- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Program PowerShell](qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)
 - [Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
@@ -120,7 +120,7 @@ Typ tożsamości zarządzanych | Wszystkie ogólnie dostępne<br>Globalnych regi
 Można znaleźć na poniższej liście, można skonfigurować tożsamości zarządzanej dla usługi Azure Data Factory V2 (w regionach gdzie są dostępne):
 
 - [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [Program PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
@@ -213,7 +213,7 @@ Można znaleźć w poniższej liście, aby skonfigurować dostęp do usługi Azu
 | Azure (Niemcy) |   | Niedostępne |
 | Azure w Chinach — 21Vianet |  | Niedostępne |
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage-blobs-and-queues"></a>Usługa Azure Storage blob i kolejki
 
 | Chmura | Identyfikator zasobu | Stan |
 |--------|------------|--------|

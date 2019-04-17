@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ae9ad4d1101c3b42c46c51546ac82e5b4a134c8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519856"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617341"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Szybki start: Tworzenie klasyfikatora obciążenia przy użyciu języka T-SQL (wersja zapoznawcza)
 
 W tym przewodniku Szybki Start szybko utworzysz klasyfikatora obciążenia o wysokiej ważności dla Dyrektora Generalnego Twojej organizacji. Klasyfikator to obciążenie będzie umożliwiać Dyrektor Naczelny zapytania mają pierwszeństwo względem innych zapytań o niższe ważności w kolejce.
 
 > [!Note]
-> Klasyfikacja obciążenia jest dostępny na Gen2 magazynu danych SQL.
+> Klasyfikacja obciążenia jest dostępna w wersji zapoznawczej na Gen2 magazynu danych SQL. Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji.  Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem.  Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom wybierz @@version po podłączeniu do wystąpienia usługi SQL Data Warehouse.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526677"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618145"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -139,7 +139,7 @@ Zobacz [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/sc
     -   Azure publiczny adres IP, nazwą  *\<Guid > - azurebatch - cloudservicepublicip*.
     -   Grupę zabezpieczeń sieci pracy o nazwie  *\<Guid > - azurebatch - cloudservicenetworksecuritygroup*. 
 
--   Upewnij się, że nie masz żadnej blokady zasobu, grupy zasobów lub subskrypcji, do którego należy sieć wirtualna. Jeśli skonfigurujesz blokadę tylko do odczytu lub blokadę usuwania, uruchamianie i zatrzymywanie środowiska IR może zakończyć się niepowodzeniem lub zawieszeniu. 
+-   Upewnij się, że nie masz żadnej blokady zasobu, grupy zasobów lub subskrypcji, do którego należy sieć wirtualna. Jeśli skonfigurujesz blokadę tylko do odczytu lub blokadę usuwania, uruchamiania i zatrzymywania środowisko IR może zakończyć się niepowodzeniem lub przestać odpowiadać. 
 
 -   Upewnij się, że nie masz usługi Azure policy, co zapobiega tworzona w ramach grupy zasobów lub subskrypcji, do którego należy sieć wirtualna następujące zasoby: 
     -   Microsoft.Network/LoadBalancers 

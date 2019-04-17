@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184894"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616214"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Rozwiązywanie problemów z usługi Azure Active Directory uwierzytelnianie przekazywane
 
@@ -71,6 +71,9 @@ Przejdź do **usługi Azure Active Directory** -> **logowania** na [Centrum admi
 | 80007 | Agent uwierzytelniania nie może nawiązać połączenia z usługą Active Directory. | Sprawdź, czy dostępny z poziomu agenta uwierzytelniania usługi Active Directory.
 | 80010 | Agent uwierzytelniania nie może odszyfrować hasła. | Jeśli problem się stale powtarza, należy zainstalować i zarejestrować nowego agenta uwierzytelniania. I odinstalowywania bieżącej. 
 | 80011 | Agent uwierzytelniania nie może pobrać klucza odszyfrowującego. | Jeśli problem się stale powtarza, należy zainstalować i zarejestrować nowego agenta uwierzytelniania. I odinstalowywania bieżącej.
+
+>[!IMPORTANT]
+>Agentów uwierzytelniania przekazywanego uwierzytelniania użytkowników usługi Azure AD, sprawdzając poprawność ich nazw użytkowników i haseł w usłudze Active Directory, wywołując [Win32 API funkcji LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx). W rezultacie ustawienie "Do logowania" zostały ustawione w usłudze Active Directory, aby ograniczyć dostęp logowania stacji roboczej, należy dodać serwery hostujące agentów uwierzytelniania przekazywanego do listy "Logowanie do" serwerów. Kończy się niepowodzeniem, w tym celu zablokuje użytkownikom logowanie się do usługi Azure AD.
 
 ## <a name="authentication-agent-installation-issues"></a>Problemy z instalacją agenta uwierzytelniania
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096864"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617221"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -136,7 +136,7 @@ Uwierzytelnianie przekazywane obsługuje żądania logowania użytkownika w nast
 4. Użytkownik musi wprowadzić swoją nazwę użytkownika do **logowania użytkownika** strony, a następnie wybiera **dalej** przycisku.
 5. Użytkownik wprowadza swoje hasło w **logowania użytkownika** strony, a następnie wybiera **logowania** przycisku.
 6. Nazwa użytkownika i hasło są przesyłane do usługi Azure AD usługi STS w żądaniu POST protokołu HTTPS.
-7. Usługa Azure AD usługi STS pobiera kluczy publicznych dla wszystkich agentów uwierzytelniania zarejestrowany w dzierżawie usługi z bazy danych Azure SQL i szyfruje hasło za ich pomocą. 
+7. Usługa Azure AD usługi STS pobiera kluczy publicznych dla wszystkich agentów uwierzytelniania zarejestrowany w dzierżawie usługi z bazy danych Azure SQL i szyfruje hasło za ich pomocą.
     - Generuje "N" zaszyfrowane wartości haseł dla agentów uwierzytelniania "N" zarejestrowany w dzierżawie.
 8. Usługa Azure AD usługi STS umieszcza żądania weryfikacji hasła, która składa się z nazwy użytkownika i wartości zaszyfrowane hasło do kolejki usługi Service Bus, przeznaczony dla Twojej dzierżawy.
 9. Ponieważ zainicjowane agentów uwierzytelniania są trwale dołączona do kolejki usługi Service Bus, pobiera jeden z dostępnych agentów uwierzytelniania żądania weryfikacji hasła.
@@ -145,6 +145,9 @@ Uwierzytelnianie przekazywane obsługuje żądania logowania użytkownika w nast
     - Ten interfejs API jest ten sam interfejs API, który jest używany przez usługi Active Directory Federation Services (AD FS) do logowania użytkowników w federacyjnym scenariuszu logowania.
     - Ten interfejs API zależy od rozdzielczości standardowej procesu w systemie Windows Server do zlokalizowania kontrolera domeny.
 12. Agent uwierzytelniania odbiera wynik z usługi Active Directory, takie jak powodzenie, nazwa użytkownika lub hasło są niepoprawne lub hasło wygasło.
+
+   > [!NOTE]
+   > Jeśli Agent uwierzytelniania zakończy się niepowodzeniem podczas procesu logowania, zupełnie żądanie logowania zostało porzucone. Istnieje nie ręcznie wyłączyć logowania żądań od jednego agenta uwierzytelniania do innego agenta uwierzytelniania serwera lokalnego. Agenci komunikować się tylko w chmurze, a nie ze sobą.
 13. Agent uwierzytelniania przekazuje wynik do tokenu Zabezpieczającego usług AD systemu Azure za pośrednictwem kanału wychodzącego HTTPS uwierzytelnionego wzajemnie za pośrednictwem portu 443. Wzajemne uwierzytelnianie przy użyciu certyfikatu wystawionego wcześniej do agenta uwierzytelniania, podczas rejestracji.
 14. Usługi Azure AD usługi STS sprawdza, czy ten wynik jest skorelowane z określonego żądania logowania w dzierżawie.
 15. Usługa Azure AD usługi STS będzie kontynuowane przy użyciu procedura logowania, zgodnie z konfiguracją. Na przykład jeśli sprawdzenie poprawności hasła zakończyło się pomyślnie, użytkownika może być wezwaniem uwierzytelniania wieloskładnikowego lub przekierowany z powrotem do aplikacji.
@@ -181,7 +184,7 @@ Aby odnowić relacji zaufania agenta uwierzytelniania w usłudze Azure AD:
 
 ## <a name="auto-update-of-the-authentication-agents"></a>Automatyczna aktualizacja agentów uwierzytelniania
 
-Aplikacja aktualizatora automatycznie aktualizuje agenta uwierzytelniania, po wydaniu nowej wersji. Aplikacja nie obsługuje wszystkie żądania weryfikacji hasła dla Twojej dzierżawy. 
+Aplikacja aktualizatora automatycznie aktualizuje agenta uwierzytelniania, po wydaniu nowej wersji (za pomocą poprawki lub ulepszenia wydajności). Aplikacja aktualizatora nie obsługuje wszystkie żądania weryfikacji hasła dla Twojej dzierżawy.
 
 Usługa Azure AD obsługuje nową wersję oprogramowania jako zalogowany **pakietu Instalatora Windows (MSI)**. Plik MSI jest podpisany przy użyciu [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) z SHA256 algorytmu skrótu. 
 
@@ -203,7 +206,7 @@ Aby automatycznie Aktualizuj agenta uwierzytelniania:
     - Uruchamia ponownie usługę Agent uwierzytelniania
 
 >[!NOTE]
->W przypadku wielu agentów uwierzytelniania zarejestrowany w dzierżawie usługi Azure AD nie odnawiać swoje certyfikaty lub je zaktualizować w tym samym czasie. Zamiast tego usługa Azure AD jest stopniowo zapewniające wysoką dostępność żądań logowania.
+>W przypadku wielu agentów uwierzytelniania zarejestrowany w dzierżawie usługi Azure AD nie odnawiać swoje certyfikaty lub je zaktualizować w tym samym czasie. Zamiast tego usługa Azure AD ma jedną pojedynczo, aby zapewnić wysoką dostępność żądań logowania.
 >
 
 

@@ -2,7 +2,7 @@
 title: Podrzędne mechanizmów dla funkcje trwałe - Azure
 description: Jak wywołać aranżacji z mechanizmów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: df4cfd8cdf720dd085c3f14ad518c557f270ffa4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340865"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607670"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Podrzędne aranżacji w funkcje trwałe (usługa Azure Functions)
 

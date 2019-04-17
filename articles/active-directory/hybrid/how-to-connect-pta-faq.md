@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dadeda8bb270689530a34c3e36d33e439ea9e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180389"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616598"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Często zadawane pytania
 
@@ -50,6 +50,10 @@ Tak, obsługuje uwierzytelnianie przekazywane `Alternate ID` jako nazwa użytkow
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizacja skrótów haseł działa jako rezerwowa metoda uwierzytelniania przekazywanego?
 
 Nie. Uwierzytelnianie przekazywane _nie_ automatycznego trybu failover na synchronizację skrótów haseł. Aby uniknąć błędów logowania użytkownika, należy skonfigurować uwierzytelnianie przekazujących [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Co się stanie po przełączeniu się z synchronizacji skrótów haseł do uwierzytelniania przekazywanego?
+
+Korzystając z programu Azure AD Connect do przełączania metodę logowania z synchronizacji skrótów haseł do uwierzytelniania przekazywanego, uwierzytelniania przekazywanego staje się podstawową metodą logowania dla użytkowników w domenach zarządzanych. Należy pamiętać, że wartości skrótów haseł wszystkich użytkowników, które wcześniej zostały zsynchronizowane przez synchronizację skrótów haseł pozostają zapisane w usłudze Azure AD.
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Można zainstalować [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) łącznika na tym samym serwerze co Agent uwierzytelniania przekazywanego?
 

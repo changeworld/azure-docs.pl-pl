@@ -36,7 +36,7 @@ items:
       maintainContext: true
   - name: Programowanie
     items:
-    - name: Korzystanie z zestawu Apache HBase .NET SDK
+    - name: Korzystanie z zestawu Apache HBase SDK dla środowiska .NET
       href: apache-hbase-rest-sdk.md
     - name: Programowanie aplikacji Java
       href: apache-hbase-build-java-maven-linux.md
@@ -89,21 +89,9 @@ items:
       maintainContext: true
   - name: Zarządzanie
     items:
-    - name: Tworzenie klastrów systemu Linux
+    - name: Tworzenie klastrów usługi HDInsight
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
-      - name: Korzystanie z programu Azure PowerShell
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-        maintainContext: true
-      - name: Korzystanie z programu cURL i interfejsu API REST platformy Azure
-        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-        maintainContext: true
-      - name: Korzystanie z zestawu SDK dla platformy .NET
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
-      - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-        maintainContext: true
       - name: Korzystanie z witryny Azure Portal
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
@@ -111,16 +99,39 @@ items:
         displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
+      - name: Korzystanie z zestawu SDK środowiska .NET
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: Korzystanie z zestawu SDK dla środowiska Python
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: Korzystanie z zestawu SDK języka Java
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
+      - name: Korzystanie z programu Azure PowerShell
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: Korzystanie z programu cURL i interfejsu API REST platformy Azure
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+        maintainContext: true
+      - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+        maintainContext: true
+      - name: Tworzenie klastrów na żądanie
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+        maintainContext: true
       maintainContext: true
     - name: Tworzenie klastrów na żądanie
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Zarządzanie klastrami Apache Hadoop
+    - name: Zarządzanie klastrami usługi HDInsight
       href: ../hdinsight-administer-use-portal-linux.md
       items:
-      - name: Korzystanie z zestawu SDK dla platformy .NET
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: Korzystanie z zestawu SDK środowiska .NET
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+      - name: Korzystanie z zestawu SDK dla środowiska Python
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+      - name: Korzystanie z zestawu SDK języka Java
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+      - name: Korzystanie z zestawu SDK języka Go (wersja zapoznawcza)
+        href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
       - name: Korzystanie z programu Azure PowerShell
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
@@ -258,12 +269,12 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/az.hdinsight
-  - name: Zestaw SDK .NET
+  - name: Zestaw SDK środowiska .NET
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Zestaw SDK dla języka Python
+  - name: Zestaw SDK dla środowiska Python
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Zestaw SDK Java
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
+  - name: Zestaw SDK języka Java
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
   - name: Zestaw SDK dla języka Go
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
@@ -307,9 +318,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 39bc984d593f9026a3f6db85da8b8d1b80038335
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 286fd982c110e71b8e9bb454a6ad6a3068f8a4bf
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847031"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578972"

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369980"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606841"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania
 
@@ -93,98 +93,9 @@ Dane wyjściowe:
 
 Ten przykład przedstawia dane wyjściowe skryptu wysyłane do strumienia wyjściowego STDOUT. Konteneryzowane zadania podrzędne, jednak może być zamiast tego zapisują swoje dane wyjściowe do trwałego magazynu na potrzeby pobierania nowsze. Na przykład, aby [udziału plików platformy Azure](container-instances-mounting-azure-files-volume.md).
 
-## <a name="manually-stop-and-start-a-container-group"></a>Ręcznie uruchamiać i zatrzymywać grupy kontenerów
-
-Niezależnie od zasady ponownego uruchamiania skonfigurowane dla [grupy kontenerów](container-instances-container-groups.md), możesz chcieć ręcznie zatrzymywać ani uruchamiać grupy kontenerów.
-
-* **Zatrzymaj** - uruchomionej grupy kontenerów można ręcznie zatrzymać w dowolnym momencie — na przykład za pomocą [az container stop] [ az-container-stop] polecenia. W przypadku niektórych obciążeń kontenerów może chcesz zatrzymać grupy kontenerów po określonym przedziale czasu, aby zaoszczędzić na kosztach. 
-
-  Zatrzymywanie grupy kontenerów kończy działanie i jest odtwarzana kontenerów w grupie; nie pozwala zachować stan kontenera. 
-
-* **Rozpocznij** — w przypadku grupy kontenerów jest zatrzymana,-albo ponieważ kontenery został przerwany w ich własnych lub ręcznie zatrzymana grupy — możesz użyć [kontenera start interfejsu API](/rest/api/container-instances/containergroups/start) lub ręcznie uruchom kontenery witrynie Azure portal Grupa. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
-
-  Uruchamianie grupy kontenerów rozpoczyna nowe wdrożenie z taką samą konfiguracją kontenera. Ta akcja ułatwia szybkie ponowne zastosowanie konfiguracji grupy znanych kontenera, który działa zgodnie z oczekiwaniami. Nie trzeba utworzyć nową grupę kontenerów do uruchomienia tego samego obciążenia.
-
-* **Uruchom ponownie** — możesz ponownie uruchomić grupy kontenerów jest uruchomiona — na przykład za pomocą [ponownego uruchomienia kontenera az] [ az-container-restart] polecenia. Ta akcja powoduje ponowne uruchomienie wszystkich kontenerów w grupie kontenerów. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
-
-  Ponowne uruchamianie grupy kontenerów jest przydatne w przypadku, gdy chcesz rozwiązać problem z wdrożenia. Na przykład jeśli to ograniczenie zasobów zapobiega pomyślnemu kontenerów, ponowne uruchamianie grupy może rozwiązać problem.
-
-Po ręcznie uruchom lub uruchom ponownie grupę kontenerów, przebiegów grupy kontenera zgodnie ze skonfigurowanym ponownie uruchomić zasad.
-
-## <a name="configure-containers-at-runtime"></a>Konfigurowanie kontenerów w czasie wykonywania
-
-Podczas tworzenia wystąpienia kontenera można ustawić jego **zmienne środowiskowe**, jak również określić niestandardowy **wiersza polecenia** do wykonania, gdy kontener jest uruchomiona. Te ustawienia w zadaniach wsadowych służy do przygotowania każdego kontenera za pomocą konfiguracji specyficznej dla zadania.
-
-## <a name="environment-variables"></a>Zmienne środowiskowe
-
-Ustawianie zmiennych środowiskowych w kontenerze zapewnienie dynamiczną konfigurację aplikację lub skrypt uruchamiany przez kontener. Jest to podobne do `--env` argument wiersza polecenia, aby `docker run`.
-
-Na przykład można zmodyfikować zachowanie skryptów w kontenerze przykład podczas tworzenia wystąpienia kontenera, określając następujące zmienne środowiskowe:
-
-*NumWords*: Liczba słów wysyłane do strumienia wyjściowego STDOUT.
-
-*Element MinLength*: Minimalna liczba znaków w słowie na jej do zliczenia. Większa liczba zostanie podana ignoruje popularne wyrazy, takie jak "z" i "".
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-Określając `NumWords=5` i `MinLength=8` zmiennych środowiskowych kontenera, dzienniki kontenerów powinna zostać wyświetlona różne wyniki. Gdy stan kontenera jest wyświetlany jako *zwolniony* (Użyj `az container show` sprawdzić jego stan), wyświetlać jej dzienniki, aby zobaczyć nowe dane wyjściowe:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-Dane wyjściowe:
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-
-
-## <a name="command-line-override"></a>Zastąpienie wiersza polecenia
-
-Wiersza polecenia można określić podczas tworzenia wystąpienia kontenera, aby zastąpić wiersz polecenia wbudowanymi w obrazie kontenera. Jest to podobne do `--entrypoint` argument wiersza polecenia, aby `docker run`.
-
-Na przykład masz kontener przykład analizowania tekstu innego niż *osady* , określając inną wiersza polecenia. Skrypt języka Python, wykonywane przez kontener, *wordcount.py*akceptuje jako argument adresu URL i będą przetwarzać zawartość tej strony, zamiast domyślnego.
-
-Na przykład, aby określić 3 pierwszych pięć wyrazów w *Romeo i Juliet*:
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-Ponownie gdy kontener będzie *zwolniony*, aby wyświetlić dane wyjściowe, wyświetlanie dzienników kontenera:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-Dane wyjściowe:
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="persist-task-output"></a>Utrwalanie danych wyjściowych zadania
+Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za pomocą kilku kontenerów mogą korzystać z niestandardowych [zmienne środowiskowe](container-instances-environment-variables.md) lub [wiersze polecenia](container-instances-start-command.md) w czasie wykonywania.
 
 Aby uzyskać więcej informacji na temat sposobu utrwalanie danych wyjściowych z kontenerów, które zostało ukończone, zobacz [instalowania udziału plików platformy Azure przy użyciu usługi Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
@@ -194,7 +105,5 @@ Aby uzyskać więcej informacji na temat sposobu utrwalanie danych wyjściowych 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

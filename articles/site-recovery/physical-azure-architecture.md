@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 9476713bdca185fd84289fca3cf7aa304ad3f9fb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311428"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616870"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Serwer fizyczny do architektury odzyskiwania po awarii platformy Azure
 
@@ -25,7 +25,7 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane na pot
 
 **Składnik** | **Wymaganie** | **Szczegóły**
 --- | --- | ---
-**Azure** | Subskrypcja platformy Azure, konta usługi Azure storage i sieci platformy Azure. | Replikowane dane z lokalnych maszyn wirtualnych są przechowywane na koncie magazynu. Maszyny wirtualne platformy Azure są tworzone z replikowanych danych, po przejściu ze środowiska lokalnego do platformy Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
+**Azure** | Subskrypcja platformy Azure i siecią platformy Azure. | Replikowane dane ze środowiska lokalnego maszyny fizyczne są przechowywane na platformie Azure usługa managed disks. Maszyny wirtualne platformy Azure są tworzone z replikowanych danych, po przejściu ze środowiska lokalnego do platformy Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
 **Serwer konfiguracji** | Pojedynczy on-premises komputer fizyczny lub maszyny Wirtualnej VMware jest wdrażana do uruchomienia wszystkie lokalne składniki usługi Site Recovery. Maszyna wirtualna działa serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | Serwer konfiguracji służy do koordynowania komunikacji między środowiskiem lokalnym i platformą Azure oraz do zarządzania replikacją danych.
  **Serwer przetwarzania**:  | Instalowany domyślnie wraz z serwerem konfiguracji. | Działa jako brama replikacji. Odbiera dane replikacji, optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do usługi Azure Storage.<br/><br/> Serwer przetwarzania instaluje także usługę mobilności na serwerach, które mają być replikowane.<br/><br/> Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.
  **Główny serwer docelowy** | Instalowany domyślnie wraz z serwerem konfiguracji. | Służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.<br/><br/> W przypadku dużych wdrożeń możesz dodać dodatkowe, oddzielny główny serwer docelowy do powrotu po awarii.

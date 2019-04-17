@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838888"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523600"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
@@ -77,7 +77,7 @@ Aby skonfigurować środowisko nauki o danych platformy Azure, wykonaj następuj
 **Aprowizowanie wystąpienia usługi Azure SQL data Warehouse.**
 Postępuj zgodnie z dokumentacją pod adresem [utworzyć SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) do aprowizacji wystąpienia SQL Data Warehouse. Upewnij się, możesz wprowadzać notacji w następujących poświadczeń SQL Data Warehouse, które będą używane w kolejnych krokach.
 
-* **Nazwa serwera**: <server Name>. database.windows.net
+* **Nazwa serwera**: \<server Name >. database.windows.net
 * **Nazwa SQLDW (baza danych)**
 * **Nazwa użytkownika**
 * **Hasło**
