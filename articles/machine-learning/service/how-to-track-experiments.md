@@ -1,7 +1,7 @@
 ---
 title: Rejestruj metryki podczas wysyłanie przebiegów szkoleniowych
 titleSuffix: Azure Machine Learning service
-description: Można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu.
+description: Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu. Można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494631"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609471"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
 
-W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule Dowiedz się, jak dodawanie rejestrowania do skryptu szkolenia, przesłać przebieg eksperymentu, monitorować działanie i wyświetlić wyniki przebiegu.
+W tym artykule Dowiedz się, jak dodawanie rejestrowania do skryptu szkolenia, przesłać przebieg eksperymentu, monitorować działanie i wyświetlić wyniki przebiegu w usłudze Azure Machine Learning. Poszerz procesu tworzenia modeli, śledzenie eksperymenty i metryk monitorowania. 
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
@@ -389,7 +389,7 @@ Przykład 2: Model nadmiernego confident ![nadmiernego confident modelu](./media
 
 ### <a name="regression"></a>Regresji
 Dla każdego modelu regresji kompilowania przy użyciu zautomatyzowanych maszyny możliwości usługi Azure Machine Learning uczenia, możesz zobaczyć następujące wykresy: 
-+ [Przewidywane programu vs. True](#pvt)
++ [Przewidywane programu vs. Wartość true](#pvt)
 + [Histogram reszty](#histo)
 
 <a name="pvt"></a>
@@ -422,9 +422,9 @@ Znaczenie dla funkcji daje wynik, który wskazuje opowiadają została każda fu
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [How-to-use-azureml/Training/Train-WITHIN-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [How-to-use-azureml/Training/Train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -5,18 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904903"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606892"
 ---
-# <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
+# <a name="set-environment-variables-in-container-instances"></a>Ustawianie zmiennych środowiskowych w container instances
 
-Ustawianie zmiennych środowiskowych w usługi container instances umożliwia przekazanie dynamiczną konfigurację aplikację lub skrypt uruchamiany przez kontener. Aby ustawić zmienne środowiskowe w kontenerze, należy je określić podczas tworzenia wystąpienia kontenera. Można ustawić zmienne środowiskowe, podczas uruchamiania kontenera za pomocą [wiersza polecenia platformy Azure](#azure-cli-example), [programu Azure PowerShell](#azure-powershell-example)i [witryny Azure portal](#azure-portal-example).
+Ustawianie zmiennych środowiskowych w usługi container instances umożliwia przekazanie dynamiczną konfigurację aplikację lub skrypt uruchamiany przez kontener. Jest to podobne do `--env` argument wiersza polecenia, aby `docker run`. 
+
+Aby ustawić zmienne środowiskowe w kontenerze, należy je określić podczas tworzenia wystąpienia kontenera. W tym artykule przedstawiono przykłady Ustawianie zmiennych środowiskowych podczas uruchamiania kontenera za pomocą [wiersza polecenia platformy Azure](#azure-cli-example), [programu Azure PowerShell](#azure-powershell-example)i [witryny Azure portal](#azure-portal-example). 
 
 Na przykład po uruchomieniu programu Microsoft [aci wordcount] [ aci-wordcount] obraz kontenera, jego zachowanie można zmienić, określając następujące zmienne środowiskowe:
 
@@ -241,7 +243,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za pomocą kilku kontenerów mogą korzystać z niestandardowych zmiennych środowiskowych w czasie wykonywania. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [uruchamianie zadań konteneryzowanych w usłudze Azure Container Instances](container-instances-restart-policy.md).
+Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za pomocą kilku kontenerów mogą korzystać z niestandardowych zmiennych środowiskowych w czasie wykonywania. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

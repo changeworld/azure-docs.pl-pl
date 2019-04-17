@@ -15,22 +15,18 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547712"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607776"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji języka Python w usłudze App Service dla systemu Linux (wersja zapoznawcza)
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym przewodniku Szybki Start przedstawiono sposób wdrażania aplikacji w języku Python na podstawie wbudowanego obrazu Python (wersja zapoznawcza) w usłudze App Service w systemie Linux przy użyciu [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-
-Kroki podane w tym artykule możesz wykonać przy użyciu komputera z systemem Mac, Windows lub Linux.
+W tym przewodniku Szybki Start wdrażanie prostej aplikacji Python [usługi App Service w systemie Linux](app-service-linux-intro.md), która zapewnia wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Użyj interfejsu wiersza polecenia platformy Azure ( [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)) za pomocą interaktywnych, oparte na przeglądarce usługi Azure Cloud Shell, dlatego możesz wykonać kroki użyj komputera Mac, Linux lub Windows.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-world-in-browser.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,6 +34,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 * <a href="https://www.python.org/downloads/" target="_blank">Instalacja języka Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przed przystąpieniem do wykonywania.
 
 ## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 
@@ -174,10 +171,10 @@ return "Hello Azure!"
 
 Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
 
-Teraz aplikacja zostanie ponownie wdrożona. Zastąp `<app-name>` swoją aplikacją.
+Ponowne wdrażanie aplikacji za pomocą [ `az webapp up` ](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) polecenia. Wstaw nazwę aplikacji `<app-name>`i określ lokalizację `<location-name>` (przy użyciu jednej z wartości podanych w [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) polecenie).
 
 ```bash
-az webapp up -n <app-name>
+az webapp up -n <app-name> -l <location-name>
 ```
 
 Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w kroku **przechodzenia do aplikacji**, a następnie odśwież stronę.

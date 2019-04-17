@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: b8e5c5b14ecdbc63daf200b7d11e755822cd063b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257012"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608014"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Twoje konto użytkownika dla notesów usługi Azure
 
@@ -41,6 +41,9 @@ Konta Microsoft są używane do logowania się do dowolnej liczby produktów i u
 Jeśli wiesz, wybierz opcję **utworzyć jeden** polecenie w wierszu konta. Można utworzyć nowe konto Microsoft, przy użyciu dowolnego adresu e-mail od dowolnego dostawcy.
 
 ![Polecenie, aby utworzyć nowe konto Microsoft](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> Jeśli spróbujesz utworzyć nowe konto, za pomocą adresu e-mail, który ma już konto skojarzone z nim, może zostać wyświetlony komunikat, "nie można Zarejestruj się tutaj przy użyciu służbowego lub szkolny adres e-mail. Użyj osobistego adresu e-mail, takiego jak Gmail lub Yahoo!, lub uzyskaj nowy adres e-mail programu Outlook". W takim przypadku spróbuj zalogować się bez tworzenia nowego konta służbowego adresu e-mail.
 
 Dla kont dzieci dostęp do notesów usługi Azure jest blokowany domyślnie. Logowanie się przy użyciu konta dziecka wyświetla błąd pokazany poniżej:
 

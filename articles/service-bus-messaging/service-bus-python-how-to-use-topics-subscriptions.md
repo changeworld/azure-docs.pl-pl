@@ -12,27 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: a12288de2f9a7682fb433dd0d5c7905cc76c12b9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351666"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607079"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka Python
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym artykule opisano sposób używania tematów i subskrypcji usługi Service Bus. Przykłady są zapisywane w języku Python i użyj [pakiet zestawu Azure Python SDK][Azure Python package]. Omówione scenariusze obejmują **tworzenie tematów i subskrypcji**, **tworzenie filtrów subskrypcji**, **wysyłanie komunikatów do tematu**, **odbierania komunikaty z subskrypcji**, i **usuwanie tematów i subskrypcji**. Aby uzyskać więcej informacji o tematach i subskrypcjach, zobacz [następne kroki](#next-steps) sekcji.
+W tym artykule opisano sposób używania tematów i subskrypcji usługi Service Bus. Przykłady są zapisywane w języku Python i użyj [pakiet zestawu Azure Python SDK][Azure Python package]. Omówione scenariusze obejmują:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Tworzenie tematów i subskrypcji 
+- Tworzenie filtrów subskrypcji 
+- Wysyłanie komunikatów do tematu 
+- Odbieranie komunikatów z subskrypcji
+- Usuwanie tematów i subskrypcji
 
-> [!NOTE] 
-> Jeśli potrzebujesz do zainstalowania języka Python lub [pakiet języka Python Azure][Azure Python package], zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md).
+## <a name="prerequisites"></a>Wymagania wstępne
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do utworzenia usługi Service Bus **przestrzeni nazw** i Uzyskaj **parametry połączenia**.
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+    > [!NOTE]
+    > Utworzysz **tematu** i **subskrypcji** do tematu przy użyciu **Python** w tym przewodniku Szybki Start. 
+3. Zainstaluj [pakiet języka Python Azure][Azure Python package]. Zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md).
 
 ## <a name="create-a-topic"></a>Tworzenie tematu
 

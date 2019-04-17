@@ -5,17 +5,16 @@ services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: 700b58723073e425c0587665ccd884932837dcbf
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 05c84f91c960bbcf7383cd2164289c8398f8dc91
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501080"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607759"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki start: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
 W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty do i z kolejki usługi Service Bus, używając witryny [Azure Portal][Azure portal] do utworzenia przestrzeni nazw do przesyłania komunikatów oraz kolejki w ramach tej przestrzeni nazw, a także uzyskać poświadczenia autoryzacji do tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z tej kolejki przy użyciu [biblioteki platformy .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
@@ -72,7 +71,7 @@ Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez prz
 
 ### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 
-Nazwa ciągu i kolejki połączenia są przekazywane do `Main()` metodę jako argumenty wiersza polecenia. `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
+Nazwa ciągu i kolejki połączenia są przekazywane do `Main()` metodę jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
 
 ```csharp
 static void Main(string[] args)
@@ -207,7 +206,7 @@ W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby w
 > [Wysyłanie i odbieranie komunikatów](service-bus-dotnet-get-started-with-queues.md)
 
 
-[bezpłatne konto na platformie Azure]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 

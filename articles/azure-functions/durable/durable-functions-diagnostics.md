@@ -2,7 +2,7 @@
 title: Diagnostyka funkcje trwałe - Azure
 description: Dowiedz się, jak diagnozować problemy z rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436252"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608490"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka funkcje trwałe na platformie Azure
 

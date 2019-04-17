@@ -9,23 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f72e98d8874a5a5dc94deb882affdf66388b13c9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 82c438ea246ba18fa7dac2281d68a3ea7ba41db8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548529"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617720"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Kontrola dostępu oparta na rolach (RBAC) dla konta usługi Media Services
 
-Obecnie usługa Azure Media Services Niezdefiniowany żadnych szczególnych ról niestandardowych do usługi. Klienci mogą użyć wbudowanych ról **właściciela** lub **Współautor** do uzyskania pełnego dostępu do konta usługi Media Services. Jest główną różnicą między tymi rolami: **właściciela** można kontrolować, kto ma dostęp do zasobów i **Współautor** nie. Konto czytnika wbudowanych tylko ma dostęp do odczytu do konta usługi Media Services. 
+Obecnie usługa Azure Media Services nie definiuje określonych ról niestandardowych do usługi. Aby uzyskać pełny dostęp do konta usługi Media Services, klientów można użyć wbudowanych ról **właściciela** lub **Współautor**. Jest główną różnicą między tymi rolami: **właściciela** można kontrolować, kto ma dostęp do zasobów i **Współautor** nie. Wbudowane **czytnika** roli również mogą być używane, ale użytkownik lub aplikacja będzie mieć tylko dostęp do odczytu do interfejsy API usług Media Services. 
 
 ## <a name="design-principles"></a>Zasady projektowania
 
-Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. interfejsy API w wersji 3 nie zwracają wpisów tajnych lub poświadczeń na **uzyskać** lub **listy** operacji. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Użytkownik musi wywołać metodę oddzielnej akcji służącej do pobrania wpisów tajnych lub poświadczenia. **Czytnika** roli nie można wywołać operacji, więc nie można wywoływać operacje, takie jak ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas, StreamingLocator.ListContentKeys,. Masz oddzielne działania umożliwia ustawianie bardziej szczegółowych uprawnień zabezpieczeń RBAC do roli niestandardowej, w razie potrzeby.
+Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. interfejsy API w wersji 3 nie zwracają wpisów tajnych lub poświadczeń na **uzyskać** lub **listy** operacji. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Użytkownik musi wywołać metodę oddzielnej akcji służącej do pobrania wpisów tajnych lub poświadczenia. **Czytnika** roli nie można wywołać operacji, takich jak ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas, StreamingLocator.ListContentKeys,. Masz oddzielne działania umożliwia ustawianie bardziej szczegółowych uprawnień zabezpieczeń RBAC do roli niestandardowej, w razie potrzeby.
 
 Aby wyświetlić listę Media Services obsługuje operacje, należy wykonać:
 

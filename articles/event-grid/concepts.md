@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474357"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617601"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
@@ -40,7 +40,7 @@ Aby uzyskać informacji dotyczących implementowania dowolnego z obsługiwanych 
 
 Temat usługi event grid udostępnia punkt końcowy, w którym źródło wysyła zdarzenia. Wydawca tworzy tematu usługi event grid i decyduje, czy źródło zdarzenia musi temat jeden lub więcej niż jeden temat. Temat jest używany dla kolekcji powiązanych zdarzeń. Aby reagować na wybranych typów zdarzeń, subskrybenci zdecydować, które tematy, aby subskrybować.
 
-System tematy dotyczą wbudowanych udostępnianego przez usługi platformy Azure. Nie widzisz tematów systemu w ramach subskrypcji platformy Azure, ponieważ wydawca jest właścicielem tematy, ale można subskrybować ich. Aby zamówić subskrypcję, możesz podać informacje o zasobie, że chcesz odbierać zdarzenia z. Tak długo, jak długo mają dostęp do zasobu, możesz zasubskrybować ze zdarzeniami.
+System tematy dotyczą wbudowanych udostępnianego przez usługi platformy Azure. Nie widzisz tematów systemu w ramach subskrypcji platformy Azure, ponieważ wydawca jest właścicielem tematy, ale można subskrybować ich. Aby zamówić subskrypcję, możesz podać informacje o zasobie, że chcesz odbierać zdarzenia z. Tak długo, jak długo użytkownik ma dostęp do zasobu, możesz zasubskrybować ze zdarzeniami.
 
 Tematy niestandardowe są tematy innych firm i aplikacji. Podczas tworzenia lub dostępem do tematu niestandardowego, zobaczysz tego niestandardowego tematu, w ramach subskrypcji.
 

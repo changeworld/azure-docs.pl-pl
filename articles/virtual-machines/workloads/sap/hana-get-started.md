@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d46e2047debe5546c6d36f245ae076cec6f73a3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001707"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618128"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Szybki start: Ręczna instalacja jednego wystąpienia oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -269,7 +269,7 @@ Przed rozpoczęciem instalacji SAP, upewnij się, że obejmują nazwy hostów i 
 
 ### <a name="the-etcfstab-file"></a>Plik/etc/fstab
 
-Warto dodać **nofail** parametrów w pliku fstab. Dzięki temu, jeśli coś pójdzie nie tak z dyskami maszyny Wirtualnej nie Odłóż procesu rozruchu. Należy jednak pamiętać, że nie mogą być dostępne dodatkowe miejsce na dysku i procesów może zapełnić głównego systemu plików. Jeśli brakuje /hana, nie można uruchomić oprogramowanie SAP HANA.
+Warto dodać **nofail** parametrów w pliku fstab. Dzięki temu, jeśli coś pójdzie nie tak z dyskami, maszyna wirtualna przestanie odpowiadać procesu rozruchu. Należy jednak pamiętać, że nie mogą być dostępne dodatkowe miejsce na dysku i procesów może zapełnić głównego systemu plików. Jeśli brakuje /hana, nie można uruchomić oprogramowanie SAP HANA.
 
 ![Dodaj parametr nofail do pliku fstab](./media/hana-get-started/image000c.jpg)
 
