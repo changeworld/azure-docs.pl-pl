@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520145"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617754"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>Klasyfikacja obciążenia usługa SQL Data Warehouse (wersja zapoznawcza)
 
 W tym artykule opisano proces klasyfikacji obciążenia usługa SQL Data Warehouse przypisywania klasy zasobów i znaczenie na przychodzące żądania.
 
 > [!Note]
-> Klasyfikacja obciążenia jest dostępny na Gen2 magazynu danych SQL.
+> Klasyfikacja obciążenia jest dostępna w wersji zapoznawczej na Gen2 magazynu danych SQL. Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji.  Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem.  Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom wybierz @@version po podłączeniu do wystąpienia usługi SQL Data Warehouse.
 
 ## <a name="classification"></a>Klasyfikacja
 
