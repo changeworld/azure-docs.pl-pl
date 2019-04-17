@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014405"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616360"
 ---
-# <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorowanie i rozwiązywanie problemów ze strony HANA
+# <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorowanie i rozwiązywanie problemów ze strony oprogramowania HANA
 
 Aby skutecznie analizować problemy związane z platformą SAP HANA na platformie Azure (duże wystąpienia), warto zawęzić główną przyczynę problemu. SAP opublikował dużą ilość dokumentację, aby pomóc.
 
@@ -108,7 +108,7 @@ Zapoznaj się [SAP HANA rozwiązywania problemów: Wydajność sieci i problemy 
 
 ## <a name="storage"></a>Magazyn
 
-Z perspektywy użytkownika końcowego aplikacji (system jako całość) działa wolno, nie odpowiada lub nawet może wydawać się, aby zawiesić, jeśli występują problemy z wydajnością operacji We/Wy. W **woluminów** kartę w systemie SAP HANA Studio można zobaczyć dołączone woluminy, a woluminy są używane przez poszczególne usługi.
+Z perspektywy użytkownika końcowego aplikacji (system jako całość) działa wolno, nie odpowiada lub nawet może wydawać się przestanie odpowiadać, jeśli występują problemy z wydajnością operacji We/Wy. W **woluminów** kartę w systemie SAP HANA Studio można zobaczyć dołączone woluminy, a woluminy są używane przez poszczególne usługi.
 
 ![Na karcie woluminy w systemie SAP HANA Studio widać, dołączone woluminy, a woluminy są używane przez poszczególne usługi](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 

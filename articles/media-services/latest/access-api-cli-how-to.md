@@ -10,25 +10,25 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 1b872c5c2ff0f581300a843650d7434c7c526c84
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8374e4c49012a2c49de41001be0fdb30f9151332
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545623"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617839"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Interfejs API usług Azure Media dostępu przy użyciu wiersza polecenia platformy Azure
  
-Uwierzytelnianie jednostki usługi Azure AD należy używać, aby nawiązać połączenie z interfejsem API usługi Azure Media Services. Twoja aplikacja potrzebuje do wysłania żądania tokenu usługi Azure AD, która ma następujące parametry:
+Aby połączyć się z interfejsem API usługi Azure Media Services, należy użyć uwierzytelniania jednostki usługi Azure AD, aplikacja musi żądać tokenu usługi Azure AD, która ma następujące parametry:
 
 * Punkt końcowy dzierżawy usługi Azure AD
 * Identyfikator URI zasobu usługi Media Services
 * Identyfikator URI dla usługi Media Services REST zasobu
 * Wartości aplikacji w usłudze Azure AD: identyfikator klienta oraz klucz tajny klienta
 
-Aby uzyskać więcej informacji, zobacz [opracowywanie zawartości przy użyciu usługi Media Services v3 API](media-services-apis-overview.md).
+Aby uzyskać szczegółowe informacje na ten temat, zobacz [uzyskiwania dostępu do usługi Media Services v3 API](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 W tym artykule pokazano, jak utworzyć jednostkę usługi aplikacji Azure AD i usługi i pobierają wartości, które są wymagane do dostępu do zasobów usługi Azure Media Services za pomocą wiersza polecenia platformy Azure.
 

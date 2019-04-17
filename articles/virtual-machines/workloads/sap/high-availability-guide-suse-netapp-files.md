@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662374"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617771"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP
 
@@ -87,7 +87,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
 * [Rozszerzenie o wysokiej dostępności SUSE 12 z dodatkiem SP3 — informacje o wersji][suse-ha-12sp3-relnotes]
 * [Aplikacje środowiska SAP NetApp na Microsoft Azure przy użyciu usługi Azure Files NetApp][anf-sap-applications-azure]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wysoka availability(HA) usługi centralne SAP Netweaver wymaga magazynu udostępnionego.
 Aby to osiągnąć w systemie SUSE Linux do tej pory było konieczne tworzenie oddzielnych klastra systemu plików NFS o wysokiej dostępności. 
@@ -166,14 +166,11 @@ Rozważając usługi Azure Files NetApp środowiska SAP NetWeaver w architekturz
 
 - Pula minimalnej pojemności to 4 TiB. Rozmiar pojemności w puli musi być wielokrotności 4 TiB.
 - Minimalna wielkość jest 100 GiB
-- Usługa Azure Files NetApp i wszystkich maszyn wirtualnych, w której zostanie zainstalowany usługi Azure Files NetApp woluminów muszą być w tej samej sieci wirtualnej platformy Azure. [Wirtualne sieci równorzędne](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) nie jest jeszcze obsługiwany przez usługi Azure Files NetApp.
+- Usługa Azure Files NetApp i wszystkich maszyn wirtualnych, w której zostanie zainstalowany woluminy usługi Azure Files NetApp, muszą być w tej samej sieci wirtualnej platformy Azure lub w [nawiązać komunikacji równorzędnej między sieciami wirtualnymi](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) w tym samym regionie. Dostępu plików NetApp na platformie Azure za pośrednictwem wirtualnej sieci równorzędnej w tym samym regionie jest teraz obsługiwane. Dostępu NetApp na platformie Azure za pośrednictwem globalnej komunikacji równorzędnej nie jest jeszcze obsługiwana.
 - Wybranej sieci wirtualnej musi mieć podsieć delegować domenę do usługi Azure Files NetApp.
 - Usługa Azure Files NetApp aktualnie obsługuje tylko NFSv3 
 - Usługa Azure Files NetApp oferuje [Eksportuj zasady](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): dozwolone klientów, można kontrolować typ dostępu (Odczyt i zapis, tylko do odczytu itp.). 
 - Funkcja Azure plików NetApp nie jest strefa pamiętać jeszcze. Obecnie funkcji usługi Azure Files NetApp nie jest wdrożona w wszystkich stref dostępności w regionie platformy Azure. Należy pamiętać o potencjalny wpływ opóźnienia w niektórych regionach platformy Azure. 
-
-   > [!NOTE]
-   > Należy pamiętać, że usługi Azure Files NetApp nie obsługuje jeszcze komunikacji równorzędnej sieci wirtualnej. Wdróż maszyny wirtualne i usługi Azure Files NetApp woluminy w tej samej sieci wirtualnej.
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Ręczne wdrażanie maszyn wirtualnych systemu Linux za pomocą witryny Azure portal
 
@@ -574,6 +571,8 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 9. **[1]**  Utworzenie zasobów klastra SAP
 
+Jeśli przy użyciu architektury serwera 1 umieścić w kolejce (ENSA1), zdefiniuj zasoby w następujący sposób:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   SAP wprowadzono obsługę umieścić serwer 2, w tym replikacji od SAP NW 7.52. Począwszy od 1809 platformy ABAP umieścić serwer 2 jest instalowany domyślnie. Zobacz SAP Uwaga [2630416](https://launchpad.support.sap.com/#/notes/2630416) obsługi serwera 2 umieścić w kolejce.
+Jeśli przy użyciu architektury serwera 2 umieścić w kolejce ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), zdefiniuj zasoby w następujący sposób:
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   Jeśli uaktualnienia ze starszej wersji, a przełączanie umieścić serwer 2, patrz Uwaga sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Upewnij się, że kondycja klastra jest ok i że wszystkie zasoby są uruchamiane. Nie jest to ważne w węźle, które zasoby są uruchomione.
 
@@ -1051,7 +1079,7 @@ Następujące testy są kopią przypadków testowych w [najlepszych praktyk prze
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Utworzenie blokady umieścić w kolejce za przykład Edycja użytkownika su01 transakcji. Uruchom następujące polecenia jako < sapsid\>adm w węźle, w którym jest uruchomione wystąpienie ASCS. Polecenia spowoduje zatrzymanie wystąpienia ASCS, a następnie uruchom go ponownie. Blokady umieścić powinien zostać utracone w tym teście.
+   Utworzenie blokady umieścić w kolejce za przykład Edycja użytkownika su01 transakcji. Uruchom następujące polecenia jako < sapsid\>adm w węźle, w którym jest uruchomione wystąpienie ASCS. Polecenia spowoduje zatrzymanie wystąpienia ASCS, a następnie uruchom go ponownie. Jeśli przy użyciu architektury serwera 1 umieścić w kolejce, blokady umieścić oczekuje się, utracone w tym teście. Jeśli przy użyciu architektury serwera 2 umieścić w kolejce, umieścić w kolejce zostaną zachowane. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ Następujące testy są kopią przypadków testowych w [najlepszych praktyk prze
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   Blokady umieścić w kolejce z transakcji su01 powinny zostać utracone, a serwer zaplecza zostało zresetowane. Stan zasobu po przeprowadzeniu testu:
+   Zablokuj umieścić w kolejce elementu su01 transakcji powinien mieć utraty lub, jeśli przy użyciu architektury replikacji 1 serwer umieścić w kolejce i zaplecza zostało zresetowane. Stan zasobu po przeprowadzeniu testu:
 
    <pre><code>
     Resource Group: g-QAS_ASCS

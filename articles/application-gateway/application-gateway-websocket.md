@@ -1,18 +1,18 @@
 ---
 title: Obsługa protokołu WebSocket w usłudze Azure Application Gateway | Dokumentacja firmy Microsoft
 description: Ta strona zawiera omówienie obsługi protokołu WebSocket bramy aplikacji.
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168123"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606909"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Omówienie obsługi protokołu WebSocket w usłudze Application Gateway
 
@@ -32,7 +32,7 @@ Aby ustanowić połączenie WebSocket, określonych uzgadnianie oparty na protok
 
 ### <a name="listener-configuration-element"></a>Element konfiguracji odbiornika
 
-Istniejący odbiornik HTTP może służyć do obsługi ruchu sieciowego protokołu WebSocket. Poniżej przedstawiono fragment elementu httpListeners z pliku szablonu próbki. Będziesz potrzebować odbiorników HTTP i HTTPS do obsługi protokołu WebSocket i bezpieczny ruch protokołu WebSocket. Podobnie można użyć [portal](application-gateway-create-gateway-portal.md) lub [PowerShell](application-gateway-create-gateway-arm.md) do utworzenia bramy aplikacji przy użyciu obiektów nasłuchujących na porcie 80/443 do obsługi ruchu sieciowego protokołu WebSocket.
+Istniejący odbiornik HTTP może służyć do obsługi ruchu sieciowego protokołu WebSocket. Poniżej przedstawiono fragment elementu httpListeners z pliku szablonu próbki. Będziesz potrzebować odbiorników HTTP i HTTPS do obsługi protokołu WebSocket i bezpieczny ruch protokołu WebSocket. Podobnie można użyć portalu lub programu Azure PowerShell do utworzenia bramy aplikacji przy użyciu obiektów nasłuchujących na porcie 80/443 do obsługi ruchu sieciowego protokołu WebSocket.
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ Inną przyczyną tego jest tej sondy kondycji zaplecza bramy aplikacji obsługuj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zapoznaniu się obsługa protokołu WebSocket, przejdź do [utworzyć bramę aplikacji](application-gateway-create-gateway.md) wprowadzenie WebSocket aplikacji sieci web z obsługą.
-
+Po zapoznaniu się obsługa protokołu WebSocket, przejdź do [utworzyć bramę aplikacji](quick-create-powershell.md) wprowadzenie WebSocket aplikacji sieci web z obsługą.

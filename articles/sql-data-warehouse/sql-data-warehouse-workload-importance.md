@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: e53a6fcefb0f5370f6e24cc50fad2ad4ad4c64e3
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57864065"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616632"
 ---
 # <a name="sql-data-warehouse-workload-importance-preview"></a>Znaczenie obciążenia usługa SQL Data Warehouse (wersja zapoznawcza)
 
 W tym artykule wyjaśniono, jak znaczenie obciążenia mogą mieć wpływ na kolejność wykonywania żądań usługa SQL Data Warehouse.
 
 > [!Note]
-> Znaczenie obciążenia jest dostępny na Gen2 magazynu danych SQL.
+> Klasyfikacja obciążenia jest dostępna w wersji zapoznawczej na Gen2 magazynu danych SQL. Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji.  Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem.  Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom wybierz @@version po podłączeniu do wystąpienia usługi SQL Data Warehouse.
 
 ## <a name="importance"></a>Ważność
 

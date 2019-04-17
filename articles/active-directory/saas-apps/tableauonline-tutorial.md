@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ccf978ab33226dc029d534a343a87a796ab69e8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278109"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Tableau Online
 
@@ -105,9 +105,9 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Tableau Onl
 
     ![Adresy URL i domen w trybie Online TABLEAU pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
+    a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
-    b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
     > Zostanie wyświetlony `<entityid>` wartość z **Konfigurowanie Tableau Online** sekcji, w tym samouczku. Wartość Identyfikatora jednostki będą **usługi Azure AD identyfikator** wartość w **Konfigurowanie Tableau Online** sekcji.
@@ -144,7 +144,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Tableau Onl
   
     a. W witrynie Azure portal, przejdź na **Tableau Online** strony integracji aplikacji.
 
-    b. W ** atrybutów użytkowników i oświadczeń *** sekcji, kliknij ikonę edycji.
+    b. W **atrybutów użytkowników i oświadczeń** kliknij ikonę edycji.
 
    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/attributesection.png)
 
@@ -189,9 +189,9 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    Na przykład BrittaSimon\@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -243,8 +243,8 @@ Po kliknięciu kafelka Tableau Online, w panelu dostępu, powinien zostać autom
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

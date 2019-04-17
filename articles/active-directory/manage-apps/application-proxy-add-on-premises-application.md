@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fc454fdba6ec875c3d3b572a7aba91bb9d389845
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917842"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617224"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej na potrzeby dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure Active Directory
 
@@ -114,7 +114,7 @@ Aby zainstalować łącznik:
 
 ### <a name="general-remarks"></a>Uwagi ogólne
 
-Jeśli wcześniej zainstalowano łącznik, zainstaluj go ponownie, aby uzyskać najnowszą wersję.
+Jeśli wcześniej zainstalowano łącznik, zainstaluj go ponownie, aby uzyskać najnowszą wersję. Aby wyświetlić informacje o wersjach wcześniej wydanych i jakich zmian, ich zawierają, zobacz [Application Proxy — Historia wersji](application-proxy-release-version-history.md).
 
 Jeśli masz więcej niż jeden serwer systemu Windows dla aplikacji lokalnych, musisz zainstalować i zarejestrować łącznik na każdym serwerze. Możesz tworzyć grupy łączników. Aby uzyskać więcej informacji, zobacz [Grupy łączników](application-proxy-connector-groups.md). 
 
@@ -122,7 +122,6 @@ Jeśli do łączenia się z Internetem w Twojej organizacji są używane serwery
 
 Aby uzyskać informacje o łącznikach oraz ich aktualizowaniu, a także wskazówki na temat planowania wydajności, zobacz [Understand Azure AD Application Proxy connectors (Informacje dotyczące łączników serwera proxy aplikacji usługi Azure AD)](application-proxy-connectors.md). 
 
-Jeśli używasz aplikacji usługi Qlik Sense, zawsze instaluj najnowszy łącznik. Usługa Qlik Sense używa obiektów WebSocket, które są obsługiwane tylko przez łącznik w wersji 1.5.612.0 lub nowszej.
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>Sprawdzanie, czy łącznik został poprawnie zainstalowany i zarejestrowany
 
@@ -172,7 +171,7 @@ Po przygotowaniu środowiska i zainstalowaniu łącznika możemy dodać aplikacj
 
     | Pole | Opis |
     | :---- | :---------- |
-    | **Name (Nazwa)** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
+    | **Nazwa** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
     | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład, jeśli aplikacja znajduje się na https:\//yourapp/aplikacja używa obrazów i znajdujący się w https:\//yourapp/nośnika, możesz opublikować https:\//yourapp/ jako ścieżka. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
     | **Zewnętrzny adres URL** | Ten adres umożliwia użytkownikom dostęp do aplikacji spoza sieci. Jeśli nie chcesz używać domyślnej domeny serwera proxy aplikacji, zobacz [Custom domains in Azure AD Application Proxy (Domeny niestandardowe na serwerze proxy aplikacji usługi Azure AD)](application-proxy-configure-custom-domain.md).|
     | **Wstępne uwierzytelnianie** | Sposób, w jaki serwer proxy aplikacji weryfikuje użytkowników przed udzieleniem im dostępu do aplikacji.<br><br>**Azure Active Directory** — serwer proxy aplikacji przekierowuje użytkowników do zalogowania się w usłudze Azure AD, co umożliwia uwierzytelnienie ich uprawnień do katalogu i aplikacji. Zalecamy pozostawienie domyślnego ustawienia tej opcji, ponieważ umożliwia ono korzystanie z funkcji zabezpieczeń usługi Azure AD, np. dostępu warunkowego i uwierzytelniania wieloskładnikowego. Usługa **Azure Active Directory** jest wymagana do monitorowania aplikacji za pomocą usługi Microsoft Cloud Application Security.<br><br>**Przekazywanie** — użytkownicy nie muszą uwierzytelniać się w usłudze Azure Active Directory, aby uzyskać dostęp do aplikacji. Można jednak na zapleczu skonfigurować wymagania dotyczące uwierzytelniania. |

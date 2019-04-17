@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858001"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617382"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problem z konfigurowaniem hasło logowania jednokrotnego dla aplikacji spoza galerii
 
@@ -142,7 +142,7 @@ Jeśli wystąpi dowolne z tych problemów sprawdź następujące kwestie:
 
 -   Spróbuj ręcznego procesu przechwytywania ponownie, zapewnienie, że czerwone znaczniki są za pomocą odpowiednich pól.
 
--   Ręczne Przechwytywanie wydaje się zawiesi się, czy strony logowania nie robi niczego (przypadek 3 powyżej), spróbuj ręczne Przechwytywanie ponownie. Ale tym razem po ukończeniu procesu, naciśnij klawisz **F12** przycisk, aby otworzyć konsolę dla deweloperów w przeglądarce. Gdy istnieje, otwórz **konsoli** i typ **window.location= "&lt;wprowadź url logowania zostało określone podczas konfigurowania aplikacji&gt;"** , a następnie naciśnij klawisz **Enter** . Wymusza przekierowanie strony, która kończy proces przechwytywania i przechowuje pola, które zostały przechwycone.
+-   Czy Proces przechwytywania ręczne wydaje się, że przestanie odpowiadać, strony logowania nie robi nic (przypadek 3 powyżej), ponownie proces przechwytywania ręczne. Ale tym razem po ukończeniu procesu, naciśnij klawisz **F12** przycisk, aby otworzyć konsolę dla deweloperów w przeglądarce. Gdy istnieje, otwórz **konsoli** i typ **window.location= "&lt;wprowadź url logowania zostało określone podczas konfigurowania aplikacji&gt;"** , a następnie naciśnij klawisz **Enter** . Wymusza przekierowanie strony, która kończy proces przechwytywania i przechowuje pola, które zostały przechwycone.
 
 Jeśli żadna z tych metod działa, mogą pomóc pomocy technicznej. Otwórz zgłoszenie do pomocy technicznej ze szczegółowymi informacjami o czym chcesz wypróbować, a także informacje zebrane w [sposobu wyświetlania szczegółów powiadomienia portalu](#i-cannot-manually-detect-sign-in-fields-for-my-application) i [jak uzyskać pomoc, wysyłając powiadomienia, szczegółowe informacje ze specjalistą pomocy technicznej ](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) sekcje (jeśli dotyczy).
 

@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 4e5a785d219e1b776a1d512512d0a2a74532c550
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 94fd70dccf367d43b1caaa9f3a11ed934f9950ea
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282733"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618060"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -21,12 +21,12 @@ Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na po
 
 Aby rozpocząć korzystanie z usługi Azure Site Recovery przy użyciu najprostszy scenariusz wdrażania, odwiedź nasz [samouczki](tutorial-prepare-azure.md). Dowiedz się więcej na temat architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md).
 
-## <a name="replication-scenario"></a>Scenariusz replikacji
+## <a name="deployment-scenario"></a>Scenariusz wdrażania
 
 **Scenariusz** | **Szczegóły**
 --- | ---
-Maszyny wirtualne VMware | Replikacji lokalnych maszyn wirtualnych VMware na platformę Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal lub za pomocą [PowerShell](vmware-azure-disaster-recovery-powershell.md).
-Serwerów fizycznych | Replikacji lokalnych serwerów fizycznych systemu Windows/Linux na platformie Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal.
+Odzyskiwanie po awarii maszyn wirtualnych programu VMware | Replikacji lokalnych maszyn wirtualnych VMware na platformę Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal lub za pomocą [PowerShell](vmware-azure-disaster-recovery-powershell.md).
+Odzyskiwanie po awarii serwerów fizycznych | Replikacji lokalnych serwerów fizycznych systemu Windows/Linux na platformie Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokalne serwery wirtualizacji
 
@@ -96,9 +96,9 @@ Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR],[9.23][9.23 UR] | 3.1
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12. obsługiwane wersje jądra
 
-**Release** | **Wersja usługi mobilności** | **Wersja jądra** |
+**Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.23][9.23 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.23][9.23 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.79-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.22][9.22 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.21][9.21 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.20][9.20 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.156-94.64-default |
@@ -167,7 +167,6 @@ Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Host wielościeżkowego (MPIO) | Tak, przetestowane za pomocą DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualnego hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/d dla serwerów fizycznych
 Gość/serwera VMDK | Yes
-Gość/serwera interfejsem EFI/UEFI| Partial (migracji platformy Azure dla systemu Windows Server 2012 lub nowszy) <br/><br/> Patrz Uwaga na koniec tabeli
 Dysku udostępnionego klastra gościa/serwera | Nie
 Gość/serwera zaszyfrowanego dysku | Nie
 Gość/serwer systemu plików NFS | Nie
@@ -181,14 +180,8 @@ Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
 Gość/server - wykluczyć dysk | Yes
 Gość/serwera wielościeżkowego (MPIO) | Nie
+Rozruchu interfejsu EFI/UEFI gościa/serwera | Obsługiwane podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszego na platformie Azure.<br/><br/> Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/><br/> Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.<br/><br/> Wymagana wersja usługi mobilności 9.13 lub nowszej.<br/><br/> Obsługiwane jest tylko systemu plików NTFS.
 
-> [!NOTE]
-> UEFI rozruchu maszyn wirtualnych VMware z systemem Windows Server 2012 lub nowszej można poddać migracji do platformy Azure. Obowiązują następujące ograniczenia:
->
-> - Jest obsługiwana tylko migracja na platformę Azure. Powrót po awarii do lokacji programu VMware w środowisku lokalnym nie jest obsługiwane.
-> - Serwer nie może mieć więcej niż cztery partycje na dysku systemu operacyjnego.
-> - Tylko NTFS jest obsługiwana.
-> - Wymagana wersja usługi mobilności 9.13 lub nowszej.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -208,7 +201,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorące i chłodne w
 
 ## <a name="azure-compute"></a>Usługa Azure compute
 
-**Cecha** | **Obsługiwane**
+**Funkcja** | **Obsługiwane**
 --- | ---
 Zestawy dostępności | Yes
 Strefy dostępności | Nie
@@ -237,7 +230,7 @@ Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, c
 
 W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Aby uzyskać najlepsze wyniki, zdecydowanie zaleca się [Uruchom narzędzie planista wdrażania](site-recovery-deployment-planner.md) i dokładne przetestowanie aplikacji przez wystawienie testowy tryb failover w celu uzyskania prawdziwych informacji o wydajności aplikacji.
 
-**Cel magazynu replikacji** | **Dysk źródłowy średni rozmiar operacji We/Wy** |**Średni źródłowy współczynnik zmian danych na dysku** | **Współczynnik zmian danych dysku łączny współczynnik dziennie**
+**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
@@ -264,7 +257,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Pobierz najnowsze składniki usługi Azure Site Recovery
 
-**Name (Nazwa)** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
+**Nazwa** | **Opis** | **Instrukcje jej pobrania najnowszej wersji**
 --- | --- | ---
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-deploy-configuration-server.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| Aby uzyskać więcej informacji, odwiedź nasze wskazówki na [nową instalację](vmware-azure-set-up-process-server-scale.md) i [Uaktualnij istniejący składnik do najnowszej wersji](vmware-azure-manage-process-server.md#upgrade-a-process-server).
