@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275848"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą przesączyć
 
@@ -101,7 +101,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą przesączy
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** trybu zainicjowane przez użytkownika nie trzeba wykonać każdy krok, ponieważ aplikacja jest już wstępnie zintegrowana za pomocą platformy Azure.
+4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** trybu zainicjowane przez użytkownika nie trzeba wykonać każdy krok, ponieważ aplikacja jest już wstępnie zintegrowane z usługą Azure.
 
     ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą przesączy
 
     b. W **identyfikator jednostki** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal.
 
-    c. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **x509 certyfikaty** pole.
+    c. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **x509 certyfikaty** pole.
 
     d. W **atrybut E-mail** polu tekstowym wpisz **emailaddress**.
 
@@ -207,7 +207,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do przesączyć, musi być obsługiwana w przesączyć. W przesączyć Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do przesączyć jako Administrator.
 
@@ -219,9 +219,9 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do przesączyć, mu
 
     ![Konfigurowanie logowania jednokrotnego](./media/percolate-tutorial/configure04.png)
 
-    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak brittasimon@contoso.com.
+    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak brittasimon@contoso.com.
 
-    b. W **imię i nazwisko** tekstu wprowadź nazwę użytkownika, takich jak **Brittasimon**.
+    b. W **imię i nazwisko** tekstu wprowadź nazwę użytkownika, takich jak **Brittasimon**.
 
     c. Kliknij przycisk **tworzenia użytkowników**.
 
@@ -233,9 +233,9 @@ Po kliknięciu kafelka przesączyć w panelu dostępu, powinien zostać automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -3,17 +3,17 @@ title: Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Cen
 description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 04/09/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426243"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617856"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -23,78 +23,66 @@ W tym artykule opisano jak Deweloper urządzenia do łączenia z urządzeniami W
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-2. Urządzenie z systemem operacyjnym Windows 10 IoT Core. W tym przewodniku użyjemy Raspberry Pi.
+- Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 
+- Urządzenie z systemem operacyjnym Windows 10 IoT Core. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-## <a name="sample-devkits-application"></a>**Przykładowy Devkits** aplikacji
+- Jest maszyna deweloperska z [Node.js](https://nodejs.org/) wersji 8.0.0 lub nowszej. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić swoją wersję. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
-Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **Windows IoT Core** szablon urządzenia o następującej charakterystyce: 
+## <a name="the-sample-devkits-application"></a>Devkits przykładowej aplikacji
 
-- Dane telemetryczne, zawierającą pomiarów urządzenia **wilgotności**, **temperatury** i **wykorzystanie**. 
-- Wyświetlanie ustawień **szybkość wentylator**.
-- Właściwości zawierający właściwości urządzenia **zdechną numer** i **lokalizacji** właściwość w chmurze.
+Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **Windows IoT Core** szablon urządzenia o następującej charakterystyce:
 
+- Pomiary dane telemetryczne dla tego urządzenia: **Wilgotność**, **temperatury**, i **wykorzystanie**.
+- Ustawienia, aby określić **szybkość wentylator**.
+- Właściwości urządzenia **zdechną numer** i właściwości chmury **lokalizacji**.
 
-Można znaleźć szczegółowe informacje o konfiguracji szablonu urządzenia [Windows IoT Core Device Szczegóły szablonu](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
+Aby uzyskać szczegółowe informacje o konfiguracji szablonu urządzenia, zobacz [Szczegóły szablonu Windows IoT Core Device](#device-template-details).
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows IoT Core** szablon urządzenia i zanotować parametry połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
+W aplikacji usługi Azure IoT Central, użyj **Device Explorer** stronę, aby dodać prawdziwe urządzenie z **systemu Windows 10 IoT Core** szablon urządzenia. Zwróć uwagę na urządzeniu szczegóły połączenia (**identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy**). Aby uzyskać więcej informacji, zobacz [pobieranie informacji o połączeniu](howto-generate-connection-string.md#get-connection-information).
 
-### <a name="prepare-the-windows-iot-core-device"></a>Przygotuj urządzenie Windows IoT Core
+## <a name="prepare-the-device"></a>Przygotuj urządzenie
 
-Aby skonfigurować urządzenie Windows IoT Core wykonaj przewodnik krok po kroku w [Konfigurowanie urządzenia Windows IoT Core](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+Dla urządzenia, połączyć się z IoT Central musi ona parametry połączenia.
 
-### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows IoT Core** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**klucza podstawowego identyfikator zakresu, identyfikator urządzenia**). Wykonaj te instrukcje, aby [Generowanie parametrów połączenia urządzenia](howto-generate-connection-string.md) przy użyciu **identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy** wprowadzono należy pamiętać o wcześniej.
+Aby kod urządzenia dostęp do parametrów połączenia, zapisz go w pliku o nazwie **connection.string.iothub** w folderze `C:\Data\Users\DefaultAccount\Documents\` na urządzeniu z systemem Windows 10 IoT Core.
 
-## <a name="prepare-the-windows-10-iot-core-device"></a>Przygotuj urządzenie Windows 10 IoT Core
+Aby skopiować **connection.string.iothub** plik z komputera stacjonarnego, aby `C:\Data\Users\DefaultAccount\Documents\` folderu na swoim urządzeniu, można użyć [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-### <a name="what-youll-need"></a>Czego potrzebujesz
+1. Użyj przeglądarki sieci web, aby przejść do Windows Device Portal na urządzeniu.
+1. Aby przeglądać plików na twoim urządzeniu, wybierz **aplikacji > Eksploratora plików**.
+1. Przejdź do **Folders\Documents użytkownika**. Następnie przekaż **connection.string.iothub** pliku:
 
-Aby skonfigurować rzeczywistego urządzenia systemu Windows 10 IoT Core, musisz najpierw mieć na urządzenie z systemem Windows 10 IoT Core. Dowiedz się, jak skonfigurować urządzenie Windows 10 IoT Core [tutaj](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
+    ![Przekazywanie parametrów połączenia](media/howto-connect-windowsiotcore/device-portal.png)
 
-Należy również aplikację kliencką, która może komunikować się z usługi Azure IoT Central. Możesz utworzyć własną aplikację niestandardową przy użyciu zestawu SDK platformy Azure i wdrożyć ją na urządzenie przy użyciu programu Visual Studio, można również pobrać [wstępnie utworzonych przykładowych](https://developer.microsoft.com/windows/iot/samples) po prostu Wdróż i uruchom go na urządzeniu. 
+## <a name="deploy-and-run"></a>Wdrażanie i uruchamianie
 
-### <a name="deploying-the-sample-client-application"></a>Wdrażanie przykładowej aplikacji klienta
+Wdrażanie i uruchamianie przykładowej aplikacji na urządzeniu, można użyć [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-Wdrażanie aplikacji klienckiej z poprzedniego kroku do Twojego urządzenia systemu Windows 10 IoT w celu przygotowania go:
+1. Użyj przeglądarki sieci web, aby przejść do Windows Device Portal na urządzeniu.
+1. Aby wdrożyć i uruchomić **Azure IoT Hub Client** aplikacji, wybierz **aplikacji > szybkiego uruchamiania przykładów**. Następnie wybierz **Azure IoT Hub Client**.
+1. Następnie wybierz **wdrażanie i uruchamianie**.
 
-**Upewnij się, że parametry połączenia są przechowywane na urządzeniu na potrzeby aplikacji klienckiej do użycia**
-* Na komputerze stacjonarnym należy zapisać parametry połączenia w pliku tekstowym o nazwie connection.string.iothub.
-* Skopiuj plik tekstowy do folderu dokumentów urządzenia:
-`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+    ![Wdrażanie i uruchamianie](media/howto-connect-windowsiotcore/quick-run.png)
 
-Po wykonaniu tego, musisz otworzyć [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) , wpisując http://[device-IP-address]:8080 w dowolnej przeglądarce.
+Za kilka minut można wyświetlić danych telemetrycznych z urządzenia w aplikacji IoT Central.
 
-Z jednej i, jak pokazano w poniższych w przypadku należy:
-1. Rozwiń **aplikacje** węzła po lewej stronie.
-2. Wybierz **szybkiego uruchamiania przykładów**.
-3. Wybierz **klienta usługi Azure IoT Hub**.
-4. Wybierz **wdrażanie i uruchamianie**.
+[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) zawiera narzędzia, które umożliwiają rozwiązywanie problemów z urządzeniem:
 
-![Obraz GIF przedstawiający klienta usługi Azure IoT Hub na Windows Device Portal](./media/howto-connect-windowsiotcore/iothubapp.gif)
+- **Menedżera aplikacji** strona pozwala kontrolować aplikacje uruchomione na urządzeniu.
+- Jeśli nie masz monitor podłączone do urządzenia, możesz użyć **ustawienia urządzenia** strony na Przechwytywanie zrzutów ekranu na urządzeniu. Na przykład:
 
-Jeśli operacja się powiedzie, aplikacja będzie uruchamianie na urządzeniu i wyglądać następująco:
-
-![Zrzut ekranu przedstawiający usługa Azure IoT Hub aplikację kliencką](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
-
-W usłudze Azure IoT Central można zobaczyć, jak kod uruchomiony na urządzenia Raspberry Pi współdziała z aplikacją:
-
-* Na **pomiarów** strony dla Twojego rzeczywistego urządzenia można wyświetlić dane telemetryczne.
-* Na **właściwości** stronie widać wartości zgłaszanych właściwości zdechną numer.
-* Na **ustawienia** strony, można zmienić różnych ustawień na urządzenia Raspberry Pi, takie jak szybkość napięcia i wychodzącą.
+    ![Zrzut ekranu aplikacji](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
-Jeśli chcesz eksplorować i modyfikować kod źródłowy w aplikacji klienckiej, możesz ją pobrać z witryny GitHub [tutaj](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients). Jeśli zamierzasz zmodyfikować kod, należy wykonać te instrukcje w pliku readme [tutaj](https://github.com/Microsoft/Windows-iotcore-samples) pulpitu w systemie operacyjnym.
+Jeśli chcesz eksplorować i modyfikować kod źródłowy w aplikacji klienckiej, możesz ją pobrać z [repozytorium GitHub samples-Windows-iotcore](https://github.com/Microsoft/Windows-iotcore-samples/blob/master/Samples/Azure/IoTHubClients).
 
-> [!NOTE]
-> Jeśli **git** nie jest zainstalowany w środowisku deweloperskim, możesz ją pobrać z [ https://git-scm.com/download ](https://git-scm.com/download).
-
-## <a name="windows-iot-core-device-template-details"></a>Szczegóły szablonu Windows IoT Core urządzenia
+## <a name="device-template-details"></a>Szczegóły szablonu urządzenia
 
 Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **Windows IoT Core** szablon urządzenia o następującej charakterystyce:
 
@@ -114,10 +102,13 @@ Ustawienia liczbowe
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
-
 ### <a name="properties"></a>Właściwości
 
-| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Skoro już wiesz, jak połączyć z urządzeniem Raspberry Pi z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.

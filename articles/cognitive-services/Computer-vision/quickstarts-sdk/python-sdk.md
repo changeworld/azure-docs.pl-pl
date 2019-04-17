@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: pafarley
-ms.openlocfilehash: fbdc6ca8a9d93c090c1cfda9dec41b948d95c6af
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495349"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617975"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Zestaw SDK przetwarzania obrazów usług Azure Cognitive Services dla języka Python
 
@@ -25,7 +25,7 @@ Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych alg
 * [Pobieranie listy domen tematycznych](#get-subject-domain-list)
 * [Analizowanie obrazu według domeny](#analyze-an-image-by-domain)
 * [Pobieranie tekstu opisu obrazu](#get-text-description-of-an-image)
-* [Pobieranie tekstu odręcznego z obrazów](#get-text-from-image)
+* [Pobieranie tekstu odręcznego z obrazu](#get-text-from-image)
 * [Generowanie miniatury](#generate-thumbnail)
 
 Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwarzanie obrazów?][computervision_docs].
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji na temat tej usługi, zobacz [Czym jest przetwar
 Szukasz dodatkowej dokumentacji?
 
 * [Dokumentacja referencyjna zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
-* [Dokumentacja usług cognitive Services przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)
+* [Dokumentacja przetwarzania obrazów w usługach Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,8 +46,8 @@ Utwórz bezpłatne klucz prawidłowe przez 7 dni w ramach **[wypróbuj] [ comput
 
 Po utworzeniu klucza zachowaj następujące wartości:
 
-* Wartość klucza: ciąg znaków 32 w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
-* Klucza punktu końcowego: adres URL podstawowego punktu końcowego, https://westcentralus.api.cognitive.microsoft.com
+* Wartość klucza: ciąg 32 znaków w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+* Klucza punktu końcowego: adres URL podstawowego punktu końcowego https\://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Jeśli masz subskrypcję platformy Azure
 
@@ -319,7 +319,7 @@ Podczas pracy z [ComputerVisionClient] [ ref_computervisionclient] klienta, mog�
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Stosowanie tagów zawartości do obrazów](../concept-tagging-images.md)
+> [Applying content tags to images (Stosowanie tagów zawartości do obrazów)](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

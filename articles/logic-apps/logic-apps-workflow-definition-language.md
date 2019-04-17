@@ -1,29 +1,28 @@
 ---
-title: Odwołanie do schematu dla język definicji przepływów pracy — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zapisz definicje niestandardowego przepływu pracy dla usługi Azure Logic Apps za pomocą języka definicji przepływu pracy
+title: Odwołanie do schematu dla język definicji przepływów pracy — Azure Logic Apps
+description: Przewodnik dla schematu język definicji przepływów pracy w usłudze Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620840"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616805"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
-Podczas tworzenia przepływu pracy aplikacji logiki za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawową definicję Twój przepływ pracy w tym artykule opisano rzeczywiste logikę, która jest uruchamiana dla aplikacji logiki. Ten opis jest zgodna to struktura, która została zdefiniowana i zweryfikowane przez schemat języka definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/).
+Po utworzeniu aplikacji logiki w [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), aplikacja logiki ma podstawową definicję przepływu pracy, opisujący rzeczywiste logikę, która jest uruchamiany w aplikacji logiki. Korzysta z tej definicji przepływu pracy [JSON](https://www.json.org/) i następuje struktury, którego poprawność jest sprawdzana przez schemat języka definicji przepływu pracy. Ta dokumentacja zawiera omówienie tej struktury i jak schemat definiuje elementy w definicji przepływu pracy.
 
 ## <a name="workflow-definition-structure"></a>Struktura definicji przepływu pracy
 
-Definicja przepływu pracy ma co najmniej jeden wyzwalacz, który tworzy wystąpienie aplikacji logiki, a także co najmniej jednej akcji, których Twoja aplikacja logiki działa.
+Definicja przepływu pracy, który jest zawsze zawiera wyzwalacz dla wystąpienia aplikacji logiki, a także co najmniej jednej akcji, które są uruchamiane po aktywowaniu wyzwalacza.
 
 Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
 
@@ -51,7 +50,7 @@ Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
 
 ## <a name="parameters"></a>Parametry
 
-W `parameters` sekcji, określ wszystkie parametry przepływu pracy używanych przez aplikację logiki we wdrożeniu do akceptowania dane wejściowe. Deklaracji parametru i wartości parametrów są wymagane podczas wdrażania. Przed za pomocą tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
+W `parameters` sekcji, określ wszystkie parametry przepływu pracy, które swojej definicji przepływu pracy używa we wdrożeniu akceptuje dane wejściowe. Deklaracji parametru i wartości parametrów są wymagane podczas wdrażania. Przed za pomocą tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
 
 Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 
@@ -75,7 +74,7 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 | type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
 | defaultValue | Yes | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
 | allowedValues | Nie | Takie same jak `type` | Tablica wartości akceptujące parametr |
-| metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla swojej aplikacji logiki lub danych czasu projektowania używanych przez program Visual Studio lub innych narzędzi |
+| metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla aplikacji logiki lub przepływie lub danych czasu projektowania, używane przez program Visual Studio lub innych narzędzi |
 ||||
 
 ## <a name="triggers-and-actions"></a>Wyzwalacze i akcje
@@ -107,7 +106,7 @@ Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla:
 | wartość | Yes | Takie same jak `type` | Wartość zwracana w danych wyjściowych |
 |||||
 
-Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchomień aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.
+Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchamiania aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.
 
 <a name="expressions"></a>
 
@@ -216,7 +215,7 @@ W [wyrażeń](#expressions) i [funkcje](#functions), operatory wykonywania okre�
 
 ## <a name="functions"></a>Funkcje
 
-Niektóre wyrażenia, Uzyskaj ich wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać się i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje* ](../logic-apps/workflow-definition-language-functions-reference.md) zapewniająca język definicji przepływów pracy.
+Niektóre wyrażenia, Uzyskaj ich wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania swojej definicji przepływu pracy. Aby odwołać się i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje* ](../logic-apps/workflow-definition-language-functions-reference.md) zapewniająca język definicji przepływów pracy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

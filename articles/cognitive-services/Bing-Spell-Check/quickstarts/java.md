@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888988"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616699"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka Java
 
@@ -23,18 +23,20 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
+* Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
+
+* Importuj [gson 2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) lub najbardziej aktualnej [Gson](https://github.com/google/gson) wersji. Do wykonania wiersza polecenia, należy dodać `.jar` do folderu Java z klasą główną.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-
 ## <a name="create-and-initialize-an-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe pakiety.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE lub edytora nazwą klasy wybrane, a następnie zaimportuj następujące pakiety.
 
     ```java
     import java.io.*;
     import java.net.*;
+    import com.google.gson.*;
     import javax.net.ssl.HttpsURLConnection;
     ```
 
@@ -44,7 +46,7 @@ Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    static String key = "ENTER YOUR KEY HERE";
+    static String key = "<ENTER-KEY-HERE>";
 
     static String mkt = "en-US";
     static String mode = "proof";
@@ -58,21 +60,20 @@ Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
    ```java
    public static void check () throws Exception {
        String params = "?mkt=" + mkt + "&mode=" + mode;
-   //...
+      // add the rest of the code snippets here (except prettify() and main())...
    }
    ```
 
-2. Utwórz adres URL, łącząc hosta punktu końcowego, ścieżkę i ciąg parametrów. Utwórz nowy obiekt `HttpsURLConnection`.
+2. Utwórz adres URL, łącząc hosta punktu końcowego, ścieżkę i ciąg parametrów. Utwórz nową `HttpsURLConnection` obiektu.
 
     ```java
     URL url = new URL(host + path + params);
-    HttpsURLConnection connection = (HttpsURLConnection) 
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Otwórz połączenie z adresem URL. Ustaw metodę żądania na `POST`. Dodaj parametry żądania. Pamiętaj, aby dodać klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`. 
+3. Otwórz połączenie z adresem URL. Ustaw metodę żądania na `POST`. Dodaj parametry żądania. Pamiętaj, aby dodać klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
     ```java
-    url.openConnection();
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
@@ -88,21 +89,34 @@ Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
         wr.close();
     ```
 
-## <a name="read-the-response"></a>Odczytywanie odpowiedzi
+## <a name="format-and-read-the-api-response"></a>Formatowanie i odczytać odpowiedzi interfejsu API
 
-1. Utwórz obiekt `BufferedReader` i odczytaj odpowiedź z interfejsu API. Wyświetl ją na konsoli.
+1. Dodaj tę metodę do klasy. Operacja formatowania JSON czytelność danych wyjściowych.
+
+    ``` java
+    // This function prettifies the json response.
+    public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(json_text);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+
+1. Create a `BufferedReader` and read the response from the API. Print it to the console.
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(line);
+        System.out.println(prettify(line);
     }
     in.close();
     ```
 
-2. W funkcji main aplikacji wywołaj utworzoną wcześniej funkcję. 
+## <a name="call-the-api"></a>Wywoływanie interfejsu API
+
+W funkcji main aplikacji Wywołaj metodę check() utworzonego powyżej.
 
     ```java
     public static void main(String[] args) {
@@ -114,10 +128,26 @@ Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
         }
     }
     ```
-    
+
+## <a name="run-the-application"></a>Uruchamianie aplikacji
+
+Skompiluj i uruchom projekt.
+
+Jeśli korzystasz z wiersza polecenia, użyj następujących poleceń, aby skompilować i uruchomić aplikację.
+
+**Kompilacja:**
+```bash
+javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+```
+
+**Uruchom polecenie:**
+```bash
+java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+```
+
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -157,7 +187,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/spellcheck.md)

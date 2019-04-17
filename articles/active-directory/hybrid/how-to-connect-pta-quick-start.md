@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101010"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617805"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start
 
@@ -111,7 +111,15 @@ Jeśli planujesz wdrożyć uwierzytelnianie przekazywane w środowisku produkcyj
 >[!IMPORTANT]
 >W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 40 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
-Wykonaj te instrukcje, aby pobrać oprogramowanie agenta uwierzytelniania:
+Instalowanie wielu agentów uwierzytelniania przekazywanego zapewnia wysoką dostępność, ale nie deterministyczne Równoważenie obciążenia między agentów uwierzytelniania. Aby ustalić, ile agentów uwierzytelniania, należy dla Twojej dzierżawy, należy wziąć pod uwagę szczytowe i średnie obciążenie żądań logowania, które powinny być widoczne w dzierżawie. Ekstrapolacji jednego agenta uwierzytelniania może obsługiwać uwierzytelnień 300 i 400 w standardowych 4-rdzeniowy Procesor, 16 GB pamięci RAM serwera na sekundę.
+
+Aby oszacować ruchu sieciowego, użyj poniższych wskazówek ustalania rozmiaru:
+- Każde żądanie ma rozmiar ładunku (0,5 k + 1 K * num_of_agents) bajtów; tzn. dane z usługi Azure AD do agenta uwierzytelniania. W tym miejscu "num_of_agents" oznacza, że liczba agentów uwierzytelniania zarejestrowany w dzierżawie.
+- Każda odpowiedź ma rozmiar ładunku 1 KB; tzn. dane z agenta uwierzytelniania do usługi Azure AD.
+
+W przypadku większości klientów trzech agentów uwierzytelniania w sumie są wystarczające dla wysokiej dostępności i wydajności. Blisko kontrolerów domeny do Zmniejszaj opóźnienia logowania, należy zainstalować agentów uwierzytelniania.
+
+Aby rozpocząć, wykonaj te instrukcje, aby pobrać oprogramowanie agenta uwierzytelniania:
 
 1. Aby pobrać najnowszą wersję agenta uwierzytelniania (wersja 1.5.193.0 lub nowszej), zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dzierżawy usługi.
 2. Wybierz **usługi Azure Active Directory** w okienku po lewej stronie.
@@ -141,6 +149,13 @@ Po drugie można tworzyć i uruchom skrypt instalacji nienadzorowanej wdrożenia
 3. Przejdź do **agenta: C:\Program Files\Microsoft Azure AD Connect uwierzytelniania** i uruchom następujący skrypt, używając `$cred` obiektu, który został utworzony:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>Jeśli Agent uwierzytelniania jest zainstalowany na maszynie wirtualnej, nie można sklonować maszynę wirtualną, aby skonfigurować inny Agent uwierzytelniania. Ta metoda jest **nieobsługiwany**.
+
+## <a name="step-5-configure-smart-lockout-capability"></a>Krok 5. Konfigurowanie funkcji inteligentnej blokady
+
+Pomaga inteligentnej blokady za pomocą metod siłowych do pobrania w lub blokowanie złośliwych podmiotów, którzy próby odgadnięcia haseł użytkowników. Konfigurując ustawienia inteligentnej blokady w usłudze Azure AD i / lub ustawienia odpowiednich blokady w usłudze Active Directory w środowisku lokalnym, ataków można odfiltrowane zanim osiągną one usługi Active Directory. Odczyt [w tym artykule](../authentication/howto-password-smart-lockout.md) Aby dowiedzieć się więcej na temat sposobu konfigurowania ustawień inteligentnej blokady na swoją dzierżawę, aby chronić Twoje konta użytkownika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadp) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.

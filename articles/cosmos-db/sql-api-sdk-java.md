@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648560"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617136"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 * Dodano obsługę zestawienia zmian.
 * Dodano obsługę za pomocą RequestOptions.setPopulateQuotaInfo, informacje o limitach przydziału kolekcji.
 * Dodano obsługę rejestrowanie skryptu procedury składowanej za pośrednictwem RequestOptions.setScriptLoggingEnabled.
-* Usunięto usterkę, w którym może się zawiesić zapytania w trybie DirectHttps, gdy wystąpią błędy ograniczania.
+* Usunięto usterkę, w którym zapytania w trybie DirectHttps może przestać odpowiadać, gdy wystąpią błędy ograniczania.
 * Usunięto usterkę w trybie spójność sesji.
 * Naprawiono usterkę, która może spowodować obiektu NullReferenceException w HttpContext, gdy liczba żądań jest wysoka.
 * Zwiększono wydajność DirectHttps trybu.

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001370"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608609"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurowanie aktywnej replikacji geograficznej dla usługi Azure SQL Database w witrynie Azure portal i zainicjuj tryb failover
 
@@ -73,7 +73,7 @@ Pomocniczej bazy danych można dostosować do roli podstawowej.
     ![tryb failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kliknij przycisk **tak** do rozpoczęcia pracy w trybie failover.
 
-Polecenie natychmiast zmienia pomocniczej bazy danych do roli podstawowej.
+Polecenie natychmiast zmienia pomocniczej bazy danych do roli podstawowej. Zwykle ten proces powinno zakończyć się w ciągu 30 sekund lub mniej.
 
 Brak krótki okres, podczas którego obu bazach danych są niedostępne (rzędu kilku 0 do 25 sekund), podczas przełączania ról. Jeśli podstawowa baza danych ma wiele pomocniczych baz danych, to polecenie automatycznie skonfiguruje innych serwerów pomocniczych, aby nawiązać połączenie z nową podstawową. Cała operacja powinna zająć mniej niż minutę w normalnych warunkach.
 

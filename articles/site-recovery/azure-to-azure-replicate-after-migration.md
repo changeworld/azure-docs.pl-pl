@@ -5,19 +5,19 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 76119c912ac6ad1447bfcff1f4c98e60f34b072f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317140"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615918"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych platformy Azure po migracji na platformę Azure 
 
 
-Skorzystaj z tego artykułu, jeśli masz [migrację maszyn lokalnych do maszyn wirtualnych platformy Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [Site Recovery](site-recovery-overview.md) usługi, a teraz chcesz uzyskać maszyn wirtualnych, konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure. W artykule opisano, jak upewnić się, że agent maszyny Wirtualnej platformy Azure jest zainstalowany na maszynach wirtualnych migrowanych oraz jak usunąć usługę Site Recovery Mobility po migracji nie są już potrzebne.
+Postępuj zgodnie z tego artykułu, jeśli masz [migrację maszyn lokalnych do maszyn wirtualnych platformy Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [Site Recovery](site-recovery-overview.md) usługi, a teraz chcesz uzyskać maszyn wirtualnych, konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure. W artykule opisano, jak upewnić się, że agent maszyny Wirtualnej platformy Azure jest zainstalowany na maszynach wirtualnych migrowanych oraz jak usunąć usługę Site Recovery Mobility po migracji nie są już potrzebne.
 
 
 
@@ -77,7 +77,7 @@ Zainstaluj [maszyny Wirtualnej systemu Linux platformy Azure](../virtual-machine
         ```
     - Dla systemu Linux Zaloguj się jako użytkownik root. W terminalu przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
         ```
-        uninstall.sh -Y
+        ./uninstall.sh -Y
         ```
 2. Uruchom ponownie maszynę Wirtualną, przed skonfigurowaniem replikacji.
 

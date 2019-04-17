@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243623"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617635"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
@@ -54,19 +54,38 @@ Usługa Media Services obsługuje obecnie następujące wbudowane ustawienia wst
 
 Obecnie obsługiwane są następujące ustawienia:
 
-- **EncoderNamedPreset.AdaptiveStreaming** (zalecane). Aby uzyskać więcej informacji, zobacz [automatyczne generowanie drabiny szybkości transmisji bitów](autogen-bitrate-ladder.md).
 - **EncoderNamedPreset.AACGoodQualityAudio** — tworzy pojedynczego pliku MP4, zawierający tylko dźwięk stereo zakodowane w 192 kb/s.
+- **EncoderNamedPreset.AdaptiveStreaming** (zalecane). Aby uzyskać więcej informacji, zobacz [automatyczne generowanie drabiny szybkości transmisji bitów](autogen-bitrate-ladder.md).
+- **EncoderNamedPreset.ContentAwareEncodingExperimental** — udostępnia eksperymentalne ustawienie wstępne kodowania zawartości. Podana zawartość danych wejściowych, usługa spróbuje automatycznie określić optymalną liczbę warstw, odpowiednią szybkość transmisji bitów i ustawień rozpoznawania dostarczania przez adaptacyjnego przesyłania strumieniowego. Algorytmy podstawowych będzie ewoluować wraz z upływem czasu. Dane wyjściowe będą zawierać pliki MP4 z przeplotem audio i wideo. Aby uzyskać więcej informacji, zobacz [eksperymentalne ustawienie wstępne kodowania zawartości](cae-experimental.md).
 - **EncoderNamedPreset.H264MultipleBitrate1080p** — tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 6000 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 1080p i prowadzi w dół do 360 p.
 - **EncoderNamedPreset.H264MultipleBitrate720p** — tworzy zbiór 6 wyrównane GOP pliki MP4 z, od 3400 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 720p i prowadzi w dół do 360 p.
-- **EncoderNamedPreset.H264MultipleBitrateSD** — tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1600 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 480p i prowadzi w dół do 360 p.<br/><br/>Aby uzyskać więcej informacji, zobacz [przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md).
+- **EncoderNamedPreset.H264MultipleBitrateSD** — tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1600 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 480p i prowadzi w dół do 360 p.
+- **EncoderNamedPreset.H264SingleBitrate1080p** — tworzy plik w formacie MP4, gdzie wideo jest zakodowane za pomocą H.264 kodera-dekodera 6750 KB/s i wysokość obrazu, 1080 pikseli, a stereo audio jest zaszyfrowana przy użyciu kodera-dekodera AAC-LC, na 64 KB/s.
+- **EncoderNamedPreset.H264SingleBitrate720p** — tworzy plik w formacie MP4, gdzie wideo jest zakodowane za pomocą H.264 kodera-dekodera 4500 KB/s i wysokość obrazu, 720 pikseli i stereo audio jest zaszyfrowana przy użyciu kodera-dekodera AAC-LC, na 64 KB/s.
+- **EncoderNamedPreset.H264SingleBitrateSD** — tworzy plik w formacie MP4, gdzie wideo jest kodowany za pomocą H.264 kodera-dekodera 2200 KB/s i wysokość obrazu w pikselach 480 i stereo audio jest zaszyfrowana przy użyciu kodera-dekodera AAC-LC, na 64 KB/s.
+
+Aby wyświetlić najbardziej aktualne listy ustawień domyślnych, zobacz [wbudowane ustawienia ma być używany do kodowania wideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+
+Aby zobaczyć, jak są używane ustawienia wstępne, zapoznaj się z [przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md).
 
 ### <a name="standardencoderpreset-preset"></a>Ustawienie wstępne StandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) opisano ustawienia, które będą używane podczas kodowania wejściowy plik wideo za pomocą kodera w warstwie standardowa. Użyj tego ustawienia wstępnego podczas dostosowywania ustawień wstępnych transformacji. 
 
-#### <a name="custom-presets"></a>Ustawienia niestandardowe
+#### <a name="considerations"></a>Zagadnienia do rozważenia
 
-Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w ustawieniach wstępnych w celu spełnienia specyficznych potrzeb kodowania i wymagań dotyczących usługi. Możesz użyć **StandardEncoderPreset** wstępnie ustawione podczas dostosowywania ustawień wstępnych transformacji. Aby uzyskać szczegółowe wyjaśnienie i przykład zobacz [Dostosowywanie ustawień wstępnych kodera](customize-encoder-presets-how-to.md).
+Podczas tworzenia niestandardowych ustawień wstępnych należy uwzględnić następujące kwestie:
+
+- Wszystkie wartości dla wysokość i szerokość AVC zawartości musi być wielokrotnością liczby 4.
+- W usłudze Azure Media Services v3 są wszystkie kodowania szybkości transmisji w bitach na sekundę. To różni się od ustawień wstępnych przy użyciu interfejsów API w wersji 2, które używane kilobitów na sekundę jako jednostka. Na przykład jeśli szybkość transmisji bitów w wersji 2 została określona jako 128 (kilobity/sekundę), w wersji 3 go będzie miał ustawienie 128000 (bity/sekundę).
+
+#### <a name="examples"></a>Przykłady
+
+Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w ustawieniach wstępnych w celu spełnienia specyficznych potrzeb kodowania i wymagań dotyczących usługi. Aby uzyskać przykłady pokazujące, jak dostosować ustawienia wstępne kodera Zobacz:
+
+- [Dostosowywanie ustawień wstępnych przy użyciu platformy .NET](customize-encoder-presets-how-to.md)
+- [Dostosowywanie ustawień wstępnych przy użyciu interfejsu wiersza polecenia](custom-preset-cli-howto.md)
+- [Dostosowywanie ustawień wstępnych z użyciem usług REST](custom-preset-rest-howto.md)
 
 ## <a name="scaling-encoding-in-v3"></a>Skalowanie kodowania w wersji 3
 

@@ -12,24 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 486e891ae055bdd6b6c30aeff63744acb3b0ef04
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c2862c3521c05ba81f7a567f7951d22a9ab95c44
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734542"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609425"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka Ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym artykule opisano, jak używać tematów usługi Service Bus i subskrypcji z aplikacji języka Ruby. Omówione scenariusze obejmują **tworzenie tematów i subskrypcji, tworzenie filtrów subskrypcji, wysyłanie komunikatów** do tematu, **odbieranie komunikatów z subskrypcji**, i **usuwania Tematy i subskrypcje**. Aby uzyskać więcej informacji na temat tematów i subskrypcji, zobacz [następne kroki](#next-steps) sekcji.
+W tym artykule opisano, jak używać tematów usługi Service Bus i subskrypcji z aplikacji języka Ruby. Omówione scenariusze obejmują:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Tworzenie tematów i subskrypcji 
+- Tworzenie filtrów subskrypcji 
+- Wysyłanie komunikatów do tematu 
+- Odbieranie komunikatów z subskrypcji
+- Usuwanie tematów i subskrypcji
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
+## <a name="prerequisites"></a>Wymagania wstępne
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do utworzenia usługi Service Bus **przestrzeni nazw** i Uzyskaj **parametry połączenia**. 
+
+    > [!NOTE]
+    > Utworzysz **tematu** i **subskrypcji** do tematu przy użyciu **Ruby** w tym przewodniku Szybki Start. 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 

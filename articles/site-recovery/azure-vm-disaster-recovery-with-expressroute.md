@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272771"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618103"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -93,7 +93,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 - **Piastą**. Brak sieci wirtualnej koncentratora **źródła piastą**: 10.10.10.0/24.
   - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
   - Cała komunikacja między podsieciami przechodzą przez tego koncentratora.
-    - Centrum sieci wirtualnej podsieci **. Sieć wirtualna Centrum ma dwie podsieci:
+    - **Podsieci sieci wirtualnej koncentratora**. Sieć wirtualna Centrum ma dwie podsieci:
     - **Urządzenie WUS podsieci**: 10.10.10.0/25. Ta podsieć zawiera NVA (. 10.10.10.10).
     - **Podsieć bramy**: 10.10.10.128/25. Ta podsieć zawiera bramę usługi ExpressRoute, nawiązanie połączenia usługi ExpressRoute, która kieruje do lokacji lokalnej za pośrednictwem prywatnej komunikacji równorzędnej domeny routingu.
 - W lokalnym centrum danych ma połączenie obwodu usługi ExpressRoute za pośrednictwem przewagę partnera w Hongkongu.
@@ -104,7 +104,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 
 #### <a name="spoke-to-hub"></a>Szprycha do piasty
 
-**Kierunek** | **Ustawienie** | **Stan**
+**Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
 Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
@@ -115,7 +115,7 @@ Szprycha do piasty | Za pomocą bram remove | Enabled (Włączony)
 
 #### <a name="hub-to-spoke"></a>Piasta do szprychy
 
-**Kierunek** | **Ustawienie** | **Stan**
+**Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
 Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
