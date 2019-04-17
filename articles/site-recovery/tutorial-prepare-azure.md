@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 412dfd690ea4ab33f249af78d4ef94c5ae5ccad2
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565839"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617418"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -54,7 +54,7 @@ Aby można było wykonać te zadania, do konta musi być przypisana wbudowana ro
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-1. W witrynie Azure Portal kliknij pozycję **+Utwórz zasób** i w witrynie Marketplace wyszukaj pozycję **Recovery Services**.
+1. W witrynie Azure portal kliknij pozycję **+ Utwórz zasób**, a w portalu Marketplace wyszukaj hasło **odzyskiwania**.
 2. Kliknij pozycję **Backup and Site Recovery (OMS)**, a następnie na stronie Backup and Site Recovery kliknij pozycję **Utwórz**. 
 1. W obszarze **Magazyn usługi Recovery Services** > **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
 2. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów lub utwórz nową. Na potrzeby tego samouczka używamy grupy **contosoRG**.

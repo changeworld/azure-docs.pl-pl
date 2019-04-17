@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 19949b555a5be21c06c3acfbbd5fb9be08dc9f23
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766951"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608898"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Wprowadzenie do tematów usługi Service Bus
 
@@ -27,24 +27,20 @@ ms.locfileid: "57766951"
 
 Ten samouczek obejmuje następujące kroki:
 
-1. Utworzenie przestrzeni nazw usługi Service Bus za pomocą usługi Azure Portal.
-2. Utworzenie tematu usługi Service Bus przy użyciu witryny Azure Portal.
-3. Utworzenie subskrypcji tego tematu usługi Service Bus przy użyciu witryny Azure Portal.
-4. Napisanie aplikacji konsolowej .NET Core w celu wysłania zestawu komunikatów do tematu.
-5. Napisanie aplikacji konsolowej .NET Core w celu odebrania tych komunikatów z subskrypcji.
+1. Napisanie aplikacji konsolowej .NET Core w celu wysłania zestawu komunikatów do tematu.
+2. Napisanie aplikacji konsolowej .NET Core w celu odebrania tych komunikatów z subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
-2. [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
-2. Subskrypcja platformy Azure.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
-
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do wykonywania następujących zadań:
+    1. Tworzenie usługi Service Bus **przestrzeni nazw**.
+    2. Pobierz **parametry połączenia**.
+    3. Tworzenie **tematu** w przestrzeni nazw.
+    4. Tworzenie **jedna subskrypcja** do tematu w przestrzeni nazw.
+3. [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
+4. [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
+ 
 ## <a name="send-messages-to-the-topic"></a>Wysyłanie komunikatów do tematu
 
 Aby wysyłać komunikaty do tematu, napisz aplikację konsolową w języku C# za pomocą programu Visual Studio.
@@ -204,7 +200,7 @@ Uruchom program Visual Studio i utwórz nowy projekt **Aplikacja konsoli (.NET C
 
 ## <a name="receive-messages-from-the-subscription"></a>Odbieranie komunikatów z subskrypcji
 
-Aby odbierać komunikaty wysłane w poprzednim kroku, utwórz nową aplikację konsolową .NET Core i zainstaluj pakiet NuGet **Microsoft.Azure.ServiceBus**, podobnie jak w przypadku poprzedniej aplikacji nadawcy.
+Aby odbierać komunikaty wysłane, należy utworzyć inną aplikację konsoli .NET Core i zainstalować **Microsoft.Azure.ServiceBus** pakietu NuGet, podobnie jak w przypadku poprzedniej aplikacji nadawcy.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Pisanie kodu w celu odbierania komunikatów z subskrypcji
 

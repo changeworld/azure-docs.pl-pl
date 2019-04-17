@@ -10,20 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 04/09/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 49cc2b8c151053377f8f1da0792f10a06695b332
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496322"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615833"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Pobieranie klucza podpisywania z istniejących zasad
 
-Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. interfejsy API w wersji 3 nie zwracają wpisów tajnych lub poświadczeń na **uzyskać** lub **listy** operacji. Klucze mają zawsze wartość null, są puste lub oczyszczone z odpowiedzi. Użytkownik musi wywołać metodę oddzielnej akcji służącej do pobrania wpisów tajnych lub poświadczenia. **Czytnika** roli nie można wywołać operacji, więc nie można wywoływać operacje, takie jak ContentKeyPolicies.GetPolicyPropertiesWithSecrets Asset.ListContainerSas, StreamingLocator.ListContentKeys,. Masz oddzielne działania umożliwia ustawianie bardziej szczegółowych uprawnień zabezpieczeń RBAC do roli niestandardowej, w razie potrzeby.
-
-Aby uzyskać więcej informacji, zobacz [konta RBAC i Media Services](rbac-overview.md)
+Jedną z najważniejszych zasad projektowania interfejsów API w wersji 3 jest lepsze zabezpieczenie interfejsu API. interfejsy API w wersji 3 nie zwracają wpisów tajnych lub poświadczeń na **uzyskać** lub **listy** operacji. Zobacz szczegółowy opis tutaj: Aby uzyskać więcej informacji, zobacz [konta RBAC i Media Services](rbac-overview.md)
 
 W przykładzie w tym artykule pokazano, jak uzyskać klucz podpisywania z istniejących zasad za pomocą platformy .NET. 
  
@@ -45,4 +43,4 @@ Aby uzyskać dostęp do klucza, należy użyć **GetPolicyPropertiesWithSecretsA
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md) 
+[Projektowanie systemu ochrony zawartości przy użyciu technologii multi-DRM z kontrolą dostępu](design-multi-drm-system-with-access-control.md) 

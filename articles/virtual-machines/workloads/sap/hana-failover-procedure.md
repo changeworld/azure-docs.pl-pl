@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392264"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616156"
 ---
-# <a name="disaster-recovery-failover-procedure"></a>Procedurę trybu failover odzyskiwania po awarii
+# <a name="disaster-recovery-failover-procedure"></a>Procedura przechodzenia w tryb failover odzyskiwania po awarii
 
 
 >[!IMPORTANT]
@@ -87,7 +87,7 @@ Dalej sekwencji kroków obejmuje odzyskiwanie wystąpienia produkcyjnych oprogra
 1. Zmień lokalizację kopii zapasowej na **/hana/logbackups** przy użyciu programu SAP HANA Studio.
    ![Zmiana lokalizacji kopii zapasowej do odzyskania odzyskiwania po awarii](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA skanuje za pośrednictwem lokalizacji kopii zapasowej plików i sugeruje najnowszej kopii zapasowej dziennika transakcji do przywrócenia. Skanowanie może potrwać kilka minut, aż do ekranu, tak jak pojawia się następujące: ![listy kopie zapasowe dziennika transakcji do odzyskania odzyskiwania po awarii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+1. SAP HANA skanuje za pośrednictwem lokalizacji kopii zapasowej plików i sugeruje najnowszej kopii zapasowej dziennika transakcji do przywrócenia. Skanowanie może potrwać kilka minut, aż do ekranu, tak jak pojawia się następujący komunikat: ![Lista kopie zapasowe dziennika transakcji do odzyskania odzyskiwania po awarii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
 1. Dostosuj niektóre z domyślnych ustawień:
 
@@ -104,7 +104,7 @@ Powinna pojawić się okno postępu, jak pokazano w tym miejscu. Należy pamięt
 
 ![Przywracanie w toku](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-W przypadku przywracania wydaje się zatrzymuje się na **Zakończ** ekranu i nie pokazuj ekran pokazujący postęp, upewnij się, że są uruchomione wszystkie wystąpienia oprogramowania SAP HANA na węzłach procesu roboczego. Jeśli to konieczne, należy ręcznie uruchomić wystąpieniami platformy SAP HANA.
+W przypadku przywracania wydaje się, że przestanie odpowiadać na **Zakończ** ekranu i nie pokazuj ekran pokazujący postęp, upewnij się, że są uruchomione wszystkie wystąpienia oprogramowania SAP HANA na węzłach procesu roboczego. Jeśli to konieczne, należy ręcznie uruchomić wystąpieniami platformy SAP HANA.
 
 
 ## <a name="failback-from-a-dr-to-a-production-site"></a>Powrót po awarii z odzyskiwania po awarii do lokacji w środowisku produkcyjnym

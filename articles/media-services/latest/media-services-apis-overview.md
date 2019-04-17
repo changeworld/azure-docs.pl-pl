@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546402"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617400"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
@@ -25,7 +25,8 @@ W tym artykule omówiono reguły mające zastosowanie do interfejsów API oraz j
 
 ## <a name="accessing-the-azure-media-services-api"></a>Uzyskiwanie dostępu do interfejsu API usługi Azure Media Services
 
-Aby uzyskać dostęp do zasobów usługi Azure Media Services, należy użyć uwierzytelniania jednostki usługi Azure Active Directory (AD). Interfejsu API usługi Azure Media Services wymaga, że użytkownik lub aplikacja, która sprawia, że interfejs API REST żądania, mają dostęp do zasobów konta usługi Azure Media Services (zazwyczaj **Współautor** lub **właściciela** Rola). Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach do konta usługi Media Services](rbac-overview.md).
+Aby uzyskać dostęp do zasobów usługi Azure Media Services, można użyć uwierzytelniania jednostki usługi Azure Active Directory (AD).
+Interfejsu API usług Media Services wymaga, czy użytkownik lub aplikacja, dzięki czemu interfejs API REST żądań mają dostęp do zasobów konta usługi Media Services i użyj **Współautor** lub **właściciela** roli. Interfejs API jest możliwy za pomocą **czytnika** roli, ale tylko **uzyskać** lub **listy**   operacje będą dostępne. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach do konta usługi Media Services](rbac-overview.md).
 
 Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure na dostęp do interfejsu API usług Media Services za pomocą usługi Azure Resource Manager. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 

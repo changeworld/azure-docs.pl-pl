@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280863"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608195"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Szybki start: Logowanie się i ustawianie identyfikatora użytkownika
 
@@ -33,6 +33,9 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 1. Po wyświetleniu monitu wprowadź adres e-mail Account Microsoft pracy lub służbowe konto i wybierz **dalej**. Typy kont zostały opisane na [Twoje konto użytkownika dla usługi Azure notesów](azure-notebooks-user-account.md). Jeśli nie masz Account Microsoft lub chcesz wprowadzić jeden do użycia z notesów usługi Azure, wybierz opcję **utworzyć**:
 
     ![Utwórz nowe polecenie konta Microsoft w monit logowania](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > Jeśli spróbujesz utworzyć nowe konto, za pomocą adresu e-mail, który ma już konto skojarzone z nim, może zostać wyświetlony komunikat, "nie można Zarejestruj się tutaj przy użyciu służbowego lub szkolny adres e-mail. Użyj osobistego adresu e-mail, takiego jak Gmail lub Yahoo!, lub uzyskaj nowy adres e-mail programu Outlook". W takim przypadku spróbuj zalogować się bez tworzenia nowego konta służbowego adresu e-mail.
 
 1. Wprowadź hasło po wyświetleniu monitu.
 

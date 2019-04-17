@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435116"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630541"
 ---
 W przypadku pierwszego scenariusza, należy dodać, istniejącej nowy typ danych telemetrycznych do firmy Contoso **Chłodnica** typu urządzenia.
 
@@ -72,9 +72,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby wykonać instrukcje opisane w tym przewodniku, należy:
 
 * Program Visual Studio Code. Możesz [pobierania programu Visual Studio Code dla komputerów Mac, Linux i Windows](https://code.visualstudio.com/download).
-* .NET core. Możesz pobrać [platformy .NET Core dla systemów Mac, Linux i Windows](https://www.microsoft.com/net/download).
+* .NET Core. Możesz pobrać [platformy .NET Core dla systemów Mac, Linux i Windows](https://www.microsoft.com/net/download).
 * [Rozszerzenie C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* Narzędzia postman. Możesz pobrać [Postman dla komputerów Mac, Windows lub Linux](https://www.getpostman.com/apps).
+* Postman. Możesz pobrać [Postman dla komputerów Mac, Windows lub Linux](https://www.getpostman.com/apps).
 * [Wdrożone do subskrypcji platformy Azure w Centrum IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). Będą potrzebne parametry połączenia Centrum IoT, wykonanie czynności opisanych w tym przewodniku. Parametry połączenia można uzyskać w witrynie Azure portal.
 * Bazy danych Cosmos DB, za pomocą interfejsu API SQL, który jest skonfigurowany dla [wysoki poziom spójności](../articles/cosmos-db/manage-account.md). Będą potrzebne parametry połączenia bazy danych Cosmos DB, wykonanie czynności opisanych w tym przewodniku. Parametry połączenia można uzyskać w witrynie Azure portal.
 
@@ -98,13 +98,11 @@ Pobierz i Rozpakuj [mikrousług symulacji urządzenia](https://github.com/Azure/
 
 Otwórz **remote-monitoring-services-dotnet-master\storage-adapter** folderu w programie Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
 
-Otwórz **.vscode/launch.json** pliku i parametry połączenia usługi Cosmos DB, aby przypisać **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** zmiennej środowiskowej.
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+Otwórz **storage-adapter/WebService/appsettings.ini** pliku i parametry połączenia usługi Cosmos DB, aby przypisać **documentDBConnectionString** zmiennej.
 
 Aby uruchomić mikrousługi lokalnie, kliknij przycisk **Debuguj > Rozpocznij debugowanie**.
 
-**Terminalu** okna w programie Visual Studio Code przedstawiono dane wyjściowe z uruchomionego mikrousług, łącznie z adresu URL dla sprawdzenie kondycji usługi sieci web: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Po przejściu do tego adresu powinna być w stanie "OK: aktywności i dobrze".
+**Terminalu** okna w programie Visual Studio Code przedstawiono dane wyjściowe z uruchomionego mikrousług, łącznie z adresu URL dla sprawdzenie kondycji usługi sieci web: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Po przejściu do tego adresu powinna być w stanie "OK: Aktywne i dobrze".
 
 Pozostaw mikrousług adapter magazynu, używaną w tym wystąpieniu programu Visual Studio Code wykonaj kolejne kroki.
 
@@ -118,12 +116,12 @@ W tej sekcji dodasz nowy **temperatura wewnętrzna** typu telemetrii do istniej�
 
     | Element źródłowy | Element docelowy |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
-    | Services\data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
-    | Services\data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
     | Services\data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
-    | Services\data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
-    | Services\data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
 1. Otwórz **C:\temp\devicemodels\chiller-01.json** pliku.
 
@@ -417,11 +415,7 @@ W tej sekcji możesz przetestować typów urządzeń, utworzony w poprzednich se
 
 Otwórz **urządzeń symulacji dotnet-master** folder został pobrany z usługi GitHub w nowym wystąpieniu programu Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
 
-Otwórz **.vscode/launch.json** plików i przypisz do parametrów połączenia usługi IoT Hub **PCS_IOTHUB_CONNSTRING** zmiennej środowiskowej. W tym samym pliku Dodaj **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** zmiennej środowiskowej i przypisz parametry połączenia z bazą danych Cosmos DB.
-
-Otwórz **WebService/Properties/launchSettings.json** plików i przypisz do parametrów połączenia usługi IoT Hub **PCS_IOTHUB_CONNSTRING** zmiennej środowiskowej.
-
-Otwórz **WebService/appsettings.ini** plik i zmodyfikować następujące ustawienia:
+Otwórz **WebService/appsettings.ini** pliku i parametry połączenia usługi Cosmos DB, aby przypisać **documentdb_connstring** zmiennej i również zmodyfikować następujące ustawienia:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

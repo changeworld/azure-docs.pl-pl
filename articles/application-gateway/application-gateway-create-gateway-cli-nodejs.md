@@ -1,44 +1,26 @@
 ---
-title: Tworzenie usługi Azure Application Gateway — klasyczny interfejs wiersza polecenia Azure | Dokumentacja firmy Microsoft
+title: Tworzenie usługi Azure Application Gateway — klasycznego wiersza polecenia platformy Azure
 description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu klasycznego wiersza polecenia platformy Azure w usłudze Resource Manager
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974429"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608476"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu wiersza polecenia platformy Azure
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager — program PowerShell](application-gateway-create-gateway-arm.md)
-> * [Klasyczny portal Azure — program PowerShell](application-gateway-create-gateway.md)
-> * [Szablon usługi Azure Resource Manager](application-gateway-create-gateway-arm-template.md)
-> * [Klasyczny interfejs wiersza polecenia Azure](application-gateway-create-gateway-cli.md)
-> * [Interfejs wiersza polecenia platformy Azure](application-gateway-create-gateway-cli.md)
-> 
-> 
+Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Usługa Application gateway ma następujące funkcje dostarczania aplikacji: Równoważenie obciążenia HTTP, koligację sesji na podstawie plików cookie i odciążanie protokołu Secure Sockets Layer (SSL), niestandardowe sondy kondycji i obsługę wielu witryn.
 
-Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 7. Udostępnia tryb failover, oparty na wydajności routing żądań HTTP między różnymi serwerami — w chmurze i lokalnymi. Application gateway oferuje następujące funkcje dostarczania aplikacji: HTTP obciążenia równoważenia, koligacja sesji na podstawie pliku cookie i odciążanie protokołu Secure Sockets Layer (SSL), niestandardowe sondy kondycji i obsługę wielu witryn.
+## <a name="prerequisite-install-the-azure-cli"></a>Wymagania wstępne: Zainstaluj interfejs wiersza polecenia platformy Azure
 
-## <a name="prerequisite-install-the-azure-cli"></a>Wymagania wstępne: Instalacja interfejsu wiersza polecenia platformy Azure
-
-Aby wykonać kroki opisane w tym artykule, musisz [zainstalować interfejs wiersza polecenia platformy Azure](../xplat-cli-install.md) i trzeba [Zaloguj się do platformy Azure](/cli/azure/authenticate-azure-cli). 
+Aby wykonać kroki opisane w tym artykule, musisz [zainstalować interfejs wiersza polecenia platformy Azure](../xplat-cli-install.md) i trzeba [Zaloguj się na platformie Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Jeśli nie masz konta platformy Azure, możesz je utworzyć. Zarejestruj się, aby skorzystać z [bezpłatnego demo](../active-directory/fundamentals/sign-up-organization.md).
@@ -60,12 +42,12 @@ W tym scenariuszu wykonują następujące czynności:
 
 Usługa Azure Application Gateway wymaga własnej podsieci. Podczas tworzenia sieci wirtualnej, upewnij się, pozostanie wystarczająco dużo przestrzeni adresowej do wielu podsieci. Po wdrożeniu bramy aplikacji z podsiecią bramy aplikacji z jedynymi dodatkowymi są w stanie mają zostać dodane do tej podsieci.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Otwórz **wiersza polecenia platformy Azure Microsoft**i zaloguj się. 
+Otwórz **wiersza polecenia platformy Azure Microsoft**i zaloguj się.
 
 ```azurecli-interactive
-azure login
+az login
 ```
 
 Po wpisaniu poprzedniego przykładu, znajduje się kod. Przejdź do https://aka.ms/devicelogin w przeglądarce, aby kontynuować proces logowania.
@@ -122,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Po utworzeniu sieci wirtualnej i podsieci spełniono wymagania wstępne w usłudze application gateway. Ponadto certyfikatu wcześniej wyeksportowanego pliku PFX i hasło dla certyfikatu są wymagane dla następujący krok: adresy IP używane do wewnętrznej bazy danych są adresami IP dla serwera wewnętrznej bazy danych. Te wartości mogą być prywatne adresy IP w sieci wirtualnej, publiczne adresy IP lub w pełni kwalifikowanych nazw domen dla serwerów zaplecza.
+Po utworzeniu sieci wirtualnej i podsieci spełniono wymagania wstępne w usłudze application gateway. Ponadto certyfikat wcześniej wyeksportowanego pliku PFX i hasło dla certyfikatu są wymagane dla następujący krok: Adresy IP używane dla zaplecza są adresy IP dla serwera wewnętrznej bazy danych. Te wartości mogą być prywatne adresy IP w sieci wirtualnej, publiczne adresy IP lub w pełni kwalifikowanych nazw domen dla serwerów zaplecza.
 
 ```azurecli-interactive
 azure network application-gateway create \

@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002157"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606926"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Tworzenie zadania do śledzenia zmian w plikach na komputerze lokalnym obserwatora usługi Azure Automation
 
@@ -36,6 +36,9 @@ Do wykonania czynności przedstawionych w tym samouczku są wymagane następują
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Konto usługi Automation](automation-offering-get-started.md) do przechowywania obserwatora i elementów runbook akcji oraz zadania obserwatora.
 * A [hybrydowego procesu roboczego runbook](automation-hybrid-runbook-worker.md) którym działa zadanie obserwatora.
+
+> [!NOTE]
+> Zadania obserwatora nie są obsługiwane w chińskiej wersji platformy Azure.
 
 ## <a name="import-a-watcher-runbook"></a>Importowanie elementu runbook obserwatora
 
