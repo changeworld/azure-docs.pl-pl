@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d82c1909a28de694925a12e9b801361cad1f36d2
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494709"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608779"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Odnajdowanie obszaru macierzystego dla strony logowania usługi Azure Active Directory
 
@@ -49,7 +49,7 @@ Dodatkową zaletą tej pracy jest błąd Ulepszone komunikaty. Poniżej przedsta
     ![hasło jest źle wpisano przy użyciu właściwej nazwy użytkownika](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Ta funkcja może mieć wpływ na domen federacyjnych, opierając się na starym poziomu domeny odnajdowania obszaru macierzystego do Federacji force. Aktualizacje na dodania obsługi domeny federacyjnej, zobacz [Home odnajdowania obszaru podczas logowania do usługi Microsoft 365](https://blogs.azure.net/updates/Admin/Blogs/29/Posts/3170). W międzyczasie niektóre organizacje mają skonfigurowanych pod kątem pracownikom zalogować się przy użyciu nazwy użytkownika, która nie istnieje w usłudze Azure Active Directory, ale zawiera nazwy domeny, ponieważ nazwy domen kieruje użytkowników aktualnie do endpoint domeny w swojej organizacji. Nowe zachowanie logowania nie zezwala na to. Użytkownik jest powiadamiany, aby rozwiązać nazwę użytkownika i nie mogą zalogować się przy użyciu nazwy użytkownika, który nie istnieje w usłudze Azure Active Directory.
+> Ta funkcja może mieć wpływ na domen federacyjnych, opierając się na starym poziomu domeny odnajdowania obszaru macierzystego do Federacji force. Aktualizacje na dodania obsługi domeny federacyjnej, zobacz [Home odnajdowania obszaru podczas logowania do usługi Microsoft 365](https://azure.microsoft.com/en-us/updates/signin-hrd/). W międzyczasie niektóre organizacje mają skonfigurowanych pod kątem pracownikom zalogować się przy użyciu nazwy użytkownika, która nie istnieje w usłudze Azure Active Directory, ale zawiera nazwy domeny, ponieważ nazwy domen kieruje użytkowników aktualnie do endpoint domeny w swojej organizacji. Nowe zachowanie logowania nie zezwala na to. Użytkownik jest powiadamiany, aby rozwiązać nazwę użytkownika i nie mogą zalogować się przy użyciu nazwy użytkownika, który nie istnieje w usłudze Azure Active Directory.
 >
 > Jeśli Ty lub Twoja organizacja ma rozwiązania, które są zależne od starsze zachowanie, jest ważne dla administratorów organizacji, aby zaktualizować dokumentację logowania i uwierzytelniania pracowników i szkolenie pracowników, zaloguj się przy użyciu swoją nazwę użytkownika usługi Azure Active Directory.
   

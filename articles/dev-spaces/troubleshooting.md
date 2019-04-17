@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548784"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609079"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -357,3 +357,25 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 ```
 
 Po ponownym zainstalowaniu kontrolera sieci, należy ponownie wdrożyć zasobników.
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Niepoprawne uprawnień RBAC do wywoływania kontrolera Dev miejsca do magazynowania i interfejsów API
+
+### <a name="reason"></a>Przyczyna
+Użytkowników, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć dostęp do odczytu administratora *plik kubeconfig* w klastrze AKS. Na przykład, to uprawnienie jest dostępne w [wbudowanej roli administratora klastra usługi Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik, uzyskiwanie dostępu do kontrolera Azure Dev miejsca do magazynowania musi mieć również *Współautor* lub *właściciela* rolę RBAC dla kontrolera.
+
+### <a name="try"></a>Spróbuj
+Dostępne są szczegółowe informacje na temat aktualizowania uprawnień użytkownika, dla klastra usługi AKS [tutaj](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+
+Aby zaktualizować rolę RBAC użytkownika dla kontrolera:
+
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+1. Przejdź do grupy zasobów zawierające kontroler, który jest zwykle taka sama jak klastra usługi AKS.
+1. Włącz *Pokaż ukryte typy* pola wyboru.
+1. Kliknij na kontrolerze.
+1. Otwórz *kontrola dostępu (IAM)* okienka.
+1. Kliknij pozycję *przypisań ról* kartę.
+1. Kliknij przycisk *Dodaj* następnie *Dodaj przypisanie roli*.
+    * Aby uzyskać *roli* wybierz opcję *Współautor* lub *właściciela*.
+    * Aby uzyskać *Przypisz dostęp do* wybierz *użytkownika, grupy lub jednostki usługi Azure AD*.
+    * Aby uzyskać *wybierz* Wyszukaj użytkownika, którą chcesz nadać uprawnienia.
+1. Kliknij pozycję *Zapisz*.

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/27/2019
+ms.date: 4/15/2019
 ms.author: barclayn
-ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540826"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608869"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -155,6 +155,10 @@ Tak. Każdego urządzenia sprzętowego modułu zabezpieczeń jest pełni dedykow
 
 Microsoft nie ma dowolną kontrolkę kryptograficznych lub administracyjnych w ramach sprzętowego modułu zabezpieczeń. Firma Microsoft jeszcze monitor poziom dostępu za pośrednictwem portu szeregowego połączenia, aby pobierać podstawowe dane telemetryczne, np. temperaturę, jak i składnika kondycji. Dzięki temu firma Microsoft zapewni powiadomień z wyprzedzeniem o problemów z kondycją. W razie potrzeby klient może wyłączyć to konto.
 
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Pyt.: Co to jest "tenantadmin" konto Microsoft używa, używany jest użytkownika administratora "admin", w sprzętowych modułach zabezpieczeń SafeNet?
+
+Urządzenia HSM jest dostarczany z domyślnego użytkownika administracyjnego z jego zwykle domyślne hasło. Microsoft nie chcesz mieć domyślne hasła używane, gdy dowolne urządzenie znajduje się w puli, oczekiwanie na udostępniane przez klientów. Czy spełnia naszych wymagań w zakresie ścisłymi zasadami kontrolnymi zabezpieczeń. Z tego powodu firma Microsoft ustawić silne hasło, które zostały odrzucone na czas obsługi administracyjnej. Ponadto na czas obsługi administracyjnej możemy utworzyć nowego użytkownika w roli administratora o nazwie "tenantadmin". Ten użytkownik nie ma domyślne hasło i klienci zmienić jako pierwszą akcję podczas pierwszego logowania się do nowo aprowizowanej urządzenia. Ten proces zapewnia wysoki stopień zabezpieczeń i przechowuje naszego zobowiązania wyłączną kontrolę administracyjną dla naszych klientów. Należy zauważyć, że użytkownik "tenantadmin" może służyć do resetowania hasła użytkownika administratora, jeśli klient chce użyć danego konta. 
+
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Pyt.: Można firmy Microsoft lub uprasza klucze dostępu firmy Microsoft w mojej przez sprzętowy moduł zabezpieczeń w wersji dedykowanej?
 
 Nie. Microsoft nie ma dostępu do kluczy przechowywanych w klienta przydzielony dedykowany przez moduł HSM.
@@ -181,7 +185,7 @@ Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Pyt.: Czy jest możliwe do skonfigurowania wysokiej dostępności, w tym samym regionie lub w wielu regionach?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Pyt.: Czy jest możliwe skonfigurować wysoką dostępność, w tym samym regionie lub w wielu regionach?
 
 Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci Wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w regionach lub w środowisku lokalnym sprzętowych modułów zabezpieczeń połączone z siecią Wirtualną przy użyciu lokacja lokacja lub sieci VPN typu punkt-punkt mogą być dodawane do tej samej konfiguracji o wysokiej dostępności. Należy zauważyć, że synchronizuje tylko materiału klucza i elementy nie konkretnej konfiguracji, takie jak role.
 
@@ -201,7 +205,7 @@ Nie.
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Pyt.: Co to jest umowa SLA dla usługi w wersji dedykowanej przez moduł HSM?
 
-Nie ma żadnych guarentee określonego czasu podane dla usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń. Microsoft zapewni poziomu dostępu do sieci na urządzeniu i dlatego stosowanie standardowych umów SLA sieci platformy Azure.
+Nie ma żadnej gwarancji określonego czasu, które podano dla usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń. Microsoft zapewni poziomu dostępu do sieci na urządzeniu i dlatego stosowanie standardowych umów SLA sieci platformy Azure.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Pyt.: Jak są używane moduły HSM w platformy Azure w wersji dedykowanej chronione przez moduł HSM?
 
@@ -217,7 +221,7 @@ Zdecydowanie zaleca się używać urządzenia kopii zapasowej przez moduł HSM d
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Pyt.: Jak uzyskać pomoc techniczną dotyczącą dedykowany przez moduł HSM?
 
-Pomoc techniczna jest świadczona przez firmę Microsoft, jak i firmy Gemalto.  Jeśli występuje problem ze sprzętem lub dostęp do sieci, Prześlij żądanie pomocy technicznej firmy Microsoft, a jeśli masz problem za pomocą modułu HSM konfiguracji, oprogramowania i aplikacji, zapoznaj się z rasie obsługi żądania z firmy Gemalto. Jeśli masz nieokreślony problem podnieść withg żądania pomocy technicznej firmy Microsoft, a następnie firmy Gemalto może zostać uruchomione jako wymagane. 
+Pomoc techniczna jest świadczona przez firmę Microsoft, jak i firmy Gemalto.  Jeśli masz problem z dostępem do sprzętu lub w sieci, zgłosić żądanie pomocy technicznej z firmą Microsoft i, jeśli występuje problem z konfiguracją modułu HSM, oprogramowania i tworzenia aplikacji, zgłoś żądanie pomocy technicznej z firmy Gemalto. Jeśli masz nieokreślonej problemu, Prześlij żądanie pomocy technicznej firmy Microsoft, a następnie firmy Gemalto może zostać uruchomione jako wymagane. 
 
 ### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Pyt.: Jak uzyskać dostęp do integracji wskazówki dotyczące SafeNet Luna 7 przez moduł HSM, dokumentację i oprogramowania klienta?
 
