@@ -212,7 +212,7 @@ sections:
         style: unordered
         items:
           - html: <a href="speech-to-text-sample.md">Zamiana mowy na tekst (SR)</a><br/>
-          - html: <a href="intent.md">Rozpoznawanie intencji</a><br/>
+          - html: <a href="intent.md">Rozpoznawanie intencji mowy</a><br/>
           - html: <a href="translation.md">Tłumaczenie</a>
           - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Zamiana tekstu na mowę</a><br/>
   - title: Przykłady
@@ -233,10 +233,10 @@ sections:
           - title: Dokumentacja zestawu SDK
             html: |
               <p><a href="https://aka.ms/csspeech/csharpref">Interfejs API języka C# (UWP, .NET i Unity)</a></p>
-              <p><a href="https://aka.ms/csspeech/cppref">Interfejs API języka C++</a></p>
+              <p><a href="https://aka.ms/csspeech/cppref">Interfejs API w języku C++</a></p>
               <p><a href="https://aka.ms/csspeech/javaref">Interfejs API języka Java</a></p>
               <p><a href="https://aka.ms/csspeech/pythonref">Interfejs API języka Python</a></p>
-              <p><a href="https://aka.ms/csspeech/objectivecref">Interfejs API języka Objective-C</a></p>
+              <p><a href="https://aka.ms/csspeech/objectivecref">Interfejs API w języku Objective-C</a></p>
               <p><a href="https://aka.ms/csspeech/javascriptref">Interfejs API języka JavaScript</a></p>
           - title: Interfejs API REST
             html: |
