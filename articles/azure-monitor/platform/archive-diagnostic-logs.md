@@ -78,9 +78,9 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | --- | --- | --- |
 | ResourceId |Yes |Identyfikator zasobu zasobu, na którym jest ustawienie diagnostyczne. |
 | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, do którego powinny być zapisywane dzienniki diagnostyczne. |
-| Kategorie |Nie |Rozdzielana przecinkami lista kategorie dziennika, aby włączyć. |
+| Categories |Nie |Rozdzielana przecinkami lista kategorie dziennika, aby włączyć. |
 | Enabled (Włączony) |Yes |Wartość logiczna wskazująca, czy diagnostyki włączone lub wyłączone w przypadku tego zasobu. |
-| Retentionenable |Nie |Wartość logiczna wskazująca, czy zasady przechowywania są włączone dla tego zasobu. |
+| RetentionEnabled |Nie |Wartość logiczna wskazująca, czy zasady przechowywania są włączone dla tego zasobu. |
 | RetentionInDays |Nie |Liczba dni, dla których ma być przechowywana zdarzeń, od 1 do 2147483647. Dzienniki na wartość zero są przechowywane w nieskończoność. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Archiwizowanie dzienników diagnostycznych za pomocą wiersza polecenia platformy Azure
