@@ -173,9 +173,9 @@ W poniższej tabeli określono, czy typ danych usługi Azure Search jest obsług
 | Int32 | Tak |
 | Int64 | Tak |
 | Double | Tak |
-| Wartość logiczna | Tak |
+| Boolean | Tak |
 | DataTimeOffset | Tak |
-| Tablica ciągów | Nie |
+| String Array | Nie |
 | GeographyPoint | Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
