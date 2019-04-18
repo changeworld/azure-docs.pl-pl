@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 24d6f41e2415d9a8a6113135bf11c98b1e19f1f7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904665"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentacja usługi Azure Data Lake Storage 1. generacji
@@ -181,7 +181,7 @@ Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (pop
                 <div class="card">
                     <div class="cardText">
                         <h3>Wiersz polecenia</h3>
-                        <p><a href="/powershell/module/az.datalakestore/">PowerShell</a></p>
+                        <p><a href="/powershell/module/az.datalakestore/">Program PowerShell</a></p>
                         <p><a href="/cli/azure/dls">Interfejs wiersza polecenia platformy Azure</a></p>
                     </div>
                 </div>

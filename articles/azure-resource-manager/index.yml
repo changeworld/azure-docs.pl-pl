@@ -60,7 +60,7 @@ sections:
         style: unordered
         className: spaced noBullet
         items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Szablony przewodników Szybki start platformy Azure</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Szablony Szybkiego startu platformy Azure</a>'
           - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (wersja zapoznawcza)</a>'
   - title: Dokumentacja
     items:
@@ -69,7 +69,7 @@ sections:
         className: cardsD
         items:
           - title: Szablony
-            html: <p><a href="/azure/templates/">Dokumentacja dotycząca szablonów</a></p><p><a href="/azure/resource-group-template-functions">Funkcje szablonów</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkcje definicji interfejsu użytkownika</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elementy definicji interfejsu użytkownika</a></p>
+            html: <p><a href="/azure/templates/">Dokumentacja szablonu</a></p><p><a href="/azure/resource-group-template-functions">Funkcje szablonów</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkcje definicji interfejsu użytkownika</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elementy definicji interfejsu użytkownika</a></p>
           - title: Wiersz polecenia
             html: <p><a href="/cli/azure/resource">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
           - title: Języki

@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051039"
 ---
 <div id="main" class="v2">
@@ -161,10 +161,10 @@ ms.locfileid: "59051039"
                                                             <a href="manage-apps/index.yml"><i>Zobacz więcej &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">Authentication</a></h3>
+                                                        <h3><a href="authentication/index.yml">Uwierzytelnianie</a></h3>
                                                         <p>
                                                             <a href="authentication/concept-mfa-howitworks.md">Jak to działa: Azure MFA</a><br>
-                                                            <a href="authentication/concept-sspr-howitworks.md">Samoobsługowe resetowanie haseł usługi Azure AD</a><br>
+                                                            <a href="authentication/concept-sspr-howitworks.md">Samoobsługowe resetowanie haseł w usłudze Azure AD</a><br>
                                                             <a href="authentication/concept-password-ban-bad.md">Ochrona haseł w usłudze Azure AD</a><br>
                                                             <a href="authentication/index.yml"><i>Zobacz więcej &gt;</i></a>
                                                             </p>
@@ -221,8 +221,8 @@ ms.locfileid: "59051039"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">Usługi domenowe</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Co to są Usługi domenowe Azure AD?</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Włączanie Usług domenowych Azure AD</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Co to są usługi Azure AD Domain Services?</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Włączanie usługi Azure AD Domain Services</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy">Administrowanie zasadami grupy</a><br>
                                                             <a href="/azure/active-directory-domain-services/index"><i>Zobacz więcej &gt;</i></a>
                                                         </p>
@@ -256,7 +256,7 @@ ms.locfileid: "59051039"
                                                         <h3><a href="governance/index.yml">Nadzór nad tożsamościami</a></h3>
                                                         <p>
                                                             <a href="governance/create-access-review.md">Tworzenie przeglądu dostępu</a><br>
-                                                            <a href="governance/perform-access-review.md">Rozpoczynanie przeglądu dostępu</a><br>
+                                                            <a href="governance/perform-access-review.md">Uruchamianie przeglądu dostępu</a><br>
                                                             <a href="conditional-access/terms-of-use.md">Korzystanie z warunków użytkowania</a><br>
                                                             <a href="governance/index.yml"><i>Zobacz więcej &gt;</i></a>
                                                         </p>
