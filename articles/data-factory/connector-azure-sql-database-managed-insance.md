@@ -54,9 +54,9 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **SqlServer**. | Tak. |
-| Parametry połączenia |Ta właściwość określa informacje parametry połączenia, które jest wymagane do połączenia wystąpienia zarządzanego przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Aby uzyskać więcej informacji zobacz następujące przykłady. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Tak. |
+| connectionString |Ta właściwość określa informacje parametry połączenia, które jest wymagane do połączenia wystąpienia zarządzanego przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Aby uzyskać więcej informacji zobacz następujące przykłady. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Tak. |
 | userName |Ta właściwość określa nazwę użytkownika, jeśli używasz uwierzytelniania Windows. Na przykład **nazwa_domeny\\username**. |Nie. |
-| hasło |Ta właściwość określa hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Wybierz **SecureString** można bezpiecznie przechowywać informacji parametry połączenia w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie. |
+| password |Ta właściwość określa hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Wybierz **SecureString** można bezpiecznie przechowywać informacji parametry połączenia w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie. |
 | connectVia | To [środowiska integration runtime](concepts-integration-runtime.md) służy do łączenia się z magazynem danych. Dostarczanie własnego środowiska integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego. |Tak. |
 
 >[!TIP]
@@ -510,36 +510,36 @@ Gdy dane są kopiowane do i z wystąpienia zarządzanego Azure SQL Database, nas
 | Typ danych w wystąpieniu zarządzanym bazy danych SQL platformy Azure | Typ danych tymczasowych w usłudze Azure Data Factory |
 |:--- |:--- |
 | bigint |Int64 |
-| dane binarne |Byte[] |
-| Bitowe |Wartość logiczna |
-| Char |Ciąg, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Data/godzina |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Dziesiętna |Dziesiętna |
-| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |Podwójne |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| pieniędzy |Dziesiętna |
-| nchar |Ciąg, Char] |
-| ntext |Ciąg, Char] |
-| Numeryczne |Dziesiętna |
-| nvarchar |Ciąg, Char] |
-| rzeczywiste |Pojedyncze |
-| ROWVERSION |Byte[] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Dziesiętna |
-| sql_variant |Obiekt |
-| tekst |Ciąg, Char] |
-| time |Przedział czasu |
-| sygnatura czasowa |Byte[] |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |Identyfikator GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
-| varchar |Ciąg, Char] |
+| varchar |String, Char[] |
 | xml |Xml |
 
 >[!NOTE]
