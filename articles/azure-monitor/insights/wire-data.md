@@ -397,9 +397,9 @@ Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. R
 | ReceivedBytes | Liczba odebranych bajtów |
 | ProtocolName | Nazwa używanego protokołu sieciowego |
 | IPVersion | Wersja protokołu IP |
-| Kierunek | Ruch przychodzący lub wychodzący |
+| Direction | Ruch przychodzący lub wychodzący |
 | MaliciousIP | Adres IP znanego złośliwego źródła |
-| Ważność | Ważność podejrzanego złośliwego oprogramowania |
+| Severity | Ważność podejrzanego złośliwego oprogramowania |
 | RemoteIPCountry | Kraj zdalnego adresu IP |
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager |
 | SourceSystem | Źródło, gdzie zostały zebrane dane |
