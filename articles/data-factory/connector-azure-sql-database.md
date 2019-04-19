@@ -55,10 +55,10 @@ Te właściwości są obsługiwane w przypadku platformy Azure połączonej usł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **AzureSqlDatabase**. | Yes |
-| Parametry połączenia | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Database dla **connectionString** właściwości. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić klucz jednostki usługi/hasła w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
+| connectionString | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Database dla **connectionString** właściwości. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić klucz jednostki usługi/hasła w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Środowisko IR platformy Azure lub własnego środowiska integration runtime można użyć, jeśli magazyn danych znajduje się w sieci prywatnej. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie |
 
 Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotyczących wymagań wstępnych i przykłady kodu JSON odpowiednio:
@@ -605,36 +605,36 @@ Podczas kopiowania danych z lub do usługi Azure SQL Database, następujące map
 | Typ danych w usłudze Azure SQL Database | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | bigint |Int64 |
-| dane binarne |Byte[] |
-| Bitowe |Wartość logiczna |
-| Char |Ciąg, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Data/godzina |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Dziesiętna |Dziesiętna |
-| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |Podwójne |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| pieniędzy |Dziesiętna |
-| nchar |Ciąg, Char] |
-| ntext |Ciąg, Char] |
-| Numeryczne |Dziesiętna |
-| nvarchar |Ciąg, Char] |
-| rzeczywiste |Pojedyncze |
-| ROWVERSION |Byte[] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Dziesiętna |
-| sql_variant |Obiekt |
-| tekst |Ciąg, Char] |
-| time |Przedział czasu |
-| sygnatura czasowa |Byte[] |
-| tinyint |Bajt |
-| uniqueidentifier |Identyfikator GUID |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
-| varchar |Ciąg, Char] |
+| varchar |String, Char[] |
 | xml |Xml |
 
 >[!NOTE]
