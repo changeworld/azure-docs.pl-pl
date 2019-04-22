@@ -55,11 +55,11 @@ Lub, jeśli istnieje już połączenie, podaj informacje niezbędne dla wyzwalac
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Yes | <*search-words*> | Wprowadź słowa kluczowe wyszukiwania, których chcesz użyć. |
-   | Rynek | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
-   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
-   | Przesunięcie | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Yes | <*search-words*> | Wprowadź słowa kluczowe wyszukiwania, których chcesz użyć. |
+   | Market | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
+   | Safe Search | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
+   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
+   | Offset | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
    Na przykład:
@@ -106,11 +106,11 @@ Z listy akcji wybierz akcję, którą chcesz.
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Yes | <*search-expression*> | Wprowadź wyrażenie dotyczące zapytaniach dotyczących wyników wyzwalacza. Wybierz z pól na liście zawartości dynamicznej lub utwórz wyrażenie z konstruktorem wyrażeń. |
-   | Rynek | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
-   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
-   | Przesunięcie | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Yes | <*search-expression*> | Wprowadź wyrażenie dotyczące zapytaniach dotyczących wyników wyzwalacza. Wybierz z pól na liście zawartości dynamicznej lub utwórz wyrażenie z konstruktorem wyrażeń. |
+   | Market | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
+   | Safe Search | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
+   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
+   | Offset | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
    Na przykład załóżmy, że chcesz użyć tych wyników, których nazwa kategorii zawiera wyraz "pomoc".
