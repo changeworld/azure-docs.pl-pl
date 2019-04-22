@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490743"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
@@ -25,9 +25,9 @@ W tym artykule opisano ustawienia zasad przechowywania, czyszczenie fabryki i wy
 ## <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że przed kontynuacją zostały wykonane następujące artykuły:
 
-- [Tworzenie fabryki obrazów](image-factory-create.md)
-- [Uruchamianie fabryki obrazów z usługi Azure DevOps](image-factory-set-up-devops-lab.md)
-- [Zapisywanie obrazów niestandardowych i ich dystrybucja do wielu laboratoriów](image-factory-save-distribute-custom-images.md)
+- [Utwórz fabrykę obrazu](image-factory-create.md)
+- [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md)
+- [Zapisywanie niestandardowych obrazów i dystrybucji do wielu labs](image-factory-save-distribute-custom-images.md)
 
 Następujące elementy już powinny być stosowane:
 

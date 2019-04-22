@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267773"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
@@ -22,16 +22,16 @@ Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest pods
 Omówimy następujące podstawowe zapytania:
 
 > [!div class="checklist"]
-> - [Azure liczba zasobów](#count-resources)
-> - [Lista zasobów sortowane według nazwy](#list-resources)
-> - [Pokaż wszystkie maszyny wirtualne, uporządkowane według nazwy w kolejności malejącej](#show-vms)
-> - [Pokaż pierwsze pięć maszyn wirtualnych za pomocą nazwy i ich typ systemu operacyjnego](#show-sorted)
+> - [Liczba zasobów platformy Azure](#count-resources)
+> - [Lista zasobów posortowana według nazwy](#list-resources)
+> - [Pokaż wszystkie maszyny wirtualne uporządkowane według nazwy w kolejności malejącej](#show-vms)
+> - [Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego](#show-sorted)
 > - [Liczba maszyn wirtualnych według typu systemu operacyjnego](#count-os)
-> - [Pokaż zasoby, które zawierają magazynu](#show-storage)
+> - [Pokaż zasoby, które zawierają magazyn](#show-storage)
 > - [Lista wszystkich publicznych adresów IP](#list-publicip)
-> - [Liczba zasobów, które mają adresy IP skonfigurowane według subskrypcji](#count-resources-by-ip)
-> - [Lista zasobów z wartością konkretnego znacznika](#list-tag)
-> - [Lista wszystkich kont magazynu z wartością konkretnego znacznika](#list-specific-tag)
+> - [Liczba zasobów ze skonfigurowanymi adresami IP według subskrypcji](#count-resources-by-ip)
+> - [Lista zasobów z konkretną wartością tagu](#list-tag)
+> - [Lista wszystkich kont magazynu z konkretną wartością tagu](#list-specific-tag)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego
 
-To zapytanie będzie używać elementu `limit`, aby pobrać tylko pięć pasujących rekordów, uporządkowanych według nazwy. Typ zasobu platformy Azure to `Microsoft.Compute/virtualMachines`. `project` informuje wykres zasobów platformy Azure, właściwości, które do uwzględnienia.
+To zapytanie będzie używać elementu `limit`, aby pobrać tylko pięć pasujących rekordów, uporządkowanych według nazwy. Typ zasobu platformy Azure to `Microsoft.Compute/virtualMachines`. `project` informuje usługę Azure Resource Graph, które właściwości mają być uwzględnione.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -251,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> W tym przykładzie użyto `==` do dopasowania zamiast warunkowego `=~`. `==` jest zgodna z uwzględnieniem wielkości liter.
+> W tym przykładzie użyto `==` do dopasowania zamiast warunkowego `=~`. `==` jest dopasowaniem uwzględniającym wielkość liter.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

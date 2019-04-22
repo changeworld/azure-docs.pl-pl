@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731093"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678908"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace transakcji handlowych możliwości i zagadnienia
 
@@ -44,7 +44,7 @@ Oprócz wersji próbnej opcje publikowania i listy transact publikowania opcja j
 
 ## <a name="transact-general-overview"></a>Ogólne omówienie Transact
 
-Korzystając z opcji publikowania transact, firma Microsoft zapewnia sprzedaży i wdrożenie oprogramowania innej firmy do subskrypcji platformy Azure przez klienta. Wydawcy należy wziąć pod uwagę Naliczanie opłat za infrastrukturę platformy Azure, a internetowa wydawcy opłat licencyjnych, podczas wybierania rozliczeń modelu i oferują typ w witrynie Azure Marketplace. 
+Korzystając z instrukcji języka transact opcji publikowania, firma Microsoft zapewnia sprzedaż oprogramowania innych firm oraz wdrażania pewnych typów ofert do subskrypcji platformy Azure przez klienta. Wydawcy należy wziąć pod uwagę Naliczanie opłat za infrastrukturę platformy Azure, a internetowa wydawcy opłat licencyjnych, podczas wybierania rozliczeń modelu i oferują typ w witrynie Azure Marketplace.
 
 Opcja publikowania Transact w witrynie Azure Marketplace jest obecnie obsługiwana dla następujących typów oferty: Maszyny wirtualne, aplikacje platformy Azure lub aplikacje SaaS.
 
@@ -58,7 +58,7 @@ Dla maszyn wirtualnych i aplikacji platformy Azure opłaty za użycie infrastruk
 
 **Dla aplikacji SaaS**
 
-W przypadku aplikacji SaaS wydawcy muszą uwzględniać opłaty za użycie infrastruktury platformy Azure i opłat licencyjnych jako element pojedynczy koszt.  Jest przedstawiana jako płaskie miesięcznej opłaty za do klienta. Użycie infrastruktury platformy Azure zarządzane i rozliczane partnera bezpośrednio.  Opłaty za użycie rzeczywistej infrastruktury nie są widoczne dla klienta.  Wydawcy zazwyczaj zdecydować się na pakietu opłaty za użycie infrastruktury platformy Azure do ich ceny licencji oprogramowania.  Oprogramowanie, które nie są naliczane opłaty licencyjne lub oparty na zużyciu.
+W przypadku aplikacji SaaS wydawcy muszą uwzględniać opłaty za użycie infrastruktury platformy Azure i opłat licencyjnych jako element pojedynczy koszt.  Jest przedstawiana jako obowiązuje stała opłata do klienta. Użycie infrastruktury platformy Azure zarządzane i rozliczane partnera bezpośrednio.  Opłaty za użycie rzeczywistej infrastruktury nie są widoczne dla klienta.  Wydawcy zazwyczaj zdecydować się na pakietu opłaty za użycie infrastruktury platformy Azure do ich ceny licencji oprogramowania.  Oprogramowanie, które nie są naliczane opłaty licencyjne lub oparty na zużyciu.
 
 ## <a name="transact-billing-models"></a>Przeprowadzaj transakcje modelami rozliczeń
 

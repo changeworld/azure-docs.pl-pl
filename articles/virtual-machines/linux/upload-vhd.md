@@ -84,7 +84,7 @@ Zobacz też [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md
 
 ## <a name="option-1-upload-a-vhd"></a>Opcja 1: Przekazywanie wirtualnego dysku twardego
 
-Możesz przekazać niestandardowe wirtualnego dysku twardego zostały uruchomione na komputerze lokalnym lub który został wyeksportowany z innej chmury. Aby użyć wirtualnego dysku twardego do tworzenia nowej maszyny Wirtualnej platformy Azure, musisz przekazanie dysku VHD do konta magazynu i tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego. Aby uzyskać więcej informacji, zobacz temat [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md).
+Możesz przekazać niestandardowe wirtualnego dysku twardego zostały uruchomione na komputerze lokalnym lub który został wyeksportowany z innej chmury. Aby użyć wirtualnego dysku twardego do tworzenia nowej maszyny Wirtualnej platformy Azure, musisz przekazanie dysku VHD do konta magazynu i tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego. Aby uzyskać więcej informacji, zobacz temat [Omówienie funkcji Dyski zarządzane platformy Azure](../windows/managed-disks-overview.md).
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 

@@ -9,14 +9,14 @@ ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793972"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Po wydaniu usługi Microsoft Azure Storage firma Microsoft opracowała wiele sprawdzone rozwiązania dotyczące korzystania z tych usług w sposób wydajny, a ten artykuł służy do konsolidowania najważniejsze z nich do listy styl listy kontrolnej. Części tego artykułu jest pomoc deweloperom aplikacji, sprawdź, czy używasz sprawdzone rozwiązania z usługą Azure Storage i pomoc w identyfikacji innych sprawdzone rozwiązania, należy rozważyć przyjęcie. W tym artykule nie jest podejmowana próba obejmują co możliwości optymalizacji wydajności i skalowalności — wyklucza te, które są małe w ich wpływ lub nie szerokie zastosowanie. W zakresie, w jakim można przewidzieć zachowania aplikacji podczas projektowania, warto zachować te pamiętać na wczesnym etapie, aby uniknąć projekty, które będą uruchamiane w problemy z wydajnością.  
 
 Każdy deweloper aplikacji przy użyciu usługi Azure Storage powinien trwać przeczytaj ten artykuł, i sprawdź jej aplikacji następuje każdego sprawdzonych rozwiązań wymienione poniżej.  

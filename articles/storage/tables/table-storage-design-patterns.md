@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271632"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
@@ -197,7 +197,7 @@ Umożliwia wyszukiwanie według nazwiska ze strukturą entity powyżej, musisz u
 * Utwórz jednostki indeksu w jednej partycji jako jednostki pracownika.  
 * Utwórz jednostki indeksu w oddzielnej partycji lub tabeli.  
 
-<u>Opcja #1: Korzystanie z magazynu Blob Storage</u>  
+<u>Opcja #1: Usługa blob storage</u>  
 
 Pierwszej opcji Tworzenie obiektu blob dla każdego unikatowy nazwisko i w każdym magazynie obiektów blob listę **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) wartości dla pracowników, które mają ten nazwisko. Po dodaniu lub usunięciu pracownika należy się upewnić, że zawartości odpowiedniego obiektu blob jest ostatecznie spójny z jednostkami pracownika.  
 
@@ -1109,6 +1109,6 @@ Aplikacja kliencka można wywołać wiele metod asynchronicznych, takich jak ta,
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Modelowanie relacji](table-storage-design-modeling.md)
-- [Projektowanie pod kątem wykonywania zapytań](table-storage-design-for-query.md)
-- [Szyfrowanie danych tabeli](table-storage-design-encrypt-data.md)
+- [Projektowanie pod kątem zapytań](table-storage-design-for-query.md)
+- [Szyfrowanie danych w tabeli](table-storage-design-encrypt-data.md)
 - [Projektowanie pod kątem modyfikacji danych](table-storage-design-for-modification.md)

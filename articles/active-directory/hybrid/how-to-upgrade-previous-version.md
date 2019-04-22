@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267042"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
@@ -37,7 +37,7 @@ Istnieje kilka różne strategie, których można użyć, aby uaktualnić progra
 | --- | --- |
 | [Automatycznie uaktualnianie](how-to-connect-install-automatic-upgrade.md) |Jest to najprostsza metoda dla klientów korzystających z instalacji ekspresowej. |
 | [Uaktualnienie w miejscu](#in-place-upgrade) |W przypadku pojedynczego serwera, możesz uaktualnić instalację w miejscu na tym samym serwerze. |
-| [Migracja typu swing](#swing-migration) |Przy użyciu dwóch serwerów możesz przygotować jeden z serwerów za pomocą nowej wersji lub konfiguracji i zmienianie aktywnego serwera, gdy wszystko będzie gotowe. |
+| [Migracja typu Swing](#swing-migration) |Przy użyciu dwóch serwerów możesz przygotować jeden z serwerów za pomocą nowej wersji lub konfiguracji i zmienianie aktywnego serwera, gdy wszystko będzie gotowe. |
 
 Aby uzyskać informacje o uprawnieniach, zobacz [uprawnienia wymagane dla uaktualnienie](reference-connect-accounts-permissions.md#upgrade).
 

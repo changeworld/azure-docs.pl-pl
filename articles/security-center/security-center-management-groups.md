@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045768"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
@@ -58,7 +58,7 @@ Można organizować subskrypcji do grup zarządzania i zastosowania zasad zarzą
 2. Aby wyświetlić grupy zarządzania, wybierz **wszystkich usług** w menu głównym platformy Azure.
 3. W obszarze **ogólne**, wybierz opcję **grup zarządzania**.
 
-    ![Utwórz grupę zarządzania](./media/security-center-management-groups/all-services.png)
+    ![Tworzenie grupy zarządzania](./media/security-center-management-groups/all-services.png)
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Udziel widoczność na poziomie dzierżawy i możliwość przypisania zasad
 
@@ -191,7 +191,7 @@ Subskrypcje można dodać do grupy zarządzania, który został utworzony. Te kr
 W tym artykule przedstawiono sposób uzyskać wgląd w całej dzierżawie usługi Azure Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
-> [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md)
+> [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Zarządzanie i odpowiadanie na alerty zabezpieczeń w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)

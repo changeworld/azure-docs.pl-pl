@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 ms.openlocfilehash: 4c759462d603a35e738f76a505abd04b832afc3f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426345"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core
@@ -105,7 +105,7 @@ W tej chwili masz podstawową aplikację internetową, która działa lokalnie. 
     ```
 
 Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zasoby platformy Docker i Kubernetes z ustawieniami domyślnymi:
-* `./Dockerfile` Opis aplikacji obraz kontenera i jak kod źródłowy jest wbudowana i jest uruchamiany w kontenerze.
+* Plik `./Dockerfile` opisuje obraz kontenera aplikacji oraz sposób kompilowania kodu źródłowego i uruchamiania go w kontenerze.
 * [Pakiet Helm](https://docs.helm.sh) w folderze `./charts/webfrontend` opisuje, jak wdrożyć kontener na platformie Kubernetes.
 
 Na razie nie trzeba rozumieć pełnej zawartości tych plików. Warto jednak wspomnieć, że **te same zasoby konfiguracji jako kodu platformy Kubernetes i Docker mogą być używane od etapu opracowywania po etap produkcyjny, co zapewnia większą spójność w różnych środowiskach.**
@@ -145,7 +145,7 @@ Otwórz ten adres URL w oknie przeglądarki — aplikacja internetowa powinna zo
 ### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
 Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
 
-1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład, zmień wiersz 70, która odczytuje `<h2>Application uses</h2>` do mniej więcej tak: `<h2>Hello k8s in Azure!</h2>`
+1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład zmień wiersz 70 z `<h2>Application uses</h2>` na `<h2>Hello k8s in Azure!</h2>`
 1. Zapisz plik. Po chwili w oknie terminalu pojawi się komunikat informujący o tym, że plik w uruchomionym kontenerze został zaktualizowany.
 1. Otwórz przeglądarkę i odśwież stronę. Na stronie powinien być widoczny zaktualizowany kod HTML.
 
@@ -155,7 +155,7 @@ Co się stało? Modyfikacje plików zawartości, takich jak HTML i CSS, nie wyma
 Aktualizacja plików kodu wymaga nieco więcej pracy, ponieważ trzeba ponownie skompilować aplikację .NET Core i utworzyć zaktualizowane pliki binarne aplikacji.
 
 1. W oknie terminalu naciśnij klawisze `Ctrl+C`, aby zatrzymać polecenie `azds up`.
-1. Otwórz plik kodu o nazwie `Controllers/HomeController.cs`i edytowania wiadomości, która zostanie wyświetlona strona informacje: `ViewData["Message"] = "Your application description page.";`
+1. Otwórz plik kodu o nazwie `Controllers/HomeController.cs` i zmień komunikat wyświetlany na stronie Informacje: `ViewData["Message"] = "Your application description page.";`
 1. Zapisz plik.
 1. Uruchom polecenie `azds up` w oknie terminalu. 
 
@@ -226,9 +226,9 @@ Zamiast ponownego kompilowania i wdrażania nowego obrazu kontenera przy każdej
 
 Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę Informacje. Twój komunikat powinien zostać wyświetlony w interfejsie użytkownika.
 
-**Teraz masz metodę szybkie Iterowanie nad kodem i debugowania bezpośrednio w usłudze Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
+**Umiesz już korzystać z metody szybkiego wprowadzania zmian w kodzie i debugowania bezpośrednio w środowisku Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o programowaniu dla wielu usług](multi-service-netcore.md)
+> [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-netcore.md)

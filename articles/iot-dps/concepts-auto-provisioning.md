@@ -9,17 +9,17 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051737"
 ---
 # <a name="auto-provisioning-concepts"></a>Pojęcia automatycznej aprowizacji
 
 Zgodnie z opisem w [Przegląd](about-iot-dps.md), usługi Device Provisioning Service to usługa pomocnika, która umożliwia just-in-time Inicjowanie obsługi urządzeń do usługi IoT hub, nie wymagając interwencji człowieka. Po pomyślnej aprowizacji urządzenia łączą się bezpośrednio z ich wyznaczonego Centrum IoT Hub. Ten proces jest nazywany automatycznej aprowizacji i zapewnia out-of--box rejestracji i konfiguracji początkowej środowisko dla urządzeń.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure IoT auto-provisioning może można podzielić na trzy etapy:
 

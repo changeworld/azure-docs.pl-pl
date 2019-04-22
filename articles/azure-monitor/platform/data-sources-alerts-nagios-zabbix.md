@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426193"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Azure Monitor z agenta usługi Log Analytics dla systemu Linux 
@@ -92,7 +92,7 @@ Zgłoś alert, ma rekordów zbieranych przez Nagios **typu** z **alertu** i **sy
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Type` |*Alerty* |
+| `Type` |*Zgłoś alert* |
 | `SourceSystem` |*Nagios* |
 | `AlertName` |Nazwa alertu. |
 | `AlertDescription` | Opis alertu. |
@@ -108,7 +108,7 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Type` |*Alerty* |
+| `Type` |*Zgłoś alert* |
 | `SourceSystem` |*Zabbix* |
 | `AlertName` | Nazwa alertu. |
 | `AlertPriority` | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |

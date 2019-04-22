@@ -16,10 +16,10 @@ ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267212"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
@@ -124,8 +124,8 @@ Podczas edytowania listę obsługiwanych atrybutów, dostępne są następujące
    * *Odwołanie* — atrybut zawiera identyfikator, który odwołuje się do wartości przechowywane w innej tabeli w aplikacji docelowej.
    * *Ciąg* — atrybut zawiera ciąg tekstowy. 
 * **Klucz podstawowy?** -Czy atrybut jest zdefiniowany jako klucz podstawowy w schemacie obiektu docelowego.
-* **Wymagana?** -Czy atrybut jest wymagany do wypełnienia w aplikacji docelowej lub w systemie.
-* **Wielowartościowy?** -Czy ten atrybut obsługuje wiele wartości.
+* **Wymagane?** -Czy atrybut jest wymagany do wypełnienia w aplikacji docelowej lub w systemie.
+* **Multi-value?** -Czy ten atrybut obsługuje wiele wartości.
 * **Dokładne dopasowanie wielkości liter?** -Czy wartości atrybutów są obliczane w taki sposób, wielkość liter.
 * **Wyrażenie interfejsu API** — nie należy używać, o ile nie zdecyduje, aby to zrobić przez w dokumentacji dla określonego łącznika inicjowania obsługi administracyjnej (na przykład Workday).
 * **Odwołanie do atrybutu obiektu** — Jeśli to ustawienie jest atrybut typu odwołania, a następnie to menu umożliwia wybierz tabelę i atrybutów w aplikacji docelowej, która zawiera wartość skojarzoną z atrybutem. Na przykład w przypadku atrybutu o nazwie "Dział", którego przechowywana wartość odwołuje się do obiektu, w osobnej tabeli "Działów" Wybierz "Departments.Name". Tabele odwołań i pól identyfikator podstawowego obsługiwane dla danej aplikacji są wstępnie skonfigurowane i obecnie nie można edytować za pomocą witryny Azure portal, ale można edytować za pomocą [interfejsu API programu Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
@@ -157,6 +157,6 @@ Wybranie tej opcji wymusi skutecznie ponownej synchronizacji wszystkich użytkow
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
 * [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](use-scim-to-provision-users-and-groups.md)
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 

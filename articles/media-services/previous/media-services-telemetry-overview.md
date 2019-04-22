@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58803311"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetry  
@@ -79,7 +79,7 @@ Właściwość|Wartość|Przykłady/notes
 PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Identyfikator konta znajduje się w kluczu partycji można uproszczenie przepływów pracy, w których wielu kont usługi Media Services będą zapisywane do tego samego konta magazynu.
 RowKey|{seconds północy} _ {losową wartość}|01688_00199<br/><br/>Klucz wiersza rozpoczyna się od liczbę sekund, północy górnego n zapytań w ramach partycji. Więcej informacji znajduje się w [tym](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artykule. 
 Znacznik czasu|Data/godzina|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Type|Typ jednostki, podając dane telemetryczne|Archiwum/StreamingEndpoint/kanału<br/><br/>Typ zdarzenia jest po prostu wartość ciągu.
+Typ|Typ jednostki, podając dane telemetryczne|Archiwum/StreamingEndpoint/kanału<br/><br/>Typ zdarzenia jest po prostu wartość ciągu.
 Name (Nazwa)|Nazwa zdarzenia telemetrii|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Czas wystąpienia zdarzenia telemetrii (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Zaobserwowany czasu jest zapewniana przez jednostki wysyłania danych telemetrycznych (na przykład kanał). Może to być razem, gdy problemy z synchronizacją między składnikami, więc ta wartość jest przybliżona
 Identyfikator usługi|{Identyfikator usługi}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -100,7 +100,7 @@ Właściwość|Wartość|Przykłady
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Znacznik czasu|Znacznik czasu|Auto sygnaturę czasową od usługi Azure Table 2016-09-09T22:43:42.241Z
-Type|Type|StreamingEndpoint
+Typ|Typ|StreamingEndpoint
 Name (Nazwa)|Name (Nazwa)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -119,7 +119,7 @@ Właściwość|Wartość|Przykłady/notes
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Znacznik czasu|Znacznik czasu|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Type|Type|Kanał
+Typ|Typ|Kanał
 Name (Nazwa)|Name (Nazwa)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -144,7 +144,7 @@ Właściwość|Wartość|Przykłady/notes
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Znacznik czasu|Znacznik czasu|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Type|Type|Archiwum
+Typ|Typ|Archiwum
 Name (Nazwa)|Name (Nazwa)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e

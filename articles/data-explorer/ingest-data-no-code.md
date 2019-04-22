@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262911"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Samouczek: Pozyskiwanie danych w usłudze Azure Data Explorer bez pisania ani jednego wiersza kodu
@@ -268,7 +268,7 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowanie metryk na ko
 
 1. Utwórz centrum zdarzeń przy użyciu szablonu usługi Azure Resource Manager w witrynie Azure Portal. Aby wykonać pozostałe kroki w tym artykule, kliknij prawym przyciskiem myszy przycisk **Wdróż na platformie Azure** i wybierz pozycję **Otwórz w nowym oknie**. Przycisk **Wdróż na platformie Azure** powoduje przejście do witryny Azure Portal.
 
-    [![Deploy przycisk platformy Azure](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Przycisk Wdróż na platformie Azure](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Utwórz centrum zdarzeń i przestrzeń nazw usługi Event Hubs na potrzeby dzienników diagnostycznych.
 
@@ -279,7 +279,7 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowanie metryk na ko
     **Ustawienie** | **Sugerowana wartość** | **Opis**
     |---|---|---|
     | **Subskrypcja** | *Twoja subskrypcja* | Wybierz subskrypcję platformy Azure, która ma być używana dla centrum zdarzeń.|
-    | **Grupa zasobów** | *Test-resource-group* | Utwórz nową grupę zasobów. |
+    | **Grupa zasobów** | *test-resource-group* | Utwórz nową grupę zasobów. |
     | **Lokalizacja** | Wybierz region, który najlepiej odpowiada Twoim potrzebom. | Utwórz przestrzeń nazw usługi Event Hubs w tej samej lokalizacji co inne zasoby.
     | **Nazwa przestrzeni nazw** | *AzureMonitoringData* | Wybierz unikatową nazwę, która identyfikuje Twoją przestrzeń nazw.
     | **Nazwa centrum zdarzeń** | *DiagnosticLogsData* | Centrum zdarzeń znajduje się w przestrzeni nazw, która zapewnia unikatowy kontener określania zakresu. |
@@ -460,4 +460,4 @@ Wyniki zapytania:
 Aby dowiedzieć się, jak pisać wiele innych zapytań dotyczących danych wyodrębnionych z usługi Azure Data Explorer, zapoznaj się z następującym artykułem:
 
 > [!div class="nextstepaction"]
-> [Pisanie zapytań w Eksploratorze danych platformy Azure](write-queries.md)
+> [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)

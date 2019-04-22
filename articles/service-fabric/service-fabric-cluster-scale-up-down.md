@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
 ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049185"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Skalowanie klastra w poziomie lub w pionie
@@ -122,15 +122,15 @@ sfctl node list --query "sort_by(items[*], &name)[-1]"
 Klaster usługi Service Fabric musi „wiedzieć”, że ten węzeł ma zostać usunięty. Musisz wykonać trzy kroki:
 
 1. Wyłącz węzeł, aby zatrzymać replikację danych.  
-Program PowerShell: `Disable-ServiceFabricNode`  
+PowerShell: `Disable-ServiceFabricNode`  
 sfctl: `sfctl node disable`
 
 2. Zatrzymaj węzeł, aby środowisko uruchomieniowe usługi Service Fabric zostało prawidłowo zamknięte, a aplikacja otrzymała żądanie przerwania.  
-Program PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
+PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
 sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. Usuń węzeł z klastra.  
-Program PowerShell: `Remove-ServiceFabricNodeState`  
+PowerShell: `Remove-ServiceFabricNodeState`  
 sfctl: `sfctl node remove-state`
 
 Po wykonaniu powyższych kroków węzeł może zostać usunięty z zestawu skalowania. Jeśli korzystasz z innej warstwy trwałości niż [brązowa][durability], kroki te są wykonywane automatycznie w przypadku usunięcia wystąpienia zestawu skalowania.
@@ -195,7 +195,7 @@ else
 }
 ```
 
-W **sfctl** kod poniżej, następujące polecenie służy do uzyskiwania **nazwa węzła** wartość ostatnio utworzonego węzła: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+W poniższym kodzie przedstawiającym użycie polecenia **sfctl** następujące polecenie służy do pobrania wartości **node-name** ostatnio utworzonego węzła: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```azurecli
 # Inform the node that it is going to be removed

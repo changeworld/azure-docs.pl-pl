@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050948"
 ---
 # <a name="symmetric-key-attestation"></a>Zaświadczanie klucza symetrycznego
@@ -114,6 +114,6 @@ Jeśli klucze urządzeń nie są zainstalowane w tej fabryce [przez moduł HSM d
 
 Teraz, gdy masz zrozumienia zaświadczenie klucza symetrycznego, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
 
-* [Szybki start: Aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* [Szybki start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
 * [Dowiedz się więcej o kwestie poruszane w automatycznej aprowizacji](./concepts-auto-provisioning.md)
 * [Rozpoczęcie korzystania z automatycznej aprowizacji](./quick-setup-auto-provision.md) 

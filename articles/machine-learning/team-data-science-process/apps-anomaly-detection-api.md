@@ -12,10 +12,10 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793139"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>W usłudze Machine Learning interfejs API wykrywania anomalii
@@ -23,7 +23,7 @@ ms.locfileid: "58793139"
 > [!NOTE]
 > Ten element jest w trakcie konserwacji. Firma Microsoft zachęca do użycia [usługi interfejsu API wykrywanie anomalii](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/) obsługiwane przez algorytmy galerię usługi Machine Learning, w ramach usługi Azure Cognitive Services w celu wykrycia anomalii z biznesowe i operacyjne i metryki IoT.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Interfejs API wykrywania anomalii](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) znajduje się przykład utworzonych za pomocą usługi Azure Machine Learning, która wykrywa anomalie w danych szeregów czasowych za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 
 Ten interfejs API może wykryć następujące rodzaje nietypowe wzorce w danych szeregów czasowych:

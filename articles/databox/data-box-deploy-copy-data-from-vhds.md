@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
 ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282563"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Samouczek: Użyj Data Box, aby importować dane jako usługa managed disks na platformie Azure
@@ -143,7 +143,7 @@ Przed przystąpieniem do wykonywania kopii danych, należy przejrzeć następuj�
 W zależności od tego, czy jest nawiązywane za pośrednictwem protokołu SMB lub NFS można użyć:
 
 - [Kopiowanie danych za pośrednictwem protokołu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Kopiowanie danych za pośrednictwem sieciowego systemu plików](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Kopiowanie danych za pomocą systemu plików NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
 Poczekaj na zakończenie zadań kopiowania. Upewnij się, że zadania kopiowania została zakończona bez błędów, zanim przejdziesz do kolejnego kroku.
 
@@ -179,5 +179,5 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, tak
 Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzenie Data Box do firmy Microsoft.
 
 > [!div class="nextstepaction"]
-> [Wysłania urządzenia Azure Data Box do firmy Microsoft](./data-box-deploy-picked-up.md)
+> [Wysyłka urządzenia Azure Data Box do firmy Microsoft](./data-box-deploy-picked-up.md)
 

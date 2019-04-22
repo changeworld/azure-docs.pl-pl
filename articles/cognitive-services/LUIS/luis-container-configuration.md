@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883117"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678568"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie kontenerów platformy Docker interpretacji języka 
 
@@ -30,23 +30,23 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |--|--|--|
 |Yes|[ApiKey](#apikey-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
-|Yes|[Rozliczenia](#billing-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
+|Yes|[Billing](#billing-setting)|Określa identyfikator URI punktu końcowego zasobu usługi na platformie Azure.|
 |Yes|[Eula](#eula-setting)| Wskazuje, że zaakceptowano licencję dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Serwer Proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP dla żądania wychodzącego.|
-|Nie|[Rejestrowanie](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
-|Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i z kontenera do komputera hosta.|
+|Nie|[Logging](#logging-settings)|Udostępnia obsługę rejestrowania platformy ASP.NET Core dla kontenera. |
+|Yes|[Mounts](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i z kontenera do komputera hosta.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie Nie można uruchomić kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>Ustawienie ApiKey
 
-`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _Language Understanding_ zasób określony dla [ `Billing` ](#billing-setting) ustawienia konfiguracji.
+`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _usług Cognitive Services_ zasób określony dla [ `Billing` ](#billing-setting) ustawienia konfiguracji.
 
 To ustawienie można znaleźć w następujących miejscach:
 
-* Azure Portal: **Language Understanding** zarządzanie zasobami w obszarze **kluczy**
+* Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
 * Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** strony. 
 
 Nie należy używać klucza starter lub tworzenia klucza. 
@@ -57,14 +57,17 @@ Nie należy używać klucza starter lub tworzenia klucza.
 
 ## <a name="billing-setting"></a>Ustawienie rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _Language Understanding_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _Language Understanding_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
+`Billing` Ustawienie określa identyfikator URI punktu końcowego z _usług Cognitive Services_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _usług Cognitive Services_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 To ustawienie można znaleźć w następujących miejscach:
 
-* Azure Portal: **Language Understanding** Przegląd, etykietą `Endpoint`
+* Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
 * Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** stronie jako część identyfikatora URI punktu końcowego.
 
-|Wymagany| Name (Nazwa) | Typ danych | Opis |
+Pamiętaj, aby uwzględnić `luis/v2.0` routingu w adresie URL, jak pokazano w poniższej tabeli:
+
+
+|Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
 |Yes| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń<br><br>Przykład:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -109,16 +112,18 @@ W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, j
 * **Znak kontynuacji wiersza**: Platformy docker w poniższych sekcjach użyto ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
 * **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
 
+Pamiętaj, aby uwzględnić `luis/v2.0` routingu w adresie URL, jak pokazano w poniższej tabeli.
+
 Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
 |{ENDPOINT_KEY} | Klucz punktu końcowego uczonego aplikacji usługi LUIS. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | Rozliczeń wartości punktu końcowego jest dostępna na stronie Przegląd interpretacji języka w witrynie Azure portal.|https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{BILLING_ENDPOINT} | Rozliczeń wartość punktu końcowego jest dostępna na platformie Azure `Cognitive Services` strona przeglądu. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](luis-container-howto.md#billing).
-> Wartość ApiKey **klucz** z kluczy i punktów końcowych strony w portalu usługi LUIS, a także jest dostępny na stronie klucze zasobów interpretacji języka platformy Azure. 
+> Wartość ApiKey **klucz** z kluczy i punkty końcowe strony w portalu usługi LUIS i jest również dostępna na platformie Azure `Cognitive Services` strony klucze zasobu. 
 
 ### <a name="basic-example"></a>Podstawowy przykład
 

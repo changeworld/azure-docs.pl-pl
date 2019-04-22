@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58791630"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
@@ -25,7 +25,7 @@ Zasady usługi API Management są zaawansowaną możliwością system, który po
 
 Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz/wartość, która jest wywoływana o nazwie wartości, które są globalne do wystąpienia usługi. Te wartości o nazwie może służyć do zarządzania stałym ciągiem wartości we wszystkich Konfiguracja interfejsu API i zasady. Każda właściwość może mieć następujące atrybuty:
 
-| Atrybut | Type | Opis |
+| Atrybut | Typ | Opis |
 | --- | --- | --- |
 | Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
 | Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |

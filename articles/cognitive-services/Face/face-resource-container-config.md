@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882127"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677786"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurowanie kontenerów platformy Docker twarzy
 
@@ -31,11 +31,11 @@ ms.locfileid: "58882127"
 
 ## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
 
-`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _twarzy_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
+`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _usług Cognitive Services_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Tarczy** zarządzanie zasobami w obszarze **kluczy**
+* Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -43,11 +43,13 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _twarzy_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _twarzy_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
+`Billing` Ustawienie określa identyfikator URI punktu końcowego z _usług Cognitive Services_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _usług Cognitive Services_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Tarczy** Przegląd, etykietą `Endpoint`
+* Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
+
+Pamiętaj, aby dodać _twarzy_ routingu do identyfikator URI punktu końcowego, jak pokazano w przykładzie. 
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -136,12 +138,12 @@ Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{BILLING_KEY} | Klucz punktu końcowego zasobu twarzy. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Rozliczeń wartości punktu końcowego, w tym regionie.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | Klucz punktu końcowego zasobu usług Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Rozliczeń wartości punktu końcowego, w tym regionie i routing twarzy.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](face-how-to-install-containers.md#billing).
-> Wartość ApiKey **klucz** ze strony klucze w usłudze Azure Resource twarzy. 
+> Wartość ApiKey **klucz** z platformy Azure `Cognitive Services` strony klucze zasobu. 
 
 ## <a name="face-container-docker-examples"></a>Kontener platformy Docker przykłady twarzy
 

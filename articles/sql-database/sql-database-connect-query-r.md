@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: cgronlun
 ms.date: 04/04/2019
 ms.openlocfilehash: f5d43794ba80e4791c8bf24ad404069a8329518e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051227"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Szybki start: Korzystanie z usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database (wersja zapoznawcza)
@@ -104,7 +104,7 @@ Następujące ćwiczenie koncentruje się na pierwszym modelu interakcji: sposob
 
 2. Przy założeniu, że wszystko jest skonfigurowane prawidłowo, obliczany jest poprawny wynik, a funkcja `print` języka R zwraca wynik do okna **Komunikaty**.
 
-    **Wyniki**
+    **Results**
 
     ```text
     STDOUT message(s) from external script: 
@@ -139,7 +139,7 @@ Na razie przyjrzyjmy się tylko domyślnym zmiennym wejściowym i wyjściowym pr
     SELECT * FROM RTestData
     ```
 
-    **Wyniki**
+    **Results**
 
     ![Zawartość tabeli RTestData](./media/sql-database-connect-query-r/select-rtestdata.png)
 
@@ -155,7 +155,7 @@ Na razie przyjrzyjmy się tylko domyślnym zmiennym wejściowym i wyjściowym pr
     WITH RESULT SETS (([NewColName] INT NOT NULL));
     ```
 
-    **Wyniki**
+    **Results**
 
     ![Dane wyjściowe skryptu języka R, który zwraca dane z tabeli](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
@@ -192,7 +192,7 @@ Na razie przyjrzyjmy się tylko domyślnym zmiennym wejściowym i wyjściowym pr
     WITH RESULT SETS (([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Wyniki**
+    **Results**
 
     ![Wyniki zapytania używającego @script jako danych wejściowych](./media/sql-database-connect-query-r/r-data-generated-output.png)
 
@@ -211,7 +211,7 @@ Jeśli chcesz zobaczyć, która wersja języka R jest zainstalowana w usłudze S
 
 2. Funkcja `print` języka R zwraca wersję do okna **Komunikaty**. W przykładowych danych wyjściowych poniżej możesz przekonać się, że usługa SQL Database w tym przypadku ma zainstalowaną wersję 3.4.4 języka R.
 
-    **Wyniki**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -248,7 +248,7 @@ Firma Microsoft udostępnia wiele pakietów języka R wstępnie instalowanych z 
 
 2. Dane wyjściowe pochodzą z `installed.packages()` w języku R i są zwracane jako zestaw wyników.
 
-    **Wyniki**
+    **Results**
 
     ![Zainstalowane pakiety w języku R](./media/sql-database-connect-query-r/r-installed-packages.png)
 
@@ -359,7 +359,7 @@ Możesz wyszkolić model przy użyciu języka R i zapisać model w tabeli w usł
     VALUES ('latest model', @model)
     ```
 
-    **Wyniki**
+    **Results**
 
     ![Przeszkolony model z dodatkowymi danymi wyjściowymi](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
 
@@ -414,7 +414,7 @@ Użyj modelu utworzonego w poprzedniej sekcji, aby oceniać prognozy w odniesien
 
    + Nazwy kolumn użytych w skrypcie języka R niekoniecznie są przekazywane do danych wyjściowych procedury składowanej. W tym miejscu po użyliśmy klauzuli WITH RESULTS, aby zdefiniować kilka nowych nazw kolumn.
 
-     **Wyniki**
+     **Results**
 
      ![Zestaw wyników dla przewidywania drogi zatrzymania](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
@@ -473,7 +473,7 @@ Jeśli zachodzi potrzeba użycia pakietu, który nie jest jeszcze zainstalowany 
     View(r)
     ```
 
-    **Wyniki**
+    **Results**
 
     ![Zawartość tabeli RTestData](./media/sql-database-connect-query-r/r-verify-package-install.png)
 
@@ -497,7 +497,7 @@ Jeśli zachodzi potrzeba użycia pakietu, który nie jest jeszcze zainstalowany 
 
     Zobaczysz następujący wynik w karcie Komunikaty.
 
-    **Wyniki**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -520,8 +520,8 @@ Jeśli zachodzi potrzeba użycia pakietu, który nie jest jeszcze zainstalowany 
 
 Aby uzyskać więcej informacji na temat usługi Machine Learning Services, zobacz poniższe artykuły. Mimo że niektóre z tych artykułów dotyczą programu SQL Server, większość informacji ma również zastosowanie do usługi Machine Learning Services (z językiem R) w usłudze Azure SQL Database.
 
-- [Usługi Azure SQL Database usługi Machine Learning (przy użyciu języka R)](sql-database-machine-learning-services-overview.md)
+- [Azure SQL Database Machine Learning Services (z językiem R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Samouczek: Dowiedz się, analiza w bazie danych przy użyciu języka R w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Wskazówki do nauki o danych end-to-end dla języków R i programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Samouczek: Używanie funkcji RevoScaleR R z danych programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Samouczek: Analiza w bazie danych przy użyciu języka R w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Kompleksowy przewodnik po nauce o danych dla języka R i programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [Samouczek: Używanie funkcji RevoScaleR z danymi programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

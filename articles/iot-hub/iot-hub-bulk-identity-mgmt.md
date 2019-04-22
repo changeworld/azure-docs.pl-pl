@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049976"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importowanie i eksportowanie tożsamości urządzenia usługi IoT Hub w trybie zbiorczym
@@ -257,10 +257,10 @@ Użyj opcjonalnego **parametrem importMode** właściwości w danych serializacj
 | --- | --- |
 | **createOrUpdate** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione podane dane wejściowe bez odniesieniu do **ETag** wartość. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
 | **create** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, do pliku dziennika zapisywany jest błąd. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
-| **update** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione podane dane wejściowe bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
+| **Aktualizacja** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione podane dane wejściowe bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
 | **updateIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, istniejące informacje zostały zastąpione dane wejściowe podane tylko wtedy, gdy **ETag** zgodny. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. <br/>W przypadku **ETag** niezgodność zapisywany jest błąd w pliku dziennika. |
 | **createOrUpdateIfMatchETag** |Jeśli nie istnieje urządzenie o określonej **identyfikator**, to nowo zarejestrowane. <br/>Jeśli urządzenie już istnieje, istniejące informacje zostały zastąpione dane wejściowe podane tylko wtedy, gdy **ETag** zgodny. <br/>W przypadku **ETag** niezgodność zapisywany jest błąd w pliku dziennika. <br> Użytkownik może określić opcjonalnie bliźniaczej reprezentacji danych wraz z danymi urządzenia. Element etag bliźniaczej reprezentacji, jeśli zostanie określony, są przetwarzane niezależnie od etag urządzenia. W przypadku niezgodności tagu etag istniejących bliźniaczej reprezentacji pliku dziennika zapisywany jest błąd. |
-| **delete** |Jeśli urządzenie już istnieje z określonym **identyfikator**, jest usuwany bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
+| **usuwanie** |Jeśli urządzenie już istnieje z określonym **identyfikator**, jest usuwany bez odniesieniu do **ETag** wartość. <br/>Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. |
 | **deleteIfMatchETag** |Jeśli urządzenie już istnieje z określonym **identyfikator**, zostanie usunięta tylko wtedy, gdy **ETag** zgodny. Jeśli urządzenie nie istnieje, do pliku dziennika zapisywany jest błąd. <br/>W przypadku niezgodności tagu ETag do pliku dziennika zapisywany jest błąd. |
 
 > [!NOTE]

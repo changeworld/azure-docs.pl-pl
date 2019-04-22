@@ -8,10 +8,10 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490325"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
@@ -56,7 +56,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 4. Utwórz nową grupę zasobów.
 5. Określ lokalizację geograficzną, w której chcesz utworzyć projekt, a następnie kliknij pozycję **Utwórz**. Projekt usługi Azure Migrate można utworzyć tylko w poniższych lokalizacjach geograficznych. Można jednak zaplanować migrację do dowolnej docelowej lokalizacji platformy Azure. Geografia projektu jest używana wyłącznie do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
 
-**Współrzędne geograficzne** | **Lokalizacja magazynu**
+**Lokalizacja geograficzna** | **Lokalizacja usługi Storage**
 --- | ---
 Azure Government | Administracja USA — Wirginia
 Azja | Azja Południowo-Wschodnia
@@ -270,7 +270,7 @@ Każda bazująca na wydajności ocena w usłudze Azure Migrate jest skojarzona z
 
 W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate potrzebuje danych o użyciu procesora CPU i pamięci maszyny wirtualnej. Ponadto dla każdego dysku podłączonego do maszyny wirtualnej potrzebuje ona danych o liczbie operacji odczytu/zapisu na sekundę i przepływności. Analogicznie dla każdej karty sieciowej podłączonej do maszyny wirtualnej usługa Azure Migrate potrzebuje danych o ruchu wchodzącym/wychodzącym sieci do ustalenia rozmiaru na podstawie wydajności. Jeśli którekolwiek z powyższych danych użycia są niedostępne w programie vCenter Server, zalecenie dotyczące rozmiaru określone przez usługę Azure Migrate może nie być wiarygodne. W zależności od odsetka dostępnych punktów danych ocena zaufania dla oceny jest określana w następujący sposób:
 
-   **Dostępność punktów danych** | **Ocena zaufania**
+   **Dostępność punktów danych** | **Ocenę zaufania**
    --- | ---
    0%–20% | 1 gwiazdka
    21%–40% | 2 gwiazdki

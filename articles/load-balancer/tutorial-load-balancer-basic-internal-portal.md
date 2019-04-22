@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489318"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
@@ -112,7 +112,7 @@ W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla p
 
 Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia używa puli adresów zaplecza. Ta pula adresów zaplecza zawiera adresy IP wirtualnych interfejsów sieciowych (NIC, virtual network interface) połączonych z modułem równoważenia obciążenia. 
 
-**Utwórz pulę adresów zaplecza, która obejmuje maszyny VM1 i VM2:**
+**Aby utworzyć pulę adresów zaplecza, która obejmuje maszyny VM1 i VM2:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -141,7 +141,7 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
 
 Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie stanu maszyny wirtualnej. Dynamicznie dodaje lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. 
 
-**Aby utworzyć sondę kondycji, aby monitorować kondycję maszyn wirtualnych:**
+**Aby utworzyć sondę kondycji w celu monitorowania kondycji maszyn wirtualnych:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -166,7 +166,7 @@ Reguła modułu równoważenia obciążenia definiuje sposób dystrybucji ruchu 
 
 Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nasłuchuje na porcie 80 frontonu **LoadBalancerFrontEnd**. Ta reguła wysyła ruch sieciowy do puli adresów zaplecza **MyBackEndPool**, również przy użyciu portu 80. 
 
-**Aby utworzyć reguły modułu równoważenia obciążenia:**
+**Aby utworzyć regułę modułu równoważenia obciążenia:**
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** na liście zasobów.
    
@@ -199,7 +199,7 @@ Najpierw należy połączyć się ze wszystkimi trzema maszynami wirtualnymi prz
 >[!NOTE]
 >Domyślnie maszyny wirtualne mają już otwarty port **RDP** (pulpit zdalny), aby zezwolić na dostęp do pulpitu zdalnego. 
 
-**Do usług pulpitu zdalnego (RDP) do maszyn wirtualnych:**
+**Aby połączyć pulpit zdalny (RDP) z maszynami wirtualnymi:**
 
 1. W portalu wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz poszczególne maszyny wirtualne w grupie zasobów **MyResourceGroupLB**.
    
@@ -222,7 +222,7 @@ Na każdym serwerze zaplecza należy użyć programu PowerShell do zainstalowani
 >[!NOTE]
 >Można również użyć **Kreatora dodawania ról i funkcji** w **Menedżerze serwera** do zainstalowania usługi IIS. 
 
-**Aby zainstalować usługi IIS i zaktualizować domyślnej strony internetowej przy użyciu programu PowerShell:**
+**Aby zainstalować usługi IIS i zaktualizować domyślną stronę internetową przy użyciu programu PowerShell:**
 
 1. Na maszynach wirtualnych MyVM1 i MyVM2 uruchom program **Windows PowerShell** z poziomu menu **Start**. 
 

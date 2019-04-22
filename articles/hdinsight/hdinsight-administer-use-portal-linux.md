@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58802664"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
@@ -52,7 +52,7 @@ Wybierz nazwę klastra z [ **klastry HDInsight** ](#showClusters) strony.  Spowo
 
     | Element| Opis |
     |---|---|
-    |Przegląd|Zawiera ogólne informacje dla klastra.|
+    |Omówienie|Zawiera ogólne informacje dla klastra.|
     |Dziennik aktywności|Pokaż i wyszukiwać w dziennikach aktywności.|
     |Kontrola dostępu (IAM)|Za pomocą przypisań ról.  Zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).|
     |Tagi|Umożliwia ustawienie pary klucz/wartość, aby zdefiniować taksonomię niestandardowych usług w chmurze. Na przykład, może utworzyć klucz o nazwie **projektu**, a następnie użyj wspólnej wartości dla wszystkich usług skojarzone z określonego projektu.|
@@ -106,7 +106,7 @@ Z [klastra, strona główna](#homePage)w obszarze **ustawienia** wybierz **wła�
 |Region|Lokalizacja platformy Azure. Aby uzyskać listę obsługiwanych lokalizacji platformy Azure, zobacz **Region** pole listy rozwijanej na [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |Data utworzenia|Data została wdrożona w klastrze.|
 |System operacyjny|Albo **Windows** lub **Linux**.|
-|Type|Hadoop, HBase, Storm, Spark.|
+|Typ|Hadoop, HBase, Storm, Spark.|
 |Wersja|Zobacz [wersji HDInsight](hdinsight-component-versioning.md).|
 |Subskrypcja|Nazwa subskrypcji.|
 |Domyślne źródło danych|Domyślny system plików klastra.|

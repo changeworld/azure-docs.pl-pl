@@ -23,7 +23,7 @@ Szyfrowanie usługi Storage jest włączona dla wszystkich kont magazynu z nowym
 Ta funkcja automatycznie szyfruje dane:
 
 - Usługi magazynu platformy Azure:
-    - Azure Managed Disks
+    - Dyski zarządzane platformy Azure
     - Azure Blob Storage
     - Azure Files
     - Usługa Azure Queue storage

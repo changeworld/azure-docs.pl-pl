@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
 ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489626"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
@@ -101,7 +101,7 @@ Monitorowanie po stronie klienta jest zoptymalizowany pod kątem programu ASP.NE
 
      Nazwa: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Wartość: `true`
+     Wartość:`true`
 
    * **Zapisz** ustawienia i **ponownie uruchom** aplikację.
 
@@ -120,7 +120,7 @@ Jeśli z jakiegoś powodu chcesz wyłączyć monitorowanie po stronie klienta:
 
      Nazwa: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Wartość: `false`
+     Wartość:`false`
 
    * **Zapisz** ustawienia i **ponownie uruchom** aplikację.
 

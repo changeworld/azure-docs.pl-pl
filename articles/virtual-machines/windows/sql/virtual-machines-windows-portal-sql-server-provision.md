@@ -16,10 +16,10 @@ ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259205"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak aprowizować maszynę wirtualną Windows SQL Server w witrynie Azure portal
@@ -122,7 +122,7 @@ Na **dysków** skonfiguruj opcje dysku.
 * W obszarze **zaawansowane**, wybierz opcję **tak** wykorzystanie **Managed Disks**.
 
    > [!NOTE]
-   > Firma Microsoft zaleca usługę Managed Disks dla programu SQL Server. Usługa Managed Disks obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z usługą Managed Disks znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz temat [Azure Omówienie usługi Managed Disks] [... / zarządzane — dyski overview.md). Aby uzyskać szczegółowe informacje na temat dysków zarządzanych w zestawie dostępności, zobacz [używaj dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności] (.. /manage-Availability.md.
+   > Firma Microsoft zaleca funkcję Dyski zarządzane dla programu SQL Server. Funkcja Dyski zarządzane obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z funkcją Dyski zarządzane znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz temat [Azure Omówienie usługi Managed Disks] [... / zarządzane — dyski overview.md). Aby uzyskać szczegółowe informacje na temat dysków zarządzanych w zestawie dostępności, zobacz [używaj dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności] (.. /manage-Availability.md.
 
 ![Ustawienia dysku maszyny Wirtualnej SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -158,11 +158,11 @@ Na **ustawień programu SQL Server** skonfiguruj określone ustawienia i optymal
 | Ustawienie |
 | --- |
 | [Łączność](#connectivity) |
-| [Authentication](#authentication) |
-| [Integracja magazynu kluczy Azure](#azure-key-vault-integration) |
+| [Uwierzytelnianie](#authentication) |
+| [Integracja z usługą Azure Key Vault](#azure-key-vault-integration) |
 | [Konfiguracja usługi Storage](#storage-configuration) |
 | [Automatyczne stosowanie poprawek](#automated-patching) |
-| [Automatyczne usługa Backup](#automated-backup) |
+| [Automatyczne kopie zapasowe](#automated-backup) |
 | [Usługi języka R (zaawansowane analizy)](#r-services-advanced-analytics) |
 
 

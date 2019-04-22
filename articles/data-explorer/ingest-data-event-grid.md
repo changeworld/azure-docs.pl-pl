@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051856"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Przesyłanie obiektów blob do Eksploratora danych usługi Azure dzięki subskrypcji usługi Event Grid powiadomienia
@@ -39,12 +39,12 @@ W tym przewodniku Szybki Start dowiesz się, jak ustawić [usługi Azure Event G
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Name (Nazwa) | *test-grid-connection* | Nazwa usługi event grid, która ma zostać utworzona.|
-    | Schemat zdarzeń | *Schemat usługi Event Grid* | Schemat, które mają być używane dla usługi event grid. |
+    | Schemat zdarzeń | *Schemat siatki zdarzeń* | Schemat, które mają być używane dla usługi event grid. |
     | Typ tematu | *Konto magazynu* | Typ tematu siatki zdarzeń. |
     | Zasób tematu | *gridteststorage* | Nazwa konta magazynu. |
-    | Subskrybuj wszystkie typy zdarzeń | *wyczyść* | Nie będziesz otrzymywać powiadomień o wszystkich zdarzeniach. |
+    | Subskrybuj wszystkie typy zdarzeń | *Usuń zaznaczenie* | Nie będziesz otrzymywać powiadomień o wszystkich zdarzeniach. |
     | Zdefiniowane typy zdarzeń | *Utworzony obiekt blob* | O jakich konkretnych zdarzeniach chcesz otrzymywać powiadomienia. |
-    | Typ punktu końcowego | *Usługa Event Hubs* | Typ punktu końcowego, do którego wysyłasz zdarzenia. |
+    | Typ punktu końcowego | *Usługa Event hubs* | Typ punktu końcowego, do którego wysyłasz zdarzenia. |
     | Endpoint | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | | |
 
@@ -104,7 +104,7 @@ Teraz połączyć się z usługi event grid z Eksploratora danych usługi Azure,
     | Konto magazynu | *gridteststorage* | Nazwa konta magazynu, który został utworzony wcześniej.|
     | Event Grid | *test-grid-connection* | Nazwa usługi event grid, który został utworzony. |
     | Nazwa centrum zdarzeń | *test-hub* | Centrum zdarzeń, który został utworzony. To pole zostanie wypełnione automatycznie, podczas pobierania usługi event grid. |
-    | Grupa konsumentów | *Grupa testowa* | Grupa odbiorców zdarzeń zdefiniowanych koncentratora, który został utworzony. |
+    | Grupa konsumentów | *test-group* | Grupa odbiorców zdarzeń zdefiniowanych koncentratora, który został utworzony. |
     | | |
 
     Tabela docelowa:

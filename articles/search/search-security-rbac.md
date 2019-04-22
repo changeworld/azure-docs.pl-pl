@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277787"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>Ustaw role RBAC na potrzeby dostępu administracyjnego
@@ -38,6 +38,6 @@ Role nie prawa dostępu do punktu końcowego usługi. Wyszukiwania usługi opera
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Zarządzanie przy użyciu programu PowerShell](search-manage-powershell.md) 
++ [Zarządzanie za pomocą programu PowerShell](search-manage-powershell.md) 
 + [Wydajność i optymalizacja w usłudze Azure Search](search-performance-optimization.md)
 + [Rozpoczynanie pracy z usługą opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).

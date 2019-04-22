@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 601a3f273a8da9100d24dfdbd13bd598b0e48884
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051567"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Tworzenie wystąpienia usługi Azure Network Watcher
@@ -108,10 +108,10 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 Teraz, gdy wystąpienie usługi Network Watcher, Dowiedz się więcej o funkcjach dostępnych:
 
 * [Topologia](network-watcher-topology-overview.md)
-* [Przechwytywanie pakietów](network-watcher-packet-capture-overview.md)
+* [Przechwycenie pakietu](network-watcher-packet-capture-overview.md)
 * [Weryfikowanie przepływu adresów IP](network-watcher-ip-flow-verify-overview.md)
 * [Następny przeskok](network-watcher-next-hop-overview.md)
-* [Widok grup zabezpieczeń](network-watcher-security-group-view-overview.md)
+* [Widok grupy zabezpieczeń](network-watcher-security-group-view-overview.md)
 * [Rejestrowanie przepływu sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
 * [Rozwiązywanie problemów bramy sieci wirtualnej](network-watcher-troubleshoot-overview.md)
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425971"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
@@ -156,11 +156,11 @@ Gdy rzeczywiste urządzenie łączy się z aplikacji IoT Central, jej udostępni
 
 Oferty zestawy SDK urządzeń Azure najłatwiej można zaimplementować kodu urządzenia. Dostępne są następujące zestawy SDK urządzeń:
 
-- [Zestaw Azure IoT SDK dla języka C](https://github.com/azure/azure-iot-sdk-c)
-- [Zestaw Azure IoT SDK dla języka Python](https://github.com/azure/azure-iot-sdk-python)
-- [Zestaw Azure IoT SDK dla platformy Node.js](https://github.com/azure/azure-iot-sdk-node)
-- [Zestaw Azure IoT SDK dla języka Java](https://github.com/azure/azure-iot-sdk-java)
-- [Zestaw Azure IoT SDK dla platformy .NET](https://github.com/azure/azure-iot-sdk-csharp)
+- [Usługa Azure IoT SDK dla języka C](https://github.com/azure/azure-iot-sdk-c)
+- [Usługa Azure IoT SDK dla języka Python](https://github.com/azure/azure-iot-sdk-python)
+- [Usługa Azure IoT SDK dla środowiska Node.js](https://github.com/azure/azure-iot-sdk-node)
+- [Usługa Azure IoT SDK dla języka Java](https://github.com/azure/azure-iot-sdk-java)
+- [Usługa Azure IoT SDK dla platformy .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
 Każde urządzenie łączy, przy użyciu parametrów połączenia unikatowy, która identyfikuje urządzenia. Urządzenia mogą łączyć się tylko z Centrum IoT, w którym jest zarejestrowany. Podczas tworzenia rzeczywistego urządzenia w aplikacji usługi Azure IoT Central, aplikacja generuje informacje potrzebne do utworzenia, parametry połączenia za pomocą `dps-keygen`.
 
@@ -181,7 +181,7 @@ W poniższej tabeli przedstawiono sposób mapowania funkcji usługi Azure IoT Ce
 
 Aby dowiedzieć się więcej o korzystaniu z zestawów SDK urządzeń typu, zobacz jeden z następujących artykułów przykładowy kod:
 
-- [Łączenie z ogólnego klienta Node.js do aplikacji usługi Azure IoT Central](howto-connect-nodejs.md)
+- [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)
 - [Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central](howto-connect-raspberry-pi-python.md)
 - [Podłącz urządzenie kit DevDiv do aplikacji usługi Azure IoT Central](howto-connect-devkit.md).
 
@@ -206,6 +206,6 @@ Wszystkie dane wymieniane między urządzeniami i usługi Azure IoT Central są 
 Skoro wiesz o łączności między urządzeniami w usłudze Azure IoT Central, Oto zalecane kolejne kroki:
 
 - [Przygotuj i podłącz urządzenie Mxchip](howto-connect-devkit.md)
-- [Przygotowanie i Połącz z urządzeniem Raspberry Pi](howto-connect-raspberry-pi-python.md)
-- [Łączenie z ogólnego klienta Node.js do aplikacji usługi Azure IoT Central](howto-connect-nodejs.md)
-- [C SDK: Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Łączenie ogólnego klienta Node.js z aplikacją usługi Azure IoT Central](howto-connect-nodejs.md)
+- [ZESTAW SDK C: Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

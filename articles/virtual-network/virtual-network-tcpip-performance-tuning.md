@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426447"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
@@ -140,7 +140,7 @@ Opóźnienie sieci podlega prędkość światła za pośrednictwem sieci świat�
 
 | | | | |
 |-|-|-|-|
-|**Trasa**|**Odległość**|**Czas jednokierunkowe**|**RTT**|
+|**trasy**|**odległość**|**Czas jednokierunkowe**|**RTT**|
 |Nowy Jork, aby San Francisco|4,148 km|21 ms|42 ms|
 |Nowy Jork do Londynu|5,585 km|28 ms|56 ms|
 |Nowy Jork, aby Sydney|15,993 km|80 ms|160 ms|
@@ -236,7 +236,7 @@ Są to efektywne ustawienia protokołu TCP dla `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formuła<br/>Oblicz maksymalny rozmiar okna**|
+|**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formułę<br/>Oblicz maksymalny rozmiar okna**|
 |Disabled (Wyłączony)|Brak|Brak|Rozmiar okna|
 |Ograniczenia|4|2^4|Rozmiar okna * (2 ^ 4)|
 |Bardzo ograniczona|2|2^2|Rozmiar okna * (2 ^ 2)|

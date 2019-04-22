@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58804534"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Zrozumienie definicje ról na potrzeby zasobów platformy Azure
@@ -232,5 +232,5 @@ Aby uzyskać informacje o `AssignableScopes` dla ról niestandardowych, zobacz [
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wbudowane role dla zasobów platformy Azure](built-in-roles.md)
-* [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+* [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
 * [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)

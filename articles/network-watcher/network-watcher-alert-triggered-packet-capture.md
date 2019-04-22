@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048762"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktywne monitorowanie sieci za pomocą alertów i usługi Azure Functions na użytek przechwycenie pakietu
@@ -91,7 +91,7 @@ Pierwszym krokiem jest tworzenie funkcji platformy Azure do przetwarzania alertu
     |**Ustawienie** | **Wartość** | **Szczegóły** |
     |---|---|---|
     |**Scenariusz**|Eksperymentalne|Typ scenariusza|
-    |**Nadawanie nazwy funkcji**|AlertPacketCapturePowerShell|Nazwa funkcji|
+    |**Nazwa funkcji**|AlertPacketCapturePowerShell|Nazwa funkcji|
     |**Poziom autoryzacji**|Funkcja|Poziom autoryzacji dla funkcji|
 
 ![Przykład funkcji][functions1]
@@ -346,7 +346,7 @@ Przejdź do istniejącej maszyny wirtualnej, a następnie dodaj regułę alertu.
 
   |**Ustawienie** | **Wartość** | **Szczegóły** |
   |---|---|---|
-  |**Name (Nazwa)**|TCP_Segments_Sent_Exceeded|Nazwa reguły alertu.|
+  |**Nazwa**|TCP_Segments_Sent_Exceeded|Nazwa reguły alertu.|
   |**Opis**|Segmentów TCP wysyłane przekroczyła próg|Opis reguły alertu.|
   |**Metryka**|Wysłane segmenty protokołu TCP| Metryki służące do wyzwolenia alertu. |
   |**Warunek**|Większe niż| Warunek, który chcesz użyć podczas obliczania metryki.|

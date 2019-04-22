@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049153"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
@@ -220,7 +220,7 @@ Aby wdrożyć usługę Azure File Sync, zacznij od umieszczenia zasobu **Usługi
 
    | Wartość | Opis |
    | ----- | ----- |
-   | **Name (Nazwa)** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
+   | **Nazwa** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
    | **Subskrypcja** | Subskrypcja platformy Azure używana na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu.<br><br>W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
    | **Lokalizacja** | Wschodnie stany USA |
@@ -327,4 +327,4 @@ Pliki zostały teraz zsynchronizowane między udziałem plików platformy Azure 
 W tym samouczku przedstawiono podstawowe kroki rozszerzania pojemności magazynu w systemie Windows Server przy użyciu usługi Azure File Sync. Aby bardziej szczegółowo zapoznać się z planowaniem wdrażania usługi Azure File Sync, zobacz:
 
 > [!div class="nextstepaction"]
-> [Planowanie wdrożenia usługi Azure File Sync](./storage-sync-files-planning.md)
+> [Planowanie wdrażania usługi Azure File Sync](./storage-sync-files-planning.md)

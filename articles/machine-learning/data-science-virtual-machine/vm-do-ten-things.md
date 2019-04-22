@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046189"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
@@ -286,7 +286,7 @@ Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmu
 
 ![Zrzut ekranu przedstawiający Eksplorator usługi Azure Storage uzyskiwania dostępu do konta magazynu](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Narzędzie AzCopy**
+**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: AzCopy**
 
 Do przenoszenia danych między lokalnymi plikami i usługi blob storage, narzędzia AzCopy można użyć w wiersza polecenia lub programu PowerShell:
 
@@ -311,7 +311,7 @@ Po uruchomieniu polecenia narzędzia AzCopy do kopiowania do obiektu blob platfo
 
 ![Zrzut ekranu przedstawiający konto magazynu, wyświetlanie przekazanego pliku CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Eksplorator usługi Azure Storage**
+**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Azure Storage Explorer**
 
 Możesz również przekazać dane z pliku lokalnego na maszynie wirtualnej za pomocą Eksploratora usługi Azure Storage:
 
@@ -389,7 +389,7 @@ Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy 
 
 ![Zrzut ekranu przedstawiający narzędzi Data Lake Tools w programie Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Azure Data Lake Explorer**
+**Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Usługa Azure Data Lake Explorer**
 
 Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plików lokalnych na maszynie wirtualnej do magazynu usługi Data Lake.
 

@@ -14,10 +14,10 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268360"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Zaloguj się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających
@@ -26,7 +26,7 @@ Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, b�
 > [!Note]
 > Jeśli nadal używasz środowiska weryfikacji dwuetapowej, musisz skonfigurować swoje metody uwierzytelniania, postępując zgodnie z instrukcjami wyświetlanymi w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) artykułu.
 > 
-> Jeśli administrator wyłączył środowisko informacje zabezpieczeń, należy ustawić swoje metody uwierzytelniania za pomocą tych artykułów krok po kroku:<ul><li>[Skonfiguruj informacje zabezpieczające do korzystania z aplikacji uwierzytelniania](security-info-setup-auth-app.md)</li><li>[Ustawiane informacje zabezpieczające, aby używać wiadomości SMS](security-info-setup-text-msg.md)</li><li>[Ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego](security-info-setup-phone-number.md)</li></ul>
+> Jeśli administrator wyłączył środowisko informacje zabezpieczeń, należy ustawić swoje metody uwierzytelniania za pomocą tych artykułów krok po kroku:<ul><li>[Skonfiguruj informacje zabezpieczające do korzystania z aplikacji uwierzytelniania](security-info-setup-auth-app.md)</li><li>[Set up security info to use text messaging](security-info-setup-text-msg.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z wiadomości tekstowych)</li><li>[Ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Zaloguj się przy użyciu powiadomienie aplikacji authenticator na swoim urządzeniu przenośnym
 

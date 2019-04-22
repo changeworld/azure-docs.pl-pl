@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050620"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure
@@ -40,7 +40,7 @@ W okienku metryki:
 
 1. Aby utworzyć wykresu metryki, wybierz **metryki** nazwy, a odpowiednie **agregacji** na metrykę zgodnie z opisem poniżej. **Zasobów** i **Namespace metryki** selektora są wstępnie wybrane do klastra usługi Azure Eksploratora danych.
 
-    **Metryka** | **Jednostka** | **Agregacja** | **Opis metryki**
+    **Metryka** | **Unit** | **Agregacja** | **Opis metryki**
     |---|---|---|---|
     | Wykorzystanie pamięci podręcznej | Procent | Avg, Max, Min | Wartość procentową zasobów przydzielonych pamięci podręcznej, obecnie w użyciu przez klaster. Pamięć podręczna odnosi się do rozmiaru dysków SSD przydzielone dla działań użytkownika, zgodnie z zasadami pamięci podręcznej zdefiniowane. Wykorzystanie pamięci podręcznej, 80% lub mniej jest trwały stan dla klastra. Jeśli wykorzystanie pamięci podręcznej przekracza 80%, klaster powinien być [skalowany w górę](manage-cluster-scale-up.md) do magazynu zoptymalizowane pod kątem warstwy cenowej lub [skalowana w poziomie](manage-cluster-scale-out.md) do większej liczby wystąpień. Alternatywnie można dostosować zasady pamięci podręcznej (mniejszą liczbę dni w pamięci podręcznej). Jeśli wykorzystanie pamięci podręcznej wynosi ponad 100%, rozmiar danych w pamięci podręcznej, zgodnie z zasadami pamięci podręcznej jest większy, całkowity rozmiar pamięci podręcznej w klastrze. |
     | Procesor CPU | Procent | Avg, Max, Min | Procent zasoby obliczeniowe przydzielone aktualnie w użyciu przez komputery w klastrze. Średnie użycie procesora CPU 80% lub mniej jest trwały dla klastra. Wartość maksymalna procesora CPU wynosi 100%, co oznacza, że nie ma żadnych dodatkowe zasoby obliczeniowe do przetwarzania danych. Gdy klaster nie działa prawidłowo, sprawdź wartość maksymalna procesora CPU, aby ustalić, czy określonych procesorów CPU, które są blokowane. |

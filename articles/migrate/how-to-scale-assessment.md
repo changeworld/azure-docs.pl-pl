@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
 ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490641"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
@@ -56,7 +56,7 @@ W przypadku jednorazowego odnajdywania (przestarzałe teraz), odnajdywania dzia�
 
 Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 
-| **Jednostka** | **Limit komputera** |
+| **Jednostki** | **Limit komputera** |
 | ---------- | ----------------- |
 | Project    | 1,500             |
 | Odnajdowanie  | 1,500             |
@@ -278,7 +278,7 @@ Modułem zbierającym, odnajduje poniższe dane konfiguracyjne dotyczące wybran
 
 Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
 
-**Licznik** |  **Wpływ na ocenę**
+**Counter** |  **Wpływ na ocenę**
 --- | ---
 cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
 mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  

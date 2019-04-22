@@ -12,10 +12,10 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 ms.openlocfilehash: e94134a0c7c3b44a2e4734fe1e91a19f3e26851c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425767"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio
@@ -128,7 +128,7 @@ Kliknij link **Informacje** w górnej części strony, aby wyzwolić punkt przer
 Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Kubernetes — pozwala też szybko i wielokrotnie wyświetlać efekt zmian wprowadzonych w kodzie w środowisku Kubernetes w chmurze.
 
 ### <a name="update-a-content-file"></a>Aktualizowanie pliku zawartości
-1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład, zmień wiersz 70, która odczytuje `<h2>Application uses</h2>` do mniej więcej tak: `<h2>Hello k8s in Azure!</h2>`
+1. Znajdź plik `./Views/Home/Index.cshtml` i zmień kod HTML. Na przykład zmień wiersz 70 z `<h2>Application uses</h2>` na `<h2>Hello k8s in Azure!</h2>`
 1. Zapisz plik.
 1. Otwórz przeglądarkę i odśwież stronę. Na stronie powinien być widoczny zaktualizowany kod HTML.
 
@@ -138,7 +138,7 @@ Co się stało? Modyfikacje plików zawartości, takich jak HTML i CSS, nie wyma
 Aktualizacja plików kodu wymaga nieco więcej pracy, ponieważ trzeba ponownie skompilować aplikację .NET Core i utworzyć zaktualizowane pliki binarne aplikacji.
 
 1. Zatrzymaj debuger w programie Visual Studio.
-1. Otwórz plik kodu o nazwie `Controllers/HomeController.cs`i edytowania wiadomości, która zostanie wyświetlona strona informacje: `ViewData["Message"] = "Your application description page.";`
+1. Otwórz plik kodu o nazwie `Controllers/HomeController.cs` i zmień komunikat wyświetlany na stronie Informacje: `ViewData["Message"] = "Your application description page.";`
 1. Zapisz plik.
 1. Naciśnij klawisz **F5**, aby ponownie uruchomić debugowanie. 
 
@@ -149,4 +149,4 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o programowaniu dla wielu usług](multi-service-netcore-visualstudio.md)
+> [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-netcore-visualstudio.md)

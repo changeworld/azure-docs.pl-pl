@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051760"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować użytkownika rejestracji i subskrypcji produktów
@@ -69,7 +69,7 @@ Teraz musisz utworzyć **punktu końcowego delegowania**. Musi przeprowadzić sz
    * Porównaj skrótu powyżej obliczona wartość **sig** parametr zapytania. Jeśli dwa skróty są zgodne, przejdź do następnego kroku, w przeciwnym razie odrzucić żądanie.
 3. Sprawdź, czy są odbiera żądanie dotyczące logowania / tworzenia konta: **operacji** parametr zapytania zostanie ustawiony na "**SignIn**".
 4. Przedstawić użytkownikowi za pomocą interfejsu użytkownika, aby zalogować się lub Zarejestruj się
-5. Jeśli użytkownik jest utworzeniu konta masz utworzyć odpowiednie konto w usłudze API Management. [Utwórz użytkownika] za pomocą interfejsu API REST zarządzania interfejsu API. Po wykonaniu tej czynności upewnij się, Ustaw identyfikator użytkownika, taką samą wartość jak w magazynie użytkownika lub identyfikator, który można śledzenie bieżącego.
+5. Jeśli użytkownik jest utworzeniu konta masz utworzyć odpowiednie konto w usłudze API Management. [Tworzenie użytkownika] za pomocą interfejsu API REST zarządzania interfejsu API. Po wykonaniu tej czynności upewnij się, Ustaw identyfikator użytkownika, taką samą wartość jak w magazynie użytkownika lub identyfikator, który można śledzenie bieżącego.
 6. Po pomyślnym uwierzytelnieniu użytkownika:
    
    * [żądania tokenu logowanie jednokrotne (SSO)] za pośrednictwem interfejsu API REST zarządzania interfejsu API
@@ -186,7 +186,7 @@ Aby uzyskać więcej informacji na temat delegowania zobacz poniższy film wideo
 [Delegating product subscription]: #delegate-product-subscription
 [żądania tokenu logowanie jednokrotne (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Tworzenie użytkownika]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[wywoływanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[wywołanie interfejsu API REST dla subskrypcji produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [przykładowego kodu podanego poniżej]: #delegate-example-code
 

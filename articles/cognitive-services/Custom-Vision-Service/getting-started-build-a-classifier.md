@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051480"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
@@ -53,9 +53,9 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
     |Domain|Przeznaczenie|
     |---|---|
     |__Ogólny__| Zoptymalizowane pod kątem szerokiego zakresu zadań klasyfikacji obrazów. Jeśli żaden z innych domen są odpowiednie lub wiesz, która domena, do wyboru, wybierz domenę ogólnego. |
-    |__Żywność__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
+    |__Żywności__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
     |__Charakterystycznych elementów krajobrazu__|Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w zdjęcia. Ta domena działa, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zakłócane przez osoby przed nim.|
-    |__Sprzedaż detaliczna__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
+    |__Handlu detalicznego__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
     |__Compact domen__| Zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez compact domen można wyeksportować do uruchomienia lokalnie.|
 
 1. Na koniec wybierz pozycję __Tworzenie projektu__.
@@ -130,5 +130,5 @@ Zawsze możesz uczyć klasyfikatory, możesz utworzyć nową _iteracji_ z własn
 
 W tym przewodniku przedstawiono sposób tworzenie i uczenie model klasyfikacji obrazów, przetwarzania niestandardowe witryny sieci Web. Następnie Pobierz więcej informacji na temat proces iteracyjny poprawy modelu.
 
-[Testowanie i ponowne trenowanie modelu](test-your-model.md)
+[Testowanie i ponowne szkolenie modelu](test-your-model.md)
 

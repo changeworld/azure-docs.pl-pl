@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049607"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
@@ -103,4 +103,4 @@ Jeśli widzisz wzrostów opóźnienia operacji, skontaktuj się z pomocą [Micro
 
 Inne tematy referencyjne w tym przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [Punkty końcowe centrum IoT Hub](iot-hub-devguide-endpoints.md)
+* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md)

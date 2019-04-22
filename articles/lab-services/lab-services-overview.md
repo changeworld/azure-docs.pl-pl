@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
 ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257624"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Wprowadzenie do usługi Azure Lab Services
@@ -120,5 +120,5 @@ W poniższej tabeli porównano dwa rodzaje laboratoriów, które są obsługiwan
 
 Zobacz następujące artykuły: 
 
-- [Informacje na temat laboratoriów na potrzeby zajęć](./classroom-labs/classroom-labs-overview.md)
+- [Temat laboratorium na potrzeby zajęć](./classroom-labs/classroom-labs-overview.md)
 - [Informacje o usłudze DevTest Labs](devtest-lab-overview.md)

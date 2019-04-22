@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489985"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678483"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -63,8 +63,7 @@ Gdy sieci wirtualne są połączone za pomocą komunikacji równorzędnej, użyt
 
 ![przesyłanie w równorzędnych sieciach wirtualnych](./media/virtual-networks-peering-overview/figure04.png)
 
-Tranzyt przez bramę jest obsługiwana dla komunikacji równorzędnej sieci wirtualnych i globalnych wirtualnych sieci równorzędnych (wersja zapoznawcza). Można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej.
-Tranzyt przez bramę między sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania (Resource Manager i model klasyczny) jest obsługiwana tylko wtedy, gdy brama znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tranzyt przez bramę jest obsługiwana dla komunikacji równorzędnej sieci wirtualnych i globalnych wirtualnych sieci równorzędnych. Tranzyt przez bramę między sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania (Resource Manager i model klasyczny) jest obsługiwana tylko wtedy, gdy brama znajduje się w sieci wirtualnej (Resource Manager). Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku połączenia za pomocą komunikacji równorzędnej sieci wirtualnych współużytkujących jedno połączenie sługi Azure ExpressRoute ruch między nimi jest oparty na relacji komunikacji równorzędnej (to znaczy odbywa się za pośrednictwem sieci szkieletowej platformy Azure). Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. Można również użyć bramy współdzielonej i skonfigurować tranzyt dla łączności lokalnej.
 
@@ -99,9 +98,9 @@ Tranzyt bramy jest właściwością komunikacji równorzędnej, która umożliwi
 
     |Model wdrażania platformy Azure             | Subskrypcja  |
     |---------                          |---------|
-    |Resource Manager — w obu przypadkach              |[Ten sam](tutorial-connect-virtual-networks-portal.md)|
+    |Resource Manager — w obu przypadkach              |[Ta sama](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Różne](create-peering-different-subscriptions.md)|
-    |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ten sam](create-peering-different-deployment-models.md)|
+    |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ta sama](create-peering-different-deployment-models.md)|
     |                                   |[Różne](create-peering-different-deployment-models-subscriptions.md)|
 
 * Dowiedz się jak, utworzyć [topologię sieciową typu gwiazda](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).

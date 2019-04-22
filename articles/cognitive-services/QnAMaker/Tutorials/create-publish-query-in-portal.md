@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266957"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: Tworzenie bazy wiedzy w portalu narzędzia QnA Maker
@@ -67,7 +67,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
     |Nazwa ustawienia|Wartość ustawienia|Przeznaczenie|
     |--|--|--|
     |Adres URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
-    |Plik |_nie są używane w ramach tego samouczka_|Służy do przekazywania plików dla pytań i odpowiedzi. |
+    |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
     |Osobowość dla konwersacji|Przyjaciel|Nadaje przyjazny i swobodny ton typowym pytaniom i odpowiedziom. Później można edytować te pytania i odpowiedzi. |
 
     ![Krok 4 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)

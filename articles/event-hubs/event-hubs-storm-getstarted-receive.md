@@ -15,18 +15,21 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094614"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679265"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Odbieranie zdarzeń z usługi Event Hubs przy użyciu platformy Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) to system rozproszonych obliczeń w czasie rzeczywistym, który upraszcza niezawodne przetwarzanie niepowiązanych strumieniach danych. W tej sekcji pokazano, jak za pomocą usługi Azure Event Hubs Storm spout odbieranie zdarzeń z usługi Event Hubs. Korzystanie z systemu Apache Storm, można podzielić zdarzenia między wieloma procesami hostowania w różnych węzłach. Integracja usługi Event Hubs przy użyciu systemu Storm upraszcza przyjmowania zdarzeń w sposób niewidoczny dla użytkownika punkt kontrolny z jej postęp przy użyciu systemu Storm w dozorcy instalacji, zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi Event Hubs.
 
 Aby uzyskać więcej informacji na temat usługi Event Hubs otrzymywać wzorców, zobacz [Przegląd usługi Event Hubs][Event Hubs overview].
+
+## <a name="prerequisites"></a>Wymagania wstępne
+Przed rozpoczęciem pracy z tego przewodnika Szybki Start **tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń**. Użyj [witryny Azure portal](https://portal.azure.com) do utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z Centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). 
 
 ## <a name="create-project-and-add-code"></a>Utwórz projekt i dodać kod
 

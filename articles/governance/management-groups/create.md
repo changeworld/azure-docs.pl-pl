@@ -11,10 +11,10 @@ ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
 ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259816"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
@@ -25,7 +25,7 @@ Pierwsza grupa zarządzania tworzony w katalogu może potrwać do 15 minut. Brak
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-management-group"></a>Utwórz grupę zarządzania
+## <a name="create-a-management-group"></a>Tworzenie grupy zarządzania
 
 Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy Azure, można utworzyć grupy zarządzania. Obecnie nie możesz użyć szablonów usługi Resource Manager do tworzenia grup zarządzania.
 
@@ -98,7 +98,7 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
-- [Jak zmienić, usunąć lub zarządzać grupami zarządzania](manage.md)
-- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](/powershell/module/az.resources#resources)
-- [Przejrzyj grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
-- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](/cli/azure/account/management-group)
+- [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](/powershell/module/az.resources#resources)
+- [Grupy zarządzania w interfejsie API REST](/rest/api/resources/managementgroups)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](/cli/azure/account/management-group)

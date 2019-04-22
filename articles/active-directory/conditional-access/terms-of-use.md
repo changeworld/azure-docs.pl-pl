@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59052360"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
@@ -124,9 +124,9 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
     | Szablon | Opis |
     | --- | --- |
     | **Dostęp do aplikacji w chmurze dla wszystkich gości** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich gości i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, może być wymagane wylogowanie się i zaloguj się. |
-    | **Dostęp do aplikacji w chmurze dla wszystkich użytkowników** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich użytkowników i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, konieczna będzie wylogowanie się i zaloguj się. |
-    | **Niestandardowe zasady** | Wybierz użytkowników, grupy i aplikacje, których będą dotyczyć niniejsze warunki użytkowania. |
-    | **Utwórz zasady dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
+    | **Dostęp do aplikacji dla wszystkich użytkowników w chmurze** | Zasady dostępu warunkowego zostaną utworzone dla wszystkich użytkowników i wszystkie aplikacje w chmurze. Te zasady mają wpływ witryny Azure portal. Po utworzeniu, konieczna będzie wylogowanie się i zaloguj się. |
+    | **Zasady niestandardowe** | Wybierz użytkowników, grupy i aplikacje, których będą dotyczyć niniejsze warunki użytkowania. |
+    | **Tworzenie zasad dostępu warunkowego później** | Te warunki użytkowania zostaną wyświetlone na liście przyznawania kontroli podczas tworzenia zasad dostępu warunkowego. |
 
     >[!IMPORTANT]
     >Kontrolki zasad dostępu warunkowego (w tym warunki użytkowania) nie obsługują wymuszania dla kont usługi. Zaleca się wykluczenie wszystkich kont usług z zasad dostępu warunkowego.
@@ -264,7 +264,7 @@ Poniżej przedstawiono listę obsługiwanych platform i oprogramowania.
 > | --- | --- | --- | --- | --- |
 > | **Aplikacja natywna** | Yes | Yes | Yes |  |
 > | **Microsoft Edge** | Yes | Yes | Yes |  |
-> | **Internet Explorer** | Yes | Yes | Yes |  |
+> | **Program Internet Explorer** | Yes | Yes | Yes |  |
 > | **Chrome (z rozszerzeniem)** | Yes | Yes | Yes |  |
 
 Warunki użytkowania na urządzenie ma następujące ograniczenia:
@@ -387,4 +387,4 @@ Odp.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Wymagane warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze](require-tou.md)
-- [Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory](best-practices.md)
+- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md)

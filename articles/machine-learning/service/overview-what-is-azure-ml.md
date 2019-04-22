@@ -12,10 +12,10 @@ ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 26248616c6b490de00028d8ecc8a0e225da0c0a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257114"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
@@ -32,7 +32,7 @@ Dzięki prognozom lub przewidywaniom uzyskiwanym za pomocą uczenia maszynowego 
 
 Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi.
 
-[![Aprzepływ pracy usługi Machine Learning zure](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Przepływu pracy usługi Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Usługa Azure Machine Learning w pełni obsługuje technologie typu open source. Dlatego można korzystać z dziesiątków tysięcy pakietów open source języka Python, wyposażonych w składniki uczenia maszynowego. Należą do nich na przykład PyTorch, TensorFlow i scikit-learn.
 Obsługa zaawansowanych narzędzi znacząco ułatwia interaktywne eksplorowanie i przygotowywanie danych, a następnie opracowywanie i testowanie modeli. Należą do nich [notesy programu Jupyter](https://jupyter.org) i rozszerzenie [Azure Machine Learning dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview).
@@ -52,8 +52,8 @@ Natomiast zaawansowane [potoki uczenia maszynowego](concept-ml-pipelines.md) poz
 Używając <a href="https://aka.ms/aml-sdk" target="_blank">głównego zestawu SDK języka Python</a> i <a href="https://aka.ms/data-prep-sdk" target="_blank">zestawu SDK do przygotowywania danych</a> dla usługi Azure Machine Learning, jak również pakietów języka Python typu „open source”, możesz samodzielnie tworzyć i trenować bardzo precyzyjne modele uczenia maszynowego i uczenia głębokiego w obszarze roboczym usługi Azure Machine Learning.
 Możesz korzystać z wielu składników uczenia maszynowego dostępnych w pakietach języka Python typu „open source”, np. z następujących:
 
-- <a href="https://scikit-learn.org/stable/" target="_blank">scikit-informacje</a>
-- <a href="https://www.tensorflow.org" target="_blank">TensorFlow</a>
+- <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+- <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
 - <a href="https://mxnet.io" target="_blank">MXNet</a>
 
@@ -90,7 +90,7 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 
 - Wykonaj kompleksowe samouczki: 
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 
-  + [Przygotowuje dane, a następnie użyj zautomatyzowanej uczenia maszynowego w celu automatycznego train model regresji](tutorial-data-prep.md)
+  + [Prepare data and use automated machine learning to auto-train a regression model (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do automatycznego trenowania modelu regresji)](tutorial-data-prep.md)
 
 - Użyj zestawu [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk), aby przygotować swoje dane.
 

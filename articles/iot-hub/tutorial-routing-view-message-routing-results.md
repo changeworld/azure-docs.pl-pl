@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045837"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Samouczek: Część 2 — Wyświetl komunikaty trasowane
@@ -297,7 +297,7 @@ W tym samouczku 2-częściowych pokazaliśmy ci, jak używać routing komunikat�
 > * Tworzenie zasobów — Centrum IoT hub, konto magazynu, kolejki usługi Service Bus i symulowanego urządzenia.
 > * Punkty końcowe i skonfigurować trasy wiadomości w usłudze IoT Hub dla konta magazynu i kolejki usługi Service Bus.
 
-**Część II: Wysyłanie komunikatów do Centrum, wyświetlanie wyników trasowane**
+**Part II: Wysyłanie komunikatów do Centrum, wyświetlanie wyników trasowane**
 > [!div class="checklist"]
 > * Tworzenie aplikacji logiki, która jest wyzwalana i wysyła wiadomość e-mail po dodaniu komunikatu do kolejki usługi Service Bus.
 > * Pobieranie i uruchamianie aplikacji, która symuluje urządzenie IoT wysyłające komunikaty do centrum przy użyciu różnych opcji routingu.
@@ -310,4 +310,4 @@ W tym samouczku 2-częściowych pokazaliśmy ci, jak używać routing komunikat�
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie i używanie metryki i Diagnostyka za pomocą usługi IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Konfigurowanie i używanie metryk i diagnostyki w usłudze IoT Hub](tutorial-use-metrics-and-diags.md)

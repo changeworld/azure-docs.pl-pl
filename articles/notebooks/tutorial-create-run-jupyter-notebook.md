@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
 ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258540"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
@@ -128,7 +128,7 @@ Dzięki zestawowi środowiska projektu i pliku danych, które jest gotowy można
 1. Ponieważ masz *requirements.txt* plików w ustawieniach środowiska zostanie wyświetlony komunikat "Oczekiwanie na zakończenie kontener przygotowywany." Możesz wybrać **OK** Zamknij komunikat i kontynuować pracę w notesie; nie można uruchomić komórki kodu, jednak, dopóki środowisko jest w pełni skonfigurowany.
 1. Notes zostanie otwarty w interfejsie Jupyter, z jednym pustej komórce kodu jako domyślny.
 
-    [![IWidok początkowy nowy notes w notesach Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Widok początkowy nowy notes w notesach platformy Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Przewodnik po interfejsie notesu
 
@@ -144,7 +144,7 @@ Menu (C) A za pomocą polecenia do pracy z notesem.
 (F) wskazuje, czy jest zaufany Notes (wartość domyślna to **zaufany**).
 (G) jądra używane do uruchamiania notesu wraz z wskaźnik aktywności.
 
-[![Pzosta obszary interfejsu użytkownika interfejsu Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Główne obszary interfejsu użytkownika interfejsu programu Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter zapewnia wbudowane Przewodnik po przykładzie podstawowe elementy interfejsu użytkownika. Uruchom samouczek, wybierając **pomocy** > **samouczek interfejsu użytkownika** polecenia i klikając okna podręczne.
 
@@ -426,8 +426,8 @@ Zobacz też [programu Visual Studio Code — Obsługa Jupyter](https://code.visu
 Artykuły z poradami:
 
 - [Tworzenie i klonowanie projektów](create-clone-jupyter-notebooks.md)
-- [Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
+- [Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
 - [Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
 - [Praca z plikami danych](work-with-project-data-files.md)
 - [Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)

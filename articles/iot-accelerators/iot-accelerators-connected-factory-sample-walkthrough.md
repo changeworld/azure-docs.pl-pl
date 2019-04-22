@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490363"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania połączonej fabryki
@@ -230,7 +230,7 @@ Aplikacja internetowa wdrożona w ramach akcelerator rozwiązań obejmuje zinteg
 Możesz kontynuować poznawanie akceleratorów rozwiązań IoT, czytając następujące artykuły:
 
 * [Uprawnienia w witrynie azureiotsolutions.com][lnk-permissions]
-* [Wdrażanie bramy w systemie Windows lub Linux dla akceleratora rozwiązania połączonej fabryki](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Deploy a gateway on Windows or Linux for the Connected Factory solution accelerator (Wdrażanie bramy w systemie Windows lub Linux na potrzeby akceleratora rozwiązania połączonej fabryki)](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC Publisher reference implementation (Implementacja referencyjna wydawcy OPC)](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: d727ed62f5a869f6eb67400281d2660607756abf
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58802698"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porównaj StorSimple przy użyciu usługi Azure File Sync i krawędź pola danych opcje transferu danych 
@@ -26,7 +26,7 @@ Ten dokument zawiera omówienie opcji do transferu danych lokalnych do platformy
 
 |                           |StorSimple 8000   |Azure File Sync   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|Przegląd         |Hybrydowy magazyn warstwowy i archiwizowanie|Magazynem serwera plików ogólnego z usługą cloud sync warstw i połączenia obejmujące wiele lokacji.  |Rozwiązanie magazynu, aby wstępnie przetworzyć dane i wyślij go za pośrednictwem sieci na platformie Azure.        |
+|Omówienie         |Hybrydowy magazyn warstwowy i archiwizowanie|Magazynem serwera plików ogólnego z usługą cloud sync warstw i połączenia obejmujące wiele lokacji.  |Rozwiązanie magazynu, aby wstępnie przetworzyć dane i wyślij go za pośrednictwem sieci na platformie Azure.        |
 |Scenariusze        |Serwer plików, element docelowy archiwizacji, wykonywania kopii zapasowych |Serwer plików, archiwizacji (wielolokalizacyjnego)   |Transfer danych, dane przetwarzania wstępnego tym ML wnioskowania, IoT, archiwizacji    |
 |Funkcja obliczeniowa Edge     |Niedostępne |Niedostępne |Obsługuje uruchamianie kontenerów za pomocą usługi Azure IoT Edge    |
 |Współczynnik postaci      |Urządzenie fizyczne   |Agent jest zainstalowany w systemie Windows Server |Urządzenie fizyczne   |

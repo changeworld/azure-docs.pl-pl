@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009199"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678549"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -90,9 +90,9 @@ Zaznacz, aby wyświetlić aktywne alerty i podstawowych reguł, które alerty wy
 
 ![Zrzut ekranu przedstawiający środowisko analizy](media/app-map/alerts-view.png)
 
-## <a name="set-cloudrolename"></a>Zestaw cloud_RoleName
+## <a name="set-cloud-role-name"></a>Nazwa roli w chmurze zestawu
 
-Mapa aplikacji używa `cloud_RoleName` właściwość do identyfikacji składniki na mapie. Zestaw SDK usługi Application Insights automatycznie dodaje `cloud_RoleName` właściwości telemetrii wyemitowane przez składniki. Na przykład dodać zestaw SDK w sytuacji, nazwa witryny sieci web lub nazwę usługi, rola `cloud_RoleName` właściwości. Jednakże istnieją przypadki, w których możesz chcieć zastąpić wartość domyślną. Aby zastąpić cloud_RoleName i zmiany, jakie wyświetlona na mapie aplikacji:
+Mapa aplikacji używa **Nazwa roli w chmurze** właściwość do identyfikacji składniki na mapie. Zestaw SDK usługi Application Insights automatycznie dodaje właściwości nazwy roli chmury do telemetrii wyemitowane przez składniki. Na przykład zestaw SDK doda nazwa witryny sieci web lub nazwa roli usługi do chmury roli nazwy właściwości. Jednakże istnieją przypadki, w których możesz chcieć zastąpić wartość domyślną. Aby zastąpić nazwę roli w chmurze i zmiany, jakie wyświetlona na mapie aplikacji:
 
 ### <a name="net"></a>.NET
 
@@ -171,9 +171,9 @@ Jeśli używasz aplikacji Spring Boot za pomocą Application Insights platformy 
 
 `spring.application.name=<name-of-app>`
 
-Spring Boot starter automatycznie przypisze cloudRoleName wartość wprowadzona dla właściwości spring.application.name.
+Spring Boot starter automatycznie przypisze Nazwa roli w chmurze na wartość wprowadzona dla właściwości spring.application.name.
 
-Więcej informacji na temat korelacji Java oraz sposób konfigurowania cloudRoleName do wyewidencjonowania aplikacje inne niż SpringBoot to [sekcji](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na korelacji.
+Aby uzyskać więcej informacji na temat języka Java korelacji i sposobie konfigurowania roli w chmurze nazwy do wyewidencjonowania aplikacje inne niż SpringBoot to [sekcji](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na korelacji.
 
 ### <a name="clientbrowser-side-javascript"></a>/ Przeglądarki klienta kodu JavaScript
 
@@ -186,15 +186,15 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Opis Cloud.RoleName w kontekście Mapa aplikacji
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Nazwa roli w kontekście mapy aplikacji w chmurze opis
 
-Jak zapewnisz, jak wziąć pod uwagę Cloud.RoleName może być przydatne do wyszukiwania na mapie aplikacji, która ma wiele Cloud.RoleNames obecne:
+W miarę jak myśleć o **Nazwa roli w chmurze**, może być przydatne do wyszukiwania na mapie aplikacji, który ma wiele nazw ról chmura istnieje:
 
 ![Zrzut ekranu z mapy aplikacji](media/app-map/cloud-rolename.png)
 
-Na mapie aplikacji nad każdym z nazwami w zielone pola są Cloud.RoleName/role wartości dla różnych aspektów korzystania z tej konkretnej aplikacji rozproszonej. Aby dla tej aplikacji jego role składają się z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
+Na mapie aplikacji nad każdym z nazwami w polach zielony to chmury roli nazwy wartości dla różnych aspektów korzystania z tej konkretnej aplikacji rozproszonej. Aby dla tej aplikacji jego role składają się z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
 
-W przypadku tej aplikacji każda z tych `Cloud.RoleNames` również reprezentuje inny unikatowy zasób usługi Application Insights z własnych kluczy instrumentacji. Ponieważ właściciela tej aplikacji ma dostęp do każdej z tych czterech różnych zasobów usługi Application Insights, mapa aplikacji będzie mógł łączyć mapę relacji podstawowej.
+W przypadku tej aplikacji każda z tych nazw ról w chmurze również reprezentuje inny unikatowy zasób usługi Application Insights z własnych kluczy instrumentacji. Ponieważ właściciela tej aplikacji ma dostęp do każdej z tych czterech różnych zasobów usługi Application Insights, mapa aplikacji będzie mógł łączyć mapę relacji podstawowej.
 
 Aby uzyskać [oficjalne definicje](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
 
@@ -208,15 +208,17 @@ Aby uzyskać [oficjalne definicje](https://github.com/Microsoft/ApplicationInsig
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternatywnie Cloud.RoleInstance mogą być przydatne w scenariuszach, gdzie Cloud.RoleName informujący o tym problemu znajduje się gdzieś w usługi frontonu sieci web, ale możliwe, że uruchomione usługi frontonu sieci web na wielu serwerach ze zrównoważonym obciążeniem tak możliwości przejść do bardziej warstwy za pomocą zapytania Kusto i, wiedząc, jeśli ten problem ma wpływ na wszystkie wystąpienia sieci web frontonu serwerów/lub jedna z tych metod może być bardzo ważne.
+Alternatywnie **wystąpienie roli w chmurze** mogą być przydatne w scenariuszach gdzie **Nazwa roli w chmurze** informuje, ten problem występuje w sieci web frontonu, ale może być uruchomiony sieci web frontonu w wiele ze zrównoważonym obciążeniem serwerów tak możliwość przejść głębiej za pośrednictwem zapytania Kusto warstwy i, wiedząc, jeśli ten problem ma wpływ na wszystkie wystąpienia sieci web frontonu serwerów/lub jedna z tych metod może być bardzo ważne.
 
-Scenariusz, w którym możesz chcieć zastąpić wartość dla Cloud.RoleInstance może być, jeśli Twoja aplikacja działa w środowisku konteneryzowanych gdzie wystarczy znajomość poszczególnych serwerów może nie być wystarczająco dużo informacji, aby zlokalizować danego problemu.
+Scenariusz, w którym możesz chcieć zastąpić wartość dla wystąpienia roli w chmurze może być, jeśli Twoja aplikacja działa w środowisku konteneryzowanych gdzie wystarczy znajomość poszczególnych serwerów może nie być wystarczająco dużo informacji, aby zlokalizować danego problemu.
 
-Aby uzyskać więcej informacji o tym, jak zastąpić właściwości cloud_RoleName z inicjatorami telemetrii, zobacz [dodać właściwości: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Aby uzyskać więcej informacji o tym, jak zastąpić właściwości nazwy roli chmury z inicjatorami telemetrii, zobacz [dodać właściwości: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Jeśli występują problemy z mapy aplikacji, aby działać zgodnie z oczekiwaniami, wykonaj poniższe kroki:
+
+### <a name="general"></a>Ogólne
 
 1. Upewnij się, że używasz oficjalnie obsługiwanego zestawu SDK. Nieobsługiwane zestawy SDK/zestawy SDK społeczności mogą nie obsługiwać korelacji.
 
@@ -226,9 +228,23 @@ Jeśli występują problemy z mapy aplikacji, aby działać zgodnie z oczekiwani
 
 3. Jeśli używasz usługi Azure Functions przy użyciu C#Przeprowadź uaktualnienie do [funkcje w wersji 2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Upewnij się, [cloud_RoleName](#set-cloud_rolename) jest poprawnie skonfigurowana.
+4. Upewnij się, [Nazwa roli w chmurze](#set-cloud-role-name) jest poprawnie skonfigurowana.
 
 5. Jeśli brakuje zależności, upewnij się, że znajduje się ona na liście [automatycznie zebranych zależności](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). W przeciwnym razie możesz w dalszym ciągu śledzić ją ręcznie przy użyciu [wywołania zależności śledzenia](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+
+### <a name="too-many-nodes-on-the-map"></a>Zbyt wielu węzłom na mapie
+
+Mapa aplikacji tworzy węzeł aplikacji Każda unikatowa nazwa roli w chmurze w telemetrii żądania i węzeł zależności Każda unikatowa kombinacja typu docelowego i nazwa roli w chmurze w telemetrii zależności. W przypadku ponad 10 000 węzłów w ramach telemetrii, mapa aplikacji nie będzie można pobrać wszystkie węzły i łącza, więc mapa będzie niekompletna. W takim przypadku zostanie wyświetlony komunikat z ostrzeżenie, podczas wyświetlania mapy.
+
+Ponadto mapy aplikacji obsługuje maksymalnie 1000 osobnych węzłach niezgrupowane renderowane tylko raz. Mapa aplikacji zmniejsza wizualnej złożoności przez grupowanie zależności, które mają ten sam typ a obiektami wywołującymi, ale jeśli telemetrii ma zbyt wiele nazw ról unikatowy chmury lub zbyt wiele typów zależności, tej grupy będzie niewystarczająca i Mapa nie będzie można renderowania.
+
+Aby rozwiązać ten problem, musisz zmienić swoje Instrumentacji do prawidłowo ustawiona nazwa roli w chmurze, typ zależności i pól docelowych zależności.
+
+* Docelowy zależności powinny reprezentować nazwę logiczną zależności. W wielu przypadkach jest równoważne z serwera lub nazwa zasobu zależności. Na przykład w przypadku zależności HTTP jest ustawiana zgodnie z nazwą hosta. Nie powinna zawierać unikatowe identyfikatory lub parametry, które zmieniają się między żądaniami do innego.
+
+* Typ zależności powinny reprezentować zależność typu logicznego. Na przykład HTTP, SQL lub obiektów Blob platformy Azure są typów typowych zależności. Nie powinna zawierać unikatowych identyfikatorów.
+
+* Celem Nazwa roli w chmurze jest opisana w [powyżej sekcji](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Opinie w portalu
 

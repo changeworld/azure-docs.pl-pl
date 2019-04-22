@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270527"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
@@ -45,8 +45,8 @@ Platforma Azure udostępnia narzędzia, w tym interfejsu wiersza polecenia platf
 * **Repozytorium** — Rejestr zawiera przynajmniej jednej stanowiące wirtualnego grupę obrazów kontenerów przy użyciu tej samej nazwie, ale różnych znaczników lub skróty. Usługa Azure Container Registry obsługuje wielopoziomowe przestrzenie nazw repozytoriów. Dzięki wielopoziomowym przestrzeniom nazw można grupować kolekcje obrazów związanych z określoną aplikacją lub kolekcje aplikacji związanych z określonymi zespołami programistycznymi lub operacyjnymi. Na przykład:
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` reprezentuje obraz całej firmy
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` reprezentuje obraz używany do tworzenia aplikacji platformy .NET, współużytkowana przez dział gwarancji
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` reprezentuje obraz sieci web zgrupowany w aplikacji zgłoszeń klientów i należący do działu gwarancji
+  * `myregistry.azurecr.io/warrantydept/dotnet-build` reprezentuje obraz używany do tworzenia aplikacji platformy .NET współdzielony przez dział gwarancji
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` reprezentuje obraz sieci Web zgrupowany w aplikacji zgłoszeń klientów i należący do działu gwarancji
 
 * **Obraz** — każdy obraz jest przechowywany w repozytorium i jest migawką tylko do odczytu kontenera zgodnego z platformą Docker. Rejestry kontenerów platformy Azure mogą obejmować zarówno obrazy systemu Windows, jak i Linux. Możesz kontrolować nazwy obrazów wszystkich wdrożeń kontenera. Użyj standardowych [poleceń platformy Docker](https://docs.docker.com/engine/reference/commandline/), aby wypchnąć obrazy do repozytorium lub aby ściągnąć je z repozytorium. Oprócz obrazów kontenerów usługa Azure Container Registry umożliwia przechowywanie [formatów powiązanej zawartości](container-registry-image-formats.md), takich jak [wykresy Helm](container-registry-helm-repos.md), które są używane do wdrażania aplikacji w usłudze Kubernetes.
 
@@ -60,6 +60,6 @@ Usługa [Azure Container Registry Tasks](container-registry-tasks-overview.md) (
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie rejestru kontenerów za pomocą witryny Azure Portal](container-registry-get-started-portal.md)
-* [Tworzenie rejestru kontenera za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md)
-* [Automatyzowanie systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR](container-registry-tasks-overview.md)
+* [Create a container registry using the Azure portal](container-registry-get-started-portal.md) (Tworzenie rejestru kontenerów za pomocą witryny Azure Portal)
+* [Create a container registry using the Azure CLI](container-registry-get-started-azure-cli.md) (Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure)
+* [Automatyzacja systemu operacyjnego i poprawianie struktury przy użyciu usługi ACR Tasks](container-registry-tasks-overview.md)

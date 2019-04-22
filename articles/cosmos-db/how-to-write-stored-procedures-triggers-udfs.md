@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268422"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
@@ -320,8 +320,8 @@ Poznaj dodatkowe pojęcia i dowiedz się, jak pisać procedury składowane, wyzw
 
 * [Jak rejestrować procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika oraz jak ich używać w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Jak napisać procedur składowanych i wyzwalaczy w usłudze Azure Cosmos DB przy użyciu interfejsu API zapytań języka Javascript](how-to-write-javascript-query-api.md)
+* [Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB](how-to-write-javascript-query-api.md)
 
-* [Pracę z usługą Azure Cosmos DB procedur przechowywanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB](stored-procedures-triggers-udfs.md)
+* [Praca z procedurami składowanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika w usłudze Azure Cosmos DB](stored-procedures-triggers-udfs.md)
 
-* [Praca z języka JavaScript zintegrowany interfejs API zapytań w usłudze Azure Cosmos DB](javascript-query-api.md)
+* [Praca ze zintegrowanym interfejsem API zapytań języka JavaScript w usłudze Azure Cosmos DB](javascript-query-api.md)

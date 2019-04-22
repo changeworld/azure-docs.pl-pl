@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274522"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
@@ -216,6 +216,6 @@ Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigu
 
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
-*  [Programistyczne tworzenie centrum IoT](iot-hub-rm-template-powershell.md)
+*  [Programistyczne tworzenie Centrum IoT hub](iot-hub-rm-template-powershell.md)
 *  [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
 *  [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)

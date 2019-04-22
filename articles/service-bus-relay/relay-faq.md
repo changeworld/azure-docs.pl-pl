@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045581"
 ---
 # <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
@@ -135,8 +135,8 @@ Tak. Klient przekazujący sprawia, że połączenia z usługą Azure Relay przy 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do platformy .NET](relay-hybrid-connections-dotnet-get-started.md)
-* [Rozpoczynanie pracy z węzłem](relay-hybrid-connections-node-get-started.md)
+* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md

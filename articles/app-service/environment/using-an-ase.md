@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630669"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678092"
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi App Service #
 
-## <a name="overview"></a>Przegląd ##
+## <a name="overview"></a>Omówienie ##
 
 Usługa Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Składa się z:
 
@@ -73,7 +73,7 @@ Aby utworzyć aplikację w środowisku ASE:
 
     c. Wybierz środowisko ASE w **lokalizacji** listy rozwijanej. Hosting aplikacji systemu Linux w środowisku ASE jest aktywne tylko w 6 regionów, w tym momencie: **Zachodnie stany USA, wschodnie stany USA, zachodnie Europa, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
 
-    d. Wybierz **izolowany** warstwy cenowej. Wybierz **wybierz**.
+    d. Wybierz **izolowany** warstwy cenowej. Wybierz przycisk **Wybierz**.
 
     e. Kliknij przycisk **OK**.
     
@@ -137,7 +137,7 @@ Za pomocą zewnętrznego środowiska ASE te opcje publikowania wszystkich dział
 
 Główna różnica z publikowaniem jest względem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia publikowanie punktów końcowych są dostępne tylko za pośrednictwem wewnętrznego modułu równoważenia obciążenia. Wewnętrznego modułu równoważenia obciążenia znajduje się na prywatny adres IP w podsieci środowiska ASE w sieci wirtualnej. Jeśli nie masz dostępu do sieci do wewnętrznego modułu równoważenia obciążenia nie można opublikować wszystkie aplikacje, w tym środowisku ASE. Jak wspomniano w [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE], należy skonfigurować usługę DNS dla aplikacji w systemie. Obejmuje to punkt końcowy SCM. Jeśli nie są prawidłowo zdefiniowane, nie można opublikować. Twojego środowiska IDE muszą mieć dostęp do wewnętrznego modułu równoważenia obciążenia sieci w celu publikowania bezpośrednio do niego.
 
-Oparty na Internecie systemy ciągłej integracji, takich jak GitHub i DevOps platformy Azure, nie działają z ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
+Gotowych oparty na Internecie systemy ciągłej integracji, takich jak GitHub i DevOps platformy Azure, nie działają z ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Dla metodyki DevOps platformy Azure można obejść to przez zainstalowanie agenta na wersji samodzielnie hostowanej sieci wewnętrznej, w którym może osiągnąć wewnętrznego modułu równoważenia obciążenia. Alternatywnie można również użyć systemu ciągłej integracji, która używa modelu ściągania, takiego jak Dropbox.
 
 Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Można to sprawdzić w profilu publikowania aplikacji i w bloku portalu aplikacji (w **Przegląd** > **Essentials** oraz w **właściwości**). 
 

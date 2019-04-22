@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256825"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
@@ -22,9 +22,9 @@ Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest pods
 Omówimy następujące zaawansowane zapytania:
 
 > [!div class="checklist"]
-> - [Uzyskaj pojemność zestawu skalowania maszyn wirtualnych i rozmiar](#vmss-capacity)
-> - [Listę wszystkich nazw tagów](#list-all-tags)
-> - [Maszyny wirtualne dopasowane przez aparat wyrażeń regularnych](#vm-regex)
+> - [Pobieranie pojemności i rozmiaru zestawu skalowania maszyn wirtualnych](#vmss-capacity)
+> - [Wyświetlanie listy wszystkich nazw tagów](#list-all-tags)
+> - [Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne](#vm-regex)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -75,14 +75,14 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_).
 **Pasuje do wyrażenia regularnego \@**  pozwala na określenie wyrażenia regularnego do dopasowania, czyli `^Contoso(.*)[0-9]+$`. Definicja tego wyrażenia regularnego jest wyjaśniona jako:
 
-- `^` -Match musi zaczynać się od początku ciągu.
-- `Contoso` Ciąg uwzględniający wielkość liter.
-- `(.*)` -Podwyrażenie dopasowania:
-  - `.` -Dopasowuje dowolny pojedynczy znak (z wyjątkiem nowego wiersza).
-  - `*` -Dopasowuje poprzedni element zero lub więcej razy.
-- `[0-9]` -Dopasowanie grup znakowy dla cyfry od 0 do 9.
-- `+` -Dopasowuje poprzedni element co najmniej raz.
-- `$` -Match poprzedni element musi wystąpić na końcu ciągu.
+- `^` - Dopasowanie musi zaczynać się od początku ciągu.
+- `Contoso` - Ciąg z uwzględnieniem wielkości liter.
+- `(.*)` - Dopasowanie podwyrażenia:
+  - `.` - Dopasowuje dowolny pojedynczy znak (z wyjątkiem nowego wiersza).
+  - `*` - Dopasowuje poprzedni element zero lub więcej razy.
+- `[0-9]` - Dopasowanie grupy znaków dla cyfry od 0 do 9.
+- `+` - Dopasowuje poprzedni element co najmniej raz.
+- `$` - Dopasowanie poprzedniego elementu musi wystąpić na końcu ciągu.
 
 Po dopasowaniu według nazwy zapytanie rzutuje nazwę i porządkuje rosnąco według nazwy.
 

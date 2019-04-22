@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288714"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
@@ -121,7 +121,7 @@ Każda sekcja ma swoje własne ustawienia zaawansowane, które są dostępne za 
 | **Jako widoczny warunkowo** | Określ możesz ukrywać kroki na podstawie parametru w trybie do czytania. |
 | **Eksportuj parametr**| Zezwalaj na podstawie wiersza wybranego w siatce lub na wykresie, aby spowodować, że dalszych krokach zmienić wartości lub stanie się widoczna.  |
 | **Wyświetl zapytanie poza trybem edycji** | Wyświetla kwerendy powyżej wykres lub tabelę, nawet w trybie do czytania.
-| **Pokaż przycisk otwierania w usłudze analizy w przypadku, gdy nie trwa edycja** | Dodaje niebieską ikoną Analytics rogu wykresu, aby zezwolić na dostęp jednym kliknięciem.|
+| **Pokaż przycisk Otwórz w przycisk Analiza poza trybem edycji** | Dodaje niebieską ikoną Analytics rogu wykresu, aby zezwolić na dostęp jednym kliknięciem.|
 
 Większość z tych ustawień jest dość intuicyjne, aby dowiedzieć się, ale **Eksportuj parametr** warto zbadać skoroszytu korzystającej z tej funkcji.
 
@@ -169,7 +169,7 @@ Istnieją cztery typy parametrów, które są obecnie obsługiwane:
 | **Tekst**    | Umożliwia użytkownikom edytowanie pola tekstowego, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
 | **Lista rozwijana** | Zezwala użytkownikowi na wybranie z zestawu wartości. |
 | **Selektor zakresu czasu**| Umożliwia użytkownikowi wybrać ze wstępnie zdefiniowanego zestawu wartości zakresu czasu lub masz do wyboru niestandardowego zakresu czasu.|
-| **Selektor zasobów** | Zezwala użytkownikowi na wybranie z zasobów wybranych do skoroszytu.|
+| **Wybór zasobów** | Zezwala użytkownikowi na wybranie z zasobów wybranych do skoroszytu.|
 
 ### <a name="using-a-text-parameter"></a>Za pomocą parametru tekstu
 

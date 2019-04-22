@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051473"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Aprowizowanie urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service
@@ -110,7 +110,7 @@ W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału,
 
 Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
 
-* [Limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md)
+* [Azure Subscription Service Limits](../azure-subscription-service-limits.md) (Limity usług subskrypcji platformy Azure)
 
 ## <a name="related-azure-components"></a>Powiązane składniki platformy Azure
 Usługa Device Provisioning Service automatyzuje aprowizowanie urządzeń w usłudze Azure IoT Hub. Dowiedz się więcej na temat usługi [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).

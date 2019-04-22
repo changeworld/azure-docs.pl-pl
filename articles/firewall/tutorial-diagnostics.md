@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044865"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: Monitorowanie dzienników i metryk usługi Azure Firewall
@@ -60,9 +60,9 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
 9. Na stronie **Obszar roboczy usługi Log Analytics** wpisz nazwę **firewall-oms** dla nowego obszaru w polu **Obszar roboczy OMS**.
 10. Wybierz swoją subskrypcję, użyj istniejącej grupy zasobów zapory (**Test-FW-RG**), a następnie wybierz lokalizację **Wschodnie stany USA** i warstwę cenową **Bezpłatna**.
 11. Kliknij przycisk **OK**.
-   ![Uruchamianie procesu konfiguracji][1] obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.  
+   ![Uruchamianie procesu konfiguracji][1] Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.  
 12. W obszarze **Dziennik** kliknij pozycję **AzureFirewallApplicationRule** i **AzureFirewallNetworkRule**, aby zbierać dzienniki dla reguł aplikacji i sieci.
-   ![Zapisz ustawienia diagnostyczne][2]
+   ![Zapisywanie ustawień diagnostycznych][2]
 13. Kliknij pozycję **Zapisz**.
 
 ## <a name="enable-logging-with-powershell"></a>Włączanie rejestrowania przy użyciu programu PowerShell
@@ -116,7 +116,7 @@ Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kl
 Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować dzienniki usługi Azure Monitor, aby wyświetlać dane.
 
 > [!div class="nextstepaction"]
-> [Monitorowanie rozwiązań w dziennikach w usłudze Azure Monitor sieci](../azure-monitor/insights/azure-networking-analytics.md)
+> [Rozwiązania do monitorowania sieci w dziennikach usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

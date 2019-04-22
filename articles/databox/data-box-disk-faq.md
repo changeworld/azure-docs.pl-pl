@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258780"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
@@ -129,8 +129,8 @@ A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędz
  - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwana w przypadku dysków zarządzanych. To narzędzie jest również sprawdzane, ponieważ dane są kopiowane, dlatego możesz pominąć krok weryfikacji podczas używania tego narzędzia.
 
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
-- [Pobierz zestaw narzędzi dysku Data Box dla Windows](https://aka.ms/databoxdisktoolswin) 
-- [Pobierz zestaw narzędzi dysku Data Box dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
+- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
+- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
 A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.

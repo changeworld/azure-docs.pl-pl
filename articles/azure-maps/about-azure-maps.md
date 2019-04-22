@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268775"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
@@ -139,9 +139,9 @@ Upewnij się, że lokalizacja bieżącego adresu IP nie znajduje się w jeden z 
 Aby uzyskać więcej informacji na temat nowych funkcji usługi Azure Maps, zobacz:
 
 > [!div class="nextstepaction"]
-> [Tabela tras, Isochrones, wyszukiwanie adresu IP i nie tylko](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
+> [Route Matrix, Isochrones, IP lookup, and more (Macierze tras, izochrony, wyszukiwanie adresów IP i nie tylko)](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
 Wypróbowanie przykładowej aplikacji przedstawiającej usługi Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie aplikacji internetowej](quick-demo-map-app.md)
+> [Szybki start: Tworzenie aplikacji sieci web](quick-demo-map-app.md)

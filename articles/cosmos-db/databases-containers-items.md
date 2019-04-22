@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób tworzenia i używania baz danych i k
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762909"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678806"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Praca z bazami danych, kontenerami i elementami
 
@@ -61,7 +61,7 @@ Możesz ustawić [czas wygaśnięcia (TTL)](time-to-live.md) dla wybranych eleme
 
 Za pomocą [kanału informacyjnego zmian](change-feed.md), możesz zasubskrybować dziennika operacji, która jest zarządzana w przypadku każdego z partycjami logicznymi kontenera. Kanału informacyjnego zmian zawiera dziennik wszystkie aktualizacje, które są wykonywane w kontenerze wraz z przed i po obrazów elementów. Zobacz [sposób kompilowania aplikacji reaktywnie przy użyciu kanału informacyjnego zmian](serverless-computing-database.md). Można również skonfigurować okres przechowywania dla zmiany źródła danych, za pomocą zestawienia zasad w kontenerze zmian. 
 
-Możesz zarejestrować [procedury składowane, wyzwalacze, funkcje zdefiniowane przez użytkownika (UDF)](stored-procedures-triggers-udfs.md) i [scalania procedury](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) z kontenera usługi Azure Cosmos. 
+Możesz zarejestrować [procedury składowane, wyzwalacze, funkcje zdefiniowane przez użytkownika (UDF)](stored-procedures-triggers-udfs.md) i [scalania procedury](how-to-manage-conflicts.md) z kontenera usługi Azure Cosmos. 
 
 Można określić [unikatowego ograniczenia klucza](unique-keys.md) w kontenerze usługi Azure Cosmos. Tworząc zasady unikatowych kluczy, możesz zapewnić unikatowość co najmniej jedną wartość na klucz partycji logicznej. Po utworzeniu kontenera za pomocą zasady unikatowych kluczy uniemożliwia tworzenie nowych lub zaktualizowanych elementów z wartościami, które duplikują wartości określonych przez unikatowe ograniczenie klucza. Aby dowiedzieć się więcej, zobacz [unikatowych ograniczeń klucza](unique-keys.md).
 
@@ -117,7 +117,7 @@ Każdy element w usłudze Azure Cosmos ma następujące właściwości zdefiniow
 |_etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
 |_ts | Generowane przez system | Sygnatura czasowa ostatniej aktualizacji elementu | Yes | Nie | Nie | Nie | Nie |
 |_self | Generowane przez system | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
-|id | Albo | Zdefiniowane przez użytkownika unikatową nazwę w ramach partycji logicznej. Jeśli użytkownik nie określono identyfikatora, system wygeneruje ją automatycznie. | Yes | Yes | Yes | Yes | Yes |
+|id | Albo | Zdefiniowane przez użytkownika unikatową nazwę w ramach partycji logicznej. Jeśli użytkownik nie określono Identyfikatora, system wygeneruje ją automatycznie. | Yes | Yes | Yes | Yes | Yes |
 |Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Zdefiniowane przez użytkownika właściwości, które są reprezentowane w reprezentacji natywnego interfejsu API (JSON, BSON, języka CQL itp.) | Yes | Yes | Yes | Yes | Yes |
 
 ### <a name="operations-on-items"></a>Operacje na elementach

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Site Recovery - wykluczyć dysk, podczas replikacji maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wykluczać dysku dla maszyn wirtualnych platformy Azure za pomocą usługi Azure Site Recovery przy użyciu programu Azure PowerShell.
+title: Usługa Azure Site Recovery - wykluczania dysków podczas replikacji maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykluczać dyski maszyn wirtualnych platformy Azure w usłudze Azure Site Recovery przy użyciu programu Azure PowerShell.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 1c278d810df7e5ba8701529a59987c9bb16fa40c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044128"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678279"
 ---
-# <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Wykluczanie dysków z replikacji maszyn wirtualnych platformy Azure do platformy Azure przy użyciu programu Azure PowerShell
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Wykluczanie dysków z replikacji z programu PowerShell maszyn wirtualnych platformy Azure
 
-W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych platformy Azure. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski. Obecnie ta funkcja jest udostępniany wyłącznie za pośrednictwem programu Azure PowerShell.
+W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn wirtualnych platformy Azure. Może być wykluczyć dyski, aby zoptymalizować przepustowość używaną przez replikację lub zasobów po stronie docelowej, korzystających z tych dysków. Obecnie ta funkcja jest dostępna wyłącznie za pośrednictwem programu Azure PowerShell.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -26,26 +26,25 @@ W tym artykule opisano sposób wykluczania dysków podczas replikowania maszyn w
 
 Przed rozpoczęciem:
 
-- Przeanalizuj informacje o [składnikach i architekturze scenariusza](azure-to-azure-architecture.md).
+- Upewnij się, że rozumiesz [składnikach i architekturze odzyskiwania po awarii](azure-to-azure-architecture.md).
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](azure-to-azure-support-matrix.md) wszystkich składników.
-- Masz programu Azure PowerShell `Az` modułu. Jeśli potrzebujesz zainstalować lub uaktualnić programu Azure PowerShell, postępuj zgodnie z tym [Przewodnik instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/install-az-ps).
-- Utworzono już magazynu usługi Recovery services i zostały wykonane ochrony maszyn wirtualnych w co najmniej jeden raz. Jeśli nie wykonaj go, korzystając z dokumentacji, o których wspomniano [tutaj](azure-to-azure-powershell.md).
+- Upewnij się, że masz AzureRm PowerShell "Az" modułu. Aby zainstalować lub zaktualizować program PowerShell, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Upewnij się, że utworzono magazyn usługi recovery services i chronione maszyny wirtualne w co najmniej raz. Jeśli nie zostało wykonane te rzeczy, wykonaj procedurę w [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell](azure-to-azure-powershell.md).
 
-## <a name="why-exclude-disks-from-replication"></a>Dlaczego wykluczać dyski z replikacji?
-Wykluczenie dysków z replikacji jest często konieczne, ponieważ:
+## <a name="why-exclude-disks-from-replication"></a>Dlaczego wykluczać dyski z replikacji
+Może być konieczne wykluczanie dysków z replikacji, ponieważ:
 
-- Maszyna wirtualna została osiągnięta [częstotliwość zmiany limity usługi Azure Site Recovery do replikacji danych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
+- Maszyna wirtualna została osiągnięta [częstotliwość zmiany limity usługi Azure Site Recovery do replikacji danych](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
 
-- Dane modyfikowane na wykluczonym dysku nie są istotne lub nie ma konieczności ich replikacji.
+- Dane modyfikowane na wykluczonym dysku nie są ważne lub nie mają być replikowane.
 
-- Chcesz oszczędzić zasoby magazynu i zasoby sieciowe, pomijając replikowanie tych zmian.
+- Chcesz oszczędzić zasoby magazynu i sieci, nie będą replikowane dane.
 
+## <a name="how-to-exclude-disks-from-replication"></a>Jak wykluczać dyski z replikacji
 
-## <a name="how-to-exclude-disks-from-replication"></a>Jak wykluczać dyski z replikacji?
+W tym przykładzie firma Microsoft replikować maszynę wirtualną, która ma jeden system operacyjny i trzech dysków z danymi, które w regionie wschodnie stany USA, w regionie zachodnie stany USA 2. Nazwa maszyny wirtualnej jest *AzureDemoVM*. Firma Microsoft wykluczyć dysk 1 i zachowanie dysków, 2 i 3.
 
-W przykładzie w tym artykule maszynę wirtualną, która ma 1 systemu operacyjnego i dysków z danymi 3 w regionie wschodnie stany USA, będą replikowane do regionu zachodnie stany USA 2. Nazwa maszyny wirtualnej użytych w tym przykładzie jest AzureDemoVM. abyśmy spowoduje wykluczenie dysku 1 i zostanie zachowana na dysku, 2 i 3
-
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Uzyskaj szczegółowe informacje o maszyny wirtualne do replikacji
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Pobieranie szczegółów maszyny wirtualne do replikacji
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -70,27 +69,25 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-
-Pobieranie szczegółów dysku dla dysków maszyny wirtualnej. Szczegóły dysku będzie używana później podczas uruchamiania replikacji dla maszyny wirtualnej.
+Uzyskaj szczegółowe informacje o dyskach maszyny wirtualnej. Te informacje będą używane później, po uruchomieniu replikacji maszyny wirtualnej.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-azure-virtual-machine"></a>Replikowanie maszyn wirtualnych platformy Azure
+## <a name="replicate-an-azure-virtual-machine"></a>Replikowanie maszyn wirtualnych platformy Azure
 
-W poniższym przykładzie firma Microsoft ma zakłada, że masz już konto magazynu pamięci podręcznej, zasady replikacji i mapowania. Jeśli nie wykonaj go, korzystając z dokumentacji, o których wspomniano [tutaj](azure-to-azure-powershell.md) 
+W poniższym przykładzie przyjęto założenie, że masz już konto magazynu pamięci podręcznej, zasady replikacji i mapowania. Jeśli nie masz tych rzeczy, należy wykonać ten proces w [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell](azure-to-azure-powershell.md).
 
-
-Replikowanie maszyn wirtualnych platformy Azure za pomocą **usługi managed disks**.
+Replikowanie maszyn wirtualnych platformy Azure za pomocą *usługi managed disks*.
 
 ```azurepowershell
 
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
-#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration).
 
 #OsDisk
 $OSdiskId =  $vm.StorageProfile.OsDisk.ManagedDisk.Id
@@ -101,7 +98,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded so we will provide it during the time of replication 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id
@@ -127,17 +124,18 @@ $diskconfigs = @()
 $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk3ReplicationConfig
 
 
-#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+#Start replication by creating a replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Po rozpoczęcia replikacji powiedzie się, dane maszyny wirtualnej są replikowane w regionie odzyskiwania.
+Po pomyślnym zakończeniu operacji rozpoczęcia replikacji, dane maszyny Wirtualnej są replikowane w regionie odzyskiwania.
 
-W obszarze zreplikowane elementy nie może uzyskać wprowadzenie replikowane maszyny wirtualne i możesz przejść do witryny Azure portal.
-Proces replikacji rozpoczyna się przez wstępnie rozmieszczania kopię replikowanych dyskach maszyny wirtualnej w regionie odzyskiwania. Ta faza nosi nazwę fazy replikacji początkowej.
+Możesz przejść do witryny Azure portal i wyświetlić replikowane maszyny wirtualne w obszarze "zreplikowane elementy".
 
-Po zakończeniu replikacji początkowej replikacji przenosi faza synchronizacji różnicowej. W tym momencie maszyna wirtualna jest chroniona. Kliknij na chronionej maszynie wirtualnej > dysków, aby zobaczyć, że jeśli dysk jest wyłączona lub nie.
+Proces replikacji rozpoczyna się przez wstępne wypełnienie kopię replikowanych dyskach maszyny wirtualnej w regionie odzyskiwania. Ta faza nosi nazwę fazy replikacji początkowej.
+
+Po zakończeniu replikacji początkowej replikacji przechodzi do fazy synchronizacji różnicowej. W tym momencie maszyna wirtualna jest chroniona. Wybierz chronionej maszyny wirtualnej, aby zobaczyć, jeśli wszystkie dyski są wyłączone.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowy tryb failover.
+Dowiedz się więcej o [Uruchamianie testu trybu failover](site-recovery-test-failover-to-azure.md).

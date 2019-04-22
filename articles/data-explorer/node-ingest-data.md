@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
 ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047657"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Szybki start: Pozyskiwanie danych przy użyciu biblioteki środowiska Node w usłudze Azure Data Explorer
@@ -24,7 +24,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do ukończenia tego przewodnika Szybki start, oprócz subskrypcji platformy Azure, potrzebne są następujące elementy:
 
-* [Klaster testowy i bazy danych](create-cluster-database-portal.md)
+* [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
 * Środowiska [Node.js](https://nodejs.org/en/download/) zainstalowane na komputerze deweloperskim
 
