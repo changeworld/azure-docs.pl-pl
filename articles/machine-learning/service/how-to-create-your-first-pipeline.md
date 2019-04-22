@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278551"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679996"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -253,8 +253,8 @@ trainStep = PythonScriptStep(
 
 Po zdefiniowaniu kroki, utworzysz potok za pomocą niektóre lub wszystkie z tych kroków.
 
->[!NOTE]
->Nie pliku lub danych jest przekazywany do usługi Azure Machine Learning, kiedy zdefiniujesz kroki lub tworzenie potoku.
+> [!NOTE]
+> Nie pliku lub danych jest przekazywany do usługi Azure Machine Learning, kiedy zdefiniujesz kroki lub tworzenie potoku.
 
 ```python
 # list of steps to run
@@ -289,8 +289,12 @@ Aby uzyskać więcej informacji, zobacz [pakiet azure — potok — instrukcje](
 
 ## <a name="submit-the-pipeline"></a>Przesyłanie potoku
 
-Po przesłaniu potoku usługi Azure Machine Learning sprawdza zależności dla każdego kroku i przesyła migawkę katalog źródłowy, wskazana. Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany.
+Po przesłaniu potoku usługi Azure Machine Learning sprawdza zależności dla każdego kroku i przesyła migawkę katalog źródłowy, wskazana. Jeśli katalog źródłowy nie zostanie określony, bieżący katalog lokalny jest przekazywany. Migawka także są przechowywane w ramach eksperymentu w obszarze roboczym.
 
+> [!IMPORTANT]
+> Aby uniemożliwić dołączanie w migawce pliki, należy utworzyć [.gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` plików w katalogu i Dodaj pliki do niego. `.amlignore` Plików używa tej samej składni i wzorce jako [.gitignore](https://git-scm.com/docs/gitignore) pliku. Jeśli oba pliki istnieją, `.amlignore` plik ma pierwszeństwo.
+>
+> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshot).
 
 ```python
 # Submit the pipeline to be run

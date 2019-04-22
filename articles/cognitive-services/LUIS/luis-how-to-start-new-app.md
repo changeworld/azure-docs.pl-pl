@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: daffbe3f3158bb232f7db7ac90d766661e937643
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891433"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679656"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Utwórz nową aplikację usługi LUIS w portalu usługi LUIS
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -67,10 +67,19 @@ Błędy możliwe są następujące:
 
 * Aplikacja o tej nazwie już istnieje. Ponowne importowanie aplikacji, a następnie ustaw **opcjonalna nazwa** pod nową nazwą. 
 
-## <a name="export-app"></a>Eksportowanie aplikacji
+## <a name="export-app-for-backup"></a>Eksportowanie aplikacji do tworzenia kopii zapasowych
 
-1. Na **Moje aplikacje** wybierz opcję **importowania Nowa aplikacja**.
-1. W **importowania Nowa aplikacja** okno dialogowe, wybierz plik JSON definiujący aplikacji usługi LUIS.
+1. Na **Moje aplikacje** wybierz opcję **wyeksportować**.
+1. Wybierz **wyeksportować jako plik JSON**. Przeglądarka pobiera active wersję aplikacji.
+1. Dodaj ten plik w systemie tworzenia kopii zapasowej do archiwizacji modelu.
+
+## <a name="export-app-for-containers"></a>Eksportowanie aplikacji dla kontenerów
+
+1. Na **Moje aplikacje** wybierz opcję **wyeksportować**.
+1. Wybierz **wyeksportować jako kontener** następnie wybierz, jakie gniazda opublikowane (w środowisku produkcyjnym lub etapu), którą chcesz wyeksportować.
+1. Korzystanie z tego pliku przy użyciu usługi [kontenera usługi LUIS](luis-container-howto.md). 
+
+    Jeśli interesuje Cię eksportowanie przeszkolonych, ale nie jeszcze opublikowany model w celu użycia z kontenerem usługi LUIS, przejdź do strony **wersji** strony, a następnie wyeksportować z tego miejsca. 
 
 ## <a name="delete-app"></a>Usuwanie aplikacji
 

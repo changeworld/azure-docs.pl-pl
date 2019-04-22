@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a0c675ac9c8a782b94d127e877646bf37af1371
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621485"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678670"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Usługa SQL Data Warehouse business intelligence partnerów
 Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej gamy narzędzi wiodące w branży.  W tym artykule przedstawiono firm partnerskich firmy Microsoft dzięki rozwiązaniom analizy przysługujący obsługi usługi Azure SQL Data Warehouse.
@@ -26,7 +26,7 @@ Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej
 | ![Birst][1] |**Birst**<br>Birst łączy całą organizację za pośrednictwem sieci wpleciona zwirtualizowanych BI wystąpień na od góry udostępnionego wspólnego analitycznych sieci szkieletowej|[Strona produktu][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory danych][2] |**Dane clearStory (wgląd w prowadzoną działalność ciągłe)**<br>Dane clearStory włącza analizę fast cyklu dla różnych danych przechowywanych w usłudze SQL Data Warehouse. Firmy clearStory zintegrowana oparta na platformie Spark platformy i analizy aplikacji szybkość dostępu do danych i harmonizacji różnych zestawów danych. Umożliwiają one eksploracji szybkie, współpracy, który umożliwia użytkownikom biznesowym można samodzielnego w celu uzyskania szczegółowych informacji. |[Strona produktu][clearstory_website]<br> |
 | ![Dundas][4] |**Dundas Power BI**<br>Wizualizacja danych Dundas to dostawca wiodących, globalnej analizy biznesowej i wizualizacja danych oprogramowania.  Pulpity nawigacyjne Dundas, raportowanie i analiza danych wizualnych zapewniają bezproblemową integrację aplikacji biznesowych, umożliwiając lepsze decyzje i szybszy wgląd.|[Strona produktu][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**Analiza Cognos IBM**< brCognos Analytics obejmuje inteligentne usługi możliwości samoobsługi, które ułatwiają proste, wyczyść i łatwe w użyciu bez względu, czy analityka doświadczenie biznesowe badanie kinks w obszernym dostaw lub marketingowiec optymalizacji pojedynczy kampanii. Analiza Cognos używa sztucznej Inteligencji i inne funkcje inteligentne do pozostaw trudne w prowadzeniu eksplorację danych oraz ułatwienia dla użytkowników uzyskać odpowiedzi, które są im potrzebne|[Strona produktu][cognosanalytics_website]<br>|
+| ![IBM Cognos][3] |**IBM Cognos analizy**<br>Cognos Analytics obejmuje inteligentne usługi możliwości samoobsługi, które ułatwiają proste, wyczyść i łatwe w użyciu bez względu, czy analityka doświadczenie biznesowe badanie kinks w obszernym dostaw lub marketingowiec optymalizacji kampanii jednego. Analiza Cognos używa sztucznej Inteligencji i inne funkcje inteligentne do pozostaw trudne w prowadzeniu eksplorację danych oraz ułatwienia dla użytkowników uzyskać odpowiedzi, które są im potrzebne|[Strona produktu][cognosanalytics_website]<br>|
 | ![Konstruktorzy informacji][13] |**Konstruktorzy informacji (WebFOCUS)**<br>Analiza biznesowa WebFOCUS pomaga firmom korzystanie z danych więcej strategicznie przez przedsiębiorstwa i poza nim. Umożliwia użytkownikom i administratorom szybkie tworzenie pulpitów nawigacyjnych, Połącz zawartości z wielu formatów i źródeł danych, które zapewnia niezawodne zabezpieczeń i kompleksowy nadzoru, która umożliwia bezproblemowe oraz zabezpieczanie diverly i udostępniania z dowolnym analizy i analizy Biznesowej zawartość|[Strona produktu][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport jest możliwego do osadzenia rozwiązanie do analizy Biznesowej dla przedsiębiorstw. To rozwiązanie umożliwia użytkownikom tworzyć raporty, pulpity nawigacyjne i analizę danych w chmurze, obsługi dużych ilości danych i źródeł danych transakcyjnych. Dzięki wizualizowaniu danych, można wykonać własne raportowania i danych odnajdywania dla agile i na bieżąco decyzji. |[Strona produktu][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Analiza histologi**<br>Razem histologi Analytics i Azure SQL Data Warehouse umożliwia zbieranie, analizowanie i natychmiast działać w największych i najbardziej różnych zestawów danych na całym świecie. |[Strona produktu][logianalytics_website]<br>|

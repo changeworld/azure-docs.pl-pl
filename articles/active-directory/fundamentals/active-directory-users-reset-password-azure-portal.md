@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492706"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Zresetuj hasło użytkownika przy użyciu usługi Azure Active Directory
@@ -60,6 +60,6 @@ Po po zresetowaniu hasła użytkownika, należy wykonać następujące procesy b
 
 - [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
 
-- [Tworzenie grupy podstawowej i dodawanie członków](active-directory-groups-create-azure-portal.md)
+- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
 
 Lub można wykonywać bardziej złożonych scenariuszy użytkownika, takich jak przypisanie delegatów, przy użyciu zasad oraz udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [dokumentacja zarządzania użytkownika usługi Azure Active Directory](../users-groups-roles/index.yml).

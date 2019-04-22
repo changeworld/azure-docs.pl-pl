@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494648"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Potoki usługi Azure umożliwia tworzenie i wdrażanie rozwiązań HPC
@@ -51,7 +51,7 @@ Struktura codebase używane w tym przykładzie jest podobny do następującego;
 W tej sekcji założono, że czytelnik zna wersji kontroli i projektowania szablonów usługi Resource Manager. Jeśli nie znasz tych pojęć, zobacz następujące strony, aby uzyskać więcej informacji.
 
 * [Co to jest kontrola źródła?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
@@ -506,5 +506,5 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 Oprócz tego artykułu istnieją dwa samouczków, które wykorzystują narzędzie ffmpeg, przy użyciu platformy .NET i Python. Zobacz te samouczki, aby uzyskać więcej informacji na temat sposobu interakcji z kontem usługi Batch za pomocą prostej aplikacji.
 
-* [uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python](tutorial-parallel-python.md)
-* [Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API środowiska .NET](tutorial-parallel-dotnet.md)
+* [Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API języka Python](tutorial-parallel-python.md)
+* [Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API platformy .NET](tutorial-parallel-dotnet.md)

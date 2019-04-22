@@ -1,17 +1,17 @@
 ---
 title: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
 description: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 7dfc299c32b25ddf939aa3efcb927697307887a2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904325"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678449"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -21,7 +21,7 @@ W tym artykule wyjaśniono, jak zarządzać poziomami spójności w usłudze Azu
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
 
-Domyślny poziom spójności to taki, którego klienci używają domyślnie. Klienci mogą go zastąpić.
+[Domyślny poziom spójności](consistency-levels.md) jest poziomu spójności używanego przez klientów domyślnie. Klienci zawsze można zmienić go.
 
 ### <a name="cli"></a>Interfejs wiersza polecenia
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-W tym przykładzie jest tworzone nowe konto usługi Azure Cosmos DB z obsługą wielowzorcowości w regionach Wschodnie stany USA i Zachodnie stany USA. Domyślne zasady spójności są ustawiane jako Sesja.
+W tym przykładzie tworzy nowe konto usługi Azure Cosmos z wieloma regionami zapisu włączone w regionach wschodnie stany USA i zachodnie stany USA. Ustawiono domyślny poziom spójności *sesji* spójności.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,15 +59,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="portal"></a>Portal
+### <a name="azure-portal"></a>Azure Portal
 
-Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Azure Cosmos DB i otwórz okienko **Domyślna spójność**. Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**.
+Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Azure Cosmos, a następnie otwórz **domyślna spójność** okienka. Wybierz odpowiedni poziom spójności jako nowe ustawienie domyślne, a następnie wybierz pozycję **Zapisz**.
 
 ![Menu spójności w witrynie Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Zastępowanie domyślnego poziomu spójności
 
-Klienci mogą zastąpić domyślny poziom spójności, który jest ustawiony przez usługę. Tę opcję można ustawić dla całego klienta lub dla poszczególnych żądań.
+Klienci mogą zastąpić domyślny poziom spójności, który jest ustawiony przez usługę. Poziom spójności można ustawić na żądanie, który zastępuje domyślny poziom spójności na poziomie konta.
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,6 +131,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 ```
 
 ## <a name="utilize-session-tokens"></a>Korzystanie z tokenów sesji
+
+Jeden z poziomów spójności w usłudze Azure Cosmos DB jest *sesji* spójności. Jest to domyślny poziom domyślnie stosowane do konta usługi Cosmos. Podczas pracy z *sesji* spójności, klient będzie używać tokenu sesji wewnętrznie z każdym żądaniem odczytu/zapytań do zapewnienia utrzymania Ustawianie poziomu spójności.
 
 Aby ręcznie zarządzać tokenami sesji, pobieraj token sesji z odpowiedzi i ustawiaj go dla poszczególnych żądań. Jeśli nie chcesz ręcznie zarządzać tokenami sesji, nie musisz korzystać z tych przykładów. Zestaw SDK automatycznie śledzi tokeny sesji. Jeśli nie ustawisz tokenu sesji ręcznie, zestaw SDK domyślnie użyje najnowszego tokenu sesji.
 
@@ -209,15 +211,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorowanie metryki PBS (Probabilistically Bounded Staleness)
 
-Aby wyświetlić metrykę PBS, przejdź do swojego konta usługi Azure Cosmos DB w witrynie Azure Portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
+Jak ostatecznej jest spójność ostateczna? W przypadku średniej może oferujemy granice nieaktualność względem historii wersji i godziny. [ **Probabilistically powiązana nieaktualność książek Telefonicznych** ](http://pbs.cs.berkeley.edu/) metryki podejmuje próbę określają ilościowo prawdopodobieństwo nieaktualność i pojawia się jako metrykę. Aby wyświetlić metryki PBS, przejdź do swojego konta usługi Azure Cosmos w witrynie Azure portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
 
 ![Wykres PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
-Aby wyświetlić tę metrykę, użyj menu metryk usługi Azure Cosmos DB. Nie jest ona widoczna w środowisku metryk monitorowania platformy Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o zarządzaniu konfliktami danych lub przejdź do następnej kluczowej koncepcji w usłudze Azure Cosmos DB. Zobacz następujące artykuły:
 
+* [Poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md)
 * [Zarządzanie konfliktami między regionami](how-to-manage-conflicts.md)
 * [Partycjonowanie i dystrybucja danych](partition-data.md)
+* [Wady i zalety spójności w nowoczesnych rozproszoną bazę danych, projektowanie systemów](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Wysoka dostępność](high-availability.md)
+* [Azure Cosmos DB w umowie SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

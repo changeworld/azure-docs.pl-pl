@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/05/2019
 ms.author: scottwhi
 ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493879"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Użyj tokenu szczegółowe informacje, aby uzyskać szczegółowe informacje o obrazie
@@ -477,6 +477,6 @@ if __name__ == '__main__':
 
 [Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego](tutorial-bing-visual-search-single-page-app.md)  
 [Co to jest interfejs API wyszukiwania wizualnego Bing?](overview.md)  
-[Wypróbuj usługi Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
-[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Try Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
+[Pobierz klucz dostępu do bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Obrazy — wyszukiwanie wizualne](https://aka.ms/bingvisualsearchreferencedoc)

@@ -15,53 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 63ce2be847017ed7e80fe5e573d5553311f6af2f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae9d52e4a26825e4318a6afb8aadc86ac29fa2b3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107682"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677840"
 ---
-# <a name="use-notebooks-to-hunt-for-anomalies"></a>Korzystanie z notesów do wyszukiwania anomalii
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Umożliwia aplikacji Jupyter Notebooks możliwe pod kątem zagrożeń zabezpieczeń
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wartownik Azure korzysta z możliwości interaktywne notesów programu Jupyter w celu zapewnienia wglądu i działań w celu zbadania lub możliwe anomalii zabezpieczeń w danym środowisku. Azure wartownik pochodzi załadowanych za pomocą notesów, które zostały opracowane przez analityków zabezpieczeń firmy Microsoft. Każdy Notes jest specjalistycznych niezależna przepływu pracy dla specyficznego przypadku użycia. Wizualizacje są zawarte w każdej notesu szybciej eksploracji danych i myślistwo zagrożeń. Dostosowywanie wbudowane notesów do własnych potrzeb, tworzenie nowych w notesach od podstaw lub importowanie notesów z platformy Azure, przez wartownika "społeczności usługi GitHub. Notesy Jupyter notebook są importowane jako projektu na stronie notesy platformy Azure — dzięki temu użytkownikowi na dostęp do wszystkich notesy platformy Azure przez wartownika w jednym miejscu. Notesy mogą być uruchamiane jednym kliknięciem przycisku lub mogą być konfigurowane przez użytkownika do dopasowania ich środowiska.
+Podstawą Azure przez wartownika to magazyn danych; łączy ona wysoką wydajność zapytań, schemat dynamiczny i możliwość skalowania do woluminów duża ilość danych. Portal Azure przez wartownika i wszystkie narzędzia platformy Azure przez wartownika Użyj wspólny interfejs API dostępu do tego magazynu danych. Tego samego interfejsu API jest również dostępna dla zewnętrznych narzędzi takich jak [Jupyter](https://jupyter.org/) notesów i Python. Chociaż wiele typowych zadań mogą odbywać się w portalu, Jupyter rozszerza zakres działania z tymi danymi. Łączy ona pełną programowania ogromny zbiór bibliotek, machine learning, wizualizacji i przeprowadzać analizę danych. Te atrybuty należy Jupyter atrakcyjnym narzędziem do badania zabezpieczeń i myślistwo.
 
-W pełni zintegrowane rozwiązanie umożliwia notesów do uruchamiania w chmurze zasobów obliczeniowych i magazynowych bez nie podstawowej obsługi. Możliwość wykorzystać istniejące ekosystemu notesów programu Jupyter umożliwia reagowania źródła modeli, bez udostępniania danych klientów. 
+![Przykład notesu](./media/notebooks/sentinel-nb-mapandtimeline.png)
 
+Zintegrowaliśmy środowisko aplikacji Jupyter do portalu Azure przez wartownika, co ułatwia tworzenie i wykonywanie notesów do analizowania danych. *Kqlmagic* Biblioteka zapewnia spoiwo łączące umożliwia wybranie zapytania z platformy Azure przez wartownika i uruchamiaj je bezpośrednio w notesie. Użyj zapytania [język zapytania Kusto](https://kusto.azurewebsites.net/docs/query/index.html). Kilka notesów, opracowane przez analityków zabezpieczeń firmy Microsoft, są dostarczane za pomocą platformy Azure przez wartownika. Niektóre z tych notesów są tworzone dla konkretnego scenariusza i mogą być używane jako-to. Inne osoby mają jako przykłady przedstawiające różne techniki i funkcje, które można skopiować lub dostosować do użytku w notesach własne. Inne notesów mogą być importowane z społeczności platformy Azure przez wartownika usługi GitHub.
 
-Każdy Notes jest hostowana na notesy platformy Azure (obecnie w wersji zapoznawczej), opracowywanie interakcyjne środowisko w chmurze platformy Azure. Notesy są zawsze dostępne, która jest zawsze dostępna z dowolnej przeglądarki, w dowolnym miejscu na świecie.  Azure, przez wartownika "wbudowane notesów dotyczącymi badania i myślistwo są klonowane do projektu, który należy do Ciebie i którą można modyfikować i dostosować do danego środowiska. Niektóre z najpopularniejszymi notesami wbudowane są:
+Zintegrowane rozwiązanie Jupyter używa [notesów usługi Azure](https://notebooks.azure.com/) do przechowywania, udostępnianie i wykonać notesy. Można również uruchomić te notesy lokalnie (Jeśli masz środowisko Python i Jupyter na komputerze) lub w innych środowiskach JupterHub, takich jak usługi Azure Databricks.
 
-- **Zgłoś alert, badania i myślistwo**: Tego notesu interakcyjnego umożliwia szybkie klasyfikacji różnych klas alerty pobierania powiązana aktywność oraz wzbogaca alert przy użyciu skojarzone działanie i dane, w którym alert został wygenerowany.
+Notesy ma dwa składniki:
 
-- **Host punktu końcowego z przewodnikiem myślistwo**: Służy do wyszukiwania kątem oznak naruszenia zabezpieczeń przez przechodzenie na zabezpieczenia odpowiednich działań skojarzona z hostem punktu końcowego.  
+- interfejsu opartego na przeglądarce, gdzie wprowadź i uruchamianie zapytań i kodu, i której wyniki wykonywania są wyświetlane.
+- *jądra* jest odpowiedzialny za analizowaniu i wykonywaniu sam kod. 
 
-- **Office Zaloguj się z przewodnikiem myślistwo**: Umożliwia to wyszukiwania do podejrzanego logowania przez wizualizację lokalizacje geograficzne podejrzanych dzienników, a także wyświetlanie wzorce logowania nietypowe pochodzące z danych usługi Office 365.
+W notesach Azure to jądra działa na platformie Azure *bezpłatnej chmury zasobów obliczeniowych i magazynowych* domyślnie. Czy notesy obejmują modele uczenia maszynowego złożonych wizualizacji należy rozważyć użycie bardziej wydajne, dedykowanej zasoby obliczeniowe, takie jak [maszyn wirtualnych do nauki o danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Notesy na Twoim koncie są przechowywane prywatnych, chyba że użytkownik chce udostępnić je.
+
+Notesy platformy Azure przez wartownika użyć wielu popularnych bibliotek języka Python, takich jak pandas, matplotlib, bokeh i inne. Istnieje ogromna liczba innych pakietów języka Python można wybrać z opisem zagadnień, takich jak:
+
+- wizualizacje i grafiki
+- przetwarzanie danych i analiza
+- statystyki i obliczeń numerycznych
+- uczenie maszynowe i uczenia głębokiego
+
+Wydaliśmy również niektóre narzędzia typu open-source Jupyter zabezpieczeń w pakiecie o nazwie [msticpy](https://github.com/Microsoft/msticpy/). Ten pakiet jest używany w wielu notesów uwzględnione. Narzędzia Msticpy są przeznaczone specjalnie do pomocy w tworzeniu notatników myślistwo i badania aktywnie współpracujemy na nowe funkcje i ulepszenia.
+
+Początkowa notesów obejmują:
+
+- **Z przewodnikiem badania — alerty procesu**: Pozwala na szybkie klasyfikowania alertów, analizując działania na hostach, których to dotyczy.
+- **Z przewodnikiem myślistwo - explorer hosta Windows**: Umożliwia Eksplorowanie aktywności konta, wykonania procesu, działania sieciowe i inne zdarzenia, na hoście.  
+- **Z przewodnikiem myślistwo — poznawanie usługi Office 365**: Hunt dla podejrzanych działań usługi Office 365 w wielu zestawach danych usługi Office 365.
+
+[Repozytorium usługi GitHub społeczności platformy Azure przez wartownika](https://github.com/Azure/Azure-Sentinel) jest lokalizacja platformy Azure przez wartownika notesów, wszystkie przyszłe utworzone przez firmę Microsoft lub współtworzonych przez społeczność.
 
 ## <a name="run-a-notebook"></a>Uruchamianie notesu
-W poniższym przykładzie udostępniamy wbudowanych Notes, aby wyszukać szczegółowe zagłębieniem się w lokalizacji anomalie, aby zobaczyć, jeśli każda osoba w lokalizacji nieoczekiwany robi czegoś w sieci.
 
-1. W portalu Azure przez wartownika kliknij **notesów** a następnie wybierz jedną z wbudowanych notesy.
+W poniższym przykładzie utworzymy projektu notesy platformy Azure z poziomu portalu Azure przez wartownika wypełnianie projektu z notesami. Przed rozpoczęciem korzystania z tych notesów jest dobry pomysł, aby utworzyć kopię Notes i pracować nad kopii. Praca z kopii pozwala bezpiecznie aktualizacji do przyszłych wersji notesów bez zastępowania żadnych danych.
+
+1. W portalu Azure przez wartownika kliknij **notesów** w menu nawigacji. Aby utworzyć nowy projekt notesy platformy Azure, kliknij przycisk **klonowania Azure przez wartownika notesów** lub otworzyć istniejących notesów projektów kliknij **przejdź do notesów programu**.
   
-   ![Wybierz notes](./media/notebooks/select-notebook.png)
+   ![Wybierz notesów](./media/notebooks/sentinel-az-notebooks-home.png)
 
-3. Kliknij przycisk **importu** do sklonowania repozytorium GitHub w projekcie notesy platformy Azure.
-   ![Importuj notesu](./media/notebooks/import1.png)
-4. Każdy notesu przeprowadzi Cię przez kroki umożliwiające wykonywanie hunt lub badania. Modele, biblioteki i inne zależności i konfiguracji dla połączenia z usługą Azure przez wartownika jest importowany automatycznie włączyć wykonywanie jednego kliknięcia. Cały kod i bibliotek wymaganych w celu uruchomienia notesu są wstępnie załadowane. Możesz natychmiast rozpocząć uruchamiania notesu obszaru roboczego usługi Log Analytics bez konfiguracji.
+2. Jeśli została wybrana opcja **klonowania Azure przez wartownika notesów** w poprzednim kroku, pojawi się następujące okno dialogowe. Kliknij przycisk **importu** do sklonowania repozytorium GitHub w projekcie notesy platformy Azure. Jeśli nie masz istniejącego konta notesów usługi Azure zostanie wyświetlony monit ją utworzyć i zaloguj się.
 
-   ![Importowanie repozytorium](./media/notebooks/import2.png)
+   ![Importuj notesu](./media/notebooks/sentinel-nb-signin-and-clone.png)
 
-5. Eksploruj, modyfikowanie i uruchamianie notesów przykładowe podane. Mogą one używane jako bloków konstrukcyjnych dla wielu różnych scenariuszy.
+3. Podczas tworzenia nowego projektu, musisz nadaj projektowi nazwę - Użyj domyślnej nazwy lub typu nowego. Nie zaznaczaj **rekursywnie Klonuj** opcja — ta opcja odnosi się do połączonej repozytoriów GitHub. Kliknięcie **importu** rozpoczyna się klonowanie zawartości usługi GitHub, co może zająć kilka minut.
 
-   ![Wybierz notes](./media/notebooks/import3.png)
+   ![Importuj notesu](./media/notebooks/sentinel-create-nb-project.png)
 
+4. Otwórz **notesów** folderze, aby zobaczyć notesów. Każdy notesu przeprowadzi Cię przez kroki przeprowadzania hunt lub badania. Biblioteki i inne zależności wymagane przez notesu można zainstalować z notesu, sama lub za pomocą procedury prostej konfiguracji. Konfiguracja, która projektu Notes do Twojej subskrypcji platformy Azure przez wartownika zostanie automatycznie aprowizowana w poprzednich krokach. Notesy są gotowe do uruchomienia obszaru roboczego usługi Azure przez wartownika Log Analytics.
 
+   ![Importowanie repozytorium](./media/notebooks/sentinel-open-notebook1.png)
+
+5. Otwieranie notesu. Bezpłatnych zasobów obliczeniowych jest domyślnie zaznaczona, aby uruchomić notesów (wyróżnione). Jeśli skonfigurowano nauki do użycia (zobacz powyżej), wybierz maszyny DSVM i Uwierzytelnij się przed otwarciem pierwszego notesu. Kliknij notes, aby go otworzyć.
+
+   ![Wybierz notes](./media/notebooks/sentinel-open-notebook2.png)
+
+6. Wybór wersji języka Python. Przy pierwszym otwarciu Notes, jego może monitują o wybranie wersji jądra. W przeciwnym razie wybierz jądra do użycia w następujący sposób. Python 3.6 lub nowszej powinna być wybrane jądra (w prawym górnym rogu okna notesu).
+
+   ![Wybierz notes](./media/notebooks/sentinel-select-kernel.png)
+
+Szybkie wprowadzenie do wykonywania zapytań danych platformy Azure przez wartownika, Przyjrzyj się [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) Notes w głównym folderze Notesy. Notesy dodatkowe przykładowy można znaleźć w **notesów przykładowe** podfolderu. Notesy próbki zostały zapisane z danymi, tak, aby było widać zamierzonych danych wyjściowych (Firma Microsoft zaleca, wyświetlając je w [nbviewer](https://nbviewer.jupyter.org/)). **HowTos** folder zawiera notesy opisującego, na przykład: ustawienie domyślnej wersji języka Python, konfigurowanie maszyny wirtualnej DSVM, tworzenie przez wartownika Azure zakładki z notesu, a inne podmioty.
+
+Te notesy służą jako zarówno przydatnych narzędzi i ilustracje i przykłady kodu, które służą do tworzenia własnych notesów.
+
+Chętnie poznamy opinię, czy sugestie, żądania dotyczące funkcji przyczynić się notesów, raportów o błędach lub ulepszenia i dodatki do istniejących notesów. Przejdź do [społeczności przez wartownika Azure w witrynie GitHub](https://github.com/Azure/Azure-Sentinel) Utwórz problem lub rozwidlenia i Przekaż wkład.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uruchamiania badania myślistwo przy użyciu notesów w przez wartownika Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
+
+W tym artykule przedstawiono sposób rozpocząć korzystanie z notesów programu Jupyter w przez wartownika platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 
 - [Proaktywnie możliwe pod kątem zagrożeń](hunting.md)
 - [Używanie zakładek w celu zapisania interesujące informacje podczas myślistwo](bookmarks.md)

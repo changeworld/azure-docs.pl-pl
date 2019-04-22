@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339010"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678891"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
 
@@ -40,6 +40,9 @@ Alerty z dynamicznymi progami można skonfigurować za pomocą alertów metryk w
 Dynamicznymi progami ciągle uczy się dane serii metryki i próbuje go za pomocą zestawu algorytmów i metod modelu. Wykrywa wzorce w danych, takich jak sezonowość (co godzinę / codziennie / co tydzień) i będzie mogło obsłużyć generujące dużo alertów metryk (np. maszyn procesora CPU lub pamięci) oraz metryki o niskim rozproszenia (np. wskaźnik dostępności i błędów).
 
 Progi są zaznaczone w taki sposób, że odchylenie od tych progów wskazuje anomalii zachowania metryki.
+
+> [!NOTE]
+> Wykrywanie wzorcu sezonowym ustawiono interwał godziny, dnia lub tygodnia. Oznacza to, że inne wzorce like wzór bihourly lub semiweekly mogą nie zostać wykryte.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co to jest ustawienie "Ważność" oznacza dynamicznymi progami?
 
@@ -73,13 +76,23 @@ Aby wyzwolić alert podczas naruszenie z dynamicznymi progami w ciągu 20 minut 
 
 **Ignoruj dane przed** — użytkownicy mogą również opcjonalnie określić datę rozpoczęcia, z której system powinien się zacząć obliczanie wartości progowe z. Typowym przypadkiem użycia może wystąpić, gdy zasób został uruchomiony w trybie tworzenia testowania i teraz jest promowany do obsługi obciążeń produkcyjnych i w związku z tym zachowaniem dowolnej metryce podczas fazy testowania powinien zostać pominięty.
 
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Jak możesz dowiedzieć się dlaczego został wyzwolony alert dotyczący dynamicznymi progami?
+
+Możesz eksplorować wyzwolonych alertów wystąpień w widoku alertów, klikając łącze w wiadomości e-mail lub wiadomości SMS lub przeglądarki, aby wyświetlić alerty, wyświetlić w witrynie Azure portal. [Dowiedz się więcej o widoku alertów](alerts-overview.md#alerts-experience).
+
+Wyświetla widok alertów:
+
+- Szczegóły metryki w tej chwili alertu dynamicznymi progami uruchamiane.
+- Wykres czasu, w którym alert został wyzwalacz, który zawiera dynamicznymi progami używane w danym momencie.
+- Możliwość się opinią na temat alertów dynamicznymi progami i alerty doświadczenia widoku, co może poprawić wykrywanie przyszłych.
+
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Powolne działanie zmieni się w wyzwalaczu metryki alert?
 
 Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie znaczące odchylenia, a nie wolno zmieniających się problemy.
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Jak dużo danych jest używane do przeglądania i następnie obliczyć progi?
 
-Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie danych historycznych wystarczająco w celu obliczania godzinę lub codziennie wzorców sezonowych (10 dni). Naciśnięcie klawisza "Wyświetlana co tydzień wzorca" uzyska dostęp do wystarczającej ilości danych historycznych w celu obliczania tygodniowe wzorców sezonowych (28 dni). Po utworzeniu reguły alertu dynamicznymi progami zużyjesz wszystkie niezbędne dane historyczne, które są dostępne, a dowiesz się stale i doświadczenie, na podstawie nowych danych umożliwiają bardziej precyzyjne progów.
+Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie danych historycznych wystarczająco w celu obliczania godzinę lub codziennie wzorców sezonowych (10 dni). Po utworzeniu reguły alertu dynamicznymi progami zużyjesz wszystkie niezbędne dane historyczne, które są dostępne, a dowiesz się stale i doświadczenie, na podstawie nowych danych umożliwiają bardziej precyzyjne progów. Oznacza to, że po tym wykresie obliczenia będą również wyświetlane tygodniowe wzorców.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Jak dużo danych jest wymagana do wyzwolenia alertu?
 

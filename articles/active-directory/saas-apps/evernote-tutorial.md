@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Evernote
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Evernote z usługą Azure AD, należy dodać aplikację Evernote z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Evernote z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację Evernote z galerii, wykonaj następujące kroki:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę **Azure Active Directory**.
 
@@ -216,7 +216,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Evernote, należy ich aprowizować w aplikacji Evernote.  
 W aplikacji Evernote aprowizowanie jest zadaniem ręcznym.
 
-**Aby aprowizować konta użytkowników, wykonaj następujące czynności:**
+**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
 
 1. Zaloguj się do swojej firmowej witryny aplikacji Evernote jako administrator.
 
@@ -242,9 +242,9 @@ Po kliknięciu kafelka Evernote na panelu dostępu powinno nastąpić automatycz
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

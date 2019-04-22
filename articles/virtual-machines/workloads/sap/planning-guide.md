@@ -18,10 +18,10 @@ ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501335"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
@@ -691,7 +691,7 @@ Powyższy rysunek przedstawia, że obie subskrypcje platformy Azure mają podzak
 Sieci VPN typu punkt lokacja wymaga do każdej maszyny klienta do łączenia z własnej sieci VPN na platformie Azure. W przypadku scenariuszy SAP czekamy na, połączenia punkt lokacja nie jest możliwe. W związku z tym otrzymują żadnych dalszych odwołań do połączeń sieci VPN punkt lokacja.
 
 Więcej informacji można znaleźć tutaj
-* [Konfigurowanie połączenia punkt-lokacja z siecią wirtualną za pomocą witryny Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 * [Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu programu PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>Połączenia obejmujące wiele lokacji sieci VPN
@@ -722,8 +722,7 @@ Expressroute umożliwia wiele subskrypcji platformy Azure za pośrednictwem jedn
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Wymuszone tunelowanie przypadku między środowiskami lokalnymi
 W przypadku maszyn wirtualnych, przyłączanie do domen lokalnych za pośrednictwem lokacja lokacja, punkt lokacja lub ExpressRoute musisz upewnij się, że wdrożonych wprowadzenie ustawień internetowego serwera proxy dla wszystkich użytkowników w tych maszyn wirtualnych również. Domyślnie oprogramowanie działające w tych maszyn wirtualnych lub użytkownicy uzyskują dostęp do Internetu za pomocą przeglądarki nie przejdzie za pośrednictwem serwera proxy firmy, ale łączą się bezpośrednio za pośrednictwem platformy Azure, aby przez internet. Ale nawet ustawienia serwera proxy nie jest rozwiązaniem 100% do kierowania ruchu za pośrednictwem serwera proxy firmy, ponieważ jest odpowiedzialny za oprogramowanie i usługi, aby sprawdzić, czy serwer proxy. Jeśli oprogramowanie uruchomione na maszynie wirtualnej nie jest tą operacją, lub administrator zmienia ustawienia, ruch do Internetu mogą mógł zostać ominięty ponownie bezpośrednio za pomocą platformy Azure, aby przez Internet.
 
-Aby uniknąć takich bezpośrednie połączenie z Internetem, można skonfigurować wymuszone tunelowanie z połączeniem lokacja lokacja między lokalną i platformą Azure. Szczegółowy opis funkcji tunelowania jest opublikowane w tym miejscu
-<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Aby uniknąć takich bezpośrednie połączenie z Internetem, można skonfigurować wymuszone tunelowanie z połączeniem lokacja lokacja między lokalną i platformą Azure. Szczegółowy opis funkcji tunelowania jest opublikowane w tym miejscu <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Wymuszone tunelowanie przy użyciu usługi ExpressRoute jest włączona, klienci anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute.
 
@@ -754,8 +753,7 @@ Jako drzewo decyzyjne nierównej zdecydować, czy system SAP dopasowuje się do 
 
 **Krok 1**: Najważniejsze informacje się rozpoczynać wymaganie protokoły SAP dla danego systemu SAP. Wymagania dotyczące punktu SAP konieczne można podzielić na systemu DBMS i część aplikacji SAP, nawet jeśli SAP system jest już wdrożony lokalnie w konfiguracji warstwy 2. Istniejących systemów punktu SAP związanym ze sprzętem używany często można określić lub w oparciu o istniejące testy porównawcze SAP. Wyniki można znaleźć tutaj: <https://sap.com/about/benchmark.html>.
 Nowo wdrożonych systemów SAP powinien wykonano już instrukcje ćwiczeniu zmiany rozmiaru należy określić wymagania dotyczące punktu SAP systemu.
-Zobacz też ten blog i dołączony dokument w przypadku ustalania rozmiaru SAP na platformie Azure:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Zobacz też ten blog i dołączony dokument w przypadku ustalania rozmiaru SAP na platformie Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **Krok 2**: Dla istniejących systemów liczby operacji We/Wy i operacje We/Wy na sekundę na serwerze systemu DBMS powinno być mierzone. Nowo planowane systemów nowego systemu w tym ćwiczeniu rozmiaru również powinien zapewnić nierównej pomysły wymagań dotyczących operacji We/Wy systemu DBMS na stronie. Jeśli nie wiesz, trzeba będzie do przeprowadzenia weryfikacji koncepcji.
 
@@ -800,8 +798,7 @@ Bardziej szczegółowe instrukcje dotyczące sposobu instalowania, aktualizowani
 
 Komfort do tej pory było programu PowerShell (PS) to oczywiście bardziej zaawansowane narzędzia do wdrażania maszyn wirtualnych oraz tworzenie niestandardowych krokach we wdrożeniu maszyn wirtualnych. Wszystkich klientów działających wystąpień SAP na platformie Azure są przy użyciu poleceń cmdlet PS uzupełnienie zadań zarządzania, nie w witrynie Azure portal lub są a nawet przeznaczona wyłącznie do wdrożeń na platformie Azure przy użyciu poleceń cmdlet PS. Ponieważ polecenia cmdlet specyficzne dla platformy Azure mają tej samej konwencji nazewnictwa jak więcej niż 2000 polecenia cmdlet związane z Windows, jest łatwym zadaniem administratorów Windows, należy skorzystać z tych poleceń cmdlet.
 
-Zobacz przykład poniżej:
-<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Zobacz przykład poniżej: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 Wdrażanie rozszerzenia monitorowania platformy Azure dla rozwiązania SAP (zobacz rozdział [Azure rozwiązanie do monitorowania dla rozwiązania SAP] [ planning-guide-9.1] w tym dokumencie) jest możliwe tylko za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia. W związku z tym jest konieczne instalowanie i konfigurowanie programu PowerShell lub interfejsu wiersza polecenia podczas wdrażania i administrowania systemem SAP NetWeaver na platformie Azure.  
@@ -1326,8 +1323,7 @@ Zobacz architektury różnica między klasycznym modelem i ARM, zgodnie z opisem
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfiguracja systemu SAP i SAP graficznego interfejsu użytkownika łączności przez internet
 
-Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Zmiana ustawień zapory na maszynie wirtualnej
 
@@ -2021,12 +2017,10 @@ Jednak w ciągu ostatniego roku danych Centrum partnerów opracowany wspólnej l
 W zależności od konfiguracji SAP wybrane (Warstwa 2 lub 3-warstwowej) może być, aby utworzyć kopię zapasową. Zawartość samą maszynę Wirtualną oraz mieć kopię zapasową bazy danych. Tworzenie kopii zapasowych związanych z bazami danych powinny odbywać się za pomocą metod bazy danych. Szczegółowy opis różnych baz danych można znaleźć w [przewodnik systemu DBMS][dbms-guide]. Z drugiej strony danych SAP utworzeniem kopii zapasowej w trybie offline sposób (w tym także zawartość bazy danych) zgodnie z opisem w tej sekcji lub online zgodnie z opisem w następnej sekcji.
 
 Kopie zapasowe offline zasadniczo wymaga wyłączenia maszyny Wirtualnej w witrynie Azure portal i kopia podstawowej dysku maszyny Wirtualnej, a także wszystkich dołączonych dysków do maszyny Wirtualnej. Spowoduje to zachować punkt w czasie obrazu maszyny Wirtualnej i jej skojarzone dyski. Zaleca się skopiowanie kopii zapasowych do innego konta magazynu platformy Azure. Dlatego procedury opisane w rozdziale [kopiowanie dysków między kontami magazynu Azure] [ planning-guide-5.4.2] naliczona zostałaby tego dokumentu.
-Oprócz zamknięcie za pomocą witryny Azure portal, jedną też zrobić to za pomocą programu Powershell lub interfejsu wiersza polecenia, tak jak opisano tutaj:
-<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+Oprócz zamknięcie za pomocą witryny Azure portal, jedną też zrobić to za pomocą programu Powershell lub interfejsu wiersza polecenia, tak jak opisano tutaj: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Przywrócenie tego stanu może składać się z usuwanie podstawowej maszyny Wirtualnej, a także oryginalnych dysków podstawowej maszyny Wirtualnej i zainstalować dyski, kopiowanie ponownie zapisane dysków do oryginalnej grupy zasobów lub kontem magazynu za dyski zarządzane i ponowne wdrożenie systemu.
-W tym artykule przedstawiono przykładowy skrypt ten proces w programie Powershell:
-<http://www.westerndevs.com/azure-snapshots/>
+W tym artykule przedstawiono przykładowy skrypt ten proces w programie Powershell: <http://www.westerndevs.com/azure-snapshots/>
 
 Upewnij się zainstalować nową licencję na oprogramowanie SAP, ponieważ przywracanie kopii zapasowej maszyny Wirtualnej, zgodnie z powyższym opisem powoduje utworzenie nowego klucza sprzętowego.
 
@@ -2050,8 +2044,7 @@ Inne maszyny wirtualne w systemie SAP utworzeniem kopii zapasowej za pomocą fun
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Nie ma odpowiednika w usłudze VSS. Windows w systemie Linux. W związku z tym tylko spójna na poziomie plików kopie zapasowe są możliwe, ale nie spójnych z aplikacją kopii zapasowych. Kopia zapasowa systemu SAP DBMS powinno się odbywać za pomocą funkcji systemu DBMS. System plików, który zawiera dane dotyczące SAP może zostać zapisana, na przykład za pomocą tar zgodnie z opisem w tym miejscu:
-> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Nie ma odpowiednika w usłudze VSS. Windows w systemie Linux. W związku z tym tylko spójna na poziomie plików kopie zapasowe są możliwe, ale nie spójnych z aplikacją kopii zapasowych. Kopia zapasowa systemu SAP DBMS powinno się odbywać za pomocą funkcji systemu DBMS. System plików, który zawiera dane dotyczące SAP może zostać zapisana, na przykład za pomocą tar zgodnie z opisem w tym miejscu: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495298"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpieczanie serwera OPC UA, klienta i aplikacji serwera OPC UA 
@@ -29,7 +29,7 @@ OPC Vault skrypty:
 > Aby uzyskać więcej informacji, zobacz serwisu GitHub [repozytorium](https://github.com/Azure-Samples/iot-edge-industrial-configs#testbeds).
 
 ## <a name="generate-a-new-certificate-and-private-key"></a>Wygeneruj nowy certyfikat i klucz prywatny 
-**Przygotowanie**
+**Przygotowywanie**
 - Upewnij się, że zmienne środowiskowe `$env:_PLC_OPT` i `$env:_CLIENT_OPT` są niezdefiniowane. Na przykład `$env:_PLC_OPT=""` w swoje środowiska PowerShell
 - Ustaw zmienną środowiskową `$env:_OPCVAULTID` na ciąg, który pozwala na ponowne odnalezienie danych w magazynie OPC. Firma Microsoft zaleca ustawienie 6-cyfrowy numer. W naszym przykładzie "123456" został użyty jako wartość dla zmiennej.
 - Upewnij się, istnieje wolumin docker `opcclient` lub `opcplc`. Skontaktuj się z `docker volume ls` i usunąć je z `docker volume rm <volumename>`. Konieczne może być również usunąć kontenerów przy użyciu `docker rm <containerid>` Jeśli woluminy są nadal używane przez kontener.

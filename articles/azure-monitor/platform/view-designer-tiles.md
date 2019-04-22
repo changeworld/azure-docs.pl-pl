@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495332"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Azure Monitor
@@ -34,8 +34,8 @@ W poniższej tabeli opisano dostępnych kafelków Projektant widoków:
 | Sąsiadująco | Opis |
 |:--- |:--- |
 | [Liczba](#number-tile) |Liczba rekordów w wyniku zapytania. |
-| [Dwie liczby](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
-| [Pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
+| [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
+| [Wykres pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
 | Wykres liniowy i objaśnienie | Wykres liniowy, który jest oparty na zapytania i objaśnienie z wartością podsumowania. |
 | [Wykres liniowy](#line-chart-tile) |Wykres liniowy, który jest oparty na zapytaniu. |
 | [Dwie osie czasu](#two-timelines-tile) | Wykres kolumnowy z dwóch serii każdy na podstawie osobne zapytania. |
@@ -54,7 +54,7 @@ W kolejnych sekcjach opisano typy kafelków i ich właściwości szczegółowo.
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Sąsiadująco** | |
+| **Kafelek** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
@@ -72,10 +72,10 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Pierwszy kafelek** | |
+| **Pierwszy Kafelek** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
-| **Drugi kafelek** | |
+| **Drugi Kafelek** | |
 | Legenda |Tekst, który jest wyświetlany w obszarze wartości. |
 | Zapytanie |Zapytanie, które jest uruchamiane. Zostanie wyświetlona liczba rekordów, które są zwracane przez zapytanie. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |
@@ -93,13 +93,13 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 |:--- |:--- |
 | Name (Nazwa) |Tekst, który jest wyświetlany w górnej części kafelka. |
 | Opis |Tekst, który jest wyświetlany w obszarze Nazwa kafelka. |
-| **Pierścieniowy** | |
+| **Wykres pierścieniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. |
-| **Pierścieniowy** |**> Center** |
+| **Wykres pierścieniowy** |**> Center** |
 | Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
 | Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaj wartości wszystkie rekordy z wartością właściwości.</li><li>Procent: Procent wartości sumowany rekordy z wartością właściwości, w porównaniu do sumowany wartości wszystkich rekordów.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
-| **Pierścieniowy** |**> Dodatkowe opcje** |
+| **Wykres pierścieniowy** |**> Dodatkowe opcje** |
 | Kolory |Kolor, który jest wyświetlany dla każdego z trzech najważniejszych właściwości. Aby określić alternatywne kolory dla konkretnych wartości właściwości, należy użyć *zaawansowane mapowanie kolorów*. |
 | Zaawansowane mapowanie kolorów |Wyświetla kolor, który reprezentuje określone wartości właściwości. Jeśli wartość, którą można określić trzy pierwsze, alternatywny kolor jest wyświetlany zamiast Kolor standardowy. Jeśli właściwość nie ma trzy pierwsze, nie jest wyświetlany kolor. |
 | **Zaawansowane** |**> Weryfikacja przepływu danych** |

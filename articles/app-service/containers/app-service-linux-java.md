@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500468"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680880"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -28,9 +28,9 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka
 
 ## <a name="deploying-your-app"></a>Wdrażanie aplikacji
 
-Aby wdrożyć pliki JAR i WAR, można użyć wtyczki Maven. Zobacz [tej dokumentacji](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) więcej informacji na temat wtyczki Maven.
+Możesz użyć [wtyczka Maven Plugin for Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) wdrożyć pliki JAR i WAR. Wdrożenia z popularnymi środowiskami IDE, jest również obsługiwana za pomocą [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) lub [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-Jeśli nie używasz narzędzia Maven, metody wdrażania będzie zależeć od typu archiwum:
+W przeciwnym razie metody wdrażania będzie zależeć od typu archiwum:
 
 - Aby wdrożyć pliki WAR Tomcat, użyj `/api/wardeploy/` punktu końcowego można OPUBLIKOWAĆ pliku archiwum. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
 - Aby wdrożyć pliki JAR w obrazach Java SE, użyj `/api/zipdeploy/` witryny Kudu punktu końcowego. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
@@ -79,7 +79,7 @@ Wbudowane obrazy Java opierają się na [Alpine Linux](https://alpine-linux.read
 
 ## <a name="customization-and-tuning"></a>Dostosowywanie i dostrajanie
 
-Usługa Azure App Service dla systemu Linux obsługuje poza pole dostrajanie i dostosowywanie przy użyciu witryny Azure Portal oraz interfejsu wiersza polecenia. Sprawdź następujące artykuły dotyczące konfiguracji aplikacji sieci web-Java:
+Usługa Azure App Service dla systemu Linux obsługuje poza pole dostrajanie i dostosowywanie przy użyciu witryny Azure portal i interfejs wiersza polecenia. Sprawdź następujące artykuły dotyczące konfiguracji aplikacji sieci web-Java:
 
 - [Konfigurowanie ustawień usługi App Service](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Konfigurowanie domeny niestandardowej](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -93,7 +93,7 @@ Aby ustawić ilość przydzielonej pamięci lub inne opcje środowiska uruchomie
 
 W witrynie Azure portal w obszarze **ustawienia aplikacji** dla aplikacji sieci web, należy utworzyć nowe ustawienie aplikacji o nazwie `JAVA_OPTS` zawierającej dodatkowe ustawienia, takie jak `-Xms512m -Xmx1204m`.
 
-Aby skonfigurować ustawienia aplikacji z wtyczki Maven, Dodaj ustawienia i wartości tagów w sekcji wtyczka platformy Azure. W poniższym przykładzie ustawiono określonej minimalnej i maksymalnej heapsize Java:
+Aby skonfigurować ustawienia aplikacji z wtyczki Maven, Dodaj ustawienia i wartości tagów w sekcji wtyczka platformy Azure. W poniższym przykładzie ustawiono określonych minimalny i maksymalny rozmiar sterty środowiska Java:
 
 ```xml
 <appSettings>
@@ -156,7 +156,7 @@ Aplikacje Java uruchomiona w usłudze App Service dla systemu Linux ma ten sam z
 
 ### <a name="authenticate-users"></a>Uwierzytelnianie użytkowników
 
-Konfigurowanie uwierzytelniania aplikacji w witrynie Azure Portal za pomocą **uwierzytelnianie i autoryzacja** opcji. Z tego miejsca można włączyć uwierzytelnianie przy użyciu usługi Azure Active Directory lub społecznościowych nazw logowania, takich jak Facebook, Google lub GitHub. Konfiguracja portalu Azure działa tylko podczas konfigurowania dostawcy jednorazowego uwierzytelniania.  Aby uzyskać więcej informacji, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](/azure/app-service/configure-authentication-provider-aad) pokrewne artykuły dotyczące innych dostawców tożsamości.
+Konfigurowanie uwierzytelniania aplikacji w witrynie Azure portal, za pomocą **uwierzytelnianie i autoryzacja** opcji. Z tego miejsca można włączyć uwierzytelnianie przy użyciu usługi Azure Active Directory lub społecznościowych nazw logowania, takich jak Facebook, Google lub GitHub. Konfiguracja portalu Azure działa tylko podczas konfigurowania dostawcy jednorazowego uwierzytelniania.  Aby uzyskać więcej informacji, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](/azure/app-service/configure-authentication-provider-aad) pokrewne artykuły dotyczące innych dostawców tożsamości.
 
 Jeśli musisz włączyć wielu dostawców logowania, postępuj zgodnie z instrukcjami [Dostosowywanie uwierzytelniania usługi App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) artykułu.
 
@@ -182,9 +182,9 @@ Te instrukcje mają zastosowanie do wszystkich połączeń z bazą danych. Nale�
 
 | Database (Baza danych)   | Nazwa klasy sterownika                             | Sterownik JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
-| PostgreSQL | `org.postgresql.Driver`                        | [Do pobrania](https://jdbc.postgresql.org/download.html)                                    |
+| PostgreSQL | `org.postgresql.Driver`                        | [Pobieranie](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Pobierz](https://dev.mysql.com/downloads/connector/j/) (Wybierz "Niezależne od platformy") |
-| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Do pobrania](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| Oprogramowanie SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Pobieranie](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
 Aby skonfigurować Tomcat, aby użyć połączenia bazy danych języka Java (JDBC) lub interfejsu API trwałości Java rozwiązaniami (JPA), należy najpierw dostosować `CATALINA_OPTS` zmiennej środowiskowej, który jest wczytywany w Tomcat na początku się. Ustaw te wartości za pomocą ustawienia aplikacji w [wtyczki Maven usługi aplikacji](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -297,7 +297,7 @@ Aby połączyć się ze źródłami danych w aplikacji platformy Spring Boot, za
 
     Ten ciąg połączenia jest dostępny do naszej aplikacji jako zmienną środowiskową o nazwie `CUSTOMCONNSTR_<your-string-name>`. Na przykład, będzie miała parametry połączenia, utworzone powyżej `CUSTOMCONNSTR_exampledb`.
 
-2. W swojej `application.properties` plików, odwołać ten ciąg ustawienia z nazwa zmiennej środowiskowej. W tym przykładzie należy użyć następujących czynności.
+2. W swojej `application.properties` plików, odwoływać się do tych parametrów połączenia przy użyciu nazwa zmiennej środowiskowej. W tym przykładzie należy użyć następujących czynności.
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}

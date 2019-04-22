@@ -2,16 +2,17 @@
 title: 'Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure | Dokumentacja firmy Microsoft'
 description: Dowiedz się więcej o usłudze Azure parowanie regionalne, aby upewnić się, że aplikacje są odporne na błędy podczas awarii centrum danych.
 author: rayne-wiselman
+manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 12/23/2018
+ms.date: 04/17/2019
 ms.author: raynew
-ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792325"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678874"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure
 
@@ -37,6 +38,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Europa |Europa Północna |Europa Zachodnia |
 | Francja |Francja Środkowa|Francja Południowa|
 | Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
+| Niemcy |Niemcy Północne | Niemcy Środkowo-Zachodnie
 | Indie |Indie Środkowe |Indie Południowe |
 | Indie |Indie Zachodnie |Indie Południowe |
 | Japonia |Japonia Wschodnia |Japonia Zachodnia |
@@ -45,7 +47,14 @@ Rysunek 1 — pary regionalne platformy Azure
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
 | Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
 | Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
+| Ameryka Północna |Zachodnie stany USA 3 |Wschodnie stany USA
+| Norwegia |Norwegia Wschodnia |Norwegia Zachodnia
+| Republika Południowej Afryki | Republika Południowej Afryki (północ) | Republika Południowej Afryki (zachód)
+| Szwecja |Szwecja środkowa |Szwecja Południowa
+| Szwajcaria | Szwajcaria Północna | Szwajcaria Zachodnia
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
+| Zjednoczone Królestwo |Północne Zjednoczone Królestwo |Południowe Zjednoczone Królestwo 2
+| Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Zjednoczone Emiraty Arabskie Centrum
 | Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
 | Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
 | Rząd USA |US Gov Iowa |Administracja USA — Wirginia |
@@ -53,10 +62,11 @@ Rysunek 1 — pary regionalne platformy Azure
 
 Tabela 1 — mapowanie pary regionalne platformy Azure
 
-- Indie Zachodnie jest inny, ponieważ jest powiązany z innym regionem tylko w jednym kierunku. Indie Zachodnie w regionie pomocniczym jest Indie Południowe, ale Indie Południowe w regionie pomocniczym jest Indie środkowe.
-- Brazylia Południowa jest unikatowa, ponieważ jest powiązany z regionem poza jego własnej lokalizacji geograficznej. Region pomocniczy w regionie Brazylia Południowa jest południowo-środkowe stany USA, ale południowo-środkowe stany USA w regionie pomocniczym nie jest Brazylia Południowa.
-- Administracja USA — Iowa w regionie pomocniczym jest Administracja USA — Wirginia, ale nie jest w regionie pomocniczym Administracja USA — Wirginia Administracja USA — Iowa.
-- Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas, ale nie jest w regionie pomocniczym Administracja USA — Teksas Administracja USA — Wirginia.
+- Indie Zachodnie jest powiązany tylko w jednym kierunku. Indie Zachodnie w regionie pomocniczym jest Indie Południowe, ale Indie Południowe w regionie pomocniczym jest Indie środkowe.
+- Brazylia Południowa jest unikatowa, ponieważ jest powiązany z regionem poza jego własnej lokalizacji geograficznej. Region pomocniczy w regionie Brazylia Południowa jest południowo-środkowe stany USA. Południowo-środkowe stany USA w regionie pomocniczym nie jest Brazylia Południowa.
+- Administracja USA — Iowa w regionie pomocniczym jest Administracja USA — Wirginia.
+- Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas.
+- Administracja USA — Teksas w regionie pomocniczym jest Administracja USA — Arizona.
 
 
 Zaleca się konfigurowania odzyskiwania po awarii ciągłość działania firmy (BCDR) w pary regionalne do korzystania z zasad izolacji i dostępności platformy Azure. Dla aplikacji, które obsługują wiele aktywnych regionów zaleca się przy użyciu obu regionów w parze regionów, jeśli jest to możliwe. Zapewni to optymalne dostępność dla aplikacji i odzyskiwania w trybie zminimalizowanym w wypadku awarii. 

@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493250"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Wdrażanie bliźniaczej reprezentacji OPC do istniejącego projektu
@@ -140,4 +140,4 @@ Dzierżawy usługi AAD do użycia.
 Teraz, gdy wiesz jak wdrożyć bliźniaczej reprezentacji OPC do istniejącego projektu, poniżej przedstawiono sugerowany następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Bezpieczna komunikacja klienta OPC i sterownika OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Bezpieczna komunikacja klienta OPC i OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)

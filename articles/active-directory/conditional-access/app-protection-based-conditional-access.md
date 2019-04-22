@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496934"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
@@ -97,7 +97,7 @@ W tym scenariuszu założono, że użytkownik:
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -126,7 +126,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
  
 
-**Krok 2: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online za pomocą programu ActiveSync (EAS)**
+**Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online za pomocą programu ActiveSync (EAS)**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -152,7 +152,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
     ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
 
-**Krok 3: Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
 
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
@@ -180,7 +180,7 @@ W tym scenariuszu założono, że:
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -216,7 +216,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
 
 
-**Krok 2: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
+**Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -248,7 +248,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
 
 
-**Krok 3: Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
 
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
@@ -282,7 +282,7 @@ W tym scenariuszu założono, że użytkownik:
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -318,7 +318,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
 
 
-**Krok 2: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
+**Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -351,7 +351,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
 
 
 
-**Krok 3: Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
 
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
@@ -389,7 +389,7 @@ Przed uzyskaniem dostępu do danych firmowych, żadne zasady ochrony aplikacji u
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1: Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
 Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
 
@@ -424,7 +424,7 @@ Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące 
      ![Dostęp warunkowy](./media/app-protection-based-conditional-access/12.png)
 
 
-**Krok 2: Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 2. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
 
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)

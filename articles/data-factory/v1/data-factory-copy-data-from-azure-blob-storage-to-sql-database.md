@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7accb8f2d97f5e4b4dc19ba93ab9edc1a4e6ce8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 557228bafc00c3028a1fda520da8fe4ec8c7a6f2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541337"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678721"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi fabryka danych
 > [!div class="op_single_selector"]
@@ -95,7 +95,6 @@ Teraz Przygotuj swój usługi Azure blob storage i bazy danych Azure SQL dla teg
     ```
 2. Użyj narzędzi takich jak [Eksplorator magazynu Azure](https://storageexplorer.com/) do utworzenia kontenera **adftutorial** i przekazania pliku **emp.txt** do kontenera.
 
-    ![Eksplorator usługi Azure Storage. Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. Poniższy skrypt SQL umożliwia utworzenie tabeli **emp** w bazie danych SQL Azure.  
 
     ```SQL

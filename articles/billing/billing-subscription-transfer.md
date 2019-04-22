@@ -14,15 +14,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8baa5f10aeba179ef141cfea86fded8cf44dfc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878214"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678823"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -30,7 +30,7 @@ Przeniesienie subskrypcji do innego użytkownika w Centrum konta, aby zmienić a
 
 > [!IMPORTANT]
 > 
-> Jeśli przeniesiesz subskrypcję do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
+> Jeśli przeniesiesz subskrypcję do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej. Musisz również ręcznie odtworzyć utracone zarządzanych tożsamości dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy związane z zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/known-issues.md).
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Przekazywanie własności subskrypcji platformy Azure
 
@@ -52,7 +52,7 @@ Przeniesienie subskrypcji do innego użytkownika w Centrum konta, aby zmienić a
 
    > [!IMPORTANT]
    > 
-   > Jeśli przeniesiesz subskrypcję do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
+   > Jeśli przeniesiesz subskrypcję do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej. Musisz również ręcznie odtworzyć utracone zarządzanych tożsamości dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy związane z zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/known-issues.md).
 
    ![Transfer subskrypcji, okno dialogowe](./media/billing-subscription-transfer/image2.PNG)
 

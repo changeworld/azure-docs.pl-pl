@@ -9,10 +9,10 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492318"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal
@@ -107,7 +107,7 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
    |Grupa zasobów     |**Test PD RG**|
    |Nazwa maszyny wirtualnej     |**Szybkie SRV**|
    |Region     |Takie same jak poprzednie|
-   |Nazwa użytkownika administratora     |**użytkownik_azure**|
+   |Nazwa użytkownika administratora     |**azureuser**|
    |Hasło     |**Azure123456!**|
 
 4. W obszarze **reguły portów wejściowych**, dla **publiczne porty wejściowe**, wybierz opcję **Zezwalaj na wybranych portach**.
@@ -257,4 +257,4 @@ Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie b�
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Dzienniki zapory usługi Azure Monitor](./tutorial-diagnostics.md)
+> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

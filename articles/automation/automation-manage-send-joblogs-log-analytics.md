@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496594"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Przekazywać strumienie zadania i stan zadania z usługi Automation do dzienników usługi Azure Monitor
@@ -68,8 +68,7 @@ Jeśli chcesz znaleźć *nazwa* konta usługi Automation w witrynie Azure portal
 
 Po uruchomieniu tego skryptu, może potrwać godzinę rozpoczęcia rekordy dzienniki usługi Azure Monitor nowe JobLogs lub JobStreams zapisywana.
 
-Aby wyświetlić dzienniki, uruchom następujące zapytanie w przeszukiwania dzienników usługi log analytics:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Aby wyświetlić dzienniki, uruchom następujące zapytanie w przeszukiwania dzienników usługi log analytics: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Zweryfikuj konfigurację
 
@@ -137,8 +136,7 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 
 Teraz, gdy rozpoczęto wysyłanie dzienników zadań usługi Automation do usługi Azure Monitor dzienników, zobaczmy, co można zrobić za pomocą tych dzienników wewnątrz dzienniki usługi Azure Monitor.
 
-Aby wyświetlić dzienniki, uruchom następujące zapytanie:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Aby wyświetlić dzienniki, uruchom następujące zapytanie: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Wyślij wiadomość e-mail, gdy zadanie elementu runbook nie powiedzie się lub wstrzymuje
 Jedną z najważniejszych klientów pyta, jest możliwość wysyłania wiadomości e-mail lub SMS, gdy coś pójdzie nie tak z zadania elementu runbook.   

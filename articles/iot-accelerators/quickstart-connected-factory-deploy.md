@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491274"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Szybki start: testowanie rozwiązania opartego na chmurze do zarządzania przemysłowymi urządzeniami IoT
@@ -64,7 +64,7 @@ Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeg
 
 Widok domyślny to *pulpit nawigacyjny*. Korzystając z menu znajdującego się w lewej części strony, można przejść do innych obszarów portalu:
 
-[![Spulpit nawigacyjny wiązanie](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![Pulpit nawigacyjny rozwiązania](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
 Pulpit nawigacyjny umożliwia zarządzanie przemysłowymi urządzeniami IoT. Połączona fabryka używa hierarchii, aby pokazać globalną konfigurację fabryki. Najwyższym poziomem w hierarchii jest przedsiębiorstwo, który zawiera co najmniej jedną fabrykę. Każda fabryka zawiera linie produkcyjne, a każda linia produkcyjna składa się ze stacji. Na każdym poziomie można wyświetlać ogólną wydajność sprzętu oraz kluczowe wskaźniki wydajności, publikować nowe węzły na potrzeby telemetrii i reagować na alarmy.
 
@@ -74,13 +74,13 @@ Na pulpicie nawigacyjnym są widoczne następujące informacje:
 
 Panel **Ogólna wydajność sprzętu** pokazuje wartości ogólnej wydajności sprzętu dla całego przedsiębiorstwa lub wyświetlanej fabryki/linii produkcyjnej/stacji. Ta wartość jest agregowana od widoku stacji do poziomu przedsiębiorstwa. Dane ogólnej wydajności sprzętu i jej składowe elementy można dokładniej analizować.
 
-[![Owydajność sprzętu verall](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![Ogólna wydajność sprzętu](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
 Ogólna wydajność sprzętu pozwala ocenić wydajność procesu produkcyjnego przy użyciu parametrów operacyjnych powiązanych z produkcją. Ogólna wydajność sprzętu to standardowy pomiar branżowy obliczany przez pomnożenie współczynników dostępności, wydajności i jakości: OEE = dostępność x wydajność x jakość.
 
 Ogólną wydajność sprzętu możesz dokładniej analizować na dowolnym poziomie w danych hierarchii. Kliknij wskaźnik procentowy ogólnej wydajności sprzętu, dostępności, wydajności lub jakości. Zostanie wyświetlony panel kontekstowy z wizualizacjami przedstawiającymi dane w różnych skalach czasu:
 
-[![OSzczegóły wydajności sprzętu verall](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![Szczegóły ogólnej wydajności sprzętu](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 Kliknięcie wykresu umożliwia dalszą analizę danych.
 
@@ -88,11 +88,11 @@ Kliknięcie wykresu umożliwia dalszą analizę danych.
 
 Panel **Kluczowe wskaźniki wydajności** wyświetla liczbę wytworzonych produktów na godzinę i ilość energii (kWh) zużytej przez całe przedsiębiorstwo lub przeglądaną fabrykę/linię produkcyjną/stację. Te wartości są agregowane od widoku stacji do poziomu przedsiębiorstwa.
 
-[![Kwskaźniki wydajności klucza](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
+[![Kluczowe wskaźniki wydajności](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
 
 Kluczowe wskaźniki wydajności możesz dokładniej analizować na dowolnym poziomie w danych hierarchii. Kliknij wskaźnik procentowy ogólnej wydajności sprzętu, dostępności, wydajności lub jakości. Zostanie wyświetlony panel kontekstowy z wizualizacjami przedstawiającymi dane w różnych skalach czasu:
 
-[![KSzczegóły PI](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
+[![Szczegóły kluczowego wskaźnika wydajności](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
 
 Kliknięcie wykresu umożliwia dalszą analizę danych.
 
@@ -100,7 +100,7 @@ Kliknięcie wykresu umożliwia dalszą analizę danych.
 
 Panel **Lokalizacje fabryk**, który przedstawia stan, lokalizację i bieżącą konfigurację produkcji w rozwiązaniu. Przy pierwszym uruchomieniu akceleratora rozwiązań pulpit nawigacyjny przedstawia symulowany zestaw fabryk. Każda symulacja linii produkcyjnej składa się z trzech prawdziwych serwerów OPC UA, które uruchamiają symulowane zadania i udostępniają dane. Aby uzyskać więcej informacji na temat architektury OPC UA, zobacz [Połączona fabryka — często zadawane pytania](iot-accelerators-faq-cf.md):
 
-[![Flokalizacje actory](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![Lokalizacje fabryk](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 Po hierarchii rozwiązania można nawigować oraz wyświetlać wartości ogólnej wydajności sprzętu i kluczowych wskaźników wydajności na każdym poziomie:
 
@@ -112,19 +112,19 @@ Po hierarchii rozwiązania można nawigować oraz wyświetlać wartości ogólne
 
 1. Kliknij węzeł **EnergyConsumption**. Zostaną wyświetlone wykresy przedstawiające tę wartość w różnych skalach czasu. Kliknięcie wykresu umożliwia dalszą analizę danych.
 
-[![Vzużycie energii idok](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![Wyświetlanie zużycia energii](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>Mapa
 
 Jeśli Twoja subskrypcja ma dostęp do [interfejsu API usługi Mapy Bing](iot-accelerators-faq-cf.md), na mapie *Fabryki* są wyświetlane lokalizacje geograficzne i stan wszystkich fabryk w rozwiązaniu. Aby przejść do szczegółów lokalizacji, kliknij lokalizacje wyświetlane na mapie.
 
-[![Map](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
+[![Mapa](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 
 ### <a name="alarms"></a>Alarmy
 
 Na panelu **Alarmy** są wyświetlane alarmy generowane wtedy, gdy zgłoszona wartość lub obliczona wartość ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności przekroczy wartość progową. Na tym panelu pojawiają się alarmy dotyczące każdego poziomu hierarchii: od poziomu stacji do przedsiębiorstwa. Każdy alarm zawiera opis, datę, godzinę, lokalizację i liczbę wystąpień:
 
-[![Alarms](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![Alarmy](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 Dane, które spowodowały wystąpienie alarmu, można analizować z poziomu pulpitu nawigacyjnego. Jeśli jesteś administratorem, możesz wykonywać domyślne akcje związane z alarmami, takie jak:
 
@@ -133,7 +133,7 @@ Dane, które spowodowały wystąpienie alarmu, można analizować z poziomu pulp
 
 Kliknij jeden z alarmów, z listy rozwijanej **Wybierz akcję** wybierz pozycję **Potwierdź alert**, a następnie kliknij przycisk **Zastosuj**:
 
-[![Acknowledge alarm](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![Potwierdzanie alarmu](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 Aby dalej analizować dane alarmów, kliknij wykres na panelu alarmów.
 
@@ -154,4 +154,4 @@ W tym przewodniku Szybki start wdrożono akcelerator rozwiązań połączonej fa
 Aby dowiedzieć się, jak używać innych funkcji pulpitu nawigacyjnego w celu zarządzania przemysłowymi urządzeniami IoT, przejdź do następującego przewodnika:
 
 > [!div class="nextstepaction"]
-> [Pulpit nawigacyjny połączonej fabryki](iot-accelerators-connected-factory-dashboard.md)
+> [Korzystanie z pulpitu nawigacyjnego połączonej fabryki](iot-accelerators-connected-factory-dashboard.md)

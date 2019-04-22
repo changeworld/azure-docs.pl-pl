@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 93fc426d9de027100e70502bcf6ea3aad2c44e10
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500213"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Szybki start: Aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych
@@ -205,4 +205,4 @@ Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowani
 W tym przewodniku Szybki start na Twojej maszynie z systemem Windows utworzono urządzenie symulowane, które zostało następnie aprowizowane do Twojego centrum IoT przy użyciu klucza symetrycznego z usługą Azure IoT Hub Device Provisioning w portalu. Aby dowiedzieć się, jak zarejestrować urządzenie programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzeń X.509. 
 
 > [!div class="nextstepaction"]
-> [Szybki Start Azure — rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Przewodnik Szybki start platformy Azure — Rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning](quick-enroll-device-x509-java.md)

@@ -9,10 +9,10 @@ ms.date: 7/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494973"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
@@ -104,6 +104,6 @@ Jako ogólnej wskazówki dla danego wdrożenia należy zachować kilka rzeczy, n
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Planowanie wdrażania usługi Pliki Azure](storage-files-planning.md)
-- [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md)
+- [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
+- [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
 - [Cele dotyczące skalowalności i wydajności dla innych usług magazynu](../common/storage-scalability-targets.md)

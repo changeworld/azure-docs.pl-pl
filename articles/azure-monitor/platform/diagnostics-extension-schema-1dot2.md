@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496492"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schemat konfiguracji usługi platformy Azure Diagnostyka 1.2
@@ -113,7 +113,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 |**Katalogi**|Umożliwia zbieranie zawartości katalogu, dzienniki żądania dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfiguruje zbieranie zdarzeń funkcji ETW z źródła zdarzeń i/lub manifestu ETW na podstawie dostawcy.|  
 |**Metryki**|Ten element umożliwia generowanie tabeli liczników wydajności, która jest zoptymalizowana pod kątem zapytań. Każdego licznika wydajności, która jest zdefiniowana w **liczniki wydajności** elementu są przechowywane w tabeli metryk, oprócz tabeli licznika wydajności. Wymagany atrybut:<br /><br /> **resourceId** — jest to identyfikator zasobu maszyny wirtualnej diagnostyki Azure do wdrażania. Pobierz **resourceID** z [witryny Azure portal](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** kafelka, a następnie skopiuj wartość z **identyfikator** pola.|  
-|**Liczniki wydajności**|Umożliwia zbieranie liczników wydajności. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**PerformanceCounters**|Umożliwia zbieranie liczników wydajności. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Umożliwia zbieranie dzienników zdarzeń systemu Windows. Opcjonalny atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Czas trwania Data Type".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
@@ -130,7 +130,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Źródła danych**|Lista katalogów, do monitorowania.|  
+|**DataSources**|Lista katalogów, do monitorowania.|  
 |**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
 |**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|  
 
@@ -146,7 +146,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** — ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** -Określa, czy zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**Bezwzględna**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** — ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** -Określa, czy zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
 |**LocalResource**|Ścieżka względna do monitorowania zasobów lokalnych. Dostępne są następujące wymagane atrybuty:<br /><br /> -                     **Nazwa** — zasób lokalny, która zawiera katalog do monitorowania<br /><br /> -                     **relativePath** — ścieżka względna nazwa, która zawiera katalog do monitorowania|  
 
 ## <a name="etwproviders-element"></a>EtwProviders Element  
@@ -163,7 +163,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Wydarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
  W poniższej tabeli opisano elementy podrzędne:  
@@ -171,7 +171,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Wydarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 ## <a name="metrics-element"></a>Element metryki  
  Umożliwia generowanie tabeli liczników wydajności, która jest zoptymalizowana pod kątem zapytań. W poniższej tabeli opisano elementy podrzędne:  
@@ -199,5 +199,5 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Źródło danych**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*".|
+|**DataSource**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*".|
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357249"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680863"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
@@ -34,27 +34,27 @@ W tym artykule dowiesz się, jak do uczenia modelu regresji prognozowania szereg
 
 Najważniejsza różnica między prognozowania typ zadania regresji i regresji typu zadania w ramach uczenia maszynowego automatycznych obejmują funkcję danych, która reprezentuje szeregów czasowych prawidłowe. Serie czasu ma częstotliwość dobrze zdefiniowany i spójny i ma wartość w każdym punkcie przykładowe przedział czasu ciągłe. Należy wziąć pod uwagę następującej migawki pliku `sample.csv`.
 
-    week_starting,store,sales_quantity,week_of_year
+    day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
     9/3/2018,B,600,36
-    9/10/2018,A,2300,37
-    9/10/2018,B,550,37
-    9/17/2018,A,2100,38
-    9/17/2018,B,650,38
-    9/24/2018,A,2400,39
-    9/24/2018,B,700,39
-    10/1/2018,A,2450,40
-    10/1/2018,B,650,40
+    9/4/2018,A,2300,36
+    9/4/2018,B,550,36
+    9/5/2018,A,2100,36
+    9/5/2018,B,650,36
+    9/6/2018,A,2400,36
+    9/6/2018,B,700,36
+    9/7/2018,A,2450,36
+    9/7/2018,B,650,36
 
-Ten zestaw danych jest prosty przykład tygodniowe dane sprzedaży dla firmy, która ma dwa różne sklepy A i B. Dodatkowo, jest funkcji `week_of_year` modelu do wykrywania sezonowości co tydzień, które pozwolą. Pole `week_starting` reprezentuje szeregów czasowych czyste z częstotliwością tygodniową i polem `sales_quantity` jest kolumna docelowa dla wykonywania prognoz. Odczyt danych do elementów Pandas dataframe, a następnie użyj `to_datetime` funkcję, aby upewnić się, jest szeregów czasowych `datetime` typu.
+This data set is a simple example of daily sales data for a company that has two different stores, A and B. Additionally, there is a feature for `week_of_year` that will allow the model to detect weekly seasonality. Pole `day_datetime` reprezentuje szeregów czasowych czystego, z częstotliwością dziennych i pole `sales_quantity` jest kolumna docelowa dla wykonywania prognoz. Odczyt danych do elementów Pandas dataframe, a następnie użyj `to_datetime` funkcję, aby upewnić się, jest szeregów czasowych `datetime` typu.
 
 ```python
 import pandas as pd
 data = pd.read_csv("sample.csv")
-data["week_starting"] = pd.to_datetime(data["week_starting"])
+data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-W tym przypadku dane są już sortowane rosnąco przez wartość pola Czas `week_starting`. Jednak podczas konfigurowania eksperymentu, upewnij się, że kolumna żądany czas jest posortowanej rosnąco tworzenie szeregów czasowych prawidłowe. Przyjęto założenie, że dane zawierają 1000 rekordów i deterministyczna podziału w danych, tworzenie, szkolenie i testowanie zestawów danych. Następnie oddzielić pola docelowego `sales_quantity` w celu tworzenia prognoz szkolenie i testowanie zestawów.
+W tym przypadku dane są już sortowane rosnąco przez wartość pola Czas `day_datetime`. Jednak podczas konfigurowania eksperymentu, upewnij się, że kolumna żądany czas jest posortowanej rosnąco tworzenie szeregów czasowych prawidłowe. Przyjęto założenie, że dane zawierają 1000 rekordów i deterministyczna podziału w danych, tworzenie, szkolenie i testowanie zestawów danych. Następnie oddzielić pola docelowego `sales_quantity` w celu tworzenia prognoz szkolenie i testowanie zestawów.
 
 ```python
 X_train = data.iloc[:950]
@@ -84,14 +84,18 @@ Do prognozowania zadania, uczenie maszynowe automatyczne wykorzystuje przetwarza
 |`time_column_name`|Służy do określania kolumn daty/godziny w danych wejściowych, używane do kompilowania szeregów czasowych i wnioskowanie jej częstotliwość.|✓|
 |`grain_column_names`|Nazwy, definiując grupy poszczególnych serii danych wejściowych. Jeśli nie zdefiniowano ziarna, zestaw danych zakłada się, że jeden szeregów czasowych.||
 |`max_horizon`|Maksymalną żądaną horizon prognozy w jednostkach częstotliwości szeregów czasowych.|✓|
+|`target_lags`|*n* okresów opóźnienie do przodu dotyczą wartości przed szkoleń modelowych.||
+|`target_rolling_window_size`|*n* historical periods to use to generate forecasted values, <= training set size. W przypadku pominięcia *n* pełną szkolenia ustawiono rozmiaru.||
 
-Utwórz ustawienia Szeregi czasowe jako obiekt słownika. Ustaw `time_column_name` do `week_starting` pole w zestawie danych. Zdefiniuj `grain_column_names` parametru, aby upewnić się, że **dwa odrębne grupy szeregów czasowych** są tworzone dla zestawu danych; jeden dla magazynu, A i B. na koniec `max_horizon` 50 w celu przewidywania dla całego testu zestawu.
+Utwórz ustawienia Szeregi czasowe jako obiekt słownika. Ustaw `time_column_name` do `day_datetime` pole w zestawie danych. Zdefiniuj `grain_column_names` parametru, aby upewnić się, że **dwa odrębne grupy szeregów czasowych** są tworzone dla zestawu danych; jeden dla magazynu, A i B. na koniec `max_horizon` 50 w celu przewidywania dla całego testu zestawu. Konfiguruj okno prognozowania okresów 10 za pomocą `target_rolling_window_size`i opóźnienie docelowej wartości 2 okresy o rozpoczęciu `target_lags` parametru.
 
 ```python
 time_series_settings = {
-    "time_column_name": "week_starting",
+    "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50
+    "max_horizon": 50,
+    "target_lags": 2,
+    "target_rolling_window_size": 10
 }
 ```
 
@@ -141,11 +145,11 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Teraz, gdy ogólnych dokładności modelu w ustaleniu, najbardziej realistyczne następnym krokiem jest użycie modelu do prognozowania nieznany przyszłych wartości. Po prostu podać wartość zestawu danych, w tym samym formacie co zestaw testów `X_test` , ale przyszłych Data/Godzina i prognozowania Wynikowy zestaw jest przewidywane wartości dla każdego kroku szeregów czasowych. Przyjęto założenie, ostatnie rekordy szeregów czasowych w zestawie danych było uruchamianie tydzień 12, 31 stycznia 2018. Do prognozowania popytu w następnym tygodniu (lub dowolną liczbę okresów muszą prognozować, < = `max_horizon`), utworzyć pojedynczy czas serii rekord dla każdego sklepu uruchamiania tydzień 07/01/2019.
+Teraz, gdy ogólnych dokładności modelu w ustaleniu, najbardziej realistyczne następnym krokiem jest użycie modelu do prognozowania nieznany przyszłych wartości. Po prostu podać wartość zestawu danych, w tym samym formacie co zestaw testów `X_test` , ale przyszłych Data/Godzina i prognozowania Wynikowy zestaw jest przewidywane wartości dla każdego kroku szeregów czasowych. Assume the last time-series records in the data set were for 12/31/2018. Do prognozowania popytu na następny dzień (lub dowolną liczbę okresów muszą prognozować, < = `max_horizon`), utworzyć pojedynczy czas serii rekord dla każdego sklepu dla 01/01/2019 r.
 
-    week_starting,store,week_of_year
-    01/07/2019,A,2
-    01/07/2019,A,2
+    day_datetime,store,week_of_year
+    01/01/2019,A,1
+    01/01/2019,A,1
 
 Powtórz czynności niezbędnych do załadowania tych danych przyszłych ramkę danych, a następnie uruchom `best_run.predict(X_test)` do przewidywania przyszłych wartości.
 

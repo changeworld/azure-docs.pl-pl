@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762688"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680808"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -56,7 +56,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy mogę utworzyć obraz wirtualnego dysku twardego z maszyny Wirtualnej programu SQL Server?**
 
-   Tak, ale jest kilka istotnych kwestii. Jeśli wdrożono ten wirtualny dysk twardy do nowej maszyny Wirtualnej na platformie Azure, możesz zrobić ge nie w sekcji Konfiguracja programu SQL Server w portalu. Następnie można zarządzać opcje konfiguracji programu SQL Server za pomocą programu PowerShell. Ponadto możesz opłata zgodnie ze stawką maszyn wirtualnych SQL, obraz został pierwotnie oparty na. Ta zasada obowiązuje, nawet w przypadku usunięcia programu SQL Server z dysku VHD, przed wdrożeniem. 
+   Tak, ale jest kilka istotnych kwestii. Jeśli wdrożono ten wirtualny dysk twardy do nowej maszyny Wirtualnej na platformie Azure, nie są w sekcji Konfiguracja programu SQL Server w portalu. Następnie można zarządzać opcje konfiguracji programu SQL Server za pomocą programu PowerShell. Ponadto możesz opłata zgodnie ze stawką maszyn wirtualnych SQL, obraz został pierwotnie oparty na. Ta zasada obowiązuje, nawet w przypadku usunięcia programu SQL Server z dysku VHD, przed wdrożeniem. 
 
 1. **Czy jest możliwe do skonfigurowania konfiguracje nie są wyświetlane w galerii maszyn wirtualnych (na przykład Windows 2008 R2 i SQL Server 2012)?**
 

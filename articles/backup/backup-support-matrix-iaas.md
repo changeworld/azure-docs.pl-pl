@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
 ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496099"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
@@ -28,7 +28,7 @@ Inne macierze pomocy technicznej:
 
 Oto, jak tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 
-**Scenariusz** | **Backup** | **Agent** |**Przywracanie**
+**Scenariusz** | **Tworzenie kopii zapasowych** | **Agent** |**Przywracanie**
 --- | --- | --- | ---
 Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure  | Utwórz kopię zapasową całej maszyny Wirtualnej.  | Agent nie jest potrzebna na maszynie Wirtualnej platformy Azure. Usługa Azure Backup instaluje i używa rozszerzenia [agenta maszyny Wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) uruchomionym na maszynie Wirtualnej. | Przywróć w następujący sposób:<br/><br/> - **Tworzenie podstawowej maszyny Wirtualnej**. Jest to przydatne, jeśli żadna specjalna konfiguracja, takich jak wiele adresów IP na maszynie Wirtualnej.<br/><br/> - **Przywracanie dysku maszyny Wirtualnej**. Przywróć dysk. Następnie dołącz je do istniejącej maszyny Wirtualnej lub Utwórz nową maszynę Wirtualną z dysku przy użyciu programu PowerShell.<br/><br/> - **Wymiana dysku maszyny Wirtualnej**. Jeśli maszyna wirtualna istnieje, a następnie używa dysków zarządzanych (bez szyfrowania), możesz przywrócić dysk i użyj go, aby zamienić istniejący dysk na maszynie Wirtualnej.<br/><br/> - **Przywracanie plików/folderów określonych**. Możesz przywrócić pliki i foldery z maszyny Wirtualnej zamiast z całej maszyny Wirtualnej.
 Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure (tylko Windows)  | Utwórz kopię zapasową określonych plików/folderów/woluminów. | Zainstaluj [agenta usług odzyskiwania Azure](backup-azure-file-folder-backup-faq.md).<br/><br/> Można uruchomić agenta usług MARS obok zapasowy numer wewnętrzny dla agenta maszyny Wirtualnej platformy Azure do tworzenia kopii zapasowych maszyn wirtualnych na poziomie plików/folderów. | Przywracanie plików/folderów określonych.
@@ -139,7 +139,7 @@ Przywróć maszynę Wirtualną w innej sieci wirtualnej |   Obsługiwane.<br/><b
 
 ## <a name="vm-compute-support"></a>Obsługa obliczeń maszyny Wirtualnej
 
-**Wystąpienia obliczeniowe** | **Pomoc techniczna**
+**Obliczanie** | **Pomoc techniczna**
 --- | ---
 Rozmiar maszyny wirtualnej |   Dowolnego rozmiaru maszyny Wirtualnej platformy Azure z co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM.<br/><br/> [Dowiedz się więcej.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 Tworzenie kopii zapasowych maszyn wirtualnych w [zestawów dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Obsługiwane.<br/><br/> Nie można przywrócić Maszynę wirtualną w zestawie dostępności za pomocą opcji, aby szybko utworzyć Maszynę wirtualną. Zamiast tego podczas przywracania maszyny Wirtualnej przywracania dysku i użyj go, aby wdrożyć Maszynę wirtualną, lub przywrócić dysk i użyć go do zastąpienia istniejącego dysku.
@@ -212,7 +212,7 @@ Bezpieczeństwo danych:
 - Na zapleczu usługa Azure Backup używa [szyfrowania usługi Azure Storage](../storage/common/storage-service-encryption.md), które chroni dane magazynowane.
 
 
-**Maszyna** | **W drodze** | **W spoczynku**
+**Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
 Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
 Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green]
@@ -228,7 +228,7 @@ Backup obsługuje kompresję kopii zapasowej ruchu, zgodnie z opisem w poniższe
 - W przypadku maszyn wirtualnych platformy Azure z rozszerzenia maszyny Wirtualnej odczytuje dane bezpośrednio z konta usługi Azure storage za pośrednictwem sieci magazynowania. Nie jest konieczne Kompresja tego ruchu.
 - Jeśli używasz programu DPM lub MABS, możesz oszczędzić przepustowość, kompresji danych, przed jej kopii zapasowej, aby program DPM/serwera usługi MAB.
 
-**Maszyna** | **Kompresuj do serwera usługi Mab/DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
+**Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
 Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Yes][green]
 Maszyny wirtualne platformy Azure | Nie dotyczy | Nie dotyczy

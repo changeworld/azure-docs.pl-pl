@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 3/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520653"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679605"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
@@ -34,7 +34,7 @@ Przed rozpoczęciem korzystania z kontenerów rozpoznawanie tekstu, musi spełni
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
-|Rozpoznawanie tekstu zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A [ _Rozpoznaj tekst_ ](vision-api-how-to-topics/howtosubscribe.md) zasobów platformy Azure, aby uzyskać skojarzonego klucza rozliczenia i rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach witryny Azure portal rozpoznaje Przegląd tekstu i klucze i są wymagane do uruchomienia kontenera.<br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Azure `Cognitive Services` zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `vision/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
@@ -91,8 +91,10 @@ Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/comma
 
 | Symbol zastępczy | Wartość |
 |-------------|-------|
-|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie rozpoznawanie tekstu klucze w witrynie Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Rozliczeń punkt końcowy wartość identyfikatora URI.|
+|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępna na platformie Azure `Cognitive Services` strony klucze.  |
+|{BILLING_ENDPOINT_URI} | Rozliczeń punkt końcowy wartość identyfikatora URI. Przykładem jest: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+
+Musisz dodać `vision/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI.
 
 Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia.
 

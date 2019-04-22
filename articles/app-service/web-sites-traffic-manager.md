@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 79fe3bce558a8315f5fbf7dbc82a4979e8e24238
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599812"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677446"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
 > [!NOTE]
@@ -43,7 +43,7 @@ Usługa Azure Traffic Manager korzysta z czterech różnych metod routingu. Te m
 Aby uzyskać więcej informacji, zobacz [metody routingu w usłudze Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>Usługa App Service i profile usługi Traffic Manager
-Aby skonfigurować kontrolę nad ruchem aplikacji usługi App Service, Utwórz profil w usłudze Azure Traffic Manager, używa jeden z trzech obciążenia równoważenia metod opisanych powyżej, a następnie dodaj punktów końcowych (w tym przypadku usługi App Service) dla których chcesz kontrolować ruch do profil. Stan aplikacji (uruchomiona, zatrzymana lub usunięta) regularnie jest przekazywany do profilu, tak aby usługi Azure Traffic Manager może skierować ruch odpowiednio.
+Aby skonfigurować kontrolę nad ruchem aplikacji usługi App Service, Utwórz profil w usłudze Azure Traffic Manager, używa jednego z czterech obciążenia opisanych powyżej metod równoważenia, a następnie dodaj punkty końcowe (w tym przypadku usługi App Service) dla których chcesz kontrolować ruch profil. Stan aplikacji (uruchomiona, zatrzymana lub usunięta) regularnie jest przekazywany do profilu, tak aby usługi Azure Traffic Manager może skierować ruch odpowiednio.
 
 Podczas przy użyciu usługi Azure Traffic Manager za pomocą platformy Azure, należy uwzględnić następujące kwestie:
 

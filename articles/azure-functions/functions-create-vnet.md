@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 749e211c9844f644e04d5135f99d71918d65b66b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523736"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680357"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integracja z aplikacją funkcji z siecią wirtualną platformy Azure
 
-Ten samouczek krok po kroku dowiesz się, jak łączyć się z zasobami w sieci Wirtualnej platformy Azure za pomocą usługi Azure Functions.
+Ten samouczek pokazuje, jak łączyć się z zasobami w sieci Wirtualnej platformy Azure za pomocą usługi Azure Functions.
 
 W tym samouczku będziemy wdrażać witrynę WordPress na maszynie Wirtualnej w prywatnej bez — dostępny przez internet, sieć Wirtualną. Następnie wdrożymy funkcji z dostępem do Internetu i siecią Wirtualną. Firma Microsoft użyje tej funkcji dostęp do zasobów w witrynie WordPress wdrożonych w ramach sieci Wirtualnej.
 

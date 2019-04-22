@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 04/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407593"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678432"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure
 
@@ -29,20 +29,20 @@ W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostę
 ## <a name="problems-with-rbac-role-assignments"></a>Problemy z przypisaniami ról kontroli dostępu opartej na rolach
 
 - Jeśli to nie można dodać przypisania roli w witrynie Azure portal na **kontrola dostępu (IAM)** ponieważ **Dodaj** > **Dodaj przypisanie roli** opcja jest wyłączona lub ponieważ otrzymasz błąd uprawnień "klient o identyfikatorze obiektu nie ma autoryzacji do wykonania akcji", sprawdź, czy obecnie logujesz się jako użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleAssignments/write` uprawnienia, takie jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) w zakresie, o których chcesz przypisać rolę.
-- Jeśli otrzymasz komunikat o błędzie "nie ma więcej przypisań ról, które mogą być tworzone (kod: RoleAssignmentLimitExceeded) "podczas próby przypisania roli próbują zmniejszyć liczba przypisań ról, przypisywanie ról do grup, zamiast tego. Platforma Azure obsługuje maksymalnie **2000** przypisania roli na subskrypcję.
+- Jeśli otrzymasz komunikat o błędzie "nie ma więcej przypisań ról, które mogą być tworzone (kod: RoleAssignmentLimitExceeded)” podczas próby przypisania roli, spróbuj zmniejszyć liczbę przypisań ról, przypisując zamiast tego role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisań ról na subskrypcję.
 
 ## <a name="problems-with-custom-roles"></a>Problemy z rolami niestandardowymi
 
 - Czynności, jak utworzyć rolę niestandardową, odwiedź stronę samouczków rolę niestandardową przy użyciu [programu Azure PowerShell](tutorial-custom-role-powershell.md) lub [wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
 - Jeśli nie można zaktualizować istniejącej roli niestandardowej Sprawdź, czy obecnie logujesz się jako użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleDefinition/write` uprawnienia, takie jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
-- Jeśli nie można usunąć niestandardową rolę i komunikat o błędzie "istnieją przypisania ról odwołujące się do roli (kod: RoleDefinitionHasAssignments) ", następnie istnieją przypisania ról nadal przy użyciu roli niestandardowej. Usunąć te przypisania roli, a następnie ponownie spróbuj usunąć rolę niestandardową.
-- Jeśli otrzymasz komunikat o błędzie "Przekroczono limit definicji ról. Można utworzyć żadnych więcej definicji roli (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej niestandardowej roli, Usuń role niestandardowe, które nie są używane. Platforma Azure obsługuje maksymalnie **2000** ról niestandardowych w dzierżawie.
-- Jeśli zostanie wyświetlony komunikat o błędzie podobny do "klient ma uprawnienia do wykonania akcji"Microsoft.Authorization/roleDefinitions/write"w zakresie"/ subscriptions / {subscriptionid}", ale nie znaleziono połączonej subskrypcji" podczas próby aktualizacji roli niestandardowej Sprawdź czy co najmniej jeden [zakresy możliwe do przypisania](role-definitions.md#assignablescopes) zostały usunięte w dzierżawie. Jeśli zakres został usunięty, następnie utwórz bilet pomocy technicznej, ponieważ nie ma żadnych dostępnych w tej chwili samoobsługowego rozwiązania.
+- Jeśli nie możesz usunąć niestandardowej roli i otrzymujesz komunikat o błędzie „Istnieją przypisania ról odwołujące się do roli (kod: RoleDefinitionHasAssignments)”, wówczas istnieją przypisania ról nadal używające roli niestandardowej. Usuń te przypisania ról i spróbuj ponownie usunąć rolę niestandardową.
+- Jeśli otrzymujesz komunikat o błędzie „Przekroczono limit definicji ról. Można utworzyć żadnych więcej definicji roli (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej niestandardowej roli, Usuń role niestandardowe, które nie są używane. Platforma Azure obsługuje maksymalnie **2000** ról niestandardowych w dzierżawie.
+- Jeśli zostanie wyświetlony komunikat o błędzie podobny do "klient ma uprawnienia do wykonania akcji"Microsoft.Authorization/roleDefinitions/write"w zakresie"/ subscriptions / {subscriptionid}", ale nie znaleziono połączonej subskrypcji" podczas próby aktualizacji roli niestandardowej Sprawdź czy co najmniej jeden [zakresy możliwe do przypisania](role-definitions.md#assignablescopes) zostały usunięte w dzierżawie. Jeśli zakres został usunięty, utwórz bilet pomocy technicznej, ponieważ w tej chwili nie jest dostępne żadne rozwiązanie samoobsługowe.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Odzyskiwanie kontroli dostępu opartej na rolach po przeniesieniu subskrypcji między dzierżawami
 
 - Jeśli potrzebujesz kroki dotyczące przeniesienia subskrypcji do innej usługi Azure AD dzierżawy, zobacz [przenieść własność subskrypcji platformy Azure do innego konta](../billing/billing-subscription-transfer.md).
-- Jeśli przeniesiesz subskrypcję do innej usługi Azure AD dzierżawy, wszystkie przypisania roli zostaną trwale usunięte z dzierżawy źródła usługi Azure AD i nie są migrowane do dzierżawy usługi Azure AD docelowej. Należy ponownie utworzyć przypisania roli w dzierżawie docelowej.
+- Jeśli przeniesiesz subskrypcję do innej dzierżawy usługi Azure AD, wszystkie przypisania ról zostaną trwale usunięte ze źródłowej dzierżawy usługi Azure AD i nie zostaną zmigrowane do docelowej dzierżawy usługi Azure AD. Należy ponownie utworzyć swoje przypisania ról w dzierżawie docelowej. Musisz również ręcznie odtworzyć utracone zarządzanych tożsamości dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy związane z zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Jeśli korzystasz z usługi Azure AD administratora globalnego i nie mają dostępu do subskrypcji, po przeniesieniu między dzierżawami, użyj **Access management dla zasobów platformy Azure** przełącznik, aby tymczasowo [podniesienie poziomu dostępu](elevate-access-global-admin.md) do uzyskania dostępu do subskrypcji.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problemy z administratorami usług lub współadministratorami
@@ -51,7 +51,7 @@ W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostę
 
 ## <a name="access-denied-or-permission-errors"></a>Odmowa dostępu lub błędy uprawnień
 
-- Jeśli zostanie wyświetlony błąd uprawnień "klient o identyfikatorze obiektu nie ma autoryzacji do wykonania akcji w zakresie (kod: AuthorizationFailed) "podczas próby utworzenia zasobu, sprawdź, czy obecnie logujesz się jako użytkownik, któremu przypisano rolę, która ma uprawnienia do zapisu do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów, należy mieć [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) roli w grupie zasobów (lub zakresu nadrzędnego). Aby uzyskać listę uprawnień dla poszczególnych ról wbudowanych, zobacz [wbudowane role zasobów platformy Azure](built-in-roles.md).
+- Jeśli otrzymujesz błąd przypisania „Klient z identyfikatorem obiektu nie ma autoryzacji do wykonania akcji w zakresie (kod: AuthorizationFailed)” podczas próby utworzenia zasobu, upewnij się, że obecnie logujesz się jako użytkownik mający przypisaną rolę, która ma uprawnienia zapisu do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów musisz mieć rolę [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) w grupie zasobów (lub zakresie nadrzędnym). Aby uzyskać listę uprawnień dla każdej roli wbudowanej, zobacz [Role wbudowane dla zasobów platformy Azure](built-in-roles.md).
 - Jeśli zostanie wyświetlony błąd uprawnień "Nie masz uprawnień, aby utworzyć żądanie pomocy technicznej" podczas próby utworzenia lub zaktualizowania bilet pomocy technicznej, sprawdź, czy obecnie logujesz się jako użytkownik, któremu przypisano rolę, która ma `Microsoft.Support/supportTickets/write` uprawnienia, takie jak [Współautor żądania obsługi](built-in-roles.md#support-request-contributor).
 
 ## <a name="rbac-changes-are-not-being-detected"></a>RBAC zmiany nie są wykrywane

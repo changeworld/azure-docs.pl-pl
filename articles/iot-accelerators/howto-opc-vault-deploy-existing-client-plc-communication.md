@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494017"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Bezpieczna komunikacja klienta OPC i OPC PLC
@@ -31,7 +31,7 @@ OPC Vault skrypty:
 
 ## <a name="generate-a-self-signed-certificate-on-startup"></a>Generowanie certyfikatu z podpisem własnym przy uruchamianiu
 
-**Przygotowanie**
+**Przygotowywanie**
 
 - Upewnij się, że zmienne środowiskowe `$env:_PLC_OPT` i `$env:_CLIENT_OPT` są niezdefiniowane, na przykład `$env:_PLC_OPT=""` w swoje środowiska PowerShell.
 
@@ -70,7 +70,7 @@ Przyczyna niepowodzenia jest, certyfikat nie jest zaufany. Oznacza to, że `opc-
 
 ## <a name="sign-and-install-certificates-in-opc-ua-components"></a>Zaloguj się i instalowania certyfikatów w składnikach serwera OPC UA
 
-**Przygotowanie**
+**Przygotowywanie**
 1. Spójrz na dane wyjściowe dziennika w kroku 1 i pobrać "Informacje o CreateSigningRequest" OPC PLC i klienta OPC. W tym miejscu danych wyjściowych jest wyświetlana tylko dla OPC PLC:
 
     ```

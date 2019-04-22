@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492366"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
@@ -42,12 +42,12 @@ Następujące metody połączenia danych są obsługiwane przez usługi Azure pr
     - [Office 365](connect-office-365.md)
     - [Usługa Azure AD inspekcji, dzienniki i logowania](connect-azure-active-directory.md)
     - [Aktywności platformy Azure](connect-azure-activity.md)
-    - [Usługa Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
+    - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Usługa Azure Advanced Threat Protection](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
-    - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
+    - [Zdarzenia zabezpieczeń Windows](connect-windows-security-events.md) 
     - [Zapora Windows](connect-windows-firewall.md)
 
 - **Zewnętrzny rozwiązań za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone za pomocą interfejsów API, które zostały udostępnione przez połączonego źródła danych. Zazwyczaj większość technologii zabezpieczeń zawierają zestaw interfejsów API za pomocą którego można pobrać dzienników zdarzeń. Interfejsy API nawiązać połączenie z platformy Azure przez wartownika i zbieranie danych z konkretnych typów i wysyłać je do usługi Azure Log Analytics. Urządzenia połączone za pośrednictwem interfejsu API to:

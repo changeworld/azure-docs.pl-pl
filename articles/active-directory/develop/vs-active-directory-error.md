@@ -13,18 +13,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed328b29c853e5ff75d64332f0228277cff90d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6f151251d76965cf1bc86216eac15a08f1adbc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203679"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679112"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnozowanie błędów przy użyciu usługi Azure Active Directory połączone
 
 Podczas wykrywania poprzedni kod uwierzytelniania, usługi Azure Active Directory connect serwer wykrył typ uwierzytelniania niezgodne.
 
-Aby prawidłowo wykryć poprzedni kod uwierzytelniania w projekcie, projektu muszą zostać skompilowane.  Jeśli wystąpił błąd i nie ma poprzedniego kodu uwierzytelniania w projekcie, skompiluj i spróbuj ponownie.
+Aby prawidłowo wykryć poprzedni kod uwierzytelniania w projekcie, projektu muszą zostać skompilowane.  Jeśli zostanie wyświetlony ten błąd i nie ma poprzedniego kodu uwierzytelniania w projekcie, skompiluj i spróbuj ponownie.
 
 ## <a name="project-types"></a>Typy projektów
 
@@ -32,7 +32,7 @@ Usługi połączonej sprawdza, czy typ projektu, którą tworzysz, więc jego ws
 
 ## <a name="compatible-authentication-code"></a>Kod uwierzytelniania zgodne
 
-Usługi połączonej wyszukuje również ustawienia uwierzytelniania, które zostały wcześniej skonfigurowane lub są zgodne z usługą. Jeśli wszystkie ustawienia są obecne, jest uznawane za wielobieżnej przypadek, a otworzy usługę połączoną Wyświetl ustawienia.  Jeśli tylko niektóre ustawienia są obecne, jest uznawany za przypadki błędów.
+Usługi połączonej wyszukuje również ustawienia uwierzytelniania, które zostały wcześniej skonfigurowane lub są zgodne z usługą. Jeśli wszystkie ustawienia są obecne, uwzględniono wielobieżnej przypadek, a otworzy usługę połączoną wyświetlić ustawienia.  Jeśli tylko niektóre ustawienia są obecne, jest uznawane za przypadki błędów.
 
 W projekcie MVC usługi połączonej sprawdza, czy dla każdego z następujących ustawień, będące wynikiem z poprzedniego korzystania z usługi:
 
@@ -60,7 +60,7 @@ Do wykrywania uwierzytelniania Windows w projekcie MVC, połączonym szuka `auth
 ```xml
 <configuration>
     <system.web>
-        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+        <authentication mode="Windows" />
     </system.web>
 </configuration>
 ```
@@ -70,7 +70,7 @@ Aby wykryć uwierzytelniania Windows w projekcie interfejsu API sieci Web, usłu
 ```xml
 <Project>
     <PropertyGroup>
-        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+        <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     </PropertyGroup>
 </Project>
 ```
@@ -79,7 +79,7 @@ Aby wykryć uwierzytelniania indywidualnych kont użytkowników, usługi połąc
 
 ```xml
 <packages>
-    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+    <package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" />
 </packages>
 ```
 
@@ -88,7 +88,7 @@ Aby wykryć starego formularza uwierzytelniania konto organizacyjne, usługi po�
 ```xml
 <configuration>
     <appSettings>
-        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+        <add key="ida:Realm" value="***" />
     </appSettings>
 </configuration>
 ```

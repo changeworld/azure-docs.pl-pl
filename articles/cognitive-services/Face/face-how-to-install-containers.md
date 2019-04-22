@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3e6b220e7193c5e683fc8a6c06a6e9e3dd3e3f6e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521622"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680727"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów twarzy
 
@@ -32,7 +32,7 @@ Przed rozpoczęciem korzystania z interfejsu API rozpoznawania twarzy, kontenery
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
-|Interfejs API rozpoznawania twarzy zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A _interfejsu API rozpoznawania twarzy_ zasobów platformy Azure, aby uzyskać skojarzonego klucza rozliczenia i rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach witryny Azure portal omówienie interfejsu API rozpoznawania twarzy i klucze i są wymagane do uruchomienia kontenera.<br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|Azure `Cognitive Services` zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `face/v1.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
@@ -86,8 +86,10 @@ Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/comma
 
 | Symbol zastępczy | Wartość |
 |-------------|-------|
-|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze interfejsu API rozpoznawania twarzy w witrynie Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Punkt końcowy rozliczeń wartość identyfikatora URI jest dostępny na stronie Przegląd interfejsu API rozpoznawania twarzy w witrynie Azure portal.|
+|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępna na platformie Azure `Cognitive Services` strony klucze.  |
+|{BILLING_ENDPOINT_URI} | Punkt końcowy rozliczeń wartość identyfikatora URI jest dostępna na platformie Azure `Cognitive Services` strona przeglądu. Przykładem jest: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+
+Musisz dodać `face/v1.0` routingu do identyfikator URI punktu końcowego, jak pokazano w powyższym przykładzie BILLING_ENDPOINT_URI. 
 
 Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia.
 

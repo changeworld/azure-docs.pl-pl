@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 58d7aeb3c710610d93eda09b37374a167b444bd0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609408"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679010"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -225,6 +225,7 @@ Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |20 MB/s | 1684 GB na dysk
+
 ## <a name="replicated-machines---networking"></a>Replikowane maszyny — sieci
 **Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
@@ -236,6 +237,7 @@ Sieciowa grupa zabezpieczeń na karcie interfejsu Sieciowego | Obsługiwane | Ko
 Sieciowa grupa zabezpieczeń w podsieci | Obsługiwane | Kojarzenie sieciowej grupy zabezpieczeń z podsiecią, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
 Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**.
 Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby.
+Wiele adresów IP | Nieobsługiwane | Po przełączeniu w tryb failover maszyny Wirtualnej, która ma kartę Sieciową z wieloma adresami IP jest przechowywana tylko podstawowy adres IP karty Sieciowej w regionie źródłowym. Aby przypisać wiele adresów IP, można dodać maszyny wirtualne do [planu odzyskiwania](recovery-plan-overview.md) i dołączyć skrypt do przypisywania dodatkowych adresów IP do planu, lub można wprowadzić zmiany ręcznie lub za pomocą skryptu po włączeniu trybu failover. 
 Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |

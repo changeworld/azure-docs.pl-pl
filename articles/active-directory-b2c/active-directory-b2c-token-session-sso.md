@@ -1,78 +1,28 @@
 ---
-title: Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
+title: Sesja i jednej konfiguracji logowania jednokrotnego — Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1acdb8b5d0054f1dffd1014a350540b6de40d75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 674a20fc96cf5b86219222d746525a3559ae9d09
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171511"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681101"
 ---
-# <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
+# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
 
 Ta funkcja umożliwia szczegółową kontrolę na [konkretnych użytkowników, przepływ](active-directory-b2c-reference-policies.md), programu:
 
-- Okresy istnienia tokenów zabezpieczających wyemitowane przez usługi Azure Active Directory (Azure AD) B2C.
 - Okres istnienia sesji aplikacji sieci web zarządzanych przez usługę Azure AD B2C.
-- Formaty ważne oświadczenia w tokeny zabezpieczające emitowane przez usługę Azure AD B2C.
 - Pojedynczy zachowanie logowania jednokrotnego (SSO) między wieloma aplikacje i przepływy użytkownika w dzierżawie usługi Azure AD B2C.
-
-Można użyć tej funkcji, z każdym typem zasad, ale w tym przykładzie pokazano, jak korzystać z funkcji przy użyciu przepływu rejestracji lub logowania użytkownika. Przepływy użytkownika umożliwia tej funkcji w katalogu usługi Azure AD B2C w następujący sposób:
-
-1. Kliknij przycisk **przepływy użytkownika**.
-2. Otwórz przepływ użytkownika, klikając go. Na przykład kliknąć **B2C_1_SiUpIn**.
-3. Kliknij pozycję **Właściwości**.
-4. W obszarze **ustawień zgodności tokenów**, wprowadź żądane zmiany. Więcej informacji na temat dostępnych właściwości w kolejnych sekcjach.
-5. Kliknij przycisk **Zapisz** górnej części menu.
-
-## <a name="token-lifetimes-configuration"></a>Konfiguracja okresów istnienia tokenu
-
-Usługa Azure AD B2C obsługuje [Protokół autoryzacji OAuth 2.0](active-directory-b2c-reference-protocols.md) umożliwiające bezpieczny dostęp do chronionych zasobów. Aby zaimplementować tę obsługę, usługi Azure AD B2C emituje różnych [tokenów zabezpieczających](active-directory-b2c-reference-tokens.md). 
-
-Następujące właściwości są używane do zarządzania okresy istnienia tokenów zabezpieczających emitowane przez usługę Azure AD B2C:
-
-- **Dostęp czas życia tokenu Identyfikatora (w minutach)** — okres istnienia tokenu elementu nośnego OAuth 2.0, które są używane do uzyskiwania dostępu do chronionego zasobu.
-    - Domyślne = 60 minut.
-    - Minimum (włącznie) = 5 minut.
-    - Maksymalna (włącznie) = 1440 minut.
-- **Czas życia tokenu odświeżania (dni)** — maksymalny okres, przed którym token odświeżania może służyć do uzyskania nowego dostępu lub tokenu Identyfikacyjnego (i opcjonalnie, nowego tokena odświeżania, jeśli aplikacja została udzielona `offline_access` zakresu).
-    - Domyślne = 14 dni.
-    - Minimum (włącznie) = 1 dzień.
-    - Maksymalna (włącznie) = 90 dni.
-- **Czas życia okna przewijania tokenu odświeżania (dni)** — po tym czasie upłynięciu tego okresu użytkownik jest zmuszony do ponownego uwierzytelnienia, niezależnie od ostatniego okresu ważności tokenu odświeżania uzyskanego przez aplikację. Może być udostępniony tylko, jeśli przełącznik jest równa **powiązana**. Musi być większa lub równa **czas życia tokenu odświeżania (dni)** wartość. Jeśli przełącznik jest równa **niepowiązane**, nie może dostarczyć określonej wartości.
-    - Domyślna = 90 dni.
-    - Minimum (włącznie) = 1 dzień.
-    - Maksymalna (włącznie) = 365 dni.
-
-Następujące przypadki użycia są włączone, przy użyciu tych właściwości:
-
-- Umożliwia użytkownikowi pozostanie w stanie zalogowania do aplikacji mobilnej na czas nieokreślony, tak długo, jak użytkownik jest ciągle aktywne w aplikacji. Możesz ustawić **przesuwanego okna czas życia tokenu odświeżania (dni)** do **niepowiązane** w przepływie logowania użytkownika.
-- Spełnia wymagania dotyczące zgodności w branży zabezpieczeń i ustawiając okresów istnienia tokenu odpowiedni dostęp.
-
-Te ustawienia nie są dostępne w przypadku resetowania haseł przepływy użytkownika. 
-
-## <a name="token-compatibility-settings"></a>Ustawienia zgodności tokenu
-
-Następujące właściwości umożliwiają klientom zgodzić się na odpowiednio do potrzeb:
-
-- **Oświadczenie wystawcy (iss)** — ta właściwość identyfikuje dzierżawy usługi Azure AD B2C, który wystawił token.
-    - `https://<domain>/{B2C tenant GUID}/v2.0/` — Jest to wartość domyślna.
-    - `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` — Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i przepływ użytkownika używane w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](https://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
-- **Oświadczenia podmiotu (pod)** — ta właściwość identyfikuje jednostkę, dla której token określa informacje.
-    - **Identyfikator obiektu** — właściwość ta jest wartością domyślną. Wypełnia identyfikator obiektu użytkownika w katalogu do `sub` oświadczenia w tokenie.
-    - **Nieobsługiwane** — właściwość ta jest świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do **ObjectID** jak tylko można.
-- **Oświadczenie reprezentujące identyfikator zasad** — ta właściwość identyfikuje typ oświadczenia, do którego jest wypełniana identyfikator zasad używany w żądania tokenu.
-    - **tfp** — właściwość ta jest wartością domyślną.
-    - **rejestru Azure container Registry** — właściwość ta jest świadczona wyłącznie dla zgodności z poprzednimi wersjami.
 
 ## <a name="session-behavior"></a>Działanie sesji
 
@@ -98,7 +48,7 @@ Jeśli masz wiele aplikacji i przepływów użytkownika w dzierżawie B2C, może
 - **Dzierżawy** — to ustawienie jest ustawieniem domyślnym. Przy użyciu tego ustawienia umożliwia wielu aplikacji i użytkownika przepływy w swojej dzierżawy usługi B2C do udostępniania tej samej sesji użytkownika. Na przykład po użytkownik zaloguje się do aplikacji, użytkownik może również bezproblemowo zalogować się do innego jeden, farmacji firmy Contoso, podczas uzyskiwania dostępu do jej.
 - **Aplikacja** — to ustawienie pozwala zachować sesję użytkownika wyłącznie dla aplikacji, niezależnie od innych aplikacji. Na przykład jeśli chcesz to użytkownikowi logowanie się farmacji Contoso (przy użyciu tych samych poświadczeń), nawet wtedy, gdy użytkownik jest zalogowany w Contoso zakupów, inną aplikację na tym samym B2C dzierżawy. 
 - **Zasady** — to ustawienie pozwala zachować sesję użytkownika wyłącznie na przepływ użytkownika, niezależnie od aplikacji korzystania z niego. Na przykład jeśli użytkownik ma już zalogowany i ukończyć krok multi factor authentication (MFA), użytkownik może mieć dostęp do lepsze zabezpieczenia części wielu aplikacji tak długo, jak sesji powiązane z przepływem użytkownika nie wygasa.
-- **Wyłączone** — to ustawienie wymusza na użytkowniku, do uruchamiania za pośrednictwem przepływu całego użytkownika przy każdym wykonaniu zasad. Na przykład ta opcja pozwala wielu użytkowników zarejestrować się do aplikacji (w przypadku klasycznych udostępnionego), nawet podczas jeden użytkownik pozostaje zalogowany przez cały czas.
+- **Wyłączone** — to ustawienie wymusza na użytkowniku, do uruchamiania za pośrednictwem przepływu całego użytkownika przy każdym wykonaniu zasad.
 
 Te ustawienia nie są dostępne w przypadku resetowania haseł przepływy użytkownika. 
 

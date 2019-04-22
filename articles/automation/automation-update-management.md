@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/09/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: MT
+ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426493"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679078"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -208,9 +208,9 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ## <a name="install-updates"></a>Zainstaluj aktualizacje
 
-Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
+Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Aby utworzyć wdrożenie aktualizacji, musi mieć dostęp do zapisu do konta usługi Automation, a dostęp do zapisu do żadnych maszyn wirtualnych platformy Azure są są Ustawianie we wdrożeniu. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
 
- Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie.
+Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie dla maszyn wirtualnych platformy Azure lub zapisanej operacji wyszukiwania dla maszyn wirtualnych spoza platformy Azure.
 
 > [!NOTE]
 > Windows maszyn wirtualnych, które są wdrażane w portalu Azure Marketplace, domyślnie są ustawione na automatyczne otrzymywanie aktualizacji z usługi programu Windows Update. To zachowanie nie zmienia się po dodaniu tego rozwiązania lub Dodaj maszyny wirtualne Windows do obszaru roboczego. Jeśli nie aktywnie zarządzanie aktualizacjami za pomocą tego rozwiązania, stosuje się domyślne zachowanie (czyli automatyczne stosowanie aktualizacji).
@@ -219,13 +219,13 @@ Aby uniknąć stosowania aktualizacji poza oknem obsługi w systemie Ubuntu, zmi
 
 Maszyny wirtualne, które zostały utworzone z obrazów Red Hat Enterprise Linux (RHEL) na żądanie, które są dostępne w witrynie Azure Marketplace są rejestrowane na dostęp [Red Hat Update infrastruktury (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) wdrożonej na platformie Azure. Innych dystrybucji systemu Linux należy aktualizować przy użyciu repozytorium plików online dystrybucji wykonując obsługiwane metody dystrybucji.
 
-Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarte okienko. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
+Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarta strona. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
 
 | Właściwość | Opis |
 | --- | --- |
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
-| Grupy można zaktualizować (wersja zapoznawcza)|Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
+| Grupy aktualizacji |Dla maszyn należy zdefiniować zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. </br></br>W przypadku komputerów spoza platformy Azure wybierz istniejącą zapisanego wyszukiwania, aby wybrać grupę maszyn spoza platformy Azure w celu uwzględnione we wdrożeniu. </br></br>Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
@@ -567,7 +567,14 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Za pomocą grup dynamicznych
 
-Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Grupy dynamiczne nie działają z klasycznych maszyn wirtualnych. Podczas definiowania kwerendy, następujące elementy można ze sobą do wypełniania grupy dynamicznej
+Rozwiązanie Update Management umożliwia dynamiczne grupy platformy Azure lub maszyn wirtualnych platformy Azure na inne niż w przypadku wdrożeń aktualizacji. Te grupy są oceniane w czasie wdrażania, dzięki czemu nie trzeba edytować wdrożenia w celu dodania maszyn.
+
+> [!NOTE]
+> Podczas tworzenia wdrożenia aktualizacji, musi mieć odpowiednie uprawnienia. Aby dowiedzieć się więcej, zobacz [Zainstaluj aktualizacje](#install-updates).
+
+### <a name="azure-machines"></a>Maszyny platformy Azure
+
+Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Grupy dynamiczne nie działają z klasycznych maszyn wirtualnych. Podczas definiowania kwerendy, następujące elementy można ze sobą do wypełniania grupy dynamicznej
 
 * Subskrypcja
 * Grupy zasobów
@@ -579,6 +586,12 @@ Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych pl
 Aby wyświetlić podgląd wyników grupę dynamiczną, kliknij przycisk **Podgląd** przycisku. Tej wersji zapoznawczej pokazuje członkostwa w grupie w tym czasie, w tym przykładzie Trwa wyszukiwanie maszyn ze znacznikiem **roli** jest równa **BackendServer**. Jeśli jedna maszyna mają ten tag dodany, będzie można dodać do wszystkich przyszłych wdrożeń względem tej grupy.
 
 ![grupy (wersja zapoznawcza)](./media/automation-update-management/preview-groups.png)
+
+### <a name="non-azure-machines"></a>Maszyny spoza platformy Azure
+
+Na platformie Azure bez maszyn, zapisane wyszukiwania również określane jako grup komputerów są używane do tworzenia grupy dynamicznej. Aby dowiedzieć się, jak utworzyć zapisanego kryterium wyszukiwania, zobacz [utworzyć grupę komputerów](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po utworzeniu grupy możesz wybrać go z listy zapisanych wyszukiwań. Kliknij przycisk **Podgląd** nad wersją zapoznawczą komputerów w zapisanego wyszukiwania, w tym czasie.
+
+![Wybieranie grup](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
 
@@ -628,7 +641,7 @@ Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych z systemem Windows na platformie Azure](automation-tutorial-update-management.md)
+> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
 
 * Użyj wyszukiwania w dzienniku [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.

@@ -85,8 +85,8 @@ items:
     href: add-native-application.md
   - name: Konfigurowanie kontroli wieku
     href: basic-age-gating.md
-  - name: Konfigurowanie tokenów
-    href: active-directory-b2c-token-session-sso.md
+  - name: Konfigurowanie zachowania sesji
+    href: session-behavior.md
   - name: Dostosowywanie języka
     href: active-directory-b2c-reference-language-customization.md
   - name: Dostosowywanie hasła
@@ -111,8 +111,6 @@ items:
       href: active-directory-b2c-ui-customization-custom.md
     - name: Dynamiczne dostosowywanie interfejsu użytkownika
       href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: Dostosowywanie tokenów
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
     - name: Definiowanie atrybutów niestandardowych
       href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
     - name: Włączanie opcji Nie wylogowuj mnie
@@ -147,8 +145,6 @@ items:
         href: active-directory-b2c-custom-setup-twitter-idp.md
     - name: Kontrakt strony
       href: page-contract.md
-    - name: Przekazywanie tokenu dostępu
-      href: idp-pass-through-custom.md
     - name: Złożoność hasła
       href: active-directory-b2c-reference-password-complexity-custom.md
     - name: Zmiana hasła
@@ -159,6 +155,12 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: SalesForce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: Tokeny
+      items:
+      - name: Dostosowywanie tokenów
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: Przekazywanie tokenu dostępu
+        href: idp-pass-through-custom.md
     - name: Śledzenie zachowania użytkowników
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: Dokumentacja
@@ -272,10 +274,6 @@ items:
       href: active-directory-b2c-devquickstarts-ios.md
     - name: Android z zastosowaniem uwierzytelniania aplikacji
       href: active-directory-b2c-devquickstarts-android.md
-  - name: Uzyskiwanie tokenów dostępu
-    href: active-directory-b2c-access-tokens.md
-  - name: Przekazywanie tokenu dostępu
-    href: idp-pass-through-user-flow.md
   - name: Raportowanie użycia
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: Poświadczenia hasła właściciela zasobu
@@ -284,6 +282,14 @@ items:
     href: direct-signin.md
   - name: Konfigurowanie samoobsługowego resetowania hasła
     href: active-directory-b2c-reference-sspr.md
+  - name: Tokeny
+    items:
+    - name: Konfigurowanie tokenów
+      href: configure-tokens.md
+    - name: Przekazywanie tokenu dostępu
+      href: idp-pass-through-user-flow.md
+    - name: Żądanie tokenu dostępu
+      href: active-directory-b2c-access-tokens.md
   - name: Korzystanie z usługi b2clogin.com
     href: b2clogin.md
   - name: Korzystanie z interfejsu API Graph usługi Azure AD
@@ -326,9 +332,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886577"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681135"

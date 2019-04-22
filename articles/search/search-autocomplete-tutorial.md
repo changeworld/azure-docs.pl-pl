@@ -11,10 +11,10 @@ ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
 ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495740"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Przykład: Dodawanie sugestie lub automatycznego uzupełniania do aplikacji usługi Azure Search
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-Powyższy kod działa w przeglądarce na ładowanie strony, aby skonfigurować Autouzupełnianie interfejsu użytkownika jQuery dla pola wejściowego "example1a".  `minLength: 3` zapewnia, że zalecenia będą wyświetlane tylko w przypadku co najmniej trzy znaki w polu wyszukiwania.  Ważna jest wartość źródłowa:
+Powyższy kod działa w przeglądarce na ładowanie strony, aby skonfigurować Autouzupełnianie interfejsu użytkownika jQuery dla pola wejściowego "example1a".  Parametr `minLength: 3` zapewnia, że rekomendacje będą wyświetlane tylko po wpisaniu co najmniej trzech znaków w polu wyszukiwania.  Ważna jest wartość źródłowa:
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",

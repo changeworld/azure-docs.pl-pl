@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492349"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
@@ -50,9 +50,9 @@ Przykład przedstawiony w tym dokumencie wymaga utworzenia następujących zasob
 
 Instrukcje można znaleźć w następujących dokumentach:
 
-1. [Tworzenie bramy sieci VPN w sieci wirtualnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-2. [Tworzenie wirtualnej sieci równorzędnej przy użyciu tego samego modelu wdrażania](../virtual-network/tutorial-connect-virtual-networks-portal.md)
-3. [Tworzenie wirtualnej sieci równorzędnej przy użyciu różnych modeli wdrażania](../virtual-network/create-peering-different-deployment-models.md)
+1. [Create a VPN gateway in a virtual network](vpn-gateway-howto-site-to-site-resource-manager-portal.md) (Tworzenie bramy sieci VPN w sieci wirtualnej)
+2. [Create virtual network peering with the same deployment model](../virtual-network/tutorial-connect-virtual-networks-portal.md) (Tworzenie wirtualnych sieci równorzędnych w tych samych modelu wdrażania)
+3. [Create virtual network peering with different deployment models](../virtual-network/create-peering-different-deployment-models.md) (Tworzenie wirtualnych sieci równorzędnych w różnych modelach wdrażania)
 
 ## <a name="permissions"></a>Uprawnienia
 

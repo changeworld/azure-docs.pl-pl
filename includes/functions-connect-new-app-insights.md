@@ -9,15 +9,15 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497356"
 ---
-Funkcje pozwala w prosty sposób dodać Integracja usługi Application Insights do aplikacji funkcji z [witryny Azure portal].
+Funkcje pozwala w prosty sposób dodać Integracja usługi Application Insights do aplikacji funkcji z [Azure Portal].
 
-1. W [portal][witryny Azure Portal], wybierz opcję **wszystkie usługi > aplikacje funkcji**, wybierz aplikację funkcji, a następnie wybierz **usługi Application Insights** transparent w górnej części okna
+1. W [portal][azure portal], wybierz opcję **wszystkie usługi > aplikacje funkcji**, wybierz aplikację funkcji, a następnie wybierz **usługi Application Insights** transparent w górnej części okna
 
     ![Włącz usługę Application Insights z poziomu portalu](media/functions-connect-new-app-insights/enable-application-insights.png)
 
@@ -27,7 +27,7 @@ Funkcje pozwala w prosty sposób dodać Integracja usługi Application Insights 
 
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Nazwa)** | Unikatową nazwę aplikacji | Najłatwiej można użyć tej samej nazwie co aplikacja funkcji, która musi być unikatowa w ramach subskrypcji. | 
+    | **Nazwa** | Unikatową nazwę aplikacji | Najłatwiej można użyć tej samej nazwie co aplikacja funkcji, która musi być unikatowa w ramach subskrypcji. | 
     | **Lokalizacja** | Europa Zachodnia | Jeśli to możliwe, używać tego samego [region](https://azure.microsoft.com/regions/) jako aplikację funkcji lub w pobliżu. |
 
 1. Wybierz pozycję **OK**. Zasób usługi Application Insights jest tworzony w tej samej grupie zasobów i subskrypcji co aplikacja funkcji. Po zakończeniu tworzenia, zamknij okno usługi Application Insights.

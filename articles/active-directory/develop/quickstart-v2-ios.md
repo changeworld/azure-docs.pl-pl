@@ -18,10 +18,10 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496133"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS
@@ -46,10 +46,10 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
 > Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać adres URL odpowiedzi jako `msal<AppId>://auth` (gdzie msal\<AppId > jest identyfikator aplikacji).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Ta zmiana wprowadzona dla mnie]()
+> > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-ios/green-check.png) aplikacja jest skonfigurowana za pomocą tego atrybutu
+> > ![Already configured](media/quickstart-v2-ios/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Pobieranie serwera internetowego lub projektu
 
@@ -190,6 +190,6 @@ Wypróbuj samouczek dotyczący systemu iOS, aby uzyskać instrukcje krok po krok
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 
 > [!div class="nextstepaction"]
-> [Wywołanie interfejsu API programu Graph dla systemu iOS w ramach samouczka](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Call Graph API iOS tutorial (Samouczek dotyczący wywoływania interfejsu API programu Graph dla systemu iOS)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

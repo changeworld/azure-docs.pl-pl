@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 43f8af4f2afc0f7210e49dc5b483a8d2757e6aba
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215358"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680334"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
 Usługa Azure Event Hubs to platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń. Może odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania.
@@ -75,13 +75,18 @@ Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usłu
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Aby rozpocząć korzystanie z usługi Event Hubs, zobacz następujące artykuły:
+Aby rozpocząć korzystanie z usługi Event Hubs, zobacz **wysyłania i odbierania zdarzeń** samouczków: 
 
-1. **Tworzenie centrum zdarzeń**: [witryna Azure Portal](event-hubs-create.md), [interfejs wiersza polecenia platformy Azure](event-hubs-quickstart-cli.md), [program Azure PowerShell](event-hubs-quickstart-powershell.md), [szablon usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md)
-2. **Wysyłanie zdarzeń do centrum zdarzeń**: [.NET Core](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
-3. **Odbieranie zdarzeń z centrum zdarzeń**: [.NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)   
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [Node.js](event-hubs-node-get-started-send.md)
+- [Go](event-hubs-go-get-started-send.md)
+- [C (tylko Wyślij)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (tylko reecive)](event-hubs-storm-getstarted-receive.md)
 
 Więcej informacji na temat usługi Event Hubs zawierają następujące artykuły:
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494177"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
@@ -41,7 +41,7 @@ Zasady punktu końcowego usługi sieci wirtualnej zapewniają następujące korz
   
   Za pomocą zasad punktu końcowego możesz teraz ograniczyć dostęp wychodzący sieci wirtualnej tylko do określonych zasobów platformy Azure. Dzięki temu zyskujesz dużo bardziej szczegółową kontrolę nad bezpieczeństwem danych, do których uzyskuje się dostęp w sieci wirtualnej. 
 
-- __Skalowalne, wysoko dostępne zasady, aby filtrować ruch usługi platformy Azure__
+- __Skalowalne zasady o wysokiej dostępności umożliwiające filtrowanie ruchu w usługach platformy Azure__
 
    Zasady punktu końcowego zapewniają skalowalne w poziomie, wysoce dostępne rozwiązanie, które umożliwia filtrowanie ruchu w usługach platformy Azure z sieci wirtualnych za pośrednictwem punktów końcowych usługi. Żadne dodatkowe nakłady nie są wymagane, aby utrzymywać centralne urządzenia sieciowe do obsługi ruchu w sieciach wirtualnych.
 

@@ -9,6 +9,8 @@ items:
     href: event-hubs-for-kafka-ecosystem-overview.md
   - name: Event Hubs Capture
     href: event-hubs-capture-overview.md
+  - name: Event Hubs — warstwa Dedykowana
+    href: event-hubs-dedicated-overview.md
 - name: Przewodniki Szybki start
   items:
   - name: Tworzenie centrum zdarzeń
@@ -21,7 +23,7 @@ items:
       href: event-hubs-quickstart-powershell.md
     - name: Szablon usługi Azure Resource Manager
       href: event-hubs-resource-manager-namespace-event-hub.md
-  - name: Wysyłanie zdarzeń do centrum zdarzeń
+  - name: Wysyłanie i odbieranie zdarzeń
     items:
     - name: .NET Core
       href: event-hubs-dotnet-standard-getstarted-send.md
@@ -29,29 +31,15 @@ items:
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Java
       href: event-hubs-java-get-started-send.md
-    - name: C
-      href: event-hubs-c-getstarted-send.md
-    - name: Przejdź
-      href: event-hubs-go-get-started-send.md
     - name: Python
       href: event-hubs-python-get-started-send.md
     - name: Node.js
       href: event-hubs-node-get-started-send.md
-  - name: Odbieranie zdarzeń z centrum zdarzeń
-    items:
-    - name: .NET Core
-      href: event-hubs-dotnet-standard-getstarted-receive-eph.md
-    - name: .NET Framework
-      href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: Java
-      href: event-hubs-java-get-started-receive-eph.md
     - name: Przejdź
-      href: event-hubs-go-get-started-receive-eph.md
-    - name: Python
-      href: event-hubs-python-get-started-receive.md
-    - name: Node.js
-      href: event-hubs-node-get-started-receive.md
-    - name: Apache Storm
+      href: event-hubs-go-get-started-send.md
+    - name: C (tylko wysyłanie)
+      href: event-hubs-c-getstarted-send.md
+    - name: Apache Storm (tylko odbieranie)
       href: event-hubs-storm-getstarted-receive.md
   - name: Przechwytywanie zdarzeń
     items:
@@ -103,8 +91,6 @@ items:
     href: event-hubs-role-based-access-control.md
   - name: Geograficzne odzyskiwanie po awarii i replikacja geograficzna
     href: event-hubs-geo-dr.md
-  - name: Event Hubs — warstwa Dedykowana
-    href: event-hubs-dedicated-overview.md
   - name: Omówienie modelu uwierzytelniania i zabezpieczeń
     href: event-hubs-authentication-and-security-model-overview.md
   - name: Dostępność i spójność
@@ -175,6 +161,8 @@ items:
       href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
     - name: Microsoft.Azure.Management.EventHub
       href: /dotnet/api/microsoft.azure.management.eventhub
+  - name: Node.js
+    href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
   - name: REST
     href: /rest/api/eventhub
   - name: Szablon usługi Resource Manager
@@ -199,9 +187,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 21aafbeff9aa06d890afb6282fdf10e1feac739e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 76b72dfcd7db1e27be5a94af35da1e83f104e75e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577284"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680999"

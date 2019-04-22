@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877129"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678687"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurowanie kontenerów Docker rozpoznawanie tekstu
 
@@ -31,11 +31,11 @@ ms.locfileid: "58877129"
 
 ## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
 
-`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _komputerowej_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
+`ApiKey` Ustawienie umożliwia określenie Azure `Cognitive Services` klucz zasobu używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _usług Cognitive Services_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Przetwarzanie obrazów** zarządzanie zasobami w obszarze **kluczy**
+* Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -43,11 +43,13 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _komputerowej_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _komputerowej_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
+`Billing` Ustawienie określa identyfikator URI punktu końcowego z _usług Cognitive Services_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _usług Cognitive Services_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Przetwarzanie obrazów** Przegląd, etykietą `Endpoint`
+* Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
+
+Pamiętaj, aby dodać `vision/v1.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższej tabeli. 
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, j
 * **Znak kontynuacji wiersza**: Platformy Docker w poniższych sekcjach użyto ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
 * **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy Docker.
 
+Pamiętaj, aby dodać `vision/v1.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższej tabeli. 
+
 Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{BILLING_KEY} | Klucz punktu końcowego zasobu przetwarzania obrazów. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_KEY} | Klucz punktu końcowego zasobu usług Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | Rozliczeń wartości punktu końcowego, w tym regionie.|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](computer-vision-how-to-install-containers.md#billing).
-> Wartość ApiKey **klucz** ze strony klucze zasobów przetwarzania komputera platformy Azure. 
+> Wartość ApiKey **klucz** z platformy Azure `Cognitive Services` strony klucze zasobu. 
 
 ## <a name="recognize-text-container-docker-examples"></a>Rozpoznawanie tekstu kontenera platformy Docker przykłady
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495912"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Działania elementu Webhook w usłudze Azure Data Factory
@@ -75,9 +75,9 @@ Działania w sieci web hook kończy się niepowodzeniem, tylko jeśli wywołanie
 Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory:
 
 - [Działanie If Condition](control-flow-if-condition-activity.md)
-- [Działanie wykonywania potoku](control-flow-execute-pipeline-activity.md)
+- [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Działanie pobierania metadanych](control-flow-get-metadata-activity.md)
-- [Działanie wyszukiwania](control-flow-lookup-activity.md)
+- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 - [Działanie internetowe](control-flow-web-activity.md)
 - [Działanie Until](control-flow-until-activity.md)

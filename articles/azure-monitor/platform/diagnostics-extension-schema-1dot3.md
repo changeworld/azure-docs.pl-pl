@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497087"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
@@ -422,7 +422,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**PublicConfig**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**PrivateConfig**|Opcjonalny. Zobacz opis w innym miejscu na tej stronie.|  
-|**IsEnabled**|Wartość logiczna. Zobacz opis w innym miejscu na tej stronie.|  
+|**isEnabled**|Wartość logiczna. Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
  *Drzewo: Główny - DiagnosticsConfiguration - PublicConfig*
@@ -463,7 +463,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Katalogi**|Zobacz opis w innym miejscu na tej stronie.|  
 |**EtwProviders**|Zobacz opis w innym miejscu na tej stronie.|  
 |**Metryki**|Zobacz opis w innym miejscu na tej stronie.|  
-|**Liczniki wydajności**|Zobacz opis w innym miejscu na tej stronie.|  
+|**PerformanceCounters**|Zobacz opis w innym miejscu na tej stronie.|  
 |**WindowsEventLog**|Zobacz opis w innym miejscu na tej stronie.|
 |**DockerSources**|Zobacz opis w innym miejscu na tej stronie. |
 
@@ -495,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|   
 |**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
-|**Źródła danych**|Lista katalogów, do monitorowania.|
+|**DataSources**|Lista katalogów, do monitorowania.|
 
 
 
@@ -520,7 +520,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** — ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** -Określa, czy zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**Bezwzględna**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** — ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** -Określa, czy zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
 |**LocalResource**|Ścieżka względna do monitorowania zasobów lokalnych. Dostępne są następujące wymagane atrybuty:<br /><br /> - **Nazwa** — zasób lokalny, która zawiera katalog do monitorowania<br /><br /> - **relativePath** — ścieżka względna nazwa, która zawiera katalog do monitorowania|  
 
 
@@ -545,7 +545,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br/><br/> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Wydarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
@@ -555,7 +555,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
-|**Wydarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
@@ -573,7 +573,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
- *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - liczniki wydajności*
 
  Umożliwia zbieranie liczników wydajności.  
 
@@ -598,7 +598,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
-|**Źródło danych**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*"|  
+|**DataSource**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*"|  
 
 
 
@@ -613,9 +613,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**scheduledTransferPeriod**|**czas trwania**|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
-|**Wychwytywanie** |**string**| Dodane w wersji 1.5. Opcjonalny. Wskazuje lokalizację obiektu sink, można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights lub centrów zdarzeń.|  
+|**scheduledTransferLogLevelFilter**|**ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**Wychwytywanie** |**ciąg**| Dodane w wersji 1.5. Opcjonalny. Wskazuje lokalizację obiektu sink, można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights lub centrów zdarzeń.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -624,7 +624,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Stats**|Informuje system w celu zbierania statystyk dla kontenerów Docker|  
+|**Statystyki**|Informuje system w celu zbierania statystyk dla kontenerów Docker|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig Element  
  *Drzewo: SinksConfig PublicConfig - WadCFG - głównego - DiagnosticsConfiguration-*
@@ -633,7 +633,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Ujście**|Zobacz opis w innym miejscu na tej stronie.|  
+|**obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="sink-element"></a>Będący ujściem — Element
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig — ujście*
@@ -644,12 +644,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**name**|string|Ciąg identyfikujący sinkname.|  
+|**Nazwa**|string|Ciąg identyfikujący sinkname.|  
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Używany tylko w przypadku wysyłania danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, który ma dostęp do.|  
-|**Kanały**|string|Jeden dla każdego dodatkowego filtrowanie strumienia|  
+|**Channels**|string|Jeden dla każdego dodatkowego filtrowanie strumienia|  
 
 ## <a name="channels-element"></a>Element kanałów  
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -660,7 +660,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Kanał**|string|Zobacz opis w innym miejscu na tej stronie.|  
+|**Channel**|string|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="channel-element"></a>Element kanału
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -671,8 +671,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybuty|Typ|Opis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**name**|**string**|Unikatowa nazwa kanału do odwoływania się do|  
+|**logLevel**|**ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element

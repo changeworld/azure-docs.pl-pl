@@ -17,10 +17,10 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z usługą Salesforce
@@ -56,7 +56,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację usługi Salesforce z usługą Azure AD, musisz dodać usługę Salesforce z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać usługi Salesforce z galerii, wykonaj następujące czynności:**
+**Aby dodać usługę Salesforce z galerii, wykonaj następujące czynności:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę **Azure Active Directory**.
 
@@ -112,13 +112,13 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD przy użyciu usług
 
     a. W polu tekstowym **Adres URL logowania** wpisz wartość, korzystając z następującego wzorca:
 
-    Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
+    Konto przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
 
     Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     b. W polu tekstowym **Identyfikator** wpisz wartość, korzystając z następującego wzorca:
 
-    Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
+    Konto przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
 
     Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
 
@@ -251,10 +251,10 @@ Po kliknięciu kafelka Salesforce w panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurowanie Aprowizowania użytkowników](salesforce-provisioning-tutorial.md)
+- [Konfigurowanie aprowizacji użytkowników](salesforce-provisioning-tutorial.md)

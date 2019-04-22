@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58792403"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680285"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcji usługi synchronizacji programu Azure AD Connect
 
@@ -96,7 +96,7 @@ W przeszłości aktualizacje atrybut UserPrincipalName przy użyciu usługi sync
 
 Aby uzyskać więcej informacji, zobacz [nazwy użytkowników w usłudze Office 365, Azure lub Intune nie są zgodne lokalnymi nazwami UPN lub alternatywnym Identyfikatorem logowania](https://support.microsoft.com/kb/2523192).
 
-Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować właściwości userPrincipalName, gdy jest zmienione w środowisku lokalnym i używasz synchronizacji skrótów haseł. Jeśli używasz Federacji, ta funkcja nie jest obsługiwana.
+Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować właściwości userPrincipalName, gdy jest zmienione w środowisku lokalnym i używasz hasła wyznaczania wartości skrótu synchronizacji lub uwierzytelniania przekazywanego. Jeśli używasz Federacji, ta funkcja nie jest obsługiwana.
 
 Ta funkcja jest na domyślny dla nowo utworzony katalogów usługi Azure AD. Zostanie wyświetlony, jeśli ta funkcja jest włączona dla Ciebie, uruchamiając:  
 

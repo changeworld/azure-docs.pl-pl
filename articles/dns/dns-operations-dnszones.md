@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
 ms.openlocfilehash: 2d3bb37998a037dcb878a988d4aa01245584ca82
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496424"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Jak zarządzać strefami DNS przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
-> * [PowerShell](dns-operations-dnszones.md)
+> * [Program PowerShell](dns-operations-dnszones.md)
 > * [Klasyczny interfejs wiersza polecenia platformy Azure](dns-operations-dnszones-cli-nodejs.md)
 > * [Interfejs wiersza polecenia platformy Azure](dns-operations-dnszones-cli.md)
 

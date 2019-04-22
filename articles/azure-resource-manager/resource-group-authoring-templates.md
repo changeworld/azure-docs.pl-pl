@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: 264db79f5c934603004eb595930b44abc622efd5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492205"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
@@ -49,9 +49,9 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 | apiProfile |Nie | Wersja interfejsu API, która służy jako zbiór wersje interfejsu API dla typów zasobów. Użyj tej wartości, aby uniknąć konieczności określania wersji interfejsu API dla każdego zasobu w szablonie. Gdy określać wersję interfejsu API w profilu, a nie określona wersja interfejsu API dla typu zasobu, Menedżer zasobów używa wersji interfejsu API dla tego typu zasobu, która jest zdefiniowana w profilu.<br><br>Właściwości profilu interfejsu API jest szczególnie przydatne w przypadku wdrażania szablonu w różnych środowiskach, takich jak Azure Stack i globalnej platformy Azure. Wersja profilu interfejs API umożliwia upewnij się, że Twój szablon automatycznie używa wersji, które są obsługiwane w obu środowiskach. Aby uzyskać listę bieżących wersji interfejsu API w profilu i zasobów, wersje interfejsów API, zdefiniowaną w profilu, zobacz [profilu interfejsu API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Aby uzyskać więcej informacji, zobacz [śledzenia wersji przy użyciu interfejsu API profilów](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | [Zmienne](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
-| [functions](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| [zasoby](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
-| [wyjścia](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
+| [Funkcje](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
+| [Zasoby](#resources) |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
+| [dane wyjściowe](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
 
 Każdy element ma właściwości, które można ustawić. W tym artykule opisano części szablonu bardziej szczegółowo.
 

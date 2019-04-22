@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540673"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680909"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -216,7 +216,7 @@ Nie. W publicznej wersji zapoznawczej nie można przenieść bazę danych na du�
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Po zakończeniu migracji do warstwy usługi w Hiperskali utracić wszystkie funkcje lub możliwości
 
-Tak. Niektóre funkcje usługi Azure SQL Database nie są obsługiwane w Hiperskali w publicznej wersji zapoznawczej, w tym między innymi do długi okres przechowywania wykonywania kopii zapasowych. Po przeprowadzeniu migracji bazy danych na dużą skalę, te funkcje przestają działać.
+Tak. Długoterminowe kopie zapasowe przechowywane w bazie danych SQL Azure nie jest obsługiwana w Hiperskali w publicznej wersji zapoznawczej. Po przeprowadzeniu migracji bazy danych na dużą skalę, ta funkcja przestaje działać.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Czy mogę przenieść moją bazę danych programu SQL Server w środowisku lokalnym lub maszynie wirtualnej bazy danych programu SQL Server na dużą skalę
 
@@ -295,7 +295,7 @@ Nie. Format magazynu dla baz danych na dużą skalę różni się od tradycyjnyc
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Po zakończeniu migracji do warstwy usługi w Hiperskali utracić wszystkie funkcje lub możliwości
 
-Tak. Niektóre funkcje usługi Azure SQL Database nie są obsługiwane w Hiperskali w publicznej wersji zapoznawczej, w tym między innymi funkcji TDE i długi okres przechowywanie kopii zapasowej. Po przeprowadzeniu migracji bazy danych na dużą skalę, te funkcje przestają działać.
+Tak. Długoterminowe kopie zapasowe przechowywane w bazie danych SQL Azure nie jest obsługiwana w Hiperskali w publicznej wersji zapoznawczej. Po przeprowadzeniu migracji bazy danych na dużą skalę, ta funkcja przestaje działać.
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase będzie pracować z bazy danych SQL na dużą skalę
 

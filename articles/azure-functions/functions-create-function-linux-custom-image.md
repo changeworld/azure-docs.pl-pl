@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
 ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491461"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu
@@ -65,9 +65,9 @@ Jeśli dołączysz opcję `--docker`, zostanie wygenerowany plik dockerfile dla 
 
 Po wyświetleniu monitu wybierz środowisko uruchomieniowe procesów roboczych spośród następujących języków:
 
-* `dotnet`: tworzy projekt biblioteki klas platformy .NET (.csproj).
-* `node`: tworzy projektu w języku JavaScript.
-* `python`: tworzy projekt języka Python.
+* `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
+* `node`: tworzy projekt w języku JavaScript.
+* `python`: tworzy projekt w języku Python.
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 

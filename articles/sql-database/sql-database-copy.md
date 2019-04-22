@@ -12,12 +12,12 @@ ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549699"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678942"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
@@ -25,7 +25,7 @@ Usługa Azure SQL Database udostępnia kilka metod do tworzenia spójnej transak
 
 ## <a name="overview"></a>Omówienie
 
-Kopiowanie bazy danych jest migawką źródłowej bazy danych od czasu żądanie kopii. Można wybrać tego samego serwera lub innego serwera, jej warstwę usług i rozmiaru obliczeń lub rozmiar obliczeniowej, w ramach tej samej warstwy usługi (wydanie). Po zakończeniu kopiowania staje się ona w pełni funkcjonalne, niezależnie od bazy danych. W tym momencie można uaktualnić lub obniżyć jej do dowolnej wersji. Identyfikatory logowania, użytkownikami i uprawnieniami mogą być zarządzane niezależnie.  
+Kopiowanie bazy danych jest migawką źródłowej bazy danych od czasu żądanie kopii. Można wybrać tego samego serwera lub innego serwera. Ponadto można zachować swojej warstwy usług i obliczenia rozmiaru lub użycie rozmiaru obliczeniowej w ramach tej samej warstwy usługi (wydanie). Po zakończeniu kopiowania staje się ona w pełni funkcjonalne, niezależnie od bazy danych. W tym momencie można uaktualnić lub obniżyć jej do dowolnej wersji. Identyfikatory logowania, użytkownikami i uprawnieniami mogą być zarządzane niezależnie.  
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia kopii bazy danych.

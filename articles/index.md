@@ -7,10 +7,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496509"
 ---
 <div id="main" class="v2">
@@ -76,7 +76,7 @@ ms.locfileid: "59496509"
         <h1 class="visually-hidden">Dokumentacja platformy Microsoft Azure</h1>
         <ul class="pivots">
             <li>
-                <a href="#get-started">Rozpoczęcie pracy</a>
+                <a href="#get-started">Wprowadzenie</a>
                 <ul id="get-started">
                     <li>
                         <a href="#get-started1"></a>
@@ -170,7 +170,7 @@ Node.js</a>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg" alt="">
-Przejdź</a>
+Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
                                                <h4>Modele aplikacji</h4>
@@ -179,7 +179,7 @@ Przejdź</a>
                                                     <li><a class="barLink" href="/azure/azure-functions/">Funkcje bezserwerowe</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">Containers</a></li>
                                                     <li><a class="barLink" href="/azure/aks/">Mikrousługi na platformie Kubernetes</a></li>
-                                                    <li><a class="barLink" href="/azure/service-fabric/">Mikrousługi z usługą Service Fabric</a></li>
+                                                    <li><a class="barLink" href="/azure/service-fabric/">Microservices with Service Fabric (Obsługa mikrousług przy użyciu usługi Service Fabric)</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -210,7 +210,7 @@ Przejdź</a>
                                                 </ul>
                                                 <h4>AI oraz Cognitive Services</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/">Usługa Machine Learning </a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/">Uczenie maszynowe </a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">Cognitive Services</a></li>
                                                     <li><a class="barLink" href="/azure/notebooks/">Azure Notebooks</a></li>
                                                 </ul>
@@ -239,7 +239,7 @@ Azure PowerShell </a>
                                                     <li>
                                                         <a class="barLink" href="/azure/azure-portal/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="">
-Azure Portal </a>
+Witryna Azure Portal </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
@@ -352,7 +352,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                 <a href="#products">Produkty</a>
                 <ul id="products">
                     <li>
-                        <a href="#all">Wszyscy</a>
+                        <a href="#all">Wszystkie</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -1106,7 +1106,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         <li>
                                             <a href="/azure/virtual-machines/windows/managed-disks-overview">
                                                 <img src="media/index/managed-disks.svg" alt="" />
-                                                <p>Managed Disks</p>
+                                                <p>Dyski zarządzane</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1827,7 +1827,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a data-default="true" href="#Compute">Wystąpienia obliczeniowe</a>
+                        <a data-default="true" href="#Compute">Obliczanie</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -2079,7 +2079,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#network">Networking</a>
+                        <a href="#network">Sieć</a>
                         <ul id="network" class="cardsA">
                             <li>
                                 <a href="/azure/networking/networking-overview">
@@ -2350,7 +2350,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#storage">Magazyn</a>
+                        <a href="#storage">Storage</a>
                         <ul id="storage" class="cardsA">
                             <li>
                                 <a href="/azure/storage/">
@@ -2477,7 +2477,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Managed Disks</h3>
+                                                    <h3>Dyski zarządzane</h3>
                                                     <p>Trwały, bezpieczny magazyn obsługujących maszyny wirtualne platformy Azure</p>
                                                 </div>
                                             </div>
@@ -2621,7 +2621,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#web">Sieć Web</a>
+                        <a href="#web">Internetowe</a>
                         <ul id="web" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-web">
@@ -2759,7 +2759,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">Komórkowy</a>
+                        <a href="#mobile">Mobilne</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -5025,7 +5025,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#devtools">Narzędzia deweloperskie</a>
+                        <a href="#devtools">Narzędzia programistyczne</a>
                         <ul id="devtools" class="cardsA">
                             <li>
                                 <a href="/visualstudio/products/">
@@ -5951,7 +5951,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                 <a href="#sdkstools">Zestawy SDK/narzędzia</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">all</a>
+                        <a href="#sdkstools-all">Wszystkie</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -5971,7 +5971,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <h3>
 Platforma Azure dla deweloperów platformy .NET </h3>
                                                 <p>
-                                                    <a href="/dotnet/azure">Rozpoczęcie pracy</a>
+                                                    <a href="/dotnet/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/dotnet/api/overview/azure/?view=azure-dotnet">Dokumentacja interfejsu API</a>
@@ -5994,7 +5994,7 @@ Platforma Azure dla deweloperów platformy .NET </h3>
                                                 <h3>
 Platforma Azure dla deweloperów języka Python </h3>
                                                 <p>
-                                                    <a href="/python/azure">Rozpoczęcie pracy</a>
+                                                    <a href="/python/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/python/api/overview/azure/">Dokumentacja interfejsu API</a>
@@ -6017,7 +6017,7 @@ Platforma Azure dla deweloperów języka Python </h3>
                                                 <h3>
 Platforma Azure dla deweloperów środowiska Node.js </h3>
                                                 <p>
-                                                    <a href="/javascript/azure/">Rozpoczęcie pracy</a>
+                                                    <a href="/javascript/azure/">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/javascript/api/overview/azure/">Dokumentacja interfejsu API</a>
@@ -6040,7 +6040,7 @@ Platforma Azure dla deweloperów środowiska Node.js </h3>
                                                 <h3>
 Platforma Azure dla deweloperów języka Java </h3>
                                                 <p>
-                                                    <a href="/java/azure">Rozpoczęcie pracy</a>
+                                                    <a href="/java/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/java/api">Dokumentacja interfejsu API</a>
@@ -6063,7 +6063,7 @@ Platforma Azure dla deweloperów języka Java </h3>
                                                 <h3>
 Platforma Azure dla deweloperów języka Go </h3>
                                                 <p>
-                                                    <a href="/go/azure/">Rozpoczęcie pracy</a>
+                                                    <a href="/go/azure/">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Dokumentacja interfejsu API</a>
@@ -6111,7 +6111,7 @@ Interfejsy API REST platformy Azure </h3>
                                                 <h3>
 Interfejs wiersza polecenia platformy Azure </h3>
                                                 <p>
-                                                    <a href="/cli/azure">Rozpoczęcie pracy</a>
+                                                    <a href="/cli/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/reference-index">Dokumentacja</a>
@@ -6133,7 +6133,7 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                             <div class="cardText">
                                                 <h3>Azure PowerShell</h3>
                                                 <p>
-                                                    <a href="/powershell/azure/get-started-azureps">Rozpoczęcie pracy</a>
+                                                    <a href="/powershell/azure/get-started-azureps">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">Dokumentacja</a>
@@ -6155,7 +6155,7 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                             <div class="cardText">
                                                 <h3>Azure Portal</h3>
                                                 <p>
-                                                    <a href="/azure/azure-portal/">Rozpoczęcie pracy</a>
+                                                    <a href="/azure/azure-portal/">Wprowadzenie</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6174,7 +6174,7 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                             <div class="cardText">
                                                 <h3>Aplikacja mobilna platformy Azure</h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Rozpoczęcie pracy</a>
+                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Wprowadzenie</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6230,7 +6230,7 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Magazyn</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Cosmos DB</a>
@@ -6259,7 +6259,7 @@ Docker </h3>
                                                     <a href="https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017">Pobierz dla programu Visual Studio</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Pobierz dla programu Visual Studio Code</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Pobierz dla kodu Visual Studio Code</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780682">Pobierz dla usługi Azure DevOps</a>
@@ -6359,10 +6359,10 @@ Azure Resource Manager </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://storageexplorer.com">Storage Explorer</a>
+                                                    <a href="https://storageexplorer.com">Eksplorator magazynu</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Rozpoczęcie pracy</a>
+                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Wprowadzenie</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=722418">Pobierz dla systemu Linux</a>
@@ -6447,16 +6447,16 @@ Narzędzia SQL </h3>
                                                 <h3>
 Azure Dev Spaces </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Rozpoczęcie pracy</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Wprowadzenie</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Pobierz dla platformy .NET Core i programu VS Code</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Pobieranie dla platformy .NET Core i programu VS Code</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Pobierz dla platformy .NET Core i programu Visual Studio</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Pobieranie dla platformy .NET Core i programu Visual Studio</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Pobierz dla środowiska Node.js</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Pobieranie dla środowiska Node.js</a>
                                                 </p>
                                             </div>
                                         </div>

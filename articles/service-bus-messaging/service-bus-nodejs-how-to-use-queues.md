@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500842"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js
@@ -188,7 +188,7 @@ Aby dowiedzieć się więcej na temat kolejek, zobacz następujące zasoby.
 
 * [Kolejki, tematy i subskrypcje][Queues, topics, and subscriptions]
 * [Zestaw Azure SDK dla węzła] [ Azure SDK for Node] repozytorium w witrynie GitHub
-* [Node.js Developer Center (Centrum deweloperów środowiska Node.js)](https://azure.microsoft.com/develop/nodejs/)
+* [Centrum deweloperów środowiska Node.js](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com

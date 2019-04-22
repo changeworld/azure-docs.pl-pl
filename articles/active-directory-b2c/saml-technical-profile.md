@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: c719bcaca91f9a6e77d79735283cf2c68404ef16
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154375"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680540"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -81,21 +81,6 @@ Poniższy przykład przedstawia sekcję usługi Azure AD B2C profilu techniczneg
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>Przepływ zainicjował dostawcy tożsamości
-
-W ramach jednej logowania jednokrotnego sesji (niechciane żądania) inicjowane przez dostawcę tożsamości niezamówionych odpowiedzi SAML są wysyłane do dostawcy usług w tym przypadku profil techniczny usługi Azure AD B2C. W tym przepływie użytkownika nie przechodzi przez aplikację sieci web najpierw, ale są kierowane do dostawcy tożsamości. Po wysłaniu żądania na stronie uwierzytelniania jest udostępniany użytkownikowi przez dostawcę tożsamości. Użytkownik kończy logowania, a następnie żądanie jest przekierowywane do usługi Azure AD B2C przy użyciu odpowiedzi SAML, która zawiera potwierdzenia. Usługa Azure AD B2C odczytuje potwierdzenia i generuje nowy token SAML i następnie przekierowuje użytkownika z powrotem do aplikacji jednostki uzależnionej. Przekierowań są wykonywane tylko przez **AssertionConsumerService** elementu **lokalizacji** właściwości.
-
-
-![Dostawcy tożsamości SAML zainicjowane](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-W przypadku tworzenia dostawcy tożsamości inicjowania usługi flow, należy wziąć pod uwagę następujące wymagania dotyczące zasad:
-
-- Pierwszy krok aranżacji musi być pojedynczym oświadczeń programu exchange, który wskazuje na profil techniczny SAML.
-- Profil techniczny musi mieć metadanych z elementu o nazwie **IdpInitiatedProfileEnabled** równa `true`.
-- Jednostki uzależnionej zasad firmy musi być uzależnionej SAML.
-- Jednostki uzależnionej zasad firmy musi mieć metadanych z elementu o nazwie **IdpInitiatedProfileEnabled** równa `true`.
-- Niechciane odpowiedzi musi być wysyłane do `/your-tenant/your-policy/samlp/sso/assertionconsumer` punktu końcowego. Stan przekazywania dołączone do odpowiedzi są przekazywane na jednostkę uzależnioną. Zastąp następujące wartości: **Twojej dzierżawy** nazwą dzierżawy. **Usługi zasad** nazwą jednostki uzależnionej zasady innych firm.
     
 ## <a name="protocol"></a>Protokół
 

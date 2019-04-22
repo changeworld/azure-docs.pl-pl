@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522200"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678993"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Użyj aktywnej nauki usprawniających bazy wiedzy
 
@@ -156,7 +156,7 @@ Aplikacja kliencka Wyświetla wszystkie pytania przy użyciu opcji użytkownikow
 
 Po użytkownik wybiera jeden z istniejących pytań, aplikacja kliencka wysyła wybrany przez użytkownika jako opinii przy użyciu interfejsu API Train usługi QnA Maker. Ta opinia zakończeniu aktywnej nauki sprzężenia zwrotnego. 
 
-Użyj [Azure Bot C# przykład](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot) Aby wyświetlić aktywne uczenie w scenariuszu end-to-end.
+Użyj [próbka Azure Bot](https://aka.ms/activelearningsamplebot) Aby wyświetlić aktywne uczenie w scenariuszu end-to-end.
 
 ## <a name="train-api"></a>Szkolenie interfejsu API
 
@@ -169,7 +169,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
+|Właściwości żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Host poddomeny|Nazwa zasobu QnAMaker|string|Nazwa hosta usługi QnA Maker w subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
@@ -179,7 +179,7 @@ Content-Type: application/json
 
 Treść kodu JSON ma kilka ustawień:
 
-|Właściwość treść JSON|Type|Przeznaczenie|
+|Właściwość treść JSON|Typ|Przeznaczenie|
 |--|--|--|--|
 |`feedbackRecords`|tablica|Lista opinii.|
 |`userId`|string|Identyfikator użytkownika osoby, akceptując sugerowane pytania. Format Identyfikatora użytkownika zależy od użytkownika. Na przykład adres e-mail może być prawidłowy identyfikator użytkownika w ramach architektury. Opcjonalny.|

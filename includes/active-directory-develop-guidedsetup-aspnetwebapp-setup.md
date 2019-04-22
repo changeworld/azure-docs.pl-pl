@@ -15,10 +15,10 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505821"
 ---
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
@@ -57,7 +57,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
 > [!TIP]
 > Jeśli projekt nie ma pliku `Startup.cs` w folderze głównym:
 > 1. Kliknij prawym przyciskiem myszy w folderze głównym projektu: > `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Nadaj mu nazwę `Startup.cs`
+> 2. Nadaj jej nazwę `Startup.cs`
 >
 >> Upewnij się, że wybrana klasa to klasa początkowa OWIN, a nie standardowa klasa C#. Potwierdź to, sprawdzając obecność ciągu `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` powyżej przestrzeni nazw.
 

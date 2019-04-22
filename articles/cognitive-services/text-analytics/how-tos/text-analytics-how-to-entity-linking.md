@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505579"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
@@ -96,7 +96,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on zawierać `/entities` zasobów: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on obejmować zasób `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 
@@ -287,7 +287,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy dotyczący łączenie po
 
 ## <a name="see-also"></a>Zobacz także 
 
- [Omówienie analizy tekstu](../overview.md)  
+ [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
 

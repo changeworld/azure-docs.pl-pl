@@ -1,21 +1,21 @@
 ---
 title: Dowiedz się, jak zarządzać konfliktami między regionami w usłudze Azure Cosmos DB
 description: Dowiedz się, jak zarządzać konfliktami w usłudze Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: c7edc9bd20b42725903201fae6349a37a8c0d9eb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: 6f4e6fce88815490ceffd7456cde045b38e32b29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548829"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680217"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami rozwiązywania konfliktów w usłudze Azure Cosmos DB
 
-Dzięki modułom zapisującym obsługującym wiele regionów, gdy wystąpi konflikt danych, można go rozwiązać, używając różnych zasad rozwiązywania konfliktów. W tym artykule opisano, jak zarządzać zasadami rozwiązywania konfliktów przy użyciu platform różnych języków.
+Za pomocą zapisu w wielu regionach podczas zapisu wielu klientów do tego samego elementu konflikty mogą wystąpić. Gdy wystąpi konflikt, można rozwiązać konfliktu, za pomocą zasad rozpoznawania konfliktu z inną. W tym artykule opisano sposób zarządzania zasady rozwiązywania konfliktów.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów
 
@@ -82,9 +82,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Tworzenie zasad rozwiązania konfliktu niestandardowych za pomocą procedury składowanej
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną, aby rozwiązać konflikt. Te konflikty nie są widoczne w kanale informacyjnym konfliktów, chyba że w procedurze składowanej wystąpi błąd.
+Te przykłady przedstawiają sposób konfigurowania kontenera za pomocą zasad rozwiązania konfliktu niestandardowych za pomocą procedury składowanej, aby rozwiązać konflikt. Te konflikty nie są widoczne w kanale informacyjnym konfliktów, chyba że w procedurze składowanej wystąpi błąd.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -162,9 +162,9 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Tworzenie zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego
+## <a name="create-a-last-writer-wins-lww-conflict-resolution-policy"></a>Utwórz zasady rozwiązywania konfliktów ostatni składnik zapisywania usługi Wins (LWW)
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Jeśli nie ustawiono ścieżki lub jest ona nieprawidłowa, przyjmuje wartość domyślną z właściwości `_ts`. Ta właściwość jest polem znacznika czasu. Te konflikty nie są widoczne w kanale informacyjnym konfliktów.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Jeśli nie ustawiono ścieżki lub jest ona nieprawidłowa, przyjmuje wartość domyślną z właściwości `_ts`. Ta właściwość jest polem znacznika czasu. Te konflikty nie są wyświetlane w kanale informacyjnym konflikt.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -233,7 +233,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="read-from-conflict-feed"></a>Odczytywanie z kanału informacyjnego konfliktów
 
-Te przykłady pokazują, jak odczytywać z kanału informacyjnego konfliktów kontenera. Konflikty są widoczne w kanale informacyjnym konfliktów tylko wtedy, jeśli nie zostaną rozwiązane automatycznie.
+Te przykłady pokazują, jak odczytywać z kanału informacyjnego konfliktów kontenera. Konflikty wyświetlane w konflikcie, źródła danych tylko jeśli one nie zostały rozwiązane automatycznie, np. wybrać zasady rozwiązywania konfliktów ręcznego, a nie zarejestrował procedury składowanej.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
@@ -285,6 +285,10 @@ while conflict:
 
 Poznaj następujące pojęcia dotyczące usługi Azure Cosmos DB:
 
+* [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
+* [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
+* [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Dodać lub usunąć regiony z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [How to configure multi-master in your applications (Jak skonfigurować wielowzorcowość w aplikacji)](how-to-multi-master.md).
 * [Partycjonowanie i dystrybucja danych](partition-data.md)
 * [Indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md)

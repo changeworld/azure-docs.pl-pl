@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788b03bb55abdc3040df8c5317f1f55738ebb023
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 907abe3b09f9999b30703281f7e4ff286e2bae14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268365"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677888"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Techniczne
 
@@ -44,7 +44,7 @@ Bezproblemowe logowanie Jednokrotne jest włączony, za pomocą usługi Azure AD
 - Klucz odszyfrowywania protokołu Kerberos konta komputera jest udostępniony w bezpieczny sposób za pomocą usługi Azure AD. Jeśli istnieje wiele lasów usługi AD, każde konto komputera będzie mieć własny unikatowy klucz odszyfrowywania protokołu Kerberos.
 
 >[!IMPORTANT]
-> `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, że delegowanie protokołu Kerberos na konto komputera jest wyłączona. Store konta komputera w organizacji jednostki Organizacyjnej, gdzie są one bezpieczne przypadkowym a tylko Administratorzy domeny mają dostęp. Klucz odszyfrowywania protokołu Kerberos na konto komputera powinny też być traktowane jako poufne. Zdecydowanie zalecamy możesz [przerzucić klucz odszyfrowywania protokołu Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` konto komputera co najmniej co 30 dni.
+> `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, wyłączenia delegowanie protokołu Kerberos na konto komputera oraz że żadne inne konto w usłudze Active Directory ma uprawnienia delegowania uprawnień `AZUREADSSOACC` konto komputera... Store konta komputera w organizacji jednostki Organizacyjnej, gdzie są one bezpieczne przypadkowym a tylko Administratorzy domeny mają dostęp. Klucz odszyfrowywania protokołu Kerberos na konto komputera powinny też być traktowane jako poufne. Zdecydowanie zalecamy możesz [przerzucić klucz odszyfrowywania protokołu Kerberos](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` konto komputera co najmniej co 30 dni.
 
 Po zakończeniu konfiguracji bezproblemowe logowanie Jednokrotne działa tak samo jak wszystkie inne logowania, która używa zintegrowanego Windows Authentication (Zintegrowane).
 

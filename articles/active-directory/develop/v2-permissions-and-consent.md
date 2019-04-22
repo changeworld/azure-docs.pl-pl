@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501253"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgody w punkcie końcowym platforma tożsamości firmy Microsoft
@@ -38,9 +38,9 @@ Aplikacje, które integrują się z platformą Microsoft identity postępuj zgod
 
 Implementuje platforma tożsamości firmy Microsoft [OAuth 2.0](active-directory-v2-protocols.md) Protokół autoryzacji. OAuth 2.0 to metoda, za pomocą którego aplikacja innej firmy ma dostęp do zasobów hostowanych w sieci web w imieniu użytkownika. Dowolny zasób hostowanych w sieci web, która integruje się z platformą Microsoft identity jest identyfikatorem zasobu lub *identyfikator URI Identyfikatora aplikacji*. Na przykład zasobów hostowanych w sieci web firmy Microsoft między innymi:
 
-* Microsoft Graph: `https://graph.microsoft.com`
+* Program Microsoft Graph: `https://graph.microsoft.com`
 * Interfejs API wiadomości E-mail usługi Office 365: `https://outlook.office.com`
-* Azure AD Graph: `https://graph.windows.net`
+* Usługa Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
 > Zdecydowanie zaleca się używać programu Microsoft Graph zamiast programu Graph usługi Azure AD, interfejsu API usługi Office 365 wiadomości E-mail itd.

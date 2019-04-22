@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496798"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678143"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: Eksportowanie danych i zarządzanie nimi
 
@@ -45,7 +45,13 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-daily-export"></a>Tworzenie codziennego eksportu
 
-Do tworzenia lub wyświetlania Eksport danych lub zaplanować eksportu, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **analiza kosztów** w menu. Na przykład, przejdź do **subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz **analiza kosztów** w menu. W górnej części strony analizy kosztów kliknij **wyeksportować** , a następnie opcję eksportu. Na przykład kliknij pozycję **zaplanować eksportu**. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
+Do tworzenia lub wyświetlania Eksport danych lub zaplanować eksportu, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **analiza kosztów** w menu. Na przykład, przejdź do **subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz **analiza kosztów** w menu. W górnej części strony analizy kosztów kliknij **wyeksportować** , a następnie opcję eksportu. Na przykład kliknij pozycję **zaplanować eksportu**.  
+
+> [!NOTE]
+> Oprócz subskrypcji można tworzyć eksporty na grupy zasobów, konta, działów i rejestracji. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
+> 
+> 
+
 
 Kliknij przycisk **Dodaj**, wpisz nazwę eksportu, a następnie wybierz **eksportu dziennych kosztów od początku miesiąca** opcji. Kliknij przycisk **Dalej**.
 
@@ -63,7 +69,7 @@ Początkowo uruchomienie eksportu może zająć od jednej do dwóch godzin. Jedn
 
 ### <a name="export-schedule"></a>Harmonogram eksportu
 
-Na zaplanowane eksporty wpływa czas (godzina i dzień tygodnia) początkowego utworzenia eksportu. Po utworzeniu zaplanowanego eksportu eksport będzie uruchamiany o tej samej porze dnia dla każdego kolejnego wystąpienia eksportu. Na przykład załóżmy, że codzienny eksport utworzysz o 13:00. Następny eksport zostanie uruchomiony o 13:00 następnego dnia. Bieżący czas (godzina i dzień) wpływa w ten sam sposób na wszystkie pozostałe typy eksportu — są zawsze uruchamiane o tej samej godzinie dnia, co w chwili początkowego utworzenia. W innym przykładzie utworzysz cotygodniowy eksport w poniedziałek o 16:00. Następny eksport zostanie uruchomiony o 16:00 w następny poniedziałek. *Wyeksportowane dane są dostępne w ciągu czterech godzin czasu wykonywania.*
+Na zaplanowane eksporty wpływa czas (godzina i dzień tygodnia) początkowego utworzenia eksportu. Po utworzeniu zaplanowanego eksportu eksport będzie uruchamiany o tej samej porze dnia dla każdego kolejnego wystąpienia eksportu. Na przykład załóżmy, że codzienny eksport utworzysz o 13:00. Następny eksport zostanie uruchomiony o 13:00 następnego dnia. Bieżący czas (godzina i dzień) wpływa w ten sam sposób na wszystkie pozostałe typy eksportu — są zawsze uruchamiane o tej samej godzinie dnia, co w chwili początkowego utworzenia. W innym przykładzie utworzysz cotygodniowy eksport w poniedziałek o 16:00. Następny eksport zostanie uruchomiony o 16:00 w następny poniedziałek. *Wyeksportowane dane będą dostępne w ciągu czterech godzin od czasu uruchomienia.*
 
 Dla każdego eksportu tworzony jest nowy plik, więc starsze eksporty nie są zastępowane.
 
@@ -73,7 +79,7 @@ Istnieją trzy typy opcji eksportu:
 
 **Tygodniowy eksport kosztów z ostatnich 7 dni** — początkowy eksport jest uruchamiany natychmiast. Kolejne eksporty są uruchamiane w następnych tygodniach w tym samym dniu tygodnia i o tej samej godzinie, co eksport początkowy. Uwzględniane są koszty z ostatnich siedmiu dni.
 
-**Niestandardowe** — umożliwia zaplanowanie cotygodniowych i comiesięcznych eksportów z opcjami od początku tygodnia i od początku miesiąca. *Początkowa eksportu zostanie uruchomiona natychmiast.*
+**Niestandardowe** — umożliwia zaplanowanie cotygodniowych i comiesięcznych eksportów z opcjami od początku tygodnia i od początku miesiąca. *Początkowy eksport zostanie uruchomiony natychmiast.*
 
 Jeśli masz subskrypcję płatność za rzeczywiste użycie, MSDN lub Visual Studio, okresu rozliczeniowego faktur mogą być niewyrównane z miesiącem kalendarzowym. Dla tych typów subskrypcji i grup zasobów można utworzyć eksportu, który jest wyrównany do okresu faktury lub miesięcy kalendarzowych. Aby utworzyć Eksport wyrównane do miesiąca Twoja faktury, przejdź do **niestandardowe**, a następnie wybierz **rozliczeń okres do chwili**.  Aby utworzyć Eksport wyrównane z miesiącem kalendarzowym, wybierz **data miesiąca**.
 >
@@ -113,4 +119,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby przeprowadzić optymalizację i zwiększyć wydajność, identyfikując zasoby w stanie bezczynności i niedostatecznie używane.
 
 > [!div class="nextstepaction"]
-> [Przejrzyj i działają zgodnie z zaleceniami optymalizacji](tutorial-acm-opt-recommendations.md)
+> [Zapoznawanie się z zaleceniami dotyczącymi optymalizacji i ich wdrażanie](tutorial-acm-opt-recommendations.md)

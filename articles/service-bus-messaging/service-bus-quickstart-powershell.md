@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499805"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Szybki start: używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus
@@ -90,7 +90,7 @@ Aby uruchomić kod, wykonaj następujące czynności:
 
 3. Przejdź do folderu przykładów `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
-4. Jeśli ta czynność nie została jeszcze wykonana, uzyskaj parametry połączenia przy użyciu następującego polecenia cmdlet programu PowerShell. Koniecznie Zastąp `my-resourcegroup` i `namespace-name` przy użyciu określonych wartości: 
+4. Jeśli ta czynność nie została jeszcze wykonana, uzyskaj parametry połączenia przy użyciu następującego polecenia cmdlet programu PowerShell. Pamiętaj, aby zastąpić zmienne `my-resourcegroup` i `namespace-name` konkretnymi wartościami: 
 
    ```azurepowershell-interactive
    Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
@@ -128,7 +128,7 @@ Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez prz
 
 ### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 
-Nazwa ciągu i kolejki połączenia są przekazywane do `Main()` metodę jako argumenty wiersza polecenia. `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
+Nazwa ciągu i kolejki połączenia są przekazywane do `Main()` metodę jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
 
 ```csharp
 static void Main(string[] args)
@@ -262,5 +262,5 @@ W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby w
 > [!div class="nextstepaction"]
 > [Wysyłanie i odbieranie komunikatów](service-bus-dotnet-get-started-with-queues.md)
 
-[bezpłatne konto na platformie Azure]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/install-Az-ps

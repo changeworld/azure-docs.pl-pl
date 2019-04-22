@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496407"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
@@ -287,12 +287,12 @@ Poniższe artykuły zawierają dodatkowe informacje na temat resetowania haseł 
 
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
 * [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Rejestrowanie na potrzeby samoobsługowego resetowania hasła](../user-help/active-directory-passwords-reset-register.md)
-* [Masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
-* [Jakie dane są używane przez Samoobsługowe Resetowanie HASEŁ i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
+* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md)
+* [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
+* [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)
-* [Jakie są opcje zasad funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
-* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego tak ważna go?](howto-sspr-writeback.md)
-* [Jak zgłosić działanie funkcji samoobsługowego resetowania HASEŁ?](howto-sspr-reporting.md)
-* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one oznacza?](concept-sspr-howitworks.md)
-* [Mam pytanie, które nie gdzieś else](active-directory-passwords-faq.md)
+* [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
+* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
+* [Jak zgłosić działanie funkcji samoobsługowego resetowania haseł?](howto-sspr-reporting.md)
+* [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
+* [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)

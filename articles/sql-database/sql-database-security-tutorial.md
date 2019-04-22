@@ -12,10 +12,10 @@ manager: craigg
 ms.date: 02/08/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496441"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
@@ -141,12 +141,12 @@ Aby ustawić administratora usługi Azure AD:
 
 Aby uzyskać informacje na temat konfigurowania usługi Azure AD, zobacz:
 
-- [Integrowanie tożsamości lokalnych z usługą Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)
-- [Dodaj własną nazwę domeny do usługi Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Platforma Microsoft Azure obsługuje teraz Federacja z usługą AD systemu Windows Server](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Add your own domain name to Azure AD (Dodawanie własnej nazwy domeny do usługi Azure Active Directory)](../active-directory/active-directory-domains-add-azure-portal.md)
+- [Microsoft Azure now supports federation with Windows Server AD (Platforma Microsoft Azure obsługuje teraz federację z usługą AD systemu Windows Server)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Administrowanie katalogiem usługi Azure AD](../active-directory/fundamentals/active-directory-administer.md)
 - [Zarządzanie usługą Azure AD przy użyciu programu PowerShell](/powershell/azure/overview?view=azureadps-2.0)
-- [Wymagane porty i protokoły tożsamości hybrydowej](../active-directory/hybrid/reference-connect-ports.md)
+- [Wymagane porty i protokoły dotyczące tożsamości hybrydowej](../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Zarządzanie dostępem do bazy danych
 

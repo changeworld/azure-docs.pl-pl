@@ -18,10 +18,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0a40c9ee06751edfb7b218cf15275019c142545
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491325"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji konsolowej za pomocą tożsamości aplikacji
@@ -75,14 +75,14 @@ Ten przewodnik Szybki Start wymaga [platformy .NET Core 2.2](https://www.microso
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: konfigurowanie aplikacji w witrynie Azure Portal
 > Aby działał przykładowy kod z tego przewodnika Szybki start, musisz utworzyć klucz tajny klienta i dodać uprawnienie aplikacji **User.Read.All** interfejsu API programu Graph.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadzenie tych zmian]()
+> > [Wprowadź zmiany automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-windows-desktop/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-windows-desktop/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
-[Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
@@ -96,13 +96,13 @@ Ten przewodnik Szybki Start wymaga [platformy .NET Core 2.2](https://www.microso
     "ClientSecret": "Enter_the_Client_Secret_Here"
     ```
     > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Generuj nowy klucz tajny klienta]()
+    > > [Generowanie nowego klucza tajnego klienta]()
     
     > [!div renderon="docs"]
     >> Gdzie:
-    >> * `Enter_the_Application_Id_Here` -jest **identyfikator aplikacji (klienta)** dla aplikacji został zarejestrowany.
-    >> * `Enter_the_Tenant_Id_Here` -Zastąp tę wartość za pomocą **identyfikator dzierżawy** lub **nazwa dzierżawy** (na przykład contoso.microsoft.com)
-    >> * `Enter_the_Client_Secret_Here` -Zastąp tę wartość z kluczem tajnym klienta utworzone w kroku 1.
+    >> * `Enter_the_Application_Id_Here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
+    >> * `Enter_the_Tenant_Id_Here` — zastąp tę wartość wartością **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
+    >> * `Enter_the_Client_Secret_Here` — zastąp tę wartość kluczem tajnym klienta utworzonym w kroku 1.
 
     > [!div renderon="docs"]
     > > [!TIP]
@@ -120,7 +120,7 @@ Jeśli na tym etapie zostanie podjęta próba uruchomienia aplikacji, subskryben
 > [!div renderon="portal" class="sxs-lookup"]
 > Jeśli jesteś administratorem globalnym, przejdź do strony **Uprawnienia interfejsu API** i wybierz pozycję **Wyraź zgodę administratora dla katalogu wpisz_tutaj_nazwę_dzierżawy**
 > > [!div id="apipermissionspage"]
-> > [Przejdź do strony uprawnienia do interfejsu API]()
+> > [Przejdź do strony Uprawnienia interfejsu API]()
 
 ##### <a name="standard-user"></a>Użytkownik standardowy
 
@@ -132,8 +132,8 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Gdzie:
->> * `Enter_the_Tenant_Id_Here` -Zastąp tę wartość za pomocą **identyfikator dzierżawy** lub **nazwa dzierżawy** (na przykład contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` -jest **identyfikator aplikacji (klienta)** dla aplikacji został zarejestrowany.
+>> * `Enter_the_Tenant_Id_Here` — zastąp tę wartość wartością **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
+>> * `Enter_the_Application_Id_Here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
 
 > [!NOTE]
 > Po udzieleniu zgody dla aplikacji za pomocą powyższego adresu URL może zostać wyświetlony komunikat o błędzie *„AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji”*. Należy go zignorować — dzieje się tak, ponieważ aplikacja i adres URL nie mają identyfikatora URI przekierowania.
@@ -230,7 +230,7 @@ Dowiedz się więcej na temat uprawnień i wyrażania zgody:
 Aby dowiedzieć się więcej na temat przepływu autoryzacji w tym scenariuszu, zapoznaj się z przepływem poświadczeń klienta OAuth 2.0:
 
 > [!div class="nextstepaction"]
-> [Przepływ Oauth poświadczeń klienta](v2-oauth2-client-creds-grant-flow.md)
+> [Client credentials Oauth flow (Przepływ OAuth poświadczeń klienta)](v2-oauth2-client-creds-grant-flow.md)
 
 > [!div class="nextstepaction"]
-> [Przepływy poświadczeń klienta przy użyciu platformy MSAL.NET](https://aka.ms/msal-net-client-credentials)
+> [Client credential flows with MSAL.NET (Przepływy poświadczeń klienta korzystające z platformy MSAL.NET)](https://aka.ms/msal-net-client-credentials)

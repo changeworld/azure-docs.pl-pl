@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496900"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>Wdrażanie magazynu OPC od podstaw
@@ -130,9 +130,9 @@ Firma Microsoft udostępnia również [wersji środowiska Java](https://github.c
 
 Oto niektóre środowiska IDE, którego można użyć do pracy na komputerach z systemem Azure IoT:
 
-- [Visual Studio](https://www.visualstudio.com)
-- [Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/visual-studio-mac)
-- [Kierowcy IntelliJ](https://www.jetbrains.com/rider)
+- [Program Visual Studio](https://www.visualstudio.com)
+- [program Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/visual-studio-mac)
+- [IntelliJ Rider](https://www.jetbrains.com/rider)
 - [Visual Studio Code](https://code.visualstudio.com)
 
 ### <a name="git-setup"></a>Instalator usługi Git

@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852597"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Apex Portal
 
@@ -68,7 +69,7 @@ Aby skonfigurować integrację aplikacji Apex Portal z usługą Azure AD, należ
 
 4. W polu wyszukiwania wpisz **Apex Portal**, wybierz znalezioną pozycję **Apex Portal** na panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja Apex Portal na liście wyników](common/search-new-app.png)
+    ![Aplikacja Apex Portal na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -106,9 +107,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD dla aplikacji Apex Por
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Apex Portal](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Apex Portal](mailto:support@apexanalytix.com), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -120,7 +121,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD dla aplikacji Apex Por
 6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
 
     | Name (Nazwa) | Atrybut źródłowy|
-    | ------------------- | -------------------- |
+    | -------- | --------- |
     | FIRSTNAME | user.givenname |
     | LASTNAME | user.surname |
     | MAIL | user.mail |
@@ -156,7 +157,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD dla aplikacji Apex Por
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-apex-portal-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Apex Portal
 
@@ -180,10 +181,9 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola `brittasimon\@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -233,4 +233,3 @@ Po kliknięciu kafelka Apex Portal w panelu dostępu powinno nastąpić automaty
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

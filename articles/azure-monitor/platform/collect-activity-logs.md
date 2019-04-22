@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: magoedte
 ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505638"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure, w obszarze roboczym Log Analytics w usłudze Azure Monitor
@@ -55,7 +55,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Azure Monitor dane
 | [Agenci dla systemu Windows](agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
 | [Agenci dla systemu Linux](../learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
 | [Grupa zarządzania programu System Center Operations Manager](om-agents.md) | Nie | Rozwiązanie zbiera informacje z agentów raportujących do grupy zarządzania programu Operations Manager. |
-| [Konto magazynu Azure](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
+| [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

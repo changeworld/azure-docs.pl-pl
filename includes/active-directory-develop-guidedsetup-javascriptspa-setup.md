@@ -15,10 +15,10 @@ ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: da2477b19327273fe922ac81f909233cb4ef8f06
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59503014"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Konfigurowanie serwera sieci web lub projektu
@@ -27,7 +27,7 @@ ms.locfileid: "59503014"
 > - [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) dla lokalnego serwera internetowego, takie jak węzeł
 >
 > lub
-> - [Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+> - [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 >
 > A następnie przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowego kodu przed jej wykonanie.
 

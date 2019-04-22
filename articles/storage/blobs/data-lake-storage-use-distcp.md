@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864064"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678390"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 za pomocą narzędzia DistCp
 
@@ -27,7 +27,7 @@ Narzędzia DistCp oferuje szereg parametrów wiersza polecenia i zdecydowanie za
 * **Istniejące konto magazynu platformy Azure bez Data Lake Storage Gen2 możliwości (hierarchicznej przestrzeni nazw)**.
 * **Konto usługi Azure Storage z włączoną funkcją Data Lake Storage Gen2**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Tworzenie konta magazynu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **System plików** , została utworzona w ramach konta magazynu z hierarchicznej przestrzeni nazw, włączone.
-* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta magazynu z magazynu Gen2 jeziora danych, włączone. Zobacz [użycia usługi Azure Data Lake magazynu Gen2 za pomocą usługi Azure HDInsight clusters](data-lake-storage-use-hdi-cluster.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
+* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta magazynu z magazynu Gen2 jeziora danych, włączone. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Z klastra usługi HDInsight w systemie Linux za pomocą narzędzia DistCp
 

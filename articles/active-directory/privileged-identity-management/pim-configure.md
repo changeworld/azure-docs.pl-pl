@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496082"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
@@ -87,19 +87,19 @@ W przypadku ról zasobów platformy Azure tylko administrator subskrypcji, wła�
 
 Usługa PIM obsługuje następujące scenariusze:
 
-**Jako Administrator ról uprzywilejowanych możesz wykonywać następujące czynności:**
+**Administrator ról uprzywilejowanych ma następujące możliwości:**
 
 - Włączanie zatwierdzeń dla określonych ról
 - Określanie osób i/lub grup zatwierdzających żądania zatwierdzenia
 - Wyświetlanie historii żądań i zatwierdzeń dla wszystkich ról uprzywilejowanych
 
-**Jako osoba zatwierdzająca możesz wykonywać następujące czynności:**
+**Osoba zatwierdzająca ma następujące możliwości:**
 
 - Wyświetlanie oczekujących zatwierdzeń (żądań)
 - Zatwierdzanie lub odrzucanie żądań podniesienia uprawnień ról (pojedyncze i/lub zbiorcze)
 - Uzasadnianie zatwierdzeń/odrzuceń 
 
-**Jako użytkownik kwalifikowania się do roli możesz wykonywać następujące czynności:**
+**Użytkownik z kwalifikowaniem się do roli ma następujące możliwości:**
 
 - Żądanie aktywacji roli wymagającej zatwierdzenia
 - Wyświetlanie stanu żądania uaktywnienia
@@ -107,6 +107,6 @@ Usługa PIM obsługuje następujące scenariusze:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wymagania licencyjne, aby używać aplikacji PIM](subscription-requirements.md)
-- [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Wymagania licencyjne dotyczące korzystania z usługi PIM](subscription-requirements.md)
+- [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i wdrożeń w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Wdrażanie usługi PIM](pim-deployment-plan.md)

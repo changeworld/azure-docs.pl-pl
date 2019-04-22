@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: ec0c3b7943db87e5c6fb31dc173a5c3b36377e6c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/17/2019
+ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855473"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680523"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
@@ -43,6 +43,9 @@ Można skonfigurować bazy danych SQL [przechowywania automatycznych kopii zapas
    ![Konfigurowanie zasad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
 3. Po zakończeniu kliknij przycisk **Zastosuj**.
+
+> [!IMPORTANT]
+> Po włączeniu zasady długoterminowego przechowywania kopii zapasowej może potrwać maksymalnie 7 dni w przypadku pierwszej kopii zapasowej, stają się widoczne i dostępne do przywrócenia. Aby uzyskać szczegółowe informacje o cadance kopii zapasowych LTR, zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md).
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Wyświetlanie kopii zapasowych i przywracanie z kopii zapasowej za pomocą witryny Azure portal
 

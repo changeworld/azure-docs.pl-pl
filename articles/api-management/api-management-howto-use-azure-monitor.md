@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622199"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680251"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -98,7 +98,7 @@ Aby skonfigurować alerty:
 
 8. Podaj nazwę i opis reguły alertu, a następnie wybierz poziom ważności. 
 9. Naciśnij klawisz **Utwórz regułę alertu**.
-10. Teraz spróbuj wywołać interfejs API konferencji bez klucza API. Alert zostanie wywołany zostanie wysłana wiadomość e-mail do administratorów. 
+10. Teraz spróbuj wywołać interfejs API konferencji bez klucza API. Alert zostanie wyzwolony i wiadomości e-mail będą wysyłane do administratorów. 
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
