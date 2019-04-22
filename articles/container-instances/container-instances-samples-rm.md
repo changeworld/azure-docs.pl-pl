@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
 ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006467"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony usługi Azure Resource Manager dla usługi Azure Container Instances
@@ -31,7 +31,7 @@ Dla opcji wdrażania, zobacz [wdrożenia](#deployment) sekcji. Jeśli chcesz two
 | [emptyDir][vol-emptydir] | Wdraża dwóch kontenerów systemu Linux, które współużytkują woluminu emptyDir. |
 | [gitRepo][vol-gitrepo] | Wdraża klonuje repozytorium GitHub, która instaluje ją jako wolumin kontenera systemu Linux. |
 | [secret][vol-secret] | Służy do wdrażania kontenerów systemu Linux przy użyciu certyfikatu PFX, zainstalowany jako wolumin tajny. |
-| **Networking** ||
+| **Sieć** ||
 | [Kontener dostępne za pośrednictwem protokołu UDP][net-udp] | Służy do wdrażania kontenerów Windows lub Linux, która uwidacznia UDP port. |
 | [Kontener systemu Linux z publicznym adresem IP][net-publicip] | Wdraża jednego kontenera systemu Linux dostępnych za pośrednictwem publicznego adresu IP. |
 | [Wdrożyć grupę kontenerów z siecią wirtualną (wersja zapoznawcza)][net-vnet] | Wdraża nową sieć wirtualną, podsiecią, profil sieci i grupy kontenerów. |

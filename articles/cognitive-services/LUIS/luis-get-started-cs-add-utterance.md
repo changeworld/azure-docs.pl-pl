@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273468"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
@@ -140,4 +140,4 @@ Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
-> [Programowe tworzenie aplikacji usługi LUIS](luis-tutorial-node-import-utterances-csv.md) 
+> [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md) 

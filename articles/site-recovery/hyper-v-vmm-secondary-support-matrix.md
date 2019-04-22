@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360800"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
@@ -36,7 +36,7 @@ Windows Server 2016 |  Chmury programu VMM 2016 z systemu Windows Server 2016 i 
 
 Poniższa tabela zawiera podsumowanie obsługi systemów operacyjnych w przypadku maszyn replikowanych z usługą Site Recovery. Każde obciążenie może być uruchomiony w obsługiwanym systemie operacyjnym.
 
-**Wersja systemu Windows** | **Funkcji Hyper-V (z programem VMM)**
+**Wersja Windows** | **Funkcji Hyper-V (z programem VMM)**
 --- | ---
 Windows Server 2016 | Dowolny system operacyjny gościa z [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) w systemie Windows Server 2016 
 Windows Server 2012 R2 | Dowolny system operacyjny gościa z [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) w systemie Windows Server 2012 R2
@@ -53,7 +53,7 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfiguracja sieci — Host/gościa maszyny Wirtualnej
 
-**Konfigurowanie** | **Obsługiwane**  
+**Konfiguracja** | **Obsługiwane**  
 --- | --- 
 Host - zespołu kart interfejsu Sieciowego | Yes 
 Host - sieci VLAN | Yes 
@@ -79,7 +79,7 @@ Wiele ścieżek (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
-**Konfigurowanie** | **Obsługiwane**
+**Konfiguracja** | **Obsługiwane**
 --- | --- | 
 VMDK |  ND
 VHD/VHDX | Tak (maksymalnie 16 dysków)
@@ -108,7 +108,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 
 Dostawca służy do koordynowania komunikacji między serwerami programu VMM. 
 
-**Najnowsze** | **Aktualizacje**
+**najnowsze** | **Aktualizacje**
 --- | --- 
 5.1.19 ([dostępna z portalu](https://aka.ms/downloaddra) | [Najnowsze funkcje i poprawki](https://support.microsoft.com/kb/3155002)
 

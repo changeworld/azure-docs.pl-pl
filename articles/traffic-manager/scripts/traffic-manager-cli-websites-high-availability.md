@@ -16,10 +16,10 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
 ms.openlocfilehash: 6c610a1cddb0854878d4c2bd5531f88a1cf2ec51
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009108"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu wiersza polecenia platformy Azure
@@ -50,8 +50,8 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 
 | Polecenie | Uwagi |
 |---|---|
-| [Tworzenie grupy az](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [Utwórz az appservice plan](https://docs.microsoft.com/cli/azure/appservice/plan) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
 | [Tworzenie aplikacji sieci Web az w sieci web](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
 | [Tworzenie profilu usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Tworzy profil usługi Azure Traffic Manager. |
 | [Tworzenie punktu końcowego usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Dodaje punkt końcowy do profilu usługi Azure Traffic Manager. |

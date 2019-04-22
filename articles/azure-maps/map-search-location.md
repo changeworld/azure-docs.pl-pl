@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271598"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
@@ -67,7 +67,7 @@ Dowiedz się więcej o **Wyszukiwanie rozmyte**:
 Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
@@ -75,4 +75,4 @@ Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 > [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B](./map-route.md)
+> [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)

@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050734"
 ---
 # <a name="upload-files-with-iot-hub"></a>Przekazywanie plików za pomocą usługi IoT Hub
@@ -150,7 +150,7 @@ Teraz wyjaśniono sposób przekazywania plików z urządzeń przy użyciu usług
 
 * [Zarządzanie tożsamościami urządzeń w usłudze IoT Hub](iot-hub-devguide-identity-registry.md)
 
-* [Kontrola dostępu do centrum IoT Hub](iot-hub-devguide-security.md)
+* [Kontrola dostępu do usługi IoT Hub](iot-hub-devguide-security.md)
 
 * [Przy użyciu bliźniaczych reprezentacji urządzeń do stanu i konfiguracji](iot-hub-devguide-device-twins.md)
 

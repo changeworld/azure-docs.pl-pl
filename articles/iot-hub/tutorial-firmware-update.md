@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008906"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
@@ -115,10 +115,10 @@ Aplikacja zaplecza tworzy następującą konfigurację:
 
 Konfiguracja zawiera następujące sekcje:
 
-* `content` Określa właściwości oprogramowania układowego żądanego wysyłane do wybranych urządzeń.
-* `metrics` Określa kwerendy do uruchamiania tego raportu stan aktualizacji oprogramowania układowego.
-* `targetCondition` Wybiera urządzeń mają otrzymywać aktualizacji oprogramowania układowego.
-* `priorty` Ustawia względny priorytet tej konfiguracji na inne konfiguracje.
+* `content` — określa żądane właściwości oprogramowania układowego wysyłane do wybranych urządzeń.
+* `metrics` — określa zapytania uruchamiane w celu wyświetlenia raportu stanu aktualizacji oprogramowania układowego.
+* `targetCondition` — wybiera urządzenia, które otrzymają aktualizację oprogramowania układowego.
+* `priorty` — ustawia względny priorytet tej konfiguracji w odniesieniu do innych konfiguracji.
 
 Aplikacja zaplecza używa następującego kodu do utworzenia konfiguracji w celu ustawienia żądanych właściwości:
 

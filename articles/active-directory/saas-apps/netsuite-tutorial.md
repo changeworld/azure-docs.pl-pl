@@ -16,10 +16,10 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab329574ef425e8133ac746c185050efcc8bc15a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją NetSuite
@@ -53,7 +53,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji NetSuite w usłudze Azure AD, należy dodać aplikację NetSuite z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać NetSuite z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację NetSuite z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -324,11 +324,11 @@ Po kliknięciu kafelka NetSuite w panelu dostępu powinno nastąpić automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurowanie Aprowizowania użytkowników](NetSuite-provisioning-tutorial.md)
+- [Konfigurowanie aprowizacji użytkowników](NetSuite-provisioning-tutorial.md)
 

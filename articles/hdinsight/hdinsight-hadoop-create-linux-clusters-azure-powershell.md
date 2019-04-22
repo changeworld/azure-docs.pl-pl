@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 30154c55e60b7150257729c9bc90ee07a561e08e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264543"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu programu Azure PowerShell
@@ -97,7 +97,7 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 
 * [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
 * [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Używanie technologii MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 
@@ -113,7 +113,7 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 ### <a name="apache-spark-clusters"></a>Klastry platformy Apache Spark
 
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](spark/apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
 * [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](spark/apache-spark-use-bi-tools.md)
 * [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 

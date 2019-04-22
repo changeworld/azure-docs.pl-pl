@@ -13,17 +13,17 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
 ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288384"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne kodowania zawartości
 
 Aby przygotować zawartość do przekazania przez [streaming z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), wideo, musi być zakodowany na wielu — szybkości transmisji bitów (wysoka, niski). Aby zapewnić bezpieczne pogorszenia się jakości, ponieważ szybkość transmisji bitów jest obniżony więc rozdzielczości wideo. Skutkuje to tak zwane drabiny kodowania — spis rozdzielczości i szybkości transmisji, jak widać w niektóre z naszych stały ustawienia wstępne kodowania, takich jak [H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Zwiększyć zainteresowanie więcej niż podejście jeden — ustawienie wstępne — uniwersalna, odpowiednia wszelkie-filmów wideo, po opublikowaniu Netflix ich [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) w grudniu 2015. Od tamtej pory wiele rozwiązań do kodowania zawartości opublikowane w portalu marketplace; zobacz [w tym artykule](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) omówienie. Chodzi o to pod uwagę zawartości — Aby dostosować lub dostosowywanie kodowania drabiny do złożoności poszczególnych wideo. W każdej rozdzielczości Brak transmisji bitów, po przekroczeniu których wzrost jakości nie jest perceptive — koder operuje na tę wartość optymalne szybkości transmisji bitów. Następny poziom optymalizacji jest wybranie rozwiązania na podstawie zawartości — na przykład wideo z prezentacją programu PowerPoint nie korzysta z przejściem poniżej 720p. Idąc dalej, kodera można nadzorowania zoptymalizować ustawienia dla każdego zrzut w wideo. Netflix opisem [takie podejście](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) w 2018 roku.
 

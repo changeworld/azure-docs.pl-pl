@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361335"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure
@@ -256,7 +256,7 @@ Wygenerowany raport programu Microsoft Excel zawiera następujące informacje:
 
 * [Podsumowanie środowiska lokalnego](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Zalecenia](hyper-v-deployment-planner-analyze-report.md#recommendations)
-* [Rozmieszczenie maszyny wirtualnej względem magazynu](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
+* [Rozmieszczenie maszyny wirtualnej](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
 * [Zgodne maszyny wirtualne](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
 * [Niezgodne maszyny wirtualne](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
 * [Wymagania dotyczące magazynu lokalnego](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)

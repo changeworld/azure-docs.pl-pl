@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362124"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Samouczek: przeprowadzanie pilotażowego wdrożenia samoobsługowego resetowania hasła usługi Azure AD
@@ -60,7 +60,7 @@ Samoobsługowe resetowanie hasła dla użytkowników chmury w grupie pilotażowe
 
 ## <a name="test-sspr-as-a-user"></a>Testowanie funkcji SSPR jako użytkownik
 
-Przetestuj samoobsługowe resetowanie hasła za pomocą konta użytkownika testowego bez uprawnień administratora, będącego członkiem grupy pilotażowej. **Należy pamiętać, że jeśli używasz konta mającego żadnych ról administratora metod uwierzytelniania przypisana zmienna, a liczba może być inny niż wybrane jako firma Microsoft zarządza zasadami administratora.**
+Przetestuj samoobsługowe resetowanie hasła za pomocą konta użytkownika testowego bez uprawnień administratora, będącego członkiem grupy pilotażowej. **Pamiętaj, że jeśli użyjesz konta z przypisanymi jakimikolwiek rolami administratora, metody uwierzytelniania i ich liczba mogą być inne, niż to, co zostało przez Ciebie wybrane, ponieważ zasadami dotyczącymi administratorów zarządza firma Microsoft.**
 
 1. Otwórz nowe okno przeglądarki w trybie InPrivate lub incognito.
 1. Korzystając z testowego konta użytkownika, zarejestruj się na potrzeby samoobsługowego resetowania hasła, używając portalu rejestracji pod adresem [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup).
@@ -81,4 +81,4 @@ Jeśli zdecydujesz, że nie chcesz już korzystać z funkcji skonfigurowanych w 
 W tym samouczku włączono samoobsługowe resetowanie hasła usługi Azure AD. Przejdź do następnego samouczka, aby zobaczyć, jak można zintegrować lokalną infrastrukturę usług Active Directory Domain Services ze środowiskiem samoobsługowego resetowania hasła.
 
 > [!div class="nextstepaction"]
-> [Włącz integrację funkcji zapisywania zwrotnego w środowisku lokalnym funkcji samoobsługowego resetowania HASEŁ](tutorial-enable-writeback.md)
+> [Włączanie integracji zapisu zwrotnego samoobsługowego resetowania hasła ze środowiskiem lokalnym](tutorial-enable-writeback.md)

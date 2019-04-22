@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361131"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pbutlerm
 ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010576"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS realizacji interfejsy API wersji 2 
@@ -296,7 +296,7 @@ Wewnętrzny błąd serwera<br>
 
 Punkt końcowy resolve umożliwia użytkownikom można rozpoznać tokenu marketplace trwały identyfikator zasobu. Identyfikator zasobu jest unikatowy identyfikator subskrypcji w modelu SAAS.  Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawców oprogramowania, adres URL zawiera token w parametrach zapytania. Niezależny dostawca oprogramowania oczekuje na używanie tego tokenu w celu wykonania żądania, aby go rozwiązać. Odpowiedź zawiera identyfikator subskrypcji w modelu SAAS unikatową nazwę, Identyfikatora oferty i plan dla zasobu. Ten token jest prawidłowy tylko godzinę. 
 
-**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+**Wpis:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
 
 *Parametry zapytania:*
 
@@ -354,7 +354,7 @@ Wewnętrzny błąd serwera
 
 #### <a name="activate-a-subscription"></a>Aktywuj subskrypcję
 
-**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
+**Wpis:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
 
 *Parametry zapytania:*
 

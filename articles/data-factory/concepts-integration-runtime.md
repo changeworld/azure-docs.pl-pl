@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: abnarain
 ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275412"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
@@ -156,5 +156,5 @@ Każde działanie przekształcania zawiera docelową obliczeniową usługę poł
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
-- [Tworzenie własnego środowiska Integration Runtime](create-self-hosted-integration-runtime.md)
+- [Create self-hosted integration runtime (Tworzenie środowiska Integration Runtime (Self-hosted)](create-self-hosted-integration-runtime.md)
 - [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 

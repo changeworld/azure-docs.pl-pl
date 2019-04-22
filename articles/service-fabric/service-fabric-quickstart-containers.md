@@ -16,10 +16,10 @@ ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051550"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Windows w usłudze Service Fabric
@@ -154,7 +154,7 @@ Każda aplikacja w klastrze musi mieć unikatową nazwę. Jeśli występuje konf
 
 Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu **Punkt końcowy połączenia** w poprzednim kroku. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
- Powinna zostać wyświetlona domyślna strona internetowa usług IIS: ![Usługi IIS domyślnej strony sieci web][iis-default]
+ Powinna zostać wyświetlona domyślna strona internetowa usług IIS: ![Domyślna strona internetowa usług IIS][iis-default]
 
 ## <a name="clean-up"></a>Czyszczenie
 
@@ -172,7 +172,7 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 Aby dowiedzieć się więcej na temat pracy z kontenerami systemu Windows w usłudze Service Fabric, przejdź do samouczka dotyczącego aplikacji kontenerów systemu Windows.
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji kontenera systemu Windows](./service-fabric-host-app-in-a-container.md)
+> [Tworzenie aplikacji kontenerów systemu Windows](./service-fabric-host-app-in-a-container.md)
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png

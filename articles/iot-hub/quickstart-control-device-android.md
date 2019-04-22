@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
 ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006577"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub (Android)
@@ -206,4 +206,4 @@ W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z
 Aby dowiedzieć się, jak przekierowywać komunikaty urządzenie-chmura do innych miejsc docelowych w chmurze, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Telemetria trasy do różnych punktów końcowych do przetworzenia](tutorial-routing.md)
+> [Samouczek: przekierowywanie danych telemetrycznych do innych punktów końcowych w celu przetwarzania](tutorial-routing.md)

@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288954"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Samouczek: Zapytanie SQL Server Linux narzędziem w sieci wirtualnej z notesu usługi Azure Databricks
@@ -205,4 +205,4 @@ Gdy nie są już potrzebne, Usuń grupę zasobów, obszar roboczy usługi Azure 
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak wyodrębnianie, przekształcanie i ładowanie danych za pomocą usługi Azure Databricks.
 > [!div class="nextstepaction"]
-> [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks](databricks-extract-load-sql-data-warehouse.md)
+> [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych za pomocą usługi Azure Databricks](databricks-extract-load-sql-data-warehouse.md)

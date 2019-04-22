@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
 ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276664"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Przykład — wymuszanie tagu i jego wartości na grupach zasobów
@@ -50,7 +50,7 @@ Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Nazwa) |Type |Pole |Opis |
+|Name (Nazwa) |Typ |Pole |Opis |
 |---|---|---|---|
 |tagName |String |tags |Nazwa tagu, na przykład costCenter|
 |tagValue |String |tags |Wartość tagu, na przykład headquarter|
@@ -157,11 +157,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 | Polecenie | Uwagi |
 |---|---|
-| [Tworzenie definicji zasad az](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję zasad Azure Policy. |
-| [Pokaż grupy az](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
-| [Tworzenie przypisania zasad az](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
-| [Usuń przypisanie zasad az](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
-| [Usuwanie definicji zasad az](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję zasad Azure Policy. |
+| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Tworzy nową definicję zasad Azure Policy. |
+| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Pobiera pojedynczą grupę zasobów. |
+| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
+| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
+| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Usuwa istniejącą definicję zasad Azure Policy. |
 
 Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API REST usługi Resource Manager, np. klient [ARMClient](https://github.com/projectkudu/ARMClient) lub program PowerShell. Przykład wywołania interfejsu API REST z poziomu programu PowerShell można znaleźć w sekcji **Aliasy** w temacie [Struktura definicji zasad](../concepts/definition-structure.md#aliases).
 
@@ -218,8 +218,8 @@ Istnieje kilka narzędzi, które mogą służyć do interakcji z interfejsem API
 
 | Usługa | Grupa | Operacja | Uwagi |
 |---|---|---|---|
-| Zarządzanie zasobami | Definicje zasad | [Przycisk Utwórz](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [Tworzenie w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| Zarządzanie zasobami | Przypisania zasad | [Przycisk Utwórz](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
+| Zarządzanie zasobami | Definicje zasad | [Tworzenie](/rest/api/resources/policydefinitions/createorupdate) | Tworzy nową definicję zasad Azure Policy w ramach subskrypcji. Alternatywne rozwiązanie: [Tworzenie w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Zarządzanie zasobami | Przypisania zasad | [Tworzenie](/rest/api/resources/policyassignments/create) | Tworzy nowe przypisanie zasad Azure Policy. W tym przykładzie udostępniliśmy dla niego definicję, ale może także przyjąć inicjatywę. |
 | Zarządzanie zasobami | Przypisania zasad | [Usuwanie](/rest/api/resources/policyassignments/delete) | Usuwa istniejące przypisanie zasad Azure Policy. |
 | Zarządzanie zasobami | Definicje zasad | [Usuwanie](/rest/api/resources/policydefinitions/delete) | Usuwa istniejącą definicję zasad Azure Policy. Alternatywne rozwiązanie: [Usuwanie w grupie zarządzania](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 

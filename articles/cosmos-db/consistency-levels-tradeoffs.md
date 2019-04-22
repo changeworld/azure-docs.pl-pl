@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266430"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
@@ -20,9 +20,9 @@ Rozproszonych baz danych, które zależą od replikacji dla wysokiej dostępnoś
 
 Wyjaśnienie pojęcia spójności danych jako liczne opcje zbliża się do usługi Azure Cosmos DB. Ta metoda obejmuje więcej opcji niż dwoma skrajnymi poziomami spójności silną i ostateczną. Możesz wybrać z pięciu dobrze zdefiniowanych modeli na spektrum spójności. Od najsilniejszej do najsłabszej, modele są:
 
-- *Silna*
+- *Silne*
 - *Powiązana nieaktualność*
-- *Sesja*
+- *Sesji*
 - *Spójny prefiks*
 - *Ostateczna*
 
@@ -50,7 +50,7 @@ W środowisku globalnie rozproszona baza danych ma bezpośrednią relację międ
 
 Poniższa tabela definiuje relację między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej na temat przyczyn, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
 
-|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**Cel punktu odzyskiwania**|**CEL CZASU ODZYSKIWANIA**|
+|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jednego lub wielu wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
 |>1|Wzorca pojedynczej|Sesja, spójny prefiks i ostateczna|< 15 minut|< 15 minut|
@@ -69,4 +69,4 @@ Dowiedz się więcej na temat dystrybucji globalnej i wpływ na ogólną spójno
 
 - [Wady i zalety spójności w nowoczesnych rozproszoną bazę danych, projektowanie systemów](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Wysoka dostępność](high-availability.md)
-- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB w umowie SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

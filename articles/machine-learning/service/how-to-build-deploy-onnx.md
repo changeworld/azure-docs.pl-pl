@@ -12,10 +12,10 @@ author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
 ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259188"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX i usługi Azure Machine Learning: Tworzenie i wdrażanie interoperacyjne modeli sztucznej Inteligencji
@@ -37,7 +37,7 @@ Istnieje również ekosystemu narzędzi do wizualizacji i skróceniu modelami ON
 
 [Można wdrażać modele ONNX](#deploy) w chmurze za pomocą usługi Azure Machine Learning i środowisko uruchomieniowe ONNX. Można je również wdrożyć na urządzeniach z systemem Windows 10 przy użyciu [Windows ML](https://docs.microsoft.com/windows/ai/). Nawet wdrażania ich na innych platformach przy użyciu konwertery są dostępne przez społeczność ONNX. 
 
-[![ODiagram przepływu NNX pokazujący, szkolenia, konwerterów i wdrażanie](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
+[![Diagram przepływu ONNX pokazujący, szkolenia, konwerterów i wdrażania](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Modele ONNX
 
@@ -206,7 +206,7 @@ Zobacz [jak-to-użyj-usługi Azure ml/wdrażanie/onnx](https://github.com/Azure/
 ## <a name="more-info"></a>Więcej informacji
 
 Dowiedz się więcej o ONNX lub współtworzenia projektu:
-+ [ONNX project website](https://onnx.ai)
++ [ONNX projektu witryny sieci Web](https://onnx.ai)
 
 + [Kod ONNX w serwisie GitHub](https://github.com/onnx/onnx)
 

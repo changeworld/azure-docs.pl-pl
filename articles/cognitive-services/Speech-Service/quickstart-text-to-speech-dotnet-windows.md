@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012248"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Syntetyzowania mowy z zestawem SDK mowy dla programu .NET Framework (Windows)
@@ -66,9 +66,9 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z C# przykłady w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
 - [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Nagrywanie próbek głosu](record-custom-voice-samples.md)
+- [Próbki głosu rekord](record-custom-voice-samples.md)

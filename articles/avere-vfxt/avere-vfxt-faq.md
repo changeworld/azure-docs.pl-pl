@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
 ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264458"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure — często zadawane pytania
@@ -286,9 +286,9 @@ Nie, "zawsze włączona" wymagają Avere vFXT klastrów usługi. Klastry można 
 
 Aby rozpocząć pracę z Avere vFXT dla platformy Azure, przeczytaj następujące artykuły, aby dowiedzieć się, jak planować i wdrażać własny system:
 
-* [Planowanie systemu Avere vFXT](avere-vfxt-deploy-plan.md)
+* [Planowanie systemu vFXT Avere](avere-vfxt-deploy-plan.md)
 * [Omówienie wdrażania](avere-vfxt-deploy-overview.md)
 * [Przygotowywanie do utworzenia klastra vFXT Avere](avere-vfxt-prereqs.md)
-* [Wdrażanie klastra vFXT Avere](avere-vfxt-deploy.md)
+* [Wdrażanie klastra Avere vFXT](avere-vfxt-deploy.md)
 
 Aby dowiedzieć się więcej o możliwościach i zastosowań Avere vFXT, odwiedź stronę [vFXT Avere dla platformy Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

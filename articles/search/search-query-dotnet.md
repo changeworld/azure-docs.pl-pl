@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.openlocfilehash: 1194407122123797c2564c96ac452b9582b017a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264951"
 ---
 # <a name="quickstart-3---query-an-azure-search-index-in-c"></a>Szybki start: 3 — tworzenie zapytań względem indeksu usługi Azure Search wC#
@@ -34,7 +34,7 @@ Uzyskaj klucz zapytania używane dla dostępu tylko do odczytu do dokumentów. D
 ## <a name="create-a-client"></a>Tworzenie klienta
 Utwórz wystąpienie obiektu `SearchIndexClient` klasy tak, aby można mu klucza zapytania, aby uzyskać dostęp tylko do odczytu (w przeciwieństwie do praw dostępu do zapisu powierzonych `SearchServiceClient` używane w poprzedniej lekcji).
 
-Ta klasa ma kilka konstruktorów. Odpowiedni przyjmuje Twojej nazwy usługi wyszukiwania, nazwę indeksu i [ `SearchCredentials` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) obiektu jako parametry. `SearchCredentials` opakowuje klucz api-key.
+Ta klasa ma kilka konstruktorów. Odpowiedni przyjmuje Twojej nazwy usługi wyszukiwania, nazwę indeksu i [ `SearchCredentials` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) obiektu jako parametry. `SearchCredentials` opakowuje klucz interfejsu API.
 
 Poniższy kod tworzy nową `SearchIndexClient` dla indeksu "hotels" za pomocą wartości nazwy usługi wyszukiwania i klucza interfejsu api, które są przechowywane w pliku konfiguracji aplikacji (`appsettings.json` w przypadku właściwości [Przykładowa aplikacja](https://aka.ms/search-dotnet-howto)):
 

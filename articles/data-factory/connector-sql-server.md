@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283413"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
@@ -56,9 +56,9 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi S
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SqlServer** | Yes |
-| connectionString |Określ informacje o parametry połączenia potrzebne do łączenia z bazą danych programu SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Zapoznaj się z poniższych przykładów.<br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Yes |
+| Parametry połączenia |Określ informacje o parametry połączenia potrzebne do łączenia z bazą danych programu SQL Server przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Zapoznaj się z poniższych przykładów.<br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Yes |
 | userName |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
-| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
+| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!TIP]
@@ -512,31 +512,31 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | Typ danych programu SQL Server | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | bigint |Int64 |
-| binary |Byte[] |
-| bit |Boolean |
-| char |String, Char[] |
+| dane binarne |Byte[] |
+| Bitowe |Wartość logiczna |
+| Char |String, Char[] |
 | date |DateTime |
-| Datetime |DateTime |
+| Data/godzina |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
+| Dziesiętna |Dziesiętna |
+| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
+| Liczba zmiennoprzecinkowa |Podwójne |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| pieniędzy |Dziesiętna |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| Numeryczne |Dziesiętna |
 | nvarchar |String, Char[] |
-| real |Single |
-| rowversion |Byte[] |
+| rzeczywiste |Pojedyncze |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Object |
-| text |String, Char[] |
-| time |TimeSpan |
+| smallmoney |Dziesiętna |
+| sql_variant |Obiekt |
+| tekst |String, Char[] |
+| time |Przedział czasu |
 | timestamp |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |

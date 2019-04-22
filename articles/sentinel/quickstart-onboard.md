@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276647"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
@@ -49,7 +49,7 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 1. Przejdź do witryny Azure portal.
 2. Upewnij się, czy wybrano subskrypcję, w którym przez wartownika Azure zostanie utworzona. 
 3. Wyszukaj wartownik platformy Azure. 
-   ![szukaj](./media/quickstart-onboard/search-product.png)
+   ![Wyszukiwanie](./media/quickstart-onboard/search-product.png)
 
 1. Kliknij przycisk **+ Dodaj**.
 1. Wybierz obszar roboczy, który chcesz użyć lub utworzyć nowy. Przez wartownika Azure można uruchamiać na więcej niż jednego obszaru roboczego, ale dane są izolowane do jednego obszaru roboczego.

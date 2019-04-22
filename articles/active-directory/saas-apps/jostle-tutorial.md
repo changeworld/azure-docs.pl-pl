@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Jostle
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację rozwiązania Jostle z usługą Azure AD, musisz dodać rozwiązanie Jostle z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Jostle z galerii, wykonaj następujące czynności:**
+**Aby dodać rozwiązanie Jostle z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,11 +105,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z rozwiązaniem Jostle
 
     ![Informacje o logowaniu jednokrotnym — domena i adresy URL rozwiązania Jostle](common/sp-identifier-reply.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://login-prod.jostle.us`
+    a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://login-prod.jostle.us`
 
-    b. W **identyfikator** wpisz adres URL: `https://jostle.us`
+    b. W polu **Identyfikator** wpisz adres URL: `https://jostle.us`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -195,8 +195,8 @@ Po kliknięciu kafelka Jostle na panelu dostępu powinno nastąpić automatyczne
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

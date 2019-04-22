@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361778"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
@@ -211,7 +211,7 @@ Data Lake Storage Gen1 kontenery dla danych są zasadniczo foldery i pliki. Dzia
 ## <a name="DataLakeStoreSecurity"></a>Bezpieczeństwo danych w Data Lake Storage Gen1
 Usługa Data Lake Gen1 magazynu używa usługi Azure Active Directory do uwierzytelniania i używa dostęp kontrolować list kontroli dostępu (ACL) do zarządzania dostępem do danych.
 
-| **Cecha** | **Opis** |
+| **Funkcja** | **Opis** |
 | --- | --- |
 | Authentication |Data Lake Storage Gen1 integruje się z usługą Azure Active Directory (Azure AD) do zarządzania tożsamościami i dostępem dla wszystkich danych przechowywanych w Data Lake Storage Gen1. Dzięki integracji Data Lake Storage Gen1 korzyści płynące z wszystkich funkcji usługi Azure AD. Te funkcje obejmują uwierzytelnianie wieloskładnikowe, dostęp warunkowy, kontrola dostępu oparta na rolach, monitorowania użycia aplikacji, monitorowanie zabezpieczeń i alertów i tak dalej. Data Lake Storage Gen1 obsługuje protokół OAuth 2.0 na potrzeby uwierzytelniania w ramach interfejsu REST. Zobacz [uwierzytelniania w ramach usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Kontrola dostępu |Data Lake Storage Gen1 zapewnia kontrolę dostępu dzięki obsłudze uprawnień POSIX, które są udostępniane przez protokół WebHDFS. Listy kontroli dostępu można włączyć dla folderu głównego, podfolderów i poszczególnych plików. Aby uzyskać więcej informacji na temat sposobu działania list ACL w kontekście Data Lake Storage Gen1, zobacz [kontrola dostępu w usługach Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |

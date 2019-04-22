@@ -13,10 +13,10 @@ ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357946"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
@@ -37,7 +37,7 @@ Model rdzenia wirtualnego oferuje trzy warstwy usług ogólnego przeznaczenia, w
 
 Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 
-||**Ogólne zastosowanie**|**Krytyczne dla działania firmy**|**Na dużą skalę (wersja zapoznawcza)**|
+||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę (wersja zapoznawcza)**|
 |---|---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu|
 |Wystąpienia obliczeniowe|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
@@ -76,8 +76,8 @@ Dzięki korzyści użycia hybrydowego platformy Azure, możesz płacić tylko za
 
 - Aby ustawić lub zaktualizowania typu licencji przy użyciu wiersza polecenia platformy Azure:
 
-  - [Utwórz az sql db](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [AZ sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
   - [Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [Aktualizacja wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 

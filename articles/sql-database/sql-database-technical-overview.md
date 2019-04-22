@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358332"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
@@ -254,9 +254,9 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 - Zapoznać się z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/) zawierającym porównania i kalkulatory kosztów dla pojedynczej bazy danych i pul elastycznych.
 - Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
 
-  - [Tworzenie bazy danych SQL w witrynie Azure portal](sql-database-single-database-get-started.md)  
-  - [Tworzenie bazy danych SQL przy użyciu wiersza polecenia platformy Azure](sql-database-get-started-cli.md)
-  - [Tworzenie bazy danych SQL przy użyciu programu PowerShell](sql-database-get-started-powershell.md)
+  - [Tworzenia bazy danych SQL w witrynie Azure Portal](sql-database-single-database-get-started.md)  
+  - [Tworzenia bazy danych SQL za pomocą interfejsu wiersza polecenia platformy Azure](sql-database-get-started-cli.md)
+  - [Tworzenie bazy danych SQL za pomocą programu PowerShell](sql-database-get-started-powershell.md)
 
 - Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure i programu PowerShell, zobacz:
   - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi SQL Database](sql-database-cli-samples.md)

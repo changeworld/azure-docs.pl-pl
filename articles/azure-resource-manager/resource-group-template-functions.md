@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280319"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonu usługi Azure Resource Manager
@@ -45,8 +45,8 @@ Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](
 ## <a name="array-and-object-functions"></a>Funkcje tablicy i obiektów
 Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 
-* [tablica](resource-group-template-functions-array.md#array)
-* [COALESCE](resource-group-template-functions-array.md#coalesce)
+* [Tablica](resource-group-template-functions-array.md#array)
+* [coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [zawiera](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
@@ -54,12 +54,12 @@ Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 * [pierwszy](resource-group-template-functions-array.md#first)
 * [Część wspólna](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [ostatni](resource-group-template-functions-array.md#last)
+* [last](resource-group-template-functions-array.md#last)
 * [Długość](resource-group-template-functions-array.md#length)
-* [min.](resource-group-template-functions-array.md#min)
-* [maks.](resource-group-template-functions-array.md#max)
-* [Zakres](resource-group-template-functions-array.md#range)
-* [pomiń](resource-group-template-functions-array.md#skip)
+* [min](resource-group-template-functions-array.md#min)
+* [max](resource-group-template-functions-array.md#max)
+* [range](resource-group-template-functions-array.md#range)
+* [skip](resource-group-template-functions-array.md#skip)
 * [Wypełnij](resource-group-template-functions-array.md#take)
 * [Unia](resource-group-template-functions-array.md#union)
 
@@ -73,7 +73,7 @@ Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 
 * [równa się](resource-group-template-functions-comparison.md#equals)
-* [mniej](resource-group-template-functions-comparison.md#less)
+* [less](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
 * [większa](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
@@ -85,7 +85,7 @@ Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 ## <a name="deployment-value-functions"></a>Funkcje wartość wdrożenia
 Pobieranie wartości z części szablonu i wartości związane z wdrażaniem usługi Resource Manager zawiera następujące funkcje:
 
-* [wdrożenie](resource-group-template-functions-deployment.md#deployment)
+* [Wdrożenia](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [Zmienne](resource-group-template-functions-deployment.md#variables)
 
@@ -99,9 +99,9 @@ Pobieranie wartości z części szablonu i wartości związane z wdrażaniem us�
 Usługa Resource Manager zapewnia następujące funkcje do pracy za pomocą warunków logicznych:
 
 * [i](resource-group-template-functions-logical.md#and)
-* [bool](resource-group-template-functions-logical.md#bool)
+* [wartość logiczna](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
-* [nie](resource-group-template-functions-logical.md#not)
+* [not](resource-group-template-functions-logical.md#not)
 * [lub](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
@@ -118,16 +118,16 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy za pomocą waru
 ## <a name="numeric-functions"></a>Funkcje liczbowe
 Usługa Resource Manager zapewnia następujące funkcje do pracy z liczb całkowitych:
 
-* [add](resource-group-template-functions-numeric.md#add)
+* [Dodaj](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [min.](resource-group-template-functions-numeric.md#min)
-* [maks.](resource-group-template-functions-numeric.md#max)
+* [min](resource-group-template-functions-numeric.md#min)
+* [max](resource-group-template-functions-numeric.md#max)
 * [dzielenie modulo](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
-* [Sub](resource-group-template-functions-numeric.md#sub)
+* [sub](resource-group-template-functions-numeric.md#sub)
 
 <a id="listkeys" />
 <a id="list" />
@@ -148,7 +148,7 @@ Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartoś
 * [Odwołanie](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
-* [subskrypcja](resource-group-template-functions-resource.md#subscription)
+* [Subskrypcja](resource-group-template-functions-resource.md#subscription)
 
 <a id="base64" />
 <a id="base64tojson" />
@@ -194,26 +194,26 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [pusty](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [pierwszy](resource-group-template-functions-string.md#first)
-* [format](resource-group-template-functions-string.md#format)
+* [Format](resource-group-template-functions-string.md#format)
 * [Identyfikator GUID](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [ostatni](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Długość](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [Zastąp](resource-group-template-functions-string.md#replace)
-* [pomiń](resource-group-template-functions-string.md#skip)
+* [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [string](resource-group-template-functions-string.md#string)
+* [ciąg](resource-group-template-functions-string.md#string)
 * [podciąg](resource-group-template-functions-string.md#substring)
 * [Wypełnij](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [TRIM](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [identyfikator URI](resource-group-template-functions-string.md#uri)
+* [Identyfikator URI](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)

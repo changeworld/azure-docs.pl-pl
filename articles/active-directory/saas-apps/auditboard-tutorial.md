@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem AuditBoard
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację oprogramowania AuditBoard z usługą Azure AD, należy to oprogramowanie z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać AuditBoard z galerii, wykonaj następujące czynności:**
+**Aby dodać oprogramowanie AuditBoard z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Audit
 
     ![Informacje o domenie i adresach URL oprogramowania AuditBoard na potrzeby logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
@@ -188,8 +188,8 @@ Po kliknięciu kafelka AuditBoard w panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

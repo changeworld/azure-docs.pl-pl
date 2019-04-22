@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010145"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure table storage i Visual Studio połączonych usług (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
 
@@ -31,7 +31,7 @@ W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scen
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Konto magazynu Azure](../storage/common/storage-quickstart-create-account.md)
+* [Konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 

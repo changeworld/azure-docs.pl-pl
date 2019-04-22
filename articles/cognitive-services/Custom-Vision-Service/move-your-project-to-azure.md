@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
 ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274454"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Jak przenieść projektu ograniczonej wersji próbnej na platformie Azure
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji, w tym kluczowe terminy w procesie wycofywania w
     - Jeśli nie masz konta platformy Azure, [Tworzenie konta usługi](https://azure.microsoft.com/free/) za darmo.
     - Wprowadzenie do platformy Azure pojęcia związane z subskrypcji i zasobów, można znaleźć [przewodnik dla deweloperów platformy Azure.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions).
 -  [Python](https://www.python.org/downloads/)
-- [Pip](https://pip.pypa.io/en/stable/installing/)
+- [Narzędzie PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure portal
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256060"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
@@ -59,7 +59,7 @@ Zmiana kursora, obiekt menu podręczne i zdarzenie click są tworzone na mapie [
 Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
@@ -67,7 +67,7 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
 > [!div class="nextstepaction"]
-> [Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B](./map-route.md)
+> [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Wyświetlanie ruchu](./map-show-traffic.md)

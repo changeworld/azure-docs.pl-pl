@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358114"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Planowanie oparte na chmurze usługi Azure Multi-Factor Authentication
@@ -314,6 +314,6 @@ Znajdź rozwiązania typowych problemów z usługą Azure MFA na [artykułu Rozw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Jakie są metody uwierzytelniania?](concept-authentication-methods.md)
+* [Co to są metody uwierzytelniania?](concept-authentication-methods.md)
 * [Włącz konwergentnej rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł](concept-registration-mfa-sspr-converged.md)
 * Dlaczego został użytkownika zostanie wyświetlony monit lub bez wyświetlania monitu o wykonać uwierzytelnianie wieloskładnikowe? Zobacz sekcję [raport logowania usługi Azure AD w raportach w dokumencie usługi Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).

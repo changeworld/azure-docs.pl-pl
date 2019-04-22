@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258916"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
@@ -43,7 +43,7 @@ Jeśli planujesz użyć przykładów programu Azure PowerShell w tym artykule, n
 > [!IMPORTANT]
 > - Granicy zabezpieczeń z zarządzanych tożsamości dla zasobów platformy Azure jest zasób, który jest używany na. Wszystkie kodu/skrypty uruchamiania na maszynie wirtualnej może żądać i pobierać tokenów dla zarządzanych tożsamości, dostępne w nim. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aplikacja kliencka może żądać zarządzanych tożsamości dla zasobów platformy Azure [token dostępu tylko do aplikacji](../develop/developer-glossary.md#access-token) do uzyskiwania dostępu do danego zasobu. Token jest [na podstawie zarządzanych tożsamości dla jednostki usługi dla zasobów platformy Azure](overview.md#how-does-it-work). W efekcie nie ma potrzeby dla klienta w celu zarejestrowania się w celu uzyskania tokenu dostępu w ramach własnej jednostki usługi. Token jest odpowiedni do użytku jako token elementu nośnego w [service to service wywołuje wymagające poświadczeń klienta](../develop/v1-oauth2-client-creds-grant-flow.md).
 

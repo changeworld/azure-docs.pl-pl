@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280472"
 ---
 # <a name="run-a-notebook-slideshow"></a>Uruchamianie notesu pokaz slajdów
@@ -105,4 +105,4 @@ Ponieważ pokaz slajdów renderuje fragmenty z więcej pionowe odstępy niż gdy
 - [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
 - [Instrukcje: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
 - [Instrukcje: Praca z plikami danych](work-with-project-data-files.md)
-- [Instrukcje: Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Instrukcje: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)

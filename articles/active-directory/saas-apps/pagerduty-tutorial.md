@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: ded5854c5e669ab1982641169f13a9cb400d5d6d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi PagerDuty
@@ -105,9 +105,9 @@ Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu usług
 
     ![Adresy URL i domen usługi PagerDuty pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenant-name>.pagerduty.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.pagerduty.com`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<tenant-name>.pagerduty.com`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<tenant-name>.pagerduty.com`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usługi PagerDuty](https://www.pagerduty.com/support/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -213,7 +213,7 @@ W przypadku usługi PagerDuty Inicjowanie obsługi administracyjnej jest zadanie
 >[!NOTE]
 >Można użyć jakichkolwiek innych usługi Pagerduty użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez usługi Pagerduty do świadczenia usługi Azure Active Directory kont użytkowników.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do Twojej **Pagerduty** dzierżawy.
 
@@ -244,9 +244,9 @@ Po kliknięciu kafelka usługi PagerDuty w panelu dostępu, powinien zostać aut
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

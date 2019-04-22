@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047113"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
@@ -22,7 +22,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
  
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). 
  
-* [Klaster testowy i bazy danych](create-cluster-database-portal.md)
+* [Klaster testowy i baza danych](create-cluster-database-portal.md)
  
 * [Przykładowa aplikacja](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka), która generuje dane i wysyła je do platformy Kafka
 

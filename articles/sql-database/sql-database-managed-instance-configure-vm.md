@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
 ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360485"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki start: Konfigurowanie maszyny Wirtualnej platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL
@@ -47,7 +47,7 @@ Poniższe kroki umożliwiają utworzenie nowej podsieci w sieci wirtualnej wyst�
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ---------------- | ----------------- | ----------- |
-   | **Name (Nazwa)** | Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | **Nazwa** | Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    | **Zakres adresów (blok CIDR)** | Prawidłowy zakres | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
    | **Sieciowa grupa zabezpieczeń** | Brak | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|
    | **Tabela tras** | Brak | Wartość domyślna to rozwiązanie dobre dla tego przewodnika Szybki Start.|

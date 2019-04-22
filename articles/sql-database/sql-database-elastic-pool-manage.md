@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267586"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Zarządzanie elastycznymi pulami w usłudze Azure SQL Database
@@ -76,7 +76,7 @@ Aby utworzyć i zarządzać elastycznymi pulami SQL Database za pomocą [wiersza
 | --- | --- |
 |[Utwórz az sql elastic-pool](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Tworzy elastyczną pulę.|
 |[AZ sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Zwraca listę pule elastyczne na serwerze.|
-|[AZ sql elastic-pool list-baz danych](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Zwraca listę baz danych w puli elastycznej.|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Zwraca listę baz danych w puli elastycznej.|
 |[AZ sql elastic-pool list wersje](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Zawiera również ustawień jednostek DTU dostępnej puli, limity przestrzeni dyskowej i ustawienia poszczególnych baz danych. W celu zmniejszenia poziomu szczegółowości, limity dodatkowego miejsca do magazynowania i na bazę danych ustawienia są domyślnie ukryte.|
 |[AZ sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualizuje puli elastycznej.|
 |[AZ sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Usuwa puli elastycznej.|
@@ -91,7 +91,7 @@ Tworzenie i przenoszenie baz danych w ramach istniejących pul elastycznych, lub
 
 | Polecenie | Opis |
 | --- | --- |
-|[Tworzenie bazy danych (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych w istniejącej puli lub jako pojedynczej bazy danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych w istniejącej puli lub jako pojedynczej bazy danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
 | [Instrukcja ALTER DATABASE (baza danych SQL platformy Azure)](/sql/t-sql/statements/alter-database-azure-sql-database) |Przenoszenie bazy danych do, poza nie lub między elastycznymi pulami.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Zwraca statystyki użycia zasobów dla elastycznych pul na serwerze bazy danych SQL. Dla każdej puli elastycznej jest jeden wiersz w każdej sekundzie 15 raportowania okna (cztery wiersze na minutę). W tym procesora CPU, we/wy, Log, wykorzystanie magazynu i wykorzystanie równoczesnych żądań/sesji przez wszystkie bazy danych w puli.|

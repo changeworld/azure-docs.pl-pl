@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8e1199826601f8f2ddd82164dac1a20013d9b7bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Klue
@@ -106,7 +106,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Klue, wykonaj nast�
 
     ![Klue domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `urn:klue:<Customer ID>`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `urn:klue:<Customer ID>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
@@ -230,9 +230,9 @@ Po kliknięciu kafelka Klue w panelu dostępu, powinien zostać automatycznie za
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

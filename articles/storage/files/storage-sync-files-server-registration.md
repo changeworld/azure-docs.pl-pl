@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048450"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync
@@ -193,7 +193,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 Gdy usługi Azure File Sync jest hostowany w maszynie wirtualnej na hoście wirtualizacji systemu Windows Server, można użyć funkcji QoS magazynu (QoS magazynu) sposób użycia operacji We/Wy magazynu. Można ustawić jako maksymalną (lub limit, takie jak sposób wymuszania limitu StorageSyncNetwork powyżej) lub jako co najmniej (lub rezerwacji) zasad QoS magazynu. Ustawienie minimalnej zamiast maksymalnie umożliwia usługi Azure File Sync przejścia do użycia przepustowości dostępnego magazynu, jeśli inne obciążenia nie jest używany. Aby uzyskać więcej informacji, zobacz [jakości usług magazynowania](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Zobacz także
-- [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md)
+- [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
 - [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)
-- [Rozwiązywanie problemów z usługą Azure File Sync](storage-sync-files-troubleshoot.md)
+- [Rozwiązywanie problemów z usługi Azure File Sync](storage-sync-files-troubleshoot.md)

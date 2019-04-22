@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
 ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279775"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statystyki tabeli w usłudze Azure SQL Data Warehouse
@@ -409,11 +409,11 @@ Widoki te systemu zawierają informacje o statystyki:
 | Widok katalogu | Opis |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden wiersz dla każdej kolumny. |
-| [sys.Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego obiektu w bazie danych. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego obiektu w bazie danych. |
 | [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden wiersz dla każdego schematu w bazie danych. |
 | [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden wiersz dla każdego obiektu statystyk. |
 | [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden wiersz dla każdej kolumny w obiekcie statystyk. Zawiera łącza do sys.columns. |
-| [Widok sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (z uwzględnieniem tabel zewnętrznych). |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden wiersz dla każdej tabeli (z uwzględnieniem tabel zewnętrznych). |
 | [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden wiersz dla każdego typu danych. |
 
 ### <a name="system-functions-for-statistics"></a>Funkcje systemu dla statystyk

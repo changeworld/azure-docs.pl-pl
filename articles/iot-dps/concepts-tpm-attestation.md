@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048881"
 ---
 # <a name="tpm-attestation"></a>Poświadczanie za pomocą modułu TPM
@@ -25,7 +25,7 @@ Ten artykuł ma zastosowanie tylko dla urządzeń z kluczem HMAC Obsługa kluczy
 
 Urządzenia usługi Device Provisioning zestawy SDK obsługują wszystko, co jest opisane w tym artykule dla Ciebie. Nie ma potrzeby można zaimplementować nic więcej, korzystając z zestawów SDK na swoich urządzeniach. Ten artykuł pomaga zrozumieć pod względem koncepcyjnym, co się dzieje z modułem TPM zabezpieczeń podczas postanowienia swoje urządzenia i dlaczego jest to bezpieczny.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Moduły TPM Użyj coś, co jest nazywane poręczenia klucza (EK) jako bezpieczne elementu głównego zaufania. Klucz poręczenia jest unikatowy dla modułu TPM, a następnie zmieniając go zasadniczo zmiany urządzenia do nowej.
 

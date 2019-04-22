@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274573"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
@@ -28,7 +28,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Dprzykładowe zasady na platformie Azure eploy](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Wdrażanie przykładu zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 

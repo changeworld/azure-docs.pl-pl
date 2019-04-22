@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009275"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
@@ -58,10 +58,10 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
     1. Wyłącz tworzenie repozytorium Git dla tego przykładowego projektu.
     1. Dostosuj ścieżki do zestawu SDK w pozycji *Project Settings* (Ustawienia projektu).
         1. Na karcie **General** (Ogólne) pod nagłówkiem **Embedded Binaries** (Osadzone pliki binarne) dodaj bibliotekę zestawu SDK jako strukturę: **Add embedded binaries** > **Add other...** (Dodaj osadzone pliki binarne > Dodaj inne...) > przejdź do katalogu macierzystego i wybierz plik `MicrosoftCognitiveServicesSpeech.framework`. Powoduje to automatyczne dodanie biblioteki zestawu SDK do nagłówka **Linked Framework and Libraries** (Połączone struktury i biblioteki).
-        ![Dodano Framework](media/sdk/qs-objectivec-framework.png)
+        ![Dodano strukturę](media/sdk/qs-objectivec-framework.png)
         1. Przejdź do karty **Build Settings** (Ustawienia kompilacji) i aktywuj ustawienia **All** (Wszystko).
         1. Dodaj katalog `$(SRCROOT)/..` do pozycji *Framework Search Paths* (Ścieżki wyszukiwania struktury) w ramach nagłówka **Search Paths** (Ścieżki wyszukiwania).
-        ![Ustawienia ścieżki wyszukiwania Framework](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Ustawienie Framework Search Path (Ścieżka wyszukiwania struktury)](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>Konfigurowanie Interfejsu użytkownika
 
@@ -102,5 +102,5 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Poznaj przykłady języka Objective-C w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka Objective-C w serwisie GitHub](https://aka.ms/csspeech/samples)
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/18/2018
 ms.author: aljo
 ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048473"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
@@ -149,7 +149,7 @@ Aplikacje usługi Service Fabric działają w klastrze — połączonym z sieci�
 
 Możesz:
 - Utworzyć klaster testowy z poziomu programu Visual Studio. Ta opcja służy do tworzenia bezpiecznego klastra bezpośrednio z poziomu programu Visual Studio z preferowaną konfiguracją. 
-- [Tworzenie bezpiecznego klastra na podstawie szablonu](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+- [Utworzyć zabezpieczony klaster na podstawie szablonu](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 W ramach tego samouczka klaster jest tworzony za pomocą programu Visual Studio, co jest bardzo przydatne w przypadku scenariuszy testowych. Jeśli utworzono klaster w inny sposób lub jest używany istniejący klaster, możesz skopiować i wkleić punkt końcowy połączenia lub wybrać go z subskrypcji. 
 

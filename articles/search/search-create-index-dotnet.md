@@ -11,17 +11,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/08/2019
 ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269048"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Szybki start: 1 — Tworzenie indeksu usługi Azure Search wC#
 > [!div class="op_single_selector"]
 > * [C#](search-create-index-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Program PowerShell](search-howto-dotnet-sdk.md)
 > * [Postman](search-fiddler.md)
 >*
 
@@ -78,7 +78,7 @@ Alternatywnie, możesz zapoznać się z [jak używać usługi Azure Search z poz
 
 ## <a name="2---create-a-client"></a>2 — Tworzenie klienta
 
-Aby rozpocząć korzystanie z zestawu .NET SDK usługi Azure Search, Utwórz wystąpienie obiektu `SearchServiceClient` klasy. Ta klasa ma kilka konstruktorów. Konstruktor odpowiedni w tym przypadku przyjmuje jako parametry nazwę usługi wyszukiwania i obiekt `SearchCredentials`. `SearchCredentials` opakowuje klucz api-key.
+Aby rozpocząć korzystanie z zestawu .NET SDK usługi Azure Search, Utwórz wystąpienie obiektu `SearchServiceClient` klasy. Ta klasa ma kilka konstruktorów. Konstruktor odpowiedni w tym przypadku przyjmuje jako parametry nazwę usługi wyszukiwania i obiekt `SearchCredentials`. `SearchCredentials` opakowuje klucz interfejsu API.
 
 Poniższy kod, można znaleźć w pliku Program.cs. Tworzy nową `SearchServiceClient` za pomocą wartości nazwy usługi wyszukiwania i klucza interfejsu api, które są przechowywane w pliku konfiguracji aplikacji (pliku appsettings.json).
 

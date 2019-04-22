@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/27/2019
 ms.openlocfilehash: 1fca4f6e3aacfee52f348f338806b98d6e61994b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006426"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Szybki start: Kontrolowanie urządzenia podłączonego do centrum IoT (Node.js)
@@ -165,4 +165,4 @@ W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z
 Aby dowiedzieć się, jak przekierowywać komunikaty urządzenie-chmura do innych miejsc docelowych w chmurze, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Telemetria trasy do różnych punktów końcowych do przetworzenia](tutorial-routing.md)
+> [Samouczek: przekierowywanie danych telemetrycznych do innych punktów końcowych w celu przetwarzania](tutorial-routing.md)

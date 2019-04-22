@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357116"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu Visual Studio Code do nawiązywania połączenia i wysyłania zapytań dotyczących danych w bazie danych Azure SQL Database
@@ -32,10 +32,10 @@ ms.locfileid: "59357116"
   |:--- |:--- |:---|
   | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory adresów IP w poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny Wirtualnej](sql-database-managed-instance-configure-vm.md)|
-  |||[Łączność z lokalnym](sql-database-managed-instance-configure-p2s.md)
-  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywróć Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
+  |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Przywróć lub zaimportować Adventure Works z [BACPAC](sql-database-import.md) plik wchodzącej w skład [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -48,7 +48,7 @@ Upewnij się, że masz zainstalowaną najnowszą wersję programu [Visual Studio
 
 ## <a name="configure-visual-studio-code"></a>Konfigurowanie programu Visual Studio Code
 
-### **<a name="mac-os"></a>Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 
 W systemie MacOS należy zainstalować protokół OpenSSL, który jest wymaganiem wstępnym dla platformy .NET Core, która używa rozszerzenie mssql. Otwórz terminal i wprowadź następujące polecenia, aby zainstalować rozwiązania **brew** i **OpenSSL**.
 
@@ -61,11 +61,11 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-### **<a name="linux-ubuntu"></a>Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
 Nie jest potrzebna specjalna konfiguracja.
 
-### **<a name="windows"></a>Windows**
+### <a name="windows"></a>**Windows**
 
 Nie jest potrzebna specjalna konfiguracja.
 
@@ -110,10 +110,10 @@ Użyj programu Visual Studio Code, aby nawiązać połączenie z serwerem Azure 
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Nazwa serwera** | W pełni kwalifikowana nazwa serwera | Na przykład: **mojnowyserwer20170313.database.windows.net**. |
    | **Nazwa bazy danych** | mySampleDatabase | Baza danych, z którą ma zostać nawiązane połączenie. |
-   | **Authentication** | Identyfikator logowania SQL| W tym samouczku używane jest uwierzytelnianie SQL. |
+   | **Uwierzytelnianie** | Identyfikator logowania SQL| W tym samouczku używane jest uwierzytelnianie SQL. |
    | **Nazwa użytkownika** | Nazwa użytkownika | Nazwa użytkownika konta administratora serwera, którego użyto do utworzenia serwera. |
    | **Hasło (identyfikator logowania SQL)** | Hasło | Hasło użytkownika konta administratora serwera, którego użyto do utworzenia serwera. |
-   | **Zapisz hasło?** | Tak lub Nie | Wybierz opcję **Tak**, jeśli nie chcesz wprowadzać hasła za każdym razem. |
+   | **Zapisać hasło?** | Tak lub Nie | Wybierz opcję **Tak**, jeśli nie chcesz wprowadzać hasła za każdym razem. |
    | **Wprowadź nazwę dla tego profilu** | Nazwa profilu, np. **mojPrzykladowyProfil** | Zapisany profil przyspiesza połączenie podczas kolejnych logowań. |
 
    W przypadku powodzenia zostanie wyświetlone powiadomienie z informacją o utworzeniu i połączeniu profilu.

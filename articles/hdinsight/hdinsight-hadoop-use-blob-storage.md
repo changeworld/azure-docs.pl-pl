@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: 3356d3eee00a640efe10e2d9f3aa4fa7be775995
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360778"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
@@ -335,12 +335,12 @@ W tym artykule przedstawiono sposób korzystania z magazynu Azure zgodnego z sys
 Aby uzyskać więcej informacji, zobacz:
 
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
-* [Wprowadzenie do usługi Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
+* [Wprowadzenie do usługi Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
 * [Korzystanie z programu Apache Hive z usługą HDInsight][hdinsight-use-hive]
 * [Korzystanie z programu Apache Pig z usługą HDInsight][hdinsight-use-pig]
 * [Use Azure Storage Shared Access Signatures to restrict access to data with HDInsight][hdinsight-use-sas] (Używanie sygnatur dostępu współdzielonego do usługi Azure Storage, aby ograniczyć dostęp do danych za pomocą usługi HDInsight)
-* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
 [powershell-install]: /powershell/azureps-cmdlets-docs

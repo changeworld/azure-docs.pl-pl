@@ -10,10 +10,10 @@ ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008979"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Przykład: Dodawanie synonimów na potrzeby usługi Azure Search w języku C#
@@ -35,12 +35,12 @@ Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący 
 
 Wymagania samouczka obejmują poniższe elementy:
 
-* [Visual Studio](https://www.visualstudio.com/downloads/)
+* [Program Visual Studio](https://www.visualstudio.com/downloads/)
 * [Usługa Azure Search](search-create-service-portal.md)
-* [Biblioteka programu Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
+* [Biblioteka Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
 * [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Zapytania „przed” i „po” demonstrują wartość synonimów. W tym przykładzie użyj przykładowej aplikacji, która wykonuje zapytania i zwraca wyniki w przykładowym indeksie. Przykładowa aplikacja tworzy mały indeks o nazwie „hotels” uzupełniony dwoma dokumentami. Aplikacja wykonuje zapytania wyszukiwania przy użyciu wyrażeń i fraz, które nie pojawiają się w indeksie, włącza funkcję synonimów, a następnie ponownie wykonuje te same wyszukiwania. Poniższy kod demonstruje ogólny przepływ.
 

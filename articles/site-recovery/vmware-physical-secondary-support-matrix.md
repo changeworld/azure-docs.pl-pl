@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360147"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
@@ -55,7 +55,7 @@ Można replikować tylko maszyny z systemem Linux przy użyciu następujących m
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfiguracja sieci — Host/gościa maszyny Wirtualnej
 
-**Konfigurowanie** | **Obsługiwane**  
+**Konfiguracja** | **Obsługiwane**  
 --- | --- 
 Host - zespołu kart interfejsu Sieciowego | Yes 
 Host - sieci VLAN | Yes 
@@ -81,7 +81,7 @@ Wiele ścieżek (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
-**Konfigurowanie** | **Obsługiwane** 
+**Konfiguracja** | **Obsługiwane** 
 --- | --- 
 VMDK | Yes 
 VHD/VHDX | ND 

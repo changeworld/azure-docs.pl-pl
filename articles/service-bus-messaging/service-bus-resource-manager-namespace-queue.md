@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047793"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus i kolejki za pomocą szablonu usługi Azure Resource Manager
@@ -49,7 +49,7 @@ Korzystając z tego szablonu możesz wdrożyć przestrzeni nazw usługi Service 
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
-[![Deploy na platformie Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![Wdrażanie na platformie Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
 
@@ -139,8 +139,8 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak można nimi zarządzać, wyświetlając następujące artykuły:
 
-* [Zarządzanie magistralą usług za pomocą programu PowerShell](service-bus-manage-with-ps.md)
-* [Zarządzanie zasobami usługi Service Bus za pomocą eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)
+* [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/

@@ -11,17 +11,17 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274794"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [To rozwiązanie](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) zaprojektowano, aby ułatwić wdrażanie, konfigurowanie i zarządzanie sieci konsorcjum zawierającym wiele elementów członkowskich dowód uwierzytelniania Ethereum przy minimalnej znajomości platformy Azure i Ethereum.
 
 Za pomocą kliku dane wejściowe użytkownika i wdrożenia jednym kliknięciem w witrynie Azure portal każdy element członkowski można udostępnić zużycie sieci, za pomocą programu Microsoft Azure Compute, sieci i usługi storage na całym świecie. Każdy element członkowski sieciowych zużycia składa się z zestawu węzłów modułu sprawdzania poprawności z równoważeniem obciążenia za pomocą której aplikacji lub użytkownika mogą wchodzić w interakcje przesłać Ethereum transakcji.
@@ -252,7 +252,7 @@ Szczegółowy opis każdego parametru następująco:
   Moduł sprawdzania poprawności dla wydajności przechowywania danych węzła|Typ dysku zarządzanego kopii każdego z węzłów wdrożonego modułu sprawdzania poprawności.|SSD w warstwie standardowa lub Premium|Standardowa, SSD
   Rozmiar maszyny wirtualnej węzła modułu sprawdzania poprawności|Rozmiar maszyny wirtualnej, używany dla węzłów modułu sprawdzania poprawności.|Standardowa A, standardową wartość d., standardowa D-v2, standardowa F serii, Standard DS i FS standardowe|Standardowa D1, wersja 2
 
-[Storage — Szczegóły cennika](https://azure.microsoft.com/pricing/details/managed-disks/)
+[Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Szczegóły cennika maszyny wirtualnej](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 

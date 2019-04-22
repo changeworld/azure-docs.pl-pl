@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357996"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcji Hyper-V odzyskiwania po awarii platformy Azure
@@ -33,9 +33,9 @@ Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić
 
 Wymagania serwera hosta funkcji Hyper-V zależą od scenariusza wdrożenia. Zapoznaj się z wymaganiami wstępnymi funkcji Hyper-V:
 
-* [Replicating Hyper-V VMs (without VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [bez programu VMM] do platformy Azure)](site-recovery-hyper-v-site-to-azure.md)
-* [Replicating Hyper-V VMs (with VMM) to Azure (Replikacja maszyn wirtualnych funkcji Hyper-V [z programem VMM] do platformy Azure)](site-recovery-vmm-to-azure.md)
-* [Replicating Hyper-V VMs to a secondary datacenter (Replikacja maszyn wirtualnych funkcji Hyper-V do dodatkowego centrum danych)](site-recovery-vmm-to-vmm.md)
+* [Replikowanie maszyn wirtualnych z funkcją Hyper-V (bez programu VMM) do platformy Azure](site-recovery-hyper-v-site-to-azure.md)
+* [Replikowanie maszyn wirtualnych z funkcją Hyper-V (z programem VMM) do platformy Azure](site-recovery-vmm-to-azure.md)
+* [Replikowanie maszyn wirtualnych funkcji Hyper-V do dodatkowego centrum danych](site-recovery-vmm-to-vmm.md)
 * Jeśli przeprowadzasz replikację do dodatkowego centrum danych, przeczytaj temat [obsługiwane systemy operacyjne gościa dla maszyn wirtualnych funkcji Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
 * Jeśli przeprowadzasz replikację do platformy Azure, Usługa Site Recovery obsługuje wszystkie systemy operacyjne gościa, które są [obsługiwanym przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
 

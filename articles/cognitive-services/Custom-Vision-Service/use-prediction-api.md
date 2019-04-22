@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046074"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Model za pomocą interfejsu API prognoz.
@@ -137,7 +137,7 @@ Po uruchomieniu aplikacji, monit wprowadź ścieżkę do pliku obrazu, w konsoli
 W tym przewodniku przedstawiono sposób przesyłania obrazów niestandardowych obrazów klasyfikatora/wykrywanie i otrzymać odpowiedź programowo przy użyciu C# zestawu SDK. Dowiedz się, jak realizować scenariusze end-to-end z C#, lub zacznij pracę, przy użyciu innego języka zestawu SDK.
 
 * [Szybki Start: .NET SDK](csharp-tutorial.md)
-* [Szybki start: Zestaw SDK dla języka Python](python-tutorial.md)
-* [Szybki start: Zestaw SDK Java](java-tutorial.md)
-* [Szybki start: Zestaw SDK dla języka Node](node-tutorial.md)
-* [Szybki start: Zestaw SDK dla języka Go](go-tutorial.md)
+* [Szybki start: Python SDK](python-tutorial.md)
+* [Szybki start: Java SDK](java-tutorial.md)
+* [Szybki start: Węzeł zestawu SDK](node-tutorial.md)
+* [Szybki start: Przejdź do zestawu SDK](go-tutorial.md)

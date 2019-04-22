@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
 ms.openlocfilehash: a4f0761af7da1add6a295b7627783daae6fac07c
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007109"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (Node.js)
@@ -148,4 +148,4 @@ W tym przewodniku Szybki start skonfigurowano centrum IoT, zarejestrowano urząd
 Aby dowiedzieć się, jak kontrolować urządzenie symulowane z poziomu aplikacji zaplecza, przejdź do następnego przewodnika Szybki start.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Kontrolowanie urządzenia podłączone do usługi IoT hub](quickstart-control-device-node.md)
+> [Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub](quickstart-control-device-node.md)

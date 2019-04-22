@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: diberry
 ms.openlocfilehash: 96157511c0255774a64c0f64a333fe88a37f80d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261432"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu usługi LUIS
@@ -24,7 +24,7 @@ Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypad
 
 |Kultura|Podhodowli|Uwagi|
 |--|--|--|
-|Chiński|[zh-CN](#chinese-entity-support)||
+|Chiński|[nazwy zh-CN](#chinese-entity-support)||
 |Holenderski|[NL-NL](#dutch-entity-support)||
 |Polski|[EN US (amerykański)](#english-american-entity-support)||
 |Francuski|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-FR (Francja)](#french-france-entity-support), ||
@@ -46,7 +46,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -67,7 +67,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -88,7 +88,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -109,7 +109,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -130,7 +130,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -151,7 +151,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -172,7 +172,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -193,7 +193,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -214,7 +214,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    -   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    -   |  
@@ -235,7 +235,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -256,7 +256,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
@@ -277,7 +277,7 @@ Są obsługiwane w następujących elementach:
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    -   | 
-[Email](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  

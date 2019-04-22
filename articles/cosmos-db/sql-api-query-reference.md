@@ -9,10 +9,10 @@ ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283651"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
@@ -166,7 +166,7 @@ FROM <from_specification>
   
   Określa, że `input_alias` to zbiór wartości zwróconych z podstawowego wyrażenia kontenera.  
  
-- `input_alias` IN  
+- `input_alias` INDIE  
   
   Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy każdej macierzy zwracanym przez wyrażenie bazowego kontenera. Każda wartość zwracana przez bazowego wyrażenie kontenera, który nie jest tablicą jest ignorowany.  
   
@@ -304,7 +304,7 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   > [!NOTE]
   > Pozwoliło to odnotować iloczyn między `<from_source2>` i `<from_source3>` ponieważ zarówno dostosowanych do tej samej `<from_source1>`.  Pozwoliło to odnotować 4 (2 x 2) krotki o wartości A, 0 krotek mających wartość B (1 x 0) i 2 (2 x 1) krotek mających wartość C.  
   
-**Zobacz także**  
+**Zobacz też**  
   
  [Klauzula SELECT](#bk_select_query)  
   
@@ -475,43 +475,43 @@ ORDER BY <sort_specification>
 |-|-|  
 |**Operacje arytmetyczne**|Operator oczekuje input(s) się numery. Dane wyjściowe jest również liczbą. Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub jest typu innego niż liczba następnie wynik **niezdefiniowane**.|  
 |**bitowe**|Operator oczekuje input(s) jako 32-bitowej liczby całkowitej ze znakiem numery. Dane wyjściowe są również 32-bitowa liczba całkowita.<br /><br /> Dowolna wartość nie jest liczbą całkowitą, zostanie zaokrąglony. Dodatnia wartość zostanie zaokrąglona w dół, ujemne wartości zaokrąglane w górę.<br /><br /> Każdą wartość, która znajduje się poza zakresem 32-bitową liczbę całkowitą zostaną przekonwertowane, wykonując ostatnich 32 bity jego dwójki notacji uzupełnienia.<br /><br /> Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż numer, a następnie w wyniku **niezdefiniowane**.<br /><br /> **Uwaga:** Powyżej zachowanie jest zgodne z zachowaniem bitowy operator w JavaScript.|  
-|**Logiczne**|Operator oczekuje input(s) jako Boolean(s). Dane wyjściowe również jest wartością logiczną.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż wartość logiczną, a następnie wynik będzie **niezdefiniowane**.|  
+|**logical**|Operator oczekuje input(s) jako Boolean(s). Dane wyjściowe również jest wartością logiczną.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub innych typów niż wartość logiczną, a następnie wynik będzie **niezdefiniowane**.|  
 |**Porównanie**|Operator oczekuje input(s) mają tego samego typu i nie jest niezdefiniowana. Dane wyjściowe jest wartością logiczną.<br /><br /> Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub danych wejściowych mają różne typy, a następnie w wyniku **niezdefiniowane**.<br /><br /> Zobacz **porządkowanie wartości do porównania** tabeli wartości kolejności szczegółowe informacje.|  
-|**string**|Operator oczekuje input(s) jako ciągi. Dane wyjściowe jest ciąg.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub typem innym niż ciąg, a następnie wynik jest **niezdefiniowane**.|  
+|**ciąg**|Operator oczekuje input(s) jako ciągi. Dane wyjściowe jest ciąg.<br />Jeśli jakiekolwiek dane wejściowe są **niezdefiniowane** lub typem innym niż ciąg, a następnie wynik jest **niezdefiniowane**.|  
   
  **Operatory jednoargumentowe:**  
   
-|**Name (Nazwa)**|**Operator**|**Szczegóły**|  
+|**Nazwa**|**Operator**|**Szczegóły**|  
 |-|-|-|  
 |**Operacje arytmetyczne**|+<br /><br /> -|Zwraca wartość liczbową.<br /><br /> Negacja bitowa. Zwraca wartość ujemna wartość liczbową.|  
 |**bitowe**|~|Uzupełnienie tych. Zwraca uzupełnienie wartość liczbową.|  
-|**Logiczny**|**NOT**|Negacja. Zwraca wartość ujemna wartość logiczną.|  
+|**Logiczne**|**NIE**|Negacja. Zwraca wartość ujemna wartość logiczną.|  
   
  **Operatory binarne:**  
   
-|**Name (Nazwa)**|**Operator**|**Szczegóły**|  
+|**Nazwa**|**Operator**|**Szczegóły**|  
 |-|-|-|  
 |**Operacje arytmetyczne**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Dodatek.<br /><br /> Odejmowanie.<br /><br /> Mnożenia.<br /><br /> Dzielenie.<br /><br /> Modulacja.|  
 |**bitowe**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitowe OR.<br /><br /> Operatora bitowego AND.<br /><br /> Bitowe XOR.<br /><br /> Przesunięcie w lewo.<br /><br /> Przesunięcia w prawo.<br /><br /> Wypełnienie zero przesunięcia bitowego w prawo.|  
-|**Logiczne**|**AND**<br /><br /> **LUB**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty **true**, zwraca **false** inaczej.<br /><br /> Rozłączenie logiczne. Zwraca **true** Jeśli wszystkie argumenty mają **true**, zwraca **false** inaczej.|  
+|**logical**|**I**<br /><br /> **OR**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty **true**, zwraca **false** inaczej.<br /><br /> Rozłączenie logiczne. Zwraca **true** Jeśli wszystkie argumenty mają **true**, zwraca **false** inaczej.|  
 |**Porównanie**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Equals. Zwraca **true** argumenty są równe, funkcja zwraca **false** inaczej.<br /><br /> Nie ma wartości. Zwraca **true** argumenty nie są równe, zwraca **false** inaczej.<br /><br /> Większe niż. Zwraca **true** Jeśli pierwszy argument jest większy niż drugi, zwracają **false** inaczej.<br /><br /> Większa niż lub równe. Zwraca **true** Jeśli pierwszy argument jest większy lub równy do drugiej, zwracają **false** inaczej.<br /><br /> Mniejsze niż. Zwraca **true** Jeśli pierwszy argument jest mniejszy niż drugi jeden zwracany **false** inaczej.<br /><br /> Mniejsze niż lub równe. Zwraca **true** Jeśli pierwszy argument jest mniejszy niż drugi, zwracają **false** inaczej.<br /><br /> COALESCE. Zwraca wartość drugiego argumentu, jeśli pierwszy argument jest **niezdefiniowane** wartość.|  
-|**String**|**&#124;&#124;**|Łączenie. Zwraca połączenie obu argumentów.|  
+|**Ciąg**|**&#124;&#124;**|Łączenie. Zwraca połączenie obu argumentów.|  
   
  **Operatory trzyargumentowe:**  
 
-|**Name (Nazwa)**|**Operator**|**Szczegóły**| 
+|**Nazwa**|**Operator**|**Szczegóły**| 
 |-|-|-|  
 |Operator trójargumentowy|?|Zwraca wartość drugiego argumentu, jeśli pierwszy argument daje w wyniku **true**; w przeciwnym razie zwraca wartość trzeciego argumentu.|  
 
   
  **Kolejność wartości do porównania**  
   
-|**Type**|**Kolejność wartości**|  
+|**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowane**|Nie jest porównywalny.|  
 |**Null**|Pojedyncza wartość: **o wartości null**|  
 |**Liczba**|Liczba rzeczywista fizycznych.<br /><br /> Wartość ujemna nieskończoność jest mniejszy niż inne wartość liczbową.<br /><br /> Wartości nieskończoności dodatniej jest większy niż inne wartość liczbową. **NaN** wartość nie jest porównywalny. Porównanie z **NaN** spowoduje **niezdefiniowane** wartość.|  
-|**String**|Kolejności lexicographical.|  
+|**Ciąg**|Kolejności lexicographical.|  
 |**Tablica**|Kolejność nie, ale sprawiedliwe.|  
 |**Obiekt**|Kolejność nie, ale sprawiedliwe.|  
   
@@ -534,13 +534,13 @@ ORDER BY <sort_specification>
   
  **Obsługiwane skalarnych typów danych:**  
   
-|**Type**|**Kolejność wartości**|  
+|**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowane**|Pojedyncza wartość: **niezdefiniowane**|  
 |**Null**|Pojedyncza wartość: **o wartości null**|  
 |**Wartość logiczna**|Wartości: **false**, **true**.|  
 |**Liczba**|Podwójnej precyzji liczba zmiennoprzecinkowa, IEEE 754 standardowych.|  
-|**String**|Sekwencja zero lub więcej znaków Unicode. Parametry muszą być ujęte w pojedyncze lub podwójne cudzysłowy.|  
+|**Ciąg**|Sekwencja zero lub więcej znaków Unicode. Parametry muszą być ujęte w pojedyncze lub podwójne cudzysłowy.|  
 |**Tablica**|Sekwencja zero lub więcej elementów. Każdy element może być wartością dowolnego typu danych skalarnych, z wyjątkiem niezdefiniowane.|  
 |**Obiekt**|Nieuporządkowana zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
   
@@ -658,7 +658,7 @@ ORDER BY <sort_specification>
   
      W poniższej tabeli opisano konwencje używany do opisu składni w następujące odwołanie SQL.  
   
-    |**Konwencja**|**Używana do**|  
+    |**Konwencja**|**Używane dla**|  
     |-|-|    
     |WIELKIE LITERY|Słowa kluczowe bez uwzględniania wielkości liter.|  
     |Małe litery|Słowa kluczowe uwzględniana wielkość liter.|  
@@ -679,7 +679,7 @@ ORDER BY <sort_specification>
 |Funkcja|Opis|  
 |--------------|-----------------|  
 |[Funkcje matematyczne](#bk_mathematical_functions)|Funkcje matematyczne wykonywanie obliczeń, zazwyczaj na podstawie wartości wejściowych, które są przekazywane jako argumenty i zwraca wartość liczbową.|  
-|[Funkcje kontroli typów](#bk_type_checking_functions)|Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języka SQL.|  
+|[Typ funkcji sprawdzania](#bk_type_checking_functions)|Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języka SQL.|  
 |[Funkcje ciągów](#bk_string_functions)|Funkcje ciągów wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean.|  
 |[Funkcje tablicy](#bk_array_functions)|Funkcje tablicy w trakcie operacji na tablicy wartości wejściowej i liczbowa zwracana, atrybut typu wartość logiczna lub wartości tablicy.|  
 |[Funkcje przestrzenne](#bk_spatial_functions)|Funkcje przestrzenne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.|  
@@ -690,12 +690,12 @@ ORDER BY <sort_specification>
 ||||  
 |-|-|-|  
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
-|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
+|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[LIMIT](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[STOPNI](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
-|[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
-|[WARTOŚĆ W RADIANACH](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[DZIENNIK](#bk_log)|  
+|[LOG10](#bk_log10)|[PI](#bk_pi)|[ZASILANIA](#bk_power)|  
+|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
+|[SQRT](#bk_sqrt)|[KWADRAT](#bk_square)|[LOGOWANIE](#bk_sign)|  
 |[TAN](#bk_tan)|[TRUNC —](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
@@ -1843,13 +1843,13 @@ SELECT
 ||||  
 |-|-|-|  
 |[CONCAT](#bk_concat)|[ZAWIERA](#bk_contains)|[ENDSWITH](#bk_endswith)|  
-|[INDEX_OF](#bk_index_of)|[PO LEWEJ STRONIE](#bk_left)|[DŁUGOŚĆ](#bk_length)|  
-|[LOWER](#bk_lower)|[PRZYTP](#bk_ltrim)|[ZASTĄP](#bk_replace)|  
-|[REPLIKACJA](#bk_replicate)|[REVERSE](#bk_reverse)|[PO PRAWEJ STRONIE](#bk_right)|  
-|[PRZYTK](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
+|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[DŁUGOŚĆ](#bk_length)|  
+|[NIŻSZY](#bk_lower)|[PRZYTP](#bk_ltrim)|[ZASTĄP](#bk_replace)|  
+|[REPLIKUJ](#bk_replicate)|[REVERSE](#bk_reverse)|[PO PRAWEJ STRONIE](#bk_right)|  
+|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
 |[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
-|[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
-|[TRIM](#bk_trim)|[UPPER](#bk_upper)||
+|[StringToObject](#bk_stringtoobject)|[PODCIĄG](#bk_substring)|[ToString](#bk_tostring)|
+|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu.  

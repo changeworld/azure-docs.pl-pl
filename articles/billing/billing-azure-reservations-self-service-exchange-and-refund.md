@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/5/2019
 ms.author: banders
 ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281985"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwrot kosztów dla platformy Azure rezerwacji
@@ -86,7 +86,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 - Aby dowiedzieć się, jak zarządzać rezerwacji, zobacz [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
-    - [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
+    - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
     - [Zarządzanie zastrzeżeniami na platformie Azure](billing-manage-reserved-vm-instance.md)
     - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
     - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: a0b5dd169d29dc392274ab5589931f37beb04e9b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą połączenia ON24 wirtualnego środowiska języka SAML
@@ -147,7 +147,7 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu połąc
 
     c. Kliknij pozycję **Ustaw dodatkowe adresy URL**. 
 
-    d. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
 5.  Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wykonaj następujące kroki:
 
@@ -239,9 +239,9 @@ Po kliknięciu kafelka ON24 wirtualnego środowiska języka SAML połączenia w 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

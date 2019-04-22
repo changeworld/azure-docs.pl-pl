@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261177"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Szybki start: Tworzenie pokoju rozmów przy użyciu funkcji Azure SignalR Service przy użyciu języka Java
@@ -90,4 +90,4 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 W tym przewodniku Szybki Start została skompilowana i uruchomienia aplikacji bez użycia serwera w czasie rzeczywistym przy użyciu narzędzia Maven. Następnie Dowiedz się więcej o sposobie tworzenia funkcji platformy Azure dla języka Java, od podstaw.
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven](../azure-functions/functions-create-first-java-maven.md)
+> [Tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../azure-functions/functions-create-first-java-maven.md)

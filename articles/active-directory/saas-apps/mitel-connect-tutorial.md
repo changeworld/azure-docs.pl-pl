@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b022d3a51a6a1ef16c7d02aa76c5313e1a94e7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-connect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Mitel Connect
@@ -104,9 +104,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą Mitel Conn
 
     ![Mitel połączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://auth.mitel.io/authorize?client_id=<CLIENT ID>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://auth.mitel.io/authorize?client_id=<CLIENT ID>`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://authentication.api.mitel.io/2017-09-01/saml2/<account-uui>`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://authentication.api.mitel.io/2017-09-01/saml2/<account-uui>`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta łączenie Mitel](https://www.mitel.com/support/mitel-technical-support) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -191,9 +191,9 @@ Po kliknięciu kafelka Mitel połączenia w panelu dostępu, powinien zostać au
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

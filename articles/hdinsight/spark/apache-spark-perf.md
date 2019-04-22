@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283073"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
@@ -33,7 +33,7 @@ Wcześniejszych wersji platformy Spark za pomocą danych dane abstrakcyjne, 1.3 
     * Bezpośredni dostęp do pamięci.
     * Niski wyrzucania elementów bezużytecznych (GC)
     * Nie jak przyjazny dla dewelopera jako zestawy danych, ponieważ nie ma żadnych sprawdzanie w czasie kompilacji lub programowania obiektu domeny.
-* **DataSets**
+* **Zestawy danych**
     * Dobre w złożone potoki przetwarzania ETL, w których wpływ na wydajność jest do zaakceptowania.
     * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność.
     * Udostępnia optymalizacji zapytań za pomocą Catalyst.
@@ -60,9 +60,9 @@ Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Az
 
 | Typ Store | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb [s]:**//url/ | **Standardowa (Standard)** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage Gen 2| **abfs [s]:**//url/ | **Szybsza** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage Gen 1| **ADL:**//url/ | **Szybsza** | Yes | Przejściowy klastra |
+| Azure Blob Storage | **wasb [s]:**//url/ | **Standardowa** | Yes | Przejściowy klastra |
+| Azure Data Lake Storage Gen 2| **abfs [s]:**//url/ | **Faster** | Yes | Przejściowy klastra |
+| Azure Data Lake Storage Gen 1| **ADL:**//url/ | **Faster** | Yes | Przejściowy klastra |
 | Lokalny system plików HDFS | **hdfs:**//url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
 
 ## <a name="use-the-cache"></a>Użycie pamięci podręcznej

@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275457"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
@@ -37,7 +37,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
 -  Projekt usługi Azure Migrate można utworzyć tylko w następujących lokalizacjach geograficznych. Jednak nie ogranicza to możliwości tworzenia przypisań dla innych lokalizacji docelowych platformy Azure.
 
-    **Współrzędne geograficzne** | **Lokalizacja magazynu**
+    **Lokalizacja geograficzna** | **Lokalizacja usługi Storage**
     --- | ---
     Azure Government | Administracja USA — Wirginia
     Azja | Azja południowo-wschodnia i Azja Wschodnia
@@ -59,13 +59,13 @@ Ustawienia oceny można dostosować zgodnie z potrzebami. Właściwości oceny s
 
 **Właściwość** | **Szczegóły**
 --- | ---
-**Docelowa lokalizacja** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obecnie obsługuje 33 regiony jako lokalizacje docelowe migracji. [Sprawdź regiony](https://azure.microsoft.com/global-infrastructure/services/). Domyślny region docelowy to Wschodnie stany USA.
+**Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obecnie obsługuje 33 regiony jako lokalizacje docelowe migracji. [Sprawdź regiony](https://azure.microsoft.com/global-infrastructure/services/). Domyślny region docelowy to Wschodnie stany USA.
 **Typ magazynu** | Typ dysków zarządzanych, które chcesz przydzielić dla wszystkich maszyn wirtualnych będących częścią oceny. Jeśli kryterium ustalania rozmiaru to *ustalanie rozmiaru zgodnie ze środowiskiem lokalnym*, jako typ dysku docelowego możesz określić dyski w warstwie Premium (ustawienie domyślne), dyski SSD w warstwie Standardowa lub dyski HDD w warstwie Standardowa. W przypadku *ustalania rozmiaru na podstawie wydajności* oprócz powyższych opcji jest dostępna również opcja Automatycznie, która zapewnia, że zalecenie dotyczące rozmiaru dysku jest określane automatycznie na podstawie danych wydajności maszyn wirtualnych. Jeśli na przykład chcesz uzyskać [czas pracy zgodnie z umową SLA na poziomie 99,9% dla maszyny wirtualnej z pojedynczym wystąpieniem](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), warto określić dyski zarządzane w warstwie Premium jako typ magazynu. Da to pewność, że dla wszystkich dysków w ocenie będą zalecane dyski zarządzane w warstwie Premium. Usługa Azure Migrate obsługuje dyski zarządzane tylko na potrzeby oceny migracji.
-**Zarezerwowane wystąpienia** |  Określ, czy masz [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure. Zgodnie z tym usługa Azure Migrate odpowiednio szacuje koszty.
-**Kryterium zmiany rozmiaru** | Ustalanie rozmiaru może być przeprowadzane na podstawie **historii wydajności** lokalnych maszyn wirtualnych (ustawienie domyślne) lub **zgodnie ze środowiskiem lokalnym** bez uwzględniania historii wydajności.
+**Wystąpienia zarezerwowane** |  Określ, czy masz [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure. Zgodnie z tym usługa Azure Migrate odpowiednio szacuje koszty.
+**Kryterium rozmiaru** | Ustalanie rozmiaru może być przeprowadzane na podstawie **historii wydajności** lokalnych maszyn wirtualnych (ustawienie domyślne) lub **zgodnie ze środowiskiem lokalnym** bez uwzględniania historii wydajności.
 **Historia wydajności** | Domyślnie usługa Azure Migrate ocenia wydajność maszyn lokalnych na podstawie historii wydajności obejmującej ostatni dzień, przy wartości percentyla równej 95%.
 **Współczynnik komfortu** | Podczas oceny usługa Azure Migrate uwzględnia bufor (współczynnik komfortu). Jest on stosowany do wszystkich danych użycia maszyn wirtualnych (procesora, pamięci, dysku i sieci). Współczynnik komfortu uwzględnia kwestie, takie jak okresowe użycie, krótka historia wydajności i prawdopodobne zwiększenie użycia w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna o użyciu na poziomie 20% jest w normalnych warunkach równoważna 2-rdzeniowej maszynie wirtualnej. Jednak wynik zastosowania współczynnika komfortu o wartości 2 daje 4-rdzeniową maszynę wirtualną. Domyślne ustawienie komfortu to 1,3.
-**Seria maszyn wirtualnych** | Serie maszyn wirtualnych używane do szacowania rozmiaru. Jeśli na przykład masz środowisko produkcyjne, którego nie zamierzasz migrować do maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię A z listy serii. Ustalanie właściwego rozmiaru zostanie wykonane tylko przy użyciu wybranych serii.   
+**Serie maszyn wirtualnych** | Serie maszyn wirtualnych używane do szacowania rozmiaru. Jeśli na przykład masz środowisko produkcyjne, którego nie zamierzasz migrować do maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię A z listy serii. Ustalanie właściwego rozmiaru zostanie wykonane tylko przy użyciu wybranych serii.   
 **Waluta** | Twoja waluta rozliczeniowa. Wartość domyślna to USD.
 **Rabat (%)** | Dowolny rabat skojarzony z daną subskrypcją, stosowany do całej oferty platformy Azure. Ustawienie domyślne to 0%.
 **Czas pracy maszyny wirtualnej** | Jeśli Twoje maszyny wirtualne nie będą działać całą dobę na platformie Azure, możesz określić czas trwania ich działania (liczbę dni w miesiącu i liczbę godzin dziennie), co spowoduje wykonanie odpowiednich szacunków kosztów. Wartość domyślna to 31 dni w miesiącu i 24 godziny dziennie.

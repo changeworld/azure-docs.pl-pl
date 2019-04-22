@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361806"
 ---
 # <a name="what-is-azure-backup"></a>Co to jest Azure Backup?
@@ -60,17 +60,17 @@ Użyj punktów w tabeli, aby łatwiej ustalić wymagania w zakresie strategii BC
 
 **Cel** | **Szczegóły** | **Porównanie**
 --- | --- | ---
-**Przechowywanie kopii zapasowej danych** | Dane kopii zapasowej można przechowywać przez wiele dni, miesięcy lub nawet lat, jeśli jest to konieczne pod względem zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Usługa Site Recovery nie zezwala na tym samym dostrajanie.
-**Cel punktu odzyskiwania (recovery point objective, RPO)** | Dopuszczalna ilość utraconych danych, jeśli wymagane jest odzyskiwanie. | Kopie zapasowe mają bardziej zmienny cel punktu odzyskiwania.<br/><br/> Kopie zapasowe maszyn wirtualnych mają zwykle cel punktu odzyskiwania na poziomie jednego dnia, natomiast kopie zapasowe baz danych mają cel punktu odzyskiwania o wartości 15 minut.<br/><br/> Usługa Site Recovery ma ustawiony niski cel punktu odzyskiwania, ponieważ replikacja jest przeprowadzana ciągle lub często, aby zachować małą różnicę między źródłem i kopią repliki.
-**Cel czasu odzyskiwania (recovery time objective, RTO)** |Ilość czasu potrzebnego do ukończenia odzyskiwania lub przywracania. | Ilość danych, które musi przetworzyć rozwiązanie kopii zapasowych, jest zwykle znacznie wyższa (ze względu na większą wartość RPO), a to prowadzi do większych wartości RTO. Na przykład przywrócenie danych z taśmy może potrwać kilka dni, zależnie od czasu potrzebnego do przetransportowania taśmy z oddalonej lokalizacji.
+**Wykonywanie kopii zapasowej/przechowywanie danych** | Dane kopii zapasowej można przechowywać przez wiele dni, miesięcy lub nawet lat, jeśli jest to konieczne pod względem zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Usługa Site Recovery nie zezwala na tym samym dostrajanie.
+**Cel punktu odzyskiwania** | Dopuszczalna ilość utraconych danych, jeśli wymagane jest odzyskiwanie. | Kopie zapasowe mają bardziej zmienny cel punktu odzyskiwania.<br/><br/> Kopie zapasowe maszyn wirtualnych mają zwykle cel punktu odzyskiwania na poziomie jednego dnia, natomiast kopie zapasowe baz danych mają cel punktu odzyskiwania o wartości 15 minut.<br/><br/> Usługa Site Recovery ma ustawiony niski cel punktu odzyskiwania, ponieważ replikacja jest przeprowadzana ciągle lub często, aby zachować małą różnicę między źródłem i kopią repliki.
+**Cel czasu odzyskiwania** |Ilość czasu potrzebnego do ukończenia odzyskiwania lub przywracania. | Ilość danych, które musi przetworzyć rozwiązanie kopii zapasowych, jest zwykle znacznie wyższa (ze względu na większą wartość RPO), a to prowadzi do większych wartości RTO. Na przykład przywrócenie danych z taśmy może potrwać kilka dni, zależnie od czasu potrzebnego do przetransportowania taśmy z oddalonej lokalizacji.
 
 ## <a name="what-backup-scenarios-are-supported"></a>Jakie scenariusze wykonywania kopii zapasowej są obsługiwane?
 
 Usługa Azure Backup umożliwia wykonywanie kopii zapasowych maszyn lokalnych i maszyn wirtualnych platformy Azure.
 
-**Maszyna** | **Tworzenie kopii zapasowej scenariusza**
+**Maszyna** | **Scenariusz wykonywania kopii zapasowej**
 --- | ---
-**Lokalnej kopii zapasowej** |  (1) Uruchom agenta usługi Microsoft Azure Recovery Services (MARS) w usłudze Azure Backup na lokalnych maszynach z systemem Windows, aby tworzyć kopię zapasową poszczególnych plików i stanu systemu. <br/><br/>(2) tworzyć kopie zapasowe maszyn lokalnych na serwer zapasowy (System Center Data Protection Manager (DPM) lub Microsoft Azure Backup serwera (MABS)), a następnie skonfiguruj serwer kopii zapasowych, aby utworzyć kopię zapasową w magazynie usługi Azure Backup Recovery Services na platformie Azure.
+**Lokalna kopia zapasowa** |  (1) Uruchom agenta usługi Microsoft Azure Recovery Services (MARS) w usłudze Azure Backup na lokalnych maszynach z systemem Windows, aby tworzyć kopię zapasową poszczególnych plików i stanu systemu. <br/><br/>(2) tworzyć kopie zapasowe maszyn lokalnych na serwer zapasowy (System Center Data Protection Manager (DPM) lub Microsoft Azure Backup serwera (MABS)), a następnie skonfiguruj serwer kopii zapasowych, aby utworzyć kopię zapasową w magazynie usługi Azure Backup Recovery Services na platformie Azure.
 **Maszyny wirtualne platformy Azure** | (1) Włącz tworzenie kopii zapasowych dla poszczególnych maszyn wirtualnych platformy Azure. Przy włączaniu tworzenia kopii zapasowych usługa Azure Backup instaluje rozszerzenie agenta maszyny wirtualnej platformy Azure, który działa na maszynie wirtualnej. Agent tworzy kopię zapasową całej maszyny wirtualnej.<br/><br/> (2) Uruchom agenta MARS na maszynie wirtualnej platformy Azure. Jest to przydatne, jeśli chcesz tworzyć kopie zapasowe poszczególnych plików i folderów na maszynie wirtualnej.<br/><br/> (3) Utwórz kopię zapasową maszyny wirtualnej platformy Azure na serwerze programu DPM lub usługi MABS na platformie Azure. Następnie utwórz kopię zapasową serwera programu DPM lub usługi MABS w magazynie przy użyciu usługi Azure Backup.
 
 
@@ -86,10 +86,10 @@ Dowiedz się więcej o [sposobie działania kopii zapasowych](backup-architectur
 
 ## <a name="what-can-i-back-up"></a>Dla jakich danych mogę tworzyć kopię zapasową?
 
-**Maszyna** | **Metody wykonywania kopii zapasowej** | **Wykonywanie kopii zapasowej**
+**Maszyna** | **Metoda tworzenia kopii zapasowych** | **Wykonywanie kopii zapasowej**
 --- | --- | ---
 **Lokalne maszyny wirtualne z systemem Windows** | Uruchamianie agenta MARS | Wykonywanie kopii zapasowej plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
-**Maszyn lokalnych** | Tworzenie kopii zapasowych w programie DPM lub usłudze MABS | Można tworzyć kopie zapasowe wszystkich elementów chronionych przez program [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) lub usługę [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), w tym plików/folderów/udziałów/woluminów i danych aplikacji.
+**Maszyny lokalne** | Tworzenie kopii zapasowych w programie DPM lub usłudze MABS | Można tworzyć kopie zapasowe wszystkich elementów chronionych przez program [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) lub usługę [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), w tym plików/folderów/udziałów/woluminów i danych aplikacji.
 **Maszyny wirtualne platformy Azure** | Uruchamianie rozszerzenia kopii zapasowej dla agenta maszyny wirtualnej platformy Azure | Tworzenie kopii zapasowych całej maszyny wirtualnej
 **Maszyny wirtualne platformy Azure** | Uruchamianie agenta MARS | Wykonywanie kopii zapasowej plików, folderów i stanu systemu.<br/><br/> Maszyny z systemem Linux nie są obsługiwane.
 **Maszyny wirtualne platformy Azure** | Tworzenie kopii zapasowych w usłudze MABS lub programie DPM na platformie Azure | Można tworzyć kopie zapasowe wszystkich elementów chronionych przez usługę [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) lub program [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807), w tym plików/folderów/udziałów/woluminów i danych aplikacji.
@@ -99,20 +99,20 @@ Dowiedz się więcej o [sposobie działania kopii zapasowych](backup-architectur
 **Scenariusz** | **Agent**
 --- | ---
 **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure** | Agent nie jest wymagany. Rozszerzenie maszyny wirtualnej platformy Azure do tworzenia kopii zapasowych jest instalowane na maszynie wirtualnej platformy Azure przy pierwszym uruchomieniu tworzenia kopii zapasowej tej maszyny.<br/><br/> Obsługa systemów Windows i Linux.
-**Tworzenie kopii zapasowych maszyn Windows w środowisku lokalnym** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie.
-**Kopii zapasowych maszyn wirtualnych platformy Azure za pomocą agenta usług MARS** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie. Agent MARS może działać równocześnie z rozszerzeniem kopii zapasowej.
-**Tworzenie kopii zapasowych maszyn lokalnych i maszyn wirtualnych platformy Azure do DPM/serwera usługi Mab** | Agent ochrony programu DPM lub usługi MABS jest uruchomiony na maszynach, które mają być chronione. Agent MARS jest uruchomiony na serwerze programu DPM lub w usłudze MABS w celu tworzenia kopii zapasowych na platformie Azure.
+**Tworzenie kopii zapasowych maszyn z systemem Windows w środowisku lokalnym** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie.
+**Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure za pomocą agenta MARS** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie. Agent MARS może działać równocześnie z rozszerzeniem kopii zapasowej.
+**Tworzenie kopii zapasowych maszyn lokalnych i maszyn wirtualnych platformy Azure chronionych przez program DPM lub usługę MABS** | Agent ochrony programu DPM lub usługi MABS jest uruchomiony na maszynach, które mają być chronione. Agent MARS jest uruchomiony na serwerze programu DPM lub w usłudze MABS w celu tworzenia kopii zapasowych na platformie Azure.
 
 ## <a name="which-backup-agent-should-i-use"></a>Którego agenta kopii zapasowej należy używać?
 
-**Backup** | **Rozwiązanie** | **Ograniczenia**
+**Tworzenie kopii zapasowych** | **Rozwiązanie** | **Ograniczenie**
 --- | --- | ---
-**Chcę utworzyć kopię zapasową całej maszyny Wirtualnej platformy Azure** | Włącz tworzenie kopii zapasowych dla maszyny wirtualnej. Rozszerzenie kopii zapasowej zostanie automatycznie skonfigurowane na maszynie wirtualnej platformy Azure z systemem Windows lub Linux. | Tworzona jest kopia zapasowa całej maszyny wirtualnej <br/><br/> W przypadku maszyn wirtualnych z systemem Windows kopia zapasowa jest spójna na poziomie aplikacji. W przypadku systemu Linux kopia zapasowa jest spójna na poziomie plików. Aby uwzględniać aplikacje na maszynach wirtualnych z systemem Linux, musisz to skonfigurować za pomocą skryptów niestandardowych.
-**Chcę, aby utworzyć kopię zapasową określonych plików/folderów na maszynie Wirtualnej platformy Azure** | Wdróż agenta MARS na maszynie wirtualnej.
-**Chcę bezpośrednie tworzenie kopii maszyn Windows w środowisku lokalnym** | Zainstaluj agenta usługi MARS na maszynie. | Możesz wykonywać kopie zapasowe plików, folderów i stanu systemu na platformie Azure. Kopie zapasowe nie uwzględniają aplikacji.
-**Chcę bezpośrednie tworzenie kopii zapasowych maszyn z systemem Linux w środowisku lokalnym** | Musisz wdrożyć program DPM lub usługę MABS, aby móc wykonać kopię zapasową na platformie Azure. | Kopia zapasowa hosta systemu Linux nie jest obsługiwana, można tylko kopii zapasowych systemu Linux maszyny gościa hostowanych na funkcji Hyper-V lub VMWare.
-**Chcę utworzyć kopię zapasową aplikacji działających lokalnie** | Aby można było tworzyć kopie zapasowe z uwzględnieniem aplikacji, maszyny muszą być chronione przez program DPM lub usługę MABS.
-**Chcę, aby szczegółowe i elastyczne ustawienia kopii zapasowych i odzyskiwania maszyn wirtualnych platformy Azure** | Chroń maszyny wirtualne platformy Azure za pomocą usługi MABS lub programu DPM na platformie Azure, aby uzyskać dodatkową elastyczność w przypadku planowania tworzenia kopii zapasowych oraz pełną elastyczność podczas ochrony i przywracania plików, folderów, woluminów, aplikacji i stanu systemu.
+**Chcę tworzyć kopie zapasowe całej maszyny wirtualnej platformy Azure** | Włącz tworzenie kopii zapasowych dla maszyny wirtualnej. Rozszerzenie kopii zapasowej zostanie automatycznie skonfigurowane na maszynie wirtualnej platformy Azure z systemem Windows lub Linux. | Tworzona jest kopia zapasowa całej maszyny wirtualnej <br/><br/> W przypadku maszyn wirtualnych z systemem Windows kopia zapasowa jest spójna na poziomie aplikacji. W przypadku systemu Linux kopia zapasowa jest spójna na poziomie plików. Aby uwzględniać aplikacje na maszynach wirtualnych z systemem Linux, musisz to skonfigurować za pomocą skryptów niestandardowych.
+**Chcę tworzyć kopie zapasowe określonych plików/folderów na maszynie wirtualnej platformy Azure** | Wdróż agenta MARS na maszynie wirtualnej.
+**Chcę bezpośrednio tworzyć kopie zapasowe maszyn lokalnych z systemem Windows** | Zainstaluj agenta usługi MARS na maszynie. | Możesz wykonywać kopie zapasowe plików, folderów i stanu systemu na platformie Azure. Kopie zapasowe nie uwzględniają aplikacji.
+**Chcę bezpośrednio tworzyć kopie zapasowe maszyn lokalnych z systemem Linux** | Musisz wdrożyć program DPM lub usługę MABS, aby móc wykonać kopię zapasową na platformie Azure. | Kopia zapasowa hosta systemu Linux nie jest obsługiwana, można tylko kopii zapasowych systemu Linux maszyny gościa hostowanych na funkcji Hyper-V lub VMWare.
+**Chcę tworzyć kopie zapasowe aplikacji działających lokalnie** | Aby można było tworzyć kopie zapasowe z uwzględnieniem aplikacji, maszyny muszą być chronione przez program DPM lub usługę MABS.
+**Potrzebuję szczegółowych i elastycznych ustawień kopii zapasowych i odzyskiwania dla maszyn wirtualnych platformy Azure** | Chroń maszyny wirtualne platformy Azure za pomocą usługi MABS lub programu DPM na platformie Azure, aby uzyskać dodatkową elastyczność w przypadku planowania tworzenia kopii zapasowych oraz pełną elastyczność podczas ochrony i przywracania plików, folderów, woluminów, aplikacji i stanu systemu.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

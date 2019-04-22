@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274046"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
@@ -412,7 +412,7 @@ W `properties` sekcja, ten dziennik zawiera dodatkowe informacje na temat wiadom
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | Nazwa punktu końcowego routingu |
-| **EndpointType** | String | Typ routingu punkt końcowy |
+| **endpointType** | String | Typ routingu punkt końcowy |
 | **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) wiadomości nadrzędnego, który w tym przypadku będzie śledzenie komunikatów przychodzących Centrum IoT Hub |
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Czytelne dzienniki z usługi Azure Event Hubs

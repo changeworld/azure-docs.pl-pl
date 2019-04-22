@@ -16,10 +16,10 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e37b35f87920016f81bda60fe8a9b6f1714eaae
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją MobileIron
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji MobileIron z usługą Azure AD, musisz dodać aplikację MobileIron z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać MobileIron z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację MobileIron z galerii, wykonaj następujące kroki:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji MobileIron
 
     ![Domena i adresy URL aplikacji MobileIron — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.mobileiron.com/<key>`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.mobileiron.com/<key>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
@@ -194,7 +194,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji MobileIron, należy aprowizować ich w aplikacji MobileIron.  
 W przypadku aplikacji MobileIron aprowizowanie jest zadaniem ręcznym.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do firmowej witryny aplikacji MobileIron jako administrator.
 
@@ -222,9 +222,9 @@ Po kliknięciu kafelka MobileIron w panelu dostępu powinno nastąpić automatyc
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

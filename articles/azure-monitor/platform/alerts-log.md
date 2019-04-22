@@ -9,15 +9,15 @@ ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006953"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule pokazano, jak skonfigurować alerty dzienników przy użyciu interfejsu alertów w witrynie Azure portal. Definicja reguły alertu znajduje się w trzech części:
 - Cel: Określony zasób platformy Azure, która ma być monitorowane
 - Kryteria: Określony warunek lub Logic Apps, gdy widoczne w sygnał, powinny wyzwalać akcję
@@ -50,7 +50,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
    > [!NOTE]
    > 
    > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
-   >  ![Wybieranie zasobu](media/alerts-log/Alert-SelectResourceLog.png)
+   >  ![Wybierz zasób](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. *Alerty dzienników*: Upewnij się, **typ zasobu** jest źródłem analizy, takie jak *usługi Log Analytics* lub *usługi Application Insights* i sygnałów typ jako **dziennika**, niż raz odpowiednie **zasobów** jest wybrana, kliknij przycisk *gotowe*. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału **przeszukiwania dzienników niestandardowych** opcję dla wybranego dziennika usługi monitor, takich jak *dziennika Analiza* lub *usługi Application Insights*.
 

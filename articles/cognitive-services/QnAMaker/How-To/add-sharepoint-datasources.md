@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281747"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Dodawanie bezpiecznego źródła danych programu Sharepoint do bazy wiedzy
@@ -103,11 +103,11 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Wyszukaj `QnAMakerPortalSharepoint` wybierz aplikację usługi QnA Maker. 
 
-    [![Swyszukiwania QnAMakerPortalSharepoint na liście aplikacji w przedsiębiorstwie](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Wyszukaj QnAMakerPortalSharepoint na liście aplikacji przedsiębiorstwa](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. W obszarze **zabezpieczeń**, przejdź do **uprawnienia**. Wybierz **udzielić zgody administratora w organizacji**. 
 
-    [![Suwierzytelniony użytkownik wybiera administrator usługi Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Wybierz uwierzytelnionego użytkownika dla administratora usługi Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
 1. Wybierz konto logowania jednokrotnego z uprawnieniami umożliwiającymi przyznawanie uprawnień usługi Active Directory. 
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/02/2018
 ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048391"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
@@ -22,7 +22,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-* [Klaster testowy i bazy danych](create-cluster-database-portal.md)
+* [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
 * [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która generuje dane i wysyła je do centrum zdarzeń. Pobierz przykładową aplikację w systemie.
 
@@ -38,7 +38,7 @@ W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do c
 
 1. Aby utworzyć centrum zdarzeń, użyj poniższego przycisku w celu rozpoczęcia wdrażania. Kliknij prawym przyciskiem myszy i wybierz pozycję **Utwórz w nowym oknie**, aby wykonać pozostałe kroki w tym artykule.
 
-    [![Deploy na platformie Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Wdrażanie na platformie Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     Przycisk **Wdróż na platformie Azure** powoduje przejście do witryny Azure Portal w celu wypełnienia formularza wdrożenia.
 
@@ -61,7 +61,7 @@ W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do c
     | Lokalizacja | *Zachodnie stany USA* | Na potrzeby tego przewodnika Szybki start wybierz wartość *Zachodnie stany USA*. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom. Utwórz przestrzeń nazw centrum zdarzeń w tej samej lokalizacji co klaster Kusto w celu zapewnienia najlepszej wydajności (jest to szczególnie ważne w przypadku przestrzeni nazw centrum zdarzeń o dużej przepływności).
     | Nazwa przestrzeni nazw | Unikatowa nazwa przestrzeni nazw | Wybierz unikatową nazwę, która identyfikuje Twoją przestrzeń nazw. Na przykład *mytestnamespace*. Do podanej nazwy jest dołączana nazwa domeny *servicebus.windows.net*. Nazwa może zawierać tylko litery, cyfry i łączniki. Nazwa musi zaczynać się literą i kończyć literą lub cyfrą. Nazwa musi mieć długość od 6 do 50 znaków.
     | Nazwa centrum zdarzeń | *test-hub* | Centrum zdarzeń znajduje się w przestrzeni nazw, która zapewnia unikatowy kontener określania zakresu. Nazwa centrum zdarzeń musi być unikatowa w obrębie przestrzeni nazw. |
-    | Nazwa grupy konsumentów | *Grupa testowa* | Dzięki grupom konsumentów każda z wielu aplikacji korzystających z danych może mieć osobny widok strumienia zdarzeń. |
+    | Nazwa grupy konsumentów | *test-group* | Dzięki grupom konsumentów każda z wielu aplikacji korzystających z danych może mieć osobny widok strumienia zdarzeń. |
     | | |
 
 1. Wybierz pozycję **Zakup**, która potwierdza, że tworzysz zasoby w ramach swojej subskrypcji.
@@ -113,7 +113,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Nazwa połączenia danych | *test-hub-connection* | Nazwa połączenia, które chcesz utworzyć w usłudze Azure Data Explorer.|
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
-    | Grupa konsumentów | *Grupa testowa* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
+    | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
     | | |
 
     Tabela docelowa:

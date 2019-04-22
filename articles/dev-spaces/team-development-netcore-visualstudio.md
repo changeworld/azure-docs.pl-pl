@@ -12,10 +12,10 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
 ms.openlocfilehash: 58807aa5a540de6eaa9a337caa0c34fee9408296
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361452"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
@@ -58,8 +58,8 @@ _Bez_ używania usługi Dev Spaces Scott miałby kilka sposobów na opracowanie 
 ### <a name="set-up-your-baseline"></a>Konfigurowanie punktu odniesienia
 Najpierw musimy wdrożyć punkt odniesienia naszych usług. To wdrożenie będzie reprezentować „ostatni znany dobry” punkt, aby można było łatwo porównać zachowanie kodu lokalnego z wersją zaewidencjonowaną. Następnie, na podstawie tego punktu odniesienia, utworzymy przestrzeń podrzędną, aby umożliwić testowanie zmian w usłudze *mywebapi* w kontekście większej aplikacji.
 
-1. Klonuj [Dev miejsca do magazynowania Przykładowa aplikacja](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. Zapoznaj się z gałęzi zdalnej *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
+1. Sklonuj [przykładową aplikację usługi Dev Spaces](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Wyewidencjonuj gałąź zdalną *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
 1. Zamknij wszystkie sesje F5/debugowania dla obu usług, ale nie zamykaj projektów w oknach programu Visual Studio.
 1. Przełącz się na okno programu Visual Studio z projektem _mywebapi_.
 1. Kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Właściwości**.

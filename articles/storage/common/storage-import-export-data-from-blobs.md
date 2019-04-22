@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263841"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
@@ -142,7 +142,7 @@ To *opcjonalne* krok ułatwia określa liczbę dysków wymaganych do zadania eks
     |Parametr wiersza polecenia|Opis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Opcjonalny. Katalog dziennika. Plików pełnego dziennika są zapisywane do tego katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
-    |**/sn:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
+    |**/SN:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
     |**/sk:**|Wymagane tylko, jeśli sygnatury dostępu Współdzielonego kontenera nie jest określony. Klucz konta dla konta magazynu dla zadania eksportu.|  
     |**/csas:**|Wymagane tylko, jeśli nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
     |**/ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263285"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>Usługa Azure Machine Learning w notesie
@@ -48,8 +48,8 @@ Notesy platformy Azure ma wstępnie skonfigurowany środowiska niezbędne do pra
 Dokumentacja usług Azure Machine Learning zawiera szereg innych zasobów, które pomagają w pracy z usługi Machine Learning w notesach:
 
 - [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu języka Python](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Samouczek #1: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [Samouczek #2: Wdróż model klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Samouczek nr 1: Uczenie modelu Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [Samouczek 2: Wdróż model klasyfikacji obrazów w wystąpieniu kontenera platformy Azure (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
 - [Samouczek: Wytrenuj model klasyfikacji z automatycznych machine learning w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
 Ponadto można znaleźć w dokumentacji [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276494"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
@@ -249,7 +249,7 @@ Aby uzyskać więcej informacji na temat sposobu zarządzania zasad zasobów prz
 Sprawdź następujące artykuły, aby uzyskać więcej informacji na temat polecenia i zapytania w tym artykule.
 
 - [Zasoby interfejsu API REST platformy Azure](/rest/api/resources/)
-- [Moduły programu Azure PowerShell](/powershell/module/az.resources/#policies)
+- [Azure PowerShell Modules](/powershell/module/az.resources/#policies)
 - [Polecenia zasad wiersza polecenia platformy Azure](/cli/azure/policy?view=azure-cli-latest)
 - [Dostawcę zasobów szczegółowych informacji o zasadach dokumentacja interfejsu API REST](/rest/api/policy-insights)
 - [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md)

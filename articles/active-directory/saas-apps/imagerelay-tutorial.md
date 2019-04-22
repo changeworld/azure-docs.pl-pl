@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d2d41af8fa04b03ab8d18277d377f3700575cd1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Image Relay
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji Image Relay z usługą Azure AD, należy z poziomu galerii dodać tę aplikację do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać przekazywania obrazów z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację Image Relay z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,9 +105,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Image Relay](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.imagerelay.com/`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.imagerelay.com/`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.imagerelay.com/sso/metadata`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.imagerelay.com/sso/metadata`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Image Relay](http://support.imagerelay.com/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -235,7 +235,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Image Relay.
 
-**Aby utworzyć użytkownika o nazwie Britta Simon w przekazywania obrazów, wykonaj następujące czynności:**
+**Aby utworzyć użytkownika o nazwie Britta Simon w aplikacji Image Relay, wykonaj następujące kroki:**
 
 1. Zaloguj się do firmowej witryny aplikacji Image Relay jako administrator.
 
@@ -257,8 +257,8 @@ Po kliknięciu kafelka Image Relay w panelu dostępu powinno nastąpić automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

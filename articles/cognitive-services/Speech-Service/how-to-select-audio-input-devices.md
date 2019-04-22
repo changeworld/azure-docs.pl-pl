@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010383"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
@@ -379,9 +379,9 @@ W języku JavaScript [MediaDevices.enumerateDevices()](https://developer.mozilla
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Poznaj nasze przykłady w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

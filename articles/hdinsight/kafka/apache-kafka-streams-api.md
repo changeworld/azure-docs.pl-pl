@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273825"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Kafka
@@ -269,5 +269,5 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 
-* [Analizowanie dzienników platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikuj dane między klastrami platformy Apache Kafka](apache-kafka-mirroring.md)
+* [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)
+* [Replikowanie danych między klastrami Apache Kafka](apache-kafka-mirroring.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: monhaber
 ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006738"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
@@ -81,7 +81,7 @@ Aby wybrać obszar roboczy utworzony przez usługę Security Center:
 
 1. Kliknij pozycję **Zapisz**.<br>
     Usługa Security Center utworzy nowy zasób grupy i domyślny obszar roboczy w tym geolokalizacja i łączy agenta do tego obszaru roboczego. Konwencja nazewnictwa dla obszaru roboczego i grupy zasobów jest:<br>
-   **Workspace: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup — [geograficzna]**
+   **Obszar roboczy: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup-[geo]**
 
    Jeśli subskrypcja zawiera maszyny wirtualne z wieloma geolocations, usługa Security Center tworzy wiele obszarów roboczych. Wiele obszarów roboczych są tworzone do obsługi zasad ochrony prywatności danych.
 1. Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
@@ -254,7 +254,7 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
    a.  W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
      
    b.  Wybierz obszar roboczy, w którym trzeba połączyć agenta. Upewnij się, że obszar roboczy jest w tej samej subskrypcji, użyj w usłudze Security Center i czy masz uprawnienia odczytu/zapisu w obszarze roboczym.
-       ![Wybór obszaru roboczego][8]
+       ![Wybierz obszar roboczy][8]
 3. Ustawienie warstwy cenowej.
    ![Wybierz warstwę cenową][9] 
    >[!NOTE]

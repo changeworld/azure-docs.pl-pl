@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009586"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu wywołań interfejsu API REST
@@ -88,11 +88,11 @@ Do utworzenia maszyny wirtualnej zestawu skalowania z przypisany systemowo tożs
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -183,11 +183,11 @@ Aby włączyć tożsamość zarządzaną przypisana przez system, na podstawie i
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -216,11 +216,11 @@ Aby włączyć tożsamość zarządzaną przypisana przez system, na podstawie i
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. |
  
    **Treść żądania**
@@ -250,11 +250,11 @@ Aby włączyć tożsamość zarządzaną przypisana przez system, na podstawie i
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -294,11 +294,11 @@ Aby wyłączyć tożsamości przypisanych przez system na podstawie istniejąceg
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -351,11 +351,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -438,11 +438,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. |
  
    **Treść żądania**
@@ -533,7 +533,7 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
@@ -554,11 +554,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-12-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -586,11 +586,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -622,11 +622,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -661,11 +661,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-    **Nagłówki żądań**
+    **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -700,7 +700,7 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
@@ -722,11 +722,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -754,11 +754,11 @@ W tej sekcji dowiesz się, jak dodawać i usuwać tożsamości zarządzanej uży
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Nagłówki żądań**
+   **Nagłówki żądania**
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
    **Treść żądania**
@@ -784,11 +784,11 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Nagłówki żądań**
+**Nagłówki żądania**
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
 **Treść żądania**
@@ -811,11 +811,11 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Nagłówki żądań**
+**Nagłówki żądania**
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Content-Type*     | Wymagany. Ustaw `application/json`.        |
+|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu. | 
 
 **Treść żądania**

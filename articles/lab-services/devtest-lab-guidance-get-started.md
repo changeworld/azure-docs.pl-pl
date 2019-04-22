@@ -14,10 +14,10 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272390"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Popularne scenariusze dotyczące korzystania z usługi Azure DevTest Labs
@@ -85,5 +85,5 @@ A **weryfikacji koncepcji** wdrożenia koncentruje się na najwięcej starań je
 Przeczytaj następujące artykuły:
 
 - [DevTest Labs — pojęcia](devtest-lab-concepts.md)
-- [DevTest Labs — często zadawane pytania](devtest-lab-faq.md)
+- [Usługa DevTest Labs — często zadawane pytania](devtest-lab-faq.md)
 

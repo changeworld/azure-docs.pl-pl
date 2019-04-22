@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010553"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
@@ -61,7 +61,7 @@ Aby włączyć przypisany systemowo tożsamości zarządzanej aplikacji logiki w
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
-   | **Identyfikator obiektu** | <*identity-resource-ID*> | Unikatowy identyfikator globalny (GUID), reprezentujący przypisany systemu tożsamości zarządzanej dla aplikacji logiki w dzierżawie usługi Azure AD | 
+   | **Identyfikator obiektu:** | <*identity-resource-ID*> | Unikatowy identyfikator globalny (GUID), reprezentujący przypisany systemu tożsamości zarządzanej dla aplikacji logiki w dzierżawie usługi Azure AD | 
    ||| 
 
 <a name="template"></a>
@@ -114,7 +114,7 @@ Gdy platforma Azure utworzy aplikację logiki, ta aplikacja logiki definicji prz
 | Właściwość | Wartość | Opis | 
 |----------|-------|-------------|
 | **principalId** | <*principal-ID*> | Unikatowy identyfikator globalny (GUID), reprezentujący aplikację logiki w dzierżawie usługi Azure AD, a czasami jest wyświetlany jako "Identyfikator obiektu" lub `objectID` | 
-| **tenantId** | <*Azure-AD-tenant-ID*> | Globalnie unikatowy identyfikator (GUID) reprezentujący dzierżawy usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W dzierżawie usługi Azure AD jednostki usługi ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
+| **Identyfikator dzierżawy** | <*Azure-AD-tenant-ID*> | Globalnie unikatowy identyfikator (GUID) reprezentujący dzierżawy usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W dzierżawie usługi Azure AD jednostki usługi ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
 ||| 
 
 <a name="access-other-resources"></a>

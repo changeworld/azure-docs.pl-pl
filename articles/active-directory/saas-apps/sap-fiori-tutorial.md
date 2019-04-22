@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązaniu SAP Fiori
@@ -135,7 +135,7 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego, dzięki rozwiązani
 6. W polu **Provider Name** (Nazwa dostawcy) zastąp ciąg T01122 ciągiem `http://T01122` i kliknij pozycję **Save** (Zapisz).
 
     > [!NOTE]
-    > Nazwa domyślnego dostawcy uszkodzonym <sid><client> formatowanie, ale usługa Azure AD oczekuje nazwy w formacie <protocol>://<name>, zalecających, aby zachować nazwę dostawcy, jak https://<sid><client> umożliwia wielu aparatów SAP Fiori ABAP do skonfigurowania w usłudze Azure AD .
+    > Nazwa domyślnego dostawcy uszkodzonym <sid> <client> formatowanie, ale usługa Azure AD oczekuje nazwy w formacie <protocol>://<name>, zalecających, aby zachować nazwę dostawcy, jak https://<sid> <client> umożliwia wielu rozwiązaniu SAP Fiori Aparaty ABAP do skonfigurowania w usłudze Azure AD.
 
     ![Link do pobierania certyfikatu](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
@@ -175,8 +175,7 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego, dzięki rozwiązani
 
     ![SAP Fiori domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier-reply.png)
 
-    d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
-    `https://<your company instance of SAP Fiori>`
+    d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<your company instance of SAP Fiori>`
 
     > [!NOTE]
     > Zaobserwowaliśmy, że niektórzy klienci zgłaszają błąd polegający na tym, że adres URL odpowiedzi skonfigurowany dla ich wystąpienia jest nieprawidłowy. Jeśli wystąpi taki błąd, możesz użyć następującego skryptu programu PowerShell jako obejścia w celu ustawienia prawidłowego adresu URL odpowiedzi dla wystąpienia:
@@ -376,8 +375,8 @@ W tej sekcji utworzysz użytkownika w rozwiązaniu SAP Fiori o nazwie Britta Sim
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

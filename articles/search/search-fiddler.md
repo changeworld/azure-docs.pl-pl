@@ -11,10 +11,10 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269116"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Szybki start: Zapoznaj się z wyszukiwania interfejsów API REST Azure przy użyciu narzędzia Postman
@@ -22,7 +22,7 @@ ms.locfileid: "59269116"
 > * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Program PowerShell](search-howto-dotnet-sdk.md)
 >*
 
 Jedną z najprostszych sposobów eksploracji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice) jest przy użyciu narzędzia Postman lub innego narzędzia do testowania w sieci web do sformułowania żądań HTTP i sprawdzenia odpowiedzi. Za pomocą odpowiednich narzędzi i niniejszej instrukcji możesz wysyłać żądania i wyświetlać odpowiedzi przed napisaniem jakiegokolwiek kodu.
@@ -228,7 +228,7 @@ To zapytanie wyszukuje termin „motel” i zwraca liczbę dokumentów w wynikac
 
 
 ## <a name="get-index-properties"></a>Pobierz właściwości indeksu
-Możesz także zbadać informacji o systemie, można pobrać liczby dokumentów i użyciu przestrzeni dyskowej: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+Zapytania możesz także wykonywać względem informacji o systemie, aby uzyskać informacje o liczbie dokumentów i użyciu przestrzeni dyskowej: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 W narzędziu Postman Twoje żądanie powinno wyglądać podobnie do poniższego, zaś odpowiedź zawiera liczbę dokumentów i użyte miejsce w bajtach.
 
@@ -274,7 +274,7 @@ Poniższe przykładowe zapytanie można znaleźć w artykule [Search Index opera
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
-**Po zastąpieniu spacji znakiem + (w zapytaniu lastRenovationDate + desc):**
+**Po zastąpieniu spacji znakiem + (w zapytaniu lastRenovationDate+desc):**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 

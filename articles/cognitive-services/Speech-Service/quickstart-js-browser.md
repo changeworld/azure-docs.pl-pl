@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
 ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008990"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
@@ -110,4 +110,4 @@ Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej p
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Eksploruj przykładowe skrypty JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)

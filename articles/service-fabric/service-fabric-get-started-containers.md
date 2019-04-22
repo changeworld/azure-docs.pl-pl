@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049495"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
@@ -452,7 +452,7 @@ W obszarze **Punkt końcowy połączenia** wprowadź punkt końcowy zarządzania
 
 Kliknij przycisk **Opublikuj**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to oparte na sieci Web narzędzie do sprawdzania aplikacji i węzłów oraz zarządzania nimi w klastrze usługi Service Fabric. Otwórz przeglądarkę i przejdź do adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, a następnie wykonaj procedurę wdrażania aplikacji. Aplikacja wdrożona, ale jest w stanie błędu do czasu pobrania obrazu na węzły klastra (co może zająć trochę czasu, w zależności od rozmiaru obrazu): ![Błąd][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) to oparte na sieci Web narzędzie do sprawdzania aplikacji i węzłów oraz zarządzania nimi w klastrze usługi Service Fabric. Otwórz przeglądarkę i przejdź do adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, a następnie wykonaj procedurę wdrażania aplikacji. Aplikacja wdrożona, ale jest w stanie błędu do czasu pobrania obrazu na węzły klastra (co może zająć trochę czasu, w zależności od rozmiaru obrazu): ![Error][1]
 
 Aplikacja jest gotowa, gdy jest on w ```Ready``` stanu: ![Gotowe][2]
 

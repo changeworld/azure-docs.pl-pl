@@ -17,15 +17,15 @@ ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007160"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Standard SCIM to standardowy protokół i schemat, który ma na celu dysku większej spójności w sposobu zarządzania tożsamościami w systemach. Gdy aplikacja obsługuje punkt końcowy Standard SCIM do zarządzania użytkownikami, usługa aprowizowania użytkowników w usłudze Azure AD mogą wysyłać żądania do tworzenie, modyfikowanie lub usuwanie przypisanych użytkowników i grup do tego punktu końcowego. 
 
@@ -152,7 +152,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 >Aby dowiedzieć się, jak i kiedy usługa aprowizowania użytkowników w usłudze Azure AD emituje czynności opisane poniżej, zobacz [co się dzieje podczas aprowizacji użytkowników?](user-provisioning.md#what-happens-during-provisioning).
 
 - [Operacje użytkownika](#user-operations)
-  - [Utwórz użytkownika](#create-user)
+  - [Tworzenie użytkownika](#create-user)
     - [Żądanie](#request)
     - [Odpowiedź](#response)
   - [Pobieranie użytkownika](#get-user)
@@ -170,14 +170,14 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
   - [Aktualizuj użytkownika [właściwości pojedynczej wartości]](#update-user-single-valued-properties)
     - [Żądanie](#request-5)
     - [Odpowiedź](#response-5)
-  - [Usuń użytkownika](#delete-user)
+  - [Usuwanie użytkownika](#delete-user)
     - [Żądanie](#request-6)
     - [Odpowiedź](#response-6)
 - [Operacje dotyczące grupy](#group-operations)
   - [Tworzenie grupy](#create-group)
     - [Żądanie](#request-7)
     - [Odpowiedź](#response-7)
-  - [Pobierz grupę](#get-group)
+  - [Pobieranie grupy](#get-group)
     - [Żądanie](#request-8)
     - [Odpowiedź](#response-8)
   - [Pobierz grupę przez Nazwa wyświetlana](#get-group-by-displayname)
@@ -192,7 +192,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
   - [Aktualizowanie grupy [Usuń]](#update-group-remove-members)
     - [Żądanie](#request-12)
     - [Odpowiedź](#response-12)
-  - [Usuń grupę](#delete-group)
+  - [Usuwanie grupy](#delete-group)
     - [Żądanie](#request-13)
     - [Odpowiedź](#response-13)
 
@@ -260,7 +260,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 #### <a name="get-user"></a>Pobieranie użytkownika
 
 ###### <a name="request"></a>Żądanie
-*Pobierz /Users/5d48a0a8e9f04aa38008* 
+*GET /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>Odpowiedź
 *HTTP/1.1 200 OK*
@@ -455,7 +455,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 #### <a name="create-group"></a>Tworzenie grupy
 
 ##### <a name="request"></a>Żądanie
-*/ Groups POST protokołu HTTP/1.1*
+*POST /Groups HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
@@ -1264,8 +1264,8 @@ Grupy zasobów są identyfikowane przez identyfikator schematu `urn:ietf:params:
 * [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
 * [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Powiadomienia związane z aprowizacją kont](user-provisioning.md)
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
+* [Powiadomienia z Aprowizacją kont](user-provisioning.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

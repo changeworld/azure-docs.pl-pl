@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358997"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
@@ -143,7 +143,7 @@ Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz nastę
 | --- | --- |
 | Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name (Nazwa) | 1 |
-| Type | REG_SZ (ciąg) |
+| Typ | REG_SZ (ciąg) |
 | Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następujący klucz rejestru:
@@ -152,7 +152,7 @@ Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następuj�
 | --- | --- |
 | Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name (Nazwa) | 1 |
-| Type | REG_SZ (ciąg) |
+| Typ | REG_SZ (ciąg) |
 | Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, umożliwiając można zidentyfikowane i zweryfikować względem zasad. Sprawdzanie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym.

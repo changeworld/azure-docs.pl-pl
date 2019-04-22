@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358251"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
@@ -60,9 +60,9 @@ Utworzyliśmy pojęcie jednostki obliczeniowe platformy Azure (ACU), aby umożli
 | Rodzina SKU | ACU/rdzeń |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Mała liczba godzin ExtraLarge](#a-series) |100 |
-| [A5 – 7](#a-series) |100 |
-| [A8-A11](#a-series) |225* |
+| [Small-ExtraLarge](#a-series) |100 |
+| [A5-7](#a-series) |100 |
+| [A8–A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [D](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048218"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
@@ -145,9 +145,9 @@ Przepływów sterowania organizowanie działań potoku, które obejmują tworzen
 
 Aby uzyskać więcej informacji o pojęciach związanych z usługą Data Factory, zobacz następujące artykuły:
 
-- [Zestaw danych i połączone usługi](concepts-datasets-linked-services.md)
+- [Dataset and linked services (Zestaw danych i połączone usługi)](concepts-datasets-linked-services.md)
 - [Potoki i działania](concepts-pipelines-activities.md)
-- [Integration Runtime](concepts-integration-runtime.md)
+- [Integration Runtime (Produkt Integration Runtime)](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Co to jest model cenowy dla usługi Data Factory?
 Aby uzyskać szczegóły cennika usługi Azure Data Factory, zobacz [szczegóły cennika usługi fabryka danych](https://azure.microsoft.com/pricing/details/data-factory/).

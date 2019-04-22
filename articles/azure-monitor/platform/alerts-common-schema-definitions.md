@@ -9,17 +9,17 @@ ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010400"
 ---
 # <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
 
 W tym artykule opisano [wspólnej definicji schematów alertu](https://aka.ms/commonAlertSchemaDocs) dla elementów Webhook/logika aplikacji/usługi Azure Functions. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano wszystkie wystąpienia alertu **zasób, który będzie miała wpływu na** i **przyczyną alertu**, te wystąpienia są opisane we wspólnym schemacie w następujących sekcjach:
 * **Podstawy**: Zbiór **standardowych pól**, wspólny dla wszystkich typów alertów, które opisują **jakim zasobem** alertu znajduje się na wraz z dodatkowych wspólnych metadanych alertu (na przykład, ważności lub opis). 

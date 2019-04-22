@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280897"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
@@ -249,7 +249,7 @@ Gdy pojawi się do wdrożenia, proces jest nieco inne w zależności od wdrażan
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
 | [Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web (wnioskowania w czasie rzeczywistym)| Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Azure ML Compute](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
+| [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Usługa sieci Web (Tworzenie i testowanie)| Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
 | [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |

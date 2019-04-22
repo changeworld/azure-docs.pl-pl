@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046686"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych
@@ -39,7 +39,7 @@ Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, zobacz nastę
 Jeśli jeszcze tego nie zrobiono, należy zainstalować programu Azure PowerShell i wiersza polecenia platformy Azure, korzystając z następujących instrukcji:
 
 - [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
-- [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>Kroki wdrażania

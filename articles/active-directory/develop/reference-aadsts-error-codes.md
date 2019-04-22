@@ -18,10 +18,10 @@ ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271802"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
@@ -153,7 +153,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS70007 | UnsupportedResponseMode — aplikacja zwrócił nieobsługiwana wartość `response_mode` podczas żądania tokenu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant - token odświeżania wygasł z powodu braku aktywności. Token został wystawiony na XXX i był nieaktywny przez pewien czas. |
 | AADSTS70011 | InvalidScope — zakres żądany przez aplikację jest nieprawidłowy. |
-| AADSTS70012 | MsaServerError — błąd serwera podczas uwierzytelniania użytkownika konta Microsoft (użytkownik). Spróbuj ponownie. Jeśli próba ponownie nie powiedzie się, [otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError — błąd serwera podczas uwierzytelniania użytkownika konta Microsoft (użytkownik). Spróbuj ponownie. Jeśli nadal nie będzie działać, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending — błąd przepływu urządzenia protokołu OAuth 2.0. Autoryzacja jest w stanie oczekiwania. Urządzenie ponowi próbę żądania sondowania. |
 | AADSTS70018 | BadVerificationCode — kod weryfikacyjny nieprawidłowy ze względu na użytkownika, wpisując w kodzie użytkownika problem dla przepływu kodu urządzenia. Autoryzacja nie została zatwierdzona. |
 | AADSTS70019 | CodeExpired — kod weryfikacyjny wygasł. Należy mieć użytkownika, ponów próbę logowania. |

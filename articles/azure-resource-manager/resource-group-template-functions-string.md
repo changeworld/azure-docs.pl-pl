@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278789"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
@@ -33,26 +33,26 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 * [pusty](#empty)
 * [endsWith](#endswith)
 * [pierwszy](#first)
-* [format](#format)
+* [Format](#format)
 * [Identyfikator GUID](#guid)
 * [indexOf](#indexof)
-* [ostatni](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Długość](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [Zastąp](#replace)
-* [pomiń](#skip)
+* [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [string](#string)
+* [ciąg](#string)
 * [podciąg](#substring)
 * [Wypełnij](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [TRIM](#trim)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
-* [identyfikator URI](#uri)
+* [Identyfikator URI](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)

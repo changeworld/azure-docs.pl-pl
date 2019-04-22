@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
 ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282546"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Program SQL Server na maszynie wirtualnej platformy Azure — informacje o wersji
@@ -79,11 +79,11 @@ Brak
 * [Migrowanie bazy danych do programu SQL Server na maszynie Wirtualnej platformy Azure](virtual-machines-windows-migrate-sql.md)
 * [Wysoka dostępność i odzyskiwanie po awarii programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-high-availability-dr.md)
 * [Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md)
-* [Wzorce aplikacji i strategie programowania dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+* [Wzorce aplikacji i strategie programowania dla programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 **Maszyny wirtualne z systemem Linux**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej systemu Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Aprowizowanie maszyny wirtualnej programu SQL Server Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 * [Często zadawane pytania (system Linux)](../../linux/sql/sql-server-linux-faq.md)
-* [Program SQL Server w dokumentacji systemu Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Dokumentacja programu SQL Server w systemie Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

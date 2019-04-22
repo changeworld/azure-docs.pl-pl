@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
 ms.openlocfilehash: c23f3ec9c85bb3997380d83c097f2690b91c1f4f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049701"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
@@ -183,7 +183,7 @@ Uruchom plik instalacyjny w następujący sposób:
 
 ### <a name="parameters"></a>Parametry
 
-|Nazwa parametru| Type | Opis| Wartości|
+|Nazwa parametru| Typ | Opis| Wartości|
 |-|-|-|-|
 | /ServerMode|Wymagane|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
 |/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|

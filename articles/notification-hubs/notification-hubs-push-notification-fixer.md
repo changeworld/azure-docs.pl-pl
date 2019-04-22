@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4af86025e714c65d0ae225b271a2d0970bb96ee8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281645"
 ---
 # <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Usługa Azure Notification Hubs — diagnozowanie porzucone powiadomienia
@@ -33,7 +33,7 @@ W ramach przepływu powiadomień typowe Wyślij komunikat jest wysyłany z *zapl
 
 Za pomocą ustanowionych celów usługi Notification Hubs wypycha powiadomienia do *push notification service* dla platformy urządzenia. Przykłady obejmują Apple Push Notification service (APNs) firmy Apple i usługi Firebase Cloud Messaging (FCM) dla usług Google. Notification Hubs wypchnięć powiadomienia podzielone między wiele instancji rejestracji. Usługa Notification Hubs uwierzytelnia się za pomocą usługi powiadomień wypychanych odpowiednich, które są oparte na poświadczenia, które można ustawić w witrynie Azure portal w obszarze **Konfigurowanie Centrum powiadomień**. Powiadomienie wypychane powiadomienia dotyczące usług następnie będzie przekazywać do odpowiednich *urządzeń klienckich*.
 
-Mechanizm dostarczania powiadomień o ostatnim etapie odbywa się między usługą powiadomień wypychanych platformy i urządzenia. Jedną z czterech głównych składników w procesie powiadomień wypychanych (klient, zaplecza aplikacji, usługi Notification Hubs i usługą powiadomień wypychanych platformy) może spowodować powiadomień można go porzucić. Aby uzyskać więcej informacji na temat architektury usługi Notification Hubs, zobacz [usługi Notification Hubs — omówienie].
+Mechanizm dostarczania powiadomień o ostatnim etapie odbywa się między usługą powiadomień wypychanych platformy i urządzenia. Jedną z czterech głównych składników w procesie powiadomień wypychanych (klient, zaplecza aplikacji, usługi Notification Hubs i usługą powiadomień wypychanych platformy) może spowodować powiadomień można go porzucić. Aby uzyskać więcej informacji na temat architektury usługi Notification Hubs, zobacz [Notification Hubs — omówienie].
 
 Niedostarczenie powiadomień mogą wystąpić podczas początkowego testu i przemieszczania fazy. Porzucone powiadomienia na tym etapie może wskazywać problem z konfiguracją. Jeśli wystąpi błąd w celu dostarczania powiadomień w środowisku produkcyjnym, niektóre lub wszystkie powiadomienia mogą być opuszczane. W tym przypadku jest wskazywany bardziej aplikacji lub messaging wzorzec problem.
 
@@ -111,7 +111,7 @@ Ponieważ usług powiadomień platformy są niezawodne, powiadomienia zwykle do 
 
 Jeśli Usługa powiadomień wypychanych, próby dostarczenia powiadomienia, ale urządzenie jest w trybie offline, powiadomienia są przechowywane przez usługi powiadomień wypychanych na pewien czas. Powiadomienia są dostarczane do urządzenia, gdy urządzenie stanie się dostępna.
 
-Dla każdej aplikacji znajduje się tylko jedno powiadomienie ostatnie. Jeśli wiele powiadomień są wysyłane, gdy urządzenie jest w trybie offline, każde nowe powiadomienie powoduje, że wcześniejsze powiadomienie, aby zostać odrzucone. Przechowywanie tylko najnowsze powiadomień jest określany jako *łączącego powiadomienia* w APN, i *zwijanie* w FCM (który jest używany klucz zwijanie). Jeśli urządzenie będzie w trybie offline przez długi czas, wszelkie powiadomienia, które były przechowywane na urządzeniu zostaną odrzucone. Aby uzyskać więcej informacji, zobacz [omówienie APN] i [wiadomości FCM o].
+Dla każdej aplikacji znajduje się tylko jedno powiadomienie ostatnie. Jeśli wiele powiadomień są wysyłane, gdy urządzenie jest w trybie offline, każde nowe powiadomienie powoduje, że wcześniejsze powiadomienie, aby zostać odrzucone. Przechowywanie tylko najnowsze powiadomień jest określany jako *łączącego powiadomienia* w APN, i *zwijanie* w FCM (który jest używany klucz zwijanie). Jeśli urządzenie będzie w trybie offline przez długi czas, wszelkie powiadomienia, które były przechowywane na urządzeniu zostaną odrzucone. Aby uzyskać więcej informacji, zobacz [omówienie APN] i [Temat wiadomości FCM].
 
 Usługa Azure Notification Hubs można przekazać łączącego klucza przy użyciu nagłówka HTTP za pomocą ogólnego interfejsu API SendNotification. Na przykład dla zestawu .NET SDK, możesz użyć `SendNotificationAsync`. Interfejs API SendNotification pobiera również nagłówki HTTP, które są przekazywane jako — jest odpowiednich push notification Service.
 
@@ -133,7 +133,7 @@ Aby przejrzeć i pasować do poświadczeń z tymi, które są uzyskiwane z porta
 
 ### <a name="verify-registrations"></a>Weryfikowanie rejestracji
 
-**Visual Studio**
+**Program Visual Studio**
 
 Jeśli używasz programu Visual Studio do tworzenia aplikacji możesz połączyć się na platformie Azure za pomocą Eksploratora serwera do przeglądania i zarządzania wielu usług platformy Azure, w tym usługi Notification Hubs. Jest to szczególnie przydatne w środowisku tworzenia i testowania.
 
@@ -172,7 +172,7 @@ Aby wysłać powiadomienie testowe do klientów bez konieczności usługi zaplec
 
 ![Testowanie funkcji wysyłania na platformie Azure][7]
 
-**Visual Studio**
+**Program Visual Studio**
 
 Można również wysłać powiadomień dotyczących testów z programu Visual Studio.
 
@@ -192,7 +192,7 @@ Po wysłaniu początkowo powiadomienie za pośrednictwem usługi Notification Hu
 
 Jeśli powiadomienia nie dotrze na urządzeniu klienckim, jest to możliwe, że wystąpił błąd podczas próby dostarczenia komunikatu do usługi powiadomień wypychanych usługi Notification Hubs. Na przykład rozmiar ładunku może przekracza maksymalną dozwoloną przez usługi powiadomień wypychanych lub poświadczenia skonfigurowane w usłudze Notification Hubs może być nieprawidłowy.
 
-Aby uzyskać wgląd w wypychanych błędy usługi powiadomień, możesz użyć [atrybut EnableTestSend] właściwości. Ta właściwość jest automatycznie włączone, gdy wysyłanie wiadomości testowych z portalu lub klienta programu Visual Studio. Korzystać z tej właściwości, aby wyświetlić szczegółowe informacje o debugowaniu. Można również użyć właściwości, za pośrednictwem interfejsów API. Obecnie można go używać w zestawie SDK platformy .NET. Po pewnym czasie zostaną dodane do wszystkich zestawów SDK klienta.
+Aby uzyskać wgląd w wypychanych błędy usługi powiadomień, możesz użyć [EnableTestSend] właściwości. Ta właściwość jest automatycznie włączone, gdy wysyłanie wiadomości testowych z portalu lub klienta programu Visual Studio. Korzystać z tej właściwości, aby wyświetlić szczegółowe informacje o debugowaniu. Można również użyć właściwości, za pośrednictwem interfejsów API. Obecnie można go używać w zestawie SDK platformy .NET. Po pewnym czasie zostaną dodane do wszystkich zestawów SDK klienta.
 
 Do użycia `EnableTestSend` właściwości za pomocą wywołania REST, Dołącz parametr ciągu zapytania o nazwie *test* w celu wywołania wysyłania. Na przykład:
 

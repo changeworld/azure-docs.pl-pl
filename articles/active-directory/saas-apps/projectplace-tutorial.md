@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fe23b74531a5769ac62544a5a54f5919ca9e79e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia Projectplace
@@ -185,7 +185,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do narzędzia Projectplace, musi być obsługiwana w Projectplace. W przypadku narzędzia Projectplace Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do Twojej **Projectplace** witryny firmy jako administrator.
 
@@ -218,9 +218,9 @@ Po kliknięciu kafelka Projectplace w panelu dostępu, powinien zostać automaty
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

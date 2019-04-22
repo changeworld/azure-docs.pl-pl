@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/05/2019
 ms.openlocfilehash: 7ecb2269243ae96b629a20a26956e6220a2e616c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280846"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu konta interfejsu API SQL w usłudze Azure Cosmos DB
@@ -62,7 +62,7 @@ Eksplorator danych w witrynie Azure portal służy do tworzenia bazy danych i ko
     
     |Ustawienie|Sugerowana wartość|Opis
     |---|---|---|
-    |**Identyfikator bazy danych**|ToDoList|Wprowadź *ToDoList* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu.|
+    |**Identyfikator bazy danych:**|ToDoList|Wprowadź *ToDoList* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu.|
     |**Identyfikator kolekcji**|Items|Wprowadź *Elementy* jako nazwę nowej kolekcji. Identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jako nazwy bazy danych.|
     |**Klucz partycji**| /category| W przykładzie opisanych w tym artykule użyto */category* jako klucza partycji.|
     |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359663"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
@@ -36,7 +36,7 @@ Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usług
 * Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, rozpoczynać się [samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
-  * [Samouczek 3. Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
+  * [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
   * [Jak wdrożyć usługę sieci web do wielu regionów](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
@@ -88,8 +88,8 @@ Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informac
 Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Machine Learning. W tym testowanie usługi odpowiedź na żądanie (RRS) i interfejsy usługę wykonywania wsadowego (BES).
 
 * [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
-* [Wdrażanie usługi sieci Web Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Samouczek 3. Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
+* [Wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
+* [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
 

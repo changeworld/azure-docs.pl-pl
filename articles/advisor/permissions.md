@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59052795"
 ---
 # <a name="permissions-in-azure-advisor"></a>Uprawnienia w usłudze Azure Advisor
@@ -22,7 +22,7 @@ Usługa Azure Advisor zapewnia zalecenia na podstawie użycia i konfiguracji zas
 
 W poniższej tabeli opisano role i dostępem, znajdujących się w ramach usługi Advisor:
 
-| **Rola** | **Wyświetlanie zaleceń** | **Edytuj reguły** | **Edytuj konfigurację subskrypcji** | **Edytuj konfigurację grupy zasobów**| **Odrzuć i odroczyć zalecenia**|
+| **Rola** | **Wyświetl zalecenia** | **Edytuj reguły** | **Edytuj konfigurację subskrypcji** | **Edytuj konfigurację grupy zasobów**| **Odrzuć i odroczyć zalecenia**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |Właściciel subskrypcji|**X**|**X**|**X**|**X**|**X**|
 |Współautor subskrypcji|**X**|**X**|**X**|**X**|**X**|

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
 ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266141"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Linux w klastrze usługi Service Fabric
@@ -127,7 +127,7 @@ Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/P
 
 Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych potrzeb. Zastąp wartości domyślne, przekazując w parametrze aplikacji podczas tworzenia aplikacji lub aktualizacji. Można podać parametry aplikacji, określając `ApplicationParameter` do `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication` polecenia cmdlet.
 
-|**Parametr**        |**Type**                          | **Szczegóły**|
+|**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
@@ -173,8 +173,7 @@ Dla wygody programu powershell (Undeploy.ps1) i skrypty powłoki bash (Undeploy.
 
 ## <a name="view-the-update-results"></a>Wyświetlanie wyników aktualizacji
 
-Aplikacja orchestration poprawki udostępnia interfejsy API REST, aby wyświetlić wyniki historyczne dla użytkownika. Poniżej przedstawiono przykładowy wynik:
-```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+Aplikacja orchestration poprawki udostępnia interfejsy API REST, aby wyświetlić wyniki historyczne dla użytkownika. Poniżej przedstawiono przykładowy wynik: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 

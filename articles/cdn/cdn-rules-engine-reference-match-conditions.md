@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283481"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
@@ -37,7 +37,7 @@ Warunek dopasowania zawsze stosuje się domyślny zestaw funkcji do wszystkich �
 
 Name (Nazwa) | Przeznaczenie
 -----|--------
-[Zawsze](#always) | Stosuje się domyślny zestaw funkcji do wszystkich żądań.
+[zawsze](#always) | Stosuje się domyślny zestaw funkcji do wszystkich żądań.
 
 ## <a name="device-match-condition"></a>Warunek dopasowania urządzenia
 
@@ -45,7 +45,7 @@ Warunek dopasowania urządzenia identyfikuje żądań wysyłanych z urządzenia 
 
 Name (Nazwa) | Przeznaczenie
 -----|--------
-[Urządzenie](#device) | Identyfikuje żądań wysyłanych z urządzenia przenośnego na podstawie jego właściwości.
+[urządzenia](#device) | Identyfikuje żądań wysyłanych z urządzenia przenośnego na podstawie jego właściwości.
 
 ## <a name="location-match-conditions"></a>Warunki dopasowań lokalizacji
 
@@ -54,7 +54,7 @@ Warunki dopasowań lokalizacji zidentyfikować żądania na podstawie lokalizacj
 Name (Nazwa) | Przeznaczenie
 -----|--------
 [JAKO liczba](#as-number) | Identyfikuje żądań pochodzących z określonej sieci.
-[Kraj](#country) | Identyfikuje żądań pochodzących z określonego krajach.
+[Country](#country) | Identyfikuje żądań pochodzących z określonego krajach.
 
 ## <a name="origin-match-conditions"></a>Warunki dopasowań źródła
 
@@ -77,7 +77,7 @@ Name (Nazwa) | Przeznaczenie
 [Krawędź Cname](#edge-cname) | Identyfikuje żądań, które wskazują przewagę określonego rekordu CNAME.
 [Odwołujące się domeny](#referring-domain) | Identyfikuje żądań, które zostały przekazane z nazw określonym hoście.
 [Literał nagłówka żądania](#request-header-literal) | Identyfikuje żądań, które zawierają określony nagłówek równa określonej wartości.
-[Wyrażenie regularne nagłówka żądania](#request-header-regex) | Identyfikuje żądań, które zawierają określony nagłówek ustawiona na wartość, która odpowiada określonemu wyrażeniu regularnemu.
+[Request Header Regex](#request-header-regex) | Identyfikuje żądań, które zawierają określony nagłówek ustawiona na wartość, która odpowiada określonemu wyrażeniu regularnemu.
 [Symbol wieloznaczny nagłówka żądania](#request-header-wildcard) | Identyfikuje żądań, które zawierają określony nagłówek ustawiona na wartość, która pasuje do wzorca określonego.
 [Metoda żądania](#request-method) | Umożliwia określenie żądania przez metodę HTTP.
 [Schemat żądania](#request-scheme) | Identyfikuje żądań według ich protokołu HTTP.
@@ -306,7 +306,7 @@ Informacje o kluczu:
 #### <a name="string-type"></a>String — typ
 Funkcja WURFL zazwyczaj przyjmuje dowolną kombinację cyfr, liter i symboli. Ze względu na charakter elastyczne tej funkcji możesz wybrać, jak wartość skojarzoną z tym warunkiem dopasowania jest interpretowany. W poniższej tabeli opisano zestaw dostępnych opcji:
 
-Type     | Opis
+Typ     | Opis
 ---------|------------
 literał  | Wybierz tę opcję, aby uniemożliwić większości znaków tworzenia specjalnego znaczenia przy użyciu ich [wartości literału](cdn-rules-engine-reference.md#literal-values).
 Symbol wieloznaczny | Wybierz tę opcję, aby móc korzystać z wszystkich [symboli wieloznacznych] ([wartości symboli wieloznacznych](cdn-rules-engine-reference.md#wildcard-values).

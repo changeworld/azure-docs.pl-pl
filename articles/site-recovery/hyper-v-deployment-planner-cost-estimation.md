@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359028"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów przez Planistę wdrażania usługi Azure Site Recovery 
@@ -111,11 +111,11 @@ Aby ręcznie dodać maszyny wirtualne:
 
     b. **Rozmiar IaaS (wybór)**
 
-    c. **Typ magazynu standardowa/Premium**
+    c. **Typ magazynu (Standardowa/Premium)**
 
     d. **Łączny rozmiar magazynu maszyny wirtualnej (GB)**
 
-    e. **Liczba awarii w roku**
+    e. **Liczba operacji testowania odzyskiwania po awarii w roku**
 
     f. **Czas trwania każdej operacji testowania odzyskiwania po awarii (dni)**
 

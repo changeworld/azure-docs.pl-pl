@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 04/03/2019
 ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274012"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
@@ -102,4 +102,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI. 
 > [!div class="nextstepaction"]
-> [Analizowanie danych przy użyciu narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)
+> [Analyze data using BI tools (Analizowanie danych przy użyciu narzędzi do analizy biznesowej)](apache-spark-use-bi-tools.md)

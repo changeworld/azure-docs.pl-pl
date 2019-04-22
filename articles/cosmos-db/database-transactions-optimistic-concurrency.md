@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279514"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transakcje i optymistyczna kontrola współbieżności
@@ -34,7 +34,7 @@ Aparat bazy danych Azure Cosmos DB obsługuje pełne zgodne transakcje ACID (nie
 | System zainicjowane wykonywania procedury scalania | Zapisywanie | Transakcji wielu elementów |
 | System zainicjowane wykonywania usuwania elementów w oparciu o wygaśnięcia (TTL) elementu | Zapisywanie | Transakcji wielu elementów |
 | Odczyt | Odczyt | Pojedynczą pozycją transakcji |
-| Kanał informacyjny zmian | Odczyt | Transakcji wielu elementów |
+| Zestawienie zmian | Odczyt | Transakcji wielu elementów |
 | Odczyt z podziałem na strony | Odczyt | Transakcji wielu elementów |
 | Zapytanie z podziałem na strony | Odczyt | Transakcji wielu elementów |
 | Wykonanie funkcji zdefiniowanej przez użytkownika jako część zapytania z podziałem na strony | Odczyt | Transakcji wielu elementów |
@@ -63,5 +63,5 @@ Dowiedz się więcej na temat transakcji bazy danych i mechanizmu kontroli optym
 
 - [Praca z baz danych Azure Cosmos, kontenery i elementów](databases-containers-items.md)
 - [Poziomy spójności](consistency-levels.md)
-- [Typy konfliktów i zasady ich rozwiązywania](conflict-resolution-policies.md)
+- [Zasad rozpoznawania i typy konfliktów](conflict-resolution-policies.md)
 - [Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika](stored-procedures-triggers-udfs.md)

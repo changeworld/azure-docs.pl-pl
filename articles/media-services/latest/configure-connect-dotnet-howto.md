@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
 ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361239"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Łączenie z Media Services v3 API — .NET
@@ -225,17 +225,17 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo — .NET](stream-files-tutorial-with-api.md) 
-- [Samouczek: Stream na żywo za pomocą usługi Media Services v3 — .NET](stream-live-tutorial-with-api.md)
-- [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 — .NET](analyze-videos-tutorial-with-api.md)
-- [Tworzenie wejściowych zadania z pliku lokalnego — .NET](job-input-from-local-file-how-to.md)
-- [Tworzenie danych wejściowych zadania na podstawie adresu URL HTTPS — .NET](job-input-from-http-how-to.md)
-- [Kodowanie za pomocą niestandardowej transformacji — .NET](customize-encoder-presets-how-to.md)
-- [Dynamiczne szyfrowanie AES-128 i usługa dostarczania kluczy — .NET](protect-with-aes128.md)
-- [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania — .NET](protect-with-drm.md)
+- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe klipów wideo — .NET](stream-files-tutorial-with-api.md) 
+- [Samouczek: Transmisja strumieniowa na żywo z usługi Media Services 3 — .NET](stream-live-tutorial-with-api.md)
+- [Samouczek: Analizowanie wideo za pomocą usługi Media Services 3 — .NET](analyze-videos-tutorial-with-api.md)
+- [Tworzenie danych wejściowych zadania z pliku lokalnego — .NET](job-input-from-local-file-how-to.md)
+- [Tworzenie danych wejściowych zadania na podstawie adresu URL protokołu HTTPS — .NET](job-input-from-http-how-to.md)
+- [Kodowanie za pomocą transformacji niestandardowej — .NET](customize-encoder-presets-how-to.md)
+- [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy — .NET](protect-with-aes128.md)
+- [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM — .NET](protect-with-drm.md)
 - [Pobieranie klucza podpisywania z istniejących zasad — .NET](get-content-key-policy-dotnet-howto.md)
 - [Tworzenie filtrów za pomocą usługi Media Services — .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Zaawansowane wideo na żądanie przykłady usługi Azure Functions w wersji 2 przy użyciu usługi Media Services v3](https://aka.ms/ams3functions)
+- [Zaawansowane przykłady wideo na żądanie usługi Azure Functions v2 z usługą Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Zobacz także
 

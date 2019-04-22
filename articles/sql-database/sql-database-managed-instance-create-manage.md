@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6362084c11ce7aa9078823758700239694162765
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359155"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
@@ -64,9 +64,9 @@ Tworzenie i zarządzanie nimi wystąpienia zarządzanego z [wiersza polecenia pl
 |[Aktualizacja wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualizuje wystąpienia zarządzanego|
 |[Usuwanie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Usuwa wystąpienia zarządzanego|
 |[Utwórz fragment sql az](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Utworzenie zarządzanej bazy danych|
-|[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Dostępne listy zarządzane bazy danych|
-|[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Przywracanie zarządzanej bazy danych|
-|[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Usuwa zarządzanej bazy danych|
+|[AZ sql fragment listy](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Dostępne listy zarządzane bazy danych|
+|[AZ sql fragment przywracania](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Przywracanie zarządzanej bazy danych|
+|[AZ sql fragment delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Usuwa zarządzanej bazy danych|
 
 ## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: Tworzenie i zarządzanie nimi wystąpienia bazy danych
 

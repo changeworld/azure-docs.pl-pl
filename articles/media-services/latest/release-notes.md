@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
 ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266991"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
@@ -73,9 +73,9 @@ Moduł interfejsu wiersza polecenia 2.0 jest teraz dostępna dla [usług ogólni
 - [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [zasób usługi ams az](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ ams zawartości klucza policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
 - [Zadanie usługi ams az](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ ams wydarzenie na żywo —](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [AZ ams na żywo dane wyjściowe](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
@@ -203,4 +203,4 @@ Następujące funkcje są obecne w zestawie SDK platformy .NET:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przegląd](media-services-overview.md)
+[Omówienie](media-services-overview.md)

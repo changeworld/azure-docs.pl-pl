@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280574"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Włącz połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
@@ -55,7 +55,7 @@ Jeśli strefa Lista przypisywanie witryn do zostały skonfigurowane w programie 
 
 [Dostępne metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
 
-[Konfigurowanie samoobsługowego resetowania hasła](howto-sspr-deployment.md)
+[Konfigurowanie samoobsługowego resetowania haseł](howto-sspr-deployment.md)
 
 [Konfigurowanie usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 

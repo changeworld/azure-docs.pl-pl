@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012953"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatyczne zarządzanie urządzeniami IoT na dużą skalę przy użyciu witryny Azure portal
@@ -202,7 +202,7 @@ Możesz usunąć konfigurację, wszelkie bliźniaczych reprezentacji urządzeń 
 
 W tym artykule przedstawiono sposób konfigurowania i monitorowania urządzeń IoT na dużą skalę. Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
-* [Zarządzanie tożsamościami urządzeń usługi IoT Hub w zbiorcze](iot-hub-bulk-identity-mgmt.md)
+* [Zbiorcze zarządzanie tożsamościami urządzeń usługi IoT Hub](iot-hub-bulk-identity-mgmt.md)
 * [Metryki usługi IoT Hub](iot-hub-metrics.md)
 * [Monitorowanie operacji](iot-hub-operations-monitoring.md)
 

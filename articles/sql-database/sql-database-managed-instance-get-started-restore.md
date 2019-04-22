@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
 ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59356839"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Szybki start: Przywracanie bazy danych do wystąpienia zarządzanego
@@ -36,7 +36,7 @@ Ten przewodnik Szybki start:
 - Wykorzystuje zasoby z przewodnika Szybki start [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
 - Wymaga komputera z zainstalowanym najnowszym programem [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms).
 - Wymaga użycia programu SSMS do połączenia z wystąpieniem zarządzanym. Zobacz te przewodniki Szybki start dotyczące nawiązywania połączenia:
-  - [Nawiązywanie połączenia wystąpienia zarządzanego Azure SQL Database z maszyny Wirtualnej platformy Azure](sql-database-managed-instance-configure-vm.md)
+  - [Nawiązywanie połączenia z wystąpieniem zarządzanym usługi Azure SQL Database z maszyny wirtualnej platformy Azure](sql-database-managed-instance-configure-vm.md)
   - [Configure a point-to-site connection to an Azure SQL Database Managed Instance from on-premises](sql-database-managed-instance-configure-p2s.md) (Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym usługi Azure SQL Database ze środowiska lokalnego).
 
 > [!NOTE]

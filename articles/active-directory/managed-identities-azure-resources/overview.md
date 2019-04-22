@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261466"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
@@ -118,17 +118,17 @@ Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z sys
 * [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-windows-vm-access-arm.md)
 * [Uzyskiwanie dostępu do usługi Azure SQL](tutorial-windows-vm-access-sql.md)
-* [Dostęp do usługi Azure Storage przy użyciu klucza dostępu](tutorial-windows-vm-access-storage.md)
-* [Dostęp do usługi Azure Storage przy użyciu sygnatury dostępu współdzielonego](tutorial-windows-vm-access-storage-sas.md)
-* [Dostęp do zasobu spoza platformy Azure AD z usługą Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-windows-vm-access-storage.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-windows-vm-access-storage-sas.md)
+* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 
 Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z systemem Linux:
 
 * [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-linux-vm-access-arm.md)
-* [Dostęp do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
-* [Dostęp do usługi Azure Storage przy użyciu sygnatury dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
-* [Dostęp do zasobu spoza platformy Azure AD z usługą Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
+* [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
+* [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
 
 Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platformy Azure:
 
@@ -137,7 +137,7 @@ Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platform
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
 * [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
-* [Usługa Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
+* [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 
 ## Jakie usługi platformy Azure obsługują funkcję?<a name="which-azure-services-support-managed-identity"></a>
@@ -149,4 +149,4 @@ Tożsamości zarządzane dla zasobów platformy Azure mogą służyć do uwierzy
 Rozpocznij pracę z funkcją tożsamości zarządzanych dla zasobów platformy Azure, korzystając z następujących przewodników Szybki start:
 
 * [Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Resource Manager](tutorial-windows-vm-access-arm.md)
-* [Umożliwia dostęp do usługi Resource Manager tożsamości zarządzanej przypisany systemowo maszyny Wirtualnej systemu Linux](tutorial-linux-vm-access-arm.md)
+* [Używanie przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Resource Manager](tutorial-linux-vm-access-arm.md)

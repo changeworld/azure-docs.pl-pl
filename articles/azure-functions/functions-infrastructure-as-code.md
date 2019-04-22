@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
 ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270907"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzowanie wdrażania zasobów dla aplikacji funkcji w usłudze Azure Functions
@@ -384,7 +384,7 @@ Musi mieć aplikację funkcji w ramach planu Premium `serverFarmId` właściwoś
 
 W planie usługi App Service aplikacja funkcji zostanie uruchomiona na dedykowanych maszynach wirtualnych na podstawowa, standardowa i jednostki SKU Premium, podobne do aplikacji sieci web. Aby uzyskać szczegółowe informacje dotyczące sposobu działania planu usługi App Service, zobacz [szczegółowe omówienie planów usługi Azure App Service](../app-service/overview-hosting-plans.md).
 
-Aby uzyskać przykładowy szablon usługi Azure Resource Manager, zobacz [aplikacji funkcji w usłudze Azure App Service plan].
+Aby uzyskać przykładowy szablon usługi Azure Resource Manager, zobacz [Aplikacja funkcji planu usługi Azure App Service].
 
 ### <a name="create-an-app-service-plan"></a>Tworzenie planu usługi App Service
 
@@ -643,7 +643,7 @@ Aplikacja funkcji ma wielu zasobów podrzędnych, które można użyć w danym w
 
 Można użyć dowolnej z następujących sposobów, aby wdrożyć szablon:
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [Program PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [Interfejs API REST](../azure-resource-manager/resource-group-template-deploy-rest.md)

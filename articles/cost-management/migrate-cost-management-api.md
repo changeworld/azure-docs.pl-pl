@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279877"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
@@ -126,7 +126,7 @@ Aby uzyskać szczegóły użycia za pomocą interfejsu API szczegółów użycia
 
 Interfejs API szczegóły użycia, podobnie jak w przypadku wszystkich interfejsów API zarządzania kosztami, jest dostępna w wielu zakresach. Invoiced kosztów rozliczeń zakresu profilu używać jako tradycyjnie otrzyma na poziomie rejestracji.  Aby uzyskać więcej informacji na temat zakresów Cost Management, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
-| Type | Format Identyfikatora |
+| Typ | Format Identyfikatora |
 | --- | --- |
 | Konto billingowe | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Profil rozliczeniowy | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |

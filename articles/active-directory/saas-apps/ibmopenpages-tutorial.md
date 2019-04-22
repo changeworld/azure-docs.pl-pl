@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 699e4830b6399fbce07dfc125e69513b58f58dd1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją IBM OpenPages
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację aplikacji IBM OpenPages z usługą Azure AD, należy dodać tę aplikację z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać IBM OpenPages z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację IBM OpenPages z galerii, wykonaj następujące kroki:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją IBM OpenP
 
     ![Informacje dotyczące logowania jednokrotnego — adresy URL i domena IBM OpenPages](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `http://<subdomain>.ibm.com:<ID>/openpages`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `http://<subdomain>.ibm.com:<ID>/openpages`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.ibm.com:<ID>/samlsps/op`
 
@@ -193,8 +193,8 @@ Po kliknięciu kafelka IBM OpenPages w panelu dostępu powinno nastąpić automa
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

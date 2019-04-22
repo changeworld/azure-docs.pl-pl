@@ -37,8 +37,8 @@ sections:
           - html: <a href="/azure/azure-maps/tutorial-search-location">Wyszukiwanie punktów orientacyjnych</a>
           - html: <a href="/azure/azure-maps/tutorial-route-location">Wyznaczanie trasy do punktu orientacyjnego</a>
           - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy zależne od środka transportu</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Tworzenie lokalizatora sklepów</a>
-      - html: <b>Samouczki interfejsu API REST</b>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Tworzenie lokalizatora magazynu</a>
+      - html: <b>Samouczki dotyczące interfejsu API REST</b>
       - type: paragraph
         text: 'Twórz aplikacje z funkcjami geoprzestrzennymi, które wywołują usługi Azure Maps REST.'
       - type: list

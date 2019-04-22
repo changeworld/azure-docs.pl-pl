@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357641"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
@@ -377,6 +377,6 @@ Następnie ustaw punkt przerwania w testów i naciśnij klawisz **F5**.
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wyjaśniono sposób pisania testów automatycznych dla funkcji, Kontynuuj przy użyciu tych zasobów:
-- [Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP](./functions-manually-run-non-http.md)
+- [Ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](./functions-manually-run-non-http.md)
 - [Obsługa błędów w usłudze Azure Functions](./functions-bindings-error-pages.md)
 - [Debugowanie funkcji platformy Azure zdarzeń siatki wyzwalacza lokalnego](./functions-debug-event-grid-trigger-local.md)

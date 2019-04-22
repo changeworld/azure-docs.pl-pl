@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: c0981ec993f3717f3ec3d3da987a5977b212fb9f
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012234"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: Syntetyzowania mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
@@ -132,9 +132,9 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Poznaj przykłady w języku C++ w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
 - [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Nagrywanie próbek głosu](record-custom-voice-samples.md)
+- [Próbki głosu rekord](record-custom-voice-samples.md)

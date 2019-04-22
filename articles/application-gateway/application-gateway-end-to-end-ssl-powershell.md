@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
 ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269354"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Application Gateway obsługuje end-to-end szyfrowania ruchu. Usługa Application Gateway kończy połączenia SSL na bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu sieciowego, ponownie szyfruje pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie reguł routingu zdefiniowane. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 

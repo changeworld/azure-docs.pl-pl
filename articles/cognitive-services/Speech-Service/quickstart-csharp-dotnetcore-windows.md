@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
 ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009431"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy .NET Core
@@ -32,7 +32,7 @@ Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodn
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Zestaw SDK dla platformy .NET core](https://dotnet.microsoft.com/download)
+* [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
@@ -71,9 +71,9 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z C# przykłady w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

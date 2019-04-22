@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282325"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
@@ -30,20 +30,20 @@ Projekt udostępnia również metadane i pozostałe ustawienia konfiguracyjne, k
 
 Twoje **Moje projekty** pulpit nawigacyjny na `https://notebooks.azure.com/<userID>/projects` pozwala wyświetlać, zarządzanie, i tworzyć projekty:
 
-[![Mpulpit nawigacyjny projekty y w notesach Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Mój pulpit nawigacyjny projekty, w notesach platformy Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowaniu się przy użyciu konta, który jest właścicielem identyfikator użytkownika:
 
 | Polecenie | Dostępna dla | Opis |
 | --- | --- | --- |
-| **Uruchom polecenie** | Właściciel | Uruchamia serwer project server i otwiera folder projektu w programie Jupyter. (Częściej, możesz najpierw przejdź do folderu projektu, a następnie uruchomić Notes, w tym miejscu.) |
-| **Do pobrania** | Każda osoba | Pobiera kopię wybranego projektu jako plik ZIP. |
+| **Run** | Właściciel | Uruchamia serwer project server i otwiera folder projektu w programie Jupyter. (Częściej, możesz najpierw przejdź do folderu projektu, a następnie uruchomić Notes, w tym miejscu.) |
+| **Pobieranie** | Każda osoba | Pobiera kopię wybranego projektu jako plik ZIP. |
 | **Udostępnij** | Każda osoba | Wyświetla udostępniania okna podręcznego, za pomocą którego można uzyskać adres URL do wybranego projektu, Udostępnij w mediach społecznościowych, Wyślij wiadomość e-mail z adresem URL i uzyskać zarówno HTML lub języka znaczników Markdown kod ze wskaźnikiem "uruchamiania notesu" (zobacz [uzyskać wskaźnik uruchamiania](#obtain-a-launch-badge)) za pomocą adresu URL. |
 | **Usuwanie** | Właściciel | Usuwa wybranego projektu. Tej operacji nie można cofnąć. |
 | **Terminal** | Właściciel | Rozpoczyna się na serwerze project server, a następnie zostanie otwarte nowe okno przeglądarki, przy użyciu programu bash terminalu dla tego serwera. |
 | **+ Nowy projekt** | Właściciel | Tworzy nowy projekt. Zobacz [Utwórz nowy projekt](#create-a-new-project). |
 | **Przekaż repozytorium GitHub** | Właściciel | Importuje projektu z usługi GitHub. [Importowanie projektu z repozytorium GitHub](#import-a-project-from-github). |
-| **Klonowanie** | Każda osoba | Kopiuje wybrany projekt do własnego konta. Monituje o Zaloguj się w przypadku jeszcze nie jest zalogowany. Zobacz [klonowanie projektu](#clone-a-project). |
+| **Klon** | Każda osoba | Kopiuje wybrany projekt do własnego konta. Monituje o Zaloguj się w przypadku jeszcze nie jest zalogowany. Zobacz [klonowanie projektu](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Uzyskaj wskaźnik uruchamiania
 
@@ -120,10 +120,10 @@ Klonowanie projektu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
+- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
 - [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
 - [Instrukcje: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Instrukcje: Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
+- [Instrukcje: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
 - [Instrukcje: Praca z plikami danych](work-with-project-data-files.md)
-- [Instrukcje: Uzyskiwanie dostępu do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Instrukcje: Korzystanie z usług Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Instrukcje: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Instrukcje: Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

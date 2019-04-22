@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
 ms.openlocfilehash: d2eaab80abed6615f46ef190bae56b8a70db2888
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050683"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
@@ -31,7 +31,7 @@ Firma Microsoft udostępnia następujące narzędzia, które skalowanie klastró
 
 |Narzędzie | Opis|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Zestaw AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) - ClusterName \<nazwa klastra > - TargetInstanceCount \<NewSize >|
+|[Az programu PowerShell](https://docs.microsoft.com/powershell/azure)|[Zestaw AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) - ClusterName \<nazwa klastra > - TargetInstanceCount \<NewSize >|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Zestaw AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - ClusterName \<nazwa klastra > - TargetInstanceCount \<NewSize >|
 |[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
 |[Klasyczny interfejs wiersza polecenia Azure](hdinsight-administer-use-command-line.md)|zmiany rozmiaru klastra usługi Azure hdinsight \<Nazwa_klastra > \<liczba wystąpień docelowy >|
@@ -329,4 +329,4 @@ Ostatnia opcja polega na obserwowanie rzadkich przypadkach, w którym system pli
 
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika systemu Apache Ambari](hdinsight-hadoop-manage-ambari.md)

@@ -10,10 +10,10 @@ ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269558"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
@@ -31,8 +31,8 @@ Usługa Azure Search jest certyfikowany do pracy następujące standardy jako [o
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [1. poziom PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Australia IRAP Nieutajnionych DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [PCI DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Zgodność ze standardami dotyczy funkcji jest ogólnie dostępna. Funkcje w wersji zapoznawczej są certyfikowane podczas przejścia, które są ogólnie dostępne i nie mogą być używane w rozwiązaniach o wymagania rygorystyczne standardy. Certyfikacja zgodności jest udokumentowany w [zgodności omówienie platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
 

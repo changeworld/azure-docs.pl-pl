@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273162"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
@@ -70,8 +70,8 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{YourMG}` -Zamień na identyfikator grupy zarządzania
-- `{subscriptionId}` -Zastąp identyfikator subskrypcji
+- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
+- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 > [!NOTE]
 > Schematy również może zostać utworzony na poziomie subskrypcji. Aby zobaczyć przykład, zobacz [Utwórz plan, na przykład subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -336,9 +336,9 @@ Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać j�
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{tenantId}` -Zamień swój identyfikator dzierżawy
-- `{YourMG}` -Zamień na identyfikator grupy zarządzania
-- `{subscriptionId}` -Zastąp identyfikator subskrypcji
+- `{tenantId}` — zastąp identyfikatorem swojej dzierżawy
+- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
+- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator aplikacji jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale identyfikator jednostki usługi jest zależna od dzierżawcy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 

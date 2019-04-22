@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
 ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051174"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
@@ -475,9 +475,9 @@ Istnieje kilka opcji wdrożenia sieci wirtualnej.
 
 - [Portal](../..//virtual-network/quick-create-portal.md)
 
-- [PowerShell](../../virtual-network/quick-create-powershell.md)
+- [Program PowerShell](../../virtual-network/quick-create-powershell.md)
 
-- [Interfejs wiersza polecenia](../../virtual-network/quick-create-cli.md)
+- [Interfejs wiersza polecenia (CLI)](../../virtual-network/quick-create-cli.md)
 
 - Szablony usługi Azure Resource Manager
 
@@ -491,5 +491,5 @@ Możesz pomóc bezpiecznych sieci wirtualnych platformy Azure przy użyciu sieci
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie maszyny wirtualnej z systemem Windows](../../virtual-machines/windows/quick-create-portal.md)
+- [Utwórz Windows maszyny Wirtualnej](../../virtual-machines/windows/quick-create-portal.md)
 - [Tworzenie maszyny wirtualnej z systemem Linux](../../virtual-machines/linux/quick-create-portal.md)

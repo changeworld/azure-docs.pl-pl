@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
 ms.openlocfilehash: ed9fbdd3e999cfd262ecbcf05a843c19cc969ed1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360423"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
@@ -39,7 +39,7 @@ Ten scenariusz jest nieco bardziej skomplikowane, ponieważ wystąpienie zarząd
 
 Dostępne są dwie opcje łączenia sieci wirtualnych:
 
-- [Wirtualne sieci równorzędne platformy Azure](../virtual-network/virtual-network-peering-overview.md)
+- [Komunikacja równorzędna sieci wirtualnych platformy Azure](../virtual-network/virtual-network-peering-overview.md)
 - Brama sieci VPN typu sieć wirtualna-sieć wirtualna ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 Ta opcja komunikacji równorzędnej jest preferowane jeden, ponieważ komunikację równorzędną używa sieci szkieletowej firmy Microsoft w związku z punktu widzenia łączności, nie ma żadnej różnicy zauważalnego opóźnienia między maszynami wirtualnymi w wirtualnej sieci równorzędnej i w tej samej sieci wirtualnej. Komunikacja równorzędna sieci wirtualnych jest ograniczona do sieci, w tym samym regionie.  

@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: kfollis
 ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361959"
 ---
 # <a name="export-or-delete-user-settings"></a>Eksportowanie i usuwanie ustawień użytkownika
@@ -56,4 +56,4 @@ To dobry pomysł, aby wyeksportować i przejrzeć ustawienia przed ich usunięci
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure](azure-portal-dashboard-share-access.md)
-* [Dodawanie, usuwanie i sortowanie ulubionych](azure-portal-add-remove-sort-favorites.md)
+* [Dodawanie, usuwanie i sortowanie Ulubione](azure-portal-add-remove-sort-favorites.md)

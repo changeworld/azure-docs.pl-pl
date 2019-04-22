@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: 732816ce10836d5828e7f325a3eb3fe31627d4f4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012241"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: Syntetyzowania mowy, języka C++ na Windows przy użyciu zestawu SDK rozpoznawania mowy
@@ -64,9 +64,9 @@ Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodn
 Więcej przykładów, takie jak zapisać mowy do pliku audio są dostępne w witrynie GitHub.
 
 > [!div class="nextstepaction"]
-> [Poznaj przykłady w języku C++ w witrynie GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
 - [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Nagrywanie próbek głosu](record-custom-voice-samples.md)
+- [Próbki głosu rekord](record-custom-voice-samples.md)

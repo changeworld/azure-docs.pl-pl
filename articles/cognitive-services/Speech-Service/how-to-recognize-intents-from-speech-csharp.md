@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
 ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280540"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
@@ -133,7 +133,7 @@ Teraz zaimportuj model z aplikacji usługi LUIS przy użyciu elementu `LanguageU
 
 Dodawanie intencji wymaga trzech argumentów: model usługi LUIS (który został utworzony i nosi nazwę `model`), nazwę intencji i identyfikatora elementu intent Różnica między identyfikatorem i nazwą jest następująca.
 
-|`AddIntent()` Argument|Przeznaczenie|
+|Argument `AddIntent()`|Przeznaczenie|
 |--------|-------|
 |intentName |Nazwa intencji zgodnie z definicją w aplikacji usługi LUIS. Musi dokładnie odpowiadać nazwie intencji usługi LUIS.|
 |intentID    |Identyfikator przypisany do rozpoznanej intencji przez zestaw SDK rozpoznawania mowy. Dopuszczalna jest dowolna wartość; nie musi odpowiadać nazwie intencji zdefiniowanej w aplikacji usługi LUIS. Jeśli na przykład ten sam kod obsługuje wiele intencji, możesz dla nich użyć tego samego identyfikatora.|
@@ -188,4 +188,4 @@ Wyszukaj kod z tego artykułu w folderze samples/csharp/sharedcontent/console.
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Rozpoznawanie mowy](how-to-recognize-speech-csharp.md)
+> [Jak rozpoznawać mowę](how-to-recognize-speech-csharp.md)

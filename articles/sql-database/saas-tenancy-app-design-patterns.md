@@ -13,10 +13,10 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260548"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
@@ -130,7 +130,7 @@ Inny wzorzec dostępne jest przechowywanie wielu dzierżaw w wielodostępnej baz
 
 *Przetwarzanie:*&nbsp; Wielodostępną bazą danych współużytkuje zasobów obliczeniowych i magazynu dla wszystkich swoich dzierżaw.  Baza danych jako całość można monitorować w taki sposób, aby upewnić się, że jest akceptowalne.  Jednak Azure system nie ma wbudowanej możliwości monitorowania lub zarządzania wykorzystaniem tych zasobów przez pojedynczą dzierżawę.  W związku z tym wielodostępną bazą danych niesie ze sobą zwiększone ryzyko napotkania sąsiadów generujące dużo alertów, gdy obciążenie jednej dzierżawy overactive ma wpływ na środowisko wydajność innych dzierżawców w tej samej bazy danych.  Dodatkowe monitorowanie na poziomie aplikacji można monitorować wydajność na poziomie dzierżawy.
 
-#### <a name="lower-cost"></a>Niższe koszty
+#### <a name="lower-cost"></a>Niższy koszt
 
 Ogólnie rzecz biorąc wielodostępnych baz danych ma najniższą dla dzierżawcy kosztów.  Koszty zasobów dla pojedynczej bazy danych są niższe niż ekwiwalentnie wielkości puli elastycznej.  Ponadto w przypadku scenariuszy, w której dzierżawy muszą tylko ograniczony magazyn potencjalnie milionów dzierżaw mogą być przechowywane w jednej bazie danych.  Brak elastycznej puli może zawierać miliony baz danych.  Jednak rozwiązanie zawierające 1000 baz danych w jednej puli z pulami 1000 można skontaktować się z skalowania milionów ryzyko stają się one nieporęczne za zarządzanie.
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
 ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59005936"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
@@ -26,9 +26,9 @@ ms.locfileid: "59005936"
 Firma Microsoft ma wysłuchaliśmy opinii użytkowników i niedawno wprowadziła [nowego cennika](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) dla różnych monitorowanie usług platformy Azure. W tym artykule przechwytuje zmianach cen. związane z platformą Azure [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) w formie pytań i odpowiedzi łatwych do zrozumienia.
 
 Rozwiązanie Network Performance Monitor obejmuje trzy składniki:
-* [Monitorowanie wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [Monitor wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [Monitor usługi ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 W poniższych sekcjach opisano zmiany cen dla składników programu NPM.
 

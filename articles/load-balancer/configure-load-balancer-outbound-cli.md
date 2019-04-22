@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: kumud
 ms.openlocfilehash: f28088a1a0586964092a0b5f86ce8bf0f95402cd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281951"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurowanie równoważenia obciążenia i reguł dla ruchu wychodzącego w standardowego modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure
@@ -183,4 +183,4 @@ Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az grou
 W tym artykule tworzone standardowego modułu równoważenia obciążenia, skonfigurowane reguły ruchu sieciowego modułu równoważenia obciążenia dla ruchu przychodzącego, skonfigurowane i sondy kondycji dla maszyn wirtualnych w puli zaplecza. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
 
 > [!div class="nextstepaction"]
-> [Samouczki dotyczące usługi Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Samouczki usługi Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

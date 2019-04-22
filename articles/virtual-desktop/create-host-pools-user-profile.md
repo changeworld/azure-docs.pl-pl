@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276392"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Konfigurowanie udziału profilu użytkownika dla puli hostów
@@ -62,7 +62,7 @@ Aby skonfigurować maszyn wirtualnych z oprogramowaniem FSLogix, wykonaj następ
 6. Utwórz klucz o nazwie **profile**.
 7. Utwórz następujące wartości dla klucza profilów:
 
-| Name (Nazwa)                | Type               | Dane/wartość                        |
+| Name (Nazwa)                | Typ               | Dane/wartość                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled (Włączony)             | DWORD              | 1                                 |
 | VHDLocations        | Wartość ciągu wielokrotnego | "Ścieżka sieciowa dla udziału plików"     |

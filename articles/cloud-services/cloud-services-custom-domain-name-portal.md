@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267150"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze platformy Azure
@@ -64,11 +64,11 @@ Aby utworzyć rekord CNAME, należy dodać nowy wpis w tabeli DNS dla domeny nie
 
 1. Użyj jednej z następujących metod, aby znaleźć **. cloudapp.net** nazwy domeny przypisany do usługi w chmurze.
 
-   * Zaloguj się do [witryny Azure portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **adres URL witryny** wpisu.
+   * Zaloguj się do [Azure Portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **adres URL witryny** wpisu.
 
        ![Przegląd sekcji, w której adres URL witryny][csurl]
 
-       **LUB**
+       **OR**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie za pomocą następującego polecenia:
 
        ```powershell
@@ -97,11 +97,11 @@ Aby utworzyć rekord A, możesz znaleźć wirtualnego adresu IP usługi w chmurz
 
 1. Aby uzyskać adres IP usługi w chmurze, użyj jednej z następujących metod.
 
-   * Zaloguj się do [witryny Azure portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **publiczne adresy IP** wpisu.
+   * Zaloguj się do [Azure Portal], wybierz usługę w chmurze, Przyjrzyj się **Przegląd** sekcji, a następnie znajdź **publiczne adresy IP** wpisu.
 
        ![Przegląd sekcji, w której adres VIP][vip]
 
-       **LUB**
+       **OR**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie za pomocą następującego polecenia:
 
        ```powershell

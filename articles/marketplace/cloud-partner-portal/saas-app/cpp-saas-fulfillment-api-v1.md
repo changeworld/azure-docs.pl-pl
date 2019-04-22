@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: pbutlerm
 ROBOTS: NOINDEX
 ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009738"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS realizacji interfejsy API wersji 1 (przestarzałe)
@@ -101,7 +101,7 @@ Gdy użytkownik jest przekierowywany do witryny sieci Web niezależnych dostawc�
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                                         |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token zostały rozpoznane prawidłowo.                                                            |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub określono nieprawidłową wersję interfejsu api. Nie można rozpoznać tokenu, ponieważ albo token jest źle sformułowany lub wygasłe (token jest prawidłowy tylko przez 1 godzinę po wygenerowaniu). |
@@ -128,7 +128,7 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -163,7 +163,7 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -191,9 +191,9 @@ Odpowiedzi 202 monitowanie o stanie operacji żądania w nagłówku "Operacja lo
 
 Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie subskrybowanych plan do nowego planu.
 
-**PATCH**
+**POPRAWKI**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -227,7 +227,7 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -257,7 +257,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -276,7 +276,7 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                           |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktywacja subskrypcji SaaS dla danego planu.                   |
 | 400                  | `BadRequest`         | Wymagane albo brakuje nagłówków lub treść JSON jest nieprawidłowo sformułowany. |
@@ -307,7 +307,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -347,7 +347,7 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |
@@ -375,7 +375,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Nazwa parametru**  | **Opis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -419,7 +419,7 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |
@@ -491,7 +491,7 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 
 *Kody odpowiedzi*
 
-| **Kod stanu HTTP** | **Kod błędu**     | **Opis**                                                              |
+| **Kod stanu HTTP** | **Kod błędu:**     | **Opis**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Żądanie get zostały rozpoznane prawidłowo i treści zawiera odpowiedź.    |
 | 400                  | `BadRequest`         | Wymagane albo brak nagłówków lub określono nieprawidłową wersję interfejsu api. |

@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: 75b86ea028a500b6b358c468a1d10a830db01b6a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283753"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu portalu i urządzenia platformy .NET
@@ -165,6 +165,6 @@ Teraz można przystąpić do uruchomienia aplikacji. W programie Visual Studio w
 
 Aby kontynuować wprowadzenie do usługi IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
 
-* [Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu kopii zapasowej platformy .NET i urządzenia platformy .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu kopii zapasowej platformy .NET i .NET urządzenia](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
 * [Wprowadzenie do usługi IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

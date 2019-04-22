@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265614"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Identyfikator profilu i użytkownika dla notesów usługi Azure
 
 W obszarze Zaawansowane, współpracy notesów usługi Azure profilu użytkownika przedstawia publiczny obraz do innych osób:
 
-[![AStrona profilu notesów usługi Azure n](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Na stronie profilu notesy platformy Azure](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Identyfikator użytkownika jest częścią adresów URL umożliwia udostępnianie projektów i notesy. Poniższa lista zawiera opis różnych wzorców adresów URL:
 

@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361826"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
@@ -43,10 +43,10 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 > [!IMPORTANT]
 > Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. Porównanie funkcji dostępnych została wyjaśniona w [porównanie funkcji: Usługa Azure SQL Database i programu SQL Server](sql-database-features.md).
 
-| **Korzyści PaaS** | **Ciągłość działalności biznesowej** |
+| **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
-|**Zabezpieczenia i zgodność z przepisami** | **Zarządzanie**|
+|**Zabezpieczenia i zgodność** | **Zarządzanie**|
 |Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Jednostki serwera w usłudze Azure AD (logowania)</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 > [!IMPORTANT]
@@ -231,7 +231,7 @@ W poniższej tabeli przedstawiono kilka właściwości, za pośrednictwem język
 |`@@VERSION`|Program Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY ('Edition')`|Usługi SQL Azure|Ta wartość jest ten sam, jak bazy danych SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ta wartość jest jednoznacznie identyfikuje wystąpienie zarządzane.|
-|`@@SERVERNAME`,  `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
 ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009403"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy Java
@@ -31,7 +31,7 @@ W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zest
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * System operacyjny: Windows (64-bitowy), 16.04/18.04 Ubuntu Linux (64-bitowa) lub z systemem macOS 10.13 lub nowszy
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
@@ -43,7 +43,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 Jeśli korzystasz z Windows (64-bitowy) upewnij się, że zainstalowano program Microsoft Visual C++ Redistributable dla danej platformy.
-* [Pobierz program Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
@@ -80,10 +80,10 @@ Następne 15 sekund mowy z mikrofonu zostanie rozpoznane i zarejestrowane w okni
 Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
-> [Eksplorowanie przykładów w języku Java w usłudze GitHub](https://aka.ms/csspeech/samples)
+> [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Szybki start: Tłumaczenie mowy, języka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
-- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
-- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
+- [Szybki start: tłumaczenie mowy, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
+- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

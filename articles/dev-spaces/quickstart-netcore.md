@@ -12,10 +12,10 @@ description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
 ms.openlocfilehash: 1c07ebae02232e8c86a58c11b23f6e1fbdb3a4bd
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357325"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania (Visual Studio Code)
@@ -208,4 +208,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Dowiedz się, jak usługi Azure Dev miejsca do magazynowania ułatwia tworzenie bardziej złożonych aplikacji w wielu kontenerach i jak można uprościć programowanie zespołowe przy pracy z różnymi wersjami lub gałęzi kodu w różnych miejsc do magazynowania. 
 
 > [!div class="nextstepaction"]
-> [Praca z wieloma kontenerami i Projektowanie zespołowe](multi-service-netcore.md)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore.md)

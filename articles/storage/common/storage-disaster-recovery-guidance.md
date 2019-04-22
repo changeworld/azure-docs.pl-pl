@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051193"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
@@ -180,5 +180,5 @@ W skrajnych okolicznościach, gdy region jest utracone z powodu awarii znaczące
 ## <a name="see-also"></a>Zobacz także
 
 * [Zainicjuj tryb failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md)
-* [Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-* [Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 
+* [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)
+* [Samouczek: Tworzenie aplikacji o wysokiej dostępności z magazynu obiektów Blob](../blobs/storage-create-geo-redundant-storage.md) 

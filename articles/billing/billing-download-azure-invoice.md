@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264067"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
@@ -38,7 +38,7 @@ W przypadku większości subskrypcji możesz pobrać fakturę w witrynie Azure p
 
 1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal jako [użytkownikowi dostęp do faktury](billing-manage-access.md).
 
-2. Wybierz **faktur**.
+2. Wybierz pozycję **Faktury**.
 
     ![Zrzut ekranu pokazujący opcję rozliczenia i użycie](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
@@ -55,9 +55,9 @@ Aby uzyskać więcej informacji na temat fakturze zobacz [opis zawartości rachu
 Faktury są generowane dla każdego [rozliczeń profilu](billing-mca-overview.md#understand-billing-profiles) w umowie klienta firmy Microsoft. Musi być profil rozliczeniowy właściciel, współautor, Czytelnik, lub faktury Menedżera uprawnień umożliwiających pobieranie faktur w witrynie Azure portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
-1. Wybierz **faktur**.
+1. Wybierz pozycję **Faktury**.
 1. W siatce faktury Znajdź wiersz faktury, który chcesz pobrać.
 1. Kliknij wielokropek (`...`) na końcu wiersza.
     ![Zrzut ekranu pokazujący Wielokropek na końcu wiersza.](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
@@ -98,7 +98,7 @@ Użytkownik może zrezygnować z wprowadzenie fakturze za pośrednictwem poczty 
 Jeśli masz umowy klienta firmy Microsoft, możesz zrezygnować w można pobrać fakturę w wiadomości e-mail. Wszystkie rozliczeń profilu właściciele, współautorzy, czytelnicy i faktury menedżerów otrzyma fakturę za pośrednictwem poczty e-mail. Czytelnicy nie można zaktualizować preferencji faktury wiadomości e-mail.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. W obszarze **ustawienia**, wybierz opcję **właściwości**.
 1. W obszarze **Wyślij fakturę pocztą E-mail**, wybierz opcję **preferencji faktury e-mail aktualizacji**.
@@ -135,7 +135,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 
 Aby dowiedzieć się więcej na temat faktury i opłaty, zobacz:
 
-- [Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Microsoft Azure](billing-download-azure-daily-usage.md)
+- [Przeglądanie i pobieranie usługi Microsoft Azure użycia i opłat](billing-download-azure-daily-usage.md)
 - [Opis zawartości rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md)
 - [Zrozumienie warunki na fakturze platformy Azure](billing-understand-your-invoice.md)
 - [Zrozumienie warunki na usługi Microsoft Azure szczegółowe użycia](billing-understand-your-usage.md)

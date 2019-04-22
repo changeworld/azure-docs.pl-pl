@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 328edac78624c192ee139c40fe0ed1853423c639
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051372"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
@@ -164,12 +164,12 @@ Punkt końcowy serwera nie mogą rejestrować działanie synchronizacji z nastę
 Ten problem powinien po utworzeniu punktu końcowego w chmurze i użyj udziału plików platformy Azure, która zawiera dane. Zadanie wyliczania zmian, które skanuje w poszukiwaniu zmian w udziale plików platformy Azure musi wykonać, zanim pliki można synchronizować między chmurą a serwerem punktami końcowymi. Czas wymagany do ukończenia zadania jest zależna od rozmiaru przestrzeni nazw w udziale plików platformy Azure. Kondycja punktu końcowego serwera powinna zostać zaktualizowana po ukończeniu zadania wyliczania zmian.
 
 ### <a id="broken-sync"></a>Jak monitorować kondycję synchronizacji?
-# [<a name="portal"></a>Portal](#tab/portal1)
+# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
 W każdej grupie synchronizacji można przejść do szczegółów do jego punktów końcowych poszczególnych serwerów, aby wyświetlić stan ostatniej sesji synchronizacji ukończone. Zielony kolumny kondycji i nie synchronizuje pliki wartość 0 wskazuje, czy synchronizacja działa zgodnie z oczekiwaniami. Jeśli nie jest tak, zobacz poniżej, aby uzyskać listę typowych błędów synchronizacji i sposób obsługi plików, które nie są synchronizowane. 
 
 ![Zrzut ekranu witryny Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# [<a name="server"></a>Serwer](#tab/server)
+# <a name="servertabserver"></a>[Serwer](#tab/server)
 Przejdź do dzienników telemetrii serwera, które można znajdują się w Podglądzie zdarzeń na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Zdarzenie 9102 odnosi się do sesji synchronizacji ukończone. Wyszukaj ostatnie zdarzenie o identyfikatorze 9102 uzyskać najnowszy stan synchronizacji. SyncDirection informuje, czy ta sesja było przekazywania lub pobierania. Jeśli ma wartość HResult 0, sesję synchronizacji zakończyło się pomyślnie. HResult różna od zera oznacza, że wystąpił błąd podczas synchronizacji; Poniżej zamieszczono listę najczęściej występujących błędów. Jeśli PerItemErrorCount jest większa niż 0, oznacza to, że niektóre pliki lub foldery nie zostały zsynchronizowane prawidłowo. Istnieje możliwość mają wartość HResult 0, ale PerItemErrorCount, która jest większa niż 0.
 
 Poniżej znajduje się przykład pomyślnego wysłania. W celu skrócenia programu tylko niektóre wartości zawarte w każdym przypadku 9102 są wymienione poniżej. 
@@ -201,10 +201,10 @@ Czasami sesje synchronizacji ogólną się nie powieść lub mieć PerItemErrorC
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Jak monitorować postęp bieżącej sesji synchronizacji?
-# [<a name="portal"></a>Portal](#tab/portal1)
+# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
 W danej grupie synchronizacji przejdź do danego punktu końcowego serwera i przyjrzyj się sekcję działanie synchronizacji, aby wyświetlić liczbę pliki, przekazać lub pobrać w bieżącej sesji synchronizacji. Należy pamiętać, że ten stan będzie opóźniony o około 5 minut, a jeśli sesja synchronizacji jest wystarczająco mała, należy wykonać w tym okresie, jego może nie być zgłaszany w portalu. 
 
-# [<a name="server"></a>Serwer](#tab/server)
+# <a name="servertabserver"></a>[Serwer](#tab/server)
 Szukaj na najnowszy: 9302; lista w dane telemetryczne dziennika zdarzeń na serwerze (w Podglądzie zdarzeń przejdź do aplikacji i usług Logs\Microsoft\FileSync\Agent\Telemetry). To zdarzenie wskazuje stan bieżącej sesji synchronizacji. TotalItemCount wskazuje, ile plików jest można synchronizować AppliedItemCount liczbę plików, które zostały zsynchronizowane do tej pory i PerItemErrorCount liczbę plików, które kończą się niepowodzeniem do synchronizacji (poniżej radzenia sobie z tym).
 
 ```
@@ -219,14 +219,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Jak sprawdzić, serwerów są synchronizowane ze sobą?
-# [<a name="portal"></a>Portal](#tab/portal1)
+# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
 Dla każdego serwera w grupie synchronizacji danego upewnij się, że:
 - Ostatnie są sygnatury czasowe dla ostatniej synchronizacji próba przekazywania i pobierania.
 - Stan jest zielony przekazywania i pobierania.
 - Pole działanie synchronizacji zawiera bardzo mało lub nie plików pozostałych do synchronizacji.
 - Pole nie synchronizuje pliki jest 0 w przypadku przekazywania i pobierania.
 
-# [<a name="server"></a>Serwer](#tab/server)
+# <a name="servertabserver"></a>[Serwer](#tab/server)
 Obejrzyj sesje ukończone synchronizacji, które są oznaczone przez 9102 zdarzenia w dzienniku zdarzeń telemetrii dla każdego serwera (w Podglądzie zdarzeń przejdź do `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
 1. Na dowolnym danym serwerze, dla których chcesz upewnić się, że najnowsze przekazywania i pobierania sesji zostało ukończone pomyślnie. Aby to zrobić, należy sprawdzić, czy HResult i PerItemErrorCount są 0 w przypadku przekazywania i pobierania (pole SyncDirection wskazuje, czy sesji przekazywania lub pobierania w danej sesji). Należy pamiętać, że jeśli nie widzisz sesji synchronizacji ostatnio wykonanych, prawdopodobnie sesji synchronizacji jest obecnie w toku, której oczekuje się, jeśli są właśnie dodany lub zmodyfikowany dużej ilości danych.
@@ -275,7 +275,7 @@ Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x800704c7 |
+| **HRESULT** | 0x800704c7 |
 | **HRESULT (dziesiętna)** | -2147023673 | 
 | **Ciąg błędu** | ERROR_CANCELLED |
 | **Wymagana korekta** | Nie |
@@ -286,7 +286,7 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80072ee7 |
+| **HRESULT** | 0x80072ee7 |
 | **HRESULT (dziesiętna)** | -2147012889 | 
 | **Ciąg błędu** | WININET_E_NAME_NOT_RESOLVED |
 | **Wymagana korekta** | Yes |
@@ -297,7 +297,7 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8004c |
+| **HRESULT** | 0x80c8004c |
 | **HRESULT (dziesiętna)** | -2134376372 |
 | **Ciąg błędu** | ECS_E_USER_REQUEST_THROTTLED |
 | **Wymagana korekta** | Nie |
@@ -308,7 +308,7 @@ Brak akcji jest wymagana; Serwer ponowi próbę. Jeśli ten błąd będzie się 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8305f |
+| **HRESULT** | 0x80c8305f |
 | **HRESULT (dziesiętna)** | -2134364065 |
 | **Ciąg błędu** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
 | **Wymagana korekta** | Yes |
@@ -324,7 +324,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80C83060 |
+| **HRESULT** | 0x80C83060 |
 | **HRESULT (dziesiętna)** | -2134364064 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
 | **Wymagana korekta** | Yes |
@@ -341,7 +341,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x8e5e044e |
+| **HRESULT** | 0x8e5e044e |
 | **HRESULT (dziesiętna)** | -1906441138 |
 | **Ciąg błędu** | JET_errWriteConflict |
 | **Wymagana korekta** | Yes |
@@ -352,7 +352,7 @@ Ten błąd występuje, gdy występuje problem z wewnętrznej bazy danych używan
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80C8306B |
+| **HRESULT** | 0x80C8306B |
 | **HRESULT (dziesiętna)** | -2134364053 |
 | **Ciąg błędu** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Wymagana korekta** | Yes |
@@ -363,7 +363,7 @@ Ten błąd występuje, jeśli nie jest obsługiwana przez wersję agenta usługi
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8603e |
+| **HRESULT** | 0x80c8603e |
 | **HRESULT (dziesiętna)** | -2134351810 |
 | **Ciąg błędu** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
 | **Wymagana korekta** | Yes |
@@ -389,7 +389,7 @@ Jeśli nie ustawiono limit przydziału udziału jest pełny, jeden sposób możl
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c86030 |
+| **HRESULT** | 0x80c86030 |
 | **HRESULT (dziesiętna)** | -2134351824 |
 | **Ciąg błędu** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
 | **Wymagana korekta** | Yes |
@@ -405,7 +405,7 @@ Jeśli usunięto udział plików platformy Azure, musisz utworzyć nowy udział 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80C83076 |
+| **HRESULT** | 0x80C83076 |
 | **HRESULT (dziesiętna)** | -2134364042 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Wymagana korekta** | Yes |
@@ -416,7 +416,7 @@ Ten błąd występuje zawieszenia subskrypcji platformy Azure. Synchronizacja zo
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8306c |
+| **HRESULT** | 0x80c8306c |
 | **HRESULT (dziesiętna)** | -2134364052 |
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Wymagana korekta** | Yes |
@@ -432,7 +432,7 @@ Usuń te reguły, aby rozwiązać ten problem.
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c80219 |
+| **HRESULT** | 0x80c80219 |
 | **HRESULT (dziesiętna)** | -2134375911 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
 | **Wymagana korekta** | Nie |
@@ -448,7 +448,7 @@ Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz ż
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x800b0109 |
+| **HRESULT** | 0x800b0109 |
 | **HRESULT (dziesiętna)** | -2146762487 |
 | **Ciąg błędu** | CERT_E_UNTRUSTEDROOT |
 | **Wymagana korekta** | Yes |
@@ -473,7 +473,7 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80072ee2 |
+| **HRESULT** | 0x80072ee2 |
 | **HRESULT (dziesiętna)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
 | **Wymagana korekta** | Yes |
@@ -484,7 +484,7 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c80300 |
+| **HRESULT** | 0x80c80300 |
 | **HRESULT (dziesiętna)** | -2134375680 |
 | **Ciąg błędu** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Wymagana korekta** | Yes |
@@ -513,12 +513,12 @@ Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby rozwiązać 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x8e5e0211 |
+| **HRESULT** | 0x8e5e0211 |
 | **HRESULT (dziesiętna)** | -1906441711 |
 | **Ciąg błędu** | JET_errLogDiskFull |
 | **Wymagana korekta** | Yes |
 | | |
-| **WARTOŚĆ HRESULT** | 0x80c8031a |
+| **HRESULT** | 0x80c8031a |
 | **HRESULT (dziesiętna)** | -2134375654 |
 | **Ciąg błędu** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
 | **Wymagana korekta** | Yes |
@@ -529,7 +529,7 @@ Ten błąd występuje, ponieważ wolumin jest wypełnione. Ten błąd zazwyczaj 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8300f |
+| **HRESULT** | 0x80c8300f |
 | **HRESULT (dziesiętna)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_REPLICA_NOT_READY |
 | **Wymagana korekta** | Nie |
@@ -542,17 +542,17 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8023b |
+| **HRESULT** | 0x80c8023b |
 | **HRESULT (dziesiętna)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Wymagana korekta** | Yes |
 | | |
-| **WARTOŚĆ HRESULT** | 0x80c8021c |
+| **HRESULT** | 0x80c8021c |
 | **HRESULT (dziesiętna)** | -2134375908 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Wymagana korekta** | Yes |
 | | |
-| **WARTOŚĆ HRESULT** | 0x80c80253 |
+| **HRESULT** | 0x80c80253 |
 | **HRESULT (dziesiętna)** | -2134375853 |
 | **Ciąg błędu** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Wymagana korekta** | Yes |
@@ -566,7 +566,7 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c80019 |
+| **HRESULT** | 0x80c80019 |
 | **HRESULT (dziesiętna)** | -2134376423 |
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
 | **Wymagana korekta** | Yes |
@@ -577,7 +577,7 @@ Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80C80277 |
+| **HRESULT** | 0x80C80277 |
 | **HRESULT (dziesiętna)** | -2134375817 |
 | **Ciąg błędu** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
 | **Wymagana korekta** | Yes |
@@ -588,7 +588,7 @@ Ten błąd występuje, ponieważ załadowane wersja Obsługa poziomów w chmurze
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8004b |
+| **HRESULT** | 0x80c8004b |
 | **HRESULT (dziesiętna)** | -2134376373 |
 | **Ciąg błędu** | ECS_E_SERVICE_UNAVAILABLE |
 | **Wymagana korekta** | Nie |
@@ -599,7 +599,7 @@ Ten błąd występuje, ponieważ usługa Azure File Sync jest niedostępna. Ten 
 
 | | |
 |-|-|
-| **WARTOŚĆ HRESULT** | 0x80c8020e |
+| **HRESULT** | 0x80c8020e |
 | **HRESULT (dziesiętna)** | -2134375922 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Wymagana korekta** | Nie |
@@ -608,14 +608,14 @@ Ten błąd występuje z powodu wewnętrznego problemu z bazy danych usługi sync
 
 ### <a name="common-troubleshooting-steps"></a>Typowe kroki rozwiązywania problemów
 <a id="troubleshoot-storage-account"></a>**Sprawdź, czy konto magazynu istnieje.**  
-# [<a name="portal"></a>Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Przejdź do grupy synchronizacji, w ramach usługi synchronizacji magazynu.
 2. Wybierz punkt końcowy w chmurze w ramach grupy synchronizacji.
 3. Należy pamiętać, nazwa udziału plików platformy Azure, w okienku otwarte.
 4. Wybierz na połączonym koncie magazynu. Jeśli ten link nie powiedzie się, zostało usunięte konto magazynu do którego istnieje odwołanie.
     ![Zrzut ekranu przedstawiający okienko Szczegóły punktu końcowego chmury z linkiem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -713,12 +713,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Sprawdź, upewnij się, że konto magazynu nie zawiera żadnych reguł sieciowych.**  
-# [<a name="portal"></a>Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Raz na koncie magazynu, wybierz **zapory i sieci wirtualne** po lewej stronie konta magazynu.
 2. Konto magazynu — wewnątrz **zezwolić na dostęp ze wszystkich sieci** należy wybrać przycisk radiowy.
     ![Zrzut ekranu przedstawiający reguły zapory i sieci konta magazynu wyłączone.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -729,12 +729,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Upewnij się, że istnieje udział plików platformy Azure.**  
-# [<a name="portal"></a>Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Kliknij przycisk **Przegląd** w tabeli po lewej stronie spisu treści, aby wrócić do strony konto magazynu głównego.
 2. Wybierz **pliki** do wyświetlania listy udziałów plików.
 3. Sprawdź udział plików, które odwołuje się punkt końcowy w chmurze pojawia się na liście udziałów plików (powinien mieć zanotowaną to w kroku 1 powyżej).
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -748,7 +748,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Upewnij się, że usługi Azure File Sync ma dostęp do konta magazynu.**  
-# [<a name="portal"></a>Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Kliknij przycisk **kontrola dostępu (IAM)** w spisie treści po lewej stronie.
 1. Kliknij przycisk **przypisań ról** kartę do listy użytkowników i aplikacji (*jednostki usług*), mają dostęp do swojego konta magazynu.
 1. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
@@ -761,7 +761,7 @@ if ($fileShare -eq $null) {
     - W **roli** pól, zaznacz **czytnik i dostęp do danych**.
     - W **wybierz** wpisz **usługi hybrydowe File Sync**, wybierz rolę i kliknij przycisk **Zapisz**.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
@@ -907,5 +907,5 @@ Jeśli problem nie zostanie rozwiązany, należy uruchomić narzędzie AFSDiag:
 ## <a name="see-also"></a>Zobacz także
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)
 - [Usługa Azure Files — często zadawane pytania](storage-files-faq.md)
-- [Rozwiązywanie problemów z usługą Azure Files w Windows](storage-troubleshoot-windows-file-connection-problems.md)
-- [Rozwiązywanie problemów z usługą Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)
+- [Rozwiązywanie problemów z usługą Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Troubleshoot Azure Files problems in Linux (Rozwiązywanie problemów z usługą Azure Files w systemie Linux)](storage-troubleshoot-linux-file-connection-problems.md).

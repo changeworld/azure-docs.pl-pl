@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
 ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358051"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
@@ -82,7 +82,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 Przykłady są często publikowanych jako "open source". Pytania i problemy, utworzyć *problem* w odpowiednim repozytorium GitHub. Można przesłać żądanie ściągnięcia zbyt. Poniższa lista zawiera łącza do repozytoriów próbki:
 
 * [Zestaw SDK rozpoznawania mowy](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Zestaw SDK urządzeń](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Można utworzyć raport o usterce, żądania funkcji lub zadać pytanie ogólne i udostępniania najlepszych rozwiązań. Dla raportów usterek postępuj zgodnie z podanym szablonie:
 

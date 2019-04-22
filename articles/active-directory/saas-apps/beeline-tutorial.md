@@ -16,10 +16,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62a4495667dc7c934883bfed0a8f07d7b2d653f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem BeeLine
@@ -51,7 +51,7 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację rozwiązania BeeLine z usługą Azure AD, musisz dodać rozwiązanie BeeLine z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać z usługi BeeLine z galerii, wykonaj następujące czynności:**
+**Aby dodać rozwiązanie BeeLine z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z rozwiązaniem BeeLin
 
     ![Domena i adresy URL rozwiązania BeeLine — informacje o logowaniu jednokrotnym](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://projects.beeline.net/<instancename>`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://projects.beeline.net/<instancename>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
     
@@ -202,8 +202,8 @@ Po kliknięciu kafelka BeeLine w panelu dostępu powinno nastąpić automatyczne
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

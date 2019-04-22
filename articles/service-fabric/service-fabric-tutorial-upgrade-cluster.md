@@ -16,10 +16,10 @@ ms.date: 11/28/2017
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046244"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Samouczek: uaktualnianie środowiska uruchomieniowego klastra usługi Service Fabric na platformie Azure
@@ -41,7 +41,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > [!div class="checklist"]
 > * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure przy użyciu szablonu
 > * [Monitorowanie klastra](service-fabric-tutorial-monitor-cluster.md)
-> * [Skalowanie klastra w poziomie lub w pionie](service-fabric-tutorial-scale-cluster.md)
+> * [Skalowanie klastra na zewnątrz lub do wewnątrz](service-fabric-tutorial-scale-cluster.md)
 > * Uaktualnianie środowiska uruchomieniowego klastra
 > * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)
 

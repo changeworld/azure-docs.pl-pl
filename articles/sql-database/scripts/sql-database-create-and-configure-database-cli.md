@@ -13,10 +13,10 @@ ms.author: carlrab
 ms.reviewer: ''
 ms.date: 02/08/2019
 ms.openlocfilehash: 9ed1512053c06108178275b0523beede470325a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361424"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Tworzenie jednej bazy danych Azure SQL Database i konfigurowanie reguły zapory przy użyciu interfejsu wiersza polecenia
@@ -47,11 +47,11 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | Polecenie | Uwagi |
 |---|---|
-| [Tworzenie grupy az](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [Utwórz az sql server](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database, który hostuje pojedynczą bazę danych lub elastyczną pulę. |
-| [Tworzenie zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Tworzy regułę zapory zezwalającą na dostęp do wszystkich pojedynczych baz danych i elastycznych pul na serwerze usługi SQL Database z adresów IP należących do wprowadzonego zakresu. |
-| [Utwórz az sql db](/cli/azure/sql/db#az-sql-db-create) | Tworzy pojedynczą bazę danych lub elastyczną pulę. |
-| [Usuwanie grupy az](/cli/azure/resource#az-resource-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database, który hostuje pojedynczą bazę danych lub elastyczną pulę. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Tworzy regułę zapory zezwalającą na dostęp do wszystkich pojedynczych baz danych i elastycznych pul na serwerze usługi SQL Database z adresów IP należących do wprowadzonego zakresu. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Tworzy pojedynczą bazę danych lub elastyczną pulę. |
+| [az group delete](/cli/azure/resource#az-resource-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
