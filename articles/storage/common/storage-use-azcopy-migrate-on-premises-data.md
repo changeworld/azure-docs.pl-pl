@@ -9,10 +9,10 @@ ms.date: 12/14/2017
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: 40138a69baf9cd621b2f287b2fe035225bfd9bec
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877503"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Samouczek: Migracja danych lokalnych do magazynu w chmurze za pomocą narzędzia AzCopy
@@ -59,7 +59,7 @@ Nazwy kontenerów muszą zaczynać się literą lub cyfrą. Mogą one zawierać 
 
 Za pomocą narzędzia AzCopy możesz przekazać wszystkie pliki w folderze do magazynu obiektów blob w systemie [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) lub [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download). Aby przekazać wszystkie obiekty blob w folderze, wprowadź następujące polecenie narzędzia AzCopy:
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy \
         --source /mnt/myfolder \
@@ -67,7 +67,7 @@ Za pomocą narzędzia AzCopy możesz przekazać wszystkie pliki w folderze do ma
         --dest-key <key> \
         --recursive
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
@@ -82,7 +82,7 @@ Narzędzia AzCopy można użyć do [przekazania plików](https://docs.microsoft.
 
 Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejscu docelowym, określ zarówno parametry `--exclude-older` i `--exclude-newer` (system Linux) lub `/XO` i `/XN` (system Windows) w poleceniu narzędzia AzCopy. Narzędzie AzCopy przekazuje tylko zaktualizowane dane na podstawie ich sygnatury czasowej.
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy \
     --source /mnt/myfolder \
@@ -91,7 +91,7 @@ Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejsc
     --recursive \
     --exclude-older
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
@@ -102,11 +102,11 @@ Możliwe jest utworzenie zaplanowanego zadania lub zadania cron służącego do 
 
 Skopiuj polecenia narzędzia AzCopy do edytora tekstu. Zaktualizuj wartości parametrów polecenia narzędzia AzCopy na odpowiednie wartości. Zapisz plik jako `script.sh` (system Linux) lub `script.bat` (system Windows) na potrzeby narzędzia AzCopy.
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
     azcopy --source /mnt/myfiles --destination https://myaccount.blob.core.windows.net/mycontainer --dest-key <key> --recursive --exclude-older --exclude-newer --verbose >> Path/to/logfolder/`date +\%Y\%m\%d\%H\%M\%S`-cron.log
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
     AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
@@ -117,7 +117,7 @@ Narzędzie AzCopy jest uruchamiane z opcją `--verbose` (system Linux) lub `/V` 
 W tym samouczku polecenie [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) jest używane do utworzenia zaplanowanego zadania w systemie Windows. Polecenie [Crontab](http://crontab.org/) służy do tworzenia zadania cron w systemie Linux.
  Polecenie **Schtasks** umożliwia administratorowi tworzenie, usuwanie, zmienianie, uruchamianie i kończenie zaplanowanych zadań oraz wykonywanie względem nich zapytań na komputerze lokalnym lub zdalnym. Zadanie **cron** umożliwia użytkownikom systemów Linux i Unix uruchamianie poleceń lub skryptów w określonym dniu i godzinie za pomocą [wyrażeń cron](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# [<a name="linux"></a>Linux](#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 Aby utworzyć zadanie cron w systemie Linux, wprowadź następujące polecenie z poziomu terminalu:
 
@@ -128,7 +128,7 @@ crontab -e
 
 Określenie wyrażenia cron `*/5 * * * *` w poleceniu wskazuje, że skrypt powłoki `script.sh` powinien być uruchamiany co pięć minut. Możesz zaplanować uruchamianie skryptu codziennie, co miesiąc lub co rok o określonej godzinie. Aby dowiedzieć się więcej na temat ustawiania daty i godziny wykonywania zadań, zobacz [wyrażenia cron](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# [<a name="windows"></a>Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 Aby utworzyć zaplanowane zadanie w systemie Windows, wpisz następujące polecenie w wierszu polecenia lub w programie PowerShell:
 

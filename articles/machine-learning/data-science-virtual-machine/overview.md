@@ -16,10 +16,10 @@ ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
 ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918250"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
@@ -56,7 +56,7 @@ Maszyna wirtualna do nauki o danych może być używana na potrzeby uczenia mode
 Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauki o danych i uczenia głębokiego, które są już zainstalowane i skonfigurowane. Zawiera również narzędzia, które ułatwiają pracę z różnymi produktami platformy Azure przeznaczonymi do obsługi danych i analizy. Wśród nich można wymienić narzędzie Microsoft ML Server (R, Python), które umożliwia tworzenie modeli predykcyjnych, lub program SQL Server 2017 pozwalający eksplorować zestawy danych w dużej skali. Są też dostępne inne narzędzia typu „open source” od społeczności i firmy Microsoft oraz przykładowy kod i notesy. W poniższej tabeli wyszczególniono i porównano główne składniki maszyny wirtualnej do nauki o danych w wersji dla systemów Windows i Linux.
 
 
-| **Tool**                                                           | **Wersja Windows** | **Wersja systemu Linux** |
+| **Narzędzie**                                                           | **Wersja systemu Windows** | **Wersja systemu Linux** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) z preinstalowanymi popularnymi pakietami   |Tak                      | Tak             |
 | Narzędzie [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition zawiera następujące składniki: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) — równoległa platforma rozproszona o wysokiej wydajności (R i Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) — najnowocześniejsze algorytmy uczenia maszynowego firmy Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [Operacjonalizacja środowisk R i Python](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Tak                      | Tak |
@@ -66,7 +66,7 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 | Relacyjne bazy danych                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | Narzędzia bazy danych                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * Sterowniki ODBC/JDBC| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (narzędzie do obsługi zapytań), <br /> * bcp, sqlcmd <br /> * Sterowniki ODBC/JDBC|
 | Skalowalna analiza w bazie danych z usługami uczenia maszynowego programu SQL Server (R, Python) | Tak     |Nie              |
-| **[Serwer notesu Jupyter](https://jupyter.org/) z następującymi jądrami**                                  | Tak     | Tak |
+| **[Serwer notesu Jupyter](https://jupyter.org/) z następującymi jądrami:**                                  | Tak     | Tak |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Tak | Tak |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Tak | Tak |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Tak | Tak |
@@ -75,7 +75,7 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | Nie | Tak |
 | JupyterHub (serwer notesów dla wielu użytkowników)| Nie | Tak |
 | JupyterLab (serwer notesów dla wielu użytkowników) | Nie | Tak (tylko Ubuntu) |
-| **Narzędzia deweloperskie, edytorów IDE i kodu**| | |
+| **Narzędzia deweloperskie, środowiska IDE i edytory kodu**| | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) z wtyczką Git, Azure HDInsight (Hadoop), Data Lake, SQL Server Data tools, [Node.js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs) i [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | Tak | Nie |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Tak | Tak |
@@ -89,7 +89,7 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 | &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | Tak | Nie |
 | Power BI Desktop | Tak | Nie |
 | Zestawy SDK umożliwiające dostęp do platformy Azure i pakietu usług Cortana Intelligence Suite | Tak | Tak |
-| **Przenoszenie danych i narzędzia do zarządzania** | | |
+| **Narzędzia do przenoszenia danych i zarządzania nimi** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Eksplorator usługi Azure Storage | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure) | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Powershell | Tak | Nie |
@@ -125,7 +125,7 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | Nie | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | Nie | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Sterownik CUDA, cuDNN, NVIDIA](https://developer.nvidia.com/cuda-toolkit) | Tak | Tak |
-| **Platformę danych big Data (tylko w usłudze Devtest)**|||
+| **Platforma danych big data (tylko środowisko deweloperskie i testowe)**|||
 | &nbsp;&nbsp;&nbsp;&nbsp;* Lokalna autonomiczna platforma [Spark](https://spark.apache.org/) | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Lokalna usługa [Hadoop](https://hadoop.apache.org/) (HDFS, YARN) | Nie | Tak |
 
@@ -139,4 +139,4 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 * Przewodnik z instrukcjami dotyczącymi typowych zadań w zakresie nauki o danych na maszynie wirtualnej z systemem Linux (CentOS i Ubuntu) jest dostępny na stronie [Data science on the Linux Data Science Virtual Machine (Nauka o danych na maszynie wirtualnej do nauki o danych z systemem Linux)](linux-dsvm-walkthrough.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przewodnik dewelopera języka R na platformie Azure](/azure/architecture/data-guide/technology-choices/r-developers-guide)
+[R developer's guide to Azure](/azure/architecture/data-guide/technology-choices/r-developers-guide) (Przewodnik po platformie Azure dla deweloperów języka R)

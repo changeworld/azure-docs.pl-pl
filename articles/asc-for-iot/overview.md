@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863036"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Wprowadzenie do Centrum zabezpieczeń Azure dla IoT
@@ -57,7 +57,7 @@ W tym omówieniu opisano funkcje i usługi ASC dla IoT. Aby dowiedzieć się wi�
 
 - [Architektura](architecture.md)
 - [Wymagania wstępne usługi](service-prerequisites.md)
-- [Wprowadzenie](getting-started.md)
+- [Rozpoczęcie pracy](getting-started.md)
 - [Zdefiniuj swoje rozwiązanie](quickstart-configure-your-solution.md)
 - [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)
 - [ASC alertów IoT](concept-security-alerts.md)

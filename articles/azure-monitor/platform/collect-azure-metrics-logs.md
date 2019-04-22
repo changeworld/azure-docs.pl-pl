@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006264"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników usługi platformy Azure i metryk do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
@@ -32,7 +32,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 
 | Usługa                 | Typ zasobu                           | Dzienniki        | Metryki     | Rozwiązanie |
 | --- | --- | --- | --- | --- |
-| Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Analiza dotycząca usługi Azure Application Gateway](../insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) |
+| Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Usługi Azure Application Gateway Analytics](../insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) |
 | Usługa Application insights    |                                         | Łącznik   | Łącznik   | [Łącznik usługi Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
 | Konta usługi Automation     | Microsoft.Automation/AutomationAccounts | Diagnostyka |             | [Więcej informacji](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Konta usługi Batch          | Microsoft.Batch/batchAccounts           | Diagnostyka | Diagnostyka | |
@@ -42,7 +42,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Usługa Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnostyka |             | |
 | Przestrzeń nazw centrum zdarzeń     | Microsoft.EventHub/namespaces           | Diagnostyka | Diagnostyka | |
 | Centra IoT Hub                | Microsoft.Devices/IotHubs               |             | Diagnostyka | |
-| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [Analiza usługi KeyVault](../insights/azure-key-vault.md) |
+| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [KeyVault Analytics](../insights/azure-key-vault.md) |
 | Moduły równoważenia obciążenia          | Microsoft.Network/loadBalancers         | Diagnostyka |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnostyka | Diagnostyka | |
 | Grupy zabezpieczeń sieci | Microsoft.Network/networksecuritygroups | Diagnostyka |             | [Analiza sieciowej grupy zabezpieczeń platformy Azure](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) |
@@ -50,7 +50,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Usługi wyszukiwania         | Microsoft.Search/searchServices         | Diagnostyka | Diagnostyka | |
 | Przestrzeń nazw magistrali usług   | Microsoft.ServiceBus/namespaces         | Diagnostyka | Diagnostyka | [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Magazyn     |             | [Analiza usługi Service Fabric (wersja zapoznawcza)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostyka | [Analiza usługi Azure SQL (wersja zapoznawcza)](../insights/azure-sql.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostyka | [Usługi Azure SQL Analytics (wersja zapoznawcza)](../insights/azure-sql.md) |
 | Magazyn                 |                                         |             | Skrypt      | [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Maszyny wirtualne        | Microsoft.Compute/virtualMachines       | Wewnętrzny   | Wewnętrzny <br> Diagnostyka  | |
 | Zestawy skalowania maszyn wirtualnych | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostyka | |

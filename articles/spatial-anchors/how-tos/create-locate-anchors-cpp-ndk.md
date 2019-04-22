@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ zestaw NDK | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje dotyczące tworzenia i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ zestaw NDK.
+title: Jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/NDK | Dokumentacja firmy Microsoft
+description: Szczegółowe wyjaśnienie, jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/NDK.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -9,23 +9,23 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 09809270d6b42a5491d322628f1d98c580f65206
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915937"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ zestaw NDK
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/NDK
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
-> * [Obiektowy C](create-locate-anchors-objc.md)
+> * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona kilka różne środowiska projektowania. W tym artykule będzie przejdziemy do sposobu używania przestrzenne kotwic zestawu SDK usługi Azure w języku C + +/ zestaw NDK do:
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona kilka różne środowiska projektowania. W tym artykule przejdziemy dowiesz się, jak używać usługi Azure przestrzenne kotwic zestawu SDK, w C++/NDK do:
 
 - Poprawnie skonfigurować i zarządzaj nimi sesję kotwic przestrzenne platformy Azure.
 - Utwórz i ustaw właściwości na lokalnych zakotwiczenia.

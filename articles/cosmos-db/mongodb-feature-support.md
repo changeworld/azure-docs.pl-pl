@@ -8,10 +8,10 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 168b5cdf4f65992bad886352921e9aaff6d5b09c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885791"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB: obsługiwane funkcje i składnia
@@ -340,4 +340,4 @@ Usługa Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serw
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
-<sup>Uwaga: W tym artykule opisano funkcjonalność usługi Azure Cosmos DB, która zapewnia zgodność protokołu przewodowego z bazami danych MongoDB. Firma Microsoft nie uruchamia baz danych MongoDB w celu udostępnienia tej usługi. Usługa Azure Cosmos DB nie jest powiązany z bazy danych MongoDB, Inc.</sup>
+<sup>Uwaga: W tym artykule opisano funkcjonalność usługi Azure Cosmos DB, która zapewnia zgodność protokołu przewodowego z bazami danych MongoDB. Firma Microsoft nie uruchamia baz danych MongoDB w celu udostępnienia tej usługi. Usługa Azure Cosmos DB nie jest powiązana z firmą MongoDB, Inc.</sup>

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861693"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Usługa Azure Security Center IoT wstępnie wymaganych składników
@@ -33,7 +33,7 @@ Ten artykuł zawiera wyjaśnienie różnych bloków konstrukcyjnych z usługi Az
 
 - W warstwie standardowa Centrum IoT
     - Rola RBAC **właściciela** poziomami uprawnień 
-- [Obszar roboczy usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
+- [Obszar roboczy usługi log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
 - Usługa Azure Security Center (zalecane)
     - Podczas korzystania z usługi Azure Security Center to jedynie zalecenia i nie wymóg, bez tego nie można wyświetlić innych zasobów platformy Azure w ramach usługi IoT Hub. 
  
@@ -62,7 +62,7 @@ Sprawdź swoją lokalizację centrum IoT Hub, aby sprawdzić dostępność usłu
 ASC agentów IoT obsługuje rosnącą listę urządzeń i platform. Zobacz [obsługiwane listy platform](how-to-deploy-agent.md) do sprawdzenia istniejących lub planowanych biblioteki urządzeń.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Przegląd](overview.md)
+- [Omówienie](overview.md)
 - [Włącz usługę](quickstart-onboard-iot-hub.md)
 - [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)
 - [Opis usługi ASC alertów IoT](concept-security-alerts.md)

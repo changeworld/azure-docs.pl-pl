@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862917"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody uwierzytelniania agenta zabezpieczeń 
@@ -63,7 +63,7 @@ W poniższej tabeli opisano te argumenty.
 
 |Parametr|Opis|Opcje|
 |---------|---------------|---------------|
-|**identity**|Tryb uwierzytelniania| **Moduł** lub **urządzenia**|
+|**Tożsamość**|Tryb uwierzytelniania| **Moduł** lub **urządzenia**|
 |**type**|Typ uwierzytelniania|**SymmetricKey** lub **SelfSignedCertificate**|
 |**filePath**|Pełne ścieżki bezwzględnej do pliku zawierającego certyfikat i klucz symetryczny| |
 |**gatewayHostname**|Nazwa FQDN usługi IoT Hub|Przykład: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Edytuj _LocalConfiguration.json_ z następującymi parametrami:
 ## <a name="see-also"></a>Zobacz także
 - [Omówienie czynników zabezpieczeń](security-agent-architecture.md)
 - [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)
-- [Dostęp do nieprzetworzonych danych zabezpieczeń](how-to-security-data-access.md)
+- [Dostęp do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)

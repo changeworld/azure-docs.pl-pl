@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917315"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak jest pakiet?
@@ -92,7 +92,7 @@ Gdy usługa w chmurze zostanie uruchomiona na platformie Azure, można ponownie 
 
 Możesz zapoznać się z [schematem definicji usługi](/previous-versions/azure/reference/ee758711(v=azure.100)) w celu lepszego zrozumienia schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie omówienie niektóre elementy:
 
-**Witryny**  
+**Lokacje**  
 Zawiera definicje dla witryn sieci Web lub aplikacji sieci web, które są hostowane w usługach IIS7.
 
 **InputEndpoints**  

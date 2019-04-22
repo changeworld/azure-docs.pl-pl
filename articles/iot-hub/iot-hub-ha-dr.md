@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879696"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
@@ -138,4 +138,4 @@ Oto podsumowanie opcji wysokiej dostępności i odzyskiwania po awarii, przedsta
 Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure IoT Hub:
 
 * [Rozpoczynanie pracy z usługą IoT Hub (Szybki Start)](quickstart-send-telemetry-dotnet.md)
-* [Czym jest usługa Azure IoT Hub?](about-iot-hub.md)
+* [Co to jest usługa Azure IoT Hub?](about-iot-hub.md)

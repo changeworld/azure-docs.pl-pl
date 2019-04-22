@@ -19,7 +19,7 @@ ms.locfileid: "58671705"
 
 Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące dysków Azure Managed Disks i usługi Azure Premium SSD.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Dyski zarządzane
 
 **Co to jest Azure Managed Disks?**
 
@@ -187,7 +187,7 @@ Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.
 **Dyski SSD w warstwie standardowa obsługują "SLA pojedynczego wystąpienia maszyny Wirtualnej"?**
 Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualnej umowy SLA. Używanie dysków Premium SSD dla pojedynczego wystąpienia maszyny Wirtualnej umowy SLA.
 
-## <a name="migrate-to-managed-disks"></a>Migrowanie do usługi Managed Disks
+## <a name="migrate-to-managed-disks"></a>Migrowanie do funkcji Dyski zarządzane
 
 **Czy istnieje dowolnego wpływ migracji na wydajność dysków zarządzanych?**
 

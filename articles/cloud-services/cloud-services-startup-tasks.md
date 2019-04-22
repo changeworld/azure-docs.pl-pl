@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917621"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze
@@ -30,7 +30,7 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. O
 > 
 
 ## <a name="how-startup-tasks-work"></a>Jak działają zadania uruchamiania
-Zadania uruchamiania to akcje, które są wykonywane przed role rozpoczynać się i są definiowane w [ServiceDefinition.csdef] plików przy użyciu [zadań] elemencie [uruchamiania] element. Często zadania uruchamiania to pliki wsadowe, ale można je również aplikacje konsoli lub pliki wsadowe, uruchamianych skryptów programu PowerShell.
+Zadania uruchamiania to akcje, które są wykonywane przed role rozpoczynać się i są definiowane w [ServiceDefinition.csdef] plików przy użyciu [Zadanie podrzędne] elemencie [Uruchamianie] element. Często zadania uruchamiania to pliki wsadowe, ale można je również aplikacje konsoli lub pliki wsadowe, uruchamianych skryptów programu PowerShell.
 
 Zmienne środowiskowe przekazywania informacji do zadania uruchamiania, a Magazyn lokalny może służyć do przekazywania informacji z zadania uruchamiania. Na przykład zmiennej środowiskowej, można określić ścieżkę do programu, który chcesz zainstalować, a następnie można zapisywać pliki w magazynie lokalnym, który może następnie zostać odczytany później przez role.
 
@@ -100,7 +100,7 @@ Poniżej opisano atrybuty **zadań** element [ServiceDefinition.csdef] pliku:
 **kontekście wykonywania** -określa poziom uprawnień dla zadania uruchamiania. Poziom uprawnień mogą być ograniczone lub z podwyższonym poziomem uprawnień:
 
 * **Ograniczone**  
-  Zadanie uruchamiania jest uruchamiane z takie same uprawnienia jako rolę. Gdy **kontekście wykonywania** atrybutu dla [środowiska uruchomieniowego] element jest również **ograniczone**, używane są uprawnienia użytkownika.
+  Zadanie uruchamiania jest uruchamiane z takie same uprawnienia jako rolę. Gdy **kontekście wykonywania** atrybutu dla [Środowisko uruchomieniowe] element jest również **ograniczone**, używane są uprawnienia użytkownika.
 * **z podwyższonym poziomem uprawnień**  
   Zadanie uruchamiania jest uruchamiane z uprawnieniami administratora. Dzięki temu bez zwiększania poziomu uprawnień roli samego zadania uruchamiania, zainstalować programy, wprowadzić zmiany w konfiguracji usług IIS, wykonaj zmiany w rejestrze i innych zadań poziomu administratora.  
 
@@ -128,13 +128,13 @@ Poniżej opisano atrybuty **zadań** element [ServiceDefinition.csdef] pliku:
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 Zmienne środowiskowe służą do przekazywania informacji do zadania uruchamiania. Na przykład możesz umieścić ścieżki do obiektu blob, który zawiera program, aby zainstalować, numery portów, które będą używać Twojej roli lub ustawienia w celu sterowania funkcjami zadania uruchamiania.
 
-Istnieją dwa rodzaje zmiennych środowiskowych dla zadania uruchamiania; zmienne środowiskowe statycznych i zmiennych środowiskowych oparte na elementach członkowskich [RoleEnvironment] klasy. Znajdują się zarówno w [środowiska] części [ServiceDefinition.csdef] pliku, a oba użyj [zmiennej] elementu i **nazwa** atrybut.
+Istnieją dwa rodzaje zmiennych środowiskowych dla zadania uruchamiania; zmienne środowiskowe statycznych i zmiennych środowiskowych oparte na elementach członkowskich [RoleEnvironment] klasy. Znajdują się zarówno w [Środowisko] części [ServiceDefinition.csdef] pliku, a oba użyj [Zmienna] elementu i **nazwa** atrybut.
 
-Używa zmiennych środowiskowych statyczne **wartość** atrybutu [zmiennej] elementu. W powyższym przykładzie tworzy zmienną środowiskową **MyVersionNumber** , który ma wartość statyczne "**1.0.0.0**". Innym przykładem może być, aby utworzyć **StagingOrProduction** zmiennej środowiskowej, który można ręcznie ustawić wartości "**przemieszczania**"or"**produkcji**" do wykonania Akcje uruchamiania różnych oparte na wartości **StagingOrProduction** zmiennej środowiskowej.
+Używa zmiennych środowiskowych statyczne **wartość** atrybutu [Zmienna] elementu. W powyższym przykładzie tworzy zmienną środowiskową **MyVersionNumber** , który ma wartość statyczne "**1.0.0.0**". Innym przykładem może być, aby utworzyć **StagingOrProduction** zmiennej środowiskowej, który można ręcznie ustawić wartości "**przemieszczania**"or"**produkcji**" do wykonania Akcje uruchamiania różnych oparte na wartości **StagingOrProduction** zmiennej środowiskowej.
 
-Nie należy używać zmiennych środowiskowych, oparte na elementach członkowskich klasy RoleEnvironment **wartość** atrybutu [zmiennej] elementu. Zamiast tego [RoleInstanceValue] elementu podrzędnego, z odpowiednią **XPath** wartość atrybutu, są używane do tworzenia zmienną środowiskową, w oparciu o określonym członkiem [ RoleEnvironment] klasy. Wartości **XPath** atrybutu, aby uzyskać dostęp różnych [RoleEnvironment] wartości można znaleźć [tutaj](cloud-services-role-config-xpath.md).
+Nie należy używać zmiennych środowiskowych, oparte na elementach członkowskich klasy RoleEnvironment **wartość** atrybutu [Zmienna] elementu. Zamiast tego [RoleInstanceValue] elementu podrzędnego, z odpowiednią **XPath** wartość atrybutu, są używane do tworzenia zmienną środowiskową, w oparciu o określonym członkiem [RoleEnvironment] klasy. Wartości **XPath** atrybutu, aby uzyskać dostęp różnych [RoleEnvironment] wartości można znaleźć [tutaj](cloud-services-role-config-xpath.md).
 
-Na przykład, aby utworzyć zmienną środowiskową, która jest "**true**" gdy wystąpienie jest uruchomiona w emulatorze obliczeń i "**false**" podczas uruchamiania w chmurze, należy użyć następującego [zmiennej ] i [RoleInstanceValue] elementy:
+Na przykład, aby utworzyć zmienną środowiskową, która jest "**true**" gdy wystąpienie jest uruchomiona w emulatorze obliczeń i "**false**" podczas uruchamiania w chmurze, należy użyć następującego [Zmienna] i [RoleInstanceValue] elementy:
 
 ```xml
 <Startup>
@@ -161,7 +161,7 @@ Dowiedz się, jak wykonywać niektóre [popularne zadania uruchamiania](cloud-se
 [Pakiet](cloud-services-model-and-package.md) usługi w chmurze.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Zadanie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Uruchamianie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Środowisko uruchomieniowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

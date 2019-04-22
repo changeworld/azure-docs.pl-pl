@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
 ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917400"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
@@ -153,7 +153,7 @@ Ta metoda pobiera tłumaczenia, które są tworzone przez użytkownika. Zapewnia
 | na| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
-| Użytkownik| **Opcjonalny. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
+| Użytkownik| **Opcjonalnie. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|

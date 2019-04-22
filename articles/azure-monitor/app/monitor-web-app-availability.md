@@ -14,10 +14,10 @@ ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
 ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59005741"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
@@ -92,7 +92,7 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 
     ![W programie Visual Studio Enterprise utwórz projekt z szablonu Projekt internetowych testów wydajnościowych i obciążeniowych.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *Nie widzisz szablonu wydajności sieci Web i testu obciążenia?* — Zamknij program Visual Studio Enterprise. Otwórz **Instalator programu Visual Studio** w celu zmodyfikowania instalacji programu Visual Studio Enterprise. W obszarze **Poszczególne składniki** wybierz pozycję **Narzędzia do internetowego testowania wydajnościowego i obciążeniowego**.
+   * *Nie widzisz szablonu Projekt internetowych testów wydajnościowych i obciążeniowych?* — Zamknij program Visual Studio Enterprise. Otwórz **Instalator programu Visual Studio** w celu zmodyfikowania instalacji programu Visual Studio Enterprise. W obszarze **Poszczególne składniki** wybierz pozycję **Narzędzia do internetowego testowania wydajnościowego i obciążeniowego**.
 
 2. Otwórz plik .webtest i rozpocznij nagrywanie.
 
@@ -313,7 +313,7 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 
     Sprawdź aplikację odbieranie powiadomień elementu webhook jest dostępny i pomyślnie przetwarza żądania elementu webhook. Zobacz [to](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) Aby uzyskać więcej informacji.
 
-* *Sporadyczne niepowodzenia testu z powodu błędu naruszenia protokołu?*
+* *Sporadyczne niepowodzenia testu z błędem naruszenia protokołu*
 
     Błąd „Naruszenie protokołu (...) Po CR musi występować LF” oznacza problem związany z serwerem (lub zależnościami). Występuje w przypadku ustawienia nieprawidłowo sformułowanych nagłówków w odpowiedzi. Przyczyną mogą być moduły równoważenia obciążenia lub sieci dostarczania zawartości. Mówiąc bardziej szczegółowo, w niektórych nagłówkach koniec wiersza może nie być sygnalizowany znakiem CRLF, co narusza specyfikację protokołu HTTP i prowadzi do niepowodzenia walidacji na poziomie żądania internetowego .NET. Sprawdź odpowiedź, aby znaleźć nagłówki, które mogą powodować naruszenie.
     
@@ -342,7 +342,7 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
     * Skonfiguruj zaporę, aby zezwolić na żądania przychodzące z [adresów IP naszych agentów testów sieci Web](../../azure-monitor/app/ip-addresses.md).
     * Napisz własny kod do okresowego testowania wewnętrznego serwera. Uruchom kod jako proces w tle na serwerze testowym za zaporą. Proces testowania może wysyłać wyniki do usługi Application Insights za pomocą interfejsu API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) w podstawowym zestawie SDK. Wymaga to, aby serwer testowy miał dostęp do połączeń wychodzących punktu końcowego pozyskiwania usługi Application Insights, ale stanowi to dużo mniejsze zagrożenie bezpieczeństwa niż alternatywne dopuszczenie żądań przychodzących. Wyniki nie będą widoczne w blokach testów dostępności sieci Web, ale są wyświetlane jako wyniki dostępności w obszarach analizy, wyszukiwania i eksploratora metryk.
 
-* *Przekazywanie wieloetapowego testu sieci web kończy się niepowodzeniem.*
+* *Przekazywanie wieloetapowego testu sieci Web kończy się niepowodzeniem*
 
     Niektóre przyczyny może się to zdarzyć:
     * Limit rozmiaru to 300 KB.

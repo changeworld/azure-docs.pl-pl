@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904597"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie więcej niż jedno wystąpienie zasobu lub właściwości w szablonach usługi Resource Manager platformy Azure
@@ -59,7 +59,7 @@ Zasób, aby utworzyć kilka razy ma następujący format:
 }
 ```
 
-Należy zauważyć, że nazwa każdego zasobu zawiera `copyIndex()` funkcji, która zwraca bieżącej iteracji w pętli. `copyIndex()` jest liczony od zera. Dlatego następująco:
+Należy zauważyć, że nazwa każdego zasobu zawiera `copyIndex()` funkcji, która zwraca bieżącej iteracji w pętli. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Dlatego następująco:
 
 ```json
 "name": "[concat('storage', copyIndex())]",

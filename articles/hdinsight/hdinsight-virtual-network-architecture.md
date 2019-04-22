@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762926"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
@@ -22,7 +22,7 @@ W tym artykule opisano zasoby, które znajdują się w przypadku wdrażania klas
 
 Usługa Azure HDInsight clusters mają różne typy maszyn wirtualnych, albo przez węzły. Każdy typ węzła odgrywa rolę w działania systemu. W poniższej tabeli podsumowano te typy węzłów i ich ról w klastrze.
 
-| Type | Opis |
+| Typ | Opis |
 | --- | --- |
 | Węzeł główny |  W przypadku wszystkich typów klastrów z wyjątkiem systemu Apache Storm węzły główne hostują procesów, które Zarządzanie wykonywaniem aplikacji rozproszonej. Węzeł główny jest również węzeł, który można nawiąż połączenie i wykonywania aplikacji, które następnie są koordynowany uruchamianej w zasobów klastra. Liczba węzłów głównych jest ustalony na dwa wszystkie typy klastrów. |
 | Węzeł usługi zooKeeper | Dozorcy służy do koordynowania zadań między węzły, które wykonują przetwarzania danych. Ponadto jest wybór lidera węzła głównego i śledzi informacje o który węzła głównego jest uruchomioną określoną usługą wzorca. Liczba węzłów dozorcy jest ustalony na dwa. |

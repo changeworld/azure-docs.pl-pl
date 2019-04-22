@@ -11,10 +11,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
 ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882059"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Samouczek: Zabezpieczanie wystąpienia zarządzanego usługi Azure SQL Database przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD
@@ -50,9 +50,9 @@ Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elem
 - Wystąpienie zarządzane usługi Azure SQL Database
   - Zapoznaj się z tym artykułem: [Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database](sql-database-managed-instance-get-started.md)
 - Możliwość dostępu do wystąpienia zarządzanego oraz [aprowizowanego administratora usługi Azure AD dla wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance). Aby dowiedzieć się więcej, zobacz:
-    - [Połącz aplikację do wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md) 
-    - [Architektura łączności wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md)
-    - [Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory przy użyciu języka SQL](sql-database-aad-authentication-configure.md)
+    - [Connect your application to a managed instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym) 
+    - [Managed instance connectivity architecture](sql-database-managed-instance-connectivity-architecture.md) (Architektura łączności wystąpienia zarządzanego)
+    - [Configure and manage Azure Active Directory authentication with SQL (Konfigurowanie uwierzytelniania w usłudze Azure Active Directory i zarządzanie nim przy użyciu języka SQL)](sql-database-aad-authentication-configure.md)
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Ograniczanie dostępu do wystąpienia zarządzanego
 
@@ -65,11 +65,11 @@ Dostęp do wystąpień zarządzanych jest możliwy tylko za pośrednictwem prywa
 
 Pierwsza jednostka usługi (identyfikator logowania) serwera Azure AD musi zostać utworzona przez standardowe konto programu SQL Server (spoza usługi Azure AD) mające rolę `sysadmin`. Zobacz następujące artykuły, aby zapoznać się z przykładami nawiązywania połączenia z wystąpieniem zarządzanym:
 
-- [Szybki start: Konfigurowanie maszyny Wirtualnej platformy Azure, aby nawiązać połączenie z wystąpienia zarządzanego](sql-database-managed-instance-configure-vm.md)
-- [Szybki start: Konfigurowanie połączenia typu punkt lokacja do wystąpienia zarządzanego ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
+- [Szybki start: Konfigurowanie maszyny wirtualnej platformy Azure w celu łączenia się z wystąpieniem zarządzanym](sql-database-managed-instance-configure-vm.md)
+- [Szybki start: Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> Konto administratora usługi Azure AD użyte w celu skonfigurowania wystąpienia zarządzanego nie może zostać użyte do utworzenia jednostki usługi (identyfikatora logowania) serwera Azure AD w ramach wystąpienia zarządzanego. Pierwsza jednostka usługi (identyfikator logowania) serwera Azure AD musi zostać utworzona przy pomocy konta programu SQL Server z rolą `sysadmin`. Jest to tymczasowe ograniczenie, które zostanie usunięte w momencie, kiedy jednostki usługi (identyfikatory logowania) serwera Azure AD staną się ogólnie dostępne. Jeśli spróbujesz utworzyć identyfikator logowania przy użyciu konta administratora usługi Azure AD, zostanie wyświetlony następujący błąd: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> Konto administratora usługi Azure AD użyte w celu skonfigurowania wystąpienia zarządzanego nie może zostać użyte do utworzenia jednostki usługi (identyfikatora logowania) serwera Azure AD w ramach wystąpienia zarządzanego. Pierwsza jednostka usługi (identyfikator logowania) serwera Azure AD musi zostać utworzona przy pomocy konta programu SQL Server z rolą `sysadmin`. Jest to tymczasowe ograniczenie, które zostanie usunięte w momencie, kiedy jednostki usługi (identyfikatory logowania) serwera Azure AD staną się ogólnie dostępne. Jeśli spróbujesz użyć konta administratora usługi Azure AD do utworzenia identyfikatora logowania, zostanie wyświetlony następujący komunikat o błędzie: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. Zaloguj się do wystąpienia zarządzanego przy użyciu standardowego konta programu SQL Server (spoza usługi Azure AD) z rolą `sysadmin`, korzystając z programu [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance).
 

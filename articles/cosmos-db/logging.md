@@ -8,10 +8,10 @@ ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904869"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
@@ -440,12 +440,12 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 
 | Usługa Azure Storage pola lub właściwości | Usługa Azure Monitor rejestruje właściwości | Opis |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | Data i godzina (UTC), gdy wystąpienia operacji. |
+| **czas** | **TimeGenerated** | Data i godzina (UTC), gdy wystąpienia operacji. |
 | **resourceId** | **Zasób** | Konto usługi Azure Cosmos DB, dla którego dzienniki są włączone.|
 | **category** | **Kategoria** | W przypadku dzienników usługi Azure Cosmos DB **DataPlaneRequests** jest jedyną dostępną wartością. |
-| **operationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolny z następujących czynności: Tworzenie, aktualizacja, odczytu, ReadFeed, Delete, Replace, należy wykonać, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
-| **properties** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
-| **activityId** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
+| **OperationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolny z następujących czynności: Tworzenie, aktualizacja, odczytu, ReadFeed, Delete, Replace, należy wykonać, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
+| **Właściwości** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszy. |
+| **Identyfikator działania** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
 | **userAgent** | **userAgent_s** | Ciąg, który określa agent użytkownika klienta, który wykonuje żądanie. Format to {nazwa agenta użytkownika} / {version}.|
 | **requestResourceType** | **requestResourceType_s** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: Bazy danych, kontenerów, dokumentów, załącznika, użytkownika, uprawnienie, StoredProcedure, wyzwalacza, UserDefinedFunction lub oferty. |
 | **statusCode** | **statusCode_s** | Stan odpowiedzi operacji. |
@@ -453,7 +453,7 @@ W poniższej tabeli opisano zawartość każdego wpisu dziennika.
 | **clientIpAddress** | **clientIpAddress_s** | Adres IP klienta. |
 | **requestCharge** | **requestCharge_s** | Liczba jednostek żądań, które są używane przez operację |
 | **collectionRid** | **collectionId_s** | Unikatowy identyfikator dla kolekcji.|
-| **czas trwania** | **duration_s** | Czas trwania operacji w dziesięciomilionowych częściach sekundy. |
+| **Czas trwania** | **duration_s** | Czas trwania operacji w dziesięciomilionowych częściach sekundy. |
 | **requestLength** | **requestLength_s** | Długość żądania, w bajtach. |
 | **responseLength** | **responseLength_s** | Długość odpowiedzi w bajtach.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ta wartość jest pusta, gdy [tokenów zasobów](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) są używane do uwierzytelniania. Wartość wskazuje identyfikator zasobu użytkownika. |

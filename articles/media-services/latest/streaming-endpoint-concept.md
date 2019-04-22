@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881022"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
@@ -39,7 +39,7 @@ Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standa
 
 Tabela zawiera opis typów:  
 
-|Type|Jednostki skalowania|Opis|
+|Typ|Jednostki skalowania|Opis|
 |--------|--------|--------|  
 |**Standardowy punkt końcowy przesyłania strumieniowego** (zalecany)|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** typu, ale można ją zmienić na typ Premium.<br/> Standardowy typ jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. Typ **Standardowy** automatycznie skaluje przepustowość wychodzącą. Przepływność z tego typu punktu końcowego przesyłania strumieniowego jest do 600 MB/s. Wideo fragmenty są przechowywane w usłudze CDN nie należy używać przepustowości punkt końcowy przesyłania strumieniowego.<br/>W przypadku klientów z bardzo dużymi wymaganiami usługa Media Services oferuje punkty końcowe przesyłania strumieniowego **Premium**, które umożliwiają skalowanie pojemności w poziomie dla największych odbiorców w Internecie. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod amsstreaming\@microsoft.com, aby uzyskać wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
 |**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |

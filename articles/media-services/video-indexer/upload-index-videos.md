@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893456"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
@@ -85,9 +85,9 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
 
 Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne zawierają hałas w tle. Parametr ten służy do konfigurowania procesu indeksowania. Można określić następujące wartości:
 
-- `Default` — Indeks i wyodrębnić szczegółowe informacje przy użyciu audio i wideo
-- `AudioOnly` — Indeks i wyodrębnić szczegółowe informacje przy użyciu tylko audio (Ignorowanie wideo)
-- `DefaultWithNoiseReduction` — Indeks i prowadzenie analiz audio i wideo, przy zastosowaniu algorytmów redukcji szumów strumienia audio
+- `Default` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu części zarówno audio, jak i wideo
+- `AudioOnly` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu tylko części audio (z ignorowaniem części wideo)
+- `DefaultWithNoiseReduction` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu zarówno audio, jak i wideo przy zastosowaniu algorytmów redukcji szumów w strumieniu audio
 
 Cena zależy od wybranej opcji indeksowania.  
 

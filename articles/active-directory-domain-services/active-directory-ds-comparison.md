@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892300"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak zdecydować, jeśli usługi Azure AD Domain Services jest odpowiednia dla danego przypadku użycia
@@ -34,7 +34,7 @@ Zdecyduj, czy do korzystania z usług domenowych Azure AD, firma Microsoft zalec
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Porównanie usług domenowych Azure AD do domeny możesz AD na platformie Azure
 Poniższa tabela ułatwia wybór między za pomocą usług domenowych Azure AD i zarządzania nimi własnej infrastruktury usługi AD na platformie Azure.
 
-| **Cecha** | **Azure AD Domain Services** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
+| **Funkcja** | **Azure AD Domain Services** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
 | --- |:---:|:---:|
 | [**Usługa zarządzana**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Zabezpieczanie wdrożeń**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Administrator musi bezpiecznego wdrażania. |

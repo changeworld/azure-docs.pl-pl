@@ -15,10 +15,10 @@ ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904070"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrowanie aplikacji ASP.NET do usługi Azure App Service za pomocą kontenera Windows (wersja zapoznawcza)
@@ -122,7 +122,7 @@ Skonfiguruj nowy rejestr kontenerów, korzystając z sugerowanych wartości z po
 |**Prefiks DNS**| Zachowaj wygenerowaną nazwę rejestru lub zmień ją na inną unikatową nazwę. |  |
 |**Grupa zasobów**| Kliknij pozycję **Nowy**, wpisz **myResourceGroup** i kliknij przycisk **OK**. |  |
 |**SKU**| Podstawowa | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
-|**Lokalizacja w rejestrze**| Europa Zachodnia | |
+|**Lokalizacja rejestru**| Europa Zachodnia | |
 
 ![Konfigurowanie rejestru kontenerów platformy Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
@@ -144,7 +144,7 @@ W interfejsie tworzenia skonfiguruj ustawienia zgodnie z poniższą tabelą:
 | ----------------- | ------------ | ----|
 |**Nazwa aplikacji**| Wpisz unikatową nazwę. | Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji. |
 |**Grupa zasobów**| Wybierz pozycję **Użyj istniejącej** i wpisz **myResourceGroup**. |  |
-|**System operacyjny**| Windows (wersja zapoznawcza) | |
+|**OS**| Windows (wersja zapoznawcza) | |
 
 ### <a name="configure-app-service-plan"></a>Konfigurowanie planu usługi App Service
 

@@ -429,7 +429,7 @@ items:
       items:
       - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
         href: migrate-to-premium-storage-using-azure-site-recovery.md
-      - name: Konwertowanie do usługi Managed Disks
+      - name: Konwertowanie do funkcji Dyski zarządzane
         href: convert-unmanaged-to-managed-disks.md
       - name: Konwertowanie dysku między warstwami Standardowa i Premium
         href: convert-disk-storage.md

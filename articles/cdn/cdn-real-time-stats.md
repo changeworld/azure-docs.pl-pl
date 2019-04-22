@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916567"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Statystyki w czasie rzeczywistym w usłudze Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym dokumencie wyjaśniono statystyki w czasie rzeczywistym w usłudze Microsoft Azure CDN.  Ta funkcja udostępnia w czasie rzeczywistym dane, takie jak przepustowość, stany pamięci podręcznej i równoczesnych połączeń do swojego profilu CDN podczas dostarczania zawartości do klientów. Dzięki temu ciągłego monitorowania kondycji usługi, w dowolnym momencie, w tym gotowej do pracy zdarzenia.
 
 Dostępne są następujące wykresy:
 
-* [Przepustowość](#bandwidth)
+* [Bandwidth](#bandwidth)
 * [Kody stanu](#status-codes)
 * [Stany pamięci podręcznej](#cache-statuses)
 * [Połączenia](#connections)

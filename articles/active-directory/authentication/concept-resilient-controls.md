@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886084"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
@@ -261,12 +261,12 @@ Jeśli Twoja organizacja korzysta z zasad starszej wersji usługi MFA na użytko
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* [Dokumentacja uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Dokumentacja usługi Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Konfigurowanie urządzeń przyłączonych do usługi Azure Active Directory hybrydowe](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Windows Hello dla firm Podręcznik wdrażania](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Przewodnik wdrażania funkcji Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Wskazówki dotyczące haseł — badań firmy Microsoft](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jakie są warunki dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

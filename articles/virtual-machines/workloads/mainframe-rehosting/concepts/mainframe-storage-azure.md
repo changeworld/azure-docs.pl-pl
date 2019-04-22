@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896482"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Przenieś magazyn komputera mainframe na platformie Azure
@@ -51,7 +51,7 @@ Usługa Azure storage jest dostępna jako [Azure Disks](/azure/virtual-machines/
 
 <table>
 <thead>
-    <tr><th>Type</th><th>Opis</th><th>Używaj w następujących sytuacjach:</th></tr>
+    <tr><th>Typ</th><th>Opis</th><th>Używaj w następujących sytuacjach:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ Typ magazynu dla danego systemu zależy od wymagań systemu, w tym rozmiar magaz
 
 Dyski SSD zapewniają najwyższą wydajność magazynu na platformie Azure. Dostępne (pisania tego dokumentu) są następujące opcje:
 
-| Type         | Rozmiar           | Operacje wejścia/wyjścia                  |
+| Typ         | Rozmiar           | Operacje wejścia/wyjścia                  |
 |--------------|----------------|-----------------------|
 | Ultra, SSD    | 4 GB do 64 TB  | 1200 na 160,000 operacje We/Wy |
 | Premium, SSD  | 32 GB do 32 TB | 12 — 15 000 operacji We/Wy     |

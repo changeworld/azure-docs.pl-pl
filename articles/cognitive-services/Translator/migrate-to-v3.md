@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916720"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
@@ -43,14 +43,14 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 | W wersji 2 Metoda interfejsu API   | W wersji 3 Zgodnością z interfejsem API |
 |:----------- |:-------------|
-| `Translate`     | [Translate](reference/v3-0-translate.md)          |
-| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
+| `Translate`     | [Tłumaczenie](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Tłumaczenie](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Języki](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Języki](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Detect](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
+| `Detect`     | [Wykrywanie](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Wykrywanie](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Funkcja nie jest już obsługiwana       |
 | `AddTranslationArray`    | Funkcja nie jest już obsługiwana          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -141,7 +141,7 @@ Brak wersji interfejsu API usługi Translator tworzy rekord tłumaczenia. Tłuma
 ## <a name="links"></a>Linki
 
 * [Zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/privacystatement)
-* [Informacje prawne dotyczące systemu Microsoft Azure](https://azure.microsoft.com/support/legal)
+* [Informacje prawne dotyczące platformy Microsoft Azure](https://azure.microsoft.com/support/legal)
 * [Warunki dotyczące usług online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Kolejne kroki

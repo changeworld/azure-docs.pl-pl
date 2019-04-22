@@ -18,17 +18,17 @@ ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879260"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Kontrola dostępu jest usługi uwierzytelniania w chmurze zapewnia prosty sposób do uwierzytelniania i autoryzacji użytkowników, aby uzyskać dostęp do aplikacji sieci web i usług. Umożliwia ona wiele funkcji uwierzytelniania i autoryzacji, aby uwzględnić poza swój kod. Kontrola dostępu jest używany głównie przez deweloperów i architektów klientów programu Microsoft .NET, aplikacje sieci web platformy ASP.NET oraz usług sieci web Windows Communication Foundation (WCF).
 

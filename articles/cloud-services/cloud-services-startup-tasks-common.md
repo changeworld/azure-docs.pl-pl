@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916659"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Popularne zadania uruchamiania usługi w chmurze
@@ -31,7 +31,7 @@ Zobacz [w tym artykule](cloud-services-startup-tasks.md) , aby zrozumieć sposó
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definiowanie zmiennych środowiskowych, przed rozpoczęciem roli
-Zmienne środowiskowe zdefiniowane dla określonego zadania, należy użyć [środowiska] element wewnątrz [zadań] elementu.
+Zmienne środowiskowe zdefiniowane dla określonego zadania, należy użyć [Środowisko] element wewnątrz [Zadanie podrzędne] elementu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -125,13 +125,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Dodawanie reguły zapory
-Na platformie Azure istnieją skutecznie dwiema zaporami. Pierwszy Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez [punktów końcowych] element [ServiceDefinition.csdef] pliku.
+Na platformie Azure istnieją skutecznie dwiema zaporami. Pierwszy Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez [Punkty końcowe] element [ServiceDefinition.csdef] pliku.
 
 Drugi Zapora kontroluje połączenia między maszyną wirtualną a procesów w obrębie tej maszyny wirtualnej. Ta zapora może być kontrolowane przez `netsh advfirewall firewall` narzędzie wiersza polecenia.
 
 Platforma Azure tworzy reguły zapory dla procesów uruchomionych w ramach usługi ról. Na przykład po uruchomieniu usługi lub programu Azure automatycznie tworzy reguły zapory niezbędne, aby umożliwić tej usługi do komunikacji z Internetem. Jednak jeśli tworzysz usługi, który jest uruchamiany w procesie poza roli użytkownika (np. usług COM + lub Windows zaplanowane zadanie), należy ręcznie utworzyć regułę zapory, aby zezwolić na dostęp do tej usługi. Tych reguł zapory można utworzyć za pomocą zadania uruchamiania.
 
-Zadania uruchamiania, który tworzy regułę zapory muszą mieć [kontekście wykonywania][zadań] z **z podwyższonym poziomem uprawnień**. Dodaj następujące zadanie uruchamiania w celu [ServiceDefinition.csdef] pliku.
+Zadania uruchamiania, który tworzy regułę zapory muszą mieć [kontekście wykonywania][zadanie podrzędne] z **z podwyższonym poziomem uprawnień**. Dodaj następujące zadanie uruchamiania w celu [ServiceDefinition.csdef] pliku.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -306,7 +306,7 @@ Może mieć wykonanie innych czynności działającego w chmurze, gdy jest on w 
 
 Ta możliwość wykonywania różnych działań w emulatorze obliczeń i w chmurze można osiągnąć, tworząc zmienną środowiskową w [ServiceDefinition.csdef] pliku. Następnie testujesz tej zmiennej środowiskowej dla wartości z zadania uruchamiania.
 
-Aby utworzyć zmienną środowiskową, Dodaj [zmiennej]/[RoleInstanceValue] elementu i utworzyć wartość XPath `/RoleEnvironment/Deployment/@emulated`. Wartość **ComputeEmulatorRunning %** jest zmienna środowiskowa `true` podczas uruchamiania w emulatorze obliczeń i `false` podczas uruchamiania w chmurze.
+Aby utworzyć zmienną środowiskową, Dodaj [Zmienna]/[RoleInstanceValue] elementu i utworzyć wartość XPath `/RoleEnvironment/Deployment/@emulated`. Wartość **ComputeEmulatorRunning %** jest zmienna środowiskowa `true` podczas uruchamiania w emulatorze obliczeń i `false` podczas uruchamiania w chmurze.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -472,12 +472,12 @@ Przykładowe dane wyjściowe w **StartupLog.txt** pliku:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Ustaw w kontekście wykonywania odpowiednio do zadania uruchamiania
 Ustaw uprawnienia odpowiednio dla zadania uruchamiania. Czasami zadania uruchamiania należy uruchomić z podwyższonym poziomem uprawnień, mimo że roli jest uruchamiany z normalnym uprawnieniami.
 
-[Kontekście wykonywania][zadań] atrybut ustawia poziom uprawnień zadania uruchamiania. Za pomocą `executionContext="limited"` oznacza, że zadanie uruchamiania ma taki sam poziom uprawnień jako rolę. Za pomocą `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, co pozwala zadania uruchamiania do wykonywania zadań administratora bez udzielania uprawnień administratora do Twojej roli.
+[Kontekście wykonywania][zadanie podrzędne] atrybut ustawia poziom uprawnień zadania uruchamiania. Za pomocą `executionContext="limited"` oznacza, że zadanie uruchamiania ma taki sam poziom uprawnień jako rolę. Za pomocą `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, co pozwala zadania uruchamiania do wykonywania zadań administratora bez udzielania uprawnień administratora do Twojej roli.
 
 Przykładem zadania uruchamiania, który wymaga podniesionych uprawnień jest zadanie uruchamiania, który używa **AppCmd.exe** do skonfigurowania usług IIS. **AppCmd.exe** wymaga `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Użyj odpowiedniego taskType
-[TaskType][zadań] atrybut określa sposób zadanie uruchamiania jest wykonywany. Istnieją trzy wartości: **proste**, **tła**, i **pierwszego planu**. Pierwszego planu i tła zadania są uruchamiane asynchronicznie, a następnie proste zadania są wykonywane synchronicznie pojedynczo.
+[TaskType][zadanie podrzędne] atrybut określa sposób zadanie uruchamiania jest wykonywany. Istnieją trzy wartości: **proste**, **tła**, i **pierwszego planu**. Pierwszego planu i tła zadania są uruchamiane asynchronicznie, a następnie proste zadania są wykonywane synchronicznie pojedynczo.
 
 Za pomocą **proste** zadań uruchamiania można ustawić kolejność uruchamiania zadań, które według kolejności, w którym zadania są wymienione w pliku ServiceDefinition.csdef. Jeśli **proste** zadań kończy się kod zakończenia różny od zera, a następnie zatrzymuje procedury uruchamiania i roli nie rozpoczyna się.
 
@@ -507,7 +507,7 @@ Dowiedz się więcej o tym, jak [zadania](cloud-services-startup-tasks.md) pracy
 [Tworzenie i wdrażanie](cloud-services-how-to-create-deploy-portal.md) pakiet usługi w chmurze.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Zadanie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

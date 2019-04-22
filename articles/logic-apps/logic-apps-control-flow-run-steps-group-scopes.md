@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882416"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Uruchom akcje na podstawie stanu grupy z zakresów w usłudze Azure Logic Apps
@@ -81,11 +81,11 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
       | ------- | ----- | ----------- |
       | **Punkt nawigacyjny 1** | <*start*> | Wprowadź początek trasy. | 
       | **Punkt nawigacyjny 2** | <*koniec*> | Wprowadź trasy. | 
-      | **Należy unikać** | Brak | Wprowadź elementy, aby unikać trasy, na przykład autostrady, drogi i tak dalej. Możliwe wartości, zobacz [obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Unikaj** | Brak | Wprowadź elementy, aby unikać trasy, na przykład autostrady, drogi i tak dalej. Możliwe wartości, zobacz [obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optymalizacja** | timeWithTraffic | Wybierz parametr używany do optymalizowania trasy, na przykład odległość, czas przy użyciu bieżących informacji o ruchu i tak dalej. W tym przykładzie użyto tej wartości: "timeWithTraffic" | 
       | **Jednostka odległości** | <*według_preferencji*> | Wprowadź Jednostka odległości trasy obliczania. W tym przykładzie użyto tej wartości: "Mile" | 
       | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. W tym przykładzie użyto tej wartości "Prawa jazdy." | 
-      | **Tranzyt daty i godziny** | Brak | Dotyczy tylko tryb przesyłania. | 
+      | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko tryb przesyłania. | 
       | **Typ Data Type przesyłania** | Brak | Dotyczy tylko tryb przesyłania. | 
       ||||  
 

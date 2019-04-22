@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878506"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
@@ -98,7 +98,7 @@ Podczas tworzenia tras zdefiniowanych przez użytkownika możesz określić poni
 
 Typu **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceEndpoint** nie możesz określić jako typu następnego przeskoku w trasach zdefiniowanych przez użytkownika. Trasy z typami następnego przeskoku **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceEndpoint** są tworzone tylko przez platformę Azure podczas konfigurowania komunikacji równorzędnej sieci wirtualnej lub punktu końcowego usługi.
 
-**Typy następnego przeskoku dla narzędzi systemu Azure**
+**Typy następnego przeskoku dla narzędzi platformy Azure**
 
 Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna dla witryny Azure Portal i narzędzi wiersza polecenia oraz usługi Azure Resource Manager i klasycznych modeli wdrażania. W poniższej tabeli wymieniono nazwy używane w odwołaniu do każdego typu następnego przeskoku dla różnych narzędzi i [modeli wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
@@ -181,7 +181,7 @@ W celu zilustrowania koncepcji podanych w tym artykule w kolejnych sekcjach opis
 ### <a name="requirements"></a>Wymagania
 
 1. Implementacja dwóch sieci wirtualnych w tym samym regionie platformy Azure i umożliwienie zasobom komunikacji między sieciami wirtualnymi.
-2. Umożliwienie sieci lokalnej bezpiecznego komunikowania się z oboma sieciami wirtualnymi przy użyciu tunelu VPN za pośrednictwem Internetu. *Alternatywnie można użyć połączenia usługi ExpressRoute, ale w tym przykładzie używane jest połączenie sieci VPN.*
+2. Umożliwienie sieci lokalnej bezpiecznego komunikowania się z oboma sieciami wirtualnymi przy użyciu tunelu VPN za pośrednictwem Internetu. *Alternatywnie można użyć połączenia usługi ExpressRoute, ale w tym przykładzie jest używane połączenie sieci VPN.*
 3. Dla jednej podsieci w jednej sieci wirtualnej:
  
     - Wymuś, aby cały ruch wychodzący z podsieci, z wyjątkiem tego do usługi Azure Storage i w obrębie podsieci, przepływał przez urządzenie wirtualne sieci w celu kontroli i rejestrowania.
@@ -255,8 +255,8 @@ Tabela tras dla podsieci *Subnet2* zawiera wszystkie domyślne trasy utworzone p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Utwórz tabelę tras zdefiniowanych przez użytkownika za pomocą tras i wirtualne urządzenie sieciowe](tutorial-create-route-table-portal.md)
-- [Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Użyć protokołu BGP przy użyciu usługi ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
+- [Create a user-defined route table with routes and a network virtual appliance (Tworzenie tabeli tras zdefiniowanej przez użytkownika z trasami i urządzeniem wirtualnym sieci)](tutorial-create-route-table-portal.md)
+- [Configure BGP for an Azure VPN Gateway (Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure)](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Use BGP with ExpressRoute (Używanie protokołu BGP z usługą ExpressRoute)](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [View all routes for a subnet (Wyświetlanie wszystkich tras dla podsieci)](diagnose-network-routing-problem.md). Tabela tras zdefiniowanych przez użytkownika wyświetla tylko trasy zdefiniowane przez użytkownika, a nie trasy domyślne ani trasy protokołu BGP dla podsieci. Wyświetlanie wszystkich tras pokazuje trasy domyślne, protokołu BGP i zdefiniowane przez użytkownika dla podsieci, w której znajduje się interfejs sieciowy.
 - [Określanie typu następnego przeskoku](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) między maszyną wirtualną i docelowym adresem IP. Funkcja następnego przeskoku usługi Azure Network Watcher umożliwia określenie, czy ruch opuszcza podsieć i jest kierowany tam, gdzie go oczekujesz.

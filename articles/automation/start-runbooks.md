@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918454"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook w usłudze Azure Automation
@@ -25,7 +25,7 @@ Poniższa tabela pozwala określić metodę, aby uruchomić element runbook w us
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Najprostszą metodą przy użyciu interfejsu użytkownika interaktywnego.<br> <li>Formularz, aby podać wartości parametrów proste.<br> <li>Łatwo śledzić stan zadania.<br> <li>Dostęp uwierzytelniony przy użyciu konta platformy Azure w. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Mogą być dołączane zautomatyzowane rozwiązanie z wielu kroków.<br> <li>Żądanie jest uwierzytelniane za pomocą certyfikatu lub użytkownika OAuth głównej / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone.<br> <li>Śledzić stan zadania.<br> <li>Oprogramowanie klienckie wymagane do obsługi poleceń cmdlet programu PowerShell. |
 | [Interfejs API usługi Azure Automation](/rest/api/automation/) |<li>Metoda najbardziej elastyczny, ale także większość złożonej.<br> <li>Wywoływanie z kodu niestandardowego, który może zgłaszać żądania HTTP.<br> <li>Żądanie uwierzytelnić się za pomocą certyfikatu lub użytkownika Oauth głównej / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone. *Jeśli wykonywane jest połączenie runbook języka Python przy użyciu interfejsu API, trzeba go serializować ładunek JSON.*<br> <li>Śledzić stan zadania. |
-| [Elementy webhook](automation-webhooks.md) |<li>Uruchom element runbook z poziomu pojedynczego żądania HTTP.<br> <li>Uwierzytelniane przy użyciu tokenu zabezpieczającego w adresie URL.<br> <li>Klient nie może zastąpić wartości parametrów, które określono podczas tworzenia elementu webhook. Element Runbook może definiować pojedynczy parametr, który jest wypełniana przy użyciu szczegółów żądania HTTP.<br> <li>Brak możliwości, aby śledzić stan zadania przy użyciu adresu URL elementu webhook. |
+| [Elementy Webhook](automation-webhooks.md) |<li>Uruchom element runbook z poziomu pojedynczego żądania HTTP.<br> <li>Uwierzytelniane przy użyciu tokenu zabezpieczającego w adresie URL.<br> <li>Klient nie może zastąpić wartości parametrów, które określono podczas tworzenia elementu webhook. Element Runbook może definiować pojedynczy parametr, który jest wypełniana przy użyciu szczegółów żądania HTTP.<br> <li>Brak możliwości, aby śledzić stan zadania przy użyciu adresu URL elementu webhook. |
 | [Odpowiadanie na Alert usługi Azure](../log-analytics/log-analytics-alerts.md) |<li>Uruchom element runbook w odpowiedzi na alert usługi Azure.<br> <li>Konfigurowanie elementu webhook dla elementu runbook i link do alertu.<br> <li>Uwierzytelniane przy użyciu tokenu zabezpieczającego w adresie URL. |
 | [Harmonogram](automation-schedules.md) |<li>Automatycznie uruchomić element runbook zgodnie z harmonogramem co godzinę, codziennie, co tydzień lub co miesiąc.<br> <li>Manipulowanie harmonogramu za pośrednictwem witryny Azure portal, poleceń cmdlet programu PowerShell lub interfejsu API platformy Azure.<br> <li>Podaj wartości parametrów do użycia z harmonogramem. |
 | [Z innego elementu Runbook](automation-child-runbooks.md) |<li>Jako działanie w inny element runbook za pomocą elementu runbook.<br> <li>Przydatne w przypadku funkcji używanych przez wiele elementów runbook.<br> <li>Podaj wartości parametrów podrzędnego elementu runbook, a następnie użyć danych wyjściowych w nadrzędny element runbook. |

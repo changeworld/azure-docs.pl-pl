@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
 ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916691"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
@@ -169,8 +169,7 @@ Tych objawów mogą wystąpić z powodu co najmniej jeden z następujących powo
   * Maszyny Wirtualnej zostało zamknięte przez dłuższy czas z powodu której konfiguracji rozszerzenia na nim wygasł
   * Maszyna wirtualna została usunięta, a inną maszynę Wirtualną utworzono o takiej samej nazwie i w tej samej grupie zasobów usuniętej maszyny Wirtualnej
   * Jednym z węzłów AG kompletna konfiguracja kopii zapasowej nie nadeszła, może się to zdarzyć, zarówno w czasie rejestracji grupy dostępności w magazynie lub po dodaniu nowego węzła  <br>
-   
-W powyższych scenariuszach zalecane jest aby wyzwolić ponowne zarejestrowanie operację na maszynie Wirtualnej. Ta opcja jest tylko dostępne za pośrednictwem programów PowerShell i będzie wkrótce dostępna w witrynie Azure portal.
+    W powyższych scenariuszach zalecane jest aby wyzwolić ponowne zarejestrowanie operację na maszynie Wirtualnej. Ta opcja jest tylko dostępne za pośrednictwem programów PowerShell i będzie wkrótce dostępna w witrynie Azure portal.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

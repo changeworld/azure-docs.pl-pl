@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918505"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług Azure Cloud Services (plik csdef)
@@ -57,10 +57,10 @@ Podstawowy format pliku definicji usługi jest w następujący sposób.
 ## <a name="schema-definitions"></a>Definicje schematu
 Schemat można znaleźć w następujących tematach:
 
-- [Schemat LoadBalancerProbe](schema-csdef-loadbalancerprobe.md)
-- [Schemat WebRole](schema-csdef-webrole.md)
-- [Schemat WorkerRole](schema-csdef-workerrole.md)
-- [Schemat NetworkTrafficRules](schema-csdef-networktrafficrules.md)
+- [LoadBalancerProbe — schemat](schema-csdef-loadbalancerprobe.md)
+- [WebRole — schemat](schema-csdef-webrole.md)
+- [WorkerRole — schemat](schema-csdef-workerrole.md)
+- [NetworkTrafficRules — schemat](schema-csdef-networktrafficrules.md)
 
 ##  <a name="ServiceDefinition"></a> Element ServiceDefinition — Element
 `ServiceDefinition` Element jest elementem najwyższego poziomu w pliku definicji usługi.

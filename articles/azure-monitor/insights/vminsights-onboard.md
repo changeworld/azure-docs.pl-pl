@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
 ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885829"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
@@ -56,7 +56,7 @@ Usługa Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy usługi L
 
 Jeśli nie masz obszaru roboczego, można utworzyć jeden z jedną z następujących metod:
 * [Interfejs wiersza polecenia platformy Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Program PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Witryna Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 

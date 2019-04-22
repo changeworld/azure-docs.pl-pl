@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 8f5a6187b0a651da9dd8de1cb5670a8faffded1a
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862424"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybierz i wdrożyć agenta zabezpieczeń na urządzeniu IoT
@@ -49,7 +49,7 @@ Agent zabezpieczenia oparty na C ma mniejsze obciążenie pamięci i jest idealn
 | Oprogramowanie typu „open source” | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-cs) | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-c) |
 | Języka programowania    | C | C# |
 | Obsługiwane platformy Windows? | Nie | Yes |
-| Wymagania wstępne Windows | --- | [WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
+| Wymagania wstępne Windows | --- | [USŁUGI WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
 | Obsługiwane platformy Linux? | Tak, x64 i x86 | Tak, tylko x64 |
 | Wymagania wstępne systemu Linux | libunwind8 libcurl3, środowisko uruchomieniowe identyfikatora uuid, wykorzystują, audispd wtyczek | libunwind8 libcurl3, środowisko uruchomieniowe uuid, wykorzystują, audispd wtyczek, "sudo", polecenia netstat, iptables |
 | Przestrzeń dyskową | 10.5 MB | 90MB |

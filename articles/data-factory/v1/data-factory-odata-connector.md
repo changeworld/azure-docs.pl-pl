@@ -14,16 +14,16 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905634"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Przenoszenie danych źródła z OData przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-odata-connector.md)
-> * [W wersji 2 (bieżąca wersja)](../connector-odata.md)
+> * [Wersja 2 (bieżąca wersja)](../connector-odata.md)
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznik OData w wersji 2](../connector-odata.md).

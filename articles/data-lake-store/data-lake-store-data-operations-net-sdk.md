@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876959"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
-> * [Zestaw SDK .NET](data-lake-store-data-operations-net-sdk.md)
+> * [Zestaw SDK platformy .NET](data-lake-store-data-operations-net-sdk.md)
 > * [Zestaw SDK Java](data-lake-store-get-started-java-sdk.md)
 > * [Interfejs API REST](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
@@ -59,8 +59,8 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
    2. Na karcie **Menedżer pakietów NuGet** upewnij się, że **Źródło pakietów** jest ustawione na wartość **nuget.org** i że zaznaczone jest pole wyboru **Uwzględnij wersję wstępną**.
    3. Wyszukaj i zainstaluj następujące pakiety NuGet:
 
-      * `Microsoft.Azure.DataLake.Store` — W tym samouczku jest używana wersja 1.0.0.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — W tym samouczku jest używana wersja 2.3.1.
+      * `Microsoft.Azure.DataLake.Store` — w tym samouczku jest używana wersja 1.0.0.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` — w tym samouczku jest używana wersja 2.3.1.
     
       Zamknij **Menedżera pakietów NuGet**.
 
@@ -182,4 +182,4 @@ Poniżej przedstawiono kilka przykładów na temat korzystania z zestawu SDK sys
 * [Dokumentacja zestawu SDK .NET Gen1 Lake magazynu danych](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)

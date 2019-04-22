@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891688"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
@@ -48,7 +48,7 @@ Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie uż
     |**Brak**|Elementy członkowskie nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
     |**Odczyt**|Elementy członkowskie wykonywać zapytania na danych (oparte na filtrów wierszy), ale nie można zmodyfikować schematu modelu.|  
     |**Odczyt i przetwarzanie**|Członkowie mogą wysyłać zapytania na danych (na poziomie wiersza filtrami) i wykonywania operacji przetwarzania i przetwórz wszystko, ale nie można zmodyfikować schematu modelu.|  
-    |**Przetwórz**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
+    |**Proces**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
     |**Administrator**|Elementy członkowskie można zmodyfikować schemat modelu i wyszukiwać wszystkie dane.|   
   
 5.  Jeśli rola tworzenia ma odczytu lub uprawnienia Odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij przycisk **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij **Filtr języka DAX** pola, a następnie wpisz formułę języka DAX.
@@ -124,8 +124,8 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
   
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
-|[Dodaj RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Dodaj członka do roli bazy danych.| 
-|[Usuń RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Usuń członka z roli bazy danych.|   
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Dodaj członka do roli bazy danych.| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Usuń członka z roli bazy danych.|   
 |[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Wykonywanie skryptów TMSL.|
 
 ## <a name="row-filters"></a>Filtry wierszy  

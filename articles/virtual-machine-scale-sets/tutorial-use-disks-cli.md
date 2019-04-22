@@ -1,6 +1,6 @@
 ---
 title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą interfejsu wiersza polecenia platformy Azure i korzystanie z nich | Microsoft Docs
-description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć usługę Managed Disks i używać jej razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć dyski funkcji Dyski zarządzane i używać ich razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -18,7 +18,7 @@ ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
 ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/06/2019
 ms.locfileid: "55751161"

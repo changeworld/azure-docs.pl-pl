@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878115"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Azure Data Lake magazynu Gen1
@@ -25,8 +25,8 @@ Azure Data Lake Storage Gen1 udostępnia magazyn lokalnie nadmiarowy (LRS). Dzi�
 ## <a name="disaster-recovery-guidance"></a>Wskazówki dotyczące odzyskiwania po awarii
 Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Przeczytaj informacje w tym artykule, aby utworzyć plan odzyskiwania po awarii. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.
 
-* [Odzyskiwanie po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Wskazówki techniczne odporność platformy Azure](../resiliency/resiliency-technical-guidance.md)
+* [Odzyskiwanie aplikacji platformy Azure po awarii i ich wysoka dostępność](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Odporność platformy Azure — wskazówki techniczne](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>Najlepsze praktyki
 Zaleca się, że kopiujesz danych o kluczowym znaczeniu do innego konta Data Lake Storage Gen1 w innym regionie z częstotliwością dostosowaną do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) lub [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md). Azure Data Factory to usługa przydatna w przypadku cyklicznego tworzenia i wdrażania potoków przepływu danych.
@@ -43,5 +43,5 @@ Organizacje mogą włączyć [rejestrowania diagnostycznego](data-lake-store-dia
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [Zabezpieczanie danych w Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
 

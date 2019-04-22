@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ WinRT | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje dotyczące tworzenia i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ WinRT.
+title: Jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/WinRT | Dokumentacja firmy Microsoft
+description: Szczegółowe wyjaśnienie, jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/WinRT.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -9,23 +9,23 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 966a8bd5990f955a3ec66ae465d14a0369d0cdf9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915312"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku C + +/ WinRT
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure zakotwiczenia przestrzennego w C++/WinRT
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
-> * [Obiektowy C](create-locate-anchors-objc.md)
+> * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona kilka różne środowiska projektowania. W tym artykule będzie przejdziemy do sposobu używania przestrzenne kotwic zestawu SDK usługi Azure w języku C + +/ WinRT, do:
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona kilka różne środowiska projektowania. W tym artykule przejdziemy dowiesz się, jak używać usługi Azure przestrzenne kotwic zestawu SDK, w C++/WinRT do:
 
 - Poprawnie skonfigurować i zarządzaj nimi sesję kotwic przestrzenne platformy Azure.
 - Utwórz i ustaw właściwości na lokalnych zakotwiczenia.

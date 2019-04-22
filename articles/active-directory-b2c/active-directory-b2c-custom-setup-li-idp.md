@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862798"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Skonfiguruj polecenie logowania za pomocą konta LinkedIn, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
@@ -220,7 +220,7 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 
 1. Utwórz kopię *SignUpOrSignIn.xml* w katalogu roboczym i zmień jego nazwę. Na przykład, zmień jej nazwę na *SignUpSignInLinkedIn.xml*.
 2. Otwórz nowy plik i zaktualizuj wartość **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInLinkedIn`.
-3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Zaktualizuj wartość **ReferenceId** atrybutu w **DefaultUserJourney** aby dopasować identyfikator nowego podróży użytkownika utworzony (SignUpSignLinkedIn).
 5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady na liście.
 6. Upewnij się, że zaznaczone jest aplikacja usługi Azure AD B2C, który został utworzony w **wybierz aplikację** pola, a następnie przetestuj go, klikając **Uruchom teraz**.
@@ -280,7 +280,7 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 
 1. Utwórz kopię *SignUpOrSignIn.xml* w katalogu roboczym i zmień jego nazwę. Na przykład, zmień jej nazwę na *SignUpSignInLinkedIn.xml*.
 2. Otwórz nowy plik i zaktualizuj wartość **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInLinkedIn`.
-3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Zaktualizuj wartość **ReferenceId** atrybutu w **DefaultUserJourney** aby dopasować identyfikator nowego podróży użytkownika utworzony (SignUpSignLinkedIn).
 5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady na liście.
 6. Upewnij się, że zaznaczone jest aplikacja usługi Azure AD B2C, który został utworzony w **wybierz aplikację** pola, a następnie przetestuj go, klikając **Uruchom teraz**.

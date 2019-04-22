@@ -10,15 +10,15 @@ ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878744"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transferowanie danych za pomocą Biblioteka przenoszenia danych magazynu platformy Microsoft Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Biblioteka przenoszenia danych do programu Microsoft Azure Storage jest biblioteką "open source" dla wielu platform, które zaprojektowano z myślą o wysokiej wydajności, przekazywanie, pobieranie i kopiowanie plików i obiektów blob usługi Azure Storage. Ta biblioteka jest podstawowym środowisku przenoszenia danych, która napędza [AzCopy](../storage-use-azcopy.md). Biblioteka przenoszenia danych udostępnia wygodne metody, które nie są dostępne w przypadku naszej tradycyjnych [biblioteki klienta usługi Azure Storage .NET](../blobs/storage-dotnet-how-to-use-blobs.md). Obejmuje to możliwość Ustaw liczbę operacji równoległych, śledzić postępu przenoszenia, łatwe wznawianie transferu anulowane i wiele innych.
 
 Ta biblioteka korzysta z platformy .NET Core, co oznacza, że możesz użyć go podczas tworzenia aplikacji .NET for Windows, Linux i macOS. Aby dowiedzieć się więcej na temat platformy .NET Core, zobacz [dokumentacji platformy .NET Core](https://dotnet.github.io/). Ta biblioteka działa także dla tradycyjnych aplikacji .NET Framework dla Windows.

@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 3/27/2019
 ms.author: thweiss
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58919616"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
@@ -573,6 +573,6 @@ Zmiana źródła danych, użyjemy, aby rozpowszechniać aktualizacje do innego m
 
 Po wprowadzeniu do praktycznych modelowania i partycjonowanie danych którego chcesz sprawdzić następujące artykuły, aby zapoznać się z pojęciami, które, gdy Omówiliśmy już:
 
-- [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md)
-- [Partycjonowanie w usłudze Azure Cosmos DB](partitioning-overview.md)
+- [Praca z bazami danych, kontenerów i elementów](databases-containers-items.md)
+- [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
 - [Zmiana źródła danych w usłudze Azure Cosmos DB](change-feed.md)

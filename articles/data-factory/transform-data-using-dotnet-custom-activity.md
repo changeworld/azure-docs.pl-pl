@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904580"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
@@ -382,10 +382,10 @@ Jeśli pula używa domyślnie [autoScaleEvaluationInterval](https://msdn.microso
 Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób:
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie programu Hive](transform-data-using-hadoop-hive.md)
-* [Działanie programu Pig](transform-data-using-hadoop-pig.md)
-* [Działanie MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Działanie technologii hive](transform-data-using-hadoop-hive.md)
+* [Działania technologii pig](transform-data-using-hadoop-pig.md)
+* [Działania technologii MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Działania przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
 * [Działania platformy Spark](transform-data-using-spark.md)
 * [Machine Learning Batch Execution działania](transform-data-using-machine-learning.md)
-* [Działanie procedury przechowywanej](transform-data-using-stored-procedure.md)
+* [Działania procedur składowanych](transform-data-using-stored-procedure.md)

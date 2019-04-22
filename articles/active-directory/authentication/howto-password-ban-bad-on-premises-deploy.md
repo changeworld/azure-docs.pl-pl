@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904631"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
@@ -45,7 +45,7 @@ Po ta funkcja działa w trybie inspekcji odpowiednim czasie, można przełącza�
 * Sieci musi istnieć łączność między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer hostujący usługę serwera proxy ochrony hasłem. To połączenie musi zezwalać na kontrolerze domeny, aby uzyskiwać dostęp do punktu końcowego usługi RPC, mapowania portu 135 protokołów i port serwera RPC na usługę serwera proxy. Domyślnie przez port serwera RPC jest dynamicznego portu RPC, ale mogą być konfigurowane do [korzystanie z portu statycznego](#static).
 * Wszystkie komputery obsługujące usługę serwera proxy musi mieć dostęp do następujących punktów końcowych sieci:
 
-    |**Endpoint**|**Przeznaczenie**|
+    |**Punkt końcowy**|**Cel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
     |`https://enterpriseregistration.windows.net`|Funkcjonalność ochrony haseł w usłudze Azure AD|

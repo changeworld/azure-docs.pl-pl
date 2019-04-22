@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
 ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916483"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Przeczyszczanie punktu końcowego usługi Azure CDN
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Węzły brzegowe w usłudze Azure CDN będzie zasobów w pamięci podręcznej do momentu wygaśnięcia zasobu czas wygaśnięcia (TTL).  Po wygaśnięciu czasu wygaśnięcia zasobu, gdy klient zażąda zawartości z węzłem krawędzi, w węźle brzegowym powoduje pobranie zaktualizowanych nową kopię zasobu ma obsługiwać żądania klienta i magazynu odświeżyć pamięć podręczną.
 
 Najlepszym rozwiązaniem jest, aby upewnić się, że użytkownicy zawsze uzyskać najnowszą kopię zawartości jest wersja zasobów dla każdej aktualizacji i opublikować je jako nowe adresy URL.  Sieci CDN pobierze natychmiast nowe zasoby dla następnego żądania klienta.  Czasami chcesz przeczyścić pamięci podręcznej zawartość ze wszystkich węzłów brzegowych i wymusić na nich wszystkich pobrać nowe zaktualizowane zasoby.  Może to być spowodowane aktualizacje do aplikacji sieci web lub szybko zasobów aktualizacji, które zawierają nieprawidłowe informacje.

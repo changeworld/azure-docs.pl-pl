@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918233"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
@@ -47,7 +47,7 @@ Więcej informacji na temat różnych poziomów dostosowywania oparte na dostęp
 
 ## <a name="custom-translator-versus-hub"></a>Niestandardowe w usłudze Translator w stosunku do Centrum
 
-|   | **Centrum** | **Custom Translator**|
+|   | **Centrum** | **Niestandardowe w usłudze Translator**|
 |:-----|:----:|:----:|
 |Stan funkcji dostosowywania   | Ogólna dostępność  | Ogólna dostępność |
 | Interfejs API tłumaczenia tekstu w wersji  | Tylko w wersji 2   | Tylko w wersji 3 |

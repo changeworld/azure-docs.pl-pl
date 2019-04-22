@@ -45,7 +45,7 @@ Projekt wynikowy musi uwzględniać:
 
 * Subskrypcja platformy Azure i konto
 * Pojedyncza grupa zasobów
-* Azure Managed Disks
+* Dyski zarządzane platformy Azure
 * Sieć wirtualną z dwiema podsieciami
 * Zestawy dostępności dla maszyn wirtualnych z podobną rolę
 * Maszyny wirtualne

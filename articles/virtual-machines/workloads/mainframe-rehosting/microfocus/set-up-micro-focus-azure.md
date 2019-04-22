@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896610"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure
@@ -38,7 +38,7 @@ Przed rozpoczęciem pracy zapoznaj się z tych wymagań wstępnych:
 > [!NOTE]
 > Najlepszym rozwiązaniem jest ustanowienie tunelu wirtualnej sieci prywatnej (VPN) lokacja lokacja lub serwera przesiadkowego, dzięki czemu można kontrolować dostęp do maszyn wirtualnych platformy Azure.
 
-## <a name="install-enterprise-server"></a>Zainstaluj serwer przedsiębiorstwa
+## <a name="install-enterprise-server"></a>Instalowanie serwera Enterprise Server
 
 1. Aby uzyskać lepsze bezpieczeństwo i łatwość zarządzania należy rozważyć utworzenie nowej grupy zasobów tylko dla tego projektu — na przykład **RGMicroFocusEntServer**. Należy użyć pierwszą część nazwy na platformie Azure, aby wyznaczyć typu zasobu, aby ułatwić zauważenia na liście.
 

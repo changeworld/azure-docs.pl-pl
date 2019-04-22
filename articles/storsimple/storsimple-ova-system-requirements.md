@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876840"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano wymagania systemowe dla usługi Microsoft Azure StorSimple Virtual Array i klientów usług magazynowych korzystających tablicy. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed wdrożeniem systemu StorSimple i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
 
 Wymagania systemowe, obejmują:
@@ -94,10 +94,10 @@ Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, a
 
 | **Nr portu<sup>1</sup>** | **Wewnątrz lub na zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |limit |WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| TCP 443 (HTTPS) |limit |WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| UDP 53 (DNS) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
-| UDP 123 (NTP) |limit |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
+| TCP 80 (HTTP) |Wyjście |Sieć WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| TCP 443 (HTTPS) |Wyjście |Sieć WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| UDP 53 (DNS) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
+| UDP 123 (NTP) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
 | TCP 80 (HTTP) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. <br></br> Należy pamiętać, uzyskiwanie dostępu do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP spowoduje automatyczne przekierowanie do protokołu HTTPS. |
 | TCP 443 (HTTPS) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. |
 | TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |

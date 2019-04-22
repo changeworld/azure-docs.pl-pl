@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878404"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Zarządzanie zasobami programu IBM DB2 za pomocą usługi Azure Logic Apps
@@ -88,7 +88,7 @@ Aby skonfigurować połączenie, podaj następujące szczegóły połączenia po
 | **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Nie | Ma zastosowanie tylko w przypadku połączeń lokalnych. |
 | **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" |
 | **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
-| **Database (Baza danych)** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
 | **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
 | **Hasło** | Yes | Hasło dla bazy danych |
 ||||
@@ -108,8 +108,8 @@ Przed utworzeniem połączenia, musi już mieć zainstalowanej usługi bramy dan
 | **Nawiązywanie połączenia za pośrednictwem bramy lokalnej** | Yes | Ma zastosowanie, gdy chcesz, aby połączenie lokalne i pokazuje właściwości połączenia lokalnego. |
 | **Nazwa połączenia** | Yes | Nazwę połączenia, na przykład "MyLogicApp — bazy danych DB2 — połączenie" | 
 | **Serwer** | Yes | Numer portu dwukropek adres lub alias dla serwera bazy danych DB2, na przykład "myDB2server:50000" <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje adresu TCP/IP lub alias, albo w formacie IPv4 lub IPv6, po której następują dwukropek i numer portu TCP/IP. |
-| **Database (Baza danych)** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
-| **Authentication** | Yes | Typ uwierzytelniania dla połączenia, na przykład "Basic" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje DRDA relacyjnej bazy danych nazwa (RDBNAM): <p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 16-bajtowy, w których bazy danych jest znany jako lokalizację "IBM DB2 z/OS". <br>— Bazy danych DB2 dla i akceptuje ciąg 18-bajtową, w którym baza danych jest znany jako "IBM DB2 for mam" relacyjnej bazy danych. <br>— Bazy danych DB2 dla LUW akceptuje ciąg 8-bajtowych. |
+| **Uwierzytelnianie** | Yes | Typ uwierzytelniania dla połączenia, na przykład "Basic" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
 | **Nazwa użytkownika** | Yes | Swoją nazwę użytkownika dla bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość zależy od konkretnej bazy danych: <p><p>— Bazy danych DB2 w przypadku z/OS akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla i akceptuje ciąg 10 bajtów. <br>— Bazy danych DB2 dla systemu Linux lub UNIX akceptuje ciąg 8-bajtowych. <br>— Bazy danych DB2 dla Windows akceptuje ciąg 30-bajtowy. |
 | **Hasło** | Yes | Hasło dla bazy danych |
 | **Brama** | Yes | Nazwa zainstalowane lokalne bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera wszystkie bramy danych zainstalowanych w ramach subskrypcji platformy Azure i grupę zasobów. |

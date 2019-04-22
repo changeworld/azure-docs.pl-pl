@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884299"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights
@@ -60,7 +60,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-*1.2 Log4J*
+*Log4J v1.2*
 
 ```XML
 
@@ -91,7 +91,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**1.2 Log4J**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -139,7 +139,7 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
     </Configuration>
 ```
 
-*1.2 Log4J*
+*Log4J v1.2*
 
 ```XML
 

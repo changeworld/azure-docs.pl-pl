@@ -355,7 +355,7 @@ Przed kontynuowaniem należy wziąć pod uwagę następujące decyzje dotyczące
 
 * **Magazyn — usługa Azure Managed Disks**
 
-   W przypadku magazynu maszyny wirtualnej Użyj usługi Azure Managed Disks. Firma Microsoft zaleca dysków zarządzanych dla maszyn wirtualnych programu SQL Server. Usługa Managed Disks obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z usługą Managed Disks znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Managed Disks](../managed-disks-overview.md). Aby uzyskać szczegółowe informacje na temat dysków zarządzanych w zestawie dostępności, zobacz [Użyj dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   W przypadku magazynu maszyny wirtualnej Użyj usługi Azure Managed Disks. Firma Microsoft zaleca dysków zarządzanych dla maszyn wirtualnych programu SQL Server. Funkcja Dyski zarządzane obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z funkcją Dyski zarządzane znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz [Omówienie funkcji Dyski zarządzane platformy Azure](../managed-disks-overview.md). Aby uzyskać szczegółowe informacje na temat dysków zarządzanych w zestawie dostępności, zobacz [Użyj dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Sieć — prywatne adresy IP w środowisku produkcyjnym**
 

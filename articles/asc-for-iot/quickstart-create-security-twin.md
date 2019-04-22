@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862220"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Utwórz bliźniaczą reprezentację modułu azureiotsecurity
@@ -67,7 +67,7 @@ Aby sprawdzić, czy bliźniaczą reprezentację modułu zabezpieczeń istnieje d
 
 1. W usłudze Azure IoT Hub, wybierz **urządzeń IoT** z **Eksploratory** menu.    
 1. Wprowadź identyfikator urządzenia, lub wybierz opcję **pola urządzenia zapytania** i kliknij przycisk **zapytania urządzeń**. 
-    ![Zapytania względem urządzeń](./media/quickstart/verify-security-module-twin.png)
+    ![Zapytania urządzeń](./media/quickstart/verify-security-module-twin.png)
 1. Wybierz urządzenie lub dwukrotnie kliknij go, aby otworzyć stronę szczegółów urządzenia. 
 1. Wybierz **tożsamości modułu** menu i Sprawdź istnienie **azureiotsecurity** modułu na liście tożsamości modułu skojarzone z urządzeniem. 
     ![Moduły skojarzone z urządzenia](./media/quickstart/verify-security-module-twin-3.png)

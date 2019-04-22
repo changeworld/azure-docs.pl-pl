@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880104"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen1 (jako magazyn dodatkowy) za pomocą programu Azure PowerShell
@@ -24,7 +24,7 @@ ms.locfileid: "58880104"
 > * [Korzystanie z portalu](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Przy użyciu programu PowerShell (do magazynu domyślnego)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Przy użyciu programu PowerShell (w przypadku dodatkowego magazynu)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Używanie Menedżera zasobów](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Przy użyciu usługi Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 

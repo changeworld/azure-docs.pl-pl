@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883077"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak poprawianie klasyfikatora
@@ -111,4 +111,4 @@ Czasami kontroli można zidentyfikować wzorce, które następnie można usuną�
 W tym przewodniku przedstawiono kilka technik, które umożliwiają bardziej precyzyjne obraz niestandardowy model klasyfikacji. Dowiedz się, jak przetestować obrazy programowo, przesyłając je do interfejsu API prognoz.
 
 > [!div class="nextstepaction"]
-> [Używanie interfejsu API prognozowania](use-prediction-api.md)
+> [Użyj interfejsu API prognoz.](use-prediction-api.md)

@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876821"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrowanie danych na konto interfejsu API tabel w usłudze Azure Cosmos DB
@@ -39,7 +39,7 @@ Narzędzie wiersza polecenia usługi Azure Cosmos DB do migracji danych (dt.exe)
 Aby przeprowadzić migrację danych tabeli, wykonaj następujące czynności:
 
 1. Pobierz narzędzie do migracji danych z witryny [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Uruchom narzędzie `dt.exe` przy użyciu argumentów wiersza polecenia odpowiednich do scenariusza. `dt.exe` wykonuje polecenie w następującym formacie:
+2. Uruchom narzędzie `dt.exe` przy użyciu argumentów wiersza polecenia odpowiednich do scenariusza. Narzędzie `dt.exe` przyjmuje polecenia w następującym formacie:
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
@@ -74,9 +74,9 @@ Aby pobrać parametry połączenia źródła podczas importu z konta wersji zapo
 
 ![Zrzut ekranu przedstawiający opcje źródła dla bazy danych HBase](./media/table-import/cosmos-connection-string.png)
 
-[Przykład polecenia usługi Azure Table Storage](#azure-table-storage)
+[Przykład polecenia dla usługi Azure Table Storage](#azure-table-storage)
 
-[Przykładowe polecenie interfejsu Table API (wersja zapoznawcza) dla usługi Azure Cosmos DB](#table-api-preview)
+[Przykład polecenia dla wersji zapoznawczej interfejsu API tabel usługi Azure Cosmos DB](#table-api-preview)
 
 ### <a name="command-line-target-settings"></a>Ustawienia miejsca docelowego w wierszu polecenia
 
@@ -147,4 +147,4 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak wykonywać zapytania dotyczące danych za pomocą interfejsu API tabel usługi Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Jak wykonywać zapytania względem danych?](../cosmos-db/tutorial-query-table.md)
+>[Jak wykonywać zapytania dotyczące danych?](../cosmos-db/tutorial-query-table.md)

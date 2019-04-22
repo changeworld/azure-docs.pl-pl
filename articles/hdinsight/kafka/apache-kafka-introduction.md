@@ -11,7 +11,7 @@ ms.topic: overview
 ms.date: 04/11/2018
 ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
 ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2019
 ms.locfileid: "56889192"
@@ -26,9 +26,9 @@ Cechy charakterystyczne platformy Kafka w usłudze HDInsight są następujące:
 
 * Firma Microsoft gwarantuje 99,9% czasu sprawnego działania platformy Kafka zgodnie z Umową dotyczącą poziomu usług (SLA). Aby uzyskać więcej informacji, zobacz dokument [HDInsight — umowa SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
-* Jako magazynu zapasowego platforma Kafka używa usługi Azure Managed Disks. Usługa Managed Disks zapewnia do 16 TB pamięci masowej dla każdego brokera platformy Kafka. Aby uzyskać informacje dotyczące konfigurowania dysków zarządzanych na platformie Kafka w usłudze HDInsight, zobacz [Increase scalability of Apache Kafka on HDInsight](apache-kafka-scalability.md) (Zwiększanie skalowalności platformy Apache Kafka w usłudze HDInsight).
+* Jako magazynu zapasowego platforma Kafka używa funkcji Dyski zarządzane platformy Azure. Funkcja Dyski zarządzane zapewnia do 16 TB pamięci masowej dla każdego brokera platformy Kafka. Aby uzyskać informacje dotyczące konfigurowania dysków zarządzanych na platformie Kafka w usłudze HDInsight, zobacz [Increase scalability of Apache Kafka on HDInsight](apache-kafka-scalability.md) (Zwiększanie skalowalności platformy Apache Kafka w usłudze HDInsight).
 
-    Aby uzyskać więcej informacji o usłudze Managed Disks, zobacz artykuł [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+    Aby uzyskać więcej informacji o funkcji Dyski zarządzane, zobacz artykuł [Funkcja Dyski zarządzane platformy Azure](../../virtual-machines/windows/managed-disks-overview.md).
 
 * Platforma Kafka została zaprojektowana jako jednowymiarowy widok regału. Platforma Azure rozdziela ten regał na dwa wymiary — domeny aktualizacji (UD) i domeny błędów (FD). Firma Microsoft udostępnia narzędzia, za pomocą których można ponownie zrównoważyć partycje i repliki platformy Kafka między domenami aktualizacji i błędów. 
 

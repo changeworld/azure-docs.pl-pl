@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58889757"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
@@ -29,7 +29,7 @@ ms.locfileid: "58889757"
 
 Dla porównania środowisko uruchomieniowe 1.x wersji obsługuje tylko programowania i hostowania w witrynie Azure portal lub na komputerach z Windows.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Języki
 
 Środowisko uruchomieniowe 2.x wersji używa nowego modelu rozszerzalności języka. W wersji 2.x, wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji.
 

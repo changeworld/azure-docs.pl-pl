@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904495"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Użyj usługi Azure IoT Hub Device Provisioning Service automatycznej aprowizacji można zarejestrować zestawu deweloperskiego IoT Mxchip z usługą IoT Hub
@@ -86,7 +86,7 @@ W kodzie urządzenia należy określić [Device provisioning punktu końcowego](
   ![Identyfikator rejestracji](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
 1. Kliknij przycisk `F1`wpisz i wybierz **Workbench urządzenia IoT platformy Azure: Przekazywanie kodu urządzenia**. Uruchamia kompilowania i przekazywanie kodu do Mxchip.
-  ![Przekazywanie do urządzenia](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
+  ![Przekazywanie urządzeń](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>Generowanie certyfikatu X.509
 
@@ -108,7 +108,7 @@ W kodzie urządzenia należy określić [Device provisioning punktu końcowego](
 ## <a name="create-a-device-enrollment-entry"></a>Tworzenie wpisu rejestracji urządzenia
 
 1. W witrynie Azure portal Otwórz swoją usługę aprowizacji urządzeń, przejdź do zarządzania rejestracjami sekcji, a następnie kliknij przycisk **Dodaj rejestrację indywidualną**.
-  ![Dodaj rejestrację indywidualną](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+  ![Dodawanie rejestracji indywidualnej](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. Kliknij ikonę pliku **plik PEM lub cer certyfikatu podstawowego** do przekazania `.pem` wygenerowany plik.
   ![Przekaż PEM](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
@@ -122,7 +122,7 @@ Naciśnij klawisz **resetowania** przycisk na Twoje Mxchip. Powinien zostać wy�
 1. Po pomyślnej rejestracji usługi Device Provisioning service wysyła identyfikator URI centrum IoT, identyfikator urządzenia i zaszyfrowany klucz do urządzenia.
 1. Aplikacja kliencka usługi IoT Hub na urządzeniu łączy się z Centrum.
 1. Po pomyślnym nawiązaniu połączenia z koncentratorem zobaczysz urządzenia są wyświetlane w Device Explorer Centrum IoT.
-  ![Zarejestrowano urządzenie](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
+  ![Liczba zarejestrowanych urządzeń](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 

@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: dfa41dc695cf6ab357a9cd4cdbd32454b6dd107d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896555"
 ---
-# <a name="scenes-shots-and-keyframes"></a>Scen, zrzuty i klatki kluczowe
+# <a name="scenes-shots-and-keyframes"></a>Sceny, ujęcia i klatki kluczowe
 
 Usługa Video Indexer obsługuje podzielenie filmów wideo do jednostek danych czasowych na podstawie właściwości strukturalną i semantyczną. Ta funkcja umożliwia klientom łatwe przeglądanie, zarządzania i Edytuj ich zawartość wideo, w oparciu o różnej szczegółowości. Na przykład na podstawie scen, zrzuty i klatki kluczowe, które są opisane w tym temacie. **Wykrywania sceny** funkcja jest obecnie dostępna w wersji zapoznawczej.   
 
-![Scen, zrzuty i klatki kluczowe](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
+![Sceny, ujęcia i klatki kluczowe](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
 
 ## <a name="scene-detection-preview"></a>Wykrywanie sceny (wersja zapoznawcza)
 

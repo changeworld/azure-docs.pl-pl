@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883449"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Pomyślne federacji między usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS) certyfikaty używane przez usługi AD FS do podpisywania tokenów zabezpieczających do usługi Azure AD powinny być zgodne portami skonfigurowanymi w usłudze Azure AD. Wszelkie niezgodności może prowadzić do zerwanie relacji zaufania. Usługa Azure AD zapewnia, że te informacje są przechowywane w synchronizacji podczas wdrażania usług AD FS i serwera Proxy aplikacji sieci Web (Aby uzyskać dostęp do ekstranetu).
 
 Ten artykuł zawiera dodatkowe informacje, aby zarządzać certyfikaty podpisywania tokenu i zachować synchronizację z usługą Azure AD w następujących przypadkach:

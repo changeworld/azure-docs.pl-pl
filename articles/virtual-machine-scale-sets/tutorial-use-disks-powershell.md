@@ -1,6 +1,6 @@
 ---
 title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą programu Azure PowerShell i korzystanie z nich | Microsoft Docs
-description: Dowiedz się, jak za pomocą programu Azure PowerShell utworzyć usługę Managed Disks i używać jej razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
+description: Dowiedz się, jak za pomocą programu Azure PowerShell utworzyć dyski funkcji Dyski zarządzane i używać ich razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -18,7 +18,7 @@ ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
 ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/09/2019
 ms.locfileid: "55984787"

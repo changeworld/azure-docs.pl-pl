@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
 ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895753"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
@@ -244,4 +244,4 @@ Jeśli nie widzisz numery przepływności można oczekiwać i your CPU i użycie
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji trwałe wC#](durable-functions-create-first-csharp.md)
+> [Tworzenie pierwszej funkcji trwałej w języku C#](durable-functions-create-first-csharp.md)

@@ -16,14 +16,14 @@ ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894922"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu [aplikację usługi app Service](https://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
 
 W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com) i wiersza polecenia platformy Azure, aby pracować z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
@@ -57,11 +57,11 @@ Po włączeniu **programu application diagnostics**, możesz również wybrać *
 
 | Poziom| Uwzględnione Rejestruj kategorie |
 |-|-|
-|**Disabled (Wyłączony)** | Brak |
-|**Błąd** | Błąd krytyczny |
+|**Disabled (Wyłączone)** | Brak |
+|**Error** | Błąd krytyczny |
 |**Ostrzeżenie** | Ostrzeżenie, błąd krytyczny|
-|**Informacje** | Info, Warning, błąd krytyczny|
-|**Pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
+|**Informacje o** | Info, Warning, błąd krytyczny|
+|**pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
 |-|-|
 
 Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku tymczasowego na potrzeby debugowania. Ta opcja powoduje wyłączenie automatycznie w ciągu 12 godzin. Można również włączyć opcję magazynu obiektów blob umożliwia wybór kontenera obiektów blob, będą zapisywane dzienniki.

@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850326"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: Tworzenie platformy Apache Kafka w klastrze usługi HDInsight
@@ -70,7 +70,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Platforma Kafka w usłudze HDInsight używa usługi Azure Managed Disks do przechowywania danych platformy Kafka, natomiast klaster używa też usługi Azure Storage do przechowywania informacji, takich jak dzienniki. Użyj [New AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) do utworzenia nowego konta magazynu.
+Platforma Kafka w usłudze HDInsight używa funkcji Dyski zarządzane platformy Azure do przechowywania danych platformy Kafka, natomiast klaster używa też usługi Azure Storage do przechowywania informacji, takich jak dzienniki. Użyj [New AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) do utworzenia nowego konta magazynu.
 
 ```powershell
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -137,7 +137,7 @@ New-AzHDInsightCluster `
 > Tworzenie klastra usługi HDInsight może potrwać do 20 minut.
 
 > [!TIP]  
-> Parametr `-DisksPerWorkerNode` konfiguruje skalowalność platformy Kafka w usłudze HDInsight. Do przechowywania danych platforma Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Kafka używana jest usługa [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle. 
+> Parametr `-DisksPerWorkerNode` konfiguruje skalowalność platformy Kafka w usłudze HDInsight. Do przechowywania danych platforma Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Kafka używana jest funkcja [Dyski zarządzane platformy Azure](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle. 
 >
 > Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Typ dysku zależy od rozmiaru maszyny wirtualnej używanej przez węzły procesu roboczego (brokery platformy Kafka). Dyski w warstwie Premium są używane automatycznie przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych. Typ maszyny wirtualnej możesz ustawić przy użyciu parametru `-WorkerNodeSize`. Aby uzyskać więcej informacji na temat parametrów, zobacz [New AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentacji.
 

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881787"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
@@ -43,7 +43,7 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
 
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md)
--   [Usługa Azure Data Lake Storage 2. generacji](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>Magazyny danych systemu plików
 

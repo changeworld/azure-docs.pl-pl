@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862781"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
@@ -140,4 +140,4 @@ Wartości domyślne są dostępne w odpowiednich schemat w [Github](https://aka.
 
 - [Omówienie usługi ASC zaleceń IoT](concept-recommendations.md)
 - [Zapoznaj się z usługą ASC alertów IoT](concept-security-alerts.md)
-- [Dostęp do nieprzetworzonych danych zabezpieczeń](how-to-security-data-access.md)
+- [Dostęp do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)

@@ -15,10 +15,10 @@ ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880699"
 ---
 # <a name="onboarding-requirements"></a>Wymagania dotyczące dołączania
@@ -62,7 +62,7 @@ Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driv
 > Dla typu II jednostek tylko w systemie SLES 12 z dodatkiem SP2 systemu operacyjnego wersja jest obsługiwana w tym momencie. 
 
 
-**Database (Baza danych)**
+**Baza danych**
 
 - Licencje i składniki instalacyjne oprogramowania dla oprogramowania SAP HANA (platforma lub enterprise edition).
 
@@ -83,5 +83,5 @@ Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driv
 - Oczekuje się, że jesteś klientem usługi SAP i masz pomocy technicznej umowy z oprogramowaniem SAP.
 - Szczególnie w przypadku implementacji klasy typu II jednostek SKU platformy HANA duże wystąpienie zapoznaj się z oprogramowaniem SAP wersje oprogramowania SAP HANA i ostateczną konfiguracje sprzętu skalowanie w górę o dużych rozmiarach.
 
-**Kolejne kroki**
+**Następne kroki**
 - Zapoznaj się [architektura SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)

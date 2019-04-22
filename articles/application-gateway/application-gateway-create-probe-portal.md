@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862169"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla bramy aplikacji przy użyciu portalu
@@ -51,7 +51,7 @@ Sondy są konfigurowane w dwuetapowy proces za pośrednictwem portalu. Pierwszym
 
    |**Ustawienie** | **Wartość** | **Szczegóły**|
    |---|---|---|
-   |**Name (Nazwa)**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
+   |**Nazwa**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
    |**Protokół**|HTTP lub HTTPS | Protokół, który używa sondy kondycji.|
    |**Host**|i.e contoso.com|Ta wartość jest nazwę hosta, który jest używany dla sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej.|
    |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Domyślne ścieżki http:\//contoso.com po prostu użyj "/" |

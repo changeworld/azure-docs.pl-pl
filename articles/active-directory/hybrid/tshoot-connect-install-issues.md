@@ -16,15 +16,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876926"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Rozwiązywanie problemów: Problemy z instalacją programu Azure AD Connect
 
-## **<a name="recommended-steps"></a>Zalecane kroki**
+## <a name="recommended-steps"></a>**Zalecane czynności**
 Należy sprawdzić, która [typu instalacji program Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) jest odpowiedni dla Ciebie. Jeśli spełniasz kryteria instalacji ekspresowej, następnie zdecydowanie zalecamy zawsze pod ręką instalacji ekspresowej. Instalacja ekspresowa oferuje opcje minimalnych wymaganych do ukończenia instalacji, w związku z tym jest mniej prawdopodobieństwo wystąpienia problemów. 
 
 Jednak jeśli nie są spełnione kryteria instalacji ekspresowej, a należy wykonać instalację niestandardową, poniżej przedstawiono kilka najlepszych zasad, a następnie można wykonać w celu uniknięcia typowych problemów. Dla uproszczenia należy tylko selektywne opcje są wymienione w tym miejscu:
@@ -39,7 +39,7 @@ Jednak jeśli nie są spełnione kryteria instalacji ekspresowej, a należy wyko
 
     ![Usługi AD lasu konta](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### **<a name="common-issues"></a>Typowe problemy**
+### <a name="common-issues"></a>**Typowe problemy**
 
 * [Problemy z połączeniem z usługą Active Directory w środowisku lokalnym](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
 
@@ -47,14 +47,14 @@ Jednak jeśli nie są spełnione kryteria instalacji ekspresowej, a należy wyko
 
 * [Problemy z uprawnieniami w usłudze Active Directory w środowisku lokalnym](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
 
-## **<a name="recommended-documents"></a>Zalecane dokumenty**
-* [Wymagania wstępne dotyczące usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
-* [Wybieranie typu instalacji do użycia programu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
+## <a name="recommended-documents"></a>**Zalecane dokumenty**
+* [Prerequisites for Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites) (Wymagania wstępne programu Azure AD Connect)
+* [Select which installation type to use for Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) (Wybieranie typu instalacji do użycia dla programu Azure AD Connect)
 * [Rozpoczynanie pracy z programem Azure AD Connect przy użyciu ustawień ekspresowych](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Niestandardowa instalacja programu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Program Azure AD Connect: Co to jest przemieszczania server?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
-* [Co to jest moduł programu PowerShell ADConnectivityTool?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
+* [Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
+* [Azure AD Connect: Co to jest serwer przejściowy?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
+* [Co to jest moduł ADConnectivityTool programu PowerShell?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md).

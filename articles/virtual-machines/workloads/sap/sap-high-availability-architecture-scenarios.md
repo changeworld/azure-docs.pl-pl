@@ -318,7 +318,7 @@ Ponieważ usługi Azure Storage przechowuje trzy obrazy danych domyślnie nie je
 
 Aby uzyskać więcej informacji, zobacz [replikacja usługi Azure Storage][azure-storage-redundancy].
 
-### <a name="azure-managed-disks"></a>Azure Managed Disks
+### <a name="azure-managed-disks"></a>Dyski zarządzane platformy Azure
 Managed Disks to typ zasobu w usłudze Azure Resource Manager zalecaną ma być używana zamiast funkcji wirtualnych dysków twardych (VHD), które są przechowywane na kontach usługi Azure storage. Dyski zarządzane automatycznie dostosowanie zestawu dostępności platformy Azure, maszyny wirtualnej, które są dołączone. Zwiększają dostępność maszyny wirtualnej i usługi, które w nim działają.
 
 Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Managed Disks][azure-storage-managed-disks-overview].

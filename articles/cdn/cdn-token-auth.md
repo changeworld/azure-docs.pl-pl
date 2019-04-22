@@ -15,17 +15,17 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918896"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpieczanie zasobów usługi Azure CDN przy użyciu tokenu uwierzytelniania
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Uwierzytelnianie przy użyciu tokenów to mechanizm, który pozwala na zapobieganie obsługująca elementy zawartości nieautoryzowanym klientom usługi Azure Content Delivery Network (CDN). Token uwierzytelniania jest zazwyczaj wykonywane, aby zapobiec *hotlinking* zawartości, w którym innej witryny sieci Web, takich jak na tablicy komunikatów używa zasobów bez uprawnienia. Hotlinking może mieć wpływ na koszty dostarczania zawartości. Włączając token uwierzytelniania w usłudze CDN, żądania są uwierzytelniani przez serwer krawędzi sieci CDN, zanim usługa CDN dostarcza zawartość na. 
 

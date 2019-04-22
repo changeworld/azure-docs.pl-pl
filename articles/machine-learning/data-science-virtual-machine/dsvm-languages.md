@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877418"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej do nauki o danych 
@@ -145,7 +145,7 @@ Otwórz Jupyter i kliknij `New` przycisk, aby utworzyć nowy notes. W tym momenc
 | ------------- | ------------- |
 | Wersje językowe obsługiwane | Microsoft R Open 3.x (100% zgodny z sieci CRAN-R<br /> Microsoft R Server 9.x Developer edition (Enterprise skalowalne gotowe platforma R)|
 | Wersje maszyny DSVM obsługiwane      | Linux, Windows     |
-| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | W systemie Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />W systemie Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Zawiera linki do przykładów      | Znajdują się przykładowe notesów programu Jupyter dla języka R     |
 | Pokrewne narzędzia na maszyny DSVM      | SparkR, Python, Julia      |
 ### <a name="how-to-use--run-it"></a>Jak używać / ją uruchomić?    

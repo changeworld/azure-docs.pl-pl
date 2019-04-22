@@ -14,10 +14,10 @@ ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
 ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877384"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Przewodnik dotyczący Java Enterprise dla usługi App Service w systemie Linux
@@ -119,5 +119,4 @@ Usługa App Service udostępnia narzędzia do rozwiązywania problemów z aplika
 
 -   Włącz rejestrowanie, klikając **dzienniki diagnostyczne** w okienku nawigacji po lewej stronie. Kliknij przycisk **System plików** Ustaw okres limitu przydziału i okres przechowywania magazynu i Zapisz zmiany. Możesz znaleźć te dzienniki w obszarze `/home/LogFiles/`.
 -   [Za pomocą protokołu SSH Połącz się z wystąpieniem aplikacji](app-service-linux-ssh-support.md) Aby wyświetlić dzienniki do uruchamiania aplikacji.
--   Dzienniki diagnostyczne wyboru **dzienniki diagnostyczne** panelu portalu lub przy użyciu polecenia interfejsu wiersza polecenia platformy Azure:
-`az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`
+-   Dzienniki diagnostyczne wyboru **dzienniki diagnostyczne** panelu portalu lub przy użyciu polecenia interfejsu wiersza polecenia platformy Azure: `az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`

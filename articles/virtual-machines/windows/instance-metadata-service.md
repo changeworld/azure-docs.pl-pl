@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58847979"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
@@ -102,9 +102,9 @@ Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsł
 
 Interfejs API | Domyślny Format danych | W innych formatach
 --------|---------------------|--------------
-/instance | JSON | tekst
-/scheduledevents | JSON | brak
-/ zaświadczenia | JSON | brak
+/instance | json | tekst
+/scheduledevents | json | brak
+/ zaświadczenia | json | brak
 
 Aby uzyskać dostęp, format odpowiedzi innych niż domyślne, określ żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
 

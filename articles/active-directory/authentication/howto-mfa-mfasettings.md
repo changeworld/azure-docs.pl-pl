@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885999"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
@@ -33,8 +33,8 @@ Niektóre z tych ustawień dotyczą serwera usługi MFA i/lub usługi Azure MFA.
 | Cecha | Opis |
 | ------- | ----------- |
 | Blokada konta | Tymczasowo blokady konta w usłudze uwierzytelniania wieloskładnikowego w przypadku zbyt wielu odmowa prób uwierzytelnienia w wierszu. Ta funkcja dotyczy tylko użytkowników wprowadzających numer PIN w celu uwierzytelnienia. (MFA Server) |
-| [Zablokuj/odblokuj użytkowników](#block-and-unblock-users) | Umożliwia zablokowanie określonych użytkowników na serwerze usługi MFA (lokalny) z możliwość odbierania żądań usługi Multi-Factor Authentication. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. |
-| [Alert dotyczący wykrycia oszustwa](#fraud-alert) | Skonfigurowanie ustawień związanych użytkownikom możliwość i zgłosić fałszywe weryfikacji żądań |
+| [Blokowanie/odblokowywanie użytkowników](#block-and-unblock-users) | Umożliwia zablokowanie określonych użytkowników na serwerze usługi MFA (lokalny) z możliwość odbierania żądań usługi Multi-Factor Authentication. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. |
+| [Alert oszustwa](#fraud-alert) | Skonfigurowanie ustawień związanych użytkownikom możliwość i zgłosić fałszywe weryfikacji żądań |
 | Powiadomienia | Włącz powiadomienia o zdarzeniach z serwera MFA. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Używane w środowiskach usługi Azure MFA oparte na chmurze do zarządzania tokenów OATH dla użytkowników. |
 | [Ustawienia połączenia telefonicznego](#phone-call-settings) | Skonfiguruj ustawienia związane z połączeń telefonicznych i powitania dla środowiskach chmurowych i lokalnych. |
@@ -47,7 +47,7 @@ Ustawienia w tej sekcji dotyczą tylko serwera usługi MFA.
 | Cecha | Opis |
 | ------- | ----------- |
 | Ustawienia serwera | Pobierz serwer usługi MFA i Generuj poświadczenia aktywacji można zainicjować środowiska |
-| [Jednokrotne obejście](#one-time-bypass) | Umożliwia użytkownikowi uwierzytelnienie bez konieczności przeprowadzania weryfikacji dwuetapowej przez ograniczony czas. |
+| [Jednorazowe obejście](#one-time-bypass) | Umożliwia użytkownikowi uwierzytelnienie bez konieczności przeprowadzania weryfikacji dwuetapowej przez ograniczony czas. |
 | [Reguły buforowania](#caching-rules) |  Buforowanie jest używany głównie do systemów lokalnych, np. sieć VPN wysyłania wielu żądań weryfikacji, gdy pierwsze żądanie jest nadal w toku. Ta funkcja umożliwia kolejne żądania zakończyło się sukcesem automatycznie po użytkownik zakończy się pomyślnie pierwszej weryfikacji w toku. |
 | Stan serwera | Wyświetlany jest stan serwerów usługi MFA lokalnej tym wersji, status, adres IP i ostatniej komunikacji Data i godzina. |
 

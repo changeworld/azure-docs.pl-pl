@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58887019"
 ---
 **Wymagania dotyczące serwera konfiguracji/przetwarzania replikacji serwera fizycznego**
@@ -44,7 +44,7 @@ Porty | Zezwalaj na 443 (organizowanie kanału sterowania)<br/><br/> Zezwalaj na
 
 **Określania rozmiaru wymagania dotyczące serwera konfiguracji/przetwarzania**
 
-**Procesor CPU** | **Memory (Pamięć)** | **Dysk pamięci podręcznej** | **Współczynnik zmian danych** | **Replikowane maszyny**
+**CPU** | **Pamięć** | **Dysk pamięci podręcznej** | **Współczynnik zmian danych** | **Zreplikowane maszyny**
 --- | --- | --- | --- | ---
 8 wirtualnych procesorów CPU<br/><br/> gniazda 2 * 4 rdzenie \@ 2,5 GHz | 16GB | 300 GB | 500 GB lub mniej | < 100 maszyn
 12 procesorów wirtualnych Vcpu<br/><br/> 2 socks * 6 rdzeni \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150 maszyn

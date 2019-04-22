@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882076"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Połączenie rozwiązań danych w wersji 2.0 (wersja zapoznawcza) w usłudze Azure Monitor
@@ -187,7 +187,7 @@ Agent Dependency Agent jest instalowany na komputerach z systemem Windows za pom
 Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Windows, wykonaj następujące kroki:
 
 1. Zainstaluj agenta usługi Log Analytics, wykonaj czynności w [zbieranie danych z komputerów Windows hostowanych w danym środowisku](../../azure-monitor/platform/agent-windows.md).
-2. Pobrać agenta zależności Windows, korzystając z linku w poprzedniej sekcji, a następnie uruchom go przy użyciu następującego polecenia: `InstallDependencyAgent-Windows.exe`
+2. Pobierz program Windows Dependency Agent przy użyciu linku w poprzedniej sekcji, a następnie uruchom go za pomocą następującego polecenia: `InstallDependencyAgent-Windows.exe`
 3. Użyj kreatora, aby zainstalować agenta.
 4. Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Windows katalog dziennika to %Programfiles%\Microsoft Dependency Agent\logs.
 

@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892181"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w ramach aktualizacji obrazu podstawowego w usłudze Azure Container Registry 
@@ -45,9 +45,9 @@ W tym samouczku założono, że zostały już wykonane czynności opisane w dwó
 
 Jeśli dwa pierwsze samouczki nie zostały jeszcze ukończone, zapoznaj się z nimi przed kontynuowaniem:
 
-[Kompilowanie obrazów kontenerów w chmurze za pomocą zadań rejestru kontenera platformy Azure](container-registry-tutorial-quick-task.md)
+[Tworzenie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
 
-[Automatyzowanie kompilacji obrazów kontenera z zadaniami rejestru kontenera platformy Azure](container-registry-tutorial-build-task.md)
+[Automatyzowanie kompilacji obrazu kontenera za pomocą usługi Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Konfigurowanie środowiska
 

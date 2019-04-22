@@ -15,15 +15,15 @@ ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883704"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji nie są na bieżąco alert
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Agentów na komputerach lokalnych, które program Azure AD Connect Health monitoruje się okresowo przekazywanie danych do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych z agenta, informacje w portalu jest wyświetlany będą nieaktualne. Aby wyróżnić ten problem, usługa zostanie podniesiony **dane usługi kondycji nie są na bieżąco** alertu. Ten alert jest generowany, gdy usługa nie odebrała kompletne dane w ciągu ostatnich dwóch godzin.  
 
@@ -59,7 +59,7 @@ Poniżej podano kroki wymagane do zdiagnozowania problemu. Pierwszy to zestaw po
 
 * Upewnij się, że są zainstalowane najnowsze wersje agentów. Widok [Historia wersji](reference-connect-health-version-history.md). 
 * Upewnij się, że usługi agentów programu Azure AD Connect Health są **systemem** na maszynie. Na przykład programu Connect Health dla usług AD FS mają trzy usługi.
-  ![Weryfikowanie programu Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+  ![Weryfikowanie usługi Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * Upewnij się, że omijają i spełniać [sekcji wymagania dotyczące](how-to-connect-health-agent-install.md#requirements).
 * Użyj [narzędzia łączności test](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do wykrywania problemów z łącznością.

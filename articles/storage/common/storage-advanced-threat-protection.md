@@ -9,15 +9,15 @@ ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
 ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904121"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
-Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage zapewnia dodatkową warstwę analizy zabezpieczeń, który wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać kont magazynu. Ta warstwa ochrony umożliwia reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania systemami monitorowania bezpieczeństwa. 
+Usługa Advanced Threat Protection dla usługi Azure Storage zapewnia dodatkową warstwę analizy bezpieczeństwa, która wykrywa niezwykłe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania kont magazynu. Ta warstwa ochrony umożliwia reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania systemami monitorowania bezpieczeństwa. 
 
 Alerty zabezpieczeń są wyzwalane, gdy wystąpią nieprawidłowości w działaniu.  Te alerty zabezpieczeń są zintegrowane z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/)oraz wysyłane za pośrednictwem poczty e-mail do administratorów subskrypcji, szczegółowe informacje o podejrzanych działań i zalecenia dotyczące sposobu badaniu i usuwaniu zagrożeń.
 

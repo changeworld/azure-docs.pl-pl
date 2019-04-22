@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895600"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
@@ -35,7 +35,7 @@ Jeśli Twoje pytanie nie ma na liście, Daj nam znać, a my pomożemy Ci znaleź
 ## <a name="azure-cache-for-redis-basics"></a>Pamięć podręczna systemu Azure, aby uzyskać podstawowe informacje o pamięci podręcznej Redis
 Często zadawane pytania w tej sekcji obejmują niektóre z podstawy pamięć podręczna systemu Azure dla usługi Redis.
 
-* [Co to jest usługa Azure Cache for Redis?](#what-is-azure-cache-for-redis)
+* [Co to jest Azure pamięci podręcznej redis Cache?](#what-is-azure-cache-for-redis)
 * [Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
 
 Poniższe często zadawane pytania obejmuje podstawowe pojęcia i pytania dotyczące usługi Azure Cache dla usługi Redis i odpowiedzi są w innej sekcji często zadawane pytania.
@@ -80,7 +80,7 @@ Często zadawane pytania w tej sekcji obejmują typowe monitorowania i pytania d
 * [Dlaczego mój klient został rozłączony z pamięci podręcznej](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Wcześniejsze oferta pamięci podręcznej — często zadawane pytania
-* [Która oferta pamięci podręcznej systemu Azure jest dla mnie najlepsza?](#which-azure-cache-offering-is-right-for-me)
+* [Która oferta pamięci podręcznej Azure jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis?
 Pamięć podręczna systemu Azure dla usługi Redis opiera się na popularnych oprogramowania typu open-source [Redis](https://redis.io/). Daje ona dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępny z poziomu dowolnej aplikacji na platformie Azure. Aby uzyskać bardziej szczegółowym omówieniem, zobacz [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.

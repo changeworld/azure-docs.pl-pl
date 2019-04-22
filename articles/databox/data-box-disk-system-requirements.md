@@ -77,7 +77,7 @@ Poniżej przedstawiono listę typów pamięci masowej, obsługiwane w przypadku 
 | Usługa Azure blokowych obiektów blob | |
 | Obiekt blob typu page platformy Azure  | |
 | Azure Files  | |
-| Managed Disks | |
+| Dyski zarządzane | |
 
 
 ## <a name="next-step"></a>Następny krok

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894461"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
@@ -298,7 +298,7 @@ Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Azure-Samples/co
 Filmy wideo:
 * [Azure Friday konferencji Build 2018: Cognitive Services — języka (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Pokaż sztucznej Inteligencji 2018 kompilacji — nowości pojawiły się z usługą interpretacji języka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Kompilacja 2018 sesji — Bot analizy możliwości mowy i NLU najlepsze rozwiązania](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - aktualizacje usługi LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty:

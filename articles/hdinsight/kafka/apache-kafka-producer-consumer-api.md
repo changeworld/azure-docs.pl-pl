@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.openlocfilehash: 6b77cd9939e244fd031788164cdfe391c3e2b9d5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916397"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
@@ -225,6 +225,6 @@ Rekordy na platformie Kafka są przechowywane w kolejności, w której zostały 
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API producenta i odbiorcy platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 
-* [Analizowanie dzienników platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikuj dane między klastrami platformy Apache Kafka](apache-kafka-mirroring.md)
-* [Interfejs API za pomocą HDInsight strumieni platformy Apache Kafka](apache-kafka-streams-api.md)
+* [Analyze Apache Kafka logs](apache-kafka-log-analytics-operations-management.md) (Analizowanie dzienników platformy Apache Kafka)
+* [Replikowanie danych między klastrami Apache Kafka](apache-kafka-mirroring.md)
+* [Apache Kafka Streams API with HDInsight](apache-kafka-streams-api.md) (Interfejs API strumieni platformy Apache Kafka w usłudze HDInsight)

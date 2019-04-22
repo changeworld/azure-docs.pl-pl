@@ -16,10 +16,10 @@ ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
 ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893745"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: Tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
@@ -744,4 +744,4 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Jak skalować pamięć podręczna systemu Azure dla usługi Redis](./cache-how-to-scale.md)
+> [Jak skalować usługę Azure Cache for Redis](./cache-how-to-scale.md)

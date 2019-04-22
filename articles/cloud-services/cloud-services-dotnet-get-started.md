@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917480"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [usługi obiektów blob platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
 
 W samouczku opisano, jak utworzyć i uruchomić aplikację lokalnie, jak wdrożyć ją na platformie Azure i uruchomić w chmurze oraz jak utworzyć ją od samego początku. Można również rozpocząć od kompilowania aplikacji od początku, a dopiero później przeprowadzić testowanie i wdrażanie.
@@ -775,7 +775,7 @@ Film wideo zawierający wprowadzenie do najlepszych rozwiązań i wzorców usłu
 
 Więcej informacji zawierają następujące zasoby:
 
-* [Usługi Azure Cloud Services część 1: Wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Usługi Azure Cloud Services — część 1: Wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak zarządzać usługami Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak wybrać dostawcę usług w chmurze](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

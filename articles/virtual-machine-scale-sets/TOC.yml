@@ -121,7 +121,7 @@ items:
     maintainContext: true
   - name: Przechowywanie na dysku
     items:
-    - name: Managed Disks
+    - name: Dyski zarządzane
       href: ../virtual-machines/windows/managed-disks-overview.md
       maintainContext: true
     - name: Wybieranie typu dysku

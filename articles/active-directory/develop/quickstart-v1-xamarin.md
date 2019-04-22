@@ -19,10 +19,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881889"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Szybki start: Tworzenie aplikacji Xamarin integrującej logowanie firmy Microsoft
@@ -104,7 +104,7 @@ Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę 
 
 Prawie cała logika uwierzytelniania aplikacji znajduje się w elemencie `DirectorySearcher.SearchByAlias(...)`. Wszystko, co trzeba zrobić w projektach specyficznych dla platformy, to przekazać parametr kontekstowy do biblioteki PCL `DirectorySearcher`.
 
-1. Otwórz plik DirectorySearcher.cs, a następnie dodaj nowy parametr do metody `SearchByAlias(...)`. `IPlatformParameters` jest kontekstowe parametr, który hermetyzuje obiekty specyficzne dla platformy, których potrzebuje biblioteki ADAL w celu przeprowadzenia uwierzytelniania.
+1. Otwórz plik DirectorySearcher.cs, a następnie dodaj nowy parametr do metody `SearchByAlias(...)`. `IPlatformParameters` jest kontekstowym parametrem, który hermetyzuje obiekty specyficzne dla platformy potrzebne bibliotece ADAL do przeprowadzenia uwierzytelniania.
 
     ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
@@ -130,7 +130,7 @@ Prawie cała logika uwierzytelniania aplikacji znajduje się w elemencie `Direct
     ...
     ```
 
-    `AcquireTokenAsync(...)` najpierw próbuje zwrócił tokenu dla żądanego zasobu (interfejsu API programu Graph w tym przypadku) bez monitowania użytkowników o wprowadzenie poświadczeń (przy użyciu pamięci podręcznej lub odświeżanie tokenów starej). W razie potrzeby wyświetla użytkownikom stronę logowania usługi Azure AD przed uzyskaniem żądanego tokenu.
+    Metoda `AcquireTokenAsync(...)` najpierw próbuje zwrócić token dla żądanego zasobu (w tym przypadku interfejsu API programu Graph) bez monitowania użytkowników o wprowadzenie poświadczeń (przy użyciu pamięci podręcznej lub odświeżania starych tokenów). W razie potrzeby wyświetla użytkownikom stronę logowania usługi Azure AD przed uzyskaniem żądanego tokenu.
 4. Dołącz token dostępu do żądania interfejsu API programu Graph w nagłówku **autoryzacji**:
 
     ```csharp

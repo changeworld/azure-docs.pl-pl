@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877588"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście StorSimple z systemem CentOS
@@ -420,7 +420,7 @@ A. Aby sprawdzić, czy urządzenie znajduje się na białej liście, użyj nast�
 Aby uzyskać więcej informacji, przejdź do [Użyj Rozwiązywanie problemów z poleceń interaktywnych wielu ścieżek](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
 
 ## <a name="list-of-useful-commands"></a>Lista przydatnych poleceń
-| Type | Polecenie | Opis |
+| Typ | Polecenie | Opis |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Uruchomienie usługi iSCSI |
 | &nbsp; |`service iscsid stop` |Zatrzymaj usługę iSCSI |

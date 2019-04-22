@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885676"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1
@@ -152,7 +152,7 @@ Podczas usuwania grupy zabezpieczeń listy kontroli dostępu w systemie plików 
 * [Kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Za pomocą usług Azure Data Lake Analytics Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Usługa Azure HDInsight za pomocą programu Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Rozpocznij pracę z usługą Data Lake Storage 1. generacji przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)
+* [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)
 * [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Dostęp do dzienników diagnostycznych usługi Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
 

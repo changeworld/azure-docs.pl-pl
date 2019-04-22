@@ -334,9 +334,9 @@ items:
         href: convert-disk-storage.md
       - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
         href: migrate-to-premium-storage-using-azure-site-recovery.md
-      - name: Migrowanie do usługi Managed Disks
+      - name: Migrowanie do funkcji Dyski zarządzane
         href: migrate-to-managed-disks.md
-      - name: Niezarządzana maszyna wirtualna do usługi Managed Disks
+      - name: Niezarządzana maszyna wirtualna do funkcji Dyski zarządzane
         href: convert-unmanaged-to-managed-disks.md
     - name: Wydajność
       items:
@@ -439,7 +439,7 @@ items:
     href: https://azure.microsoft.com/develop/python/
   - name: Architektura REST — usługa Compute
     href: /rest/api/compute
-  - name: Architektura REST — usługa Managed Disks
+  - name: Architektura REST — funkcja Dyski zarządzane
     href: /rest/api/compute/disks
   - name: Szablon usługi Resource Manager
     displayName: ARM

@@ -82,7 +82,7 @@ Aby uzyskać więcej informacji, zobacz [opcje replikacji magazynu Azure Storage
 Ceny różnią się w zależności od wybranego typu magazynu i dostępności.
 
 **Azure Managed Disks**
-* Premium Managed Disks są objęte Solid-State dyskach SSD i dysków zarządzanych w warstwie standardowa jest objęta zwykłych dyskach obrotowych. Opłaty za dyski Managed Disks w warstwach Premium i Standardowa są naliczane zgodnie z aprowizowaną pojemnością dysku.
+* Premium Managed Disks są objęte Solid-State dyskach SSD i dysków zarządzanych w warstwie standardowa jest objęta zwykłych dyskach obrotowych. Opłaty za dyski funkcji Dyski zarządzane w warstwach Premium i Standardowa są naliczane zgodnie z aprowizowaną pojemnością dysku.
 
 **Dyski niezarządzane**
 * Usługa Premium storage jest wspierana przez Solid-State dyski (SSD) i jest naliczana na podstawie pojemności dysku.

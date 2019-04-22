@@ -16,14 +16,14 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895017"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku pokazano, jak używać narzędzi programu Visual Studio, aby pomóc w debugowaniu aplikacji w [usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714), uruchamiając w [tryb debugowania](https://docs.microsoft.com/visualstudio/debugger/) zdalne lub, wyświetlając Dzienniki aplikacji i dzienników serwera internetowego.
 
 Dowiesz się:
@@ -654,7 +654,7 @@ Brak dostępnych nie dokładne i aktualne wprowadzenia do śledzenia ASP.NET w I
   Stary, ale nadal dobry zasobem dla wstęp do tematu.
 * [Obiekty nasłuchujące śledzenia](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
-* [Przewodnik: Integracja śledzenia ASP.NET z włączonym śledzeniem System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
+* [Wskazówki: Integracja śledzenia ASP.NET z włączonym śledzeniem System.Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   W tym artykule jest także stare, ale zawiera pewne dodatkowe informacje, które wprowadzające artykuł nie obejmuje.
 * [Śledzenie widoki ASP.NET MVC Razor](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](/previous-versions/bb397417(v=vs.140)) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:

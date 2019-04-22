@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
 ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892470"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Wielomodelowa możliwości usługi Azure SQL Database
@@ -32,7 +32,7 @@ Należy rozważyć użycie wielu modeli możliwości usługi Azure SQL Database 
 - Chcesz korzystać z rozbudowanych języka Transact-SQL do tworzenia zapytań i analizowania zarówno relacyjnych, jak i danych NoSQL i zintegruj ją z różnych narzędzi i aplikacji, które mogą używać języka SQL.
 - Chcesz zastosować funkcje bazy danych, takich jak [technologiom pamięci](sql-database-in-memory.md) aby poprawić wydajność usługi analityczne lub przetwarzanie Twojego strucutres danych NoSQL, użyj [replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md) lub [replik z możliwością odczytu](sql-database-read-scale-out.md) do utworzenia kopii danych w innym miejscu i odciążania niektórych obciążeń analitycznych z podstawowej bazy danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługi Azure SQL, oferuje następujące funkcje wielomodelowa:
 - [Wykres funkcji](#graph-features) pozwalają do reprezentowania danych jako zestaw węzłów i krawędzi, a następnie użyj standardowego zapytania Transact-SQL, rozszerzony o wykres `MATCH` — operator zapytań o dane wykresu.

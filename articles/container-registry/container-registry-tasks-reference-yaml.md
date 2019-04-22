@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894136"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odwołanie do zadania usługi ACR: YAML
@@ -79,7 +79,7 @@ az configure --defaults acr=myregistry
 
 Właściwości zadania zazwyczaj znajdują się w górnej części `acr-task.yaml` pliku i są globalne właściwości, które są stosowane w całym pełną wykonywaniem kroków zadania. Niektóre z tych właściwości globalne można przesłonić, w ramach pojedynczego kroku.
 
-| Właściwość | Type | Optional (Opcjonalność) | Opis | Zastąpienie obsługiwane | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Zastąpienie obsługiwane | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | Yes | Wersja `acr-task.yaml` plików analizowane przez usługę zadań usługi ACR. Gdy zadania ACR dokłada wszelkich starań zachować zgodność z poprzednimi wersjami, ta wartość umożliwia zadania ACR utrzymać zgodność, w ramach określonych wersji. Jeśli nie zostanie podany, wartość domyślna do najnowszej wersji. | Nie | Brak |
 | `stepTimeout` | int (w sekundach) | Yes | Maksymalna liczba sekund, przez krok można uruchomić. Jeśli właściwość jest określony dla zadania, ustawia domyślną `timeout` właściwości wszystkich kroków. Jeśli `timeout` właściwość jest określona w kroku, zastępuje ona właściwości dostarczanych przez zadanie. | Yes | 600 (10 minut) |
@@ -92,7 +92,7 @@ Właściwości zadania zazwyczaj znajdują się w górnej części `acr-task.yam
 
 Obiekt wpisu tajnego ma następujące właściwości.
 
-| Właściwość | Type | Optional (Opcjonalność) | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | Nie | Identyfikator wpisu tajnego. | Brak |
 | `akv` | string | Yes | Adres URL wpisu tajnego usługi Azure Key Vault (AKV). | Brak |
@@ -102,7 +102,7 @@ Obiekt wpisu tajnego ma następujące właściwości.
 
 Obiekt network ma następujące właściwości.
 
-| Właściwość | Type | Optional (Opcjonalność) | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | string | Nie | Nazwa sieci. | Brak |
 | `driver` | string | Yes | Sterownik do zarządzania siecią. | Brak |
@@ -362,7 +362,7 @@ Przy użyciu standardu `docker run` obrazu Konwencji odwołania, `cmd` uruchamia
 
 Każdy typ kroku obsługuje kilka właściwości odpowiednie dla jego typu. W poniższej tabeli opisano wszystkie właściwości dostępne kroku. Nie wszystkie typy kroku obsługuje wszystkie właściwości. Aby zobaczyć, które z tych właściwości są dostępne dla każdego typu kroku, zobacz [cmd](#cmd), [kompilacji](#build), i [wypychania](#push) krok sekcje odwołanie do typu.
 
-| Właściwość | Type | Optional (Opcjonalność) | Opis | Wartość domyślna |
+| Właściwość | Typ | Optional (Opcjonalność) | Opis | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Yes | Czy kontenera należy odłączyć podczas uruchamiania. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Yes | Czy wyłączyć `workingDirectory` przesłonić funkcji. Użyj tego w połączeniu z `workingDirectory` mieć pełną kontrolę nad katalog roboczy kontenera. | `false` |

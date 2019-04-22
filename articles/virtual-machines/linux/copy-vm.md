@@ -50,7 +50,7 @@ az vm deallocate \
 
 Aby skopiować Maszynę wirtualną, należy utworzyć kopię podstawowego wirtualnego dysku twardego. Ten proces tworzy wyspecjalizowanego wirtualnego dysku twardego (VHD) jako dysk zarządzany, który zawiera tę samą konfigurację oraz ustawienia co źródłowa maszyna wirtualna.
 
-Aby uzyskać więcej informacji o dyskach Azure Managed Disks, zobacz [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md). 
+Aby uzyskać więcej informacji o dyskach funkcji Dyski zarządzane platformy Azure, zobacz [Omówienie funkcji Dyski zarządzane platformy Azure](../windows/managed-disks-overview.md). 
 
 1.  Listy każdej maszyny Wirtualnej i nazwę jej systemu operacyjnego na dysku z [az vm list](/cli/azure/vm#az-vm-list). Poniższy przykład wyświetla listę wszystkich maszyn wirtualnych w grupie zasobów o nazwie *myResourceGroup*:
     

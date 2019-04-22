@@ -12,10 +12,10 @@ ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
 ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883925"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek dotyczący usługi Azure Log Integration: Przetwarzanie zdarzeń usługi Azure Key Vault przy użyciu usługi Event Hubs
@@ -43,7 +43,7 @@ Informacje podane w drodze ułatwia zrozumienie przyczyn każdego kroku. Łącza
 
 Aby uzyskać więcej informacji o usługach, które przewodnim tego samouczka zobacz: 
 
-- [W usłudze Azure Key Vault](../key-vault/key-vault-whatis.md)
+- [Usługa Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Integracja dzienników platformy Azure](security-azure-log-integration-overview.md)
 
@@ -157,8 +157,7 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące el
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. Ustawianie i odczytywanie wpisu tajnego, który można wygenerować wpisów dziennika dodatkowe:
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
-   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Zwrócone wpisu tajnego](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 

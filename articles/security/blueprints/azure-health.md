@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885948"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI oferuje setką kompleksowych wdrożenie rozwiązania IaaS i PaaS platformy Azure, aby zademonstrować pozyskiwanie, przechowywanie, analizowanie, wchodzić w interakcje, tożsamość i bezpiecznie Wdrażaj rozwiązania z danymi kondycji podczas możliwość spełnianie wymagań dotyczących zgodności w branży. Planu pomaga przyspieszyć wdrażanie chmury i wykorzystania dla klientów korzystających z danych, która reguluje.**
 
@@ -150,19 +150,19 @@ Planu zawiera duży zestaw anonimowe dokumentacji medycznej, aby zademonstrować
 
 **Administrator witryny — Alex**
 
-*Wiadomość e-mail: Alex\_SiteAdmin*
+*Adres e-mail: Alex\_SiteAdmin*
 
 Alex przez zadanie jest ocena technologii, które można zmniejszyć obciążenie zarządzanie siecią w środowisku lokalnym i zmniejszyć koszty związane z zarządzaniem. Alex ma zostać ocena platformy Azure przez pewien czas, ale ma struggled do skonfigurowania usług, które musi spełnić wymagania dotyczące zgodności HiTrust do przechowywania danych pacjentów w chmurze. Alex została wybrana Azure AI kondycji, aby wdrożyć rozwiązanie kondycja gotowych do użycia zgodności, rozpoczęto wymagania, aby spełniać wymagania klientów HiTrust.
 
 **Analityk danych — Magdalena**
 
-*Wiadomość e-mail: Debra\_DataScientist*
+*Adres e-mail: Debra\_DataScientist*
 
 Magdalena odpowiada za używanie i tworzenie modeli, które analizują dokumentacji medycznej, aby zapewnić wgląd w opiece nad pacjentami. Magdalena korzysta z języków SQL i statystycznego języka programowania R na potrzeby tworzenia jej modeli.
 
 **Analityk bazy danych — Danny**
 
-*Wiadomość e-mail: Danny\_DBAnalyst*
+*Adres e-mail: Danny\_DBAnalyst*
 
 Danny jest główną osobą kontaktową dla wszystkich elementów, dotyczące programu Microsoft SQL Server, która przechowuje dane pacjentów Contosoclinic. Danny jest doświadczonym administratorem serwera SQL, który został ostatnio zapoznanie się z bazą danych SQL Azure.
 
@@ -173,13 +173,13 @@ Caroline używa przewidywań rozwiązania (LOS) typu "długość pobytu", aby ok
 
 **Care Menedżer wierszy — Chris**
 
-*Wiadomość e-mail: Chris\_CareLineManager*
+*Adres e-mail: Chris\_CareLineManager*
 
 Jako osoba bezpośrednio odpowiedzialni za zarządzanie przyjęcia pacjenta, a zrzuty w Contosoclinic, Krzysztof używa prognoz wygenerowanych przez rozwiązanie LOS aby upewnić się, że personelem są dostępne w zapewnienie obsługi pacjentów, gdy są one pozostając w obiekt.
 
 **Audytor — Hanowi**
 
-*Wiadomość e-mail: Hanowi\_rewidenta*
+*Adres e-mail: Hanowi\_rewidenta*
 
 Hanowi jest certyfikowanym rewidenta, który ma doświadczenie inspekcji dla ISO, SOC i HiTrust. Hanowi został zatrudniony do przeglądania sieci Contosoclinc firmy. Hanowi przejrzeć macierzy odpowiedzialność klienta dostarczane za pomocą rozwiązania do upewnij się, że rozwiązanie LOS i planu może służyć do przechowujących, przetwarzających i wyświetlania wrażliwe dane osobowe.
 

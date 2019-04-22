@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876744"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optymalizuj koszt wielu regionów w usłudze Azure Cosmos DB
@@ -31,13 +31,13 @@ W systemie wielu wzorców, net dostępne (RUS) dla zapisu operacji zwiększa `N`
 
 Należy wziąć pod uwagę w masz kontener w regionie zachodnie stany USA aprowizowany przy przepływności 10 tys jednostek RU/s i zapisuje 1 TB danych w tym miesiącu. Załóżmy, że dodasz trzech regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia, każdy z tego samego magazynu i przepływności i ma możliwość zapisywania do kontenerów we wszystkich czterech regionach z globalnie rozproszonych aplikacji. Twoje łączna kwota rachunku miesięcznego (przy założeniu 31 dni) w danym miesiącu jest następująca:
 
-|**Element**|**Użycie (miesiąc)**|**Stawka**|**Koszt miesięczny**|
+|**Element**|**Użycie (miesiąc)**|**Kurs**|**Koszt miesięczny**|
 |----|----|----|----|
 |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (zapisu wielu regionów) |10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$1,190.40 |
 |Rachunek za przepływność dla 3 dodatkowych regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia (zapisu wielu regionów) |(3 + 1) * 10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$4,761.60 |
 |Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA |100 GB |0,25 USD/GB |$25 |
 |Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia |3 * 1 TB |0,25 USD/GB |$75 |
-|**Łącznie**|||**$6,052** |
+|**Łączna liczba**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Poprawić wykorzystanie przepływności na poszczególnych regionów
 

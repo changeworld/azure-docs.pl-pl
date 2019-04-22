@@ -12,10 +12,10 @@ ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884242"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: Tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
@@ -44,7 +44,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
-   | **Name (Nazwa)** | MyFirstLogicApp | Nazwa aplikacji logiki | 
+   | **Nazwa** | MyFirstLogicApp | Nazwa aplikacji logiki | 
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
    | **Grupa zasobów** | My-First-LA-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używanej do organizowania powiązanych zasobów | 
    | **Lokalizacja** | Zachodnie stany USA | Region, w którym będą przechowywane informacje o aplikacji logiki | 
@@ -72,7 +72,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
    | **Adres URL źródła danych RSS** | ```http://feeds.reuters.com/reuters/topNews``` | Link do źródła danych RSS, które chcesz monitorować | 
-   | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
+   | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
    | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami  | 
    |||| 
 
@@ -185,4 +185,4 @@ Gdy ten przykład nie będzie już potrzebny, usuń grupę zasobów zawierając�
 W tym przewodniku Szybki start utworzono pierwszą aplikację logiki, która sprawdza aktualizacje kanału informacyjnego RSS według określonego harmonogramu (co minutę) i jeśli istnieją aktualizacje, wykonuje akcję (wysyła wiadomość e-mail). Aby dowiedzieć się więcej, kontynuuj pracę z tym samouczkiem nad tworzeniem bardziej zaawansowanych przepływów pracy opartych na harmonogramie:
 
 > [!div class="nextstepaction"]
-> [Sprawdzanie ruchu za pomocą aplikacji logiki na podstawie harmonogramu](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+> [Sprawdzanie ruchu za pomocą aplikacji logiki opartej na harmonogramie](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
