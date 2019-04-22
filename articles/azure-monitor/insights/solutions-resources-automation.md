@@ -145,7 +145,7 @@ Właściwości zasobów certyfikaty są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | base64Value |Wartość Base-64 dla certyfikatu. |
-| Odcisk palca |Odcisk palca certyfikatu. |
+| thumbprint |Odcisk palca certyfikatu. |
 
 
 
@@ -172,7 +172,7 @@ Właściwości zasobów poświadczeń są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | userName |Nazwa użytkownika dla poświadczenia. |
-| hasło |Hasło dla poświadczeń. |
+| password |Hasło dla poświadczeń. |
 
 
 ## <a name="schedules"></a>Harmonogramy
@@ -242,8 +242,8 @@ Właściwości harmonogramy zadań są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Nazwa harmonogramu |Pojedynczy **nazwa** jednostce o nazwie harmonogramu. |
-| Nazwa elementu runbook  |Pojedynczy **nazwa** jednostce o nazwie elementu runbook.  |
+| schedule name |Pojedynczy **nazwa** jednostce o nazwie harmonogramu. |
+| runbook name |Pojedynczy **nazwa** jednostce o nazwie elementu runbook.  |
 
 
 
@@ -272,7 +272,7 @@ Właściwości dla zmiennej zasoby są opisane w poniższej tabeli.
 | description | Opcjonalny opis dla zmiennej. |
 | isEncrypted | Określa, czy ma być szyfrowana zmienna. |
 | type | Ta właściwość aktualnie nie ma znaczenia.  Typ danych zmiennej będzie określana przez wartość początkową. |
-| wartość | Wartość do zmiennej. |
+| value | Wartość do zmiennej. |
 
 > [!NOTE]
 > **Typu** właściwość aktualnie nie ma wpływu na zmiennej tworzona.  Typ danych zmiennej będzie określana przez wartość.  
@@ -282,8 +282,8 @@ Jeśli ustawisz wartość początkową zmiennej, musi być skonfigurowany jako p
 | Typ danych | Opis | Przykład | Jest rozpoznawana jako |
 |:--|:--|:--|:--|
 | string   | Wartość należy ująć w cudzysłów.  | "\"Witaj, świecie\"" | "Hello world" |
-| Numeryczne  | Wartość liczbowa w apostrofy.| "64" | 64 |
-| wartość logiczna  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | "true" | true |
+| numeric  | Wartość liczbowa w apostrofy.| "64" | 64 |
+| boolean  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | "true" | true |
 | datetime | Wartość daty serializacji.<br>Polecenia cmdlet ConvertTo Json w programie PowerShell służy do generowania tej wartości dla określonej daty.<br>Przykład: get-date "5/24/2017 13:14:57" \| ConvertTo Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły
