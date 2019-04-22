@@ -1,7 +1,7 @@
 ---
 title: Możliwość interpretowania modelu
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać zestawu SDK usługi Azure Machine Learning współdziałania wyjaśniający, dlaczego wykonuje prognozy w modelu. Może służyć podczas szkolenia oraz wnioskowania Aby zrozumieć, jak model wykonuje prognozy.
+description: Dowiedz się, jak wyjaśnić, dlaczego modelu sprawia, że prognozy przy użyciu zestawu SDK usługi Azure Machine Learning współdziałania. Może służyć podczas szkolenia oraz wnioskowania Aby zrozumieć, jak model wykonuje prognozy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/09/2019
-ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494444"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682461"
 ---
-# <a name="azure-machine-learning-interpretability-sdk"></a>Współdziałania usługi Azure Machine Learning zestawu SDK
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>Model współdziałania z usługą Azure Machine Learning
 
 W tym artykule nauczysz wyjaśniający, dlaczego modelu wprowadzone prognozy go przy użyciu zestawu SDK usługi Azure Machine Learning współdziałania. Możliwość wyjaśnić modelu ważne jest, z następujących powodów:
 
@@ -25,9 +25,10 @@ W tym artykule nauczysz wyjaśniający, dlaczego modelu wprowadzone prognozy go 
 * Jako analitykiem danych, którą chcesz poznać **sposób tworzenia zapytań względem modelu uzyskiwanie przydatnego wglądu**. Należy również narzędzia do podejmowania świadomych decyzji na **ulepszenie modelu**.
 * Jako firma, należy zrozumieć **zachowanie modelu za pomocą zróżnicowanych danych wejściowych dystrybucje** i **będzie modelu zachowanie podczas analizowania określone dane wejściowe**.
 
-Machine learning współdziałania jest ważne w dwóch fazach cyklu programowania uczenia maszynowego: **szkolenia** czasu i **wnioskowania** czasu:
+Machine learning współdziałania jest ważne w dwóch fazach cyklu programowania uczenia maszynowego: 
 
 * Podczas **szkolenia**: Projektanci modelu i ewaluatory wymagają współdziałania narzędzia do wyjaśnienia danych wyjściowych modelu do uczestników projektu do tworzenia relacji zaufania. Muszą szczegółowych informacji o modelu tak, aby ich debugowania modelu i podejmowania decyzji o czy zachowanie jest zgodne swoje cele. Na koniec należy upewnić się, że model nie jest obciążona.
+
 * Podczas **wnioskowania**: Prognozy trzeba explainable do osób, które korzystają z modelu. Na przykład, dlaczego modelu odmawianie pożyczki hipoteczny i przewidzieć, że portfelu inwestycji niesie ze sobą większe ryzyko?
 
 Zestaw SDK usługi Azure Machine Learning współdziałania zawiera technologii opracowany przez firmę Microsoft oraz sprawdzonych bibliotek innych firm (na przykład, kształtu i wapna). Zestaw SDK tworzy wspólny interfejs API różnych bibliotek zintegrowane i integruje usługi Azure Machine Learning. Korzystając z tego zestawu SDK, można wyjaśnić modeli uczenia maszynowego **globalnie na wszystkie dane**, lub **lokalnie w punkcie danych specyficznych dla** przy użyciu technologii z najnowocześniejszych w sposób łatwy w użyciu i skalowalne.
@@ -91,7 +92,7 @@ Wbudowana funkcja analizy `TabularExplainer` staną się bardziej zaawansowanych
 
 Na poniższym diagramie przedstawiono relację między dwoma zestawami bezpośrednio i meta explainers.
 
-[![MArchitektura współdziałania Learning achine](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
+[![W usłudze Machine Learning współdziałania architektury](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 ### <a name="models-supported"></a>Obsługiwane modele
 

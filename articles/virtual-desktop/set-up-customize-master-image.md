@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.openlocfilehash: 9d69a24b106fc39c03b8f95758bc240916023456
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505604"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698319"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -274,7 +274,7 @@ Aby przekierować stref czasowych:
 1. Na serwerze usługi Active Directory otwórz **konsoli zarządzania zasadami grupy**.
 2. Rozwiń węzeł swojej domeny i obiekty zasad grupy.
 3. Kliknij prawym przyciskiem myszy **obiektu zasad grupy** utworzony dla ustawień zasad grupy i wybierz pozycję **Edytuj**.
-4. W **Edytor zarządzania zasadami grupy**, przejdź do **konfiguracji komputera** > **zasady** > **administracyjne Szablony** > **składników Windows** > **Horizon wyświetlanie RDSH usług** > **sesji usług pulpitu zdalnego Host** > **przekierowywanie urządzeń i zasobów**.
+4. W **Edytor zarządzania zasadami grupy**, przejdź do **konfiguracji komputera** > **zasady** > **administracyjne Szablony** > **składników Windows** > **usług pulpitu zdalnego** > **hosta sesji usług pulpitu zdalnego**   >  **Przekierowywanie urządzeń i zasobów**.
 5. Włącz **Zezwalaj na przekierowanie strefy czasowej** ustawienie.
 
 To polecenie można również uruchomić na obrazu wzorcowego przekierowywanie stref czasowych:
@@ -367,8 +367,8 @@ Poniżej opisano, jak do przekazania obrazu wzorcowego na konto magazynu platfor
 
 Teraz, gdy masz obrazu, możesz utworzyć lub zaktualizować pul hosta. Aby dowiedzieć się więcej o sposobie tworzenia i aktualizowania pule hosta, zobacz następujące artykuły:
 
-- [Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager](create-host-pools-arm-template.md)
-- [Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Tworzenie puli hostów przy użyciu programu PowerShell](create-host-pools-powershell.md)
-- [Konfigurowanie udziału profilu użytkownika dla puli hostów](create-host-pools-user-profile.md)
-- [Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+- [Utwórz pulę hosta przy użyciu szablonu usługi Azure Resource Manager](create-host-pools-arm-template.md)
+- [Samouczek: Utwórz pulę hosta za pomocą portalu Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Utwórz pulę hosta przy użyciu programu PowerShell](create-host-pools-powershell.md)
+- [Skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md)
+- [Konfigurowanie metody równoważenia obciążenia wirtualnego pulpitu Windows](configure-host-pool-load-balancing.md)

@@ -1,12 +1,18 @@
 ---
 title: Organizowanie zasobów przy użyciu grup zarządzania platformy Azure — nadzór na platformie Azure
-description: 'Dowiedz się więcej na temat grup zarządzania, sposobu działania ich uprawnień i korzystania z nich.'
+description: Dowiedz się więcej na temat grup zarządzania, sposobu działania ich uprawnień i korzystania z nich.
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699393"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -37,11 +43,11 @@ Jedno przypisanie grupy zarządzania może zapewnić użytkownikom dostęp do ws
 ## <a name="root-management-group-for-each-directory"></a>Główna grupa zarządzania dla każdego katalogu
 
 Do każdego katalogu jest przypisywana jedna grupa zarządzania najwyższego poziomu nazywana „główną” grupą zarządzania.
-Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Główna grupa zarządzania umożliwia stosowanie zasad globalnych i przypisań RBAC na poziomie katalogu. [Administrator globalny usługi Azure AD musi podnieść swój poziom uprawnień](../../role-based-access-control/elevate-access-global-admin.md), aby początkowo być właścicielem tej głównej grupy. Gdy administrator jest właścicielem grupy, może przypisać dowolną rolę RBAC innym użytkownikom lub grupom katalogu, aby zarządzać hierarchią.
+Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Główna grupa zarządzania umożliwia stosowanie zasad globalnych i przypisań RBAC na poziomie katalogu. [Administrator globalny usługi Azure AD musi podnieść swój poziom uprawnień](../../role-based-access-control/elevate-access-global-admin.md) do roli Administrator dostępu użytkowników, aby początkowo być właścicielem tej głównej grupy. Po podniesieniu poziomu dostępu administrator może przypisać dowolną rolę RBAC innym użytkownikom lub grupom w katalogu, aby zarządzać hierarchią. Jako administrator możesz przypisać własne konto jako właściciela głównej grupy zarządzania.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje dotyczące głównej grupy zarządzania
 
-- Nazwa i identyfikator głównej grupy zarządzania są nadawane domyślnie. Nazwę wyświetlaną można zaktualizować w dowolnym momencie, aby była wyświetlana inaczej w witrynie Azure Portal.
+- Nazwa i identyfikator głównej grupy zarządzania są nadawane domyślnie. Nazwę wyświetlaną można zaktualizować w dowolnym momencie, aby była wyświetlana inaczej w witrynie Azure Portal. Aby [zmienić nazwę](manage.md#change-the-name-of-a-management-group), Twoje konto musi mieć przypisaną rolę właściciela lub współautora w głównej grupie zarządzania.
   - Nazwą będzie „Główna grupa dzierżawy”.
   - Identyfikatorem będzie identyfikator usługi Azure Active Directory.
 - Głównej grupy zarządzania nie można przenieść ani usunąć, w odróżnieniu od innych grup zarządzania.  
@@ -63,7 +69,7 @@ Kiedy dowolny użytkownik rozpoczyna korzystanie z grup zarządzania, wykonywany
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Problemy z wyświetlaniem wszystkich subskrypcji
 
-W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarządzania niedługo po udostępnieniu wersji zapoznawczej (przed 25 czerwca 2018 r.), mógł wystąpić problem polegający na tym, że nie umieszczono wszystkich subskrypcji w hierarchii.  Procesy umieszczania subskrypcji w hierarchii były implementowane po przypisaniu roli lub zasad w głównej grupie zarządzania w katalogu.
+W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarządzania niedługo po udostępnieniu wersji zapoznawczej (przed 25 czerwca 2018 r.), mógł wystąpić problem polegający na tym, że nie wszystkie subskrypcje zostały umieszczone w hierarchii. Proces umieszczania subskrypcji w hierarchii był implementowany po przypisaniu roli lub zasad w głównej grupie zarządzania w katalogu. 
 
 ### <a name="how-to-resolve-the-issue"></a>Jak rozwiązać ten problem
 

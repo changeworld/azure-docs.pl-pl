@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004591"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697893"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 
-Usługa Azure Monitor dla maszyn wirtualnych monitoruje usługi Azure virtual machines (VM) i zestawy skalowania maszyn wirtualnych na dużą skalę. Analizuje wydajności i kondycji maszyn wirtualnych systemu Linux i Windows i monitoruje ich procesy i zależności dla innych zasobów i procesów zewnętrznych. 
+Usługa Azure Monitor dla maszyn wirtualnych monitoruje usługi Azure virtual machines (VM) i zestawy skalowania maszyn wirtualnych na dużą skalę. Analizuje ona wydajność i kondycję Twoich maszyn wirtualnych z systemami Windows i Linux oraz monitoruje ich procesy i zależności od innych zasobów oraz procesów zewnętrznych. 
 
 Rozwiązanie usługi Azure Monitor dla maszyn wirtualnych obejmuje obsługę monitorowania wydajności i aplikacji zależności dla maszyn wirtualnych, które są hostowane lokalnie lub u innego dostawcy chmury. Trzy kluczowe funkcje dostarczać dokładniejsze omówienie:
 
@@ -39,7 +39,7 @@ Funkcje są podzielone na trzy perspektyw:
 * Mapa
 
 >[!NOTE]
->Obecnie funkcję kondycji jest oferowana tylko w przypadku maszyn wirtualnych platformy Azure i skalowania maszyn wirtualnych zestawów. Wydajność i funkcje mapy obsługują maszyny wirtualne platformy Azure i maszyn wirtualnych, które są hostowane w środowisku lub innych dostawców chmury.
+>Obecnie funkcję kondycji jest oferowana tylko w przypadku maszyn wirtualnych platformy Azure. Wydajność i funkcje mapy obsługuje maszyny wirtualne platformy Azure, zestawy skalowania maszyn wirtualnych platformy Azure i maszyn wirtualnych, które są hostowane w środowisku lub innych dostawców chmury.
 
 Integracja przy użyciu dzienników usługi Azure Monitor zapewnia zaawansowane agregacji i filtrowania, a jego analizowanie trendów danych wraz z upływem czasu. Takie obciążenia kompleksowe monitorowanie nie można osiągnąć za pomocą usługi Azure Monitor lub mapy usługi autonomicznej.  
 

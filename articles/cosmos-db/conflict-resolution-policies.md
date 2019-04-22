@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 24201cfd657d4f23eb962b7407ed20262d780cf7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407423"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684229"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
@@ -37,11 +37,11 @@ Usługa Azure Cosmos DB oferuje elastyczny mechanizm rozwiązywania konfliktów 
   > [!NOTE]
   > Ostatni zapis Wins jest domyślne zasady rozwiązywania konfliktów. Jest dostępny dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin and Table.
 
-  Aby dowiedzieć się więcej, zobacz [zasad rozpoznawania w konflikcie przykłady z zastosowaniem LWW](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Aby dowiedzieć się więcej, zobacz [zasad rozpoznawania w konflikcie przykłady z zastosowaniem LWW](how-to-manage-conflicts.md).
 
 - **Niestandardowy**: Te zasady rozwiązania jest przeznaczona dla semantyki zdefiniowanych przez aplikację do uzgodnienia konflikty. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *scalania procedury składowanej*. Ta procedura jest wywoływana automatycznie, gdy wykryto konflikty w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
 
-  Jeśli kontenera można skonfigurować przy użyciu opcji niestandardowych rozdzielczości i zakończyć się niepowodzeniem do rejestrowania procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, są zapisywane konflikty *konflikty kanału informacyjnego*. Następnie aplikacja musi ręcznie rozwiązać konflikty w konflikcie, źródła danych. Aby dowiedzieć się więcej, zobacz [przykłady za pomocą zasad niestandardowych rozwiązania i sposobu używania konflikty kanału informacyjnego](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Jeśli kontenera można skonfigurować przy użyciu opcji niestandardowych rozdzielczości i zakończyć się niepowodzeniem do rejestrowania procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, są zapisywane konflikty *konflikty kanału informacyjnego*. Następnie aplikacja musi ręcznie rozwiązać konflikty w konflikcie, źródła danych. Aby dowiedzieć się więcej, zobacz [przykłady za pomocą zasad niestandardowych rozwiązania i sposobu używania konflikty kanału informacyjnego](how-to-manage-conflicts.md).
 
   > [!NOTE]
   > Zasady rozwiązywania konfliktów niestandardowych jest dostępne tylko dla kont interfejsu API SQL.
@@ -51,6 +51,5 @@ Usługa Azure Cosmos DB oferuje elastyczny mechanizm rozwiązywania konfliktów 
 Dowiedz się, jak skonfigurować zasady rozwiązywania konfliktów:
 
 * [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
-* [Jak używać LWW zasady rozwiązywania konfliktów](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
-* [Jak używać zasady rozwiązywania konfliktów niestandardowe](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
+* [Jak zarządzać zasadami rozwiązywania konfliktów](how-to-manage-conflicts.md)
 * [Jak odczytać z konfliktów kanału informacyjnego](how-to-manage-conflicts.md#read-from-conflict-feed)

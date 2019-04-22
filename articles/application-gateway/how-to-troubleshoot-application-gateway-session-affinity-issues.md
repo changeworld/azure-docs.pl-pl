@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904529"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683161"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Rozwiązywanie problemów z koligacją sesji bramy aplikacji platformy Azure
 
@@ -21,7 +21,7 @@ Dowiedz się, jak Diagnozuj i rozwiązuj problemy koligacji sesji przy użyciu u
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze. Używając plików cookie zarządzanych przez bramę, usługa Application Gateway może kierować dalszy ruch z sesji użytkownika na ten sam serwer w celu przetwarzania. Jest to ważne w przypadkach, w których stan sesji jest zapisywany lokalnie na serwerze dla sesji użytkownika.
 
@@ -96,7 +96,7 @@ Ten problem występuje, ponieważ program Internet Explorer i w innych przegląd
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, należy uzyskać dostęp do bramy aplikacji przy użyciu nazwy FQDN. Na przykład użyć [ http://website.com ](http://website.com/) lub [ http://appgw.website.com ](http://appgw.website.com/) .
+Aby rozwiązać ten problem, należy uzyskać dostęp do bramy aplikacji przy użyciu nazwy FQDN. Na przykład użyć [ http://website.com ](https://website.com/) lub [ http://appgw.website.com ](http://appgw.website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Dodatkowe dzienniki rozwiązywania problemów z
 

@@ -7,18 +7,18 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.openlocfilehash: fa7dfbf9e535d010675942900bad208d3f15e556
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258611"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698389"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapowanie kontrolek próbki planu obciążenia ISO 27001 ASE/SQL
 
 Następujący artykuł szczegółowo opisuje sposób mapowania kontroli ISO 27001 przykładowy plan Azure schematy ISO 27001 ASE/SQL obciążenia. Aby uzyskać więcej informacji na temat formantów, zobacz [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Następujące mapowania są **ISO 27001: 2013** kontrolki. Korzystanie z nawigacji po prawej stronie umożliwia przejście bezpośrednio do mapowania określonego formantu. Wiele kontrolek zamapowanego są implementowane za pomocą [usługi Azure Policy](../../../policy/overview.md) inicjatywy. Aby zapoznać się z pełną inicjatywy, otwórz **zasad** w witrynie Azure portal i wybierz pozycję **definicje** strony. Następnie znajdź i zaznacz  **[Podgląd] audytu ISO 27001: 2013 kontroluje i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu spełnienia wymagań inspekcji** inicjatywa zasad wbudowanych.
+Następujące mapowania są **ISO 27001: 2013** kontrolki. Korzystanie z nawigacji po prawej stronie umożliwia przejście bezpośrednio do mapowania określonego formantu. Wiele kontrolek zamapowanego są implementowane za pomocą [usługi Azure Policy](../../../policy/overview.md) inicjatywy. Aby zapoznać się z pełną inicjatywy, otwórz **zasad** w witrynie Azure portal i wybierz pozycję **definicje** strony. Następnie znajdź i zaznacz  **[Wersja zapoznawcza] audytu ISO 27001: 2013 kontroluje i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu spełnienia wymagań inspekcji** inicjatywa zasad wbudowanych.
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 podział obowiązków
 
@@ -26,6 +26,12 @@ Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie zezwala n
 
 - [Wersja zapoznawcza]: Audit minimum number of owners for subscription
 - [Wersja zapoznawcza]: Audit maximum number of owners for a subscription
+
+## <a name="a821-classification-of-information"></a>A.8.2.1 klasyfikacji informacji
+
+Azure [oceny luk w zabezpieczeniach SQL service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) może pomóc odkryć, danych poufnych przechowywanych w bazach danych i zawiera zalecenia dotyczące klasyfikowania danych. Przypisuje ten plan [usługi Azure Policy](../../../policy/overview.md) definicji do inspekcji, że zostaną rozwiązane zidentyfikowane podczas oceny luk w zabezpieczeniach SQL skanowania pod kątem luk w zabezpieczeniach.
+
+- [Wersja zapoznawcza]: Monitor SQL vulnerability assessment results in Azure Security Center
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 dostępu do sieci i usługami sieciowymi
 
@@ -41,22 +47,17 @@ Zasoby zrozumienia, naruszających może te zasady, pomoc podjąć działania na
 - Przeprowadź inspekcję użycia klasycznych maszyn wirtualnych
 - Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych
 
-## <a name="a922-user-access-provisioning"></a>Inicjowanie obsługi dostępu użytkowników A.9.2.2
-
-Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), aby zarządzać, kto ma dostęp do zasobów platformy Azure. Ten plan przypisuje trzy [usługi Azure Policy](../../../policy/overview.md) definicje inspekcji użytkowania [usługi Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) uwierzytelnianie dla serwerów SQL i [usługi Service Fabric](../../../../service-fabric/service-fabric-overview.md). Za pomocą usługi Azure Active Directory uwierzytelniania umożliwia zarządzanie uprawnieniami uproszczone i scentralizowane identity management użytkowników bazy danych i innych usług firmy Microsoft. Ten plan przypisuje inspekcjonuj użycie niestandardowych zasad RBAC definicji zasad platformy Azure. Zrozumienie, w których Implementowanie niestandardowych zasad RBAC ułatwi sprawdzenie wymagań oraz do realizacji, zgodnie z niestandardowymi regułami RBAC są podatne.
-
-- Przeprowadź inspekcję aprowizowania administratora usługi Azure Active Directory dla programu SQL Server
-- Przeprowadź inspekcję użycia usługi Azure Active Directory na potrzeby uwierzytelnienia klientów w usłudze Service Fabric
-- Przeprowadź inspekcję użycia niestandardowych reguł kontroli RBAC
-
 ## <a name="a923-management-of-privileged-access-rights"></a>Zarządzanie A.9.2.3 uprzywilejowane prawa dostępu
 
-Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując cztery [usługi Azure Policy](../../../policy/overview.md) definicji w celu inspekcji konta zewnętrzne z właścicielem i/lub zapisać uprawnień i kont z właścicielem i/lub uprawnienia do zapisu nie mają włączonego uwierzytelniania wieloskładnikowego.
+Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując cztery [usługi Azure Policy](../../../policy/overview.md) definicji w celu inspekcji konta zewnętrzne z właścicielem i/lub zapisać uprawnień i kont z właścicielem i/lub uprawnienia do zapisu nie mają włączonego uwierzytelniania wieloskładnikowego. Azure implementuje kontroli dostępu opartej na rolach (RBAC), aby zarządzać, kto ma dostęp do zasobów platformy Azure. Ten plan przypisuje także trzy definicji zasad platformy Azure w celu przeprowadzania inspekcji użycia uwierzytelniania usługi Azure Active Directory dla serwerów SQL i usługi Service Fabric. Za pomocą usługi Azure Active Directory uwierzytelniania umożliwia zarządzanie uprawnieniami uproszczone i scentralizowane identity management użytkowników bazy danych i innych usług firmy Microsoft. Ten plan przypisuje inspekcjonuj użycie niestandardowych zasad RBAC definicji zasad platformy Azure. Zrozumienie, w których Implementowanie niestandardowych zasad RBAC ułatwi sprawdzenie wymagań oraz do realizacji, zgodnie z niestandardowymi regułami RBAC są podatne.
 
 - [Wersja zapoznawcza]: Audit accounts with owner permissions who are not MFA enabled on a subscription
 - [Wersja zapoznawcza]: Audit accounts with write permissions who are not MFA enabled on a subscription
 - [Wersja zapoznawcza]: Audit external accounts with owner permissions on a subscription
 - [Wersja zapoznawcza]: Audit external accounts with write permissions on a subscription
+- Przeprowadź inspekcję aprowizowania administratora usługi Azure Active Directory dla programu SQL Server
+- Przeprowadź inspekcję użycia usługi Azure Active Directory na potrzeby uwierzytelnienia klientów w usłudze Service Fabric
+- Przeprowadź inspekcję użycia niestandardowych reguł kontroli RBAC
 
 ## <a name="a924-management-of-secret-authentication-information-of-users"></a>Zarządzanie A.9.2.4 informacji klucza tajnego uwierzytelniania użytkowników
 
@@ -83,6 +84,14 @@ Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../r
 
 - [Wersja zapoznawcza]: Audit deprecated accounts on a subscription
 - [Wersja zapoznawcza]: Audit deprecated accounts with owner permissions on a subscription
+
+## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 bezpiecznego logowania procedur
+
+Ten plan przypisuje trzech definicji usługi Azure Policy do inspekcji kont, które nie mają włączonego uwierzytelniania wieloskładnikowego. Usługa Azure Multi-Factor Authentication zapewnia dodatkowe zabezpieczenia, wymagając od drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie. Monitorując kont bez włączonego uwierzytelniania wieloskładnikowego, można zidentyfikować konta, które mogą być bardziej prawdopodobne naruszenia.
+
+- [Wersja zapoznawcza]: Audit accounts with owner permissions who are not MFA enabled on a subscription
+- [Wersja zapoznawcza]: Audit accounts with read permissions who are not MFA enabled on a subscription
+- [Wersja zapoznawcza]: Audit accounts with write permissions who are not MFA enabled on a subscription
 
 ## <a name="a943-password-management-system"></a>System zarządzania hasłami A.9.4.3
 
@@ -121,19 +130,50 @@ Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracj
 
 ## <a name="a1241-event-logging"></a>Rejestrowanie zdarzeń A.12.4.1
 
-Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie siedem [usługi Azure Policy](../../../policy/overview.md) definicje, które Przeprowadź inspekcję ustawienia dziennika dla zasobów platformy Azure. Przypisanych zasad przeprowadza inspekcję, jeśli maszyny wirtualne nie są wysyłane dzienniki do obszaru roboczego analizy określonego dziennika.
+Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie siedem [usługi Azure Policy](../../../policy/overview.md) definicje, które Przeprowadź inspekcję ustawienia dziennika dla zasobów platformy Azure.
+Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonywanych w ramach zasobów platformy Azure.
 
-- [Podgląd]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Podgląd]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Podgląd]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
-- [Podgląd]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
 
-## <a name="a121-management-of-technical-vulnerabilities"></a>Zarządzanie A.12.1 techniczne luk w zabezpieczeniach
+## <a name="a1243-administrator-and-operator-logs"></a>Dzienniki administratora A.12.4.3 and — operator
 
-Ten plan pomaga w zarządzaniu informacje dotyczą luk w zabezpieczeniach, przypisując pięciu [usługi Azure Policy](../../../policy/overview.md) definicje, które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego, wykrywania zagrożeń SQL i maszyny wirtualnej luki w zabezpieczeniach. Wglądowi w szczegółowe dane zawierają w czasie rzeczywistym informacje o stanie zabezpieczeń zasobów wdrożonych i może pomóc określić priorytety działania korygujące.
+Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przypisanie siedem Azure definicjom zasad inspekcji ustawienia dziennika dla zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonywanych w ramach zasobów platformy Azure.
+
+- [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
+- Przeprowadzanie inspekcji ustawienia diagnostyki
+- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+
+## <a name="a1244-clock-synchronization"></a>Synchronizacja zegara A.12.4.4
+
+Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przypisanie siedem definicji zasad platformy Azure, które inspekcji dziennika ustawienia dla zasobów platformy Azure. Dzienniki platformy Azure zależą od wewnętrznego Zegary zsynchronizowane, aby utworzyć rekord czas skorelowanego zdarzenia w zasobach.
+
+- [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
+- [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
+- Przeprowadzanie inspekcji ustawienia diagnostyki
+- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+
+## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Instalacja oprogramowania w systemach operacyjnych
+
+Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie w usłudze Azure Security Center pomaga kontrolować, które aplikacje można uruchamiać na maszynach wirtualnych na platformie Azure. Ten plan przypisuje definicja zasad platformy Azure, która śledzi zmiany w zestaw dozwolonych aplikacji. Ta możliwość ułatwia kontrolowanie instalacji oprogramowania i aplikacji na maszynach wirtualnych platformy Azure.
+
+- [Wersja zapoznawcza]: Monitor possible app Whitelisting in Azure Security Center
+
+## <a name="a1261-management-of-technical-vulnerabilities"></a>Zarządzanie A.12.6.1 techniczne luk w zabezpieczeniach
+
+Ten plan pomaga w zarządzaniu informacje dotyczą luk w zabezpieczeniach, przypisując pięciu [usługi Azure Policy](../../../policy/overview.md) definicje, które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego, wykrywania zagrożeń SQL i maszyny wirtualnej luki w zabezpieczeniach w usłudze Azure Security Center. Usługa Azure Security Center zapewnia możliwości raportowania, które umożliwiają wgląd w czasie rzeczywistym w stan zabezpieczeń zasobów platformy Azure wdrożonych.
 
 - [Wersja zapoznawcza]: Monitor missing Endpoint Protection in Azure Security Center
 - [Wersja zapoznawcza]: Monitor missing system updates in Azure Security Center
@@ -149,9 +189,12 @@ Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie w usłudze Azure Se
 
 ## <a name="a1311-network-controls"></a>Formanty sieciowe A.13.1.1
 
-Ten plan ułatwia zarządzanie i sterowanie sieci, przypisując [usługi Azure Policy](../../../policy/overview.md) definicję, która monitoruje sieciowe grupy zabezpieczeń z liberalnych regułach. Reguły, które są zbyt liberalnych mogą zezwolić na dostęp do sieci niezamierzone i powinna zostać przejrzana pod.
+Ten plan ułatwia zarządzanie i sterowanie sieci, przypisując [usługi Azure Policy](../../../policy/overview.md) definicję, która monitoruje sieciowe grupy zabezpieczeń z liberalnych regułach. Reguły, które są zbyt liberalnych mogą zezwolić na dostęp do sieci niezamierzone i powinna zostać przejrzana pod. Ten plan przypisuje trzech definicji zasad platformy Azure, które monitorują niechronione punkty końcowe, aplikacji i kont magazynu. Punkty końcowe i aplikacje, które nie są chronione przez zaporę i kont magazynu z nieograniczonym dostępem umożliwia niekontrolowanego dostępu do informacji zawartych w systemie informacji.
 
 - [Wersja zapoznawcza]: Monitor permissive network access in Azure Security Center
+- [Wersja zapoznawcza]: Monitor unprotected network endpoints in Azure Security Center
+- [Wersja zapoznawcza]: Monitor unprotected web application in Azure Security Center
+- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>Procedury i zasady transferu informacji A.13.2.1
 
@@ -159,24 +202,6 @@ Planu pomaga zagwarantować, przekazywania informacji z usługami platformy Azur
 
 - Przeprowadź inspekcję włączania tylko bezpiecznych połączeń z pamięć podręczną Redis Cache
 - Przeprowadź inspekcję bezpiecznego transferu do kont magazynu
-
-## <a name="a1413-protecting-application-services-transactions"></a>Transakcje usługi A.14.1.3 chronienie aplikacji
-
-Ten plan pomaga chronić zasoby systemu informacji, przypisując trzy [usługi Azure Policy](../../../policy/overview.md) definicje, które monitorują niechronione punkty końcowe, aplikacji i kont magazynu. Punkty końcowe i aplikacje, które nie są chronione przez zaporę i kont magazynu z nieograniczonym dostępem umożliwia niekontrolowanego dostępu do informacji zawartych w systemie informacji.
-
-- [Wersja zapoznawcza]: Monitor unprotected network endpoints in Azure Security Center
-- [Wersja zapoznawcza]: Monitor unprotected web application in Azure Security Center
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
-
-## <a name="a1613-reporting-information-security-weaknesses"></a>Słabe strony algorytmu A.16.1.3 raportowania informacji zabezpieczeń
-
-Ten plan pomaga dające luki w zabezpieczeniach systemu, przypisując pięciu [usługi Azure Policy](../../../policy/overview.md) definicje, które monitorują luk w zabezpieczeniach, stanu poprawek i alerty o złośliwym oprogramowaniu w usłudze Azure Security Center. Usługa Azure Security Center zapewnia możliwości raportowania, które umożliwiają wgląd w czasie rzeczywistym w stan zabezpieczeń zasobów platformy Azure wdrożonych.
-
-- [Wersja zapoznawcza]: Monitor missing Endpoint Protection in Azure Security Center
-- [Wersja zapoznawcza]: Monitor missing system updates in Azure Security Center
-- [Wersja zapoznawcza]: Monitor OS vulnerabilities in Azure Security Center
-- [Wersja zapoznawcza]: Monitor SQL vulnerability assessment results in Azure Security Center
-- [Wersja zapoznawcza]: Monitor VM Vulnerabilities in Azure Security Center
 
 ## <a name="next-steps"></a>Kolejne kroki
 

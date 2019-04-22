@@ -7,14 +7,14 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02c7f53c090559ca0ada46ec90de3a44b0518a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003470"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683597"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania migracji danych
 
@@ -29,8 +29,7 @@ Istnieją dwie główne opcje migracji danych ze środowiska lokalnego do środo
     2. Expressroute — ExpressRoute to usługa, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub w funkcji wspólnej lokalizacji. Połączenia ExpressRoute nie omijają publiczny Internet i oferują wyższe bezpieczeństwa, niezawodności i szybkości pracy krótsze opóźnienia niż typowe połączenia przez Internet. Aby uzyskać więcej informacji, zobacz [tworzenie i modyfikowanie obwodu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Transfer danych w trybie online pole danych — krawędź pola danych i bramy pola danych czy produkty transferu danych w trybie online, które pełnić rolę bram magazynu do zarządzania danymi między Twoją witryną a Azure sieci. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu. Aby uzyskać więcej informacji, zobacz [Azure dokumentacją Data Box - Online transferu](https://docs.microsoft.com/azure/databox-online/).
 1.  Wysyłanie danych w trybie Offline
-    1. Import / Export service — możesz wysłać dyski fizyczne do platformy Azure i zostaną przekazane za Ciebie. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Import/Export?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
-    1. Dane pole transfer danych w trybie offline — Data Box dysku Data Box, i duże pole danych urządzeń ułatwiają przenoszenie dużych ilości danych na platformie Azure, gdy sieć nie jest dostępną opcją. Te urządzenia do przesyłania danych w trybie offline są dostarczane z Twojej organizacji do centrum danych platformy Azure. Korzystają one z szyfrowania AES, aby pomóc w ochronie Twoich danych podczas przesyłania, i przechodzą dokładny proces oczyszczania po przekazaniu, aby usunąć Twoje dane z urządzenia. Aby uzyskać więcej informacji, zobacz [dokumentacji pole danych platformy Azure — w trybie Offline transferu](https://docs.microsoft.com/azure/databox/).
+    1. Dane pole transfer danych w trybie offline — Data Box dysku Data Box, i duże pole danych urządzeń ułatwiają przenoszenie dużych ilości danych na platformie Azure, gdy sieć nie jest dostępną opcją. Te urządzenia do przesyłania danych w trybie offline są dostarczane z Twojej organizacji do centrum danych platformy Azure. Korzystają one z szyfrowania AES, aby pomóc w ochronie Twoich danych podczas przesyłania, i przechodzą dokładny proces oczyszczania po przekazaniu, aby usunąć Twoje dane z urządzenia. Aby uzyskać więcej informacji na temat urządzenia Data Box transferu w trybie offline, zobacz [dokumentacją usługi Azure Data Box — w trybie Offline transferu](https://docs.microsoft.com/azure/databox/). Aby uzyskać więcej informacji na temat migracji klastrów Hadoop, zobacz [użycia usługi Azure Data Box do migracji z lokalnego systemu plików HDFS magazynu do usługi Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Poniższa tabela zawiera czas transferu przybliżony danych na podstawie przepustowości woluminu i sieci danych. Użyj urządzenia Data box, jeśli migracja danych szacowany czas wynosi ponad trzy tygodnie.
 

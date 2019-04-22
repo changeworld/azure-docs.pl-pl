@@ -1,96 +1,89 @@
-items:
 - name: Dokumentacja wersji zapoznawczej programu Azure Sentinel
   href: index.yml
 - name: Omówienie
   href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Rozpoczynanie korzystania z programu Azure Sentinel
-    href: quickstart-onboard.md
-  - name: Uzyskiwanie wglądu w alerty
-    href: quickstart-get-visibility.md
   expanded: true
+  items:
+    - name: Rozpoczynanie korzystania z programu Azure Sentinel
+      href: quickstart-onboard.md
+    - name: Uzyskiwanie wglądu w alerty
+      href: quickstart-get-visibility.md
 - name: Samouczki
   items:
-  - name: Wykrywanie podejrzanych zagrożeń
-    href: tutorial-detect-threats.md
-  - name: Badanie przypadków
-    href: tutorial-investigate-cases.md
-  - name: Reagowanie na zagrożenia
-    href: tutorial-respond-threats-playbook.md
+    - name: Wykrywanie podejrzanych zagrożeń
+      href: tutorial-detect-threats.md
+    - name: Badanie przypadków
+      href: tutorial-investigate-cases.md
+    - name: Reagowanie na zagrożenia
+      href: tutorial-respond-threats-playbook.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Łączenie ze źródłami danych
-    href: connect-data-sources.md
-    items:
-    - name: Łączenie z usługami firmy Microsoft
+    - name: Łączenie ze źródłami danych
+      href: connect-data-sources.md
       items:
-      - name: Łączenie z usługą Azure AD
-        href: connect-azure-active-directory.md
-      - name: Łączenie z usługą Office 365
-        href: connect-office-365.md
-      - name: Łączenie z usługą Cloud App Security
-        href: connect-cloud-app-security.md
-      - name: Łączenie z dziennikiem aktywności platformy Azure
-        href: connect-azure-activity.md
-      - name: Łączenie z usługą Azure AD Identity Protection
-        href: connect-azure-ad-identity-protection.md
-      - name: Łączenie z usługą Azure Information Protection
-        href: connect-azure-information-protection.md
-      - name: Łączenie z usługą Azure ATP
-        href: connect-azure-atp.md
-      - name: Łączenie z usługą Azure Security Center
-        href: connect-azure-security-center.md
-      - name: Łączenie z zaporą aplikacji internetowej firmy Microsoft
-        href: connect-microsoft-waf.md
-      - name: Łączenie z zaporą systemu Windows
-        href: connect-windows-firewall.md
-      - name: Łączenie ze zdarzeniami zabezpieczeń systemu Windows
-        href: connect-windows-security-events.md
-    - name: Łączenie z rozwiązaniami zewnętrznymi
+        - name: Łączenie z usługami firmy Microsoft
+          items:
+            - name: Łączenie z usługą Azure AD
+              href: connect-azure-active-directory.md
+            - name: Łączenie z usługą Office 365
+              href: connect-office-365.md
+            - name: Łączenie z usługą Cloud App Security
+              href: connect-cloud-app-security.md
+            - name: Łączenie z dziennikiem aktywności platformy Azure
+              href: connect-azure-activity.md
+            - name: Łączenie z usługą Azure AD Identity Protection
+              href: connect-azure-ad-identity-protection.md
+            - name: Łączenie z usługą Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Łączenie z usługą Azure ATP
+              href: connect-azure-atp.md
+            - name: Łączenie z usługą Azure Security Center
+              href: connect-azure-security-center.md
+            - name: Łączenie z zaporą aplikacji internetowej firmy Microsoft
+              href: connect-microsoft-waf.md
+            - name: Łączenie z zaporą systemu Windows
+              href: connect-windows-firewall.md
+            - name: Łączenie ze zdarzeniami zabezpieczeń systemu Windows
+              href: connect-windows-security-events.md
+        - name: Łączenie z rozwiązaniami zewnętrznymi
+          items:
+            - name: Łączenie z ogólnymi źródłami CEF
+              href: connect-common-event-format.md
+            - name: Łączenie z rozwiązaniami Barracuda
+              href: connect-barracuda.md
+            - name: Łączenie z rozwiązaniami Check Point
+              href: connect-checkpoint.md
+            - name: Łączenie z rozwiązaniami Palo Alto Networks
+              href: connect-paloalto.md
+            - name: Łączenie z rozwiązaniami Fortinet
+              href: connect-fortinet.md
+            - name: Łączenie z rozwiązaniami F5
+              href: connect-f5.md
+            - name: Łączenie ze źródłami Syslog
+              href: connect-syslog.md
+            - name: Łączenie z rozwiązaniem Symantec ICDX
+              href: connect-symantec.md
+            - name: Łączenie z rozwiązaniami Cisco
+              href: connect-cisco.md
+        - name: Łączenie z funkcjami analizy zagrożeń
+          href: connect-threat-intelligence.md
+    - name: Wyszukiwanie zagrożeń
+      href: hunting.md
       items:
-      - name: Łączenie z ogólnymi źródłami CEF
-        href: connect-common-event-format.md
-      - name: Łączenie z rozwiązaniami Barracuda
-        href: connect-barracuda.md
-      - name: Łączenie z rozwiązaniami Check Point
-        href: connect-checkpoint.md
-      - name: Łączenie z rozwiązaniami Palo Alto Networks
-        href: connect-paloalto.md
-      - name: Łączenie z rozwiązaniami Fortinet
-        href: connect-fortinet.md
-      - name: Łączenie z rozwiązaniami F5
-        href: connect-f5.md
-      - name: Łączenie ze źródłami Syslog
-        href: connect-syslog.md
-      - name: Łączenie z rozwiązaniem Symantec ICDX
-        href: connect-symantec.md
-      - name: Łączenie z rozwiązaniami Cisco
-        href: connect-cisco.md
-    - name: Łączenie z funkcjami analizy zagrożeń
-      href: connect-threat-intelligence.md
-  - name: Wyszukiwanie zagrożeń
-    href: hunting.md
-    items:
-    - name: Wyszukiwanie zagrożeń za pomocą notesów
-      href: notebooks.md
-    - name: Wyszukiwanie zagrożeń za pomocą zakładek
-      href: bookmarks.md
-  - name: Włączanie łączenia
-    href: connect-fusion.md
+        - name: Wyszukiwanie zagrożeń za pomocą notesów
+          href: notebooks.md
+        - name: Wyszukiwanie zagrożeń za pomocą zakładek
+          href: bookmarks.md
+    - name: Włączanie łączenia
+      href: connect-fusion.md
 - name: Zasoby
   items:
-  - name: Przydatne zasoby
-    href: resources.md
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Blog dotyczący zabezpieczeń, ochrony prywatności i zgodności na platformie Azure
-    href: https://blogs.msdn.com/b/azuresecurity/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 886f07fa45e7795251d50880a977cfbc331dfb2b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494002"
+    - name: Przydatne zasoby
+      href: resources.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 'Blog dotyczący zabezpieczeń, ochrony prywatności i zgodności na platformie Azure'
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'

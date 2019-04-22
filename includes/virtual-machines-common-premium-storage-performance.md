@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 12bcf665fafca3df7fc2d21c77c2f8d2fbec84fc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542314"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737226"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -67,7 +67,7 @@ Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, w
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
 
-Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, który może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.
+Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, który może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu, ponieważ niektóre odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.
 
 - Zaktualizuj typ magazynu.
 - Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego.
@@ -261,7 +261,8 @@ Należy pamiętać, że dyski magazynu Premium mają wyższe możliwości wydajn
 Wysoka skalowania maszyn wirtualnych korzystających z usługi Azure Premium Storage ma wielowarstwowych technologii buforowania, o nazwie BlobCache. BlobCache używa kombinacji maszyny wirtualnej ilość pamięci RAM i lokalny dysk SSD do buforowania. Ta pamięć podręczna jest dostępna dla stałych dysków usługi Premium Storage i dysków lokalnych maszyn wirtualnych. Domyślnie to ustawienie pamięci podręcznej ma wartość do odczytu/zapisu dla dysków systemu operacyjnego i tylko do odczytu dla dysków z danymi w serwisie usługi Premium Storage. Za pomocą dysku pamięci podręcznej, włączone na dysków usługi Premium Storage, dużej skali maszyn wirtualnych można uzyskać bardzo wysoki poziom wydajności, które przekraczają podstawowej wydajności dysków.
 
 > [!WARNING]
-> Buforowanie dysku jest obsługiwana tylko dla rozmiarów dysków do 4 TiB.
+> Buforowanie dysku nie jest obsługiwane dla dysków większych niż 4 TiB. Jeśli wiele dysków dołączonych do maszyny Wirtualnej, każdego dysku, który jest 4 TiB lub mniejsze będzie obsługiwać buforowania.
+>
 > Zmienianie ustawień pamięci podręcznej dysku platformy Azure powoduje odłączenie i ponowne dołączenie dysku docelowego. Jeśli jest to dysk systemu operacyjnego, maszyna wirtualna zostanie ponownie uruchomiona. Zatrzymaj wszystkie aplikacje/usługi, które mogą mieć wpływ to zakłóceń, zanim zmienisz to ustawienie pamięci podręcznej dysku.
 
 Aby dowiedzieć się więcej o tym, jak działa BlobCache, należy zapoznać się z wewnątrz [usługi Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) wpis w blogu.

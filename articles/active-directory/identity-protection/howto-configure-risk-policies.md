@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517542"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699037"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Instrukcje: Konfigurowanie zasad usługi o podwyższonym ryzyku ochronę tożsamości usługi Azure Active Directory (odświeżyć)
 
@@ -41,7 +41,8 @@ Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wyk
 
 Zasady ryzyka logowania to automatyczną odpowiedź, które można skonfigurować na poziomie określonej ryzyka logowania. W odpowiedzi możesz zablokować dostęp do zasobów lub wymagają, przekazując żądanie uwierzytelniania wieloskładnikowego (MFA) do uzyskania dostępu.
 
-   
+Gdy użytkownik pomyślnie ukończy wiersza MFA wyzwalanych przez zasady ryzyka logowania, udostępnia informacje zwrotne do usługi Identity Protection, która logowania pochodzi od wiarygodnego użytkownika. W związku z tym zdarzenie ryzyka logowania, które wiersza MFA zostaną automatycznie zamknięte, a Identity Protection uniemożliwi to zdarzenie mające wpływ na podniesienie poziomu ryzyka związanego z użytkownikiem. Włączenie zasad ryzyka logowania mogą zmniejszyć noisiness w widoku ryzykownych logowań, pozwalając użytkownikom na samodzielną korektę po wyświetleniu monitu o uwierzytelnianie wieloskładnikowe, a następnie automatycznie zamyka skojarzony ryzykowne logowania w.
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak uzyskać dostęp do zasad ryzyka logowania?
    
 Policy ryzyka logowania jest dostępna w **Konfiguruj** sekcji na [strony usługi Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).

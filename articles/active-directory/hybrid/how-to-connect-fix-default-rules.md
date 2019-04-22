@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f524e8cef3878816cec53575217bdb6d0fd9be7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501259"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698167"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Napraw modyfikacji domyślnych reguł w programie Azure AD Connect
 
@@ -76,12 +76,12 @@ Reguła synchronizacji ruchu przychodzącego oznacza, że źródło atrybutu jes
 
  ![Reguły domyślne](media/how-to-connect-fix-default-rules/default3a.png)
 
-Postępuj zgodnie z konwencji nazewnictwa do nazwę reguły, w tym miejscu użyliśmy **niestandardowych w witrynie AD — użytkownik**, oznacza to, że reguła jest niestandardową regułę i regułę ruchu przychodzącego z obszaru łącznika usługi AD do obiektu Metaverse. 
+Postępuj zgodnie z konwencji nazewnictwa do nazwę reguły, w tym miejscu użyliśmy **niestandardowych w witrynie AD — użytkownik**, oznacza to, że reguła jest niestandardową regułę i regułę ruchu przychodzącego z obszaru łącznika usługi AD do obiektu Metaverse.   
 
  ![Reguły domyślne](media/how-to-connect-fix-default-rules/default3b.png)
 
-Przekazać własny opis reguły obsługi przyszłych reguły jest łatwe, takich jak co to jest cel tej reguły, i dlaczego jest konieczne.
-Wybrane połączonego systemu (las) źródło atrybutu. A następnie typ obiektu połączonego systemu, jak i typ obiektu Metaverse.
+Przekazać własny opis reguły obsługi przyszłych reguły jest łatwe, takich jak co to jest celem tej reguły, i dlaczego jest konieczne.
+Wybierz połączony System (las) — źródło atrybutu. Następnie wybierz typ obiektu systemu połączonych i typ obiektu Metaverse.
 
 Określ wartość pierwszeństwa, od 0 – 99 (niższe numer wyższy priorytet). Zachowaj innych pól, takich jak "Tag", "Włączanie synchronizacji haseł" i "Wyłączone" jako domyślny.
 

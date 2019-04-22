@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270958"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681577"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -64,35 +64,36 @@ W usłudze Azure Search są naliczane opłaty w Azure Search na trzy sposoby, a 
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Koszty usługi podstawowej (stałe i zmienne)
 
-Za samą usługę Minimalna opłata za to pierwszy jednostka wyszukiwania (1 repliki x 1 partycji), a ta liczba jest stałe dla okresu istnienia usługi, ponieważ usługa nie może działać w każdej mniejszej niż ta konfiguracja. 
+Za samą usługę Minimalna opłata za to pierwszy jednostka wyszukiwania (1 repliki x 1 partycji), a ta wartość jest ustalona okres istnienia usługi, ponieważ usługi nie można uruchomić na każdej mniejszej niż ta konfiguracja. 
 
-Poniższy zrzut ekranu na cennikiem jednostek jest wskazywane bezpłatna, podstawowa i S1 (S2, S3, P1 i P2 nie są wyświetlane). Jeśli utworzono **podstawowe**, **standardowa**, lub **zoptymalizowane pod kątem magazynu** service, koszt miesięczny czy średnia wartość, która pojawia się dla *cena-1*i *cena 2* odpowiednio. Dla każdej warstwy obniżyć koszty jednostki, ponieważ przekracza w każdej warstwie kolejnych możliwości obliczeniowe, możliwości i magazynu.
+Poza minimum można dodać replik i partycji niezależnie. Na przykład można dodać tylko repliki lub tylko partycje. Przyrostowych wzrostu wydajności za pośrednictwem replik i partycji stanowi składnik kosztów zmiennej. 
+
+Rozliczenie jest oparte na [formuły (repliki x partycje x współczynnik)](#search-units). Szybkość, z którą są naliczane, zależy od warstwy cenowej, którą wybierzesz.
+
+Poniższy zrzut ekranu na cennikiem jednostek jest wskazywane bezpłatna, podstawowa i S1 (S2, S3, P1 i P2 nie są wyświetlane). Jeśli utworzono **podstawowe**, **standardowa**, lub **zoptymalizowane pod kątem magazynu** service, koszt miesięczny czy średnia wartość, która pojawia się dla *cena-1*i *cena 2* odpowiednio. Dla każdej warstwy obniżyć koszty jednostki, ponieważ przekracza w każdej warstwie kolejnych możliwości obliczeniowe, możliwości i magazynu. Stawki dla usługi Azure Search są publikowane w [usługi Azure Search stronę z cennikiem](https://azure.microsoft.com/pricing/details/search/).
 
 ![Na cennikiem jednostek](./media/search-sku-tier/per-unit-pricing.png "na cennikiem jednostek")
 
-Dodatkowe replik i partycji to dodatek do początkowego opłat. Usługa wyszukiwania wymaga replik i partycji, dlatego minimalnej konfiguracji jednego wystąpienia każdej. Poza minimum należy dodać replik i partycji niezależnie. Na przykład można dodać tylko repliki lub tylko partycje. 
+Gdy wyceny rozwiązania wyszukiwania, należy zauważyć, że ceny i wydajności nie są liniowe (podwojenie pojemności, więcej niż wartości podwójnej precyzji kosztów). Na przykład jak działa formuły zobacz ["How to przydzielenie replik i partycji"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
-Dodatkowe replik i partycji jest naliczana na podstawie [formuły](#search-units). Koszty są liniowa, (podwojenie pojemności, więcej niż wartości podwójnej precyzji kosztów). Na przykład jak działa formuły zobacz ["How to przydzielenie replik i partycji"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Opłaty za wyjście danych podczas indeksowania
 
-Korzystanie z [indeksatorów usługi Azure Search](search-indexer-overview.md) może doprowadzić do rozliczeń, wpływ zależności, gdzie znajdują się usługi. Jeśli utworzysz usługę Azure Search w tym samym regionie, w którym znajdują się dane, można wyeliminować opłaty za wyjście danych.
+Korzystanie z [indeksatorów usługi Azure Search](search-indexer-overview.md) może doprowadzić do rozliczeń wpływ w zależności od tego, gdzie znajdują się usługi. Jeśli utworzysz usługę Azure Search w tym samym regionie, w którym znajdują się dane, można wyeliminować opłaty za wyjście danych. Poniższe punkty mają z [przepustowości stronę z cennikiem](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-+ Nie opłat za wszystkie dane przychodzące do dowolnej usługi na platformie Azure.
++ Microsoft nie pobierać wszystkie przychodzące dane do dowolnej usługi na platformie Azure lub wszelkie dane wychodzące z usługi Azure Search.
 
-+ Nie opłat za wszystkie dane wychodzące z usługi Azure Search.
++ W przypadku rozwiązań z wieloma usługami nie istnieją żadne opłaty za dane wykraczania poza granice sieci, w przypadku wszystkich usług w tym samym regionie.
 
-+ Nie opłat za dane lub wychodzący z bazy danych SQL, Cosmos, magazynu obiektów Blob plików (ruch przychodzący do usługi Azure Search) tak długo, jak wszystkie usługi są w tym samym regionie.
-
-+ Opłaty za dane wychodzące lub plików w przypadku magazynu i Azure Search w różnych regionach.
-
-Routing danych między regionami platformy Azure, zobaczysz opłatami za przepustowość, na rachunku, dla tych zasobów. Te opłaty nie są częścią rachunku Azure Search, ale są wymienione w tym miejscu, ponieważ jeśli ściągania danych lub plików przez sieć przy użyciu indeksatorów zobaczysz tej opłaty w ogólną kwotę rachunku.
-
-Jeśli nie używasz indeksatorów, opłaty będą naliczane nie przepustowości. 
+Opłaty za dane wychodzące w przypadku usług w różnych regionach. Takie opłaty nie są częścią rachunku Azure Search per se, ale są wymienione w tym miejscu, ponieważ używasz danych lub indeksatory wzbogacony sztucznej Inteligencji do pobierania danych z różnych regionów, zostanie wyświetlony tych kosztów zostaną uwzględnione w ogólną kwotę rachunku. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-wzbogacone indeksowanie przy użyciu usług Cognitive Services
 
-Aby uzyskać [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md) tylko wyodrębniania obrazu podczas łamania dokumentów jest rozliczana na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. Inne wzbogacenia, takie jak przetwarzanie języka naturalnego opierają się na [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services. Wzbogacenia są rozliczane przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services.
+Dla [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md), należy zaplanować na dołączanie płatnych usług Cognitive Services na S0 warstwa cenowa zasobu do przetwarzania zgodnie z rzeczywistym użyciem. Nie ma skojarzonych z dołączania usług Cognitive Services żadnych "kosztów stałej". Płacisz tylko za przetwarzanie, których potrzebujesz.
+
+Wyodrębnianie obrazu podczas łamania dokumentów jest opłata za usługę Azure Search, rozliczane na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. 
+
+Inne wzbogacenia, takie jak przetwarzanie języka naturalnego opierają się na [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) są rozliczane przy użyciu zasobu usług Cognitive Services, przy użyciu stawki stosowanej tak, jakby były wykonywane zadania bezpośrednio za pomocą usług Cognitive Services. Aby uzyskać więcej informacji, zobacz [dołączenia zasobu usług Cognitive Services, za pomocą zestawu umiejętności](cognitive-search-attach-cognitive-services.md).
 
 <a name="search-units"></a>
 

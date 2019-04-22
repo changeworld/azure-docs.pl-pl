@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901954"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem BlueJeans
 
@@ -38,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby skonfigurować integrację usługi Azure AD z rozwiązaniem BlueJeans, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja rozwiązania BlueJeans z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -105,14 +106,16 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania BlueJeans](common/sp-signonurl.png)
+    ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania BlueJeans](common/sp-identifier.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.BlueJeans.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.BlueJeans.com`
+
+    b. W polu tekstowym **Identyfikator** wpisz adres URL: `http://samlsp.bluejeans.com`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem obsługi klienta firmy BlueJeans](https://support.bluejeans.com/contact). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem obsługi klienta firmy BlueJeans](https://support.bluejeans.com/contact). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
@@ -124,19 +127,19 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-bluejeans-single-sign-on"></a>Konfigurowanie logowania jednokrotnego rozwiązania BlueJeans
 
-1. W innym oknie przeglądarki internetowej zaloguj się w witrynie firmy **BlueJeans** jako administrator.
+1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **BlueJeans** witryny firmy jako administrator.
 
 2. Wybierz pozycję **ADMIN (ADMINISTRATOR) \> GROUP SETTINGS (USTAWIENIA GRUPY) \> SECURITY (ZABEZPIECZENIA)**.
 
-    ![Administrator](./media/bluejeans-tutorial/IC785868.png "Administrator")
+    ![Administrator](./media/bluejeans-tutorial/ic785868.png "Administrator")
 
 3. W sekcji **SECURITY** (ZABEZPIECZENIA) wykonaj następujące czynności:
 
-    ![Logowanie jednokrotne SAML](./media/bluejeans-tutorial/IC785869.png "Logowanie jednokrotne SAML")
+    ![Logowanie jednokrotne SAML](./media/bluejeans-tutorial/ic785869.png "Logowanie jednokrotne SAML")
 
     a. Wybierz pozycję **SAML Single Sign On** (Logowanie jednokrotne SAML).
 
@@ -144,7 +147,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
 4. Przejdź dalej, wykonując następujące czynności:
 
-    ![Ścieżka certyfikatu](./media/bluejeans-tutorial/IC785870.png "Ścieżka certyfikatu")
+    ![Ścieżka certyfikatu](./media/bluejeans-tutorial/ic785870.png "Ścieżka certyfikatu")
 
     a. Kliknij pozycję **Choose File** (Wybierz plik), aby przekazać certyfikat zakodowany w formacie base-64, pobrany wcześniej z witryny Azure Portal.
 
@@ -156,9 +159,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
 5. Przejdź dalej, wykonując następujące czynności:
 
-    ![Zapisywanie zmian](./media/bluejeans-tutorial/IC785874.png "Zapisywanie zmian")
+    ![Zapisywanie zmian](./media/bluejeans-tutorial/ic785874.png "Zapisywanie zmian")
 
-    a. W polu tekstowym **User id** (Identyfikator użytkownika) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. W **identyfikator użytkownika** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     b. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
@@ -182,10 +185,9 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola `brittasimon\@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -219,24 +221,24 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w rozwiązaniu BlueJeans. Rozwiązanie BlueJeans obsługuje automatyczną aprowizację użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznej aprowizacji użytkowników można znaleźć [tutaj](bluejeans-provisioning-tutorial.md).
 
-**Jeśli musisz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
+**Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
 
-1. Zaloguj się w witrynie firmy **BlueJeans** jako administrator.
+1. Zaloguj się do Twojej **BlueJeans** witryny firmy jako administrator.
 
 2. Wybierz pozycję **ADMIN (ADMINISTRATOR) \> MANAGE USERS (ZARZĄDZAJ UŻYTKOWNIKAMI) \> ADD USER (DODAJ UŻYTKOWNIKA)**.
 
-    ![Administrator](./media/bluejeans-tutorial/IC785877.png "Administrator")
+    ![Administrator](./media/bluejeans-tutorial/ic785877.png "Administrator")
 
-    >[!IMPORTANT]
-    >Karta **ADD USER** (DODAJ UŻYTKOWNIKA) jest dostępna tylko wtedy, gdy na **karcie SECUTIRY** (ZABEZPIECZENIA) nie zaznaczono pola wyboru **Enable automatic provisioning** (Włącz automatyczną aprowizację). 
+    > [!IMPORTANT]
+    > Karta **ADD USER** (DODAJ UŻYTKOWNIKA) jest dostępna tylko wtedy, gdy na **karcie SECUTIRY** (ZABEZPIECZENIA) nie zaznaczono pola wyboru **Enable automatic provisioning** (Włącz automatyczną aprowizację).
 
 3. W sekcji **ADD USER** (DODAJ UŻYTKOWNIKA) wykonaj następujące czynności:
 
-    ![Dodaj użytkownika](./media/bluejeans-tutorial/IC785886.png "Dodaj użytkownika")
+    ![Dodaj użytkownika](./media/bluejeans-tutorial/ic785886.png "Dodaj użytkownika")
 
     a. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
 
-    b. W polu tekstowym **Last Name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
+    b. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
     c. W polu tekstowym **Pick a BlueJeans Username** (Wybierz nazwę użytkownika BlueJeans) wprowadź nazwę użytkownika, na przykład **Brittasimon**
 
@@ -244,7 +246,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w rozwiązan
 
     e. W polu tekstowym **Company** (Firma) wprowadź nazwę Twojej firmy.
 
-    f. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
+    f. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak `brittasimon\@contoso.com`.
 
     g. W polu tekstowym **Create a BlueJeans Meeting I.D** (Utwórz identyfikator spotkania BlueJeans) wprowadź swój identyfikator spotkania.
 
@@ -252,7 +254,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w rozwiązan
 
     i. Kliknij pozycję **CONTINUE** (KONTYNUUJ).
 
-    ![Dodawanie użytkownika](./media/bluejeans-tutorial/IC785887.png "Dodawanie użytkownika")
+    ![Dodawanie użytkownika](./media/bluejeans-tutorial/ic785887.png "Dodawanie użytkownika")
 
     J. Kliknij przycisk **ADD USER** (DODAJ UŻYTKOWNIKA).
 
@@ -272,4 +274,3 @@ Po kliknięciu kafelka BlueJeans w panelu dostępu powinno nastąpić automatycz
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

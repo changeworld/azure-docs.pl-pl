@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ea409b1726e82557b564f93fbd35898e9cf2cb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372458"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699119"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rozszerzenia serwera zasad sieciowych (NPS) dla platformy Azure umożliwia organizacjom w zabezpieczaniu uwierzytelniania klienta usługi Usługa użytkowników zdalnego uwierzytelniania (RADIUS) za pomocą opartej na chmurze [usługi Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md), zapewniającą weryfikacji dwuetapowej.
 
@@ -374,7 +374,7 @@ Aby użyć skryptu, należy podać rozszerzenie przy użyciu poświadczeń admin
 
 2. W wierszu polecenia programu PowerShell wprowadź **dysk cd "c:\Program Files\Microsoft\AzureMfa\Config"**, a następnie naciśnij klawisz Enter.
 
-3. W następnym wierszu polecenia wprowadź **.\AzureMfsNpsExtnConfigSetup.ps1**, a następnie naciśnij klawisz Enter. Skrypt sprawdza, czy jest zainstalowany moduł Azure AD PowerShell. Jeśli nie jest zainstalowany, skrypt zainstaluje moduł.
+3. W następnym wierszu polecenia wprowadź **.\AzureMfaNpsExtnConfigSetup.ps1**, a następnie naciśnij klawisz Enter. Skrypt sprawdza, czy jest zainstalowany moduł Azure AD PowerShell. Jeśli nie jest zainstalowany, skrypt zainstaluje moduł.
 
     ![Uruchamianie skryptu konfiguracji AzureMfsNpsExtnConfigSetup.ps1](./media/howto-mfa-nps-extension-vpn/image38.png)
 

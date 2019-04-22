@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
 ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59052660"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784743"
 ---
-# <a name="cross-network-connectivity"></a>Połączenie sieciowe między
+# <a name="cross-network-connectivity"></a>Łączność między sieciami
 
 Firma Fabrikam, Inc. ma duże obecności fizycznej i wdrażania platformy Azure w regionie wschodnie stany USA. Firma Fabrikam ma zaplecza łączność między jej w środowisku lokalnym i wdrożeń platformy Azure za pośrednictwem usługi ExpressRoute. Podobnie Contoso Ltd. ma obecności i wdrażania platformy Azure w regionie zachodnie stany USA. Firma Contoso ma wewnętrznej łączności między jej w środowisku lokalnym i wdrożeń platformy Azure za pośrednictwem usługi ExpressRoute.  
 

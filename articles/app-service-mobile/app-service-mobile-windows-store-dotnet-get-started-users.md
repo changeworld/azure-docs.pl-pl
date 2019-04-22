@@ -1,6 +1,6 @@
 ---
 title: Dodawanie uwierzytelniania do aplikacji platformy uniwersalnej Windows (UWP) | Dokumentacja firmy Microsoft
-description: 'Dowiedz się, jak uwierzytelniać użytkowników aplikacji platformy uniwersalnej Windows (UWP) przy użyciu wielu dostawców tożsamości, w tym za pomocą usługi Azure App Service Mobile Apps: usługi AAD, Google, Facebook, Twitter i Microsoft.'
+description: 'Dowiedz się, jak uwierzytelniać użytkowników aplikacji platformy uniwersalnej Windows (UWP) przy użyciu wielu dostawców tożsamości, w tym za pomocą usługi Azure App Service Mobile Apps: Usługi AAD, Google, Facebook, Twitter i Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306578"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698686"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,15 +35,13 @@ Ten samouczek opiera się na szybki start Mobile Apps. Najpierw musisz zakończy
 
 Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w całym. Można jednak użyć dowolnego wybranego schematu URL. Powinien on być unikatowy dla twojej aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
 
-1. W [witrynie Azure portal] wybierz usługi App Service.
+1. W [witryny Azure portal](https://ms.portal.azure.com), wybierz swoją usługę aplikacji.
 
 2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
 
 3. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
 
-4. Kliknij przycisk **OK**.
-
-5. Kliknij pozycję **Zapisz**.
+4. Kliknij pozycję **Zapisz**.
 
 ## <a name="permissions"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

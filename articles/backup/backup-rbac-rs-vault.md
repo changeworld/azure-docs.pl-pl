@@ -3,17 +3,17 @@ title: Zarządzanie kopiami zapasowymi przy użyciu kontroli dostępu opartej na
 description: Zarządzanie dostępem do operacji zarządzania kopiami zapasowymi w magazynie usługi Recovery Services za pomocą kontroli dostępu opartej na rolach.
 services: backup
 author: trinadhk
-manager: shreeshd
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 04/17/2019
 ms.author: trinadhk
-ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674637"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682529"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
@@ -21,7 +21,7 @@ Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platform
 > [!IMPORTANT]
 > Udostępnione przez usługę Azure Backup ról są ograniczone do akcji, które mogą być wykonywane w witrynie Azure portal lub za pośrednictwem interfejsu API REST lub polecenia cmdlet programu PowerShell lub interfejsu wiersza polecenia magazyn usługi Recovery Services. Akcje wykonywane w kopii zapasowej agenta klienta w interfejsie użytkownika lub systemu Centrum Azure interfejsu użytkownika programu Data Protection Manager lub interfejsu użytkownika usługi Azure Backup Server znajdą się poza kontrolę nad tych ról.
 
-Usługa Azure Backup udostępnia 3 role wbudowane, umożliwiające kontrolowanie operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
+Usługa Azure Backup udostępnia trzy role wbudowane, umożliwiające kontrolowanie operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
 * [Wykonaj kopię zapasową Współautor](../role-based-access-control/built-in-roles.md#backup-contributor) — ta rola ma wszystkie uprawnienia do tworzenia i obsługi kopii zapasowych z wyjątkiem tworzenia magazynu usługi Recovery Services i przyznawania dostępu innym osobom. Wyobraź sobie tej roli jako administratora zarządzania kopiami zapasowymi, która może zajmować się każdej operacji zarządzania kopiami zapasowymi.
 * [Wykonaj kopię zapasową Operator](../role-based-access-control/built-in-roles.md#backup-operator) — ta rola ma uprawnienia do wszystkiego, współautor, z wyjątkiem usuwania kopii zapasowych i zarządzanie zasadami tworzenia kopii zapasowych. Ta rola jest odpowiednikiem współautora, z wyjątkiem nie można wykonać operacji destrukcyjne, takie jak zatrzymywanie tworzenia kopii zapasowych usunąć dane i Usuń rejestrację zasobów lokalnych.
@@ -60,7 +60,24 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 | Usuń zarejestrowane lokalnie systemu Windows Server/klienta/serwera SCDPM lub serwera usługi Azure Backup | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 
 > [!IMPORTANT]
-> Określ Współautor maszyny Wirtualnej w zakresie zasobów maszyny Wirtualnej, kliknij pozycję Kopia zapasowa jako część ustawień maszyny Wirtualnej zostanie otwarty ekran Włącz kopię zapasową, mimo, że maszyna wirtualna ma już kopię zapasową co wywołanie, aby sprawdzić stan kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy albo przejdź do magazynu i otwórz widok elementu kopii zapasowej maszyny wirtualnej lub określ roli współautora maszyny Wirtualnej na poziomie subskrypcji. 
+> Określ Współautor maszyny Wirtualnej w zakresie zasobów maszyny Wirtualnej, kliknij pozycję Kopia zapasowa jako część ustawień maszyny Wirtualnej zostanie otwarty ekran Włącz kopię zapasową, mimo, że maszyna wirtualna ma już kopię zapasową co wywołanie, aby sprawdzić stan kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy albo przejdź do magazynu i otwórz widok elementu kopii zapasowej maszyny wirtualnej lub określ roli współautora maszyny Wirtualnej na poziomie subskrypcji.
+
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Rola minimalne wymagania dotyczące tworzenia kopii zapasowej udziału plików platformy Azure
+Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpowiednich ról wymaganych do wykonania operacji udziału plików platformy Azure.
+
+| Operacja zarządzania | Rolę wymaganą | Zasoby |
+| --- | --- | --- |
+| Włącz wykonywanie kopii zapasowej udziałów plików platformy Azure | Współautor kopii zapasowych | Magazyn usługi Recovery Services |
+| | Konto magazynu | Współautor zasobów konta usługi Storage |
+| Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| Przywróć udział plików | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| | Współautor konta magazynu | Zasobów konta magazynu, w którym są obecne przywracania źródłowy i docelowy udziałów plików |
+| Przywracanie pojedynczych plików | Operator kopii zapasowych | Magazyn usługi Recovery Services |
+| | Współautor konta magazynu |   Zasobów konta magazynu, w którym są obecne przywracania źródłowy i docelowy udziałów plików |
+| Zatrzymaj ochronę | Współautor kopii zapasowych | Magazyn usługi Recovery Services |      
+| Wyrejestruj konto magazynu z magazynu |   Współautor kopii zapasowych | Magazyn usługi Recovery Services |
+| | Współautor konta magazynu | Zasób konta magazynu|
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): Wprowadzenie do funkcji RBAC w witrynie Azure portal.

@@ -7,21 +7,23 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c484779e7ffe74ae01e33472b4cf8761d81b66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544156"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682684"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
+# <a name="rewrite-http-headers-with-application-gateway"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne zapisywanie tych nagłówków HTTP ułatwia wykonywanie kilku ważnych scenariuszy, takich jak dodawanie pól nagłówka związanych z zabezpieczeniami, takich jak HSTS / X-XSS-ochrony, usunięcie nagłówka odpowiedzi pola, która może spowodować ujawnienie poufnych informacji, informacje o porcie oddzielającego z X-Forwarded-dla nagłówków itp. Usługa Application gateway obsługuje możliwość dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas żądania oraz pakiety odpowiedzi poruszanie się między klienta i wewnętrznej bazy danych w pulach. On również zapewnia możliwość dodawania warunków w celu zapewnienia, że określone nagłówki są przepisany tylko wtedy, gdy zostaną spełnione określone warunki.
+Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych informacji w ramach żądania lub odpowiedzi. Ponowne zapisywanie tych nagłówków HTTP ułatwia wykonywanie kilku ważnych scenariuszy, takich jak dodawanie pól nagłówka związanych z zabezpieczeniami, takich jak HSTS / X-XSS-ochrony, usunięcie nagłówka odpowiedzi pola, która może spowodować ujawnienie poufnych informacji i usuwania informacji o porcie z X-Forwarded-dla nagłówków itp. Usługa Application gateway obsługuje możliwość dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas żądania oraz pakiety odpowiedzi poruszanie się między klienta i wewnętrznej bazy danych w pulach. Zapewnia możliwość dodawania warunków w celu zapewnienia, że określone nagłówki są przepisany tylko wtedy, gdy zostaną spełnione określone warunki. Ta funkcja obsługuje również kilka [zmiennych serwera](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) co pomóc przechowywane dodatkowe informacje na temat żądań i odpowiedzi, umożliwiając stosowanie można utworzyć reguły ponownego zapisywania zaawansowane.
 > [!NOTE]
 >
 > Obsługa ponownego napisania nagłówka HTTP jest dostępna tylko dla [nowej jednostki SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+
+![Ponowne napisanie nagłówki](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="headers-supported-for-rewrite"></a>Nagłówki obsługiwane w przypadku ponownego zapisywania
 
@@ -35,7 +37,7 @@ Za pomocą ponownego zapisywania, którego warunki oceny treści żądania HTTP 
 - Nagłówki HTTP w odpowiedzi
 - Zmienne serwera bramy aplikacji
 
-Warunek może służyć do oceny, czy dana zmienna jest obecny, czy określona zmienna dokładnie odpowiada określonej wartości, czy określona zmienna dokładnie odpowiada określonym wzorcem. [Biblioteka języka Perl zgodne regularne wyrażenia (PCRE)](https://www.pcre.org/) jest używany do implementowania wzorca wyrażenia regularnego dopasowania w warunkach. Aby dowiedzieć się więcej na temat składni wyrażeń regularnych, zobacz [wyrażeń regularnych języka Perl man strony](http://perldoc.perl.org/perlre.html).
+Warunek może służyć do oceny, czy dana zmienna jest obecny, czy określona zmienna dokładnie odpowiada określonej wartości, czy określona zmienna dokładnie odpowiada określonym wzorcem. [Biblioteka języka Perl zgodne regularne wyrażenia (PCRE)](https://www.pcre.org/) jest używany do implementowania wzorca wyrażenia regularnego dopasowania w warunkach. Aby dowiedzieć się więcej na temat składni wyrażeń regularnych, zobacz [wyrażeń regularnych języka Perl man strony](https://perldoc.perl.org/perlre.html).
 
 ## <a name="rewrite-actions"></a>Akcje ponownego napisania
 
@@ -124,6 +126,18 @@ Ten problem można rozwiązać przez ustawienie dla nazwy hosta w nagłówku loc
 Kilka luk w zabezpieczeniach można naprawić poprzez implementację niezbędne nagłówki odpowiedzi aplikacji. Niektóre z tych nagłówków zabezpieczeń są X XSS ochrony, zabezpieczenia w przypadku transportu Strict, zawartość-Security-Policy itp. Usługa application gateway służy do ustawiania tych nagłówków na wszystkie odpowiedzi.
 
 ![Nagłówka zabezpieczeń](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>Usuwanie niepożądanych nagłówków
+
+Możesz chcieć usuwania tych nagłówków odpowiedzi HTTP, które ujawniają poufne informacje, takie jak nazwa serwera wewnętrznej bazy danych, systemu operacyjnego, szczegóły biblioteki itp. Aby usunąć te elementy, można użyć bramy aplikacji.
+
+![Usunięcie nagłówka](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-presence-of-a-header"></a>Sprawdź obecność nagłówka
+
+Możesz ocenić nagłówka żądania lub odpowiedzi HTTP na obecność zmiennej nagłówka lub serwera. Jest to przydatne, gdy zamierzasz wykonać nadpisania nagłówka, tylko wtedy, gdy występuje niektórych nagłówka.
+
+![Sprawdzanie obecności nagłówka](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Ograniczenia
 

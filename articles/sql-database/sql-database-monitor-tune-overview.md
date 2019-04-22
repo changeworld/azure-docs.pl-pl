@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ac87ce2198296b82ef5655d7d75443a0bd49df3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 1afe1b437d82759cdfd085f018c31db33264dbf5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875156"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683177"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -103,7 +103,6 @@ Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich
 Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemów Zobacz:
 
 - To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/) wpis w blogu
-- To [parametru wykrywanie problemów i ich obejść](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/) wpis w blogu
 - To [syna i wykrywanie parametrów myszy](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
 - To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438822"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683737"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zasady przechowywania raportów w usłudze Azure Active Directory
 
@@ -68,9 +68,9 @@ Sygnały zabezpieczeń procesu zbierania rozpoczyna się po użytkownik zgody na
 
 | Raport                 | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Podstawowa | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| Inspekcja katalogu        | 7 dni        |  7 dni        | 30 dni             | 30 dni             |
-| Aktywność związana z logowaniem       | ND           |  ND           | 30 dni             | 30 dni             |
-| Użycie usługi Azure MFA        | 30 dni       |  30 dni       | 30 dni             | 30 dni             |
+| Dzienniki inspekcji             | 7 dni        |  7 dni        | 30 dni             | 30 dni             |
+| Logowania               | ND           |  ND           | 30 dni             | 30 dni             |
+| Użycie platformy Azure MFA        | 30 dni       |  30 dni       | 30 dni             | 30 dni             |
 
 Można zachować dane działanie inspekcji i logowania przez okres dłuższy niż domyślny okres przechowywania opisanych powyżej, kierując do konta usługi Azure storage przy użyciu usługi Azure Monitor. Aby uzyskać więcej informacji, zobacz [archiwum usługi Azure AD loguje się do konta usługi Azure storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

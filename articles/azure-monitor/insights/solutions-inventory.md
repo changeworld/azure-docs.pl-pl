@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: aac58cc0887c566c7377edf08f5a86e2d12cdf28
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6da2b63b7a9c8dc490bd30bb02ae6e7d932b2f7b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993245"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683923"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych do usługi Azure Monitor.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 
@@ -58,8 +58,8 @@ Wyjaśnienie kolumn są następujące:
 | [Usługi Azure SQL Analytics (wersja zapoznawcza)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 min |
 | [Tworzenie kopii zapasowych](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | na powiadomienie |
 | [Pojemność i wydajność (wersja zapoznawcza)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |Po dostarczeniu |
-| [Śledzenie zmian](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |
-| [Śledzenie zmian](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |co godzinę |
+| [Śledzenie zmian](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Różni się](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
+| [Śledzenie zmian](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |[Różni się](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
 | [Containers](../../azure-monitor/insights/containers.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analiza usługi Key Vault](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |na powiadomienie |
 | [Ocena złośliwego oprogramowania](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |

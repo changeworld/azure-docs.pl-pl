@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: de5522e68d1329ce2b80a4d3c7045d38c13169e5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d99000e1682b662f4bceb28096395243c894282f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191651"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681611"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane wersje usługi Service Fabric
 
@@ -30,7 +30,9 @@ Można znaleźć w następujących dokumentach na szczegółowe informacje na te
 - [Uaktualnij wersję usługi Service Fabric w klastrze platformy Azure](service-fabric-cluster-upgrade.md)
 - [Uaktualnij wersję usługi Service Fabric w klastrze serwerów autonomicznych systemu windows](service-fabric-cluster-upgrade-windows-server.md)
 
-Poniżej przedstawiono listę wersji usługi Service Fabric, które są obsługiwane i ich daty zakończenia wsparcia.
+## <a name="supported-versions"></a>Obsługiwane wersje
+
+W poniższej tabeli wymieniono wersje usługi Service Fabric, które są obsługiwane i ich daty zakończenia wsparcia.
 
 | **Środowisko uruchomieniowe usługi Service Fabric w klastrze** | **Można uaktualnić bezpośrednio z wersji klastra** |**Zgodne SDK / wersji pakietu NuGet** | **Obsługa Data zakończenia** |
 | --- | --- |--- | --- |
@@ -45,3 +47,18 @@ Poniżej przedstawiono listę wersji usługi Service Fabric, które są obsługi
 | 6.2.* | 6.0.232.* |Mniejsze niż wersja 3.1 |Październik 26,2018   |
 | 6.3.* | 6.1.480.* |Mniejsze niż w wersji 3.2 |Marzec 31,2019  |
 | 6.4.* | 6.2.301.* |Mniejsze niż w wersji 3.3 |Bieżąca wersja i dlatego bez daty zakończenia |
+
+## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
+
+ W poniższej tabeli wymieniono obsługiwane systemy operacyjne obsługiwane wersje usługi Service Fabric.
+
+| **System operacyjny** | **Najstarszą wersję programu obsługiwanej usługi Service Fabric** |
+| --- | --- |
+| Windows Server 2012 R2 | Wszystkie wersje |
+| Windows Server 2016 | Wszystkie wersje |
+| Windows Server 1709 | 6.0 |
+| System Windows Server w wersji 1803 | 6.4 |
+| Windows Server 1809 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
+| Linux Ubuntu 16.04 | 6.0 |
+

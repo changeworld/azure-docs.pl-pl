@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891039"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737223"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
@@ -81,7 +81,7 @@ Tak. Zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/vi
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>Sposób obliczania cen koncentrator?
  
-Zapłacisz dla usługi w Centrum. Na przykład 10 gałęzi lub urządzeń lokalnych, które wymaga, aby nawiązać połączenie WAN wirtualnych Azure oznaczałoby nawiązywania połączenia z punktów końcowych sieci VPN w piaście. Umożliwia powiedzieć, to jest sieć VPN jednostki skalowania 1 = 500 MB/s kosztuje $0.361/ godz. Każde połączenie jest rozliczana według 0,08 USD/godz. Połączenia o szybkości 10, Łączna opłata za usługę/godz. będzie 0.361 $ + $. 8 / godz. Dane na wystawienie ruchu platformy azure opłaty. 
+Zapłacisz dla usługi w Centrum. Na przykład 10 gałęzi lub urządzeń lokalnych, które wymaga, aby nawiązać połączenie WAN wirtualnych Azure oznaczałoby nawiązywania połączenia z punktów końcowych sieci VPN w piaście. Umożliwia powiedzieć, to jest sieć VPN jednostki skalowania 1 = 500 MB/s kosztuje $0.361/ godz. Każde połączenie jest rozliczana według 0,08 USD/godz. Połączenia o szybkości 10, Łączna opłata za usługę/godz. będzie 0.361 $ + $. 8 / godz. Dane dla ruchu opuszczającego Azure opłaty. 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>W jaki sposób partnerzy, którzy nie są wymienieni na liście partnerów uruchomienia, mogą dołączyć do programu?
 

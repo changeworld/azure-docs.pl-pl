@@ -17,20 +17,20 @@ ms.date: 03/19/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520347"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698966"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Instrukcje: Skonfiguruj zasady rejestracji uwierzytelniania wieloskładnikowego
 
-Usługa Azure AD Identity Protection pomaga w zarządzaniu wdrożenie rejestracji uwierzytelniania wieloskładnikowego (MFA) przez skonfigurowanie zasad. W tym artykule opisano, jakie zasady mogą służyć do wiadomość sposobu ich konfigurowania.
+Usługa Azure AD Identity Protection pomaga w zarządzaniu wdrożenie rejestracji uwierzytelniania wieloskładnikowego (MFA), konfigurując zasady, które wymagają rejestracji usługi MFA. W tym artykule opisano, jakie zasady mogą służyć do wiadomość sposobu ich konfigurowania.
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Co to są zasady rejestracji uwierzytelniania wieloskładnikowego?
 
-Usługa Azure Multi-Factor authentication jest metodą weryfikacji tożsamości, która wymaga użycia więcej niż tylko nazwy użytkownika i hasła. Zapewnia drugą warstwę zabezpieczeń do logowania użytkowników i transakcji.  
+Usługa Azure Multi-Factor authentication jest metodą weryfikacji tożsamości, która wymaga użycia więcej niż tylko nazwy użytkownika i hasła. Zapewnia drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. Aby użytkownicy mogli odpowiadanie na monity funkcji uwierzytelniania Wieloskładnikowego muszą najpierw zarejestrować usługi MFA. 
 
 Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor authentication do logowania użytkownika, ponieważ jego:
 
@@ -39,7 +39,7 @@ Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor authentication do l
 - Odgrywa kluczową rolę w przygotowywanie organizacji do ochrony i odzyskiwania z naruszeń konta
 
 
-Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe systemu Azure?](../authentication/multi-factor-authentication.md)
+Aby uzyskać szczegółowe informacje na temat uwierzytelniania Wieloskładnikowego, zobacz [co to jest uwierzytelnianie wieloskładnikowe systemu Azure?](../authentication/multi-factor-authentication.md)
 
 
 ## <a name="how-do-i-access-the-mfa-registration-policy"></a>Jak uzyskać dostęp do zasad rejestracji usługi MFA?
@@ -53,13 +53,13 @@ Zasady rejestracji usługi MFA znajduje się w **Konfiguruj** sekcji na [strony 
 
 ## <a name="policy-settings"></a>Ustawienia zasad
 
-Po skonfigurowaniu zasad ryzyka logowania, należy ustawić:
+Po skonfigurowaniu zasad rejestracji MFA, musisz ustawić:
 
 - Użytkownicy i grupy, które zostaną zastosowane zasady:
 
     ![Użytkownicy i grupy](./media/howto-mfa-policy/11.png)
 
-- Typ dostępu, które mają być egzekwowane:  
+- Formant, który chcesz wymusić wymaganie rejestracji usługi MFA:  
 
     ![Dostęp](./media/howto-mfa-policy/12.png)
 

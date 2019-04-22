@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803268"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681730"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie usługą Azure Blob storage w cyklu życia
 
@@ -45,7 +45,7 @@ Funkcja zarządzania cyklem życia jest dostępna we wszystkich publicznych regi
 Dodawanie, edytowanie lub usuwanie zasady za pomocą witryny Azure portal [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases), wiersza polecenia platformy Azure [interfejsów API REST](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), lub narzędzia klienta. W tym artykule przedstawiono sposób zarządzania zasady za pomocą portalu i metod programu PowerShell.  
 
 > [!NOTE]
-> Włączenie reguły zapory dla konta magazynu, mogą być zablokowane żądania zarządzania cyklem życia. Zapewniając wyjątków, mogą odblokować te żądania. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w [skonfigurować zapory i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Włączenie reguły zapory dla konta magazynu, mogą być zablokowane żądania zarządzania cyklem życia. Zapewniając wyjątków, mogą odblokować te żądania. Pomiń wymagane są: `Logging,  Metrics,  AzureServices`. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w [skonfigurować zapory i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -118,7 +118,7 @@ Każda reguła w ramach zasad ma kilka parametrów:
 | name           | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | True |
 | enabled | Wartość logiczna | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | False | 
 | type           | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | True |
-| Definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
+| definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
 
 ## <a name="rules"></a>Reguły
 

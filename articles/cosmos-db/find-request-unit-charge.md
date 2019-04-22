@@ -4,20 +4,20 @@ description: Dowiedz się, jak znaleźć opłat za jednostkę żądania dla każ
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: e3175ee136057c695ceef3cd1976b447a529c803
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053167"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683838"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Znajdź (RU) Opłata za jednostki żądań w usłudze Azure Cosmos DB
 
 W tym artykule przedstawiono różne sposoby, aby znaleźć [jednostki żądań](request-units.md) zużycie wszelkie operacje wykonane na kontenerze usługi Azure Cosmos. Jest to obecnie możliwe do mierzenia użycia tego za pomocą witryny Azure portal lub sprawdzając odpowiedzi wysyłane z usługi Azure Cosmos DB za pomocą jednego z zestawów SDK.
 
-## <a name="core-api"></a>Podstawowego interfejsu API
+## <a name="sql-core-api"></a>(Rdzenie) interfejsu API SQL
 
 ### <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
@@ -25,7 +25,7 @@ Witryna Azure portal umożliwia obecnie znaleźć opłata za żądanie wyrażana
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-account) i przekazywać je z danymi lub wybierz istniejące konto, które zawiera już dane.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account) i przekazywać je z danymi lub wybierz istniejące konto usługi Azure Cosmos, która już zawiera dane.
 
 1. Otwórz **Eksplorator danych** okienka i wybierz kontener, w którym chcesz pracować.
 
@@ -147,7 +147,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-Żądania, opłata za jednostkę jest uwidaczniany przez niestandardowy [bazy danych polecenie](https://docs.mongodb.com/manual/reference/command/) o nazwie `getLastRequestStatistics`. To polecenie zwraca dokument zawierający nazwę Ostatnia operacja wykonana, jego opłata za żądanie wyrażana i jego czas trwania.
+Opłata za jednostkę żądania jest uwidaczniany przez niestandardowy [bazy danych polecenie](https://docs.mongodb.com/manual/reference/command/) o nazwie `getLastRequestStatistics.` to polecenie zwraca dokument zawierający nazwę Ostatnia operacja wykonana, jego opłata za żądanie wyrażana i jego czas trwania.
 
 ### <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
@@ -155,7 +155,7 @@ Witryna Azure portal umożliwia obecnie znaleźć opłata za żądanie wyrażana
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos DB](create-mongodb-dotnet.md#create-a-database-account) i przekazywać je z danymi lub wybierz istniejące konto, które zawiera już dane.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) i przekazywać je z danymi lub wybierz istniejące konto, które zawiera już dane.
 
 1. Otwórz **Eksplorator danych** okienka, a następnie wybierz kolekcję, którą chcesz pracować.
 
@@ -195,7 +195,7 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>Użyj sterownika bazy danych MongoDB Node.js
 
-Korzystając z [oficjalne sterownik bazy danych MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/) (zobacz [ten przewodnik Szybki Start](create-mongodb-nodejs.md) dotyczące jego użycia), polecenia mogą być wykonywane przez wywołanie metody `command` metody `Db` obiektu.
+Korzystając z [oficjalne sterownik bazy danych MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/) (zobacz [ten przewodnik Szybki Start](create-mongodb-nodejs.md) dotyczące jego użycia), polecenia mogą być wykonywane przez wywołanie metody `command` metody `db` obiektu.
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -230,7 +230,7 @@ Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("Re
 
 ### <a name="use-drivers-and-sdk"></a>Użyj sterowników i zestawu SDK
 
-Zwrócone przez interfejs API języka Gremlin nagłówki są mapowane na atrybuty niestandardowe stanu, które obecnie są udostępniane przez Gremlin .NET i zestawu SDK języka Java. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza.
+Zwrócone przez interfejs API języka Gremlin nagłówki są mapowane na stan niestandardowe atrybuty, które obecnie są udostępniane przez Gremlin .NET i zestawu SDK języka Java. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza.
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
@@ -267,5 +267,9 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 Zobacz następujące artykuły, aby dowiedzieć się więcej na temat optymalizowania zużycia Twojego żądania:
 
+* [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)
 * [Optymalizuj koszt aprowizowanej przepływności w usłudze Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optymalizuj koszt zapytania w usłudze Azure Cosmos DB](optimize-cost-queries.md)
+* [Skaluj globalnie aprowizowana przepływność](scaling-throughput.md)
+* [Aprowizowanie przepływności na kontenerach i baz danych](set-throughput.md)
+* [How to provision throughput for a container (Jak aprowizować przepływność dla kontenera)](how-to-provision-container-throughput.md)

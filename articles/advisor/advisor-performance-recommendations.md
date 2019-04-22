@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0b2d242519e7e8981a905d6adb1f3c0f091afe38
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491590"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698949"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor
 
@@ -74,6 +74,25 @@ Przeprowadź migrację konta magazynu modelu wdrażania do usługi Azure Resourc
 
 > [!NOTE]
 > Alertów klasycznych w usłudze Azure Monitor są planowane do wycofania w czerwcu 2019 r. Firma Microsoft zaleca się uaktualnienie konta klasycznego magazynu, zachować funkcje alertów z nową platformę przy użyciu usługi Resource Manager. Aby uzyskać więcej informacji, zobacz [klasycznego wycofanie alerty](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Projektowanie konta magazynu, aby zapobiec osiągnięciu limitu maksymalnej subskrypcji
+
+Region platformy Azure może obsługiwać maksymalnie 250 kont magazynu na subskrypcję. Po osiągnięciu limitu nie można utworzyć kolejnych kont magazynu w tej kombinacji regionu i subskrypcji. Klasyfikator sprawdzi subskrypcji i powierzchni zalecenia dotyczące projektowania dla mniejszej liczby kont magazynu w dowolnej znajdują się blisko osiągnięcia maksymalnego limitu.
+
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optymalizuj wydajność serwerów usługi Azure MySQL, Azure PostgreSQL i Azure MariaDB 
+
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>Rozwiązywanie wykorzystanie procesora CPU, serwerów MySQL na platformie Azure, Azure PostgreSQL i Azure MariaDB z wąskich gardeł procesora CPU
+Wysokie użycie procesora przez dłuższy czas może spowodować wolnych zapytań wydajności dla obciążenia. Zwiększenie rozmiaru Procesora pomóc w optymalizacji środowiska uruchomieniowego zapytania do bazy danych i zwiększyć ogólną wydajność. Usługa Azure Advisor identyfikuje serwery wysokie wykorzystanie procesora CPU, który prawdopodobnie działają obciążenia procesora CPU ograniczone i zalecamy skalowanie zasobów obliczeniowych.
+
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Zmniejszyć ograniczenia pamięci na serwerach Azure MySQL, Azure PostgreSQL i Azure MariaDB lub przejście do pamięci zoptymalizowane pod kątem jednostki SKU
+Współczynnik trafień pamięci podręcznej niski może skutkować mniejszą wydajność zapytań i zwiększonej operacje We/Wy. Może to wynikać z planu zapytania lub uruchamiania obciążenia intensywnie korzystających z pamięci. Naprawianie planu zapytania lub [zwiększenie ilości pamięci](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) usługi Azure Database dla serwera bazy danych PostgreSQL, serwer bazy danych Azure MySQL lub Azure MariaDB server będzie optymalizowania wykonywania obciążenie bazy danych. Usługa Azure Advisor identyfikuje serwery, których to dotyczy, z powodu tych zmian puli buforów o wysokiej i zaleca zastosowanie ustalania planu zapytania, przejście do wyższej wersji jednostki SKU z większej ilości pamięci lub zwiększenie rozmiaru magazynu, aby uzyskać więcej operacji We/Wy.
+
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Umożliwia skalowanie w poziomie operacje odczytu dla obciążeń intensywnie korzystających z odczytu Azure MySQL i Azure PostgreSQL odczytu repliki
+Usługa Azure Advisor wykorzystuje oparte na obciążeniu Algorytm heurystyczny, takie jak stosunek odczytów w stosunku do zapisów na serwerze w ciągu ostatnich siedmiu dni do identyfikowania intensywnie odczytujących obciążeń. Twoja usługa Azure database for postgresql w warstwie zasobów lub usługa Azure database for MySQL zasobu o stosunku bardzo duże odczyt/zapis może spowodować rywalizacje procesora CPU lub pamięci, co prowadzi do wydłużenia wydajność zapytań. Dodawanie [repliki](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) zapewni pomoc przy określaniu skalowanie w poziomie odczytów w stosunku do serwera repliki, zapobiegając ograniczenia procesora CPU lub pamięci na serwerze podstawowym. Klasyfikator zidentyfikuje serwerów za pomocą takich wysokiej intensywnie odczytujących obciążeń i zaleca się dodanie [odczytu replik](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) odciążania część obciążeniami odczytu.
+
+
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalowanie serwera usługi Azure MySQL, Azure PostgreSQL lub MariaDB platformy Azure do wyższej jednostki SKU, aby zapobiec ograniczeń połączeń
+Każdego nowego połączenia z serwerem bazy danych zajmuje trochę pamięci. Spadku wydajności serwera bazy danych, jeśli połączenia z serwerem kończą się niepowodzeniem z powodu [górny limit](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits) w pamięci. Usługa Azure Advisor zidentyfikuje serwerów z systemem za pomocą wielu błędów połączenia i zaleca się uaktualnienie serwera limitów połączeń zapewnienie większej ilości pamięci do serwera przez skalowanie w górę obliczeń lub przy użyciu pamięci zoptymalizowane pod kątem SKU, która ma większą moc obliczeniową na każdy rdzeń.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 

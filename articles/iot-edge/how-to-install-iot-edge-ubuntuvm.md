@@ -1,7 +1,7 @@
 ---
 title: Uruchamianie usługi Azure IoT Edge na maszynach wirtualnych Ubuntu | Dokumentacja firmy Microsoft
 description: Usługa Azure IoT Edge instrukcje dotyczące konfigurowania systemu Ubuntu 16.04 Azure Marketplace Virtual Machines
-author: gregman
+author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
 ms.service: iot-edge
@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: gregman
-ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757924"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698592"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Uruchamianie usługi Azure IoT Edge na maszynach wirtualnych z systemem Ubuntu
 
@@ -41,7 +41,7 @@ Przy pierwszym uruchomieniu usługi Azure IoT Edge na maszynie Wirtualnej z syst
     1.  Poczekaj chwilę, a ekran powinien następnie zapewnić komunikat informujący o pomyślnym parametry połączenia została ustawiona pomyślnie.
 
 
-## <a name="deploy-from-the-azure-portal"></a>Wdrażanie w witrynie Azure Portal
+## <a name="deploy-from-the-azure-portal"></a>Wdrażanie w witrynie Azure portal
 W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Server 16.04 LTS i środowisko uruchomieniowe usługi Azure IoT Edge** umożliwiającą przepływ pracy tworzenia maszyny Wirtualnej. Z tego miejsca, wykonaj kroki 3 i 4 w powyższych instrukcji "Wdrożyć z portalu Azure Marketplace".
 
 ## <a name="deploy-from-azure-cli"></a>Wdrażanie z wiersza polecenia platformy Azure
@@ -95,6 +95,6 @@ Jeśli chcesz SSH do tej maszyny Wirtualnej po zakończeniu instalacji, należy 
 
 Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 
-Jeśli występują problemy ze środowiska uruchomieniowego usługi Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z](troubleshoot.md) strony.
+Jeśli problemy ze środowiskiem uruchomieniowym usługi IoT Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z](troubleshoot.md) strony.
 
 Aby zaktualizować istniejącą instalację do najnowszej wersji usługi IoT Edge, zobacz [aktualizacji demona zabezpieczeń usługi IoT Edge i środowisko uruchomieniowe](how-to-update-iot-edge.md).

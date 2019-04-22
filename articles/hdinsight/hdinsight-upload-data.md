@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a56f2546eec12d04dcc64665e60a9874b8e991b6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201929"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684144"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight
 
-Usługa Azure HDInsight udostępnia w pełni funkcjonalne Rozproszony system plików Hadoop (HDFS) za pośrednictwem usługi Azure Storage i usługi Azure Data Lake Storage (Gen1 i Gen2). Usługa Azure Storage i Data Lake Storage Gen1 i Gen2 mają jako rozszerzenia systemu plików HDFS zapewnia bezproblemową obsługę klientów. Umożliwiają one pełny zestaw składników w ekosystemie usługi Hadoop do operować bezpośrednio na danych, którymi zarządza. Usługi Azure Storage, Data Lake Storage Gen1 i Gen2 są systemów różnych plików, które są zoptymalizowane pod kątem magazynowania danych oraz obliczenia na tych danych. Aby uzyskać informacje o zaletach przy użyciu usługi Azure Storage, zobacz [używanie usługi Azure Storage za pomocą HDInsight][hdinsight-storage], [Użyj Data Lake Storage Gen1 z HDInsight](hdinsight-hadoop-use-data-lake-store.md), i [ Za pomocą usług Data Lake Storage Gen2 HDInsight](../storage/blobs/data-lake-storage-use-hdi-cluster.md).
+Usługa Azure HDInsight udostępnia w pełni funkcjonalne Rozproszony system plików Hadoop (HDFS) za pośrednictwem usługi Azure Storage i usługi Azure Data Lake Storage (Gen1 i Gen2). Usługa Azure Storage i Data Lake Storage Gen1 i Gen2 mają jako rozszerzenia systemu plików HDFS zapewnia bezproblemową obsługę klientów. Umożliwiają one pełny zestaw składników w ekosystemie usługi Hadoop do operować bezpośrednio na danych, którymi zarządza. Usługi Azure Storage, Data Lake Storage Gen1 i Gen2 są systemów różnych plików, które są zoptymalizowane pod kątem magazynowania danych oraz obliczenia na tych danych. Aby uzyskać informacje o zaletach przy użyciu usługi Azure Storage, zobacz [używanie usługi Azure Storage za pomocą HDInsight][hdinsight-storage], [Użyj Data Lake Storage Gen1 z HDInsight](hdinsight-hadoop-use-data-lake-store.md), i [ Za pomocą usług Data Lake Storage Gen2 HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ Przed rozpoczęciem należy uwzględnić następujące wymagania:
 
     - [Usługa Azure Storage za pomocą HDInsight][hdinsight-storage]
     - [Za pomocą usług Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md)
-    - [Za pomocą usług Data Lake Storage Gen2 HDInsight](../storage/blobs/data-lake-storage-use-hdi-cluster.md)  
+    - [Za pomocą usług Data Lake Storage Gen2 HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Przekazywanie danych do usługi Azure Storage
 

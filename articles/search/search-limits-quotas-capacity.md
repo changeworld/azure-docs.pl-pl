@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273400"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699170"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
@@ -55,7 +55,7 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 | Maksymalna [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indeksu |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maksymalna funkcje każdego profilu |8 |8 |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> podstawowe usługi utworzone po późno 2017 nie zwiększone limity indeksach 15, źródła danych i indeksatorów. Usługi utworzonej wcześniej mieć 5. Warstwa Basic jest tylko jednostki SKU z niższy limit 100 pól w indeksie.
+<sup>1</sup> podstawowe usługi utworzone przed grudnia 2017 mają niższe limity (5, a nie 15) indeksów. Warstwa Basic jest tylko jednostki SKU z niższy limit 100 pól w indeksie.
 
 <a name="document-limits"></a>
 
@@ -81,7 +81,7 @@ W przypadku usług, które podlegają limity dokumentów mają zastosowanie nast
 
 |  Bezpłatna | Podstawowa | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
+|  10 000 |1&nbsp;mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
 
 Jeśli usługa ma ograniczenia, które blokują możesz, Utwórz nową usługę i ponownie opublikować całą zawartość do tej usługi. Nie istnieje żaden mechanizm służący bezproblemowo reprovisioning usługi na nowym sprzęcie w tle.
 
@@ -99,9 +99,8 @@ Aby zachować rozmiaru dokumentu,, pamiętaj, aby wykluczyć nie umożliwia zada
 
 ## <a name="indexer-limits"></a>Limity indeksatora
 
-Podstawowe usługi utworzonych po późno 2017 nie zwiększone limity indeksach 15, źródła danych, wykorzystując bieżące i indeksatorów.
+Maksymalne czasy uruchomionej przede wszystkim zapewniają informacji o saldach i stabilność w usłudze jako całości, ale większych zestawów danych może być konieczne indeksowania więcej czasu niż zezwala na maksymalną. Jeśli zadania nie można wykonać w ramach maksymalny dozwolony czas, spróbuj uruchomić go zgodnie z harmonogramem. Harmonogram przechowuje informacje o stanie indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwany z jakiegokolwiek powodu, indeksator może przejmą tam, gdzie ją ostatnia przerwaliśmy na następne zaplanowane uruchomienie.
 
-Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiektów blob platformy Azure lub przetwarzania języka naturalnego w cognitive search mają krótsze maksymalne czasy uruchomione, więc inne zadania indeksowania są spełnione. Jeśli zadania nie można wykonać w ramach maksymalny dozwolony czas, spróbuj uruchomić go zgodnie z harmonogramem. Harmonogram przechowuje informacje o stanie indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwany z jakiegokolwiek powodu, indeksator może przejmą tam, gdzie ją ostatnia przerwaliśmy na następne zaplanowane uruchomienie.
 
 | Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
@@ -109,14 +108,15 @@ Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiek
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
 | Maksymalna dokładniejsze <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
 | Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |ND |Bez ograniczeń |Bez ograniczeń |
+| Minimalna harmonogramu | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
 | Maksymalny czas działania <sup>5</sup> | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
 | Maksymalny czas dokładniejsze wyszukiwanie kognitywne lub obiektu blob indeksowanie za pomocą analizy obrazów działania <sup>5</sup> | 3 – 10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
 | Indeksatora obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
-| Indeksatora obiektów blob: Maksymalna liczba znaków w treści wyodrębnić z obiektu blob |32,000 |64,000 |4 mln |4 mln |4 mln |ND |4 mln |4 mln |
+| Indeksatora obiektów blob: Maksymalna liczba znaków w treści wyodrębnić z obiektu blob |32,000 |64,000 |4&nbsp;mln |4&nbsp;mln |4&nbsp;mln |ND |4&nbsp;mln |4&nbsp;mln |
 
 <sup>1</sup> do usług bezpłatnych ma indeksatora maksymalny czas wykonywania więcej niż trzy minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych. Dla tego wywołania do usług Cognitive Services indeksowania sztucznej Inteligencji bezpłatnych usług są ograniczone do 20 bezpłatnych transakcji dziennie, gdy transakcja jest zdefiniowany jako dokumentu, które pomyślnie przechodzą przez wzbogacony potok.
 
-<sup>2</sup> podstawowe usługi utworzone po późno 2017 nie zwiększone limity indeksach 15, źródła danych i indeksatorów. Usługi utworzonej wcześniej mieć 5.
+<sup>2</sup> podstawowe usługi utworzone przed grudnia 2017 mają niższe limity (5, a nie 15), indeksatory, źródła danych i dokładniejsze.
 
 <sup>3</sup> wysoka gęstość S3 usługi nie ma obsługi indeksatorów.
 
@@ -145,11 +145,11 @@ A [potoku w usłudze wyszukiwania poznawczego](cognitive-search-concept-intro.md
 
 <sup>1</sup> w usłudze Azure Search treści żądania podlega górnego limitu 16 MB, nakładające praktyczne ograniczenie zawartość poszczególnych pól lub kolekcje, które w przeciwnym razie nie jest ograniczona przez limity teoretycznych (zobacz [obsługiwane danych typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) uzyskać więcej informacji o skład pola i ograniczenia).
 
-## <a name="api-response-limits"></a>Ogranicza odpowiedź interfejsu API
+## <a name="api-response-limits"></a>Limity odpowiedzi interfejsu API
 * Maksymalna liczba dokumentów 1000 zwrócenia na stronę wyników wyszukiwania
 * Maksymalna sugestie 100 zwracanych na żądanie zasugerować interfejsu API
 
-## <a name="api-key-limits"></a>Ograniczenia klucza interfejsu API
+## <a name="api-key-limits"></a>Limity klucza interfejsu API
 Klucze interfejsu API są używane do uwierzytelniania usługi. Są dwa typy analizatorów. Klucze administratora są określone w nagłówku żądania i przyznać dostęp Pełna odczytu i zapisu do usługi. Klucze zapytania są tylko do odczytu, określona w polu adres URL i zazwyczaj dystrybuowane do aplikacji klienckich.
 
 * Maksymalnie 2 kluczy administratora usługi

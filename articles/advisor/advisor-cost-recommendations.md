@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900730"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699334"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu usługi Azure Advisor
 
@@ -37,9 +37,9 @@ Klasyfikator identyfikuje bram sieci wirtualnej, które mają bezczynna przez po
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Kup wystąpienia zarezerwowane maszyn wirtualnych, aby zaoszczędzić pieniądze w porównaniu z kosztami płatności
 
-Klasyfikator spowoduje wśród danych użycia maszyny wirtualnej w ciągu ostatnich 30 dni i określić, jeśli można zapisać pieniędzy za zakup rezerwacji platformy Azure. Klasyfikator opisano regionów i rozmiarach, w którym potencjalnie ma większość oszczędności i pokaże Szacowane oszczędności z zakupu rezerwacji. 
+Klasyfikator spowoduje wśród danych użycia maszyny wirtualnej w ciągu ostatnich 30 dni i określić, jeśli można zapisać pieniędzy za zakup rezerwacji platformy Azure. Klasyfikator opisano regionów i rozmiarach, w którym potencjalnie ma większość oszczędności i pokaże Szacowane oszczędności z zakupu rezerwacji. Za pomocą rezerwacji platformy Azure możesz wstępnie zakup podstawowych kosztów dla maszyn wirtualnych. Rabaty zostaną automatycznie zastosowane do nowego lub istniejącego maszyn wirtualnych, które mają ten sam rozmiar i region rezerwacji. [Dowiedz się więcej o zarezerwowanych wystąpieniach maszyn wirtualnych platformy Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Za pomocą rezerwacji platformy Azure możesz wstępnie zakup podstawowych kosztów dla maszyn wirtualnych. Rabaty zostaną automatycznie zastosowane do nowego lub istniejącego maszyn wirtualnych, które mają ten sam rozmiar i region rezerwacji. [Dowiedz się więcej o zarezerwowanych wystąpieniach maszyn wirtualnych platformy Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Advisor również powiadomi wystąpień zarezerwowanych, do których masz które wygaśnie w ciągu następnych 30 dni. Oferuje rekomendacje, zakup wystąpienia zarezerwowane nowy, aby uniknąć płacenia zgodnie z rzeczywistym użyciem.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Usuń nieskojarzonego publiczne adresy IP w celu zaoszczędzenia pieniędzy
 

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434465"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683039"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Alerty i metryki DNS platformy Azure
 System DNS Azure jest usługą hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano, metryk i alertów w usłudze DNS platformy Azure.
 
 ## <a name="azure-dns-metrics"></a>Metryki usługi Azure DNS
 
-Usługa DNS platformy Azure generuje dane pomiarowe dla klientów umożliwić im monitorowania określonych aspektów ich tych hostowanych w usłudze DNS. Ponadto za pomocą metryk usługi Azure DNS można skonfigurować i otrzymywać alerty na podstawie warunków zainteresowania. Metryki są udostępniane za pośrednictwem [usługi Azure Monitor](../azure-monitor/index.yml). Usługa DNS platformy Azure zawiera następujące metryki za pomocą usługi Azure Monitor dla stref DNS:
+Usługa DNS platformy Azure generuje dane pomiarowe dla klientów umożliwić im monitorowania określonych aspektów ich stref DNS hostowanych w usłudze. Ponadto za pomocą metryk usługi Azure DNS można skonfigurować i otrzymywać alerty na podstawie warunków zainteresowania. Metryki są udostępniane za pośrednictwem [usługi Azure Monitor](../azure-monitor/index.yml). Usługa DNS platformy Azure zawiera następujące metryki za pomocą usługi Azure Monitor dla stref DNS:
 
 -   QueryVolume
 -   RecordSetCount
@@ -40,7 +40,9 @@ Precyzyjne wymiaru dla tych metryk jest strefy DNS.
 
 ### <a name="query-volume"></a>Wolumin zapytań
 
-*Wolumin zapytań* metryki w usłudze Azure DNS przedstawia wolumin zapytań DNS (zapytanie ruch), odebrane przez usługę Azure DNS dla strefy DNS. Jednostka miary jest licznik i agregacji to suma wszystkich zapytań odebranych za pośrednictwem przez pewien czas. Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metrykę wolumin zapytań i wybierz sumy jako agregacja. Poniższy zrzut ekranu przedstawia przykład.  Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md).
+*Wolumin zapytań* metryki w usłudze Azure DNS przedstawia wolumin zapytań DNS (zapytanie ruch), odebrane przez usługę Azure DNS dla strefy DNS. Jednostka miary jest licznik i agregacji to suma wszystkich zapytań odebranych za pośrednictwem przez pewien czas. 
+
+Aby wyświetlić tę metrykę, wybierać interfejs Eksploratora metryk (wersja zapoznawcza) na karcie monitorowanie w witrynie Azure portal. Wybierz strefę DNS z listy rozwijanej zasobów, wybierz metrykę wolumin zapytań i wybierz sumy jako agregacja. Poniższy zrzut ekranu przedstawia przykład.  Aby uzyskać więcej informacji na temat Eksploratora metryk środowiska i wykresów, zobacz [Eksploratora metryk usługi Azure Monitor](../azure-monitor/platform/metrics-charts.md).
 
 ![Wolumin zapytań](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 

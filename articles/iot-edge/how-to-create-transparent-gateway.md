@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482950"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699017"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -260,6 +260,18 @@ Możesz sprawdzić, które moduły są uruchomione na urządzeniu za pomocą pol
    ```
 
 6. W **szablon przeglądu** wybierz opcję **przesyłania**.
+
+## <a name="open-ports-on-gateway-device"></a>Otwieranie portów w urządzeniu bramy
+
+Standardowa urządzenia usługi IoT Edge nie jest konieczne połączenie przychodzące do funkcji, ponieważ cała komunikacja z usługą IoT Hub odbywa się za pośrednictwem połączeń wychodzących. Jednak urządzenia bramy są różne, ponieważ muszą być w stanie odbierać komunikaty z urządzeń podrzędnego.
+
+Scenariusz bramy do pracy co najmniej jeden z obsługiwanych protokołów Centrum IoT Edge musi być otwarty dla ruchu przychodzącego z podrzędnym urządzeń. Obsługiwane portocols są MQTT, AMQP i HTTPS.
+
+| Port | Protokół |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>Routing komunikatów z urządzeń podrzędne
 Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Pozwala na przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541040"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683957"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -29,13 +29,13 @@ Uzyskaj odpowiedzi na często zadawane pytania dotyczące zestawów skalowania m
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>TOP — często zadawane pytania dotyczące zestawów skalowania
 
-**PYTANIE** Ile maszyn wirtualnych może się znajdować w zestawie skalowania?
+### <a name="how-many-vms-can-i-have-in-a-scale-set"></a>Ile maszyn wirtualnych może się znajdować w zestawie skalowania?
 
-**ODPOWIEDŹ** Zestaw skalowania może zawierać od 0 do 1000 maszyn wirtualnych opartych na obrazach platformy lub 0-600 maszyn wirtualnych opartych na obrazach niestandardowych.
+Zestaw skalowania może zawierać od 0 do 1000 maszyn wirtualnych opartych na obrazach platformy lub 0-600 maszyn wirtualnych opartych na obrazach niestandardowych.
 
-**PYTANIE** Czy zestawy skalowania obsługują dyski danych?
+### <a name="are-data-disks-supported-within-scale-sets"></a>Czy zestawy skalowania obsługują dyski danych?
 
-**ODPOWIEDŹ** Tak. Zestaw skalowania może definiować konfigurację dołączonych dysków danych, która jest stosowana do wszystkich maszyn wirtualnych w zestawie. Aby uzyskać więcej informacji, zobacz [Zestawy skalowania na platformie Azure i dołączone dyski danych](virtual-machine-scale-sets-attached-disks.md). Oto przykłady innych opcji magazynowania danych:
+Tak. Zestaw skalowania może definiować konfigurację dołączonych dysków danych, która jest stosowana do wszystkich maszyn wirtualnych w zestawie. Aby uzyskać więcej informacji, zobacz [Zestawy skalowania na platformie Azure i dołączone dyski danych](virtual-machine-scale-sets-attached-disks.md). Oto przykłady innych opcji magazynowania danych:
 
 * Pliki platformy Azure (dyski udostępnione za pośrednictwem protokołu SMB)
 * Dysk systemu operacyjnego
@@ -43,33 +43,33 @@ Uzyskaj odpowiedzi na często zadawane pytania dotyczące zestawów skalowania m
 * Usługa danych platformy Azure (na przykład tabele platformy Azure, obiekty blob platformy Azure)
 * Zewnętrzne usługi danych (na przykład zdalna baza danych)
 
-**PYTANIE** Które regiony świadczenia usługi Azure obsługują zestawy skalowania?
+### <a name="which-azure-regions-support-scale-sets"></a>Które regiony świadczenia usługi Azure obsługują zestawy skalowania?
 
-**ODPOWIEDŹ** Wszystkie regiony obsługują zestawy skalowania.
+Wszystkie regiony obsługują zestawy skalowania.
 
-**PYTANIE** Jak utworzyć zestaw skalowania za pomocą obrazu niestandardowego?
+### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>Jak utworzyć zestaw skalowania za pomocą obrazu niestandardowego?
 
-**ODPOWIEDŹ** Tworzenie i przechwytywanie obrazu maszyny Wirtualnej, a następnie używać go jako źródło dla zestawu skalowania. Samouczek dotyczący sposobu tworzenia i używania niestandardowego obrazu maszyny Wirtualnej, można użyć [wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md) lub [programu Azure PowerShell](tutorial-use-custom-image-powershell.md)
+Tworzenie i przechwytywanie obrazu maszyny Wirtualnej, a następnie używać go jako źródło dla zestawu skalowania. Samouczek dotyczący sposobu tworzenia i używania niestandardowego obrazu maszyny Wirtualnej, można użyć [wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md) lub [programu Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
-**PYTANIE** Jeśli zmniejszę pojemność zestawu skalowania z 20 do 15, które maszyny wirtualne zostaną usunięte?
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Jeśli zmniejszę pojemność zestawu skalowania z 20 do 15, które maszyny wirtualne zostaną usunięte?
 
-**ODPOWIEDŹ** W celu zapewnienia maksymalnej dostępności maszyny wirtualne są usuwane z zestawu skalowania równomiernie w domenach błędów i domenach aktualizacji. Najpierw są usuwane maszyny wirtualne o najwyższym identyfikatorze.
+W celu zapewnienia maksymalnej dostępności maszyny wirtualne są usuwane z zestawu skalowania równomiernie w domenach błędów i domenach aktualizacji. Najpierw są usuwane maszyny wirtualne o najwyższym identyfikatorze.
 
-**PYTANIE** Co się stanie, jeśli następnie zwiększę pojemność z 15 do 18?
+### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Co się stanie, jeśli następnie zwiększę pojemność z 15 do 18?
 
-**ODPOWIEDŹ** Zwiększenie pojemności do 18 spowoduje utworzenie 3 nowych maszyn wirtualnych. Za każdym razem następuje zwiększenie identyfikatora wystąpienia maszyny wirtualnej względem poprzedniej najwyższej wartości (na przykład 20, 21, 22). Maszyny wirtualne są równoważone w domenach błędów i domenach aktualizacji.
+Zwiększenie pojemności do 18 spowoduje utworzenie 3 nowych maszyn wirtualnych. Za każdym razem następuje zwiększenie identyfikatora wystąpienia maszyny wirtualnej względem poprzedniej najwyższej wartości (na przykład 20, 21, 22). Maszyny wirtualne są równoważone w domenach błędów i domenach aktualizacji.
 
-**PYTANIE** Czy mogę wymusić sekwencję wykonywania w przypadku korzystania z wielu rozszerzeń w zestawie skalowania?
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Czy mogę wymusić sekwencję wykonywania w przypadku korzystania z wielu rozszerzeń w zestawie skalowania?
 
-**ODPOWIEDŹ** Tak, można użyć zestawu skalowania [sekwencjonowania rozszerzeń](virtual-machine-scale-sets-extension-sequencing.md).
+Tak, można użyć zestawu skalowania [sekwencjonowania rozszerzeń](virtual-machine-scale-sets-extension-sequencing.md).
 
-**PYTANIE** Czy zestawy skalowania współdziałają z zestawami dostępności platformy Azure?
+### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Czy zestawy skalowania współdziałają z zestawami dostępności platformy Azure?
 
-**ODPOWIEDŹ** Używa zestawu regionalnych skalowania (innych niż strefowej) *grup umieszczania*, który pełnić rolę zbiór niejawne dostępności z pięcioma domenami błędów i pięcioma domenami aktualizacji. Zestawy skalowania z ponad 100 maszyn wirtualnych obejmują wiele grup umieszczania. Aby uzyskać więcej informacji na temat grup umieszczania, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). Zestaw dostępności maszyn wirtualnych może znajdować się w tej samej sieci wirtualnej co zestaw skalowania maszyn wirtualnych. Typowa konfiguracja polega na umieszczeniu maszyn wirtualnych węzła kontrolnego (często wymagających unikatowej konfiguracji) w zestawie dostępności, a węzłów danych w zestawie skalowania.
+Używa zestawu regionalnych skalowania (innych niż strefowej) *grup umieszczania*, który pełnić rolę zbiór niejawne dostępności z pięcioma domenami błędów i pięcioma domenami aktualizacji. Zestawy skalowania z ponad 100 maszyn wirtualnych obejmują wiele grup umieszczania. Aby uzyskać więcej informacji na temat grup umieszczania, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). Zestaw dostępności maszyn wirtualnych może znajdować się w tej samej sieci wirtualnej co zestaw skalowania maszyn wirtualnych. Typowa konfiguracja polega na umieszczeniu maszyn wirtualnych węzła kontrolnego (często wymagających unikatowej konfiguracji) w zestawie dostępności, a węzłów danych w zestawie skalowania.
 
-**PYTANIE** Czy zestawy skalowania współdziałają ze strefami dostępności platformy Azure?
+### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Czy zestawy skalowania współdziałają ze strefami dostępności platformy Azure?
 
-**ODPOWIEDŹ** Tak! Aby uzyskać więcej informacji, zobacz [strefy dokumentacji zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
+Tak! Aby uzyskać więcej informacji, zobacz [strefy dokumentacji zestawu skalowania](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatyczne skalowanie

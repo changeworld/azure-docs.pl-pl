@@ -1,22 +1,22 @@
 ---
-title: Konfigurowanie skryptów przed i po wdrożeniu rozwiązania Update Management na platformie Azure (wersja zapoznawcza)
+title: Skonfiguruj skrypty przed i po wdrażania rozwiązania Update Management na platformie Azure
 description: W tym artykule opisano sposób konfigurowania i zarządzania przed i po skryptów dla wdrożenia aktualizacji
 services: automation
 ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263812"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698746"
 ---
-# <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
+# <a name="manage-pre-and-post-scripts"></a>Zarządzanie skryptami przed i po
 
 Skrypty przed i po umożliwiają uruchamianie elementów runbook programu PowerShell na koncie usługi Automation, przed (zadań wstępne) i po wdrożeniu (po zadanie) aktualizacji. Skrypty przed i po Uruchom w kontekście platformy Azure, a nie lokalnie. Wstępne skrypty uruchamiane po rozpoczęciu wdrażania aktualizacji. Opublikuj skrypty uruchamiane po zakończeniu wdrożenia i za wszelkie ponowne uruchomienia, które są skonfigurowane.
 
@@ -26,7 +26,7 @@ Element runbook ma być używany jako skrypt przed lub po elementu runbook musi 
 
 ## <a name="using-a-prepost-script"></a>Za pomocą skryptu pre lub używanego po nim
 
-Aby użyć pre i lub post skryptu we wdrożeniu aktualizacji, Rozpocznij od utworzenia wdrożenia aktualizacji. Wybierz **skryptu poprzedzającego + skrypty Post (wersja zapoznawcza)**. Ta akcja powoduje otwarcie **wybierz skryptu poprzedzającego i skryptu używanego po utworzeniu** strony.  
+Aby użyć pre i lub post skryptu we wdrożeniu aktualizacji, Rozpocznij od utworzenia wdrożenia aktualizacji. Wybierz **skryptu poprzedzającego + skrypty wpis**. Ta akcja powoduje otwarcie **wybierz skryptu poprzedzającego i skryptu używanego po utworzeniu** strony.  
 
 ![Wybierz skryptów](./media/pre-post-scripts/select-scripts.png)
 
@@ -206,7 +206,20 @@ $variable = Get-AutomationVariable -Name $runId
 #>      
 ```
 
-## <a name="interacting-with-non-azure-machines"></a>Interakcja z maszyn spoza platformy Azure
+## <a name="interacting-with-machines"></a>Interakcja z maszyn
+
+Przed i po zadania są uruchamiane jako elementu runbook na Twoim koncie usługi Automation, a nie bezpośrednio na maszynach w danym wdrożeniu. Zadania przed i po również są uruchamiane w kontekście platformy Azure i nie mają dostępu do maszyny spoza platformy Azure. W poniższych sekcjach opisano, jak możesz porozmawiać z maszyn bezpośrednio czy maszyny spoza platformy Azure lub Maszynie wirtualnej platformy Azure:
+
+### <a name="interacting-with-azure-machines"></a>Interakcja z maszyn platformy Azure
+
+Zadania przed i po są uruchomione jako elementy runbook i natywnie nie należy uruchamiać na maszynach wirtualnych platformy Azure w danym wdrożeniu. Do interakcji z maszynami wirtualnymi portalu Azure, należy dysponować następującymi elementami:
+
+* Konto Uruchom jako
+* Element runbook, który chcesz uruchomić
+
+Aby wchodzić w interakcje przy użyciu maszyny platformy Azure, należy użyć [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) polecenia cmdlet do interakcji z maszynami wirtualnymi portalu Azure. Na przykład jak to zrobić, zobacz przykład elementu runbook [rozwiązania Update Management — Uruchom skrypt przy użyciu polecenia Uruchom](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+
+### <a name="interacting-with-non-azure-machines"></a>Interakcja z maszyn spoza platformy Azure
 
 Przed i po zadania są wykonywane w kontekście platformy Azure i nie mają dostępu do maszyny spoza platformy Azure. Do interakcji z maszyn spoza platformy Azure, należy dysponować następującymi elementami:
 
@@ -215,38 +228,7 @@ Przed i po zadania są wykonywane w kontekście platformy Azure i nie mają dost
 * Element runbook, który ma być uruchomiony lokalnie
 * Nadrzędny element runbook
 
-Do interakcji z maszyn spoza platformy Azure, nadrzędny element runbook jest uruchamiane w kontekście platformy Azure. Ten element runbook wywołuje podrzędnego elementu runbook za pomocą [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) polecenia cmdlet. Należy określić `-RunOn` parametru i podaj nazwę hybrydowego procesu roboczego Runbook skrypt do uruchomienia na.
-
-```powershell
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-
-$resourceGroup = "AzureAutomationResourceGroup"
-$aaName = "AzureAutomationAccountName"
-
-$output = Start-AzureRmAutomationRunbook -Name "StartService" -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName -RunOn "hybridWorker"
-
-$status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-while ($status.status -ne "Completed")
-{ 
-    Start-Sleep -Seconds 5
-    $status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-}
-
-$summary = Get-AzureRmAutomationJobOutput -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-
-if ($summary.Type -eq "Error")
-{
-    Write-Error -Message $summary.Summary
-}
-```
+Do interakcji z maszyn spoza platformy Azure, nadrzędny element runbook jest uruchamiane w kontekście platformy Azure. Ten element runbook wywołuje podrzędnego elementu runbook za pomocą [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) polecenia cmdlet. Należy określić `-RunOn` parametru i podaj nazwę hybrydowego procesu roboczego Runbook skrypt do uruchomienia na. Na przykład jak to zrobić, zobacz przykład elementu runbook [rozwiązania Update Management — Uruchom skrypt lokalnie](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
 ## <a name="abort-patch-deployment"></a>Przerwij wdrażania poprawek
 
@@ -268,5 +250,5 @@ if (<My custom error logic>)
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych z systemem Windows na platformie Azure](automation-tutorial-update-management.md)
+> [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
 

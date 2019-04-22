@@ -1,64 +1,57 @@
-items:
 - name: Dokumentacja usługi Azure App Configuration (wersja zapoznawcza)
   href: index.yml
 - name: Omówienie
   items:
-  - name: Usługa Azure App Configuration — informacje
-    href: overview.md
+    - name: Usługa Azure App Configuration — informacje
+      href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie aplikacji ASP.NET Core
-    href: quickstart-aspnet-core-app.md
-  - name: Tworzenie aplikacji .NET Core
-    href: quickstart-dotnet-core-app.md
-  - name: Tworzenie aplikacji .NET Framework
-    href: quickstart-dotnet-app.md
-  - name: Tworzenie funkcji platformy Azure
-    href: quickstart-azure-function-csharp.md
-  - name: Tworzenia aplikacji Java Spring
-    href: quickstart-java-spring-app.md
   expanded: true
+  items:
+    - name: Tworzenie aplikacji ASP.NET Core
+      href: quickstart-aspnet-core-app.md
+    - name: Tworzenie aplikacji .NET Core
+      href: quickstart-dotnet-core-app.md
+    - name: Tworzenie aplikacji .NET Framework
+      href: quickstart-dotnet-app.md
+    - name: Tworzenie funkcji platformy Azure
+      href: quickstart-azure-function-csharp.md
+    - name: Tworzenia aplikacji Java Spring
+      href: quickstart-java-spring-app.md
 - name: Samouczki
   items:
-  - name: Enable dynamic configuration in ASP.NET Core (Włączanie dynamicznej konfiguracji na platformie ASP.NET Core)
-    href: enable-dynamic-configuration-aspnet-core.md
-  - name: Integrate with Azure Managed Service Identity (Integracja z tożsamością usługi zarządzanej platformy Azure)
-    href: integrate-azure-managed-service-identity.md
+    - name: Enable dynamic configuration in ASP.NET Core (Włączanie dynamicznej konfiguracji na platformie ASP.NET Core)
+      href: enable-dynamic-configuration-aspnet-core.md
+    - name: Integracja z potokiem ciągłej integracji/ciągłego wdrażania
+      href: integrate-ci-cd-pipeline.md
 - name: Przykłady
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: cli-samples.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
 - name: Pojęcia
   items:
-  - name: Magazyn wartości klucza
-    href: concept-key-value.md
-  - name: Migawka punktu w czasie
-    href: concept-point-time-snapshot.md
+    - name: Magazyn wartości klucza
+      href: concept-key-value.md
+    - name: Migawka punktu w czasie
+      href: concept-point-time-snapshot.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Importowanie lub eksportowanie danych konfiguracji
-    href: howto-import-export-data.md
-  - name: Integracja z potokiem ciągłej integracji/ciągłego wdrażania
-    href: howto-integrate-ci-cd-pipeline.md
+    - name: Integrate with Azure Managed Service Identity (Integracja z tożsamością usługi zarządzanej platformy Azure)
+      href: howto-integrate-azure-managed-service-identity.md
+    - name: Importowanie lub eksportowanie danych konfiguracji
+      href: howto-import-export-data.md
 - name: Dokumentacja
   items:
-  - name: Dostawca konfiguracji .NET Core
-    href: https://go.microsoft.com/fwlink/?linkid=2074664
-  - name: Konstruktor konfiguracji .NET Framework
-    href: https://go.microsoft.com/fwlink/?linkid=2074663
-  - name: Dostawca konfiguracji Java Spring
-    href: https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config
-  - name: Zestaw .NET Azure SDK
-    href: https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane
-  - name: REST
-    href: https://go.microsoft.com/fwlink/?linkid=2078296
+    - name: Dostawca konfiguracji .NET Core
+      href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+    - name: Konstruktor konfiguracji .NET Framework
+      href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+    - name: Dostawca konfiguracji Java Spring
+      href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
+    - name: Zestaw .NET Azure SDK
+      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
 - name: Zasoby
   items:
-  - name: Przekazywanie opinii dotyczących produktów
-    href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: c4712f08112a1abaf8524677746d9c0e929ee097
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576415"
+    - name: Przekazywanie opinii dotyczących produktów
+      href: 'https://github.com/Azure/AppConfiguration'

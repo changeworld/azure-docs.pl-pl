@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 16f59ecaf934813890cd25e89896182378f376ed
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 9d52114f5d01beca53ed48ee2114dc98cc20f3a2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549071"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682428"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Ponownie zapisuje nagłówki żądania i odpowiedzi HTTP przy użyciu usługi Azure Application Gateway — witryna Azure portal
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Musisz mieć usługi Application Gateway w wersji 2 jednostki SKU, ponieważ możliwość ponownego zapisywania nagłówka nie jest obsługiwana dla jednostek SKU v1. Jeśli nie masz jednostki SKU w wersji 2, Utwórz [jednostek SKU v2 Application Gateway](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) przed przystąpieniem do wykonywania.
+Musisz mieć usługi Application Gateway w wersji 2 jednostki SKU, ponieważ możliwość ponownego zapisywania nagłówka nie jest obsługiwana dla jednostek SKU v1. Jeśli nie masz jednostki SKU w wersji 2, Utwórz [jednostek SKU v2 Application Gateway](<https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) przed przystąpieniem do wykonywania.
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>Co jest wymagane do przepisania nagłówka
 

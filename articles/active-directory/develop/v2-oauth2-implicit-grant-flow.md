@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453a3316288cbc0b07d82e2fad9ecc7c3d353e9b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d517828b30629cd9dfba5459b1d90913d8bc4f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501318"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698456"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma tożsamości firmy Microsoft i niejawne udzielić przepływu
 
@@ -52,7 +52,7 @@ Na poniższym diagramie przedstawiono, jak wygląda całego niejawny przepływ l
 
 ## <a name="send-the-sign-in-request"></a>Wyślij żądanie logowania
 
-Początkowo utworzyć użytkownika w swojej aplikacji, możesz wysłać [OpenID Connect](v2-protocols-oidc.md) żądanie autoryzacji i zyskaj `id_token` z punktu końcowego platformy tożsamości firmy Microsoft.
+Początkowo utworzyć użytkownika w swojej aplikacji, możesz wysłać [OpenID Connect](v2-protocols-oidc.md) żądań uwierzytelnienia i zyskaj `id_token` z punktu końcowego platformy tożsamości firmy Microsoft.
 
 > [!IMPORTANT]
 > Aby pomyślnie zażądać identyfikator tokenu rejestracji aplikacji w [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony musi mieć włączone poprawnie, wybierając przepływ przyznawanie niejawne **tokeny dostępu** i **Tokeny Identyfikatora** w obszarze **przyznawanie niejawne** sekcji. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: **Podana wartość parametru wejściowego "response_type" jest niedozwolone dla tego klienta. Oczekiwana wartość to "code"**

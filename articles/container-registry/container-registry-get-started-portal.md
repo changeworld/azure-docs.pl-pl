@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 93c22475a4043d1cbf5cb0ad7f9b134e8ac717cc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: f41d51981c4da9ee089282da8b8d4cc5f37a4aed
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298419"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682988"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Szybki start: Tworzenie prywatnego rejestru kontenerów za pomocą witryny Azure Portal
 
@@ -61,7 +61,7 @@ Po ukończeniu polecenie zwraca ciąg `Login Succeeded`.
 
 Aby wyświetlić listę obrazów w rejestrze, przejdź do rejestru w portalu i wybierz pozycję **Repozytoria**, a następnie wybierz repozytorium utworzone za pomocą polecenia `docker push`.
 
-W tym przykładzie wybierz repozytorium **busybox**. Zobaczysz obraz z tagiem `v1` w obszarze **TAGS** (tagi).
+W tym przykładzie wybierzemy **Witaj, świecie** repozytorium, zobaczysz `v1`— obraz z tagiem w obszarze **tagi**.
 
 ![Wyświetlanie listy obrazów kontenerów w witrynie Azure Portal][qs-portal-09]
 
@@ -73,7 +73,7 @@ Aby wyczyścić zasoby, przejdź do grupy zasobów **myResourceGroup** w portalu
 
 ![Usuwanie grupy zasobów w witrynie Azure Portal][qs-portal-08]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono usługę Azure Container Registry w witrynie Azure Portal, wypchnięto obraz kontenera oraz ściągnięto i uruchomiono obraz z rejestru. Przejdź do samouczków usługi Azure Container Registry, aby dowiedzieć się więcej o tej usłudze.
 

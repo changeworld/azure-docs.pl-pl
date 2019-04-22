@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983255"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683464"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Usuwanie obrazów kontenerów w usłudze Azure Container Registry
 
 Aby zachować rozmiaru usługi Azure container registry, należy okresowo usuwać danych starych obrazów. Podczas gdy niektóre obrazy kontenera wdrażane w środowisku produkcyjnym mogą wymagać przechowywania długoterminowego przechowywania, inne zazwyczaj można usunąć szybciej. Na przykład w automatycznej kompilacji i w scenariuszu testu rejestru można szybko wypełnić przy użyciu obrazów, które nigdy nie mogą być wdrażane i mogą być czyszczone wkrótce po ukończeniu przebiegu kompilacji i testowania.
 
-Ponieważ dane obrazów można usunąć na kilka różnych sposobów, jest ważne, aby zrozumieć, jak każda operacja usuwania wpływa na użycie magazynu. W tym artykule najpierw przedstawiono składniki, do rejestru i kontenera obrazów platformy Docker, a następnie obejmuje kilka metod związanych z usuwaniem danych obrazu.
+Ponieważ dane obrazów można usunąć na kilka różnych sposobów, jest ważne, aby zrozumieć, jak każda operacja usuwania wpływa na użycie magazynu. W tym artykule najpierw przedstawiono składniki, do rejestru i kontenera obrazów platformy Docker, a następnie obejmuje kilka metod związanych z usuwaniem danych obrazu. Przykładowe skrypty znajdują się w celu automatyzacji operacji usuwania.
 
 ## <a name="registry"></a>Rejestr
 
@@ -34,7 +34,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-Nazwy repozytorium mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw pozwala grupować obrazy przy użyciu nazwy do przodu repozytorium rozdzielonych ukośnikiem, na przykład:
+Nazwy repozytorium mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw umożliwiają grupę obrazów przy użyciu nazwy do przodu repozytorium rozdzielonych ukośnikiem, na przykład:
 
 ```
 marketing/campaign10-18/web:v2
@@ -50,11 +50,11 @@ Obraz kontenera w rejestrze jest skojarzony z co najmniej jednego znacznika, ma 
 
 ### <a name="tag"></a>Tag
 
-Obraz *tag* określa jego wersję. Pojedynczy obraz w repozytorium można przypisać jeden lub wiele tagów i mogą być również "nieoznakowany". Oznacza to możesz usunąć wszystkie tagi z obrazu, podczas gdy dane obrazu (warstwy) pozostaje rejestru.
+Obraz *tag* określa jego wersję. Pojedynczy obraz w repozytorium można przypisać jeden lub wiele tagów i mogą być również "nieoznakowany". Oznacza to możesz usunąć wszystkie tagi z obrazu, podczas gdy dane obrazu (warstwy) pozostaje w rejestrze.
 
 Repozytorium (lub repozytorium i przestrzeni nazw) oraz tag Określa nazwę obrazu. Można wypychanie i ściąganie obrazu, określając jej nazwę w operacji wypychania i ściągania.
 
-W rejestrze prywatnym, takich jak usługa Azure Container Registry nazwa obrazu zawiera w pełni kwalifikowaną nazwę hosta rejestru. Host rejestr obrazów ACR jest w formacie *acrname.azurecr.io*. Na przykład będzie pełna nazwa pierwszy obraz w przestrzeni nazw "marketing" w poprzedniej sekcji:
+W rejestrze prywatnym, takich jak usługa Azure Container Registry nazwa obrazu zawiera w pełni kwalifikowaną nazwę hosta rejestru. Host rejestr obrazów ACR jest w formacie *acrname.azurecr.io* (tylko małe litery). Na przykład będzie pełna nazwa pierwszy obraz w przestrzeni nazw "marketing" w poprzedniej sekcji:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
@@ -158,7 +158,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Usuwanie *według tagów* nie powinny być mylone z usuwanie tagu (zdejmowanie). Można usunąć tagu za pomocą polecenia interfejsu wiersza polecenia Azure [usunąć oznakowanie az acr repozytorium][az-acr-repository-untag]. Miejsce nie jest zwalniana, gdy oznaczenie obrazu, ponieważ jego [manifestu](#manifest) i warstwy dane pozostają w rejestrze. Odwołanie tag, sama jest usuwany.
+> Usuwanie *według tagów* nie powinny być mylone z usuwanie tagu (zdejmowanie). Można usunąć tagu za pomocą polecenia interfejsu wiersza polecenia Azure [usunąć oznakowanie az acr repozytorium][az-acr-repository-untag]. Miejsce nie jest zwalniana, gdy oznaczenie obrazu, ponieważ jego [manifestu](#manifest) i dane warstw w rejestrze. Odwołanie tag, sama jest usuwany.
 
 ## <a name="delete-by-manifest-digest"></a>Usuń, szyfrowanego manifestu
 
@@ -201,7 +201,56 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-"Acr-helloworld:v2" obraz zostanie usunięty z rejestru, ponieważ wszystkie dane warstwy unikatowe dla tego obrazu. Jeśli manifest jest skojarzony z wielu tagów, również zostaną usunięte wszystkie znaczniki skojarzone.
+`acr-helloworld:v2` Obraz zostanie usunięty z rejestru, ponieważ wszystkie dane warstwy unikatowe dla tego obrazu. Jeśli manifest jest skojarzony z wielu tagów, również zostaną usunięte wszystkie znaczniki skojarzone.
+
+### <a name="list-digests-by-timestamp"></a>Skróty listy według sygnatur czasowych
+
+Aby zachować rozmiar repozytorium lub rejestru, konieczne może być okresowo usuwać manifestu skróty starsze niż określona data.
+
+Następujące polecenie z wiersza polecenia platformy Azure zawiera listę wszystkich skrótu manifestu w repozytorium, które są starsze niż określona sygnatura czasowa w kolejności rosnącej. Zastąp `<acrName>` i `<repositoryName>` przy użyciu wartości odpowiednich dla danego środowiska. Sygnatura czasowa może być wyrażeniem pełnej daty i godziny lub daty, jak w poniższym przykładzie.
+
+```azurecli
+az acr repository show-manifests --name <acrName> --repository <repositoryName> \
+--orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
+```
+
+### <a name="delete-digests-by-timestamp"></a>Usuń skróty, znacznik czasu:
+
+Po określeniu starych skróty manifestu, można uruchomić poniższy skrypt powłoki Bash, aby usunąć skróty manifestu starsze niż określona sygnatura czasowa. Wymaga interfejsu wiersza polecenia platformy Azure i **xargs**. Domyślnie skrypt wykonuje nie usuwania. Zmiana `ENABLE_DELETE` wartość `true` umożliwiające usunięcie obrazu.
+
+> [!WARNING]
+> Użyj następującego przykładowego skryptu z ostrożnością — usunięto obraz danych jest UNRECOVERABLE. W przypadku systemów, które ściągania obrazów przez skrót manifestu (w przeciwieństwie do nazwy obrazu) nie należy uruchamiać te skrypty. Usunięcie manifestu skróty uniemożliwi tych systemów ściąganie obrazów z rejestru. Zamiast pobierać manifest, należy rozważyć zastosowanie *unikatowy znakowanie* schematu [najlepszym rozwiązaniem jest zalecane][tagging-best-practices]. 
+
+```bash
+#!/bin/bash
+
+# WARNING! This script deletes data!
+# Run only if you do not have systems
+# that pull images via manifest digest.
+
+# Change to 'true' to enable image delete
+ENABLE_DELETE=false
+
+# Modify for your environment
+# TIMESTAMP can be a date-time string such as 2019-03-15T17:55:00.
+REGISTRY=myregistry
+REPOSITORY=myrepository
+TIMESTAMP=2019-04-05  
+
+# Delete all images older than specified timestamp.
+
+if [ "$ENABLE_DELETE" = true ]
+then
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+    --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].digest" -o tsv \
+    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
+else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+   --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].[digest, timestamp]" -o tsv
+fi
+```
 
 ## <a name="delete-untagged-images"></a>Usuwanie obrazów bez znaczników
 
@@ -257,14 +306,12 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 
 ### <a name="delete-all-untagged-images"></a>Usuń wszystkie obrazy bez znaczników
 
-Następujące przykładowe skrypty należy używać ostrożnie — usunięte dane obrazu są UNRECOVERABLE.
+> [!WARNING]
+> Następujące przykładowe skrypty należy używać ostrożnie — usunięte dane obrazu są UNRECOVERABLE. W przypadku systemów, które ściągania obrazów przez skrót manifestu (w przeciwieństwie do nazwy obrazu) nie należy uruchamiać te skrypty. Usuwanie obrazów nieoznakowany uniemożliwi tych systemów ściąganie obrazów z rejestru. Zamiast pobierać manifest, należy rozważyć zastosowanie *unikatowy znakowanie* schematu [najlepszym rozwiązaniem jest zalecane][tagging-best-practices].
 
 **Wiersza polecenia platformy Azure w powłoce Bash**
 
 Poniższy skrypt powłoki Bash spowoduje usunięcie wszystkich obrazów nieoznakowany z repozytorium. Wymaga interfejsu wiersza polecenia platformy Azure i **xargs**. Domyślnie skrypt wykonuje nie usuwania. Zmiana `ENABLE_DELETE` wartość `true` umożliwiające usunięcie obrazu.
-
-> [!WARNING]
-> W przypadku systemów, które ściągania obrazów przez skrót manifestu (w przeciwieństwie do nazwy obrazu) nie należy uruchamiać ten skrypt. Usuwanie obrazów nieoznakowany uniemożliwi tych systemów ściąganie obrazów z rejestru. Zamiast pobierać manifest, należy rozważyć zastosowanie *unikatowy znakowanie* schematu [najlepszym rozwiązaniem jest zalecane][tagging-best-practices].
 
 ```bash
 #!/bin/bash
@@ -293,9 +340,6 @@ fi
 **Wiersza polecenia platformy Azure w programie PowerShell**
 
 Poniższy skrypt programu PowerShell powoduje usunięcie wszystkich nieoznakowany obrazów z repozytorium. Wymaga programu PowerShell i wiersza polecenia platformy Azure. Domyślnie skrypt wykonuje nie usuwania. Zmiana `$enableDelete` wartość `$TRUE` umożliwiające usunięcie obrazu.
-
-> [!WARNING]
-> W przypadku systemów, które ściągania obrazów przez skrót manifestu (w przeciwieństwie do nazwy obrazu) nie należy uruchamiać ten skrypt. Usuwanie obrazów nieoznakowany uniemożliwi tych systemów ściąganie obrazów z rejestru. Zamiast pobierać manifest, należy rozważyć zastosowanie *unikatowy znakowanie* schematu [najlepszym rozwiązaniem jest zalecane][tagging-best-practices].
 
 ```powershell
 # WARNING! This script deletes data!

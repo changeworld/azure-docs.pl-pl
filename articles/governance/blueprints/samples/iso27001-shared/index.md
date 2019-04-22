@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ca473474c62d0cb57c3ee76095740568398c67d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272754"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698915"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Omówienie przykładu strategii usług udostępnionych ISO 27001.
 
@@ -36,7 +36,7 @@ To środowisko składa się z kilku usług platformy Azure, które udostępniaj�
 - Usługa [Log Analytics](../../../../azure-monitor/overview.md) jest wdrażana jako pierwsza usługa platformy Azure, aby upewnić się, że wszystkie akcje i usługi są rejestrowane w centralnej lokalizacji od czasu uruchomienia bezpiecznego wdrożenia
 - Sieć wirtualna obsługująca podsieci na potrzeby łączności z lokalnym centrum danych, stos przychodzący i wychodzący na potrzeby łączności z Internetem oraz podsieć usługi udostępnionej używającą sieciowych grup zabezpieczeń i grup zabezpieczeń aplikacji na potrzeby pełnej mikrosegmentacji, która zawiera następujące elementy:
   - Host przesiadkowy lub host bastionu używany do zarządzania, który jest dostępny tylko za pośrednictwem usługi [Azure Firewall](../../../../firewall/overview.md) wdrożonej w podsieci stosu przychodzącego
-  - Dwie maszyny wirtualne z uruchomionymi usługami Active Directory Directory Services (ADDS) i systemem DNS dostępne tylko za pośrednictwem serwera przesiadkowego, które można skonfigurować tylko do replikacji usługi AD za pośrednictwem sieci VPN lub połączenia usługi [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nie są wdrażane w ramach strategii)
+  - Dwie maszyny wirtualne z uruchomionymi usługami Active Directory Domain Services (ADDS) i systemem DNS dostępne tylko za pośrednictwem serwera przesiadkowego, które można skonfigurować tylko do replikacji usługi AD za pośrednictwem sieci VPN lub połączenia usługi [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nie są wdrażane w ramach strategii)
   - Korzystanie z usługi [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) i standardowej ochrony przed atakami DDoS
 - Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) umożliwiające hostowanie wpisów tajnych używanych na potrzeby maszyn wirtualnych wdrożonych w środowisku usług udostępnionych
 

@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881192"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699308"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
 
@@ -65,6 +65,10 @@ Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/s
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurowanie bramy sieci VPN w taki sposób, aby aktywne aktywne dla połączeń
 
 W konfiguracji aktywne aktywne oba wystąpienia bramy sieci VPN ustanowią tunele S2S sieci VPN do urządzenia sieci VPN w środowisku lokalnym. Sytuacji zdarzenie planowanej konserwacji lub nieplanowanego zdarzenia dotyczącego jednego wystąpienia bramy ruchu umożliwić przełączenie do innego aktywnego tunelu IPsec automatycznie. Usługa Azure Advisor zidentyfikuje bram sieci VPN, które nie są skonfigurowane jako aktywny aktywny i sugeruje, że można je skonfigurować wysoką dostępność.
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Uruchamianie obciążeń produkcyjnych za pomocą bram sieci VPN w środowisku produkcyjnym
+
+Usługa Azure Advisor sprawdzi dla bram sieci VPN, które są podstawowej jednostki SKU i zaleca się używanie produkcji jednostki SKU. Podstawowa jednostka SKU jest przeznaczona dla celów projektowania i testowania. Jednostki SKU w środowisku produkcyjnym oferują większej liczby tuneli, obsługi protokołu BGP, opcje konfiguracji aktywne aktywne, niestandardowe zasad Ipsec/IKE i wyższe stabilność i dostępność.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących wysokiej dostępności w programie Advisor
 

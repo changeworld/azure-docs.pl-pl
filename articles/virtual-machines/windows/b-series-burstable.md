@@ -1,9 +1,9 @@
 ---
-title: Rozmiary maszyn wirtualnych Windows Azure serii B | Dokumentacja firmy Microsoft
-description: W tym artykule opisano B serii burstable rozmiary maszyn wirtualnych Azure.
+title: Rozmiary maszyn wirtualnych Windows Azure — seria B | Dokumentacja firmy Microsoft
+description: W tym artykule opisano seria B z możliwością zwiększania wydajności rozmiarów maszyn wirtualnych platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: jonbeck7
+author: ayshakeen
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,20 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
-ms.author: jonbeck
-ms.openlocfilehash: 366981c0a92aab80e4cbc41ff7202be42b386d6a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: ayshak
+ms.openlocfilehash: 8530682baac1544de2c73186b35fdf193e1826bd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917915"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682920"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>Rozmiary burstable maszyny wirtualnej serii B
+# <a name="b-series-burstable-virtual-machine-sizes"></a>Seria B z możliwością zwiększania wydajności maszyny wirtualnej rozmiarów
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
 
-## <a name="other-sizes"></a>Innych rozmiarach
+## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
@@ -36,4 +36,4 @@ ms.locfileid: "30917915"
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat [jednostki (ACU) rozwiązań usługi obliczenia Azure](acu.md) ułatwia porównanie wydajności obliczeniowej różnych jednostki SKU Azure.
+Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.

@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a4d8216486c84f011d7830b7d49de8bb87b28b41
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588781"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59689082"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Tworzenie tematu przy użyciu witryny Azure Portal
 1. Na stronie **Przestrzeń nazw usługi Service Bus** wybierz pozycję **Tematy** z menu po lewej stronie.

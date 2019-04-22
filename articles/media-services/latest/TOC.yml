@@ -1,281 +1,276 @@
-items:
 - name: Dokumentacja usługi Media Services
   href: ./index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze Media Services
-    href: media-services-overview.md
+    - name: Informacje o usłudze Media Services
+      href: media-services-overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Przesyłanie strumieniowe plików wideo — .NET
-    href: stream-files-dotnet-quickstart.md
-  - name: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
-    href: stream-files-cli-quickstart.md
-  - name: Przesyłanie strumieniowe wideo — Node.js
-    href: stream-files-nodejs-quickstart.md
   expanded: true
+  items:
+    - name: Przesyłanie strumieniowe plików wideo — .NET
+      href: stream-files-dotnet-quickstart.md
+    - name: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
+      href: stream-files-cli-quickstart.md
+    - name: Przesyłanie strumieniowe wideo — Node.js
+      href: stream-files-nodejs-quickstart.md
 - name: Samouczki
   items:
-  - name: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo — REST
-    displayName: encoding, job, transform
-    href: stream-files-tutorial-with-rest.md
-  - name: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo — .NET
-    displayName: encode, encoding, job, transform
-    href: stream-files-tutorial-with-api.md
-  - name: Przesyłanie strumieniowe na żywo — .NET
-    href: stream-live-tutorial-with-api.md
-  - name: Analizowanie wideo — .NET
-    displayName: job, transform
-    href: analyze-videos-tutorial-with-api.md
-  - name: Szyfrowanie dynamiczne AES-128 — .NET
-    href: protect-with-aes128.md
+    - name: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo — REST
+      displayName: 'encoding, job, transform'
+      href: stream-files-tutorial-with-rest.md
+    - name: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo — .NET
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
+    - name: Przesyłanie strumieniowe na żywo — .NET
+      href: stream-live-tutorial-with-api.md
+    - name: Analizowanie wideo — .NET
+      displayName: 'job, transform'
+      href: analyze-videos-tutorial-with-api.md
+    - name: Szyfrowanie dynamiczne AES-128 — .NET
+      href: protect-with-aes128.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu platformy Azure
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: cli-samples.md
+    - name: Przykłady kodu platformy Azure
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
 - name: Pojęcia
   href: concepts-overview.md
   items:
-  - name: Przekazywanie do chmury i magazynowanie w niej
-    items:
-    - name: Magazyn
-      href: storage-account-concept.md
-    - name: Elementy zawartości
-      href: assets-concept.md
-  - name: Kodowanie
-    items:
-    - name: Omówienie
-      displayName: Presets
-      href: encoding-concept.md
-    - name: Przekształcenia i zadania
-      href: transforms-jobs-concept.md
-    - name: Formaty usługi Media Encoder Standard
-      displayName: containers, codecs
-      href: media-encoder-standard-formats.md
-    - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
-      href: autogen-bitrate-ladder.md
-    - name: Kodowanie z rozpoznawaniem zawartości
-      href: cae-experimental.md
-  - name: Analiza multimediów
-    items:
-    - name: Omówienie
-      displayName: Presets
-      href: analyzing-video-audio-files-concept.md
-    - name: Przekształcenia i zadania
-      href: transforms-jobs-concept.md
-  - name: Tworzenie pakietów, dostarczanie, ochrona
-    items:
-    - name: Tworzenie pakietów
+    - name: Przekazywanie do chmury i magazynowanie w niej
       items:
-      - name: Dynamiczne tworzenie pakietów
-        displayName: packager
-        href: dynamic-packaging-overview.md
-      - name: Manifesty dynamiczne
-        href: filters-dynamic-manifest-overview.md
-      - name: Filtry
-        href: filters-concept.md
-    - name: Ochrona zawartości
+        - name: Magazyn
+          href: storage-account-concept.md
+        - name: Elementy zawartości
+          href: assets-concept.md
+    - name: Kodowanie
       items:
-      - name: Protokoły przesyłania strumieniowego i typy szyfrowania
-        displayName: Dynamic encryption
-        href: content-protection-overview.md
-      - name: System z wieloma mechanizmami DRM i kontrolą dostępu
-        href: design-multi-drm-system-with-access-control.md
-      - name: Licencje DRM
-        items:
-        - name: Szablon licencji PlayReady
-          href: playready-license-template-overview.md
-        - name: Szablon licencji Widevine
-          href: widevine-license-template-overview.md
-        - name: Wymagania licencyjne technologii FairPlay
-          href: fairplay-license-overview.md
-    - name: Punkty końcowe/początkowe przesyłania strumieniowego
-      displayName: origins, cdn
-      href: streaming-endpoint-concept.md
-    - name: Lokalizatory przesyłania strumieniowego
-      displayName: URLs
-      href: streaming-locators-concept.md
-    - name: Zasady przesyłania strumieniowego
-      href: streaming-policy-concept.md
-    - name: Zasady kluczy zawartości
-      href: content-key-policy-concept.md
-  - name: Transmisja strumieniowa na żywo
-    items:
-    - name: Omówienie
-      href: live-streaming-overview.md
-    - name: Wydarzenia i dane wyjściowe na żywo
-      href: live-events-outputs-concept.md
-    - name: Zalecane kodery na żywo
-      href: recommended-on-premises-live-encoders.md
-    - name: Korzystanie z funkcji DVR w chmurze
-      displayName: archive
-      href: live-event-cloud-dvr.md
-    - name: Porównanie funkcji
-      href: live-event-types-comparison.md
-    - name: Stany i rozliczenia
-      href: live-event-states-billing.md
-    - name: Opóźnienie
-      href: live-event-latency.md
-  - name: Monitorowanie
-    items:
-    - name: Zdarzenia z usługą Event Grid
-      href: reacting-to-media-services-events.md
-    - name: Schematy usługi Event Grid
-      href: media-services-event-schemas.md
-    - name: Metryki i dzienniki diagnostyczne
-      href: media-services-metrics-diagnostic-logs.md
-    - name: Schematy dzienników diagnostycznych
-      href: media-services-diagnostic-logs-schema.md
-  - name: Odtwarzacze klienckie
-    items:
-    - name: Azure Media Player
-      href: use-azure-media-player.md
-  - name: Programowanie z użyciem interfejsów API w wersji 3
-    href: media-services-apis-overview.md
-    items:
-    - name: Stronicowanie, filtrowanie i określanie kolejności jednostek
-      href: entities-overview.md
-    - name: Kontrola dostępu oparta na rolach
-      href: rbac-overview.md
-  - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
-    href: migrate-from-v2-to-v3.md
+        - name: Omówienie
+          href: encoding-concept.md
+          displayName: Presets
+        - name: Przekształcenia i zadania
+          href: transforms-jobs-concept.md
+        - name: Formaty usługi Media Encoder Standard
+          displayName: 'containers, codecs'
+          href: media-encoder-standard-formats.md
+        - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
+          href: autogen-bitrate-ladder.md
+        - name: Kodowanie z rozpoznawaniem zawartości
+          href: cae-experimental.md
+    - name: Analiza multimediów
+      items:
+        - name: Omówienie
+          href: analyzing-video-audio-files-concept.md
+          displayName: Presets
+        - name: Przekształcenia i zadania
+          href: transforms-jobs-concept.md
+    - name: 'Tworzenie pakietów, dostarczanie, ochrona'
+      items:
+        - name: Tworzenie pakietów
+          items:
+            - name: Dynamiczne tworzenie pakietów
+              displayName: packager
+              href: dynamic-packaging-overview.md
+            - name: Manifesty dynamiczne
+              href: filters-dynamic-manifest-overview.md
+            - name: Filtry
+              href: filters-concept.md
+        - name: Ochrona zawartości
+          items:
+            - name: Protokoły przesyłania strumieniowego i typy szyfrowania
+              displayName: Dynamic encryption
+              href: content-protection-overview.md
+            - name: System z wieloma mechanizmami DRM i kontrolą dostępu
+              href: design-multi-drm-system-with-access-control.md
+            - name: Licencje DRM
+              items:
+                - name: Szablon licencji PlayReady
+                  href: playready-license-template-overview.md
+                - name: Szablon licencji Widevine
+                  href: widevine-license-template-overview.md
+                - name: Wymagania licencyjne technologii FairPlay
+                  href: fairplay-license-overview.md
+        - name: Punkty końcowe/początkowe przesyłania strumieniowego
+          displayName: 'origins, cdn'
+          href: streaming-endpoint-concept.md
+        - name: Lokalizatory przesyłania strumieniowego
+          displayName: URLs
+          href: streaming-locators-concept.md
+        - name: Zasady przesyłania strumieniowego
+          href: streaming-policy-concept.md
+        - name: Zasady kluczy zawartości
+          href: content-key-policy-concept.md
+    - name: Transmisja strumieniowa na żywo
+      items:
+        - name: Omówienie
+          href: live-streaming-overview.md
+        - name: Wydarzenia i dane wyjściowe na żywo
+          href: live-events-outputs-concept.md
+        - name: Zalecane kodery na żywo
+          href: recommended-on-premises-live-encoders.md
+        - name: Korzystanie z funkcji DVR w chmurze
+          displayName: archive
+          href: live-event-cloud-dvr.md
+        - name: Porównanie funkcji
+          href: live-event-types-comparison.md
+        - name: Stany i rozliczenia
+          href: live-event-states-billing.md
+        - name: Opóźnienie
+          href: live-event-latency.md
+    - name: Monitorowanie
+      items:
+        - name: Zdarzenia z usługą Event Grid
+          href: reacting-to-media-services-events.md
+        - name: Schematy usługi Event Grid
+          href: media-services-event-schemas.md
+        - name: Metryki i dzienniki diagnostyczne
+          href: media-services-metrics-diagnostic-logs.md
+        - name: Schematy dzienników diagnostycznych
+          href: media-services-diagnostic-logs-schema.md
+    - name: Odtwarzacze klienckie
+      items:
+        - name: Azure Media Player
+          href: use-azure-media-player.md
+    - name: Programowanie z użyciem interfejsów API w wersji 3
+      href: media-services-apis-overview.md
+      items:
+        - name: 'Stronicowanie, filtrowanie i określanie kolejności jednostek'
+          href: entities-overview.md
+        - name: Kontrola dostępu oparta na rolach
+          href: rbac-overview.md
+    - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
+      href: migrate-from-v2-to-v3.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Rozpoczęcie pracy
-    items:
-    - name: Tworzenie konta — interfejs wiersza polecenia
-      href: create-account-cli-how-to.md
-    - name: Dostęp do interfejsów API — interfejs wiersza polecenia
-      href: access-api-cli-how-to.md
-    - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
-      href: media-reserved-units-cli-how-to.md
-    - name: Programowanie z użyciem architektury REST
+    - name: Rozpoczęcie pracy
       items:
-      - name: Łączenie z narzędziem Postman
-        href: media-rest-apis-with-postman.md
-    - name: Programowanie z użyciem zestawów SDK
-      href: developers-guide.md
+        - name: Tworzenie konta — interfejs wiersza polecenia
+          href: create-account-cli-how-to.md
+        - name: Dostęp do interfejsów API — interfejs wiersza polecenia
+          href: access-api-cli-how-to.md
+        - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
+          href: media-reserved-units-cli-how-to.md
+        - name: Programowanie z użyciem architektury REST
+          items:
+            - name: Łączenie z narzędziem Postman
+              href: media-rest-apis-with-postman.md
+        - name: Programowanie z użyciem zestawów SDK
+          href: developers-guide.md
+          items:
+            - name: Nawiązywanie połączeń przy użyciu języka Java
+              href: configure-connect-java-howto.md
+            - name: Łączenie z platformą .NET
+              href: configure-connect-dotnet-howto.md
+            - name: Łączenie z platformą Node.js
+              href: configure-connect-nodejs-howto.md
+            - name: Nawiązywanie połączeń przy użyciu języka Python
+              href: configure-connect-python-howto.md
+    - name: Przekazywanie zawartości
       items:
-      - name: Nawiązywanie połączeń przy użyciu języka Java
-        href: configure-connect-java-howto.md
-      - name: Łączenie z platformą .NET
-        href: configure-connect-dotnet-howto.md
-      - name: Łączenie z platformą Node.js
-        href: configure-connect-nodejs-howto.md
-  - name: Przekazywanie zawartości
-    items:
-    - name: Z adresu HTTPS — .NET
-      displayName: upload
-      href: job-input-from-http-how-to.md
-    - name: Z pliku lokalnego — .NET
-      displayName: upload
-      href: job-input-from-local-file-how-to.md
-    - name: Z pliku lokalnego — REST
-      displayName: upload
-      href: upload-files-rest-how-to.md
-  - name: Kodowanie zawartości
-    items:
-    - name: Adres HTTPS jako dane wejściowe zadania — .NET
-      displayName: encode, encoding
-      href: job-input-from-http-how-to.md
-    - name: Plik lokalny jako dane wejściowe zadania — .NET
-      displayName: encode, encoding
-      href: job-input-from-local-file-how-to.md
-    - name: Kodowanie za pomocą transformacji niestandardowej
+        - name: Z adresu HTTPS — .NET
+          displayName: upload
+          href: job-input-from-http-how-to.md
+        - name: Z pliku lokalnego — .NET
+          displayName: upload
+          href: job-input-from-local-file-how-to.md
+        - name: Z pliku lokalnego — REST
+          displayName: upload
+          href: upload-files-rest-how-to.md
+    - name: Kodowanie zawartości
       items:
-      - name: Przy użyciu platformy .NET
-        href: customize-encoder-presets-how-to.md
-      - name: Przy użyciu interfejsu wiersza polecenia
-        href: custom-preset-cli-howto.md
-      - name: Przy użyciu architektury REST
-        href: custom-preset-rest-howto.md
-  - name: Używanie usługi Event Grid
-    items:
-    - name: Monitorowanie zdarzeń — portal
-      href: monitor-events-portal-how-to.md
-    - name: Monitorowanie zdarzeń — interfejs wiersza polecenia
-      href: job-state-events-cli-how-to.md
-  - name: Ochrona zawartości
-    items:
-    - name: Pobieranie zasad dotyczących klucza zawartości — .NET
-      href: get-content-key-policy-dotnet-howto.md
-    - name: Szyfrowanie dynamiczne DRM — .NET
-      href: protect-with-drm.md
-    - name: Technologia FairPlay w trybie offline dla systemu iOS
-      href: offline-fairplay-for-ios.md
-    - name: Technologia Widevine w trybie offline dla systemu Android
-      href: offline-widevine-for-android.md
-    - name: Technologia PlayReady w trybie offline dla systemu Windows 10
-      href: offline-plaready-streaming-for-windows-10.md
-  - name: Tworzenie filtrów
-    items:
-    - name: Przy użyciu platformy .NET
-      href: filters-dynamic-manifest-dotnet-howto.md
-    - name: Przy użyciu architektury REST
-      href: filters-dynamic-manifest-rest-howto.md
-    - name: Przy użyciu interfejsu wiersza polecenia
-      href: filters-dynamic-manifest-cli-howto.md
+        - name: Adres HTTPS jako dane wejściowe zadania — .NET
+          displayName: 'encode, encoding'
+          href: job-input-from-http-how-to.md
+        - name: Plik lokalny jako dane wejściowe zadania — .NET
+          displayName: 'encode, encoding'
+          href: job-input-from-local-file-how-to.md
+        - name: Kodowanie za pomocą transformacji niestandardowej
+          items:
+            - name: Przy użyciu platformy .NET
+              href: customize-encoder-presets-how-to.md
+            - name: Przy użyciu interfejsu wiersza polecenia
+              href: custom-preset-cli-howto.md
+            - name: Przy użyciu architektury REST
+              href: custom-preset-rest-howto.md
+    - name: Używanie usługi Event Grid
+      items:
+        - name: Monitorowanie zdarzeń — portal
+          href: monitor-events-portal-how-to.md
+        - name: Monitorowanie zdarzeń — interfejs wiersza polecenia
+          href: job-state-events-cli-how-to.md
+    - name: Ochrona zawartości
+      items:
+        - name: Pobieranie zasad dotyczących klucza zawartości — .NET
+          href: get-content-key-policy-dotnet-howto.md
+        - name: Szyfrowanie dynamiczne DRM — .NET
+          href: protect-with-drm.md
+        - name: Technologia FairPlay w trybie offline dla systemu iOS
+          href: offline-fairplay-for-ios.md
+        - name: Technologia Widevine w trybie offline dla systemu Android
+          href: offline-widevine-for-android.md
+        - name: Technologia PlayReady w trybie offline dla systemu Windows 10
+          href: offline-plaready-streaming-for-windows-10.md
+    - name: Tworzenie filtrów
+      items:
+        - name: Przy użyciu platformy .NET
+          href: filters-dynamic-manifest-dotnet-howto.md
+        - name: Przy użyciu architektury REST
+          href: filters-dynamic-manifest-rest-howto.md
+        - name: Przy użyciu interfejsu wiersza polecenia
+          href: filters-dynamic-manifest-cli-howto.md
 - name: Dokumentacja
   items:
-  - name: Specyfikacja interfejsu OpenAPI (Swagger)
-    href: https://aka.ms/ams-v3-rest-sdk
-  - name: REST
-    href: https://aka.ms/ams-v3-rest-ref
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: https://aka.ms/ams-v3-cli-ref
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://aka.ms/ams-v3-dotnet-ref
-    - name: Java
-      href: https://aka.ms/ams-v3-java-ref
-    - name: Python
-      href: https://aka.ms/ams-v3-python-ref
-    - name: Node.js
-      href: https://aka.ms/ams-v3-nodejs-ref
-    - name: Przejdź
-      href: https://aka.ms/ams-v3-go-ref
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.media/allversions
+    - name: Specyfikacja interfejsu OpenAPI (Swagger)
+      href: 'https://aka.ms/ams-v3-rest-sdk'
+    - name: REST
+      href: 'https://aka.ms/ams-v3-rest-ref'
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: 'https://aka.ms/ams-v3-cli-ref'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://aka.ms/ams-v3-dotnet-ref'
+        - name: Java
+          href: 'https://aka.ms/ams-v3-java-ref'
+        - name: Python
+          href: 'https://aka.ms/ams-v3-python-ref'
+        - name: Node.js
+          href: 'https://aka.ms/ams-v3-nodejs-ref'
+        - name: Przejdź
+          href: 'https://aka.ms/ams-v3-go-ref'
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.media/allversions
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
-  - name: Specyfikacja interfejsu OpenAPI (Swagger)
-    href: https://aka.ms/ams-v3-rest-sdk
-  - name: Zestawy SDK/narzędzia
-    items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: https://aka.ms/ams-v3-cli
-    - name: .NET
-      href: https://aka.ms/ams-v3-dotnet-sdk
-    - name: Java
-      href: https://aka.ms/ams-v3-java-sdk
-    - name: Python
-      href: https://aka.ms/ams-v3-python-sdk
-    - name: Node.js
-      href: https://aka.ms/ams-v3-nodejs-sdk
-    - name: Ruby
-      href: https://aka.ms/ams-v3-ruby-sdk
-  - name: AMSE
-    href: https://github.com/Azure/Azure-Media-Services-Explorer
-  - name: Informacje o wersji
-    href: release-notes.md
-  - name: Limity przydziału i ograniczenia
-    href: limits-quotas-constraints.md
-  - name: Często zadawane pytania
-    href: frequently-asked-questions.md
-  - name: Chmury i regiony platformy Azure
-    href: azure-clouds-regions.md
-ms.openlocfilehash: adea36543cd734e61f10cb64bfba2e9557db8cf6
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563530"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: Specyfikacja interfejsu OpenAPI (Swagger)
+      href: 'https://aka.ms/ams-v3-rest-sdk'
+    - name: Zestawy SDK/narzędzia
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: 'https://aka.ms/ams-v3-cli'
+        - name: .NET
+          href: 'https://aka.ms/ams-v3-dotnet-sdk'
+        - name: Java
+          href: 'https://aka.ms/ams-v3-java-sdk'
+        - name: Python
+          href: 'https://aka.ms/ams-v3-python-sdk'
+        - name: Node.js
+          href: 'https://aka.ms/ams-v3-nodejs-sdk'
+        - name: Ruby
+          href: 'https://aka.ms/ams-v3-ruby-sdk'
+    - name: AMSE
+      href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
+    - name: Informacje o wersji
+      href: release-notes.md
+    - name: Limity przydziału i ograniczenia
+      href: limits-quotas-constraints.md
+    - name: Często zadawane pytania
+      href: frequently-asked-questions.md
+    - name: Chmury i regiony platformy Azure
+      href: azure-clouds-regions.md

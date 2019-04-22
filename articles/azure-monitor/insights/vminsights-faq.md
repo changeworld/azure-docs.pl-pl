@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243777"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698284"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -100,7 +100,7 @@ Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych jest oparty na mapie u
 * Monitorowane maszyny wirtualne znajdują się teraz w węźle grupy klienta i wykres pierścieniowy zawiera część monitorowanych vs niemonitorowanych maszyn wirtualnych w grupie.  Jego można również filtrować listę maszyn, gdy grupa jest rozwinięta.
 * Monitorowane maszyny wirtualne znajdują się teraz w węzłach grupy portów serwera, a wykres pierścieniowy zawiera część monitorowanych vs niemonitorowanych maszyn w grupie.  Jego można również filtrować listę maszyn, gdy grupa jest rozwinięta.
 * Zaktualizowano style mapy są bardziej spójne z mapy aplikacji z usługi Application insights.
-* Panele po stronie zostały zaktualizowane, ale jeszcze nie masz pełny zestaw integracji firmy, były obsługiwane w rozwiązania Service Map — zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
+* Panele po stronie zostały zaktualizowane, a nie masz pełny zestaw integracji firmy, były obsługiwane w rozwiązania Service Map — zarządzanie aktualizacjami, śledzenie zmian, zabezpieczeń i pomocy technicznej. 
 * Opcja dotyczące wybierania grup i komputerów do mapowania została zaktualizowana i obsługuje teraz subskrypcji, grupy zasobów, zestawy skalowania maszyn wirtualnych platformy Azure i usług w chmurze.
 * Nie można utworzyć nowych grup składników mapy usług maszyny w usłudze Azure Monitor dla funkcji mapy maszyn wirtualnych.  
 
@@ -125,6 +125,12 @@ Gdy wprowadziliśmy ulepszenia do mapy do obsługi dużych i złożonych konfigu
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Dlaczego Wykres sieci na karcie Wydajność wygląda inaczej niż wykresu sieci, na stronie Omówienie maszyny Wirtualnej platformy Azure?
 
 Strona przeglądu Maszynie wirtualnej platformy Azure Wyświetla wykresy oparte na hosta pomiaru działań w maszynie Wirtualnej gościa.  Wykresu sieci na omówienie maszyny Wirtualnej platformy Azure tylko Wyświetla ruch sieciowy będą naliczane.  Obejmuje to ruch między sieciami wirtualnymi.  Dane i wykresy wyświetlane dla usługi Azure Monitor dla maszyn wirtualnych na podstawie danych z maszyny Wirtualnej gościa i wykresach sieci są wyświetlane wszystkie TCP/IP ruchu przychodzącego i wychodzącego do tej maszyny Wirtualnej, w tym między sieciami wirtualnymi.
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Sposób mierzenia czas odpowiedzi dla danych przechowywanych w VMConnection i wyświetlane w panelu połączenia i skoroszyty?
+
+Czas odpowiedzi jest przybliżeniem. Ponieważ kod aplikacji nie jest zinstrumentowanie, nie tak naprawdę wiemy, kiedy rozpoczyna się żądaniem i po nadejściu odpowiedzi. Zamiast tego zaobserwować wysyłanych z połączenia danych, a następnie dane powracające dla tego połączenia. Naszego agenta śledzi te wysyła i odbiera i spróbuje je sparować: odbiera sekwencję wysyła, następuje sekwencja jest interpretowany jako parze żądanie/odpowiedź. Czas między tych operacji to czas odpowiedzi. Będzie ona zawierała opóźnienie sieci i czasu przetwarzania na serwerze.
+
+Zbliżenia działa dobrze w przypadku protokołów, które są na podstawie żądań/odpowiedzi: pojedyncze żądanie trafia połączenia i nadejściu pojedynczą odpowiedź. Dotyczy to HTTP (S) (bez ich przetwarzanie potokowe), ale nie spełnia dla innych protokołów.
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Czy ich ograniczenia, jeśli jestem na Log Analytics bezpłatnego planu cenowego?
 Jeśli skonfigurowano usługi Azure Monitor z obszaru roboczego usługi Log Analytics przy użyciu *bezpłatna* warstwy cenowej, usługi Azure Monitor dla funkcji mapy maszyn wirtualnych obsługują tylko pięć maszyn połączonych połączone z obszarem roboczym. W przypadku pięciu maszyn wirtualnych podłączone do obszaru roboczego warstwy bezpłatna rozłączyć jednej z maszyn wirtualnych, a następnie później Połącz z nową maszynę Wirtualną, nowa maszyna wirtualna nie jest monitorowane i widoczne na stronie mapy.  

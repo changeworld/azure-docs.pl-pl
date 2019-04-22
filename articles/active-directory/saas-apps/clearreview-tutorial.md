@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/21/2019
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa6a88971ca69fa910435d00722dcdf12db44f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880895"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698983"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Clear Review
 
@@ -38,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby skonfigurować integrację usługi Azure AD z aplikacją Clear Review, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja aplikacji Clear Review z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -118,33 +119,21 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clear Revi
     > [!NOTE]
     > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta Clear Review ](https://clearreview.com/contact/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Aplikacja Clear Review oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+6. Wyczyść przeglądanie aplikacji oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Wyczyść przeglądanie aplikacji oczekuje **nameidentifier** mają być mapowane z **user.mail**, więc należy edytować mapowanie atrybutów, klikając **Edytuj** ikonę i zmiany Mapowanie atrybutów.
 
     ![image](common/edit-attribute.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
-    
-    | Name (Nazwa) | Atrybut źródłowy | 
-    | ---------------| --------------- |
-    | Wartość identyfikatora nazwy   | user.mail |
+7. Na **atrybutów użytkowników i oświadczeń** okno dialogowe, należy wykonać następujące czynności:
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+    a. Kliknij przycisk **ikonę edycji** po prawej stronie **nazwę wartości identyfikatora**.
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](common/new-attribute-details.png)
+    ![image](./media/clearreview-tutorial/attribute01.png)
 
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+    b. Z **atrybut źródłowy** listy wybierz **user.mail** atrybutu wartości dla tego wiersza.
 
-    d. Pozostaw pole **Przestrzeń nazw** puste.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij pozycję **Zapisz**.
+    c. Kliknij pozycję **Zapisz**.
 
 8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -158,7 +147,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clear Revi
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-clear-review-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Clear Review
 
@@ -168,7 +157,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clear Revi
 
     ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Wybierz przycisk **Change** (Zmień) w dolnej części strony.
+3. W **integracje** sekcji w dolnej części strony kliknij **zmiany** przycisk po prawej stronie **ustawienia rejestracji jednokrotnej**.
 
     ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -176,7 +165,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clear Revi
 
     ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. W polu tekstowym **Issuer URL** (Adres URL wystawcy) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+    a. W **adres URL wystawcy** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal.
 
     b. W polu tekstowym **SAML Endpoint** (Punkt końcowy SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.  
 
@@ -184,7 +173,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clear Revi
 
     d. Otwórz pobrany certyfikat w programie Notatnik i wklej jego zawartość w polu tekstowym **Certyfikat X.509**.   
 
-5. Kliknij pozycję **Zapisz**.
+    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 

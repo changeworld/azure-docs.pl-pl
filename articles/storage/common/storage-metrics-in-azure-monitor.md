@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 426dd265f4d608b8dd3c9ab746479ea103419562
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 244d7fc3caa96173e408a193e13acd656d4a7f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579346"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698779"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -342,8 +342,8 @@ Usługa Azure Storage udostępnia następujące metryki pojemności w usłudze A
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| BlobCapacity | Suma magazynu obiektów Blob na koncie magazynu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
-| BlobCount    | Liczba obiektów blob przechowywanych na koncie magazynu. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
+| BlobCapacity | Suma magazynu obiektów Blob na koncie magazynu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 <br/> Wymiary: **BlobType**, i **BlobTier** ([definicji](#metrics-dimensions)) |
+| BlobCount    | Liczba obiektów blob przechowywanych na koncie magazynu. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 <br/> Wymiary: **BlobType**, i **BlobTier** ([definicji](#metrics-dimensions)) |
 | ContainerCount    | Liczba kontenerów na koncie magazynu. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
 | IndexCapacity     | Ilość miejsca używanego przez indeks hierarchiczne Gen2 Azure Data Lake Store <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Średnia <br/> Przykład wartości: 1024 |
 
@@ -392,11 +392,12 @@ Usługa Azure Storage obsługuje następujące wymiary metryk w usłudze Azure M
 
 | Nazwa wymiaru | Opis |
 | ------------------- | ----------------- |
-| BlobType | Typ obiektu blob na potrzeby tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob** i **PageBlob**. Dołącz obiekt Blob znajduje się w BlockBlob. |
-| ResponseType | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>ServerOtherError: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li> ServerBusyError: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li> ServerTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li> Powodzenie: Pomyślne żądania.|
-| GeoType | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości obejmują podstawowe i pomocnicze. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
-| ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości obejmują: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>SAS: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>Uwierzytelnianie OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowy: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja została żądania wstępnego.</li> |
+| **BlobType** | Typ obiektu blob na potrzeby tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob**, **PageBlob**, i **usługi Azure Data Lake Storage**. Dołącz obiekt Blob znajduje się w BlockBlob. |
+| **BlobTier** | Usługa Azure storage oferuje dostęp do różnych warstw, które umożliwiają przechowywanie danych obiektów blob w sposób najbardziej efektywny. Zobacz więcej w [warstwy obiektu blob usługi Azure Storage](../blobs/storage-blob-storage-tiers.md). Obsługiwane wartości to: <br/> <li>**Gorąca**: Warstwy gorąca i używanie</li> <li>**Chłodna**: Warstwa chłodna</li> <li>**Archiwum**: Warstwę archiwum</li> <li>**Premium**: Blokowe obiekty blob w warstwie Premium</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy warstwy premium stronicowych obiektów blob</li> <li>**Standardowa**: Typ warstwy standardowej strony obiektów Blob</li> <li>**Untiered**: Typ warstwy konto magazynu ogólnego przeznaczenia w wersji 1</li> |
+| **GeoType** | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości to **podstawowego** i **dodatkowej**. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
+| **ResponseType** | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>**ServerOtherError**: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li>**ServerBusyError**: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li>**ServerTimeoutError**: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li>**AuthorizationError**: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li>**NetworkError**: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>**ClientThrottlingError**: Błąd ograniczania przepływności po stronie klienta. </li> <li>**ClientTimeoutError**: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li>**ClientOtherError**: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li>**Success**: Żądanie zakończone powodzeniem</li> |
+| **ApiName** | Nazwa operacji. Na przykład: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| **Uwierzytelnianie** | Typ uwierzytelniania używany w transakcji. Dostępne wartości obejmują: <br/> <li>**AccountKey**: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>**SAS**: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>**OAuth**: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>**Anonimowe**: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>**AnonymousPreflight**: Transakcja została żądania wstępnego.</li> |
 
 W przypadku wymiarów pomocnicze metryki należy określić wartości wymiaru, aby wyświetlić odpowiednie wartości metryk. Na przykład, jeśli przyjrzymy się **transakcji** wartość dla pomyślnej odpowiedzi, trzeba filtrować **ResponseType** wymiaru przy użyciu **Powodzenie**. Lub jeśli przyjrzymy się **BlobCount** wartość dla blokowych obiektów Blob, trzeba filtrować **BlobType** wymiaru przy użyciu **BlockBlob**.
 

@@ -4,17 +4,16 @@ description: Rozwiązywanie problemów w przypadku korzystania z diagnostyki pla
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: conceptual
+ms.date: 04/17/2019
+ms.author: robb
+ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822140"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699102"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
@@ -82,7 +81,7 @@ Jeśli nie ma danych dla określonej metryki, sprawdź **konfiguracji diagnostyk
 Jeśli konfiguracja jest ustawiona poprawnie, ale nadal nie widzisz dane metryk, użyj następujących wytycznych, aby ułatwić rozwiązywanie problemów z.
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Nie jest uruchomienie diagnostyki platformy Azure
+## <a name="azure-diagnostics-is-not-starting"></a>Nie uruchamia usługi Diagnostyka Azure
 Aby uzyskać informacji na temat przyczyny niepowodzenia diagnostyki Azure do uruchomienia, zobacz **DiagnosticsPluginLauncher.log** i **DiagnosticsPlugin.log** pliki w lokalizacji plików dziennika, która została dostarczona wcześniej.
 
 Jeśli te dzienniki wskazują `Monitoring Agent not reporting success after launch`, oznacza to, wystąpił błąd podczas uruchamiania MonAgentHost.exe. Sprawdź dzienniki w lokalizacji, która jest wskazywana dla `MonAgentHost log file` w poprzedniej sekcji.
@@ -105,9 +104,16 @@ Najczęstszą przyczyną, że dane zdarzenia nie jest wyświetlana jest, że inf
 
 Rozwiązanie: Popraw konfigurację diagnostyki i ponownie zainstaluj diagnostyki.
 
-Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i sprawdź, czy uruchomiono DiagnosticsPlugin.exe i MonAgentCore.exe. Jeśli nie są uruchomione, postępuj zgodnie z instrukcjami w usłudze Diagnostyka Azure nie jest uruchamiana.
+Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i upewnij się, że *DiagnosticsPlugin.exe* i *MonAgentCore.exe* są uruchomione. Jeśli nie są uruchomione, wykonaj kroki opisane w [nie uruchamia usługi Azure Diagnostics](#azure-diagnostics-is-not-starting).
 
 Jeśli są uruchomione procesy, przejdź do strony [danych wprowadzenie przechwytywane lokalnie?](#is-data-getting-captured-locally) i postępuj zgodnie z instrukcjami.
+
+Jeśli to nie rozwiąże problemu, spróbuj:
+
+1. Odinstaluj agenta
+2. Usuń katalog C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
+3. Ponownie zainstaluj agenta
+
 
 ### <a name="part-of-the-data-is-missing"></a>Brakuje części danych
 Jeśli otrzymujesz pewne dane, ale nie wszystkich, oznacza to, potok kolekcji/transfer danych jest ustawiona poprawnie. Aby zawęzić ten problem, postępuj zgodnie z podsekcje, w tym miejscu.

@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 3/23/2019
+ms.date: 4/11/2019
 ms.author: tamram
-ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: b3e2f018a3f1ba2563ba8cf2df6dfd4959be592e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395557"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737220"
 ---
 | Zasób | Środowisko docelowe        |
 |----------|---------------|
@@ -21,3 +21,6 @@ ms.locfileid: "58395557"
 | Maksymalny rozmiar uzupełnialnego obiektu blob | 50 000 x 4 MiB (około 195 GiB) |
 | Maksymalny rozmiar stronicowych obiektów blob | 8 TiB |
 | Maksymalna liczba przechowywanych zasad dostępu dla kontenera obiektów blob | 5 |
+|Docelowa przepustowość dla pojedynczego obiektu blob |Maksymalnie limity ruchem przychodzącym/wychodzącym konta magazynu<sup>1</sup> |
+
+<sup>1</sup> przepływność pojedynczego obiektu zależy od wielu czynników, w tym między innymi: współbieżność, rozmiar operacji, warstwy wydajności, szybkości źródła przekazywania i lokalizację docelową dla plików do pobrania.

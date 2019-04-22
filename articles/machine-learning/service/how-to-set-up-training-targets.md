@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046159"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683906"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -45,7 +45,7 @@ Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych ele
 |[Zdalnego maszyny Wirtualnej](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Wszystkie zasoby obliczeniowe elementy docelowe mogą być ponownie używane dla wielu zadań szkoleniowych**. Na przykład po dołączeniu maszyny Wirtualnej z systemem zdalnym do swojego obszaru roboczego, można ponownie użyć go dla wielu zadań.
@@ -92,7 +92,7 @@ Użyj celów obliczeń poniżej, aby skonfigurować te sekcje:
 * [Komputer lokalny](#local)
 * [Usługi Azure Machine Learning obliczeń](#amlcompute)
 * [Zdalnych maszyn wirtualnych](#vm)
-* [Azure HDInsight](#hdinsight)
+* [Usługa Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Komputer lokalny
@@ -377,7 +377,6 @@ Możesz uzyskać dostęp obliczeniowych elementów docelowych, które są skojar
 
 Aby uzyskać więcej informacji, zobacz [zarządzania zasobami](reference-azure-machine-learning-cli.md#resource-management).
 
-
 ## <a id="submit"></a>Prześlij szkolenia uruchamiania
 
 Po utworzeniu konfiguracji uruchamiania, użyj do uruchamiania eksperymentu.  Wzorca kodu, aby przesłać przebiegu szkolenia jest taka sama dla wszystkich typów obliczeniowych elementów docelowych:
@@ -385,6 +384,13 @@ Po utworzeniu konfiguracji uruchamiania, użyj do uruchamiania eksperymentu.  Wz
 1. Utworzyć eksperyment do uruchomienia
 1. Prześlij przebiegu.
 1. Poczekaj, aż działanie zakończyć.
+
+> [!IMPORTANT]
+> Po przesłaniu wykonywania szkolenia migawkę katalogu, który zawiera skrypty szkolenia jest tworzony i wysyłane do obliczeniowego elementu docelowego. Jest on również zapisany w ramach eksperymentu w obszarze roboczym. Po zmianie plików i przesłać Uruchom ponownie, tylko zmienione pliki zostaną przekazane.
+>
+> Aby uniemożliwić dołączanie w migawce pliki, należy utworzyć [.gitignore](https://git-scm.com/docs/gitignore) lub `.amlignore` plików w katalogu i Dodaj pliki do niego. `.amlignore` Plików używa tej samej składni i wzorce jako [.gitignore](https://git-scm.com/docs/gitignore) pliku. Jeśli oba pliki istnieją, `.amlignore` plik ma pierwszeństwo.
+> 
+> Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshot).
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
@@ -399,8 +405,6 @@ Przesyłanie eksperymentu za pomocą `ScriptRunConfig` obiektu.  Ten obiekt zawi
 * **source_directory**: Katalog źródłowy, który zawiera skrypt szkolenia
 * **skrypt**: Skrypt szkolenia
 * **run_config**: Konfiguracja uruchamiania, który z kolei definiuje, gdzie nastąpi szkolenia.
-
-Po przesłaniu wykonywania szkolenia migawkę katalogu, który zawiera skrypty szkolenia jest tworzony i wysyłane do obliczeniowego elementu docelowego. Aby uzyskać więcej informacji, zobacz [migawek](concept-azure-machine-learning-architecture.md#snapshot).
 
 Na przykład, aby użyć [lokalny element docelowy](#local) konfiguracji:
 
@@ -418,8 +422,8 @@ Możesz też:
 ## <a name="notebook-examples"></a>Przykłady notesu
 
 Zobacz te notesy przykłady szkolenie przy użyciu różnych celów obliczeń:
-* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [jak-to-użyj-usługi Azure ml/szkolenia](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [Samouczki/img klasyfikacji — część 1 — training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

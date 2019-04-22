@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437343"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699274"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics w usłudze Azure Monitor
 
@@ -124,9 +124,9 @@ lub
 1. W bloku obszaru roboczego w obszarze **ustawienia**, wybierz opcję **Zaawansowane ustawienia**.
 1. Przejdź do **połączone źródła** > **serwerów Windows** i wybierz **pobierania usługi Log Analytics gateway**.
 
-## <a name="install-the-log-analytics-gateway"></a>Instalowanie bramy usługi Log Analytics
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Instalowanie bramy usługi Log Analytics, za pomocą Kreatora instalacji
 
-Aby zainstalować bramę, wykonaj następujące kroki.  (Jeśli zainstalowano poprzednią wersję, o nazwie usługi przesyłania dalej Log Analytics, nastąpi uaktualnienie do tej wersji.)
+Aby zainstalować bramę przy użyciu Kreatora instalacji, wykonaj następujące kroki. 
 
 1. Folder docelowy, kliknij dwukrotnie **gateway.msi usługi Log Analytics**.
 1. Na **stronie powitalnej** wybierz pozycję **Dalej**.
@@ -152,6 +152,40 @@ Aby zainstalować bramę, wykonaj następujące kroki.  (Jeśli zainstalowano po
 
    ![Zrzut ekranu przedstawiający usług lokalnych, pokazujący, że jest uruchomiona brama pakietu OMS](./media/gateway/gateway-service.png)
 
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Instalowanie bramy usługi Log Analytics przy użyciu wiersza polecenia
+Pobrany plik bramy to pakiet Instalatora Windows, który obsługuje instalacji dyskretnej z wiersza polecenia lub inne zautomatyzowanej metody. Jeśli użytkownik nie jest zaznajomiony z opcjami standardowymi wiersza polecenia dla Instalatora Windows, zobacz [opcje wiersza polecenia](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).   
+
+W poniższej tabeli wymieniono parametrów obsługiwanych przez Instalatora.
+
+|Parametry| Uwagi|
+|----------|------| 
+|NUMER_PORTU | Numer portu TCP dla bramy do nasłuchiwania |
+|PROXY | Adres IP serwera proxy |
+|INSTALLDIR | Pełną ścieżkę, aby określić katalog instalacyjny plików oprogramowania bramy |
+|NAZWA UŻYTKOWNIKA | Identyfikator użytkownika do uwierzytelniania przy użyciu serwera proxy |
+|HASŁO | Hasło użytkownika, identyfikator do uwierzytelniania przy użyciu serwera proxy |
+|LicenseAccepted | Określ wartość **1** Aby sprawdzić, zaakceptuj umowę licencyjną |
+|HASAUTH | Określ wartość **1** gdy są określone parametry nazwy użytkownika i HASŁA |
+|HASPROXY | Określ wartość **1** podczas określania adresu IP dla **PROXY** parametru |
+
+Aby dyskretnie zainstalować bramę i skonfigurować go przy użyciu adresu serwera proxy przeznaczonego numeru portu, wpisz następujące polecenie:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+```
+
+Przy użyciu opcji wiersza polecenia /qn ukrywa Instalatora, /qb przedstawiono konfigurację podczas instalacji dyskretnej.  
+
+Jeśli musisz podać poświadczenia do uwierzytelniania z serwerem proxy, wpisz następujące polecenie:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+```
+
+Po zakończeniu instalacji możesz sprawdzić te ustawienia są akceptowane (bizonów nazwy użytkownika i hasła) przy użyciu następujących poleceń cmdlet programu PowerShell:
+
+- **Get-OMSGatewayConfig** — zwraca brama jest skonfigurowana do nasłuchiwania na porcie TCP.
+- **Get-OMSGatewayRelayProxy** — zwraca adres IP, który został skonfigurowany do komunikowania się z serwera proxy.
 
 ## <a name="configure-network-load-balancing"></a>Konfigurowanie równoważenia obciążenia sieciowego 
 Można skonfigurować bramy w celu zapewnienia wysokiej dostępności przy użyciu równoważenia obciążenia sieciowego (NLB) firmy Microsoft [obciążenia równoważenia sieciowego (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [usługi Azure Load Balancer](../../load-balancer/load-balancer-overview.md), lub modułów równoważenia obciążenia oparte na sprzęcie. Moduł równoważenia obciążenia zarządza ruchem, przekierowując żądanego połączenia z agentów usługi Log Analytics lub serwerów zarządzania programu Operations Manager w jego węzłach. Jeśli jeden serwer bramy ulegnie awarii, ruch jest kierowany do innych węzłów.
