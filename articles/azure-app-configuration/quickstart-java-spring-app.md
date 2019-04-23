@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e52c14051d038ae36af9f31f1ab13da11d032a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d023c6ec9c3d24400fd2b7b9fcce9568aa851214
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699291"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000029"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji Java Spring korzystającej z usługi App Configuration
 
@@ -35,26 +35,7 @@ Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
-1. Aby utworzyć nowy magazyn konfiguracji aplikacji, zaloguj się do [witryny Azure portal](https://aka.ms/azconfig/portal). W lewym górnym rogu strony wybierz **+ Utwórz zasób**. W **Przeszukaj witrynę Marketplace** wprowadź **konfiguracji aplikacji** i naciśnij klawisz Enter.
-
-    ![Wyszukiwanie usługi App Configuration](./media/quickstarts/azure-app-configuration-new.png)
-
-2. Wybierz **konfiguracji aplikacji** z wyników wyszukiwania, a następnie wybierz **Utwórz**.
-
-3. Na **konfiguracji aplikacji** > **Utwórz** strony, wprowadź następujące ustawienia.
-
-    | Ustawienie | Sugerowana wartość | Opis |
-    |---|---|---|
-    | **Nazwa zasobu** | Nazwa unikatowa w skali globalnej | Wprowadź unikatową nazwę zasobu magazynu konfiguracji aplikacji. Nazwa musi być ciągiem od 1 do 63 znaków i może zawierać tylko cyfry, litery i znak `-`. Nazwa nie może zaczynać ani kończyć `-` znak i następujących po sobie `-` znaki są nieprawidłowe.  |
-    | **Subskrypcja** | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, której chcesz użyć do testowania usługi App Configuration. Jeśli Twoje konto ma tylko jedną subskrypcję, automatycznie jest zaznaczone i **subskrypcji** listy rozwijanej nie są wyświetlane. |
-    | **Grupa zasobów** | *AppConfigTestResources* | Wybierz lub utwórz grupę zasobów dla zasobu magazynu konfiguracji aplikacji. Ta grupa jest przydatne do organizowania wielu zasobów, które można usunąć w tym samym czasie przez usunięcie grupy zasobów. Więcej informacji można znaleźć w temacie [Używanie grup zasobów do zarządzania zasobami platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-    | **Lokalizacja** | *Środkowe stany USA* | Użyj opcji **Lokalizacja**, aby określić lokalizację geograficzną, w której będzie hostowany zasób usługi SignalR. Aby uzyskać najlepszą wydajność Utwórz zasób w tym samym regionie, co inne składniki aplikacji. |
-
-    ![Tworzenie magazynu konfiguracji aplikacji](./media/quickstarts/azure-app-configuration-create.png)
-
-4. Wybierz pozycję **Utwórz**. Wdrożenie może potrwać kilka minut.
-
-5. Po zakończeniu wdrożenia wybierz **ustawienia** > **klucze dostępu**. Zanotuj albo tylko do odczytu lub podstawowy odczytu i zapisu parametry połączenia klucza podstawowego. Użyj tych parametrów połączenia jest później skonfigurować aplikację do komunikowania się z utworzonego magazynu konfiguracji aplikacji.
+[!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
 6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
 
@@ -172,4 +153,4 @@ W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplik
 Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)

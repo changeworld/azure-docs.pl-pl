@@ -13,7 +13,7 @@ ms.author: v-jansko
 ms.custom: seodec18
 ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59793993"
@@ -26,7 +26,7 @@ Aby otrzymywać informacje wyrównanie, używana jest metoda Translate i zawiera
 ## <a name="alignment-information-format"></a>Format informacji o wyrównania
 Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdego wyrazu w źródle. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym oddzielone miejsca języków (skrypt), takich jak chiński:
 
-[[SourceTextStartIndex]:[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]\:[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 Przykład parametrów wyrównanie: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 

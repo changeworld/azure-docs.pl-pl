@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: MT
+ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302703"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150153"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure w przypadku wdrożeń w trybie
 W tym artykule opisano, jak typy zasobów obsługuje usuwania, gdy nie w szablonie, które zostało wdrożone w trybie.
@@ -23,24 +23,24 @@ Typy zasobów oznaczone `No` nie są automatycznie usuwane nie w tym szablonie; 
 Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobierz [ukończenia — tryb deletion.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | DomainServices | Yes | 
 | DomainServices/oucontainer | Nie | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | diagnosticSettings | Nie | 
 | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | supportProviders | Nie | 
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | aadsupportcases | Nie | 
 | addsservices | Nie | 
@@ -52,7 +52,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | services | Nie | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Konfiguracje | Nie | 
 | generateRecommendations | Nie | 
@@ -60,7 +60,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | pominięć | Nie | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | actionRules | Nie | 
 | alerts | Nie | 
@@ -72,24 +72,24 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | smartGroups | Nie | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | serwerów | Yes | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | reportFeedback | Nie | 
 | usługa | Yes | 
 | validateServiceName | Nie | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | attestationProviders | Nie | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | classicAdministrators | Nie | 
 | denyAssignments | Nie | 
@@ -104,7 +104,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | roleDefinitions | Nie | 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | automationAccounts | Yes | 
 | automationAccounts/configurations | Yes | 
@@ -114,7 +114,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | automationAccounts/webhooks | Nie | 
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Środowiska | Nie | 
 | środowiska/kont | Nie | 
@@ -122,24 +122,24 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | środowiska/kont/przestrzenie nazw/konfiguracji | Nie | 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | b2cDirectories | Yes | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | rejestracje | Yes | 
 | registrations/customerSubscriptions | Nie | 
 | rejestracje/produktów | Nie | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | batchAccounts | Yes | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | billingAccounts | Nie | 
 | billingAccounts/billingProfiles | Nie | 
@@ -193,18 +193,18 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | usagePlans | Nie | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | mapApis | Yes | 
 | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | BizTalk | Yes | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | blueprintAssignments | Nie | 
 | blueprintAssignments/assignmentOperations | Nie | 
@@ -215,20 +215,20 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | schematy/wersji/artefaktów | Nie | 
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | botServices | Yes | 
 | botServices/kanałów | Nie | 
 | botServices/połączeń | Nie | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Redis | Yes | 
 | RedisConfigDefinition | Nie | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | appliedReservations | Nie | 
 | calculatePrice | Nie | 
@@ -247,7 +247,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | validateReservationOrder | Nie | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | edgenodes | Nie | 
 | Profile | Yes | 
@@ -257,14 +257,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | validateProbe | Nie | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | certificateOrders | Yes | 
 | zamówień certyfikatów/certyfikaty | Nie | 
 | validateCertificateRegistrationInformation | Nie | 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Możliwości | Nie | 
 | domainNames | Nie | 
@@ -283,12 +283,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | maszyn wirtualnych/diagnosticSettings | Nie | 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | classicInfrastructureResources | Nie | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Możliwości | Nie | 
 | expressRouteCrossConnections | Nie | 
@@ -302,10 +302,10 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | virtualNetworks/virtualNetworkPeerings | Nie | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Możliwości | Nie | 
-| Dyski | Nie | 
+| dyski | Nie | 
 | images | Nie | 
 | osImages | Nie | 
 | osPlatformImages | Nie | 
@@ -318,21 +318,21 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Dozwolona | Nie | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Usługi RateCard | Nie | 
 | UsageAggregates | Nie | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | availabilitySets | Yes | 
-| Dyski | Yes | 
+| dyski | Yes | 
 | images | Yes | 
 | restorePointCollections | Yes | 
 | restorePointCollections/restorePoints | Nie | 
@@ -350,7 +350,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nie | 
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | AggregatedCost | Nie | 
 | Salda | Nie | 
@@ -373,13 +373,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | UsageDetails | Nie | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | containerGroups | Yes | 
 | serviceAssociationLinks | Nie | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | rejestry | Yes | 
 | rejestry/kompilacji | Nie | 
@@ -405,24 +405,24 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | elementy webhook/rejestrów/ping | Nie | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | containerServices | Yes | 
 | managedClusters | Yes | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | aplikacje | Yes | 
 | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Alerty | Nie | 
 | BillingAccounts | Nie | 
@@ -436,7 +436,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Raporty | Nie | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Koncentratory | Yes | 
 | hubs/authorizationPolicies | Nie | 
@@ -453,33 +453,33 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | hubs/widgetTypes | Nie | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | zadania | Yes | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Yes | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | obszary robocze | Yes | 
 | workspaces/virtualNetworkPeerings | Nie | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | katalogi | Yes | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | connectionManagers | Yes | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | dataFactories | Yes | 
 | dataFactories/diagnosticSettings | Nie | 
@@ -488,7 +488,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | fabryki/integrationRuntimes | Nie | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 | accounts/dataLakeStoreAccounts | Nie | 
@@ -496,34 +496,34 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | accounts/storageAccounts/containers | Nie | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 | accounts/eventGridFilters | Nie | 
 | konta/firewallRules | Nie | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | services | Yes | 
 | usługi/projekty | Yes | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | serwerów | Yes | 
 | servers/recoverableServers | Nie | 
 | servers/virtualNetworkRules | Nie | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | serwerów | Yes | 
 | servers/recoverableServers | Nie | 
 | servers/virtualNetworkRules | Nie | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | serwerów | Yes | 
 | serwery/doradców | Nie | 
@@ -534,7 +534,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | serwery/waitStatistics | Nie | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | IotHubs | Yes | 
 | IotHubs/eventGridFilters | Nie | 
@@ -542,12 +542,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Sposoby użycia | Nie | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Kontrolery | Yes | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Warsztaty | Yes | 
 | labs/serviceRunners | Yes | 
@@ -555,13 +555,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Harmonogramy | Yes | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | databaseAccountNames | Nie | 
 | databaseAccounts | Yes | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | domeny | Yes | 
 | domeny/domainOwnershipIdentifiers | Nie | 
@@ -570,14 +570,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | validateDomainRegistrationInformation | Nie | 
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | lcsprojects | Nie | 
 | lcsprojects/clouddeployments | Nie | 
 | lcsprojects/łączników | Nie | 
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | domeny | Yes | 
 | domeny/tematów | Nie | 
@@ -587,7 +587,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | topicTypes | Nie | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Klastry | Yes | 
 | przestrzenie nazw | Yes | 
@@ -598,13 +598,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | przestrzenie nazw/eventhubs/consumergroups | Nie | 
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | danych | Nie | 
 | dostawcy | Nie | 
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Rejestrowanie | Nie | 
 | galleryitems | Nie | 
@@ -620,29 +620,29 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | retrieveresourcesbyid | Nie | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | guestConfigurationAssignments | Nie | 
 | Oprogramowanie | Nie | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | hanaInstances | Yes | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
-| Klastry | Yes | 
+| Klastry | Nie | 
 | klastry/aplikacji | Nie | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | zadania | Yes | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | labelGroups | Nie | 
 | labelGroups/etykiety | Nie | 
@@ -651,7 +651,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | labelGroups/labels/subLabels/conditions | Nie | 
 
 ## <a name="microsoftinsights"></a>microsoft.insights
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | actiongroups | Yes | 
 | activityLogAlerts | Yes | 
@@ -683,23 +683,23 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | skoroszyty | Yes | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | diagnosticSettings | Nie | 
 | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | IoTApps | Yes | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Graph | Yes | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | deletedVaults | Nie | 
 | Magazyny | Yes | 
@@ -707,7 +707,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Magazyny/klucze tajne | Nie | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Klastry | Yes | 
 | klastry/baz danych | Nie | 
@@ -715,41 +715,41 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | klastry/baz danych/eventhubconnections | Nie | 
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | labaccounts | Yes | 
 | użytkownicy | Nie | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | dzienniki | Nie | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | integrationAccounts | Yes | 
 | Przepływy pracy | Yes | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | commitmentPlans | Yes | 
 | webServices | Yes | 
 | Obszary robocze | Yes | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 | konta/obszarów roboczych | Yes | 
@@ -759,24 +759,24 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | obszary robocze/teamAccounts/projektów | Yes | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | obszary robocze | Yes | 
 | obszary robocze/usługi obliczeniowe | Nie | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Tożsamości | Nie | 
 | userAssignedIdentities | Yes | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | getEntities | Nie | 
 | managementGroups | Nie | 
@@ -785,13 +785,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | tenantBackfillStatus | Nie | 
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 | accounts/eventGridFilters | Nie | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Oferty | Nie | 
 | offerTypes | Nie | 
@@ -805,19 +805,19 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | produkty | Nie | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | classicDevServices | Yes | 
 | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Umowy | Nie | 
 | offertypes | Nie | 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | mediaservices | Yes | 
 | mediaservices/accountFilters | Nie | 
@@ -837,12 +837,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | zadania mediaservices/przekształceń | Nie | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Projekty | Yes | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | applicationGateways | Yes | 
 | applicationSecurityGroups | Yes | 
@@ -868,7 +868,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | dnszones/TXT | Nie | 
 | expressRouteCircuits | Yes | 
 | expressRouteServiceProviders | Nie | 
-| frontdoors | Yes | 
+| usługi Frontdoor | Yes | 
 | frontdoorWebApplicationFirewallPolicies | Yes | 
 | getDnsResourceReference | Nie | 
 | interfaceEndpoints | Yes | 
@@ -903,13 +903,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | webApplicationFirewallPolicies | Yes | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | przestrzenie nazw | Yes | 
 | namespaces/notificationHubs | Yes | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | urządzenia | Nie | 
 | linkTargets | Nie | 
@@ -920,7 +920,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | workspaces/query | Nie | 
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | managementassociations | Nie | 
 | managementconfigurations | Yes | 
@@ -928,7 +928,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | wyświetlenia | Yes | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | policyEvents | Nie | 
 | policyStates | Nie | 
@@ -936,35 +936,35 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | korygowania funkcję | Nie | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | konsole | Nie | 
 | Pulpity nawigacyjne | Yes | 
 | userSettings | Nie | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | workspaceCollections | Yes | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Pojemności | Yes | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | accounts | Yes | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | backupProtectedItems | Nie | 
 | Magazyny | Yes | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | przestrzenie nazw | Yes | 
 | przestrzenie nazw/reguł autoryzacji | Nie | 
@@ -974,13 +974,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | przestrzenie nazw/wcfrelays/reguł autoryzacji | Nie | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | zasoby | Nie | 
 | subscriptionsStatus | Nie | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | availabilityStatuses | Nie | 
 | childAvailabilityStatuses | Nie | 
@@ -990,7 +990,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | powiadomienia | Nie | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | wdrożenia | Nie | 
 | Wdrożenia/operations | Nie | 
@@ -1009,25 +1009,25 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Dzierżaw | Nie | 
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | aplikacje | Yes | 
 | saasresources | Nie | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | przepływy | Yes | 
 | kolekcjach | Yes | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | resourceHealthMetadata | Nie | 
 | searchServices | Yes | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | advancedThreatProtectionSettings | Nie | 
 | alerts | Nie | 
@@ -1062,13 +1062,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | workspaceSettings | Nie | 
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | diagnosticSettings | Nie | 
 | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | przestrzenie nazw | Yes | 
 | przestrzenie nazw/reguł autoryzacji | Nie | 
@@ -1083,13 +1083,13 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | premiumMessagingRegions | Nie | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Klastry | Yes | 
 | klastry/aplikacji | Nie | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | aplikacje | Yes | 
 | Bramy | Yes | 
@@ -1098,12 +1098,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | volumes | Yes | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | SignalR | Yes | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | applianceDefinitions | Yes | 
 | urządzenia | Yes | 
@@ -1112,7 +1112,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | jitRequests | Yes | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | managedInstances | Yes |
 | managedInstances/baz danych | Tak (zobacz uwaga poniżej) |
@@ -1140,14 +1140,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | SqlVirtualMachineGroups | Yes | 
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nie | 
 | SqlVirtualMachines | Yes | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | storageAccounts | Yes | 
 | storageAccounts/blobServices | Nie | 
@@ -1158,7 +1158,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Sposoby użycia | Nie | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | storageSyncServices | Yes | 
 | storageSyncServices/registeredServers | Nie | 
@@ -1168,12 +1168,12 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | storageSyncServices/workflows | Nie | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Menedżerowie | Yes | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | streamingjobs | Tak (zobacz uwaga poniżej) | 
 | streamingjobs/diagnosticSettings | Nie | 
@@ -1182,25 +1182,25 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 > Nie można dodać tag, gdy streamingjobs jest uruchomiony. Zatrzymaj zasobów, aby dodać tag.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | CreateSubscription | Nie | 
 | SubscriptionDefinitions | Nie | 
 | SubscriptionOperations | Nie | 
 
 ## <a name="microsoftsupport"></a>microsoft.support
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | supporttickets | Nie | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | providerRegistrations | Yes | 
 | zasoby | Yes | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Środowiska | Yes | 
 | środowiska/accessPolicies | Nie | 
@@ -1208,14 +1208,14 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | environments/referenceDataSets | Yes | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | account | Yes | 
 | konta i rozszerzeń | Yes | 
 | konto lub projekt docelowy | Yes | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | apiManagementAccounts | Nie | 
 | apiManagementAccounts/apiAcls | Nie | 
@@ -1245,7 +1245,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | środowiska uruchomieniowe | Nie | 
 | farm serwerów | Yes | 
 | farm serwerów/procesów roboczych | Nie | 
-| Lokacje | Yes | 
+| lokacje | Yes | 
 | Lokacje/domainOwnershipIdentifiers | Nie | 
 | sites/hostNameBindings | Nie | 
 | Lokacje/wystąpieniach | Nie | 
@@ -1262,18 +1262,18 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | verifyHostingEnvironmentVnet | Nie | 
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | diagnosticSettings | Nie | 
 | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | DeviceServices | Yes | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| Typ zasobu | Usuwanie w trybie |
+| Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
 | Składniki | Nie | 
 | componentsSummary | Nie | 

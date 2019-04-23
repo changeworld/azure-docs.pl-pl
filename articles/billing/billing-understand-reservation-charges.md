@@ -1,7 +1,6 @@
 ---
 title: Zrozumienie rabat rezerwacji dla baz danych Azure SQL | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rabat związany z rezerwacją jest stosowany do uruchamiania bazy danych SQL Azure.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa4fc43efab8c168fd5351ec60def7a3d0eefada
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649445"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997431"
 ---
-# <a name="understand-how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do bazy danych SQL Azure
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Jak rabat związany z rezerwacją jest stosowany do bazy danych SQL Azure
 
 Po możesz kupić pojemność usługi Azure SQL Database, zarezerwowane, rabat związany z rezerwacją jest automatycznie stosowany do bazy danych SQL, odpowiadający atrybuty i ilość rezerwacji. Rezerwacja obejmuje koszty operacji obliczeniowych, bazy danych SQL Database. Opłaty są naliczane dla oprogramowania, magazynu i sieci w normalnych stawek za użycie. Może obejmować koszty licencjonowania dla baz danych SQL za pomocą [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Zarezerwowane wystąpienia maszyn wirtualnych, można zobaczyć [discount zrozumieć Azure Reserved VM Instances](billing-understand-vm-reservation-charges.md).
 
-## <a name="reservation-discount-applied-to-sql-databases"></a>Rabat związany z rezerwacją stosowane do bazy danych SQL
+## <a name="how-reservation-discount-is-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
+
+Rabat związany z rezerwacją jest "*Użyj it lub utracić — it*". Tak Jeśli nie masz żadnych godzinę dopasowywania zasobów, następnie traci ilość rezerwacji dla danej godziny. Nie można wykonać nieużywane zastrzeżone godzin przekazywania.
+
+Podczas zamykania zasobem rabat związany z rezerwacją jest automatycznie stosuje do innego zasobu zgodnego z określonego zakresu. Jeśli żadne pasujące zasoby znajdują się w określonym zakresie, a następnie są zarezerwowane godzin *utracone*.
+
+## <a name="discount-applied-to-sql-databases"></a>Rabatu zastosowanego do bazy danych SQL
 
  Rabat w wysokości rezerwowanie pojemności bazy danych SQL jest stosowany do uruchamiania bazy danych SQL w systemie godzinowym. Zastrzeżenia, który można kupić jest dopasowywany do wykorzystanie mocy obliczeniowej, wyemitowane przez uruchamianie baz danych SQL. W przypadku baz danych SQL Database, które nie działają przez pełną godzinę, rezerwacja jest automatycznie stosowana do innych baz danych SQL Database pasujących do atrybutów rezerwacji. Rabat można stosować do bazy danych SQL, które są uruchomione jednocześnie. Jeśli nie masz bazy danych SQL uruchamianą przez całą godzinę spełniającej atrybuty rezerwacji nie uzyskasz pełni czerpać korzyści płynące z rezerwacją dla danej godziny.
 
@@ -40,7 +45,11 @@ Pozostałe tych przykładów założono, że pojemność zastrzeżone bazy danyc
 - Scenariusz 3: Uruchom jedno 16 rdzeń bazy danych SQL z 13: 00 do 13:30:00. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Oba są objęte rabat związany z rezerwacją.
 - Scenariusz 4: Uruchom jedno 16 rdzeń bazy danych SQL z 13: 00 do 1:45 pm. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Opłaty są naliczane zgodnie z rzeczywistym użyciem ceny 15-minutowy nachodzące na siebie. Rabat związany z rezerwacją dotyczy wykorzystanie mocy obliczeniowej w pozostałym czasie.
 
-Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raporty użycia, zobacz [użycia rezerwacji Understand Azure](https://go.microsoft.com/fwlink/?linkid=862757).
+Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raporty użycia, zobacz [użycia rezerwacji Understand Azure](billing-understand-reserved-instance-usage-ea.md).
+
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -52,8 +61,4 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+- [Opis zastrzeżenia dla subskrypcji programu CSP](/partner-center/azure-reservations)

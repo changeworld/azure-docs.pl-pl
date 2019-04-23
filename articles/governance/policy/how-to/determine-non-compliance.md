@@ -3,16 +3,16 @@ title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób jest niezgodne, istnieje wiele możliwych przyczyn. Dowiedz się dowiedzieć się, co było przyczyną braku zgodności.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 03/30/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276103"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995014"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -124,6 +124,8 @@ Jako część nowego **publicznej wersji zapoznawczej**, w ciągu ostatnich 14 d
    ![Diff Visual historii zmian zasad na stronie Historia zmian](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z bieżącego stanu zgodności zasobu.
+
+Dane historii zmian są udostępniane przez [wykres zasobów Azure](../../resource-graph/overview.md). Aby wysłać zapytanie tych informacji poza witryny Azure portal, zobacz [pobieranie zmian zasobów](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

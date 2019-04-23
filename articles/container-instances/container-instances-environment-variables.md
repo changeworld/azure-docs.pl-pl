@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606892"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994779"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Ustawianie zmiennych środowiskowych w container instances
 
@@ -143,14 +143,11 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Przykład portalu Azure
 
-Do ustawiania zmiennych środowiskowych podczas uruchamiania kontenera w witrynie Azure portal, określ je w **konfiguracji** stronie podczas tworzenia kontenera.
+Do ustawiania zmiennych środowiskowych podczas uruchamiania kontenera w witrynie Azure portal, określ je w **zaawansowane** stronie podczas tworzenia kontenera.
 
-Podczas wdrażania za pomocą portalu, jest obecnie ograniczona do trzech zmiennych i należy wprowadzić je w następującym formacie: `"variableName":"value"`
-
-Aby zobaczyć przykład, uruchom [aci wordcount] [ aci-wordcount] kontener za pomocą *NumWords* i *MinLength* zmiennych.
-
-1. W **konfiguracji**ustaw **zasady ponownego uruchamiania** do *w przypadku niepowodzenia*
-2. Wprowadź `"NumWords":"5"` pierwszej zmiennej wybierz **tak** w obszarze **Dodaj dodatkowe zmienne środowiskowe**, a następnie wprowadź `"MinLength":"8"` drugiej zmiennej. Wybierz **OK** sprawdzić, a następnie wdrożyć kontener.
+1. Na **zaawansowane** ustaw **zasady ponownego uruchamiania** do *w przypadku niepowodzenia*
+2. W obszarze **zmienne środowiskowe**, wprowadź `NumWords` o wartości `5` pierwszej zmiennej, a następnie wprowadź `MinLength` o wartości `8` drugiej zmiennej. 
+1. Wybierz **przeglądu + Utwórz** sprawdzić, a następnie wdrożyć kontener.
 
 ![Strona Portal przedstawiający środowiska zmiennej włączenie przycisku i pól tekstowych][portal-env-vars-01]
 

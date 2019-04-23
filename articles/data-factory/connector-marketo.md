@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94ecf05272ecb29f914bb00fa407a564fef96c17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562083"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148836"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Marketo za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Możesz skopiować dane z usługi Marketo, do dowolnego obsługiwanego magazynu 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 >[!NOTE]
->Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](http://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: Maksymalny limit "100" w "20" Przekroczono z częstotliwość w sekundach (606) "lub" Wystąpił błąd podczas próby użycia interfejsu API REST: Równoczesny dostęp ograniczenie "10" osiągnięto (615) ", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania współbieżnych kopii, aby zmniejszyć liczbę żądań do usługi.
+>Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](https://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: Maksymalny limit "100" w "20" Przekroczono z częstotliwość w sekundach (606) "lub" Wystąpił błąd podczas próby użycia interfejsu API REST: Równoczesny dostęp ograniczenie "10" osiągnięto (615) ", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania współbieżnych kopii, aby zmniejszyć liczbę żądań do usługi.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995198"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999590"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Szybki start: Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Dodatkowo, zanim klient będzie mógł uzyskać dostęp do internetowego interfe
 W tym przewodniku Szybki start przedstawimy, jak skonfigurować aplikację pod kątem wykonywania następujących działań:
 
 * [Dodawanie identyfikatorów URI przekierowania do aplikacji](#add-redirect-uris-to-your-application)
-* [Dodawanie poświadczeń do aplikacji internetowej](#add-credentials-to-your-web-application)
+* [Dodawanie poświadczeń do aplikacji sieci web](#add-credentials-to-your-web-application)
 * [Dodawanie uprawnień na potrzeby dostępu do internetowych interfejsów API](#add-permissions-to-access-web-apis)
 
 ## <a name="prerequisites"></a>Wymagania wstępne

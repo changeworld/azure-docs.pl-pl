@@ -1,24 +1,23 @@
 ---
 title: Zarządzanie zastrzeżeniami platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zmienić zakres subskrypcji i zarządzanie dostępem dla platformy Azure rezerwacji.
-services: billing
+ms.service: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
 editor: ''
-ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904445"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994967"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -29,7 +28,19 @@ Jeśli zakupiono Azure Reserved Virtual Machine Instances, możesz zmienić usta
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="change-the-scope-for-a-reservation"></a>Zmień zakres dla rezerwacji
+## <a name="reservation-order-and-reservation"></a>Zamówienie rezerwacji i rezerwacji
+
+Po zakupie rezerwacji tworzone są dwa obiekty: **Zamówienie rezerwacji** i **rezerwacji**.
+
+W chwili zakupu Zamówienie rezerwacji ma jedną rezerwację w nim. Akcje, takie jak podziału, scalanie, częściowego zwrotu lub exchange tworzenie nowych zastrzeżeń w ramach **zamówienia rezerwacji**.
+
+Aby wyświetlić zamówienia rezerwacji, przejdź do **rezerwacje** > Wybierz rezerwacji, a następnie kliknij przycisk **identyfikator zamówienia rezerwacji**.
+
+![Przykład przedstawiający identyfikator zamówienia rezerwacji szczegóły zamówienia rezerwacji ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+
+Rezerwacja dziedziczy uprawnienia po jego zamówienia rezerwacji.
+
+## <a name="change-the-reservation-scope"></a>Zmień zakres rezerwacji
 
  Rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych, baz danych SQL, Azure Cosmos DB i inne zasoby, które odpowiada rezerwacji i uruchamiać w zakresie rezerwacji. Kontekstu rozliczeń zależy od subskrypcji zakupu rezerwacji.
 
@@ -47,9 +58,12 @@ Zakres ma zastosowanie tylko do oferty płatności zgodnie z rzeczywistym użyci
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacją
 
-Zarządzanie rezerwacją możesz delegować, dodając osoby do ról w rezerwacji. Domyślnie osoba, która kupiła rezerwację, i administrator konta mają rolę właściciela rezerwacji.
+Możesz delegować Zarządzanie rezerwacji przez dodanie osoby do ról w zamówieniu rezerwacji lub rezerwacji. Domyślnie osoba, która umieszcza zamówienia rezerwacji i administrator konta mają Rola właściciela na zamówienie rezerwacji i rezerwacji.
 
-Subskrypcje, które zawierają rabat związany z rezerwacją, można zarządzać dostępu niezależnie do rezerwacji. Jeśli nadasz innej osobie uprawnienia do zarządzania rezerwacji, który nie nadaj im praw do zarządzania subskrypcją. A Jeśli nadasz innej osobie uprawnienia do zarządzania subskrypcją w zakresie rezerwacji, który nie zapewnia im praw do zarządzania rezerwacji.
+Można zarządzać dostępem do zamówienia rezerwacji i zastrzeżenia, niezależnie od subskrypcji, które zawierają rabat związany z rezerwacją. Jeśli nadasz innej osobie uprawnienia do zarządzania zamówienia rezerwacji lub rezerwacji, go nie nadać im uprawnienia do zarządzania subskrypcją. Podobnie jeśli nadasz innej osobie uprawnienia do zarządzania subskrypcją w zakresie rezerwacji, go nie zapewnia im praw do zarządzania zamówienia rezerwacji lub rezerwacji.
+
+Aby wykonać programu exchange lub refundacji, użytkownik musi mieć dostęp do zamówienia rezerwacji. Podczas nadawania uprawnień ktoś najlepiej przyznaj uprawnienia do zamówieniu rezerwacji nie rezerwacji.
+
 
 Aby delegować zarządzanie dostępem dla rezerwacji:
 

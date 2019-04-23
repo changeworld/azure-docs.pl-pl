@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e8d7d77128acd4bdb81a99ac6756a5e28b4a408f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802964"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001596"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -126,7 +126,7 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 ### <a name="the-owning-group"></a>Grupa będąca właścicielem
 
-Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstawowa*. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
+Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstawowa*. Na przykład użytkownik "Alicja" może należeć do grupy "Finanse". Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupa będąca właścicielem dla nowego pliku lub katalogu
 
@@ -285,7 +285,7 @@ Identyfikator GUID jest wyświetlany, jeśli wpis reprezentuje użytkownika, a u
 
 Podczas definiowania listy ACL dla nazw głównych usług, ważne jest, aby użyć Identyfikatora obiektu (OID) z *nazwy głównej usługi* rejestracji aplikacji, który został utworzony. Ważne jest, aby należy zauważyć, że zarejestrowanych aplikacji nazwy głównej usługi oddzielne w konkretnym dzierżawy usługi Azure AD. Zarejestrowane aplikacje mają identyfikatora OID, który jest widoczny w witrynie Azure portal, ale *nazwy głównej usługi* ma inny identyfikator OID w (inny).
 
-Aby uzyskać identyfikator OID dla jednostki usługi, który odnosi się do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+Aby uzyskać identyfikator OID dla jednostki usługi, który odnosi się do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu Identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

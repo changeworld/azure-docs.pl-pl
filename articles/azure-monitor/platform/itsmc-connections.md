@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 64a4e7a181f7bd24e305ef5ee8d3d6657c3f394b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081291"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149975"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT
 Ten artykuł zawiera informacje o tym, jak skonfigurować połączenie między jego produkt/usługę ITSM i IT Service Management Connector (ITSMC) w usłudze Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC zobacz [Przegląd](../../azure-monitor/platform/itsmc-overview.md).
@@ -185,11 +185,12 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące sposobu nawiązy
 ### <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że zostały spełnione następujące wymagania wstępne:
 - ITSMC zainstalowane. Więcej informacji: [Dodawanie IT usługi rozwiązania do zarządzania łącznika](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Usługi ServiceNow obsługiwane wersje: Kingston, Dżakarta, Stambuł, Helsinki, Geneva.
+- Usługi ServiceNow obsługiwane wersje: Londyn, Kingston, Dżakarta, Stambuł, Helsinki, Geneva.
 
 **Administratorzy usługi ServiceNow musi wykonać następujące czynności w swoje wystąpienie usługi ServiceNow**:
 - Generuj identyfikator klienta oraz klucz tajny klienta dla produktu ServiceNow. Aby uzyskać informacje na temat generowania Identyfikatora klienta i klucz tajny zobacz następujące informacje zgodnie z wymaganiami:
 
+    - [Skonfiguruj protokół OAuth w Londynie](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie uwierzytelniania OAuth dla Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Skonfiguruj protokół OAuth w Dżakarcie](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie uwierzytelniania OAuth dla Stambuł](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

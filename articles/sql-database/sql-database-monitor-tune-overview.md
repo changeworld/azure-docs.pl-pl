@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1afe1b437d82759cdfd085f018c31db33264dbf5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683177"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001579"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -85,9 +85,9 @@ Jeśli okaże się, że masz problemu z wydajnością dotyczące uruchamiania, c
 > [!IMPORTANT]
 > Aby uzyskać zestaw zapytań T-SQL, przy użyciu tych widoków DMV, aby rozwiązać problemy dotyczące użycia procesora CPU, zobacz [problemy z wydajnością Procesora zidentyfikować](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
-### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Rozwiązywanie problemów z zapytań z problemami z planu wykonania zależne od parametru zapytania
+### <a name="ParamSniffing"></a> Rozwiązywanie problemów z zapytań z problemami z planu wykonania zależne od parametru zapytania
 
-Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia.
+Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia. Aby uzyskać więcej informacji na temat wykrywanie parametrów i przetwarzanie zapytań, zobacz [przewodnik dotyczący architektury przetwarzania zapytania](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
 
 Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich skojarzone wady i zalety i wady:
 
@@ -102,17 +102,17 @@ Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich
 
 Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemów Zobacz:
 
-- To [powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/) wpis w blogu
-- To [syna i wykrywanie parametrów myszy](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) wpis w blogu
-- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
+- To [I powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) wpis w blogu
+- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
+- To [techniki optymalizacji zapytań SQL w programie SQL Server: Parametr Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) wpis w blogu
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z działania kompilacji z powodu nieprawidłowej parametryzacji
 
 Gdy zapytanie ma literały, aparat bazy danych zdecyduje się na automatyczne parametryzacja instrukcji albo użytkownik jawnie możecie go w celu zmniejszenia liczby kompiluje. Duża liczba kompiluje zapytania przy użyciu tego samego wzorca, ale różnych wartości literałów może powodować wysokie wykorzystanie procesora CPU. Podobnie jeśli tylko częściowo Definiowanie parametrów zapytania, które mają literałów w dalszym ciągu aparatu bazy danych parametryzuj go dalej.  Poniżej przedstawiono przykład częściowo sparametryzowanych zapytań:
 
 ```sql
-select * from t1 join t2 on t1.c1=t2.c1
-where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
 W poprzednim przykładem `t1.c1` przyjmuje `@p1` , ale `t2.c2` nadal wykonać GUID jako literał. W tym przypadku, jeśli zmienisz wartość `c2`, zapytanie będzie traktowane jako różne zapytania i nastąpi nowej kompilacji. Aby zmniejszyć kompilacje w poprzedniego przykładu, rozwiązaniem jest również zdefiniować parametry identyfikatora GUID.
@@ -120,24 +120,24 @@ W poprzednim przykładem `t1.c1` przyjmuje `@p1` , ale `t2.c2` nadal wykonać GU
 Następujące zapytanie Wyświetla liczbę zapytań przez skrót zapytania, aby określić, jeśli zapytanie jest prawidłowo sparametryzowane, lub nie:
 
 ```sql
-   SELECT  TOP 10  
-      q.query_hash
-      , count (distinct p.query_id ) AS number_of_distinct_query_ids
-      , min(qt.query_sql_text) AS sampled_query_text
-   FROM sys.query_store_query_text AS qt
-      JOIN sys.query_store_query AS q
-         ON qt.query_text_id = q.query_text_id
-      JOIN sys.query_store_plan AS p 
-         ON q.query_id = p.query_id
-      JOIN sys.query_store_runtime_stats AS rs 
-         ON rs.plan_id = p.plan_id
-      JOIN sys.query_store_runtime_stats_interval AS rsi
-         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-   WHERE
-      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-      AND query_parameterization_type_desc IN ('User', 'None')
-   GROUP BY q.query_hash
-   ORDER BY count (distinct p.query_id) DESC
+SELECT  TOP 10  
+  q.query_hash
+  , count (distinct p.query_id ) AS number_of_distinct_query_ids
+  , min(qt.query_sql_text) AS sampled_query_text
+FROM sys.query_store_query_text AS qt
+  JOIN sys.query_store_query AS q
+     ON qt.query_text_id = q.query_text_id
+  JOIN sys.query_store_plan AS p 
+     ON q.query_id = p.query_id
+  JOIN sys.query_store_runtime_stats AS rs 
+     ON rs.plan_id = p.plan_id
+  JOIN sys.query_store_runtime_stats_interval AS rsi
+     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+WHERE
+  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+  AND query_parameterization_type_desc IN ('User', 'None')
+GROUP BY q.query_hash
+ORDER BY count (distinct p.query_id) DESC
 ```
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiąż problematycznych zapytań lub podać więcej zasobów
@@ -183,7 +183,7 @@ W scenariuszach wysokiej Procesora Store zapytań i statystyki oczekiwania nie z
 - Nadal mogą być wykonywane zapytania zużywające procesor CPU o wysokiej i zapytania nie została zakończona.
 - Zapytania zużywające procesor CPU o wysokiej były uruchomione po przejściu w tryb failover wystąpił
 
-Query Store oczekiwania śledzenia statystyki dynamicznych widoków zarządzania tylko Pokaż wyniki dla pomyślnie zakończonych i upłynął limit czasu zapytania i nie są wyświetlane dane dotyczące (aż do zakończenia) w trakcie wykonywania instrukcji.  Widok dynamiczny zarządzania [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umożliwia śledzenie aktualnie wykonywanych zapytań i czas skojarzonego procesu roboczego.
+Query Store oczekiwania śledzenia statystyki dynamicznych widoków zarządzania tylko Pokaż wyniki dla pomyślnie zakończonych i upłynął limit czasu zapytania i nie są wyświetlane dane dotyczące (aż do zakończenia) w trakcie wykonywania instrukcji. Widok dynamiczny zarządzania [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umożliwia śledzenie aktualnie wykonywanych zapytań i czas skojarzonego procesu roboczego.
 
 Jak pokazano na poprzednim wykresie, czeka najczęściej są:
 
@@ -198,6 +198,8 @@ Jak pokazano na poprzednim wykresie, czeka najczęściej są:
 > - [Identyfikowanie problemów z wydajnością operacji We/Wy](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Identyfikowanie `tempdb` problemy z wydajnością](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Identyfikowanie czeka przydział pamięci](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox — w tym czasie czeka i zatrzaśnięcia](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>Poprawa wydajności bazy danych przy użyciu większej ilości zasobów
 

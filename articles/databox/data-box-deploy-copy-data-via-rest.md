@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527986"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995748"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Samouczek: kopiowanie danych do magazynu obiektów blob usługi Azure Data Box za pośrednictwem interfejsów API REST  
 
@@ -39,9 +39,14 @@ Przed rozpoczęciem upewnij się, że:
 5. [Pobierz narzędzie AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) na komputer hosta. Użyjesz narzędzia AzCopy do skopiowania danych z komputera hosta do magazynu obiektów blob usługi Azure Data Box.
 
 
-## <a name="connect-to-data-box-blob-storage"></a>Łączenie się z magazynem obiektów blob usługi Data Box
+## <a name="connect-via-http-or-https"></a>Nawiązywanie połączenia za pośrednictwem protokołu http lub https
 
-Możesz nawiązać połączenie z magazynem obiektów blob usługi Data Box za pośrednictwem protokołu *HTTP* lub *HTTPS*. Mówiąc ogólnie, protokół *HTTPS* to bezpieczny, zalecany sposób nawiązywania połączenia z magazynem obiektów blob usługi Data Box. Protokół *HTTP* jest używany, gdy połączenie jest nawiązywane za pośrednictwem zaufanych sieci. W zależności od tego, czy łączysz się z magazynem obiektów blob usługi Data Box za pośrednictwem protokołu *HTTP* czy *HTTPS*, może być wymagane wykonanie innych czynności.
+Możesz nawiązać połączenie z magazynem obiektów blob usługi Data Box za pośrednictwem protokołu *HTTP* lub *HTTPS*.
+
+- *Protokół HTTPS* jest bezpieczna i zalecana sposób połączyć się z magazynu obiektów Blob pola danych.
+- Protokół *HTTP* jest używany, gdy połączenie jest nawiązywane za pośrednictwem zaufanych sieci.
+
+Czynności, aby połączyć różnią się podczas łączenia z magazynu obiektów Blob pola danych za pośrednictwem *http* lub *https*,.
 
 ## <a name="connect-via-http"></a>Nawiązywanie połączenia za pośrednictwem protokołu HTTP
 
@@ -52,11 +57,11 @@ Aby nawiązać połączenie z interfejsami API REST magazynu obiektów blob usł
 
 Wszystkie wymienione kroki zostały opisane poniżej.
 
-#### <a name="add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>Dodawanie adresu IP urządzenia i punktu końcowego usługi obiektów blob do hosta zdalnego
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Dodaj adres IP urządzenia, a punkt końcowy usługi blob
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-#### <a name="configure-partner-software-and-verify-connection"></a>Konfigurowanie oprogramowania partnerów i weryfikowanie połączenia
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurowanie oprogramowania partnerów i weryfikowanie połączenia
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -67,8 +72,8 @@ Wszystkie wymienione kroki zostały opisane poniżej.
 Aby nawiązać połączenie z interfejsami API REST usługi Azure Blob Storage za pośrednictwem protokołu HTTPS, należy wykonać następujące czynności:
 
 - Pobieranie certyfikatu z witryny Azure Portal
-- Przygotowywanie komputera hosta do zarządzania zdalnego
-- Dodawanie adresu IP urządzenia i punktu końcowego usługi obiektów blob do hosta zdalnego
+- Zaimportuj certyfikat klienta lub hostem zdalnym
+- Dodaj adres IP urządzenia oraz obiektów blob punktu końcowego usługi do klienta lub hostem zdalnym
 - Konfigurowanie oprogramowania innych firm i weryfikowanie połączenia
 
 Wszystkie wymienione kroki zostały opisane poniżej.
@@ -83,20 +88,15 @@ Pobierz certyfikat z witryny Azure Portal.
 
     ![Pobieranie certyfikatu z witryny Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="prepare-the-host-for-remote-management"></a>Przygotowywanie hosta do zarządzania zdalnego
+### <a name="import-certificate"></a>Importuj certyfikat 
 
-Wykonaj następujące czynności, aby przygotować klienta z systemem Windows do nawiązania połączenia zdalnego z użyciem sesji protokołu *HTTPS*:
+Uzyskiwanie dostępu do magazynu obiektów Blob pola danych za pośrednictwem protokołu HTTPS wymaga certyfikatu SSL dla tego urządzenia. Sposób, w którym ten certyfikat ma zostać udostępnione do aplikacji klienckiej różnią się od aplikacji i systemów operacyjnych i dystrybucji. Niektóre aplikacje mają dostęp do certyfikatu, po zaimportowaniu go do magazynu certyfikatów systemu, podczas gdy inne aplikacje nie należy używać tego mechanizmu.
 
-- Zaimportuj plik cer do magazynu głównego klienta lub hosta zdalnego.
-- Dodaj adres IP urządzenia oraz punkt końcowy usługi obiektów blob w pliku hosts na komputerze klienckim z systemem Windows.
+Szczegółowe informacje dla niektórych aplikacji jest wymieniony w tej sekcji. Aby uzyskać więcej informacji o innych aplikacjach w dokumentacji dla aplikacji i systemu operacyjnego używany.
 
-Poniżej opisano każdą z tych procedur.
+Wykonaj następujące kroki, aby zaimportować `.cer` pliku do magazynu głównego klienta Windows lub Linux. W systemie Windows można użyć programu Windows PowerShell lub interfejsu użytkownika systemu Windows Server, aby zaimportować i zainstalować certyfikat w systemie.
 
-#### <a name="import-the-certificate-on-the-remote-host"></a>Importowanie certyfikatu na zdalnym hoście
-
-Aby zaimportować i zainstalować certyfikat w systemie hosta, można użyć programu Windows PowerShell lub interfejsu użytkownika systemu Windows Server.
-
-**Korzystanie z programu PowerShell**
+#### <a name="use-windows-powershell"></a>Za pomocą programu Windows PowerShell
 
 1. Uruchom sesję programu Windows PowerShell jako administrator.
 2. W wierszu polecenia wpisz polecenie:
@@ -105,9 +105,9 @@ Aby zaimportować i zainstalować certyfikat w systemie hosta, można użyć pro
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-**Korzystanie z interfejsu użytkownika systemu Windows Server**
+#### <a name="use-windows-server-ui"></a>Użyj systemu Windows Server interfejsu użytkownika
 
-1.  Kliknij prawym przyciskiem myszy plik cer, a następnie wybierz pozycję **Zainstaluj certyfikat**. Spowoduje to uruchomienie Kreatora importu certyfikatów.
+1.  Kliknij prawym przyciskiem myszy `.cer` plik i wybierz **instalacji certyfikatu**. Ta akcja uruchamia Kreatora importu certyfikatów.
 2.  W polu **Lokalizacja magazynu** wybierz pozycję **Maszyna lokalna**, a następnie kliknij przycisk **Dalej**.
 
     ![Importowanie certyfikatu przy użyciu programu PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -120,13 +120,29 @@ Aby zaimportować i zainstalować certyfikat w systemie hosta, można użyć pro
 
     ![Importowanie certyfikatu przy użyciu programu PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-### <a name="to-add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>Aby dodać adres IP urządzenia i punkt końcowy usługi obiektów blob do hosta zdalnego
+#### <a name="use-a-linux-system"></a>Użycie systemu Linux
 
-Należy wykonać takie same czynności, jak w przypadku nawiązywania połączenia za pośrednictwem protokołu *HTTP*.
+Metody, aby zaimportować certyfikat jest zależna od dystrybucji.
 
-### <a name="configure-partner-software-to-establish-connection"></a>Konfigurowanie oprogramowania partnerów w celu nawiązania połączenia
+Kilka takich jak Ubuntu i Debian, użyj `update-ca-certificates` polecenia.  
 
-Należy wykonać takie same czynności, jak w przypadku nawiązywania połączenia za pośrednictwem protokołu *HTTP*. Jedyną różnicą jest to, że należy pozostawić pole *Użyj protokołu HTTP* niezaznaczone.
+- Zmień nazwę pliku certyfikat zakodowany w formacie Base64, aby zawierała `.crt` rozszerzenia i skopiuj go do `/usr/local/share/ca-certificates directory`.
+- Uruchom polecenie `update-ca-certificates`.
+
+Najnowsze wersje systemu RHEL, Fedora i CentOS używają `update-ca-trust` polecenia.
+
+- Skopiuj plik certyfikatu do `/etc/pki/ca-trust/source/anchors` katalogu.
+- Uruchom polecenie `update-ca-trust`.
+
+Aby uzyskać szczegółowe informacje, zapoznaj się z dokumentacją specyficzną dla Twojej dystrybucji.
+
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Dodaj adres IP urządzenia, a punkt końcowy usługi blob 
+
+Wykonaj te same czynności, aby [Dodaj adres IP urządzenia, a punkt końcowy usługi blob, podczas nawiązywania połączenia za pośrednictwem *http*](#add-device-ip-address-and-blob-service-endpoint).
+
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurowanie oprogramowania partnerów i weryfikowanie połączenia
+
+Postępuj zgodnie z instrukcjami, aby [należy skonfigurować oprogramowanie partnera, który używany podczas nawiązywania połączenia za pośrednictwem *http*](#configure-partner-software-and-verify-connection). Jedyną różnicą jest to, że należy pozostawić pole *Użyj protokołu HTTP* niezaznaczone.
 
 ## <a name="copy-data-to-data-box"></a>Kopiowanie danych na urządzenie Data Box
 
@@ -199,7 +215,6 @@ Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejsc
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
-
 
 Następnym krokiem jest przygotowanie urządzenia do wysłania.
 

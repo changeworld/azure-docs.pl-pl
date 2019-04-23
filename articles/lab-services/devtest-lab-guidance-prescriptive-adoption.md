@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 67bb81675dabd8aef28693a958a0ac39b1b441e7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: e1d119f3c7c5d6dbdb570d362c53b80dad7886bd
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549254"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149006"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>Konfigurowanie infrastruktury usługi Azure DevTest Labs w przedsiębiorstwie
-Przedsiębiorstwom szybko adaptują chmurę ze względu na jej [korzyści](/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) zawierające elastyczności, elastyczności i oszczędnościami, jakie daje. Pierwszym krokiem wspólnej klienci będą mogli korzystać z chmury jest chcesz rozpocząć od tworzenia i testowania obciążenia.  DevTest Labs oferuje [funkcji](devtest-lab-concepts.md) korzyści, enterprise i pomoc techniczna [klucza scenariuszy deweloperskich lub testowych enterprise](devtest-lab-guidance-get-started.md).
+Przedsiębiorstwom szybko adaptują chmurę ze względu na jej [korzyści](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) zawierające elastyczności, elastyczności i oszczędnościami, jakie daje. Pierwszym krokiem wspólnej klienci będą mogli korzystać z chmury jest chcesz rozpocząć od tworzenia i testowania obciążenia.  DevTest Labs oferuje [funkcji](devtest-lab-concepts.md) korzyści, enterprise i pomoc techniczna [klucza scenariuszy deweloperskich lub testowych enterprise](devtest-lab-guidance-get-started.md).
 
 Brak wspólnego zestawu problemy podczas migracji obciążeń do chmury:
 
@@ -35,6 +35,10 @@ Brak wspólnego zestawu problemy podczas migracji obciążeń do chmury:
 
 ## <a name="intended-audience"></a>Docelowi odbiorcy
 Dokumentacja skoncentrowane na przedsiębiorstwa jest przeznaczony dla planistów IT, architektów i menedżerów, którzy są odpowiedzialni za ustanowienie i przeglądanie ogólnej wdrożeń i nadzorowanie rozwiązania w zakresie operacji. W rezultacie w tym dokumencie kładzie nacisk całego procesu i zalecane zasad projektowania, aby wspierać środowiska bezpiecznych i stabilnych projektowania i testowania, ostatecznie zależy wdrożenie usługi Azure DevTest Labs w organizacji.
+
+## <a name="enterprise-customers"></a>Klienci korporacyjni
+
+Wielu klientów korporacyjnych DevTest Labs bieżącego pomyślnie użyć usługi DevTest Labs, opracowywania i testowania obciążenia w organizacji. [Dowiedz się więcej](https://azure.microsoft.com/en-us/case-studies/?term=DevTest+labs).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Architektura referencyjna dla przedsiębiorstwa](devtest-lab-reference-architecture.md)

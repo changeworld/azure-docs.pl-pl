@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881022"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999454"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
 
@@ -52,7 +52,6 @@ Cecha|Standardowa (Standard)|Premium
 ---|---|---
 Bezpłatne pierwsze 15 dni| Yes |Nie
 Przepływność |Do 600 MB/s, gdy nie jest używana sieć CDN systemu Azure. Skaluje się przy użyciu usługi CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Skaluje się przy użyciu usługi CDN.
-Umowa SLA | 99.9|Dostępność na poziomie 99,9 (200 MB/s na SU).
 CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
 Szyfrowanie dynamiczne|Yes|Yes
@@ -86,7 +85,7 @@ Ta sekcja zawiera szczegółowe informacje o niektórych właściwości końcowe
 
     Poniżej przedstawiono oczekiwane stref DNS ma być używany w rekordzie Sprawdź, czy dla różnych regionów platformy Azure.
   
-  - Ameryka Północna, Europa, Singapur, SRA Hongkong, Japonia, część:
+  - Ameryka Północna, Europa, Singapur, Hongkong SAR, Japonia, część:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`

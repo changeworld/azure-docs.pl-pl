@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 3e83c1629848083ae4d899ae01ae32c2c946b2b3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995068"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Nawiązywanie połączenia z interfejsem API przetwarzania obrazów za pomocą usług połączonych w programie Visual Studio
 
@@ -38,15 +38,15 @@ W tym artykule i artykułach powiązanych podano szczegółowe informacje na tem
 1. W **Eksploratorze rozwiązań** wybierz pozycję **Dodaj** > **Usługa połączona**.
    Zostanie wyświetlona strona Usługa połączona zawierająca usługi, które możesz dodać do projektu.
 
-   ![Zrzut ekranu przedstawiający menu wyświetlane po kliknięciu projektu programu Visual Studio prawym przyciskiem myszy: Dodaj > Usługa połączona](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Kliknij prawym przyciskiem myszy menu dla projektu programu Visual Studio: Dodaj > Usługa połączona](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Z menu dostępnych usług wybierz **Interfejs API przetwarzania obrazów usług Cognitive Services**.
 
-   ![Menu Usługi połączone z wyróżnioną pozycją Analizuj obrazy za pomocą przetwarzania obrazów](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Menu połączonej usługi: Analizuj obrazy... jest opisany](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Jeśli logowanie do programu Visual Studio zostało już wykonane i masz subskrypcję platformy Azure skojarzoną z kontem, zostanie wyświetlona strona z listą rozwijaną zawierającą Twoje subskrypcje.
 
-   ![Okno „Interfejs API przetwarzania obrazów” programu Visual Studio z wyróżnioną listą rozwijaną Subskrypcja](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Okno interfejsu API przetwarzania komputera z wyróżnioną listę rozwijaną subskrypcji](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Wybierz subskrypcję, której chcesz użyć, i nazwę interfejsu API przetwarzania obrazów albo link Edytuj, aby zmodyfikować nazwę wygenerowaną automatycznie oraz wybrać grupę zasobów i warstwę cenową.
 
@@ -98,7 +98,7 @@ W tym artykule i artykułach powiązanych podano szczegółowe informacje na tem
 
 1. Kliknij prawym przyciskiem myszy plik obrazu, wybierz polecenie Właściwości, a następnie wybierz pozycję **Kopiuj, jeśli nowszy**. 
 
-   ![Okno właściwości obrazu — dla opcji Kopiuj do katalogu wyjściowego ustawiono wartość Kopiuj, jeśli nowszy](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Okno właściwości obrazu; Kopiuj do katalogu wyjściowego zestawu do skopiowania, jeśli nowszy](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Zastąp metodę Configure następującym kodem, aby uzyskać dostęp do interfejsu API przetwarzania obrazów i przetestować obraz.
 

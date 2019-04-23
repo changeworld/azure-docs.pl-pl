@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azur
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: c65e76fb9453e93e856c76f397d187f9ee740fbd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540350"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001120"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożenia OpenShift na platformie Azure
 
@@ -42,9 +42,9 @@ Protokół SSH z hostem element playbook rozwiązania ansible. W przypadku OKD s
 
 ## <a name="log-files"></a>Pliki dziennika
 
-Pliki dziennika (stderr i stdout) dla hosta skryptów przygotowania znajdują się w /var/lib/waagent/custom-script/download/0 na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, wyświetlać te pliki dziennika, aby określić błędu.
+Pliki dziennika (stderr i stdout) dla hosta skryptów przygotowania znajdują się w `/var/lib/waagent/custom-script/download/0` na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, wyświetlać te pliki dziennika, aby określić błędu.
 
-Jeśli skrypty przygotowania został uruchomiony pomyślnie, następnie pliki dziennika w katalogu /var/lib/waagent/custom-script/download/1 hosta element playbook rozwiązania ansible należy do badania. Jeśli błąd wystąpił podczas instalacji rzeczywistego OpenShift, plik stdout wyświetli błąd. Dzięki tym informacjom można się z pomocą techniczną, aby uzyskać dalszą pomoc.
+Jeśli skrypty przygotowania został uruchomiony pomyślnie, następnie pliki dziennika w `/var/lib/waagent/custom-script/download/1` katalogu hosta element playbook rozwiązania ansible będzie konieczne jest zbadanie. Jeśli błąd wystąpił podczas instalacji rzeczywistego OpenShift, plik stdout wyświetli błąd. Dzięki tym informacjom można się z pomocą techniczną, aby uzyskać dalszą pomoc.
 
 Przykładowe dane wyjściowe
 
@@ -93,11 +93,11 @@ Najbardziej typowe błędy podczas instalacji są:
 
 ### <a name="private-key-has-a-passphrase"></a>Klucz prywatny jest hasło
 
-Zostanie wyświetlony błąd, który nie przyznano uprawnienia dla protokołu SSH. Protokół SSH z hosta element playbook rozwiązania ansible pod kątem hasło klucza prywatnego.
+Zostanie wyświetlony błąd, który nie przyznano uprawnienia dla protokołu ssh. SSH do hosta element playbook rozwiązania ansible pod kątem hasło klucza prywatnego.
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Klucz tajny usługi Key vault, przy użyciu klucza prywatnego nie został utworzony prawidłowo
 
-Klucz prywatny są wstrzykiwane do hosta element playbook rozwiązania ansible - ~/.ssh/id_rsa. Upewnij się, że ten plik jest poprawny. Testowanie, otwierając sesję SSH z jednym z węzłów klastra z hosta element playbook rozwiązania ansible.
+Klucz prywatny jest kopiowana do hosta element playbook rozwiązania ansible - ~/.ssh/id_rsa. Upewnij się, że ten plik jest poprawny. Testowanie, otwierając sesję SSH z jednym z węzłów klastra z hosta element playbook rozwiązania ansible.
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>Wprowadzono nieprawidłowe poświadczenia nazwy głównej usługi
 

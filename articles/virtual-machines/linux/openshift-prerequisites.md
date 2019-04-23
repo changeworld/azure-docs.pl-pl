@@ -4,7 +4,7 @@ description: Wymagania wstępne dotyczące wdrażania OpenShift na platformie Az
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: f4fd33b250bf1f79610f4363e85b97be87892d78
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449975"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001653"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Typowe wymagania wstępne dotyczące wdrażania OpenShift na platformie Azure
 
@@ -28,19 +28,19 @@ W tym artykule opisano typowe wymagania wstępne dotyczące wdrażania, OpenShif
 
 Instalacja platformy OpenShift korzysta z elementów playbook rozwiązania Ansible. Rozwiązanie Ansible używa protokołu Secure Shell (SSH) do łączenia dla wszystkich hostów klastra, aby wykonać kroki instalacji.
 
-Gdy ansible inicjuje połączenia SSH do hostów zdalnych, nie można go wprowadzić hasło. Z tego powodu klucz prywatny nie może mieć (hasło) skojarzone z nim hasło lub wdrożenie zakończy się niepowodzeniem.
+Po rozwiązaniu ansible sprawia, że połączenia SSH do hostów zdalnych, nie można go wprowadzić hasło. Z tego powodu klucz prywatny nie może mieć (hasło) skojarzone z nim hasło lub wdrożenie zakończy się niepowodzeniem.
 
-Ponieważ maszyny wirtualne (VM) wdrażanie przy użyciu szablonów usługi Azure Resource Manager, sam klucz publiczny jest używany do uzyskiwania dostępu do wszystkich maszyn wirtualnych. Musisz wstawić odpowiedni klucz prywatny do maszyny Wirtualnej, który jest wykonywany wszystkich elementów playbook także. W tym celu bezpiecznie użyjesz usługi Azure key vault do przekazania klucza prywatnego do maszyny Wirtualnej.
+Ponieważ maszyny wirtualne (VM) wdrażanie przy użyciu szablonów usługi Azure Resource Manager, sam klucz publiczny jest używany do uzyskiwania dostępu do wszystkich maszyn wirtualnych. Odpowiedni klucz prywatny musi być na maszynie Wirtualnej, który jest wykonywany wszystkich elementów playbook także. Aby bezpiecznie wykonać tę akcję, usługi Azure key vault jest używany do przekazania klucza prywatnego do maszyny Wirtualnej.
 
-W przypadku konieczności skorzystania z magazynu trwałego dla kontenerów woluminów trwałego są wymagane. OpenShift obsługuje Azure wirtualnych dysków twardych (VHD) dla tej funkcji, ale Azure musi być skonfigurowany jako dostawcy chmury.
+W przypadku konieczności skorzystania z magazynu trwałego dla kontenerów woluminów trwałego są wymagane. OpenShift obsługuje Azure wirtualnych dysków twardych (VHD) dla trwałego woluminów, ale Azure musi być skonfigurowany jako dostawcy chmury.
 
 W tym modelu OpenShift:
 
-- Tworzy obiekt wirtualnego dysku twardego w konto usługi Azure Storage lub dysku zarządzanego.
+- Tworzy obiekt wirtualnego dysku twardego w konto magazynu platformy Azure lub dysku zarządzanego.
 - Instaluje dysk VHD do maszyny Wirtualnej i sformatowanie woluminu.
 - Instaluje woluminu, który ma pod.
 
-W przypadku tej konfiguracji do pracy OpenShift wymaga uprawnień do wykonywania tych zadań na platformie Azure. Można to osiągnąć przy użyciu jednostki usługi. Nazwa główna usługi jest kontem zabezpieczeń w usłudze Azure Active Directory, któremu przyznano uprawnienia do zasobów.
+W przypadku tej konfiguracji do pracy OpenShift wymaga uprawnień do wykonywania tych zadań na platformie Azure. Jednostka usługi jest używana w tym celu. Nazwa główna usługi jest kontem zabezpieczeń w usłudze Azure Active Directory, któremu przyznano uprawnienia do zasobów.
 
 Jednostka usługi musi mieć dostęp do konta magazynu i maszyn wirtualnych, które tworzą klaster. Jeśli wszystkie zasoby klastra OpenShift wdrożyć pojedynczą grupę zasobów, nazwy głównej usługi można udzielić uprawnienia do tej grupy zasobów.
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Zalecane jest użycie grupy zasobów dedykowanych do hostowania usługi key vault. Ta grupa jest oddzielony od grupy zasobów, do którego wdrażanie platformy OpenShift zasobów klastra.
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Dedykowana grupa zasobów należy używać do hostowania usługi key vault. Ta grupa jest oddzielony od grupy zasobów, do którego wdrażanie platformy OpenShift zasobów klastra.
 
 Poniższy przykład tworzy grupę zasobów o nazwie *keyvaultrg* w *eastus* lokalizacji:
 
@@ -136,6 +136,33 @@ Zwróć uwagę na właściwość appId zwróconym w poleceniu:
 
 Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Wymagania wstępne dotyczy tylko szablonu usługi Resource Manager
+
+Hasła będą musieli można utworzyć klucza prywatnego SSH (**sshPrivateKey**), klucz tajny klienta usługi Azure AD (**aadClientSecret**), hasło administratora OpenShift (**openshiftPassword** ) i Red Hat subskrypcji Menedżera haseł lub aktywacji klucza (**rhsmPasswordOrActivationKey**).  Ponadto, jeśli używane są niestandardowe certyfikaty SSL, następnie sześć dodatkowe wpisy tajne będzie muszą zostać utworzone - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, i **masterkeyfile**.  Te parametry zostaną wyjaśnione bardziej szczegółowo.
+
+Szablon odwołuje się do określonych nazw kluczy tajnych więc możesz **musi** Użyj nazwy pogrubiony wymienione powyżej (z uwzględnieniem wielkości liter).
+
+### <a name="custom-certificates"></a>Certyfikaty niestandardowe
+
+Domyślnie szablon umożliwia wdrożenie klastra usługi OpenShift przy użyciu certyfikatów z podpisem własnym dla konsoli sieci web platformy OpenShift i domeny routingu. Jeśli chcesz używać niestandardowych certyfikatów protokołu SSL, ustaw "routingCertType" do "custom" i "masterCertType" do "custom".  Będą potrzebne dla certyfikatów urzędu certyfikacji, certyfikatu i klucza pliki w formacie PEM.  Jest możliwe użycie niestandardowych certyfikatów dla jednego, ale nie drugiej.
+
+Należy zapisać te pliki w wpisy tajne usługi Key Vault.  Użyj tej samej usługi Key Vault, jak użyć klucza prywatnego.  Zamiast wymagać 6 dodatkowe dane wejściowe dla nazw kluczy tajnych, szablon jest ustalony używać określonych nazw kluczy tajnych dla każdego z plików certyfikatów SSL.  Store danych certyfikatu, korzystając z informacji w poniższej tabeli.
+
+| Nazwa wpisu tajnego      | Plik certyfikatu   |
+|------------------|--------------------|
+| mastercafile     | plik główny urząd certyfikacji     |
+| mastercertfile   | pliku certyfikatu głównego   |
+| masterkeyfile    | Plik klucza głównego    |
+| routingcafile    | Plik routingu urzędu certyfikacji    |
+| routingcertfile  | Plik routingu certyfikat  |
+| routingkeyfile   | Plik klucza routingu   |
+
+Utwórz wpisy tajne przy użyciu wiersza polecenia platformy Azure. Poniżej znajduje się przykład.
+
+```bash
+az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule opisano następujące tematy:
@@ -146,4 +173,4 @@ W tym artykule opisano następujące tematy:
 Następnie można wdrożyć klaster usługi OpenShift:
 
 - [Wdrażanie rozwiązania OpenShift Container Platform](./openshift-container-platform.md)
-- [Wdrażanie OKD](./openshift-okd.md)
+- [Wdrażanie oferty Samozarządzanej portalu Marketplace platformy kontenera OpenShift](./openshift-marketplace-self-managed.md)

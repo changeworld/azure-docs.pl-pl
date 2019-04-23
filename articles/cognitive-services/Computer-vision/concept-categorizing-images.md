@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337143"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995578"
 ---
-# <a name="categorize-images"></a>Kategoryzowanie obrazów
+# <a name="categorize-images-by-subject-matter"></a>Kategoryzowanie obrazów według tematów
 
 Oprócz tagów i opis przetwarzania obrazów zwraca kategorie na podstawie taksonomii wykryte na obrazie. W przeciwieństwie do tagów kategorie są zorganizowane w hierarchii dziedzicznym nadrzędne/podrzędne, wiąże się z ich (w przeciwieństwie do tysięcy tagi 86). Wszystkie nazwy kategorii są w języku angielskim. Kategoryzacja może odbywać się oddzielnie lub razem nowy model tagów.
 
@@ -53,7 +53,7 @@ Następującą odpowiedź JSON przedstawiono co przetwarzania obrazów zwraca, g
 
 W poniższej tabeli przedstawiono zestaw typowych obrazu i kategorii zwrócony przez wizualizacji komputerowej dla każdego obrazu.
 
-| Image (Obraz) | Kategoria |
+| Image | Category |
 |-------|----------|
 | ![Czterech osób związane ze sobą jako rodzina](./Images/family_photo.png) | people_group |
 | ![Puppy, znajdują się w polu grassy](./Images/cute_dog.png) | animal_dog |

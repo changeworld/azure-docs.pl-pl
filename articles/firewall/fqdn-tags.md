@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/1/2018
+ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 897ea3856516b5429ffb770164f863d71e7ae0dd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: MT
+ms.openlocfilehash: 740b0ac505edfff1f703c2831ec5608e72851610
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419014"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149771"
 ---
 # <a name="fqdn-tags-overview"></a>Omówienie tagi nazwy FQDN
 
@@ -26,17 +26,20 @@ Nie można utworzyć własne tagi w pełni kwalifikowaną nazwę domeny ani nie 
 
 W poniższej tabeli przedstawiono bieżące znaczniki nazwy FQDN, których można użyć. Firma Microsoft udostępnia te znaczniki i można oczekiwać, że dodatkowe tagi do dodania okresowo.
 
+## <a name="current-fqdn-tags"></a>Bieżąca nazwa FQDN tagów
+
 |Nazwa FQDN tagu  |Opis  |
 |---------|---------|
 |Windows Update     |Zezwalaj na dostęp ruchu wychodzącego do usługi Microsoft Update zgodnie z opisem w [sposobu konfigurowania zapory dla aktualizacji oprogramowania](https://technet.microsoft.com/library/bb693717.aspx).|
 |Diagnostyka systemu Windows|Zezwalaj na dostęp ruchu wychodzącego do wszystkich [punktów końcowych diagnostyki Windows](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
 |Usługa Microsoft Active Protection Service (MAPS)|Zezwalaj na dostęp ruchu wychodzącego do [mapy](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |Środowisko App Service Environment (ASE)|Umożliwia dostęp ruchu wychodzącego do środowiska ASE platformy ruchu. Ten tag nie obejmuje klienta SQL i Storage punkty końcowe utworzone przez środowisko ASE. Powinno być włączone za pomocą [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać ręcznie.<br><br>Aby uzyskać więcej informacji na temat integracji Azure zapory przy użyciu środowiska ASE, zobacz [blokowania środowiska App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
-|Azure Backup|Umożliwia dostęp ruchu wychodzącego do usługi Azure Backup.
+|Azure Backup|Umożliwia dostęp ruchu wychodzącego do usługi Azure Backup.|
+|Azure HDInsight<br>(Wersja zapoznawcza)|Umożliwia dostęp ruchu wychodzącego ruchu na platformie HDInsight. Ten tag nie obejmuje ruch magazynu lub SQL specyficzne dla klientów z HDInsight. Są one włączane przy użyciu [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać ręcznie.|
 
 > [!NOTE]
 > Po wybraniu tagu w pełni kwalifikowaną nazwę domeny w regule aplikacji, w polu protokołu: port musi być równa **https**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Informacje na temat wdrażania zapory platformy Azure, zobacz [samouczek: Wdrażanie i konfigurowanie zapory platformy Azure przy użyciu witryny Azure portal](tutorial-firewall-deploy-portal.md).
+Informacje na temat wdrażania zapory platformy Azure, zobacz [samouczka: Wdróż i Skonfiguruj zaporę platformy Azure przy użyciu witryny Azure portal](tutorial-firewall-deploy-portal.md).

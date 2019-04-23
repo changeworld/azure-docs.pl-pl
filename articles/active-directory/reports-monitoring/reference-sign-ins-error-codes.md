@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439396"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996173"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raport aktywności logowania 
 
@@ -174,9 +174,11 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |81012|To nie jest w stanie błędu. Wskazuje ona, że tego użytkownika, próba zalogowania się do usługi Azure AD jest inny niż użytkownik zalogowany do urządzenia. Można bezpiecznie zignorować ten kod w dziennikach.|
 |90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wysyłane za pomocą metody nieobsługiwane żądanie (obsługiwane tylko metody POST) lub algorytm podpisywania tokenu, którego zażądano nie jest obsługiwana. Skontaktuj się z deweloperem aplikacji.|
 |90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. |
+|90051| Delegowanie nieprawidłowy Token. Określono nieprawidłowy identyfikator chmury krajowe ({cloudId}).|
 |90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|
 |90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.|
 |500133| Potwierdzenie nie jest w zasięgu prawidłową godzinę. Upewnij się, nie wygasł token dostępu przed jego użyciem na potwierdzenie użytkownika lub uzyskać nowy token.|
+|530021|Aplikacja nie spełnia wymagań dotyczących dostępu warunkowego zatwierdzonych aplikacji.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

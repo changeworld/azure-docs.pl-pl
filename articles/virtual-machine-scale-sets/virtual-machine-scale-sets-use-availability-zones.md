@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cff3a2ec4d0bed7a030ca430eaa698eb4a7325
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278772"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994711"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -62,7 +62,7 @@ Podczas wdrażania zestawu skalowania maszyn wirtualnych, można użyć jednej s
 
 Podczas tworzenia zestawu skalowania w jednej strefie, Ty określasz, która strefa te wystąpienia maszyn wirtualnych, uruchom w i odbywa się zestawu skalowania i automatycznego skalowania, tylko w ramach tej strefy. Zestaw skalowania strefowo nadmiarowe umożliwia utworzenie pojedynczego zestawu skalowania obejmującej wiele stref. Podczas tworzenia wystąpień maszyn wirtualnych, domyślnie one są równomiernie równoważone w strefach. Czy przerwę w przypadku wystąpienia w jednej ze stref, zestaw skalowania automatycznie skalować w poziomie w celu zwiększenia pojemności. Najlepszym rozwiązaniem byłoby skonfigurować reguły skalowania automatycznego na podstawie użycia procesora CPU lub pamięci. Reguły automatycznego skalowania umożliwia zestawie skalowania, aby reagować na utratę wystąpień maszyn wirtualnych w tej strefie, skalując w poziomie nowe wystąpienia w pozostałych strefach operacyjnej.
 
-Do korzystania ze stref dostępności, należy utworzyć zestaw skalowania w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones). Można utworzyć zestaw skalowania, który używa strefach dostępności przy użyciu jednego z następujących metod:
+Do korzystania ze stref dostępności, należy utworzyć zestaw skalowania w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#services-support-by-region). Można utworzyć zestaw skalowania, który używa strefach dostępności przy użyciu jednego z następujących metod:
 
 - [Azure Portal](#use-the-azure-portal)
 - Interfejs wiersza polecenia platformy Azure

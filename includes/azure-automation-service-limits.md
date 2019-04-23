@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 61f82771e53ac9bb594484b29bb109a03cee674b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554204"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012505"
 ---
 #### <a name="process-automation"></a>Automatyzacja procesów
 
@@ -22,6 +22,7 @@ ms.locfileid: "57554204"
 | Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto usługi Azure Automation (nonscheduled zadań) |100 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
 | Maksymalna liczba równoczesnych zadań uruchomionych na tym samym wystąpieniu czas na konto usługi Automation (nonscheduled zadań) |200 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
 | Maksymalny rozmiar magazynu metadanych zadania dla 30-dniowego okresu kroczącego | 10 GB (około 4 mln zadań)|Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. |
+| Osiągnięto limit maksymalny|1MB|Jeden strumień nie może być większa niż 1 MB.|
 | Maksymalna liczba modułów, które można importować co 30 sekund na konto usługi Automation |5 ||
 | Maksymalny rozmiar modułu |100 MB ||
 | W warstwie bezpłatna czas uruchomienia zadania |500 minut na subskrypcję na miesiąc kalendarzowy ||

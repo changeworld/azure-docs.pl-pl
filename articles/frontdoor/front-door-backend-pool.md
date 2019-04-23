@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879203"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000593"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
 W tym artykule opisano pojęcia dotyczące sposobu mapowania wdrożenia aplikacji z usługą Azure Service drzwiami frontowymi. Objaśniono także różne warunki w konfiguracji drzwiami frontowymi wokół zaplecza aplikacji.
@@ -26,7 +26,7 @@ Zapleczem jest taki sam jak wystąpienie wdrażania aplikacji w regionie. Usług
 
 Zaplecza usługi drzwiami frontowymi odnoszą się do nazwy hosta lub publiczny adres IP aplikacji, która może obsługiwać żądania klientów. Zaplecza nie należy mylić z warstwy bazy danych, warstwy magazynowania i tak dalej. Zaplecza aplikacji powinny być traktowane jako publicznego punktu końcowego zaplecza aplikacji. Po dodaniu zaplecza w puli zaplecza drzwiami frontowymi, musisz również dodać następujące czynności:
 
-- **Typ hosta zaplecza**. Typ zasobu, który chcesz dodać. Usługa drzwiami frontowymi obsługuje wykrywanie automatyczne z zaplecza aplikacji, jeśli z usługi app service, usługi w chmurze lub magazynu. Jeśli chcesz, aby inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję **hosta niestandardowego**.
+- **Typ hosta zaplecza**. Typ zasobu, który chcesz dodać. Usługa drzwiami frontowymi obsługuje wykrywanie automatyczne z zaplecza aplikacji usługi app service, usługi w chmurze lub magazynu. Jeśli chcesz, aby inny zasób na platformie Azure lub nawet zaplecza spoza platformy Azure, wybierz opcję **hosta niestandardowego**.
 
     >[!IMPORTANT]
     >Podczas konfigurowania interfejsów API nie Sprawdź, czy wewnętrznej bazy danych jest niedostępna w środowiskach wejściu. Upewnij się, że drzwiami frontowymi może osiągnąć wewnętrzną bazą danych.
@@ -83,7 +83,7 @@ Ustawienia równoważenia obciążenia dla puli zaplecza definiują, jak możemy
 
 - **Przykładowy rozmiar**. Określa, jak wiele przykładów sond kondycji należy wziąć pod uwagę oceny kondycji wewnętrznej bazy danych.
 
-- **Rozmiar próbki pomyślne**. Określa rozmiar próbki, jak wcześniej wspomniano, liczbę pomyślnych próbek potrzebne do wywoływania zaplecza w dobrej kondycji. Załóżmy na przykład, interwał sondy kondycji drzwiami frontowymi jest 30 sekund, rozmiar próbki to 5 sekund i rozmiar próbki pomyślne jest 3 sekundy. Zawsze możemy obliczyć kondycji sondy zaplecza, przyjrzymy się pięć ostatnich przykłady ponad 150 sekund (5 x 30). Co najmniej trzech pomyślne sondy są wymagane do deklarowania wewnętrznej bazy danych jako w dobrej kondycji.
+- **Rozmiar próbki pomyślne**. Określa rozmiar próbki, jak wcześniej wspomniano, liczbę pomyślnych próbek potrzebne do wywoływania zaplecza w dobrej kondycji. Załóżmy na przykład, interwał sondy kondycji drzwiami frontowymi jest 30 sekund, rozmiar próbki jest 5 i rozmiar próbki pomyślne to 3. Zawsze możemy obliczyć kondycji sondy zaplecza, przyjrzymy się pięć ostatnich przykłady ponad 150 sekund (5 x 30). Co najmniej trzech pomyślne sondy są wymagane do deklarowania wewnętrznej bazy danych jako w dobrej kondycji.
 
 - **Czułość opóźnienia (dodatkowe opóźnienie)**. Określa, czy chcesz drzwiami frontowymi wysyłać żądania do zaplecza w zakresie poufności pomiaru opóźnienia lub przesłania żądania do najbliższego wewnętrznej bazy danych.
 

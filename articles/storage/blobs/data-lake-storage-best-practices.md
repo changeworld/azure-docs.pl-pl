@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: sachins
-ms.openlocfilehash: ad77204f0c5d916b4006ffa68a9608429f93f87a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: MT
+ms.openlocfilehash: e371ac848eff0e66390fe17bc23934725fca35f9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246062"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000610"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Gdy Ty lub Twoi użytkownicy muszą mieć dostęp do danych w ramach konta magaz
 
 ### <a name="security-for-service-principals"></a>Zabezpieczenia dla jednostki usługi
 
-Jednostki usługi w usłudze Azure Active Directory są zwykle używane przez usługi takie jak usługi Azure Databricks dostępu do danych w Data Lake Storage Gen2. Dla wielu klientów pojedynczej jednostki usługi Azure Active Directory może być odpowiednia i może mieć pełne uprawnienia w katalogu głównym Data Lake Storage Gen2 wymagany jest system plików. Inni klienci mogą wymagać wielu klastrów z podmiotami innej usługi, w której jeden klaster ma pełny dostęp do danych i inny klaster z dostępem tylko do odczytu. 
+Jednostki usługi w usłudze Azure Active Directory są zwykle używane przez usługi takie jak usługi Azure Databricks dostępu do danych w Data Lake Storage Gen2. Dla wielu klientów pojedynczej jednostki usługi Azure Active Directory może być odpowiednia i może mieć pełne uprawnienia w katalogu głównym systemu plików Data Lake Storage Gen2. Inni klienci mogą wymagać wielu klastrów z podmiotami innej usługi, w której jeden klaster ma pełny dostęp do danych i inny klaster z dostępem tylko do odczytu. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Włącz zaporę Data Lake Storage Gen2 z dostępem do usług platformy Azure
 

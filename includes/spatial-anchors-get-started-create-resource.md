@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: MT
+ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305145"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632942"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Tworzenie zasobu usługi Spatial Anchors
 
@@ -25,7 +25,7 @@ Wybierz **przestrzenne kotwic**. W oknie dialogowym wybierz **Utwórz**.
 
 W **przestrzenne konta kotwic** okno dialogowe:
 
-- Wprowadź nazwę unikatowy zasób.
+- Wprowadź nazwę unikatowy zasób za pomocą regularnego znaków alfanumerycznych.
 - Wybierz subskrypcję, której chcesz dołączyć zasobu.
 - Utwórz grupę zasobów, wybierając **Utwórz nową**. Nadaj mu nazwę **myResourceGroup** i wybierz **OK**.
       [!INCLUDE [resource group intro text](resource-group.md)]
@@ -34,7 +34,11 @@ W **przestrzenne konta kotwic** okno dialogowe:
 
    ![Tworzenie zasobu](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Po utworzeniu zasobu możesz wyświetlić właściwości zasobu. Kopiuj zasób **Accountid** wartości do edytora tekstu, ponieważ będzie on potrzebny później.
+Po utworzeniu zasobu portalu Azure pokaże, że wdrożenie zostało zakończone. Kliknij pozycję **Przejdź do zasobu**.
+
+![Zakończono wdrożenie](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+
+Następnie możesz wyświetlić właściwości zasobu. Kopiuj zasób **Accountid** wartości do edytora tekstu, ponieważ będzie on potrzebny później.
 
    ![Właściwości zasobu](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 

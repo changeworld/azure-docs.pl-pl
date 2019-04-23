@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227188"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012289"
 ---
 1. Aby utworzyć nowy magazyn konfiguracji aplikacji, zaloguj się do [witryny Azure portal](https://aka.ms/azconfig/portal). W lewym górnym rogu strony wybierz **+ Utwórz zasób**. W **Przeszukaj witrynę Marketplace** wprowadź **konfiguracji aplikacji** i naciśnij klawisz Enter.
 
@@ -35,14 +35,3 @@ ms.locfileid: "58227188"
 4. Wybierz pozycję **Utwórz**. Wdrożenie może potrwać kilka minut.
 
 5. Po zakończeniu wdrożenia wybierz **ustawienia** > **klucze dostępu**. Zanotuj albo tylko do odczytu lub podstawowy odczytu i zapisu parametry połączenia klucza podstawowego. Użyj tych parametrów połączenia jest później skonfigurować aplikację do komunikowania się z utworzonego magazynu konfiguracji aplikacji.
-
-6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
-
-    | Klucz | Wartość |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | Biały |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Czarny |
-    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
-
-    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.

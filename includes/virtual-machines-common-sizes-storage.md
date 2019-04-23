@@ -5,22 +5,27 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c5e6a44409e082f10a532759e3403f6b5801fdca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 6c83298b102d6782647f3baebf6f98e43cb3ad7f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551517"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011847"
 ---
 Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.
 
 Lsv2 serii funkcje wysokiej przepływności, małego opóźnienia, jest bezpośrednio zamapowany Magazyn lokalny NVMe systemem [AMD EPYC &trade; 7551 procesora](https://www.amd.com/en/products/epyc-7000-series) ze wszystkich rdzeni zwiększanie wyniku 2.55 GHz, a maksymalna boost GHz 3.0. Maszyny wirtualne z serii Lsv2 są dostępne w rozmiarach od 8 do 80 procesorów wirtualnych w konfiguracji jednoczesnej wielowątkowości.  Dostępnych jest 8 GiB pamięci na każdy procesor wirtualny i jedno urządzenie NVMe SSD M.2 o pojemności 1,92 TB na każde 8 procesorów wirtualnych, a w przypadku serii L80s v2 19,2 TB (10x1,92 TB).
 
 > [!NOTE]
-> Maszyny wirtualne z serii Lsv2 są zoptymalizowane pod kątem używania lokalnego dysku w węźle podłączony bezpośrednio do maszyny Wirtualnej, a nie korzystają z dysków danych trwałych. Pozwala to na większą operacje We/Wy / przepływność dla obciążeń. Seria Lsv2 nie obsługuje tworzenia lokalnej pamięci podręcznej w celu zwiększenia operacje We/Wy osiągalna dysków danych trwałych. Wysoka przepływność i operacje We/Wy dysku lokalnego sprawia, że maszyny wirtualne z serii Lsv2 idealnym rozwiązaniem dla magazynów NoSQL, takie jak bazy danych Apache Cassandra i bazy danych MongoDB, które replikowanie danych między wieloma maszynami wirtualnymi do osiągnięcia trwałości w przypadku awarii jednej maszyny Wirtualnej.
+> Maszyny wirtualne z serii Lsv2 są zoptymalizowane pod kątem używania lokalnego dysku w węźle podłączony bezpośrednio do maszyny Wirtualnej, a nie korzystają z dysków danych trwałych. Pozwala to na większą operacje We/Wy / przepływność dla obciążeń. Lsv2 i serii Ls nie obsługują tworzenia lokalnej pamięci podręcznej w celu zwiększenia operacje We/Wy osiągalna dysków danych trwałych.
+>
+> Wysoka przepływność i operacje We/Wy dysku lokalnego sprawia, że Lsv2 i maszyny wirtualne z serii Ls idealnym rozwiązaniem dla magazynów NoSQL, takie jak bazy danych Apache Cassandra i bazy danych MongoDB, które replikowanie danych między wieloma maszynami wirtualnymi do osiągnięcia trwałości w przypadku awarii jednej maszyny Wirtualnej.
+>
+> Aby dowiedzieć się więcej, zobacz [optymalizacji wydajności na maszynach wirtualnych serii Lsv2](../articles/virtual-machines/linux/storage-performance.md).  
+
 
 ## <a name="lsv2-series"></a>Seria Lsv2
 

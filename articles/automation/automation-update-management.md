@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679078"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149703"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -208,7 +208,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ## <a name="install-updates"></a>Zainstaluj aktualizacje
 
-Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Aby utworzyć wdrożenie aktualizacji, musi mieć dostęp do zapisu do konta usługi Automation, a dostęp do zapisu do żadnych maszyn wirtualnych platformy Azure są są Ustawianie we wdrożeniu. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
+Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Aby utworzyć wdrożenie aktualizacji, musi mieć dostęp do zapisu do konta usługi Automation i do zapisu w żadnych maszyn wirtualnych platformy Azure są przeznaczone we wdrożeniu. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md).
 
 Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie dla maszyn wirtualnych platformy Azure lub zapisanej operacji wyszukiwania dla maszyn wirtualnych spoza platformy Azure.
 
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a> Poprawkami innych firm dla Windows
 
-Rozwiązanie Update Management zależy od usług WSUS lub Windows Update, aby poprawki obsługiwane systemy Windows. Narzędzia takie jak [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) pozwalają na publikowanie niestandardowych aktualizacji do programu WSUS. Ten scenariusz umożliwia zarządzania aktualizacjami maszyn poprawki, które używają usług WSUS jako repozytorium aktualizacji, ich za pomocą oprogramowania innych firm. Aby dowiedzieć się, jak skonfigurować program Updates Publisher, zobacz [zainstalować Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Rozwiązanie Update Management opiera się na repozytorium aktualizacji lokalnie skonfigurowanych do poprawiania obsługiwanych systemów Windows. Jest to WSUS lub Windows Update. Narzędzia takie jak [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) pozwalają na publikowanie niestandardowych aktualizacji do programu WSUS. Ten scenariusz umożliwia zarządzania aktualizacjami maszyn poprawki, które używają programu System Center Configuration Manager jako repozytorium aktualizacji, ich za pomocą oprogramowania innych firm. Aby dowiedzieć się, jak skonfigurować program Updates Publisher, zobacz [zainstalować Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Planowanie sieci
 

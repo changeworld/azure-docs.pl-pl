@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5a985e43c097dbea2861a5eb9fa10c526cbf089a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697872"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995937"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -38,6 +38,17 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+
+    | Klucz | Wartość |
+    |---|---|
+    | TestApp:Settings:BackgroundColor | Biały |
+    | TestApp:Settings:FontSize | 24 |
+    | TestApp:Settings:FontColor | Czarny |
+    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
+
+    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
@@ -191,4 +202,4 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i go z aplikacją sieci web platformy ASP.NET Core za pomocą [dostawcę konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)

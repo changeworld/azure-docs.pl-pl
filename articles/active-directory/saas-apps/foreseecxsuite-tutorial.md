@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 14732b02e56d56baa032b8a3728ca892f4ad7d2f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563602"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem przewiduje CX
 
@@ -119,7 +119,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z pakietem CX przewidu
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://cxsuite.foresee.com/`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: https://www.okta.com/saml2/service-provider/<UniqueID>
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: https:\//www.okta.com/saml2/service-provider/<UniqueID>
 
     > [!Note]
     > Jeśli **identyfikator** wartości nie są automatycznie polulated, następnie wypełnij wartości ręcznego zgodnie z opisem w powyżej wzorca. Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z pomocą [zespołem pomocy technicznej przewiduje CX pakietu klienta](mailto:support@foresee.com) aby zyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.

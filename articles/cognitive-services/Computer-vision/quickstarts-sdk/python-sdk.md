@@ -1,21 +1,21 @@
 ---
 title: 'Szybki start: Zestaw SDK dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Z tego przewodnika Szybki start dowiesz się, jak wykonywać typowe zadania przy użyciu zestawu SDK dla języka Python.
+description: W tym przewodniku Szybki Start dowiesz się, jak używać zestawu SDK języka Python do wykonywania typowych zadań, takich jak analizy obrazu, opis pobierania, rozpoznawanie tekstu i generowanie miniatur.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617975"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999318"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Zestaw SDK przetwarzania obrazów usług Azure Cognitive Services dla języka Python
 

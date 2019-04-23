@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501094"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995629"
 ---
 # <a name="creating-and-using-resource-files"></a>Tworzenie i używanie plików zasobów
 
@@ -72,7 +72,7 @@ Alternatywę dla generowania adresu URL sygnatury dostępu Współdzielonego jes
 
 Zamiast konfigurowania oraz tworzenia adresu URL sygnatury dostępu Współdzielonego, można użyć nazwa kontenera usługi Azure storage, dostęp do danych obiektów blob. Kontener magazynu używane musi koncie magazynu platformy Azure, który jest połączony z kontem usługi Batch, znane jako konto autostorage. Przy użyciu nazwy kontenera magazynu konta autostorage pozwala pominąć konfigurowanie i Tworzenie adresu URL sygnatury dostępu Współdzielonego dostępu do kontenera magazynu.
 
-W tym przykładzie przyjęto założenie, że dane, które ma być używany do tworzenia plików zasobów jest już konta usługi Azure Storage, połączony z Twoim kontem usługi Batch. Jeśli nie masz konta autostorage, zobacz kroki w [Utwórz konto usługi Batch](/create-a-batch-account.md) Aby uzyskać szczegółowe informacje na temat sposobu tworzenia i łączenia konta usługi.
+W tym przykładzie przyjęto założenie, że dane, które ma być używany do tworzenia plików zasobów jest już konta usługi Azure Storage, połączony z Twoim kontem usługi Batch. Jeśli nie masz konta autostorage, zobacz kroki w [Utwórz konto usługi Batch](batch-account-create-portal.md) Aby uzyskać szczegółowe informacje na temat sposobu tworzenia i łączenia konta usługi.
 
 Za pomocą połączonego konta magazynu, nie trzeba tworzyć i konfigurować adres URL sygnatury dostępu Współdzielonego kontenera magazynu. Zamiast tego należy podać nazwę kontenera magazynu w połączonym koncie magazynu.
 

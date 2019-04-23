@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 03/01/2019
-ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093892"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998281"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -75,7 +75,7 @@ Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zar
 - Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="transaction-log-rate-governance"></a>Zarządzanie współczynnik dziennika transakcji 
-Nadzoru współczynnik dziennik transakcji jest procesu w usłudze Azure SQL Database, używana do ograniczania szybkości pozyskiwania wysokiej dla obciążeń, takich jak zbiorczo wstawić, SELECT INTO, i tworzy indeks. Te limity są śledzone i wymuszane na poziomie sekundy, aby szybkość generowania rekordów dziennika, ograniczanie przepływności, niezależnie od tego, ile z systemem IOs mogą być wydawane względem danych plików.  Stawki Generowanie dziennika transakcji obecnie skalowane liniowo do momentu, która jest zależna od sprzętu, w dzienniku maksymalną szybkość dozwolone, jest 48 MB/s z zakupem modelu rdzeni wirtualnych. 
+Nadzoru współczynnik dziennik transakcji jest procesu w usłudze Azure SQL Database, używana do ograniczania szybkości pozyskiwania wysokiej dla obciążeń, takich jak zbiorczo wstawić, SELECT INTO, i tworzy indeks. Te limity są śledzone i wymuszane na poziomie sekundy, aby szybkość generowania rekordów dziennika, ograniczanie przepływności, niezależnie od tego, ile z systemem IOs mogą być wydawane względem danych plików.  Stawki Generowanie dziennika transakcji obecnie skalowane liniowo do momentu, która jest zależna od sprzętu, w dzienniku maksymalną szybkość dozwolone przy 96 MB/s z zakupem modelu rdzeni wirtualnych. 
 
 > [!NOTE]
 > Rzeczywiste fizycznych z systemem IOs do plików dziennika transakcji nie są zarządzane lub ograniczone. 
@@ -98,7 +98,7 @@ Kształtowania ruchu zarządcy współczynnik dziennika jest udostępniane za po
 |||
 
 Gdy wystąpią limit szybkości dziennika, który hamuje odpowiednią skalowalność, należy wziąć pod uwagę następujące opcje:
-- Skalowanie w górę do warstwy większa Aby uzyskać maksymalną szybkość dziennika 48 MB/s. 
+- Skalowanie w górę do warstwy większa Aby uzyskać maksymalną szybkość dziennika 96 MB/s. 
 - Jeśli dane są ładowane jest przejściowy, czyli przemieszczania danych w proces ETL może być załadowany do bazy danych tempdb, (które są rejestrowane w minimalnym). 
 - W przypadku scenariuszy analitycznych załadować do tabeli klastrowanego magazynu kolumn objętych usługą. Pozwala to zmniejszyć częstotliwość wymagane dzienników z powodu stosowania kompresji. Ta technika zwiększenie wykorzystania procesora CPU i ma zastosowanie tylko do zestawów danych, które korzystają z klastrowane indeksy magazynu kolumn. 
 

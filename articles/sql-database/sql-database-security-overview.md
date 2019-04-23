@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523702"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001086"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -88,9 +88,9 @@ Usługa SQL Database zabezpiecza dane klientów, zapewniając możliwości wykry
 
 Inspekcji usługi SQL Database śledzi działania bazy danych i pomaga zachować zgodność ze standardami zabezpieczeń, rejestrując zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure należącej do klienta. Inspekcja umożliwia monitorowanie trwających działań bazy danych, a także analizowanie i badanie działań historycznych w celu zidentyfikowania potencjalnych zagrożeń, podejrzanych nadużyć i naruszeń zabezpieczeń. Aby uzyskać więcej informacji, zobacz wprowadzenie do [inspekcji usługi SQL Database](sql-database-auditing.md).  
 
-### <a name="threat-detection"></a>Wykrywanie zagrożeń
+### <a name="advanced-threat-protection"></a>Zaawansowana ochrona przed zagrożeniami
 
-Ochronę przed zagrożeniami wykrywania rozszerza możliwości inspekcji, analizując dzienniki inspekcji dla nietypowe zachowanie i potencjalnie szkodliwe próby dostępu lub wykorzystania baz danych. Alerty są tworzone dla podejrzanych działań lub wzorce nietypowego dostępu, takich jak ataki przez wstrzyknięcie kodu SQL, potencjalne przeniknięciu danych i siłowego złamania hasła. Alerty wykrywania zagrożeń są wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), gdzie znajdują się szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalsze badanie podane wraz z akcji ograniczenia zagrożenia. Koszt wykrywania zagrożeń to 15 USD/serwera/miesiąc. Jest to bezpłatne przez pierwsze 60 dni. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą SQL Database Threat detection](sql-database-threat-detection.md).
+Zaawansowana ochrona przed zagrożeniami jest analizowanie dzienników programu SQL Server do wykrywania nietypowych zachowań i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Alerty są tworzone dla podejrzanych działań, takich jak iniekcja SQL, potencjalne przeniknięciu danych i metodą ataku siłowego życie ataków lub nieprawidłowości w programie access wzorców, aby przechwytywać podwyższeń poziomu uprawnień oraz poświadczenia naruszonych użytku. Alerty są wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), gdzie znajdują się szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalsze badanie podane wraz z akcji ograniczenia zagrożenia. Zaawansowana ochrona przed zagrożeniami, można włączyć na serwerze za dodatkową opłatą. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą SQL Database zaawansowanej ochrony przed zagrożeniami](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 

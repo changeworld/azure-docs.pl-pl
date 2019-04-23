@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543190"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001052"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
 
@@ -104,7 +104,7 @@ W poniższych sekcjach omówiono typowe scenariusze, które są bardziej złożo
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Wykonywanie przepływu w imieniu użytkownika z aplikacji
 
-W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa jest [he "w imieniu z" przepływ do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
+W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa ma przepływ "w imieniu z" do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
 
 ![Diagram przepływu w imieniu z wykonywania aplikacji](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -145,7 +145,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Uzyskiwanie dostępu do wielu usług, żądanie nowego tokenu aplikacji](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Jeśli aplikacja używa biblioteki ADAL, awarii w celu uzyskania tokenu zawsze zostanie ponowiony interaktywnie. W przypadku wystąpienia tego interaktywnego żądania użytkownika końcowego ma możliwość wykonania przy użyciu dostępu warunkowego. Dotyczy to żądanie jest `AcquireTokenSilentAsync` lub `PromptBehavior.Never` w takim przypadku aplikacja musi wykonać interaktywną ```AcquireToken``` żądania, aby umożliwić użytkowania końcowego jest zgodne z zasadami.
+Jeśli aplikacja używa biblioteki ADAL, awarii w celu uzyskania tokenu zawsze zostanie ponowiony interaktywnie. W przypadku wystąpienia tego interaktywnego żądania użytkownika końcowego ma możliwość wykonania przy użyciu dostępu warunkowego. Dotyczy to żądanie jest `AcquireTokenSilentAsync` lub `PromptBehavior.Never` w takim przypadku aplikacja musi wykonać interaktywną ```AcquireToken``` żądania, aby dać użytkownikowi możliwość zgodna z zasadami.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenariusz: Aplikacja jednostronicowa (SPA) przy użyciu ADAL.js
 

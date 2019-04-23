@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369449"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995918"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Szybki start: Wdrożenia wystąpienia kontenera na platformie Azure przy użyciu witryny Azure portal
 
@@ -35,31 +35,29 @@ Wybierz kolejno pozycje **Utwórz zasób** > **Kontenery** > **Container Instanc
 
 ![Rozpoczynanie tworzenia nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-01]
 
-Wprowadź następujące wartości w polach tekstowych **Nazwa kontenera**, **Obraz kontenera** oraz **Grupa zasobów**. Pozostaw domyślne wartości w pozostałych polach i kliknij przycisk **OK**.
+Na **podstawy** strony, wprowadź następujące wartości w **grupy zasobów**, **nazwa kontenera**, i **obraz kontenera** pól tekstowych. Pozostaw domyślne wartości w pozostałych polach i kliknij przycisk **OK**.
 
+* Grupa zasobów: **Utwórz nowy element** > `myresourcegroup`
 * Nazwa kontenera: `mycontainer`
 * Obraz kontenera: `mcr.microsoft.com/azuredocs/aci-helloworld`
-* Grupa zasobów: **Utwórz nowy element** > `myResourceGroup`
 
 ![Konfigurowanie podstawowych ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-03]
 
-Na potrzeby tego przewodnika Szybki Start Pozostaw domyślne ustawienie **publicznych** do wdrażania publicznej Microsoft `aci-helloworld` obrazu. Ten obraz zawiera małą aplikację internetową napisaną w języku Node.js, która udostępnia statyczną stronę HTML.
+W tym przewodniku Szybki Start używasz domyślne **typ obrazu** ustawienie **publicznych** do wdrażania publicznej Microsoft `aci-helloworld` obrazu. Ten obraz systemu Linux są pakuje małą aplikację internetową napisaną w języku Node.js, która służy statyczną stronę HTML.
 
-W obszarze **Konfiguracja** określ wartość w polu **Etykieta nazwy DNS** swojego kontenera. Nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. Twój kontener będzie dostępny publicznie pod adresem `<dns-name-label>.<region>.azurecontainer.io`. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
-
-Pozostaw domyślne wartości pozostałych ustawień w obszarze **Konfiguracja**, a następnie kliknij przycisk **OK**, aby zweryfikować konfigurację.
+Na **sieć** określ **etykiety nazwy DNS** kontenera. Nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. Twój kontener będzie dostępny publicznie pod adresem `<dns-name-label>.<region>.azurecontainer.io`. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 
 ![Konfigurowanie nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-04]
 
-Po zakończeniu weryfikacji zostanie wyświetlone podsumowanie ustawień kontenera. Wybierz przycisk **OK**, aby przesłać żądanie wdrożenia kontenera.
+Pozostaw inne ustawienia domyślne, a następnie wybierz **przeglądu + Utwórz**.
+
+Po zakończeniu weryfikacji zostanie wyświetlone podsumowanie ustawień kontenera. Wybierz **Utwórz** można przesłać żądanie wdrożenia kontenera.
 
 ![Podsumowanie ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-05]
 
 Po rozpoczęciu wdrażania zostanie wyświetlone powiadomienie wskazujące postęp wdrażania. Kolejne powiadomienie zostanie wyświetlone, gdy grupa kontenerów zostanie wdrożona.
 
-![Postęp tworzenia nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-08]
-
-Otwórz przegląd dla grupy kontenerów, przechodząc do ekranu **Grupy zasobów** > **myResourceGroup** > **mycontainer**. Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
+Otwórz przegląd dla grupy kontenerów, przechodząc do **grup zasobów** > **myresourcegroup** > **mycontainer**. Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
 
 ![Przegląd grupy kontenerów w witrynie Azure Portal][aci-portal-06]
 

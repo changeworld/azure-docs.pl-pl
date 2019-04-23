@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248252"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149864"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie w usłudze DevTest Labs limity przydziału i ograniczenia
 Podczas pracy w usłudze DevTest Labs, może się okazać, że nie istnieją pewne domyślne limity do niektórych zasobów platformy Azure, które mogą mieć wpływ na usługi DevTest Labs. Limity te są nazywane **przydziały**.
@@ -28,7 +28,7 @@ Podczas pracy w usłudze DevTest Labs, może się okazać, że nie istnieją pew
 
 Można użyć poszczególnych zasobów platformy Azure, aż osiągniesz limit przydziału. Każda subskrypcja ma oddzielne limity przydziału i użycie jest śledzone oddzielnie dla każdej subskrypcji.
 
-Przykładowo Każda subskrypcja ma domyślny limit przydziału rdzeni 20. Dlatego w przypadku tworzenia maszyn wirtualnych w środowisku laboratoryjnym przy użyciu cztery rdzenie, następnie można tylko utworzyć pięciu maszyn wirtualnych. 
+Przykładowo Każda subskrypcja ma domyślny limit przydziału rdzeni 20. Dlatego w przypadku tworzenia maszyn wirtualnych w środowisku laboratoryjnym przy użyciu cztery rdzenie, następnie można tylko utworzyć pięciu maszyn wirtualnych.
 
 [Limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits) wymieniono niektóre z najbardziej typowych limitów przydziału dla zasobów platformy Azure. Zasoby są najczęściej używane w laboratorium, a dla mogą wystąpić przydziałów, zawierają rdzeni maszyn wirtualnych, publiczne adresy IP, interfejs sieciowy, dyski zarządzane, przypisania ról RBAC i obwodów usługi ExpressRoute.
 
@@ -67,4 +67,4 @@ Te kroki pokazują, jak można zażądać zwiększenia limitu przydziału, za po
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Kolejne kroki
-* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501641"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996026"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus
 
@@ -94,6 +94,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
 Przetwarzanie wsadowe nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest dostępna tylko dla usługi Service Bus klienta protokołu za pomocą [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) biblioteki. Protokół HTTP nie obsługuje przetwarzanie wsadowe.
+
+> [!NOTE]
+> Ustawienie BatchFlushInterval zapewnia, że przetwarzania wsadowego jest niejawne z perspektywy aplikacji. czyli aplikacja sprawia, że SendAsync() i CompleteAsync() wywołuje i nie powoduje określonych wywołań usługi Batch.
+>
+> Przetwarzanie wsadowe po stronie klienta jawne można zaimplementować przy użyciu poniżej wywołania metody - 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> W tym miejscu łącznego rozmiaru wiadomości musi być mniejsza niż maksymalny rozmiar obsługiwany przez warstwę cenową.
 
 ## <a name="batching-store-access"></a>Przetwarzanie wsadowe dostęp do sklepu
 

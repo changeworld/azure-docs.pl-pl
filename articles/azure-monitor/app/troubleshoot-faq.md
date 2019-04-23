@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521826"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149287"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Często zadawane pytania
 
@@ -134,7 +134,7 @@ Dowiedz się więcej na [ASP.NET](api-filtering-sampling.md) lub [Java](java-fil
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Jak miasto, kraj i inne dane lokalizacji geograficznej obliczane są?
 
-Możemy wyszukać adres IP (IPv4 lub IPv6) klienta sieci web przy użyciu [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/).
+Możemy wyszukać adres IP (IPv4 lub IPv6) klienta sieci web przy użyciu [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Telemetria przeglądarki: Firma Microsoft gromadzi adres IP nadawcy.
 * Dane telemetryczne serwera: Moduł usługi Application Insights zbiera informacje o adres IP klienta. Nie są zbierane, jeśli `X-Forwarded-For` jest ustawiona.

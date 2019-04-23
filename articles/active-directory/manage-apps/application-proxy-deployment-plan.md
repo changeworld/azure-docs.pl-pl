@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: fe8f9f271599d688878d61aee64273690d02c2b8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685836"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000712"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planowanie wdrożenia serwera Proxy aplikacji usługi Azure AD
 
@@ -158,7 +158,7 @@ Następujące elementy projektu, należy zwiększyć Powodzenie wdrożenia pilot
 3. Następnie dodaj metodę logowania jednokrotnego dla aplikacji i ponownie przetestuj można zweryfikować dostępu.
 4. Zastosowanie dostępu warunkowego i zasad MFA zgodnie z potrzebami. Testowanie i weryfikowanie dostępu.
 
-**Narzędzia do rozwiązywania problemów**: Podczas rozwiązywania problemów, zawsze należy zacząć od sprawdzania dostępu do opublikowanych aplikacji w przeglądarce na hoście łącznika i upewnij się, że aplikacja działa zgodnie z oczekiwaniami. Prostsze konfigurację, łatwiej, aby ustalić przyczynę, dlatego należy rozważyć próby odtworzenia problemów z minimalną konfiguracją, takiej jak pojedynczy łącznik i brak logowania jednokrotnego. W niektórych przypadkach debugowania narzędzi, takich jak narzędzie firmy Telerik Fiddler w sieci web można udowodnić, że niezbędne do rozwiązywania problemów dostępu lub zawartości w aplikacjach, dostępne za pośrednictwem serwera proxy. Narzędzie fiddler, mogą również działać jako serwer proxy, aby ułatwić śledzenie i debugowanie ruchu dla platform urządzeń przenośnych, takich jak systemy iOS i Android oraz praktycznie wszystko, można skonfigurować w przypadku kierowania za pośrednictwem serwera proxy. Zobacz [przewodnik rozwiązywania problemów z](/application-proxy-troubleshoot.md) Aby uzyskać więcej informacji.
+**Narzędzia do rozwiązywania problemów**: Podczas rozwiązywania problemów, zawsze należy zacząć od sprawdzania dostępu do opublikowanych aplikacji w przeglądarce na hoście łącznika i upewnij się, że aplikacja działa zgodnie z oczekiwaniami. Prostsze konfigurację, łatwiej, aby ustalić przyczynę, dlatego należy rozważyć próby odtworzenia problemów z minimalną konfiguracją, takiej jak pojedynczy łącznik i brak logowania jednokrotnego. W niektórych przypadkach debugowania narzędzi, takich jak narzędzie firmy Telerik Fiddler w sieci web można udowodnić, że niezbędne do rozwiązywania problemów dostępu lub zawartości w aplikacjach, dostępne za pośrednictwem serwera proxy. Narzędzie fiddler, mogą również działać jako serwer proxy, aby ułatwić śledzenie i debugowanie ruchu dla platform urządzeń przenośnych, takich jak systemy iOS i Android oraz praktycznie wszystko, można skonfigurować w przypadku kierowania za pośrednictwem serwera proxy. Zobacz [przewodnik rozwiązywania problemów z](application-proxy-troubleshoot.md) Aby uzyskać więcej informacji.
 
 ## <a name="implement-your-solution"></a>Implementowania rozwiązania
 

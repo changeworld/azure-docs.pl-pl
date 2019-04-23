@@ -1,6 +1,6 @@
 ---
-title: Jak zintegrować dzienniki usługi Azure Active Directory z usługą ArcSight przy użyciu usługi Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować dzienniki usługi Azure Active Directory z usługą ArcSight przy użyciu usługi Azure Monitor (wersja zapoznawcza)
+title: Jak zintegrować dzienniki usługi Azure Active Directory z usługą ArcSight przy użyciu usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować dzienniki usługi Azure Active Directory z usługą ArcSight przy użyciu usługi Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/03/2018
+ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd7101c641cf69112975cd0431a08ec74f99aac
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438108"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996310"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor-preview"></a>Integrowanie dzienników usługi Azure Active Directory za pomocą ArcSight przy użyciu usługi Azure Monitor (wersja zapoznawcza)
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrowanie dzienników usługi Azure Active Directory za pomocą ArcSight przy użyciu usługi Azure Monitor
 
 [Micro ArcSight fokus](https://software.microfocus.com/products/siem-security-information-event-management/overview) się informacjami i zdarzeniami (SIEM) rozwiązania do zarządzania zabezpieczeniami, która ułatwia wykrywanie i reagowanie na zagrożenia bezpieczeństwa w danej platformy. Dzienniki usługi Azure Active Directory (Azure AD) mogą teraz kierować do ArcSight przy użyciu usługi Azure Monitor, za pomocą łącznika ArcSight dla usługi Azure AD. Ta funkcja umożliwia monitorowanie złamania zabezpieczeń przy użyciu ArcSight w dzierżawie.  
 
@@ -59,4 +59,4 @@ Pobierz i Otwórz [Przewodnik po konfiguracji dla ArcSight SmartConnector dla Ce
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przewodnik po konfiguracji dla ArcSight SmartConnector dla Centrum zdarzeń usługi Azure Monitor](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Przewodnik po konfiguracji dla ArcSight SmartConnector dla Centrum zdarzeń usługi Azure Monitor](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

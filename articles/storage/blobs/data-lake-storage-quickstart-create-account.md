@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456010"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995680"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
-Usługa Azure Data Lake Storage 2. generacji [obsługuje usługę hierarchicznych przestrzeni nazw](data-lake-storage-introduction.md), która udostępnia natywny system plików oparty na katalogach przystosowany do pracy z rozproszonym systemem plików usługi Hadoop (HDFS, Hadoop Distributed File System). Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](data-lake-storage-abfs-driver.md).
+Azure Data Lake magazynu Gen2 [obsługuje hierarchicznej przestrzeni nazw](data-lake-storage-introduction.md) zapewniającą natywny, na podstawie katalogu dostosowane do pracy z pliku System (HDFS, Hadoop Distributed) system plików. Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](data-lake-storage-abfs-driver.md).
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia konta przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) albo za pośrednictwem [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 |-----------|--------------|
 |Portal     | Brak         |
 |PowerShell | Dla tego przewodnika Szybki start jest wymagany moduł PowerShell Az.Storage w wersji **0.7** lub nowszej. Aby określić bieżącą wersję, uruchom polecenie `Get-Module -ListAvailable Az.Storage`. Jeśli po uruchomieniu tego polecenia nie zostaną wyświetlone wyniki lub wyświetlona zostanie wersja inna niż **0.7**, należy uaktualnić moduł programu Powershell. Zobacz sekcję [Uaktualnianie modułu PowerShell](#upgrade-your-powershell-module) w tym przewodniku.
-|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchomić polecenia interfejsu wiersza polecenia platformy Azure w jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
+|Interfejs wiersza polecenia        | Można zalogować się do platformy Azure i uruchamiać polecenia wiersza polecenia platformy Azure w jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
 
 Podczas pracy w wierszu polecenia masz opcję uruchamiania powłoki chmury platformy Azure lub instalowania interfejsu wiersza polecenia lokalnie.
 
@@ -63,7 +63,7 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Tworzenie konta przy użyciu witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -112,7 +112,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
 
-Następnie uaktualnij moduł programu PowerShell, zaloguj się do subskrypcji platformy Azure, utwórz grupę zasobów i utwórz konto magazynu.
+Następnie uaktualniania modułu programu powershell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów i następnie utworzyć konto magazynu.
 
 ### <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
 
@@ -128,7 +128,7 @@ Instalacja modułu Az.Storage
 Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
 
-### <a name="log-in-to-your-azure-subscription"></a>Logowanie się do subskrypcji platformy Azure
+### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do subskrypcji platformy Azure
 
 Użyj polecenia `Login-AzAccount`, a następnie postępuj zgodnie z instrukcjami wyświetlanymi na ekranie w celu uwierzytelnienia.
 
@@ -176,9 +176,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby uruchomić usługę Azure Cloud Shell, zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+Aby uruchomić usługę Azure Cloud Shell, zaloguj się do [witryny Azure portal](https://portal.azure.com).
 
-Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie logowania:
+Jeśli chcesz zarejestrować się w lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie logowania:
 
 ```cli
 az login

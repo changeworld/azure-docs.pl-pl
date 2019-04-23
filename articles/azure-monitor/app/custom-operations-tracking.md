@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
-ms.translationtype: MT
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811294"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995544"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights
 
@@ -31,7 +31,7 @@ Ten dokument zawiera wskazówki na temat sposobu śledzenie operacji niestandard
 - Usługa Application Insights dla sieci web działających (ASP.NET) wersji 2.4 +.
 - Usługa Application Insights dla platformy ASP.NET Core w wersji 2.1 +.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Operacja jest logiczną pracy wykonywane przez aplikację. Ta kolumna ma nazwę, godzinę rozpoczęcia, czas trwania, wynik oraz kontekstu wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A zostało zainicjowane przez operację B, następnie działanie B jest ustawiony jako element nadrzędny dla A. Operacja może mieć tylko jedną jednostkę nadrzędną, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat operacji i korelacja telemetrii, zobacz [korelacja telemetrii usługi Azure Application Insights](correlation.md).
 
 W zestawie SDK platformy .NET Application Insights operacji jest opisana przez klasy abstrakcyjnej [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jego elementy potomne [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
@@ -203,7 +203,7 @@ public async Task Process(BrokeredMessage message)
 }
 ```
 
-### <a name="azure-storage-queue"></a>Usługi Azure queue Storage
+### <a name="azure-storage-queue"></a>Azure Storage queue
 Poniższy przykład pokazuje, jak śledzić [kolejki usługi Azure Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) operacje i korelowanie danych telemetrycznych od producenta, klienta i usługi Azure Storage. 
 
 Kolejka magazynu ma interfejsu API protokołu HTTP. Wszystkie wywołania do kolejki są śledzone przez moduł zbierający Application Insights zależności żądań HTTP.
@@ -384,12 +384,13 @@ W przypadku niektórych kolejek można kolejki wielu komunikatów za pomocą jed
 Każdy komunikat powinien zostać przetworzony w swój własny przepływ sterowania asynchronicznego. Aby uzyskać więcej informacji, zobacz [wychodzące zależności śledzenia](#outgoing-dependencies-tracking) sekcji.
 
 ## <a name="long-running-background-tasks"></a>Długotrwałe zadania w tle
+
 Niektóre aplikacje uruchomić operacji długotrwałych, które mogą być spowodowane przez żądania użytkownika. Z punktu widzenia śledzenia/Instrumentacji nie jest inny niż Instrumentacji żądania lub zależności: 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-W tym przykładzie `telemetryClient.StartOperation` tworzy `RequestTelemetry` i wypełnień kontekstu korelacji. Załóżmy, że masz operacji nadrzędnej, która została utworzona przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tym samym asynchronicznego sterowania przepływem jako przychodzącego żądania, jest skorelowana z tym operacja nadrzędnej. `BackgroundTask` i wszystkie elementy zagnieżdżone telemetrii automatycznie są powiązane z tym żądaniem, który spowodował nieoczekiwane, nawet po zakończeniu żądania.
+W tym przykładzie `telemetryClient.StartOperation` tworzy `DependencyTelemetry` i wypełnień kontekstu korelacji. Załóżmy, że masz operacji nadrzędnej, która została utworzona przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tym samym asynchronicznego sterowania przepływem jako przychodzącego żądania, jest skorelowana z tym operacja nadrzędnej. `BackgroundTask` i wszystkie elementy zagnieżdżone telemetrii automatycznie są powiązane z tym żądaniem, który spowodował nieoczekiwane, nawet po zakończeniu żądania.
 
-Podczas uruchamiania zadania z wątku w tle, który nie ma żadnych operacji (`Activity`) skojarzony z nim, `BackgroundTask` nie ma żadnych nadrzędnej. Jednak go można zagnieżdżać operacji. Wszystkie elementy dane telemetryczne zgłoszone zadanie skorelowanych z `RequestTelemetry` utworzone w `BackgroundTask`.
+Podczas uruchamiania zadania z wątku w tle, który nie ma żadnych operacji (`Activity`) skojarzony z nim, `BackgroundTask` nie ma żadnych nadrzędnej. Jednak go można zagnieżdżać operacji. Wszystkie elementy dane telemetryczne zgłoszone zadanie skorelowanych z `DependencyTelemetry` utworzone w `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Wychodzące zależności śledzenia
 Możesz śledzić własne rodzaju zależności lub operacją, która nie jest obsługiwana przez usługę Application Insights.

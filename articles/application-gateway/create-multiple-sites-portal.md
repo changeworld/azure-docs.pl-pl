@@ -1,24 +1,24 @@
 ---
-title: Tworzenie bramy aplikacji, który hostuje wiele witryn sieci web — witryna Azure portal
-description: Dowiedz się, jak utworzyć bramę aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal.
+title: Samouczek — Tworzenie bramy aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal
+description: W tym samouczku dowiesz się, jak utworzyć bramę aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080171"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999029"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Samouczek: Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
 
-Można użyć portalu Azure w celu [Konfigurowanie hostingu wielu witryn sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym artykule należy zdefiniować pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym artykule założono, że posiadasz wiele domen i używa przykłady *www.contoso.com* i *www.fabrikam.com*.
+Można użyć portalu Azure w celu [Konfigurowanie hostingu wielu witryn sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
 
-W tym artykule omówiono sposób wykonywania następujących zadań:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
@@ -146,7 +146,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 Reguły są przetwarzane w kolejności, w jakiej są wymienione, a ruch jest przekierowywany przy użyciu pierwszej zgodnej reguły niezależnie od specyficzności. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
 
-W tym przykładzie utworzysz dwie nowe reguły i usuniesz domyślną regułę, która została utworzona podczas tworzenia bramy aplikacji. 
+W tym przykładzie utworzenie dwóch nowych reguł i usunąć domyślnej reguły utworzone podczas tworzenia bramy aplikacji.
 
 1. Kliknij przycisk **reguły** a następnie kliknij przycisk **podstawowe**.
 2. Wprowadź *contosoRule* dla nazwy.
@@ -179,6 +179,18 @@ Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i
 
     ![Testowanie witryny fabrikam w bramy aplikacji](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, usuń grupę zasobów. Usuwając grupę zasobów, usuwasz również bramę aplikacji i wszystkie powiązane z nią zasoby.
+
+Aby usunąć grupę zasobów:
+
+1. W menu po lewej stronie witryny Azure Portal wybierz pozycję **Grupy zasobów**.
+2. Na stronie **Grupy zasobów** wyszukaj pozycję **myResourceGroupAG** na liście i wybierz ją.
+3. Na **stronie grupy zasobów** wybierz pozycję **Usuń grupę zasobów**.
+4. Wprowadź ciąg *myResourceGroupAG* w polu **WPISZ NAZWĘ GRUPY ZASOBÓW**, a następnie wybierz pozycję **Usuń**
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Konfigurowanie usługi App Service z usługą Application Gateway](create-web-app.md)
+> [!div class="nextstepaction"]
+> [Dowiedz się więcej o co można zrobić za pomocą usługi Azure Application Gateway](application-gateway-introduction.md)

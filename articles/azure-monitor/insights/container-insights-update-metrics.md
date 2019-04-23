@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 15be0039006d322c3d5e19d4ef141d1543c7b1c0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580676"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995986"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak zaktualizować Monitor Azure containers włączyć metryki
 Usługa Azure Monitor dla kontenerów wprowadza obsługę zbieranie metryk z węzłów klastrów usługi Kubernetes usługi Azure (AKS) i zasobników i zapisywania ich w magazynie metryk usługi Azure Monitor. Ta zmiana ma na celu dostarczać ulepszone osi czasu, podczas wyświetlania agregacji obliczeń (średnia liczba, Max, Min, Suma) w wykresach wydajności, przypinanie wykresów wydajności w portalu pulpitów nawigacyjnych platformy Azure, obsługę i obsługi alertów dotyczących metryk.
@@ -35,7 +35,7 @@ Aktualizowanie klastra do obsługi nowych funkcji można wykonać w witrynie Azu
 Albo przetwarzania przypisuje **wydawcy metryki monitorowania** roli do jednostki usługi klastra, aby dane zbierane przez agenta mogą być publikowane do zasobu klastrów. Monitorowanie metryk Publisher ma uprawnienie tylko do metryki wypychane do zasobu, nie można zmienić stan, zaktualizować zasobu lub Odczyt danych. Aby uzyskać więcej informacji o roli, zobacz [roli wydawcy metryki monitorowania](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
-Przed rozpoczęciem upewnij się, że jesteś członkiem **[właściciela](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** rolę zasobu klastra usługi AKS, aby włączyć zbieranie węzła i zasobnika metryki wydajności niestandardowych. 
+Przed rozpoczęciem upewnij się, że jesteś członkiem **[właściciela](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** rolę zasobu klastra usługi AKS, aby włączyć zbieranie węzła i zasobnika metryki wydajności niestandardowych. 
 
 Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wiersza polecenia platformy Azure w wersji 2.0.59 musi być uruchomiona lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 

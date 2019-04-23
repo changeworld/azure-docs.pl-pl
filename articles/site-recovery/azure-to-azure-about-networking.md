@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651547"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149318"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -48,7 +48,7 @@ Jeśli używasz serwera proxy zapory opartego na adresach URL do sterowania ruch
 
 **Adres URL** | **Szczegóły**  
 --- | ---
-*.blob.core.windows.net | Wymagane, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z maszyny Wirtualnej. Jeśli znasz pamięci podręcznej kont magazynu dla maszyn wirtualnych, możesz umieścić na liście dozwolonych szczegółowości konta magazynu z adresów URL (np: cache1.blob.core.windows.net i cache2.blob.core.windows.net) zamiast *. blob.core.windows.net
+*.blob.core.windows.net | Wymagane, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z maszyny Wirtualnej. Jeśli znasz pamięci podręcznej kont magazynu dla maszyn wirtualnych, możesz umieścić na liście dozwolonych adresy URL konta określonego magazynu (np: cache1.blob.core.windows.net i cache2.blob.core.windows.net) zamiast *. blob.core.windows.net
 login.microsoftonline.com | Wymagane dla autoryzacji i uwierzytelniania do adresów URL usługi Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja usługi Site Recovery może wystąpić z maszyny Wirtualnej. Odpowiedni "Site Recovery adres IP" można użyć, jeśli Twój serwer proxy zapory obsługuje adresy IP.
 *.servicebus.windows.net | Wymagane, aby Usługa Site Recovery danych monitorowania i diagnostyki mogą być zapisywane z maszyny Wirtualnej. Odpowiedni "Site Recovery monitorowania adres IP" można użyć, jeśli Twój serwer proxy zapory obsługuje adresy IP.
@@ -96,13 +96,19 @@ Zakresy adresów IP odzyskiwania lokacji są następujące:
    Południowe Zjednoczone Królestwo 2 | 13.87.37.4| 13.87.34.139
    Północne Zjednoczone Królestwo | 51.142.209.167 | 13.87.102.68
    Korea Środkowa | 52.231.28.253 | 52.231.32.85
-   Korea Południowa | 52.231.298.185 | 52.231.200.144
+   Korea Południowa | 52.231.198.185 | 52.231.200.144
    Francja Środkowa | 52.143.138.106 | 52.143.136.55
    Francja Południowa | 52.136.139.227 |52.136.136.62
    Australia centralnej| 20.36.34.70 | 20.36.46.142
    Australia Środkowa 2| 20.36.69.62 | 20.36.74.130
    Republika Południowej Afryki (zachód) | 102.133.72.51 | 102.133.26.128
    Republika Południowej Afryki (północ) | 102.133.160.44 | 102.133.154.128
+   Administracja USA — Wirginia | 52.227.178.114 | 23.97.0.197
+   US Gov Iowa | 13.72.184.23 | 23.97.16.186
+   Administracja USA — Arizona | 52.244.205.45 | 52.244.48.85
+   Administracja USA — Teksas | 52.238.119.218 | 52.238.116.60
+   US DoD — wschodnie stany | 52.181.164.103 | 52.181.162.129
+   US DoD — środkowe stany | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowa grupa zabezpieczeń
 
 W tym przykładzie pokazano, jak skonfigurować reguły sieciowej grupy zabezpieczeń dla maszyny Wirtualnej do replikacji.

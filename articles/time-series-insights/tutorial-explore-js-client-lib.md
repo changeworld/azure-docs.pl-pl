@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812076"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150085"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
@@ -28,6 +28,9 @@ Ten samouczek zawiera informacje dotyczące:
 > * Przykładowej aplikacji usługi TSI.
 > * Biblioteki klienta języka JavaScript dla usługi TSI.
 > * Sposobu, w jaki przykładowa aplikacja korzysta z biblioteki w celu wizualizacji danych w usłudze TSI.
+
+> [!NOTE]
+> Pliki źródłowe aplikacji przykładowej usługi Time Series Insights można znaleźć w określonych [repozytorium przykładów GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 
 ## <a name="video"></a>Wideo: 
 
@@ -57,7 +60,7 @@ W tym samouczku przykładowa aplikacja usługi Time Series Insights jest wykorzy
 
 ### <a name="page-source-and-structure"></a>Źródło i struktura strony
 
-Na początku obejrzyjmy kod źródłowy HTML i JavaScript strony renderowanej w przeglądarce. Nie będziemy przechodzić przez wszystkie elementy, ale poznasz główne sekcje, co pozwoli Ci zorientować się, jak działa strona:
+Po pierwsze, teraz wyświetlić [kod źródłowy w kodzie HTML i JavaScript](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) to tła strony, który jest renderowany w przeglądarce. Nie będziemy przechodzić przez wszystkie elementy, ale poznasz główne sekcje, co pozwoli Ci zorientować się, jak działa strona:
 
 1. Otwórz w przeglądarce funkcję **Narzędzia deweloperskie**. Zbadaj elementy HTML wchodzące w skład bieżącej strony (określane również jako drzewo HTML lub drzewo DOM).
 
@@ -109,7 +112,7 @@ Jak wspomniano wcześniej, ten przykład stanowi aplikację jednostronicową i k
 
 2. Później aplikacja żąda od usługi Azure AD „tokenu dostępu”. Token dostępu jest wystawiany dla określonego zestawu uprawnień dla konkretnego identyfikatora usługi/interfejsu API https://api.timeseries.azure.com. Identyfikator usługi/interfejsu API jest określany także jako „odbiorca” tokenu. Uprawnienia tokenu są wystawiane w imieniu zalogowanego użytkownika. Identyfikator usługi/interfejsu API to jeszcze jedna właściwość zawarta w rejestracji aplikacji w usłudze Microsoft Azure Active Directory. Gdy biblioteka ADAL zwraca token dostępu do aplikacji, jest on przekazywany jako „token elementu nośnego” podczas uzyskiwania dostępu do interfejsów API usługi TSI.
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>Identyfikacja kontrolki
 
@@ -191,7 +194,7 @@ Przyjrzyj się kodowi związanemu z niektórymi standardowymi kontrolkami wykres
 
 Przypomnij sobie z kroku 3 w [sekcji Źródło i struktura strony](#page-source-and-structure), że kontrolki wykresów są ułożone na stronie w wierszach i każda z nich zawiera opisowy wiersz tytułu. W tym przykładzie trzy wypełnione wykresy znajdują się poniżej tytułowego elementu `<div>` „Multiple Chart Types From the Same Data” (Wiele typów wykresów z tym samym zestawem danych) i są powiązane z trzema elementami `<div>` znajdującymi się poniżej tytułu:
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
+[!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 Następująca sekcja kodu języka JavaScript korzysta z przedstawionych wcześniej wzorców: tworzy wyrażenia agregujące usługi TSI, wykorzystuje je do wykonania zapytań do danych usługi TSI oraz renderuje trzy wykresy. Zwróć uwagę na wykorzystane trzy typy z przestrzeni nazw `tsiClient.ux`: `LineChart`, `BarChart`, `PieChart` do utworzenia i renderowania odpowiednich wykresów. Zauważ także, że wszystkie trzy wykresy mogą korzystać z tych samych danych wyrażeń agregujących `transformedResult`:
 
@@ -274,7 +277,7 @@ Kod używany w celu zademonstrowania działania pędzli jest pokazany w poprzedn
 
 ![Wykres liniowy z menu kontekstowym umożliwiającym utworzenie wykresu kołowego/słupkowego za pomocą pędzli](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -283,9 +286,12 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Korzystanie z interfejsów API w bibliotece klienta języka JavaScript dla usługi TSI.
 > * Tworzenie i wypełnianie kontrolek wykresu z użyciem danych usługi TSI za pomocą języka JavaScript.
 
-Zgodnie z opisem, przykładowa aplikacja usługi TSI korzysta z demonstracyjnego zestawu danych. Aby dowiedzieć się więcej na temat tworzenia własnego środowiska i zestawu danych w usłudze TSI, należy przejść do następującego artykułu:
+Jak widać, usługa TSI Przesyła Przykładowa aplikacja korzysta z zestawem danych demonstracyjnych. Aby dowiedzieć się więcej na temat tworzenia własnego środowiska i zestawu danych w usłudze TSI, należy przejść do następującego artykułu:
 
 > [!div class="nextstepaction"]
 > [Samouczek: Tworzenie środowiska usługi Azure Time Series Insights](tutorial-create-populate-tsi-environment.md)
 
+Lub Wyświetl pliki źródłowe TSI przykładowej aplikacji:
 
+> [!div class="nextstepaction"]
+> [Usługa TSI Przesyła przykładowe repozytorium aplikacji](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)

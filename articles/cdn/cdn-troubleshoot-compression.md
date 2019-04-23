@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790998"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149462"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Rozwiązywanie problemów związanych z kompresją pliku CDN
 Ten artykuł pomoże Ci rozwiązać problemy z [kompresją pliku CDN](cdn-improve-performance.md).
@@ -117,5 +117,5 @@ Aby zakwalifikować się do kompresji, plik musi spełniać następujące wymaga
 **Za pośrednictwem** nagłówka HTTP wskazuje na serwerze sieci web, czy żądanie jest przekazywana przez serwer proxy.  Serwery sieci web Microsoft IIS, domyślnie nie Kompresuj odpowiedzi, gdy żądanie zawiera **za pośrednictwem** nagłówka.  Aby zmienić to zachowanie, wykonaj następujące czynności:
 
 * **IIS 6**: [Ustaw HcNoCompressionForProxies = "FALSE" we właściwościach metabazy usług IIS](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **Usługi IIS 7 i nowsze**: [Ustaw obie **noCompressionForHttp10** i **noCompressionForProxies** na wartość False w konfiguracji serwera](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **Usługi IIS 7 i nowsze**: [Ustaw obie **noCompressionForHttp10** i **noCompressionForProxies** na wartość False w konfiguracji serwera](https://www.iis.net/configreference/system.webserver/httpcompression)
 

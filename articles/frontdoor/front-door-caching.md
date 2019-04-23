@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e022a7661997d231e291a4d09611bb6e95bee262
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528326"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149482"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Buforowanie przy użyciu usługi Azure drzwi
 Poniższy dokument określa zachowanie drzwiami frontowymi za pomocą reguł routingu, które mają włączone buforowanie.
@@ -104,7 +104,7 @@ Kolejność następujące nagłówki jest używana w celu określenia, jak dług
 2. Cache-Control: maxage =\<sekund >
 3. Wygasa: \<Data http >
 
-Nagłówki Cache-Control odpowiedzi, które wskazują, że odpowiedzi nie będą buforowane takich jak Cache-Control: Cache-Control prywatne: nie pamięci podręcznej i Cache-Control: nie-store są uznawane. Jednak w przypadku wielu żądań locie przez usługę POP dla tego samego adresu URL, może udostępniać odpowiedzi.
+Nagłówki Cache-Control odpowiedzi, które wskazują, że odpowiedzi nie będą buforowane takich jak Cache-Control: Cache-Control prywatne: nie pamięci podręcznej i Cache-Control: nie-store są uznawane. Jednak w przypadku wielu żądań locie przez usługę POP dla tego samego adresu URL, może udostępniać odpowiedzi. Jeżeli Cache-Control ma domyślne zachowanie jest AFD będzie buforowania przez zasób dla X czas, gdzie X jest pobierana losowo od 1 do 3 dni.
 
 
 ## <a name="request-headers"></a>Nagłówki żądań

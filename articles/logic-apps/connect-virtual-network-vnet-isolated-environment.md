@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 6be897cc1ae11b8d3032e3ffc669eac05dafe5b2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522319"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996003"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -67,30 +67,31 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 Aby działać poprawnie i pozostają dostępne, środowiska integration service environment (ISE) musi mieć określone porty dostępne w sieci wirtualnej. W przeciwnym razie jeśli którekolwiek z tych portów są niedostępne, mogą utracić dostęp do ISE może spowodować nieoczekiwane zatrzymanie. Gdy używasz środowiska ISE w sieci wirtualnej powszechny problem konfiguracji ma co najmniej jeden port blokowania. W przypadku połączeń między swoje ISE i systemu docelowego łącznik, którego używasz, że własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
 
-Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tag usługi](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
+Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tagi usługi Resource Manager](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
 
 > [!IMPORTANT]
 > Do wewnętrznej komunikacji wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w ramach tych podsieci.
 
-| Przeznaczenie | Kierunek | Porty | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
+| Przeznaczenie | Direction | Porty | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
 |---------|-----------|-------|--------------------|-------------------------|-------|
-| Komunikacja z usługi Azure Logic Apps | Wychodzący | 80 & 443 | VIRTUAL_NETWORK | INTERNET | Numer portu jest zależna od usługi zewnętrznej, z którym komunikuje się usługi Logic Apps |
-| Usługa Azure Active Directory | Wychodzący | 80 & 443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
-| Zależności usługi Azure Storage | Wychodzący | 80 & 443 | VIRTUAL_NETWORK | Magazyn | |
-| Intersubnet komunikacji | Dla ruchu przychodzącego i wychodzącego | 80 & 443 | VIRTUAL_NETWORK | VIRTUAL_NETWORK | Do komunikacji między podsieciami |
-| Komunikacja z usługi Azure Logic Apps | Przychodzący | 443 | INTERNET  | VIRTUAL_NETWORK | Adres IP komputera lub usługi, która wywołuje ani wyzwalacza żądania elementu webhook, który znajduje się w aplikacji logiki. Zamykanie lub blokuje ten port zapobiega połączeń HTTP z aplikacji logiki z wyzwalaniem na żądanie.  |
-| Historia przebiegu aplikacji logiki | Przychodzący | 443 | INTERNET  | VIRTUAL_NETWORK | Adres IP komputera, na której możesz wyświetlić aplikację logiki przebiegu historii. Mimo że zamknięcie lub blokuje ten port nie uniemożliwia wyświetlanie historii uruchamiania, nie można wyświetlić dane wejściowe i wyjściowe dla każdego kroku w tym historii uruchamiania. |
-| Zarządzanie połączeniami | Wychodzący | 443 | VIRTUAL_NETWORK  | INTERNET | |
-| Publikowanie dzienniki diagnostyczne i metryki | Wychodzący | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
-| Projektant aplikacji logiki — właściwości dynamiczne | Przychodzący | 454 | INTERNET  | VIRTUAL_NETWORK | Żądania pochodzą z aplikacji logiki [dostęp do punktu końcowego dla ruchu przychodzącego adresów IP w danym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
-| App Service Management zależności | Przychodzący | 454 & 455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| Wdrażanie łącznika | Przychodzący | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Niezbędne do wdrażania i aktualizowania łączników. Zamykanie lub blokuje ten port powoduje wdrożeń ISE, aby zakończyć się niepowodzeniem i zapobiega łącznika aktualizacji lub poprawki. |
-| Zależność SQL platformy Azure | Wychodzący | 1433 | VIRTUAL_NETWORK | SQL |
-| Azure Resource Health | Wychodzący | 1886 | VIRTUAL_NETWORK | INTERNET | Do publikowania stan kondycji Resource Health |
-| API Management — punkt końcowy zarządzania | Przychodzący | 3443 | APIManagement  | VIRTUAL_NETWORK | |
-| Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzący | 5672 | VIRTUAL_NETWORK  | EventHub | |
-| Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379-6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | Ponadto dla środowiska ISE do pracy z usługą Azure Cache dla pamięci podręcznej Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej Azure dla usługi Redis — często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Przychodzący | * | AZURE_LOAD_BALANCER | VIRTUAL_NETWORK |  |
+| Komunikacja z usługi Azure Logic Apps | Wychodzący | 80 & 443 | VirtualNetwork | Internet | Numer portu jest zależna od usługi zewnętrznej, z którym komunikuje się usługi Logic Apps |
+| Usługa Azure Active Directory | Wychodzący | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
+| Zależności usługi Azure Storage | Wychodzący | 80 & 443 | VirtualNetwork | Magazyn | |
+| Intersubnet komunikacji | Dla ruchu przychodzącego i wychodzącego | 80 & 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
+| Komunikacja z usługi Azure Logic Apps | Przychodzący | 443 | Internet  | VirtualNetwork | Adres IP komputera lub usługi, która wywołuje ani wyzwalacza żądania elementu webhook, który znajduje się w aplikacji logiki. Zamykanie lub blokuje ten port zapobiega połączeń HTTP z aplikacji logiki z wyzwalaniem na żądanie.  |
+| Historia przebiegu aplikacji logiki | Przychodzący | 443 | Internet  | VirtualNetwork | Adres IP komputera, na której możesz wyświetlić aplikację logiki przebiegu historii. Mimo że zamknięcie lub blokuje ten port nie uniemożliwia wyświetlanie historii uruchamiania, nie można wyświetlić dane wejściowe i wyjściowe dla każdego kroku w tym historii uruchamiania. |
+| Zarządzanie połączeniami | Wychodzący | 443 | VirtualNetwork  | Internet | |
+| Publikowanie dzienniki diagnostyczne i metryki | Wychodzący | 443 | VirtualNetwork  | AzureMonitor | |
+| Komunikacja z usługi Azure Traffic Manager | Przychodzący | 443 | AzureTrafficManager | VirtualNetwork | |
+| Projektant aplikacji logiki — właściwości dynamiczne | Przychodzący | 454 | Internet  | VirtualNetwork | Żądania pochodzą z aplikacji logiki [dostęp do punktu końcowego dla ruchu przychodzącego adresów IP w danym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
+| App Service Management zależności | Przychodzący | 454 & 455 | AppServiceManagement | VirtualNetwork | |
+| Wdrażanie łącznika | Przychodzący | 454 & 3443 | Internet  | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamykanie lub blokuje ten port powoduje wdrożeń ISE, aby zakończyć się niepowodzeniem i zapobiega łącznika aktualizacji lub poprawki. |
+| Zależność SQL platformy Azure | Wychodzący | 1433 | VirtualNetwork | SQL |
+| Azure Resource Health | Wychodzący | 1886 | VirtualNetwork | Internet | Do publikowania stan kondycji Resource Health |
+| API Management — punkt końcowy zarządzania | Przychodzący | 3443 | APIManagement  | VirtualNetwork | |
+| Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzący | 5672 | VirtualNetwork  | EventHub | |
+| Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379-6383 | VirtualNetwork  | VirtualNetwork | Ponadto dla środowiska ISE do pracy z usługą Azure Cache dla pamięci podręcznej Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej Azure dla usługi Redis — często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| Azure Load Balancer | Przychodzący | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
 <a name="create-environment"></a>

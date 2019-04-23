@@ -1,29 +1,29 @@
 ---
-title: Uruchom polecenia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, aby dostęp do danych obiektów blob i kolejek | Dokumentacja firmy Microsoft
-description: Program PowerShell i interfejsu wiersza polecenia platformy Azure obsługuje zalogować się przy użyciu tożsamości usługi Azure AD, aby uruchamiać polecenia danych obiektów blob i kolejek usługi Azure Storage. Token dostępu jest podana w sesji i autoryzowanie wywołania operacji. Uprawnienia zależą od ról RBAC przypisane do tożsamości usługi Azure AD.
+title: Uruchamiać polecenia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu poświadczeń usługi Azure AD na dostęp do danych obiektów blob lub kolejki | Dokumentacja firmy Microsoft
+description: Program PowerShell i interfejsu wiersza polecenia platformy Azure obsługuje logowanie się przy użyciu poświadczeń usługi Azure AD, aby uruchamiać polecenia danych obiektów blob i kolejek usługi Azure Storage. Token dostępu jest podana w sesji i autoryzowanie wywołania operacji. Uprawnienia zależą od ról RBAC, przypisany do podmiotu zabezpieczeń usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 96be1e600c8d5895cc0eb5b058ce17f7265fa0a9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787002"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149652"
 ---
-# <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Tożsamości usługi Azure AD w celu dostępu do obiektów blob i kolejek danych za pomocą interfejsu wiersza polecenia lub programu PowerShell
+# <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Uruchamiać polecenia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu poświadczeń usługi Azure AD na dostęp do danych obiektów blob i kolejki
 
-Usługa Azure Storage udostępnia rozszerzenia dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj, a następnie uruchom polecenia skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Można przypisać uprawnienia dostępu do danych obiektów blob i kolejek do tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC](storage-auth-aad-rbac.md).
+Usługa Azure Storage udostępnia rozszerzenia dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj, a następnie uruchom polecenia skryptu przy użyciu poświadczeń usługi Azure Active Directory (Azure AD). Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu poświadczeń usługi Azure AD, zwracany jest token dostępu OAuth 2.0. Ten token jest automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell do autoryzowania danych kolejnych operacji dotyczących magazynu obiektów Blob i kolejki. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
 
-Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, token dostępu jest zwracany do uzyskiwania dostępu do usługi Azure Storage w ramach tej tożsamości. Ten token jest następnie automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell można autoryzować operacji dotyczących usługi Azure Storage. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
+Możesz przypisywać uprawnienia do danych obiektów blob i kolejek do podmiotu zabezpieczeń usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Rozszerzenia są obsługiwane operacje na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego logowania się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
+Rozszerzenia są obsługiwane operacje na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia przyznane podmiotu zabezpieczeń usługi Azure AD za pomocą którego logowania się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład, jeśli są przypisywane **czytnik danych obiektu Blob** roli, należy uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli użytkownik został przypisany **Współautor danych obiektu Blob** roli, możesz uruchamiać polecenia skryptów, odczytu, zapisu lub usuwania kontenera lub kolejki lub dane zawierają. 
 
 Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji magazynu platformy Azure, kontenera lub kolejki, zobacz [uprawnień do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
@@ -129,5 +129,5 @@ Poniższy przykład przedstawia sposób tworzenia kontenera na nowym koncie maga
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
-- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure](storage-auth-aad-msi.md).
+- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelniania dostępu do obiektów blob i kolejek usługi Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure](storage-auth-aad-msi.md).
 - Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z magazynu aplikacji](storage-auth-aad-app.md).

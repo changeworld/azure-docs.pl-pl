@@ -1,6 +1,6 @@
 ---
-title: Samouczek — archiwizowanie dzienników usługi Azure Active Directory na koncie magazynu (wersja zapoznawcza) | Microsoft Docs
-description: Dowiedz się, jak skonfigurować diagnostykę Azure w celu wypychania dzienników usługi Azure Active Directory na konto magazynu (wersja zapoznawcza)
+title: Samouczek — archiwum usługi Azure Active Directory loguje się do konta magazynu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak konfigurowanie diagnostyki platformy Azure w celu wypchnięcia dzienników usługi Azure Active Directory do konta magazynu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d34b41e780466d9ab734b9dbd0e58016dba7b10
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434725"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999505"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Samouczek: archiwizowanie dzienników usługi Azure AD na koncie usługi Azure Storage (wersja zapoznawcza)
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Samouczek: Archiwizuj dzienniki usługi Azure AD do konta usługi Azure storage
 
 W tym samouczku dowiesz się, jak skonfigurować ustawienia diagnostyki usługi Azure Monitor w celu kierowania dzienników usługi Azure Active Directory (Azure AD) do konta usługi Azure Storage.
 

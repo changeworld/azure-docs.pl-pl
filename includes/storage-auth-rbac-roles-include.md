@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9b8418dba12748915666c6a91ee65b37c0f59ace
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804777"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150221"
 ---
-Platforma Azure udostępnia następujące wbudowane role kontroli RBAC do uzyskiwania dostępu do magazynu danych:
+System Azure oferuje następujące wbudowane role kontroli RBAC do autoryzowania dostępu do danych obiektów blob i kolejek przy użyciu usługi Azure AD i OAuth:
 
 - [Właściciel danych obiektu Blob magazynu](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Użyj, aby ustawić własność i zarządzania kontroli dostępu POSIX dla usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza). Aby uzyskać więcej informacji, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
 - [Współautor danych obiektu Blob magazynu](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Użyj, aby udzielić uprawnień odczytu/zapisu/usuwania zasobów magazynu obiektów Blob.
@@ -25,7 +25,5 @@ Platforma Azure udostępnia następujące wbudowane role kontroli RBAC do uzyski
 - [Dane w kolejce magazynu komunikatów procesora](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Umożliwia udzielanie wglądu, pobieranie i uprawnienia do usuwania komunikatów w kolejkach usługi Azure Storage.
 - [Dane w kolejce magazynu komunikatów nadawcy](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Użyj, aby przyznać uprawnienia dodać do wiadomości w kolejce usługi Azure Storage.
 
-> [!IMPORTANT]
-> Przypisania ról RBAC może potrwać do pięciu minut na propagację.
-
-Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Aby uzyskać informacji na temat tworzenia niestandardowych ról RBAC, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](../articles/role-based-access-control/custom-roles.md). 
+> [!NOTE]
+> Należy pamiętać, że przypisania ról RBAC może potrwać do pięciu minut na propagację.

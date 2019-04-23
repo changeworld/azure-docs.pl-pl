@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545403"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150017"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -130,14 +130,6 @@ Aby uzyskać informacji na temat sposobu sprawdzania uprawnień dostępu użytko
 ### <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
 W celu analizy ruchu, musisz mieć istniejącej usługi network watcher, lub [Włącz usługę network watcher](network-watcher-create.md) w każdym regionie, czy masz sieciowych grup zabezpieczeń, które mają być analizowane ruchu dla. Analiza ruchu może zostać włączona dla sieciowych grup zabezpieczeń hostowanych w dowolnym [obsługiwane regiony](#supported-regions).
-
-### <a name="re-register-the-network-resource-provider"></a>Ponowne zarejestrowanie dostawcy zasobów sieciowych
-
-Korzystanie z analizy ruchu, należy ponownie zarejestrować dostawcy zasobów sieciowych. Kliknij przycisk **wypróbuj** w polu kod poniżej, aby otworzyć usługę Azure Cloud Shell. Cloud Shell automatycznie rejestruje należy do subskrypcji platformy Azure. Po otwarciu usłudze Cloud Shell wprowadź następujące polecenie, aby ponownie zarejestrować dostawcy zasobów sieciowych:
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
 
 ### <a name="select-a-network-security-group"></a>Wybierz grupę zabezpieczeń sieci
 

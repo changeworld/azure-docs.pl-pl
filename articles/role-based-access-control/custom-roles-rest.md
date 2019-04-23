@@ -12,23 +12,39 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cec75f757789be4f962cf2b0fbf6b9443a4453cc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: MT
+ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588198"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999778"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu interfejsu API REST ról niestandardowych.
+Jeśli [wbudowane role dla zasobów platformy Azure](built-in-roles.md) nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu interfejsu API REST ról niestandardowych.
 
-## <a name="list-roles"></a>Tworzenie listy ról
+## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
-Aby wyświetlić listę wszystkich ról lub uzyskać informacje na temat pojedynczej roli przy użyciu jego nazwę wyświetlaną, użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) interfejsu API REST. Aby wywołać ten interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji w zakresie. Kilka [wbudowane role](built-in-roles.md) uzyskują dostęp do tej operacji.
+Aby wyświetlić listę wszystkich ról niestandardowych w katalogu, należy użyć [definicje ról — lista](/rest/api/authorization/roledefinitions/list) interfejsu API REST.
+
+1. Uruchom przy użyciu następującego żądania:
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. Zastąp *{filter}* typu Rola.
+
+    | Filtr | Opis |
+    | --- | --- |
+    | `$filter=type%20eq%20'CustomRole'` | Filtr oparty na typie CustomRole |
+
+## <a name="list-custom-roles-at-a-scope"></a>Lista ról niestandardowych w zakresie
+
+Aby wyświetlić listę ról niestandardowych w zakresie, należy użyć [definicje ról — lista](/rest/api/authorization/roledefinitions/list) interfejsu API REST.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -38,26 +54,47 @@ Aby wyświetlić listę wszystkich ról lub uzyskać informacje na temat pojedyn
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
 
-1. Zastąp *{filter}* z warunkiem, że chcesz zastosować, aby filtrować listę ról.
+1. Zastąp *{filter}* typu Rola.
 
     | Filtr | Opis |
     | --- | --- |
-    | `$filter=atScopeAndBelow()` | Utwórz listę ról dostępne do przypisania, w określonym zakresie i wszystkie jego podrzędne zakresów. |
+    | `$filter=type%20eq%20'CustomRole'` | Filtr oparty na typie CustomRole |
+
+## <a name="list-a-custom-role-definition-by-name"></a>Listy niestandardową definicję roli według nazwy
+
+Aby uzyskać informacje o niestandardowych rolach według jego nazwy wyświetlanej, należy użyć [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST.
+
+1. Uruchom przy użyciu następującego żądania:
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
+
+    | Zakres | Typ |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | Subskrypcja |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+
+1. Zastąp *{filter}* z nazwą wyświetlaną dla roli.
+
+    | Filtr | Opis |
+    | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Formularz zakodowane w adresie URL nazwę wyświetlaną dokładnie roli. Na przykład `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="get-information-about-a-role"></a>Uzyskiwanie informacji o roli
+## <a name="list-a-custom-role-definition-by-id"></a>Listy niestandardową definicję roli według Identyfikatora
 
-Aby uzyskać informacje na temat roli przy użyciu jego identyfikator definicji roli, należy użyć [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST. Aby wywołać ten interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleDefinitions/read` operacji w zakresie. Kilka [wbudowane role](built-in-roles.md) uzyskują dostęp do tej operacji.
+Aby uzyskać informacje o niestandardowych rolach według unikatowego identyfikatora, należy użyć [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST.
 
-Aby uzyskać informacje o pojedynczej roli przy użyciu jego nazwę wyświetlaną, zobacz poprzednie [listy ról](custom-roles-rest.md#list-roles) sekcji.
-
-1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) interfejsu API REST, aby uzyskać identyfikator GUID dla roli. Dla wbudowanych ról, można także uzyskać identyfikator z [wbudowane role](built-in-roles.md).
+1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) interfejsu API REST, aby uzyskać identyfikator GUID dla roli.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -67,7 +104,7 @@ Aby uzyskać informacje o pojedynczej roli przy użyciu jego nazwę wyświetlan�
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -77,7 +114,7 @@ Aby uzyskać informacje o pojedynczej roli przy użyciu jego nazwę wyświetlan�
 
 ## <a name="create-a-custom-role"></a>Tworzenie roli niestandardowej
 
-Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz lub zaktualizuj](/rest/api/authorization/roledefinitions/createorupdate) interfejsu API REST. Aby wywołać ten interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) uzyskują dostęp do tej operacji. 
+Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz lub zaktualizuj](/rest/api/authorization/roledefinitions/createorupdate) interfejsu API REST. Aby wywołać ten interfejs API, użytkownik musi być zalogowany użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) obejmują to uprawnienie.
 
 1. Przejrzyj listę [operacji dostawcy zasobów](resource-provider-operations.md) dostępnych utworzyć uprawnienia dla swojej roli niestandardowej.
 
@@ -115,7 +152,7 @@ Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -168,9 +205,9 @@ Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz 
 
 ## <a name="update-a-custom-role"></a>Aktualizacja roli niestandardowej
 
-Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lub aktualizowanie](/rest/api/authorization/roledefinitions/createorupdate) interfejsu API REST. Aby wywołać ten interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleDefinitions/write` operację na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) uzyskują dostęp do tej operacji. 
+Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lub aktualizowanie](/rest/api/authorization/roledefinitions/createorupdate) interfejsu API REST. Aby wywołać ten interfejs API, użytkownik musi być zalogowany użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) obejmują to uprawnienie.
 
-1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) lub [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST w celu uzyskania informacji o roli niestandardowej. Aby uzyskać więcej informacji, zobacz wcześniej [listy ról](custom-roles-rest.md#list-roles) sekcji.
+1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) lub [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST w celu uzyskania informacji o roli niestandardowej. Aby uzyskać więcej informacji, zobacz wcześniej [listy ról niestandardowych](#list-custom-roles) sekcji.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -180,7 +217,7 @@ Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lu
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -252,9 +289,9 @@ Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lu
 
 ## <a name="delete-a-custom-role"></a>Usuwanie roli niestandardowej
 
-Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/authorization/roledefinitions/delete) interfejsu API REST. Aby wywołać ten interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleDefinitions/delete` operację na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) uzyskują dostęp do tej operacji. 
+Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/authorization/roledefinitions/delete) interfejsu API REST. Aby wywołać ten interfejs API, użytkownik musi być zalogowany użytkownik, któremu przypisano rolę, która ma `Microsoft.Authorization/roleDefinitions/delete` uprawnienia na wszystkich `assignableScopes`. Z wbudowanych ról, tylko [właściciela](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) obejmują to uprawnienie.
 
-1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) lub [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST, aby uzyskać identyfikator GUID w roli niestandardowej. Aby uzyskać więcej informacji, zobacz wcześniej [listy ról](custom-roles-rest.md#list-roles) sekcji.
+1. Użyj [definicje ról — lista](/rest/api/authorization/roledefinitions/list) lub [uzyskać definicje ról —](/rest/api/authorization/roledefinitions/get) interfejsu API REST, aby uzyskać identyfikator GUID w roli niestandardowej. Aby uzyskać więcej informacji, zobacz wcześniej [listy ról niestandardowych](#list-custom-roles) sekcji.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -264,7 +301,7 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, który chcesz usunąć rolę niestandardową.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -274,6 +311,6 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
 - [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST](role-assignments-rest.md)
 - [Dokumentacja interfejsu API REST platformy Azure](/rest/api/azure/)

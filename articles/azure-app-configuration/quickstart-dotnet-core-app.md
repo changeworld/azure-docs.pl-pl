@@ -14,18 +14,20 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3f15b6bf5ff3cc1949794ebc1ee2a5f62158cede
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698626"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998094"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Utwórz .NET Core aplikacji za pomocą konfiguracji aplikacji
 
 Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją konsolową platformy .NET Core.
 
 Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
+
+![Uruchomienia aplikacji przewodnika Szybki start](./media/quickstarts/dotnet-core-app-run.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,6 +38,14 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+
+    | Klucz | Wartość |
+    |---|---|
+    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
+
+    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 
 ## <a name="create-a-net-core-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET Core
 
@@ -99,8 +109,6 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
         dotnet run
 
-    ![Uruchomienia aplikacji przewodnika Szybki start](./media/quickstarts/dotnet-core-app-run.png)
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
@@ -110,4 +118,4 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą aplikacji konsoli .NET Core za pomocą [dostawcę konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)

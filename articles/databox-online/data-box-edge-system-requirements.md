@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006348"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996751"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Wymagania dotyczące systemu Azure krawędź pola danych
 
@@ -58,7 +58,7 @@ Usługa Azure IoT Edge umożliwia komunikacji wychodzącej z urządzenia usługi
 
 Konfiguracja portu dla serwerów obsługujących środowisko uruchomieniowe usługi Azure IoT Edge, skorzystaj z poniższej tabeli:
 
-| Nr portu. | Wewnątrz lub na zewnątrz | Zakres portów | Wymagane | Wskazówki |
+| Nr portu. | Wewnątrz lub na zewnątrz | Zakres portów | Wymagany | Wskazówki |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| Wyjście       | Sieć WAN        | Yes      | Otwórz ruchu wychodzącego dla usługi IoT Edge inicjowania obsługi administracyjnej. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
 
@@ -82,7 +82,7 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 
 | Wzorzec URL                      | Składnik lub funkcja                     |   
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Rejestr kontenerów firmy Microsoft (wymagane)               |
+| protokół https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Rejestr kontenerów firmy Microsoft (wymagane)               |
 | https://\*.azurecr.io                     | Rejestry kontenerów osobistych, jak i innych firm, (opcjonalnie) | 
 | https://\*.azure-devices.net              | Dostęp do usługi IoT Hub (wymagane)                             | 
 
@@ -94,7 +94,7 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 
 | Wzorzec URL                      | Składnik lub funkcja                     |  
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Rejestr kontenerów firmy Microsoft (wymagane)               |
+| protokół https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Rejestr kontenerów firmy Microsoft (wymagane)               |
 | https://\*.azure-devices.us              | Dostęp do usługi IoT Hub (wymagane)           |
 | https://\*. azurecr.us                    | Rejestry kontenerów osobistych, jak i innych firm, (opcjonalnie) | 
 

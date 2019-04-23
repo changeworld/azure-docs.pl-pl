@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791545"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998655"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w usłudze Azure Monitor dla kontenerów
 Usługa Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenerów, które są wdrażane w usłudze Azure Container Instances lub zarządzanych klastrów Kubernetes, które są hostowane na platformie Azure Kubernetes Service (AKS).
@@ -285,5 +285,5 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w usłudze Azure Moni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Widok [dziennika przykłady zapytań](container-insights-analyze.md#search-logs-to-analyze-data) Aby dowiedzieć się więcej na temat wstępnie zdefiniowanych zapytań i przykłady do oceny lub dostosować w innych sytuacjach alertu.
-* Aby dowiedzieć się więcej na temat usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
+- Widok [dziennika przykłady zapytań](container-insights-log-search.md#search-logs-to-analyze-data) wstępnie zdefiniowane zapytania i przykłady do oceny lub Dostosuj alerty, wizualizacji i analizowanie klastry usługi.
+- Aby dowiedzieć się więcej na temat usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).

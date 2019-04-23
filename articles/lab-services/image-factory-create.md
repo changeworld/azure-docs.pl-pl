@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796314"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148989"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
-W tym artykule pokazano, jak skonfigurować fabrycznie obrazu niestandardowego przy użyciu dostępnych w przykładowych skryptach [repozytorium Git](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
+W tym artykule pokazano, jak skonfigurować fabrycznie obrazu niestandardowego przy użyciu dostępnych w przykładowych skryptach [repozytorium Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
 
 ## <a name="whats-an-image-factory"></a>Co to jest fabrykę obrazu?
 Fabryki obrazu jest rozwiązaniem konfiguracji jako kodu, które produkcją i dystrybucją obrazy automatycznie w regularnych odstępach czasu za pomocą odpowiednie konfiguracje. Obrazy w fabryce obrazu są zawsze aktualne, a rutynowej konserwacji jest bliski zeru po całego procesu jest zautomatyzowane. Ponadto wszystkie wymagane konfiguracje znajdują się już w obrazie, dlatego oszczędza czas z ręcznego konfigurowania system po utworzeniu maszyny Wirtualnej przy użyciu podstawowego systemu operacyjnego.
@@ -39,7 +39,7 @@ To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardow
 
 ![Ogólny widok rozwiązania](./media/create-image-factory/high-level-view-of-solution.png)
 
-Brak [rozszerzenia usługi VSTS na potrzeby usługi DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) to pozwala wykonać te poszczególne kroki: 
+Brak [rozszerzenia usługi VSTS na potrzeby usługi DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) to pozwala wykonać te poszczególne kroki:
 
 - Tworzenie obrazu niestandardowego
 - Tworzenie maszyny wirtualnej

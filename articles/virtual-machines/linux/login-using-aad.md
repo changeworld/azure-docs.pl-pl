@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848698"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148955"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -83,7 +83,7 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Instalowanie rozszerzenia maszyny Wirtualnej logowania usługi Azure AD
 
-Aby zalogować się do maszyny Wirtualnej systemu Linux przy użyciu poświadczeń usługi Azure AD, należy zainstalować dzienników usługi Azure Active Directory w rozszerzeniu maszyny Wirtualnej. Rozszerzenia maszyn wirtualnych są małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az-vm-extension-set) zainstalował *AADLoginForLinux* rozszerzenia na maszynie Wirtualnej o nazwie *myVM* w *myResourceGroup* zasobów Grupa:
+Aby zalogować się do maszyny Wirtualnej systemu Linux przy użyciu poświadczeń usługi Azure AD, należy zainstalować logowania usługi Azure Active Directory rozszerzenia maszyny Wirtualnej. Rozszerzenia maszyn wirtualnych są małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az-vm-extension-set) zainstalował *AADLoginForLinux* rozszerzenia na maszynie Wirtualnej o nazwie *myVM* w *myResourceGroup* zasobów Grupa:
 
 ```azurecli-interactive
 az vm extension set \

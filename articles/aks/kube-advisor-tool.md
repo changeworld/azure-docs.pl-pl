@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218642"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000134"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Sprawdzanie, czy są najlepsze rozwiązania Kubernetes w klastrze
 
@@ -27,7 +27,7 @@ Istnieje kilka najlepszych rozwiązań, które należy wykonać na swoich wdroż
 
 ## <a name="running-kube-advisor"></a>Uruchamianie klastra kubernetes w usłudze advisor
 
-Aby uruchomić narzędzie w klastrze, który jest skonfigurowany dla [kontroli dostępu opartej na rolach (RBAC)](aad-integration.md), używając następujących poleceń. Pierwsze polecenie tworzy konto usługi Kubernetes. Drugie polecenie uruchamia narzędzie w zasobniku przy użyciu tego konta usługi i konfiguruje zasobnika do usunięcia, po jej zakończenia. 
+Aby uruchomić narzędzie w klastrze, który jest skonfigurowany dla [kontroli dostępu opartej na rolach (RBAC)](azure-ad-integration.md), używając następujących poleceń. Pierwsze polecenie tworzy konto usługi Kubernetes. Drugie polecenie uruchamia narzędzie w zasobniku przy użyciu tego konta usługi i konfiguruje zasobnika do usunięcia, po jej zakończenia. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

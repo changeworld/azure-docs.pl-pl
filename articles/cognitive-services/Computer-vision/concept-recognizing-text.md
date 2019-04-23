@@ -1,5 +1,5 @@
 ---
-title: Rozpoznawanie tekstu drukowanego, pisma odręcznego - przetwarzania obrazów
+title: Rozpoznawanie drukowane odręcznego tekstu przetwarzania obrazów
 titleSuffix: Azure Cognitive Services
 description: Pojęcia związane z rozpoznawanie tekstu drukowanego i pisma odręcznego na obrazach za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
-ms.translationtype: MT
+ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588979"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998244"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
-Przetwarzania obrazów udostępnia szereg usług, które wykrywanie i wyodrębnianie tekstu drukowanego na klawiaturze lub odręcznie, który pojawia się w obrazach. Jest to przydatne w różnych scenariuszy, takich jak notetaking, dokumentacji medycznej, zabezpieczeń i bankowością. Następujące trzy sekcje szczegółów trzech różnych rozpoznawanie tekstu interfejsów API, każdy zoptymalizowane pod kątem różnych przypadków użycia.
+Przetwarzania obrazów udostępnia szereg usług, które wykrywanie i wyodrębnianie tekstu drukowanego na klawiaturze lub odręcznie, który pojawia się w obrazach. Jest to przydatne w różnych scenariuszy, takich jak notatek, dokumentacji medycznej, zabezpieczeń i bankowością. Następujące trzy sekcje szczegółów trzech różnych rozpoznawanie tekstu interfejsów API, każdy zoptymalizowane pod kątem różnych przypadków użycia.
 
 ## <a name="read-api"></a>Odczyt interfejsu API
 
@@ -45,13 +45,11 @@ Jeśli używasz subskrypcji warstwy bezpłatna API odczytu będzie przetwarzać 
 
 ## <a name="ocr-optical-character-recognition-api"></a>Optyczne rozpoznawanie znaków (OCR) interfejsu API
 
-Interfejs API optyczne rozpoznawanie znaków (OCR) przetwarzania obrazów jest podobny do interfejsu API odczytu, ale jest wykonywana synchronicznie i nie jest zoptymalizowany pod kątem dużych dokumentów. Za pomocą wcześniejszych model uznawania osiągnięć, ale działa więcej języków.
-
-Optyczne rozpoznawanie znaków obsługuje 25 językach: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki. Optyczne rozpoznawanie znaków automatycznie wykrywa język tekstu wykryte.
+Interfejs API optyczne rozpoznawanie znaków (OCR) przetwarzania obrazów jest podobny do interfejsu API odczytu, ale jest wykonywana synchronicznie i nie jest zoptymalizowany pod kątem dużych dokumentów. Używa starszej model uznawania osiągnięć, ale działa z innych języków; zobacz [języki](language-support.md#text-recognition) pełną listę obsługiwanych języków.
 
 Jeśli to konieczne, optyczne rozpoznawanie znaków poprawia obrót rozpoznany, zwracając obrotowych przesunięcie w stopniach osi obraz w poziomie. Optyczne rozpoznawanie znaków także współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
 
-![Diagram przedstawiający za obrazu oraz jego tekstu, odczytu, a umieszczony](./Images/vision-overview-ocr.png)
+![Obraz jest obracana jego tekstu jest odczytywać i umieszczony](./Images/vision-overview-ocr.png)
 
 Zobacz [dokumenty referencyjne optyczne rozpoznawanie znaków](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Aby dowiedzieć się więcej.
 

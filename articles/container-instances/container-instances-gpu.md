@@ -6,20 +6,20 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351375"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000661"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów, które używają zasobów procesora GPU
 
 Do uruchamiania niektórych obciążeń intensywnie korzystających z obliczeń w usłudze Azure Container Instances, należy wdrożyć swoje [grup kontenerów](container-instances-container-groups.md) z *zasoby procesora GPU*. Wystąpienia kontenerów w grupie mają dostęp do co najmniej jeden procesory GPU NVIDIA Tesla podczas uruchamiania obciążeń kontenerów, takich jak CUDA i głębokiego uczenia aplikacji.
 
-Jak pokazano w tym artykule, można dodać zasobów procesora GPU podczas wdrażania grupy kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu usługi Resource Manager](container-instances-multi-container-group.md).
+W tym artykule pokazano, jak dodać zasoby procesora GPU w przypadku wdrażania grupy kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu usługi Resource Manager](container-instances-multi-container-group.md). Można również określić zasoby procesora GPU w przypadku wdrażania wystąpienia kontenera w witrynie Azure portal.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
@@ -61,7 +61,7 @@ Podczas wdrażania zasobów procesora GPU, ustaw odpowiednią dla obciążenia, 
 
 * **Cennik** — jest to podobne do grup kontenerów bez zasobów procesora GPU, platformie Azure są naliczane za zasoby używane za pośrednictwem *czas trwania* grupy kontenerów, z zasobami procesora GPU. Czas trwania jest obliczany od momentu do ściągania obrazów swój pierwszy kontener do momentu zakończenia działania grupy kontenerów. Nie ma czas wdrażania grupy kontenerów.
 
-  Ceny są nowsze dla grupy kontenerów za pomocą procesorów GPU zasobów niż dla grupy kontenerów bez. Zobacz [cennik](https://azure.microsoft.com/pricing/details/container-instances/).
+  Zobacz [cennik](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **Sterowniki CUDA** — usługa Container instances za pomocą zasobów procesora GPU to wstępnie zainicjowana sterowniki NVIDIA CUDA i środowiska uruchomieniowe kontenera, aby można było używać obrazów kontenerów opracowana dla obciążeń CUDA.
 

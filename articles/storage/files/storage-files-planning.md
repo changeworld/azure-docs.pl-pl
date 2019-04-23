@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525929"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998465"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -92,20 +92,22 @@ Usługa Azure Files oferuje dwie warstwy wydajności: standardowa i premium.
 |Europa Północna  | Nie |
 |Europa Zachodnia   | Yes|
 |Azja       | Yes|
+|Azja Wschodnia     | Nie |
 |Japonia Wschodnia    | Nie |
+|Japonia Zachodnia    | Nie |
 |Korea Środkowa | Nie |
 |Australia Wschodnia| Nie |
 
 ### <a name="provisioned-shares"></a>Elastycznie udziałów
 
-Udziały plików w warstwie Premium (wersja zapoznawcza) są aprowizowane oparte na stały współczynnik operacji We/Wy/GiB/przepływności. Dla każdego GiB zainicjowano obsługę administracyjną udziału pojawi się w jednej operacji We/Wy i 0,1 przepływność MiB/s do maksymalnego limitu na jedną akcję. Minimalny dozwolony aprowizacji to 100 GiB z minimum operacji We/Wy/przepływności. Rozmiar udziału może być zwiększana w każdym czasu i obniżenie dowolnym momencie, ale można zmniejszyć co 24 godziny od czasu ostatniego wzrost.
+Udziały plików w warstwie Premium (wersja zapoznawcza) są aprowizowane oparte na stały współczynnik operacji We/Wy/GiB/przepływności. Dla każdego GiB zainicjowano obsługę administracyjną udziału pojawi się w jednej operacji We/Wy i 0,1 przepływność MiB/s do maksymalnego limitu na jedną akcję. Minimalny dozwolony aprowizacji to 100 GiB z minimum operacji We/Wy/przepływności.
 
 Na optymalne rozwiązanie wszystkie udziały serii można maksymalnie trzy operacje We/Wy za GiB aprowizowanego magazynu przez 60 minut lub dłużej w zależności od wielkości udziału. Nowe udziały Rozpocznij od środków pełną serii, w oparciu zaprowizowaną pojemnością.
 
-Wszystkie udziały mogą serii do co najmniej 100 operacji We/Wy i docelowe przepływności 100 MiB/s. Udziały musi być obsługiwana wielokrotność 1 GiB. Minimalny rozmiar to 100 GiB, kolejny rozmiar 101 GIB i tak dalej.
+Udziały musi być obsługiwana wielokrotność 1 GiB. Minimalny rozmiar to 100 GiB, kolejny rozmiar 101 GIB i tak dalej.
 
 > [!TIP]
-> Operacje We/Wy w linii bazowej = 100 + 1 * aprowizowane GiB. (Maksymalnie maksymalnie 100 000 operacji We/Wy).
+> Operacje We/Wy w linii bazowej = 1 * aprowizowane GiB. (Maksymalnie maksymalnie 100 000 operacji We/Wy).
 >
 > Seria Limit = 3 * linii bazowej operacje We/Wy. (Maksymalnie maksymalnie 100 000 operacji We/Wy).
 >
@@ -113,13 +115,13 @@ Wszystkie udziały mogą serii do co najmniej 100 operacji We/Wy i docelowe prze
 >
 > szybkość transferu danych przychodzących = 40 MiB/s + 0,04 * aprowizowane GiB
 
-Rozmiar udziału może być zwiększana w każdym czasu i obniżenie dowolnym momencie, ale można zmniejszyć co 24 godziny od czasu ostatniego wzrost. Zmiana skali na SEKUNDĘ lub przepływności będą obowiązywać w ciągu 24 godzin po zmianie rozmiaru.
+Rozmiar udziału w dowolnym momencie można zwiększyć, ale można zmniejszyć tylko po 24 godzin od momentu ostatniego wzrost. Po upływie 24 godzin bez zwiększenia rozmiaru, można zmniejszyć rozmiar udziału tyle razy, dopóki nie zostanie zwiększony ponownie. Zmiana skali na SEKUNDĘ lub przepływności będą obowiązywać w ciągu kilku minut po zmianie rozmiaru.
 
 W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów elastycznie udziału:
 
 (Rozmiary wskazywane przez * są w ograniczonej publicznej wersji zapoznawczej)
 
-|Pojemność (GiB) | Baseline IOPS | Limit serii | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
+|Pojemność (GiB) | Baseline IOPS | Seria operacje We/Wy | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Maksymalnie 300     | 66   | 44   |
 |500         | 500     | Maksymalnie 1500   | 90   | 60   |
@@ -136,20 +138,20 @@ Obecnie rozmiar udziału plików maksymalnie 5 TiB są w publicznej wersji zapoz
 
 Udziały plików w warstwie Premium, możesz podwyższyć ich operacje We/Wy nawet o trzy. Przenoszenie obsługi dużego ruchu jest zautomatyzowanych i działa w oparciu o system środków. Przenoszenie obsługi dużego ruchu działa jako optymalne rozwiązanie i limit serii nie ma gwarancji, udziały plików możesz podwyższyć *do* limit.
 
-Środki na korzystanie z są gromadzone w zasobniku serii zawsze wtedy, gdy ruch z udziałów plików poniżej linii bazowej operacje We/Wy. Na przykład 100 udział GiB ma odniesienia 100 operacji We/Wy. Jeśli rzeczywisty ruch w udziale 40 operacje We/Wy dla określonego interwału 1 sekundę, 60 operacje nieużywane We/Wy są zapisywane na zasobnik dużego ruchu. Te środki na korzystanie z zostaną użyte później podczas operacji spowoduje przekroczenie linii bazowej operacje We/Wy.
+Środki są gromadzone w zasobniku serii zawsze wtedy, gdy ruch dla udziału plików poniżej linii bazowej operacje We/Wy. Na przykład 100 udział GiB ma odniesienia 100 operacji We/Wy. Jeśli rzeczywisty ruch w udziale 40 operacje We/Wy dla określonego interwału 1 sekundę, 60 operacje nieużywane We/Wy są zapisywane na zasobnik dużego ruchu. Te środki na korzystanie z zostaną użyte później podczas operacji spowoduje przekroczenie linii bazowej operacje We/Wy.
 
 > [!TIP]
-> Rozmiar zasobnika limit serii = Baseline_IOPS * 2 * 3600.
+> Rozmiar zasobnika serii = Baseline_IOPS * 2 * 3600.
 
-Zawsze, gdy udział przekracza linii bazowej operacje We/Wy i ma środki na korzystanie z w zasobniku serii, będzie serii. Udziały mogą nadal serii tak długo, jak pozostałych środków, chociaż tylko pozostaną udziałów mniejszy niż 50 tiB osiągnęło limit dużego ruchu do nawet przez godzinę. Większe niż 50 TiB udziałów z technicznego punktu widzenia można przekroczyć tego limitu jedną godzinę, się do dwóch godzin, ale to zależy od liczby naliczane środki na korzystanie z serii. Każdej operacji We/Wy poza linii bazowej operacje We/Wy wykorzystuje jedną środki i zwróci zużyty wszystkie środki na korzystanie z udziału do linii bazowej operacje We/Wy.
+Zawsze, gdy udział przekracza linii bazowej operacje We/Wy i ma środki na korzystanie z w zasobniku serii, będzie serii. Udziały mogą nadal serii tak długo, jak pozostałych środków, chociaż tylko pozostaną udziałów mniejszy niż 50 TiB osiągnęło limit dużego ruchu do nawet przez godzinę. Większe niż 50 TiB udziałów z technicznego punktu widzenia można przekroczyć tego limitu jedną godzinę, się do dwóch godzin, ale to zależy od liczby naliczane środki na korzystanie z serii. Każdej operacji We/Wy poza linii bazowej operacje We/Wy wykorzystuje jedną środki i zwróci zużyty wszystkie środki na korzystanie z udziału do linii bazowej operacje We/Wy.
 
 Kredyty udziału ma trzy stany:
 
 - Naliczane, korzystając z udziału plików jest mniejsza od linii bazowej operacje We/Wy.
 - Odrzucanie, gdy przenoszenie obsługi dużego ruchu do udziału plików.
-- Pozostałe od zera, jeśli istnieją środki na korzystanie z lub żaden punkt odniesienia operacje We/Wy są używane.
+- Pozostałe stałej, gdy istnieją środki na korzystanie z lub żaden punkt odniesienia operacje We/Wy są używane.
 
-Nowy plik udziałów rozpoczynać pełną ilość środków w zasobniku jego dużego ruchu.
+Nowy plik udziałów rozpoczynać pełną ilość środków w zasobniku jego dużego ruchu. Przenoszenie dużego ruchu środki na korzystanie z nie będzie naliczana, jeśli udział, operacje We/Wy spada poniżej linii bazowej operacje We/Wy z powodu dławienia przez serwer.
 
 ## <a name="file-share-redundancy"></a>Nadmiarowość udziału plików
 

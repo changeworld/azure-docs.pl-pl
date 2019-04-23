@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: MT
+ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297493"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995816"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Teraz wewnątrz działania elementu pojedynczej kopii można jedynie **kopiowanie danych z usługi Office 365 do [usługi Azure Blob Storage](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), i [(Azure Data Lake Storage Gen2 Wersja zapoznawcza)](connector-azure-data-lake-storage.md) w formacie JSON** (typ setOfObjects). Jeśli chcesz załadować usługi Office 365 do innych typów magazynów danych lub w innych formatach, można połączyć w łańcuch pierwsze działanie kopiowania z działaniem kopiowania kolejnych do dalszego ładowania danych do dowolnego [obsługiwane magazyny docelowego ADF](copy-activity-overview.md#supported-data-stores-and-formats) (zobacz" obsługiwany jako obiekt sink"kolumna w tabeli"Obsługiwane magazyny danych i formatów").
+Teraz wewnątrz działania elementu pojedynczej kopii można jedynie **kopiowanie danych z usługi Office 365 do [usługi Azure Blob Storage](connector-azure-blob-storage.md), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), i [usługi Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) w formacie JSON** (typ setOfObjects). Jeśli chcesz załadować usługi Office 365 do innych typów magazynów danych lub w innych formatach, można połączyć w łańcuch pierwsze działanie kopiowania z działaniem kopiowania kolejnych do dalszego ładowania danych do dowolnego [obsługiwane magazyny docelowego ADF](copy-activity-overview.md#supported-data-stores-and-formats) (zobacz" obsługiwany jako obiekt sink"kolumna w tabeli"Obsługiwane magazyny danych i formatów").
 
 >[!IMPORTANT]
 >- Subskrypcja platformy Azure zawierająca fabryki danych i magazynu danych ujścia musi być objęty tą samą dzierżawą usługi Azure Active Directory (Azure AD) jako dzierżawy usługi Office 365.

@@ -1,7 +1,6 @@
 ---
 title: Wyświetl rezerwacji dla zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wyświetlić rezerwacje platformy Azure w witrynie Azure portal.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,31 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650227"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995527"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetl rezerwacje platformy Azure w witrynie Azure portal
 
 W zależności od typu subskrypcji i uprawnienia istnieje kilka sposobów wyświetlania rezerwacji dla platformy Azure.
 
-## <a name="view-reservations-as-owner-or-reader"></a>Wyświetlanie rezerwacji jako właściciela lub czytelnika
+## <a name="view-purchased-reservations"></a>Wyświetlanie zakupu rezerwacji
 
-Domyślnie w przypadku dokonywania zakupu rezerwacji, użytkownika i administratora konta można wyświetlić rezerwacji. Użytkownika i administratora konta automatycznie uzyskują roli właściciela o rezerwacji. Aby zezwolić innym osobom wyświetlić rezerwacji, należy dodać je jako **właściciela** lub **czytnika** na rezerwacji. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub zmień użytkowników, którzy mogą zarządzać rezerwacji](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
- 
+Domyślnie w przypadku dokonywania zakupu rezerwacji, użytkownika i administratora konta można wyświetlić rezerwacji. Użytkownika i administratora konta automatycznie uzyskują Rola właściciela na zamówienie rezerwacji i rezerwacji. Aby zezwolić innym osobom wyświetlić rezerwacji, należy dodać je jako **właściciela** lub **czytnika** zamówienia rezerwacji lub rezerwacji.
+
+Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub zmień użytkowników, którzy mogą zarządzać rezerwacji](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+
 Aby wyświetlić rezerwacji jako właściciel lub czytnika,
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **rezerwacje**.
-
-    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-reservation-search.png)
-
-1. Możesz wyświetlić listę rezerwacji, których masz rolę właściciela lub czytelnika.
+2. Wyszukiwanie **rezerwacje**.
+    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-reservation-search.png)  
+3. Lista zawiera wszystkie rezerwacje, w których masz rolę właściciela lub czytelnika. Poszczególne zastrzeżenia pokazuje ostatnie procent użycia znane.  
+    ![Przykład przedstawiający listę rezerwacji](./media/billing-view-reservation/view-reservations.png)
+4. Wybierz rezerwacji i zobacz trend wykorzystania przez ostatnie pięć dni.  
+    ![Trend wykorzystania rezerwacji przedstawiający przykładowy](./media/billing-view-reservation/reservation-utilization.png)
+5. Możesz też pobrać [wykorzystania rezerwacji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) przy użyciu interfejs API użycia wystąpień zarezerwowanych i [pakietu zawartości usługi Power BI Microsoft Azure przez wgląd](/power-bi/service-connect-to-azure-consumption-insights).
 
 Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto może zarządzać rezerwacji, zapoznaj się z [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
 
@@ -46,7 +49,7 @@ Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto mo
 Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

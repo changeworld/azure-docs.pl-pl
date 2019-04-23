@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099988"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996133"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń w przypadku przenoszenia danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ Poniższa tabela zawiera podsumowanie sieci i zaleceń dotyczących Self-Hosted 
 
 | Element źródłowy      | Element docelowy                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime może być zainstalowana lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej. |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime może być zainstalowana lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej. |
-| Lokalnie | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (publicznej komunikacji równorzędnej)            | Własne środowisko integration runtime musi być zainstalowane w środowisku lokalnym. |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | Sieć VPN IPSec (point-to-site lub site-to-site) | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatnej komunikacji równorzędnej)           | Własne środowisko integration runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Usługi oparte na platformie Azure, z publicznym punktem końcowym | ExpressRoute (komunikacji równorzędnej firmy Microsoft)            | Własne środowisko integration runtime może być zainstalowane w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska integration runtime do przenoszenia danych między lokalną bazą danych i usług platformy Azure przy użyciu usługi ExpressRoute i sieci VPN IPSec (usługa Azure Virtual Network):
 
@@ -174,7 +174,7 @@ W poniższej tabeli przedstawiono wymagania dotyczące portów dla ruchu przycho
 
 | Porty wejściowe | Opis                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | Wymagane przez polecenie cmdlet programu PowerShell szyfrowania, zgodnie z opisem w [szyfrowanie poświadczeń dla lokalnych magazynów danych w usłudze Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md), jak również aplikacji Menedżer poświadczeń, aby bezpiecznie ustawić poświadczenia dla lokalnych magazynów danych na własne środowisko integration runtime. |
+| 8060 (TCP)    | Wymagane przez polecenie cmdlet programu PowerShell szyfrowania, zgodnie z opisem w [szyfrowanie poświadczeń dla lokalnych magazynów danych w usłudze Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md), jak również aplikacji Menedżer poświadczeń, aby bezpiecznie ustawić poświadczenia dla lokalnych magazynów danych na własne środowisko integration runtime. |
 
 ![Wymagania dotyczące portów bramy](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ Następujące magazynami danych w chmurze wymagają, że możesz umieścić na l
 
 **Własne środowisko integration runtime można współdzielić w ramach fabryki danych?**
 
-Firma Microsoft nie obsługuje tej funkcji jeszcze. Aktywnie pracujemy nad jej.
+Tak. Więcej szczegółów można znaleźć [tutaj](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jakie są wymagania dotyczące portów dla własnego środowiska integration runtime do pracy?**
 

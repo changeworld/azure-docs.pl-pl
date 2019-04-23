@@ -2,18 +2,18 @@
 title: Usługa Azure Data Catalog — często zadawane pytania
 description: Często zadawane pytania dotyczące usługi Azure Data Catalog, w tym możliwości zarządzania, adnotacji i odnajdowanie źródeł danych.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231468"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998458"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Usługa Azure Data Catalog — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Catalog.
@@ -27,10 +27,10 @@ Wykaz danych adresów wyzwań związanych z źródła danych, odnajdowanie i "ci
 ## <a name="what-are-its-target-audiences"></a>Jakie są jej innych docelowych odbiorców?
 Data Catalog jest przeznaczona dla użytkowników Pomoc techniczna i nietechniczna, w tym:
 
-* Dane i deweloperów i specjalistów i analizy Biznesowej: osób, które są odpowiedzialne za tworzenie zawartości danych i analizy korzystać inne osoby.
-* Dane stewards: osób, które mają wiedzę na temat danych, co oznacza i jak jest przeznaczony do użycia.
-* Konsumenci danych: ludzi, którzy będą mogli łatwo wykryć, zrozumienie i łączenie z danymi, których potrzebują do wykonania swojej pracy za pomocą narzędzia wybranych przez nich.
-* Centralna IT: ludzi, którzy muszą wprowadzić setkami źródeł danych stała się wykrywalna przez użytkowników biznesowych i którzy muszą utrzymywać nadzoru nad sposobu użycia danych i przez kogo.
+* Dane i deweloperów i specjalistów i analizy Biznesowej: Osoby, które są odpowiedzialne za tworzenie zawartości danych i analizy korzystać inne osoby.
+* Stewards danych: Osoby, które mają wiedzę na temat danych, co oznacza i jak jest przeznaczony do użycia.
+* Konsumenci danych: Ludzi, którzy będą mogli łatwo wykryć, zrozumienie i łączenie z danymi, których potrzebują do wykonania swojej pracy za pomocą narzędzia wybranych przez nich.
+* Centralna IT: Ludzie, którzy muszą wprowadzić setkami źródeł danych stała się wykrywalna przez użytkowników biznesowych i którzy muszą utrzymywać nadzoru nad sposobu użycia danych i przez kogo.
 
 ## <a name="what-is-its-availability-by-region"></a>Co to jest jej dostępność według regionu?
 Usługi wykaz danych jest obecnie dostępna w następujących centrach danych:

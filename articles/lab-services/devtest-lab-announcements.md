@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fca78c86849ef8210bb3aaeb8ad96e1fba3d7c05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542492"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148972"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Publikowanie anonsu do laboratorium w usłudze Azure DevTest Labs
 
@@ -37,8 +37,8 @@ Funkcja ogłoszenie jest przeznaczona do użycia na potrzeby powiadomień tymcza
 
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
-1. Zaznacz na liście laboratoriów laboratorium, w której chcesz publikować anonsu.  
-1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.  
+1. Zaznacz na liście laboratoriów laboratorium, w której chcesz publikować anonsu.
+1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.
 
     ![Przycisk konfiguracji i zasad](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,7 +83,7 @@ Nie jest już do wyświetlenia tego anonsu użytkownikom laboratorium, należy p
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
-Anons można określić jako część szablonu usługi Azure Resource Manager, jak pokazano w poniższym przykładzie: 
+Anons można określić jako część szablonu usługi Azure Resource Manager, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -119,7 +119,7 @@ Anons można określić jako część szablonu usługi Azure Resource Manager, j
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ Szablon usługi Azure Resource Manager można wdrożyć przy użyciu jednej z na
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Jeśli zmienisz lub ustawianie zasad laboratorium warto publikowanie anonsu, aby informować użytkowników. [Ustawianie zasad i harmonogramów](devtest-lab-set-lab-policy.md) dostarcza informacji na temat stosowania ograniczeń i konwencje w ramach subskrypcji za pomocą zasad niestandardowych.
-* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

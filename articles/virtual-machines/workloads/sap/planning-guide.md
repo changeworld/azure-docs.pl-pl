@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501335"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999539"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -1141,8 +1141,8 @@ Można także skopiować pliki VHD, między subskrypcjami. Aby uzyskać więcej 
 
 Podstawowy przepływ PS logiki polecenia cmdlet wygląda następująco:
 
-* Utwórz kontekst konta magazynu **źródła** konto magazynu przy użyciu *New AzStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
-* Utwórz kontekst konta magazynu **docelowej** konto magazynu przy użyciu *New AzStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* Utwórz kontekst konta magazynu **źródła** konto magazynu przy użyciu *New AzStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Utwórz kontekst konta magazynu **docelowej** konto magazynu przy użyciu *New AzStorageContext* — zobacz <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * Rozpocznij kopiowanie z
 
 ```powershell

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: b5c833798f8533e7c6fbe3595a726ac6ce56e2d2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682818"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998264"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
 
@@ -75,7 +75,7 @@ Aby uzyskać więcej informacji, zobacz [aktualizacje funkcji geoprzestrzennych 
 
 **Poprzednie poziomy:** Zachowanie upsert został *wstawiania lub scalić*.
 
-**1,2 poziom:** Natywna integracja interfejsu API zbiorcze z danymi wyjściowymi bazy danych cosmos DB pozwala zwiększyć przepływność i skutecznie obsługuje ograniczanie żądań.
+**1,2 poziom:** Natywna integracja interfejsu API zbiorcze z danymi wyjściowymi bazy danych cosmos DB pozwala zwiększyć przepływność i skutecznie obsługuje ograniczanie żądań. Aby uzyskać więcej informacji, zobacz [dane wyjściowe usługi Azure Stream Analytics do strony usługi Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
 Zachowanie upsert jest *wstawić lub Zastąp*.
 

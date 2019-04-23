@@ -10,28 +10,28 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: MT
+ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250568"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999641"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
 
 ## <a name="workload-management"></a>Zarządzanie obciążeniem
-| Kategoria | Opis | Maksimum |
+| Category | Opis | Maksimum |
 |:--- |:--- |:--- |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna liczba jednostek DWU w pojedynczej SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślna wartość DTU na serwer |54,000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU równa 54 000, co pozwala maksymalnie DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając polecenie *przydziału* jako typ żądania.  Do obliczania usługi jednostki DTU potrzebuje, należy pomnożyć 7,5 przez łączną DWU potrzebne lub mnożenia 9.0 cDWU całkowity, potrzebne. Na przykład:<br></br>DW6000 x w wersji 7.5 = 45 000 jednostek Dtu<br></br>DW6000c x 9.0 = równa 54 000 jednostek Dtu.<br></br>Aktualne użycie jednostek DTU, z opcji programu SQL server można wyświetlić w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
-| Połączenie z bazą danych |Współbieżne otwarte sesje |1024<br/><br/>Każdy z 1024 aktywne sesje mogą przesyłać żądania do bazy danych SQL Data Warehouse, w tym samym czasie. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
+| Połączenie z bazą danych |Maksymalna współbieżnych Otwieranie sesji |1024<br/><br/>Liczba równoczesnych sesji Otwórz będzie zależeć od wybranych jednostek DWU. DWU500c otwarta powyżej obsługuje maksymalnie 1024 sesji. DWU400c i starszej obsługują limit maksymalny równoczesnych sesji Otwórz wynoszącej 512. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanej instrukcji |20 MB |
 | [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba jednoczesnych kwerend |128<br/><br/> Usługa SQL Data Warehouse można wykonywać maksymalnie 128 zapytań jednoczesnych lub kolejek, pozostałe zapytania.<br/><br/>Liczba równoczesnych zapytań można zmniejszyć, gdy użytkownicy są przypisane do wyższe klasy zasobów lub jeśli usługa SQL Data Warehouse ma mniejszy [data warehouse Unit, jednostka](memory-and-concurrency-limits.md) ustawienie. Niektórych kwerend, takich jak zapytania DMV, są zawsze może działać i czy nie wpływa na limit współbieżnych zapytania. Aby uzyskać szczegółowe informacje na temat wykonywania zapytań jednoczesnych, zobacz [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) artykułu. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna GB |399 GB per DW100. W związku z tym w DWU1000, bazy danych tempdb jest o rozmiarze do 3,99 TB. |
 
 ## <a name="database-objects"></a>Obiekty bazy danych
-| Kategoria | Opis | Maksimum |
+| Category | Opis | Maksimum |
 |:--- |:--- |:--- |
 | Database (Baza danych) |Maks. rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
 | Tabela |Maks. rozmiar |60 TB skompresowane na dysku |
@@ -52,12 +52,12 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Widok |Kolumn w widoku |1,024 |
 
 ## <a name="loads"></a>Obciążenia
-| Kategoria | Opis | Maksimum |
+| Category | Opis | Maksimum |
 |:--- |:--- |:--- |
 | Obciążenia funkcji Polybase |MB na wiersz |1<br/><br/>Program Polybase ładuje się tylko do wierszy, które są mniejsze niż 1 MB i nie można załadować do VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX).<br/><br/> |
 
 ## <a name="queries"></a>Zapytania
-| Kategoria | Opis | Maksimum |
+| Category | Opis | Maksimum |
 |:--- |:--- |:--- |
 | Zapytanie |Umieszczonych w kolejce kwerend w tabelach użytkownika. |1000 |
 | Zapytanie |Zapytania jednoczesne w widokach systemu. |100 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 5458a02c09a3600875c7300b27c5a87a735b2f1b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650756"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000542"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure
 
@@ -57,7 +57,7 @@ Podczas próby nawiązania połączenia z maszyną wirtualną, występują nast�
 Ten problem występuje, ponieważ usług pulpitu zdalnego nie jest uruchomiona na maszynie Wirtualnej. Przyczyną może zależeć od następujących scenariuszy: 
 
 - Usługa TermService jest ustawiona na **wyłączone**. 
-- Usługa TermService jest uległa awarii lub zawiesza się. 
+- Usługa TermService uległa awarii lub nie odpowiada. 
 - TermService nie rozpoczyna z powodu nieprawidłowej konfiguracji.
 
 ## <a name="solution"></a>Rozwiązanie

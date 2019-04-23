@@ -1,20 +1,19 @@
 ---
-title: Kolumny pochodnej przekształcania przepływu danych fabryki danych platformy Azure
-description: Kolumny pochodnej przekształcania przepływu danych fabryki danych platformy Azure
+title: Mapowanie przepływu danych w usłudze Azure Data Factory pochodnej kolumny transformacji
+description: Jak przekształcać dane w dużej skali przy użyciu Azure danych fabryki mapowanie przepływu pochodnej kolumny przekształcania danych
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 1335b86431bcf345f452ead0c95926d295ae185f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.openlocfilehash: f53e122eb1b2a5b6dabb9a44aef42394d0c7edb6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728764"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999489"
 ---
-# <a name="azure-data-factory-data-flow-derived-column-transformation"></a>Kolumny pochodnej przekształcania przepływu danych fabryki danych platformy Azure
+# <a name="mapping-data-flow-derived-column-transformation"></a>Mapowanie przepływu danych pochodzi przekształcania kolumny
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -27,3 +26,13 @@ Można wykonywać wiele akcji kolumny nie pochodzącej ze w pojedyncze przekszta
 W polu kolumny wybierz istniejącą kolumnę w celu zastąpienia z nową wartością pochodnej lub kliknij przycisk "Utwórz nową kolumnę" Aby wygenerować nową kolumnę z nowo pochodnym.
 
 Pole tekstowe wyrażenie otworzy Konstruktor wyrażeń, w którym tworzysz wyrażenie nie zawiera kolumn pochodnych, za pomocą funkcji wyrażenia.
+
+## <a name="column-patterns"></a>Wzorce kolumn
+
+Jeśli nazwy kolumny zmiennej ze swoich źródeł, możesz tworzyć przekształcenia wewnątrz kolumny nie pochodzącej ze przy użyciu wzorców kolumny zamiast o nazwie kolumny. Zobacz [dryfu schematu](concepts-data-flow-schema-drift.md) artykuł, aby uzyskać więcej informacji.
+
+![wzorzec kolumny](media/data-flow/columnpattern.png "wzorców kolumny")
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się więcej o [język wyrażeń usługi Data Factory dla przekształceń](http://aka.ms/dataflowexpressions) i [Konstruktor wyrażeń](concepts-data-flow-expression-builder.md)

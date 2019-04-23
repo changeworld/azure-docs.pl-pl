@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861897"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000627"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -48,8 +48,8 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
      |---------|---------|---------|---------|
      |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .NET i Java    |   Porty w zakresie 20 000 10 000 operacji    |
-     |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 20 000 10 000 operacji |
+     |Direct    |    HTTPS     |  Zestaw SDK platformy .NET i Java    |   Porty w zakresie 20 000 10 000 operacji    |
+     |Direct    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 20 000 10 000 operacji |
 
      Usługa Azure Cosmos DB oferuje proste i Otwórz model programowania RESTful przy użyciu protokołu HTTPS. Ponadto oferuje wydajne protokołu TCP, który jest również zgodne ze specyfikacją REST swój model komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno w przypadku bezpośredniego połączenia TCP, jak i protokołu HTTPS na użytek SSL początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
 
@@ -85,6 +85,11 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 4. **Zwiększ liczbę wątków/zadań**
 
     Ponieważ wywołania do usługi Azure Cosmos DB są wykonywane za pośrednictwem sieci, może być konieczne różnią się stopień równoległości żądań, tak, aby aplikacja kliencka zużywa bardzo mało czasu oczekiwania między żądaniami. Na przykład, jeśli używasz. NET firmy [Biblioteka zadań równoległych](https://msdn.microsoft.com//library/dd460717.aspx), Utwórz zgodnie z kolejnością 100s zadania Odczyt lub zapis do usługi Azure Cosmos DB.
+
+5. **Włącz przyspieszona sieć**
+
+   W celu zmniejszenia opóźnienia i zakłócenia procesora CPU, zaleca się, że maszyny wirtualne klienta są funkcji przyspieszonej łączności sieciowej włączone. Zobacz [Utwórz maszynę wirtualną Windows dzięki przyspieszonej sieci](../virtual-network/create-vm-accelerated-networking-powershell.md) lub [Utwórz maszynę wirtualną systemu Linux przy użyciu Accelerated Networking](../virtual-network/create-vm-accelerated-networking-cli.md) artykuły, aby włączyć przyspieszonej łączności sieciowej.
+
 
 ## <a name="sdk-usage"></a>Użycie zestawu SDK
 1. **Instalowanie najnowszych zestawu SDK**

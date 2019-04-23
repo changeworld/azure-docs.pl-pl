@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798933"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996462"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs
 W tym artykule pokazano, jak za pomocą programu Azure PowerShell lub wiersza polecenia platformy Azure uruchamianiem lub zatrzymywaniem maszyn wirtualnych w laboratorium Azure DevTest Labs. Można utworzyć skryptów programu PowerShell/interfejsu wiersza polecenia w celu zautomatyzowania tych operacji. 
@@ -34,7 +34,7 @@ Jednak w niektórych scenariuszach można zautomatyzować, uruchamianie i zatrzy
 - Używać go jako zadanie w ramach przepływu pracy ciągłej integracji/ciągłego Dostarczania rozpoczynają się od początku przepływu, korzystanie z maszyn wirtualnych, jak tworzyć maszyny, przetestuj maszyny lub infrastruktury, a następnie Zatrzymaj maszyny wirtualne, gdy proces zostanie zakończony. Na przykład będą fabrycznie obrazu niestandardowego za pomocą usługi Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Poniższy skrypt programu PowerShell uruchamia Maszynę wirtualną w laboratorium. [Wywoływanie AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) jest podstawowym fokus dla tego skryptu. **ResourceId** parametr jest w pełni kwalifikowanego Identyfikatora zasobu dla maszyny Wirtualnej w środowisku laboratoryjnym. **Akcji** parametr ma miejsce **Start** lub **zatrzymać** opcji ustawia się w zależności od tego, co jest potrzebne.
+Poniższy skrypt programu PowerShell uruchamia Maszynę wirtualną w laboratorium. [Wywoływanie AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) jest podstawowym fokus dla tego skryptu. **ResourceId** parametr jest w pełni kwalifikowanego Identyfikatora zasobu dla maszyny Wirtualnej w środowisku laboratoryjnym. **Akcji** parametr ma miejsce **Start** lub **zatrzymać** opcji ustawia się w zależności od tego, co jest potrzebne.
 
 ```powershell
 # The id of the subscription

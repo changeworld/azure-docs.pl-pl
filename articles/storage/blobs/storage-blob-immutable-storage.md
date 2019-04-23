@@ -5,21 +5,21 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/18/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 7fd9992db79b2517256d85ca3fd8f3bf409afa48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445682"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996034"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
 Niezmienny magazyn dla usługi Azure Blob storage pozwala użytkownikom przechowywać obiekty strategicznych danych biznesowych w stanie ROBAK (jednokrotny zapis, wiele odczytu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytać, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania. Niezmienny magazyn jest włączona dla ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage we wszystkich regionach platformy Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Niezmienne storage pomaga organizacji opieki zdrowotnej, instytucje finansowe i powiązanych branżach — szczególnie dealer brokera organizacjom — bezpiecznie przechowywać dane. On również nadającego się w każdym scenariuszu, w celu ochrony danych krytycznych, modyfikacji lub usunięcia. 
 
@@ -41,7 +41,7 @@ Niezmienny magazyn obsługuje następujące funkcje:
 
 - **Konfiguracji na poziomie kontenera**: Użytkownicy mogą konfigurować zasady przechowywania na podstawie czasu i ze względów prawnych tagi na poziomie kontenera. Przy użyciu prostych ustawień na poziomie kontenera, użytkowników można utworzyć i Zablokuj zasady przechowywania na podstawie czasu, rozszerzyć interwały przechowywania, zestaw i archiwizacją wyczyść ze względów prawnych i nie tylko. Te zasady mają zastosowanie do wszystkich obiektów blob w kontenerze, nowych i istniejących.
 
-- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji. Pokazuje maksymalnie pięć polecenia na podstawie czasu przechowywania dla zasad zablokowany na podstawie czasu przechowywania, przy użyciu maksymalnie trzech dzienników dla rozszerzeń interwał przechowywania. Do przechowywania danych na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia tego kontenera, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) pokazują dziennik bardziej kompleksowe wszystkich działań płaszczyzna kontroli; podczas włączania [dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) zachowuje i pokazuje operacje płaszczyzny danych. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
+- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji zasad. Pokazuje maksymalnie siedem na podstawie czasu przechowywania polecenia dla zasad przechowywania na podstawie czasu zablokowana i zawiera identyfikator użytkownika, typ polecenia, sygnatury czasowe i interwał przechowywania. W przypadku archiwizacją ze względów prawnych dziennik zawiera identyfikator użytkownika, wpisz polecenie sygnatury czasowe i tagi ze względów prawnych. Ten dziennik został zachowany na potrzeby okres istnienia zasady, zgodnie z wytycznymi przepisami 17a-4(f) s. [Dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) pokazują dziennik bardziej kompleksowe wszystkich działań płaszczyzna kontroli; podczas włączania [dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) zachowuje i pokazuje operacje płaszczyzny danych. Odpowiada za użytkownika trwałe, jak mogą być wymagane do celów przepisami lub innymi przechowywania tych dzienników.
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -82,6 +82,20 @@ W poniższej tabeli przedstawiono typy obiekty blob — operacje, które są wy�
 
 <sup>1</sup> aplikacja pozwala te operacje utworzyć nowy obiekt blob jeden raz. Wszystkie kolejne zastąpić operacje na istniejącą ścieżkę obiektu blob w kontenerze niezmienialnych nie są dozwolone.
 
+## <a name="supported-values"></a>Obsługiwane wartości
+
+### <a name="time-based-retention"></a>Na podstawie czasu przechowywania
+- Dla konta magazynu maksymalną liczbę kontenerów zasadami zablokowany na podstawie czasu niezmienne wynosi 1000.
+- Interwał przechowywania minimalną jest 1 dzień. Wartość maksymalna to 146,000 dni (400 lat).
+- Dla kontenera maksymalna liczba edycji rozszerzenie interwał przechowywania, zablokowane na podstawie czasu niezmienne zasad wynosi 5.
+- Dla kontenera maksymalnie 7 dzienników inspekcji zasad przechowywania na podstawie czasu są przechowywane przez czas trwania zasad.
+
+### <a name="legal-hold"></a>Prawnych
+- Dla konta magazynu maksymalną liczbę kontenerów z ustawieniem prawnych wynosi 1000.
+- Dla kontenera maksymalną liczbę tagów prawnych wynosi 10.
+- Minimalna długość znacznika prawnych wynosi 3 znaki alfanumeryczne. Maksymalna długość wynosi 23 znaków alfanumerycznych.
+- Dla kontenera maksymalnie 10 prawne przytrzymaj zasady inspekcji, dzienniki są zachowywane w czasie trwania operacji zasad.
+
 ## <a name="pricing"></a>Cennik
 
 Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi danymi jest rozliczana w taki sam sposób, jak regularne, mutable danych. Aby uzyskać szczegóły cennika w usłudze Azure Blob Storage, zobacz [usługi Azure Storage, cennik](https://azure.microsoft.com/pricing/details/storage/blobs/).
@@ -90,7 +104,6 @@ Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi dan
 Niezmienne storage jest dostępna tylko w przypadku ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage. Te konta muszą być zarządzane za pośrednictwem [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Aby uzyskać informacje na temat aktualizowania istniejącego konta magazynu ogólnego przeznaczenia w wersji 1, zobacz [podnoszenie poziomu konta magazynu](../common/storage-account-upgrade.md).
 
 Najnowsze wersje [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), i [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) obsługiwać niezmienny magazyn dla usługi Azure Blob storage. [Obsługa bibliotek klienta](#client-libraries) jest również udostępniany.
-
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -152,16 +165,6 @@ Podanych niżej bibliotek klienta obsługują niezmienny magazyn dla usługi Azu
 - [Biblioteka klientów języka Python w wersji 2.0.0 w wersji Release Candidate 2 lub nowszy](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Biblioteki klienta Java](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="supported-values"></a>Obsługiwane wartości
-
-- Interwał przechowywania minimalnej to jeden dzień. Wartość maksymalna to 146,000 dni (400 lat).
-- Dla konta magazynu maksymalną liczbę kontenerów przy użyciu zablokowane zasady niezmienne wynosi 1000.
-- Dla konta magazynu maksymalną liczbę kontenerów z ustawieniem prawnych wynosi 1000.
-- Dla kontenera maksymalną liczbę tagów prawnych wynosi 10.
-- Maksymalna długość znacznika prawnych to 23 znaków alfanumerycznych. Minimalna długość wynosi trzy znaki.
-- Dla kontenera maksymalna liczba rozszerzeń interwał przechowywania zablokowane zasady niezmienne to trzy.
-- Dla kontenera za pomocą zasad niezmienne zablokowane maksymalnie pięć dzienników zasad przechowywania na podstawie czasu i maksymalnie 10 prawne naciśnij i przytrzymaj zasad, które dzienniki są przechowywane przez czas trwania kontenera.
-
 ## <a name="faq"></a>Często zadawane pytania
 
 **Można podać dokumentacji ROBAK zgodności?**
@@ -178,7 +181,7 @@ Nie można użyć magazynu niezmienne z istniejących i nowo utworzony ogólnego
 
 **Czy mogę stosować prawnych i zasady przechowywania na podstawie czasu?**
 
-Kontener może mieć zarówno prawnych, jak i zasad przechowywania na podstawie czasu, w tym samym czasie. Wszystkie obiekty BLOB w kontenerze pozostanie w stanie niezmienne, dopóki nie zostaną wyczyszczone wszystkie archiwizacją ze względów prawnych, nawet wtedy, gdy ich okresu przechowywania skuteczne utracił ważność. Z drugiej strony obiekt blob pozostaje w niezmiennego stanu do wygaśnięcia okresu przechowywania skuteczne, nawet jeśli zostały wyczyszczone wszystkie archiwizacją ze względów prawnych.
+Tak, kontener może mieć zarówno prawnych, jak i zasad przechowywania na podstawie czasu w tym samym czasie. Wszystkie obiekty BLOB w kontenerze pozostanie w stanie niezmienne, dopóki nie zostaną wyczyszczone wszystkie archiwizacją ze względów prawnych, nawet wtedy, gdy ich okresu przechowywania skuteczne utracił ważność. Z drugiej strony obiekt blob pozostaje w niezmiennego stanu do wygaśnięcia okresu przechowywania skuteczne, nawet jeśli zostały wyczyszczone wszystkie archiwizacją ze względów prawnych.
 
 **Czy zasady prawnych tylko w przypadku postępowania, lub czy istnieją inne scenariusze użycia?**
 
@@ -208,7 +211,7 @@ Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowan
 
 Tak. [Usuwanie nietrwałe dla usługi Azure Blob storage](storage-blob-soft-delete.md) ma zastosowanie do wszystkich kontenerów na koncie magazynu, niezależnie od tego, czy prawnych lub zasady przechowywania na podstawie czasu. Zalecamy włączenie usuwania nietrwałego, aby uzyskać dodatkową ochronę przed wszystkie niezmienne zasady ROBAK są stosowane i potwierdzone. 
 
-**Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
+**Gdzie jest funkcja?**
 
 Niezmienne storage jest dostępna w regionach świadczenia publicznej platformy Azure (Chiny) i dla instytucji rządowych. Jeśli w Twoim regionie nie ma dostępnego magazynu niezmienne, skontaktuj się z pomocy technicznej i wiadomości e-mail azurestoragefeedback@microsoft.com.
 

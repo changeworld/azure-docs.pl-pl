@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523362"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997788"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku pokazano, jak uzyskać dostęp do interfejsu API programu Microsoft Graph w celu pobrania członkostw w grupach przy użyciu tożsamości zarządzanej przypisanej przez system do maszyny wirtualnej z systemem Windows. Tożsamości zarządzane dla zasobów platformy Azure są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu.  W tym samouczku wykonasz zapytanie dotyczące członkostwa tożsamości maszyny wirtualnej w grupach usługi Azure AD. Informacje o grupie są często używane na przykład podczas podejmowania decyzji o autoryzacji. Tożsamość zarządzana maszyny wirtualnej jest niejawnie reprezentowana przez **jednostkę usługi** w usłudze Azure AD. Przed wykonaniem zapytania dotyczącego grupy dodaj jednostkę usługi reprezentującą tożsamość maszyny wirtualnej do grupy w usłudze Azure AD. Możesz to zrobić przy użyciu programu Azure PowerShell lub programu PowerShell usługi Azure AD albo interfejsu wiersza polecenia platformy Azure.
+W tym samouczku dowiesz się, jak korzystać z tożsamości zarządzanej przypisana przez system Windows maszyny wirtualnej (VM) dostępu do interfejsu API programu Graph usługi Azure AD można pobrać jego członkostwa w grupach. Tożsamości zarządzane dla zasobów platformy Azure są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu.  W tym samouczku wykonasz zapytanie dotyczące członkostwa tożsamości maszyny wirtualnej w grupach usługi Azure AD. Informacje o grupie są często używane na przykład podczas podejmowania decyzji o autoryzacji. Tożsamość zarządzana maszyny wirtualnej jest niejawnie reprezentowana przez **jednostkę usługi** w usłudze Azure AD. Przed wykonaniem zapytania dotyczącego grupy dodaj jednostkę usługi reprezentującą tożsamość maszyny wirtualnej do grupy w usłudze Azure AD. Możesz to zrobić przy użyciu programu Azure PowerShell lub programu PowerShell usługi Azure AD albo interfejsu wiersza polecenia platformy Azure.
 
 > [!div class="checklist"]
 > * Łączenie z usługą Azure AD

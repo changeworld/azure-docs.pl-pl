@@ -2,17 +2,17 @@
 title: Planista wdrażania usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure — informacje | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat odzyskiwania po awarii Azure lokacji odzyskiwania Deployment Planner funkcji Hyper-V do platformy Azure.
 author: mayurigupta13
-manager: garavd
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e40a6b69b1cc4785b3055eaa31905c9ee88170e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360283"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001511"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure — informacje
 
@@ -73,7 +73,7 @@ Narzędzie udostępnia następujące szczegóły:
 | | **Z programu VMware do platformy Azure** |**Z funkcji Hyper-V do platformy Azure**|**Z platformy Azure do platformy Azure**|**Z funkcji Hyper-V do lokacji dodatkowej**|**Z oprogramowania VMware do lokacji dodatkowej**
 --|--|--|--|--|--
 Obsługiwane scenariusze |Yes|Yes|Nie|Tak*|Nie
-Obsługiwana wersja | vCenter 6.5, 6.0 lub 5.5| Windows Server 2016, Windows Server 2012 R2 | Nie dotyczy |Windows Server 2016, Windows Server 2012 R2|Nie dotyczy
+Obsługiwana wersja | vCenter 6.7, 6.5, 6.0 lub 5.5| Windows Server 2016, Windows Server 2012 R2 | Nie dotyczy |Windows Server 2016, Windows Server 2012 R2|Nie dotyczy
 Obsługiwana konfiguracja|vCenter, ESXi| Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|Klaster funkcji Hyper-V, host funkcji Hyper-V|Nie dotyczy|
 Liczba serwerów, które mogą być profilowane, na uruchomione wystąpienie planisty wdrażania usługi Azure Site Recovery |Jeden (w tym samym czasie można profilować maszyny wirtualne należące do jednego serwera vCenter lub jednego serwera ESXi)|Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy |Wiele (w tym samym czasie można profilować maszyny wirtualne należące do wielu hostów lub klastrów hostów)| Nie dotyczy
 
@@ -132,7 +132,7 @@ Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następ
   >Każdy nowy planista wdrożenia jest aktualizacją zbiorczą pliku ZIP. Nie musisz kopiować najnowszych plików do poprzedniego folderu. Można utworzyć nowy folder i użyć go.
 
 ## <a name="version-history"></a>Historia wersji
-Najnowszej wersji narzędzia planista wdrażania usługi Azure Site Recovery jest 2.3.
+Najnowszej wersji narzędzia planista wdrażania usługi Azure Site Recovery jest 2.4.
 Zapoznaj się [Historia wersji narzędzia planista wdrażania usługi Azure Site odzyskiwania](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) strona poprawki, które zostały dodane w poszczególnych aktualizacjach.
 
 

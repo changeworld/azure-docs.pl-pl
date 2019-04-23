@@ -1,6 +1,6 @@
 ---
 title: SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza) — omówienie
-description: Ten temat zawiera opis usługi Azure SQL Database Machine Learning Services (przy użyciu języka R) i wyjaśniono, jak działa.
+description: Ten artykuł zawiera opis usługi Azure SQL Database Machine Learning Services (przy użyciu języka R) i wyjaśniono, jak działa.
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: e6d6250da4df6ab267ef28f8f15a73c8cbc68618
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762063"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997482"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Usługi Machine Learning to funkcja usługi Azure SQL Database, używany do wyko
 
 ## <a name="what-you-can-do-with-r"></a>Co można zrobić przy użyciu języka R
 
-Korzystaj z możliwości języka R, aby dostarczać zaawansowaną analizę i uczenie maszynowe w bazie danych. W ten sposób obliczenia i przetwarzanie przenoszone są do miejsca przechowywania danych, co eliminuje konieczność ściągania danych przez sieć. Ponadto wykorzystaj moc korporacyjnych pakietów języka R do dostarczania zaawansowanej analizy na dużą skalę.
+Korzystaj z możliwości języka R, aby dostarczać zaawansowaną analizę i uczenie maszynowe w bazie danych. W ten sposób obliczenia i przetwarzanie przenoszone są do miejsca przechowywania danych, co eliminuje konieczność ściągania danych przez sieć. Ponadto można wykorzystać możliwości pakiety języka R enterprise, aby dostarczać zaawansowane funkcje analityczne na dużą skalę.
 
 Usługa Machine Learning Services obejmuje podstawową dystrybucję języka R z nakładką w postaci korporacyjnych pakietów języka R firmy Microsoft. Funkcje i algorytmy języka R firmy Microsoft zostały opracowane z myślą o skalowaniu i użyteczności, zapewniając analizę predykcyjną, modelowanie statystyczne, wizualizacje danych i najwyższej klasy algorytmy uczenia maszynowego.
 
@@ -45,11 +45,13 @@ Najpopularniejsze pakiety języka R typu open source są wstępnie zainstalowane
 
 | Pakietu języka R | Opis|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open jest rozszerzona dystrybucja języka R od firmy Microsoft. Jest to platforma pełną typu open source do statystycznego analizy i analizy danych. Jest oparta na i 100% zgodny z języka R i zawiera dodatkowe możliwości w celu zwiększenia wydajności i powtarzalności. |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open jest rozszerzona dystrybucja języka R od firmy Microsoft. Jest to kompletna platforma open source do statystycznego analizy i analizy danych. Jest oparta na i 100% zgodny z języka R i zawiera dodatkowe możliwości w celu zwiększenia wydajności i powtarzalności. |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | Kolekcję funkcji RevoScaleR jest biblioteka podstawowa skalowalne funkcje języka R. w tej bibliotece znajdują się wśród najczęściej używanych. Przekształcenia danych i manipulowania, statystycznego podsumowania, wizualizacji i wiele form, modelowania i analiz, znajdują się w tych bibliotek. Ponadto funkcje w tych bibliotek automatycznie rozkładają obciążenie w obrębie dostępnych rdzeni dla przetwarzania z możliwością pracować nad fragmentów danych, które są koordynowane i zarządzana przez aparat obliczeń równoległych. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML dodaje algorytmów uczenia maszynowego, aby utworzyć niestandardowe modele analizy tekstu, analiza obrazu i analiza tonacji. |
 
-Oprócz wstępnie zainstalowanych pakietów, możliwe jest również [zainstalować dodatkowe pakiety](sql-database-connect-query-r.md#add-package).
+<!-- Add this back when the new package-related article is written
+In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
+-->
 
 <a name="signup"></a>
 
@@ -61,7 +63,7 @@ Aby zarejestrować się w publicznej wersji zapoznawczej, wykonaj następujące 
 
 2. Wyślij wiadomość e-mail do firmy Microsoft na adres [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com), aby utworzyć konto na potrzeby korzystania z publicznej wersji zapoznawczej. Publiczna wersja zapoznawcza usługi Machine Learning (z językiem R) w usłudze SQL Database nie jest włączona domyślnie.
 
-Po zarejestrowaniu się w programie Microsoft będziesz dołączyć do publicznej wersji zapoznawczej i włączenia R do istniejącej lub nowej bazy danych.
+Po zarejestrowaniu w programie Microsoft będziesz dołączyć do publicznej wersji zapoznawczej i włączenia R do istniejącej lub nowej bazy danych.
 
 Usługi Machine Learning przy użyciu języka R nie jest zalecane w przypadku obciążeń produkcyjnych w publicznej wersji zapoznawczej.
 

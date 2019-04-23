@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: bd91d9201e81c884b48b41de27146c186eeb9598
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188105"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000848"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalnego odzyskiwania po awarii w przypadku klastrów usługi Azure Databricks
 
@@ -247,7 +247,7 @@ Aby utworzyć własny topologii odzyskiwania regionalnej awarii, wykonaj te wyma
 
 8. **Migrowanie magazynu obiektów blob platformy Azure i instaluje usługi Azure Data Lake Store**
 
-   Ręcznie zainstaluj wszystkie [usługi Azure Blob storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) i [usługi Azure Data Lake Store (Gen 1)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html) przy użyciu rozwiązania na podstawie notesu punkty instalacji. Zasobów usługi storage będą instalowane w podstawowym obszarem roboczym i który ma być powtarzany w dodatkowej obszaru roboczego. Nie ma żadnych zewnętrznych interfejsów API dla instalacji.
+   Ręcznie zainstaluj wszystkie [usługi Azure Blob storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) i [usługi Azure Data Lake Store (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) przy użyciu rozwiązania na podstawie notesu punkty instalacji. Zasobów usługi storage będą instalowane w podstawowym obszarem roboczym i który ma być powtarzany w dodatkowej obszaru roboczego. Nie ma żadnych zewnętrznych interfejsów API dla instalacji.
 
 9. **Migrowanie klastra init skryptów**
 

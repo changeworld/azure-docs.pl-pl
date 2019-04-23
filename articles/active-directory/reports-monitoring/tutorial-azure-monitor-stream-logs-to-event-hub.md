@@ -1,6 +1,6 @@
 ---
-title: Samouczek — przesyłanie strumieniowe dzienników usługi Azure Active Directory do centrum zdarzeń platformy Azure (wersja zapoznawcza) | Microsoft Docs
-description: Dowiedz się, jak skonfigurować Diagnostykę Azure w celu wypychania dzienników usługi Azure Active Directory do centrum zdarzeń (wersja zapoznawcza)
+title: Samouczek — Stream usługi Azure Active Directory loguje się do Centrum zdarzeń platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak konfigurowanie diagnostyki platformy Azure w celu wypchnięcia dzienników usługi Azure Active Directory do Centrum zdarzeń
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85a3c43054aeb758eb1e0da9ce1086bfa653180
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436935"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995602"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Samouczek: przesyłanie strumieniowe dzienników usługi Azure Active Directory do centrum zdarzeń platformy Azure (wersja zapoznawcza)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Samouczek: Dzienniki usługi Azure Active Directory Stream do usługi Azure event hub
 
 W tym samouczku przedstawiono informacje na temat sposobu konfigurowania ustawień diagnostycznych usługi Azure Monitor w celu strumieniowego przesyłania dzienników usługi Azure Active Directory (Azure AD) do centrum zdarzeń platformy Azure. Ten mechanizm służy do integrowania dzienników z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) innych firm, takimi jak Splunk i QRadar.
 

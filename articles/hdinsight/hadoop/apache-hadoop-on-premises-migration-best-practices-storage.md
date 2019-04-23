@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338296"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000066"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 
@@ -89,9 +89,9 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Tworzenie klastrów HDInsight za pomocą usługi Data Lake Storage przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2-preview"></a>Azure Data Lake magazynu Gen2 (wersja zapoznawcza)
+### <a name="azure-data-lake-storage-gen2"></a>Usługa Azure Data Lake Storage 2. generacji
 
-Azure Data Lake magazynu Gen2 stanowi najnowszą magazynowania oferty i jest w wersji zapoznawczej w czasie pisania tego dokumentu. Łączy on podstawowe funkcje z pierwsza generacja usługi Azure Data Lake Storage z punktem końcowym systemu na zgodny plik usługi Hadoop bezpośrednio zintegrowana usługa Azure Blob Storage. To ulepszenie łączy korzyści skali i koszt magazyn obiektów o niezawodności i wydajności, które zazwyczaj są skojarzone tylko z systemami plików lokalnych.
+Azure Data Lake magazynu Gen2 stanowi najnowszą magazynowania oferty. Łączy on podstawowe funkcje z pierwsza generacja usługi Azure Data Lake Storage z punktem końcowym systemu na zgodny plik usługi Hadoop bezpośrednio zintegrowana usługa Azure Blob Storage. To ulepszenie łączy korzyści skali i koszt magazyn obiektów o niezawodności i wydajności, które zazwyczaj są skojarzone tylko z systemami plików lokalnych.
 
 Azure Data Lake Store generacji 2 jest wbudowana w górnej części [usługi Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md) i pozwala na łączenie się z danymi przy użyciu obu paradygmatów magazynu plików, jak systemu i obiekt. Funkcje z [usługi Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takich jak semantyki systemu plików, pliku poziom zabezpieczeń i skalowania są połączone z niskie koszty i warstwowego, możliwości odzyskiwania wysoka dostępność/po awarii i duży zestaw SDK/narzędzia ekosystem z [usługi Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md). W Data Lake Storage Gen2 jakość magazynu obiektów pozostają podczas dodawania zalety interfejsu systemu plików zoptymalizowana pod kątem analizy obciążeń.
 
@@ -115,7 +115,7 @@ Jedną z następujących formatów można uzyskać dostęp do danych, która jes
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Wprowadzenie do usługi Azure Data Lake Storage 2. generacji (wersja zapoznawcza)](../../storage/data-lake-storage/introduction.md)
+- [Wprowadzenie do usługi Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Sterownik systemu plików obiektów Blob platformy Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 

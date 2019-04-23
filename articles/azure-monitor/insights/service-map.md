@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485156"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000729"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
@@ -299,22 +299,22 @@ Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają p
 
 | Właściwość | Opis |
 |:--|:--|
-|Kierunek |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
-|Maszyna |Nazwa FQDN komputera |
-|Przetwórz |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
-|SourceIp |Adres IP źródła |
-|DestinationIp |Adres IP miejsca docelowego |
-|DestinationPort |Numer portu docelowego |
-|Protokół |Protokół używany dla połączenia.  Wartości *tcp*. |
+| `Direction` |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
+| `Machine` |Nazwa FQDN komputera |
+| `Process` |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
+| `SourceIp` |Adres IP źródła |
+| `DestinationIp` |Adres IP miejsca docelowego |
+| `DestinationPort` |Numer portu docelowego |
+| `Protocol` |Protokół używany dla połączenia.  Wartości *tcp*. |
 
 Aby uwzględnić wpływ grupowania, informacje o liczbie pogrupowanych połączeń fizycznych znajduje się w następujących właściwości rekordu:
 
 | Właściwość | Opis |
 |:--|:--|
-|LinksEstablished |Liczba połączeń sieci fizycznej, które zostały utworzone w przedziale czasu raportowania |
-|LinksTerminated |Liczba połączeń sieci fizycznej, które zostały zakończone raportowania przedziale czasu |
-|LinksFailed |Liczba połączeń sieci fizycznej, które nie powiodły się w przedziale czasu raportowania. Te informacje są obecnie dostępne tylko dla połączeń wychodzących. |
-|LinksLive |Liczba połączeń sieci fizycznej, które były otwarte na końcu raportowania przedział czasu|
+| `LinksEstablished` |Liczba połączeń sieci fizycznej, które zostały utworzone w przedziale czasu raportowania |
+| `LinksTerminated` |Liczba połączeń sieci fizycznej, które zostały zakończone raportowania przedziale czasu |
+| `LinksFailed` |Liczba połączeń sieci fizycznej, które nie powiodły się w przedziale czasu raportowania. Te informacje są obecnie dostępne tylko dla połączeń wychodzących. |
+| `LinksLive` |Liczba połączeń sieci fizycznej, które były otwarte na końcu raportowania przedział czasu|
 
 #### <a name="metrics"></a>Metryki
 
@@ -322,12 +322,12 @@ Oprócz metryki liczbę połączeń informacji na temat ilości danych wysłanyc
 
 | Właściwość | Opis |
 |:--|:--|
-|BytesSent |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
-|BytesReceived |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
-|Odpowiedzi |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
-|ResponseTimeMax |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-|ResponseTimeMin |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-|ResponseTimeSum |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta|
+| `BytesSent` |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
+| `BytesReceived` |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
+| `Responses` |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
+| `ResponseTimeMax` |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
+| `ResponseTimeMin` |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
+| `ResponseTimeSum` |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta|
 
 Trzeci typ danych, zgłaszany jest czas odpowiedzi — obiekt wywołujący poświęcić czas oczekiwania na żądanie przesyłane przez połączenie do przetworzenia i przez zdalny punkt końcowy. Czas odpowiedzi, zgłaszane jest oszacowanie czas odpowiedzi true podstawowego protokołu aplikacji. Jest obliczana, przy użyciu algorytmów heurystycznych oparte na obserwacji przepływ danych między źródłowym i docelowym koniec połączenie z siecią fizyczną. Pod względem koncepcyjnym go różni się od czasu ostatniego bajtu żądania pozostawia nadawcy i czas po nadejściu ostatni bajt odpowiedzi powrotu do tego. Te dwa sygnatury czasowe są używane do odróżnić zdarzenia żądań i odpowiedzi dla danego połączenia fizycznych. Różnica między nimi reprezentuje czas odpowiedzi pojedynczego żądania. 
 
@@ -348,26 +348,26 @@ Dla wygody adres IP zdalnego punktu końcowego połączenia znajduje się we wł
 
 | Właściwość | Opis |
 |:--|:--|
-|RemoteCountry |Nazwa kraju RemoteIp hostingu.  Na przykład *Stanów Zjednoczonych* |
-|RemoteLatitude |Szerokość geograficzną.  Na przykład *47.68* |
-|RemoteLongitude |Długość geograficzna geolokalizacji.  Na przykład *-122.12* |
+| `RemoteCountry` |Nazwa kraju RemoteIp hostingu.  Na przykład *Stanów Zjednoczonych* |
+| `RemoteLatitude` |Szerokość geograficzną.  Na przykład *47.68* |
+| `RemoteLongitude` |Długość geograficzna geolokalizacji.  Na przykład *-122.12* |
 
 #### <a name="malicious-ip"></a>Złośliwy adres IP
 Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana względem zbiór adresów IP przy użyciu znanych złośliwych działań. Jeśli RemoteIp została zidentyfikowana jako szkodliwe następujące właściwości zostaną wypełnione (są puste, jeśli adres IP nie jest uznawane za złośliwe) w następujących właściwości rekordu:
 
 | Właściwość | Opis |
 |:--|:--|
-|MaliciousIp |Adres RemoteIp |
-|IndicatorThreadType |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
-|Opis |Opis obserwowanych zagrożeń. |
-|TLPLevel |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
-|Ufność |Wartości są *0 – 100*. |
-|Ważność |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
-|FirstReportedDateTime |Po raz pierwszy dostawca zgłosił wskaźnika. |
-|LastReportedDateTime |Czas ostatniego wskaźnika widzianego przez Interflow. |
-|IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
-|ReportReferenceLink |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
-|AdditionalInformation |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
+| `MaliciousIp` |Adres RemoteIp |
+| `IndicatorThreadType` |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
+| `Description` |Opis obserwowanych zagrożeń. |
+| `TLPLevel` |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
+| `Confidence` |Wartości są *0 – 100*. |
+| `Severity` |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
+| `FirstReportedDateTime` |Po raz pierwszy dostawca zgłosił wskaźnika. |
+| `LastReportedDateTime` |Czas ostatniego wskaźnika widzianego przez Interflow. |
+| `IsActive` |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
+| `ReportReferenceLink` |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
+| `AdditionalInformation` |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
 
 ### <a name="servicemapcomputercl-records"></a>Rekordy ServiceMapComputer_CL
 Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z agentami mapy usługi. Te rekordy mają właściwości podane w poniższej tabeli:
@@ -399,7 +399,7 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 
 | Właściwość | Opis |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
 | `ResourceName_s` | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|

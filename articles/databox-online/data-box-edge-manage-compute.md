@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 58c4f42859f735a81a3e3edc801daff5d26194a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499034"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997652"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Zarządzanie obliczeniami na krawędzi sieci Azure Data Box
 
@@ -32,7 +32,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="manage-triggers"></a>Zarządzanie wyzwalaczy
 
-Zdarzenia są rzeczy, które odbywa się w Twoim środowisku chmury lub na urządzeniu, które prawdopodobnie chcą podejmij działanie. Na przykład gdy tworzony jest plik w udziale, to zdarzenie. Wyzwalacze zgłaszać zdarzenia. Dla Twojej przeglądarki Microsoft Edge pole danych wyzwalaczy może być w odpowiedzi na zdarzenia w pliku lub harmonogramu.
+Zdarzenia są rzeczy, które odbywa się w Twoim środowisku chmury lub na urządzeniu, które prawdopodobnie chcą podejmij działanie. Na przykład gdy tworzony jest plik w udziale, to zdarzenie. Wyzwalacze zgłaszać zdarzenia. Dla Twojej przeglądarki Edge pole danych wyzwalaczy może być w odpowiedzi na zdarzenia w pliku lub harmonogramu.
 
 - **Plik**: Te wyzwalacze są w odpowiedzi na zdarzenia plików takie jak utworzenie pliku modyfikacji pliku.
 - **Zaplanowane**: Te wyzwalacze są w odpowiedzi na harmonogram, który można zdefiniować przy użyciu datę rozpoczęcia, godzinę rozpoczęcia i interwału powtarzania.

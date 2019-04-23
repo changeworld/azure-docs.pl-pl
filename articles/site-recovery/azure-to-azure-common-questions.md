@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649887"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149737"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -67,7 +67,7 @@ Usługa Site Recovery może replikowanie i odzyskiwanie maszyn wirtualnych międ
 
 Nie, Usługa Site Recovery nie wymaga łączności z Internetem. Jednak wymaga dostępu do adresów URL Site Recovery i zakresami IP, jak wspomniano w [w tym artykule](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Czy można replikować aplikacji mających oddzielnej grupy zasobów dla oddzielnych warstw? 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Czy można replikować aplikacji mających oddzielnej grupy zasobów dla oddzielnych warstw?
 Tak, możesz zreplikować aplikacji i zbyt zachować konfiguracji odzyskiwania po awarii w oddzielnej grupie zasobów.
 Na przykład, jeśli będziesz mieć aplikację z każdej warstwy aplikacji, bazy danych i sieci web w oddzielnej grupie zasobów, a następnie być konieczne kliknięcie pozycji [kreatora replikacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) trzy razy, aby chronić wszystkie warstwy. Funkcja automatycznego odzyskiwania systemu będzie replikować tych trzech warstw w trzech różnych grupach zasobów.
 
@@ -89,11 +89,12 @@ Obecnie większość aplikacji można odzyskać dobrze z migawek spójnych awary
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Co to jest częstotliwość generowania punktu odzyskiwania spójnego na poziomie awarii?
 Usługa Site Recovery tworzy punkt odzyskiwania spójnego na poziomie awarii, co 5 minut.
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>Co to jest punkt odzyskiwania zapewniających spójność aplikacji? 
-Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawki spójne z aplikacjami. Punktów odzyskiwania zapewniających spójność aplikacji przechwytywać te same dane jako migawki spójne na poziomie awarii, dodając wszystkie dane w pamięci i wszystkie trwające transakcje. Ze względu na ich zawartość dodatkowa migawki spójne z aplikacjami są najbardziej zaangażowani i trwało najdłużej wykonywanie. Firma Microsoft zaleca punktów odzyskiwania zapewniających spójność aplikacji dla systemów operacyjnych bazy danych i aplikacji, takich jak SQL Server.
+### <a name="what-is-an-application-consistent-recovery-point"></a>Co to jest punkt odzyskiwania zapewniających spójność aplikacji?
+Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawki spójne z aplikacjami. Punktów odzyskiwania zapewniających spójność aplikacji przechwytywać te same dane jako migawki spójne na poziomie awarii, dodając wszystkie dane w pamięci i wszystkie trwające transakcje.
+Ze względu na ich zawartość dodatkowa migawki spójne z aplikacjami są najbardziej zaangażowani i trwało najdłużej wykonywanie. Firma Microsoft zaleca punktów odzyskiwania zapewniających spójność aplikacji dla systemów operacyjnych bazy danych i aplikacji, takich jak SQL Server.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaki jest wpływ punktów odzyskiwania zapewniających spójność aplikacji na wydajność aplikacji?
-Biorąc pod uwagę punktów odzyskiwania zapewniających spójność aplikacji przechwytuje wszystkie dane w pamięci i w procesie wymaga środowiska, takiego jak usługi VSS w systemie windows, aby przełączyć w stan spoczynku aplikacji. Jeśli będą wykonywane bardzo często może to mieć wpływ na wydajność, jeśli obciążenie jest już bardzo zajęty. Zazwyczaj zalecane jest nie należy używać niskiej częstotliwości dla punktów odzyskiwania spójnego na poziomie aplikacji dla obciążeń innych baz danych, a nawet w przypadku obciążeń bazy danych 1 godzina jest wystarczająca. 
+Biorąc pod uwagę punktów odzyskiwania zapewniających spójność aplikacji przechwytuje wszystkie dane w pamięci i w procesie wymaga środowiska, takiego jak usługi VSS w systemie windows, aby przełączyć w stan spoczynku aplikacji. Jeśli będą wykonywane bardzo często może to mieć wpływ na wydajność, jeśli obciążenie jest już bardzo zajęty. Zazwyczaj zalecane jest nie należy używać niskiej częstotliwości dla punktów odzyskiwania spójnego na poziomie aplikacji dla obciążeń innych baz danych, a nawet w przypadku obciążeń bazy danych 1 godzina jest wystarczająca.
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Jaka jest minimalna częstotliwość generowania punktów odzyskiwania zapewniających spójność aplikacji?
 Usługa Site Recovery może tworzy punkt odzyskiwania zapewniających spójność aplikacji z minimalna częstotliwość w ciągu 1 godziny.
@@ -216,7 +217,11 @@ To zależy od sytuacji. Na przykład: Jeśli region źródłowej maszyny Wirtual
 Po ponownego włączania ochrony ilość czasu na potrzeby powrotu po awarii jest zwykle podobne do czasu dla trybu failover z regionu podstawowego do regionu pomocniczego.
 
 ## <a name="capacity"></a>Pojemność
-### <a name="does-site-recovery-work-with-reserved-instance"></a>Czy usługa Site Recovery współpracuje z wystąpienia zarezerwowanego?
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak pojemność zapewniona jest w regionie docelowym dla maszyn wirtualnych platformy Azure?
+Zespół Azure odzyskiwania lokacji (ASR) współpracuje z zespołu zarządzającego pojemność na platformie Azure planowania wystarczającej pojemności infrastruktury, w celu zapewnienia, że maszyny wirtualne chronione przez usługę ASR awarii odzyskiwania zostanie pomyślnie wdrożona w regionie odzyskiwania po awarii zawsze, gdy są inicjowane operacji trybu failover usługi ASR.
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Czy usługa Site Recovery współpracuje z wystąpień zarezerwowanych?
 Tak, możesz kupić [zarezerwować wystąpień](https://azure.microsoft.com/pricing/reserved-vm-instances/) w DR region i operacji trybu failover usługi ASR będą z nich korzystać. </br> Dodatkowa konfiguracja nie jest wymagana od klientów.
 
 

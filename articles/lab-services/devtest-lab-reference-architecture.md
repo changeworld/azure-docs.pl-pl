@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 61e76369a4d73bd171c9e5c2462b3f261681ba00
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551385"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996615"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Usługa Azure DevTest Labs — architektura referencyjna dla przedsiębiorstwa
 Ten artykuł zawiera architektury referencyjnej do wdrożenia rozwiązanie oparte na usłudze Azure DevTest Labs w przedsiębiorstwie. Obejmuje ona połączeń lokalnych za pomocą usługi Express Route, bramy usług pulpitu zdalnego do zdalnego logowania się do maszyn wirtualnych, łączności z repozytorium artefaktów prywatne artefakty i inne usługi PaaS, używane w laboratorium.
@@ -37,7 +37,7 @@ Kluczowe elementy w architekturze referencyjnej są:
     - Wymuszenie całego ruchu sieciowego i w środowisku chmury, za pośrednictwem zapory w środowisku lokalnym ze względów bezpieczeństwa lub zgodności
 - **Sieciowe grupy zabezpieczeń**: Typowym sposobem ograniczania ruchu do środowiska chmury (lub w środowisku chmury) na podstawie źródła i docelowych adresów IP jest użycie [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md). Na przykład dzięki czemu tylko ruch sieciowy pochodzący z sieci firmowej w sieciach laboratorium.
 - **Brama usług pulpitu zdalnego**:  Przedsiębiorstwom Blokuj zazwyczaj wychodzące połączenia pulpitu zdalnego na zaporze firmowej. Aby włączyć łączność środowisko oparte na chmurze w usłudze DevTest Labs, dostępnych jest kilka opcji, takimi jak wymaganie użycia [bramy usług pulpitu zdalnego](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture) (Lista dozwolonych statyczny adres IP dla modułu równoważenia obciążenia bramy) lub [kierowanie cały ruch przychodzący Ruch RDP](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) za pośrednictwem połączenia Express Route/Site-to-Site VPN. To jest wspólne brany pod uwagę podczas planowania wdrożenia usługi DevTest Labs w przedsiębiorstwie.
-- **Sieci platformy Azure (sieci wirtualne, podsieci)**:  [Sieci platformy Azure](../networking/networking-overview.md) topologia jest innym kluczowym elementem w ogólna architektura DevTest Labs. Dzięki temu zasoby z laboratoriów do komunikowania się (lub nie), dostęp do sieci lokalnej (lub nie) i uzyskać dostęp do Internetu (lub nie). Diagram architektury obejmuje najbardziej popularny sposób klienci korzystają z usługi DevTest Labs (labs wszystkich połączonych za pośrednictwem [komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md) przy użyciu [modelu piasty i szprych](/architecture/reference-architectures/hybrid-networking/hub-spoke) połączenia Express Route/Site-to-Site VPN Aby lokalnie), ale ponieważ DevTest Labs korzysta z sieci platformy Azure bezpośrednio nie istnieją jakieś ograniczenia dotyczące sposobu konfigurowania infrastruktury sieci.
+- **Sieci platformy Azure (sieci wirtualne, podsieci)**:  [Sieci platformy Azure](../networking/networking-overview.md) topologia jest innym kluczowym elementem w ogólna architektura DevTest Labs. Dzięki temu zasoby z laboratoriów do komunikowania się (lub nie), dostęp do sieci lokalnej (lub nie) i uzyskać dostęp do Internetu (lub nie). Diagram architektury obejmuje najbardziej popularny sposób klienci korzystają z usługi DevTest Labs (labs wszystkich połączonych za pośrednictwem [komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md) przy użyciu [modelu piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) połączenia Express Route/Site-to-Site VPN Aby lokalnie), ale ponieważ DevTest Labs korzysta z sieci platformy Azure bezpośrednio nie istnieją jakieś ograniczenia dotyczące sposobu konfigurowania infrastruktury sieci.
 - **DevTest Labs**:  DevTest Labs to kluczowa część ogólna architektura. Aby dowiedzieć się więcej o usłudze, zobacz [DevTest Labs](devtest-lab-overview.md).
 - **Maszyny wirtualne i inne zasoby (SaaS, PaaS, IaaS)**:  Jedną z kluczowych obciążeń obsługiwanych przez usługi DevTest Labs to maszyny wirtualne wraz z innymi zasobami platformy Azure.  DevTest Labs ułatwia szybkie dla przedsiębiorstw udzielić dostępu do zasobów platformy Azure (w tym maszyn wirtualnych i innych zasobów platformy Azure).  Dowiedz się więcej o dostęp do platformy Azure dla [deweloperów](devtest-lab-developer-lab.md) i [testerów](devtest-lab-test-env.md).
 

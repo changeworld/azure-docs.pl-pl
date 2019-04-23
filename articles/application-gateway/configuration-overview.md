@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58906127"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998910"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -228,9 +228,9 @@ Wybierz odbiornika jako obiektu docelowego przekierowania do przekierowywania ru
 ![Okno dialogowe składniki bramy aplikacji](./media/configuration-overview/configure-redirection.png)
 
 Aby uzyskać więcej informacji na temat przekierowania HTTP do HTTPS zobacz:
-- [Przekierowywanie HTTP-HTTP przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [Przekierowywanie HTTP-HTTP przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Przekierowywanie HTTP lub HTTP przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Przekierowywanie HTTP do HTTPS przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
+- [Przekierowywanie HTTP do HTTPS przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [Przekierowywanie HTTP do HTTPS przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
 ##### <a name="external-site"></a>Lokacja zewnętrzna
 

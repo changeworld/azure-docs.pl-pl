@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799477"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149133"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -36,11 +36,11 @@ Rejestracja urządzenia w Centrum powiadomień odbywa się przy użyciu **rejest
 Rejestracji kojarzy uchwyt usług powiadomień platformy (PNS, Domain Name System) dla urządzenia przy użyciu tagów i ewentualnie szablonu. Identyfikator ChannelURI, token urządzenia lub identyfikator rejestracji usługi FCM, może być dojściem systemu powiadomień platformy. Znaczniki są używane do kierowania powiadomień do odpowiednich zestawów uchwyty urządzenia. Aby uzyskać więcej informacji, zobacz [routingu i wyrażenia tagu](notification-hubs-tags-segment-push-message.md). Szablony są używane do implementowania przekształcenia na rejestracji. Aby uzyskać więcej informacji, zobacz [Szablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
-> Usługa Azure Notification Hubs obsługuje maksymalnie 60 tagów na rejestracji.
+> Usługa Azure Notification Hubs obsługuje maksymalnie 60 tagów na każdym urządzeniu.
 
 ### <a name="installations"></a>Instalacje
 
-Instalacja jest rozszerzonych właściwości powiązanych z rejestracji, który zawiera zbiór wypychania. Jest to najnowsze i najlepsze podejście do rejestrowania urządzeń. Jednak nie jest obsługiwany przez zestaw SDK platformy .NET po stronie klienta ([zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) jeszcze wdrożone.  Oznacza to, czy rejestrujesz na urządzeniu klienckim, trzeba użyć [interfejsu API REST centrów powiadomień](https://msdn.microsoft.com/library/mt621153.aspx) podejście do obsługi instalacji. Jeśli używasz usługi wewnętrznej bazy danych powinno być możliwe do użycia [zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalacja jest rozszerzonych właściwości powiązanych z rejestracji, który zawiera zbiór wypychania. Jest to najnowsze i najlepsze podejście do rejestrowania urządzeń. Jednak nie jest obsługiwany przez zestaw SDK platformy .NET po stronie klienta ([zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) jeszcze wdrożone.  Oznacza to, czy rejestrujesz na urządzeniu klienckim, trzeba użyć [interfejsu API REST centrów powiadomień](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) podejście do obsługi instalacji. Jeśli używasz usługi wewnętrznej bazy danych powinno być możliwe do użycia [zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Poniżej przedstawiono niektóre kluczowe zalety korzystania z instalacji:
 
@@ -48,7 +48,7 @@ Poniżej przedstawiono niektóre kluczowe zalety korzystania z instalacji:
 - Model instalacji obsługuje format specjalny znacznik (`$InstallationId:{INSTALLATION_ID}`), który umożliwia wysłanie powiadomienia bezpośrednio do określonego urządzenia. Na przykład, jeśli kod aplikacji Ustawia identyfikator instalacji `joe93developer` dla tego konkretnego urządzenia, deweloper można wskazać to urządzenie podczas wysyłania powiadomień do `$InstallationId:{joe93developer}` tagu. Dzięki temu można pod kątem określonego urządzenia bez konieczności dodatkowego kodowania.
 - Przy użyciu instalacji umożliwia także wykonaj aktualizacje częściowe rejestracji. Zażądano częściową aktualizację instalacji przy użyciu metody PATCH [standard poprawki JSON](https://tools.ietf.org/html/rfc6902). Jest to przydatne, gdy chcesz aktualizacji tagów na rejestracji. Nie masz ściągnąć całego rejestracji, a następnie ponownie Wyślij ponownie wszystkie poprzednie tagi.
 
-Instalacja może zawierać następujące właściwości. Aby uzyskać pełną listę właściwości instalacji, zobacz [utworzyć ani zastąpić instalacji przy użyciu interfejsu API REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) lub [właściwości instalacji](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalacja może zawierać następujące właściwości. Aby uzyskać pełną listę właściwości instalacji, zobacz [utworzyć ani zastąpić instalacji przy użyciu interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) lub [właściwości instalacji](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
 ```json
 // Example installation format to show some supported properties

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5a3d6e51a71f6aab742fe042d6e6e281192319a4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523022"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149184"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Uruchamianie fabryki obrazów z usługi Azure DevOps
 W tym artykule opisano wszystkie czynności, które są potrzebne do uruchomienia fabrycznie obrazu z DevOps platformy Azure (dawniej Visual Studio Team Services).
@@ -29,15 +29,15 @@ W tym artykule opisano wszystkie czynności, które są potrzebne do uruchomieni
 Pierwszym krokiem w procesie konfigurowania fabryki obrazu jest tworzenie laboratorium w usłudze Azure DevTest Labs. To laboratorium stanowi laboratorium fabryki obraz miejscu tworzenia maszyn wirtualnych i zapisywanie obrazów niestandardowych. W tym laboratorium jest traktowany jako część całego procesu fabrycznie obrazu. Po utworzeniu laboratorium, upewnij się zapisać nazwę, ponieważ będzie on potrzebny później.
 
 ## <a name="scripts-and-templates"></a>Skrypty i szablony
-Następnym krokiem w przyjmowaniu fabrycznie obrazu dla Twojego zespołu jest zrozumienie, jakie opcje są dostępne. Obraz fabryki skryptów i szablonów są dostępne publicznie w [repozytorium GitHub usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory). Poniżej przedstawiono zarys elementy:
+Następnym krokiem w przyjmowaniu fabrycznie obrazu dla Twojego zespołu jest zrozumienie, jakie opcje są dostępne. Obraz fabryki skryptów i szablonów są dostępne publicznie w [repozytorium GitHub usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Poniżej przedstawiono zarys elementy:
 
-- Fabryka obrazu. Jest folder główny. 
+- Fabryka obrazu. Jest folder główny.
     - Konfiguracja. Dane wejściowe do fabryki obrazu
         - GoldenImages. Ten folder zawiera pliki w formacie JSON, które reprezentują definicje obrazów niestandardowych.
         - Labs.json. Plik, w którym zespoły Zarejestruj, aby otrzymywać określonych niestandardowych obrazów.
 - Skrypty. Aparat fabryki obrazu.
 
-Artykuły w tej sekcji Podaj więcej szczegółów na temat tych skryptów i szablonów. 
+Artykuły w tej sekcji Podaj więcej szczegółów na temat tych skryptów i szablonów.
 
 ## <a name="create-an-azure-devops-team-project"></a>Tworzenie projektu zespołu DevOps platformy Azure
 DevOps platformy Azure umożliwiają przechowywanie kodu źródłowego, uruchamiać program Azure PowerShell w jednym miejscu. Można zaplanować cykliczne przebiegów, aby zapewnić aktualność obrazów. Ma dobrej funkcje służące do rejestrowania wyników do diagnozowania problemów.  Za pomocą usługi Azure DevOps jednak nie jest to wymagane, można użyć dowolnego kontroler/aparat, który umożliwia połączenie z platformy Azure i można uruchomić programu Azure PowerShell.
@@ -47,7 +47,7 @@ Jeśli masz istniejące konto DevOps lub projektu, którego chcesz użyć, Pomi�
 Aby rozpocząć, Utwórz bezpłatne konto w DevOps platformy Azure. Odwiedź stronę https://www.visualstudio.com/ i wybierz **Rozpocznij za darmo** tuż poniżej **DevOps platformy Azure** (dawniej VSTS). Należy wybrać unikatową nazwę konta i upewnij się, że chce zarządzać kodem przy użyciu narzędzia Git. Po utworzeniu, Zapisz adres URL do projektu zespołowego. Poniżej przedstawiono przykładowy adres URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
 ## <a name="check-in-the-image-factory-to-git"></a>Sprawdź w fabryce obrazu do usługi Git
-Wszystkie środowiska PowerShell, szablony i konfiguracji fabryki obrazu znajdują się w [publicznego repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory). Najszybszym sposobem uzyskania kodu do nowego projektu zespołowego jest importowanie repozytorium. Spowoduje to pobranie całego repozytorium w usłudze DevTest Labs (dzięki czemu zapewnisz sobie dodatkowych dokumentację i przykłady). 
+Wszystkie środowiska PowerShell, szablony i konfiguracji fabryki obrazu znajdują się w [publicznego repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Najszybszym sposobem uzyskania kodu do nowego projektu zespołowego jest importowanie repozytorium. Spowoduje to pobranie całego repozytorium w usłudze DevTest Labs (dzięki czemu zapewnisz sobie dodatkowych dokumentację i przykłady).
 
 1. Odwiedź stronę projektu DevOps platformy Azure, który został utworzony w poprzednim kroku (adres URL wygląda **https:\//\<accountname >.visualstudio.com/MyFirstProject**).
 2. Wybierz **zaimportować repozytorium**.
@@ -67,9 +67,9 @@ W tym momencie masz pliki źródłowe, przechowywane w repozytorium Git w DevOps
 1. Aby rozpocząć, wybierz opcję **Ustaw kompilację** na stronie głównej projektu DevOps:
 
     ![Konfigurowanie przycisku kompilacji](./media/set-up-devops-lab/setup-build-button.png)
-2. Określ **nazwa** kompilacji (na przykład: Twórz i dostarczaj obrazów użytkownik usługi DevTest Labs). 
-3. Wybierz **pusty** definicji kompilacji, a następnie wybierz pozycję **Zastosuj** do tworzenia kompilacji. 
-4. Na tym etapie możesz wybrać **hostowana** dla agenta kompilacji. 
+2. Określ **nazwa** kompilacji (na przykład: Twórz i dostarczaj obrazów użytkownik usługi DevTest Labs).
+3. Wybierz **pusty** definicji kompilacji, a następnie wybierz pozycję **Zastosuj** do tworzenia kompilacji.
+4. Na tym etapie możesz wybrać **hostowana** dla agenta kompilacji.
 5. **Zapisz** definicji kompilacji.
 
     ![Definicja kompilacji](./media/set-up-devops-lab/build-definition.png)
@@ -87,7 +87,7 @@ Aby uprościć parametry wiersza polecenia, hermetyzacji wartości klucza, któr
 | MachineUserName | ImageFactoryUser | Nazwa użytkownika konta administratora wbudowane dla maszyn wirtualnych. To jest konto przejściowy. |
 | StandardTimeoutMinutes | 30 | Limit czasu, w których firma Microsoft ma oczekiwać regularnych operacjach platformy Azure. |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | Identyfikator subskrypcji, w którym istnieje laboratorium i punkt końcowy usługi z dostępem do. |
-| VMSize | Standardowa_A3 | Rozmiar maszyny wirtualnej na potrzeby **Utwórz** kroku. Maszyny wirtualne tworzone są przejściowe. Rozmiar musi być to [włączone dla laboratorium](devtest-lab-set-lab-policy.md). Upewnij się, że jest wystarczająco dużo [limit przydziału rdzeni subskrypcji](../azure-subscription-service-limits.md). 
+| VMSize | Standardowa_A3 | Rozmiar maszyny wirtualnej na potrzeby **Utwórz** kroku. Maszyny wirtualne tworzone są przejściowe. Rozmiar musi być to [włączone dla laboratorium](devtest-lab-set-lab-policy.md). Upewnij się, że jest wystarczająco dużo [limit przydziału rdzeni subskrypcji](../azure-subscription-service-limits.md).
 
 ![Tworzenie zmiennych](./media/set-up-devops-lab/configure-build-variables.png)
 
@@ -95,27 +95,27 @@ Aby uprościć parametry wiersza polecenia, hermetyzacji wartości klucza, któr
 Następnym krokiem jest do skonfigurowania nazwy głównej usługi. Jest to tożsamość w usłudze Azure Active Directory, umożliwiająca DevOps agenta kompilacji, działają na platformie Azure w imieniu użytkownika. Aby ustawić go tak, rozpoczynać się dodanie pierwszy Azure PowerShell krok kompilacji.
 
 1. Wybierz **Dodaj zadanie**.
-2. Wyszukaj **programu Azure PowerShell**. 
+2. Wyszukaj **programu Azure PowerShell**.
 3. Po znalezieniu go wybrać **Dodaj** można dodać zadania do kompilacji. Gdy to zrobisz, zobaczysz zadania są wyświetlane po lewej stronie w miarę dodawania.
 
 ![Konfigurowanie programu PowerShell krok](./media/set-up-devops-lab/set-up-powershell-step.png)
 
-Najszybszym sposobem konfigurowania jednostki usługi jest umożliwiające DevOps platformy Azure to dla nas. 
+Najszybszym sposobem konfigurowania jednostki usługi jest umożliwiające DevOps platformy Azure to dla nas.
 
 1. Wybierz **zadań** właśnie dodałeś.
-2. Aby uzyskać **typu połączenia platformy Azure**, wybierz **usługi Azure Resource Manager**. 
-3. Wybierz **Zarządzaj** link, aby skonfigurować nazwę główną usługi. 
+2. Aby uzyskać **typu połączenia platformy Azure**, wybierz **usługi Azure Resource Manager**.
+3. Wybierz **Zarządzaj** link, aby skonfigurować nazwę główną usługi.
 
 Aby uzyskać więcej informacji, zobacz ten [wpis w blogu](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Po wybraniu **Zarządzaj** link, zostanie wyświetlona w odpowiednim miejscu w infrastrukturze DevOps (drugi zrzut ekranu: wpis w blogu) Aby skonfigurować połączenie z platformą Azure. Upewnij się wybrać **punkt końcowy usługi Resource Manager platformy Azure** podczas konfigurowania.
 
 ## <a name="complete-the-build-task"></a>Wykonanie zadania kompilacji
-Jeśli wybierzesz zadanie kompilacji, zobaczysz wszystkie szczegółowe informacje w okienku po prawej stronie, które powinno być wypełnione. 
+Jeśli wybierzesz zadanie kompilacji, zobaczysz wszystkie szczegółowe informacje w okienku po prawej stronie, które powinno być wypełnione.
 
-1. Po pierwsze nadaj nazwę zadaniu kompilacji: **Tworzenie maszyn wirtualnych**. 
+1. Po pierwsze nadaj nazwę zadaniu kompilacji: **Tworzenie maszyn wirtualnych**.
 2. Wybierz **nazwy głównej usługi** utworzone przez wybranie **usługi Azure Resource Manager**
-3. Wybierz **punktu końcowego usługi**. 
+3. Wybierz **punktu końcowego usługi**.
 4. Aby uzyskać **ścieżka skryptu**, wybierz opcję **... (wielokropek)**  po prawej stronie.
-5. Przejdź do **MakeGoldenImageVMs.ps1** skryptu. 
+5. Przejdź do **MakeGoldenImageVMs.ps1** skryptu.
 6. Parametry skryptu powinny wyglądać następująco: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![Wykonaj definicji kompilacji](./media/set-up-devops-lab/complete-build-definition.png)
@@ -126,5 +126,5 @@ Teraz Sprawdź, czy wszystko jest poprawnie skonfigurowany, kolejkowania nowej k
 
 ![Maszyny wirtualne w laboratorium](./media/set-up-devops-lab/vms-in-lab.png)
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Kolejne kroki
 Pierwszym krokiem w procesie konfigurowania fabryki obrazu, oparte na usłudze Azure DevTest Labs jest pełny. W następnym artykule z tej serii otrzymasz te maszyny wirtualne uogólnione i zapisane w niestandardowych obrazów. W efekcie masz ich dystrybuowane do wszystkich innych laboratoriów. Następny artykuł z serii: [Zapisywanie niestandardowych obrazów i dystrybucji do wielu labs](image-factory-save-distribute-custom-images.md).

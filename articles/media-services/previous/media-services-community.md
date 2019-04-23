@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877075"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000049"
 ---
 # <a name="azure-media-services-community"></a>Społeczność usługi Azure Media Services  
 
@@ -37,10 +37,13 @@ Ta strona społeczności usługi Azure Media Services (AMS) w tym artykule omów
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>Dyskusja
+
 ### <a name="twitter"></a>Twitter
+
 Użyj [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) uchwyt twitter, skontaktuj się z nami lub wykonaj aktualizacje w serwisie Twitter. Możesz użyć [ @AzureSupport ](https://twitter.com/azuresupport) uchwyt twitter, aby żądania pomocy technicznej w serwisie Twitter.  
 
 ### <a name="online-forums"></a>Fora online
+
 Następujących forów może służyć do zadawania pytań dotyczących aktualne produkty i funkcje.
 
 Obecnie MSDN to forum społeczności podstawowego zespołu usługi Media Services.
@@ -48,9 +51,11 @@ Obecnie MSDN to forum społeczności podstawowego zespołu usługi Media Service
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 Zespół monitoruje również pytania w witrynie Stack Overflow oznaczone "azure-media-services".
+
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Skontaktuj się z zespołem
+
 Usługa Azure Media Services jest adres e-mail pomocy technicznej podstawowy: **amshelp\@microsoft.com**.
 
 W poniższej tabeli wymieniono e-mail zespołów ds. funkcji podrzędnej:

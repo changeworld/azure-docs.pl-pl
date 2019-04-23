@@ -1,64 +1,99 @@
 ---
 title: Indeksowanie w usłudze Azure Cosmos DB
 description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB.
-author: rimman
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.author: thweiss
+ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265699"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996734"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w usłudze Azure Cosmos DB — omówienie
 
-Usługa Azure Cosmos DB jest niezależny od schematów bazą danych i pozwala szybko iterować w swojej aplikacji bez konieczności zarządzania schematami lub indeksami. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie elementy w kontenerze bez konieczności schematu lub indeksów pomocniczych, od deweloperów.
+Usługa Azure Cosmos DB jest od schematów baza danych, która umożliwia powtarzanie czynności w aplikacji bez konieczności zarządzania schematami lub indeksami. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje dla każdej właściwości dla wszystkich elementów w swojej [kontenera](databases-containers-items.md#azure-cosmos-containers) bez konieczności zdefiniować żadnego schematu lub indeksów pomocniczych skonfigurować.
 
-## <a name="items-as-trees"></a>Elementy jako drzewa
+Celem tego artykułu jest wyjaśnienie, jak usługa Azure Cosmos DB indeksuje dane, i sposobem użycia indeksów aby poprawić wydajność zapytań. Zaleca się poświęcić na przejście w tej sekcji, przed rozpoczęciem pracy z sposobu dostosowywania [zasady indeksowania](index-policy.md).
 
-Przy wyświetlaniu elementów w kontenerze jako dokumenty JSON i przedstawiania ich jako drzewa, usługi Azure Cosmos DB normalizuje struktury i wartości wystąpienia różnych elementów do ujednolicenie koncepcji **dynamicznie zakodowany w strukturze ścieżki** . W tej reprezentacji każdej etykiety w dokumencie JSON, który zawiera nazwy właściwości i ich wartości, staje się węzła drzewa. Pozostawia drzewa zawierają rzeczywiste wartości i pośredniego węzły zawierają informacje o schemacie. Poniższy obraz przedstawia drzew utworzone dla dwóch elementów (1 i 2) w kontenerze usługi Azure Cosmos:
+## <a name="from-items-to-trees"></a>Z elementów do drzewa
 
-![Reprezentacja drzewa dla dwóch różnych elementów w kontenerze usługi Azure Cosmos](./media/index-overview/indexing-as-tree.png)
+Za każdym razem, gdy element jest przechowywany w kontenerze, jego zawartość jest przekazywany jako dokument JSON, a następnie konwertowana do reprezentacji drzewa. Oznacza to, że dla każdej właściwości ten element pobiera reprezentowane jako węzeł w drzewie. Węzeł główny pseudo jest tworzony jako element nadrzędny do wszystkich właściwości pierwszego poziomu elementu. Węzły liści zawierają rzeczywiste wartości skalarnych przez element.
 
-Węzeł główny pseudo jest tworzony jako element nadrzędny w węzłach rzeczywiste odpowiadający etykiet w dokumencie JSON poniżej. Struktury danych zagnieżdżonych dysku hierarchii drzewa. Pośredni sztuczne węzły z etykietą przy użyciu wartości liczbowych (na przykład, 0, 1,...) są wykorzystywane do reprezentowania wyliczeń i tablicy wskaźników.
+Na przykład należy wziąć pod uwagę ten element:
 
-## <a name="index-paths"></a>Ścieżki indeksów
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
 
-Usługa Azure Cosmos DB projektów elementów w kontenerze usługi Azure Cosmos indeksów oraz dokumentów JSON jako drzewa. Następnie można dostrajanie zasad indeksu dla ścieżek w drzewie. Istnieje możliwość dołączania lub wykluczania ścieżki z indeksowania. To może oferować zapisu ulepszoną wydajność i zmniejszyć magazyn indeksów dla scenariuszy, w którym wzorców zapytań są znane wyprzedzeniem. Aby dowiedzieć się więcej, zobacz [ścieżki indeksu](index-paths.md).
+Jest przedstawiany przez następujące drzewo:
 
-## <a name="indexing-under-the-hood"></a>Indeksowanie: Kulisy
+![Poprzedni element reprezentowany jako drzewo](./media/index-overview/item-as-tree.png)
 
-Dotyczy bazy danych Cosmos Azure *automatycznego indeksowania* danych, w którym każdej ścieżce w drzewie jest indeksowana, o ile nie skonfigurowano wykluczać określone ścieżki.
+Należy zauważyć, jak tablice są kodowane w drzewie: każdy wpis w tablicy pobiera węzeł pośredni etykietą indeks ten wpis w tablicy (0, 1 itp.).
 
-Usługi Azure Cosmos, którą baza danych wykorzystuje odwrócony indeksu struktury danych do przechowywania informacji o poszczególnych elementów i ułatwienia reprezentacji wydajne dla zapytań. Drzewo indeksu jest dokument, który jest konstruowany przy użyciu sumę wszystkich drzew reprezentujących poszczególnych elementów w kontenerze. W drzewie indeks zwiększa rozmiar wraz z upływem czasu, nowe elementy są dodane lub zaktualizowane istniejące elementy w kontenerze. W przeciwieństwie do indeksowania relacyjnej bazy danych, usługi Azure Cosmos DB nie ponownie indeksowania od podstaw, ponieważ wprowadzono nowe pola. Nowe elementy są dodawane do istniejącej struktury indeksu. 
+## <a name="from-trees-to-property-paths"></a>Z drzewa do ścieżki właściwości
 
-Każdy węzeł w drzewie indeksu jest wpisu indeksu, zawierające wartości etykiety i pozycji o nazwie *termin*i identyfikatory elementów o nazwie *wpisami*. Wpisy w nawiasach klamrowych (na przykład {1,2}) na rysunku odwróconą indeksu odnoszą się do elementów takich jak *dokument1* i *Document2* zawierający wartość danego etykiety. Ważne domniemanie, w jednolity sposób traktowania etykiety schemat i wartości wystąpienia to wszystko, co jest pakowany wewnątrz duży indeks. Wartość wystąpienia, która jest nadal liści nie jest powtarzany, może być w różne role dla elementów, za pomocą innego schematu, etykiet, ale jest tę samą wartość. Na poniższej ilustracji przedstawiono odwróconą indeksowania dla dwóch różnych elementów:
+Powód, dlaczego usługi Azure Cosmos DB przy użyciu elementów do drzewa jest, ponieważ umożliwia właściwości, aby odwoływać się do ścieżki wewnątrz tych drzew. Aby uzyskać ścieżkę dla właściwości, firma Microsoft przechodzenie drzewa z węzła głównego do tej właściwości, a złącz etykiety dla każdego węzła korzystania.
 
-![Indeksowanie kulisy, odwrócony indeksu](./media/index-overview/inverted-index.png)
+Poniżej przedstawiono ścieżki dla każdej właściwości z elementu przykład opisane powyżej:
 
-> [!NOTE]
-> Odwróconą indeks może wyglądać podobnie do indeksowania struktur, używane w aparatu wyszukiwania w domenie pobierania informacji. Azure Cosmos DB przy użyciu tej metody umożliwia wyszukiwanie bazy danych dla każdego elementu, niezależnie od jego strukturę schematu.
+    /locations/0/country: "Germany"
+    /locations/0/city: "Berlin"
+    /locations/1/country: "France"
+    /locations/1/city: "Paris"
+    /headquarters/country: "Belgium"
+    /headquarters/employees: 250
+    /exports/0/city: "Moscow"
+    /exports/1/city: "Athens"
 
-Ścieżka znormalizowana indeks koduje do przodu ścieżki od katalogu głównego dla wartości, oraz informacje o typie wartości. Ścieżka i wartości są kodowane zapewnienie różnego rodzaju indeksowania, np. zakres przestrzenne itp. Kodowanie wartość służy do Podaj unikatową wartość lub w skład zestawu ścieżek.
+Przy zapisywaniu element usługi Azure Cosmos DB indeksuje skutecznie ścieżki dla każdej właściwości i jego wartość.
+
+## <a name="index-kinds"></a>Rodzaje indeksu
+
+Usługa Azure Cosmos DB obsługuje dwa rodzaje indeksów:
+
+**Zakres** rodzaj indeks służy do:
+
+- równość zapytania: `SELECT * FROM container c WHERE c.property = 'value'`
+- zakres zapytania: `SELECT * FROM container c WHERE c.property > 'value'` (działa w przypadku `>`, `<`, `>=`, `<=`, `!=`)
+- `ORDER BY` zapytania: `SELECT * FROM container c ORDER BY c.property`
+- `JOIN` zapytania: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+
+Zakres indeksów może służyć w wartości skalarnych (ciąg lub liczba).
+
+**Przestrzenne** rodzaj indeks służy do:
+
+- dane geograficzne odległość zapytania: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
+- dane geograficzne w ramach zapytania: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+
+Indeksy przestrzenne mogą być używane na format [GeoJSON](geospatial.md) obiektów. LineStrings punktów i wielokątów są obecnie obsługiwane.
 
 ## <a name="querying-with-indexes"></a>Wykonywanie zapytania dla indeksów
 
-Indeks odwróconą umożliwia zapytaniom identyfikowanie dokumentów, szybko zgodne w predykacie zapytania. Traktując zarówno schematu, jak i wartości wystąpienia równomiernie pod względem ścieżki odwróconą indeks znajduje się również drzewa. W związku z tym, indeksu i wyniki można szeregować do prawidłowy dokument JSON, a zwracany jako same dokumenty zwrócone w reprezentacji drzewa. Ta metoda umożliwia recursing za pośrednictwem wyników dla dodatkowych zapytań. Na poniższym obrazie przedstawiono przykład indeksowania w zapytaniu punkt:  
+Ścieżki wyodrębnione podczas indeksowania danych ułatwiają do wyszukiwania indeksu podczas przetwarzania zapytania. Porównując `WHERE` klauzuli kwerendy za pomocą listy ścieżek indeksowane, jest możliwe do identyfikacji elementów, które odpowiadają predykacie zapytania w bardzo szybko.
 
-![Przykład zapytania punktu](./media/index-overview/index-point-query.png)
+Na przykład, należy wziąć pod uwagę następujące zapytanie: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predykacie zapytania (filtrowanie elementów, gdzie dowolnego miejsca i ma "Francja", jako jego kraju) będzie odpowiadać ścieżki wyróżniony na czerwono poniżej:
 
-Zakres kwerendy *GermanTax* jest [funkcji zdefiniowanej przez użytkownika](stored-procedures-triggers-udfs.md#udfs) wykonywane w ramach przetwarzania zapytań. Funkcja zdefiniowana przez użytkownika jest wszelkie zarejestrowane, funkcja języka JavaScript, zapewniające zaawansowanych funkcji logiki programowania zintegrowane w zapytaniu. Na poniższym obrazie przedstawiono przykład indeksowania w zapytaniu zakresu:
+![Dopasowania określonej ścieżki w obrębie drzewa](./media/index-overview/matching-path.png)
 
-![Przykład zapytania zakresu](./media/index-overview/index-range-query.png)
+> [!NOTE]
+> `ORDER BY` Klauzuli *zawsze* musi zakres indeksu i zakończy się niepowodzeniem, jeśli nie ma ścieżki odwołuje się.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Więcej informacji na temat indeksowania w następujących artykułach:
 
 - [Zasady indeksowania](index-policy.md)
-- [Typy indeksów](index-types.md)
-- [Ścieżki indeksów](index-paths.md)
 - [Jak zarządzać zasad indeksowania](how-to-manage-indexing-policy.md)

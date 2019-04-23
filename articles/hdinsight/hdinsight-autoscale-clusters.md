@@ -1,20 +1,19 @@
 ---
 title: Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 description: Funkcja automatycznego skalowania HDInsight umożliwia automatyczne skalowanie klastrów
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6642f80a40343546285770531ac42423bee779b8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 11828b3b056519d0ebe3233f078c6b3f6fc2ea1c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526499"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997499"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 

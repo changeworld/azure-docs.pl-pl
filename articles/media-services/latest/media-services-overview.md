@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/29/2019
+ms.date: 04/18/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: 6876ffd76c5a7ba5745e8014bca2abdc5e5264a2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755900"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999828"
 ---
-# <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
+# <a name="azure-media-services-v3-overview"></a>Omówienie usługi Azure Media Services v3
 
 Azure Media Services to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na osiąganie jakości odpowiedniej do emisji w przypadku przesyłania strumieniowego wideo, zwiększanie dostępności i dystrybucji, analizowanie zawartości i wykonywanie wielu innych operacji. Niezależnie od tego, czy jesteś deweloperem aplikacji, biurem obsługi, agencją rządową, czy też firmą rozrywkową, usługa Media Services pomaga tworzyć aplikacje, które zapewniają środowisko multimedialne o najwyższej jakości dużej liczbie odbiorców na obecnie najpopularniejszych urządzeniach przenośnych i przeglądarkach. 
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref), lub jeden z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
 
 ## <a name="what-can-i-do-with-media-services"></a>Co mogę zrobić za pomocą usługi Media Services?
 
@@ -46,7 +46,7 @@ Usługa Media Services umożliwia tworzenie różnych przepływów pracy multime
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3? 
 
-Dowiedz się, jak Koduj i Pakuj zawartość, przesyłanie strumieniowe wideo na żądanie, prowadzić emisję na żywo, analizować filmy wideo za pomocą usługi Media Services v3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
+Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 
 Przed rozpoczęciem tworzenia, przejrzyj [podstawowe pojęcia](concepts-overview.md)<br/>
 
@@ -74,11 +74,15 @@ Artykuły zawierają przykłady kodu, które pokazują sposób wykonania zadania
 
 * [Tworzenie konta — interfejs wiersza polecenia](create-account-cli-how-to.md)
 * [Dostęp do interfejsów API — interfejs wiersza polecenia](access-api-cli-how-to.md)
-* [Zacznij programować przy użyciu zestawów SDK](developers-guide.md)
+* [Rozpoczynanie programowania z użyciem zestawów SDK](developers-guide.md)
 * [Kodowanie za pomocą protokołu HTTPS jako dane wejściowe — zadanie platformy .NET](job-input-from-http-how-to.md)  
 * [Monitor zdarzeń — Portal](monitor-events-portal-how-to.md)
 * [Dynamiczne szyfrowanie przy użyciu technologii multi-DRM — .NET](protect-with-drm.md) 
 * [Jak kodować z przekształcenie niestandardowe — interfejs wiersza polecenia](custom-preset-cli-howto.md)
+
+## <a name="provide-feedback"></a>Przekazywanie opinii
+
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

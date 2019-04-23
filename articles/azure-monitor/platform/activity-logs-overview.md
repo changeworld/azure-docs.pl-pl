@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b84238e8a659358f2c065eb1533f0d21a5335d43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496883"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995663"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -65,6 +65,9 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 * Wykonuje zapytania za pomocą polecenia Cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Zapytanie dziennika aktywności w witrynie Azure portal
+
+> [!NOTE] 
+> Dziennik aktywności są przechowywane dzienniki w wewnętrznej bazie danych przez 90 dni. Jeśli chcesz zachować dane poza tym, należy skonfigurować **profilu dziennika** zgodnie z poniższym opisem. 
 
 W witrynie Azure portal można wyświetlić dziennik aktywności w kilku miejscach:
 * **Dziennika aktywności** której będziesz mieć dostęp przez wyszukiwanie w dzienniku aktywności w **wszystkich usług** w okienku nawigacji po lewej stronie.

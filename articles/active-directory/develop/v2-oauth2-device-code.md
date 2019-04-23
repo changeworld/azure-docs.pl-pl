@@ -6,24 +6,23 @@ documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 editor: ''
-ms.assetid: 780eec4d-7ee1-48b7-b29f-cd0b8cb41ed3
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14291a6e8f9c4cde3c8777969047ebaa77e42b59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 703416788d123798774802613d71b30e8fbdaa9b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500451"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999811"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu urządzenia OAuth 2.0
 
@@ -43,11 +42,11 @@ Obsługuje platformy tożsamości firmy Microsoft [przyznawania kodu urządzenia
 
 Przepływ kodu całego urządzenia wygląda podobnie do następny diagram. Opisano poszczególne kroki w dalszej części tego artykułu.
 
-![Przepływ kodu urządzenia](media/v2-oauth2-device-flow/v2-oauth-device-flow.png)
+![Przepływ kodu urządzenia](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Żądanie autoryzacji urządzenia
 
-Klient musi najpierw skontaktuj się z serwera uwierzytelniania dla użytkowników i urządzeń kodu, używane do inicjowania uwierzytelniania.  Klient zbiera tego żądania z `/devicecode` punktu końcowego. W tym żądaniu klienta powinny również obejmować uprawnienia niezbędne do uzyskania przez użytkownika.  Od momentu to żądanie jest wysyłane, użytkownik ma tylko 15 minut do logowania (zwykle wartość `expires_in`), dlatego tylko przesłać to żądanie, gdy użytkownik wskazuje, będą one gotowe do logowania.
+Klient musi najpierw skontaktuj się z serwera uwierzytelniania dla użytkowników i urządzeń kodu, który jest używany do inicjowania uwierzytelniania. Klient zbiera tego żądania z `/devicecode` punktu końcowego. W tym żądaniu klienta powinny również obejmować uprawnienia niezbędne do uzyskania przez użytkownika. Od momentu to żądanie jest wysyłane, użytkownik ma tylko 15 minut do logowania (zwykle wartość `expires_in`), dlatego tylko przesłać to żądanie, gdy użytkownik wskazuje, będą one gotowe do logowania.
 
 > [!TIP]
 > Spróbuj wykonać tego żądania w narzędziu Postman!
@@ -66,8 +65,8 @@ scope=user.read%20openid%20profile
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane |Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID.  |
-| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
+| `tenant` | Wymagany |Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID.  |
+| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na.  |
 
 ### <a name="device-authorization-response"></a>Odpowiedzi autoryzacji urządzenia
@@ -76,13 +75,13 @@ Odpowiedź oznaczająca Powodzenie będzie obiektem JSON zawierającym wymagane 
 
 | Parametr | Format | Opis |
 | ---              | --- | --- |
-|`device_code`     | String | Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji.  To jest używany przez klienta do wysłania żądania tokenu dostępu z serwera autoryzacji. |
-|`user_code`       | String | Krótkiego ciągu dla użytkownika, używany do identyfikowania sesji na urządzeniach pomocniczych.|
+|`device_code`     | String | Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji. Klient używa tego parametru do wysłania żądania tokenu dostępu z serwera autoryzacji. |
+|`user_code`       | String | Krótkiego ciągu widocznym dla użytkownika, który jest używany do identyfikowania sesji na urządzeniach pomocniczych.|
 |`verification_uri`| URI | Identyfikator URI, użytkownik powinien przejdź do widoku `user_code` Aby móc się zalogować. |
-|`verification_uri_complete`|URI| Łączenie URI `user_code` i `verification_uri`, który jest używany do transmisji tekstowej dla użytkownika (na przykład za pośrednictwem połączenia Bluetooth na urządzeniu lub za pomocą kodu QR).  |
-|`expires_in`      |  int| Liczba sekund przed `device_code` i `user_code` wygaśnie. |
+|`verification_uri_complete`| URI | Identyfikator URI, który łączy `user_code` i `verification_uri`, który jest używany do transmisji tekstowej dla użytkownika (na przykład za pośrednictwem połączenia Bluetooth na urządzeniu lub za pomocą kodu QR).  |
+|`expires_in`      | int | Liczba sekund przed `device_code` i `user_code` wygaśnie. |
 |`interval`        | int | Liczba sekund, które klient powinien upłynąć między żądaniami sondowania. |
-| `message`        | String | Ciąg czytelny dla człowieka z instrukcjami dla użytkownika.  To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |
+| `message`        | String | Ciąg czytelny dla człowieka z instrukcjami dla użytkownika. To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |
 
 ## <a name="authenticating-the-user"></a>Uwierzytelnianie użytkownika
 
@@ -99,23 +98,22 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Parametr | Wymagane | Opis|
+| Parametr | Wymagany | Opis|
 | -------- | -------- | ---------- |
-| `grant_type` | Wymagane | musi być `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Wymagane | Musi odpowiadać `client_id` użyty w żądaniu początkowej. |
-| `device_code`| Wymagane | `device_code` Zwracane w żądaniu autoryzacji urządzeń.  |
+| `grant_type` | Wymagany | musi być `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Wymagany | Musi odpowiadać `client_id` użyty w żądaniu początkowej. |
+| `device_code`| Wymagany | `device_code` Zwracane w żądaniu autoryzacji urządzeń.  |
 
 ### <a name="expected-errors"></a>Oczekiwano błędy
 
-Przepływ kodu urządzenia jest protokołem sondowania, Twój klient musi oczekiwać wystąpią błędy, zanim użytkownik zakończył uwierzytelnianie.  
+Przepływ kodu urządzenia jest protokołem sondowania, dlatego należy oczekiwać wystąpią błędy, zanim użytkownik zakończył uwierzytelnianie klienta.  
 
 | Błąd | Opis | Akcja klienta |
 | ------ | ----------- | -------------|
-| `authorization_pending` | Użytkownik nie została jeszcze ukończona uwierzytelniania, ale nie anulował przepływ. | Powtórz żądania po co najmniej `interval` sekund. |
+| `authorization_pending` | Użytkownik nie zakończono uwierzytelniania, ale nie zostało anulowane przepływ. | Powtórz żądania po co najmniej `interval` sekund. |
 | `authorization_declined` | Użytkownik odrzucił żądanie autoryzacji.| Zatrzymywanie sondowania i przywrócić stan nieuwierzytelnionych.  |
-| `bad_verification_code`|`device_code` Wysyłane do `/token` punkt końcowy nie został rozpoznany. | Sprawdź, czy klient wysyła prawidłowe `device_code` w żądaniu. |
+| `bad_verification_code`| `device_code` Wysyłane do `/token` punkt końcowy nie został rozpoznany. | Sprawdź, czy klient wysyła prawidłowe `device_code` w żądaniu. |
 | `expired_token` | Co najmniej `expires_in` sekund i uwierzytelniania nie jest możliwe dzięki temu `device_code`. | Zatrzymywanie sondowania i przywrócić stan nieuwierzytelnionych. |
-
 
 ### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
 
@@ -141,4 +139,4 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | `id_token`   | JWT | Jeśli wystawionych oryginalny `scope` parametru `openid` zakresu.  |
 | `refresh_token` | Nieprzezroczysty ciąg | Jeśli wystawionych oryginalny `scope` parametru `offline_access`.  |
 
-Token odświeżania może służyć do uzyskania nowych tokenów dostępu i Odśwież tokeny przy użyciu tego samego przepływu szczegółowo opisane w [dokumentacji przepływu OAuth kodów](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+Można użyć tokenu odświeżania do uzyskania nowych tokenów dostępu i Odśwież tokeny przy użyciu tego samego przepływu udokumentowane w [dokumentacji przepływu OAuth kodów](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  

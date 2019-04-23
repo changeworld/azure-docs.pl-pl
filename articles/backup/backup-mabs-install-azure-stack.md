@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: MT
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497931"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996513"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -61,7 +61,7 @@ Jeśli udostępniony innym maszynom wirtualnym, rozmiar i limity operacje We/Wy 
 Każda maszyna wirtualna usługi Azure Stack jest dostarczany z magazyn na tymczasowym dysku, który jest dostępny dla użytkownika jako wolumin `D:\`. Lokalny obszar przemieszczania wymagany przez usługę Azure Backup można skonfigurować na `D:\`, a lokalizację pamięci podręcznej można umieścić na `C:\`. W ten sposób nie magazynu musi można używać poza na dyskach danych dołączonych do maszyny wirtualnej usługi Azure Backup Server.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Przechowywania danych kopii zapasowej na dysku lokalnym i na platformie Azure
-Usługa Azure Backup Server przechowuje dane kopii zapasowych na dyskach platformy Azure dołączonych do maszyny wirtualnej, na potrzeby odzyskiwania operacyjnego. Gdy dyski i miejsca do magazynowania są dołączone do maszyny wirtualnej, serwer usługi Azure Backup zarządza magazynu. Ilość miejsca w magazynie danych kopii zapasowej zależy od liczby i rozmiaru dysków dołączonych do każdego [maszyny wirtualnej usługi Azure Stack](../azure-stack/user/azure-stack-storage-overview.md). Każdego rozmiaru maszyny Wirtualnej platformy Azure Stack jest maksymalna liczba dysków, które mogą być dołączone do maszyny wirtualnej. Na przykład A2 to cztery dyski. A3 jest ośmiu dysków. A4 jest 16 dysków. Ponownie rozmiaru i liczby dysków określa puli łączna liczba magazynów kopii zapasowych.
+Usługa Azure Backup Server przechowuje dane kopii zapasowych na dyskach platformy Azure dołączonych do maszyny wirtualnej, na potrzeby odzyskiwania operacyjnego. Gdy dyski i miejsca do magazynowania są dołączone do maszyny wirtualnej, serwer usługi Azure Backup zarządza magazynu. Ilość miejsca w magazynie danych kopii zapasowej zależy od liczby i rozmiaru dysków dołączonych do każdego [maszyny wirtualnej usługi Azure Stack](/azure-stack/user/azure-stack-storage-overview). Każdego rozmiaru maszyny Wirtualnej platformy Azure Stack jest maksymalna liczba dysków, które mogą być dołączone do maszyny wirtualnej. Na przykład A2 to cztery dyski. A3 jest ośmiu dysków. A4 jest 16 dysków. Ponownie rozmiaru i liczby dysków określa puli łączna liczba magazynów kopii zapasowych.
 
 > [!IMPORTANT]
 > Należy **nie** przechowywanie danych odzyskiwania operacyjnego (kopia zapasowa) na dyskach dołączonych do serwera usługi Azure Backup więcej niż pięć dni.
@@ -73,7 +73,7 @@ Aby przechowywać dane kopii zapasowej na platformie Azure, należy utworzyć lu
  
 ### <a name="scaling-deployment"></a>Skalowanie wdrożenia
 Jeśli chcesz skalować wdrożenie, masz następujące opcje:
-  - Skalowanie w górę — Zwiększ rozmiar maszyny wirtualnej usługi Azure Backup Server z serii D-series i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej usługi Azure Stack](../azure-stack/user/azure-stack-manage-vm-disks.md).
+  - Skalowanie w górę — Zwiększ rozmiar maszyny wirtualnej usługi Azure Backup Server z serii D-series i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej usługi Azure Stack](/azure-stack/user/azure-stack-manage-vm-disks).
   - Obsługa danych — wysyłanie starszych danych do platformy Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera usługi Azure Backup.
   - Skalowanie w poziomie — dodawanie kolejnych serwerów kopii zapasowej platformy Azure w celu włączenia ochrony obciążeń.
 

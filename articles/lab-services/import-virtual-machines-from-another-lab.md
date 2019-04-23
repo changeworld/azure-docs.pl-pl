@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546595"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148904"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Importowanie maszyn wirtualnych z innego laboratorium w usłudze Azure DevTest Labs
-Ten artykuł zawiera informacje o tym, jak importować maszyny wirtualne z innego laboratorium do laboratorium. 
+Ten artykuł zawiera informacje o tym, jak importować maszyny wirtualne z innego laboratorium do laboratorium.
 
 ## <a name="scenarios"></a>Scenariusze
-Poniżej przedstawiono kilka scenariuszy, w których należy zaimportować maszyn wirtualnych z jednym laboratorium do laboratorium innego: 
+Poniżej przedstawiono kilka scenariuszy, w których należy zaimportować maszyn wirtualnych z jednym laboratorium do laboratorium innego:
 
 - Osoba w zespole jest przenoszona do innej grupy w obrębie przedsiębiorstwa i chce wykonać pulpitu dla deweloperów, aby nowy zespół DevTest Labs.
 - Grupa osiągnie [limitu przydziału na poziomie subskrypcji](../azure-subscription-service-limits.md) i chce podzielić zespołów do kilka subskrypcji
@@ -34,8 +34,8 @@ Ta funkcja umożliwia importowanie maszyn wirtualnych w jednym laboratorium (źr
 
 Proces zająć sporo czasu i wpływ następujące czynniki:
 
-- Liczba/rozmiar dysków, które są dołączone do maszyny źródłowej (ponieważ jest to operacja kopiowania, a nie operacji przenoszenia) 
-- Odległość do miejsca docelowego (na przykład region wschodnie stany USA do Azji Południowo-Wschodnia).  
+- Liczba/rozmiar dysków, które są dołączone do maszyny źródłowej (ponieważ jest to operacja kopiowania, a nie operacji przenoszenia)
+- Odległość do miejsca docelowego (na przykład region wschodnie stany USA do Azji Południowo-Wschodnia).
 
 Po zakończeniu procesu źródłowa maszyna wirtualna pozostaje zamknięcia, a nowe jednego działania aplikacji w środowisku laboratoryjnym docelowego.
 
@@ -47,12 +47,12 @@ Istnieją dwa ograniczenia klucza pod uwagę podczas planowania do importowania 
 - Obecnie ta funkcja jest obsługiwana wyłącznie za pośrednictwem programu Powershell i interfejsu API REST.
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
-Pobierz plik ImportVirtualMachines.ps1 z [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skrypt służy do importowania jednej maszyny Wirtualnej lub wszystkich maszyn wirtualnych w laboratorium źródła do docelowego laboratorium. 
+Pobierz plik ImportVirtualMachines.ps1 z [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Skrypt służy do importowania jednej maszyny Wirtualnej lub wszystkich maszyn wirtualnych w laboratorium źródła do docelowego laboratorium.
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Aby zaimportować pojedynczej maszyny Wirtualnej przy użyciu programu PowerShell
 Wykonującego ten skrypt programu powershell wymaga zidentyfikowanie źródłowej maszyny Wirtualnej i laboratorium z docelowej i opcjonalnie podanie nowej nazwy do użycia dla docelowej maszyny:
 
-```powershell 
+```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
                             -SourceVirtualMachineName "<Name of the VM to be imported from the source lab> " `
@@ -63,7 +63,7 @@ Wykonującego ten skrypt programu powershell wymaga zidentyfikowanie źródłowe
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Aby zaimportować wszystkie maszyny wirtualne w laboratorium źródła przy użyciu programu PowerShell
 Jeśli źródłowa maszyna wirtualna nie jest określona, skrypt importuje automatycznie wszystkich maszyn wirtualnych w usłudze DevTest Labs.  Na przykład:
- 
+
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
@@ -83,7 +83,7 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły: 
+Zobacz następujące artykuły:
 
 - [Ustawianie zasad laboratorium](devtest-lab-get-started-with-lab-policies.md)
 - [Często zadawane pytania](devtest-lab-faq.md)

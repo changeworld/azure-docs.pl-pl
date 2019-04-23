@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969672"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996054"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostępne regiony dla usługi StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Centra danych platformy Azure działają w wielu regionach na świecie, w celu spełnienia wymagań wydajności, wymagania i preferencje klientów dotyczące lokalizacji danych klienta. Lokalizacja geograficzna platformy Azure jest zdefiniowany obszar świata, który zawiera co najmniej jednego regionu platformy Azure. Region platformy Azure jest obszar w lokalizacji geograficznej, zawierający co najmniej jedno centrum danych.
 
@@ -45,7 +45,7 @@ Podczas tworzenia usługi Menedżer urządzeń StorSimple, określić region lub
 
 Poniżej przedstawiono listę regionów, gdzie jest dostępny dla chmury publicznej platformy Azure i którą można wdrożyć w usłudze Menedżer urządzeń StorSimple.
 
-![storsimple urządzenia — Menedżera service regionów](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Chmury Azure Government usługi Menedżer urządzeń StorSimple jest dostępna w centrach danych Administracja USA — Iowa i Administracja USA — Wirginia.
 
@@ -69,7 +69,7 @@ Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest 
 
 | #  | Kraj        | #  | Kraj     | #  | Kraj      | #  | Kraj              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Australia      | 16 | Hongkong   | 31 | Nowa Zelandia  | 46 | Republika Południowej Afryki         |
+| 1  | Australia      | 16 | SRA Hongkong| 31 | Nowa Zelandia  | 46 | Republika Południowej Afryki         |
 | 2  | Austria        | 17 | Węgry     | 32 | Nigeria      | 47 | Korea Południowa          |
 | 3  | Bahrajn        | 18 | Islandia     | 33 | Norwegia       | 48 | Hiszpania                |
 | 4  | Belgia        | 19 | Indie       | 34 | Peru         | 49 | Sri Lanka            |
@@ -80,7 +80,7 @@ Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest 
 | 9  | Czechy | 24 | Japonia       | 39 | Katar        | 54 | Turcja               |
 | 10 | Dania        | 25 | Kenia       | 40 | Rumunia      | 55 | Ukraina              |
 | 11 | Egipt          | 26 | Kuwejt      | 41 | Rosja       | 56 | Zjednoczone Emiraty Arabskie |
-| 12 | Finlandia        | 27 | SRA Makau       | 42 | Arabia Saudyjska | 57 | Zjednoczone Królestwo       |
+| 12 | Finlandia        | 27 | SRA Makau   | 42 | Arabia Saudyjska | 57 | Zjednoczone Królestwo       |
 | 13 | Francja         | 28 | Malezja    | 43 | Singapur    | 58 | Stany Zjednoczone        |
 | 14 | Niemcy        | 29 | Meksyk      | 44 | Słowacja     | 59 | Wietnam              |
 | 15 | Grecja         | 30 | Holandia | 45 | Słowenia     | 60 | Chorwacja              |

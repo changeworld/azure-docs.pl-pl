@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833435"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999471"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Rozwiązywanie problemów z powrotu po awarii do środowiska lokalnego na platformie Azure
 
@@ -56,7 +56,7 @@ Aby rozwiązać ten problem:
 
 Aby rozwiązać ten problem:
 
-Do ponownego włączenia ochrony maszyny Wirtualnej w trybie failed-over, maszyny Wirtualnej platformy Azure musi być uruchomiona, tak aby rejestry usługę mobilności z konfiguracji serwera w środowisku lokalnym i może rozpocząć replikacji, komunikując się z serwerem przetwarzania. Jeśli komputer znajduje się w nieprawidłowych, sieci i nie jest uruchomiona (się stan lub Zamknij w dół), serwer konfiguracji nie można nawiązać połączenia z usługi mobilności na maszynie Wirtualnej, aby rozpocząć ponowne włączanie ochrony.
+Do ponownego włączenia ochrony maszyny Wirtualnej w trybie failed-over, maszyny Wirtualnej platformy Azure musi być uruchomiona, tak aby rejestry usługę mobilności z konfiguracji serwera w środowisku lokalnym i może rozpocząć replikacji, komunikując się z serwerem przetwarzania. Jeśli komputer znajduje się w sieci nieprawidłowe lub nie jest uruchomiona, (a nie odpowiada lub zamykanie), serwer konfiguracji nie można nawiązać połączenia z usługi mobilności na maszynie Wirtualnej, aby rozpocząć ponowne włączanie ochrony.
 
 * Uruchom ponownie maszynę Wirtualną tak, aby można było uruchamiać podczas komunikowania się wstecz w środowisku lokalnym.
 * Po uruchomieniu maszyny wirtualnej platformy Azure, uruchom ponownie zadanie włączania ponownej ochrony.

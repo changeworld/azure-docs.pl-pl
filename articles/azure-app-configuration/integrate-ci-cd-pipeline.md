@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a92c00148d4b612a4360e3843d66503d528928cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7db796b33bab941f038afab1b80127aded50b54a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700148"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000021"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integracja z potokiem ciągłej integracji/ciągłego wdrażania
 
@@ -92,4 +92,7 @@ Aby wykonać kompilację w chmurze, za pomocą usługi Azure DevOps na przykład
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+W tym samouczku został wyeksportowany dane konfiguracji aplikacji platformy Azure do użycia w potoku wdrożenia. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
+
+> [!div class="nextstepaction"]
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)
