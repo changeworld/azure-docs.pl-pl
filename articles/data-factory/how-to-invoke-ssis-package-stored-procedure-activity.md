@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
 ms.openlocfilehash: b71a954da746ba04aeaa0797c13bf2c81838179d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256298"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786714"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania procedury składowanej w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory za pomocą działania procedury składowanej. 

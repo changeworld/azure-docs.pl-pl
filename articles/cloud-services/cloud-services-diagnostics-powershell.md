@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
 ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918335"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787188"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell
 Można zbierać dane diagnostyczne, takie jak dzienniki aplikacji, liczniki wydajności, itp. z usługi w chmurze przy użyciu rozszerzenia diagnostyki platformy Azure. W tym artykule opisano, jak włączyć rozszerzenie diagnostyki platformy Azure dla usługi w chmurze przy użyciu programu PowerShell.  Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wymagań wstępnych wymagane na potrzeby tego artykułu.

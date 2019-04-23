@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848349"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787462"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak Wykres wydajności dzięki usłudze Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zawiera zbiór wykresy wydajności przeznaczonych wykonuje kilka kluczowych wskaźników wydajności (KPI), aby ułatwić ustalenie, jak dobrze maszynę wirtualną. Wykresy pokazują wykorzystanie zasobów w określonym czasie, dzięki czemu możesz określić wąskie gardła, anomalie, lub przełącz się do perspektywy, wyświetlanie listy każdej maszyny w celu wyświetlenia wykorzystania zasobów, w oparciu o wybraną metryką. Dostępnych jest wiele elementów, należy wziąć pod uwagę podczas rozwiązywania problemów związanych z wydajnością, usługi Azure Monitor dla wskaźników wydajności systemu operacyjnego klucza monitory maszyny wirtualne dotyczące procesora, pamięci, karty sieciowej i wykorzystanie dysku. Wydajność uzupełniają funkcję monitorowania kondycji i pomaga ujawnić problemy, które wskazują możliwe awarii składników, dostrajanie pomocy technicznej i optymalizacji do osiągnięcia wydajności oraz obsługi planowania pojemności.  

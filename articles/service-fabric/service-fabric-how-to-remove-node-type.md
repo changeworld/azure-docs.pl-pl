@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
 ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051771"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787101"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Usuń typ węzła usługi Service Fabric
 W tym artykule opisano sposób skalowanie klastra usługi Azure Service Fabric, usuwając istniejący typ węzła z klastra. Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure jest [konfigurowany jako zestaw skalowania oddzielnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być zarządzany oddzielnie. Po utworzeniu klastra usługi Service Fabric klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów.  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.

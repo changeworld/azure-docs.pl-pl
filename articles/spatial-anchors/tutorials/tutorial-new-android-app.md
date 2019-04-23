@@ -9,11 +9,11 @@ ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919602"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788347"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Samouczek: Instrukcje krok po kroku, aby utworzyć nową aplikację systemu Android przy użyciu kotwic przestrzenne platformy Azure
 
