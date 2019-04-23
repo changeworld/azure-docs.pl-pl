@@ -80,9 +80,9 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Stronicowanie|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji produktów.|  
-|Filtrowanie|[Filtrowanie](api-management-template-data-model-reference.md#Filtering) jednostki.|Filtrowanie informacji dla strony listy produktów.|  
-|Produkty|Kolekcja [produktu](api-management-template-data-model-reference.md#Product) jednostek.|Produkty widoczne dla bieżącego użytkownika.|  
+|Paging|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji produktów.|  
+|Filtering|[Filtrowanie](api-management-template-data-model-reference.md#Filtering) jednostki.|Filtrowanie informacji dla strony listy produktów.|  
+|Products|Kolekcja [produktu](api-management-template-data-model-reference.md#Product) jednostek.|Produkty widoczne dla bieżącego użytkownika.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -208,12 +208,12 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 |Product (Produkt)|[Produkt](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
 |IsDeveloperSubscribed|wartość logiczna|Czy bieżący użytkownik jest subskrybentem tego produktu.|  
 |SubscriptionState|numer|Stan subskrypcji. Możliwe stany to:<br /><br /> -   `0 - suspended` — subskrypcji jest zablokowane i subskrybenta nie można wywołać dowolnych interfejsów API produktu.<br />-   `1 - active` — Subskrypcja jest aktywna.<br />-   `2 - expired` — Subskrypcja osiągnęła daty wygaśnięcia i zostało zdezaktywowane.<br />-   `3 - submitted` — Żądanie subskrypcji przez deweloperów, ale ma nie została jeszcze zatwierdzeniu lub odrzuceniu.<br />-   `4 - rejected` — Żądanie subskrypcji zostało odrzucone przez administratora.<br />-   `5 - cancelled` — Subskrypcja została anulowana przez dewelopera lub administratora.|  
-|Limity|tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|Limits|tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
 |DelegatedSubscriptionEnabled|wartość logiczna|Czy [delegowania](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) jest włączona dla tej subskrypcji.|  
 |DelegatedSubscriptionUrl|ciąg|Jeśli delegowanie jest włączone, adres URL delegowanego subskrypcji.|  
 |IsAgreed|wartość logiczna|Jeśli produkt zawiera warunki, czy bieżący użytkownik zgodził się warunki.|  
-|Subskrypcje|Kolekcja [Podsumowanie subskrypcji](api-management-template-data-model-reference.md#SubscriptionSummary) jednostek.|Subskrypcje do produktu.|  
-|interfejsy API|Kolekcja [API](api-management-template-data-model-reference.md#API) jednostek.|Interfejsy API, w tym produkcie.|  
+|Subscriptions|Kolekcja [Podsumowanie subskrypcji](api-management-template-data-model-reference.md#SubscriptionSummary) jednostek.|Subskrypcje do produktu.|  
+|Apis|Kolekcja [API](api-management-template-data-model-reference.md#API) jednostek.|Interfejsy API, w tym produkcie.|  
 |CannotAddBecauseSubscriptionNumberLimitReached|wartość logiczna|Czy bieżący użytkownik jest uprawniona do subskrybowania tego produktu w odniesieniu do limit subskrypcji.|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|wartość logiczna|Czy bieżący użytkownik jest uprawniona do subskrybowania tego produktu w odniesieniu do wielu subskrypcji, które są dozwolone lub nie.|  
   
