@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918675"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793852"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów usług Azure Cloud Services
 Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i wdrażać je na platformie Azure.

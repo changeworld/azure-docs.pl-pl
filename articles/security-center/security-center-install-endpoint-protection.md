@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494034"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789655"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.

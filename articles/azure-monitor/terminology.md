@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
 ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847988"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789995"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Usługa Azure Monitor nazewnictwa i terminologia zmiany
 Istotne zmiany zostały dokonane do usługi Azure Monitor niedawno z różnymi usługami konsolidowana Aby uprościć monitorowanie dla klientów platformy Azure. W tym artykule opisano ostatnie nazwy i terminologii zmian w dokumentacji usługi Azure Monitor.
@@ -30,7 +30,7 @@ Dzienników platformy Azure Monitor, dane są nadal przechowywane w obszarze rob
 
 Termin _dziennika analizy_ teraz dotyczy ona głównie strony w witrynie Azure portal umożliwia pisanie i uruchamianie zapytań i analizować dane dzienników. Jest odpowiednikiem funkcjonalności [Eksploratora metryk](platform/metrics-charts.md), czyli stronę w witrynie Azure portal umożliwia analizowanie danych metryk.
 
-### <a name="log-analytics-workspaces"></a>Obszary robocze usługi log Analytics
+### <a name="log-analytics-workspaces"></a>Obszary robocze usługi Log Analytics
 [Obszary robocze](platform/manage-access.md) , przechowywania danych dziennika w usłudze Azure Monitor nadal są określane jako obszarów roboczych usługi Log Analytics. **Usługi Log Analytics** menu w witrynie Azure portal została zmieniona na **obszarów roboczych usługi Log Analytics** i gdzie można [utworzyć nowych obszarów roboczych](learn/quick-create-workspace.md) i skonfigurować źródła danych. Analizowanie dzienników i innych danych monitorowania w **usługi Azure Monitor** i konfigurowanie obszaru roboczego w **obszarów roboczych usługi Log Analytics**.
 
 ### <a name="management-solutions"></a>Rozwiązania do zarządzania

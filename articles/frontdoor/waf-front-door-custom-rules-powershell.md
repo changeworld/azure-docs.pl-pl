@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 7d024dd958e6b29b52f095a9a55a67154bf6cde6
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59363071"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792084"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Skonfiguruj zasady zapory aplikacji sieci web przy użyciu programu Azure PowerShell
 Zasady zapory aplikacji sieci web platformy Azure definiuje inspekcji wymagana, gdy żądanie dociera przy wejściu.

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049624"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793818"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kod
 
@@ -53,7 +53,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Zasoby platformy Azure Service Fabric
 
-Na klastrze usługi Service Fabric za pomocą usługi Azure Resource Manager można wdrożyć aplikacji i usług. Zobacz [zarządzania aplikacjami i usługami jako zasoby usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) Aby uzyskać szczegółowe informacje. Poniżej przedstawiono najlepsze praktyki usługi Service Fabric aplikacji określone zasoby do uwzględnienia w swoich zasobach szablonu usługi Resource Manager.
+Możesz wdrażać aplikacje i usługi w klastrze usługi Service Fabric za pośrednictwem usługi Azure Resource Manager. Zobacz [zarządzania aplikacjami i usługami jako zasoby usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) Aby uzyskać szczegółowe informacje. Poniżej przedstawiono najlepsze praktyki usługi Service Fabric aplikacji określone zasoby do uwzględnienia w swoich zasobach szablonu usługi Resource Manager.
 
 ```json
 {

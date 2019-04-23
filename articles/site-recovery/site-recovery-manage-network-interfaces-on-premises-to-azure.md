@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360416"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791873"
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Zarządzanie interfejsami sieciowymi maszyn wirtualnych do środowiska lokalnego odzyskiwania po awarii na platformie Azure
 Maszynę wirtualną (VM) na platformie Azure musi mieć co najmniej jeden interfejs sieciowy dołączony do niego. Może mieć wiele sieci interfejsów dołączone do niego jako obsługuje rozmiar maszyny Wirtualnej.

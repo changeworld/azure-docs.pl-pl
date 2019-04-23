@@ -8,11 +8,11 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267927"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792405"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Wdrażanie przykładowej planu ISO 27001 udostępnionych usług
 
@@ -107,10 +107,10 @@ Poniższa tabela zawiera listę planu artefaktu parametry:
 
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|[Wersja zapoznawcza]: Wdrażanie programu Log Analytics Agent for Linux VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
-|[Wersja zapoznawcza]: Wdrażanie programu Log Analytics Agent na maszynach wirtualnych systemu Linux|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
-|[Wersja zapoznawcza]: Wdrażanie programu Log Analytics Agent Windows VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
-|[Wersja zapoznawcza]: Wdrażanie programu Log Analytics Agent for Windows VMs|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
+|[Wersja zapoznawcza]\: Wdrażanie programu Log Analytics Agent for Linux VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
+|[Wersja zapoznawcza]\: Wdrażanie programu Log Analytics Agent na maszynach wirtualnych systemu Linux|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
+|[Wersja zapoznawcza]\: Wdrażanie programu Log Analytics Agent Windows VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
+|[Wersja zapoznawcza]\: Wdrażanie programu Log Analytics Agent for Windows VMs|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|(Opcjonalnie) Wartość domyślna to _["none"]_.|
 |Dozwolone typy zasobów|Przypisywanie zasad|Dozwolone typy zasobów|Lista typów zasobów, które mogą zostać wdrożone. Ta lista składa się z wszystkich typów zasobów wdrożonych w usługach udostępnionych.|
 |Dozwolone jednostki SKU konta magazynu|Przypisywanie zasad|Dozwolone jednostki SKU magazynu|Lista danych diagnostycznych dzienników dozwolone jednostki SKU konta magazynu. Wartość domyślna to _["Standard_LRS"]_.|
 |Dozwolone jednostki SKU maszyn wirtualnych|Przypisywanie zasad|Listę jednostek SKU maszyny wirtualnej mogą zostać wdrożone. Wartość domyślna to _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
