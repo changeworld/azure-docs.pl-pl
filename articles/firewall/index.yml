@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d5e17b3618d179354c9f2a467250b8eb489827ac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460713"
 documentType: LandingData
 title: Dokumentacja usługi Azure Firewall
 metadata:
   title: Dokumentacja usługi Azure Firewall — samouczki i dokumentacja interfejsu API
-  meta.description: Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.
+  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: firewall
   author: vhorne
   ms.service: firewall
@@ -17,37 +11,37 @@ metadata:
   ms.date: 9/24/2018
   ms.author: victorh
 abstract:
-  description: Dowiedz się, jak wdrożyć usługę Azure Firewall — opartą na chmurze usługę zabezpieczeń sieci. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować zasady na poziomie aplikacji i sieci, aby chronić zasoby sieci wirtualnej platformy Azure.
+  description: 'Dowiedz się, jak wdrożyć usługę Azure Firewall — opartą na chmurze usługę zabezpieczeń sieci. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować zasady na poziomie aplikacji i sieci, aby chronić zasoby sieci wirtualnej platformy Azure.'
 sections:
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Informacje o sposobie wdrażania usługi Azure Firewall
-  - type: list
-    style: unordered
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal</a>
-    - html: <a href="/azure/firewall/tutorial-hybrid-ps">Wdrażanie w sieci hybrydowej</a>
-    - html: <a href="/azure/firewall/tutorial-firewall-dnat">Filtrowanie ruchu przychodzącego przy użyciu rozwiązania DNAT</a>
-    - html: <a href="/azure/firewall/tutorial-diagnostics">Monitorowanie dzienników usługi Azure Firewall</a>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Przykłady skryptów do wykonywania typowych zadań.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Informacje o sposobie wdrażania usługi Azure Firewall
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal</a>
+          - html: <a href="/azure/firewall/tutorial-hybrid-ps">Wdrażanie w sieci hybrydowej</a>
+          - html: <a href="/azure/firewall/tutorial-firewall-dnat">Filtrowanie ruchu przychodzącego przy użyciu rozwiązania DNAT</a>
+          - html: <a href="/azure/firewall/tutorial-diagnostics">Monitorowanie dzienników usługi Azure Firewall</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Przykłady skryptów do wykonywania typowych zadań.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/firewall/">Dokumentacja interfejsu API REST usług Compute</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Interfejs wiersza polecenia platformy Azure</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">Dokumentacja interfejsu API REST usług Compute</a></p>'

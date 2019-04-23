@@ -1,93 +1,86 @@
-items:
 - name: Podstawowa dokumentacja
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Co to jest usługa Azure Active Directory?
-    href: active-directory-whatis.md
-  - name: Co nowego w usłudze Azure Active Directory
-    href: whats-new.md
   expanded: true
+  items:
+    - name: Co to jest usługa Azure Active Directory?
+      href: active-directory-whatis.md
+    - name: Co nowego w usłudze Azure Active Directory
+      href: whats-new.md
 - name: Przewodniki Szybki start
   items:
-  - name: Uzyskiwanie dostępu do portalu i tworzenie dzierżawy
-    href: active-directory-access-create-new-tenant.md
-  - name: Wyświetlanie grup z przypisanymi członkami
-    href: active-directory-groups-view-azure-portal.md
+    - name: Uzyskiwanie dostępu do portalu i tworzenie dzierżawy
+      href: active-directory-access-create-new-tenant.md
+    - name: Wyświetlanie grup z przypisanymi członkami
+      href: active-directory-groups-view-azure-portal.md
 - name: Pojęcia
   items:
-  - name: Wskaźnik bezpieczeństwa tożsamości
-    href: identity-secure-score.md
-  - name: Zarządzanie grupami i dostępem
-    href: active-directory-manage-groups.md
-  - name: Licencjonowanie oparte na grupach
-    href: active-directory-licensing-whatis-azure-portal.md
-  - name: Architektura usługi Azure AD
-    href: active-directory-architecture.md
-  - name: Domyślne uprawnienia użytkowników
-    href: users-default-permissions.md
-  - name: Wdrożenie 30, 90 i dalej
-    href: active-directory-deployment-checklist-p2.md
-  - name: Przechowywanie danych tożsamości na potrzeby UE
-    href: active-directory-data-storage-eu.md
+    - name: Wskaźnik bezpieczeństwa tożsamości
+      href: identity-secure-score.md
+    - name: Zarządzanie grupami i dostępem
+      href: active-directory-manage-groups.md
+    - name: Licencjonowanie oparte na grupach
+      href: active-directory-licensing-whatis-azure-portal.md
+    - name: Architektura usługi Azure AD
+      href: active-directory-architecture.md
+    - name: Domyślne uprawnienia użytkowników
+      href: users-default-permissions.md
+    - name: 'Wdrożenie 30, 90 i dalej'
+      href: active-directory-deployment-checklist-p2.md
+    - name: Przechowywanie danych tożsamości na potrzeby UE
+      href: active-directory-data-storage-eu.md
 - name: Przewodniki z instrukcjami
-  items:
-  - name: Organizacja
-    items:
-    - name: Tworzenie konta dla usługi Azure AD jako organizacja
-      href: sign-up-organization.md
-    - name: Tworzenie konta w usłudze Azure AD Premium
-      href: active-directory-get-started-premium.md
-    - name: Dodawanie niestandardowej nazwy domeny
-      href: add-custom-domain.md
-    - name: Dodawanie oznaczenia marką firmy
-      href: customize-branding.md
-    - name: Kojarzenie subskrypcji platformy Azure
-      href: active-directory-how-subscriptions-associated-directory.md
-    - name: Dodawanie własnych informacje o prywatności
-      href: active-directory-properties-area.md
-  - name: Grupy
-    items:
-    - name: Tworzenie grupy i dodawanie członków
-      href: active-directory-groups-create-azure-portal.md
-    - name: Dodawanie lub usuwanie członków grupy
-      href: active-directory-groups-members-azure-portal.md
-    - name: Usuwanie grupy i jej członków
-      href: active-directory-groups-delete-group.md
-    - name: Dodawanie lub usuwanie grupy z innej grupy
-      href: active-directory-groups-membership-azure-portal.md
-    - name: Edytowanie informacji o grupie
-      href: active-directory-groups-settings-azure-portal.md
-    - name: Dodawanie lub usuwanie właścicieli grupy
-      href: active-directory-accessmanagement-managing-group-owners.md
-  - name: Użytkownicy
-    items:
-    - name: Dodawanie lub usuwanie nowego użytkownika
-      href: add-users-azure-active-directory.md
-    - name: Dodawanie lub zmienianie informacji profilu użytkownika
-      href: active-directory-users-profile-azure-portal.md
-    - name: Resetowanie hasła użytkownika
-      href: active-directory-users-reset-password-azure-portal.md
-    - name: Przypisywanie ról do użytkowników
-      href: active-directory-users-assign-role-azure-portal.md
-    - name: Przypisywanie lub usuwanie licencji użytkowników
-      href: license-users-groups.md
-    - name: Przywrócić usuniętego użytkownika
-      href: active-directory-users-restore.md
   expanded: true
+  items:
+    - name: Organizacja
+      items:
+        - name: Tworzenie konta dla usługi Azure AD jako organizacja
+          href: sign-up-organization.md
+        - name: Tworzenie konta w usłudze Azure AD Premium
+          href: active-directory-get-started-premium.md
+        - name: Dodawanie niestandardowej nazwy domeny
+          href: add-custom-domain.md
+        - name: Dodawanie oznaczenia marką firmy
+          href: customize-branding.md
+        - name: Kojarzenie subskrypcji platformy Azure
+          href: active-directory-how-subscriptions-associated-directory.md
+        - name: Dodawanie własnych informacje o prywatności
+          href: active-directory-properties-area.md
+    - name: Grupy
+      items:
+        - name: Tworzenie grupy i dodawanie członków
+          href: active-directory-groups-create-azure-portal.md
+        - name: Dodawanie lub usuwanie członków grupy
+          href: active-directory-groups-members-azure-portal.md
+        - name: Usuwanie grupy i jej członków
+          href: active-directory-groups-delete-group.md
+        - name: Dodawanie lub usuwanie grupy z innej grupy
+          href: active-directory-groups-membership-azure-portal.md
+        - name: Edytowanie informacji o grupie
+          href: active-directory-groups-settings-azure-portal.md
+        - name: Dodawanie lub usuwanie właścicieli grupy
+          href: active-directory-accessmanagement-managing-group-owners.md
+    - name: Użytkownicy
+      items:
+        - name: Dodawanie lub usuwanie nowego użytkownika
+          href: add-users-azure-active-directory.md
+        - name: Dodawanie lub zmienianie informacji profilu użytkownika
+          href: active-directory-users-profile-azure-portal.md
+        - name: Resetowanie hasła użytkownika
+          href: active-directory-users-reset-password-azure-portal.md
+        - name: Przypisywanie ról do użytkowników
+          href: active-directory-users-assign-role-azure-portal.md
+        - name: Przypisywanie lub usuwanie licencji użytkowników
+          href: license-users-groups.md
+        - name: Przywrócić usuniętego użytkownika
+          href: active-directory-users-restore.md
 - name: Zasoby
   items:
-  - name: Uzyskiwanie pomocy technicznej dla usługi Azure Active Directory
-    href: active-directory-troubleshooting-support-howto.md
-  - name: Często zadawane pytania dotyczące usługi Azure Active Directory
-    href: active-directory-faq.md
-  - name: Plany wdrażania usługi Azure Active Directory
-    href: active-directory-deployment-plans.md
-  - name: Archiwalne informacje Co nowego w usłudze Azure AD
-    href: whats-new-archive.md
-ms.openlocfilehash: ac750e329a530978979d3ca580ae1f1407d2fa78
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704413"
+    - name: Uzyskiwanie pomocy technicznej dla usługi Azure Active Directory
+      href: active-directory-troubleshooting-support-howto.md
+    - name: Często zadawane pytania dotyczące usługi Azure Active Directory
+      href: active-directory-faq.md
+    - name: Plany wdrażania usługi Azure Active Directory
+      href: active-directory-deployment-plans.md
+    - name: Archiwalne informacje Co nowego w usłudze Azure AD
+      href: whats-new-archive.md

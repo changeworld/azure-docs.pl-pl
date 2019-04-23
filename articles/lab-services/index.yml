@@ -1,18 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: eec0d8284163811354edd14b2b1b6b3ea8e12af4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960126"
 documentType: LandingData
 title: Dokumentacja usług Azure Lab Services i Azure DevTest Labs
 metadata:
   title: Dokumentacja usługi Azure Lab Services — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
+  description: 'Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.'
   services: lab-services
   author: spelluru
-  manager: 
+  manager: null
   ms.service: lab-services
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -20,43 +14,43 @@ metadata:
   ms.date: 04/06/2018
   ms.author: spelluru
 abstract:
-  description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
+  description: 'Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.'
 sections:
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium na potrzeby zajęć</b> przy użyciu usługi Azure Lab Services.
-  - type: list
-    style: ordered
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
-  - type: paragraph
-    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium</b> przy użyciu usługi Azure DevTest Labs.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć i korzystać z <b>laboratorium na potrzeby zajęć</b> przy użyciu usługi Azure Lab Services.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć i korzystać z <b>laboratorium</b> przy użyciu usługi Azure DevTest Labs.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium</a>
+          - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium</a>
-    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium</a>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Korzystaj z poniższych przykładów podczas pracy z usługą Lab Services.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Korzystaj z poniższych przykładów podczas pracy z usługą Lab Services.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates">Szablony usługi Resource Manager</a>'
+          - html: <a href="/azure/lab-services/samples-cli">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
+  - title: Dokumentacja
     items:
-    - html: <a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">Szablony usługi Resource Manager</a>
-    - html: <a href="/azure/lab-services/samples-cli">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/lab">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/dtl">Interfejs API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/cli/azure/lab">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.devtestlabs/#devtest_labs">Azure PowerShell</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/dtl">Interfejs API REST</a></p>

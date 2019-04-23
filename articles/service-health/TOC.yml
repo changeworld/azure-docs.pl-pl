@@ -1,45 +1,38 @@
-items:
 - name: Azure Service Health
   href: index.md
 - name: Omówienie
   items:
-  - name: Co to jest stan platformy Azure?
-    href: azure-status-overview.md
-  - name: Co to jest usługa Service Health?
-    href: service-health-overview.md
-  - name: Co to jest usługa Resource Health?
-    href: resource-health-overview.md
+    - name: Co to jest stan platformy Azure?
+      href: azure-status-overview.md
+    - name: Co to jest usługa Service Health?
+      href: service-health-overview.md
+    - name: Co to jest usługa Resource Health?
+      href: resource-health-overview.md
 - name: Instrukcje
   items:
-  - name: Konfigurowanie alertów dla zdarzeń usługi Service Health
-    href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-    items:
-    - name: Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-  - name: Konfigurowanie powiadomień o kondycji usługi przy użyciu elementu webhook
-    href: service-health-alert-webhook-guide.md
-    items:
-    - name: Konfigurowanie przy użyciu usługi ServiceNow
-      href: service-health-alert-webhook-servicenow.md
-    - name: Konfigurowanie przy użyciu usługi PagerDuty
-      href: service-health-alert-webhook-pagerduty.md
-    - name: Konfigurowanie przy użyciu usługi OpsGenie
-      href: service-health-alert-webhook-opsgenie.md
-    - name: Pobieranie zdarzeń kondycji za pomocą interfejsu REST
-      href: service-health-rest.md
-  - name: Konfigurowanie alertów dla zdarzeń usługi związanych z kondycją zasobów
-    href: resource-health-alert-arm-template-guide.md
+    - name: Konfigurowanie alertów dla zdarzeń usługi Service Health
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      items:
+        - name: Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal
+          href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+    - name: Konfigurowanie powiadomień o kondycji usługi przy użyciu elementu webhook
+      href: service-health-alert-webhook-guide.md
+      items:
+        - name: Konfigurowanie przy użyciu usługi ServiceNow
+          href: service-health-alert-webhook-servicenow.md
+        - name: Konfigurowanie przy użyciu usługi PagerDuty
+          href: service-health-alert-webhook-pagerduty.md
+        - name: Konfigurowanie przy użyciu usługi OpsGenie
+          href: service-health-alert-webhook-opsgenie.md
+        - name: Pobieranie zdarzeń kondycji za pomocą interfejsu REST
+          href: service-health-rest.md
+    - name: Konfigurowanie alertów dla zdarzeń usługi związanych z kondycją zasobów
+      href: resource-health-alert-arm-template-guide.md
 - name: Zasoby
   items:
-  - name: Często zadawane pytania
-    href: resource-health-faq.md
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Typy zasobów i kontrole kondycji dostępne w usłudze Azure Resource Health
-    href: resource-health-checks-resource-types.md
-ms.openlocfilehash: 421b633a68dfcbe5643d3b377615fdf3f8fd2c81
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340816"
+    - name: Często zadawane pytania
+      href: resource-health-faq.md
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Typy zasobów i kontrole kondycji dostępne w usłudze Azure Resource Health
+      href: resource-health-checks-resource-types.md

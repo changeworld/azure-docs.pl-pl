@@ -1,81 +1,74 @@
-items:
 - name: Usługa Jenkins na platformie Azure
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze Jenkins na platformie Azure
-    href: overview.md
+    - name: Informacje o usłudze Jenkins na platformie Azure
+      href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie serwera Jenkins
-    href: install-jenkins-solution-template.md
   expanded: true
-- name: Samouczki
   items:
-  - name: 1. Instalowanie
-    items:
     - name: Tworzenie serwera Jenkins
       href: install-jenkins-solution-template.md
-  - name: 2. Konfigurowanie
-    items:
-    - name: Skalowanie z użyciem usługi Azure Container Instances
-      href: /azure/container-instances/container-instances-jenkins
-      maintainContext: true
-    - name: Skalowanie przy użyciu agentów maszyn wirtualnych platformy Azure
-      href: jenkins-azure-vm-agents.md
-  - name: 3. Implementowanie ciągłej integracji/ciągłego wdrażania
-    items:
-    - name: AKS
+- name: Samouczki
+  items:
+    - name: 1. Instalowanie
       items:
-      - name: Ciągła integracja/ciągłe dostarczanie na platformę Kubernetes
-        href: /azure/aks/jenkins-continuous-deployment
-        maintainContext: true
-      - name: Wdrażanie w usłudze AKS za pomocą wzorca niebieski/zielony
-        href: jenkins-aks-blue-green-deployment.md
-    - name: App Service
+        - name: Tworzenie serwera Jenkins
+          href: install-jenkins-solution-template.md
+    - name: 2. Konfigurowanie
       items:
-      - name: Tworzenie zasobów platformy Azure w zadaniu potoku
-        href: execute-cli-jenkins-pipeline.md
-      - name: Wdrażanie aplikacji z usługi GitHub do usługi App Service
-        href: tutorial-jenkins-deploy-web-app-azure-app-service.md
-    - name: Używanie usługi Jenkins z usługą Azure DevOps
-      href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
-      maintainContext: true
-    - name: Wdrażanie w usłudze Azure Functions
-      href: jenkins-azure-functions-deploy.md
-    - name: Publikowanie w usłudze Azure Storage
-      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-      maintainContext: true
-    - name: Ciągła integracja/ciągłe dostarczanie do maszyn wirtualnych z systemem Linux
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-      maintainContext: true
-    - name: Ciągła integracja/ciągłe wdrażanie do usługi Service Fabric
-      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-      maintainContext: true
+        - name: Skalowanie z użyciem usługi Azure Container Instances
+          href: /azure/container-instances/container-instances-jenkins
+          maintainContext: true
+        - name: Skalowanie przy użyciu agentów maszyn wirtualnych platformy Azure
+          href: jenkins-azure-vm-agents.md
+    - name: 3. Implementowanie ciągłej integracji/ciągłego wdrażania
+      items:
+        - name: AKS
+          items:
+            - name: Ciągła integracja/ciągłe dostarczanie na platformę Kubernetes
+              href: /azure/aks/jenkins-continuous-deployment
+              maintainContext: true
+            - name: Wdrażanie w usłudze AKS za pomocą wzorca niebieski/zielony
+              href: jenkins-aks-blue-green-deployment.md
+        - name: App Service
+          items:
+            - name: Tworzenie zasobów platformy Azure w zadaniu potoku
+              href: execute-cli-jenkins-pipeline.md
+            - name: Wdrażanie aplikacji z usługi GitHub do usługi App Service
+              href: tutorial-jenkins-deploy-web-app-azure-app-service.md
+        - name: Używanie usługi Jenkins z usługą Azure DevOps
+          href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+          maintainContext: true
+        - name: Wdrażanie w usłudze Azure Functions
+          href: jenkins-azure-functions-deploy.md
+        - name: Publikowanie w usłudze Azure Storage
+          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          maintainContext: true
+        - name: Ciągła integracja/ciągłe dostarczanie do maszyn wirtualnych z systemem Linux
+          href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+          maintainContext: true
+        - name: Ciągła integracja/ciągłe wdrażanie do usługi Service Fabric
+          href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+          maintainContext: true
 - name: Porady
   items:
-  - name: Używanie wtyczki usługi Azure App Service
-    href: deploy-jenkins-app-service-plugin.md
+    - name: Używanie wtyczki usługi Azure App Service
+      href: deploy-jenkins-app-service-plugin.md
 - name: Przykłady
   items:
-  - name: Przykładowe zadania i skrypty
-    href: https://github.com/azure/jenkins
+    - name: Przykładowe zadania i skrypty
+      href: 'https://github.com/azure/jenkins'
 - name: Zasoby
   items:
-  - name: Wtyczki usługi Jenkins dla platformy Azure
-    href: jenkins-plugins.md
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Strona główna usługi Jenkins
-    href: https://jenkins.io/
-  - name: Strona główna usługi Jenkins X
-    href: https://jenkins-x.io
-  - name: Architektura usługi Jenkins
-    href: /azure/architecture/reference-architectures/jenkins/
-    maintainContext: true
-ms.openlocfilehash: c83891a0037f009d539f2d1101697a554f478b1d
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621366"
+    - name: Wtyczki usługi Jenkins dla platformy Azure
+      href: jenkins-plugins.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Strona główna usługi Jenkins
+      href: 'https://jenkins.io/'
+    - name: Strona główna usługi Jenkins X
+      href: 'https://jenkins-x.io'
+    - name: Architektura usługi Jenkins
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true

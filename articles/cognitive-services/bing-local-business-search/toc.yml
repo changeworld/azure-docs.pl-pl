@@ -1,52 +1,46 @@
-items:
 - name: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
   href: index.yml
   expanded: true
+  items: null
 - name: Omówienie
-  items:
-  - name: Co to jest interfejs API wyszukiwania lokalnych firm Bing?
-    href: overview.md
-  - name: Porównanie interfejsów API wyszukiwania Bing
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Co to jest interfejs API wyszukiwania lokalnych firm Bing?
+      href: overview.md
+    - name: Porównanie interfejsów API wyszukiwania Bing
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Przewodniki Szybki start
   items:
-  - name: Interfejs API REST
-    items:
-    - name: Przy użyciu języka C#
-      href: quickstarts/local-quickstart.md
-    - name: Korzystanie z języka Java
-      href: quickstarts/local-search-java-quickstart.md
-    - name: Korzystanie ze środowiska Node
-      href: quickstarts/local-search-node-quickstart.md
-    - name: Korzystanie z języka Python
-      href: quickstarts/local-search-python-quickstart.md
-    expanded: true
+    - name: Interfejs API REST
+      expanded: true
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: quickstarts/local-quickstart.md
+        - name: Korzystanie z języka Java
+          href: quickstarts/local-search-java-quickstart.md
+        - name: Korzystanie ze środowiska Node
+          href: quickstarts/local-search-node-quickstart.md
+        - name: Korzystanie z języka Python
+          href: quickstarts/local-search-python-quickstart.md
 - name: Pojęcia
   items:
-  - name: Praca z zapytaniami i odpowiedziami
-    href: local-search-query-response.md
-  - name: Filtrowanie wyników przez ustalenie granic geograficznych
-    href: specify-geographic-search.md
-  - name: Kategorie wyszukiwania lokalnych firm
-    href: local-categories.md
+    - name: Praca z zapytaniami i odpowiedziami
+      href: local-search-query-response.md
+    - name: Filtrowanie wyników przez ustalenie granic geograficznych
+      href: specify-geographic-search.md
+    - name: Kategorie wyszukiwania lokalnych firm
+      href: local-categories.md
 - name: Dokumentacja
   items:
-  - name: Wymagania dotyczące użycia i wyświetlania
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
-    href: local-search-reference.md
+    - name: Wymagania dotyczące użycia i wyświetlania
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
+      href: local-search-reference.md
 - name: Zasoby
   items:
-  - name: Wypróbuj usługi Cognitive Services
-    href: https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api
-  - name: Informacje o cenach
-    href: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/
-ms.openlocfilehash: 14c891c74accb4cca537e24ddbdcb99ae36618c9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507505"
+    - name: Wypróbuj usługi Cognitive Services
+      href: 'https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api'
+    - name: Informacje o cenach
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/'

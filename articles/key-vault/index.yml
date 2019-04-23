@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ffc629df727adf9ae22a475ceb7e65b12fa5a0cc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109235"
 documentType: LandingData
 title: Dokumentacja usługi Key Vault
 metadata:
   title: Dokumentacja usługi Azure Key Vault — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  meta.description: 'Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
   author: barclayn
   manager: barbkess
   layout: LandingPage
@@ -20,80 +14,80 @@ metadata:
   ms.date: 09/14/2018
   ms.author: barclayn
 abstract:
-  description: Dowiedz się, jak za pomocą usługi Key Vault chronić klucze kryptograficzne i klucze tajne używane przez aplikacje i usługi w chmurze oraz zarządzać tymi kluczami. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób tworzenia i obsługi kluczy oraz wpisów tajnych, które umożliwiają uzyskiwanie dostępu do zasobów i rozwiązań oraz ich szyfrowanie.
+  description: 'Dowiedz się, jak za pomocą usługi Key Vault chronić klucze kryptograficzne i klucze tajne używane przez aplikacje i usługi w chmurze oraz zarządzać tymi kluczami. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób tworzenia i obsługi kluczy oraz wpisów tajnych, które umożliwiają uzyskiwanie dostępu do zasobów i rozwiązań oraz ich szyfrowanie.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/key-vault/key-vault-whatis
+            html: <p>Poznaj podstawowe pojęcia związane z usługą Azure Key Vault.</p>
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_article.svg'
+            title: Pojęcia
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: /azure/key-vault/key-vault-whatis
-      html: <p>Poznaj podstawowe pojęcia związane z usługą Azure Key Vault.</p>
-      image:
-        src: https://docs.microsoft.com/media/common/i_article.svg
-      title: Pojęcia
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Interfejs wiersza polecenia platformy Azure
+            href: /azure/key-vault/quick-create-cli
+          - image:
+              src: media/index/logo_powershell.svg
+            text: PowerShell
+            href: /azure/key-vault/quick-create-powershell
+          - image:
+              src: media/index/portal.svg
+            text: Azure Portal
+            href: /azure/key-vault/quick-create-portal
+          - image:
+              src: media/index/logo_NET.svg
+            text: .NET
+            href: /azure/key-vault/quick-create-net
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: /azure/key-vault/quick-create-node
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: /azure/key-vault/quick-create-cli
-    - image:
-        src: media/index/logo_powershell.svg
-      text: PowerShell
-      href: /azure/key-vault/quick-create-powershell
-    - image:
-        src: media/index/portal.svg
-      text: Azure Portal
-      href: /azure/key-vault/quick-create-portal
-    - image:
-        src: media/index/logo_NET.svg
-      text: .NET
-      href: /azure/key-vault/quick-create-net
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: /azure/key-vault/quick-create-node
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak używać usługi Key Vault w różnych scenariuszach
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak używać usługi Key Vault w różnych scenariuszach'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/key-vault/tutorial-net-create-vault-azure-web-app">Rozpoczynanie pracy z usługą Key Vault z aplikacji internetowej</a>
+          - html: <a href="/azure/key-vault/tutorial-net-linux-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux</a></li>
+          - html: <a href="/azure/key-vault/tutorial-net-windows-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows</a>
+          - html: <a href="/azure/key-vault/tutorial-python-linux-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux</a>
+          - html: <a href="/azure/key-vault/tutorial-python-windows-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows</a>
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
-    - html: <a href="/azure/key-vault/tutorial-net-create-vault-azure-web-app">Rozpoczynanie pracy z usługą Key Vault z aplikacji internetowej</a>
-    - html: <a href="/azure/key-vault/tutorial-net-linux-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux</a></li>
-    - html: <a href="/azure/key-vault/tutorial-net-windows-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows</a>
-    - html: <a href="/azure/key-vault/tutorial-python-linux-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux</a>
-    - html: <a href="/azure/key-vault/tutorial-python-windows-virtual-machine">Jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows</a>
-- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Zarządzanie wpisami tajnymi w aplikacjach serwerowych przy użyciu usługi Azure Key Vault
+            href: /learn/modules/manage-secrets-with-azure-key-vault/
+            image:
+              src: /learn/achievements/manage-secrets-with-azure-key-vault.svg
+              href: /learn/modules/manage-secrets-with-azure-key-vault/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-key-vault">Więcej interakcyjnych zasobów szkoleniowych...</a>
+  - title: Dokumentacja
     items:
-    - title: Zarządzanie wpisami tajnymi w aplikacjach serwerowych przy użyciu usługi Azure Key Vault
-      href: /learn/modules/manage-secrets-with-azure-key-vault/
-      image:
-        src: /learn/achievements/manage-secrets-with-azure-key-vault.svg
-        href: /learn/modules/manage-secrets-with-azure-key-vault/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-key-vault">Więcej interakcyjnych zasobów szkoleniowych...</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault">Program PowerShell</a></p><p><a href="/cli/azure/keyvault">Interfejs wiersza polecenia platformy Azure 2</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/keyvault">Interfejs API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault">Program PowerShell</a></p><p><a href="/cli/azure/keyvault">Interfejs wiersza polecenia platformy Azure 2</a></p>'
+          - title: Języki
+            html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/keyvault">Interfejs API REST</a></p>

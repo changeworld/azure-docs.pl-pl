@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 296debefb5597af0c82202993443dc38f48f147a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519565"
 documentType: LandingData
 title: Dokumentacja dostępu warunkowego usługi Azure AD
 metadata:
-  document_id: 
-  title: Dokumentacja dostępu warunkowego usługi Azure Active Directory — samouczki, przewodniki Szybki Start, pojęcia, materiały informacyjne | Microsoft Docs
-  description: Dowiedz się, jak skonfigurować i przetestować dostęp warunkowy usługi Azure Active Directory.
+  document_id: null
+  title: 'Dokumentacja dostępu warunkowego usługi Azure Active Directory — samouczki, przewodniki Szybki Start, pojęcia, materiały informacyjne | Microsoft Docs'
+  description: 'Dowiedz się, jak skonfigurować i przetestować dostęp warunkowy usługi Azure Active Directory.'
   services: active-directory
   ms.subservice: conditional-access
   author: MicrosoftGuyJFlo
@@ -22,41 +16,41 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: Dowiedz się, jak zapewnić równowagę między bezpieczeństwem i produktywnością, przez skonfigurowanie dostępu warunkowego usługi Azure AD. Zasady dostępu warunkowego pozwalają uwzględnić w decyzjach dotyczących dostępu sposób uzyskiwania dostępu do aplikacji w chmurze. Można na przykład uzyskać odpowiedzi na następujące pytania podczas podejmowania decyzji o dostępie:<ul><li>Jaka jest lokalizacja sieciowa użytkownika?</li><li>Czy próbę uzyskania dostępu zainicjowano z urządzenia zarządzanego?</li><li>W której aplikacji klienckiej zainicjowano próbę nawiązania połączenia?</li><li>Czy próbę uzyskania dostępu podjęto przy ryzykownym logowaniu?</li></ul>Poniżej przedstawiono zasoby ułatwiające szybkie rozpoczęcie pracy.
+  description: 'Dowiedz się, jak zapewnić równowagę między bezpieczeństwem i produktywnością, przez skonfigurowanie dostępu warunkowego usługi Azure AD. Zasady dostępu warunkowego pozwalają uwzględnić w decyzjach dotyczących dostępu sposób uzyskiwania dostępu do aplikacji w chmurze. Można na przykład uzyskać odpowiedzi na następujące pytania podczas podejmowania decyzji o dostępie:<ul><li>Jaka jest lokalizacja sieciowa użytkownika?</li><li>Czy próbę uzyskania dostępu zainicjowano z urządzenia zarządzanego?</li><li>W której aplikacji klienckiej zainicjowano próbę nawiązania połączenia?</li><li>Czy próbę uzyskania dostępu podjęto przy ryzykownym logowaniu?</li></ul>Poniżej przedstawiono zasoby ułatwiające szybkie rozpoczęcie pracy.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ./media/index/video.png
       width: 246
     title: Opis dostępu warunkowego
-    href: https://www.youtube.com/watch?v=XruceejcCKQ
+    href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
     width: 246
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak skonfigurować zasady dostępu warunkowego dla typowych scenariuszy dostępu.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: ./media/index/i_security-management.png
-      text: Wymaganie uwierzytelniania MFA dla określonych aplikacji
-      href: app-based-mfa.md
-    - image:
-        src: ./media/index/i_security-management.png
-      text: Blokowanie dostępu po wykryciu ryzykownej sesji
-      href: app-sign-in-risk.md
-    - image:
-        src: ./media/index/i_security-management.png
-      text: Wymaganie akceptacji warunków użytkowania
-      href: require-tou.md
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak przeprowadzić migrację klasycznych zasad dostępu warunkowego.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak skonfigurować zasady dostępu warunkowego dla typowych scenariuszy dostępu.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_security-management.png
+            text: Wymaganie uwierzytelniania MFA dla określonych aplikacji
+            href: app-based-mfa.md
+          - image:
+              src: ./media/index/i_security-management.png
+            text: Blokowanie dostępu po wykryciu ryzykownej sesji
+            href: app-sign-in-risk.md
+          - image:
+              src: ./media/index/i_security-management.png
+            text: Wymaganie akceptacji warunków użytkowania
+            href: require-tou.md
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">Migrowanie klasycznych zasad wymagających uwierzytelniania wieloskładnikowego</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak przeprowadzić migrację klasycznych zasad dostępu warunkowego.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">Migrowanie klasycznych zasad wymagających uwierzytelniania wieloskładnikowego</a>

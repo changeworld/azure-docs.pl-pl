@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3399ed71635434bc38d0c989118afb68de9fbd4c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338500"
 documentType: LandingData
 title: Dokumentacja usługi Azure Active Directory B2B
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja usługi Azure Active Directory B2B — Azure Active Directory | Microsoft Docs
-  description: Skorzystaj z naszych samouczków, przewodników Szybki start i instrukcji, aby dowiedzieć się, jak używać dostępu użytkowników-gości w modelu współpracy między firmami (B2B) do udostępniania zasobów partnerom zewnętrznym i współpracowania z nimi.
+  description: 'Skorzystaj z naszych samouczków, przewodników Szybki start i instrukcji, aby dowiedzieć się, jak używać dostępu użytkowników-gości w modelu współpracy między firmami (B2B) do udostępniania zasobów partnerom zewnętrznym i współpracowania z nimi.'
   services: active-directory
   ms.subservice: authentication
   author: msmimart
@@ -22,7 +16,7 @@ metadata:
   ms.date: 09/10/2018
   ms.author: mimart
 abstract:
-  description: Dowiedz się, jak korzystać z modelu współpracy między firmami (B2B) w usłudze Azure AD (B2B), aby bezpiecznie udostępniać aplikacje i usługi firmy dla użytkowników-gości i partnerów zewnętrznych z dowolnej organizacji, zachowując kontrolę nad własnymi danymi firmowymi.  Oto niektóre kluczowe funkcje:<ul><li>Prosty proces zaproszenia i realizacji umożliwia użytkownikom-gościom rozpoczęcie współpracy nad zasobami, do których chcesz przyznać im dostęp.</li><li>Użytkownicy-goście oraz partnerzy zewnętrzni zarządzają własnymi tożsamościami przy użyciu usługi Azure AD, kont e-mail sieci społecznościowych lub dowolnego dostawcy tożsamości.</li><li>Funkcje usługi Azure AD, takie jak uwierzytelnianie wieloskładnikowe, umożliwiają ochronę zasobów firmowych.</li><li>Interfejsy API umożliwiają dostosowanie środowiska, na przykład za pomocą portalu do samodzielnej rejestracji.</li></ul>Poniżej przedstawiono zasoby ułatwiające szybkie rozpoczęcie pracy.
+  description: 'Dowiedz się, jak korzystać z modelu współpracy między firmami (B2B) w usłudze Azure AD (B2B), aby bezpiecznie udostępniać aplikacje i usługi firmy dla użytkowników-gości i partnerów zewnętrznych z dowolnej organizacji, zachowując kontrolę nad własnymi danymi firmowymi.  Oto niektóre kluczowe funkcje:<ul><li>Prosty proces zaproszenia i realizacji umożliwia użytkownikom-gościom rozpoczęcie współpracy nad zasobami, do których chcesz przyznać im dostęp.</li><li>Użytkownicy-goście oraz partnerzy zewnętrzni zarządzają własnymi tożsamościami przy użyciu usługi Azure AD, kont e-mail sieci społecznościowych lub dowolnego dostawcy tożsamości.</li><li>Funkcje usługi Azure AD, takie jak uwierzytelnianie wieloskładnikowe, umożliwiają ochronę zasobów firmowych.</li><li>Interfejsy API umożliwiają dostosowanie środowiska, na przykład za pomocą portalu do samodzielnej rejestracji.</li></ul>Poniżej przedstawiono zasoby ułatwiające szybkie rozpoczęcie pracy.'
   aside:
     image:
       alt: Miniaturka wideo zatytułowanego Omówienie usługi Azure AD B2B
@@ -30,32 +24,32 @@ abstract:
       src: ./media/index/video.png
       width: 246
     title: Omówienie usługi Azure AD B2B
-    href: https://www.youtube.com/watch?v=AhwrweCBdsc
+    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
     width: 246
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak zapraszać użytkowników-gości i rozpocząć pracę przy użyciu funkcji współpracy B2B.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: Dodawanie użytkowników-gości w witrynie Azure Portal
-      href: b2b-quickstart-add-guest-users-portal.md
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: Dodawanie użytkownika-gościa przy użyciu programu PowerShell
-      href: b2b-quickstart-invite-powershell.md
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się więcej na temat konfigurowania funkcji współpracy B2B i zabezpieczania zasobów firmy.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak zapraszać użytkowników-gości i rozpocząć pracę przy użyciu funkcji współpracy B2B.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: Dodawanie użytkowników-gości w witrynie Azure Portal
+            href: b2b-quickstart-add-guest-users-portal.md
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: Dodawanie użytkownika-gościa przy użyciu programu PowerShell
+            href: b2b-quickstart-invite-powershell.md
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">Zbiorcze zapraszanie użytkowników-gości B2B przy użyciu programu PowerShell</a>
-    - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B</a>
+      - type: paragraph
+        text: Dowiedz się więcej na temat konfigurowania funkcji współpracy B2B i zabezpieczania zasobów firmy.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">Zbiorcze zapraszanie użytkowników-gości B2B przy użyciu programu PowerShell</a>
+          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B</a>

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 65845d3f46732772a0e181b6409554b64075fe30
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274374"
 documentType: LandingData
 title: Dokumentacja usługi Azure Digital Twins
 metadata:
@@ -18,20 +12,20 @@ metadata:
   ms.date: 10/15/2018
   ms.author: dkshir
 abstract:
-  description: Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej. Wykonaj kroki opisane w przewodniku Szybki start i samouczkach, aby monitorować symulowany budynek inteligentny, poznać szczegółowe pojęcia i utworzyć rozwiązanie IoT następnej generacji, które modeluje środowisko fizyczne.
+  description: 'Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej. Wykonaj kroki opisane w przewodniku Szybki start i samouczkach, aby monitorować symulowany budynek inteligentny, poznać szczegółowe pojęcia i utworzyć rozwiązanie IoT następnej generacji, które modeluje środowisko fizyczne.'
 sections:
-- title: 5-minutowy przewodnik Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak <a href="quickstart-view-occupancy-dotnet">znaleźć dostępne pomieszczenia z powietrzem dobrej jakości przy użyciu przykładów platformy .NET dla usługi Azure Digital Twins</a>.
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak dostosować rozwiązanie Azure Digital Twins i za jego pomocą monitorować swoje budynki.
-  - type: list
-    style: ordered
+  - title: 5-minutowy przewodnik Szybki start
     items:
-    - html: <a href="/azure/digital-twins/tutorial-facilities-setup">Provision a sample building (Aprowizowanie przykładowego budynku)</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-udf">Monitor conditions in your building (Monitorowanie warunków w budynku)</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-events">Receive notifications from your building (Odbieranie powiadomień z budynku)</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">Analyze events from your building (Analizowanie zdarzeń z budynku)</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak <a href="quickstart-view-occupancy-dotnet">znaleźć dostępne pomieszczenia z powietrzem dobrej jakości przy użyciu przykładów platformy .NET dla usługi Azure Digital Twins</a>.'
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak dostosować rozwiązanie Azure Digital Twins i za jego pomocą monitorować swoje budynki.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/digital-twins/tutorial-facilities-setup">Provision a sample building (Aprowizowanie przykładowego budynku)</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-udf">Monitor conditions in your building (Monitorowanie warunków w budynku)</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-events">Receive notifications from your building (Odbieranie powiadomień z budynku)</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">Analyze events from your building (Analizowanie zdarzeń z budynku)</a>

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a87563e54e0d932acefc5bd5808ac49b3cbf30a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a592a7d0d8c9d32de83c92b258c4678dc3f8166
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005243"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188288"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: skalowanie automatyczne zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 
@@ -75,7 +75,7 @@ W tej regule są używane następujące parametry:
 | Parametr               | Wyjaśnienie                                                                                                         | Wartość          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metryka wydajności, która jest monitorowana i na której są stosowane akcje zestawu skalowania.                                                   | Procentowe użycie procesora CPU |
-| *-TimeGrain*            | Częstotliwość zbierania metryk do analizy.                                                                   | 1 min       |
+| *-TimeGrain*            | Częstotliwość zbierania metryk do analizy.                                                                   | 1 minuta       |
 | *-MetricStatistic*      | Określa sposób agregacji metryk zebranych do celów analizy.                                                | Średnia        |
 | *-TimeWindow*           | Przedział czasu monitorowania, po którym wartość metryki jest porównywana z wartością progową.                                   | 5 minut      |
 | *-Operator*             | Operator używany do porównywania danych metryki z wartością progową.                                                     | Większe niż   |

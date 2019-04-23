@@ -1,112 +1,105 @@
-items:
 - name: Dokumentacja usługi Azure HDInsight
   href: /azure/hdinsight
 - name: Zabezpieczenia przedsiębiorstwa
   items:
-  - name: Omówienie
-    href: apache-domain-joined-introduction.md
-  - name: Planowanie klastrów ESP
-    href: apache-domain-joined-architecture.md
-  - name: Konfigurowanie klastrów ESP za pomocą usługi Azure AD DS
-    href: apache-domain-joined-configure-using-azure-adds.md
-  - name: Synchronizowanie użytkowników usługi Azure AD z klastrem usługi HDInsight
-    href: ../hdinsight-sync-aad-users-to-cluster.md
-    maintainContext: true
-  - name: Konfigurowanie zasad technologii Apache Hive
-    href: apache-domain-joined-run-hive.md
-  - name: Kontrola dostępu na podstawie ról platformy Apache HBase z użyciem usługi Apache Ranger
-    href: apache-domain-joined-run-hbase.md
-  - name: Kontrola dostępu na podstawie ról platformy Apache Kafka z użyciem usługi Apache Ranger
-    href: apache-domain-joined-run-kafka.md
-    maintainContext: true
-  - name: Łączenie z klastrem ESP przy użyciu VSCode
-    href: ../hdinsight-for-vscode.md
-    maintainContext: true
-  - name: Łączenie z klastrem ESP przy użyciu IntelliJ
-    href: ../spark/apache-spark-intellij-tool-plugin.md
-    maintainContext: true
-  - name: Łączenie z klastrem ESP przy użyciu Eclipse
-    href: ../spark/apache-spark-eclipse-tool-plugin.md
-    maintainContext: true
-  - name: Używanie technologii Apache Oozie w klastrach ESP
-    href: hdinsight-use-oozie-domain-joined-clusters.md
+    - name: Omówienie
+      href: apache-domain-joined-introduction.md
+    - name: Planowanie klastrów ESP
+      href: apache-domain-joined-architecture.md
+    - name: Konfigurowanie klastrów ESP za pomocą usługi Azure AD DS
+      href: apache-domain-joined-configure-using-azure-adds.md
+    - name: Synchronizowanie użytkowników usługi Azure AD z klastrem usługi HDInsight
+      href: ../hdinsight-sync-aad-users-to-cluster.md
+      maintainContext: true
+    - name: Konfigurowanie zasad technologii Apache Hive
+      href: apache-domain-joined-run-hive.md
+    - name: Kontrola dostępu na podstawie ról platformy Apache HBase z użyciem usługi Apache Ranger
+      href: apache-domain-joined-run-hbase.md
+    - name: Kontrola dostępu na podstawie ról platformy Apache Kafka z użyciem usługi Apache Ranger
+      href: apache-domain-joined-run-kafka.md
+      maintainContext: true
+    - name: Łączenie z klastrem ESP przy użyciu VSCode
+      href: ../hdinsight-for-vscode.md
+      maintainContext: true
+    - name: Łączenie z klastrem ESP przy użyciu IntelliJ
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+      maintainContext: true
+    - name: Łączenie z klastrem ESP przy użyciu Eclipse
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
+      maintainContext: true
+    - name: Używanie technologii Apache Oozie w klastrach ESP
+      href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Zabezpieczanie danych
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true
 - name: Dostęp do sieci
   items:
-  - name: Usługa HDInsight w sieci wirtualnej platformy Azure
-    href: ../hdinsight-extend-hadoop-virtual-network.md
-    maintainContext: true
-  - name: Łączenie usługi HDInsight z siecią lokalną
-    href: ../connect-on-premises-network.md
-    maintainContext: true
-  - name: Tworzenie klastra Apache HBase w sieci wirtualnej platformy Azure
-    href: ../hbase/apache-hbase-provision-vnet.md
-    maintainContext: true
-  - name: Replikacja klastra Apache HBase w sieci wirtualnej platformy Azure
-    href: ../hbase/apache-hbase-replication.md
-    maintainContext: true
+    - name: Usługa HDInsight w sieci wirtualnej platformy Azure
+      href: ../hdinsight-extend-hadoop-virtual-network.md
+      maintainContext: true
+    - name: Łączenie usługi HDInsight z siecią lokalną
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+    - name: Tworzenie klastra Apache HBase w sieci wirtualnej platformy Azure
+      href: ../hbase/apache-hbase-provision-vnet.md
+      maintainContext: true
+    - name: Replikacja klastra Apache HBase w sieci wirtualnej platformy Azure
+      href: ../hbase/apache-hbase-replication.md
+      maintainContext: true
 - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor
   items:
-  - name: Korzystanie z dzienników usługi Azure Monitor
-    href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    maintainContext: true
-  - name: Używanie zapytań z dziennikami usługi Azure Monitor
-    href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    maintainContext: true
-  - name: Monitorowanie wydajności klastra
-    href: ../hdinsight-key-scenarios-to-monitor.md
-    maintainContext: true
+    - name: Korzystanie z dzienników usługi Azure Monitor
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: Używanie zapytań z dziennikami usługi Azure Monitor
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: Monitorowanie wydajności klastra
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
 - name: Dokumentacja
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?service=hdinsight
-  - name: Azure PowerShell
-    href: /powershell/module/az.hdinsight
-  - name: Zestaw SDK .NET
-    href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Zestaw SDK dla języka Python
-    href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Zestaw SDK Java
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Zestaw SDK dla języka Go
-    href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (Apache HBase)
-    href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: REST
-    href: /rest/api/hdinsight/
-  - name: REST (Apache Spark)
-    href: /rest/api/hdinsightspark/
-  - name: Szablon usługi Resource Manager
-    displayName: resource manager template, arm template, resource manager group
-    href: /azure/templates/microsoft.hdinsight/allversions
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/az.hdinsight
+    - name: Zestaw SDK .NET
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
+    - name: Zestaw SDK dla języka Python
+      href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+    - name: Zestaw SDK Java
+      href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview'
+    - name: Zestaw SDK dla języka Go
+      href: ../hdinsight-go-sdk-overview.md
+    - name: .NET (Apache HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: REST
+      href: /rest/api/hdinsight/
+    - name: REST (Apache Spark)
+      href: /rest/api/hdinsightspark/
+    - name: Szablon usługi Resource Manager
+      displayName: 'resource manager template, arm template, resource manager group'
+      href: /azure/templates/microsoft.hdinsight/allversions
 - name: Zasoby
   items:
-  - name: Informacje o wersji
-    items:
-    - name: Bieżące informacje o wersji
-      href: ../hdinsight-release-notes.md
+    - name: Informacje o wersji
+      items:
+        - name: Bieżące informacje o wersji
+          href: ../hdinsight-release-notes.md
+          maintainContext: true
+        - name: Zarchiwizowane informacje o wersji
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Uzyskiwanie pomocy na forum
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: Ścieżka szkoleniowa
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: Microsoft Professional Program for Big Data
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Narzędzia systemu Windows dla usługi HDInsight
+      href: ../hdinsight-hadoop-windows-tools.md
       maintainContext: true
-    - name: Zarchiwizowane informacje o wersji
-      href: ../hdinsight-release-notes-archive.md
-      maintainContext: true
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: Uzyskiwanie pomocy na forum
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
-  - name: Ścieżka szkoleniowa
-    href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
-  - name: Microsoft Professional Program for Big Data
-    href: https://academy.microsoft.com/en-us/professional-program/big-data/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Narzędzia systemu Windows dla usługi HDInsight
-    href: ../hdinsight-hadoop-windows-tools.md
-    maintainContext: true
-ms.openlocfilehash: a5fbf08dbe808a2e476edd90c3eaad29bc7fa1a1
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615714"

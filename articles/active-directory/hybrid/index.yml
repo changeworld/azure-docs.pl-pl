@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f3760e9e055fccecb6ec52dbe6444ababbe807da
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464710"
 documentType: LandingData
 title: Dokumentacja tożsamości hybrydowej
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: Dokumentacja tożsamości hybrydowej
-  meta.description: Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.
+  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
   services: active-directory
   author: billmath
   manager: daveba
@@ -21,48 +15,48 @@ metadata:
   ms.date: 05/18/2018
   ms.author: billmath
 abstract:
-  description: Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamością hybrydową.</br></br></br>Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.
+  description: 'Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamością hybrydową.</br></br></br>Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video2.png
       width: 250
-    title: Rozszerzanie katalogów lokalnych na chmurę (1:11:12)
-    href: https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player
+    title: 'Rozszerzanie katalogów lokalnych na chmurę (1:11:12)'
+    href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player'
     width: 250
 sections:
-- title: Samouczki krok po kroku
-  items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - title: Samouczki krok po kroku
     items:
-    - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
-      html: <p>Omówienie rozszerzania tożsamości na chmurę za pomocą synchronizacji skrótów haseł</p>
-      image:
-        src: media/index/azuread2.png
-      title: Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
-    - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
-      html: <p>Dowiedz się, jak rozszerzyć tożsamość na chmurę za pomocą uwierzytelniania przekazywanego.</p>
-      image:
-        src: media/index/manage2.png
-      title: Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
-    - href: /azure/active-directory/hybrid/tutorial-federation
-      html: <p>Dowiedz się, jak sfederować program Azure Active Directory (Azure AD) Connect z lokalną usługą Active Directory Federation Services (AD FS) i usługą Azure AD.</p>
-      image:
-        src: media/index/federate2.png
-      title: Integrowanie pojedynczego lasu usługi AD przy użyciu federacji
-- title: Przewodniki z instrukcjami
-  items:
-  - type: paragraph
-    text: Omówienie sposobu wykonywania różnych zadań związanych z tożsamością hybrydową
-  - type: list
-    style: unordered
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
+            html: <p>Omówienie rozszerzania tożsamości na chmurę za pomocą synchronizacji skrótów haseł</p>
+            image:
+              src: media/index/azuread2.png
+            title: Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
+          - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
+            html: '<p>Dowiedz się, jak rozszerzyć tożsamość na chmurę za pomocą uwierzytelniania przekazywanego.</p>'
+            image:
+              src: media/index/manage2.png
+            title: Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
+          - href: /azure/active-directory/hybrid/tutorial-federation
+            html: '<p>Dowiedz się, jak sfederować program Azure Active Directory (Azure AD) Connect z lokalną usługą Active Directory Federation Services (AD FS) i usługą Azure AD.</p>'
+            image:
+              src: media/index/federate2.png
+            title: Integrowanie pojedynczego lasu usługi AD przy użyciu federacji
+  - title: Przewodniki z instrukcjami
     items:
-    - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">Instalowanie programu Azure AD Connect w środowisku tożsamości hybrydowej</a>
-    - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Bezproblemowe logowanie jednokrotne za pomocą programu Azure AD Connect</a>
-    - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Wymagania wstępne programu Azure AD Connect</a>
-    - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Historia wydawania wersji programu Azure AD Connect</a>
-    - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">Zarządzanie harmonogramem programu Azure AD Connect Sync</a>
+      - type: paragraph
+        text: Omówienie sposobu wykonywania różnych zadań związanych z tożsamością hybrydową
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">Instalowanie programu Azure AD Connect w środowisku tożsamości hybrydowej</a>
+          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Bezproblemowe logowanie jednokrotne za pomocą programu Azure AD Connect</a>
+          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Wymagania wstępne programu Azure AD Connect</a>
+          - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Historia wydawania wersji programu Azure AD Connect</a>
+          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">Zarządzanie harmonogramem programu Azure AD Connect Sync</a>

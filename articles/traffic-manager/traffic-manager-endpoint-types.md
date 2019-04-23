@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
 ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188717"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 Microsoft Azure Traffic Manager umożliwia kontrolowanie sposobu dystrybucji ruchu sieciowego do wdrożenia aplikacji działające w różnych centrach danych. Skonfiguruj każde wdrożenie aplikacji jako punktu końcowego w usłudze Traffic Manager. Gdy usługa Traffic Manager odbiera żądanie DNS, wybiera dostępnego punktu końcowego do zwrócenia w odpowiedzi DNS. Usługa Traffic manager Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).
@@ -36,7 +36,7 @@ W poniższych sekcjach opisano każdy typ punktu końcowego w dokładniej.
 Punkty końcowe platformy Azure używane w przypadku usług opartych na platformie Azure w usłudze Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
 * Usługi PaaS w chmurze.
-* Web Apps
+* Aplikacje internetowe
 * Miejsc aplikacji sieci Web
 * Zasoby publicznego adresu IP (które mogą być podłączone do maszyn wirtualnych bezpośrednio lub za pośrednictwem usługi Azure Load Balancer). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w profilu usługi Traffic Manager.
 

@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.openlocfilehash: 38cc6cd8f375fe7c60a706541bc74313e8ea2c4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188144"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W poszczególnych sekcjach tego artykułu opisano kolejne sekcje podręcznika rozwiązania Ansible, umożliwiające tworzenie i konfigurowanie różnych aspektów maszyny wirtualnej z systemem Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
@@ -107,7 +107,7 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona je
     security_group: myNetworkSecurityGroup
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 Ostatnim krokiem jest utworzenie maszyny wirtualnej, która wykorzystuje wszystkie zasoby utworzone w poprzednich sekcjach tego artykułu. 
 
 W tej sekcji przykładowego podręcznika rozwiązania Ansible jest tworzona maszyna wirtualna o nazwie `myVM`, do której jest dołączana wirtualna karta sieciowa o nazwie `myNIC`. Zastąp symbol zastępczy &lt;your-key-data> własnymi kompletnymi danymi klucza publicznego.

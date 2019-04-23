@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848165"
 documentType: LandingData
 title: Dokumentacja usługi Azure Data Factory
 metadata:
@@ -19,86 +13,86 @@ metadata:
   ms.topic: overview
   ms.date: 08/06/2018
 abstract:
-  description: Dowiedz się, jak tworzyć zautomatyzowane potoki danych składające się z usług przechowywania, przenoszenia i przetwarzania danych za pomocą usługi integracji danych w chmurze Data Factory. Samouczki i inne dokumenty przedstawiające sposób konfigurowania potoków danych i zarządzania nimi oraz metody przenoszenia i przekształcania danych na potrzeby analiz. <p>Jeśli używasz wersji V1 usługi Data Factory, zobacz <a href=/azure/data-factory/v1/data-factory-introduction>dokumentację wersji V1</a>.</p>
+  description: 'Dowiedz się, jak tworzyć zautomatyzowane potoki danych składające się z usług przechowywania, przenoszenia i przetwarzania danych za pomocą usługi integracji danych w chmurze Data Factory. Samouczki i inne dokumenty przedstawiające sposób konfigurowania potoków danych i zarządzania nimi oraz metody przenoszenia i przekształcania danych na potrzeby analiz. <p>Jeśli używasz wersji V1 usługi Data Factory, zobacz <a href=/azure/data-factory/v1/data-factory-introduction>dokumentację wersji V1</a>.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Nowe możliwości nowoczesnej integracji danych w chmurze (1:19:22)
-    href: https://channel9.msdn.com/Events/Build/2018/BRK2204/player
+    title: 'Nowe możliwości nowoczesnej integracji danych w chmurze (1:19:22)'
+    href: 'https://channel9.msdn.com/Events/Build/2018/BRK2204/player'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak utworzyć potok usługi Data Factory służący do przenoszenia i przetwarzania danych, korzystając z jednego z następujących przewodników Szybki start:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/data-factory/media/index/portal.svg
-      text: Interfejs użytkownika usługi Data Factory
-      href: /azure/data-factory/quickstart-create-data-factory-portal
-    - image:
-        src: /azure/data-factory/media/index/copy-data-tool.png
-      text: Narzędzie do kopiowania danych
-      href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
-    - image:
-        src: /azure/data-factory/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/data-factory/quickstart-create-data-factory-powershell
-    - image:
-        src: /azure/data-factory/media/index/logo_net.svg
-      text: .NET
-      href: /azure/data-factory/quickstart-create-data-factory-dot-net
-    - image:
-        src: /azure/data-factory/media/index/logo_python.svg
-      text: Python
-      href: /azure/data-factory/quickstart-create-data-factory-python
-    - image:
-        src: /azure/data-factory/media/index/logo_rest.svg
-      text: REST
-      href: /azure/data-factory/quickstart-create-data-factory-rest-api
-    - image:
-        src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-      text: Szablon usługi Resource Manager
-      href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak utworzyć i monitorować fabrykę danych:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć potok usługi Data Factory służący do przenoszenia i przetwarzania danych, korzystając z jednego z następujących przewodników Szybki start:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-factory/media/index/portal.svg
+            text: Interfejs użytkownika usługi Data Factory
+            href: /azure/data-factory/quickstart-create-data-factory-portal
+          - image:
+              src: /azure/data-factory/media/index/copy-data-tool.png
+            text: Narzędzie do kopiowania danych
+            href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
+          - image:
+              src: /azure/data-factory/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/data-factory/quickstart-create-data-factory-powershell
+          - image:
+              src: /azure/data-factory/media/index/logo_net.svg
+            text: .NET
+            href: /azure/data-factory/quickstart-create-data-factory-dot-net
+          - image:
+              src: /azure/data-factory/media/index/logo_python.svg
+            text: Python
+            href: /azure/data-factory/quickstart-create-data-factory-python
+          - image:
+              src: /azure/data-factory/media/index/logo_rest.svg
+            text: REST
+            href: /azure/data-factory/quickstart-create-data-factory-rest-api
+          - image:
+              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
+            text: Szablon usługi Resource Manager
+            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
+  - title: Samouczki krok po kroku
     items:
-    - html: Kopiowanie danych w chmurze — <a href="/azure/data-factory/tutorial-copy-data-tool">Narzędzie do kopiowania danych</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
-    - html: Kopiowanie danych lokalnych do chmury — <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Narzędzie do kopiowania danych | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
-    - html: Zbiorcze kopiowanie danych — <a href="/azure/data-factory/tutorial-bulk-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
-    - html: Przyrostowe kopiowanie danych — <a href="/azure/data-factory/tutorial-incremental-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
-    - html: Przekształcanie danych w chmurze za pomocą platformy Spark — <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
-    - html: Przekształcanie danych w sieci wirtualnej — <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
-    - html: Dodawanie rozgałęziania i tworzenia łańcuchów — <a href="/azure/data-factory/tutorial-control-flow-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
-    - html: Uruchamianie pakietów SSIS na platformie Azure — <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
-    - html: Ciągła integracja i ciągłe dostarczanie (CI/CD) w usłudze Azure Data Factory — <a href="/azure/data-factory/continuous-integration-deployment">interfejs użytkownika usługi Data Factory</a>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Korzystaj z poniższych przykładów podczas pracy z usługą Data Factory
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć i monitorować fabrykę danych:'
+      - type: list
+        style: unordered
+        items:
+          - html: Kopiowanie danych w chmurze — <a href="/azure/data-factory/tutorial-copy-data-tool">Narzędzie do kopiowania danych</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
+          - html: Kopiowanie danych lokalnych do chmury — <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Narzędzie do kopiowania danych | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
+          - html: Zbiorcze kopiowanie danych — <a href="/azure/data-factory/tutorial-bulk-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
+          - html: Przyrostowe kopiowanie danych — <a href="/azure/data-factory/tutorial-incremental-copy-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
+          - html: Przekształcanie danych w chmurze za pomocą platformy Spark — <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
+          - html: Przekształcanie danych w sieci wirtualnej — <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
+          - html: Dodawanie rozgałęziania i tworzenia łańcuchów — <a href="/azure/data-factory/tutorial-control-flow-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+          - html: Uruchamianie pakietów SSIS na platformie Azure — <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+          - html: Ciągła integracja i ciągłe dostarczanie (CI/CD) w usłudze Azure Data Factory — <a href="/azure/data-factory/continuous-integration-deployment">interfejs użytkownika usługi Data Factory</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/data-factory/samples-powershell">Program PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Korzystaj z poniższych przykładów podczas pracy z usługą Data Factory
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/data-factory/samples-powershell">Program PowerShell</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/datafactory">Interfejs API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/datafactory">Interfejs API REST</a></p>

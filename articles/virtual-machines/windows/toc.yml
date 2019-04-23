@@ -1,472 +1,468 @@
-items:
 - name: Dokumentacja maszyny wirtualnej z systemem Windows
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o maszynach wirtualnych
-    href: overview.md
+    - name: Informacje o maszynach wirtualnych
+      href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie maszyny wirtualnej — portal
-    href: quick-create-portal.md
-  - name: Tworzenie maszyny wirtualnej — PowerShell
-    href: quick-create-powershell.md
-  - name: Tworzenie maszyny wirtualnej — interfejs wiersza polecenia platformy Azure
-    href: quick-create-cli.md
   expanded: true
+  items:
+    - name: Tworzenie maszyny wirtualnej — portal
+      href: quick-create-portal.md
+    - name: Tworzenie maszyny wirtualnej — PowerShell
+      href: quick-create-powershell.md
+    - name: Tworzenie maszyny wirtualnej — interfejs wiersza polecenia platformy Azure
+      href: quick-create-cli.md
 - name: Samouczki
   items:
-  - name: 1 — Tworzenie maszyny wirtualnej/zarządzanie nią
-    href: tutorial-manage-vm.md
-  - name: 2 — Tworzenie dysków/zarządzanie nimi
-    href: tutorial-manage-data-disk.md
-  - name: 3 — Automatyzowanie konfiguracji
-    href: tutorial-automate-vm-deployment.md
-  - name: 4 — Tworzenie obrazów maszyn wirtualnych
-    href: tutorial-custom-images.md
-  - name: 5 — Maszyny wirtualne o wysokiej dostępności
-    href: tutorial-availability-sets.md
-  - name: 6 — Tworzenie zestawu skalowania maszyn wirtualnych
-    href: tutorial-create-vmss.md
-  - name: 7 — Równoważnie obciążenia maszyn wirtualnych
-    href: tutorial-load-balancer.md
-  - name: 8 — Zarządzanie siecią
-    href: tutorial-virtual-network.md
-  - name: 9 — Tworzenie kopii zapasowych maszyn wirtualnych
-    href: tutorial-backup-vms.md
-  - name: 10 — Nadzorowanie maszyn wirtualnych
-    displayName: scope policy RBAC lock tag
-    href: tutorial-govern-resources.md
-  - name: 11 — Monitorowanie i aktualizowanie maszyn wirtualnych
-    href: tutorial-monitoring.md
-  - name: 12 — Zarządzanie zabezpieczeniami maszyn wirtualnych
-    href: tutorial-azure-security.md
-  - name: 13 — Instalowanie stosu \.NET SQL\IIS
-    href: tutorial-iis-sql.md
-  - name: 14 — Zabezpieczanie serwera internetowego przy użyciu protokołu SSL
-    href: tutorial-secure-web-server.md
+    - name: 1 — Tworzenie maszyny wirtualnej/zarządzanie nią
+      href: tutorial-manage-vm.md
+    - name: 2 — Tworzenie dysków/zarządzanie nimi
+      href: tutorial-manage-data-disk.md
+    - name: 3 — Automatyzowanie konfiguracji
+      href: tutorial-automate-vm-deployment.md
+    - name: 4 — Tworzenie obrazów maszyn wirtualnych
+      href: tutorial-custom-images.md
+    - name: 5 — Maszyny wirtualne o wysokiej dostępności
+      href: tutorial-availability-sets.md
+    - name: 6 — Tworzenie zestawu skalowania maszyn wirtualnych
+      href: tutorial-create-vmss.md
+    - name: 7 — Równoważnie obciążenia maszyn wirtualnych
+      href: tutorial-load-balancer.md
+    - name: 8 — Zarządzanie siecią
+      href: tutorial-virtual-network.md
+    - name: 9 — Tworzenie kopii zapasowych maszyn wirtualnych
+      href: tutorial-backup-vms.md
+    - name: 10 — Nadzorowanie maszyn wirtualnych
+      href: tutorial-govern-resources.md
+      displayName: scope policy RBAC lock tag
+    - name: 11 — Monitorowanie i aktualizowanie maszyn wirtualnych
+      href: tutorial-monitoring.md
+    - name: 12 — Zarządzanie zabezpieczeniami maszyn wirtualnych
+      href: tutorial-azure-security.md
+    - name: 13 — Instalowanie stosu \.NET SQL\IIS
+      href: tutorial-iis-sql.md
+    - name: 14 — Zabezpieczanie serwera internetowego przy użyciu protokołu SSL
+      href: tutorial-secure-web-server.md
 - name: Przykłady
   items:
-  - name: PowerShell
-    href: powershell-samples.md
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
 - name: Pojęcia
   items:
-  - name: Azure Resource Manager
-    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Regiony i dostępność
-    href: regions-and-availability.md
-  - name: Typy i rozmiary maszyn wirtualnych
-    href: sizes.md
-    items:
-    - name: Zastosowania ogólne
-      displayName: Dsv3 Dv3 DSv2 Dv2 Av2
-      href: sizes-general.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Regiony i dostępność
+      href: regions-and-availability.md
+    - name: Typy i rozmiary maszyn wirtualnych
+      href: sizes.md
       items:
-      - name: Seria B z możliwością zwiększania wydajności
-        href: b-series-burstable.md
-    - name: Optymalizacja pod kątem obliczeń
-      displayName: Fsv2 Fs F-series
-      href: sizes-compute.md
-    - name: Optymalizacja pod kątem pamięci
-      displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
-      href: sizes-memory.md
+        - name: Zastosowania ogólne
+          href: sizes-general.md
+          displayName: Dsv3 Dv3 DSv2 Dv2 Av2
+          items:
+            - name: Seria B z możliwością zwiększania wydajności
+              href: b-series-burstable.md
+        - name: Optymalizacja pod kątem obliczeń
+          href: sizes-compute.md
+          displayName: Fsv2 Fs F-series
+        - name: Optymalizacja pod kątem pamięci
+          href: sizes-memory.md
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Procesory wirtualne z ograniczeniami
+              href: constrained-vcpu.md
+        - name: Optymalizacja pod kątem magazynu
+          displayName: ls
+          href: sizes-storage.md
+          items:
+            - name: Optymalizowanie wydajności
+              href: storage-performance.md
+        - name: Optymalizacja pod kątem procesora GPU
+          displayName: NV NVv2 NC NCv2 NCv3 ND
+          href: sizes-gpu.md
+          items:
+            - name: Konfigurowanie sterowników procesora GPU
+              href: n-series-driver-setup.md
+        - name: Obliczenia o wysokiej wydajności
+          displayName: H-series
+          href: sizes-hpc.md
+        - name: Poprzednie generacje
+          href: sizes-previous-gen.md
+          displayName: D-series Ds-series A-series Basic
+        - name: Jednostki obliczeniowe platformy Azure (ACU)
+          href: acu.md
+        - name: Wyniki testów porównawczych
+          href: compute-benchmark-scores.md
+        - name: Limity przydziału procesorów wirtualnych
+          href: quotas.md
+    - name: Konserwacja i aktualizacje
+      href: maintenance-and-updates.md
+    - name: Przechowywanie na dysku
       items:
-      - name: Procesory wirtualne z ograniczeniami
-        href: constrained-vcpu.md
-    - name: Optymalizacja pod kątem magazynu
-      displayName: ls
-      href: sizes-storage.md
-    - name: Optymalizacja pod kątem procesora GPU
-      displayName: NV NVv2 NC NCv2 NCv3 ND
-      href: sizes-gpu.md
-      items:
-      - name: Konfigurowanie sterowników procesora GPU
-        href: n-series-driver-setup.md
-    - name: Obliczenia o wysokiej wydajności
-      displayName: H-series
-      href: sizes-hpc.md
-    - name: Poprzednie generacje
-      displayName: D-series Ds-series A-series Basic
-      href: sizes-previous-gen.md
-    - name: Jednostki obliczeniowe platformy Azure (ACU)
-      href: acu.md
-    - name: Wyniki testów porównawczych
-      href: compute-benchmark-scores.md
-    - name: Limity przydziału procesorów wirtualnych
-      href: quotas.md
-  - name: Konserwacja i aktualizacje
-    href: maintenance-and-updates.md
-  - name: Przechowywanie na dysku
-    items:
-    - name: Wprowadzenie do dysków zarządzanych
-      href: managed-disks-overview.md
-    - name: Wybieranie typu dysku dla maszyn wirtualnych IaaS
-      href: disks-types.md
-    - name: Projektowanie pod kątem wysokiej wydajności
-      href: premium-storage-performance.md
-    - name: Wartości docelowe skalowalności dysków
-      href: disk-scalability-targets.md
-    - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
-      href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-  - name: Networking
-    href: network-overview.md
-  - name: Automatyczne skalowanie aplikacji
-    href: autoscale.md
-  - name: Automatyzacja infrastruktury
-    href: infrastructure-automation.md
-  - name: Zabezpieczenia i zasady
-    href: security-policy.md
-  - name: Stany i cykl życia
-    href: states-lifecycle.md
-  - name: Monitorowanie
-    href: monitor.md
-  - name: Tworzenie i przywracanie kopii zapasowych
-    href: backup-recovery.md
-  - name: Przykład infrastruktury
-    href: infrastructure-example.md
+        - name: Wprowadzenie do dysków zarządzanych
+          href: managed-disks-overview.md
+        - name: Wybieranie typu dysku dla maszyn wirtualnych IaaS
+          href: disks-types.md
+        - name: Projektowanie pod kątem wysokiej wydajności
+          href: premium-storage-performance.md
+        - name: Wartości docelowe skalowalności dysków
+          href: disk-scalability-targets.md
+        - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+    - name: Networking
+      href: network-overview.md
+    - name: Automatyczne skalowanie aplikacji
+      href: autoscale.md
+    - name: Automatyzacja infrastruktury
+      href: infrastructure-automation.md
+    - name: Zabezpieczenia i zasady
+      href: security-policy.md
+    - name: Stany i cykl życia
+      href: states-lifecycle.md
+    - name: Monitorowanie
+      href: monitor.md
+    - name: Tworzenie i przywracanie kopii zapasowych
+      href: backup-recovery.md
+    - name: Przykład infrastruktury
+      href: infrastructure-example.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Tworzenie maszyn wirtualnych
-    items:
-    - name: Korzystanie z języka C#
-      href: csharp.md
-    - name: Korzystanie z wyspecjalizowanego dysku
+    - name: Tworzenie maszyn wirtualnych
       items:
-      - name: Portal
-        href: create-vm-specialized-portal.md
-      - name: PowerShell
-        href: create-vm-specialized.md
-    - name: Korzystanie z szablonu w języku C#
-      href: csharp-template.md
-    - name: Tworzenie maszyny wirtualnej przy użyciu programu Chef
-      href: chef-automation.md
-    - name: Korzystanie z języka Java
-      href: java.md
-    - name: Korzystanie z języka Python
-      href: python.md
-    - name: Korzystanie z szablonu
-      displayName: Azure Resource Manager template, ARM
-      href: ps-template.md
-    - name: Łączenie z maszyną wirtualną
-      href: connect-logon.md
-    - name: Używanie licencji korzyści użycia hybrydowego platformy Azure
-      href: hybrid-use-benefit-licensing.md
-    - name: Korzystanie z praw hostingu wielodostępnego dla systemu Windows 10
-      href: windows-desktop-multitenant-hosting-deployment.md
-  - name: Zabezpieczone maszyny wirtualne
-    items:
-    - name: Dostęp just in time
-      href: ../../security-center/security-center-just-in-time.md
-    - name: Szyfrowanie
-      displayName: encryption
-      href: encrypt-disks.md
-    - name: Korzystanie ze składnika WinRM
-      href: winrm.md
-    - name: Korzystanie z kontroli dostępu
-      href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Korzystanie z zasad
-      href: policy.md
-    - name: Tworzenie magazynu kluczy
-      href: key-vault-setup.md
-  - name: Ochrona maszyn wirtualnych
-    items:
-    - name: Tworzenie kopii zapasowej maszyn wirtualnych
-      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 'Korzystanie z języka C#'
+          href: csharp.md
+        - name: Korzystanie z wyspecjalizowanego dysku
+          items:
+            - name: Portal
+              href: create-vm-specialized-portal.md
+            - name: PowerShell
+              href: create-vm-specialized.md
+        - name: 'Korzystanie z szablonu w języku C#'
+          href: csharp-template.md
+        - name: Tworzenie maszyny wirtualnej przy użyciu programu Chef
+          href: chef-automation.md
+        - name: Korzystanie z języka Java
+          href: java.md
+        - name: Korzystanie z języka Python
+          href: python.md
+        - name: Korzystanie z szablonu
+          displayName: 'Azure Resource Manager template, ARM'
+          href: ps-template.md
+        - name: Łączenie z maszyną wirtualną
+          href: connect-logon.md
+        - name: Używanie licencji korzyści użycia hybrydowego platformy Azure
+          href: hybrid-use-benefit-licensing.md
+        - name: Korzystanie z praw hostingu wielodostępnego dla systemu Windows 10
+          href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Zabezpieczone maszyny wirtualne
       items:
-      - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
-        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
-        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przywracanie dysku
-        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przywracanie pojedynczych plików
-        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych
-      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Dostęp just in time
+          href: ../../security-center/security-center-just-in-time.md
+        - name: Szyfrowanie
+          href: encrypt-disks.md
+          displayName: encryption
+        - name: Korzystanie ze składnika WinRM
+          href: winrm.md
+        - name: Korzystanie z kontroli dostępu
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Korzystanie z zasad
+          href: policy.md
+        - name: Tworzenie magazynu kluczy
+          href: key-vault-setup.md
+    - name: Ochrona maszyn wirtualnych
       items:
-      - name: Włączanie odzyskiwania po awarii dla maszyny wirtualnej
-        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Uruchamianie próbnego odzyskiwania po awarii dla maszyny wirtualnej
-        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
-        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-  - name: Zarządzanie maszynami wirtualnymi
-    items:
-    - name: Użycie maszyny wirtualnej
-      href: vm-usage.md
-    - name: Typowe zadania programu PowerShell
-      href: ps-common-ref.md
-    - name: Zmiana rozmiaru maszyny wirtualnej
-      href: resize-vm.md
-    - name: Przełączanie dysku systemu operacyjnego
-      href: os-disk-swap.md
-    - name: Tagowanie maszyny wirtualnej
-      href: tag.md
-    - name: Synchronizowanie czasu
-      href: time-sync.md
-    - name: Uruchamianie skryptów na maszynie wirtualnej
-      href: run-scripts-in-vm.md
+        - name: Tworzenie kopii zapasowej maszyn wirtualnych
+          href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          items:
+            - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
+              href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Przywracanie dysku
+              href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Przywracanie pojedynczych plików
+              href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych
+          href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          items:
+            - name: Włączanie odzyskiwania po awarii dla maszyny wirtualnej
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Uruchamianie próbnego odzyskiwania po awarii dla maszyny wirtualnej
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Zarządzanie maszynami wirtualnymi
       items:
-      - name: Rozszerzenie niestandardowego skryptu
-        href: ../extensions/custom-script-windows.md
-      - name: Uruchamianie polecenia
-        href: run-command.md
-    - name: Zmienianie litery dysku tymczasowego
-      href: change-drive-letter.md
-    - name: Zmienianie zestawu dostępności
-      href: change-availability-set.md
-    - name: Pobieranie szablonu
-      href: download-template.md
-    - name: Agent maszyny wirtualnej platformy Azure
-      href: ../extensions/agent-windows.md
-    - name: Planowana konserwacja
-      href: maintenance-notifications.md
-    - name: Ograniczanie ryzyka związanego z wykonywaniem spekulatywnym
-      href: mitigate-se.md
-    - name: Zaplanowane zdarzenia
-      href: scheduled-events.md
-    - name: Monitorowanie metadanych
-      href: instance-metadata-service.md
-    - name: Włączanie wirtualizacji zagnieżdżonej
-      href: nested-virtualization.md
-  - name: Zarządzanie kosztami
-    items:
-    - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
-      href: prepay-reserved-vm-instances.md
-    - name: Co to są rezerwacje platformy Azure?
-      href: ../../billing/billing-save-compute-costs-reservations.md
-    - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
-      href: reserved-vm-instance-size-flexibility.md
-  - name: Korzystanie z obrazów
-    items:
-    - name: Obrazy udostępnione (wersja zapoznawcza)
+        - name: Użycie maszyny wirtualnej
+          href: vm-usage.md
+        - name: Typowe zadania programu PowerShell
+          href: ps-common-ref.md
+        - name: Zmiana rozmiaru maszyny wirtualnej
+          href: resize-vm.md
+        - name: Przełączanie dysku systemu operacyjnego
+          href: os-disk-swap.md
+        - name: Tagowanie maszyny wirtualnej
+          href: tag.md
+        - name: Synchronizowanie czasu
+          href: time-sync.md
+        - name: Uruchamianie skryptów na maszynie wirtualnej
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozszerzenie niestandardowego skryptu
+              href: ../extensions/custom-script-windows.md
+            - name: Uruchamianie polecenia
+              href: run-command.md
+        - name: Zmienianie litery dysku tymczasowego
+          href: change-drive-letter.md
+        - name: Zmienianie zestawu dostępności
+          href: change-availability-set.md
+        - name: Pobieranie szablonu
+          href: download-template.md
+        - name: Agent maszyny wirtualnej platformy Azure
+          href: ../extensions/agent-windows.md
+        - name: Planowana konserwacja
+          href: maintenance-notifications.md
+        - name: Ograniczanie ryzyka związanego z wykonywaniem spekulatywnym
+          href: mitigate-se.md
+        - name: Zaplanowane zdarzenia
+          href: scheduled-events.md
+        - name: Monitorowanie metadanych
+          href: instance-metadata-service.md
+        - name: Włączanie wirtualizacji zagnieżdżonej
+          href: nested-virtualization.md
+    - name: Zarządzanie kosztami
       items:
-      - name: Omówienie
-        href: shared-image-galleries.md
-      - name: Tworzenie obrazów udostępnionych przy użyciu programu PowerShell
-        href: shared-images.md
-      - name: Tworzenie obrazów udostępnionych przy użyciu interfejsu wiersza polecenia
-        href: ../linux/shared-images.md
-      - name: Rozwiązywanie problemów z obrazami udostępnionymi
-        href: troubleshooting-shared-images.md
-    - name: Znajdowanie obrazów i korzystanie z nich
-      href: cli-ps-findimage.md
-    - name: Przygotowywanie maszyny wirtualnej do przekazywania
-      href: prepare-for-upload-vhd-image.md
-    - name: Przechwytywanie maszyny wirtualnej do obrazu
-      href: capture-image-resource.md
-    - name: Korzystanie z uogólnionego obrazu
-      href: create-vm-generalized-managed.md
-    - name: Tworzenie obrazu za pomocą usługi Packer
-      href: build-image-with-packer.md
-    - name: Korzystanie z obrazów klientów systemu Windows
-      href: client-images.md
-    - name: Pobieranie istniejącego dysku
-      href: download-vhd.md
-  - name: Dostępność i skala
-    items:
-    - name: Zestawy skali maszyn wirtualnych
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Wysoka dostępność
-      href: manage-availability.md
-    - name: Skalowanie w pionie
-      href: vertical-scaling-automation.md
-    - name: Tworzenie maszyny wirtualnej w strefie dostępności
+        - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
+          href: prepay-reserved-vm-instances.md
+        - name: Co to są rezerwacje platformy Azure?
+          href: ../../billing/billing-save-compute-costs-reservations.md
+        - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
+          href: reserved-vm-instance-size-flexibility.md
+    - name: Korzystanie z obrazów
       items:
-      - name: PowerShell
-        href: create-powershell-availability-zone.md
-      - name: Portal
-        href: create-portal-availability-zone.md
-  - name: Korzystanie z narzędzi automatyzacji
-    items:
-    - name: Chef
-      href: chef-automation.md
-    - name: Publikowanie aplikacji internetowej z programu Visual Studio
-      href: publish-web-app-from-visual-studio.md
-  - name: Uruchamianie aplikacji
-    items:
-    - name: Oprogramowanie SQL Server
-      href: sql/virtual-machines-windows-sql-server-iaas-overview.md
-    - name: MongoDB
-      href: install-mongodb.md
-    - name: Rozwiązania SAP na platformie Azure
-      href: ../workloads/sap/get-started.md
-    - name: Klaster MATLAB
-      href: matlab-mdcs-cluster.md
-    - name: Visual Studio
-      href: using-visual-studio-vm.md
-    - name: Obliczenia o wysokiej wydajności (HPC)
-      href: hpcpack-cluster-options.md
+        - name: Obrazy udostępnione (wersja zapoznawcza)
+          items:
+            - name: Omówienie
+              href: shared-image-galleries.md
+            - name: Tworzenie obrazów udostępnionych przy użyciu programu PowerShell
+              href: shared-images.md
+            - name: Tworzenie obrazów udostępnionych przy użyciu interfejsu wiersza polecenia
+              href: ../linux/shared-images.md
+            - name: Rozwiązywanie problemów z obrazami udostępnionymi
+              href: troubleshooting-shared-images.md
+        - name: Znajdowanie obrazów i korzystanie z nich
+          href: cli-ps-findimage.md
+        - name: Przygotowywanie maszyny wirtualnej do przekazywania
+          href: prepare-for-upload-vhd-image.md
+        - name: Przechwytywanie maszyny wirtualnej do obrazu
+          href: capture-image-resource.md
+        - name: Korzystanie z uogólnionego obrazu
+          href: create-vm-generalized-managed.md
+        - name: Tworzenie obrazu za pomocą usługi Packer
+          href: build-image-with-packer.md
+        - name: Korzystanie z obrazów klientów systemu Windows
+          href: client-images.md
+        - name: Pobieranie istniejącego dysku
+          href: download-vhd.md
+    - name: Dostępność i skala
       items:
-      - name: Klaster HPC Pack 2016
-        href: hpcpack-2016-cluster.md
-      - name: Integracja usługi Azure Active Directory z pakietem HPC Pack 2016
-        href: hpcpack-cluster-active-directory.md
-      - name: Węzeł główny HPC Pack 2012 R2
-        href: hpcpack-cluster-headnode.md
-      - name: Przesyłanie zadań lokalnych do pakietu HPC Pack 2012 R2
-        href: hpcpack-cluster-submit-jobs.md
-      - name: Program Excel w pakiecie HPC Pack
-        href: excel-cluster-hpcpack.md
-  - name: Zarządzanie magazynem
-    items:
-    - name: Dodawanie dysku
+        - name: Zestawy skali maszyn wirtualnych
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Wysoka dostępność
+          href: manage-availability.md
+        - name: Skalowanie w pionie
+          href: vertical-scaling-automation.md
+        - name: Tworzenie maszyny wirtualnej w strefie dostępności
+          items:
+            - name: PowerShell
+              href: create-powershell-availability-zone.md
+            - name: Portal
+              href: create-portal-availability-zone.md
+    - name: Korzystanie z narzędzi automatyzacji
       items:
-      - name: Azure PowerShell
-        href: attach-disk-ps.md
-      - name: Azure Portal
-        href: attach-managed-disk-portal.md
-    - name: Odłączanie dysku
-      href: detach-disk.md
-    - name: Wdrażanie dysków za pomocą szablonu
-      href: using-managed-disks-template-deployments.md
-    - name: Zmienianie rozmiaru dysku
-      href: expand-os-disk.md
-    - name: Tworzenie migawki dysku
-      href: snapshot-copy-managed-disk.md
-    - name: Tworzenie kopii zapasowych dysków niezarządzanych
-      href: incremental-snapshots.md
-    - name: Migracja i konwersja
+        - name: Chef
+          href: chef-automation.md
+        - name: Publikowanie aplikacji internetowej z programu Visual Studio
+          href: publish-web-app-from-visual-studio.md
+    - name: Uruchamianie aplikacji
       items:
-      - name: Konwertowanie dysku między warstwami Standardowa i Premium
-        href: convert-disk-storage.md
-      - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
-        href: migrate-to-premium-storage-using-azure-site-recovery.md
-      - name: Migrowanie do funkcji Dyski zarządzane
-        href: migrate-to-managed-disks.md
-      - name: Niezarządzana maszyna wirtualna do funkcji Dyski zarządzane
-        href: convert-unmanaged-to-managed-disks.md
-    - name: Wydajność
+        - name: Oprogramowanie SQL Server
+          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
+        - name: MongoDB
+          href: install-mongodb.md
+        - name: Rozwiązania SAP na platformie Azure
+          href: ../workloads/sap/get-started.md
+        - name: Klaster MATLAB
+          href: matlab-mdcs-cluster.md
+        - name: Visual Studio
+          href: using-visual-studio-vm.md
+        - name: Obliczenia o wysokiej wydajności (HPC)
+          href: hpcpack-cluster-options.md
+          items:
+            - name: Klaster HPC Pack 2016
+              href: hpcpack-2016-cluster.md
+            - name: Integracja usługi Azure Active Directory z pakietem HPC Pack 2016
+              href: hpcpack-cluster-active-directory.md
+            - name: Węzeł główny HPC Pack 2012 R2
+              href: hpcpack-cluster-headnode.md
+            - name: Przesyłanie zadań lokalnych do pakietu HPC Pack 2012 R2
+              href: hpcpack-cluster-submit-jobs.md
+            - name: Program Excel w pakiecie HPC Pack
+              href: excel-cluster-hpcpack.md
+    - name: Zarządzanie magazynem
       items:
-      - name: Włączanie akceleratora zapisu
-        href: how-to-enable-write-accelerator.md
-      - name: Włączanie dysków ultra SSD
-        href: disks-enable-ultra-ssd.md
-      - name: Test porównawczy dysku
-        href: disks-benchmarks.md
-    - name: Znajdowanie niedołączonych dysków
-      href: find-unattached-disks.md
-    - name: Korzystanie z usługi File Storage
-      href: ../../storage/files/storage-files-quick-create-use-windows.md
-    - name: Często zadawane pytania dotyczące dysków
-      href: faq-for-disks.md
-  - name: Zarządzanie siecią
-    href: ps-common-network-ref.md
-    items:
-    - name: Tworzenie sieci wirtualnej
-      href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Otwieranie portów dla maszyny wirtualnej
+        - name: Dodawanie dysku
+          items:
+            - name: Azure PowerShell
+              href: attach-disk-ps.md
+            - name: Azure Portal
+              href: attach-managed-disk-portal.md
+        - name: Odłączanie dysku
+          href: detach-disk.md
+        - name: Wdrażanie dysków za pomocą szablonu
+          href: using-managed-disks-template-deployments.md
+        - name: Zmienianie rozmiaru dysku
+          href: expand-os-disk.md
+        - name: Tworzenie migawki dysku
+          href: snapshot-copy-managed-disk.md
+        - name: Tworzenie kopii zapasowych dysków niezarządzanych
+          href: incremental-snapshots.md
+        - name: Migracja i konwersja
+          items:
+            - name: Konwertowanie dysku między warstwami Standardowa i Premium
+              href: convert-disk-storage.md
+            - name: Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
+              href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Migrowanie do funkcji Dyski zarządzane
+              href: migrate-to-managed-disks.md
+            - name: Niezarządzana maszyna wirtualna do funkcji Dyski zarządzane
+              href: convert-unmanaged-to-managed-disks.md
+        - name: Wydajność
+          items:
+            - name: Włączanie akceleratora zapisu
+              href: how-to-enable-write-accelerator.md
+            - name: Włączanie dysków ultra SSD
+              href: disks-enable-ultra-ssd.md
+            - name: Test porównawczy dysku
+              href: disks-benchmarks.md
+        - name: Znajdowanie niedołączonych dysków
+          href: find-unattached-disks.md
+        - name: Korzystanie z usługi File Storage
+          href: ../../storage/files/storage-files-quick-create-use-windows.md
+        - name: Często zadawane pytania dotyczące dysków
+          href: faq-for-disks.md
+    - name: Zarządzanie siecią
+      href: ps-common-network-ref.md
       items:
-      - name: Azure Portal
-        href: nsg-quickstart-portal.md
-      - name: Azure PowerShell
-        href: nsg-quickstart-powershell.md
-    - name: Przypisywanie publicznego adresu IP
-      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Korzystanie z wielu kart interfejsu sieciowego
-      href: multiple-nics.md
-    - name: Korzystanie z przyspieszonej sieci
-      href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Przypisywanie publicznej nazwy DNS
-      href: portal-create-fqdn.md
-    - name: Rozpoznawanie nazw DNS
-      href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Konfigurowanie tożsamości zarządzanych
-    items:
-    - name: Portal
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: Interfejs wiersza polecenia
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: PowerShell
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: Szablon usługi Azure Resource Manager
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: REST
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: Zestawy Azure SDK
-      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-  - name: Korzystanie z rozszerzeń maszyn wirtualnych
-    href: ../extensions/overview.md
-  - name: Przenoszenie i migrowanie maszyn wirtualnych
-    items:
-    - name: Zmienianie subskrypcji lub grupy zasobów
-      href: move-vm.md
-    - name: Przenoszenie regionów
-      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Przenoszenie do strefy dostępności
-      href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS
-      href: on-prem-to-azure.md
+        - name: Tworzenie sieci wirtualnej
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Otwieranie portów dla maszyny wirtualnej
+          items:
+            - name: Azure Portal
+              href: nsg-quickstart-portal.md
+            - name: Azure PowerShell
+              href: nsg-quickstart-powershell.md
+        - name: Przypisywanie publicznego adresu IP
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Korzystanie z wielu kart interfejsu sieciowego
+          href: multiple-nics.md
+        - name: Korzystanie z przyspieszonej sieci
+          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Przypisywanie publicznej nazwy DNS
+          href: portal-create-fqdn.md
+        - name: Rozpoznawanie nazw DNS
+          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Konfigurowanie tożsamości zarządzanych
       items:
-      - name: Przekazywanie lokalnej maszyny wirtualnej
-        href: upload-generalized-managed.md
-      - name: Z usługi Amazon Web Services (AWS)
-        href: aws-to-azure.md
-      - name: Korzystanie z usługi Azure Site Recovery
-        href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
-      href: migration-classic-resource-manager-overview.md
+        - name: Portal
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+        - name: Interfejs wiersza polecenia
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+        - name: PowerShell
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+        - name: Szablon usługi Azure Resource Manager
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+        - name: REST
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+        - name: Zestawy Azure SDK
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: Korzystanie z rozszerzeń maszyn wirtualnych
+      href: ../extensions/overview.md
+    - name: Przenoszenie i migrowanie maszyn wirtualnych
       items:
-      - name: Szczegółowe informacje dotyczące migracji
-        href: migration-classic-resource-manager-deep-dive.md
-      - name: Planowanie migracji
-        href: migration-classic-resource-manager-plan.md
-      - name: Migrowanie przy użyciu programu PowerShell
-        href: migration-classic-resource-manager-ps.md
-      - name: Typowe błędy migracji
-        href: migration-classic-resource-manager-errors.md
-      - name: Narzędzia społeczności do migracji
-        href: migration-classic-resource-manager-community-tools.md
-      - name: Często zadawane pytania
-        href: migration-classic-resource-manager-faq.md
+        - name: Zmienianie subskrypcji lub grupy zasobów
+          href: move-vm.md
+        - name: Przenoszenie regionów
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Przenoszenie do strefy dostępności
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS
+          href: on-prem-to-azure.md
+          items:
+            - name: Przekazywanie lokalnej maszyny wirtualnej
+              href: upload-generalized-managed.md
+            - name: Z usługi Amazon Web Services (AWS)
+              href: aws-to-azure.md
+            - name: Korzystanie z usługi Azure Site Recovery
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
+          href: migration-classic-resource-manager-overview.md
+          items:
+            - name: Szczegółowe informacje dotyczące migracji
+              href: migration-classic-resource-manager-deep-dive.md
+            - name: Planowanie migracji
+              href: migration-classic-resource-manager-plan.md
+            - name: Migrowanie przy użyciu programu PowerShell
+              href: migration-classic-resource-manager-ps.md
+            - name: Typowe błędy migracji
+              href: migration-classic-resource-manager-errors.md
+            - name: Narzędzia społeczności do migracji
+              href: migration-classic-resource-manager-community-tools.md
+            - name: Często zadawane pytania
+              href: migration-classic-resource-manager-faq.md
 - name: Rozwiązywanie problemów
   href: ../troubleshooting/index.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/vm
-  - name: Azure PowerShell
-    href: /powershell/azureps-cmdlets-docs
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.compute
-  - name: Java
-    href: /java/api
-  - name: Node.js
-    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
-  - name: Python
-    href: https://azure.microsoft.com/develop/python/
-  - name: Architektura REST — usługa Compute
-    href: /rest/api/compute
-  - name: Architektura REST — funkcja Dyski zarządzane
-    href: /rest/api/compute/disks
-  - name: Szablon usługi Resource Manager
-    displayName: ARM
-    href: /azure/templates/microsoft.compute/allversions
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/vm
+    - name: Azure PowerShell
+      href: /powershell/azureps-cmdlets-docs
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Architektura REST — usługa Compute
+      href: /rest/api/compute
+    - name: Architektura REST — funkcja Dyski zarządzane
+      href: /rest/api/compute/disks
+    - name: Szablon usługi Resource Manager
+      displayName: ARM
+      href: /azure/templates/microsoft.compute/allversions
 - name: Zasoby
   items:
-  - name: Tworzenie szablonów
-    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?products=azure-virtual-machines
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Szablony społeczności
-    href: https://azure.microsoft.com/documentation/templates
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/#Linux
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-virtual-machine
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
-  - name: Często zadawane pytania
-    href: faq.md
-ms.openlocfilehash: b6e86980e854e336373907f6aeaba2a72dd29b7c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372554"
+    - name: Tworzenie szablonów
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablony społeczności
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: Często zadawane pytania
+      href: faq.md

@@ -242,6 +242,9 @@
       href: /azure/templates/microsoft.media/allversions
 - name: Zasoby
   items:
+    - name: Społeczność usługi Azure Media Services
+      displayName: 'forums, twitter, feedback'
+      href: media-services-community.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
     - name: Cennik

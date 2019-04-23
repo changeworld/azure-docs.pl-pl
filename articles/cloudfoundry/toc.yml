@@ -1,40 +1,33 @@
-items:
 - name: Dokumentacja usługi Cloud Foundry
   href: index.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Szablon witryny Marketplace
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: Szablon witryny Marketplace
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: Samouczki
   items:
-  - name: Tworzenie usługi CF na platformie Azure
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: Wdrażanie aplikacji usługi CF na platformie Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: Używanie usługi OSBA z aplikacją w usłudze PCF
-    href: /azure/cloudfoundry/use-osba-pcf-app
-  - name: Usługa CloudFoundry na platformie Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: Wdrażanie dodatku OMS Nozzle usługi CF
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: Integracja usługi Cloud Foundry z platformą Azure
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: Tworzenie usługi CF na platformie Azure
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: Wdrażanie aplikacji usługi CF na platformie Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Używanie usługi OSBA z aplikacją w usłudze PCF
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: Usługa CloudFoundry na platformie Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: Wdrażanie dodatku OMS Nozzle usługi CF
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: Integracja usługi Cloud Foundry z platformą Azure
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Witryna usługi Cloud Foundry
-    href: https://docs.cloudfoundry.org/
-  - name: Instalowanie usługi CF na platformie Azure
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Usługa Pivotal i platforma Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: Wtyczka usługi Azure DevOps dla usługi CF
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: b702d42142bd809e678792f1f07a3e104f1e21c1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229221"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Witryna usługi Cloud Foundry
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Instalowanie usługi CF na platformie Azure
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Usługa Pivotal i platforma Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: Wtyczka usługi Azure DevOps dla usługi CF
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

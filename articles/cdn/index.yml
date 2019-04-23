@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: acb451634c1105e50798b4a80271e945a4e055ee
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238236"
 documentType: LandingData
 title: Dokumentacja usługi Azure CDN
 metadata:
   title: Dokumentacja usługi Azure CDN — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.
+  description: 'Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.'
   services: cdn
   author: czeumault
   manager: carolz
@@ -20,67 +14,67 @@ metadata:
   ms.date: 06/08/2018
   ms.author: carolz
 abstract:
-  description: Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.
+  description: 'Usługa Azure Content Delivery Network (CDN) to globalna sieć dostarczania zawartości umożliwiająca dostarczanie zawartości wymagającej wysokiej przepustowości. Może być ona hostowana na platformie Azure lub w dowolnej innej lokalizacji. Dzięki usłudze Azure CDN można buforować obiekty statyczne załadowane z usługi Azure Blob Storage, aplikacji internetowej lub dowolnego publicznie dostępnego serwera internetowego, korzystając z najbliższego serwera punktu obecności (POP, point of presence). Usługa Azure CDN może również przyspieszyć zawartość dynamiczną, której nie można buforować, wykorzystując różne optymalizacje sieci i routingu.'
 sections:
-- title: 
-  items:
-  - type: list
-    style: icon48
+  - title: null
     items:
-    - image:
-        src: media/index/cdn.svg
-      text: Dowiedz się więcej o usłudze Azure CDN
-      href: /azure/cdn/cdn-overview
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak włączyć usługę Azure CDN, tworząc profil CDN i punkt końcowy usługi CDN.
-  - type: list
-    style: icon48
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cdn.svg
+            text: Dowiedz się więcej o usłudze Azure CDN
+            href: /azure/cdn/cdn-overview
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: media/index/get-started.svg
-      text: Rozpoczynanie pracy z usługą Azure CDN
-      href: /azure/cdn/cdn-create-new-endpoint
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak skonfigurować usługę Azure CDN na własne potrzeby.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak włączyć usługę Azure CDN, tworząc profil CDN i punkt końcowy usługi CDN.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/get-started.svg
+            text: Rozpoczynanie pracy z usługą Azure CDN
+            href: /azure/cdn/cdn-create-new-endpoint
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Dodawanie domeny niestandardowej do punktu końcowego usługi CDN</a>
-    - html: <a href="/azure/cdn/cdn-custom-ssl">Konfigurowanie protokołu HTTPS w domenie niestandardowej</a>
-    - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Ustawianie reguł buforowania</a>
-- title: Filmy wideo
-  items:
-  - type: paragraph
-    text: Obejrzyj filmy wideo przedstawiające działanie usługi Azure CDN.
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Dowiedz się, jak skonfigurować usługę Azure CDN na własne potrzeby.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Dodawanie domeny niestandardowej do punktu końcowego usługi CDN</a>
+          - html: <a href="/azure/cdn/cdn-custom-ssl">Konfigurowanie protokołu HTTPS w domenie niestandardowej</a>
+          - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Ustawianie reguł buforowania</a>
+  - title: Filmy wideo
     items:
-    - image:
-        src: media/index/video-library.svg
-      text: Biblioteka filmów wideo usługi Azure CDN
-      href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Obejrzyj filmy wideo przedstawiające działanie usługi Azure CDN.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/video-library.svg
+            text: Biblioteka filmów wideo usługi Azure CDN
+            href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
+  - title: Przykłady
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cdn">Przykłady kodu</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cdn">Przykłady kodu</a>'
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/az.cdn">Program PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/cdn/">Dokumentacja interfejsu API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/powershell/module/az.cdn">Program PowerShell</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/cdn/">Dokumentacja interfejsu API REST</a></p>

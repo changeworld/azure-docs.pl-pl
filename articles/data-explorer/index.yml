@@ -1,83 +1,77 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 34de58f7a3f9307714ccc4594d9ac92523c55f69
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482221"
 documentType: LandingData
 title: Dokumentacja usługi Azure Data Explorer
 metadata:
-  title: Dokumentacja usługi Azure Data Explorer — przewodniki Szybki start, samouczki oraz dokumentacja dotycząca języka i interfejsów API
-  description: Azure Data Explorer to platforma analizy dzienników w chmurze zoptymalizowana pod kątem wykonywania zapytań ad-hoc, które dotyczą dużych ilości danych.
+  title: 'Dokumentacja usługi Azure Data Explorer — przewodniki Szybki start, samouczki oraz dokumentacja dotycząca języka i interfejsów API'
+  description: 'Azure Data Explorer to platforma analizy dzienników w chmurze zoptymalizowana pod kątem wykonywania zapytań ad-hoc, które dotyczą dużych ilości danych.'
   author: orspod
   ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
   ms.date: 03/24/2019
 abstract:
-  description: <p>Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Usługa Azure Data Explorer umożliwia zbieranie, przechowywanie i analizowanie zróżnicowanych danych w celu ulepszania produktów i środowisk klientów, monitorowania urządzeń i przyspieszania operacji.</p><p>Dowiedz się, jak używać usługi Azure Data Explorer, korzystając z przewodników Szybki Start, samouczków i zawartości dokumentacji.</p>
+  description: '<p>Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Usługa Azure Data Explorer umożliwia zbieranie, przechowywanie i analizowanie zróżnicowanych danych w celu ulepszania produktów i środowisk klientów, monitorowania urządzeń i przyspieszania operacji.</p><p>Dowiedz się, jak używać usługi Azure Data Explorer, korzystając z przewodników Szybki Start, samouczków i zawartości dokumentacji.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Co to jest usługa Azure Data Explorer? (19:47)
-    href: https://youtu.be/D_AJk2lAepw
+    title: 'Co to jest usługa Azure Data Explorer? (19:47)'
+    href: 'https://youtu.be/D_AJk2lAepw'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak aprowizować usługę Azure Data Explorer i jej używać:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Tworzenie klastra i bazy danych
-      href: /azure/data-explorer/create-cluster-database-portal
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Pozyskiwanie danych przesyłanych strumieniowo z usługi Event Hubs
-      href: /azure/data-explorer/ingest-data-event-hub
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Wykonywanie zapytań o dane za pomocą internetowego interfejsu użytkownika
-      href: /azure/data-explorer/web-query-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Pozyskiwanie danych umieszczonych w kolejce za pomocą języka Python
-      href: /azure/data-explorer/python-ingest-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Wykonywanie zapytań o dane za pomocą języka Python
-      href: /azure/data-explorer/python-query-data
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak kompilować kompleksowe rozwiązania:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak aprowizować usługę Azure Data Explorer i jej używać:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Tworzenie klastra i bazy danych
+            href: /azure/data-explorer/create-cluster-database-portal
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Pozyskiwanie danych przesyłanych strumieniowo z usługi Event Hubs
+            href: /azure/data-explorer/ingest-data-event-hub
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Wykonywanie zapytań o dane za pomocą internetowego interfejsu użytkownika
+            href: /azure/data-explorer/web-query-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Pozyskiwanie danych umieszczonych w kolejce za pomocą języka Python
+            href: /azure/data-explorer/python-ingest-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Wykonywanie zapytań o dane za pomocą języka Python
+            href: /azure/data-explorer/python-query-data
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/data-explorer/visualize-power-bi">Wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI</a>
-- title: Bezpłatne szkolenie wideo firmy PluralSight
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak kompilować kompleksowe rozwiązania:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/data-explorer/visualize-power-bi">Wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI</a>
+  - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
-    - title: Język zapytań dla usługi Azure Data Explorer
-      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-      image:
-        src: /azure/data-explorer/media/index/logo-pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Język zapytań dla usługi Azure Data Explorer
+            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+            image:
+              src: /azure/data-explorer/media/index/logo-pluralsight.svg
+              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+  - title: Dokumentacja
     items:
-    - title: Języki i interfejs API
-      html: <p><a href="https://aka.ms/kustolangref">Język zapytań, polecenia zarządzania i interfejsy API</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Języki i interfejs API
+            html: '<p><a href="https://aka.ms/kustolangref">Język zapytań, polecenia zarządzania i interfejsy API</a>'

@@ -1,60 +1,53 @@
-items:
 - name: Dokumentacja nadzoru nad tożsamościami w usłudze Azure AD
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Co to jest nadzór nad tożsamościami?
-    href: identity-governance-overview.md
-  - name: Co to są przeglądy dostępu?
-    href: access-reviews-overview.md
   expanded: false
+  items:
+    - name: Co to jest nadzór nad tożsamościami?
+      href: identity-governance-overview.md
+    - name: Co to są przeglądy dostępu?
+      href: access-reviews-overview.md
 - name: Pojęcia
-  items:
-  - name: Zarządzanie dostępem gości za pomocą przeglądów
-    href: manage-guest-access-with-access-reviews.md
-  - name: Zarządzanie dostępem użytkowników i przeglądy
-    href: manage-user-access-with-access-reviews.md
-  - name: Zarządzanie programami i ich kontrolami
-    href: manage-programs-controls.md
-  - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
-    href: conditional-access-exclusion.md
   expanded: false
-- name: Przewodniki z instrukcjami
   items:
-  - name: Przeglądy dostępu
-    items:
-    - name: Grupy i aplikacje
-      items:
-      - name: Tworzenie przeglądu dostępu
-        href: create-access-review.md
-      - name: Przegląd dostępu
-        href: perform-access-review.md
-      - name: Przegląd dostępu dla siebie
-        href: review-your-access.md
-      - name: Kończenie przeglądu dostępu
-        href: complete-access-review.md
-      - name: Pobieranie wyników przeglądu dostępu
-        href: retrieve-access-review.md
-    - name: Role usługi Azure AD
-      items:
-      - name: Przegląd posiadanych ról usługi Azure AD
-        href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-      - name: Rozpoczynanie przeglądu dostępu
-        href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-      - name: Kończenie przeglądu dostępu
-        href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-    - name: Role zasobów platformy Azure
-      items:
-      - name: Przeglądanie moich ról zasobów platformy Azure
-        href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-      - name: Rozpoczynanie przeglądu dostępu
-        href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-      - name: Kończenie przeglądu dostępu
-        href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+    - name: Zarządzanie dostępem gości za pomocą przeglądów
+      href: manage-guest-access-with-access-reviews.md
+    - name: Zarządzanie dostępem użytkowników i przeglądy
+      href: manage-user-access-with-access-reviews.md
+    - name: Zarządzanie programami i ich kontrolami
+      href: manage-programs-controls.md
+    - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
+      href: conditional-access-exclusion.md
+- name: Przewodniki z instrukcjami
   expanded: true
-ms.openlocfilehash: 888743ac9205c9b524327dd7b1b6631201b52a39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791087"
+  items:
+    - name: Przeglądy dostępu
+      items:
+        - name: Grupy i aplikacje
+          items:
+            - name: Tworzenie przeglądu dostępu
+              href: create-access-review.md
+            - name: Przegląd dostępu
+              href: perform-access-review.md
+            - name: Przegląd dostępu dla siebie
+              href: review-your-access.md
+            - name: Kończenie przeglądu dostępu
+              href: complete-access-review.md
+            - name: Pobieranie wyników przeglądu dostępu
+              href: retrieve-access-review.md
+        - name: Role usługi Azure AD
+          items:
+            - name: Przegląd posiadanych ról usługi Azure AD
+              href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+            - name: Rozpoczynanie przeglądu dostępu
+              href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+            - name: Kończenie przeglądu dostępu
+              href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+        - name: Role zasobów platformy Azure
+          items:
+            - name: Przeglądanie moich ról zasobów platformy Azure
+              href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+            - name: Rozpoczynanie przeglądu dostępu
+              href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+            - name: Kończenie przeglądu dostępu
+              href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json

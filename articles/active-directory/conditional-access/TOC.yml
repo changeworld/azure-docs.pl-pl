@@ -1,81 +1,74 @@
-items:
 - name: Dokumentacja dostępu warunkowego
   href: index.yml
 - name: Omówienie
   items:
-  - name: Co to jest dostęp warunkowy?
-    href: overview.md
+    - name: Co to jest dostęp warunkowy?
+      href: overview.md
 - name: Przewodniki Szybki start
   items:
-  - name: Wymaganie uwierzytelniania MFA dla określonych aplikacji
-    href: app-based-mfa.md
-  - name: Wymaganie akceptacji warunków użytkowania
-    href: require-tou.md
-  - name: Blokowanie dostępu po wykryciu ryzykownej sesji
-    href: app-sign-in-risk.md
+    - name: Wymaganie uwierzytelniania MFA dla określonych aplikacji
+      href: app-based-mfa.md
+    - name: Wymaganie akceptacji warunków użytkowania
+      href: require-tou.md
+    - name: Blokowanie dostępu po wykryciu ryzykownej sesji
+      href: app-sign-in-risk.md
 - name: Samouczki
   items:
-  - name: Migrowanie klasycznych zasad MFA
-    href: policy-migration-mfa.md
+    - name: Migrowanie klasycznych zasad MFA
+      href: policy-migration-mfa.md
 - name: Pojęcia
-  items:
-  - name: Ochrona punktu odniesienia
-    href: baseline-protection.md
-  - name: Warunki
-    href: conditions.md
-  - name: Warunki lokalizacji
-    href: location-condition.md
-  - name: Kontrolki
-    href: controls.md
-  - name: Zależności usługi
-    href: service-dependencies.md
-  - name: Narzędzie analizy warunkowej
-    href: what-if-tool.md
   expanded: false
-- name: Przewodniki z instrukcjami
   items:
-  - name: Planowanie wdrażania dostępu warunkowego
-    href: plan-conditional-access.md
-  - name: Najlepsze praktyki
-    href: best-practices.md
-  - name: Blokowanie starszego uwierzytelniania
-    href: block-legacy-authentication.md
-  - name: Kontrola dostępu do usług Exchange Online i SharePoint Online
-    href: conditional-access-for-exo-and-spo.md
-  - name: Migrowanie zasad klasycznych
-    href: policy-migration.md
-  - name: Wymaganie zatwierdzonych aplikacji klienckich
-    href: app-based-conditional-access.md
-  - name: Wymaganie zasad ochrony aplikacji
-    href: app-protection-based-conditional-access.md
-  - name: Wymaganie urządzeń zarządzanych
-    href: require-managed-devices.md
-  - name: Wymaganie uwierzytelniania MFA w przypadku prób dostępu z niezaufanych sieci
-    href: untrusted-networks.md
-  - name: Wymaganie warunków użytkowania
-    href: terms-of-use.md
+    - name: Ochrona punktu odniesienia
+      href: baseline-protection.md
+    - name: Warunki
+      href: conditions.md
+    - name: Warunki lokalizacji
+      href: location-condition.md
+    - name: Kontrolki
+      href: controls.md
+    - name: Zależności usługi
+      href: service-dependencies.md
+    - name: Narzędzie analizy warunkowej
+      href: what-if-tool.md
+- name: Przewodniki z instrukcjami
   expanded: true
+  items:
+    - name: Planowanie wdrażania dostępu warunkowego
+      href: plan-conditional-access.md
+    - name: Najlepsze praktyki
+      href: best-practices.md
+    - name: Blokowanie starszego uwierzytelniania
+      href: block-legacy-authentication.md
+    - name: Kontrola dostępu do usług Exchange Online i SharePoint Online
+      href: conditional-access-for-exo-and-spo.md
+    - name: Migrowanie zasad klasycznych
+      href: policy-migration.md
+    - name: Wymaganie zatwierdzonych aplikacji klienckich
+      href: app-based-conditional-access.md
+    - name: Wymaganie zasad ochrony aplikacji
+      href: app-protection-based-conditional-access.md
+    - name: Wymaganie urządzeń zarządzanych
+      href: require-managed-devices.md
+    - name: Wymaganie uwierzytelniania MFA w przypadku prób dostępu z niezaufanych sieci
+      href: untrusted-networks.md
+    - name: Wymaganie warunków użytkowania
+      href: terms-of-use.md
 - name: Dokumentacja
   items:
-  - name: Dokumentacja techniczna
-    href: technical-reference.md
+    - name: Dokumentacja techniczna
+      href: technical-reference.md
 - name: Zasoby
   items:
-  - name: Forum z opiniami na temat platformy Azure
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: Aktualizacje usług
-    href: ../fundamentals/whats-new.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 1db270043ea996b72f47ee00dbd07f1bd33a1e48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787036"
+    - name: Forum z opiniami na temat platformy Azure
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: Aktualizacje usług
+      href: ../fundamentals/whats-new.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

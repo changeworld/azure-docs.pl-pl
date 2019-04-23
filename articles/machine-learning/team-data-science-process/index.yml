@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 193250708b953b2bf2e2db84b3eef2dc4a09834b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451924"
 documentType: LandingData
 title: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
 metadata:
   title: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
-  description: Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.
+  description: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
   services: machine-learning
   author: cjgronlund
   ms.service: machine-learning
@@ -20,26 +14,26 @@ metadata:
   ms.date: 01/18/2018
   ms.author: cgronlun
 abstract:
-  description: Zespołowe przetwarzanie danych dla celów naukowych to elastyczna, iteracyjna metodologia nauki o danych oparta na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.
+  description: 'Zespołowe przetwarzanie danych dla celów naukowych to elastyczna, iteracyjna metodologia nauki o danych oparta na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Uzyskaj informacje o zespołowym przetwarzaniu danych dla celów naukowych:'
-  - type: list
-    style: unordered
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - html: <a href="overview">Omówienie</a>
-    - html: <a href="lifecycle">Cykl życia</a>
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych w różnych scenariuszach:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Uzyskaj informacje o zespołowym przetwarzaniu danych dla celów naukowych:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="overview">Omówienie</a>
+          - html: <a href="lifecycle">Cykl życia</a>
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="walkthroughs-spark">Spark with PySpark and Scala (Platforma Spark z interfejsem PySpark i środowiskiem Scala)</a>
-    - html: <a href="walkthroughs-hdinsight-hadoop">Hive with HDInsight Hadoop (Technologia Hive w usłudze HDInsight Hadoop)</a>
-    - html: <a href="walkthroughs-azure-data-lake">U-SQL with Azure Data Lake (Język U-SQL w usłudze Azure Data Lake)</a>
-    - html: <a href="walkthroughs-sql-server">R, Python and T-SQL with SQL Server (Języki R, Python i T-SQL w programie SQL Server)</a>
-    - html: <a href="walkthroughs-sql-data-warehouse">T-SQL and Python with SQL DW (Języki T-SQL i Python w magazynie danych SQL)</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych w różnych scenariuszach:'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="walkthroughs-spark">Spark with PySpark and Scala (Platforma Spark z interfejsem PySpark i środowiskiem Scala)</a>
+          - html: <a href="walkthroughs-hdinsight-hadoop">Hive with HDInsight Hadoop (Technologia Hive w usłudze HDInsight Hadoop)</a>
+          - html: <a href="walkthroughs-azure-data-lake">U-SQL with Azure Data Lake (Język U-SQL w usłudze Azure Data Lake)</a>
+          - html: '<a href="walkthroughs-sql-server">R, Python and T-SQL with SQL Server (Języki R, Python i T-SQL w programie SQL Server)</a>'
+          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL and Python with SQL DW (Języki T-SQL i Python w magazynie danych SQL)</a>

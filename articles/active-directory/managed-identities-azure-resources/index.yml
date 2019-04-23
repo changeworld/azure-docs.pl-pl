@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fd9c4513c2cda3fb6283e748f2458043b02ab482
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203576"
 documentType: LandingData
 title: Tożsamości zarządzane usługi Azure AD dla dokumentacji zasobów platformy Azure
 metadata:
-  document_id: 
+  document_id: null
   title: Tożsamości zarządzane usługi Azure AD dla dokumentacji zasobów platformy Azure
-  description: Dowiedz się, jak używać tożsamości zarządzanych dla zasobów platformy Azure do bezpiecznego uwierzytelniania w usługach platformy Azure w chmurze bez konieczności przechowywania poświadczeń w kodzie źródłowym.
+  description: 'Dowiedz się, jak używać tożsamości zarządzanych dla zasobów platformy Azure do bezpiecznego uwierzytelniania w usługach platformy Azure w chmurze bez konieczności przechowywania poświadczeń w kodzie źródłowym.'
   services: active-directory
   ms.subservice: msi
   author: priyamohanram
@@ -22,58 +16,58 @@ metadata:
   ms.date: 03/16/2018
   ms.author: priyamo
 abstract:
-  description: Tożsamości zarządzane dla zasobów platformy Azure udostępniają usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie.  Aby dowiedzieć się, jak tworzyć tożsamości zarządzane dla zasobów platformy Azure i zarządzać nimi, skorzystaj z naszych przewodników Szybki start i samouczków.
+  description: 'Tożsamości zarządzane dla zasobów platformy Azure udostępniają usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie.  Aby dowiedzieć się, jak tworzyć tożsamości zarządzane dla zasobów platformy Azure i zarządzać nimi, skorzystaj z naszych przewodników Szybki start i samouczków.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 112
       src: media/index/video-thumb-landing-page.png
       width: 200
     title: Wprowadzenie do tożsamości zarządzanych dla zasobów platformy Azure
-    href: https://www.youtube.com/embed/bBi1bll2928
+    href: 'https://www.youtube.com/embed/bBi1bll2928'
     width: 200
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak uzyskiwać dostęp do interfejsu API usługi Azure Resource Manager za pomocą tożsamości zarządzanych dla zasobów platformy Azure
-  - type: list
-    style: unordered
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Dostęp do usługi Azure Resource Manager z maszyny wirtualnej platformy Azure z systemem Windows</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Dostęp do usługi Azure Resource Manager z maszyny wirtualnej platformy Azure z systemem Linux</a>
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak bezpiecznie uzyskiwać dostęp do zasobów platformy Azure za pomocą tożsamości zarządzanych dla zasobów platformy Azure
-  - type: paragraph
-    text: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Windows
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak uzyskiwać dostęp do interfejsu API usługi Azure Resource Manager za pomocą tożsamości zarządzanych dla zasobów platformy Azure'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Dostęp do usługi Azure Resource Manager z maszyny wirtualnej platformy Azure z systemem Windows</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Dostęp do usługi Azure Resource Manager z maszyny wirtualnej platformy Azure z systemem Linux</a>
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Uzyskiwanie dostępu do usługi Azure Data Lake Store</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Uzyskiwanie dostępu do usługi Azure SQL</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Uzyskiwanie dostępu do usługi Azure Key Vault</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Uzyskiwanie dostępu do usługi Azure Cosmos DB</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości przypisanej przez użytkownika</a>
-  - type: paragraph
-    text: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Linux
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak bezpiecznie uzyskiwać dostęp do zasobów platformy Azure za pomocą tożsamości zarządzanych dla zasobów platformy Azure'
+      - type: paragraph
+        text: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Windows
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Uzyskiwanie dostępu do usługi Azure Data Lake Store</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Uzyskiwanie dostępu do usługi Azure SQL</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Uzyskiwanie dostępu do usługi Azure Key Vault</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Uzyskiwanie dostępu do usługi Azure Cosmos DB</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości przypisanej przez użytkownika</a>
+      - type: paragraph
+        text: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Linux
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Uzyskiwanie dostępu do usługi Azure Data Lake Store</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Uzyskiwanie dostępu do usługi Azure Key Vault</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Uzyskiwanie dostępu do usługi Azure Cosmos DB</a>
+          - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości przypisanej przez użytkownika</a>
+  - title: Dokumentacja
     items:
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Uzyskiwanie dostępu do usługi Azure Data Lake Store</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Uzyskiwanie dostępu do usługi Azure Key Vault</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Uzyskiwanie dostępu do usługi Azure Cosmos DB</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości przypisanej przez użytkownika</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/az.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/msi/mgmt/2015-08-31-preview/msi">Go</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: '<p><a href="/powershell/module/az.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Interfejs wiersza polecenia platformy Azure</a></p>'
+          - title: Języki
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/msi/mgmt/2015-08-31-preview/msi">Go</a></p>'

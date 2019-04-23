@@ -1,235 +1,229 @@
-items:
 - name: Dokumentacja usługi Data Factory V1
+  href: null
 - name: Przechodzenie do dokumentacji bieżącej wersji
   href: ../introduction.md
 - name: Omówienie
   items:
-  - name: Wprowadzenie do usługi Azure Data Factory
-    href: data-factory-introduction.md
-  - name: Pojęcia
-    items:
-    - name: Potoki i działania
-      href: data-factory-create-pipelines.md
-    - name: Zestawy danych
-      href: data-factory-create-datasets.md
-    - name: Planowanie i wykonywanie
-      href: data-factory-scheduling-and-execution.md
+    - name: Wprowadzenie do usługi Azure Data Factory
+      href: data-factory-introduction.md
+    - name: Pojęcia
+      items:
+        - name: Potoki i działania
+          href: data-factory-create-pipelines.md
+        - name: Zestawy danych
+          href: data-factory-create-datasets.md
+        - name: Planowanie i wykonywanie
+          href: data-factory-scheduling-and-execution.md
 - name: Rozpoczęcie pracy
-  items:
-  - name: Tworzenie potoku w celu kopiowania danych
-    href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-    items:
-    - name: Kreator kopiowania
-      href: data-factory-copy-data-wizard-tutorial.md
-    - name: Azure Portal
-      href: data-factory-copy-activity-tutorial-using-azure-portal.md
-    - name: Visual Studio
-      href: data-factory-copy-activity-tutorial-using-visual-studio.md
-    - name: Azure PowerShell
-      href: data-factory-copy-activity-tutorial-using-powershell.md
-    - name: Interfejs API REST
-      href: data-factory-copy-activity-tutorial-using-rest-api.md
-    - name: Interfejs API .NET
-      href: data-factory-copy-activity-tutorial-using-dotnet-api.md
-  - name: Tworzenie potoku w celu przekształcania danych
-    href: data-factory-build-your-first-pipeline.md
-    items:
-    - name: Azure Portal
-      href: data-factory-build-your-first-pipeline-using-editor.md
-    - name: Visual Studio
-      href: data-factory-build-your-first-pipeline-using-vs.md
-    - name: Azure PowerShell
-      href: data-factory-build-your-first-pipeline-using-powershell.md
-    - name: Szablon usługi Azure Resource Manager
-      href: data-factory-build-your-first-pipeline-using-arm.md
-    - name: Interfejs API REST
-      href: data-factory-build-your-first-pipeline-using-rest-api.md
-  - name: Przenoszenie danych między środowiskiem lokalnym i chmurą
-    href: data-factory-move-data-between-onprem-and-cloud.md
-  - name: Często zadawane pytania
-    href: data-factory-faq.md
   expanded: true
+  items:
+    - name: Tworzenie potoku w celu kopiowania danych
+      href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+      items:
+        - name: Kreator kopiowania
+          href: data-factory-copy-data-wizard-tutorial.md
+        - name: Azure Portal
+          href: data-factory-copy-activity-tutorial-using-azure-portal.md
+        - name: Visual Studio
+          href: data-factory-copy-activity-tutorial-using-visual-studio.md
+        - name: Azure PowerShell
+          href: data-factory-copy-activity-tutorial-using-powershell.md
+        - name: Interfejs API REST
+          href: data-factory-copy-activity-tutorial-using-rest-api.md
+        - name: Interfejs API .NET
+          href: data-factory-copy-activity-tutorial-using-dotnet-api.md
+    - name: Tworzenie potoku w celu przekształcania danych
+      href: data-factory-build-your-first-pipeline.md
+      items:
+        - name: Azure Portal
+          href: data-factory-build-your-first-pipeline-using-editor.md
+        - name: Visual Studio
+          href: data-factory-build-your-first-pipeline-using-vs.md
+        - name: Azure PowerShell
+          href: data-factory-build-your-first-pipeline-using-powershell.md
+        - name: Szablon usługi Azure Resource Manager
+          href: data-factory-build-your-first-pipeline-using-arm.md
+        - name: Interfejs API REST
+          href: data-factory-build-your-first-pipeline-using-rest-api.md
+    - name: Przenoszenie danych między środowiskiem lokalnym i chmurą
+      href: data-factory-move-data-between-onprem-and-cloud.md
+    - name: Często zadawane pytania
+      href: data-factory-faq.md
 - name: Instrukcje
   items:
-  - name: Przenoszenie danych
-    items:
-    - name: Omówienie działania kopiowania
-      href: data-factory-data-movement-activities.md
-    - name: Kreator kopiowania w usłudze Data Factory
-      href: data-factory-azure-copy-wizard.md
+    - name: Przenoszenie danych
       items:
-      - name: Ładowanie 1 TB w ciągu 15 minut
-        href: data-factory-load-sql-data-warehouse.md
-    - name: Przewodnik dotyczący wydajności i dostosowywania
-      href: data-factory-copy-activity-performance.md
-    - name: Odporność na uszkodzenia
-      href: data-factory-copy-activity-fault-tolerance.md
-    - name: Zagadnienia związane z zabezpieczeniami
-      href: data-factory-data-movement-security-considerations.md
-    - name: Łączniki
+        - name: Omówienie działania kopiowania
+          href: data-factory-data-movement-activities.md
+        - name: Kreator kopiowania w usłudze Data Factory
+          href: data-factory-azure-copy-wizard.md
+          items:
+            - name: Ładowanie 1 TB w ciągu 15 minut
+              href: data-factory-load-sql-data-warehouse.md
+        - name: Przewodnik dotyczący wydajności i dostosowywania
+          href: data-factory-copy-activity-performance.md
+        - name: Odporność na uszkodzenia
+          href: data-factory-copy-activity-fault-tolerance.md
+        - name: Zagadnienia związane z zabezpieczeniami
+          href: data-factory-data-movement-security-considerations.md
+        - name: Łączniki
+          items:
+            - name: Amazon Redshift
+              href: data-factory-amazon-redshift-connector.md
+            - name: Amazon S3
+              href: data-factory-amazon-simple-storage-service-connector.md
+            - name: Azure Blob Storage
+              href: data-factory-azure-blob-connector.md
+            - name: Azure Cosmos DB
+              href: data-factory-azure-documentdb-connector.md
+            - name: Usługa Azure Data Lake Storage 1. generacji
+              href: data-factory-azure-datalake-connector.md
+            - name: Azure Search
+              href: data-factory-azure-search-connector.md
+            - name: Azure SQL Database
+              href: data-factory-azure-sql-connector.md
+            - name: Azure SQL Data Warehouse
+              href: data-factory-azure-sql-data-warehouse-connector.md
+            - name: Azure Table Storage
+              href: data-factory-azure-table-connector.md
+            - name: Cassandra
+              href: data-factory-onprem-cassandra-connector.md
+            - name: DB2
+              href: data-factory-onprem-db2-connector.md
+            - name: System plików
+              href: data-factory-onprem-file-system-connector.md
+            - name: FTP
+              href: data-factory-ftp-connector.md
+            - name: SYSTEM PLIKÓW HDFS
+              href: data-factory-hdfs-connector.md
+            - name: HTTP
+              href: data-factory-http-connector.md
+            - name: MongoDB
+              href: data-factory-on-premises-mongodb-connector.md
+            - name: MySQL
+              href: data-factory-onprem-mysql-connector.md
+            - name: OData
+              href: data-factory-odata-connector.md
+            - name: ODBC
+              href: data-factory-odbc-connector.md
+            - name: Oracle
+              href: data-factory-onprem-oracle-connector.md
+            - name: PostgreSQL
+              href: data-factory-onprem-postgresql-connector.md
+            - name: SalesForce
+              href: data-factory-salesforce-connector.md
+            - name: SAP Business Warehouse
+              href: data-factory-sap-business-warehouse-connector.md
+            - name: SAP HANA
+              href: data-factory-sap-hana-connector.md
+            - name: SFTP
+              href: data-factory-sftp-connector.md
+            - name: Oprogramowanie SQL Server
+              href: data-factory-sqlserver-connector.md
+            - name: Sybase
+              href: data-factory-onprem-sybase-connector.md
+            - name: Teradata
+              href: data-factory-onprem-teradata-connector.md
+            - name: Tabela sieci Web
+              href: data-factory-web-table-connector.md
+        - name: Brama zarządzania danymi
+          href: data-factory-data-management-gateway.md
+    - name: Przekształcanie danych
+      href: data-factory-data-transformation-activities.md
       items:
-      - name: Amazon Redshift
-        href: data-factory-amazon-redshift-connector.md
-      - name: Amazon S3
-        href: data-factory-amazon-simple-storage-service-connector.md
-      - name: Azure Blob Storage
-        href: data-factory-azure-blob-connector.md
-      - name: Azure Cosmos DB
-        href: data-factory-azure-documentdb-connector.md
-      - name: Usługa Azure Data Lake Storage 1. generacji
-        href: data-factory-azure-datalake-connector.md
-      - name: Azure Search
-        href: data-factory-azure-search-connector.md
-      - name: Azure SQL Database
-        href: data-factory-azure-sql-connector.md
-      - name: Azure SQL Data Warehouse
-        href: data-factory-azure-sql-data-warehouse-connector.md
-      - name: Azure Table Storage
-        href: data-factory-azure-table-connector.md
-      - name: Cassandra
-        href: data-factory-onprem-cassandra-connector.md
-      - name: DB2
-        href: data-factory-onprem-db2-connector.md
-      - name: System plików
-        href: data-factory-onprem-file-system-connector.md
-      - name: FTP
-        href: data-factory-ftp-connector.md
-      - name: SYSTEM PLIKÓW HDFS
-        href: data-factory-hdfs-connector.md
-      - name: HTTP
-        href: data-factory-http-connector.md
-      - name: MongoDB
-        href: data-factory-on-premises-mongodb-connector.md
-      - name: MySQL
-        href: data-factory-onprem-mysql-connector.md
-      - name: OData
-        href: data-factory-odata-connector.md
-      - name: ODBC
-        href: data-factory-odbc-connector.md
-      - name: Oracle
-        href: data-factory-onprem-oracle-connector.md
-      - name: PostgreSQL
-        href: data-factory-onprem-postgresql-connector.md
-      - name: SalesForce
-        href: data-factory-salesforce-connector.md
-      - name: SAP Business Warehouse
-        href: data-factory-sap-business-warehouse-connector.md
-      - name: SAP HANA
-        href: data-factory-sap-hana-connector.md
-      - name: SFTP
-        href: data-factory-sftp-connector.md
-      - name: Oprogramowanie SQL Server
-        href: data-factory-sqlserver-connector.md
-      - name: Sybase
-        href: data-factory-onprem-sybase-connector.md
-      - name: Teradata
-        href: data-factory-onprem-teradata-connector.md
-      - name: Tabela sieci Web
-        href: data-factory-web-table-connector.md
-    - name: Brama zarządzania danymi
-      href: data-factory-data-management-gateway.md
-  - name: Przekształcanie danych
-    href: data-factory-data-transformation-activities.md
-    items:
-    - name: Działania technologii Hive w usłudze HDInsight
-      href: data-factory-hive-activity.md
-    - name: Działania technologii Pig w usłudze HDInsight
-      href: data-factory-pig-activity.md
-    - name: Działania technologii MapReduce w usłudze HDInsight
-      href: data-factory-map-reduce.md
-    - name: Działania przesyłania strumieniowego usługi HDInsight
-      href: data-factory-hadoop-streaming-activity.md
-    - name: Działania platformy Spark w usłudze HDInsight
-      href: data-factory-spark.md
-    - name: Działanie wykonywania wsadowego w usłudze Machine Learning
-      href: data-factory-azure-ml-batch-execution-activity.md
-    - name: Działanie aktualizowania zasobów w usłudze Machine Learning
-      href: data-factory-azure-ml-update-resource-activity.md
-    - name: Działania procedur składowanych
-      href: data-factory-stored-proc-activity.md
-    - name: Działania języka U-SQL usługi Data Lake Analytics
-      href: data-factory-usql-activity.md
-    - name: Niestandardowe działanie platformy .NET
-      href: data-factory-use-custom-activities.md
-    - name: Wywoływanie skryptów języka R
-      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample
-    - name: Ponowne przetwarzanie modeli w usługach Azure Analysis Services
-      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample
-    - name: Usługi połączone usługi Compute
-      href: data-factory-compute-linked-services.md
-  - name: Programowanie
-    items:
-    - name: Szablon usługi Azure Resource Manager
-      href: data-factory-how-to-use-resource-manager-templates.md
-    - name: Przykłady
-      href: data-factory-samples.md
-    - name: Funkcje i zmienne systemowe
-      href: data-factory-functions-variables.md
-    - name: Reguły nazewnictwa
-      href: data-factory-naming-rules.md
-    - name: Dziennik zmian interfejsu API platformy .NET
-      href: data-factory-api-change-log.md
-  - name: Monitorowanie i zarządzanie
-    items:
-    - name: Aplikacja do monitorowania i zarządzania
-      href: data-factory-monitor-manage-app.md
-    - name: Potoki usługi Azure Data Factory
-      href: data-factory-monitor-manage-pipelines.md
-    - name: Korzystanie z zestawu SDK dla platformy .NET
-      href: data-factory-create-data-factories-programmatically.md
-    - name: Rozwiązywanie problemów z usługą Data Factory
-      href: data-factory-troubleshoot.md
-    - name: Rozwiązywanie problemów z używaniem bramy zarządzania danymi
-      href: data-factory-troubleshoot-gateway-issues.md
-  - name: Wywoływanie pakietów SSIS za pomocą działania procedury składowanej
-    href: how-to-invoke-ssis-package-stored-procedure-activity.md
+        - name: Działania technologii Hive w usłudze HDInsight
+          href: data-factory-hive-activity.md
+        - name: Działania technologii Pig w usłudze HDInsight
+          href: data-factory-pig-activity.md
+        - name: Działania technologii MapReduce w usłudze HDInsight
+          href: data-factory-map-reduce.md
+        - name: Działania przesyłania strumieniowego usługi HDInsight
+          href: data-factory-hadoop-streaming-activity.md
+        - name: Działania platformy Spark w usłudze HDInsight
+          href: data-factory-spark.md
+        - name: Działanie wykonywania wsadowego w usłudze Machine Learning
+          href: data-factory-azure-ml-batch-execution-activity.md
+        - name: Działanie aktualizowania zasobów w usłudze Machine Learning
+          href: data-factory-azure-ml-update-resource-activity.md
+        - name: Działania procedur składowanych
+          href: data-factory-stored-proc-activity.md
+        - name: Działania języka U-SQL usługi Data Lake Analytics
+          href: data-factory-usql-activity.md
+        - name: Niestandardowe działanie platformy .NET
+          href: data-factory-use-custom-activities.md
+        - name: Wywoływanie skryptów języka R
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+        - name: Ponowne przetwarzanie modeli w usługach Azure Analysis Services
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+        - name: Usługi połączone usługi Compute
+          href: data-factory-compute-linked-services.md
+    - name: Programowanie
+      items:
+        - name: Szablon usługi Azure Resource Manager
+          href: data-factory-how-to-use-resource-manager-templates.md
+        - name: Przykłady
+          href: data-factory-samples.md
+        - name: Funkcje i zmienne systemowe
+          href: data-factory-functions-variables.md
+        - name: Reguły nazewnictwa
+          href: data-factory-naming-rules.md
+        - name: Dziennik zmian interfejsu API platformy .NET
+          href: data-factory-api-change-log.md
+    - name: Monitorowanie i zarządzanie
+      items:
+        - name: Aplikacja do monitorowania i zarządzania
+          href: data-factory-monitor-manage-app.md
+        - name: Potoki usługi Azure Data Factory
+          href: data-factory-monitor-manage-pipelines.md
+        - name: Korzystanie z zestawu SDK dla platformy .NET
+          href: data-factory-create-data-factories-programmatically.md
+        - name: Rozwiązywanie problemów z usługą Data Factory
+          href: data-factory-troubleshoot.md
+        - name: Rozwiązywanie problemów z używaniem bramy zarządzania danymi
+          href: data-factory-troubleshoot-gateway-issues.md
+    - name: Wywoływanie pakietów SSIS za pomocą działania procedury składowanej
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: Dokumentacja
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?service=data-factory
-  - name: Azure PowerShell
-    href: /powershell/module/az.datafactory
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.datafactories.models
-  - name: REST
-    href: /rest/api/datafactory/
-  - name: JSON
-    href: data-factory-json-scripting-reference.md
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
+    - name: Azure PowerShell
+      href: /powershell/module/az.datafactory
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datafactories.models
+    - name: REST
+      href: /rest/api/datafactory/
+    - name: JSON
+      href: data-factory-json-scripting-reference.md
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Analizy przypadków
-    href: data-factory-customer-case-studies.md
-  - name: Ścieżka szkoleniowa
-    href: https://azure.microsoft.com/documentation/learning-paths/data-factory
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/data-factory/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Informacje o wersji bramy zarządzania danymi
-    href: data-factory-gateway-release-notes.md
-  - name: Prośba o funkcję
-    href: https://feedback.azure.com/forums/270578-azure-data-factory
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=data-factory
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-data-factory
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=data-factory
-  - name: Przetwarzanie dużych ilości danych za pomocą usług Data Factory i Batch
-    href: data-factory-data-processing-using-batch.md
-  - name: analizy przypadków
-    items:
-    - name: Profilowanie klientów
-      href: data-factory-customer-profiling-usecase.md
-    - name: Rekomendacje produktów
-      href: data-factory-product-reco-usecase.md
-ms.openlocfilehash: 3f1f95be4dc6327c97d5553da76529d58f2a7554
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528852"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Analizy przypadków
+      href: data-factory-customer-case-studies.md
+    - name: Ścieżka szkoleniowa
+      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Informacje o wersji bramy zarządzania danymi
+      href: data-factory-gateway-release-notes.md
+    - name: Prośba o funkcję
+      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
+    - name: Przetwarzanie dużych ilości danych za pomocą usług Data Factory i Batch
+      href: data-factory-data-processing-using-batch.md
+    - name: analizy przypadków
+      items:
+        - name: Profilowanie klientów
+          href: data-factory-customer-profiling-usecase.md
+        - name: Rekomendacje produktów
+          href: data-factory-product-reco-usecase.md

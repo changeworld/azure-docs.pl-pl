@@ -1,97 +1,90 @@
-items:
 - name: Dokumentacja usługi Azure Storage
   href: /azure/storage/
 - name: Omówienie
-  items:
-  - name: Omówienie usługi Azure Table Storage
-    href: table-storage-overview.md
-  - name: Wybieranie między usługą Table Storage a interfejsem API tabeli
-    href: /azure/cosmos-db/table-support
-    maintainContext: true
   expanded: true
+  items:
+    - name: Omówienie usługi Azure Table Storage
+      href: table-storage-overview.md
+    - name: Wybieranie między usługą Table Storage a interfejsem API tabeli
+      href: /azure/cosmos-db/table-support
+      maintainContext: true
 - name: Przewodniki Szybki start
   items:
-  - name: Tworzenie konta magazynu
-    displayName: resource manager, resource manager template, template, ARM
-    href: /azure/storage/common/storage-quickstart-create-account
-    maintainContext: true
-  - name: Tworzenie tabeli w witrynie Azure Portal
-    href: table-storage-quickstart-portal.md
+    - name: Tworzenie konta magazynu
+      displayName: 'resource manager, resource manager template, template, ARM'
+      href: /azure/storage/common/storage-quickstart-create-account
+      maintainContext: true
+    - name: Tworzenie tabeli w witrynie Azure Portal
+      href: table-storage-quickstart-portal.md
 - name: Przykłady
   items:
-  - name: .NET
-    href: /azure/cosmos-db/table-storage-how-to-use-dotnet
-    maintainContext: true
-  - name: F#
-    href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    maintainContext: true
-  - name: Java
-    href: /azure/cosmos-db/table-storage-how-to-use-java
-    maintainContext: true
-  - name: Node.js
-    href: /azure/cosmos-db/table-storage-how-to-use-nodejs
-    maintainContext: true
-  - name: C++
-    href: /azure/cosmos-db/table-storage-how-to-use-c-plus
-    maintainContext: true
-  - name: PHP
-    href: /azure/cosmos-db/table-storage-how-to-use-php
-    maintainContext: true
-  - name: Python
-    href: /azure/cosmos-db/table-storage-how-to-use-python
-    maintainContext: true
-  - name: Ruby
-    href: /azure/cosmos-db/table-storage-how-to-use-ruby
-    maintainContext: true
-  - name: PowerShell
-    href: /azure/storage/tables/table-storage-how-to-use-powershell
-    maintainContext: true
+    - name: .NET
+      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      maintainContext: true
+    - name: 'F#'
+      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      maintainContext: true
+    - name: Java
+      href: /azure/cosmos-db/table-storage-how-to-use-java
+      maintainContext: true
+    - name: Node.js
+      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      maintainContext: true
+    - name: C++
+      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      maintainContext: true
+    - name: PHP
+      href: /azure/cosmos-db/table-storage-how-to-use-php
+      maintainContext: true
+    - name: Python
+      href: /azure/cosmos-db/table-storage-how-to-use-python
+      maintainContext: true
+    - name: Ruby
+      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      maintainContext: true
+    - name: PowerShell
+      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      maintainContext: true
 - name: Pojęcia
   items:
-  - name: Konta magazynu
-    href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    items:
-    - name: Zarządzanie kontem magazynu
-      href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Podnoszenie poziomu konta magazynu
-      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-  - name: Projektowanie skalowalnych i wydajnych tabel
-    href: table-storage-design.md
-  - name: Wytyczne dotyczące projektu tabel
-    href: table-storage-design-guidelines.md
-  - name: Projektowanie pod kątem wykonywania zapytań
-    href: table-storage-design-for-query.md
-  - name: Projektowanie pod kątem modyfikacji danych
-    href: table-storage-design-for-modification.md
-  - name: Szyfrowanie danych tabeli
-    href: table-storage-design-encrypt-data.md
-  - name: Modelowanie relacji
-    href: table-storage-design-modeling.md
-  - name: Wzorce projektowe tabel
-    href: table-storage-design-patterns.md
+    - name: Konta magazynu
+      href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      items:
+        - name: Zarządzanie kontem magazynu
+          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Podnoszenie poziomu konta magazynu
+          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Projektowanie skalowalnych i wydajnych tabel
+      href: table-storage-design.md
+    - name: Wytyczne dotyczące projektu tabel
+      href: table-storage-design-guidelines.md
+    - name: Projektowanie pod kątem wykonywania zapytań
+      href: table-storage-design-for-query.md
+    - name: Projektowanie pod kątem modyfikacji danych
+      href: table-storage-design-for-modification.md
+    - name: Szyfrowanie danych tabeli
+      href: table-storage-design-encrypt-data.md
+    - name: Modelowanie relacji
+      href: table-storage-design-modeling.md
+    - name: Wzorce projektowe tabel
+      href: table-storage-design-patterns.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Jak korzystać z emulatora magazynu
-    href: /azure/storage/common/storage-use-emulator
-    maintainContext: true
-  - name: Transfer danych
-    items:
-    - name: Narzędzie AzCopy (wersja 10)
-      href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Narzędzie AzCopy w systemie Windows (wersja 8)
-      href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Narzędzie AzCopy w systemie Linux (wersja 8)
-      href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-  - name: Inicjowanie trybu failover konta
-    href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Jak korzystać z emulatora magazynu
+      href: /azure/storage/common/storage-use-emulator
+      maintainContext: true
+    - name: Transfer danych
+      items:
+        - name: Narzędzie AzCopy (wersja 10)
+          href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Narzędzie AzCopy w systemie Windows (wersja 8)
+          href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Narzędzie AzCopy w systemie Linux (wersja 8)
+          href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Inicjowanie trybu failover konta
+      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: Zasoby
   items:
-  - name: Interfejsy API REST usługi Table Storage
-    href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
-    maintainContext: true
-ms.openlocfilehash: de554dc0e15e351eb7ba5b36e38fc32f01b700b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894108"
+    - name: Interfejsy API REST usługi Table Storage
+      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      maintainContext: true

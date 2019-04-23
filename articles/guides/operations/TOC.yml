@@ -1,70 +1,63 @@
-items:
 - name: Platforma Azure dla operatorów IT
   items:
-  - name: Rozpoczynanie pracy z platformą Azure
-    href: azure-operations-guide.md
-  - name: Przewodniki Szybki start
-    items:
-    - name: Maszyny wirtualne
+    - name: Rozpoczynanie pracy z platformą Azure
+      href: azure-operations-guide.md
+    - name: Przewodniki Szybki start
       items:
-      - name: Maszyny wirtualne z systemem Windows
-        href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Maszyny wirtualne z systemem Linux
-        href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-    - name: Sieci wirtualne
+        - name: Maszyny wirtualne
+          items:
+            - name: Maszyny wirtualne z systemem Windows
+              href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Maszyny wirtualne z systemem Linux
+              href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+        - name: Sieci wirtualne
+          items:
+            - name: Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
+              href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+        - name: Bezpieczeństwo
+          items:
+            - name: Zarządzanie zasobami za pomocą przypisań ról
+              href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+        - name: Azure Stack
+          items:
+            - name: Omówienie wdrożenia usługi Azure Stack
+              href: /azure-stack/asdk/asdk-download
+        - name: Azure Backup
+          items:
+            - name: Wykonywanie kopii zapasowej maszyny wirtualnej w witrynie Azure Portal
+              href: ../../backup/quick-backup-vm-portal.md
+        - name: Azure Site Recovery
+          items:
+            - name: Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
+              href: ../../site-recovery/azure-to-azure-quickstart.md
+    - name: Samouczki
       items:
-      - name: Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
-        href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-    - name: Bezpieczeństwo
+        - name: Maszyny wirtualne
+          items:
+            - name: Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią
+              href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Tworzenie maszyny wirtualnej z systemem Linux i zarządzanie nią
+              href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Potok ciągłej integracji/ciągłego wdrażania narzędzia Jenkins
+              href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Równoważnie obciążenia maszyn wirtualnych
+              href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Tworzenie szablonów usługi Azure Resource Manager
+              href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+            - name: Wykonywanie kopii zapasowych maszyn wirtualnych na dużą skalę
+              href: ../../backup/tutorial-backup-vm-at-scale.md
+    - name: Przewodniki z instrukcjami
       items:
-      - name: Zarządzanie zasobami za pomocą przypisań ról
-        href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-    - name: Azure Stack
+        - name: Jak pobrać fakturę rozliczeniową za platformę Azure i dane dziennego użycia
+          href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Zasoby
       items:
-      - name: Omówienie wdrożenia usługi Azure Stack
-        href: ../../azure-stack/azure-stack-deploy-overview.md
-    - name: Azure Backup
-      items:
-      - name: Wykonywanie kopii zapasowej maszyny wirtualnej w witrynie Azure Portal
-        href: ../../backup/quick-backup-vm-portal.md
-    - name: Azure Site Recovery
-      items:
-      - name: Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
-        href: ../../site-recovery/azure-to-azure-quickstart.md
-  - name: Samouczki
-    items:
-    - name: Maszyny wirtualne
-      items:
-      - name: Tworzenie maszyny wirtualnej z systemem Windows i zarządzanie nią
-        href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Tworzenie maszyny wirtualnej z systemem Linux i zarządzanie nią
-        href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Potok ciągłej integracji/ciągłego wdrażania narzędzia Jenkins
-        href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Równoważnie obciążenia maszyn wirtualnych
-        href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Tworzenie szablonów usługi Azure Resource Manager
-        href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-      - name: Wykonywanie kopii zapasowych maszyn wirtualnych na dużą skalę
-        href: ../../backup/tutorial-backup-vm-at-scale.md
-  - name: Przewodniki z instrukcjami
-    items:
-    - name: Jak pobrać fakturę rozliczeniową za platformę Azure i dane dziennego użycia
-      href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-  - name: Zasoby
-    items:
-    - name: Katalog produktów platformy Azure
-      href: https://docs.microsoft.com/azure/#pivot=products
-    - name: Harmonogram działania dla platformy Azure
-      href: https://azure.microsoft.com/roadmap/
-    - name: Kalkulator cen
-      href: https://azure.microsoft.com/pricing/calculator/
-    - name: Przegląd witryny Microsoft Azure Portal
-      href: https://azure.microsoft.com/documentation/articles/azure-portal-overview/
-  - name: Dokumentacja
-ms.openlocfilehash: baa4d388f26c46974c1037c3ecf723a445774591
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341360"
+        - name: Katalog produktów platformy Azure
+          href: 'https://docs.microsoft.com/azure/#pivot=products'
+        - name: Harmonogram działania dla platformy Azure
+          href: 'https://azure.microsoft.com/roadmap/'
+        - name: Kalkulator cen
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Przegląd witryny Microsoft Azure Portal
+          href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
+    - name: Dokumentacja

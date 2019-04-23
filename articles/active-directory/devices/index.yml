@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46eb23cf23506b950142068146283345db71a3ea
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520823"
 documentType: LandingData
 title: Dokumentacja zarządzania urządzeniami usługi Azure AD
 metadata:
-  document_id: 
-  title: Dokumentacja zarządzania urządzeniami usługi Azure Active Directory — samouczki, pojęcia, materiały informacyjne | Microsoft Docs
-  description: Dowiedz się, jak skonfigurować i przetestować zarządzanie urządzeniami usługi Azure Active Directory.
+  document_id: null
+  title: 'Dokumentacja zarządzania urządzeniami usługi Azure Active Directory — samouczki, pojęcia, materiały informacyjne | Microsoft Docs'
+  description: 'Dowiedz się, jak skonfigurować i przetestować zarządzanie urządzeniami usługi Azure Active Directory.'
   services: active-directory
   ms.subservice: devices
   author: MicrosoftGuyJFlo
@@ -22,20 +16,20 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: Za pomocą urządzeń użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce mieć kontrolę nad tymi urządzeniami. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.<br>Zarządzanie urządzeniami stanowi również podstawę w przypadku dostępu warunkowego opartego na urządzeniach. Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.
+  description: 'Za pomocą urządzeń użytkownicy uzyskują dostęp do zasobów firmowych. Aby chronić zasoby firmowe, administrator IT chce mieć kontrolę nad tymi urządzeniami. W ten sposób może zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy dotyczące zabezpieczeń i zgodności.<br>Zarządzanie urządzeniami stanowi również podstawę w przypadku dostępu warunkowego opartego na urządzeniach. Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.'
 sections:
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak zintegrować lokalne urządzenia dołączone do usługi AD z usługą Azure AD.
-  - type: list
-    style: icon48
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: ./media/index/i_security-management.png
-      text: Domeny zarządzane
-      href: hybrid-azuread-join-managed-domains.md
-    - image:
-        src: ./media/index/i_security-management.png
-      text: Domeny federacyjne
-      href: hybrid-azuread-join-federated-domains.md
+      - type: paragraph
+        text: 'Dowiedz się, jak zintegrować lokalne urządzenia dołączone do usługi AD z usługą Azure AD.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_security-management.png
+            text: Domeny zarządzane
+            href: hybrid-azuread-join-managed-domains.md
+          - image:
+              src: ./media/index/i_security-management.png
+            text: Domeny federacyjne
+            href: hybrid-azuread-join-federated-domains.md

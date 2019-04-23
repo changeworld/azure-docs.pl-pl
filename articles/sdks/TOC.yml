@@ -1,26 +1,19 @@
-items:
 - name: Zestawy Azure SDK
   href: index.yml
   items:
-  - name: Zestaw SDK .NET
-    href: /dotnet/azure/?view=azure-dotnet
-  - name: Zestaw SDK Java
-    href: /java/azure/
-  - name: Zestaw SDK dla języka Node
-    href: /javascript/azure/
-  - name: Zestaw SDK dla języka Python
-    href: /python/azure/
-  - name: Zestaw SDK dla języka Ruby
-    href: https://rubygems.org/gems/azure
-  - name: Zestaw SDK dla języka PHP
-    href: /azure/app-service-web/app-service-web-get-started-php
-  - name: Xamarin
-    href: https://azure.microsoft.com/features/xamarin
-  - name: Przejdź
-    href: /go/azure/
-ms.openlocfilehash: fb4c864a326800fc83619e03736e3422f9984d79
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545931"
+    - name: Zestaw SDK .NET
+      href: /dotnet/azure/?view=azure-dotnet
+    - name: Zestaw SDK Java
+      href: /java/azure/
+    - name: Zestaw SDK dla języka Node
+      href: /javascript/azure/
+    - name: Zestaw SDK dla języka Python
+      href: /python/azure/
+    - name: Zestaw SDK dla języka Ruby
+      href: 'https://rubygems.org/gems/azure'
+    - name: Zestaw SDK dla języka PHP
+      href: /azure/app-service-web/app-service-web-get-started-php
+    - name: Xamarin
+      href: 'https://azure.microsoft.com/features/xamarin'
+    - name: Przejdź
+      href: /go/azure/

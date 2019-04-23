@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfe8611def427577cb000efe0e7c0568193aa4f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993446"
 documentType: LandingData
 title: Maszyny wirtualne z systemem Linux
 metadata:
@@ -21,107 +15,107 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
+  description: 'Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png
+      src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png'
       width: 250
-    title: Tworzenie maszyny wirtualnej z systemem Linux. (4:11)
-    href: https://azure.microsoft.com/resources/videos/create-linux-virtual-machine/
+    title: 'Tworzenie maszyny wirtualnej z systemem Linux. (4:11)'
+    href: 'https://azure.microsoft.com/resources/videos/create-linux-virtual-machine/'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak wdrożyć serwer sieci Web usług NGINX na maszynie wirtualnej z systemem Ubuntu:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na platformie Azure i zarządzać nimi.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrożyć serwer sieci Web usług NGINX na maszynie wirtualnej z systemem Ubuntu:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Interfejs wiersza polecenia platformy Azure
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a></li>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automatyzowanie konfiguracji maszyny wirtualnej</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Tworzenie zestawu skalowania maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Równoważenie obciążenia maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Zarządzanie maszynami wirtualnymi i sieciami wirtualnymi</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Tworzenie kopii zapasowych maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-govern-resources">Nadzorowanie maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitorowanie i aktualizowanie maszyn wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines</a>
-    - html: Tworzenie stosu serwera internetowego z użyciem modelu <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> lub <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
-- title: Rozwijanie umiejętności dzięki Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na platformie Azure i zarządzać nimi.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a></li>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automatyzowanie konfiguracji maszyny wirtualnej</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Tworzenie zestawu skalowania maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Równoważenie obciążenia maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Zarządzanie maszynami wirtualnymi i sieciami wirtualnymi</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Tworzenie kopii zapasowych maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-govern-resources">Nadzorowanie maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitorowanie i aktualizowanie maszyn wirtualnych</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>
+          - html: '<a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub</a>'
+          - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines</a>
+          - html: 'Tworzenie stosu serwera internetowego z użyciem modelu <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> lub <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>'
+          - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
-    - title: " Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure"
-      href: /learn/modules/create-linux-virtual-machine-in-azure/
-      image:
-        src: /learn/achievements/create-linux-virtual-machine-in-azure.svg
-        href: /learn/modules/create-linux-virtual-machine-in-azure/
-    - title: Kompilowanie i uruchamianie aplikacji internetowej przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux na platformie Azure
-      href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
-      image:
-        src: /learn/achievements/build-a-web-app-with-mean-on-a-linux-vm.svg
-        href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-virtual-machines">Więcej interaktywnych zasobów szkoleniowych...</a>
-- title: Bezpłatne szkolenie wideo firmy PluralSight
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: "\_Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure"
+            href: /learn/modules/create-linux-virtual-machine-in-azure/
+            image:
+              src: /learn/achievements/create-linux-virtual-machine-in-azure.svg
+              href: /learn/modules/create-linux-virtual-machine-in-azure/
+          - title: Kompilowanie i uruchamianie aplikacji internetowej przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux na platformie Azure
+            href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+            image:
+              src: /learn/achievements/build-a-web-app-with-mean-on-a-linux-vm.svg
+              href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-virtual-machines">Więcej interakcyjnych zasobów szkoleniowych...</a>
+  - title: Bezpłatne szkolenie wideo firmy PluralSight
     items:
-    - title: Administrator platformy Azure
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Wdrażanie pierwszej aplikacji na platformie Azure.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Administrator platformy Azure
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+  - title: Przykłady
     items:
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Wdrażanie pierwszej aplikacji na platformie Azure.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/vm">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/compute">Dokumentacja interfejsu API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure/vm">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
+          - title: Języki
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/compute">Dokumentacja interfejsu API REST</a></p>

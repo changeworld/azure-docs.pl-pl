@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524195"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998927"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -53,17 +53,6 @@ W przypadku warstw podstawowa i standardowa usługi Notification Hubs prawidłow
 
 > [!NOTE]
 > Powiadomienia wypychane, zależą od systemów powiadomień platformy innych firm (np. usługi APNS firmy Apple i Google FCM), dlatego nie ma żadnej gwarancji umowy SLA, mechanizmem realizacji tych komunikatów. Usługa Notification Hubs wysyła partii do systemów powiadomień platformy (gwarantowana umowa SLA), po odpowiedzialność systemy powiadomień platformy, aby dostarczać wypchnięcia (umowa SLA nie gwarantowane).
-
-### <a name="which-customers-are-using-notification-hubs"></a>Których klienci używają usługi Notification Hubs?
-
-Wielu klientów używa usługi Notification Hubs. Poniżej przedstawiono niektóre z nich istotne:
-
-* Sochi 2014: Setki grup zainteresowań, 3 milionów urządzeń i 150 + milionów powiadomień wysłanych w ciągu dwóch tygodni. [Analiza przypadku: Sochi]
-* Skanska: [Analiza przypadku: Skanska]
-* Seattle godzinach: [Analiza przypadku: Czasy Seattle]
-* Mural.ly: [Analiza przypadku: Mural.ly]
-* 7Digital: [Analiza przypadku: 7Digital]
-* Aplikacje usługi Bing: Dziesiątki milionów urządzeń wysyłanie powiadomień 3 milionów dziennie.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak uaktualnić lub obniżyć wersję mojego Centrum lub przestrzeni nazw do innej warstwy
 
@@ -219,11 +208,6 @@ Można także programowo uzyskać dostęp do metryk. Aby uzyskać więcej inform
 [Azure Portal]: https://portal.azure.com
 [Cennik usługi Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Analiza przypadku: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[Analiza przypadku: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Analiza przypadku: Czasy Seattle]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Analiza przypadku: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[Analiza przypadku: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Usługa Notification Hubs interfejsów API REST]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Samouczki wprowadzenie centra powiadomień]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Samouczek aplikacji dla programu Chrome]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

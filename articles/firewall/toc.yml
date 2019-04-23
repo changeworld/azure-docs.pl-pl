@@ -1,84 +1,77 @@
-items:
 - name: Dokumentacja usługi Azure Firewall
   href: index.yml
 - name: Omówienie
   items:
-  - name: Co to jest usługa Azure Firewall?
-    href: overview.md
+    - name: Co to jest usługa Azure Firewall?
+      href: overview.md
 - name: Samouczki
-  items:
-  - name: Wdrażanie i konfigurowanie
-    href: tutorial-firewall-deploy-portal.md
-  - name: Wdrażanie w sieci hybrydowej
-    href: tutorial-hybrid-ps.md
-  - name: Filtrowanie ruchu przychodzącego ruchu przy użyciu DNAT
-    href: tutorial-firewall-dnat.md
-  - name: Monitorowanie dzienników diagnostycznych
-    href: tutorial-diagnostics.md
   expanded: true
+  items:
+    - name: Wdrażanie i konfigurowanie
+      href: tutorial-firewall-deploy-portal.md
+    - name: Wdrażanie w sieci hybrydowej
+      href: tutorial-hybrid-ps.md
+    - name: Filtrowanie ruchu przychodzącego ruchu przy użyciu DNAT
+      href: tutorial-firewall-dnat.md
+    - name: Monitorowanie dzienników diagnostycznych
+      href: tutorial-diagnostics.md
 - name: Przykłady
   items:
-  - name: Azure PowerShell
-    href: sample-powershell.md
-  - name: Dzienniki usługi Azure Monitor
-    href: log-analytics-samples.md
+    - name: Azure PowerShell
+      href: sample-powershell.md
+    - name: Dzienniki usługi Azure Monitor
+      href: log-analytics-samples.md
 - name: Pojęcia
   items:
-  - name: Tagi w pełni kwalifikowanych nazw domen
-    href: fqdn-tags.md
-  - name: Infrastrukturalne nazwy FQDN
-    href: infrastructure-fqdns.md
-  - name: Dzienniki i metryki
-    href: logs-and-metrics.md
-  - name: Analiza zagrożeń
-    href: threat-intel.md
-  - name: Logika przetwarzająca reguły
-    href: rule-processing.md
-  - name: Tagi usługi
-    href: service-tags.md
+    - name: Tagi w pełni kwalifikowanych nazw domen
+      href: fqdn-tags.md
+    - name: Infrastrukturalne nazwy FQDN
+      href: infrastructure-fqdns.md
+    - name: Dzienniki i metryki
+      href: logs-and-metrics.md
+    - name: Analiza zagrożeń
+      href: threat-intel.md
+    - name: Logika przetwarzająca reguły
+      href: rule-processing.md
+    - name: Tagi usługi
+      href: service-tags.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Wdrażanie przy użyciu programu Azure PowerShell
-    href: deploy-ps.md
-  - name: Wdrażanie przy użyciu szablonu
-    href: deploy-template.md
-  - name: Integrowanie z modułem równoważenia obciążenia
-    href: integrate-lb.md
+    - name: Wdrażanie przy użyciu programu Azure PowerShell
+      href: deploy-ps.md
+    - name: Wdrażanie przy użyciu szablonu
+      href: deploy-template.md
+    - name: Integrowanie z modułem równoważenia obciążenia
+      href: integrate-lb.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/network
-  - name: Azure PowerShell
-    href: /powershell/module/az.network/new-azfirewall
-  - name: .NET
-    href: /dotnet/api
-  - name: Java
-    href: /java/api
-  - name: Node.js
-    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
-  - name: Python
-    href: https://azure.microsoft.com/develop/python/
-  - name: REST
-    href: /rest/api/firewall
-  - name: Azure Resource Manager
-    href: ../azure-resource-manager/resource-group-overview.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
 - name: Zasoby
   items:
-  - name: Często zadawane pytania
-    href: firewall-faq.md
-  - name: Tworzenie szablonów
-    href: ../azure-resource-manager/resource-group-authoring-templates.md
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Szablony społeczności
-    href: https://azure.microsoft.com/documentation/templates
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/azure-firewall/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: a5f0125020cd0ed340127bb39c727bbe070721c6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792187"
+    - name: Często zadawane pytania
+      href: firewall-faq.md
+    - name: Tworzenie szablonów
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablony społeczności
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'

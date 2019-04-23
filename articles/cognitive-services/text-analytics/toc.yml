@@ -1,112 +1,105 @@
-items:
 - name: Dokumentacja interfejsu API analizy tekstu
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Czym jest interfejs API analizy tekstu?
-    href: overview.md
-  - name: Przykładowe scenariusze dotyczące użytkowników
-    href: text-analytics-user-scenarios.md
   expanded: true
+  items:
+    - name: Czym jest interfejs API analizy tekstu?
+      href: overview.md
+    - name: Przykładowe scenariusze dotyczące użytkowników
+      href: text-analytics-user-scenarios.md
 - name: Przewodniki Szybki start
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Przejdź
-    href: quickstarts/go.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Przejdź
+      href: quickstarts/go.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
 - name: Samouczki
   items:
-  - name: Integracja usługi Power BI w celu analizy opinii klientów
-    href: Tutorials/tutorial-power-bi-key-phrases.md
-  - name: Analiza tekstu w usłudze Power Apps
-    href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
-  - name: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: Tłumaczenie tekstu, analizowanie tonacji i syntetyzowanie mowy za pomocą platformy Flask
-    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
-    maintainContext: true
+    - name: Integracja usługi Power BI w celu analizy opinii klientów
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Analiza tekstu w usłudze Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+    - name: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
+      maintainContext: true
+      href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    - name: 'Tłumaczenie tekstu, analizowanie tonacji i syntetyzowanie mowy za pomocą platformy Flask'
+      maintainContext: true
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
 - name: Przewodniki z instrukcjami
   items:
-  - name: Rejestrowanie
-    href: How-tos/text-analytics-how-to-signup.md
-  - name: Uzyskiwanie klucza dostępu
-    href: How-tos/text-analytics-how-to-access-key.md
-  - name: Wywoływanie interfejsu API usługi Text Analytics
-    href: How-tos/text-analytics-how-to-call-api.md
-  - name: Wykrywanie języka
-    href: How-tos/text-analytics-how-to-language-detection.md
-  - name: Analiza tonacji
-    href: How-tos/text-analytics-how-to-sentiment-analysis.md
-  - name: Wyodrębnianie kluczowych fraz
-    href: How-tos/text-analytics-how-to-keyword-extraction.md
-  - name: Wywoływanie rozpoznawania jednostek nazwanych
-    href: How-tos/text-analytics-how-to-entity-linking.md
-  - name: Korzystanie z kontenerów
-    items:
-    - name: Instalowanie i uruchamianie kontenerów
-      href: how-tos/text-analytics-how-to-install-containers.md
-    - name: Konfigurowanie kontenerów
-      href: text-analytics-resource-container-config.md
-    - name: Jak uruchamiać w usłudze Azure Kubernetes Service
-      href: How-tos/text-analytics-how-to-use-container-instance.md
-  - name: Korzystanie z usługi połączonej analizy tekstu
-    href: vs-text-connected-service.md
+    - name: Rejestrowanie
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: Uzyskiwanie klucza dostępu
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: Wywoływanie interfejsu API usługi Text Analytics
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: Wykrywanie języka
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: Analiza tonacji
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: Wyodrębnianie kluczowych fraz
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: Wywoływanie rozpoznawania jednostek nazwanych
+      href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Korzystanie z kontenerów
+      items:
+        - name: Instalowanie i uruchamianie kontenerów
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: Konfigurowanie kontenerów
+          href: text-analytics-resource-container-config.md
+        - name: Jak uruchamiać w usłudze Azure Kubernetes Service
+          href: How-tos/text-analytics-how-to-use-container-instance.md
+    - name: Korzystanie z usługi połączonej analizy tekstu
+      href: vs-text-connected-service.md
 - name: Dokumentacja
   items:
-  - name: Dokumentacja interfejsu wiersza polecenia
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Dokumentacja programu PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Interfejs API analizy tekstu
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest
-    - name: Przejdź
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
+    - name: Dokumentacja interfejsu wiersza polecenia
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Dokumentacja programu PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Interfejs API analizy tekstu
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest'
+        - name: Przejdź
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: Zasoby
   items:
-  - name: Identyfikowanie tonacji komentarzy w grupie usługi Yammer za pomocą usługi MS Flow
-    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
-  - name: Zawartość zewnętrzna i społeczności
-    href: text-analytics-resource-external-community.md
-  - name: Często zadawane pytania
-    href: text-analytics-resource-faq.md
-  - name: Obsługa języków i regionów
-    href: language-support.md
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/text-analytics-api
-  - name: Klucz subskrypcji
-    href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
-  - name: Wypróbuj!
-    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788143"
+    - name: Identyfikowanie tonacji komentarzy w grupie usługi Yammer za pomocą usługi MS Flow
+      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
+    - name: Zawartość zewnętrzna i społeczności
+      href: text-analytics-resource-external-community.md
+    - name: Często zadawane pytania
+      href: text-analytics-resource-faq.md
+    - name: Obsługa języków i regionów
+      href: language-support.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: Klucz subskrypcji
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
+    - name: Wypróbuj!
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

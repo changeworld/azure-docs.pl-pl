@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a59bc4f320cb0c7a1c99bf6983da2414a5bae69e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733609"
 documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania wizualnego Bing
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: Dokumentacja interfejsu API wyszukiwania wizualnego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak za pomocą interfejsu API wyszukiwania wizualnego Bing uzyskać szczegółowe informacje o obrazie.
+  title: 'Dokumentacja interfejsu API wyszukiwania wizualnego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  description: 'Dowiedz się, jak za pomocą interfejsu API wyszukiwania wizualnego Bing uzyskać szczegółowe informacje o obrazie.'
   services: cognitive-services
   author: swhite-msft
   manager: rosh
@@ -22,78 +16,78 @@ metadata:
   ms.date: 01/16/2019
   ms.author: scottwhi
 abstract:
-  description: Interfejs API wyszukiwania wizualnego Bing udostępnia szczegóły obrazu podobne do tych pokazanych w witrynie Bing.com/images. Po przekazaniu obrazu lub udostępnieniu jego adresu URL ten interfejs API pozwala zidentyfikować różne dotyczące go szczegóły, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko.
+  description: 'Interfejs API wyszukiwania wizualnego Bing udostępnia szczegóły obrazu podobne do tych pokazanych w witrynie Bing.com/images. Po przekazaniu obrazu lub udostępnieniu jego adresu URL ten interfejs API pozwala zidentyfikować różne dotyczące go szczegóły, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-visual-search/overview
+            html: <p>Poznaj interfejs API wyszukiwania wizualnego Bing</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co to jest interfejs API wyszukiwania wizualnego Bing?
+          - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
+            html: '<p>Dowiedz się, jak wysyłać żądania wyszukiwania do interfejsu API wyszukiwania wizualnego Bing.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Wysyłanie zapytań wyszukiwania
+          - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
+            html: <p>Przekazywanie obrazu do interfejsu API wyszukiwania wizualnego Bing za pomocą tokenu szczegółowych informacji z interfejsu API wyszukiwania obrazów Bing</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Wyszukiwanie wiadomości
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: /azure/cognitive-services/bing-visual-search/overview
-      html: <p>Poznaj interfejs API wyszukiwania wizualnego Bing</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co to jest interfejs API wyszukiwania wizualnego Bing?
-    - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
-      html: <p>Dowiedz się, jak wysyłać żądania wyszukiwania do interfejsu API wyszukiwania wizualnego Bing.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Wysyłanie zapytań wyszukiwania
-    - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
-      html: <p>Przekazywanie obrazu do interfejsu API wyszukiwania wizualnego Bing za pomocą tokenu szczegółowych informacji z interfejsu API wyszukiwania obrazów Bing</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Wyszukiwanie wiadomości
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Uzyskaj szczegółowe informacje na temat obrazu przy użyciu interfejsu API wyszukiwania wizualnego Bing:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Uzyskaj szczegółowe informacje na temat obrazu przy użyciu interfejsu API wyszukiwania wizualnego Bing:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: visual-search-sdk-c-sharp
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/java
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: visual-search-sdk-node
+            text: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            href: visual-search-sdk-python
+            text: Python
+        rows:
+          - title: ''
+            values:
+              - href: visual-search-sdk-c-sharp
+              - href: java
+              - href: visual-search-sdk-node
+              - href: visual-search-sdk-python
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: visual-search-sdk-c-sharp
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/java
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: visual-search-sdk-node
-      text: Node.js
-    - image:
-        src: media/index/logo_python.svg
-      href: visual-search-sdk-python
-      text: Python
-    rows:
-    - title: ''
-      values:
-      - href: visual-search-sdk-c-sharp
-      - href: java
-      - href: visual-search-sdk-node
-      - href: visual-search-sdk-python
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API wyszukiwania wizualnego Bing:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API wyszukiwania wizualnego Bing:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-bing-visual-search-single-page-app">Jednostronicowa aplikacja internetowa</a>
+  - title: Dokumentacja
     items:
-    - html: <a href="tutorial-bing-visual-search-single-page-app">Jednostronicowa aplikacja internetowa</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Interfejs API REST v7
-      html: <p><a href="https://aka.ms/bingvisualsearchreferencedoc">Dokumentacja interfejsu API</a></p>
-    - title: Zestawy SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python">Python</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Interfejs wiersza polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejs API REST v7
+            html: '<p><a href="https://aka.ms/bingvisualsearchreferencedoc">Dokumentacja interfejsu API</a></p>'
+          - title: Zestawy SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python">Python</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'

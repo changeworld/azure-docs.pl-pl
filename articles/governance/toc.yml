@@ -1,62 +1,55 @@
-items:
 - name: Dokumentacja ładu platformy Azure
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Zarządzanie platformą Azure
-    href: azure-management.md
   expanded: true
+  items:
+    - name: Zarządzanie platformą Azure
+      href: azure-management.md
 - name: Składniki i usługi
-  items:
-  - name: Grupy zarządzania
-    items:
-    - name: Omówienie
-      href: management-groups/index.md
-    - name: Przycisk Utwórz
-      href: management-groups/create.md
-    - name: Zarządzanie
-      href: management-groups/manage.md
-  - name: Wykres zasobów
-    href: resource-graph/overview.md
-  - name: Zasady
-    href: policy/overview.md
-  - name: Strategie
-    href: blueprints/overview.md
   expanded: true
+  items:
+    - name: Grupy zarządzania
+      items:
+        - name: Omówienie
+          href: management-groups/index.md
+        - name: Przycisk Utwórz
+          href: management-groups/create.md
+        - name: Zarządzanie
+          href: management-groups/manage.md
+    - name: Wykres zasobów
+      href: resource-graph/overview.md
+    - name: Zasady
+      href: policy/overview.md
+    - name: Strategie
+      href: blueprints/overview.md
 - name: Implementacje
-  items:
-  - name: Wdrożenie rozwiązania Enterprise Cloud
-    items:
-    - name: Co to jest nadzór nad zasobami w chmurze?
-      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-    - name: Nadzór nad dostępem do zasobów na platformie Azure
-      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-    - name: Projekt nadzoru dla jednego zespołu
-      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-    - name: Projekt nadzoru dla wielu zespołów
-      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-  - name: Szkielet platformy Azure dla przedsiębiorstw
-    items:
-    - name: Narzucony ład dotyczący subskrypcji
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-    - name: Implementowanie szkieletu platformy Azure dla przedsiębiorstw
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+  items:
+    - name: Wdrożenie rozwiązania Enterprise Cloud
+      items:
+        - name: Co to jest nadzór nad zasobami w chmurze?
+          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+        - name: Nadzór nad dostępem do zasobów na platformie Azure
+          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+        - name: Projekt nadzoru dla jednego zespołu
+          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+        - name: Projekt nadzoru dla wielu zespołów
+          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+    - name: Szkielet platformy Azure dla przedsiębiorstw
+      items:
+        - name: Narzucony ład dotyczący subskrypcji
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+        - name: Implementowanie szkieletu platformy Azure dla przedsiębiorstw
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: User Voice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: Wideo na temat usługi Governance
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-  - name: Kanał dotyczący nadzoru w usłudze YouTube
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 1d6a62a682762060898d8599c5cee18929ef86e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673908"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: User Voice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: Wideo na temat usługi Governance
+      href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
+    - name: Kanał dotyczący nadzoru w usłudze YouTube
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

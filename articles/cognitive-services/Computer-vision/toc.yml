@@ -1,208 +1,201 @@
-items:
 - name: Dokumentacja interfejsu API przetwarzania obrazów
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Czym jest przetwarzanie obrazów?
-    href: Home.md
   expanded: true
+  items:
+    - name: Czym jest przetwarzanie obrazów?
+      href: Home.md
 - name: Przewodniki Szybki start
   items:
-  - name: Korzystanie z interfejsu API REST
-    items:
-    - name: Analizowanie zdalnego obrazu
+    - name: Korzystanie z interfejsu API REST
       items:
-      - name: cURL
-        href: QuickStarts/curl-analyze.md
-      - name: Przejdź
-        href: QuickStarts/go-analyze.md
-      - name: Java
-        href: QuickStarts/java-analyze.md
-      - name: JavaScript
-        href: QuickStarts/javascript-analyze.md
-      - name: Node.js
-        href: QuickStarts/node-analyze.md
-      - name: PHP
-        href: QuickStarts/php-analyze.md
-      - name: Python
-        href: QuickStarts/python-analyze.md
-      - name: Ruby
-        href: QuickStarts/ruby-analyze.md
-    - name: Analizowanie lokalnego obrazu
+        - name: Analizowanie zdalnego obrazu
+          items:
+            - name: cURL
+              href: QuickStarts/curl-analyze.md
+            - name: Przejdź
+              href: QuickStarts/go-analyze.md
+            - name: Java
+              href: QuickStarts/java-analyze.md
+            - name: JavaScript
+              href: QuickStarts/javascript-analyze.md
+            - name: Node.js
+              href: QuickStarts/node-analyze.md
+            - name: PHP
+              href: QuickStarts/php-analyze.md
+            - name: Python
+              href: QuickStarts/python-analyze.md
+            - name: Ruby
+              href: QuickStarts/ruby-analyze.md
+        - name: Analizowanie lokalnego obrazu
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-analyze.md
+            - name: Python
+              href: QuickStarts/python-disk.md
+        - name: Generowanie miniatur
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-thumb.md
+            - name: cURL
+              href: QuickStarts/curl-thumb.md
+            - name: Przejdź
+              href: QuickStarts/go-thumb.md
+            - name: Java
+              href: QuickStarts/java-thumb.md
+            - name: JavaScript
+              href: QuickStarts/javascript-thumb.md
+            - name: Node.js
+              href: QuickStarts/node-thumb.md
+            - name: PHP
+              href: QuickStarts/php-thumb.md
+            - name: Python
+              href: QuickStarts/python-thumb.md
+            - name: Ruby
+              href: QuickStarts/ruby-thumb.md
+        - name: Wyodrębnianie tekstu drukowanego
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-print-text.md
+            - name: cURL
+              href: QuickStarts/curl-print-text.md
+            - name: Przejdź
+              href: QuickStarts/go-print-text.md
+            - name: Java
+              href: QuickStarts/java-print-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-print-text.md
+            - name: Node.js
+              href: QuickStarts/node-print-text.md
+            - name: PHP
+              href: QuickStarts/php-print-text.md
+            - name: Python
+              href: QuickStarts/python-print-text.md
+            - name: Ruby
+              href: QuickStarts/ruby-print-text.md
+        - name: Wyodrębnianie tekstu odręcznego
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-hand-text.md
+            - name: Java
+              href: QuickStarts/java-hand-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-hand-text.md
+            - name: Python
+              href: QuickStarts/python-hand-text.md
+        - name: Korzystanie z modelu domeny
+          items:
+            - name: PHP
+              href: QuickStarts/php-domain.md
+            - name: Python
+              href: QuickStarts/python-domain.md
+    - name: Korzystanie z zestawu .NET SDK
       items:
-      - name: C#
-        href: QuickStarts/CSharp-analyze.md
-      - name: Python
-        href: QuickStarts/python-disk.md
-    - name: Generowanie miniatur
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-thumb.md
-      - name: cURL
-        href: QuickStarts/curl-thumb.md
-      - name: Przejdź
-        href: QuickStarts/go-thumb.md
-      - name: Java
-        href: QuickStarts/java-thumb.md
-      - name: JavaScript
-        href: QuickStarts/javascript-thumb.md
-      - name: Node.js
-        href: QuickStarts/node-thumb.md
-      - name: PHP
-        href: QuickStarts/php-thumb.md
-      - name: Python
-        href: QuickStarts/python-thumb.md
-      - name: Ruby
-        href: QuickStarts/ruby-thumb.md
-    - name: Wyodrębnianie tekstu drukowanego
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-print-text.md
-      - name: cURL
-        href: QuickStarts/curl-print-text.md
-      - name: Przejdź
-        href: QuickStarts/go-print-text.md
-      - name: Java
-        href: QuickStarts/java-print-text.md
-      - name: JavaScript
-        href: QuickStarts/javascript-print-text.md
-      - name: Node.js
-        href: QuickStarts/node-print-text.md
-      - name: PHP
-        href: QuickStarts/php-print-text.md
-      - name: Python
-        href: QuickStarts/python-print-text.md
-      - name: Ruby
-        href: QuickStarts/ruby-print-text.md
-    - name: Wyodrębnianie tekstu odręcznego
-      items:
-      - name: C#
-        href: QuickStarts/CSharp-hand-text.md
-      - name: Java
-        href: QuickStarts/java-hand-text.md
-      - name: JavaScript
-        href: QuickStarts/javascript-hand-text.md
-      - name: Python
-        href: QuickStarts/python-hand-text.md
-    - name: Korzystanie z modelu domeny
-      items:
-      - name: PHP
-        href: QuickStarts/php-domain.md
-      - name: Python
-        href: QuickStarts/python-domain.md
-  - name: Korzystanie z zestawu .NET SDK
-    items:
-    - name: Analizowanie obrazu
-      href: quickstarts-sdk/csharp-analyze-sdk.md
-    - name: Generowanie miniatur
-      href: quickstarts-sdk/csharp-thumb-sdk.md
-    - name: Wyodrębnij tekst
-      href: quickstarts-sdk/csharp-hand-text-sdk.md
-  - name: Używanie zestawu Python SDK
-    href: quickstarts-sdk/python-sdk.md
+        - name: Analizowanie obrazu
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Generowanie miniatur
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Wyodrębnij tekst
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
+    - name: Używanie zestawu Python SDK
+      href: quickstarts-sdk/python-sdk.md
 - name: Samouczki
   items:
-  - name: Generowanie metadanych dla obrazów
-    href: Tutorials/storage-lab-tutorial.md
+    - name: Generowanie metadanych dla obrazów
+      href: Tutorials/storage-lab-tutorial.md
 - name: Pojęcia
   items:
-  - name: Tagowanie obrazów
-    href: concept-tagging-images.md
-  - name: Wykrywanie obiektów
-    href: concept-object-detection.md
-  - name: Wykrywanie marek
-    href: concept-brand-detection.md
-  - name: Kategoryzowanie obrazów
-    href: concept-categorizing-images.md
-  - name: Opisywanie obrazów
-    href: concept-describing-images.md
-  - name: Wykrywanie twarzy
-    href: concept-detecting-faces.md
-  - name: Wykrywanie typów obrazów
-    href: concept-detecting-image-types.md
-  - name: Wykrywanie zawartości specyficznej dla domeny
-    href: concept-detecting-domain-content.md
-  - name: Wykrywanie schematów kolorów
-    href: concept-detecting-color-schemes.md
-  - name: Generowanie miniatur
-    href: concept-generating-thumbnails.md
-  - name: Rozpoznawanie tekstu drukowanego i pisma odręcznego
-    href: concept-recognizing-text.md
-  - name: Wykrywanie zawartości dla dorosłych
-    href: concept-detecting-adult-content.md
+    - name: Tagowanie obrazów
+      href: concept-tagging-images.md
+    - name: Wykrywanie obiektów
+      href: concept-object-detection.md
+    - name: Wykrywanie marek
+      href: concept-brand-detection.md
+    - name: Kategoryzowanie obrazów
+      href: concept-categorizing-images.md
+    - name: Opisywanie obrazów
+      href: concept-describing-images.md
+    - name: Wykrywanie twarzy
+      href: concept-detecting-faces.md
+    - name: Wykrywanie typów obrazów
+      href: concept-detecting-image-types.md
+    - name: Wykrywanie zawartości specyficznej dla domeny
+      href: concept-detecting-domain-content.md
+    - name: Wykrywanie schematów kolorów
+      href: concept-detecting-color-schemes.md
+    - name: Generowanie miniatur
+      href: concept-generating-thumbnails.md
+    - name: Rozpoznawanie tekstu drukowanego i pisma odręcznego
+      href: concept-recognizing-text.md
+    - name: Wykrywanie zawartości dla dorosłych
+      href: concept-detecting-adult-content.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Korzystanie z przetwarzania obrazów
-    items:
-    - name: Java
-      href: Tutorials/java-tutorial.md
-    - name: JavaScript
-      href: Tutorials/javascript-tutorial.md
-    - name: Python
-      href: Tutorials/PythonTutorial.md
-  - name: Uzyskiwanie kluczy subskrypcji
-    href: Vision-API-How-to-Topics/HowToSubscribe.md
-  - name: Wywoływanie interfejsu API przetwarzania obrazów
-    href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-  - name: Korzystanie z kontenerów
-    items:
-    - name: Instalowanie i uruchamianie kontenerów
-      href: computer-vision-how-to-install-containers.md
-    - name: Konfigurowanie kontenerów
-      href: computer-vision-resource-container-config.md
-  - name: Korzystanie z usługi połączonej przetwarzania obrazów
-    href: vs-computer-vision-connected-service.md
-  - name: Analizowanie klipów wideo w czasie rzeczywistym
-    href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: Korzystanie z przetwarzania obrazów
+      items:
+        - name: Java
+          href: Tutorials/java-tutorial.md
+        - name: JavaScript
+          href: Tutorials/javascript-tutorial.md
+        - name: Python
+          href: Tutorials/PythonTutorial.md
+    - name: Wywoływanie interfejsu API przetwarzania obrazów
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+    - name: Korzystanie z kontenerów
+      items:
+        - name: Instalowanie i uruchamianie kontenerów
+          href: computer-vision-how-to-install-containers.md
+        - name: Konfigurowanie kontenerów
+          href: computer-vision-resource-container-config.md
+    - name: Korzystanie z usługi połączonej przetwarzania obrazów
+      href: vs-computer-vision-connected-service.md
+    - name: Analizowanie klipów wideo w czasie rzeczywistym
+      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Azure PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Interfejs API przetwarzania obrazów v2.0
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
-  - name: Interfejs API przetwarzania obrazów v1.0
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
-    - name: Przejdź
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
-    - name: Android (Java)
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
-    - name: Swift
-      href: https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Azure PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Interfejs API przetwarzania obrazów v2.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
+    - name: Interfejs API przetwarzania obrazów v1.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python'
+        - name: Przejdź
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision'
+        - name: Android (Java)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
+        - name: Swift
+          href: 'https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK'
 - name: Zasoby
   items:
-  - name: Przykłady
-    items:
-    - name: Zapoznanie z aplikacją do przetwarzania obrazów
-      href: Tutorials/CSharpTutorial.md
-    - name: Inne przykłady przetwarzania obrazów
-      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
-  - name: Często zadawane pytania
-    href: FAQ.md
-  - name: Ceny i limity
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/430309-computer-vision-api
-  - name: Taksonomia kategorii
-    href: Category-Taxonomy.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 2fc31b518155f49cd17b86780e6accbacc2ba354
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192313"
+    - name: Przykłady
+      items:
+        - name: Zapoznanie z aplikacją do przetwarzania obrazów
+          href: Tutorials/CSharpTutorial.md
+        - name: Inne przykłady przetwarzania obrazów
+          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: Często zadawane pytania
+      href: FAQ.md
+    - name: Taksonomia kategorii
+      href: Category-Taxonomy.md
+    - name: Obsługa języków
+      href: language-support.md
+    - name: Ceny i limity
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

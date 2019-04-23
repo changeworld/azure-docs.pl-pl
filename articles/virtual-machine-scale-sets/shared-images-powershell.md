@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 7e67e7836b1d80e623a11e552c81750bc6133205
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3e6baedc28805117962aa8dda8edc6ff3419280e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188367"
 ---
 # <a name="preview-create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Wersja zapoznawcza: Tworzenie i używanie udostępnianych obrazów dla zestawów skalowania maszyn wirtualnych z programem Azure PowerShell
 
@@ -42,7 +42,7 @@ Funkcja galerii obrazów współdzielona ma wiele typów zasobów. Firma Microso
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -55,7 +55,7 @@ Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejąceg
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>Tworzenie zestawu skalowania na podstawie wersji udostępnionego obrazu
 
-Tworzenie maszyny wirtualnej zestawu skalowania z [New AzVmss](/powershell/module/az.compute/new-azvmss). Poniższy przykład tworzy zestawu skalowania na podstawie nowej wersji obrazu w centrum danych zachodnie stany USA. Zasoby sieciowe platformy Azure dla sieci wirtualnej, publiczny adres IP i moduł równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu Ustaw poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
+Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [New-AzVmss](/powershell/module/az.compute/new-azvmss). Poniższy przykład tworzy zestawu skalowania na podstawie nowej wersji obrazu w centrum danych zachodnie stany USA. Zasoby sieciowe platformy Azure dla sieci wirtualnej, publiczny adres IP i moduł równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu Ustaw poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -77,7 +77,7 @@ Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania i maszyn wir
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie będą już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) polecenia cmdlet, aby usunąć grupę zasobów, maszyna wirtualna i wszystkie pokrewne zasoby:
+Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myGalleryRG

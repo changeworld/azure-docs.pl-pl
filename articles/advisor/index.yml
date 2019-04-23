@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfff978a6228b861c98940e5e1ce7947f1f4260a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891440"
 documentType: LandingData
 title: Dokumentacja usługi Azure Advisor
 metadata:
   title: Dokumentacja usługi Azure Advisor | Microsoft Docs
-  description: 
+  description: null
   services: advisor
   author: rboucher
   layout: LandingPage
@@ -19,33 +13,33 @@ metadata:
   ms.date: 02/01/2019
   ms.author: robb
 abstract:
-  description: Azure Advisor to spersonalizowany konsultant w zakresie chmury ułatwiający stosowanie najlepszych rozwiązań w celu zoptymalizowania wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania ułatwiające zwiększenie wydajności, poprawę bezpieczeństwa oraz zwiększenie wysokiej dostępności zasobów, a także szuka możliwości zmniejszenia ogólnych wydatków związanych z platformą Azure.
+  description: 'Azure Advisor to spersonalizowany konsultant w zakresie chmury ułatwiający stosowanie najlepszych rozwiązań w celu zoptymalizowania wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania ułatwiające zwiększenie wydajności, poprawę bezpieczeństwa oraz zwiększenie wysokiej dostępności zasobów, a także szuka możliwości zmniejszenia ogólnych wydatków związanych z platformą Azure.'
 sections:
-- title: 
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+  - title: null
     items:
-    - title: Informacje o usłudze Azure Advisor
-      href: /azure/advisor/advisor-overview
-      image:
-        src: media/index/advisor.svg
-        href: /azure/advisor/advisor-overview
-    - title: Wprowadzenie do usługi Azure Advisor
-      href: /azure/advisor/advisor-get-started
-      image:
-        src: media/index/get-started.svg
-        href: /azure/advisor/advisor-get-started
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Informacje o usłudze Azure Advisor
+            href: /azure/advisor/advisor-overview
+            image:
+              src: media/index/advisor.svg
+              href: /azure/advisor/advisor-overview
+          - title: Wprowadzenie do usługi Azure Advisor
+            href: /azure/advisor/advisor-get-started
+            image:
+              src: media/index/get-started.svg
+              href: /azure/advisor/advisor-get-started
+  - title: Dokumentacja
     items:
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/advisor/">Dokumentacja interfejsu API REST</a></p>
-    - title: Wiersz polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">Wspólny interfejs języka (CLI)</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/advisor/">Dokumentacja interfejsu API REST</a></p>'
+          - title: Wiersz polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">Wspólny interfejs języka (CLI)</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>'

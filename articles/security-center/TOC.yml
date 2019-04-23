@@ -1,203 +1,196 @@
-items:
 - name: Dokumentacja usługi Security Center
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze Security Center
-    href: security-center-intro.md
-  - name: Security Center — obsługiwane platformy i funkcje
-    href: security-center-os-coverage.md
+    - name: Informacje o usłudze Security Center
+      href: security-center-intro.md
+    - name: Security Center — obsługiwane platformy i funkcje
+      href: security-center-os-coverage.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Subskrypcje platformy Azure
-    href: security-center-get-started.md
-  - name: Komputery z systemem Windows
-    href: quick-onboard-windows-computer.md
-  - name: Komputery z systemem Linux
-    href: quick-onboard-linux-computer.md
-  - name: Maszyny wirtualne usługi Azure Stack
-    href: quick-onboard-azure-stack.md
   expanded: true
+  items:
+    - name: Subskrypcje platformy Azure
+      href: security-center-get-started.md
+    - name: Komputery z systemem Windows
+      href: quick-onboard-windows-computer.md
+    - name: Komputery z systemem Linux
+      href: quick-onboard-linux-computer.md
+    - name: Maszyny wirtualne usługi Azure Stack
+      href: quick-onboard-azure-stack.md
 - name: Samouczki
   items:
-  - name: Ochrona zasobów
-    href: tutorial-protect-resources.md
-  - name: Reagowanie na zdarzenia
-    href: tutorial-security-incident.md
-  - name: Zwiększanie zgodności z przepisami
-    href: security-center-compliance-dashboard.md
+    - name: Ochrona zasobów
+      href: tutorial-protect-resources.md
+    - name: Reagowanie na zdarzenia
+      href: tutorial-security-incident.md
+    - name: Zwiększanie zgodności z przepisami
+      href: security-center-compliance-dashboard.md
 - name: Pojęcia
   items:
-  - name: Uprawnienia
-    href: security-center-permissions.md
-  - name: Bezpieczeństwo danych
-    href: security-center-data-security.md
-  - name: Używanie zaleceń w celu ulepszania zabezpieczeń
-    href: security-center-using-recommendations.md
-  - name: Reagowanie na zdarzenia
-    href: security-center-incident-response.md
+    - name: Uprawnienia
+      href: security-center-permissions.md
+    - name: Bezpieczeństwo danych
+      href: security-center-data-security.md
+    - name: Używanie zaleceń w celu ulepszania zabezpieczeń
+      href: security-center-using-recommendations.md
+    - name: Reagowanie na zdarzenia
+      href: security-center-incident-response.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Poprawianie oceny bezpieczeństwa
-    href: security-center-secure-score.md
-  - name: Przechodzenie na zabezpieczenia zaawansowane
-    href: security-center-onboarding.md
-  - name: Ochrona serwera za pomocą usługi Windows Defender ATP
-    href: security-center-wdatp.md
-  - name: Włączanie ochrony usługi App Service
-    href: security-center-app-services.md
-  - name: Praca z zasadami zabezpieczeń
-    href: tutorial-security-policy.md
-  - name: Dostosowywanie zasad ochrony informacji
-    href: security-center-info-protection-policy.md
-  - name: Zarządzanie rozwiązaniami zabezpieczeń
-    href: security-center-partner-integration.md
-  - name: Automatyzowanie dołączania przy użyciu programu PowerShell
-    href: security-center-powershell-onboarding.md
-  - name: Ustawienia usługi Security Center
-    href: security-center-policies-overview.md
-    items:
-    - name: Zbieranie danych
-      href: security-center-enable-data-collection.md
-    - name: Wbudowane zasady zabezpieczeń
-      href: security-center-policy-definitions.md
-    - name: Powiadomienia e-mail
-      href: security-center-provide-security-contact-details.md
-    - name: Warstwa cenowa
-      href: security-center-pricing.md
-    - name: Konfiguracje zabezpieczeń
-      href: security-center-customize-os-security-config.md
-    - name: Widoczność w całej dzierżawie
-      href: security-center-management-groups.md
-  - name: Zalecenia dotyczące implementowania zabezpieczeń
-    href: security-center-recommendations.md
-    items:
-    - name: Zwiększanie poziomu bezpieczeństwa
-      href: security-center-monitoring.md
-    - name: Ochrona maszyn i aplikacji
-      href: security-center-virtual-machine-protection.md
-    - name: Ochrona zasobów sieciowych
-      href: security-center-network-recommendations.md
-    - name: Ochrona usług i danych SQL
-      href: security-center-sql-service-recommendations.md
-    - name: Ochrona tożsamości i dostępu
-      href: security-center-identity-access.md
-  - name: Stosowanie zabezpieczeń chmury
-    items:
-    - name: Zarządzanie dostępem Just In Time
-      href: security-center-just-in-time.md
-    - name: Funkcje adaptacyjnego sterowania aplikacjami
-      href: security-center-adaptive-application.md
-    - name: Monitorowanie integralności plików
-      href: security-center-file-integrity-monitoring.md
-    - name: Adaptacyjne wzmocnienie zabezpieczeń sieci
-      href: security-center-adaptive-network-hardening.md
-  - name: Wykrywania zagrożeń
-    href: security-center-detection-capabilities.md
-    items:
-    - name: Alerty zabezpieczeń
-      href: security-center-managing-and-responding-alerts.md
-    - name: Zdarzenia dotyczące zabezpieczeń
-      href: security-center-incident.md
-    - name: Informacje o alertach zabezpieczeń
-      href: security-center-alerts-type.md
-    - name: Walidacja alertu
-      href: security-center-alert-validation.md
-    - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
-      href: security-center-ueba-mcas.md
-  - name: Archiwum
-    items:
-    - name: Zastosuj szyfrowanie dysków
-      href: security-center-apply-disk-encryption.md
-    - name: Zastosuj aktualizacje systemu
-      href: security-center-apply-system-updates.md
-    - name: Włączanie szyfrowania dla konta magazynu
-      href: security-center-enable-encryption-for-storage-account.md
-    - name: Włącz agenta maszyny wirtualnej
-      href: security-center-enable-vm-agent.md
-    - name: Zainstaluj punkt końcowy
-      href: security-center-install-endpoint-protection.md
-    - name: Uruchom ponownie po zaktualizowaniu systemu
-      href: security-center-apply-system-updates.md#reboot-after-system-updates
-    - name: Korygowanie konfiguracji zabezpieczeń
-      href: security-center-remediate-os-vulnerabilities.md
-    - name: Aktualizacja wersji systemu operacyjnego
-      href: security-center-update-os-version.md
-    - name: Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana
-      href: security-center-vulnerability-assessment-recommendations.md
-    - name: Dodawanie zapory aplikacji internetowej
-      href: security-center-add-web-application-firewall.md
-    - name: Finalizowanie ochrony aplikacji
-      href: security-center-add-web-application-firewall.md#finalize-application-protection
-    - name: Dodawanie zapory nowej generacji
-      href: security-center-add-next-generation-firewall.md
-    - name: Włączanie sieciowych grup zabezpieczeń
-      href: security-center-enable-network-security-groups.md
-    - name: Ograniczanie dostępu przez punkty końcowe łączące się z Internetem
-      href: security-center-restrict-access-through-internet-facing-endpoints.md
-    - name: Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji
-      href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: Włączanie inspekcji i wykrywania zagrożeń w bazach danych SQL
-      href: security-center-enable-auditing-on-sql-databases.md
-    - name: Włączanie inspekcji i wykrywania zagrożeń na serwerach SQL
-      href: security-center-enable-auditing-on-sql-servers.md
-    - name: Włączanie technologii Transparent Data Encryption
-      href: security-center-enable-transparent-data-encryption.md
-    - name: Raporty na temat zagrożeń
-      href: security-center-threat-report.md
-    - name: Alerty niestandardowe
-      href: security-center-custom-alert.md
-    - name: Współczynnik ufności alertu
-      href: security-center-confidence-score.md
-    - name: Mapa alertów zabezpieczeń i analiza zagrożeń
-      href: security-center-threat-intel.md
-    - name: Badanie
-      href: security-center-investigation.md
-    - name: Zarządzanie danymi użytkownika badań
-      href: security-center-investigation-user-data.md
-    - name: Elementy playbook usługi Logic Apps
-      href: security-center-playbooks.md
-    - name: Wyświetlanie zdarzeń
-      href: security-center-events-dashboard.md
-    - name: Wyszukiwanie
-      href: security-center-search.md
-    - name: Planowanie i operacje
-      href: security-center-planning-and-operations-guide.md
+    - name: Poprawianie oceny bezpieczeństwa
+      href: security-center-secure-score.md
+    - name: Przechodzenie na zabezpieczenia zaawansowane
+      href: security-center-onboarding.md
+    - name: Ochrona serwera za pomocą usługi Windows Defender ATP
+      href: security-center-wdatp.md
+    - name: Włączanie ochrony usługi App Service
+      href: security-center-app-services.md
+    - name: Praca z zasadami zabezpieczeń
+      href: tutorial-security-policy.md
+    - name: Dostosowywanie zasad ochrony informacji
+      href: security-center-info-protection-policy.md
+    - name: Zarządzanie rozwiązaniami zabezpieczeń
+      href: security-center-partner-integration.md
+    - name: Automatyzowanie dołączania przy użyciu programu PowerShell
+      href: security-center-powershell-onboarding.md
+    - name: Ustawienia usługi Security Center
+      href: security-center-policies-overview.md
+      items:
+        - name: Zbieranie danych
+          href: security-center-enable-data-collection.md
+        - name: Wbudowane zasady zabezpieczeń
+          href: security-center-policy-definitions.md
+        - name: Powiadomienia e-mail
+          href: security-center-provide-security-contact-details.md
+        - name: Warstwa cenowa
+          href: security-center-pricing.md
+        - name: Konfiguracje zabezpieczeń
+          href: security-center-customize-os-security-config.md
+        - name: Widoczność w całej dzierżawie
+          href: security-center-management-groups.md
+    - name: Zalecenia dotyczące implementowania zabezpieczeń
+      href: security-center-recommendations.md
+      items:
+        - name: Zwiększanie poziomu bezpieczeństwa
+          href: security-center-monitoring.md
+        - name: Ochrona maszyn i aplikacji
+          href: security-center-virtual-machine-protection.md
+        - name: Ochrona zasobów sieciowych
+          href: security-center-network-recommendations.md
+        - name: Ochrona usług i danych SQL
+          href: security-center-sql-service-recommendations.md
+        - name: Ochrona tożsamości i dostępu
+          href: security-center-identity-access.md
+    - name: Stosowanie zabezpieczeń chmury
+      items:
+        - name: Zarządzanie dostępem Just In Time
+          href: security-center-just-in-time.md
+        - name: Funkcje adaptacyjnego sterowania aplikacjami
+          href: security-center-adaptive-application.md
+        - name: Monitorowanie integralności plików
+          href: security-center-file-integrity-monitoring.md
+        - name: Adaptacyjne wzmocnienie zabezpieczeń sieci
+          href: security-center-adaptive-network-hardening.md
+    - name: Wykrywania zagrożeń
+      href: security-center-detection-capabilities.md
+      items:
+        - name: Alerty zabezpieczeń
+          href: security-center-managing-and-responding-alerts.md
+        - name: Zdarzenia dotyczące zabezpieczeń
+          href: security-center-incident.md
+        - name: Informacje o alertach zabezpieczeń
+          href: security-center-alerts-type.md
+        - name: Walidacja alertu
+          href: security-center-alert-validation.md
+        - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
+          href: security-center-ueba-mcas.md
+    - name: Archiwum
+      items:
+        - name: Zastosuj szyfrowanie dysków
+          href: security-center-apply-disk-encryption.md
+        - name: Zastosuj aktualizacje systemu
+          href: security-center-apply-system-updates.md
+        - name: Włączanie szyfrowania dla konta magazynu
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: Włącz agenta maszyny wirtualnej
+          href: security-center-enable-vm-agent.md
+        - name: Zainstaluj punkt końcowy
+          href: security-center-install-endpoint-protection.md
+        - name: Uruchom ponownie po zaktualizowaniu systemu
+          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+        - name: Korygowanie konfiguracji zabezpieczeń
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: Aktualizacja wersji systemu operacyjnego
+          href: security-center-update-os-version.md
+        - name: Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Dodawanie zapory aplikacji internetowej
+          href: security-center-add-web-application-firewall.md
+        - name: Finalizowanie ochrony aplikacji
+          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: Dodawanie zapory nowej generacji
+          href: security-center-add-next-generation-firewall.md
+        - name: Włączanie sieciowych grup zabezpieczeń
+          href: security-center-enable-network-security-groups.md
+        - name: Ograniczanie dostępu przez punkty końcowe łączące się z Internetem
+          href: security-center-restrict-access-through-internet-facing-endpoints.md
+        - name: Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji
+          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: Włączanie inspekcji i wykrywania zagrożeń w bazach danych SQL
+          href: security-center-enable-auditing-on-sql-databases.md
+        - name: Włączanie inspekcji i wykrywania zagrożeń na serwerach SQL
+          href: security-center-enable-auditing-on-sql-servers.md
+        - name: Włączanie technologii Transparent Data Encryption
+          href: security-center-enable-transparent-data-encryption.md
+        - name: Raporty na temat zagrożeń
+          href: security-center-threat-report.md
+        - name: Alerty niestandardowe
+          href: security-center-custom-alert.md
+        - name: Współczynnik ufności alertu
+          href: security-center-confidence-score.md
+        - name: Mapa alertów zabezpieczeń i analiza zagrożeń
+          href: security-center-threat-intel.md
+        - name: Badanie
+          href: security-center-investigation.md
+        - name: Zarządzanie danymi użytkownika badań
+          href: security-center-investigation-user-data.md
+        - name: Elementy playbook usługi Logic Apps
+          href: security-center-playbooks.md
+        - name: Wyświetlanie zdarzeń
+          href: security-center-events-dashboard.md
+        - name: Wyszukiwanie
+          href: security-center-search.md
+        - name: Planowanie i operacje
+          href: security-center-planning-and-operations-guide.md
 - name: Dokumentacja
   items:
-  - name: Interfejsy API REST
-    href: https://docs.microsoft.com/rest/api/securitycenter/
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=security-center
+    - name: Interfejsy API REST
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: Zasoby
   items:
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?term=securityS
-  - name: Zarządzanie danymi użytkowników
-    href: security-center-privacy.md
-  - name: Często zadawane pytania
-    href: security-center-faq.md
-  - name: Zabezpieczenia platformy Azure
-    href: /azure/security/
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Harmonogram działania dotyczący gotowości
-    href: security-center-readiness-roadmap.md
-  - name: Blog dotyczący zabezpieczeń, ochrony prywatności i zgodności na platformie Azure
-    href: https://blogs.msdn.com/b/azuresecurity/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=security-center
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=security-center
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/security-center/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-  - name: Rozwiązywanie problemów
-    href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: 702e8fe5f5fec2488135104614936762e054b98c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520935"
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?term=securityS
+    - name: Zarządzanie danymi użytkowników
+      href: security-center-privacy.md
+    - name: Często zadawane pytania
+      href: security-center-faq.md
+    - name: Zabezpieczenia platformy Azure
+      href: /azure/security/
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Harmonogram działania dotyczący gotowości
+      href: security-center-readiness-roadmap.md
+    - name: 'Blog dotyczący zabezpieczeń, ochrony prywatności i zgodności na platformie Azure'
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Rozwiązywanie problemów
+      href: security-center-troubleshooting-guide.md
