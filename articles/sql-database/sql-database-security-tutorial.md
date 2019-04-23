@@ -13,7 +13,7 @@ ms.date: 02/08/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496441"
@@ -56,7 +56,7 @@ Aby wykonać wszystkie kroki tego samouczka, zaloguj się do witryny [Azure Port
 
 ## <a name="create-firewall-rules"></a>Tworzenie reguł zapory
 
-Bazy danych SQL są chronione przez zapory na platformie Azure. Domyślnie wszystkie połączenia z serwerem i bazami danych są odrzucane, poza połączeniami z innych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure SQL Database server-level and database-level firewall rules (Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database)](sql-database-firewall-configure.md).
+Bazy danych SQL są chronione przez zapory na platformie Azure. Domyślnie wszystkie połączenia z serwerem i bazami danych są odrzucane, poza połączeniami z innych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database](sql-database-firewall-configure.md).
 
 Najbezpieczniejsza konfiguracja to ustawienie opcji **Zezwalaj na dostęp do usług platformy Azure** na wartość **WYŁ**. Następnie należy utworzyć [zastrzeżony adres IP (wdrożenie klasyczne)](../virtual-network/virtual-networks-reserved-public-ip.md) dla zasobu wymagającego możliwości połączenia, na przykład maszyny wirtualnej platformy Azure czy usługi w chmurze, i zezwolić na dostęp przez zaporę tylko z tego adresu IP. Jeśli używasz modelu wdrożenia usługi [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm), wymagany jest dedykowany publiczny adres IP dla każdego zasobu.
 
@@ -65,7 +65,7 @@ Najbezpieczniejsza konfiguracja to ustawienie opcji **Zezwalaj na dostęp do us�
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>Konfigurowanie reguł zapory serwera usługi SQL Database
 
-Reguły zapory protokołu internetowego na poziomie serwera mają zastosowanie do wszystkich baz danych na tym samym serwerze usługi SQL Database.
+Reguły zapory bazujące na adresach IP na poziomie serwera mają zastosowanie do wszystkich baz danych na tym samym serwerze usługi SQL Database.
 
 Aby skonfigurować regułę zapory na poziomie serwera:
 

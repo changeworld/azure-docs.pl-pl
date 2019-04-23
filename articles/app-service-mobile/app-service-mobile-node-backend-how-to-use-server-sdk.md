@@ -16,7 +16,7 @@ ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57997527"
@@ -426,7 +426,7 @@ Można połączyć z istniejącej bazy danych SQL do zaplecza funkcji Mobile App
 1. W **Dodaj połączenie danych** okienku wybierz **bazy danych SQL — Skonfiguruj wymagane ustawienia** > **Utwórz nową bazę danych**. Wprowadź nazwę nowej bazy danych w **nazwa** pole.
 1. Wybierz **serwera**. W **nowy serwer** okienku, wprowadź unikatową nazwę serwera w **nazwy serwera** polu, a następnie podaj odpowiedni serwer oraz hasło logowania administratora. Upewnij się, że **Zezwalaj usługom platformy azure na dostęp do serwera** jest zaznaczone. Kliknij przycisk **OK**.
 
-   ![Tworzenie bazy danych SQL Azure][6]
+   ![Tworzenie bazy danych Azure SQL Database][6]
 1. W **nową bazę danych** okienku wybierz **OK**.
 1. Ponownie **Dodaj połączenie danych** okienku wybierz **parametry połączenia**, a następnie wprowadź identyfikator logowania i hasło podane podczas tworzenia bazy danych. Jeśli używasz istniejącej bazy danych, należy podać poświadczenia logowania dla tej bazy danych. Kliknij przycisk **OK**.
 1. Ponownie **Dodaj połączenie danych** wybierz ponownie **OK** utworzyć bazę danych.

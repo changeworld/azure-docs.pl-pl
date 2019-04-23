@@ -14,7 +14,7 @@ ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269405"
@@ -152,7 +152,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tworzenie procedury składowanej w usłudze Azure SQL Database 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tworzenie procedury składowanej w bazie danych Azure SQL Database 
 
 Uruchom następujące polecenie, aby utworzyć procedurę składowaną w bazie danych SQL. Ta procedura składowana służy do aktualizowania wartość limitu po każdym uruchomieniu potoku. 
 
@@ -170,7 +170,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Tworzenie typów danych i dodatkowych procedur składowanych w usłudze Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Tworzenie typów danych i dodatkowych procedur składowanych w bazie danych Azure SQL Database
 Uruchom następujące zapytanie, aby utworzyć dwie procedury składowane i dwa typy danych w bazie danych SQL. Służą one do scalania danych z tabel źródłowych w tabelach docelowych. 
 
 Aby ułatwić podróży w zaczynać, firma Microsoft bezpośrednio korzystać z tych procedur składowanych, przekazując dane różnicowe w za pośrednictwem zmiennej tabeli, a następnie scalić je do docelowego magazynu. Należy zachować ostrożność, jego ma być przechowywany w zmiennej tabeli nie jest oczekiwane "large" Liczba zmian wierszy (ponad 100).  

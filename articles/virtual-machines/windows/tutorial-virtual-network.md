@@ -37,7 +37,7 @@ Maszyny wirtualne platformy Azure korzystają z sieci platformy Azure do wewnęt
 
 ## <a name="vm-networking-overview"></a>Omówienie sieci maszyn wirtualnych
 
-Sieci wirtualne platformy Azure umożliwiają nawiązywanie bezpiecznych połączeń sieciowych pomiędzy maszynami wirtualnymi, Internetem i innymi usługami platformy Azure, na przykład Azure SQL Database. Sieci wirtualne są podzielone na logiczne segmenty nazywane podsieciami. Podsieci są używane do sterowania przepływem sieciowym oraz pełnią funkcję granicy zabezpieczeń. Wdrażana maszyna wirtualna zwykle zawiera wirtualny interfejs sieciowy dołączony do podsieci.
+Sieci wirtualne platformy Azure umożliwiają nawiązywanie bezpiecznych połączeń sieciowych pomiędzy maszynami wirtualnymi, Internetem i innymi usługami platformy Azure, na przykład bazą danych Azure SQL Database. Sieci wirtualne są podzielone na logiczne segmenty nazywane podsieciami. Podsieci są używane do sterowania przepływem sieciowym oraz pełnią funkcję granicy zabezpieczeń. Wdrażana maszyna wirtualna zwykle zawiera wirtualny interfejs sieciowy dołączony do podsieci.
 
 Podczas pracy z tym samouczkiem zostaną utworzone następujące zasoby:
 

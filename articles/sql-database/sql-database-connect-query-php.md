@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL | Microsoft Docs
-description: Sposób użycia języka PHP do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL i wykonuje zapytania za pomocą instrukcji języka T-SQL.
+title: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database | Microsoft Docs
+description: Sposób użycia języka PHP do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka T-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,20 +13,20 @@ manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 4a53d733b30c06cb48fe2a57f7be232d914dc79c
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58448944"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database
 
-W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL za pomocą języka [PHP](https://php.net/manual/en/intro-whatis.php). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
+W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL Database za pomocą języka [PHP](https://php.net/manual/en/intro-whatis.php). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elementami:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
@@ -52,7 +52,7 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 

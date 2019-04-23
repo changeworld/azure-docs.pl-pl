@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 04/09/2019
 ms.openlocfilehash: 8d060ce60194e47814308bfd67bd14db996650b0
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425784"
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 ## <a name="create-a-single-database"></a>Tworzenie pojedynczej bazy danych
 
-Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
+Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch [modeli zakupów](sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
 
 Następujący plik JSON jest szablon, który jest używany w tym artykule. Szablon znajduje się na koncie usługi Azure Storage. Więcej przykładów szablonu bazy danych Azure SQL można znaleźć [tutaj](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 

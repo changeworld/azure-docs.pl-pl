@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58447863"
@@ -27,7 +27,7 @@ W tym przewodniku Szybki start użyjesz języka programowania [Golang](https://g
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
@@ -51,7 +51,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 

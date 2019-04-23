@@ -13,12 +13,12 @@ manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58447932"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL Database za pomocą języka [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
@@ -26,7 +26,7 @@ W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z
 
 Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elementami:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
@@ -52,7 +52,7 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 

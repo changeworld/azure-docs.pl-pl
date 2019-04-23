@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360189"
@@ -56,7 +56,7 @@ Domyślnie automatyczne kopie zapasowe baz danych z 7 dni są kopiowane do magaz
 
 Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) strony.
 
-## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
+## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
 Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy dla usługi [pojedyncze bazy danych](sql-database-single-database-scale.md), [ pule elastyczne](sql-database-elastic-pool.md), i [wystąpienia zarządzane](sql-database-managed-instance.md). Dla pojedynczych baz danych, można także [warstwę usługi na dużą skalę (wersja zapoznawcza)](sql-database-service-tier-hyperscale.md).
 

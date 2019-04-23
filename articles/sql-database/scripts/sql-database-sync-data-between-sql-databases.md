@@ -1,6 +1,6 @@
 ---
-title: Przykład programu PowerShell — synchronizacja wielu baz danych usługi Azure SQL | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell do synchronizacji wielu baz danych usługi Azure SQL
+title: Przykład programu PowerShell — synchronizacja wielu baz danych Azure SQL Database | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell do synchronizacji wielu baz danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: b3a9be13a05ac2e5c42abb4848d9933983112dc6
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58482753"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Użycie programu PowerShell do synchronizowania wielu baz danych SQL
  
-Ten przykładowy skrypt programu PowerShell konfiguruje funkcję synchronizacji danych w celu przeprowadzenia synchronizacji wielu baz danych usługi Azure SQL.
+Ten przykładowy skrypt programu PowerShell konfiguruje funkcję synchronizacji danych w celu przeprowadzenia synchronizacji wielu baz danych Azure SQL Database.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

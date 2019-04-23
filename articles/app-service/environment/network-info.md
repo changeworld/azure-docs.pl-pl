@@ -16,7 +16,7 @@ ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58124137"
@@ -205,7 +205,7 @@ Aby ręcznie utworzyć ten sam tras, wykonaj następujące kroki:
 
 ## <a name="service-endpoints"></a>Punkty końcowe usługi ##
 
-Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
+Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi dla sieci wirtualnej][serviceendpoints]. 
 
 Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzone z wyższym priorytetem niż wszystkie inne trasy. Jeśli używasz punktów końcowych usługi w środowisku ASE z wymuszonym tunelowaniem, ruch związany z zarządzaniem usługami Azure SQL i Azure Storage nie będzie tunelowany w sposób wymuszony. 
 

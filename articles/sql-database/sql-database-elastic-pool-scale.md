@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 3/14/2019
 ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58015368"
@@ -74,7 +74,7 @@ Opłaty naliczane są za każdą godzinę istnienia bazy danych przy użyciu naj
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-### <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
+### <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
 - Magazyn można aprowizować maksymalnie limit maksymalnego rozmiaru:
 

@@ -10,7 +10,7 @@ ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 3a702668418ddf17aa9091317393264458ff4f8b
 ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57408941"
@@ -55,7 +55,7 @@ Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać 
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. Aby uzyskać szczegółowe informacje na temat dostępnych warstw usługi, zobacz [Jednostki SKU rejestru kontenerów][container-registry-skus].
+W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. Aby uzyskać szczegółowe informacje na temat dostępnych warstw usług, zobacz [Jednostki SKU rejestru kontenerów][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Logowanie do rejestru
 

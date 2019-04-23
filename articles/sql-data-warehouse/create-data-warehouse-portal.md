@@ -12,7 +12,7 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 053dccb4ba5798fabd4426d5741d9238af579449
 ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/11/2019
 ms.locfileid: "57732398"
@@ -107,7 +107,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożli
 
    ![ustawienia serwera](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
 
-5. Kliknij pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database. 
+5. Kliknij pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database. 
 
    ![reguła zapory serwera](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
 

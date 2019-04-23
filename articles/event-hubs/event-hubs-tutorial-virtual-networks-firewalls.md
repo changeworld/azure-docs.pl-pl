@@ -11,7 +11,7 @@ ms.service: event-hubs-messaging
 ms.custom: mvc
 ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
 ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57779049"
@@ -67,9 +67,9 @@ W menu nawigacji w lewym okienku portalu wybierz opcję **Zapory i sieci wirtual
 
   Przy pierwszej wizycie na tej stronie musi być wybrany przycisk radiowy **Wszystkie sieci**. Oznacza to, że przestrzeń nazw usługi Event Hubs zezwala na wszystkie połączenia przychodzące.
 
-## <a name="add-virtual-network-service-endpoint"></a>Dodawanie punktu końcowego usługi sieci wirtualnej
+## <a name="add-virtual-network-service-endpoint"></a>Dodawanie punktu końcowego usługi dla sieci wirtualnej
 
-Aby ograniczyć dostęp, musisz zintegrować punkt końcowy usługi sieci wirtualnej dla tej przestrzeni nazw usługi Event Hubs.
+Aby ograniczyć dostęp, musisz zintegrować punkt końcowy usługi dla sieci wirtualnej dla tej przestrzeni nazw usługi Event Hubs.
 
 1. Kliknij przycisk radiowy **Wybrane sieci** w górnej części strony, aby włączyć pozostałą część strony z opcjami menu.
   ![wybrane sieci](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
@@ -80,7 +80,7 @@ Aby ograniczyć dostęp, musisz zintegrować punkt końcowy usługi sieci wirtua
 4. Musisz włączyć punkt końcowy usługi przed dodaniem sieci wirtualnej do listy. Jeśli punkt końcowy usługi nie jest włączony, portal wyświetli monitu o jego włączenie.
   ![wybieranie podsieci i włączanie punktu końcowego](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-enabling.png)
     > [!NOTE]
-    > Jeśli nie można włączyć punktu końcowego usługi, możesz zignorować brakujący punkt końcowy usługi sieci wirtualnej za pomocą szablonu ARM. Ta funkcja nie jest dostępna w portalu.
+    > Jeśli nie można włączyć punktu końcowego usługi, możesz zignorować brakujący punkt końcowy usługi dla sieci wirtualnej za pomocą szablonu ARM. Ta funkcja nie jest dostępna w portalu.
 
 5. Po włączeniu punktu końcowego usługi w wybranej podsieci możesz kontynuować, aby dodać ją do listy dozwolonych sieci wirtualnych.
   ![dodawanie podsieci po włączeniu punktu końcowego](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)

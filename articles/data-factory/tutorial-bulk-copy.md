@@ -14,7 +14,7 @@ ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 718e34cdba31b3b747ebb5c10f5c5708c0572448
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57436599"
@@ -57,7 +57,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 **Przygotowywanie źródłowej bazy Azure SQL Database**:
 
-Utwórz bazę Azure SQL Database z przykładowymi danymi Adventure Works LT zgodnie z artykułem [Tworzenie bazy danych Azure SQL](../sql-database/sql-database-get-started-portal.md). Ten samouczek kopiuje wszystkie tabele z tej przykładowej bazy danych do magazynu danych SQL.
+Utwórz bazę Azure SQL Database z przykładowymi danymi Adventure Works LT zgodnie z artykułem [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-get-started-portal.md). Ten samouczek kopiuje wszystkie tabele z tej przykładowej bazy danych do magazynu danych SQL.
 
 **Przygotowywanie magazynu ujścia Azure SQL Data Warehouse**:
 

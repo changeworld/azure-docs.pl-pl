@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/03/2019
 ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359432"
@@ -37,10 +37,10 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 |---|---|
 |**Tworzenie pojedynczej bazy danych i elastycznej puli**||
 | [Tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia tworzy pojedynczą bazę danych Azure SQL Database i konfiguruje regułę zapory na poziomie serwera. |
-| [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia tworzy elastyczne pule SQL, przenosi bazy danych Azure SQL Database w puli i zmienia rozmiar zasobów obliczeniowych.|
+| [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia tworzy elastyczne pule SQL, przenosi bazy danych Azure SQL Database w puli i zmienia rozmiary obliczeniowe.|
 |**Skalowanie pojedynczej bazy danych i puli elastycznej**||
-| [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pojedynczą bazę danych Azure SQL do innego rozmiaru zasobów obliczeniowych po utworzeniu zapytania o informacje na temat rozmiaru bazy danych. |
-| [Skalowanie puli elastycznej](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pulę elastyczną SQL do innego rozmiaru zasobów obliczeniowych.  |
+| [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pojedynczą bazę danych Azure SQL Database do innego rozmiaru obliczeniowego po utworzeniu zapytania o informacje na temat rozmiaru bazy danych. |
+| [Skalowanie puli elastycznej](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pulę elastyczną SQL do innego rozmiaru obliczeniowego.  |
 |||
 
 Dowiedz się więcej o [interfejsie API interfejsu wiersza platformy Azure pojedynczej bazy danych](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).

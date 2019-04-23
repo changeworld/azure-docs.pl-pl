@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: tworzenie potoku usługi Azure Data Factory w celu kopiowania danych (witryna Azure Portal) | Microsoft Docs'
-description: W tym samouczku opisano korzystanie z witryny Azure Portal w celu utworzenia potoku usługi Azure Data Factory z działaniem kopiowania, aby skopiować dane z magazynu obiektów blob Azure do bazy danych Azure SQL.
+description: W tym samouczku opisano korzystanie z witryny Azure Portal w celu utworzenia potoku usługi Azure Data Factory z działaniem kopiowania, aby skopiować dane z magazynu obiektów blob Azure do bazy danych Azure SQL Database.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -16,7 +16,7 @@ ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 168e5eea2004a31b108a8a00d883298f8e2198ba
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58090274"
@@ -36,7 +36,7 @@ ms.locfileid: "58090274"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
 
-W tym artykule wyjaśniono, jak używać witryny [Azure Portal](https://portal.azure.com) do tworzenia fabryki danych obejmującej potok, który kopiuje dane z magazynu obiektów blob w usłudze Azure do bazy danych Azure SQL. Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem instrukcji z tego samouczka zapoznaj się z artykułem [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).   
+W tym artykule wyjaśniono, jak używać witryny [Azure Portal](https://portal.azure.com) do tworzenia fabryki danych obejmującej potok, który kopiuje dane z magazynu obiektów blob w usłudze Azure do bazy danych Azure SQL Database. Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, przed wykonaniem instrukcji z tego samouczka zapoznaj się z artykułem [Wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).   
 
 W tym samouczku opisano tworzenie potoku z jednym działaniem: działaniem kopiowania. Działanie kopiowania kopiuje dane z obsługiwanego magazynu danych do obsługiwanego magazynu danych ujścia. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Więcej informacji o działaniu kopiowania znajduje się w artykule dotyczącym [działań związanych z przenoszeniem danych](data-factory-data-movement-activities.md).
 
@@ -56,15 +56,15 @@ Poniżej przedstawiono kroki do wykonania w ramach tego samouczka:
     
     Polecenie AzureStorageLinkedService łączy konto usługi Azure Storage z fabryką danych. W ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) utworzono kontener i przekazano dane na to konto magazynu.   
 
-    Polecenie AzureSqlLinkedService łączy bazę danych SQL na platformie Azure z fabryką danych. W tej bazie danych są przechowywane dane skopiowane z magazynu obiektów blob. W ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) w tej bazie danych została utworzona tabela SQL.   
+    Polecenie AzureSqlLinkedService łączy bazę danych Azure SQL Database z fabryką danych. W tej bazie danych są przechowywane dane skopiowane z magazynu obiektów blob. W ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) w tej bazie danych została utworzona tabela SQL.   
 3. Utworzenie wejściowych i wyjściowych **zestawów danych** w fabryce danych.  
     
     Połączona usługa magazynu Azure określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z kontem magazynu Azure. Natomiast wejściowy zestaw danych obiektów blob określa kontener oraz folder, który zawiera dane wejściowe.  
 
-    W analogiczny sposób połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych SQL usługi Azure. Wyjściowy zestaw danych tabeli SQL określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob.
+    W analogiczny sposób połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych Azure SQL Database. Wyjściowy zestaw danych tabeli SQL określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob.
 4. Utworzenie **potoku** w fabryce danych. W tym kroku jest tworzony potok za pomocą działania kopiowania.   
     
-    Działanie kopiowania kopiuje dane z obiektu blob w magazynie obiektów blob platformy Azure do tabeli w bazie danych SQL na platformie Azure. Działania kopiowania w potoku można użyć do kopiowania danych z dowolnego obsługiwanego źródła do dowolnej obsługiwanej lokalizacji docelowej. Listę obsługiwanych magazynów danych można znaleźć w artykule [Działania związane z przenoszeniem danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+    Działanie kopiowania kopiuje dane z obiektu blob w magazynie obiektów blob platformy Azure do tabeli w bazie danych Azure SQL Database. Działania kopiowania w potoku można użyć do kopiowania danych z dowolnego obsługiwanego źródła do dowolnej obsługiwanej lokalizacji docelowej. Listę obsługiwanych magazynów danych można znaleźć w artykule [Działania związane z przenoszeniem danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
 5. Monitorowanie potoku. Ten krok polega na **monitorowaniu** wycinków wejściowych i wyjściowych zestawów danych przy użyciu witryny Azure Portal. 
 
 ## <a name="create-data-factory"></a>Tworzenie fabryki danych
@@ -118,7 +118,7 @@ W związku z tym tworzy się dwie połączone usługi o nazwie AzureStorageLinke
 
 Polecenie AzureStorageLinkedService łączy konto usługi Azure Storage z fabryką danych. Na tym koncie magazynu utworzono kontener i przekazano na nie dane w ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-Polecenie AzureSqlLinkedService łączy bazę danych SQL na platformie Azure z fabryką danych. W tej bazie danych są przechowywane dane skopiowane z magazynu obiektów blob. Tabelę emp w tej bazie danych utworzono w ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).  
+Polecenie AzureSqlLinkedService łączy bazę danych Azure SQL Database z fabryką danych. W tej bazie danych są przechowywane dane skopiowane z magazynu obiektów blob. Tabelę emp w tej bazie danych utworzono w ramach [wymagań wstępnych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).  
 
 ### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych. W tej sekcji określa się nazwę i klucz konta magazynu platformy Azure.  
@@ -141,10 +141,10 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych. W 
 
     Aby uzyskać więcej informacji na temat właściwości JSON w definicji połączonej usługi, zobacz artykuł dotyczący [łącznika usługi Azure Blob Storage](data-factory-azure-blob-connector.md#linked-service-properties).
 
-### <a name="create-a-linked-service-for-the-azure-sql-database"></a>Tworzenie połączonej usługi dla bazy danych SQL Azure
+### <a name="create-a-linked-service-for-the-azure-sql-database"></a>Tworzenie połączonej usługi dla usługi Azure SQL Database
 W tym kroku opisano łączenie bazy danych Azure SQL Database z fabryką danych. W tej sekcji określa się nazwę serwera usługi Azure SQL, nazwę bazy danych, nazwę użytkownika i hasło użytkownika. 
 
-1. W **Edytorze fabryki danych** kliknij przycisk **Nowy magazyn danych** na pasku narzędzi i wybierz opcję **Baza danych SQL Azure** z menu rozwijanego. W okienku po prawej stronie powinien zostać wyświetlony szablon JSON do tworzenia połączonej usługi serwera SQL Azure.
+1. W **Edytorze fabryki danych** kliknij przycisk **Nowy magazyn danych** na pasku narzędzi i wybierz opcję **Azure SQL Database** z menu rozwijanego. W okienku po prawej stronie powinien zostać wyświetlony szablon JSON do tworzenia połączonej usługi serwera SQL Azure.
 2. Zastąp parametry `<servername>`, `<databasename>`, `<username>@<servername>` i `<password>`, wpisując nazwy serwera SQL Azure, bazy danych i konta użytkownika oraz hasło. 
 3. Kliknij przycisk **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć usługę **AzureSqlLinkedService**.
 4. Upewnij się, że w widoku drzewa w obszarze **Połączone usługi** jest wyświetlana nazwa usługi **AzureSqlLinkedService**.  
@@ -152,11 +152,11 @@ W tym kroku opisano łączenie bazy danych Azure SQL Database z fabryką danych.
     Aby uzyskać więcej informacji o tych właściwościach JSON, zobacz artykuł dotyczący [łącznika usługi Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties).
 
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
-W poprzednim kroku zostały utworzone połączone usługi używane do połączenia konta usługi Azure Storage i bazy danych Azure SQL z fabryką danych. W tym kroku zostaną zdefiniowane dwa zestawy danych o nazwach InputDataset i OutputDataset zawierające dane wejściowe i wyjściowe przechowywane w magazynach danych, do których odwołują się usługi AzureStorageLinkedService i AzureSqlLinkedService.
+W poprzednim kroku zostały utworzone połączone usługi używane do połączenia konta usługi Azure Storage i bazy danych Azure SQL Database z fabryką danych. W tym kroku zostaną zdefiniowane dwa zestawy danych o nazwach InputDataset i OutputDataset zawierające dane wejściowe i wyjściowe przechowywane w magazynach danych, do których odwołują się usługi AzureStorageLinkedService i AzureSqlLinkedService.
 
 Połączona usługa magazynu Azure określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z kontem magazynu Azure. Natomiast wejściowy zestaw danych obiektów blob (InputDataset) określa kontener oraz folder, który zawiera dane wejściowe.  
 
-W analogiczny sposób połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych SQL usługi Azure. Wyjściowy zestaw danych tabeli SQL (OutputDataset) określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob. 
+W analogiczny sposób połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych Azure SQL Database. Wyjściowy zestaw danych tabeli SQL (OutputDataset) określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob. 
 
 ### <a name="create-input-dataset"></a>Tworzenie wejściowego zestawu danych
 W tym kroku opisano tworzenie zestawu danych o nazwie InputDataset wskazującego na plik obiektów blob (emp.txt) w katalogu głównym kontenera obiektów blob (adftutorial) w usłudze Azure Storage reprezentowany przez połączoną usługę AzureStorageLinkedService. Jeśli nie określisz wartości obiektu fileName lub ją pominiesz, dane ze wszystkich obiektów blob w folderze wejściowym zostaną skopiowane do lokalizacji docelowej. W tym samouczku wartość obiektu fileName jest określona. 
@@ -216,7 +216,7 @@ W tym kroku opisano tworzenie zestawu danych o nazwie InputDataset wskazującego
 3. Kliknij przycisk **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć zestaw danych **InputDataset**. Upewnij się, że zestaw **InputDataset** jest wyświetlany w widoku drzewa.
 
 ### <a name="create-output-dataset"></a>Tworzenie wyjściowego zestawu danych
-Połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych SQL usługi Azure. Wyjściowy zestaw danych tabeli SQL (OutputDataset) tworzony w tym kroku określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob.
+Połączona usługa Azure SQL Database określa parametry połączenia, z których korzysta usługa Data Factory w czasie wykonywania, aby połączyć się z bazą danych Azure SQL Database. Wyjściowy zestaw danych tabeli SQL (OutputDataset) tworzony w tym kroku określa tabelę w bazie danych, do której są kopiowane dane z magazynu obiektów blob.
 
 1. W **edytorze** fabryki danych kliknij kolejno polecenia  **Więcej**, **Nowy zestaw danych** i **SQL Azure** w menu rozwijanym. 
 2. Zastąp kod JSON w prawym okienku następującym fragmentem kodu JSON:
@@ -252,7 +252,7 @@ Połączona usługa Azure SQL Database określa parametry połączenia, z który
 
     | Właściwość | Opis |
     |:--- |:--- |
-    | type | Właściwość typu jest ustawiona na **AzureSqlTable**, ponieważ dane są kopiowane do tabeli w bazie danych SQL na platformie Azure. |
+    | type | Właściwość typu jest ustawiona na **AzureSqlTable**, ponieważ dane są kopiowane do tabeli w bazie danych Azure SQL Database. |
     | linkedServiceName | Odnosi się do utworzonego wcześniej elementu **AzureSqlLinkedService**. |
     | tableName | Określa **tabelę** , do której są kopiowane dane. | 
     | frequency/interval | Właściwość frequency (częstotliwość) jest ustawiona na wartość **Hour** (Godzina), a wartość interwału wynosi **1**, co oznacza, że wycinki wyjściowe są tworzone **co godzinę** między godziną rozpoczęcia i zakończenia potoku, a nie przed tą godziną lub po niej.  |
@@ -326,7 +326,7 @@ Obecnie harmonogram jest prowadzony przy użyciu wyjściowego zestawu danych. W 
 3. Kliknij przycisk **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć element **ADFTutorialPipeline**. Upewnij się, że potok jest wyświetlany w widoku drzewa. 
 4. Teraz zamknij blok **Edytor**, klikając przycisk **X**. Kliknij ponownie przycisk **X**, aby wyświetlić stronę główną **fabryki danych** dla fabryki **ADFTutorialDataFactory**.
 
-**Gratulacje!** Fabryka danych Azure z potokiem kopiującym dane z usługi Azure Blob Storage do bazy danych Azure SQL została pomyślnie utworzona. 
+**Gratulacje!** Fabryka danych Azure z potokiem kopiującym dane z usługi Azure Blob Storage do bazy danych Azure SQL Database została pomyślnie utworzona. 
 
 
 ## <a name="monitor-pipeline"></a>Monitorowanie potoku
@@ -400,17 +400,17 @@ Można również monitorować potoki danych, korzystając z widoku diagramu.
 
 
 ## <a name="summary"></a>Podsumowanie
-W tym samouczku opisano tworzenie fabryki danych Azure w celu kopiowania danych z obiektu blob Azure do bazy danych SQL Azure. Portal Azure został użyty do utworzenia fabryki danych, połączonych usług, zestawów danych oraz potoku. Główne kroki opisane w tym samouczku:  
+W tym samouczku opisano tworzenie fabryki danych Azure w celu kopiowania danych z obiektu blob platformy Azure do bazy danych Azure SQL Database. Portal Azure został użyty do utworzenia fabryki danych, połączonych usług, zestawów danych oraz potoku. Główne kroki opisane w tym samouczku:  
 
 1. Tworzenie **fabryki danych** Azure.
 2. Tworzenie **połączonych usług**:
    1. Połączona usługa **Azure Storage** w celu połączenia z kontem usługi Azure Storage, na którym przechowywane są dane wejściowe.     
-   2. Połączona usługa **SQL Azure** w celu połączenia z bazą danych SQL Azure, w której przechowywane są dane wyjściowe. 
+   2. Połączona usługa **Azure SQL** w celu połączenia z bazą danych Azure SQL Database, w której przechowywane są dane wyjściowe. 
 3. Tworzenie **zestawów danych** opisujących dane wejściowe i wyjściowe dla potoków.
 4. Tworzenie **potoku** za pomocą **działania kopiowania**, w którym źródłem jest element **BlobSource**, a ujściem element **SqlSink**.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku użyto magazynu obiektów blob platformy Azure jako magazynu danych źródła oraz bazy danych SQL na platformie Azure jako magazynu danych docelowych w operacji kopiowania. Poniższa tabela zawiera listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i lokalizacje docelowe: 
+W tym samouczku użyto magazynu obiektów blob platformy Azure jako magazynu danych źródła oraz bazy danych Azure SQL Database jako magazynu danych docelowych w operacji kopiowania. Poniższa tabela zawiera listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i lokalizacje docelowe: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

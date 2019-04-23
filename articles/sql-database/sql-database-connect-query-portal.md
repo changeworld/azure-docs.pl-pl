@@ -15,7 +15,7 @@ manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58105798"
@@ -28,7 +28,7 @@ Edytor zapytań SQL jest narzędziem przeglądarki portalu Azure, które ułatwi
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych |
   |:--- |:--- |
@@ -175,4 +175,4 @@ Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o języku Transact-SQL obsługiwanym w bazach danych Azure SQL, zobacz [Resolving Transact-SQL differences during migration to SQL Database (Rozwiązywanie różnic w języku Transact-SQL podczas migracji do usługi SQL Database)](sql-database-transact-sql-information.md).
+Aby dowiedzieć się więcej o języku Transact-SQL obsługiwanym w bazach danych Azure SQL Database, zobacz [Resolving Transact-SQL differences during migration to SQL Database (Rozwiązywanie różnic w języku Transact-SQL podczas migracji do usługi SQL Database)](sql-database-transact-sql-information.md).

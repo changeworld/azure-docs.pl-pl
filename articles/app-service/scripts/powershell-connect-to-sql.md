@@ -52,8 +52,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację usługi App Service. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer bazy danych SQL Database. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tworzy regułę zapory dla serwera bazy danych SQL Database. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tworzy regułę zapory dla serwera usługi SQL Database. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy bazę danych lub bazę danych Elastic Database. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji usługi App Service. |
 

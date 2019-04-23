@@ -14,7 +14,7 @@ ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57997936"
@@ -254,7 +254,7 @@ Na przykład jeśli potok zawiera zależność Działanie A -> Działanie B, ró
 ```
 
 ## <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
-W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](copy-activity-overview.md) kopiuje dane z usługi Azure Blob Storage do usługi Azure SQL Database.
+W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](copy-activity-overview.md) kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database.
 
 ```json
 {

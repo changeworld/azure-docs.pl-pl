@@ -35,7 +35,7 @@ ms.locfileid: "54025763"
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
 
 
-W tym samouczku przedstawiono, jak korzystać z **Kreatora kopiowania**, aby skopiować dane z magazynu obiektów blob Azure do bazy danych SQL Azure. 
+W tym samouczku przedstawiono, jak korzystać z **Kreatora kopiowania**, aby skopiować dane z magazynu obiektów blob Azure do bazy danych Azure SQL Database. 
 
 **Kreator kopiowania** w usłudze Azure Data Factory umożliwia szybkie utworzenie potoku danych, który kopiuje dane z obsługiwanego źródłowego magazynu danych do obsługiwanego docelowego magazynu danych. Dlatego zalecamy użycie kreatora jako pierwszego kroku procesu tworzenia przykładowego potoku dla scenariusza przenoszenia danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i lokalizacje docelowe, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats).  
 
@@ -109,10 +109,10 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
 7. Na stronie **Ustawienia formatu pliku** są wyświetlane ograniczniki i schemat wykrywany automatycznie przez kreatora w ramach analizy pliku. Możesz też ręcznie wprowadzić ograniczniki kreatora kopiowania, aby zatrzymać automatyczne wykrywanie lub przesłonić ustawienia. Po przejrzeniu ograniczników i wyświetleniu podglądu danych kliknij przycisk **Dalej**. 
    
     ![Narzędzie kopiowania — ustawienia formatu pliku](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
-8. Na stronie docelowego magazynu danych wybierz pozycję **Baza danych SQL Azure** i kliknij przycisk **Dalej**.
+8. Na stronie docelowego magazynu danych wybierz pozycję **Azure SQL Database** i kliknij przycisk **Dalej**.
    
     ![Narzędzie kopiowania — wybieranie magazynu docelowego](./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png)
-9. Na stronie **Określanie bazy danych SQL Azure**:
+9. Na stronie **Określanie bazy danych Azure SQL Database**:
    
    1. Wprowadź wartość **AzureSqlLinkedService** w polu **Nazwa połączenia**.
    2. Upewnij się, że wybrano opcję **Z subskrypcji Azure** dla ustawienia **Metoda wyboru serwera/bazy danych**.
@@ -152,7 +152,7 @@ W tym kroku opisano tworzenie fabryki danych Azure o nazwie **ADFTutorialDataFac
     Aby uzyskać więcej informacji na temat używania tej aplikacji, zobacz artykuł [Monitor and manage pipeline using Monitoring App](data-factory-monitor-manage-app.md) (Monitorowanie potoku i zarządzanie nim przy użyciu aplikacji do monitorowania).
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku użyto magazynu obiektów blob platformy Azure jako magazynu danych źródła oraz bazy danych SQL na platformie Azure jako magazynu danych docelowych w operacji kopiowania. Poniższa tabela zawiera listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i lokalizacje docelowe: 
+W tym samouczku użyto magazynu obiektów blob platformy Azure jako magazynu danych źródła oraz bazy danych Azure SQL Database jako magazynu danych docelowych w operacji kopiowania. Poniższa tabela zawiera listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i lokalizacje docelowe: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

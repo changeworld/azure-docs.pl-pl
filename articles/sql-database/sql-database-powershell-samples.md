@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 6be6021ef828202ad37a8af4eba942e6898963ca
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259987"
@@ -36,14 +36,14 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |---|---|
 |**Tworzenie i konfigurowanie pojedynczych baz danych i elastycznych pul**||
 | [Tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory serwera bazy danych](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu Azure PowerShell tworzy jedną bazę danych Azure SQL Database i konfiguruje regułę zapory na poziomie serwera. |
-| [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell tworzy elastyczne pule usługi Azure SQL Database, przenosi bazy danych w puli i zmienia rozmiar zasobów obliczeniowych.|
+| [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell tworzy elastyczne pule usługi Azure SQL Database, przenosi bazy danych w puli i zmienia rozmiary obliczeniowe.|
 |**Konfigurowanie replikacji geograficznej i trybu failover**||
 | [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla jednej bazy danych Azure SQL Database i wprowadzenie jej w tryb failover do repliki pomocniczej. |
 | [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla bazy danych Azure SQL Database w elastycznej puli SQL i wprowadzenie jej w tryb failover do repliki pomocniczej. |
-| [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie grupy trybu failover dla wystąpienia serwera Azure SQL Database, dodanie bazy danych do grupy trybu failover oraz wprowadzenie jej w tryb failover na serwerze pomocniczym. |
+| [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie grupy trybu failover dla wystąpienia serwera usługi Azure SQL Database, dodanie bazy danych do grupy trybu failover oraz wprowadzenie jej w tryb failover na serwerze pomocniczym. |
 |**Skalowanie pojedynczej bazy danych i puli elastycznej**||
-| [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności bazy danych SQL platformy Azure, skaluje w górę jej zasoby obliczeniowe i tworzy regułę alertu dla jednej z metryk wydajności. |
-| [Skalowanie puli elastycznej](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli Azure SQL Database, skaluje w górę jej zasoby obliczeniowe i tworzy regułę alertu dla jednej z metryk wydajności.  |
+| [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności bazy danych Azure SQL Database, skaluje ją do większego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności. |
+| [Skalowanie puli elastycznej](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli Azure SQL Database, skaluje ją do większego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności.  |
 | **Inspekcja i wykrywanie zagrożeń** |
 | [Konfigurowanie inspekcji i wykrywania zagrożeń](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie inspekcji i wykrywania zagrożeń dla bazy danych Azure SQL Database. |
 | **Przywracanie, kopiowanie i importowanie bazy danych**||
@@ -51,8 +51,8 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 | [Kopiowanie bazy danych na nowy serwer](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia utworzenie kopii istniejącej bazy danych Azure SQL Database na nowym serwerze Azure SQL. |
 | [Importowanie bazy danych z pliku BACPAC](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia zaimportowanie bazy danych z pliku BACPAC na serwer Azure SQL. |
 | **Synchronizowanie danych między bazami danych**||
-| [Synchronizowanie danych między bazami danych SQL](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie funkcji synchronizacji danych w celu przeprowadzenia synchronizacji wielu baz danych usługi Azure SQL Database. |
-| [Synchronizowanie danych między bazą danych SQL Database i lokalnym programem SQL Server](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie synchronizacji danych w celu przeprowadzenia synchronizacji pomiędzy bazą danych usługi Azure SQL Database i lokalną bazą danych programu SQL Server. |
+| [Synchronizowanie danych między bazami danych SQL](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie funkcji synchronizacji danych w celu przeprowadzenia synchronizacji wielu baz danych Azure SQL Database. |
+| [Synchronizowanie danych między bazą danych SQL Database i lokalnym programem SQL Server](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia skonfigurowanie synchronizacji danych w celu przeprowadzenia synchronizacji pomiędzy bazą danych Azure SQL Database i lokalną bazą danych programu SQL Server. |
 | [Aktualizacja schematu synchronizacji usługi SQL Data Sync](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell umożliwia dodanie lub usunięcie elementu ze schematu synchronizacji usługi Data Sync. |
 |||
 

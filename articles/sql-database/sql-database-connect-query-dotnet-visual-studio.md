@@ -14,20 +14,20 @@ manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 7c444235ed7aa641fe218b4d1667e661ff05d77e
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58443663"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET i języka C# w programie Visual Studio w celu nawiązywania połączenia i wykonywania zapytań w bazie danych Azure SQL Database
 
-Ten przewodnik Szybki Start przedstawia sposób użycia [platformy .NET ](https://www.microsoft.com/net/) i kodu w języku C# w programie Visual Studio do wykonywania zapytań do bazy danych Azure SQL za pomocą instrukcji w języku Transact-SQL.
+Ten przewodnik Szybki Start przedstawia sposób użycia [platformy .NET ](https://www.microsoft.com/net/) i kodu w języku C# w programie Visual Studio do wykonywania zapytań do bazy danych Azure SQL Database za pomocą instrukcji w języku Transact-SQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
@@ -47,7 +47,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -139,9 +139,9 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [uzyskać połączenie i wykonywać zapytania do bazy danych Azure SQL przy użyciu platformy .NET Core](sql-database-connect-query-dotnet-core.md) w systemach operacyjnych Windows/Linux/macOS.  
+- Dowiedz się, jak [uzyskać połączenie i wykonywać zapytania do bazy danych Azure SQL Database przy użyciu platformy .NET Core](sql-database-connect-query-dotnet-core.md) w systemach operacyjnych Windows/Linux/macOS.  
 - Dowiedz się więcej o [rozpoczynaniu pracy z platformą .NET Core w systemie Windows/Linux/macOS przy użyciu wiersza polecenia](/dotnet/core/tutorials/using-with-xplat-cli).
-- Dowiedz się, jak [zaprojektować pierwszą bazę danych Azure SQL przy użyciu narzędzia SSMS](sql-database-design-first-database.md) lub [zaprojektować pierwszą bazę danych Azure SQL przy użyciu platformy .NET](sql-database-design-first-database-csharp.md).
+- Dowiedz się, jak [zaprojektować pierwszą bazę danych Azure SQL Database przy użyciu narzędzia SSMS](sql-database-design-first-database.md) lub [zaprojektować pierwszą bazę danych Azure SQL Database przy użyciu platformy .NET](sql-database-design-first-database-csharp.md).
 - Aby uzyskać więcej informacji na temat platformy .NET, zobacz [.NET documentation](https://docs.microsoft.com/dotnet/) (Dokumentacja platformy .NET).
 - Przykład logiki ponowień: [nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą środowiska ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 

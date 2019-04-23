@@ -14,7 +14,7 @@ ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57436557"
@@ -75,10 +75,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 * **Usługa Azure SQL Database**. Baza danych jest używana jako magazyn danych **źródłowych**. Jeśli nie masz bazy danych Azure SQL Database, utwórz ją, wykonując czynności przedstawione w artykule [Create an Azure SQL database (Tworzenie bazy danych Azure SQL Database)](../sql-database/sql-database-get-started-portal.md).
 * **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako magazyn danych **źródłowych**. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md). Utwórz kontener o nazwie **adftutorial**. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Tworzenie tabeli danych źródłowych w bazie danych Azure SQL
+### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Tworzenie tabeli danych źródłowych w bazie danych Azure SQL Database
 1. Uruchom program **SQL Server Management Studio**, a następnie nawiąż połączenie z serwerem Azure SQL Server. 
 2. W **Eksploratorze serwera** kliknij prawym przyciskiem używaną **bazę danych**, a następnie wybierz pozycję **Nowe zapytanie**.
-3. Uruchom poniższe polecenie SQL dla bazy danych Azure SQL, aby utworzyć tabelę o nazwie `data_source_table` jako magazyn danych źródłowych.  
+3. Uruchom poniższe polecenie SQL dla bazy danych Azure SQL Database, aby utworzyć tabelę o nazwie `data_source_table` jako magazyn danych źródłowych.  
     
     ```sql
     create table data_source_table
@@ -195,7 +195,7 @@ Pamiętaj o następujących kwestiach:
 
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
-Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem usługi Azure Storage i bazą danych Azure SQL. 
+Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem usługi Azure Storage i bazą danych Azure SQL Database. 
 
 ### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage.
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.

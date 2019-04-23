@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL | Microsoft Docs
-description: W tym temacie przedstawiono sposób użycia języka Ruby do utworzenia programu, który nawiązuje połączenie z bazą danych SQL Azure i wykonuje zapytania za pomocą instrukcji języka Transact-SQL.
+title: Korzystanie z języka Ruby do wykonywania zapytań w usłudze Azure SQL Database | Microsoft Docs
+description: W tym temacie przedstawiono sposób użycia języka Ruby do utworzenia programu, który nawiązuje połączenie z usługą Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -14,12 +14,12 @@ manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 05f3213383c526944a8a1cf51fb92d5186ac7434
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58449028"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start pokazano, jak używać języka [Ruby](https://www.ruby-lang.org) w celu nawiązywania połączenia z usługą Azure SQL Database i wysyłać zapytania o dane, korzystając z instrukcji Transact-SQL.
 
@@ -27,7 +27,7 @@ W tym przewodniku Szybki start pokazano, jak używać języka [Ruby](https://www
 
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
-- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
@@ -53,7 +53,7 @@ Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie n
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
-Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
+Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -65,7 +65,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. W edytorze tekstów lub kodu utwórz nowy plik o nazwie *sqltest.rb*.
    
-1. Dodaj następujący kod. Wartości `<server>`, `<database>`, `<username>` i `<password>` zastąp wartościami ze swojej bazy danych Azure SQL.
+1. Dodaj następujący kod. Wartości `<server>`, `<database>`, `<username>` i `<password>` zastąp wartościami ze swojej bazy danych Azure SQL Database.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 

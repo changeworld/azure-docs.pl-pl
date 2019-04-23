@@ -11,7 +11,7 @@ author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57845226"
@@ -34,7 +34,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Badanie potoku ciągłej integracji
 > * Badanie potoku ciągłego wdrażania
 > * Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure
-> * Łączenie z usługą Azure SQL Database 
+> * Łączenie z bazą danych Azure SQL Database 
 > * Oczyszczanie zasobów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -162,9 +162,9 @@ Teraz możesz rozpocząć współpracę z zespołem nad aplikacją w języku Pyt
 
 1. Po zakończeniu tworzenia wydania odśwież aplikację, aby zweryfikować zmiany.
 
-## <a name="connect-to-the-azure-sql-database"></a>Łączenie z usługą Azure SQL Database
+## <a name="connect-to-the-azure-sql-database"></a>Łączenie z bazą danych Azure SQL Database
 
-Aby połączyć się z usługą Azure SQL Database potrzebne są odpowiednie uprawnienia.
+Aby połączyć się z bazą danych Azure SQL Database potrzebne są odpowiednie uprawnienia.
 
 1. Na pulpicie nawigacyjnym usługi DevOps Projects wybierz pozycję **Baza danych SQL**, aby przejść do strony zarządzania bazą danych SQL.
    
@@ -180,7 +180,7 @@ Aby połączyć się z usługą Azure SQL Database potrzebne są odpowiednie upr
 1. Wybierz polecenie **Resetuj hasło**, wprowadź hasło logowania administratora usługi SQL Server, a następnie wybierz pozycję **Zapisz**.  
     Zachowaj to hasło do użycia w dalszej części tego samouczka.
 
-    Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak SQL Server Management Studio lub Visual Studio, aby połączyć się z usługami SQL Server i Azure SQL Database. Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
+    Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak SQL Server Management Studio lub Visual Studio, aby połączyć się z usługą SQL Server i bazą danych Azure SQL Database. Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
 
     Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Na przykład, jeśli Twój adres e-mail jest *jankowalski\@microsoft.com*, Twoja nazwa użytkownika jest *jankowalski*.
 
@@ -189,7 +189,7 @@ Aby połączyć się z usługą Azure SQL Database potrzebne są odpowiednie upr
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeprowadzasz testowanie, możesz uniknąć naliczania opłat, oczyszczając zasoby. Gdy usługa Azure SQL Database i powiązane zasoby utworzone w tym samouczku nie będą już potrzebne, możesz je usunąć. W tym celu użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
+Jeśli przeprowadzasz testowanie, możesz uniknąć naliczania opłat, oczyszczając zasoby. Gdy baza danych Azure SQL Database i powiązane zasoby utworzone w tym samouczku nie będą już potrzebne, możesz je usunąć. W tym celu użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
 > [!IMPORTANT]
 > Poniższa procedura powoduje trwałe usunięcie zasobów. Funkcja *Usuń* niszczy dane utworzone przez projekt w usłudze DevOps Projects zarówno na platformie Azure, jak i w usłudze Azure DevOps. Nie będzie można ich odzyskać. Użyj tej procedury dopiero po uważnym przeczytaniu monitów.
@@ -208,7 +208,7 @@ Opcjonalnie możesz zmodyfikować potoki kompilacji i wydania, aby zaspokoić po
 > * Badanie potoku ciągłej integracji
 > * Badanie potoku ciągłego wdrażania
 > * Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure
-> * Łączenie z usługą Azure SQL Database 
+> * Łączenie z bazą danych Azure SQL Database 
 > * Oczyszczanie zasobów
 
 Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zobacz:

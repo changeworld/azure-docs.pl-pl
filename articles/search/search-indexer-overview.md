@@ -1,6 +1,6 @@
 ---
 title: Indeksatory przeszukiwania źródeł danych podczas indeksowania — Azure wyszukiwania
-description: Usługi Azure SQL Database, Azure Cosmos DB i Azure Storage można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełnienia indeksu usługi Azure Search.
+description: Bazę danych Azure SQL Database i usługi Azure Cosmos DB oraz Azure Storage można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełnienia indeksu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -12,7 +12,7 @@ ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
 ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57407990"

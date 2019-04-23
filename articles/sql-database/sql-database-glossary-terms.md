@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
 ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/11/2019
 ms.locfileid: "55990074"
@@ -40,13 +40,13 @@ Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłu
 ||Bazy danych na dużą skalę|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług na dużą skalę modelu zakupu opartego na rdzeniach wirtualnych|
 ||Krytyczne bazy danych firmy|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług krytycznych biznesowej modelu zakupu opartego na rdzeniach wirtualnych|
 |[Modelami zakupów i zasoby](sql-database-purchase-models.md)|Model zakupu w oparciu o jednostki DTU|[Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md)|
-||Model zakupu bazujący na rdzeniach wirtualnych|[model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
+||Model zakupów oparty na rdzeniach wirtualnych|[model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
 ||Rdzeń wirtualny|Podstawowa dostarczane do systemu operacyjnego gościa przez funkcję hypervisor.|
 ||Warstwa usług|Poziom usługi, w ramach modelu zakupu|
 ||Obliczenia rozmiaru|Ilość zasobów obliczeniowych dla pojedynczej bazy danych, pul elastycznych lub wystąpienia zarządzanego w ramach warstwy usług|
 ||Ilość miejsca w magazynie|Ilość miejsca dostępna dla pojedynczej bazy danych, pul elastycznych lub wystąpienia zarządzanego|
 ||Generacja obliczeń|Generowanie procesora w ramach warstwy usług|
-|Reguły zapory dotyczące adresu IP serwera bazy danych|Reguły zapory IP|[Reguły zapory IP](sql-database-firewall-configure.md)|
-||Reguły zapory na poziomie serwera|[Reguły zapory IP poziomu serwera](sql-database-firewall-configure.md#overview)|
+|Reguły zapory bazujące na adresach IP serwera bazy danych|Reguły zapory IP|[Reguły zapory IP](sql-database-firewall-configure.md)|
+||Reguły zapory bazujące na adresach IP na poziomie serwera|[Reguły zapory IP poziomu serwera](sql-database-firewall-configure.md#overview)|
 || Reguły zapory IP poziomu bazy danych|[Reguły zapory IP poziomu bazy danych](sql-database-firewall-configure.md#overview)|
 ||Punkty końcowe sieci wirtualnej i reguł|[Punkty końcowe i reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md)|

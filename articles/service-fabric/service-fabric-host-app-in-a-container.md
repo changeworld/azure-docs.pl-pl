@@ -16,7 +16,7 @@ ms.date: 05/18/2018
 ms.author: aljo
 ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048473"
@@ -29,7 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Konteneryzowanie istniejącej aplikacji za pomocą programu Visual Studio
-> * Tworzenie bazy danych SQL Azure
+> * Tworzenie bazy danych Azure SQL Database
 > * Tworzenie usługi Azure Container Registry
 > * Wdrażanie aplikacji usługi Service Fabric na platformie Azure
 
@@ -183,7 +183,7 @@ Podczas tworzenia klastra:
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Zezwalanie aplikacji uruchomionej na platformie Azure na dostęp do usługi SQL DB
-Wcześniej dla usługi SQL została utworzona reguła zapory, która udziela dostępu aplikacji uruchomionej lokalnie.  W następnej kolejności należy włączyć dostęp do usługi SQL DB dla aplikacji uruchomionej na platformie Azure.  Utwórz [punkt końcowy usługi Virtual Network](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) dla klastra usługi Service Fabric, a następnie utwórz regułę, która umożliwia dostęp do usługi SQL DB temu punktowi końcowemu. Pamiętaj o określeniu zmiennej grupy zasobów klastra zanotowanej podczas tworzenia klastra. 
+Wcześniej dla usługi SQL została utworzona reguła zapory, która udziela dostępu aplikacji uruchomionej lokalnie.  W następnej kolejności należy włączyć dostęp do usługi SQL DB dla aplikacji uruchomionej na platformie Azure.  Utwórz [punkt końcowy usługi dla sieci wirtualnej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) dla klastra usługi Service Fabric, a następnie utwórz regułę, która umożliwia dostęp do usługi SQL DB temu punktowi końcowemu. Pamiętaj o określeniu zmiennej grupy zasobów klastra zanotowanej podczas tworzenia klastra. 
 
 ```powershell
 # Create a virtual network service endpoint
@@ -265,7 +265,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Konteneryzowanie istniejącej aplikacji za pomocą programu Visual Studio
-> * Tworzenie bazy danych SQL Azure
+> * Tworzenie bazy danych Azure SQL Database
 > * Tworzenie usługi Azure Container Registry
 > * Wdrażanie aplikacji usługi Service Fabric na platformie Azure
 

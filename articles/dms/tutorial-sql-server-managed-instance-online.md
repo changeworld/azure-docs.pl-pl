@@ -13,7 +13,7 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: d9d57df3ec8e859a1f3257cb54e423d0006286b1
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880189"
@@ -100,7 +100,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
     Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej w witrynie Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal](https://aka.ms/DMSVnet).
 
-    Aby uzyskać więcej informacji zobacz artykuł [Network topologies for Azure SQL Database Managed Instance migrations using the Azure Database Migration Service (Topologie sieci na potrzeby migracji wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service)](https://aka.ms/dmsnetworkformi).
+    Aby uzyskać więcej informacji, zobacz artykuł [Network topologies for Azure SQL Database Managed Instance migrations using the Azure Database Migration Service (Topologie sieci na potrzeby migracji wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service)](https://aka.ms/dmsnetworkformi).
 
 6. Wybierz jednostkę SKU z warstwy cenowej Premium.
 

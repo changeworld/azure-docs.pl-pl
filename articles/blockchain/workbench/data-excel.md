@@ -12,7 +12,7 @@ ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 560958c2b420d3a1ec592e6bd7e0124ecad7c984
 ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2019
 ms.locfileid: "54332357"
@@ -33,7 +33,7 @@ Aby nawiązać połączenie z bazą danych usługi Blockchain Workbench:
 2. Na karcie **Dane** wybierz pozycję **Pobierz dane**.
 3. Wybierz pozycję **Z platformy Azure**, a następnie wybierz pozycję **Z usługi Azure SQL Database**.
 
-   ![Łączenie z usługą Azure SQL Database](./media/data-excel/connect-sql-db.png)
+   ![Łączenie z bazą danych Azure SQL Database](./media/data-excel/connect-sql-db.png)
 
 4. W oknie dialogowym **Baza danych programu SQL Server**:
 

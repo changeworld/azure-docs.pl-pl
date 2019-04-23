@@ -14,7 +14,7 @@ ms.date: 01/11/2018
 ms.author: yexu
 ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
 ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58447233"
@@ -201,7 +201,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
 7. W oknie dialogowym właściwości zestawu danych wprowadź wartość **WatermarkDataset** w polu **Nazwa**.
 
    ![Zestaw danych limitu — nazwa](./media/tutorial-incremental-copy-portal/watermark-dataset-name.png)
-8. Przejdź do karty **Połączenie**, a następnie kliknij pozycję **+Nowy**, aby nawiązać połączenie (utworzyć usługę połączoną) z bazą danych Azure SQL. 
+8. Przejdź do karty **Połączenie**, a następnie kliknij pozycję **+Nowy**, aby nawiązać połączenie (utworzyć usługę połączoną) z bazą danych Azure SQL Database. 
 
    ![Przycisk Nowa połączona usługa](./media/tutorial-incremental-copy-portal/watermark-dataset-new-connection-button.png)
 9. W oknie **Nowa połączona usługa** wykonaj następujące czynności:
@@ -210,7 +210,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     2. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
     3. Wprowadź **nazwę użytkownika**, który będzie uzyskiwać dostęp do serwera usługi Azure SQL. 
     4. Wprowadź **hasło** dla użytkownika. 
-    5. Aby przetestować połączenie z bazą danych Azure SQL, kliknij przycisk **Testuj połączenie**.
+    5. Aby przetestować połączenie z bazą danych Azure SQL Database, kliknij przycisk **Testuj połączenie**.
     6. Kliknij pozycję **Zapisz**.
     7. Na karcie **Połączenie** upewnij się, że dla ustawienia **Połączona usługa** wybrano wartość **AzureSqlDatabaseLinkedService**.
        

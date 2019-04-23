@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57844147"
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Do ukończenia tego samouczka, upewnij się, że zainstalowano następujące elementy:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Baza danych Azure SQL. Aby utworzyć jedno użycie
+- Baza danych Azure SQL Database. Aby utworzyć jedno użycie
   - [Portal](sql-database-single-database-get-started.md)
   - [Interfejs wiersza polecenia](sql-database-cli-samples.md)
   - [Program PowerShell](sql-database-powershell-samples.md)

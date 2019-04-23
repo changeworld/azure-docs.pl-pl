@@ -11,7 +11,7 @@ ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
 ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57999954"
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 * **Klaster Hadoop oparty na systemie Linux w usłudze HDInsight**. Aby uzyskać instrukcje dotyczące tworzenia nowego klastra usługi HDInsight opartego na systemie Linux, zobacz [Rozpoczęcie korzystania z usługi Apache Hadoop w usłudze HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Usługa Azure SQL Database**. Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych SQL platformy Azure w witrynie Azure Portal](../sql-database/sql-database-get-started.md).
+* **Usługa Azure SQL Database**. Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](../sql-database/sql-database-get-started.md).
 
 * **Interfejs wiersza polecenia platformy Azure**. Jeśli nie zainstalowano wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), aby uzyskać więcej procedur.
 
@@ -207,7 +207,7 @@ W ramach zadania oprogramowania Hive można zaimportować dane z pliku csv do ta
 
 ## <a name="create-a-sql-database-table"></a>Tworzenie tabeli bazy danych SQL
 
-W tej sekcji założono, że utworzono już bazę danych Azure SQL Database. Jeśli nie masz jeszcze bazy danych SQL, skorzystaj z informacji w artykule [Tworzenie bazy danych SQL platformy Azure SQL w witrynie Azure Portal](../sql-database/sql-database-get-started.md), aby ją utworzyć.
+W tej sekcji założono, że utworzono już bazę danych Azure SQL Database. Jeśli nie masz jeszcze bazy danych SQL, skorzystaj z informacji w artykule [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](../sql-database/sql-database-get-started.md), aby ją utworzyć.
 
 Jeśli masz już bazę danych SQL, musisz uzyskać nazwę serwera. Aby znaleźć nazwę serwera w witrynie [Azure Portal](https://portal.azure.com), wybierz pozycję **Bazy danych SQL**, a następnie odfiltruj nazwę bazy danych, której chcesz użyć. Nazwa serwera jest wyświetlana w kolumnie **Nazwa serwera**.
 
@@ -223,7 +223,7 @@ Jeśli masz już bazę danych SQL, musisz uzyskać nazwę serwera. Aby znaleźć
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-3. Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem bazy danych SQL. Zamień ciąg **serverName** na nazwę serwera bazy danych SQL. Zamień ciągi **adminLogin** i **adminPassword** na nazwę logowania bazy danych SQL. Zamień ciąg **databaseName** na nazwę bazy danych.
+3. Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem usługi SQL Database. Zamień ciąg **serverName** na nazwę serwera usługi SQL Database. Zamień ciągi **adminLogin** i **adminPassword** na nazwę logowania bazy danych SQL. Zamień ciąg **databaseName** na nazwę bazy danych.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>

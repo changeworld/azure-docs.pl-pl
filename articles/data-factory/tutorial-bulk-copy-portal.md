@@ -14,7 +14,7 @@ ms.date: 06/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 444269aa7ca2b0a82b78e8437b7884ef8833c665
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279792"
@@ -56,7 +56,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 **Przygotowywanie źródłowej bazy Azure SQL Database**:
 
-Utwórz bazę Azure SQL Database z przykładowymi danymi Adventure Works LT zgodnie z artykułem [Tworzenie bazy danych Azure SQL](../sql-database/sql-database-get-started-portal.md). Ten samouczek kopiuje wszystkie tabele z tej przykładowej bazy danych do magazynu danych SQL.
+Utwórz bazę Azure SQL Database z przykładowymi danymi Adventure Works LT zgodnie z artykułem [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-get-started-portal.md). Ten samouczek kopiuje wszystkie tabele z tej przykładowej bazy danych do magazynu danych SQL.
 
 **Przygotowywanie magazynu ujścia Azure SQL Data Warehouse**:
 
@@ -125,10 +125,10 @@ W tym kroku utworzysz połączoną usługę służącą do łączenia bazy danyc
 
     1. Wprowadź wartość **AzureSqlDatabaseLinkedService** w polu **Nazwa**. 
     1. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
-    1. W polu **Nazwa bazy danych** wybierz swoją bazę danych usługi Azure SQL. 
-    1. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL. 
+    1. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
+    1. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL Database. 
     1. Wprowadź **hasło** dla użytkownika. 
-    1. Aby przetestować połączenie z bazą danych Azure SQL przy użyciu określonych informacji, kliknij pozycję **Testuj połączenie**.
+    1. Aby przetestować połączenie z bazą danych Azure SQL Database przy użyciu określonych informacji, kliknij pozycję **Testuj połączenie**.
     1. Kliknij pozycję **Zapisz**.
 
         ![Ustawienia usługi Azure SQL Database](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
@@ -141,10 +141,10 @@ W tym kroku utworzysz połączoną usługę służącą do łączenia bazy danyc
 
     1. Wprowadź wartość **AzureSqlDWLinkedService** w polu **Nazwa**. 
     1. W polu **Nazwa serwera** wybierz swój serwer usługi Azure SQL.
-    1. W polu **Nazwa bazy danych** wybierz swoją bazę danych usługi Azure SQL. 
-    1. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL. 
+    1. W polu **Nazwa bazy danych** wybierz swoją bazę danych Azure SQL Database. 
+    1. Wprowadź **nazwę użytkownika**, aby nawiązać połączenie z bazą danych Azure SQL Database. 
     1. Wprowadź **hasło** dla użytkownika. 
-    1. Aby przetestować połączenie z bazą danych Azure SQL przy użyciu określonych informacji, kliknij pozycję **Testuj połączenie**.
+    1. Aby przetestować połączenie z bazą danych Azure SQL Database przy użyciu określonych informacji, kliknij pozycję **Testuj połączenie**.
     1. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Tworzenie przejściowej połączonej usługi Azure Storage

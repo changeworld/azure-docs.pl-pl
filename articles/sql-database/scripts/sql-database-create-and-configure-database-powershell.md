@@ -14,12 +14,12 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 8e1ce1ad692f544d668ae557c85e504ffcb9d0dd
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59356671"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database i konfigurowanie reguły zapory serwera usługi SQL Database przy użyciu programu PowerShell
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Tworzenie pojedynczej bazy danych Azure SQL Database i konfigurowanie reguły zapory serwera usługi SQL Database przy użyciu programu PowerShell
 
 Ten przykładowy skrypt programu PowerShell tworzy bazę danych Azure SQL Database i konfiguruje regułę zapory na poziomie serwera. Po pomyślnym wykonaniu tego skryptu można uzyskać dostęp do bazy danych SQL z poziomu wszystkich usług platformy Azure przy użyciu skonfigurowanego adresu IP.
 

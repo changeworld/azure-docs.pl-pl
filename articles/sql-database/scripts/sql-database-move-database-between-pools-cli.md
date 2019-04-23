@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6fa21c0fea2eeacd17cfe9f0d7ba58d55ed60af1
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357590"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Korzystanie z interfejsu wiersza polecenia do przenoszenia bazy danych Azure SQL Database do elastycznej puli SQL
 
-Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure tworzy dwie elastyczne pule i przenosi bazę danych Azure SQL Database z jednej elastycznej puli SQL do innej elastycznej puli SQL, a następnie przenosi bazę danych z elastycznej puli do rozmiaru zasobów obliczeniowych pojedynczej bazy danych.
+Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure tworzy dwie elastyczne pule i przenosi bazę danych Azure SQL Database z jednej elastycznej puli SQL do innej elastycznej puli SQL, a następnie przenosi bazę danych z elastycznej puli do rozmiaru obliczeniowego pojedynczej bazy danych.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

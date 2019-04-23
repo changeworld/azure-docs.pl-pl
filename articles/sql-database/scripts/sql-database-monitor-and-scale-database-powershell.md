@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 34e5876df36a48b0ca70979346afdd89b674a813
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359491"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>Monitorowanie i skalowanie pojedynczej bazy danych SQL za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell monitoruje metryki wydajności bazy danych, skaluje ją na wyższy rozmiar zasobów obliczeniowych i tworzy regułę alertu dla jednej z metryk wydajności.
+Ten przykładowy skrypt programu PowerShell monitoruje metryki wydajności bazy danych, skaluje ją do wyższego rozmiaru obliczeniowego i tworzy regułę alertu dla jednej z metryk wydajności.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

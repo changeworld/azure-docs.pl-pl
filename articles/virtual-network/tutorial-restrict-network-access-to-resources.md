@@ -1,6 +1,6 @@
 ---
 title: Ograniczanie dostępu sieciowego do zasobów PaaS — samouczek — Azure Portal | Microsoft Docs
-description: W tym samouczku dowiesz się, jak ograniczyć i zablokować dostęp sieciowy do zasobów platformy Azure, takich jak usługi Azure Storage i Azure SQL Database, za pomocą punktów końcowych usługi sieci wirtualnej z użyciem witryny Azure Portal.
+description: W tym samouczku dowiesz się, jak ograniczyć i zablokować dostęp sieciowy do zasobów platformy Azure, takich jak usługi Azure Storage i Azure SQL Database, za pomocą punktów końcowych usługi dla sieci wirtualnej z użyciem witryny Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -23,9 +23,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 08/24/2018
 ms.locfileid: "42810088"
 ---
-# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Samouczek: ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej z użyciem witryny Azure Portal
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Samouczek: ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi dla sieci wirtualnej z użyciem witryny Azure Portal
 
-Punkty końcowe usługi sieci wirtualnej umożliwiają ograniczenie dostępu sieciowego do niektórych zasobów usługi platformy Azure do podsieci sieci wirtualnej. Możesz również uniemożliwić dostęp internetowy do zasobów. Punkty końcowe usługi zapewniają bezpośrednie połączenie z sieci wirtualnej z obsługiwanymi usługami platformy Azure, umożliwiając korzystanie z prywatnej przestrzeni adresowej sieci wirtualnej w celu uzyskiwania dostępu do usług platformy Azure. Ruch kierowany do zasobów platformy Azure za pośrednictwem punktów końcowych usługi zawsze pozostaje w sieci szkieletowej platformy Microsoft Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Punkty końcowe usługi dla sieci wirtualnej umożliwiają ograniczenie dostępu sieciowego do niektórych zasobów usługi platformy Azure do podsieci sieci wirtualnej. Możesz również uniemożliwić dostęp internetowy do zasobów. Punkty końcowe usługi zapewniają bezpośrednie połączenie z sieci wirtualnej z obsługiwanymi usługami platformy Azure, umożliwiając korzystanie z prywatnej przestrzeni adresowej sieci wirtualnej w celu uzyskiwania dostępu do usług platformy Azure. Ruch kierowany do zasobów platformy Azure za pośrednictwem punktów końcowych usługi zawsze pozostaje w sieci szkieletowej platformy Microsoft Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie sieci wirtualnej z jedną podsiecią

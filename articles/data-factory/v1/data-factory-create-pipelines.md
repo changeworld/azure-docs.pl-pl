@@ -15,7 +15,7 @@ ms.author: shlo
 robots: noindex
 ms.openlocfilehash: ee34c91787ede0431c71b0fd96d2c040717dbca2
 ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/07/2019
 ms.locfileid: "57551233"
@@ -158,7 +158,7 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 | longRetryInterval |TimeSpan |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
 
 ## <a name="sample-copy-pipeline"></a>Przykładowy potok kopiowania
-W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob Storage do usługi Azure SQL Database.
+W poniższym przykładowym potoku występuje jedno działanie typu **Copy** w sekcji **activities**. W tym przykładzie [działanie copy](data-factory-data-movement-activities.md) kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database.
 
 ```json
 {

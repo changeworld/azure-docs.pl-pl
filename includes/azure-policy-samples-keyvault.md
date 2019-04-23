@@ -19,4 +19,4 @@ ms.locfileid: "55105055"
 
 |  |  |
 |---------|---------|
-| [Przeprowadzanie inspekcji magazynów pod kątem braku punktów końcowych sieci wirtualnej](../articles/governance/policy/samples/keyvault-no-vnet-rules.md) | Przeprowadza inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi sieci wirtualnej. |
+| [Przeprowadzanie inspekcji magazynów pod kątem braku punktów końcowych sieci wirtualnej](../articles/governance/policy/samples/keyvault-no-vnet-rules.md) | Przeprowadza inspekcję magazynów usługi Key Vault w celu wykrycia wystąpień, które nie mają punktów końcowych usługi dla sieci wirtualnej. |

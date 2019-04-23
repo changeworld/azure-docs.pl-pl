@@ -14,7 +14,7 @@ ms.date: 02/12/2019
 ms.author: jdial
 ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
 ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58188615"
@@ -304,7 +304,7 @@ Virtual network TAP jest dostępna w wersji zapoznawczej. W trakcie okresu zapoz
 
 Będzie można dodać wzorca TAP konfigurację interfejsu sieciowego dołączonych do maszyny wirtualnej, w którym włączono z przyspieszoną siecią. Ale wydajności i opóźnień w maszynie wirtualnej będzie miało wpływ na dodawaniu, naciśnij pozycję konfiguracji, ponieważ Odciążanie dublowanie ruch nie jest obecnie obsługiwane przez platformę Azure funkcji przyspieszonej łączności sieciowej.
 
-## <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
+## <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Co to jest prawo sekwencji operacji do skonfigurowania punktów końcowych usługi dla usługi platformy Azure?
 Istnieją dwa kroki, aby zabezpieczanie zasobów usługi platformy Azure za pośrednictwem punktów końcowych usługi:

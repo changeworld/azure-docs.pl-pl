@@ -13,7 +13,7 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57901971"
@@ -34,7 +34,7 @@ Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zad
   - Odbudowywanie indeksów w celu zwiększenia wydajności zapytań. Konfigurowanie zadań w celu cyklicznego wykonywania w kolekcji baz danych, na przykład poza godzinami szczytu.
   - Zbieranie na bieżąco wyników zapytań z zestawu baz danych w centralnej tabeli. Zapytania dotyczące wydajności mogą być nieprzerwanie wykonywane i skonfigurowane do wyzwalania dodatkowych zadań do wykonania.
 - Zbieranie danych na potrzeby raportowania
-  - Agregowanie danych z kolekcji baz danych Azure SQL w pojedynczej tabeli docelowej.
+  - Agregowanie danych z kolekcji baz danych Azure SQL Database w pojedynczej tabeli docelowej.
   - Wykonywanie dłużej działających zapytań dotyczących przetwarzania danych w ramach dużego zestawu baz danych, na przykład w celu zbierania telemetrii klienta. Wyniki są zbierane w pojedynczej tabeli docelowej na potrzeby dalszej analizy.
 - Operacje przenoszenia danych
   - Tworzenie zadań polegających na replikowaniu zmian wprowadzonych w bazach danych do innych baz danych lub gromadzeniu aktualizacji wprowadzonych w bazach danych i stosowaniu zmian w bazie danych.
@@ -47,7 +47,7 @@ W usłudze Azure SQL Database są dostępne następujące technologie planowania
 - **Zadania agenta SQL** to klasyczny i przetestowany w wielu sytuacjach składnik służący do planowania zadań programu SQL Server, który jest dostępny w wystąpieniu zarządzanym. Zadania agenta SQL nie są dostępne w pojedynczych bazach danych.
 - **Zadania usługi Elastic Database** to usługa planowania zadań, która wykonuje niestandardowe zadania w jednej lub wielu bazach danych Azure SQL Database.
 
-Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ramach wystąpienia zarządzanego usługi SQL Database) i agentem zadań elastycznej bazy danych (dostępnym na potrzeby pojedynczych baz danych w usłudze Azure SQL Database i baz danych w usłudze SQL Data Warehouse).
+Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ramach wystąpienia zarządzanego usługi SQL Database) i agentem zadań elastycznej bazy danych (dostępnym na potrzeby pojedynczych baz danych Azure SQL Database i baz danych w usłudze SQL Data Warehouse).
 
 |  |Zadania elastyczne  |Agent SQL |
 |---------|---------|---------|

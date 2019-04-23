@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57441376"
@@ -50,11 +50,11 @@ Aby uzyskać więcej informacji na temat koncepcji podzielonej na fragmenty bazy
 
 ### <a name="reports"></a>Raporty
 
-Agregowanie danych z kolekcji baz danych Azure SQL w pojedynczej tabeli docelowej.
+Agregowanie danych z kolekcji baz danych Azure SQL Database w pojedynczej tabeli docelowej.
 
 ### <a name="reduce-overhead"></a>Zmniejszanie nakładu pracy
 
-Zazwyczaj należy niezależnie nawiązywać połączenie z każdą bazą danych w celu uruchamiania instrukcji języka Transact-SQL lub wykonywania innych zadań administracyjnych. Zadanie obsługuje logowanie do każdej bazy danych w grupie docelowej. Możesz również definiować, obsługiwać i utrwalać skrypty języka Transact-SQL do wykonania w ramach grupy baz danych Azure SQL.
+Zazwyczaj należy niezależnie nawiązywać połączenie z każdą bazą danych w celu uruchamiania instrukcji języka Transact-SQL lub wykonywania innych zadań administracyjnych. Zadanie obsługuje logowanie do każdej bazy danych w grupie docelowej. Możesz również definiować, obsługiwać i utrwalać skrypty języka Transact-SQL do wykonania w ramach grupy baz danych Azure SQL Database.
 
 ### <a name="accounting"></a>Księgowość
 

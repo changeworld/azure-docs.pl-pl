@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: eeb932123e57dcb10fce3baf9670d8c1ae961fb8
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361593"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorowanie i skalowanie pojedynczej bazy danych SQL
 
-Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure skaluje pojedynczą bazę danych usługi Azure SQL Database do innego poziomu wydajności po uzyskaniu informacji o rozmiarze bazy danych za pomocą zapytania.
+Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure skaluje pojedynczą bazę danych Azure SQL Database do innego rozmiaru obliczeniowego po uzyskaniu informacji o rozmiarze bazy danych za pomocą zapytania.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,7 +53,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
 | [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Pokazuje informacje o użyciu rozmiaru dla pojedynczej bazy danych lub bazy danych w puli. |
-| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje właściwości bazy danych (takie jak poziom wydajności lub rozmiar obliczeniowy) lub przenosi bazę danych do pul elastycznych, poza nie lub między nimi. |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje właściwości bazy danych (takie jak warstwa usługi lub rozmiar obliczeniowy) lub przenosi bazę danych do pul elastycznych, poza nie lub między nimi. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 

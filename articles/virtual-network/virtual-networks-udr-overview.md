@@ -14,7 +14,7 @@ ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878506"
@@ -65,7 +65,7 @@ Platforma Azure dodaje dodatkowe domyślne trasy systemowe dla różnych funkcji
 
 - **Komunikacja równorzędna sieci wirtualnej**: Podczas tworzenia komunikacji równorzędnej sieci wirtualnej między dwiema sieciami wirtualnymi dodawana jest trasa dla każdego zakresu adresów w obrębie przestrzeni adresowej w każdej sieci wirtualnej, dla której jest tworzona komunikacja równorzędna. Dowiedz się więcej o [komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md).  
 - **Brama sieci wirtualnej**: Co najmniej jedna trasa w ramach *bramy sieci wirtualnej* wymienionej jako typ następnego przeskoku jest dodawana po dodaniu bramy sieci wirtualnej do sieci wirtualnej. Elementem źródłowym jest również *brama sieci wirtualnej*, ponieważ brama dodaje trasy do podsieci. Jeśli Twoja brama sieci lokalnej wymienia trasy protokołu [BGP](#border-gateway-protocol) z bramą sieci wirtualnej platformy Azure, dla każdej trasy propagowanej z bramy sieci lokalnej dodawana jest trasa. Zaleca się zsumowanie tras lokalnych do największych możliwych zakresów adresów, aby jak najmniejsza liczba adresów była propagowana do bramy sieci wirtualnej platformy Azure. Istnieją ograniczenia liczby tras, które możesz propagować do bramy sieci wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
-- **VirtualNetworkServiceEndpoint**: Publiczne adresy IP dla niektórych usług są dodawane do tabeli tras przez platformę Azure po włączeniu punktu końcowego usługi do usługi. Punkty końcowe usługi są włączane dla poszczególnych podsieci w sieci wirtualnej, więc trasa jest dodawana tylko do tabeli tras podsieci, dla której jest włączony punkt końcowy usługi. Publiczne adresy IP usług platformy Azure są okresowo zmieniane. Platforma Azure zarządza adresami w tabeli tras automatycznie po zmianie adresów. Dowiedz się więcej o [punktach końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md) i usługach, dla których można utworzyć punkty końcowe usługi. 
+- **VirtualNetworkServiceEndpoint**: Publiczne adresy IP dla niektórych usług są dodawane do tabeli tras przez platformę Azure po włączeniu punktu końcowego usługi do usługi. Punkty końcowe usługi są włączane dla poszczególnych podsieci w sieci wirtualnej, więc trasa jest dodawana tylko do tabeli tras podsieci, dla której jest włączony punkt końcowy usługi. Publiczne adresy IP usług platformy Azure są okresowo zmieniane. Platforma Azure zarządza adresami w tabeli tras automatycznie po zmianie adresów. Dowiedz się więcej o [punktach końcowych usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md) i usługach, dla których można utworzyć punkty końcowe usługi. 
 
 > [!NOTE]
 > Typy następnego przeskoku **Komunikacja równorzędna sieci wirtualnej** i **VirtualNetworkServiceEndpoint** są dodawane tylko do tabel tras podsieci w sieciach wirtualnych utworzonych za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager. Typy następnych przeskoków nie są dodawane do tabel tras, które są skojarzone z podsieciami sieci wirtualnej utworzonymi za pośrednictwem klasycznego modelu wdrażania. Dowiedz się więcej o [modelach wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure.
@@ -110,7 +110,7 @@ Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna
 |Urządzenie wirtualne               |VirtualAppliance                                |VirtualAppliance|
 |Brak                            |Brak                                            |Null (niedostępne w wersji klasycznej interfejsu wiersza polecenia w trybie asm)|
 |Wirtualne sieci równorzędne         |Komunikacja równorzędna sieci wirtualnych                                    |Nie dotyczy|
-|Punkt końcowy usługi sieci wirtualnej|VirtualNetworkServiceEndpoint                   |Nie dotyczy|
+|Punkt końcowy usługi dla sieci wirtualnej|VirtualNetworkServiceEndpoint                   |Nie dotyczy|
 
 ### <a name="border-gateway-protocol"></a>Protokół BGP
 
@@ -134,7 +134,7 @@ Jeśli wiele tras zawiera ten sam prefiks adresu, platforma Azure wybiera typ tr
 3. Trasa systemowa
 
 > [!NOTE]
-> Trasy systemowe dla ruchu związanego z siecią wirtualną, komunikacja równorzędna sieci wirtualnych lub punkty końcowe usługi sieci wirtualnej są preferowanymi trasami, nawet jeśli trasy protokołu BGP są bardziej szczegółowe.
+> Trasy systemowe dla ruchu związanego z siecią wirtualną, komunikacja równorzędna sieci wirtualnych lub punkty końcowe usługi dla sieci wirtualnej są preferowanymi trasami, nawet jeśli trasy protokołu BGP są bardziej szczegółowe.
 
 Na przykład tabela tras zawiera następujące trasy:
 

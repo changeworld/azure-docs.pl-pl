@@ -16,7 +16,7 @@ ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917480"
@@ -107,9 +107,9 @@ W poniższej sekcji skonfigurujesz rozwiązanie do użycia zasobów w chmurze Az
 Aby uruchomić aplikację w chmurze, należy wykonać następujące kroki:
 
 * Utworzenie usługi w chmurze platformy Azure.
-* Utworzenie bazy danych SQL Azure.
+* Utworzenie bazy danych Azure SQL Database.
 * Utworzenie konta magazynu platformy Azure.
-* Skonfigurowanie rozwiązania do używania bazy danych Azure SQL po uruchomieniu na platformie Azure.
+* Skonfigurowanie rozwiązania do używania bazy danych Azure SQL Database po uruchomieniu na platformie Azure.
 * Skonfigurowanie rozwiązania do używania konta magazynu Azure po uruchomieniu na platformie Azure.
 * Wdrożenie projektu do usługi w chmurze platformy Azure.
 
@@ -133,7 +133,7 @@ Usługa w chmurze Azure to środowisko uruchamiania aplikacji.
 
     ![Nowa usługa w chmurze](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Tworzenie bazy danych SQL Azure
+### <a name="create-an-azure-sql-database"></a>Tworzenie bazy danych Azure SQL Database
 Aplikacja uruchomiona w chmurze będzie używać bazy danych opartej na chmurze.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Utwórz zasób > Bazy danych > SQL Database**.
@@ -185,8 +185,8 @@ W rzeczywistych aplikacjach przeważnie tworzy się oddzielne konta dla danych a
 
     Na ilustracji przedstawiono utworzone konto magazynu z adresem URL `csvccontosoads.core.windows.net`.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurowanie rozwiązania do używania bazy danych Azure SQL po uruchomieniu na platformie Azure
-Zarówno projekt sieci Web, jak i projekt roli Proces roboczy ma własne parametry połączenia bazy danych. Każdy z nich musi wskazywać na bazę danych SQL Azure, gdy aplikacja zostanie uruchomiona na platformie Azure.
+### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurowanie rozwiązania do używania bazy danych Azure SQL Database po uruchomieniu na platformie Azure
+Zarówno projekt sieci Web, jak i projekt roli Proces roboczy ma własne parametry połączenia bazy danych. Każdy z nich musi wskazywać na bazę danych Azure SQL Database, gdy aplikacja zostanie uruchomiona na platformie Azure.
 
 Dla roli Sieć Web będziesz używać [przekształcenia pliku Web.config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations), a dla roli Proces roboczy — ustawienia środowiska usługi w chmurze.
 

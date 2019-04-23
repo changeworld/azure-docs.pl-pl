@@ -15,7 +15,7 @@ manager: craigg
 ms.date: 02/11/2019
 ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57996419"
@@ -59,7 +59,7 @@ Poniższa lista zawiera zalecenia pozwalające uzyskać najlepszą wydajność p
 - Wyłącz automatyczne statystyki na czas migracji.
 - Partycjonuj tabele i indeksy.
 - Usuń poindeksowane widoki i utwórz je ponownie po zakończeniu.
-- Przenieś rzadko wyszukiwane dane historyczne do innej bazy danych i zmigruj te dane historyczne do oddzielnej bazy danych SQL platformy Azure. Następnie będzie można wykonywać zapytania o te dane historyczne za pomocą [zapytań elastycznych](sql-database-elastic-query-overview.md).
+- Przenieś rzadko wyszukiwane dane historyczne do innej bazy danych i zmigruj te dane historyczne do oddzielnej bazy danych Azure SQL Database. Następnie będzie można wykonywać zapytania o te dane historyczne za pomocą [zapytań elastycznych](sql-database-elastic-query-overview.md).
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optymalizacja wydajności po zakończeniu migracji
 

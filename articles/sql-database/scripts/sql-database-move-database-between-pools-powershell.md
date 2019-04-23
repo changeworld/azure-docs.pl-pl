@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — przenoszenie bazy danych usługi Azure SQL Database — pule elastyczne | Microsoft Docs
+title: Przykład programu PowerShell — przenoszenie bazy danych Azure SQL Database — pule elastyczne | Microsoft Docs
 description: Przykładowy skrypt programu Azure PowerShell umożliwiający przeniesienie bazy danych SQL między elastycznymi pulami przy użyciu programu PowerShell
 services: sql-database
 ms.service: sql-database
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 27a2eb025db014a1c71152a13339bc46510eae77
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357808"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Tworzenie elastycznych pul i przenoszenie baz danych między elastycznymi pulami za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell tworzy dwie elastyczne pule i przenosi bazę danych z jednej elastycznej puli do innej elastycznej puli, a następnie przenosi bazę danych z elastycznej puli na rozmiar zasobów obliczeniowych pojedynczej bazy danych.
+Ten przykładowy skrypt programu PowerShell tworzy dwie elastyczne pule i przenosi bazę danych z jednej elastycznej puli do innej elastycznej puli, a następnie przenosi bazę danych z elastycznej puli na rozmiar obliczeniowy pojedynczej bazy danych.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

@@ -1,5 +1,5 @@
 ---
-title: Zasady punku końcowego usługi sieci wirtualnej platformy Azure | Microsoft Docs
+title: Zasady punku końcowego usługi dla sieci wirtualnej platformy Azure | Microsoft Docs
 description: Dowiedz się, jak filtrować ruch w sieci wirtualnej do zasobów usługi platformy Azure przy użyciu zasad punktu końcowego usługi
 services: virtual-network
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494177"
 ---
-# <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
+# <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi dla sieci wirtualnej (wersja zapoznawcza)
 
 Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure.
 
@@ -29,11 +29,11 @@ __Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, Centr
 Najbardziej aktualne powiadomienia dotyczące wersji zapoznawczej można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
 > [!NOTE]  
-> W okresie obowiązywania wersji zapoznawczej zasady punktu końcowego usługi sieci wirtualnej mogą nie oferować dostępności i niezawodności na tym samym poziomie, co funkcje w wersji ogólnodostępnej. Aby uzyskać więcej informacji, zobacz [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> W okresie obowiązywania wersji zapoznawczej zasady punktu końcowego usługi dla sieci wirtualnej mogą nie oferować dostępności i niezawodności na tym samym poziomie, co funkcje w wersji ogólnodostępnej. Aby uzyskać więcej informacji, zobacz [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
-Zasady punktu końcowego usługi sieci wirtualnej zapewniają następujące korzyści:
+Zasady punktu końcowego usługi dla sieci wirtualnej zapewniają następujące korzyści:
 
 - __Ulepszone zabezpieczenia dla ruchu sieci wirtualnej do usług platformy Azure__
 
@@ -190,6 +190,6 @@ Następujące limity są wymuszane w zasadach punktu końcowego usługi:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [skonfigurować zasady punktu końcowego usługi sieci wirtualnej](virtual-network-service-endpoint-policies-portal.md)
-- Dowiedz się więcej na temat [punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md)
+- Dowiedz się, jak [skonfigurować zasady punktu końcowego usługi dla sieci wirtualnej](virtual-network-service-endpoint-policies-portal.md)
+- Dowiedz się więcej na temat [punktów końcowych usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md)
 

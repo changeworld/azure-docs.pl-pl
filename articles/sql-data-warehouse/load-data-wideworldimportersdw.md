@@ -12,7 +12,7 @@ ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
 ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
 ms.locfileid: "55454338"
@@ -81,7 +81,7 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
 
 6. Kliknij pozycję **Warstwa wydajności**, aby określić, czy magazyn danych jest zoptymalizowany pod kątem elastyczności, czy obliczeń, oraz podać liczbę jednostek magazynu danych. 
 
-7. Na potrzeby tego samouczka wybierz warstwę usług **Optymalizacja pod kątem elastyczności**. Suwak jest domyślnie ustawiony na pozycję **DW400**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz warstwę usługi **Optymalizacja pod kątem elastyczności**. Suwak jest domyślnie ustawiony na pozycję **DW400**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -114,7 +114,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożli
 
     ![ustawienia serwera](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Kliknij pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database. 
+5. Kliknij pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database. 
 
     ![reguła zapory serwera](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 

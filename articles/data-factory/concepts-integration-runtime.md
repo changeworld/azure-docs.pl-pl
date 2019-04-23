@@ -14,7 +14,7 @@ ms.date: 06/14/2018
 ms.author: abnarain
 ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275412"
@@ -59,9 +59,9 @@ Infrastruktura Azure Integration Runtime obsługuje łączenie z magazynami dany
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Zasoby obliczeniowe i skalowanie środowiska IR Azure
 Infrastruktura Integration Runtime zapewnia w pełni zarządzane obliczenia bez serwera na platformie Azure.  Nie musisz przejmować się udostępnianiem infrastruktury, instalacją oprogramowania, poprawkami i skalowaniem możliwości.  Dodatkowo płacisz tylko za czas rzeczywistego wykorzystania.
 
-Produkt Azure Integration Runtime zapewnia natywne możliwości obliczeniowe przenoszenia danych między magazynami danych w chmurze w sposób bezpieczny, niezawodny i wydajny.  Możesz określić liczbę jednostek integracji danych używanych w działaniu kopiowania, a rozmiar obliczeń infrastruktury Azure IR jest skalowany elastycznie bez konieczności jawnego regulowania rozmiaru infrastruktury Azure Integration Runtime.
+Produkt Azure Integration Runtime zapewnia natywne możliwości obliczeniowe przenoszenia danych między magazynami danych w chmurze w sposób bezpieczny, niezawodny i wydajny.  Możesz określić liczbę jednostek integracji danych używanych w działaniu kopiowania, a rozmiar obliczeniowy infrastruktury Azure IR jest skalowany elastycznie bez konieczności jawnego regulowania rozmiaru infrastruktury Azure Integration Runtime.
 
-Wysyłanie działania to lekka operacja, kierująca działanie do docelowej usługi obliczeniowej, dzięki czemu nie występuje konieczności skalowania rozmiaru obliczeń dla tego scenariusza.
+Wysyłanie działania to lekka operacja, kierująca działanie do docelowej usługi obliczeniowej, dzięki czemu nie występuje konieczności skalowania rozmiaru obliczeniowego dla tego scenariusza.
 
 Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można znaleźć w przewodniku How to create and configure Azure IR (Jak utworzyć i skonfigurować infrastrukturę Azure IR). 
 
@@ -95,7 +95,7 @@ Więcej informacji można znaleźć w artykule przewodnika How to create and con
 
 Aby uzyskać więcej informacji o środowisku uruchomieniowym Azure-SSIS, zobacz następujące artykuły: 
 
-- [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
+- [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL Database do hostowania wykazu usług SSIS. 
 - [Instrukcje: Tworzenie środowiska Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 

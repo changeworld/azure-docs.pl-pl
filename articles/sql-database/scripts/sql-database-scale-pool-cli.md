@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: fd219e9aaf684600f76ed81eb45ed9a5bf78f62c
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360001"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Korzystanie z interfejsu wiersza polecenia do skalowania elastycznej puli w usłudze Azure SQL Database
 
-Ten przykładowy skrypt wiersza polecenia platformy Azure tworzy elastyczne pule, przenosi bazy danych w puli i zmienia rozmiary zasobów obliczeniowych elastycznej puli.
+Ten przykładowy skrypt wiersza polecenia platformy Azure tworzy elastyczne pule, przenosi bazy danych w puli i zmienia rozmiary obliczeniowe elastycznej puli.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

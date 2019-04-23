@@ -2421,7 +2421,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Usługa Data Lake Storage 1. generacji</h3>
-                                                    <p>Ogromne repozytorium do przechowywania obciążeń wynikających z danych big data</p>
+                                                    <p>Repozytorium w hiperskali do przechowywania obciążeń wynikających z danych big data</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3605,7 +3605,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Usługa Data Lake Storage 1. generacji</h3>
-                                                    <p>Ogromne repozytorium do przechowywania obciążeń wynikających z danych big data</p>
+                                                    <p>Repozytorium w hiperskali do przechowywania obciążeń wynikających z danych big data</p>
                                                 </div>
                                             </div>
                                         </div>

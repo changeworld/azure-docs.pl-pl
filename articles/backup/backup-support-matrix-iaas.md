@@ -10,7 +10,7 @@ ms.date: 02/24/2019
 ms.author: raynew
 ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496099"
@@ -187,7 +187,7 @@ Azure Traffic Manager   | Obsługiwane.<br/><br/>Jeśli kopia zapasowa maszyny W
 System DNS platformy Azure | Obsługiwane.
 Niestandardowe DNS |    Obsługiwane.
 Łączności wychodzącej za pośrednictwem serwera proxy HTTP | Obsługiwane.<br/><br/> Uwierzytelnionego serwera proxy nie jest obsługiwane.
-Punkty końcowe usługi sieci wirtualnej   | Obsługiwane.<br/><br/> Zapory i ustawienia konta magazynu w sieci wirtualnej powinna zezwalać na dostęp ze wszystkich sieci.
+Punkty końcowe usługi dla sieci wirtualnej   | Obsługiwane.<br/><br/> Zapory i ustawienia konta magazynu w sieci wirtualnej powinna zezwalać na dostęp ze wszystkich sieci.
 
 
 

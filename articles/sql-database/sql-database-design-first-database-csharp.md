@@ -23,7 +23,7 @@ Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaa
 
 > [!div class="checklist"]
 > * Tworzenie pojedynczej bazy danych za pomocą witryny Azure Portal*
-> * Konfigurowanie reguły zapory protokołu IP na poziomie serwera za pomocą witryny Azure Portal
+> * Konfigurowanie reguły zapory bazującej na adresach IP na poziomie serwera za pomocą witryny Azure Portal
 > * Nawiązywanie połączenia z bazą danych przy użyciu narzędzia ADO.NET i programu Visual Studio
 > * Tworzenie tabel za pomocą narzędzia ADO.NET
 > * Wstawianie, aktualizowanie i usuwanie danych za pomocą narzędzia ADO.NET
@@ -67,7 +67,7 @@ Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
     ![tworzenie serwera bazy danych](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kliknij pozycję **Wybierz**.
-6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Możesz przejrzeć opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
+6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Możesz przejrzeć opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usług.
 
     Po wybraniu warstwy usługi, liczby jednostek DTU lub rdzeni wirtualnych i ilości miejsca do magazynowania kliknij pozycję **Zastosuj**.
 
@@ -79,9 +79,9 @@ Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
 
    ![powiadomienie](./media/sql-database-design-first-database/notification.png)
 
-## <a name="create-a-server-level-ip-firewall-rule"></a>Tworzenie reguły zapory IP na poziomie serwera
+## <a name="create-a-server-level-ip-firewall-rule"></a>Tworzenie reguły zapory bazującej na adresach IP na poziomie serwera
 
-Usługa SQL Database tworzy zaporę IP na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że reguła zapory zezwala na przechodzenie ruchu z ich adresów IP przez zaporę. Aby umożliwić zewnętrzną łączność z pojedynczą bazą danych, najpierw dodaj regułę zapory IP dla używanego adresu IP (lub zakresu adresów IP). Wykonaj następujące kroki, aby utworzyć [regułę zapory IP na poziomie serwera usługi SQL Database](sql-database-firewall-configure.md).
+Usługa SQL Database tworzy zaporę IP na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że reguła zapory zezwala na przechodzenie ruchu z ich adresów IP przez zaporę. Aby umożliwić zewnętrzną łączność z pojedynczą bazą danych, najpierw dodaj regułę zapory bazującej na adresach IP dla używanego adresu IP (lub zakresu adresów IP). Wykonaj następujące kroki, aby utworzyć [regułę zapory bazującą na adresach IP na poziomie serwera usługi SQL Database](sql-database-firewall-configure.md).
 
 > [!IMPORTANT]
 > Usługa SQL Database komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z tą usługą z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z pojedynczą bazą danych, chyba że administrator otworzy port 1433.
@@ -92,13 +92,13 @@ Usługa SQL Database tworzy zaporę IP na poziomie serwera. Ta zapora uniemożli
 
    ![nazwa serwera](./media/sql-database-design-first-database/server-name.png)
 
-3. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database.
+3. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database.
 
-   ![reguła zapory IP na poziomie serwera](./media/sql-database-design-first-database/server-firewall-rule.png)
+   ![reguła zapory bazująca na adresach IP na poziomie serwera](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory IP. Reguła zapory IP może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory bazującej na adresach IP. Reguła zapory bazująca na adresach IP może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
+5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory bazująca na adresach IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
 
 6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 

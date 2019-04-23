@@ -31,16 +31,16 @@ Jako punktu początkowego ten przewodnik Szybki start używa zasobów utworzonyc
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-server-level-ip-firewall-rule"></a>Tworzenie reguły zapory IP na poziomie serwera
+## <a name="create-a-server-level-ip-firewall-rule"></a>Tworzenie reguły zapory bazującej na adresach IP na poziomie serwera
 
-Usługa SQL Database tworzy zaporę na poziomie serwera bazy danych dla pojedynczej bazy danych lub bazy danych w puli. Ta zapora uniemożliwia aplikacjom klienckim nawiązywanie połączeń z serwerem i wszelkimi pojedynczymi bazami danych lub bazami danych w puli, chyba że utworzona zostanie reguła zapory otwierająca zaporę. Na potrzeby połączenia z adresu IP spoza platformy Azure utwórz regułę zapory dla określonego adresu lub zakresu adresów IP, z którymi połączenie ma być możliwe. Aby uzyskać więcej informacji na temat reguł zapory IP na poziomie serwera i na poziomie bazy danych, zobacz [SQL Database server-level and database-level IP firewall rules](sql-database-firewall-configure.md) (Reguły zapory IP na poziomie serwera i na poziomie bazy danych dla usługi SQL Database).
+Usługa SQL Database tworzy zaporę na poziomie serwera bazy danych dla pojedynczej bazy danych lub bazy danych w puli. Ta zapora uniemożliwia aplikacjom klienckim nawiązywanie połączeń z serwerem i wszelkimi pojedynczymi bazami danych lub bazami danych w puli, chyba że utworzona zostanie reguła zapory bazująca na adresach IP otwierająca zaporę. Na potrzeby połączenia z adresu IP spoza platformy Azure utwórz regułę zapory dla określonego adresu lub zakresu adresów IP, z którymi połączenie ma być możliwe. Aby uzyskać więcej informacji na temat reguł zapory bazujących na adresach IP na poziomie serwera i na poziomie bazy danych, zobacz [Reguły zapory bazujące na adresach IP na poziomie serwera i na poziomie bazy danych dla usługi SQL Database](sql-database-firewall-configure.md).
 
 > [!NOTE]
 > Usługa SQL Database nawiązuje komunikację na porcie 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 > [!IMPORTANT]
-> Reguła zapory 0.0.0.0 zapewnia wszystkim usługom platformy Azure zgodność z regułami zapory na poziomie serwera i podejmowanie próby nawiązania połączenia z pojedynczą bazą danych lub bazą danych w puli za pośrednictwem serwera. Aby dowiedzieć się więcej o korzystaniu z reguł sieci wirtualnej, zobacz [Virtual network rules as alternatives to IP rules](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules) (Reguły sieci wirtualnej jako alternatywa dla reguły IP).
+> Reguła zapory 0.0.0.0 zapewnia wszystkim usługom platformy Azure zgodność z regułami zapory na poziomie serwera i podejmowanie próby nawiązania połączenia z pojedynczą bazą danych lub bazą danych w puli za pośrednictwem serwera. Aby dowiedzieć się więcej o korzystaniu z reguł sieci wirtualnej, zobacz [Reguły sieci wirtualnej jako alternatywa dla reguły IP](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
 
-Wykonaj następujące kroki, aby utworzyć regułę zapory IP na poziomie serwera dla podanego adresu IP klienta i włączyć zewnętrzną łączność przez zaporę usługi SQL Database wyłącznie dla konkretnego adresu IP.
+Wykonaj następujące kroki, aby utworzyć regułę zapory bazującą na adresach IP na poziomie serwera dla podanego adresu IP klienta i włączyć zewnętrzną łączność przez zaporę usługi SQL Database wyłącznie dla konkretnego adresu IP.
 
 1. Po zakończeniu wdrażania [wymaganej wstępnie bazy danych Azure SQL Database](#prerequisites) wybierz pozycję **Bazy danych SQL** w menu po lewej stronie, a następnie wybierz bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20170824.database.windows.net**) i opcje dalszej konfiguracji.
 
@@ -50,15 +50,15 @@ Wykonaj następujące kroki, aby utworzyć regułę zapory IP na poziomie serwer
 
 3. Wybierz pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera bazy danych.
 
-   ![reguła zapory IP na poziomie serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
+   ![reguła zapory bazująca na adresach IP na poziomie serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-4. Wybierz pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory IP na poziomie serwera. Reguła zapory IP na poziomie serwera może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+4. Wybierz pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory bazującej na adresach IP na poziomie serwera. Reguła zapory bazująca na adresach IP na poziomie serwera może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
    > [!IMPORTANT]
    > Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Wybierz przycisk **WYŁ.** na tej stronie, aby wyłączyć tę opcję dla wszystkich usług platformy Azure.
    >
 
-5. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
+5. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory bazująca na adresach IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
 
 6. Zamknij stronę **Ustawienia zapory**.
 

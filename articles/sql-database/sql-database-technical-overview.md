@@ -15,7 +15,7 @@ manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358332"
@@ -27,7 +27,7 @@ Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego
 > [!NOTE]
 > Słownik terminów w usłudze Azure SQL Database, zobacz [słownik terminów bazy danych SQL](sql-database-glossary-terms.md)
 
-Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych SQL platformy Azure:
+Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych Azure SQL Database:
 
 - Jako [pojedynczej bazy danych](sql-database-single-database.md) swój własny zestaw zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncza baza danych jest podobny do [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) w programie SQL Server.
 - [Puli elastycznej](sql-database-elastic-pool.md), który stanowi kolekcję baz danych z współdzielonym zestawem zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncze bazy danych mogą być przenoszone do i z puli elastycznej.
