@@ -32,10 +32,10 @@ Dane dla wirtualnego ogrodzenia lub zestawu wirtualne ogrodzenia są reprezentow
 
 | Name (Nazwa) | Type | Wymagane  | Opis |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Data/godzina  | true | Data i godzina ważności przedziale czasu rozpoczęcia. |
-| endTime   | Data/godzina  | true |  Data i godzina zakończenia ważności przedziale czasu. |
+| startTime | DateTime  | true | Data i godzina ważności przedziale czasu rozpoczęcia. |
+| endTime   | DateTime  | true |  Data i godzina zakończenia ważności przedziale czasu. |
 | recurrenceType | string | false |   Typ cyklu okresu. Wartość może być `Daily`, `Weekly`, `Monthly`, lub `Yearly`. Wartość domyślna to `Daily`.|
-| businessDayOnly | Wartość logiczna | false |  Wskazuje, czy dane jest prawidłowy tylko w dni robocze. Wartość domyślna to `false`.|
+| businessDayOnly | Boolean | false |  Wskazuje, czy dane jest prawidłowy tylko w dni robocze. Wartość domyślna to `false`.|
 
 
 * Wszystkie wartości współrzędnych są reprezentowane jako [szerokość_geograficzna, długość_geograficzna] zdefiniowany w `WGS84`.
