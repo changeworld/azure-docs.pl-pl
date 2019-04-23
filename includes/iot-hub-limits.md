@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59055684"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804811"
 ---
 W poniższej tabeli wymieniono limity skojarzone z różnymi warstwami usług S1, S2, S3 i F1. Aby uzyskać informacje o koszcie każdej *jednostki* w poszczególnych warstwach, zobacz [cennika usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 

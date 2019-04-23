@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59286375"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799511"
 ---
 Usługa Azure Storage oferuje kilka typów kont magazynu. Każdy typ obsługuje różne funkcje i ma swój własny model cen. Przed utworzeniem konta magazynu, aby określić typ konta, które sprawdza się najlepiej w aplikacjach, należy wziąć pod uwagę te różnice. Dostępne są następujące typy kont magazynu:
 

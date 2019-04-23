@@ -1,81 +1,75 @@
-items:
 - name: Dokumentacja maszyn wirtualnych do analizy danych
   href: index.yml
+  items: null
 - name: Omówienie
   items:
-  - name: Co to jest maszyna wirtualna do analizy danych?
-    href: overview.md
-  - name: Co to jest maszyna wirtualna do uczenia głębokiego?
-    href: deep-learning-dsvm-overview.md
-  - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
-    href: geo-ai-dsvm-overview.md
+    - name: Co to jest maszyna wirtualna do analizy danych?
+      href: overview.md
+    - name: Co to jest maszyna wirtualna do uczenia głębokiego?
+      href: deep-learning-dsvm-overview.md
+    - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
+      href: geo-ai-dsvm-overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
-    href: provision-vm.md
-  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
-    href: dsvm-ubuntu-intro.md
-  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
-    href: linux-dsvm-intro.md
-  - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
-    href: provision-deep-learning-dsvm.md
-  - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
-    href: provision-geo-ai-dsvm.md
   expanded: true
+  items:
+    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
+      href: provision-vm.md
+    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
+      href: dsvm-ubuntu-intro.md
+    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
+      href: linux-dsvm-intro.md
+    - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
+      href: provision-deep-learning-dsvm.md
+    - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+      href: provision-geo-ai-dsvm.md
 - name: Pojęcia
   items:
-  - name: Odnajdywanie maszyny wirtualnej do analizy danych
-    href: dsvm-tools-overview.md
-  - name: Platformy sztucznej inteligencji i uczenia głębokiego
-    href: dsvm-deep-learning-ai-frameworks.md
-  - name: Narzędzia ML i nauki o danych
-    href: dsvm-ml-data-science-tools.md
-  - name: Języki
-    href: dsvm-languages.md
-  - name: Narzędzia programistyczne
-    href: dsvm-tools-development.md
-  - name: Narzędzia do wprowadzania danych
-    href: dsvm-tools-ingestion.md
-  - name: Narzędzia do eksploracji i wizualizacji danych
-    href: dsvm-tools-explore-and-visualize.md
-  - name: Platformy danych
-    href: dsvm-data-platforms.md
-  - name: Przykłady i przewodniki
-    href: dsvm-samples-and-walkthroughs.md
+    - name: Odnajdywanie maszyny wirtualnej do analizy danych
+      href: dsvm-tools-overview.md
+    - name: Platformy sztucznej inteligencji i uczenia głębokiego
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: Narzędzia ML i nauki o danych
+      href: dsvm-ml-data-science-tools.md
+    - name: Języki
+      href: dsvm-languages.md
+    - name: Narzędzia programistyczne
+      href: dsvm-tools-development.md
+    - name: Narzędzia do wprowadzania danych
+      href: dsvm-tools-ingestion.md
+    - name: Narzędzia do eksploracji i wizualizacji danych
+      href: dsvm-tools-explore-and-visualize.md
+    - name: Platformy danych
+      href: dsvm-data-platforms.md
+    - name: Przykłady i przewodniki
+      href: dsvm-samples-and-walkthroughs.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
-    href: vm-do-ten-things.md
-  - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
-    href: linux-dsvm-walkthrough.md
-  - name: Używanie maszyny wirtualnej do uczenia głębokiego
-    href: use-deep-learning-dsvm.md
-  - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
-    href: use-geo-ai-dsvm.md
-  - name: Wskazówki dla przedsiębiorstw
-    items:
-    - name: Omówienie
-      href: dsvm-enterprise-overview.md
-    - name: Skalowanie
-      href: dsvm-pools.md
-    - name: Integracja z usługą Active Directory
-      href: dsvm-common-identity.md
-    - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
-      href: dsvm-secure-access-keys.md
+    - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
+      href: vm-do-ten-things.md
+    - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
+      href: linux-dsvm-walkthrough.md
+    - name: Używanie maszyny wirtualnej do uczenia głębokiego
+      href: use-deep-learning-dsvm.md
+    - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+      href: use-geo-ai-dsvm.md
+    - name: Wskazówki dla przedsiębiorstw
+      items:
+        - name: Omówienie
+          href: dsvm-enterprise-overview.md
+        - name: Skalowanie
+          href: dsvm-pools.md
+        - name: Integracja z usługą Active Directory
+          href: dsvm-common-identity.md
+        - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
+          href: dsvm-secure-access-keys.md
 - name: Zasoby
   items:
-  - name: Przewodnik dla deweloperów języka R
-    href: /azure/architecture/data-guide/technology-choices/r-developers-guide
-    maintainContext: true
-  - name: Blog
-    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
-  - name: Forum MSDN
-    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: edb96d185e829cfe76eda4a42776e3b5cfea0153
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495604"
+    - name: Przewodnik dla deweloperów języka R
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide
+      maintainContext: true
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: Forum MSDN
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=dsvm'

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893571"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794883"
 ---
 # <a name="get-started-with-the-query-action"></a>Rozpoczynanie pracy za pomocą akcji zapytania
 Za pomocą akcji zapytania, można pracować z partii i tablic w celu wykonania przepływów pracy w celu:

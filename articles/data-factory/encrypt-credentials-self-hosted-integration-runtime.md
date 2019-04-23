@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 8e705a4430f6ccee847dc7d41ef80456a6dc4ea5
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903798"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794646"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Szyfruj poświadczenia dla lokalnych magazynów danych w usłudze Azure Data Factory
 Można zaszyfrować i przechowywać poświadczenia dla swoich magazynów danych w środowisku lokalnym (połączone usługi z poufnych informacji) na maszynie z własnego środowiska integration runtime. 

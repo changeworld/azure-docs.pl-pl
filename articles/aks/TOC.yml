@@ -1,330 +1,324 @@
-items:
 - name: Azure Kubernetes Service (AKS)
   href: ./index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze AKS
-    href: intro-kubernetes.md
+    - name: Informacje o usłudze AKS
+      href: intro-kubernetes.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie klastra AKS — interfejs wiersza polecenia
-    href: kubernetes-walkthrough.md
-  - name: Tworzenie klastra AKS — portal
-    href: kubernetes-walkthrough-portal.md
-  - name: Tworzenie aplikacji
-    items:
-    - name: Korzystanie z języka Java (VS Code i interfejs wiersza polecenia)
-      href: ../dev-spaces/quickstart-java.md
-      maintainContext: true
-    - name: Korzystanie z programu .NET Core (VS Code oraz interfejs wiersza polecenia)
-      href: ../dev-spaces/quickstart-netcore.md
-      maintainContext: true
-    - name: Korzystanie z programu .NET Core (Visual Studio 2017)
-      href: ../dev-spaces/quickstart-netcore-visualstudio.md
-      maintainContext: true
-    - name: Korzystanie ze środowiska Node.js (VS Code oraz interfejs wiersza polecenia)
-      href: ../dev-spaces/quickstart-nodejs.md
-      maintainContext: true
-    expanded: true
   expanded: true
+  items:
+    - name: Tworzenie klastra AKS — interfejs wiersza polecenia
+      href: kubernetes-walkthrough.md
+    - name: Tworzenie klastra AKS — portal
+      href: kubernetes-walkthrough-portal.md
+    - name: Tworzenie aplikacji
+      expanded: true
+      items:
+        - name: Korzystanie z języka Java (VS Code i interfejs wiersza polecenia)
+          href: ../dev-spaces/quickstart-java.md
+          maintainContext: true
+        - name: Korzystanie z programu .NET Core (VS Code oraz interfejs wiersza polecenia)
+          href: ../dev-spaces/quickstart-netcore.md
+          maintainContext: true
+        - name: Korzystanie z programu .NET Core (Visual Studio 2017)
+          href: ../dev-spaces/quickstart-netcore-visualstudio.md
+          maintainContext: true
+        - name: Korzystanie ze środowiska Node.js (VS Code oraz interfejs wiersza polecenia)
+          href: ../dev-spaces/quickstart-nodejs.md
+          maintainContext: true
 - name: Samouczki
   items:
-  - name: 1 — Przygotowywanie aplikacji dla usługi AKS
-    href: tutorial-kubernetes-prepare-app.md
-  - name: 2 — Tworzenie rejestru kontenerów
-    href: tutorial-kubernetes-prepare-acr.md
-  - name: 3 — Tworzenie klastra rozwiązania Kubernetes
-    href: tutorial-kubernetes-deploy-cluster.md
-  - name: 4 — Uruchamianie aplikacji
-    href: tutorial-kubernetes-deploy-application.md
-  - name: 5 — Skalowanie aplikacji
-    href: tutorial-kubernetes-scale.md
-  - name: 6 — Aktualizowanie aplikacji
-    href: tutorial-kubernetes-app-update.md
-  - name: 7 — Uaktualnianie klastra
-    href: tutorial-kubernetes-upgrade-cluster.md
+    - name: 1 — Przygotowywanie aplikacji dla usługi AKS
+      href: tutorial-kubernetes-prepare-app.md
+    - name: 2 — Tworzenie rejestru kontenerów
+      href: tutorial-kubernetes-prepare-acr.md
+    - name: 3 — Tworzenie klastra rozwiązania Kubernetes
+      href: tutorial-kubernetes-deploy-cluster.md
+    - name: 4 — Uruchamianie aplikacji
+      href: tutorial-kubernetes-deploy-application.md
+    - name: 5 — Skalowanie aplikacji
+      href: tutorial-kubernetes-scale.md
+    - name: 6 — Aktualizowanie aplikacji
+      href: tutorial-kubernetes-app-update.md
+    - name: 7 — Uaktualnianie klastra
+      href: tutorial-kubernetes-upgrade-cluster.md
 - name: Pojęcia
   items:
-  - name: Klastry i obciążenia
-    href: concepts-clusters-workloads.md
-  - name: Dostęp i tożsamość
-    href: concepts-identity.md
-  - name: Bezpieczeństwo
-    href: concepts-security.md
-  - name: Networking
-    href: concepts-network.md
-  - name: Magazyn
-    href: concepts-storage.md
-  - name: Skalowanie
-    href: concepts-scale.md
-  - name: Najlepsze praktyki
-    href: best-practices.md
-    items:
-    - name: Dla operatorów klastrów
+    - name: Klastry i obciążenia
+      href: concepts-clusters-workloads.md
+    - name: Dostęp i tożsamość
+      href: concepts-identity.md
+    - name: Bezpieczeństwo
+      href: concepts-security.md
+      items: null
+    - name: Networking
+      href: concepts-network.md
+    - name: Magazyn
+      href: concepts-storage.md
+    - name: Skalowanie
+      href: concepts-scale.md
+    - name: Najlepsze praktyki
+      href: best-practices.md
       items:
-      - name: Wielodostęp i izolacja klastra
-        href: operator-best-practices-cluster-isolation.md
-      - name: Podstawowe funkcje harmonogramu
-        href: operator-best-practices-scheduler.md
-      - name: Zaawansowane funkcje harmonogramu
-        href: operator-best-practices-advanced-scheduler.md
-      - name: Uwierzytelnianie i autoryzacja
-        href: operator-best-practices-identity.md
-      - name: Zabezpieczenia klastra
-        href: operator-best-practices-cluster-security.md
-      - name: Zarządzanie obrazami kontenerów
-        href: operator-best-practices-container-image-management.md
-      - name: Networking
-        href: operator-best-practices-network.md
-      - name: Magazyn
-        href: operator-best-practices-storage.md
-      - name: Ciągłość biznesowa i odzyskiwanie po awarii
-        href: operator-best-practices-multi-region.md
-    - name: Dla deweloperów aplikacji
-      items:
-      - name: Zarządzanie zasobami
-        href: developer-best-practices-resource-management.md
-      - name: Zabezpieczenia zasobników
-        href: developer-best-practices-pod-security.md
-  - name: Limity przydziału i limity regionalne
-    href: container-service-quotas.md
-  - name: Migrowanie z usługi ACS do usługi AKS
-    href: acs-aks-migration.md
-  - name: Obsługiwana wersja platformy Kubernetes
-    href: supported-kubernetes-versions.md
+        - name: Dla operatorów klastrów
+          items:
+            - name: Wielodostęp i izolacja klastra
+              href: operator-best-practices-cluster-isolation.md
+            - name: Podstawowe funkcje harmonogramu
+              href: operator-best-practices-scheduler.md
+            - name: Zaawansowane funkcje harmonogramu
+              href: operator-best-practices-advanced-scheduler.md
+            - name: Uwierzytelnianie i autoryzacja
+              href: operator-best-practices-identity.md
+            - name: Zabezpieczenia klastra
+              href: operator-best-practices-cluster-security.md
+            - name: Zarządzanie obrazami kontenerów
+              href: operator-best-practices-container-image-management.md
+            - name: Networking
+              href: operator-best-practices-network.md
+            - name: Magazyn
+              href: operator-best-practices-storage.md
+            - name: Ciągłość biznesowa i odzyskiwanie po awarii
+              href: operator-best-practices-multi-region.md
+        - name: Dla deweloperów aplikacji
+          items:
+            - name: Zarządzanie zasobami
+              href: developer-best-practices-resource-management.md
+            - name: Zabezpieczenia zasobników
+              href: developer-best-practices-pod-security.md
+    - name: Limity przydziału i limity regionalne
+      href: container-service-quotas.md
+    - name: Migrowanie z usługi ACS do usługi AKS
+      href: acs-aks-migration.md
+    - name: Obsługiwana wersja platformy Kubernetes
+      href: supported-kubernetes-versions.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Operacje klastra
-    items:
-    - name: Tworzenie klastra AKS
-      href: /cli/azure/aks#az-aks-create
-      maintainContext: true
-    - name: Skalowanie klastra AKS
-      href: scale-cluster.md
-    - name: Uaktualnianie klastra AKS
-      href: upgrade-cluster.md
-    - name: Przetwarzanie aktualizacji systemu operacyjnego węzła
-      href: node-updates-kured.md
-    - name: Usuwanie klastra AKS
-      href: /cli/azure/aks#az-aks-delete
-      maintainContext: true
-    - name: Usługa AKS z obsługą usługi Azure AD
-      href: aad-integration.md
-    - name: Tworzenie węzłów wirtualnych (wersja zapoznawcza)
+    - name: Operacje klastra
       items:
-      - name: Interfejs wiersza polecenia platformy Azure
-        href: virtual-nodes-cli.md
-      - name: Azure Portal
-        href: virtual-nodes-portal.md
-    - name: Korzystanie z wirtualnych elementów Kubelet
-      href: virtual-kubelet.md
-    - name: Korzystanie ze skalowania automatycznego klastrów (wersja zapoznawcza)
-      href: cluster-autoscaler.md
-    - name: Wdrażanie usługi AKS przy użyciu programu Terraform
-      href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
-      maintainContext: true
-  - name: Konfigurowanie woluminów danych
-    items:
-    - name: Dysk platformy Azure — dynamiczny
-      href: azure-disks-dynamic-pv.md
-    - name: Dysk platformy Azure — statyczny
-      href: azure-disk-volume.md
-    - name: Azure Files — wersja dynamiczna
-      href: azure-files-dynamic-pv.md
-    - name: Azure Files — wersja statyczna
-      href: azure-files-volume.md
-  - name: Konfigurowanie sieci
-    items:
-    - name: Tworzenie lub używanie istniejącej sieci wirtualnej
+        - name: Tworzenie klastra AKS
+          href: '/cli/azure/aks#az-aks-create'
+          maintainContext: true
+        - name: Skalowanie klastra AKS
+          href: scale-cluster.md
+        - name: Uaktualnianie klastra AKS
+          href: upgrade-cluster.md
+        - name: Przetwarzanie aktualizacji systemu operacyjnego węzła
+          href: node-updates-kured.md
+        - name: Usuwanie klastra AKS
+          href: '/cli/azure/aks#az-aks-delete'
+          maintainContext: true
+        - name: Usługa AKS z obsługą usługi Azure AD
+          href: aad-integration.md
+        - name: Tworzenie węzłów wirtualnych (wersja zapoznawcza)
+          items:
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: virtual-nodes-cli.md
+            - name: Azure Portal
+              href: virtual-nodes-portal.md
+        - name: Korzystanie z wirtualnych elementów Kubelet
+          href: virtual-kubelet.md
+        - name: Korzystanie ze skalowania automatycznego klastrów (wersja zapoznawcza)
+          href: cluster-autoscaler.md
+        - name: Wdrażanie usługi AKS przy użyciu programu Terraform
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
+    - name: Konfigurowanie woluminów danych
       items:
-      - name: Korzystanie z wtyczki kubenet
-        href: configure-kubenet.md
-      - name: Korzystanie z wtyczki Azure CNI
-        href: configure-azure-cni.md
-    - name: Utwórz wewnętrzny moduł równoważenia obciążenia.
-      href: internal-lb.md
-    - name: Używanie statycznych adresów IP
-      href: static-ip.md
-    - name: Ruch przychodzący
+        - name: Dysk platformy Azure — dynamiczny
+          href: azure-disks-dynamic-pv.md
+        - name: Dysk platformy Azure — statyczny
+          href: azure-disk-volume.md
+        - name: Azure Files — wersja dynamiczna
+          href: azure-files-dynamic-pv.md
+        - name: Azure Files — wersja statyczna
+          href: azure-files-volume.md
+    - name: Konfigurowanie sieci
       items:
-      - name: Tworzenie podstawowego kontrolera
-        href: ingress-basic.md
-      - name: Korzystanie z routingu aplikacji protokołu HTTP
-        href: http-application-routing.md
-      - name: Korzystanie z sieci wewnętrznej
-        href: ingress-internal-ip.md
-      - name: Korzystanie z protokołu TLS z własnymi certyfikatami
-        href: ingress-own-tls.md
-      - name: Korzystanie z protokołu TLS z urzędem certyfikacji Let's Encrypt
-        href: ingress-tls.md
-        items:
-        - name: Korzystanie ze statycznego publicznego adresu IP
-          href: ingress-static-ip.md
-    - name: Ruch wychodzący
-      href: egress.md
-    - name: Dostosowywanie serwera CoreDNS
-      href: coredns-custom.md
-  - name: Zabezpieczenia i uwierzytelnianie
-    items:
-    - name: Tworzenie jednostki usługi
-      href: kubernetes-service-principal.md
-    - name: Ograniczanie dostępu do pliku konfiguracji klastra
-      href: control-kubeconfig-access.md
-    - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych (wersja zapoznawcza)
-      href: use-network-policies.md
-    - name: Aktualizowanie poświadczeń jednostki usługi klastra
-      href: update-credentials.md
-    - name: Uwierzytelnianie przy użyciu rekordu ACR
-      href: ../container-registry/container-registry-auth-aks.md
-      maintainContext: true
-  - name: Monitorowanie i rejestrowanie
-    items:
-    - name: Usługa Azure Monitor dla kontenerów
-      href: ../azure-monitor/insights/container-insights-overview.md
-      maintainContext: true
-    - name: Wyświetlanie dzienników składnika głównego
-      href: view-master-logs.md
-    - name: Wyświetlanie dzienników agenta kubelet
-      href: kubelet-logs.md
-    - name: Wyświetlanie dzienników kontenerów w czasie rzeczywistym (wersja zapoznawcza)
-      href: ../azure-monitor/insights/container-insights-live-logs.md
-      maintainContext: true
-  - name: Opracowywanie i uruchamianie aplikacji
-    items:
-    - name: Programowanie za pomocą usługi Dev Spaces
-      href: ../dev-spaces/azure-dev-spaces.md
+        - name: Tworzenie lub używanie istniejącej sieci wirtualnej
+          items:
+            - name: Korzystanie z wtyczki kubenet
+              href: configure-kubenet.md
+            - name: Korzystanie z wtyczki Azure CNI
+              href: configure-azure-cni.md
+        - name: Utwórz wewnętrzny moduł równoważenia obciążenia.
+          href: internal-lb.md
+        - name: Używanie statycznych adresów IP
+          href: static-ip.md
+        - name: Ruch przychodzący
+          items:
+            - name: Tworzenie podstawowego kontrolera
+              href: ingress-basic.md
+            - name: Korzystanie z routingu aplikacji protokołu HTTP
+              href: http-application-routing.md
+            - name: Korzystanie z sieci wewnętrznej
+              href: ingress-internal-ip.md
+            - name: Korzystanie z protokołu TLS z własnymi certyfikatami
+              href: ingress-own-tls.md
+            - name: Korzystanie z protokołu TLS z urzędem certyfikacji Let's Encrypt
+              href: ingress-tls.md
+              items:
+                - name: Korzystanie ze statycznego publicznego adresu IP
+                  href: ingress-static-ip.md
+        - name: Ruch wychodzący
+          href: egress.md
+        - name: Dostosowywanie serwera CoreDNS
+          href: coredns-custom.md
+    - name: Zabezpieczenia i uwierzytelnianie
       items:
-      - name: Java (VS Code i interfejs wiersza polecenia)
-        items:
-        - name: 1 — Wprowadzenie
-          href: ../dev-spaces/get-started-java.md
+        - name: Tworzenie jednostki usługi
+          href: kubernetes-service-principal.md
+        - name: Ograniczanie dostępu do pliku konfiguracji klastra
+          href: control-kubeconfig-access.md
+        - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych (wersja zapoznawcza)
+          href: use-network-policies.md
+        - name: Aktualizowanie poświadczeń jednostki usługi klastra
+          href: update-credentials.md
+        - name: Uwierzytelnianie przy użyciu rekordu ACR
+          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
-        - name: 2 — Programowanie wielu usług
-          href: ../dev-spaces/multi-service-java.md
-          maintainContext: true
-        - name: 3 — Programowanie zespołowe
-          href: ../dev-spaces/team-development-java.md
-          maintainContext: true
-      - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
-        items:
-        - name: 1 — Wprowadzenie
-          href: ../dev-spaces/get-started-netcore.md
-          maintainContext: true
-        - name: 2 — Programowanie wielu usług
-          href: ../dev-spaces/multi-service-netcore.md
-          maintainContext: true
-        - name: 3 — Programowanie zespołowe
-          href: ../dev-spaces/team-development-netcore.md
-          maintainContext: true
-      - name: .NET Core (Visual Studio 2017)
-        items:
-        - name: 1 — Wprowadzenie
-          href: ../dev-spaces/get-started-netcore-visualstudio.md
-          maintainContext: true
-        - name: 2 — Programowanie wielu usług
-          href: ../dev-spaces/multi-service-netcore-visualstudio.md
-          maintainContext: true
-        - name: 3 — Programowanie zespołowe
-          href: ../dev-spaces/team-development-netcore-visualstudio.md
-          maintainContext: true
-      - name: Node.js (VS Code oraz interfejs wiersza polecenia)
-        items:
-        - name: 1 — Wprowadzenie
-          href: ../dev-spaces/get-started-nodejs.md
-          maintainContext: true
-        - name: 2 — Programowanie wielu usług
-          href: ../dev-spaces/multi-service-nodejs.md
-          maintainContext: true
-        - name: 3 — Programowanie zespołowe
-          href: ../dev-spaces/team-development-nodejs.md
-          maintainContext: true
-      maintainContext: true
-    - name: Uruchamianie aplikacji za pomocą narzędzia Helm
-      href: kubernetes-helm.md
-    - name: Tworzenie aplikacji za pomocą narzędzia Draft
-      href: kubernetes-draft.md
-    - name: Korzystanie z serwera Open Service Broker for Azure
-      href: integrate-azure.md
-    - name: Korzystanie z interfejsu API usługi Cosmos DB dla bazy danych MongoDB z usługą OSBA
-      href: use-cosmosdb-osba-mongo-app.md
-    - name: Korzystanie z usługi OpenFaaS
-      href: openfaas.md
-    - name: Uruchamianie zadań Spark
-      href: spark-job.md
-    - name: Korzystanie z procesorów GPU
-      href: gpu-cluster.md
-    - name: Używanie rozwiązania Istio
+    - name: Monitorowanie i rejestrowanie
       items:
-      - name: Instalowanie i konfigurowanie
-        href: istio-install.md
-      - name: Routing inteligentny i wydania Canary
-        href: istio-scenario-routing.md
-    - name: Korzystanie z usługi Azure Database for PostgreSQL
-      href: ../postgresql/concepts-aks.md
-      maintainContext: true
-  - name: DevOps
-    items:
-    - name: Tworzenie klastrów usługi AKS przy użyciu rozwiązania Ansible
-      href: /azure/ansible/ansible-create-configure-aks
-      maintainContext: true
-    - name: Ciągłe wdrażanie przy użyciu usługi Jenkins
-      href: jenkins-continuous-deployment.md
-    - name: Projekt DevOps platformy Azure
-      href: ../devops-project/azure-devops-project-aks.md
-      maintainContext: true
-  - name: Podstawy platformy Kubernetes
-    items:
-    - name: Używanie pulpitu nawigacyjnego rozwiązania Kubernetes
-      href: kubernetes-dashboard.md
-  - name: Rozwiązywanie problemów
-    items:
-    - name: Typowe problemy
-      href: troubleshooting.md
-    - name: Sprawdzanie najlepszych rozwiązań
-      href: kube-advisor-tool.md
-    - name: Dostęp do węzła SSH
-      href: ssh.md
+        - name: Usługa Azure Monitor dla kontenerów
+          href: ../azure-monitor/insights/container-insights-overview.md
+          maintainContext: true
+        - name: Wyświetlanie dzienników składnika głównego
+          href: view-master-logs.md
+        - name: Wyświetlanie dzienników agenta kubelet
+          href: kubelet-logs.md
+        - name: Wyświetlanie dzienników kontenerów w czasie rzeczywistym (wersja zapoznawcza)
+          href: ../azure-monitor/insights/container-insights-live-logs.md
+          maintainContext: true
+    - name: Opracowywanie i uruchamianie aplikacji
+      items:
+        - name: Programowanie za pomocą usługi Dev Spaces
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
+          items:
+            - name: Java (VS Code i interfejs wiersza polecenia)
+              items:
+                - name: 1 — Wprowadzenie
+                  href: ../dev-spaces/get-started-java.md
+                  maintainContext: true
+                - name: 2 — Programowanie wielu usług
+                  href: ../dev-spaces/multi-service-java.md
+                  maintainContext: true
+                - name: 3 — Programowanie zespołowe
+                  href: ../dev-spaces/team-development-java.md
+                  maintainContext: true
+            - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
+              items:
+                - name: 1 — Wprowadzenie
+                  href: ../dev-spaces/get-started-netcore.md
+                  maintainContext: true
+                - name: 2 — Programowanie wielu usług
+                  href: ../dev-spaces/multi-service-netcore.md
+                  maintainContext: true
+                - name: 3 — Programowanie zespołowe
+                  href: ../dev-spaces/team-development-netcore.md
+                  maintainContext: true
+            - name: .NET Core (Visual Studio 2017)
+              items:
+                - name: 1 — Wprowadzenie
+                  href: ../dev-spaces/get-started-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 2 — Programowanie wielu usług
+                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 3 — Programowanie zespołowe
+                  href: ../dev-spaces/team-development-netcore-visualstudio.md
+                  maintainContext: true
+            - name: Node.js (VS Code oraz interfejs wiersza polecenia)
+              items:
+                - name: 1 — Wprowadzenie
+                  href: ../dev-spaces/get-started-nodejs.md
+                  maintainContext: true
+                - name: 2 — Programowanie wielu usług
+                  href: ../dev-spaces/multi-service-nodejs.md
+                  maintainContext: true
+                - name: 3 — Programowanie zespołowe
+                  href: ../dev-spaces/team-development-nodejs.md
+                  maintainContext: true
+        - name: Uruchamianie aplikacji za pomocą narzędzia Helm
+          href: kubernetes-helm.md
+        - name: Tworzenie aplikacji za pomocą narzędzia Draft
+          href: kubernetes-draft.md
+        - name: Korzystanie z serwera Open Service Broker for Azure
+          href: integrate-azure.md
+        - name: Korzystanie z interfejsu API usługi Cosmos DB dla bazy danych MongoDB z usługą OSBA
+          href: use-cosmosdb-osba-mongo-app.md
+        - name: Korzystanie z usługi OpenFaaS
+          href: openfaas.md
+        - name: Uruchamianie zadań Spark
+          href: spark-job.md
+        - name: Korzystanie z procesorów GPU
+          href: gpu-cluster.md
+        - name: Używanie rozwiązania Istio
+          items:
+            - name: Instalowanie i konfigurowanie
+              href: istio-install.md
+            - name: Routing inteligentny i wydania Canary
+              href: istio-scenario-routing.md
+        - name: Korzystanie z usługi Azure Database for PostgreSQL
+          href: ../postgresql/concepts-aks.md
+          maintainContext: true
+    - name: DevOps
+      items:
+        - name: Tworzenie klastrów usługi AKS przy użyciu rozwiązania Ansible
+          href: /azure/ansible/ansible-create-configure-aks
+          maintainContext: true
+        - name: Ciągłe wdrażanie przy użyciu usługi Jenkins
+          href: jenkins-continuous-deployment.md
+        - name: Projekt DevOps platformy Azure
+          href: ../devops-project/azure-devops-project-aks.md
+          maintainContext: true
+    - name: Podstawy platformy Kubernetes
+      items:
+        - name: Używanie pulpitu nawigacyjnego rozwiązania Kubernetes
+          href: kubernetes-dashboard.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Typowe problemy
+          href: troubleshooting.md
+        - name: Sprawdzanie najlepszych rozwiązań
+          href: kube-advisor-tool.md
+        - name: Dostęp do węzła SSH
+          href: ssh.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/aks
-  - name: REST
-    href: /rest/api/aks
-  - name: PowerShell
-    href: /powershell/module/az.aks#aks
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerservice
-  - name: Python
-    href: /python/api/overview/azure/containerservice
-  - name: Java
-    href: /java/api/overview/azure/containerservice
-  - name: Node.js
-    href: /javascript/api/overview/azure/container-service
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/aks
+    - name: REST
+      href: /rest/api/aks
+    - name: PowerShell
+      href: '/powershell/module/az.aks#aks'
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerservice
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: Zasoby
   items:
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?products=azure-container-instances&azure-container-registry
-  - name: Dostępność w danym regionie
-    href: https://azure.microsoft.com/regions/services/
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/container-service/
-  - name: Obsługa zasad
-    href: support-policies.md
-  - name: Harmonogram działania
-    href: https://azure.microsoft.com/roadmap/
-  - name: Przekazywanie opinii dotyczących produktów
-    href: https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-service
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-  - name: Często zadawane pytania
-    href: faq.md
-ms.openlocfilehash: 900af8f0b09ee19b6f49cbec39bb535e9ba3b385
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489006"
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-container-instances&azure-container-registry
+    - name: Dostępność w danym regionie
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Obsługa zasad
+      href: support-policies.md
+    - name: Harmonogram działania
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Przekazywanie opinii dotyczących produktów
+      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
+    - name: Często zadawane pytania
+      href: faq.md

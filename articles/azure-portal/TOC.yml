@@ -1,55 +1,48 @@
-items:
 - name: Dokumentacja witryny Azure Portal
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o witrynie Azure Portal
-    href: azure-portal-overview.md
-  - name: Obsługiwane przeglądarki i urządzenia
-    href: azure-portal-supported-browsers-devices.md
+    - name: Informacje o witrynie Azure Portal
+      href: azure-portal-overview.md
+    - name: Obsługiwane przeglądarki i urządzenia
+      href: azure-portal-supported-browsers-devices.md
 - name: Pojęcia
   items:
-  - name: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
-    href: azure-portal-dashboards.md
-  - name: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach
-    href: azure-portal-dashboard-share-access.md
-  - name: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
-    href: azure-portal-dashboards-create-programmatically.md
+    - name: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
+      href: azure-portal-dashboards.md
+    - name: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach
+      href: azure-portal-dashboard-share-access.md
+    - name: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
+      href: azure-portal-dashboards-create-programmatically.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Włączanie dużego kontrastu lub zmienianie motywu
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Dodawanie, usuwanie i sortowanie ulubionych
-    href: azure-portal-add-remove-sort-favorites.md
-  - name: Używanie kafelka niestandardowego z kodem Markdown
-    href: azure-portal-markdown-tile.md
-  - name: Eksportowanie i usuwanie ustawień użytkownika
-    href: azure-portal-export-delete-settings.md
-  - name: Seria instruktażowych wideo dla witryny Azure Portal
-    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
+    - name: Włączanie dużego kontrastu lub zmienianie motywu
+      href: azure-portal-change-theme-high-contrast.md
+    - name: 'Dodawanie, usuwanie i sortowanie ulubionych'
+      href: azure-portal-add-remove-sort-favorites.md
+    - name: Używanie kafelka niestandardowego z kodem Markdown
+      href: azure-portal-markdown-tile.md
+    - name: Eksportowanie i usuwanie ustawień użytkownika
+      href: azure-portal-export-delete-settings.md
+    - name: Seria instruktażowych wideo dla witryny Azure Portal
+      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
 - name: Dokumentacja
   items:
-  - name: Skróty klawiaturowe
-    href: azure-portal-keyboard-shortcuts.md
-  - name: Struktura pulpitów nawigacyjnych platformy Azure
-    href: azure-portal-dashboards-structure.md
+    - name: Skróty klawiaturowe
+      href: azure-portal-keyboard-shortcuts.md
+    - name: Struktura pulpitów nawigacyjnych platformy Azure
+      href: azure-portal-dashboards-structure.md
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/updates/
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?products=azure-portal
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Wideo dotyczące platformy Azure
-    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 3846b9198d79be1a9580919a97e568c6a2467b12
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047989"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/updates/'
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-portal
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
+    - name: Wideo dotyczące platformy Azure
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

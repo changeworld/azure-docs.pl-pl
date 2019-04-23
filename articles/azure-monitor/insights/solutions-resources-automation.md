@@ -243,7 +243,7 @@ Właściwości harmonogramy zadań są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | schedule name |Pojedynczy **nazwa** jednostce o nazwie harmonogramu. |
-| runbook name |Pojedynczy **nazwa** jednostce o nazwie elementu runbook.  |
+| runbook name  |Pojedynczy **nazwa** jednostce o nazwie elementu runbook.  |
 
 
 

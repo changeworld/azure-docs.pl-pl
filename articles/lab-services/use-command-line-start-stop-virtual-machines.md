@@ -13,18 +13,18 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051210"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798933"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs
 W tym artykule pokazano, jak za pomocą programu Azure PowerShell lub wiersza polecenia platformy Azure uruchamianiem lub zatrzymywaniem maszyn wirtualnych w laboratorium Azure DevTest Labs. Można utworzyć skryptów programu PowerShell/interfejsu wiersza polecenia w celu zautomatyzowania tych operacji. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure DevTest Labs jest sposobem tworzenia środowiska deweloperskie i testowe szybkie, łatwe i zwarte. Umożliwia zarządzanie kosztami, szybko aprowizuj maszyny wirtualne i zminimalizować ilość odpadów.  Ma wbudowanych funkcji w witrynie Azure portal, które można konfigurować maszyny wirtualne w laboratorium, aby automatycznie uruchomić i zatrzymać w określonym czasie. 
 
 Jednak w niektórych scenariuszach można zautomatyzować, uruchamianie i zatrzymywanie maszyn wirtualnych ze skryptów programu PowerShell/interfejsu wiersza polecenia. Oferuje on pewną elastyczność dzięki uruchamianie i zatrzymywanie poszczególnych maszyn w dowolnym momencie, a nie w określonym czasie. Poniżej przedstawiono niektóre sytuacje, w której działa pomocny byłby te zadania za pomocą skryptów.

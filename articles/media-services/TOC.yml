@@ -1,22 +1,15 @@
-items:
 - name: Azure Media Services w wersji 3
-  displayName: encode, stream, package, content protection, video analytics
+  displayName: 'encode, stream, package, content protection, video analytics'
   href: latest/
 - name: Azure Media Services w wersji 2 (starsza wersja)
   href: previous/media-services-overview.md
 - name: Azure Media Services Video Indexer
   href: video-indexer/
 - name: Azure Media Player
-  href: http://amp.azure.net/libs/amp/latest/docs/index.html
+  href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=media
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: b4aa4e90b23f6c15753ee874a57b0d85d6fcc4fa
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049952"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=media'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'

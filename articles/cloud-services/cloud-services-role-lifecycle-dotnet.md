@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916312"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798019"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Dostosowywanie cyklu życia roli Sieć Web lub Proces roboczy na platformie .NET
 Podczas tworzenia roli procesu roboczego, możesz rozszerzyć [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) klasę, która zapewnia metody do zastąpienia, które umożliwiają reagowanie na zdarzenia cyklu życia. Dla ról sieci web ta klasa jest opcjonalne, więc musisz ją wykorzystać w celu reagowania na zdarzenia cyklu życia.

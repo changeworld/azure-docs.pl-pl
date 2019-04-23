@@ -153,7 +153,7 @@ GO
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed programu PolyBase ponownie oblicza odsetek odrzuconych wierszy. |1, 2, … |Tak, jeśli **rejectType** jest **procent** |
 | useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Wartość true, False (domyślnie) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu |Liczba całkowita (liczba wierszy) |Nie (domyślne: 10000) |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink example
 
@@ -276,10 +276,10 @@ Poniższa tabela zawiera przykłady dotyczące sposobu określania **tableName**
 
 | Schemat bazy danych | Nazwa tabeli | Właściwość JSON tableName |
 | --- | --- | --- |
-| dbo |MyTable |MyTable lub dbo.MyTable lub [dbo].[MyTable] |
-| dbo1 |MyTable |dbo1.MyTable lub [dbo1].[MyTable] |
-| dbo |My.Table |[My.Table] lub [dbo].[My.Table] |
-| dbo1 |My.Table |[dbo1].[My.Table] |
+| dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
+| dbo1 |MyTable |dbo1. MyTable lub [dbo1]. [MyTable] |
+| dbo |My.Table |[My.Table] lub [dbo]. [My.Table] |
+| dbo1 |My.Table |[dbo1]. [My.Table] |
 
 Jeśli zostanie wyświetlony następujący błąd, może to być problem z wartością, która została określona jako właściwość tableName. Zobacz tabelę w prawidłowy sposób określić wartości dla właściwości JSON tableName.
 
@@ -310,10 +310,10 @@ Data Factory tworzy tabelę w magazynie docelowym o takiej nazwie tabeli w magaz
 | Decimal | Decimal |
 | Numeric | Decimal |
 | Float | Float |
-| Money | Money |
+| money | money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| Binarny | Binarny |
 | Varbinary | Varbinary (maksymalnie 8000) |
 | Date | Date |
 | DateTime | DateTime |
@@ -325,7 +325,7 @@ Data Factory tworzy tabelę w magazynie docelowym o takiej nazwie tabeli w magaz
 | NText | NVarChar (maksymalnie 4000) |
 | Image | VarBinary (maksymalnie 8000) |
 | UniqueIdentifier | UniqueIdentifier |
-| Char | Char |
+| char | char |
 | NChar | NChar |
 | VarChar | VarChar (maksymalnie 8000) |
 | NVarChar | NVarChar (maksymalnie 4000) |
@@ -361,7 +361,7 @@ Mapowanie jest taka sama jak [mapowanie typu danych SQL Server, ADO.NET](https:/
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| Numeryczne |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -369,12 +369,12 @@ Mapowanie jest taka sama jak [mapowanie typu danych SQL Server, ADO.NET](https:/
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| text |String, Char[] |
+| tekst |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

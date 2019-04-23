@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879152"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796314"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
 W tym artykule pokazano, jak skonfigurować fabrycznie obrazu niestandardowego przy użyciu dostępnych w przykładowych skryptach [repozytorium Git](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
